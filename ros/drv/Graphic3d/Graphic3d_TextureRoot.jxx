@@ -1,0 +1,18 @@
+#ifndef _Graphic3d_GraphicDriver_HeaderFile
+#include <Graphic3d_GraphicDriver.hxx>
+#endif
+#ifndef _AlienImage_AlienImage_HeaderFile
+#include <AlienImage_AlienImage.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _Graphic3d_StructureManager_HeaderFile
+#include <Graphic3d_StructureManager.hxx>
+#endif
+#ifndef _OSD_Path_HeaderFile
+#include <OSD_Path.hxx>
+#endif
+#ifndef _Graphic3d_TextureRoot_HeaderFile
+#include <Graphic3d_TextureRoot.hxx>
+#endif

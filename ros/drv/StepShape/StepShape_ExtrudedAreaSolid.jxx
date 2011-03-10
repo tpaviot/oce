@@ -1,0 +1,12 @@
+#ifndef _StepGeom_Direction_HeaderFile
+#include <StepGeom_Direction.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_CurveBoundedSurface_HeaderFile
+#include <StepGeom_CurveBoundedSurface.hxx>
+#endif
+#ifndef _StepShape_ExtrudedAreaSolid_HeaderFile
+#include <StepShape_ExtrudedAreaSolid.hxx>
+#endif

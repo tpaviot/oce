@@ -1,0 +1,6 @@
+#ifndef _StepVisual_CurveStyle_HeaderFile
+#include <StepVisual_CurveStyle.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleControlGrid_HeaderFile
+#include <StepVisual_SurfaceStyleControlGrid.hxx>
+#endif

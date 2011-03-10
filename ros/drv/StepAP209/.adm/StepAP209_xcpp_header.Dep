@@ -1,0 +1,6 @@
++ StepAP209:pubinclude:StepAP209_Construct.hxx StepAP209:msentity:StepAP209_Construct
++ StepAP209:privinclude:StepAP209_Construct.jxx StepAP209:msentity:StepAP209_Construct
++ StepAP209:privinclude:StepAP209_Construct.ixx StepAP209:msentity:StepAP209_Construct
++ StepAP209:dbadmfile:StepAP209_xcpp_header.In StepAP209:admfile:StepAP209_xcpp_fill.Out
++ StepAP209:dbadmfile:StepAP209_xcpp_header.Out StepAP209:admfile:StepAP209_xcpp_fill.Out
++ StepAP209:dbadmfile:StepAP209_xcpp_header.Dep StepAP209:admfile:StepAP209_xcpp_fill.Out

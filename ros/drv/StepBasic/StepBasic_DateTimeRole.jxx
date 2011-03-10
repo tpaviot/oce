@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_DateTimeRole_HeaderFile
+#include <StepBasic_DateTimeRole.hxx>
+#endif

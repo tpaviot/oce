@@ -1,0 +1,3 @@
+#ifndef _StepShape_AdvancedBrepShapeRepresentation_HeaderFile
+#include <StepShape_AdvancedBrepShapeRepresentation.hxx>
+#endif

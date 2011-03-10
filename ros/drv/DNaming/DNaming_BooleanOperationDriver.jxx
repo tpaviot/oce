@@ -1,0 +1,15 @@
+#ifndef _TFunction_Logbook_HeaderFile
+#include <TFunction_Logbook.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
+#include <BRepAlgoAPI_BooleanOperation.hxx>
+#endif
+#ifndef _TFunction_Function_HeaderFile
+#include <TFunction_Function.hxx>
+#endif
+#ifndef _DNaming_BooleanOperationDriver_HeaderFile
+#include <DNaming_BooleanOperationDriver.hxx>
+#endif

@@ -1,0 +1,15 @@
++ Intrv:pubinclude:Intrv_Interval.hxx Intrv:msentity:Intrv_Interval
++ Intrv:privinclude:Intrv_Interval.jxx Intrv:msentity:Intrv_Interval
++ Intrv:privinclude:Intrv_Interval.ixx Intrv:msentity:Intrv_Interval
++ Intrv:pubinclude:Intrv_Intervals.hxx Intrv:msentity:Intrv_Intervals
++ Intrv:privinclude:Intrv_Intervals.jxx Intrv:msentity:Intrv_Intervals
++ Intrv:privinclude:Intrv_Intervals.ixx Intrv:msentity:Intrv_Intervals
++ Intrv:pubinclude:Intrv_SequenceOfInterval.hxx Intrv:msentity:Intrv_SequenceOfInterval
++ Intrv:derivated:Intrv_SequenceOfInterval_0.cxx Intrv:msentity:Intrv_SequenceOfInterval
++ Intrv:pubinclude:Handle_Intrv_SequenceNodeOfSequenceOfInterval.hxx Intrv:msentity:Intrv_SequenceNodeOfSequenceOfInterval
++ Intrv:pubinclude:Intrv_SequenceNodeOfSequenceOfInterval.hxx Intrv:msentity:Intrv_SequenceNodeOfSequenceOfInterval
++ Intrv:derivated:Intrv_SequenceNodeOfSequenceOfInterval_0.cxx Intrv:msentity:Intrv_SequenceNodeOfSequenceOfInterval
++ Intrv:pubinclude:Intrv_Position.hxx Intrv:msentity:Intrv_Position
++ Intrv:dbadmfile:Intrv_xcpp_header.In Intrv:admfile:Intrv_xcpp_fill.Out
++ Intrv:dbadmfile:Intrv_xcpp_header.Out Intrv:admfile:Intrv_xcpp_fill.Out
++ Intrv:dbadmfile:Intrv_xcpp_header.Dep Intrv:admfile:Intrv_xcpp_fill.Out

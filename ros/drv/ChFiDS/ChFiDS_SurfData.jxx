@@ -1,0 +1,15 @@
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
+#endif
+#ifndef _ChFiDS_FaceInterference_HeaderFile
+#include <ChFiDS_FaceInterference.hxx>
+#endif
+#ifndef _ChFiDS_CommonPoint_HeaderFile
+#include <ChFiDS_CommonPoint.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _ChFiDS_SurfData_HeaderFile
+#include <ChFiDS_SurfData.hxx>
+#endif

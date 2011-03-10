@@ -1,0 +1,12 @@
+pubinclude TestTopOpe.hxx
+privinclude TestTopOpe.jxx
+privinclude TestTopOpe.ixx
+dbadmfile TestTopOpe_xcpp_header.In
+dbadmfile TestTopOpe_xcpp_header.Out
+dbadmfile TestTopOpe_xcpp_header.Dep
+pubinclude TestTopOpe_BOOP.hxx
+pubinclude TestTopOpe_VarsTopo.hxx
+pubinclude TestTopOpe_HDSDisplayer.hxx
+dbadmfile TestTopOpe_obj_inc.In
+dbadmfile TestTopOpe_obj_inc.Out
+dbadmfile TestTopOpe_obj_inc.Dep

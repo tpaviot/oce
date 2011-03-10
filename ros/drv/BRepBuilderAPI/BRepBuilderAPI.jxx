@@ -1,0 +1,6 @@
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _BRepBuilderAPI_HeaderFile
+#include <BRepBuilderAPI.hxx>
+#endif

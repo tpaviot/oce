@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntRes2d_Transition_HeaderFile
+#include <IntRes2d_Transition.hxx>
+#endif
+#ifndef _IntRes2d_IntersectionPoint_HeaderFile
+#include <IntRes2d_IntersectionPoint.hxx>
+#endif

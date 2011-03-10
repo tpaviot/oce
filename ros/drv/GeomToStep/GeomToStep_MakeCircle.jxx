@@ -1,0 +1,18 @@
+#ifndef _StepGeom_Circle_HeaderFile
+#include <StepGeom_Circle.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _Geom_Circle_HeaderFile
+#include <Geom_Circle.hxx>
+#endif
+#ifndef _Geom2d_Circle_HeaderFile
+#include <Geom2d_Circle.hxx>
+#endif
+#ifndef _GeomToStep_MakeCircle_HeaderFile
+#include <GeomToStep_MakeCircle.hxx>
+#endif

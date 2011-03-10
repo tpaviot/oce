@@ -1,0 +1,30 @@
+#ifndef _Xw_ColorMap_HeaderFile
+#include <Xw_ColorMap.hxx>
+#endif
+#ifndef _Xw_TypeMap_HeaderFile
+#include <Xw_TypeMap.hxx>
+#endif
+#ifndef _Xw_WidthMap_HeaderFile
+#include <Xw_WidthMap.hxx>
+#endif
+#ifndef _Xw_FontMap_HeaderFile
+#include <Xw_FontMap.hxx>
+#endif
+#ifndef _Xw_MarkMap_HeaderFile
+#include <Xw_MarkMap.hxx>
+#endif
+#ifndef _Aspect_GraphicDeviceDefinitionError_HeaderFile
+#include <Aspect_GraphicDeviceDefinitionError.hxx>
+#endif
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Xw_Window_HeaderFile
+#include <Xw_Window.hxx>
+#endif
+#ifndef _Aspect_GraphicDriver_HeaderFile
+#include <Aspect_GraphicDriver.hxx>
+#endif
+#ifndef _Xw_GraphicDevice_HeaderFile
+#include <Xw_GraphicDevice.hxx>
+#endif

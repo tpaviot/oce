@@ -1,0 +1,6 @@
++ TopTrans:dbadmfile:TopTrans_obj_inc.In TopTrans:admfile:TopTrans_src.Out
++ * TopTrans:admfile:TopTrans_xcpp_src.Out
++ TopTrans:dbadmfile:TopTrans_obj_inc.Out TopTrans:admfile:TopTrans_src.Out
++ * TopTrans:admfile:TopTrans_xcpp_src.Out
++ TopTrans:dbadmfile:TopTrans_obj_inc.Dep TopTrans:admfile:TopTrans_src.Out
++ * TopTrans:admfile:TopTrans_xcpp_src.Out

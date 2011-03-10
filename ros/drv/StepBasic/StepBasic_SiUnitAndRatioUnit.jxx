@@ -1,0 +1,9 @@
+#ifndef _StepBasic_RatioUnit_HeaderFile
+#include <StepBasic_RatioUnit.hxx>
+#endif
+#ifndef _StepBasic_DimensionalExponents_HeaderFile
+#include <StepBasic_DimensionalExponents.hxx>
+#endif
+#ifndef _StepBasic_SiUnitAndRatioUnit_HeaderFile
+#include <StepBasic_SiUnitAndRatioUnit.hxx>
+#endif

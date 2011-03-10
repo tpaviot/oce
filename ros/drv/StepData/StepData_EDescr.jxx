@@ -1,0 +1,6 @@
+#ifndef _StepData_Described_HeaderFile
+#include <StepData_Described.hxx>
+#endif
+#ifndef _StepData_EDescr_HeaderFile
+#include <StepData_EDescr.hxx>
+#endif

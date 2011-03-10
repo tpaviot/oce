@@ -1,0 +1,3 @@
+#ifndef _Voxel_OctBoolDS_HeaderFile
+#include <Voxel_OctBoolDS.hxx>
+#endif

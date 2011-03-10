@@ -1,0 +1,18 @@
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _Geom2dAPI_PointsToBSpline_HeaderFile
+#include <Geom2dAPI_PointsToBSpline.hxx>
+#endif

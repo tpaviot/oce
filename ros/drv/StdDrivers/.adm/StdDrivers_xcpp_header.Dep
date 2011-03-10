@@ -1,0 +1,14 @@
++ StdDrivers:pubinclude:StdDrivers.hxx StdDrivers:msentity:StdDrivers
++ StdDrivers:privinclude:StdDrivers.jxx StdDrivers:msentity:StdDrivers
++ StdDrivers:privinclude:StdDrivers.ixx StdDrivers:msentity:StdDrivers
++ StdDrivers:pubinclude:Handle_StdDrivers_DocumentRetrievalDriver.hxx StdDrivers:msentity:StdDrivers_DocumentRetrievalDriver
++ StdDrivers:pubinclude:StdDrivers_DocumentRetrievalDriver.hxx StdDrivers:msentity:StdDrivers_DocumentRetrievalDriver
++ StdDrivers:privinclude:StdDrivers_DocumentRetrievalDriver.jxx StdDrivers:msentity:StdDrivers_DocumentRetrievalDriver
++ StdDrivers:privinclude:StdDrivers_DocumentRetrievalDriver.ixx StdDrivers:msentity:StdDrivers_DocumentRetrievalDriver
++ StdDrivers:pubinclude:Handle_StdDrivers_DocumentStorageDriver.hxx StdDrivers:msentity:StdDrivers_DocumentStorageDriver
++ StdDrivers:pubinclude:StdDrivers_DocumentStorageDriver.hxx StdDrivers:msentity:StdDrivers_DocumentStorageDriver
++ StdDrivers:privinclude:StdDrivers_DocumentStorageDriver.jxx StdDrivers:msentity:StdDrivers_DocumentStorageDriver
++ StdDrivers:privinclude:StdDrivers_DocumentStorageDriver.ixx StdDrivers:msentity:StdDrivers_DocumentStorageDriver
++ StdDrivers:dbadmfile:StdDrivers_xcpp_header.In StdDrivers:admfile:StdDrivers_xcpp_fill.Out
++ StdDrivers:dbadmfile:StdDrivers_xcpp_header.Out StdDrivers:admfile:StdDrivers_xcpp_fill.Out
++ StdDrivers:dbadmfile:StdDrivers_xcpp_header.Dep StdDrivers:admfile:StdDrivers_xcpp_fill.Out

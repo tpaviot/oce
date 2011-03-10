@@ -1,0 +1,16 @@
++V DNaming:msentity:DNaming .
++V DNaming:msentity:DNaming_BoxDriver .
++V DNaming:msentity:DNaming_CylinderDriver .
++V DNaming:msentity:DNaming_SphereDriver .
++V DNaming:msentity:DNaming_SelectionDriver .
++V DNaming:msentity:DNaming_BooleanOperationDriver .
++V DNaming:msentity:DNaming_FilletDriver .
++V DNaming:msentity:DNaming_TransformationDriver .
++V DNaming:msentity:DNaming_PrismDriver .
++V DNaming:msentity:DNaming_RevolutionDriver .
++V DNaming:msentity:DNaming_PointDriver .
++V DNaming:msentity:DNaming_Line3DDriver .
++V DNaming:msentity:DNaming_DataMapOfShapeOfName .
++V DNaming:msentity:DNaming_DataMapNodeOfDataMapOfShapeOfName .
++V DNaming:msentity:DNaming_DataMapIteratorOfDataMapOfShapeOfName .
+- DNaming:admfile:DNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/DNaming/DNaming_xcpp_fill.Out

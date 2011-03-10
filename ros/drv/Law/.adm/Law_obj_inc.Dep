@@ -1,0 +1,6 @@
++ Law:dbadmfile:Law_obj_inc.In Law:admfile:Law_src.Out
++ * Law:admfile:Law_xcpp_src.Out
++ Law:dbadmfile:Law_obj_inc.Out Law:admfile:Law_src.Out
++ * Law:admfile:Law_xcpp_src.Out
++ Law:dbadmfile:Law_obj_inc.Dep Law:admfile:Law_src.Out
++ * Law:admfile:Law_xcpp_src.Out

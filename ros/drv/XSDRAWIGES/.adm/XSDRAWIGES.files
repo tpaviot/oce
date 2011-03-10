@@ -1,0 +1,9 @@
+pubinclude XSDRAWIGES.hxx
+privinclude XSDRAWIGES.jxx
+privinclude XSDRAWIGES.ixx
+dbadmfile XSDRAWIGES_xcpp_header.In
+dbadmfile XSDRAWIGES_xcpp_header.Out
+dbadmfile XSDRAWIGES_xcpp_header.Dep
+dbadmfile XSDRAWIGES_obj_inc.In
+dbadmfile XSDRAWIGES_obj_inc.Out
+dbadmfile XSDRAWIGES_obj_inc.Dep

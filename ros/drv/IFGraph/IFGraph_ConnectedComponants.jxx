@@ -1,0 +1,6 @@
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _IFGraph_ConnectedComponants_HeaderFile
+#include <IFGraph_ConnectedComponants.hxx>
+#endif

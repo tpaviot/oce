@@ -1,0 +1,12 @@
+#ifndef _StepAP203_HArray1OfSpecifiedItem_HeaderFile
+#include <StepAP203_HArray1OfSpecifiedItem.hxx>
+#endif
+#ifndef _StepBasic_Document_HeaderFile
+#include <StepBasic_Document.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepAP203_CcDesignSpecificationReference_HeaderFile
+#include <StepAP203_CcDesignSpecificationReference.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepBasic_RatioMeasureWithUnit_HeaderFile
+#include <StepBasic_RatioMeasureWithUnit.hxx>
+#endif

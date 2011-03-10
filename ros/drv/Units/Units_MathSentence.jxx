@@ -1,0 +1,3 @@
+#ifndef _Units_MathSentence_HeaderFile
+#include <Units_MathSentence.hxx>
+#endif

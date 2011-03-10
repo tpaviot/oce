@@ -1,0 +1,42 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _StepShape_Edge_HeaderFile
+#include <StepShape_Edge.hxx>
+#endif
+#ifndef _StepToTopoDS_Tool_HeaderFile
+#include <StepToTopoDS_Tool.hxx>
+#endif
+#ifndef _StepToTopoDS_NMTool_HeaderFile
+#include <StepToTopoDS_NMTool.hxx>
+#endif
+#ifndef _StepGeom_Curve_HeaderFile
+#include <StepGeom_Curve.hxx>
+#endif
+#ifndef _StepShape_EdgeCurve_HeaderFile
+#include <StepShape_EdgeCurve.hxx>
+#endif
+#ifndef _StepShape_Vertex_HeaderFile
+#include <StepShape_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _StepGeom_Pcurve_HeaderFile
+#include <StepGeom_Pcurve.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _StepToTopoDS_TranslateEdge_HeaderFile
+#include <StepToTopoDS_TranslateEdge.hxx>
+#endif

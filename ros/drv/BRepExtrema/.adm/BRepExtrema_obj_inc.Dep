@@ -1,0 +1,6 @@
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.In BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.Out BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.Dep BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out

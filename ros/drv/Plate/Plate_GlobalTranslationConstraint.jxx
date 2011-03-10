@@ -1,0 +1,9 @@
+#ifndef _TColgp_SequenceOfXY_HeaderFile
+#include <TColgp_SequenceOfXY.hxx>
+#endif
+#ifndef _Plate_LinearXYZConstraint_HeaderFile
+#include <Plate_LinearXYZConstraint.hxx>
+#endif
+#ifndef _Plate_GlobalTranslationConstraint_HeaderFile
+#include <Plate_GlobalTranslationConstraint.hxx>
+#endif

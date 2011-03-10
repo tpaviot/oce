@@ -1,0 +1,17 @@
++V HLRTopoBRep:msentity:HLRTopoBRep .
++V HLRTopoBRep:msentity:HLRTopoBRep_VData .
++V HLRTopoBRep:msentity:HLRTopoBRep_ListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_MapOfShapeListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_FaceData .
++V HLRTopoBRep:msentity:HLRTopoBRep_DataMapOfShapeFaceData .
++V HLRTopoBRep:msentity:HLRTopoBRep_Data .
++V HLRTopoBRep:msentity:HLRTopoBRep_FaceIsoLiner .
++V HLRTopoBRep:msentity:HLRTopoBRep_OutLiner .
++V HLRTopoBRep:msentity:HLRTopoBRep_DSFiller .
++V HLRTopoBRep:msentity:HLRTopoBRep_ListNodeOfListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_ListIteratorOfListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData .
++V HLRTopoBRep:msentity:HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData .
++V HLRTopoBRep:msentity:HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData .
+- HLRTopoBRep:admfile:HLRTopoBRep_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/HLRTopoBRep/HLRTopoBRep_xcpp_fill.Out

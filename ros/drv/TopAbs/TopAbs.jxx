@@ -1,0 +1,3 @@
+#ifndef _TopAbs_HeaderFile
+#include <TopAbs.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PGeom2d_Geometry_HeaderFile
+#include <PGeom2d_Geometry.hxx>
+#endif

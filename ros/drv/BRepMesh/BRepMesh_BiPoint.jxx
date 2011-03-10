@@ -1,0 +1,3 @@
+#ifndef _BRepMesh_BiPoint_HeaderFile
+#include <BRepMesh_BiPoint.hxx>
+#endif

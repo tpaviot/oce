@@ -1,0 +1,18 @@
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _PTopoDS_Shape1_HeaderFile
+#include <PTopoDS_Shape1.hxx>
+#endif
+#ifndef _PTColStd_TransientPersistentMap_HeaderFile
+#include <PTColStd_TransientPersistentMap.hxx>
+#endif
+#ifndef _PTColStd_PersistentTransientMap_HeaderFile
+#include <PTColStd_PersistentTransientMap.hxx>
+#endif
+#ifndef _MgtTopoDS_TranslateTool1_HeaderFile
+#include <MgtTopoDS_TranslateTool1.hxx>
+#endif

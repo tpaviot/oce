@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _STEPConstruct_PointHasher_HeaderFile
+#include <STEPConstruct_PointHasher.hxx>
+#endif

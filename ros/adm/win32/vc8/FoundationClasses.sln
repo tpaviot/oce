@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKernel", "TKernel.vcproj", "{88AA102B-140E-167F-0BF9-C48D96B26E0B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKMath", "TKMath.vcproj", "{18FEDCFE-0213-1343-17C1-84C1F0E3C36F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B} = {88AA102B-140E-167F-0BF9-C48D96B26E0B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKAdvTools", "TKAdvTools.vcproj", "{232310FB-124A-0490-0A46-B90348264901}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B} = {88AA102B-140E-167F-0BF9-C48D96B26E0B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B}.Debug|Win32.Build.0 = Debug|Win32
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B}.Release|Win32.ActiveCfg = Release|Win32
+		{88AA102B-140E-167F-0BF9-C48D96B26E0B}.Release|Win32.Build.0 = Release|Win32
+		{18FEDCFE-0213-1343-17C1-84C1F0E3C36F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{18FEDCFE-0213-1343-17C1-84C1F0E3C36F}.Debug|Win32.Build.0 = Debug|Win32
+		{18FEDCFE-0213-1343-17C1-84C1F0E3C36F}.Release|Win32.ActiveCfg = Release|Win32
+		{18FEDCFE-0213-1343-17C1-84C1F0E3C36F}.Release|Win32.Build.0 = Release|Win32
+		{232310FB-124A-0490-0A46-B90348264901}.Debug|Win32.ActiveCfg = Debug|Win32
+		{232310FB-124A-0490-0A46-B90348264901}.Debug|Win32.Build.0 = Debug|Win32
+		{232310FB-124A-0490-0A46-B90348264901}.Release|Win32.ActiveCfg = Release|Win32
+		{232310FB-124A-0490-0A46-B90348264901}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

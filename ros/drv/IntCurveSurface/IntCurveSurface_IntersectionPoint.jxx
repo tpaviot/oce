@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
+#include <IntCurveSurface_IntersectionPoint.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _PColgp_HArray1OfPnt_HeaderFile
+#include <PColgp_HArray1OfPnt.hxx>
+#endif
+#ifndef _PColStd_HArray1OfReal_HeaderFile
+#include <PColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _PGeom_BezierCurve_HeaderFile
+#include <PGeom_BezierCurve.hxx>
+#endif

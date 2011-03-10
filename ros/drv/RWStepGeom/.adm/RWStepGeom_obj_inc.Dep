@@ -1,0 +1,6 @@
++ RWStepGeom:dbadmfile:RWStepGeom_obj_inc.In RWStepGeom:admfile:RWStepGeom_src.Out
++ * RWStepGeom:admfile:RWStepGeom_xcpp_src.Out
++ RWStepGeom:dbadmfile:RWStepGeom_obj_inc.Out RWStepGeom:admfile:RWStepGeom_src.Out
++ * RWStepGeom:admfile:RWStepGeom_xcpp_src.Out
++ RWStepGeom:dbadmfile:RWStepGeom_obj_inc.Dep RWStepGeom:admfile:RWStepGeom_src.Out
++ * RWStepGeom:admfile:RWStepGeom_xcpp_src.Out

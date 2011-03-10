@@ -1,0 +1,6 @@
++ PColStd:dbadmfile:PColStd_obj_inc.In PColStd:admfile:PColStd_src.Out
++ * PColStd:admfile:PColStd_xcpp_src.Out
++ PColStd:dbadmfile:PColStd_obj_inc.Out PColStd:admfile:PColStd_src.Out
++ * PColStd:admfile:PColStd_xcpp_src.Out
++ PColStd:dbadmfile:PColStd_obj_inc.Dep PColStd:admfile:PColStd_src.Out
++ * PColStd:admfile:PColStd_xcpp_src.Out

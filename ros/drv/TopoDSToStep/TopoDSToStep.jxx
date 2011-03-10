@@ -1,0 +1,18 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Transfer_FinderProcess_HeaderFile
+#include <Transfer_FinderProcess.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _TopoDSToStep_Tool_HeaderFile
+#include <TopoDSToStep_Tool.hxx>
+#endif
+#ifndef _TopoDSToStep_HeaderFile
+#include <TopoDSToStep.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _V3d_ListOfTransient_HeaderFile
+#include <V3d_ListOfTransient.hxx>
+#endif

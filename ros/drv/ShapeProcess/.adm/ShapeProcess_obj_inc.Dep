@@ -1,0 +1,7 @@
++ ShapeProcess:pubinclude:ShapeProcess_OperFunc.hxx ShapeProcess:source:ShapeProcess_OperFunc.hxx
++ ShapeProcess:dbadmfile:ShapeProcess_obj_inc.In ShapeProcess:admfile:ShapeProcess_src.Out
++ * ShapeProcess:admfile:ShapeProcess_xcpp_src.Out
++ ShapeProcess:dbadmfile:ShapeProcess_obj_inc.Out ShapeProcess:admfile:ShapeProcess_src.Out
++ * ShapeProcess:admfile:ShapeProcess_xcpp_src.Out
++ ShapeProcess:dbadmfile:ShapeProcess_obj_inc.Dep ShapeProcess:admfile:ShapeProcess_src.Out
++ * ShapeProcess:admfile:ShapeProcess_xcpp_src.Out

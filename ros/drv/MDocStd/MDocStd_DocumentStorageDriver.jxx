@@ -1,0 +1,27 @@
+#ifndef _MDF_ASDriverTable_HeaderFile
+#include <MDF_ASDriverTable.hxx>
+#endif
+#ifndef _PCDM_Document_HeaderFile
+#include <PCDM_Document.hxx>
+#endif
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _PDocStd_Document_HeaderFile
+#include <PDocStd_Document.hxx>
+#endif
+#ifndef _MDF_SRelocationTable_HeaderFile
+#include <MDF_SRelocationTable.hxx>
+#endif
+#ifndef _CDM_Document_HeaderFile
+#include <CDM_Document.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _MDocStd_DocumentStorageDriver_HeaderFile
+#include <MDocStd_DocumentStorageDriver.hxx>
+#endif

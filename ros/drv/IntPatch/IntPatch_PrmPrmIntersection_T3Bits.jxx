@@ -1,0 +1,3 @@
+#ifndef _IntPatch_PrmPrmIntersection_T3Bits_HeaderFile
+#include <IntPatch_PrmPrmIntersection_T3Bits.hxx>
+#endif

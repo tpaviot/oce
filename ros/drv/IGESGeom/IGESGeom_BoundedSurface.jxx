@@ -1,0 +1,15 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESGeom_HArray1OfBoundary_HeaderFile
+#include <IGESGeom_HArray1OfBoundary.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESGeom_Boundary_HeaderFile
+#include <IGESGeom_Boundary.hxx>
+#endif
+#ifndef _IGESGeom_BoundedSurface_HeaderFile
+#include <IGESGeom_BoundedSurface.hxx>
+#endif

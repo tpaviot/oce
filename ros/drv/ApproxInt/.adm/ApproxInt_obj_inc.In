@@ -1,0 +1,9 @@
++ ApproxInt:source:ApproxInt_MultiLineTool.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_MultiLineTool.gxx
++ ApproxInt:source:ApproxInt_WLine.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_WLine.gxx
++ ApproxInt:source:ApproxInt_PrmPrmSvSurfaces.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_PrmPrmSvSurfaces.gxx
++ ApproxInt:source:ApproxInt_ImpPrmSvSurfaces.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_ImpPrmSvSurfaces.gxx
++ ApproxInt:source:ApproxInt_MultiLine.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_MultiLine.gxx
++ ApproxInt:source:ApproxInt_MultiLineTool.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_MultiLineTool.lxx
++ ApproxInt:source:ApproxInt_Approx.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ApproxInt/ApproxInt_Approx.gxx
+- ApproxInt:admfile:ApproxInt_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/ApproxInt/ApproxInt_src.Out
+- ApproxInt:admfile:ApproxInt_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/ApproxInt/ApproxInt_xcpp_src.Out

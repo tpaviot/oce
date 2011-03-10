@@ -1,0 +1,3 @@
+#ifndef _StepFEA_DegreeOfFreedomMember_HeaderFile
+#include <StepFEA_DegreeOfFreedomMember.hxx>
+#endif

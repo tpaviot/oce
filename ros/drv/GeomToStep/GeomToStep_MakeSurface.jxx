@@ -1,0 +1,12 @@
+#ifndef _StepGeom_Surface_HeaderFile
+#include <StepGeom_Surface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _GeomToStep_MakeSurface_HeaderFile
+#include <GeomToStep_MakeSurface.hxx>
+#endif

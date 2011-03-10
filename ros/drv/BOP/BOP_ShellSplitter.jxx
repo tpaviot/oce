@@ -1,0 +1,12 @@
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _BOPTColStd_ListOfListOfShape_HeaderFile
+#include <BOPTColStd_ListOfListOfShape.hxx>
+#endif
+#ifndef _BOP_ShellSplitter_HeaderFile
+#include <BOP_ShellSplitter.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepTool_ShapeExplorer_HeaderFile
+#include <TopOpeBRepTool_ShapeExplorer.hxx>
+#endif
+#ifndef _TopOpeBRepTool_BoxSort_HeaderFile
+#include <TopOpeBRepTool_BoxSort.hxx>
+#endif
+#ifndef _TopOpeBRep_ShapeScanner_HeaderFile
+#include <TopOpeBRep_ShapeScanner.hxx>
+#endif

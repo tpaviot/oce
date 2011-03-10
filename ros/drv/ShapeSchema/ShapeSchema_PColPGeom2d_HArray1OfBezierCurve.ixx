@@ -1,0 +1,5 @@
+#include <ShapeSchema_Standard_Persistent.ixx>
+#ifndef _ShapeSchema_PColPGeom2d_FieldOfHArray1OfBezierCurve_HeaderFile
+#include <ShapeSchema_PColPGeom2d_FieldOfHArray1OfBezierCurve.hxx>
+#endif
+

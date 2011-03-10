@@ -1,0 +1,3 @@
+#ifndef _PDataXtd_Plane_HeaderFile
+#include <PDataXtd_Plane.hxx>
+#endif

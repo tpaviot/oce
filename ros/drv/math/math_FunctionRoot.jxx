@@ -1,0 +1,9 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _math_FunctionWithDerivative_HeaderFile
+#include <math_FunctionWithDerivative.hxx>
+#endif
+#ifndef _math_FunctionRoot_HeaderFile
+#include <math_FunctionRoot.hxx>
+#endif

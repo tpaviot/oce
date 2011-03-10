@@ -1,0 +1,18 @@
+#ifndef _Dico_DictionaryOfTransient_HeaderFile
+#include <Dico_DictionaryOfTransient.hxx>
+#endif
+#ifndef _MoniTool_Option_HeaderFile
+#include <MoniTool_Option.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
+#include <TColStd_HSequenceOfAsciiString.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _MoniTool_Profile_HeaderFile
+#include <MoniTool_Profile.hxx>
+#endif

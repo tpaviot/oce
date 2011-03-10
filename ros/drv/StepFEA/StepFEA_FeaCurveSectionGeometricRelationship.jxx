@@ -1,0 +1,9 @@
+#ifndef _StepElement_CurveElementSectionDefinition_HeaderFile
+#include <StepElement_CurveElementSectionDefinition.hxx>
+#endif
+#ifndef _StepElement_AnalysisItemWithinRepresentation_HeaderFile
+#include <StepElement_AnalysisItemWithinRepresentation.hxx>
+#endif
+#ifndef _StepFEA_FeaCurveSectionGeometricRelationship_HeaderFile
+#include <StepFEA_FeaCurveSectionGeometricRelationship.hxx>
+#endif

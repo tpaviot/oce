@@ -1,0 +1,12 @@
++ ChFiDS:pubinclude:ChFiDS_CommonPoint.lxx ChFiDS:source:ChFiDS_CommonPoint.lxx
++ ChFiDS:pubinclude:ChFiDS_FaceInterference.lxx ChFiDS:source:ChFiDS_FaceInterference.lxx
++ ChFiDS:pubinclude:ChFiDS_SurfData.lxx ChFiDS:source:ChFiDS_SurfData.lxx
++ ChFiDS:pubinclude:ChFiDS_Stripe.lxx ChFiDS:source:ChFiDS_Stripe.lxx
++ ChFiDS:pubinclude:ChFiDS_StripeMap.lxx ChFiDS:source:ChFiDS_StripeMap.lxx
++ ChFiDS:pubinclude:ChFiDS_Spine.lxx ChFiDS:source:ChFiDS_Spine.lxx
++ ChFiDS:dbadmfile:ChFiDS_obj_inc.In ChFiDS:admfile:ChFiDS_src.Out
++ * ChFiDS:admfile:ChFiDS_xcpp_src.Out
++ ChFiDS:dbadmfile:ChFiDS_obj_inc.Out ChFiDS:admfile:ChFiDS_src.Out
++ * ChFiDS:admfile:ChFiDS_xcpp_src.Out
++ ChFiDS:dbadmfile:ChFiDS_obj_inc.Dep ChFiDS:admfile:ChFiDS_src.Out
++ * ChFiDS:admfile:ChFiDS_xcpp_src.Out

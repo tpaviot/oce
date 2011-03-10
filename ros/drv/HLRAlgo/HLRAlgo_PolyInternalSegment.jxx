@@ -1,0 +1,3 @@
+#ifndef _HLRAlgo_PolyInternalSegment_HeaderFile
+#include <HLRAlgo_PolyInternalSegment.hxx>
+#endif

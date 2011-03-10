@@ -1,0 +1,6 @@
+#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_SurfaceIterator_HeaderFile
+#include <TopOpeBRepDS_SurfaceIterator.hxx>
+#endif

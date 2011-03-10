@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntStart_SITopolTool_HeaderFile
+#include <IntStart_SITopolTool.hxx>
+#endif

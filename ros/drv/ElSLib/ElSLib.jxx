@@ -1,0 +1,33 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _gp_Cone_HeaderFile
+#include <gp_Cone.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _gp_Sphere_HeaderFile
+#include <gp_Sphere.hxx>
+#endif
+#ifndef _gp_Torus_HeaderFile
+#include <gp_Torus.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _gp_Ax3_HeaderFile
+#include <gp_Ax3.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _ElSLib_HeaderFile
+#include <ElSLib.hxx>
+#endif

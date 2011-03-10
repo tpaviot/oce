@@ -1,0 +1,6 @@
++ IGESSolid:dbadmfile:IGESSolid_obj_inc.In IGESSolid:admfile:IGESSolid_src.Out
++ * IGESSolid:admfile:IGESSolid_xcpp_src.Out
++ IGESSolid:dbadmfile:IGESSolid_obj_inc.Out IGESSolid:admfile:IGESSolid_src.Out
++ * IGESSolid:admfile:IGESSolid_xcpp_src.Out
++ IGESSolid:dbadmfile:IGESSolid_obj_inc.Dep IGESSolid:admfile:IGESSolid_src.Out
++ * IGESSolid:admfile:IGESSolid_xcpp_src.Out

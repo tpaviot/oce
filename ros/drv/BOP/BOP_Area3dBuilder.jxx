@@ -1,0 +1,9 @@
+#ifndef _BOP_LoopSet_HeaderFile
+#include <BOP_LoopSet.hxx>
+#endif
+#ifndef _BOP_LoopClassifier_HeaderFile
+#include <BOP_LoopClassifier.hxx>
+#endif
+#ifndef _BOP_Area3dBuilder_HeaderFile
+#include <BOP_Area3dBuilder.hxx>
+#endif

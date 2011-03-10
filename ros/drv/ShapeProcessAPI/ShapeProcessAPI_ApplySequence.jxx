@@ -1,0 +1,12 @@
+#ifndef _ShapeProcess_ShapeContext_HeaderFile
+#include <ShapeProcess_ShapeContext.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _ShapeProcessAPI_ApplySequence_HeaderFile
+#include <ShapeProcessAPI_ApplySequence.hxx>
+#endif

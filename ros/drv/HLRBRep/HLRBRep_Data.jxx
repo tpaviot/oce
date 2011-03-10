@@ -1,0 +1,42 @@
+#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
+#include <BRepTopAdaptor_TopolTool.hxx>
+#endif
+#ifndef _StdFail_UndefinedDerivative_HeaderFile
+#include <StdFail_UndefinedDerivative.hxx>
+#endif
+#ifndef _HLRBRep_Array1OfEData_HeaderFile
+#include <HLRBRep_Array1OfEData.hxx>
+#endif
+#ifndef _HLRBRep_Array1OfFData_HeaderFile
+#include <HLRBRep_Array1OfFData.hxx>
+#endif
+#ifndef _HLRAlgo_Projector_HeaderFile
+#include <HLRAlgo_Projector.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
+#endif
+#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
+#include <BRepTopAdaptor_MapOfShapeTool.hxx>
+#endif
+#ifndef _HLRAlgo_Interference_HeaderFile
+#include <HLRAlgo_Interference.hxx>
+#endif
+#ifndef _gp_Dir2d_HeaderFile
+#include <gp_Dir2d.hxx>
+#endif
+#ifndef _HLRBRep_EdgeData_HeaderFile
+#include <HLRBRep_EdgeData.hxx>
+#endif
+#ifndef _HLRAlgo_InterferenceList_HeaderFile
+#include <HLRAlgo_InterferenceList.hxx>
+#endif
+#ifndef _HLRBRep_FaceData_HeaderFile
+#include <HLRBRep_FaceData.hxx>
+#endif
+#ifndef _IntRes2d_IntersectionPoint_HeaderFile
+#include <IntRes2d_IntersectionPoint.hxx>
+#endif
+#ifndef _HLRBRep_Data_HeaderFile
+#include <HLRBRep_Data.hxx>
+#endif

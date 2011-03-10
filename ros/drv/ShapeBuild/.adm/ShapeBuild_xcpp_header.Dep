@@ -1,0 +1,16 @@
++ ShapeBuild:pubinclude:ShapeBuild.hxx ShapeBuild:msentity:ShapeBuild
++ ShapeBuild:privinclude:ShapeBuild.jxx ShapeBuild:msentity:ShapeBuild
++ ShapeBuild:privinclude:ShapeBuild.ixx ShapeBuild:msentity:ShapeBuild
++ ShapeBuild:pubinclude:ShapeBuild_Vertex.hxx ShapeBuild:msentity:ShapeBuild_Vertex
++ ShapeBuild:privinclude:ShapeBuild_Vertex.jxx ShapeBuild:msentity:ShapeBuild_Vertex
++ ShapeBuild:privinclude:ShapeBuild_Vertex.ixx ShapeBuild:msentity:ShapeBuild_Vertex
++ ShapeBuild:pubinclude:ShapeBuild_Edge.hxx ShapeBuild:msentity:ShapeBuild_Edge
++ ShapeBuild:privinclude:ShapeBuild_Edge.jxx ShapeBuild:msentity:ShapeBuild_Edge
++ ShapeBuild:privinclude:ShapeBuild_Edge.ixx ShapeBuild:msentity:ShapeBuild_Edge
++ ShapeBuild:pubinclude:Handle_ShapeBuild_ReShape.hxx ShapeBuild:msentity:ShapeBuild_ReShape
++ ShapeBuild:pubinclude:ShapeBuild_ReShape.hxx ShapeBuild:msentity:ShapeBuild_ReShape
++ ShapeBuild:privinclude:ShapeBuild_ReShape.jxx ShapeBuild:msentity:ShapeBuild_ReShape
++ ShapeBuild:privinclude:ShapeBuild_ReShape.ixx ShapeBuild:msentity:ShapeBuild_ReShape
++ ShapeBuild:dbadmfile:ShapeBuild_xcpp_header.In ShapeBuild:admfile:ShapeBuild_xcpp_fill.Out
++ ShapeBuild:dbadmfile:ShapeBuild_xcpp_header.Out ShapeBuild:admfile:ShapeBuild_xcpp_fill.Out
++ ShapeBuild:dbadmfile:ShapeBuild_xcpp_header.Dep ShapeBuild:admfile:ShapeBuild_xcpp_fill.Out

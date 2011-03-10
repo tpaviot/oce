@@ -1,0 +1,15 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Materials_MaterialsSequence_HeaderFile
+#include <Materials_MaterialsSequence.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Materials_Material_HeaderFile
+#include <Materials_Material.hxx>
+#endif
+#ifndef _Materials_MaterialsDictionary_HeaderFile
+#include <Materials_MaterialsDictionary.hxx>
+#endif

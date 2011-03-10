@@ -1,0 +1,3 @@
+#ifndef _PDataStd_Real_HeaderFile
+#include <PDataStd_Real.hxx>
+#endif

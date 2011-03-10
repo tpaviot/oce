@@ -1,0 +1,6 @@
++ XmlMFunction:dbadmfile:XmlMFunction_obj_inc.In XmlMFunction:admfile:XmlMFunction_src.Out
++ * XmlMFunction:admfile:XmlMFunction_xcpp_src.Out
++ XmlMFunction:dbadmfile:XmlMFunction_obj_inc.Out XmlMFunction:admfile:XmlMFunction_src.Out
++ * XmlMFunction:admfile:XmlMFunction_xcpp_src.Out
++ XmlMFunction:dbadmfile:XmlMFunction_obj_inc.Dep XmlMFunction:admfile:XmlMFunction_src.Out
++ * XmlMFunction:admfile:XmlMFunction_xcpp_src.Out

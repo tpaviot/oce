@@ -1,0 +1,3 @@
+#ifndef _IGESData_ColorEntity_HeaderFile
+#include <IGESData_ColorEntity.hxx>
+#endif

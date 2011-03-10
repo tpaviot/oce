@@ -1,0 +1,6 @@
++ PShort:dbadmfile:PShort_obj_inc.In PShort:admfile:PShort_src.Out
++ * PShort:admfile:PShort_xcpp_src.Out
++ PShort:dbadmfile:PShort_obj_inc.Out PShort:admfile:PShort_src.Out
++ * PShort:admfile:PShort_xcpp_src.Out
++ PShort:dbadmfile:PShort_obj_inc.Dep PShort:admfile:PShort_src.Out
++ * PShort:admfile:PShort_xcpp_src.Out

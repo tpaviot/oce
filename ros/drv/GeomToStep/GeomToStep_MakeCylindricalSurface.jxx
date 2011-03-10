@@ -1,0 +1,12 @@
+#ifndef _StepGeom_CylindricalSurface_HeaderFile
+#include <StepGeom_CylindricalSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_CylindricalSurface_HeaderFile
+#include <Geom_CylindricalSurface.hxx>
+#endif
+#ifndef _GeomToStep_MakeCylindricalSurface_HeaderFile
+#include <GeomToStep_MakeCylindricalSurface.hxx>
+#endif

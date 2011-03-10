@@ -1,0 +1,8 @@
++ BinMDF:pubinclude:BinMDF_ADriver.lxx BinMDF:source:BinMDF_ADriver.lxx
++ BinMDF:pubinclude:BinMDF_ADriverTable.lxx BinMDF:source:BinMDF_ADriverTable.lxx
++ BinMDF:dbadmfile:BinMDF_obj_inc.In BinMDF:admfile:BinMDF_src.Out
++ * BinMDF:admfile:BinMDF_xcpp_src.Out
++ BinMDF:dbadmfile:BinMDF_obj_inc.Out BinMDF:admfile:BinMDF_src.Out
++ * BinMDF:admfile:BinMDF_xcpp_src.Out
++ BinMDF:dbadmfile:BinMDF_obj_inc.Dep BinMDF:admfile:BinMDF_src.Out
++ * BinMDF:admfile:BinMDF_xcpp_src.Out

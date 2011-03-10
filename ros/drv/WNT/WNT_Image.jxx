@@ -1,0 +1,6 @@
+#ifndef _WNT_ImageManager_HeaderFile
+#include <WNT_ImageManager.hxx>
+#endif
+#ifndef _WNT_Image_HeaderFile
+#include <WNT_Image.hxx>
+#endif

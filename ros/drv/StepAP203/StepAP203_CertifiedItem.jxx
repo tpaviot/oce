@@ -1,0 +1,9 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepRepr_SuppliedPartRelationship_HeaderFile
+#include <StepRepr_SuppliedPartRelationship.hxx>
+#endif
+#ifndef _StepAP203_CertifiedItem_HeaderFile
+#include <StepAP203_CertifiedItem.hxx>
+#endif

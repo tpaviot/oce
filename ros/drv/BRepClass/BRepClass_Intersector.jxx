@@ -1,0 +1,12 @@
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _BRepClass_Edge_HeaderFile
+#include <BRepClass_Edge.hxx>
+#endif
+#ifndef _gp_Dir2d_HeaderFile
+#include <gp_Dir2d.hxx>
+#endif
+#ifndef _BRepClass_Intersector_HeaderFile
+#include <BRepClass_Intersector.hxx>
+#endif

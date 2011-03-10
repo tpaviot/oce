@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _HLRBRep_SLPropsATool_HeaderFile
+#include <HLRBRep_SLPropsATool.hxx>
+#endif

@@ -1,0 +1,4 @@
++ IntImp:pubinclude:IntImp_ConstIsoparametric.hxx IntImp:msentity:IntImp_ConstIsoparametric
++ IntImp:dbadmfile:IntImp_xcpp_header.In IntImp:admfile:IntImp_xcpp_fill.Out
++ IntImp:dbadmfile:IntImp_xcpp_header.Out IntImp:admfile:IntImp_xcpp_fill.Out
++ IntImp:dbadmfile:IntImp_xcpp_header.Dep IntImp:admfile:IntImp_xcpp_fill.Out

@@ -1,0 +1,6 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESSolid_SolidInstance_HeaderFile
+#include <IGESSolid_SolidInstance.hxx>
+#endif

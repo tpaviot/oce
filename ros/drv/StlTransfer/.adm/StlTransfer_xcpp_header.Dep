@@ -1,0 +1,6 @@
++ StlTransfer:pubinclude:StlTransfer.hxx StlTransfer:msentity:StlTransfer
++ StlTransfer:privinclude:StlTransfer.jxx StlTransfer:msentity:StlTransfer
++ StlTransfer:privinclude:StlTransfer.ixx StlTransfer:msentity:StlTransfer
++ StlTransfer:dbadmfile:StlTransfer_xcpp_header.In StlTransfer:admfile:StlTransfer_xcpp_fill.Out
++ StlTransfer:dbadmfile:StlTransfer_xcpp_header.Out StlTransfer:admfile:StlTransfer_xcpp_fill.Out
++ StlTransfer:dbadmfile:StlTransfer_xcpp_header.Dep StlTransfer:admfile:StlTransfer_xcpp_fill.Out

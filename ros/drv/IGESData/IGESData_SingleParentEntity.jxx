@@ -1,0 +1,9 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESData_SingleParentEntity_HeaderFile
+#include <IGESData_SingleParentEntity.hxx>
+#endif

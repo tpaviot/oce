@@ -1,0 +1,6 @@
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _DsgPrs_DatumTool_HeaderFile
+#include <DsgPrs_DatumTool.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_DocumentTool_HeaderFile
+#include <PXCAFDoc_DocumentTool.hxx>
+#endif

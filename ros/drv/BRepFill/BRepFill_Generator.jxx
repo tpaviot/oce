@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
+#include <TopTools_DataMapOfShapeListOfShape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepFill_Generator_HeaderFile
+#include <BRepFill_Generator.hxx>
+#endif

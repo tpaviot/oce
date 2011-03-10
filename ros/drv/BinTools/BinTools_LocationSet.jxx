@@ -1,0 +1,9 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _BinTools_LocationSet_HeaderFile
+#include <BinTools_LocationSet.hxx>
+#endif

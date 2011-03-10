@@ -1,0 +1,6 @@
+#ifndef _gp_Elips2d_HeaderFile
+#include <gp_Elips2d.hxx>
+#endif
+#ifndef _GccInt_BElips_HeaderFile
+#include <GccInt_BElips.hxx>
+#endif

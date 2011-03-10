@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _TNaming_ShapesSet_HeaderFile
+#include <TNaming_ShapesSet.hxx>
+#endif

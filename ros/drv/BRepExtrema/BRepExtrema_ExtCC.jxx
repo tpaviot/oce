@@ -1,0 +1,21 @@
+#ifndef _BRepAdaptor_HCurve_HeaderFile
+#include <BRepAdaptor_HCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRepExtrema_ExtCC_HeaderFile
+#include <BRepExtrema_ExtCC.hxx>
+#endif

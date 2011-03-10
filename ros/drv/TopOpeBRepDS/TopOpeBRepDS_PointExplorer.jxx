@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepDS_DataStructure_HeaderFile
+#include <TopOpeBRepDS_DataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Point_HeaderFile
+#include <TopOpeBRepDS_Point.hxx>
+#endif
+#ifndef _TopOpeBRepDS_PointExplorer_HeaderFile
+#include <TopOpeBRepDS_PointExplorer.hxx>
+#endif

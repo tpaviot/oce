@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_Axis2Placement_HeaderFile
+#include <StepGeom_Axis2Placement.hxx>
+#endif
+#ifndef _StepVisual_FontSelect_HeaderFile
+#include <StepVisual_FontSelect.hxx>
+#endif
+#ifndef _StepVisual_TextLiteral_HeaderFile
+#include <StepVisual_TextLiteral.hxx>
+#endif

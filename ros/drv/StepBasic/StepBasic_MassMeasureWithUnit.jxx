@@ -1,0 +1,3 @@
+#ifndef _StepBasic_MassMeasureWithUnit_HeaderFile
+#include <StepBasic_MassMeasureWithUnit.hxx>
+#endif

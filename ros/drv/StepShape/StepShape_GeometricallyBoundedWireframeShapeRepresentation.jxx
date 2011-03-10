@@ -1,0 +1,3 @@
+#ifndef _StepShape_GeometricallyBoundedWireframeShapeRepresentation_HeaderFile
+#include <StepShape_GeometricallyBoundedWireframeShapeRepresentation.hxx>
+#endif

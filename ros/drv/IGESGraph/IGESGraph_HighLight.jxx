@@ -1,0 +1,3 @@
+#ifndef _IGESGraph_HighLight_HeaderFile
+#include <IGESGraph_HighLight.hxx>
+#endif

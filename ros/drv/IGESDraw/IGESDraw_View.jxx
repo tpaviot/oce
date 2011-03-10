@@ -1,0 +1,18 @@
+#ifndef _IGESGeom_Plane_HeaderFile
+#include <IGESGeom_Plane.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_ViewKindEntity_HeaderFile
+#include <IGESData_ViewKindEntity.hxx>
+#endif
+#ifndef _IGESData_TransfEntity_HeaderFile
+#include <IGESData_TransfEntity.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _IGESDraw_View_HeaderFile
+#include <IGESDraw_View.hxx>
+#endif

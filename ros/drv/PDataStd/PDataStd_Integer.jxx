@@ -1,0 +1,3 @@
+#ifndef _PDataStd_Integer_HeaderFile
+#include <PDataStd_Integer.hxx>
+#endif

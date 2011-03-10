@@ -1,0 +1,36 @@
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Interface_CopyControl_HeaderFile
+#include <Interface_CopyControl.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _IFSelect_GeneralModifier_HeaderFile
+#include <IFSelect_GeneralModifier.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _Interface_CheckIterator_HeaderFile
+#include <Interface_CheckIterator.hxx>
+#endif
+#ifndef _IFSelect_ContextModif_HeaderFile
+#include <IFSelect_ContextModif.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepVisual_CameraImage_HeaderFile
+#include <StepVisual_CameraImage.hxx>
+#endif

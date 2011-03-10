@@ -1,0 +1,6 @@
+#ifndef _TopOpeBRepDS_Transition_HeaderFile
+#include <TopOpeBRepDS_Transition.hxx>
+#endif
+#ifndef _TopOpeBRepDS_EdgeVertexInterference_HeaderFile
+#include <TopOpeBRepDS_EdgeVertexInterference.hxx>
+#endif

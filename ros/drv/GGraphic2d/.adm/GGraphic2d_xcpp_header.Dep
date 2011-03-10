@@ -1,0 +1,14 @@
++ GGraphic2d:pubinclude:Handle_GGraphic2d_Curve.hxx GGraphic2d:msentity:GGraphic2d_Curve
++ GGraphic2d:pubinclude:GGraphic2d_Curve.hxx GGraphic2d:msentity:GGraphic2d_Curve
++ GGraphic2d:privinclude:GGraphic2d_Curve.jxx GGraphic2d:msentity:GGraphic2d_Curve
++ GGraphic2d:privinclude:GGraphic2d_Curve.ixx GGraphic2d:msentity:GGraphic2d_Curve
++ GGraphic2d:pubinclude:Handle_GGraphic2d_SetOfCurves.hxx GGraphic2d:msentity:GGraphic2d_SetOfCurves
++ GGraphic2d:pubinclude:GGraphic2d_SetOfCurves.hxx GGraphic2d:msentity:GGraphic2d_SetOfCurves
++ GGraphic2d:privinclude:GGraphic2d_SetOfCurves.jxx GGraphic2d:msentity:GGraphic2d_SetOfCurves
++ GGraphic2d:privinclude:GGraphic2d_SetOfCurves.ixx GGraphic2d:msentity:GGraphic2d_SetOfCurves
++ GGraphic2d:pubinclude:Handle_GGraphic2d_CurveDefinitionError.hxx GGraphic2d:msentity:GGraphic2d_CurveDefinitionError
++ GGraphic2d:pubinclude:GGraphic2d_CurveDefinitionError.hxx GGraphic2d:msentity:GGraphic2d_CurveDefinitionError
++ GGraphic2d:derivated:GGraphic2d_CurveDefinitionError_0.cxx GGraphic2d:msentity:GGraphic2d_CurveDefinitionError
++ GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.In GGraphic2d:admfile:GGraphic2d_xcpp_fill.Out
++ GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.Out GGraphic2d:admfile:GGraphic2d_xcpp_fill.Out
++ GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.Dep GGraphic2d:admfile:GGraphic2d_xcpp_fill.Out

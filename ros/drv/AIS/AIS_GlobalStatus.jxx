@@ -1,0 +1,6 @@
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
+#endif
+#ifndef _AIS_GlobalStatus_HeaderFile
+#include <AIS_GlobalStatus.hxx>
+#endif

@@ -1,0 +1,21 @@
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _Plate_D1_HeaderFile
+#include <Plate_D1.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _Plate_D2_HeaderFile
+#include <Plate_D2.hxx>
+#endif
+#ifndef _Plate_D3_HeaderFile
+#include <Plate_D3.hxx>
+#endif
+#ifndef _Plate_PinpointConstraint_HeaderFile
+#include <Plate_PinpointConstraint.hxx>
+#endif
+#ifndef _Plate_GtoCConstraint_HeaderFile
+#include <Plate_GtoCConstraint.hxx>
+#endif

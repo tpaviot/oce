@@ -1,0 +1,6 @@
+#ifndef _PTopoDS_HArray1OfShape1_HeaderFile
+#include <PTopoDS_HArray1OfShape1.hxx>
+#endif
+#ifndef _PNaming_NamedShape_HeaderFile
+#include <PNaming_NamedShape.hxx>
+#endif

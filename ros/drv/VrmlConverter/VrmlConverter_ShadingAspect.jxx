@@ -1,0 +1,9 @@
+#ifndef _Vrml_Material_HeaderFile
+#include <Vrml_Material.hxx>
+#endif
+#ifndef _Vrml_ShapeHints_HeaderFile
+#include <Vrml_ShapeHints.hxx>
+#endif
+#ifndef _VrmlConverter_ShadingAspect_HeaderFile
+#include <VrmlConverter_ShadingAspect.hxx>
+#endif

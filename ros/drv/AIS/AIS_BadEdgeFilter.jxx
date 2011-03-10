@@ -1,0 +1,9 @@
+#ifndef _SelectMgr_EntityOwner_HeaderFile
+#include <SelectMgr_EntityOwner.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _AIS_BadEdgeFilter_HeaderFile
+#include <AIS_BadEdgeFilter.hxx>
+#endif

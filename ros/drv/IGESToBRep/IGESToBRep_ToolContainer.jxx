@@ -1,0 +1,6 @@
+#ifndef _IGESToBRep_IGESBoundary_HeaderFile
+#include <IGESToBRep_IGESBoundary.hxx>
+#endif
+#ifndef _IGESToBRep_ToolContainer_HeaderFile
+#include <IGESToBRep_ToolContainer.hxx>
+#endif

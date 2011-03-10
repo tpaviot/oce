@@ -1,0 +1,9 @@
+#ifndef _StepGeom_CartesianTransformationOperator2d_HeaderFile
+#include <StepGeom_CartesianTransformationOperator2d.hxx>
+#endif
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _StepToGeom_MakeTransformation2d_HeaderFile
+#include <StepToGeom_MakeTransformation2d.hxx>
+#endif

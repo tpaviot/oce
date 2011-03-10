@@ -1,0 +1,15 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Ax3_HeaderFile
+#include <gp_Ax3.hxx>
+#endif
+#ifndef _Geom_ElementarySurface_HeaderFile
+#include <Geom_ElementarySurface.hxx>
+#endif

@@ -1,0 +1,6 @@
++ RWStepShape:dbadmfile:RWStepShape_obj_inc.In RWStepShape:admfile:RWStepShape_src.Out
++ * RWStepShape:admfile:RWStepShape_xcpp_src.Out
++ RWStepShape:dbadmfile:RWStepShape_obj_inc.Out RWStepShape:admfile:RWStepShape_src.Out
++ * RWStepShape:admfile:RWStepShape_xcpp_src.Out
++ RWStepShape:dbadmfile:RWStepShape_obj_inc.Dep RWStepShape:admfile:RWStepShape_src.Out
++ * RWStepShape:admfile:RWStepShape_xcpp_src.Out

@@ -1,0 +1,6 @@
++ StepShape:dbadmfile:StepShape_obj_inc.In StepShape:admfile:StepShape_src.Out
++ * StepShape:admfile:StepShape_xcpp_src.Out
++ StepShape:dbadmfile:StepShape_obj_inc.Out StepShape:admfile:StepShape_src.Out
++ * StepShape:admfile:StepShape_xcpp_src.Out
++ StepShape:dbadmfile:StepShape_obj_inc.Dep StepShape:admfile:StepShape_src.Out
++ * StepShape:admfile:StepShape_xcpp_src.Out

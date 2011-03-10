@@ -1,0 +1,18 @@
+#ifndef _IGESData_IGESModel_HeaderFile
+#include <IGESData_IGESModel.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _IGESData_Protocol_HeaderFile
+#include <IGESData_Protocol.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _Message_Messenger_HeaderFile
+#include <Message_Messenger.hxx>
+#endif
+#ifndef _IGESData_IGESDumper_HeaderFile
+#include <IGESData_IGESDumper.hxx>
+#endif

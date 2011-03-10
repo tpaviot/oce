@@ -1,0 +1,6 @@
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile
+#include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
+#endif

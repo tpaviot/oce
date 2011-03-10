@@ -1,0 +1,15 @@
+#ifndef _StepGeom_Axis2Placement2d_HeaderFile
+#include <StepGeom_Axis2Placement2d.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _gp_Ax22d_HeaderFile
+#include <gp_Ax22d.hxx>
+#endif
+#ifndef _GeomToStep_MakeAxis2Placement2d_HeaderFile
+#include <GeomToStep_MakeAxis2Placement2d.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PDataXtd_Shape_HeaderFile
+#include <PDataXtd_Shape.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _Draw_Color_HeaderFile
+#include <Draw_Color.hxx>
+#endif

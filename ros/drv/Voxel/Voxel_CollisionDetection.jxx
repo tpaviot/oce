@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _Voxel_BoolDS_HeaderFile
+#include <Voxel_BoolDS.hxx>
+#endif
+#ifndef _Voxel_CollisionDetection_HeaderFile
+#include <Voxel_CollisionDetection.hxx>
+#endif

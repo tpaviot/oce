@@ -1,0 +1,15 @@
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESSolid_BooleanTree_HeaderFile
+#include <IGESSolid_BooleanTree.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _IFGraph_Articulations_HeaderFile
+#include <IFGraph_Articulations.hxx>
+#endif

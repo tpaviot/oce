@@ -1,0 +1,18 @@
+#ifndef _Standard_NegativeValue_HeaderFile
+#include <Standard_NegativeValue.hxx>
+#endif
+#ifndef _Standard_NullValue_HeaderFile
+#include <Standard_NullValue.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _FairCurve_MinimalVariation_HeaderFile
+#include <FairCurve_MinimalVariation.hxx>
+#endif

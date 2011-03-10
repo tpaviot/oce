@@ -1,0 +1,6 @@
++ Draft:dbadmfile:Draft_obj_inc.In Draft:admfile:Draft_src.Out
++ * Draft:admfile:Draft_xcpp_src.Out
++ Draft:dbadmfile:Draft_obj_inc.Out Draft:admfile:Draft_src.Out
++ * Draft:admfile:Draft_xcpp_src.Out
++ Draft:dbadmfile:Draft_obj_inc.Dep Draft:admfile:Draft_src.Out
++ * Draft:admfile:Draft_xcpp_src.Out

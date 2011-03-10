@@ -1,0 +1,9 @@
+#ifndef _GeomPlate_BuildAveragePlane_HeaderFile
+#include <GeomPlate_BuildAveragePlane.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomPlate_Aij_HeaderFile
+#include <GeomPlate_Aij.hxx>
+#endif

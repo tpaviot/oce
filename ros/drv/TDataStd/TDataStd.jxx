@@ -1,0 +1,6 @@
+#ifndef _TDF_IDList_HeaderFile
+#include <TDF_IDList.hxx>
+#endif
+#ifndef _TDataStd_HeaderFile
+#include <TDataStd.hxx>
+#endif

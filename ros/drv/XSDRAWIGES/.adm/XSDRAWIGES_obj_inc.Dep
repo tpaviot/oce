@@ -1,0 +1,6 @@
++ XSDRAWIGES:dbadmfile:XSDRAWIGES_obj_inc.In XSDRAWIGES:admfile:XSDRAWIGES_src.Out
++ * XSDRAWIGES:admfile:XSDRAWIGES_xcpp_src.Out
++ XSDRAWIGES:dbadmfile:XSDRAWIGES_obj_inc.Out XSDRAWIGES:admfile:XSDRAWIGES_src.Out
++ * XSDRAWIGES:admfile:XSDRAWIGES_xcpp_src.Out
++ XSDRAWIGES:dbadmfile:XSDRAWIGES_obj_inc.Dep XSDRAWIGES:admfile:XSDRAWIGES_src.Out
++ * XSDRAWIGES:admfile:XSDRAWIGES_xcpp_src.Out

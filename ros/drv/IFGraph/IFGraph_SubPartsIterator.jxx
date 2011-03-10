@@ -1,0 +1,30 @@
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_GraphContent_HeaderFile
+#include <Interface_GraphContent.hxx>
+#endif
+#ifndef _IFGraph_SubPartsIterator_HeaderFile
+#include <IFGraph_SubPartsIterator.hxx>
+#endif

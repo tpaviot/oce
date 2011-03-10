@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _IGESAppli_LevelFunction_HeaderFile
+#include <IGESAppli_LevelFunction.hxx>
+#endif

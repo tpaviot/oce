@@ -1,0 +1,30 @@
+#ifndef _MAT2d_SequenceOfSequenceOfGeometry_HeaderFile
+#include <MAT2d_SequenceOfSequenceOfGeometry.hxx>
+#endif
+#ifndef _TColStd_SequenceOfBoolean_HeaderFile
+#include <TColStd_SequenceOfBoolean.hxx>
+#endif
+#ifndef _MAT2d_Connexion_HeaderFile
+#include <MAT2d_Connexion.hxx>
+#endif
+#ifndef _TColGeom2d_SequenceOfGeometry_HeaderFile
+#include <TColGeom2d_SequenceOfGeometry.hxx>
+#endif
+#ifndef _MAT2d_BiInt_HeaderFile
+#include <MAT2d_BiInt.hxx>
+#endif
+#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
+#include <MAT2d_SequenceOfConnexion.hxx>
+#endif
+#ifndef _MAT2d_MiniPath_HeaderFile
+#include <MAT2d_MiniPath.hxx>
+#endif
+#ifndef _Geom2d_Geometry_HeaderFile
+#include <Geom2d_Geometry.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
+#ifndef _MAT2d_Circuit_HeaderFile
+#include <MAT2d_Circuit.hxx>
+#endif

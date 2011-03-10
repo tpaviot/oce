@@ -1,0 +1,6 @@
++ TColgp:dbadmfile:TColgp_obj_inc.In TColgp:admfile:TColgp_src.Out
++ * TColgp:admfile:TColgp_xcpp_src.Out
++ TColgp:dbadmfile:TColgp_obj_inc.Out TColgp:admfile:TColgp_src.Out
++ * TColgp:admfile:TColgp_xcpp_src.Out
++ TColgp:dbadmfile:TColgp_obj_inc.Dep TColgp:admfile:TColgp_src.Out
++ * TColgp:admfile:TColgp_xcpp_src.Out

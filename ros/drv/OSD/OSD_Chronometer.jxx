@@ -1,0 +1,3 @@
+#ifndef _OSD_Chronometer_HeaderFile
+#include <OSD_Chronometer.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _Vrml_Sphere_HeaderFile
+#include <Vrml_Sphere.hxx>
+#endif

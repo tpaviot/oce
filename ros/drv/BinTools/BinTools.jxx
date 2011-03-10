@@ -1,0 +1,3 @@
+#ifndef _BinTools_HeaderFile
+#include <BinTools.hxx>
+#endif

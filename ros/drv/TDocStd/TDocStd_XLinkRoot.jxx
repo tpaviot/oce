@@ -1,0 +1,18 @@
+#ifndef _TDocStd_XLinkIterator_HeaderFile
+#include <TDocStd_XLinkIterator.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Data_HeaderFile
+#include <TDF_Data.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDocStd_XLinkRoot_HeaderFile
+#include <TDocStd_XLinkRoot.hxx>
+#endif

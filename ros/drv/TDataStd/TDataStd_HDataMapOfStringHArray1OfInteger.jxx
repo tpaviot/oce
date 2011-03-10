@@ -1,0 +1,6 @@
+#ifndef _TDataStd_DataMapOfStringHArray1OfInteger_HeaderFile
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringHArray1OfInteger_HeaderFile
+#include <TDataStd_HDataMapOfStringHArray1OfInteger.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _IGESGraph_Pick_HeaderFile
+#include <IGESGraph_Pick.hxx>
+#endif

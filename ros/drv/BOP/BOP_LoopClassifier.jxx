@@ -1,0 +1,6 @@
+#ifndef _BOP_Loop_HeaderFile
+#include <BOP_Loop.hxx>
+#endif
+#ifndef _BOP_LoopClassifier_HeaderFile
+#include <BOP_LoopClassifier.hxx>
+#endif

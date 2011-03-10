@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Interference_HeaderFile
+#include <TopOpeBRepDS_Interference.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_BuilderON_HeaderFile
+#include <TopOpeBRepBuild_BuilderON.hxx>
+#endif

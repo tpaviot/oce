@@ -1,0 +1,16 @@
+pubinclude LocalAnalysis.hxx
+privinclude LocalAnalysis.jxx
+privinclude LocalAnalysis.ixx
+pubinclude LocalAnalysis_SurfaceContinuity.hxx
+privinclude LocalAnalysis_SurfaceContinuity.jxx
+privinclude LocalAnalysis_SurfaceContinuity.ixx
+pubinclude LocalAnalysis_CurveContinuity.hxx
+privinclude LocalAnalysis_CurveContinuity.jxx
+privinclude LocalAnalysis_CurveContinuity.ixx
+pubinclude LocalAnalysis_StatusErrorType.hxx
+dbadmfile LocalAnalysis_xcpp_header.In
+dbadmfile LocalAnalysis_xcpp_header.Out
+dbadmfile LocalAnalysis_xcpp_header.Dep
+dbadmfile LocalAnalysis_obj_inc.In
+dbadmfile LocalAnalysis_obj_inc.Out
+dbadmfile LocalAnalysis_obj_inc.Dep

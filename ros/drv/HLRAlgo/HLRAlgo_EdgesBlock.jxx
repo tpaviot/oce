@@ -1,0 +1,3 @@
+#ifndef _HLRAlgo_EdgesBlock_HeaderFile
+#include <HLRAlgo_EdgesBlock.hxx>
+#endif

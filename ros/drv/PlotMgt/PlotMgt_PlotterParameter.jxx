@@ -1,0 +1,15 @@
+#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
+#include <TColStd_HSequenceOfAsciiString.hxx>
+#endif
+#ifndef _PlotMgt_Plotter_HeaderFile
+#include <PlotMgt_Plotter.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _PlotMgt_PlotterParameter_HeaderFile
+#include <PlotMgt_PlotterParameter.hxx>
+#endif

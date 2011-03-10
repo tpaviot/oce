@@ -1,0 +1,3 @@
+#ifndef _Graphic3d_ArrayOfQuadrangleStrips_HeaderFile
+#include <Graphic3d_ArrayOfQuadrangleStrips.hxx>
+#endif

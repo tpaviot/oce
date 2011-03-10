@@ -1,0 +1,21 @@
+#ifndef _Geom_RectangularTrimmedSurface_HeaderFile
+#include <Geom_RectangularTrimmedSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _GC_MakeTrimmedCylinder_HeaderFile
+#include <GC_MakeTrimmedCylinder.hxx>
+#endif

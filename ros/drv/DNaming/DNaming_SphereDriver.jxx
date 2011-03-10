@@ -1,0 +1,12 @@
+#ifndef _TFunction_Logbook_HeaderFile
+#include <TFunction_Logbook.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _BRepPrimAPI_MakeSphere_HeaderFile
+#include <BRepPrimAPI_MakeSphere.hxx>
+#endif
+#ifndef _DNaming_SphereDriver_HeaderFile
+#include <DNaming_SphereDriver.hxx>
+#endif

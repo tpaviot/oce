@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_TextStyleForDefinedFont_HeaderFile
+#include <StepVisual_TextStyleForDefinedFont.hxx>
+#endif
+#ifndef _StepVisual_TextStyle_HeaderFile
+#include <StepVisual_TextStyle.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _GeomConvert_ApproxSurface_HeaderFile
+#include <GeomConvert_ApproxSurface.hxx>
+#endif

@@ -1,0 +1,9 @@
+pubinclude TopCnx_EdgeFaceTransition.hxx
+privinclude TopCnx_EdgeFaceTransition.jxx
+privinclude TopCnx_EdgeFaceTransition.ixx
+dbadmfile TopCnx_xcpp_header.In
+dbadmfile TopCnx_xcpp_header.Out
+dbadmfile TopCnx_xcpp_header.Dep
+dbadmfile TopCnx_obj_inc.In
+dbadmfile TopCnx_obj_inc.Out
+dbadmfile TopCnx_obj_inc.Dep

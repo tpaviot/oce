@@ -1,0 +1,12 @@
+#ifndef _Image_PseudoColorImage_HeaderFile
+#include <Image_PseudoColorImage.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _Aspect_ColorRampColorMap_HeaderFile
+#include <Aspect_ColorRampColorMap.hxx>
+#endif
+#ifndef _ImageUtility_HeaderFile
+#include <ImageUtility.hxx>
+#endif

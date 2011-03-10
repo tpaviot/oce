@@ -1,0 +1,15 @@
+#ifndef _Geom2dToIGES_Geom2dEntity_HeaderFile
+#include <Geom2dToIGES_Geom2dEntity.hxx>
+#endif
+#ifndef _IGESGeom_Point_HeaderFile
+#include <IGESGeom_Point.hxx>
+#endif
+#ifndef _Geom2d_Point_HeaderFile
+#include <Geom2d_Point.hxx>
+#endif
+#ifndef _Geom2d_CartesianPoint_HeaderFile
+#include <Geom2d_CartesianPoint.hxx>
+#endif
+#ifndef _Geom2dToIGES_Geom2dPoint_HeaderFile
+#include <Geom2dToIGES_Geom2dPoint.hxx>
+#endif

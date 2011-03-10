@@ -1,0 +1,21 @@
+#ifndef _CDM_Reference_HeaderFile
+#include <CDM_Reference.hxx>
+#endif
+#ifndef _CDM_MetaData_HeaderFile
+#include <CDM_MetaData.hxx>
+#endif
+#ifndef _CDM_Document_HeaderFile
+#include <CDM_Document.hxx>
+#endif
+#ifndef _Resource_Manager_HeaderFile
+#include <Resource_Manager.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _CDM_Application_HeaderFile
+#include <CDM_Application.hxx>
+#endif

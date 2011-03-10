@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Geom_Point_HeaderFile
+#include <Geom_Point.hxx>
+#endif

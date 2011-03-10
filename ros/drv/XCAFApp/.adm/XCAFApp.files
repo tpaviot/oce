@@ -1,0 +1,10 @@
+pubinclude Handle_XCAFApp_Application.hxx
+pubinclude XCAFApp_Application.hxx
+privinclude XCAFApp_Application.jxx
+privinclude XCAFApp_Application.ixx
+dbadmfile XCAFApp_xcpp_header.In
+dbadmfile XCAFApp_xcpp_header.Out
+dbadmfile XCAFApp_xcpp_header.Dep
+dbadmfile XCAFApp_obj_inc.In
+dbadmfile XCAFApp_obj_inc.Out
+dbadmfile XCAFApp_obj_inc.Dep

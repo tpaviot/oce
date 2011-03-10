@@ -1,0 +1,12 @@
+#ifndef _TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_HeaderFile
+#include <TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Interference_HeaderFile
+#include <TopOpeBRepDS_Interference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_TKI_HeaderFile
+#include <TopOpeBRepDS_TKI.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _ChFiDS_ChamfSpine_HeaderFile
+#include <ChFiDS_ChamfSpine.hxx>
+#endif

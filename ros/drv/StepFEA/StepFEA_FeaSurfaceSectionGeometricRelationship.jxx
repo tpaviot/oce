@@ -1,0 +1,9 @@
+#ifndef _StepElement_SurfaceSection_HeaderFile
+#include <StepElement_SurfaceSection.hxx>
+#endif
+#ifndef _StepElement_AnalysisItemWithinRepresentation_HeaderFile
+#include <StepElement_AnalysisItemWithinRepresentation.hxx>
+#endif
+#ifndef _StepFEA_FeaSurfaceSectionGeometricRelationship_HeaderFile
+#include <StepFEA_FeaSurfaceSectionGeometricRelationship.hxx>
+#endif

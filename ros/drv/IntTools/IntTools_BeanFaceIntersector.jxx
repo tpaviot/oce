@@ -1,0 +1,42 @@
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepAdaptor_Curve_HeaderFile
+#include <BRepAdaptor_Curve.hxx>
+#endif
+#ifndef _BRepAdaptor_Surface_HeaderFile
+#include <BRepAdaptor_Surface.hxx>
+#endif
+#ifndef _IntTools_SequenceOfRanges_HeaderFile
+#include <IntTools_SequenceOfRanges.hxx>
+#endif
+#ifndef _IntTools_CurveRangeSample_HeaderFile
+#include <IntTools_CurveRangeSample.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _IntTools_SurfaceRangeSample_HeaderFile
+#include <IntTools_SurfaceRangeSample.hxx>
+#endif
+#ifndef _IntTools_CurveRangeLocalizeData_HeaderFile
+#include <IntTools_CurveRangeLocalizeData.hxx>
+#endif
+#ifndef _IntTools_SurfaceRangeLocalizeData_HeaderFile
+#include <IntTools_SurfaceRangeLocalizeData.hxx>
+#endif
+#ifndef _IntTools_ListOfCurveRangeSample_HeaderFile
+#include <IntTools_ListOfCurveRangeSample.hxx>
+#endif
+#ifndef _IntTools_ListOfSurfaceRangeSample_HeaderFile
+#include <IntTools_ListOfSurfaceRangeSample.hxx>
+#endif
+#ifndef _IntTools_BeanFaceIntersector_HeaderFile
+#include <IntTools_BeanFaceIntersector.hxx>
+#endif

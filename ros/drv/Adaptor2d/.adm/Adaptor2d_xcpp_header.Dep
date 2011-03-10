@@ -1,0 +1,17 @@
++ Adaptor2d:pubinclude:Adaptor2d_Curve2d.hxx Adaptor2d:msentity:Adaptor2d_Curve2d
++ Adaptor2d:privinclude:Adaptor2d_Curve2d.jxx Adaptor2d:msentity:Adaptor2d_Curve2d
++ Adaptor2d:privinclude:Adaptor2d_Curve2d.ixx Adaptor2d:msentity:Adaptor2d_Curve2d
++ Adaptor2d:pubinclude:Handle_Adaptor2d_HCurve2d.hxx Adaptor2d:msentity:Adaptor2d_HCurve2d
++ Adaptor2d:pubinclude:Adaptor2d_HCurve2d.hxx Adaptor2d:msentity:Adaptor2d_HCurve2d
++ Adaptor2d:privinclude:Adaptor2d_HCurve2d.jxx Adaptor2d:msentity:Adaptor2d_HCurve2d
++ Adaptor2d:privinclude:Adaptor2d_HCurve2d.ixx Adaptor2d:msentity:Adaptor2d_HCurve2d
++ Adaptor2d:pubinclude:Adaptor2d_Line2d.hxx Adaptor2d:msentity:Adaptor2d_Line2d
++ Adaptor2d:privinclude:Adaptor2d_Line2d.jxx Adaptor2d:msentity:Adaptor2d_Line2d
++ Adaptor2d:privinclude:Adaptor2d_Line2d.ixx Adaptor2d:msentity:Adaptor2d_Line2d
++ Adaptor2d:pubinclude:Handle_Adaptor2d_HLine2d.hxx Adaptor2d:msentity:Adaptor2d_HLine2d
++ Adaptor2d:pubinclude:Adaptor2d_HLine2d.hxx Adaptor2d:msentity:Adaptor2d_HLine2d
++ Adaptor2d:derivated:Adaptor2d_HLine2d_0.cxx Adaptor2d:msentity:Adaptor2d_HLine2d
++ Adaptor2d:pubinclude:Adaptor2d_Curve2dPtr.hxx Adaptor2d:msentity:Adaptor2d_Curve2dPtr
++ Adaptor2d:dbadmfile:Adaptor2d_xcpp_header.In Adaptor2d:admfile:Adaptor2d_xcpp_fill.Out
++ Adaptor2d:dbadmfile:Adaptor2d_xcpp_header.Out Adaptor2d:admfile:Adaptor2d_xcpp_fill.Out
++ Adaptor2d:dbadmfile:Adaptor2d_xcpp_header.Dep Adaptor2d:admfile:Adaptor2d_xcpp_fill.Out

@@ -1,0 +1,15 @@
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TNaming_ShapesSet_HeaderFile
+#include <TNaming_ShapesSet.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TNaming_IteratorOnShapesSet_HeaderFile
+#include <TNaming_IteratorOnShapesSet.hxx>
+#endif

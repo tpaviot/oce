@@ -1,0 +1,6 @@
+#ifndef _IGESDraw_Protocol_HeaderFile
+#include <IGESDraw_Protocol.hxx>
+#endif
+#ifndef _IGESDraw_HeaderFile
+#include <IGESDraw.hxx>
+#endif

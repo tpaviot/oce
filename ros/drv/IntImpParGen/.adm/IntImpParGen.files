@@ -1,0 +1,16 @@
+pubinclude IntImpParGen.hxx
+privinclude IntImpParGen.jxx
+privinclude IntImpParGen.ixx
+pubinclude IntImpParGen_ImpTool.hxx
+privinclude IntImpParGen_ImpTool.jxx
+privinclude IntImpParGen_ImpTool.ixx
+dbadmfile IntImpParGen_xcpp_header.In
+dbadmfile IntImpParGen_xcpp_header.Out
+dbadmfile IntImpParGen_xcpp_header.Dep
+pubinclude IntImpParGen_Tool.hxx
+pubinclude IntImpParGen_ParTool.gxx
+pubinclude IntImpParGen_ImpParTool.gxx
+pubinclude IntImpParGen_Intersector.gxx
+dbadmfile IntImpParGen_obj_inc.In
+dbadmfile IntImpParGen_obj_inc.Out
+dbadmfile IntImpParGen_obj_inc.Dep

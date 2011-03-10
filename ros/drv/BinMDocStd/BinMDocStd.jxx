@@ -1,0 +1,9 @@
+#ifndef _BinMDF_ADriverTable_HeaderFile
+#include <BinMDF_ADriverTable.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _BinMDocStd_HeaderFile
+#include <BinMDocStd.hxx>
+#endif

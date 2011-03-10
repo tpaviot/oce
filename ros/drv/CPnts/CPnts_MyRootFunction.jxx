@@ -1,0 +1,3 @@
+#ifndef _CPnts_MyRootFunction_HeaderFile
+#include <CPnts_MyRootFunction.hxx>
+#endif

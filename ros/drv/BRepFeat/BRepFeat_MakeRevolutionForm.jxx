@@ -1,0 +1,30 @@
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRepFeat_MakeRevolutionForm_HeaderFile
+#include <BRepFeat_MakeRevolutionForm.hxx>
+#endif

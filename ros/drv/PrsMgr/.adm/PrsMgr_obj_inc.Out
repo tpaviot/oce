@@ -1,0 +1,7 @@
++M PrsMgr:pubinclude:PrsMgr_PresentationManager.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/PrsMgr_PresentationManager.lxx
++M PrsMgr:pubinclude:PrsMgr_Presentation.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/PrsMgr_Presentation.lxx
++M PrsMgr:pubinclude:PrsMgr_PresentableObject.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/PrsMgr_PresentableObject.lxx
++M PrsMgr:pubinclude:PrsMgr_PresentationManager3d.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/PrsMgr_PresentationManager3d.lxx
++M PrsMgr:dbadmfile:PrsMgr_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/PrsMgr/.adm/PrsMgr_obj_inc.In
++M PrsMgr:dbadmfile:PrsMgr_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/PrsMgr/.adm/PrsMgr_obj_inc.Out
++M PrsMgr:dbadmfile:PrsMgr_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/PrsMgr/.adm/PrsMgr_obj_inc.Dep

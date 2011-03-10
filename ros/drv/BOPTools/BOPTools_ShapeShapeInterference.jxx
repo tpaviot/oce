@@ -1,0 +1,3 @@
+#ifndef _BOPTools_ShapeShapeInterference_HeaderFile
+#include <BOPTools_ShapeShapeInterference.hxx>
+#endif

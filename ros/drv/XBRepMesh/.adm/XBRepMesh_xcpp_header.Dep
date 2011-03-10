@@ -1,0 +1,6 @@
++ XBRepMesh:pubinclude:XBRepMesh.hxx XBRepMesh:msentity:XBRepMesh
++ XBRepMesh:privinclude:XBRepMesh.jxx XBRepMesh:msentity:XBRepMesh
++ XBRepMesh:privinclude:XBRepMesh.ixx XBRepMesh:msentity:XBRepMesh
++ XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.In XBRepMesh:admfile:XBRepMesh_xcpp_fill.Out
++ XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.Out XBRepMesh:admfile:XBRepMesh_xcpp_fill.Out
++ XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.Dep XBRepMesh:admfile:XBRepMesh_xcpp_fill.Out

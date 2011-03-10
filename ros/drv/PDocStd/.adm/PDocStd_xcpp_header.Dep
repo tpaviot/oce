@@ -1,0 +1,11 @@
++ PDocStd:pubinclude:Handle_PDocStd_Document.hxx PDocStd:msentity:PDocStd_Document
++ PDocStd:pubinclude:PDocStd_Document.hxx PDocStd:msentity:PDocStd_Document
++ PDocStd:privinclude:PDocStd_Document.jxx PDocStd:msentity:PDocStd_Document
++ PDocStd:privinclude:PDocStd_Document.ixx PDocStd:msentity:PDocStd_Document
++ PDocStd:pubinclude:Handle_PDocStd_XLink.hxx PDocStd:msentity:PDocStd_XLink
++ PDocStd:pubinclude:PDocStd_XLink.hxx PDocStd:msentity:PDocStd_XLink
++ PDocStd:privinclude:PDocStd_XLink.jxx PDocStd:msentity:PDocStd_XLink
++ PDocStd:privinclude:PDocStd_XLink.ixx PDocStd:msentity:PDocStd_XLink
++ PDocStd:dbadmfile:PDocStd_xcpp_header.In PDocStd:admfile:PDocStd_xcpp_fill.Out
++ PDocStd:dbadmfile:PDocStd_xcpp_header.Out PDocStd:admfile:PDocStd_xcpp_fill.Out
++ PDocStd:dbadmfile:PDocStd_xcpp_header.Dep PDocStd:admfile:PDocStd_xcpp_fill.Out

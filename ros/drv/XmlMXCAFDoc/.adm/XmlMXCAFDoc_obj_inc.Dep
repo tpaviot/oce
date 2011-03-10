@@ -1,0 +1,7 @@
++ XmlMXCAFDoc:pubinclude:XmlMXCAFDoc_LocationDriver.lxx XmlMXCAFDoc:source:XmlMXCAFDoc_LocationDriver.lxx
++ XmlMXCAFDoc:dbadmfile:XmlMXCAFDoc_obj_inc.In XmlMXCAFDoc:admfile:XmlMXCAFDoc_src.Out
++ * XmlMXCAFDoc:admfile:XmlMXCAFDoc_xcpp_src.Out
++ XmlMXCAFDoc:dbadmfile:XmlMXCAFDoc_obj_inc.Out XmlMXCAFDoc:admfile:XmlMXCAFDoc_src.Out
++ * XmlMXCAFDoc:admfile:XmlMXCAFDoc_xcpp_src.Out
++ XmlMXCAFDoc:dbadmfile:XmlMXCAFDoc_obj_inc.Dep XmlMXCAFDoc:admfile:XmlMXCAFDoc_src.Out
++ * XmlMXCAFDoc:admfile:XmlMXCAFDoc_xcpp_src.Out

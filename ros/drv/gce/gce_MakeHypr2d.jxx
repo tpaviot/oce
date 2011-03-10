@@ -1,0 +1,18 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Ax2d_HeaderFile
+#include <gp_Ax2d.hxx>
+#endif
+#ifndef _gp_Ax22d_HeaderFile
+#include <gp_Ax22d.hxx>
+#endif
+#ifndef _gp_Hypr2d_HeaderFile
+#include <gp_Hypr2d.hxx>
+#endif
+#ifndef _gce_MakeHypr2d_HeaderFile
+#include <gce_MakeHypr2d.hxx>
+#endif

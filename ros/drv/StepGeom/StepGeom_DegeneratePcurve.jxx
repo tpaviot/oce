@@ -1,0 +1,12 @@
+#ifndef _StepGeom_Surface_HeaderFile
+#include <StepGeom_Surface.hxx>
+#endif
+#ifndef _StepRepr_DefinitionalRepresentation_HeaderFile
+#include <StepRepr_DefinitionalRepresentation.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_DegeneratePcurve_HeaderFile
+#include <StepGeom_DegeneratePcurve.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepFEA_NodeWithSolutionCoordinateSystem_HeaderFile
+#include <StepFEA_NodeWithSolutionCoordinateSystem.hxx>
+#endif

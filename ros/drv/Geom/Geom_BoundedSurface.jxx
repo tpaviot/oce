@@ -1,0 +1,3 @@
+#ifndef _Geom_BoundedSurface_HeaderFile
+#include <Geom_BoundedSurface.hxx>
+#endif

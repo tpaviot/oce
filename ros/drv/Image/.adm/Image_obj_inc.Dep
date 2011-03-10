@@ -1,0 +1,12 @@
++ Image:pubinclude:Image_GImage.gxx Image:source:Image_GImage.gxx
++ Image:pubinclude:Image_GPixelField.gxx Image:source:Image_GPixelField.gxx
++ Image:pubinclude:Image_GPixelField.lxx Image:source:Image_GPixelField.lxx
++ Image:pubinclude:Image_PixelAddress.hxx Image:source:Image_PixelAddress.hxx
++ Image:pubinclude:Image_CRawBufferData.hxx Image:source:Image_CRawBufferData.hxx
++ Image:pubinclude:Image_HPrivateImage.hxx Image:source:Image_HPrivateImage.hxx
++ Image:dbadmfile:Image_obj_inc.In Image:admfile:Image_src.Out
++ * Image:admfile:Image_xcpp_src.Out
++ Image:dbadmfile:Image_obj_inc.Out Image:admfile:Image_src.Out
++ * Image:admfile:Image_xcpp_src.Out
++ Image:dbadmfile:Image_obj_inc.Dep Image:admfile:Image_src.Out
++ * Image:admfile:Image_xcpp_src.Out

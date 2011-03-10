@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State_HeaderFile
+#include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Reducer_HeaderFile
+#include <TopOpeBRepDS_Reducer.hxx>
+#endif

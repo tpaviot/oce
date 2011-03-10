@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepDS_Transition_HeaderFile
+#include <TopOpeBRepDS_Transition.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Interference_HeaderFile
+#include <TopOpeBRepDS_Interference.hxx>
+#endif

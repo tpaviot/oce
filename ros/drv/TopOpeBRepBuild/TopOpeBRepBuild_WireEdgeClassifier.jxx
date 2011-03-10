@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_BlockBuilder_HeaderFile
+#include <TopOpeBRepBuild_BlockBuilder.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Loop_HeaderFile
+#include <TopOpeBRepBuild_Loop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_WireEdgeClassifier_HeaderFile
+#include <TopOpeBRepBuild_WireEdgeClassifier.hxx>
+#endif

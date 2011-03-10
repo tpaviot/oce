@@ -1,0 +1,21 @@
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Interface_SignType_HeaderFile
+#include <Interface_SignType.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Interface_GeneralLib_HeaderFile
+#include <Interface_GeneralLib.hxx>
+#endif
+#ifndef _Interface_GeneralModule_HeaderFile
+#include <Interface_GeneralModule.hxx>
+#endif
+#ifndef _Interface_GTool_HeaderFile
+#include <Interface_GTool.hxx>
+#endif

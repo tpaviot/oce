@@ -1,0 +1,3 @@
+#ifndef _Graphic2d_ViewMapping_HeaderFile
+#include <Graphic2d_ViewMapping.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _ChFiDS_Spine_HeaderFile
+#include <ChFiDS_Spine.hxx>
+#endif
+#ifndef _ChFiDS_HData_HeaderFile
+#include <ChFiDS_HData.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _ChFiDS_Stripe_HeaderFile
+#include <ChFiDS_Stripe.hxx>
+#endif

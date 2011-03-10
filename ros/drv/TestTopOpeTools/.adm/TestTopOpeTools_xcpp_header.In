@@ -1,0 +1,6 @@
++V TestTopOpeTools:msentity:TestTopOpeTools .
++V TestTopOpeTools:msentity:TestTopOpeTools_Mesure .
++V TestTopOpeTools:msentity:TestTopOpeTools_Array1OfMesure .
++V TestTopOpeTools:msentity:TestTopOpeTools_HArray1OfMesure .
++V TestTopOpeTools:msentity:TestTopOpeTools_PMesure .
+- TestTopOpeTools:admfile:TestTopOpeTools_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/TestTopOpeTools/TestTopOpeTools_xcpp_fill.Out

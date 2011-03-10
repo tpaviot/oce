@@ -1,0 +1,54 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _Law_Function_HeaderFile
+#include <Law_Function.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _ChFiDS_SecHArray1_HeaderFile
+#include <ChFiDS_SecHArray1.hxx>
+#endif
+#ifndef _ChFiDS_SurfData_HeaderFile
+#include <ChFiDS_SurfData.hxx>
+#endif
+#ifndef _ChFiDS_HElSpine_HeaderFile
+#include <ChFiDS_HElSpine.hxx>
+#endif
+#ifndef _ChFiDS_Spine_HeaderFile
+#include <ChFiDS_Spine.hxx>
+#endif
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _Adaptor3d_TopolTool_HeaderFile
+#include <Adaptor3d_TopolTool.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _BRepAdaptor_HCurve2d_HeaderFile
+#include <BRepAdaptor_HCurve2d.hxx>
+#endif
+#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
+#include <ChFiDS_SequenceOfSurfData.hxx>
+#endif
+#ifndef _BRepBlend_Line_HeaderFile
+#include <BRepBlend_Line.hxx>
+#endif
+#ifndef _ChFiDS_Stripe_HeaderFile
+#include <ChFiDS_Stripe.hxx>
+#endif
+#ifndef _ChFiDS_ListOfStripe_HeaderFile
+#include <ChFiDS_ListOfStripe.hxx>
+#endif
+#ifndef _ChFi3d_FilBuilder_HeaderFile
+#include <ChFi3d_FilBuilder.hxx>
+#endif

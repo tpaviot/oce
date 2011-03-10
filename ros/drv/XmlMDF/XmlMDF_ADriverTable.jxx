@@ -1,0 +1,12 @@
+#ifndef _XmlMDF_ADriver_HeaderFile
+#include <XmlMDF_ADriver.hxx>
+#endif
+#ifndef _XmlMDF_TypeADriverMap_HeaderFile
+#include <XmlMDF_TypeADriverMap.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _XmlMDF_ADriverTable_HeaderFile
+#include <XmlMDF_ADriverTable.hxx>
+#endif

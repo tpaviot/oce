@@ -1,0 +1,15 @@
+#ifndef _Aspect_WindowDefinitionError_HeaderFile
+#include <Aspect_WindowDefinitionError.hxx>
+#endif
+#ifndef _Aspect_WindowError_HeaderFile
+#include <Aspect_WindowError.hxx>
+#endif
+#ifndef _WNT_GraphicDevice_HeaderFile
+#include <WNT_GraphicDevice.hxx>
+#endif
+#ifndef _WNT_Window_HeaderFile
+#include <WNT_Window.hxx>
+#endif
+#ifndef _WNT_IconBox_HeaderFile
+#include <WNT_IconBox.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRep_VPointInter_HeaderFile
+#include <TopOpeBRep_VPointInter.hxx>
+#endif
+#ifndef _TopOpeBRep_PointClassifier_HeaderFile
+#include <TopOpeBRep_PointClassifier.hxx>
+#endif
+#ifndef _TopOpeBRep_VPointInterClassifier_HeaderFile
+#include <TopOpeBRep_VPointInterClassifier.hxx>
+#endif

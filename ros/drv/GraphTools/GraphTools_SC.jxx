@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _GraphTools_SCList_HeaderFile
+#include <GraphTools_SCList.hxx>
+#endif
+#ifndef _GraphTools_SC_HeaderFile
+#include <GraphTools_SC.hxx>
+#endif

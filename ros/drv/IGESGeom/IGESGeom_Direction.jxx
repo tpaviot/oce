@@ -1,0 +1,9 @@
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _IGESGeom_Direction_HeaderFile
+#include <IGESGeom_Direction.hxx>
+#endif

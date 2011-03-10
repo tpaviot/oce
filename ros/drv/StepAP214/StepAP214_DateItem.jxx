@@ -1,0 +1,18 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_ApprovalPersonOrganization_HeaderFile
+#include <StepBasic_ApprovalPersonOrganization.hxx>
+#endif
+#ifndef _StepAP214_AppliedPersonAndOrganizationAssignment_HeaderFile
+#include <StepAP214_AppliedPersonAndOrganizationAssignment.hxx>
+#endif
+#ifndef _StepAP214_AppliedOrganizationAssignment_HeaderFile
+#include <StepAP214_AppliedOrganizationAssignment.hxx>
+#endif
+#ifndef _StepBasic_Effectivity_HeaderFile
+#include <StepBasic_Effectivity.hxx>
+#endif
+#ifndef _StepAP214_DateItem_HeaderFile
+#include <StepAP214_DateItem.hxx>
+#endif

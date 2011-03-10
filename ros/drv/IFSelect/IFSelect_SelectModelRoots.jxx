@@ -1,0 +1,12 @@
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _IFSelect_SelectModelRoots_HeaderFile
+#include <IFSelect_SelectModelRoots.hxx>
+#endif

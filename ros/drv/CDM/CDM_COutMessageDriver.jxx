@@ -1,0 +1,3 @@
+#ifndef _CDM_COutMessageDriver_HeaderFile
+#include <CDM_COutMessageDriver.hxx>
+#endif

@@ -1,0 +1,30 @@
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _IGESDraw_HArray1OfConnectPoint_HeaderFile
+#include <IGESDraw_HArray1OfConnectPoint.hxx>
+#endif
+#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
+#include <Interface_HArray1OfHAsciiString.hxx>
+#endif
+#ifndef _IGESGraph_HArray1OfTextDisplayTemplate_HeaderFile
+#include <IGESGraph_HArray1OfTextDisplayTemplate.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESDraw_ConnectPoint_HeaderFile
+#include <IGESDraw_ConnectPoint.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _IGESGraph_TextDisplayTemplate_HeaderFile
+#include <IGESGraph_TextDisplayTemplate.hxx>
+#endif
+#ifndef _IGESAppli_PipingFlow_HeaderFile
+#include <IGESAppli_PipingFlow.hxx>
+#endif

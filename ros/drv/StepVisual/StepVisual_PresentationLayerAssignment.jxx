@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_HArray1OfLayeredItem_HeaderFile
+#include <StepVisual_HArray1OfLayeredItem.hxx>
+#endif
+#ifndef _StepVisual_LayeredItem_HeaderFile
+#include <StepVisual_LayeredItem.hxx>
+#endif
+#ifndef _StepVisual_PresentationLayerAssignment_HeaderFile
+#include <StepVisual_PresentationLayerAssignment.hxx>
+#endif

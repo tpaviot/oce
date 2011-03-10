@@ -1,0 +1,8 @@
++ BOPTools:pubinclude:BOPTools_DSFiller.lxx BOPTools:source:BOPTools_DSFiller.lxx
++ BOPTools:pubinclude:BOPTools_SSIntersectionAttribute.lxx BOPTools:source:BOPTools_SSIntersectionAttribute.lxx
++ BOPTools:dbadmfile:BOPTools_obj_inc.In BOPTools:admfile:BOPTools_src.Out
++ * BOPTools:admfile:BOPTools_xcpp_src.Out
++ BOPTools:dbadmfile:BOPTools_obj_inc.Out BOPTools:admfile:BOPTools_src.Out
++ * BOPTools:admfile:BOPTools_xcpp_src.Out
++ BOPTools:dbadmfile:BOPTools_obj_inc.Dep BOPTools:admfile:BOPTools_src.Out
++ * BOPTools:admfile:BOPTools_xcpp_src.Out

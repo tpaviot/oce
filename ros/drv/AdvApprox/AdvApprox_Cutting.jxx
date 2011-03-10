@@ -1,0 +1,3 @@
+#ifndef _AdvApprox_Cutting_HeaderFile
+#include <AdvApprox_Cutting.hxx>
+#endif

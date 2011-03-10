@@ -1,0 +1,12 @@
+#ifndef _StepBasic_Approval_HeaderFile
+#include <StepBasic_Approval.hxx>
+#endif
+#ifndef _StepBasic_ApprovalRole_HeaderFile
+#include <StepBasic_ApprovalRole.hxx>
+#endif
+#ifndef _StepBasic_PersonOrganizationSelect_HeaderFile
+#include <StepBasic_PersonOrganizationSelect.hxx>
+#endif
+#ifndef _StepBasic_ApprovalPersonOrganization_HeaderFile
+#include <StepBasic_ApprovalPersonOrganization.hxx>
+#endif

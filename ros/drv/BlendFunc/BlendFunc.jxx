@@ -1,0 +1,18 @@
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _BlendFunc_HeaderFile
+#include <BlendFunc.hxx>
+#endif

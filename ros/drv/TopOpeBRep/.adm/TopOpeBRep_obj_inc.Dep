@@ -1,0 +1,13 @@
++ TopOpeBRep:pubinclude:TopOpeBRep_tools.hxx TopOpeBRep:source:TopOpeBRep_tools.hxx
++ TopOpeBRep:pubinclude:TopOpeBRep_traceSIFF.hxx TopOpeBRep:source:TopOpeBRep_traceSIFF.hxx
++ TopOpeBRep:pubinclude:TopOpeBRep_define.hxx TopOpeBRep:source:TopOpeBRep_define.hxx
++ TopOpeBRep:pubinclude:TopOpeBRep_DRAW.hxx TopOpeBRep:source:TopOpeBRep_DRAW.hxx
++ TopOpeBRep:pubinclude:TopOpeBRep_VPointInter.lxx TopOpeBRep:source:TopOpeBRep_VPointInter.lxx
++ TopOpeBRep:pubinclude:TopOpeBRep_LineInter.lxx TopOpeBRep:source:TopOpeBRep_LineInter.lxx
++ TopOpeBRep:pubinclude:TopOpeBRep_Point2d.lxx TopOpeBRep:source:TopOpeBRep_Point2d.lxx
++ TopOpeBRep:dbadmfile:TopOpeBRep_obj_inc.In TopOpeBRep:admfile:TopOpeBRep_src.Out
++ * TopOpeBRep:admfile:TopOpeBRep_xcpp_src.Out
++ TopOpeBRep:dbadmfile:TopOpeBRep_obj_inc.Out TopOpeBRep:admfile:TopOpeBRep_src.Out
++ * TopOpeBRep:admfile:TopOpeBRep_xcpp_src.Out
++ TopOpeBRep:dbadmfile:TopOpeBRep_obj_inc.Dep TopOpeBRep:admfile:TopOpeBRep_src.Out
++ * TopOpeBRep:admfile:TopOpeBRep_xcpp_src.Out

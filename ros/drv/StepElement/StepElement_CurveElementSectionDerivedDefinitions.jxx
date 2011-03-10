@@ -1,0 +1,15 @@
+#ifndef _StepElement_HArray1OfMeasureOrUnspecifiedValue_HeaderFile
+#include <StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
+#include <StepElement_MeasureOrUnspecifiedValue.hxx>
+#endif
+#ifndef _StepElement_CurveElementSectionDerivedDefinitions_HeaderFile
+#include <StepElement_CurveElementSectionDerivedDefinitions.hxx>
+#endif

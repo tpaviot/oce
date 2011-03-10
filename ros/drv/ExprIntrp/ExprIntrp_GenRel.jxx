@@ -1,0 +1,12 @@
+#ifndef _Expr_GeneralRelation_HeaderFile
+#include <Expr_GeneralRelation.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _ExprIntrp_GenRel_HeaderFile
+#include <ExprIntrp_GenRel.hxx>
+#endif

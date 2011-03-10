@@ -1,0 +1,11 @@
++V PPoly:msentity:PPoly .
++V PPoly:msentity:PPoly_Triangle .
++V PPoly:msentity:PPoly_Triangulation .
++V PPoly:msentity:PPoly_Polygon3D .
++V PPoly:msentity:PPoly_Polygon2D .
++V PPoly:msentity:PPoly_PolygonOnTriangulation .
++V PPoly:msentity:PPoly_HArray1OfTriangle .
++V PPoly:msentity:PPoly_VArrayNodeOfFieldOfHArray1OfTriangle .
++V PPoly:msentity:PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle .
++V PPoly:msentity:PPoly_FieldOfHArray1OfTriangle .
+- PPoly:admfile:PPoly_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/PPoly/PPoly_xcpp_fill.Out

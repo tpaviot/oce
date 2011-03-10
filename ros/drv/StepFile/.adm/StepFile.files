@@ -1,0 +1,7 @@
+pubinclude step.tab.h
+pubinclude StepFile_CallFailure.hxx
+pubinclude StepFile_Read.hxx
+pubinclude StepFile_Transfer.hxx
+dbadmfile StepFile_obj_inc.In
+dbadmfile StepFile_obj_inc.Out
+dbadmfile StepFile_obj_inc.Dep

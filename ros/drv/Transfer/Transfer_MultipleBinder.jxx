@@ -1,0 +1,18 @@
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
+#endif
+#ifndef _Transfer_TransferFailure_HeaderFile
+#include <Transfer_TransferFailure.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Transfer_MultipleBinder_HeaderFile
+#include <Transfer_MultipleBinder.hxx>
+#endif

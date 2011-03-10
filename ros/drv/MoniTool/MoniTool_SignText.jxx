@@ -1,0 +1,9 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _MoniTool_SignText_HeaderFile
+#include <MoniTool_SignText.hxx>
+#endif

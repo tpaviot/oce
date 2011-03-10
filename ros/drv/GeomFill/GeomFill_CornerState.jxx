@@ -1,0 +1,3 @@
+#ifndef _GeomFill_CornerState_HeaderFile
+#include <GeomFill_CornerState.hxx>
+#endif

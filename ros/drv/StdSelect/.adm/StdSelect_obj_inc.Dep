@@ -1,0 +1,14 @@
++ StdSelect:pubinclude:StdSelect_ViewerSelector3d.lxx StdSelect:source:StdSelect_ViewerSelector3d.lxx
++ StdSelect:pubinclude:StdSelect_ViewerSelector2d.lxx StdSelect:source:StdSelect_ViewerSelector2d.lxx
++ StdSelect:pubinclude:StdSelect_BRepOwner.lxx StdSelect:source:StdSelect_BRepOwner.lxx
++ StdSelect:pubinclude:StdSelect_SensitiveText2d.lxx StdSelect:source:StdSelect_SensitiveText2d.lxx
++ StdSelect:pubinclude:StdSelect_TextProjector2d.lxx StdSelect:source:StdSelect_TextProjector2d.lxx
++ StdSelect:pubinclude:StdSelect_ShapeTypeFilter.lxx StdSelect:source:StdSelect_ShapeTypeFilter.lxx
++ StdSelect:pubinclude:StdSelect_Prs.lxx StdSelect:source:StdSelect_Prs.lxx
++ StdSelect:pubinclude:StdSelect_Shape.lxx StdSelect:source:StdSelect_Shape.lxx
++ StdSelect:dbadmfile:StdSelect_obj_inc.In StdSelect:admfile:StdSelect_src.Out
++ * StdSelect:admfile:StdSelect_xcpp_src.Out
++ StdSelect:dbadmfile:StdSelect_obj_inc.Out StdSelect:admfile:StdSelect_src.Out
++ * StdSelect:admfile:StdSelect_xcpp_src.Out
++ StdSelect:dbadmfile:StdSelect_obj_inc.Dep StdSelect:admfile:StdSelect_src.Out
++ * StdSelect:admfile:StdSelect_xcpp_src.Out

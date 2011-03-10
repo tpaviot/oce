@@ -1,0 +1,17 @@
+pubinclude BinMPrsStd.hxx
+privinclude BinMPrsStd.jxx
+privinclude BinMPrsStd.ixx
+pubinclude Handle_BinMPrsStd_AISPresentationDriver.hxx
+pubinclude BinMPrsStd_AISPresentationDriver.hxx
+privinclude BinMPrsStd_AISPresentationDriver.jxx
+privinclude BinMPrsStd_AISPresentationDriver.ixx
+pubinclude Handle_BinMPrsStd_PositionDriver.hxx
+pubinclude BinMPrsStd_PositionDriver.hxx
+privinclude BinMPrsStd_PositionDriver.jxx
+privinclude BinMPrsStd_PositionDriver.ixx
+dbadmfile BinMPrsStd_xcpp_header.In
+dbadmfile BinMPrsStd_xcpp_header.Out
+dbadmfile BinMPrsStd_xcpp_header.Dep
+dbadmfile BinMPrsStd_obj_inc.In
+dbadmfile BinMPrsStd_obj_inc.Out
+dbadmfile BinMPrsStd_obj_inc.Dep

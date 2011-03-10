@@ -1,0 +1,9 @@
+#ifndef _BRep_ListOfCurveRepresentation_HeaderFile
+#include <BRep_ListOfCurveRepresentation.hxx>
+#endif
+#ifndef _TopoDS_TShape_HeaderFile
+#include <TopoDS_TShape.hxx>
+#endif
+#ifndef _BRep_TEdge_HeaderFile
+#include <BRep_TEdge.hxx>
+#endif

@@ -1,0 +1,21 @@
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _XSControl_Reader_HeaderFile
+#include <XSControl_Reader.hxx>
+#endif

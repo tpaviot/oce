@@ -1,0 +1,7 @@
++ BinMNaming:pubinclude:BinMNaming_NamedShapeDriver.lxx BinMNaming:source:BinMNaming_NamedShapeDriver.lxx
++ BinMNaming:dbadmfile:BinMNaming_obj_inc.In BinMNaming:admfile:BinMNaming_src.Out
++ * BinMNaming:admfile:BinMNaming_xcpp_src.Out
++ BinMNaming:dbadmfile:BinMNaming_obj_inc.Out BinMNaming:admfile:BinMNaming_src.Out
++ * BinMNaming:admfile:BinMNaming_xcpp_src.Out
++ BinMNaming:dbadmfile:BinMNaming_obj_inc.Dep BinMNaming:admfile:BinMNaming_src.Out
++ * BinMNaming:admfile:BinMNaming_xcpp_src.Out

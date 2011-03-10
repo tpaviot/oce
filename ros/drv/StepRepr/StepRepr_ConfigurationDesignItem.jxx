@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
+#include <StepBasic_ProductDefinitionFormation.hxx>
+#endif
+#ifndef _StepRepr_ConfigurationDesignItem_HeaderFile
+#include <StepRepr_ConfigurationDesignItem.hxx>
+#endif

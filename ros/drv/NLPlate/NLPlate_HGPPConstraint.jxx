@@ -1,0 +1,18 @@
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _Plate_D1_HeaderFile
+#include <Plate_D1.hxx>
+#endif
+#ifndef _Plate_D2_HeaderFile
+#include <Plate_D2.hxx>
+#endif
+#ifndef _Plate_D3_HeaderFile
+#include <Plate_D3.hxx>
+#endif
+#ifndef _NLPlate_HGPPConstraint_HeaderFile
+#include <NLPlate_HGPPConstraint.hxx>
+#endif

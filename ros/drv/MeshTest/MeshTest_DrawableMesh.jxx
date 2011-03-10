@@ -1,0 +1,21 @@
+#ifndef _BRepMesh_FastDiscret_HeaderFile
+#include <BRepMesh_FastDiscret.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _Draw_Drawable3D_HeaderFile
+#include <Draw_Drawable3D.hxx>
+#endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _MeshTest_DrawableMesh_HeaderFile
+#include <MeshTest_DrawableMesh.hxx>
+#endif

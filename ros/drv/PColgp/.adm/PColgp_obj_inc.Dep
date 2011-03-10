@@ -1,0 +1,6 @@
++ PColgp:dbadmfile:PColgp_obj_inc.In PColgp:admfile:PColgp_src.Out
++ * PColgp:admfile:PColgp_xcpp_src.Out
++ PColgp:dbadmfile:PColgp_obj_inc.Out PColgp:admfile:PColgp_src.Out
++ * PColgp:admfile:PColgp_xcpp_src.Out
++ PColgp:dbadmfile:PColgp_obj_inc.Dep PColgp:admfile:PColgp_src.Out
++ * PColgp:admfile:PColgp_xcpp_src.Out

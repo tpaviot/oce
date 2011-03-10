@@ -1,0 +1,9 @@
+#ifndef _PColStd_HArray1OfReal_HeaderFile
+#include <PColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _PCollection_HAsciiString_HeaderFile
+#include <PCollection_HAsciiString.hxx>
+#endif
+#ifndef _PXCAFDoc_DimTol_HeaderFile
+#include <PXCAFDoc_DimTol.hxx>
+#endif

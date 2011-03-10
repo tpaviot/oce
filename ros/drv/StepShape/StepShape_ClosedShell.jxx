@@ -1,0 +1,3 @@
+#ifndef _StepShape_ClosedShell_HeaderFile
+#include <StepShape_ClosedShell.hxx>
+#endif

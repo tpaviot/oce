@@ -1,0 +1,3 @@
+#ifndef _TCollection_SeqNode_HeaderFile
+#include <TCollection_SeqNode.hxx>
+#endif

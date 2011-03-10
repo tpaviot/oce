@@ -1,0 +1,18 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NumericError_HeaderFile
+#include <Standard_NumericError.hxx>
+#endif
+#ifndef _Expr_InvalidOperand_HeaderFile
+#include <Expr_InvalidOperand.hxx>
+#endif
+#ifndef _Expr_GeneralExpression_HeaderFile
+#include <Expr_GeneralExpression.hxx>
+#endif
+#ifndef _Expr_NamedUnknown_HeaderFile
+#include <Expr_NamedUnknown.hxx>
+#endif
+#ifndef _Expr_PolyExpression_HeaderFile
+#include <Expr_PolyExpression.hxx>
+#endif

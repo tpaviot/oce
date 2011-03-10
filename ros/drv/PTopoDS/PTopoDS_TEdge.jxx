@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_TEdge_HeaderFile
+#include <PTopoDS_TEdge.hxx>
+#endif

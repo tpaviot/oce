@@ -1,0 +1,15 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_VectorWithNullMagnitude_HeaderFile
+#include <gp_VectorWithNullMagnitude.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _Geom_Vector_HeaderFile
+#include <Geom_Vector.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _BRepMesh_FaceAttribute_HeaderFile
+#include <BRepMesh_FaceAttribute.hxx>
+#endif

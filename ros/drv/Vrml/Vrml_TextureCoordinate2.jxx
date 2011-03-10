@@ -1,0 +1,6 @@
+#ifndef _TColgp_HArray1OfVec2d_HeaderFile
+#include <TColgp_HArray1OfVec2d.hxx>
+#endif
+#ifndef _Vrml_TextureCoordinate2_HeaderFile
+#include <Vrml_TextureCoordinate2.hxx>
+#endif

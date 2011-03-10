@@ -1,0 +1,48 @@
+#ifndef _IntPatch_Line_HeaderFile
+#include <IntPatch_Line.hxx>
+#endif
+#ifndef _IntPatch_ALine_HeaderFile
+#include <IntPatch_ALine.hxx>
+#endif
+#ifndef _IntPatch_RLine_HeaderFile
+#include <IntPatch_RLine.hxx>
+#endif
+#ifndef _IntPatch_WLine_HeaderFile
+#include <IntPatch_WLine.hxx>
+#endif
+#ifndef _IntPatch_GLine_HeaderFile
+#include <IntPatch_GLine.hxx>
+#endif
+#ifndef _TopOpeBRep_HArray1OfVPointInter_HeaderFile
+#include <TopOpeBRep_HArray1OfVPointInter.hxx>
+#endif
+#ifndef _BRepAdaptor_Surface_HeaderFile
+#include <BRepAdaptor_Surface.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TopOpeBRep_VPointInter_HeaderFile
+#include <TopOpeBRep_VPointInter.hxx>
+#endif
+#ifndef _TopOpeBRep_WPointInter_HeaderFile
+#include <TopOpeBRep_WPointInter.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Transition_HeaderFile
+#include <TopOpeBRepDS_Transition.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _TopOpeBRep_Bipoint_HeaderFile
+#include <TopOpeBRep_Bipoint.hxx>
+#endif
+#ifndef _TopOpeBRep_LineInter_HeaderFile
+#include <TopOpeBRep_LineInter.hxx>
+#endif

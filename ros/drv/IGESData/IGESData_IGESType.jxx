@@ -1,0 +1,3 @@
+#ifndef _IGESData_IGESType_HeaderFile
+#include <IGESData_IGESType.hxx>
+#endif

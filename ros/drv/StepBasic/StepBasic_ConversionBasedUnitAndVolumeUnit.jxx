@@ -1,0 +1,6 @@
+#ifndef _StepBasic_VolumeUnit_HeaderFile
+#include <StepBasic_VolumeUnit.hxx>
+#endif
+#ifndef _StepBasic_ConversionBasedUnitAndVolumeUnit_HeaderFile
+#include <StepBasic_ConversionBasedUnitAndVolumeUnit.hxx>
+#endif

@@ -1,0 +1,6 @@
++ AppBlend:pubinclude:AppBlend_Approx.hxx AppBlend:msentity:AppBlend_Approx
++ AppBlend:privinclude:AppBlend_Approx.jxx AppBlend:msentity:AppBlend_Approx
++ AppBlend:privinclude:AppBlend_Approx.ixx AppBlend:msentity:AppBlend_Approx
++ AppBlend:dbadmfile:AppBlend_xcpp_header.In AppBlend:admfile:AppBlend_xcpp_fill.Out
++ AppBlend:dbadmfile:AppBlend_xcpp_header.Out AppBlend:admfile:AppBlend_xcpp_fill.Out
++ AppBlend:dbadmfile:AppBlend_xcpp_header.Dep AppBlend:admfile:AppBlend_xcpp_fill.Out

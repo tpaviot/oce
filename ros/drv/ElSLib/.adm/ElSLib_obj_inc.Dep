@@ -1,0 +1,7 @@
++ ElSLib:pubinclude:ElSLib.lxx ElSLib:source:ElSLib.lxx
++ ElSLib:dbadmfile:ElSLib_obj_inc.In ElSLib:admfile:ElSLib_src.Out
++ * ElSLib:admfile:ElSLib_xcpp_src.Out
++ ElSLib:dbadmfile:ElSLib_obj_inc.Out ElSLib:admfile:ElSLib_src.Out
++ * ElSLib:admfile:ElSLib_xcpp_src.Out
++ ElSLib:dbadmfile:ElSLib_obj_inc.Dep ElSLib:admfile:ElSLib_src.Out
++ * ElSLib:admfile:ElSLib_xcpp_src.Out

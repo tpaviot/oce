@@ -1,0 +1,14 @@
++ MFunction:pubinclude:MFunction.hxx MFunction:msentity:MFunction
++ MFunction:privinclude:MFunction.jxx MFunction:msentity:MFunction
++ MFunction:privinclude:MFunction.ixx MFunction:msentity:MFunction
++ MFunction:pubinclude:Handle_MFunction_FunctionStorageDriver.hxx MFunction:msentity:MFunction_FunctionStorageDriver
++ MFunction:pubinclude:MFunction_FunctionStorageDriver.hxx MFunction:msentity:MFunction_FunctionStorageDriver
++ MFunction:privinclude:MFunction_FunctionStorageDriver.jxx MFunction:msentity:MFunction_FunctionStorageDriver
++ MFunction:privinclude:MFunction_FunctionStorageDriver.ixx MFunction:msentity:MFunction_FunctionStorageDriver
++ MFunction:pubinclude:Handle_MFunction_FunctionRetrievalDriver.hxx MFunction:msentity:MFunction_FunctionRetrievalDriver
++ MFunction:pubinclude:MFunction_FunctionRetrievalDriver.hxx MFunction:msentity:MFunction_FunctionRetrievalDriver
++ MFunction:privinclude:MFunction_FunctionRetrievalDriver.jxx MFunction:msentity:MFunction_FunctionRetrievalDriver
++ MFunction:privinclude:MFunction_FunctionRetrievalDriver.ixx MFunction:msentity:MFunction_FunctionRetrievalDriver
++ MFunction:dbadmfile:MFunction_xcpp_header.In MFunction:admfile:MFunction_xcpp_fill.Out
++ MFunction:dbadmfile:MFunction_xcpp_header.Out MFunction:admfile:MFunction_xcpp_fill.Out
++ MFunction:dbadmfile:MFunction_xcpp_header.Dep MFunction:admfile:MFunction_xcpp_fill.Out

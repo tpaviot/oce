@@ -1,0 +1,11 @@
++M TopTrans:pubinclude:TopTrans_Array2OfOrientation.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TopTrans_Array2OfOrientation.hxx
++M TopTrans:derivated:TopTrans_Array2OfOrientation_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/TopTrans_Array2OfOrientation_0.cxx
++M TopTrans:pubinclude:TopTrans_CurveTransition.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TopTrans_CurveTransition.hxx
++M TopTrans:privinclude:TopTrans_CurveTransition.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/TopTrans_CurveTransition.jxx
++M TopTrans:privinclude:TopTrans_CurveTransition.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/TopTrans_CurveTransition.ixx
++M TopTrans:pubinclude:TopTrans_SurfaceTransition.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TopTrans_SurfaceTransition.hxx
++M TopTrans:privinclude:TopTrans_SurfaceTransition.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/TopTrans_SurfaceTransition.jxx
++M TopTrans:privinclude:TopTrans_SurfaceTransition.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/TopTrans_SurfaceTransition.ixx
++M TopTrans:dbadmfile:TopTrans_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/.adm/TopTrans_xcpp_header.In
++M TopTrans:dbadmfile:TopTrans_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/.adm/TopTrans_xcpp_header.Out
++M TopTrans:dbadmfile:TopTrans_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopTrans/.adm/TopTrans_xcpp_header.Dep

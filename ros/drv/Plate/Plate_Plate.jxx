@@ -1,0 +1,45 @@
+#ifndef _Plate_PinpointConstraint_HeaderFile
+#include <Plate_PinpointConstraint.hxx>
+#endif
+#ifndef _Plate_LinearXYZConstraint_HeaderFile
+#include <Plate_LinearXYZConstraint.hxx>
+#endif
+#ifndef _Plate_LinearScalarConstraint_HeaderFile
+#include <Plate_LinearScalarConstraint.hxx>
+#endif
+#ifndef _Plate_GlobalTranslationConstraint_HeaderFile
+#include <Plate_GlobalTranslationConstraint.hxx>
+#endif
+#ifndef _Plate_LineConstraint_HeaderFile
+#include <Plate_LineConstraint.hxx>
+#endif
+#ifndef _Plate_PlaneConstraint_HeaderFile
+#include <Plate_PlaneConstraint.hxx>
+#endif
+#ifndef _Plate_SampledCurveConstraint_HeaderFile
+#include <Plate_SampledCurveConstraint.hxx>
+#endif
+#ifndef _Plate_GtoCConstraint_HeaderFile
+#include <Plate_GtoCConstraint.hxx>
+#endif
+#ifndef _Plate_FreeGtoCConstraint_HeaderFile
+#include <Plate_FreeGtoCConstraint.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _TColgp_HArray2OfXYZ_HeaderFile
+#include <TColgp_HArray2OfXYZ.hxx>
+#endif
+#ifndef _TColgp_SequenceOfXY_HeaderFile
+#include <TColgp_SequenceOfXY.hxx>
+#endif
+#ifndef _math_Matrix_HeaderFile
+#include <math_Matrix.hxx>
+#endif
+#ifndef _Plate_Plate_HeaderFile
+#include <Plate_Plate.hxx>
+#endif

@@ -1,0 +1,48 @@
+#ifndef _IFSelect_WorkLibrary_HeaderFile
+#include <IFSelect_WorkLibrary.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _IFSelect_Signature_HeaderFile
+#include <IFSelect_Signature.hxx>
+#endif
+#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
+#include <Transfer_ActorOfTransientProcess.hxx>
+#endif
+#ifndef _Transfer_ActorOfFinderProcess_HeaderFile
+#include <Transfer_ActorOfFinderProcess.hxx>
+#endif
+#ifndef _Dico_DictionaryOfTransient_HeaderFile
+#include <Dico_DictionaryOfTransient.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
+#include <TColStd_HSequenceOfHAsciiString.hxx>
+#endif
+#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
+#include <Interface_HArray1OfHAsciiString.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Transfer_FinderProcess_HeaderFile
+#include <Transfer_FinderProcess.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Interface_CheckIterator_HeaderFile
+#include <Interface_CheckIterator.hxx>
+#endif
+#ifndef _XSControl_Controller_HeaderFile
+#include <XSControl_Controller.hxx>
+#endif

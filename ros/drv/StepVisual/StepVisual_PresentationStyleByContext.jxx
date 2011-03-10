@@ -1,0 +1,9 @@
+#ifndef _StepVisual_HArray1OfPresentationStyleSelect_HeaderFile
+#include <StepVisual_HArray1OfPresentationStyleSelect.hxx>
+#endif
+#ifndef _StepVisual_StyleContextSelect_HeaderFile
+#include <StepVisual_StyleContextSelect.hxx>
+#endif
+#ifndef _StepVisual_PresentationStyleByContext_HeaderFile
+#include <StepVisual_PresentationStyleByContext.hxx>
+#endif

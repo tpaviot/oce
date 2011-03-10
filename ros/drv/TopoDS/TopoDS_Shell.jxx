@@ -1,0 +1,3 @@
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif

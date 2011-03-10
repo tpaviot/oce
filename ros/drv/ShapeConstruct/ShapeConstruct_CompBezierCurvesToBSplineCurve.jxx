@@ -1,0 +1,15 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _ShapeConstruct_CompBezierCurvesToBSplineCurve_HeaderFile
+#include <ShapeConstruct_CompBezierCurvesToBSplineCurve.hxx>
+#endif

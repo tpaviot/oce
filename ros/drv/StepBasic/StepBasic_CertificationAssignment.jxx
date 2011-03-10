@@ -1,0 +1,6 @@
+#ifndef _StepBasic_Certification_HeaderFile
+#include <StepBasic_Certification.hxx>
+#endif
+#ifndef _StepBasic_CertificationAssignment_HeaderFile
+#include <StepBasic_CertificationAssignment.hxx>
+#endif

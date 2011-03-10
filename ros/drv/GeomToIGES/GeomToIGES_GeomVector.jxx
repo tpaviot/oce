@@ -1,0 +1,18 @@
+#ifndef _GeomToIGES_GeomEntity_HeaderFile
+#include <GeomToIGES_GeomEntity.hxx>
+#endif
+#ifndef _IGESGeom_Direction_HeaderFile
+#include <IGESGeom_Direction.hxx>
+#endif
+#ifndef _Geom_Vector_HeaderFile
+#include <Geom_Vector.hxx>
+#endif
+#ifndef _Geom_VectorWithMagnitude_HeaderFile
+#include <Geom_VectorWithMagnitude.hxx>
+#endif
+#ifndef _Geom_Direction_HeaderFile
+#include <Geom_Direction.hxx>
+#endif
+#ifndef _GeomToIGES_GeomVector_HeaderFile
+#include <GeomToIGES_GeomVector.hxx>
+#endif

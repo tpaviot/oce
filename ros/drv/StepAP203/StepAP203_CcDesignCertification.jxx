@@ -1,0 +1,9 @@
+#ifndef _StepAP203_HArray1OfCertifiedItem_HeaderFile
+#include <StepAP203_HArray1OfCertifiedItem.hxx>
+#endif
+#ifndef _StepBasic_Certification_HeaderFile
+#include <StepBasic_Certification.hxx>
+#endif
+#ifndef _StepAP203_CcDesignCertification_HeaderFile
+#include <StepAP203_CcDesignCertification.hxx>
+#endif

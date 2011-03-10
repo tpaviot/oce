@@ -1,0 +1,12 @@
+#ifndef _TColStd_HSequenceOfReal_HeaderFile
+#include <TColStd_HSequenceOfReal.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _ShapeExtend_CompositeSurface_HeaderFile
+#include <ShapeExtend_CompositeSurface.hxx>
+#endif
+#ifndef _ShapeUpgrade_SplitSurface_HeaderFile
+#include <ShapeUpgrade_SplitSurface.hxx>
+#endif

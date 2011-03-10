@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_LayerTool_HeaderFile
+#include <PXCAFDoc_LayerTool.hxx>
+#endif

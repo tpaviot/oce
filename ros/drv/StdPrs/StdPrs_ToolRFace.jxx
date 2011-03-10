@@ -1,0 +1,6 @@
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _StdPrs_ToolRFace_HeaderFile
+#include <StdPrs_ToolRFace.hxx>
+#endif

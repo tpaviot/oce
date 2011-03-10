@@ -1,0 +1,6 @@
+#ifndef _Aspect_EdgeDefinitionError_HeaderFile
+#include <Aspect_EdgeDefinitionError.hxx>
+#endif
+#ifndef _Aspect_Edge_HeaderFile
+#include <Aspect_Edge.hxx>
+#endif

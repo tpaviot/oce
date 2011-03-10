@@ -1,0 +1,14 @@
++V IntRes2d:msentity:IntRes2d .
++V IntRes2d:msentity:IntRes2d_IntersectionPoint .
++V IntRes2d:msentity:IntRes2d_IntersectionSegment .
++V IntRes2d:msentity:IntRes2d_Transition .
++V IntRes2d:msentity:IntRes2d_Domain .
++V IntRes2d:msentity:IntRes2d_Intersection .
++V IntRes2d:msentity:IntRes2d_SequenceOfIntersectionPoint .
++V IntRes2d:msentity:IntRes2d_SequenceOfIntersectionSegment .
++V IntRes2d:msentity:IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint .
++V IntRes2d:msentity:IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment .
++V IntRes2d:msentity:IntRes2d_Position .
++V IntRes2d:msentity:IntRes2d_TypeTrans .
++V IntRes2d:msentity:IntRes2d_Situation .
+- IntRes2d:admfile:IntRes2d_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/IntRes2d/IntRes2d_xcpp_fill.Out

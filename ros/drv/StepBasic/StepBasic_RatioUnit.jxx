@@ -1,0 +1,3 @@
+#ifndef _StepBasic_RatioUnit_HeaderFile
+#include <StepBasic_RatioUnit.hxx>
+#endif

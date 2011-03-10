@@ -1,0 +1,39 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
+#endif
+#ifndef _Prs3d_Presentation_HeaderFile
+#include <Prs3d_Presentation.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager2d_HeaderFile
+#include <PrsMgr_PresentationManager2d.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _Prs3d_Projector_HeaderFile
+#include <Prs3d_Projector.hxx>
+#endif
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _SelectMgr_Selection_HeaderFile
+#include <SelectMgr_Selection.hxx>
+#endif
+#ifndef _Quantity_Color_HeaderFile
+#include <Quantity_Color.hxx>
+#endif
+#ifndef _Graphic3d_MaterialAspect_HeaderFile
+#include <Graphic3d_MaterialAspect.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _Prs3d_Drawer_HeaderFile
+#include <Prs3d_Drawer.hxx>
+#endif
+#ifndef _AIS_Shape_HeaderFile
+#include <AIS_Shape.hxx>
+#endif

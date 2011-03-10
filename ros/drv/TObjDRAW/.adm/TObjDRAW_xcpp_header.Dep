@@ -1,0 +1,6 @@
++ TObjDRAW:pubinclude:TObjDRAW.hxx TObjDRAW:msentity:TObjDRAW
++ TObjDRAW:privinclude:TObjDRAW.jxx TObjDRAW:msentity:TObjDRAW
++ TObjDRAW:privinclude:TObjDRAW.ixx TObjDRAW:msentity:TObjDRAW
++ TObjDRAW:dbadmfile:TObjDRAW_xcpp_header.In TObjDRAW:admfile:TObjDRAW_xcpp_fill.Out
++ TObjDRAW:dbadmfile:TObjDRAW_xcpp_header.Out TObjDRAW:admfile:TObjDRAW_xcpp_fill.Out
++ TObjDRAW:dbadmfile:TObjDRAW_xcpp_header.Dep TObjDRAW:admfile:TObjDRAW_xcpp_fill.Out

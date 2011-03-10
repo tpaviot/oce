@@ -1,0 +1,3 @@
+#ifndef _TopoDS_TVertex_HeaderFile
+#include <TopoDS_TVertex.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _ShapeUpgrade_FaceDivide_HeaderFile
+#include <ShapeUpgrade_FaceDivide.hxx>
+#endif
+#ifndef _ShapeUpgrade_ShapeConvertToBezier_HeaderFile
+#include <ShapeUpgrade_ShapeConvertToBezier.hxx>
+#endif

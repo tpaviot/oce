@@ -1,0 +1,12 @@
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _LProp3d_SurfaceTool_HeaderFile
+#include <LProp3d_SurfaceTool.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _BRep_Builder_HeaderFile
+#include <BRep_Builder.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepTools_ShapeSet_HeaderFile
+#include <BRepTools_ShapeSet.hxx>
+#endif

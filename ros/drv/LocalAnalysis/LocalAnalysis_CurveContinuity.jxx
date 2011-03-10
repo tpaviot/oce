@@ -1,0 +1,12 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _GeomLProp_CLProps_HeaderFile
+#include <GeomLProp_CLProps.hxx>
+#endif
+#ifndef _LocalAnalysis_CurveContinuity_HeaderFile
+#include <LocalAnalysis_CurveContinuity.hxx>
+#endif

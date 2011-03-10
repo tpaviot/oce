@@ -1,0 +1,3 @@
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif

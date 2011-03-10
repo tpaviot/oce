@@ -1,0 +1,3 @@
+#ifndef _PCDM_Document_HeaderFile
+#include <PCDM_Document.hxx>
+#endif

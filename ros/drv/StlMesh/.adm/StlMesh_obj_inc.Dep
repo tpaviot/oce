@@ -1,0 +1,9 @@
++ StlMesh:pubinclude:StlMesh_Mesh.lxx StlMesh:source:StlMesh_Mesh.lxx
++ StlMesh:pubinclude:StlMesh_MeshExplorer.lxx StlMesh:source:StlMesh_MeshExplorer.lxx
++ StlMesh:pubinclude:StlMesh_MeshDomain.lxx StlMesh:source:StlMesh_MeshDomain.lxx
++ StlMesh:dbadmfile:StlMesh_obj_inc.In StlMesh:admfile:StlMesh_src.Out
++ * StlMesh:admfile:StlMesh_xcpp_src.Out
++ StlMesh:dbadmfile:StlMesh_obj_inc.Out StlMesh:admfile:StlMesh_src.Out
++ * StlMesh:admfile:StlMesh_xcpp_src.Out
++ StlMesh:dbadmfile:StlMesh_obj_inc.Dep StlMesh:admfile:StlMesh_src.Out
++ * StlMesh:admfile:StlMesh_xcpp_src.Out

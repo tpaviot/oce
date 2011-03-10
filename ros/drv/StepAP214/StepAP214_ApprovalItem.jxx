@@ -1,0 +1,42 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepRepr_AssemblyComponentUsageSubstitute_HeaderFile
+#include <StepRepr_AssemblyComponentUsageSubstitute.hxx>
+#endif
+#ifndef _StepBasic_DocumentFile_HeaderFile
+#include <StepBasic_DocumentFile.hxx>
+#endif
+#ifndef _StepRepr_MaterialDesignation_HeaderFile
+#include <StepRepr_MaterialDesignation.hxx>
+#endif
+#ifndef _StepVisual_MechanicalDesignGeometricPresentationRepresentation_HeaderFile
+#include <StepVisual_MechanicalDesignGeometricPresentationRepresentation.hxx>
+#endif
+#ifndef _StepVisual_PresentationArea_HeaderFile
+#include <StepVisual_PresentationArea.hxx>
+#endif
+#ifndef _StepBasic_Product_HeaderFile
+#include <StepBasic_Product.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
+#include <StepBasic_ProductDefinitionFormation.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
+#include <StepBasic_ProductDefinitionRelationship.hxx>
+#endif
+#ifndef _StepRepr_PropertyDefinition_HeaderFile
+#include <StepRepr_PropertyDefinition.hxx>
+#endif
+#ifndef _StepShape_ShapeRepresentation_HeaderFile
+#include <StepShape_ShapeRepresentation.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassification_HeaderFile
+#include <StepBasic_SecurityClassification.hxx>
+#endif
+#ifndef _StepAP214_ApprovalItem_HeaderFile
+#include <StepAP214_ApprovalItem.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _StepShape_FaceSurface_HeaderFile
+#include <StepShape_FaceSurface.hxx>
+#endif
+#ifndef _StepToTopoDS_Tool_HeaderFile
+#include <StepToTopoDS_Tool.hxx>
+#endif
+#ifndef _StepToTopoDS_NMTool_HeaderFile
+#include <StepToTopoDS_NMTool.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _StepToTopoDS_TranslateFace_HeaderFile
+#include <StepToTopoDS_TranslateFace.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _TDataStd_TreeNode_HeaderFile
+#include <TDataStd_TreeNode.hxx>
+#endif
+#ifndef _TDataStd_ChildNodeIterator_HeaderFile
+#include <TDataStd_ChildNodeIterator.hxx>
+#endif

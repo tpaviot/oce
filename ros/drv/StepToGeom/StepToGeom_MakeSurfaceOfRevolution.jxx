@@ -1,0 +1,9 @@
+#ifndef _StepGeom_SurfaceOfRevolution_HeaderFile
+#include <StepGeom_SurfaceOfRevolution.hxx>
+#endif
+#ifndef _Geom_SurfaceOfRevolution_HeaderFile
+#include <Geom_SurfaceOfRevolution.hxx>
+#endif
+#ifndef _StepToGeom_MakeSurfaceOfRevolution_HeaderFile
+#include <StepToGeom_MakeSurfaceOfRevolution.hxx>
+#endif

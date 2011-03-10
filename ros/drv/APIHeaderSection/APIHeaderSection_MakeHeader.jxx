@@ -1,0 +1,24 @@
+#ifndef _HeaderSection_FileName_HeaderFile
+#include <HeaderSection_FileName.hxx>
+#endif
+#ifndef _HeaderSection_FileSchema_HeaderFile
+#include <HeaderSection_FileSchema.hxx>
+#endif
+#ifndef _HeaderSection_FileDescription_HeaderFile
+#include <HeaderSection_FileDescription.hxx>
+#endif
+#ifndef _StepData_StepModel_HeaderFile
+#include <StepData_StepModel.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
+#include <Interface_HArray1OfHAsciiString.hxx>
+#endif
+#ifndef _APIHeaderSection_MakeHeader_HeaderFile
+#include <APIHeaderSection_MakeHeader.hxx>
+#endif

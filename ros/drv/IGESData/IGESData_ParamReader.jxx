@@ -1,0 +1,51 @@
+#ifndef _Interface_ParamList_HeaderFile
+#include <Interface_ParamList.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESData_IGESReaderData_HeaderFile
+#include <IGESData_IGESReaderData.hxx>
+#endif
+#ifndef _IGESData_ParamCursor_HeaderFile
+#include <IGESData_ParamCursor.hxx>
+#endif
+#ifndef _Message_Msg_HeaderFile
+#include <Message_Msg.hxx>
+#endif
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
+#include <Interface_HArray1OfHAsciiString.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _Interface_EntityList_HeaderFile
+#include <Interface_EntityList.hxx>
+#endif
+#ifndef _IGESData_ParamReader_HeaderFile
+#include <IGESData_ParamReader.hxx>
+#endif

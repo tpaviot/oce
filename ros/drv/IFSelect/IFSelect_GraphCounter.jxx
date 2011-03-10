@@ -1,0 +1,12 @@
+#ifndef _IFSelect_SelectDeduct_HeaderFile
+#include <IFSelect_SelectDeduct.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _IFSelect_GraphCounter_HeaderFile
+#include <IFSelect_GraphCounter.hxx>
+#endif

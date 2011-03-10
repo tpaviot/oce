@@ -1,0 +1,6 @@
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _HLRTopoBRep_FaceData_HeaderFile
+#include <HLRTopoBRep_FaceData.hxx>
+#endif

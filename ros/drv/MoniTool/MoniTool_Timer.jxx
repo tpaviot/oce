@@ -1,0 +1,12 @@
+#ifndef _MoniTool_Timer_HeaderFile
+#include <MoniTool_Timer.hxx>
+#endif
+#ifndef _OSD_Timer_HeaderFile
+#include <OSD_Timer.hxx>
+#endif
+#ifndef _MoniTool_DataMapOfTimer_HeaderFile
+#include <MoniTool_DataMapOfTimer.hxx>
+#endif
+#ifndef _MoniTool_Timer_HeaderFile
+#include <MoniTool_Timer.hxx>
+#endif

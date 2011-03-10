@@ -1,0 +1,3 @@
+#ifndef _StepShape_CsgShapeRepresentation_HeaderFile
+#include <StepShape_CsgShapeRepresentation.hxx>
+#endif

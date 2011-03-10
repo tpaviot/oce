@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_HArray1OfSurfaceStyleElementSelect_HeaderFile
+#include <StepVisual_HArray1OfSurfaceStyleElementSelect.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleElementSelect_HeaderFile
+#include <StepVisual_SurfaceStyleElementSelect.hxx>
+#endif
+#ifndef _StepVisual_SurfaceSideStyle_HeaderFile
+#include <StepVisual_SurfaceSideStyle.hxx>
+#endif

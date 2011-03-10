@@ -1,0 +1,14 @@
++ BinMNaming:pubinclude:BinMNaming.hxx BinMNaming:msentity:BinMNaming
++ BinMNaming:privinclude:BinMNaming.jxx BinMNaming:msentity:BinMNaming
++ BinMNaming:privinclude:BinMNaming.ixx BinMNaming:msentity:BinMNaming
++ BinMNaming:pubinclude:Handle_BinMNaming_NamedShapeDriver.hxx BinMNaming:msentity:BinMNaming_NamedShapeDriver
++ BinMNaming:pubinclude:BinMNaming_NamedShapeDriver.hxx BinMNaming:msentity:BinMNaming_NamedShapeDriver
++ BinMNaming:privinclude:BinMNaming_NamedShapeDriver.jxx BinMNaming:msentity:BinMNaming_NamedShapeDriver
++ BinMNaming:privinclude:BinMNaming_NamedShapeDriver.ixx BinMNaming:msentity:BinMNaming_NamedShapeDriver
++ BinMNaming:pubinclude:Handle_BinMNaming_NamingDriver.hxx BinMNaming:msentity:BinMNaming_NamingDriver
++ BinMNaming:pubinclude:BinMNaming_NamingDriver.hxx BinMNaming:msentity:BinMNaming_NamingDriver
++ BinMNaming:privinclude:BinMNaming_NamingDriver.jxx BinMNaming:msentity:BinMNaming_NamingDriver
++ BinMNaming:privinclude:BinMNaming_NamingDriver.ixx BinMNaming:msentity:BinMNaming_NamingDriver
++ BinMNaming:dbadmfile:BinMNaming_xcpp_header.In BinMNaming:admfile:BinMNaming_xcpp_fill.Out
++ BinMNaming:dbadmfile:BinMNaming_xcpp_header.Out BinMNaming:admfile:BinMNaming_xcpp_fill.Out
++ BinMNaming:dbadmfile:BinMNaming_xcpp_header.Dep BinMNaming:admfile:BinMNaming_xcpp_fill.Out

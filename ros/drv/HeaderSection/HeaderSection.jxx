@@ -1,0 +1,6 @@
+#ifndef _HeaderSection_Protocol_HeaderFile
+#include <HeaderSection_Protocol.hxx>
+#endif
+#ifndef _HeaderSection_HeaderFile
+#include <HeaderSection.hxx>
+#endif

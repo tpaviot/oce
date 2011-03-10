@@ -1,0 +1,15 @@
+#ifndef _StepShape_EdgeLoop_HeaderFile
+#include <StepShape_EdgeLoop.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_HArray1OfOrientedEdge_HeaderFile
+#include <StepShape_HArray1OfOrientedEdge.hxx>
+#endif
+#ifndef _StepShape_OrientedEdge_HeaderFile
+#include <StepShape_OrientedEdge.hxx>
+#endif
+#ifndef _StepShape_OrientedPath_HeaderFile
+#include <StepShape_OrientedPath.hxx>
+#endif

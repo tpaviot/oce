@@ -1,0 +1,12 @@
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomLProp_SurfaceTool_HeaderFile
+#include <GeomLProp_SurfaceTool.hxx>
+#endif

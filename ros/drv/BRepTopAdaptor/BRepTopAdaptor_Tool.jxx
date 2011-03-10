@@ -1,0 +1,12 @@
+#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
+#include <BRepTopAdaptor_TopolTool.hxx>
+#endif
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepTopAdaptor_Tool_HeaderFile
+#include <BRepTopAdaptor_Tool.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESData_IGESReaderData_HeaderFile
+#include <IGESData_IGESReaderData.hxx>
+#endif
+#ifndef _IGESData_ParamReader_HeaderFile
+#include <IGESData_ParamReader.hxx>
+#endif
+#ifndef _IGESData_IGESWriter_HeaderFile
+#include <IGESData_IGESWriter.hxx>
+#endif
+#ifndef _IGESGraph_ReadWriteModule_HeaderFile
+#include <IGESGraph_ReadWriteModule.hxx>
+#endif

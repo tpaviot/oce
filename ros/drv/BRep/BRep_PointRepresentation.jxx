@@ -1,0 +1,18 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _BRep_PointRepresentation_HeaderFile
+#include <BRep_PointRepresentation.hxx>
+#endif

@@ -1,0 +1,39 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _IGESDraw_View_HeaderFile
+#include <IGESDraw_View.hxx>
+#endif
+#ifndef _IGESData_IGESReaderData_HeaderFile
+#include <IGESData_IGESReaderData.hxx>
+#endif
+#ifndef _IGESData_ParamReader_HeaderFile
+#include <IGESData_ParamReader.hxx>
+#endif
+#ifndef _IGESData_IGESWriter_HeaderFile
+#include <IGESData_IGESWriter.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _IGESData_DirChecker_HeaderFile
+#include <IGESData_DirChecker.hxx>
+#endif
+#ifndef _Interface_ShareTool_HeaderFile
+#include <Interface_ShareTool.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _IGESData_IGESDumper_HeaderFile
+#include <IGESData_IGESDumper.hxx>
+#endif
+#ifndef _Message_Messenger_HeaderFile
+#include <Message_Messenger.hxx>
+#endif
+#ifndef _IGESDraw_ToolView_HeaderFile
+#include <IGESDraw_ToolView.hxx>
+#endif

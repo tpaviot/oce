@@ -1,0 +1,18 @@
+#ifndef _TDF_LabelMap_HeaderFile
+#include <TDF_LabelMap.hxx>
+#endif
+#ifndef _TNaming_NamedShape_HeaderFile
+#include <TNaming_NamedShape.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TNaming_NamingTool_HeaderFile
+#include <TNaming_NamingTool.hxx>
+#endif

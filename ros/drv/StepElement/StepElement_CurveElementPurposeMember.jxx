@@ -1,0 +1,3 @@
+#ifndef _StepElement_CurveElementPurposeMember_HeaderFile
+#include <StepElement_CurveElementPurposeMember.hxx>
+#endif

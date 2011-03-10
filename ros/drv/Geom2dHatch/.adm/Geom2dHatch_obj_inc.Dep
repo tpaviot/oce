@@ -1,0 +1,7 @@
++ Geom2dHatch:pubinclude:Geom2dHatch_Intersector.lxx Geom2dHatch:source:Geom2dHatch_Intersector.lxx
++ Geom2dHatch:dbadmfile:Geom2dHatch_obj_inc.In Geom2dHatch:admfile:Geom2dHatch_src.Out
++ * Geom2dHatch:admfile:Geom2dHatch_xcpp_src.Out
++ Geom2dHatch:dbadmfile:Geom2dHatch_obj_inc.Out Geom2dHatch:admfile:Geom2dHatch_src.Out
++ * Geom2dHatch:admfile:Geom2dHatch_xcpp_src.Out
++ Geom2dHatch:dbadmfile:Geom2dHatch_obj_inc.Dep Geom2dHatch:admfile:Geom2dHatch_src.Out
++ * Geom2dHatch:admfile:Geom2dHatch_xcpp_src.Out

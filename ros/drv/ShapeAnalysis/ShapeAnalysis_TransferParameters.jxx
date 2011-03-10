@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfReal_HeaderFile
+#include <TColStd_HSequenceOfReal.hxx>
+#endif
+#ifndef _ShapeAnalysis_TransferParameters_HeaderFile
+#include <ShapeAnalysis_TransferParameters.hxx>
+#endif

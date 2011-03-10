@@ -1,0 +1,3 @@
+#ifndef _StepBasic_DigitalDocument_HeaderFile
+#include <StepBasic_DigitalDocument.hxx>
+#endif

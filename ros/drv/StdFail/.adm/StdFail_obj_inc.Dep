@@ -1,0 +1,6 @@
++ StdFail:dbadmfile:StdFail_obj_inc.In StdFail:admfile:StdFail_src.Out
++ * StdFail:admfile:StdFail_xcpp_src.Out
++ StdFail:dbadmfile:StdFail_obj_inc.Out StdFail:admfile:StdFail_src.Out
++ * StdFail:admfile:StdFail_xcpp_src.Out
++ StdFail:dbadmfile:StdFail_obj_inc.Dep StdFail:admfile:StdFail_src.Out
++ * StdFail:admfile:StdFail_xcpp_src.Out

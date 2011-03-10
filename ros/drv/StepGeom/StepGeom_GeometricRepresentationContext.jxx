@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_GeometricRepresentationContext_HeaderFile
+#include <StepGeom_GeometricRepresentationContext.hxx>
+#endif

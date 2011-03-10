@@ -1,0 +1,30 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _gp_Cone_HeaderFile
+#include <gp_Cone.hxx>
+#endif
+#ifndef _gp_Sphere_HeaderFile
+#include <gp_Sphere.hxx>
+#endif
+#ifndef _gp_Torus_HeaderFile
+#include <gp_Torus.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _BRepLib_MakeFace_HeaderFile
+#include <BRepLib_MakeFace.hxx>
+#endif

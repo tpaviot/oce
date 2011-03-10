@@ -1,0 +1,9 @@
+#ifndef _StepFEA_FeaModel_HeaderFile
+#include <StepFEA_FeaModel.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_FeaGroup_HeaderFile
+#include <StepFEA_FeaGroup.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _WNT_Image_HeaderFile
+#include <WNT_Image.hxx>
+#endif
+#ifndef _WNT_WDriver_HeaderFile
+#include <WNT_WDriver.hxx>
+#endif
+#ifndef _WNT_Window_HeaderFile
+#include <WNT_Window.hxx>
+#endif
+#ifndef _WNT_ImageManager_HeaderFile
+#include <WNT_ImageManager.hxx>
+#endif

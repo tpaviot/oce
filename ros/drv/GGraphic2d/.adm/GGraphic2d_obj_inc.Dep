@@ -1,0 +1,9 @@
++ GGraphic2d:pubinclude:Graphic2d_Curve.hxx GGraphic2d:source:Graphic2d_Curve.hxx
++ GGraphic2d:pubinclude:Graphic2d_CurveDefinitionError.hxx GGraphic2d:source:Graphic2d_CurveDefinitionError.hxx
++ GGraphic2d:pubinclude:Graphic2d_SetOfCurves.hxx GGraphic2d:source:Graphic2d_SetOfCurves.hxx
++ GGraphic2d:dbadmfile:GGraphic2d_obj_inc.In GGraphic2d:admfile:GGraphic2d_src.Out
++ * GGraphic2d:admfile:GGraphic2d_xcpp_src.Out
++ GGraphic2d:dbadmfile:GGraphic2d_obj_inc.Out GGraphic2d:admfile:GGraphic2d_src.Out
++ * GGraphic2d:admfile:GGraphic2d_xcpp_src.Out
++ GGraphic2d:dbadmfile:GGraphic2d_obj_inc.Dep GGraphic2d:admfile:GGraphic2d_src.Out
++ * GGraphic2d:admfile:GGraphic2d_xcpp_src.Out

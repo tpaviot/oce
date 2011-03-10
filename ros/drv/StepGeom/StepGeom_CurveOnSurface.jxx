@@ -1,0 +1,15 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepGeom_Pcurve_HeaderFile
+#include <StepGeom_Pcurve.hxx>
+#endif
+#ifndef _StepGeom_SurfaceCurve_HeaderFile
+#include <StepGeom_SurfaceCurve.hxx>
+#endif
+#ifndef _StepGeom_CompositeCurveOnSurface_HeaderFile
+#include <StepGeom_CompositeCurveOnSurface.hxx>
+#endif
+#ifndef _StepGeom_CurveOnSurface_HeaderFile
+#include <StepGeom_CurveOnSurface.hxx>
+#endif

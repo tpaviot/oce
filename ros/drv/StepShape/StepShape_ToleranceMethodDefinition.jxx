@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepShape_ToleranceValue_HeaderFile
+#include <StepShape_ToleranceValue.hxx>
+#endif
+#ifndef _StepShape_LimitsAndFits_HeaderFile
+#include <StepShape_LimitsAndFits.hxx>
+#endif
+#ifndef _StepShape_ToleranceMethodDefinition_HeaderFile
+#include <StepShape_ToleranceMethodDefinition.hxx>
+#endif

@@ -1,0 +1,9 @@
++ IntImpParGen:pubinclude:IntImpParGen.hxx IntImpParGen:msentity:IntImpParGen
++ IntImpParGen:privinclude:IntImpParGen.jxx IntImpParGen:msentity:IntImpParGen
++ IntImpParGen:privinclude:IntImpParGen.ixx IntImpParGen:msentity:IntImpParGen
++ IntImpParGen:pubinclude:IntImpParGen_ImpTool.hxx IntImpParGen:msentity:IntImpParGen_ImpTool
++ IntImpParGen:privinclude:IntImpParGen_ImpTool.jxx IntImpParGen:msentity:IntImpParGen_ImpTool
++ IntImpParGen:privinclude:IntImpParGen_ImpTool.ixx IntImpParGen:msentity:IntImpParGen_ImpTool
++ IntImpParGen:dbadmfile:IntImpParGen_xcpp_header.In IntImpParGen:admfile:IntImpParGen_xcpp_fill.Out
++ IntImpParGen:dbadmfile:IntImpParGen_xcpp_header.Out IntImpParGen:admfile:IntImpParGen_xcpp_fill.Out
++ IntImpParGen:dbadmfile:IntImpParGen_xcpp_header.Dep IntImpParGen:admfile:IntImpParGen_xcpp_fill.Out

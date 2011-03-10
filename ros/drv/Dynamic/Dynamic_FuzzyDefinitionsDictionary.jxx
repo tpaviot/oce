@@ -1,0 +1,15 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Dynamic_SequenceOfFuzzyDefinitions_HeaderFile
+#include <Dynamic_SequenceOfFuzzyDefinitions.hxx>
+#endif
+#ifndef _Dynamic_Parameter_HeaderFile
+#include <Dynamic_Parameter.hxx>
+#endif
+#ifndef _Dynamic_FuzzyClass_HeaderFile
+#include <Dynamic_FuzzyClass.hxx>
+#endif
+#ifndef _Dynamic_FuzzyDefinitionsDictionary_HeaderFile
+#include <Dynamic_FuzzyDefinitionsDictionary.hxx>
+#endif

@@ -1,0 +1,6 @@
++ RWStepElement:dbadmfile:RWStepElement_obj_inc.In RWStepElement:admfile:RWStepElement_src.Out
++ * RWStepElement:admfile:RWStepElement_xcpp_src.Out
++ RWStepElement:dbadmfile:RWStepElement_obj_inc.Out RWStepElement:admfile:RWStepElement_src.Out
++ * RWStepElement:admfile:RWStepElement_xcpp_src.Out
++ RWStepElement:dbadmfile:RWStepElement_obj_inc.Dep RWStepElement:admfile:RWStepElement_src.Out
++ * RWStepElement:admfile:RWStepElement_xcpp_src.Out

@@ -1,0 +1,6 @@
++ IGESDraw:dbadmfile:IGESDraw_obj_inc.In IGESDraw:admfile:IGESDraw_src.Out
++ * IGESDraw:admfile:IGESDraw_xcpp_src.Out
++ IGESDraw:dbadmfile:IGESDraw_obj_inc.Out IGESDraw:admfile:IGESDraw_src.Out
++ * IGESDraw:admfile:IGESDraw_xcpp_src.Out
++ IGESDraw:dbadmfile:IGESDraw_obj_inc.Dep IGESDraw:admfile:IGESDraw_src.Out
++ * IGESDraw:admfile:IGESDraw_xcpp_src.Out

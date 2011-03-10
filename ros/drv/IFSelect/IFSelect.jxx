@@ -1,0 +1,6 @@
+#ifndef _IFSelect_WorkSession_HeaderFile
+#include <IFSelect_WorkSession.hxx>
+#endif
+#ifndef _IFSelect_HeaderFile
+#include <IFSelect.hxx>
+#endif

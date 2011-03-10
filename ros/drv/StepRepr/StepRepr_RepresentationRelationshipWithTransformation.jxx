@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepRepr_Representation_HeaderFile
+#include <StepRepr_Representation.hxx>
+#endif
+#ifndef _StepRepr_Transformation_HeaderFile
+#include <StepRepr_Transformation.hxx>
+#endif
+#ifndef _StepRepr_RepresentationRelationshipWithTransformation_HeaderFile
+#include <StepRepr_RepresentationRelationshipWithTransformation.hxx>
+#endif

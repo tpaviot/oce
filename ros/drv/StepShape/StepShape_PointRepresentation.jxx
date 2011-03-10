@@ -1,0 +1,3 @@
+#ifndef _StepShape_PointRepresentation_HeaderFile
+#include <StepShape_PointRepresentation.hxx>
+#endif

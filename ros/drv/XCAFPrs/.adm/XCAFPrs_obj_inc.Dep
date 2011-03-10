@@ -1,0 +1,6 @@
++ XCAFPrs:dbadmfile:XCAFPrs_obj_inc.In XCAFPrs:admfile:XCAFPrs_src.Out
++ * XCAFPrs:admfile:XCAFPrs_xcpp_src.Out
++ XCAFPrs:dbadmfile:XCAFPrs_obj_inc.Out XCAFPrs:admfile:XCAFPrs_src.Out
++ * XCAFPrs:admfile:XCAFPrs_xcpp_src.Out
++ XCAFPrs:dbadmfile:XCAFPrs_obj_inc.Dep XCAFPrs:admfile:XCAFPrs_src.Out
++ * XCAFPrs:admfile:XCAFPrs_xcpp_src.Out

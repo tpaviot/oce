@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepRepr_CharacterizedDefinition_HeaderFile
+#include <StepRepr_CharacterizedDefinition.hxx>
+#endif
+#ifndef _StepRepr_MaterialDesignation_HeaderFile
+#include <StepRepr_MaterialDesignation.hxx>
+#endif

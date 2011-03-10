@@ -1,0 +1,15 @@
+#ifndef _StepGeom_Polyline_HeaderFile
+#include <StepGeom_Polyline.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _GeomToStep_MakePolyline_HeaderFile
+#include <GeomToStep_MakePolyline.hxx>
+#endif

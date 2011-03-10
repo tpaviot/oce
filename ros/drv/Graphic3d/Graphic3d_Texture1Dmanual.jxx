@@ -1,0 +1,6 @@
+#ifndef _Graphic3d_StructureManager_HeaderFile
+#include <Graphic3d_StructureManager.hxx>
+#endif
+#ifndef _Graphic3d_Texture1Dmanual_HeaderFile
+#include <Graphic3d_Texture1Dmanual.hxx>
+#endif

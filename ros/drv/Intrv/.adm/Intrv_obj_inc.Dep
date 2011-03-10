@@ -1,0 +1,8 @@
++ Intrv:pubinclude:Intrv_Interval.lxx Intrv:source:Intrv_Interval.lxx
++ Intrv:pubinclude:Intrv_Intervals.lxx Intrv:source:Intrv_Intervals.lxx
++ Intrv:dbadmfile:Intrv_obj_inc.In Intrv:admfile:Intrv_src.Out
++ * Intrv:admfile:Intrv_xcpp_src.Out
++ Intrv:dbadmfile:Intrv_obj_inc.Out Intrv:admfile:Intrv_src.Out
++ * Intrv:admfile:Intrv_xcpp_src.Out
++ Intrv:dbadmfile:Intrv_obj_inc.Dep Intrv:admfile:Intrv_src.Out
++ * Intrv:admfile:Intrv_xcpp_src.Out

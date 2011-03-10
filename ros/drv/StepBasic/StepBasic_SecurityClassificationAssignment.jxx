@@ -1,0 +1,6 @@
+#ifndef _StepBasic_SecurityClassification_HeaderFile
+#include <StepBasic_SecurityClassification.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassificationAssignment_HeaderFile
+#include <StepBasic_SecurityClassificationAssignment.hxx>
+#endif

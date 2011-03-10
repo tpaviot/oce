@@ -1,0 +1,27 @@
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TColStd_HArray2OfReal_HeaderFile
+#include <TColStd_HArray2OfReal.hxx>
+#endif
+#ifndef _TColGeom_HArray1OfSurface_HeaderFile
+#include <TColGeom_HArray1OfSurface.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _AdvApprox_Cutting_HeaderFile
+#include <AdvApprox_Cutting.hxx>
+#endif
+#ifndef _AdvApp2Var_Criterion_HeaderFile
+#include <AdvApp2Var_Criterion.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _AdvApp2Var_ApproxAFunc2Var_HeaderFile
+#include <AdvApp2Var_ApproxAFunc2Var.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
+#include <IntCurveSurface_IntersectionPoint.hxx>
+#endif
+#ifndef _IntCurveSurface_IntersectionSegment_HeaderFile
+#include <IntCurveSurface_IntersectionSegment.hxx>
+#endif

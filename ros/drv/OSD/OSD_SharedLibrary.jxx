@@ -1,0 +1,3 @@
+#ifndef _OSD_SharedLibrary_HeaderFile
+#include <OSD_SharedLibrary.hxx>
+#endif

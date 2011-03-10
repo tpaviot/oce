@@ -1,0 +1,12 @@
+#ifndef _TopOpeBRepBuild_ShellFaceSet_HeaderFile
+#include <TopOpeBRepBuild_ShellFaceSet.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ShapeSet_HeaderFile
+#include <TopOpeBRepBuild_ShapeSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_SolidBuilder_HeaderFile
+#include <TopOpeBRepBuild_SolidBuilder.hxx>
+#endif

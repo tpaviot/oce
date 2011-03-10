@@ -1,0 +1,3 @@
+#ifndef _StepElement_MeasureOrUnspecifiedValueMember_HeaderFile
+#include <StepElement_MeasureOrUnspecifiedValueMember.hxx>
+#endif

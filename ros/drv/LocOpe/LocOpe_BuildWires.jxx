@@ -1,0 +1,12 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _LocOpe_ProjectedWires_HeaderFile
+#include <LocOpe_ProjectedWires.hxx>
+#endif
+#ifndef _LocOpe_BuildWires_HeaderFile
+#include <LocOpe_BuildWires.hxx>
+#endif

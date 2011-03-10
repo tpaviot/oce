@@ -1,0 +1,6 @@
+#ifndef _BOP_ShellFaceSet_HeaderFile
+#include <BOP_ShellFaceSet.hxx>
+#endif
+#ifndef _BOP_SFSCorrector_HeaderFile
+#include <BOP_SFSCorrector.hxx>
+#endif

@@ -1,0 +1,57 @@
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _gp_GTrsf2d_HeaderFile
+#include <gp_GTrsf2d.hxx>
+#endif
+#ifndef _Adaptor3d_CurveOnSurface_HeaderFile
+#include <Adaptor3d_CurveOnSurface.hxx>
+#endif
+#ifndef _Geom_BoundedCurve_HeaderFile
+#include <Geom_BoundedCurve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _Geom_BoundedSurface_HeaderFile
+#include <Geom_BoundedSurface.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TColStd_SequenceOfReal_HeaderFile
+#include <TColStd_SequenceOfReal.hxx>
+#endif
+#ifndef _Adaptor3d_Curve_HeaderFile
+#include <Adaptor3d_Curve.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _GeomLib_HeaderFile
+#include <GeomLib.hxx>
+#endif

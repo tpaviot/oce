@@ -1,0 +1,3 @@
+#ifndef _Prs2d_AspectHidingText_HeaderFile
+#include <Prs2d_AspectHidingText.hxx>
+#endif

@@ -1,0 +1,24 @@
+#ifndef _HLRBRep_Data_HeaderFile
+#include <HLRBRep_Data.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _HLRAlgo_Projector_HeaderFile
+#include <HLRAlgo_Projector.hxx>
+#endif
+#ifndef _HLRTopoBRep_OutLiner_HeaderFile
+#include <HLRTopoBRep_OutLiner.hxx>
+#endif
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
+#endif
+#ifndef _HLRBRep_SeqOfShapeBounds_HeaderFile
+#include <HLRBRep_SeqOfShapeBounds.hxx>
+#endif
+#ifndef _HLRBRep_ShapeBounds_HeaderFile
+#include <HLRBRep_ShapeBounds.hxx>
+#endif
+#ifndef _HLRBRep_InternalAlgo_HeaderFile
+#include <HLRBRep_InternalAlgo.hxx>
+#endif

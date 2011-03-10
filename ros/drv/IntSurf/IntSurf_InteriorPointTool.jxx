@@ -1,0 +1,6 @@
+#ifndef _IntSurf_InteriorPoint_HeaderFile
+#include <IntSurf_InteriorPoint.hxx>
+#endif
+#ifndef _IntSurf_InteriorPointTool_HeaderFile
+#include <IntSurf_InteriorPointTool.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _XCAFDoc_HeaderFile
+#include <XCAFDoc.hxx>
+#endif

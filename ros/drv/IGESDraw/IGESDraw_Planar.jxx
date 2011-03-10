@@ -1,0 +1,15 @@
+#ifndef _IGESGeom_TransformationMatrix_HeaderFile
+#include <IGESGeom_TransformationMatrix.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESDraw_Planar_HeaderFile
+#include <IGESDraw_Planar.hxx>
+#endif

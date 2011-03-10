@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _BRepOffsetAPI_MakeThickSolid_HeaderFile
+#include <BRepOffsetAPI_MakeThickSolid.hxx>
+#endif

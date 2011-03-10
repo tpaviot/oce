@@ -1,0 +1,9 @@
+pubinclude MgtPoly.hxx
+privinclude MgtPoly.jxx
+privinclude MgtPoly.ixx
+dbadmfile MgtPoly_xcpp_header.In
+dbadmfile MgtPoly_xcpp_header.Out
+dbadmfile MgtPoly_xcpp_header.Dep
+dbadmfile MgtPoly_obj_inc.In
+dbadmfile MgtPoly_obj_inc.Out
+dbadmfile MgtPoly_obj_inc.Dep

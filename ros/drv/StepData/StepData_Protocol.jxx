@@ -1,0 +1,33 @@
+#ifndef _Dico_DictionaryOfTransient_HeaderFile
+#include <Dico_DictionaryOfTransient.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _StepData_EDescr_HeaderFile
+#include <StepData_EDescr.hxx>
+#endif
+#ifndef _StepData_ESDescr_HeaderFile
+#include <StepData_ESDescr.hxx>
+#endif
+#ifndef _StepData_ECDescr_HeaderFile
+#include <StepData_ECDescr.hxx>
+#endif
+#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
+#include <TColStd_SequenceOfAsciiString.hxx>
+#endif
+#ifndef _StepData_PDescr_HeaderFile
+#include <StepData_PDescr.hxx>
+#endif
+#ifndef _StepData_Protocol_HeaderFile
+#include <StepData_Protocol.hxx>
+#endif

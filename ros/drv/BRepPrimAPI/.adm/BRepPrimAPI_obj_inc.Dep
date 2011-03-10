@@ -1,0 +1,6 @@
++ BRepPrimAPI:dbadmfile:BRepPrimAPI_obj_inc.In BRepPrimAPI:admfile:BRepPrimAPI_src.Out
++ * BRepPrimAPI:admfile:BRepPrimAPI_xcpp_src.Out
++ BRepPrimAPI:dbadmfile:BRepPrimAPI_obj_inc.Out BRepPrimAPI:admfile:BRepPrimAPI_src.Out
++ * BRepPrimAPI:admfile:BRepPrimAPI_xcpp_src.Out
++ BRepPrimAPI:dbadmfile:BRepPrimAPI_obj_inc.Dep BRepPrimAPI:admfile:BRepPrimAPI_src.Out
++ * BRepPrimAPI:admfile:BRepPrimAPI_xcpp_src.Out

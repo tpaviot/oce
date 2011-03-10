@@ -1,0 +1,9 @@
+#ifndef _StepBasic_MassUnit_HeaderFile
+#include <StepBasic_MassUnit.hxx>
+#endif
+#ifndef _StepBasic_DimensionalExponents_HeaderFile
+#include <StepBasic_DimensionalExponents.hxx>
+#endif
+#ifndef _StepBasic_SiUnitAndMassUnit_HeaderFile
+#include <StepBasic_SiUnitAndMassUnit.hxx>
+#endif

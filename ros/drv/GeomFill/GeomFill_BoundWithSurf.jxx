@@ -1,0 +1,15 @@
+#ifndef _Law_Function_HeaderFile
+#include <Law_Function.hxx>
+#endif
+#ifndef _Adaptor3d_CurveOnSurface_HeaderFile
+#include <Adaptor3d_CurveOnSurface.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomFill_BoundWithSurf_HeaderFile
+#include <GeomFill_BoundWithSurf.hxx>
+#endif

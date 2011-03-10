@@ -1,0 +1,9 @@
+#ifndef _BOPTools_ListOfPave_HeaderFile
+#include <BOPTools_ListOfPave.hxx>
+#endif
+#ifndef _BOPTools_Pave_HeaderFile
+#include <BOPTools_Pave.hxx>
+#endif
+#ifndef _BOPTools_PaveSet_HeaderFile
+#include <BOPTools_PaveSet.hxx>
+#endif

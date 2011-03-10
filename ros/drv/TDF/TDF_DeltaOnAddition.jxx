@@ -1,0 +1,6 @@
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_DeltaOnAddition_HeaderFile
+#include <TDF_DeltaOnAddition.hxx>
+#endif

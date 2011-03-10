@@ -1,0 +1,33 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TColStd_SetOfInteger_HeaderFile
+#include <TColStd_SetOfInteger.hxx>
+#endif
+#ifndef _BOPTools_SSIntersectionAttribute_HeaderFile
+#include <BOPTools_SSIntersectionAttribute.hxx>
+#endif
+#ifndef _BooleanOperations_ShapesDataStructure_HeaderFile
+#include <BooleanOperations_ShapesDataStructure.hxx>
+#endif
+#ifndef _BOPTools_InterferencePool_HeaderFile
+#include <BOPTools_InterferencePool.hxx>
+#endif
+#ifndef _BOPTools_PavePool_HeaderFile
+#include <BOPTools_PavePool.hxx>
+#endif
+#ifndef _BOPTools_CommonBlockPool_HeaderFile
+#include <BOPTools_CommonBlockPool.hxx>
+#endif
+#ifndef _BOPTools_SplitShapesPool_HeaderFile
+#include <BOPTools_SplitShapesPool.hxx>
+#endif
+#ifndef _BOPTools_PaveFiller_HeaderFile
+#include <BOPTools_PaveFiller.hxx>
+#endif
+#ifndef _TColStd_DataMapOfIntegerListOfInteger_HeaderFile
+#include <TColStd_DataMapOfIntegerListOfInteger.hxx>
+#endif
+#ifndef _BOPTools_DSFiller_HeaderFile
+#include <BOPTools_DSFiller.hxx>
+#endif

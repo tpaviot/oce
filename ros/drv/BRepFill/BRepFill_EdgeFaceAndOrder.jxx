@@ -1,0 +1,12 @@
+#ifndef _BRepFill_Filling_HeaderFile
+#include <BRepFill_Filling.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepFill_EdgeFaceAndOrder_HeaderFile
+#include <BRepFill_EdgeFaceAndOrder.hxx>
+#endif

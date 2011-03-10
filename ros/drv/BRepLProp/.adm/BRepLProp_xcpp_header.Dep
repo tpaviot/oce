@@ -1,0 +1,16 @@
++ BRepLProp:pubinclude:BRepLProp.hxx BRepLProp:msentity:BRepLProp
++ BRepLProp:privinclude:BRepLProp.jxx BRepLProp:msentity:BRepLProp
++ BRepLProp:privinclude:BRepLProp.ixx BRepLProp:msentity:BRepLProp
++ BRepLProp:pubinclude:BRepLProp_CurveTool.hxx BRepLProp:msentity:BRepLProp_CurveTool
++ BRepLProp:privinclude:BRepLProp_CurveTool.jxx BRepLProp:msentity:BRepLProp_CurveTool
++ BRepLProp:privinclude:BRepLProp_CurveTool.ixx BRepLProp:msentity:BRepLProp_CurveTool
++ BRepLProp:pubinclude:BRepLProp_SurfaceTool.hxx BRepLProp:msentity:BRepLProp_SurfaceTool
++ BRepLProp:privinclude:BRepLProp_SurfaceTool.jxx BRepLProp:msentity:BRepLProp_SurfaceTool
++ BRepLProp:privinclude:BRepLProp_SurfaceTool.ixx BRepLProp:msentity:BRepLProp_SurfaceTool
++ BRepLProp:pubinclude:BRepLProp_CLProps.hxx BRepLProp:msentity:BRepLProp_CLProps
++ BRepLProp:derivated:BRepLProp_CLProps_0.cxx BRepLProp:msentity:BRepLProp_CLProps
++ BRepLProp:pubinclude:BRepLProp_SLProps.hxx BRepLProp:msentity:BRepLProp_SLProps
++ BRepLProp:derivated:BRepLProp_SLProps_0.cxx BRepLProp:msentity:BRepLProp_SLProps
++ BRepLProp:dbadmfile:BRepLProp_xcpp_header.In BRepLProp:admfile:BRepLProp_xcpp_fill.Out
++ BRepLProp:dbadmfile:BRepLProp_xcpp_header.Out BRepLProp:admfile:BRepLProp_xcpp_fill.Out
++ BRepLProp:dbadmfile:BRepLProp_xcpp_header.Dep BRepLProp:admfile:BRepLProp_xcpp_fill.Out

@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_PerpendicularityTolerance_HeaderFile
+#include <StepDimTol_PerpendicularityTolerance.hxx>
+#endif

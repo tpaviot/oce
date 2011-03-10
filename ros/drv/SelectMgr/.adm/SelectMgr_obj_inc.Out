@@ -1,0 +1,11 @@
++M SelectMgr:pubinclude:SelectMgr_DataMapOfObjectOwners.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_DataMapOfObjectOwners.hxx
++M SelectMgr:pubinclude:SelectMgr_CompareResults.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_CompareResults.hxx
++M SelectMgr:pubinclude:SelectMgr_SelectableObject.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_SelectableObject.lxx
++M SelectMgr:pubinclude:SelectMgr_ViewerSelector.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_ViewerSelector.lxx
++M SelectMgr:pubinclude:SelectMgr_CompositionFilter.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_CompositionFilter.lxx
++M SelectMgr:pubinclude:SelectMgr_EntityOwner.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_EntityOwner.lxx
++M SelectMgr:pubinclude:SelectMgr_Selection.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_Selection.lxx
++M SelectMgr:pubinclude:SelectMgr_SortCriterion.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SelectMgr_SortCriterion.lxx
++M SelectMgr:dbadmfile:SelectMgr_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SelectMgr/.adm/SelectMgr_obj_inc.In
++M SelectMgr:dbadmfile:SelectMgr_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SelectMgr/.adm/SelectMgr_obj_inc.Out
++M SelectMgr:dbadmfile:SelectMgr_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SelectMgr/.adm/SelectMgr_obj_inc.Dep

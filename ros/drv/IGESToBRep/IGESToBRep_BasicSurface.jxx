@@ -1,0 +1,51 @@
+#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
+#include <IGESToBRep_CurveAndSurface.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _IGESSolid_PlaneSurface_HeaderFile
+#include <IGESSolid_PlaneSurface.hxx>
+#endif
+#ifndef _Geom_CylindricalSurface_HeaderFile
+#include <Geom_CylindricalSurface.hxx>
+#endif
+#ifndef _IGESSolid_CylindricalSurface_HeaderFile
+#include <IGESSolid_CylindricalSurface.hxx>
+#endif
+#ifndef _Geom_ConicalSurface_HeaderFile
+#include <Geom_ConicalSurface.hxx>
+#endif
+#ifndef _IGESSolid_ConicalSurface_HeaderFile
+#include <IGESSolid_ConicalSurface.hxx>
+#endif
+#ifndef _Geom_SphericalSurface_HeaderFile
+#include <Geom_SphericalSurface.hxx>
+#endif
+#ifndef _IGESSolid_SphericalSurface_HeaderFile
+#include <IGESSolid_SphericalSurface.hxx>
+#endif
+#ifndef _Geom_ToroidalSurface_HeaderFile
+#include <Geom_ToroidalSurface.hxx>
+#endif
+#ifndef _IGESSolid_ToroidalSurface_HeaderFile
+#include <IGESSolid_ToroidalSurface.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _IGESGeom_SplineSurface_HeaderFile
+#include <IGESGeom_SplineSurface.hxx>
+#endif
+#ifndef _IGESGeom_BSplineSurface_HeaderFile
+#include <IGESGeom_BSplineSurface.hxx>
+#endif
+#ifndef _IGESToBRep_BasicSurface_HeaderFile
+#include <IGESToBRep_BasicSurface.hxx>
+#endif

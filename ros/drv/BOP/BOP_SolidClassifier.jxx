@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _BOP_SolidClassifier_HeaderFile
+#include <BOP_SolidClassifier.hxx>
+#endif

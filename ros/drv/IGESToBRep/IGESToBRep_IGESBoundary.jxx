@@ -1,0 +1,21 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _ShapeExtend_WireData_HeaderFile
+#include <ShapeExtend_WireData.hxx>
+#endif
+#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
+#include <IGESToBRep_CurveAndSurface.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _IGESToBRep_IGESBoundary_HeaderFile
+#include <IGESToBRep_IGESBoundary.hxx>
+#endif

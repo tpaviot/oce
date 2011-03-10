@@ -1,0 +1,9 @@
+#ifndef _StepBasic_Approval_HeaderFile
+#include <StepBasic_Approval.hxx>
+#endif
+#ifndef _StepBasic_DateTimeSelect_HeaderFile
+#include <StepBasic_DateTimeSelect.hxx>
+#endif
+#ifndef _StepBasic_ApprovalDateTime_HeaderFile
+#include <StepBasic_ApprovalDateTime.hxx>
+#endif

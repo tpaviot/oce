@@ -1,0 +1,5 @@
+#include <StdLSchema_Standard_Persistent.ixx>
+#ifndef _StdLSchema_PDataStd_FieldOfHArray1OfHAsciiString_HeaderFile
+#include <StdLSchema_PDataStd_FieldOfHArray1OfHAsciiString.hxx>
+#endif
+

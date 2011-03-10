@@ -1,0 +1,18 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_NullObject_HeaderFile
+#include <Standard_NullObject.hxx>
+#endif
+#ifndef _OSD_OSDError_HeaderFile
+#include <OSD_OSDError.hxx>
+#endif
+#ifndef _Standard_ProgramError_HeaderFile
+#include <Standard_ProgramError.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _OSD_SharedMemory_HeaderFile
+#include <OSD_SharedMemory.hxx>
+#endif

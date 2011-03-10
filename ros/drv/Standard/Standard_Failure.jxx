@@ -1,0 +1,6 @@
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Standard_Failure_HeaderFile
+#include <Standard_Failure.hxx>
+#endif

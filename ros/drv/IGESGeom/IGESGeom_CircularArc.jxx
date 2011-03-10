@@ -1,0 +1,15 @@
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _IGESGeom_CircularArc_HeaderFile
+#include <IGESGeom_CircularArc.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _XmlMDF_ADriverTable_HeaderFile
+#include <XmlMDF_ADriverTable.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _XmlDrivers_HeaderFile
+#include <XmlDrivers.hxx>
+#endif

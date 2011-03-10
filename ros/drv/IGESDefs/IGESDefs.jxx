@@ -1,0 +1,6 @@
+#ifndef _IGESDefs_Protocol_HeaderFile
+#include <IGESDefs_Protocol.hxx>
+#endif
+#ifndef _IGESDefs_HeaderFile
+#include <IGESDefs.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _Geom2d_Transformation_HeaderFile
+#include <Geom2d_Transformation.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Ax2d_HeaderFile
+#include <gp_Ax2d.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _gp_Dir2d_HeaderFile
+#include <gp_Dir2d.hxx>
+#endif
+#ifndef _GCE2d_MakeMirror_HeaderFile
+#include <GCE2d_MakeMirror.hxx>
+#endif

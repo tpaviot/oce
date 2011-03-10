@@ -1,0 +1,15 @@
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_HSequenceOfShape_HeaderFile
+#include <TopTools_HSequenceOfShape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _ShapeExtend_Explorer_HeaderFile
+#include <ShapeExtend_Explorer.hxx>
+#endif

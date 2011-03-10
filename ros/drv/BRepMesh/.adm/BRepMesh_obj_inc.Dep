@@ -1,0 +1,17 @@
++ BRepMesh:pubinclude:BRepMesh_PluginMacro.hxx BRepMesh:source:BRepMesh_PluginMacro.hxx
++ BRepMesh:pubinclude:BRepMesh_ClassifierPtr.hxx BRepMesh:source:BRepMesh_ClassifierPtr.hxx
++ BRepMesh:pubinclude:BRepMesh_Vertex.lxx BRepMesh:source:BRepMesh_Vertex.lxx
++ BRepMesh:pubinclude:BRepMesh_Edge.lxx BRepMesh:source:BRepMesh_Edge.lxx
++ BRepMesh:pubinclude:BRepMesh_Triangle.lxx BRepMesh:source:BRepMesh_Triangle.lxx
++ BRepMesh:pubinclude:BRepMesh_ShapeTool.lxx BRepMesh:source:BRepMesh_ShapeTool.lxx
++ BRepMesh:pubinclude:BRepMesh_BiPoint.lxx BRepMesh:source:BRepMesh_BiPoint.lxx
++ BRepMesh:pubinclude:BRepMesh_FastDiscret.lxx BRepMesh:source:BRepMesh_FastDiscret.lxx
++ BRepMesh:pubinclude:BRepMesh_FaceAttribute.lxx BRepMesh:source:BRepMesh_FaceAttribute.lxx
++ BRepMesh:pubinclude:BRepMesh_Classifier.lxx BRepMesh:source:BRepMesh_Classifier.lxx
++ BRepMesh:pubinclude:BRepMesh_PairOfPolygon.lxx BRepMesh:source:BRepMesh_PairOfPolygon.lxx
++ BRepMesh:dbadmfile:BRepMesh_obj_inc.In BRepMesh:admfile:BRepMesh_src.Out
++ * BRepMesh:admfile:BRepMesh_xcpp_src.Out
++ BRepMesh:dbadmfile:BRepMesh_obj_inc.Out BRepMesh:admfile:BRepMesh_src.Out
++ * BRepMesh:admfile:BRepMesh_xcpp_src.Out
++ BRepMesh:dbadmfile:BRepMesh_obj_inc.Dep BRepMesh:admfile:BRepMesh_src.Out
++ * BRepMesh:admfile:BRepMesh_xcpp_src.Out

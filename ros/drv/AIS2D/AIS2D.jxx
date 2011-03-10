@@ -1,0 +1,9 @@
+#ifndef _AIS2D_InteractiveContext_HeaderFile
+#include <AIS2D_InteractiveContext.hxx>
+#endif
+#ifndef _AIS2D_InteractiveObject_HeaderFile
+#include <AIS2D_InteractiveObject.hxx>
+#endif
+#ifndef _AIS2D_HeaderFile
+#include <AIS2D.hxx>
+#endif

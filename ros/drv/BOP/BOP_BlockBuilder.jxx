@@ -1,0 +1,12 @@
+#ifndef _BOP_ShapeSet_HeaderFile
+#include <BOP_ShapeSet.hxx>
+#endif
+#ifndef _BOP_BlockIterator_HeaderFile
+#include <BOP_BlockIterator.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOP_BlockBuilder_HeaderFile
+#include <BOP_BlockBuilder.hxx>
+#endif

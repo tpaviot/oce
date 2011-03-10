@@ -1,0 +1,3 @@
+#ifndef _Dynamic_IntegerParameter_HeaderFile
+#include <Dynamic_IntegerParameter.hxx>
+#endif

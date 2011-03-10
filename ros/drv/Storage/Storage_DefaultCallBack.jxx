@@ -1,0 +1,12 @@
+#ifndef _Standard_Persistent_HeaderFile
+#include <Standard_Persistent.hxx>
+#endif
+#ifndef _Storage_Schema_HeaderFile
+#include <Storage_Schema.hxx>
+#endif
+#ifndef _Storage_BaseDriver_HeaderFile
+#include <Storage_BaseDriver.hxx>
+#endif
+#ifndef _Storage_DefaultCallBack_HeaderFile
+#include <Storage_DefaultCallBack.hxx>
+#endif

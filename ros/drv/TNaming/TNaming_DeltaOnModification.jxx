@@ -1,0 +1,9 @@
+#ifndef _TopTools_HArray1OfShape_HeaderFile
+#include <TopTools_HArray1OfShape.hxx>
+#endif
+#ifndef _TNaming_NamedShape_HeaderFile
+#include <TNaming_NamedShape.hxx>
+#endif
+#ifndef _TNaming_DeltaOnModification_HeaderFile
+#include <TNaming_DeltaOnModification.hxx>
+#endif

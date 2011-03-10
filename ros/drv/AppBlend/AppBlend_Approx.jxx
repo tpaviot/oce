@@ -1,0 +1,27 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TColgp_Array2OfPnt_HeaderFile
+#include <TColgp_Array2OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array2OfReal_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _AppBlend_Approx_HeaderFile
+#include <AppBlend_Approx.hxx>
+#endif

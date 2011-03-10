@@ -1,0 +1,8 @@
++ Storage:source:Storage_Macros.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_Macros.hxx
++ Storage:source:Storage_BucketOfPersistent.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_BucketOfPersistent.hxx
++ Storage:source:Storage_Position.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_Position.hxx
++ Storage:source:Storage_Container.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_Container.hxx
++ Storage:source:Storage_BaseDriver.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_BaseDriver.lxx
++ Storage:source:Storage_Schema.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Storage/Storage_Schema.lxx
+- Storage:admfile:Storage_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Storage/Storage_src.Out
+- Storage:admfile:Storage_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Storage/Storage_xcpp_src.Out

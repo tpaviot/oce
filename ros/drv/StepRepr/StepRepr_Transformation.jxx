@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepRepr_ItemDefinedTransformation_HeaderFile
+#include <StepRepr_ItemDefinedTransformation.hxx>
+#endif
+#ifndef _StepRepr_FunctionallyDefinedTransformation_HeaderFile
+#include <StepRepr_FunctionallyDefinedTransformation.hxx>
+#endif
+#ifndef _StepRepr_Transformation_HeaderFile
+#include <StepRepr_Transformation.hxx>
+#endif

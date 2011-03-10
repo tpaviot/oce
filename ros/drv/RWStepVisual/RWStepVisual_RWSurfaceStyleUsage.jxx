@@ -1,0 +1,18 @@
+#ifndef _StepData_StepReaderData_HeaderFile
+#include <StepData_StepReaderData.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleUsage_HeaderFile
+#include <StepVisual_SurfaceStyleUsage.hxx>
+#endif
+#ifndef _StepData_StepWriter_HeaderFile
+#include <StepData_StepWriter.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _RWStepVisual_RWSurfaceStyleUsage_HeaderFile
+#include <RWStepVisual_RWSurfaceStyleUsage.hxx>
+#endif

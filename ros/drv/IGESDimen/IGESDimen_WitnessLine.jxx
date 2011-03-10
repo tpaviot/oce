@@ -1,0 +1,12 @@
+#ifndef _TColgp_HArray1OfXY_HeaderFile
+#include <TColgp_HArray1OfXY.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IGESDimen_WitnessLine_HeaderFile
+#include <IGESDimen_WitnessLine.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StepData_Field_HeaderFile
+#include <StepData_Field.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _StepData_FieldList_HeaderFile
+#include <StepData_FieldList.hxx>
+#endif

@@ -1,0 +1,6 @@
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_obj_inc.In ShapeProcessAPI:admfile:ShapeProcessAPI_src.Out
++ * ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_src.Out
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_obj_inc.Out ShapeProcessAPI:admfile:ShapeProcessAPI_src.Out
++ * ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_src.Out
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_obj_inc.Dep ShapeProcessAPI:admfile:ShapeProcessAPI_src.Out
++ * ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_src.Out

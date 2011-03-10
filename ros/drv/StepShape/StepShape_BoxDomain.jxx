@@ -1,0 +1,6 @@
+#ifndef _StepGeom_CartesianPoint_HeaderFile
+#include <StepGeom_CartesianPoint.hxx>
+#endif
+#ifndef _StepShape_BoxDomain_HeaderFile
+#include <StepShape_BoxDomain.hxx>
+#endif

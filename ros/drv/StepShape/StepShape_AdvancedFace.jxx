@@ -1,0 +1,3 @@
+#ifndef _StepShape_AdvancedFace_HeaderFile
+#include <StepShape_AdvancedFace.hxx>
+#endif

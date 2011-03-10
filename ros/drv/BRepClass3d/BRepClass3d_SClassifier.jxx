@@ -1,0 +1,15 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _BRepClass3d_SolidExplorer_HeaderFile
+#include <BRepClass3d_SolidExplorer.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepClass3d_SClassifier_HeaderFile
+#include <BRepClass3d_SClassifier.hxx>
+#endif

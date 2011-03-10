@@ -1,0 +1,12 @@
+#ifndef _StepAP214_HArray1OfAutoDesignGeneralOrgItem_HeaderFile
+#include <StepAP214_HArray1OfAutoDesignGeneralOrgItem.hxx>
+#endif
+#ifndef _StepBasic_Approval_HeaderFile
+#include <StepBasic_Approval.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignGeneralOrgItem_HeaderFile
+#include <StepAP214_AutoDesignGeneralOrgItem.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignApprovalAssignment_HeaderFile
+#include <StepAP214_AutoDesignApprovalAssignment.hxx>
+#endif

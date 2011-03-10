@@ -1,0 +1,9 @@
+#ifndef _Storage_CallBack_HeaderFile
+#include <Storage_CallBack.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Storage_TypedCallBack_HeaderFile
+#include <Storage_TypedCallBack.hxx>
+#endif

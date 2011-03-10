@@ -1,0 +1,7 @@
++ PCDMShape:pubinclude:Handle_PCDMShape_Document.hxx PCDMShape:msentity:PCDMShape_Document
++ PCDMShape:pubinclude:PCDMShape_Document.hxx PCDMShape:msentity:PCDMShape_Document
++ PCDMShape:privinclude:PCDMShape_Document.jxx PCDMShape:msentity:PCDMShape_Document
++ PCDMShape:privinclude:PCDMShape_Document.ixx PCDMShape:msentity:PCDMShape_Document
++ PCDMShape:dbadmfile:PCDMShape_xcpp_header.In PCDMShape:admfile:PCDMShape_xcpp_fill.Out
++ PCDMShape:dbadmfile:PCDMShape_xcpp_header.Out PCDMShape:admfile:PCDMShape_xcpp_fill.Out
++ PCDMShape:dbadmfile:PCDMShape_xcpp_header.Dep PCDMShape:admfile:PCDMShape_xcpp_fill.Out

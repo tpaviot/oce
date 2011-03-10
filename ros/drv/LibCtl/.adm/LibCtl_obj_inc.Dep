@@ -1,0 +1,10 @@
++ LibCtl:pubinclude:LibCtl_GlobalNode.gxx LibCtl:source:LibCtl_GlobalNode.gxx
++ LibCtl:pubinclude:LibCtl_Library.gxx LibCtl:source:LibCtl_Library.gxx
++ LibCtl:pubinclude:LibCtl_Node.gxx LibCtl:source:LibCtl_Node.gxx
++ LibCtl:pubinclude:LibCtl_ProtocolTemplate.gxx LibCtl:source:LibCtl_ProtocolTemplate.gxx
++ LibCtl:dbadmfile:LibCtl_obj_inc.In LibCtl:admfile:LibCtl_src.Out
++ * LibCtl:admfile:LibCtl_xcpp_src.Out
++ LibCtl:dbadmfile:LibCtl_obj_inc.Out LibCtl:admfile:LibCtl_src.Out
++ * LibCtl:admfile:LibCtl_xcpp_src.Out
++ LibCtl:dbadmfile:LibCtl_obj_inc.Dep LibCtl:admfile:LibCtl_src.Out
++ * LibCtl:admfile:LibCtl_xcpp_src.Out

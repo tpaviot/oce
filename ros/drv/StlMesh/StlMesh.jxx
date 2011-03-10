@@ -1,0 +1,6 @@
+#ifndef _StlMesh_Mesh_HeaderFile
+#include <StlMesh_Mesh.hxx>
+#endif
+#ifndef _StlMesh_HeaderFile
+#include <StlMesh.hxx>
+#endif

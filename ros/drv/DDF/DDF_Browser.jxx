@@ -1,0 +1,21 @@
+#ifndef _TDF_Data_HeaderFile
+#include <TDF_Data.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _Draw_Drawable3D_HeaderFile
+#include <Draw_Drawable3D.hxx>
+#endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _DDF_Browser_HeaderFile
+#include <DDF_Browser.hxx>
+#endif

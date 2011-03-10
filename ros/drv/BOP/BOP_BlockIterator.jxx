@@ -1,0 +1,6 @@
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _BOP_BlockIterator_HeaderFile
+#include <BOP_BlockIterator.hxx>
+#endif

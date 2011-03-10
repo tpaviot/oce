@@ -1,0 +1,6 @@
+#ifndef _Geom_Point_HeaderFile
+#include <Geom_Point.hxx>
+#endif
+#ifndef _StdPrs_ToolPoint_HeaderFile
+#include <StdPrs_ToolPoint.hxx>
+#endif

@@ -1,0 +1,39 @@
+#ifndef _XSControl_Controller_HeaderFile
+#include <XSControl_Controller.hxx>
+#endif
+#ifndef _XSControl_TransferReader_HeaderFile
+#include <XSControl_TransferReader.hxx>
+#endif
+#ifndef _XSControl_TransferWriter_HeaderFile
+#include <XSControl_TransferWriter.hxx>
+#endif
+#ifndef _Dico_DictionaryOfTransient_HeaderFile
+#include <Dico_DictionaryOfTransient.hxx>
+#endif
+#ifndef _XSControl_Vars_HeaderFile
+#include <XSControl_Vars.hxx>
+#endif
+#ifndef _Message_Messenger_HeaderFile
+#include <Message_Messenger.hxx>
+#endif
+#ifndef _Transfer_TransientProcess_HeaderFile
+#include <Transfer_TransientProcess.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Transfer_FinderProcess_HeaderFile
+#include <Transfer_FinderProcess.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Interface_CheckIterator_HeaderFile
+#include <Interface_CheckIterator.hxx>
+#endif
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif

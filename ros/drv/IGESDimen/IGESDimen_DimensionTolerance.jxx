@@ -1,0 +1,3 @@
+#ifndef _IGESDimen_DimensionTolerance_HeaderFile
+#include <IGESDimen_DimensionTolerance.hxx>
+#endif

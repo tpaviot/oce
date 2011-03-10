@@ -1,0 +1,6 @@
+#ifndef _BooleanOperations_AncestorsSeqAndSuccessorsSeq_HeaderFile
+#include <BooleanOperations_AncestorsSeqAndSuccessorsSeq.hxx>
+#endif
+#ifndef _BooleanOperations_AncestorsAndSuccessors_HeaderFile
+#include <BooleanOperations_AncestorsAndSuccessors.hxx>
+#endif

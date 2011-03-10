@@ -1,0 +1,3 @@
+#ifndef _IFSelect_IntParam_HeaderFile
+#include <IFSelect_IntParam.hxx>
+#endif

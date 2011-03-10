@@ -1,0 +1,12 @@
+#ifndef _BOPTools_ListOfCommonBlock_HeaderFile
+#include <BOPTools_ListOfCommonBlock.hxx>
+#endif
+#ifndef _BOPTools_ListOfPaveBlock_HeaderFile
+#include <BOPTools_ListOfPaveBlock.hxx>
+#endif
+#ifndef _BOPTools_PaveBlock_HeaderFile
+#include <BOPTools_PaveBlock.hxx>
+#endif
+#ifndef _BOPTools_CommonBlockAPI_HeaderFile
+#include <BOPTools_CommonBlockAPI.hxx>
+#endif

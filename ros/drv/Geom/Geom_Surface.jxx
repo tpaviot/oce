@@ -1,0 +1,30 @@
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Geom_UndefinedDerivative_HeaderFile
+#include <Geom_UndefinedDerivative.hxx>
+#endif
+#ifndef _Geom_UndefinedValue_HeaderFile
+#include <Geom_UndefinedValue.hxx>
+#endif
+#ifndef _gp_Trsf_HeaderFile
+#include <gp_Trsf.hxx>
+#endif
+#ifndef _gp_GTrsf2d_HeaderFile
+#include <gp_GTrsf2d.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif

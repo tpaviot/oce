@@ -1,0 +1,6 @@
++ ApproxInt:pubinclude:ApproxInt_SvSurfaces.hxx ApproxInt:msentity:ApproxInt_SvSurfaces
++ ApproxInt:privinclude:ApproxInt_SvSurfaces.jxx ApproxInt:msentity:ApproxInt_SvSurfaces
++ ApproxInt:privinclude:ApproxInt_SvSurfaces.ixx ApproxInt:msentity:ApproxInt_SvSurfaces
++ ApproxInt:dbadmfile:ApproxInt_xcpp_header.In ApproxInt:admfile:ApproxInt_xcpp_fill.Out
++ ApproxInt:dbadmfile:ApproxInt_xcpp_header.Out ApproxInt:admfile:ApproxInt_xcpp_fill.Out
++ ApproxInt:dbadmfile:ApproxInt_xcpp_header.Dep ApproxInt:admfile:ApproxInt_xcpp_fill.Out

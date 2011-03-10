@@ -1,0 +1,3 @@
+#ifndef _IntPolyh_Edge_HeaderFile
+#include <IntPolyh_Edge.hxx>
+#endif

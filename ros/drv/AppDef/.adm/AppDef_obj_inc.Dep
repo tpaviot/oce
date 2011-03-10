@@ -1,0 +1,6 @@
++ AppDef:dbadmfile:AppDef_obj_inc.In AppDef:admfile:AppDef_src.Out
++ * AppDef:admfile:AppDef_xcpp_src.Out
++ AppDef:dbadmfile:AppDef_obj_inc.Out AppDef:admfile:AppDef_src.Out
++ * AppDef:admfile:AppDef_xcpp_src.Out
++ AppDef:dbadmfile:AppDef_obj_inc.Dep AppDef:admfile:AppDef_src.Out
++ * AppDef:admfile:AppDef_xcpp_src.Out

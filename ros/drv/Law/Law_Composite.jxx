@@ -1,0 +1,15 @@
+#ifndef _Law_Function_HeaderFile
+#include <Law_Function.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _Law_Laws_HeaderFile
+#include <Law_Laws.hxx>
+#endif
+#ifndef _Law_Composite_HeaderFile
+#include <Law_Composite.hxx>
+#endif

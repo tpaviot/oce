@@ -1,0 +1,6 @@
++ PS:dbadmfile:PS_obj_inc.In PS:admfile:PS_src.Out
++ * PS:admfile:PS_xcpp_src.Out
++ PS:dbadmfile:PS_obj_inc.Out PS:admfile:PS_src.Out
++ * PS:admfile:PS_xcpp_src.Out
++ PS:dbadmfile:PS_obj_inc.Dep PS:admfile:PS_src.Out
++ * PS:admfile:PS_xcpp_src.Out

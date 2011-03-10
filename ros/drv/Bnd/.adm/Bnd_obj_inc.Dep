@@ -1,0 +1,12 @@
++ Bnd:pubinclude:Bnd_Box.lxx Bnd:source:Bnd_Box.lxx
++ Bnd:pubinclude:Bnd_Box2d.lxx Bnd:source:Bnd_Box2d.lxx
++ Bnd:pubinclude:Bnd_B2x.gxx Bnd:source:Bnd_B2x.gxx
++ Bnd:pubinclude:Bnd_B2x.lxx Bnd:source:Bnd_B2x.lxx
++ Bnd:pubinclude:Bnd_B3x.gxx Bnd:source:Bnd_B3x.gxx
++ Bnd:pubinclude:Bnd_B3x.lxx Bnd:source:Bnd_B3x.lxx
++ Bnd:dbadmfile:Bnd_obj_inc.In Bnd:admfile:Bnd_src.Out
++ * Bnd:admfile:Bnd_xcpp_src.Out
++ Bnd:dbadmfile:Bnd_obj_inc.Out Bnd:admfile:Bnd_src.Out
++ * Bnd:admfile:Bnd_xcpp_src.Out
++ Bnd:dbadmfile:Bnd_obj_inc.Dep Bnd:admfile:Bnd_src.Out
++ * Bnd:admfile:Bnd_xcpp_src.Out

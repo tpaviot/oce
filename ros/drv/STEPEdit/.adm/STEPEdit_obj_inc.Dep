@@ -1,0 +1,6 @@
++ STEPEdit:dbadmfile:STEPEdit_obj_inc.In STEPEdit:admfile:STEPEdit_src.Out
++ * STEPEdit:admfile:STEPEdit_xcpp_src.Out
++ STEPEdit:dbadmfile:STEPEdit_obj_inc.Out STEPEdit:admfile:STEPEdit_src.Out
++ * STEPEdit:admfile:STEPEdit_xcpp_src.Out
++ STEPEdit:dbadmfile:STEPEdit_obj_inc.Dep STEPEdit:admfile:STEPEdit_src.Out
++ * STEPEdit:admfile:STEPEdit_xcpp_src.Out

@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Geom_BoundedCurve_HeaderFile
+#include <Geom_BoundedCurve.hxx>
+#endif

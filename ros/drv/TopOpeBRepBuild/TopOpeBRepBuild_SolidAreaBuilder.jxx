@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepBuild_LoopSet_HeaderFile
+#include <TopOpeBRepBuild_LoopSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
+#include <TopOpeBRepBuild_LoopClassifier.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_SolidAreaBuilder_HeaderFile
+#include <TopOpeBRepBuild_SolidAreaBuilder.hxx>
+#endif

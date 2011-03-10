@@ -1,0 +1,6 @@
+#ifndef _StepBasic_Group_HeaderFile
+#include <StepBasic_Group.hxx>
+#endif
+#ifndef _StepBasic_GroupAssignment_HeaderFile
+#include <StepBasic_GroupAssignment.hxx>
+#endif

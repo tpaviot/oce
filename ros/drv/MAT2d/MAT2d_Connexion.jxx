@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _MAT2d_Connexion_HeaderFile
+#include <MAT2d_Connexion.hxx>
+#endif

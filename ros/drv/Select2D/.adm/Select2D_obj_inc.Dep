@@ -1,0 +1,10 @@
++ Select2D:pubinclude:Select2D_SensitiveEntity.lxx Select2D:source:Select2D_SensitiveEntity.lxx
++ Select2D:pubinclude:Select2D_SensitivePoint.lxx Select2D:source:Select2D_SensitivePoint.lxx
++ Select2D:pubinclude:Select2D_SensitiveSegment.lxx Select2D:source:Select2D_SensitiveSegment.lxx
++ Select2D:pubinclude:Select2D_SensitiveCircle.lxx Select2D:source:Select2D_SensitiveCircle.lxx
++ Select2D:dbadmfile:Select2D_obj_inc.In Select2D:admfile:Select2D_src.Out
++ * Select2D:admfile:Select2D_xcpp_src.Out
++ Select2D:dbadmfile:Select2D_obj_inc.Out Select2D:admfile:Select2D_src.Out
++ * Select2D:admfile:Select2D_xcpp_src.Out
++ Select2D:dbadmfile:Select2D_obj_inc.Dep Select2D:admfile:Select2D_src.Out
++ * Select2D:admfile:Select2D_xcpp_src.Out

@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _BRepCheck_Shell_HeaderFile
+#include <BRepCheck_Shell.hxx>
+#endif

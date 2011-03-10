@@ -1,0 +1,6 @@
+#ifndef _Aspect_GraphicDevice_HeaderFile
+#include <Aspect_GraphicDevice.hxx>
+#endif
+#ifndef _Viewer_Viewer_HeaderFile
+#include <Viewer_Viewer.hxx>
+#endif

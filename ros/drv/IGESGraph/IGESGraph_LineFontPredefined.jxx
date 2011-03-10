@@ -1,0 +1,3 @@
+#ifndef _IGESGraph_LineFontPredefined_HeaderFile
+#include <IGESGraph_LineFontPredefined.hxx>
+#endif

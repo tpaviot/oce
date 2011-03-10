@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepVisual_PresentationRepresentation_HeaderFile
+#include <StepVisual_PresentationRepresentation.hxx>
+#endif
+#ifndef _StepVisual_PresentationSet_HeaderFile
+#include <StepVisual_PresentationSet.hxx>
+#endif
+#ifndef _StepVisual_PresentationRepresentationSelect_HeaderFile
+#include <StepVisual_PresentationRepresentationSelect.hxx>
+#endif

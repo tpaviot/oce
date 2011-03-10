@@ -1,0 +1,27 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _IntAna_Quadric_HeaderFile
+#include <IntAna_Quadric.hxx>
+#endif
+#ifndef _gp_Cone_HeaderFile
+#include <gp_Cone.hxx>
+#endif
+#ifndef _IntAna_Curve_HeaderFile
+#include <IntAna_Curve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IntAna_IntQuadQuad_HeaderFile
+#include <IntAna_IntQuadQuad.hxx>
+#endif

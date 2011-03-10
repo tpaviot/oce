@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _PXCAFDoc_Centroid_HeaderFile
+#include <PXCAFDoc_Centroid.hxx>
+#endif

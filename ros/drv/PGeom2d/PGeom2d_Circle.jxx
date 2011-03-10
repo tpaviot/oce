@@ -1,0 +1,6 @@
+#ifndef _gp_Ax22d_HeaderFile
+#include <gp_Ax22d.hxx>
+#endif
+#ifndef _PGeom2d_Circle_HeaderFile
+#include <PGeom2d_Circle.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _AppCont_Function_HeaderFile
+#include <AppCont_Function.hxx>
+#endif

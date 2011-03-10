@@ -1,0 +1,9 @@
+#ifndef _StepAP214_HArray1OfAutoDesignPresentedItemSelect_HeaderFile
+#include <StepAP214_HArray1OfAutoDesignPresentedItemSelect.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignPresentedItemSelect_HeaderFile
+#include <StepAP214_AutoDesignPresentedItemSelect.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignPresentedItem_HeaderFile
+#include <StepAP214_AutoDesignPresentedItem.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _Dynamic_DynamicInstance_HeaderFile
+#include <Dynamic_DynamicInstance.hxx>
+#endif
+#ifndef _Dynamic_InstanceParameter_HeaderFile
+#include <Dynamic_InstanceParameter.hxx>
+#endif

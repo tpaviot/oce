@@ -1,0 +1,18 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _gp_Dir2d_HeaderFile
+#include <gp_Dir2d.hxx>
+#endif
+#ifndef _Geom2d_Vector_HeaderFile
+#include <Geom2d_Vector.hxx>
+#endif
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _Geom2d_Geometry_HeaderFile
+#include <Geom2d_Geometry.hxx>
+#endif
+#ifndef _Geom2d_Direction_HeaderFile
+#include <Geom2d_Direction.hxx>
+#endif

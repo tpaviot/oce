@@ -1,0 +1,6 @@
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TDocStd_PathParser_HeaderFile
+#include <TDocStd_PathParser.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _OSD_FileNode_HeaderFile
+#include <OSD_FileNode.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _OSD_Directory_HeaderFile
+#include <OSD_Directory.hxx>
+#endif
+#ifndef _OSD_Protection_HeaderFile
+#include <OSD_Protection.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepAP214_Class_HeaderFile
+#include <StepAP214_Class.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepShape_EdgeBasedWireframeShapeRepresentation_HeaderFile
+#include <StepShape_EdgeBasedWireframeShapeRepresentation.hxx>
+#endif

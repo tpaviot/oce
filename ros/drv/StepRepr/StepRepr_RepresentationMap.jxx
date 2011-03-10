@@ -1,0 +1,9 @@
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _StepRepr_Representation_HeaderFile
+#include <StepRepr_Representation.hxx>
+#endif
+#ifndef _StepRepr_RepresentationMap_HeaderFile
+#include <StepRepr_RepresentationMap.hxx>
+#endif

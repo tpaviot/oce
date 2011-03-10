@@ -1,0 +1,15 @@
+#ifndef _Aspect_ColorPixel_HeaderFile
+#include <Aspect_ColorPixel.hxx>
+#endif
+#ifndef _Aspect_GenericColorMap_HeaderFile
+#include <Aspect_GenericColorMap.hxx>
+#endif
+#ifndef _Quantity_Color_HeaderFile
+#include <Quantity_Color.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _Image_ColorImage_HeaderFile
+#include <Image_ColorImage.hxx>
+#endif

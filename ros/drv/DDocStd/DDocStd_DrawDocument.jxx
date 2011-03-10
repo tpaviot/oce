@@ -1,0 +1,15 @@
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _Draw_Drawable3D_HeaderFile
+#include <Draw_Drawable3D.hxx>
+#endif
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _DDocStd_DrawDocument_HeaderFile
+#include <DDocStd_DrawDocument.hxx>
+#endif

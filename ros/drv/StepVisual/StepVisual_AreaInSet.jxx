@@ -1,0 +1,9 @@
+#ifndef _StepVisual_PresentationArea_HeaderFile
+#include <StepVisual_PresentationArea.hxx>
+#endif
+#ifndef _StepVisual_PresentationSet_HeaderFile
+#include <StepVisual_PresentationSet.hxx>
+#endif
+#ifndef _StepVisual_AreaInSet_HeaderFile
+#include <StepVisual_AreaInSet.hxx>
+#endif

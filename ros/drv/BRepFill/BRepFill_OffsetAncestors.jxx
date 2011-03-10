@@ -1,0 +1,15 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _BRepFill_OffsetWire_HeaderFile
+#include <BRepFill_OffsetWire.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepFill_OffsetAncestors_HeaderFile
+#include <BRepFill_OffsetAncestors.hxx>
+#endif

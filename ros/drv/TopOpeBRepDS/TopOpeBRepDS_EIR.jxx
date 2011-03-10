@@ -1,0 +1,6 @@
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_EIR_HeaderFile
+#include <TopOpeBRepDS_EIR.hxx>
+#endif

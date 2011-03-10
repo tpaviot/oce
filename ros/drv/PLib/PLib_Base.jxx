@@ -1,0 +1,6 @@
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _PLib_Base_HeaderFile
+#include <PLib_Base.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Curve_HeaderFile
+#include <StepGeom_Curve.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_PointOnCurve_HeaderFile
+#include <StepGeom_PointOnCurve.hxx>
+#endif

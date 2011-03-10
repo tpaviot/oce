@@ -1,0 +1,12 @@
+#ifndef _StepBasic_ExternalSource_HeaderFile
+#include <StepBasic_ExternalSource.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_IdentificationRole_HeaderFile
+#include <StepBasic_IdentificationRole.hxx>
+#endif
+#ifndef _StepBasic_ExternalIdentificationAssignment_HeaderFile
+#include <StepBasic_ExternalIdentificationAssignment.hxx>
+#endif

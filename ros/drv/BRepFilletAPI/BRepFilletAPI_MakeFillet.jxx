@@ -1,0 +1,36 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _Law_Function_HeaderFile
+#include <Law_Function.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
+#include <TopOpeBRepBuild_HBuilder.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _ChFiDS_SecHArray1_HeaderFile
+#include <ChFiDS_SecHArray1.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _BRepFilletAPI_MakeFillet_HeaderFile
+#include <BRepFilletAPI_MakeFillet.hxx>
+#endif

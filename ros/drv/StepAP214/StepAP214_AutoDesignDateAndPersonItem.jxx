@@ -1,0 +1,33 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignOrganizationAssignment_HeaderFile
+#include <StepAP214_AutoDesignOrganizationAssignment.hxx>
+#endif
+#ifndef _StepBasic_Product_HeaderFile
+#include <StepBasic_Product.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
+#include <StepBasic_ProductDefinitionFormation.hxx>
+#endif
+#ifndef _StepRepr_Representation_HeaderFile
+#include <StepRepr_Representation.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDocumentReference_HeaderFile
+#include <StepAP214_AutoDesignDocumentReference.hxx>
+#endif
+#ifndef _StepRepr_ExternallyDefinedRepresentation_HeaderFile
+#include <StepRepr_ExternallyDefinedRepresentation.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
+#include <StepBasic_ProductDefinitionRelationship.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
+#include <StepBasic_ProductDefinitionWithAssociatedDocuments.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDateAndPersonItem_HeaderFile
+#include <StepAP214_AutoDesignDateAndPersonItem.hxx>
+#endif

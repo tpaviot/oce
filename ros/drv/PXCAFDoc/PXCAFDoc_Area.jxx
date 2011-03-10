@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_Area_HeaderFile
+#include <PXCAFDoc_Area.hxx>
+#endif

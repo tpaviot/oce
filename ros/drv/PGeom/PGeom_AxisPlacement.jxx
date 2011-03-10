@@ -1,0 +1,6 @@
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _PGeom_AxisPlacement_HeaderFile
+#include <PGeom_AxisPlacement.hxx>
+#endif

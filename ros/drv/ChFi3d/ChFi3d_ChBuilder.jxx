@@ -1,0 +1,54 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _ChFiDS_SecHArray1_HeaderFile
+#include <ChFiDS_SecHArray1.hxx>
+#endif
+#ifndef _ChFiDS_SurfData_HeaderFile
+#include <ChFiDS_SurfData.hxx>
+#endif
+#ifndef _ChFiDS_HElSpine_HeaderFile
+#include <ChFiDS_HElSpine.hxx>
+#endif
+#ifndef _ChFiDS_Spine_HeaderFile
+#include <ChFiDS_Spine.hxx>
+#endif
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _Adaptor3d_TopolTool_HeaderFile
+#include <Adaptor3d_TopolTool.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _BRepAdaptor_HCurve2d_HeaderFile
+#include <BRepAdaptor_HCurve2d.hxx>
+#endif
+#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
+#include <ChFiDS_SequenceOfSurfData.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _ChFiDS_Stripe_HeaderFile
+#include <ChFiDS_Stripe.hxx>
+#endif
+#ifndef _ChFiDS_ListOfStripe_HeaderFile
+#include <ChFiDS_ListOfStripe.hxx>
+#endif
+#ifndef _ChFi3d_ChBuilder_HeaderFile
+#include <ChFi3d_ChBuilder.hxx>
+#endif

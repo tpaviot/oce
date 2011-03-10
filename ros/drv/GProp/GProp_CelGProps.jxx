@@ -1,0 +1,12 @@
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _GProp_CelGProps_HeaderFile
+#include <GProp_CelGProps.hxx>
+#endif

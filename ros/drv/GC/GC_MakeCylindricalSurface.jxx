@@ -1,0 +1,24 @@
+#ifndef _Geom_CylindricalSurface_HeaderFile
+#include <Geom_CylindricalSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _GC_MakeCylindricalSurface_HeaderFile
+#include <GC_MakeCylindricalSurface.hxx>
+#endif

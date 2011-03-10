@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _PGeom_CartesianPoint_HeaderFile
+#include <PGeom_CartesianPoint.hxx>
+#endif

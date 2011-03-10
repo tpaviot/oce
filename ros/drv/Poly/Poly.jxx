@@ -1,0 +1,12 @@
+#ifndef _Poly_Triangulation_HeaderFile
+#include <Poly_Triangulation.hxx>
+#endif
+#ifndef _Poly_Polygon3D_HeaderFile
+#include <Poly_Polygon3D.hxx>
+#endif
+#ifndef _Poly_Polygon2D_HeaderFile
+#include <Poly_Polygon2D.hxx>
+#endif
+#ifndef _Poly_HeaderFile
+#include <Poly.hxx>
+#endif

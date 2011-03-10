@@ -1,0 +1,9 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepAP214_AppliedOrganizationAssignment_HeaderFile
+#include <StepAP214_AppliedOrganizationAssignment.hxx>
+#endif
+#ifndef _StepAP214_PersonAndOrganizationItem_HeaderFile
+#include <StepAP214_PersonAndOrganizationItem.hxx>
+#endif

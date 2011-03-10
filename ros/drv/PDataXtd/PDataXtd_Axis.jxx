@@ -1,0 +1,3 @@
+#ifndef _PDataXtd_Axis_HeaderFile
+#include <PDataXtd_Axis.hxx>
+#endif

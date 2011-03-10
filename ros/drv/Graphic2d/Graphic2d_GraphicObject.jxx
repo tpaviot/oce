@@ -1,0 +1,27 @@
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _Graphic2d_OverrideColorError_HeaderFile
+#include <Graphic2d_OverrideColorError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Graphic2d_Primitive_HeaderFile
+#include <Graphic2d_Primitive.hxx>
+#endif
+#ifndef _Graphic2d_View_HeaderFile
+#include <Graphic2d_View.hxx>
+#endif
+#ifndef _Graphic2d_TransientManager_HeaderFile
+#include <Graphic2d_TransientManager.hxx>
+#endif
+#ifndef _gp_GTrsf2d_HeaderFile
+#include <gp_GTrsf2d.hxx>
+#endif
+#ifndef _Graphic2d_Drawer_HeaderFile
+#include <Graphic2d_Drawer.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif

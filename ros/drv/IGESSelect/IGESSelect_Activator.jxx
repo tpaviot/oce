@@ -1,0 +1,6 @@
+#ifndef _IFSelect_SessionPilot_HeaderFile
+#include <IFSelect_SessionPilot.hxx>
+#endif
+#ifndef _IGESSelect_Activator_HeaderFile
+#include <IGESSelect_Activator.hxx>
+#endif

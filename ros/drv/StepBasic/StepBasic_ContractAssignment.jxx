@@ -1,0 +1,6 @@
+#ifndef _StepBasic_Contract_HeaderFile
+#include <StepBasic_Contract.hxx>
+#endif
+#ifndef _StepBasic_ContractAssignment_HeaderFile
+#include <StepBasic_ContractAssignment.hxx>
+#endif

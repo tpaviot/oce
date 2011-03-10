@@ -1,0 +1,9 @@
+#ifndef _StepBasic_TimeUnit_HeaderFile
+#include <StepBasic_TimeUnit.hxx>
+#endif
+#ifndef _StepBasic_DimensionalExponents_HeaderFile
+#include <StepBasic_DimensionalExponents.hxx>
+#endif
+#ifndef _StepBasic_SiUnitAndTimeUnit_HeaderFile
+#include <StepBasic_SiUnitAndTimeUnit.hxx>
+#endif

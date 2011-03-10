@@ -1,0 +1,12 @@
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Aspect_TypeMapEntry_HeaderFile
+#include <Aspect_TypeMapEntry.hxx>
+#endif
+#ifndef _Aspect_LineStyle_HeaderFile
+#include <Aspect_LineStyle.hxx>
+#endif
+#ifndef _Aspect_TypeMap_HeaderFile
+#include <Aspect_TypeMap.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _IGESData_DefSwitch_HeaderFile
+#include <IGESData_DefSwitch.hxx>
+#endif

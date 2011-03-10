@@ -1,0 +1,13 @@
+pubinclude DDocStd.hxx
+privinclude DDocStd.jxx
+privinclude DDocStd.ixx
+pubinclude Handle_DDocStd_DrawDocument.hxx
+pubinclude DDocStd_DrawDocument.hxx
+privinclude DDocStd_DrawDocument.jxx
+privinclude DDocStd_DrawDocument.ixx
+dbadmfile DDocStd_xcpp_header.In
+dbadmfile DDocStd_xcpp_header.Out
+dbadmfile DDocStd_xcpp_header.Dep
+dbadmfile DDocStd_obj_inc.In
+dbadmfile DDocStd_obj_inc.Out
+dbadmfile DDocStd_obj_inc.Dep

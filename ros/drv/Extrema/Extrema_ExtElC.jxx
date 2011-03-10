@@ -1,0 +1,30 @@
+#ifndef _StdFail_InfiniteSolutions_HeaderFile
+#include <StdFail_InfiniteSolutions.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Elips_HeaderFile
+#include <gp_Elips.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _gp_Parab_HeaderFile
+#include <gp_Parab.hxx>
+#endif
+#ifndef _Extrema_POnCurv_HeaderFile
+#include <Extrema_POnCurv.hxx>
+#endif
+#ifndef _Extrema_ExtElC_HeaderFile
+#include <Extrema_ExtElC.hxx>
+#endif

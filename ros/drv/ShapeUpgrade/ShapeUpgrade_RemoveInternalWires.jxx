@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _ShapeUpgrade_RemoveInternalWires_HeaderFile
+#include <ShapeUpgrade_RemoveInternalWires.hxx>
+#endif

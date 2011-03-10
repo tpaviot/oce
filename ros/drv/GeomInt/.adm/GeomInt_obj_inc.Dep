@@ -1,0 +1,8 @@
++ GeomInt:pubinclude:GeomInt_IntSS.lxx GeomInt:source:GeomInt_IntSS.lxx
++ GeomInt:pubinclude:GeomInt_LineConstructor.lxx GeomInt:source:GeomInt_LineConstructor.lxx
++ GeomInt:dbadmfile:GeomInt_obj_inc.In GeomInt:admfile:GeomInt_src.Out
++ * GeomInt:admfile:GeomInt_xcpp_src.Out
++ GeomInt:dbadmfile:GeomInt_obj_inc.Out GeomInt:admfile:GeomInt_src.Out
++ * GeomInt:admfile:GeomInt_xcpp_src.Out
++ GeomInt:dbadmfile:GeomInt_obj_inc.Dep GeomInt:admfile:GeomInt_src.Out
++ * GeomInt:admfile:GeomInt_xcpp_src.Out

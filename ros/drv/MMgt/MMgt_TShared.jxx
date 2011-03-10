@@ -1,0 +1,6 @@
+#ifndef _Standard_OutOfMemory_HeaderFile
+#include <Standard_OutOfMemory.hxx>
+#endif
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
+#endif

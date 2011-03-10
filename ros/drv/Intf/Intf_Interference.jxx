@@ -1,0 +1,15 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Intf_SectionPoint_HeaderFile
+#include <Intf_SectionPoint.hxx>
+#endif
+#ifndef _Intf_SectionLine_HeaderFile
+#include <Intf_SectionLine.hxx>
+#endif
+#ifndef _Intf_TangentZone_HeaderFile
+#include <Intf_TangentZone.hxx>
+#endif
+#ifndef _Intf_Interference_HeaderFile
+#include <Intf_Interference.hxx>
+#endif

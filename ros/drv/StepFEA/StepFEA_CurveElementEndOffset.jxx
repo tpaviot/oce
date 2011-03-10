@@ -1,0 +1,9 @@
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _StepFEA_CurveElementEndCoordinateSystem_HeaderFile
+#include <StepFEA_CurveElementEndCoordinateSystem.hxx>
+#endif
+#ifndef _StepFEA_CurveElementEndOffset_HeaderFile
+#include <StepFEA_CurveElementEndOffset.hxx>
+#endif

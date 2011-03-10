@@ -1,0 +1,9 @@
+#ifndef _OSD_OSDError_HeaderFile
+#include <OSD_OSDError.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _OSD_Error_HeaderFile
+#include <OSD_Error.hxx>
+#endif

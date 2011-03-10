@@ -1,0 +1,6 @@
+#ifndef _HLRAlgo_Projector_HeaderFile
+#include <HLRAlgo_Projector.hxx>
+#endif
+#ifndef _Prs3d_Projector_HeaderFile
+#include <Prs3d_Projector.hxx>
+#endif

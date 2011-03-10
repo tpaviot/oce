@@ -1,0 +1,12 @@
+#ifndef _StepData_ESDescr_HeaderFile
+#include <StepData_ESDescr.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
+#include <TColStd_HSequenceOfAsciiString.hxx>
+#endif
+#ifndef _StepData_Described_HeaderFile
+#include <StepData_Described.hxx>
+#endif
+#ifndef _StepData_ECDescr_HeaderFile
+#include <StepData_ECDescr.hxx>
+#endif

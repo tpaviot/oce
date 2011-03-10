@@ -1,0 +1,9 @@
+pubinclude RWStl.hxx
+privinclude RWStl.jxx
+privinclude RWStl.ixx
+dbadmfile RWStl_xcpp_header.In
+dbadmfile RWStl_xcpp_header.Out
+dbadmfile RWStl_xcpp_header.Dep
+dbadmfile RWStl_obj_inc.In
+dbadmfile RWStl_obj_inc.Out
+dbadmfile RWStl_obj_inc.Dep

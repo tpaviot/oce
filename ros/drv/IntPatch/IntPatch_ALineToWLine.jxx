@@ -1,0 +1,12 @@
+#ifndef _IntSurf_Quadric_HeaderFile
+#include <IntSurf_Quadric.hxx>
+#endif
+#ifndef _IntPatch_WLine_HeaderFile
+#include <IntPatch_WLine.hxx>
+#endif
+#ifndef _IntPatch_ALine_HeaderFile
+#include <IntPatch_ALine.hxx>
+#endif
+#ifndef _IntPatch_ALineToWLine_HeaderFile
+#include <IntPatch_ALineToWLine.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_ParallelismTolerance_HeaderFile
+#include <StepDimTol_ParallelismTolerance.hxx>
+#endif

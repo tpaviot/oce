@@ -1,0 +1,18 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _Extrema_ExtCC2d_HeaderFile
+#include <Extrema_ExtCC2d.hxx>
+#endif
+#ifndef _Geom2dAPI_ExtremaCurveCurve_HeaderFile
+#include <Geom2dAPI_ExtremaCurveCurve.hxx>
+#endif

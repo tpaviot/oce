@@ -1,0 +1,6 @@
++ RWStl:pubinclude:RWStl.hxx RWStl:msentity:RWStl
++ RWStl:privinclude:RWStl.jxx RWStl:msentity:RWStl
++ RWStl:privinclude:RWStl.ixx RWStl:msentity:RWStl
++ RWStl:dbadmfile:RWStl_xcpp_header.In RWStl:admfile:RWStl_xcpp_fill.Out
++ RWStl:dbadmfile:RWStl_xcpp_header.Out RWStl:admfile:RWStl_xcpp_fill.Out
++ RWStl:dbadmfile:RWStl_xcpp_header.Dep RWStl:admfile:RWStl_xcpp_fill.Out

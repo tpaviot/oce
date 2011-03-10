@@ -1,0 +1,8 @@
++ V3d:pubinclude:V3d_Static.hxx V3d:source:V3d_Static.hxx
++ V3d:pubinclude:V3d_LayerMgr.lxx V3d:source:V3d_LayerMgr.lxx
++ V3d:dbadmfile:V3d_obj_inc.In V3d:admfile:V3d_src.Out
++ * V3d:admfile:V3d_xcpp_src.Out
++ V3d:dbadmfile:V3d_obj_inc.Out V3d:admfile:V3d_src.Out
++ * V3d:admfile:V3d_xcpp_src.Out
++ V3d:dbadmfile:V3d_obj_inc.Dep V3d:admfile:V3d_src.Out
++ * V3d:admfile:V3d_xcpp_src.Out

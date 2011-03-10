@@ -1,0 +1,15 @@
+#ifndef _Draw_Text2D_HeaderFile
+#include <Draw_Text2D.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _Draw_Color_HeaderFile
+#include <Draw_Color.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _TestTopOpeDraw_DrawableP2D_HeaderFile
+#include <TestTopOpeDraw_DrawableP2D.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _GProp_GProps_HeaderFile
+#include <GProp_GProps.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _BRepGProp_HeaderFile
+#include <BRepGProp.hxx>
+#endif

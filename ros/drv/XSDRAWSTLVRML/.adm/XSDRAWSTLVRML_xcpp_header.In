@@ -1,0 +1,10 @@
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DataSource .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DrawableMesh .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_ElemNodesMap .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_CoordsMap .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DataMapNodeOfElemNodesMap .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DataMapNodeOfCoordsMap .
++V XSDRAWSTLVRML:msentity:XSDRAWSTLVRML_DataMapIteratorOfCoordsMap .
+- XSDRAWSTLVRML:admfile:XSDRAWSTLVRML_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/XSDRAWSTLVRML/XSDRAWSTLVRML_xcpp_fill.Out

@@ -1,0 +1,12 @@
+#ifndef _StepRepr_HArray1OfRepresentationItem_HeaderFile
+#include <StepRepr_HArray1OfRepresentationItem.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _StepRepr_CompoundRepresentationItem_HeaderFile
+#include <StepRepr_CompoundRepresentationItem.hxx>
+#endif

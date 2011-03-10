@@ -1,0 +1,42 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _gp_Sphere_HeaderFile
+#include <gp_Sphere.hxx>
+#endif
+#ifndef _gp_Cone_HeaderFile
+#include <gp_Cone.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Elips_HeaderFile
+#include <gp_Elips.hxx>
+#endif
+#ifndef _gp_Parab_HeaderFile
+#include <gp_Parab.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _IntAna_QuadQuadGeo_HeaderFile
+#include <IntAna_QuadQuadGeo.hxx>
+#endif

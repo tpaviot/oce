@@ -1,0 +1,9 @@
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _GeomFill_Stretch_HeaderFile
+#include <GeomFill_Stretch.hxx>
+#endif

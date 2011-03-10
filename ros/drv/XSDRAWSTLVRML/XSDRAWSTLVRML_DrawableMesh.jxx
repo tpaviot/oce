@@ -1,0 +1,9 @@
+#ifndef _MeshVS_Mesh_HeaderFile
+#include <MeshVS_Mesh.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _XSDRAWSTLVRML_DrawableMesh_HeaderFile
+#include <XSDRAWSTLVRML_DrawableMesh.hxx>
+#endif

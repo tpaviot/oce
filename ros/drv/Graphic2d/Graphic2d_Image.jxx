@@ -1,0 +1,12 @@
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _Graphic2d_Drawer_HeaderFile
+#include <Graphic2d_Drawer.hxx>
+#endif
+#ifndef _Graphic2d_Image_HeaderFile
+#include <Graphic2d_Image.hxx>
+#endif

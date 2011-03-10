@@ -1,0 +1,6 @@
+#ifndef _BOPTools_CoupleOfInteger_HeaderFile
+#include <BOPTools_CoupleOfInteger.hxx>
+#endif
+#ifndef _BOPTools_CoupleOfIntegerMapHasher_HeaderFile
+#include <BOPTools_CoupleOfIntegerMapHasher.hxx>
+#endif

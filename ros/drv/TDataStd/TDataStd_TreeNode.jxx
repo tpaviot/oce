@@ -1,0 +1,24 @@
+#ifndef _TDataStd_ChildNodeIterator_HeaderFile
+#include <TDataStd_ChildNodeIterator.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_AttributeDelta_HeaderFile
+#include <TDF_AttributeDelta.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDF_DataSet_HeaderFile
+#include <TDF_DataSet.hxx>
+#endif
+#ifndef _TDataStd_TreeNode_HeaderFile
+#include <TDataStd_TreeNode.hxx>
+#endif

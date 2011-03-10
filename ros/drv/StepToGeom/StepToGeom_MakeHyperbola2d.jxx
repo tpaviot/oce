@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Hyperbola_HeaderFile
+#include <StepGeom_Hyperbola.hxx>
+#endif
+#ifndef _Geom2d_Hyperbola_HeaderFile
+#include <Geom2d_Hyperbola.hxx>
+#endif
+#ifndef _StepToGeom_MakeHyperbola2d_HeaderFile
+#include <StepToGeom_MakeHyperbola2d.hxx>
+#endif

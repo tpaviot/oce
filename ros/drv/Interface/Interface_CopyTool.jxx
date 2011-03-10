@@ -1,0 +1,30 @@
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Interface_CopyControl_HeaderFile
+#include <Interface_CopyControl.hxx>
+#endif
+#ifndef _Interface_CopyMap_HeaderFile
+#include <Interface_CopyMap.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_GeneralModule_HeaderFile
+#include <Interface_GeneralModule.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _Interface_GeneralLib_HeaderFile
+#include <Interface_GeneralLib.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif

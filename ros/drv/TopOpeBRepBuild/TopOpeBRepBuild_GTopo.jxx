@@ -1,0 +1,3 @@
+#ifndef _TopOpeBRepBuild_GTopo_HeaderFile
+#include <TopOpeBRepBuild_GTopo.hxx>
+#endif

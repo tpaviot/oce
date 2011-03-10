@@ -1,0 +1,17 @@
+pubinclude MgtTopoDS.hxx
+privinclude MgtTopoDS.jxx
+privinclude MgtTopoDS.ixx
+pubinclude Handle_MgtTopoDS_TranslateTool.hxx
+pubinclude MgtTopoDS_TranslateTool.hxx
+privinclude MgtTopoDS_TranslateTool.jxx
+privinclude MgtTopoDS_TranslateTool.ixx
+pubinclude Handle_MgtTopoDS_TranslateTool1.hxx
+pubinclude MgtTopoDS_TranslateTool1.hxx
+privinclude MgtTopoDS_TranslateTool1.jxx
+privinclude MgtTopoDS_TranslateTool1.ixx
+dbadmfile MgtTopoDS_xcpp_header.In
+dbadmfile MgtTopoDS_xcpp_header.Out
+dbadmfile MgtTopoDS_xcpp_header.Dep
+dbadmfile MgtTopoDS_obj_inc.In
+dbadmfile MgtTopoDS_obj_inc.Out
+dbadmfile MgtTopoDS_obj_inc.Dep

@@ -1,0 +1,15 @@
+#ifndef _TColStd_HArray2OfReal_HeaderFile
+#include <TColStd_HArray2OfReal.hxx>
+#endif
+#ifndef _Visual3d_ViewMappingDefinitionError_HeaderFile
+#include <Visual3d_ViewMappingDefinitionError.hxx>
+#endif
+#ifndef _Visual3d_View_HeaderFile
+#include <Visual3d_View.hxx>
+#endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
+#ifndef _Visual3d_ViewMapping_HeaderFile
+#include <Visual3d_ViewMapping.hxx>
+#endif

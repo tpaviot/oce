@@ -1,0 +1,6 @@
++ IntPolyh:dbadmfile:IntPolyh_obj_inc.In IntPolyh:admfile:IntPolyh_src.Out
++ * IntPolyh:admfile:IntPolyh_xcpp_src.Out
++ IntPolyh:dbadmfile:IntPolyh_obj_inc.Out IntPolyh:admfile:IntPolyh_src.Out
++ * IntPolyh:admfile:IntPolyh_xcpp_src.Out
++ IntPolyh:dbadmfile:IntPolyh_obj_inc.Dep IntPolyh:admfile:IntPolyh_src.Out
++ * IntPolyh:admfile:IntPolyh_xcpp_src.Out

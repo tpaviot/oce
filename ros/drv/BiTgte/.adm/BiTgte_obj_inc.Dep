@@ -1,0 +1,6 @@
++ BiTgte:dbadmfile:BiTgte_obj_inc.In BiTgte:admfile:BiTgte_src.Out
++ * BiTgte:admfile:BiTgte_xcpp_src.Out
++ BiTgte:dbadmfile:BiTgte_obj_inc.Out BiTgte:admfile:BiTgte_src.Out
++ * BiTgte:admfile:BiTgte_xcpp_src.Out
++ BiTgte:dbadmfile:BiTgte_obj_inc.Dep BiTgte:admfile:BiTgte_src.Out
++ * BiTgte:admfile:BiTgte_xcpp_src.Out

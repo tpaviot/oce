@@ -1,0 +1,3 @@
+#ifndef _GeomFill_Line_HeaderFile
+#include <GeomFill_Line.hxx>
+#endif

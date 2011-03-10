@@ -1,0 +1,15 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _GeomLProp_SLProps_HeaderFile
+#include <GeomLProp_SLProps.hxx>
+#endif
+#ifndef _LocalAnalysis_SurfaceContinuity_HeaderFile
+#include <LocalAnalysis_SurfaceContinuity.hxx>
+#endif

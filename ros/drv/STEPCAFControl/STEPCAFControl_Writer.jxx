@@ -1,0 +1,30 @@
+#ifndef _STEPCAFControl_DictionaryOfExternFile_HeaderFile
+#include <STEPCAFControl_DictionaryOfExternFile.hxx>
+#endif
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _STEPCAFControl_ExternFile_HeaderFile
+#include <STEPCAFControl_ExternFile.hxx>
+#endif
+#ifndef _STEPControl_Writer_HeaderFile
+#include <STEPControl_Writer.hxx>
+#endif
+#ifndef _TDF_LabelSequence_HeaderFile
+#include <TDF_LabelSequence.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _STEPCAFControl_Writer_HeaderFile
+#include <STEPCAFControl_Writer.hxx>
+#endif

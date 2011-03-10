@@ -1,0 +1,9 @@
+#ifndef _StepShape_ClosedShell_HeaderFile
+#include <StepShape_ClosedShell.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_ManifoldSolidBrep_HeaderFile
+#include <StepShape_ManifoldSolidBrep.hxx>
+#endif

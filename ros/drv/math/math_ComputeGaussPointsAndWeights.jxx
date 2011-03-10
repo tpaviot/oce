@@ -1,0 +1,9 @@
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _math_ComputeGaussPointsAndWeights_HeaderFile
+#include <math_ComputeGaussPointsAndWeights.hxx>
+#endif

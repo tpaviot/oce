@@ -1,0 +1,15 @@
+#ifndef _IGESAppli_HArray1OfNode_HeaderFile
+#include <IGESAppli_HArray1OfNode.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESAppli_Node_HeaderFile
+#include <IGESAppli_Node.hxx>
+#endif
+#ifndef _IGESAppli_FiniteElement_HeaderFile
+#include <IGESAppli_FiniteElement.hxx>
+#endif

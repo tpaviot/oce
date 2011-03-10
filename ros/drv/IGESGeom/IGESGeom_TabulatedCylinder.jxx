@@ -1,0 +1,12 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IGESGeom_TabulatedCylinder_HeaderFile
+#include <IGESGeom_TabulatedCylinder.hxx>
+#endif

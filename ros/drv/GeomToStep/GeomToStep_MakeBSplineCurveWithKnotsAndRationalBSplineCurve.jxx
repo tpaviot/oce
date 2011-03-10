@@ -1,0 +1,15 @@
+#ifndef _StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
+#include <StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
+#include <GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx>
+#endif

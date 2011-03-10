@@ -1,0 +1,33 @@
+#ifndef _BRepFill_DraftLaw_HeaderFile
+#include <BRepFill_DraftLaw.hxx>
+#endif
+#ifndef _BRepFill_SectionLaw_HeaderFile
+#include <BRepFill_SectionLaw.hxx>
+#endif
+#ifndef _TopTools_HArray2OfShape_HeaderFile
+#include <TopTools_HArray2OfShape.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _BRepFill_Draft_HeaderFile
+#include <BRepFill_Draft.hxx>
+#endif

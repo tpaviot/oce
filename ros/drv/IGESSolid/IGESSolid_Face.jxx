@@ -1,0 +1,15 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESSolid_HArray1OfLoop_HeaderFile
+#include <IGESSolid_HArray1OfLoop.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESSolid_Loop_HeaderFile
+#include <IGESSolid_Loop.hxx>
+#endif
+#ifndef _IGESSolid_Face_HeaderFile
+#include <IGESSolid_Face.hxx>
+#endif

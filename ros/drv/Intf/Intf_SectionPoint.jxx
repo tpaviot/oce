@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _Intf_SectionPoint_HeaderFile
+#include <Intf_SectionPoint.hxx>
+#endif

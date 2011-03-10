@@ -1,0 +1,6 @@
++M TopCnx:pubinclude:TopCnx_EdgeFaceTransition.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TopCnx_EdgeFaceTransition.hxx
++M TopCnx:privinclude:TopCnx_EdgeFaceTransition.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopCnx/TopCnx_EdgeFaceTransition.jxx
++M TopCnx:privinclude:TopCnx_EdgeFaceTransition.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopCnx/TopCnx_EdgeFaceTransition.ixx
++M TopCnx:dbadmfile:TopCnx_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopCnx/.adm/TopCnx_xcpp_header.In
++M TopCnx:dbadmfile:TopCnx_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopCnx/.adm/TopCnx_xcpp_header.Out
++M TopCnx:dbadmfile:TopCnx_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TopCnx/.adm/TopCnx_xcpp_header.Dep

@@ -1,0 +1,12 @@
++ PLib:pubinclude:PLib_ChangeDim.gxx PLib:source:PLib_ChangeDim.gxx
++ PLib:pubinclude:PLib_JacobiPolynomial_0.hxx PLib:source:PLib_JacobiPolynomial_0.hxx
++ PLib:pubinclude:PLib.lxx PLib:source:PLib.lxx
++ PLib:pubinclude:PLib_JacobiPolynomial.lxx PLib:source:PLib_JacobiPolynomial.lxx
++ PLib:pubinclude:PLib_HermitJacobi.lxx PLib:source:PLib_HermitJacobi.lxx
++ PLib:pubinclude:PLib_DoubleJacobiPolynomial.lxx PLib:source:PLib_DoubleJacobiPolynomial.lxx
++ PLib:dbadmfile:PLib_obj_inc.In PLib:admfile:PLib_src.Out
++ * PLib:admfile:PLib_xcpp_src.Out
++ PLib:dbadmfile:PLib_obj_inc.Out PLib:admfile:PLib_src.Out
++ * PLib:admfile:PLib_xcpp_src.Out
++ PLib:dbadmfile:PLib_obj_inc.Dep PLib:admfile:PLib_src.Out
++ * PLib:admfile:PLib_xcpp_src.Out

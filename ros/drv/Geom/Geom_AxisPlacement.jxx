@@ -1,0 +1,15 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Geom_AxisPlacement_HeaderFile
+#include <Geom_AxisPlacement.hxx>
+#endif

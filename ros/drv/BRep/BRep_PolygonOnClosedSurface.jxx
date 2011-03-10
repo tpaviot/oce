@@ -1,0 +1,15 @@
+#ifndef _Poly_Polygon2D_HeaderFile
+#include <Poly_Polygon2D.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _BRep_CurveRepresentation_HeaderFile
+#include <BRep_CurveRepresentation.hxx>
+#endif
+#ifndef _BRep_PolygonOnClosedSurface_HeaderFile
+#include <BRep_PolygonOnClosedSurface.hxx>
+#endif

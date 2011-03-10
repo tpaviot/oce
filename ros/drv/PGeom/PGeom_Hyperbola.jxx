@@ -1,0 +1,6 @@
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _PGeom_Hyperbola_HeaderFile
+#include <PGeom_Hyperbola.hxx>
+#endif

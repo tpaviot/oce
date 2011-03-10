@@ -1,0 +1,6 @@
++ MgtGeom:pubinclude:MgtGeom.hxx MgtGeom:msentity:MgtGeom
++ MgtGeom:privinclude:MgtGeom.jxx MgtGeom:msentity:MgtGeom
++ MgtGeom:privinclude:MgtGeom.ixx MgtGeom:msentity:MgtGeom
++ MgtGeom:dbadmfile:MgtGeom_xcpp_header.In MgtGeom:admfile:MgtGeom_xcpp_fill.Out
++ MgtGeom:dbadmfile:MgtGeom_xcpp_header.Out MgtGeom:admfile:MgtGeom_xcpp_fill.Out
++ MgtGeom:dbadmfile:MgtGeom_xcpp_header.Dep MgtGeom:admfile:MgtGeom_xcpp_fill.Out

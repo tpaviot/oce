@@ -1,0 +1,3 @@
+#ifndef _PStandard_ArrayNode_HeaderFile
+#include <PStandard_ArrayNode.hxx>
+#endif

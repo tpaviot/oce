@@ -1,0 +1,12 @@
+#ifndef _SelectMgr_ViewerSelector_HeaderFile
+#include <SelectMgr_ViewerSelector.hxx>
+#endif
+#ifndef _SelectMgr_SelectableObject_HeaderFile
+#include <SelectMgr_SelectableObject.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _SelectMgr_SelectionManager_HeaderFile
+#include <SelectMgr_SelectionManager.hxx>
+#endif

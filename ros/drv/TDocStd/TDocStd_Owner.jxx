@@ -1,0 +1,18 @@
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Data_HeaderFile
+#include <TDF_Data.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDocStd_Owner_HeaderFile
+#include <TDocStd_Owner.hxx>
+#endif

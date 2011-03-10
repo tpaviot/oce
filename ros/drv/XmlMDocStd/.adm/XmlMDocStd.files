@@ -1,0 +1,13 @@
+pubinclude XmlMDocStd.hxx
+privinclude XmlMDocStd.jxx
+privinclude XmlMDocStd.ixx
+pubinclude Handle_XmlMDocStd_XLinkDriver.hxx
+pubinclude XmlMDocStd_XLinkDriver.hxx
+privinclude XmlMDocStd_XLinkDriver.jxx
+privinclude XmlMDocStd_XLinkDriver.ixx
+dbadmfile XmlMDocStd_xcpp_header.In
+dbadmfile XmlMDocStd_xcpp_header.Out
+dbadmfile XmlMDocStd_xcpp_header.Dep
+dbadmfile XmlMDocStd_obj_inc.In
+dbadmfile XmlMDocStd_obj_inc.Out
+dbadmfile XmlMDocStd_obj_inc.Dep

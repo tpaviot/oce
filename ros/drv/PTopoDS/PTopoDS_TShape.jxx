@@ -1,0 +1,9 @@
+#ifndef _PTopoDS_HArray1OfHShape_HeaderFile
+#include <PTopoDS_HArray1OfHShape.hxx>
+#endif
+#ifndef _PTopoDS_HShape_HeaderFile
+#include <PTopoDS_HShape.hxx>
+#endif
+#ifndef _PTopoDS_TShape_HeaderFile
+#include <PTopoDS_TShape.hxx>
+#endif

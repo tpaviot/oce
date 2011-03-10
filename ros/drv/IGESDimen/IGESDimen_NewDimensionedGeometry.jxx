@@ -1,0 +1,24 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TColgp_HArray1OfXYZ_HeaderFile
+#include <TColgp_HArray1OfXYZ.hxx>
+#endif
+#ifndef _Standard_DimensionMismatch_HeaderFile
+#include <Standard_DimensionMismatch.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IGESDimen_NewDimensionedGeometry_HeaderFile
+#include <IGESDimen_NewDimensionedGeometry.hxx>
+#endif

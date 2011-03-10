@@ -1,0 +1,6 @@
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _Law_Interpol_HeaderFile
+#include <Law_Interpol.hxx>
+#endif

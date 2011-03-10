@@ -1,0 +1,9 @@
+#ifndef _HLRBRep_PolyAlgo_HeaderFile
+#include <HLRBRep_PolyAlgo.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _HLRTest_DrawablePolyEdgeTool_HeaderFile
+#include <HLRTest_DrawablePolyEdgeTool.hxx>
+#endif

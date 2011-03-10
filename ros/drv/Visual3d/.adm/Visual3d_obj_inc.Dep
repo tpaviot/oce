@@ -1,0 +1,7 @@
++ Visual3d:pubinclude:Visual3d_NListOfLayerItem.hxx Visual3d:source:Visual3d_NListOfLayerItem.hxx
++ Visual3d:dbadmfile:Visual3d_obj_inc.In Visual3d:admfile:Visual3d_src.Out
++ * Visual3d:admfile:Visual3d_xcpp_src.Out
++ Visual3d:dbadmfile:Visual3d_obj_inc.Out Visual3d:admfile:Visual3d_src.Out
++ * Visual3d:admfile:Visual3d_xcpp_src.Out
++ Visual3d:dbadmfile:Visual3d_obj_inc.Dep Visual3d:admfile:Visual3d_src.Out
++ * Visual3d:admfile:Visual3d_xcpp_src.Out

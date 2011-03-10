@@ -1,0 +1,12 @@
+#ifndef _MDF_ASDriverHSequence_HeaderFile
+#include <MDF_ASDriverHSequence.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _MDF_ARDriverHSequence_HeaderFile
+#include <MDF_ARDriverHSequence.hxx>
+#endif
+#ifndef _MPrsStd_HeaderFile
+#include <MPrsStd.hxx>
+#endif

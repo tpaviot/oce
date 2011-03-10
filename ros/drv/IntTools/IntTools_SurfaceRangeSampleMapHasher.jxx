@@ -1,0 +1,6 @@
+#ifndef _IntTools_SurfaceRangeSample_HeaderFile
+#include <IntTools_SurfaceRangeSample.hxx>
+#endif
+#ifndef _IntTools_SurfaceRangeSampleMapHasher_HeaderFile
+#include <IntTools_SurfaceRangeSampleMapHasher.hxx>
+#endif

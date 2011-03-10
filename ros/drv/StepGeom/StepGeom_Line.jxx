@@ -1,0 +1,12 @@
+#ifndef _StepGeom_CartesianPoint_HeaderFile
+#include <StepGeom_CartesianPoint.hxx>
+#endif
+#ifndef _StepGeom_Vector_HeaderFile
+#include <StepGeom_Vector.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_Line_HeaderFile
+#include <StepGeom_Line.hxx>
+#endif

@@ -1,0 +1,8 @@
++ SelectBasics:pubinclude:SelectBasics_EntityOwner.lxx SelectBasics:source:SelectBasics_EntityOwner.lxx
++ SelectBasics:pubinclude:SelectBasics_SensitiveEntity.lxx SelectBasics:source:SelectBasics_SensitiveEntity.lxx
++ SelectBasics:dbadmfile:SelectBasics_obj_inc.In SelectBasics:admfile:SelectBasics_src.Out
++ * SelectBasics:admfile:SelectBasics_xcpp_src.Out
++ SelectBasics:dbadmfile:SelectBasics_obj_inc.Out SelectBasics:admfile:SelectBasics_src.Out
++ * SelectBasics:admfile:SelectBasics_xcpp_src.Out
++ SelectBasics:dbadmfile:SelectBasics_obj_inc.Dep SelectBasics:admfile:SelectBasics_src.Out
++ * SelectBasics:admfile:SelectBasics_xcpp_src.Out

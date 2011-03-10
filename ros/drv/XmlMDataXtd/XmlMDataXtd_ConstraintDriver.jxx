@@ -1,0 +1,12 @@
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _XmlObjMgt_Persistent_HeaderFile
+#include <XmlObjMgt_Persistent.hxx>
+#endif
+#ifndef _XmlMDataXtd_ConstraintDriver_HeaderFile
+#include <XmlMDataXtd_ConstraintDriver.hxx>
+#endif

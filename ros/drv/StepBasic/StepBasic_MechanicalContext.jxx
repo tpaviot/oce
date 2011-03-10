@@ -1,0 +1,3 @@
+#ifndef _StepBasic_MechanicalContext_HeaderFile
+#include <StepBasic_MechanicalContext.hxx>
+#endif

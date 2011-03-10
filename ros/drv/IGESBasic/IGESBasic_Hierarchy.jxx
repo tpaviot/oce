@@ -1,0 +1,3 @@
+#ifndef _IGESBasic_Hierarchy_HeaderFile
+#include <IGESBasic_Hierarchy.hxx>
+#endif

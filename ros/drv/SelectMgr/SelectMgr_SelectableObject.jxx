@@ -1,0 +1,24 @@
+#ifndef _Prs3d_Presentation_HeaderFile
+#include <Prs3d_Presentation.hxx>
+#endif
+#ifndef _Standard_NotImplemented_HeaderFile
+#include <Standard_NotImplemented.hxx>
+#endif
+#ifndef _SelectMgr_SelectionManager_HeaderFile
+#include <SelectMgr_SelectionManager.hxx>
+#endif
+#ifndef _SelectMgr_Selection_HeaderFile
+#include <SelectMgr_Selection.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
+#endif
+#ifndef _SelectMgr_SequenceOfOwner_HeaderFile
+#include <SelectMgr_SequenceOfOwner.hxx>
+#endif
+#ifndef _SelectMgr_EntityOwner_HeaderFile
+#include <SelectMgr_EntityOwner.hxx>
+#endif
+#ifndef _SelectMgr_SelectableObject_HeaderFile
+#include <SelectMgr_SelectableObject.hxx>
+#endif

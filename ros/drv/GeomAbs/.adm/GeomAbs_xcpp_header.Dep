@@ -1,0 +1,12 @@
++ GeomAbs:pubinclude:GeomAbs_CurveType.hxx GeomAbs:msentity:GeomAbs_CurveType
++ GeomAbs:pubinclude:GeomAbs_SurfaceType.hxx GeomAbs:msentity:GeomAbs_SurfaceType
++ GeomAbs:pubinclude:GeomAbs_Shape.hxx GeomAbs:msentity:GeomAbs_Shape
++ GeomAbs:pubinclude:GeomAbs_SurfaceForm.hxx GeomAbs:msentity:GeomAbs_SurfaceForm
++ GeomAbs:pubinclude:GeomAbs_CurveForm.hxx GeomAbs:msentity:GeomAbs_CurveForm
++ GeomAbs:pubinclude:GeomAbs_BSplKnotDistribution.hxx GeomAbs:msentity:GeomAbs_BSplKnotDistribution
++ GeomAbs:pubinclude:GeomAbs_UVSense.hxx GeomAbs:msentity:GeomAbs_UVSense
++ GeomAbs:pubinclude:GeomAbs_IsoType.hxx GeomAbs:msentity:GeomAbs_IsoType
++ GeomAbs:pubinclude:GeomAbs_JoinType.hxx GeomAbs:msentity:GeomAbs_JoinType
++ GeomAbs:dbadmfile:GeomAbs_xcpp_header.In GeomAbs:admfile:GeomAbs_xcpp_fill.Out
++ GeomAbs:dbadmfile:GeomAbs_xcpp_header.Out GeomAbs:admfile:GeomAbs_xcpp_fill.Out
++ GeomAbs:dbadmfile:GeomAbs_xcpp_header.Dep GeomAbs:admfile:GeomAbs_xcpp_fill.Out

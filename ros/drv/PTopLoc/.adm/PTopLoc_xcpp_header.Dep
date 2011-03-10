@@ -1,0 +1,14 @@
++ PTopLoc:pubinclude:Handle_PTopLoc_Datum3D.hxx PTopLoc:msentity:PTopLoc_Datum3D
++ PTopLoc:pubinclude:PTopLoc_Datum3D.hxx PTopLoc:msentity:PTopLoc_Datum3D
++ PTopLoc:privinclude:PTopLoc_Datum3D.jxx PTopLoc:msentity:PTopLoc_Datum3D
++ PTopLoc:privinclude:PTopLoc_Datum3D.ixx PTopLoc:msentity:PTopLoc_Datum3D
++ PTopLoc:pubinclude:Handle_PTopLoc_ItemLocation.hxx PTopLoc:msentity:PTopLoc_ItemLocation
++ PTopLoc:pubinclude:PTopLoc_ItemLocation.hxx PTopLoc:msentity:PTopLoc_ItemLocation
++ PTopLoc:privinclude:PTopLoc_ItemLocation.jxx PTopLoc:msentity:PTopLoc_ItemLocation
++ PTopLoc:privinclude:PTopLoc_ItemLocation.ixx PTopLoc:msentity:PTopLoc_ItemLocation
++ PTopLoc:pubinclude:PTopLoc_Location.hxx PTopLoc:msentity:PTopLoc_Location
++ PTopLoc:privinclude:PTopLoc_Location.jxx PTopLoc:msentity:PTopLoc_Location
++ PTopLoc:privinclude:PTopLoc_Location.ixx PTopLoc:msentity:PTopLoc_Location
++ PTopLoc:dbadmfile:PTopLoc_xcpp_header.In PTopLoc:admfile:PTopLoc_xcpp_fill.Out
++ PTopLoc:dbadmfile:PTopLoc_xcpp_header.Out PTopLoc:admfile:PTopLoc_xcpp_fill.Out
++ PTopLoc:dbadmfile:PTopLoc_xcpp_header.Dep PTopLoc:admfile:PTopLoc_xcpp_fill.Out

@@ -1,0 +1,9 @@
+#ifndef _WNT_ClassDefinitionError_HeaderFile
+#include <WNT_ClassDefinitionError.hxx>
+#endif
+#ifndef _WNT_Window_HeaderFile
+#include <WNT_Window.hxx>
+#endif
+#ifndef _WNT_WClass_HeaderFile
+#include <WNT_WClass.hxx>
+#endif

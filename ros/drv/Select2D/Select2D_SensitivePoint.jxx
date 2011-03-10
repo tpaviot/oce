@@ -1,0 +1,12 @@
+#ifndef _SelectBasics_EntityOwner_HeaderFile
+#include <SelectBasics_EntityOwner.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _SelectBasics_ListOfBox2d_HeaderFile
+#include <SelectBasics_ListOfBox2d.hxx>
+#endif
+#ifndef _Select2D_SensitivePoint_HeaderFile
+#include <Select2D_SensitivePoint.hxx>
+#endif

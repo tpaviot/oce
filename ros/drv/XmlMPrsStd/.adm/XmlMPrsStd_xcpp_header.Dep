@@ -1,0 +1,14 @@
++ XmlMPrsStd:pubinclude:XmlMPrsStd.hxx XmlMPrsStd:msentity:XmlMPrsStd
++ XmlMPrsStd:privinclude:XmlMPrsStd.jxx XmlMPrsStd:msentity:XmlMPrsStd
++ XmlMPrsStd:privinclude:XmlMPrsStd.ixx XmlMPrsStd:msentity:XmlMPrsStd
++ XmlMPrsStd:pubinclude:Handle_XmlMPrsStd_PositionDriver.hxx XmlMPrsStd:msentity:XmlMPrsStd_PositionDriver
++ XmlMPrsStd:pubinclude:XmlMPrsStd_PositionDriver.hxx XmlMPrsStd:msentity:XmlMPrsStd_PositionDriver
++ XmlMPrsStd:privinclude:XmlMPrsStd_PositionDriver.jxx XmlMPrsStd:msentity:XmlMPrsStd_PositionDriver
++ XmlMPrsStd:privinclude:XmlMPrsStd_PositionDriver.ixx XmlMPrsStd:msentity:XmlMPrsStd_PositionDriver
++ XmlMPrsStd:pubinclude:Handle_XmlMPrsStd_AISPresentationDriver.hxx XmlMPrsStd:msentity:XmlMPrsStd_AISPresentationDriver
++ XmlMPrsStd:pubinclude:XmlMPrsStd_AISPresentationDriver.hxx XmlMPrsStd:msentity:XmlMPrsStd_AISPresentationDriver
++ XmlMPrsStd:privinclude:XmlMPrsStd_AISPresentationDriver.jxx XmlMPrsStd:msentity:XmlMPrsStd_AISPresentationDriver
++ XmlMPrsStd:privinclude:XmlMPrsStd_AISPresentationDriver.ixx XmlMPrsStd:msentity:XmlMPrsStd_AISPresentationDriver
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.In XmlMPrsStd:admfile:XmlMPrsStd_xcpp_fill.Out
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.Out XmlMPrsStd:admfile:XmlMPrsStd_xcpp_fill.Out
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.Dep XmlMPrsStd:admfile:XmlMPrsStd_xcpp_fill.Out

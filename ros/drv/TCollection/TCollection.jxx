@@ -1,0 +1,3 @@
+#ifndef _TCollection_HeaderFile
+#include <TCollection.hxx>
+#endif

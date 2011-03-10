@@ -1,0 +1,12 @@
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
+#include <TColStd_IndexedDataMapOfTransientTransient.hxx>
+#endif
+#ifndef _TNaming_TranslateTool_HeaderFile
+#include <TNaming_TranslateTool.hxx>
+#endif

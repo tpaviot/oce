@@ -1,0 +1,6 @@
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _PGeom_Direction_HeaderFile
+#include <PGeom_Direction.hxx>
+#endif

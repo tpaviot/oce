@@ -1,0 +1,21 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColgp_Array1OfVec_HeaderFile
+#include <TColgp_Array1OfVec.hxx>
+#endif
+#ifndef _GeomFill_QuasiAngularConvertor_HeaderFile
+#include <GeomFill_QuasiAngularConvertor.hxx>
+#endif

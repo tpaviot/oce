@@ -1,0 +1,12 @@
+#ifndef _TColStd_MapOfAsciiString_HeaderFile
+#include <TColStd_MapOfAsciiString.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepMesh_DiscretFactory_HeaderFile
+#include <BRepMesh_DiscretFactory.hxx>
+#endif

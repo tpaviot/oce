@@ -1,0 +1,10 @@
++ IntImpParGen:pubinclude:IntImpParGen_Tool.hxx IntImpParGen:source:IntImpParGen_Tool.hxx
++ IntImpParGen:pubinclude:IntImpParGen_ParTool.gxx IntImpParGen:source:IntImpParGen_ParTool.gxx
++ IntImpParGen:pubinclude:IntImpParGen_ImpParTool.gxx IntImpParGen:source:IntImpParGen_ImpParTool.gxx
++ IntImpParGen:pubinclude:IntImpParGen_Intersector.gxx IntImpParGen:source:IntImpParGen_Intersector.gxx
++ IntImpParGen:dbadmfile:IntImpParGen_obj_inc.In IntImpParGen:admfile:IntImpParGen_src.Out
++ * IntImpParGen:admfile:IntImpParGen_xcpp_src.Out
++ IntImpParGen:dbadmfile:IntImpParGen_obj_inc.Out IntImpParGen:admfile:IntImpParGen_src.Out
++ * IntImpParGen:admfile:IntImpParGen_xcpp_src.Out
++ IntImpParGen:dbadmfile:IntImpParGen_obj_inc.Dep IntImpParGen:admfile:IntImpParGen_src.Out
++ * IntImpParGen:admfile:IntImpParGen_xcpp_src.Out

@@ -1,0 +1,6 @@
++ VrmlConverter:dbadmfile:VrmlConverter_obj_inc.In VrmlConverter:admfile:VrmlConverter_src.Out
++ * VrmlConverter:admfile:VrmlConverter_xcpp_src.Out
++ VrmlConverter:dbadmfile:VrmlConverter_obj_inc.Out VrmlConverter:admfile:VrmlConverter_src.Out
++ * VrmlConverter:admfile:VrmlConverter_xcpp_src.Out
++ VrmlConverter:dbadmfile:VrmlConverter_obj_inc.Dep VrmlConverter:admfile:VrmlConverter_src.Out
++ * VrmlConverter:admfile:VrmlConverter_xcpp_src.Out

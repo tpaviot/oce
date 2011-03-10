@@ -1,0 +1,14 @@
++ MgtTopoDS:pubinclude:MgtTopoDS.hxx MgtTopoDS:msentity:MgtTopoDS
++ MgtTopoDS:privinclude:MgtTopoDS.jxx MgtTopoDS:msentity:MgtTopoDS
++ MgtTopoDS:privinclude:MgtTopoDS.ixx MgtTopoDS:msentity:MgtTopoDS
++ MgtTopoDS:pubinclude:Handle_MgtTopoDS_TranslateTool.hxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool
++ MgtTopoDS:pubinclude:MgtTopoDS_TranslateTool.hxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool
++ MgtTopoDS:privinclude:MgtTopoDS_TranslateTool.jxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool
++ MgtTopoDS:privinclude:MgtTopoDS_TranslateTool.ixx MgtTopoDS:msentity:MgtTopoDS_TranslateTool
++ MgtTopoDS:pubinclude:Handle_MgtTopoDS_TranslateTool1.hxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool1
++ MgtTopoDS:pubinclude:MgtTopoDS_TranslateTool1.hxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool1
++ MgtTopoDS:privinclude:MgtTopoDS_TranslateTool1.jxx MgtTopoDS:msentity:MgtTopoDS_TranslateTool1
++ MgtTopoDS:privinclude:MgtTopoDS_TranslateTool1.ixx MgtTopoDS:msentity:MgtTopoDS_TranslateTool1
++ MgtTopoDS:dbadmfile:MgtTopoDS_xcpp_header.In MgtTopoDS:admfile:MgtTopoDS_xcpp_fill.Out
++ MgtTopoDS:dbadmfile:MgtTopoDS_xcpp_header.Out MgtTopoDS:admfile:MgtTopoDS_xcpp_fill.Out
++ MgtTopoDS:dbadmfile:MgtTopoDS_xcpp_header.Dep MgtTopoDS:admfile:MgtTopoDS_xcpp_fill.Out

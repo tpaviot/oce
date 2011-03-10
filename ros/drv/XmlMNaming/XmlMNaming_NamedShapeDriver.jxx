@@ -1,0 +1,15 @@
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _XmlObjMgt_Persistent_HeaderFile
+#include <XmlObjMgt_Persistent.hxx>
+#endif
+#ifndef _TopTools_LocationSet_HeaderFile
+#include <TopTools_LocationSet.hxx>
+#endif
+#ifndef _XmlMNaming_NamedShapeDriver_HeaderFile
+#include <XmlMNaming_NamedShapeDriver.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepAlgo_Common_HeaderFile
+#include <BRepAlgo_Common.hxx>
+#endif

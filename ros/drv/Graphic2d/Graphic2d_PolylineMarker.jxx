@@ -1,0 +1,21 @@
+#ifndef _Graphic2d_PolylineDefinitionError_HeaderFile
+#include <Graphic2d_PolylineDefinitionError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _Graphic2d_Array1OfVertex_HeaderFile
+#include <Graphic2d_Array1OfVertex.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _Graphic2d_Drawer_HeaderFile
+#include <Graphic2d_Drawer.hxx>
+#endif
+#ifndef _Graphic2d_PolylineMarker_HeaderFile
+#include <Graphic2d_PolylineMarker.hxx>
+#endif

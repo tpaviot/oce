@@ -1,0 +1,12 @@
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _math_Matrix_HeaderFile
+#include <math_Matrix.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Blend_SurfPointFuncInv_HeaderFile
+#include <Blend_SurfPointFuncInv.hxx>
+#endif

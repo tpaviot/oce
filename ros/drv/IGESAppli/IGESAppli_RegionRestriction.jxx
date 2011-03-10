@@ -1,0 +1,3 @@
+#ifndef _IGESAppli_RegionRestriction_HeaderFile
+#include <IGESAppli_RegionRestriction.hxx>
+#endif

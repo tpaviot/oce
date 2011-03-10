@@ -1,0 +1,5 @@
+#include <StdLSchema_Standard_Persistent.ixx>
+#ifndef _StdLSchema_PColStd_FieldOfHArray1OfExtendedString_HeaderFile
+#include <StdLSchema_PColStd_FieldOfHArray1OfExtendedString.hxx>
+#endif
+

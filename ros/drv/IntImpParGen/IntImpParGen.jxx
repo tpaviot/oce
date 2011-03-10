@@ -1,0 +1,15 @@
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _IntRes2d_Transition_HeaderFile
+#include <IntRes2d_Transition.hxx>
+#endif
+#ifndef _IntRes2d_Domain_HeaderFile
+#include <IntRes2d_Domain.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntImpParGen_HeaderFile
+#include <IntImpParGen.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _IntTools_Curve_HeaderFile
+#include <IntTools_Curve.hxx>
+#endif
+#ifndef _BOPTools_PaveSet_HeaderFile
+#include <BOPTools_PaveSet.hxx>
+#endif
+#ifndef _BOPTools_PaveBlock_HeaderFile
+#include <BOPTools_PaveBlock.hxx>
+#endif
+#ifndef _BOPTools_ListOfPaveBlock_HeaderFile
+#include <BOPTools_ListOfPaveBlock.hxx>
+#endif
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
+#endif
+#ifndef _BOPTools_Curve_HeaderFile
+#include <BOPTools_Curve.hxx>
+#endif

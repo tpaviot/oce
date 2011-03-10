@@ -1,0 +1,6 @@
++ Precision:pubinclude:Precision.hxx Precision:msentity:Precision
++ Precision:privinclude:Precision.jxx Precision:msentity:Precision
++ Precision:privinclude:Precision.ixx Precision:msentity:Precision
++ Precision:dbadmfile:Precision_xcpp_header.In Precision:admfile:Precision_xcpp_fill.Out
++ Precision:dbadmfile:Precision_xcpp_header.Out Precision:admfile:Precision_xcpp_fill.Out
++ Precision:dbadmfile:Precision_xcpp_header.Dep Precision:admfile:Precision_xcpp_fill.Out

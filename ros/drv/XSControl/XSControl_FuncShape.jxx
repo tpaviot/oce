@@ -1,0 +1,12 @@
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _TopTools_HSequenceOfShape_HeaderFile
+#include <TopTools_HSequenceOfShape.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _XSControl_FuncShape_HeaderFile
+#include <XSControl_FuncShape.hxx>
+#endif

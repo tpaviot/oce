@@ -1,0 +1,3 @@
+#ifndef _StepShape_OpenShell_HeaderFile
+#include <StepShape_OpenShell.hxx>
+#endif

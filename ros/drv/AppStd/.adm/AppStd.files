@@ -1,0 +1,10 @@
+pubinclude Handle_AppStd_Application.hxx
+pubinclude AppStd_Application.hxx
+privinclude AppStd_Application.jxx
+privinclude AppStd_Application.ixx
+dbadmfile AppStd_xcpp_header.In
+dbadmfile AppStd_xcpp_header.Out
+dbadmfile AppStd_xcpp_header.Dep
+dbadmfile AppStd_obj_inc.In
+dbadmfile AppStd_obj_inc.Out
+dbadmfile AppStd_obj_inc.Dep

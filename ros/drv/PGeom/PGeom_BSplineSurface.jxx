@@ -1,0 +1,15 @@
+#ifndef _PColgp_HArray2OfPnt_HeaderFile
+#include <PColgp_HArray2OfPnt.hxx>
+#endif
+#ifndef _PColStd_HArray2OfReal_HeaderFile
+#include <PColStd_HArray2OfReal.hxx>
+#endif
+#ifndef _PColStd_HArray1OfReal_HeaderFile
+#include <PColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _PColStd_HArray1OfInteger_HeaderFile
+#include <PColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _PGeom_BSplineSurface_HeaderFile
+#include <PGeom_BSplineSurface.hxx>
+#endif

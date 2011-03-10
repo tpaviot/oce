@@ -1,0 +1,12 @@
++ TDocStd:pubinclude:TDocStd_Document.lxx TDocStd:source:TDocStd_Document.lxx
++ TDocStd:pubinclude:TDocStd_XLink.lxx TDocStd:source:TDocStd_XLink.lxx
++ TDocStd:pubinclude:TDocStd_XLinkIterator.lxx TDocStd:source:TDocStd_XLinkIterator.lxx
++ TDocStd:pubinclude:TDocStd_XLinkRoot.lxx TDocStd:source:TDocStd_XLinkRoot.lxx
++ TDocStd:pubinclude:TDocStd_ApplicationDelta.lxx TDocStd:source:TDocStd_ApplicationDelta.lxx
++ TDocStd:pubinclude:TDocStd_MultiTransactionManager.lxx TDocStd:source:TDocStd_MultiTransactionManager.lxx
++ TDocStd:dbadmfile:TDocStd_obj_inc.In TDocStd:admfile:TDocStd_src.Out
++ * TDocStd:admfile:TDocStd_xcpp_src.Out
++ TDocStd:dbadmfile:TDocStd_obj_inc.Out TDocStd:admfile:TDocStd_src.Out
++ * TDocStd:admfile:TDocStd_xcpp_src.Out
++ TDocStd:dbadmfile:TDocStd_obj_inc.Dep TDocStd:admfile:TDocStd_src.Out
++ * TDocStd:admfile:TDocStd_xcpp_src.Out

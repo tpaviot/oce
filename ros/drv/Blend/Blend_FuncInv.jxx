@@ -1,0 +1,12 @@
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _math_Matrix_HeaderFile
+#include <math_Matrix.hxx>
+#endif
+#ifndef _Adaptor2d_HCurve2d_HeaderFile
+#include <Adaptor2d_HCurve2d.hxx>
+#endif
+#ifndef _Blend_FuncInv_HeaderFile
+#include <Blend_FuncInv.hxx>
+#endif

@@ -1,0 +1,33 @@
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _StepRepr_CharacterizedDefinition_HeaderFile
+#include <StepRepr_CharacterizedDefinition.hxx>
+#endif
+#ifndef _StepRepr_RepresentationContext_HeaderFile
+#include <StepRepr_RepresentationContext.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TColStd_SequenceOfTransient_HeaderFile
+#include <TColStd_SequenceOfTransient.hxx>
+#endif
+#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
+#include <StepRepr_NextAssemblyUsageOccurrence.hxx>
+#endif
+#ifndef _StepRepr_PropertyDefinition_HeaderFile
+#include <StepRepr_PropertyDefinition.hxx>
+#endif
+#ifndef _STEPConstruct_ValidationProps_HeaderFile
+#include <STEPConstruct_ValidationProps.hxx>
+#endif

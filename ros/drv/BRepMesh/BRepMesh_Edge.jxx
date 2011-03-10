@@ -1,0 +1,3 @@
+#ifndef _BRepMesh_Edge_HeaderFile
+#include <BRepMesh_Edge.hxx>
+#endif

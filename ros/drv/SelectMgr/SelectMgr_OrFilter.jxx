@@ -1,0 +1,6 @@
+#ifndef _SelectMgr_EntityOwner_HeaderFile
+#include <SelectMgr_EntityOwner.hxx>
+#endif
+#ifndef _SelectMgr_OrFilter_HeaderFile
+#include <SelectMgr_OrFilter.hxx>
+#endif

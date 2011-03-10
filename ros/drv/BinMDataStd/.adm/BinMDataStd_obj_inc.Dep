@@ -1,0 +1,6 @@
++ BinMDataStd:dbadmfile:BinMDataStd_obj_inc.In BinMDataStd:admfile:BinMDataStd_src.Out
++ * BinMDataStd:admfile:BinMDataStd_xcpp_src.Out
++ BinMDataStd:dbadmfile:BinMDataStd_obj_inc.Out BinMDataStd:admfile:BinMDataStd_src.Out
++ * BinMDataStd:admfile:BinMDataStd_xcpp_src.Out
++ BinMDataStd:dbadmfile:BinMDataStd_obj_inc.Dep BinMDataStd:admfile:BinMDataStd_src.Out
++ * BinMDataStd:admfile:BinMDataStd_xcpp_src.Out

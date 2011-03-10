@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_SymmetricTensor23d_HeaderFile
+#include <StepFEA_SymmetricTensor23d.hxx>
+#endif
+#ifndef _StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
+#include <StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.hxx>
+#endif

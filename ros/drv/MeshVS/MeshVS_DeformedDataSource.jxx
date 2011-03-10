@@ -1,0 +1,21 @@
+#ifndef _MeshVS_DataSource_HeaderFile
+#include <MeshVS_DataSource.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
+#include <MeshVS_HArray1OfSequenceOfInteger.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _MeshVS_DataMapOfIntegerVector_HeaderFile
+#include <MeshVS_DataMapOfIntegerVector.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _MeshVS_DeformedDataSource_HeaderFile
+#include <MeshVS_DeformedDataSource.hxx>
+#endif

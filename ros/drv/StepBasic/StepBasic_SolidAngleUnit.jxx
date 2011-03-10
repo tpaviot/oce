@@ -1,0 +1,3 @@
+#ifndef _StepBasic_SolidAngleUnit_HeaderFile
+#include <StepBasic_SolidAngleUnit.hxx>
+#endif

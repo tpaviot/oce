@@ -1,0 +1,33 @@
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TColGeom_SequenceOfCurve_HeaderFile
+#include <TColGeom_SequenceOfCurve.hxx>
+#endif
+#ifndef _TColStd_SequenceOfReal_HeaderFile
+#include <TColStd_SequenceOfReal.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColgp_Array1OfVec_HeaderFile
+#include <TColgp_Array1OfVec.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _GeomFill_NSections_HeaderFile
+#include <GeomFill_NSections.hxx>
+#endif

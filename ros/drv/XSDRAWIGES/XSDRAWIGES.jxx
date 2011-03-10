@@ -1,0 +1,6 @@
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _XSDRAWIGES_HeaderFile
+#include <XSDRAWIGES.hxx>
+#endif

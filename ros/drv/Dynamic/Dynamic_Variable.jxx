@@ -1,0 +1,6 @@
+#ifndef _Dynamic_Parameter_HeaderFile
+#include <Dynamic_Parameter.hxx>
+#endif
+#ifndef _Dynamic_Variable_HeaderFile
+#include <Dynamic_Variable.hxx>
+#endif

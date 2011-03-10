@@ -1,0 +1,6 @@
+#ifndef _StepBasic_AreaUnit_HeaderFile
+#include <StepBasic_AreaUnit.hxx>
+#endif
+#ifndef _StepBasic_ConversionBasedUnitAndAreaUnit_HeaderFile
+#include <StepBasic_ConversionBasedUnitAndAreaUnit.hxx>
+#endif

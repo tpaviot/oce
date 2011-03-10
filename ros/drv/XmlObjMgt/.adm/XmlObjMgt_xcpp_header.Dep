@@ -1,0 +1,14 @@
++ XmlObjMgt:pubinclude:XmlObjMgt.hxx XmlObjMgt:msentity:XmlObjMgt
++ XmlObjMgt:privinclude:XmlObjMgt.jxx XmlObjMgt:msentity:XmlObjMgt
++ XmlObjMgt:privinclude:XmlObjMgt.ixx XmlObjMgt:msentity:XmlObjMgt
++ XmlObjMgt:pubinclude:XmlObjMgt_Persistent.hxx XmlObjMgt:msentity:XmlObjMgt_Persistent
++ XmlObjMgt:privinclude:XmlObjMgt_Persistent.jxx XmlObjMgt:msentity:XmlObjMgt_Persistent
++ XmlObjMgt:privinclude:XmlObjMgt_Persistent.ixx XmlObjMgt:msentity:XmlObjMgt_Persistent
++ XmlObjMgt:pubinclude:XmlObjMgt_GP.hxx XmlObjMgt:msentity:XmlObjMgt_GP
++ XmlObjMgt:privinclude:XmlObjMgt_GP.jxx XmlObjMgt:msentity:XmlObjMgt_GP
++ XmlObjMgt:privinclude:XmlObjMgt_GP.ixx XmlObjMgt:msentity:XmlObjMgt_GP
++ XmlObjMgt:pubinclude:XmlObjMgt_SRelocationTable.hxx XmlObjMgt:msentity:XmlObjMgt_SRelocationTable
++ XmlObjMgt:pubinclude:XmlObjMgt_RRelocationTable.hxx XmlObjMgt:msentity:XmlObjMgt_RRelocationTable
++ XmlObjMgt:dbadmfile:XmlObjMgt_xcpp_header.In XmlObjMgt:admfile:XmlObjMgt_xcpp_fill.Out
++ XmlObjMgt:dbadmfile:XmlObjMgt_xcpp_header.Out XmlObjMgt:admfile:XmlObjMgt_xcpp_fill.Out
++ XmlObjMgt:dbadmfile:XmlObjMgt_xcpp_header.Dep XmlObjMgt:admfile:XmlObjMgt_xcpp_fill.Out

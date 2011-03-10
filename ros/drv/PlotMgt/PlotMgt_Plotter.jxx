@@ -1,0 +1,33 @@
+#ifndef _PlotMgt_HListOfPlotterParameter_HeaderFile
+#include <PlotMgt_HListOfPlotterParameter.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
+#include <TColStd_HSequenceOfAsciiString.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _Aspect_GenericColorMap_HeaderFile
+#include <Aspect_GenericColorMap.hxx>
+#endif
+#ifndef _Aspect_WidthMap_HeaderFile
+#include <Aspect_WidthMap.hxx>
+#endif
+#ifndef _Aspect_TypeMap_HeaderFile
+#include <Aspect_TypeMap.hxx>
+#endif
+#ifndef _Aspect_FontMap_HeaderFile
+#include <Aspect_FontMap.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _PlotMgt_PlotterParameter_HeaderFile
+#include <PlotMgt_PlotterParameter.hxx>
+#endif
+#ifndef _Aspect_ColorMap_HeaderFile
+#include <Aspect_ColorMap.hxx>
+#endif
+#ifndef _PlotMgt_Plotter_HeaderFile
+#include <PlotMgt_Plotter.hxx>
+#endif

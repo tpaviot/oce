@@ -1,0 +1,3 @@
+#ifndef _OSD_Thread_HeaderFile
+#include <OSD_Thread.hxx>
+#endif

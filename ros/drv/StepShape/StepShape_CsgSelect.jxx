@@ -1,0 +1,9 @@
+#ifndef _StepShape_BooleanResult_HeaderFile
+#include <StepShape_BooleanResult.hxx>
+#endif
+#ifndef _StepShape_CsgPrimitive_HeaderFile
+#include <StepShape_CsgPrimitive.hxx>
+#endif
+#ifndef _StepShape_CsgSelect_HeaderFile
+#include <StepShape_CsgSelect.hxx>
+#endif

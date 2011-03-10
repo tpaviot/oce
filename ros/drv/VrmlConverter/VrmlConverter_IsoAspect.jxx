@@ -1,0 +1,6 @@
+#ifndef _Vrml_Material_HeaderFile
+#include <Vrml_Material.hxx>
+#endif
+#ifndef _VrmlConverter_IsoAspect_HeaderFile
+#include <VrmlConverter_IsoAspect.hxx>
+#endif

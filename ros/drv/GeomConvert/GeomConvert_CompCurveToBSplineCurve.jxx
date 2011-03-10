@@ -1,0 +1,9 @@
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _Geom_BoundedCurve_HeaderFile
+#include <Geom_BoundedCurve.hxx>
+#endif
+#ifndef _GeomConvert_CompCurveToBSplineCurve_HeaderFile
+#include <GeomConvert_CompCurveToBSplineCurve.hxx>
+#endif

@@ -1,0 +1,6 @@
++ ShapeProcessAPI:pubinclude:ShapeProcessAPI_ApplySequence.hxx ShapeProcessAPI:msentity:ShapeProcessAPI_ApplySequence
++ ShapeProcessAPI:privinclude:ShapeProcessAPI_ApplySequence.jxx ShapeProcessAPI:msentity:ShapeProcessAPI_ApplySequence
++ ShapeProcessAPI:privinclude:ShapeProcessAPI_ApplySequence.ixx ShapeProcessAPI:msentity:ShapeProcessAPI_ApplySequence
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.In ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_fill.Out
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.Out ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_fill.Out
++ ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.Dep ShapeProcessAPI:admfile:ShapeProcessAPI_xcpp_fill.Out

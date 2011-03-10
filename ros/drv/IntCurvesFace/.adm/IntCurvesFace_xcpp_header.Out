@@ -1,0 +1,9 @@
++M IntCurvesFace:pubinclude:IntCurvesFace_Intersector.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/IntCurvesFace_Intersector.hxx
++M IntCurvesFace:privinclude:IntCurvesFace_Intersector.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/IntCurvesFace_Intersector.jxx
++M IntCurvesFace:privinclude:IntCurvesFace_Intersector.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/IntCurvesFace_Intersector.ixx
++M IntCurvesFace:pubinclude:IntCurvesFace_ShapeIntersector.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/IntCurvesFace_ShapeIntersector.hxx
++M IntCurvesFace:privinclude:IntCurvesFace_ShapeIntersector.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/IntCurvesFace_ShapeIntersector.jxx
++M IntCurvesFace:privinclude:IntCurvesFace_ShapeIntersector.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/IntCurvesFace_ShapeIntersector.ixx
++M IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/.adm/IntCurvesFace_xcpp_header.In
++M IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/.adm/IntCurvesFace_xcpp_header.Out
++M IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/IntCurvesFace/.adm/IntCurvesFace_xcpp_header.Dep

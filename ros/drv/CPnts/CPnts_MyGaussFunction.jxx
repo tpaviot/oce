@@ -1,0 +1,3 @@
+#ifndef _CPnts_MyGaussFunction_HeaderFile
+#include <CPnts_MyGaussFunction.hxx>
+#endif

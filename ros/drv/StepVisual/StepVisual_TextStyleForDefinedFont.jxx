@@ -1,0 +1,6 @@
+#ifndef _StepVisual_Colour_HeaderFile
+#include <StepVisual_Colour.hxx>
+#endif
+#ifndef _StepVisual_TextStyleForDefinedFont_HeaderFile
+#include <StepVisual_TextStyleForDefinedFont.hxx>
+#endif

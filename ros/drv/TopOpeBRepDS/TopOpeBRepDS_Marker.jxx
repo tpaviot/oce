@@ -1,0 +1,6 @@
+#ifndef _TColStd_HArray1OfBoolean_HeaderFile
+#include <TColStd_HArray1OfBoolean.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Marker_HeaderFile
+#include <TopOpeBRepDS_Marker.hxx>
+#endif

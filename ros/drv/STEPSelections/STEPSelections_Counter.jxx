@@ -1,0 +1,15 @@
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepShape_ConnectedFaceSet_HeaderFile
+#include <StepShape_ConnectedFaceSet.hxx>
+#endif
+#ifndef _StepGeom_CompositeCurve_HeaderFile
+#include <StepGeom_CompositeCurve.hxx>
+#endif
+#ifndef _STEPSelections_Counter_HeaderFile
+#include <STEPSelections_Counter.hxx>
+#endif

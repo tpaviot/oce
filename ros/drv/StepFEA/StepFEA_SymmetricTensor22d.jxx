@@ -1,0 +1,9 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _StepFEA_SymmetricTensor22d_HeaderFile
+#include <StepFEA_SymmetricTensor22d.hxx>
+#endif

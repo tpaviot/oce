@@ -1,0 +1,27 @@
+#ifndef _Transfer_Finder_HeaderFile
+#include <Transfer_Finder.hxx>
+#endif
+#ifndef _Transfer_Binder_HeaderFile
+#include <Transfer_Binder.hxx>
+#endif
+#ifndef _Transfer_FinderProcess_HeaderFile
+#include <Transfer_FinderProcess.hxx>
+#endif
+#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
+#include <StepShape_ShapeDefinitionRepresentation.hxx>
+#endif
+#ifndef _StepGeom_Axis2Placement3d_HeaderFile
+#include <StepGeom_Axis2Placement3d.hxx>
+#endif
+#ifndef _TopTools_HSequenceOfShape_HeaderFile
+#include <TopTools_HSequenceOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile
+#include <StepShape_NonManifoldSurfaceShapeRepresentation.hxx>
+#endif
+#ifndef _STEPControl_ActorWrite_HeaderFile
+#include <STEPControl_ActorWrite.hxx>
+#endif

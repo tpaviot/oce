@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_DimTolTool_HeaderFile
+#include <PXCAFDoc_DimTolTool.hxx>
+#endif

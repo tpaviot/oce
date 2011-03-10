@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Plane_HeaderFile
+#include <StepGeom_Plane.hxx>
+#endif
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _StepToGeom_MakePlane_HeaderFile
+#include <StepToGeom_MakePlane.hxx>
+#endif

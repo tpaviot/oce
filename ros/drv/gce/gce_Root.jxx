@@ -1,0 +1,3 @@
+#ifndef _gce_Root_HeaderFile
+#include <gce_Root.hxx>
+#endif

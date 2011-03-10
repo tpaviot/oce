@@ -1,0 +1,3 @@
+#ifndef _Vrml_Switch_HeaderFile
+#include <Vrml_Switch.hxx>
+#endif

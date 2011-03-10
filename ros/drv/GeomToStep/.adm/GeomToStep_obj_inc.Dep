@@ -1,0 +1,6 @@
++ GeomToStep:dbadmfile:GeomToStep_obj_inc.In GeomToStep:admfile:GeomToStep_src.Out
++ * GeomToStep:admfile:GeomToStep_xcpp_src.Out
++ GeomToStep:dbadmfile:GeomToStep_obj_inc.Out GeomToStep:admfile:GeomToStep_src.Out
++ * GeomToStep:admfile:GeomToStep_xcpp_src.Out
++ GeomToStep:dbadmfile:GeomToStep_obj_inc.Dep GeomToStep:admfile:GeomToStep_src.Out
++ * GeomToStep:admfile:GeomToStep_xcpp_src.Out

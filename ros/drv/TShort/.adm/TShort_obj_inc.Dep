@@ -1,0 +1,6 @@
++ TShort:dbadmfile:TShort_obj_inc.In TShort:admfile:TShort_src.Out
++ * TShort:admfile:TShort_xcpp_src.Out
++ TShort:dbadmfile:TShort_obj_inc.Out TShort:admfile:TShort_src.Out
++ * TShort:admfile:TShort_xcpp_src.Out
++ TShort:dbadmfile:TShort_obj_inc.Dep TShort:admfile:TShort_src.Out
++ * TShort:admfile:TShort_xcpp_src.Out

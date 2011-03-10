@@ -1,0 +1,30 @@
+#ifndef _PCollection_HExtendedString_HeaderFile
+#include <PCollection_HExtendedString.hxx>
+#endif
+#ifndef _PColStd_HArray1OfInteger_HeaderFile
+#include <PColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _PColStd_HArray1OfReal_HeaderFile
+#include <PColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _PColStd_HArray2OfInteger_HeaderFile
+#include <PColStd_HArray2OfInteger.hxx>
+#endif
+#ifndef _PColStd_HArray1OfExtendedString_HeaderFile
+#include <PColStd_HArray1OfExtendedString.hxx>
+#endif
+#ifndef _PDataStd_HArray1OfByte_HeaderFile
+#include <PDataStd_HArray1OfByte.hxx>
+#endif
+#ifndef _PDataStd_HArray1OfHArray1OfInteger_HeaderFile
+#include <PDataStd_HArray1OfHArray1OfInteger.hxx>
+#endif
+#ifndef _PDataStd_HArray1OfHArray1OfReal_HeaderFile
+#include <PDataStd_HArray1OfHArray1OfReal.hxx>
+#endif
+#ifndef _TColStd_HArray2OfInteger_HeaderFile
+#include <TColStd_HArray2OfInteger.hxx>
+#endif
+#ifndef _PDataStd_NamedData_HeaderFile
+#include <PDataStd_NamedData.hxx>
+#endif

@@ -1,0 +1,11 @@
+pubinclude BSplSLib.hxx
+privinclude BSplSLib.jxx
+privinclude BSplSLib.ixx
+dbadmfile BSplSLib_xcpp_header.In
+dbadmfile BSplSLib_xcpp_header.Out
+dbadmfile BSplSLib_xcpp_header.Dep
+pubinclude BSplSLib_EvaluatorFunction.hxx
+pubinclude BSplSLib.lxx
+dbadmfile BSplSLib_obj_inc.In
+dbadmfile BSplSLib_obj_inc.Out
+dbadmfile BSplSLib_obj_inc.Dep

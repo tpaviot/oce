@@ -1,0 +1,3 @@
+#ifndef _TransferBRep_TransferResultInfo_HeaderFile
+#include <TransferBRep_TransferResultInfo.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepBasic_CoordinatedUniversalTimeOffset_HeaderFile
+#include <StepBasic_CoordinatedUniversalTimeOffset.hxx>
+#endif

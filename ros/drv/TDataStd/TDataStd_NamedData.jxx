@@ -1,0 +1,60 @@
+#ifndef _TDataStd_HDataMapOfStringInteger_HeaderFile
+#include <TDataStd_HDataMapOfStringInteger.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringReal_HeaderFile
+#include <TDataStd_HDataMapOfStringReal.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringString_HeaderFile
+#include <TDataStd_HDataMapOfStringString.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringByte_HeaderFile
+#include <TDataStd_HDataMapOfStringByte.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringHArray1OfInteger_HeaderFile
+#include <TDataStd_HDataMapOfStringHArray1OfInteger.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringHArray1OfReal_HeaderFile
+#include <TDataStd_HDataMapOfStringHArray1OfReal.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TColStd_DataMapOfStringInteger_HeaderFile
+#include <TColStd_DataMapOfStringInteger.hxx>
+#endif
+#ifndef _TDataStd_DataMapOfStringReal_HeaderFile
+#include <TDataStd_DataMapOfStringReal.hxx>
+#endif
+#ifndef _TDataStd_DataMapOfStringString_HeaderFile
+#include <TDataStd_DataMapOfStringString.hxx>
+#endif
+#ifndef _TDataStd_DataMapOfStringByte_HeaderFile
+#include <TDataStd_DataMapOfStringByte.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TDataStd_DataMapOfStringHArray1OfInteger_HeaderFile
+#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TDataStd_DataMapOfStringHArray1OfReal_HeaderFile
+#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDataStd_NamedData_HeaderFile
+#include <TDataStd_NamedData.hxx>
+#endif

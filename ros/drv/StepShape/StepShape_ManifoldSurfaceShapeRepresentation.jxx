@@ -1,0 +1,3 @@
+#ifndef _StepShape_ManifoldSurfaceShapeRepresentation_HeaderFile
+#include <StepShape_ManifoldSurfaceShapeRepresentation.hxx>
+#endif

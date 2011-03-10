@@ -1,0 +1,13 @@
++ LProp:pubinclude:LProp_CurveTool.gxx LProp:source:LProp_CurveTool.gxx
++ LProp:pubinclude:LProp_SurfaceTool.gxx LProp:source:LProp_SurfaceTool.gxx
++ LProp:pubinclude:LProp_CLProps.gxx LProp:source:LProp_CLProps.gxx
++ LProp:pubinclude:LProp_SLProps.gxx LProp:source:LProp_SLProps.gxx
++ LProp:pubinclude:LProp_FuncCurExt.gxx LProp:source:LProp_FuncCurExt.gxx
++ LProp:pubinclude:LProp_FuncCurNul.gxx LProp:source:LProp_FuncCurNul.gxx
++ LProp:pubinclude:LProp_NumericCurInf.gxx LProp:source:LProp_NumericCurInf.gxx
++ LProp:dbadmfile:LProp_obj_inc.In LProp:admfile:LProp_src.Out
++ * LProp:admfile:LProp_xcpp_src.Out
++ LProp:dbadmfile:LProp_obj_inc.Out LProp:admfile:LProp_src.Out
++ * LProp:admfile:LProp_xcpp_src.Out
++ LProp:dbadmfile:LProp_obj_inc.Dep LProp:admfile:LProp_src.Out
++ * LProp:admfile:LProp_xcpp_src.Out

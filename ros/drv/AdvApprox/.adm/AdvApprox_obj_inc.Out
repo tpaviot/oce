@@ -1,0 +1,5 @@
++M AdvApprox:pubinclude:AdvApprox_EvaluatorFunction.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/AdvApprox_EvaluatorFunction.hxx
++M AdvApprox:pubinclude:AdvApprox_ApproxAFunction.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/AdvApprox_ApproxAFunction.lxx
++M AdvApprox:dbadmfile:AdvApprox_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/AdvApprox/.adm/AdvApprox_obj_inc.In
++M AdvApprox:dbadmfile:AdvApprox_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/AdvApprox/.adm/AdvApprox_obj_inc.Out
++M AdvApprox:dbadmfile:AdvApprox_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/AdvApprox/.adm/AdvApprox_obj_inc.Dep

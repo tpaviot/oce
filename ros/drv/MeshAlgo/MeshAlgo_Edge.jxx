@@ -1,0 +1,3 @@
+#ifndef _MeshAlgo_Edge_HeaderFile
+#include <MeshAlgo_Edge.hxx>
+#endif

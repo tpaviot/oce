@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepOffset_MakeOffset_HeaderFile
+#include <BRepOffset_MakeOffset.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _BRepOffsetAPI_MakeOffsetShape_HeaderFile
+#include <BRepOffsetAPI_MakeOffsetShape.hxx>
+#endif

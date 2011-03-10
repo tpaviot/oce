@@ -1,0 +1,18 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Ax2d_HeaderFile
+#include <gp_Ax2d.hxx>
+#endif
+#ifndef _gp_Ax22d_HeaderFile
+#include <gp_Ax22d.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Elips2d_HeaderFile
+#include <gp_Elips2d.hxx>
+#endif
+#ifndef _gce_MakeElips2d_HeaderFile
+#include <gce_MakeElips2d.hxx>
+#endif

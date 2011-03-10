@@ -1,0 +1,12 @@
+#ifndef _HLRBRep_EdgeInterferenceTool_HeaderFile
+#include <HLRBRep_EdgeInterferenceTool.hxx>
+#endif
+#ifndef _HLRAlgo_ListIteratorOfInterferenceList_HeaderFile
+#include <HLRAlgo_ListIteratorOfInterferenceList.hxx>
+#endif
+#ifndef _HLRAlgo_Intersection_HeaderFile
+#include <HLRAlgo_Intersection.hxx>
+#endif
+#ifndef _HLRBRep_VertexList_HeaderFile
+#include <HLRBRep_VertexList.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _StepVisual_AreaOrView_HeaderFile
+#include <StepVisual_AreaOrView.hxx>
+#endif
+#ifndef _StepVisual_BackgroundColour_HeaderFile
+#include <StepVisual_BackgroundColour.hxx>
+#endif

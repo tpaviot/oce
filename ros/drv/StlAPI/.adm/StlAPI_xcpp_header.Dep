@@ -1,0 +1,12 @@
++ StlAPI:pubinclude:StlAPI.hxx StlAPI:msentity:StlAPI
++ StlAPI:privinclude:StlAPI.jxx StlAPI:msentity:StlAPI
++ StlAPI:privinclude:StlAPI.ixx StlAPI:msentity:StlAPI
++ StlAPI:pubinclude:StlAPI_Writer.hxx StlAPI:msentity:StlAPI_Writer
++ StlAPI:privinclude:StlAPI_Writer.jxx StlAPI:msentity:StlAPI_Writer
++ StlAPI:privinclude:StlAPI_Writer.ixx StlAPI:msentity:StlAPI_Writer
++ StlAPI:pubinclude:StlAPI_Reader.hxx StlAPI:msentity:StlAPI_Reader
++ StlAPI:privinclude:StlAPI_Reader.jxx StlAPI:msentity:StlAPI_Reader
++ StlAPI:privinclude:StlAPI_Reader.ixx StlAPI:msentity:StlAPI_Reader
++ StlAPI:dbadmfile:StlAPI_xcpp_header.In StlAPI:admfile:StlAPI_xcpp_fill.Out
++ StlAPI:dbadmfile:StlAPI_xcpp_header.Out StlAPI:admfile:StlAPI_xcpp_fill.Out
++ StlAPI:dbadmfile:StlAPI_xcpp_header.Dep StlAPI:admfile:StlAPI_xcpp_fill.Out

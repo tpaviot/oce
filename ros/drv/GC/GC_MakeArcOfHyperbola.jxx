@@ -1,0 +1,15 @@
+#ifndef _Geom_TrimmedCurve_HeaderFile
+#include <Geom_TrimmedCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _GC_MakeArcOfHyperbola_HeaderFile
+#include <GC_MakeArcOfHyperbola.hxx>
+#endif

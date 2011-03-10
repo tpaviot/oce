@@ -1,0 +1,3 @@
+#ifndef _StepRepr_SuppliedPartRelationship_HeaderFile
+#include <StepRepr_SuppliedPartRelationship.hxx>
+#endif

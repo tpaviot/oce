@@ -1,0 +1,7 @@
++ BRepFilletAPI:pubinclude:BRepFilletAPI_MakeFillet2d.lxx BRepFilletAPI:source:BRepFilletAPI_MakeFillet2d.lxx
++ BRepFilletAPI:dbadmfile:BRepFilletAPI_obj_inc.In BRepFilletAPI:admfile:BRepFilletAPI_src.Out
++ * BRepFilletAPI:admfile:BRepFilletAPI_xcpp_src.Out
++ BRepFilletAPI:dbadmfile:BRepFilletAPI_obj_inc.Out BRepFilletAPI:admfile:BRepFilletAPI_src.Out
++ * BRepFilletAPI:admfile:BRepFilletAPI_xcpp_src.Out
++ BRepFilletAPI:dbadmfile:BRepFilletAPI_obj_inc.Dep BRepFilletAPI:admfile:BRepFilletAPI_src.Out
++ * BRepFilletAPI:admfile:BRepFilletAPI_xcpp_src.Out

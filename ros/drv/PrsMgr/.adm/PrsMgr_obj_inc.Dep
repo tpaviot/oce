@@ -1,0 +1,10 @@
++ PrsMgr:pubinclude:PrsMgr_PresentationManager.lxx PrsMgr:source:PrsMgr_PresentationManager.lxx
++ PrsMgr:pubinclude:PrsMgr_Presentation.lxx PrsMgr:source:PrsMgr_Presentation.lxx
++ PrsMgr:pubinclude:PrsMgr_PresentableObject.lxx PrsMgr:source:PrsMgr_PresentableObject.lxx
++ PrsMgr:pubinclude:PrsMgr_PresentationManager3d.lxx PrsMgr:source:PrsMgr_PresentationManager3d.lxx
++ PrsMgr:dbadmfile:PrsMgr_obj_inc.In PrsMgr:admfile:PrsMgr_src.Out
++ * PrsMgr:admfile:PrsMgr_xcpp_src.Out
++ PrsMgr:dbadmfile:PrsMgr_obj_inc.Out PrsMgr:admfile:PrsMgr_src.Out
++ * PrsMgr:admfile:PrsMgr_xcpp_src.Out
++ PrsMgr:dbadmfile:PrsMgr_obj_inc.Dep PrsMgr:admfile:PrsMgr_src.Out
++ * PrsMgr:admfile:PrsMgr_xcpp_src.Out

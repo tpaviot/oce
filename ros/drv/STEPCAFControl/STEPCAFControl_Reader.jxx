@@ -1,0 +1,54 @@
+#ifndef _STEPCAFControl_DictionaryOfExternFile_HeaderFile
+#include <STEPCAFControl_DictionaryOfExternFile.hxx>
+#endif
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _STEPCAFControl_ExternFile_HeaderFile
+#include <STEPCAFControl_ExternFile.hxx>
+#endif
+#ifndef _STEPControl_Reader_HeaderFile
+#include <STEPControl_Reader.hxx>
+#endif
+#ifndef _TDF_LabelSequence_HeaderFile
+#include <TDF_LabelSequence.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _XCAFDoc_ShapeTool_HeaderFile
+#include <XCAFDoc_ShapeTool.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _STEPCAFControl_DataMapOfShapePD_HeaderFile
+#include <STEPCAFControl_DataMapOfShapePD.hxx>
+#endif
+#ifndef _STEPCAFControl_DataMapOfPDExternFile_HeaderFile
+#include <STEPCAFControl_DataMapOfPDExternFile.hxx>
+#endif
+#ifndef _XCAFDoc_DataMapOfShapeLabel_HeaderFile
+#include <XCAFDoc_DataMapOfShapeLabel.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
+#endif
+#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
+#include <StepRepr_NextAssemblyUsageOccurrence.hxx>
+#endif
+#ifndef _STEPConstruct_Tool_HeaderFile
+#include <STEPConstruct_Tool.hxx>
+#endif
+#ifndef _STEPCAFControl_Reader_HeaderFile
+#include <STEPCAFControl_Reader.hxx>
+#endif

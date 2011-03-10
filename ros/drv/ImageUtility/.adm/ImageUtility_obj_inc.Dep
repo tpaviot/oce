@@ -1,0 +1,10 @@
++ ImageUtility:pubinclude:ImageUtility_X11Display.hxx ImageUtility:source:ImageUtility_X11Display.hxx
++ ImageUtility:pubinclude:ImageUtility_X11Window.hxx ImageUtility:source:ImageUtility_X11Window.hxx
++ ImageUtility:pubinclude:ImageUtility_X11XImage.hxx ImageUtility:source:ImageUtility_X11XImage.hxx
++ ImageUtility:pubinclude:ImageUtility_X11GC.hxx ImageUtility:source:ImageUtility_X11GC.hxx
++ ImageUtility:dbadmfile:ImageUtility_obj_inc.In ImageUtility:admfile:ImageUtility_src.Out
++ * ImageUtility:admfile:ImageUtility_xcpp_src.Out
++ ImageUtility:dbadmfile:ImageUtility_obj_inc.Out ImageUtility:admfile:ImageUtility_src.Out
++ * ImageUtility:admfile:ImageUtility_xcpp_src.Out
++ ImageUtility:dbadmfile:ImageUtility_obj_inc.Dep ImageUtility:admfile:ImageUtility_src.Out
++ * ImageUtility:admfile:ImageUtility_xcpp_src.Out

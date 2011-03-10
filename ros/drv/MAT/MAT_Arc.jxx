@@ -1,0 +1,12 @@
+#ifndef _MAT_BasicElt_HeaderFile
+#include <MAT_BasicElt.hxx>
+#endif
+#ifndef _MAT_Node_HeaderFile
+#include <MAT_Node.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _MAT_Arc_HeaderFile
+#include <MAT_Arc.hxx>
+#endif

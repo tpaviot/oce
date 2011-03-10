@@ -1,0 +1,9 @@
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Bisector_Curve_HeaderFile
+#include <Bisector_Curve.hxx>
+#endif
+#ifndef _Bisector_FunctionInter_HeaderFile
+#include <Bisector_FunctionInter.hxx>
+#endif

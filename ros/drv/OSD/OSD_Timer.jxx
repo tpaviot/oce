@@ -1,0 +1,3 @@
+#ifndef _OSD_Timer_HeaderFile
+#include <OSD_Timer.hxx>
+#endif

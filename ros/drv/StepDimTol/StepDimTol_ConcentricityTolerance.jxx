@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_ConcentricityTolerance_HeaderFile
+#include <StepDimTol_ConcentricityTolerance.hxx>
+#endif

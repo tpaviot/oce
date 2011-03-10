@@ -1,0 +1,15 @@
+#ifndef _TDocStd_SequenceOfApplicationDelta_HeaderFile
+#include <TDocStd_SequenceOfApplicationDelta.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TDocStd_Document_HeaderFile
+#include <TDocStd_Document.hxx>
+#endif
+#ifndef _TDocStd_SequenceOfDocument_HeaderFile
+#include <TDocStd_SequenceOfDocument.hxx>
+#endif
+#ifndef _TDocStd_MultiTransactionManager_HeaderFile
+#include <TDocStd_MultiTransactionManager.hxx>
+#endif

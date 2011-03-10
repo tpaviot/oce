@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_Axis2Placement3d_HeaderFile
+#include <StepGeom_Axis2Placement3d.hxx>
+#endif
+#ifndef _StepGeom_SphericalSurface_HeaderFile
+#include <StepGeom_SphericalSurface.hxx>
+#endif

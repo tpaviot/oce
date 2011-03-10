@@ -1,0 +1,15 @@
++ CPnts:pubinclude:CPnts_MyGaussFunction.hxx CPnts:msentity:CPnts_MyGaussFunction
++ CPnts:privinclude:CPnts_MyGaussFunction.jxx CPnts:msentity:CPnts_MyGaussFunction
++ CPnts:privinclude:CPnts_MyGaussFunction.ixx CPnts:msentity:CPnts_MyGaussFunction
++ CPnts:pubinclude:CPnts_MyRootFunction.hxx CPnts:msentity:CPnts_MyRootFunction
++ CPnts:privinclude:CPnts_MyRootFunction.jxx CPnts:msentity:CPnts_MyRootFunction
++ CPnts:privinclude:CPnts_MyRootFunction.ixx CPnts:msentity:CPnts_MyRootFunction
++ CPnts:pubinclude:CPnts_AbscissaPoint.hxx CPnts:msentity:CPnts_AbscissaPoint
++ CPnts:privinclude:CPnts_AbscissaPoint.jxx CPnts:msentity:CPnts_AbscissaPoint
++ CPnts:privinclude:CPnts_AbscissaPoint.ixx CPnts:msentity:CPnts_AbscissaPoint
++ CPnts:pubinclude:CPnts_UniformDeflection.hxx CPnts:msentity:CPnts_UniformDeflection
++ CPnts:privinclude:CPnts_UniformDeflection.jxx CPnts:msentity:CPnts_UniformDeflection
++ CPnts:privinclude:CPnts_UniformDeflection.ixx CPnts:msentity:CPnts_UniformDeflection
++ CPnts:dbadmfile:CPnts_xcpp_header.In CPnts:admfile:CPnts_xcpp_fill.Out
++ CPnts:dbadmfile:CPnts_xcpp_header.Out CPnts:admfile:CPnts_xcpp_fill.Out
++ CPnts:dbadmfile:CPnts_xcpp_header.Dep CPnts:admfile:CPnts_xcpp_fill.Out

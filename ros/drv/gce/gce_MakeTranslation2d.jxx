@@ -1,0 +1,12 @@
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _gce_MakeTranslation2d_HeaderFile
+#include <gce_MakeTranslation2d.hxx>
+#endif

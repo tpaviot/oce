@@ -1,0 +1,18 @@
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _AlienImage_AlienUserImage_HeaderFile
+#include <AlienImage_AlienUserImage.hxx>
+#endif
+#ifndef _AlienImage_XAlienImage_HeaderFile
+#include <AlienImage_XAlienImage.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _ImageUtility_XPR_HeaderFile
+#include <ImageUtility_XPR.hxx>
+#endif

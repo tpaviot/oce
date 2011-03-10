@@ -1,0 +1,3 @@
+#ifndef _HatchGen_IntersectionPoint_HeaderFile
+#include <HatchGen_IntersectionPoint.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _AlienImage_AidaAlienData_HeaderFile
+#include <AlienImage_AidaAlienData.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _Aspect_ColorMap_HeaderFile
+#include <Aspect_ColorMap.hxx>
+#endif
+#ifndef _AlienImage_AidaAlienImage_HeaderFile
+#include <AlienImage_AidaAlienImage.hxx>
+#endif

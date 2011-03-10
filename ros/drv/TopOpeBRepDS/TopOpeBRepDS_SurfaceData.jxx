@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepDS_DataStructure_HeaderFile
+#include <TopOpeBRepDS_DataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Surface_HeaderFile
+#include <TopOpeBRepDS_Surface.hxx>
+#endif
+#ifndef _TopOpeBRepDS_SurfaceData_HeaderFile
+#include <TopOpeBRepDS_SurfaceData.hxx>
+#endif

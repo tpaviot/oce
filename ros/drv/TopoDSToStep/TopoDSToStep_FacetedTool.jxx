@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDSToStep_FacetedTool_HeaderFile
+#include <TopoDSToStep_FacetedTool.hxx>
+#endif

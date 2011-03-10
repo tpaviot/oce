@@ -1,0 +1,9 @@
++ BOP:pubinclude:BOP_ShellFaceSet.lxx BOP:source:BOP_ShellFaceSet.lxx
++ BOP:pubinclude:BOP_WireSplitter.lxx BOP:source:BOP_WireSplitter.lxx
++ BOP:pubinclude:BOP_ArgumentAnalyzer.lxx BOP:source:BOP_ArgumentAnalyzer.lxx
++ BOP:dbadmfile:BOP_obj_inc.In BOP:admfile:BOP_src.Out
++ * BOP:admfile:BOP_xcpp_src.Out
++ BOP:dbadmfile:BOP_obj_inc.Out BOP:admfile:BOP_src.Out
++ * BOP:admfile:BOP_xcpp_src.Out
++ BOP:dbadmfile:BOP_obj_inc.Dep BOP:admfile:BOP_src.Out
++ * BOP:admfile:BOP_xcpp_src.Out

@@ -1,0 +1,3 @@
+#ifndef _HLRAlgo_PolyInternalNode_HeaderFile
+#include <HLRAlgo_PolyInternalNode.hxx>
+#endif

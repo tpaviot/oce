@@ -1,0 +1,9 @@
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_CopyControl_HeaderFile
+#include <Interface_CopyControl.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _GC_MakeTranslation_HeaderFile
+#include <GC_MakeTranslation.hxx>
+#endif

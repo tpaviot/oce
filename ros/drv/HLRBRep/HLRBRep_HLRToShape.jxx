@@ -1,0 +1,15 @@
+#ifndef _HLRBRep_Algo_HeaderFile
+#include <HLRBRep_Algo.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _HLRBRep_Data_HeaderFile
+#include <HLRBRep_Data.hxx>
+#endif
+#ifndef _HLRBRep_EdgeData_HeaderFile
+#include <HLRBRep_EdgeData.hxx>
+#endif
+#ifndef _HLRBRep_HLRToShape_HeaderFile
+#include <HLRBRep_HLRToShape.hxx>
+#endif

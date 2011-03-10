@@ -1,0 +1,9 @@
++ FSD:pubinclude:FSD_FStream.hxx FSD:source:FSD_FStream.hxx
++ FSD:pubinclude:FSD_BStream.hxx FSD:source:FSD_BStream.hxx
++ FSD:pubinclude:FSD_FileHeader.hxx FSD:source:FSD_FileHeader.hxx
++ FSD:dbadmfile:FSD_obj_inc.In FSD:admfile:FSD_src.Out
++ * FSD:admfile:FSD_xcpp_src.Out
++ FSD:dbadmfile:FSD_obj_inc.Out FSD:admfile:FSD_src.Out
++ * FSD:admfile:FSD_xcpp_src.Out
++ FSD:dbadmfile:FSD_obj_inc.Dep FSD:admfile:FSD_src.Out
++ * FSD:admfile:FSD_xcpp_src.Out

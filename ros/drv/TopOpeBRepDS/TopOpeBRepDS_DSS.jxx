@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListOfInterference.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile
+#include <TopOpeBRepDS_MapOfIntegerShapeData.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Interference_HeaderFile
+#include <TopOpeBRepDS_Interference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_DSS_HeaderFile
+#include <TopOpeBRepDS_DSS.hxx>
+#endif

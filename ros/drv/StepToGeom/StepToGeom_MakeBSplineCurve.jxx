@@ -1,0 +1,9 @@
+#ifndef _StepGeom_BSplineCurve_HeaderFile
+#include <StepGeom_BSplineCurve.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _StepToGeom_MakeBSplineCurve_HeaderFile
+#include <StepToGeom_MakeBSplineCurve.hxx>
+#endif

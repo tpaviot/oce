@@ -1,0 +1,6 @@
++ MgtBRep:dbadmfile:MgtBRep_obj_inc.In MgtBRep:admfile:MgtBRep_src.Out
++ * MgtBRep:admfile:MgtBRep_xcpp_src.Out
++ MgtBRep:dbadmfile:MgtBRep_obj_inc.Out MgtBRep:admfile:MgtBRep_src.Out
++ * MgtBRep:admfile:MgtBRep_xcpp_src.Out
++ MgtBRep:dbadmfile:MgtBRep_obj_inc.Dep MgtBRep:admfile:MgtBRep_src.Out
++ * MgtBRep:admfile:MgtBRep_xcpp_src.Out

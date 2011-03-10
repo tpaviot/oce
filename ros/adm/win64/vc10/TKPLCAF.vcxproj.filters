@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{710E6064-11F3-0EDF-0993-7BA4DD7C3B72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PDF">
+      <UniqueIdentifier>{46A2E4D0-06E7-1724-0EBF-6FA301281B8D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PDataStd">
+      <UniqueIdentifier>{67E99018-1321-084B-139A-2CB0D27F0048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PFunction">
+      <UniqueIdentifier>{D589F5BB-0123-15E7-0A07-A4E2C020E209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PDocStd">
+      <UniqueIdentifier>{494237B9-047F-1252-091E-E29AAB092B19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MDF">
+      <UniqueIdentifier>{5CEAF518-0993-16FE-1678-56357ACFE26A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MDataStd">
+      <UniqueIdentifier>{68EB03FB-0810-1550-119B-4C627972F16B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MFunction">
+      <UniqueIdentifier>{1A6CF9DB-1134-1451-05C6-4560AF0C1B60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\MDocStd">
+      <UniqueIdentifier>{477DA260-012A-0BA9-1771-8F9809B10723}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\PDF\PDF_FieldOfHAttributeArray1_0.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDF\PDF_HAttributeArray1_0.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDF\PDF_VArrayNodeOfFieldOfHAttributeArray1_0.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDF\PDF_VArrayTNodeOfFieldOfHAttributeArray1_0.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDF\PDF_Attribute.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDF\PDF_Data.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDF\PDF_Reference.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDF\PDF_TagSource.cxx">
+      <Filter>Source files\PDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfByte_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfReal_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHAsciiString_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_HArray1OfByte_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfReal_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_HArray1OfHAsciiString_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfByte_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_0.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_AsciiString.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_BooleanArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_BooleanList.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ByteArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ByteArray_1.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Comment.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Directory.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Expression.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ExtStringArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ExtStringArray_1.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ExtStringList.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_IntPackedMap.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_IntPackedMap_1.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Integer.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_IntegerArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_IntegerArray_1.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_IntegerList.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Name.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_NamedData.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_NoteBook.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Real.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_RealArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_RealArray_1.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_RealList.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ReferenceArray.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_ReferenceList.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Relation.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Tick.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_TreeNode.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_UAttribute.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDataStd\PDataStd_Variable.cxx">
+      <Filter>Source files\PDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PFunction\PFunction_Function.cxx">
+      <Filter>Source files\PFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDocStd\PDocStd_Document.cxx">
+      <Filter>Source files\PDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PDocStd\PDocStd_XLink.cxx">
+      <Filter>Source files\PDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ARDriverHSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ARDriverSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ASDriverHSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ASDriverSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeARDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeASDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeARDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeASDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DriverListOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_DriverListOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_RRelocationTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_SRelocationTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_SequenceNodeOfARDriverSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_SequenceNodeOfASDriverSequence_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_TypeARDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_TypeASDriverMap_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_TypeDriverListMapOfARDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\MDF\MDF_TypeDriverListMapOfASDriverTable_0.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_ARDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_ASDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_ReferenceRetrievalDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_ReferenceStorageDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_TagSourceRetrievalDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_TagSourceStorageDriver.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDF\MDF_Tool.cxx">
+      <Filter>Source files\MDF</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_AsciiStringRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_AsciiStringStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_BooleanArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_BooleanArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_BooleanListRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_BooleanListStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver_1.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ByteArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_CommentRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_CommentStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_DirectoryRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_DirectoryStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExpressionRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExpressionStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver_1.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExtStringArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExtStringListRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ExtStringListStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver_1.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntPackedMapStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver_1.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerListRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerListStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_IntegerStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NameRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NameStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NamedDataRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NamedDataStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NoteBookRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_NoteBookStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver_1.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealListRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealListStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RealStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ReferenceArrayRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ReferenceArrayStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ReferenceListRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_ReferenceListStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RelationRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_RelationStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_TickRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_TickStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_TreeNodeRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_TreeNodeStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_UAttributeRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_UAttributeStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_VariableRetrievalDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDataStd\MDataStd_VariableStorageDriver.cxx">
+      <Filter>Source files\MDataStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MFunction\MFunction.cxx">
+      <Filter>Source files\MFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MFunction\MFunction_FunctionRetrievalDriver.cxx">
+      <Filter>Source files\MFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MFunction\MFunction_FunctionStorageDriver.cxx">
+      <Filter>Source files\MFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDocStd\MDocStd.cxx">
+      <Filter>Source files\MDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDocStd\MDocStd_DocumentRetrievalDriver.cxx">
+      <Filter>Source files\MDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDocStd\MDocStd_DocumentStorageDriver.cxx">
+      <Filter>Source files\MDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDocStd\MDocStd_XLinkRetrievalDriver.cxx">
+      <Filter>Source files\MDocStd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MDocStd\MDocStd_XLinkStorageDriver.cxx">
+      <Filter>Source files\MDocStd</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

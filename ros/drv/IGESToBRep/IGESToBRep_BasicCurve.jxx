@@ -1,0 +1,45 @@
+#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
+#include <IGESToBRep_CurveAndSurface.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _IGESGeom_BSplineCurve_HeaderFile
+#include <IGESGeom_BSplineCurve.hxx>
+#endif
+#ifndef _IGESGeom_CircularArc_HeaderFile
+#include <IGESGeom_CircularArc.hxx>
+#endif
+#ifndef _IGESGeom_ConicArc_HeaderFile
+#include <IGESGeom_ConicArc.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _IGESGeom_CopiousData_HeaderFile
+#include <IGESGeom_CopiousData.hxx>
+#endif
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _IGESGeom_Line_HeaderFile
+#include <IGESGeom_Line.hxx>
+#endif
+#ifndef _IGESGeom_SplineCurve_HeaderFile
+#include <IGESGeom_SplineCurve.hxx>
+#endif
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _IGESGeom_TransformationMatrix_HeaderFile
+#include <IGESGeom_TransformationMatrix.hxx>
+#endif
+#ifndef _IGESToBRep_BasicCurve_HeaderFile
+#include <IGESToBRep_BasicCurve.hxx>
+#endif

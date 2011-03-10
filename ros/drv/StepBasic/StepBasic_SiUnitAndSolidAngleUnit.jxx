@@ -1,0 +1,9 @@
+#ifndef _StepBasic_SolidAngleUnit_HeaderFile
+#include <StepBasic_SolidAngleUnit.hxx>
+#endif
+#ifndef _StepBasic_DimensionalExponents_HeaderFile
+#include <StepBasic_DimensionalExponents.hxx>
+#endif
+#ifndef _StepBasic_SiUnitAndSolidAngleUnit_HeaderFile
+#include <StepBasic_SiUnitAndSolidAngleUnit.hxx>
+#endif

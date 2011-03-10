@@ -1,0 +1,14 @@
+pubinclude BSplCLib.hxx
+privinclude BSplCLib.jxx
+privinclude BSplCLib.ixx
+pubinclude BSplCLib_KnotDistribution.hxx
+pubinclude BSplCLib_MultDistribution.hxx
+dbadmfile BSplCLib_xcpp_header.In
+dbadmfile BSplCLib_xcpp_header.Out
+dbadmfile BSplCLib_xcpp_header.Dep
+pubinclude BSplCLib_CurveComputation.gxx
+pubinclude BSplCLib_EvaluatorFunction.hxx
+pubinclude BSplCLib.lxx
+dbadmfile BSplCLib_obj_inc.In
+dbadmfile BSplCLib_obj_inc.Out
+dbadmfile BSplCLib_obj_inc.Dep

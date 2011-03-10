@@ -1,0 +1,27 @@
+#ifndef _BooleanOperations_Explorer_HeaderFile
+#include <BooleanOperations_Explorer.hxx>
+#endif
+#ifndef _BooleanOperations_OnceExplorer_HeaderFile
+#include <BooleanOperations_OnceExplorer.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BooleanOperations_AncestorsSeqAndSuccessorsSeq_HeaderFile
+#include <BooleanOperations_AncestorsSeqAndSuccessorsSeq.hxx>
+#endif
+#ifndef _BooleanOperations_IndexedDataMapOfShapeAncestorsSuccessors_HeaderFile
+#include <BooleanOperations_IndexedDataMapOfShapeAncestorsSuccessors.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _BooleanOperations_ShapeAndInterferences_HeaderFile
+#include <BooleanOperations_ShapeAndInterferences.hxx>
+#endif
+#ifndef _BooleanOperations_IndexedDataMapOfShapeInteger_HeaderFile
+#include <BooleanOperations_IndexedDataMapOfShapeInteger.hxx>
+#endif
+#ifndef _BooleanOperations_ShapesDataStructure_HeaderFile
+#include <BooleanOperations_ShapesDataStructure.hxx>
+#endif

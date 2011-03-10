@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomFill_DegeneratedBound_HeaderFile
+#include <GeomFill_DegeneratedBound.hxx>
+#endif

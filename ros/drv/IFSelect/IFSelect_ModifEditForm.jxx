@@ -1,0 +1,21 @@
+#ifndef _IFSelect_EditForm_HeaderFile
+#include <IFSelect_EditForm.hxx>
+#endif
+#ifndef _IFSelect_ContextModif_HeaderFile
+#include <IFSelect_ContextModif.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _IFSelect_ModifEditForm_HeaderFile
+#include <IFSelect_ModifEditForm.hxx>
+#endif

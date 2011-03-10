@@ -1,0 +1,12 @@
+#ifndef _Geom2dToIGES_Geom2dEntity_HeaderFile
+#include <Geom2dToIGES_Geom2dEntity.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Geom2dToIGES_Geom2dCurve_HeaderFile
+#include <Geom2dToIGES_Geom2dCurve.hxx>
+#endif

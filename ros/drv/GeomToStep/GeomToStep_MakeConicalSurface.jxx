@@ -1,0 +1,12 @@
+#ifndef _StepGeom_ConicalSurface_HeaderFile
+#include <StepGeom_ConicalSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_ConicalSurface_HeaderFile
+#include <Geom_ConicalSurface.hxx>
+#endif
+#ifndef _GeomToStep_MakeConicalSurface_HeaderFile
+#include <GeomToStep_MakeConicalSurface.hxx>
+#endif

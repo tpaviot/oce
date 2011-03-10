@@ -1,0 +1,12 @@
+#ifndef _StepGeom_Curve_HeaderFile
+#include <StepGeom_Curve.hxx>
+#endif
+#ifndef _StepGeom_CartesianTransformationOperator_HeaderFile
+#include <StepGeom_CartesianTransformationOperator.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_CurveReplica_HeaderFile
+#include <StepGeom_CurveReplica.hxx>
+#endif

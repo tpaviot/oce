@@ -1,0 +1,18 @@
+#ifndef _TopOpeBRepBuild_LoopSet_HeaderFile
+#include <TopOpeBRepBuild_LoopSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
+#include <TopOpeBRepBuild_LoopClassifier.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Loop_HeaderFile
+#include <TopOpeBRepBuild_Loop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
+#include <TopOpeBRepBuild_ListOfLoop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ListIteratorOfListOfLoop_HeaderFile
+#include <TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_AreaBuilder_HeaderFile
+#include <TopOpeBRepBuild_AreaBuilder.hxx>
+#endif

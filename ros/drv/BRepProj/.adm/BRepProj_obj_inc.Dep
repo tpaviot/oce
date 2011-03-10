@@ -1,0 +1,7 @@
++ BRepProj:pubinclude:BRepProj_Projection.lxx BRepProj:source:BRepProj_Projection.lxx
++ BRepProj:dbadmfile:BRepProj_obj_inc.In BRepProj:admfile:BRepProj_src.Out
++ * BRepProj:admfile:BRepProj_xcpp_src.Out
++ BRepProj:dbadmfile:BRepProj_obj_inc.Out BRepProj:admfile:BRepProj_src.Out
++ * BRepProj:admfile:BRepProj_xcpp_src.Out
++ BRepProj:dbadmfile:BRepProj_obj_inc.Dep BRepProj:admfile:BRepProj_src.Out
++ * BRepProj:admfile:BRepProj_xcpp_src.Out

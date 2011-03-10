@@ -1,0 +1,8 @@
++ IGESData:pubinclude:IGESData_Dump.hxx IGESData:source:IGESData_Dump.hxx
++ IGESData:pubinclude:IGESData_ParamCursor.lxx IGESData:source:IGESData_ParamCursor.lxx
++ IGESData:dbadmfile:IGESData_obj_inc.In IGESData:admfile:IGESData_src.Out
++ * IGESData:admfile:IGESData_xcpp_src.Out
++ IGESData:dbadmfile:IGESData_obj_inc.Out IGESData:admfile:IGESData_src.Out
++ * IGESData:admfile:IGESData_xcpp_src.Out
++ IGESData:dbadmfile:IGESData_obj_inc.Dep IGESData:admfile:IGESData_src.Out
++ * IGESData:admfile:IGESData_xcpp_src.Out

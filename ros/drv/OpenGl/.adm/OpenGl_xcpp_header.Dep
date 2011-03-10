@@ -1,0 +1,10 @@
++ OpenGl:pubinclude:Handle_OpenGl_GraphicDriver.hxx OpenGl:msentity:OpenGl_GraphicDriver
++ OpenGl:pubinclude:OpenGl_GraphicDriver.hxx OpenGl:msentity:OpenGl_GraphicDriver
++ OpenGl:privinclude:OpenGl_GraphicDriver.jxx OpenGl:msentity:OpenGl_GraphicDriver
++ OpenGl:privinclude:OpenGl_GraphicDriver.ixx OpenGl:msentity:OpenGl_GraphicDriver
++ OpenGl:pubinclude:Handle_OpenGl_Error.hxx OpenGl:msentity:OpenGl_Error
++ OpenGl:pubinclude:OpenGl_Error.hxx OpenGl:msentity:OpenGl_Error
++ OpenGl:derivated:OpenGl_Error_0.cxx OpenGl:msentity:OpenGl_Error
++ OpenGl:dbadmfile:OpenGl_xcpp_header.In OpenGl:admfile:OpenGl_xcpp_fill.Out
++ OpenGl:dbadmfile:OpenGl_xcpp_header.Out OpenGl:admfile:OpenGl_xcpp_fill.Out
++ OpenGl:dbadmfile:OpenGl_xcpp_header.Dep OpenGl:admfile:OpenGl_xcpp_fill.Out

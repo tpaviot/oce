@@ -1,0 +1,15 @@
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Expr_GeneralRelation_HeaderFile
+#include <Expr_GeneralRelation.hxx>
+#endif
+#ifndef _Expr_SingleRelation_HeaderFile
+#include <Expr_SingleRelation.hxx>
+#endif
+#ifndef _Expr_RelationIterator_HeaderFile
+#include <Expr_RelationIterator.hxx>
+#endif

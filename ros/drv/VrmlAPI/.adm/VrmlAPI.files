@@ -1,0 +1,13 @@
+pubinclude VrmlAPI.hxx
+privinclude VrmlAPI.jxx
+privinclude VrmlAPI.ixx
+pubinclude VrmlAPI_Writer.hxx
+privinclude VrmlAPI_Writer.jxx
+privinclude VrmlAPI_Writer.ixx
+pubinclude VrmlAPI_RepresentationOfShape.hxx
+dbadmfile VrmlAPI_xcpp_header.In
+dbadmfile VrmlAPI_xcpp_header.Out
+dbadmfile VrmlAPI_xcpp_header.Dep
+dbadmfile VrmlAPI_obj_inc.In
+dbadmfile VrmlAPI_obj_inc.Out
+dbadmfile VrmlAPI_obj_inc.Dep

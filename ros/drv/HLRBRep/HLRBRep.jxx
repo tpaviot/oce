@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _HLRBRep_Curve_HeaderFile
+#include <HLRBRep_Curve.hxx>
+#endif
+#ifndef _HLRBRep_HeaderFile
+#include <HLRBRep.hxx>
+#endif

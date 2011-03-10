@@ -1,0 +1,6 @@
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _PGeom2d_Transformation_HeaderFile
+#include <PGeom2d_Transformation.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Pave_HeaderFile
+#include <TopOpeBRepBuild_Pave.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Loop_HeaderFile
+#include <TopOpeBRepBuild_Loop.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ListOfPave_HeaderFile
+#include <TopOpeBRepBuild_ListOfPave.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_PaveSet_HeaderFile
+#include <TopOpeBRepBuild_PaveSet.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_Product_HeaderFile
+#include <StepBasic_Product.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionFormationWithSpecifiedSource_HeaderFile
+#include <StepBasic_ProductDefinitionFormationWithSpecifiedSource.hxx>
+#endif

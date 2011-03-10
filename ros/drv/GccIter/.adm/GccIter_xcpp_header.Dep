@@ -1,0 +1,9 @@
++ GccIter:pubinclude:Handle_GccIter_IsParallel.hxx GccIter:msentity:GccIter_IsParallel
++ GccIter:pubinclude:GccIter_IsParallel.hxx GccIter:msentity:GccIter_IsParallel
++ GccIter:derivated:GccIter_IsParallel_0.cxx GccIter:msentity:GccIter_IsParallel
++ GccIter:pubinclude:GccIter_Type1.hxx GccIter:msentity:GccIter_Type1
++ GccIter:pubinclude:GccIter_Type2.hxx GccIter:msentity:GccIter_Type2
++ GccIter:pubinclude:GccIter_Type3.hxx GccIter:msentity:GccIter_Type3
++ GccIter:dbadmfile:GccIter_xcpp_header.In GccIter:admfile:GccIter_xcpp_fill.Out
++ GccIter:dbadmfile:GccIter_xcpp_header.Out GccIter:admfile:GccIter_xcpp_fill.Out
++ GccIter:dbadmfile:GccIter_xcpp_header.Dep GccIter:admfile:GccIter_xcpp_fill.Out

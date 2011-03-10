@@ -1,0 +1,3 @@
+#ifndef _StepRepr_PromissoryUsageOccurrence_HeaderFile
+#include <StepRepr_PromissoryUsageOccurrence.hxx>
+#endif

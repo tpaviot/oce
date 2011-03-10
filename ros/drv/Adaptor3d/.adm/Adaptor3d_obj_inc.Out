@@ -1,0 +1,12 @@
++M Adaptor3d:pubinclude:Adaptor3d_HCurve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_HCurve.lxx
++M Adaptor3d:pubinclude:Adaptor3d_GenHCurve.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_GenHCurve.gxx
++M Adaptor3d:pubinclude:Adaptor3d_GenHCurve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_GenHCurve.lxx
++M Adaptor3d:pubinclude:Adaptor3d_HSurface.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_HSurface.lxx
++M Adaptor3d:pubinclude:Adaptor3d_GenHSurface.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_GenHSurface.gxx
++M Adaptor3d:pubinclude:Adaptor3d_GenHSurface.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_GenHSurface.lxx
++M Adaptor3d:pubinclude:Adaptor3d_HSurfaceTool.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_HSurfaceTool.lxx
++M Adaptor3d:pubinclude:Adaptor3d_IsoCurve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_IsoCurve.lxx
++M Adaptor3d:pubinclude:Adaptor3d_OffsetCurve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Adaptor3d_OffsetCurve.lxx
++M Adaptor3d:dbadmfile:Adaptor3d_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Adaptor3d/.adm/Adaptor3d_obj_inc.In
++M Adaptor3d:dbadmfile:Adaptor3d_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Adaptor3d/.adm/Adaptor3d_obj_inc.Out
++M Adaptor3d:dbadmfile:Adaptor3d_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Adaptor3d/.adm/Adaptor3d_obj_inc.Dep

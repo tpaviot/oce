@@ -1,0 +1,21 @@
+#ifndef _StepData_Protocol_HeaderFile
+#include <StepData_Protocol.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_ShareTool_HeaderFile
+#include <Interface_ShareTool.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _StepData_DescrGeneral_HeaderFile
+#include <StepData_DescrGeneral.hxx>
+#endif

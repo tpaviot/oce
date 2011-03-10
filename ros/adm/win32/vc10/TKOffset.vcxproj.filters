@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{2EBC879A-11AB-0F4E-0F61-B8AD8549D3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepOffsetAPI">
+      <UniqueIdentifier>{36B45342-0DA6-016C-093F-D29C42A0AAEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Draft">
+      <UniqueIdentifier>{8AA11761-0F7F-0DD9-07A8-F969C33FA535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepOffset">
+      <UniqueIdentifier>{42A7323D-1690-11C0-17A5-BF8E4D6B286C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BiTgte">
+      <UniqueIdentifier>{F3C944BF-1319-00A5-0BCA-B3E3C7BCB6FE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\BRepOffsetAPI\BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_0.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffsetAPI\BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_0.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffsetAPI\BRepOffsetAPI_SequenceOfSequenceOfReal_0.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffsetAPI\BRepOffsetAPI_SequenceOfSequenceOfShape_0.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_DraftAngle.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_FindContigousEdges.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeDraft.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeEvolved.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeFilling.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeOffset.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeOffsetShape.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakePipe.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakePipeShell.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeThickSolid.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_NormalProjection.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_ThruSections.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapIteratorOfDataMapOfFaceFaceInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapIteratorOfDataMapOfVertexVertexInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapNodeOfDataMapOfFaceFaceInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapNodeOfDataMapOfVertexVertexInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapOfEdgeEdgeInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapOfFaceFaceInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Draft\Draft_DataMapOfVertexVertexInfo_0.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft_EdgeInfo.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft_FaceInfo.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft_Modification.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft_Modification_1.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Draft\Draft_VertexInfo.cxx">
+      <Filter>Source files\Draft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapIteratorOfDataMapOfShapeOffset_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapNodeOfDataMapOfShapeOffset_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapOfShapeListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapOfShapeMapOfShape_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_DataMapOfShapeOffset_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_ListIteratorOfListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_ListNodeOfListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepOffset\BRepOffset_ListOfInterval_0.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Analyse.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Inter2d.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Inter3d.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Interval.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_MakeLoops.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_MakeOffset.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Offset.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffset\BRepOffset_Tool.cxx">
+      <Filter>Source files\BRepOffset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BiTgte\BiTgte_DataMapIteratorOfDataMapOfShapeBox_0.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BiTgte\BiTgte_DataMapNodeOfDataMapOfShapeBox_0.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BiTgte\BiTgte_DataMapOfShapeBox_0.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BiTgte\BiTgte_HCurveOnEdge_0.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BiTgte\BiTgte_HCurveOnVertex_0.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BiTgte\BiTgte_Blend.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BiTgte\BiTgte_CurveOnEdge.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BiTgte\BiTgte_CurveOnVertex.cxx">
+      <Filter>Source files\BiTgte</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

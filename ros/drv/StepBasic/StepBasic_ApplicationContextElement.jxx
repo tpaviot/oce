@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_ApplicationContext_HeaderFile
+#include <StepBasic_ApplicationContext.hxx>
+#endif
+#ifndef _StepBasic_ApplicationContextElement_HeaderFile
+#include <StepBasic_ApplicationContextElement.hxx>
+#endif

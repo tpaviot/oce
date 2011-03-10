@@ -1,0 +1,3 @@
+#ifndef _PGeom_BoundedSurface_HeaderFile
+#include <PGeom_BoundedSurface.hxx>
+#endif

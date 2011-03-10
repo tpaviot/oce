@@ -1,0 +1,21 @@
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Adaptor2d_HCurve2d_HeaderFile
+#include <Adaptor2d_HCurve2d.hxx>
+#endif
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _Approx_CurveOnSurface_HeaderFile
+#include <Approx_CurveOnSurface.hxx>
+#endif

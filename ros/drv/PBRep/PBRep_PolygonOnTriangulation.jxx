@@ -1,0 +1,12 @@
+#ifndef _PPoly_PolygonOnTriangulation_HeaderFile
+#include <PPoly_PolygonOnTriangulation.hxx>
+#endif
+#ifndef _PPoly_Triangulation_HeaderFile
+#include <PPoly_Triangulation.hxx>
+#endif
+#ifndef _PTopLoc_Location_HeaderFile
+#include <PTopLoc_Location.hxx>
+#endif
+#ifndef _PBRep_PolygonOnTriangulation_HeaderFile
+#include <PBRep_PolygonOnTriangulation.hxx>
+#endif

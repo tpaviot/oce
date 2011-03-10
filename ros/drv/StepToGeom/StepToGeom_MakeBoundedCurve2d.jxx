@@ -1,0 +1,9 @@
+#ifndef _StepGeom_BoundedCurve_HeaderFile
+#include <StepGeom_BoundedCurve.hxx>
+#endif
+#ifndef _Geom2d_BoundedCurve_HeaderFile
+#include <Geom2d_BoundedCurve.hxx>
+#endif
+#ifndef _StepToGeom_MakeBoundedCurve2d_HeaderFile
+#include <StepToGeom_MakeBoundedCurve2d.hxx>
+#endif

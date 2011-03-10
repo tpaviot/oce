@@ -1,0 +1,6 @@
++ StlAPI:dbadmfile:StlAPI_obj_inc.In StlAPI:admfile:StlAPI_src.Out
++ * StlAPI:admfile:StlAPI_xcpp_src.Out
++ StlAPI:dbadmfile:StlAPI_obj_inc.Out StlAPI:admfile:StlAPI_src.Out
++ * StlAPI:admfile:StlAPI_xcpp_src.Out
++ StlAPI:dbadmfile:StlAPI_obj_inc.Dep StlAPI:admfile:StlAPI_src.Out
++ * StlAPI:admfile:StlAPI_xcpp_src.Out

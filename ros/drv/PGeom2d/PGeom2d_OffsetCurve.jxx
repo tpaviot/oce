@@ -1,0 +1,6 @@
+#ifndef _PGeom2d_Curve_HeaderFile
+#include <PGeom2d_Curve.hxx>
+#endif
+#ifndef _PGeom2d_OffsetCurve_HeaderFile
+#include <PGeom2d_OffsetCurve.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _math_Function_HeaderFile
+#include <math_Function.hxx>
+#endif
+#ifndef _math_BracketMinimum_HeaderFile
+#include <math_BracketMinimum.hxx>
+#endif

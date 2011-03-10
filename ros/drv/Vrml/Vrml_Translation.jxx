@@ -1,0 +1,6 @@
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _Vrml_Translation_HeaderFile
+#include <Vrml_Translation.hxx>
+#endif

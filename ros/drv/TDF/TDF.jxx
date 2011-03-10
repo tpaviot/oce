@@ -1,0 +1,9 @@
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TDF_HeaderFile
+#include <TDF.hxx>
+#endif

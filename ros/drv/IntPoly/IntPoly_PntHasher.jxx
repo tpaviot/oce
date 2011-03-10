@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IntPoly_PntHasher_HeaderFile
+#include <IntPoly_PntHasher.hxx>
+#endif

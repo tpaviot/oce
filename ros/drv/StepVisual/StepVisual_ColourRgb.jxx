@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_ColourRgb_HeaderFile
+#include <StepVisual_ColourRgb.hxx>
+#endif

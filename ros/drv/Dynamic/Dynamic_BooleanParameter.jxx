@@ -1,0 +1,3 @@
+#ifndef _Dynamic_BooleanParameter_HeaderFile
+#include <Dynamic_BooleanParameter.hxx>
+#endif

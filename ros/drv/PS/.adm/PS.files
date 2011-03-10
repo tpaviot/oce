@@ -1,0 +1,10 @@
+pubinclude Handle_PS_Driver.hxx
+pubinclude PS_Driver.hxx
+privinclude PS_Driver.jxx
+privinclude PS_Driver.ixx
+dbadmfile PS_xcpp_header.In
+dbadmfile PS_xcpp_header.Out
+dbadmfile PS_xcpp_header.Dep
+dbadmfile PS_obj_inc.In
+dbadmfile PS_obj_inc.Out
+dbadmfile PS_obj_inc.Dep

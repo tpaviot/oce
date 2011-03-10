@@ -1,0 +1,6 @@
+#ifndef _SelectMgr_EntityOwner_HeaderFile
+#include <SelectMgr_EntityOwner.hxx>
+#endif
+#ifndef _StdSelect_EdgeFilter_HeaderFile
+#include <StdSelect_EdgeFilter.hxx>
+#endif

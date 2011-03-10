@@ -1,0 +1,9 @@
+#ifndef _StepShape_HArray1OfEdge_HeaderFile
+#include <StepShape_HArray1OfEdge.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_ConnectedEdgeSet_HeaderFile
+#include <StepShape_ConnectedEdgeSet.hxx>
+#endif

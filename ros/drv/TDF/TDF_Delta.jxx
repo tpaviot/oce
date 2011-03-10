@@ -1,0 +1,21 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TDF_Data_HeaderFile
+#include <TDF_Data.hxx>
+#endif
+#ifndef _TDF_AttributeDelta_HeaderFile
+#include <TDF_AttributeDelta.hxx>
+#endif
+#ifndef _TDF_LabelList_HeaderFile
+#include <TDF_LabelList.hxx>
+#endif
+#ifndef _TDF_AttributeDeltaList_HeaderFile
+#include <TDF_AttributeDeltaList.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TDF_Delta_HeaderFile
+#include <TDF_Delta.hxx>
+#endif

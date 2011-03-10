@@ -1,0 +1,3 @@
+#ifndef _math_Function_HeaderFile
+#include <math_Function.hxx>
+#endif

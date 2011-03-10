@@ -1,0 +1,39 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_DataStructure_HeaderFile
+#include <TopOpeBRepDS_DataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Surface_HeaderFile
+#include <TopOpeBRepDS_Surface.hxx>
+#endif
+#ifndef _TopOpeBRepDS_CurveIterator_HeaderFile
+#include <TopOpeBRepDS_CurveIterator.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Curve_HeaderFile
+#include <TopOpeBRepDS_Curve.hxx>
+#endif
+#ifndef _TopOpeBRepDS_PointIterator_HeaderFile
+#include <TopOpeBRepDS_PointIterator.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Point_HeaderFile
+#include <TopOpeBRepDS_Point.hxx>
+#endif
+#ifndef _TopTools_ListIteratorOfListOfShape_HeaderFile
+#include <TopTools_ListIteratorOfListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_SurfaceIterator_HeaderFile
+#include <TopOpeBRepDS_SurfaceIterator.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_Interference_HeaderFile
+#include <TopOpeBRepDS_Interference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif

@@ -1,0 +1,16 @@
++ CGM:pubinclude:cgmlib.hxx CGM:source:cgmlib.hxx
++ CGM:pubinclude:cgmatt.h CGM:source:cgmatt.h
++ CGM:pubinclude:cgminit.h CGM:source:cgminit.h
++ CGM:pubinclude:cgmpar.h CGM:source:cgmpar.h
++ CGM:pubinclude:cgmtypes.h CGM:source:cgmtypes.h
++ CGM:pubinclude:cgmelem.h CGM:source:cgmelem.h
++ CGM:pubinclude:cgmmach.h CGM:source:cgmmach.h
++ CGM:pubinclude:cgmstruc.h CGM:source:cgmstruc.h
++ CGM:pubinclude:cgmerr.h CGM:source:cgmerr.h
++ CGM:pubinclude:cgmout.h CGM:source:cgmout.h
++ CGM:dbadmfile:CGM_obj_inc.In CGM:admfile:CGM_src.Out
++ * CGM:admfile:CGM_xcpp_src.Out
++ CGM:dbadmfile:CGM_obj_inc.Out CGM:admfile:CGM_src.Out
++ * CGM:admfile:CGM_xcpp_src.Out
++ CGM:dbadmfile:CGM_obj_inc.Dep CGM:admfile:CGM_src.Out
++ * CGM:admfile:CGM_xcpp_src.Out

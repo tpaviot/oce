@@ -1,0 +1,7 @@
++ TDataXtd:pubinclude:TDataXtd_PatternStd.lxx TDataXtd:source:TDataXtd_PatternStd.lxx
++ TDataXtd:dbadmfile:TDataXtd_obj_inc.In TDataXtd:admfile:TDataXtd_src.Out
++ * TDataXtd:admfile:TDataXtd_xcpp_src.Out
++ TDataXtd:dbadmfile:TDataXtd_obj_inc.Out TDataXtd:admfile:TDataXtd_src.Out
++ * TDataXtd:admfile:TDataXtd_xcpp_src.Out
++ TDataXtd:dbadmfile:TDataXtd_obj_inc.Dep TDataXtd:admfile:TDataXtd_src.Out
++ * TDataXtd:admfile:TDataXtd_xcpp_src.Out

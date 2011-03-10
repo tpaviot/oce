@@ -1,0 +1,24 @@
+#ifndef _TColgp_HArray1OfXYZ_HeaderFile
+#include <TColgp_HArray1OfXYZ.hxx>
+#endif
+#ifndef _HLRAlgo_HArray1OfTData_HeaderFile
+#include <HLRAlgo_HArray1OfTData.hxx>
+#endif
+#ifndef _HLRAlgo_HArray1OfPHDat_HeaderFile
+#include <HLRAlgo_HArray1OfPHDat.hxx>
+#endif
+#ifndef _TColgp_Array1OfXYZ_HeaderFile
+#include <TColgp_Array1OfXYZ.hxx>
+#endif
+#ifndef _HLRAlgo_Array1OfTData_HeaderFile
+#include <HLRAlgo_Array1OfTData.hxx>
+#endif
+#ifndef _HLRAlgo_Array1OfPHDat_HeaderFile
+#include <HLRAlgo_Array1OfPHDat.hxx>
+#endif
+#ifndef _HLRAlgo_EdgeStatus_HeaderFile
+#include <HLRAlgo_EdgeStatus.hxx>
+#endif
+#ifndef _HLRAlgo_PolyData_HeaderFile
+#include <HLRAlgo_PolyData.hxx>
+#endif

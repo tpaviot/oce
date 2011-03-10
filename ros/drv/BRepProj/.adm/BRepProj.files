@@ -1,0 +1,10 @@
+pubinclude BRepProj_Projection.hxx
+privinclude BRepProj_Projection.jxx
+privinclude BRepProj_Projection.ixx
+dbadmfile BRepProj_xcpp_header.In
+dbadmfile BRepProj_xcpp_header.Out
+dbadmfile BRepProj_xcpp_header.Dep
+pubinclude BRepProj_Projection.lxx
+dbadmfile BRepProj_obj_inc.In
+dbadmfile BRepProj_obj_inc.Out
+dbadmfile BRepProj_obj_inc.Dep

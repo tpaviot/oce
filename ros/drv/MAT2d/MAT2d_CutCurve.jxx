@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Geom2d_TrimmedCurve_HeaderFile
+#include <Geom2d_TrimmedCurve.hxx>
+#endif
+#ifndef _MAT2d_CutCurve_HeaderFile
+#include <MAT2d_CutCurve.hxx>
+#endif

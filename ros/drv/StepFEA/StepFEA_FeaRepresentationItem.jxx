@@ -1,0 +1,3 @@
+#ifndef _StepFEA_FeaRepresentationItem_HeaderFile
+#include <StepFEA_FeaRepresentationItem.hxx>
+#endif

@@ -1,0 +1,21 @@
+#ifndef _XSControl_Controller_HeaderFile
+#include <XSControl_Controller.hxx>
+#endif
+#ifndef _Transfer_FinderProcess_HeaderFile
+#include <Transfer_FinderProcess.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Interface_CheckIterator_HeaderFile
+#include <Interface_CheckIterator.hxx>
+#endif
+#ifndef _XSControl_TransferWriter_HeaderFile
+#include <XSControl_TransferWriter.hxx>
+#endif

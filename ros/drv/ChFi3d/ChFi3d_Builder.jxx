@@ -1,0 +1,111 @@
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
+#include <TopOpeBRepBuild_HBuilder.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _ChFiDS_Spine_HeaderFile
+#include <ChFiDS_Spine.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _ChFiDS_SurfData_HeaderFile
+#include <ChFiDS_SurfData.hxx>
+#endif
+#ifndef _ChFiDS_HElSpine_HeaderFile
+#include <ChFiDS_HElSpine.hxx>
+#endif
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _Adaptor3d_TopolTool_HeaderFile
+#include <Adaptor3d_TopolTool.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _BRepAdaptor_HCurve2d_HeaderFile
+#include <BRepAdaptor_HCurve2d.hxx>
+#endif
+#ifndef _BRepBlend_Line_HeaderFile
+#include <BRepBlend_Line.hxx>
+#endif
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _Blend_Function_HeaderFile
+#include <Blend_Function.hxx>
+#endif
+#ifndef _Blend_FuncInv_HeaderFile
+#include <Blend_FuncInv.hxx>
+#endif
+#ifndef _Adaptor2d_HCurve2d_HeaderFile
+#include <Adaptor2d_HCurve2d.hxx>
+#endif
+#ifndef _Blend_SurfRstFunction_HeaderFile
+#include <Blend_SurfRstFunction.hxx>
+#endif
+#ifndef _Blend_SurfPointFuncInv_HeaderFile
+#include <Blend_SurfPointFuncInv.hxx>
+#endif
+#ifndef _Blend_SurfCurvFuncInv_HeaderFile
+#include <Blend_SurfCurvFuncInv.hxx>
+#endif
+#ifndef _Blend_RstRstFunction_HeaderFile
+#include <Blend_RstRstFunction.hxx>
+#endif
+#ifndef _Blend_CurvPointFuncInv_HeaderFile
+#include <Blend_CurvPointFuncInv.hxx>
+#endif
+#ifndef _ChFiDS_Stripe_HeaderFile
+#include <ChFiDS_Stripe.hxx>
+#endif
+#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
+#include <BRepTopAdaptor_TopolTool.hxx>
+#endif
+#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
+#include <ChFiDS_SequenceOfSurfData.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _ChFiDS_ListOfStripe_HeaderFile
+#include <ChFiDS_ListOfStripe.hxx>
+#endif
+#ifndef _ChFiDS_CommonPoint_HeaderFile
+#include <ChFiDS_CommonPoint.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _AppBlend_Approx_HeaderFile
+#include <AppBlend_Approx.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _ChFi3d_Builder_HeaderFile
+#include <ChFi3d_Builder.hxx>
+#endif

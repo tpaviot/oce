@@ -1,0 +1,3 @@
+#ifndef _StepVisual_DirectionCountSelect_HeaderFile
+#include <StepVisual_DirectionCountSelect.hxx>
+#endif

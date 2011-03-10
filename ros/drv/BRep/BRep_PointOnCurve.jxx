@@ -1,0 +1,9 @@
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _BRep_PointOnCurve_HeaderFile
+#include <BRep_PointOnCurve.hxx>
+#endif

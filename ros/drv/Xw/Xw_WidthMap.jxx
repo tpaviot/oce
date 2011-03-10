@@ -1,0 +1,18 @@
+#ifndef _Aspect_WidthMapDefinitionError_HeaderFile
+#include <Aspect_WidthMapDefinitionError.hxx>
+#endif
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Xw_GraphicDevice_HeaderFile
+#include <Xw_GraphicDevice.hxx>
+#endif
+#ifndef _Aspect_WidthMapEntry_HeaderFile
+#include <Aspect_WidthMapEntry.hxx>
+#endif
+#ifndef _Aspect_WidthMap_HeaderFile
+#include <Aspect_WidthMap.hxx>
+#endif
+#ifndef _Xw_WidthMap_HeaderFile
+#include <Xw_WidthMap.hxx>
+#endif

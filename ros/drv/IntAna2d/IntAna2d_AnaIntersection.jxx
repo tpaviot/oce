@@ -1,0 +1,30 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _IntAna2d_Conic_HeaderFile
+#include <IntAna2d_Conic.hxx>
+#endif
+#ifndef _gp_Elips2d_HeaderFile
+#include <gp_Elips2d.hxx>
+#endif
+#ifndef _gp_Parab2d_HeaderFile
+#include <gp_Parab2d.hxx>
+#endif
+#ifndef _gp_Hypr2d_HeaderFile
+#include <gp_Hypr2d.hxx>
+#endif
+#ifndef _IntAna2d_IntPoint_HeaderFile
+#include <IntAna2d_IntPoint.hxx>
+#endif
+#ifndef _IntAna2d_AnaIntersection_HeaderFile
+#include <IntAna2d_AnaIntersection.hxx>
+#endif

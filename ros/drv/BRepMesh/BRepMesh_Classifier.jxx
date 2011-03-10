@@ -1,0 +1,24 @@
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepMesh_DataMapOfShapePairOfPolygon_HeaderFile
+#include <BRepMesh_DataMapOfShapePairOfPolygon.hxx>
+#endif
+#ifndef _TColStd_IndexedMapOfInteger_HeaderFile
+#include <TColStd_IndexedMapOfInteger.hxx>
+#endif
+#ifndef _BRepMesh_IndexedMapOfVertex_HeaderFile
+#include <BRepMesh_IndexedMapOfVertex.hxx>
+#endif
+#ifndef _BRepMesh_DataStructureOfDelaun_HeaderFile
+#include <BRepMesh_DataStructureOfDelaun.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _TColgp_SequenceOfPnt2d_HeaderFile
+#include <TColgp_SequenceOfPnt2d.hxx>
+#endif
+#ifndef _BRepMesh_Classifier_HeaderFile
+#include <BRepMesh_Classifier.hxx>
+#endif

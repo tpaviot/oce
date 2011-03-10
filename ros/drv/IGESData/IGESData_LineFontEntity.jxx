@@ -1,0 +1,3 @@
+#ifndef _IGESData_LineFontEntity_HeaderFile
+#include <IGESData_LineFontEntity.hxx>
+#endif

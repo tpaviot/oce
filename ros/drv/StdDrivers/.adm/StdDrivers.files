@@ -1,0 +1,17 @@
+pubinclude StdDrivers.hxx
+privinclude StdDrivers.jxx
+privinclude StdDrivers.ixx
+pubinclude Handle_StdDrivers_DocumentRetrievalDriver.hxx
+pubinclude StdDrivers_DocumentRetrievalDriver.hxx
+privinclude StdDrivers_DocumentRetrievalDriver.jxx
+privinclude StdDrivers_DocumentRetrievalDriver.ixx
+pubinclude Handle_StdDrivers_DocumentStorageDriver.hxx
+pubinclude StdDrivers_DocumentStorageDriver.hxx
+privinclude StdDrivers_DocumentStorageDriver.jxx
+privinclude StdDrivers_DocumentStorageDriver.ixx
+dbadmfile StdDrivers_xcpp_header.In
+dbadmfile StdDrivers_xcpp_header.Out
+dbadmfile StdDrivers_xcpp_header.Dep
+dbadmfile StdDrivers_obj_inc.In
+dbadmfile StdDrivers_obj_inc.Out
+dbadmfile StdDrivers_obj_inc.Dep

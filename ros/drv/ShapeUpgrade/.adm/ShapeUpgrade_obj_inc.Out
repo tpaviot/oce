@@ -1,0 +1,13 @@
++M ShapeUpgrade:pubinclude:ShapeUpgrade_Tool.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_Tool.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_EdgeDivide.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_EdgeDivide.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_FaceDivideArea.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_FaceDivideArea.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_ShapeDivideArea.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_ShapeDivideArea.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_ShapeConvertToBezier.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_ShapeConvertToBezier.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_ConvertCurve3dToBezier.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_ConvertCurve3dToBezier.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_ConvertSurfaceToBezierBasis.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_ConvertSurfaceToBezierBasis.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_SplitSurfaceArea.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_SplitSurfaceArea.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_RemoveLocations.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_RemoveLocations.lxx
++M ShapeUpgrade:pubinclude:ShapeUpgrade_RemoveInternalWires.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/ShapeUpgrade_RemoveInternalWires.lxx
++M ShapeUpgrade:dbadmfile:ShapeUpgrade_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/ShapeUpgrade/.adm/ShapeUpgrade_obj_inc.In
++M ShapeUpgrade:dbadmfile:ShapeUpgrade_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/ShapeUpgrade/.adm/ShapeUpgrade_obj_inc.Out
++M ShapeUpgrade:dbadmfile:ShapeUpgrade_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/ShapeUpgrade/.adm/ShapeUpgrade_obj_inc.Dep

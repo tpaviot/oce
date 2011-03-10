@@ -1,0 +1,15 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _BRepSweep_Revol_HeaderFile
+#include <BRepSweep_Revol.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _BRepPrimAPI_MakeRevol_HeaderFile
+#include <BRepPrimAPI_MakeRevol.hxx>
+#endif

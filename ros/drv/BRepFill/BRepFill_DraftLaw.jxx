@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _GeomFill_LocationDraft_HeaderFile
+#include <GeomFill_LocationDraft.hxx>
+#endif
+#ifndef _BRepFill_DraftLaw_HeaderFile
+#include <BRepFill_DraftLaw.hxx>
+#endif

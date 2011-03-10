@@ -1,0 +1,6 @@
++ BRepLProp:dbadmfile:BRepLProp_obj_inc.In BRepLProp:admfile:BRepLProp_src.Out
++ * BRepLProp:admfile:BRepLProp_xcpp_src.Out
++ BRepLProp:dbadmfile:BRepLProp_obj_inc.Out BRepLProp:admfile:BRepLProp_src.Out
++ * BRepLProp:admfile:BRepLProp_xcpp_src.Out
++ BRepLProp:dbadmfile:BRepLProp_obj_inc.Dep BRepLProp:admfile:BRepLProp_src.Out
++ * BRepLProp:admfile:BRepLProp_xcpp_src.Out

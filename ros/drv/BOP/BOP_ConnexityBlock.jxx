@@ -1,0 +1,9 @@
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfOrientedShape_HeaderFile
+#include <TopTools_IndexedMapOfOrientedShape.hxx>
+#endif
+#ifndef _BOP_ConnexityBlock_HeaderFile
+#include <BOP_ConnexityBlock.hxx>
+#endif

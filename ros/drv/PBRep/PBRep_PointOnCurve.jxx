@@ -1,0 +1,9 @@
+#ifndef _PGeom_Curve_HeaderFile
+#include <PGeom_Curve.hxx>
+#endif
+#ifndef _PTopLoc_Location_HeaderFile
+#include <PTopLoc_Location.hxx>
+#endif
+#ifndef _PBRep_PointOnCurve_HeaderFile
+#include <PBRep_PointOnCurve.hxx>
+#endif

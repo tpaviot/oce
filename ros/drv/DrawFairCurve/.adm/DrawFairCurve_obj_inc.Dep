@@ -1,0 +1,6 @@
++ DrawFairCurve:dbadmfile:DrawFairCurve_obj_inc.In DrawFairCurve:admfile:DrawFairCurve_src.Out
++ * DrawFairCurve:admfile:DrawFairCurve_xcpp_src.Out
++ DrawFairCurve:dbadmfile:DrawFairCurve_obj_inc.Out DrawFairCurve:admfile:DrawFairCurve_src.Out
++ * DrawFairCurve:admfile:DrawFairCurve_xcpp_src.Out
++ DrawFairCurve:dbadmfile:DrawFairCurve_obj_inc.Dep DrawFairCurve:admfile:DrawFairCurve_src.Out
++ * DrawFairCurve:admfile:DrawFairCurve_xcpp_src.Out

@@ -1,0 +1,6 @@
+#ifndef _HLRAlgo_EdgeStatus_HeaderFile
+#include <HLRAlgo_EdgeStatus.hxx>
+#endif
+#ifndef _HLRAlgo_EdgeIterator_HeaderFile
+#include <HLRAlgo_EdgeIterator.hxx>
+#endif

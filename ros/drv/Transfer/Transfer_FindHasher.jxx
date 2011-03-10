@@ -1,0 +1,6 @@
+#ifndef _Transfer_Finder_HeaderFile
+#include <Transfer_Finder.hxx>
+#endif
+#ifndef _Transfer_FindHasher_HeaderFile
+#include <Transfer_FindHasher.hxx>
+#endif

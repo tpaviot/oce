@@ -1,0 +1,9 @@
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _GC_MakeScale_HeaderFile
+#include <GC_MakeScale.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _gp_Hypr2d_HeaderFile
+#include <gp_Hypr2d.hxx>
+#endif
+#ifndef _GccInt_BHyper_HeaderFile
+#include <GccInt_BHyper.hxx>
+#endif

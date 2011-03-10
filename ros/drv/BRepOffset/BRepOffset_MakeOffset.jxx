@@ -1,0 +1,27 @@
+#ifndef _BRepAlgo_AsDes_HeaderFile
+#include <BRepAlgo_AsDes.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _BRepOffset_Analyse_HeaderFile
+#include <BRepOffset_Analyse.hxx>
+#endif
+#ifndef _BRepAlgo_Image_HeaderFile
+#include <BRepAlgo_Image.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _BRepOffset_Inter3d_HeaderFile
+#include <BRepOffset_Inter3d.hxx>
+#endif
+#ifndef _BRepOffset_DataMapOfShapeOffset_HeaderFile
+#include <BRepOffset_DataMapOfShapeOffset.hxx>
+#endif
+#ifndef _BRepOffset_MakeOffset_HeaderFile
+#include <BRepOffset_MakeOffset.hxx>
+#endif

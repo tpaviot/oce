@@ -1,0 +1,3 @@
+#ifndef _IGESData_LabelDisplayEntity_HeaderFile
+#include <IGESData_LabelDisplayEntity.hxx>
+#endif

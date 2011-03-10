@@ -1,0 +1,18 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _StepData_PDescr_HeaderFile
+#include <StepData_PDescr.hxx>
+#endif
+#ifndef _StepData_SelectMember_HeaderFile
+#include <StepData_SelectMember.hxx>
+#endif
+#ifndef _StepData_SelectType_HeaderFile
+#include <StepData_SelectType.hxx>
+#endif

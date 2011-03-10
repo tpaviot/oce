@@ -1,0 +1,21 @@
+#ifndef _ShapeUpgrade_SplitCurve3d_HeaderFile
+#include <ShapeUpgrade_SplitCurve3d.hxx>
+#endif
+#ifndef _ShapeUpgrade_SplitCurve2d_HeaderFile
+#include <ShapeUpgrade_SplitCurve2d.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _ShapeUpgrade_FixSmallCurves_HeaderFile
+#include <ShapeUpgrade_FixSmallCurves.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _PCollection_HExtendedString_HeaderFile
+#include <PCollection_HExtendedString.hxx>
+#endif
+#ifndef _PColStd_HArray1OfExtendedString_HeaderFile
+#include <PColStd_HArray1OfExtendedString.hxx>
+#endif
+#ifndef _PDataStd_ExtStringArray_HeaderFile
+#include <PDataStd_ExtStringArray.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_SurfaceProfileTolerance_HeaderFile
+#include <StepDimTol_SurfaceProfileTolerance.hxx>
+#endif

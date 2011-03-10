@@ -1,0 +1,9 @@
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
+#ifndef _Graphic3d_Strips_HeaderFile
+#include <Graphic3d_Strips.hxx>
+#endif

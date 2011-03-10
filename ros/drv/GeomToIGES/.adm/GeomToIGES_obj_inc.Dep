@@ -1,0 +1,6 @@
++ GeomToIGES:dbadmfile:GeomToIGES_obj_inc.In GeomToIGES:admfile:GeomToIGES_src.Out
++ * GeomToIGES:admfile:GeomToIGES_xcpp_src.Out
++ GeomToIGES:dbadmfile:GeomToIGES_obj_inc.Out GeomToIGES:admfile:GeomToIGES_src.Out
++ * GeomToIGES:admfile:GeomToIGES_xcpp_src.Out
++ GeomToIGES:dbadmfile:GeomToIGES_obj_inc.Dep GeomToIGES:admfile:GeomToIGES_src.Out
++ * GeomToIGES:admfile:GeomToIGES_xcpp_src.Out

@@ -1,0 +1,21 @@
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
+#include <StepShape_ShapeDefinitionRepresentation.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _STEPSelections_AssemblyComponent_HeaderFile
+#include <STEPSelections_AssemblyComponent.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
+#include <StepRepr_NextAssemblyUsageOccurrence.hxx>
+#endif
+#ifndef _STEPSelections_AssemblyExplorer_HeaderFile
+#include <STEPSelections_AssemblyExplorer.hxx>
+#endif

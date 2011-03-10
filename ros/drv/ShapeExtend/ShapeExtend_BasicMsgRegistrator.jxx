@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Message_Msg_HeaderFile
+#include <Message_Msg.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
+#include <ShapeExtend_BasicMsgRegistrator.hxx>
+#endif

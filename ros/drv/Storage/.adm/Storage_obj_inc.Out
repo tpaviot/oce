@@ -1,0 +1,9 @@
++M Storage:pubinclude:Storage_Macros.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_Macros.hxx
++M Storage:pubinclude:Storage_BucketOfPersistent.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_BucketOfPersistent.hxx
++M Storage:pubinclude:Storage_Position.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_Position.hxx
++M Storage:pubinclude:Storage_Container.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_Container.hxx
++M Storage:pubinclude:Storage_BaseDriver.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_BaseDriver.lxx
++M Storage:pubinclude:Storage_Schema.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Storage_Schema.lxx
++M Storage:dbadmfile:Storage_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Storage/.adm/Storage_obj_inc.In
++M Storage:dbadmfile:Storage_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Storage/.adm/Storage_obj_inc.Out
++M Storage:dbadmfile:Storage_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Storage/.adm/Storage_obj_inc.Dep

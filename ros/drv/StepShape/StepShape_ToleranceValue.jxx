@@ -1,0 +1,6 @@
+#ifndef _StepBasic_MeasureWithUnit_HeaderFile
+#include <StepBasic_MeasureWithUnit.hxx>
+#endif
+#ifndef _StepShape_ToleranceValue_HeaderFile
+#include <StepShape_ToleranceValue.hxx>
+#endif

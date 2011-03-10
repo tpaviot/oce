@@ -1,0 +1,9 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_Cylinder_HeaderFile
+#include <gp_Cylinder.hxx>
+#endif
+#ifndef _Convert_CylinderToBSplineSurface_HeaderFile
+#include <Convert_CylinderToBSplineSurface.hxx>
+#endif

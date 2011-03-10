@@ -1,0 +1,6 @@
++ StepVisual:dbadmfile:StepVisual_obj_inc.In StepVisual:admfile:StepVisual_src.Out
++ * StepVisual:admfile:StepVisual_xcpp_src.Out
++ StepVisual:dbadmfile:StepVisual_obj_inc.Out StepVisual:admfile:StepVisual_src.Out
++ * StepVisual:admfile:StepVisual_xcpp_src.Out
++ StepVisual:dbadmfile:StepVisual_obj_inc.Dep StepVisual:admfile:StepVisual_src.Out
++ * StepVisual:admfile:StepVisual_xcpp_src.Out

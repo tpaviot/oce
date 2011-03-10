@@ -1,0 +1,3 @@
+#ifndef _math_FunctionWithDerivative_HeaderFile
+#include <math_FunctionWithDerivative.hxx>
+#endif

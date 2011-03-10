@@ -1,0 +1,9 @@
+#ifndef _Standard_OutOfMemory_HeaderFile
+#include <Standard_OutOfMemory.hxx>
+#endif
+#ifndef _Standard_ProgramError_HeaderFile
+#include <Standard_ProgramError.hxx>
+#endif
+#ifndef _MMgt_StackManager_HeaderFile
+#include <MMgt_StackManager.hxx>
+#endif

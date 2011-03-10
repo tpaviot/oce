@@ -1,0 +1,8 @@
++V GeomAdaptor:msentity:GeomAdaptor .
++V GeomAdaptor:msentity:GeomAdaptor_Curve .
++V GeomAdaptor:msentity:GeomAdaptor_Surface .
++V GeomAdaptor:msentity:GeomAdaptor_GHSurface .
++V GeomAdaptor:msentity:GeomAdaptor_HSurface .
++V GeomAdaptor:msentity:GeomAdaptor_GHCurve .
++V GeomAdaptor:msentity:GeomAdaptor_HCurve .
+- GeomAdaptor:admfile:GeomAdaptor_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GeomAdaptor/GeomAdaptor_xcpp_fill.Out

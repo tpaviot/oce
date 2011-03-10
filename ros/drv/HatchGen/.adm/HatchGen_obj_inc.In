@@ -1,0 +1,10 @@
++ HatchGen:source:HatchGen_Intersector.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_Intersector.gxx
++ HatchGen:source:HatchGen_PointOnElement.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_PointOnElement.lxx
++ HatchGen:source:HatchGen_Domain.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_Domain.lxx
++ HatchGen:source:HatchGen_HatchingGen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_HatchingGen.gxx
++ HatchGen:source:HatchGen_ElementGen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_ElementGen.gxx
++ HatchGen:source:HatchGen_ElementsGen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_ElementsGen.gxx
++ HatchGen:source:HatchGen_Hatcher.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_Hatcher.gxx
++ HatchGen:source:HatchGen_Hatcher.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/HatchGen/HatchGen_Hatcher.lxx
+- HatchGen:admfile:HatchGen_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/HatchGen/HatchGen_src.Out
+- HatchGen:admfile:HatchGen_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/HatchGen/HatchGen_xcpp_src.Out

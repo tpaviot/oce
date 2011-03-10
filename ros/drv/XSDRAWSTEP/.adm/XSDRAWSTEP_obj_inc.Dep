@@ -1,0 +1,6 @@
++ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_obj_inc.In XSDRAWSTEP:admfile:XSDRAWSTEP_src.Out
++ * XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_src.Out
++ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_obj_inc.Out XSDRAWSTEP:admfile:XSDRAWSTEP_src.Out
++ * XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_src.Out
++ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_obj_inc.Dep XSDRAWSTEP:admfile:XSDRAWSTEP_src.Out
++ * XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_src.Out

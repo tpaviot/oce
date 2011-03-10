@@ -1,0 +1,15 @@
++ XSAlgo:pubinclude:XSAlgo.hxx XSAlgo:msentity:XSAlgo
++ XSAlgo:privinclude:XSAlgo.jxx XSAlgo:msentity:XSAlgo
++ XSAlgo:privinclude:XSAlgo.ixx XSAlgo:msentity:XSAlgo
++ XSAlgo:pubinclude:Handle_XSAlgo_ToolContainer.hxx XSAlgo:msentity:XSAlgo_ToolContainer
++ XSAlgo:pubinclude:XSAlgo_ToolContainer.hxx XSAlgo:msentity:XSAlgo_ToolContainer
++ XSAlgo:privinclude:XSAlgo_ToolContainer.jxx XSAlgo:msentity:XSAlgo_ToolContainer
++ XSAlgo:privinclude:XSAlgo_ToolContainer.ixx XSAlgo:msentity:XSAlgo_ToolContainer
++ XSAlgo:pubinclude:Handle_XSAlgo_AlgoContainer.hxx XSAlgo:msentity:XSAlgo_AlgoContainer
++ XSAlgo:pubinclude:XSAlgo_AlgoContainer.hxx XSAlgo:msentity:XSAlgo_AlgoContainer
++ XSAlgo:privinclude:XSAlgo_AlgoContainer.jxx XSAlgo:msentity:XSAlgo_AlgoContainer
++ XSAlgo:privinclude:XSAlgo_AlgoContainer.ixx XSAlgo:msentity:XSAlgo_AlgoContainer
++ XSAlgo:pubinclude:XSAlgo_Caller.hxx XSAlgo:msentity:XSAlgo_Caller
++ XSAlgo:dbadmfile:XSAlgo_xcpp_header.In XSAlgo:admfile:XSAlgo_xcpp_fill.Out
++ XSAlgo:dbadmfile:XSAlgo_xcpp_header.Out XSAlgo:admfile:XSAlgo_xcpp_fill.Out
++ XSAlgo:dbadmfile:XSAlgo_xcpp_header.Dep XSAlgo:admfile:XSAlgo_xcpp_fill.Out

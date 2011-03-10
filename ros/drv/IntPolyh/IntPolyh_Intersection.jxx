@@ -1,0 +1,12 @@
+#ifndef _Adaptor3d_HSurface_HeaderFile
+#include <Adaptor3d_HSurface.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
+#include <IntPolyh_ArrayOfCouples.hxx>
+#endif
+#ifndef _IntPolyh_Intersection_HeaderFile
+#include <IntPolyh_Intersection.hxx>
+#endif

@@ -1,0 +1,13 @@
++ LocalAnalysis:pubinclude:LocalAnalysis.hxx LocalAnalysis:msentity:LocalAnalysis
++ LocalAnalysis:privinclude:LocalAnalysis.jxx LocalAnalysis:msentity:LocalAnalysis
++ LocalAnalysis:privinclude:LocalAnalysis.ixx LocalAnalysis:msentity:LocalAnalysis
++ LocalAnalysis:pubinclude:LocalAnalysis_SurfaceContinuity.hxx LocalAnalysis:msentity:LocalAnalysis_SurfaceContinuity
++ LocalAnalysis:privinclude:LocalAnalysis_SurfaceContinuity.jxx LocalAnalysis:msentity:LocalAnalysis_SurfaceContinuity
++ LocalAnalysis:privinclude:LocalAnalysis_SurfaceContinuity.ixx LocalAnalysis:msentity:LocalAnalysis_SurfaceContinuity
++ LocalAnalysis:pubinclude:LocalAnalysis_CurveContinuity.hxx LocalAnalysis:msentity:LocalAnalysis_CurveContinuity
++ LocalAnalysis:privinclude:LocalAnalysis_CurveContinuity.jxx LocalAnalysis:msentity:LocalAnalysis_CurveContinuity
++ LocalAnalysis:privinclude:LocalAnalysis_CurveContinuity.ixx LocalAnalysis:msentity:LocalAnalysis_CurveContinuity
++ LocalAnalysis:pubinclude:LocalAnalysis_StatusErrorType.hxx LocalAnalysis:msentity:LocalAnalysis_StatusErrorType
++ LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.In LocalAnalysis:admfile:LocalAnalysis_xcpp_fill.Out
++ LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.Out LocalAnalysis:admfile:LocalAnalysis_xcpp_fill.Out
++ LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.Dep LocalAnalysis:admfile:LocalAnalysis_xcpp_fill.Out

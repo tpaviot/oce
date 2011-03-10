@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Vector_HeaderFile
+#include <StepGeom_Vector.hxx>
+#endif
+#ifndef _Geom2d_VectorWithMagnitude_HeaderFile
+#include <Geom2d_VectorWithMagnitude.hxx>
+#endif
+#ifndef _StepToGeom_MakeVectorWithMagnitude2d_HeaderFile
+#include <StepToGeom_MakeVectorWithMagnitude2d.hxx>
+#endif

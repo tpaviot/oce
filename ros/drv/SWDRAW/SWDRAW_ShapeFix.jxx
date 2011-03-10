@@ -1,0 +1,6 @@
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _SWDRAW_ShapeFix_HeaderFile
+#include <SWDRAW_ShapeFix.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _GraphTools_TSNode_HeaderFile
+#include <GraphTools_TSNode.hxx>
+#endif

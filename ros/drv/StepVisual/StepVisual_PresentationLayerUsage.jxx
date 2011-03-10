@@ -1,0 +1,9 @@
+#ifndef _StepVisual_PresentationLayerAssignment_HeaderFile
+#include <StepVisual_PresentationLayerAssignment.hxx>
+#endif
+#ifndef _StepVisual_PresentationRepresentation_HeaderFile
+#include <StepVisual_PresentationRepresentation.hxx>
+#endif
+#ifndef _StepVisual_PresentationLayerUsage_HeaderFile
+#include <StepVisual_PresentationLayerUsage.hxx>
+#endif

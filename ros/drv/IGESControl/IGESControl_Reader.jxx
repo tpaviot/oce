@@ -1,0 +1,9 @@
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _IGESData_IGESModel_HeaderFile
+#include <IGESData_IGESModel.hxx>
+#endif
+#ifndef _IGESControl_Reader_HeaderFile
+#include <IGESControl_Reader.hxx>
+#endif

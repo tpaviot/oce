@@ -1,0 +1,17 @@
+pubinclude Handle_PTopLoc_Datum3D.hxx
+pubinclude PTopLoc_Datum3D.hxx
+privinclude PTopLoc_Datum3D.jxx
+privinclude PTopLoc_Datum3D.ixx
+pubinclude Handle_PTopLoc_ItemLocation.hxx
+pubinclude PTopLoc_ItemLocation.hxx
+privinclude PTopLoc_ItemLocation.jxx
+privinclude PTopLoc_ItemLocation.ixx
+pubinclude PTopLoc_Location.hxx
+privinclude PTopLoc_Location.jxx
+privinclude PTopLoc_Location.ixx
+dbadmfile PTopLoc_xcpp_header.In
+dbadmfile PTopLoc_xcpp_header.Out
+dbadmfile PTopLoc_xcpp_header.Dep
+dbadmfile PTopLoc_obj_inc.In
+dbadmfile PTopLoc_obj_inc.Out
+dbadmfile PTopLoc_obj_inc.Dep

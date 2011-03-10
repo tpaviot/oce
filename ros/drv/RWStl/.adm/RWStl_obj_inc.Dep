@@ -1,0 +1,6 @@
++ RWStl:dbadmfile:RWStl_obj_inc.In RWStl:admfile:RWStl_src.Out
++ * RWStl:admfile:RWStl_xcpp_src.Out
++ RWStl:dbadmfile:RWStl_obj_inc.Out RWStl:admfile:RWStl_src.Out
++ * RWStl:admfile:RWStl_xcpp_src.Out
++ RWStl:dbadmfile:RWStl_obj_inc.Dep RWStl:admfile:RWStl_src.Out
++ * RWStl:admfile:RWStl_xcpp_src.Out

@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_TCompound_HeaderFile
+#include <PTopoDS_TCompound.hxx>
+#endif

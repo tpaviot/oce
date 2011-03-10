@@ -1,0 +1,6 @@
+#ifndef _StepVisual_SurfaceSideStyle_HeaderFile
+#include <StepVisual_SurfaceSideStyle.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleUsage_HeaderFile
+#include <StepVisual_SurfaceStyleUsage.hxx>
+#endif

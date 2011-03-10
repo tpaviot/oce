@@ -1,0 +1,6 @@
++ MgtGeom:dbadmfile:MgtGeom_obj_inc.In MgtGeom:admfile:MgtGeom_src.Out
++ * MgtGeom:admfile:MgtGeom_xcpp_src.Out
++ MgtGeom:dbadmfile:MgtGeom_obj_inc.Out MgtGeom:admfile:MgtGeom_src.Out
++ * MgtGeom:admfile:MgtGeom_xcpp_src.Out
++ MgtGeom:dbadmfile:MgtGeom_obj_inc.Dep MgtGeom:admfile:MgtGeom_src.Out
++ * MgtGeom:admfile:MgtGeom_xcpp_src.Out

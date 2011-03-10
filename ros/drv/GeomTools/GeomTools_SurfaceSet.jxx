@@ -1,0 +1,12 @@
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _GeomTools_SurfaceSet_HeaderFile
+#include <GeomTools_SurfaceSet.hxx>
+#endif

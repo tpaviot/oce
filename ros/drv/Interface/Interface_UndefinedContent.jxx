@@ -1,0 +1,33 @@
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
+#include <Interface_HArray1OfHAsciiString.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Interface_InterfaceMismatch_HeaderFile
+#include <Interface_InterfaceMismatch.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Interface_EntityList_HeaderFile
+#include <Interface_EntityList.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _Interface_UndefinedContent_HeaderFile
+#include <Interface_UndefinedContent.hxx>
+#endif

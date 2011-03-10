@@ -1,0 +1,24 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _LocOpe_SequenceOfLin_HeaderFile
+#include <LocOpe_SequenceOfLin.hxx>
+#endif
+#ifndef _LocOpe_SequenceOfCirc_HeaderFile
+#include <LocOpe_SequenceOfCirc.hxx>
+#endif
+#ifndef _TColGeom_SequenceOfCurve_HeaderFile
+#include <TColGeom_SequenceOfCurve.hxx>
+#endif
+#ifndef _LocOpe_PntFace_HeaderFile
+#include <LocOpe_PntFace.hxx>
+#endif
+#ifndef _LocOpe_CSIntersector_HeaderFile
+#include <LocOpe_CSIntersector.hxx>
+#endif

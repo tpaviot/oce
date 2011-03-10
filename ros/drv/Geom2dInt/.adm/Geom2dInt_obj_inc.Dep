@@ -1,0 +1,8 @@
++ Geom2dInt:pubinclude:Geom2dInt_CurveTool.gxx Geom2dInt:source:Geom2dInt_CurveTool.gxx
++ Geom2dInt:pubinclude:Geom2dInt_CurveTool.lxx Geom2dInt:source:Geom2dInt_CurveTool.lxx
++ Geom2dInt:dbadmfile:Geom2dInt_obj_inc.In Geom2dInt:admfile:Geom2dInt_src.Out
++ * Geom2dInt:admfile:Geom2dInt_xcpp_src.Out
++ Geom2dInt:dbadmfile:Geom2dInt_obj_inc.Out Geom2dInt:admfile:Geom2dInt_src.Out
++ * Geom2dInt:admfile:Geom2dInt_xcpp_src.Out
++ Geom2dInt:dbadmfile:Geom2dInt_obj_inc.Dep Geom2dInt:admfile:Geom2dInt_src.Out
++ * Geom2dInt:admfile:Geom2dInt_xcpp_src.Out

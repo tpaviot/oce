@@ -1,0 +1,24 @@
+#ifndef _GeomAdaptor_HSurface_HeaderFile
+#include <GeomAdaptor_HSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _IntTools_SequenceOfCurves_HeaderFile
+#include <IntTools_SequenceOfCurves.hxx>
+#endif
+#ifndef _IntTools_SequenceOfPntOn2Faces_HeaderFile
+#include <IntTools_SequenceOfPntOn2Faces.hxx>
+#endif
+#ifndef _IntSurf_ListOfPntOn2S_HeaderFile
+#include <IntSurf_ListOfPntOn2S.hxx>
+#endif
+#ifndef _Adaptor3d_TopolTool_HeaderFile
+#include <Adaptor3d_TopolTool.hxx>
+#endif
+#ifndef _IntTools_FaceFace_HeaderFile
+#include <IntTools_FaceFace.hxx>
+#endif

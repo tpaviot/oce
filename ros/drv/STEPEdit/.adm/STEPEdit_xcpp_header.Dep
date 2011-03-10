@@ -1,0 +1,14 @@
++ STEPEdit:pubinclude:STEPEdit.hxx STEPEdit:msentity:STEPEdit
++ STEPEdit:privinclude:STEPEdit.jxx STEPEdit:msentity:STEPEdit
++ STEPEdit:privinclude:STEPEdit.ixx STEPEdit:msentity:STEPEdit
++ STEPEdit:pubinclude:Handle_STEPEdit_EditContext.hxx STEPEdit:msentity:STEPEdit_EditContext
++ STEPEdit:pubinclude:STEPEdit_EditContext.hxx STEPEdit:msentity:STEPEdit_EditContext
++ STEPEdit:privinclude:STEPEdit_EditContext.jxx STEPEdit:msentity:STEPEdit_EditContext
++ STEPEdit:privinclude:STEPEdit_EditContext.ixx STEPEdit:msentity:STEPEdit_EditContext
++ STEPEdit:pubinclude:Handle_STEPEdit_EditSDR.hxx STEPEdit:msentity:STEPEdit_EditSDR
++ STEPEdit:pubinclude:STEPEdit_EditSDR.hxx STEPEdit:msentity:STEPEdit_EditSDR
++ STEPEdit:privinclude:STEPEdit_EditSDR.jxx STEPEdit:msentity:STEPEdit_EditSDR
++ STEPEdit:privinclude:STEPEdit_EditSDR.ixx STEPEdit:msentity:STEPEdit_EditSDR
++ STEPEdit:dbadmfile:STEPEdit_xcpp_header.In STEPEdit:admfile:STEPEdit_xcpp_fill.Out
++ STEPEdit:dbadmfile:STEPEdit_xcpp_header.Out STEPEdit:admfile:STEPEdit_xcpp_fill.Out
++ STEPEdit:dbadmfile:STEPEdit_xcpp_header.Dep STEPEdit:admfile:STEPEdit_xcpp_fill.Out

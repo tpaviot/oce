@@ -1,0 +1,18 @@
+#ifndef _TopoDS_TShape_HeaderFile
+#include <TopoDS_TShape.hxx>
+#endif
+#ifndef _Standard_NullObject_HeaderFile
+#include <Standard_NullObject.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif

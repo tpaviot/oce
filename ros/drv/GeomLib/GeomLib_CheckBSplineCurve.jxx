@@ -1,0 +1,12 @@
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _GeomLib_CheckBSplineCurve_HeaderFile
+#include <GeomLib_CheckBSplineCurve.hxx>
+#endif

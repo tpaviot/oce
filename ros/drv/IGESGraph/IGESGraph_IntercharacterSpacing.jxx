@@ -1,0 +1,3 @@
+#ifndef _IGESGraph_IntercharacterSpacing_HeaderFile
+#include <IGESGraph_IntercharacterSpacing.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepRepr_ValueRange_HeaderFile
+#include <StepRepr_ValueRange.hxx>
+#endif

@@ -1,0 +1,177 @@
+#ifndef _Geom_Axis1Placement_HeaderFile
+#include <Geom_Axis1Placement.hxx>
+#endif
+#ifndef _PGeom_Axis1Placement_HeaderFile
+#include <PGeom_Axis1Placement.hxx>
+#endif
+#ifndef _Geom_Axis2Placement_HeaderFile
+#include <Geom_Axis2Placement.hxx>
+#endif
+#ifndef _PGeom_Axis2Placement_HeaderFile
+#include <PGeom_Axis2Placement.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _PGeom_BSplineCurve_HeaderFile
+#include <PGeom_BSplineCurve.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _PGeom_BSplineSurface_HeaderFile
+#include <PGeom_BSplineSurface.hxx>
+#endif
+#ifndef _Geom_BezierCurve_HeaderFile
+#include <Geom_BezierCurve.hxx>
+#endif
+#ifndef _PGeom_BezierCurve_HeaderFile
+#include <PGeom_BezierCurve.hxx>
+#endif
+#ifndef _Geom_BezierSurface_HeaderFile
+#include <Geom_BezierSurface.hxx>
+#endif
+#ifndef _PGeom_BezierSurface_HeaderFile
+#include <PGeom_BezierSurface.hxx>
+#endif
+#ifndef _Geom_CartesianPoint_HeaderFile
+#include <Geom_CartesianPoint.hxx>
+#endif
+#ifndef _PGeom_CartesianPoint_HeaderFile
+#include <PGeom_CartesianPoint.hxx>
+#endif
+#ifndef _Geom_Circle_HeaderFile
+#include <Geom_Circle.hxx>
+#endif
+#ifndef _PGeom_Circle_HeaderFile
+#include <PGeom_Circle.hxx>
+#endif
+#ifndef _Geom_ConicalSurface_HeaderFile
+#include <Geom_ConicalSurface.hxx>
+#endif
+#ifndef _PGeom_ConicalSurface_HeaderFile
+#include <PGeom_ConicalSurface.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _PGeom_Curve_HeaderFile
+#include <PGeom_Curve.hxx>
+#endif
+#ifndef _Geom_CylindricalSurface_HeaderFile
+#include <Geom_CylindricalSurface.hxx>
+#endif
+#ifndef _PGeom_CylindricalSurface_HeaderFile
+#include <PGeom_CylindricalSurface.hxx>
+#endif
+#ifndef _Geom_Direction_HeaderFile
+#include <Geom_Direction.hxx>
+#endif
+#ifndef _PGeom_Direction_HeaderFile
+#include <PGeom_Direction.hxx>
+#endif
+#ifndef _Geom_Ellipse_HeaderFile
+#include <Geom_Ellipse.hxx>
+#endif
+#ifndef _PGeom_Ellipse_HeaderFile
+#include <PGeom_Ellipse.hxx>
+#endif
+#ifndef _Geom_Hyperbola_HeaderFile
+#include <Geom_Hyperbola.hxx>
+#endif
+#ifndef _PGeom_Hyperbola_HeaderFile
+#include <PGeom_Hyperbola.hxx>
+#endif
+#ifndef _Geom_Line_HeaderFile
+#include <Geom_Line.hxx>
+#endif
+#ifndef _PGeom_Line_HeaderFile
+#include <PGeom_Line.hxx>
+#endif
+#ifndef _Geom_OffsetCurve_HeaderFile
+#include <Geom_OffsetCurve.hxx>
+#endif
+#ifndef _PGeom_OffsetCurve_HeaderFile
+#include <PGeom_OffsetCurve.hxx>
+#endif
+#ifndef _Geom_OffsetSurface_HeaderFile
+#include <Geom_OffsetSurface.hxx>
+#endif
+#ifndef _PGeom_OffsetSurface_HeaderFile
+#include <PGeom_OffsetSurface.hxx>
+#endif
+#ifndef _Geom_Parabola_HeaderFile
+#include <Geom_Parabola.hxx>
+#endif
+#ifndef _PGeom_Parabola_HeaderFile
+#include <PGeom_Parabola.hxx>
+#endif
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _PGeom_Plane_HeaderFile
+#include <PGeom_Plane.hxx>
+#endif
+#ifndef _Geom_Point_HeaderFile
+#include <Geom_Point.hxx>
+#endif
+#ifndef _PGeom_Point_HeaderFile
+#include <PGeom_Point.hxx>
+#endif
+#ifndef _Geom_RectangularTrimmedSurface_HeaderFile
+#include <Geom_RectangularTrimmedSurface.hxx>
+#endif
+#ifndef _PGeom_RectangularTrimmedSurface_HeaderFile
+#include <PGeom_RectangularTrimmedSurface.hxx>
+#endif
+#ifndef _Geom_SphericalSurface_HeaderFile
+#include <Geom_SphericalSurface.hxx>
+#endif
+#ifndef _PGeom_SphericalSurface_HeaderFile
+#include <PGeom_SphericalSurface.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _PGeom_Surface_HeaderFile
+#include <PGeom_Surface.hxx>
+#endif
+#ifndef _Geom_SurfaceOfLinearExtrusion_HeaderFile
+#include <Geom_SurfaceOfLinearExtrusion.hxx>
+#endif
+#ifndef _PGeom_SurfaceOfLinearExtrusion_HeaderFile
+#include <PGeom_SurfaceOfLinearExtrusion.hxx>
+#endif
+#ifndef _Geom_SurfaceOfRevolution_HeaderFile
+#include <Geom_SurfaceOfRevolution.hxx>
+#endif
+#ifndef _PGeom_SurfaceOfRevolution_HeaderFile
+#include <PGeom_SurfaceOfRevolution.hxx>
+#endif
+#ifndef _Geom_ToroidalSurface_HeaderFile
+#include <Geom_ToroidalSurface.hxx>
+#endif
+#ifndef _PGeom_ToroidalSurface_HeaderFile
+#include <PGeom_ToroidalSurface.hxx>
+#endif
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _PGeom_Transformation_HeaderFile
+#include <PGeom_Transformation.hxx>
+#endif
+#ifndef _Geom_TrimmedCurve_HeaderFile
+#include <Geom_TrimmedCurve.hxx>
+#endif
+#ifndef _PGeom_TrimmedCurve_HeaderFile
+#include <PGeom_TrimmedCurve.hxx>
+#endif
+#ifndef _Geom_VectorWithMagnitude_HeaderFile
+#include <Geom_VectorWithMagnitude.hxx>
+#endif
+#ifndef _PGeom_VectorWithMagnitude_HeaderFile
+#include <PGeom_VectorWithMagnitude.hxx>
+#endif
+#ifndef _MgtGeom_HeaderFile
+#include <MgtGeom.hxx>
+#endif

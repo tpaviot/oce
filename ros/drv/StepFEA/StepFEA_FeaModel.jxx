@@ -1,0 +1,15 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _TColStd_HArray1OfAsciiString_HeaderFile
+#include <TColStd_HArray1OfAsciiString.hxx>
+#endif
+#ifndef _StepRepr_HArray1OfRepresentationItem_HeaderFile
+#include <StepRepr_HArray1OfRepresentationItem.hxx>
+#endif
+#ifndef _StepRepr_RepresentationContext_HeaderFile
+#include <StepRepr_RepresentationContext.hxx>
+#endif
+#ifndef _StepFEA_FeaModel_HeaderFile
+#include <StepFEA_FeaModel.hxx>
+#endif

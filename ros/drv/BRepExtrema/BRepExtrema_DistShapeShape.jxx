@@ -1,0 +1,24 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _BRepExtrema_UnCompatibleShape_HeaderFile
+#include <BRepExtrema_UnCompatibleShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
+#endif
+#ifndef _Bnd_SeqOfBox_HeaderFile
+#include <Bnd_SeqOfBox.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRepExtrema_DistShapeShape_HeaderFile
+#include <BRepExtrema_DistShapeShape.hxx>
+#endif

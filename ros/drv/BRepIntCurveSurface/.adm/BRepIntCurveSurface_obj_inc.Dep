@@ -1,0 +1,6 @@
++ BRepIntCurveSurface:dbadmfile:BRepIntCurveSurface_obj_inc.In BRepIntCurveSurface:admfile:BRepIntCurveSurface_src.Out
++ * BRepIntCurveSurface:admfile:BRepIntCurveSurface_xcpp_src.Out
++ BRepIntCurveSurface:dbadmfile:BRepIntCurveSurface_obj_inc.Out BRepIntCurveSurface:admfile:BRepIntCurveSurface_src.Out
++ * BRepIntCurveSurface:admfile:BRepIntCurveSurface_xcpp_src.Out
++ BRepIntCurveSurface:dbadmfile:BRepIntCurveSurface_obj_inc.Dep BRepIntCurveSurface:admfile:BRepIntCurveSurface_src.Out
++ * BRepIntCurveSurface:admfile:BRepIntCurveSurface_xcpp_src.Out

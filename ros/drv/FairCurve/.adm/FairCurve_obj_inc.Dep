@@ -1,0 +1,13 @@
++ FairCurve:pubinclude:FairCurve_Batten.lxx FairCurve:source:FairCurve_Batten.lxx
++ FairCurve:pubinclude:FairCurve_MinimalVariation.lxx FairCurve:source:FairCurve_MinimalVariation.lxx
++ FairCurve:pubinclude:FairCurve_BattenLaw.lxx FairCurve:source:FairCurve_BattenLaw.lxx
++ FairCurve:pubinclude:FairCurve_DistributionOfTension.lxx FairCurve:source:FairCurve_DistributionOfTension.lxx
++ FairCurve:pubinclude:FairCurve_Energy.lxx FairCurve:source:FairCurve_Energy.lxx
++ FairCurve:pubinclude:FairCurve_EnergyOfBatten.lxx FairCurve:source:FairCurve_EnergyOfBatten.lxx
++ FairCurve:pubinclude:FairCurve_EnergyOfMVC.lxx FairCurve:source:FairCurve_EnergyOfMVC.lxx
++ FairCurve:dbadmfile:FairCurve_obj_inc.In FairCurve:admfile:FairCurve_src.Out
++ * FairCurve:admfile:FairCurve_xcpp_src.Out
++ FairCurve:dbadmfile:FairCurve_obj_inc.Out FairCurve:admfile:FairCurve_src.Out
++ * FairCurve:admfile:FairCurve_xcpp_src.Out
++ FairCurve:dbadmfile:FairCurve_obj_inc.Dep FairCurve:admfile:FairCurve_src.Out
++ * FairCurve:admfile:FairCurve_xcpp_src.Out

@@ -1,0 +1,6 @@
+#ifndef _TColStd_HSequenceOfReal_HeaderFile
+#include <TColStd_HSequenceOfReal.hxx>
+#endif
+#ifndef _ShapeUpgrade_SplitCurve_HeaderFile
+#include <ShapeUpgrade_SplitCurve.hxx>
+#endif

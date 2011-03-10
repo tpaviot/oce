@@ -1,0 +1,18 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Message_Msg_HeaderFile
+#include <Message_Msg.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _ShapeExtend_DataMapOfTransientListOfMsg_HeaderFile
+#include <ShapeExtend_DataMapOfTransientListOfMsg.hxx>
+#endif
+#ifndef _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile
+#include <ShapeExtend_DataMapOfShapeListOfMsg.hxx>
+#endif
+#ifndef _ShapeExtend_MsgRegistrator_HeaderFile
+#include <ShapeExtend_MsgRegistrator.hxx>
+#endif

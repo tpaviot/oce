@@ -1,0 +1,21 @@
+#ifndef _Interface_IntVal_HeaderFile
+#include <Interface_IntVal.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
+#endif
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif

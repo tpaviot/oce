@@ -1,0 +1,15 @@
+#ifndef _StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile
+#include <StepAP214_HArray1OfAutoDesignReferencingItem.hxx>
+#endif
+#ifndef _StepBasic_Document_HeaderFile
+#include <StepBasic_Document.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignReferencingItem_HeaderFile
+#include <StepAP214_AutoDesignReferencingItem.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDocumentReference_HeaderFile
+#include <StepAP214_AutoDesignDocumentReference.hxx>
+#endif

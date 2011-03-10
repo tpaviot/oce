@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _TColgp_SequenceOfPnt_HeaderFile
+#include <TColgp_SequenceOfPnt.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _IntPoly_ShapeSection_HeaderFile
+#include <IntPoly_ShapeSection.hxx>
+#endif

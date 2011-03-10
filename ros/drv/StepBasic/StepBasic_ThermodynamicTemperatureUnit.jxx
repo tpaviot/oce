@@ -1,0 +1,3 @@
+#ifndef _StepBasic_ThermodynamicTemperatureUnit_HeaderFile
+#include <StepBasic_ThermodynamicTemperatureUnit.hxx>
+#endif

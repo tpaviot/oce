@@ -1,0 +1,3 @@
+#ifndef _StepBasic_PlaneAngleMeasureWithUnit_HeaderFile
+#include <StepBasic_PlaneAngleMeasureWithUnit.hxx>
+#endif

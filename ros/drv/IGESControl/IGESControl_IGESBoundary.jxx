@@ -1,0 +1,15 @@
+#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
+#include <IGESToBRep_CurveAndSurface.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _ShapeExtend_WireData_HeaderFile
+#include <ShapeExtend_WireData.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _IGESControl_IGESBoundary_HeaderFile
+#include <IGESControl_IGESBoundary.hxx>
+#endif

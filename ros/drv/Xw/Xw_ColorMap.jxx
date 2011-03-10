@@ -1,0 +1,24 @@
+#ifndef _Aspect_ColorMapDefinitionError_HeaderFile
+#include <Aspect_ColorMapDefinitionError.hxx>
+#endif
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Xw_GraphicDevice_HeaderFile
+#include <Xw_GraphicDevice.hxx>
+#endif
+#ifndef _Xw_Window_HeaderFile
+#include <Xw_Window.hxx>
+#endif
+#ifndef _Aspect_ColorMapEntry_HeaderFile
+#include <Aspect_ColorMapEntry.hxx>
+#endif
+#ifndef _Aspect_ColorMap_HeaderFile
+#include <Aspect_ColorMap.hxx>
+#endif
+#ifndef _Quantity_Color_HeaderFile
+#include <Quantity_Color.hxx>
+#endif
+#ifndef _Xw_ColorMap_HeaderFile
+#include <Xw_ColorMap.hxx>
+#endif

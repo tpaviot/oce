@@ -1,0 +1,6 @@
++ GeomAdaptor:source:GeomAdaptor_Curve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GeomAdaptor/GeomAdaptor_Curve.lxx
++ GeomAdaptor:source:GeomAdaptor_Surface.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GeomAdaptor/GeomAdaptor_Surface.lxx
++ GeomAdaptor:source:GeomAdaptor_HSurface.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GeomAdaptor/GeomAdaptor_HSurface.lxx
++ GeomAdaptor:source:GeomAdaptor_HCurve.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GeomAdaptor/GeomAdaptor_HCurve.lxx
+- GeomAdaptor:admfile:GeomAdaptor_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GeomAdaptor/GeomAdaptor_src.Out
+- GeomAdaptor:admfile:GeomAdaptor_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GeomAdaptor/GeomAdaptor_xcpp_src.Out

@@ -1,0 +1,6 @@
+#ifndef _IntPolyh_StartPoint_HeaderFile
+#include <IntPolyh_StartPoint.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfStartPoints_HeaderFile
+#include <IntPolyh_ArrayOfStartPoints.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_Sphere_HeaderFile
+#include <gp_Sphere.hxx>
+#endif
+#ifndef _Convert_SphereToBSplineSurface_HeaderFile
+#include <Convert_SphereToBSplineSurface.hxx>
+#endif

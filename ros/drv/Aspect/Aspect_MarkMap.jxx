@@ -1,0 +1,12 @@
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Aspect_MarkMapEntry_HeaderFile
+#include <Aspect_MarkMapEntry.hxx>
+#endif
+#ifndef _Aspect_MarkerStyle_HeaderFile
+#include <Aspect_MarkerStyle.hxx>
+#endif
+#ifndef _Aspect_MarkMap_HeaderFile
+#include <Aspect_MarkMap.hxx>
+#endif

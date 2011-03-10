@@ -1,0 +1,6 @@
+#ifndef _Visual3d_ContextPickDefinitionError_HeaderFile
+#include <Visual3d_ContextPickDefinitionError.hxx>
+#endif
+#ifndef _Visual3d_ContextPick_HeaderFile
+#include <Visual3d_ContextPick.hxx>
+#endif

@@ -1,0 +1,63 @@
+#ifndef _GeomPlate_HSequenceOfCurveConstraint_HeaderFile
+#include <GeomPlate_HSequenceOfCurveConstraint.hxx>
+#endif
+#ifndef _GeomPlate_HArray1OfSequenceOfReal_HeaderFile
+#include <GeomPlate_HArray1OfSequenceOfReal.hxx>
+#endif
+#ifndef _GeomPlate_HSequenceOfPointConstraint_HeaderFile
+#include <GeomPlate_HSequenceOfPointConstraint.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _GeomPlate_Surface_HeaderFile
+#include <GeomPlate_Surface.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _GeomPlate_HArray1OfHCurveOnSurface_HeaderFile
+#include <GeomPlate_HArray1OfHCurveOnSurface.hxx>
+#endif
+#ifndef _GeomPlate_CurveConstraint_HeaderFile
+#include <GeomPlate_CurveConstraint.hxx>
+#endif
+#ifndef _GeomPlate_PointConstraint_HeaderFile
+#include <GeomPlate_PointConstraint.hxx>
+#endif
+#ifndef _TColgp_SequenceOfXY_HeaderFile
+#include <TColgp_SequenceOfXY.hxx>
+#endif
+#ifndef _TColgp_SequenceOfXYZ_HeaderFile
+#include <TColgp_SequenceOfXYZ.hxx>
+#endif
+#ifndef _TColGeom2d_HArray1OfCurve_HeaderFile
+#include <TColGeom2d_HArray1OfCurve.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Adaptor3d_HCurve_HeaderFile
+#include <Adaptor3d_HCurve.hxx>
+#endif
+#ifndef _Adaptor2d_HCurve2d_HeaderFile
+#include <Adaptor2d_HCurve2d.hxx>
+#endif
+#ifndef _GeomPlate_BuildPlateSurface_HeaderFile
+#include <GeomPlate_BuildPlateSurface.hxx>
+#endif

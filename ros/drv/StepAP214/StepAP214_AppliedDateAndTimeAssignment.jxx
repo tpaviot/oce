@@ -1,0 +1,15 @@
+#ifndef _StepAP214_HArray1OfDateAndTimeItem_HeaderFile
+#include <StepAP214_HArray1OfDateAndTimeItem.hxx>
+#endif
+#ifndef _StepBasic_DateAndTime_HeaderFile
+#include <StepBasic_DateAndTime.hxx>
+#endif
+#ifndef _StepBasic_DateTimeRole_HeaderFile
+#include <StepBasic_DateTimeRole.hxx>
+#endif
+#ifndef _StepAP214_DateAndTimeItem_HeaderFile
+#include <StepAP214_DateAndTimeItem.hxx>
+#endif
+#ifndef _StepAP214_AppliedDateAndTimeAssignment_HeaderFile
+#include <StepAP214_AppliedDateAndTimeAssignment.hxx>
+#endif

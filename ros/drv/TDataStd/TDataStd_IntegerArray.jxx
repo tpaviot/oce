@@ -1,0 +1,24 @@
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TDataStd_DeltaOnModificationOfIntArray_HeaderFile
+#include <TDataStd_DeltaOnModificationOfIntArray.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDF_DeltaOnModification_HeaderFile
+#include <TDF_DeltaOnModification.hxx>
+#endif
+#ifndef _TDataStd_IntegerArray_HeaderFile
+#include <TDataStd_IntegerArray.hxx>
+#endif

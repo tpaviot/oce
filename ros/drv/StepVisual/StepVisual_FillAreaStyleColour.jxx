@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_Colour_HeaderFile
+#include <StepVisual_Colour.hxx>
+#endif
+#ifndef _StepVisual_FillAreaStyleColour_HeaderFile
+#include <StepVisual_FillAreaStyleColour.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_ShapeTool_HeaderFile
+#include <PXCAFDoc_ShapeTool.hxx>
+#endif

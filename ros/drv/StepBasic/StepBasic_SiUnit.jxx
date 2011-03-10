@@ -1,0 +1,6 @@
+#ifndef _StepBasic_DimensionalExponents_HeaderFile
+#include <StepBasic_DimensionalExponents.hxx>
+#endif
+#ifndef _StepBasic_SiUnit_HeaderFile
+#include <StepBasic_SiUnit.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _StepData_Protocol_HeaderFile
+#include <StepData_Protocol.hxx>
+#endif
+#ifndef _Interface_Protocol_HeaderFile
+#include <Interface_Protocol.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepData_FileProtocol_HeaderFile
+#include <StepData_FileProtocol.hxx>
+#endif

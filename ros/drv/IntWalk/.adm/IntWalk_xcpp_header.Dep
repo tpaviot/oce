@@ -1,0 +1,4 @@
++ IntWalk:pubinclude:IntWalk_StatusDeflection.hxx IntWalk:msentity:IntWalk_StatusDeflection
++ IntWalk:dbadmfile:IntWalk_xcpp_header.In IntWalk:admfile:IntWalk_xcpp_fill.Out
++ IntWalk:dbadmfile:IntWalk_xcpp_header.Out IntWalk:admfile:IntWalk_xcpp_fill.Out
++ IntWalk:dbadmfile:IntWalk_xcpp_header.Dep IntWalk:admfile:IntWalk_xcpp_fill.Out

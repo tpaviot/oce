@@ -1,0 +1,63 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Elips_HeaderFile
+#include <gp_Elips.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _gp_Parab_HeaderFile
+#include <gp_Parab.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _gp_Elips2d_HeaderFile
+#include <gp_Elips2d.hxx>
+#endif
+#ifndef _gp_Hypr2d_HeaderFile
+#include <gp_Hypr2d.hxx>
+#endif
+#ifndef _gp_Parab2d_HeaderFile
+#include <gp_Parab2d.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _gp_Ax1_HeaderFile
+#include <gp_Ax1.hxx>
+#endif
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _gp_Ax2d_HeaderFile
+#include <gp_Ax2d.hxx>
+#endif
+#ifndef _gp_Ax22d_HeaderFile
+#include <gp_Ax22d.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _gp_Dir2d_HeaderFile
+#include <gp_Dir2d.hxx>
+#endif
+#ifndef _ElCLib_HeaderFile
+#include <ElCLib.hxx>
+#endif

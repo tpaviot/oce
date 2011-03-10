@@ -1,0 +1,3 @@
+#ifndef _Dynamic_RealParameter_HeaderFile
+#include <Dynamic_RealParameter.hxx>
+#endif

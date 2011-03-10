@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo_HeaderFile
+#include <TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Tools2d_HeaderFile
+#include <TopOpeBRepBuild_Tools2d.hxx>
+#endif

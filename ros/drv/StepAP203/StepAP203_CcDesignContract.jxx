@@ -1,0 +1,9 @@
+#ifndef _StepAP203_HArray1OfContractedItem_HeaderFile
+#include <StepAP203_HArray1OfContractedItem.hxx>
+#endif
+#ifndef _StepBasic_Contract_HeaderFile
+#include <StepBasic_Contract.hxx>
+#endif
+#ifndef _StepAP203_CcDesignContract_HeaderFile
+#include <StepAP203_CcDesignContract.hxx>
+#endif

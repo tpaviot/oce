@@ -1,0 +1,3 @@
+#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
+#include <StepShape_TopologicalRepresentationItem.hxx>
+#endif

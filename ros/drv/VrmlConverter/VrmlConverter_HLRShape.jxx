@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _VrmlConverter_Drawer_HeaderFile
+#include <VrmlConverter_Drawer.hxx>
+#endif
+#ifndef _VrmlConverter_Projector_HeaderFile
+#include <VrmlConverter_Projector.hxx>
+#endif
+#ifndef _VrmlConverter_HLRShape_HeaderFile
+#include <VrmlConverter_HLRShape.hxx>
+#endif

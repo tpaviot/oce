@@ -1,0 +1,18 @@
+#ifndef _IFSelect_IntParam_HeaderFile
+#include <IFSelect_IntParam.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _IFSelect_SelectRange_HeaderFile
+#include <IFSelect_SelectRange.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Standard_NegativeValue_HeaderFile
+#include <Standard_NegativeValue.hxx>
+#endif
+#ifndef _Standard_NullValue_HeaderFile
+#include <Standard_NullValue.hxx>
+#endif
+#ifndef _Standard_NumericError_HeaderFile
+#include <Standard_NumericError.hxx>
+#endif
+#ifndef _Aspect_RectangularGrid_HeaderFile
+#include <Aspect_RectangularGrid.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _StepAP203_HArray1OfClassifiedItem_HeaderFile
+#include <StepAP203_HArray1OfClassifiedItem.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassification_HeaderFile
+#include <StepBasic_SecurityClassification.hxx>
+#endif
+#ifndef _StepAP203_CcDesignSecurityClassification_HeaderFile
+#include <StepAP203_CcDesignSecurityClassification.hxx>
+#endif

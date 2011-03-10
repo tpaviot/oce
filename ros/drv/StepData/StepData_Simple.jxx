@@ -1,0 +1,21 @@
+#ifndef _Interface_InterfaceMismatch_HeaderFile
+#include <Interface_InterfaceMismatch.hxx>
+#endif
+#ifndef _StepData_ESDescr_HeaderFile
+#include <StepData_ESDescr.hxx>
+#endif
+#ifndef _StepData_Field_HeaderFile
+#include <StepData_Field.hxx>
+#endif
+#ifndef _StepData_FieldListN_HeaderFile
+#include <StepData_FieldListN.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _StepData_Simple_HeaderFile
+#include <StepData_Simple.hxx>
+#endif

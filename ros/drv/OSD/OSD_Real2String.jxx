@@ -1,0 +1,3 @@
+#ifndef _OSD_Real2String_HeaderFile
+#include <OSD_Real2String.hxx>
+#endif

@@ -1,0 +1,3 @@
++V MeshTest:msentity:MeshTest .
++V MeshTest:msentity:MeshTest_DrawableMesh .
+- MeshTest:admfile:MeshTest_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/MeshTest/MeshTest_xcpp_fill.Out

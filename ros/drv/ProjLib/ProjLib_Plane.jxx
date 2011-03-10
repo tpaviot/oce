@@ -1,0 +1,24 @@
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Elips_HeaderFile
+#include <gp_Elips.hxx>
+#endif
+#ifndef _gp_Parab_HeaderFile
+#include <gp_Parab.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _ProjLib_Plane_HeaderFile
+#include <ProjLib_Plane.hxx>
+#endif

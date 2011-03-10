@@ -1,0 +1,12 @@
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _IFSelect_SessionPilot_HeaderFile
+#include <IFSelect_SessionPilot.hxx>
+#endif
+#ifndef _XSControl_Vars_HeaderFile
+#include <XSControl_Vars.hxx>
+#endif
+#ifndef _XSControl_HeaderFile
+#include <XSControl.hxx>
+#endif

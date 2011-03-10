@@ -1,0 +1,11 @@
++ CPnts:pubinclude:CPnts_RealFunction.hxx CPnts:source:CPnts_RealFunction.hxx
++ CPnts:pubinclude:CPnts_MyGaussFunction.lxx CPnts:source:CPnts_MyGaussFunction.lxx
++ CPnts:pubinclude:CPnts_MyRootFunction.lxx CPnts:source:CPnts_MyRootFunction.lxx
++ CPnts:pubinclude:CPnts_AbscissaPoint.lxx CPnts:source:CPnts_AbscissaPoint.lxx
++ CPnts:pubinclude:CPnts_UniformDeflection.lxx CPnts:source:CPnts_UniformDeflection.lxx
++ CPnts:dbadmfile:CPnts_obj_inc.In CPnts:admfile:CPnts_src.Out
++ * CPnts:admfile:CPnts_xcpp_src.Out
++ CPnts:dbadmfile:CPnts_obj_inc.Out CPnts:admfile:CPnts_src.Out
++ * CPnts:admfile:CPnts_xcpp_src.Out
++ CPnts:dbadmfile:CPnts_obj_inc.Dep CPnts:admfile:CPnts_src.Out
++ * CPnts:admfile:CPnts_xcpp_src.Out

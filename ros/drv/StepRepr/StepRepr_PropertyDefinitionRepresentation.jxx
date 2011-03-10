@@ -1,0 +1,9 @@
+#ifndef _StepRepr_Representation_HeaderFile
+#include <StepRepr_Representation.hxx>
+#endif
+#ifndef _StepRepr_RepresentedDefinition_HeaderFile
+#include <StepRepr_RepresentedDefinition.hxx>
+#endif
+#ifndef _StepRepr_PropertyDefinitionRepresentation_HeaderFile
+#include <StepRepr_PropertyDefinitionRepresentation.hxx>
+#endif

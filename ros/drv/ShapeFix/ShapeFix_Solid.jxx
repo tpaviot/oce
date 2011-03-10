@@ -1,0 +1,18 @@
+#ifndef _ShapeFix_Shell_HeaderFile
+#include <ShapeFix_Shell.hxx>
+#endif
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
+#include <ShapeExtend_BasicMsgRegistrator.hxx>
+#endif
+#ifndef _ShapeFix_Solid_HeaderFile
+#include <ShapeFix_Solid.hxx>
+#endif

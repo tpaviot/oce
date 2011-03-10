@@ -1,0 +1,9 @@
+#ifndef _IGESGeom_Point_HeaderFile
+#include <IGESGeom_Point.hxx>
+#endif
+#ifndef _IGESGeom_Direction_HeaderFile
+#include <IGESGeom_Direction.hxx>
+#endif
+#ifndef _IGESSolid_CylindricalSurface_HeaderFile
+#include <IGESSolid_CylindricalSurface.hxx>
+#endif

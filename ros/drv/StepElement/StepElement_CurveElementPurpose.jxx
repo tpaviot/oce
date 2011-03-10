@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepData_SelectMember_HeaderFile
+#include <StepData_SelectMember.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepElement_CurveElementPurpose_HeaderFile
+#include <StepElement_CurveElementPurpose.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _Voxel_FloatDS_HeaderFile
+#include <Voxel_FloatDS.hxx>
+#endif

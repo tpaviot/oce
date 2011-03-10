@@ -1,0 +1,15 @@
+#ifndef _IGESData_IGESModel_HeaderFile
+#include <IGESData_IGESModel.hxx>
+#endif
+#ifndef _IGESToBRep_Actor_HeaderFile
+#include <IGESToBRep_Actor.hxx>
+#endif
+#ifndef _Transfer_TransientProcess_HeaderFile
+#include <Transfer_TransientProcess.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _IGESToBRep_Reader_HeaderFile
+#include <IGESToBRep_Reader.hxx>
+#endif

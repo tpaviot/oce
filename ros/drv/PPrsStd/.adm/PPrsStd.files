@@ -1,0 +1,14 @@
+pubinclude Handle_PPrsStd_AISPresentation.hxx
+pubinclude PPrsStd_AISPresentation.hxx
+privinclude PPrsStd_AISPresentation.jxx
+privinclude PPrsStd_AISPresentation.ixx
+pubinclude Handle_PPrsStd_AISPresentation_1.hxx
+pubinclude PPrsStd_AISPresentation_1.hxx
+privinclude PPrsStd_AISPresentation_1.jxx
+privinclude PPrsStd_AISPresentation_1.ixx
+dbadmfile PPrsStd_xcpp_header.In
+dbadmfile PPrsStd_xcpp_header.Out
+dbadmfile PPrsStd_xcpp_header.Dep
+dbadmfile PPrsStd_obj_inc.In
+dbadmfile PPrsStd_obj_inc.Out
+dbadmfile PPrsStd_obj_inc.Dep

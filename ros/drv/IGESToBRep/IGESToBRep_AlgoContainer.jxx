@@ -1,0 +1,6 @@
+#ifndef _IGESToBRep_ToolContainer_HeaderFile
+#include <IGESToBRep_ToolContainer.hxx>
+#endif
+#ifndef _IGESToBRep_AlgoContainer_HeaderFile
+#include <IGESToBRep_AlgoContainer.hxx>
+#endif

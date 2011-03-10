@@ -1,0 +1,21 @@
+#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
+#include <TColStd_HSequenceOfHAsciiString.hxx>
+#endif
+#ifndef _Interface_ParamSet_HeaderFile
+#include <Interface_ParamSet.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _IGESData_GlobalSection_HeaderFile
+#include <IGESData_GlobalSection.hxx>
+#endif
+#ifndef _IGESData_DirPart_HeaderFile
+#include <IGESData_DirPart.hxx>
+#endif
+#ifndef _IGESData_IGESType_HeaderFile
+#include <IGESData_IGESType.hxx>
+#endif
+#ifndef _IGESData_IGESReaderData_HeaderFile
+#include <IGESData_IGESReaderData.hxx>
+#endif

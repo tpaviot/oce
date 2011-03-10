@@ -1,0 +1,9 @@
+#ifndef _HLRBRep_Data_HeaderFile
+#include <HLRBRep_Data.hxx>
+#endif
+#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
+#include <BRepTopAdaptor_MapOfShapeTool.hxx>
+#endif
+#ifndef _HLRBRep_Hider_HeaderFile
+#include <HLRBRep_Hider.hxx>
+#endif

@@ -1,0 +1,6 @@
++ ImageUtility:source:ImageUtility_X11Display.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ImageUtility/ImageUtility_X11Display.hxx
++ ImageUtility:source:ImageUtility_X11Window.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ImageUtility/ImageUtility_X11Window.hxx
++ ImageUtility:source:ImageUtility_X11XImage.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ImageUtility/ImageUtility_X11XImage.hxx
++ ImageUtility:source:ImageUtility_X11GC.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/ImageUtility/ImageUtility_X11GC.hxx
+- ImageUtility:admfile:ImageUtility_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/ImageUtility/ImageUtility_src.Out
+- ImageUtility:admfile:ImageUtility_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/ImageUtility/ImageUtility_xcpp_src.Out

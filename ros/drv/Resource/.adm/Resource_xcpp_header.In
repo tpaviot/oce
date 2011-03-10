@@ -1,0 +1,14 @@
++V Resource:msentity:Resource .
++V Resource:msentity:Resource_DataMapOfAsciiStringAsciiString .
++V Resource:msentity:Resource_DataMapOfAsciiStringExtendedString .
++V Resource:msentity:Resource_QuickSortOfArray1 .
++V Resource:msentity:Resource_LexicalCompare .
++V Resource:msentity:Resource_Manager .
++V Resource:msentity:Resource_Unicode .
++V Resource:msentity:Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString .
++V Resource:msentity:Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString .
++V Resource:msentity:Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString .
++V Resource:msentity:Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString .
++V Resource:msentity:Resource_NoSuchResource .
++V Resource:msentity:Resource_FormatType .
+- Resource:admfile:Resource_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Resource/Resource_xcpp_fill.Out

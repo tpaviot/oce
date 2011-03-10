@@ -1,0 +1,12 @@
+#ifndef _IGESData_Protocol_HeaderFile
+#include <IGESData_Protocol.hxx>
+#endif
+#ifndef _IGESData_IGESModel_HeaderFile
+#include <IGESData_IGESModel.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESData_BasicEditor_HeaderFile
+#include <IGESData_BasicEditor.hxx>
+#endif

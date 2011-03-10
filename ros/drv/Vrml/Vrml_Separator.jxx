@@ -1,0 +1,3 @@
+#ifndef _Vrml_Separator_HeaderFile
+#include <Vrml_Separator.hxx>
+#endif

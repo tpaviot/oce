@@ -1,0 +1,6 @@
+#ifndef _IntPolyh_StartPoint_HeaderFile
+#include <IntPolyh_StartPoint.hxx>
+#endif
+#ifndef _IntPolyh_SectionLine_HeaderFile
+#include <IntPolyh_SectionLine.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepRepr_StructuralResponseProperty_HeaderFile
+#include <StepRepr_StructuralResponseProperty.hxx>
+#endif

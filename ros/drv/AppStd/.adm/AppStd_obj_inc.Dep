@@ -1,0 +1,6 @@
++ AppStd:dbadmfile:AppStd_obj_inc.In AppStd:admfile:AppStd_src.Out
++ * AppStd:admfile:AppStd_xcpp_src.Out
++ AppStd:dbadmfile:AppStd_obj_inc.Out AppStd:admfile:AppStd_src.Out
++ * AppStd:admfile:AppStd_xcpp_src.Out
++ AppStd:dbadmfile:AppStd_obj_inc.Dep AppStd:admfile:AppStd_src.Out
++ * AppStd:admfile:AppStd_xcpp_src.Out

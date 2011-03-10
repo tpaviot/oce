@@ -1,0 +1,12 @@
+#ifndef _StepFEA_HArray1OfElementRepresentation_HeaderFile
+#include <StepFEA_HArray1OfElementRepresentation.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_FeaModel_HeaderFile
+#include <StepFEA_FeaModel.hxx>
+#endif
+#ifndef _StepFEA_ElementGroup_HeaderFile
+#include <StepFEA_ElementGroup.hxx>
+#endif

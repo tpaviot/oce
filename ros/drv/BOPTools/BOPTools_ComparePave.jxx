@@ -1,0 +1,6 @@
+#ifndef _BOPTools_Pave_HeaderFile
+#include <BOPTools_Pave.hxx>
+#endif
+#ifndef _BOPTools_ComparePave_HeaderFile
+#include <BOPTools_ComparePave.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _Geom_BezierCurve_HeaderFile
+#include <Geom_BezierCurve.hxx>
+#endif
+#ifndef _Draw_Color_HeaderFile
+#include <Draw_Color.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _Draw_Drawable3D_HeaderFile
+#include <Draw_Drawable3D.hxx>
+#endif
+#ifndef _DrawTrSurf_BezierCurve_HeaderFile
+#include <DrawTrSurf_BezierCurve.hxx>
+#endif

@@ -1,0 +1,6 @@
++ DPrsStd:dbadmfile:DPrsStd_obj_inc.In DPrsStd:admfile:DPrsStd_src.Out
++ * DPrsStd:admfile:DPrsStd_xcpp_src.Out
++ DPrsStd:dbadmfile:DPrsStd_obj_inc.Out DPrsStd:admfile:DPrsStd_src.Out
++ * DPrsStd:admfile:DPrsStd_xcpp_src.Out
++ DPrsStd:dbadmfile:DPrsStd_obj_inc.Dep DPrsStd:admfile:DPrsStd_src.Out
++ * DPrsStd:admfile:DPrsStd_xcpp_src.Out

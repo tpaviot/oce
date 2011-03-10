@@ -1,0 +1,3 @@
+#ifndef _StepBasic_LengthMeasureWithUnit_HeaderFile
+#include <StepBasic_LengthMeasureWithUnit.hxx>
+#endif

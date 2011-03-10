@@ -1,0 +1,12 @@
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _IntSurf_Transition_HeaderFile
+#include <IntSurf_Transition.hxx>
+#endif
+#ifndef _IntSurf_HeaderFile
+#include <IntSurf.hxx>
+#endif

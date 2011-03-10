@@ -1,0 +1,18 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_DocumentFile_HeaderFile
+#include <StepBasic_DocumentFile.hxx>
+#endif
+#ifndef _StepAP214_ExternallyDefinedClass_HeaderFile
+#include <StepAP214_ExternallyDefinedClass.hxx>
+#endif
+#ifndef _StepAP214_ExternallyDefinedGeneralProperty_HeaderFile
+#include <StepAP214_ExternallyDefinedGeneralProperty.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _StepAP214_ExternalIdentificationItem_HeaderFile
+#include <StepAP214_ExternalIdentificationItem.hxx>
+#endif

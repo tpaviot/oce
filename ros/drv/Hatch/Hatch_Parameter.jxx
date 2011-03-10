@@ -1,0 +1,9 @@
+#ifndef _Hatch_Line_HeaderFile
+#include <Hatch_Line.hxx>
+#endif
+#ifndef _Hatch_Hatcher_HeaderFile
+#include <Hatch_Hatcher.hxx>
+#endif
+#ifndef _Hatch_Parameter_HeaderFile
+#include <Hatch_Parameter.hxx>
+#endif

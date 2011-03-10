@@ -1,0 +1,6 @@
++ GeomAbs:dbadmfile:GeomAbs_obj_inc.In GeomAbs:admfile:GeomAbs_src.Out
++ * GeomAbs:admfile:GeomAbs_xcpp_src.Out
++ GeomAbs:dbadmfile:GeomAbs_obj_inc.Out GeomAbs:admfile:GeomAbs_src.Out
++ * GeomAbs:admfile:GeomAbs_xcpp_src.Out
++ GeomAbs:dbadmfile:GeomAbs_obj_inc.Dep GeomAbs:admfile:GeomAbs_src.Out
++ * GeomAbs:admfile:GeomAbs_xcpp_src.Out

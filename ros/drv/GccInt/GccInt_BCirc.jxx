@@ -1,0 +1,6 @@
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _GccInt_BCirc_HeaderFile
+#include <GccInt_BCirc.hxx>
+#endif

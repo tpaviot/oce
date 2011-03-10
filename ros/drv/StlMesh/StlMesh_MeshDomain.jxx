@@ -1,0 +1,15 @@
+#ifndef _Standard_NegativeValue_HeaderFile
+#include <Standard_NegativeValue.hxx>
+#endif
+#ifndef _Standard_NullValue_HeaderFile
+#include <Standard_NullValue.hxx>
+#endif
+#ifndef _StlMesh_SequenceOfMeshTriangle_HeaderFile
+#include <StlMesh_SequenceOfMeshTriangle.hxx>
+#endif
+#ifndef _TColgp_SequenceOfXYZ_HeaderFile
+#include <TColgp_SequenceOfXYZ.hxx>
+#endif
+#ifndef _StlMesh_MeshDomain_HeaderFile
+#include <StlMesh_MeshDomain.hxx>
+#endif

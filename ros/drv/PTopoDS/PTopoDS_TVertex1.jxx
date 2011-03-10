@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_TVertex1_HeaderFile
+#include <PTopoDS_TVertex1.hxx>
+#endif

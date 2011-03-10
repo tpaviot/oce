@@ -1,0 +1,3 @@
+#ifndef _StepRepr_ShapeAspectDerivingRelationship_HeaderFile
+#include <StepRepr_ShapeAspectDerivingRelationship.hxx>
+#endif

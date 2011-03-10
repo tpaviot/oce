@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_FeaMassDensity_HeaderFile
+#include <StepFEA_FeaMassDensity.hxx>
+#endif

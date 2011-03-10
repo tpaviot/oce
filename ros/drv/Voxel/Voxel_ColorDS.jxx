@@ -1,0 +1,3 @@
+#ifndef _Voxel_ColorDS_HeaderFile
+#include <Voxel_ColorDS.hxx>
+#endif

@@ -1,0 +1,99 @@
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopTools_HArray1OfShape_HeaderFile
+#include <TopTools_HArray1OfShape.hxx>
+#endif
+#ifndef _TopTools_HArray1OfListOfShape_HeaderFile
+#include <TopTools_HArray1OfListOfShape.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
+#include <TopOpeBRepBuild_HBuilder.hxx>
+#endif
+#ifndef _TopOpeBRepDS_BuildTool_HeaderFile
+#include <TopOpeBRepDS_BuildTool.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State_HeaderFile
+#include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
+#endif
+#ifndef _TopOpeBRepTool_ShapeExplorer_HeaderFile
+#include <TopOpeBRepTool_ShapeExplorer.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ShapeSet_HeaderFile
+#include <TopOpeBRepBuild_ShapeSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_EdgeBuilder_HeaderFile
+#include <TopOpeBRepBuild_EdgeBuilder.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_FaceBuilder_HeaderFile
+#include <TopOpeBRepBuild_FaceBuilder.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_SolidBuilder_HeaderFile
+#include <TopOpeBRepBuild_SolidBuilder.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_WireEdgeSet_HeaderFile
+#include <TopOpeBRepBuild_WireEdgeSet.hxx>
+#endif
+#ifndef _TopOpeBRepDS_PointIterator_HeaderFile
+#include <TopOpeBRepDS_PointIterator.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_PaveSet_HeaderFile
+#include <TopOpeBRepBuild_PaveSet.hxx>
+#endif
+#ifndef _TopTools_DataMapOfIntegerListOfShape_HeaderFile
+#include <TopTools_DataMapOfIntegerListOfShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfIntegerShape_HeaderFile
+#include <TopTools_DataMapOfIntegerShape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_GTopo_HeaderFile
+#include <TopOpeBRepBuild_GTopo.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ShellFaceSet_HeaderFile
+#include <TopOpeBRepBuild_ShellFaceSet.hxx>
+#endif
+#ifndef _TopOpeBRepDS_SurfaceIterator_HeaderFile
+#include <TopOpeBRepDS_SurfaceIterator.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfOrientedShape_HeaderFile
+#include <TopTools_IndexedMapOfOrientedShape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_CurveIterator_HeaderFile
+#include <TopOpeBRepDS_CurveIterator.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeInteger_HeaderFile
+#include <TopTools_DataMapOfShapeInteger.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Builder_HeaderFile
+#include <TopOpeBRepBuild_Builder.hxx>
+#endif

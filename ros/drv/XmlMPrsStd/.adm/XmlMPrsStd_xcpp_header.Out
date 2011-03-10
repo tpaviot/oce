@@ -1,0 +1,14 @@
++M XmlMPrsStd:pubinclude:XmlMPrsStd.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/XmlMPrsStd.hxx
++M XmlMPrsStd:privinclude:XmlMPrsStd.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd.jxx
++M XmlMPrsStd:privinclude:XmlMPrsStd.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd.ixx
++M XmlMPrsStd:pubinclude:Handle_XmlMPrsStd_PositionDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Handle_XmlMPrsStd_PositionDriver.hxx
++M XmlMPrsStd:pubinclude:XmlMPrsStd_PositionDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/XmlMPrsStd_PositionDriver.hxx
++M XmlMPrsStd:privinclude:XmlMPrsStd_PositionDriver.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd_PositionDriver.jxx
++M XmlMPrsStd:privinclude:XmlMPrsStd_PositionDriver.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd_PositionDriver.ixx
++M XmlMPrsStd:pubinclude:Handle_XmlMPrsStd_AISPresentationDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Handle_XmlMPrsStd_AISPresentationDriver.hxx
++M XmlMPrsStd:pubinclude:XmlMPrsStd_AISPresentationDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/XmlMPrsStd_AISPresentationDriver.hxx
++M XmlMPrsStd:privinclude:XmlMPrsStd_AISPresentationDriver.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd_AISPresentationDriver.jxx
++M XmlMPrsStd:privinclude:XmlMPrsStd_AISPresentationDriver.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/XmlMPrsStd_AISPresentationDriver.ixx
++M XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/.adm/XmlMPrsStd_xcpp_header.In
++M XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/.adm/XmlMPrsStd_xcpp_header.Out
++M XmlMPrsStd:dbadmfile:XmlMPrsStd_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMPrsStd/.adm/XmlMPrsStd_xcpp_header.Dep

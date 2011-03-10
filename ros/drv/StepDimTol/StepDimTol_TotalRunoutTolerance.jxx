@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_TotalRunoutTolerance_HeaderFile
+#include <StepDimTol_TotalRunoutTolerance.hxx>
+#endif

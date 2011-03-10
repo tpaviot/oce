@@ -1,0 +1,3 @@
+#ifndef _StepElement_SurfaceElementPurposeMember_HeaderFile
+#include <StepElement_SurfaceElementPurposeMember.hxx>
+#endif

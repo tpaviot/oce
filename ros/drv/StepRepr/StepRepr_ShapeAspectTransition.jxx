@@ -1,0 +1,3 @@
+#ifndef _StepRepr_ShapeAspectTransition_HeaderFile
+#include <StepRepr_ShapeAspectTransition.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PXCAFDoc_MaterialTool_HeaderFile
+#include <PXCAFDoc_MaterialTool.hxx>
+#endif

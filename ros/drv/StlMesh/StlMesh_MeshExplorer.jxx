@@ -1,0 +1,15 @@
+#ifndef _StlMesh_Mesh_HeaderFile
+#include <StlMesh_Mesh.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _StlMesh_MeshExplorer_HeaderFile
+#include <StlMesh_MeshExplorer.hxx>
+#endif

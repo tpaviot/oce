@@ -1,0 +1,9 @@
+#ifndef _Units_Quantity_HeaderFile
+#include <Units_Quantity.hxx>
+#endif
+#ifndef _Units_Token_HeaderFile
+#include <Units_Token.hxx>
+#endif
+#ifndef _Units_ShiftedUnit_HeaderFile
+#include <Units_ShiftedUnit.hxx>
+#endif

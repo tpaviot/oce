@@ -1,0 +1,6 @@
++ MDataXtd:dbadmfile:MDataXtd_obj_inc.In MDataXtd:admfile:MDataXtd_src.Out
++ * MDataXtd:admfile:MDataXtd_xcpp_src.Out
++ MDataXtd:dbadmfile:MDataXtd_obj_inc.Out MDataXtd:admfile:MDataXtd_src.Out
++ * MDataXtd:admfile:MDataXtd_xcpp_src.Out
++ MDataXtd:dbadmfile:MDataXtd_obj_inc.Dep MDataXtd:admfile:MDataXtd_src.Out
++ * MDataXtd:admfile:MDataXtd_xcpp_src.Out

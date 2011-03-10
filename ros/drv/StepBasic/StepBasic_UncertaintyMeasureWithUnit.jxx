@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_MeasureValueMember_HeaderFile
+#include <StepBasic_MeasureValueMember.hxx>
+#endif
+#ifndef _StepBasic_Unit_HeaderFile
+#include <StepBasic_Unit.hxx>
+#endif
+#ifndef _StepBasic_UncertaintyMeasureWithUnit_HeaderFile
+#include <StepBasic_UncertaintyMeasureWithUnit.hxx>
+#endif

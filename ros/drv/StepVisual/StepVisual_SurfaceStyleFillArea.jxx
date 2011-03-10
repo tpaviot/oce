@@ -1,0 +1,6 @@
+#ifndef _StepVisual_FillAreaStyle_HeaderFile
+#include <StepVisual_FillAreaStyle.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleFillArea_HeaderFile
+#include <StepVisual_SurfaceStyleFillArea.hxx>
+#endif

@@ -1,0 +1,6 @@
++ TColGeom:dbadmfile:TColGeom_obj_inc.In TColGeom:admfile:TColGeom_src.Out
++ * TColGeom:admfile:TColGeom_xcpp_src.Out
++ TColGeom:dbadmfile:TColGeom_obj_inc.Out TColGeom:admfile:TColGeom_src.Out
++ * TColGeom:admfile:TColGeom_xcpp_src.Out
++ TColGeom:dbadmfile:TColGeom_obj_inc.Dep TColGeom:admfile:TColGeom_src.Out
++ * TColGeom:admfile:TColGeom_xcpp_src.Out

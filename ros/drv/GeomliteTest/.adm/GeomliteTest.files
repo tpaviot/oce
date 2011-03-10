@@ -1,0 +1,9 @@
+pubinclude GeomliteTest.hxx
+privinclude GeomliteTest.jxx
+privinclude GeomliteTest.ixx
+dbadmfile GeomliteTest_xcpp_header.In
+dbadmfile GeomliteTest_xcpp_header.Out
+dbadmfile GeomliteTest_xcpp_header.Dep
+dbadmfile GeomliteTest_obj_inc.In
+dbadmfile GeomliteTest_obj_inc.Out
+dbadmfile GeomliteTest_obj_inc.Dep

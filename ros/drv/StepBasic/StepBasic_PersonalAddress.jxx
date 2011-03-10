@@ -1,0 +1,12 @@
+#ifndef _StepBasic_HArray1OfPerson_HeaderFile
+#include <StepBasic_HArray1OfPerson.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_Person_HeaderFile
+#include <StepBasic_Person.hxx>
+#endif
+#ifndef _StepBasic_PersonalAddress_HeaderFile
+#include <StepBasic_PersonalAddress.hxx>
+#endif

@@ -1,0 +1,6 @@
++ BRepLib:dbadmfile:BRepLib_obj_inc.In BRepLib:admfile:BRepLib_src.Out
++ * BRepLib:admfile:BRepLib_xcpp_src.Out
++ BRepLib:dbadmfile:BRepLib_obj_inc.Out BRepLib:admfile:BRepLib_src.Out
++ * BRepLib:admfile:BRepLib_xcpp_src.Out
++ BRepLib:dbadmfile:BRepLib_obj_inc.Dep BRepLib:admfile:BRepLib_src.Out
++ * BRepLib:admfile:BRepLib_xcpp_src.Out

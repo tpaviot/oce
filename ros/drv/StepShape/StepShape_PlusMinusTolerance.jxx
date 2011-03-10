@@ -1,0 +1,9 @@
+#ifndef _StepShape_ToleranceMethodDefinition_HeaderFile
+#include <StepShape_ToleranceMethodDefinition.hxx>
+#endif
+#ifndef _StepShape_DimensionalCharacteristic_HeaderFile
+#include <StepShape_DimensionalCharacteristic.hxx>
+#endif
+#ifndef _StepShape_PlusMinusTolerance_HeaderFile
+#include <StepShape_PlusMinusTolerance.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _StepGeom_BoundedSurface_HeaderFile
+#include <StepGeom_BoundedSurface.hxx>
+#endif
+#ifndef _StepGeom_SurfacePatch_HeaderFile
+#include <StepGeom_SurfacePatch.hxx>
+#endif

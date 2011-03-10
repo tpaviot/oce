@@ -1,0 +1,18 @@
+#ifndef _IGESDraw_HArray1OfViewKindEntity_HeaderFile
+#include <IGESDraw_HArray1OfViewKindEntity.hxx>
+#endif
+#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
+#include <IGESData_HArray1OfIGESEntity.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_ViewKindEntity_HeaderFile
+#include <IGESData_ViewKindEntity.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESDraw_ViewsVisible_HeaderFile
+#include <IGESDraw_ViewsVisible.hxx>
+#endif

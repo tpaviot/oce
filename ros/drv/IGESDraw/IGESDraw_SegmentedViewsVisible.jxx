@@ -1,0 +1,33 @@
+#ifndef _IGESDraw_HArray1OfViewKindEntity_HeaderFile
+#include <IGESDraw_HArray1OfViewKindEntity.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _IGESGraph_HArray1OfColor_HeaderFile
+#include <IGESGraph_HArray1OfColor.hxx>
+#endif
+#ifndef _IGESBasic_HArray1OfLineFontEntity_HeaderFile
+#include <IGESBasic_HArray1OfLineFontEntity.hxx>
+#endif
+#ifndef _Standard_DimensionMismatch_HeaderFile
+#include <Standard_DimensionMismatch.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IGESData_ViewKindEntity_HeaderFile
+#include <IGESData_ViewKindEntity.hxx>
+#endif
+#ifndef _IGESGraph_Color_HeaderFile
+#include <IGESGraph_Color.hxx>
+#endif
+#ifndef _IGESData_LineFontEntity_HeaderFile
+#include <IGESData_LineFontEntity.hxx>
+#endif
+#ifndef _IGESDraw_SegmentedViewsVisible_HeaderFile
+#include <IGESDraw_SegmentedViewsVisible.hxx>
+#endif

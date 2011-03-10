@@ -1,0 +1,5 @@
+#include <ShapeSchema_PBRep_PolygonOnTriangulation.ixx>
+#ifndef _ShapeSchema_PPoly_PolygonOnTriangulation_HeaderFile
+#include <ShapeSchema_PPoly_PolygonOnTriangulation.hxx>
+#endif
+

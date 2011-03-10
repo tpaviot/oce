@@ -1,0 +1,6 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _BinLDrivers_DocumentSection_HeaderFile
+#include <BinLDrivers_DocumentSection.hxx>
+#endif

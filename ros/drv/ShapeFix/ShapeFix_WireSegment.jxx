@@ -1,0 +1,18 @@
+#ifndef _ShapeExtend_WireData_HeaderFile
+#include <ShapeExtend_WireData.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _ShapeFix_WireSegment_HeaderFile
+#include <ShapeFix_WireSegment.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Compound_HeaderFile
+#include <TopoDS_Compound.hxx>
+#endif
+#ifndef _TopTools_HSequenceOfShape_HeaderFile
+#include <TopTools_HSequenceOfShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _ShapeAnalysis_FreeBounds_HeaderFile
+#include <ShapeAnalysis_FreeBounds.hxx>
+#endif

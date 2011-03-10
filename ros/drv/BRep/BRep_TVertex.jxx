@@ -1,0 +1,12 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _BRep_ListOfPointRepresentation_HeaderFile
+#include <BRep_ListOfPointRepresentation.hxx>
+#endif
+#ifndef _TopoDS_TShape_HeaderFile
+#include <TopoDS_TShape.hxx>
+#endif
+#ifndef _BRep_TVertex_HeaderFile
+#include <BRep_TVertex.hxx>
+#endif

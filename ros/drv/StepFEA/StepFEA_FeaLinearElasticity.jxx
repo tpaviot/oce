@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_SymmetricTensor43d_HeaderFile
+#include <StepFEA_SymmetricTensor43d.hxx>
+#endif
+#ifndef _StepFEA_FeaLinearElasticity_HeaderFile
+#include <StepFEA_FeaLinearElasticity.hxx>
+#endif

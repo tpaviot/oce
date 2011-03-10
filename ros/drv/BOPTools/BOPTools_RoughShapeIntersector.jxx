@@ -1,0 +1,9 @@
+#ifndef _Bnd_HArray1OfBox_HeaderFile
+#include <Bnd_HArray1OfBox.hxx>
+#endif
+#ifndef _BOPTools_HArray2OfIntersectionStatus_HeaderFile
+#include <BOPTools_HArray2OfIntersectionStatus.hxx>
+#endif
+#ifndef _BOPTools_RoughShapeIntersector_HeaderFile
+#include <BOPTools_RoughShapeIntersector.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _Graphic3d_ArrayOfTriangles_HeaderFile
+#include <Graphic3d_ArrayOfTriangles.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _Draw_Display_HeaderFile
+#include <Draw_Display.hxx>
+#endif
+#ifndef _DrawDim_Angle_HeaderFile
+#include <DrawDim_Angle.hxx>
+#endif

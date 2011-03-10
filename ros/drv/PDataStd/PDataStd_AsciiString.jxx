@@ -1,0 +1,6 @@
+#ifndef _PCollection_HAsciiString_HeaderFile
+#include <PCollection_HAsciiString.hxx>
+#endif
+#ifndef _PDataStd_AsciiString_HeaderFile
+#include <PDataStd_AsciiString.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _Poly_PolygonOnTriangulation_HeaderFile
+#include <Poly_PolygonOnTriangulation.hxx>
+#endif
+#ifndef _Poly_Triangulation_HeaderFile
+#include <Poly_Triangulation.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _BRep_CurveRepresentation_HeaderFile
+#include <BRep_CurveRepresentation.hxx>
+#endif
+#ifndef _BRep_PolygonOnTriangulation_HeaderFile
+#include <BRep_PolygonOnTriangulation.hxx>
+#endif

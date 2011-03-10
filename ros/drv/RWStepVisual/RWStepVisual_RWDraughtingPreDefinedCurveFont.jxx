@@ -1,0 +1,15 @@
+#ifndef _StepData_StepReaderData_HeaderFile
+#include <StepData_StepReaderData.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepVisual_DraughtingPreDefinedCurveFont_HeaderFile
+#include <StepVisual_DraughtingPreDefinedCurveFont.hxx>
+#endif
+#ifndef _StepData_StepWriter_HeaderFile
+#include <StepData_StepWriter.hxx>
+#endif
+#ifndef _RWStepVisual_RWDraughtingPreDefinedCurveFont_HeaderFile
+#include <RWStepVisual_RWDraughtingPreDefinedCurveFont.hxx>
+#endif

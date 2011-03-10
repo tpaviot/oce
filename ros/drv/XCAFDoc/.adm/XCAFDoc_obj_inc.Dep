@@ -1,0 +1,6 @@
++ XCAFDoc:dbadmfile:XCAFDoc_obj_inc.In XCAFDoc:admfile:XCAFDoc_src.Out
++ * XCAFDoc:admfile:XCAFDoc_xcpp_src.Out
++ XCAFDoc:dbadmfile:XCAFDoc_obj_inc.Out XCAFDoc:admfile:XCAFDoc_src.Out
++ * XCAFDoc:admfile:XCAFDoc_xcpp_src.Out
++ XCAFDoc:dbadmfile:XCAFDoc_obj_inc.Dep XCAFDoc:admfile:XCAFDoc_src.Out
++ * XCAFDoc:admfile:XCAFDoc_xcpp_src.Out

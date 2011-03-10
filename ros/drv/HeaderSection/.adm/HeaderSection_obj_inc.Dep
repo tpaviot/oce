@@ -1,0 +1,6 @@
++ HeaderSection:dbadmfile:HeaderSection_obj_inc.In HeaderSection:admfile:HeaderSection_src.Out
++ * HeaderSection:admfile:HeaderSection_xcpp_src.Out
++ HeaderSection:dbadmfile:HeaderSection_obj_inc.Out HeaderSection:admfile:HeaderSection_src.Out
++ * HeaderSection:admfile:HeaderSection_xcpp_src.Out
++ HeaderSection:dbadmfile:HeaderSection_obj_inc.Dep HeaderSection:admfile:HeaderSection_src.Out
++ * HeaderSection:admfile:HeaderSection_xcpp_src.Out

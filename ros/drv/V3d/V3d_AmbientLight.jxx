@@ -1,0 +1,6 @@
+#ifndef _V3d_Viewer_HeaderFile
+#include <V3d_Viewer.hxx>
+#endif
+#ifndef _V3d_AmbientLight_HeaderFile
+#include <V3d_AmbientLight.hxx>
+#endif

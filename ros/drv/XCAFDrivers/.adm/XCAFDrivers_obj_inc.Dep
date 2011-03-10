@@ -1,0 +1,6 @@
++ XCAFDrivers:dbadmfile:XCAFDrivers_obj_inc.In XCAFDrivers:admfile:XCAFDrivers_src.Out
++ * XCAFDrivers:admfile:XCAFDrivers_xcpp_src.Out
++ XCAFDrivers:dbadmfile:XCAFDrivers_obj_inc.Out XCAFDrivers:admfile:XCAFDrivers_src.Out
++ * XCAFDrivers:admfile:XCAFDrivers_xcpp_src.Out
++ XCAFDrivers:dbadmfile:XCAFDrivers_obj_inc.Dep XCAFDrivers:admfile:XCAFDrivers_src.Out
++ * XCAFDrivers:admfile:XCAFDrivers_xcpp_src.Out

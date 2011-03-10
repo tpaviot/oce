@@ -1,0 +1,9 @@
+pubinclude BRepTest.hxx
+privinclude BRepTest.jxx
+privinclude BRepTest.ixx
+dbadmfile BRepTest_xcpp_header.In
+dbadmfile BRepTest_xcpp_header.Out
+dbadmfile BRepTest_xcpp_header.Dep
+dbadmfile BRepTest_obj_inc.In
+dbadmfile BRepTest_obj_inc.Out
+dbadmfile BRepTest_obj_inc.Dep

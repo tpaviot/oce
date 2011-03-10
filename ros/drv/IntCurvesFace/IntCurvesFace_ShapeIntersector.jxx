@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _Adaptor3d_HCurve_HeaderFile
+#include <Adaptor3d_HCurve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _IntCurvesFace_ShapeIntersector_HeaderFile
+#include <IntCurvesFace_ShapeIntersector.hxx>
+#endif

@@ -1,0 +1,54 @@
+#ifndef _GeomToIGES_GeomEntity_HeaderFile
+#include <GeomToIGES_GeomEntity.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _Geom_BoundedSurface_HeaderFile
+#include <Geom_BoundedSurface.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _Geom_BezierSurface_HeaderFile
+#include <Geom_BezierSurface.hxx>
+#endif
+#ifndef _Geom_RectangularTrimmedSurface_HeaderFile
+#include <Geom_RectangularTrimmedSurface.hxx>
+#endif
+#ifndef _Geom_ElementarySurface_HeaderFile
+#include <Geom_ElementarySurface.hxx>
+#endif
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _Geom_CylindricalSurface_HeaderFile
+#include <Geom_CylindricalSurface.hxx>
+#endif
+#ifndef _Geom_ConicalSurface_HeaderFile
+#include <Geom_ConicalSurface.hxx>
+#endif
+#ifndef _Geom_SphericalSurface_HeaderFile
+#include <Geom_SphericalSurface.hxx>
+#endif
+#ifndef _Geom_ToroidalSurface_HeaderFile
+#include <Geom_ToroidalSurface.hxx>
+#endif
+#ifndef _Geom_SweptSurface_HeaderFile
+#include <Geom_SweptSurface.hxx>
+#endif
+#ifndef _Geom_SurfaceOfLinearExtrusion_HeaderFile
+#include <Geom_SurfaceOfLinearExtrusion.hxx>
+#endif
+#ifndef _Geom_SurfaceOfRevolution_HeaderFile
+#include <Geom_SurfaceOfRevolution.hxx>
+#endif
+#ifndef _Geom_OffsetSurface_HeaderFile
+#include <Geom_OffsetSurface.hxx>
+#endif
+#ifndef _GeomToIGES_GeomSurface_HeaderFile
+#include <GeomToIGES_GeomSurface.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _IGESControl_AlgoContainer_HeaderFile
+#include <IGESControl_AlgoContainer.hxx>
+#endif

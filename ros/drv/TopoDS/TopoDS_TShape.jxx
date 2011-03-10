@@ -1,0 +1,15 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _TopoDS_Iterator_HeaderFile
+#include <TopoDS_Iterator.hxx>
+#endif
+#ifndef _TopoDS_Builder_HeaderFile
+#include <TopoDS_Builder.hxx>
+#endif
+#ifndef _TopoDS_ListOfShape_HeaderFile
+#include <TopoDS_ListOfShape.hxx>
+#endif
+#ifndef _TopoDS_TShape_HeaderFile
+#include <TopoDS_TShape.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _StepAP214_HArray1OfOrganizationItem_HeaderFile
+#include <StepAP214_HArray1OfOrganizationItem.hxx>
+#endif
+#ifndef _StepBasic_Organization_HeaderFile
+#include <StepBasic_Organization.hxx>
+#endif
+#ifndef _StepBasic_OrganizationRole_HeaderFile
+#include <StepBasic_OrganizationRole.hxx>
+#endif
+#ifndef _StepAP214_OrganizationItem_HeaderFile
+#include <StepAP214_OrganizationItem.hxx>
+#endif
+#ifndef _StepAP214_AppliedOrganizationAssignment_HeaderFile
+#include <StepAP214_AppliedOrganizationAssignment.hxx>
+#endif

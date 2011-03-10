@@ -1,0 +1,7 @@
++ Precision:pubinclude:Precision.lxx Precision:source:Precision.lxx
++ Precision:dbadmfile:Precision_obj_inc.In Precision:admfile:Precision_src.Out
++ * Precision:admfile:Precision_xcpp_src.Out
++ Precision:dbadmfile:Precision_obj_inc.Out Precision:admfile:Precision_src.Out
++ * Precision:admfile:Precision_xcpp_src.Out
++ Precision:dbadmfile:Precision_obj_inc.Dep Precision:admfile:Precision_src.Out
++ * Precision:admfile:Precision_xcpp_src.Out

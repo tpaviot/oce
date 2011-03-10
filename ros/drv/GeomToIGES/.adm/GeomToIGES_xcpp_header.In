@@ -1,0 +1,7 @@
++V GeomToIGES:msentity:GeomToIGES .
++V GeomToIGES:msentity:GeomToIGES_GeomCurve .
++V GeomToIGES:msentity:GeomToIGES_GeomEntity .
++V GeomToIGES:msentity:GeomToIGES_GeomPoint .
++V GeomToIGES:msentity:GeomToIGES_GeomSurface .
++V GeomToIGES:msentity:GeomToIGES_GeomVector .
+- GeomToIGES:admfile:GeomToIGES_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GeomToIGES/GeomToIGES_xcpp_fill.Out

@@ -1,0 +1,6 @@
++ PTColStd:dbadmfile:PTColStd_obj_inc.In PTColStd:admfile:PTColStd_src.Out
++ * PTColStd:admfile:PTColStd_xcpp_src.Out
++ PTColStd:dbadmfile:PTColStd_obj_inc.Out PTColStd:admfile:PTColStd_src.Out
++ * PTColStd:admfile:PTColStd_xcpp_src.Out
++ PTColStd:dbadmfile:PTColStd_obj_inc.Dep PTColStd:admfile:PTColStd_src.Out
++ * PTColStd:admfile:PTColStd_xcpp_src.Out

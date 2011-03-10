@@ -1,0 +1,3 @@
+#ifndef _Voxel_ROctBoolDS_HeaderFile
+#include <Voxel_ROctBoolDS.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _XSControl_Functions_HeaderFile
+#include <XSControl_Functions.hxx>
+#endif

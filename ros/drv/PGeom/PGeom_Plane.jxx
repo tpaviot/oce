@@ -1,0 +1,6 @@
+#ifndef _gp_Ax3_HeaderFile
+#include <gp_Ax3.hxx>
+#endif
+#ifndef _PGeom_Plane_HeaderFile
+#include <PGeom_Plane.hxx>
+#endif

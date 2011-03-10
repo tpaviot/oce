@@ -1,0 +1,18 @@
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Standard_DimensionError_HeaderFile
+#include <Standard_DimensionError.hxx>
+#endif
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _GeomConvert_BSplineCurveKnotSplitting_HeaderFile
+#include <GeomConvert_BSplineCurveKnotSplitting.hxx>
+#endif

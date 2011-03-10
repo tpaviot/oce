@@ -1,0 +1,9 @@
++ Resource:pubinclude:Resource_ConvertUnicode.hxx Resource:source:Resource_ConvertUnicode.hxx
++ Resource:pubinclude:Resource_Shiftjis.h Resource:source:Resource_Shiftjis.h
++ Resource:pubinclude:Resource_gb2312.h Resource:source:Resource_gb2312.h
++ Resource:dbadmfile:Resource_obj_inc.In Resource:admfile:Resource_src.Out
++ * Resource:admfile:Resource_xcpp_src.Out
++ Resource:dbadmfile:Resource_obj_inc.Out Resource:admfile:Resource_src.Out
++ * Resource:admfile:Resource_xcpp_src.Out
++ Resource:dbadmfile:Resource_obj_inc.Dep Resource:admfile:Resource_src.Out
++ * Resource:admfile:Resource_xcpp_src.Out

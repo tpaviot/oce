@@ -1,0 +1,6 @@
++ PStandard:dbadmfile:PStandard_obj_inc.In PStandard:admfile:PStandard_src.Out
++ * PStandard:admfile:PStandard_xcpp_src.Out
++ PStandard:dbadmfile:PStandard_obj_inc.Out PStandard:admfile:PStandard_src.Out
++ * PStandard:admfile:PStandard_xcpp_src.Out
++ PStandard:dbadmfile:PStandard_obj_inc.Dep PStandard:admfile:PStandard_src.Out
++ * PStandard:admfile:PStandard_xcpp_src.Out

@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _IGESBasic_Name_HeaderFile
+#include <IGESBasic_Name.hxx>
+#endif

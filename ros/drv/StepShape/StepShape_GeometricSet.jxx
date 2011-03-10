@@ -1,0 +1,12 @@
+#ifndef _StepShape_HArray1OfGeometricSetSelect_HeaderFile
+#include <StepShape_HArray1OfGeometricSetSelect.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_GeometricSetSelect_HeaderFile
+#include <StepShape_GeometricSetSelect.hxx>
+#endif
+#ifndef _StepShape_GeometricSet_HeaderFile
+#include <StepShape_GeometricSet.hxx>
+#endif

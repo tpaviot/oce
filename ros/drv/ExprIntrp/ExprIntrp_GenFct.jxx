@@ -1,0 +1,9 @@
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _ExprIntrp_GenFct_HeaderFile
+#include <ExprIntrp_GenFct.hxx>
+#endif

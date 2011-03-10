@@ -1,0 +1,18 @@
+#ifndef _Aspect_GenericColorMap_HeaderFile
+#include <Aspect_GenericColorMap.hxx>
+#endif
+#ifndef _Aspect_TypeMap_HeaderFile
+#include <Aspect_TypeMap.hxx>
+#endif
+#ifndef _Aspect_WidthMap_HeaderFile
+#include <Aspect_WidthMap.hxx>
+#endif
+#ifndef _Aspect_FontMap_HeaderFile
+#include <Aspect_FontMap.hxx>
+#endif
+#ifndef _Aspect_MarkMap_HeaderFile
+#include <Aspect_MarkMap.hxx>
+#endif
+#ifndef _V2d_DefaultMap_HeaderFile
+#include <V2d_DefaultMap.hxx>
+#endif

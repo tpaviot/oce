@@ -1,0 +1,12 @@
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _TopTools_LocationSet_HeaderFile
+#include <TopTools_LocationSet.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TopOpeBRepTool_HBoxTool_HeaderFile
+#include <TopOpeBRepTool_HBoxTool.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRep_EdgesIntersector_HeaderFile
+#include <TopOpeBRep_EdgesIntersector.hxx>
+#endif
+#ifndef _TopOpeBRep_ShapeIntersector2d_HeaderFile
+#include <TopOpeBRep_ShapeIntersector2d.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _PCollection_HExtendedString_HeaderFile
+#include <PCollection_HExtendedString.hxx>
+#endif
+#ifndef _PPrsStd_AISPresentation_HeaderFile
+#include <PPrsStd_AISPresentation.hxx>
+#endif

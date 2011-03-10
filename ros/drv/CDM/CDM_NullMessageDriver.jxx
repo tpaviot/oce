@@ -1,0 +1,3 @@
+#ifndef _CDM_NullMessageDriver_HeaderFile
+#include <CDM_NullMessageDriver.hxx>
+#endif

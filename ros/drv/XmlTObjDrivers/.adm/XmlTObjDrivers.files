@@ -1,0 +1,11 @@
+pubinclude XmlTObjDrivers.hxx
+pubinclude XmlTObjDrivers_DocumentRetrievalDriver.hxx
+pubinclude XmlTObjDrivers_DocumentStorageDriver.hxx
+pubinclude XmlTObjDrivers_IntSparseArrayDriver.hxx
+pubinclude XmlTObjDrivers_ModelDriver.hxx
+pubinclude XmlTObjDrivers_ObjectDriver.hxx
+pubinclude XmlTObjDrivers_ReferenceDriver.hxx
+pubinclude XmlTObjDrivers_XYZDriver.hxx
+dbadmfile XmlTObjDrivers_obj_inc.In
+dbadmfile XmlTObjDrivers_obj_inc.Out
+dbadmfile XmlTObjDrivers_obj_inc.Dep

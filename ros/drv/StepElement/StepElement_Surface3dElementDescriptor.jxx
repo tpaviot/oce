@@ -1,0 +1,9 @@
+#ifndef _StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_HeaderFile
+#include <StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepElement_Surface3dElementDescriptor_HeaderFile
+#include <StepElement_Surface3dElementDescriptor.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_SymmetryTolerance_HeaderFile
+#include <StepDimTol_SymmetryTolerance.hxx>
+#endif

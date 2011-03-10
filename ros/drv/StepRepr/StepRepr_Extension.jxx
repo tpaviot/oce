@@ -1,0 +1,3 @@
+#ifndef _StepRepr_Extension_HeaderFile
+#include <StepRepr_Extension.hxx>
+#endif

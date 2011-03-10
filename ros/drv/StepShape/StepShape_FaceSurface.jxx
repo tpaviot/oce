@@ -1,0 +1,12 @@
+#ifndef _StepGeom_Surface_HeaderFile
+#include <StepGeom_Surface.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_HArray1OfFaceBound_HeaderFile
+#include <StepShape_HArray1OfFaceBound.hxx>
+#endif
+#ifndef _StepShape_FaceSurface_HeaderFile
+#include <StepShape_FaceSurface.hxx>
+#endif

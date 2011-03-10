@@ -1,0 +1,12 @@
++ MAT:pubinclude:MAT_Tool.gxx MAT:source:MAT_Tool.gxx
++ MAT:pubinclude:MAT_Mat.gxx MAT:source:MAT_Mat.gxx
++ MAT:pubinclude:MAT_TList.gxx MAT:source:MAT_TList.gxx
++ MAT:pubinclude:MAT_TList.lxx MAT:source:MAT_TList.lxx
++ MAT:pubinclude:MAT_TListNode.gxx MAT:source:MAT_TListNode.gxx
++ MAT:pubinclude:MAT_TListNode.lxx MAT:source:MAT_TListNode.lxx
++ MAT:dbadmfile:MAT_obj_inc.In MAT:admfile:MAT_src.Out
++ * MAT:admfile:MAT_xcpp_src.Out
++ MAT:dbadmfile:MAT_obj_inc.Out MAT:admfile:MAT_src.Out
++ * MAT:admfile:MAT_xcpp_src.Out
++ MAT:dbadmfile:MAT_obj_inc.Dep MAT:admfile:MAT_src.Out
++ * MAT:admfile:MAT_xcpp_src.Out

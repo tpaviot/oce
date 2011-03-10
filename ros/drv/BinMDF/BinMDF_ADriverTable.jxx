@@ -1,0 +1,15 @@
+#ifndef _BinMDF_ADriver_HeaderFile
+#include <BinMDF_ADriver.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
+#include <TColStd_IndexedMapOfTransient.hxx>
+#endif
+#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
+#include <TColStd_SequenceOfAsciiString.hxx>
+#endif
+#ifndef _BinMDF_ADriverTable_HeaderFile
+#include <BinMDF_ADriverTable.hxx>
+#endif

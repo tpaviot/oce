@@ -1,0 +1,27 @@
+#ifndef _IntTools_SequenceOfCurves_HeaderFile
+#include <IntTools_SequenceOfCurves.hxx>
+#endif
+#ifndef _IntTools_SequenceOfPntOn2Faces_HeaderFile
+#include <IntTools_SequenceOfPntOn2Faces.hxx>
+#endif
+#ifndef _BOPTools_PaveBlock_HeaderFile
+#include <BOPTools_PaveBlock.hxx>
+#endif
+#ifndef _BOPTools_ListOfPaveBlock_HeaderFile
+#include <BOPTools_ListOfPaveBlock.hxx>
+#endif
+#ifndef _BOPTools_PaveSet_HeaderFile
+#include <BOPTools_PaveSet.hxx>
+#endif
+#ifndef _BOPTools_SequenceOfCurves_HeaderFile
+#include <BOPTools_SequenceOfCurves.hxx>
+#endif
+#ifndef _BOPTools_IndexedDataMapOfIntegerState_HeaderFile
+#include <BOPTools_IndexedDataMapOfIntegerState.hxx>
+#endif
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
+#endif
+#ifndef _BOPTools_SSInterference_HeaderFile
+#include <BOPTools_SSInterference.hxx>
+#endif

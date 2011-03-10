@@ -1,0 +1,6 @@
++ DsgPrs:dbadmfile:DsgPrs_obj_inc.In DsgPrs:admfile:DsgPrs_src.Out
++ * DsgPrs:admfile:DsgPrs_xcpp_src.Out
++ DsgPrs:dbadmfile:DsgPrs_obj_inc.Out DsgPrs:admfile:DsgPrs_src.Out
++ * DsgPrs:admfile:DsgPrs_xcpp_src.Out
++ DsgPrs:dbadmfile:DsgPrs_obj_inc.Dep DsgPrs:admfile:DsgPrs_src.Out
++ * DsgPrs:admfile:DsgPrs_xcpp_src.Out

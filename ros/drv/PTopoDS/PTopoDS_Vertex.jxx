@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_Vertex_HeaderFile
+#include <PTopoDS_Vertex.hxx>
+#endif

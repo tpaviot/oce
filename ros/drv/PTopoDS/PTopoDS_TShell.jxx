@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_TShell_HeaderFile
+#include <PTopoDS_TShell.hxx>
+#endif

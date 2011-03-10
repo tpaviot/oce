@@ -1,0 +1,9 @@
+#ifndef _TColStd_HPackedMapOfInteger_HeaderFile
+#include <TColStd_HPackedMapOfInteger.hxx>
+#endif
+#ifndef _TDataStd_IntPackedMap_HeaderFile
+#include <TDataStd_IntPackedMap.hxx>
+#endif
+#ifndef _TDataStd_DeltaOnModificationOfIntPackedMap_HeaderFile
+#include <TDataStd_DeltaOnModificationOfIntPackedMap.hxx>
+#endif

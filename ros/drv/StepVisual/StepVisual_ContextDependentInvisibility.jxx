@@ -1,0 +1,9 @@
+#ifndef _StepVisual_HArray1OfInvisibleItem_HeaderFile
+#include <StepVisual_HArray1OfInvisibleItem.hxx>
+#endif
+#ifndef _StepVisual_InvisibilityContext_HeaderFile
+#include <StepVisual_InvisibilityContext.hxx>
+#endif
+#ifndef _StepVisual_ContextDependentInvisibility_HeaderFile
+#include <StepVisual_ContextDependentInvisibility.hxx>
+#endif

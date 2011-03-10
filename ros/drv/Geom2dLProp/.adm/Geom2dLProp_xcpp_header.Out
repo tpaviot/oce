@@ -1,0 +1,17 @@
++M Geom2dLProp:pubinclude:Geom2dLProp_Curve2dTool.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_Curve2dTool.hxx
++M Geom2dLProp:privinclude:Geom2dLProp_Curve2dTool.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_Curve2dTool.jxx
++M Geom2dLProp:privinclude:Geom2dLProp_Curve2dTool.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_Curve2dTool.ixx
++M Geom2dLProp:pubinclude:Geom2dLProp_CLProps2d.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_CLProps2d.hxx
++M Geom2dLProp:derivated:Geom2dLProp_CLProps2d_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_CLProps2d_0.cxx
++M Geom2dLProp:pubinclude:Geom2dLProp_CurAndInf2d.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_CurAndInf2d.hxx
++M Geom2dLProp:privinclude:Geom2dLProp_CurAndInf2d.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_CurAndInf2d.jxx
++M Geom2dLProp:privinclude:Geom2dLProp_CurAndInf2d.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_CurAndInf2d.ixx
++M Geom2dLProp:pubinclude:Geom2dLProp_NumericCurInf2d.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_NumericCurInf2d.hxx
++M Geom2dLProp:derivated:Geom2dLProp_NumericCurInf2d_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_NumericCurInf2d_0.cxx
++M Geom2dLProp:pubinclude:Geom2dLProp_FCurExtOfNumericCurInf2d.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_FCurExtOfNumericCurInf2d.hxx
++M Geom2dLProp:derivated:Geom2dLProp_FCurExtOfNumericCurInf2d_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_FCurExtOfNumericCurInf2d_0.cxx
++M Geom2dLProp:pubinclude:Geom2dLProp_FCurNulOfNumericCurInf2d.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Geom2dLProp_FCurNulOfNumericCurInf2d.hxx
++M Geom2dLProp:derivated:Geom2dLProp_FCurNulOfNumericCurInf2d_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/Geom2dLProp_FCurNulOfNumericCurInf2d_0.cxx
++M Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/.adm/Geom2dLProp_xcpp_header.In
++M Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/.adm/Geom2dLProp_xcpp_header.Out
++M Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Geom2dLProp/.adm/Geom2dLProp_xcpp_header.Dep

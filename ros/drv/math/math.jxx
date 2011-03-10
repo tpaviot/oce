@@ -1,0 +1,6 @@
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _math_HeaderFile
+#include <math.hxx>
+#endif

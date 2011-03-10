@@ -1,0 +1,9 @@
+#ifndef _StepBasic_Document_HeaderFile
+#include <StepBasic_Document.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_DocumentUsageConstraint_HeaderFile
+#include <StepBasic_DocumentUsageConstraint.hxx>
+#endif

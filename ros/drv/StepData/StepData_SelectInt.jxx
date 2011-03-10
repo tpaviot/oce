@@ -1,0 +1,3 @@
+#ifndef _StepData_SelectInt_HeaderFile
+#include <StepData_SelectInt.hxx>
+#endif

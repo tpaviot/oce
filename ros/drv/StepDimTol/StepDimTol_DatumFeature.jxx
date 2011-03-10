@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_DatumFeature_HeaderFile
+#include <StepDimTol_DatumFeature.hxx>
+#endif

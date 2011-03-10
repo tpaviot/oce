@@ -1,0 +1,9 @@
+pubinclude ShapeProcessAPI_ApplySequence.hxx
+privinclude ShapeProcessAPI_ApplySequence.jxx
+privinclude ShapeProcessAPI_ApplySequence.ixx
+dbadmfile ShapeProcessAPI_xcpp_header.In
+dbadmfile ShapeProcessAPI_xcpp_header.Out
+dbadmfile ShapeProcessAPI_xcpp_header.Dep
+dbadmfile ShapeProcessAPI_obj_inc.In
+dbadmfile ShapeProcessAPI_obj_inc.Out
+dbadmfile ShapeProcessAPI_obj_inc.Dep

@@ -1,0 +1,3 @@
+#ifndef _StepBasic_TimeMeasureWithUnit_HeaderFile
+#include <StepBasic_TimeMeasureWithUnit.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _StepAP214_HArray1OfAutoDesignDateAndPersonItem_HeaderFile
+#include <StepAP214_HArray1OfAutoDesignDateAndPersonItem.hxx>
+#endif
+#ifndef _StepBasic_PersonAndOrganization_HeaderFile
+#include <StepBasic_PersonAndOrganization.hxx>
+#endif
+#ifndef _StepBasic_PersonAndOrganizationRole_HeaderFile
+#include <StepBasic_PersonAndOrganizationRole.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDateAndPersonItem_HeaderFile
+#include <StepAP214_AutoDesignDateAndPersonItem.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDateAndPersonAssignment_HeaderFile
+#include <StepAP214_AutoDesignDateAndPersonAssignment.hxx>
+#endif

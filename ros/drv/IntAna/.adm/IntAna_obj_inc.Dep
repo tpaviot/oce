@@ -1,0 +1,11 @@
++ IntAna:pubinclude:IntAna_QuadQuadGeo.lxx IntAna:source:IntAna_QuadQuadGeo.lxx
++ IntAna:pubinclude:IntAna_IntQuadQuad.lxx IntAna:source:IntAna_IntQuadQuad.lxx
++ IntAna:pubinclude:IntAna_Int3Pln.lxx IntAna:source:IntAna_Int3Pln.lxx
++ IntAna:pubinclude:IntAna_IntLinTorus.lxx IntAna:source:IntAna_IntLinTorus.lxx
++ IntAna:pubinclude:IntAna_IntConicQuad.lxx IntAna:source:IntAna_IntConicQuad.lxx
++ IntAna:dbadmfile:IntAna_obj_inc.In IntAna:admfile:IntAna_src.Out
++ * IntAna:admfile:IntAna_xcpp_src.Out
++ IntAna:dbadmfile:IntAna_obj_inc.Out IntAna:admfile:IntAna_src.Out
++ * IntAna:admfile:IntAna_xcpp_src.Out
++ IntAna:dbadmfile:IntAna_obj_inc.Dep IntAna:admfile:IntAna_src.Out
++ * IntAna:admfile:IntAna_xcpp_src.Out

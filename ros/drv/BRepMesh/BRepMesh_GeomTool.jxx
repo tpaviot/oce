@@ -1,0 +1,18 @@
+#ifndef _BRepAdaptor_Curve_HeaderFile
+#include <BRepAdaptor_Curve.hxx>
+#endif
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _BRepMesh_GeomTool_HeaderFile
+#include <BRepMesh_GeomTool.hxx>
+#endif

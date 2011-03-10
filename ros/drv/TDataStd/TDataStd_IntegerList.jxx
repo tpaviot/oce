@@ -1,0 +1,18 @@
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDataStd_IntegerList_HeaderFile
+#include <TDataStd_IntegerList.hxx>
+#endif

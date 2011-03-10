@@ -1,0 +1,9 @@
+#ifndef _BRepAdaptor_HSurface_HeaderFile
+#include <BRepAdaptor_HSurface.hxx>
+#endif
+#ifndef _VrmlConverter_Drawer_HeaderFile
+#include <VrmlConverter_Drawer.hxx>
+#endif
+#ifndef _VrmlConverter_WFRestrictedFace_HeaderFile
+#include <VrmlConverter_WFRestrictedFace.hxx>
+#endif

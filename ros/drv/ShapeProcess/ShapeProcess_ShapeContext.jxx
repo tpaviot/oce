@@ -1,0 +1,21 @@
+#ifndef _ShapeExtend_MsgRegistrator_HeaderFile
+#include <ShapeExtend_MsgRegistrator.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _ShapeBuild_ReShape_HeaderFile
+#include <ShapeBuild_ReShape.hxx>
+#endif
+#ifndef _BRepTools_Modifier_HeaderFile
+#include <BRepTools_Modifier.hxx>
+#endif
+#ifndef _Message_Msg_HeaderFile
+#include <Message_Msg.hxx>
+#endif
+#ifndef _ShapeProcess_ShapeContext_HeaderFile
+#include <ShapeProcess_ShapeContext.hxx>
+#endif

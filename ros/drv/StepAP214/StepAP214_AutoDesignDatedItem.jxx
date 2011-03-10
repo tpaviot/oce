@@ -1,0 +1,15 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_ApprovalPersonOrganization_HeaderFile
+#include <StepBasic_ApprovalPersonOrganization.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDateAndPersonAssignment_HeaderFile
+#include <StepAP214_AutoDesignDateAndPersonAssignment.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionEffectivity_HeaderFile
+#include <StepBasic_ProductDefinitionEffectivity.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignDatedItem_HeaderFile
+#include <StepAP214_AutoDesignDatedItem.hxx>
+#endif

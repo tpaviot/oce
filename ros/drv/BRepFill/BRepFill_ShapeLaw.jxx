@@ -1,0 +1,24 @@
+#ifndef _TopTools_HArray1OfShape_HeaderFile
+#include <TopTools_HArray1OfShape.hxx>
+#endif
+#ifndef _Law_Function_HeaderFile
+#include <Law_Function.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _GeomFill_SectionLaw_HeaderFile
+#include <GeomFill_SectionLaw.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _BRepFill_ShapeLaw_HeaderFile
+#include <BRepFill_ShapeLaw.hxx>
+#endif

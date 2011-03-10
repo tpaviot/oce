@@ -1,0 +1,9 @@
+#ifndef _XmlMDF_ADriverTable_HeaderFile
+#include <XmlMDF_ADriverTable.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _XmlMDocStd_HeaderFile
+#include <XmlMDocStd.hxx>
+#endif

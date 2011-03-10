@@ -1,0 +1,24 @@
+#ifndef _TColgp_Array2OfPnt_HeaderFile
+#include <TColgp_Array2OfPnt.hxx>
+#endif
+#ifndef _TColStd_Array2OfReal_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfReal_HeaderFile
+#include <TColStd_Array1OfReal.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _BSplSLib_HeaderFile
+#include <BSplSLib.hxx>
+#endif

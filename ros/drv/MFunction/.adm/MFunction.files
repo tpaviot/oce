@@ -1,0 +1,17 @@
+pubinclude MFunction.hxx
+privinclude MFunction.jxx
+privinclude MFunction.ixx
+pubinclude Handle_MFunction_FunctionStorageDriver.hxx
+pubinclude MFunction_FunctionStorageDriver.hxx
+privinclude MFunction_FunctionStorageDriver.jxx
+privinclude MFunction_FunctionStorageDriver.ixx
+pubinclude Handle_MFunction_FunctionRetrievalDriver.hxx
+pubinclude MFunction_FunctionRetrievalDriver.hxx
+privinclude MFunction_FunctionRetrievalDriver.jxx
+privinclude MFunction_FunctionRetrievalDriver.ixx
+dbadmfile MFunction_xcpp_header.In
+dbadmfile MFunction_xcpp_header.Out
+dbadmfile MFunction_xcpp_header.Dep
+dbadmfile MFunction_obj_inc.In
+dbadmfile MFunction_obj_inc.Out
+dbadmfile MFunction_obj_inc.Dep

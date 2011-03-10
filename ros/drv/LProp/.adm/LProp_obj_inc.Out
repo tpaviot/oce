@@ -1,0 +1,10 @@
++M LProp:pubinclude:LProp_CurveTool.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_CurveTool.gxx
++M LProp:pubinclude:LProp_SurfaceTool.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_SurfaceTool.gxx
++M LProp:pubinclude:LProp_CLProps.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_CLProps.gxx
++M LProp:pubinclude:LProp_SLProps.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_SLProps.gxx
++M LProp:pubinclude:LProp_FuncCurExt.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_FuncCurExt.gxx
++M LProp:pubinclude:LProp_FuncCurNul.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_FuncCurNul.gxx
++M LProp:pubinclude:LProp_NumericCurInf.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/LProp_NumericCurInf.gxx
++M LProp:dbadmfile:LProp_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/LProp/.adm/LProp_obj_inc.In
++M LProp:dbadmfile:LProp_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/LProp/.adm/LProp_obj_inc.Out
++M LProp:dbadmfile:LProp_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/LProp/.adm/LProp_obj_inc.Dep

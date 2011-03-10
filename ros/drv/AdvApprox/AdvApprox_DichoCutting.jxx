@@ -1,0 +1,3 @@
+#ifndef _AdvApprox_DichoCutting_HeaderFile
+#include <AdvApprox_DichoCutting.hxx>
+#endif

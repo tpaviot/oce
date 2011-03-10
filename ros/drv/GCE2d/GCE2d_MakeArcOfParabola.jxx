@@ -1,0 +1,15 @@
+#ifndef _Geom2d_TrimmedCurve_HeaderFile
+#include <Geom2d_TrimmedCurve.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Parab2d_HeaderFile
+#include <gp_Parab2d.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _GCE2d_MakeArcOfParabola_HeaderFile
+#include <GCE2d_MakeArcOfParabola.hxx>
+#endif

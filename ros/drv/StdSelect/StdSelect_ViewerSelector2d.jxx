@@ -1,0 +1,15 @@
+#ifndef _Select2D_Projector_HeaderFile
+#include <Select2D_Projector.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _SelectMgr_Selection_HeaderFile
+#include <SelectMgr_Selection.hxx>
+#endif
+#ifndef _V2d_View_HeaderFile
+#include <V2d_View.hxx>
+#endif
+#ifndef _StdSelect_ViewerSelector2d_HeaderFile
+#include <StdSelect_ViewerSelector2d.hxx>
+#endif

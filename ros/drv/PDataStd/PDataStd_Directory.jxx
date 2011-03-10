@@ -1,0 +1,3 @@
+#ifndef _PDataStd_Directory_HeaderFile
+#include <PDataStd_Directory.hxx>
+#endif

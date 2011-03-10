@@ -1,0 +1,6 @@
+#ifndef _IGESDimen_Protocol_HeaderFile
+#include <IGESDimen_Protocol.hxx>
+#endif
+#ifndef _IGESDimen_HeaderFile
+#include <IGESDimen.hxx>
+#endif

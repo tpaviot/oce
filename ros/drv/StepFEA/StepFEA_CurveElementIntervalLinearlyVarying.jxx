@@ -1,0 +1,12 @@
+#ifndef _StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile
+#include <StepElement_HArray1OfCurveElementSectionDefinition.hxx>
+#endif
+#ifndef _StepFEA_CurveElementLocation_HeaderFile
+#include <StepFEA_CurveElementLocation.hxx>
+#endif
+#ifndef _StepBasic_EulerAngles_HeaderFile
+#include <StepBasic_EulerAngles.hxx>
+#endif
+#ifndef _StepFEA_CurveElementIntervalLinearlyVarying_HeaderFile
+#include <StepFEA_CurveElementIntervalLinearlyVarying.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _SelectMgr_SelectableObject_HeaderFile
+#include <SelectMgr_SelectableObject.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _AIS_DimensionOwner_HeaderFile
+#include <AIS_DimensionOwner.hxx>
+#endif

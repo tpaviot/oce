@@ -1,0 +1,9 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _BRepBuilderAPI_MakeVertex_HeaderFile
+#include <BRepBuilderAPI_MakeVertex.hxx>
+#endif

@@ -1,0 +1,9 @@
+pubinclude TObjDRAW.hxx
+privinclude TObjDRAW.jxx
+privinclude TObjDRAW.ixx
+dbadmfile TObjDRAW_xcpp_header.In
+dbadmfile TObjDRAW_xcpp_header.Out
+dbadmfile TObjDRAW_xcpp_header.Dep
+dbadmfile TObjDRAW_obj_inc.In
+dbadmfile TObjDRAW_obj_inc.Out
+dbadmfile TObjDRAW_obj_inc.Dep

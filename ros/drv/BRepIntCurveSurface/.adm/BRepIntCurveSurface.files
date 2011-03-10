@@ -1,0 +1,9 @@
+pubinclude BRepIntCurveSurface_Inter.hxx
+privinclude BRepIntCurveSurface_Inter.jxx
+privinclude BRepIntCurveSurface_Inter.ixx
+dbadmfile BRepIntCurveSurface_xcpp_header.In
+dbadmfile BRepIntCurveSurface_xcpp_header.Out
+dbadmfile BRepIntCurveSurface_xcpp_header.Dep
+dbadmfile BRepIntCurveSurface_obj_inc.In
+dbadmfile BRepIntCurveSurface_obj_inc.Out
+dbadmfile BRepIntCurveSurface_obj_inc.Dep

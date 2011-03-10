@@ -1,0 +1,3 @@
+#ifndef _TopOpeBRep_Bipoint_HeaderFile
+#include <TopOpeBRep_Bipoint.hxx>
+#endif

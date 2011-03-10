@@ -1,0 +1,12 @@
+#ifndef _StepAP214_HArray1OfAutoDesignGroupedItem_HeaderFile
+#include <StepAP214_HArray1OfAutoDesignGroupedItem.hxx>
+#endif
+#ifndef _StepBasic_Group_HeaderFile
+#include <StepBasic_Group.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignGroupedItem_HeaderFile
+#include <StepAP214_AutoDesignGroupedItem.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignGroupAssignment_HeaderFile
+#include <StepAP214_AutoDesignGroupAssignment.hxx>
+#endif

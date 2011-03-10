@@ -1,0 +1,3 @@
+#ifndef _BRepOffset_Interval_HeaderFile
+#include <BRepOffset_Interval.hxx>
+#endif

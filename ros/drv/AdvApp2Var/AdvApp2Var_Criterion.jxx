@@ -1,0 +1,9 @@
+#ifndef _AdvApp2Var_Patch_HeaderFile
+#include <AdvApp2Var_Patch.hxx>
+#endif
+#ifndef _AdvApp2Var_Context_HeaderFile
+#include <AdvApp2Var_Context.hxx>
+#endif
+#ifndef _AdvApp2Var_Criterion_HeaderFile
+#include <AdvApp2Var_Criterion.hxx>
+#endif

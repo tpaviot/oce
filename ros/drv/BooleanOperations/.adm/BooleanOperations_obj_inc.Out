@@ -1,0 +1,6 @@
++M BooleanOperations:pubinclude:BooleanOperations_AncestorsAndSuccessors.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BooleanOperations_AncestorsAndSuccessors.lxx
++M BooleanOperations:pubinclude:BooleanOperations_ShapeAndInterferences.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BooleanOperations_ShapeAndInterferences.lxx
++M BooleanOperations:pubinclude:BooleanOperations_AncestorsSeqAndSuccessorsSeq.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BooleanOperations_AncestorsSeqAndSuccessorsSeq.lxx
++M BooleanOperations:dbadmfile:BooleanOperations_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BooleanOperations/.adm/BooleanOperations_obj_inc.In
++M BooleanOperations:dbadmfile:BooleanOperations_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BooleanOperations/.adm/BooleanOperations_obj_inc.Out
++M BooleanOperations:dbadmfile:BooleanOperations_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BooleanOperations/.adm/BooleanOperations_obj_inc.Dep

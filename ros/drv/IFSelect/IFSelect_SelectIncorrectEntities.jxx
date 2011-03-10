@@ -1,0 +1,3 @@
+#ifndef _IFSelect_SelectIncorrectEntities_HeaderFile
+#include <IFSelect_SelectIncorrectEntities.hxx>
+#endif

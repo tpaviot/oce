@@ -1,0 +1,6 @@
+#ifndef _PCollection_HExtendedString_HeaderFile
+#include <PCollection_HExtendedString.hxx>
+#endif
+#ifndef _PDataStd_Comment_HeaderFile
+#include <PDataStd_Comment.hxx>
+#endif

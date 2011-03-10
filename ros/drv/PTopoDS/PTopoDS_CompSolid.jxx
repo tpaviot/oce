@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_CompSolid_HeaderFile
+#include <PTopoDS_CompSolid.hxx>
+#endif

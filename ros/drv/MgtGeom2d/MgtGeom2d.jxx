@@ -1,0 +1,99 @@
+#ifndef _Geom2d_AxisPlacement_HeaderFile
+#include <Geom2d_AxisPlacement.hxx>
+#endif
+#ifndef _PGeom2d_AxisPlacement_HeaderFile
+#include <PGeom2d_AxisPlacement.hxx>
+#endif
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _PGeom2d_BSplineCurve_HeaderFile
+#include <PGeom2d_BSplineCurve.hxx>
+#endif
+#ifndef _Geom2d_BezierCurve_HeaderFile
+#include <Geom2d_BezierCurve.hxx>
+#endif
+#ifndef _PGeom2d_BezierCurve_HeaderFile
+#include <PGeom2d_BezierCurve.hxx>
+#endif
+#ifndef _Geom2d_CartesianPoint_HeaderFile
+#include <Geom2d_CartesianPoint.hxx>
+#endif
+#ifndef _PGeom2d_CartesianPoint_HeaderFile
+#include <PGeom2d_CartesianPoint.hxx>
+#endif
+#ifndef _Geom2d_Circle_HeaderFile
+#include <Geom2d_Circle.hxx>
+#endif
+#ifndef _PGeom2d_Circle_HeaderFile
+#include <PGeom2d_Circle.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _PGeom2d_Curve_HeaderFile
+#include <PGeom2d_Curve.hxx>
+#endif
+#ifndef _Geom2d_Direction_HeaderFile
+#include <Geom2d_Direction.hxx>
+#endif
+#ifndef _PGeom2d_Direction_HeaderFile
+#include <PGeom2d_Direction.hxx>
+#endif
+#ifndef _Geom2d_Ellipse_HeaderFile
+#include <Geom2d_Ellipse.hxx>
+#endif
+#ifndef _PGeom2d_Ellipse_HeaderFile
+#include <PGeom2d_Ellipse.hxx>
+#endif
+#ifndef _Geom2d_Hyperbola_HeaderFile
+#include <Geom2d_Hyperbola.hxx>
+#endif
+#ifndef _PGeom2d_Hyperbola_HeaderFile
+#include <PGeom2d_Hyperbola.hxx>
+#endif
+#ifndef _Geom2d_Line_HeaderFile
+#include <Geom2d_Line.hxx>
+#endif
+#ifndef _PGeom2d_Line_HeaderFile
+#include <PGeom2d_Line.hxx>
+#endif
+#ifndef _Geom2d_OffsetCurve_HeaderFile
+#include <Geom2d_OffsetCurve.hxx>
+#endif
+#ifndef _PGeom2d_OffsetCurve_HeaderFile
+#include <PGeom2d_OffsetCurve.hxx>
+#endif
+#ifndef _Geom2d_Parabola_HeaderFile
+#include <Geom2d_Parabola.hxx>
+#endif
+#ifndef _PGeom2d_Parabola_HeaderFile
+#include <PGeom2d_Parabola.hxx>
+#endif
+#ifndef _Geom2d_Point_HeaderFile
+#include <Geom2d_Point.hxx>
+#endif
+#ifndef _PGeom2d_Point_HeaderFile
+#include <PGeom2d_Point.hxx>
+#endif
+#ifndef _Geom2d_Transformation_HeaderFile
+#include <Geom2d_Transformation.hxx>
+#endif
+#ifndef _PGeom2d_Transformation_HeaderFile
+#include <PGeom2d_Transformation.hxx>
+#endif
+#ifndef _Geom2d_TrimmedCurve_HeaderFile
+#include <Geom2d_TrimmedCurve.hxx>
+#endif
+#ifndef _PGeom2d_TrimmedCurve_HeaderFile
+#include <PGeom2d_TrimmedCurve.hxx>
+#endif
+#ifndef _Geom2d_VectorWithMagnitude_HeaderFile
+#include <Geom2d_VectorWithMagnitude.hxx>
+#endif
+#ifndef _PGeom2d_VectorWithMagnitude_HeaderFile
+#include <PGeom2d_VectorWithMagnitude.hxx>
+#endif
+#ifndef _MgtGeom2d_HeaderFile
+#include <MgtGeom2d.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _Precision_HeaderFile
+#include <Precision.hxx>
+#endif

@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepElement_ElementDescriptor_HeaderFile
+#include <StepElement_ElementDescriptor.hxx>
+#endif

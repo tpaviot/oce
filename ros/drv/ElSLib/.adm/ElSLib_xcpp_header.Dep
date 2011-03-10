@@ -1,0 +1,6 @@
++ ElSLib:pubinclude:ElSLib.hxx ElSLib:msentity:ElSLib
++ ElSLib:privinclude:ElSLib.jxx ElSLib:msentity:ElSLib
++ ElSLib:privinclude:ElSLib.ixx ElSLib:msentity:ElSLib
++ ElSLib:dbadmfile:ElSLib_xcpp_header.In ElSLib:admfile:ElSLib_xcpp_fill.Out
++ ElSLib:dbadmfile:ElSLib_xcpp_header.Out ElSLib:admfile:ElSLib_xcpp_fill.Out
++ ElSLib:dbadmfile:ElSLib_xcpp_header.Dep ElSLib:admfile:ElSLib_xcpp_fill.Out

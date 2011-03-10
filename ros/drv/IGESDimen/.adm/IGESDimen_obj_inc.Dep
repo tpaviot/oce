@@ -1,0 +1,6 @@
++ IGESDimen:dbadmfile:IGESDimen_obj_inc.In IGESDimen:admfile:IGESDimen_src.Out
++ * IGESDimen:admfile:IGESDimen_xcpp_src.Out
++ IGESDimen:dbadmfile:IGESDimen_obj_inc.Out IGESDimen:admfile:IGESDimen_src.Out
++ * IGESDimen:admfile:IGESDimen_xcpp_src.Out
++ IGESDimen:dbadmfile:IGESDimen_obj_inc.Dep IGESDimen:admfile:IGESDimen_src.Out
++ * IGESDimen:admfile:IGESDimen_xcpp_src.Out

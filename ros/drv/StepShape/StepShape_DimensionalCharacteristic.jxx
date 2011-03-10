@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepShape_DimensionalLocation_HeaderFile
+#include <StepShape_DimensionalLocation.hxx>
+#endif
+#ifndef _StepShape_DimensionalSize_HeaderFile
+#include <StepShape_DimensionalSize.hxx>
+#endif
+#ifndef _StepShape_DimensionalCharacteristic_HeaderFile
+#include <StepShape_DimensionalCharacteristic.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepShape_SolidModel_HeaderFile
+#include <StepShape_SolidModel.hxx>
+#endif

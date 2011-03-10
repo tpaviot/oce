@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{AF67C5F6-09F9-17E3-0078-26E0936C1D61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\FWOSDriver">
+      <UniqueIdentifier>{24956E86-04F7-1286-0AC8-8FAAED57C8FF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver.cxx">
+      <Filter>Source files\FWOSDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver_Driver.cxx">
+      <Filter>Source files\FWOSDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\FWOSDriver\FWOSDriver_DriverFactory.cxx">
+      <Filter>Source files\FWOSDriver</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

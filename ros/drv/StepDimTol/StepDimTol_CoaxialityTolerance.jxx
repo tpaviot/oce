@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_CoaxialityTolerance_HeaderFile
+#include <StepDimTol_CoaxialityTolerance.hxx>
+#endif

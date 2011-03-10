@@ -1,0 +1,3 @@
+#ifndef _TopoDS_TEdge_HeaderFile
+#include <TopoDS_TEdge.hxx>
+#endif

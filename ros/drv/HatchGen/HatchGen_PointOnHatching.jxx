@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _IntRes2d_IntersectionPoint_HeaderFile
+#include <IntRes2d_IntersectionPoint.hxx>
+#endif
+#ifndef _HatchGen_PointOnElement_HeaderFile
+#include <HatchGen_PointOnElement.hxx>
+#endif
+#ifndef _HatchGen_PointOnHatching_HeaderFile
+#include <HatchGen_PointOnHatching.hxx>
+#endif

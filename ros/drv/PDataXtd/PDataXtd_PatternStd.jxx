@@ -1,0 +1,12 @@
+#ifndef _PNaming_NamedShape_HeaderFile
+#include <PNaming_NamedShape.hxx>
+#endif
+#ifndef _PDataStd_Real_HeaderFile
+#include <PDataStd_Real.hxx>
+#endif
+#ifndef _PDataStd_Integer_HeaderFile
+#include <PDataStd_Integer.hxx>
+#endif
+#ifndef _PDataXtd_PatternStd_HeaderFile
+#include <PDataXtd_PatternStd.hxx>
+#endif

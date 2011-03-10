@@ -1,0 +1,6 @@
++ PMMgt:dbadmfile:PMMgt_obj_inc.In PMMgt:admfile:PMMgt_src.Out
++ * PMMgt:admfile:PMMgt_xcpp_src.Out
++ PMMgt:dbadmfile:PMMgt_obj_inc.Out PMMgt:admfile:PMMgt_src.Out
++ * PMMgt:admfile:PMMgt_xcpp_src.Out
++ PMMgt:dbadmfile:PMMgt_obj_inc.Dep PMMgt:admfile:PMMgt_src.Out
++ * PMMgt:admfile:PMMgt_xcpp_src.Out

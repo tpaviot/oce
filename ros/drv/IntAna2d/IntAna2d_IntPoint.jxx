@@ -1,0 +1,9 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntAna2d_IntPoint_HeaderFile
+#include <IntAna2d_IntPoint.hxx>
+#endif

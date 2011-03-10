@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepRepr_Representation_HeaderFile
+#include <StepRepr_Representation.hxx>
+#endif
+#ifndef _StepRepr_RepresentationRelationship_HeaderFile
+#include <StepRepr_RepresentationRelationship.hxx>
+#endif

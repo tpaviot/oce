@@ -1,0 +1,9 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceModel_HeaderFile
+#include <Interface_InterfaceModel.hxx>
+#endif
+#ifndef _IGESSelect_IGESName_HeaderFile
+#include <IGESSelect_IGESName.hxx>
+#endif

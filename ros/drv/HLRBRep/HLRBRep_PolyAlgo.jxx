@@ -1,0 +1,42 @@
+#ifndef _HLRAlgo_PolyAlgo_HeaderFile
+#include <HLRAlgo_PolyAlgo.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _HLRAlgo_Projector_HeaderFile
+#include <HLRAlgo_Projector.hxx>
+#endif
+#ifndef _TColStd_Array1OfTransient_HeaderFile
+#include <TColStd_Array1OfTransient.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _HLRAlgo_ListOfBPoint_HeaderFile
+#include <HLRAlgo_ListOfBPoint.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _HLRAlgo_PolyInternalData_HeaderFile
+#include <HLRAlgo_PolyInternalData.hxx>
+#endif
+#ifndef _HLRAlgo_EdgeStatus_HeaderFile
+#include <HLRAlgo_EdgeStatus.hxx>
+#endif
+#ifndef _HLRBRep_PolyAlgo_HeaderFile
+#include <HLRBRep_PolyAlgo.hxx>
+#endif

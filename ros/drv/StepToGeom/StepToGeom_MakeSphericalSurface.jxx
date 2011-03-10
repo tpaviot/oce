@@ -1,0 +1,9 @@
+#ifndef _StepGeom_SphericalSurface_HeaderFile
+#include <StepGeom_SphericalSurface.hxx>
+#endif
+#ifndef _Geom_SphericalSurface_HeaderFile
+#include <Geom_SphericalSurface.hxx>
+#endif
+#ifndef _StepToGeom_MakeSphericalSurface_HeaderFile
+#include <StepToGeom_MakeSphericalSurface.hxx>
+#endif

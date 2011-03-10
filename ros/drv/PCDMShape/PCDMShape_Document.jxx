@@ -1,0 +1,6 @@
+#ifndef _PTopoDS_Shape1_HeaderFile
+#include <PTopoDS_Shape1.hxx>
+#endif
+#ifndef _PCDMShape_Document_HeaderFile
+#include <PCDMShape_Document.hxx>
+#endif

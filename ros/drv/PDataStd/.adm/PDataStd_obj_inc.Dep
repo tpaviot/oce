@@ -1,0 +1,6 @@
++ PDataStd:dbadmfile:PDataStd_obj_inc.In PDataStd:admfile:PDataStd_src.Out
++ * PDataStd:admfile:PDataStd_xcpp_src.Out
++ PDataStd:dbadmfile:PDataStd_obj_inc.Out PDataStd:admfile:PDataStd_src.Out
++ * PDataStd:admfile:PDataStd_xcpp_src.Out
++ PDataStd:dbadmfile:PDataStd_obj_inc.Dep PDataStd:admfile:PDataStd_src.Out
++ * PDataStd:admfile:PDataStd_xcpp_src.Out

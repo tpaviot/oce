@@ -1,0 +1,6 @@
+#ifndef _StepDimTol_Datum_HeaderFile
+#include <StepDimTol_Datum.hxx>
+#endif
+#ifndef _StepDimTol_DatumReference_HeaderFile
+#include <StepDimTol_DatumReference.hxx>
+#endif

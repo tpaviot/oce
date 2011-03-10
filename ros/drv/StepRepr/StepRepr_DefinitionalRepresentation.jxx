@@ -1,0 +1,3 @@
+#ifndef _StepRepr_DefinitionalRepresentation_HeaderFile
+#include <StepRepr_DefinitionalRepresentation.hxx>
+#endif

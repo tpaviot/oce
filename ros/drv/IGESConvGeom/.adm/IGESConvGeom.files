@@ -1,0 +1,12 @@
+pubinclude IGESConvGeom.hxx
+privinclude IGESConvGeom.jxx
+privinclude IGESConvGeom.ixx
+pubinclude IGESConvGeom_GeomBuilder.hxx
+privinclude IGESConvGeom_GeomBuilder.jxx
+privinclude IGESConvGeom_GeomBuilder.ixx
+dbadmfile IGESConvGeom_xcpp_header.In
+dbadmfile IGESConvGeom_xcpp_header.Out
+dbadmfile IGESConvGeom_xcpp_header.Dep
+dbadmfile IGESConvGeom_obj_inc.In
+dbadmfile IGESConvGeom_obj_inc.Out
+dbadmfile IGESConvGeom_obj_inc.Dep

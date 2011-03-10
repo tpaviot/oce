@@ -1,0 +1,7 @@
++ Plugin:pubinclude:Plugin_Macro.hxx Plugin:source:Plugin_Macro.hxx
++ Plugin:dbadmfile:Plugin_obj_inc.In Plugin:admfile:Plugin_src.Out
++ * Plugin:admfile:Plugin_xcpp_src.Out
++ Plugin:dbadmfile:Plugin_obj_inc.Out Plugin:admfile:Plugin_src.Out
++ * Plugin:admfile:Plugin_xcpp_src.Out
++ Plugin:dbadmfile:Plugin_obj_inc.Dep Plugin:admfile:Plugin_src.Out
++ * Plugin:admfile:Plugin_xcpp_src.Out

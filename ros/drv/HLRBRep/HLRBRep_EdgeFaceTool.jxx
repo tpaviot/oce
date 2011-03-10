@@ -1,0 +1,6 @@
+#ifndef _gp_Dir_HeaderFile
+#include <gp_Dir.hxx>
+#endif
+#ifndef _HLRBRep_EdgeFaceTool_HeaderFile
+#include <HLRBRep_EdgeFaceTool.hxx>
+#endif

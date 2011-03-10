@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
+#include <TopOpeBRepBuild_HBuilder.hxx>
+#endif
+#ifndef _BRepAlgo_DSAccess_HeaderFile
+#include <BRepAlgo_DSAccess.hxx>
+#endif
+#ifndef _BRepAlgo_BooleanOperations_HeaderFile
+#include <BRepAlgo_BooleanOperations.hxx>
+#endif

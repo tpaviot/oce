@@ -1,0 +1,27 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
+#include <TopOpeBRepDS_HDataStructure.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TopOpeBRep_ShapeIntersector_HeaderFile
+#include <TopOpeBRep_ShapeIntersector.hxx>
+#endif
+#ifndef _TopOpeBRep_ShapeIntersector2d_HeaderFile
+#include <TopOpeBRep_ShapeIntersector2d.hxx>
+#endif
+#ifndef _TopOpeBRep_FacesFiller_HeaderFile
+#include <TopOpeBRep_FacesFiller.hxx>
+#endif
+#ifndef _TopOpeBRep_EdgesFiller_HeaderFile
+#include <TopOpeBRep_EdgesFiller.hxx>
+#endif
+#ifndef _TopOpeBRep_FaceEdgeFiller_HeaderFile
+#include <TopOpeBRep_FaceEdgeFiller.hxx>
+#endif
+#ifndef _TopOpeBRep_DSFiller_HeaderFile
+#include <TopOpeBRep_DSFiller.hxx>
+#endif

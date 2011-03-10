@@ -1,0 +1,12 @@
++ GraphDS:pubinclude:GraphDS_EntityRoleMap.hxx GraphDS:msentity:GraphDS_EntityRoleMap
++ GraphDS:derivated:GraphDS_EntityRoleMap_0.cxx GraphDS:msentity:GraphDS_EntityRoleMap
++ GraphDS:pubinclude:Handle_GraphDS_DataMapNodeOfEntityRoleMap.hxx GraphDS:msentity:GraphDS_DataMapNodeOfEntityRoleMap
++ GraphDS:pubinclude:GraphDS_DataMapNodeOfEntityRoleMap.hxx GraphDS:msentity:GraphDS_DataMapNodeOfEntityRoleMap
++ GraphDS:derivated:GraphDS_DataMapNodeOfEntityRoleMap_0.cxx GraphDS:msentity:GraphDS_DataMapNodeOfEntityRoleMap
++ GraphDS:pubinclude:GraphDS_DataMapIteratorOfEntityRoleMap.hxx GraphDS:msentity:GraphDS_DataMapIteratorOfEntityRoleMap
++ GraphDS:derivated:GraphDS_DataMapIteratorOfEntityRoleMap_0.cxx GraphDS:msentity:GraphDS_DataMapIteratorOfEntityRoleMap
++ GraphDS:pubinclude:GraphDS_EntityRole.hxx GraphDS:msentity:GraphDS_EntityRole
++ GraphDS:pubinclude:GraphDS_RelationRole.hxx GraphDS:msentity:GraphDS_RelationRole
++ GraphDS:dbadmfile:GraphDS_xcpp_header.In GraphDS:admfile:GraphDS_xcpp_fill.Out
++ GraphDS:dbadmfile:GraphDS_xcpp_header.Out GraphDS:admfile:GraphDS_xcpp_fill.Out
++ GraphDS:dbadmfile:GraphDS_xcpp_header.Dep GraphDS:admfile:GraphDS_xcpp_fill.Out

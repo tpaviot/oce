@@ -1,0 +1,7 @@
++ XSDRAW:pubinclude:XSDRAW_Commands.hxx XSDRAW:source:XSDRAW_Commands.hxx
++ XSDRAW:dbadmfile:XSDRAW_obj_inc.In XSDRAW:admfile:XSDRAW_src.Out
++ * XSDRAW:admfile:XSDRAW_xcpp_src.Out
++ XSDRAW:dbadmfile:XSDRAW_obj_inc.Out XSDRAW:admfile:XSDRAW_src.Out
++ * XSDRAW:admfile:XSDRAW_xcpp_src.Out
++ XSDRAW:dbadmfile:XSDRAW_obj_inc.Dep XSDRAW:admfile:XSDRAW_src.Out
++ * XSDRAW:admfile:XSDRAW_xcpp_src.Out

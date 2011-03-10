@@ -1,0 +1,6 @@
++ PTopoDS:dbadmfile:PTopoDS_obj_inc.In PTopoDS:admfile:PTopoDS_src.Out
++ * PTopoDS:admfile:PTopoDS_xcpp_src.Out
++ PTopoDS:dbadmfile:PTopoDS_obj_inc.Out PTopoDS:admfile:PTopoDS_src.Out
++ * PTopoDS:admfile:PTopoDS_xcpp_src.Out
++ PTopoDS:dbadmfile:PTopoDS_obj_inc.Dep PTopoDS:admfile:PTopoDS_src.Out
++ * PTopoDS:admfile:PTopoDS_xcpp_src.Out

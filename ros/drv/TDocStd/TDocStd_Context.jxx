@@ -1,0 +1,3 @@
+#ifndef _TDocStd_Context_HeaderFile
+#include <TDocStd_Context.hxx>
+#endif

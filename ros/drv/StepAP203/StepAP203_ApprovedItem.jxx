@@ -1,0 +1,39 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
+#include <StepBasic_ProductDefinitionFormation.hxx>
+#endif
+#ifndef _StepBasic_ProductDefinition_HeaderFile
+#include <StepBasic_ProductDefinition.hxx>
+#endif
+#ifndef _StepRepr_ConfigurationEffectivity_HeaderFile
+#include <StepRepr_ConfigurationEffectivity.hxx>
+#endif
+#ifndef _StepRepr_ConfigurationItem_HeaderFile
+#include <StepRepr_ConfigurationItem.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassification_HeaderFile
+#include <StepBasic_SecurityClassification.hxx>
+#endif
+#ifndef _StepAP203_ChangeRequest_HeaderFile
+#include <StepAP203_ChangeRequest.hxx>
+#endif
+#ifndef _StepAP203_Change_HeaderFile
+#include <StepAP203_Change.hxx>
+#endif
+#ifndef _StepAP203_StartRequest_HeaderFile
+#include <StepAP203_StartRequest.hxx>
+#endif
+#ifndef _StepAP203_StartWork_HeaderFile
+#include <StepAP203_StartWork.hxx>
+#endif
+#ifndef _StepBasic_Certification_HeaderFile
+#include <StepBasic_Certification.hxx>
+#endif
+#ifndef _StepBasic_Contract_HeaderFile
+#include <StepBasic_Contract.hxx>
+#endif
+#ifndef _StepAP203_ApprovedItem_HeaderFile
+#include <StepAP203_ApprovedItem.hxx>
+#endif

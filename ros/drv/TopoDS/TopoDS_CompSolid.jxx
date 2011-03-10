@@ -1,0 +1,3 @@
+#ifndef _TopoDS_CompSolid_HeaderFile
+#include <TopoDS_CompSolid.hxx>
+#endif

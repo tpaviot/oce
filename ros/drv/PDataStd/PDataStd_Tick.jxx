@@ -1,0 +1,3 @@
+#ifndef _PDataStd_Tick_HeaderFile
+#include <PDataStd_Tick.hxx>
+#endif

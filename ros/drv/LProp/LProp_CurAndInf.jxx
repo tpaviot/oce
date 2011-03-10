@@ -1,0 +1,6 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _LProp_CurAndInf_HeaderFile
+#include <LProp_CurAndInf.hxx>
+#endif

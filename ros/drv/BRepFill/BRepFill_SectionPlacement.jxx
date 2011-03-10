@@ -1,0 +1,12 @@
+#ifndef _BRepFill_LocationLaw_HeaderFile
+#include <BRepFill_LocationLaw.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _gp_Trsf_HeaderFile
+#include <gp_Trsf.hxx>
+#endif
+#ifndef _BRepFill_SectionPlacement_HeaderFile
+#include <BRepFill_SectionPlacement.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _Resource_NoSuchResource_HeaderFile
+#include <Resource_NoSuchResource.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Resource_DataMapOfAsciiStringAsciiString_HeaderFile
+#include <Resource_DataMapOfAsciiStringAsciiString.hxx>
+#endif
+#ifndef _Resource_Manager_HeaderFile
+#include <Resource_Manager.hxx>
+#endif

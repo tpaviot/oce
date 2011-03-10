@@ -1,0 +1,16 @@
+pubinclude ApproxInt_SvSurfaces.hxx
+privinclude ApproxInt_SvSurfaces.jxx
+privinclude ApproxInt_SvSurfaces.ixx
+dbadmfile ApproxInt_xcpp_header.In
+dbadmfile ApproxInt_xcpp_header.Out
+dbadmfile ApproxInt_xcpp_header.Dep
+pubinclude ApproxInt_MultiLineTool.gxx
+pubinclude ApproxInt_WLine.gxx
+pubinclude ApproxInt_PrmPrmSvSurfaces.gxx
+pubinclude ApproxInt_ImpPrmSvSurfaces.gxx
+pubinclude ApproxInt_MultiLine.gxx
+pubinclude ApproxInt_MultiLineTool.lxx
+pubinclude ApproxInt_Approx.gxx
+dbadmfile ApproxInt_obj_inc.In
+dbadmfile ApproxInt_obj_inc.Out
+dbadmfile ApproxInt_obj_inc.Dep

@@ -1,0 +1,17 @@
++ Geom2dLProp:pubinclude:Geom2dLProp_Curve2dTool.hxx Geom2dLProp:msentity:Geom2dLProp_Curve2dTool
++ Geom2dLProp:privinclude:Geom2dLProp_Curve2dTool.jxx Geom2dLProp:msentity:Geom2dLProp_Curve2dTool
++ Geom2dLProp:privinclude:Geom2dLProp_Curve2dTool.ixx Geom2dLProp:msentity:Geom2dLProp_Curve2dTool
++ Geom2dLProp:pubinclude:Geom2dLProp_CLProps2d.hxx Geom2dLProp:msentity:Geom2dLProp_CLProps2d
++ Geom2dLProp:derivated:Geom2dLProp_CLProps2d_0.cxx Geom2dLProp:msentity:Geom2dLProp_CLProps2d
++ Geom2dLProp:pubinclude:Geom2dLProp_CurAndInf2d.hxx Geom2dLProp:msentity:Geom2dLProp_CurAndInf2d
++ Geom2dLProp:privinclude:Geom2dLProp_CurAndInf2d.jxx Geom2dLProp:msentity:Geom2dLProp_CurAndInf2d
++ Geom2dLProp:privinclude:Geom2dLProp_CurAndInf2d.ixx Geom2dLProp:msentity:Geom2dLProp_CurAndInf2d
++ Geom2dLProp:pubinclude:Geom2dLProp_NumericCurInf2d.hxx Geom2dLProp:msentity:Geom2dLProp_NumericCurInf2d
++ Geom2dLProp:derivated:Geom2dLProp_NumericCurInf2d_0.cxx Geom2dLProp:msentity:Geom2dLProp_NumericCurInf2d
++ Geom2dLProp:pubinclude:Geom2dLProp_FCurExtOfNumericCurInf2d.hxx Geom2dLProp:msentity:Geom2dLProp_FCurExtOfNumericCurInf2d
++ Geom2dLProp:derivated:Geom2dLProp_FCurExtOfNumericCurInf2d_0.cxx Geom2dLProp:msentity:Geom2dLProp_FCurExtOfNumericCurInf2d
++ Geom2dLProp:pubinclude:Geom2dLProp_FCurNulOfNumericCurInf2d.hxx Geom2dLProp:msentity:Geom2dLProp_FCurNulOfNumericCurInf2d
++ Geom2dLProp:derivated:Geom2dLProp_FCurNulOfNumericCurInf2d_0.cxx Geom2dLProp:msentity:Geom2dLProp_FCurNulOfNumericCurInf2d
++ Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.In Geom2dLProp:admfile:Geom2dLProp_xcpp_fill.Out
++ Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.Out Geom2dLProp:admfile:Geom2dLProp_xcpp_fill.Out
++ Geom2dLProp:dbadmfile:Geom2dLProp_xcpp_header.Dep Geom2dLProp:admfile:Geom2dLProp_xcpp_fill.Out

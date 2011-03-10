@@ -1,0 +1,12 @@
+#ifndef _TColgp_HArray1OfXYZ_HeaderFile
+#include <TColgp_HArray1OfXYZ.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _IGESSolid_VertexList_HeaderFile
+#include <IGESSolid_VertexList.hxx>
+#endif

@@ -1,0 +1,6 @@
++ MgtPoly:pubinclude:MgtPoly.hxx MgtPoly:msentity:MgtPoly
++ MgtPoly:privinclude:MgtPoly.jxx MgtPoly:msentity:MgtPoly
++ MgtPoly:privinclude:MgtPoly.ixx MgtPoly:msentity:MgtPoly
++ MgtPoly:dbadmfile:MgtPoly_xcpp_header.In MgtPoly:admfile:MgtPoly_xcpp_fill.Out
++ MgtPoly:dbadmfile:MgtPoly_xcpp_header.Out MgtPoly:admfile:MgtPoly_xcpp_fill.Out
++ MgtPoly:dbadmfile:MgtPoly_xcpp_header.Dep MgtPoly:admfile:MgtPoly_xcpp_fill.Out

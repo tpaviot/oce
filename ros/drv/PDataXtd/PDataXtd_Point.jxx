@@ -1,0 +1,3 @@
+#ifndef _PDataXtd_Point_HeaderFile
+#include <PDataXtd_Point.hxx>
+#endif

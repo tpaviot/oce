@@ -1,0 +1,15 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepBasic_Person_HeaderFile
+#include <StepBasic_Person.hxx>
+#endif
+#ifndef _StepBasic_Organization_HeaderFile
+#include <StepBasic_Organization.hxx>
+#endif
+#ifndef _StepBasic_PersonAndOrganization_HeaderFile
+#include <StepBasic_PersonAndOrganization.hxx>
+#endif
+#ifndef _StepBasic_PersonOrganizationSelect_HeaderFile
+#include <StepBasic_PersonOrganizationSelect.hxx>
+#endif

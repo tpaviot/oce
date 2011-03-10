@@ -1,0 +1,6 @@
+#ifndef _TopOpeBRepBuild_GTopo_HeaderFile
+#include <TopOpeBRepBuild_GTopo.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_GIter_HeaderFile
+#include <TopOpeBRepBuild_GIter.hxx>
+#endif

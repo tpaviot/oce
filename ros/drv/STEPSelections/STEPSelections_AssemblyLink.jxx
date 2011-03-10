@@ -1,0 +1,12 @@
+#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
+#include <StepRepr_NextAssemblyUsageOccurrence.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _STEPSelections_AssemblyComponent_HeaderFile
+#include <STEPSelections_AssemblyComponent.hxx>
+#endif
+#ifndef _STEPSelections_AssemblyLink_HeaderFile
+#include <STEPSelections_AssemblyLink.hxx>
+#endif

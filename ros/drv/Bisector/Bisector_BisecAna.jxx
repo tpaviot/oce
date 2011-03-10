@@ -1,0 +1,33 @@
+#ifndef _Geom2d_TrimmedCurve_HeaderFile
+#include <Geom2d_TrimmedCurve.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _Geom2d_Point_HeaderFile
+#include <Geom2d_Point.hxx>
+#endif
+#ifndef _GccInt_Bisec_HeaderFile
+#include <GccInt_Bisec.hxx>
+#endif
+#ifndef _Geom2d_Geometry_HeaderFile
+#include <Geom2d_Geometry.hxx>
+#endif
+#ifndef _gp_Trsf2d_HeaderFile
+#include <gp_Trsf2d.hxx>
+#endif
+#ifndef _Bisector_BisecAna_HeaderFile
+#include <Bisector_BisecAna.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _GeomTools_Curve2dSet_HeaderFile
+#include <GeomTools_Curve2dSet.hxx>
+#endif

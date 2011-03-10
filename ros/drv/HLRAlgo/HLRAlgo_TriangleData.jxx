@@ -1,0 +1,3 @@
+#ifndef _HLRAlgo_TriangleData_HeaderFile
+#include <HLRAlgo_TriangleData.hxx>
+#endif

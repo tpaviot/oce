@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _IGESAppli_ReferenceDesignator_HeaderFile
+#include <IGESAppli_ReferenceDesignator.hxx>
+#endif

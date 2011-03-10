@@ -1,0 +1,21 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Voxel_BoolDS_HeaderFile
+#include <Voxel_BoolDS.hxx>
+#endif
+#ifndef _Voxel_ColorDS_HeaderFile
+#include <Voxel_ColorDS.hxx>
+#endif
+#ifndef _Voxel_ROctBoolDS_HeaderFile
+#include <Voxel_ROctBoolDS.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Pln_HeaderFile
+#include <gp_Pln.hxx>
+#endif
+#ifndef _Voxel_FastConverter_HeaderFile
+#include <Voxel_FastConverter.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _StdFail_InfiniteSolutions_HeaderFile
+#include <StdFail_InfiniteSolutions.hxx>
+#endif
+#ifndef _math_DirectPolynomialRoots_HeaderFile
+#include <math_DirectPolynomialRoots.hxx>
+#endif

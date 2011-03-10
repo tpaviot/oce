@@ -1,0 +1,27 @@
+#ifndef _Standard_NegativeValue_HeaderFile
+#include <Standard_NegativeValue.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _GccEnt_BadQualifier_HeaderFile
+#include <GccEnt_BadQualifier.hxx>
+#endif
+#ifndef _GccEnt_QualifiedCirc_HeaderFile
+#include <GccEnt_QualifiedCirc.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _gp_Circ2d_HeaderFile
+#include <gp_Circ2d.hxx>
+#endif
+#ifndef _GccAna_Circ2dTanCen_HeaderFile
+#include <GccAna_Circ2dTanCen.hxx>
+#endif

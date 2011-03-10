@@ -1,0 +1,12 @@
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _BinObjMgt_Persistent_HeaderFile
+#include <BinObjMgt_Persistent.hxx>
+#endif
+#ifndef _BinMPrsStd_AISPresentationDriver_HeaderFile
+#include <BinMPrsStd_AISPresentationDriver.hxx>
+#endif

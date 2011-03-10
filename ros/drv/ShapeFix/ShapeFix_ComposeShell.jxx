@@ -1,0 +1,42 @@
+#ifndef _ShapeExtend_CompositeSurface_HeaderFile
+#include <ShapeExtend_CompositeSurface.hxx>
+#endif
+#ifndef _ShapeAnalysis_TransferParameters_HeaderFile
+#include <ShapeAnalysis_TransferParameters.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _ShapeFix_SequenceOfWireSegment_HeaderFile
+#include <ShapeFix_SequenceOfWireSegment.hxx>
+#endif
+#ifndef _ShapeExtend_WireData_HeaderFile
+#include <ShapeExtend_WireData.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _ShapeFix_WireSegment_HeaderFile
+#include <ShapeFix_WireSegment.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
+#ifndef _TColStd_SequenceOfReal_HeaderFile
+#include <TColStd_SequenceOfReal.hxx>
+#endif
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _Geom_Surface_HeaderFile
+#include <Geom_Surface.hxx>
+#endif
+#ifndef _ShapeFix_ComposeShell_HeaderFile
+#include <ShapeFix_ComposeShell.hxx>
+#endif

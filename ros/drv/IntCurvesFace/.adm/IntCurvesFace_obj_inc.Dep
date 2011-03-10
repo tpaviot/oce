@@ -1,0 +1,8 @@
++ IntCurvesFace:pubinclude:IntCurvesFace_Intersector.lxx IntCurvesFace:source:IntCurvesFace_Intersector.lxx
++ IntCurvesFace:pubinclude:IntCurvesFace_ShapeIntersector.lxx IntCurvesFace:source:IntCurvesFace_ShapeIntersector.lxx
++ IntCurvesFace:dbadmfile:IntCurvesFace_obj_inc.In IntCurvesFace:admfile:IntCurvesFace_src.Out
++ * IntCurvesFace:admfile:IntCurvesFace_xcpp_src.Out
++ IntCurvesFace:dbadmfile:IntCurvesFace_obj_inc.Out IntCurvesFace:admfile:IntCurvesFace_src.Out
++ * IntCurvesFace:admfile:IntCurvesFace_xcpp_src.Out
++ IntCurvesFace:dbadmfile:IntCurvesFace_obj_inc.Dep IntCurvesFace:admfile:IntCurvesFace_src.Out
++ * IntCurvesFace:admfile:IntCurvesFace_xcpp_src.Out

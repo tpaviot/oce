@@ -1,0 +1,6 @@
+#ifndef _StepBasic_Action_HeaderFile
+#include <StepBasic_Action.hxx>
+#endif
+#ifndef _StepBasic_ActionAssignment_HeaderFile
+#include <StepBasic_ActionAssignment.hxx>
+#endif

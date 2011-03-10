@@ -1,0 +1,9 @@
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _Vrml_SFRotation_HeaderFile
+#include <Vrml_SFRotation.hxx>
+#endif
+#ifndef _Vrml_Transform_HeaderFile
+#include <Vrml_Transform.hxx>
+#endif

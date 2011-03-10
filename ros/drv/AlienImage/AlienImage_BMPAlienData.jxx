@@ -1,0 +1,24 @@
+#ifndef _Aspect_GenericColorMap_HeaderFile
+#include <Aspect_GenericColorMap.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _Image_PseudoColorImage_HeaderFile
+#include <Image_PseudoColorImage.hxx>
+#endif
+#ifndef _Image_ColorImage_HeaderFile
+#include <Image_ColorImage.hxx>
+#endif
+#ifndef _AlienImage_BMPAlienData_HeaderFile
+#include <AlienImage_BMPAlienData.hxx>
+#endif

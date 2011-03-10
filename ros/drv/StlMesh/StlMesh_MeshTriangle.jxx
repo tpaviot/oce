@@ -1,0 +1,6 @@
+#ifndef _Standard_NegativeValue_HeaderFile
+#include <Standard_NegativeValue.hxx>
+#endif
+#ifndef _StlMesh_MeshTriangle_HeaderFile
+#include <StlMesh_MeshTriangle.hxx>
+#endif

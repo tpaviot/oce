@@ -1,0 +1,3 @@
+#ifndef _AIS2D_GlobalStatus_HeaderFile
+#include <AIS2D_GlobalStatus.hxx>
+#endif

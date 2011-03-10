@@ -1,0 +1,3 @@
+#ifndef _TCollection_MapNode_HeaderFile
+#include <TCollection_MapNode.hxx>
+#endif

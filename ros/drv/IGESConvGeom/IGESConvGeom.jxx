@@ -1,0 +1,18 @@
+#ifndef _IGESGeom_SplineCurve_HeaderFile
+#include <IGESGeom_SplineCurve.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _Geom2d_BSplineCurve_HeaderFile
+#include <Geom2d_BSplineCurve.hxx>
+#endif
+#ifndef _IGESGeom_SplineSurface_HeaderFile
+#include <IGESGeom_SplineSurface.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _IGESConvGeom_HeaderFile
+#include <IGESConvGeom.hxx>
+#endif

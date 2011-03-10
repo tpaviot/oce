@@ -1,0 +1,9 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _IFSelect_SessionPilot_HeaderFile
+#include <IFSelect_SessionPilot.hxx>
+#endif
+#ifndef _IFSelect_Act_HeaderFile
+#include <IFSelect_Act.hxx>
+#endif

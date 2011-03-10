@@ -1,0 +1,3 @@
+#ifndef _Voxel_BoolDS_HeaderFile
+#include <Voxel_BoolDS.hxx>
+#endif

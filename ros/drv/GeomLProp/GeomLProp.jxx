@@ -1,0 +1,6 @@
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _GeomLProp_HeaderFile
+#include <GeomLProp.hxx>
+#endif

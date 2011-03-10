@@ -1,0 +1,9 @@
++ BooleanOperations:pubinclude:BooleanOperations_AncestorsAndSuccessors.lxx BooleanOperations:source:BooleanOperations_AncestorsAndSuccessors.lxx
++ BooleanOperations:pubinclude:BooleanOperations_ShapeAndInterferences.lxx BooleanOperations:source:BooleanOperations_ShapeAndInterferences.lxx
++ BooleanOperations:pubinclude:BooleanOperations_AncestorsSeqAndSuccessorsSeq.lxx BooleanOperations:source:BooleanOperations_AncestorsSeqAndSuccessorsSeq.lxx
++ BooleanOperations:dbadmfile:BooleanOperations_obj_inc.In BooleanOperations:admfile:BooleanOperations_src.Out
++ * BooleanOperations:admfile:BooleanOperations_xcpp_src.Out
++ BooleanOperations:dbadmfile:BooleanOperations_obj_inc.Out BooleanOperations:admfile:BooleanOperations_src.Out
++ * BooleanOperations:admfile:BooleanOperations_xcpp_src.Out
++ BooleanOperations:dbadmfile:BooleanOperations_obj_inc.Dep BooleanOperations:admfile:BooleanOperations_src.Out
++ * BooleanOperations:admfile:BooleanOperations_xcpp_src.Out

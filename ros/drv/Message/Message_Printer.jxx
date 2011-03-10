@@ -1,0 +1,9 @@
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Message_Printer_HeaderFile
+#include <Message_Printer.hxx>
+#endif

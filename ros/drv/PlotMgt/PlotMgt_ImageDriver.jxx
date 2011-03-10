@@ -1,0 +1,6 @@
+#ifndef _PlotMgt_Plotter_HeaderFile
+#include <PlotMgt_Plotter.hxx>
+#endif
+#ifndef _PlotMgt_ImageDriver_HeaderFile
+#include <PlotMgt_ImageDriver.hxx>
+#endif

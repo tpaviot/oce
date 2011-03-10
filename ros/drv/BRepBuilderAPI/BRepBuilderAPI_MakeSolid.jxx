@@ -1,0 +1,18 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _TopoDS_CompSolid_HeaderFile
+#include <TopoDS_CompSolid.hxx>
+#endif
+#ifndef _TopoDS_Shell_HeaderFile
+#include <TopoDS_Shell.hxx>
+#endif
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepBuilderAPI_MakeSolid_HeaderFile
+#include <BRepBuilderAPI_MakeSolid.hxx>
+#endif

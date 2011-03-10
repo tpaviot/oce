@@ -1,0 +1,10 @@
++ GeomAdaptor:pubinclude:GeomAdaptor_Curve.lxx GeomAdaptor:source:GeomAdaptor_Curve.lxx
++ GeomAdaptor:pubinclude:GeomAdaptor_Surface.lxx GeomAdaptor:source:GeomAdaptor_Surface.lxx
++ GeomAdaptor:pubinclude:GeomAdaptor_HSurface.lxx GeomAdaptor:source:GeomAdaptor_HSurface.lxx
++ GeomAdaptor:pubinclude:GeomAdaptor_HCurve.lxx GeomAdaptor:source:GeomAdaptor_HCurve.lxx
++ GeomAdaptor:dbadmfile:GeomAdaptor_obj_inc.In GeomAdaptor:admfile:GeomAdaptor_src.Out
++ * GeomAdaptor:admfile:GeomAdaptor_xcpp_src.Out
++ GeomAdaptor:dbadmfile:GeomAdaptor_obj_inc.Out GeomAdaptor:admfile:GeomAdaptor_src.Out
++ * GeomAdaptor:admfile:GeomAdaptor_xcpp_src.Out
++ GeomAdaptor:dbadmfile:GeomAdaptor_obj_inc.Dep GeomAdaptor:admfile:GeomAdaptor_src.Out
++ * GeomAdaptor:admfile:GeomAdaptor_xcpp_src.Out

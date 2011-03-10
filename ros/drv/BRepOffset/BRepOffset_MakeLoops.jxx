@@ -1,0 +1,15 @@
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _BRepAlgo_AsDes_HeaderFile
+#include <BRepAlgo_AsDes.hxx>
+#endif
+#ifndef _BRepAlgo_Image_HeaderFile
+#include <BRepAlgo_Image.hxx>
+#endif
+#ifndef _BRepOffset_Analyse_HeaderFile
+#include <BRepOffset_Analyse.hxx>
+#endif
+#ifndef _BRepOffset_MakeLoops_HeaderFile
+#include <BRepOffset_MakeLoops.hxx>
+#endif

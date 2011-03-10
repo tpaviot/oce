@@ -1,0 +1,12 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
+#include <BRepBuilderAPI_MakeShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
+#include <TopTools_DataMapOfShapeListOfShape.hxx>
+#endif
+#ifndef _BRepBuilderAPI_Collect_HeaderFile
+#include <BRepBuilderAPI_Collect.hxx>
+#endif

@@ -1,0 +1,21 @@
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TColStd_MapOfInteger_HeaderFile
+#include <TColStd_MapOfInteger.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDF_DataSet_HeaderFile
+#include <TDF_DataSet.hxx>
+#endif
+#ifndef _TFunction_GraphNode_HeaderFile
+#include <TFunction_GraphNode.hxx>
+#endif

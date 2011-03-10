@@ -1,0 +1,3 @@
+#ifndef _StepFEA_SymmetricTensor43dMember_HeaderFile
+#include <StepFEA_SymmetricTensor43dMember.hxx>
+#endif

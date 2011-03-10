@@ -1,0 +1,12 @@
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Aspect_FontMapEntry_HeaderFile
+#include <Aspect_FontMapEntry.hxx>
+#endif
+#ifndef _Aspect_FontStyle_HeaderFile
+#include <Aspect_FontStyle.hxx>
+#endif
+#ifndef _Aspect_FontMap_HeaderFile
+#include <Aspect_FontMap.hxx>
+#endif

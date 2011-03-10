@@ -1,0 +1,15 @@
+#ifndef _VrmlConverter_IsoAspect_HeaderFile
+#include <VrmlConverter_IsoAspect.hxx>
+#endif
+#ifndef _VrmlConverter_LineAspect_HeaderFile
+#include <VrmlConverter_LineAspect.hxx>
+#endif
+#ifndef _VrmlConverter_ShadingAspect_HeaderFile
+#include <VrmlConverter_ShadingAspect.hxx>
+#endif
+#ifndef _VrmlConverter_PointAspect_HeaderFile
+#include <VrmlConverter_PointAspect.hxx>
+#endif
+#ifndef _VrmlConverter_Drawer_HeaderFile
+#include <VrmlConverter_Drawer.hxx>
+#endif

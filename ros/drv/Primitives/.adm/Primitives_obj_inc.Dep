@@ -1,0 +1,9 @@
++ Primitives:pubinclude:Primitives_Builder.gxx Primitives:source:Primitives_Builder.gxx
++ Primitives:pubinclude:Primitives_OneAxis.gxx Primitives:source:Primitives_OneAxis.gxx
++ Primitives:pubinclude:Primitives_Wedge.gxx Primitives:source:Primitives_Wedge.gxx
++ Primitives:dbadmfile:Primitives_obj_inc.In Primitives:admfile:Primitives_src.Out
++ * Primitives:admfile:Primitives_xcpp_src.Out
++ Primitives:dbadmfile:Primitives_obj_inc.Out Primitives:admfile:Primitives_src.Out
++ * Primitives:admfile:Primitives_xcpp_src.Out
++ Primitives:dbadmfile:Primitives_obj_inc.Dep Primitives:admfile:Primitives_src.Out
++ * Primitives:admfile:Primitives_xcpp_src.Out

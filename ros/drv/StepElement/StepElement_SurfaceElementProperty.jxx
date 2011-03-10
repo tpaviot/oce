@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepElement_SurfaceSectionField_HeaderFile
+#include <StepElement_SurfaceSectionField.hxx>
+#endif
+#ifndef _StepElement_SurfaceElementProperty_HeaderFile
+#include <StepElement_SurfaceElementProperty.hxx>
+#endif

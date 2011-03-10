@@ -1,0 +1,6 @@
++M MgtGeom:pubinclude:MgtGeom.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/MgtGeom.hxx
++M MgtGeom:privinclude:MgtGeom.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/MgtGeom/MgtGeom.jxx
++M MgtGeom:privinclude:MgtGeom.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/MgtGeom/MgtGeom.ixx
++M MgtGeom:dbadmfile:MgtGeom_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/MgtGeom/.adm/MgtGeom_xcpp_header.In
++M MgtGeom:dbadmfile:MgtGeom_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/MgtGeom/.adm/MgtGeom_xcpp_header.Out
++M MgtGeom:dbadmfile:MgtGeom_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/MgtGeom/.adm/MgtGeom_xcpp_header.Dep

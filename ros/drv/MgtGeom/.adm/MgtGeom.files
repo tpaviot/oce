@@ -1,0 +1,9 @@
+pubinclude MgtGeom.hxx
+privinclude MgtGeom.jxx
+privinclude MgtGeom.ixx
+dbadmfile MgtGeom_xcpp_header.In
+dbadmfile MgtGeom_xcpp_header.Out
+dbadmfile MgtGeom_xcpp_header.Dep
+dbadmfile MgtGeom_obj_inc.In
+dbadmfile MgtGeom_obj_inc.Out
+dbadmfile MgtGeom_obj_inc.Dep

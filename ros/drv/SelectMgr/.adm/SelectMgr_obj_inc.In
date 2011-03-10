@@ -1,0 +1,10 @@
++ SelectMgr:source:SelectMgr_DataMapOfObjectOwners.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_DataMapOfObjectOwners.hxx
++ SelectMgr:source:SelectMgr_CompareResults.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_CompareResults.hxx
++ SelectMgr:source:SelectMgr_SelectableObject.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_SelectableObject.lxx
++ SelectMgr:source:SelectMgr_ViewerSelector.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_ViewerSelector.lxx
++ SelectMgr:source:SelectMgr_CompositionFilter.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_CompositionFilter.lxx
++ SelectMgr:source:SelectMgr_EntityOwner.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_EntityOwner.lxx
++ SelectMgr:source:SelectMgr_Selection.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_Selection.lxx
++ SelectMgr:source:SelectMgr_SortCriterion.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectMgr/SelectMgr_SortCriterion.lxx
+- SelectMgr:admfile:SelectMgr_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SelectMgr/SelectMgr_src.Out
+- SelectMgr:admfile:SelectMgr_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SelectMgr/SelectMgr_xcpp_src.Out

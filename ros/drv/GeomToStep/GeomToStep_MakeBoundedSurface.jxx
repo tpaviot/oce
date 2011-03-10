@@ -1,0 +1,12 @@
+#ifndef _StepGeom_BoundedSurface_HeaderFile
+#include <StepGeom_BoundedSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom_BoundedSurface_HeaderFile
+#include <Geom_BoundedSurface.hxx>
+#endif
+#ifndef _GeomToStep_MakeBoundedSurface_HeaderFile
+#include <GeomToStep_MakeBoundedSurface.hxx>
+#endif

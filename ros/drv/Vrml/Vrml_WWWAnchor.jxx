@@ -1,0 +1,6 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Vrml_WWWAnchor_HeaderFile
+#include <Vrml_WWWAnchor.hxx>
+#endif

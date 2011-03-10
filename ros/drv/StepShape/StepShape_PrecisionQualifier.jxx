@@ -1,0 +1,3 @@
+#ifndef _StepShape_PrecisionQualifier_HeaderFile
+#include <StepShape_PrecisionQualifier.hxx>
+#endif

@@ -1,0 +1,6 @@
++ BRepBndLib:pubinclude:BRepBndLib.hxx BRepBndLib:msentity:BRepBndLib
++ BRepBndLib:privinclude:BRepBndLib.jxx BRepBndLib:msentity:BRepBndLib
++ BRepBndLib:privinclude:BRepBndLib.ixx BRepBndLib:msentity:BRepBndLib
++ BRepBndLib:dbadmfile:BRepBndLib_xcpp_header.In BRepBndLib:admfile:BRepBndLib_xcpp_fill.Out
++ BRepBndLib:dbadmfile:BRepBndLib_xcpp_header.Out BRepBndLib:admfile:BRepBndLib_xcpp_fill.Out
++ BRepBndLib:dbadmfile:BRepBndLib_xcpp_header.Dep BRepBndLib:admfile:BRepBndLib_xcpp_fill.Out

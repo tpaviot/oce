@@ -1,0 +1,18 @@
+#ifndef _MAT_ListOfBisector_HeaderFile
+#include <MAT_ListOfBisector.hxx>
+#endif
+#ifndef _MAT_Arc_HeaderFile
+#include <MAT_Arc.hxx>
+#endif
+#ifndef _MAT_BasicElt_HeaderFile
+#include <MAT_BasicElt.hxx>
+#endif
+#ifndef _MAT_Node_HeaderFile
+#include <MAT_Node.hxx>
+#endif
+#ifndef _MAT_DataMapOfIntegerBasicElt_HeaderFile
+#include <MAT_DataMapOfIntegerBasicElt.hxx>
+#endif
+#ifndef _MAT_Graph_HeaderFile
+#include <MAT_Graph.hxx>
+#endif

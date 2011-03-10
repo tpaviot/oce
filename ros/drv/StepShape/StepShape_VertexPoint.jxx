@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Point_HeaderFile
+#include <StepGeom_Point.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_VertexPoint_HeaderFile
+#include <StepShape_VertexPoint.hxx>
+#endif

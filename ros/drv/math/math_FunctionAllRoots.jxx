@@ -1,0 +1,18 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_NumericError_HeaderFile
+#include <Standard_NumericError.hxx>
+#endif
+#ifndef _math_FunctionWithDerivative_HeaderFile
+#include <math_FunctionWithDerivative.hxx>
+#endif
+#ifndef _math_FunctionSample_HeaderFile
+#include <math_FunctionSample.hxx>
+#endif
+#ifndef _math_FunctionAllRoots_HeaderFile
+#include <math_FunctionAllRoots.hxx>
+#endif

@@ -1,0 +1,10 @@
++ GeomLib:pubinclude:GeomLib_MakeCurvefromApprox.lxx GeomLib:source:GeomLib_MakeCurvefromApprox.lxx
++ GeomLib:pubinclude:GeomLib_Interpolate.lxx GeomLib:source:GeomLib_Interpolate.lxx
++ GeomLib:pubinclude:GeomLib_CheckBSplineCurve.lxx GeomLib:source:GeomLib_CheckBSplineCurve.lxx
++ GeomLib:pubinclude:GeomLib_Check2dBSplineCurve.lxx GeomLib:source:GeomLib_Check2dBSplineCurve.lxx
++ GeomLib:dbadmfile:GeomLib_obj_inc.In GeomLib:admfile:GeomLib_src.Out
++ * GeomLib:admfile:GeomLib_xcpp_src.Out
++ GeomLib:dbadmfile:GeomLib_obj_inc.Out GeomLib:admfile:GeomLib_src.Out
++ * GeomLib:admfile:GeomLib_xcpp_src.Out
++ GeomLib:dbadmfile:GeomLib_obj_inc.Dep GeomLib:admfile:GeomLib_src.Out
++ * GeomLib:admfile:GeomLib_xcpp_src.Out

@@ -1,0 +1,6 @@
++ MFunction:dbadmfile:MFunction_obj_inc.In MFunction:admfile:MFunction_src.Out
++ * MFunction:admfile:MFunction_xcpp_src.Out
++ MFunction:dbadmfile:MFunction_obj_inc.Out MFunction:admfile:MFunction_src.Out
++ * MFunction:admfile:MFunction_xcpp_src.Out
++ MFunction:dbadmfile:MFunction_obj_inc.Dep MFunction:admfile:MFunction_src.Out
++ * MFunction:admfile:MFunction_xcpp_src.Out

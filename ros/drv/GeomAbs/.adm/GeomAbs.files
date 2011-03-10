@@ -1,0 +1,15 @@
+pubinclude GeomAbs_CurveType.hxx
+pubinclude GeomAbs_SurfaceType.hxx
+pubinclude GeomAbs_Shape.hxx
+pubinclude GeomAbs_SurfaceForm.hxx
+pubinclude GeomAbs_CurveForm.hxx
+pubinclude GeomAbs_BSplKnotDistribution.hxx
+pubinclude GeomAbs_UVSense.hxx
+pubinclude GeomAbs_IsoType.hxx
+pubinclude GeomAbs_JoinType.hxx
+dbadmfile GeomAbs_xcpp_header.In
+dbadmfile GeomAbs_xcpp_header.Out
+dbadmfile GeomAbs_xcpp_header.Dep
+dbadmfile GeomAbs_obj_inc.In
+dbadmfile GeomAbs_obj_inc.Out
+dbadmfile GeomAbs_obj_inc.Dep

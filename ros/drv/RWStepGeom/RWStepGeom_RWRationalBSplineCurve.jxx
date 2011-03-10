@@ -1,0 +1,21 @@
+#ifndef _StepData_StepReaderData_HeaderFile
+#include <StepData_StepReaderData.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepGeom_RationalBSplineCurve_HeaderFile
+#include <StepGeom_RationalBSplineCurve.hxx>
+#endif
+#ifndef _StepData_StepWriter_HeaderFile
+#include <StepData_StepWriter.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_ShareTool_HeaderFile
+#include <Interface_ShareTool.hxx>
+#endif
+#ifndef _RWStepGeom_RWRationalBSplineCurve_HeaderFile
+#include <RWStepGeom_RWRationalBSplineCurve.hxx>
+#endif

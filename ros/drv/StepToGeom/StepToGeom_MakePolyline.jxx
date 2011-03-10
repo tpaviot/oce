@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Polyline_HeaderFile
+#include <StepGeom_Polyline.hxx>
+#endif
+#ifndef _Geom_BSplineCurve_HeaderFile
+#include <Geom_BSplineCurve.hxx>
+#endif
+#ifndef _StepToGeom_MakePolyline_HeaderFile
+#include <StepToGeom_MakePolyline.hxx>
+#endif

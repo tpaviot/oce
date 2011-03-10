@@ -1,0 +1,4 @@
+pubinclude VoxelClient_VisDrawer.h
+dbadmfile VoxelClient_obj_inc.In
+dbadmfile VoxelClient_obj_inc.Out
+dbadmfile VoxelClient_obj_inc.Dep

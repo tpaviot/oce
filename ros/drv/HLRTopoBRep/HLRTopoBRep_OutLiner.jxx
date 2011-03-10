@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _HLRTopoBRep_Data_HeaderFile
+#include <HLRTopoBRep_Data.hxx>
+#endif
+#ifndef _HLRAlgo_Projector_HeaderFile
+#include <HLRAlgo_Projector.hxx>
+#endif
+#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
+#include <BRepTopAdaptor_MapOfShapeTool.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _HLRTopoBRep_OutLiner_HeaderFile
+#include <HLRTopoBRep_OutLiner.hxx>
+#endif

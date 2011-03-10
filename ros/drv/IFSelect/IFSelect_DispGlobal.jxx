@@ -1,0 +1,12 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _IFGraph_SubPartsIterator_HeaderFile
+#include <IFGraph_SubPartsIterator.hxx>
+#endif
+#ifndef _IFSelect_DispGlobal_HeaderFile
+#include <IFSelect_DispGlobal.hxx>
+#endif

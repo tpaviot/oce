@@ -1,0 +1,15 @@
+#ifndef _Standard_DimensionError_HeaderFile
+#include <Standard_DimensionError.hxx>
+#endif
+#ifndef _Standard_DivideByZero_HeaderFile
+#include <Standard_DivideByZero.hxx>
+#endif
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _math_Matrix_HeaderFile
+#include <math_Matrix.hxx>
+#endif
+#ifndef _math_IntegerVector_HeaderFile
+#include <math_IntegerVector.hxx>
+#endif

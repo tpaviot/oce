@@ -1,0 +1,3 @@
+#ifndef _StepShape_ConnectedFaceShapeRepresentation_HeaderFile
+#include <StepShape_ConnectedFaceShapeRepresentation.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TDataStd_RealArray_HeaderFile
+#include <TDataStd_RealArray.hxx>
+#endif
+#ifndef _TDataStd_DeltaOnModificationOfRealArray_HeaderFile
+#include <TDataStd_DeltaOnModificationOfRealArray.hxx>
+#endif

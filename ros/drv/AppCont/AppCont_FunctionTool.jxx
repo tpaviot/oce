@@ -1,0 +1,18 @@
+#ifndef _AppCont_Function_HeaderFile
+#include <AppCont_Function.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TColgp_Array1OfVec_HeaderFile
+#include <TColgp_Array1OfVec.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _TColgp_Array1OfVec2d_HeaderFile
+#include <TColgp_Array1OfVec2d.hxx>
+#endif
+#ifndef _AppCont_FunctionTool_HeaderFile
+#include <AppCont_FunctionTool.hxx>
+#endif

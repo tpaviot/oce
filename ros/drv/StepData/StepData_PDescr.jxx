@@ -1,0 +1,18 @@
+#ifndef _StepData_PDescr_HeaderFile
+#include <StepData_PDescr.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _StepData_EDescr_HeaderFile
+#include <StepData_EDescr.hxx>
+#endif
+#ifndef _StepData_Field_HeaderFile
+#include <StepData_Field.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepData_PDescr_HeaderFile
+#include <StepData_PDescr.hxx>
+#endif

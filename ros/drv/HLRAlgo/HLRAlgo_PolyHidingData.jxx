@@ -1,0 +1,3 @@
+#ifndef _HLRAlgo_PolyHidingData_HeaderFile
+#include <HLRAlgo_PolyHidingData.hxx>
+#endif

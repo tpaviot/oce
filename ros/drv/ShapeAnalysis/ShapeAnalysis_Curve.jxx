@@ -1,0 +1,30 @@
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Adaptor3d_Curve_HeaderFile
+#include <Adaptor3d_Curve.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Bnd_Box2d_HeaderFile
+#include <Bnd_Box2d.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _TColgp_SequenceOfPnt2d_HeaderFile
+#include <TColgp_SequenceOfPnt2d.hxx>
+#endif
+#ifndef _TColgp_SequenceOfPnt_HeaderFile
+#include <TColgp_SequenceOfPnt.hxx>
+#endif
+#ifndef _ShapeAnalysis_Curve_HeaderFile
+#include <ShapeAnalysis_Curve.hxx>
+#endif

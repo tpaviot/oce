@@ -1,0 +1,12 @@
+#ifndef _StepShape_HArray1OfFaceBound_HeaderFile
+#include <StepShape_HArray1OfFaceBound.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_FaceBound_HeaderFile
+#include <StepShape_FaceBound.hxx>
+#endif
+#ifndef _StepShape_Face_HeaderFile
+#include <StepShape_Face.hxx>
+#endif

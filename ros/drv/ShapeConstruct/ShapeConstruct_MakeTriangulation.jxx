@@ -1,0 +1,9 @@
+#ifndef _TColgp_Array1OfPnt_HeaderFile
+#include <TColgp_Array1OfPnt.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _ShapeConstruct_MakeTriangulation_HeaderFile
+#include <ShapeConstruct_MakeTriangulation.hxx>
+#endif

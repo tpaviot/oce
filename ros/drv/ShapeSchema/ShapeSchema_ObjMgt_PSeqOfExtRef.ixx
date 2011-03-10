@@ -1,0 +1,8 @@
+#include <ShapeSchema_Standard_Persistent.ixx>
+#ifndef _ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
+#include <ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
+#endif
+#ifndef _ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
+#include <ShapeSchema_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
+#endif
+

@@ -1,0 +1,6 @@
+#ifndef _GraphTools_SC_HeaderFile
+#include <GraphTools_SC.hxx>
+#endif
+#ifndef _GraphTools_RGNode_HeaderFile
+#include <GraphTools_RGNode.hxx>
+#endif

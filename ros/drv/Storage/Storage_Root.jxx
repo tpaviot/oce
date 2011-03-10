@@ -1,0 +1,12 @@
+#ifndef _Standard_Persistent_HeaderFile
+#include <Standard_Persistent.hxx>
+#endif
+#ifndef _Storage_Schema_HeaderFile
+#include <Storage_Schema.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Storage_Root_HeaderFile
+#include <Storage_Root.hxx>
+#endif

@@ -1,0 +1,48 @@
+#ifndef _Standard_NotImplemented_HeaderFile
+#include <Standard_NotImplemented.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager_HeaderFile
+#include <PrsMgr_PresentationManager.hxx>
+#endif
+#ifndef _Graphic3d_Structure_HeaderFile
+#include <Graphic3d_Structure.hxx>
+#endif
+#ifndef _Graphic3d_DataStructureManager_HeaderFile
+#include <Graphic3d_DataStructureManager.hxx>
+#endif
+#ifndef _Geom_Transformation_HeaderFile
+#include <Geom_Transformation.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager2d_HeaderFile
+#include <PrsMgr_PresentationManager2d.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _PrsMgr_PresentationManager3d_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
+#endif
+#ifndef _Prs3d_Presentation_HeaderFile
+#include <Prs3d_Presentation.hxx>
+#endif
+#ifndef _Prs3d_Projector_HeaderFile
+#include <Prs3d_Projector.hxx>
+#endif
+#ifndef _PrsMgr_Presentation_HeaderFile
+#include <PrsMgr_Presentation.hxx>
+#endif
+#ifndef _PrsMgr_Presentations_HeaderFile
+#include <PrsMgr_Presentations.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TColStd_ListOfInteger_HeaderFile
+#include <TColStd_ListOfInteger.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _PrsMgr_PresentableObject_HeaderFile
+#include <PrsMgr_PresentableObject.hxx>
+#endif

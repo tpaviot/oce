@@ -1,0 +1,6 @@
+#ifndef _PCollection_HAsciiString_HeaderFile
+#include <PCollection_HAsciiString.hxx>
+#endif
+#ifndef _ObjMgt_ExternRef_HeaderFile
+#include <ObjMgt_ExternRef.hxx>
+#endif

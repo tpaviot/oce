@@ -1,0 +1,9 @@
+#ifndef _StlMesh_Mesh_HeaderFile
+#include <StlMesh_Mesh.hxx>
+#endif
+#ifndef _OSD_Path_HeaderFile
+#include <OSD_Path.hxx>
+#endif
+#ifndef _RWStl_HeaderFile
+#include <RWStl.hxx>
+#endif

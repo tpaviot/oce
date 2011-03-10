@@ -1,0 +1,6 @@
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_obj_inc.In XmlMPrsStd:admfile:XmlMPrsStd_src.Out
++ * XmlMPrsStd:admfile:XmlMPrsStd_xcpp_src.Out
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_obj_inc.Out XmlMPrsStd:admfile:XmlMPrsStd_src.Out
++ * XmlMPrsStd:admfile:XmlMPrsStd_xcpp_src.Out
++ XmlMPrsStd:dbadmfile:XmlMPrsStd_obj_inc.Dep XmlMPrsStd:admfile:XmlMPrsStd_src.Out
++ * XmlMPrsStd:admfile:XmlMPrsStd_xcpp_src.Out

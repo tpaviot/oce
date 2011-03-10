@@ -1,0 +1,27 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Elips_HeaderFile
+#include <gp_Elips.hxx>
+#endif
+#ifndef _gp_Parab_HeaderFile
+#include <gp_Parab.hxx>
+#endif
+#ifndef _gp_Hypr_HeaderFile
+#include <gp_Hypr.hxx>
+#endif
+#ifndef _IntPatch_Point_HeaderFile
+#include <IntPatch_Point.hxx>
+#endif
+#ifndef _IntPatch_GLine_HeaderFile
+#include <IntPatch_GLine.hxx>
+#endif

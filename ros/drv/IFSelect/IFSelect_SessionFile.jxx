@@ -1,0 +1,18 @@
+#ifndef _IFSelect_WorkSession_HeaderFile
+#include <IFSelect_WorkSession.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Dico_DictionaryOfInteger_HeaderFile
+#include <Dico_DictionaryOfInteger.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _IFSelect_SessionFile_HeaderFile
+#include <IFSelect_SessionFile.hxx>
+#endif

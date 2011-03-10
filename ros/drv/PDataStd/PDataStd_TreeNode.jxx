@@ -1,0 +1,9 @@
+#ifndef _PDataStd_TreeNode_HeaderFile
+#include <PDataStd_TreeNode.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _PDataStd_TreeNode_HeaderFile
+#include <PDataStd_TreeNode.hxx>
+#endif

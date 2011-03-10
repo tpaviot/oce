@@ -1,0 +1,9 @@
+#ifndef _BRepAdaptor_Surface_HeaderFile
+#include <BRepAdaptor_Surface.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _ChFi3d_HeaderFile
+#include <ChFi3d.hxx>
+#endif

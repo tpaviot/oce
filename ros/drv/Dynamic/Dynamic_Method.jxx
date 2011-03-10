@@ -1,0 +1,15 @@
+#ifndef _Dynamic_VariableNode_HeaderFile
+#include <Dynamic_VariableNode.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Dynamic_Variable_HeaderFile
+#include <Dynamic_Variable.hxx>
+#endif
+#ifndef _Dynamic_Parameter_HeaderFile
+#include <Dynamic_Parameter.hxx>
+#endif
+#ifndef _Dynamic_Method_HeaderFile
+#include <Dynamic_Method.hxx>
+#endif

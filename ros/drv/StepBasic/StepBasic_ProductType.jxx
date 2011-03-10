@@ -1,0 +1,3 @@
+#ifndef _StepBasic_ProductType_HeaderFile
+#include <StepBasic_ProductType.hxx>
+#endif

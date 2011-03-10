@@ -1,0 +1,11 @@
++ AppBlend:pubinclude:AppBlend_Line.gxx AppBlend:source:AppBlend_Line.gxx
++ AppBlend:pubinclude:AppBlend_Line.lxx AppBlend:source:AppBlend_Line.lxx
++ AppBlend:pubinclude:AppBlend_SectionGenerator.gxx AppBlend:source:AppBlend_SectionGenerator.gxx
++ AppBlend:pubinclude:AppBlend_AppSurf.gxx AppBlend:source:AppBlend_AppSurf.gxx
++ AppBlend:pubinclude:AppBlend_AppSurf.lxx AppBlend:source:AppBlend_AppSurf.lxx
++ AppBlend:dbadmfile:AppBlend_obj_inc.In AppBlend:admfile:AppBlend_src.Out
++ * AppBlend:admfile:AppBlend_xcpp_src.Out
++ AppBlend:dbadmfile:AppBlend_obj_inc.Out AppBlend:admfile:AppBlend_src.Out
++ * AppBlend:admfile:AppBlend_xcpp_src.Out
++ AppBlend:dbadmfile:AppBlend_obj_inc.Dep AppBlend:admfile:AppBlend_src.Out
++ * AppBlend:admfile:AppBlend_xcpp_src.Out

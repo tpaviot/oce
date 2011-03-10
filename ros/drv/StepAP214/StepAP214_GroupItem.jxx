@@ -1,0 +1,9 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
+#include <StepGeom_GeometricRepresentationItem.hxx>
+#endif
+#ifndef _StepAP214_GroupItem_HeaderFile
+#include <StepAP214_GroupItem.hxx>
+#endif

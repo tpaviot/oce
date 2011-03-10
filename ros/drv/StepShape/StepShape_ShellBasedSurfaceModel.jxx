@@ -1,0 +1,12 @@
+#ifndef _StepShape_HArray1OfShell_HeaderFile
+#include <StepShape_HArray1OfShell.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepShape_Shell_HeaderFile
+#include <StepShape_Shell.hxx>
+#endif
+#ifndef _StepShape_ShellBasedSurfaceModel_HeaderFile
+#include <StepShape_ShellBasedSurfaceModel.hxx>
+#endif

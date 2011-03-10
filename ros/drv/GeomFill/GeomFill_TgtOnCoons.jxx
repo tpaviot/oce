@@ -1,0 +1,9 @@
+#ifndef _GeomFill_CoonsAlgPatch_HeaderFile
+#include <GeomFill_CoonsAlgPatch.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomFill_TgtOnCoons_HeaderFile
+#include <GeomFill_TgtOnCoons.hxx>
+#endif

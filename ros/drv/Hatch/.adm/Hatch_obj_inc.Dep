@@ -1,0 +1,7 @@
++ Hatch:pubinclude:Hatch_Hatcher.lxx Hatch:source:Hatch_Hatcher.lxx
++ Hatch:dbadmfile:Hatch_obj_inc.In Hatch:admfile:Hatch_src.Out
++ * Hatch:admfile:Hatch_xcpp_src.Out
++ Hatch:dbadmfile:Hatch_obj_inc.Out Hatch:admfile:Hatch_src.Out
++ * Hatch:admfile:Hatch_xcpp_src.Out
++ Hatch:dbadmfile:Hatch_obj_inc.Dep Hatch:admfile:Hatch_src.Out
++ * Hatch:admfile:Hatch_xcpp_src.Out

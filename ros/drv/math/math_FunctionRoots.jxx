@@ -1,0 +1,12 @@
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _math_FunctionWithDerivative_HeaderFile
+#include <math_FunctionWithDerivative.hxx>
+#endif
+#ifndef _math_FunctionRoots_HeaderFile
+#include <math_FunctionRoots.hxx>
+#endif

@@ -1,0 +1,6 @@
++ StepDimTol:dbadmfile:StepDimTol_obj_inc.In StepDimTol:admfile:StepDimTol_src.Out
++ * StepDimTol:admfile:StepDimTol_xcpp_src.Out
++ StepDimTol:dbadmfile:StepDimTol_obj_inc.Out StepDimTol:admfile:StepDimTol_src.Out
++ * StepDimTol:admfile:StepDimTol_xcpp_src.Out
++ StepDimTol:dbadmfile:StepDimTol_obj_inc.Dep StepDimTol:admfile:StepDimTol_src.Out
++ * StepDimTol:admfile:StepDimTol_xcpp_src.Out

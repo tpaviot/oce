@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _Draw_Color_HeaderFile
+#include <Draw_Color.hxx>
+#endif
+#ifndef _DBRep_Edge_HeaderFile
+#include <DBRep_Edge.hxx>
+#endif

@@ -1,0 +1,21 @@
+#ifndef _StepGeom_Line_HeaderFile
+#include <StepGeom_Line.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _gp_Lin2d_HeaderFile
+#include <gp_Lin2d.hxx>
+#endif
+#ifndef _Geom_Line_HeaderFile
+#include <Geom_Line.hxx>
+#endif
+#ifndef _Geom2d_Line_HeaderFile
+#include <Geom2d_Line.hxx>
+#endif
+#ifndef _GeomToStep_MakeLine_HeaderFile
+#include <GeomToStep_MakeLine.hxx>
+#endif

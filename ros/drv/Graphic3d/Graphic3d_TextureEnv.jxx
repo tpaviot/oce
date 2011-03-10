@@ -1,0 +1,9 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Graphic3d_StructureManager_HeaderFile
+#include <Graphic3d_StructureManager.hxx>
+#endif
+#ifndef _Graphic3d_TextureEnv_HeaderFile
+#include <Graphic3d_TextureEnv.hxx>
+#endif

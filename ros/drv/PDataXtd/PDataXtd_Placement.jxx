@@ -1,0 +1,3 @@
+#ifndef _PDataXtd_Placement_HeaderFile
+#include <PDataXtd_Placement.hxx>
+#endif

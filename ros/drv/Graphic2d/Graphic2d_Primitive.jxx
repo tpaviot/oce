@@ -1,0 +1,21 @@
+#ifndef _TColStd_HSequenceOfInteger_HeaderFile
+#include <TColStd_HSequenceOfInteger.hxx>
+#endif
+#ifndef _Graphic2d_Buffer_HeaderFile
+#include <Graphic2d_Buffer.hxx>
+#endif
+#ifndef _Graphic2d_Drawer_HeaderFile
+#include <Graphic2d_Drawer.hxx>
+#endif
+#ifndef _Graphic2d_Primitive_HeaderFile
+#include <Graphic2d_Primitive.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _TColStd_MapOfInteger_HeaderFile
+#include <TColStd_MapOfInteger.hxx>
+#endif
+#ifndef _Graphic2d_Primitive_HeaderFile
+#include <Graphic2d_Primitive.hxx>
+#endif

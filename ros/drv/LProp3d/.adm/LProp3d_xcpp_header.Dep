@@ -1,0 +1,13 @@
++ LProp3d:pubinclude:LProp3d_CurveTool.hxx LProp3d:msentity:LProp3d_CurveTool
++ LProp3d:privinclude:LProp3d_CurveTool.jxx LProp3d:msentity:LProp3d_CurveTool
++ LProp3d:privinclude:LProp3d_CurveTool.ixx LProp3d:msentity:LProp3d_CurveTool
++ LProp3d:pubinclude:LProp3d_SurfaceTool.hxx LProp3d:msentity:LProp3d_SurfaceTool
++ LProp3d:privinclude:LProp3d_SurfaceTool.jxx LProp3d:msentity:LProp3d_SurfaceTool
++ LProp3d:privinclude:LProp3d_SurfaceTool.ixx LProp3d:msentity:LProp3d_SurfaceTool
++ LProp3d:pubinclude:LProp3d_CLProps.hxx LProp3d:msentity:LProp3d_CLProps
++ LProp3d:derivated:LProp3d_CLProps_0.cxx LProp3d:msentity:LProp3d_CLProps
++ LProp3d:pubinclude:LProp3d_SLProps.hxx LProp3d:msentity:LProp3d_SLProps
++ LProp3d:derivated:LProp3d_SLProps_0.cxx LProp3d:msentity:LProp3d_SLProps
++ LProp3d:dbadmfile:LProp3d_xcpp_header.In LProp3d:admfile:LProp3d_xcpp_fill.Out
++ LProp3d:dbadmfile:LProp3d_xcpp_header.Out LProp3d:admfile:LProp3d_xcpp_fill.Out
++ LProp3d:dbadmfile:LProp3d_xcpp_header.Dep LProp3d:admfile:LProp3d_xcpp_fill.Out

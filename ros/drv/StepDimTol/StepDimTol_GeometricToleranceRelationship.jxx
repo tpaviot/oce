@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepDimTol_GeometricTolerance_HeaderFile
+#include <StepDimTol_GeometricTolerance.hxx>
+#endif
+#ifndef _StepDimTol_GeometricToleranceRelationship_HeaderFile
+#include <StepDimTol_GeometricToleranceRelationship.hxx>
+#endif

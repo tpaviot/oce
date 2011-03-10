@@ -1,0 +1,12 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepDimTol_GeometricTolerance_HeaderFile
+#include <StepDimTol_GeometricTolerance.hxx>
+#endif
+#ifndef _StepShape_PlusMinusTolerance_HeaderFile
+#include <StepShape_PlusMinusTolerance.hxx>
+#endif
+#ifndef _StepDimTol_ShapeToleranceSelect_HeaderFile
+#include <StepDimTol_ShapeToleranceSelect.hxx>
+#endif

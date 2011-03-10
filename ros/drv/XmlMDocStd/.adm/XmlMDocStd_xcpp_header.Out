@@ -1,0 +1,10 @@
++M XmlMDocStd:pubinclude:XmlMDocStd.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/XmlMDocStd.hxx
++M XmlMDocStd:privinclude:XmlMDocStd.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/XmlMDocStd.jxx
++M XmlMDocStd:privinclude:XmlMDocStd.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/XmlMDocStd.ixx
++M XmlMDocStd:pubinclude:Handle_XmlMDocStd_XLinkDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Handle_XmlMDocStd_XLinkDriver.hxx
++M XmlMDocStd:pubinclude:XmlMDocStd_XLinkDriver.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/XmlMDocStd_XLinkDriver.hxx
++M XmlMDocStd:privinclude:XmlMDocStd_XLinkDriver.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/XmlMDocStd_XLinkDriver.jxx
++M XmlMDocStd:privinclude:XmlMDocStd_XLinkDriver.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/XmlMDocStd_XLinkDriver.ixx
++M XmlMDocStd:dbadmfile:XmlMDocStd_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/.adm/XmlMDocStd_xcpp_header.In
++M XmlMDocStd:dbadmfile:XmlMDocStd_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/.adm/XmlMDocStd_xcpp_header.Out
++M XmlMDocStd:dbadmfile:XmlMDocStd_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/XmlMDocStd/.adm/XmlMDocStd_xcpp_header.Dep

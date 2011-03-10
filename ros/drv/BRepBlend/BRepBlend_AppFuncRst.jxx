@@ -1,0 +1,21 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _BRepBlend_Line_HeaderFile
+#include <BRepBlend_Line.hxx>
+#endif
+#ifndef _Blend_SurfRstFunction_HeaderFile
+#include <Blend_SurfRstFunction.hxx>
+#endif
+#ifndef _Blend_AppFunction_HeaderFile
+#include <Blend_AppFunction.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
+#endif
+#ifndef _Blend_Point_HeaderFile
+#include <Blend_Point.hxx>
+#endif
+#ifndef _BRepBlend_AppFuncRst_HeaderFile
+#include <BRepBlend_AppFuncRst.hxx>
+#endif

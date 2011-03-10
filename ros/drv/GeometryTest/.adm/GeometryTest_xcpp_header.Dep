@@ -1,0 +1,6 @@
++ GeometryTest:pubinclude:GeometryTest.hxx GeometryTest:msentity:GeometryTest
++ GeometryTest:privinclude:GeometryTest.jxx GeometryTest:msentity:GeometryTest
++ GeometryTest:privinclude:GeometryTest.ixx GeometryTest:msentity:GeometryTest
++ GeometryTest:dbadmfile:GeometryTest_xcpp_header.In GeometryTest:admfile:GeometryTest_xcpp_fill.Out
++ GeometryTest:dbadmfile:GeometryTest_xcpp_header.Out GeometryTest:admfile:GeometryTest_xcpp_fill.Out
++ GeometryTest:dbadmfile:GeometryTest_xcpp_header.Dep GeometryTest:admfile:GeometryTest_xcpp_fill.Out

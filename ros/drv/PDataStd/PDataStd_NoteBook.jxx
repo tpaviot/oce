@@ -1,0 +1,3 @@
+#ifndef _PDataStd_NoteBook_HeaderFile
+#include <PDataStd_NoteBook.hxx>
+#endif

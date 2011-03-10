@@ -1,0 +1,6 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _AlienImage_AlienImageData_HeaderFile
+#include <AlienImage_AlienImageData.hxx>
+#endif

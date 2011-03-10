@@ -1,0 +1,18 @@
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _Adaptor3d_Surface_HeaderFile
+#include <Adaptor3d_Surface.hxx>
+#endif
+#ifndef _Extrema_POnSurf_HeaderFile
+#include <Extrema_POnSurf.hxx>
+#endif
+#ifndef _Extrema_ExtSS_HeaderFile
+#include <Extrema_ExtSS.hxx>
+#endif

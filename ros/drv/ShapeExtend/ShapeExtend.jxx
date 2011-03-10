@@ -1,0 +1,3 @@
+#ifndef _ShapeExtend_HeaderFile
+#include <ShapeExtend.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _gp_Vec2d_HeaderFile
+#include <gp_Vec2d.hxx>
+#endif
+#ifndef _ApproxInt_SvSurfaces_HeaderFile
+#include <ApproxInt_SvSurfaces.hxx>
+#endif

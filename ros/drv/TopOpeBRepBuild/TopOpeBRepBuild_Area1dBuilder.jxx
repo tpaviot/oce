@@ -1,0 +1,24 @@
+#ifndef _TopOpeBRepBuild_PaveSet_HeaderFile
+#include <TopOpeBRepBuild_PaveSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_PaveClassifier_HeaderFile
+#include <TopOpeBRepBuild_PaveClassifier.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_LoopSet_HeaderFile
+#include <TopOpeBRepBuild_LoopSet.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
+#include <TopOpeBRepBuild_LoopClassifier.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Loop_HeaderFile
+#include <TopOpeBRepBuild_Loop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
+#include <TopOpeBRepBuild_ListOfLoop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_ListIteratorOfListOfLoop_HeaderFile
+#include <TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_Area1dBuilder_HeaderFile
+#include <TopOpeBRepBuild_Area1dBuilder.hxx>
+#endif

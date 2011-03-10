@@ -1,0 +1,13 @@
++ Approx:pubinclude:Approx_TheLineTool.gxx Approx:source:Approx_TheLineTool.gxx
++ Approx:pubinclude:Approx_ComputeLine.gxx Approx:source:Approx_ComputeLine.gxx
++ Approx:pubinclude:Approx_ComputeCLine.gxx Approx:source:Approx_ComputeCLine.gxx
++ Approx:pubinclude:Approx_ComputeCSurface.gxx Approx:source:Approx_ComputeCSurface.gxx
++ Approx:pubinclude:Approx_BSplComputeLine.gxx Approx:source:Approx_BSplComputeLine.gxx
++ Approx:pubinclude:Approx_SweepApproximation.lxx Approx:source:Approx_SweepApproximation.lxx
++ Approx:pubinclude:Approx_SameParameter.lxx Approx:source:Approx_SameParameter.lxx
++ Approx:dbadmfile:Approx_obj_inc.In Approx:admfile:Approx_src.Out
++ * Approx:admfile:Approx_xcpp_src.Out
++ Approx:dbadmfile:Approx_obj_inc.Out Approx:admfile:Approx_src.Out
++ * Approx:admfile:Approx_xcpp_src.Out
++ Approx:dbadmfile:Approx_obj_inc.Dep Approx:admfile:Approx_src.Out
++ * Approx:admfile:Approx_xcpp_src.Out

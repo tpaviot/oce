@@ -1,0 +1,12 @@
+#ifndef _StepElement_AnalysisItemWithinRepresentation_HeaderFile
+#include <StepElement_AnalysisItemWithinRepresentation.hxx>
+#endif
+#ifndef _StepFEA_ElementOrElementGroup_HeaderFile
+#include <StepFEA_ElementOrElementGroup.hxx>
+#endif
+#ifndef _StepElement_ElementAspect_HeaderFile
+#include <StepElement_ElementAspect.hxx>
+#endif
+#ifndef _StepFEA_ElementGeometricRelationship_HeaderFile
+#include <StepFEA_ElementGeometricRelationship.hxx>
+#endif

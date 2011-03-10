@@ -1,0 +1,24 @@
+#ifndef _TColStd_HArray2OfTransient_HeaderFile
+#include <TColStd_HArray2OfTransient.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Standard_NullObject_HeaderFile
+#include <Standard_NullObject.hxx>
+#endif
+#ifndef _IGESDefs_AttributeDef_HeaderFile
+#include <IGESDefs_AttributeDef.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESDefs_AttributeTable_HeaderFile
+#include <IGESDefs_AttributeTable.hxx>
+#endif

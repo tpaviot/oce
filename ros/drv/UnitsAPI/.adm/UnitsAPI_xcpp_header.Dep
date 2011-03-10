@@ -1,0 +1,7 @@
++ UnitsAPI:pubinclude:UnitsAPI.hxx UnitsAPI:msentity:UnitsAPI
++ UnitsAPI:privinclude:UnitsAPI.jxx UnitsAPI:msentity:UnitsAPI
++ UnitsAPI:privinclude:UnitsAPI.ixx UnitsAPI:msentity:UnitsAPI
++ UnitsAPI:pubinclude:UnitsAPI_SystemUnits.hxx UnitsAPI:msentity:UnitsAPI_SystemUnits
++ UnitsAPI:dbadmfile:UnitsAPI_xcpp_header.In UnitsAPI:admfile:UnitsAPI_xcpp_fill.Out
++ UnitsAPI:dbadmfile:UnitsAPI_xcpp_header.Out UnitsAPI:admfile:UnitsAPI_xcpp_fill.Out
++ UnitsAPI:dbadmfile:UnitsAPI_xcpp_header.Dep UnitsAPI:admfile:UnitsAPI_xcpp_fill.Out

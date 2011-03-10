@@ -1,0 +1,9 @@
+#ifndef _gp_Circ_HeaderFile
+#include <gp_Circ.hxx>
+#endif
+#ifndef _gp_Lin_HeaderFile
+#include <gp_Lin.hxx>
+#endif
+#ifndef _ChFiDS_CircSection_HeaderFile
+#include <ChFiDS_CircSection.hxx>
+#endif

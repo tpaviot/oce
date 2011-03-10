@@ -1,0 +1,18 @@
+#ifndef _BOP_WireEdgeSet_HeaderFile
+#include <BOP_WireEdgeSet.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _BOP_FaceBuilder_HeaderFile
+#include <BOP_FaceBuilder.hxx>
+#endif

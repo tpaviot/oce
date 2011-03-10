@@ -1,0 +1,39 @@
+#ifndef _Prs3d_Drawer_HeaderFile
+#include <Prs3d_Drawer.hxx>
+#endif
+#ifndef _Prs3d_IsoAspect_HeaderFile
+#include <Prs3d_IsoAspect.hxx>
+#endif
+#ifndef _Prs3d_LineAspect_HeaderFile
+#include <Prs3d_LineAspect.hxx>
+#endif
+#ifndef _Prs3d_TextAspect_HeaderFile
+#include <Prs3d_TextAspect.hxx>
+#endif
+#ifndef _Prs3d_ArrowAspect_HeaderFile
+#include <Prs3d_ArrowAspect.hxx>
+#endif
+#ifndef _Prs3d_PointAspect_HeaderFile
+#include <Prs3d_PointAspect.hxx>
+#endif
+#ifndef _Prs3d_ShadingAspect_HeaderFile
+#include <Prs3d_ShadingAspect.hxx>
+#endif
+#ifndef _Prs3d_PlaneAspect_HeaderFile
+#include <Prs3d_PlaneAspect.hxx>
+#endif
+#ifndef _Prs3d_DatumAspect_HeaderFile
+#include <Prs3d_DatumAspect.hxx>
+#endif
+#ifndef _Prs3d_LengthAspect_HeaderFile
+#include <Prs3d_LengthAspect.hxx>
+#endif
+#ifndef _Prs3d_AngleAspect_HeaderFile
+#include <Prs3d_AngleAspect.hxx>
+#endif
+#ifndef _Prs3d_RadiusAspect_HeaderFile
+#include <Prs3d_RadiusAspect.hxx>
+#endif
+#ifndef _AIS_Drawer_HeaderFile
+#include <AIS_Drawer.hxx>
+#endif

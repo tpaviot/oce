@@ -1,0 +1,12 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_HArray1OfFillStyleSelect_HeaderFile
+#include <StepVisual_HArray1OfFillStyleSelect.hxx>
+#endif
+#ifndef _StepVisual_FillStyleSelect_HeaderFile
+#include <StepVisual_FillStyleSelect.hxx>
+#endif
+#ifndef _StepVisual_FillAreaStyle_HeaderFile
+#include <StepVisual_FillAreaStyle.hxx>
+#endif

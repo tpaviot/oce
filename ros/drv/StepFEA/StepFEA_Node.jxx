@@ -1,0 +1,3 @@
+#ifndef _StepFEA_Node_HeaderFile
+#include <StepFEA_Node.hxx>
+#endif

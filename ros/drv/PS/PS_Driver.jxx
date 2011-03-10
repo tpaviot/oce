@@ -1,0 +1,27 @@
+#ifndef _Aspect_DriverError_HeaderFile
+#include <Aspect_DriverError.hxx>
+#endif
+#ifndef _PlotMgt_Plotter_HeaderFile
+#include <PlotMgt_Plotter.hxx>
+#endif
+#ifndef _Aspect_ColorMap_HeaderFile
+#include <Aspect_ColorMap.hxx>
+#endif
+#ifndef _Aspect_TypeMap_HeaderFile
+#include <Aspect_TypeMap.hxx>
+#endif
+#ifndef _Aspect_WidthMap_HeaderFile
+#include <Aspect_WidthMap.hxx>
+#endif
+#ifndef _Aspect_FontMap_HeaderFile
+#include <Aspect_FontMap.hxx>
+#endif
+#ifndef _Aspect_MarkMap_HeaderFile
+#include <Aspect_MarkMap.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _PS_Driver_HeaderFile
+#include <PS_Driver.hxx>
+#endif

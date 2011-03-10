@@ -1,0 +1,39 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_NullObject_HeaderFile
+#include <Standard_NullObject.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfIntegerListOfShape_HeaderFile
+#include <TopTools_DataMapOfIntegerListOfShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfIntegerShape_HeaderFile
+#include <TopTools_DataMapOfIntegerShape.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
+#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
+#endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _BRepLib_FuseEdges_HeaderFile
+#include <BRepLib_FuseEdges.hxx>
+#endif

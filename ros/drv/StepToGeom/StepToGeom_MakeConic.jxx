@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Conic_HeaderFile
+#include <StepGeom_Conic.hxx>
+#endif
+#ifndef _Geom_Conic_HeaderFile
+#include <Geom_Conic.hxx>
+#endif
+#ifndef _StepToGeom_MakeConic_HeaderFile
+#include <StepToGeom_MakeConic.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _Standard_DimensionError_HeaderFile
+#include <Standard_DimensionError.hxx>
+#endif
+#ifndef _Standard_RangeError_HeaderFile
+#include <Standard_RangeError.hxx>
+#endif
+#ifndef _Law_BSpline_HeaderFile
+#include <Law_BSpline.hxx>
+#endif
+#ifndef _TColStd_Array1OfInteger_HeaderFile
+#include <TColStd_Array1OfInteger.hxx>
+#endif
+#ifndef _Law_BSplineKnotSplitting_HeaderFile
+#include <Law_BSplineKnotSplitting.hxx>
+#endif

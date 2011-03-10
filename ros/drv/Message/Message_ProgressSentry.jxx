@@ -1,0 +1,9 @@
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Message_ProgressSentry_HeaderFile
+#include <Message_ProgressSentry.hxx>
+#endif

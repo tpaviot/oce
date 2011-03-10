@@ -1,0 +1,9 @@
+#ifndef _StepGeom_CartesianPoint_HeaderFile
+#include <StepGeom_CartesianPoint.hxx>
+#endif
+#ifndef _StepVisual_PlanarBox_HeaderFile
+#include <StepVisual_PlanarBox.hxx>
+#endif
+#ifndef _StepVisual_ViewVolume_HeaderFile
+#include <StepVisual_ViewVolume.hxx>
+#endif

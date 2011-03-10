@@ -1,0 +1,8 @@
++ BRepCheck:pubinclude:BRepCheck_Result.lxx BRepCheck:source:BRepCheck_Result.lxx
++ BRepCheck:pubinclude:BRepCheck_Analyzer.lxx BRepCheck:source:BRepCheck_Analyzer.lxx
++ BRepCheck:dbadmfile:BRepCheck_obj_inc.In BRepCheck:admfile:BRepCheck_src.Out
++ * BRepCheck:admfile:BRepCheck_xcpp_src.Out
++ BRepCheck:dbadmfile:BRepCheck_obj_inc.Out BRepCheck:admfile:BRepCheck_src.Out
++ * BRepCheck:admfile:BRepCheck_xcpp_src.Out
++ BRepCheck:dbadmfile:BRepCheck_obj_inc.Dep BRepCheck:admfile:BRepCheck_src.Out
++ * BRepCheck:admfile:BRepCheck_xcpp_src.Out

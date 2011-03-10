@@ -1,0 +1,12 @@
+#ifndef _StepVisual_CurveStyle_HeaderFile
+#include <StepVisual_CurveStyle.hxx>
+#endif
+#ifndef _StepVisual_HArray1OfDirectionCountSelect_HeaderFile
+#include <StepVisual_HArray1OfDirectionCountSelect.hxx>
+#endif
+#ifndef _StepVisual_DirectionCountSelect_HeaderFile
+#include <StepVisual_DirectionCountSelect.hxx>
+#endif
+#ifndef _StepVisual_SurfaceStyleParameterLine_HeaderFile
+#include <StepVisual_SurfaceStyleParameterLine.hxx>
+#endif

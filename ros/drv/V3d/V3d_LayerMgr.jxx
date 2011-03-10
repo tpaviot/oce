@@ -1,0 +1,18 @@
+#ifndef _Visual3d_Layer_HeaderFile
+#include <Visual3d_Layer.hxx>
+#endif
+#ifndef _V3d_ColorScale_HeaderFile
+#include <V3d_ColorScale.hxx>
+#endif
+#ifndef _V3d_ColorScaleLayerItem_HeaderFile
+#include <V3d_ColorScaleLayerItem.hxx>
+#endif
+#ifndef _V3d_View_HeaderFile
+#include <V3d_View.hxx>
+#endif
+#ifndef _Aspect_ColorScale_HeaderFile
+#include <Aspect_ColorScale.hxx>
+#endif
+#ifndef _V3d_LayerMgr_HeaderFile
+#include <V3d_LayerMgr.hxx>
+#endif

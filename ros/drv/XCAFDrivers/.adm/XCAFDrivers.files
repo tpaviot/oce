@@ -1,0 +1,17 @@
+pubinclude XCAFDrivers.hxx
+privinclude XCAFDrivers.jxx
+privinclude XCAFDrivers.ixx
+pubinclude Handle_XCAFDrivers_DocumentRetrievalDriver.hxx
+pubinclude XCAFDrivers_DocumentRetrievalDriver.hxx
+privinclude XCAFDrivers_DocumentRetrievalDriver.jxx
+privinclude XCAFDrivers_DocumentRetrievalDriver.ixx
+pubinclude Handle_XCAFDrivers_DocumentStorageDriver.hxx
+pubinclude XCAFDrivers_DocumentStorageDriver.hxx
+privinclude XCAFDrivers_DocumentStorageDriver.jxx
+privinclude XCAFDrivers_DocumentStorageDriver.ixx
+dbadmfile XCAFDrivers_xcpp_header.In
+dbadmfile XCAFDrivers_xcpp_header.Out
+dbadmfile XCAFDrivers_xcpp_header.Dep
+dbadmfile XCAFDrivers_obj_inc.In
+dbadmfile XCAFDrivers_obj_inc.Out
+dbadmfile XCAFDrivers_obj_inc.Dep

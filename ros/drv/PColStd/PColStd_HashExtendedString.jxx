@@ -1,0 +1,6 @@
+#ifndef _PCollection_HExtendedString_HeaderFile
+#include <PCollection_HExtendedString.hxx>
+#endif
+#ifndef _PColStd_HashExtendedString_HeaderFile
+#include <PColStd_HashExtendedString.hxx>
+#endif

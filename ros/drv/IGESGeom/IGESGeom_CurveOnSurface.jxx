@@ -1,0 +1,6 @@
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESGeom_CurveOnSurface_HeaderFile
+#include <IGESGeom_CurveOnSurface.hxx>
+#endif

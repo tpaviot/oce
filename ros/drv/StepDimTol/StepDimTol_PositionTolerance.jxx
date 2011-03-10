@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_PositionTolerance_HeaderFile
+#include <StepDimTol_PositionTolerance.hxx>
+#endif

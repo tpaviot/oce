@@ -1,0 +1,6 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Dynamic_ObjectParameter_HeaderFile
+#include <Dynamic_ObjectParameter.hxx>
+#endif

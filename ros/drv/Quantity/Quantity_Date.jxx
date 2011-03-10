@@ -1,0 +1,12 @@
+#ifndef _Quantity_DateDefinitionError_HeaderFile
+#include <Quantity_DateDefinitionError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Quantity_Period_HeaderFile
+#include <Quantity_Period.hxx>
+#endif
+#ifndef _Quantity_Date_HeaderFile
+#include <Quantity_Date.hxx>
+#endif

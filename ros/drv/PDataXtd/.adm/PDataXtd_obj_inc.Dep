@@ -1,0 +1,8 @@
++ PDataXtd:pubinclude:PDataXtd_Position.lxx PDataXtd:source:PDataXtd_Position.lxx
++ PDataXtd:pubinclude:PDataXtd_PatternStd.lxx PDataXtd:source:PDataXtd_PatternStd.lxx
++ PDataXtd:dbadmfile:PDataXtd_obj_inc.In PDataXtd:admfile:PDataXtd_src.Out
++ * PDataXtd:admfile:PDataXtd_xcpp_src.Out
++ PDataXtd:dbadmfile:PDataXtd_obj_inc.Out PDataXtd:admfile:PDataXtd_src.Out
++ * PDataXtd:admfile:PDataXtd_xcpp_src.Out
++ PDataXtd:dbadmfile:PDataXtd_obj_inc.Dep PDataXtd:admfile:PDataXtd_src.Out
++ * PDataXtd:admfile:PDataXtd_xcpp_src.Out

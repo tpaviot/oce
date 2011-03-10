@@ -1,0 +1,3 @@
+#ifndef _PDF_TagSource_HeaderFile
+#include <PDF_TagSource.hxx>
+#endif

@@ -1,0 +1,9 @@
+#ifndef _StepBasic_HArray1OfDerivedUnitElement_HeaderFile
+#include <StepBasic_HArray1OfDerivedUnitElement.hxx>
+#endif
+#ifndef _StepBasic_DerivedUnitElement_HeaderFile
+#include <StepBasic_DerivedUnitElement.hxx>
+#endif
+#ifndef _StepBasic_DerivedUnit_HeaderFile
+#include <StepBasic_DerivedUnit.hxx>
+#endif

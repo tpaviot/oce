@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Ellipse_HeaderFile
+#include <StepGeom_Ellipse.hxx>
+#endif
+#ifndef _Geom_Ellipse_HeaderFile
+#include <Geom_Ellipse.hxx>
+#endif
+#ifndef _StepToGeom_MakeEllipse_HeaderFile
+#include <StepToGeom_MakeEllipse.hxx>
+#endif

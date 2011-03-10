@@ -1,0 +1,15 @@
+#ifndef _Poly_Polygon3D_HeaderFile
+#include <Poly_Polygon3D.hxx>
+#endif
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _BRep_CurveRepresentation_HeaderFile
+#include <BRep_CurveRepresentation.hxx>
+#endif
+#ifndef _BRep_Polygon3D_HeaderFile
+#include <BRep_Polygon3D.hxx>
+#endif

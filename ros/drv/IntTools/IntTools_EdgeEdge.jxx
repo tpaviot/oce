@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _IntTools_Range_HeaderFile
+#include <IntTools_Range.hxx>
+#endif
+#ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
+#include <IntTools_SequenceOfCommonPrts.hxx>
+#endif
+#ifndef _IntTools_CommonPrt_HeaderFile
+#include <IntTools_CommonPrt.hxx>
+#endif
+#ifndef _IntTools_CArray1OfReal_HeaderFile
+#include <IntTools_CArray1OfReal.hxx>
+#endif
+#ifndef _IntTools_EdgeEdge_HeaderFile
+#include <IntTools_EdgeEdge.hxx>
+#endif

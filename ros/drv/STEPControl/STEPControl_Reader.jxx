@@ -1,0 +1,9 @@
+#ifndef _XSControl_WorkSession_HeaderFile
+#include <XSControl_WorkSession.hxx>
+#endif
+#ifndef _StepData_StepModel_HeaderFile
+#include <StepData_StepModel.hxx>
+#endif
+#ifndef _STEPControl_Reader_HeaderFile
+#include <STEPControl_Reader.hxx>
+#endif

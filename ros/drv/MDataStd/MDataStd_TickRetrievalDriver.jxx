@@ -1,0 +1,18 @@
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _PDF_Attribute_HeaderFile
+#include <PDF_Attribute.hxx>
+#endif
+#ifndef _MDF_RRelocationTable_HeaderFile
+#include <MDF_RRelocationTable.hxx>
+#endif
+#ifndef _MDataStd_TickRetrievalDriver_HeaderFile
+#include <MDataStd_TickRetrievalDriver.hxx>
+#endif

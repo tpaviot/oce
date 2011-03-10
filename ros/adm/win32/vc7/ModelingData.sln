@@ -1,0 +1,49 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKG2d", "TKG2d.vcproj", "{174F4024-1357-0661-1809-68589B648AA6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKG3d", "TKG3d.vcproj", "{FC489BBC-0E4B-036D-0910-B9EC22536C3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{174F4024-1357-0661-1809-68589B648AA6} = {174F4024-1357-0661-1809-68589B648AA6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKGeomBase", "TKGeomBase.vcproj", "{0B105498-1720-0860-13E6-570523605143}"
+	ProjectSection(ProjectDependencies) = postProject
+		{174F4024-1357-0661-1809-68589B648AA6} = {174F4024-1357-0661-1809-68589B648AA6}
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D} = {FC489BBC-0E4B-036D-0910-B9EC22536C3D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKBRep", "TKBRep.vcproj", "{7D7B2B73-006A-1937-1337-B2A00C0F8CFF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0B105498-1720-0860-13E6-570523605143} = {0B105498-1720-0860-13E6-570523605143}
+		{174F4024-1357-0661-1809-68589B648AA6} = {174F4024-1357-0661-1809-68589B648AA6}
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D} = {FC489BBC-0E4B-036D-0910-B9EC22536C3D}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{174F4024-1357-0661-1809-68589B648AA6}.Debug.ActiveCfg = Debug|Win32
+		{174F4024-1357-0661-1809-68589B648AA6}.Debug.Build.0 = Debug|Win32
+		{174F4024-1357-0661-1809-68589B648AA6}.Release.ActiveCfg = Release|Win32
+		{174F4024-1357-0661-1809-68589B648AA6}.Release.Build.0 = Release|Win32
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D}.Debug.ActiveCfg = Debug|Win32
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D}.Debug.Build.0 = Debug|Win32
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D}.Release.ActiveCfg = Release|Win32
+		{FC489BBC-0E4B-036D-0910-B9EC22536C3D}.Release.Build.0 = Release|Win32
+		{0B105498-1720-0860-13E6-570523605143}.Debug.ActiveCfg = Debug|Win32
+		{0B105498-1720-0860-13E6-570523605143}.Debug.Build.0 = Debug|Win32
+		{0B105498-1720-0860-13E6-570523605143}.Release.ActiveCfg = Release|Win32
+		{0B105498-1720-0860-13E6-570523605143}.Release.Build.0 = Release|Win32
+		{7D7B2B73-006A-1937-1337-B2A00C0F8CFF}.Debug.ActiveCfg = Debug|Win32
+		{7D7B2B73-006A-1937-1337-B2A00C0F8CFF}.Debug.Build.0 = Debug|Win32
+		{7D7B2B73-006A-1937-1337-B2A00C0F8CFF}.Release.ActiveCfg = Release|Win32
+		{7D7B2B73-006A-1937-1337-B2A00C0F8CFF}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

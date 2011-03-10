@@ -1,0 +1,15 @@
+#ifndef _StepDimTol_HArray1OfDatumReference_HeaderFile
+#include <StepDimTol_HArray1OfDatumReference.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_MeasureWithUnit_HeaderFile
+#include <StepBasic_MeasureWithUnit.hxx>
+#endif
+#ifndef _StepRepr_ShapeAspect_HeaderFile
+#include <StepRepr_ShapeAspect.hxx>
+#endif
+#ifndef _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
+#include <StepDimTol_GeometricToleranceWithDatumReference.hxx>
+#endif

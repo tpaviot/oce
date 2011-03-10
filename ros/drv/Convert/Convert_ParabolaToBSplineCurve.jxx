@@ -1,0 +1,6 @@
+#ifndef _gp_Parab2d_HeaderFile
+#include <gp_Parab2d.hxx>
+#endif
+#ifndef _Convert_ParabolaToBSplineCurve_HeaderFile
+#include <Convert_ParabolaToBSplineCurve.hxx>
+#endif

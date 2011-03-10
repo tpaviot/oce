@@ -1,0 +1,3 @@
+#ifndef _Vrml_NormalBinding_HeaderFile
+#include <Vrml_NormalBinding.hxx>
+#endif

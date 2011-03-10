@@ -1,0 +1,10 @@
+pubinclude Handle_PFunction_Function.hxx
+pubinclude PFunction_Function.hxx
+privinclude PFunction_Function.jxx
+privinclude PFunction_Function.ixx
+dbadmfile PFunction_xcpp_header.In
+dbadmfile PFunction_xcpp_header.Out
+dbadmfile PFunction_xcpp_header.Dep
+dbadmfile PFunction_obj_inc.In
+dbadmfile PFunction_obj_inc.Out
+dbadmfile PFunction_obj_inc.Dep

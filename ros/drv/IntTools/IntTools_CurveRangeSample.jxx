@@ -1,0 +1,6 @@
+#ifndef _IntTools_Range_HeaderFile
+#include <IntTools_Range.hxx>
+#endif
+#ifndef _IntTools_CurveRangeSample_HeaderFile
+#include <IntTools_CurveRangeSample.hxx>
+#endif

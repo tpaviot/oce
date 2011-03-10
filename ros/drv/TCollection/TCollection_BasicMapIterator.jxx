@@ -1,0 +1,6 @@
+#ifndef _TCollection_BasicMap_HeaderFile
+#include <TCollection_BasicMap.hxx>
+#endif
+#ifndef _TCollection_BasicMapIterator_HeaderFile
+#include <TCollection_BasicMapIterator.hxx>
+#endif

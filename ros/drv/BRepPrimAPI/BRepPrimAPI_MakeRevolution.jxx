@@ -1,0 +1,15 @@
+#ifndef _Standard_DomainError_HeaderFile
+#include <Standard_DomainError.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _gp_Ax2_HeaderFile
+#include <gp_Ax2.hxx>
+#endif
+#ifndef _BRepPrim_Revolution_HeaderFile
+#include <BRepPrim_Revolution.hxx>
+#endif
+#ifndef _BRepPrimAPI_MakeRevolution_HeaderFile
+#include <BRepPrimAPI_MakeRevolution.hxx>
+#endif

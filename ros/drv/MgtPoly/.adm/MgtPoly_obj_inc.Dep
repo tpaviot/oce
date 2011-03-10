@@ -1,0 +1,6 @@
++ MgtPoly:dbadmfile:MgtPoly_obj_inc.In MgtPoly:admfile:MgtPoly_src.Out
++ * MgtPoly:admfile:MgtPoly_xcpp_src.Out
++ MgtPoly:dbadmfile:MgtPoly_obj_inc.Out MgtPoly:admfile:MgtPoly_src.Out
++ * MgtPoly:admfile:MgtPoly_xcpp_src.Out
++ MgtPoly:dbadmfile:MgtPoly_obj_inc.Dep MgtPoly:admfile:MgtPoly_src.Out
++ * MgtPoly:admfile:MgtPoly_xcpp_src.Out

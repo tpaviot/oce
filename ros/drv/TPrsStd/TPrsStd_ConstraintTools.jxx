@@ -1,0 +1,18 @@
+#ifndef _TDataXtd_Constraint_HeaderFile
+#include <TDataXtd_Constraint.hxx>
+#endif
+#ifndef _AIS_InteractiveObject_HeaderFile
+#include <AIS_InteractiveObject.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Geom_Geometry_HeaderFile
+#include <Geom_Geometry.hxx>
+#endif
+#ifndef _TPrsStd_ConstraintTools_HeaderFile
+#include <TPrsStd_ConstraintTools.hxx>
+#endif

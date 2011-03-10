@@ -1,0 +1,15 @@
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _Standard_MultiplyDefined_HeaderFile
+#include <Standard_MultiplyDefined.hxx>
+#endif
+#ifndef _Standard_TypeMismatch_HeaderFile
+#include <Standard_TypeMismatch.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _AIS_Selection_HeaderFile
+#include <AIS_Selection.hxx>
+#endif

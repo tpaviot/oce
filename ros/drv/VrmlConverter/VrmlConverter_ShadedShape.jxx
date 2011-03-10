@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _VrmlConverter_Drawer_HeaderFile
+#include <VrmlConverter_Drawer.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _Poly_Connect_HeaderFile
+#include <Poly_Connect.hxx>
+#endif
+#ifndef _TColgp_Array1OfDir_HeaderFile
+#include <TColgp_Array1OfDir.hxx>
+#endif
+#ifndef _VrmlConverter_ShadedShape_HeaderFile
+#include <VrmlConverter_ShadedShape.hxx>
+#endif

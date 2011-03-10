@@ -1,0 +1,10 @@
+pubinclude ElSLib.hxx
+privinclude ElSLib.jxx
+privinclude ElSLib.ixx
+dbadmfile ElSLib_xcpp_header.In
+dbadmfile ElSLib_xcpp_header.Out
+dbadmfile ElSLib_xcpp_header.Dep
+pubinclude ElSLib.lxx
+dbadmfile ElSLib_obj_inc.In
+dbadmfile ElSLib_obj_inc.Out
+dbadmfile ElSLib_obj_inc.Dep

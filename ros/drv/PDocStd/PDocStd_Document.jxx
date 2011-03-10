@@ -1,0 +1,6 @@
+#ifndef _PDF_Data_HeaderFile
+#include <PDF_Data.hxx>
+#endif
+#ifndef _PDocStd_Document_HeaderFile
+#include <PDocStd_Document.hxx>
+#endif

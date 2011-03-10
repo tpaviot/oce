@@ -1,0 +1,15 @@
+#ifndef _StepShape_SolidModel_HeaderFile
+#include <StepShape_SolidModel.hxx>
+#endif
+#ifndef _StepShape_HalfSpaceSolid_HeaderFile
+#include <StepShape_HalfSpaceSolid.hxx>
+#endif
+#ifndef _StepShape_BooleanResult_HeaderFile
+#include <StepShape_BooleanResult.hxx>
+#endif
+#ifndef _StepShape_CsgPrimitive_HeaderFile
+#include <StepShape_CsgPrimitive.hxx>
+#endif
+#ifndef _StepShape_BooleanOperand_HeaderFile
+#include <StepShape_BooleanOperand.hxx>
+#endif

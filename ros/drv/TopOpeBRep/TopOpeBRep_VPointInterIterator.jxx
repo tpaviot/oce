@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRep_LineInter_HeaderFile
+#include <TopOpeBRep_LineInter.hxx>
+#endif
+#ifndef _TopOpeBRep_VPointInter_HeaderFile
+#include <TopOpeBRep_VPointInter.hxx>
+#endif
+#ifndef _TopOpeBRep_VPointInterIterator_HeaderFile
+#include <TopOpeBRep_VPointInterIterator.hxx>
+#endif

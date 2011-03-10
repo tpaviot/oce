@@ -1,0 +1,9 @@
+#ifndef _IGESGeom_Line_HeaderFile
+#include <IGESGeom_Line.hxx>
+#endif
+#ifndef _IGESData_IGESEntity_HeaderFile
+#include <IGESData_IGESEntity.hxx>
+#endif
+#ifndef _IGESGeom_SurfaceOfRevolution_HeaderFile
+#include <IGESGeom_SurfaceOfRevolution.hxx>
+#endif

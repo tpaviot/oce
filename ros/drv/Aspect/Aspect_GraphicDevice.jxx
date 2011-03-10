@@ -1,0 +1,12 @@
+#ifndef _Aspect_GraphicDeviceDefinitionError_HeaderFile
+#include <Aspect_GraphicDeviceDefinitionError.hxx>
+#endif
+#ifndef _Aspect_BadAccess_HeaderFile
+#include <Aspect_BadAccess.hxx>
+#endif
+#ifndef _Aspect_GraphicDriver_HeaderFile
+#include <Aspect_GraphicDriver.hxx>
+#endif
+#ifndef _Aspect_GraphicDevice_HeaderFile
+#include <Aspect_GraphicDevice.hxx>
+#endif

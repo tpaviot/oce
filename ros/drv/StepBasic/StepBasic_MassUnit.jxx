@@ -1,0 +1,3 @@
+#ifndef _StepBasic_MassUnit_HeaderFile
+#include <StepBasic_MassUnit.hxx>
+#endif

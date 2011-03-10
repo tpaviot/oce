@@ -1,0 +1,4 @@
++ BRepGProp:source:BRepGProp_Face.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/BRepGProp/BRepGProp_Face.lxx
++ BRepGProp:source:BRepGProp_Domain.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/BRepGProp/BRepGProp_Domain.lxx
+- BRepGProp:admfile:BRepGProp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/BRepGProp/BRepGProp_src.Out
+- BRepGProp:admfile:BRepGProp_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/BRepGProp/BRepGProp_xcpp_src.Out

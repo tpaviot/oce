@@ -1,0 +1,9 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepGeom_Axis2Placement_HeaderFile
+#include <StepGeom_Axis2Placement.hxx>
+#endif
+#ifndef _StepGeom_Conic_HeaderFile
+#include <StepGeom_Conic.hxx>
+#endif

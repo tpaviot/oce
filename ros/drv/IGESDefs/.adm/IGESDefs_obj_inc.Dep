@@ -1,0 +1,6 @@
++ IGESDefs:dbadmfile:IGESDefs_obj_inc.In IGESDefs:admfile:IGESDefs_src.Out
++ * IGESDefs:admfile:IGESDefs_xcpp_src.Out
++ IGESDefs:dbadmfile:IGESDefs_obj_inc.Out IGESDefs:admfile:IGESDefs_src.Out
++ * IGESDefs:admfile:IGESDefs_xcpp_src.Out
++ IGESDefs:dbadmfile:IGESDefs_obj_inc.Dep IGESDefs:admfile:IGESDefs_src.Out
++ * IGESDefs:admfile:IGESDefs_xcpp_src.Out

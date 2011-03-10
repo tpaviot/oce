@@ -1,0 +1,3 @@
+#ifndef _StepToTopoDS_Root_HeaderFile
+#include <StepToTopoDS_Root.hxx>
+#endif

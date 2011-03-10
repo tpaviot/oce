@@ -1,0 +1,3 @@
+#ifndef _StepVisual_PresentationRepresentation_HeaderFile
+#include <StepVisual_PresentationRepresentation.hxx>
+#endif

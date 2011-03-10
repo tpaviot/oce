@@ -1,0 +1,12 @@
+#ifndef _AlienImage_EuclidAlienData_HeaderFile
+#include <AlienImage_EuclidAlienData.hxx>
+#endif
+#ifndef _Image_Image_HeaderFile
+#include <Image_Image.hxx>
+#endif
+#ifndef _OSD_File_HeaderFile
+#include <OSD_File.hxx>
+#endif
+#ifndef _AlienImage_EuclidAlienImage_HeaderFile
+#include <AlienImage_EuclidAlienImage.hxx>
+#endif

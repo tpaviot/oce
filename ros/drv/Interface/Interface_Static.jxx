@@ -1,0 +1,30 @@
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+#ifndef _Interface_Static_HeaderFile
+#include <Interface_Static.hxx>
+#endif
+#ifndef _TColStd_HArray1OfAsciiString_HeaderFile
+#include <TColStd_HArray1OfAsciiString.hxx>
+#endif
+#ifndef _Dico_DictionaryOfInteger_HeaderFile
+#include <Dico_DictionaryOfInteger.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _Interface_InterfaceError_HeaderFile
+#include <Interface_InterfaceError.hxx>
+#endif
+#ifndef _Message_Messenger_HeaderFile
+#include <Message_Messenger.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
+#include <TColStd_HSequenceOfHAsciiString.hxx>
+#endif
+#ifndef _Interface_Static_HeaderFile
+#include <Interface_Static.hxx>
+#endif

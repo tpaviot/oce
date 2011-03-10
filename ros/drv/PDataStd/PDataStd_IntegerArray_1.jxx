@@ -1,0 +1,6 @@
+#ifndef _PColStd_HArray1OfInteger_HeaderFile
+#include <PColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _PDataStd_IntegerArray_1_HeaderFile
+#include <PDataStd_IntegerArray_1.hxx>
+#endif

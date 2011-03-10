@@ -1,0 +1,9 @@
+#ifndef _StepBasic_Organization_HeaderFile
+#include <StepBasic_Organization.hxx>
+#endif
+#ifndef _StepBasic_OrganizationRole_HeaderFile
+#include <StepBasic_OrganizationRole.hxx>
+#endif
+#ifndef _StepBasic_OrganizationAssignment_HeaderFile
+#include <StepBasic_OrganizationAssignment.hxx>
+#endif

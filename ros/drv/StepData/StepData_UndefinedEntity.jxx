@@ -1,0 +1,27 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Interface_UndefinedContent_HeaderFile
+#include <Interface_UndefinedContent.hxx>
+#endif
+#ifndef _StepData_UndefinedEntity_HeaderFile
+#include <StepData_UndefinedEntity.hxx>
+#endif
+#ifndef _StepData_StepReaderData_HeaderFile
+#include <StepData_StepReaderData.hxx>
+#endif
+#ifndef _Interface_Check_HeaderFile
+#include <Interface_Check.hxx>
+#endif
+#ifndef _StepData_StepWriter_HeaderFile
+#include <StepData_StepWriter.hxx>
+#endif
+#ifndef _Interface_CopyTool_HeaderFile
+#include <Interface_CopyTool.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _StepData_UndefinedEntity_HeaderFile
+#include <StepData_UndefinedEntity.hxx>
+#endif

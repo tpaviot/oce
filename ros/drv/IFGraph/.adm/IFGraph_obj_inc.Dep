@@ -1,0 +1,6 @@
++ IFGraph:dbadmfile:IFGraph_obj_inc.In IFGraph:admfile:IFGraph_src.Out
++ * IFGraph:admfile:IFGraph_xcpp_src.Out
++ IFGraph:dbadmfile:IFGraph_obj_inc.Out IFGraph:admfile:IFGraph_src.Out
++ * IFGraph:admfile:IFGraph_xcpp_src.Out
++ IFGraph:dbadmfile:IFGraph_obj_inc.Dep IFGraph:admfile:IFGraph_src.Out
++ * IFGraph:admfile:IFGraph_xcpp_src.Out

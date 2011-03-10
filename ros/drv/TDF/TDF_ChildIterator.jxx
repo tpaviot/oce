@@ -1,0 +1,6 @@
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TDF_ChildIterator_HeaderFile
+#include <TDF_ChildIterator.hxx>
+#endif

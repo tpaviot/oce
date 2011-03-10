@@ -1,0 +1,18 @@
+#ifndef _Standard_NotImplemented_HeaderFile
+#include <Standard_NotImplemented.hxx>
+#endif
+#ifndef _CDM_MetaData_HeaderFile
+#include <CDM_MetaData.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _CDM_Document_HeaderFile
+#include <CDM_Document.hxx>
+#endif
+#ifndef _PCDM_ReferenceIterator_HeaderFile
+#include <PCDM_ReferenceIterator.hxx>
+#endif
+#ifndef _CDF_MetaDataDriver_HeaderFile
+#include <CDF_MetaDataDriver.hxx>
+#endif

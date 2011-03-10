@@ -1,0 +1,3 @@
+#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
+#include <StepRepr_ProductDefinitionShape.hxx>
+#endif

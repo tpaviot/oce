@@ -1,0 +1,18 @@
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _TDF_Transaction_HeaderFile
+#include <TDF_Transaction.hxx>
+#endif
+#ifndef _TDF_LabelNode_HeaderFile
+#include <TDF_LabelNode.hxx>
+#endif
+#ifndef _TDF_Delta_HeaderFile
+#include <TDF_Delta.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TDF_Data_HeaderFile
+#include <TDF_Data.hxx>
+#endif

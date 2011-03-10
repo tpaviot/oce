@@ -1,0 +1,15 @@
+#ifndef _StepBasic_LengthMeasureWithUnit_HeaderFile
+#include <StepBasic_LengthMeasureWithUnit.hxx>
+#endif
+#ifndef _StepRepr_MeasureRepresentationItem_HeaderFile
+#include <StepRepr_MeasureRepresentationItem.hxx>
+#endif
+#ifndef _StepBasic_MeasureWithUnit_HeaderFile
+#include <StepBasic_MeasureWithUnit.hxx>
+#endif
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _StepRepr_ReprItemAndLengthMeasureWithUnit_HeaderFile
+#include <StepRepr_ReprItemAndLengthMeasureWithUnit.hxx>
+#endif

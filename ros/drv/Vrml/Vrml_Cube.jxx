@@ -1,0 +1,3 @@
+#ifndef _Vrml_Cube_HeaderFile
+#include <Vrml_Cube.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _StepVisual_AnnotationOccurrence_HeaderFile
+#include <StepVisual_AnnotationOccurrence.hxx>
+#endif

@@ -1,0 +1,6 @@
++ MDocStd:dbadmfile:MDocStd_obj_inc.In MDocStd:admfile:MDocStd_src.Out
++ * MDocStd:admfile:MDocStd_xcpp_src.Out
++ MDocStd:dbadmfile:MDocStd_obj_inc.Out MDocStd:admfile:MDocStd_src.Out
++ * MDocStd:admfile:MDocStd_xcpp_src.Out
++ MDocStd:dbadmfile:MDocStd_obj_inc.Dep MDocStd:admfile:MDocStd_src.Out
++ * MDocStd:admfile:MDocStd_xcpp_src.Out

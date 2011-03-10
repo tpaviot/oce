@@ -1,0 +1,15 @@
+#ifndef _StepGeom_Parabola_HeaderFile
+#include <StepGeom_Parabola.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _Geom2d_Parabola_HeaderFile
+#include <Geom2d_Parabola.hxx>
+#endif
+#ifndef _Geom_Parabola_HeaderFile
+#include <Geom_Parabola.hxx>
+#endif
+#ifndef _GeomToStep_MakeParabola_HeaderFile
+#include <GeomToStep_MakeParabola.hxx>
+#endif

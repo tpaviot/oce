@@ -1,0 +1,30 @@
+#ifndef _XCAFDoc_ShapeTool_HeaderFile
+#include <XCAFDoc_ShapeTool.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TDF_LabelSequence_HeaderFile
+#include <TDF_LabelSequence.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfExtendedString_HeaderFile
+#include <TColStd_HSequenceOfExtendedString.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _XCAFDoc_LayerTool_HeaderFile
+#include <XCAFDoc_LayerTool.hxx>
+#endif

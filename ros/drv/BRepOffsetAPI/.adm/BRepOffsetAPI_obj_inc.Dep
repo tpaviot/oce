@@ -1,0 +1,6 @@
++ BRepOffsetAPI:dbadmfile:BRepOffsetAPI_obj_inc.In BRepOffsetAPI:admfile:BRepOffsetAPI_src.Out
++ * BRepOffsetAPI:admfile:BRepOffsetAPI_xcpp_src.Out
++ BRepOffsetAPI:dbadmfile:BRepOffsetAPI_obj_inc.Out BRepOffsetAPI:admfile:BRepOffsetAPI_src.Out
++ * BRepOffsetAPI:admfile:BRepOffsetAPI_xcpp_src.Out
++ BRepOffsetAPI:dbadmfile:BRepOffsetAPI_obj_inc.Dep BRepOffsetAPI:admfile:BRepOffsetAPI_src.Out
++ * BRepOffsetAPI:admfile:BRepOffsetAPI_xcpp_src.Out

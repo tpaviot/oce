@@ -1,0 +1,6 @@
+#ifndef _IGESSolid_Protocol_HeaderFile
+#include <IGESSolid_Protocol.hxx>
+#endif
+#ifndef _IGESSolid_HeaderFile
+#include <IGESSolid.hxx>
+#endif

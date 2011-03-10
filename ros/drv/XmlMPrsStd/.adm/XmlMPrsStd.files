@@ -1,0 +1,17 @@
+pubinclude XmlMPrsStd.hxx
+privinclude XmlMPrsStd.jxx
+privinclude XmlMPrsStd.ixx
+pubinclude Handle_XmlMPrsStd_PositionDriver.hxx
+pubinclude XmlMPrsStd_PositionDriver.hxx
+privinclude XmlMPrsStd_PositionDriver.jxx
+privinclude XmlMPrsStd_PositionDriver.ixx
+pubinclude Handle_XmlMPrsStd_AISPresentationDriver.hxx
+pubinclude XmlMPrsStd_AISPresentationDriver.hxx
+privinclude XmlMPrsStd_AISPresentationDriver.jxx
+privinclude XmlMPrsStd_AISPresentationDriver.ixx
+dbadmfile XmlMPrsStd_xcpp_header.In
+dbadmfile XmlMPrsStd_xcpp_header.Out
+dbadmfile XmlMPrsStd_xcpp_header.Dep
+dbadmfile XmlMPrsStd_obj_inc.In
+dbadmfile XmlMPrsStd_obj_inc.Out
+dbadmfile XmlMPrsStd_obj_inc.Dep

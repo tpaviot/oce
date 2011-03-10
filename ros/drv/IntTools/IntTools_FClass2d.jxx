@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntTools_FClass2d_HeaderFile
+#include <IntTools_FClass2d.hxx>
+#endif

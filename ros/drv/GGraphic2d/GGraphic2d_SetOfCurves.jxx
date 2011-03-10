@@ -1,0 +1,18 @@
+#ifndef _GGraphic2d_CurveDefinitionError_HeaderFile
+#include <GGraphic2d_CurveDefinitionError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _Graphic2d_GraphicObject_HeaderFile
+#include <Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _Geom2d_Curve_HeaderFile
+#include <Geom2d_Curve.hxx>
+#endif
+#ifndef _Graphic2d_Drawer_HeaderFile
+#include <Graphic2d_Drawer.hxx>
+#endif
+#ifndef _GGraphic2d_SetOfCurves_HeaderFile
+#include <GGraphic2d_SetOfCurves.hxx>
+#endif

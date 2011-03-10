@@ -1,0 +1,3 @@
+#ifndef _MoniTool_IntVal_HeaderFile
+#include <MoniTool_IntVal.hxx>
+#endif

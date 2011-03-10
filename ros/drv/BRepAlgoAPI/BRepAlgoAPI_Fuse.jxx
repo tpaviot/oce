@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPTools_DSFiller_HeaderFile
+#include <BOPTools_DSFiller.hxx>
+#endif
+#ifndef _BRepAlgoAPI_Fuse_HeaderFile
+#include <BRepAlgoAPI_Fuse.hxx>
+#endif

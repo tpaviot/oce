@@ -1,0 +1,9 @@
++ IntAna2d:pubinclude:IntAna2d_Outils.hxx IntAna2d:source:IntAna2d_Outils.hxx
++ IntAna2d:pubinclude:IntAna2d_AnaIntersection.lxx IntAna2d:source:IntAna2d_AnaIntersection.lxx
++ IntAna2d:pubinclude:IntAna2d_IntPoint.lxx IntAna2d:source:IntAna2d_IntPoint.lxx
++ IntAna2d:dbadmfile:IntAna2d_obj_inc.In IntAna2d:admfile:IntAna2d_src.Out
++ * IntAna2d:admfile:IntAna2d_xcpp_src.Out
++ IntAna2d:dbadmfile:IntAna2d_obj_inc.Out IntAna2d:admfile:IntAna2d_src.Out
++ * IntAna2d:admfile:IntAna2d_xcpp_src.Out
++ IntAna2d:dbadmfile:IntAna2d_obj_inc.Dep IntAna2d:admfile:IntAna2d_src.Out
++ * IntAna2d:admfile:IntAna2d_xcpp_src.Out

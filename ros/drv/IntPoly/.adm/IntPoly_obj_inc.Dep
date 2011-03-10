@@ -1,0 +1,8 @@
++ IntPoly:pubinclude:IntPoly_Pnt2dHasher.lxx IntPoly:source:IntPoly_Pnt2dHasher.lxx
++ IntPoly:pubinclude:IntPoly_PntHasher.lxx IntPoly:source:IntPoly_PntHasher.lxx
++ IntPoly:dbadmfile:IntPoly_obj_inc.In IntPoly:admfile:IntPoly_src.Out
++ * IntPoly:admfile:IntPoly_xcpp_src.Out
++ IntPoly:dbadmfile:IntPoly_obj_inc.Out IntPoly:admfile:IntPoly_src.Out
++ * IntPoly:admfile:IntPoly_xcpp_src.Out
++ IntPoly:dbadmfile:IntPoly_obj_inc.Dep IntPoly:admfile:IntPoly_src.Out
++ * IntPoly:admfile:IntPoly_xcpp_src.Out

@@ -1,0 +1,15 @@
+#ifndef _Graphic3d_StructureManager_HeaderFile
+#include <Graphic3d_StructureManager.hxx>
+#endif
+#ifndef _Graphic3d_Structure_HeaderFile
+#include <Graphic3d_Structure.hxx>
+#endif
+#ifndef _Graphic3d_DataStructureManager_HeaderFile
+#include <Graphic3d_DataStructureManager.hxx>
+#endif
+#ifndef _TColStd_Array2OfReal_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
+#endif
+#ifndef _PrsMgr_Prs_HeaderFile
+#include <PrsMgr_Prs.hxx>
+#endif

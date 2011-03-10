@@ -1,0 +1,9 @@
+#ifndef _ExprIntrp_Generator_HeaderFile
+#include <ExprIntrp_Generator.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _ExprIntrp_HeaderFile
+#include <ExprIntrp.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _PPoly_Triangle_HeaderFile
+#include <PPoly_Triangle.hxx>
+#endif

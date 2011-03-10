@@ -1,0 +1,21 @@
+#ifndef _ShapeExtend_WireData_HeaderFile
+#include <ShapeExtend_WireData.hxx>
+#endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TColgp_HArray1OfXYZ_HeaderFile
+#include <TColgp_HArray1OfXYZ.hxx>
+#endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _gp_XYZ_HeaderFile
+#include <gp_XYZ.hxx>
+#endif
+#ifndef _ShapeAnalysis_WireVertex_HeaderFile
+#include <ShapeAnalysis_WireVertex.hxx>
+#endif

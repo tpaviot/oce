@@ -1,0 +1,9 @@
+#ifndef _TopOpeBRepDS_DataStructure_HeaderFile
+#include <TopOpeBRepDS_DataStructure.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
+#include <TopOpeBRepDS_ListOfInterference.hxx>
+#endif
+#ifndef _TopOpeBRepDS_ShapeData_HeaderFile
+#include <TopOpeBRepDS_ShapeData.hxx>
+#endif

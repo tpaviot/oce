@@ -1,0 +1,9 @@
+#ifndef _HLRBRep_AreaLimit_HeaderFile
+#include <HLRBRep_AreaLimit.hxx>
+#endif
+#ifndef _HLRAlgo_Intersection_HeaderFile
+#include <HLRAlgo_Intersection.hxx>
+#endif
+#ifndef _HLRBRep_AreaLimit_HeaderFile
+#include <HLRBRep_AreaLimit.hxx>
+#endif

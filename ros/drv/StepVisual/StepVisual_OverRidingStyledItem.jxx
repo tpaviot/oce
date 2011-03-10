@@ -1,0 +1,15 @@
+#ifndef _StepVisual_StyledItem_HeaderFile
+#include <StepVisual_StyledItem.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
+#include <StepVisual_HArray1OfPresentationStyleAssignment.hxx>
+#endif
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _StepVisual_OverRidingStyledItem_HeaderFile
+#include <StepVisual_OverRidingStyledItem.hxx>
+#endif

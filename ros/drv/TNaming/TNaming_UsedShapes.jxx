@@ -1,0 +1,30 @@
+#ifndef _TNaming_Builder_HeaderFile
+#include <TNaming_Builder.hxx>
+#endif
+#ifndef _TNaming_DataMapOfShapePtrRefShape_HeaderFile
+#include <TNaming_DataMapOfShapePtrRefShape.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _TDF_Attribute_HeaderFile
+#include <TDF_Attribute.hxx>
+#endif
+#ifndef _TDF_AttributeDelta_HeaderFile
+#include <TDF_AttributeDelta.hxx>
+#endif
+#ifndef _TDF_DeltaOnAddition_HeaderFile
+#include <TDF_DeltaOnAddition.hxx>
+#endif
+#ifndef _TDF_DeltaOnRemoval_HeaderFile
+#include <TDF_DeltaOnRemoval.hxx>
+#endif
+#ifndef _TDF_RelocationTable_HeaderFile
+#include <TDF_RelocationTable.hxx>
+#endif
+#ifndef _TDF_DataSet_HeaderFile
+#include <TDF_DataSet.hxx>
+#endif
+#ifndef _TNaming_UsedShapes_HeaderFile
+#include <TNaming_UsedShapes.hxx>
+#endif

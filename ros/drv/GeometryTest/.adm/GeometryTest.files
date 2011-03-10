@@ -1,0 +1,9 @@
+pubinclude GeometryTest.hxx
+privinclude GeometryTest.jxx
+privinclude GeometryTest.ixx
+dbadmfile GeometryTest_xcpp_header.In
+dbadmfile GeometryTest_xcpp_header.Out
+dbadmfile GeometryTest_xcpp_header.Dep
+dbadmfile GeometryTest_obj_inc.In
+dbadmfile GeometryTest_obj_inc.Out
+dbadmfile GeometryTest_obj_inc.Dep

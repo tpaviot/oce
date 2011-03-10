@@ -1,0 +1,12 @@
+#ifndef _PXCAFDoc_GraphNode_HeaderFile
+#include <PXCAFDoc_GraphNode.hxx>
+#endif
+#ifndef _PXCAFDoc_GraphNodeSequence_HeaderFile
+#include <PXCAFDoc_GraphNodeSequence.hxx>
+#endif
+#ifndef _Standard_GUID_HeaderFile
+#include <Standard_GUID.hxx>
+#endif
+#ifndef _PXCAFDoc_GraphNode_HeaderFile
+#include <PXCAFDoc_GraphNode.hxx>
+#endif

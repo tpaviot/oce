@@ -1,0 +1,9 @@
+#ifndef _BOP_ListOfLoop_HeaderFile
+#include <BOP_ListOfLoop.hxx>
+#endif
+#ifndef _BOP_Loop_HeaderFile
+#include <BOP_Loop.hxx>
+#endif
+#ifndef _BOP_LoopSet_HeaderFile
+#include <BOP_LoopSet.hxx>
+#endif

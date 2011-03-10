@@ -1,0 +1,6 @@
++ MMgt:dbadmfile:MMgt_obj_inc.In MMgt:admfile:MMgt_src.Out
++ * MMgt:admfile:MMgt_xcpp_src.Out
++ MMgt:dbadmfile:MMgt_obj_inc.Out MMgt:admfile:MMgt_src.Out
++ * MMgt:admfile:MMgt_xcpp_src.Out
++ MMgt:dbadmfile:MMgt_obj_inc.Dep MMgt:admfile:MMgt_src.Out
++ * MMgt:admfile:MMgt_xcpp_src.Out

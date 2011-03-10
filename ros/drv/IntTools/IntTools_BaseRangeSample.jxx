@@ -1,0 +1,3 @@
+#ifndef _IntTools_BaseRangeSample_HeaderFile
+#include <IntTools_BaseRangeSample.hxx>
+#endif

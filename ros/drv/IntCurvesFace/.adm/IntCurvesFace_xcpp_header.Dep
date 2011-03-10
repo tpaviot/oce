@@ -1,0 +1,9 @@
++ IntCurvesFace:pubinclude:IntCurvesFace_Intersector.hxx IntCurvesFace:msentity:IntCurvesFace_Intersector
++ IntCurvesFace:privinclude:IntCurvesFace_Intersector.jxx IntCurvesFace:msentity:IntCurvesFace_Intersector
++ IntCurvesFace:privinclude:IntCurvesFace_Intersector.ixx IntCurvesFace:msentity:IntCurvesFace_Intersector
++ IntCurvesFace:pubinclude:IntCurvesFace_ShapeIntersector.hxx IntCurvesFace:msentity:IntCurvesFace_ShapeIntersector
++ IntCurvesFace:privinclude:IntCurvesFace_ShapeIntersector.jxx IntCurvesFace:msentity:IntCurvesFace_ShapeIntersector
++ IntCurvesFace:privinclude:IntCurvesFace_ShapeIntersector.ixx IntCurvesFace:msentity:IntCurvesFace_ShapeIntersector
++ IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.In IntCurvesFace:admfile:IntCurvesFace_xcpp_fill.Out
++ IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.Out IntCurvesFace:admfile:IntCurvesFace_xcpp_fill.Out
++ IntCurvesFace:dbadmfile:IntCurvesFace_xcpp_header.Dep IntCurvesFace:admfile:IntCurvesFace_xcpp_fill.Out

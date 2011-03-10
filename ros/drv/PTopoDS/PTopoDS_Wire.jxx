@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_Wire_HeaderFile
+#include <PTopoDS_Wire.hxx>
+#endif

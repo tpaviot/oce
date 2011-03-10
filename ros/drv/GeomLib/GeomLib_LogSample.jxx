@@ -1,0 +1,6 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _GeomLib_LogSample_HeaderFile
+#include <GeomLib_LogSample.hxx>
+#endif

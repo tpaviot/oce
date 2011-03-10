@@ -1,0 +1,15 @@
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _TopTools_IndexedMapOfOrientedShape_HeaderFile
+#include <TopTools_IndexedMapOfOrientedShape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_VertexInfo_HeaderFile
+#include <TopOpeBRepBuild_VertexInfo.hxx>
+#endif

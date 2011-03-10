@@ -1,0 +1,24 @@
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
+#ifndef _StepShape_Sphere_HeaderFile
+#include <StepShape_Sphere.hxx>
+#endif
+#ifndef _StepShape_Block_HeaderFile
+#include <StepShape_Block.hxx>
+#endif
+#ifndef _StepShape_RightAngularWedge_HeaderFile
+#include <StepShape_RightAngularWedge.hxx>
+#endif
+#ifndef _StepShape_Torus_HeaderFile
+#include <StepShape_Torus.hxx>
+#endif
+#ifndef _StepShape_RightCircularCone_HeaderFile
+#include <StepShape_RightCircularCone.hxx>
+#endif
+#ifndef _StepShape_RightCircularCylinder_HeaderFile
+#include <StepShape_RightCircularCylinder.hxx>
+#endif
+#ifndef _StepShape_CsgPrimitive_HeaderFile
+#include <StepShape_CsgPrimitive.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
+#ifndef _StdFail_UndefinedDerivative_HeaderFile
+#include <StdFail_UndefinedDerivative.hxx>
+#endif
+#ifndef _IntSurf_PathPoint_HeaderFile
+#include <IntSurf_PathPoint.hxx>
+#endif
+#ifndef _IntSurf_PathPointTool_HeaderFile
+#include <IntSurf_PathPointTool.hxx>
+#endif

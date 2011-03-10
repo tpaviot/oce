@@ -1,0 +1,10 @@
+pubinclude UnitsAPI.hxx
+privinclude UnitsAPI.jxx
+privinclude UnitsAPI.ixx
+pubinclude UnitsAPI_SystemUnits.hxx
+dbadmfile UnitsAPI_xcpp_header.In
+dbadmfile UnitsAPI_xcpp_header.Out
+dbadmfile UnitsAPI_xcpp_header.Dep
+dbadmfile UnitsAPI_obj_inc.In
+dbadmfile UnitsAPI_obj_inc.Out
+dbadmfile UnitsAPI_obj_inc.Dep

@@ -1,0 +1,16 @@
++V ShapeExtend:msentity:ShapeExtend .
++V ShapeExtend:msentity:ShapeExtend_ComplexCurve .
++V ShapeExtend:msentity:ShapeExtend_CompositeSurface .
++V ShapeExtend:msentity:ShapeExtend_WireData .
++V ShapeExtend:msentity:ShapeExtend_BasicMsgRegistrator .
++V ShapeExtend:msentity:ShapeExtend_MsgRegistrator .
++V ShapeExtend:msentity:ShapeExtend_Explorer .
++V ShapeExtend:msentity:ShapeExtend_DataMapOfShapeListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_DataMapOfTransientListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg .
++V ShapeExtend:msentity:ShapeExtend_Status .
++V ShapeExtend:msentity:ShapeExtend_Parametrisation .
+- ShapeExtend:admfile:ShapeExtend_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/ShapeExtend/ShapeExtend_xcpp_fill.Out

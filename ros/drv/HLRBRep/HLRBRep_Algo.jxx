@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
+#endif
+#ifndef _HLRBRep_Algo_HeaderFile
+#include <HLRBRep_Algo.hxx>
+#endif

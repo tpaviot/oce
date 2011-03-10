@@ -1,0 +1,18 @@
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _BRepAdaptor_Surface_HeaderFile
+#include <BRepAdaptor_Surface.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _Geom2dAdaptor_Curve_HeaderFile
+#include <Geom2dAdaptor_Curve.hxx>
+#endif
+#ifndef _IntRes2d_Domain_HeaderFile
+#include <IntRes2d_Domain.hxx>
+#endif
+#ifndef _TopOpeBRep_Hctxee2d_HeaderFile
+#include <TopOpeBRep_Hctxee2d.hxx>
+#endif

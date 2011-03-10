@@ -1,0 +1,15 @@
+#ifndef _IFSelect_IntParam_HeaderFile
+#include <IFSelect_IntParam.hxx>
+#endif
+#ifndef _Interface_EntityIterator_HeaderFile
+#include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _Interface_Graph_HeaderFile
+#include <Interface_Graph.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _IFSelect_SelectEntityNumber_HeaderFile
+#include <IFSelect_SelectEntityNumber.hxx>
+#endif

@@ -1,0 +1,3 @@
+#ifndef _IGESAppli_LineWidening_HeaderFile
+#include <IGESAppli_LineWidening.hxx>
+#endif

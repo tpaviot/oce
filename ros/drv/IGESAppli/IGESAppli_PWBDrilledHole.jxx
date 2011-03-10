@@ -1,0 +1,3 @@
+#ifndef _IGESAppli_PWBDrilledHole_HeaderFile
+#include <IGESAppli_PWBDrilledHole.hxx>
+#endif

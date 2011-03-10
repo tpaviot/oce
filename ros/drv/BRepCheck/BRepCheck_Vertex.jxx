@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepCheck_Vertex_HeaderFile
+#include <BRepCheck_Vertex.hxx>
+#endif

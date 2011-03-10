@@ -1,0 +1,3 @@
+#ifndef _IGESGraph_DrawingSize_HeaderFile
+#include <IGESGraph_DrawingSize.hxx>
+#endif

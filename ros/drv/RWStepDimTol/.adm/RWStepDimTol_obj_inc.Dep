@@ -1,0 +1,6 @@
++ RWStepDimTol:dbadmfile:RWStepDimTol_obj_inc.In RWStepDimTol:admfile:RWStepDimTol_src.Out
++ * RWStepDimTol:admfile:RWStepDimTol_xcpp_src.Out
++ RWStepDimTol:dbadmfile:RWStepDimTol_obj_inc.Out RWStepDimTol:admfile:RWStepDimTol_src.Out
++ * RWStepDimTol:admfile:RWStepDimTol_xcpp_src.Out
++ RWStepDimTol:dbadmfile:RWStepDimTol_obj_inc.Dep RWStepDimTol:admfile:RWStepDimTol_src.Out
++ * RWStepDimTol:admfile:RWStepDimTol_xcpp_src.Out

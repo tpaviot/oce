@@ -1,0 +1,9 @@
+pubinclude Hermit.hxx
+privinclude Hermit.jxx
+privinclude Hermit.ixx
+dbadmfile Hermit_xcpp_header.In
+dbadmfile Hermit_xcpp_header.Out
+dbadmfile Hermit_xcpp_header.Dep
+dbadmfile Hermit_obj_inc.In
+dbadmfile Hermit_obj_inc.Out
+dbadmfile Hermit_obj_inc.Dep

@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassificationLevel_HeaderFile
+#include <StepBasic_SecurityClassificationLevel.hxx>
+#endif

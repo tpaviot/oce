@@ -1,0 +1,9 @@
+#ifndef _StepGeom_CartesianPoint_HeaderFile
+#include <StepGeom_CartesianPoint.hxx>
+#endif
+#ifndef _StepToTopoDS_PointPairHasher_HeaderFile
+#include <StepToTopoDS_PointPairHasher.hxx>
+#endif
+#ifndef _StepToTopoDS_PointPair_HeaderFile
+#include <StepToTopoDS_PointPair.hxx>
+#endif

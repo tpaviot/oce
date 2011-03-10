@@ -1,0 +1,3 @@
+#ifndef _IntSurf_Couple_HeaderFile
+#include <IntSurf_Couple.hxx>
+#endif

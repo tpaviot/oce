@@ -1,0 +1,3 @@
+#ifndef _StepFEA_FeaModelDefinition_HeaderFile
+#include <StepFEA_FeaModelDefinition.hxx>
+#endif

@@ -1,0 +1,15 @@
+#ifndef _TFunction_Logbook_HeaderFile
+#include <TFunction_Logbook.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _BRepPrimAPI_MakeRevol_HeaderFile
+#include <BRepPrimAPI_MakeRevol.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _DNaming_RevolutionDriver_HeaderFile
+#include <DNaming_RevolutionDriver.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _Geom_RectangularTrimmedSurface_HeaderFile
+#include <Geom_RectangularTrimmedSurface.hxx>
+#endif
+#ifndef _StdFail_NotDone_HeaderFile
+#include <StdFail_NotDone.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _GC_MakeTrimmedCone_HeaderFile
+#include <GC_MakeTrimmedCone.hxx>
+#endif

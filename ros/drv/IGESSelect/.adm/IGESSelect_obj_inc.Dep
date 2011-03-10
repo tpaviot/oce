@@ -1,0 +1,6 @@
++ IGESSelect:dbadmfile:IGESSelect_obj_inc.In IGESSelect:admfile:IGESSelect_src.Out
++ * IGESSelect:admfile:IGESSelect_xcpp_src.Out
++ IGESSelect:dbadmfile:IGESSelect_obj_inc.Out IGESSelect:admfile:IGESSelect_src.Out
++ * IGESSelect:admfile:IGESSelect_xcpp_src.Out
++ IGESSelect:dbadmfile:IGESSelect_obj_inc.Dep IGESSelect:admfile:IGESSelect_src.Out
++ * IGESSelect:admfile:IGESSelect_xcpp_src.Out

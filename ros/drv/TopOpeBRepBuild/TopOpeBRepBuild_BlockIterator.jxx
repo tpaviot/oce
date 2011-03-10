@@ -1,0 +1,6 @@
+#ifndef _Standard_NoMoreObject_HeaderFile
+#include <Standard_NoMoreObject.hxx>
+#endif
+#ifndef _TopOpeBRepBuild_BlockIterator_HeaderFile
+#include <TopOpeBRepBuild_BlockIterator.hxx>
+#endif

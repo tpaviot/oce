@@ -1,0 +1,6 @@
+#ifndef _TDataStd_DataMapOfStringReal_HeaderFile
+#include <TDataStd_DataMapOfStringReal.hxx>
+#endif
+#ifndef _TDataStd_HDataMapOfStringReal_HeaderFile
+#include <TDataStd_HDataMapOfStringReal.hxx>
+#endif

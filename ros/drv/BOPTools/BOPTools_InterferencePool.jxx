@@ -1,0 +1,27 @@
+#ifndef _BooleanOperations_ShapesDataStructure_HeaderFile
+#include <BooleanOperations_ShapesDataStructure.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfInterferenceLine_HeaderFile
+#include <BOPTools_CArray1OfInterferenceLine.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfSSInterference_HeaderFile
+#include <BOPTools_CArray1OfSSInterference.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfESInterference_HeaderFile
+#include <BOPTools_CArray1OfESInterference.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfVSInterference_HeaderFile
+#include <BOPTools_CArray1OfVSInterference.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfEEInterference_HeaderFile
+#include <BOPTools_CArray1OfEEInterference.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfVEInterference_HeaderFile
+#include <BOPTools_CArray1OfVEInterference.hxx>
+#endif
+#ifndef _BOPTools_CArray1OfVVInterference_HeaderFile
+#include <BOPTools_CArray1OfVVInterference.hxx>
+#endif
+#ifndef _BOPTools_InterferencePool_HeaderFile
+#include <BOPTools_InterferencePool.hxx>
+#endif

@@ -1,0 +1,18 @@
+#ifndef _Standard_NotImplemented_HeaderFile
+#include <Standard_NotImplemented.hxx>
+#endif
+#ifndef _SelectBasics_EntityOwner_HeaderFile
+#include <SelectBasics_EntityOwner.hxx>
+#endif
+#ifndef _Select2D_Projector_HeaderFile
+#include <Select2D_Projector.hxx>
+#endif
+#ifndef _TColgp_Array1OfPnt2d_HeaderFile
+#include <TColgp_Array1OfPnt2d.hxx>
+#endif
+#ifndef _Bnd_Box2d_HeaderFile
+#include <Bnd_Box2d.hxx>
+#endif
+#ifndef _Select2D_SensitiveEntity_HeaderFile
+#include <Select2D_SensitiveEntity.hxx>
+#endif

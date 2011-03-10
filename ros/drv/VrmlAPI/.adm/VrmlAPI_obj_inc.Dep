@@ -1,0 +1,6 @@
++ VrmlAPI:dbadmfile:VrmlAPI_obj_inc.In VrmlAPI:admfile:VrmlAPI_src.Out
++ * VrmlAPI:admfile:VrmlAPI_xcpp_src.Out
++ VrmlAPI:dbadmfile:VrmlAPI_obj_inc.Out VrmlAPI:admfile:VrmlAPI_src.Out
++ * VrmlAPI:admfile:VrmlAPI_xcpp_src.Out
++ VrmlAPI:dbadmfile:VrmlAPI_obj_inc.Dep VrmlAPI:admfile:VrmlAPI_src.Out
++ * VrmlAPI:admfile:VrmlAPI_xcpp_src.Out

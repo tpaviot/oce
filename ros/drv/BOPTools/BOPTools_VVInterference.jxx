@@ -1,0 +1,3 @@
+#ifndef _BOPTools_VVInterference_HeaderFile
+#include <BOPTools_VVInterference.hxx>
+#endif

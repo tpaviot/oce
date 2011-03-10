@@ -1,0 +1,12 @@
+#ifndef _StepBasic_HArray1OfApproval_HeaderFile
+#include <StepBasic_HArray1OfApproval.hxx>
+#endif
+#ifndef _StepBasic_SecurityClassification_HeaderFile
+#include <StepBasic_SecurityClassification.hxx>
+#endif
+#ifndef _StepBasic_Approval_HeaderFile
+#include <StepBasic_Approval.hxx>
+#endif
+#ifndef _StepAP214_AutoDesignSecurityClassificationAssignment_HeaderFile
+#include <StepAP214_AutoDesignSecurityClassificationAssignment.hxx>
+#endif

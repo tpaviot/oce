@@ -1,0 +1,6 @@
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _StepFEA_ParametricSurface3dElementCoordinateSystem_HeaderFile
+#include <StepFEA_ParametricSurface3dElementCoordinateSystem.hxx>
+#endif

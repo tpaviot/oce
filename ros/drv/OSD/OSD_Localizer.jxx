@@ -1,0 +1,3 @@
+#ifndef _OSD_Localizer_HeaderFile
+#include <OSD_Localizer.hxx>
+#endif

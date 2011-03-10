@@ -1,0 +1,6 @@
+#ifndef _IntPolyh_Point_HeaderFile
+#include <IntPolyh_Point.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfPoints_HeaderFile
+#include <IntPolyh_ArrayOfPoints.hxx>
+#endif

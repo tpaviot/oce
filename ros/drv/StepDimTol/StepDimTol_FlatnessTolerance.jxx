@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_FlatnessTolerance_HeaderFile
+#include <StepDimTol_FlatnessTolerance.hxx>
+#endif

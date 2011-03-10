@@ -1,0 +1,33 @@
+#ifndef _BinMDF_ADriverTable_HeaderFile
+#include <BinMDF_ADriverTable.hxx>
+#endif
+#ifndef _CDM_MessageDriver_HeaderFile
+#include <CDM_MessageDriver.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _PCDM_Document_HeaderFile
+#include <PCDM_Document.hxx>
+#endif
+#ifndef _CDM_Document_HeaderFile
+#include <CDM_Document.hxx>
+#endif
+#ifndef _CDM_Application_HeaderFile
+#include <CDM_Application.hxx>
+#endif
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _Storage_HeaderData_HeaderFile
+#include <Storage_HeaderData.hxx>
+#endif
+#ifndef _BinLDrivers_DocumentSection_HeaderFile
+#include <BinLDrivers_DocumentSection.hxx>
+#endif
+#ifndef _BinLDrivers_DocumentRetrievalDriver_HeaderFile
+#include <BinLDrivers_DocumentRetrievalDriver.hxx>
+#endif

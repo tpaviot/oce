@@ -1,0 +1,3 @@
+#ifndef _StepDimTol_LineProfileTolerance_HeaderFile
+#include <StepDimTol_LineProfileTolerance.hxx>
+#endif

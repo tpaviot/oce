@@ -1,0 +1,12 @@
++ FilletSurf:pubinclude:FilletSurf_Builder.hxx FilletSurf:msentity:FilletSurf_Builder
++ FilletSurf:privinclude:FilletSurf_Builder.jxx FilletSurf:msentity:FilletSurf_Builder
++ FilletSurf:privinclude:FilletSurf_Builder.ixx FilletSurf:msentity:FilletSurf_Builder
++ FilletSurf:pubinclude:FilletSurf_InternalBuilder.hxx FilletSurf:msentity:FilletSurf_InternalBuilder
++ FilletSurf:privinclude:FilletSurf_InternalBuilder.jxx FilletSurf:msentity:FilletSurf_InternalBuilder
++ FilletSurf:privinclude:FilletSurf_InternalBuilder.ixx FilletSurf:msentity:FilletSurf_InternalBuilder
++ FilletSurf:pubinclude:FilletSurf_StatusType.hxx FilletSurf:msentity:FilletSurf_StatusType
++ FilletSurf:pubinclude:FilletSurf_StatusDone.hxx FilletSurf:msentity:FilletSurf_StatusDone
++ FilletSurf:pubinclude:FilletSurf_ErrorTypeStatus.hxx FilletSurf:msentity:FilletSurf_ErrorTypeStatus
++ FilletSurf:dbadmfile:FilletSurf_xcpp_header.In FilletSurf:admfile:FilletSurf_xcpp_fill.Out
++ FilletSurf:dbadmfile:FilletSurf_xcpp_header.Out FilletSurf:admfile:FilletSurf_xcpp_fill.Out
++ FilletSurf:dbadmfile:FilletSurf_xcpp_header.Dep FilletSurf:admfile:FilletSurf_xcpp_fill.Out

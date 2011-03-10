@@ -1,0 +1,14 @@
+pubinclude ChFi2d.hxx
+privinclude ChFi2d.jxx
+privinclude ChFi2d.ixx
+pubinclude ChFi2d_Builder.hxx
+privinclude ChFi2d_Builder.jxx
+privinclude ChFi2d_Builder.ixx
+pubinclude ChFi2d_ConstructionError.hxx
+dbadmfile ChFi2d_xcpp_header.In
+dbadmfile ChFi2d_xcpp_header.Out
+dbadmfile ChFi2d_xcpp_header.Dep
+pubinclude ChFi2d_Builder.lxx
+dbadmfile ChFi2d_obj_inc.In
+dbadmfile ChFi2d_obj_inc.Out
+dbadmfile ChFi2d_obj_inc.Dep

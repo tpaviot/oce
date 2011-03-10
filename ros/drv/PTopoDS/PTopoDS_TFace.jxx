@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_TFace_HeaderFile
+#include <PTopoDS_TFace.hxx>
+#endif

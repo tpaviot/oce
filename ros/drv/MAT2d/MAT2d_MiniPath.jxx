@@ -1,0 +1,12 @@
+#ifndef _MAT2d_SequenceOfSequenceOfGeometry_HeaderFile
+#include <MAT2d_SequenceOfSequenceOfGeometry.hxx>
+#endif
+#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
+#include <MAT2d_SequenceOfConnexion.hxx>
+#endif
+#ifndef _MAT2d_Connexion_HeaderFile
+#include <MAT2d_Connexion.hxx>
+#endif
+#ifndef _MAT2d_MiniPath_HeaderFile
+#include <MAT2d_MiniPath.hxx>
+#endif

@@ -1,0 +1,9 @@
+pubinclude UnitsMethods.hxx
+privinclude UnitsMethods.jxx
+privinclude UnitsMethods.ixx
+dbadmfile UnitsMethods_xcpp_header.In
+dbadmfile UnitsMethods_xcpp_header.Out
+dbadmfile UnitsMethods_xcpp_header.Dep
+dbadmfile UnitsMethods_obj_inc.In
+dbadmfile UnitsMethods_obj_inc.Out
+dbadmfile UnitsMethods_obj_inc.Dep

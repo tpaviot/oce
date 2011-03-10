@@ -1,0 +1,3 @@
+#ifndef _PTopoDS_Face_HeaderFile
+#include <PTopoDS_Face.hxx>
+#endif

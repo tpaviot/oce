@@ -1,0 +1,9 @@
+#ifndef _StepGeom_Circle_HeaderFile
+#include <StepGeom_Circle.hxx>
+#endif
+#ifndef _Geom_Circle_HeaderFile
+#include <Geom_Circle.hxx>
+#endif
+#ifndef _StepToGeom_MakeCircle_HeaderFile
+#include <StepToGeom_MakeCircle.hxx>
+#endif

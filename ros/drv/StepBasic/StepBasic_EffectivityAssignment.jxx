@@ -1,0 +1,6 @@
+#ifndef _StepBasic_Effectivity_HeaderFile
+#include <StepBasic_Effectivity.hxx>
+#endif
+#ifndef _StepBasic_EffectivityAssignment_HeaderFile
+#include <StepBasic_EffectivityAssignment.hxx>
+#endif

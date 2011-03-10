@@ -1,0 +1,3 @@
+#ifndef _AppParCurves_ConstraintCouple_HeaderFile
+#include <AppParCurves_ConstraintCouple.hxx>
+#endif

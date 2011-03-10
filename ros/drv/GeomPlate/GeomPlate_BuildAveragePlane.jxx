@@ -1,0 +1,24 @@
+#ifndef _TColgp_HArray1OfPnt_HeaderFile
+#include <TColgp_HArray1OfPnt.hxx>
+#endif
+#ifndef _Geom_Plane_HeaderFile
+#include <Geom_Plane.hxx>
+#endif
+#ifndef _Geom_Line_HeaderFile
+#include <Geom_Line.hxx>
+#endif
+#ifndef _Standard_NoSuchObject_HeaderFile
+#include <Standard_NoSuchObject.hxx>
+#endif
+#ifndef _TColgp_SequenceOfVec_HeaderFile
+#include <TColgp_SequenceOfVec.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
+#ifndef _GeomPlate_SequenceOfAij_HeaderFile
+#include <GeomPlate_SequenceOfAij.hxx>
+#endif
+#ifndef _GeomPlate_BuildAveragePlane_HeaderFile
+#include <GeomPlate_BuildAveragePlane.hxx>
+#endif

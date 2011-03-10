@@ -1,0 +1,3 @@
+#ifndef _XSAlgo_ToolContainer_HeaderFile
+#include <XSAlgo_ToolContainer.hxx>
+#endif

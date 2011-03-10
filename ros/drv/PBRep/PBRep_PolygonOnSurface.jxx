@@ -1,0 +1,12 @@
+#ifndef _PGeom_Surface_HeaderFile
+#include <PGeom_Surface.hxx>
+#endif
+#ifndef _PPoly_Polygon2D_HeaderFile
+#include <PPoly_Polygon2D.hxx>
+#endif
+#ifndef _PTopLoc_Location_HeaderFile
+#include <PTopLoc_Location.hxx>
+#endif
+#ifndef _PBRep_PolygonOnSurface_HeaderFile
+#include <PBRep_PolygonOnSurface.hxx>
+#endif

@@ -1,0 +1,12 @@
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
+#ifndef _IFSelect_ContextWrite_HeaderFile
+#include <IFSelect_ContextWrite.hxx>
+#endif
+#ifndef _StepData_StepWriter_HeaderFile
+#include <StepData_StepWriter.hxx>
+#endif
+#ifndef _StepSelect_FloatFormat_HeaderFile
+#include <StepSelect_FloatFormat.hxx>
+#endif
