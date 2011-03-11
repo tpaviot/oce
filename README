@@ -3,3 +3,12 @@ oce stands for *o*pencascade *c*ommunity *e*dition.
 This project aims at gathering patches/changes/improvements from the OCC community over the latest 6.5.0 release.
 
 Just email tpaviot@gmail.com for a request regarding write access to the repository.
+
+How to create a local copy of the repository?
+=============================================
+git clone git://github.com/tpaviot/oce.git
+
+How to stay up to date with latest developements?
+=================================================
+cd oce
+git pull
