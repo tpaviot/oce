@@ -15,7 +15,7 @@
 #include <OSD_Path.ixx>
 
 static OSD_SysType whereAmI(){
-#if defined(__digital__) || defined(__FreeBSD__) || defined(SUNOS) || defined(__APPLE__)
+#if defined(__digital__) || defined(__FreeBSD__) || defined(SUNOS) || defined(__APPLE__) || defined(__FreeBSD_kernel__)
   return OSD_UnixBSD;
 }
 #elif defined(sgi)  || defined(IRIX) || defined(__sun)  || defined(SOLARIS) ||  defined(__sco__) || defined(__hpux) || defined(HPUX)
@@ -43,13 +43,6 @@ static OSD_SysType whereAmI(){
   return OSD_Aix;
 }
 #else
-  struct utsname info;
-  uname(&info);
-  cout << info.sysname << endl;
-  cout << info.nodename << endl;
-  cout << info.release << endl;
-  cout << info.version << endl;
-  cout << info.machine << endl;
   return OSD_Default;
 }
 #endif
