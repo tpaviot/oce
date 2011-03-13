@@ -2107,8 +2107,8 @@ void BRepFill_Evolved::AddTopAndBottom(BRepTools_Quilt& Glue)
 	    gp_Pnt PC;
 	    gp_Vec VC;
 	    C.D1(u,PC,VC);
-	    gp_Vec PPC(P,PC);
-	    gp_Vec Prod = PPC.Crossed(VC);
+	    gp_Vec ppc(P,PC);
+	    gp_Vec Prod = ppc.Crossed(VC);
 	    if (IsOut) {
 	      ToReverse = Prod.Z() < 0.;
 	    }
