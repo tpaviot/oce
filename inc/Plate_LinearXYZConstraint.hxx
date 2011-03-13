@@ -36,9 +36,9 @@ public:
   
   Standard_EXPORT Plate_LinearXYZConstraint();
   
-  Standard_EXPORT Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint& PPC, const TColStd_Array1OfReal& coeff);
+  Standard_EXPORT Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint& ppc, const TColStd_Array1OfReal& coeff);
   
-  Standard_EXPORT Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint& PPC, const TColStd_Array2OfReal& coeff);
+  Standard_EXPORT Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint& ppc, const TColStd_Array2OfReal& coeff);
   
   Standard_EXPORT Plate_LinearXYZConstraint(const Standard_Integer ColLen, const Standard_Integer RowLen);
   
@@ -48,7 +48,7 @@ public:
   
   //! Sets   the PinPointConstraint of   index Index to
   //! Value raise if Index is greater than the length of
-  //! PPC or the Row length of coeff or lower  than 1
+  //! ppc or the Row length of coeff or lower  than 1
   Standard_EXPORT   void SetPPC (const Standard_Integer Index, const Plate_PinpointConstraint& Value) ;
   
   //! Sets the coeff  of index (Row,Col)  to Value
