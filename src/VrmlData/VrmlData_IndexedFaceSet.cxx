@@ -34,6 +34,8 @@
 #pragma warning (disable:4996)
 #endif
 
+#include <stdio.h>
+
 IMPLEMENT_STANDARD_HANDLE  (VrmlData_Faceted, VrmlData_Geometry)
 IMPLEMENT_STANDARD_RTTIEXT (VrmlData_Faceted, VrmlData_Geometry)
 IMPLEMENT_STANDARD_HANDLE  (VrmlData_IndexedFaceSet, VrmlData_Faceted)

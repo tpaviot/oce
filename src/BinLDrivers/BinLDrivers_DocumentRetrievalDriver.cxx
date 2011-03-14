@@ -179,7 +179,7 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   }
 
   // Open the file stream
-#ifdef _WIN32
+#ifdef _MSC_VER
   ifstream anIS ((const wchar_t*) theFileName.ToExtString(), ios::in | ios::binary);
 #else
   ifstream anIS (aFileName.ToCString());

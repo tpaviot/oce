@@ -55,11 +55,18 @@ int Standard_Atomic_Decrement (volatile int* theValue)
   return __sync_sub_and_fetch (theValue, 1);
 }
 
-#elif defined(_WIN32)
+#elif defined(_MSC_VER) || defined(__BORLANDC__)
+#ifdef __BORLANDC__
+extern "C" {
+  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+ }
+#else
 extern "C" {
   long _InterlockedIncrement (volatile long* lpAddend);
   long _InterlockedDecrement (volatile long* lpAddend);
 }
+#endif
 
 #if defined(_MSC_VER)
   // force intrinsic instead of WinAPI calls

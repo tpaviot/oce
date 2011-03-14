@@ -467,6 +467,7 @@ Standard_Integer Tcl_AppInit (Tcl_Interp *)
 // for debug call
 //
 
+#include <stdio.h>
 
 
 Standard_Integer  Draw_Call (char *c)

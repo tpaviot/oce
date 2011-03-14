@@ -19,6 +19,8 @@
 #include <TCollection_HAsciiString.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 
+#include <stdio.h>
+
 IMPLEMENT_DOMSTRING (NameIndexString,  "name")
 IMPLEMENT_DOMSTRING (DescrIndexString, "descr")
 IMPLEMENT_DOMSTRING (FirstIndexString, "first")

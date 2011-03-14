@@ -812,7 +812,11 @@ void Standard_MMgrOpt::FreeMemory (Standard_Address aBlock,
     // recover handle to the memory mapping stored just before the block
     const HANDLE * aMBlock = (const HANDLE *)aBlock;
     HANDLE hMap = *(--aMBlock);
+#ifndef __MINGW32__
     UnmapViewOfFile((LPCVOID)aMBlock);
+#else
+    UnmapViewOfFile(const_cast<void*>((LPCVOID)aMBlock));
+#endif
     CloseHandle (hMap);
 #endif
   }

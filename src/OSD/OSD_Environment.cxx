@@ -238,6 +238,8 @@ Standard_Integer OSD_Environment::Error() const
 
 #include <windows.h>
 
+#include <stdio.h>
+
 #ifdef _MSC_VER
 #pragma warning( disable : 4700 )
 #endif

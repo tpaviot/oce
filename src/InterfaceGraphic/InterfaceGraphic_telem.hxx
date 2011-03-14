@@ -20,6 +20,10 @@
 #include <InterfaceGraphic_tgl_all.hxx>
 #include <stdlib.h>
 
+#ifdef __BORLANDC__
+#include <mem.h>
+#endif
+
 struct TEL_TEXTURE_COORD
 {
   float xy[2];

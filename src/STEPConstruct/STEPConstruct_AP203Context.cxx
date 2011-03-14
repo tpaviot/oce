@@ -46,6 +46,10 @@
 #include <StepAP203_HArray1OfApprovedItem.hxx>
 #include <StepBasic_ProductCategory.hxx>
 
+#ifdef __BORLANDC__
+# define timezone _timezone
+#endif
+
 //=======================================================================
 //function : STEPConstruct_AP203Context
 //purpose  : 

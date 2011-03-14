@@ -61,8 +61,13 @@ enum MB_ITEMTYPE { MBT_BUTTON, MBT_ICON };
 //#define LODWORD( a ) ( DWORD )(   ( ( DWORDLONG )( a ) ) & 0x00000000FFFFFFFF   )
 //#define HIDWORD( a ) ( DWORD )(   ( ( DWORDLONG )( a ) ) >> 32                  )
 
-#define LODWORD( a ) ( DWORD )(   ( ( _int64 )( a ) ) & 0x00000000FFFFFFFF   )
-#define HIDWORD( a ) ( DWORD )(   ( ( _int64 )( a ) ) >> 32                  )
+#ifdef __BORLANDC__
+# define LODWORD( a ) ( DWORD )(   ( ( DWORDLONG )( a ) ) & 0x00000000FFFFFFFF   )
+# define HIDWORD( a ) ( DWORD )(   ( ( DWORDLONG )( a ) ) >> 32                  )
+#else
+# define LODWORD( a ) ( DWORD )(   ( ( _int64 )( a ) ) & 0x00000000FFFFFFFF   )
+# define HIDWORD( a ) ( DWORD )(   ( ( _int64 )( a ) ) >> 32                  )
+#endif
 
 typedef struct _group_sid {
 

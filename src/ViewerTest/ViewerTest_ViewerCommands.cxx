@@ -125,6 +125,12 @@ static const char THE_KEY_DELETE = 127;
 //==============================================================================
 //  VIEWER GLOBAL VARIABLES
 //==============================================================================
+#ifndef max
+# define max(a, b)  (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef min
+# define min(a, b)  (((a) < (b)) ? (a) : (b)) 
+#endif
 
 Standard_IMPORT Standard_Boolean Draw_VirtualWindows;
 Standard_IMPORT Standard_Boolean Draw_Interprete (const char* theCommand);
@@ -2240,22 +2246,6 @@ int ViewerMainLoop(Standard_Integer argc, const char** argv)
 }
 
 #elif !defined(__APPLE__) || defined(MACOSX_USE_GLX)
-
-int min( int a, int b )
-{
-  if( a<b )
-    return a;
-  else
-    return b;
-}
-
-int max( int a, int b )
-{
-  if( a>b )
-    return a;
-  else
-    return b;
-}
 
 int ViewerMainLoop(Standard_Integer argc, const char** argv)
 

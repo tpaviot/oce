@@ -20,6 +20,8 @@
 #include <TCollection_AsciiString.hxx>
 #include <OSD_OpenFile.hxx>
 
+#include <stdio.h>
+
 Voxel_Writer::Voxel_Writer():myFormat(Voxel_VFF_ASCII),myBoolVoxels(0),myColorVoxels(0),myFloatVoxels(0)
 {
 

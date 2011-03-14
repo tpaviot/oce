@@ -23,6 +23,8 @@
 
 # if defined(_MSC_VER) && ! defined(strcasecmp)
 #  define strcasecmp _stricmp
+#  elif defined(__BORLANDC__)
+#    define strcasecmp stricmp
 # endif
 
 # include <string.h>

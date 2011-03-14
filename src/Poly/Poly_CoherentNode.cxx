@@ -20,6 +20,8 @@
 #pragma warning(disable:4996)
 #endif
 
+#include <stdio.h>
+
 //=======================================================================
 //function : Clear
 //purpose  : 

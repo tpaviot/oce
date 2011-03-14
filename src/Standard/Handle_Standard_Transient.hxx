@@ -20,7 +20,7 @@
 #include <Standard_PrimitiveTypes.hxx>
 #include <Standard_Transient_proto.hxx>
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 // Disable the warning "conversion from 'unsigned int' to Standard_Transient *"
 #pragma warning (push)
 #pragma warning (disable:4312)
@@ -225,7 +225,7 @@ inline Standard_Boolean IsEqual (const Handle(Standard_Transient)& theFirst,
   return theFirst == theSecond;
 }
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #pragma warning (pop)
 #endif
 

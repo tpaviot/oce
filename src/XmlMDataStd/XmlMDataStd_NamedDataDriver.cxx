@@ -51,6 +51,8 @@ IMPLEMENT_DOMSTRING (LastRealArrIndex,   "lastRA")
 IMPLEMENT_DOMSTRING (ExtString, "string")
 IMPLEMENT_DOMSTRING (Value,     "value")
 
+#include <stdio.h>
+
 #ifdef WNT
 #define EXCEPTION ...
 #else

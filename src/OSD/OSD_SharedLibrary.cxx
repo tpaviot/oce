@@ -262,9 +262,18 @@ OSD_Function OSD_SharedLibrary :: DlSymb ( const Standard_CString Name ) const {
 
  OSD_Function func = ( OSD_Function )GetProcAddress (  ( HMODULE )myHandle, Name  );
 
+ if ( func == NULL ) {
+#ifdef __BORLANDC__ //borland decorates exported C style routines with '_'
+  Standard_Character* myAlternativeName = new Standard_Character[ strlen ( Name ) + 1 + 1 ];
+  static Standard_Character* myAddition = "_";
+  strcpy(myAlternativeName, myAddition);
+  strcat(myAlternativeName, Name);
+  func = ( OSD_Function )GetProcAddress (  ( HMODULE )myHandle, myAlternativeName  );
+  delete [] myAlternativeName;
  if ( func == NULL )
-
+#endif
   lastDLLError = GetLastError ();
+ }
 
  return func;
 

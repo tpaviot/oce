@@ -17,6 +17,10 @@
 #include <Standard_OutOfRange.hxx>
 #include <cstring>
 
+#ifdef __BORLANDC__
+#include <mem.h>
+#endif
+
 inline Standard_Real& math_DoubleTab::Value (const Standard_Integer RowIndex,
 				    const Standard_Integer ColIndex) const
 {

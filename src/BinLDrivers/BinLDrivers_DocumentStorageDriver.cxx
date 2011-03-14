@@ -96,7 +96,7 @@ void BinLDrivers_DocumentStorageDriver::Write
         return;
     }
 
-#if defined(_WIN32)
+#if defined(_MSC_VER)
     ofstream anOS ((const wchar_t*) theFileName.ToExtString(), ios::in | ios::binary | ios::ate);
 #elif !defined(IRIX) // 10.10.2005
     ofstream anOS (aFileName.ToCString(), ios::in | ios::binary | ios::ate);

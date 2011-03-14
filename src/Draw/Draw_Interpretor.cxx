@@ -45,6 +45,8 @@
 #define STDERR_FILENO fileno(stderr)
 #endif
 
+#include <stdio.h>
+
 #if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 1)))
 #define TCL_USES_UTF8
 #endif

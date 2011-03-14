@@ -21,6 +21,12 @@
 #ifdef NOUSER
 #undef NOUSER
 #endif
+#ifdef NOICONS
+#undef NOICONS
+#endif
+#ifdef NOGDI
+#undef NOGDI
+#endif
 #include <windows.h>
 
 #include <OSD_Exception_ACCESS_VIOLATION.hxx>
@@ -49,6 +55,136 @@
 #include <eh.h>
 #include <malloc.h>
 #endif
+
+#ifdef __BORLANDC__
+# include <malloc.h>
+# define FPE_DENORMAL 0x82
+
+# define _EM_INVALID EM_INVALID
+# define _EM_DENORMAL EM_DENORMAL
+# define _EM_ZERODIVIDE EM_ZERODIVIDE
+# define _EM_OVERFLOW EM_OVERFLOW
+
+# define _FPE_INVALID FPE_INVALID
+# define _FPE_DENORMAL FPE_DENORMAL
+# define _FPE_ZERODIVIDE FPE_ZERODIVIDE
+# define _FPE_OVERFLOW FPE_OVERFLOW
+# define _FPE_UNDERFLOW   FPE_UNDERFLOW
+# define _FPE_INEXACT  FPE_INEXACT
+
+DWORD PlatformId(void)
+{
+  OSVERSIONINFO ovi;
+  ovi.dwOSVersionInfoSize = sizeof(ovi);
+  GetVersionEx(&ovi);
+  return ovi.dwPlatformId;
+}
+
+/* These magic numbers are from the MS header files */
+# define MIN_STACK_WIN9X 17
+# define MIN_STACK_WINNT 2
+
+/*
+ * This function does the same thing as _resetstkoflw(), which is only
+ * available in DevStudio .net and later.
+ * Returns 0 for failure, 1 for success.
+ */
+int _resetstkoflw(void)
+{
+  BYTE  *pStackPtr;
+  BYTE  *pGuardPage;
+  BYTE  *pStackBase;
+  BYTE  *pLowestPossiblePage;
+  MEMORY_BASIC_INFORMATION mbi;
+  SYSTEM_INFO si;
+  DWORD  nPageSize;
+  DWORD  dummy;
+
+  DWORD  g_PlatformId = PlatformId();
+
+  /* This code will not work on win32s. */
+  if (g_PlatformId == VER_PLATFORM_WIN32s)
+    return 0;
+
+  /* We need to know the system page size. */
+  GetSystemInfo(&si);
+  nPageSize = si.dwPageSize;
+
+  /* ...and the current stack pointer */
+  pStackPtr = (BYTE*)_alloca(1);
+
+  /* ...and the base of the stack. */
+  if (VirtualQuery(pStackPtr, &mbi, sizeof mbi) == 0)
+    return 0;
+  pStackBase = (BYTE*)mbi.AllocationBase;
+
+  /* ...and the page thats min_stack_req pages away from stack base; this is
+   * the lowest page we could use. */
+  pLowestPossiblePage = pStackBase + ((g_PlatformId == VER_PLATFORM_WIN32_NT)
+               ? MIN_STACK_WINNT : MIN_STACK_WIN9X) * nPageSize;
+
+  /* On Win95, we want the next page down from the end of the stack. */
+  if (g_PlatformId == VER_PLATFORM_WIN32_WINDOWS) {
+    /* Find the page that's only 1 page down from the page that the stack
+     * ptr is in. */
+    pGuardPage = (BYTE*)((DWORD)nPageSize * (((DWORD)pStackPtr
+                            / (DWORD)nPageSize) - 1));
+    if (pGuardPage < pLowestPossiblePage)
+      return 0;
+
+    /* Apply the noaccess attribute to the page -- there's no guard
+     * attribute in win95-type OSes. */
+    if (!VirtualProtect(pGuardPage, nPageSize, PAGE_NOACCESS, &dummy))
+      return 0;
+  }
+  else {
+    /* On NT, however, we want the first committed page in the stack Start
+     * at the stack base and move forward through memory until we find a
+     * committed block. */
+    BYTE *pBlock = pStackBase;
+
+    for (;;) {
+      if (VirtualQuery(pBlock, &mbi, sizeof mbi) == 0)
+        return 0;
+
+      pBlock += mbi.RegionSize;
+
+      if (mbi.State & MEM_COMMIT)
+        break;
+    }
+
+    /* mbi now describes the first committed block in the stack. */
+    if (mbi.Protect & PAGE_GUARD)
+      return 1;
+
+    /* decide where the guard page should start */
+    if ((mbi.BaseAddress) < pLowestPossiblePage)
+      pGuardPage = pLowestPossiblePage;
+    else
+      pGuardPage = (BYTE*)mbi.BaseAddress;
+
+    /* allocate the guard page */
+    if (!VirtualAlloc(pGuardPage, nPageSize, MEM_COMMIT, PAGE_READWRITE))
+      return 0;
+
+    /* apply the guard attribute to the page */
+    if (!VirtualProtect(pGuardPage, nPageSize, PAGE_READWRITE | PAGE_GUARD,
+                                      &dummy))
+      return 0;
+  }
+
+  return 1;
+}
+
+typedef void (*_se_translator_function)(unsigned int, EXCEPTION_POINTERS*);
+
+_CRTIMP _se_translator_function __cdecl _set_se_translator(_se_translator_function _NewPtFunc)
+{
+  return _NewPtFunc;
+}
+
+#endif
+
 
 #include <process.h>
 #include <signal.h>
@@ -198,7 +334,7 @@ static LONG CallHandler (DWORD dwExceptionCode,
 
   case EXCEPTION_STACK_OVERFLOW:
 //      cout << "CallHandler : EXCEPTION_STACK_OVERFLOW:" << endl ;
-#if defined( _MSC_VER ) && ( _MSC_VER >= 1300 )
+#if (defined( _MSC_VER ) && ( _MSC_VER >= 1300 )) || defined(__BORLANDC__)
     // try recovering from stack overflow: available in MS VC++ 7.0
     if (!_resetstkoflw())
       lstrcpyA (  buffer, "Unrecoverable STACK OVERFLOW"  );
@@ -308,7 +444,7 @@ static void SIGWntHandler (int signum, int sub_code)
 //purpose  : Translate Structural Exceptions into C++ exceptions
 //           Will be used when user's code is compiled with /EHa option
 //=======================================================================
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
 
 // If this file compiled with the default MSVC options for exception
 // handling (/GX or /EHsc) then the following warning is issued:
@@ -383,7 +519,7 @@ void OSD::SetSignal (const Standard_Boolean theFloatingSignal)
   fCtrlBrk = Standard_False;
   SetConsoleCtrlHandler (&_osd_ctrl_break_handler, TRUE);
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
 //  _se_translator_function pOldSeFunc = 
     _set_se_translator (TranslateSE);
 #endif
@@ -489,8 +625,10 @@ static LONG __fastcall _osd_raise ( DWORD dwCode, LPSTR msg )
     case EXCEPTION_FLT_INVALID_OPERATION:
     case EXCEPTION_FLT_DENORMAL_OPERAND:
     case EXCEPTION_FLT_INEXACT_RESULT:
+#if defined(_MSC_VER) || defined(__BORLANDC__)
     case STATUS_FLOAT_MULTIPLE_TRAPS:
     case STATUS_FLOAT_MULTIPLE_FAULTS:
+#endif
       Standard_NumericError::Raise (msg);
       break;
     default:

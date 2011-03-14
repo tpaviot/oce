@@ -23,6 +23,8 @@
 #include <TCollection_AsciiString.hxx>
 #include <OSD_OpenFile.hxx>
 
+#include <stdio.h>
+
 #define CATCH_FREAD_1_ERR(stmt) if (1 != (stmt)) { fclose(f); return Standard_False; }
 #define CATCH_FGETS_ERR(stmt) if (NULL == (stmt)) { fclose(f); return Standard_False; }
 

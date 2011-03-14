@@ -47,6 +47,8 @@
 #include <BRepMesh_Edge.hxx>
 #include <NCollection_Map.hxx>
 
+#include <stdio.h>
+
 static Standard_Integer mpnames           (Draw_Interpretor& , Standard_Integer , const char** );
 static Standard_Integer mpsetdefaultname  (Draw_Interpretor& , Standard_Integer , const char** );
 static Standard_Integer mpgetdefaultname  (Draw_Interpretor& , Standard_Integer , const char** );

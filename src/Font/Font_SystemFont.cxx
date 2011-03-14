@@ -19,6 +19,7 @@
 #include <OSD_Path.hxx>
 #include <TCollection_HAsciiString.hxx>
 
+#include <stdio.h>
 
 Font_SystemFont::Font_SystemFont():
 MyFontName(),

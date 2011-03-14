@@ -419,6 +419,8 @@ Standard_Integer OSD_FileNode::Error()const{
 # include <tchar.h>
 #endif  // _INC_TCHAR
 
+#include <stdio.h>
+
 #define TEST_RAISE( arg ) _test_raise (  fName, ( arg )  )
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
 
