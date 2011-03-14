@@ -102,7 +102,12 @@ static void __fastcall         _dd_fill_buff ( char* );
 static int  __fastcall         _dd_dev_size  ( HDC, int );
 
 static int CALLBACK _dd_enum_proc (
-                     HDC, HANDLETABLE FAR*, CONST ENHMETARECORD FAR*,
+                     HDC, HANDLETABLE FAR*,
+#ifndef __MINGW32__
+                     CONST ENHMETARECORD FAR*,
+#else
+                     ENHMETARECORD FAR*,
+#endif
                      int, LPARAM
                     );
 
@@ -1983,10 +1988,15 @@ static int __fastcall _dd_dev_size ( HDC hdc, int index ) {
 static int CALLBACK _dd_enum_proc (
                      HDC                         hDC,
                      HANDLETABLE FAR*       lpHTable,
+#ifndef __MINGW32__
                      CONST ENHMETARECORD FAR* lpEMFR,
+#else
+                     ENHMETARECORD FAR* lpEMFR,
+#endif
                      int                        nObj,
                      LPARAM                   lpData
-                    ) {
+                    ) 
+{
 
  int retVal = 1;
 

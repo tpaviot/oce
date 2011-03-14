@@ -53,6 +53,10 @@
 #ifndef _MSC_VER
 # define __leave goto leave
 #endif
+#ifdef __MINGW32__
+# define __finally catch(...)
+#endif
+
 
 //***//
 typedef struct {

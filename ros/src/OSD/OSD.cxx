@@ -95,7 +95,7 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 //=======================================================================
 
 #ifdef WNT
-# include <Windows.h>
+# include <windows.h>
 # ifdef _MSVC_VER
 #  include <Mapiwin.h>
 # endif

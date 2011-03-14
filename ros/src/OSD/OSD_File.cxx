@@ -853,6 +853,10 @@ Standard_Boolean OSD_File::IsExecutable()
 #ifndef _MSC_VER
 # define  __leave goto leave
 #endif
+#if defined(__CYGWIN32__) || defined(__MINGW32__)
+# define  __try
+# define  __finally
+#endif
 
 void                            _osd_wnt_set_error        ( OSD_Error&, OSD_WhoAmI, ... );
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
@@ -1751,11 +1755,6 @@ OSD_File OSD_File :: BuildTemporary () {
 
 //-------------------------------------------------finpri???980424
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return
-#endif
 
 void OSD_File :: SetLock ( const OSD_LockType Lock ) {
 
@@ -1802,11 +1801,6 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
 
 }  // end OSD_File :: SetLock
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 void OSD_File :: UnLock () {
 
@@ -1895,11 +1889,6 @@ Standard_Boolean OSD_File :: IsOpen () const {
 
 }  // end OSD_File :: IsOpen
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd (
                                  const OSD_Protection& prot, BOOL fDir, char* fName
@@ -2159,11 +2148,6 @@ retry:
  
 }  // end _osd_wnt_protection_to_sd */
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static void __fastcall _test_raise ( Standard_Integer hFile, Standard_CString str ) {
 
@@ -2711,11 +2695,6 @@ Standard_Integer __fastcall _get_file_type (
 
 }  // end _get_file_type
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 BOOL __fastcall _osd_wnt_sd_to_protection (
                  PSECURITY_DESCRIPTOR pSD, OSD_Protection& prot, BOOL fDir
@@ -2802,11 +2781,6 @@ BOOL __fastcall _osd_wnt_sd_to_protection (
 
 }  // end _osd_wnt_sd_to_protection
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static OSD_SingleProtection __fastcall _get_protection ( DWORD mask ) {
 
@@ -3024,11 +2998,6 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD mask ) {
 
 }  // end _get_protection_dir
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return fOK
-#endif
 
 BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fName ) {
 
@@ -3108,11 +3077,6 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fN
                 
 }  // end _osd_print
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 Standard_Boolean OSD_File::IsReadable()
 {

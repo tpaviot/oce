@@ -41,6 +41,10 @@ Facility : CAS-CADE V1.3A
 # include <limits>
 #endif
 
+#ifdef __MINGW32__
+# include <limits.h>
+#endif
+
 #if defined (__hpux) || defined (HPUX)
 # ifdef MAXINT
 #  undef MAXINT

@@ -13,7 +13,7 @@
 #include <Standard_Transient_proto.hxx>
 #endif
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 // Disable the warning "conversion from 'unsigned int' to Standard_Transient *"
 #pragma warning (push)
 #pragma warning (disable:4312)
@@ -228,7 +228,7 @@ private:
   Standard_Transient *entity;
 };
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #pragma warning (pop)
 #endif
 

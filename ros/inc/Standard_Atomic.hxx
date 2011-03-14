@@ -24,22 +24,22 @@
 //===================================================
 // Windows NT, MSVC++ compiler
 //===================================================
-#if defined(WNT)
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
+#ifdef __BORLANDC__
+extern "C" {
+  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+ }
+ #define _InterlockedIncrement InterlockedIncrement
+ #define _InterlockedDecrement InterlockedDecrement
+#elif defined(_MSC_VER)
  extern "C" {
   long _InterlockedIncrement(long volatile* lpAddend);
   long _InterlockedDecrement(long volatile* lpAddend);
  }
 # pragma intrinsic (_InterlockedIncrement)
 # pragma intrinsic (_InterlockedDecrement)
-#else
-extern "C" {
-  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
-  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
- }
-# define _InterlockedIncrement InterlockedIncrement
-# define _InterlockedDecrement InterlockedDecrement
 #endif
 
 inline void Standard_Atomic_Increment (int volatile* var)
