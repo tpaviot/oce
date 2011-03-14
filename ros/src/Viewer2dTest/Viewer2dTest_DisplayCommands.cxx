@@ -73,6 +73,8 @@
 #include <Prs2d_Circularity.hxx>
 #include <Prs2d_Parallelism.hxx>
 
+#include <stdio.h>
+
 #define OCC190 // jfa 04/03/2002 // for vertices load
 #define OCC154 // jfa 06/03/2002 // for correct erasing
 

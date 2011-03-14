@@ -11,6 +11,8 @@
 #pragma warning(disable:4291 4996)
 #endif
 
+#include <stdio.h>
+
 //=======================================================================
 //function : Clear
 //purpose  : 

@@ -857,7 +857,7 @@ draw_polygon_concav( tel_polygon_data d, Tint front_lighting_model, Tint hflag )
       xyz[0] = ptr->xyz[0];
       xyz[1] = ptr->xyz[1];
       xyz[2] = ptr->xyz[2];    
-#ifndef WNT
+#if !defined (WNT) || defined (__BORLANDC__)
       gluTessVertex( tripak, xyz,(void * ) i );
 #else
       {

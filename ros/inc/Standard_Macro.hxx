@@ -20,7 +20,7 @@
 //======================================================
 
 // check if WNT macro is not defined but compiler is MSVC
-#if defined(_MSC_VER) && !defined(WNT)
+#if (defined(_MSC_VER) || defined(__BORLANDC__)) && !defined(WNT)
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 
@@ -50,7 +50,7 @@
 #define WIN32_LEAN_AND_MEAN   /* exclude extra Windows stuff */
 #endif
 #ifndef NOMINMAX
-#define NOMINMAX NOMINMAX     /* avoid #define min() and max() */
+#define NOMINMAX              /* avoid #define min() and max() */
 #endif
 #ifndef NOMSG
 #define NOMSG NOMSG           /* avoid #define SendMessage etc. */

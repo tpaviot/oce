@@ -284,8 +284,12 @@ void VrmlData_ShapeConvert::Convert (const Standard_Boolean theExtractFaces,
         if (aTShapeNode.IsNull() == Standard_False) {
           const Handle(VrmlData_ShapeNode) aShapeNode =
             new VrmlData_ShapeNode (myScene, 0L);
-          aShapeNode->SetAppearance (ShapeType[i] == TopAbs_FACE ?
-                                     defaultMaterialFace():defaultMaterialEdge());
+          Handle(VrmlData_Appearance) theApp;
+          if (ShapeType[i] == TopAbs_FACE)
+            theApp = defaultMaterialFace();
+          else
+            theApp = defaultMaterialEdge();
+          aShapeNode->SetAppearance (theApp);
           myScene.AddNode (aShapeNode, Standard_False);
           aShapeNode->SetGeometry (aTShapeNode);
           if (aLoc.IsIdentity())

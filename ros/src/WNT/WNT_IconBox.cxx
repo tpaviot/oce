@@ -322,8 +322,11 @@ Standard_Boolean WNT_IconBox :: IconSize (
 
  }  // end for
 
- return ( i > len ) ? Standard_False :
-                      myImages -> Dim ( i, Width, Height ), Standard_True;
+ if ( i > len ) {
+   return Standard_False;
+ }
+ myImages -> Dim ( i, Width, Height );
+ return Standard_True;
 
 }  // end WNT_IconBox :: IconSize
 //***//

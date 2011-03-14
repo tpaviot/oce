@@ -8,6 +8,8 @@
 #include <Standard_OutOfMemory.hxx>
 #include <Standard_Mutex.hxx>
 
+#include <stdio.h>
+
 IMPLEMENT_STANDARD_HANDLE (NCollection_HeapAllocator, NCollection_BaseAllocator)
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_HeapAllocator, NCollection_BaseAllocator)
 

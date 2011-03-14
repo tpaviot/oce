@@ -9,6 +9,8 @@
 #include <NCollection_List.hxx>
 #include <Standard_Mutex.hxx>
 
+#include <stdio.h>
+
 IMPLEMENT_STANDARD_HANDLE(NCollection_BaseAllocator,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_BaseAllocator,MMgt_TShared)
 

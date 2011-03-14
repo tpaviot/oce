@@ -11,9 +11,15 @@
   #pragma comment( lib, "FreeImage.lib" )
   #pragma comment( lib, "FreeImagePlus.lib" )
   #endif
+  #ifdef __BORLANDC__
+  #pragma link "FreeImage.lib"
+  #pragma link "FreeImagePlus.lib"
+  #endif
 #else
   #include <Image_PixMap.ixx>
   #include <fstream>
+
+  #include <stdio.h>
 
   #if (defined(BYTE_ORDER)   && BYTE_ORDER==BIG_ENDIAN) || \
       (defined(__BYTE_ORDER) && __BYTE_ORDER==__BIG_ENDIAN) || \

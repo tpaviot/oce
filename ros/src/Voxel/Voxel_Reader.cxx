@@ -12,6 +12,8 @@
 
 #include <TCollection_AsciiString.hxx>
 
+#include <stdio.h>
+
 Voxel_Reader::Voxel_Reader():myBoolVoxels(0),myColorVoxels(0),myFloatVoxels(0)
 {
 

@@ -223,8 +223,9 @@ public:
     iterateInspect (Inspector::Dimension-1, aCell, 
                     aCellMin, aCellMax, theInspector);
   }
-
-#if defined(__SUNPRO_CC) && (__SUNPRO_CC <= 0x530)
+//Borland needs to have the Cell struct public in order to access it from
+//the global functions HashCode and IsEqual ... See below on the declarations of them
+#if defined(__SUNPRO_CC) && (__SUNPRO_CC <= 0x530) || defined(__BORLANDC__)
 public: // work-around against obsolete SUN WorkShop 5.3 compiler
 #else
 protected:

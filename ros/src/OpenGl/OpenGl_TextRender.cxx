@@ -23,6 +23,9 @@
 #include <gl2ps.h>
 #endif
 
+#ifdef __BORLANDC__
+#pragma link "ftgl_dynamic_MTD.lib"
+#endif
 
 /*-----------------------------------------------------------------------------*/
 /*

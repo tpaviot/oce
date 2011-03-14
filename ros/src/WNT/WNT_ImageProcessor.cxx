@@ -49,6 +49,11 @@
 #endif  /* _DEBUG */
 #define WINNT35X() (WNT_osVer.dwPlatformId   == VER_PLATFORM_WIN32_NT && \
                     WNT_osVer.dwMajorVersion == 3 )
+
+#ifndef _MSC_VER
+# define __leave goto leave
+#endif
+
 //***//
 typedef struct {
 
@@ -184,6 +189,10 @@ HBITMAP LoadImageFromFile (
 
    retVal = loadXWD ( gDev );
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
+
  }  // end __try
 
  __finally {
@@ -243,6 +252,10 @@ int __WNT_API SaveWindowToFile (
   SelectBitmap ( hDCmem, hOldBmp );
 
   retVal = SaveBitmapToFile ( gDev, hBmp, fName, 0, 0, w, h );
+
+#ifndef _MSC_VER
+  leave: ;
+#endif
 
  }  // end __try
 
@@ -385,6 +398,9 @@ int SaveBitmapToFile (Handle(WNT_GraphicDevice)& gDev,
 
     retVal = DumpBitmapToFile (gDev, NULL,
                                hNewBmp, fName);
+#ifndef _MSC_VER
+    leave: ;
+#endif
   }  // end __try
   __finally {
     if (hNewBmp != NULL && newBmp) DeleteObject (hNewBmp);
@@ -827,6 +843,10 @@ AllocColors_16:
 
    SelectPalette ( hDC, hOldPal, FALSE );
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
+
  }  // end try
 
  __finally {
@@ -976,6 +996,9 @@ static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
 
    SelectPalette ( hDC, hOldPal, FALSE );
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  // end __try
 
  __finally {
@@ -1250,6 +1273,10 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
   if (  gDev -> IsPaletteDevice ()  )
 
    SelectPalette ( hDC, hOldPal, FALSE );
+
+#ifndef _MSC_VER
+  leave: ;
+#endif
 
  }  // end __try
 

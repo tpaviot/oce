@@ -4,6 +4,10 @@
 #include <math_Memory.hxx>
 #include <Standard_OutOfRange.hxx>
 
+#ifdef __BORLANDC__
+#include <mem.h>
+#endif
+
 inline Item& math_DoubleTab::Value (const Standard_Integer RowIndex,
 				    const Standard_Integer ColIndex) const
 {

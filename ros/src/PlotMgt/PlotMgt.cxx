@@ -253,7 +253,7 @@ static Standard_Real aPaperWidths [] = {
   // Letter, Legal, Statement, Executive, Folio, Quarto
   21.59,  21.59,  13.97,  18.41,  21.59,  21.50,
   // Envelope, Monarch
-  11.00,  09.84
+  11.00,   9.84
 };
 
 static Standard_Real aPaperLengths [] = {

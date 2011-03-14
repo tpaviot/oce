@@ -106,6 +106,9 @@ used in immediat mode context.
   #ifdef _MSC_VER 
   #pragma comment( lib, "gl2ps.lib" )
   #endif
+  #ifdef __BORLANDC__
+  #include <gl2ps.c>
+  #endif
 #endif
 
 #include <OpenGl_tgl_all.hxx>
