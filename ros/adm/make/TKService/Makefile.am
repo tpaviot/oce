@@ -6,14 +6,12 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/InterfaceGraphic : @top_srcdir@/src/InterfaceGraphic: \
 @top_srcdir@/drv/SelectBasics : @top_srcdir@/src/SelectBasics: \
 @top_srcdir@/drv/Viewer : @top_srcdir@/src/Viewer: \
-@top_srcdir@/drv/Xw : @top_srcdir@/src/Xw: \
 @top_srcdir@/drv/MFT : @top_srcdir@/src/MFT: \
 @top_srcdir@/drv/PS : @top_srcdir@/src/PS: \
 @top_srcdir@/drv/CGM : @top_srcdir@/src/CGM: \
 @top_srcdir@/drv/AlienImage : @top_srcdir@/src/AlienImage: \
 @top_srcdir@/drv/Image : @top_srcdir@/src/Image: \
 @top_srcdir@/drv/PlotMgt : @top_srcdir@/src/PlotMgt: \
-@top_srcdir@/drv/ImageUtility : @top_srcdir@/src/ImageUtility: \
 @top_srcdir@/drv/TColQuantity : @top_srcdir@/src/TColQuantity
 
 
@@ -29,14 +27,12 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_XwLibs_INCLUDES) $(CSF_dpsLibs_INCLUDES) $(
 -I@top_srcdir@/drv/InterfaceGraphic -I@top_srcdir@/src/InterfaceGraphic \
 -I@top_srcdir@/drv/SelectBasics -I@top_srcdir@/src/SelectBasics \
 -I@top_srcdir@/drv/Viewer -I@top_srcdir@/src/Viewer \
--I@top_srcdir@/drv/Xw -I@top_srcdir@/src/Xw \
 -I@top_srcdir@/drv/MFT -I@top_srcdir@/src/MFT \
 -I@top_srcdir@/drv/PS -I@top_srcdir@/src/PS \
 -I@top_srcdir@/drv/CGM -I@top_srcdir@/src/CGM \
 -I@top_srcdir@/drv/AlienImage -I@top_srcdir@/src/AlienImage \
 -I@top_srcdir@/drv/Image -I@top_srcdir@/src/Image \
 -I@top_srcdir@/drv/PlotMgt -I@top_srcdir@/src/PlotMgt \
--I@top_srcdir@/drv/ImageUtility -I@top_srcdir@/src/ImageUtility \
 -I@top_srcdir@/drv/TColQuantity -I@top_srcdir@/src/TColQuantity
 
 
@@ -45,7 +41,7 @@ lib_LTLIBRARIES=libTKService.la
 libTKService_la_LIBADD = \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
-$(STLPort_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_FreeImagePlus_LIB) 
+$(STLPort_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_FreeImagePlus_LIB) $(CSF_SOCKETLibs_LIB) $(CSF_gdi32_LIB)
 
 libTKService_la_SOURCES = \
 @top_srcdir@/drv/Aspect/Aspect_Array1OfEdge_0.cxx \
@@ -209,15 +205,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Image/Image_PixelInterpolation.cxx \
 @top_srcdir@/src/Image/Image_PlanarPixelInterpolation.cxx \
 @top_srcdir@/src/Image/Image_PseudoColorImage.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_X11Display.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_X11Dump.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_X11GC.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_X11Window.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_X11XImage.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_XPR.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_XWD.cxx \
-@top_srcdir@/src/ImageUtility/ImageUtility_XWUD.cxx \
 @top_srcdir@/src/InterfaceGraphic/InterfaceGraphic_Palette.c \
 @top_srcdir@/src/InterfaceGraphic/InterfaceGraphic_cPrintf.cxx \
 @top_srcdir@/src/MFT/MFT.cxx \
@@ -243,7 +230,65 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/SelectBasics/SelectBasics_SensitiveEntity.cxx \
 @top_srcdir@/src/SelectBasics/SelectBasics_SortAlgo.cxx \
 @top_srcdir@/src/Viewer/Viewer_View.cxx \
-@top_srcdir@/src/Viewer/Viewer_Viewer.cxx \
+@top_srcdir@/src/Viewer/Viewer_Viewer.cxx
+
+if IS_WINDOWS
+libTKService_la_SOURCES += \
+@top_srcdir@/src/WNT/EHDC.cxx \
+@top_srcdir@/src/WNT/W32_Allocator.cxx \
+@top_srcdir@/src/WNT/W95_Allocator.cxx \
+@top_srcdir@/src/WNT/WNT_Allocator.cxx \
+@top_srcdir@/src/WNT/WNT_ColorRef.cxx \
+@top_srcdir@/src/WNT/WNT_Dword.cxx \
+@top_srcdir@/src/WNT/WNT_IconBox_1.cxx \
+@top_srcdir@/src/WNT/WNT_ImageProcessor.cxx \
+@top_srcdir@/src/WNT/WNT_LogFont.cxx \
+@top_srcdir@/src/WNT/WNT_Long.cxx \
+@top_srcdir@/src/WNT/WNT_MFTDraw.cxx \
+@top_srcdir@/src/WNT/WNT_Uint.cxx \
+@top_srcdir@/src/WNT/WNT_WindowData.cxx \
+@top_srcdir@/src/WNT/WNT_WndProc.cxx \
+@top_srcdir@/drv/WNT/WNT_ClassDefinitionError_0.cxx \
+@top_srcdir@/drv/WNT/WNT_ColorTable_0.cxx \
+@top_srcdir@/drv/WNT/WNT_FontMapEntryDefinitionError_0.cxx \
+@top_srcdir@/drv/WNT/WNT_FontTable_0.cxx \
+@top_srcdir@/drv/WNT/WNT_HColorTable_0.cxx \
+@top_srcdir@/drv/WNT/WNT_HFontTable_0.cxx \
+@top_srcdir@/drv/WNT/WNT_HListOfMFTFonts_0.cxx \
+@top_srcdir@/drv/WNT/WNT_ListOfMFTFonts_0.cxx \
+@top_srcdir@/drv/WNT/WNT_SequenceNodeOfSequenceOfImage_0.cxx \
+@top_srcdir@/drv/WNT/WNT_SequenceOfImage_0.cxx \
+@top_srcdir@/src/WNT/WNT_DDriver.cxx \
+@top_srcdir@/src/WNT/WNT_FontMapEntry.cxx \
+@top_srcdir@/src/WNT/WNT_GraphicDevice.cxx \
+@top_srcdir@/src/WNT/WNT_Icon.cxx \
+@top_srcdir@/src/WNT/WNT_IconBox.cxx \
+@top_srcdir@/src/WNT/WNT_Image.cxx \
+@top_srcdir@/src/WNT/WNT_ImageManager.cxx \
+@top_srcdir@/src/WNT/WNT_PixMap.cxx \
+@top_srcdir@/src/WNT/WNT_TextManager.cxx \
+@top_srcdir@/src/WNT/WNT_WClass.cxx \
+@top_srcdir@/src/WNT/WNT_WDriver.cxx \
+@top_srcdir@/src/WNT/WNT_Window.cxx
+
+VPATH += : \
+@top_srcdir@/drv/WNT : @top_srcdir@/src/WNT
+
+INCLUDES += \
+-I@top_srcdir@/drv/WNT -I@top_srcdir@/src/WNT
+endif
+
+if HAVE_X11
+libTKService_la_SOURCES += \
+@top_srcdir@/src/ImageUtility/ImageUtility.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_X11Display.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_X11Dump.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_X11GC.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_X11Window.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_X11XImage.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_XPR.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_XWD.cxx \
+@top_srcdir@/src/ImageUtility/ImageUtility_XWUD.cxx \
 @top_srcdir@/src/Xw/Xw.cxx \
 @top_srcdir@/src/Xw/Xw_ColorMap.cxx \
 @top_srcdir@/src/Xw/Xw_Driver.cxx \
@@ -393,4 +438,13 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Xw/Xw_set_window_state.cxx \
 @top_srcdir@/src/Xw/Xw_wait_event.cxx \
 @top_srcdir@/src/Xw/Xw_zoom_image.cxx
+
+VPATH += : \
+@top_srcdir@/drv/ImageUtility : @top_srcdir@/src/ImageUtility: \
+@top_srcdir@/drv/Xw : @top_srcdir@/src/Xw
+
+INCLUDES += \
+-I@top_srcdir@/drv/ImageUtility -I@top_srcdir@/src/ImageUtility \
+-I@top_srcdir@/drv/Xw -I@top_srcdir@/src/Xw
+endif
 
