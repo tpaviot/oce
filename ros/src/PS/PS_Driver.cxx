@@ -106,7 +106,7 @@ static const char* MONTHS [] = {
 #include <Image_Image.hxx>
 #include <stdio.h>
 static Handle(Image_Image) myImage;
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning (disable : 4244 4018 4101)
 #endif
 

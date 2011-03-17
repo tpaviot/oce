@@ -53,7 +53,7 @@
 #include <Viewer2dTest.hxx>
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
-#ifdef WNT
+#ifdef _MSC_VER
 #define _CRT_SECURE_NO_DEPRECATE
 #pragma warning(4:4190)
 #pragma warning (disable:4996)

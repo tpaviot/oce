@@ -7,7 +7,7 @@
 #include <LDOM_BasicAttribute.hxx>
 #include <LDOM_MemManager.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 // Disable the warning: "operator new unmatched by delete"
 #pragma warning (disable:4291)
 #endif

@@ -10,7 +10,7 @@
 #include <Plugin_Macro.hxx>
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning(4:4190)
 #endif
 

@@ -13,7 +13,7 @@
 #include <Draw_Interpretor.hxx>
 #include <Draw_PluginMacro.hxx>
 #include <BOPTest.hxx>
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning(4:4190)
 #endif
 

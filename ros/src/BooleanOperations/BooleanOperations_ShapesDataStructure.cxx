@@ -44,7 +44,7 @@
 #include <BOPTColStd_Dump.hxx>
 
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( disable : 4291 )
 #endif
 

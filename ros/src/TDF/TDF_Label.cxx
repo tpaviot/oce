@@ -308,7 +308,7 @@ void TDF_Label::EntryDump(Standard_OStream& anOS) const
   }
 }
 
-#ifdef WNT
+#ifdef _MSC_VER
 // Disable the warning: "operator new unmatched by delete"
 #pragma warning (disable:4291)
 #endif
@@ -373,7 +373,7 @@ TDF_LabelNode* TDF_Label::FindOrAddChild
   return childLabelNode;
 }
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning (default:4291)
 #endif
 

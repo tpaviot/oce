@@ -6,7 +6,7 @@
 
 #include <Poly_CoherentTriPtr.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning(disable:4291)
 #endif
 

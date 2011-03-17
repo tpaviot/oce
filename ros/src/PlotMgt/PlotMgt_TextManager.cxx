@@ -6,7 +6,7 @@
 #include <PlotMgt_TextManager.ixx>
 #include <Aspect_Units.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning (disable : 4244)
 #endif
 

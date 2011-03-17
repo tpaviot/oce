@@ -23,7 +23,7 @@
 #include <TColStd_ListIteratorOfListOfReal.hxx>
 #include <gce_ErrorType.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( disable : 4101 )
 #endif
 //=======================================================================
@@ -366,6 +366,6 @@
   return 1;
 }
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( default : 4101 )
 #endif

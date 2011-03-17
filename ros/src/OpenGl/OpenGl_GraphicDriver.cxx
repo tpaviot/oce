@@ -31,7 +31,7 @@
 // classe OSD_SharedLibrary dans la methode SetGraphicDriver de la
 // classe Graphic3d_GraphicDevice
 extern "C" {
-#ifdef WNT /* disable MS VC++ warning on C-style function returning C++ object */
+#ifdef _MSC_VER /* disable MS VC++ warning on C-style function returning C++ object */
 #pragma warning(push)
 #pragma warning(disable:4190)
 #endif
@@ -43,7 +43,7 @@ extern "C" {
       return aOpenDriver;
       //              return new OpenGl_GraphicDriver (AShrName);
     }
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning(pop)
 #endif
 }

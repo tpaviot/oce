@@ -11,7 +11,7 @@
 #include <BOPTools_QuickSortPave.hxx>
 #include <BOPTools_ComparePave.hxx>
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( disable : 4101 )
 #endif
 
@@ -75,6 +75,6 @@
     }
   }
 }
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning ( default : 4101 )
 #endif
