@@ -133,7 +133,7 @@ static void Hunt(const TColStd_Array1OfReal& Arr,
   if(Abs(Coord-Arr(i))<Tol)
     Iloc = i;
   else
-    if(Abs(Coord-Arr(i)>Tol)) Standard_NotImplemented::Raise("Adaptor3d_CurveOnSurface:Hunt");
+    if(Abs(Coord-Arr(i))>Tol) Standard_NotImplemented::Raise("Adaptor3d_CurveOnSurface:Hunt");
 }
 
 //=======================================================================
