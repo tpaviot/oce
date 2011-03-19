@@ -530,7 +530,7 @@ if test "xno" = "xno$tbb_lib"; then
   # user specified --without-tbb
   HAVE_TBB=no
   ENABLE_TBB_LIB=no
-  DISABLE_TBB_REASON_LIB="(--with-tbb-lib=DIR option was not defined)"
+  DISABLE_TBB_REASON_LIB="(--with-tbb-library=DIR option was not defined)"
 else
 ENABLE_TBB_LIB=yes
 CSF_TBB_LIB=""
