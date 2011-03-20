@@ -19,7 +19,11 @@ else
   ModelingAlgorithms_DIRS = 
 endif
 
-Visualization_PKGS = TKService TKV2d TKV3d TKOpenGl TKMeshVS TKNIS TKVoxel 
+Visualization_PKGS = TKService TKV2d TKV3d
+
+if HAVE_X11
+Visualization_PKGS += TKOpenGl TKMeshVS TKNIS TKVoxel
+endif
 
 if ENABLE_VIS
   Visualization_DIRS = $(Visualization_PKGS)
