@@ -115,6 +115,7 @@ case $host in
 	CPPFLAGS="$CPPFLAGS -DWNT -D__MATH_WNT_H -DHAVE_NO_DLL"
 	CSF_SOCKETLibs_LIB='-lwinspool -lws2_32'
 	CSF_gdi32_LIB='-lgdi32'
+	CSF_comdlg32_LIB='-lcomdlg32'
 	LDFLAGS="$LDFLAGS -no-undefined -shared -Wl,--enable-auto-import -Wl,--enable-runtime-pseudo-reloc -Wl,-export-all-symbols"
 	platform=win32
 	;;
@@ -898,6 +899,7 @@ AC_SUBST(CSF_advapi32_LIB)
 AC_SUBST(CSF_gdi32_LIB)
 AC_SUBST(CSF_user32_LIB)
 AC_SUBST(CSF_wsock32_LIB)
+AC_SUBST(CSF_comdlg32_LIB)
 AC_SUBST(CSF_XwLibs_LIB)
 AC_SUBST(CSF_MotifLibs_LIB)
 AC_SUBST(CSF_XmuLibs_LIB)
