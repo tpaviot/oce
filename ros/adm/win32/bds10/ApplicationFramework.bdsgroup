@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{4769DF4B-9059-40FD-B2DE-C83128BA8F75}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="TKCDF.dll">TKCDF.bdsproj</Projects>
+      <Projects Name="PTKernel.dll">PTKernel.bdsproj</Projects>
+      <Projects Name="TKLCAF.dll">TKLCAF.bdsproj</Projects>
+      <Projects Name="FWOSPlugin.dll">FWOSPlugin.bdsproj</Projects>
+      <Projects Name="TKPShape.dll">TKPShape.bdsproj</Projects>
+      <Projects Name="TKCAF.dll">TKCAF.bdsproj</Projects>
+      <Projects Name="TKBinL.dll">TKBinL.bdsproj</Projects>
+      <Projects Name="TKXmlL.dll">TKXmlL.bdsproj</Projects>
+      <Projects Name="TKTObj.dll">TKTObj.bdsproj</Projects>
+      <Projects Name="TKShapeSchema.dll">TKShapeSchema.bdsproj</Projects>
+      <Projects Name="TKPLCAF.dll">TKPLCAF.bdsproj</Projects>
+      <Projects Name="TKBin.dll">TKBin.bdsproj</Projects>
+      <Projects Name="TKXml.dll">TKXml.bdsproj</Projects>
+      <Projects Name="TKBinTObj.dll">TKBinTObj.bdsproj</Projects>
+      <Projects Name="TKXmlTObj.dll">TKXmlTObj.bdsproj</Projects>
+      <Projects Name="TKPCAF.dll">TKPCAF.bdsproj</Projects>
+      <Projects Name="TKStdLSchema.dll">TKStdLSchema.bdsproj</Projects>
+      <Projects Name="TKStdSchema.dll">TKStdSchema.bdsproj</Projects>
+      <Projects Name="Targets">TKCDF.dll PTKernel.dll TKLCAF.dll FWOSPlugin.dll TKPShape.dll TKCAF.dll TKBinL.dll TKXmlL.dll TKTObj.dll TKShapeSchema.dll TKPLCAF.dll TKBin.dll TKXml.dll TKBinTObj.dll TKXmlTObj.dll TKPCAF.dll TKStdLSchema.dll TKStdSchema.dll</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

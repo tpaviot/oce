@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{F1CAA5FD-D8EE-45DC-9A39-1A7339098517}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="TKernel.dll">TKernel.bdsproj</Projects>
+      <Projects Name="TKMath.dll">TKMath.bdsproj</Projects>
+      <Projects Name="TKAdvTools.dll">TKAdvTools.bdsproj</Projects>
+      <Projects Name="TKG2d.dll">TKG2d.bdsproj</Projects>
+      <Projects Name="TKG3d.dll">TKG3d.bdsproj</Projects>
+      <Projects Name="TKGeomBase.dll">TKGeomBase.bdsproj</Projects>
+      <Projects Name="TKBRep.dll">TKBRep.bdsproj</Projects>
+      <Projects Name="TKGeomAlgo.dll">TKGeomAlgo.bdsproj</Projects>
+      <Projects Name="TKTopAlgo.dll">TKTopAlgo.bdsproj</Projects>
+      <Projects Name="TKPrim.dll">TKPrim.bdsproj</Projects>
+      <Projects Name="TKBO.dll">TKBO.bdsproj</Projects>
+      <Projects Name="TKHLR.dll">TKHLR.bdsproj</Projects>
+      <Projects Name="TKMesh.dll">TKMesh.bdsproj</Projects>
+      <Projects Name="TKShHealing.dll">TKShHealing.bdsproj</Projects>
+      <Projects Name="TKBool.dll">TKBool.bdsproj</Projects>
+      <Projects Name="TKXMesh.dll">TKXMesh.bdsproj</Projects>
+      <Projects Name="TKFillet.dll">TKFillet.bdsproj</Projects>
+      <Projects Name="TKFeat.dll">TKFeat.bdsproj</Projects>
+      <Projects Name="TKOffset.dll">TKOffset.bdsproj</Projects>
+      <Projects Name="TKService.dll">TKService.bdsproj</Projects>
+      <Projects Name="TKV2d.dll">TKV2d.bdsproj</Projects>
+      <Projects Name="TKV3d.dll">TKV3d.bdsproj</Projects>
+      <Projects Name="TKOpenGl.dll">TKOpenGl.bdsproj</Projects>
+      <Projects Name="TKMeshVS.dll">TKMeshVS.bdsproj</Projects>
+      <Projects Name="TKNIS.dll">TKNIS.bdsproj</Projects>
+      <Projects Name="TKVoxel.dll">TKVoxel.bdsproj</Projects>
+      <Projects Name="TKCDF.dll">TKCDF.bdsproj</Projects>
+      <Projects Name="PTKernel.dll">PTKernel.bdsproj</Projects>
+      <Projects Name="TKLCAF.dll">TKLCAF.bdsproj</Projects>
+      <Projects Name="FWOSPlugin.dll">FWOSPlugin.bdsproj</Projects>
+      <Projects Name="TKPShape.dll">TKPShape.bdsproj</Projects>
+      <Projects Name="TKCAF.dll">TKCAF.bdsproj</Projects>
+      <Projects Name="TKBinL.dll">TKBinL.bdsproj</Projects>
+      <Projects Name="TKXmlL.dll">TKXmlL.bdsproj</Projects>
+      <Projects Name="TKTObj.dll">TKTObj.bdsproj</Projects>
+      <Projects Name="TKShapeSchema.dll">TKShapeSchema.bdsproj</Projects>
+      <Projects Name="TKPLCAF.dll">TKPLCAF.bdsproj</Projects>
+      <Projects Name="TKBin.dll">TKBin.bdsproj</Projects>
+      <Projects Name="TKXml.dll">TKXml.bdsproj</Projects>
+      <Projects Name="TKBinTObj.dll">TKBinTObj.bdsproj</Projects>
+      <Projects Name="TKXmlTObj.dll">TKXmlTObj.bdsproj</Projects>
+      <Projects Name="TKPCAF.dll">TKPCAF.bdsproj</Projects>
+      <Projects Name="TKStdLSchema.dll">TKStdLSchema.bdsproj</Projects>
+      <Projects Name="TKStdSchema.dll">TKStdSchema.bdsproj</Projects>
+      <Projects Name="TKVRML.dll">TKVRML.bdsproj</Projects>
+      <Projects Name="TKXCAF.dll">TKXCAF.bdsproj</Projects>
+      <Projects Name="TKSTL.dll">TKSTL.bdsproj</Projects>
+      <Projects Name="TKXSBase.dll">TKXSBase.bdsproj</Projects>
+      <Projects Name="TKXCAFSchema.dll">TKXCAFSchema.bdsproj</Projects>
+      <Projects Name="TKXmlXCAF.dll">TKXmlXCAF.bdsproj</Projects>
+      <Projects Name="TKBinXCAF.dll">TKBinXCAF.bdsproj</Projects>
+      <Projects Name="TKSTEPBase.dll">TKSTEPBase.bdsproj</Projects>
+      <Projects Name="TKIGES.dll">TKIGES.bdsproj</Projects>
+      <Projects Name="TKSTEPAttr.dll">TKSTEPAttr.bdsproj</Projects>
+      <Projects Name="TKSTEP209.dll">TKSTEP209.bdsproj</Projects>
+      <Projects Name="TKXDEIGES.dll">TKXDEIGES.bdsproj</Projects>
+      <Projects Name="TKSTEP.dll">TKSTEP.bdsproj</Projects>
+      <Projects Name="TKXDESTEP.dll">TKXDESTEP.bdsproj</Projects>
+      <Projects Name="TKDraw.dll">TKDraw.bdsproj</Projects>
+      <Projects Name="TKTopTest.dll">TKTopTest.bdsproj</Projects>
+      <Projects Name="TKViewerTest.dll">TKViewerTest.bdsproj</Projects>
+      <Projects Name="TKXSDRAW.dll">TKXSDRAW.bdsproj</Projects>
+      <Projects Name="TKDCAF.dll">TKDCAF.bdsproj</Projects>
+      <Projects Name="TKXDEDRAW.dll">TKXDEDRAW.bdsproj</Projects>
+      <Projects Name="TKTObjDRAW.dll">TKTObjDRAW.bdsproj</Projects>
+      <Projects Name="DRAWEXE.exe">DRAWEXE.bdsproj</Projects>
+      <Projects Name="Targets">TKernel.dll TKMath.dll TKAdvTools.dll TKG2d.dll TKG3d.dll TKGeomBase.dll TKBRep.dll TKGeomAlgo.dll TKTopAlgo.dll TKPrim.dll TKBO.dll TKHLR.dll TKMesh.dll TKShHealing.dll TKBool.dll TKXMesh.dll TKFillet.dll TKFeat.dll TKOffset.dll TKService.dll TKV2d.dll TKV3d.dll TKOpenGl.dll TKMeshVS.dll TKNIS.dll TKVoxel.dll TKCDF.dll PTKernel.dll TKLCAF.dll FWOSPlugin.dll TKPShape.dll TKCAF.dll TKBinL.dll TKXmlL.dll TKTObj.dll TKShapeSchema.dll TKPLCAF.dll TKBin.dll TKXml.dll TKBinTObj.dll TKXmlTObj.dll TKPCAF.dll TKStdLSchema.dll TKStdSchema.dll TKVRML.dll TKXCAF.dll TKSTL.dll TKXSBase.dll TKXCAFSchema.dll TKXmlXCAF.dll TKBinXCAF.dll TKSTEPBase.dll TKIGES.dll TKSTEPAttr.dll TKSTEP209.dll TKXDEIGES.dll TKSTEP.dll TKXDESTEP.dll TKDraw.dll TKTopTest.dll TKViewerTest.dll TKXSDRAW.dll TKDCAF.dll TKXDEDRAW.dll TKTObjDRAW.dll DRAWEXE.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>
