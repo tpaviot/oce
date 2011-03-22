@@ -24,11 +24,16 @@ __Standard_API Handle_Standard_Type& Standard_Real_Type_();
 #undef PI
 #endif 
 
-#if defined(WNT) && !defined(__CYGWIN32__) && !defined(__MINGW32__)
+#if defined(_MSC_VER)
 extern "C" __Standard_API Standard_Real PI;
 extern "C" __Standard_API Standard_Real PI180;
 extern "C" __Standard_API Standard_Real Standard_PI;
 extern "C" __Standard_API Standard_Real Standard_PI180;
+#elif defined (__BORLANDC__)
+__Standard_APIEXTERNC Standard_Real PI;
+__Standard_APIEXTERNC Standard_Real PI180;
+__Standard_APIEXTERNC Standard_Real Standard_PI;
+__Standard_APIEXTERNC Standard_Real Standard_PI180;
 #else
 
 extern const Standard_Real PI;

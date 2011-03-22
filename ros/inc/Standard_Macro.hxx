@@ -120,9 +120,15 @@
 #   if !defined(WNT) || defined(__Standard_DLL) || defined(__FSD_DLL) || defined(__MMgt_DLL) || defined(__OSD_DLL) || defined(__Plugin_DLL) || defined(__Quantity_DLL) || defined(__Resource_DLL) || defined(__SortTools_DLL) || defined(__StdFail_DLL) || defined(__Storage_DLL) || defined(__TColStd_DLL) || defined(__TCollection_DLL) || defined(__TShort_DLL) || defined(__Units_DLL) || defined(__UnitsAPI_DLL) || defined(__Dico_DLL)
 #    define __Standard_API Standard_EXPORT
 #    define __Standard_APIEXTERN Standard_EXPORTEXTERN
+#      ifdef __BORLANDC__
+#      define __Standard_APIEXTERNC Standard_EXPORTEXTERNC
+#      endif
 #   else
 #    define __Standard_API Standard_IMPORT
 #    define __Standard_APIEXTERN Standard_IMPORT
+#      ifdef __BORLANDC__
+#      define __Standard_APIEXTERNC Standard_IMPORTC
+#      endif
 #   endif  // __Standard_DLL
 //#  else
 //#   define __Standard_API
