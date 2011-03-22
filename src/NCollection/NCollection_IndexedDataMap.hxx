@@ -100,7 +100,11 @@ class NCollection_IndexedDataMap : public NCollection_BaseMap
       myIndex(0) {}
     //! Constructor
     Iterator (const NCollection_IndexedDataMap& theMap)
+#ifdef __BORLANDC__
+    : myMap((NCollection_IndexedDataMap <TheKeyType, TheItemType, Hasher> *) &theMap),
+#else
     : myMap  ((NCollection_IndexedDataMap* )&theMap),
+#endif
       myNode (myMap->nodeFromIndex (1)),
       myIndex (1) {}
     //! Query if the end of collection is reached by iterator
