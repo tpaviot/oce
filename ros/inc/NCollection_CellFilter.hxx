@@ -314,10 +314,20 @@ protected:
   };
 
   // definition of global functions is needed for map
+#ifdef __BORLANDC__
+  //It seems that Borland compiler does not support template friends ...
+  //If one wants to use the below global functions must instantiate them outside the
+  //class body.See MeshAlgo_CellFilter.hxx file
+  template <class CellContainer>
+  friend Standard_Integer HashCode (const CellContainer::Cell &aCell, const Standard_Integer theUpper);
+  template <class CellContainer>
+  friend Standard_Boolean IsEqual (const CellContainer::Cell &aCell1, const CellContainer::Cell &aCell2);
+#else
   friend Standard_Integer HashCode (const Cell &aCell, const Standard_Integer theUpper)
   { return aCell.HashCode(theUpper); }
   friend Standard_Boolean IsEqual (const Cell &aCell1, const Cell &aCell2)
   { return aCell1.IsEqual(aCell2); }
+#endif
 
 protected:
 
