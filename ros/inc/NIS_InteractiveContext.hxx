@@ -7,8 +7,13 @@
 #ifndef NIS_InteractiveContext_HeaderFile
 #define NIS_InteractiveContext_HeaderFile
 
-#include <Handle_NIS_InteractiveObject.hxx>
-#include <Handle_NIS_View.hxx>
+#ifdef __BORLANDC__
+# include <NIS_InteractiveObject.hxx>
+# include <NIS_View.hxx>
+#else
+# include <Handle_NIS_InteractiveObject.hxx>
+# include <Handle_NIS_View.hxx>
+#endif
 #include <NCollection_IncAllocator.hxx>
 #include <NCollection_Map.hxx>
 #include <NCollection_Vector.hxx>
