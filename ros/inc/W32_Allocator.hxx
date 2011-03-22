@@ -100,7 +100,10 @@ struct W32_Note {  // base class to represent graphic object
  PW32_Allocator myAllocator;
 
 #ifdef OCC5415
+//somehow the borland compiler does not like this delete operator...
+#ifndef __BORLANDC__
  void operator delete (void*, W32_Allocator*) {}
+#endif
 private: // to protect against possible accidental usage
  void operator delete (void* p) {}
 #endif
