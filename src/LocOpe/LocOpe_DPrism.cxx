@@ -85,12 +85,12 @@ LocOpe_DPrism::LocOpe_DPrism(const TopoDS_Face&  Spine,
   Standard_Real y =  Height1*sin(Angle);
   Standard_Real z =  Height1*cos(Angle);
 
-  TopoDS_Vertex Vert2  = BRepLib_MakeVertex(gp_Pnt(0,y,z));
+  TopoDS_Vertex Vert2  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0,y,z));
 
   Standard_Real y1 =  -Height2*sin(Angle);
   Standard_Real z1 =  -Height2*cos(Angle);
 
-  TopoDS_Vertex Vert1  = BRepLib_MakeVertex(gp_Pnt(0,y1,z1));  
+  TopoDS_Vertex Vert1  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0,y1,z1));
 
   myProfile2 = BRepLib_MakeEdge(Vert1, Vert2);
   
@@ -104,7 +104,7 @@ LocOpe_DPrism::LocOpe_DPrism(const TopoDS_Face&  Spine,
   Standard_Real Deltay = Max(Umax-Umin,Vmax-Vmin) + Abs(y);
   Deltay*=2;
   
-  TopoDS_Vertex Vert3  = BRepLib_MakeVertex(gp_Pnt(0, y + Deltay, z));
+  TopoDS_Vertex Vert3  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0, y + Deltay, z));
   myProfile3 = BRepLib_MakeEdge(Vert2, Vert3);
 
   Umax = 0.;
@@ -116,7 +116,7 @@ LocOpe_DPrism::LocOpe_DPrism(const TopoDS_Face&  Spine,
   Standard_Real Deltay1 = Max(Umax-Umin,Vmax-Vmin) + Abs(y1);
   Deltay1*=2;
 
-  TopoDS_Vertex Vert4  = BRepLib_MakeVertex(gp_Pnt(0, y1+Deltay1, z1));
+  TopoDS_Vertex Vert4  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0, y1+Deltay1, z1));
   myProfile1 = BRepLib_MakeEdge(Vert4, Vert1);
 
   myProfile  = BRepLib_MakeWire(myProfile1,myProfile2,myProfile3);
@@ -358,8 +358,8 @@ LocOpe_DPrism::LocOpe_DPrism(const TopoDS_Face&   Spine,
   Standard_Real y =  Height*sin(Angle);
   Standard_Real z =  Height*cos(Angle);
 
-  TopoDS_Vertex Vert1  = BRepLib_MakeVertex(gp_Pnt(0, 0, 0));
-  TopoDS_Vertex Vert2  = BRepLib_MakeVertex(gp_Pnt(0,y,z));
+  TopoDS_Vertex Vert1  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0, 0, 0));
+  TopoDS_Vertex Vert2  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0,y,z));
   myProfile2 = BRepLib_MakeEdge(Vert1, Vert2);
   
   Standard_Real Umin,Umax,Vmin,Vmax;
@@ -367,10 +367,10 @@ LocOpe_DPrism::LocOpe_DPrism(const TopoDS_Face&   Spine,
   Standard_Real Deltay = Max(Umax-Umin,Vmax-Vmin) + Abs(y);
   Deltay*=2;
   
-  TopoDS_Vertex Vert3  = BRepLib_MakeVertex(gp_Pnt(0, y + Deltay,z));
+  TopoDS_Vertex Vert3  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0, y + Deltay,z));
   myProfile3 = BRepLib_MakeEdge(Vert2, Vert3);
   
-  TopoDS_Vertex Vert4  = BRepLib_MakeVertex(gp_Pnt(0, Deltay,0));
+  TopoDS_Vertex Vert4  = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(0, Deltay,0));
   myProfile1 = BRepLib_MakeEdge(Vert4, Vert1);
   
   myProfile = BRepLib_MakeWire(myProfile1,myProfile2,myProfile3);

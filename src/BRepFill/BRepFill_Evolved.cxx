@@ -364,7 +364,7 @@ void BRepFill_Evolved::Perform(const TopoDS_Wire&      Spine,
 			       const Standard_Boolean  Solid)
 {
   mySpineType = Standard_False;
-  TopoDS_Face aFace = BRepLib_MakeFace(Spine,Standard_True);
+  TopoDS_Face aFace = (TopoDS_Face) BRepLib_MakeFace(Spine,Standard_True);
   PrivatePerform( aFace, Profile, AxeProf, Join, Solid);
 }
 
@@ -2047,7 +2047,7 @@ void BRepFill_Evolved::AddTopAndBottom(BRepTools_Quilt& Glue)
     BRepAlgo_Loop Loop;
     // Construction of supports.
     gp_Pln S (0.,0.,1.,- Altitud(V[i]));
-    TopoDS_Face F = BRepLib_MakeFace(S);
+    TopoDS_Face F = (TopoDS_Face) BRepLib_MakeFace(S);
     Loop.Init(F);
 
     TopExp_Explorer     ExpSpine(mySpine,TopAbs_EDGE);
@@ -2564,7 +2564,7 @@ static void AddDegeneratedEdge(TopoDS_Face& F,
 	  Handle(Geom2d_Line) C2d = new Geom2d_Line(PrevP,gp_Dir2d(V));
 	  Standard_Real f = 0, l = PrevP.Distance(P1);
 	  Handle(Geom2d_TrimmedCurve) CT = new Geom2d_TrimmedCurve(C2d,f,l);
-	  TopoDS_Edge NE = BRepLib_MakeEdge(C2d,S);
+	  TopoDS_Edge NE = (TopoDS_Edge) BRepLib_MakeEdge(C2d,S);
 	  B.Degenerated(NE,Standard_True);
 	  B.Add(NE,V1.Oriented(TopAbs_FORWARD));
 	  B.Add(NE,V1.Oriented(TopAbs_REVERSED));
@@ -2583,7 +2583,7 @@ static void AddDegeneratedEdge(TopoDS_Face& F,
 	Handle(Geom2d_Line) C2d = new Geom2d_Line(P2,gp_Dir2d(V));
 	Standard_Real f = 0, l = P2.Distance(PF);
 	Handle(Geom2d_TrimmedCurve) CT = new Geom2d_TrimmedCurve(C2d,f,l);
-	TopoDS_Edge NE = BRepLib_MakeEdge(C2d,S);
+	TopoDS_Edge NE = (TopoDS_Edge) BRepLib_MakeEdge(C2d,S);
 	B.Degenerated(NE,Standard_True);
 	B.Add(NE,VF.Oriented(TopAbs_FORWARD));
 	B.Add(NE,VF.Oriented(TopAbs_REVERSED));
@@ -2920,8 +2920,8 @@ static TopAbs_Orientation Relative (const TopoDS_Wire&   W1,
   }
   Commun = Standard_True;
 
-  TopoDS_Wire WW1 = BRepLib_MakeWire(E1);
-  TopoDS_Wire WW2 = BRepLib_MakeWire(E2);
+  TopoDS_Wire WW1 = (TopoDS_Wire) BRepLib_MakeWire(E1);
+  TopoDS_Wire WW2 = (TopoDS_Wire) BRepLib_MakeWire(E2);
   Standard_Real Tol = BRepFill_Confusion();
   if (Side(WW1,Tol) < 4 && Side(WW2,Tol) < 4) // two to the left
     return TopAbs_FORWARD;
@@ -3170,7 +3170,7 @@ void CutEdgeProf (const TopoDS_Edge&                  E,
 	
 	VV = BRepLib_MakeVertex( C->Value(Param));
 	
-	TopoDS_Edge EE = BRepLib_MakeEdge(C,Vf,VV);
+	TopoDS_Edge EE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vf,VV);
 	EE.Orientation(E.Orientation());
 	if ( EE.Orientation() == TopAbs_FORWARD)
 	  Cuts.Append(EE);
@@ -3184,7 +3184,7 @@ void CutEdgeProf (const TopoDS_Edge&                  E,
     }
   }
 
-  TopoDS_Edge EE = BRepLib_MakeEdge(C,Vf,Vl);
+  TopoDS_Edge EE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vf,Vl);
   EE.Orientation(E.Orientation());
   if ( EE.Orientation() == TopAbs_FORWARD)
     Cuts.Append(EE);
@@ -3227,8 +3227,8 @@ void CutEdge (const TopoDS_Edge& E,
     gp_Pnt2d P1 = CT2d->Value(m1);
     gp_Pnt2d P2 = CT2d->Value(m2);
 
-    TopoDS_Vertex VL1 = BRepLib_MakeVertex(gp_Pnt(P1.X(), P1.Y(), 0.));
-    TopoDS_Vertex VL2 = BRepLib_MakeVertex(gp_Pnt(P2.X(), P2.Y(), 0.));
+    TopoDS_Vertex VL1 = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(P1.X(), P1.Y(), 0.));
+    TopoDS_Vertex VL2 = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(P2.X(), P2.Y(), 0.));
     TopoDS_Shape aLocalShape1 = E.EmptyCopied();
     TopoDS_Shape aLocalShape2 = E.EmptyCopied();
     TopoDS_Shape aLocalShape3 = E.EmptyCopied();

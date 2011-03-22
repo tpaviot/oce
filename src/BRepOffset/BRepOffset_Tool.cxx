@@ -370,7 +370,7 @@ static void BuildPCurves (const TopoDS_Edge&  E,
     {
       gp_Pnt fpoint = AC.Value( AC.FirstParameter() );
       gp_Pnt lpoint = AC.Value( AC.LastParameter() );
-      TopoDS_Face theFace = BRepLib_MakeFace( theSurf, Precision::Confusion() );
+      TopoDS_Face theFace = (TopoDS_Face) BRepLib_MakeFace( theSurf, Precision::Confusion() );
       Standard_Real U1 = 0., U2 = 0., TolProj = 1.e-4; //1.e-5;
       TopoDS_Edge theEdge;
       TopExp_Explorer Explo;
@@ -750,7 +750,7 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
     for (Standard_Integer i = 1; i <= Inter.NbLines(); i++) {
       CI = Inter.Line(i);
       if (ToSmall(CI)) continue;
-      TopoDS_Edge E = BRepLib_MakeEdge(CI);
+      TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(CI);
       if (Inter.HasLineOnS1(i)) {
 	Handle(Geom2d_Curve) C2 = Inter.LineOnS1(i);
 	PutInBounds  (F1,E,C2);
@@ -1744,7 +1744,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 	while (!edges.IsEmpty())
 	  {
 	    TopoDS_Edge anEdge = TopoDS::Edge( edges.First() );
-	    TopoDS_Wire aWire = BRepLib_MakeWire( anEdge ), resWire;
+	    TopoDS_Wire aWire = (TopoDS_Wire) BRepLib_MakeWire( anEdge ), resWire;
 	    TColStd_SequenceOfInteger Candidates;
 	    for (k = 1; k <= wseq.Length(); k++)
 	      {
@@ -1786,7 +1786,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 			  }
 		      }
 		  }
-		TopoDS_Wire NewWire = BRepLib_MakeWire( resWire, TopoDS::Edge(edges(Candidates(minind))) );
+		TopoDS_Wire NewWire = (TopoDS_Wire) BRepLib_MakeWire( resWire, TopoDS::Edge(edges(Candidates(minind))) );
 		wseq(k) = NewWire;
 		edges.Remove(Candidates(minind));
 	      }
@@ -2046,7 +2046,7 @@ void BRepOffset_Tool::InterOrExtent(const TopoDS_Face& F1,
       CI = Inter.Line(i);
       
       if (ToSmall(CI)) continue;
-      TopoDS_Edge E = BRepLib_MakeEdge(CI);
+      TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(CI);
       BuildPCurves (E,F1);
       BuildPCurves (E,F2);
       OrientSection (E,F1,F2,O1,O2);
@@ -2447,7 +2447,7 @@ void BRepOffset_Tool::Inter2d (const TopoDS_Face&    F,
 	}
 	if (YaSol) {
 	  gp_Pnt        P   = S->Value(P2d.X(),P2d.Y());
-	  TopoDS_Vertex V = BRepLib_MakeVertex(P);
+	  TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P);
 	  V.Orientation(TopAbs_INTERNAL);
 	  TopoDS_Shape aLocalEdge = E1.Oriented(TopAbs_FORWARD);
 	  B.UpdateVertex(V,U1,TopoDS::Edge(aLocalEdge),TolConf);

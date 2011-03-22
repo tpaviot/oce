@@ -2040,7 +2040,7 @@ static Standard_Boolean ChooseSection(const TopoDS_Shape& Comp,
       if (!explo.More())
         break;
       TopoDS_Edge FirstEdge = TopoDS::Edge( explo.Current() );
-      TopoDS_Wire NewWire = BRepLib_MakeWire( FirstEdge );
+      TopoDS_Wire NewWire = (TopoDS_Wire) BRepLib_MakeWire( FirstEdge );
       B.Remove( OldComp, FirstEdge );
       if (NewWire.Closed())
         {
@@ -2088,7 +2088,7 @@ static Standard_Boolean ChooseSection(const TopoDS_Shape& Comp,
               Standard_Real MinDeviation = RealLast();
               for (j = 1; j <= Edges.Length(); j++)
                 {
-                  TopoDS_Wire aWire = BRepLib_MakeWire( NewWire, TopoDS::Edge(Edges(j)) );
+                  TopoDS_Wire aWire = (TopoDS_Wire) BRepLib_MakeWire( NewWire, TopoDS::Edge(Edges(j)) );
                   gp_Pln aPlane;
                   Standard_Boolean issing;
                   Standard_Real Deviation = ComputeAveragePlaneAndMaxDeviation( aWire, aPlane, issing );

@@ -611,7 +611,7 @@ void BRepFill_Filling::Build()
 	  Points(1) = gp_Pnt2d( U1, V1 );
 	  Points(2) = gp_Pnt2d( U2, V2 );
 	  Handle( Geom2d_BezierCurve ) Line2d = new Geom2d_BezierCurve( Points );
-	  TopoDS_Edge E = BRepLib_MakeEdge( Line2d, CurSurface, FirstVtx, LastVtx );
+	  TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge( Line2d, CurSurface, FirstVtx, LastVtx );
 	  Add( E, CurFace, myFreeConstraints(j).myOrder );
 	  VerSeq.Remove( i, i+1 );
 	  break;

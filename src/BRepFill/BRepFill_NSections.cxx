@@ -812,7 +812,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
       = Handle(Geom_BSplineCurve)::DownCast(myLaws->Value(ii)->BSplineSurface()->VIso(V));
     Standard_Real first = Curve ->FirstParameter(),
     last = Curve ->LastParameter();
-    TopoDS_Edge E = BRepLib_MakeEdge(Curve,first,last);
+    TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(Curve,first,last);
     MW.Add(E);
   }
   TopAbs_Orientation Orien = TopAbs_FORWARD;

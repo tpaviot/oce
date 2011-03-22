@@ -557,18 +557,18 @@ void BRepFill_OffsetWire::Perform (const Standard_Real Offset,
           for(np = 2; np < NPnts; np++) {
             gp_Pnt LP = Points(np);
             LV = BRepLib_MakeVertex(LP);
-            newE = BRepLib_MakeEdge(FV, LV);
+            newE = (TopoDS_Edge) BRepLib_MakeEdge(FV, LV);
             aL.Append(newE);
             FV = LV;
           }
           LV = Vl;
-          newE = BRepLib_MakeEdge(FV, LV);
+          newE = (TopoDS_Edge) BRepLib_MakeEdge(FV, LV);
           aL.Append(newE);
         }
         else
         {
           //cout << " 2 points " << endl;
-          TopoDS_Edge newE = BRepLib_MakeEdge(Vf, Vl);
+          TopoDS_Edge newE = (TopoDS_Edge) BRepLib_MakeEdge(Vf, Vl);
           aL.Append(newE);
         }
         //Update myMapSpine
@@ -1699,7 +1699,7 @@ void BRepFill_OffsetWire::FixHoles()
         if (IsFirstF) theEdge.Reverse();
         BB.Add( Base, theEdge );
         // Creating new edge from theVertex to Vf
-        TopoDS_Edge NewEdge = BRepLib_MakeEdge( theVertex, Vf );
+        TopoDS_Edge NewEdge = (TopoDS_Edge) BRepLib_MakeEdge( theVertex, Vf );
         BB.Add( Base, NewEdge );
       }
     }
@@ -1737,7 +1737,7 @@ void BRepFill_OffsetWire::FixHoles()
         if (!IsFirstL) theEdge.Reverse();
         BB.Add( Base, theEdge );
         // Creating new edge from Vl to theVertex
-        TopoDS_Edge NewEdge = BRepLib_MakeEdge( Vl, theVertex );
+        TopoDS_Edge NewEdge = (TopoDS_Edge) BRepLib_MakeEdge( Vl, theVertex );
         BB.Add( Base, NewEdge );
       }
     }
@@ -1766,7 +1766,7 @@ void BRepFill_OffsetWire::FixHoles()
       else if (Dist <= MaxTol)
       {
         // Creating new edge from Vl to Vf
-        TopoDS_Edge NewEdge = BRepLib_MakeEdge( Vf, Vl );
+        TopoDS_Edge NewEdge = (TopoDS_Edge) BRepLib_MakeEdge( Vf, Vl );
         BB.Add( Base, NewEdge );
         Base.Closed( Standard_True );
       }
@@ -2010,7 +2010,7 @@ void MakeCircle (const TopoDS_Edge&          E,
     = new  Geom2d_Circle(Axis, Abs(Offset), Offset < 0.);
 
   // Bind the edges in my Map.
-  TopoDS_Edge OE = BRepLib_MakeEdge(Circ, RefPlane);
+  TopoDS_Edge OE = (TopoDS_Edge) BRepLib_MakeEdge(Circ, RefPlane);
   TopTools_ListOfShape LL;
 
   LL.Append(OE);
@@ -2142,7 +2142,7 @@ void MakeOffset (const TopoDS_Edge&        E,
 
   // Bind the edges in my Map.
   if (!G2dOC.IsNull()) {
-    TopoDS_Edge OE = BRepLib_MakeEdge(G2dOC, RefPlane);
+    TopoDS_Edge OE = (TopoDS_Edge) BRepLib_MakeEdge(G2dOC, RefPlane);
     OE.Orientation(E.Orientation());
     TopTools_ListOfShape LL;
     LL.Append(OE);

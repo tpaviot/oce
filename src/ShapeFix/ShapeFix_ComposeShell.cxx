@@ -18,6 +18,11 @@
 //    abv  22.07.99 implementing patch indices
 //    svv  10.01.00 porting on DEC
 
+/* Starting from bcc32 v6.40 this flag should be passed as a compiler option. */
+#if defined(__BORLANDC__) && __BORLANDC__ < 0x0640 /* bcc32 v6.40 */
+#pragma option -x-
+#endif
+
 #include <ShapeFix_ComposeShell.ixx>
 
 #include <Precision.hxx>

@@ -37,14 +37,7 @@
 // request will be ignored. If the abort request do a raise during a setjmp
 // or a longjmp, there will be a "terminating SEGV" impossible to handle.
 
-//==== The top of the Errors Stack ===========================================
-static Standard_ErrorHandler* Top = 0;
-
-// A mutex to protect from concurrent access to Top
-// Note that we should NOT use Sentry while in this class, as Sentry
-// would register mutex as callback in the current exception handler
-static Standard_Mutex theMutex; 
-
+//Somehow borland needs this inline global function to be declared first ... ??
 static inline Standard_ThreadId GetThreadID()
 {
 #ifndef WNT
@@ -53,6 +46,14 @@ static inline Standard_ThreadId GetThreadID()
   return GetCurrentThreadId();
 #endif
 }
+
+//==== The top of the Errors Stack ===========================================
+static Standard_ErrorHandler* Top = 0;
+
+// A mutex to protect from concurrent access to Top
+// Note that we should NOT use Sentry while in this class, as Sentry
+// would register mutex as callback in the current exception handler
+static Standard_Mutex theMutex; 
 
 //============================================================================
 //====  Constructor : Create a ErrorHandler structure. And add it at the 

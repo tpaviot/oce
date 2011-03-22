@@ -2152,7 +2152,7 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
     {
       Vfirst = -M_PI/2.; Vlast = p2d1.Y();
     }
-    TopoDS_Face NewSphericalFace = BRepLib_MakeFace(aSphSurf, Ufirst, Ulast, Vfirst, Vlast, Precision::Confusion());
+    TopoDS_Face NewSphericalFace = (TopoDS_Face) BRepLib_MakeFace(aSphSurf, Ufirst, Ulast, Vfirst, Vlast, Precision::Confusion());
     TopoDS_Edge OldEdge;
     for (Explo.Init(NewSphericalFace, TopAbs_EDGE); Explo.More(); Explo.Next())
     {
@@ -2887,7 +2887,7 @@ void BRepOffset_MakeOffset::MakeMissingWalls ()
 	      BB.Add(arcWire, EA2);
 	      BRepLib::BuildCurves3d( arcWire, myTol );
 	      arcWire.Closed(Standard_True);
-	      TopoDS_Face arcFace = BRepLib_MakeFace(arcWire, Standard_True);
+	      TopoDS_Face arcFace = (TopoDS_Face) BRepLib_MakeFace(arcWire, Standard_True);
 	      BRepTools::Update(arcFace);
 	      myWalls.Append(arcFace);
 	      TopoDS_Shape localEA2 = EA2.Oriented(TopAbs_FORWARD);

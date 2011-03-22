@@ -94,7 +94,7 @@ const Handle(TopoDS_TShape)& VrmlData_Box::TShape ()
   if (myIsModified) {
     try {
       const TopoDS_Shell aShell =
-        BRepPrimAPI_MakeBox (gp_Pnt (-0.5 * mySize),
+        (TopoDS_Shell) BRepPrimAPI_MakeBox (gp_Pnt (-0.5 * mySize),
                              mySize.X(), mySize.Y(), mySize.Z());
       SetTShape (aShell.TShape());
       myIsModified = Standard_False;
