@@ -12,3 +12,9 @@ How to stay up to date with latest developements?
 =================================================
 cd oce
 git pull
+
+There is no configure script, how do I compile on Unix?
+=======================================================
+cd oce/ros
+autoreconf -fi
+Then read ros/README.txt for instructions on compiling
