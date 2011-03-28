@@ -850,6 +850,10 @@ Standard_Boolean OSD_File::IsExecutable()
 #define OPEN_OLD    1
 #define OPEN_APPEND 2
 
+#ifndef _MSC_VER
+# define  __leave goto leave
+#endif
+
 void                            _osd_wnt_set_error        ( OSD_Error&, OSD_WhoAmI, ... );
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
@@ -1789,13 +1793,13 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
 
   ImperativeFlag = Standard_True;
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  // end __try
 
  __finally {}
 
-#ifdef VAC
-leave: ;         // added for VisualAge
-#endif
 }  // end OSD_File :: SetLock
 
 #if defined(__CYGWIN32__) || defined(__MINGW32__)
@@ -2122,6 +2126,9 @@ retry:
 
   fOK = TRUE;
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  // end __try
 
  __finally {
@@ -2147,10 +2154,6 @@ retry:
   if ( pfSD            != NULL ) FreeFileSecurity     ( pfSD            );
  
  }  // end __finally
-
-#ifdef VAC
-leave: ;     // added for VisualAge
-#endif
 
  return retVal;
  
@@ -2788,14 +2791,13 @@ BOOL __fastcall _osd_wnt_sd_to_protection (
 
   retVal = TRUE;
   
+#ifndef _MSC_VER
+  leave: ;
+#endif 
  }  // end __try
 
  __finally {}
        
-#ifdef VAC
-leave: ;      // added for VisualAge
-#endif
-
  return retVal;
 
 }  // end _osd_wnt_sd_to_protection
@@ -3065,6 +3067,9 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fN
   
   fOK = TRUE;
  
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  // end __try
 
  __finally {
@@ -3096,10 +3101,6 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fN
   if ( hPrinter != NULL ) ClosePrinter ( hPrinter );
  
  }  // end __finally
-
-#ifdef VAC
-leave: ;       // added for VisualAge
-#endif
 
  if ( !fOK ) SetLastError ( dwCode );
 

@@ -16,6 +16,13 @@
 #define SGN( x )  (   ( x ) > 0 ? 1 : (  ( x ) < 0 ? -1 : 0 )   )
 #define ALLOCATOR (   ( PW95_Allocator )myAllocator             )
 
+#ifndef min
+# define min(a, b)  (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef max
+# define max(a, b)  (((a) > (b)) ? (a) : (b))
+#endif
+
 #define MIN4( a, b, c, d ) min(   min(  ( a ), ( b )  ), min(  ( c ), ( d )  )   )
 #define MAX4( a, b, c, d ) max(   max(                                       \
                                    (  ( a ) == INT_MAX ? INT_MIN : ( a )  ), \

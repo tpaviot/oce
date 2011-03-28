@@ -204,8 +204,13 @@ void Select3D_SensitiveSegment::Dump(Standard_OStream& S,const Standard_Boolean 
 
 Standard_Real Select3D_SensitiveSegment::ComputeDepth(const gp_Lin& EyeLine) const
 {
+#ifdef __BORLANDC__
+  gp_Pnt aP0 = mystart.operator gp_Pnt();
+  gp_Pnt aP1 = myend.operator gp_Pnt();
+#else
   gp_Pnt aP0 = mystart;
   gp_Pnt aP1 = myend;
+#endif
 
   // if segment is degenerated (zero length), just use depth of the end
   gp_XYZ aV = aP1.XYZ() - aP0.XYZ();

@@ -387,6 +387,11 @@ static void drawText(char* text, char* font, OSD_FontAspect style, int size, flo
 */
 }
 
+#ifdef __BORLANDC__
+# define sqrtf std::sqrtf
+# define fabsf (float)fabs 
+#endif
+
 static void drawArrow(float x1, float y1, float z1, 
                       float x2, float y2, float z2,
                       float xn, float yn, float zn)

@@ -50,6 +50,9 @@
 #include <Draw_Failure.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Standard_ErrorHandler.hxx>
+
+#include <stdio.h>
+
 extern Standard_Boolean Draw_ParseFailed;
 #ifndef WNT
 extern Standard_Boolean Draw_LowWindows;

@@ -38,6 +38,8 @@
 #pragma warning (disable:4996)
 #endif
 
+#include <stdio.h>
+
 static void     dumpNode        (Standard_OStream&              theStream,
                                  const Handle(VrmlData_Node)&   theNode,
                                  const TCollection_AsciiString& theIndent);
@@ -82,8 +84,12 @@ const Handle(VrmlData_Node)& VrmlData_Scene::AddNode
   if (theN.IsNull() == Standard_False)
     if (theN->IsKind (STANDARD_TYPE(VrmlData_WorldInfo)) == Standard_False) {
       myMutex.Lock();
-      const Handle(VrmlData_Node)& aNode =
-        myAllNodes.Append ((&theN->Scene()== this) ? theN : theN->Clone (NULL));
+      Handle(VrmlData_Node) theItem;
+      if (&theN->Scene() == this)
+        theItem = theN;
+      else
+        theItem = theN->Clone (NULL);
+      const Handle(VrmlData_Node)& aNode = myAllNodes.Append (theItem);
       // Name is checked for uniqueness. If not, letter 'D' is appended until
       // the name proves to be unique.
       if (aNode->Name()[0] != '\0')

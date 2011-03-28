@@ -1,0 +1,2215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{801DA1D0-5BA5-4A66-BC16-C1D87686DF36}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">TKPLCAF.bpf</Source>
+		</Source>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="name" value="TKPLCAF.dll"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;adortl"/>
+        <property category="build.node" name="use_packages" value="1"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.A.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AK.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AU.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.2" value="DEB=1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.Od.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.k.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.vi.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.y.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bind"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="container.SelectedWarnings.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w0.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w2.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bin"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.4.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.6.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="WNT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.2" value="CSFDB"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.3" value="WIN32"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.4" value="_WINDOWS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.5" value="STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.6" value="HAVE_IOS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.He.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hs.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\..\inc"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgx.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Q.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.V0.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.V1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vms.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.fff.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.p.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.rd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_NO_VCL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.waus.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wcsu.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.whid.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wlvc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wpro.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wrch.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.16.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.31.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.-w-.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.GD.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpd.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpr.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpe.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.m.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.map_segments.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.s.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="import32.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="cw32mti.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.a.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.ml.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.mu.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.o.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.oi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.op.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.r.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zn.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        </optionset>
+        <file path="..\..\..\src\PDF\PDF_Attribute.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDF\PDF_Data.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDF\PDF_Reference.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDF\PDF_TagSource.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDF\PDF_FieldOfHAttributeArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDF\PDF_HAttributeArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDF\PDF_VArrayNodeOfFieldOfHAttributeArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDF\PDF_VArrayTNodeOfFieldOfHAttributeArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_AsciiString.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_BooleanArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_BooleanList.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ByteArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ByteArray_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Comment.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Directory.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Expression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ExtStringArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ExtStringArray_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ExtStringList.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Integer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_IntegerArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_IntegerArray_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_IntegerList.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_IntPackedMap.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_IntPackedMap_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Name.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_NamedData.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_NoteBook.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Real.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_RealArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_RealArray_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_RealList.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ReferenceArray.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_ReferenceList.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Relation.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Tick.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_TreeNode.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_UAttribute.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDataStd\PDataStd_Variable.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfByte_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfReal_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHAsciiString_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_HArray1OfByte_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfReal_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_HArray1OfHAsciiString_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfByte_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PFunction\PFunction_Function.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PFunction_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PFunction"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDocStd\PDocStd_Document.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\PDocStd\PDocStd_XLink.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__PDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\PDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_ARDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_ASDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_ReferenceRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_ReferenceStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_TagSourceRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_TagSourceStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDF\MDF_Tool.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ARDriverHSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ARDriverSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ASDriverHSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ASDriverSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeARDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeASDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeARDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeASDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DriverListOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_DriverListOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_RRelocationTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_SequenceNodeOfARDriverSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_SequenceNodeOfASDriverSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_SRelocationTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_TypeARDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_TypeASDriverMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_TypeDriverListMapOfARDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\MDF\MDF_TypeDriverListMapOfASDriverTable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDF_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDF"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_AsciiStringRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_AsciiStringStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_BooleanArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_BooleanArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_BooleanListRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_BooleanListStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ByteArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_CommentRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_CommentStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_DirectoryRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_DirectoryStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExpressionRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExpressionStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExtStringArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExtStringListRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ExtStringListStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerListRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerListStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntegerStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_IntPackedMapStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NamedDataRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NamedDataStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NameRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NameStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NoteBookRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_NoteBookStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealListRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealListStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RealStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ReferenceArrayRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ReferenceArrayStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ReferenceListRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_ReferenceListStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RelationRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_RelationStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_TickRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_TickStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_TreeNodeRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_TreeNodeStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_UAttributeRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_UAttributeStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_VariableRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDataStd\MDataStd_VariableStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDataStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDataStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MFunction\MFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MFunction_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MFunction"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MFunction\MFunction_FunctionRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MFunction_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MFunction"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MFunction\MFunction_FunctionStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MFunction_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MFunction"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDocStd\MDocStd.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDocStd\MDocStd_DocumentRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDocStd\MDocStd_DocumentStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDocStd\MDocStd_XLinkRetrievalDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\MDocStd\MDocStd_XLinkStorageDriver.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__MDocStd_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\MDocStd"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="TKPLCAF.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\..\src\PDF\PDF_Attribute.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDF\PDF_Data.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDF\PDF_Reference.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDF\PDF_TagSource.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDF\PDF_FieldOfHAttributeArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDF\PDF_HAttributeArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDF\PDF_VArrayNodeOfFieldOfHAttributeArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDF\PDF_VArrayTNodeOfFieldOfHAttributeArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_AsciiString.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_BooleanArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_BooleanList.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ByteArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ByteArray_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Comment.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Directory.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Expression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ExtStringArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ExtStringArray_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ExtStringList.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Integer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_IntegerArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_IntegerArray_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_IntegerList.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_IntPackedMap.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_IntPackedMap_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Name.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_NamedData.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_NoteBook.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Real.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_RealArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_RealArray_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_RealList.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ReferenceArray.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_ReferenceList.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Relation.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Tick.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_TreeNode.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_UAttribute.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDataStd\PDataStd_Variable.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfByte_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHArray1OfReal_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_FieldOfHArray1OfHAsciiString_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_HArray1OfByte_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_HArray1OfHArray1OfReal_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_HArray1OfHAsciiString_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfByte_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfByte_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\PDataStd\PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PFunction\PFunction_Function.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDocStd\PDocStd_Document.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\PDocStd\PDocStd_XLink.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_ARDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_ASDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_ReferenceRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_ReferenceStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_TagSourceRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_TagSourceStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDF\MDF_Tool.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ARDriverHSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ARDriverSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ASDriverHSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ASDriverSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeARDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeASDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeARDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeASDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DriverListOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_DriverListOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ListIteratorOfDriverListOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_ListNodeOfDriverListOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_RRelocationTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_SequenceNodeOfARDriverSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_SequenceNodeOfASDriverSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_SRelocationTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_TypeARDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_TypeASDriverMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_TypeDriverListMapOfARDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\MDF\MDF_TypeDriverListMapOfASDriverTable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_AsciiStringRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_AsciiStringStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_BooleanArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_BooleanArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_BooleanListRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_BooleanListStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ByteArrayRetrievalDriver_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ByteArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_CommentRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_CommentStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_DirectoryRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_DirectoryStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExpressionRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExpressionStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExtStringArrayRetrievalDriver_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExtStringArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExtStringListRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ExtStringListStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerArrayRetrievalDriver_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerListRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerListStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntegerStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntPackedMapRetrievalDriver_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_IntPackedMapStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NamedDataRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NamedDataStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NameRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NameStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NoteBookRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_NoteBookStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealArrayRetrievalDriver_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealListRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealListStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RealStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ReferenceArrayRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ReferenceArrayStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ReferenceListRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_ReferenceListStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RelationRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_RelationStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_TickRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_TickStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_TreeNodeRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_TreeNodeStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_UAttributeRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_UAttributeStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_VariableRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDataStd\MDataStd_VariableStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MFunction\MFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MFunction\MFunction_FunctionRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MFunction\MFunction_FunctionStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDocStd\MDocStd.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDocStd\MDocStd_DocumentRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDocStd\MDocStd_DocumentStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDocStd\MDocStd_XLinkRetrievalDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\MDocStd\MDocStd_XLinkStorageDriver.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="libraries\PTKernel.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKCDF.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKLCAF.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKernel.lib" CONTAINERID="LibTool"/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1032</VersionInfo>
+          <VersionInfo Name="CodePage">1253</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs"></Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>

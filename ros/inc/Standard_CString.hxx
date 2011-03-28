@@ -14,7 +14,11 @@
 # endif
 
 # ifdef WNT
-#  define strcasecmp _stricmp
+#  ifdef __BORLANDC__
+#   define strcasecmp stricmp
+#  else
+#   define strcasecmp _stricmp
+#  endif
 # endif
 
 # include <string.h>

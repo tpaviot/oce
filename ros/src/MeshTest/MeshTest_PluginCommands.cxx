@@ -28,6 +28,8 @@
 #include <Poly_Polygon3D.hxx>
 #include <Poly_Polygon2D.hxx>
 
+#include <stdio.h>
+
 static Standard_Integer mpnames           (Draw_Interpretor& , Standard_Integer , const char** );
 static Standard_Integer mpsetdefaultname  (Draw_Interpretor& , Standard_Integer , const char** );
 static Standard_Integer mpgetdefaultname  (Draw_Interpretor& , Standard_Integer , const char** );

@@ -24,7 +24,7 @@
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 
-# if defined(WNT) && !defined(HAVE_NO_DLL)
+# if defined(_MSC_VER) && !defined(HAVE_NO_DLL)
 
 #  ifndef Standard_EXPORT
 #   define Standard_EXPORT __declspec( dllexport )
@@ -80,7 +80,7 @@
 #define NOIME NOIME
 #endif
 
-# else  /* WNT */
+# else  /* _MSC_VER */
 
 //======================================================
 // UNIX definitions
@@ -109,7 +109,7 @@
 #define	_MEMORY_H
 #endif
 
-# endif  /* WNT */
+# endif  /* _MSC_VER */
 
 //======================================================
 // Other

@@ -19,6 +19,8 @@
 #pragma warning (disable:4996)
 #endif
 
+#include <stdio.h>
+
 IMPLEMENT_STANDARD_HANDLE  (VrmlData_Group, VrmlData_Node)
 IMPLEMENT_STANDARD_RTTIEXT (VrmlData_Group, VrmlData_Node)
 

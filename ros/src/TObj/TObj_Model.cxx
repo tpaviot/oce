@@ -37,6 +37,8 @@
   #include <unistd.h>
 #endif
 
+#include <stdio.h>
+
 IMPLEMENT_STANDARD_HANDLE(TObj_Model,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(TObj_Model,MMgt_TShared)
 

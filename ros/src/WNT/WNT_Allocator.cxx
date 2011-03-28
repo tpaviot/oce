@@ -15,6 +15,10 @@
 #include <limits>
 #include <stdio.h>
 
+#ifndef max
+# define max(a, b)  (((a) > (b)) ? (a) : (b))
+#endif
+
 #define ALLOCATOR ( ( PWNT_Allocator )myAllocator )
 
 static XFORM xfmIdent = { ( FLOAT )0.8660,  ( FLOAT )0.5000,

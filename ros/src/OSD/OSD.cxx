@@ -96,9 +96,9 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 
 #ifdef WNT
 # include <Windows.h>
-#if !defined(__CYGWIN32__) && !defined(__MINGW32__)
-# include <Mapiwin.h>
-#endif
+# ifdef _MSVC_VER
+#  include <Mapiwin.h>
+# endif
 # define _DEXPLEN	             11
 # define _IEEE		              1
 # define DMAXEXP	             ((1 << _DEXPLEN - 1) - 1 + _IEEE)

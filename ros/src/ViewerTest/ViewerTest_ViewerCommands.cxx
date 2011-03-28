@@ -47,6 +47,13 @@
 
 #endif
 
+#ifndef max
+# define max(a, b)  (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef min
+# define min(a, b)  (((a) < (b)) ? (a) : (b)) 
+#endif
+
 #define OCC120
 
 //==============================================================================
@@ -933,9 +940,7 @@ static LRESULT WINAPI ViewerWindowProc( HWND hwnd,
 //function : ViewerMainLoop
 //purpose  : Get a Event on the view and dispatch it
 //==============================================================================
-
-
-static int ViewerMainLoop(Standard_Integer argc, const char** argv)
+int ViewerMainLoop(Standard_Integer argc, const char** argv)
 {
 
   //cout << "No yet implemented on WNT" << endl;

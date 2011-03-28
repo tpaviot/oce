@@ -819,7 +819,7 @@ static LRESULT WINAPI Viewer2dWindowProc (HWND hwnd, UINT Msg,
 //function : ViewerMainLoop2d
 //purpose  : Get a Event on the view and dispatch it
 //==============================================================================
-static int ViewerMainLoop2d (Standard_Integer argc, const char** argv)
+int ViewerMainLoop2d (Standard_Integer argc, const char** argv)
 {
   cout << "No yet implemented on WNT" << endl;
   static Standard_Boolean Ppick = 0;

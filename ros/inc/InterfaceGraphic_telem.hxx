@@ -17,6 +17,10 @@ for InterfaceGraphic_Parray.hxx definitions
 #include <InterfaceGraphic_tgl_all.hxx>
 #include <stdlib.h>
 
+#ifdef __BORLANDC__
+#include <mem.h>
+#endif
+
 //if SUN compiler
 #if defined(__SUNPRO_CC) && (__SUNPRO_CC <= 0x530) && ! defined(typename)
 #define IMPLEMENT_MEMORY_OPERATORS \

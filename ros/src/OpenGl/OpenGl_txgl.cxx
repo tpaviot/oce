@@ -105,6 +105,10 @@ int call_util_osd_getenv( char * , char * , int ) ;
 * Variables statiques
 */
 
+#ifndef _MSC_VER
+# define __leave goto leave
+#endif
+
 #ifndef WNT
 typedef NCollection_DataMap<Tint, GLCONTEXT> GLContextMap;
 #else
@@ -709,6 +713,9 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
         retVal = TFailure;  
       } else retVal = TSuccess;
 
+#ifndef _MSC_VER
+      leave: ;
+#endif     
     }  /* end __try */
 
 

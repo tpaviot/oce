@@ -1,0 +1,1908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{801DA1D0-5BA5-4A66-BC16-C1D87686DF36}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">TKFillet.bpf</Source>
+		</Source>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="name" value="TKFillet.dll"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;adortl"/>
+        <property category="build.node" name="use_packages" value="1"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.A.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AK.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AU.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.2" value="DEB=1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.Od.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.k.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.vi.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.y.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bind"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="container.SelectedWarnings.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w0.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w2.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bin"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.4.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.6.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="WNT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.2" value="CSFDB"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.3" value="WIN32"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.4" value="_WINDOWS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.5" value="STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.6" value="HAVE_IOS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.He.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hs.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\..\inc"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgx.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Q.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.V0.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.V1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vms.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.fff.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.p.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.rd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_NO_VCL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.waus.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wcsu.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.whid.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wlvc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wpro.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wrch.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.16.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.31.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.-w-.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.GD.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpd.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpr.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpe.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.m.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.map_segments.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.s.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="import32.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="cw32mti.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.a.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.ml.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.mu.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.o.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.oi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.op.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.r.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zn.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        </optionset>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_ChamfSpine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_CircSection.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_CommonPoint.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_ElSpine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_FaceInterference.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_FilSpine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_Map.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_Regul.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_Spine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_Stripe.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_StripeMap.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiDS\ChFiDS_SurfData.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_HData_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_HElSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_IndexedDataMapOfVertexListOfStripe_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfListOfHElSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfListOfStripe_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfRegularities_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfListOfHElSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfListOfStripe_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfRegularities_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListOfHElSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_ListOfStripe_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_Regularities_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SecArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SecHArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SequenceNodeOfSequenceOfSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SequenceNodeOfSequenceOfSurfData_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SequenceOfSpine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_SequenceOfSurfData_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiDS\ChFiDS_StripeArray1_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi2d\ChFi2d.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi2d\ChFi2d_Builder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_2.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_6.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_C1.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_C2.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_CnCrn.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_NotImp.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Builder_SpKP.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_ChBuilder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C2.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C3.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_Debug.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_FilBuilder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C2.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C3.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFi3d\ChFi3d_SearchSing.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFi3d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFi3d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCon.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCyl.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnPln.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCon.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCyl.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnPln.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_CS.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Fcts.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCon.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCyl.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnPln.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Rotule.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Sphere.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiKPart\ChFiKPart_DataMapIteratorOfRstMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiKPart\ChFiKPart_DataMapNodeOfRstMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ChFiKPart\ChFiKPart_RstMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ChFiKPart_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ChFiKPart"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_AppFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_CSFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_CurvPointFuncInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_Debug.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_FuncInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_Function.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_Point.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_RstRstFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_SurfCurvFuncInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_SurfPointFuncInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Blend\Blend_SurfRstFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Blend\Blend_SequenceNodeOfSequenceOfPoint_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Blend\Blend_SequenceOfPoint_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Blend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Blend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_AppFunc.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_AppFuncRoot.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_AppFuncRst.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_AppFuncRstRst.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_AppSurface.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_BlendTool.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_RstRstEvolRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_RstRstLineBuilder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfCurvConstRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfCurvEvolRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfPointConstRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfPointEvolRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfRstConstRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfRstEvolRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepBlend\BRepBlend_SurfRstLineBuilder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_AppSurf_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_CSWalking_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_Extremity_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_HCurve2dTool_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_HCurveTool_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_Line_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_PointOnRst_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfLine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfPointOnRst_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_SequenceOfLine_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_SequenceOfPointOnRst_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\BRepBlend\BRepBlend_Walking_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepBlend_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepBlend"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_Chamfer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_ChamfInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_ChAsym.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_ChAsymInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_ConstRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_ConstRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_Corde.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_CSCircular.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_CSConstRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_EvolRad.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_EvolRadInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_Ruled.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_RuledInv.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BlendFunc\BlendFunc_Tensor.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BlendFunc_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BlendFunc"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepFilletAPI\BRepFilletAPI_LocalOperation.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepFilletAPI_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepFilletAPI"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeChamfer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepFilletAPI_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepFilletAPI"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepFilletAPI_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepFilletAPI"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet2d.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__BRepFilletAPI_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\BRepFilletAPI"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\FilletSurf\FilletSurf_Builder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__FilletSurf_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\FilletSurf"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\FilletSurf\FilletSurf_InternalBuilder.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__FilletSurf_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\FilletSurf"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="TKFillet.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_ChamfSpine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_CircSection.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_CommonPoint.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_ElSpine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_FaceInterference.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_FilSpine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_Map.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_Regul.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_Spine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_Stripe.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_StripeMap.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiDS\ChFiDS_SurfData.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_HData_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_HElSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_IndexedDataMapOfVertexListOfStripe_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfListOfHElSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfListOfStripe_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListIteratorOfRegularities_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfListOfHElSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfListOfStripe_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListNodeOfRegularities_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListOfHElSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_ListOfStripe_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_Regularities_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SecArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SecHArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SequenceNodeOfSequenceOfSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SequenceNodeOfSequenceOfSurfData_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SequenceOfSpine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_SequenceOfSurfData_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiDS\ChFiDS_StripeArray1_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi2d\ChFi2d.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi2d\ChFi2d_Builder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi2d\ChFi2d_Builder_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_2.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_6.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_C1.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_C2.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_CnCrn.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_NotImp.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Builder_SpKP.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_ChBuilder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C2.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_ChBuilder_C3.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_Debug.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_FilBuilder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C2.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_FilBuilder_C3.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFi3d\ChFi3d_SearchSing.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCon.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnCyl.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChAsymPlnPln.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCon.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnCyl.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_ChPlnPln.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_CS.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Fcts.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCon.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnCyl.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_FilPlnPln.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Rotule.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ChFiKPart\ChFiKPart_ComputeData_Sphere.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiKPart\ChFiKPart_DataMapIteratorOfRstMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiKPart\ChFiKPart_DataMapNodeOfRstMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ChFiKPart\ChFiKPart_RstMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_AppFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_CSFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_CurvPointFuncInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_Debug.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_FuncInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_Function.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_Point.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_RstRstFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_SurfCurvFuncInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_SurfPointFuncInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Blend\Blend_SurfRstFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Blend\Blend_SequenceNodeOfSequenceOfPoint_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Blend\Blend_SequenceOfPoint_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_AppFunc.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_AppFuncRoot.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_AppFuncRst.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_AppFuncRstRst.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_AppSurface.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_BlendTool.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_CurvPointRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_RstRstConstRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_RstRstEvolRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_RstRstLineBuilder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfCurvConstRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfCurvEvolRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfPointConstRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfPointEvolRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfRstConstRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfRstEvolRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepBlend\BRepBlend_SurfRstLineBuilder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_AppSurf_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_CSWalking_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_Extremity_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_HCurve2dTool_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_HCurveTool_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_Line_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_PointOnRst_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfLine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_SequenceNodeOfSequenceOfPointOnRst_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_SequenceOfLine_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_SequenceOfPointOnRst_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\BRepBlend\BRepBlend_Walking_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_Chamfer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_ChamfInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_ChAsym.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_ChAsymInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_ConstRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_ConstRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_Corde.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_CSCircular.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_CSConstRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_EvolRad.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_EvolRadInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_Ruled.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_RuledInv.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BlendFunc\BlendFunc_Tensor.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepFilletAPI\BRepFilletAPI_LocalOperation.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeChamfer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\BRepFilletAPI\BRepFilletAPI_MakeFillet2d.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\FilletSurf\FilletSurf_Builder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\FilletSurf\FilletSurf_InternalBuilder.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="libraries\TKBRep.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKBool.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKG2d.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKG3d.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKGeomAlgo.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKGeomBase.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKMath.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKTopAlgo.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKernel.lib" CONTAINERID="LibTool"/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1032</VersionInfo>
+          <VersionInfo Name="CodePage">1253</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs"></Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>

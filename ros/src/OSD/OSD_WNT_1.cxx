@@ -3,6 +3,13 @@
 
 #include <windowsx.h>
 
+#ifndef _MSC_VER
+# define  __leave goto leave
+#endif
+#ifndef max
+# define max(a, b)  (((a) > (b)) ? (a) : (b)) 
+#endif
+
 static FILETIME ftKernelTimeStart, ftUserTimeStart, ftElapsedStart;
 static TCHAR    timeBuffer[ 80 ];
 
@@ -281,6 +288,9 @@ LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
   _TCHAR* dummy;
   __try {
     dummy = _tcsdup (lpText);
+#ifndef _MSC_VER
+    {  // new scope needed to let compiler cross variable initialization
+#endif
     if ( !dummy ) __leave;
     short txtW = 0, txtH = 0;
     _TCHAR* tok = _tcstok ( dummy, TEXT( "\n" ) );
@@ -292,15 +302,15 @@ LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
       tok = _tcstok ( NULL, TEXT( "\n" ) );
     }
     res = MAKELONG (MapX(txtW), MapY(txtH));
+#ifndef _MSC_VER
+    }
+    leave: ;
+#endif
   }
 
   __finally {
     free (dummy);
   }
-
-#ifdef VAC
-leave: ;       // added for VisualAge
-#endif
 
   return res;
 }
@@ -373,6 +383,9 @@ _TINT MsgBox ( HWND hParent,
   __try {
     /* Get dialog base units & map it to dialog units*/
     hDisp = CreateDC ( TEXT( "DISPLAY" ), NULL, NULL, NULL );
+#ifndef _MSC_VER
+    {  // new scope needed to let compiler cross variable initialization
+#endif
     if ( !hDisp ) __leave;
     scrW = GetDeviceCaps ( hDisp, HORZRES );
     scrH = GetDeviceCaps ( hDisp, VERTRES );
@@ -518,6 +531,10 @@ _TINT MsgBox ( HWND hParent,
         *pItemsCount += 1;
       }
     } // Childs
+#ifndef _MSC_VER
+    }
+    leave: ;
+#endif
   }  // __try
   /*----------------------------------------------------------------------*/
   __finally {
@@ -534,10 +551,6 @@ _TINT MsgBox ( HWND hParent,
     if ( pDlgTemplate ) LocalFree (LocalHandle (pDlgTemplate));
     return ( res );
   }
-
-#ifdef VAC
-leave: ;         // added for VisualAge
-#endif
 
 }
 

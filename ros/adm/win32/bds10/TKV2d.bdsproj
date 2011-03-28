@@ -1,0 +1,2041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{801DA1D0-5BA5-4A66-BC16-C1D87686DF36}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">TKV2d.bpf</Source>
+		</Source>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="name" value="TKV2d.dll"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;adortl"/>
+        <property category="build.node" name="use_packages" value="1"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.A.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AK.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AU.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.2" value="DEB=1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.Od.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.k.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.vi.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.y.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bind"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="container.SelectedWarnings.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w0.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w2.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bin"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.4.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.6.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="WNT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.2" value="CSFDB"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.3" value="WIN32"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.4" value="_WINDOWS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.5" value="STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.6" value="HAVE_IOS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.He.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hs.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\..\inc"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgx.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Q.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.V0.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.V1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vms.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.fff.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.p.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.rd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_NO_VCL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.waus.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wcsu.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.whid.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wlvc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wpro.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wrch.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.16.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.31.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.-w-.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.GD.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpd.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpr.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpe.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.m.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.map_segments.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.s.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="import32.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="cw32mti.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.a.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.ml.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.mu.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.o.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.oi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.op.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.r.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zn.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        </optionset>
+        <file path="..\..\..\src\V2d\V2d.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_BackgroundGraphicObject.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_CircularGraphicGrid.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_CircularGrid.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_DefaultMap.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_RectangularGraphicGrid.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_RectangularGrid.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_View.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\V2d\V2d_Viewer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__V2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\V2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Buffer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_CBitFields8.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Circle.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_CircleMarker.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Drawer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Ellips.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_EllipsMarker.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_FramedText.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_GraphicObject.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_HidingGraphicObject.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_HidingText.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Image.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_ImageFile.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_InfiniteLine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Line.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Marker.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Paragraph.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Polyline.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_PolylineMarker.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Primitive.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Segment.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_SetOfMarkers.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_SetOfPolylines.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_SetOfSegments.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Text.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_TransientManager.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_VectorialMarker.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_Vertex.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_View.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Graphic2d\Graphic2d_ViewMapping.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_Array1OfVertex_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_BufferList_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_CircleDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_DetectionColorError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_DisplayList_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_DrawerDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_EllipsDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_HArray1OfVertex_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_HSequenceOfPrimitives_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_HSequenceOfVertex_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_ImageDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_InfiniteLineDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_MarkerDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_OverrideColorError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_PolylineDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SegmentDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfBuffer_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfGraphicObject_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfPolyline_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfPrimitives_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfVertex_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfBuffer_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfGraphicObject_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfPolyline_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfPrimitives_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfVertex_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_TextDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Graphic2d\Graphic2d_TransientDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Graphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Graphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_Projector.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitiveArc.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitiveBox.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitiveCircle.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitiveEntity.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitivePoint.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Select2D\Select2D_SensitiveSegment.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Select2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Select2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Angle.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Angularity.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Arrow.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectFramedText.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectHidingPoly.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectHidingText.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectLine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectRoot.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_AspectText.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Axis.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Circularity.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Concentric.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Cylindric.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Diameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Dimension.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Drawer.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_DrawSymbol.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Flatness.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Length.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_LineProfile.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Parallelism.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Perpendicular.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Point.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Position.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Radius.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_RadiusIndep.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Repere.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Straightness.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_SurfProfile.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_SymCircular.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Symmetry.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_SymTotal.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Taper.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_Tolerance.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Prs2d\Prs2d_ToleranceFrame.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Prs2d\Prs2d_DataMapIteratorOfDataMapOfAspectRoot_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Prs2d\Prs2d_DataMapNodeOfDataMapOfAspectRoot_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Prs2d\Prs2d_DataMapOfAspectRoot_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Prs2d\Prs2d_SymbolDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Prs2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Prs2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_GlobalStatus.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_InteractiveContext.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_InteractiveObject.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_LocalContext.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_LocalStatus.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_PrimitiveArchit.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\AIS2D\AIS2D_ProjShape.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfIOStatus_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfLC_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfLocStat_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfPrimAspects_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfIOStatus_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfLC_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfLocStat_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfPrimAspects_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapOfIOStatus_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapOfLC_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapOfLocStat_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_DataMapOfPrimAspects_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_HSequenceOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_HSequenceOfPrimArchit_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_ListIteratorOfListOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_ListNodeOfListOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_ListOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_SequenceNodeOfSequenceOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_SequenceNodeOfSequenceOfPrimArchit_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_SequenceOfIO_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\AIS2D\AIS2D_SequenceOfPrimArchit_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__AIS2D_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\AIS2D"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\GGraphic2d\GGraphic2d_Curve.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GGraphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GGraphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\GGraphic2d\GGraphic2d_SetOfCurves.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GGraphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GGraphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GGraphic2d\GGraphic2d_CurveDefinitionError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GGraphic2d_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GGraphic2d"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="TKV2d.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_BackgroundGraphicObject.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_CircularGraphicGrid.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_CircularGrid.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_DefaultMap.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_RectangularGraphicGrid.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_RectangularGrid.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_View.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\V2d\V2d_Viewer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Buffer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_CBitFields8.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Circle.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_CircleMarker.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Drawer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Ellips.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_EllipsMarker.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_FramedText.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_GraphicObject.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_HidingGraphicObject.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_HidingText.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Image.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_ImageFile.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_InfiniteLine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Line.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Marker.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Paragraph.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Polyline.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_PolylineMarker.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Primitive.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Segment.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_SetOfMarkers.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_SetOfPolylines.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_SetOfSegments.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Text.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_TransientManager.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_VectorialMarker.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_Vertex.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_View.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Graphic2d\Graphic2d_ViewMapping.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_Array1OfVertex_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_BufferList_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_CircleDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_DetectionColorError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_DisplayList_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_DrawerDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_EllipsDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_HArray1OfVertex_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_HSequenceOfPrimitives_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_HSequenceOfVertex_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_ImageDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_InfiniteLineDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_MarkerDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_OverrideColorError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_PolylineDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SegmentDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfBuffer_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfGraphicObject_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfPolyline_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfPrimitives_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceNodeOfSequenceOfVertex_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfBuffer_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfGraphicObject_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfPolyline_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfPrimitives_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_SequenceOfVertex_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_TextDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Graphic2d\Graphic2d_TransientDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_Projector.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitiveArc.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitiveBox.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitiveCircle.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitiveEntity.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitivePoint.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Select2D\Select2D_SensitiveSegment.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Angle.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Angularity.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Arrow.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectFramedText.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectHidingPoly.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectHidingText.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectLine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectRoot.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_AspectText.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Axis.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Circularity.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Concentric.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Cylindric.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Diameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Dimension.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Drawer.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_DrawSymbol.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Flatness.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Length.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_LineProfile.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Parallelism.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Perpendicular.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Point.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Position.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Radius.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_RadiusIndep.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Repere.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Straightness.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_SurfProfile.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_SymCircular.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Symmetry.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_SymTotal.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Taper.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_Tolerance.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Prs2d\Prs2d_ToleranceFrame.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Prs2d\Prs2d_DataMapIteratorOfDataMapOfAspectRoot_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Prs2d\Prs2d_DataMapNodeOfDataMapOfAspectRoot_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Prs2d\Prs2d_DataMapOfAspectRoot_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Prs2d\Prs2d_SymbolDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_GlobalStatus.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_InteractiveContext.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_InteractiveObject.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_LocalContext.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_LocalStatus.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_PrimitiveArchit.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\AIS2D\AIS2D_ProjShape.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfIOStatus_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfLC_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfLocStat_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapIteratorOfDataMapOfPrimAspects_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfIOStatus_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfLC_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfLocStat_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapNodeOfDataMapOfPrimAspects_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapOfIOStatus_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapOfLC_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapOfLocStat_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_DataMapOfPrimAspects_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_HSequenceOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_HSequenceOfPrimArchit_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_ListIteratorOfListOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_ListNodeOfListOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_ListOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_SequenceNodeOfSequenceOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_SequenceNodeOfSequenceOfPrimArchit_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_SequenceOfIO_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\AIS2D\AIS2D_SequenceOfPrimArchit_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\GGraphic2d\GGraphic2d_Curve.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\GGraphic2d\GGraphic2d_SetOfCurves.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GGraphic2d\GGraphic2d_CurveDefinitionError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="libraries\TKBRep.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKG2d.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKG3d.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKGeomAlgo.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKGeomBase.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKHLR.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKMath.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKService.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKTopAlgo.lib" CONTAINERID="LibTool"/>
+        <FILE FILENAME="libraries\TKernel.lib" CONTAINERID="LibTool"/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1032</VersionInfo>
+          <VersionInfo Name="CodePage">1253</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs"></Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>

@@ -86,7 +86,11 @@ template <class TheKeyType> class NCollection_IndexedMap
       myIndex(0) {}
     //! Constructor
     Iterator (const NCollection_IndexedMap& theMap) :
+#ifdef __BORLANDC__
+      myMap((NCollection_IndexedMap <TheKeyType> *) &theMap),
+#else
       myMap((NCollection_IndexedMap *) &theMap),
+#endif
       myIndex(1) {}
     //! Query if the end of collection is reached by iterator
     virtual Standard_Boolean More(void) const

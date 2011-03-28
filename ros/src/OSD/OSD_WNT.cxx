@@ -51,6 +51,11 @@ static RESPONSE_DIR_PROC _response_dir_proc;
 #define SID_ADMIN         6
 #define SID_WORLD         7
 #define SID_NULL          8
+
+#ifndef _MSC_VER
+# define  __leave goto leave
+#endif
+
 /***/
 /******************************************************************************/
 /* Function : AllocSD                                                       */
@@ -147,6 +152,9 @@ LPVOID GetTokenInformationEx ( HANDLE hToken, TOKEN_INFORMATION_CLASS tic ) {
 
   fOK = TRUE;
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  /* end __try */
 
  __finally {
@@ -159,10 +167,6 @@ LPVOID GetTokenInformationEx ( HANDLE hToken, TOKEN_INFORMATION_CLASS tic ) {
   }  /* end if */
  
  }  /* end __finally */
-
-#ifdef VAC
-leave: ;     // added for VisualAge
-#endif
 
  return buffer;
 
@@ -472,6 +476,9 @@ PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION 
 
   fOK = TRUE;
 
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  /* end __try */
 
  __finally {
@@ -484,10 +491,6 @@ PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION 
   }  /* end if */
  
  }  /* end __finally */
-
-#ifdef VAC
-leave: ;        // added for VisualAge
-#endif
 
  return retVal;
 
@@ -562,6 +565,9 @@ BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
 
   retVal = TRUE;
  
+#ifndef _MSC_VER
+  leave: ;
+#endif
  }  /* end __try */
 
  __finally {
@@ -574,10 +580,6 @@ BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
   }  /* end if */
  
  }  /* end __finally */
-
-#ifdef VAC
-leave: ;        // added for VisualAge
-#endif
 
  return retVal;
 

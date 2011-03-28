@@ -42,6 +42,8 @@ IMPLEMENT_DOMSTRING (LastRealArrIndex,   "lastRA")
 IMPLEMENT_DOMSTRING (ExtString, "string")
 IMPLEMENT_DOMSTRING (Value,     "value")
 
+#include <stdio.h>
+
 #define OCC6010
 
 #ifdef WNT

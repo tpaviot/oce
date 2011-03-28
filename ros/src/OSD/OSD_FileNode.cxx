@@ -441,8 +441,14 @@ Standard_Integer OSD_FileNode::Error()const{
 # include <tchar.h>
 #endif  // _INC_TCHAR
 
+#include <stdio.h>
+
 #define TEST_RAISE( arg ) _test_raise (  fName, ( arg )  )
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
+
+#ifndef _MSC_VER
+# define  __leave goto leave
+#endif
 
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
@@ -1002,6 +1008,9 @@ static BOOL __fastcall _get_file_time (
 
   retVal = TRUE;
 
+#ifndef _MSC_VER
+   leave: ;
+#endif
  }  // end __try
 
  __finally {
@@ -1011,10 +1020,6 @@ static BOOL __fastcall _get_file_time (
    CloseHandle ( hFile );
  
  }  // end __finally
-
-#ifdef VAC
-leave: ;      // added for VisualAge
-#endif
 
  return retVal;
 

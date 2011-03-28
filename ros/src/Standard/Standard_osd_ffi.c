@@ -36,7 +36,7 @@
 *             apres l'avoir ouvert.
 *
 ************************************************************/
-#if defined(_MSC_VER) && !defined(WNT)
+#if (defined(_MSC_VER) || defined(__BORLANDC__)) && !defined(WNT)
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 

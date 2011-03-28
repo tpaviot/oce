@@ -12,6 +12,10 @@
 #define ROUNDL( d ) ( LONG )(  ( d ) + 0.5  )
 #define Y( y )      (  mySize.cy - ( y )  )
 
+#ifndef min
+# define min(a, b)  (((a) < (b)) ? (a) : (b))
+#endif
+
 typedef struct _fpoint {
 
                 FLOAT x;

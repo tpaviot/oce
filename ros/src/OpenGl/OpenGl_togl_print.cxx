@@ -36,6 +36,10 @@ HDC     printer;
 HGDIOBJ oldObj;
 #endif
 
+#ifdef __BORLANDC__
+# define _stricmp stricmp
+#endif
+
 GLuint createFont( char* typeFace, int height, int weight, int italic )
 {
 #ifdef WNT

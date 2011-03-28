@@ -1,0 +1,2164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppDynamicLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{801DA1D0-5BA5-4A66-BC16-C1D87686DF36}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">TKAdvTools.bpf</Source>
+		</Source>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="name" value="TKAdvTools.dll"/>
+        <property category="build.node" name="packages" value="vclx;vcl;rtl;dbrtl;vcldb;dbxcds;dbexpress;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;soaprtl;dsnap;bdertl;vcldbx;adortl"/>
+        <property category="build.node" name="use_packages" value="1"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.A.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AK.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.AU.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.2" value="DEB=1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.Od.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.k.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.vi.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.y.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\libd"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bind"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="container.SelectedWarnings.containerenabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w0.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.w2.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.2" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.1" value="..\..\..\win32\bds10\lib"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.l.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.1" value="..\..\..\win32\bds10\bin"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.outputdir.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.4.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.6.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="WNT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.2" value="CSFDB"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.3" value="WIN32"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.4" value="_WINDOWS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.5" value="STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.6" value="HAVE_IOS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.He.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hs.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\..\inc"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgx.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Q.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.V0.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.V1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vms.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.fff.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.p.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.rd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="_RTLDLL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.2" value="_NO_VCL"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.3" value="USEPACKAGES"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWC.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWD.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.waus.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wcsu.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.whid.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wlvc.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wpro.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.wrch.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.16.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.31.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.-w-.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.GD.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gi.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpd.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Gpr.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpe.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.Tpp.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.aa.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.ap.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.m.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.map_segments.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.s.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.1" value="import32.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.2" value="cw32mti.lib"/>
+          <property category="win32.*.win32b.ilink32" name="param.libfiles.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.1" value="c0d32.obj"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.2" value="$(PACKAGES)"/>
+          <property category="win32.*.win32b.ilink32" name="param.objfiles.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.a.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.ml.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.mu.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.o.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.oi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.op.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.r.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zi.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="option.zn.enabled" value="0"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        </optionset>
+        <file path="..\..\..\src\Dynamic\Dynamic.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_AbstractVariableInstance.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_BooleanParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_CompiledMethod.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_CompositMethod.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_CompositVariableInstance.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_DynamicClass.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_DynamicDerivedClass.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_DynamicInstance.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_FuzzyClass.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_FuzzyDefinition.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_FuzzyDefinitionsDictionary.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_InstanceParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_IntegerParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_InterpretedMethod.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_Method.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_MethodDefinition.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_MethodDefinitionsDictionary.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_ObjectParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_Parameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_RealParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_StringParameter.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_Variable.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_VariableGroup.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Dynamic\Dynamic_VariableInstance.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_ParameterNode_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SeqOfClasses_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SeqOfFuzzyDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SeqOfMethodDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SeqOfMethods_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfClasses_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethodDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethods_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceOfClasses_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceOfFuzzyDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethodDefinitions_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethods_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Dynamic\Dynamic_VariableNode_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Dynamic_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Dynamic"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Materials\Materials.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Materials\Materials_Color.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Materials\Materials_Material.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Materials\Materials_MaterialDefinition.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Materials\Materials_MaterialsDictionary.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Materials\Materials_FuzzyInstance_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Materials\Materials_MaterialsSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Materials\Materials_MtsSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Materials\Materials_SequenceNodeOfMtsSequence_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Materials_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Materials"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Absolute.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArcCosine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArcSine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArcTangent.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArgCosh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArgSinh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_ArgTanh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_BinaryExpression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_BinaryFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Cosh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Cosine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Difference.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Different.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Division.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Equal.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Exponential.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Exponentiate.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_FunctionDerivative.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_GeneralExpression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_GeneralFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_GeneralRelation.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_GreaterThan.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_GreaterThanOrEqual.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_LessThan.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_LessThanOrEqual.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_LogOf10.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_LogOfe.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_NamedConstant.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_NamedExpression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_NamedFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_NamedUnknown.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_NumericValue.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Operators.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_PolyExpression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_PolyFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Product.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_RelationIterator.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_RUIterator.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Sign.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Sine.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_SingleRelation.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Sinh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Square.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_SquareRoot.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Sum.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_SystemRelation.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Tangent.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_Tanh.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_UnaryExpression.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_UnaryFunction.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_UnaryMinus.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\Expr\Expr_UnknownIterator.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_Array1OfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_Array1OfNamedUnknown_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_Array1OfSingleRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_ExprFailure_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_IndexedMapNodeOfMapOfNamedUnknown_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_InvalidAssignment_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_InvalidFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_InvalidOperand_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_MapOfNamedUnknown_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_NotAssigned_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_NotEvaluable_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_SequenceOfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\Expr\Expr_SequenceOfGeneralRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__Expr_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\Expr"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_Generator.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_GenExp.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_GenFct.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_GenRel.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp_yacclex.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\ExprIntrp\ExprIntrp.tab.c">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfNames_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfNames_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralExpression_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralFunction_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralRelation_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfNames_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp_SyntaxError_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\ExprIntrp.tab.c">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\ExprIntrp\lex.ExprIntrp.c">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__ExprIntrp_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\ExprIntrp"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphDS\GraphDS_DataMapIteratorOfEntityRoleMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphDS\GraphDS_DataMapNodeOfEntityRoleMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphDS\GraphDS_EntityRoleMap_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphDS_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphDS"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\GraphTools\GraphTools_RGNode.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\GraphTools\GraphTools_SC.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\src\GraphTools\GraphTools_TSNode.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfListOfSequenceOfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfSCList_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_ListNodeOfListOfSequenceOfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_ListNodeOfSCList_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_ListOfSequenceOfInteger_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+        <file path="..\..\..\drv\GraphTools\GraphTools_SCList_0.cpp">
+          <optionset name="all_configurations">
+            <property category="node" name="displayname" value="All Configurations"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.1" value="__GraphTools_DLL"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\..\..\drv\GraphTools"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+            <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          </optionset>
+        </file>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="TKAdvTools.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_AbstractVariableInstance.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_BooleanParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_CompiledMethod.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_CompositMethod.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_CompositVariableInstance.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_DynamicClass.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_DynamicDerivedClass.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_DynamicInstance.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_FuzzyClass.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_FuzzyDefinition.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_FuzzyDefinitionsDictionary.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_InstanceParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_IntegerParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_InterpretedMethod.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_Method.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_MethodDefinition.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_MethodDefinitionsDictionary.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_ObjectParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_Parameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_RealParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_StringParameter.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_Variable.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_VariableGroup.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Dynamic\Dynamic_VariableInstance.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_ParameterNode_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SeqOfClasses_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SeqOfFuzzyDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SeqOfMethodDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SeqOfMethods_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfClasses_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethodDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethods_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceOfClasses_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceOfFuzzyDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethodDefinitions_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethods_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Dynamic\Dynamic_VariableNode_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Materials\Materials.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Materials\Materials_Color.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Materials\Materials_Material.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Materials\Materials_MaterialDefinition.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Materials\Materials_MaterialsDictionary.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Materials\Materials_FuzzyInstance_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Materials\Materials_MaterialsSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Materials\Materials_MtsSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Materials\Materials_SequenceNodeOfMtsSequence_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Absolute.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArcCosine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArcSine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArcTangent.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArgCosh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArgSinh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_ArgTanh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_BinaryExpression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_BinaryFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Cosh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Cosine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Difference.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Different.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Division.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Equal.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Exponential.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Exponentiate.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_FunctionDerivative.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_GeneralExpression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_GeneralFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_GeneralRelation.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_GreaterThan.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_GreaterThanOrEqual.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_LessThan.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_LessThanOrEqual.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_LogOf10.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_LogOfe.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_NamedConstant.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_NamedExpression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_NamedFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_NamedUnknown.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_NumericValue.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Operators.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_PolyExpression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_PolyFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Product.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_RelationIterator.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_RUIterator.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Sign.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Sine.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_SingleRelation.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Sinh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Square.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_SquareRoot.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Sum.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_SystemRelation.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Tangent.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_Tanh.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_UnaryExpression.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_UnaryFunction.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_UnaryMinus.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\Expr\Expr_UnknownIterator.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_Array1OfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_Array1OfNamedUnknown_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_Array1OfSingleRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_ExprFailure_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_IndexedMapNodeOfMapOfNamedUnknown_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_InvalidAssignment_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_InvalidFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_InvalidOperand_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_MapOfNamedUnknown_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_NotAssigned_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_NotEvaluable_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_SequenceOfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\Expr\Expr_SequenceOfGeneralRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_Generator.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_GenExp.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_GenFct.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_GenRel.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp_yacclex.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\ExprIntrp\ExprIntrp.tab.c" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfNames_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfNames_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralExpression_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralFunction_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralRelation_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfNames_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp_SyntaxError_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\ExprIntrp.tab.c" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\ExprIntrp\lex.ExprIntrp.c" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphDS\GraphDS_DataMapIteratorOfEntityRoleMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphDS\GraphDS_DataMapNodeOfEntityRoleMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphDS\GraphDS_EntityRoleMap_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\GraphTools\GraphTools_RGNode.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\GraphTools\GraphTools_SC.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\src\GraphTools\GraphTools_TSNode.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfListOfSequenceOfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfSCList_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_ListNodeOfListOfSequenceOfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_ListNodeOfSCList_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_ListOfSequenceOfInteger_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="..\..\..\drv\GraphTools\GraphTools_SCList_0.cpp" CONTAINERID="CCompiler"/>
+        <FILE FILENAME="libraries\TKernel.lib" CONTAINERID="LibTool"/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1032</VersionInfo>
+          <VersionInfo Name="CodePage">1253</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs"></Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>
