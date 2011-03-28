@@ -1,6 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([OpenCAS], [5.0DVP1])
-AC_CONFIG_AUX_DIR(make)
+AC_CONFIG_AUX_DIR([make])
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
 dnl AM_CONFIG_SRCDIR(src/Standard/Standard.cxx)
@@ -10,7 +11,7 @@ CXXFLAGS="$CXXFLAGS"
 
 AC_PROG_CC
 
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 
 dnl AM_MAINTAINER_MODE
 
@@ -158,28 +159,28 @@ AC_CHECK_FUNCS(statfs statvfs)
 
 
 AC_CACHE_CHECK(if it is OK to define stream input and output,
-def_ios_ok,
+[occ_cv_def_ios_ok],
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <stream.h>
 static const int input = (ios::in) | (ios::nocreate);
 static const int output= (ios::out);],
 [return 0;],
- def_ios_ok=yes, def_ios_ok=no)
+ occ_cv_def_ios_ok=yes, occ_cv_def_ios_ok=no)
 ])
-if test "$def_ios_ok" = yes; then
+if test "$occ_cv_def_ios_ok" = yes; then
   AC_DEFINE(DEF_IOS_OK,,[define if the compiler allows redefinition of stream input and output])
 fi
 
 
-AC_CACHE_CHECK([if class ostream has member function form],
-ostream_form_ok,
+AC_CACHE_CHECK(if class ostream has member function form,
+[occ_cv_ostream_form_ok],
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <iostream.h>],
 [cout << cout.form("%9.3e", 3.14159627e-4) << endl;
 return 0;],
- ostream_form_ok=yes, ostream_form_ok=no)
+ occ_cv_ostream_form_ok=yes, occ_cv_ostream_form_ok=no)
 ])
-if test "$ostream_form_ok" = yes; then
+if test "$occ_cv_ostream_form_ok" = yes; then
   AC_DEFINE(OSTREAM_FORM_OK,,[define if the class ostream has member function form])
 fi
 
@@ -190,28 +191,28 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 # defined in the header <sys/sem.h>
 
 AC_CACHE_CHECK(if union semun is defined in <sys/sem.h>,
-semun_defined,
+[occ_cv_semun_defined],
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/time.h>
 #include <sys/sem.h>],
 [union semun c;],
- semun_defined=yes, semun_defined=no)
+ occ_cv_semun_defined=yes, occ_cv_semun_defined=no)
 ])
-if test "$semun_defined" = yes; then
+if test "$occ_cv_semun_defined" = yes; then
   AC_DEFINE(SEMUN_DEFINED,,[define if the union semun is in sys/sem.h])
 fi
 
 # if the following code compiles then the union semun has
 # the member __buf
 
-if test "$semun_defined" = yes; then
+if test "$occ_cv_semun_defined" = yes; then
 
  AC_CACHE_CHECK(if union semun has member __buf,
- semun_buf_defined,
+ [occ_cv_semun_buf_defined],
  [AC_LANG([C])
  AC_TRY_COMPILE([#include <sys/sem.h>],
  [ union semun c; c.__buf = 0;],
- semun_buf_defined=yes, semun_buf_defined=no)
+ occ_cv_semun_buf_defined=yes, occ_cv_semun_buf_defined=no)
  ])
  if test "$sumun_buf_defined" = yes; then
   AC_DEFINE(SEMUN_BUF_DEFINED,,[define if semun has member __buf])
@@ -220,7 +221,7 @@ fi
 
 
 AC_CACHE_CHECK(if function semop takes a value,
-semop_no_reference,
+occ_cv_semop_no_reference,
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
 static struct sembuf event_flag ;],
@@ -228,15 +229,15 @@ static struct sembuf event_flag ;],
  int *semid;
  status = semop(*semid,event_flag,1);
 ],
- semop_no_reference=yes, semop_no_reference=no)
+ occ_cv_semop_no_reference=yes, occ_cv_semop_no_reference=no)
 ])
-if test "$semop_no_reference" = yes; then
+if test "$occ_cv_semop_no_reference" = yes; then
   AC_DEFINE(SEMOP_NO_REFERENCE,,[define if the function semop takes a value])
 fi
 
 
 AC_CACHE_CHECK(if function semctl takes a value,
-semctl_no_reference,
+occ_cv_semctl_no_reference,
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
 int get_semaphore(semid,event,value)
@@ -249,9 +250,9 @@ int get_semaphore(semid,event,value)
 int *a,*b,*c;],
 [if(get_semaphore(a,b,c))
  exit 0;],
- semctl_no_reference=yes, semctl_no_reference=no)
+ occ_cv_semctl_no_reference=yes, occ_cv_semctl_no_reference=no)
 ])
-if test "$semctl_no_reference" = yes; then
+if test "$occ_cv_semctl_no_reference" = yes; then
   AC_DEFINE(SEMCTL_NO_REFERENCE,,[define if the function semctl takes a value])
 fi
 
@@ -268,74 +269,6 @@ AC_CHECK_LIB(sunmath,ieee_handler,[
 AC_CHECK_LIB(m,finite,[
   AC_DEFINE(HAVE_FINITE,,[Define if we have a function called "finite" in -lm.])
 ])
-
-#---------------------------------------------------------------------
-#
-# Check for Java Header Files 
-#  
-#  
-#---------------------------------------------------------------------
-
-AC_ARG_WITH([java-include],
-  [AC_HELP_STRING([--with-java-include=DIR],[Location of jni.h])],
-  [java_include="${withval}"],[java_include=])
-if test "xno" = "x$java_include"; then
-  # user specified --without-java-include
-  HAVE_JAVA=no
-else
-  if test "xyes" != "x$java_include" && test "x" != "x$java_include"; then
-    # user specified some path
-    
-    # test user-specified value is a directory
-    if test ! -d "$java_include"; then
-      AC_MSG_ERROR([$java_include: Not a directory])
-    fi
-    
-    # search for jni_md.h (typically in a system-specific subdir)
-    AC_MSG_CHECKING([for jni_md.h in $java_include])
-    extra_java_include=
-    if test -f "$java_include/jni_md.h"; then
-      result="$java_include/jni_md.h"
-    else
-      result=
-      for d in "$java_include"/*; do
-        if test -f "$d/jni_md.h"; then
-          extra_java_include="-I$d"
-          result="$d/jni_md.h"
-          break
-        fi
-      done
-      AC_MSG_RESULT([$result])
-    fi
-    
-    # put user-specified directory and jni_mh.h directory (if found)
-    # into CPPFLAGS
-    CPPFLAGS="$CPPFLAGS -I$java_include $extra_java_include"
-  fi
-  
-  # Now we check for a working jni.h that is version 1.2 or newer.
-  # Note: This check is done unless user specified --without-java-include
-  #       If --with-java-include wasn't specified, it will check the
-  #       default compiler search path and any paths the user specified
-  #       via CPPFLAGS on the command line.
-  AC_CHECK_HEADER( [jni.h], [HAVE_JAVA=yes], [HAVE_JAVA=no
-    AC_MSG_NOTICE("Specify --with-java-include=<DIR> to enalbe Java support")] )
-  if test "xyes" = "x$HAVE_JAVA"; then
-    AC_MSG_CHECKING([java JNI version >= 1.2])
-    AC_TRY_COMPILE( [#include <jni.h>],
-  [#ifndef JNI_VERSION_1_2
-     choke me
-   #endif], [HAVE_JAVA=yes],[HAVE_JAVA=no] )
-    AC_MSG_RESULT([$HAVE_JAVA])
-  fi
-  
-  # If user specified --with-java-include, fail if not found
-  # (If user didn't specify, then we gracefully disable things that
-  # require java.)
-  if test "x" != "x$java_include" && test "xyes" != "x$HAVE_JAVA"; then
-    AC_MSG_ERROR([working jni.h not found])
-  fi
-fi
 
 CFLAGS_save="$CFLAGS"
 CXXFLAGS_save="$CXXFLAGS"
@@ -741,9 +674,6 @@ AC_ARG_ENABLE([de],
 AC_ARG_ENABLE([draw],
   [AC_HELP_STRING([--disable-draw],[Don't build test harness])],
   [ENABLE_DRAW=${enableval}],[ENABLE_DRAW=])
-AC_ARG_ENABLE([wrappers],
-  [AC_HELP_STRING([--disable-wrappers],[Don't build wrapper libraries])],
-  [ENABLE_WRAPPERS=${enableval}],[ENABLE_WRAPPERS=])
 
 # Process options from above.  The behavior we want is:
 #
@@ -840,29 +770,12 @@ elif test "xno" != "x$ENABLE_DRAW"; then
   fi
 fi
 
-# Wrappers: requires java
-if test "x" = "x$ENABLE_WRAPPERS"; then
-  if test "xyes" != "x$HAVE_JAVA"; then
-    AC_MSG_WARN( [Disabling wrappers because java was not found.] )
-    ENABLE_WRAPPERS=no
-    DISABLE_WRAPPERS_REASON="(Java Not Found)"
-  else
-    ENABLE_WRAPPERS=yes
-  fi
-elif test "xno" != "x$ENABLE_WRAPPERS"; then
-  if test "xyes" != "x$HAVE_JAVA"; then
-    AC_MSG_ERROR( [Wrappers requires java.] )
-  fi
-fi  
-
 # Convert to automake conditional values
 AM_CONDITIONAL(ENABLE_MODEL,[test "xno" != "x$ENABLE_MODEL"])
 AM_CONDITIONAL(ENABLE_VIS,[test "xno" != "x$ENABLE_VIS"])
 AM_CONDITIONAL(ENABLE_OCAF,[test "xno" != "x$ENABLE_OCAF"])
 AM_CONDITIONAL(ENABLE_DE,[test "xno" != "x$ENABLE_DE"])
 AM_CONDITIONAL(ENABLE_DRAW,[test "xno" != "x$ENABLE_DRAW"])
-AM_CONDITIONAL(ENABLE_WRAPPERS,[test "xno" != "x$ENABLE_WRAPPERS"])
-
 
 
 
