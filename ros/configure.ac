@@ -35,25 +35,25 @@ dnl Checks for header files.
 AC_HEADER_STDC
 AC_LANG([C])
 AC_MSG_CHECKING([ for C header files ])
-AC_CHECK_HEADERS(dlfcn.h dl.h ieeefp.h time.h sys/time.h pwd.h)
-AC_CHECK_HEADERS(sys/statvfs.h sys/vfs.h sys/param.h osfcn.h netdb.h)
-AC_CHECK_HEADERS(sys/ioctl.h net/if.h sys/systeminfo.h sys/utsname.h)
-AC_CHECK_HEADERS(sysent.h unistd.h sys/unistd.h sys/socket.h)
-AC_CHECK_HEADERS(ndir.h sys/ndir.h sys/dir.h signal.h sys/signal.h)
-AC_CHECK_HEADERS(sigfpe.h floatingpoint.h sys/machsig.h sys/siginfo.h)
-AC_CHECK_HEADERS(malloc.h strings.h sys/stat.h sys/sem.h sys/ipc.h)
-AC_CHECK_HEADERS(sys/times.h dirent.h getopt.h sys/vnode.h)
+AC_CHECK_HEADERS([dlfcn.h dl.h ieeefp.h time.h sys/time.h pwd.h])
+AC_CHECK_HEADERS([sys/statvfs.h sys/vfs.h sys/param.h osfcn.h netdb.h])
+AC_CHECK_HEADERS([sys/ioctl.h net/if.h sys/systeminfo.h sys/utsname.h])
+AC_CHECK_HEADERS([sysent.h unistd.h sys/unistd.h sys/socket.h])
+AC_CHECK_HEADERS([ndir.h sys/ndir.h sys/dir.h signal.h sys/signal.h])
+AC_CHECK_HEADERS([sigfpe.h floatingpoint.h sys/machsig.h sys/siginfo.h])
+AC_CHECK_HEADERS([malloc.h strings.h sys/stat.h sys/sem.h sys/ipc.h])
+AC_CHECK_HEADERS([sys/times.h dirent.h getopt.h sys/vnode.h])
 
 
 AC_LANG([C++])
 AC_MSG_CHECKING([ for C++ header files ])
-AC_CHECK_HEADERS(istream ostream fstream ios iomanip iostream )
-AC_CHECK_HEADERS(stream.h strstream.h istream.h ostream.h fstream.h stdlib.h ios.h iostream.h)
-AC_CHECK_HEADERS(iomanip.h limits.h values.h float.h)
-AC_CHECK_HEADERS(siginfo.h bits/sigset.h bstring.h sys/types.h sys/select.h)
-AC_CHECK_HEADERS(X11/extensions/transovl.h X11/extensions/readdisplay.h)
-AC_CHECK_HEADERS(X11/extensions/multibuf.h)
-AC_CHECK_HEADERS(sys/filio.h sys/mman.h libc.h)
+AC_CHECK_HEADERS([istream ostream fstream ios iomanip iostream])
+AC_CHECK_HEADERS([stream.h strstream.h istream.h ostream.h fstream.h stdlib.h ios.h iostream.h])
+AC_CHECK_HEADERS([iomanip.h limits.h values.h float.h])
+AC_CHECK_HEADERS([siginfo.h bits/sigset.h bstring.h sys/types.h sys/select.h])
+AC_CHECK_HEADERS([X11/extensions/transovl.h X11/extensions/readdisplay.h])
+AC_CHECK_HEADERS([X11/extensions/multibuf.h])
+AC_CHECK_HEADERS([sys/filio.h sys/mman.h libc.h])
 
 #-----------------------------------------------------------------------------
 # Posix threads library is required on Unix
@@ -95,12 +95,12 @@ if test "xyes" = "x$HAVE_TCL"; then
     CSF_TclTkLibs_LIB="${TK_LIB_SPEC}"
   fi
 fi
-AC_SUBST(TCL_VERSION)
-AC_SUBST(TK_VERSION)
-AC_SUBST(CSF_TclLibs_INCLUDES)
-AC_SUBST(CSF_TclTkLibs_INCLUDES)
-AC_SUBST(CSF_TclLibs_LIB)
-AC_SUBST(CSF_TclTkLibs_LIB)
+AC_SUBST([TCL_VERSION])
+AC_SUBST([TK_VERSION])
+AC_SUBST([CSF_TclLibs_INCLUDES])
+AC_SUBST([CSF_TclTkLibs_INCLUDES])
+AC_SUBST([CSF_TclLibs_LIB])
+AC_SUBST([CSF_TclTkLibs_LIB])
 
 dnl Make sure CSFDB is defined in CXXFLAGS and CFLAGS
 CXXFLAGS="$CXXFLAGS -DCSFDB -DOCC_CONVERT_SIGNALS"
@@ -134,11 +134,11 @@ case $platform in
 	*) ;;
 esac
 esac
-AC_SUBST(CSF_SOCKETLibs_LIB)
+AC_SUBST([CSF_SOCKETLibs_LIB])
 
-AM_CONDITIONAL( IS_WINDOWS, [test "xwin32" = "x$platform" || test "xwin64" = "x$platform" ] )
+AM_CONDITIONAL( [IS_WINDOWS], [test "xwin32" = "x$platform" || test "xwin64" = "x$platform" ] )
 
-AC_SUBST(platform)
+AC_SUBST([platform])
 AC_LANG([C++])
 
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -147,11 +147,11 @@ AC_STRUCT_TM
 
 dnl Checks for library functions.
 AC_TYPE_SIGNAL
-AC_CHECK_FUNCS(gethostname putenv re_comp regcomp strcspn strdup strtol)
-AC_CHECK_FUNCS(statfs statvfs)
+AC_CHECK_FUNCS([gethostname putenv re_comp regcomp strcspn strdup strtol])
+AC_CHECK_FUNCS([statfs statvfs])
 
 
-AC_CACHE_CHECK(if it is OK to define stream input and output,
+AC_CACHE_CHECK([if it is OK to define stream input and output],
 [occ_cv_def_ios_ok],
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <stream.h>
@@ -161,11 +161,11 @@ static const int output= (ios::out);],
  occ_cv_def_ios_ok=yes, occ_cv_def_ios_ok=no)
 ])
 if test "$occ_cv_def_ios_ok" = yes; then
-  AC_DEFINE(DEF_IOS_OK,,[define if the compiler allows redefinition of stream input and output])
+  AC_DEFINE([DEF_IOS_OK],,[define if the compiler allows redefinition of stream input and output])
 fi
 
 
-AC_CACHE_CHECK(if class ostream has member function form,
+AC_CACHE_CHECK([if class ostream has member function form],
 [occ_cv_ostream_form_ok],
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <iostream.h>],
@@ -174,7 +174,7 @@ return 0;],
  occ_cv_ostream_form_ok=yes, occ_cv_ostream_form_ok=no)
 ])
 if test "$occ_cv_ostream_form_ok" = yes; then
-  AC_DEFINE(OSTREAM_FORM_OK,,[define if the class ostream has member function form])
+  AC_DEFINE([OSTREAM_FORM_OK],,[define if the class ostream has member function form])
 fi
 
 
@@ -183,7 +183,7 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 # if the following code compiles then the union semun is
 # defined in the header <sys/sem.h>
 
-AC_CACHE_CHECK(if union semun is defined in <sys/sem.h>,
+AC_CACHE_CHECK([if union semun is defined in <sys/sem.h>],
 [occ_cv_semun_defined],
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/time.h>
@@ -192,7 +192,7 @@ AC_TRY_COMPILE([#include <sys/time.h>
  occ_cv_semun_defined=yes, occ_cv_semun_defined=no)
 ])
 if test "$occ_cv_semun_defined" = yes; then
-  AC_DEFINE(SEMUN_DEFINED,,[define if the union semun is in sys/sem.h])
+  AC_DEFINE([SEMUN_DEFINED],,[define if the union semun is in sys/sem.h])
 fi
 
 # if the following code compiles then the union semun has
@@ -200,7 +200,7 @@ fi
 
 if test "$occ_cv_semun_defined" = yes; then
 
- AC_CACHE_CHECK(if union semun has member __buf,
+ AC_CACHE_CHECK([if union semun has member __buf],
  [occ_cv_semun_buf_defined],
  [AC_LANG([C])
  AC_TRY_COMPILE([#include <sys/sem.h>],
@@ -208,12 +208,12 @@ if test "$occ_cv_semun_defined" = yes; then
  occ_cv_semun_buf_defined=yes, occ_cv_semun_buf_defined=no)
  ])
  if test "$sumun_buf_defined" = yes; then
-  AC_DEFINE(SEMUN_BUF_DEFINED,,[define if semun has member __buf])
+  AC_DEFINE([SEMUN_BUF_DEFINED],,[define if semun has member __buf])
  fi
 fi
 
 
-AC_CACHE_CHECK(if function semop takes a value,
+AC_CACHE_CHECK([if function semop takes a value],
 occ_cv_semop_no_reference,
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
@@ -225,11 +225,11 @@ static struct sembuf event_flag ;],
  occ_cv_semop_no_reference=yes, occ_cv_semop_no_reference=no)
 ])
 if test "$occ_cv_semop_no_reference" = yes; then
-  AC_DEFINE(SEMOP_NO_REFERENCE,,[define if the function semop takes a value])
+  AC_DEFINE([SEMOP_NO_REFERENCE],,[define if the function semop takes a value])
 fi
 
 
-AC_CACHE_CHECK(if function semctl takes a value,
+AC_CACHE_CHECK([if function semctl takes a value],
 occ_cv_semctl_no_reference,
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
@@ -246,21 +246,21 @@ int *a,*b,*c;],
  occ_cv_semctl_no_reference=yes, occ_cv_semctl_no_reference=no)
 ])
 if test "$occ_cv_semctl_no_reference" = yes; then
-  AC_DEFINE(SEMCTL_NO_REFERENCE,,[define if the function semctl takes a value])
+  AC_DEFINE([SEMCTL_NO_REFERENCE],,[define if the function semctl takes a value])
 fi
 
 AC_CHECK_LIB(malloc,mallinfo,[
-  AC_DEFINE(HAVE_MALLINFO,,[Define if we have a function called "mallinfo" in -lmalloc.])
+  AC_DEFINE([HAVE_MALLINFO],,[Define if we have a function called "mallinfo" in -lmalloc.])
   LIBS="$LIBS -lmalloc"
 ])
 
 AC_CHECK_LIB(sunmath,ieee_handler,[
-  AC_DEFINE(HAVE_SUNMATH,,[Define if we have a function called "ieee_handler" in -lsunmath.])
+  AC_DEFINE([HAVE_SUNMATH],,[Define if we have a function called "ieee_handler" in -lsunmath.])
   LIBS="$LIBS -lsunmath"
 ])
 
 AC_CHECK_LIB(m,finite,[
-  AC_DEFINE(HAVE_FINITE,,[Define if we have a function called "finite" in -lm.])
+  AC_DEFINE([HAVE_FINITE],,[Define if we have a function called "finite" in -lm.])
 ])
 
 CFLAGS_save="$CFLAGS"
@@ -316,20 +316,20 @@ AC_LANG([C])
   HAVE_GL_INC=yes
   AC_CHECK_HEADER( [GL/gl.h], [AC_CHECK_HEADER([GL/glu.h],[],[HAVE_GL_INC=no])], [HAVE_GL_INC=no] )
   if test "x$HAVE_GL_INC" = "xyes"; then
-    AC_CHECK_TYPE(_GLUfuncptr,[],[CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"],[#include "GL/glu.h"])
+    AC_CHECK_TYPE([_GLUfuncptr], [], [CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"], [#include <GL/glu.h>])
   else
     HAVE_GL=no
-    AC_MSG_NOTICE("Specify CPPFLAGS=-I<opengl_inc_dir> to enable OpenGL support")
+    AC_MSG_NOTICE([Specify CPPFLAGS=-I<opengl_inc_dir> to enable OpenGL support])
   fi
   CPPFLAGS="$CSF_OpenGlLibs_INCLUDES $CPPFLAGS"
   HAVE_GL_LIB=yes
   AC_CHECK_LIB( [GL], [glClear], [AC_CHECK_LIB([GLU],[gluSphere],[CSF_OpenGlLibs_LIB="$CSF_OpenGlLibs_LIB -lGLU -lGL"],[HAVE_GL_LIB=no],[-lGL])], [HAVE_GL_LIB=no] )
   if test "xno" = "x$HAVE_GL_LIB"; then
     HAVE_GL=no
-    AC_MSG_NOTICE("Specify LDFLAGS=-L<opengl_lib_dir> to enable OpenGL support")
+    AC_MSG_NOTICE([Specify LDFLAGS=-L<opengl_lib_dir> to enable OpenGL support])
   fi
 fi
-AM_CONDITIONAL( HAVE_GL, [test "xyes" = "x$HAVE_GL"] )
+AM_CONDITIONAL( [HAVE_GL], [test "xyes" = "x$HAVE_GL"] )
 
 #---------------------------------------------------------------------
 #
@@ -352,7 +352,7 @@ if test "xyes" = "x${HAVE_GL}"; then
     CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
   fi
 fi
-AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] )
+AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 
 #---------------------------------------------------------------------
 #
@@ -399,7 +399,7 @@ AC_MSG_RESULT(no)
     HAVE_FTGL=no
   fi
 fi
-AM_CONDITIONAL( HAVE_FTGL, [test "xyes" = "x$HAVE_FTGL"] )
+AM_CONDITIONAL( [HAVE_FTGL], [test "xyes" = "x$HAVE_FTGL"] )
 
 #---------------------------------------------------------------------
 #
@@ -442,7 +442,7 @@ AC_CHECK_HEADER( [gl2ps.h], [], [HAVE_GL2PS_INC=no] )
 	  fi
 fi
 fi
-AM_CONDITIONAL( HAVE_GL2PS, [test "xyes" = "x$HAVE_GL2PS"] )
+AM_CONDITIONAL( [HAVE_GL2PS], [test "xyes" = "x$HAVE_GL2PS"] )
 
 #---------------------------------------------------------------------
 #
@@ -507,11 +507,11 @@ HAVE_TBB_INC=yes
 if test "x$tbb_inc" != "x"; then
   CPPFLAGS="-I$tbb_inc $CPPFLAGS";
 else
-  AC_MSG_NOTICE("--with-tbb-include key is not defined")
+  AC_MSG_NOTICE([--with-tbb-include key is not defined])
 fi
 AC_CHECK_HEADER( [tbb/tbb.h], [], [HAVE_TBB_INC=no] )
 if test "x$HAVE_TBB_INC" != "xyes"; then
-  AC_MSG_NOTICE("Specify --with-tbb-include to enable TBB support")
+  AC_MSG_NOTICE([Specify --with-tbb-include to enable TBB support])
 fi
 
 fi
@@ -553,12 +553,12 @@ if test "x$HAVE_TBB" = "xyes"; then
     CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
   fi
 else
-  AC_MSG_NOTICE("Specify --with-tbb-library to enable TBB support")
+  AC_MSG_NOTICE([Specify --with-tbb-library to enable TBB support])
 fi
 
 fi
 
-AM_CONDITIONAL( HAVE_TBB, [test "xyes" = "x$HAVE_TBB"] )
+AM_CONDITIONAL( [HAVE_TBB], [test "xyes" = "x$HAVE_TBB"] )
 
 #---------------------------------------------------------------------
 #
@@ -582,7 +582,7 @@ else
   if test "x$qt" != "x"; then
     CPPFLAGS="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include $CPPFLAGS";
   else
-    AC_MSG_NOTICE("--with-qt key is not defined")
+    AC_MSG_NOTICE([--with-qt key is not defined])
   fi
   AC_CHECK_HEADER( [Qt/qpixmap.h], [], [HAVE_QT_INC=no] )
   if test "x$HAVE_QT_INC" = "xyes"; then
@@ -595,10 +595,10 @@ else
   fi
   if test "xno" = "x$HAVE_QT_LIB"; then
     HAVE_QT=no
-    AC_MSG_NOTICE("Specify --with-qt to enable QT support")
+    AC_MSG_NOTICE([Specify --with-qt to enable QT support])
   fi
 fi
-AM_CONDITIONAL( HAVE_QT, [test "xyes" = "x$HAVE_QT"] )
+AM_CONDITIONAL( [HAVE_QT], [test "xyes" = "x$HAVE_QT"] )
 
 AC_LANG([C])
 
@@ -686,7 +686,7 @@ AC_ARG_ENABLE([draw],
 if test "x" = "x$ENABLE_VIS"; then
   ENABLE_VIS=yes
   if test "xno" = "x$ENABLE_MODEL"; then
-    AC_MSG_NOTICE( [Disabling visualization component: not building model component] )
+    AC_MSG_NOTICE([Disabling visualization component: not building model component])
     DISABLE_VIS_REASON="(Model Component Disabled)"
     ENABLE_VIS=no
   elif test "xyes" != "x$HAVE_X11"; then
@@ -703,7 +703,7 @@ fi
 # Lightwieght Application Framework: requires Visualization component
 if test "x" = "x$ENABLE_OCAF"; then
   if test "xno" = "x$ENABLE_VIS"; then
-    AC_MSG_NOTICE( [Disabling application framework: not building visualization component] )
+    AC_MSG_NOTICE([Disabling application framework: not building visualization component])
     DISABLE_OCAF_REASON="(Visualization Component Disabled)"
     ENABLE_OCAF=no
   else
@@ -718,7 +718,7 @@ fi
 # Data Exchange Component: requires OCAF
 if test "x" = "x$ENABLE_DE"; then
   if test "xno" = "x$ENABLE_OCAF"; then
-    AC_MSG_NOTICE( [Disabling data exchange component: not building OCAF] )
+    AC_MSG_NOTICE([Disabling data exchange component: not building OCAF])
     DISABLE_DE_REASON="(Application Framework Component Disabled)"
     ENABLE_DE=no
   else
@@ -764,11 +764,11 @@ elif test "xno" != "x$ENABLE_DRAW"; then
 fi
 
 # Convert to automake conditional values
-AM_CONDITIONAL(ENABLE_MODEL,[test "xno" != "x$ENABLE_MODEL"])
-AM_CONDITIONAL(ENABLE_VIS,[test "xno" != "x$ENABLE_VIS"])
-AM_CONDITIONAL(ENABLE_OCAF,[test "xno" != "x$ENABLE_OCAF"])
-AM_CONDITIONAL(ENABLE_DE,[test "xno" != "x$ENABLE_DE"])
-AM_CONDITIONAL(ENABLE_DRAW,[test "xno" != "x$ENABLE_DRAW"])
+AM_CONDITIONAL([ENABLE_MODEL], [test "xno" != "x$ENABLE_MODEL"])
+AM_CONDITIONAL([ENABLE_VIS],   [test "xno" != "x$ENABLE_VIS"])
+AM_CONDITIONAL([ENABLE_OCAF],  [test "xno" != "x$ENABLE_OCAF"])
+AM_CONDITIONAL([ENABLE_DE],    [test "xno" != "x$ENABLE_DE"])
+AM_CONDITIONAL([ENABLE_DRAW],  [test "xno" != "x$ENABLE_DRAW"])
 
 
 
@@ -779,42 +779,42 @@ AM_CONDITIONAL(ENABLE_DRAW,[test "xno" != "x$ENABLE_DRAW"])
 #----------------------------------------------------------------------
 
 
-AC_SUBST(CPPFLAGS)
+AC_SUBST([CPPFLAGS])
 CXXCPPFLAGS="$CPPFLAGS"
-AC_SUBST(CXXCPPFLAGS)
-AC_SUBST(CFLAGS)
-AC_SUBST(CXXFLAGS)
-AC_SUBST(LIBS)
-AC_SUBST(LDFLAGS)
+AC_SUBST([CXXCPPFLAGS])
+AC_SUBST([CFLAGS])
+AC_SUBST([CXXFLAGS])
+AC_SUBST([LIBS])
+AC_SUBST([LDFLAGS])
 
 
 CSF_XwLibs_LIB="$X_LIBS"
 CSF_MotifLibs_LIB="$X_LIBS"
 
-AC_SUBST(CSF_SOCKETLibs_LIB)
-AC_SUBST(CSF_FPELibs_LIB)
-AC_SUBST(CSF_OpenGlLibs_INCLUDES)
-AC_SUBST(CSF_OpenGlLibs_LIB)
-AC_SUBST(CSF_FREETYPE_INCLUDES)
-AC_SUBST(CSF_FTGL_INCLUDES)
-AC_SUBST(CSF_FTGL_LIB)
-AC_SUBST(CSF_GL2PS_INCLUDES)
-AC_SUBST(CSF_GL2PS_LIB)
-AC_SUBST(CSF_FREEIMAGE_INCLUDES)
-AC_SUBST(CSF_FREEIMAGE_LIB)
-AC_SUBST(CSF_advapi32_LIB)
-AC_SUBST(CSF_gdi32_LIB)
-AC_SUBST(CSF_user32_LIB)
-AC_SUBST(CSF_wsock32_LIB)
-AC_SUBST(CSF_comdlg32_LIB)
-AC_SUBST(CSF_XwLibs_LIB)
-AC_SUBST(CSF_MotifLibs_LIB)
-AC_SUBST(CSF_XmuLibs_LIB)
-AC_SUBST(CSF_XmuLibs_INCLUDES)
-AC_SUBST(CSF_TBB_INCLUDES)
-AC_SUBST(CSF_TBB_LIB)
-AC_SUBST(CSF_QT_INCLUDES)
-AC_SUBST(CSF_QT_LIB)
+AC_SUBST([CSF_SOCKETLibs_LIB])
+AC_SUBST([CSF_FPELibs_LIB])
+AC_SUBST([CSF_OpenGlLibs_INCLUDES])
+AC_SUBST([CSF_OpenGlLibs_LIB])
+AC_SUBST([CSF_FREETYPE_INCLUDES])
+AC_SUBST([CSF_FTGL_INCLUDES])
+AC_SUBST([CSF_FTGL_LIB])
+AC_SUBST([CSF_GL2PS_INCLUDES])
+AC_SUBST([CSF_GL2PS_LIB])
+AC_SUBST([CSF_FREEIMAGE_INCLUDES])
+AC_SUBST([CSF_FREEIMAGE_LIB])
+AC_SUBST([CSF_advapi32_LIB])
+AC_SUBST([CSF_gdi32_LIB])
+AC_SUBST([CSF_user32_LIB])
+AC_SUBST([CSF_wsock32_LIB])
+AC_SUBST([CSF_comdlg32_LIB])
+AC_SUBST([CSF_XwLibs_LIB])
+AC_SUBST([CSF_MotifLibs_LIB])
+AC_SUBST([CSF_XmuLibs_LIB])
+AC_SUBST([CSF_XmuLibs_INCLUDES])
+AC_SUBST([CSF_TBB_INCLUDES])
+AC_SUBST([CSF_TBB_LIB])
+AC_SUBST([CSF_QT_INCLUDES])
+AC_SUBST([CSF_QT_LIB])
 
 
 echo
