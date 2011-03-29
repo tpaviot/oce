@@ -343,14 +343,16 @@ AC_ARG_WITH([freetype],
 
 CSF_FREETYPE_INCLUDES=""
 
+HAVE_FREETYPE=no
 if test "xyes" = "x${HAVE_GL}"; then
   AC_LANG([C++])
-  HAVE_FREETYPE=yes
   CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
-  AC_CHECK_HEADER( [ft2build.h], [], [HAVE_FREETYPE=no] )
-  if test "x$HAVE_FREETYPE" = "xyes"; then
-    CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
-  fi
+  AC_CHECK_HEADER( [ft2build.h], [], [AC_MSG_FAILURE([could not find ft2build.h])] )
+  AC_CHECK_LIB([freetype], [FT_New_Face],
+    [HAVE_FREETYPE=yes],
+    [AC_MSG_FAILURE([could not link against freetype])],
+    [$CSF_OpenGlLibs_LIB])
+  CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
 fi
 AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 
@@ -360,44 +362,52 @@ AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 #  
 #  
 #---------------------------------------------------------------------
+HAVE_FTGL_NEWER212=no
+ftgl=
+AC_ARG_WITH([ftgl212],
+  [AC_HELP_STRING([--with-ftgl212=DIR],[Location of FTGL 2.1.2])],
+  [ftgl="${withval}"])
 AC_ARG_WITH([ftgl],
   [AC_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
-  [ftgl="${withval}"],[ftgl=])
+  [ftgl="${withval}"
+   HAVE_FTGL_NEWER212=yes])
 
 CSF_FTGL_INCLUDES=""
 CSF_FTGL_LIB=""
 
-if test "xno" = "x${HAVE_FREETYPE}"; then
-  HAVE_FTGL=no
-else
+HAVE_FTGL=no
+if test "xyes" = "x${HAVE_FREETYPE}"; then
   AC_LANG([C++])
   HAVE_FTGL=yes
-  HAVE_FTGL_INC=yes
-  CPPFLAGS="-I$ftgl/include $CPPFLAGS";
-  AC_CHECK_HEADER( [FTGL/FTGL.h], [], [HAVE_FTGL_INC=no] )
-  if test "x$HAVE_FTGL_INC" = "xyes"; then
-    CSF_FTGL_INCLUDES="-I$ftgl/include/FTGL"
-    HAVE_FTGL_LIB=yes
-    AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
-    LDFLAGS="-L$ftgl/lib"
-    LIBS_sv=$LIBS
-    LIBS="-lftgl $CSF_OpenGlLibs_LIB $LIBS"
-    #we have problem with unresolved symbols on 64 stations
-    CSF_FTGL_LIB="-L$ftgl/lib -lftgl"
+  CPPFLAGS_sv=$CPPFLAGS
+  CPPFLAGS="-I$ftgl/include $CSF_FREETYPE_INCLUDES"
+  if test "x$HAVE_FTGL_NEWER212" = xyes; then
+    AC_CHECK_HEADER([FTGL/ftgl.h],
+      [AC_DEFINE([HAVE_FTGL_NEWER212], 1, [Define if we use ftgl > 2.1.2.])],
+      [AC_MSG_FAILURE([could not find FTGL/ftgl.h])])
+  else
+    AC_CHECK_HEADER([FTGL/FTGL.h], [], [AC_MSG_FAILURE([could not find FTGL/FTGL.h])])
+  fi
+  AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
+  CSF_FTGL_LIB="-L$ftgl/lib -lftgl -L$freetype/lib -lfreetype"
+  CSF_FTGL_INCLUDES="-I$ftgl/include"
+  LDFLAGS="-L$ftgl/lib $LDFLAGS"
+  LIBS_sv=$LIBS
+  LIBS="$CSF_FTGL_LIB $CSF_OpenGlLibs_LIB $LIBS"
+  if test "x$HAVE_FTGL_NEWER212" = xyes; then
+    AC_LINK_IFELSE([AC_LANG_PROGRAM([
+#include <FTGL/ftgl.h>
+], [FTGLTextureFont font("");])],
+      [AC_MSG_RESULT(yes)],
+      [AC_MSG_FAILURE([could not link against ftgl])])
+  else
     AC_TRY_LINK([
 #include <FTGL/FTGL.h>
 #include <FTGL/FTGLTextureFont.h>
-], [
-FTGLTextureFont font("");], [
-AC_MSG_RESULT(yes)
-], [
-AC_MSG_RESULT(no)
-]) 
-    LIBS=$LIBS_sv
+], [FTGLTextureFont font("");], [AC_MSG_RESULT(yes)], [AC_MSG_FAILURE([could not link against ftgl])])
   fi
-  if test "xno" = "x$HAVE_FTGL_LIB"; then
-    HAVE_FTGL=no
-  fi
+  CPPFLAGS=$CPPFLAGS_sv
+  LIBS=$LIBS_sv
 fi
 AM_CONDITIONAL( [HAVE_FTGL], [test "xyes" = "x$HAVE_FTGL"] )
 

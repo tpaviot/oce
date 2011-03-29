@@ -7,7 +7,15 @@
 # include <stdlib.h>
 #endif
 
-#include <FTFont.h>
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
+#ifdef HAVE_FTGL_NEWER212
+# include <FTGL/ftgl.h>
+#else
+# include <FTGL/FTFont.h>
+#endif
 
 #include <InterfaceGraphic.hxx>
 #include <TCollection_HAsciiString.hxx>

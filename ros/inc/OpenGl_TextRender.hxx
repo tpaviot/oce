@@ -5,7 +5,7 @@
 #include <NCollection_DataMap.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_HAsciiString.hxx>
-#include <FTFont.h>
+#include <OpenGl_FontMgr.hxx>  // For FTFont
 
 #define NUM_FONT_SIZES 40
 #define NUM_CHAR_FONT 1024
