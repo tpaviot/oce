@@ -411,12 +411,17 @@ AC_ARG_WITH([gl2ps],
   [AC_HELP_STRING([--with-gl2ps=DIR],[Location of GL2PS])],
   [gl2ps="${withval}"],[gl2ps=])
 
-if test "xno" = "xno$gl2ps"; then
+if test "xno" = "x$gl2ps"; then
 # user specified --without-gl2ps
 HAVE_GL2PS=no
 ENABLE_GL2PS=no
 DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
 else
+  if test "xyes" = "x$gl2ps"; then
+    # user specified --with-gl2ps, without =DIR
+    AC_MSG_NOTICE([--with-gl2ps=DIR: DIR not specified, assuming /usr])
+    gl2ps="/usr"
+  fi
 CSF_GL2PS_INCLUDES=""
 CSF_GL2PS_LIB=""
 
@@ -454,12 +459,17 @@ AC_ARG_WITH([freeimage],
   [AC_HELP_STRING([--with-freeimage=DIR],[Location of freeimage])],
   [freeimage="${withval}"],[freeimage=])
 
-if test "xno" = "xno$freeimage"; then
+if test "xno" = "x$freeimage"; then
   # user specified --without-freeimage
   HAVE_FREEIMAGE=no
   ENABLE_FREEIMAGE=no
   DISABLE_FREEIMAGE_REASON="(--with-freeimage=DIR option was not defined)"
 else
+  if test "xyes" = "x$freeimage"; then
+    # user specified --with-freeimage, without =DIR
+    AC_MSG_NOTICE([--with-freeimage=DIR: DIR not specified, assuming /usr])
+    freeimage="/usr"
+  fi
 	ENABLE_FREEIMAGE=yes	
 	CSF_FREEIMAGE_INCLUDES=""
 	CSF_FREEIMAGE_LIB=""
