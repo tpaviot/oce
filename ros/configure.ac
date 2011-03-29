@@ -24,10 +24,7 @@ AC_DISABLE_STATIC
 dnl Checks for programs.
 AM_PROG_LIBTOOL
 AC_PROG_CXX
-AC_PROG_CC_C_O
-AM_C_PROTOTYPES
 
-AC_PROG_AWK
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_YACC
@@ -151,8 +148,6 @@ AC_TYPE_SIZE_T
 AC_STRUCT_TM
 
 dnl Checks for library functions.
-AC_FUNC_ALLOCA
-AC_FUNC_MEMCMP
 AC_TYPE_SIGNAL
 AC_CHECK_FUNCS(gethostname putenv re_comp regcomp strcspn strdup strtol)
 AC_CHECK_FUNCS(statfs statvfs)
