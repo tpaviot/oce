@@ -52,7 +52,7 @@ AC_CHECK_HEADERS([stream.h strstream.h istream.h ostream.h fstream.h stdlib.h io
 AC_CHECK_HEADERS([iomanip.h limits.h values.h float.h])
 AC_CHECK_HEADERS([siginfo.h bits/sigset.h bstring.h sys/types.h sys/select.h])
 AC_CHECK_HEADERS([X11/extensions/transovl.h X11/extensions/readdisplay.h])
-AC_CHECK_HEADERS([X11/extensions/multibuf.h])
+AC_CHECK_HEADERS([X11/extensions/multibuf.h], [], [], [#include <X11/Xlib.h>])
 AC_CHECK_HEADERS([sys/filio.h sys/mman.h libc.h])
 
 #-----------------------------------------------------------------------------
