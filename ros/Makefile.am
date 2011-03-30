@@ -2,6 +2,8 @@ srcdir = @srcdir@
 
 SUBDIRS = adm/make
 
+ACLOCAL_AMFLAGS = -I m4
+
 VPATH = @srcdir@ \
 @top_srcdir@/make: \
 @top_srcdir@/adm/make:
