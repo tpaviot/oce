@@ -281,7 +281,7 @@ osd_skill_(int *pid, int *event)
 }
 
 int
-osd_alarm_(int sec,RETSIGTYPE (*_alarm)())
+osd_alarm_(int sec, void (*_alarm)())
 /*====================================================
 
 	ARM the SIGNAL event (Must be 1 or 2 )

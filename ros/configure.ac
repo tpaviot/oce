@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCAS], [5.0DVP1])
+AC_INIT([OpenCASCADE], [6.5.0oce1], [oce-dev@googlegroups.com])
 AC_CONFIG_AUX_DIR([make])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign])
@@ -11,18 +11,18 @@ CXXFLAGS="$CXXFLAGS"
 
 AC_PROG_CC
 
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 dnl AM_MAINTAINER_MODE
 
-AC_AIX
-AC_ISC_POSIX
+AC_USE_SYSTEM_EXTENSIONS
+AC_SEARCH_LIBS([strerror],[cposix])
 AC_C_BIGENDIAN
 
 AC_DISABLE_STATIC
 
 dnl Checks for programs.
-AM_PROG_LIBTOOL
+LT_INIT
 AC_PROG_CXX
 
 AC_PROG_INSTALL
@@ -146,7 +146,6 @@ AC_TYPE_SIZE_T
 AC_STRUCT_TM
 
 dnl Checks for library functions.
-AC_TYPE_SIGNAL
 AC_CHECK_FUNCS([gethostname putenv re_comp regcomp strcspn strdup strtol])
 AC_CHECK_FUNCS([statfs statvfs])
 
@@ -154,11 +153,9 @@ AC_CHECK_FUNCS([statfs statvfs])
 AC_CACHE_CHECK([if it is OK to define stream input and output],
 [occ_cv_def_ios_ok],
 [AC_LANG([C++])
- AC_TRY_COMPILE([#include <stream.h>
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <stream.h>
 static const int input = (ios::in) | (ios::nocreate);
-static const int output= (ios::out);],
-[return 0;],
- occ_cv_def_ios_ok=yes, occ_cv_def_ios_ok=no)
+static const int output= (ios::out);]], [[return 0;]])],[occ_cv_def_ios_ok=yes],[occ_cv_def_ios_ok=no])
 ])
 if test "$occ_cv_def_ios_ok" = yes; then
   AC_DEFINE([DEF_IOS_OK],,[define if the compiler allows redefinition of stream input and output])
@@ -168,10 +165,8 @@ fi
 AC_CACHE_CHECK([if class ostream has member function form],
 [occ_cv_ostream_form_ok],
 [AC_LANG([C++])
- AC_TRY_COMPILE([#include <iostream.h>],
-[cout << cout.form("%9.3e", 3.14159627e-4) << endl;
-return 0;],
- occ_cv_ostream_form_ok=yes, occ_cv_ostream_form_ok=no)
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <iostream.h>]], [[cout << cout.form("%9.3e", 3.14159627e-4) << endl;
+return 0;]])],[occ_cv_ostream_form_ok=yes],[occ_cv_ostream_form_ok=no])
 ])
 if test "$occ_cv_ostream_form_ok" = yes; then
   AC_DEFINE([OSTREAM_FORM_OK],,[define if the class ostream has member function form])
@@ -186,10 +181,8 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 AC_CACHE_CHECK([if union semun is defined in <sys/sem.h>],
 [occ_cv_semun_defined],
 [AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/time.h>
-#include <sys/sem.h>],
-[union semun c;],
- occ_cv_semun_defined=yes, occ_cv_semun_defined=no)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/time.h>
+#include <sys/sem.h>]], [[union semun c;]])],[occ_cv_semun_defined=yes],[occ_cv_semun_defined=no])
 ])
 if test "$occ_cv_semun_defined" = yes; then
   AC_DEFINE([SEMUN_DEFINED],,[define if the union semun is in sys/sem.h])
@@ -203,9 +196,7 @@ if test "$occ_cv_semun_defined" = yes; then
  AC_CACHE_CHECK([if union semun has member __buf],
  [occ_cv_semun_buf_defined],
  [AC_LANG([C])
- AC_TRY_COMPILE([#include <sys/sem.h>],
- [ union semun c; c.__buf = 0;],
- occ_cv_semun_buf_defined=yes, occ_cv_semun_buf_defined=no)
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/sem.h>]], [[ union semun c; c.__buf = 0;]])],[occ_cv_semun_buf_defined=yes],[occ_cv_semun_buf_defined=no])
  ])
  if test "$sumun_buf_defined" = yes; then
   AC_DEFINE([SEMUN_BUF_DEFINED],,[define if semun has member __buf])
@@ -216,13 +207,11 @@ fi
 AC_CACHE_CHECK([if function semop takes a value],
 occ_cv_semop_no_reference,
 [AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/sem.h>
-static struct sembuf event_flag ;],
-[int status;
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/sem.h>
+static struct sembuf event_flag ;]], [[int status;
  int *semid;
  status = semop(*semid,event_flag,1);
-],
- occ_cv_semop_no_reference=yes, occ_cv_semop_no_reference=no)
+]])],[occ_cv_semop_no_reference=yes],[occ_cv_semop_no_reference=no])
 ])
 if test "$occ_cv_semop_no_reference" = yes; then
   AC_DEFINE([SEMOP_NO_REFERENCE],,[define if the function semop takes a value])
@@ -232,7 +221,7 @@ fi
 AC_CACHE_CHECK([if function semctl takes a value],
 occ_cv_semctl_no_reference,
 [AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/sem.h>
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/sem.h>
 int get_semaphore(semid,event,value)
  int *semid, *event, *value;
 {
@@ -240,10 +229,8 @@ int get_semaphore(semid,event,value)
  status = semctl((*semid),*event,GETVAL,value);
  return 0;
 }
-int *a,*b,*c;],
-[if(get_semaphore(a,b,c))
- exit 0;],
- occ_cv_semctl_no_reference=yes, occ_cv_semctl_no_reference=no)
+int *a,*b,*c;]], [[if(get_semaphore(a,b,c))
+ exit 0;]])],[occ_cv_semctl_no_reference=yes],[occ_cv_semctl_no_reference=no])
 ])
 if test "$occ_cv_semctl_no_reference" = yes; then
   AC_DEFINE([SEMCTL_NO_REFERENCE],,[define if the function semctl takes a value])
@@ -338,7 +325,7 @@ AM_CONDITIONAL( [HAVE_GL], [test "xyes" = "x$HAVE_GL"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([freetype],
-  [AC_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
+  [AS_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
   [freetype="${withval}"],[freetype=])
 
 CSF_FREETYPE_INCLUDES=""
@@ -365,12 +352,12 @@ AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 HAVE_FTGL_NEWER212=no
 ftgl=
 AC_ARG_WITH([ftgl212],
-  [AC_HELP_STRING([--with-ftgl212=DIR],[Location of FTGL 2.1.2])],
+  [AS_HELP_STRING([--with-ftgl212=DIR],[Location of FTGL 2.1.2])],
   [ftgl="${withval}"])
 AC_ARG_WITH([ftgl],
-  [AC_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
+  [AS_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
   [ftgl="${withval}"
-   HAVE_FTGL_NEWER212=yes])
+   HAVE_FTGL_NEWER212=yes],[ftgl=])
 
 CSF_FTGL_INCLUDES=""
 CSF_FTGL_LIB=""
@@ -401,10 +388,10 @@ if test "xyes" = "x${HAVE_FREETYPE}"; then
       [AC_MSG_RESULT(yes)],
       [AC_MSG_FAILURE([could not link against ftgl])])
   else
-    AC_TRY_LINK([
+    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 #include <FTGL/FTGL.h>
 #include <FTGL/FTGLTextureFont.h>
-], [FTGLTextureFont font("");], [AC_MSG_RESULT(yes)], [AC_MSG_FAILURE([could not link against ftgl])])
+]], [[FTGLTextureFont font("");]])],[AC_MSG_RESULT(yes)],[AC_MSG_FAILURE([could not link against ftgl])])
   fi
   CPPFLAGS=$CPPFLAGS_sv
   LIBS=$LIBS_sv
@@ -418,7 +405,7 @@ AM_CONDITIONAL( [HAVE_FTGL], [test "xyes" = "x$HAVE_FTGL"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([gl2ps],
-  [AC_HELP_STRING([--with-gl2ps=DIR],[Location of GL2PS])],
+  [AS_HELP_STRING([--with-gl2ps=DIR],[Location of GL2PS])],
   [gl2ps="${withval}"],[gl2ps=])
 
 if test "xno" = "x$gl2ps"; then
@@ -466,7 +453,7 @@ AM_CONDITIONAL( [HAVE_GL2PS], [test "xyes" = "x$HAVE_GL2PS"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([freeimage],
-  [AC_HELP_STRING([--with-freeimage=DIR],[Location of freeimage])],
+  [AS_HELP_STRING([--with-freeimage=DIR],[Location of freeimage])],
   [freeimage="${withval}"],[freeimage=])
 
 if test "xno" = "x$freeimage"; then
@@ -511,7 +498,7 @@ AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([tbb-include],
-  [AC_HELP_STRING([--with-tbb-include=DIR],[Location of Intel Threading Building Blocks includes])],
+  [AS_HELP_STRING([--with-tbb-include=DIR],[Location of Intel Threading Building Blocks includes])],
   [tbb_inc="${withval}"],[tbb_inc=])
 
 if test "xno" = "xno$tbb_inc"; then
@@ -544,7 +531,7 @@ fi
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([tbb-library],
-  [AC_HELP_STRING([--with-tbb-library=DIR],[Location of Intel Threading Building Blocks libraries])],
+  [AS_HELP_STRING([--with-tbb-library=DIR],[Location of Intel Threading Building Blocks libraries])],
   [tbb_lib="${withval}"],[tbb_lib=])
 
 if test "xno" = "xno$tbb_lib"; then
@@ -588,7 +575,7 @@ AM_CONDITIONAL( [HAVE_TBB], [test "xyes" = "x$HAVE_TBB"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([qt],
-  [AC_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
+  [AS_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
   [qt="${withval}"],[qt=])
 
 CSF_QT_INCLUDES=""
@@ -636,16 +623,13 @@ LIBS="$LIBS_save"
 #  
 #---------------------------------------------------------------------
 AC_MSG_CHECKING([if platform is 64-bit])
-AC_TRY_COMPILE( [], 
- [int array[((int)sizeof(void*))-6];],
- [AC_MSG_RESULT([yes]); CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
- [AC_MSG_RESULT([no])] )
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int array[((int)sizeof(void*))-6];]])],[AC_MSG_RESULT([yes]); CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],[AC_MSG_RESULT([no]) ])
 
 AC_ARG_ENABLE([debug],
-              [AC_HELP_STRING([--enable-debug],[Debug Symbols])],
+              [AS_HELP_STRING([--enable-debug],[Debug Symbols])],
               [enable_debug=${enableval}],[enable_debug=no])
 AC_ARG_ENABLE([production],
-              [AC_HELP_STRING([--enable-production],[Optimized build (default)])],
+              [AS_HELP_STRING([--enable-production],[Optimized build (default)])],
               [enable_prod=${enableval}],[enable_prod=])
 
 # Enable production unless enable-default was specified
@@ -674,19 +658,19 @@ fi
 #----------------------------------------------------------------------
 
 AC_ARG_ENABLE([model],
-  [AC_HELP_STRING([--disable-model],[Disable model components])],
+  [AS_HELP_STRING([--disable-model],[Disable model components])],
   [ENABLE_MODEL=${enableval}],[ENABLE_MODEL=yes])
 AC_ARG_ENABLE([vis],
-  [AC_HELP_STRING([--disable-vis],[Don't build visualization component])],
+  [AS_HELP_STRING([--disable-vis],[Don't build visualization component])],
   [ENABLE_VIS=${enableval}],[ENABLE_VIS=])
 AC_ARG_ENABLE([ocaf],
-  [AC_HELP_STRING([--disable-ocaf],[Don't build application framework])],
+  [AS_HELP_STRING([--disable-ocaf],[Don't build application framework])],
   [ENABLE_OCAF=${enableval}],[ENABLE_OCAF=])
 AC_ARG_ENABLE([de],
-  [AC_HELP_STRING([--disable-de],[Don't build data exchange])],
+  [AS_HELP_STRING([--disable-de],[Don't build data exchange])],
   [ENABLE_DE=${enableval}],[ENABLE_DE=])
 AC_ARG_ENABLE([draw],
-  [AC_HELP_STRING([--disable-draw],[Don't build test harness])],
+  [AS_HELP_STRING([--disable-draw],[Don't build test harness])],
   [ENABLE_DRAW=${enableval}],[ENABLE_DRAW=])
 
 # Process options from above.  The behavior we want is:
@@ -874,7 +858,7 @@ echo "Test Harness (DRAW)         $ENABLE_DRAW $DISABLE_DRAW_REASON"
 echo
 
 
-AC_OUTPUT([Makefile adm/make/Makefile \
+AC_CONFIG_FILES([Makefile adm/make/Makefile \
 adm/make/TKernel/Makefile \
 adm/make/TKMath/Makefile \
 adm/make/TKAdvTools/Makefile \
@@ -942,3 +926,4 @@ adm/make/TKXDEDRAW/Makefile \
 adm/make/TKTObjDRAW/Makefile \
 adm/make/DRAWEXE/Makefile \
 ])
+AC_OUTPUT
