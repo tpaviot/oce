@@ -713,6 +713,18 @@ if test "x" = "x$ENABLE_VIS"; then
     AC_MSG_WARN( [Disabling visualization component: X not found] )
   elif test "xyes" != "x$HAVE_GL"; then
     AC_MSG_WARN( [Disabling OpenGL portion of visualization component: GL not found] )
+    DISABLE_VIS_REASON="(GL not found)"
+    ENABLE_VIS=no
+  elif test "xyes" != "x$HAVE_FREETYPE"; then
+    AC_MSG_WARN( [Disabling Freetype portion of visualization component: Freetype not found] )
+    DISABLE_VIS_REASON="(Freetype not found)"
+    ENABLE_VIS=no
+  elif test "xyes" != "x$HAVE_FTGL"; then
+    AC_MSG_WARN( [Disabling FTGL portion of visualization component: FTGL not found] )
+    DISABLE_VIS_REASON="(FTGL not found)"
+    ENABLE_VIS=no
+  else
+    ENABLE_VIS=yes
   fi
 elif test "xno" != "x$ENABLE_VIS"; then
   if test "xno" = "x$ENABLE_MODEL"; then
