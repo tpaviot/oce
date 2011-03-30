@@ -18,12 +18,20 @@ flags="$flags --with-xmu-library=/usr/X11R6/lib"
 flags="$flags --with-tcl=${TCLHOME}/lib"
 flags="$flags --with-tk=${TCLHOME}/lib "
 flags="$flags --with-freetype=/usr/freetype-2.3.7"
-flags="$flags --with-ftgl=/usr/ftgl-2.1.2"
+flags="$flags --with-ftgl=/usr/ftgl-2.1.3-rc5"
 flags="$flags --disable-debug --enable-production" 
 
 where:
 --enable-debug=yes/no - building in debug mode (yes: set -g key of compiler). 
 --enable-production=yes/no - building in optimize mode. (yes: set -O key of compiler).
+
+FTGL note:
+==========
+OCE supports either ftgl-2.1.2 or the latest ftgl-2.1.3-rc5. If you wish to
+build OCE over ftgl-2.1.2, use the compilation flag '--with-ftgl212'.
+For instance,
+flags="$flags --with-ftg212=/usr/ftgl-2.1.2"
+The '--with-ftgl' flag assumes you use a newer version.
 
 Additional flags
 flags="$flags --with-tbb-include =/usr/tbb/include" - for compilation with tbb
