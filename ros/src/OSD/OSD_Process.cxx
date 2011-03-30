@@ -202,7 +202,7 @@ Standard_Integer OSD_Process::Error()const{
 #include <Quantity_Date.hxx>
 
 #include <OSD_WNT_1.hxx>
-#include <LMCONS.H> /// pour UNLEN  ( see MSDN about GetUserName() )
+#include <lmcons.h> /// pour UNLEN  ( see MSDN about GetUserName() )
 
 #ifdef _MSC_VER
 #pragma warning( disable : 4700 )

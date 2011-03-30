@@ -47,6 +47,10 @@ static Standard_Boolean fSETranslator =
 #ifndef _MSC_VER
 # define  __leave goto leave
 #endif
+#if defined(__CYGWIN32__) || defined(__MINGW32__)
+# define  __try
+# define  __finally
+#endif
 
 #ifdef __BORLANDC__
 # include <malloc.h>
@@ -684,8 +688,10 @@ static LONG __fastcall _osd_raise ( DWORD dwCode, LPTSTR msg )
   case EXCEPTION_FLT_INVALID_OPERATION:
   case EXCEPTION_FLT_DENORMAL_OPERAND:
   case EXCEPTION_FLT_INEXACT_RESULT:
+#if defined(_MSC_VER) || defined(__BORLANDC__)
   case STATUS_FLOAT_MULTIPLE_TRAPS:
   case STATUS_FLOAT_MULTIPLE_FAULTS:
+#endif
        Standard_NumericError :: Raise ( msg );
   default:
     break;

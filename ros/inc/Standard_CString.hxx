@@ -14,10 +14,10 @@
 # endif
 
 # ifdef WNT
-#  ifdef __BORLANDC__
-#   define strcasecmp stricmp
-#  else
-#   define strcasecmp _stricmp
+#  ifdef _MSC_VER
+#    define strcasecmp _stricmp
+#  elif defined(__BORLANDC__)
+#    define strcasecmp stricmp
 #  endif
 # endif
 

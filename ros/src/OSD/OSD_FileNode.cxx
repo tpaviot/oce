@@ -449,6 +449,10 @@ Standard_Integer OSD_FileNode::Error()const{
 #ifndef _MSC_VER
 # define  __leave goto leave
 #endif
+#if defined(__CYGWIN32__) || defined(__MINGW32__)
+# define  __try
+# define  __finally
+#endif
 
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
@@ -976,11 +980,6 @@ void _osd_wnt_set_error ( OSD_Error& err, OSD_WhoAmI who, ... ) {
 
 }  // end _set_error
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 static BOOL __fastcall _get_file_time (
                         Standard_CString fName, LPSYSTEMTIME lpSysTime, BOOL fAccess
@@ -1025,11 +1024,6 @@ static BOOL __fastcall _get_file_time (
 
 }  // end _get_file_time
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static void __fastcall _test_raise ( TCollection_AsciiString fName, Standard_CString str ) {
 

@@ -9,6 +9,12 @@
 #include <math.h>
 #include <limits>
 
+#ifdef __MINGW32__
+# include <stdlib.h>
+# include <limits.h>
+# define min(a,b) ((a)<(b)?(a):(b))
+#endif
+
 #define ROUNDL( d ) ( LONG )(  ( d ) + 0.5  )
 #define Y( y )      (  mySize.cy - ( y )  )
 
@@ -37,6 +43,8 @@ static void WINAPI _XFORMApplyf  ( PFPOINT, int, PXFORM    );
 static void WINAPI _RenderPath ( HDC, LPPOINT, PBYTE, int );
 static int  WINAPI _TextPath   ( HDC, int, int, void*, LPPOINT, PBYTE, int, PSIZE, BOOL );
 
+VOID CALLBACK ___auxDDAF ( int x, int y, LPARAM lpParam );
+ 
 EHDC :: EHDC ( HDC hdc, PSIZE szClient ) {
 
  _Init ();

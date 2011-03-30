@@ -1207,7 +1207,7 @@ void WNT_Window :: doCreate (
 
  if ( wProc != &WNT_WndProc ) {
 
-  myWndProc = wProc;
+  myWndProc = (void*)wProc;
 
   SetBackground ( aBackColor );
 

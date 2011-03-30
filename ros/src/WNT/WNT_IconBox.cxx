@@ -30,7 +30,7 @@ WNT_IconBox :: WNT_IconBox (
                ) : WNT_Window (
                     aDevice, aName,
                     new WNT_WClass (
-                         "WNT_IconBoxClass", WNT_IconBoxWndProc,
+                         "WNT_IconBoxClass", (void*)WNT_IconBoxWndProc,
                          CS_HREDRAW | CS_VREDRAW
                         ),
                     aStyle | WS_VSCROLL,

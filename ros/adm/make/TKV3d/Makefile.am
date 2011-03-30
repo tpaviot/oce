@@ -51,7 +51,7 @@ libTKV3d_la_LIBADD = \
 ../TKBRep/libTKBRep.la \
 ../TKG2d/libTKG2d.la \
 ../TKV2d/libTKV2d.la \
-$(STLPort_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) 
+$(STLPort_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) $(CSF_comdlg32_LIB)
 
 libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/AIS/AIS_DataMapIteratorOfDataMapOfILC_0.cxx \

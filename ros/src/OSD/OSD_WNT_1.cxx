@@ -6,6 +6,11 @@
 #ifndef _MSC_VER
 # define  __leave goto leave
 #endif
+#if defined(__CYGWIN32__) || defined(__MINGW32__)
+# define  __try
+# define  __finally
+#endif
+
 #ifndef max
 # define max(a, b)  (((a) > (b)) ? (a) : (b)) 
 #endif
@@ -276,12 +281,6 @@ short MapY (LONG aY) {
   return (short)(aY*8) / HIWORD (baseUnits);
 }
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return res
-#endif
-
 LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
   LONG res = 0;
   SIZE size;
@@ -315,11 +314,6 @@ LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
   return res;
 }
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 /////////////////ON_COMMAND/////////////////////////////////////
 void MsgBox_OnCommand (HWND hwnd, _TINT id, HWND hCtl, UINT codeNotify) {
@@ -355,11 +349,6 @@ BOOL CALLBACK MsgBoxProc (HWND hdlg,
 
 /////////////////////////////////////////////////////////////////
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return -1
-#endif
 
 _TINT MsgBox ( HWND hParent,
                LPTSTR  lpText,
@@ -553,11 +542,5 @@ _TINT MsgBox ( HWND hParent,
   }
 
 }
-
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 #endif

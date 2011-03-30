@@ -148,6 +148,9 @@
 //        -- Category: Local structures 
 //        --------------------------------
 
+#ifdef __MINGW32__
+	#define DrawTextA DrawText
+#endif
 
 #define MFT_COMMANDBUFFERSIZE 512
 typedef struct _MFT_CommandBuffer {
