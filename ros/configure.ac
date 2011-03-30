@@ -298,7 +298,7 @@ if test "xyes" != "x$no_x"; then
   AC_CHECK_HEADER( [X11/Xmu/Xmu.h], [], [HAVE_X11=no] )
   AC_CHECK_LIB( [Xmu], [XmuLookupStandardColormap], [CSF_XmuLibs_LIB="$CSF_XmuLibs_LIB -lXmu"], [HAVE_X11=no], [-lXt -lX11] )
 fi
-AM_CONDITIONAL( HAVE_X11, [test "xyes" = "x$HAVE_X11"] )
+AM_CONDITIONAL( [HAVE_X11], [test "xyes" = "x$HAVE_X11"] )
 
 #---------------------------------------------------------------------
 #
@@ -703,28 +703,26 @@ AC_ARG_ENABLE([draw],
 #                  was disabled.
 
 # Visualization Component: requires model component, X11, and optionally OpenGL
+ENABLE_VIS_X11=no
 if test "x" = "x$ENABLE_VIS"; then
   ENABLE_VIS=yes
+  ENABLE_VIS_X11=yes
   if test "xno" = "x$ENABLE_MODEL"; then
     AC_MSG_NOTICE([Disabling visualization component: not building model component])
     DISABLE_VIS_REASON="(Model Component Disabled)"
     ENABLE_VIS=no
   elif test "xyes" != "x$HAVE_X11"; then
-    AC_MSG_WARN( [Disabling visualization component: X not found] )
+    AC_MSG_WARN( [Disabling X11 portion of visualization component: X not found] )
+    ENABLE_VIS_X11=no
   elif test "xyes" != "x$HAVE_GL"; then
-    AC_MSG_WARN( [Disabling OpenGL portion of visualization component: GL not found] )
-    DISABLE_VIS_REASON="(GL not found)"
-    ENABLE_VIS=no
+    AC_MSG_WARN( [Disabling X11 portion of visualization component: GL not found] )
+    ENABLE_VIS_X11=no
   elif test "xyes" != "x$HAVE_FREETYPE"; then
-    AC_MSG_WARN( [Disabling Freetype portion of visualization component: Freetype not found] )
-    DISABLE_VIS_REASON="(Freetype not found)"
-    ENABLE_VIS=no
+    AC_MSG_WARN( [Disabling X11 portion of visualization component: Freetype not found] )
+    ENABLE_VIS_X11=no
   elif test "xyes" != "x$HAVE_FTGL"; then
-    AC_MSG_WARN( [Disabling FTGL portion of visualization component: FTGL not found] )
-    DISABLE_VIS_REASON="(FTGL not found)"
-    ENABLE_VIS=no
-  else
-    ENABLE_VIS=yes
+    AC_MSG_WARN( [Disabling X11 portion of visualization component: FTGL not found] )
+    ENABLE_VIS_X11=no
   fi
 elif test "xno" != "x$ENABLE_VIS"; then
   if test "xno" = "x$ENABLE_MODEL"; then
@@ -798,6 +796,7 @@ fi
 # Convert to automake conditional values
 AM_CONDITIONAL([ENABLE_MODEL], [test "xno" != "x$ENABLE_MODEL"])
 AM_CONDITIONAL([ENABLE_VIS],   [test "xno" != "x$ENABLE_VIS"])
+AM_CONDITIONAL([ENABLE_VIS_X11], [test "xno" != "x$ENABLE_VIS_X11"])
 AM_CONDITIONAL([ENABLE_OCAF],  [test "xno" != "x$ENABLE_OCAF"])
 AM_CONDITIONAL([ENABLE_DE],    [test "xno" != "x$ENABLE_DE"])
 AM_CONDITIONAL([ENABLE_DRAW],  [test "xno" != "x$ENABLE_DRAW"])
