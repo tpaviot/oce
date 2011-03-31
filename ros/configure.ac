@@ -293,8 +293,14 @@ if test "xyes" != "x$no_x"; then
     CSF_XmuLibs_LIB="$X_LIBS"
     LDFLAGS="$LDFLAGS -L$x_libraries"
   fi
-  AC_CHECK_LIB( [X11], [XCreateWindow], [X_LIBS="${X_LIBS} -lXt -lX11"], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
   AC_CHECK_HEADER( [X11/Xmu/Xmu.h], [], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
+  AC_CHECK_LIB( [X11], [XCreateWindow], [X_LIBS="${X_LIBS} -lXt -lX11"], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
   AC_CHECK_LIB( [Xmu], [XmuLookupStandardColormap], [CSF_XmuLibs_LIB="$CSF_XmuLibs_LIB -lXmu"], [HAVE_X11=no], [-lXt -lX11] )
 fi
 AM_CONDITIONAL( [HAVE_X11], [test "xyes" = "x$HAVE_X11"] )
@@ -307,26 +313,22 @@ AM_CONDITIONAL( [HAVE_X11], [test "xyes" = "x$HAVE_X11"] )
 #---------------------------------------------------------------------
 CSF_OpenGlLibs_INCLUDES="$X_INCLUDE"
 CSF_OpenGlLibs_LIB="$X_LIBS"
-if test "xno" = "x$HAVE_X11"; then
-  HAVE_GL=no
-else
+if test "xyes" = "x$HAVE_X11"; then
   AC_LANG([C])
-  HAVE_GL=yes
-  HAVE_GL_INC=yes
-  AC_CHECK_HEADER( [GL/gl.h], [AC_CHECK_HEADER([GL/glu.h],[],[HAVE_GL_INC=no])], [HAVE_GL_INC=no] )
-  if test "x$HAVE_GL_INC" = "xyes"; then
-    AC_CHECK_TYPE([_GLUfuncptr], [], [CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"], [#include <GL/glu.h>])
-  else
-    HAVE_GL=no
+  AC_CHECK_HEADER( [GL/gl.h], [AC_CHECK_HEADER([GL/glu.h],[HAVE_GL=yes],[HAVE_GL=no])], [HAVE_GL=no] )
+  if test "xno" = "x$HAVE_GL"; then
     AC_MSG_NOTICE([Specify CPPFLAGS=-I<opengl_inc_dir> to enable OpenGL support])
   fi
+fi
+if test "xyes" = "x$HAVE_GL"; then
+  AC_CHECK_TYPE([_GLUfuncptr], [], [CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"], [#include <GL/glu.h>])
+fi
+if test "xyes" = "x$HAVE_GL"; then
   CPPFLAGS="$CSF_OpenGlLibs_INCLUDES $CPPFLAGS"
-  HAVE_GL_LIB=yes
   AC_CHECK_LIB( [GL], [glClear],
-    [AC_CHECK_LIB([GLU],[gluSphere],[CSF_OpenGlLibs_LIB="$CSF_OpenGlLibs_LIB -lGLU -lGL"],[HAVE_GL_LIB=no],[-lGL])],
-    [HAVE_GL_LIB=no] )
-  if test "xno" = "x$HAVE_GL_LIB"; then
-    HAVE_GL=no
+    [AC_CHECK_LIB([GLU],[gluSphere],[CSF_OpenGlLibs_LIB="$CSF_OpenGlLibs_LIB -lGLU -lGL"],[HAVE_GL=no],[-lGL])],
+    [HAVE_GL=no] )
+  if test "xno" = "x$HAVE_GL"; then
     AC_MSG_NOTICE([Specify LDFLAGS=-L<opengl_lib_dir> to enable OpenGL support])
   fi
 fi
@@ -343,8 +345,7 @@ AC_ARG_WITH([freetype],
 
 CSF_FREETYPE_INCLUDES=""
 
-HAVE_FREETYPE=no
-if test "xyes" = "x${HAVE_GL}"; then
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$freetype"; then
   AC_LANG([C++])
   CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
   AC_CHECK_HEADER( [ft2build.h], [], [AC_MSG_FAILURE([could not find ft2build.h])] )
@@ -371,11 +372,10 @@ AC_ARG_WITH([ftgl],
   [ftgl="${withval}"
    HAVE_FTGL_NEWER212=yes],[ftgl=])
 
-CSF_FTGL_INCLUDES=""
-CSF_FTGL_LIB=""
+CSF_FTGL_INCLUDES=
+CSF_FTGL_LIB=
 
-HAVE_FTGL=no
-if test "xyes" = "x${HAVE_FREETYPE}"; then
+if test "xyes" = "x$HAVE_FREETYPE"; then
   AC_LANG([C++])
   HAVE_FTGL=yes
   CPPFLAGS_sv=$CPPFLAGS
@@ -426,36 +426,32 @@ if test "xno" = "x$gl2ps"; then
   HAVE_GL2PS=no
   ENABLE_GL2PS=no
   DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
-else
-  if test "xyes" = "x$gl2ps"; then
-    # user specified --with-gl2ps, without =DIR
-    AC_MSG_NOTICE([--with-gl2ps=DIR: DIR not specified, assuming /usr])
-    gl2ps="/usr"
-  fi
-  CSF_GL2PS_INCLUDES=""
-  CSF_GL2PS_LIB=""
+elif test "xyes" = "x$gl2ps"; then
+  # user specified --with-gl2ps, without =DIR
+  AC_MSG_NOTICE([--with-gl2ps=DIR: DIR not specified, assuming /usr])
+  gl2ps="/usr"
+fi
 
-  if test "xno" = "x$HAVE_GL"; then
-    HAVE_GL2PS=no
-  else
-    AC_LANG([C++])
-    ENABLE_GL2PS=yes
-    HAVE_GL2PS=yes
-    HAVE_GL2PS_INC=yes
-    CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
-    AC_CHECK_HEADER( [gl2ps.h], [], [HAVE_GL2PS_INC=no] )
-    if test "x$HAVE_GL2PS_INC" = "xyes"; then
-      CSF_GL2PS_INCLUDES="-I$gl2ps/include -DHAVE_GL2PS"
-      HAVE_GL2PS_LIB=yes
-      AC_MSG_CHECKING([for gl2psEndPage in -lgl2ps])
-      LDFLAGS="-L$gl2ps/lib $LDFLAGS"
-      LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-      AC_CHECK_LIB( [gl2ps], [gl2psEndPage], [CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"], [HAVE_GL2PS_LIB=no] )
-    fi
-    if test "xno" = "x$HAVE_GL2PS_LIB"; then
-      HAVE_GL2PS=no
-    fi
+CSF_GL2PS_INCLUDES=
+CSF_GL2PS_LIB=
+
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$gl2ps"; then
+  AC_LANG([C++])
+  ENABLE_GL2PS=yes
+  CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
+  AC_CHECK_HEADER( [gl2ps.h], [HAVE_GL2PS=yes], [HAVE_GL2PS=no] )
+  if test "xyes" = "x$HAVE_GL2PS"; then
+    CSF_GL2PS_INCLUDES="-I$gl2ps/include"
+    LDFLAGS="-L$gl2ps/lib $LDFLAGS"
+    LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+    AC_CHECK_LIB( [gl2ps], [gl2psEndPage], [CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"], [HAVE_GL2PS=no] )
   fi
+fi
+if test "xyes" = "x$HAVE_GL2PS"; then
+  AC_DEFINE([HAVE_GL2PS],,[define when building with gl2ps])
+else
+  CSF_GL2PS_INCLUDES=
+  CSF_GL2PS_LIB=
 fi
 
 #---------------------------------------------------------------------
@@ -473,33 +469,33 @@ if test "xno" = "x$freeimage"; then
   HAVE_FREEIMAGE=no
   ENABLE_FREEIMAGE=no
   DISABLE_FREEIMAGE_REASON="(--with-freeimage=DIR option was not defined)"
-else
-  if test "xyes" = "x$freeimage"; then
-    # user specified --with-freeimage, without =DIR
-    AC_MSG_NOTICE([--with-freeimage=DIR: DIR not specified, assuming /usr])
-    freeimage="/usr"
-  fi
-  ENABLE_FREEIMAGE=yes	
-  CSF_FreeImagePlus_INCLUDES=""
-  CSF_FreeImagePlus_LIB=""
+elif test "xyes" = "x$freeimage"; then
+  # user specified --with-freeimage, without =DIR
+  AC_MSG_NOTICE([--with-freeimage=DIR: DIR not specified, assuming /usr])
+  freeimage="/usr"
+fi
+
+CSF_FreeImagePlus_INCLUDES=
+CSF_FreeImagePlus_LIB=
+
+if test "xno" != "x$freeimage"; then
+  ENABLE_FREEIMAGE=yes
 
   AC_LANG([C++])
-  HAVE_FREEIMAGE=yes
-  HAVE_FREEIMAGE_INC=yes
   CPPFLAGS="-I$freeimage/include $CPPFLAGS";
-  AC_CHECK_HEADER( [FreeImage.h], [], [HAVE_FREEIMAGE_INC=no] )
-  if test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
-    CSF_FreeImagePlus_INCLUDES="-I$freeimage/include -DHAVE_FREEIMAGE"
-    HAVE_FREEIMAGE_LIB=yes
-    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimageplus])
+  AC_CHECK_HEADER( [FreeImage.h], [HAVE_FREEIMAGE=yes], [HAVE_FREEIMAGE=no] )
+  if test "xyes" = "x$HAVE_FREEIMAGE"; then
+    CSF_FreeImagePlus_INCLUDES="-I$freeimage/include"
     LDFLAGS="-L$freeimage/lib $LDFLAGS"
     LIBS="$CSF_FreeImagePlus_LIB $LIBS"
-    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE_LIB=no] )
-
-  if test "xno" = "x$HAVE_FREEIMAGE_LIB"; then
-    HAVE_FREEIMAGE=no
+    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE=no] )
   fi
 fi
+if test "xyes" = "x$HAVE_FREEIMAGE"; then
+  AC_DEFINE([HAVE_FREEIMAGE],,[define when building with freeimage])
+else
+  CSF_FreeImagePlus_INCLUDES=
+  CSF_FreeImagePlus_LIB=
 fi
 AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
 
@@ -513,27 +509,28 @@ AC_ARG_WITH([tbb-include],
   [AS_HELP_STRING([--with-tbb-include=DIR],[Location of Intel Threading Building Blocks includes])],
   [tbb_inc="${withval}"],[tbb_inc=])
 
-if test "xno" = "xno$tbb_inc"; then
-  # user specified --without-tbb-lib
+if test "xno" = "x$tbb_inc"; then
+  # user specified --without-tbb-include
   HAVE_TBB=no
   ENABLE_TBB_INC=no
   DISABLE_TBB_REASON_INC="(--with-tbb-include=DIR option was not defined)"
-else
+elif test "xyes" = "x$tbb_inc"; then
+  # user specified --with-tbb-include, without =DIR
+  AC_MSG_NOTICE([--with-tbb-include=DIR: DIR not specified])
+fi
 
 CSF_TBB_INCLUDES=""
-ENABLE_TBB_INC=yes
-AC_LANG([C++])
-HAVE_TBB_INC=yes
-if test "x$tbb_inc" != "x"; then
-  CPPFLAGS="-I$tbb_inc $CPPFLAGS";
-else
-  AC_MSG_NOTICE([--with-tbb-include key is not defined])
-fi
-AC_CHECK_HEADER( [tbb/tbb.h], [], [HAVE_TBB_INC=no] )
-if test "x$HAVE_TBB_INC" != "xyes"; then
-  AC_MSG_NOTICE([Specify --with-tbb-include to enable TBB support])
-fi
 
+if test "xno" != "x$tbb_inc"; then
+  ENABLE_TBB_INC=yes
+  AC_LANG([C++])
+  if test "xyes" != "x$tbb_inc"; then
+    CPPFLAGS="-I$tbb_inc $CPPFLAGS";
+  fi
+  AC_CHECK_HEADER( [tbb/tbb.h], [HAVE_TBB=yes], [HAVE_TBB=no] )
+  if test "x$HAVE_TBB" != "xyes"; then
+    AC_MSG_NOTICE([Specify --with-tbb-include to enable TBB support])
+  fi
 fi
 
 #---------------------------------------------------------------------
@@ -551,31 +548,37 @@ if test "xno" = "xno$tbb_lib"; then
   HAVE_TBB=no
   ENABLE_TBB_LIB=no
   DISABLE_TBB_REASON_LIB="(--with-tbb-library=DIR option was not defined)"
-else
+elif test "xyes" = "x$tbb_lib"; then
+  # user specified --with-tbb-library, without =DIR
+  AC_MSG_NOTICE([--with-tbb-library=DIR: DIR not specified])
+fi
+
 ENABLE_TBB_LIB=yes
 CSF_TBB_LIB=""
-HAVE_TBB=yes
 
-if test "x$HAVE_TBB_INC" = "xyes"; then
-  if test "x$tbb_lib" != "x"; then
+if test "xno" != "x$HAVE_TBB"; then
+  if test "xyes" != "x$tbb_lib"; then
     LDFLAGS="-L$tbb_lib $LDFLAGS"
   fi
   AC_CHECK_LIB([tbb], [TBB_runtime_interface_version], [], [HAVE_TBB=no])
-else
-  HAVE_TBB=no
+  if test "xno" = "x$HAVE_TBB"; then
+    AC_MSG_NOTICE([Specify --with-tbb-library to enable TBB support])
+  fi
 fi
 
-if test "x$HAVE_TBB" = "xyes"; then
-  if test "x$tbb_inc" != "x"; then
-    CSF_TBB_INCLUDES="-I$tbb_inc -DHAVE_TBB"
+if test "xno" != "x$HAVE_TBB"; then
+  if test "x$tbb_inc" != "xyes"; then
+    CSF_TBB_INCLUDES="-I$tbb_inc"
   fi
-  if test "x$tbb_lib" != "x"; then
+  if test "x$tbb_lib" != "xyes"; then
     CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
   fi
-else
-  AC_MSG_NOTICE([Specify --with-tbb-library to enable TBB support])
 fi
-
+if test "xyes" = "x$HAVE_TBB"; then
+  AC_DEFINE([HAVE_TBB],,[define when building with TBB])
+else
+  CSF_TBB_INCLUDES=
+  CSF_TBB_LIB=
 fi
 
 
@@ -589,33 +592,31 @@ AC_ARG_WITH([qt],
   [AS_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
   [qt="${withval}"],[qt=])
 
-CSF_QT_INCLUDES=""
-CSF_QT_LIB=""
+CSF_QT_INCLUDES=
+CSF_QT_LIB=
 
-if test "xno" = "x$HAVE_GL"; then
-  HAVE_QT=no
-else
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$qt"; then
   AC_LANG([C++])
-  HAVE_QT=yes
-  HAVE_QT_INC=yes
-  if test "x$qt" != "x"; then
+  if test "x$qt" != "xyes"; then
     CPPFLAGS="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include $CPPFLAGS";
   else
     AC_MSG_NOTICE([--with-qt key is not defined])
   fi
-  AC_CHECK_HEADER( [Qt/qpixmap.h], [], [HAVE_QT_INC=no] )
-  if test "x$HAVE_QT_INC" = "xyes"; then
-    CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
-    HAVE_QT_LIB=yes
-    AC_MSG_CHECKING([for connect in -lQtGui])
-    LDFLAGS="-L$qt/lib $LDFLAGS"
-    LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-    AC_CHECK_LIB( [QtGui], [connect], [CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"], [HAVE_QT_LIB=no] )
-  fi
-  if test "xno" = "x$HAVE_QT_LIB"; then
-    HAVE_QT=no
+  AC_CHECK_HEADER( [Qt/qpixmap.h], [HAVE_QT=yes], [HAVE_QT=no] )
+fi
+if test "xno" != "x$HAVE_QT"; then
+  CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
+  AC_MSG_CHECKING([for connect in -lQtGui])
+  LDFLAGS="-L$qt/lib $LDFLAGS"
+  LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+  AC_CHECK_LIB( [QtGui], [connect], [CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"], [HAVE_QT=no] )
+  if test "xno" = "x$HAVE_QT"; then
     AC_MSG_NOTICE([Specify --with-qt to enable QT support])
   fi
+fi
+if test "xno" = "x$HAVE_QT"; then
+  CSF_QT_INCLUDES=
+  CSF_QT_LIB=
 fi
 
 AC_LANG([C])
