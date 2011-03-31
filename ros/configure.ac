@@ -1,8 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT([OpenCASCADE], [6.5.0oce1], [oce-dev@googlegroups.com])
+AC_PREREQ([2.60])
 AC_CONFIG_AUX_DIR([make])
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([foreign 1.9])
 AC_CANONICAL_HOST
 dnl AM_CONFIG_SRCDIR(src/Standard/Standard.cxx)
 
