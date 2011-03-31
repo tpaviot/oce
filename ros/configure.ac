@@ -481,8 +481,8 @@ else
     freeimage="/usr"
   fi
 	ENABLE_FREEIMAGE=yes	
-	CSF_FREEIMAGE_INCLUDES=""
-	CSF_FREEIMAGE_LIB=""
+	CSF_FreeImagePlus_INCLUDES=""
+	CSF_FreeImagePlus_LIB=""
 
   AC_LANG([C++])
   HAVE_FREEIMAGE=yes
@@ -490,18 +490,19 @@ else
   CPPFLAGS="-I$freeimage/include $CPPFLAGS";
   AC_CHECK_HEADER( [FreeImage.h], [], [HAVE_FREEIMAGE_INC=no] )
   if test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
-    CSF_FREEIMAGE_INCLUDES="-I$freeimage/include"
+    CSF_FreeImagePlus_INCLUDES="-I$freeimage/include -DHAVE_FREEIMAGE"
     HAVE_FREEIMAGE_LIB=yes
-    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimage])
+    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimageplus])
     LDFLAGS="-L$freeimage/lib $LDFLAGS"
-    LIBS="$CSF_FREEIMAGE_LIB $LIBS"
-    AC_CHECK_LIB( [freeimage], [FreeImage_OpenMemory], [CSF_FREEIMAGE_LIB="-L$freeimage/lib -lfreeimage"], [HAVE_FREEIMAGE_LIB=no] )
+    LIBS="$CSF_FreeImagePlus_LIB $LIBS"
+    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE_LIB=no] )
 
   if test "xno" = "x$HAVE_FREEIMAGE_LIB"; then
     HAVE_FREEIMAGE=no
   fi
 fi
 fi
+AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
 
 #---------------------------------------------------------------------
 #
@@ -831,8 +832,8 @@ AC_SUBST([CSF_FTGL_INCLUDES])
 AC_SUBST([CSF_FTGL_LIB])
 AC_SUBST([CSF_GL2PS_INCLUDES])
 AC_SUBST([CSF_GL2PS_LIB])
-AC_SUBST([CSF_FREEIMAGE_INCLUDES])
-AC_SUBST([CSF_FREEIMAGE_LIB])
+AC_SUBST([CSF_FreeImagePlus_INCLUDES])
+AC_SUBST([CSF_FreeImagePlus_LIB])
 AC_SUBST([CSF_advapi32_LIB])
 AC_SUBST([CSF_gdi32_LIB])
 AC_SUBST([CSF_user32_LIB])
