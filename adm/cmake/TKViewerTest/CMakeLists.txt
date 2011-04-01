@@ -1,0 +1,38 @@
+SET(TOOLKIT TKViewerTest)
+
+SET(TOOLKIT_MODULES
+	Viewer2dTest
+	ViewerTest
+)
+SET(TOOLKIT_DEPENDS
+	TKernel
+	TKBool
+	TKG2d
+	TKOffset
+	TKG3d
+	TKGeomBase
+	TKTopAlgo
+	TKV2d
+	TKV3d
+	TKDraw
+	TKOpenGl
+	TKService
+	TKMath
+	TKBRep
+	TKMesh
+	TKGeomAlgo
+	TKFillet
+	TKTopTest
+	TKHLR
+	TKVoxel
+	TKNIS
+	TKPrim
+)
+
+SET(TOOLKIT_INCLUDE_DIRECTORIES ${TK_INCLUDE_PATH})
+SET(TOOLKIT_LIBS ${TK_LIBRARY} ${CSF_user32_LIB} ${CSF_gdi32_LIB})
+
+SET(TOOLKIT_IS_PRIVATE TRUE)
+
+INCLUDE(../OccBuildKit.cmake)
+

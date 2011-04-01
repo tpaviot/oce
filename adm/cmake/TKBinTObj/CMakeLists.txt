@@ -1,0 +1,16 @@
+SET(TOOLKIT TKBinTObj)
+
+SET(TOOLKIT_MODULES
+	BinTObjDrivers
+)
+SET(TOOLKIT_DEPENDS
+	TKernel
+	TKTObj
+	TKMath
+	TKLCAF
+	TKBinL
+	TKCDF
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

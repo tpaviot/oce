@@ -1,0 +1,24 @@
+SET(TOOLKIT TKXCAFSchema)
+
+SET(TOOLKIT_MODULES
+	MXCAFDoc
+	PXCAFDoc
+	XCAFDrivers
+	XCAFSchema
+)
+SET(TOOLKIT_DEPENDS
+	TKMath
+	TKernel
+	TKLCAF
+	TKStdSchema
+	TKPLCAF
+	TKPShape
+	PTKernel
+	TKXCAF
+	TKCDF
+	TKShapeSchema
+	TKStdLSchema
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

@@ -1,0 +1,17 @@
+SET(TOOLKIT TKMeshVS)
+
+SET(TOOLKIT_MODULES
+	MeshVS
+)
+SET(TOOLKIT_DEPENDS
+	TKService
+	TKMath
+	TKernel
+	TKV3d
+	TKV2d
+	TKG2d
+	TKG3d
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

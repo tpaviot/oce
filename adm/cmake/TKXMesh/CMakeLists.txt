@@ -1,0 +1,15 @@
+SET(TOOLKIT TKXMesh)
+
+SET(TOOLKIT_MODULES
+	XBRepMesh
+)
+SET(TOOLKIT_DEPENDS
+	TKMesh
+	TKG2d
+	TKernel
+	TKMath
+	TKBRep
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

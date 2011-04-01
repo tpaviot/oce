@@ -1,0 +1,50 @@
+SET(TOOLKIT TKernel)
+
+SET(TOOLKIT_MODULES
+	FSD
+	MMgt
+	OSD
+	Plugin
+	Quantity
+	Resource
+	SortTools
+	Standard
+	StdFail
+	Storage
+	TColStd
+	TCollection
+	TShort
+	Units
+	UnitsAPI
+	IncludeLibrary
+	Dico
+	NCollection
+	Message
+)
+IF(CMAKE_THREAD_LIBS_INIT)
+	SET(TOOLKIT_LIBS ${CMAKE_THREAD_LIBS_INIT})
+ENDIF(CMAKE_THREAD_LIBS_INIT)
+SET(TOOLKIT_LIBS ${TOOLKIT_LIBS} ${LM})
+IF(WIN32)
+	SET(TOOLKIT_LIBS ${TOOLKIT_LIBS} ${CSF_SOCKETLibs_LIB} ${CSF_advapi32_LIB} ${CSF_gdi32_LIB} ${CSF_user32_LIB} ${CSF_kernel32_LIB})
+ELSE(WIN32)
+	#  An implementation for Mac OS X has been added in src/OSD/gettime_osx.h
+	IF(NOT APPLE)
+		INCLUDE( CheckFunctionExists )
+		CHECK_FUNCTION_EXISTS( clock_gettime CLOCK_GETTIME_IN_LIBC )
+		IF(NOT CLOCK_GETTIME_IN_LIBC)
+			INCLUDE( CheckLibraryExists )
+			CHECK_LIBRARY_EXISTS(rt clock_gettime "" CLOCK_GETTIME_IN_LIBRT)
+			IF(NOT CLOCK_GETTIME_IN_LIBRT)
+				MESSAGE(FATAL_ERROR "Could not find clock_gettime.")
+			ENDIF(NOT CLOCK_GETTIME_IN_LIBRT)
+			SET(TOOLKIT_LIBS ${TOOLKIT_LIBS} rt)
+		ENDIF(NOT CLOCK_GETTIME_IN_LIBC)
+	ENDIF(NOT APPLE)
+
+	SET(TOOLKIT_INCLUDE_DIRECTORIES ${TOOLKIT_INCLUDE_DIRECTORIES} ${X11_X11_INCLUDE_PATH})
+	SET(TOOLKIT_LIBS ${TOOLKIT_LIBS} ${X11_X11_LIB})
+ENDIF(WIN32)
+
+INCLUDE(../OccBuildKit.cmake)
+

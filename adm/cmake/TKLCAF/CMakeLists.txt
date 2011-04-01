@@ -1,0 +1,16 @@
+SET(TOOLKIT TKLCAF)
+
+SET(TOOLKIT_MODULES
+	TDF
+	TDataStd
+	TFunction
+	TDocStd
+	AppStdL
+)
+SET(TOOLKIT_DEPENDS
+	TKCDF
+	TKernel
+)
+
+INCLUDE(../OccBuildKit.cmake)
+
