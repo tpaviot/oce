@@ -236,7 +236,7 @@ void OSD_FontMgr::InitFontDataBase() {
 #ifndef WNT
   StringList dirs;
   Handle(TCollection_HAsciiString) str = new TCollection_HAsciiString;
-  Display * disp = XOpenDisplay("localhost:0.0");
+  Display * disp = XOpenDisplay(NULL);
 
   if ( !disp ) 
   {
