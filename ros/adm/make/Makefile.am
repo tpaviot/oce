@@ -21,7 +21,7 @@ endif
 
 Visualization_PKGS = TKService TKV2d TKV3d
 
-if HAVE_X11
+if ENABLE_VIS_X11
 Visualization_PKGS += TKOpenGl TKMeshVS TKNIS TKVoxel
 endif
 
