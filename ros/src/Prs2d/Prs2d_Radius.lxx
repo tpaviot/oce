@@ -1,2 +1,0 @@
-inline void Prs2d_Radius::CalcTxtPos(const Standard_Boolean theFromAbs) {
-}

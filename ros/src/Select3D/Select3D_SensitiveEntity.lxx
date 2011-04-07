@@ -1,5 +1,0 @@
-
-
-inline Standard_Boolean Select3D_SensitiveEntity::NeedsConversion() const
-{return Standard_True;}
-

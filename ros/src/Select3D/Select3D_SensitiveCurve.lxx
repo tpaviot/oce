@@ -1,3 +1,0 @@
-
-inline Standard_Integer Select3D_SensitiveCurve::GetLastDetected() const
-{return mylastseg;}
