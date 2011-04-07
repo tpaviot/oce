@@ -125,6 +125,7 @@
           <property category="win32.*.win32b.bcc32" name="option.D.arg.5" value="STRICT"/>
           <property category="win32.*.win32b.bcc32" name="option.D.arg.6" value="HAVE_IOS"/>
           <property category="win32.*.win32b.bcc32" name="option.D.arg.7" value="HAVE_GL2PS"/>
+          <property category="win32.*.win32b.bcc32" name="option.D.arg.8" value="HAVE_FTGL_NEWER212"/>
           <property category="win32.*.win32b.bcc32" name="option.D.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.D.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
@@ -139,7 +140,7 @@
           <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="..\..\..\inc"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="..\..\..\..\3rdparty\win32\freetype\include"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="..\..\..\..\3rdparty\win32\gl2ps"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="..\..\..\..\3rdparty\win32\ftgl\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="..\..\..\..\3rdparty\win32\ftgl\src"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
@@ -223,7 +224,8 @@
           <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.4" value="$(BDS)\lib\obj"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.5" value="$(BDS)\lib\psdk"/>
-          <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\..\..\..\3rdparty\win32\ftgl\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.6" value="..\..\..\..\3rdparty\win32\freetype\objs"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.7" value="..\..\..\..\3rdparty\win32\ftgl\lib"/>
           <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
           <property category="win32.*.win32b.ilink32" name="option.Tpd.enabled" value="1"/>
@@ -2684,6 +2686,7 @@
           <Linker Name="LibVersion"></Linker>
         </Linker>
       </IDEOPTIONS>
-    </BCBPROJECT>  <buildevents/>
-  </CPlusPlusBuilder.Personality>
+    </BCBPROJECT>
+		<buildevents/>
+	</CPlusPlusBuilder.Personality>
 </BorlandProject>
