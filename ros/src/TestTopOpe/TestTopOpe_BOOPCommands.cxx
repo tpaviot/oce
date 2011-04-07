@@ -325,7 +325,11 @@ Standard_Integer BOOPCHK(Draw_Interpretor& ,Standard_Integer na,const char** a)
   if (!strcmp(a[0],"tchk")) { 
 #ifdef DEB
 //    Standard_IMPORT extern Standard_Integer TopOpeBRepTool_BOOOPE_CHECK_DEB;
+#ifdef __BORLANDC__
+    extern Standard_Integer TopOpeBRepTool_BOOOPE_CHECK_DEB;
+#else
     Standard_IMPORT Standard_Integer TopOpeBRepTool_BOOOPE_CHECK_DEB;
+#endif
     if ( na >= 2 ) TopOpeBRepTool_BOOOPE_CHECK_DEB = (atoi(a[1])) ? 1 : 0;
 #endif
     return 0;
