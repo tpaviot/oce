@@ -102,11 +102,8 @@ extern PFNGLBLENDEQUATIONEXTPROC glBlendEquationOp;
 static CALL_DEF_LAYER ACLayer;
 
 static GLboolean layerOpen      = GL_FALSE;
-static float     layerHeight    = -1.;
-static float     layerWidth     = -1.;
 static int       layerPoints    = 0;
 static Tchar    *layerFont      = NULL;
-static int       layerType      = -1;
 static int       layerFontFlag  = IsModified;
 static int       layerFontType  = 0;
 static float     layerRed       = -1.;
@@ -395,6 +392,10 @@ call_togl_begin_layer2d
   printf ("call_togl_begin_layer2d %d\n", ptrLayer->listIndex);
 #endif
 
+  //push the stack so that all flags modified during compilation of
+  //the display list do not intervene with other rendering pipes.
+  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  
   //abd
   glEnable(GL_TEXTURE_2D);
   GLboolean stat = glIsEnabled( GL_TEXTURE_2D );
@@ -421,8 +422,12 @@ call_togl_end_layer2d
   /*
   * On ferme la display-list associee au layer.
   */
-  if (layerOpen) 
+  if (layerOpen) {
     glEndList ();
+
+    //pop the attribute stack to its previous state
+    glPopAttrib();
+  }
   layerOpen = GL_FALSE;
 
   ACLayer.ptrLayer = NULL;
@@ -992,22 +997,29 @@ call_togl_set_line_attributes
   printf ("call_togl_set_line_attributes %d\n", ptrLayer->listIndex);
   printf ("\ttype, width %d %f\n", type, width);
 #endif
-  if (layerType != type) {
-    layerType = type;
-    if (layerType == 0) { /* TOL_SOLID */
+
+  //instead of checking the global static flag for type and width (which
+  //can have a wrong value since it could be changed in another pipe)
+  //we query directly the OGL state machine if we must apply type and width.
+  if (type == 0 && glIsEnabled(GL_LINE_STIPPLE)) { /* TOL_SOLID */
       glDisable (GL_LINE_STIPPLE);
     }
     else {
-      if (layerType) {
-        glCallList (linestyleBase+layerType);
+    if (type > 0 && type < 5) {
+      glCallList (linestyleBase+type);
+      if (!glIsEnabled(GL_LINE_STIPPLE))
         glEnable (GL_LINE_STIPPLE);
       }
+    #ifdef PRINT
+    else
+      printf ("linetype out of range\n");
+    #endif
     }
-  }
-  if (layerWidth != width) {
-    layerWidth = width;
-    glLineWidth ((GLfloat) layerWidth);
-  }
+
+  static GLfloat GLwidth;
+  glGetFloatv(GL_LINE_WIDTH, &GLwidth);
+  if (GLwidth != (GLfloat) width)
+    glLineWidth ((GLfloat) width);
 }
 
 /*----------------------------------------------------------------------*/
