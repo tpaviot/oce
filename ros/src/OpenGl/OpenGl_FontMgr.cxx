@@ -2,9 +2,9 @@
 
 #include <Standard_Stream.hxx>
 
-#ifndef HAVE_FTGL_NEWER212
 #include <FTGL/FTGLTextureFont.h>
-#endif
+
+#include <GL/gl.h>
 
 #undef TRACE
 

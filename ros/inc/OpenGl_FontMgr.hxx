@@ -13,9 +13,6 @@
 
 #ifdef HAVE_FTGL_NEWER212
 # include <FTGL/ftgl.h>
-# ifdef __BORLANDC__
-#  include <gl.h>
-# endif
 #else
 # include <FTGL/FTFont.h>
 #endif
