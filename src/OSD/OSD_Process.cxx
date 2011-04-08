@@ -110,11 +110,18 @@ Standard_Boolean OSD_Process::IsSuperUser (){
 
 
 OSD_Path OSD_Process::CurrentDirectory(){
-char cwd[MAXPATHLEN+1] ;
 OSD_Path result;
 TCollection_AsciiString Name;
+char *ret;
+#if !defined(MAXPATHLEN) && defined(__GLIBC__)
+ char *cwd = getcwd(NULL,0);
+ ret = cwd;
+#else
+char cwd[MAXPATHLEN+1] ;
+ ret = getcwd(cwd,MAXPATHLEN+1);
+#endif
 
- if (!getcwd(cwd,MAXPATHLEN+1))
+ if (!ret)
    myError.SetValue (errno, Iam, "Where");
  else {
    Name = cwd;
@@ -144,6 +151,9 @@ TCollection_AsciiString Name;
    //      result.SetValues("","","","",Name,"","");
 #endif
 
+#if !defined(MAXPATHLEN) && defined(__GLIBC__)
+   free(cwd);
+#endif
  }
 return (result);
 }
