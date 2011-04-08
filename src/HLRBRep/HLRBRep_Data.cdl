@@ -225,32 +225,32 @@ is
     is static;
     
     EdgeOfTheHidingFace(me; E  : Integer  from Standard;
-                            ED : EdgeData from HLRBRep)
+                            EData : EdgeData from HLRBRep)
     returns Boolean from Standard
-	---Purpose: Returns the  true if the  Edge <ED> belongs to the
+	---Purpose: Returns the  true if the  Edge <EData> belongs to the
 	--          Hiding Face.
  	---C++: inline
    is static;
 
     HidingStartLevel(me : mutable; E  : Integer          from Standard;
-                                   ED : EdgeData         from HLRBRep;
+                                   EData : EdgeData         from HLRBRep;
                                    IL : InterferenceList from HLRAlgo)
     returns Integer from Standard
 	---Purpose: Returns the number of  levels of hiding face above
-	--          the   first  point  of   the    edge <ED>.     The
+	--          the   first  point  of   the    edge <EData>.     The
 	--          InterferenceList is  given to  compute far away of
 	--          the Interferences and then come back.
     is static;
 
     Compare(me : mutable; E  : Integer  from Standard;
-                          ED : EdgeData from HLRBRep)
+                          EData : EdgeData from HLRBRep)
     returns State from TopAbs
-	---Purpose: Returns   the  state   of  the   Edge  <ED>  after
+	---Purpose: Returns   the  state   of  the   Edge  <EData>  after
 	--          classification.
     is static;
 
     SimplClassify(me : mutable; E         :     Integer  from Standard;
-                            	ED        :     EdgeData from HLRBRep;
+                            	EData     :     EdgeData from HLRBRep;
                             	Nbp       :     Integer  from Standard;
                             	p1,  p2   :     Real     from Standard)
     returns State from TopAbs; 
@@ -276,7 +276,7 @@ is
     is static private;
 
     Classify(me : mutable; E         :     Integer  from Standard;
-                           ED        :     EdgeData from HLRBRep;
+                           EData     :     EdgeData from HLRBRep;
                            LevelFlag :     Boolean  from Standard;
                            Level     : out Integer  from Standard;
                            param     :     Real     from Standard)

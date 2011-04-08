@@ -38,8 +38,8 @@ void HLRBRep_EdgeInterferenceTool::LoadEdge()
 {
   Standard_Real p1,p2;
   Standard_ShortReal t1,t2;
-  HLRBRep_Array1OfEData& ED = myDS->EDataArray();
-  HLRBRep_EdgeData& ed = ED(myDS->Edge());
+  HLRBRep_Array1OfEData& EData = myDS->EDataArray();
+  HLRBRep_EdgeData& ed = EData(myDS->Edge());
   ed.Status().Bounds(p1,t1,p2,t2);
   inter[0].Parameter(p1);
   inter[0].Tolerance(t1);

@@ -1544,12 +1544,12 @@ void HLRBRep_Data::EdgeState (const Standard_Real p1,
 
 Standard_Integer 
 HLRBRep_Data::HidingStartLevel (const Standard_Integer E,
-				const HLRBRep_EdgeData& ED,
+				const HLRBRep_EdgeData& EData,
 				const HLRAlgo_InterferenceList& IL)
 {
   Standard_Boolean Loop;
   HLRAlgo_ListIteratorOfInterferenceList It;
-  const HLRBRep_Curve& EC = ED.Geometry();
+  const HLRBRep_Curve& EC = EData.Geometry();
   Standard_Real sta = EC.Parameter3d(EC.FirstParameter());
   Standard_Real end = EC.Parameter3d(EC.LastParameter());
   Standard_Real tolpar = (end - sta) * 0.01;
@@ -1571,7 +1571,7 @@ HLRBRep_Data::HidingStartLevel (const Standard_Integer E,
   }
   param = 0.5 * (sta + end);
   Standard_Integer level = 0;
-  /*TopAbs_State st = */Classify(E,ED,Standard_True,level,param);
+  /*TopAbs_State st = */Classify(E,EData,Standard_True,level,param);
   Loop = Standard_True;
   It.Initialize(IL);
 
@@ -1612,11 +1612,11 @@ HLRBRep_Data::HidingStartLevel (const Standard_Integer E,
 //=======================================================================
 
 TopAbs_State HLRBRep_Data::Compare (const Standard_Integer E,
-                                    const HLRBRep_EdgeData& ED)
+                                    const HLRBRep_EdgeData& EData)
 {
   Standard_Integer level = 0;
   Standard_Real parbid = 0.;
-  return Classify(E,ED,Standard_False,level,parbid);
+  return Classify(E,EData,Standard_False,level,parbid);
 }
 
 //=======================================================================
@@ -1830,7 +1830,7 @@ void HLRBRep_Data::OrientOthEdge (const Standard_Integer I,
 
 TopAbs_State 
 HLRBRep_Data::Classify (const Standard_Integer E,
-			const HLRBRep_EdgeData& ED,
+			const HLRBRep_EdgeData& EData,
 			const Standard_Boolean LevelFlag,
 			Standard_Integer& Level,
 			const Standard_Real param)
@@ -1845,9 +1845,9 @@ HLRBRep_Data::Classify (const Standard_Integer E,
   Level = 0;
   TopAbs_State state = TopAbs_OUT;
 //  Standard_Boolean rej = Standard_False;
-  const HLRBRep_Curve& EC = ED.Geometry();
+  const HLRBRep_Curve& EC = EData.Geometry();
   Standard_Real sta,xsta,ysta,zsta,end,xend,yend,zend;
-  Standard_Real tol = (Standard_Real)(ED.Tolerance());
+  Standard_Real tol = (Standard_Real)(EData.Tolerance());
   
   if (LevelFlag) {
     sta = param;
@@ -2129,7 +2129,7 @@ HLRBRep_Data::Classify (const Standard_Integer E,
 //=======================================================================
 
 TopAbs_State HLRBRep_Data::SimplClassify (const Standard_Integer /*E*/,
-					  const HLRBRep_EdgeData& ED,
+					  const HLRBRep_EdgeData& EData,
 					  const Standard_Integer Nbp,
 					  const Standard_Real p1,
 					  const Standard_Real p2)
@@ -2141,9 +2141,9 @@ TopAbs_State HLRBRep_Data::SimplClassify (const Standard_Integer /*E*/,
   Standard_Integer i;
   TopAbs_State state = TopAbs_IN;
 //  Standard_Boolean rej = Standard_False;
-  const HLRBRep_Curve& EC = ED.Geometry();
+  const HLRBRep_Curve& EC = EData.Geometry();
   Standard_Real sta,xsta,ysta,zsta, dp;
-  Standard_Real tol = (Standard_Real)(ED.Tolerance());
+  Standard_Real tol = (Standard_Real)(EData.Tolerance());
 
   dp = (p2 - p1)/(Nbp+1);
 
