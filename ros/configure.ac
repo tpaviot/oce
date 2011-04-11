@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCASCADE], [6.5.0oce1], [oce-dev@googlegroups.com])
+AC_INIT([oce], [0.1], [oce-dev@googlegroups.com])
 AC_PREREQ([2.60])
 AC_CONFIG_AUX_DIR([make])
 AC_CONFIG_MACRO_DIR([m4])
