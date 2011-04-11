@@ -189,3 +189,5 @@ libTKAdvTools_la_SOURCES = \
 @top_srcdir@/src/Materials/Materials_MaterialDefinition.cxx \
 @top_srcdir@/src/Materials/Materials_MaterialsDictionary.cxx
 
+libTKAdvTools_laLDFLAGS = -version-info @oce_version_info@
+

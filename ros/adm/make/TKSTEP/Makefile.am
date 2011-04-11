@@ -391,3 +391,5 @@ libTKSTEP_la_SOURCES = \
 @top_srcdir@/src/TopoDSToStep/TopoDSToStep_Tool.cxx \
 @top_srcdir@/src/TopoDSToStep/TopoDSToStep_WireframeBuilder.cxx
 
+libTKSTEP_laLDFLAGS = -version-info @oce_version_info@
+

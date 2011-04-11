@@ -222,3 +222,5 @@ libTKLCAF_la_SOURCES = \
 @top_srcdir@/src/TFunction/TFunction_Logbook.cxx \
 @top_srcdir@/src/TFunction/TFunction_Scope.cxx
 
+libTKLCAF_laLDFLAGS = -version-info @oce_version_info@
+

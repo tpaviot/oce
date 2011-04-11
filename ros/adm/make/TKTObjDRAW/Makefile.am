@@ -31,3 +31,5 @@ $(STLPort_LIB)
 libTKTObjDRAW_la_SOURCES = \
 @top_srcdir@/src/TObjDRAW/TObjDRAW.cxx
 
+libTKTObjDRAW_laLDFLAGS = -version-info @oce_version_info@
+

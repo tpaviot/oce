@@ -188,3 +188,5 @@ libTKV2d_la_SOURCES = \
 @top_srcdir@/src/V2d/V2d_View.cxx \
 @top_srcdir@/src/V2d/V2d_Viewer.cxx
 
+libTKV2d_laLDFLAGS = -version-info @oce_version_info@
+

@@ -75,3 +75,5 @@ libTKXCAF_la_SOURCES = \
 @top_srcdir@/src/XCAFPrs/XCAFPrs_Driver.cxx \
 @top_srcdir@/src/XCAFPrs/XCAFPrs_Style.cxx
 
+libTKXCAF_laLDFLAGS = -version-info @oce_version_info@
+

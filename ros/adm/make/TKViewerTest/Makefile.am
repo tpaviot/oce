@@ -71,3 +71,5 @@ libTKViewerTest_la_SOURCES = \
 @top_srcdir@/src/ViewerTest/ViewerTest_ViewerCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_VoxelCommands.cxx
 
+libTKViewerTest_laLDFLAGS = -version-info @oce_version_info@
+

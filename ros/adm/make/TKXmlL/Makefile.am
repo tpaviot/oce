@@ -90,3 +90,5 @@ libTKXmlL_la_SOURCES = \
 @top_srcdir@/src/XmlObjMgt/XmlObjMgt_GP.cxx \
 @top_srcdir@/src/XmlObjMgt/XmlObjMgt_Persistent.cxx
 
+libTKXmlL_laLDFLAGS = -version-info @oce_version_info@
+

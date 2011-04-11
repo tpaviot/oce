@@ -107,3 +107,5 @@ libTKVRML_la_SOURCES = \
 @top_srcdir@/src/VrmlData/VrmlData_ShapeConvert.cxx \
 @top_srcdir@/src/VrmlData/VrmlData_WorldInfo.cxx
 
+libTKVRML_laLDFLAGS = -version-info @oce_version_info@
+

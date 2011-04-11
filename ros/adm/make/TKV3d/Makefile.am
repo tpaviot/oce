@@ -499,3 +499,5 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/Visual3d/Visual3d_ViewOrientation.cxx \
 @top_srcdir@/src/Visual3d/Visual3d_View_Print.cxx
 
+libTKV3d_laLDFLAGS = -version-info @oce_version_info@
+

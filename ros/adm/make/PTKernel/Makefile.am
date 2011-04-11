@@ -144,3 +144,5 @@ libPTKernel_la_SOURCES = \
 @top_srcdir@/src/PMMgt/PMMgt_PManaged.cxx \
 @top_srcdir@/src/PStandard/PStandard_ArrayNode.cxx
 
+libPTKernel_laLDFLAGS = -version-info @oce_version_info@
+

@@ -115,3 +115,4 @@ libTKMesh_la_SOURCES = \
 @top_srcdir@/src/MeshAlgo/MeshAlgo_Triangle.cxx \
 @top_srcdir@/src/MeshAlgo/MeshAlgo_Vertex.cxx
 
+libTKMesh_laLDFLAGS = -version-info @oce_version_info@

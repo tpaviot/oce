@@ -195,3 +195,5 @@ libTKHLR_la_SOURCES = \
 @top_srcdir@/src/Intrv/Intrv_Intervals.cxx \
 @top_srcdir@/src/TopCnx/TopCnx_EdgeFaceTransition.cxx
 
+libTKHLR_laLDFLAGS = -version-info @oce_version_info@
+

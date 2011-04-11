@@ -180,3 +180,5 @@ libTKShHealing_la_SOURCES = \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_Tool.cxx \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_WireDivide.cxx
 
+libTKShHealing_laLDFLAGS = -version-info @oce_version_info@
+

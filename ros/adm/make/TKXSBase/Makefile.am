@@ -390,3 +390,5 @@ libTKXSBase_la_SOURCES = \
 @top_srcdir@/src/XSControl/XSControl_WorkSession.cxx \
 @top_srcdir@/src/XSControl/XSControl_Writer.cxx
 
+libTKXSBase_laLDFLAGS = -version-info @oce_version_info@
+

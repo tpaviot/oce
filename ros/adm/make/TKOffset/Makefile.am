@@ -102,3 +102,5 @@ libTKOffset_la_SOURCES = \
 @top_srcdir@/src/Draft/Draft_Modification_1.cxx \
 @top_srcdir@/src/Draft/Draft_VertexInfo.cxx
 
+libTKOffset_laLDFLAGS = -version-info @oce_version_info@
+

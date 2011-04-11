@@ -48,3 +48,5 @@ libTKVoxel_la_SOURCES = \
 @top_srcdir@/src/Voxel/Voxel_SplitData.cxx \
 @top_srcdir@/src/Voxel/Voxel_Writer.cxx
 
+libTKVoxel_laLDFLAGS = -version-info @oce_version_info@
+

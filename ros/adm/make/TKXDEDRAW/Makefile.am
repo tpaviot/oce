@@ -53,3 +53,5 @@ libTKXDEDRAW_la_SOURCES = \
 @top_srcdir@/src/XDEDRAW/XDEDRAW_Props.cxx \
 @top_srcdir@/src/XDEDRAW/XDEDRAW_Shapes.cxx
 
+libTKXDEDRAW_laLDFLAGS = -version-info @oce_version_info@
+

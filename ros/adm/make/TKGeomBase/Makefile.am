@@ -448,3 +448,5 @@ libTKGeomBase_la_SOURCES = \
 @top_srcdir@/src/gce/gce_MakeTranslation2d.cxx \
 @top_srcdir@/src/gce/gce_Root.cxx
 
+libTKGeomBase_laLDFLAGS = -version-info @oce_version_info@
+

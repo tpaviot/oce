@@ -828,3 +828,5 @@ libTKSTEPBase_la_SOURCES = \
 @top_srcdir@/src/StepShape/StepShape_VertexLoop.cxx \
 @top_srcdir@/src/StepShape/StepShape_VertexPoint.cxx
 
+libTKSTEPBase_laLDFLAGS = -version-info @oce_version_info@
+

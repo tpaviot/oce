@@ -85,3 +85,5 @@ libTKBinL_la_SOURCES = \
 @top_srcdir@/src/BinMFunction/BinMFunction_ScopeDriver.cxx \
 @top_srcdir@/src/BinObjMgt/BinObjMgt_Persistent.cxx
 
+libTKBinL_laLDFLAGS = -version-info @oce_version_info@
+

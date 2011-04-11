@@ -224,3 +224,5 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_vind.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ws.cxx
 
+libTKOpenGl_laLDFLAGS = -version-info @oce_version_info@
+

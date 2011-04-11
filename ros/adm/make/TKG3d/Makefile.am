@@ -158,3 +158,5 @@ libTKG3d_la_SOURCES = \
 @top_srcdir@/src/LProp3d/LProp3d_CurveTool.cxx \
 @top_srcdir@/src/LProp3d/LProp3d_SurfaceTool.cxx
 
+libTKG3d_laLDFLAGS = -version-info @oce_version_info@
+

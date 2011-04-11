@@ -6,6 +6,9 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/Standard/Standard.cxx])
 AM_INIT_AUTOMAKE([foreign 1.9])
 
+oce_version_info="0:0:0"
+AC_SUBST([oce_version_info], [0])
+
 AC_CANONICAL_HOST
 
 dnl AM_MAINTAINER_MODE

@@ -270,3 +270,5 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/MAT2d/MAT2d_SketchExplorer.cxx \
 @top_srcdir@/src/MAT2d/MAT2d_Tool2d.cxx
 
+libTKTopAlgo_laLDFLAGS = -version-info @oce_version_info@
+

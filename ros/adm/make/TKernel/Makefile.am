@@ -507,3 +507,5 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/Units/Units_UnitsSystem.cxx \
 @top_srcdir@/src/UnitsAPI/UnitsAPI.cxx
 
+libTKernel_laLDFLAGS = -version-info @oce_version_info@
+

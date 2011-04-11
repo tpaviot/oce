@@ -268,3 +268,5 @@ libTKShapeSchema_la_SOURCES = \
 @top_srcdir@/drv/ShapeSchema/ShapeSchema_gp_XYZ.cxx \
 @top_srcdir@/src/PCDMShape/PCDMShape_Document.cxx
 
+libTKShapeSchema_laLDFLAGS = -version-info @oce_version_info@
+

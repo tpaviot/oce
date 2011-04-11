@@ -81,3 +81,5 @@ libTKXSDRAW_la_SOURCES = \
 @top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx \
 @top_srcdir@/src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx
 
+libTKXSDRAW_laLDFLAGS = -version-info @oce_version_info@
+

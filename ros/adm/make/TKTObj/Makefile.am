@@ -48,3 +48,5 @@ libTKTObj_la_SOURCES = \
 @top_srcdir@/src/TObj/TObj_TReference.cxx \
 @top_srcdir@/src/TObj/TObj_TXYZ.cxx
 
+libTKTObj_laLDFLAGS = -version-info @oce_version_info@
+

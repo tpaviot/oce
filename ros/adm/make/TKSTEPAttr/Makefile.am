@@ -253,3 +253,5 @@ libTKSTEPAttr_la_SOURCES = \
 @top_srcdir@/src/StepVisual/StepVisual_TextStyleWithBoxCharacteristics.cxx \
 @top_srcdir@/src/StepVisual/StepVisual_ViewVolume.cxx
 
+libTKSTEPAttr_laLDFLAGS = -version-info @oce_version_info@
+

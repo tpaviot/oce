@@ -28,3 +28,5 @@ libFWOSPlugin_la_SOURCES = \
 @top_srcdir@/src/FWOSDriver/FWOSDriver_Driver.cxx \
 @top_srcdir@/src/FWOSDriver/FWOSDriver_DriverFactory.cxx
 
+libFWOSPlugin_laLDFLAGS = -version-info @oce_version_info@
+

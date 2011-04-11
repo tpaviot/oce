@@ -96,3 +96,5 @@ libTKPCAF_la_SOURCES = \
 @top_srcdir@/src/PPrsStd/PPrsStd_AISPresentation.cxx \
 @top_srcdir@/src/PPrsStd/PPrsStd_AISPresentation_1.cxx
 
+libTKPCAF_laLDFLAGS = -version-info @oce_version_info@
+

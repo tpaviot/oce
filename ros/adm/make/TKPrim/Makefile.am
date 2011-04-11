@@ -75,3 +75,5 @@ libTKPrim_la_SOURCES = \
 @top_srcdir@/src/Sweep/Sweep_NumShapeIterator.cxx \
 @top_srcdir@/src/Sweep/Sweep_NumShapeTool.cxx
 
+libTKPrim_laLDFLAGS = -version-info @oce_version_info@
+

@@ -246,3 +246,5 @@ libTKSTEP209_la_SOURCES = \
 @top_srcdir@/src/StepFEA/StepFEA_SymmetricTensor43dMember.cxx \
 @top_srcdir@/src/StepFEA/StepFEA_Volume3dElementRepresentation.cxx
 
+libTKSTEP209_laLDFLAGS = -version-info @oce_version_info@
+

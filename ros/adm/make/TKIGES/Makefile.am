@@ -567,3 +567,5 @@ libTKIGES_la_SOURCES = \
 @top_srcdir@/src/IGESToBRep/IGESToBRep_TopoCurve.cxx \
 @top_srcdir@/src/IGESToBRep/IGESToBRep_TopoSurface.cxx
 
+libTKIGES_laLDFLAGS = -version-info @oce_version_info@
+

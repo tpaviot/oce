@@ -93,3 +93,5 @@ libTKMeshVS_la_SOURCES = \
 @top_srcdir@/src/MeshVS/MeshVS_TwoColors.cxx \
 @top_srcdir@/src/MeshVS/MeshVS_VectorPrsBuilder.cxx
 
+libTKMeshVS_laLDFLAGS = -version-info @oce_version_info@
+

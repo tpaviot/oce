@@ -342,3 +342,5 @@ libTKPShape_la_SOURCES = \
 @top_srcdir@/src/PTopoDS/PTopoDS_Vertex.cxx \
 @top_srcdir@/src/PTopoDS/PTopoDS_Wire.cxx
 
+libTKPShape_laLDFLAGS = -version-info @oce_version_info@
+

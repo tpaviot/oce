@@ -182,3 +182,5 @@ libTKFillet_la_SOURCES = \
 @top_srcdir@/src/FilletSurf/FilletSurf_Builder.cxx \
 @top_srcdir@/src/FilletSurf/FilletSurf_InternalBuilder.cxx
 
+libTKFillet_laLDFLAGS = -version-info @oce_version_info@
+

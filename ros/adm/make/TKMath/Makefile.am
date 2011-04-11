@@ -289,3 +289,5 @@ libTKMath_la_SOURCES = \
 @top_srcdir@/src/math/math_ValueAndWeight.cxx \
 @top_srcdir@/src/math/math_Vector.cxx
 
+libTKMath_laLDFLAGS = -version-info @oce_version_info@
+

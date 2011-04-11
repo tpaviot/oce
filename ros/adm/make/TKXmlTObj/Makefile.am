@@ -37,3 +37,5 @@ libTKXmlTObj_la_SOURCES = \
 @top_srcdir@/src/XmlTObjDrivers/XmlTObjDrivers_ReferenceDriver.cxx \
 @top_srcdir@/src/XmlTObjDrivers/XmlTObjDrivers_XYZDriver.cxx
 
+libTKXmlTObj_laLDFLAGS = -version-info @oce_version_info@
+

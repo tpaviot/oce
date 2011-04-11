@@ -65,3 +65,5 @@ libTKBin_la_SOURCES = \
 @top_srcdir@/src/BinTools/BinTools_ShapeSet.cxx \
 @top_srcdir@/src/BinTools/BinTools_SurfaceSet.cxx
 
+libTKBin_laLDFLAGS = -version-info @oce_version_info@
+

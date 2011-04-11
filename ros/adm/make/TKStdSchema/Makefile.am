@@ -96,3 +96,5 @@ libTKStdSchema_la_SOURCES = \
 @top_srcdir@/src/StdDrivers/StdDrivers_DocumentRetrievalDriver.cxx \
 @top_srcdir@/src/StdDrivers/StdDrivers_DocumentStorageDriver.cxx
 
+libTKStdSchema_laLDFLAGS = -version-info @oce_version_info@
+

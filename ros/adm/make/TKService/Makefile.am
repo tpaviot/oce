@@ -448,3 +448,5 @@ INCLUDES += \
 -I@top_srcdir@/drv/Xw -I@top_srcdir@/src/Xw
 endif
 
+libTKService_laLDFLAGS = -version-info @oce_version_info@
+

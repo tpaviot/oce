@@ -191,3 +191,5 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/src/TopoDS/TopoDS_Vertex.cxx \
 @top_srcdir@/src/TopoDS/TopoDS_Wire.cxx
 
+libTKBRep_laLDFLAGS = -version-info @oce_version_info@
+

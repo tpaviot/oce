@@ -106,3 +106,5 @@ libTKCDF_la_SOURCES = \
 @top_srcdir@/src/PCDM/PCDM_Writer.cxx \
 @top_srcdir@/src/UTL/UTL.cxx
 
+libTKCDF_laLDFLAGS = -version-info @oce_version_info@
+

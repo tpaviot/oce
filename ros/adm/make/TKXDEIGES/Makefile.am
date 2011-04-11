@@ -35,3 +35,5 @@ libTKXDEIGES_la_SOURCES = \
 @top_srcdir@/src/IGESCAFControl/IGESCAFControl_Reader.cxx \
 @top_srcdir@/src/IGESCAFControl/IGESCAFControl_Writer.cxx
 
+libTKXDEIGES_laLDFLAGS = -version-info @oce_version_info@
+

@@ -159,3 +159,5 @@ libTKTopTest_la_SOURCES = \
 @top_srcdir@/src/TestTopOpeTools/TestTopOpeTools_Trace.cxx \
 @top_srcdir@/src/TestTopOpeTools/TestTopOpeTools_TraceCommands.cxx
 
+libTKTopTest_laLDFLAGS = -version-info @oce_version_info@
+

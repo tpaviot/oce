@@ -116,3 +116,5 @@ libTKDraw_la_SOURCES = \
 @top_srcdir@/src/DrawTrSurf/DrawTrSurf_Triangulation.cxx \
 @top_srcdir@/src/DrawTrSurf/DrawTrSurf_Triangulation2D.cxx
 
+libTKDraw_laLDFLAGS = -version-info @oce_version_info@
+

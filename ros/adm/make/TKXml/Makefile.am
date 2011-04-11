@@ -60,3 +60,5 @@ libTKXml_la_SOURCES = \
 @top_srcdir@/src/XmlMPrsStd/XmlMPrsStd_AISPresentationDriver.cxx \
 @top_srcdir@/src/XmlMPrsStd/XmlMPrsStd_PositionDriver.cxx
 
+libTKXml_laLDFLAGS = -version-info @oce_version_info@
+

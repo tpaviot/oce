@@ -111,3 +111,5 @@ libTKG2d_la_SOURCES = \
 @top_srcdir@/src/LProp/LProp_CurAndInf.cxx \
 @top_srcdir@/src/TopAbs/TopAbs.cxx
 
+libTKG2d_laLDFLAGS = -version-info @oce_version_info@
+

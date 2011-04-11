@@ -52,3 +52,5 @@ libTKSTL_la_SOURCES = \
 @top_srcdir@/src/StlMesh/StlMesh_MeshTriangle.cxx \
 @top_srcdir@/src/StlTransfer/StlTransfer.cxx
 
+libTKSTL_laLDFLAGS = -version-info @oce_version_info@
+

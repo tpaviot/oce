@@ -62,3 +62,5 @@ libTKXDESTEP_la_SOURCES = \
 @top_srcdir@/src/STEPCAFControl/STEPCAFControl_Reader.cxx \
 @top_srcdir@/src/STEPCAFControl/STEPCAFControl_Writer.cxx
 
+libTKXDESTEP_laLDFLAGS = -version-info @oce_version_info@
+

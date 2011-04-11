@@ -317,3 +317,5 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/IntTools/IntTools_Tools.cxx \
 @top_srcdir@/src/IntTools/IntTools_TopolTool.cxx
 
+libTKBO_laLDFLAGS = -version-info @oce_version_info@
+

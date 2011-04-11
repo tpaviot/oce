@@ -141,3 +141,5 @@ libTKXCAFSchema_la_SOURCES = \
 @top_srcdir@/src/XCAFDrivers/XCAFDrivers_DocumentRetrievalDriver.cxx \
 @top_srcdir@/src/XCAFDrivers/XCAFDrivers_DocumentStorageDriver.cxx
 
+libTKXCAFSchema_laLDFLAGS = -version-info @oce_version_info@
+

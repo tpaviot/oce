@@ -85,3 +85,5 @@ libTKFeat_la_SOURCES = \
 @top_srcdir@/src/LocOpe/LocOpe_Spliter.cxx \
 @top_srcdir@/src/LocOpe/LocOpe_WiresOnShape.cxx
 
+libTKFeat_laLDFLAGS = -version-info @oce_version_info@
+

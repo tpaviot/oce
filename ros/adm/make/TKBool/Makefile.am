@@ -439,3 +439,5 @@ libTKBool_la_SOURCES = \
 @top_srcdir@/src/TopOpeBRepTool/TopOpeBRepTool_trace.cxx \
 @top_srcdir@/src/TopOpeBRepTool/TopOpeBRepTool_traceSTATE.cxx
 
+libTKBool_laLDFLAGS = -version-info @oce_version_info@
+

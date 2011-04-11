@@ -201,3 +201,5 @@ libTKPLCAF_la_SOURCES = \
 @top_srcdir@/src/PDocStd/PDocStd_XLink.cxx \
 @top_srcdir@/src/PFunction/PFunction_Function.cxx
 
+libTKPLCAF_laLDFLAGS = -version-info @oce_version_info@
+

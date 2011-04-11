@@ -121,3 +121,5 @@ libTKDCAF_la_SOURCES = \
 @top_srcdir@/src/DrawDim/DrawDim_PlanarRadius.cxx \
 @top_srcdir@/src/DrawDim/DrawDim_Radius.cxx
 
+libTKDCAF_laLDFLAGS = -version-info @oce_version_info@
+

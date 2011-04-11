@@ -112,3 +112,5 @@ libTKCAF_la_SOURCES = \
 @top_srcdir@/src/TPrsStd/TPrsStd_PlaneDriver.cxx \
 @top_srcdir@/src/TPrsStd/TPrsStd_PointDriver.cxx
 
+libTKCAF_laLDFLAGS = -version-info @oce_version_info@
+

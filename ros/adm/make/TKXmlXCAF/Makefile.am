@@ -56,3 +56,5 @@ libTKXmlXCAF_la_SOURCES = \
 @top_srcdir@/src/XmlXCAFDrivers/XmlXCAFDrivers_DocumentRetrievalDriver.cxx \
 @top_srcdir@/src/XmlXCAFDrivers/XmlXCAFDrivers_DocumentStorageDriver.cxx
 
+libTKXmlXCAF_laLDFLAGS = -version-info @oce_version_info@
+

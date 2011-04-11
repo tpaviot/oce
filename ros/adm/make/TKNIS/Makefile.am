@@ -42,3 +42,5 @@ libTKNIS_la_SOURCES = \
 @top_srcdir@/src/NIS/NIS_TriangulatedDrawer.cxx \
 @top_srcdir@/src/NIS/NIS_View.cxx
 
+libTKNIS_laLDFLAGS = -version-info @oce_version_info@
+

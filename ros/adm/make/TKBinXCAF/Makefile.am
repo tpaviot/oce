@@ -55,3 +55,5 @@ libTKBinXCAF_la_SOURCES = \
 @top_srcdir@/src/BinXCAFDrivers/BinXCAFDrivers_DocumentRetrievalDriver.cxx \
 @top_srcdir@/src/BinXCAFDrivers/BinXCAFDrivers_DocumentStorageDriver.cxx
 
+libTKBinXCAF_laLDFLAGS = -version-info @oce_version_info@
+

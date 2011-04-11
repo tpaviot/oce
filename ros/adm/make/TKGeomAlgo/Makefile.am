@@ -572,3 +572,5 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/TopTrans/TopTrans_CurveTransition.cxx \
 @top_srcdir@/src/TopTrans/TopTrans_SurfaceTransition.cxx
 
+libTKGeomAlgo_laLDFLAGS = -version-info @oce_version_info@
+

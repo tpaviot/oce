@@ -37,3 +37,5 @@ libTKBinTObj_la_SOURCES = \
 @top_srcdir@/src/BinTObjDrivers/BinTObjDrivers_ReferenceDriver.cxx \
 @top_srcdir@/src/BinTObjDrivers/BinTObjDrivers_XYZDriver.cxx
 
+libTKBinTObj_laLDFLAGS = -version-info @oce_version_info@
+
