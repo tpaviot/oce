@@ -12,13 +12,11 @@ Configure step
 
 The ./configure must be executed with the flags as described below.
 
-flags="--with-gl-include=/usr/include --with-gl-library=/usr/lib"
-flags="$flags --with-xmu-include=/usr/X11R6/include/X11"
-flags="$flags --with-xmu-library=/usr/X11R6/lib"
+flags=""
 flags="$flags --with-tcl=${TCLHOME}/lib"
 flags="$flags --with-tk=${TCLHOME}/lib "
-flags="$flags --with-freetype=/usr/freetype-2.3.7"
-flags="$flags --with-ftgl=/usr/ftgl-2.1.3-rc5"
+flags="$flags --with-freetype=/opt/freetype-2.3.7"
+flags="$flags --with-ftgl=/opt/ftgl-2.1.3-rc5"
 flags="$flags --disable-debug --enable-production" 
 
 where:
@@ -30,14 +28,14 @@ FTGL note:
 OCE supports either ftgl-2.1.2 or the latest ftgl-2.1.3-rc5. If you wish to
 build OCE over ftgl-2.1.2, use the compilation flag '--with-ftgl212'.
 For instance,
-flags="$flags --with-ftg212=/usr/ftgl-2.1.2"
+flags="$flags --with-ftg212=/opt/ftgl-2.1.2"
 The '--with-ftgl' flag assumes you use a newer version.
 
 Additional flags
-flags="$flags --with-tbb-include =/usr/tbb/include" - for compilation with tbb
-flags="$flags --with-tbb-library=/usr/tbb/lib" - for compilation with tbb
-flags="$flags --with-gl2ps=/usr/gl2ps-1.3.5" - for compilation with gl2ps
-flags="$flags --with-freeimage=/usr/freeimage-3.14.1" - for compilation with freeimage
+flags="$flags --with-tbb-include =/usr/include/tbb" - for compilation with tbb
+flags="$flags --with-tbb-library=/usr/lib" - for compilation with tbb
+flags="$flags --with-gl2ps=/opt/gl2ps-1.3.5" - for compilation with gl2ps
+flags="$flags --with-freeimage=/opt/freeimage-3.14.1" - for compilation with freeimage
 
 Additional information :
 WOK and Wrappers (jcas) modules were removed from OCCT. So flags --enabled-wok and --enabled-wrappers were removed too.
@@ -49,8 +47,10 @@ where ${INSTALL_DIR} is folder to which Open CASCADE will be installed.
 
 Make step
 
-If configure exits successfully, you can then build of the whole Open CASCADE with 
-the ./make and then ./make install command.
+If configure exits successfully, you can then build of the whole Open CASCADE
+by running the following commands:
+  make
+  make install
 
 Usage
 
