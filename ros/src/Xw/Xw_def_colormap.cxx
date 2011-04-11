@@ -1,5 +1,5 @@
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #define CTS17988	/*GG_240697
@@ -31,7 +31,7 @@
 #include <Xw_Extension.h>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #if (!defined (CTS17988))  && defined(HAVE_X11_EXTENSIONS_MULTIBUF_H)
 # include <X11/extensions/multibuf.h>

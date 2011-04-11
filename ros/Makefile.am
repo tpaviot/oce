@@ -108,12 +108,8 @@ install-exec-local:
 		cp -fr$(CP_$(platform)) $(top_srcdir)/inc $(prefix); \
 	fi; \
 	if [ "$$pd" != "$$bd" ]; then \
-		cp -fr$(CP_$(platform)) $$bd/config.h $(prefix); \
+		cp -fr$(CP_$(platform)) $$bd/inc/oce-config.h $(prefix)/inc; \
 	fi
-	if [ -e $(prefix)/inc/config.h ]; then \
-		unlink $(prefix)/inc/config.h; \
-	fi
-	cd $(prefix)/inc && ln -s ../config.h config.h 
 	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
 	if [ "$$pd" != "$$sd" -a -d $(top_srcdir)/src/UnitsAPI ]; then \
 		$(INSTALL) -d $(prefix)/src; \

@@ -1,7 +1,7 @@
 #if !defined( WNT ) && !defined(__hpux)
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <stdio.h>

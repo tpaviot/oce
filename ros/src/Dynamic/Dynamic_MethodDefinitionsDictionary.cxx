@@ -20,7 +20,7 @@
 #include <TCollection_AsciiString.hxx>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <stdio.h>

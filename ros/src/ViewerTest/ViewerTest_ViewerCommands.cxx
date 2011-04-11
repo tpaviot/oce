@@ -6,7 +6,7 @@
 // Robert Boehne 30 May 2000 : Dec Osf
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef WNT

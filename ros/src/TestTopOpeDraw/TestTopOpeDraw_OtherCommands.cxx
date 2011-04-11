@@ -4,7 +4,7 @@
 //		<jyl@meteox>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <TestTopOpeDraw.hxx>
 #include <TestTopOpeDraw_Displayer.hxx>

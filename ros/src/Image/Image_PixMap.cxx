@@ -4,7 +4,7 @@
 // Copyright  OpenCASCADE 2010
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef HAVE_FREEIMAGE

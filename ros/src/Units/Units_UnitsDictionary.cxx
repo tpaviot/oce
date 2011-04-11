@@ -13,7 +13,7 @@
 #include <Standard_Stream.hxx>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <stdio.h>
 #ifdef HAVE_STDLIB_H

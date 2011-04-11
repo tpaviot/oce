@@ -24,7 +24,7 @@ Facility : CAS-CADE V1.3A
 
 #ifndef WNT
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef HAVE_LIMITS

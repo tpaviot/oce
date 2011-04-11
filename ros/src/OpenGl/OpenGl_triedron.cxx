@@ -63,7 +63,7 @@ from higher API */
 #endif
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include <oce-config.h>
 #endif
 #ifdef HAVE_STRING_H
 #include <string.h>

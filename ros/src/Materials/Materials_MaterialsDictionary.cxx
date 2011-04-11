@@ -5,7 +5,7 @@
 // Historique :
 // CRD : 03/07/97 : Portage Windows NT.
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <Materials_MaterialsDictionary.ixx>

@@ -39,7 +39,7 @@
 #include <Image_PixMap.hxx>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <stdio.h>
 #ifdef HAVE_STRINGS_H

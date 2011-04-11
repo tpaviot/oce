@@ -7,7 +7,7 @@
 #include <Standard_OutOfRange.hxx>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #if defined(HAVE_STRING_H)
 # include <string.h>

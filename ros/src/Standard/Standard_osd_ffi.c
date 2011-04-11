@@ -43,7 +43,7 @@
 #ifndef WNT
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 /* This hack is required to get HP's c89 to include a definition for DIR */

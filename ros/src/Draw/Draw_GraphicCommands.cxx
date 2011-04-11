@@ -7,7 +7,7 @@
 
 // Modif : DFO 05/11/96
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <Draw.ixx>

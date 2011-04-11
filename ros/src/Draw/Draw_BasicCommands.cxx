@@ -15,7 +15,7 @@
 #include <Message_Messenger.hxx>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #if defined(HAVE_TIME_H) || defined(WNT)

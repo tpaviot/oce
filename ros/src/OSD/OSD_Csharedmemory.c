@@ -5,7 +5,7 @@
 #include <sys/shm.h>
 
 #if defined(HAVE_CONFIG_H)
-#include "config.h"
+#include <oce-config.h>
 #endif
 #if defined(HAVE_STDLIB_H)
 #include <stdlib.h>

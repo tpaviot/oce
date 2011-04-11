@@ -5,7 +5,7 @@
 //		<rle@phylox>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <TCollection_BasicMap.ixx>
 #include <TCollection.hxx>

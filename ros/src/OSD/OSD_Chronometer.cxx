@@ -13,7 +13,7 @@
 //---------- Systemes autres que WNT : ----------------------------------
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef HAVE_SYS_TYPES_H

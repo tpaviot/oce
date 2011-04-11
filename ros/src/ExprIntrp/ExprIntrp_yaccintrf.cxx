@@ -1,7 +1,7 @@
 //static const char* sccsid = "@(#)ExprIntrp_yaccintrf.cxx	3.2 95/01/10"; // Do not delete this line. Used by sccs.
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <ExprIntrp_yaccintrf.hxx>
 #include <ExprIntrp_yaccanal.hxx>

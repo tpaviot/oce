@@ -9,7 +9,7 @@ const static char sccsid[] = "@(#) OSD_Real2String.cxx    %V%-1, 06/17/02@(#)";
 // +---------------------------------------------------------------------------+
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <OSD_Real2String.ixx>

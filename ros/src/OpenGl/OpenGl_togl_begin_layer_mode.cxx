@@ -20,7 +20,7 @@ HISTORIQUE DES MODIFICATIONS   :
 */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include <oce-config.h>
 #endif
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>

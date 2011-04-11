@@ -4,7 +4,7 @@
 //		<rle@nonox>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <BRepTest.hxx>
 #include <DBRep.hxx>

@@ -23,7 +23,7 @@
 #endif
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef HAVE_X11_EXTENSIONS_TRANSOLV_H

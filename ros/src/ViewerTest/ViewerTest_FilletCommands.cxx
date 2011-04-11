@@ -4,7 +4,7 @@
 //		<rob@robox.paris1.matra-dtv.fr>
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 #include <ViewerTest.hxx>

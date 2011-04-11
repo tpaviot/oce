@@ -29,7 +29,7 @@
 
 #include <Xw_Extension.h>
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 #include <fcntl.h>
 #ifdef HAVE_STRINGS_H

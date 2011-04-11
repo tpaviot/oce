@@ -99,7 +99,7 @@ used in immediat mode context.
 */
 
 #ifdef HAVE_CONFIG_H
-# include <config.h>
+# include <oce-config.h>
 #endif
 
 /* OCC22218 NOTE: project dependency on gl2ps is specified by macro */

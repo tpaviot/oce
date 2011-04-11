@@ -872,7 +872,7 @@ echo "Test Harness (DRAW)         $ENABLE_DRAW $DISABLE_DRAW_REASON"
 echo
 
 
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_HEADERS([inc/oce-config.h:oce-config.h.in])
 
 AC_CONFIG_FILES([Makefile adm/make/Makefile \
 adm/make/TKernel/Makefile \
