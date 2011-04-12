@@ -459,20 +459,12 @@ ELSE (${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 	SET(OPENCASCADE_64BIT OFF CACHE BOOL "Build 64bit libraries")
 ENDIF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 
+SET(BIT 32)
 IF (OPENCASCADE_64BIT)
 	ADD_DEFINITIONS(-D_OCC64)
-	
-	IF (NOT MSVC)
-    SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -m64)
-  ENDIF(NOT MSVC)
-  
-	MESSAGE(STATUS "Build 64bit")
-	SET(MODE "64bit")
 	SET(BIT 64)
-ELSE (OPENCASCADE_64BIT)
-	MESSAGE(STATUS "Build 32bit")
-	SET(BIT 32)
 ENDIF (OPENCASCADE_64BIT)
+MESSAGE(STATUS "Build ${BIT}bit")
 
 #######################################################
 # Check platforms - Define specific compilation flags #
