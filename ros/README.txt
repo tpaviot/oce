@@ -74,11 +74,11 @@ You can launch Draw Test Harness in order to experiment with OCE.
 
 Before DRAW launching, take care to:
 $export CASROOT=${INSTALL_DIR}
-$load $CASROOT/env_DRAW.sh file to set all necessary system variables.
 
-Launch DRAWEXE executable from $CASROOT/bin folder.
-Print 
+Launch $CASROOT/bin/DRAWEXE executable; on prompt, type
 > pload ALL 
-in order to load DRAW commands
+in order to load DRAW commands, you can then run demos
+> source $env(CASROOT)/src/DrawResources/ModelingDemo.tcl
+> source $env(CASROOT)/src/DrawResources/VisualizationDemo.tcl
 
-Installation is succesfull. Enjoy!
+Installation is succesful. Enjoy!
