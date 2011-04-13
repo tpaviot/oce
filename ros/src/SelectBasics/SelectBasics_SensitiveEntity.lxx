@@ -1,8 +1,0 @@
-
-inline void SelectBasics_SensitiveEntity::
-SetSensitivityFactor(const Standard_ShortReal F)
-{mySFactor = F;}
-
-inline Standard_ShortReal SelectBasics_SensitiveEntity::
-SensitivityFactor() const 
-{return mySFactor;}

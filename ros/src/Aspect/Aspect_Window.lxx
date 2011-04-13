@@ -1,5 +1,0 @@
-inline Aspect_Handle Aspect_Window :: HBackground () const {
-
- return MyHBackground;
-
-}  

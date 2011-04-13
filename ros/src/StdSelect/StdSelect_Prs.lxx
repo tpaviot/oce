@@ -1,2 +1,0 @@
-inline const Handle(Graphic3d_StructureManager)& StdSelect_Prs::
-Manager() const {return myManager;}
