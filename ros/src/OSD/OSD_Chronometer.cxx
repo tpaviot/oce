@@ -54,6 +54,10 @@
 # include <limits.h>
 #endif
 
+#if defined(__APPLE__) && defined(__MACH__)
+#include "gettime_osx.h"
+#endif
+
 //=======================================================================
 //function : GetProcessCPU
 //purpose  : 

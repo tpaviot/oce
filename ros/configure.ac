@@ -1,34 +1,30 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCAS], [5.0DVP1])
+AC_INIT([OpenCASCADE], [6.5.0oce1], [oce-dev@googlegroups.com])
+AC_PREREQ([2.60])
 AC_CONFIG_AUX_DIR([make])
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign])
+AC_CONFIG_SRCDIR([src/Standard/Standard.cxx])
+AM_INIT_AUTOMAKE([foreign 1.9])
+
 AC_CANONICAL_HOST
-dnl AM_CONFIG_SRCDIR(src/Standard/Standard.cxx)
-
-CFLAGS="$CFLAGS"
-CXXFLAGS="$CXXFLAGS"
-
-AC_PROG_CC
-
-AM_CONFIG_HEADER([config.h])
 
 dnl AM_MAINTAINER_MODE
 
-AC_AIX
-AC_ISC_POSIX
-AC_C_BIGENDIAN
-
-AC_DISABLE_STATIC
-
 dnl Checks for programs.
-AM_PROG_LIBTOOL
+AC_USE_SYSTEM_EXTENSIONS
+
+LT_INIT([disable-static])
+
+AC_PROG_CC
 AC_PROG_CXX
 
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_YACC
 AC_PROG_MAKE_SET
+
+AC_SEARCH_LIBS([strerror],[cposix])
+AC_C_BIGENDIAN
 
 dnl Checks for header files.
 
@@ -42,15 +38,15 @@ AC_CHECK_HEADERS([sysent.h unistd.h sys/unistd.h sys/socket.h])
 AC_CHECK_HEADERS([ndir.h sys/ndir.h sys/dir.h signal.h sys/signal.h])
 AC_CHECK_HEADERS([sigfpe.h floatingpoint.h sys/machsig.h sys/siginfo.h])
 AC_CHECK_HEADERS([malloc.h strings.h sys/stat.h sys/sem.h sys/ipc.h])
-AC_CHECK_HEADERS([sys/times.h dirent.h getopt.h sys/vnode.h])
+AC_CHECK_HEADERS([sys/times.h dirent.h])
 
 
 AC_LANG([C++])
 AC_MSG_CHECKING([ for C++ header files ])
 AC_CHECK_HEADERS([istream ostream fstream ios iomanip iostream])
-AC_CHECK_HEADERS([stream.h strstream.h istream.h ostream.h fstream.h stdlib.h ios.h iostream.h])
-AC_CHECK_HEADERS([iomanip.h limits.h values.h float.h])
-AC_CHECK_HEADERS([siginfo.h bits/sigset.h bstring.h sys/types.h sys/select.h])
+AC_CHECK_HEADERS([fstream.h stdlib.h ios.h iostream.h])
+AC_CHECK_HEADERS([iomanip.h limits.h values.h])
+AC_CHECK_HEADERS([siginfo.h sys/types.h sys/select.h])
 AC_CHECK_HEADERS([X11/extensions/transovl.h X11/extensions/readdisplay.h])
 AC_CHECK_HEADERS([X11/extensions/multibuf.h], [], [], [#include <X11/Xlib.h>])
 AC_CHECK_HEADERS([sys/filio.h sys/mman.h libc.h])
@@ -59,24 +55,24 @@ AC_CHECK_HEADERS([sys/filio.h sys/mman.h libc.h])
 # Posix threads library is required on Unix
 #-----------------------------------------------------------------------------
 case "x$host" in
-	*msvc) ;;
-	*)
-AC_CHECK_HEADER([pthread.h],[],[AC_MSG_ERROR([Posix threads required])])
-AC_CHECK_LIB([pthread],[pthread_create],[],[AC_MSG_ERROR([Posix threads required])])
-CSF_ThreadLibs_LIB=-lpthread
-AC_SUBST(CSF_ThreadLibs_LIB)
-	;;
+  *msvc) ;;
+  *)
+    AC_CHECK_HEADER([pthread.h],[],[AC_MSG_ERROR([Posix threads required])])
+    AC_CHECK_LIB([pthread],[pthread_create],[],[AC_MSG_ERROR([Posix threads required])])
+    CSF_ThreadLibs_LIB=-lpthread
+    AC_SUBST(CSF_ThreadLibs_LIB)
+    ;;
 esac
 
 #-----------------------------------------------------------------------------
 # dl library is required on Unix
 #-----------------------------------------------------------------------------
 case "x$host" in
-	*msvc) ;;
-	*)
-AC_CHECK_LIB([dl],[dlopen],[],[AC_MSG_ERROR([dl library is required])])
-CSF_SOCKETLibs_LIB=-ldl
-	;;
+  *msvc) ;;
+  *)
+    AC_CHECK_LIB([dl],[dlopen],[],[AC_MSG_ERROR([dl library is required])])
+    CSF_SOCKETLibs_LIB=-ldl
+    ;;
 esac
 
 #------------------------------------------------------------------------------
@@ -107,32 +103,36 @@ CXXFLAGS="$CXXFLAGS -DCSFDB -DOCC_CONVERT_SIGNALS"
 CFLAGS="$CFLAGS -DCSFDB -DOCC_CONVERT_SIGNALS"
 
 case $host in
-	*msvc)
-	CPPFLAGS="$CPPFLAGS -DWNT -D__MATH_WNT_H -DHAVE_NO_DLL"
-	CSF_SOCKETLibs_LIB='-lwinspool -lws2_32'
-	CSF_wsock32_LIB='-lws2_32'
-	CSF_gdi32_LIB='-lgdi32'
-	CSF_comdlg32_LIB='-lcomdlg32'
-	LDFLAGS="$LDFLAGS -no-undefined -shared -Wl,--enable-auto-import -Wl,--enable-runtime-pseudo-reloc -Wl,-export-all-symbols"
-	platform=win32
-	;;
-	*)
-
-platform=`uname -s`
-
-case $platform in
-	Linux*) CXXFLAGS="$CXXFLAGS -DLIN -DLININTEL -D_GNU_SOURCE=1"
-		CFLAGS="$CFLAGS -DLIN -DLININTEL -fexceptions"
-		LDFLAGS="$LDFLAGS -lstdc++ -lrt";;
-	SunOS*) CXXFLAGS="$CXXFLAGS -Usun -DSOLARIS -instances=static"
-		CFLAGS="$CFLAGS -Usun -DSOLARIS -instances=static"
-		LDFLAGS="$LDFLAGS -instances=static"
-		CSF_SOCKETLibs_LIB="-lnsl ${CSF_SOCKETLibs_LIB}";;
-        OSF1*)  CXXFLAGS="$CXXFLAGS -DDECOSF1 -D__USE_STD_IOSTREAM -D_RWSTD_NO_EXCEPTIONS" 
-                CFLAGS="$CFLAGS -std1 -DDECOSF1"
-		LD=$CXX;;
-	*) ;;
-esac
+  *msvc)
+    CPPFLAGS="$CPPFLAGS -DWNT -D__MATH_WNT_H -DHAVE_NO_DLL"
+    CSF_SOCKETLibs_LIB='-lwinspool -lws2_32'
+    CSF_wsock32_LIB='-lws2_32'
+    CSF_gdi32_LIB='-lgdi32'
+    CSF_comdlg32_LIB='-lcomdlg32'
+    LDFLAGS="$LDFLAGS -no-undefined -shared -Wl,--enable-auto-import -Wl,--enable-runtime-pseudo-reloc -Wl,-export-all-symbols"
+    platform=win32
+    ;;
+  *)
+    platform=`uname -s`
+    case $platform in
+      Linux*)
+        CXXFLAGS="$CXXFLAGS -DLIN -DLININTEL -D_GNU_SOURCE=1"
+        CFLAGS="$CFLAGS -DLIN -DLININTEL -fexceptions"
+        LDFLAGS="$LDFLAGS -lstdc++ -lrt"
+        ;;
+      SunOS*)
+        CXXFLAGS="$CXXFLAGS -Usun -DSOLARIS -instances=static"
+        CFLAGS="$CFLAGS -Usun -DSOLARIS -instances=static"
+        LDFLAGS="$LDFLAGS -instances=static"
+        CSF_SOCKETLibs_LIB="-lnsl ${CSF_SOCKETLibs_LIB}"
+        ;;
+      OSF1*)
+        CXXFLAGS="$CXXFLAGS -DDECOSF1 -D__USE_STD_IOSTREAM -D_RWSTD_NO_EXCEPTIONS" 
+        CFLAGS="$CFLAGS -std1 -DDECOSF1"
+        LD=$CXX
+        ;;
+      *) ;;
+    esac
 esac
 AC_SUBST([CSF_SOCKETLibs_LIB])
 
@@ -146,33 +146,31 @@ AC_TYPE_SIZE_T
 AC_STRUCT_TM
 
 dnl Checks for library functions.
-AC_TYPE_SIGNAL
 AC_CHECK_FUNCS([gethostname putenv re_comp regcomp strcspn strdup strtol])
 AC_CHECK_FUNCS([statfs statvfs])
 
 
 AC_CACHE_CHECK([if it is OK to define stream input and output],
-[occ_cv_def_ios_ok],
-[AC_LANG([C++])
- AC_TRY_COMPILE([#include <stream.h>
+  [occ_cv_def_ios_ok],
+  [AC_LANG([C++])
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <stream.h>
 static const int input = (ios::in) | (ios::nocreate);
-static const int output= (ios::out);],
-[return 0;],
- occ_cv_def_ios_ok=yes, occ_cv_def_ios_ok=no)
-])
+static const int output= (ios::out);]], [[return 0;]])],
+     [occ_cv_def_ios_ok=yes],
+     [occ_cv_def_ios_ok=no])])
 if test "$occ_cv_def_ios_ok" = yes; then
   AC_DEFINE([DEF_IOS_OK],,[define if the compiler allows redefinition of stream input and output])
 fi
 
-
 AC_CACHE_CHECK([if class ostream has member function form],
-[occ_cv_ostream_form_ok],
-[AC_LANG([C++])
- AC_TRY_COMPILE([#include <iostream.h>],
-[cout << cout.form("%9.3e", 3.14159627e-4) << endl;
-return 0;],
- occ_cv_ostream_form_ok=yes, occ_cv_ostream_form_ok=no)
-])
+  [occ_cv_ostream_form_ok],
+  [AC_LANG([C++])
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <iostream.h>
+]], [[cout << cout.form("%9.3e", 3.14159627e-4) << endl; return 0;]])],
+     [occ_cv_ostream_form_ok=yes],
+     [occ_cv_ostream_form_ok=no])])
 if test "$occ_cv_ostream_form_ok" = yes; then
   AC_DEFINE([OSTREAM_FORM_OK],,[define if the class ostream has member function form])
 fi
@@ -184,13 +182,14 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 # defined in the header <sys/sem.h>
 
 AC_CACHE_CHECK([if union semun is defined in <sys/sem.h>],
-[occ_cv_semun_defined],
-[AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/time.h>
-#include <sys/sem.h>],
-[union semun c;],
- occ_cv_semun_defined=yes, occ_cv_semun_defined=no)
-])
+  [occ_cv_semun_defined],
+  [AC_LANG([C])
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <sys/time.h>
+#include <sys/sem.h>
+]], [[union semun c;]])],
+     [occ_cv_semun_defined=yes],
+     [occ_cv_semun_defined=no])])
 if test "$occ_cv_semun_defined" = yes; then
   AC_DEFINE([SEMUN_DEFINED],,[define if the union semun is in sys/sem.h])
 fi
@@ -199,40 +198,42 @@ fi
 # the member __buf
 
 if test "$occ_cv_semun_defined" = yes; then
-
- AC_CACHE_CHECK([if union semun has member __buf],
- [occ_cv_semun_buf_defined],
- [AC_LANG([C])
- AC_TRY_COMPILE([#include <sys/sem.h>],
- [ union semun c; c.__buf = 0;],
- occ_cv_semun_buf_defined=yes, occ_cv_semun_buf_defined=no)
- ])
- if test "$sumun_buf_defined" = yes; then
-  AC_DEFINE([SEMUN_BUF_DEFINED],,[define if semun has member __buf])
- fi
+  AC_CACHE_CHECK([if union semun has member __buf],
+    [occ_cv_semun_buf_defined],
+    [AC_LANG([C])
+     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <sys/sem.h>
+]], [[ union semun c; c.__buf = 0;]])],
+      [occ_cv_semun_buf_defined=yes],
+      [occ_cv_semun_buf_defined=no])])
+  if test "$sumun_buf_defined" = yes; then
+    AC_DEFINE([SEMUN_BUF_DEFINED],,[define if semun has member __buf])
+  fi
 fi
 
 
 AC_CACHE_CHECK([if function semop takes a value],
-occ_cv_semop_no_reference,
-[AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/sem.h>
-static struct sembuf event_flag ;],
-[int status;
+  [occ_cv_semop_no_reference],
+  [AC_LANG([C])
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <sys/sem.h>
+static struct sembuf event_flag ;]], [[
+ int status;
  int *semid;
  status = semop(*semid,event_flag,1);
-],
- occ_cv_semop_no_reference=yes, occ_cv_semop_no_reference=no)
-])
+]])],
+     [occ_cv_semop_no_reference=yes],
+     [occ_cv_semop_no_reference=no])])
 if test "$occ_cv_semop_no_reference" = yes; then
   AC_DEFINE([SEMOP_NO_REFERENCE],,[define if the function semop takes a value])
 fi
 
 
 AC_CACHE_CHECK([if function semctl takes a value],
-occ_cv_semctl_no_reference,
-[AC_LANG([C])
-AC_TRY_COMPILE([#include <sys/sem.h>
+  [occ_cv_semctl_no_reference],
+  [AC_LANG([C])
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+#include <sys/sem.h>
 int get_semaphore(semid,event,value)
  int *semid, *event, *value;
 {
@@ -240,26 +241,24 @@ int get_semaphore(semid,event,value)
  status = semctl((*semid),*event,GETVAL,value);
  return 0;
 }
-int *a,*b,*c;],
-[if(get_semaphore(a,b,c))
- exit 0;],
- occ_cv_semctl_no_reference=yes, occ_cv_semctl_no_reference=no)
-])
+int *a,*b,*c;]], [[if(get_semaphore(a,b,c)) exit 0;]])],
+     [occ_cv_semctl_no_reference=yes],
+     [occ_cv_semctl_no_reference=no])])
 if test "$occ_cv_semctl_no_reference" = yes; then
   AC_DEFINE([SEMCTL_NO_REFERENCE],,[define if the function semctl takes a value])
 fi
 
-AC_CHECK_LIB(malloc,mallinfo,[
+AC_CHECK_LIB([malloc],[mallinfo],[
   AC_DEFINE([HAVE_MALLINFO],,[Define if we have a function called "mallinfo" in -lmalloc.])
   LIBS="$LIBS -lmalloc"
 ])
 
-AC_CHECK_LIB(sunmath,ieee_handler,[
+AC_CHECK_LIB([sunmath],[ieee_handler],[
   AC_DEFINE([HAVE_SUNMATH],,[Define if we have a function called "ieee_handler" in -lsunmath.])
   LIBS="$LIBS -lsunmath"
 ])
 
-AC_CHECK_LIB(m,finite,[
+AC_CHECK_LIB([m],[finite],[
   AC_DEFINE([HAVE_FINITE],,[Define if we have a function called "finite" in -lm.])
 ])
 
@@ -294,8 +293,14 @@ if test "xyes" != "x$no_x"; then
     CSF_XmuLibs_LIB="$X_LIBS"
     LDFLAGS="$LDFLAGS -L$x_libraries"
   fi
-  AC_CHECK_LIB( [X11], [XCreateWindow], [X_LIBS="${X_LIBS} -lXt -lX11"], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
   AC_CHECK_HEADER( [X11/Xmu/Xmu.h], [], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
+  AC_CHECK_LIB( [X11], [XCreateWindow], [X_LIBS="${X_LIBS} -lXt -lX11"], [HAVE_X11=no] )
+fi
+if test "xyes" = "x$HAVE_X11"; then
   AC_CHECK_LIB( [Xmu], [XmuLookupStandardColormap], [CSF_XmuLibs_LIB="$CSF_XmuLibs_LIB -lXmu"], [HAVE_X11=no], [-lXt -lX11] )
 fi
 AM_CONDITIONAL( [HAVE_X11], [test "xyes" = "x$HAVE_X11"] )
@@ -308,28 +313,25 @@ AM_CONDITIONAL( [HAVE_X11], [test "xyes" = "x$HAVE_X11"] )
 #---------------------------------------------------------------------
 CSF_OpenGlLibs_INCLUDES="$X_INCLUDE"
 CSF_OpenGlLibs_LIB="$X_LIBS"
-if test "xno" = "x$HAVE_X11"; then
-  HAVE_GL=no
-else
-AC_LANG([C])
-  HAVE_GL=yes
-  HAVE_GL_INC=yes
-  AC_CHECK_HEADER( [GL/gl.h], [AC_CHECK_HEADER([GL/glu.h],[],[HAVE_GL_INC=no])], [HAVE_GL_INC=no] )
-  if test "x$HAVE_GL_INC" = "xyes"; then
-    AC_CHECK_TYPE([_GLUfuncptr], [], [CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"], [#include <GL/glu.h>])
-  else
-    HAVE_GL=no
+if test "xyes" = "x$HAVE_X11"; then
+  AC_LANG([C])
+  AC_CHECK_HEADER( [GL/gl.h], [AC_CHECK_HEADER([GL/glu.h],[HAVE_GL=yes],[HAVE_GL=no])], [HAVE_GL=no] )
+  if test "xno" = "x$HAVE_GL"; then
     AC_MSG_NOTICE([Specify CPPFLAGS=-I<opengl_inc_dir> to enable OpenGL support])
   fi
+fi
+if test "xyes" = "x$HAVE_GL"; then
+  AC_CHECK_TYPE([_GLUfuncptr], [], [CSF_OpenGlLibs_INCLUDES="$CSF_OpenGlLibs_INCLUDES -DNOGLUfuncptr=1"], [#include <GL/glu.h>])
+fi
+if test "xyes" = "x$HAVE_GL"; then
   CPPFLAGS="$CSF_OpenGlLibs_INCLUDES $CPPFLAGS"
-  HAVE_GL_LIB=yes
-  AC_CHECK_LIB( [GL], [glClear], [AC_CHECK_LIB([GLU],[gluSphere],[CSF_OpenGlLibs_LIB="$CSF_OpenGlLibs_LIB -lGLU -lGL"],[HAVE_GL_LIB=no],[-lGL])], [HAVE_GL_LIB=no] )
-  if test "xno" = "x$HAVE_GL_LIB"; then
-    HAVE_GL=no
+  AC_CHECK_LIB( [GL], [glClear],
+    [AC_CHECK_LIB([GLU],[gluSphere],[CSF_OpenGlLibs_LIB="$CSF_OpenGlLibs_LIB -lGLU -lGL"],[HAVE_GL=no],[-lGL])],
+    [HAVE_GL=no] )
+  if test "xno" = "x$HAVE_GL"; then
     AC_MSG_NOTICE([Specify LDFLAGS=-L<opengl_lib_dir> to enable OpenGL support])
   fi
 fi
-AM_CONDITIONAL( [HAVE_GL], [test "xyes" = "x$HAVE_GL"] )
 
 #---------------------------------------------------------------------
 #
@@ -338,13 +340,12 @@ AM_CONDITIONAL( [HAVE_GL], [test "xyes" = "x$HAVE_GL"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([freetype],
-  [AC_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
+  [AS_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
   [freetype="${withval}"],[freetype=])
 
 CSF_FREETYPE_INCLUDES=""
 
-HAVE_FREETYPE=no
-if test "xyes" = "x${HAVE_GL}"; then
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$freetype"; then
   AC_LANG([C++])
   CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
   AC_CHECK_HEADER( [ft2build.h], [], [AC_MSG_FAILURE([could not find ft2build.h])] )
@@ -354,7 +355,6 @@ if test "xyes" = "x${HAVE_GL}"; then
     [$CSF_OpenGlLibs_LIB])
   CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
 fi
-AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 
 #---------------------------------------------------------------------
 #
@@ -365,18 +365,17 @@ AM_CONDITIONAL( [HAVE_FREETYPE], [test "xyes" = "x$HAVE_FREETYPE"] )
 HAVE_FTGL_NEWER212=no
 ftgl=
 AC_ARG_WITH([ftgl212],
-  [AC_HELP_STRING([--with-ftgl212=DIR],[Location of FTGL 2.1.2])],
+  [AS_HELP_STRING([--with-ftgl212=DIR],[Location of FTGL 2.1.2])],
   [ftgl="${withval}"])
 AC_ARG_WITH([ftgl],
-  [AC_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
+  [AS_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
   [ftgl="${withval}"
-   HAVE_FTGL_NEWER212=yes])
+   HAVE_FTGL_NEWER212=yes],[ftgl=])
 
-CSF_FTGL_INCLUDES=""
-CSF_FTGL_LIB=""
+CSF_FTGL_INCLUDES=
+CSF_FTGL_LIB=
 
-HAVE_FTGL=no
-if test "xyes" = "x${HAVE_FREETYPE}"; then
+if test "xyes" = "x$HAVE_FREETYPE"; then
   AC_LANG([C++])
   HAVE_FTGL=yes
   CPPFLAGS_sv=$CPPFLAGS
@@ -401,15 +400,16 @@ if test "xyes" = "x${HAVE_FREETYPE}"; then
       [AC_MSG_RESULT(yes)],
       [AC_MSG_FAILURE([could not link against ftgl])])
   else
-    AC_TRY_LINK([
+    AC_LINK_IFELSE([AC_LANG_PROGRAM([
 #include <FTGL/FTGL.h>
 #include <FTGL/FTGLTextureFont.h>
-], [FTGLTextureFont font("");], [AC_MSG_RESULT(yes)], [AC_MSG_FAILURE([could not link against ftgl])])
+], [FTGLTextureFont font("");])],
+      [AC_MSG_RESULT(yes)],
+      [AC_MSG_FAILURE([could not link against ftgl])])
   fi
   CPPFLAGS=$CPPFLAGS_sv
   LIBS=$LIBS_sv
 fi
-AM_CONDITIONAL( [HAVE_FTGL], [test "xyes" = "x$HAVE_FTGL"] )
 
 #---------------------------------------------------------------------
 #
@@ -418,46 +418,41 @@ AM_CONDITIONAL( [HAVE_FTGL], [test "xyes" = "x$HAVE_FTGL"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([gl2ps],
-  [AC_HELP_STRING([--with-gl2ps=DIR],[Location of GL2PS])],
+  [AS_HELP_STRING([--with-gl2ps=DIR],[Location of GL2PS])],
   [gl2ps="${withval}"],[gl2ps=])
 
 if test "xno" = "x$gl2ps"; then
-# user specified --without-gl2ps
-HAVE_GL2PS=no
-ENABLE_GL2PS=no
-DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
-else
-  if test "xyes" = "x$gl2ps"; then
-    # user specified --with-gl2ps, without =DIR
-    AC_MSG_NOTICE([--with-gl2ps=DIR: DIR not specified, assuming /usr])
-    gl2ps="/usr"
-  fi
-CSF_GL2PS_INCLUDES=""
-CSF_GL2PS_LIB=""
+  # user specified --without-gl2ps
+  HAVE_GL2PS=no
+  ENABLE_GL2PS=no
+  DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
+elif test "xyes" = "x$gl2ps"; then
+  # user specified --with-gl2ps, without =DIR
+  AC_MSG_NOTICE([--with-gl2ps=DIR: DIR not specified, assuming /usr])
+  gl2ps="/usr"
+fi
 
-if test "xno" = "x$HAVE_GL"; then
-HAVE_GL2PS=no
+CSF_GL2PS_INCLUDES=
+CSF_GL2PS_LIB=
+
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$gl2ps"; then
+  AC_LANG([C++])
+  ENABLE_GL2PS=yes
+  CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
+  AC_CHECK_HEADER( [gl2ps.h], [HAVE_GL2PS=yes], [HAVE_GL2PS=no] )
+  if test "xyes" = "x$HAVE_GL2PS"; then
+    CSF_GL2PS_INCLUDES="-I$gl2ps/include"
+    LDFLAGS="-L$gl2ps/lib $LDFLAGS"
+    LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+    AC_CHECK_LIB( [gl2ps], [gl2psEndPage], [CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"], [HAVE_GL2PS=no] )
+  fi
+fi
+if test "xyes" = "x$HAVE_GL2PS"; then
+  AC_DEFINE([HAVE_GL2PS],,[define when building with gl2ps])
 else
-AC_LANG([C++])
-ENABLE_GL2PS=yes
-HAVE_GL2PS=yes
-HAVE_GL2PS_INC=yes
-CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
-AC_CHECK_HEADER( [gl2ps.h], [], [HAVE_GL2PS_INC=no] )
-	if test "x$HAVE_GL2PS_INC" = "xyes"; then
-	CSF_GL2PS_INCLUDES="-I$gl2ps/include -DHAVE_GL2PS"
-	HAVE_GL2PS_LIB=yes
-	AC_MSG_CHECKING([for gl2psEndPage in -lgl2ps])
-	LDFLAGS="-L$gl2ps/lib $LDFLAGS"
-	LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-	AC_CHECK_LIB( [gl2ps], [gl2psEndPage], [CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"], [HAVE_GL2PS_LIB=no] )
-	fi
-	  if test "xno" = "x$HAVE_GL2PS_LIB"; then
-	    HAVE_GL2PS=no
-	  fi
+  CSF_GL2PS_INCLUDES=
+  CSF_GL2PS_LIB=
 fi
-fi
-AM_CONDITIONAL( [HAVE_GL2PS], [test "xyes" = "x$HAVE_GL2PS"] )
 
 #---------------------------------------------------------------------
 #
@@ -466,7 +461,7 @@ AM_CONDITIONAL( [HAVE_GL2PS], [test "xyes" = "x$HAVE_GL2PS"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([freeimage],
-  [AC_HELP_STRING([--with-freeimage=DIR],[Location of freeimage])],
+  [AS_HELP_STRING([--with-freeimage=DIR],[Location of freeimage])],
   [freeimage="${withval}"],[freeimage=])
 
 if test "xno" = "x$freeimage"; then
@@ -474,34 +469,35 @@ if test "xno" = "x$freeimage"; then
   HAVE_FREEIMAGE=no
   ENABLE_FREEIMAGE=no
   DISABLE_FREEIMAGE_REASON="(--with-freeimage=DIR option was not defined)"
-else
-  if test "xyes" = "x$freeimage"; then
-    # user specified --with-freeimage, without =DIR
-    AC_MSG_NOTICE([--with-freeimage=DIR: DIR not specified, assuming /usr])
-    freeimage="/usr"
-  fi
-	ENABLE_FREEIMAGE=yes	
-	CSF_FREEIMAGE_INCLUDES=""
-	CSF_FREEIMAGE_LIB=""
+elif test "xyes" = "x$freeimage"; then
+  # user specified --with-freeimage, without =DIR
+  AC_MSG_NOTICE([--with-freeimage=DIR: DIR not specified, assuming /usr])
+  freeimage="/usr"
+fi
+
+CSF_FreeImagePlus_INCLUDES=
+CSF_FreeImagePlus_LIB=
+
+if test "xno" != "x$freeimage"; then
+  ENABLE_FREEIMAGE=yes
 
   AC_LANG([C++])
-  HAVE_FREEIMAGE=yes
-  HAVE_FREEIMAGE_INC=yes
   CPPFLAGS="-I$freeimage/include $CPPFLAGS";
-  AC_CHECK_HEADER( [FreeImage.h], [], [HAVE_FREEIMAGE_INC=no] )
-  if test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
-    CSF_FREEIMAGE_INCLUDES="-I$freeimage/include"
-    HAVE_FREEIMAGE_LIB=yes
-    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimage])
+  AC_CHECK_HEADER( [FreeImage.h], [HAVE_FREEIMAGE=yes], [HAVE_FREEIMAGE=no] )
+  if test "xyes" = "x$HAVE_FREEIMAGE"; then
+    CSF_FreeImagePlus_INCLUDES="-I$freeimage/include"
     LDFLAGS="-L$freeimage/lib $LDFLAGS"
-    LIBS="$CSF_FREEIMAGE_LIB $LIBS"
-    AC_CHECK_LIB( [freeimage], [FreeImage_OpenMemory], [CSF_FREEIMAGE_LIB="-L$freeimage/lib -lfreeimage"], [HAVE_FREEIMAGE_LIB=no] )
-
-  if test "xno" = "x$HAVE_FREEIMAGE_LIB"; then
-    HAVE_FREEIMAGE=no
+    LIBS="$CSF_FreeImagePlus_LIB $LIBS"
+    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE=no] )
   fi
 fi
+if test "xyes" = "x$HAVE_FREEIMAGE"; then
+  AC_DEFINE([HAVE_FREEIMAGE],,[define when building with freeimage])
+else
+  CSF_FreeImagePlus_INCLUDES=
+  CSF_FreeImagePlus_LIB=
 fi
+AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
 
 #---------------------------------------------------------------------
 #
@@ -510,30 +506,31 @@ fi
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([tbb-include],
-  [AC_HELP_STRING([--with-tbb-include=DIR],[Location of Intel Threading Building Blocks includes])],
+  [AS_HELP_STRING([--with-tbb-include=DIR],[Location of Intel Threading Building Blocks includes])],
   [tbb_inc="${withval}"],[tbb_inc=])
 
-if test "xno" = "xno$tbb_inc"; then
-  # user specified --without-tbb-lib
+if test "xno" = "x$tbb_inc"; then
+  # user specified --without-tbb-include
   HAVE_TBB=no
   ENABLE_TBB_INC=no
   DISABLE_TBB_REASON_INC="(--with-tbb-include=DIR option was not defined)"
-else
+elif test "xyes" = "x$tbb_inc"; then
+  # user specified --with-tbb-include, without =DIR
+  AC_MSG_NOTICE([--with-tbb-include=DIR: DIR not specified])
+fi
 
 CSF_TBB_INCLUDES=""
-ENABLE_TBB_INC=yes
-AC_LANG([C++])
-HAVE_TBB_INC=yes
-if test "x$tbb_inc" != "x"; then
-  CPPFLAGS="-I$tbb_inc $CPPFLAGS";
-else
-  AC_MSG_NOTICE([--with-tbb-include key is not defined])
-fi
-AC_CHECK_HEADER( [tbb/tbb.h], [], [HAVE_TBB_INC=no] )
-if test "x$HAVE_TBB_INC" != "xyes"; then
-  AC_MSG_NOTICE([Specify --with-tbb-include to enable TBB support])
-fi
 
+if test "xno" != "x$tbb_inc"; then
+  ENABLE_TBB_INC=yes
+  AC_LANG([C++])
+  if test "xyes" != "x$tbb_inc"; then
+    CPPFLAGS="-I$tbb_inc $CPPFLAGS";
+  fi
+  AC_CHECK_HEADER( [tbb/tbb.h], [HAVE_TBB=yes], [HAVE_TBB=no] )
+  if test "x$HAVE_TBB" != "xyes"; then
+    AC_MSG_NOTICE([Specify --with-tbb-include to enable TBB support])
+  fi
 fi
 
 #---------------------------------------------------------------------
@@ -543,7 +540,7 @@ fi
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([tbb-library],
-  [AC_HELP_STRING([--with-tbb-library=DIR],[Location of Intel Threading Building Blocks libraries])],
+  [AS_HELP_STRING([--with-tbb-library=DIR],[Location of Intel Threading Building Blocks libraries])],
   [tbb_lib="${withval}"],[tbb_lib=])
 
 if test "xno" = "xno$tbb_lib"; then
@@ -551,34 +548,39 @@ if test "xno" = "xno$tbb_lib"; then
   HAVE_TBB=no
   ENABLE_TBB_LIB=no
   DISABLE_TBB_REASON_LIB="(--with-tbb-library=DIR option was not defined)"
-else
+elif test "xyes" = "x$tbb_lib"; then
+  # user specified --with-tbb-library, without =DIR
+  AC_MSG_NOTICE([--with-tbb-library=DIR: DIR not specified])
+fi
+
 ENABLE_TBB_LIB=yes
 CSF_TBB_LIB=""
-HAVE_TBB=yes
 
-if test "x$HAVE_TBB_INC" = "xyes"; then
-  if test "x$tbb_lib" != "x"; then
+if test "xno" != "x$HAVE_TBB"; then
+  if test "xyes" != "x$tbb_lib"; then
     LDFLAGS="-L$tbb_lib $LDFLAGS"
   fi
   AC_CHECK_LIB([tbb], [TBB_runtime_interface_version], [], [HAVE_TBB=no])
-else
-  HAVE_TBB=no
+  if test "xno" = "x$HAVE_TBB"; then
+    AC_MSG_NOTICE([Specify --with-tbb-library to enable TBB support])
+  fi
 fi
 
-if test "x$HAVE_TBB" = "xyes"; then
-  if test "x$tbb_inc" != "x"; then
-    CSF_TBB_INCLUDES="-I$tbb_inc -DHAVE_TBB"
+if test "xno" != "x$HAVE_TBB"; then
+  if test "x$tbb_inc" != "xyes"; then
+    CSF_TBB_INCLUDES="-I$tbb_inc"
   fi
-  if test "x$tbb_lib" != "x"; then
+  if test "x$tbb_lib" != "xyes"; then
     CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
   fi
+fi
+if test "xyes" = "x$HAVE_TBB"; then
+  AC_DEFINE([HAVE_TBB],,[define when building with TBB])
 else
-  AC_MSG_NOTICE([Specify --with-tbb-library to enable TBB support])
+  CSF_TBB_INCLUDES=
+  CSF_TBB_LIB=
 fi
 
-fi
-
-AM_CONDITIONAL( [HAVE_TBB], [test "xyes" = "x$HAVE_TBB"] )
 
 #---------------------------------------------------------------------
 #
@@ -587,38 +589,35 @@ AM_CONDITIONAL( [HAVE_TBB], [test "xyes" = "x$HAVE_TBB"] )
 #  
 #---------------------------------------------------------------------
 AC_ARG_WITH([qt],
-  [AC_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
+  [AS_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
   [qt="${withval}"],[qt=])
 
-CSF_QT_INCLUDES=""
-CSF_QT_LIB=""
+CSF_QT_INCLUDES=
+CSF_QT_LIB=
 
-if test "xno" = "x$HAVE_GL"; then
-  HAVE_QT=no
-else
+if test "xyes" = "x$HAVE_GL" && test "xno" != "x$qt"; then
   AC_LANG([C++])
-  HAVE_QT=yes
-  HAVE_QT_INC=yes
-  if test "x$qt" != "x"; then
+  if test "x$qt" != "xyes"; then
     CPPFLAGS="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include $CPPFLAGS";
   else
     AC_MSG_NOTICE([--with-qt key is not defined])
   fi
-  AC_CHECK_HEADER( [Qt/qpixmap.h], [], [HAVE_QT_INC=no] )
-  if test "x$HAVE_QT_INC" = "xyes"; then
-    CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
-    HAVE_QT_LIB=yes
-    AC_MSG_CHECKING([for connect in -lQtGui])
-    LDFLAGS="-L$qt/lib $LDFLAGS"
-    LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-    AC_CHECK_LIB( [QtGui], [connect], [CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"], [HAVE_QT_LIB=no] )
-  fi
-  if test "xno" = "x$HAVE_QT_LIB"; then
-    HAVE_QT=no
+  AC_CHECK_HEADER( [Qt/qpixmap.h], [HAVE_QT=yes], [HAVE_QT=no] )
+fi
+if test "xno" != "x$HAVE_QT"; then
+  CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
+  AC_MSG_CHECKING([for connect in -lQtGui])
+  LDFLAGS="-L$qt/lib $LDFLAGS"
+  LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+  AC_CHECK_LIB( [QtGui], [connect], [CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"], [HAVE_QT=no] )
+  if test "xno" = "x$HAVE_QT"; then
     AC_MSG_NOTICE([Specify --with-qt to enable QT support])
   fi
 fi
-AM_CONDITIONAL( [HAVE_QT], [test "xyes" = "x$HAVE_QT"] )
+if test "xno" = "x$HAVE_QT"; then
+  CSF_QT_INCLUDES=
+  CSF_QT_LIB=
+fi
 
 AC_LANG([C])
 
@@ -635,16 +634,13 @@ LIBS="$LIBS_save"
 #  
 #---------------------------------------------------------------------
 AC_MSG_CHECKING([if platform is 64-bit])
-AC_TRY_COMPILE( [], 
- [int array[((int)sizeof(void*))-6];],
- [AC_MSG_RESULT([yes]); CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
- [AC_MSG_RESULT([no])] )
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int array[((int)sizeof(void*))-6];]])],[AC_MSG_RESULT([yes]); CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],[AC_MSG_RESULT([no]) ])
 
 AC_ARG_ENABLE([debug],
-              [AC_HELP_STRING([--enable-debug],[Debug Symbols])],
+              [AS_HELP_STRING([--enable-debug],[Debug Symbols])],
               [enable_debug=${enableval}],[enable_debug=no])
 AC_ARG_ENABLE([production],
-              [AC_HELP_STRING([--enable-production],[Optimized build (default)])],
+              [AS_HELP_STRING([--enable-production],[Optimized build (default)])],
               [enable_prod=${enableval}],[enable_prod=])
 
 # Enable production unless enable-default was specified
@@ -668,24 +664,24 @@ fi
 
 #----------------------------------------------------------------------
 #
-# Enalbe/Disable Modules
+# Enable/Disable Modules
 #
 #----------------------------------------------------------------------
 
 AC_ARG_ENABLE([model],
-  [AC_HELP_STRING([--disable-model],[Disable model components])],
+  [AS_HELP_STRING([--disable-model],[Disable model components])],
   [ENABLE_MODEL=${enableval}],[ENABLE_MODEL=yes])
 AC_ARG_ENABLE([vis],
-  [AC_HELP_STRING([--disable-vis],[Don't build visualization component])],
+  [AS_HELP_STRING([--disable-vis],[Don't build visualization component])],
   [ENABLE_VIS=${enableval}],[ENABLE_VIS=])
 AC_ARG_ENABLE([ocaf],
-  [AC_HELP_STRING([--disable-ocaf],[Don't build application framework])],
+  [AS_HELP_STRING([--disable-ocaf],[Don't build application framework])],
   [ENABLE_OCAF=${enableval}],[ENABLE_OCAF=])
 AC_ARG_ENABLE([de],
-  [AC_HELP_STRING([--disable-de],[Don't build data exchange])],
+  [AS_HELP_STRING([--disable-de],[Don't build data exchange])],
   [ENABLE_DE=${enableval}],[ENABLE_DE=])
 AC_ARG_ENABLE([draw],
-  [AC_HELP_STRING([--disable-draw],[Don't build test harness])],
+  [AS_HELP_STRING([--disable-draw],[Don't build test harness])],
   [ENABLE_DRAW=${enableval}],[ENABLE_DRAW=])
 
 # Process options from above.  The behavior we want is:
@@ -831,8 +827,8 @@ AC_SUBST([CSF_FTGL_INCLUDES])
 AC_SUBST([CSF_FTGL_LIB])
 AC_SUBST([CSF_GL2PS_INCLUDES])
 AC_SUBST([CSF_GL2PS_LIB])
-AC_SUBST([CSF_FREEIMAGE_INCLUDES])
-AC_SUBST([CSF_FREEIMAGE_LIB])
+AC_SUBST([CSF_FreeImagePlus_INCLUDES])
+AC_SUBST([CSF_FreeImagePlus_LIB])
 AC_SUBST([CSF_advapi32_LIB])
 AC_SUBST([CSF_gdi32_LIB])
 AC_SUBST([CSF_user32_LIB])
@@ -873,7 +869,9 @@ echo "Test Harness (DRAW)         $ENABLE_DRAW $DISABLE_DRAW_REASON"
 echo
 
 
-AC_OUTPUT([Makefile adm/make/Makefile \
+AC_CONFIG_HEADERS([config.h])
+
+AC_CONFIG_FILES([Makefile adm/make/Makefile \
 adm/make/TKernel/Makefile \
 adm/make/TKMath/Makefile \
 adm/make/TKAdvTools/Makefile \
@@ -941,3 +939,4 @@ adm/make/TKXDEDRAW/Makefile \
 adm/make/TKTObjDRAW/Makefile \
 adm/make/DRAWEXE/Makefile \
 ])
+AC_OUTPUT

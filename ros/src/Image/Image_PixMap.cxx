@@ -3,6 +3,10 @@
 // Author     KGV
 // Copyright  OpenCASCADE 2010
 
+#ifdef HAVE_CONFIG_H
+# include <config.h>
+#endif
+
 #ifdef HAVE_FREEIMAGE
   #include <FreeImagePlus.h>
   #include <Image_PixMap.ixx>
