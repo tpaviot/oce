@@ -4,9 +4,16 @@
 
 #include <FTGL/FTGLTextureFont.h>
 
+#include <GL/gl.h>
+
 #undef TRACE
 
 #define DEFAULT_FONT_HEIGHT 16
+
+#ifdef __BORLANDC__
+#pragma link "freetype.lib"
+#pragma link "ftgl_dynamic_MTD.lib"
+#endif
 
 float h_scale = 0;
 
