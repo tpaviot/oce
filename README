@@ -17,4 +17,4 @@ There is no configure script, how do I compile on Unix?
 =======================================================
 cd oce/ros
 autoreconf -fi
-Then read ros/README.txt for instructions on compiling
+Then read INSTALL for instructions on compiling
