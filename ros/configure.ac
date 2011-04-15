@@ -855,13 +855,6 @@ echo "CXXFLAGS = $CXXFLAGS"
 echo "CPPFLAGS = $CPPFLAGS"
 echo "LDFLAGS  = $LDFLAGS"
 echo 
-echo "3rdparty optional products       "
-echo "---------------------------------"
-echo "gl2ps         : $ENABLE_GL2PS $DISABLE_GL2PS_REASON"
-echo "freeimage     : $ENABLE_FREEIMAGE $DISABLE_FREEIMAGE_REASON"
-echo "tbb includes  : $ENABLE_TBB_INC $DISABLE_TBB_REASON_INC"
-echo "tbb libraries : $ENABLE_TBB_LIB $DISABLE_TBB_REASON_LIB"
-echo
 echo "Component                   Build"
 echo "--------------------------  -----"
 echo "Model data & algorithms     $ENABLE_MODEL $DISABLE_MODEL_REASON"
