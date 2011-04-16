@@ -14,7 +14,7 @@ Unpack OCExxxx.tar.gz to some folder - ${DISTRIBUTIVE_DIR}.
 for example DISTRIBUTIVE_DIR=/tmp/OCE-0.1
 $tar -zxvf OCExxxx.tar.gz
 then
-$cd  ${DISTRIBUTIVE_DIR}/ros
+$cd  ${DISTRIBUTIVE_DIR}
 
 2. Configure step
 =================

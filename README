@@ -15,6 +15,6 @@ git pull
 
 There is no configure script, how do I compile on Unix?
 =======================================================
-cd oce/ros
+cd oce
 autoreconf -fi
 Then read INSTALL for instructions on compiling
