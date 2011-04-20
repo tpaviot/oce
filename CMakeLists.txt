@@ -378,7 +378,7 @@ IF (NOT WIN32)
     INCLUDE(CheckTypeSize)
     SET(CMAKE_EXTRA_INCLUDE_FILES sys/time.h)
     CHECK_TYPE_SIZE(tm TM_IN_SYS_TIME)
-    SET(CMAKE_EXTRA_INCLUDE_FILES) 
+    SET(CMAKE_EXTRA_INCLUDE_FILES)
     INCLUDE (CheckCSourceCompiles)
     CHECK_C_SOURCE_COMPILES("
     #include <sys/time.h>
@@ -436,7 +436,7 @@ IF (NOT WIN32)
     #include <iostream>
     int main(){std::cout << std::cout.form(\"%9.3e\", 3.14159627e-4) << std::endl;return 0;}
     "
-    OSTREAM_FORM_OK)	
+    OSTREAM_FORM_OK)
     INCLUDE(TestBigEndian)
     TEST_BIG_ENDIAN(WORDS_BIGENDIAN)
     SET(STDC_HEADERS TRUE) # Only for really old systems, being lazy
