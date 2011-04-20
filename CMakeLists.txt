@@ -448,7 +448,7 @@ IF (NOT WIN32)
 ENDIF(NOT WIN32)
 
 CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_config.h.cmake
-	${CMAKE_CURRENT_BINARY_DIR}/inc/config.h )
+	${CMAKE_CURRENT_BINARY_DIR}/inc/oce-config.h )
 
 ############################
 # Check 32/64 bit platform #
