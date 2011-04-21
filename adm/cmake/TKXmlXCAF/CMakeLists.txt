@@ -1,0 +1,23 @@
+SET(TOOLKIT TKXmlXCAF)
+
+SET(TOOLKIT_MODULES
+	XmlXCAFDrivers
+	XmlMXCAFDoc
+)
+SET(TOOLKIT_DEPENDS
+	TKernel
+	TKMath
+	TKLCAF
+	TKG2d
+	TKXmlL
+	TKBRep
+	TKG3d
+	TKXCAF
+	TKCAF
+	TKCDF
+	TKGeomBase
+	TKXml
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

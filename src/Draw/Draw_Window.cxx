@@ -1255,7 +1255,9 @@ prompt:
 #include <Draw_Appli.hxx>
 #include <OSD.hxx>
 
-#include <tk.h>
+#ifdef _TK
+# include <tk.h>
+#endif
 
 #define PENWIDTH 1
 #define CLIENTWND 0

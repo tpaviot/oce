@@ -1,0 +1,22 @@
+SET(TOOLKIT TKBinXCAF)
+
+SET(TOOLKIT_MODULES
+	BinXCAFDrivers
+	BinMXCAFDoc
+)
+SET(TOOLKIT_DEPENDS
+	TKernel
+	TKMath
+	TKLCAF
+	TKG2d
+	TKBinL
+	TKBRep
+	TKBin
+	TKG3d
+	TKXCAF
+	TKCAF
+	TKCDF
+)
+
+INCLUDE(../OccBuildKit.cmake)
+

@@ -1,0 +1,16 @@
+SET(TOOLKIT TKSTEP209)
+
+SET(TOOLKIT_MODULES
+	StepElement
+	StepFEA
+	RWStepElement
+	RWStepFEA
+)
+SET(TOOLKIT_DEPENDS
+	TKSTEPBase
+	TKernel
+	TKXSBase
+)
+
+INCLUDE(../OccBuildKit.cmake)
+
