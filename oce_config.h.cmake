@@ -315,5 +315,9 @@
 # define size_t unsigned
 #endif
 
+/* Location where resource files will be installed. */
+#cmakedefine OCE_INSTALL_DATA_DIR "@OCE_INSTALL_DATA_DIR@"
 
+/* Location where TKOpenGl shared library will be installed. */
+#cmakedefine OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@"
 

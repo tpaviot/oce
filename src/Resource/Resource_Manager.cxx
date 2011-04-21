@@ -57,6 +57,8 @@ Resource_Manager::Resource_Manager(const Standard_CString aName,
   Debug = (getenv("ResourceDebug") != NULL) ;
 
   TCollection_AsciiString EnvVar, CSF_ = "CSF_" ;
+  TCollection_AsciiString DefaultVar;
+  TCollection_AsciiString Name = aName ;
   TCollection_AsciiString Directory ;
   Standard_CString dir ;
 
@@ -69,9 +71,19 @@ Resource_Manager::Resource_Manager(const Standard_CString aName,
     Load(Directory,myName,myRefMap);
   }
   else
+  {
+#ifdef OCE_INSTALL_DATA_DIR
+    if ( Name.IsEqual("STEP") || Name.IsEqual("IGES"))
+      DefaultVar = OCE_INSTALL_DATA_DIR "/src/XSTEPResource";
+    else
+      DefaultVar = OCE_INSTALL_DATA_DIR "/src/StdResource";
+    Load(DefaultVar,myName,myRefMap);
+#else
     if (myVerbose)
       cout << "Resource Manager Warning: Environment variable \"" << EnvVar
 	   << "\" not set." << endl;
+#endif
+  }
 
   EnvVar = CSF_ + aName + "UserDefaults" ;
   if ((dir = getenv (EnvVar.ToCString())) != NULL) {

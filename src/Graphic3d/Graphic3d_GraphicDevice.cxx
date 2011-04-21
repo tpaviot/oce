@@ -223,9 +223,13 @@ Standard_Boolean Graphic3d_GraphicDevice::ShrIsDefined (Standard_CString& aShr) 
     glshr = (char *) malloc (buffString.Length() + 1);
     memcpy(glshr, buffString.ToCString(), buffString.Length() + 1);
   } else {
+#ifdef OCE_DEFAULT_CSF_GraphicShr
+    glshr = OCE_DEFAULT_CSF_GraphicShr;
+#else
     aShr = NULL;
     printf("You have not defined CSF_GraphicShr or CASROOT, aborting...");
     return Standard_False;
+#endif
   }
  
  aShr = glshr;

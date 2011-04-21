@@ -181,6 +181,11 @@ Standard_Boolean XmlLDrivers_DocumentStorageDriver::WriteToDomDocument
   if (aResourceDir.IsEmpty()) {
     // now try by CASROOT
     aResourceDir = getenv (aCSFVariable[1]);
+#ifdef OCE_INSTALL_DATA_DIR
+    if (aResourceDir.IsEmpty()) {
+      aResourceDir = OCE_INSTALL_DATA_DIR;
+    }
+#endif
     if ( !aResourceDir.IsEmpty() ) {
       aResourceDir += "/src/XmlOcafResource" ;
       aToSetCSFVariable = Standard_True; //CSF variable to be set later

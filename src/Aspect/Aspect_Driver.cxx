@@ -35,6 +35,11 @@ Aspect_Driver::Aspect_Driver () {
   fontdir =  getenv("CSF_MDTVFontDirectory" );
   if ( !fontdir) {
     casroot  = getenv("CASROOT");
+#ifdef OCE_INSTALL_DATA_DIR
+    if ( !casroot ) {
+      casroot = OCE_INSTALL_DATA_DIR;
+    }
+#endif
     if ( casroot ) {
       TCollection_AsciiString CasRootString (casroot);
       CasRootString += "/src/FontMFT" ; 

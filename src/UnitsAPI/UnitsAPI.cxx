@@ -35,6 +35,11 @@ void UnitsAPI::CheckLoading (const UnitsAPI_SystemUnits aSystemUnits)
     else {
       OSD_Environment CasRootEnv("CASROOT");
       TCollection_AsciiString CasRootString(CasRootEnv.Value());
+#ifdef OCE_INSTALL_DATA_DIR
+      if (CasRootString.Length() == 0 )  {
+        CasRootString = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if (CasRootString.Length() > 0 )  {
 	CasRootString += "/src/UnitsAPI/Lexi_Expr.dat" ;
 	Units::LexiconFile(CasRootString.ToCString());
@@ -49,6 +54,11 @@ void UnitsAPI::CheckLoading (const UnitsAPI_SystemUnits aSystemUnits)
     else {
       OSD_Environment CasRootEnv("CASROOT");
       TCollection_AsciiString CasRootString(CasRootEnv.Value());
+#ifdef OCE_INSTALL_DATA_DIR
+      if (CasRootString.Length() == 0 )  {
+        CasRootString = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if (CasRootString.Length() > 0 ) {
 	CasRootString += "/src/UnitsAPI/Units.dat";
 	Units::UnitsFile(CasRootString.ToCString());

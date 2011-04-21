@@ -28,6 +28,11 @@ static TCollection_AsciiString GetEnvir ( ) {
     Standard_Boolean HasDefinition = Standard_False ;
     if ( !envir ) { 
       casroot  = getenv("CASROOT");
+#ifdef OCE_INSTALL_DATA_DIR
+      if ( !casroot ) {
+	casroot  = OCE_INSTALL_DATA_DIR;
+      }
+#endif
       if ( casroot ) {
 	VarName = TCollection_AsciiString  (casroot);
 	VarName += "/src/Textures" ;

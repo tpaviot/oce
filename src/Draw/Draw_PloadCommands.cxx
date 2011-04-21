@@ -54,6 +54,11 @@ static Standard_Boolean FindPluginFile (TCollection_AsciiString& thePluginName, 
     // now try by CASROOT
     aPluginDir = getenv("CASROOT");
 
+#ifdef OCE_INSTALL_DATA_DIR
+    if ( aPluginDir.IsEmpty() ) {
+      aPluginDir = OCE_INSTALL_DATA_DIR;
+    }
+#endif
     if ( !aPluginDir.IsEmpty() ) {
       aPluginDir +="/src/DrawResources" ;
       aToSetCSFVariable = Standard_True; //CSF variable to be set later
