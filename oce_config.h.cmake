@@ -257,7 +257,7 @@
 #cmakedefine OSTREAM_FORM_OK 
 
 /* Name of package */
-#define PACKAGE "OpenCAS"
+#define PACKAGE "OCE"
 
 /* Define if compiler has function prototypes */
 #cmakedefine PROTOTYPES
@@ -294,7 +294,7 @@
 #cmakedefine TM_IN_SYS_TIME
 
 /* Version number of package */
-#define VERSION "4.0DVP1"
+#define VERSION "0.1.0"
 
 /* Define if your processor stores words with the most significant byte first
    (like Motorola and SPARC, unlike Intel and VAX). */

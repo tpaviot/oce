@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CASROOT=@OpenCASCADE_INSTALL_DATA_DIR@
+export CASROOT=@OCE_INSTALL_DATA_DIR@
 
 export CSF_MDTVFontDirectory=$CASROOT/src/FontMFT
 export CSF_LANGUAGE=us
@@ -13,7 +13,7 @@ export CSF_StandardDefaults=$CASROOT/src/StdResource
 export CSF_PluginDefaults=$CASROOT/src/StdResource
 export CSF_XCAFDefaults=$CASROOT/src/StdResource
 export CSF_StandardLiteDefaults=$CASROOT/src/StdResource
-export CSF_GraphicShr=@OpenCASCADE_INSTALL_LIB_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@TKOpenGl@CMAKE_SHARED_LIBRARY_SUFFIX@
+export CSF_GraphicShr=@OCE_DEFAULT_CSF_GraphicShr@
 export CSF_UnitsLexicon=$CASROOT/src/UnitsAPI/Lexi_Expr.dat
 export CSF_UnitsDefinition=$CASROOT/src/UnitsAPI/Units.dat
 export CSF_IGESDefaults=$CASROOT/src/XSTEPResource
