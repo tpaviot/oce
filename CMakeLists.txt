@@ -180,7 +180,14 @@ ENDIF (NOT WIN32)
 
 IF(${PROJECT_NAME}_VISUALISATION_FULL)
 	FIND_LIBRARY( X11_Xmu_LIB Xmu PATHS /usr/openwin/lib )
-	FIND_PACKAGE(OpenGL REQUIRED)
+	IF (NOT APPLE)
+	  FIND_PACKAGE(OpenGL REQUIRED)
+	ELSE (NOT APPLE)
+	  # under OSX, builtin FindOpenGl.cmake returns Cocoa OpenGL implementation
+	  # oce requires the X11 based OpenGL
+	  SET(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
+	  SET(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
+	ENDIF (NOT APPLE)
 	FIND_PACKAGE(Freetype REQUIRED)
 	FIND_PATH(FTGL_V212_INCLUDE_DIR FTGL/FTFace.h DOC "Location of header files for FTGL 2.1.2" ${CMAKE_SYSTEM_INCLUDE_PATH})
 	FIND_PATH(FTGL_INCLUDE_DIR FTGL/ftgl.h "Location of header files for FTGL > 2.1.2" ${CMAKE_SYSTEM_INCLUDE_PATH})
