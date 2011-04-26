@@ -182,13 +182,20 @@ void BRepMesh_FastDiscret::Perform(const TopoDS_Shape& shape)
   }
   
   // mesh faces in parallel threads using TBB
-#ifdef HAVE_TBB
   if (Standard::IsReentrant())
+  {
+#ifdef HAVE_TBB
     tbb::parallel_for_each (aFaces.begin(), aFaces.end(), *this);
-  else
+#else
+    int i, n = aFaces.size();
+#pragma omp parallel for private(i)
+    for (i = 0; i < n; ++i)
+      Process (aFaces[i]);
 #endif
-  for (std::vector<TopoDS_Face>::iterator it(aFaces.begin()); it != aFaces.end(); it++)
-    Process (*it);
+  }
+  else
+    for (std::vector<TopoDS_Face>::iterator it(aFaces.begin()); it != aFaces.end(); it++)
+      Process (*it);
 }
 
 

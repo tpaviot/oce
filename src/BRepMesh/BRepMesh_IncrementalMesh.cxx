@@ -212,13 +212,20 @@ void BRepMesh_IncrementalMesh::Update(const TopoDS_Shape& S)
   }
 
   // mesh faces in parallel threads using TBB
-#ifdef HAVE_TBB
   if (Standard::IsReentrant())
+  {
+#ifdef HAVE_TBB
     tbb::parallel_for_each (aFaces.begin(), aFaces.end(), *myMesh.operator->());
-  else
+#else
+    int i, n = aFaces.size();
+#pragma omp parallel for private(i)
+    for (i = 0; i < n; ++i)
+      myMesh->Process (aFaces[i]);
 #endif
-  for (std::vector<TopoDS_Face>::iterator it(aFaces.begin()); it != aFaces.end(); it++)
-    myMesh->Process (*it);
+  }
+  else
+    for (std::vector<TopoDS_Face>::iterator it(aFaces.begin()); it != aFaces.end(); it++)
+      myMesh->Process (*it);
 
   // maillage des edges non contenues dans les faces :
   Standard_Real f, l, defedge;
