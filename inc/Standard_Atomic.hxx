@@ -53,13 +53,13 @@ inline int Standard_Atomic_DecrementTest (int volatile* var)
 }
 
 //===================================================
-// Linux, GCC compiler
+// GCC compiler on x86 or x86_64
 // Note: Linux kernel 2.6x provides definitions for atomic operators
 //       in the header file /usr/include/asm/atomic.h,
 //       however these definitions involve specific type atomic_t
 // Note: The same code probably would work for Intel compiler
 //===================================================
-#elif defined(LIN)
+#elif defined(__GNUG__) && (defined(__i386) || defined(__x86_64))
 
 inline void Standard_Atomic_Increment (int volatile* var)
 {
@@ -88,6 +88,30 @@ inline int Standard_Atomic_DecrementTest (int volatile* var)
   : "memory"
   );
   return c != 0;
+}
+
+//===================================================
+// GCC extension for atomic operations
+// http://gcc.gnu.org/wiki/Atomic
+//===================================================
+#elif defined(__GNUG__) && !defined(__sparc_v9) && !defined(__sparc_v9__) // _Atomic_word is not an int on SPARC V9
+
+#include <ext/atomicity.h>
+
+inline void Standard_Atomic_Increment (int* var)
+{
+  // C equivalent:
+  // ++(*var);
+
+  __gnu_cxx::__atomic_add_dispatch(static_cast<_Atomic_word*>(var), 1);
+}
+
+inline int Standard_Atomic_DecrementTest (int* var)
+{
+  // C equivalent:
+  // return --(*var) == 0;
+
+  return __gnu_cxx::__exchange_and_add_dispatch(static_cast<_Atomic_word*>(var),-1) == 1;
 }
 
 //===================================================

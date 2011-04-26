@@ -100,7 +100,7 @@ void BRepLib_FindSurface::Init(const TopoDS_Shape&    S,
 
   TopoDS_Edge E = TopoDS::Edge(ex.Current());
   Standard_Real f,l,ff,ll;
-  Handle(Geom2d_Curve) PC,PPC;
+  Handle(Geom2d_Curve) PC,ppc;
   Handle(Geom_Surface) SS;
   TopLoc_Location L;
   Standard_Integer i = 0,j;
@@ -119,7 +119,7 @@ void BRepLib_FindSurface::Init(const TopoDS_Shape&    S,
 	while (Standard_True) {
 	  j++;
 	  BRep_Tool::CurveOnSurface(TopoDS::Edge(ex.Current()),
-				    PPC,SS,L,ff,ll,j);
+				    ppc,SS,L,ff,ll,j);
 	  if (SS.IsNull()) {
 	    break;
 	  }

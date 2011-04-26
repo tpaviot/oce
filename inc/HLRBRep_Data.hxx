@@ -172,22 +172,22 @@ public:
 //!          between the current edge and the current face at the <br>
 //!          <p1> and <p2> parameters. <br>
   Standard_EXPORT     void EdgeState(const Standard_Real p1,const Standard_Real p2,TopAbs_State& stbef,TopAbs_State& staf) ;
-  //! Returns the  true if the  Edge <ED> belongs to the <br>
+  //! Returns the  true if the  Edge <EData> belongs to the <br>
 //!          Hiding Face. <br>
-        Standard_Boolean EdgeOfTheHidingFace(const Standard_Integer E,const HLRBRep_EdgeData& ED) const;
+        Standard_Boolean EdgeOfTheHidingFace(const Standard_Integer E,const HLRBRep_EdgeData& EData) const;
   //! Returns the number of  levels of hiding face above <br>
-//!          the   first  point  of   the    edge <ED>.     The <br>
+//!          the   first  point  of   the    edge <EData>.     The <br>
 //!          InterferenceList is  given to  compute far away of <br>
 //!          the Interferences and then come back. <br>
-  Standard_EXPORT     Standard_Integer HidingStartLevel(const Standard_Integer E,const HLRBRep_EdgeData& ED,const HLRAlgo_InterferenceList& IL) ;
-  //! Returns   the  state   of  the   Edge  <ED>  after <br>
+  Standard_EXPORT     Standard_Integer HidingStartLevel(const Standard_Integer E,const HLRBRep_EdgeData& EData,const HLRAlgo_InterferenceList& IL) ;
+  //! Returns   the  state   of  the   Edge  <EData>  after <br>
 //!          classification. <br>
-  Standard_EXPORT     TopAbs_State Compare(const Standard_Integer E,const HLRBRep_EdgeData& ED) ;
+  Standard_EXPORT     TopAbs_State Compare(const Standard_Integer E,const HLRBRep_EdgeData& EData) ;
   //! Simple classification of part of edge  [p1,  p2] <br>
 //!  returns  OUT  if  at  least  1 of  Nbp  points  of  edge  is  out <br>
 //!  othewise  returns  IN <br>
 //!  It  is  used  to  check  "suspision"  hided  part  of  edge. <br>
-  Standard_EXPORT     TopAbs_State SimplClassify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Integer Nbp,const Standard_Real p1,const Standard_Real p2) ;
+  Standard_EXPORT     TopAbs_State SimplClassify(const Standard_Integer E,const HLRBRep_EdgeData& EData,const Standard_Integer Nbp,const Standard_Real p1,const Standard_Real p2) ;
   
   Standard_EXPORT     void Destroy() ;
 ~HLRBRep_Data()
@@ -214,7 +214,7 @@ private:
 //!          not Double and not IsoLine. <br>
   Standard_EXPORT     void OrientOthEdge(const Standard_Integer I,HLRBRep_FaceData& FD) ;
   //! Classification of an edge. <br>
-  Standard_EXPORT     TopAbs_State Classify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Boolean LevelFlag,Standard_Integer& Level,const Standard_Real param) ;
+  Standard_EXPORT     TopAbs_State Classify(const Standard_Integer E,const HLRBRep_EdgeData& EData,const Standard_Boolean LevelFlag,Standard_Integer& Level,const Standard_Real param) ;
   //! Returns  True  if the  intersection is  rejected. <br>
   Standard_EXPORT     Standard_Boolean RejectedPoint(const IntRes2d_IntersectionPoint& PInter,const TopAbs_Orientation BoundOri,const Standard_Integer NumSeg) ;
   //! returns True  if there is a common  vertex between <br>

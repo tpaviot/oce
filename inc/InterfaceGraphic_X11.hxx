@@ -27,26 +27,6 @@ Facility : CAS-CADE V1
 #  include <X11/Xatom.h>
 #  include <GL/glx.h>
 
-#  if defined (sun) || defined (SUNOS) || defined (__alpha) || defined (DECOSF1) || defined (sgi) || defined (IRIX) || defined (__hpux)|| defined (HPUX) 
-#   ifndef icon_width
-#    include <X11/bitmaps/icon>
-#   endif
-
-#  endif /* SUNOS or DECOSF1 or SOLARIS or HPUX or IRIX */
-
-#  ifdef ULTRIX
-
-#   ifndef icon_width
-/* le contenu de #include <X11/bitmaps/icon> sur SUN */
-#define icon_width 16
-#define icon_height 16
-static unsigned char icon_bits[] = {
-  0xff, 0xff, 0xab, 0xaa, 0x55, 0xd5, 0xab, 0xaa, 0x05, 0xd0, 0x0b, 0xa0,
-    0x05, 0xd0, 0x0b, 0xa0, 0x05, 0xd0, 0x0b, 0xa0, 0x05, 0xd0, 0x0b, 0xa0,
-    0x55, 0xd5, 0xab, 0xaa, 0x55, 0xd5, 0xff, 0xff};
-#   endif
-
-#  endif /* ULTRIX */
 #  define WINDOW     Window
 #  define DISPLAY    Display
 #  define GLCONTEXT  GLXContext
