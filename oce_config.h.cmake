@@ -4,23 +4,11 @@
 /* define if the compiler allows redefinition of stream input and output */
 #cmakedefine DEF_IOS_OK 
 
-/* Define to 1 if you have `alloca', as a function or macro. */
-#cmakedefine HAVE_ALLOCA_H 1
-
 #cmakedefine HAVE_FSTREAM 1
 
 #cmakedefine HAVE_IOSTREAM 1
 
 #cmakedefine HAVE_IOMANIP 1
-/* Define to 1 if you have <alloca.h> and it should be used (not on Ultrix).
-   */
-#cmakedefine HAVE_ALLOCA_H 1
-
-/* Define to 1 if you have the <bits/sigset.h> header file. */
-#cmakedefine HAVE_BITS_SIGSET_H 1
-
-/* Define to 1 if you have the <bstring.h> header file. */
-#cmakedefine HAVE_BSTRING_H 1
 
 /* Define to 1 if you have the <dirent.h> header file. */
 #cmakedefine HAVE_DIRENT_H 1
@@ -43,20 +31,11 @@
 /* Define to 1 if you have the <floatingpoint.h> header file. */
 #cmakedefine HAVE_FLOATINGPOINT_H 1
 
-/* Define to 1 if you have the <float.h> header file. */
-#cmakedefine HAVE_FLOAT_H 1
-
 /* Define to 1 if you have the `gethostname' function. */
 #cmakedefine HAVE_GETHOSTNAME 1
 
-/* Define to 1 if you have the <getopt.h> header file. */
-#cmakedefine HAVE_GETOPT_H 1
-
 /* Define to 1 if you have the <ieeefp.h> header file. */
 #cmakedefine HAVE_IEEEFP_H 1
-
-/* Define to 1 if you have the <inttypes.h> header file. */
-#cmakedefine HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <iomanip.h> header file. */
 #cmakedefine HAVE_IOMANIP_H 1
@@ -64,11 +43,14 @@
 /* Define to 1 if you have the <ios> header file. */
 #cmakedefine HAVE_IOS 1
 
+/* Define to 1 if you have the <fstream.h> header file. */
+#cmakedefine HAVE_FSTREAM_H 1
+
 /* Define to 1 if you have the <ios.h> header file. */
 #cmakedefine HAVE_IOS_H 1
 
-/* Define to 1 if you have the <istream.h> header file. */
-#cmakedefine HAVE_ISTREAM 1
+/* Define to 1 if you have the <iostream.h> header file. */
+#cmakedefine HAVE_IOSTREAM_H 1
 
 /* Define to 1 if you have the <libc.h> header file. */
 #cmakedefine HAVE_LIBC_H 1
@@ -87,9 +69,6 @@
 
 /* Define to 1 if you have the <malloc.h> header file. */
 #cmakedefine HAVE_MALLOC_H 1
-
-/* Define to 1 if you have the <memory.h> header file. */
-#cmakedefine HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the <ndir.h> header file. */
 #cmakedefine HAVE_NDIR_H 1
@@ -118,9 +97,6 @@
 /* Define to 1 if you have the <sigfpe.h> header file. */
 #cmakedefine HAVE_SIGFPE_H 1
 
-/* Define to 1 if you have the <siginfo.h> header file. */
-#cmakedefine HAVE_SIGINFO_H 1
-
 /* Define to 1 if you have the <signal.h> header file. */
 #cmakedefine HAVE_SIGNAL_H 1
 
@@ -142,17 +118,11 @@
 /* Define to 1 if you have the `strdup' function. */
 #cmakedefine HAVE_STRDUP 1
 
-/* Define to 1 if you have the <stream.h> header file. */
-#cmakedefine HAVE_STREAM_H 1
-
 /* Define to 1 if you have the <strings.h> header file. */
 #cmakedefine HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
 #cmakedefine HAVE_STRING_H 1
-
-/* Define to 1 if you have the <strstream.h> header file. */
-#cmakedefine HAVE_STRSTREAM_H 1
 
 /* Define if you have the `strtol' function. */
 #cmakedefine HAVE_STRTOL
@@ -229,9 +199,6 @@
 /* Define to 1 if you have the <sys/vfs.h> header file. */
 #cmakedefine HAVE_SYS_VFS_H 1
 
-/* Define to 1 if you have the <sys/vnode.h> header file. */
-#cmakedefine HAVE_SYS_VNODE_H 1
-
 /* Define to 1 if you have the <time.h> header file. */
 #cmakedefine HAVE_TIME_H 1
 
@@ -246,9 +213,6 @@
 
 /* Define to 1 if you have the <X11/extensions/readdisplay.h> header file. */
 #cmakedefine HAVE_X11_EXTENSIONS_READDISPLAY_H 1
-
-/* Define to 1 if you have the <X11/extensions/transovl.h> header file. */
-#cmakedefine HAVE_X11_EXTENSIONS_TRANSOVL_H 1
 
 /* Define if your C compiler doesn't accept -c and -o together. */
 #cmakedefine NO_MINUS_C_MINUS_O

@@ -30,19 +30,6 @@ FOREACH(MODULE ${TOOLKIT_APP_MODULES})
 		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.c
 		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.cxx
 		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.c)
-	FILE(GLOB header_files
-		${${PROJECT_NAME}_SOURCE_DIR}/inc/Handle_${MODULE}*.hxx
-		${${PROJECT_NAME}_SOURCE_DIR}/inc/${MODULE}*.hxx
-		${${PROJECT_NAME}_SOURCE_DIR}/inc/Handle_${MODULE}*.h
-		${${PROJECT_NAME}_SOURCE_DIR}/inc/${MODULE}*.h
-		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.hxx
-		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.lxx
-		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.gxx
-		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.h
-		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.hxx
-		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.ixx
-		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.jxx
-		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.h)
 	#MESSAGE(STATUS "${source_files}")
 	FOREACH(module_source_file ${source_files})
 		IF (WIN32)
