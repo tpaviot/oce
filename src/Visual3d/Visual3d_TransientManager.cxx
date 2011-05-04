@@ -120,11 +120,11 @@ Aspect_CLayer2d UnderCLayer;
 
 	if (! UnderLayer.IsNull ()){
 		UnderCLayer = UnderLayer->CLayer ();
-		theCView.ptrUnderLayer = (CALL_DEF_LAYER *) &(UnderLayer->CLayer ());
+		theCView.ptrUnderLayer = (CALL_DEF_LAYER *) &UnderCLayer;
 	}
 	if (! OverLayer.IsNull ()){
 		OverCLayer = OverLayer->CLayer ();
-		theCView.ptrOverLayer = (CALL_DEF_LAYER *) &(OverLayer->CLayer ());
+		theCView.ptrOverLayer = (CALL_DEF_LAYER *) &OverCLayer;
 	}
 
 	// Begin rendering
@@ -188,10 +188,16 @@ void Visual3d_TransientManager::ClearDraw (const Handle(Visual3d_View)& AView,
 
 	// Begin rendering
 	theCView	= *(CALL_DEF_VIEW *)AView->CView ();
-	if (!AView->UnderLayer().IsNull()) 
-		theCView.ptrUnderLayer = (CALL_DEF_LAYER *)&(AView->UnderLayer()->CLayer());
-	if (!AView->OverLayer().IsNull()) 
-		theCView.ptrOverLayer = (CALL_DEF_LAYER *)&(AView->OverLayer()->CLayer());
+Aspect_CLayer2d OverCLayer;
+Aspect_CLayer2d UnderCLayer;
+	if (!AView->UnderLayer().IsNull()) {
+		UnderCLayer = AView->UnderLayer()->CLayer ();
+		theCView.ptrUnderLayer = (CALL_DEF_LAYER *)&UnderCLayer;
+	}
+	if (!AView->OverLayer().IsNull()) {
+		OverCLayer = AView->OverLayer()->CLayer();
+		theCView.ptrOverLayer = (CALL_DEF_LAYER *)&OverCLayer;
+	}
 
 	Handle(Aspect_GraphicDriver) agd = AView->GraphicDriver ();
 
@@ -228,10 +234,16 @@ Standard_Boolean Visual3d_TransientManager::BeginAddDraw (const Handle(Visual3d_
 
 	// Begin rendering
 	theCView	= *(CALL_DEF_VIEW *)AView->CView ();
-	if (!AView->UnderLayer().IsNull()) 
-		theCView.ptrUnderLayer = (CALL_DEF_LAYER *) &(AView->UnderLayer()->CLayer ());
-	if (!AView->OverLayer().IsNull()) 
-		theCView.ptrOverLayer = (CALL_DEF_LAYER *) &(AView->OverLayer()->CLayer ());
+Aspect_CLayer2d OverCLayer;
+Aspect_CLayer2d UnderCLayer;
+	if (!AView->UnderLayer().IsNull()) {
+		UnderCLayer = AView->UnderLayer()->CLayer ();
+		theCView.ptrUnderLayer = (CALL_DEF_LAYER *)&UnderCLayer;
+	}
+	if (!AView->OverLayer().IsNull()) {
+		OverCLayer = AView->OverLayer()->CLayer();
+		theCView.ptrOverLayer = (CALL_DEF_LAYER *)&OverCLayer;
+	}
 
 	Handle(Aspect_GraphicDriver) agd = AView->GraphicDriver ();
 
