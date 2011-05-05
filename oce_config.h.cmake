@@ -258,7 +258,7 @@
 #cmakedefine TM_IN_SYS_TIME
 
 /* Version number of package */
-#define VERSION "0.1.0"
+#define VERSION "@OCE_VERSION@"
 
 /* Define if your processor stores words with the most significant byte first
    (like Motorola and SPARC, unlike Intel and VAX). */
