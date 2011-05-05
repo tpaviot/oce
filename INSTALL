@@ -1,30 +1,126 @@
 On Windows, Visual and Borland projects are provided, see in the
-adm subdirectory.
-
-This file describes how to build OCE from sources on Linux or MacOSX.
-The build system uses scripts based on GNU autoconf, automake and libtool,
-make sure to install these tools before compiling.
+adm subdirectory.  Please note that these projects will be
+deprecated in favor of CMake, in order to have a single build
+procedure for all architectures.  Please help us by testing the
+CMake procedure.
 
 The installation procedure detailed below is:
  1. Download/extract the OCE-xxxxx.tar.gz archive to any directory
- 2. ./configure
+ 2. Configure
  3. make/make install
  4. Test installation
+
+This file describes how to build OCE from sources on Linux or MacOSX.
+At the end of this file, there are instructions to configure this
+project with Autotools, but note that this build system may not be
+supported in future releases.
 
 1. Content extraction
 =====================
 
 Unpack OCE-xxxx.tar.gz to some folder - ${DISTRIBUTIVE_DIR}.
-For example DISTRIBUTIVE_DIR=/tmp/OCE-0.1
+For example DISTRIBUTIVE_DIR=/tmp/OCE-0.2
  tar -zxvf OCE-xxxx.tar.gz
 then
  cd  ${DISTRIBUTIVE_DIR}
 
 2. Configure step
 =================
-The configure script must be executed with the flags as described below.
+It is a good practice to build in a separate directory:
+ mkdir build
+ cd build
+
+CMake can be configured either by a user interface (Qt and ncurses interfaces
+are available) or directly by running
+ cmake ..
+and editing the generated CMakeCache.txt file.
+
+In the former case, the most common options can be defined from the
+main window, and expert options can be modified in selecting "Advanced"
+mode.
+In the latter case, it is also possible to define options on the
+command line.  If you edit CMakeCache.txt by hand, do not forget to
+rerun cmake after modifying this file.
 
 2.1 Defining flags
+==================
+
+Here are default flags on Unix
+ OCE_64BIT                   ON         (default depends on CPU)
+ OCE_BUILD_SHARED_LIB        ON
+ OCE_BUILD_TYPE              Release
+ OCE_DATAEXCHANGE            ON
+ OCE_DRAW                    OFF
+ OCE_INSTALL_PREFIX          /usr/local
+ OCE_MODEL                   ON
+ OCE_MULTITHREAD_LIBRARY     NONE
+ OCE_OCAF                    ON
+ OCE_VISUALISATION           ON
+ OCE_VISUALISATION_FULL      ON
+ OCE_WITH_FREEIMAGE          OFF
+ OCE_WITH_GL2PS              OFF
+
+In order to modify installation path and build DRAWEXE, one
+can run these commands:
+
+ flags=""
+ flags="$flags -DOCE_INSTALL_PREFIX:PATH=$HOME/oce"
+ flags="$flags -DOCE_DRAW:BOOL=ON"
+ cmake $flags ..
+
+2.2 Expert options
+==================
+More expert options can be defined in the "Advanced mode".
+
+2.2.1 FTGL note:
+==============
+OCE supports either ftgl-2.1.2 or the latest ftgl-2.1.3-rc5. If you wish to
+build OCE over ftgl-2.1.2, define the FTGL_V212_INCLUDE_DIR variable instead
+of FTGL_INCLUDE_DIR.  For instance,
+ flags="$flags -DFTGL_V212_INCLUDE_DIR:PATH=/opt/ftgl-2.1.2/include"
+
+2.2.2 Additional flags:
+=====================
+OCE can be compiled with TBB or OpenMP in order to support parallel meshing.
+By default, this support is disabled.  Enable it with
+ flags="$flags -DOCE_MULTITHREAD_LIBRARY:STRING=TBB"
+or
+ flags="$flags -DOCE_MULTITHREAD_LIBRARY:STRING=OPENMP"
+
+There are many more options, see CMakeCache.txt for a full list.
+
+3. Make step
+============
+If configure exits successfully, you can then build the whole OCE
+by running the following commands:
+
+ make
+ make install/strip
+
+
+4. Test installation: OCE Draw Test Harness
+===========================================
+You can launch Draw Test Harness in order to experiment with OCE.
+With OCE you normally do not have to set any environment variable.
+
+Launch $INSTALL_DIR/bin/DRAWEXE executable; on prompt, type
+ > pload ALL
+In order to load DRAW commands, you can then run demos
+ > source $INSTALL_DIR/src/DrawResources/ModelingDemo.tcl
+ > source $INSTALL_DIR/src/DrawResources/VisualizationDemo.tcl
+
+Installation is succesful. Enjoy!
+
+Appendix. Old build system based on Autotools
+=============================================
+This build system uses scripts based on GNU autoconf, automake and libtool,
+make sure to install these tools before compiling.
+
+A. Configure step
+=================
+The configure script must be executed with the flags as described below.
+
+A.1 Defining flags
 ==================
  flags=""
  flags="$flags --with-tcl=${TCLHOME}/lib"
@@ -37,7 +133,7 @@ where:
  --enable-debug=yes/no - building in debug mode (yes: set -g compiler flag).
  --enable-production=yes/no - building in optimize mode. (yes: set -O compiler flag).
 
-2.2 FTGL note:
+A.2 FTGL note:
 ==============
 OCE supports either ftgl-2.1.2 or the latest ftgl-2.1.3-rc5. If you wish to
 build OCE over ftgl-2.1.2, use the configure flag '--with-ftgl212'.
@@ -45,40 +141,17 @@ For instance,
  flags="$flags --with-ftg212=/opt/ftgl-2.1.2"
 The '--with-ftgl' flag assumes you use a newer version.
 
-2.3 Additional flags:
+A.3 Additional flags:
 =====================
  flags="$flags --with-tbb-include =/usr/include/tbb" - for compilation with tbb
  flags="$flags --with-tbb-library=/usr/lib" - for compilation with tbb
  flags="$flags --with-gl2ps=/opt/gl2ps-1.3.5" - for compilation with gl2ps
  flags="$flags --with-freeimage=/opt/freeimage-3.14.1" - for compil with freeimage
 
-2.4 Running ./configure
+A.4 Running ./configure
 =======================
 
  ./configure $flags --prefix=${INSTALL_DIR}
 
 where ${INSTALL_DIR} is folder to which OCE will be installed.
 
-3. Make step
-============
-If configure exits successfully, you can then build the whole OCE
-by running the following commands:
-
- make
- make install
-
-
-4. Test installation: OCE Draw Test Harness
-============================================
-You can launch Draw Test Harness in order to experiment with OCE.
-
-Before launching DRAW, take care to run:
- export CASROOT=${INSTALL_DIR}
-
-Launch $CASROOT/bin/DRAWEXE executable; on prompt, type
- > pload ALL
-In order to load DRAW commands, you can then run demos
- > source $env(CASROOT)/src/DrawResources/ModelingDemo.tcl
- > source $env(CASROOT)/src/DrawResources/VisualizationDemo.tcl
-
-Installation is succesful. Enjoy!
