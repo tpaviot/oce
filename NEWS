@@ -1,3 +1,27 @@
+Version 0.2.0 - May 2011
+
+  * Add CMake build files.  Works fine on Linux, needs more testing
+    on Mac OSX and Windows.
+    [Thomas Paviot, Mark Pictor, Denis Barbier, QbProg]
+
+  * Let CMake generate env.sh and env.csh scripts with
+    accurate variables.
+    [Denis Barbier]
+
+  * Fix lines in Visual3d_Layer class.
+    [Fotis Sioutis]
+
+  * Changes required to build OCE on some non-x86 architectures
+    on Unix.
+    [Denis Barbier]
+
+  * Add OpenMP support, users can choose between OpenMP and TBB.
+    [Denis Barbier]
+
+  * When building with CMake, paths are set at compile time so that
+    everything works without having to set environment variables.
+    [Denis Barbier]
+
 Version 0.1.0 - April 2011
 
   * Import OCC 6.5.0
