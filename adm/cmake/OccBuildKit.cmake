@@ -18,6 +18,8 @@ FOREACH(MODULE ${TOOLKIT_MODULES})
 		SET_SOURCE_FILES_PROPERTIES(${source_files} PROPERTIES COMPILE_FLAGS "-D__${MODULE}_DLL")
 	ENDIF(WIN32)
 
+	SOURCE_GROUP (${MODULE} FILES ${source_files}) 
+
 	# append these source files to the list of source files of the toolkit
 	SET(TOOLKIT_SOURCE_FILES ${TOOLKIT_SOURCE_FILES} ${source_files}) 
 	# required include paths
