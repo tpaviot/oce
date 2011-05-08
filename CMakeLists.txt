@@ -466,16 +466,12 @@ ENDIF(NOT WIN32)
 # Check 32/64 bit platform #
 ############################
 IF (${CMAKE_SIZEOF_VOID_P} MATCHES "8") # It is 64bit, otherwise 32 bit systems match 4
-	SET(${PROJECT_NAME}_64BIT ON)
-ELSE (${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-	SET(${PROJECT_NAME}_64BIT OFF)
-ENDIF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-
-SET(BIT 32)
-IF (${PROJECT_NAME}_64BIT)
 	ADD_DEFINITIONS(-D_OCC64)
 	SET(BIT 64)
-ENDIF (${PROJECT_NAME}_64BIT)
+ELSE (${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+  SET(BIT 32)
+ENDIF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
+
 MESSAGE(STATUS "Build ${BIT}bit")
 
 #######################################################
