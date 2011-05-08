@@ -535,6 +535,12 @@ IF(MINGW)
 	SET_SOURCE_FILES_PROPERTIES("src/Message/Message_MsgFile.cxx" PROPERTIES COMPILE_FLAGS "-D__Message_DLL -D__TCollection_DLL")
 ENDIF(MINGW)
 
+# DISABLE SECURE CRT WARNINGS AND OTHER MS CRT SPECIFC THINGS
+IF (MSVC)
+   ADD_DEFINITIONS("/D_CRT_SECURE_NO_WARNINGS")
+ENDIF(MSVC)
+   
+
 # Libraries are installed by default in /usr/local/lib on UNIX
 # based platforms and c:/${PROJECT_NAME}-VERSION/lib on windows based
 # platforms
