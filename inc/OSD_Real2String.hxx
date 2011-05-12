@@ -76,8 +76,8 @@ private:
 
 
 
-Standard_Integer myReadDecimalPoint;
-Standard_Integer myLocalDecimalPoint;
+Standard_Character myReadDecimalPoint;
+Standard_Character myLocalDecimalPoint;
 
 
 };
