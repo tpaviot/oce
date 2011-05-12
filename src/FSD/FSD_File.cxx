@@ -1379,7 +1379,7 @@ Storage_Position FSD_File::Tell()
     else
       return aPosR;
   }
-  default: return -1;
+  default: break; //return -1; 
   }
   return -1;
 }
