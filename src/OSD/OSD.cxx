@@ -10,7 +10,7 @@
 # define finite isfinite
 #endif
 
-static Standard_Integer DecimalPoint = 0 ;
+static char DecimalPoint = 0 ;
 
 static void GetDecimalPoint() {
   float F1 = (float ) 1.1 ;
