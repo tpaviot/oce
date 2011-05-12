@@ -1506,7 +1506,7 @@ void OSD_File :: Seek (
                   const Standard_Integer Offset, const OSD_FromWhere Whence
                  ) {
 
- DWORD dwMoveMethod;
+ DWORD dwMoveMethod = 0;
 
  TEST_RAISE(  TEXT( "Seek" )  );
 
@@ -1915,7 +1915,7 @@ PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd (
  PTOKEN_OWNER         pTkOwner        = NULL;
  PTOKEN_GROUPS        pTkGroups       = NULL;
  PTOKEN_PRIMARY_GROUP pTkPrimaryGroup = NULL;
- PSECURITY_DESCRIPTOR retVal;
+ PSECURITY_DESCRIPTOR retVal = NULL;
  PSECURITY_DESCRIPTOR pfSD = NULL;
  BOOL                 fDummy;
  PFILE_ACE            pFileACE;
@@ -2357,7 +2357,7 @@ static int __fastcall _get_buffer (
 
 static DWORD __fastcall _get_access_mask ( OSD_SingleProtection prt ) {
 
- DWORD retVal;
+ DWORD retVal = 0;
 
  switch ( prt ) {
  
@@ -2469,7 +2469,7 @@ static DWORD __fastcall _get_access_mask ( OSD_SingleProtection prt ) {
 
 static DWORD __fastcall _get_dir_access_mask ( OSD_SingleProtection prt ) {
 
- DWORD retVal;
+ DWORD retVal = 0;
 
  switch ( prt ) {
  
@@ -2586,7 +2586,7 @@ static HANDLE __fastcall _open_file (
                          ) {
 
  HANDLE retVal = INVALID_HANDLE_VALUE;
- DWORD  dwDesiredAccess;
+ DWORD  dwDesiredAccess = 0;
  DWORD  dwCreationDistribution;
 
  switch ( oMode ) {
@@ -2649,7 +2649,7 @@ Standard_Integer __fastcall _get_file_type (
                              Standard_CString fName, Standard_Integer fileHandle
                             ) {
 
- Standard_Integer retVal;
+ Standard_Integer retVal = 0;
  DWORD            dwType;
  int              fileType;
 
@@ -3002,9 +3002,9 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD mask ) {
 BOOL __fastcall _osd_print (const Standard_PCharacter pName, Standard_CString fName ) {
 
  BOOL   fOK, fJob;                
- HANDLE hPrinter;
+ HANDLE hPrinter = NULL;
  BYTE   jobInfo[ MAX_PATH + sizeof ( DWORD ) ];
- DWORD  dwNeeded, dwCode;
+ DWORD  dwNeeded, dwCode = 0;
 
  fOK = fJob = FALSE;
 

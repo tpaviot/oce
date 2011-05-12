@@ -276,7 +276,7 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
 	    sup=Standard_PI;
 	 }
 	 Standard_Boolean CS=0;
-	 Standard_Real Vprec=0,Vsuiv;
+	 Standard_Real Vprec=0,Vsuiv = 0;
 	 //Creation du polynome
 	 CSLib_NormalPolyDef  Poly(Order,Ratio);
 	 //Recherche des zeros de SAPS

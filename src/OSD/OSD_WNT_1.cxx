@@ -30,9 +30,9 @@ BOOL OSDAPI DirWalk (
  PWIN32_FIND_DATA pFD;
  LPTSTR           pName = NULL;
  LPTSTR           pFullName = NULL;
- LPTSTR           pTmp;
+ LPTSTR           pTmp = NULL;
  HANDLE           hFindFile = INVALID_HANDLE_VALUE;
- BOOL             fFind;
+ BOOL             fFind = FALSE;
  BOOL             retVal = TRUE;
  HANDLE           hHeap = GetProcessHeap ();
 
@@ -284,7 +284,7 @@ short MapY (LONG aY) {
 LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
   LONG res = 0;
   SIZE size;
-  _TCHAR* dummy;
+  _TCHAR* dummy = NULL;
   __try {
     dummy = _tcsdup (lpText);
 #ifndef _MSC_VER

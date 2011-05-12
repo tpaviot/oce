@@ -52,6 +52,7 @@
         Standard_Real Sol = IniSol;
         Standard_Real IniVal = Value(N, Poly, IniSol);
         Standard_Integer Index;
+		Val = IniVal; // OCE : QbProg : set a possible initial value to avoid compiler complaining
 
 //      cout << "Improve\n";
         for(Index = 1; Index < 10; Index++) {

@@ -711,7 +711,7 @@ LONG _osd_debug ( void ) {
 
  if ( !fDbgLoaded ) {
  
-  HKEY                hKey;
+  HKEY                hKey = NULL;
   HANDLE              hEvent = INVALID_HANDLE_VALUE;
   DWORD               dwKeyType;
   DWORD               dwValueLen;
@@ -775,7 +775,7 @@ LONG _osd_debug ( void ) {
   __finally {
   
 //   cout << "_osd_debug -> CloseHandle(hKey) " << endl ;
-   if ( hKey   != INVALID_HANDLE_VALUE ) CloseHandle ( hKey   );
+   if ( hKey   != NULL ) CloseHandle ( hKey   );
 //   cout << "_osd_debug -> CloseHandle(hEvent) " << endl ;
    if ( hEvent != INVALID_HANDLE_VALUE ) CloseHandle ( hEvent );
 //   cout << "_osd_debug end __finally " << endl ;

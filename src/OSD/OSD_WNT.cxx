@@ -1046,7 +1046,7 @@ BOOL MoveDirectory ( LPCTSTR oldDir, LPCTSTR newDir ) {
  LPTSTR              pathSrc,  pathDst;
  HANDLE              hFindFile;
  BOOL                fFind;
- BOOL                retVal;
+ BOOL                retVal = FALSE;
  DIR_RESPONSE        response;
  DWORD               level;
 
@@ -1277,7 +1277,7 @@ retry_2:
 /***/
 BOOL CopyDirectory ( LPCTSTR dirSrc, LPCTSTR dirDst ) {
 
- PWIN32_FIND_DATA    pFD;
+ PWIN32_FIND_DATA    pFD = NULL;
  LPTSTR              pName = NULL;
  LPTSTR              pFullNameSrc = NULL;
  LPTSTR              pFullNameDst = NULL;
