@@ -101,6 +101,8 @@ void RWStepBasic_RWSiUnit::ReadStep(const Handle(StepData_StepReaderData)& data,
   else
     ach->AddFail("Parameter #3 (name) is not an enumeration");
 
+  // @todo Apart the fail, nothing is done , and wrong enum values are used
+
   //--- Initialisation of the read entity ---
   ent->Init(hasAprefix, aPrefix, aName);
 }

@@ -301,7 +301,7 @@ static void CurveHermite (const TopOpeBRepDS_DataStructure& DStr,
   gp_Vec d11,d12;
   Standard_Integer ii,jj;
   Standard_Real up1,up2;
-  Standard_Integer ilin,jfp;
+  Standard_Integer ilin = 0,jfp = 0;
   Handle (Geom_Curve) c1,c2;
   if (sharpicmoins) {
     c1=BRep_Tool::Curve(Eviveicmoins,up1,up2);

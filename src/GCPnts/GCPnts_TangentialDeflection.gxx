@@ -249,7 +249,7 @@ void GCPnts_TangentialDeflection::PerformCurve (const TheCurve& C)
   Standard_Integer i, j;       
   gp_XYZ V1, V2;
   gp_Pnt MiddlePoint, CurrentPoint, LastPoint;   
-  Standard_Real Du, Dusave, MiddleU, L1, L2;
+  Standard_Real Du, Dusave, MiddleU = 0.0, L1 = 0.0, L2 = 0.0;
 
   Standard_Real U1       = firstu;   
   Standard_Real LTol     = Precision::Confusion ();  //protection longueur nulle

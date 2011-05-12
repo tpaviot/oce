@@ -83,7 +83,7 @@ void RWStepBasic_RWSiUnitAndMassUnit::ReadStep(const Handle(StepData_StepReaderD
   } 
   
   // --- field : name ---
-  StepBasic_SiUnitName aName;
+  StepBasic_SiUnitName aName = StepBasic_sunMetre; // 0
   if (data->ParamType(num,2) == Interface_ParamEnum) {
     Standard_CString text = data->ParamCValue(num,2);
     if(!reader.DecodeName(aName,text)){
@@ -95,6 +95,8 @@ void RWStepBasic_RWSiUnitAndMassUnit::ReadStep(const Handle(StepData_StepReaderD
     ach->AddFail("Parameter #2 (name) is not an enumeration");
     return;
   }
+
+   // @todo Apart the fail, nothing is done , and wrong enum values are used
 
   //--- Initialisation of the red entity ---
   ent->Init(hasAprefix,aPrefix,aName);

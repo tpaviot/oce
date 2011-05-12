@@ -1532,7 +1532,7 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
 //    Standard_Boolean samerk = (rankEG == rkToFill);
 
 //    TopAbs_Orientation oegFOR;
-    Standard_Boolean shareG;
+    Standard_Boolean shareG = false;
     Standard_Boolean ok = FUN_ds_shareG(myPB->DataStructure(),iFOR,iFCX,GI,
 			   TopoDS::Edge(EspON),shareG);
     if (!ok) return; // nyiFUNRAISE

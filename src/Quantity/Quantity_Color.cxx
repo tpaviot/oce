@@ -419,7 +419,7 @@ Standard_ShortReal HH, LL, SS;
 
 void Quantity_Color::HlsRgb (const Quantity_Parameter H, const Quantity_Parameter L, const Quantity_Parameter S, Quantity_Parameter& R, Quantity_Parameter& G, Quantity_Parameter& B) {
 
-Standard_ShortReal RR, GG, BB;
+Standard_ShortReal RR=0, GG=0, BB=0;
 
 	call_hlsrgb (Standard_ShortReal (H),
 			Standard_ShortReal (L),

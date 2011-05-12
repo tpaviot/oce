@@ -211,7 +211,7 @@ void Draw_Viewer::SetZoom (const Standard_Integer id, const Standard_Real z)
   {
     Standard_Real zz = z / aView->GetZoom();
     aView->SetZoom(z);
-    Standard_Integer X,Y,W,H;
+    Standard_Integer X,Y,W = 0, H = 0;
     GetPosSize(id,X,Y,W,H);
 
     const Standard_Real w = 0.5 * static_cast<Standard_Real>(W);
@@ -1509,7 +1509,7 @@ void Draw_Display::DrawTo (const gp_Pnt2d& pp2)
   case DRAW : {
 
 #if 1
-    Standard_Integer x0,y0,x1,y1;
+    Standard_Integer x0 = 0, y0 = 0, x1 = 0, y1 = 0;
     curview->GetFrame(x0,y0,x1,y1);
 
 

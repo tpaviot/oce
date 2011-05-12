@@ -554,7 +554,7 @@ void AIS_InteractiveContext::Load (const Handle(AIS_InteractiveObject)& theIObj,
   {
     if (!myObjects.IsBound (theIObj))
     {
-      Standard_Integer aDispMode, aHiMod, aSelModeDef;
+      Standard_Integer aDispMode = 0, aHiMod, aSelModeDef = 0;
       GetDefModes (theIObj, aDispMode, aHiMod, aSelModeDef);
       Handle(AIS_GlobalStatus) aStatus = new AIS_GlobalStatus (AIS_DS_Erased, aDispMode, aSelModeDef);
       myObjects.Bind (theIObj, aStatus);
@@ -760,7 +760,7 @@ Standard_Boolean AIS_InteractiveContext::KeepTemporary(const Handle(AIS_Interact
   
   
   if(LS->IsTemporary()){
-    Standard_Integer DM,HM,SM;
+    Standard_Integer DM = 0, HM, SM = 0;
     GetDefModes(anIObj,DM,HM,SM);
     
     SM = LS->SelectionModes().IsEmpty() ? SM : LS->SelectionModes().First();
@@ -1601,7 +1601,7 @@ void AIS_InteractiveContext::SetDisplayMode (const Handle(AIS_InteractiveObject)
   }
 
   myMainPM->Display (theIObj, theMode);
-  Standard_Integer aDispMode, aHiMode, aSelMode;
+  Standard_Integer aDispMode, aHiMode = 0, aSelMode;
   GetDefModes (theIObj, aDispMode, aHiMode, aSelMode);
   if (aStatus->IsHilighted())
   {
@@ -1660,7 +1660,7 @@ void AIS_InteractiveContext::UnsetDisplayMode (const Handle(AIS_InteractiveObjec
     myMainPM->SetVisibility (theIObj, anOldMode, Standard_False);
     myMainPM->Display (theIObj, myDisplayMode);
 
-    Standard_Integer aDispMode, aHiMode, aSelMode;
+    Standard_Integer aDispMode, aHiMode = 0, aSelMode;
     GetDefModes (theIObj, aDispMode, aHiMode, aSelMode);
     if (aStatus->IsHilighted())
     {

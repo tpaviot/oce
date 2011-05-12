@@ -77,7 +77,7 @@ void TopOpeBRepBuild_GIter::Current(TopAbs_State& s1, TopAbs_State& s2) const
 void TopOpeBRepBuild_GIter::Dump(Standard_OStream& OS) const 
 {
   if ( !More()) return;
-  TopAbs_State s1,s2; Current(s1,s2);
+  TopAbs_State s1 = TopAbs_UNKNOWN,s2 = TopAbs_UNKNOWN; Current(s1,s2);
   Standard_Boolean b = MYGTOPO.Value(s1,s2);
   TopOpeBRepBuild_GTopo::DumpSSB(OS,s1,s2,b); OS<<endl;
 }

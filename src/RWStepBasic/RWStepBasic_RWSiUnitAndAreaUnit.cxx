@@ -59,7 +59,7 @@ void RWStepBasic_RWSiUnitAndAreaUnit::ReadStep(const Handle(StepData_StepReaderD
     }
   }
      
-  StepBasic_SiUnitName aName;
+  StepBasic_SiUnitName aName = StepBasic_sunMetre; // 0
   if (data->ParamType(num,2) == Interface_ParamEnum) {
     Standard_CString text = data->ParamCValue(num,2);
     if(!reader.DecodeName(aName,text)){
@@ -72,6 +72,8 @@ void RWStepBasic_RWSiUnitAndAreaUnit::ReadStep(const Handle(StepData_StepReaderD
     return;
   }
   
+  // @todo Apart the fail, nothing is done , and wrong enum values are used
+ 
   ent->Init(hasAprefix,aPrefix,aName);
   ent->SetDimensions(aDimensions);
 }

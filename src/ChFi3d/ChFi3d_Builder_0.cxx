@@ -3934,6 +3934,7 @@ Standard_EXPORT
   Wreffin = WL;
   nwf = WF;
   nwl = WL;
+  pared = 0.0;
   nbed = Spine->NbEdges();
   periodic = Spine->IsPeriodic();
   if(periodic) {
