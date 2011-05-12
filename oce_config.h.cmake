@@ -193,14 +193,8 @@
 /* define if the class ostream has member function form */
 #cmakedefine OSTREAM_FORM_OK 
 
-/* Name of package */
-#define PACKAGE "OCE"
-
 /* Define if compiler has function prototypes */
 #cmakedefine PROTOTYPES
-
-/* Define as the return type of signal handlers (`int' or `void'). */
-#define RETSIGTYPE ${RETSIGTYPE}
 
 /* define if the function semctl takes a value */
 #cmakedefine SEMCTL_NO_REFERENCE
@@ -229,9 +223,6 @@
 
 /* Define if your <sys/time.h> declares `struct tm'. */
 #cmakedefine TM_IN_SYS_TIME
-
-/* Version number of package */
-#define VERSION "@OCE_VERSION@"
 
 /* Define if your processor stores words with the most significant byte first
    (like Motorola and SPARC, unlike Intel and VAX). */

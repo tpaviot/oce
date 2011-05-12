@@ -368,7 +368,6 @@ IF (NOT WIN32)
     SET(CMAKE_REQUIRED_LIBRARIES sunmath)
     CHECK_FUNCTION_EXISTS(ieee_handler HAVE_SUNMATH)
     SET(CMAKE_REQUIRED_LIBRARIES)
-    SET(RETSIGTYPE void) # Don't know how to figure this out yet
     INCLUDE(CheckTypeSize)
     SET(CMAKE_EXTRA_INCLUDE_FILES sys/time.h)
     CHECK_TYPE_SIZE(tm TM_IN_SYS_TIME)
