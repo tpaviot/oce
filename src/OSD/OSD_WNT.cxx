@@ -1178,11 +1178,11 @@ retry:
 
      if ( pFD -> dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) {
 
-      if (   !(  retVal = MoveDirectory ( pFullNameSrc, pFullNameDst )  )   ) break;
+      if (   FALSE == (  retVal = MoveDirectory ( pFullNameSrc, pFullNameDst )  )   ) break;
    
      } else {
 retry_1:   
-      if (   !(  retVal = MoveFileEx (
+      if (   FALSE == (  retVal = MoveFileEx (
                            pFullNameSrc, pFullNameDst,
                            MOVEFILE_REPLACE_EXISTING | MOVEFILE_COPY_ALLOWED
                           )
@@ -1338,11 +1338,11 @@ BOOL CopyDirectory ( LPCTSTR dirSrc, LPCTSTR dirDst ) {
 
      if ( pFD -> dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY ) {
 
-      if (   !(  retVal = CopyDirectory ( pFullNameSrc, pFullNameDst )  )   ) break;
+      if (   FALSE == (  retVal = CopyDirectory ( pFullNameSrc, pFullNameDst )  )   ) break;
    
      } else {
 retry:   
-      if (   !(  retVal = CopyFile ( pFullNameSrc, pFullNameDst, FALSE )  )   ) {
+      if (   FALSE == (  retVal = CopyFile ( pFullNameSrc, pFullNameDst, FALSE )  )   ) {
       
        if ( _response_dir_proc != NULL ) {
       

@@ -49,7 +49,7 @@ Standard_Boolean OSD_Real2String::RealToCString(const Standard_Real theReal,
 
   // Suppress "e+00" and unsignificant 0's 
 
-  if ((p = strchr(theString,'e'))) {
+  if ((p = strchr(theString,'e')) != NULL) {
     if (!strcmp(p,"e+00"))
       *p = 0 ;
     for (q = p-1 ; *q == '0' ; q--) ;
@@ -91,7 +91,7 @@ Standard_Boolean OSD_Real2String::CStringToReal(const Standard_CString theString
           char buff[1024]; 
 	  // replace the decimal point by the local one
           if(myReadDecimalPoint != myLocalDecimalPoint && 
-             (p = strchr(theString,myReadDecimalPoint))&& ((p-theString) < 1000) )
+             ((p = strchr(theString,myReadDecimalPoint)) != NULL) && ((p-theString) < 1000) )
           {
             strncpy(buff, theString, 1000);
             buff[p-theString] = myLocalDecimalPoint;

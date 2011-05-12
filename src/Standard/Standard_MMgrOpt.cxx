@@ -778,7 +778,7 @@ retry:
     HANDLE * aMBlock = NULL;
     // check for error and try allocating address space
     if ( ! hMap || GetLastError() == ERROR_ALREADY_EXISTS ||
-         ! (aMBlock = (HANDLE*)MapViewOfFile(hMap,FILE_MAP_WRITE,0,0,0)) ) 
+         (NULL == (aMBlock = (HANDLE*)MapViewOfFile(hMap,FILE_MAP_WRITE,0,0,0))) ) 
     {
       // close handle if allocated
       if ( hMap ) 
