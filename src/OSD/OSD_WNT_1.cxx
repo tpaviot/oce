@@ -491,14 +491,14 @@ _TINT MsgBox ( HWND hParent,
     // Update width & height of a dialog
     _TINT nW = (butSpace+3+butMaxWidth)*butCount;
     if ( nW > *pWidth ) {
-      *pWidth   = nW;
+      *pWidth   = WORD(min(65535,nW)); // Clamp the size
     } else {
       butOffset = (*pWidth - butCount*(butMaxWidth+butSpace) - butSpace) / 2;
     }
     *pHeight = *pHeight + butMaxHeight + 4;
     // Update position of a dialog
-    *pX = ( scrW - (*pWidth) ) / 2;
-    *pY = ( scrH - (*pHeight) ) / 2;
+    *pX = WORD(( scrW - (*pWidth) ) / 2);
+    *pY = WORD(( scrH - (*pHeight) ) / 2);
 
     // Childs  ============================================================ //
     short butNum = 0;
@@ -510,7 +510,7 @@ _TINT MsgBox ( HWND hParent,
               lStyle,
               8 + butOffset + butNum*(butMaxWidth+butSpace),
               *pHeight - butMaxHeight - 4,
-              butMaxWidth, butMaxHeight, lpChildren[i].itemId, 0x0080
+              butMaxWidth, butMaxHeight, WORD(lpChildren[i].itemId), 0x0080
             );
         nchar = CopyAnsiToWideChar (p, (LPTSTR)lpChildren[i].buttonLabel);
         p += nchar;
