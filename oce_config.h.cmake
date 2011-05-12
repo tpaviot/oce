@@ -31,9 +31,6 @@
 /* Define to 1 if you have the <floatingpoint.h> header file. */
 #cmakedefine HAVE_FLOATINGPOINT_H 1
 
-/* Define to 1 if you have the `gethostname' function. */
-#cmakedefine HAVE_GETHOSTNAME 1
-
 /* Define to 1 if you have the <ieeefp.h> header file. */
 #cmakedefine HAVE_IEEEFP_H 1
 
@@ -64,9 +61,6 @@
 /* Define to 1 if you have the <limits> header file. */
 #cmakedefine HAVE_LIMITS_H 1
 
-/* Define if we have a function called "mallinfo" in -lmalloc. */
-#cmakedefine HAVE_MALLINFO
-
 /* Define to 1 if you have the <malloc.h> header file. */
 #cmakedefine HAVE_MALLOC_H 1
 
@@ -82,17 +76,8 @@
 /* Define to 1 if you have the <osfcn.h> header file. */
 #cmakedefine HAVE_OSFCN_H 1
 
-/* Define if you have the `putenv' function. */
-#cmakedefine HAVE_PUTENV
-
 /* Define to 1 if you have the <pwd.h> header file. */
 #cmakedefine HAVE_PWD_H 1
-
-/* Define to 1 if you have the `regcomp' function. */
-#cmakedefine HAVE_REGCOMP 1
-
-/* Define to 1 if you have the `re_comp' function. */
-#cmakedefine HAVE_RE_COMP 1
 
 /* Define to 1 if you have the <sigfpe.h> header file. */
 #cmakedefine HAVE_SIGFPE_H 1
@@ -106,26 +91,14 @@
 /* Define to 1 if you have the `statvfs' function. */
 #cmakedefine HAVE_STATVFS 1
 
-/* Define to 1 if you have the <stdint.h> header file. */
-#cmakedefine HAVE_STDINT_H 1
-
 /* Define to 1 if you have the <stdlib.h> header file. */
 #cmakedefine HAVE_STDLIB_H 1
-
-/* Define to 1 if you have the `strcspn' function. */
-#cmakedefine HAVE_STRCSPN 1
-
-/* Define to 1 if you have the `strdup' function. */
-#cmakedefine HAVE_STRDUP 1
 
 /* Define to 1 if you have the <strings.h> header file. */
 #cmakedefine HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
 #cmakedefine HAVE_STRING_H 1
-
-/* Define if you have the `strtol' function. */
-#cmakedefine HAVE_STRTOL
 
 /* Define if we have a function called "ieee_handler" in -lsunmath. */
 #cmakedefine HAVE_SUNMATH
