@@ -2946,7 +2946,7 @@ void BRepBuilderAPI_Sewing::VerticesAssembling(const Handle(Message_ProgressIndi
 #ifdef OCCT_DEBUG
       cout << "Assemble " << nbVert << " vertices on faces..." << endl;
 #endif
-      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance, thePI));
+      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance, thePI)) {}
     }
     if (!aPS.More())
       return;
@@ -2955,7 +2955,7 @@ void BRepBuilderAPI_Sewing::VerticesAssembling(const Handle(Message_ProgressIndi
 #ifdef OCCT_DEBUG
       cout << "Assemble " << nbVertFree << " vertices on floating edges..." << endl;
 #endif
-      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance, thePI));
+      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance, thePI)) {}
     }
   }
 }

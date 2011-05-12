@@ -815,13 +815,13 @@ void StepData_StepWriter::Send (const TCollection_AsciiString& val)
 	  break;
 	}
 	Standard_Integer stop = StepLong; // position of last separator
-	for ( ; stop > 0 && aval.Value(stop) != ' '; stop-- );
+	for ( ; stop > 0 && aval.Value(stop) != ' '; stop-- ) {}
 	if ( ! stop ) {
 	  stop = StepLong;
-	  for ( ; stop > 0 && aval.Value(stop) != '\\'; stop-- );
+	  for ( ; stop > 0 && aval.Value(stop) != '\\'; stop-- ) {}
 	  if ( ! stop ) {
 	    stop = StepLong;
-	    for ( ; stop > 0 && aval.Value(stop) != '_'; stop-- );
+		for ( ; stop > 0 && aval.Value(stop) != '_'; stop-- ) {}
 	    if ( ! stop ) stop = StepLong;
 	  }
 	}

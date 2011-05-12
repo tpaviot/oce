@@ -469,7 +469,7 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
   rewind(file);
 
   // skip header
-  while (getc(file) != '\n');
+  while (getc(file) != '\n') {}
 #ifdef OCCT_DEBUG
   cout << "start mesh\n";
 #endif

@@ -169,7 +169,7 @@ static Resource_KindOfLine WhatKindOfLine(OSD_File& aFile,
   if (!Pos2 || Pos1 == Pos2)
     return Resource_KOL_Error;
 
-  for (Pos = Pos2-1; Line.Value(Pos) == '\t' || Line.Value(Pos) == ' ' ; Pos--);
+  for (Pos = Pos2-1; Line.Value(Pos) == '\t' || Line.Value(Pos) == ' ' ; Pos--) {}
   aToken1 = Line.SubString(Pos1, Pos);
 
   if (Debug)

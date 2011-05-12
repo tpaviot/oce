@@ -734,7 +734,7 @@ static void DistributeSplitPoints (const Handle(ShapeExtend_WireData) &sbwd,
     params.SetValue ( i, ( isreversed ? l : f ) );
   }
   
-  for ( i=1; i <= indexes.Length() && indexes(i) < index; i++ );
+  for ( i=1; i <= indexes.Length() && indexes(i) < index; i++ ) {}
   for ( Standard_Integer shift = 1; i <= indexes.Length() && indexes(i) == index; i++ ) {
     while (  shift < nsplit  && isreversed != ( values(i) > params(shift) ) ) shift++;
     indexes.SetValue ( i, index + shift - 1 );
