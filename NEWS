@@ -1,8 +1,9 @@
 Version 0.2.0 - May 2011
 
-  * Add CMake build files.  Works fine on Linux, needs more testing
-    on Mac OSX and Windows.
-    [Thomas Paviot, Mark Pictor, Denis Barbier, QbProg]
+  * Add CMake build files, based on the opencascade-cmake project
+      http://code.google.com/p/opencascade-cmake/
+    Works fine on Linux, needs more testing on Mac OSX and Windows.
+    [Hugh Sorby, Thomas Paviot, Mark Pictor, Denis Barbier, QbProg]
 
   * Let CMake generate env.sh and env.csh scripts with
     accurate variables.
