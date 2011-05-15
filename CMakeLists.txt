@@ -268,7 +268,7 @@ IF(MSVC)
 	SET( CMAKE_DEBUG_POSTFIX "d" )
 ENDIF(MSVC)
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}/inc
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}/build_inc
 	${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
 ###################################
@@ -592,8 +592,16 @@ INSTALL(FILES ${header_files}
 
 SET(OCE_INSTALL_DATA_DIR ${${PROJECT_NAME}_INSTALL_DATA_DIR})
 SET(OCE_DEFAULT_CSF_GraphicShr ${${PROJECT_NAME}_INSTALL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_SHARED_LIBRARY_SUFFIX})
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_config.h.cmake
-	${CMAKE_CURRENT_BINARY_DIR}/inc/oce-config.h )
+
+#this is the header used to build OCE
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_build_config.h.cmake
+	${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h )
+
+#this is the header that is installed on the system
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_install_config.h.cmake
+	${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h )
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h
+		DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDE_DIR} COMPONENT Development )
 
 IF(${PROJECT_NAME}_DRAW)
 	CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/DrawDefault.cmake

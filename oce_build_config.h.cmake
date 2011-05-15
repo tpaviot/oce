@@ -1,3 +1,13 @@
+/****************************************************************
+**
+**  File: oce_build_config.h.cmake, build-inc/oce-config.h
+**
+**  This configuration header is used to build OCE. It should
+**  NOT be installed.
+**
+****************************************************************/
+
+
 /* Define to 1 if using `alloca.c'. */
 #cmakedefine C_ALLOCA 1
 
