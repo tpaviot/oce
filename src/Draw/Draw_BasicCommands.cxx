@@ -39,9 +39,9 @@ extern Standard_Boolean Draw_Batch;
 #include <process.h>
 #include <stdio.h>
 #include <stdlib.h>
-#ifdef HAVE_LIMITS 
+#ifdef OCE_HAVE_LIMITS
 # include <limits>
-#elif defined (HAVE_LIMITS_H)
+#elif defined (OCE_HAVE_LIMITS_H)
 # include <limits.h>
 #endif
 

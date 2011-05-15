@@ -20,7 +20,7 @@
 
 #cmakedefine HAVE_IOMANIP 1
 
-#cmakedefine HAVE_LIMITS 1
+#cmakedefine OCE_HAVE_LIMITS 1
 #cmakedefine OCE_HAVE_CLIMITS 1
 
 /* Define to 1 if you have the <dirent.h> header file. */
@@ -72,7 +72,7 @@
 #cmakedefine HAVE_LIBINKS 1
 
 /* Define to 1 if you have the <limits> header file. */
-#cmakedefine HAVE_LIMITS_H 1
+#cmakedefine OCE_HAVE_LIMITS_H 1
 
 /* Define to 1 if you have the <malloc.h> header file. */
 #cmakedefine HAVE_MALLOC_H 1

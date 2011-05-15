@@ -48,9 +48,9 @@
 #   define CLK_TCK	CLOCKS_PER_SEC
 #  endif
 
-#ifdef HAVE_LIMITS
+#ifdef OCE_HAVE_LIMITS
 # include <limits>
-#elif defined (HAVE_LIMITS_H)
+#elif defined (OCE_HAVE_LIMITS_H)
 # include <limits.h>
 #endif
 
