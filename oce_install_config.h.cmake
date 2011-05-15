@@ -14,8 +14,8 @@
 #cmakedefine OCE_HAVE_IOMANIP 1
 #cmakedefine OCE_HAVE_IOMANIP_H 1
 
-#cmakedefine HAVE_FSTREAM 1
-#cmakedefine HAVE_FSTREAM_H 1
+#cmakedefine OCE_HAVE_FSTREAM 1
+#cmakedefine OCE_HAVE_FSTREAM_H 1
 
 #cmakedefine HAVE_IOSTREAM 1
 #cmakedefine HAVE_IOSTREAM_H 1

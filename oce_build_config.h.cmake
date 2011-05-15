@@ -14,7 +14,7 @@
 /* define if the compiler allows redefinition of stream input and output */
 #cmakedefine DEF_IOS_OK 
 
-#cmakedefine HAVE_FSTREAM 1
+#cmakedefine OCE_HAVE_FSTREAM 1
 
 #cmakedefine HAVE_IOSTREAM 1
 
@@ -54,7 +54,7 @@
 #cmakedefine HAVE_IOS 1
 
 /* Define to 1 if you have the <fstream.h> header file. */
-#cmakedefine HAVE_FSTREAM_H 1
+#cmakedefine OCE_HAVE_FSTREAM_H 1
 
 /* Define to 1 if you have the <ios.h> header file. */
 #cmakedefine HAVE_IOS_H 1

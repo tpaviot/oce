@@ -39,9 +39,9 @@
   #include <iomanip.h>
 #endif
 
-#ifdef HAVE_FSTREAM
+#ifdef OCE_HAVE_FSTREAM
   #include <fstream>
-#elif defined (HAVE_FSTREAM_H)
+#elif defined (OCE_HAVE_FSTREAM_H)
   #include <fstream.h>
 #endif
 
