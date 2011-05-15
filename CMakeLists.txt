@@ -417,15 +417,6 @@ IF (NOT WIN32)
     "
     DEF_IOS_OK)
     CHECK_CXX_SOURCE_COMPILES("
-    #include <sys/types.h>
-    size_t a;
-    int main(){return 0;}
-    "
-    SYS_TYPES_DEFINES_SIZE_T)
-    IF(NOT SYS_TYPES_DEFINES_SIZE_T)
-	SET(SYS_TYPES_DEFINES_SIZE_T 0)
-    ENDIF(NOT SYS_TYPES_DEFINES_SIZE_T)
-    CHECK_CXX_SOURCE_COMPILES("
     #include <iostream>
     int main(){std::cout << std::cout.form(\"%9.3e\", 3.14159627e-4) << std::endl;return 0;}
     "

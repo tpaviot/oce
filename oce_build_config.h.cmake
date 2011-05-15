@@ -248,11 +248,6 @@
 /* Define if you need to in order for stat and other things to work. */
 #cmakedefine _POSIX_SOURCE
 
-/* Define to `unsigned' if <sys/types.h> does not define. */
-#if !${SYS_TYPES_DEFINES_SIZE_T}
-# define size_t unsigned
-#endif
-
 /* Location where resource files will be installed. */
 #cmakedefine OCE_INSTALL_DATA_DIR "@OCE_INSTALL_DATA_DIR@"
 

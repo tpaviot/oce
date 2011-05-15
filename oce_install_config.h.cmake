@@ -24,7 +24,3 @@
 #cmakedefine HAVE_IOSTREAM_H 1
 
 #cmakedefine HAVE_LIMITS_H 1
-
-#if !${SYS_TYPES_DEFINES_SIZE_T}
-# define size_t unsigned
-#endif
