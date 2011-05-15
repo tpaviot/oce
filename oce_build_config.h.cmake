@@ -18,7 +18,7 @@
 
 #cmakedefine HAVE_IOSTREAM 1
 
-#cmakedefine HAVE_IOMANIP 1
+#cmakedefine OCE_HAVE_IOMANIP 1
 
 #cmakedefine OCE_HAVE_LIMITS 1
 #cmakedefine OCE_HAVE_CLIMITS 1
@@ -48,7 +48,7 @@
 #cmakedefine HAVE_IEEEFP_H 1
 
 /* Define to 1 if you have the <iomanip.h> header file. */
-#cmakedefine HAVE_IOMANIP_H 1
+#cmakedefine OCE_HAVE_IOMANIP_H 1
 
 /* Define to 1 if you have the <ios> header file. */
 #cmakedefine HAVE_IOS 1

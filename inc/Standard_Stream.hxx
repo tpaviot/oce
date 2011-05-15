@@ -33,9 +33,9 @@
   #error "check config.h file or compilation options: either HAVE_IOSTREAM or HAVE_IOSTREAM_H should be defined"
 #endif
 
-#ifdef HAVE_IOMANIP
+#ifdef OCE_HAVE_IOMANIP
   #include <iomanip>
-#elif defined (HAVE_IOMANIP_H)
+#elif defined (OCE_HAVE_IOMANIP_H)
   #include <iomanip.h>
 #endif
 
