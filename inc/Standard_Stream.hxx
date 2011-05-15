@@ -24,13 +24,13 @@
 // Unix variant
 #ifndef WNT
 
-#ifdef HAVE_IOSTREAM
+#ifdef OCE_HAVE_IOSTREAM
   #include <iostream>
   #define USE_STL_STREAM
-#elif defined (HAVE_IOSTREAM_H)
+#elif defined (OCE_HAVE_IOSTREAM_H)
   #include <iostream.h>
 #else
-  #error "check config.h file or compilation options: either HAVE_IOSTREAM or HAVE_IOSTREAM_H should be defined"
+  #error "check config.h file or compilation options: either OCE_HAVE_IOSTREAM or OCE_HAVE_IOSTREAM_H should be defined"
 #endif
 
 #ifdef OCE_HAVE_IOMANIP

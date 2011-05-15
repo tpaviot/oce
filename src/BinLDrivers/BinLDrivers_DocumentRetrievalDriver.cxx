@@ -481,7 +481,7 @@ void BinLDrivers_DocumentRetrievalDriver::CheckShapeSection(
 						    Standard_IStream& IS)
 {
   if(!IS.eof()) {
-#if defined(WNT) || defined(HAVE_IOSTREAM)
+#if defined(WNT) || defined(OCE_HAVE_IOSTREAM)
     const Storage_Position endPos = IS.rdbuf()->pubseekoff(0L, std::ios_base::end, std::ios_base::in);
 #else
     const Storage_Position endPos = IS.rdbuf()->seekoff(0L, unsafe_ios::end, unsafe_ios::in);

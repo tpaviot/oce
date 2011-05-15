@@ -16,7 +16,7 @@
 
 #cmakedefine OCE_HAVE_FSTREAM 1
 
-#cmakedefine HAVE_IOSTREAM 1
+#cmakedefine OCE_HAVE_IOSTREAM 1
 
 #cmakedefine OCE_HAVE_IOMANIP 1
 
@@ -60,7 +60,7 @@
 #cmakedefine HAVE_IOS_H 1
 
 /* Define to 1 if you have the <iostream.h> header file. */
-#cmakedefine HAVE_IOSTREAM_H 1
+#cmakedefine OCE_HAVE_IOSTREAM_H 1
 
 /* Define to 1 if you have the <libc.h> header file. */
 #cmakedefine HAVE_LIBC_H 1
