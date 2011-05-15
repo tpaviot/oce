@@ -14,9 +14,6 @@
 #cmakedefine HAVE_IOMANIP 1
 #cmakedefine HAVE_IOMANIP_H 1
 
-#cmakedefine HAVE_IOS 1
-#cmakedefine HAVE_IOS_H 1
-
 #cmakedefine HAVE_FSTREAM 1
 #cmakedefine HAVE_FSTREAM_H 1
 
