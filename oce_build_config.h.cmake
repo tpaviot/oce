@@ -20,6 +20,8 @@
 
 #cmakedefine HAVE_IOMANIP 1
 
+#cmakedefine HAVE_LIMITS 1
+
 /* Define to 1 if you have the <dirent.h> header file. */
 #cmakedefine HAVE_DIRENT_H 1
 

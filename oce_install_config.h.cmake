@@ -20,4 +20,5 @@
 #cmakedefine HAVE_IOSTREAM 1
 #cmakedefine HAVE_IOSTREAM_H 1
 
+#cmakedefine HAVE_LIMITS 1
 #cmakedefine HAVE_LIMITS_H 1
