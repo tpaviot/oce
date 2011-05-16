@@ -107,9 +107,7 @@ used in immediat mode context.
   #include <gl2ps.h>
   /* OCC22216 NOTE: linker dependency can be switched off by undefining macro. 
      Pragma comment for gl2ps.lib is defined only here. */ 
-  #ifdef _MSC_VER 
-  //#pragma comment( lib, "gl2ps.lib" )
-  #endif
+  
   #ifdef __BORLANDC__
   #include <gl2ps.c>
   #endif
