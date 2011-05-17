@@ -47,6 +47,10 @@ IF (NOT MSVC)
 		immutable" FORCE )
 ENDIF(NOT MSVC)
 
+IF(MSVC)
+	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_INSTALL_PDB_FILES "Install PDB files (debug informations)" ON )
+ENDIF(MSVC)
+
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_BUILD_SHARED_LIB "Build shared ${PROJECT_NAME} libs" ON )
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_MODEL "Build model components" ON )
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_OCAF "Build application framework" ON )
@@ -511,18 +515,13 @@ ENDIF(${PROJECT_NAME}_EXTRA_WARNINGS)
 #     ./Unix/i386-debug-64                      #
 ################################################
 IF(WIN32)
-    IF(${MSVC}) # The compiler used is MSVC
+    IF(MSVC) # The compiler used is MSVC
         MESSAGE(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
-        SET(LIBRARY_OUTPUT_PATH win${BIT}/${MSVC_VERSION}/bin)
-    ELSE(${MSVC})
+    ELSE(MSVC)
         SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
-    ENDIF(${MSVC})
+    ENDIF(MSVC)
 ELSE(WIN32)
-    IF (NOT MSVC)
-		SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
-	ELSE(MSVC)
-	    # In MSVC it is better to use CMake defaults
-	ENDIF(MSVC)
+   		SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
 ENDIF(WIN32)
 MESSAGE(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
