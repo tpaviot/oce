@@ -566,7 +566,7 @@ void OSD :: SetSignal ( const Standard_Boolean aFloatingSignal ) {
 #if defined(_MSC_VER) || defined(__BORLANDC__)
  if (fSETranslator) {
    // use Structural Exception translator (one per thread)
-   /* _se_translator_function pOldSeFunc = */ _set_se_translator( TranslateSE );
+   _set_se_translator( TranslateSE );
  }
 #endif
 

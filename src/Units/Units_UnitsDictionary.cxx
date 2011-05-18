@@ -46,19 +46,6 @@
 #ifdef PRO13136		//Temporaire en attendant OSD::CStringToReal()
 static char DecimalPoint = '\0' ;
 
-#if 0 // Warning-fix : unused
-static void GetDecimalPoint() {
-  Standard_Real f = 1.1 ;
-  char str[5] ;
-
-  sprintf(str,"%.1f",f) ;
-//#ifdef DEB
-//  printf("Local System is  %s\n",str) ;
-//#endif
-  DecimalPoint = str[1] ;
-}
-#endif
-
 #endif
 // Make the RealToCString reciprocal conversion.
 
