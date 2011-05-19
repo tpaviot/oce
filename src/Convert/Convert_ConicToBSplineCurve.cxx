@@ -327,7 +327,7 @@ void Convert_ConicToBSplineCurve::BuildCosAndSin(
   q_param,
   param ;
 
-  Standard_Integer num_poles,
+  Standard_Integer num_poles = 0,
   ii,
   jj,
   num_knots=0,
@@ -337,7 +337,7 @@ void Convert_ConicToBSplineCurve::BuildCosAndSin(
   temp_degree=0,
   tgt_theta_flag,
   num_temp_poles,
-  order ;
+  order = 0;
 
   Convert_CosAndSinEvalFunction *EvaluatorPtr=NULL ;
 

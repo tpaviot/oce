@@ -10,7 +10,7 @@
 # define finite isfinite
 #endif
 
-static Standard_Integer DecimalPoint = 0 ;
+static char DecimalPoint = 0 ;
 
 static void GetDecimalPoint() {
   float F1 = (float ) 1.1 ;
@@ -41,12 +41,12 @@ Standard_Boolean OSD::RealToCString(const Standard_Real aReal,
   if (sprintf(aString,"%.17e",aReal)  <= 0) //BUC60808
     return Standard_False ;
 
-  if ((p = strchr(aString,DecimalPoint)))
+  if ((p = strchr(aString,DecimalPoint)) != 0)
     *p = '.' ;
 
   // Suppress "e+00" and unsignificant 0's 
 
-  if ((p = strchr(aString,'e'))) {
+  if ((p = strchr(aString,'e')) != 0) {
     if (!strcmp(p,"e+00"))
       *p = 0 ;
     for (q = p-1 ; *q == '0' ; q--) ;
@@ -77,7 +77,7 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
   const char *str = aString;
   char buff[1024];  
   //if((p = strchr(aString,'.')))
-  if(DecimalPoint != '.' && (p = strchr(aString,'.'))&& ((p-aString) < 1000) )
+  if(DecimalPoint != '.' && ((p = strchr(aString,'.')) != NULL) && ((p-aString) < 1000) )
   {
     strncpy(buff, aString, 1000);
     buff[p-aString] = DecimalPoint ;

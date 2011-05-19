@@ -52,6 +52,8 @@
         Standard_Real Sol = IniSol;
         Standard_Real IniVal = Value(N, Poly, IniSol);
         Standard_Integer Index;
+	// set a possible initial value to avoid compiler complaining
+	Val = IniVal;
 
 //      cout << "Improve\n";
         for(Index = 1; Index < 10; Index++) {

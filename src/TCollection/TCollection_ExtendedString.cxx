@@ -153,6 +153,8 @@ TCollection_ExtendedString::TCollection_ExtendedString
       if(!ConvertToUnicode (astring))
 #ifdef DEB
 	cout <<"UTF8 decoding failure..." <<endl;
+#else
+	  {}
 #endif
       ;
     }

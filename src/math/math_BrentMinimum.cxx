@@ -131,10 +131,6 @@ math_BrentMinimum::math_BrentMinimum(const Standard_Real    TolX,
 //    Standard_Boolean math_BrentMinimum::IsSolutionReached(math_Function& F) {
     Standard_Boolean math_BrentMinimum::IsSolutionReached(math_Function& ) {
 
-       Standard_Real xm = 0.5 * (a + b);
-       // modified by NIZHNY-MKK  Mon Oct  3 17:45:57 2005.BEGIN
-//        Standard_Real tol = XTol * fabs(x) + EPSZ;
-//        return fabs(x - xm) <= 2.0 * tol - 0.5 * (b - a);
        Standard_Real TwoTol = 2.0 *(XTol * fabs(x) + EPSZ);
        return ((x <= (TwoTol + a)) && (x >= (b - TwoTol)));
        // modified by NIZHNY-MKK  Mon Oct  3 17:46:00 2005.END

@@ -409,8 +409,8 @@ void TCollection_AsciiString::AssignCat(const TCollection_AsciiString& other)
 void TCollection_AsciiString::Capitalize()
 {
   for (int i=0; i < mylength; i++) {
-    if  ( i==0 ) mystring[i] = toupper(mystring[i]);
-    else         mystring[i] = tolower(mystring[i]);    
+    if  ( i==0 ) mystring[i] = (Standard_Character) toupper(mystring[i]);
+    else         mystring[i] = (Standard_Character) tolower(mystring[i]);    
   }
 }
 
@@ -442,7 +442,7 @@ void TCollection_AsciiString::ChangeAll(const Standard_Character aChar,
       if (mystring[i] == aChar) mystring[i] = NewChar;
   }
   else{
-    Standard_Character anUpperChar = toupper(aChar);
+    Standard_Character anUpperChar = (Standard_Character) toupper(aChar);
     for (int i=0; i < mylength; i++)
       if (toupper(mystring[i]) == anUpperChar) mystring[i] = NewChar;
   }
@@ -1127,7 +1127,7 @@ Standard_Integer TCollection_AsciiString::Location
 void TCollection_AsciiString::LowerCase()
 {
   for (int i=0; i < mylength; i++)
-    mystring[i] = tolower(mystring[i]);
+    mystring[i] = (Standard_Character) tolower(mystring[i]);
 }
 
 //------------------------------------------------------------------------
@@ -1229,7 +1229,7 @@ void TCollection_AsciiString::RemoveAll(const Standard_Character what,
       if (mystring[i] != what) mystring[c++] = mystring[i];
   }
   else {
-    Standard_Character upperwhat = toupper(what);
+    Standard_Character upperwhat = (Standard_Character) toupper(what);
     for (int i=0; i < mylength; i++) { 
       if (toupper(mystring[i]) != upperwhat) mystring[c++] = mystring[i];
     }
@@ -1822,7 +1822,7 @@ void TCollection_AsciiString::Trunc(const Standard_Integer ahowmany)
 void TCollection_AsciiString::UpperCase()
 {
   for (int i=0; i < mylength; i++)
-    mystring[i] = toupper(mystring[i]);
+    mystring[i] = (Standard_Character) toupper(mystring[i]);
 }
 
 //------------------------------------------------------------------------

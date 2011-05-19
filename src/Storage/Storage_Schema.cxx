@@ -572,7 +572,7 @@ static Standard_Integer             i;
     }
 
     if (result) {
-      Standard_Integer otype,oref;
+      Standard_Integer otype,oref = 0;
 
       errorCode = f.BeginReadRefSection();
 
