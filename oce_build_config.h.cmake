@@ -2,8 +2,10 @@
 **
 **  File: oce_build_config.h.cmake, build-inc/oce-config.h
 **
-**  This configuration header is used to build OCE. It should
-**  NOT be installed.
+**  This configuration header is used to build OCE. It is
+**  installed along other header files in order to know which
+**  macros had been defined when compiling OCE, but it must
+**  NOT be included when compiling 3rd party programs.
 **
 ****************************************************************/
 

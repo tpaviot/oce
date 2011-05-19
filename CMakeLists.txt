@@ -593,6 +593,9 @@ SET(OCE_DEFAULT_CSF_GraphicShr ${${PROJECT_NAME}_INSTALL_LIB_DIR}/${CMAKE_SHARED
 #this is the header used to build OCE
 CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_build_config.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h )
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h
+	RENAME oce_build_config.defs
+	DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDE_DIR} COMPONENT Development )
 
 #this is the header that is installed on the system
 CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_install_config.h.cmake
