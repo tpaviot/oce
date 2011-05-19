@@ -1,14 +1,27 @@
+/****************************************************************
+**
+**  File: oce_build_config.h.cmake, build-inc/oce-config.h
+**
+**  This configuration header is used to build OCE. It should
+**  NOT be installed.
+**
+****************************************************************/
+
+
 /* Define to 1 if using `alloca.c'. */
 #cmakedefine C_ALLOCA 1
 
 /* define if the compiler allows redefinition of stream input and output */
 #cmakedefine DEF_IOS_OK 
 
-#cmakedefine HAVE_FSTREAM 1
+#cmakedefine OCE_HAVE_FSTREAM 1
 
-#cmakedefine HAVE_IOSTREAM 1
+#cmakedefine OCE_HAVE_IOSTREAM 1
 
-#cmakedefine HAVE_IOMANIP 1
+#cmakedefine OCE_HAVE_IOMANIP 1
+
+#cmakedefine OCE_HAVE_LIMITS 1
+#cmakedefine OCE_HAVE_CLIMITS 1
 
 /* Define to 1 if you have the <dirent.h> header file. */
 #cmakedefine HAVE_DIRENT_H 1
@@ -31,26 +44,23 @@
 /* Define to 1 if you have the <floatingpoint.h> header file. */
 #cmakedefine HAVE_FLOATINGPOINT_H 1
 
-/* Define to 1 if you have the `gethostname' function. */
-#cmakedefine HAVE_GETHOSTNAME 1
-
 /* Define to 1 if you have the <ieeefp.h> header file. */
 #cmakedefine HAVE_IEEEFP_H 1
 
 /* Define to 1 if you have the <iomanip.h> header file. */
-#cmakedefine HAVE_IOMANIP_H 1
+#cmakedefine OCE_HAVE_IOMANIP_H 1
 
 /* Define to 1 if you have the <ios> header file. */
 #cmakedefine HAVE_IOS 1
 
 /* Define to 1 if you have the <fstream.h> header file. */
-#cmakedefine HAVE_FSTREAM_H 1
+#cmakedefine OCE_HAVE_FSTREAM_H 1
 
 /* Define to 1 if you have the <ios.h> header file. */
 #cmakedefine HAVE_IOS_H 1
 
 /* Define to 1 if you have the <iostream.h> header file. */
-#cmakedefine HAVE_IOSTREAM_H 1
+#cmakedefine OCE_HAVE_IOSTREAM_H 1
 
 /* Define to 1 if you have the <libc.h> header file. */
 #cmakedefine HAVE_LIBC_H 1
@@ -62,10 +72,7 @@
 #cmakedefine HAVE_LIBINKS 1
 
 /* Define to 1 if you have the <limits> header file. */
-#cmakedefine HAVE_LIMITS_H 1
-
-/* Define if we have a function called "mallinfo" in -lmalloc. */
-#cmakedefine HAVE_MALLINFO
+#cmakedefine OCE_HAVE_LIMITS_H 1
 
 /* Define to 1 if you have the <malloc.h> header file. */
 #cmakedefine HAVE_MALLOC_H 1
@@ -82,17 +89,8 @@
 /* Define to 1 if you have the <osfcn.h> header file. */
 #cmakedefine HAVE_OSFCN_H 1
 
-/* Define if you have the `putenv' function. */
-#cmakedefine HAVE_PUTENV
-
 /* Define to 1 if you have the <pwd.h> header file. */
 #cmakedefine HAVE_PWD_H 1
-
-/* Define to 1 if you have the `regcomp' function. */
-#cmakedefine HAVE_REGCOMP 1
-
-/* Define to 1 if you have the `re_comp' function. */
-#cmakedefine HAVE_RE_COMP 1
 
 /* Define to 1 if you have the <sigfpe.h> header file. */
 #cmakedefine HAVE_SIGFPE_H 1
@@ -106,26 +104,14 @@
 /* Define to 1 if you have the `statvfs' function. */
 #cmakedefine HAVE_STATVFS 1
 
-/* Define to 1 if you have the <stdint.h> header file. */
-#cmakedefine HAVE_STDINT_H 1
-
 /* Define to 1 if you have the <stdlib.h> header file. */
 #cmakedefine HAVE_STDLIB_H 1
-
-/* Define to 1 if you have the `strcspn' function. */
-#cmakedefine HAVE_STRCSPN 1
-
-/* Define to 1 if you have the `strdup' function. */
-#cmakedefine HAVE_STRDUP 1
 
 /* Define to 1 if you have the <strings.h> header file. */
 #cmakedefine HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
 #cmakedefine HAVE_STRING_H 1
-
-/* Define if you have the `strtol' function. */
-#cmakedefine HAVE_STRTOL
 
 /* Define if we have a function called "ieee_handler" in -lsunmath. */
 #cmakedefine HAVE_SUNMATH
@@ -220,14 +206,8 @@
 /* define if the class ostream has member function form */
 #cmakedefine OSTREAM_FORM_OK 
 
-/* Name of package */
-#define PACKAGE "OCE"
-
 /* Define if compiler has function prototypes */
 #cmakedefine PROTOTYPES
-
-/* Define as the return type of signal handlers (`int' or `void'). */
-#define RETSIGTYPE ${RETSIGTYPE}
 
 /* define if the function semctl takes a value */
 #cmakedefine SEMCTL_NO_REFERENCE
@@ -257,9 +237,6 @@
 /* Define if your <sys/time.h> declares `struct tm'. */
 #cmakedefine TM_IN_SYS_TIME
 
-/* Version number of package */
-#define VERSION "@OCE_VERSION@"
-
 /* Define if your processor stores words with the most significant byte first
    (like Motorola and SPARC, unlike Intel and VAX). */
 #cmakedefine WORDS_BIGENDIAN
@@ -273,11 +250,6 @@
 
 /* Define if you need to in order for stat and other things to work. */
 #cmakedefine _POSIX_SOURCE
-
-/* Define to `unsigned' if <sys/types.h> does not define. */
-#if !${SYS_TYPES_DEFINES_SIZE_T}
-# define size_t unsigned
-#endif
 
 /* Location where resource files will be installed. */
 #cmakedefine OCE_INSTALL_DATA_DIR "@OCE_INSTALL_DATA_DIR@"
