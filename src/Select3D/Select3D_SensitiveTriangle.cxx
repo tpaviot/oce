@@ -198,7 +198,6 @@ Standard_Integer  Select3D_SensitiveTriangle::Status(const gp_XY& p0,
   gp_XY V02(p2);V02-=p0;
   gp_XY V12(p2);V12-=p1;
 
-  Standard_Real TolTol = aTol*aTol;
 
   // regardons les cas particuliers...
   //si l'un des vecteurs est quasi nul (2 points sont confondus), 

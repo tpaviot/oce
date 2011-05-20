@@ -166,7 +166,7 @@ Standard_Boolean Voxel_FastConverter::Convert(Standard_Integer&      progress,
 
   // Convert
   TopLoc_Location L;
-  Standard_Integer iprogress = 0, prev_progress = 0;
+  Standard_Integer iprogress = 0;
   Standard_Integer n1, n2, n3;
   Standard_Integer ixmin, iymin, izmin, ixmax, iymax, izmax;
   Standard_Real xmin, ymin, zmin, xmax, ymax, zmax;

@@ -38,7 +38,6 @@ void ShapeSchema_PGeom2d_Curve::Add(const Handle(Standard_Persistent)& p, const 
 void ShapeSchema_PGeom2d_Curve::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PGeom2d_Curve) &pp = (Handle(PGeom2d_Curve)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -56,7 +55,6 @@ void ShapeSchema_PGeom2d_Curve::Write(const Handle(Standard_Persistent)& p, Stor
 void ShapeSchema_PGeom2d_Curve::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PGeom2d_Curve) &pp = (Handle(PGeom2d_Curve)&)p;
 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();

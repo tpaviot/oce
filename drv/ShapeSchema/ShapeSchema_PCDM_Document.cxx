@@ -38,7 +38,6 @@ void ShapeSchema_PCDM_Document::Add(const Handle(Standard_Persistent)& p, const 
 void ShapeSchema_PCDM_Document::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PCDM_Document) &pp = (Handle(PCDM_Document)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -56,8 +55,7 @@ void ShapeSchema_PCDM_Document::Write(const Handle(Standard_Persistent)& p, Stor
 void ShapeSchema_PCDM_Document::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PCDM_Document) &pp = (Handle(PCDM_Document)&)p;
-
+  
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

@@ -469,7 +469,6 @@ void BRepFill_OffsetWire::Perform (const Standard_Real Offset,
       BRepTools_Substitution aSubst;
       TopTools_ListIteratorOfListOfShape it(BadEdges);
       TopTools_ListOfShape aL;
-      Standard_Real aDefl = .01 * Abs(Offset);
       TColStd_SequenceOfReal Parameters;
       TColgp_SequenceOfPnt Points;
 

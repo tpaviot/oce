@@ -773,8 +773,7 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 #ifndef WNT
 
     GLXContext ctx;
-    Tint dummy;
-
+ 
     if ( !_Txgl_Map.IsBound(win) )
       return;
     ctx = _Txgl_Map.ChangeFind(win);

@@ -37,7 +37,6 @@ void StdLSchema_PDataStd_NoteBook::Add(const Handle(Standard_Persistent)& p, con
 void StdLSchema_PDataStd_NoteBook::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PDataStd_NoteBook) &pp = (Handle(PDataStd_NoteBook)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -55,8 +54,7 @@ void StdLSchema_PDataStd_NoteBook::Write(const Handle(Standard_Persistent)& p, S
 void StdLSchema_PDataStd_NoteBook::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PDataStd_NoteBook) &pp = (Handle(PDataStd_NoteBook)&)p;
-
+ 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

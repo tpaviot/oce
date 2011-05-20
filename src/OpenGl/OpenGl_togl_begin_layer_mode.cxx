@@ -604,9 +604,6 @@ call_togl_text2d ( char *s,
                   float height )
 {
   call_def_ptrLayer ptrLayer;
-#ifndef WNT
-  Tint dispWidth, dispHeight;
-#endif
   GLdouble objx1, objy1, objz1;
 
   ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
@@ -890,9 +887,6 @@ call_togl_textsize2d
  )
 {
   call_def_ptrLayer ptrLayer;
-#ifndef WNT
-  Tint dispWidth, dispHeight;
-#endif
 
 
   ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;

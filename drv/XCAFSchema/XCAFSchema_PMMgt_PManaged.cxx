@@ -38,7 +38,6 @@ void XCAFSchema_PMMgt_PManaged::Add(const Handle(Standard_Persistent)& p, const 
 void XCAFSchema_PMMgt_PManaged::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PMMgt_PManaged) &pp = (Handle(PMMgt_PManaged)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -56,8 +55,7 @@ void XCAFSchema_PMMgt_PManaged::Write(const Handle(Standard_Persistent)& p, Stor
 void XCAFSchema_PMMgt_PManaged::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PMMgt_PManaged) &pp = (Handle(PMMgt_PManaged)&)p;
-
+ 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

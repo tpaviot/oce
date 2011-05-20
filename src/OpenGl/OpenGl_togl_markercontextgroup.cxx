@@ -62,7 +62,7 @@ int EXPORT GenerateMarkerBitmap( int theId, unsigned int theWidth, unsigned int 
 {
   int i = 0;
   int anIndex = -1;
-  GLint w, h, size, k, l;
+  GLint w, h;
 
   for( ; i < UDMS_Marker.Quantity; i++ )
   {

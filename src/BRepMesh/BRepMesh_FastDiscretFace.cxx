@@ -144,7 +144,6 @@ void BRepMesh_FastDiscretFace::Add(const TopoDS_Face& theface,
     TColStd_SequenceOfReal aFSeq, aLSeq;
     TColGeom2d_SequenceOfCurve aCSeq;
     TopTools_SequenceOfShape aShSeq;
-    Standard_Real defedge = 0;
 
     TopoDS_Iterator exW(face);
     for (; exW.More(); exW.Next()) {
@@ -1264,7 +1263,6 @@ Standard_Real BRepMesh_FastDiscretFace::Control (const Handle(BRepAdaptor_HSurfa
   //IMPORTANT: Constants used in calculations
   const Standard_Real MinimalArea2d = 1.e-9;
   const Standard_Real MinimalSqLength3d = 1.e-12;
-  const Standard_Real aDef2 = defface*defface;
 
   // Define the number of iterations
   Standard_Integer myNbIterations = 11;
@@ -1286,9 +1284,6 @@ Standard_Real BRepMesh_FastDiscretFace::Control (const Handle(BRepAdaptor_HSurfa
   gp_Pnt pDef;
   Standard_Real dv = 0, defl = 0, maxdef = -1;
   Standard_Integer pass = 1, nf = 0, nl = 0;
-  Standard_Integer v1, v2, v3, e1, e2, e3;
-  Standard_Boolean o1, o2, o3;
-  Standard_Boolean m1, m2, m3;
   BRepMesh_Vertex InsVertex;
   Standard_Boolean caninsert;
 
@@ -1594,7 +1589,6 @@ Standard_Real BRepMesh_FastDiscretFace::Control (const Handle(BRepAdaptor_HSurfa
           Standard_Integer aSt[4];
           aSt[0] = GeomLib::NormEstim(BSpl, gp_Pnt2d(mi2d), Precision::Confusion(), midDir);
           Standard_Integer i = 0;
-          gp_Dir dir[3] = {gp_Dir(0,0,1), gp_Dir(0,0,1), gp_Dir(0,0,1)};
           Standard_Real anAngle[3];
           for(; i < 3; i++)
           {

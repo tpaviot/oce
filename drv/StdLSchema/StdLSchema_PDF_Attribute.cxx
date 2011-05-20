@@ -38,7 +38,6 @@ void StdLSchema_PDF_Attribute::Add(const Handle(Standard_Persistent)& p, const H
 void StdLSchema_PDF_Attribute::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PDF_Attribute) &pp = (Handle(PDF_Attribute)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -56,8 +55,7 @@ void StdLSchema_PDF_Attribute::Write(const Handle(Standard_Persistent)& p, Stora
 void StdLSchema_PDF_Attribute::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PDF_Attribute) &pp = (Handle(PDF_Attribute)&)p;
-
+  
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

@@ -38,7 +38,6 @@ void ShapeSchema_PGeom2d_Point::Add(const Handle(Standard_Persistent)& p, const 
 void ShapeSchema_PGeom2d_Point::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PGeom2d_Point) &pp = (Handle(PGeom2d_Point)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -56,8 +55,7 @@ void ShapeSchema_PGeom2d_Point::Write(const Handle(Standard_Persistent)& p, Stor
 void ShapeSchema_PGeom2d_Point::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PGeom2d_Point) &pp = (Handle(PGeom2d_Point)&)p;
-
+  
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 
