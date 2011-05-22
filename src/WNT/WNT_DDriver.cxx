@@ -50,6 +50,13 @@
 #include <time.h>
 #include <stdio.h>
 
+#ifdef __MINGW32__
+# include <w32api.h>
+# if (__W32API_MAJOR_VERSION < 3) || (__W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION <= 13)
+#  define MINGW_OLD_ENHMFENUMPROC_PROTOTYPE
+# endif
+#endif
+
 #pragma comment( lib, "winspool.lib" )
 #pragma comment( lib, "advapi32.lib" )
 
@@ -103,7 +110,7 @@ static int  __fastcall         _dd_dev_size  ( HDC, int );
 
 static int CALLBACK _dd_enum_proc (
                      HDC, HANDLETABLE FAR*,
-#ifndef __MINGW32__
+#ifndef MINGW_OLD_ENHMFENUMPROC_PROTOTYPE
                      CONST ENHMETARECORD FAR*,
 #else
                      ENHMETARECORD FAR*,
@@ -1988,7 +1995,7 @@ static int __fastcall _dd_dev_size ( HDC hdc, int index ) {
 static int CALLBACK _dd_enum_proc (
                      HDC                         hDC,
                      HANDLETABLE FAR*       lpHTable,
-#ifndef __MINGW32__
+#ifndef MINGW_OLD_ENHMFENUMPROC_PROTOTYPE
                      CONST ENHMETARECORD FAR* lpEMFR,
 #else
                      ENHMETARECORD FAR* lpEMFR,
