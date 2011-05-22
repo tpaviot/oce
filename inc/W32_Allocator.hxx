@@ -45,7 +45,9 @@
 # define W32F_POUTL 0x20000000
 # define W32F_DFONT 0x10000000
 
-#define OCC5415 /* avoid warning C4291 in MS VC++ 6.0 */
+# ifndef __MINGW32__
+#  define OCC5415 /* avoid warning C4291 in MS VC++ 6.0 */
+# endif
 
 typedef enum {
 
