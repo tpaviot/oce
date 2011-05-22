@@ -78,7 +78,7 @@ on confuse point.
 #endif // APIENTRY
 # define STATIC static
 #else
-# include <GL\GLU.H>
+# include <GL/glu.h>
 #define STATIC
 typedef double GLUcoord;
 #endif  /* WNT */
