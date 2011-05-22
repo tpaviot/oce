@@ -9,7 +9,7 @@
 #include <gp_Ax1.hxx>
 #include <Visual3d_View.hxx>
 #ifdef WNT
-#include <Windows.h>
+#include <windows.h>
 #endif
 #include <GL/gl.h>
 
