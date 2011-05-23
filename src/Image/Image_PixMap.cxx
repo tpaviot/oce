@@ -11,10 +11,7 @@
   #include <FreeImagePlus.h>
   #include <Image_PixMap.ixx>
   /* OCC22216 NOTE: linker dependency can be switched off by undefining macro */ 
-  #ifdef _MSC_VER
-  #pragma comment( lib, "FreeImage.lib" )
-  #pragma comment( lib, "FreeImagePlus.lib" )
-  #endif
+  
   #ifdef __BORLANDC__
   #pragma link "FreeImage.lib"
   #pragma link "FreeImagePlus.lib"

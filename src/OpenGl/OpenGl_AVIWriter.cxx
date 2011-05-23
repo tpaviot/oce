@@ -6,6 +6,12 @@
 #include <OpenGl_AVIWriter.hxx>
 
 #ifdef WNT
+
+#ifdef _MSC_VER
+// The AVI writer requires Video For Windows library 
+#pragma comment(lib,"Vfw32.lib")
+#endif
+
 OpenGl_AVIWriter* OpenGl_AVIWriter::MyAVIWriterInstance = 0L;
 
 OpenGl_AVIWriter * OpenGl_AVIWriter::GetInstance()
