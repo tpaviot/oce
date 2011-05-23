@@ -108,6 +108,10 @@ int call_util_osd_getenv( char * , char * , int ) ;
 #ifndef _MSC_VER
 # define __leave goto leave
 #endif
+#if defined(__CYGWIN32__) || defined(__MINGW32__)
+# define  __try
+# define  __finally
+#endif
 
 #ifndef WNT
 typedef NCollection_DataMap<Tint, GLCONTEXT> GLContextMap;
