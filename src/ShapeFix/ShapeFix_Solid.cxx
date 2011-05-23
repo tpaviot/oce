@@ -97,29 +97,6 @@ ShapeFix_Solid::ShapeFix_Solid(const TopoDS_Solid& solid)
 //function : CollectSolids
 //purpose  : 
 //=======================================================================
-static void GetMiddlePoint(const TopoDS_Shape& aShape, gp_Pnt& pmid)
-{
-  TopExp_Explorer aExp(aShape,TopAbs_EDGE);
-  gp_XYZ center(0.0,0.0,0.0);
-  Standard_Integer numpoints =0;
-  for( ; aExp.More(); aExp.Next()) {
-    TopoDS_Edge e1 = TopoDS::Edge(aExp.Current());
-    Standard_Real f,l;
-    Handle(Geom_Curve) c3d = BRep_Tool::Curve(e1,f,l);
-    if(!c3d.IsNull()) {
-      for(Standard_Integer i =1 ; i <=5; i++) {
-        Standard_Real param = f+(l-f)/4*(i-1);
-        gp_Pnt pt;
-        numpoints++;
-        c3d->D0(param,pt);
-        center+=pt.XYZ();
-      
-      }
-    }
-  }
-  center /= numpoints;
-  pmid.SetXYZ(center);
-}
 static void CollectSolids(const TopTools_SequenceOfShape& aSeqShells , 
                           TopTools_DataMapOfShapeListOfShape& aMapShellHoles,
                           TopTools_DataMapOfShapeInteger& theMapStatus)

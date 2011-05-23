@@ -126,14 +126,6 @@ static void QuasiFleche(const Adaptor3d_Curve& C,
 			TColStd_SequenceOfReal& Parameters,
 			TColgp_SequenceOfPnt& Points);
 
-static Standard_Boolean PerformCurve (TColStd_SequenceOfReal& Parameters,
-				      TColgp_SequenceOfPnt&   Points,
-				      const Adaptor3d_Curve& C, 
-				      const Standard_Real Deflection,
-				      const Standard_Real U1,
-				      const Standard_Real U2,
-				      const Standard_Real EPSILON,
-				      const Standard_Integer Nbmin);
 
 static void CheckBadEdges(const TopoDS_Face& Spine, const Standard_Real Offset,
 			  const BRepMAT2d_BisectingLocus& Locus, 
@@ -2267,40 +2259,6 @@ static void CheckBadEdges(const TopoDS_Face& Spine, const Standard_Real Offset,
 }
 
 
-//=======================================================================
-//function : PerformCurve
-//purpose  : 
-//=======================================================================
-
-static Standard_Boolean PerformCurve (TColStd_SequenceOfReal& Parameters,
-				      TColgp_SequenceOfPnt&   Points,
-				      const Adaptor3d_Curve& C, 
-				      const Standard_Real Deflection,
-				      const Standard_Real U1,
-				      const Standard_Real U2,
-				      const Standard_Real EPSILON,
-				      const Standard_Integer Nbmin)
-{
-  Standard_Real UU1 = Min(U1, U2);
-  Standard_Real UU2 = Max(U1, U2);
-
-  gp_Pnt Pdeb, Pfin;
-  gp_Vec Ddeb,Dfin;
-  C.D1(UU1,Pdeb,Ddeb);
-  Parameters.Append(UU1);
-  Points.Append(Pdeb);
-
-  C.D1(UU2,Pfin,Dfin);
-  QuasiFleche(C,Deflection*Deflection,
-	      UU1,Pdeb,
-	      Ddeb,
-	      UU2,Pfin,
-	      Dfin,
-	      Nbmin,
-	      EPSILON*EPSILON,
-	      Parameters,Points);
-  return Standard_True;
-}
 //=======================================================================
 //function : QuasiFleche
 //purpose  : 

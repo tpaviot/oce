@@ -690,37 +690,6 @@ static Standard_Integer triangle (Draw_Interpretor&, Standard_Integer n, const c
 }
 
 
-//=======================================================================
-//function : printdegree
-//purpose  : 
-//=======================================================================
-
-static void printdegree(MeshDS_DegreeOfFreedom dof, Draw_Interpretor& di)
-{
-  switch (dof) {
-  case MeshDS_InVolume :
-    di << "InVolume";
-    break;
-  case MeshDS_OnSurface :
-    di << "OnSurface";
-    break;
-  case MeshDS_OnCurve :
-    di << "OnCurve";
-    break;
-  case MeshDS_Fixed :
-    di << "Fixed";
-    break;
-  case MeshDS_Frontier :
-    di << "Frontier";
-    break;
-  case MeshDS_Deleted :
-    di << "Deleted";
-    break;
-  case MeshDS_Free :
-    di << "Free";
-    break;
-  }
-}
 
 //=======================================================================
 //function : dumpvertex

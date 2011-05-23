@@ -44,7 +44,6 @@ typedef  struct
 
 static  TStatus  TransformPersistenceDisplay( TSM_ELEM_DATA, Tint, cmn_key* );
 static  TStatus  TransformPersistenceAdd( TSM_ELEM_DATA, Tint, cmn_key* );
-static  TStatus  TransformPersistenceDelete( TSM_ELEM_DATA, Tint, cmn_key* );
 static  TStatus  TransformPersistencePrint( TSM_ELEM_DATA, Tint, cmn_key* );
 
 static  TStatus  (*MtdTbl[])( TSM_ELEM_DATA, Tint, cmn_key* ) =
@@ -92,12 +91,6 @@ TransformPersistenceDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   return TSuccess;
 }
 
-static  TStatus
-TransformPersistenceDelete( TSM_ELEM_DATA data, Tint n, cmn_key *k )
-{
-  /*    transform_persistence_end();*/
-  return TSuccess;
-}
 
 
 static  TStatus

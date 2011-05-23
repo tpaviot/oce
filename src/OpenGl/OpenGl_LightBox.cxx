@@ -104,7 +104,6 @@ static GLfloat default_sptdir[3] = { 0.0, 0.0, -1.0 };
 static GLfloat default_sptexpo   = 0.0;
 static GLfloat default_sptcutoff = 180.0;
 
-static GLboolean lightOn = GL_FALSE;
 
 /*----------------------------------------------------------------------*/
 /*

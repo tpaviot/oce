@@ -102,22 +102,6 @@ static LRESULT WINAPI Viewer2dWindowProc (HWND hwnd, UINT uMsg,
                                           WPARAM wParam, LPARAM lParam);
 #endif
 
-//==============================================================================
-//function : WClass
-//purpose  :
-//==============================================================================
-static Handle(MMgt_TShared)& WClass()
-{
-  static Handle(MMgt_TShared) theWClass;
-#ifdef WNT
-  if (theWClass.IsNull()) {
-    theWClass = new WNT_WClass ("GW2D_Class", Viewer2dWindowProc,
-      CS_VREDRAW | CS_HREDRAW, 0, 0,
-      ::LoadCursor (NULL, IDC_ARROW));
-  }
-#endif
-  return theWClass;
-}
 
 //==============================================================================
 //function : ViewerInit

@@ -290,42 +290,6 @@ Handle(AIS2D_InteractiveObject) Select2d (Standard_Integer /*argc*/,
   return ret;
 }
 
-//==============================================================================
-//function : Displays,Erase...
-//purpose  : 
-//Draw arg : 
-//==============================================================================
-static int VwrTst_DispErase2d (const Handle(AIS2D_InteractiveObject)& IO,
-                               const Standard_Integer Mode,
-                               const Standard_Integer TypeOfOperation,
-                               const Standard_Boolean Upd)
-{
-  Handle(AIS2D_InteractiveContext) Ctx = Viewer2dTest::GetAIS2DContext();
-  
-  switch (TypeOfOperation)
-  {
-  case 1:
-    Ctx->Display(IO,Mode,Upd);
-    break;
-  case 2:
-    Ctx->Erase(IO,Mode,Upd);
-    break;
-  case 3:
-//    if(IO.IsNull())
-//      Ctx->SetDisplayMode((AIS2D_DisplayMode)Mode,Upd);
-//    else
-//      Ctx->SetDisplayMode(IO,Mode,Upd);
-    break;
-  case 4:
-//    if(IO.IsNull())
-//      Ctx->SetDisplayMode(0,Upd);
-//    else
-//      Ctx->UnsetDisplayMode(IO,Upd);
-    break;
-  }
-
-  return 0;
-}
 
 #if 0
 //=======================================================================
