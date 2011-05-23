@@ -53,55 +53,6 @@
 #include <TColStd_SequenceOfReal.hxx>
 
 
-static void EdgesFromVertex (const TopoDS_Wire&   W,
-			     const TopoDS_Vertex& V, 
-			     TopoDS_Edge& E1, 
-			     TopoDS_Edge& E2)
-{
-  TopTools_IndexedDataMapOfShapeListOfShape Map;
-  TopExp::MapShapesAndAncestors(W,TopAbs_VERTEX,TopAbs_EDGE,Map);
-
-  const TopTools_ListOfShape& List = Map.FindFromKey(V);
-  TopoDS_Edge          e1   = TopoDS::Edge(List.First());
-  TopoDS_Edge          e2   = TopoDS::Edge(List. Last());
-
-  BRepTools_WireExplorer anExp;
-  Standard_Integer I1=0, I2=0, NE=0;
-
-  for(anExp.Init(W); anExp.More(); anExp.Next()) {
-    NE++;
-    const TopoDS_Edge& ECur = anExp.Current();
-    if (e1.IsSame(ECur)) {
-      I1 = NE;
-    }
-    if (e2.IsSame(ECur)) {
-      I2 = NE;
-    }
-  }
-
-  if (Abs(I2-I1)==1) {
-    // numeros consecutifs
-    if (I2==I1+1) {
-      E1 = e1;
-      E2 = e2;
-    }
-    else {
-      E1 = e2;
-      E2 = e1;
-    }
-  }
-  else {
-    // numeros non consecutifs sur un wire ferme
-    if (I1==1&&I2==NE) {
-      E1 = e2;
-      E2 = e1;
-    }
-    else {
-      E1 = e1;
-      E2 = e2;
-    }
-  }
-}
 				      
 
 static void SeqOfVertices (const TopoDS_Wire&   W,

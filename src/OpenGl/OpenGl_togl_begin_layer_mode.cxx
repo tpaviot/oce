@@ -103,7 +103,6 @@ static CALL_DEF_LAYER ACLayer;
 
 static GLboolean layerOpen      = GL_FALSE;
 static int       layerPoints    = 0;
-static Tchar    *layerFont      = NULL;
 static int       layerFontFlag  = IsModified;
 static int       layerFontType  = 0;
 static float     layerRed       = -1.;

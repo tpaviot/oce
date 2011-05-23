@@ -36,7 +36,6 @@
 #define END_REF           "END_REF"
 #define REFERENCE_COUNTER "REFERENCE_COUNTER"
 
-static  Standard_Integer myDocumentVersion = 0;
 
 //#define TAKE_TIMES
 static void take_time (const Standard_Integer, const char *,

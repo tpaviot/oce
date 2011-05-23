@@ -1381,24 +1381,6 @@ static Standard_Real AdjustUFirst(Standard_Real U1,Standard_Real U2)
   return u;
 }
 
-// adjust U parameters on Quadric
-static Standard_Real AdjustUNext(Standard_Real Un,Standard_Real Up)
-{
-  Standard_Real u = Un;
-  if( Un < 0. )
-    while(u < 0.)
-      u += (2.*PI);
-  else if( Un > (2.*PI) )
-    while( u > (2.*PI) )
-      u -= (2.*PI);
-  else if(Un == 0. || fabs(Un) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*PI-Up)) ? 0. : (2.*PI);
-  else if(Un == (2.*PI) || fabs(Un-(2.*PI)) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*PI-Up)) ? 0. : (2.*PI);
-  else //( Un > 0. && Un < (2.*PI) )
-    return u;
-  return u;
-}
 
 // collect vertices, reject equals
 static Handle(IntSurf_LineOn2S) GetVertices(const Handle(IntPatch_WLine)& WLine,
