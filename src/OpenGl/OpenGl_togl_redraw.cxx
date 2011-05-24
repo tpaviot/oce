@@ -62,7 +62,7 @@ GLboolean g_fBitmap;
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
-#ifdef WNT
+#if defined(WNT) && defined(__MINGW32__)
 # include <GL/glext.h>
 #endif
 
