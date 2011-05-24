@@ -25,7 +25,7 @@ void * NCollection_HeapAllocator::Allocate (const Standard_Size theSize)
   void * pResult = malloc(aRoundSize);
   if (!pResult) {
     char buf[128];
-    sprintf (buf, "Failed to allocate %d bytes in global dynamic heap",theSize);
+    sprintf (buf, "Failed to allocate %lu bytes in global dynamic heap",theSize);
     Standard_OutOfMemory::Raise(&buf[0]);
   }
   return pResult;
