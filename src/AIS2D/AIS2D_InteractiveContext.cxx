@@ -136,8 +136,8 @@ void AIS2D_InteractiveContext::Display( const Handle(AIS2D_InteractiveObject)& a
     
  if ( anIObj.IsNull() ) return;
 
- Standard_Integer DispMode, SelMode;
- AIS2D_TypeOfDetection HiMod;
+ Standard_Integer DispMode = 0, SelMode = 0;
+ AIS2D_TypeOfDetection HiMod = AIS2D_TOD_NONE;
  Standard_Boolean UpdateCol;
  Handle( AIS2D_GlobalStatus ) GStatus;
 
@@ -305,7 +305,7 @@ void AIS2D_InteractiveContext::Load(
  
   if ( !HasOpenedContext() ) {
     if ( SelMode == -1 && !AllowDecomp ) {
-      Standard_Integer DispMode;
+      Standard_Integer DispMode = 0;
       AIS2D_TypeOfDetection HiMod;
       Standard_Integer selMode = SelMode;
       
@@ -444,7 +444,7 @@ Standard_Boolean AIS2D_InteractiveContext::KeepTemporary( const Handle(AIS2D_Int
   
   
   if ( LS->IsTemporary() ){
-    Standard_Integer DM,SM;
+    Standard_Integer DM = 0,SM = 0;
     AIS2D_TypeOfDetection HM;
     GetDefModes( anIObj, DM, HM, SM );
     
@@ -1023,7 +1023,7 @@ void AIS2D_InteractiveContext::SubIntensityOff(
     }
     
     Standard_Integer DM,SM;
-    AIS2D_TypeOfDetection HM;
+    AIS2D_TypeOfDetection HM = AIS2D_TOD_NONE;
     GetDefModes(anIObj,DM,HM,SM);
     if ( IsIOSelected(anIObj) )
       Highlight(anIObj,HM);
@@ -1745,7 +1745,7 @@ void AIS2D_InteractiveContext::Highlight( const Handle(AIS2D_InteractiveObject)&
     case AIS2D_DS_Displayed:	{
 
 	 Standard_Integer DispMode,SelMode;
-     AIS2D_TypeOfDetection HiMode;
+     AIS2D_TypeOfDetection HiMode = AIS2D_TOD_NONE;
 	 GetDefModes( anIObj, DispMode, HiMode, SelMode );
      Standard_Integer pInd;
      anIObj->Highlight(myMainVwr->InitializeColor( mySelectionColor ));

@@ -855,7 +855,7 @@ void FreeTexture(TextureID ID)
   TextureDataID data;
 
 #if defined(GL_EXT_texture_object)
-  GLCONTEXT cur_context;
+  GLCONTEXT cur_context = 0;
   GLDRAWABLE cur_drawable;
   int i;
 #endif /* GL_EXT_texture_object */

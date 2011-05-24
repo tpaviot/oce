@@ -1335,6 +1335,7 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
   gp_Pnt pt;
   Standard_Integer mpt[2]; mpt[0] = mpt[1] = 0;
   Standard_Real t, tpar[2], isoValue=0.;
+  tpar[0]=tpar[1]=0;
   Standard_Real mindist2;
   Standard_Real mind2[2];
   mindist2 = mind2[0] = mind2[1] = 4*prec*prec;

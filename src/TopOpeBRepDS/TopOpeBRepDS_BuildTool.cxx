@@ -591,7 +591,8 @@ void TopOpeBRepDS_BuildTool::UpdateEdgeCurveTol
 
 //  newtol *= 1.5;
 
-  TopoDS_Vertex Vmin,Vmax; Standard_Real parmin,parmax;
+  TopoDS_Vertex Vmin,Vmax;
+  Standard_Real parmin = 0,parmax = 0;
   GetOrientedEdgeVertices(E,Vmin,Vmax,parmin,parmax);
   
   Standard_Real tolmin=BRep_Tool::Tolerance(Vmin);
@@ -683,7 +684,8 @@ void  TopOpeBRepDS_BuildTool::ApproxCurves
   // Vmin,Vmax = bounding vertices of edge <E>
   // and their parameters parmin,parmax .
 
-  TopoDS_Vertex Vmin,Vmax;Standard_Real parmin,parmax;
+  TopoDS_Vertex Vmin,Vmax;
+  Standard_Real parmin = 0,parmax = 0;
   GetOrientedEdgeVertices(E,Vmin,Vmax,parmin,parmax);
 
 #ifdef DEB
@@ -1259,7 +1261,7 @@ void  TopOpeBRepDS_BuildTool::Parameter(const TopOpeBRepDS_Curve& C,
 					TopoDS_Shape& E,
 					TopoDS_Shape& V)const 
 {
-  Standard_Real newparam;
+  Standard_Real newparam = 0;
   Project(C.Curve(),TopoDS::Vertex(V),newparam);
   Parameter(E,V,newparam);
 }

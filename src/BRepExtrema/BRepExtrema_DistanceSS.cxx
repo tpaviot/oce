@@ -110,7 +110,7 @@ void TRIM_INFINIT_EDGE(const TopoDS_Edge& S1,
   Handle(Geom_Curve) pCurv1 = BRep_Tool::Curve(S1, aFirst1, aLast1);
   Handle(Geom_Curve) pCurv2 = BRep_Tool::Curve(S2, aFirst2, aLast2);
 
-  Standard_Real Umin, Umax;
+  Standard_Real Umin = 0, Umax = 0;
   Standard_Boolean bUmin, bUmax;
   bUmin = bUmax = Standard_False;
 
@@ -270,7 +270,7 @@ void TRIM_INFINIT_FACE(const TopoDS_Shape& S1,
       bIsInfinit = Standard_False;
       return;
     }  
-  Standard_Real Umin, Umax, Vmin, Vmax;
+  Standard_Real Umin = 0, Umax = 0, Vmin = 0, Vmax = 0;
 
   Standard_Boolean bIsTrim = Standard_False;
   

@@ -90,7 +90,7 @@ HLRBRep_ShapeToHLR::Load(const Handle(HLRTopoBRep_OutLiner)& S,
   HLRBRep_Array1OfEData& ED = 
 #endif
     DS->EDataArray ();
-  HLRBRep_EdgeData* ed; 
+  HLRBRep_EdgeData* ed = NULL; 
   if(nbEdge != 0) ed = &(DS->EDataArray().ChangeValue(1));
 //  ed++;
 
