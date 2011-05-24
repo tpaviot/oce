@@ -1372,7 +1372,6 @@ static Standard_Integer DNaming_SphereRadius (Draw_Interpretor& theDI,
       return 0;
     }
   }
- ERR:
   cout << "DNaming_SphRadius : Error" << endl;
   return 1;  
 }
@@ -1968,7 +1967,6 @@ static Standard_Integer DNaming_TestSingle (Draw_Interpretor& theDI,
       return 0;
     }
   }
- ERR:
   cout << "DNaming_TestSingle : Error" << endl;
   return 1;  
 }
@@ -2099,7 +2097,6 @@ static Standard_Integer DNaming_Multiple (Draw_Interpretor& theDI,
       return 0;
     }
   }
- ERR:
   cout << "DNaming_TestMultiple : Error" << endl;
   return 1;  
 }
