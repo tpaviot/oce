@@ -324,7 +324,7 @@ static void Locate1Coord(const Standard_Integer Index,
   Standard_Real Comp1=0,DComp1=0; 
   Standard_Real Tol = Precision::PConfusion()/10;
   Standard_Integer i=1, Up=0, Up1, Up2, Down=0, Down1, Down2, Bnd1, Bnd2;
-  Standard_Real cur=0, f, l;
+  Standard_Real cur=0, f = 0, l = 0;
 
   DIsNull= Standard_False; 
 
