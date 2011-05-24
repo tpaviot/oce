@@ -239,7 +239,7 @@ Standard_Boolean XmlMDataStd_NamedDataDriver::Paste(const XmlObjMgt_Persistent& 
 	  return Standard_False;
 	}
       
-      LDOM_Element* aCurElement;
+      LDOM_Element* aCurElement = NULL;
       if (aCurNode.isNull())
 	aCurNode = anElement.getFirstChild();
       else 
@@ -311,7 +311,7 @@ Standard_Boolean XmlMDataStd_NamedDataDriver::Paste(const XmlObjMgt_Persistent& 
 	  WriteMessage (aMessageString);
 	  return Standard_False;
 	}
-      LDOM_Element* aCurElement;
+      LDOM_Element* aCurElement = NULL;
       if (aCurNode.isNull())
 	aCurNode = anElement.getFirstChild();
       else 
@@ -383,7 +383,7 @@ Standard_Boolean XmlMDataStd_NamedDataDriver::Paste(const XmlObjMgt_Persistent& 
 	  return Standard_False;
 	}
       
-      LDOM_Element* aCurElement;
+      LDOM_Element* aCurElement = NULL;
       if (aCurNode.isNull())
 	aCurNode = anElement.getFirstChild();
       else 
@@ -460,7 +460,7 @@ Standard_Boolean XmlMDataStd_NamedDataDriver::Paste(const XmlObjMgt_Persistent& 
 	  WriteMessage (aMessageString);
 	  return Standard_False;
 	}
-      LDOM_Element* aCurElement;
+      LDOM_Element* aCurElement = NULL;
       if (aCurNode.isNull())
 	aCurNode = anElement.getFirstChild();
       else 
@@ -566,7 +566,7 @@ Standard_Boolean XmlMDataStd_NamedDataDriver::Paste(const XmlObjMgt_Persistent& 
 	  return Standard_False;
 	}
       
-      LDOM_Element* aCurElement;
+      LDOM_Element* aCurElement = NULL;
       if (aCurNode.isNull())
 	aCurNode = anElement.getFirstChild();
       else 

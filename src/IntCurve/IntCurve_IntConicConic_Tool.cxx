@@ -173,18 +173,18 @@ Interval::Interval( const Standard_Real a,const Standard_Boolean hf
 Standard_Real Interval::Length()   { return((IsNull)? -1.0 :Abs(Bsup-Binf)); }
 
 Interval Interval::IntersectionWithBounded(const Interval& Inter) {
-  if(IsNull || Inter.IsNull) { Interval PourSGI; return(PourSGI); }
+  if(IsNull || Inter.IsNull) { Interval PourSGI(0,Standard_False,0,Standard_False); return(PourSGI); }
   if(!(HasFirstBound || HasLastBound)) 
     return(Interval(Inter.Binf,Inter.Bsup));
   Standard_Real a,b;
   if(HasFirstBound) {
-    if(Inter.Bsup < Binf) { Interval PourSGI; return(PourSGI); }
+    if(Inter.Bsup < Binf) { Interval PourSGI(0,Standard_False,0,Standard_False); return(PourSGI); }
     a=(Inter.Binf < Binf)? Binf : Inter.Binf;
   }
   else { a=Inter.Binf; }
   
   if(HasLastBound) {
-    if(Inter.Binf > Bsup) { Interval PourSGI; return(PourSGI); }
+    if(Inter.Binf > Bsup) { Interval PourSGI(0,Standard_False,0,Standard_False); return(PourSGI); }
     b=(Inter.Bsup > Bsup)? Bsup : Inter.Bsup;
   }
   else { b=Inter.Bsup; }  
