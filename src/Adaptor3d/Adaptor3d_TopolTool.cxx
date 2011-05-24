@@ -922,7 +922,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
   uinf = myS->FirstUParameter();  usup = myS->LastUParameter();
   vinf = myS->FirstVParameter();  vsup = myS->LastVParameter();
 
-  Standard_Integer i, j, k, nbi;
+  Standard_Integer i, j=0, k, nbi;
   Standard_Real t1, t2, dt;
   Standard_Integer ui1 = aBS->FirstUKnotIndex();
   Standard_Integer ui2 = aBS->LastUKnotIndex();

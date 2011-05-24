@@ -62,7 +62,7 @@ AppParCurves_ResolConstraint::
   Standard_Integer Inc3, IncSec, IncCol, IP, CCol;
   Standard_Integer myindex, Def = SCurv.NbPoles()-1;    
   Standard_Integer nb3d, nb2d, Npol= Def+1, Npol2 = 2*Npol;
-  Standard_Real T1, T2, T3, Tmax, Daij;
+  Standard_Real T1 = 0, T2, T3, Tmax, Daij;
   Standard_Boolean Ok;
   gp_Vec V;
   gp_Vec2d V2d;

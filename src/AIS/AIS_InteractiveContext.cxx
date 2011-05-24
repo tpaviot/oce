@@ -655,7 +655,7 @@ void AIS_InteractiveContext::Load(const Handle(AIS_InteractiveObject)& anIObj,
 
   if(!HasOpenedContext()) {
     if(SelMode==-1 && !AllowDecomposition){
-      Standard_Integer DispMode,HiMod,SelModeDef;
+      Standard_Integer DispMode = 0,HiMod,SelModeDef = 0;
       
       GetDefModes(anIObj,DispMode,HiMod,SelModeDef);
       Handle(AIS_GlobalStatus) STATUS= 
@@ -887,7 +887,7 @@ Standard_Boolean AIS_InteractiveContext::KeepTemporary(const Handle(AIS_Interact
   
   
   if(LS->IsTemporary()){
-    Standard_Integer DM,HM,SM;
+    Standard_Integer DM = 0,HM,SM = 0;
     GetDefModes(anIObj,DM,HM,SM);
     
     SM = LS->SelectionModes().IsEmpty() ? SM : LS->SelectionModes().First();
@@ -1082,7 +1082,7 @@ void AIS_InteractiveContext::Hilight(const Handle(AIS_InteractiveObject)& anIObj
       switch(STATUS->GraphicStatus()){
       case AIS_DS_Displayed:
         {
-          Standard_Integer DispMode,HiMode,SelMode;
+          Standard_Integer DispMode,HiMode = 0,SelMode;
           GetDefModes(anIObj,DispMode,HiMode,SelMode);
 //        if(!STATUS->IsDModeIn(HiMode)){
 //          myMainPM->Display(anIObj,HiMode);
@@ -1129,7 +1129,7 @@ void AIS_InteractiveContext::HilightWithColor(const Handle(AIS_InteractiveObject
       switch(STATUS->GraphicStatus()){
       case AIS_DS_Displayed:
         {
-          Standard_Integer DispMode,HiMode,SelMode;
+          Standard_Integer DispMode,HiMode = 0,SelMode;
           GetDefModes(anIObj,DispMode,HiMode,SelMode);
 //        if(!STATUS->IsDModeIn(HiMode)){
 //          myMainPM->Display(anIObj,HiMode);
@@ -1175,7 +1175,7 @@ void AIS_InteractiveContext::Unhilight(const Handle(AIS_InteractiveObject)& anIO
       switch(STATUS->GraphicStatus()){
       case AIS_DS_Displayed:
         {
-          Standard_Integer DispMode,HiMode,SelMode;
+          Standard_Integer DispMode,HiMode = 0,SelMode;
           GetDefModes(anIObj,DispMode,HiMode,SelMode);
           myMainPM->Unhighlight(anIObj,HiMode);
 //        if(!STATUS->IsDModeIn(HiMode))
@@ -1330,7 +1330,7 @@ DisplayPriority(const Handle(AIS_InteractiveObject)& anIObj) const
     // const Handle(AIS_GlobalStatus) & STATUS = myObjects(anIObj);
     Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
     // ENDCLE
-    Standard_Integer DM,HM,SM ;
+    Standard_Integer DM = 0,HM = 0,SM ;
     GetDefModes(anIObj,DM,HM,SM);
     switch(STATUS->GraphicStatus()){
     case AIS_DS_Displayed:
@@ -1364,7 +1364,7 @@ void AIS_InteractiveContext::SetDisplayPriority(const Handle(AIS_InteractiveObje
     // const Handle(AIS_GlobalStatus) & STATUS = myObjects(anIObj);
     Handle(AIS_GlobalStatus) STATUS = myObjects(anIObj);
     // ENDCLE
-    Standard_Integer DM,HM,SM ;
+    Standard_Integer DM = 0,HM = 0,SM ;
     GetDefModes(anIObj,DM,HM,SM);
     switch(STATUS->GraphicStatus()){
     case AIS_DS_Displayed:
@@ -1837,7 +1837,7 @@ void AIS_InteractiveContext::SetDisplayMode(const Handle(AIS_InteractiveObject)&
 #endif
         
         myMainPM->Display(anIObj,aMode);
-        Standard_Integer DM,HM,SM;
+        Standard_Integer DM,HM = 0,SM;
         GetDefModes(anIObj,DM,HM,SM);
         if(STATUS->IsHilighted()){
           myMainPM->Highlight(anIObj,HM);
@@ -1885,7 +1885,7 @@ UnsetDisplayMode(const Handle(AIS_InteractiveObject)& anIObj,
           myMainPM->Unhighlight(anIObj,OldMode);
         myMainPM->Erase(anIObj,OldMode);
         myMainPM->Display(anIObj,myDisplayMode);
-        Standard_Integer DM,HM,SM;
+        Standard_Integer DM,HM = 0,SM;
         GetDefModes(anIObj,DM,HM,SM);
         if(STATUS->IsHilighted()){
           myMainPM->Highlight(anIObj,HM);

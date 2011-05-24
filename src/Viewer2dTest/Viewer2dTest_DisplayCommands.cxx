@@ -777,7 +777,7 @@ static int V2dWidth (Draw_Interpretor& , Standard_Integer argc, const char** arg
 
   if (strcasecmp(argv[0], "v2dsetwidth") == 0) HaveToSet = Standard_True;
 
-  const char* aStr;
+  const char* aStr = "";
   if (HaveToSet)
   {
     if (argc < 2 || argc > 3)

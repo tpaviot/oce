@@ -334,7 +334,7 @@ BRepMesh_Classifier::BRepMesh_Classifier(const TopoDS_Face& aFace,
 
   BRepMesh_BiPoint *BP;
   Standard_Real *Coordinates1;
-  Standard_Real x1, y1, x2, y2, xstart, ystart;
+  Standard_Real x1 = 0, y1 = 0, x2, y2, xstart = 0, ystart = 0;
   Standard_Integer j, l = 1;
   BP = &(BiPoints.ChangeValue(1));
 
@@ -380,7 +380,7 @@ BRepMesh_Classifier::BRepMesh_Classifier(const TopoDS_Face& aFace,
   Standard_Real *Coordinates2;
   Standard_Real A1, B1, C1, A2, B2, C2, AB, BC, CA, xc, yc;
   Standard_Real  mu1, d, mu2;
-  Standard_Integer ik, ikEnd = 0, jk, jkEnd;
+  Standard_Integer ik, ikEnd = 0, jk, jkEnd = 0;
   Standard_Real x11, x12, y11, y12, x21, x22, y21, y22;
   for(i = 1; i <= nbwires; i++)
   {
@@ -667,7 +667,7 @@ BRepMesh_Classifier::BRepMesh_Classifier(const TopoDS_Face& aFace,
 
   BRepMesh_BiPoint *BP;
   Standard_Real *Coordinates1;
-  Standard_Real x1, y1, x2, y2, xstart, ystart;
+  Standard_Real x1 = 0, y1 = 0, x2, y2, xstart = 0, ystart = 0;
   Standard_Integer j, l = 1;
   BP = &(BiPoints.ChangeValue(1));
 
@@ -713,7 +713,7 @@ BRepMesh_Classifier::BRepMesh_Classifier(const TopoDS_Face& aFace,
   Standard_Real *Coordinates2;
   Standard_Real A1, B1, C1, A2, B2, C2, AB, BC, CA, xc, yc;
   Standard_Real  mu1, d, mu2;
-  Standard_Integer ik, ikEnd = 0, jk, jkEnd;
+  Standard_Integer ik, ikEnd = 0, jk, jkEnd = 0;
   Standard_Real x11, x12, y11, y12, x21, x22, y21, y22;
   for(i = 1; i <= nbwires; i++)
   {
