@@ -1113,7 +1113,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedFaceSet (%d vertices, %d polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedFaceSet (%lu vertices, %lu polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_IndexedLineSet))) {
     const Handle(VrmlData_IndexedLineSet) aNode =
@@ -1122,7 +1122,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedLineSet (%d vertices, %d polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedLineSet (%lu vertices, %lu polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_Material))) {
 //     const Handle(VrmlData_Material) aMaterial = 
