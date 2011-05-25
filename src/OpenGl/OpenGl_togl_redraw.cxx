@@ -62,6 +62,10 @@ GLboolean g_fBitmap;
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
+#if defined(__MINGW32__)
+# include <GL/glext.h>
+#endif
+
 void EXPORT
 call_togl_redraw
 (
