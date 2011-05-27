@@ -31,6 +31,13 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+
+// The Convex method can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 class TopoDS_TShape;
 class Standard_NullObject;
 class Standard_DomainError;

@@ -5,6 +5,11 @@
 #include <TopoDS_TShape.hxx>
 #include <TopAbs.hxx>
 
+// The Convex method can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
 
 //=======================================================================
 //function : TopoDS_Shape

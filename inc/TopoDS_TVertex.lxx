@@ -2,6 +2,12 @@
 // Created:	Wed Apr 10 09:42:42 1991
 // Author:	Remi LEQUETTE
 
+// The Convex function can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 //=======================================================================
 //function : TopoDS_TVertex
 //purpose  : 

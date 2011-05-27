@@ -6,6 +6,12 @@
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_ListIteratorOfListOfShape.hxx>
 
+// The Convex method can conflict with Convex defined as an integer
+// in X.h
+#ifdef Convex
+#undef Convex
+#endif
+
 // Defined mask values
 #define TopoDS_TShape_Flags_Free       (1<<0)
 #define TopoDS_TShape_Flags_Modified   (1<<1)
