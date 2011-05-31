@@ -1,9 +1,0 @@
-# - Config file for the OCE package
-# It defines the following variables
-#  OCE_INCLUDE_DIRS - include directory for OCE
-#  OCE_LIBRARIES    - all libraries to link against (warning, may be slower than just specify the used libs)
- 
-# Tell the user project where to find our headers and libraries
-SET(OCE_INCLUDE_DIRS "@OCE_INSTALL_INCLUDE_DIR@")
-SET(OCE_LIBRARIES "@OCE_LIBRARIES@")
-INCLUDE("@OCE_INSTALL_CMAKE_DATA_DIR@/OCE-libraries.cmake")
