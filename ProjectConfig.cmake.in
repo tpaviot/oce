@@ -1,0 +1,9 @@
+# - Config file for the ${PROJECT_NAME} package
+# It defines the following variables
+#  ${PROJECT_NAME}_INCLUDE_DIRS - include directory for ${PROJECT_NAME}
+#  ${PROJECT_NAME}_LIBRARIES    - all libraries to link against (warning, may be slower than just specify the used libs)
+ 
+# Tell the user project where to find our headers and libraries
+SET(${PROJECT_NAME}_INCLUDE_DIRS "${${PROJECT_NAME}_ABSOLUTE_INSTALL_INCLUDE_DIR}")
+SET(${PROJECT_NAME}_LIBRARIES "${${PROJECT_NAME}_LIBRARIES}")
+INCLUDE("${${PROJECT_NAME}_ABSOLUTE_INSTALL_CMAKE_DATA_DIR}/${PROJECT_NAME}-libraries.cmake")
