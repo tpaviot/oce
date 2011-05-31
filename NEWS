@@ -1,3 +1,58 @@
+Version 0.3.0 - June 2011
+
+  * Make CMake work with MSVC.  This generator is special,
+    it generates both Debug and Release configurations.
+    [QbProg]
+
+  * Add an option to enable maximum warning levels
+    [QbProg]
+
+  * Improve handling of CMake options
+    [Hugh Sorby]
+
+  * Fix build failures with g++ 4.6
+    [Denis Barbier]
+
+  * Clean up CMakeLists.txt, remove unused macros.
+    [Mark Pictor]
+
+  * Create two config files, one is used during compilation,
+    another one is used when linking against OCE.  The latter
+    contains fewer macros, and they are prefixed by OCE_ to
+    prevent name clashes.
+    [Mark Pictor]
+
+  * Start fixing compiler warnings.
+    [QbProg, Thomas Paviot]
+
+  * Create a bundle for MSVC
+    [QbProg]
+
+  * Fix cross compilation with Mingw.  We were not able to
+    build visualization stuff previously.
+    [Muellni]
+
+  * Install an OCEConfig.cmake file so that programs can use
+    FIND_PACKAGE(OCE) to set variables to link against OCE.
+    [Muellni]
+
+  * Undefine Convex before it is used by OCE as a method or
+    function, this may be a macro defined by X11.h
+    [Thomas Paviot]
+
+  * Remove -DLIN from compiler flags.  It still works on Linux,
+    and this causes crashes on Mac OSX.
+    [Thomas Paviot]
+
+  * Delete inc/TopOpeBRep_tools.hxx, this file is unused, and it
+    includes TopOpeBRepDS_tools.hxx which does not exist.
+    [Denis Barbier]
+
+  * Remove Autotools files for Unix and MSVC, CMake build system
+    works fine on these platforms.  We keep Borland project
+    files for now, this IDE is not supported by CMake.
+    [Thomas Paviot]
+
 Version 0.2.0 - May 2011
 
   * Add CMake build files, based on the opencascade-cmake project
