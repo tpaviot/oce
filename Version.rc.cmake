@@ -1,0 +1,46 @@
+#include <winresrc.h>
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION @OCE_VERSION_MAJOR@,@OCE_VERSION_MINOR@,@OCE_VERSION_PATCH@,0
+  PRODUCTVERSION @OCE_VERSION_MAJOR@,@OCE_VERSION_MINOR@,@OCE_VERSION_PATCH@,0
+  FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifndef DEBUG
+  FILEFLAGS 0
+#else
+  FILEFLAGS VER_DEBUG
+#endif
+  FILEOS VOS_NT_WINDOWS32
+
+#cmakedefine OCE_BUILD_SHARED_LIB
+
+#ifdef OCE_VERSION_INFO_IS_EXE
+#ifdef OCE_BUILD_SHARED_LIB
+  FILETYPE VFT_DLL
+#else
+  FILETYPE VFT_STATIC_LIB
+#endif
+#else
+  FILETYPE VFT_APP
+#endif
+
+  FILESUBTYPE VFT2_UNKNOWN
+  BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+      BLOCK "04090000"
+      BEGIN
+        VALUE "FileDescription", "OpenCascade Community Edition"
+        VALUE "FileVersion", "@OCE_VERSION_MAJOR@.@OCE_VERSION_MINOR@.@OCE_VERSION_PATCH@"
+        VALUE "InternalName", "@PROJECT_NAME@"
+        VALUE "LegalCopyright", ""
+        VALUE "OriginalFilename", ""
+        VALUE "ProductName", "@PROJECT_NAME@"
+        VALUE "ProductVersion", "@OCE_VERSION_MAJOR@.@OCE_VERSION_MINOR@.@OCE_VERSION_PATCH@"
+      END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+      VALUE "Translation", 0x409, 1200
+    END
+  END
+  
