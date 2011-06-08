@@ -19,7 +19,11 @@
 
 PROJECT(OCE)
 
-SET(OCE_VERSION 0.3.0)
+SET(OCE_VERSION_MAJOR 0)
+SET(OCE_VERSION_MINOR 3)
+SET(OCE_VERSION_PATCH 0)
+
+SET(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}.${OCE_VERSION_PATCH})
 
 SET(OCE_ABI_SOVERSION 0)
 SET(OCE_ABI_VERSION 0.0.0)
@@ -708,6 +712,10 @@ IF(${PROJECT_NAME}_DRAW)
                 DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/src/DrawResources)
 ENDIF(${PROJECT_NAME}_DRAW)
 
+# Version information
+CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake 
+				${CMAKE_CURRENT_BINARY_DIR}/Version.rc)
+
 MACRO(PROCESS_OCC_MODULE modulename modules)
 	FOREACH(module ${modules})
 		LIST(APPEND ${PROJECT_NAME}_LIBRARIES ${module}) 
@@ -723,6 +731,7 @@ MACRO(PROCESS_OCC_MODULE modulename modules)
     
 	ENDFOREACH(module ${modules})
 ENDMACRO(PROCESS_OCC_MODULE modulename modules)
+
 ####################################################################################
 # Process modules of each ToolKit                                                  #
 ####################################################################################
