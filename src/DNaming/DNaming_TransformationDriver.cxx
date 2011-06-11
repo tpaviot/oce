@@ -387,9 +387,9 @@ void DNaming_TransformationDriver::LoadNamingDS (const TDF_Label& theResultLabel
   TopTools_DataMapIteratorOfDataMapOfShapeShape anIt(aTMap);
   Standard_Boolean aF, anE, aV;
   aF = anE = aV = Standard_True;
-  TNaming_Builder* pB1;
-  TNaming_Builder* pB2;
-  TNaming_Builder* pB3;
+  TNaming_Builder* pB1 = NULL;
+  TNaming_Builder* pB2 = NULL;
+  TNaming_Builder* pB3 = NULL; 
   for(;anIt.More();anIt.Next()) {
     const TopoDS_Shape& aKey = anIt.Key();
     TopoDS_Shape newShape = anIt.Value();

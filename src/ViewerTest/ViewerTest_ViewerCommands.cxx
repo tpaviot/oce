@@ -1567,7 +1567,7 @@ static int VExport(Draw_Interpretor& di, Standard_Integer argc, const char** arg
 
   TCollection_AsciiString aFormat( argv[2] );
   aFormat.UpperCase();
-  Graphic3d_ExportFormat exFormat;
+  Graphic3d_ExportFormat exFormat = Graphic3d_EF_PostScript;
   if ( aFormat == "PS" )
     exFormat = Graphic3d_EF_PostScript;
   if ( aFormat == "EPS" )
