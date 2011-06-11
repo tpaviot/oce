@@ -81,7 +81,7 @@ BOOL CreateProc(HWND hWndFrame)
 BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
 {
   HWND hWndClient; // Handle sur la fenetre MDI
-  HWND hWndActive;
+  HWND hWndActive = NULL;
 
 	hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
   switch (LOWORD(wParam))
