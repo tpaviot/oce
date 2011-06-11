@@ -50,8 +50,8 @@ Standard_Integer RWHeaderSection_ReadWriteModule::CaseStep
 	(const TColStd_SequenceOfAsciiString& types) const
 {
 
-  Standard_Integer NbComp = types.Length();
 #ifdef DEB
+  Standard_Integer NbComp = types.Length();
   if (NbComp < 2) {
     cout << "Plex Instance illegal " << endl;
   }
