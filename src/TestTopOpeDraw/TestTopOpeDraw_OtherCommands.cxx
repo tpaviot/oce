@@ -98,21 +98,21 @@ Standard_EXPORT void OthersCommands_flags(Standard_Integer& na,const char** a,Te
 	}
 	else if(a[iloc][j] == 'c') {
 	  col=Standard_True;
-	  if(a[iloc+1] == "blanc") Color = Draw_blanc;
-	  else if (a[iloc+1] == "rouge")   Color = Draw_rouge;
-	  else if (a[iloc+1] == "vert")    Color = Draw_vert;
-	  else if (a[iloc+1] == "bleu")    Color = Draw_bleu;
-	  else if (a[iloc+1] == "cyan")    Color = Draw_cyan;
-	  else if (a[iloc+1] == "or")      Color = Draw_or;
-	  else if (a[iloc+1] == "magenta") Color = Draw_magenta;
-	  else if (a[iloc+1] == "marron")  Color = Draw_marron;
-	  else if (a[iloc+1] == "orange")  Color = Draw_orange;
-	  else if (a[iloc+1] == "rose")    Color = Draw_rose;
-	  else if (a[iloc+1] == "saumon")  Color = Draw_saumon;
-	  else if (a[iloc+1] == "violet")  Color = Draw_violet;
-	  else if (a[iloc+1] == "jaune")   Color = Draw_jaune;
-	  else if (a[iloc+1] == "kaki")    Color = Draw_kaki;
-	  else if (a[iloc+1] == "corail")  Color = Draw_corail;
+	  if(strncmp(a[iloc+1],"blanc",5) == 0) Color = Draw_blanc;
+	  else if (strncmp(a[iloc+1],"rouge",5) == 0)   Color = Draw_rouge;
+	  else if (strncmp(a[iloc+1],"vert",4) == 0)    Color = Draw_vert;
+	  else if (strncmp(a[iloc+1],"bleu",4) == 0)    Color = Draw_bleu;
+	  else if (strncmp(a[iloc+1],"cyan",4) == 0)    Color = Draw_cyan;
+	  else if (strncmp(a[iloc+1],"or",2) == 0)      Color = Draw_or;
+	  else if (strncmp(a[iloc+1],"magenta",7) == 0) Color = Draw_magenta;
+	  else if (strncmp(a[iloc+1],"marron",6) == 0)  Color = Draw_marron;
+	  else if (strncmp(a[iloc+1],"orange",6) == 0)  Color = Draw_orange;
+	  else if (strncmp(a[iloc+1],"rose",4) == 0)    Color = Draw_rose;
+	  else if (strncmp(a[iloc+1],"saumon",6) == 0)  Color = Draw_saumon;
+	  else if (strncmp(a[iloc+1],"violet",6) == 0)  Color = Draw_violet;
+	  else if (strncmp(a[iloc+1],"jaune",5) == 0)   Color = Draw_jaune;
+	  else if (strncmp(a[iloc+1],"kaki",4) == 0)    Color = Draw_kaki;
+	  else if (strncmp(a[iloc+1],"corail",6) == 0)  Color = Draw_corail;
 	  decal++;dloc++;
 	}
       }
