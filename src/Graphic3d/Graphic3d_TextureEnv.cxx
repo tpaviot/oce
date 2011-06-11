@@ -23,7 +23,7 @@ static TCollection_AsciiString GetEnvir ( ) {
   static Standard_Boolean IsDefined=Standard_False ;
   static TCollection_AsciiString VarName;
   if ( !IsDefined ) {
-    char *envir, *casroot ;
+    char const *envir, *casroot ;
     envir = getenv("CSF_MDTVTexturesDirectory") ;
     
     Standard_Boolean HasDefinition = Standard_False ;

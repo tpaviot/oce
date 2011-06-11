@@ -57,7 +57,7 @@ static TStatus DegenerateModelDelete  ( TSM_ELEM_DATA d, Tint n, cmn_key* k ) {
 
 static TStatus DegenerateModelPrint ( TSM_ELEM_DATA data, Tint n, cmn_key* k ) {
 
-  char* ptr;
+  const char* ptr;
 
   switch ( data.ldata ) {
 
