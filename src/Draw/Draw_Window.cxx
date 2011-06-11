@@ -1366,7 +1366,9 @@ LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lPa
     else
       return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
   }
+#ifndef _MSC_VER // unreachable code in MSVC
   return (0l);
+#endif
 }
 
 
@@ -1680,7 +1682,6 @@ void DrawWindow::Clear()
   HDC hDC = GetDC(win);
   HDC aWorkDC = myUseBuffer ? GetMemDC(hDC) : hDC;
 
-  int debug = GetROP2(aWorkDC);
   SaveDC(aWorkDC);
   SelectObject(aWorkDC,GetStockObject(BLACK_PEN));
   Rectangle(aWorkDC, 0, 0, WidthWin(), HeightWin());
@@ -2009,7 +2010,7 @@ Standard_Boolean Init_Appli(HINSTANCE hInst,
 
     hWndFrame = NULL;
 
-  else if (hWndFrame = CreateAppWindow(hInst))
+  else if ((hWndFrame = CreateAppWindow(hInst)) != NULL)
   {
     ShowWindow(hWndFrame,nShow);
     UpdateWindow(hWndFrame);

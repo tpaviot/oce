@@ -21,7 +21,7 @@ static Standard_Boolean IsTimeStamp
     case  4 : if (uncar < '0' || uncar > '9') return Standard_False; break;
     case  5 : if (uncar != '-') return Standard_False;
     case  6 : if (uncar != '0' && uncar != '1') return Standard_False;  break;
-    case  7 : if (uncar < '0' || uncar > '9') return Standard_False; break;
+    case  7 : if (uncar < '0' || uncar > '9') return Standard_False; 
       if (dizmois == '1' && (uncar < '0' || uncar > '2')) return Standard_False;
       break;
     case  8 : if (uncar != '-') return Standard_False;
