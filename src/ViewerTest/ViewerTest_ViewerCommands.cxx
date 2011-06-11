@@ -1638,7 +1638,7 @@ static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char 
   {
     aCS->SetPosition( X , Y );
     aCS->SetHeight( 0.95) ;
-    aCS->SetTextHeight( textHeight );
+    aCS->SetTextHeight( (Standard_Integer) textHeight );
     aCS->SetRange( minRange , maxRange );
     aCS->SetNumberOfIntervals( numIntervals );
     aCS->SetLabelPosition( position );

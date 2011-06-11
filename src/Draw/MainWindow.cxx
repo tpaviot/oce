@@ -51,7 +51,7 @@ LONG APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LONG lParam )
 
     default :
       hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
-      return(DefFrameProc(hWndFrame, hWndClient, wMsg, wParam, lParam));
+      return LONG(DefFrameProc(hWndFrame, hWndClient, wMsg, wParam, lParam));
   }
   return(0l);
 }
