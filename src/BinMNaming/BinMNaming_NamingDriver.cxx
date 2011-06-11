@@ -166,7 +166,7 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
           Standard_Integer i;
           // read array
           for(i=1; i<=aNbArgs;i++) {
-            if(!aNewF && i > OBSOLETE_NUM) break;//interrupt reading as old format can have only 4 items
+            if(!aNewF && i > (int)OBSOLETE_NUM) break;//interrupt reading as old format can have only 4 items
             ok = theSource >> anIndx;
             if (!ok)
               break;
@@ -181,8 +181,8 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
             }
           }
           //patch to release the rest of items	
-          if(!aNewF && aNbArgs < OBSOLETE_NUM) {    
-            for(i = aNbArgs+1;i <= OBSOLETE_NUM;i++)
+          if(!aNewF && aNbArgs < (int)OBSOLETE_NUM) {    
+            for(i = aNbArgs+1;i <= (int)OBSOLETE_NUM;i++)
               theSource >> anIndx;
           }
         }

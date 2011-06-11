@@ -518,11 +518,12 @@ static void MyBindTextureEXT(TextureID ID, int Context)
   if (textab[ID].use_bind_texture[Context])
   {
     /* OCC11904 - make sure that the correct texture is bound before drawing */
+	// @todo Check here if it is correct : compare .status with the wrong ENUM type (the value matches)
     GLenum aParamName = textab[ID].status == TEXDATA_1D ? 
 GL_TEXTURE_BINDING_1D : GL_TEXTURE_BINDING_2D;
     GLint aCurrTex = -1;
     glGetIntegerv( aParamName, &aCurrTex );
-    if ( textab[ID].number[Context] != aCurrTex )
+    if ( (int)textab[ID].number[Context] != aCurrTex )
     {
 #ifdef PRINT
       printf("MyBindTextureEXT::bind texture\n");
@@ -535,11 +536,12 @@ GL_TEXTURE_BINDING_1D : GL_TEXTURE_BINDING_2D;
 #endif /* GL_EXT_texture_object */
   {
     /* OCC11904 - make sure that the correct texture is bound before drawing */
+	// @todo Check here if it is correct : compare .status with the wrong ENUM type (the value matches)
     GLenum aParamName = textab[ID].status == TEXDATA_1D ? 
 GL_TEXTURE_BINDING_1D : GL_TEXTURE_BINDING_2D;
     GLint aCurrTex = -1;
     glGetIntegerv( aParamName, &aCurrTex );
-    if ( textab[ID].number[Context] != aCurrTex )
+    if ( (int)textab[ID].number[Context] != aCurrTex )
     {
 #ifdef PRINT
       printf("MyBindTextureEXT::chargement sans bind de la texture\n");

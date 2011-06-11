@@ -1165,7 +1165,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();
+          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -1280,7 +1280,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();
+          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
