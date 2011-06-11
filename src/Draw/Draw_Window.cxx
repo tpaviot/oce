@@ -1680,7 +1680,6 @@ void DrawWindow::Clear()
   HDC hDC = GetDC(win);
   HDC aWorkDC = myUseBuffer ? GetMemDC(hDC) : hDC;
 
-  int debug = GetROP2(aWorkDC);
   SaveDC(aWorkDC);
   SelectObject(aWorkDC,GetStockObject(BLACK_PEN));
   Rectangle(aWorkDC, 0, 0, WidthWin(), HeightWin());
