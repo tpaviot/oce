@@ -1332,9 +1332,9 @@ LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lPa
   if (!localObjet)
     {
       if (Draw_IsConsoleSubsystem)
-        return (DefWindowProc(hWnd, wMsg, wParam, lParam));
+        return LONG(DefWindowProc(hWnd, wMsg, wParam, lParam));
       else
-        return(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
+        return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
     }
 
   PAINTSTRUCT ps;
@@ -1362,9 +1362,9 @@ LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lPa
 
   default:
     if (Draw_IsConsoleSubsystem)
-      return (DefWindowProc(hWnd, wMsg, wParam, lParam));
+      return LONG(DefWindowProc(hWnd, wMsg, wParam, lParam));
     else
-      return(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
+      return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
   }
   return (0l);
 }

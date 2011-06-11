@@ -99,7 +99,7 @@ void XmlMXCAFDoc_MaterialDriver::Paste (const Handle(TDF_Attribute)& theSource,
   if ( !anAtt->GetDensValType().IsNull() )
     aDensTypeStr = anAtt->GetDensValType()->String().ToCString();
 
-  XmlObjMgt::SetStringValue (theTarget, anAtt->GetDensity());
+  XmlObjMgt::SetStringValue (theTarget,Standard_Integer(anAtt->GetDensity()));
   theTarget.Element().setAttribute(::NameIndexString(), aNameString);
   theTarget.Element().setAttribute(::DescrIndexString(),aDescrString);
   theTarget.Element().setAttribute(::DensNameIndexString(),aDensNameStr);

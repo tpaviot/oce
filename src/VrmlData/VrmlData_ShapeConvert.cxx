@@ -67,7 +67,7 @@ void VrmlData_ShapeConvert::AddShape (const TopoDS_Shape& theShape,
     char buf[2048], * optr = &buf[0];
     char * eptr = &buf[sizeof(buf)-1];
     for (const char * ptr = theName;; ptr++) {
-      int sym = *ptr;
+      char sym = *ptr;
       if (sym == '\0' || sym == '\n' || sym == '\r') {
         * optr = '\0';
         break;
@@ -456,9 +456,9 @@ Handle_VrmlData_Geometry VrmlData_ShapeConvert::triToIndexedFaceSet
         arrVec[i] = aNormal.XYZ();
 
         Standard_Integer j = i * 3;
-        Normals->SetValue(j + 1, aNormal.X());
-        Normals->SetValue(j + 2, aNormal.Y());
-        Normals->SetValue(j + 3, aNormal.Z());
+        Normals->SetValue(j + 1, Standard_ShortReal(aNormal.X()));
+        Normals->SetValue(j + 2, Standard_ShortReal(aNormal.Y()));
+        Normals->SetValue(j + 3, Standard_ShortReal(aNormal.Z()));
 
       }
 
