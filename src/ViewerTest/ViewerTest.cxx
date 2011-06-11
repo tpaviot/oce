@@ -2071,7 +2071,7 @@ static int VPerf(Draw_Interpretor& di, Standard_Integer , const char** argv) {
 // Function : VAnimation
 //==================================================================================
 static int VAnimation (Draw_Interpretor& di, Standard_Integer argc, const char** argv) {
-  if (argc =! 5) {
+  if (argc != 5) {
     di<<"Use: "<<argv[0]<<" CrankArmFile CylinderHeadFile PropellerFile EngineBlockFile"<<"\n";
     return 1;
   }
