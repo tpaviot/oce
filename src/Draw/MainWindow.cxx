@@ -67,7 +67,7 @@ BOOL CreateProc(HWND hWndFrame)
   HWND hWnd;
 
   // Enregistre le hWnd dans la fenetre principale dans extra memory en 0
-  if (hWnd = CreateMDIClientWindow(hWndFrame))
+  if ((hWnd = CreateMDIClientWindow(hWndFrame)) != NULL)
     SetWindowLong(hWndFrame, CLIENTWND, (LONG)hWnd);
   return(TRUE);
 }
@@ -87,23 +87,23 @@ BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
   switch (LOWORD(wParam))
 	{
 	  case IDM_WINDOW_NEXT :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
 					  hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
 						SendMessage(hWndClient, WM_MDINEXT, (WPARAM)hWndActive, 0l);  
 					break;
 
 		case IDM_WINDOW_CASCADE :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
 						SendMessage(hWndClient, WM_MDICASCADE, 0, 0l);
 					break;
 					 
 		case IDM_WINDOW_TILEHOR :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
 						SendMessage(hWndClient, WM_MDITILE, MDITILE_HORIZONTAL, 0l);
 					break;
 
 		case IDM_WINDOW_TILEVERT :
-					if(hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND))
+					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
 						SendMessage(hWndClient, WM_MDITILE, MDITILE_VERTICAL, 0l);
 					break;
 		

@@ -2009,7 +2009,7 @@ Standard_Boolean Init_Appli(HINSTANCE hInst,
 
     hWndFrame = NULL;
 
-  else if (hWndFrame = CreateAppWindow(hInst))
+  else if ((hWndFrame = CreateAppWindow(hInst)) != NULL)
   {
     ShowWindow(hWndFrame,nShow);
     UpdateWindow(hWndFrame);
