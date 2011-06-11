@@ -1863,7 +1863,6 @@ static Standard_Integer DNaming_TestSingle (Draw_Interpretor& theDI,
 
     if(!aNS.IsNull() && !aNS->IsEmpty()) {
       const TopoDS_Shape&  aRootShape = aNS->Get();
-      TopAbs_ShapeEnum aType = aRootShape.ShapeType();
       //TopTools_MapOfOrientedShape aMap0;
       //MapOfOrientedShapes(aRootShape, aMap0);
       TopTools_ListOfShape aList, aFailedList;
@@ -2002,7 +2001,6 @@ static Standard_Integer DNaming_Multiple (Draw_Interpretor& theDI,
 
     if(!aNS.IsNull() && !aNS->IsEmpty()) {
       const TopoDS_Shape&  aRootShape = aNS->Get();
-      TopAbs_ShapeEnum aType = aRootShape.ShapeType();
       TopTools_MapOfOrientedShape aMap0;
       MapOfOrientedShapes(aRootShape, aMap0);
       TopTools_ListOfShape aList, aFailedList;

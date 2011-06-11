@@ -397,7 +397,6 @@ call_togl_begin_layer2d
   
   //abd
   glEnable(GL_TEXTURE_2D);
-  GLboolean stat = glIsEnabled( GL_TEXTURE_2D );
 
   glNewList (ptrLayer->listIndex, GL_COMPILE);
   layerOpen = GL_TRUE;

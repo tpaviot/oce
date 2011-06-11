@@ -1117,7 +1117,6 @@ static void GetApproxNormalToFaceOnEdgeEx(const TopoDS_Edge& aE,
       TopExp_Explorer anExp;
       Standard_Integer nbW = 0;
       for(anExp.Init(aF, TopAbs_WIRE); anExp.More(); anExp.Next()) {
-	const TopoDS_Wire& aW = TopoDS::Wire(anExp.Current());
 	nbW++;
       }
       if( nbW == 1 ) {
@@ -1129,7 +1128,6 @@ static void GetApproxNormalToFaceOnEdgeEx(const TopoDS_Edge& aE,
 	for( iKey = 1; iKey <= nbKeys; iKey++ ) {
 	  const TopoDS_Vertex& iV = TopoDS::Vertex(mapVE.FindKey(iKey));
 	  if( iV.IsNull() ) continue;
-	  Standard_Real TolV = BRep_Tool::Tolerance(iV);
 	  const TopTools_ListOfShape& iLE = mapVE.FindFromIndex(iKey);
 	  Standard_Integer nbE = iLE.Extent();
 	  if( nbE != 2 ) {

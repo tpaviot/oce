@@ -250,8 +250,6 @@ void XmlLDrivers_DocumentRetrievalDriver::ReadFromDomDocument
 	    try {
 	      OCC_CATCH_SIGNALS
 	      TCollection_AsciiString anInf(anInfo,'?');
-	      Standard_Integer aRefCounter = anInf.Token(" ",2).IntegerValue();
-	      //theNewDocument->SetReferenceCounter(aRefCounter);
 	    }
 	    catch (Standard_Failure) { 
 	      //	  cout << "warning: could not read the reference counter in " << aFileName << endl;

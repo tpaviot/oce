@@ -52,7 +52,6 @@ void Prs3d_Datum::Add( const Handle(Prs3d_Presentation)& aPresentation,
 
 #ifdef IMP120100
   Quantity_Length arrowAngle = aDrawer->ArrowAspect()->Angle();
-  Quantity_Length textHeight = aDrawer->TextAspect()->Height();
 #endif
 
   if (DA->DrawFirstAndSecondAxis()) {

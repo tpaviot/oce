@@ -1680,7 +1680,6 @@ void BRepMesh_FastDiscretFace::AddInShape(const TopoDS_Face&  face,
       
       const BRepMesh_Edge& ve1=structure->GetLink(e1);
       const BRepMesh_Edge& ve2=structure->GetLink(e2);
-      const BRepMesh_Edge& ve3=structure->GetLink(e3);
       
       if (o1) {
 	      v1=ve1.FirstNode();

@@ -1166,7 +1166,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Vertex&
 				      const Standard_Real DstRef)
 
 {
-  const Standard_Real epsP=Precision::PConfusion();
   SeqSolShape1.Clear();
   SeqSolShape2.Clear();
   myModif=Standard_False;
