@@ -366,7 +366,9 @@ static Standard_Integer cirtang (Draw_Interpretor& di,Standard_Integer n, const 
       return 1;
     }
   }
+#ifndef _MSC_VER // MSVC unreachable warning
   return 0;
+#endif
 }
 
 

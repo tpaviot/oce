@@ -243,16 +243,6 @@ Handle(Draw_Drawable3D) DDataStd_DrawDriver::DrawableConstraint (const Handle(TD
       }
       else {
 	break;
-	TopoDS_Shape aLocalShape = (Geometry (A, 1, TopAbs_FACE));
-	TopoDS_Face F1 = TopoDS::Face (aLocalShape);
-//	TopoDS_Face F1 = TopoDS::Face (Geometry (A, 1, TopAbs_FACE));
-	if (A->NbGeometries() == 1) D = new DrawDim_Distance (F1);
-	else {
-	  TopoDS_Shape aLocalShape = Geometry(A,2,TopAbs_FACE);
-	  TopoDS_Face F2 = TopoDS::Face(aLocalShape);
-//	  TopoDS_Face F2 = TopoDS::Face(Geometry(A,2,TopAbs_FACE));
-	  D = new DrawDim_Distance(F1,F2);
-	}
       }
     }
     break;

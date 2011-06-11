@@ -1366,7 +1366,9 @@ LONG APIENTRY DrawWindow::DrawProc(HWND hWnd, UINT wMsg, WPARAM wParam, LONG lPa
     else
       return LONG(DefMDIChildProc(hWnd, wMsg, wParam, lParam));
   }
+#ifndef _MSC_VER // unreachable code in MSVC
   return (0l);
+#endif
 }
 
 
