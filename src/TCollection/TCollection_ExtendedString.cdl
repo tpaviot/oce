@@ -320,7 +320,6 @@ is
    ToExtString(me) returns ExtString
    ---Level: Public
    ---Purpose: Returns pointer to ExtString
-   ---C++: return const
    is static;
 
    Trunc (me : out ; ahowmany  : Integer)

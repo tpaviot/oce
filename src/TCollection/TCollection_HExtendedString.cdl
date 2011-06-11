@@ -173,7 +173,6 @@ is
  ToExtString(me) returns ExtString;
    ---Level: Public
    ---Purpose: Returns pointer to ExtString
-   ---C++: return const
 
  Token (me ; separators : ExtString; whichone : Integer=1) 
  returns HExtendedString from TCollection

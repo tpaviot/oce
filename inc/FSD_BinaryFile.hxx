@@ -271,7 +271,7 @@ private:
   
   Standard_EXPORT   void ReadHeader() ;
   
-  Standard_EXPORT static  const  Standard_CString MagicNumber() ;
+  Standard_EXPORT static  Standard_CString  MagicNumber() ;
 
 
   FSD_BStream myStream;

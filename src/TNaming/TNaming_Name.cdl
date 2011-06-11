@@ -77,7 +77,6 @@ is
 
     Orientation    (me) returns Orientation from TopAbs;
     ---C++: inline
-    ---C++: return const
     
 
     ---Category: Resolution

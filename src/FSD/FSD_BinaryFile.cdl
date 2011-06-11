@@ -299,7 +299,6 @@ is
     
     MagicNumber(myclass)
     	returns CString from Standard is private;
-    ---C++: return const
  
     ReadChar(me : in out; buffer : in out AsciiString from TCollection; rsize : Size from Standard) is protected;
     ---Purpose: read <rsize> character from the current position.    

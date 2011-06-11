@@ -94,7 +94,6 @@ is
 
     ParamValue (me; num : Integer) returns CString;
     ---Purpose : returns litteral value of a parameter, as it was in file
-    ---C++ : return const
 
        	-- --   Adapted Helps for Reading   -- --
 
