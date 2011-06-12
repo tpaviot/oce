@@ -84,7 +84,9 @@ Standard_Real  TopOpeBRepDS_PointIterator::Parameter()const
     Standard_ProgramError::Raise("TopOpeBRepDS_PointIterator::Parameter()");
     return 0.;  // windowsNT
   }
+#ifndef _MSC_VER
   return 0.;  // windowsNT
+#endif
 }
 
 //=======================================================================
@@ -123,7 +125,9 @@ Standard_Boolean TopOpeBRepDS_PointIterator::DiffOriented() const
     Standard_ProgramError::Raise("TopOpeBRepDS_PointIterator::DiffOriented()");
     return Standard_False; // windowsNT
   }
+#ifndef _MSC_VER
   return Standard_False; // windowsNT
+#endif
 }
 
 //=======================================================================
@@ -142,7 +146,9 @@ Standard_Boolean TopOpeBRepDS_PointIterator::SameOriented() const
     Standard_ProgramError::Raise("TopOpeBRepDS_PointIterator::SameOriented()");
     return Standard_False; // windowsNT
   }
+#ifndef _MSC_VER
   return Standard_False; // windowsNT
+#endif
 }
 
 //=======================================================================

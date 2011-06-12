@@ -166,7 +166,6 @@ static Standard_Integer FUN_mkT2dquad(const Standard_Real curvC1, const Standard
   if (samec)           return isON2ifss;//is ON if curves are on same side/tg line
   if (curvC1 > curvC2) return isIN2ifss;//is IN if curves are on same side/tg line
   else                 return isOU2ifss;//is OU if curves are on same side/tg line
-  return 0;
 }
 
 static Standard_Boolean FUN_getnearpar(const TopoDS_Edge& e,const Standard_Real par,const Standard_Real f,const Standard_Real l,
@@ -239,7 +238,9 @@ static Standard_Boolean FUN_getsta(const Standard_Integer mkt,const gp_Dir& tga1
     sta = TopAbs_ON; 
     return Standard_True;
   } 
+#ifndef _MSC_VER
   return Standard_False;
+#endif
 } 
 static Standard_Boolean FUN_mkT2dquad(const TopoDS_Edge& e1,const Standard_Real par1,const Standard_Real f1,const Standard_Real l1,
 			 const TopoDS_Edge& e2,const Standard_Real par2,

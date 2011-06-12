@@ -601,7 +601,7 @@ Standard_Boolean ChFi3d_KParticular
        */
     return Standard_False;
   default:
-    return Standard_False;
+    break;
   }
   return Standard_False;
 }

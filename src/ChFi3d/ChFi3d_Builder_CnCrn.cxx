@@ -912,7 +912,7 @@ static Standard_Integer SurfIndex(const ChFiDS_StripeArray1& StripeArray1,
   case ChFiSURFACE: return aSurfData->Surf();
   case FACE1:       return aSurfData->IndexOfS1();
   case FACE2:       return aSurfData->IndexOfS2();
-  default:          return -1;
+  default:          break;
   }
   return -1;
 }

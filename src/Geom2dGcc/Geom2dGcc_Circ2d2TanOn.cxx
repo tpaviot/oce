@@ -699,7 +699,9 @@ Standard_Boolean Geom2dGcc_Circ2d2TanOn::
     if (TheSame1(Index) == 0) { return Standard_False; }
     else { return Standard_True; }
   }
+#ifndef _MSC_VER
   return Standard_False;
+#endif 
 }
 
 Standard_Boolean Geom2dGcc_Circ2d2TanOn::
@@ -715,5 +717,7 @@ Standard_Boolean Geom2dGcc_Circ2d2TanOn::
     if (TheSame1(Index) == 0) { return Standard_False; }
     else { return Standard_True; }
   }
+#ifndef _MSC_VER
   return Standard_True;
+#endif 
 }

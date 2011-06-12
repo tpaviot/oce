@@ -272,7 +272,7 @@ void TopOpeBRep_ShapeIntersector2d::FindFFIntersection()
                         BS.Box(GS2);
     myFFDone = Standard_True;
     break;
-    NextFFCouple();
+    NextFFCouple();  // @todo Should be really after the break?
   }
   
   SetIntersectionDone();

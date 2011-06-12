@@ -1578,10 +1578,11 @@ Standard_Integer CutEdge (const TopoDS_Edge& E,
 
   if (CT2d->BasisCurve()->IsKind(STANDARD_TYPE(Geom2d_Circle)) &&
       ( Abs(f-l) >= PI) ) {
-    return 0;
+    return 0; // @todo check here possible bug or really workaround?
     //---------------------------
     // Decoupe cercle ferme.
     //---------------------------
+#if 0 // Eventually re-enable here 
     Standard_Real m = (f + l)*0.5;
 //  Modified by Sergey KHROMOV - Wed Mar  6 17:37:28 2002 Begin
     gp_Pnt        P = aC->Value(m);
@@ -1608,6 +1609,7 @@ Standard_Integer CutEdge (const TopoDS_Edge& E,
     // Retour.
     //--------
     return 2;
+#endif
   }
 
   //-------------------------

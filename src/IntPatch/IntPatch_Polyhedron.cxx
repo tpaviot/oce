@@ -519,7 +519,10 @@ Standard_Integer IntPatch_Polyhedron::TriConnex (const Standard_Integer Triang,
 
     return(0); //-- BUG NON CORRIGE ( a revoir le role de nbdeltaU et nbdeltaV)
 
-    return(TriConnex(TempTri,Pivot,TempOtherP,TriCon,OtherP));
+	// @todo what does mean the above line ? should this really removed?
+#if 0 // added by warning-fix
+	return(TriConnex(TempTri,Pivot,TempOtherP,TriCon,OtherP));
+#endif
   }
   return TriCon;
 }

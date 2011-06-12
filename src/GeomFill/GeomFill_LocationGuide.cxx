@@ -742,9 +742,10 @@ static void InGoodPeriod(const Standard_Real Prec,
 #ifdef DEB
     Standard_Real U = myFirstS + ratio*(Param-myCurve->FirstParameter());
 #else
-    myCurve->FirstParameter() ;
+    
 #endif
       
+#if 0 // @todo Should be really dead code?
     // initialisation du germe 
     InitX(Param);      
     
@@ -858,6 +859,7 @@ static void InGoodPeriod(const Standard_Real Prec,
 	return Standard_False;
       }
 
+#endif // Dead code?
     }//if_rotation
   
 
