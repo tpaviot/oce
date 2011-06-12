@@ -1066,8 +1066,8 @@ static void Descendants(const TopoDS_Shape&,
 //--- generation de "just feature" pour assemblage = Parties d'outil
     TopTools_ListOfShape lshape; 
     LocOpe_Builder theTOpe;
-    Standard_Real pbmin, pbmax, prmin, prmax;
-    Standard_Boolean flag1;
+    Standard_Real pbmin = 0.0, pbmax = RealLast(), prmin = 0.0, prmax = RealLast();
+    Standard_Boolean flag1 = false;
     Handle(Geom_Curve) C;
     if(!myJustFeat) {
       theTOpe.Init(mySbase);

@@ -466,7 +466,7 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
   // FRA11018 (FOR=f5,EG=e18,EsdEG=e7)           
   Standard_Boolean espONesd = Standard_False; Standard_Integer Iesd=0;// xpu150698
   if (eghassd) espONesd = FUN_ds_ONesd(BDS,GI,EspON,Iesd);// xpu150698 
-  Standard_Boolean eONsoEsd;
+  Standard_Boolean eONsoEsd = false;
   if (eghassd && (Iesd != 0)) {     
     const TopoDS_Edge& Esd = TopoDS::Edge(BDS.Shape(Iesd));
     Standard_Boolean ok = FUN_tool_curvesSO(eON,Esd,eONsoEsd);
@@ -1335,7 +1335,7 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
     if (ComOfCut) {b3d=Standard_True; b2d=Standard_True;} //xpu200598
      
     gp_Vec ngFS,ngFOR;
-    Standard_Real parEG;
+    Standard_Real parEG = 0.0;
     // bcl1;bcl2; tsp(f9),tspON(e7)
     Standard_Boolean sdm = FUN_ds_sdm(BDS,BDS.Shape(iFOR),BDS.Shape(iFS));
     Standard_Boolean isfafa = sdm; // such interferences are computed IN fafa case
@@ -1515,7 +1515,7 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
 //    Standard_Boolean samerk = (rankEG == rkToFill);
 
 //    TopAbs_Orientation oegFOR;
-    Standard_Boolean shareG;
+    Standard_Boolean shareG = false;
     Standard_Boolean ok = FUN_ds_shareG(myPB->DataStructure(),iFOR,iFCX,GI,
 			   TopoDS::Edge(EspON),shareG);
     if (!ok) return; // nyiFUNRAISE

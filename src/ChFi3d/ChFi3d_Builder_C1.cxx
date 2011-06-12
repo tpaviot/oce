@@ -794,7 +794,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = 0.0;
 #ifndef DEB
   Standard_Real  par1 =0.,par2 =0.;
   Standard_Integer indpt = 0,Icurv1 = 0,Icurv2 = 0;
@@ -3988,7 +3988,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = 0.0;
 #ifndef DEB
   Standard_Real par1 = 0.,par2 = 0.;
   Standard_Integer indpt =0,Icurv1 =0,Icurv2 =0;

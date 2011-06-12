@@ -1905,7 +1905,7 @@ void ChFi3d_Builder::PerformSetOfSurfOnElSpine
   Standard_Boolean RecP1 = 0, RecS1 = 0, RecRst1 = 0, obstacleon1 = 0;
   Standard_Boolean RecP2 = 0, RecS2 = 0, RecRst2 = 0, obstacleon2 = 0;
   gp_Pnt2d pp1,pp2,pp3,pp4;
-  Standard_Real w1,w2;
+  Standard_Real w1 = 0.0 ,w2 = 0.0;
   math_Vector Soldep(1,4);
   math_Vector SoldepCS(1,3);
   math_Vector SoldepCC(1,2);

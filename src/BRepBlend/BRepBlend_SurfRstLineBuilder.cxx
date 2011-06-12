@@ -148,7 +148,7 @@ Standard_Integer BRepBlend_SurfRstLineBuilder::
   Standard_Boolean ok = Standard_False;
   Standard_Boolean byinter = (line->NbPoints() != 0), okinter = 0;
   Standard_Real distmin = RealLast();
-  Standard_Real uprev = 0,vprev = 0, prm, dist;
+  Standard_Real uprev = 0,vprev = 0, prm = 0.0 , dist = 0.0;
 
   if(byinter) previousP.ParametersOnS(uprev,vprev);
   pt2d.SetCoord(sol(1),sol(2));
@@ -505,9 +505,9 @@ void BRepBlend_SurfRstLineBuilder::InternalPerform(Blend_SurfRstFunction&  Func,
 #else
   Blend_Status State;
 #endif
-  TopAbs_State situonc,situons;
-  Standard_Boolean decroch;
-  Standard_Boolean Arrive,recadp,recadrst,recads,echecrecad;
+  TopAbs_State situonc = TopAbs_UNKNOWN,situons = TopAbs_UNKNOWN;
+  Standard_Boolean decroch = false;
+  Standard_Boolean Arrive = false,recadp = false,recadrst = false,recads = false,echecrecad = false;
   Standard_Real wp,wrst,ws;
   Standard_Real U = 0,V = 0;
 #ifndef DEB

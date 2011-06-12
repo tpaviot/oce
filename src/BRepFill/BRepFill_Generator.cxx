@@ -92,7 +92,7 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   Standard_Integer IType = 0;
 
   // caracteristiques de la premiere edge
-  Standard_Real first1, last1, first2, last2, ff, ll;
+  Standard_Real first1 = 0.0 , last1 = 0.0 , first2 = 0.0 , last2 = 0.0 , ff, ll;
   TopLoc_Location loc;
   TopoDS_Vertex V1, V2;
   Handle(Geom_Curve) curv1, curv;
