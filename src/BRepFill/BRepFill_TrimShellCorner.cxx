@@ -907,8 +907,8 @@ Standard_Boolean SplitUEdges(const Handle(TopTools_HArray2OfShape)&     theUEdge
       for(vvit = 1; !bvertexfound && (vvit <= aVVs.Extent()); vvit++) {
 	const BOPTools_VVInterference& aVV = aVVs(vvit);
 
-	if(((vindex1 == aVV.Index1()) && (vindex2 = aVV.Index2())) ||
-	   ((vindex1 == aVV.Index2()) && (vindex2 = aVV.Index1()))) {
+	if(((vindex1 == aVV.Index1()) && (vindex2 == aVV.Index2())) ||
+	   ((vindex1 == aVV.Index2()) && (vindex2 == aVV.Index1()))) {
 
 	  if(aVV.NewShape() == 0) {
 	    continue;
