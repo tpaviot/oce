@@ -100,7 +100,7 @@ Standard_Boolean GProp_UFunction::CenterMassValue(const Standard_Real  X,
 {
   gp_XYZ        aPmP0;
   Standard_Real aS;
-  Standard_Real aD1;
+  Standard_Real aD1 = 0;
 
   F = VolumeValue(X, aPmP0, aS, aD1);
 
@@ -140,8 +140,8 @@ Standard_Boolean GProp_UFunction::InertiaValue(const Standard_Real  X,
 					             Standard_Real &F)
 {
   gp_XYZ        aPmP0;
-  Standard_Real aS;
-  Standard_Real aD1;
+  Standard_Real aS = 0;
+  Standard_Real aD1 = 0;
   Standard_Real aParam1;
   Standard_Real aParam2;
   Standard_Real *aCoeffs = (Standard_Real *)myCoeffs;

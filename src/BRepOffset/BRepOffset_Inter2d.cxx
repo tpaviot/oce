@@ -279,7 +279,6 @@ static void EdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-  Standard_Real MilTol2 = 1000*Tol*Tol;
   Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
   Standard_Integer i;
 
@@ -550,7 +549,6 @@ static void RefEdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-  Standard_Real MilTol2 = 1000*Tol*Tol;
   Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
   Standard_Integer i;
 
@@ -1112,8 +1110,6 @@ static void ExtentEdge(const TopoDS_Edge& E,TopoDS_Edge& NE, const Standard_Real
       MinLoc = E.Location() * MinLoc;
       if (!C3d.IsNull())
 	{
-	  Standard_Real FirstPar = C3d->FirstParameter();
-	  Standard_Real LastPar  = C3d->LastParameter();
 	  if (MinPC->IsClosed())
 	    {
 	      f = FirstParOnPC;

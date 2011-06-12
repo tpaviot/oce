@@ -247,8 +247,6 @@ static void  BuildVBO( CALL_DEF_PARRAY* p )
 static  TStatus  ParrayDisplay( TSM_ELEM_DATA, Tint, cmn_key* );
 static  TStatus  ParrayAdd( TSM_ELEM_DATA, Tint, cmn_key* );
 static  TStatus  ParrayDelete( TSM_ELEM_DATA, Tint, cmn_key* );
-static  TStatus  ParrayPrint( TSM_ELEM_DATA, Tint, cmn_key* );
-static  TStatus  ParrayInquire( TSM_ELEM_DATA, Tint, cmn_key* );
 
 /*static  GLboolean       lighting_mode;*/
 

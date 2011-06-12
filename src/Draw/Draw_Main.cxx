@@ -104,10 +104,6 @@ Standard_IMPORT Standard_Boolean Draw_Interprete(char* command); //for C30
 
 // necessary for WNT in C21 only
 static FDraw_InitAppli theDraw_InitAppli; //pointer to the Draw_InitAppli
-static void Draw_InitAppli(Draw_Interpretor& theCommands)
-{
-  theDraw_InitAppli (theCommands);
-}
 #endif
 
 #ifdef WNT
@@ -135,7 +131,6 @@ Standard_Integer _main_ (int argc, char* argv[], char* envp[], const FDraw_InitA
   Draw_IsConsoleSubsystem = Standard_True;
   //return _WinMain_(::GetModuleHandle(NULL), NULL, GetCommandLine(), SW_SHOW, fDraw_InitAppli);
   theDraw_InitAppli = fDraw_InitAppli;
-  Standard_Boolean CONSOLE = Standard_True;
   //ParseCommandLine(GetCommandLine());
 
   // MKV 01.02.05

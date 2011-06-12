@@ -444,8 +444,6 @@ TopoDS_Shape BRepTools_Quilt::Shells() const
               TopoDS_Shape arefShape = SH.Oriented(TopAbs_FORWARD) ;
 	      B.Add  ( arefShape ,Fo.Oriented(NewO));
 	    }
-            Standard_Integer kk =1;
-            Standard_Integer p =0;
 	    // Rebind the free edges of the old shell to the new shell
             //gka BUG 6491
             TopExp_Explorer aexp(SH,TopAbs_EDGE);

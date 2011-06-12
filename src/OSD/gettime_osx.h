@@ -94,10 +94,7 @@ int clock_gettime(clockid_t clk_id, struct timespec *tp) {
 
     uint64_t start, end, delta, nano;
 
-    task_basic_info_data_t tinfo;
-    task_thread_times_info_data_t ttinfo;
-    mach_msg_type_number_t tflag;
-	
+  	
     int retval = -1;
 	switch (clk_id) {
 	    case CLOCK_REALTIME:

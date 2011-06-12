@@ -1430,7 +1430,7 @@ static Standard_Integer clintedge(Draw_Interpretor& di,
   TopOpeBRepTool_PurgeInternalEdges mypurgealgo(S);
   Standard_Integer nbedges;
 
-  if ((nbedges = mypurgealgo.NbEdges())) {
+  if ((nbedges = mypurgealgo.NbEdges()) != 0) {
 
     //cout<<nbedges<<" internal (or external) edges to be removed"<<endl;
     di<<nbedges<<" internal (or external) edges to be removed"<<"\n";

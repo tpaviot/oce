@@ -43,10 +43,6 @@
 #include <Units_Operators.hxx>
 #include <OSD.hxx>
 
-#ifdef PRO13136		//Temporaire en attendant OSD::CStringToReal()
-static char DecimalPoint = '\0' ;
-
-#endif
 // Make the RealToCString reciprocal conversion.
 
 //=======================================================================

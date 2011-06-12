@@ -165,7 +165,7 @@ static Standard_Boolean StaticPath(const Handle(TCollection_HAsciiString)& val)
       break;
     case MoniTool_ValueEnum    : {
       def.AssignCat("Enum");
-      Standard_Integer startcase, endcase; Standard_Boolean match;
+      Standard_Integer startcase = 0, endcase = 0; Standard_Boolean match = Standard_False;
       EnumDef (startcase,endcase,match);
       sprintf(mess," [%s%d-%d]",(match ? "in " : ""),startcase,endcase);
       def.AssignCat(mess);
@@ -584,8 +584,8 @@ static Standard_Boolean StaticPath(const Handle(TCollection_HAsciiString)& val)
     }
     case MoniTool_ValueEnum    : {
 //  On admet les deux formes : Enum de preference, sinon Integer
-      Standard_Integer startcase, endcase;// unused ival;
-      Standard_Boolean match;
+      Standard_Integer startcase = 0, endcase;// unused ival;
+      Standard_Boolean match = 0;
       EnumDef (startcase,endcase,match);
       if (!match) return Standard_True;
       if (EnumCase (val->ToCString()) >= startcase) return Standard_True;

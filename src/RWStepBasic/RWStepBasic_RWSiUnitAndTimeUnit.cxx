@@ -43,7 +43,7 @@ void RWStepBasic_RWSiUnitAndTimeUnit::ReadStep (const Handle(StepData_StepReader
 
   // --- field : prefix ---
   RWStepBasic_RWSiUnit reader;
-  StepBasic_SiPrefix aPrefix;
+  StepBasic_SiPrefix aPrefix = StepBasic_spExa; // (0)
   Standard_Boolean hasAprefix = Standard_False;
   if (data->IsParamDefined(num,1)) {
     if (data->ParamType(num,1) == Interface_ParamEnum) {
@@ -56,7 +56,7 @@ void RWStepBasic_RWSiUnitAndTimeUnit::ReadStep (const Handle(StepData_StepReader
   }
   
   // --- field : name ---
-  StepBasic_SiUnitName aName;
+  StepBasic_SiUnitName aName = StepBasic_sunMetre; // 0
   if (data->ParamType(num,2) == Interface_ParamEnum) {
     Standard_CString text = data->ParamCValue(num,2);
     if(!reader.DecodeName(aName,text))
@@ -68,6 +68,8 @@ void RWStepBasic_RWSiUnitAndTimeUnit::ReadStep (const Handle(StepData_StepReader
   num = data->NextForComplex(num);
   if (!data->CheckNbParams(num,0,ach,"time_unit")) return;
 
+   // @todo Apart the fail, nothing is done , and wrong enum values are used
+ 
   //--- Initialisation of the red entity ---
   ent->Init(hasAprefix,aPrefix,aName);
 }

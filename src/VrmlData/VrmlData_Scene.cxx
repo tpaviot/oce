@@ -439,8 +439,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
   VrmlData_ErrorStatus    aStatus;
   Handle(VrmlData_Node)   aNode;
   TCollection_AsciiString aName;
-  Standard_Boolean        isReused (Standard_False);
-
+ 
   // Read the DEF token to assign the node name
   if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer)))
     if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "DEF")) {
@@ -685,7 +684,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXYZ
                                  Standard_Boolean       isOnlyPos) const
 {
   Standard_Real aVal[3] = {0., 0., 0.};
-  VrmlData_ErrorStatus aStatus;
+  VrmlData_ErrorStatus aStatus = VrmlData_StatusOK;
   for (Standard_Integer i = 0; i < 3; i++) {
     if (!VrmlData_Node::OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
       break;
@@ -724,7 +723,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXY
                                  Standard_Boolean       isOnlyPos) const
 {
   Standard_Real aVal[2] = {0., 0.};
-  VrmlData_ErrorStatus aStatus;
+  VrmlData_ErrorStatus aStatus = VrmlData_StatusOK;
   for (Standard_Integer i = 0; i < 2; i++) {
     if (!VrmlData_Node::OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
       break;
@@ -1114,7 +1113,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedFaceSet (%d vertices, %d polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedFaceSet (%lu vertices, %lu polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_IndexedLineSet))) {
     const Handle(VrmlData_IndexedLineSet) aNode =
@@ -1123,7 +1122,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedLineSet (%d vertices, %d polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedLineSet (%lu vertices, %lu polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_Material))) {
 //     const Handle(VrmlData_Material) aMaterial = 

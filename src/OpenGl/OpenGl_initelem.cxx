@@ -2161,7 +2161,7 @@ InitPMFont(void)
 
   for( i = 0; i < TEL_NO_OF_SIZES*TEL_NB_OF_MARKERS; i++ )
   {           
-    GLsizei w, h, size, j;
+    GLsizei w, h;
 
     k1 = i / TEL_NO_OF_SIZES;
     k2 = i % TEL_NO_OF_SIZES;

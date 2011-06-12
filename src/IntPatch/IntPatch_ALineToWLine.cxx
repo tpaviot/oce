@@ -289,7 +289,7 @@ static
   LinOn2S = new IntSurf_LineOn2S;
 
   //// Modified by jgv, 17.09.09 for OCC21255 ////
-  Standard_Real refpar = RealLast(), ref_u1, ref_u2;
+  Standard_Real refpar = RealLast(), ref_u1 = 0, ref_u2 = 0;
   if (nbvtx)
     {
       const IntPatch_Point& FirstVertex = aline->Vertex(1);

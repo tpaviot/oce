@@ -171,32 +171,6 @@ Handle(Draw_Drawable3D) MeshTest_DrawableMesh::Copy() const
 //purpose  : 
 //=======================================================================
 
-static void printdegree(MeshDS_DegreeOfFreedom dof)
-{
-  switch (dof) {
-  case MeshDS_InVolume :
-    cout << "InVolume";
-    break;
-  case MeshDS_OnSurface :
-    cout << "OnSurface";
-    break;
-  case MeshDS_OnCurve :
-    cout << "OnCurve";
-    break;
-  case MeshDS_Fixed :
-    cout << "Fixed";
-    break;
-  case MeshDS_Frontier :
-    cout << "Frontier";
-    break;
-  case MeshDS_Deleted :
-    cout << "Deleted";
-    break;
-  case MeshDS_Free :
-    cout << "Free";
-    break;
-  }
-}
 
 void MeshTest_DrawableMesh::Dump(Standard_OStream& S) const 
 {

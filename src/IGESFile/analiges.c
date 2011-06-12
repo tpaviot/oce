@@ -35,8 +35,7 @@ static int bases[] =
 /*      Utilitaire decodant un nombre en format fixe dans une ligne
 	Il part de "depuis" inclus (debut ligne = 0) et prend "tant" caracteres
 	Valeur lue en retour de fonction   */
-static int IGES_decode(ligne,depuis,tant)
-char* ligne; int depuis, tant;
+static int IGES_decode(char* ligne,int depuis, int tant)
 {
   int val = 0; int i;
   int depart = depuis+tant-1;
@@ -51,8 +50,7 @@ char* ligne; int depuis, tant;
 }
 
 /*   Recopie d'une chaine de caracteres de longueur fixe (close par \0)  */
-void IGES_copstr(ligne,depuis,tant,dans)
-char *ligne; int depuis, tant; char* dans;
+void IGES_copstr(char *ligne, int depuis,int tant, char* dans)
 {
   int i;
   for (i = 0; i < tant; i ++) { dans[i] = ligne[depuis+i]; }
@@ -60,8 +58,7 @@ char *ligne; int depuis, tant; char* dans;
 }
 
 /*                   Analyse section D                */
-void iges_Dsect (Dstat,numsec,ligne)
-int *Dstat,numsec; char* ligne;
+void iges_Dsect (int * Dstat,int numsec, char * ligne)
 {
   struct dirpart *curp;
   if (*Dstat == 0) {
@@ -105,8 +102,7 @@ int *Dstat,numsec; char* ligne;
 /*     Lecture section P : preanalyse
        Extraction du numero D et troncature a 64 caracteres  */
 
-void iges_Psect(Pstat,numsec,ligne)
-int *Pstat; int numsec; char ligne[80];
+void iges_Psect(int *Pstat,int numsec,char ligne[80])
 {
   int dnum;
   dnum = atoi(&ligne[65]);
@@ -134,8 +130,7 @@ static int typarg;
 /*  +  definitions des types de parametres en tete  */
 
 
-void iges_param(Pstat,ligne,c_separ,c_fin,lonlin)
-int *Pstat; char c_separ,c_fin, *ligne; int lonlin;
+void iges_param(int * Pstat,char * ligne, char c_separ,char c_fin,int lonlin)
 {
   int i,i0,j; char param[80]; char unpar;
   if (*Pstat == 0) reste  = 0;

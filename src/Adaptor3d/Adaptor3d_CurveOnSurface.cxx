@@ -180,7 +180,7 @@ static void FindBounds(const TColStd_Array1OfReal& Arr,
 		       Standard_Boolean& DerNull)
 
 {
-  Standard_Integer N;
+  Standard_Integer N = 0;
   Standard_Real Tol=Precision::PConfusion()/10;
   Hunt(Arr,Coord,N);
   DerNull=Standard_False;
@@ -219,7 +219,7 @@ static void Locate1Coord(const Standard_Integer Index,
 			 const Handle(Geom_BSplineCurve)& BSplC,
 			 gp_Pnt2d& LeftBot, gp_Pnt2d& RightTop)
 {
-  Standard_Real Comp1=0, DComp1=0, cur, f, l;
+  Standard_Real Comp1=0, DComp1=0, cur, f=0, l=0;
   Standard_Real Tol = Precision::PConfusion()/10;
   Standard_Integer i = 1, Bnd1, Bnd2;
   Standard_Boolean DIsNull= Standard_False; 
@@ -324,7 +324,7 @@ static void Locate1Coord(const Standard_Integer Index,
   Standard_Real Comp1=0,DComp1=0; 
   Standard_Real Tol = Precision::PConfusion()/10;
   Standard_Integer i=1, Up=0, Up1, Up2, Down=0, Down1, Down2, Bnd1, Bnd2;
-  Standard_Real cur=0, f, l;
+  Standard_Real cur=0, f = 0, l = 0;
 
   DIsNull= Standard_False; 
 
@@ -501,9 +501,9 @@ static void Locate2Coord(const Standard_Integer Index,
 			 const TColStd_Array1OfReal& Arr,
 			 gp_Pnt2d& LeftBot, gp_Pnt2d& RightTop)
 {
-  Standard_Real Comp=0,DComp=0,Tmp1,Tmp2;
+  Standard_Real Comp=0,DComp=0,Tmp1=0,Tmp2=0;
   Standard_Real Tol=Precision::PConfusion()/10;
-  Standard_Integer N, NUp=0, NLo=0;
+  Standard_Integer N=0, NUp=0, NLo=0;
   if(Index==1)
     { Comp=UV.X();
       DComp=DUV.Y();

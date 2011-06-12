@@ -222,7 +222,6 @@ Standard_Boolean IntWalk_IWalking::TestArretPassage
       //IFV for OCC20285
 
 
-      Standard_Real tolustolv=tolu/tolv;
  
       if ((Abs(Du) < tolu2 && Abs(Dv) < tolv2) ||
 	  (Abs(Dup) < tolu2 && Abs(Dvp) < tolv2)) { 

@@ -92,7 +92,7 @@ void Prs3d_TextAspect::Print (Standard_OStream& s) const {
 
   myTextAspect->Values(C,F,Ratio,Space);
 
-  Standard_CString FontName;
+  Standard_CString FontName = "";
 
   strcpy((char*)FontName,(char*)F);
 

@@ -36,26 +36,6 @@ AddInterference(HLRAlgo_InterferenceList& IL,
 //function : ProcessComplex
 //purpose  : 
 //=======================================================================
-static Standard_Boolean SimilarInterference(const HLRAlgo_Interference& I1,
-					    const HLRAlgo_Interference& I2)
-{
-  Standard_Real p1, p2;
-  Standard_Real eps = 1.e-7;
-  TopAbs_Orientation or1, or2;
-  //Standard_Integer l1, l2; //levels
-
-  p1 = I1.Intersection().Parameter();
-  //l1 = I1.Intersection().Level();
-  or1 = I1.Transition();
-
-  p2 = I2.Intersection().Parameter();
-  //l2 = I2.Intersection().Level();
-  or2 = I2.Transition();
-
-  Standard_Boolean IsSimilar = Abs(p1-p2) <= eps && or1 == or2;
-  return IsSimilar;
-  
-}
 void  HLRBRep_EdgeIList::
 ProcessComplex(HLRAlgo_InterferenceList& IL,
 	       const HLRBRep_EdgeInterferenceTool& T)

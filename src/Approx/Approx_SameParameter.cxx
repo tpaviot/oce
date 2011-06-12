@@ -363,6 +363,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
   //reparametrage est possible et on calcule les tangentes aux
   //extremites de la fonction de changement de variable.
   Standard_Real tangent[2];
+  tangent[0]=tangent[1]=0;
   gp_Pnt Pcons,Pc3d;
   gp_Vec Vcons,Vc3d;
 

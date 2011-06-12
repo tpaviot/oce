@@ -290,42 +290,6 @@ Handle(AIS2D_InteractiveObject) Select2d (Standard_Integer /*argc*/,
   return ret;
 }
 
-//==============================================================================
-//function : Displays,Erase...
-//purpose  : 
-//Draw arg : 
-//==============================================================================
-static int VwrTst_DispErase2d (const Handle(AIS2D_InteractiveObject)& IO,
-                               const Standard_Integer Mode,
-                               const Standard_Integer TypeOfOperation,
-                               const Standard_Boolean Upd)
-{
-  Handle(AIS2D_InteractiveContext) Ctx = Viewer2dTest::GetAIS2DContext();
-  
-  switch (TypeOfOperation)
-  {
-  case 1:
-    Ctx->Display(IO,Mode,Upd);
-    break;
-  case 2:
-    Ctx->Erase(IO,Mode,Upd);
-    break;
-  case 3:
-//    if(IO.IsNull())
-//      Ctx->SetDisplayMode((AIS2D_DisplayMode)Mode,Upd);
-//    else
-//      Ctx->SetDisplayMode(IO,Mode,Upd);
-    break;
-  case 4:
-//    if(IO.IsNull())
-//      Ctx->SetDisplayMode(0,Upd);
-//    else
-//      Ctx->UnsetDisplayMode(IO,Upd);
-    break;
-  }
-
-  return 0;
-}
 
 #if 0
 //=======================================================================
@@ -813,7 +777,7 @@ static int V2dWidth (Draw_Interpretor& , Standard_Integer argc, const char** arg
 
   if (strcasecmp(argv[0], "v2dsetwidth") == 0) HaveToSet = Standard_True;
 
-  const char* aStr;
+  const char* aStr = "";
   if (HaveToSet)
   {
     if (argc < 2 || argc > 3)
@@ -2124,8 +2088,6 @@ static int v2dtable (Draw_Interpretor& , Standard_Integer argc, const char** arg
   
   Standard_Real x1 = 24, y1 = 24;
   Standard_Integer numberOfColumn = 1, numberOfRows = 1;
-  Quantity_PlaneAngle anAngle = 0.0;
-  Quantity_Factor     aScale = 1.0;
    
   if( argc >= 3 )
     x1 = atof( argv[2] );
@@ -2299,11 +2261,6 @@ static int drawLengthDim1( Draw_Interpretor& , Standard_Integer argc, const char
   
   double text_scale = 15;
   double length = 0; 
-  int distance_type = 0; 
-  double arrow_angle = 24;
-  double arrow_length = 24;
-  int arrow_type = 2;
-  int arrow_side = 3;
   
   double distance = FirstPt.Distance(LastPt);
   
@@ -2402,7 +2359,6 @@ static int drawRadiusDim( Draw_Interpretor& , Standard_Integer argc, const char*
   gp_Pnt2d anAp2(240, 240);
   gp_Circ2d aCirc(gp_Ax2d(anAp2,gp_Dir2d(0,1)),100.);
   
-  Quantity_Length aRadius = 100;
   TCollection_ExtendedString aText("Rad = 10%");
   
   Handle(Prs2d_Radius) theRadius;			
@@ -2436,7 +2392,6 @@ static int drawSymbDim( Draw_Interpretor& , Standard_Integer argc, const char** 
   gp_Pnt2d anAp2(240, 240);
   gp_Circ2d aCirc(gp_Ax2d(anAp2,gp_Dir2d(0,1)),100.);
   
-  Quantity_Length aRadius = 100;
   TCollection_ExtendedString aText("Rad = 10%");
   
   Handle(AIS2D_InteractiveObject) aIO = new AIS2D_InteractiveObject();

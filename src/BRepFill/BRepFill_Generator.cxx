@@ -557,7 +557,7 @@ void BRepFill_Generator::Perform()
 
   BRepTools_WireExplorer ex1,ex2;
 
-  Standard_Boolean wPoint1, wPoint2, uClosed, DegenFirst, DegenLast;
+  Standard_Boolean wPoint1, wPoint2, uClosed = 0, DegenFirst = 0, DegenLast = 0;
   
   for ( Standard_Integer i = 1; i <= Nb-1; i++) {
 
