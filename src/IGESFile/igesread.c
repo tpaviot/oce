@@ -37,8 +37,7 @@ void iges_Psect(int *Pstat,int numsec,char ligne[80]);
 static  char sects [] = " SGDPT ";
 
 
-int igesread(nomfic,lesect,modefnes)
-char* nomfic; int lesect[6]; int modefnes;
+int igesread(char* nomfic,int lesect[6],int modefnes)
 {
   /* MGE 16/06/98 */
 

@@ -127,13 +127,13 @@ static void QuasiFleche(const Adaptor3d_Curve& C,
 			TColgp_SequenceOfPnt& Points);
 
 static Standard_Boolean PerformCurve (TColStd_SequenceOfReal& Parameters,
-				      TColgp_SequenceOfPnt&   Points,
-				      const Adaptor3d_Curve& C, 
-				      const Standard_Real Deflection,
-				      const Standard_Real U1,
-				      const Standard_Real U2,
-				      const Standard_Real EPSILON,
-				      const Standard_Integer Nbmin);
+			TColgp_SequenceOfPnt& Points,
+			const Adaptor3d_Curve& C,
+			const Standard_Real Deflection,
+			const Standard_Real U1,
+			const Standard_Real U2,
+			const Standard_Real EPSILON,
+			const Standard_Integer Nbmin);
 
 static void CheckBadEdges(const TopoDS_Face& Spine, const Standard_Real Offset,
 			  const BRepMAT2d_BisectingLocus& Locus, 
@@ -469,7 +469,7 @@ void BRepFill_OffsetWire::Perform (const Standard_Real Offset,
       BRepTools_Substitution aSubst;
       TopTools_ListIteratorOfListOfShape it(BadEdges);
       TopTools_ListOfShape aL;
-      Standard_Real aDefl = .01 * Abs(Offset);
+	  Standard_Real aDefl = .01 * Abs(Offset);
       TColStd_SequenceOfReal Parameters;
       TColgp_SequenceOfPnt Points;
 
@@ -485,7 +485,7 @@ void BRepFill_OffsetWire::Perform (const Standard_Real Offset,
 	Handle(Geom_Curve) G3d = BRep_Tool::Curve(TopoDS::Edge(anE),f,l);
 	GeomAdaptor_Curve  AC(G3d,f,l);
 
-	Standard_Boolean dummy = PerformCurve(Parameters, Points,
+	PerformCurve(Parameters, Points,
 					      AC, aDefl, f, l, Precision::Confusion(),
 					      2);
 
@@ -1334,8 +1334,8 @@ void BRepFill_OffsetWire::FixHoles()
       Pf = BRep_Tool::Pnt(Vf);
       Pl = BRep_Tool::Pnt(Vl);
       Standard_Real DistF = RealLast(), DistL = RealLast();
-      Standard_Integer IndexF, IndexL;
-      Standard_Boolean IsFirstF, IsFirstL;
+      Standard_Integer IndexF = 0, IndexL = 0;
+      Standard_Boolean IsFirstF = Standard_False, IsFirstL = Standard_False;
       for (Standard_Integer i = 2; i <= UnclosedWires.Length(); i++)
 	{
 	  TopoDS_Wire aWire = TopoDS::Wire( UnclosedWires(i) );
@@ -1578,10 +1578,11 @@ Standard_Integer CutEdge (const TopoDS_Edge& E,
 
   if (CT2d->BasisCurve()->IsKind(STANDARD_TYPE(Geom2d_Circle)) &&
       ( Abs(f-l) >= PI) ) {
-    return 0;
+    return 0; // @todo check here possible bug or really workaround?
     //---------------------------
     // Decoupe cercle ferme.
     //---------------------------
+#if 0 // Eventually re-enable here 
     Standard_Real m = (f + l)*0.5;
 //  Modified by Sergey KHROMOV - Wed Mar  6 17:37:28 2002 Begin
     gp_Pnt        P = aC->Value(m);
@@ -1608,6 +1609,7 @@ Standard_Integer CutEdge (const TopoDS_Edge& E,
     // Retour.
     //--------
     return 2;
+#endif
   }
 
   //-------------------------
@@ -2269,40 +2271,6 @@ static void CheckBadEdges(const TopoDS_Face& Spine, const Standard_Real Offset,
 
 
 //=======================================================================
-//function : PerformCurve
-//purpose  : 
-//=======================================================================
-
-static Standard_Boolean PerformCurve (TColStd_SequenceOfReal& Parameters,
-				      TColgp_SequenceOfPnt&   Points,
-				      const Adaptor3d_Curve& C, 
-				      const Standard_Real Deflection,
-				      const Standard_Real U1,
-				      const Standard_Real U2,
-				      const Standard_Real EPSILON,
-				      const Standard_Integer Nbmin)
-{
-  Standard_Real UU1 = Min(U1, U2);
-  Standard_Real UU2 = Max(U1, U2);
-
-  gp_Pnt Pdeb, Pfin;
-  gp_Vec Ddeb,Dfin;
-  C.D1(UU1,Pdeb,Ddeb);
-  Parameters.Append(UU1);
-  Points.Append(Pdeb);
-
-  C.D1(UU2,Pfin,Dfin);
-  QuasiFleche(C,Deflection*Deflection,
-	      UU1,Pdeb,
-	      Ddeb,
-	      UU2,Pfin,
-	      Dfin,
-	      Nbmin,
-	      EPSILON*EPSILON,
-	      Parameters,Points);
-  return Standard_True;
-}
-//=======================================================================
 //function : QuasiFleche
 //purpose  : 
 //=======================================================================
@@ -2382,3 +2350,37 @@ static void QuasiFleche(const Adaptor3d_Curve& C,
   }
 }
 			
+//=======================================================================
+//function : PerformCurve
+//purpose :
+//=======================================================================
+
+static Standard_Boolean PerformCurve (TColStd_SequenceOfReal& Parameters,
+									  TColgp_SequenceOfPnt& Points,
+									  const Adaptor3d_Curve& C,
+									  const Standard_Real Deflection,
+									  const Standard_Real U1,
+									  const Standard_Real U2,
+									  const Standard_Real EPSILON,
+									  const Standard_Integer Nbmin)
+{
+	Standard_Real UU1 = Min(U1, U2);
+	Standard_Real UU2 = Max(U1, U2);
+
+	gp_Pnt Pdeb, Pfin;
+	gp_Vec Ddeb,Dfin;
+	C.D1(UU1,Pdeb,Ddeb);
+	Parameters.Append(UU1);
+	Points.Append(Pdeb);
+
+	C.D1(UU2,Pfin,Dfin);
+	QuasiFleche(C,Deflection*Deflection,
+		UU1,Pdeb,
+		Ddeb,
+		UU2,Pfin,
+		Dfin,
+		Nbmin,
+		EPSILON*EPSILON,
+		Parameters,Points);
+	return Standard_True;
+}

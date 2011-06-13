@@ -52,7 +52,7 @@ void IGESGeom_ToolBSplineSurface::ReadOwnParams
   Standard_Integer I, J;
   Standard_Integer anIndexU, anIndexV, aDegU, aDegV;
   Standard_Boolean aCloseU, aCloseV, aPolynom, aPeriodU, aPeriodV;
-  Standard_Real aUmin, aUmax, aVmin, aVmax;
+  Standard_Real aUmin = 0.0, aUmax = 0.0, aVmin = 0.0, aVmax = 0.0;
   Standard_Real tempVal;
   gp_XYZ tempXYZ;
   Handle(TColStd_HArray1OfReal) allKnotsU;

@@ -201,10 +201,10 @@ void XCAFPrs_AISObject::AddStyledItem (const XCAFPrs_Style &style,
   }
   case 1:
     {
-      Standard_Real prevangle ;
-      Standard_Real newangle  ; 
-      Standard_Real prevcoeff ;
-      Standard_Real newcoeff  ; 
+      Standard_Real prevangle = 0.0;
+      Standard_Real newangle = 0.0  ; 
+      Standard_Real prevcoeff = 0.0 ;
+      Standard_Real newcoeff = 0.0 ; 
       
       if (OwnDeviationAngle(newangle,prevangle) ||
 	  OwnDeviationCoefficient(newcoeff,prevcoeff))

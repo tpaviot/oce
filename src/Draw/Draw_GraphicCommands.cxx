@@ -123,7 +123,7 @@ static Standard_Integer zoom(Draw_Interpretor& , Standard_Integer n, const char*
 static Standard_Integer wzoom(Draw_Interpretor& di, Standard_Integer, const char**)
 {
   Standard_Integer id1,X1,Y1,b;
-  Standard_Integer X2,Y2;
+  Standard_Integer X2 = 0,Y2 = 0;
   Standard_Real dX1,dY1,dX2,dY2;
   di << "Pick first corner"<<"\n";
   dout.Select(id1,X1,Y1,b);

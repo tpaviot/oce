@@ -299,7 +299,7 @@ static void CurveHermite (const TopOpeBRepDS_DataStructure& DStr,
   gp_Vec d11,d12;
   Standard_Integer ii,jj;
   Standard_Real up1,up2;
-  Standard_Integer ilin,jfp;
+  Standard_Integer ilin = 0,jfp = 0;
   Handle (Geom_Curve) c1,c2;
   if (sharpicmoins) {
     c1=BRep_Tool::Curve(Eviveicmoins,up1,up2);
@@ -912,7 +912,7 @@ static Standard_Integer SurfIndex(const ChFiDS_StripeArray1& StripeArray1,
   case ChFiSURFACE: return aSurfData->Surf();
   case FACE1:       return aSurfData->IndexOfS1();
   case FACE2:       return aSurfData->IndexOfS2();
-  default:          return -1;
+  default:          break;
   }
   return -1;
 }
@@ -1040,13 +1040,13 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
   ChFiDS_ListIteratorOfListOfStripe It;
   Handle(ChFiDS_Stripe) cd2,cdbid,cnext;
   TopoDS_Face face;
-  Standard_Integer jfp,ii;
+  Standard_Integer jfp = 0,ii;
   Standard_Integer ic,icplus,icmoins,icplus2,
-                   sense,index,indice,isurf1,isurf2;
-  Standard_Integer cbplus=0, n3d=0,IVtx,nb;
+                   sense,index = 0,indice,isurf1,isurf2;
+  Standard_Integer cbplus=0, n3d=0,IVtx = 0,nb;
   Standard_Boolean sameside,trouve,isfirst;
   Standard_Real pardeb ,parfin,xdir,ydir;
-  Standard_Real tolapp=1.e-4,maxapp,maxapp1,avedev;
+  Standard_Real tolapp=1.e-4,maxapp = RealLast(),maxapp1 = RealLast(),avedev = 0.0;
   Handle (TopOpeBRepDS_CurvePointInterference) Interfp1, Interfp2;
   Handle (TopOpeBRepDS_SurfaceCurveInterference) Interfc;
   Handle(Geom_Curve) Curv3d;
@@ -1454,10 +1454,10 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
       oksea.SetValue(ic, Standard_False);
     }
     else {
-      Standard_Integer jf1;
-      Standard_Integer i1,i2;
-      Standard_Real pa1,pa2;
-      Standard_Boolean ok;
+      Standard_Integer jf1 = 0;
+      Standard_Integer i1 = 0,i2 = 0;
+      Standard_Real pa1 = 0,pa2 = 0;
+      Standard_Boolean ok = false;
       Handle(ChFiDS_Stripe) strip;
       Standard_Real angedg;
       Standard_Integer iface;
@@ -1831,7 +1831,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 #else
   Standard_Integer nbface;
 #endif
-  Standard_Real  error;
+  Standard_Real  error = 0.0;
   TColGeom2d_Array1OfCurve proj2d1(0,size);
   TColGeom2d_Array1OfCurve proj2d2(0,size);
   TColGeom_Array1OfCurve cproj1(0,size);

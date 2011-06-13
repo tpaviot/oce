@@ -246,7 +246,9 @@ static Standard_Real LocalFirstParameter (const Handle(IntPatch_Line)& L)
       return firstp;
     }
   }
+#ifndef _MSC_VER
   return firstp;
+#endif
 }
 
 //=======================================================================
@@ -328,7 +330,9 @@ static Standard_Real LocalLastParameter (const Handle(IntPatch_Line)& L)
       return lastp;
     }
   }
+#ifndef _MSC_VER
   return lastp;
+#endif
 }
 
 

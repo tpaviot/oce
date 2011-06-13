@@ -124,12 +124,12 @@ void NCollection_BaseAllocator::PrintMemUsageStatistics()
     Standard_Integer nbLeft = aInfo.nbAlloc - aInfo.nbFree;
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.roundSize;
     Standard_Size aSizeLeft = nbLeft * aInfo.roundSize;
-    printf("%12d %12d %12d %12d %12d\n", aInfo.roundSize,
+    printf("%12lu %12d %12d %12lu %12lu\n", aInfo.roundSize,
            aInfo.nbAlloc, nbLeft, aSizeAlloc, aSizeLeft);
     aTotAlloc += aSizeAlloc;
     aTotLeft += aSizeLeft;
   }
-  printf("%12s %12s %12s %12d %12d\n", "Total:", "", "",
+  printf("%12s %12s %12s %12lu %12lu\n", "Total:", "", "",
          aTotAlloc, aTotLeft);
   fflush(stdout);
 }

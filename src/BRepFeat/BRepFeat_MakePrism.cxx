@@ -79,12 +79,6 @@ static Standard_Boolean ToFuse(const TopoDS_Face& ,
 			       const TopoDS_Face&);
 
 
-static void SetGluedFaces(const TopoDS_Face& theSkface,
-			  const TopoDS_Shape& theSbase,
-			  const TopoDS_Shape& thePbase,
-			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
-                          LocOpe_Prism&,
-			  TopTools_DataMapOfShapeShape&);
 
 #ifdef DEB
 static void VerifGluedFaces(const TopoDS_Face& theSkface,
@@ -1191,59 +1185,6 @@ Standard_Integer SensOfPrism(const Handle(Geom_Curve) C,
 }
 
 
-//=======================================================================
-//function : SetGluedFaces
-//purpose  : gestion de faces de collage
-//=======================================================================
-
-static void SetGluedFaces(const TopoDS_Face& theSkface,
-			  const TopoDS_Shape& theSbase,
-			  const TopoDS_Shape& thePbase,
-			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
-			  LocOpe_Prism& thePrism,
-			  TopTools_DataMapOfShapeShape& theMap)
-{
-  TopExp_Explorer exp;
-  if (!theSkface.IsNull() && thePbase.ShapeType() == TopAbs_FACE) {
-    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
-      if (exp.Current().IsSame(theSkface)) {
-	theMap.Bind(thePbase,theSkface);
-	break;
-      }
-    }
-  }
-  else {
-    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
-      if (exp.Current().IsSame(theSkface)) {
-	TopExp_Explorer exp2;
-	for (exp2.Init(thePbase,TopAbs_FACE);exp2.More();exp2.Next()) {
-	  theMap.Bind(exp2.Current(),theSkface);
-	}
-	break;
-      }
-    }
-  }
-
-  // Glissements
-  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(theSlmap);
-  if(!theSlmap.IsEmpty()) {
-    for (; itm.More(); itm.Next()) {
-      const TopoDS_Face& fac = TopoDS::Face(itm.Key());
-      const TopTools_ListOfShape& ledg = itm.Value();
-      TopTools_ListIteratorOfListOfShape it;
-      for (it.Initialize(ledg); it.More(); it.Next()) {
-	const TopTools_ListOfShape& gfac = thePrism.Shapes(it.Value());
-	if (gfac.Extent() != 1) {
-#ifdef DEB
-	  Standard_Boolean trc = BRepFeat_GettraceFEAT();
-	  if (trc)  cout << " BRepFeat_MakePrism : Pb SetGluedFace" << endl;
-#endif
-	}
-	theMap.Bind(gfac.First(),fac);
-      }
-    }
-  }
-}
 
 
 //=======================================================================

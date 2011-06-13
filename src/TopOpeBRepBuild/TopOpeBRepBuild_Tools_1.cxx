@@ -242,10 +242,7 @@ void CorrectEdgeTolerance (const TopoDS_Edge& myShape,
 	GC->Range(f,l);
 	if (SameRange && (f != First || l != Last)) {
 	  return ;//BRepCheck_InvalidSameRangeFlag);
-	  if (SameParameter) {
-	    return; //BRepCheck_InvalidSameParameterFlag);
-	  }
-        }
+       }
 	
 	Handle(Geom_Surface) Sb = cr->Surface();
 	Sb = Handle(Geom_Surface)::DownCast (Su->Transformed(L.Transformation()));

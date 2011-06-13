@@ -374,7 +374,7 @@ static Standard_Integer mk2dcurve(Draw_Interpretor& di,
   TopoDS_Edge E = TopoDS::Edge(S);
 
   TopLoc_Location L;
-  Standard_Real f,l;
+  Standard_Real f = 0.0,l = 0.0;
   Handle(Geom2d_Curve) C;
   Handle(Geom_Surface) Surf;
   

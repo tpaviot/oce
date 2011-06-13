@@ -103,7 +103,6 @@ static CALL_DEF_LAYER ACLayer;
 
 static GLboolean layerOpen      = GL_FALSE;
 static int       layerPoints    = 0;
-static Tchar    *layerFont      = NULL;
 static int       layerFontFlag  = IsModified;
 static int       layerFontType  = 0;
 static float     layerRed       = -1.;
@@ -398,7 +397,6 @@ call_togl_begin_layer2d
   
   //abd
   glEnable(GL_TEXTURE_2D);
-  GLboolean stat = glIsEnabled( GL_TEXTURE_2D );
 
   glNewList (ptrLayer->listIndex, GL_COMPILE);
   layerOpen = GL_TRUE;
@@ -604,9 +602,6 @@ call_togl_text2d ( char *s,
                   float height )
 {
   call_def_ptrLayer ptrLayer;
-#ifndef WNT
-  Tint dispWidth, dispHeight;
-#endif
   GLdouble objx1, objy1, objz1;
 
   ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
@@ -890,9 +885,6 @@ call_togl_textsize2d
  )
 {
   call_def_ptrLayer ptrLayer;
-#ifndef WNT
-  Tint dispWidth, dispHeight;
-#endif
 
 
   ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;

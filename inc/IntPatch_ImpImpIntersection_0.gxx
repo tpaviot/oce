@@ -1216,7 +1216,7 @@ Standard_Boolean  SingleLine (const gp_Pnt& Psurf,
 
   IntPatch_IType typarc = lin->ArcType();
 
-  Standard_Real parproj;
+  Standard_Real parproj = 0.0;
   gp_Vec tgint;
   gp_Pnt ptproj;
   Standard_Boolean retvalue;

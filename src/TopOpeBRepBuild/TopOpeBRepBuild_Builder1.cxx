@@ -1768,7 +1768,10 @@ Standard_Integer TopOpeBRepBuild_Builder1::TwoPiecesON (const TopTools_SequenceO
     // Unknowm case for existing adjacents
     return 0;
   }
+ 
+#ifndef _MSC_VER
   return -1;
+#endif
 }
 
 //=======================================================================

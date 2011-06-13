@@ -794,7 +794,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = 0.0;
 #ifndef DEB
   Standard_Real  par1 =0.,par2 =0.;
   Standard_Integer indpt = 0,Icurv1 = 0,Icurv2 = 0;
@@ -3789,7 +3789,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
   TopoDS_Edge Arcpiv,Arcprol,Arcspine,Arcprolbis;
   if(isfirst) Arcspine = spine->Edges(1);
   else Arcspine = spine->Edges(spine->NbEdges());
-  TopAbs_Orientation OArcprolbis;
+  TopAbs_Orientation OArcprolbis = TopAbs_FORWARD;
 #ifndef DEB
   TopAbs_Orientation OArcprolv = TopAbs_FORWARD, OArcprolop = TopAbs_FORWARD;
 #else
@@ -3988,7 +3988,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached;
+  Standard_Real tolreached = 0.0;
 #ifndef DEB
   Standard_Real par1 = 0.,par2 = 0.;
   Standard_Integer indpt =0,Icurv1 =0,Icurv2 =0;
@@ -4217,7 +4217,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
     // Tout d abord on coupe les ponts avec l arete de la spine.
     Standard_Integer IArcspine = DStr.AddShape(Arcspine);
     Standard_Integer IVtx = DStr.AddShape(Vtx);
-    TopAbs_Orientation OVtx2;
+    TopAbs_Orientation OVtx2 = TopAbs_FORWARD;
 #ifndef DEB
     TopAbs_Orientation OVtx = TopAbs_FORWARD;
 #else

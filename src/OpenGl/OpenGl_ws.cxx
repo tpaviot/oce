@@ -152,7 +152,6 @@ TsmSetWSAttri( Tint wsid, TWSAttri  attri, cmn_key_data data )
     return TFailure;
 
   if ( !ws_map.IsBound( wsid ) ) {
-    ws_rec rec = new WS_REC();
     ws_map.Bind( wsid, new WS_REC() );
   }
   ws_rec wsr = ws_map.ChangeFind( wsid );

@@ -183,7 +183,7 @@ static Standard_Real ComputeAbscissa(const BRepAdaptor_Curve& C,
   case GeomAbs_Circle:
     return C.Circle().Radius()*U;
   default:
-    return 0;
+    break;
   }    
   Standard_NotImplemented::Raise("calcul abscisse non traite ");
   return 0.;
@@ -436,7 +436,7 @@ static Standard_Real ResetProl(const TopOpeBRepDS_DataStructure& DStr,
   const Handle(Geom_Surface)& surf = DStr.Surface(CD->Surf()).Surface();
   Standard_Real par = 0., x, y;
   if(!isfirst) par = edglen;
-  Standard_Real sppar;
+  Standard_Real sppar = 0.0;
   for (Standard_Integer i = 1; i <= 2; i++) { 
     CD->ChangeInterference(i).SetParameter(par,isfirst);
     Handle(Geom2d_Curve) pc = CD->Interference(i).PCurveOnSurf();

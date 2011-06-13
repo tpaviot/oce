@@ -388,7 +388,7 @@ void IntPatch_ImpPrmIntersection::Perform (const Handle(Adaptor3d_HSurface)& Sur
 					   const Standard_Real Pas)
 {
   Standard_Boolean reversed, procf, procl, dofirst, dolast;
-  Standard_Integer indfirst, indlast, ind2, i,j,k, NbSegm;
+  Standard_Integer indfirst = 0, indlast = 0, ind2, i,j,k, NbSegm;
   Standard_Integer NbPointIns, NbPointRst, Nblines, Nbpts, NbPointDep;
   Standard_Real U1,V1,U2,V2,paramf,paraml,currentparam;
   
@@ -1381,24 +1381,6 @@ static Standard_Real AdjustUFirst(Standard_Real U1,Standard_Real U2)
   return u;
 }
 
-// adjust U parameters on Quadric
-static Standard_Real AdjustUNext(Standard_Real Un,Standard_Real Up)
-{
-  Standard_Real u = Un;
-  if( Un < 0. )
-    while(u < 0.)
-      u += (2.*PI);
-  else if( Un > (2.*PI) )
-    while( u > (2.*PI) )
-      u -= (2.*PI);
-  else if(Un == 0. || fabs(Un) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*PI-Up)) ? 0. : (2.*PI);
-  else if(Un == (2.*PI) || fabs(Un-(2.*PI)) <= 1.e-9)
-    u = (fabs(Up) < fabs(2.*PI-Up)) ? 0. : (2.*PI);
-  else //( Un > 0. && Un < (2.*PI) )
-    return u;
-  return u;
-}
 
 // collect vertices, reject equals
 static Handle(IntSurf_LineOn2S) GetVertices(const Handle(IntPatch_WLine)& WLine,
@@ -2337,7 +2319,7 @@ void DecomposeResult(Handle(IntPatch_Line)&   Line,
   Standard_Real BSEAM = 1.5*PI; // delta U crossing seam
   Standard_Real BAPEX = PI/16.;  // delta U crossing apex
   
-  Standard_Integer i = 0, k = 0;
+  Standard_Integer k = 0;
   Standard_Real U1 = 0., U2 = 0., V1 = 0., V2 = 0., AnU1 = 0., AnV1 = 0., DU1 = 0., DV1 = 0.;
   Standard_Integer Findex = 1, Lindex = NbPnts, Bindex = 0;
 
