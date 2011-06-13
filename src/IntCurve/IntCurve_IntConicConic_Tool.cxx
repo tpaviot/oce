@@ -174,7 +174,7 @@ Interval::Interval( const Standard_Real a,const Standard_Boolean hf
 Standard_Real Interval::Length()   { return((IsNull)? -1.0 :Abs(Bsup-Binf)); }
 
 Interval Interval::IntersectionWithBounded(const Interval& Inter) {
-  if(IsNull || Inter.IsNull) { Interval PourSGI(); return(PourSGI); }
+  if(IsNull || Inter.IsNull) { Interval PourSGI; return(PourSGI); }
   if(!(HasFirstBound || HasLastBound)) 
     return(Interval(Inter.Binf,Inter.Bsup));
   Standard_Real a,b;
