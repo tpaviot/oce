@@ -138,7 +138,8 @@ PeriodicInterval PeriodicInterval::SecondIntersection(PeriodicInterval& PInter)
   return(PeriodicInterval(a,b));
 }
 //----------------------------------------------------------------------
-Interval::Interval() { IsNull=Standard_True; }
+Interval::Interval() : Binf(0.0), Bsup(0.0),HasFirstBound(Standard_False), HasLastBound(Standard_False)
+{ IsNull=Standard_True; }
 
 Interval::Interval(const Standard_Real a,const Standard_Real b) { 
   HasFirstBound=HasLastBound=Standard_True;
@@ -178,13 +179,13 @@ Interval Interval::IntersectionWithBounded(const Interval& Inter) {
     return(Interval(Inter.Binf,Inter.Bsup));
   Standard_Real a,b;
   if(HasFirstBound) {
-    if(Inter.Bsup < Binf) { Interval PourSGI(0,Standard_False,0,Standard_False); return(PourSGI); }
+    if(Inter.Bsup < Binf) { Interval PourSGI; return(PourSGI); }
     a=(Inter.Binf < Binf)? Binf : Inter.Binf;
   }
   else { a=Inter.Binf; }
   
   if(HasLastBound) {
-    if(Inter.Binf > Bsup) { Interval PourSGI(0,Standard_False,0,Standard_False); return(PourSGI); }
+    if(Inter.Binf > Bsup) { Interval PourSGI; return(PourSGI); }
     b=(Inter.Bsup > Bsup)? Bsup : Inter.Bsup;
   }
   else { b=Inter.Bsup; }  
