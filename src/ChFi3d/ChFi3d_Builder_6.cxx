@@ -447,7 +447,7 @@ Standard_Boolean ChFi3d_Builder::CompleteData
   gp_Pnt p;
   gp_Vec du,dv;
   Handle(Geom2d_Curve) c2dtrim;
-  Standard_Real tolreached;
+  Standard_Real tolreached = 0.0;
   if(!PC1.IsNull()){
     Handle(GeomAdaptor_HCurve) hcS1 = new GeomAdaptor_HCurve(Crv3d1);
     c2dtrim = new Geom2d_TrimmedCurve(PC1,UFirst,ULast);
@@ -2085,7 +2085,7 @@ Standard_Boolean ChFi3d_Builder::SimulData
   
   Standard_Real MS = MaxStep;
   Standard_Real TolGuide=tolguide, TolEsp = tolesp;
-  Standard_Integer Nbpnt;
+  Standard_Integer Nbpnt = -1;
   Standard_Real SpFirst = HGuide->FirstParameter();
   Standard_Real SpLast =  HGuide->LastParameter();
   Standard_Boolean reverse = (!Forward || Inside);

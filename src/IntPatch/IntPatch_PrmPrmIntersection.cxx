@@ -1494,7 +1494,7 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
     for(j=0;j<SV1;j++) { 
       IP1[i][j]=-1;
       const gp_Pnt& P=P1[i][j];
-      P1DS2[i][j] = CodeReject(x20,y20,z20,x21,y21,z21,P.X(),P.Y(),P.Z());
+      P1DS2[i][j] = (char) CodeReject(x20,y20,z20,x21,y21,z21,P.X(),P.Y(),P.Z());
       int ix = (int)((P.X()-x0  + dx2 )/dx);
       if(DansGrille(ix)) { 
 	int iy = (int)((P.Y()-y0 + dy2)/dy);
@@ -1512,7 +1512,7 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
     for(j=0;j<SV2;j++) { 
       IP2[i][j]=-1;
       const gp_Pnt& P=P2[i][j];
-      P2DS1[i][j] = CodeReject(x10,y10,z10,x11,y11,z11,P.X(),P.Y(),P.Z());
+      P2DS1[i][j] = (char) CodeReject(x10,y10,z10,x11,y11,z11,P.X(),P.Y(),P.Z());
       int ix = (int)((P.X()-x0 + dx2)/dx);
       if(DansGrille(ix)) { 
 	int iy = (int)((P.Y()-y0 + dy2)/dy);
@@ -1655,6 +1655,8 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
 	//-- dans chacun des tableaux 
 	Standard_Real Dist3[3],u3[3],v3[3];
 	Dist3[0]=Dist3[1]=Dist3[2]=RealLast();
+	u3[0]=u3[1]=u3[2]=0;
+	v3[0]=v3[1]=v3[2]=0;
 	for(U=resu0,i=0; i<SU1; i++,U+=du1) { 
 	  for(V=resv0,j=0; j<SV1; V+=dv1,j++) {       
 	    //-- On place les 3 meilleures valeurs dans Dist1,Dist2,Dist3

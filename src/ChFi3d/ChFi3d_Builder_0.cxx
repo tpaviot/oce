@@ -601,7 +601,7 @@ Standard_Boolean ChFi3d_KParticular
        */
     return Standard_False;
   default:
-    return Standard_False;
+    break;
   }
   return Standard_False;
 }
@@ -2271,7 +2271,7 @@ void  ChFi3d_FilDS(const Standard_Integer       SolidIndex,
   Standard_Integer Iarc1 = 0,Iarc2 = 0;
   TopAbs_Orientation trafil1 = TopAbs_FORWARD, trafil2 = TopAbs_FORWARD;
   Standard_Integer IcFil1,IcFil2,Isurf,Ishape1,Ishape2;
-  Standard_Real Pardeb,Parfin;
+  Standard_Real Pardeb = 0.0,Parfin = 0.0;
   TopAbs_Orientation ET1;
   Handle(TopOpeBRepDS_CurvePointInterference) Interfp1,Interfp2;
   Handle(TopOpeBRepDS_SurfaceCurveInterference) Interfc1,Interfc2;
@@ -3280,7 +3280,7 @@ Standard_Boolean ChFi3d_ComputeCurves(Handle(Adaptor3d_HSurface)&   S1,
   //le sens de la corde deb/fin.
   gp_Vec Vint, Vref(pdeb,pfin);
   gp_Pnt Pbid;
-  Standard_Real Udeb,Ufin;
+  Standard_Real Udeb = 0.0,Ufin = 0.0;
   Standard_Real tolr1,tolr2;
   tolr1 = tolr2 = tolreached = tol3d;
   if((S1->GetType() == GeomAbs_Cylinder && S2->GetType() == GeomAbs_Plane)||
@@ -4151,7 +4151,7 @@ Standard_EXPORT void ChFi3d_PerformElSpine(Handle(ChFiDS_HElSpine)& HES,
   Standard_Boolean periodic = Spine->IsPeriodic();
   Standard_Real nwf = WF, nwl = WL,period;
   Standard_Integer nbed = Spine->NbEdges();
-  Standard_Real pared,tolpared;
+  Standard_Real pared = 0.0,tolpared = 0.0;
   Handle(Geom_BSplineCurve) BSpline;
   Handle(Geom_BezierCurve) Bezier;
   

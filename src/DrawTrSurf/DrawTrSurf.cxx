@@ -1531,7 +1531,7 @@ static void pntsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.precision(15);
 #else
   long form = OS.setf(ios::scientific);
-  int  prec = OS.precision(15);
+  std::streamsize prec = OS.precision(15);
 #endif
   gp_Pnt P = N->Point();
   if (N->Is3D()) {
@@ -1554,7 +1554,7 @@ static Handle(Draw_Drawable3D) pntrestore (istream& is)
 {
   Standard_Integer is3d;
   is >> is3d;
-  Standard_Real x,y,z;
+  Standard_Real x,y,z = 0.0;
   if (is3d)
     is >> x >> y >> z;
   else
@@ -1593,7 +1593,7 @@ static void triasave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.precision(15);
 #else
   long form = OS.setf(ios::scientific);
-  int  prec = OS.precision(15);
+  std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Triangulation(),OS);
 #if defined(HAVE_IOS) && !defined(__sgi) && !defined(IRIX)
@@ -1634,7 +1634,7 @@ static void poly3dsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.precision(15);
 #else
   long form = OS.setf(ios::scientific);
-  int  prec = OS.precision(15);
+  std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Polygon3D(),OS);
 #if defined(HAVE_IOS) && !defined(__sgi) && !defined(IRIX)
@@ -1674,7 +1674,7 @@ static void poly2dsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.precision(15);
 #else
   long form = OS.setf(ios::scientific);
-  int  prec = OS.precision(15);
+  std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Polygon2D(),OS);
 #if defined(HAVE_IOS) && !defined(__sgi) && !defined(IRIX)

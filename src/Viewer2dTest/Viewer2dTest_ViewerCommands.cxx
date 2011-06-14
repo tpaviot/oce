@@ -100,11 +100,10 @@ static int X_ButtonPress = 0, Y_ButtonPress = 0; // Last ButtonPress position
 #ifdef WNT
 static LRESULT WINAPI Viewer2dWindowProc (HWND hwnd, UINT uMsg,
                                           WPARAM wParam, LPARAM lParam);
-#endif
 
 //==============================================================================
 //function : WClass
-//purpose  :
+//purpose :
 //==============================================================================
 static Handle(MMgt_TShared)& WClass()
 {
@@ -118,6 +117,9 @@ static Handle(MMgt_TShared)& WClass()
 #endif
   return theWClass;
 }
+
+#endif
+
 
 //==============================================================================
 //function : ViewerInit
@@ -634,6 +636,7 @@ static void ProcessMotion2d()
   EM->MoveTo(X_Motion, Y_Motion, V);
 }
 
+#ifndef WNT
 //==============================================================================
 //function : ProcessGridMotion2d
 //purpose  : pre-hilights grid point near mouse position
@@ -654,6 +657,7 @@ static void ProcessGridMotion2d()
     LastIsGridActiveStatus = Standard_False;
   }
 }
+#endif
 
 //==============================================================================
 //function : GetMousePosition

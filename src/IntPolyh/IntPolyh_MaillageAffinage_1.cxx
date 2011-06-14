@@ -82,10 +82,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt(const Standard_Integer SurfID,
 
   //cout << "Nb : " << NbSamplesU << " " << NbSamplesV << endl;
 
-  Standard_Real u0 = Upars(1);
-  Standard_Real v0 = Vpars(1);
-  Standard_Real u1 = Upars(NbSamplesU);
-  Standard_Real v1 = Vpars(NbSamplesV);
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(MaSurface, Upars, Vpars);
   Tol=polyhedron.DeflectionOverEstimation();
 
@@ -135,10 +131,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt(const Standard_Integer SurfID,
   //cout << "FillArrayOfPnt 2" << endl;
   //cout << "??????????????" << endl;
   Standard_Real resol = gp::Resolution();
-  Standard_Real u0 = Upars(1);
-  Standard_Real v0 = Vpars(1);
-  Standard_Real u1 = Upars(NbSamplesU);
-  Standard_Real v1 = Vpars(NbSamplesV);
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(MaSurface, Upars, Vpars);
   Tol=polyhedron.DeflectionOverEstimation();
 

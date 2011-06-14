@@ -31,7 +31,7 @@ Aspect_Driver::Aspect_Driver () {
 
   OSD_Environment CSF_MDTVFontDirectory ;
 
-  char *fontdir , *casroot ;
+  const char *fontdir , *casroot ;
   fontdir =  getenv("CSF_MDTVFontDirectory" );
   if ( !fontdir) {
     casroot  = getenv("CASROOT");

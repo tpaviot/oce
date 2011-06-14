@@ -182,7 +182,7 @@ static Standard_Integer XSHAPE_edgeregul
   (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
   //cky/rln 03.02.99 To eliminate dependence of SWDRAW on TKXSBase (to use only ShapeHealing)
-  Standard_Real tolang; // = Interface_Static::RVal("XSTEP.encoderegularity.angle");
+  Standard_Real tolang = -1; // = Interface_Static::RVal("XSTEP.encoderegularity.angle");
 //  if (argc < 3) di<<"Current value for regularity angle : "<<tolang<<"\n";
   if (argc < 3) {
     di<<"Donner nom de shape.\n + option : angle en radian, sinon la valeur courante est prise"<<"\n";

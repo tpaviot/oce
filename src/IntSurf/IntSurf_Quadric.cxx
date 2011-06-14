@@ -247,7 +247,9 @@ gp_Pnt IntSurf_Quadric::Value(const Standard_Real U,
     break;
   }
 // pop : pour NT
+#ifndef _MSC_VER
   return gp_Pnt(0,0,0);
+#endif
 }
 // ============================================================
 void IntSurf_Quadric::D1(const Standard_Real U,
@@ -298,7 +300,9 @@ gp_Vec IntSurf_Quadric::DN(const Standard_Real U,
     break;
   }
 // pop : pour NT
+#ifndef _MSC_VER
   return gp_Vec(0,0,0);
+#endif
 }
 // ============================================================
 gp_Vec IntSurf_Quadric::Normale(const Standard_Real U,
@@ -333,7 +337,9 @@ gp_Vec IntSurf_Quadric::Normale(const Standard_Real U,
     break;
   }
 // pop : pour NT
+#ifndef _MSC_VER
   return gp_Vec(0,0,0);
+#endif
 }
 // ============================================================
 gp_Vec IntSurf_Quadric::Normale (const gp_Pnt& P) const
@@ -379,7 +385,9 @@ gp_Vec IntSurf_Quadric::Normale (const gp_Pnt& P) const
     }     break;
   }
 // pop : pour NT
+#ifndef _MSC_VER
   return gp_Vec(0,0,0);
+#endif
 }
 // ============================================================
 void IntSurf_Quadric::Parameters (const gp_Pnt& P,

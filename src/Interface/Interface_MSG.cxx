@@ -42,7 +42,7 @@ Interface_MSG::Interface_MSG
 {
   char mess[300];
   sprintf (mess, Interface_MSG::Translated(thekey), i1);
-  theval = new char (strlen (mess)+1 );
+  theval = new char [strlen (mess)+1 ];
   strcpy (theval,mess);
 }
 
@@ -53,7 +53,7 @@ Interface_MSG::Interface_MSG
 {
   char mess[300];
   sprintf (mess, Interface_MSG::Translated(thekey), i1,i2);
-  theval = new char (strlen (mess)+1 );
+  theval = new char [strlen (mess)+1 ];
   strcpy (theval,mess);
 }
 
@@ -65,7 +65,7 @@ Interface_MSG::Interface_MSG
   char mess[300];
   sprintf (mess, Interface_MSG::Translated(thekey),
 	   (intervals < 0 ? r1 : Interface_MSG::Intervalled(r1,intervals)) );
-  theval = new char (strlen (mess)+1 );
+  theval = new char [strlen (mess)+1 ];
   strcpy (theval,mess);
 }
 
@@ -76,7 +76,7 @@ Interface_MSG::Interface_MSG
 {
   char mess[300];
   sprintf (mess, Interface_MSG::Translated(thekey), str);
-  theval = new char (strlen (mess)+1 );
+  theval = new char [strlen (mess)+1];
   strcpy (theval,mess);
 }
 
@@ -88,7 +88,7 @@ Interface_MSG::Interface_MSG
 {
   char mess[300];
   sprintf (mess, Interface_MSG::Translated(thekey), val, str);
-  theval = new char (strlen (mess)+1 );
+  theval = new char [strlen (mess)+1 ];
   strcpy (theval,mess);
 }
 

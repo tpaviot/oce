@@ -86,7 +86,7 @@ Standard_Integer Interface_FloatWriter::Convert (const Standard_Real val,
 {
 //    Valeur flottante, expurgee de "0000" qui trainent et de "E+00"
 //  char lval[20];
-  char lxp[6], *pText; 
+  char lxp[6]="", *pText; 
   int i0,j0=0;
 
   lxp[0] = lxp[4] = '\0';    

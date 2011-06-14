@@ -37,7 +37,6 @@ void XCAFSchema_PXCAFDoc_ShapeTool::Add(const Handle(Standard_Persistent)& p, co
 void XCAFSchema_PXCAFDoc_ShapeTool::SWrite(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PXCAFDoc_ShapeTool) &pp = (Handle(PXCAFDoc_ShapeTool)&)p;
     theSchema->WritePersistentObjectHeader(p,f);
     
     f.BeginWritePersistentObjectData();
@@ -55,8 +54,7 @@ void XCAFSchema_PXCAFDoc_ShapeTool::Write(const Handle(Standard_Persistent)& p, 
 void XCAFSchema_PXCAFDoc_ShapeTool::SRead(const Handle(Standard_Persistent)& p, Storage_BaseDriver& f, const Handle(Storage_Schema)& theSchema)
 { 
   if (!p.IsNull()) {
-    Handle(PXCAFDoc_ShapeTool) &pp = (Handle(PXCAFDoc_ShapeTool)&)p;
-
+ 
     theSchema->ReadPersistentObjectHeader(f);
     f.BeginReadPersistentObjectData();
 

@@ -48,11 +48,11 @@ Standard_IMPORT void PrintKRO_PREPA();
 Standard_Integer TestTopOpe_BOOP::Prepare(const char* ns1,const char* ns2)
 {
   Standard_Integer err = 0;
-  if ((err = LoadShapes(ns1,ns2))) return err; // 0
-  if ((err = LoadnewDS())) return err; // 100
-  if ((err = DSF_Insert())) return err; // 100<,<200
-  if ((err = LoadnewHB())) return err; // 200
-  if ((err = Builder_Perform())) return err; // 200<,<300
+  if ((err = LoadShapes(ns1,ns2)) != 0) return err; // 0
+  if ((err = LoadnewDS()) != 0) return err; // 100
+  if ((err = DSF_Insert()) != 0) return err; // 100<,<200
+  if ((err = LoadnewHB()) != 0) return err; // 200
+  if ((err = Builder_Perform()) != 0) return err; // 200<,<300
   return 0;
 }
 

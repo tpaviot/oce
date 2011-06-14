@@ -382,7 +382,6 @@ Standard_ShortReal OpenGl_FontMgr::computeWidth( const Standard_Integer id, cons
     return 0.f;
 
   OGLFont_Cache cache = _FontCache.Find( id );
-  GLenum err = glGetError();
 
   Standard_ShortReal w = cache.Font->Advance( str );
 

@@ -179,7 +179,7 @@ OpenGl_TextRender* OpenGl_TextRender::instance() {
 
 /*----------------------------------------------------------------------*/
 OpenGl_TextRender::FontMapNode OpenGl_TextRender::searchFontInMap( Handle(TCollection_HAsciiString)& fontName ) {
-  for ( int i = 0; i < NUM_FONT_ENTRIES; ++i )
+  for ( int i = 0; i < (int)NUM_FONT_ENTRIES; ++i )
   {
     TCollection_AsciiString compare_String(fontMap[i].enumName) ;
     if(compare_String.IsEqual( fontName->ToCString() ))

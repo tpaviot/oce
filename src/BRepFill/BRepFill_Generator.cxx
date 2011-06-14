@@ -92,7 +92,7 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   Standard_Integer IType = 0;
 
   // caracteristiques de la premiere edge
-  Standard_Real first1, last1, first2, last2, ff, ll;
+  Standard_Real first1 = 0.0 , last1 = 0.0 , first2 = 0.0 , last2 = 0.0 , ff, ll;
   TopLoc_Location loc;
   TopoDS_Vertex V1, V2;
   Handle(Geom_Curve) curv1, curv;
@@ -557,7 +557,7 @@ void BRepFill_Generator::Perform()
 
   BRepTools_WireExplorer ex1,ex2;
 
-  Standard_Boolean wPoint1, wPoint2, uClosed, DegenFirst, DegenLast;
+  Standard_Boolean wPoint1, wPoint2, uClosed = 0, DegenFirst = 0, DegenLast = 0;
   
   for ( Standard_Integer i = 1; i <= Nb-1; i++) {
 

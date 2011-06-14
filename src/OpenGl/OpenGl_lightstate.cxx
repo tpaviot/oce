@@ -90,7 +90,6 @@ LightSrcStateAdd( TSM_ELEM_DATA d, Tint n, cmn_key *k )
 static  TStatus
 LightSrcStateDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
 {
-  tel_tint_data d = (tel_tint_data)data.pdata;
 
 #ifdef TRACE_LIGHT
   printf("OpenGl_lightstate::LightSrcStateDisplay:UpdateLight(%d)\n", TglActiveWs);

@@ -320,7 +320,7 @@ static Standard_Boolean FUN_GeomTrans(const Handle(Geom_Surface)& S1,
   gp_Pnt P1; gp_Vec D1_C1; C1->D1(T1,P1,D1_C1);
   
   // D1_C2 : D1(C2(P1))
-  Standard_Real T2; 
+  Standard_Real T2 = 0; 
   Standard_Boolean projok = ::FUN_ProjectPoint(P1,C2,FC2,LC2,T2);
   if ( !projok ) {
     return Standard_False;
@@ -369,7 +369,7 @@ TopOpeBRepDS_Transition TopOpeBRep_FFTransitionTool::ProcessEdgeONTransition
  TopAbs_Orientation oriE = E.Orientation();
  
  const Handle(Geom_Surface)& S = BRep_Tool::Surface(F);
- Standard_Real U,V;
+ Standard_Real U = 0,V = 0;
  if      (ShapeIndex == 1) VP.ParametersOnS1(U,V);
  else if (ShapeIndex == 2) VP.ParametersOnS2(U,V);
  

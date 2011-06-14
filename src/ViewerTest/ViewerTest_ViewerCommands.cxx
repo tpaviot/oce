@@ -733,7 +733,7 @@ static LRESULT WINAPI AdvViewerWindowProc( HWND hwnd,
       if( !DragFirst )
       {
         HDC hdc = GetDC( hwnd );
-        HGDIOBJ anObj = SelectObject( hdc, GetStockObject( WHITE_PEN ) );
+        SelectObject( hdc, GetStockObject( WHITE_PEN ) );
         SelectObject( hdc, GetStockObject( HOLLOW_BRUSH ) );
         SetROP2( hdc, R2_NOT );
         Rectangle( hdc, xx1, yy1, xx2, yy2 );
@@ -1567,7 +1567,7 @@ static int VExport(Draw_Interpretor& di, Standard_Integer argc, const char** arg
 
   TCollection_AsciiString aFormat( argv[2] );
   aFormat.UpperCase();
-  Graphic3d_ExportFormat exFormat;
+  Graphic3d_ExportFormat exFormat = Graphic3d_EF_PostScript;
   if ( aFormat == "PS" )
     exFormat = Graphic3d_EF_PostScript;
   if ( aFormat == "EPS" )
@@ -1638,7 +1638,7 @@ static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char 
   {
     aCS->SetPosition( X , Y );
     aCS->SetHeight( 0.95) ;
-    aCS->SetTextHeight( textHeight );
+    aCS->SetTextHeight( (Standard_Integer) textHeight );
     aCS->SetRange( minRange , maxRange );
     aCS->SetNumberOfIntervals( numIntervals );
     aCS->SetLabelPosition( position );

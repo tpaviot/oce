@@ -110,7 +110,7 @@ void TRIM_INFINIT_EDGE(const TopoDS_Edge& S1,
   Handle(Geom_Curve) pCurv1 = BRep_Tool::Curve(S1, aFirst1, aLast1);
   Handle(Geom_Curve) pCurv2 = BRep_Tool::Curve(S2, aFirst2, aLast2);
 
-  Standard_Real Umin, Umax;
+  Standard_Real Umin = 0, Umax = 0;
   Standard_Boolean bUmin, bUmax;
   bUmin = bUmax = Standard_False;
 
@@ -270,7 +270,7 @@ void TRIM_INFINIT_FACE(const TopoDS_Shape& S1,
       bIsInfinit = Standard_False;
       return;
     }  
-  Standard_Real Umin, Umax, Vmin, Vmax;
+  Standard_Real Umin = 0, Umax = 0, Vmin = 0, Vmax = 0;
 
   Standard_Boolean bIsTrim = Standard_False;
   
@@ -1146,7 +1146,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Edge& S1, const TopoDS_Face& S
 	      }
 	    BRepExtrema_SeqOfSolution seqSol1;
 	    BRepExtrema_SeqOfSolution seqSol2;
-	    Standard_Boolean bIsMini = Standard_False;
 	    if (SeqSolution1.Length() > 0 && SeqSolution2.Length() > 0)
 	      MIN_SOLUTION(SeqSolution1, SeqSolution2, myDstRef, myEps, seqSol1, seqSol2);
 	    
@@ -1167,7 +1166,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Vertex&
 				      const Standard_Real DstRef)
 
 {
-  const Standard_Real epsP=Precision::PConfusion();
   SeqSolShape1.Clear();
   SeqSolShape2.Clear();
   myModif=Standard_False;
@@ -1383,7 +1381,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Edge& S
 	   }
 	 BRepExtrema_SeqOfSolution seqSol1;
 	 BRepExtrema_SeqOfSolution seqSol2;
-	 Standard_Boolean bIsMini = Standard_False;
 	 if (SeqSolution1.Length() > 0 && SeqSolution2.Length() > 0)
 	   MIN_SOLUTION(SeqSolution1, SeqSolution2, myDstRef, myEps, seqSol1, seqSol2);
 	 

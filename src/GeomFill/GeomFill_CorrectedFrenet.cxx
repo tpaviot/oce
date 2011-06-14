@@ -427,7 +427,7 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
   aT = gp_Vec(0, 0, 0);
   aN = gp_Vec(0, 0, 0);   
 
-  Standard_Real angleAT, currParam, currStep = Step;
+  Standard_Real angleAT = 0.0 , currParam, currStep = Step;
 
   Handle( Geom_Plane ) aPlane;
   Standard_Boolean isPlanar = FindPlane( myCurve, aPlane );
@@ -565,9 +565,6 @@ Standard_Real GeomFill_CorrectedFrenet::CalcAngleAT(const gp_Vec& Tangent, const
 // Function : ... (OCC78)
 // Purpose : This family of functions produce conversion of angle utility
 //===============================================================
-static Standard_Real corrPI_2PI(Standard_Real Ang){
-  return Ang = (Ang >= 0.0? Ang: 2*PI+Ang);
-};
 static Standard_Real corr2PI_PI(Standard_Real Ang){
   return Ang = (Ang < PI? Ang: Ang-2*PI);
 };

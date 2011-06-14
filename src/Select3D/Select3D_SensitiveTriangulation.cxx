@@ -636,7 +636,6 @@ Standard_Boolean Select3D_SensitiveTriangulation::DetectedTriangle2d(
   if(myDetectedTr==-1) 
     return Standard_False; // non implemente actuellement...
   const Poly_Array1OfTriangle& triangles = myTriangul->Triangles();
-  const TColgp_Array1OfPnt& Nodes = myTriangul->Nodes();  
   Standard_Integer n1,n2,n3;
   triangles( myDetectedTr ).Get(n1,n2,n3);
 

@@ -17,11 +17,6 @@
 #include <Graphic2d_DisplayList.hxx>
 #include <AIS2D_HSequenceOfIO.hxx>
 
-static Standard_Integer GetHiMod(const Handle(AIS2D_InteractiveObject)& anIO)
-{
-  return anIO->HasHighlightMode() ? anIO->HighlightMode() 
-                                  : anIO->DefaultHighlightMode();
-}
 
 
 AIS2D_LocalContext::AIS2D_LocalContext()

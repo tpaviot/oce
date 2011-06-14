@@ -22,7 +22,7 @@ int compll(const void* v1, const void* v2) {
   Standard_Real p2 = i2->Parameter();
   if      (p1 < p2) return (-1);
   else if (p1 > p2) return (1);
-  else return (0);
+  
   return (0);
 }
      

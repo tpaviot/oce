@@ -1107,12 +1107,12 @@ static Standard_Integer DDataStd_GetUTFtoFile (Draw_Interpretor& di,
       cout << "Error: problem with the file stream, rdstate = " <<anOS.rdstate() <<endl;
 #endif
     }
-    char prefix[4] = {0xEF,0xBB,0xBF, 0x00};
-    anOS.write( (char*)&prefix[0], 3); 
+    unsigned char prefix[4] = {0xEF,0xBB,0xBF, 0x00};
+    anOS.write( reinterpret_cast<const char*>(&prefix[0]), 3); 
     Standard_Integer  n = aES.LengthOfCString();
     Standard_PCharacter aCstr = (Standard_PCharacter) Standard::Allocate(ROUNDMEM(n+1));
     n = aES.ToUTF8CString(aCstr);
-    anOS.write( (char*)&aCstr[0], n); 
+    anOS.write( reinterpret_cast<const char*>(&aCstr[0]), n); 
     anOS.close();
     return 0;
   }
@@ -1145,7 +1145,7 @@ static Standard_Integer DDataStd_SetByteArray (Draw_Interpretor& di,
 	cout << "Bad value = " << ival<< endl;
 	return 1;
       }
-      A->SetValue(i,  (unsigned)ival); 
+      A->SetValue(i,  (Standard_Byte)(unsigned)ival); 
       j++;
     }
     return 0; 
@@ -1217,7 +1217,7 @@ static Standard_Integer DDataStd_ChangeByteArray (Draw_Interpretor& di,
       }
     Standard_Integer low = A->Lower(), up = A->Upper();
     if(low <= indx && indx <= up)
-      A->SetValue(indx, (unsigned)ival);
+      A->SetValue(indx, (Standard_Byte)(unsigned)ival);
     else {
       Handle(TColStd_HArray1OfByte) Arr = A->InternalArray();
       Handle(TColStd_HArray1OfByte) arr;
@@ -1229,7 +1229,7 @@ static Standard_Integer DDataStd_ChangeByteArray (Draw_Interpretor& di,
 	  arr->SetValue(i, Arr->Value(i));
 	for(i=Arr->Upper()+1; i<= up; i++) {
 	  if(i == up)
-	    arr->SetValue(i, (unsigned)ival);
+	    arr->SetValue(i, (Standard_Byte)(unsigned)ival);
 	  else
 	    arr->SetValue(i, 0);
 	}
@@ -1238,7 +1238,7 @@ static Standard_Integer DDataStd_ChangeByteArray (Draw_Interpretor& di,
 	arr = new TColStd_HArray1OfByte(low, up);
 	for(i=low; i< up; i++)
 	  arr->SetValue(i, Arr->Value(i));
-	arr->SetValue(up, (unsigned)ival);
+	arr->SetValue(up, (Standard_Byte)(unsigned)ival);
       }
       A->ChangeArray(arr);
     }

@@ -547,8 +547,8 @@ void BRepBlend_RstRstLineBuilder::InternalPerform(Blend_RstRstFunction&   Func,
   Blend_Status State;
   Standard_Real trst11, trst12, trst21, trst22;
 #endif
-  TopAbs_State situonc1, situonc2;
-  Blend_DecrochStatus decroch;
+  TopAbs_State situonc1 = TopAbs_UNKNOWN, situonc2 = TopAbs_UNKNOWN;
+  Blend_DecrochStatus decroch = Blend_NoDecroch;
   Standard_Boolean Arrive, recadp1, recadp2, recadrst1, recadrst2, echecrecad;
   Standard_Real wp1, wp2, wrst1, wrst2;
   math_Vector infbound(1, 2), supbound(1, 2);

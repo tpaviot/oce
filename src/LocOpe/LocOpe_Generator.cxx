@@ -379,7 +379,7 @@ void LocOpe_Generator::Perform(const Handle(LocOpe_GeneratedShape)& G)
   TopoDS_Edge newedg;
   TopoDS_Vertex newvtx;
   TopLoc_Location loc;
-  Standard_Real tol,prm,f,l, Uminc,Umaxc;;
+  Standard_Real tol,prm,f,l, Uminc = 0.0,Umaxc = RealLast();
   gp_Pnt2d pf,pl;
 
   Handle(Geom_Surface) S;

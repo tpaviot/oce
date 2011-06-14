@@ -259,8 +259,8 @@ void AIS_Shape::Compute(const Handle(PrsMgr_PresentationManager3d)& /*aPresentat
     {
       Standard_Real prevangle ;
       Standard_Real newangle  ; 
-      Standard_Real prevcoeff ;
-      Standard_Real newcoeff  ; 
+      Standard_Real prevcoeff = 0;
+      Standard_Real newcoeff = 0 ; 
       
       
       if (OwnDeviationAngle(newangle,prevangle) ||
@@ -381,7 +381,7 @@ void AIS_Shape::Compute(const Handle(Prs3d_Projector)& aProjector,
 
 // coefficients pour le calcul
 
-  Standard_Real prevangle, newangle ,prevcoeff,newcoeff ; 
+  Standard_Real prevangle, newangle ,prevcoeff = 0,newcoeff = 0; 
   if (OwnHLRDeviationAngle(newangle,prevangle) || OwnHLRDeviationCoefficient(newcoeff, prevcoeff))
       
     if (Abs (newangle - prevangle) > Precision::Angular() ||

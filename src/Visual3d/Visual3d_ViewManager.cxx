@@ -192,7 +192,6 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
 #endif
   Standard_Integer ViewId = theView->Identification ();
 
-  Standard_Integer indexD = 0;
 
 // Meme si physiquement la structure ne peut pas
 // etre affichee (pb de type de visualisation)

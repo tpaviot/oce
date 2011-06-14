@@ -161,7 +161,7 @@ Standard_Boolean TopOpeBRepBuild_GTopo::Value(const TopAbs_State s1,
 
 Standard_Boolean TopOpeBRepBuild_GTopo::Value(const Standard_Integer II) const
 {
-  Standard_Integer i1,i2; Index(II,i1,i2);
+  Standard_Integer i1 = 0,i2 = 0; Index(II,i1,i2);
   Standard_Boolean b = Value(i1,i2);
   return b;
 }
@@ -351,8 +351,9 @@ Standard_Boolean TopOpeBRepBuild_GTopo::IsToReverse1() const
     else IsToRev = (s1 == TopAbs_IN);
     return IsToRev;
   }
-  Standard_ProgramError::Raise("GTopo::IsToReverse1");
+#ifndef _MSC_VER
   return Standard_False; // dummy
+#endif
 }
 
 
@@ -374,8 +375,9 @@ Standard_Boolean TopOpeBRepBuild_GTopo::IsToReverse2() const
     else IsToRev = (s2 == TopAbs_IN);
     return IsToRev;
   }
-  Standard_ProgramError::Raise("GTopo::IsToReverse2");
+#ifndef _MSC_VER
   return Standard_False; // dummy
+#endif
 }
 
 //=======================================================================

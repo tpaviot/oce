@@ -92,10 +92,6 @@ void Prs3d_TextAspect::Print (Standard_OStream& s) const {
 
   myTextAspect->Values(C,F,Ratio,Space);
 
-  Standard_CString FontName;
-
-  strcpy((char*)FontName,(char*)F);
-
-  s << "TextAspect:" << Quantity_Color::StringName(C.Name()) << " Font: " << FontName << " Ratio: " << Ratio << " Space: " << Space;
+  s << "TextAspect:" << Quantity_Color::StringName(C.Name()) << " Font: " << F << " Ratio: " << Ratio << " Space: " << Space;
 
 }

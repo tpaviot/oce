@@ -30,119 +30,13 @@
 #include <stdio.h>
 #endif
 
-//=======================================================================
-//function : DFBrowse
-//purpose  : 
-//  arg 1  : DF name
-// [arg 2] : Browser name
-//=======================================================================
-
-static Standard_Integer DFBrowse (Draw_Interpretor& di, 
-				  Standard_Integer  n, 
-				  const char**            a)
-{
-  if (n<2) return 1;
-  
-  Handle(TDF_Data) DF;
-  if (!DDF::GetDF (a[1], DF)) return 1;
-
-  Handle(DDF_Browser) NewDDFBrowser = new DDF_Browser(DF);
-  char *name = new char[50];
-  if (n == 3) sprintf(name,"browser_%s",a[2]);
-  else        sprintf(name,"browser_%s",a[1]);
-
-  Draw::Set (name, NewDDFBrowser);
-  TCollection_AsciiString inst1("dftree ");
-  inst1.AssignCat(name);
-  di.Eval(inst1.ToCString());
-  return 0;
-}
-
-
-//=======================================================================
-//function : DFOpenLabel
-//purpose  : 
-//  arg 1  : Browser name
-// [arg 2] : Label name
-//=======================================================================
-
-static Standard_Integer DFOpenLabel (Draw_Interpretor& di, 
-				   Standard_Integer  n, 
-				   const char**            a)
-{
-  if (n < 2) return 1;
-  
-  Handle(DDF_Browser) browser =
-    Handle(DDF_Browser)::DownCast (Draw::Get(a[1], Standard_True)); 
-
-  TDF_Label lab;
-  if (n == 3) TDF_Tool::Label(browser->Data(),a[2],lab);
-
-  if (lab.IsNull()) {
-    TCollection_AsciiString list = browser->OpenRoot();
-    di<<list.ToCString();
-  }
-  else {
-    TCollection_AsciiString list = browser->OpenLabel(lab);
-    di<<list.ToCString();
-  }
-  return 0;
-}
-
-
-//=======================================================================
-//function : DFOpenAttributeList
-//purpose  : 
-//  arg 1  : Browser name
-//  arg 2  : Label name
-//=======================================================================
-
-static Standard_Integer DFOpenAttributeList(Draw_Interpretor& di,
-					    Standard_Integer n,
-					    const char** a)
-{
-  if (n < 3) return 1;
-  
-  Handle(DDF_Browser) browser =
-    Handle(DDF_Browser)::DownCast (Draw::Get(a[1], Standard_True)); 
-
-  TDF_Label lab;
-  TDF_Tool::Label(browser->Data(),a[2],lab);
-
-  if (lab.IsNull()) {
-    return 1;
-  }
-
-  TCollection_AsciiString list = browser->OpenAttributeList(lab);
-  di << list.ToCString();
-  return 0;
-}
 
 
 
-//=======================================================================
-//function : DFOpenAttribute
-//purpose  : 
-//  arg 1  : Browser name
-//  arg 2  : Attribute index
-//=======================================================================
 
-static Standard_Integer DFOpenAttribute (Draw_Interpretor& di, 
-					 Standard_Integer  n, 
-					 const char**      a)
-{
-  if (n < 3) return 1;
-  
-  Handle(DDF_Browser) browser =
-    Handle(DDF_Browser)::DownCast (Draw::Get(a[1], Standard_True)); 
 
-  Standard_Integer index = atoi(a[2]);
 
-  TCollection_AsciiString list = browser->OpenAttribute(index);
 
-  di<<list.ToCString();
-  return 0;
-}
 
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

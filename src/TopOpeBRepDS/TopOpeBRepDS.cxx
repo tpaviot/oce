@@ -119,7 +119,7 @@ Standard_Boolean TopOpeBRepDS::IsTopology(const TopOpeBRepDS_Kind k)
   case TopOpeBRepDS_WIRE    : return Standard_True; break;
   case TopOpeBRepDS_EDGE    : return Standard_True; break;
   case TopOpeBRepDS_VERTEX  : return Standard_True; break;
-  default : return Standard_False;
+  default : break;
   }
   return Standard_False;
 }

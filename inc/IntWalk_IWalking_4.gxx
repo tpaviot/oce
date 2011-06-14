@@ -35,7 +35,7 @@ void IntWalk_IWalking::ComputeCloseLine(const TColStd_SequenceOfReal& Umult,
 // ******************************************************************** 
 {
 
-  Standard_Integer I,N;
+  Standard_Integer I,N = 0;
   static math_Vector BornInf(1,2),BornSup(1,2);
   static math_Vector Uvap(1,2);// parametres approches courant
   Standard_Real PasC;  // taux d`avancement sur la tangente
