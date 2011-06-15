@@ -788,3 +788,18 @@ INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION ${${
 IF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
 INSTALL(EXPORT ${PROJECT_NAME}-libraries DESTINATION ${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR} COMPONENT Development)
 ENDIF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
+
+###############################################################################
+# OCE Packaging                                                               #
+# $make package                                                               #
+###############################################################################
+
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "OpenCASCADE Community Edition")
+SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+
+SET(CPACK_PACKAGE_VERSION_MAJOR "0")
+SET(CPACK_PACKAGE_VERSION_MINOR "3")
+SET(CPACK_PACKAGE_VERSION_PATCH "0")
+
+INCLUDE(CPack)
