@@ -1464,11 +1464,11 @@ void GeomLib::ExtendSurfByLength(Handle(Geom_BoundedSurface)& Surface,
 
 
         
-  Standard_Integer Cdeg, Cdim, NbP, Ksize, Psize ;
+  Standard_Integer Cdeg = 0, Cdim = 0, NbP = 0, Ksize = 0, Psize = 0;
   Standard_Integer ii, jj, ipole, Kount;  
   Standard_Real Tbord, lambmin=Length;
-  Standard_Real * Padr;
-  Standard_Boolean Ok;
+  Standard_Real * Padr = NULL;
+  Standard_Boolean Ok = Standard_False;
   Handle(TColStd_HArray1OfReal)  FKnots, Point, lambda, Tgte, Poles;
 
   

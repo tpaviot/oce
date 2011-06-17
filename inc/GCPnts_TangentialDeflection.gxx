@@ -237,7 +237,7 @@ void GCPnts_TangentialDeflection::PerformCurve (const TheCurve& C)
   gp_XYZ V1, V2;
 //  gp_Pnt MiddlePoint, CurrentPoint, LastPoint, PreviousPoint;   
   gp_Pnt MiddlePoint, CurrentPoint, LastPoint;   
-  Standard_Real Coef, ACoef, FCoef, Du, Dusave, MiddleU, L1, L2;
+  Standard_Real Coef = 0.0, ACoef = 0.0, FCoef = 0.0, Du = 0.0, Dusave = 0.0, MiddleU = 0.0, L1 = 0.0, L2 = 0.0;
 
   Standard_Real U1       = firstu;   
   Standard_Real U2       = firstu;   
