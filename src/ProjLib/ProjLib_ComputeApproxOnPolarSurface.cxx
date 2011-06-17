@@ -102,7 +102,7 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
   if((Type != GeomAbs_BSplineSurface) && 
      (Type != GeomAbs_BezierSurface)  &&
      (Type != GeomAbs_OffsetSurface)    ) {
-    Standard_Real S, T;
+    Standard_Real S = 0.0, T = 0.0;
     switch (Type) {
 //    case GeomAbs_Plane:
 //      {
