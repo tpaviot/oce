@@ -788,3 +788,85 @@ INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION ${${
 IF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
 INSTALL(EXPORT ${PROJECT_NAME}-libraries DESTINATION ${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR} COMPONENT Development)
 ENDIF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
+
+###############################################################################
+# OCE Packaging                                                               #
+# $make package                                                               #
+###############################################################################
+
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "OpenCASCADE Community Edition")
+SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+SET(CPACK_SET_DESTDIR "ON")
+
+SET(CPACK_PACKAGE_VERSION_MAJOR ${OCE_VERSION_MAJOR})
+SET(CPACK_PACKAGE_VERSION_MINOR ${OCE_VERSION_MINOR})
+SET(CPACK_PACKAGE_VERSION_PATCH ${OCE_VERSION_PATCH})
+SET(CPACK_PACKAGE_NAME ${PROJECT_NAME} )
+
+SET(CPACK_PACKAGE_CONTACT "OCE Developers <oce-dev@googlegroups.com>")
+
+###############################################################################
+# Debian-specific CPack variables. Intended for quick-n-dirty dev packages,   #
+# not to replace the official (and superior) debian tools.                    #
+# to enable, run cmake with -DCPACK_GENERATOR="DEB", or uncomment             #
+#set(CPACK_GENERATOR "DEB")                                                   #
+###############################################################################
+if( CPACK_GENERATOR MATCHES ".*DEB.*" )
+  if( ${CMAKE_VERSION} STREQUAL "2.8.2" )
+    # bug http://vtk.org/Bug/view.php?id=11020
+    message( WARNING "CMake/CPack version 2.8.2 will not create working .deb packages!")
+  endif()
+  set(CPACK_DEBIAN_PACKAGE_SECTION "science")
+  # debian source packages aren't yet supported by cmake, but the following list will help anyone who is trying to figure out what to apt-get install before building.
+  set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.6), libtool,
+  libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
+  libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
+  libftgl-dev, libgl2ps-dev")
+  set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1), libftgl2 (>= 2.1.3~rc5),
+  libgcc1 (>= 1:4.1.1), libgl1-mesa-glx, libgl2ps0, libglu1-mesa,
+  libgomp1 (>= 4.2.1), libstdc++6 (>= 4.4.0), libx11-6, libxext6,
+  libxmu6, libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
+  set(CPACK_DEBIAN_PACKAGE_SUGGESTS "opencascade-doc")
+  set(CPACK_DEBIAN_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0,
+  libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0,
+  libopencascade-ocaf-6.5.0, opencascade-draw")
+  if( BIT EQUAL 64 )
+	set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64" )
+  else()
+	set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "i386" )
+  endif()
+  string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}" CPACK_PACKAGE_FILE_NAME )
+endif()
+
+###############################################################################
+# RPM-specific CPack variables.                                               #
+# to enable, run cmake with -DCPACK_GENERATOR="RPM", or uncomment             #
+#set(CPACK_GENERATOR "RPM")                                                   #
+# For RPM, package names and versions are guesses and may need changed.       #
+#                                                                             #
+# As of cmake 2.8.4, RPM requires use of a variable that is also used for     #
+# DEB,so simultaneously building multiple package types (i.e.                 #
+# -DCPACK_GENERATOR="DEB;RPM") doesn't work well. The RPM won't end up in the #
+# correct directory, and packages specified after RPM won't be built.         #
+###############################################################################
+if( CPACK_GENERATOR MATCHES ".*RPM.*" )
+  set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libftgl2 >= 2.1.3, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
+  set( CPACK_RPM_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0, libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0, libopencascade-ocaf-6.5.0, opencascade-draw" )
+  set( CPACK_PACKAGE_RELOCATABLE "FALSE" )
+  if( BIT EQUAL 64 )
+	set( CPACK_RPM_PACKAGE_ARCHITECTURE "x86_64" )
+  else()
+	set( CPACK_RPM_PACKAGE_ARCHITECTURE "i586" )
+  endif()
+  #CPackRPM ignores CPACK_RPM_FILE_NAME. Must set two other vars instead, and they interfere
+  string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_RPM_PACKAGE_ARCHITECTURE}.rpm" CPACK_OUTPUT_FILE_NAME )
+  if( NOT CPACK_GENERATOR STREQUAL "RPM" )
+    message( WARNING "Generating an RPM with other package type(s). Due to a bug in CPackRPM, the package will not get copied to the current directory. It will be found in _CPack_Packages/Linux/RPM, and other packages may fail to build." )
+  else()
+    #this variable is used by other packagers, don't set it unless RPM is built by itself.
+    set( CPACK_PACKAGE_FILE_NAME ${CPACK_OUTPUT_FILE_NAME} )
+  endif()
+endif()
+
+INCLUDE(CPack)
