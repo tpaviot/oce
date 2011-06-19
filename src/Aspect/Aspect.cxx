@@ -100,7 +100,7 @@ Standard_PCharacter pstring;
          estring.SetValue(i,c);
       } else if( (c > Standard_ExtCharacter(0x0020)) && 
 			(c <= Standard_ExtCharacter(0x007F)) ) {
-	c += Standard_ExtCharacter(0xFEE0);
+	c += Standard_ExtCharacter(0xFEE0); // @todo Possible bug here : cast truncates constant value 
 	estring.SetValue(i,c);
       }
     }

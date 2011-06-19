@@ -988,7 +988,7 @@ Visual3d_PickDescriptor Visual3d_ViewManager::Pick (const Visual3d_ContextPick& 
 // On active le reperage que si les donnees sont correctes
 Standard_Boolean DoPick = Standard_False;
 
-CALL_DEF_PICK apick;
+CALL_DEF_PICK apick; //@todo CALL_DEF_PICK should have constructor
 Standard_Integer Width, Height;
 
 	// Parcours de la liste des vues pour rechercher
