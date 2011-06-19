@@ -246,7 +246,7 @@ HRESULT OpenGl_AVIWriter::InitMovieCreation (int nFrameWidth,
   bmpInfo.bmiHeader.biWidth             = nFrameWidth;
   bmpInfo.bmiHeader.biHeight            = nFrameHeight;
   bmpInfo.bmiHeader.biCompression       = BI_RGB;
-  bmpInfo.bmiHeader.biBitCount          = nBitsPerPixel;
+  bmpInfo.bmiHeader.biBitCount          = (WORD)nBitsPerPixel;
   bmpInfo.bmiHeader.biSize              = sizeof(BITMAPINFOHEADER);
   bmpInfo.bmiHeader.biSizeImage         = (bmpInfo.bmiHeader.biWidth *
                                            bmpInfo.bmiHeader.biHeight*

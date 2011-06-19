@@ -790,7 +790,7 @@ void  BinTools_ShapeSet::ReadGeometry(const TopAbs_ShapeEnum T,
 	    if (val > 0 && val <= 3) 
 	      BinTools::GetReal(IS, p1); 
 	  } else {
-	    Standard_Integer aPos = IS.tellg();
+	    std::streamoff aPos = IS.tellg();
 	    BinTools::GetReal(IS, p1); 	    
 	    val = (Standard_Integer)IS.get();//case {0|1|2|3}
 #ifdef MDTV_DEB

@@ -67,7 +67,7 @@ Aspect_PixMap(aWidth, anHeight, PreferedDepth(aWindow, aCDepth))
   pBmi->bmiHeader.biWidth         = aWidth;
   pBmi->bmiHeader.biHeight        = anHeight;
   pBmi->bmiHeader.biPlanes        = 1;
-  pBmi->bmiHeader.biBitCount      = myDepth; //WIL001: was 24
+  pBmi->bmiHeader.biBitCount      = (WORD)myDepth; //WIL001: was 24
   pBmi->bmiHeader.biCompression   = BI_RGB;
 
   LPVOID ppvBits;
@@ -86,8 +86,8 @@ Aspect_PixMap(aWidth, anHeight, PreferedDepth(aWindow, aCDepth))
     pfd.nSize           =  sizeof (PIXELFORMATDESCRIPTOR);
     pfd.nVersion        =  1;
     pfd.dwFlags         =  PFD_SUPPORT_OPENGL | PFD_DRAW_TO_BITMAP;
-    pfd.iPixelType      =  theFormat; //WIL001: was PFD_TYPE_RGBA
-    pfd.cColorBits      =  myDepth; //WIL001: was 24
+    pfd.iPixelType      =  (BYTE)theFormat; //WIL001: was PFD_TYPE_RGBA
+    pfd.cColorBits      =  (BYTE)myDepth; //WIL001: was 24
     pfd.cDepthBits      =  24;//
     pfd.iLayerType      =  PFD_MAIN_PLANE;
 

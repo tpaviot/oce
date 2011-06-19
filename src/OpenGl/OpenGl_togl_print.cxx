@@ -283,7 +283,7 @@ call_togl_print
     }
     wglMakeCurrent(hDC,hGLRC);
 #else
-    pfd.cColorBits = GetDeviceCaps(hMemDC, BITSPIXEL);
+    pfd.cColorBits = (BYTE)GetDeviceCaps(hMemDC, BITSPIXEL);
     nIndex = ChoosePixelFormat(hMemDC, &pfd);
     if (nIndex == 0)
     {

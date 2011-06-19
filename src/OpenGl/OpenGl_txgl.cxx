@@ -1022,11 +1022,11 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     for (i = 0; i < sizeof(dBits) / sizeof(int); i++) {
 
-      pfd0.cDepthBits = dBits[i];
+      pfd0.cDepthBits = (BYTE)dBits[i];
       iGood = 0;
       for (j = 0; j < sizeof(cBits) / sizeof(int); j++) {
 
-        pfd0.cColorBits = cBits[j];
+        pfd0.cColorBits = (BYTE)cBits[j];
         iPixelFormat = ChoosePixelFormat ( hte -> hDC, &pfd0 );
 
         if (iPixelFormat) {

@@ -123,7 +123,7 @@ void Prs2d_Repere::Draw(const Handle(Graphic2d_Drawer)& aDrawer) {
       aDrawer->SetTextAttrib( myColorIndex, mySymbFont, 0, Standard_ShortReal(myTextScale*aDrawer->Scale()), 
                               Standard_ShortReal(myTextScale*aDrawer->Scale()), Standard_False );
 //      TCollection_ExtendedString txtSymb( char( SymbolCode() ) );
-      Standard_Character code = SymbolCode();
+      Standard_Character code = (Standard_Character) SymbolCode();
       TCollection_ExtendedString txtSymb( code );
       Standard_ShortReal ws=0., hs=0.;
       aDrawer->GetTextSize( txtSymb, ws, hs );
@@ -179,7 +179,7 @@ void Prs2d_Repere::Draw(const Handle(Graphic2d_Drawer)& aDrawer) {
     
     if ( myIsSymbol ) {
 //      TCollection_ExtendedString txtSymb( char( SymbolCode() ) );
-      Standard_Character code = SymbolCode();
+      Standard_Character code = (Standard_Character) SymbolCode();
       TCollection_ExtendedString txtSymb( code );
       Standard_ShortReal angle=0.,dx=0.,dy=0.;
       aDrawer->MapTextFromTo( txtSymb, ts1, ts2, angle, dx, dy, Aspect_TOT_SOLID);

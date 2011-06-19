@@ -985,7 +985,7 @@ TsmSetAttri( Tint n, ... )
       attri_tail->TextZoomable = k[i]->data.ldata;  
       break;
     case TelTextAngle:
-      attri_tail->TextAngle = k[i]->data.ldata;
+      attri_tail->TextAngle = (Tfloat)k[i]->data.ldata;
       break;  
     case TelTextFontAspect:
       attri_tail->TextFontAspect = OSD_FontAspect(k[i]->data.ldata);
@@ -1274,7 +1274,7 @@ TsmGetAttri( Tint n, ... )
       k[i]->data.ldata = attri_tail->TextZoomable;
       break;
     case TelTextAngle:
-      k[i]->data.ldata = attri_tail->TextAngle;
+      k[i]->data.ldata = (Tint) attri_tail->TextAngle;
       break;   
     case TelTextFontAspect:
       k[i]->data.ldata = attri_tail->TextFontAspect;

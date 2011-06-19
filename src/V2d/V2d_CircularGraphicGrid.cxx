@@ -143,7 +143,7 @@ void V2d_CircularGraphicGrid::DrawCircle
 
 #ifdef OCC192
     Standard_ShortReal x_alpha, y_alpha;
-    Standard_ShortReal cos_alpha = Cos(angle), sin_alpha = Sin(angle);
+    Standard_ShortReal cos_alpha = (Standard_ShortReal) Cos(angle), sin_alpha = (Standard_ShortReal) Sin(angle);
 #endif
     if(DrawPoints) {
 #ifdef OCC192

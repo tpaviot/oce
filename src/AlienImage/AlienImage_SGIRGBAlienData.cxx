@@ -300,14 +300,14 @@ static Standard_Boolean iopen( 	OSD_File &File,
 	int calsize	= sizeof( AlienImage_SGIRGBFileHeader ) ;
 	if (mode=='w') { //------------------WRITE------------------
 		image->imagic = IMAGIC;
-		image->type = type;
-		image->xsize = xsize;
+		image->type = (unsigned short)type;
+		image->xsize = (unsigned short)xsize;
 		image->ysize = 1;
 		image->zsize = 1;
 		if (dim>1)
-		    image->ysize = ysize;
+		    image->ysize = (unsigned short)ysize;
 		if (dim>2)
-		    image->zsize = zsize;
+		    image->zsize = (unsigned short)zsize;
 		if(image->zsize == 1) {
 		    image->dim = 2;
 		    if(image->ysize == 1)
@@ -475,8 +475,8 @@ static int img_seek( 	OSD_File &File,
 	return EOF;
     }
     image->x = 0;
-    image->y = y;
-    image->z = z;
+    image->y = (unsigned short)y;
+    image->z = (unsigned short)z;
     if(ISVERBATIM(image->type)) {
 	switch(image->dim) {
 	    case 1:
@@ -878,7 +878,7 @@ static int getrow(	OSD_File& File,
     register short i;
     register unsigned char *cptr;
     register unsigned short *sptr;
-    register short cnt; 
+    register int cnt; 
 
     if( !(image->flags & (_IORW|_IOREAD)) )
 	return -1;
@@ -1270,8 +1270,8 @@ void AlienImage_SGIRGBAlienData::FromImage(const Handle(Image_Image)& anImage )
   Standard_Integer LowX = anImage->LowerX() ;
   Standard_Integer LowY = anImage->LowerY() ;
 
-  myHeader.xsize = anImage->Width();
-  myHeader.ysize = anImage->Height();
+  myHeader.xsize = (unsigned short)anImage->Width();
+  myHeader.ysize = (unsigned short)anImage->Height();
   myHeader.zsize = 3;
 
   /* allocate buffers for image data */

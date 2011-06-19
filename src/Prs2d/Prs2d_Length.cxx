@@ -166,7 +166,7 @@ void Prs2d_Length::Draw( const Handle(Graphic2d_Drawer)& aDrawer )
                               Standard_ShortReal(myTextScale*aDrawer->Scale()), 
                               Standard_ShortReal(myTextScale*aDrawer->Scale()), 
                               Standard_False );
-      Standard_Character code = SymbolCode();
+      Standard_Character code = (Standard_Character)SymbolCode();
       TCollection_ExtendedString txtSymb( code );
       pntText.Coord( theSmbX, theSmbY );
       Standard_ShortReal ws, hs;
@@ -326,7 +326,7 @@ void Prs2d_Length::Draw( const Handle(Graphic2d_Drawer)& aDrawer )
 
     if ( myIsSymbol ) 
     {
-      Standard_Character code = SymbolCode();
+      Standard_Character code = (Standard_Character)SymbolCode();
       TCollection_ExtendedString txtSymb( code );
       aDrawer->MapTextFromTo( txtSymb, ts1, ts2,Standard_ShortReal(theTxtAngle), 
                               0., 0., Aspect_TOT_SOLID );

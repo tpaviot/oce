@@ -360,7 +360,7 @@ Standard_Real Sx, Sy, Sz;
           MyCView.Orientation.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
         }
         else {
           MyCView.Orientation.IsCustomMatrix = 0;
@@ -396,7 +396,7 @@ Standard_Real um, vm, uM, vM;
           MyCView.Mapping.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] = MyViewMapping.MyProjectionMatrix->Value(i,j);
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float) MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
         else {
           MyCView.Mapping.IsCustomMatrix = 0;
@@ -1173,7 +1173,7 @@ Standard_Real Sx, Sy, Sz;
             for (j = 0; j < 4; j++) {
               if (!CustomIsModified) CustomIsModified =
                 MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
@@ -1288,7 +1288,7 @@ Standard_Real Sx, Sy, Sz;
             for (j = 0; j < 4; j++) {
               if (!CustomIsModified) CustomIsModified =
                 MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float)MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
@@ -1357,7 +1357,7 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] =
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
                 MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 
@@ -1426,7 +1426,7 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] =
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
                 MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 

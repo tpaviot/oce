@@ -600,9 +600,9 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
 	   if ( ptrDIB[ k ] == xColor[ j ].pixel )
 
-	    pbInit[ k ] = j;
+	    pbInit[ k ] = (BYTE)j;
 
-	  colors[  ptrDIB[ i ]  ] = j;
+	  colors[  ptrDIB[ i ]  ] = (WORD)j;
 
 	 }  // end for
 

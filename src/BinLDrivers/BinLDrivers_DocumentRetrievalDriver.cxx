@@ -195,7 +195,7 @@ void BinLDrivers_DocumentRetrievalDriver::Read
   mySections.Clear();
   myPAtt.Init();
   Handle(TDF_Data) aData = new TDF_Data();
-  Standard_Integer aDocumentPos = -1;
+  std::streamoff aDocumentPos = -1;
 
   // 2b. Read the TOC of Sections
   if (aFileVer >= 3) {

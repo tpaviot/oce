@@ -79,9 +79,9 @@ Prs2d_Diameter::Prs2d_Diameter( const Handle(Graphic2d_GraphicObject)& aGO,
    myAppX2 = Standard_ShortReal(X1);
    myAppY2 = Standard_ShortReal(Y1);
    if (myX1>=myX2) 
-     myAppX2=myAppX2+(theDist+theRad)/APPENDIXLEN;
+     myAppX2=Standard_ShortReal(myAppX2+(theDist+theRad)/APPENDIXLEN);
    else 
-     myAppX2=myAppX2-(theDist+theRad)/APPENDIXLEN;
+     myAppX2=Standard_ShortReal(myAppX2-(theDist+theRad)/APPENDIXLEN);
    
    if ( myAppX2 < myMinX ) myMinX = myAppX2;
    if ( myAppY2 < myMinY ) myMinY = myAppY2;
@@ -106,14 +106,14 @@ Prs2d_Diameter::Prs2d_Diameter( const Handle(Graphic2d_GraphicObject)& aGO,
    Standard_Integer theTxtNum=aText.Length();
    Standard_Real theTxtLen=theTxtNum*myTextScale;
      
-   theTxtX1 = myAbsX;
-   theTxtY1 = myAbsY;
-   theTxtX2 = theTxtX1+theTxtLen*cos(myAbsAngle);
-   theTxtY2 = theTxtY1+theTxtLen*sin(myAbsAngle);
-   theTxtX3 = theTxtX1-myTextScale*sin(myAbsAngle);
-   theTxtY3 = theTxtY1+myTextScale*cos(myAbsAngle);
-   theTxtX4 = theTxtX3+theTxtLen*cos(myAbsAngle);
-   theTxtY4 = theTxtY3+theTxtLen*sin(myAbsAngle);
+   theTxtX1 = Standard_ShortReal(myAbsX);
+   theTxtY1 = Standard_ShortReal(myAbsY);
+   theTxtX2 = Standard_ShortReal(theTxtX1+theTxtLen*cos(myAbsAngle));
+   theTxtY2 = Standard_ShortReal(theTxtY1+theTxtLen*sin(myAbsAngle));
+   theTxtX3 = Standard_ShortReal(theTxtX1-myTextScale*sin(myAbsAngle));
+   theTxtY3 = Standard_ShortReal(theTxtY1+myTextScale*cos(myAbsAngle));
+   theTxtX4 = Standard_ShortReal(theTxtX3+theTxtLen*cos(myAbsAngle));
+   theTxtY4 = Standard_ShortReal(theTxtY3+theTxtLen*sin(myAbsAngle));
    
    if (theTxtX1 < myMinX) myMinX = theTxtX1;
    if (theTxtY1 < myMinY) myMinY = theTxtY1;

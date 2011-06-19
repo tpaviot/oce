@@ -322,7 +322,7 @@ void Prs2d_Angle::Draw( const Handle(Graphic2d_Drawer)& aDrawer ) {
       aDrawer->SetTextAttrib( myColorIndex, mySymbFont, 0, Standard_ShortReal(myTextScale*aDrawer->Scale()), 
                               Standard_ShortReal(myTextScale*aDrawer->Scale()), Standard_False );
 //      TCollection_ExtendedString txtSymb( char( SymbolCode() ) );
-      Standard_Character code = SymbolCode();
+      Standard_Character code = (Standard_Character) SymbolCode();
       TCollection_ExtendedString txtSymb( code );
       Standard_ShortReal dx=0.,dy=0.;
       aDrawer->MapTextFromTo( txtSymb, ts1, ts2, txtAngle, dx, dy, Aspect_TOT_SOLID );

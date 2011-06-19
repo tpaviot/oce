@@ -500,7 +500,7 @@ Standard_Boolean AlienImage_SunRFAlienData::WritePixelRow(
 		}
 
 		b = RUN_FLAG ; file.Write( ( Standard_Address ) &b, 1 ) ;
-		b = n-1 ;      file.Write( ( Standard_Address ) &b, 1 ) ;
+		b = Standard_Byte(n-1) ;      file.Write( ( Standard_Address ) &b, 1 ) ;
 		b = scanln[n1];file.Write( ( Standard_Address ) &b, 1 ) ;
 
 	}
