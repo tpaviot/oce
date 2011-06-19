@@ -2477,7 +2477,7 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
   TopLoc_Location L;
   Standard_Boolean insP3,mP3P1,IntOutL;
   Standard_Integer f,ip1,ip2,ip3;//, i;
-  Standard_Real U3,V3,coef3,X3,Y3,Z3;
+  Standard_Real U3,V3,coef3,X3 = 0.0,Y3 = 0.0,Z3 = 0.0;
 
   const gp_Trsf& T  = myProj.Transformation();
   

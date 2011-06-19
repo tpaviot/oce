@@ -581,7 +581,7 @@ void MeshVS_MeshPrsBuilder::AddFaceWirePrs (const TColStd_Array1OfReal& theCoord
                                             const Standard_Boolean IsShrinked,
                                             const Standard_Real ShrinkCoef) const
 {
-  Standard_Real xG, yG, zG, X, Y, Z, startX=0., startY=0., startZ=0.;
+  Standard_Real xG = 0.0, yG = 0.0, zG = 0.0, X = 0.0, Y = 0.0, Z = 0.0, startX=0., startY=0., startZ=0.;
   theLines->AddBound ( NbNodes+1 );
   if ( IsShrinked )
     CalculateCenter( theCoords, NbNodes, xG, yG, zG );
@@ -624,7 +624,7 @@ void MeshVS_MeshPrsBuilder::AddFaceSolidPrs (const Standard_Integer ID,
   if ( aDS.IsNull() )
     return;
 
-  Standard_Real xG, yG, zG, X, Y, Z, nx, ny, nz;
+  Standard_Real xG = 0.0, yG = 0.0,  zG = 0.0, X= 0.0, Y= 0.0, Z= 0.0, nx= 0.0, ny= 0.0, nz= 0.0;
   thePolygons->AddBound ( NbNodes );
   if ( IsShrinked )
     CalculateCenter( theCoords, NbNodes, xG, yG, zG );

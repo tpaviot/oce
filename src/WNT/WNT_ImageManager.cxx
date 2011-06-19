@@ -166,7 +166,7 @@ void WNT_ImageManager :: Draw (
                          ) {
 
  HDC              hDC, hDCmemSrc, hDCmemDst = 0;
- HPALETTE         hPal, hOldPal;
+ HPALETTE         hPal = NULL, hOldPal = NULL;
  Standard_Integer iw, ih;
 
  if ( myLastIndex != anIndex ) {

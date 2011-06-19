@@ -145,8 +145,8 @@ void HLRAlgo_PolyInternalData::UpdateLinks
  Standard_Address& PINod)
 {
   Standard_Integer i,n1,n2;
-  Standard_Integer find,iiii,icsv;
-  Standard_Address A1,A2,A3,Nod1Indices,Nod2Indices,Seg2Indices,Tri2Indices;
+  Standard_Integer find,iiii,icsv = 0;
+  Standard_Address A1,A2,A3,Nod1Indices,Nod2Indices,Seg2Indices = NULL,Tri2Indices;
   Standard_Boolean newSeg = Standard_False;
   HLRAlgo_TriangleData* TD =
     &(((HLRAlgo_Array1OfTData*)TData)->ChangeValue(1));

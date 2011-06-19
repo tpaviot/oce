@@ -74,7 +74,7 @@ void __cdecl _Do_MFTDrawText_ (PW32_FCALLPARAM lpParam)
   double    uPos;
   Handle(WNT_TextManager) theTextManager;
   Handle(MFT_FontManager) theFontManager;
-  Standard_ShortReal      theTextSize;
+  Standard_ShortReal      theTextSize = 0.0f;
   //============ Use driver to get some data ============
   if (lpW32->myFlags & W32F_DVDRV) {
 //    theTextManager = lpDDrv->TextManager ();

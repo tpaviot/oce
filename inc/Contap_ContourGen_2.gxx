@@ -858,7 +858,7 @@ void ComputeInternalPointsOnRstr
     = Standard_False
 #endif
   ,toutvu,solution;
-  Standard_Real paramp,paraminf,paramsup,toler;
+  Standard_Real paramp = 0.0,paraminf,paramsup,toler;
 
   if (Line.TypeContour() != Contap_Restriction) {
     return;

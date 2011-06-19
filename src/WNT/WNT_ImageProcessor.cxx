@@ -225,9 +225,9 @@ int __WNT_API SaveWindowToFile (
     ) {
 
  int      retVal = I_ERROR;
- HDC      hDCmem;
- HBITMAP  hBmp = NULL, hOldBmp;
- HPALETTE hOldPal;
+ HDC      hDCmem = NULL;
+ HBITMAP  hBmp = NULL, hOldBmp = NULL;
+ HPALETTE hOldPal = NULL;
 
  __try {
 
@@ -351,7 +351,7 @@ int SaveBitmapToFile (Handle(WNT_GraphicDevice)& gDev,
 {
   int      retVal  = I_ERROR;
   HBITMAP  hNewBmp = NULL;
-  HPALETTE hOldPal;
+  HPALETTE hOldPal = NULL;
   BOOL     newBmp  = FALSE, newDC = FALSE;
 
   __try {
@@ -427,10 +427,10 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
  UINT             red_shift, green_shift, blue_shift;
  HBITMAP          retVal = NULL;
  PBITMAPINFO      pBmi   = NULL;
- PBYTE            pbInit;
+ PBYTE            pbInit = NULL;
  UINT             nBytes, bitmapSize;
- WORD             bitCount;
- HPALETTE         hOldPal;
+ WORD             bitCount = 24;
+ HPALETTE         hOldPal = NULL;
  LONG             lPixel;
  WORD             wPixel;
  BYTE             bPixel;
@@ -921,15 +921,15 @@ static int __fastcall _getshift ( unsigned long mask ) {
 static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
 
  HBITMAP           retVal = NULL;
- PBITMAPFILEHEADER pBmfh;
- PBITMAPINFOHEADER pBmih;
- LPRGBQUAD         pRGB;
- PBYTE             pData;
- HPALETTE          hOldPal;
+ PBITMAPFILEHEADER pBmfh = NULL;
+ PBITMAPINFOHEADER pBmih = NULL;
+ LPRGBQUAD         pRGB = NULL;
+ PBYTE             pData = NULL;
+ HPALETTE          hOldPal = NULL;
  WORD              bitCount;
  UINT              nColors;
  DWORD             dwWidth, dwHeight;
- BOOL              os2Flag;
+ BOOL              os2Flag = FALSE;
 
  __try {
 
@@ -1037,13 +1037,13 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
  HBITMAP  retVal = NULL;
  UINT     Bits, BitMask, CodeSize, ClearCode, EOFCode, FreeCode,
           InitCodeSize, MaxCode, ReadMask, FirstFree, OutCount, BitOffset,
-          ByteOffset, Code, CurCode, OldCode, FinChar, InCode;
+          ByteOffset, Code, CurCode, OldCode = 0, FinChar = 0, InCode;
  PUINT    OutCode, Prefix, Suffix;
  BYTE     byte, byte1;
  PBYTE    rasterPtr, ptr1, ptr = (  ( PBYTE )lpvFile  ) + 10;
- BOOL     hasColormap;
- HPALETTE hOldPal;
- DWORD    dataSize;
+ BOOL     hasColormap = false;
+ HPALETTE hOldPal = NULL;
+ DWORD    dataSize = 0;
 
 #ifdef BUC60837
   pBmi = NULL;

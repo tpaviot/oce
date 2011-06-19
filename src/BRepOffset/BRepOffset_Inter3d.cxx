@@ -124,8 +124,8 @@ static void SelectEdge (const TopoDS_Face& F,
     Standard_Integer i;
     Standard_Real    aTol       = BRep_Tool::Tolerance(EI);
     Standard_Boolean isMinFound = Standard_False;
-    Standard_Real    aSqrDist1;
-    Standard_Real    aSqrDist2;
+    Standard_Real    aSqrDist1 = 0.0;
+    Standard_Real    aSqrDist2 = 0.0;
 
     anExt.Initialize(Ad2, Fst, Lst, aTol);
 

@@ -401,7 +401,7 @@ static
   myC.D0(t, P);
   GeomAPI_ProjectPointOnSurf aProjector;
   //
-  Standard_Real ULD, VLD;
+  Standard_Real ULD = 0.0, VLD = 0.0;
 
   if(myContext == NULL) {
     aProjector.Init(P, GS, Umin, Usup, Vmin, Vsup, myEpsT);

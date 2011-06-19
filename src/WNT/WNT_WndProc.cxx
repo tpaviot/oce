@@ -14,7 +14,7 @@ LRESULT CALLBACK WNT_WndProc (
                  ) {
 
  HDC          hDC;
- HPALETTE     hOldPal;
+ HPALETTE     hOldPal = NULL;
  WNDPROC      lpfnWndProc;
  WINDOW_DATA* wd;
  WNT_Window*  win;

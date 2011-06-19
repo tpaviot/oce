@@ -26,7 +26,7 @@ extern LRESULT CALLBACK WNT_WndProc (
                         );
 //***//
 #define SELECT_PALETTE(hDC)                                  \
- HPALETTE hOldPal;                                           \
+ HPALETTE hOldPal = NULL;                                    \
                                                              \
   if ( myExtraData.hPal  ) {                                 \
                                                              \
@@ -845,7 +845,7 @@ Standard_Boolean WNT_Window :: LoadArea (
  Standard_Integer idx;
  Standard_Boolean status;
 
- status = (  idx = myImages -> Load ( aFilename )  ) ? Standard_True : Standard_False;
+ status = ((  idx = myImages -> Load ( aFilename )  ) != 0) ? Standard_True : Standard_False;
 
  if ( status ) myImages -> Draw ( idx, Xc, Yc, Width, Height );
 
