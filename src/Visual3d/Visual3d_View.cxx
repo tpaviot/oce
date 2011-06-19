@@ -773,10 +773,10 @@ CALL_DEF_LIGHT *lights=NULL;
 
 Standard_Real X, Y, Z;
 
-Standard_Real LightConcentration;
-Standard_Real LightAttenuation1;
-Standard_Real LightAttenuation2;
-Standard_Real LightAngle;
+Standard_Real LightConcentration = 0.0;
+Standard_Real LightAttenuation1 = 0.0;
+Standard_Real LightAttenuation2 = 0.0;
+Standard_Real LightAngle = 0.0;
 Quantity_Color LightColor;
 Graphic3d_Vertex LightPosition;
 Graphic3d_Vector LightDirection;
