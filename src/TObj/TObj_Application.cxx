@@ -148,7 +148,7 @@ Standard_Boolean TObj_Application::LoadDocument
   myIsError = aStatus != PCDM_RS_OK;
   if (myIsError)
   {
-    switch (aStatus)
+    switch ((int)aStatus)
     {
     case PCDM_RS_UnknownDocument:
       ErrorMessage (Message_Msg("TObj_Appl_RUnknownDocument") << aPath);
