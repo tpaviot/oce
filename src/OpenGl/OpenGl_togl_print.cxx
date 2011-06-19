@@ -117,8 +117,6 @@ call_togl_print
   CMN_KEY_DATA data;
   Tint swap = 1; /* swap buffers ? yes */
 
-
-  BOOL bRet = FALSE;
   HDC hPrnDC;
   DOCINFO   di;
 

@@ -137,7 +137,7 @@ void HLRTopoBRep_OutLiner::ProcessFace(const TopoDS_Face& F,
   //}
   
 
-  TopTools_ListOfShape& IntL = myDS.AddIntL(F);
+  myDS.AddIntL(F);
   TopTools_ListOfShape& OutL = myDS.AddOutL(F);
 
   if (myDS.FaceHasIntL(F)) { // get the InternalOutLines on face F

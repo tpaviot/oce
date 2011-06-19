@@ -303,7 +303,8 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   char *fontName = new char[strlen((char*)keyfontName.data.pdata) + 1];
   strcpy(fontName,(char*)keyfontName.data.pdata);
 
-  OpenGl_TextRender* textRender = OpenGl_TextRender::instance(); 
+  OpenGl_TextRender::instance(); 
+
   int vh = 2 ;
   int vv = 2 ;
 
