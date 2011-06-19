@@ -143,7 +143,7 @@ void NIS_SurfaceDrawer::BeforeDraw (const DrawType      theType,
   glEnableClientState (GL_VERTEX_ARRAY);
   glEnable(GL_COLOR_MATERIAL);
 
-  Quantity_Parameter   aValueCol[3];
+  Quantity_Parameter   aValueCol[4];
   Quantity_TypeOfColor bidTC (Quantity_TOC_RGB);
   GLfloat aLineWidth (1.f);
   GLfloat anOffset = myPolygonOffset;
