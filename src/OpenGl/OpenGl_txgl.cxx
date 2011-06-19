@@ -385,7 +385,6 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     HTBL_ENTRY*           hte;
     PIXELFORMATDESCRIPTOR pfd;
-    BOOL                  DBuffer = TRUE;
     int                   iPixelFormat;
     char                  string[ CALL_DEF_STRING_LENGTH ];
 
@@ -564,7 +563,6 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
     cmn_htbl_elem         rec;*/
     HTBL_ENTRY*           hte;
     PIXELFORMATDESCRIPTOR pfd;
-    BOOL                  DBuffer = TRUE;
     int                   iPixelFormat;
     char                  string[ CALL_DEF_STRING_LENGTH ];
 
@@ -684,8 +682,6 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 #else /* WNT */
 
     HTBL_ENTRY*   hte;
-    HDC    hdc    = NULL;
-    HGLRC  hglrc  = NULL;
     TStatus       retVal = TFailure;
 
     __try {

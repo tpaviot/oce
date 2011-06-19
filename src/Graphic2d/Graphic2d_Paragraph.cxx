@@ -752,7 +752,7 @@ Standard_Boolean status = Standard_False;
               static TCollection_ExtendedString hletter("Hp");
               Standard_ShortReal hwidth,hheight,hxoffset,hyoffset;
               if(( status = aDrawer->GetTextSize(hletter,hwidth,hheight,
-                                                        hxoffset,hyoffset) )) {
+                                                        hxoffset,hyoffset) ) == Standard_True ) {
                 theight = Max(hheight-hyoffset,theight-tyoffset);
                 tyoffset = Max(hyoffset,tyoffset);
               }

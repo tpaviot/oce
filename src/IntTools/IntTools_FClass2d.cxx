@@ -686,9 +686,9 @@
   surf->ChangeSurface().Initialize( Face, Standard_False );
   Standard_Boolean IsUPer, IsVPer;
   Standard_Real uperiod=0, vperiod=0;
-  if ((IsUPer = surf->IsUPeriodic()))
+  if ((IsUPer = surf->IsUPeriodic()) == Standard_True)
     uperiod = surf->UPeriod();
-  if ((IsVPer = surf->IsVPeriodic()))
+  if ((IsVPer = surf->IsVPeriodic()) == Standard_True)
     vperiod = surf->VPeriod();
   TopAbs_State Status = TopAbs_UNKNOWN;
   Standard_Boolean urecadre = Standard_False, vrecadre = Standard_False;

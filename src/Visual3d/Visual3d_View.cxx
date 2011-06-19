@@ -1165,7 +1165,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
+          Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -1280,7 +1280,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
+          Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -4002,7 +4002,7 @@ void Visual3d_View :: SetComputedMode ( const Standard_Boolean aMode ) {
  Standard_Integer                      StructId;
  Standard_Integer                      i = MyDisplayedStructure.Extent ();
 
- if (  !( ComputedModeIsActive = aMode )  ) {
+ if (  !( (ComputedModeIsActive = aMode) != 0 )   ) {
 
   while (  S1Iterator.More ()  ) {
 
