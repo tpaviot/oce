@@ -430,8 +430,9 @@ Standard_Boolean Graphic2d_SetOfMarkers::HasSelectedElements()
 {
 #ifdef OCC402
   return (myMapOfSelected.Extent() > 0);
-#endif
+#else
   return Standard_False;
+#endif
 }
 
 //SAV

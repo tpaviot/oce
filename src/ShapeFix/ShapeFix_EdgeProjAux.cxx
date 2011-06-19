@@ -200,7 +200,9 @@ static Standard_Boolean FindParameterWithExt (const gp_Pnt& Pt1,
 #endif
     return Standard_False;
   }
+#ifndef _MSC_VER
   return Standard_False;  // normalement, on n y passe jamais
+#endif
 }
 
 //=======================================================================

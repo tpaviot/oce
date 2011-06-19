@@ -903,6 +903,7 @@ static
     return 0;
   }
 
+#if 0 // @todo Should this code really be removed? (a test will be appropriate)
   //
   dt=al1-af1;
   if (dt<1.e-5) {
@@ -943,6 +944,7 @@ static
     }
   }
   return 0;
+#endif
 }
 
 

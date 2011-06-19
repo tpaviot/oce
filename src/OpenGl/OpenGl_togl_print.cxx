@@ -61,8 +61,9 @@ GLuint createFont( char* typeFace, int height, int weight, int italic )
   oldObj = SelectObject( printer, font );
   wglUseFontBitmaps( printer, 32, 96, base );
   return base;
-#endif
+#else
   return 0;
+#endif
 }
 
 void deleteFont( GLuint base )

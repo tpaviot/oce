@@ -96,9 +96,9 @@ Standard_Integer OpenGl_GraphicDriver::CreateTexture(const Graphic3d_TypeOfTextu
       for (i = 0; i < aGlWidth; i++){
         if (i < MyPic->Width()){
           MyColor = MyPic->PixelColor(i, j);
-          *MyData++ = (int)(255 * MyColor.Red());
-          *MyData++ = (int)(255 * MyColor.Green());
-          *MyData++ = (int)(255 * MyColor.Blue());
+          *MyData++ = (unsigned char)(int)(255 * MyColor.Red());
+          *MyData++ = (unsigned char)(int)(255 * MyColor.Green());
+          *MyData++ = (unsigned char)(int)(255 * MyColor.Blue());
         }
         else {
           *MyData++ = (int)(0);
@@ -243,9 +243,9 @@ void OpenGl_GraphicDriver::BackgroundImage( const Standard_CString FileName,
       for ( j = height - 1; j >= 0; j-- )
         for ( i = 0; i < width; i++ ) {
           color = image->PixelColor( i, j );
-          *pdata++ = (int)( 255 * color.Red() );
-          *pdata++ = (int)( 255 * color.Green() );
-          *pdata++ = (int)( 255 * color.Blue() );
+          *pdata++ = (unsigned char)(int)( 255 * color.Red() );
+          *pdata++ = (unsigned char)(int)( 255 * color.Green() );
+          *pdata++ = (unsigned char)(int)( 255 * color.Blue() );
         }
         call_togl_create_bg_texture( (CALL_DEF_VIEW*)&MyCView, width, height, data, (int)FillStyle );
         // delete data here
@@ -481,7 +481,9 @@ void OpenGl_GraphicDriver::GraduatedTrihedronDisplay(const Graphic3d_CView& view
     cubic.xname = (char*) xname;
     cubic.yname = (char*) yname; 
     cubic.zname = (char*) zname;
-    /* Draw names */
+    
+	/* @todo fields in cubic should be booleans intead of chars? */
+	/* Draw names */
     cubic.xdrawname = xdrawname; 
     cubic.ydrawname = ydrawname; 
     cubic.zdrawname = zdrawname;

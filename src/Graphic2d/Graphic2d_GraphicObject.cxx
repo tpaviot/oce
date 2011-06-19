@@ -652,8 +652,9 @@ Standard_Boolean Graphic2d_GraphicObject
   }
   else
     return Standard_False;
-#endif
+#else
   return Standard_False;
+#endif
 }
 
 Standard_Boolean Graphic2d_GraphicObject::Pick( const Standard_Real Xmin,

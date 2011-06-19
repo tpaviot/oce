@@ -211,7 +211,10 @@ static Standard_Boolean PerformComposite (TColStd_SequenceOfReal& Parameters,
 
     Ua = Ub;
   }
+ 
+#ifndef _MSC_VER
   return Standard_True;
+#endif
 }
 
 

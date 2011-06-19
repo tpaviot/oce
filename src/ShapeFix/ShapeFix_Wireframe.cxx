@@ -371,7 +371,6 @@ ShapeFix_Wireframe::ShapeFix_Wireframe(const TopoDS_Shape& shape)
     B.SameRange(newedge,Standard_False);
     
     E3 = newedge;
-    return ReplaceFirst;
   }
   catch ( Standard_Failure ) 
   {
@@ -379,7 +378,6 @@ ShapeFix_Wireframe::ShapeFix_Wireframe(const TopoDS_Shape& shape)
     cout<<"Error: ShapeFix_Wireframe::FixSmallEdges: JoinEdges: Exception in GeomConvert_CompCurveToBSplineCurve: ";
     Standard_Failure::Caught()->Print(cout); cout<<endl;
 #endif
-    return ReplaceFirst;
   }
   return ReplaceFirst;
 }

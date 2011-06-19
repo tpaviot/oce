@@ -744,7 +744,9 @@ Standard_Boolean ShapeCustom_BSplineRestriction::ConvertSurface(const Handle(Geo
   //else 
   //Surface is not BSpline or Bezier
   //  return Standard_False;
+#ifndef _MSC_VER
   return Standard_True;
+#endif
 }
 
 //=======================================================================
