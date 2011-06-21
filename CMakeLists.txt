@@ -43,6 +43,13 @@ IF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
 	MESSAGE( FATAL_ERROR "CMake >= 2.6.0 required" )
 ENDIF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
 
+###############
+# UnitTesting #
+###############
+INCLUDE(CTest)
+ENABLE_TESTING()
+SUBDIRS(test)
+
 ############################
 # Check 32/64 bit platform #
 ############################
