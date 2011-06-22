@@ -46,9 +46,13 @@ ENDIF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
 ###############
 # UnitTesting #
 ###############
-INCLUDE(CTest)
-ENABLE_TESTING()
-SUBDIRS(test)
+OPTION_WITH_DEFAULT( ${PROJECT_NAME}_TESTING "Enable unittesting framework" OFF )
+MARK_AS_ADVANCED(${PROJECT_NAME}_TESTING)
+IF(${PROJECT_NAME}_TESTING)
+    INCLUDE(CTest)
+    ENABLE_TESTING()
+    SUBDIRS(test)
+ENDIF(${PROJECT_NAME}_TESTING)
 
 ############################
 # Check 32/64 bit platform #
