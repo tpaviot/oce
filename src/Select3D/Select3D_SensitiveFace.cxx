@@ -76,7 +76,7 @@ Matches(const Standard_Real X,
 #else
   Standard_Real DMin2;
 #endif
-  Standard_Real Xmin,Ymin,Xmax,Ymax;
+  Standard_Real Xmin = 0.0,Ymin = 0.0,Xmax = RealLast(),Ymax = RealLast();
   if(!Bnd_Box2d(mybox2d).IsVoid()){
     Bnd_Box2d(mybox2d).Get(Xmin,Ymin,Xmax,Ymax);
     DMin2 = gp_XY(Xmax-Xmin,Ymax-Ymin).SquareModulus();

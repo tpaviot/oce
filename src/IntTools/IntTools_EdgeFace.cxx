@@ -401,7 +401,7 @@ static
   myC.D0(t, P);
   GeomAPI_ProjectPointOnSurf aProjector;
   //
-  Standard_Real ULD, VLD;
+  Standard_Real ULD = 0.0, VLD = 0.0;
 
   if(myContext == NULL) {
     aProjector.Init(P, GS, Umin, Usup, Vmin, Vsup, myEpsT);
@@ -903,6 +903,7 @@ static
     return 0;
   }
 
+#if 0 // @todo Should this code really be removed? (a test will be appropriate)
   //
   dt=al1-af1;
   if (dt<1.e-5) {
@@ -943,6 +944,7 @@ static
     }
   }
   return 0;
+#endif
 }
 
 

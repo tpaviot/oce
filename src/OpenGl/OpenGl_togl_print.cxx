@@ -61,8 +61,9 @@ GLuint createFont( char* typeFace, int height, int weight, int italic )
   oldObj = SelectObject( printer, font );
   wglUseFontBitmaps( printer, 32, 96, base );
   return base;
-#endif
+#else
   return 0;
+#endif
 }
 
 void deleteFont( GLuint base )
@@ -116,8 +117,6 @@ call_togl_print
   CMN_KEY_DATA data;
   Tint swap = 1; /* swap buffers ? yes */
 
-
-  BOOL bRet = FALSE;
   HDC hPrnDC;
   DOCINFO   di;
 
@@ -282,7 +281,7 @@ call_togl_print
     }
     wglMakeCurrent(hDC,hGLRC);
 #else
-    pfd.cColorBits = GetDeviceCaps(hMemDC, BITSPIXEL);
+    pfd.cColorBits = (BYTE)GetDeviceCaps(hMemDC, BITSPIXEL);
     nIndex = ChoosePixelFormat(hMemDC, &pfd);
     if (nIndex == 0)
     {

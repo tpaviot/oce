@@ -503,7 +503,7 @@ void  GeomTools_CurveSet::Dump(Standard_OStream& OS)const
 
 void  GeomTools_CurveSet::Write(Standard_OStream& OS)const 
 {
-  int  prec = OS.precision(17);
+  std::streamsize  prec = OS.precision(17);
 
   Standard_Integer i, nbcurve = myMap.Extent();
   OS << "Curves "<< nbcurve << "\n";

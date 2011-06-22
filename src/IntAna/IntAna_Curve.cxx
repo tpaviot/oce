@@ -388,7 +388,7 @@
   Standard_Boolean IntAna_Curve::FindParameter (const gp_Pnt& P,
 						Standard_Real& Para) const
 {
-  Standard_Real theta,z, aTolPrecision=0.0001;
+  Standard_Real theta = 0.0 ,z = 0.0, aTolPrecision=0.0001;
   Standard_Real PIpPI = Standard_PI+Standard_PI;
   //
   switch (typequadric) {
@@ -547,7 +547,7 @@
   case GeomAbs_Sphere:
     return(ElSLib::SphereValue(U,V,Ax3,RCyl)); 
   default:
-    return(gp_Pnt(0.0,0.0,0.0));
+    break; 
   }
   return(gp_Pnt(0.0,0.0,0.0));
 }

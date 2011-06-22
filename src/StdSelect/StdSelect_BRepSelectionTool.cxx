@@ -655,8 +655,9 @@ Standard_Integer StdSelect_BRepSelectionTool::GetStandardPriority (const TopoDS_
       return 4;
     }
   }
-  
-  return 0;
+#ifndef _MSC_VER 
+   return 0;
+#endif
 }
 
 //=======================================================================

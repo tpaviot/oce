@@ -34,7 +34,7 @@ static TopAbs_ShapeEnum IntegerToShapeEnum (const Standard_Integer I)
     case  6 : return TopAbs_EDGE;
     case  7 : return TopAbs_VERTEX;
       default :
-	return TopAbs_SHAPE;
+	    break;
     }
   return TopAbs_SHAPE;
 }

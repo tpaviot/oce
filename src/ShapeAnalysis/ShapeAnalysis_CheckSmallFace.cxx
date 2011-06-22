@@ -405,7 +405,7 @@ static Standard_Boolean MinMaxSmall
 
 //    Edge on same vertex : small one ?
     if (VA.IsSame(VB)) {
-      Standard_Real cf,cl;
+      Standard_Real cf = 0.0,cl = 0.0;
       Handle(Geom_Curve) C3D;
       if (!BRep_Tool::Degenerated(E)) C3D = BRep_Tool::Curve (E,cf,cl);
       if (C3D.IsNull()) continue;  // DGNR

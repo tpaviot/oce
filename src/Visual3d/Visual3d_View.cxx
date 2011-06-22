@@ -360,7 +360,7 @@ Standard_Real Sx, Sy, Sz;
           MyCView.Orientation.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
         }
         else {
           MyCView.Orientation.IsCustomMatrix = 0;
@@ -396,7 +396,7 @@ Standard_Real um, vm, uM, vM;
           MyCView.Mapping.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] = MyViewMapping.MyProjectionMatrix->Value(i,j);
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float) MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
         else {
           MyCView.Mapping.IsCustomMatrix = 0;
@@ -773,10 +773,10 @@ CALL_DEF_LIGHT *lights=NULL;
 
 Standard_Real X, Y, Z;
 
-Standard_Real LightConcentration;
-Standard_Real LightAttenuation1;
-Standard_Real LightAttenuation2;
-Standard_Real LightAngle;
+Standard_Real LightConcentration = 0.0;
+Standard_Real LightAttenuation1 = 0.0;
+Standard_Real LightAttenuation2 = 0.0;
+Standard_Real LightAngle = 0.0;
 Quantity_Color LightColor;
 Graphic3d_Vertex LightPosition;
 Graphic3d_Vector LightDirection;
@@ -1165,7 +1165,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
+          Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -1173,7 +1173,7 @@ Standard_Real Sx, Sy, Sz;
             for (j = 0; j < 4; j++) {
               if (!CustomIsModified) CustomIsModified =
                 MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
@@ -1280,7 +1280,7 @@ Standard_Real Sx, Sy, Sz;
         MyCView.Orientation.ViewScaleZ                  = float (Sz);
 
         CustomIsModified =
-          MyCView.Orientation.IsCustomMatrix != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
+          Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
         MyCView.Orientation.IsCustomMatrix = MyViewOrientation.IsCustomMatrix();
         if ( MyViewOrientation.IsCustomMatrix() ) {
           Standard_Integer i, j;
@@ -1288,7 +1288,7 @@ Standard_Real Sx, Sy, Sz;
             for (j = 0; j < 4; j++) {
               if (!CustomIsModified) CustomIsModified =
                 MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] = (float)MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
@@ -1357,7 +1357,7 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] =
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
                 MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 
@@ -1426,7 +1426,7 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] =
+              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
                 MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 
@@ -4002,7 +4002,7 @@ void Visual3d_View :: SetComputedMode ( const Standard_Boolean aMode ) {
  Standard_Integer                      StructId;
  Standard_Integer                      i = MyDisplayedStructure.Extent ();
 
- if (  !( ComputedModeIsActive = aMode )  ) {
+ if (  !( (ComputedModeIsActive = aMode) != 0 )   ) {
 
   while (  S1Iterator.More ()  ) {
 

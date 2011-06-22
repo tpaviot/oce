@@ -744,8 +744,8 @@ void  BinTools_ShapeSet::ReadGeometry(const TopAbs_ShapeEnum T,
 {
   // Read the geometry
 
-  Standard_Integer val, c,pc,pc2,s,s2,l,l2,t, pt, pt2;
-  Standard_Real tol,X,Y,Z,first,last,p1,p2;
+  Standard_Integer val, c,pc = 0,pc2 = 0,s,s2,l,l2,t, pt, pt2 = 0;
+  Standard_Real tol,X,Y,Z,first,last,p1 = 0.0,p2;
   Standard_Real PfX,PfY,PlX,PlY;
   gp_Pnt2d aPf, aPl;
   Standard_Boolean closed, bval;
@@ -790,7 +790,7 @@ void  BinTools_ShapeSet::ReadGeometry(const TopAbs_ShapeEnum T,
 	    if (val > 0 && val <= 3) 
 	      BinTools::GetReal(IS, p1); 
 	  } else {
-	    Standard_Integer aPos = IS.tellg();
+	    std::streamoff aPos = IS.tellg();
 	    BinTools::GetReal(IS, p1); 	    
 	    val = (Standard_Integer)IS.get();//case {0|1|2|3}
 #ifdef MDTV_DEB

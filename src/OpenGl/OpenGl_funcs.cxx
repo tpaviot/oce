@@ -470,7 +470,7 @@ call_func_set_text_angle( Tfloat angl )
 {
   CMN_KEY  key;
 
-  key.data.ldata = angl;
+  key.data.ldata = (Tint)angl;
   TsmAddToStructure( TelTextAngle, 1, &key );
   return;
 }

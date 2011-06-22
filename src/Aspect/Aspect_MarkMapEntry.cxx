@@ -125,7 +125,7 @@ void Aspect_MarkMapEntry::Dump () const {
   Aspect_TypeOfMarker type = MyStyle.Type() ;
   Standard_Integer i,length = MyStyle.Length() ;
   Standard_Boolean draw = Standard_False ;
-  Standard_Real X,Y;
+  Standard_Real X = 0,Y = 0;
 
   cout << " Aspect_MarkMapEntry::Dump ()\n";
   cout << "      MyStyleIsDef : " << (MyStyleIsDef) ? "True\n" : "False\n";

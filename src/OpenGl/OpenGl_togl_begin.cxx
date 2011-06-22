@@ -114,12 +114,12 @@ call_togl_begin_display
  void *pdisplay
  )
 {
-  char *pvalue = NULL;
   int status;
 
   status = call_tox_set_display (pdisplay);
   if( status ) {
 #ifndef WNT
+	 char *pvalue = NULL;
     if ((pvalue = getenv ("CSF_GraphicSync")) != NULL)
       XSynchronize (call_thedisplay, 1);
     InitExtensionGLX(call_thedisplay);

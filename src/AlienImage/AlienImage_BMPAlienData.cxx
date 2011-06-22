@@ -532,7 +532,7 @@ void AlienImage_BMPAlienData::FromPseudoColorImage (
     for (y = 0; y < myHeight; y++) {
       for (x = 0; x < myWidth; x++) {
         iPixel = anImage -> Pixel (LowX + x, LowY + y);
-        index = aColorMap -> FindEntry (iPixel.Value ()).Index ();
+        index = (BYTE)aColorMap -> FindEntry (iPixel.Value ()).Index ();
         BPIXEL[y*myWidth + x] = index;
       }
     }
@@ -562,9 +562,9 @@ void AlienImage_BMPAlienData::FromColorImage (
       for (x = 0; x < myWidth; x++) {
         color = anImage -> PixelColor (LowX + x, LowY + y);
         color.Values (r, g, b, Quantity_TOC_RGB);
-        rgbColor.rgbRed      = (int)(r*255.);
-        rgbColor.rgbGreen    = (int)(g*255.);
-        rgbColor.rgbBlue     = (int)(b*255.);
+        rgbColor.rgbRed      = (BYTE)(int)(r*255.);
+        rgbColor.rgbGreen    = (BYTE)(int)(g*255.);
+        rgbColor.rgbBlue     = (BYTE)(int)(b*255.);
         rgbColor.rgbReserved = 0;
         DWPIXEL[y*myWidth + x] = _TestSwapDWORD (*pdwPixel);
       }

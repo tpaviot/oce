@@ -549,7 +549,9 @@ Handle(Geom2d_Curve) ShapeBuild_Edge::TransformPCurve(const Handle(Geom2d_Curve)
     }
     return aBSpline2d;
   }
+#ifndef _MSC_VER
   return result;
+#endif
 }
 
 //=======================================================================

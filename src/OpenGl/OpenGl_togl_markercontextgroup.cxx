@@ -116,7 +116,7 @@ GLuint EXPORT GetListIndex( int theId )
     if( UDMS_Marker.IdList[i] == theId )
       return UDMS_Marker.DisplayIdList[i];
   }
-  return -1;
+  return GLuint(-1);
 }
 
 /*--------------------------------generate USERDEFINED marker---------end--------*/

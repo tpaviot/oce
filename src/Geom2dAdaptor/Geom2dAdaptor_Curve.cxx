@@ -516,7 +516,7 @@ gp_Pnt2d Geom2dAdaptor_Curve::Value(const Standard_Real U) const
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve)&&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst, PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;
@@ -543,7 +543,7 @@ void Geom2dAdaptor_Curve::D0(const Standard_Real U, gp_Pnt2d& P) const
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve)&&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst,  PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;
@@ -571,7 +571,7 @@ void Geom2dAdaptor_Curve::D1(const Standard_Real U,
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve)&&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst,  PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;
@@ -599,7 +599,7 @@ void Geom2dAdaptor_Curve::D2(const Standard_Real U,
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve)&&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst,  PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;
@@ -628,7 +628,7 @@ void Geom2dAdaptor_Curve::D3(const Standard_Real U,
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve) &&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst,  PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;
@@ -656,7 +656,7 @@ gp_Vec2d Geom2dAdaptor_Curve::DN(const Standard_Real U,
 {
   if ( (myTypeCurve == GeomAbs_BSplineCurve) &&
       (U==myFirst || U==myLast) ) {
-    Standard_Integer Ideb, Ifin;
+    Standard_Integer Ideb = 0, Ifin = 0;
     if (U==myFirst) {
       myBspl->LocateU(myFirst, PosTol, Ideb, Ifin);
       if (Ideb<1) Ideb=1;

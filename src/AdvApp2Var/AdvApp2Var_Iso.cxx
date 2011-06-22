@@ -123,7 +123,7 @@ void AdvApp2Var_Iso::MakeApprox(const AdvApp2Var_Context& Conditions,
   Standard_Real TCONST = myConstPar;
 
 // les donnees relatives au type de l'iso
-  Standard_Integer ISOFAV,NBROOT,NDGJAC,NCFLIM;
+  Standard_Integer ISOFAV,NBROOT = 0,NDGJAC,NCFLIM = 0;
   Standard_Real TABDEC[2];
   Handle (TColStd_HArray1OfReal) HUROOT  = Conditions.URoots();
   Handle (TColStd_HArray1OfReal) HVROOT  = Conditions.VRoots();

@@ -261,7 +261,7 @@ static Standard_Boolean CheckKeepArguments(const TopoDS_Face& F1,
   else {
     //modified by NIZNHY-PKV Fri Jul 11 09:54:43 2008f
     Standard_Boolean bIsUClosed;
-    Standard_Real aUmin, aUmax, aVmin, aVmax;
+    Standard_Real aUmin = 0.0, aUmax = 0.0, aVmin, aVmax;
     Handle(Geom_BSplineSurface) aBS;
     Handle(Geom_BezierSurface) aBZ;
     //

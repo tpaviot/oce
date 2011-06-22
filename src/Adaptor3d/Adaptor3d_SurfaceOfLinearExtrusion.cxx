@@ -473,7 +473,7 @@ GeomAbs_SurfaceType Adaptor3d_SurfaceOfLinearExtrusion::GetType() const
     }
 
   default:
-    return GeomAbs_SurfaceOfExtrusion;
+     break;
 
   }
   

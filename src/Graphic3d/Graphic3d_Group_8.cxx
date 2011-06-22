@@ -264,8 +264,8 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectFil
   Standard_Real    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCGroup.ContextFillArea.PolygonOffsetMode   = aPolyMode;
-  MyCGroup.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
-  MyCGroup.ContextFillArea.PolygonOffsetUnits  = aPolyUnits;
+  MyCGroup.ContextFillArea.PolygonOffsetFactor = (float)aPolyFactor;
+  MyCGroup.ContextFillArea.PolygonOffsetUnits  = (float)aPolyUnits;
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
 
   int noinsert = 1;
@@ -345,7 +345,7 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectTex
   MyCGroup.ContextText.ColorSubTitle.g    = float (Gs);
   MyCGroup.ContextText.ColorSubTitle.b    = float (Bs);
   MyCGroup.ContextText.TextZoomable   = ATextZoomable;   
-  MyCGroup.ContextText.TextAngle    = ATextAngle;   
+  MyCGroup.ContextText.TextAngle    = (float)ATextAngle;   
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;
 
   MyCGroup.ContextText.IsDef      = 1;
@@ -584,8 +584,8 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectFillArea
   Standard_Real    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCGroup.ContextFillArea.PolygonOffsetMode   = aPolyMode;
-  MyCGroup.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
-  MyCGroup.ContextFillArea.PolygonOffsetUnits  = aPolyUnits;
+  MyCGroup.ContextFillArea.PolygonOffsetFactor = (float)aPolyFactor;
+  MyCGroup.ContextFillArea.PolygonOffsetUnits  = (float)aPolyUnits;
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
 
   int noinsert    = 0;
@@ -665,7 +665,7 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)&
   MyCGroup.ContextText.ColorSubTitle.g    = float (Gs);
   MyCGroup.ContextText.ColorSubTitle.b    = float (Bs);
   MyCGroup.ContextText.TextZoomable   = ATextZoomable;  
-  MyCGroup.ContextText.TextAngle    = ATextAngle;   
+  MyCGroup.ContextText.TextAngle    = (float)ATextAngle;   
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;   
   MyCGroup.ContextText.IsDef              = 1;
 

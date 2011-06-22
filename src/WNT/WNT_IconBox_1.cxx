@@ -134,9 +134,9 @@ WNT_Long WNT_IconBox::HandleEvent (
 
    HDC         hDCsrc, hDCdst;
    PAINTSTRUCT ps;
-   HPEN        hOldPen;
-   HFONT       hOldFont;
-   HPALETTE    hOldPal;
+   HPEN        hOldPen = NULL;
+   HFONT       hOldFont = NULL;
+   HPALETTE    hOldPal = NULL;
    int         i, j, x, y, ow, oh, cnt, len;
 
    Handle( WNT_Icon ) icon;

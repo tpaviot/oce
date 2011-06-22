@@ -299,7 +299,7 @@ void NIS_Surface::SetPolygonOffset (const Standard_Real theValue)
 {
   Handle(NIS_SurfaceDrawer) aDrawer = defaultDrawer();
   aDrawer->Assign (GetDrawer());
-  aDrawer->myPolygonOffset = theValue;
+  aDrawer->myPolygonOffset = (Standard_ShortReal)theValue;
   SetDrawer (aDrawer);
 }
 

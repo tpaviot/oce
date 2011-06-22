@@ -123,7 +123,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
 
       // Read the full buffer and reset start and end buffer pointers
         myPtr    = &myBuffer[0];
-        Standard_Integer aNBytes;
+        std::streamsize aNBytes;
         if (myFileDes != FILE_NONVALUE)
           aNBytes = read (myFileDes, &myBuffer[aBytesRest],
                           XML_BUFFER_SIZE - aBytesRest);
@@ -515,7 +515,7 @@ static Standard_Boolean isName (const char  * aString,
                                 const char  *& aNameEnd)
 {
   Standard_Boolean aResult;
-  int aCh = aString[0];
+  Standard_Character aCh = aString[0];
   if (IsAlphabetic(aCh) || aCh == '_' || aCh == ':') {
     const char * aPtr = &aString[1];
     while (aPtr < aStringEnd) {

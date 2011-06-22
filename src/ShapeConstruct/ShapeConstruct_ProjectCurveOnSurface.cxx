@@ -1547,7 +1547,9 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
 #endif
     return Standard_False;
   }
+#ifndef _MSC_VER
   return Standard_False;  // ramasse-miette
+#endif
 }
 
 /* S4135 : BestExtremum is commented after IsAnIsoparametric works with Precision::Confusion()

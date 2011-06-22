@@ -239,9 +239,13 @@ static Standard_Boolean MatchCurve (
       }
       return Standard_False;
     }
+#ifndef _MSC_VER
     return Standard_False;
+#endif
   }
-  return Standard_False;
+#ifndef _MSC_VER
+    return Standard_False;
+#endif
 }
 
 
