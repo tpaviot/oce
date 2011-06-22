@@ -427,12 +427,12 @@ void CGM_Driver::PlotPolyAttrib (const Standard_Integer ColorIndex,
 {
   // Set the edge visibility to the corresponding value
   if (myEdgeVisibility != (DrawEdge ? ON : OFF)) {
-    curatt.edge_vis = Enum(myEdgeVisibility = (DrawEdge ? ON : OFF));
+    myEdgeVisibility = curatt.edge_vis = (DrawEdge ? ON : OFF);
     WriteData (EDGEVIS, ptablong, ptabreal, ptabchar);
   }
   // Set the interior style to fill by solid
   if (myInteriorStyle != (TileIndex < 0 ? EMPTY : SOLID)) {
-    curatt.int_style = Enum(myInteriorStyle = (TileIndex < 0 ? EMPTY : SOLID));
+    myInteriorStyle = curatt.int_style = (TileIndex < 0 ? EMPTY : SOLID);
     WriteData (INTSTYLE, ptablong, ptabreal, ptabchar);
   }
   // Set the fill color for drawing
