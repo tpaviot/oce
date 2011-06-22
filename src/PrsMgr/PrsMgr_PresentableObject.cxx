@@ -290,9 +290,9 @@ void  PrsMgr_PresentableObject::SetTransformPersistence( const Graphic3d_TransMo
 							 const gp_Pnt& ThePoint )
 {
   myTransformPersistence.Flag = TheFlag;
-  myTransformPersistence.Point.x = ThePoint.X();
-  myTransformPersistence.Point.y = ThePoint.Y();
-  myTransformPersistence.Point.z = ThePoint.Z();
+  myTransformPersistence.Point.x = (float)ThePoint.X();
+  myTransformPersistence.Point.y = (float)ThePoint.Y();
+  myTransformPersistence.Point.z = (float)ThePoint.Z();
 
   Handle(Graphic3d_Structure) aStruct;
   for( Standard_Integer i = 1, n = myPresentations.Length(); i <= n; i++ ) 

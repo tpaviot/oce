@@ -269,8 +269,10 @@ AIS_SelectStatus AIS_Selection::Select(const Handle(Standard_Transient)& anObjec
   S->myResultMap.Bind( anObject, aListIter );
   return AIS_SS_Added;
 #endif //USE_MAP
-  return AIS_SS_Removed;
-  
+
+#ifndef _MSC_VER
+  return AIS_SS_Removed;  
+#endif
 }
 
 //=======================================================================

@@ -1266,8 +1266,7 @@ Standard_Address WNT_WDriver :: InternalOpenBuffer (
                                 ) {
 
  PW32_Allocator        aNew     = NULL;
- Aspect_TypeOfDrawMode DrawMode = Aspect_TODM_REPLACE;
-
+ 
  MyDrawMode = aDrawMode;
  aNew       = _FindAllocator ( myAllocators, aRetainBuffer );
 
@@ -1402,7 +1401,7 @@ void WNT_WDriver :: DrawBuffer ( const Standard_Integer aRetainBuffer ) const {
    if ( a -> myFlags & W32F_DBUFF ) {
     HDC hdcMem = CreateCompatibleDC ( hdc );
      HBITMAP hbo = SelectBitmap(  hdcMem, ( HBITMAP )myWNTWindow -> HPixmap ()  );
-      HPALETTE hpo;
+      HPALETTE hpo = NULL;
 
        if ( gDev -> IsPaletteDevice ()  )
 

@@ -122,7 +122,8 @@ public:
         Standard_Boolean ArrowIsReversed() const;
   //! Return true if symbol is drawn, false - in otherwise <br>
         Standard_Boolean IsDrawSymbol() const;
-  //! Return ASCII code of the symbol <br>
+  //! Return ASCII code of the symbol <br> 
+  // @todo Should really be Standard_Character
         Standard_Integer SymbolCode() const;
   
   Standard_EXPORT    const Handle_TColgp_HArray1OfPnt2d ArrayOfFirstArrowPnt() const;

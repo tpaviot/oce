@@ -416,7 +416,7 @@ Standard_Boolean PlotMgt_Plotter::ReadParametersFromFile (
       STRING_TRIM(aParamDef);
       aParamDef.Prepend (TCollection_AsciiString ("."));
     }
-    if ((idx = FindParameter(aParamName))) {
+    if ((idx = FindParameter(aParamName)) != 0) {
       aParameter = myParameters -> Value (idx);
     } else {
       aParameter = new PlotMgt_PlotterParameter (aParamName);

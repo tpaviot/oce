@@ -14,7 +14,6 @@ WNT_FontMapEntry :: WNT_FontMapEntry ( const Standard_CString aFontName )
 {
   int   i;
   char* p;
-  BOOL  fUseDefault = FALSE;
 
   char* fName = new char[ strlen ( aFontName ) + 1 ];
 
@@ -116,15 +115,15 @@ Aspect_Handle WNT_FontMapEntry :: SetAttrib (
 
  if ( aFlags & faUnderlined )
 
-  lf.lfUnderline = fd -> fdUnderlined;
+  lf.lfUnderline = BYTE(fd -> fdUnderlined);
 
  if ( aFlags & faItalic )
 
-  lf.lfItalic = fd -> fdItalic;
+  lf.lfItalic = BYTE(fd -> fdItalic);
 
  if ( aFlags & faStrikeOut )
 
-  lf.lfStrikeOut = fd -> fdStrikeOut;
+  lf.lfStrikeOut = BYTE(fd -> fdStrikeOut);
 
  if ( aFlags & faBold )
 

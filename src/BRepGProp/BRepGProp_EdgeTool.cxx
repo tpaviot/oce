@@ -45,7 +45,7 @@ Standard_Integer  BRepGProp_EdgeTool::IntegrationOrder(const BRepAdaptor_Curve& 
     break;
     
     default :
-      return 10;
+      break;
   }
   //POP WE should return something : -> Default
   return 10;

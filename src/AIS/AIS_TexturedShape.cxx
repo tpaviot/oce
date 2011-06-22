@@ -291,8 +291,8 @@ void AIS_TexturedShape::Compute(const Handle(PrsMgr_PresentationManager3d)& /*aP
       {
 	Standard_Real prevangle ;
 	Standard_Real newangle  ; 
-	Standard_Real prevcoeff ;
-	Standard_Real newcoeff  ; 
+	Standard_Real prevcoeff = 0.0 ;
+	Standard_Real newcoeff = 0.0 ; 
 	
 	if (OwnDeviationAngle(newangle,prevangle) || OwnDeviationCoefficient(newcoeff,prevcoeff))
 	  if (Abs (newangle - prevangle) > Precision::Angular() || Abs (newcoeff - prevcoeff) > Precision::Confusion()  ) 

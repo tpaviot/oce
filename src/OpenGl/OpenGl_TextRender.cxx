@@ -289,7 +289,7 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   CMN_KEY keyAngle;
   keyAngle.id = TelTextAngle;//This flag responding about Angle text
   TsmGetAttri( 1, &keyAngle );
-  angle = keyAngle.data.ldata;
+  angle = (Tfloat)keyAngle.data.ldata;
 
   Tint zoom = 0;
   CMN_KEY keyZoom;
@@ -303,7 +303,8 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   char *fontName = new char[strlen((char*)keyfontName.data.pdata) + 1];
   strcpy(fontName,(char*)keyfontName.data.pdata);
 
-  OpenGl_TextRender* textRender = OpenGl_TextRender::instance(); 
+  OpenGl_TextRender::instance(); 
+
   int vh = 2 ;
   int vv = 2 ;
 
@@ -390,14 +391,14 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
     }
     else
     {
-      export_h = h;
+      export_h = (float)h;
     }
   }
   glGetIntegerv(GL_RENDER_MODE, &renderMode);
   if ( renderMode == GL_FEEDBACK ) 
   {
 #ifdef HAVE_GL2PS
-    export_h = (GLdouble)fnt->FaceSize() / export_h;
+    export_h = float((GLdouble)fnt->FaceSize() / export_h);
     int aligment = alignmentforgl2ps( vh, vv );
     glPopMatrix();
     ExportText( str, fontName, export_h, angle, aligment, x, y, z, is2d!=0 );
@@ -476,7 +477,7 @@ void OpenGl_TextRender::ExportText( char* str, char* fontname, GLfloat height, G
   
   glBitmap( 1, 1, 0, 0, 0, 0, &zero );
 
-  gl2psTextOpt( str, ps_font, height, alignment, angle);
+  gl2psTextOpt( str, ps_font, (GLshort)height, alignment, angle);
 
 #endif
 

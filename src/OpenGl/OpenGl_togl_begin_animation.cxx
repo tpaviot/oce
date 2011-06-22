@@ -103,7 +103,7 @@ call_togl_begin_animation
 #ifdef G003
   g_fAnimation               = GL_TRUE;
   g_fList                    = GL_FALSE;
-  g_fDegeneration            = aview -> IsDegenerates;
+  g_fDegeneration            = aview->IsDegenerates != 0;
   g_fUpdateAM                = ( aview -> IsDegenerates ==
     aview -> IsDegeneratesPrev
     ) ? GL_FALSE : GL_TRUE;

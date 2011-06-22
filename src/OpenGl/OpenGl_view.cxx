@@ -1302,18 +1302,18 @@ TelClearBackground( Tint  Wsid /* Workstation id */ )
       case 3:
        corner2 = gradient->color2.rgb;
        corner4 = gradient->color1.rgb;        
-       dcorner1 [0] = dcorner2[0] = (corner2[0] + corner4[0]) / 2.0;
-       dcorner1 [1] = dcorner2[1] = (corner2[1] + corner4[1]) / 2.0;
-       dcorner1 [2] = dcorner2[2] = (corner2[2] + corner4[2]) / 2.0;   
+       dcorner1 [0] = dcorner2[0] = (corner2[0] + corner4[0]) / 2.0f;
+       dcorner1 [1] = dcorner2[1] = (corner2[1] + corner4[1]) / 2.0f;
+       dcorner1 [2] = dcorner2[2] = (corner2[2] + corner4[2]) / 2.0f;   
        corner1 = dcorner1;
        corner3 = dcorner2;  
        break;
       case 4:  
        corner1 = gradient->color2.rgb;  
        corner3 = gradient->color1.rgb;       
-       dcorner1 [0] = dcorner2[0] = (corner1[0] + corner3[0]) / 2.0;
-       dcorner1 [1] = dcorner2[1] = (corner1[1] + corner3[1]) / 2.0;
-       dcorner1 [2] = dcorner2[2] = (corner1[2] + corner3[2]) / 2.0;   
+       dcorner1 [0] = dcorner2[0] = (corner1[0] + corner3[0]) / 2.0f;
+       dcorner1 [1] = dcorner2[1] = (corner1[1] + corner3[1]) / 2.0f;
+       dcorner1 [2] = dcorner2[2] = (corner1[2] + corner3[2]) / 2.0f;   
        corner2 = dcorner1;
        corner4 = dcorner2;  
        break;

@@ -531,7 +531,7 @@ void AlienImage_GIFAlienData::FromPseudoColorImage (
     // Build colors from colormap
     for (i = 1; i <= aColorMap -> Size (); i++) {
       entry = aColorMap -> Entry (i);
-      ei = entry.Index ();
+      ei = (BYTE)entry.Index ();
       color = entry.Color ();
       color.Values (r, g, b, Quantity_TOC_RGB);
       RED  [ei] = (BYTE)(r*255.);

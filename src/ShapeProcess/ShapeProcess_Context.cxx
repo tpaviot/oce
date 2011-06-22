@@ -62,7 +62,7 @@ Handle(Resource_Manager) ShapeProcess_Context::LoadResourceManager (const Standa
   // Optimisation of loading resource file: file is load only once
   // and reloaded only if file date has changed
   static Handle(Resource_Manager) sRC;
-  static long mtime;
+  static time_t mtime;
   static TCollection_AsciiString name;
   if ( ! sRC.IsNull() && ! name.IsEqual ( file ) ) sRC.Nullify();
   if ( ! sRC.IsNull() ) {

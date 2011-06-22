@@ -444,7 +444,7 @@ void  TopTools_ShapeSet::Write(Standard_OStream& OS)
   // on positionne LC_NUMERIC a "C" (point decimal)
   setlocale(LC_NUMERIC, "C") ;
 
-  int  prec = OS.precision(15);
+  std::streamsize  prec = OS.precision(15);
 
   // write the copyright
   if (myFormatNb == 2)

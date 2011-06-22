@@ -235,8 +235,8 @@ CGMObin(FILE *stream, Code c, Long *pi, Float *pr, char *str)
 
 /*  Calculate length of packed list in bytes per row */
 
-                  packed += ( (cur.color_mode == DIRECT ? 3*nx : nx)
-                               * lprec + 7 )>>3;
+                  packed += (unsigned short)(( (cur.color_mode == DIRECT ? 3*nx : nx)
+                               * lprec + 7 )>>3);
 
 /*  Calculate length of run length in bits */
 
@@ -271,7 +271,7 @@ CGMObin(FILE *stream, Code c, Long *pi, Float *pr, char *str)
                   }
 
 /*  Convert runlength to bytes */
-                  run += (k + 7) >>3;
+                  run += (unsigned short)((k + 7) >>3);
                }
 
                if ( first )
@@ -1116,7 +1116,7 @@ CGMObin(FILE *stream, Code c, Long *pi, Float *pr, char *str)
                for ( j=0; j < num; j++ )
                {
                   type = *pt++; value = (*pt++) + 1;
-                  if ( type < ASFS ) asflag[type] = value;
+                  if ( type < ASFS ) asflag[type] = (Logical)value;
                   else
                   {
                      switch ( type )
@@ -1136,7 +1136,7 @@ CGMObin(FILE *stream, Code c, Long *pi, Float *pr, char *str)
                         default:      /* ignore  */
                            k = 1; l = 0; break;
                      }
-                     for ( n = k; n < l; n++ ) asflag[n] = value;
+                     for ( n = k; n < l; n++ ) asflag[n] = (Logical)value;
                   }
                }
                for ( j=0; j < ASFS; j++)

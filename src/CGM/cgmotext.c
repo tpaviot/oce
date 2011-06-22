@@ -1103,7 +1103,7 @@ MOTprcode ( Code code )
       strcpy(c, cgmelement[index].string);
 
       if ( ! upcase )
-         for ( i = 0; i < (int)strlen(c); i++) c[i] = tolower( c[i] );
+         for ( i = 0; i < (int)strlen(c); i++) c[i] = (char)tolower( c[i] );
 
       TEXTOUT "%s", c );
       return;

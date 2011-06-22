@@ -1892,7 +1892,7 @@ MOCcells (register Long n, register Long *pi, Enum mode, Prec prec)
     using local precision 'prec' (if zero use current precision)
     and colour mode 'mode'  */
 
-   register Long i, j, k, num;
+   register Long i = 0, j, k, num;
    static Logical first = TRUE;
    static Long normal_list, bit_stream, run_length, run_bits, colbytes;
    Posint red, green, blue, lastred, lastgreen, lastblue;

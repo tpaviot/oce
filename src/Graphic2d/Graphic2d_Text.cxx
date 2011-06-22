@@ -371,7 +371,7 @@ Standard_ShortReal wscale,hscale;
 Standard_Boolean status;
 
     myAdjustFlag = Adjust;
-    if(( status = TextSize(twidth,theight,txoffset,tyoffset) )) {
+    if(( status = TextSize(twidth,theight,txoffset,tyoffset) ) == Standard_True ) {
       wscale = Standard_ShortReal(aWidth/twidth);
       if( wscale > 0. ) {
 	if( Expand || (twidth > aWidth) ) myWScale *= wscale;
@@ -395,7 +395,7 @@ Quantity_Length twidth,theight,txoffset,tyoffset;
 //Standard_ShortReal wscale,hscale;
 Standard_Boolean status;
 
-    if(( status = TextSize(twidth,theight,txoffset,tyoffset) )) {
+    if(( status = TextSize(twidth,theight,txoffset,tyoffset) ) == Standard_True ) {
       Standard_Integer l = myText.Length();
       while( (l > 1) && (twidth > aWidth) ) {
         --l;
@@ -427,7 +427,7 @@ Standard_Boolean status = Standard_False;
           aDrawer->SetTextAttrib(myColorIndex,myFontIndex,
 					mySlant,hscale,wscale,myIsUnderlined);
           if(( status = 
-		aDrawer->GetTextSize(myText,width,height,xoffset,yoffset) )) {
+		aDrawer->GetTextSize(myText,width,height,xoffset,yoffset) ) == Standard_True ) {
 #ifndef PERF
 	    myResetFlag = Standard_False;
 #endif

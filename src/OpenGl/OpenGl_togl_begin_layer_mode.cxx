@@ -616,7 +616,7 @@ call_togl_text2d ( char *s,
 
   FTGLLayerFontCurrent = textRender->FindFont( FTGLLayerFontName,
                                                FTGLLayerFontAspect,
-                                               FTGLLayerFontHeight,
+                                               (Tfloat)FTGLLayerFontHeight,
                                                FTGLLayerFontXScale,
                                                FTGLLayerFontYScale );
 
@@ -894,9 +894,9 @@ call_togl_textsize2d
 
   if ( FTGLLayerFontHeight != height || layerFontFlag == IsModified || FTGLLayerFontCurrent == 0 ) {
     layerFontFlag = IsNotModified;
-    FTGLLayerFontHeight = height;  
+    FTGLLayerFontHeight = (Tint)height;  
     OpenGl_TextRender*  textRender =  OpenGl_TextRender::instance();
-    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, FTGLLayerFontHeight);
+    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, (Tfloat)FTGLLayerFontHeight);
     textRender -> StringSize(s, &FTGLLayerFontWidth, &FTGLLayerFontAscent, &FTGLLayerFontDescent);
   }
 
@@ -1042,7 +1042,7 @@ call_togl_set_text_attributes
     FTGLLayerFontAspect = OSD_FA_Regular;
 
     OpenGl_TextRender*  textRender =  OpenGl_TextRender::instance();
-    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, FTGLLayerFontHeight);
+    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, (Tfloat)FTGLLayerFontHeight);
 
     layerFontType = type;
     layerFontRed = r;
@@ -1087,7 +1087,7 @@ void call_togl_set_text_attributes( Tchar* font,
     layerFontFlag = IsModified;
     FTGLLayerFontXScale = FTGLLayerFontYScale = 1.f;
     OpenGl_TextRender*  textRender =  OpenGl_TextRender::instance();
-    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, FTGLLayerFontHeight);
+    FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, (Tfloat)FTGLLayerFontHeight);
    
     layerFontRed = r;
     layerFontGreen = g;

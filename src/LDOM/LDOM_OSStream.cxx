@@ -90,6 +90,7 @@ Standard_CString LDOM_SBuffer::str () const
 //=======================================================================
 int LDOM_SBuffer::overflow(int c)
 {
+  // @todo This buffer should not be "int"
   char cc = c;
   return xsputn(&cc,1);
 }

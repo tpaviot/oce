@@ -629,7 +629,7 @@ void V3d_Camera::AerialPilot( const Handle(V3d_View)& aView,
 
   Standard_Real    Xp,Yp,Zp,Xc,Yc,Zc,Xv,Yv,Zv,Xf,Yf,Zf;
   Standard_Real    VX,VY,VZ,DXH,DYH,DZH,A,B,C,PXT,PYT,X1,Y1,Z1,Dist;
-  Standard_Real    Height,Width,Beta,CosBeta,SinBeta,Coef;
+  Standard_Real    Height,Width = 0.0,Beta,CosBeta,SinBeta,Coef;
   Standard_Integer IPX,IPY,IHeight,IWidth;
   TColStd_Array2OfReal   MatRot(0,2,0,2);
   
@@ -693,7 +693,7 @@ void V3d_Camera::EarthPilot( const Handle(V3d_View)& aView,
 
   Standard_Real    Xp,Yp,Zp,Xc,Yc,Zc,Xv,Yv,Zv,Xf,Yf,Zf;
   Standard_Real    VX,VY,VZ,DXH,DYH,DZH,A,B,C,PXT,PYT,X1,Y1,Z1,Dist;
-  Standard_Real    Height,Width,Beta,CosBeta,SinBeta,Coef;
+  Standard_Real    Height,Width = 0.0,Beta,CosBeta,SinBeta,Coef;
   Standard_Integer IPX,IPY,IHeight,IWidth;
   TColStd_Array2OfReal   MatRot(0,2,0,2);
 

@@ -90,13 +90,13 @@ void OpenGl_GraphicDriver::GradientBackground(const Graphic3d_CView& ACView,
   AColor1.Values( R1, G1, B1, Quantity_TOC_RGB );
   AColor2.Values( R2, G2, B2, Quantity_TOC_RGB );
   TEL_COLOUR tcolor1, tcolor2;
-  tcolor1.rgb[0] = R1;
-  tcolor1.rgb[1] = G1;
-  tcolor1.rgb[2] = B1;
+  tcolor1.rgb[0] = (float)R1;
+  tcolor1.rgb[1] = (float)G1;
+  tcolor1.rgb[2] = (float)B1;
   tcolor1.rgb[3] = 0;
-  tcolor2.rgb[0] = R2;
-  tcolor2.rgb[1] = G2;
-  tcolor2.rgb[2] = B2;
+  tcolor2.rgb[0] = (float)R2;
+  tcolor2.rgb[1] = (float)G2;
+  tcolor2.rgb[2] = (float)B2;
   tcolor2.rgb[3] = 0;
 
   call_togl_gradient_background (MyCView.WsId, AType, &tcolor1, &tcolor2);
@@ -227,8 +227,8 @@ Standard_Boolean OpenGl_GraphicDriver::ProjectRaster (const Graphic3d_CView& ACV
 
   if ( ACView.DefBitmap.bitmap ) {
     Result = call_togl_adopt_to_rect( ACView.ViewId,
-      ACView.DefWindow.dx,
-      ACView.DefWindow.dy );
+      (int)ACView.DefWindow.dx,
+      (int)ACView.DefWindow.dy );
     if (MyTraceLevel) {
       PrintIResult ("call_togl_adopt_to_rect", Result);
     }

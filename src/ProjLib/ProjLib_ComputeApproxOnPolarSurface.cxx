@@ -102,7 +102,7 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
   if((Type != GeomAbs_BSplineSurface) && 
      (Type != GeomAbs_BezierSurface)  &&
      (Type != GeomAbs_OffsetSurface)    ) {
-    Standard_Real S, T;
+    Standard_Real S = 0.0, T = 0.0;
     switch (Type) {
 //    case GeomAbs_Plane:
 //      {
@@ -1170,11 +1170,13 @@ Handle(Adaptor2d_HCurve2d)
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:57:51 2002 End
     return Handle(Adaptor2d_HCurve2d)();
   }
+#ifndef _MSC_VER
   myProjIsDone = Standard_False;
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:58:01 2002 Begin
 //   Standard_NoSuchObject_Raise_if(1,"ProjLib_ComputeOnPS: build echec");
 //  Modified by Sergey KHROMOV - Thu Apr 18 10:58:02 2002 End
   return Handle(Adaptor2d_HCurve2d)();
+#endif
 }
 
 

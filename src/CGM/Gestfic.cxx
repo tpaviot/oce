@@ -12,7 +12,7 @@ FILE* OPEN_FILE (char* f_name, int TypeCgm)
   switch (TypeCgm){
     case 1:
     case 2:
-      if ((filed = fopen(f_name,"wb" ))) {
+      if ((filed = fopen(f_name,"wb" )) != NULL) {
 #ifdef WNT
         chmod (f_name, S_IREAD | S_IWRITE);
 #else
@@ -22,7 +22,7 @@ FILE* OPEN_FILE (char* f_name, int TypeCgm)
       }
       break;
     case 3:
-      if ((filed = fopen(f_name,"w" ))) {
+      if ((filed = fopen(f_name,"w" )) != NULL) {
 #ifdef WNT
         chmod (f_name, S_IREAD | S_IWRITE);
 #else

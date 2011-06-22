@@ -481,9 +481,10 @@
 	      //error: can not find SplitIndex
 	      throw 
 		BOPTColStd_Failure(" BOPTools_PaveFiller::DoSDEdges()=> can not find SplitIndex");
-	      
+#ifndef _MSC_VER
 	      myIsDone=Standard_False;
 	      return;
+#endif
 	    }
 	    
 	  } // if (aPBTool1.IsEqual(aPBObj2) && aPBTool2.IsEqual(aPBObj1)) 
@@ -520,8 +521,10 @@
 	    //error: can not find SplitIndex
 	    throw 
 		BOPTColStd_Failure(" BOPTools_PaveFiller::DoSDEdges()=> can not find SplitIndex");
+#ifndef _MSC_VER
 	    myIsDone=Standard_False;
 	    return;
+#endif
 	  }
 	}
       }

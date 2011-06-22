@@ -50,9 +50,9 @@ void V2d_RectangularGraphicGrid::Draw(const Handle(Graphic2d_Drawer)& aDrawer) {
 #ifdef OCC194
   if (Abs(a1) > 0.0)
   {
-    Standard_ShortReal alpha = a1 - ((Standard_Integer)(a1/1.57))*1.57;
-    alpha = alpha - 1.57/2.0;
-    Coef = Abs(Coef * 1.41 * Cos(alpha));
+    Standard_ShortReal alpha = Standard_ShortReal( a1 - ((Standard_Integer)(a1/1.57))*1.57 );
+    alpha = Standard_ShortReal ( alpha - 1.57/2.0 ); // @todo These numbers should really be PI / 2 and PI / 4
+    Coef = (Standard_ShortReal) Abs(Coef * 1.41 * Cos(alpha));
   }
 #endif
 

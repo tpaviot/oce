@@ -39,6 +39,7 @@ Standard_Boolean OpenGl_GraphicDriver
   if ( call_togl_isdepthtest( &MyCView ) )
     return Standard_True;
 #endif
+  return Standard_True;
 }
 
 void OpenGl_GraphicDriver::ReadDepths( const Graphic3d_CView& view,
@@ -68,6 +69,7 @@ Standard_Boolean OpenGl_GraphicDriver
   if ( call_togl_isgllight( &MyCView ) )
     return Standard_True;
 #endif
+    return Standard_True;
 }
 
 void OpenGl_GraphicDriver :: PrimitiveArray( const Graphic3d_CGroup& ACGroup,

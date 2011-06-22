@@ -334,7 +334,7 @@ Standard_Boolean Graphic2d_Drawer::GetImageSize(
     Standard_Integer width,height;
 
         if( myDriverIsDefined ) {
-          if(( theStatus = myDriver->SizeOfImageFile(aFileName,width,height))){
+          if(( theStatus = myDriver->SizeOfImageFile(aFileName,width,height)) == Standard_True ){
             aWidth = Standard_ShortReal(myDriver->Convert(width)/Scale());
             aHeight = Standard_ShortReal(myDriver->Convert(height)/Scale());
           }

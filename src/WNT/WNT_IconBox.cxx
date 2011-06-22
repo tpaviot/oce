@@ -363,7 +363,7 @@ Aspect_Handle WNT_IconBox :: IconPixmap (
  int                len = myImages -> Size ();
  int                i, w, h;
  Handle( WNT_Icon ) icon;
- HPALETTE           hOldPal;
+ HPALETTE           hOldPal = NULL;
 
  Handle( WNT_GraphicDevice ) gDev = Handle( WNT_GraphicDevice ) ::
                                      DownCast (  GraphicDevice ()  );

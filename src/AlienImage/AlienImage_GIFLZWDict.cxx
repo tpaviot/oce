@@ -56,7 +56,7 @@ int _lzw_encode (OSD_File& file, const BYTE* pData, int width, int height, int i
 
   _init_dict ();
 
-  byte = startBits;
+  byte = (BYTE) startBits;
 
   file.Write (&byte, sizeof(byte));
   if (file.Failed ())
@@ -79,7 +79,7 @@ int _lzw_encode (OSD_File& file, const BYTE* pData, int width, int height, int i
     else {
       dict[ i ].code = nextCode++;
       dict[ i ].prnt = strCode;
-      dict[ i ].byte = chr;
+      dict[ i ].byte = (BYTE) chr;
 
       if (!_put_bits (OutBuff, (ULONG) strCode, codeBits, file))
         goto _ExitError;
@@ -161,7 +161,7 @@ static BOOL _put_bits (BYTE *OutBuff, ULONG code, UINT nBits, OSD_File& file)
     mask <<= 1;
 
     if ((mask & 0xFF) == 0) {
-      OutBuff[ putIdx++ ] = rack;
+      OutBuff[ putIdx++ ] = (BYTE) rack;
       ++OutBuff[ 0 ];
       
       if (putIdx == BUFF_SIZE) {
@@ -188,7 +188,7 @@ static BOOL _flush_bits (BYTE* OutBuff, OSD_File& file)
   BYTE  byte;
   
   if ( mask != 0x01 ) {
-    OutBuff[ putIdx++ ] = rack;
+    OutBuff[ putIdx++ ] = (BYTE) rack;
     ++OutBuff[ 0 ];
   }
     
@@ -474,7 +474,7 @@ freeMemory_1:
       
    }  // end if
 
-   *picptr++ = index;
+   *picptr++ = (BYTE)  index;
    ++col;
    ++pP;
   
@@ -582,13 +582,13 @@ static chist_vec __fastcall mediancut (
    pixel p;
    int   rl, gl, bl;
 
-   PPM_ASSIGN( p, maxr - minr, 0, 0 );      
+   PPM_ASSIGN(p, (BYTE)(maxr - minr), 0, 0 );      
    rl = PPM_LUMIN( p );
 
-   PPM_ASSIGN( p, 0, maxg - ming, 0 );
+   PPM_ASSIGN( p, 0, (BYTE)(maxg - ming), 0 );
    gl = PPM_LUMIN( p );
 
-   PPM_ASSIGN( p, 0, 0, maxb - minb );
+   PPM_ASSIGN( p, 0, 0, (BYTE)(maxb - minb) );
    bl = PPM_LUMIN( p );
 
    if ( rl >= gl && rl >= bl )
@@ -907,7 +907,7 @@ static int __fastcall quick_check (
     
    }  // end while
 
-   *pix++ = mid;
+   *pix++ = (BYTE)mid;
 
   }  // end for ( j . . . )
 

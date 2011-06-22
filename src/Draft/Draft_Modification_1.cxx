@@ -991,8 +991,8 @@ void Draft_Modification::Perform ()
 			  theSurf = S2;		    
 			}
 			if(detrompeur != 0 && detrompeur != 4) {
-			  Standard_Real ul, vl, uf, vf;
-			  Standard_Real ufprim, ulprim, vfprim, vlprim;
+			  Standard_Real ul = 0.0, vl = 0.0, uf = 0.0, vf = 0.0;
+			  Standard_Real ufprim = 0.0, ulprim = 0.0, vfprim = 0.0, vlprim = 0.0;
 			  
 			  if(theSurf->DynamicType() == STANDARD_TYPE(Geom_Plane)) {	
 			    gp_Pln pl = Handle(Geom_Plane)::DownCast(S2)->Pln();
