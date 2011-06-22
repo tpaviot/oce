@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
 /*
+Modify this file to test gtest features, assertions etc.
+
 This example demonstrates how to use gtest to conduct C++ unittesting
 with CTest/CMake.
 A TestSuite is by definition composed of several testCases.

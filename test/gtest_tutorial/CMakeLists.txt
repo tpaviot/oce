@@ -1,6 +1,0 @@
-FILE(GLOB TEST_SOURCES *.cpp)
-SET(SOURCE_FILES ${TEST_SOURCES})
-
-ADD_EXECUTABLE(gtest_tutorial ${SOURCE_FILES})
-TARGET_LINK_LIBRARIES(gtest_tutorial gcov ${GTEST_LIBRARY} ${GTEST_MAIN_LIBRARY})
-ADD_TEST(gtest_tutorial  gtest_tutorial)

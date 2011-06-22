@@ -1,7 +1,7 @@
 #include <gp_Pnt.hxx>
 #include <gtest/gtest.h>
 
-TEST(TestSuite, testgp_PntConstruct)
+TEST(gpTestSuite, testgp_PntConstruct)
 {
     gp_Pnt P;
     ASSERT_EQ(0.0,P.X());
@@ -9,7 +9,7 @@ TEST(TestSuite, testgp_PntConstruct)
     ASSERT_EQ(0.0,P.Z());
 }
 
-TEST(TestSuite, testgp_PntDistance)
+TEST(gpTestSuite, testgp_PntDistance)
 {
     gp_Pnt P1(0.,0.,0.);
     gp_Pnt P2(0.,3.,4.);
@@ -17,7 +17,7 @@ TEST(TestSuite, testgp_PntDistance)
     ASSERT_EQ(5.,D);
 }
 
-TEST(TestSuite, testBuildThousandsPoints)
+TEST(gpTestSuite, testBuildThousandsPoints)
 {
     for (int i=1;i<10000;i++) {
         gp_Pnt(1,2,3);
