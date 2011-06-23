@@ -805,6 +805,8 @@ IF(${PROJECT_NAME}_TESTING)
 ENDIF(${PROJECT_NAME}_TESTING)
 IF(${PROJECT_NAME}_COVERAGE)
     SET(${PROJECT_NAME}_TESTING ON CACHE BOOL "Testing enabled by coverage option" FORCE)
+    # build static libs, better coverage report
+    SET( ${PROJECT_NAME}_BUILD_SHARED_LIB OFF CACHE BOOL "Build static libs" FORCE )
     SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
     SET(CMAKE_C_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
     SET(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
