@@ -61,7 +61,7 @@ FOREACH(MODULE ${TOOLKIT_MODULES})
 
 	IF (WIN32)
 		# For compilers under Windows a define must be set per file to correctly set the export macro
-		SET_SOURCE_FILES_PROPERTIES(${source_files} PROPERTIES COMPILE_FLAGS "-D__${MODULE}_DLL")
+		ADD_DEFINITIONS("-D__${MODULE}_DLL")
 	ENDIF(WIN32)
 
 	SOURCE_GROUP (${MODULE} FILES ${source_files}) 
