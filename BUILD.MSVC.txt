@@ -6,6 +6,7 @@ OCE MSVC Build Instructions
   2.2) External Libraries
     2.2.1) Compile the libs by yourself
     2.2.2) Using OCE - BUNDLE
+    2.2.3) Using OCE - BUNDLE in-source build
 3) Extracting the sources
 4) Configuring
   4.1) Designate a build directory 
@@ -42,7 +43,6 @@ precompiled binaries if you just want to use it in a supported compiler.
     Some modules of OCE require external libraries. These include
 
     - freetype , required by Visualization
-    - FTGL , required by Visualization
     - TCL , required by DRAW
     - gl2ps and FreeImage , optionally required by Visualization
     - TBB , optionally required to to multithreading
@@ -75,6 +75,13 @@ precompiled binaries if you just want to use it in a supported compiler.
         http://www.github.com/QbProg/oce-win-bundle
         
         In this example we will extract the precompiled bundle in C:\oce-win-bundle-win32\
+        
+     2.2.3) Using OCE - BUNDLE in source
+       Starting from version 0.12 the bundle can be built along OCE, in the same
+       cmake build configuration.
+       Use the OCE_USE_BUNDLE_SOURCE variable to enable this behavior.
+
+       In this case, just make sure to have the bundle source code extracted somewhere.
   --
     
 3) Extracting the sources
@@ -138,8 +145,17 @@ precompiled binaries if you just want to use it in a supported compiler.
       
       It should automatically set all the library paths. Some of them will appear in red, but the CONFIGURE phase will end successfully at 
       this time. You should check this in the output window at the bottom of cmake-gui
-      
-    4.5.3) Using your own compiled libs
+    
+    4.5.3) In-source OCE bundle
+     
+       - Enable the OCE_USE_BUNDLE_SOURCE option
+       - Press Configure
+       - Set OCE_BUNDLE_ROOT_PATH to point the *source* directory of the oce-win-bundle
+       - Configure again
+       
+       The libraries will be built in the OCE solution and will be available in the binaries directory.
+         
+    4.5.4) Using your own compiled libs
       For each lib, set the appropriate fields pointing to the include directories or libraries.
       For example, you will have to set FREETYPE_INCLUDE_DIR to C:/freetype-???/include/ and so on...
       Reconfigure until all the errors go away
