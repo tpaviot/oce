@@ -1,0 +1,16 @@
+#pragma once
+
+#include "math.hxx"
+#include "math_Matrix.hxx"
+#include "gp.hxx"
+#include "gp_Pnt.hxx"
+#include "gp_XYZ.hxx"
+#include "gp_Mat.hxx"
+#include "Precision.hxx"
+#include "../TKernel/Precompiled.h"
+#include "Standard_Type.hxx"
+#include "Standard_TypeDef.hxx"
+#include "StdFail_NotDone.hxx"
+#include "Standard_DimensionError.hxx"
+#include "MMgt_TShared.hxx"
+#include "Standard_Transient.hxx"

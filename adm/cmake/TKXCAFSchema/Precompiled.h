@@ -1,0 +1,11 @@
+#pragma once
+#include "../TKernel/Precompiled.h"
+#include "../TKMath/Precompiled.h"
+#include "../TKGeomBase/Precompiled.h"
+#include "../TKG2d/Precompiled.h"
+#include "../TKG3d/Precompiled.h"
+#include "../TKTopAlgo/Precompiled.h"
+#include "../TKLCAF/Precompiled.h"
+#include "../TKCDF/Precompiled.h"
+#include "../TKShapeSchema/Precompiled.h"
+#include "../TKService/Precompiled.h"
