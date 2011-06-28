@@ -1,0 +1,13 @@
+#pragma once
+#include "../TKernel/Precompiled.h"
+#include "../TKMath/Precompiled.h"
+#include "../TKG2d/Precompiled.h"
+#include "../TKG3d/Precompiled.h"
+#include "ProjLib.hxx"
+#include "GeomLib.hxx"
+#include "GeomProjLib.hxx"
+#include "BndLib.hxx"
+#include "gce_Root.hxx"
+#include "GeomConvert.hxx"
+#include "Geom2dConvert.hxx"
+#include "GeomTools.hxx"

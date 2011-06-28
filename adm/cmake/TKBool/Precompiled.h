@@ -1,0 +1,21 @@
+#pragma once
+
+#include "../TKTopAlgo/Precompiled.h"
+#include "../TKBO/Precompiled.h"
+#include "../TKPrim/Precompiled.h"
+#include "../TKShHealing/Precompiled.h"
+
+#include "BRepAlgo_Tool.hxx"
+#include "BRepAlgo_Fuse.hxx"
+#include "BRepAlgo_Cut.hxx"
+#include "BRepAlgo_Common.hxx"
+#include "BRepAlgo_TopOpe.hxx"
+#include "BRepAlgo_Loop.hxx"
+#include "BRepFill_Filling.hxx"
+#include "BRepFill_Generator.hxx"
+#include "BRepFill_Draft.hxx"
+#include "TopOpeBrep.hxx"
+#include "TopOpeBRepBuild_Builder.hxx"
+#include "TopOpeBRepDS.hxx"
+#include "TopOpeBRepTool.hxx"
+#include "TopOpeBRepTool_2d.hxx"
