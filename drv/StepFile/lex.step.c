@@ -258,7 +258,6 @@ YY_BUFFER_STATE yy_scan_string YY_PROTO(( yyconst char *str ));
 YY_BUFFER_STATE yy_scan_bytes YY_PROTO(( yyconst char *bytes, int len ));
 
 static void *yy_flex_alloc YY_PROTO(( yy_size_t ));
-static void *yy_flex_realloc YY_PROTO(( void *, yy_size_t ));
 static void yy_flex_free YY_PROTO(( void * ));
 
 #define yy_new_buffer yy_create_buffer
@@ -290,7 +289,6 @@ extern char *yytext;
 static yy_state_type yy_get_previous_state YY_PROTO(( void ));
 static yy_state_type yy_try_NUL_trans YY_PROTO(( yy_state_type current_state ));
 static int yy_get_next_buffer YY_PROTO(( void ));
-static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
@@ -536,10 +534,6 @@ extern "C" int yywrap YY_PROTO(( void ));
 #else
 extern int yywrap YY_PROTO(( void ));
 #endif
-#endif
-
-#ifndef YY_NO_UNPUT
-static void yyunput YY_PROTO(( int c, char *buf_ptr ));
 #endif
 
 #ifndef yytext_ptr
@@ -1258,50 +1252,6 @@ yy_state_type yy_current_state;
 	}
 
 
-#ifndef YY_NO_UNPUT
-#ifdef YY_USE_PROTOS
-static void yyunput( int c, register char *yy_bp )
-#else
-static void yyunput( c, yy_bp )
-int c;
-register char *yy_bp;
-#endif
-	{
-	register char *yy_cp = yy_c_buf_p;
-
-	/* undo effects of setting up yytext */
-	*yy_cp = yy_hold_char;
-
-	if ( yy_cp < yy_current_buffer->yy_ch_buf + 2 )
-		{ /* need to shift things up to make room */
-		/* +2 for EOB chars. */
-		register int number_to_move = yy_n_chars + 2;
-		register char *dest = &yy_current_buffer->yy_ch_buf[
-					yy_current_buffer->yy_buf_size + 2];
-		register char *source =
-				&yy_current_buffer->yy_ch_buf[number_to_move];
-
-		while ( source > yy_current_buffer->yy_ch_buf )
-			*--dest = *--source;
-
-		yy_cp += (int) (dest - source);
-		yy_bp += (int) (dest - source);
-		yy_n_chars = yy_current_buffer->yy_buf_size;
-
-		if ( yy_cp < yy_current_buffer->yy_ch_buf + 2 )
-			YY_FATAL_ERROR( "flex scanner push-back overflow" );
-		}
-
-	*--yy_cp = (char) c;
-
-
-	yytext_ptr = yy_bp;
-	yy_hold_char = *yy_cp;
-	yy_c_buf_p = yy_cp;
-	}
-#endif	/* ifndef YY_NO_UNPUT */
-
-
 #ifdef __cplusplus
 static int yyinput()
 #else
@@ -1690,17 +1640,6 @@ static int yy_top_state()
 #define YY_EXIT_FAILURE 2
 #endif
 
-#ifdef YY_USE_PROTOS
-static void yy_fatal_error( yyconst char msg[] )
-#else
-static void yy_fatal_error( msg )
-char msg[];
-#endif
-	{
-	(void) fprintf( stderr, "%s\n", msg );
-	exit( YY_EXIT_FAILURE );
-	}
-
 
 
 /* Redefine yyless() so it works in section 3 code. */
@@ -1762,24 +1701,6 @@ yy_size_t size;
 #endif
 	{
 	return (void *) malloc( size );
-	}
-
-#ifdef YY_USE_PROTOS
-static void *yy_flex_realloc( void *ptr, yy_size_t size )
-#else
-static void *yy_flex_realloc( ptr, size )
-void *ptr;
-yy_size_t size;
-#endif
-	{
-	/* The cast to (char *) in the following accommodates both
-	 * implementations that use char* generic pointers, and those
-	 * that use void* generic pointers.  It works with the latter
-	 * because both ANSI C and C++ allow castless assignment from
-	 * any pointer type to void*, and deal with argument conversions
-	 * as though doing an assignment.
-	 */
-	return (void *) realloc( (char *) ptr, size );
 	}
 
 #ifdef YY_USE_PROTOS
