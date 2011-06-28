@@ -857,7 +857,7 @@ static
   Standard_Integer IntTools_EdgeFace::MakeType(IntTools_CommonPrt&  aCommonPrt)
 {
   Standard_Real  af1, al1;
-  Standard_Real dt, df1, df2, tm;
+  Standard_Real df1, tm;
   Standard_Boolean bAllNullFlag;
   //
   bAllNullFlag=aCommonPrt.AllNullFlag();
