@@ -277,6 +277,7 @@ static Graphic3d_Vertex& _MyProjReferencePoint() {
 
 V3d_View::V3d_View(const Handle(V3d_Viewer)& VM, const V3d_TypeOfView Type ) :
 MyType ( Type ),
+MyProjModel(V3d_TPM_SCREEN),
 MyViewer(VM.operator->()),
 MyActiveLights(),
 MyActivePlanes(),
@@ -284,8 +285,7 @@ MyViewContext (),
 myActiveLightsIterator(),
 myActivePlanesIterator(),
 SwitchSetFront(Standard_False),
-MyTrsf (1, 4, 1, 4),                                    // S3892
-MyProjModel(V3d_TPM_SCREEN)
+MyTrsf (1, 4, 1, 4)                                    // S3892
 #if defined(TRACE_POINTS)
 ,MyGridEchoStructure (new Graphic3d_Structure (VM->Viewer ())),  // S3892
 MyGridEchoGroup (new Graphic3d_Group (MyGridEchoStructure))            // S3892
@@ -397,6 +397,7 @@ MyGridEchoGroup (new Graphic3d_Group (MyGridEchoStructure))            // S3892
 
 V3d_View::V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V, const V3d_TypeOfView Type ) :
 MyType ( Type ),
+MyProjModel(V3d_TPM_SCREEN),
 MyViewer(VM.operator->()),
 MyActiveLights(),
 MyActivePlanes(),
@@ -404,8 +405,7 @@ MyViewContext (),
 myActiveLightsIterator(),
 myActivePlanesIterator(),
 SwitchSetFront(Standard_False),
-MyTrsf (1, 4, 1, 4),                                    // S3892
-MyProjModel(V3d_TPM_SCREEN)
+MyTrsf (1, 4, 1, 4)                                    // S3892
 #if defined(TRACE_POINTS)
 ,MyGridEchoStructure (new Graphic3d_Structure (VM->Viewer ())),  // S3892
 MyGridEchoGroup (new Graphic3d_Group (MyGridEchoStructure))      // S3892

@@ -8,8 +8,8 @@
 
 
 // ============================================================
-IntSurf_Quadric::IntSurf_Quadric ():typ(GeomAbs_OtherSurface),
-   prm1(0.), prm2(0.), prm3(0.), prm4(0.)
+IntSurf_Quadric::IntSurf_Quadric ():
+   prm1(0.), prm2(0.), prm3(0.), prm4(0.),typ(GeomAbs_OtherSurface)
 {}
 // ============================================================
 IntSurf_Quadric::IntSurf_Quadric (const gp_Pln& P):

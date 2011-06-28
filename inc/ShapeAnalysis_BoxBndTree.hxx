@@ -26,8 +26,8 @@ class ShapeAnalysis_BoxBndTreeSelector
   ShapeAnalysis_BoxBndTreeSelector
     (Handle (TopTools_HArray1OfShape) theSeq,
      Standard_Boolean theShared)
-    :  mySeq(theSeq), myShared(theShared), myNb(0), myTol(1e-7), myMin3d(1e-7),
-      myStatus(ShapeExtend::EncodeStatus (ShapeExtend_OK)){}
+    :  mySeq(theSeq), myShared(theShared), myStatus(ShapeExtend::EncodeStatus (ShapeExtend_OK)),
+	   myNb(0), myTol(1e-7), myMin3d(1e-7){}
   
   void DefineBoxes (const Bnd_Box& theFBox, const Bnd_Box& theLBox)
     { myFBox = theFBox;
