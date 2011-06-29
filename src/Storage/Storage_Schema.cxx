@@ -209,7 +209,12 @@ Storage_BucketIterator::Storage_BucketIterator
     myCurrentIndex       = 0;
     myMoreObject         = Standard_True;
   }
-  else myMoreObject         = Standard_False;
+  else {
+    myBucket             = NULL;
+    myCurrentBucket      = 0;
+    myBucketNumber       = 0;
+    myMoreObject         = Standard_False;
+  }
 }
 
 //=======================================================================

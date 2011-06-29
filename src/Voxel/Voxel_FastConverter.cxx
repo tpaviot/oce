@@ -32,9 +32,9 @@ Voxel_FastConverter::Voxel_FastConverter(const TopoDS_Shape&    shape,
 					 const Standard_Integer nbz,
 					 const Standard_Integer nbthreads)
 :myShape(shape),myVoxels(&voxels),
- myDeflection(deflection),
+ myDeflection(deflection),myIsBool(2),
  myNbX(nbx),myNbY(nby),myNbZ(nbz),
- myNbThreads(nbthreads),myIsBool(2),
+ myNbThreads(nbthreads),
  myNbTriangles(0)
 {
   Init();
@@ -48,9 +48,9 @@ Voxel_FastConverter::Voxel_FastConverter(const TopoDS_Shape&    shape,
 					 const Standard_Integer nbz,
 					 const Standard_Integer nbthreads)
 :myShape(shape),myVoxels(&voxels),
- myDeflection(deflection),
+ myDeflection(deflection),myIsBool(1),
  myNbX(nbx),myNbY(nby),myNbZ(nbz),
- myNbThreads(nbthreads),myIsBool(1),
+ myNbThreads(nbthreads),
  myNbTriangles(0)
 {
   Init();
@@ -64,9 +64,9 @@ Voxel_FastConverter::Voxel_FastConverter(const TopoDS_Shape&    shape,
 					 const Standard_Integer nbz,
 					 const Standard_Integer nbthreads)
 :myShape(shape),myVoxels(&voxels),
- myDeflection(deflection),
+myDeflection(deflection),myIsBool(0),
  myNbX(nbx),myNbY(nby),myNbZ(nbz),
- myNbThreads(nbthreads),myIsBool(0),
+ myNbThreads(nbthreads),
  myNbTriangles(0)
 {
   Init();

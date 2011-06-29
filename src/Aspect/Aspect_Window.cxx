@@ -34,9 +34,10 @@ Aspect_Window::Aspect_Window (const Handle(Aspect_GraphicDevice)& aGraphicDevice
 : MyGraphicDevice(aGraphicDevice),
   MyBackground(),
   MyBackgroundImage(),
-  MyGradientBackground(),
   MyBackgroundFillMethod(Aspect_FM_NONE),
-  MyHBackground(0)
+  MyHBackground(0),
+  MyGradientBackground()
+  
 {
 }
 

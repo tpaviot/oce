@@ -5,11 +5,20 @@
 
 
 inline IntPatch_Point::IntPatch_Point ()
- : para(0.0), tol(0.0), tgt(Standard_False), mult(Standard_False),
-   onS1(Standard_False), vtxonS1(Standard_False), prm1(0.0),
-   onS2(Standard_False), vtxonS2(Standard_False), prm2(0.0),
-   vS1(NULL), vS2(NULL),
-   arcS1(NULL), arcS2(NULL)
+ : para(0.0),
+   tol(0.0),
+   tgt(Standard_False),
+   mult(Standard_False),
+   onS1(Standard_False),
+   vtxonS1(Standard_False),
+   vS1(NULL),
+   arcS1(NULL),
+   prm1(0.0),
+   onS2(Standard_False),
+   vtxonS2(Standard_False),
+   vS2(NULL),
+   arcS2(NULL),
+   prm2(0.0)
 {
 }
 

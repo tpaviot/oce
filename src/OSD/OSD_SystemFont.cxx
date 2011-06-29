@@ -24,8 +24,8 @@ OSD_SystemFont::OSD_SystemFont( const Handle(TCollection_HAsciiString)& FontName
                                 const Handle(TCollection_HAsciiString)& FilePath ):
 MyFontName(FontName),
 MyFontAspect(FontAspect),
-MyFilePath(FilePath),
 MyFaceSize(-1),
+MyFilePath(FilePath),
 MyVerification(Standard_True)
 {
 
@@ -33,8 +33,8 @@ MyVerification(Standard_True)
 
 OSD_SystemFont::OSD_SystemFont( const Handle(TCollection_HAsciiString)& XLFD,
                                 const Handle(TCollection_HAsciiString)& FilePath) :
-MyFilePath(FilePath),
-MyFontAspect(OSD_FA_Undefined)
+MyFontAspect(OSD_FA_Undefined),
+MyFilePath(FilePath)
 {
   MyVerification = Standard_True;
   if ( XLFD.IsNull() )
