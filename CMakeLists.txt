@@ -92,6 +92,11 @@ OPTION_WITH_DEFAULT( ${PROJECT_NAME}_WITH_GL2PS "Build with GL2PS" OFF )
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_WITH_FREEIMAGE "Build with FreeImage" OFF )
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_EXTRA_WARNINGS "Enable Maximum Warnings Level" OFF )
 MARK_AS_ADVANCED(${PROJECT_NAME}_EXTRA_WARNINGS)
+OPTION_WITH_DEFAULT( ${PROJECT_NAME}_TESTING "Enable unittesting framework" OFF )
+MARK_AS_ADVANCED(${PROJECT_NAME}_TESTING)
+OPTION_WITH_DEFAULT( ${PROJECT_NAME}_COVERAGE "Build with coverage testing" OFF )
+MARK_AS_ADVANCED(${PROJECT_NAME}_COVERAGE)
+
 
 IF( NOT DEFINED ${PROJECT_NAME}_MULTITHREAD_LIBRARY)
 	SET( ${PROJECT_NAME}_MULTITHREAD_LIBRARY "NONE" CACHE STRING "(values are: NONE TBB OPENMP)" )
@@ -794,6 +799,25 @@ INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION ${${
 IF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
 INSTALL(EXPORT ${PROJECT_NAME}-libraries DESTINATION ${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR} COMPONENT Development)
 ENDIF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
+
+###############
+# UnitTesting #
+###############
+IF(${PROJECT_NAME}_TESTING)
+    SET( ${PROJECT_NAME}_EXTRA_WARNINGS ON CACHE BOOL "Extra warnings required by testing framework" FORCE)
+    INCLUDE(CTest)
+    ENABLE_TESTING()
+    SUBDIRS(test)	
+ENDIF(${PROJECT_NAME}_TESTING)
+IF(${PROJECT_NAME}_COVERAGE)
+    SET(${PROJECT_NAME}_TESTING ON CACHE BOOL "Testing enabled by coverage option" FORCE)
+    # build static libs, better coverage report
+    SET( ${PROJECT_NAME}_BUILD_SHARED_LIB OFF CACHE BOOL "Build static libs" FORCE )
+    SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
+    SET(CMAKE_C_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
+    SET(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
+    SET(${PROJECT_NAME}_BUILD_TYPE "Debug" CACHE STRING "Build type required by testing framework" FORCE)
+ENDIF(${PROJECT_NAME}_COVERAGE)
 
 ###############################################################################
 # OCE Packaging                                                               #
