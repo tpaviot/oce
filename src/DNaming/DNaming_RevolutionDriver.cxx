@@ -315,7 +315,7 @@ static Standard_Boolean HasDangle(const TopoDS_Shape& ShapeIn)
     if(aCheck->Closed() == BRepCheck_NoError)
       return Standard_False;
     else
-      Standard_True;
+      return Standard_True;
   } else if (ShapeIn.ShapeType() == TopAbs_FACE ||
              ShapeIn.ShapeType() == TopAbs_WIRE ||
              ShapeIn.ShapeType() == TopAbs_EDGE ||
