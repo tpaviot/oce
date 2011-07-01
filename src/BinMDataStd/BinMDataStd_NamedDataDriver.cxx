@@ -162,7 +162,8 @@ Standard_Boolean BinMDataStd_NamedDataDriver::Paste(const BinObjMgt_Persistent& 
       Standard_Integer low, up;
       if (! (theSource >> low >> up))
         return Standard_False;
-      if(up < low) Standard_False;
+      if(up < low)
+		return Standard_False;
       if(low | up) {
         Handle(TColStd_HArray1OfReal) aTargetArray =
           new TColStd_HArray1OfReal(low, up);
