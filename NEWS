@@ -1,3 +1,32 @@
+Version 0.4.0 - July 2011
+
+This release focused on improving code quality and the cmake build system.
+
+ *   CPack support : including DEB,RPM and MacOsX package generation
+
+ *   CTest support : initial infrastructure to develop unit tests using 
+     googletest and CTest. Actually working in Linux and MacOsX.
+
+ *   CDash support : http://my.cdash.org/index.php?project=OCE to see the 
+     status of the tests on various platforms
+
+ *   Fixed many compiler warnings: this allows to have a cleaner compilation 
+     and helped in finding some bugs. Probably many of the annoying MSVC CRT 
+     debug error windows are also gone.
+     Some warnings may still be present, and will be fixed in successive versions.
+
+ *   Added NMake support
+ *   Drastically reduced MSVC compilation time, using precompiled headers
+
+ *   Added version information in Win32 DLLs: this information will be useful 
+     for installers and packaging systems.
+
+ *   Let OCEConfig.cmake use relative paths in order to allow moving 
+     install tree (related to Linux and MacOsX)
+
+Users who contributed to this release:
+     Thomas Paviot , Mark Pictor, Muellni,Denis Barbier, Hugh Sorby, QbProg
+
 Version 0.3.0 - June 2011
 
   * Make CMake work with MSVC.  This generator is special,
