@@ -1,0 +1,39 @@
+# - Config file for the OCE package
+# It defines the following variables
+#  OCE_INCLUDE_DIRS - include directory for OCE
+#  OCE_LIBRARIES    - all libraries to link against (warning, may be slower than just specify the used libs)
+#  OCE_ALL_FOUND    - set to TRUE if all requested COMPONENTS are specified (see below), false otherwise
+#  OCE_MISSING_TOOLKITS - when OCE_ALL_FOUND is FALSE, contains a list of missing toolkits
+#  OCE_ALL_BUILT_MODULES - the list of source directories compiled (mostly useful when running swig to generate wrappers)
+#
+# If COMPONENTS is specified in the find_package() commands, it contains
+# a list of toolkit modules which are requested.  For each component,
+# OCE_<toolkit>_FOUND is set to TRUE or FALSE.
+# Warning: <toolkit> is case-sensitive, for instance TKernel.
+# For convenience, OCE_ALL_FOUND is set to TRUE if all
+# toolkits are found, otherwise FALSE.  In the latter case,
+# OCE_MISSING_TOOLKITS contains the list of missing toolkits.
+
+# Tell the user project where to find our headers and libraries
+get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+set(OCE_INCLUDE_DIRS "${SELF_DIR}/@OCE_CMAKE_DATA_TO_INCLUDE_RELATIVE_DIR@")
+set(OCE_LIBRARIES "@OCE_LIBRARIES@")
+set(OCE_ALL_BUILT_MODULES "@OCE_ALL_BUILT_MODULES@")
+include("${SELF_DIR}/OCE-libraries.cmake")
+
+set(OCE_ALL_FOUND true)
+if(OCE_FIND_COMPONENTS)
+	foreach(toolkit ${OCE_FIND_COMPONENTS})
+		if(TARGET ${toolkit})
+			set(OCE_${toolkit}_FOUND true)
+		else(TARGET ${toolkit})
+			set(OCE_ALL_FOUND false)
+			set(OCE_${toolkit}_FOUND false)
+			set(OCE_MISSING_TOOLKITS ${OCE_MISSING_TOOLKITS} ${toolkit})
+			if(OCE_FIND_REQUIRED)
+				message(FATAL_ERROR "OCE ${toolkit} not available.")
+			endif(OCE_FIND_REQUIRED)
+		endif(TARGET ${toolkit})
+	endforeach(toolkit ${OCE_FIND_COMPONENTS})
+endif(OCE_FIND_COMPONENTS)

@@ -1,0 +1,158 @@
+Version 0.3.0 - June 2011
+
+  * Make CMake work with MSVC.  This generator is special,
+    it generates both Debug and Release configurations.
+    [QbProg]
+
+  * Add an option to enable maximum warning levels
+    [QbProg]
+
+  * Improve handling of CMake options
+    [Hugh Sorby]
+
+  * Fix build failures with g++ 4.6
+    [Denis Barbier]
+
+  * Clean up CMakeLists.txt, remove unused macros.
+    [Mark Pictor]
+
+  * Create two config files, one is used during compilation,
+    another one is used when linking against OCE.  The latter
+    contains fewer macros, and they are prefixed by OCE_ to
+    prevent name clashes.
+    [Mark Pictor]
+
+  * Start fixing compiler warnings.
+    [QbProg, Thomas Paviot]
+
+  * Create a bundle for MSVC
+    [QbProg]
+
+  * Fix cross compilation with Mingw.  We were not able to
+    build visualization stuff previously.
+    [Muellni]
+
+  * Install an OCEConfig.cmake file so that programs can use
+    FIND_PACKAGE(OCE) to set variables to link against OCE.
+    [Muellni]
+
+  * Undefine Convex before it is used by OCE as a method or
+    function, this may be a macro defined by X11.h
+    [Thomas Paviot]
+
+  * Remove -DLIN from compiler flags.  It still works on Linux,
+    and this causes crashes on Mac OSX.
+    [Thomas Paviot]
+
+  * Delete inc/TopOpeBRep_tools.hxx, this file is unused, and it
+    includes TopOpeBRepDS_tools.hxx which does not exist.
+    [Denis Barbier]
+
+  * Remove Autotools files for Unix and MSVC, CMake build system
+    works fine on these platforms.  We keep Borland project
+    files for now, this IDE is not supported by CMake.
+    [Thomas Paviot]
+
+Version 0.2.0 - May 2011
+
+  * Add CMake build files, based on the opencascade-cmake project
+      http://code.google.com/p/opencascade-cmake/
+    Works fine on Linux, needs more testing on Mac OSX and Windows.
+    [Hugh Sorby, Thomas Paviot, Mark Pictor, Denis Barbier, QbProg]
+
+  * Let CMake generate env.sh and env.csh scripts with
+    accurate variables.
+    [Denis Barbier]
+
+  * Fix lines in Visual3d_Layer class.
+    [Fotis Sioutis]
+
+  * Changes required to build OCE on some non-x86 architectures
+    on Unix.
+    [Denis Barbier]
+
+  * Add OpenMP support, users can choose between OpenMP and TBB.
+    [Denis Barbier]
+
+  * When building with CMake, paths are set at compile time so that
+    everything works without having to set environment variables.
+    [Denis Barbier]
+
+Version 0.1.0 - April 2011
+
+  * Import OCC 6.5.0
+    [Thomas Paviot]
+
+  * Add instructions for cloning/pulling with git and for
+    building from sources.
+    [Thomas Paviot]
+
+  * Replace Abs(foo < bar) by Abs(foo) < bar.
+    These bugs have been reported on the opencascade forum:
+      http://www.opencascade.org/org/forum/thread_20187/
+      BugID=OCC22324
+    [Fotis Sioutis]
+
+  * Rename guards for MSVC specific pragmas from WNT to _MSC_VER.
+    These are mainly #pragma warnings or MSVCRT specific things.
+    [QbProg]
+
+  * Fix build failures with Borland compiler.
+    [Fotis Sioutis]
+
+  * Add project files for Borland Developer Studio 10.
+    [Fotis Sioutis]
+
+  * Fix build failures with Mingw.
+    [Jérôme Robert]
+
+  * Add new Automake conditionals: HAVE_X11 and IS_WINDOWS.
+    When X11 is not found, do not compile sources from Xw and
+    ImageUtility. On Windows, compile files from ros/src/WNT.
+    [Denis Barbier]
+
+  * Improve Autools usage.
+    [Denis Barbier]
+
+  * Assume /usr when --with-gl2ps/--with-freeimage configure
+    options are specified without arguments.
+    Submitted upstream:
+      http://www.opencascade.org/org/forum/thread_20231/
+      BugID=OCC22335
+    [Mark Pictor]
+
+  * New --with-ftgl212 to declare FTGL 2.1.2 location.
+    Fix sources to also work with newer FTGL versions.
+    Submitted upstream:
+      http://www.opencascade.org/org/forum/thread_20128/
+      BugID = OCC22328
+    [Denis Barbier]
+
+  * Add missing clock_gettime implementation in MacOSX.
+    [Thomas Paviot]
+
+  * Remove duplicate header files.
+    [Fotis Sioutis]
+
+  * Fix build failure with tcl 8.6.
+    Submitted upstream:
+      http://www.opencascade.org/org/forum/thread_20125/
+      BugID = OCC22327
+    [Denis Barbier]
+
+  * Bug fix: text doesn't get displayed in 6.5.
+    Submitted upstream:
+      http://www.opencascade.org/org/forum/thread_20101/
+    [Venugopal Gudimetla]
+
+  * Fix building with FreeImage on Unix.
+    Submitted upstream:
+      http://www.opencascade.org/org/forum/thread_20043/
+    [Denis Barbier]
+
+  * Add -version-info 0:0:0 libtool flag on Unix.
+    [Denis Barbier]
+
+  * Rename config.h into oce-config.h.
+    [Denis Barbier]
+

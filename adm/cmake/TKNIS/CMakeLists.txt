@@ -1,0 +1,21 @@
+set(TOOLKIT TKNIS)
+
+set(TOOLKIT_MODULES
+	NIS
+)
+set(TOOLKIT_DEPENDS
+	TKBRep
+	TKV3d
+	TKMath
+	TKernel
+	TKService
+	TKG2d
+	TKG3d
+	TKMesh
+	TKOpenGl
+)
+set(TOOLKIT_LIBS ${OPENGL_LIBRARIES})
+set(TOOLKIT_INCLUDE_DIRECTORIES ${OPENGL_INCLUDE_DIR})
+
+include(../BuildToolkit.cmake)
+

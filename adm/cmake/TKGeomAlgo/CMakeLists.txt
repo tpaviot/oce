@@ -1,0 +1,50 @@
+set(TOOLKIT TKGeomAlgo)
+
+set(TOOLKIT_MODULES
+	Hatch
+	GeomInt
+	IntStart
+	IntWalk
+	IntImp
+	IntCurveSurface
+	IntSurf
+	IntPatch
+	Geom2dInt
+	IntImpParGen
+	IntRes2d
+	IntCurve
+	TopTrans
+	Intf
+	ApproxInt
+	GccAna
+	GccEnt
+	GccInt
+	GccIter
+	GccGeo
+	HatchGen
+	Geom2dHatch
+	Law
+	AppBlend
+	Plate
+	GeomPlate
+	LocalAnalysis
+	GeomAPI
+	GeomFill
+	Geom2dAPI
+	Geom2dGcc
+	FairCurve
+	NLPlate
+	IntPolyh
+	TopClass
+)
+set(TOOLKIT_DEPENDS
+	TKernel
+	TKMath
+	TKG3d
+	TKG2d
+	TKGeomBase
+	TKBRep
+)
+
+include(../BuildToolkit.cmake)
+

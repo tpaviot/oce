@@ -1,0 +1,19 @@
+set(TOOLKIT TKTObjDRAW)
+
+set(TOOLKIT_MODULES
+	TObjDRAW
+)
+set(TOOLKIT_DEPENDS
+	TKernel
+	TKCDF
+	TKLCAF
+	TKTObj
+	TKMath
+	TKDraw
+	TKDCAF
+)
+
+set(TOOLKIT_IS_PRIVATE TRUE)
+
+include(../BuildToolkit.cmake)
+

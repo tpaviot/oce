@@ -1,0 +1,4 @@
+set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS SRC_CASROOT="${OCE_SOURCE_DIR}" SRC_RESOURCE="${OCE_SOURCE_DIR}/src/UnitsAPI")
+
+add_oce_test(units_test "TKernel")
+

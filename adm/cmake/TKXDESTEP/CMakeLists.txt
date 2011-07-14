@@ -1,0 +1,23 @@
+set(TOOLKIT TKXDESTEP)
+
+set(TOOLKIT_MODULES
+	STEPCAFControl
+)
+set(TOOLKIT_DEPENDS
+	TKBRep
+	TKSTEPAttr
+	TKernel
+	TKMath
+	TKXSBase
+	TKG2d
+	TKCAF
+	TKSTEPBase
+	TKCDF
+	TKLCAF
+	TKG3d
+	TKXCAF
+	TKSTEP
+)
+
+include(../BuildToolkit.cmake)
+
