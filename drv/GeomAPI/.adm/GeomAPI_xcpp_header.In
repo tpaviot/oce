@@ -1,0 +1,12 @@
++V GeomAPI:msentity:GeomAPI .
++V GeomAPI:msentity:GeomAPI_ProjectPointOnCurve .
++V GeomAPI:msentity:GeomAPI_ProjectPointOnSurf .
++V GeomAPI:msentity:GeomAPI_ExtremaCurveCurve .
++V GeomAPI:msentity:GeomAPI_ExtremaCurveSurface .
++V GeomAPI:msentity:GeomAPI_ExtremaSurfaceSurface .
++V GeomAPI:msentity:GeomAPI_PointsToBSpline .
++V GeomAPI:msentity:GeomAPI_PointsToBSplineSurface .
++V GeomAPI:msentity:GeomAPI_Interpolate .
++V GeomAPI:msentity:GeomAPI_IntSS .
++V GeomAPI:msentity:GeomAPI_IntCS .
+- GeomAPI:admfile:GeomAPI_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/GeomAPI/GeomAPI_xcpp_fill.Out

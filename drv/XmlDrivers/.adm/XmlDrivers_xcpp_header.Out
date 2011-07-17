@@ -1,0 +1,14 @@
++M XmlDrivers:pubinclude:XmlDrivers.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XmlDrivers.hxx
++M XmlDrivers:privinclude:XmlDrivers.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers.jxx
++M XmlDrivers:privinclude:XmlDrivers.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers.ixx
++M XmlDrivers:pubinclude:Handle_XmlDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_XmlDrivers_DocumentStorageDriver.hxx
++M XmlDrivers:pubinclude:XmlDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XmlDrivers_DocumentStorageDriver.hxx
++M XmlDrivers:privinclude:XmlDrivers_DocumentStorageDriver.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers_DocumentStorageDriver.jxx
++M XmlDrivers:privinclude:XmlDrivers_DocumentStorageDriver.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers_DocumentStorageDriver.ixx
++M XmlDrivers:pubinclude:Handle_XmlDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_XmlDrivers_DocumentRetrievalDriver.hxx
++M XmlDrivers:pubinclude:XmlDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XmlDrivers_DocumentRetrievalDriver.hxx
++M XmlDrivers:privinclude:XmlDrivers_DocumentRetrievalDriver.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers_DocumentRetrievalDriver.jxx
++M XmlDrivers:privinclude:XmlDrivers_DocumentRetrievalDriver.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/XmlDrivers_DocumentRetrievalDriver.ixx
++M XmlDrivers:dbadmfile:XmlDrivers_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/.adm/XmlDrivers_xcpp_header.In
++M XmlDrivers:dbadmfile:XmlDrivers_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/.adm/XmlDrivers_xcpp_header.Out
++M XmlDrivers:dbadmfile:XmlDrivers_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XmlDrivers/.adm/XmlDrivers_xcpp_header.Dep

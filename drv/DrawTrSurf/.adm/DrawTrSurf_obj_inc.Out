@@ -1,0 +1,13 @@
++M DrawTrSurf:pubinclude:DrawTrSurf_Drawable.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_Drawable.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_Curve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_Curve.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BSplineCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BSplineCurve.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BezierCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BezierCurve.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_Curve2d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_Curve2d.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BSplineCurve2d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BSplineCurve2d.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BezierCurve2d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BezierCurve2d.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_Surface.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_Surface.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BSplineSurface.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BSplineSurface.lxx
++M DrawTrSurf:pubinclude:DrawTrSurf_BezierSurface.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DrawTrSurf_BezierSurface.lxx
++M DrawTrSurf:dbadmfile:DrawTrSurf_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DrawTrSurf/.adm/DrawTrSurf_obj_inc.In
++M DrawTrSurf:dbadmfile:DrawTrSurf_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DrawTrSurf/.adm/DrawTrSurf_obj_inc.Out
++M DrawTrSurf:dbadmfile:DrawTrSurf_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DrawTrSurf/.adm/DrawTrSurf_obj_inc.Dep

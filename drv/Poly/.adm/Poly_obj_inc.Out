@@ -1,0 +1,17 @@
++M Poly:pubinclude:Handle_Poly_CoherentTriangulation.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_Poly_CoherentTriangulation.hxx
++M Poly:pubinclude:Poly_CoherentTriangulation.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_CoherentTriangulation.hxx
++M Poly:pubinclude:Poly_CoherentTriangle.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_CoherentTriangle.hxx
++M Poly:pubinclude:Poly_CoherentTriPtr.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_CoherentTriPtr.hxx
++M Poly:pubinclude:Poly_CoherentNode.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_CoherentNode.hxx
++M Poly:pubinclude:Poly_CoherentLink.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_CoherentLink.hxx
++M Poly:pubinclude:Poly_MakeLoops.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_MakeLoops.hxx
++M Poly:pubinclude:Poly_ListOfTriangulation.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_ListOfTriangulation.hxx
++M Poly:pubinclude:Poly_Triangle.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_Triangle.lxx
++M Poly:pubinclude:Poly_Triangulation.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_Triangulation.lxx
++M Poly:pubinclude:Poly_Polygon3D.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_Polygon3D.lxx
++M Poly:pubinclude:Poly_Polygon2D.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_Polygon2D.lxx
++M Poly:pubinclude:Poly_PolygonOnTriangulation.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_PolygonOnTriangulation.lxx
++M Poly:pubinclude:Poly_Connect.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Poly_Connect.lxx
++M Poly:dbadmfile:Poly_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Poly/.adm/Poly_obj_inc.In
++M Poly:dbadmfile:Poly_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Poly/.adm/Poly_obj_inc.Out
++M Poly:dbadmfile:Poly_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Poly/.adm/Poly_obj_inc.Dep

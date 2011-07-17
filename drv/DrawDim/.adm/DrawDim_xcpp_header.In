@@ -1,0 +1,11 @@
++V DrawDim:msentity:DrawDim .
++V DrawDim:msentity:DrawDim_Dimension .
++V DrawDim:msentity:DrawDim_Angle .
++V DrawDim:msentity:DrawDim_Distance .
++V DrawDim:msentity:DrawDim_Radius .
++V DrawDim:msentity:DrawDim_PlanarDimension .
++V DrawDim:msentity:DrawDim_PlanarAngle .
++V DrawDim:msentity:DrawDim_PlanarDistance .
++V DrawDim:msentity:DrawDim_PlanarRadius .
++V DrawDim:msentity:DrawDim_PlanarDiameter .
+- DrawDim:admfile:DrawDim_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/DrawDim/DrawDim_xcpp_fill.Out

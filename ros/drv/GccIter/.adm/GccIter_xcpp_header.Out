@@ -1,9 +1,0 @@
-+M GccIter:pubinclude:Handle_GccIter_IsParallel.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Handle_GccIter_IsParallel.hxx
-+M GccIter:pubinclude:GccIter_IsParallel.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/GccIter_IsParallel.hxx
-+M GccIter:derivated:GccIter_IsParallel_0.cxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GccIter/GccIter_IsParallel_0.cxx
-+M GccIter:pubinclude:GccIter_Type1.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/GccIter_Type1.hxx
-+M GccIter:pubinclude:GccIter_Type2.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/GccIter_Type2.hxx
-+M GccIter:pubinclude:GccIter_Type3.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/GccIter_Type3.hxx
-+M GccIter:dbadmfile:GccIter_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GccIter/.adm/GccIter_xcpp_header.In
-+M GccIter:dbadmfile:GccIter_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GccIter/.adm/GccIter_xcpp_header.Out
-+M GccIter:dbadmfile:GccIter_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GccIter/.adm/GccIter_xcpp_header.Dep

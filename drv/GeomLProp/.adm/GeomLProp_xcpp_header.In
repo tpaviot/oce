@@ -1,0 +1,6 @@
++V GeomLProp:msentity:GeomLProp .
++V GeomLProp:msentity:GeomLProp_CurveTool .
++V GeomLProp:msentity:GeomLProp_SurfaceTool .
++V GeomLProp:msentity:GeomLProp_CLProps .
++V GeomLProp:msentity:GeomLProp_SLProps .
+- GeomLProp:admfile:GeomLProp_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/GeomLProp/GeomLProp_xcpp_fill.Out

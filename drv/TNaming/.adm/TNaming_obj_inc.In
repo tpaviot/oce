@@ -1,0 +1,12 @@
++ TNaming:source:TNaming_NCollections.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_NCollections.hxx
++ TNaming:source:TNaming_NamedShape.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_NamedShape.lxx
++ TNaming:source:TNaming_UsedShapes.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_UsedShapes.lxx
++ TNaming:source:TNaming_Iterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_Iterator.lxx
++ TNaming:source:TNaming_NewShapeIterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_NewShapeIterator.lxx
++ TNaming:source:TNaming_OldShapeIterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_OldShapeIterator.lxx
++ TNaming:source:TNaming_SameShapeIterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_SameShapeIterator.lxx
++ TNaming:source:TNaming_RefShape.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_RefShape.lxx
++ TNaming:source:TNaming_ShapesSet.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_ShapesSet.lxx
++ TNaming:source:TNaming_IteratorOnShapesSet.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TNaming/TNaming_IteratorOnShapesSet.lxx
+- TNaming:admfile:TNaming_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TNaming/TNaming_src.Out
+- TNaming:admfile:TNaming_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TNaming/TNaming_xcpp_src.Out

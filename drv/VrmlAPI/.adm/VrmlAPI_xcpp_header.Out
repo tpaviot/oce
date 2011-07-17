@@ -1,0 +1,10 @@
++M VrmlAPI:pubinclude:VrmlAPI.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/VrmlAPI.hxx
++M VrmlAPI:privinclude:VrmlAPI.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/VrmlAPI.jxx
++M VrmlAPI:privinclude:VrmlAPI.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/VrmlAPI.ixx
++M VrmlAPI:pubinclude:VrmlAPI_Writer.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/VrmlAPI_Writer.hxx
++M VrmlAPI:privinclude:VrmlAPI_Writer.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/VrmlAPI_Writer.jxx
++M VrmlAPI:privinclude:VrmlAPI_Writer.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/VrmlAPI_Writer.ixx
++M VrmlAPI:pubinclude:VrmlAPI_RepresentationOfShape.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/VrmlAPI_RepresentationOfShape.hxx
++M VrmlAPI:dbadmfile:VrmlAPI_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/.adm/VrmlAPI_xcpp_header.In
++M VrmlAPI:dbadmfile:VrmlAPI_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/.adm/VrmlAPI_xcpp_header.Out
++M VrmlAPI:dbadmfile:VrmlAPI_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/VrmlAPI/.adm/VrmlAPI_xcpp_header.Dep

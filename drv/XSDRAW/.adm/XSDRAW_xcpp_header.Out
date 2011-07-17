@@ -1,0 +1,16 @@
++M XSDRAW:pubinclude:XSDRAW.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSDRAW.hxx
++M XSDRAW:privinclude:XSDRAW.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW.jxx
++M XSDRAW:privinclude:XSDRAW.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW.ixx
++M XSDRAW:pubinclude:XSDRAW_Functions.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSDRAW_Functions.hxx
++M XSDRAW:privinclude:XSDRAW_Functions.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Functions.jxx
++M XSDRAW:privinclude:XSDRAW_Functions.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Functions.ixx
++M XSDRAW:pubinclude:XSDRAW_Shape.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSDRAW_Shape.hxx
++M XSDRAW:privinclude:XSDRAW_Shape.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Shape.jxx
++M XSDRAW:privinclude:XSDRAW_Shape.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Shape.ixx
++M XSDRAW:pubinclude:Handle_XSDRAW_Vars.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_XSDRAW_Vars.hxx
++M XSDRAW:pubinclude:XSDRAW_Vars.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSDRAW_Vars.hxx
++M XSDRAW:privinclude:XSDRAW_Vars.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Vars.jxx
++M XSDRAW:privinclude:XSDRAW_Vars.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/XSDRAW_Vars.ixx
++M XSDRAW:dbadmfile:XSDRAW_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/.adm/XSDRAW_xcpp_header.In
++M XSDRAW:dbadmfile:XSDRAW_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/.adm/XSDRAW_xcpp_header.Out
++M XSDRAW:dbadmfile:XSDRAW_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAW/.adm/XSDRAW_xcpp_header.Dep

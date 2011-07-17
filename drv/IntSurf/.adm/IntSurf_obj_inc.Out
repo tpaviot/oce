@@ -1,0 +1,13 @@
++M IntSurf:pubinclude:IntSurf_PntOn2S.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_PntOn2S.lxx
++M IntSurf:pubinclude:IntSurf_Couple.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_Couple.lxx
++M IntSurf:pubinclude:IntSurf_LineOn2S.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_LineOn2S.lxx
++M IntSurf:pubinclude:IntSurf_Quadric.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_Quadric.lxx
++M IntSurf:pubinclude:IntSurf_QuadricTool.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_QuadricTool.lxx
++M IntSurf:pubinclude:IntSurf_PathPoint.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_PathPoint.lxx
++M IntSurf:pubinclude:IntSurf_PathPointTool.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_PathPointTool.lxx
++M IntSurf:pubinclude:IntSurf_InteriorPoint.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_InteriorPoint.lxx
++M IntSurf:pubinclude:IntSurf_InteriorPointTool.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_InteriorPointTool.lxx
++M IntSurf:pubinclude:IntSurf_Transition.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/IntSurf_Transition.lxx
++M IntSurf:dbadmfile:IntSurf_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/IntSurf/.adm/IntSurf_obj_inc.In
++M IntSurf:dbadmfile:IntSurf_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/IntSurf/.adm/IntSurf_obj_inc.Out
++M IntSurf:dbadmfile:IntSurf_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/IntSurf/.adm/IntSurf_obj_inc.Dep

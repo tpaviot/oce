@@ -1,0 +1,4 @@
++ BRepOffset:source:BRepOffset_Offset.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepOffset/BRepOffset_Offset.lxx
++ BRepOffset:source:BRepOffset_Interval.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepOffset/BRepOffset_Interval.lxx
+- BRepOffset:admfile:BRepOffset_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepOffset/BRepOffset_src.Out
+- BRepOffset:admfile:BRepOffset_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepOffset/BRepOffset_xcpp_src.Out

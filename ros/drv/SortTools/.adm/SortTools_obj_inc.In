@@ -1,6 +1,0 @@
-+ SortTools:source:SortTools_HeapSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SortTools/SortTools_HeapSort.gxx
-+ SortTools:source:SortTools_QuickSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SortTools/SortTools_QuickSort.gxx
-+ SortTools:source:SortTools_ShellSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SortTools/SortTools_ShellSort.gxx
-+ SortTools:source:SortTools_StraightInsertionSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SortTools/SortTools_StraightInsertionSort.gxx
-- SortTools:admfile:SortTools_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SortTools/SortTools_src.Out
-- SortTools:admfile:SortTools_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SortTools/SortTools_xcpp_src.Out

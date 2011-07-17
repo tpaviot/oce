@@ -1,0 +1,17 @@
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_AreaDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_CentroidDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_ColorDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_GraphNodeDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_LocationDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_VolumeDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_DatumDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_DimTolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_MaterialDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_ColorToolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_DocumentToolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_LayerToolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_ShapeToolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_DimTolToolDriver .
++V XmlMXCAFDoc:msentity:XmlMXCAFDoc_MaterialToolDriver .
+- XmlMXCAFDoc:admfile:XmlMXCAFDoc_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/XmlMXCAFDoc/XmlMXCAFDoc_xcpp_fill.Out

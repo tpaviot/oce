@@ -1,7 +1,0 @@
-+M SortTools:pubinclude:SortTools_HeapSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SortTools_HeapSort.gxx
-+M SortTools:pubinclude:SortTools_QuickSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SortTools_QuickSort.gxx
-+M SortTools:pubinclude:SortTools_ShellSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SortTools_ShellSort.gxx
-+M SortTools:pubinclude:SortTools_StraightInsertionSort.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/SortTools_StraightInsertionSort.gxx
-+M SortTools:dbadmfile:SortTools_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SortTools/.adm/SortTools_obj_inc.In
-+M SortTools:dbadmfile:SortTools_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SortTools/.adm/SortTools_obj_inc.Out
-+M SortTools:dbadmfile:SortTools_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/SortTools/.adm/SortTools_obj_inc.Dep

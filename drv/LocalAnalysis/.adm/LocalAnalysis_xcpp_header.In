@@ -1,0 +1,5 @@
++V LocalAnalysis:msentity:LocalAnalysis .
++V LocalAnalysis:msentity:LocalAnalysis_SurfaceContinuity .
++V LocalAnalysis:msentity:LocalAnalysis_CurveContinuity .
++V LocalAnalysis:msentity:LocalAnalysis_StatusErrorType .
+- LocalAnalysis:admfile:LocalAnalysis_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/LocalAnalysis/LocalAnalysis_xcpp_fill.Out

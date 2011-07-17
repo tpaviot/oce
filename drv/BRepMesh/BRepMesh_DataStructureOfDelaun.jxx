@@ -1,0 +1,15 @@
+#ifndef _BRepMesh_Vertex_HeaderFile
+#include <BRepMesh_Vertex.hxx>
+#endif
+#ifndef _BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_HeaderFile
+#include <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
+#endif
+#ifndef _BRepMesh_Edge_HeaderFile
+#include <BRepMesh_Edge.hxx>
+#endif
+#ifndef _BRepMesh_Triangle_HeaderFile
+#include <BRepMesh_Triangle.hxx>
+#endif
+#ifndef _BRepMesh_DataStructureOfDelaun_HeaderFile
+#include <BRepMesh_DataStructureOfDelaun.hxx>
+#endif

@@ -1,0 +1,6 @@
++M XSDRAWSTEP:pubinclude:XSDRAWSTEP.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSDRAWSTEP.hxx
++M XSDRAWSTEP:privinclude:XSDRAWSTEP.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAWSTEP/XSDRAWSTEP.jxx
++M XSDRAWSTEP:privinclude:XSDRAWSTEP.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAWSTEP/XSDRAWSTEP.ixx
++M XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAWSTEP/.adm/XSDRAWSTEP_xcpp_header.In
++M XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAWSTEP/.adm/XSDRAWSTEP_xcpp_header.Out
++M XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSDRAWSTEP/.adm/XSDRAWSTEP_xcpp_header.Dep

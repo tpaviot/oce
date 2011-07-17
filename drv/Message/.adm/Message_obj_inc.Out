@@ -1,0 +1,13 @@
++M Message:pubinclude:Message_Status.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_Status.hxx
++M Message:pubinclude:Message_StatusType.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_StatusType.hxx
++M Message:pubinclude:Message_ExecStatus.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_ExecStatus.hxx
++M Message:pubinclude:Message_Msg.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_Msg.lxx
++M Message:pubinclude:Message_Messenger.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_Messenger.lxx
++M Message:pubinclude:Message_Algorithm.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_Algorithm.lxx
++M Message:pubinclude:Message_PrinterOStream.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_PrinterOStream.lxx
++M Message:pubinclude:Message_ProgressIndicator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_ProgressIndicator.lxx
++M Message:pubinclude:Message_ProgressScale.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_ProgressScale.lxx
++M Message:pubinclude:Message_ProgressSentry.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Message_ProgressSentry.lxx
++M Message:dbadmfile:Message_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Message/.adm/Message_obj_inc.In
++M Message:dbadmfile:Message_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Message/.adm/Message_obj_inc.Out
++M Message:dbadmfile:Message_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Message/.adm/Message_obj_inc.Dep

@@ -1,0 +1,5 @@
++V PTopLoc:msentity:PTopLoc .
++V PTopLoc:msentity:PTopLoc_Datum3D .
++V PTopLoc:msentity:PTopLoc_ItemLocation .
++V PTopLoc:msentity:PTopLoc_Location .
+- PTopLoc:admfile:PTopLoc_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/PTopLoc/PTopLoc_xcpp_fill.Out

@@ -1,0 +1,11 @@
++V BRepGProp:msentity:BRepGProp .
++V BRepGProp:msentity:BRepGProp_EdgeTool .
++V BRepGProp:msentity:BRepGProp_Face .
++V BRepGProp:msentity:BRepGProp_Domain .
++V BRepGProp:msentity:BRepGProp_Cinert .
++V BRepGProp:msentity:BRepGProp_Sinert .
++V BRepGProp:msentity:BRepGProp_Vinert .
++V BRepGProp:msentity:BRepGProp_VinertGK .
++V BRepGProp:msentity:BRepGProp_UFunctionOfVinertGK .
++V BRepGProp:msentity:BRepGProp_TFunctionOfVinertGK .
+- BRepGProp:admfile:BRepGProp_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepGProp/BRepGProp_xcpp_fill.Out

@@ -1,0 +1,16 @@
++ TDataStd:source:TDataStd_IntegerArray.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_IntegerArray.lxx
++ TDataStd:source:TDataStd_RealArray.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_RealArray.lxx
++ TDataStd:source:TDataStd_ExtStringArray.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_ExtStringArray.lxx
++ TDataStd:source:TDataStd_TreeNode.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_TreeNode.lxx
++ TDataStd:source:TDataStd_ChildNodeIterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_ChildNodeIterator.lxx
++ TDataStd:source:TDataStd_IntPackedMap.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_IntPackedMap.lxx
++ TDataStd:source:TDataStd_ByteArray.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_ByteArray.lxx
++ TDataStd:source:TDataStd_NamedData.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_NamedData.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringInteger.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringInteger.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringReal.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringReal.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringString.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringString.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringByte.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringByte.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringHArray1OfInteger.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringHArray1OfInteger.lxx
++ TDataStd:source:TDataStd_HDataMapOfStringHArray1OfReal.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/TDataStd/TDataStd_HDataMapOfStringHArray1OfReal.lxx
+- TDataStd:admfile:TDataStd_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TDataStd/TDataStd_src.Out
+- TDataStd:admfile:TDataStd_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TDataStd/TDataStd_xcpp_src.Out

@@ -1,0 +1,27 @@
+#ifndef _TopTools_HArray2OfShape_HeaderFile
+#include <TopTools_HArray2OfShape.hxx>
+#endif
+#ifndef _Geom_BSplineSurface_HeaderFile
+#include <Geom_BSplineSurface.hxx>
+#endif
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
+#include <GeomFill_SequenceOfTrsf.hxx>
+#endif
+#ifndef _TColStd_SequenceOfReal_HeaderFile
+#include <TColStd_SequenceOfReal.hxx>
+#endif
+#ifndef _GeomFill_SectionLaw_HeaderFile
+#include <GeomFill_SectionLaw.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepFill_NSections_HeaderFile
+#include <BRepFill_NSections.hxx>
+#endif

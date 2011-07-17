@@ -1,0 +1,13 @@
++ Interface:source:Interface_Macros.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_Macros.hxx
++ Interface:source:Interface_Statics.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_Statics.hxx
++ Interface:source:Interface_StaticSatisfies.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_StaticSatisfies.hxx
++ Interface:source:Interface_ValueInterpret.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_ValueInterpret.hxx
++ Interface:source:Interface_ValueSatisfies.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_ValueSatisfies.hxx
++ Interface:source:Interface_Translates.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_Translates.hxx
++ Interface:source:Interface_Version.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_Version.hxx
++ Interface:source:Interface_VectorOfFileParameter.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_VectorOfFileParameter.hxx
++ Interface:source:Interface_JaggedArray.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_JaggedArray.gxx
++ Interface:source:Interface_Recognizer.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_Recognizer.gxx
++ Interface:source:Interface_ParamList.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Interface/Interface_ParamList.lxx
+- Interface:admfile:Interface_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Interface/Interface_src.Out
+- Interface:admfile:Interface_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Interface/Interface_xcpp_src.Out

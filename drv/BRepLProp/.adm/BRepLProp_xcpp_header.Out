@@ -1,0 +1,16 @@
++M BRepLProp:pubinclude:BRepLProp.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepLProp.hxx
++M BRepLProp:privinclude:BRepLProp.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp.jxx
++M BRepLProp:privinclude:BRepLProp.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp.ixx
++M BRepLProp:pubinclude:BRepLProp_CurveTool.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepLProp_CurveTool.hxx
++M BRepLProp:privinclude:BRepLProp_CurveTool.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_CurveTool.jxx
++M BRepLProp:privinclude:BRepLProp_CurveTool.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_CurveTool.ixx
++M BRepLProp:pubinclude:BRepLProp_SurfaceTool.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepLProp_SurfaceTool.hxx
++M BRepLProp:privinclude:BRepLProp_SurfaceTool.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_SurfaceTool.jxx
++M BRepLProp:privinclude:BRepLProp_SurfaceTool.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_SurfaceTool.ixx
++M BRepLProp:pubinclude:BRepLProp_CLProps.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepLProp_CLProps.hxx
++M BRepLProp:derivated:BRepLProp_CLProps_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_CLProps_0.cxx
++M BRepLProp:pubinclude:BRepLProp_SLProps.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepLProp_SLProps.hxx
++M BRepLProp:derivated:BRepLProp_SLProps_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/BRepLProp_SLProps_0.cxx
++M BRepLProp:dbadmfile:BRepLProp_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/.adm/BRepLProp_xcpp_header.In
++M BRepLProp:dbadmfile:BRepLProp_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/.adm/BRepLProp_xcpp_header.Out
++M BRepLProp:dbadmfile:BRepLProp_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepLProp/.adm/BRepLProp_xcpp_header.Dep

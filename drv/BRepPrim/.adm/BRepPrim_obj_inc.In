@@ -1,0 +1,4 @@
++ BRepPrim:source:BRepPrim_OneAxis.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepPrim/BRepPrim_OneAxis.hxx
++ BRepPrim:source:BRepPrim_Builder.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepPrim/BRepPrim_Builder.lxx
+- BRepPrim:admfile:BRepPrim_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepPrim/BRepPrim_src.Out
+- BRepPrim:admfile:BRepPrim_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepPrim/BRepPrim_xcpp_src.Out

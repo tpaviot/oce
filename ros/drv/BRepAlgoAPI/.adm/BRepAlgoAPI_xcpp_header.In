@@ -1,7 +1,0 @@
-+V BRepAlgoAPI:msentity:BRepAlgoAPI .
-+V BRepAlgoAPI:msentity:BRepAlgoAPI_BooleanOperation .
-+V BRepAlgoAPI:msentity:BRepAlgoAPI_Fuse .
-+V BRepAlgoAPI:msentity:BRepAlgoAPI_Common .
-+V BRepAlgoAPI:msentity:BRepAlgoAPI_Cut .
-+V BRepAlgoAPI:msentity:BRepAlgoAPI_Section .
-- BRepAlgoAPI:admfile:BRepAlgoAPI_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/BRepAlgoAPI/BRepAlgoAPI_xcpp_fill.Out

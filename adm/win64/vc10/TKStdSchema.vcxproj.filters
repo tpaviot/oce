@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{8FFAF696-04F5-00D1-04C2-DD4FEA00A796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StdSchema">
+      <UniqueIdentifier>{8EAEDFA7-110E-0AB3-03CF-47DA528A5A37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StdDrivers">
+      <UniqueIdentifier>{A74DE504-139C-046C-1961-85AF45EDCDD5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_DBC_VArrayOfCharacter.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_DBC_VArrayOfExtCharacter.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PColStd_FieldOfHArray1OfInteger.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PColStd_HArray1OfInteger.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PCollection_HAsciiString.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PCollection_HExtendedString.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDF_Attribute.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDF_FieldOfHAttributeArray1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDF_HAttributeArray1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataStd_Integer.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataStd_Real.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Axis.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Constraint.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Geometry.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_PatternStd.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Placement.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Plane.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Point.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Position.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PDataXtd_Shape.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_FieldOfHArray1OfNamedShape.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_HArray1OfNamedShape.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Name.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Name_1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_NamedShape.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PNaming_Naming_1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PPrsStd_AISPresentation.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PPrsStd_AISPresentation_1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopLoc_Datum3D.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopLoc_ItemLocation.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopLoc_Location.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopoDS_FieldOfHArray1OfShape1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopoDS_HArray1OfShape1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopoDS_Shape1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_PTopoDS_TShape1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_Standard_Persistent.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_Standard_Storable.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Ax1.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Ax2.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Ax2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Ax3.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Dir.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Dir2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Mat.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Mat2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Pnt.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Pnt2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Trsf.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Trsf2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Vec.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_Vec2d.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_XY.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSchema\StdSchema_gp_XYZ.cxx">
+      <Filter>Source files\StdSchema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdDrivers\StdDrivers.cxx">
+      <Filter>Source files\StdDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdDrivers\StdDrivers_DocumentRetrievalDriver.cxx">
+      <Filter>Source files\StdDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdDrivers\StdDrivers_DocumentStorageDriver.cxx">
+      <Filter>Source files\StdDrivers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

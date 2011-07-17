@@ -1,0 +1,6 @@
++ PrsMgr:source:PrsMgr_PresentationManager.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/PrsMgr/PrsMgr_PresentationManager.lxx
++ PrsMgr:source:PrsMgr_Presentation.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/PrsMgr/PrsMgr_Presentation.lxx
++ PrsMgr:source:PrsMgr_PresentableObject.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/PrsMgr/PrsMgr_PresentableObject.lxx
++ PrsMgr:source:PrsMgr_PresentationManager3d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/PrsMgr/PrsMgr_PresentationManager3d.lxx
+- PrsMgr:admfile:PrsMgr_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/PrsMgr/PrsMgr_src.Out
+- PrsMgr:admfile:PrsMgr_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/PrsMgr/PrsMgr_xcpp_src.Out

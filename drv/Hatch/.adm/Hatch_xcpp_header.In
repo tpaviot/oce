@@ -1,0 +1,10 @@
++V Hatch:msentity:Hatch .
++V Hatch:msentity:Hatch_Parameter .
++V Hatch:msentity:Hatch_SequenceOfParameter .
++V Hatch:msentity:Hatch_Line .
++V Hatch:msentity:Hatch_SequenceOfLine .
++V Hatch:msentity:Hatch_Hatcher .
++V Hatch:msentity:Hatch_SequenceNodeOfSequenceOfParameter .
++V Hatch:msentity:Hatch_SequenceNodeOfSequenceOfLine .
++V Hatch:msentity:Hatch_LineForm .
+- Hatch:admfile:Hatch_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Hatch/Hatch_xcpp_fill.Out

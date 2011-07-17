@@ -1,6 +1,0 @@
-+M BRepProj:pubinclude:BRepProj_Projection.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BRepProj_Projection.hxx
-+M BRepProj:privinclude:BRepProj_Projection.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepProj/BRepProj_Projection.jxx
-+M BRepProj:privinclude:BRepProj_Projection.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepProj/BRepProj_Projection.ixx
-+M BRepProj:dbadmfile:BRepProj_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepProj/.adm/BRepProj_xcpp_header.In
-+M BRepProj:dbadmfile:BRepProj_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepProj/.adm/BRepProj_xcpp_header.Out
-+M BRepProj:dbadmfile:BRepProj_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepProj/.adm/BRepProj_xcpp_header.Dep

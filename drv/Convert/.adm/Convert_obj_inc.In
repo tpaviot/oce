@@ -1,0 +1,4 @@
++ Convert:source:Convert_CosAndSinEvalFunction.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Convert/Convert_CosAndSinEvalFunction.hxx
++ Convert:source:Convert_PolynomialCosAndSin.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Convert/Convert_PolynomialCosAndSin.hxx
+- Convert:admfile:Convert_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Convert/Convert_src.Out
+- Convert:admfile:Convert_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Convert/Convert_xcpp_src.Out

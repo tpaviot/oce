@@ -1,0 +1,6 @@
++M ShapeProcessAPI:pubinclude:ShapeProcessAPI_ApplySequence.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ShapeProcessAPI_ApplySequence.hxx
++M ShapeProcessAPI:privinclude:ShapeProcessAPI_ApplySequence.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeProcessAPI/ShapeProcessAPI_ApplySequence.jxx
++M ShapeProcessAPI:privinclude:ShapeProcessAPI_ApplySequence.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeProcessAPI/ShapeProcessAPI_ApplySequence.ixx
++M ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeProcessAPI/.adm/ShapeProcessAPI_xcpp_header.In
++M ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeProcessAPI/.adm/ShapeProcessAPI_xcpp_header.Out
++M ShapeProcessAPI:dbadmfile:ShapeProcessAPI_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeProcessAPI/.adm/ShapeProcessAPI_xcpp_header.Dep

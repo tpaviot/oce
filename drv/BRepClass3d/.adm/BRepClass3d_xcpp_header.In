@@ -1,0 +1,10 @@
++V BRepClass3d:msentity:BRepClass3d .
++V BRepClass3d:msentity:BRepClass3d_Intersector3d .
++V BRepClass3d:msentity:BRepClass3d_MapOfInter .
++V BRepClass3d:msentity:BRepClass3d_SolidExplorer .
++V BRepClass3d:msentity:BRepClass3d_SolidPassiveClassifier .
++V BRepClass3d:msentity:BRepClass3d_SClassifier .
++V BRepClass3d:msentity:BRepClass3d_SolidClassifier .
++V BRepClass3d:msentity:BRepClass3d_DataMapNodeOfMapOfInter .
++V BRepClass3d:msentity:BRepClass3d_DataMapIteratorOfMapOfInter .
+- BRepClass3d:admfile:BRepClass3d_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepClass3d/BRepClass3d_xcpp_fill.Out

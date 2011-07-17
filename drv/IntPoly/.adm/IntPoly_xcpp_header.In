@@ -1,0 +1,14 @@
++V IntPoly:msentity:IntPoly .
++V IntPoly:msentity:IntPoly_SequenceOfSequenceOfPnt2d .
++V IntPoly:msentity:IntPoly_Pnt2dHasher .
++V IntPoly:msentity:IntPoly_IndexedMapOfPnt2d .
++V IntPoly:msentity:IntPoly_PlaneSection .
++V IntPoly:msentity:IntPoly_SequenceOfSequenceOfPnt .
++V IntPoly:msentity:IntPoly_PntHasher .
++V IntPoly:msentity:IntPoly_IndexedMapOfPnt .
++V IntPoly:msentity:IntPoly_ShapeSection .
++V IntPoly:msentity:IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d .
++V IntPoly:msentity:IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d .
++V IntPoly:msentity:IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt .
++V IntPoly:msentity:IntPoly_IndexedMapNodeOfIndexedMapOfPnt .
+- IntPoly:admfile:IntPoly_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IntPoly/IntPoly_xcpp_fill.Out

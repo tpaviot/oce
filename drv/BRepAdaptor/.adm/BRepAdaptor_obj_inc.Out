@@ -1,0 +1,4 @@
++M BRepAdaptor:pubinclude:BRepAdaptor_Surface.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepAdaptor_Surface.lxx
++M BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepAdaptor/.adm/BRepAdaptor_obj_inc.In
++M BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepAdaptor/.adm/BRepAdaptor_obj_inc.Out
++M BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepAdaptor/.adm/BRepAdaptor_obj_inc.Dep

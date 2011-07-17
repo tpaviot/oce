@@ -1,0 +1,6 @@
++ BRepExtrema:pubinclude:Handle_BRepExtrema_UnCompatibleShape.hxx BRepExtrema:msentity:BRepExtrema_UnCompatibleShape
++ BRepExtrema:pubinclude:BRepExtrema_UnCompatibleShape.hxx BRepExtrema:msentity:BRepExtrema_UnCompatibleShape
++ BRepExtrema:derivated:BRepExtrema_UnCompatibleShape_0.cxx BRepExtrema:msentity:BRepExtrema_UnCompatibleShape
++ BRepExtrema:dbadmfile:BRepExtrema_xcpp_header.In BRepExtrema:admfile:BRepExtrema_xcpp_fill.Out
++ BRepExtrema:dbadmfile:BRepExtrema_xcpp_header.Out BRepExtrema:admfile:BRepExtrema_xcpp_fill.Out
++ BRepExtrema:dbadmfile:BRepExtrema_xcpp_header.Dep BRepExtrema:admfile:BRepExtrema_xcpp_fill.Out

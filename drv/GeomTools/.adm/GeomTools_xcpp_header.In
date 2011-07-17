@@ -1,0 +1,6 @@
++V GeomTools:msentity:GeomTools .
++V GeomTools:msentity:GeomTools_UndefinedTypeHandler .
++V GeomTools:msentity:GeomTools_SurfaceSet .
++V GeomTools:msentity:GeomTools_CurveSet .
++V GeomTools:msentity:GeomTools_Curve2dSet .
+- GeomTools:admfile:GeomTools_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/GeomTools/GeomTools_xcpp_fill.Out

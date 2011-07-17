@@ -1,0 +1,10 @@
++V Materials:msentity:Materials .
++V Materials:msentity:Materials_Color .
++V Materials:msentity:Materials_MaterialDefinition .
++V Materials:msentity:Materials_MaterialsDictionary .
++V Materials:msentity:Materials_FuzzyInstance .
++V Materials:msentity:Materials_Material .
++V Materials:msentity:Materials_MtsSequence .
++V Materials:msentity:Materials_MaterialsSequence .
++V Materials:msentity:Materials_SequenceNodeOfMtsSequence .
+- Materials:admfile:Materials_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Materials/Materials_xcpp_fill.Out

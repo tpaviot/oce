@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{01B42B10-04EF-0052-13B6-4022F98A3EA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BinXCAFDrivers">
+      <UniqueIdentifier>{987E444C-0EFA-0367-1225-FC6F7701BA12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BinMXCAFDoc">
+      <UniqueIdentifier>{2A725062-0F55-14E5-0128-87DFD5A8C7C2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\BinXCAFDrivers\BinXCAFDrivers.cxx">
+      <Filter>Source files\BinXCAFDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinXCAFDrivers\BinXCAFDrivers_DocumentRetrievalDriver.cxx">
+      <Filter>Source files\BinXCAFDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinXCAFDrivers\BinXCAFDrivers_DocumentStorageDriver.cxx">
+      <Filter>Source files\BinXCAFDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_AreaDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_CentroidDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_ColorDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_ColorToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_DatumDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_DimTolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_DimTolToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_DocumentToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_GraphNodeDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_LayerToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_LocationDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_MaterialDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_MaterialToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_ShapeToolDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinMXCAFDoc\BinMXCAFDoc_VolumeDriver.cxx">
+      <Filter>Source files\BinMXCAFDoc</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

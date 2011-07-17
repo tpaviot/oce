@@ -1,0 +1,189 @@
+-- File:	BRepBlend.cdl
+-- Created:	Mon Dec  6 09:41:39 1993
+-- Author:	Jacques GOUSSARD
+--		<jag@topsn2>
+-- jlr le 28-07-97 F(t) in Edge/Face
+---Copyright:	 Matra Datavision 1993
+
+
+
+package BRepBlend
+
+uses Blend, BlendFunc, AppBlend, Approx,  Adaptor3d,Adaptor2d,
+     Law,  gp, TopAbs, IntSurf, Convert,
+     TCollection,TColStd,TColgp,GeomAbs,Geom,Geom2d, 
+     AdvApprox, StdFail, math
+
+is
+
+    generic class HCurveToolGen;
+    generic class HCurve2dToolGen;
+
+    class HCurveTool instantiates HCurveToolGen from BRepBlend (
+    	HCurve from Adaptor3d);
+
+    class HCurve2dTool instantiates HCurve2dToolGen from BRepBlend (
+    	HCurve2d from Adaptor2d);
+
+    class BlendTool;
+    
+    alias ConstRad is ConstRad from BlendFunc;
+
+    alias ConstRadInv is ConstRadInv from BlendFunc;
+
+    alias Ruled is Ruled from BlendFunc;
+
+    alias RuledInv is RuledInv from BlendFunc;
+    
+    alias EvolRad is EvolRad from BlendFunc;
+
+    alias EvolRadInv is EvolRadInv from BlendFunc;
+
+    alias CSConstRad is CSConstRad from BlendFunc;
+
+    alias CSCircular is CSCircular from BlendFunc;
+
+    alias Chamfer is Chamfer from BlendFunc;
+
+    alias ChamfInv is ChamfInv from BlendFunc;
+
+    alias ChAsym is ChAsym from BlendFunc;
+
+    alias ChAsymInv is ChAsymInv from BlendFunc;
+
+
+    class PointOnRst instantiates PointOnRst from Blend
+    	(HCurve2d from Adaptor2d);
+
+
+    class SequenceOfPointOnRst instantiates Sequence from TCollection
+    	(PointOnRst from BRepBlend);
+
+
+    class Extremity instantiates Extremity from Blend
+    	(HVertex              from Adaptor3d,
+	 HCurve2d             from Adaptor2d,
+	 PointOnRst           from BRepBlend,
+	 SequenceOfPointOnRst from BRepBlend);
+
+    class Line instantiates Line from Blend
+    	(HVertex              from Adaptor3d,
+	 HCurve2d             from Adaptor2d,
+	 PointOnRst           from BRepBlend,
+	 SequenceOfPointOnRst from BRepBlend,
+	 Extremity            from BRepBlend);
+
+
+    class Walking instantiates Walking from Blend
+    	(HVertex              from Adaptor3d,
+	 HCurve2d             from Adaptor2d,
+	 HSurface             from Adaptor3d,
+	 HCurve               from Adaptor3d,
+	 Integer              from Standard,
+	 HCurve2dTool         from BRepBlend,
+	 HSurfaceTool         from Adaptor3d,
+	 HCurveTool           from BRepBlend,
+	 TopolTool            from Adaptor3d,
+	 BlendTool            from BRepBlend,
+	 PointOnRst           from BRepBlend,
+	 SequenceOfPointOnRst from BRepBlend,
+	 Extremity            from BRepBlend,
+	 Line                 from BRepBlend);
+	 
+    class CSWalking instantiates CSWalking from Blend
+    	(HVertex              from Adaptor3d,
+	 HCurve2d             from Adaptor2d,
+	 HSurface             from Adaptor3d,
+	 HCurve               from Adaptor3d,
+	 Integer              from Standard,
+	 HCurve2dTool         from BRepBlend,
+	 HSurfaceTool         from Adaptor3d,
+	 HCurveTool           from BRepBlend,
+	 TopolTool            from Adaptor3d,
+	 BlendTool            from BRepBlend,
+	 PointOnRst           from BRepBlend,
+	 SequenceOfPointOnRst from BRepBlend,
+	 Extremity            from BRepBlend,
+	 Line                 from BRepBlend);
+	 
+    class AppSurf instantiates AppSurf from AppBlend
+    	(AppFunction from Blend,
+         Line        from BRepBlend);
+
+
+    class SequenceOfLine instantiates Sequence from TCollection
+    	(Line from BRepBlend);
+
+
+    class AppSurface; 
+    ---Purpose: Used to Approximate the surfaces.
+
+    deferred class AppFuncRoot;
+    ---Purpose: Root Class Function to approximate by AppSurface	 
+
+    class AppFunc;
+    ---Purpose: Function to approximate by AppSurface for 
+    --          Surface/Surface contact.
+
+    class AppFuncRst;
+    ---Purpose: Function  to approximate by AppSurface  for  
+    --          Curve/Surface contact.
+
+    class AppFuncRstRst;
+    ---Purpose: Function  to approximate by AppSurface  for  
+    --          Curve/Curve contact.
+
+    class SurfRstEvolRad;
+    ---Purpose: Function  to approximate by AppSurface  for  
+    --          Edge/Face  and  evolutif  radius	 
+
+    class SurfRstConstRad;
+    ---Purpose: Copy of CSConstRad with pcurve on surface 
+    --          as support. 
+
+    class RstRstEvolRad;
+    ---Purpose: Function  to approximate by AppSurface  for  
+    --          Edge/Edge  and  evolutif  radius
+    --          
+    class RstRstConstRad;
+    ---Purpose: Copy of CSConstRad with a pcurve on surface 
+    --          as support. 
+
+    class SurfPointConstRadInv;
+    ---Purpose: Function of reframing between a point and a surface.
+
+    class SurfCurvConstRadInv;
+    ---Purpose: Function of reframing between a restriction surface of the
+    --          surface and a curve.
+
+    class SurfPointEvolRadInv;
+    ---Purpose: Fonction of reframing between a point and a surface.
+
+    class CurvPointRadInv;
+    ---Purpose: Function of reframing between a point and a curve.
+    --          valid in cases of constant and progressive radius
+    class SurfCurvEvolRadInv;
+    ---Purpose: Function of reframing between a surface restriction 
+    --          of the surface and a curve.
+
+    class SurfRstLineBuilder;
+    ---Purpose: Construction of a BRepBlend_Line between a surface and
+    --          a pcurve on surface from an approached
+    --          starting solution. The output entries of this builder
+    --          are of the same nature as of the traditional walking
+    --          but the requirements on the Line are not the same
+    --          If the determination of validity range is always
+    --          guaranteed, the criteria of correct repartition of sections 
+    --          before smoothing are not respected. The resulting Line
+    --          is f(t) oriented.
+
+    class RstRstLineBuilder;
+    ---Purpose: Construction of a BRepBlend_Line between two pcurves
+    --          from an approached starting solution. The output
+    --          entries of this builder are of the same nature 
+    --          as of a traditional walking, but the requirements 
+    --          to the Line are not the same. If the determination of validity range is always
+    --          guaranteed, the criteria of correct repartition of sections 
+    --          before smoothing are not respected. The resulting Line
+    --          is f(t) oriented.          
+end BRepBlend;

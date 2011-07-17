@@ -1,0 +1,6 @@
++M DPrsStd:pubinclude:DPrsStd.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/DPrsStd.hxx
++M DPrsStd:privinclude:DPrsStd.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DPrsStd/DPrsStd.jxx
++M DPrsStd:privinclude:DPrsStd.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DPrsStd/DPrsStd.ixx
++M DPrsStd:dbadmfile:DPrsStd_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DPrsStd/.adm/DPrsStd_xcpp_header.In
++M DPrsStd:dbadmfile:DPrsStd_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DPrsStd/.adm/DPrsStd_xcpp_header.Out
++M DPrsStd:dbadmfile:DPrsStd_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/DPrsStd/.adm/DPrsStd_xcpp_header.Dep

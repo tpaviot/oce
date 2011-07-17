@@ -1,0 +1,7 @@
++V IntImpParGen:msentity:IntImpParGen .
++V IntImpParGen:msentity:IntImpParGen_ImpTool .
++V IntImpParGen:msentity:IntImpParGen_ParTool .
++V IntImpParGen:msentity:IntImpParGen_ImpParTool .
++V IntImpParGen:msentity:IntImpParGen_Intersector .
++V IntImpParGen:msentity:IntImpParGen_MyImpParTool .
+- IntImpParGen:admfile:IntImpParGen_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IntImpParGen/IntImpParGen_xcpp_fill.Out

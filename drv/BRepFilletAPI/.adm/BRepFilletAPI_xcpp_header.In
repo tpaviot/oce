@@ -1,0 +1,6 @@
++V BRepFilletAPI:msentity:BRepFilletAPI .
++V BRepFilletAPI:msentity:BRepFilletAPI_LocalOperation .
++V BRepFilletAPI:msentity:BRepFilletAPI_MakeFillet .
++V BRepFilletAPI:msentity:BRepFilletAPI_MakeChamfer .
++V BRepFilletAPI:msentity:BRepFilletAPI_MakeFillet2d .
+- BRepFilletAPI:admfile:BRepFilletAPI_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepFilletAPI/BRepFilletAPI_xcpp_fill.Out

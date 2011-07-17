@@ -1,0 +1,5 @@
++M BRepClass:pubinclude:BRepClass_Edge.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepClass_Edge.lxx
++M BRepClass:pubinclude:BRepClass_FaceExplorer.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepClass_FaceExplorer.lxx
++M BRepClass:dbadmfile:BRepClass_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepClass/.adm/BRepClass_obj_inc.In
++M BRepClass:dbadmfile:BRepClass_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepClass/.adm/BRepClass_obj_inc.Out
++M BRepClass:dbadmfile:BRepClass_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepClass/.adm/BRepClass_obj_inc.Dep

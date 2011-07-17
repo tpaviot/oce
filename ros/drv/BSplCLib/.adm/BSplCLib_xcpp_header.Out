@@ -1,8 +1,0 @@
-+M BSplCLib:pubinclude:BSplCLib.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BSplCLib.hxx
-+M BSplCLib:privinclude:BSplCLib.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BSplCLib/BSplCLib.jxx
-+M BSplCLib:privinclude:BSplCLib.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BSplCLib/BSplCLib.ixx
-+M BSplCLib:pubinclude:BSplCLib_KnotDistribution.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BSplCLib_KnotDistribution.hxx
-+M BSplCLib:pubinclude:BSplCLib_MultDistribution.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BSplCLib_MultDistribution.hxx
-+M BSplCLib:dbadmfile:BSplCLib_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BSplCLib/.adm/BSplCLib_xcpp_header.In
-+M BSplCLib:dbadmfile:BSplCLib_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BSplCLib/.adm/BSplCLib_xcpp_header.Out
-+M BSplCLib:dbadmfile:BSplCLib_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BSplCLib/.adm/BSplCLib_xcpp_header.Dep

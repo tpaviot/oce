@@ -1,0 +1,7 @@
++V StdFail:msentity:StdFail .
++V StdFail:msentity:StdFail_NotDone .
++V StdFail:msentity:StdFail_Undefined .
++V StdFail:msentity:StdFail_UndefinedDerivative .
++V StdFail:msentity:StdFail_UndefinedValue .
++V StdFail:msentity:StdFail_InfiniteSolutions .
+- StdFail:admfile:StdFail_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/StdFail/StdFail_xcpp_fill.Out

@@ -1,0 +1,17 @@
++M Aspect:pubinclude:Aspect_FStream.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_FStream.hxx
++M Aspect:pubinclude:Aspect_IFStream.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_IFStream.hxx
++M Aspect:pubinclude:Aspect_CLayer2d.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_CLayer2d.hxx
++M Aspect:pubinclude:Aspect_RGBPixel.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_RGBPixel.hxx
++M Aspect:pubinclude:Aspect_Handle.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Handle.hxx
++M Aspect:pubinclude:Aspect_XWD.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_XWD.hxx
++M Aspect:pubinclude:Aspect_Units.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Units.hxx
++M Aspect:pubinclude:Aspect_RenderingContext.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_RenderingContext.hxx
++M Aspect:pubinclude:Aspect_GraphicCallbackProc.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_GraphicCallbackProc.hxx
++M Aspect:pubinclude:Aspect_Display.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Display.hxx
++M Aspect:pubinclude:Aspect_Drawable.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Drawable.hxx
++M Aspect:pubinclude:Aspect_PolygonOffsetMode.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_PolygonOffsetMode.hxx
++M Aspect:pubinclude:Aspect_Convert.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Convert.hxx
++M Aspect:pubinclude:Aspect_Window.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Aspect_Window.lxx
++M Aspect:dbadmfile:Aspect_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Aspect/.adm/Aspect_obj_inc.In
++M Aspect:dbadmfile:Aspect_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Aspect/.adm/Aspect_obj_inc.Out
++M Aspect:dbadmfile:Aspect_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Aspect/.adm/Aspect_obj_inc.Dep

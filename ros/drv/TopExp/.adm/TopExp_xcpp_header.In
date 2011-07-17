@@ -1,7 +1,0 @@
-+V TopExp:msentity:TopExp .
-+V TopExp:msentity:TopExp_StackOfIterator .
-+V TopExp:msentity:TopExp_Explorer .
-+V TopExp:msentity:TopExp_StackNodeOfStackOfIterator .
-+V TopExp:msentity:TopExp_StackIteratorOfStackOfIterator .
-+V TopExp:msentity:TopExp_Stack .
-- TopExp:admfile:TopExp_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/TopExp/TopExp_xcpp_fill.Out

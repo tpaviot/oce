@@ -1,0 +1,9 @@
++M PLib:pubinclude:PLib_ChangeDim.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib_ChangeDim.gxx
++M PLib:pubinclude:PLib_JacobiPolynomial_0.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib_JacobiPolynomial_0.hxx
++M PLib:pubinclude:PLib.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib.lxx
++M PLib:pubinclude:PLib_JacobiPolynomial.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib_JacobiPolynomial.lxx
++M PLib:pubinclude:PLib_HermitJacobi.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib_HermitJacobi.lxx
++M PLib:pubinclude:PLib_DoubleJacobiPolynomial.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/PLib_DoubleJacobiPolynomial.lxx
++M PLib:dbadmfile:PLib_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/PLib/.adm/PLib_obj_inc.In
++M PLib:dbadmfile:PLib_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/PLib/.adm/PLib_obj_inc.Out
++M PLib:dbadmfile:PLib_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/PLib/.adm/PLib_obj_inc.Dep

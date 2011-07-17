@@ -1,6 +1,0 @@
-+M BRepToIGESBRep:pubinclude:BRepToIGESBRep_Entity.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/BRepToIGESBRep_Entity.hxx
-+M BRepToIGESBRep:privinclude:BRepToIGESBRep_Entity.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepToIGESBRep/BRepToIGESBRep_Entity.jxx
-+M BRepToIGESBRep:privinclude:BRepToIGESBRep_Entity.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepToIGESBRep/BRepToIGESBRep_Entity.ixx
-+M BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepToIGESBRep/.adm/BRepToIGESBRep_xcpp_header.In
-+M BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepToIGESBRep/.adm/BRepToIGESBRep_xcpp_header.Out
-+M BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/BRepToIGESBRep/.adm/BRepToIGESBRep_xcpp_header.Dep

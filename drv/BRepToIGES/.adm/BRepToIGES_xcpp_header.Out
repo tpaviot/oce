@@ -1,0 +1,15 @@
++M BRepToIGES:pubinclude:BRepToIGES_BREntity.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepToIGES_BREntity.hxx
++M BRepToIGES:privinclude:BRepToIGES_BREntity.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BREntity.jxx
++M BRepToIGES:privinclude:BRepToIGES_BREntity.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BREntity.ixx
++M BRepToIGES:pubinclude:BRepToIGES_BRShell.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepToIGES_BRShell.hxx
++M BRepToIGES:privinclude:BRepToIGES_BRShell.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRShell.jxx
++M BRepToIGES:privinclude:BRepToIGES_BRShell.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRShell.ixx
++M BRepToIGES:pubinclude:BRepToIGES_BRSolid.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepToIGES_BRSolid.hxx
++M BRepToIGES:privinclude:BRepToIGES_BRSolid.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRSolid.jxx
++M BRepToIGES:privinclude:BRepToIGES_BRSolid.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRSolid.ixx
++M BRepToIGES:pubinclude:BRepToIGES_BRWire.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/BRepToIGES_BRWire.hxx
++M BRepToIGES:privinclude:BRepToIGES_BRWire.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRWire.jxx
++M BRepToIGES:privinclude:BRepToIGES_BRWire.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/BRepToIGES_BRWire.ixx
++M BRepToIGES:dbadmfile:BRepToIGES_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/.adm/BRepToIGES_xcpp_header.In
++M BRepToIGES:dbadmfile:BRepToIGES_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/.adm/BRepToIGES_xcpp_header.Out
++M BRepToIGES:dbadmfile:BRepToIGES_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/BRepToIGES/.adm/BRepToIGES_xcpp_header.Dep

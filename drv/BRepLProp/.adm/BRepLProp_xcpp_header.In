@@ -1,0 +1,6 @@
++V BRepLProp:msentity:BRepLProp .
++V BRepLProp:msentity:BRepLProp_CurveTool .
++V BRepLProp:msentity:BRepLProp_SurfaceTool .
++V BRepLProp:msentity:BRepLProp_CLProps .
++V BRepLProp:msentity:BRepLProp_SLProps .
+- BRepLProp:admfile:BRepLProp_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepLProp/BRepLProp_xcpp_fill.Out

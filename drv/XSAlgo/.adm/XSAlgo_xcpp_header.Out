@@ -1,0 +1,15 @@
++M XSAlgo:pubinclude:XSAlgo.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSAlgo.hxx
++M XSAlgo:privinclude:XSAlgo.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo.jxx
++M XSAlgo:privinclude:XSAlgo.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo.ixx
++M XSAlgo:pubinclude:Handle_XSAlgo_ToolContainer.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_XSAlgo_ToolContainer.hxx
++M XSAlgo:pubinclude:XSAlgo_ToolContainer.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSAlgo_ToolContainer.hxx
++M XSAlgo:privinclude:XSAlgo_ToolContainer.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo_ToolContainer.jxx
++M XSAlgo:privinclude:XSAlgo_ToolContainer.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo_ToolContainer.ixx
++M XSAlgo:pubinclude:Handle_XSAlgo_AlgoContainer.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_XSAlgo_AlgoContainer.hxx
++M XSAlgo:pubinclude:XSAlgo_AlgoContainer.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSAlgo_AlgoContainer.hxx
++M XSAlgo:privinclude:XSAlgo_AlgoContainer.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo_AlgoContainer.jxx
++M XSAlgo:privinclude:XSAlgo_AlgoContainer.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/XSAlgo_AlgoContainer.ixx
++M XSAlgo:pubinclude:XSAlgo_Caller.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XSAlgo_Caller.hxx
++M XSAlgo:dbadmfile:XSAlgo_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/.adm/XSAlgo_xcpp_header.In
++M XSAlgo:dbadmfile:XSAlgo_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/.adm/XSAlgo_xcpp_header.Out
++M XSAlgo:dbadmfile:XSAlgo_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XSAlgo/.adm/XSAlgo_xcpp_header.Dep

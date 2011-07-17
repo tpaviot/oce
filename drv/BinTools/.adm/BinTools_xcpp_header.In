@@ -1,0 +1,8 @@
++V BinTools:msentity:BinTools .
++V BinTools:msentity:BinTools_ShapeSet .
++V BinTools:msentity:BinTools_Curve2dSet .
++V BinTools:msentity:BinTools_CurveSet .
++V BinTools:msentity:BinTools_SurfaceSet .
++V BinTools:msentity:BinTools_LocationSet .
++V BinTools:msentity:BinTools_LocationSetPtr .
+- BinTools:admfile:BinTools_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BinTools/BinTools_xcpp_fill.Out

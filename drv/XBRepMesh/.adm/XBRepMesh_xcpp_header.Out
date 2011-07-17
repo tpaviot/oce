@@ -1,0 +1,6 @@
++M XBRepMesh:pubinclude:XBRepMesh.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/XBRepMesh.hxx
++M XBRepMesh:privinclude:XBRepMesh.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XBRepMesh/XBRepMesh.jxx
++M XBRepMesh:privinclude:XBRepMesh.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XBRepMesh/XBRepMesh.ixx
++M XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XBRepMesh/.adm/XBRepMesh_xcpp_header.In
++M XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XBRepMesh/.adm/XBRepMesh_xcpp_header.Out
++M XBRepMesh:dbadmfile:XBRepMesh_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/XBRepMesh/.adm/XBRepMesh_xcpp_header.Dep

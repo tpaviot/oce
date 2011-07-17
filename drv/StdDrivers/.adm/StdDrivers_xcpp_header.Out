@@ -1,0 +1,14 @@
++M StdDrivers:pubinclude:StdDrivers.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/StdDrivers.hxx
++M StdDrivers:privinclude:StdDrivers.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers.jxx
++M StdDrivers:privinclude:StdDrivers.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers.ixx
++M StdDrivers:pubinclude:Handle_StdDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_StdDrivers_DocumentRetrievalDriver.hxx
++M StdDrivers:pubinclude:StdDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/StdDrivers_DocumentRetrievalDriver.hxx
++M StdDrivers:privinclude:StdDrivers_DocumentRetrievalDriver.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers_DocumentRetrievalDriver.jxx
++M StdDrivers:privinclude:StdDrivers_DocumentRetrievalDriver.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers_DocumentRetrievalDriver.ixx
++M StdDrivers:pubinclude:Handle_StdDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_StdDrivers_DocumentStorageDriver.hxx
++M StdDrivers:pubinclude:StdDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/StdDrivers_DocumentStorageDriver.hxx
++M StdDrivers:privinclude:StdDrivers_DocumentStorageDriver.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers_DocumentStorageDriver.jxx
++M StdDrivers:privinclude:StdDrivers_DocumentStorageDriver.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/StdDrivers_DocumentStorageDriver.ixx
++M StdDrivers:dbadmfile:StdDrivers_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/.adm/StdDrivers_xcpp_header.In
++M StdDrivers:dbadmfile:StdDrivers_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/.adm/StdDrivers_xcpp_header.Out
++M StdDrivers:dbadmfile:StdDrivers_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/StdDrivers/.adm/StdDrivers_xcpp_header.Dep

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{A3C65214-09E9-0515-0294-BA09595ABCDD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepPrim">
+      <UniqueIdentifier>{D40CA966-0CA1-14DA-137A-5E617658EA24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepSweep">
+      <UniqueIdentifier>{E96946FD-0E8E-026E-0D8F-DD33F807A233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Sweep">
+      <UniqueIdentifier>{D7B9B934-0881-0E7D-00D2-360572756219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BRepPrimAPI">
+      <UniqueIdentifier>{B329C6EE-127B-14C7-061A-D23DCC3FB1F4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\BRepPrim\BRepPrim_GWedge_0.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepPrim\BRepPrim_OneAxis_0.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Builder.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Cone.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Cylinder.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_FaceBuilder.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Revolution.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Sphere.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Torus.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrim\BRepPrim_Wedge.cxx">
+      <Filter>Source files\BRepPrim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_Array2OfShapesOfNumLinearRegularSweep_0.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_NumLinearRegularSweep_0.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_SequenceNodeOfSequenceOfShapesOfNumLinearRegularSweep_0.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepSweep\BRepSweep_SequenceOfShapesOfNumLinearRegularSweep_0.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Builder.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Iterator.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Prism.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Revol.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Rotation.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Tool.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Translation.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepSweep\BRepSweep_Trsf.cxx">
+      <Filter>Source files\BRepSweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Sweep\Sweep_NumShape.cxx">
+      <Filter>Source files\Sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Sweep\Sweep_NumShapeIterator.cxx">
+      <Filter>Source files\Sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Sweep\Sweep_NumShapeTool.cxx">
+      <Filter>Source files\Sweep</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeBox.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeCone.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeCylinder.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeHalfSpace.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeOneAxis.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakePrism.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeRevol.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeRevolution.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeSphere.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeSweep.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeTorus.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepPrimAPI\BRepPrimAPI_MakeWedge.cxx">
+      <Filter>Source files\BRepPrimAPI</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,6 +1,0 @@
-+M TFunction:pubinclude:TFunction_Driver.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TFunction_Driver.lxx
-+M TFunction:pubinclude:TFunction_Logbook.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TFunction_Logbook.lxx
-+M TFunction:pubinclude:TFunction_Function.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/TFunction_Function.lxx
-+M TFunction:dbadmfile:TFunction_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TFunction/.adm/TFunction_obj_inc.In
-+M TFunction:dbadmfile:TFunction_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TFunction/.adm/TFunction_obj_inc.Out
-+M TFunction:dbadmfile:TFunction_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/TFunction/.adm/TFunction_obj_inc.Dep

@@ -1,0 +1,17 @@
++ BRepExtrema:pubinclude:BRepExtrema_DistanceSS.hxx BRepExtrema:source:BRepExtrema_DistanceSS.hxx
++ BRepExtrema:pubinclude:BRepExtrema_DistShapeShape.hxx BRepExtrema:source:BRepExtrema_DistShapeShape.hxx
++ BRepExtrema:pubinclude:BRepExtrema_ExtCC.hxx BRepExtrema:source:BRepExtrema_ExtCC.hxx
++ BRepExtrema:pubinclude:BRepExtrema_ExtCF.hxx BRepExtrema:source:BRepExtrema_ExtCF.hxx
++ BRepExtrema:pubinclude:BRepExtrema_ExtFF.hxx BRepExtrema:source:BRepExtrema_ExtFF.hxx
++ BRepExtrema:pubinclude:BRepExtrema_ExtPC.hxx BRepExtrema:source:BRepExtrema_ExtPC.hxx
++ BRepExtrema:pubinclude:BRepExtrema_ExtPF.hxx BRepExtrema:source:BRepExtrema_ExtPF.hxx
++ BRepExtrema:pubinclude:BRepExtrema_Poly.hxx BRepExtrema:source:BRepExtrema_Poly.hxx
++ BRepExtrema:pubinclude:BRepExtrema_SeqOfSolution.hxx BRepExtrema:source:BRepExtrema_SeqOfSolution.hxx
++ BRepExtrema:pubinclude:BRepExtrema_SolutionElem.hxx BRepExtrema:source:BRepExtrema_SolutionElem.hxx
++ BRepExtrema:pubinclude:BRepExtrema_SupportType.hxx BRepExtrema:source:BRepExtrema_SupportType.hxx
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.In BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.Out BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out
++ BRepExtrema:dbadmfile:BRepExtrema_obj_inc.Dep BRepExtrema:admfile:BRepExtrema_src.Out
++ * BRepExtrema:admfile:BRepExtrema_xcpp_src.Out

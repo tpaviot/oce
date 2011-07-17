@@ -1,0 +1,17 @@
++V BooleanOperations:msentity:BooleanOperations .
++V BooleanOperations:msentity:BooleanOperations_AncestorsAndSuccessors .
++V BooleanOperations:msentity:BooleanOperations_ShapeAndInterferences .
++V BooleanOperations:msentity:BooleanOperations_ShapesDataStructure .
++V BooleanOperations:msentity:BooleanOperations_Explorer .
++V BooleanOperations:msentity:BooleanOperations_OnceExplorer .
++V BooleanOperations:msentity:BooleanOperations_AncestorsSeqAndSuccessorsSeq .
++V BooleanOperations:msentity:BooleanOperations_IndexedDataMapOfShapeAncestorsSuccessors .
++V BooleanOperations:msentity:BooleanOperations_IndexedDataMapOfShapeInteger .
++V BooleanOperations:msentity:BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeAncestorsSuccessors .
++V BooleanOperations:msentity:BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeInteger .
++V BooleanOperations:msentity:BooleanOperations_StateOfShape .
++V BooleanOperations:msentity:BooleanOperations_KindOfInterference .
++V BooleanOperations:msentity:BooleanOperations_KindOfIntersection .
++V BooleanOperations:msentity:BooleanOperations_PShapeAndInterferences .
++V BooleanOperations:msentity:BooleanOperations_PShapesDataStructure .
+- BooleanOperations:admfile:BooleanOperations_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BooleanOperations/BooleanOperations_xcpp_fill.Out

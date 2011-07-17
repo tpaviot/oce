@@ -1,0 +1,9 @@
++ Sweep:source:Sweep_Tool.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_Tool.gxx
++ Sweep:source:Sweep_Iterator.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_Iterator.gxx
++ Sweep:source:Sweep_Iterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_Iterator.lxx
++ Sweep:source:Sweep_Builder.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_Builder.gxx
++ Sweep:source:Sweep_LinearRegularSweep.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_LinearRegularSweep.gxx
++ Sweep:source:Sweep_NumShape.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_NumShape.lxx
++ Sweep:source:Sweep_NumShapeIterator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Sweep/Sweep_NumShapeIterator.lxx
+- Sweep:admfile:Sweep_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Sweep/Sweep_src.Out
+- Sweep:admfile:Sweep_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Sweep/Sweep_xcpp_src.Out

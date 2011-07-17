@@ -1,0 +1,7 @@
++ AppBlend:source:AppBlend_Line.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/AppBlend/AppBlend_Line.gxx
++ AppBlend:source:AppBlend_Line.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/AppBlend/AppBlend_Line.lxx
++ AppBlend:source:AppBlend_SectionGenerator.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/AppBlend/AppBlend_SectionGenerator.gxx
++ AppBlend:source:AppBlend_AppSurf.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/AppBlend/AppBlend_AppSurf.gxx
++ AppBlend:source:AppBlend_AppSurf.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/AppBlend/AppBlend_AppSurf.lxx
+- AppBlend:admfile:AppBlend_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/AppBlend/AppBlend_src.Out
+- AppBlend:admfile:AppBlend_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/AppBlend/AppBlend_xcpp_src.Out

@@ -1,0 +1,6 @@
++M ElCLib:pubinclude:ElCLib.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ElCLib.hxx
++M ElCLib:privinclude:ElCLib.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ElCLib/ElCLib.jxx
++M ElCLib:privinclude:ElCLib.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ElCLib/ElCLib.ixx
++M ElCLib:dbadmfile:ElCLib_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ElCLib/.adm/ElCLib_xcpp_header.In
++M ElCLib:dbadmfile:ElCLib_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ElCLib/.adm/ElCLib_xcpp_header.Out
++M ElCLib:dbadmfile:ElCLib_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ElCLib/.adm/ElCLib_xcpp_header.Dep

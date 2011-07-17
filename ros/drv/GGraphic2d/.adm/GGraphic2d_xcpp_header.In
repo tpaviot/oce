@@ -1,5 +1,0 @@
-+V GGraphic2d:msentity:GGraphic2d .
-+V GGraphic2d:msentity:GGraphic2d_Curve .
-+V GGraphic2d:msentity:GGraphic2d_SetOfCurves .
-+V GGraphic2d:msentity:GGraphic2d_CurveDefinitionError .
-- GGraphic2d:admfile:GGraphic2d_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GGraphic2d/GGraphic2d_xcpp_fill.Out

@@ -1,8 +1,0 @@
-+ GccGeo:source:GccGeo_CurvePGTool.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_CurvePGTool.gxx
-+ GccGeo:source:GccGeo_ParGenCurve.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_ParGenCurve.gxx
-+ GccGeo:source:GccGeo_Circ2dTanCen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_Circ2dTanCen.gxx
-+ GccGeo:source:GccGeo_Circ2d2TanRad.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_Circ2d2TanRad.gxx
-+ GccGeo:source:GccGeo_Circ2dTanOnRad.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_Circ2dTanOnRad.gxx
-+ GccGeo:source:GccGeo_Circ2d2TanOn.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/GccGeo/GccGeo_Circ2d2TanOn.gxx
-- GccGeo:admfile:GccGeo_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GccGeo/GccGeo_src.Out
-- GccGeo:admfile:GccGeo_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/GccGeo/GccGeo_xcpp_src.Out

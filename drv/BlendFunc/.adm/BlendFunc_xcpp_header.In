@@ -1,0 +1,17 @@
++V BlendFunc:msentity:BlendFunc .
++V BlendFunc:msentity:BlendFunc_ConstRad .
++V BlendFunc:msentity:BlendFunc_ConstRadInv .
++V BlendFunc:msentity:BlendFunc_Ruled .
++V BlendFunc:msentity:BlendFunc_RuledInv .
++V BlendFunc:msentity:BlendFunc_EvolRad .
++V BlendFunc:msentity:BlendFunc_EvolRadInv .
++V BlendFunc:msentity:BlendFunc_CSConstRad .
++V BlendFunc:msentity:BlendFunc_CSCircular .
++V BlendFunc:msentity:BlendFunc_Corde .
++V BlendFunc:msentity:BlendFunc_Chamfer .
++V BlendFunc:msentity:BlendFunc_ChamfInv .
++V BlendFunc:msentity:BlendFunc_ChAsym .
++V BlendFunc:msentity:BlendFunc_ChAsymInv .
++V BlendFunc:msentity:BlendFunc_Tensor .
++V BlendFunc:msentity:BlendFunc_SectionShape .
+- BlendFunc:admfile:BlendFunc_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BlendFunc/BlendFunc_xcpp_fill.Out

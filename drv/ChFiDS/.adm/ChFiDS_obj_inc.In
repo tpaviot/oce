@@ -1,0 +1,8 @@
++ ChFiDS:source:ChFiDS_CommonPoint.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_CommonPoint.lxx
++ ChFiDS:source:ChFiDS_FaceInterference.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_FaceInterference.lxx
++ ChFiDS:source:ChFiDS_SurfData.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_SurfData.lxx
++ ChFiDS:source:ChFiDS_Stripe.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_Stripe.lxx
++ ChFiDS:source:ChFiDS_StripeMap.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_StripeMap.lxx
++ ChFiDS:source:ChFiDS_Spine.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ChFiDS/ChFiDS_Spine.lxx
+- ChFiDS:admfile:ChFiDS_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ChFiDS/ChFiDS_src.Out
+- ChFiDS:admfile:ChFiDS_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ChFiDS/ChFiDS_xcpp_src.Out

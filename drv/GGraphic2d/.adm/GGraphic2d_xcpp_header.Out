@@ -1,0 +1,14 @@
++M GGraphic2d:pubinclude:Handle_GGraphic2d_Curve.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_GGraphic2d_Curve.hxx
++M GGraphic2d:pubinclude:GGraphic2d_Curve.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GGraphic2d_Curve.hxx
++M GGraphic2d:privinclude:GGraphic2d_Curve.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/GGraphic2d_Curve.jxx
++M GGraphic2d:privinclude:GGraphic2d_Curve.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/GGraphic2d_Curve.ixx
++M GGraphic2d:pubinclude:Handle_GGraphic2d_SetOfCurves.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_GGraphic2d_SetOfCurves.hxx
++M GGraphic2d:pubinclude:GGraphic2d_SetOfCurves.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GGraphic2d_SetOfCurves.hxx
++M GGraphic2d:privinclude:GGraphic2d_SetOfCurves.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/GGraphic2d_SetOfCurves.jxx
++M GGraphic2d:privinclude:GGraphic2d_SetOfCurves.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/GGraphic2d_SetOfCurves.ixx
++M GGraphic2d:pubinclude:Handle_GGraphic2d_CurveDefinitionError.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_GGraphic2d_CurveDefinitionError.hxx
++M GGraphic2d:pubinclude:GGraphic2d_CurveDefinitionError.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GGraphic2d_CurveDefinitionError.hxx
++M GGraphic2d:derivated:GGraphic2d_CurveDefinitionError_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/GGraphic2d_CurveDefinitionError_0.cxx
++M GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_xcpp_header.In
++M GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_xcpp_header.Out
++M GGraphic2d:dbadmfile:GGraphic2d_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_xcpp_header.Dep

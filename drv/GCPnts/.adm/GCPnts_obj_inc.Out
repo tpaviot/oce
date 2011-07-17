@@ -1,0 +1,15 @@
++M GCPnts:pubinclude:GCPnts_AbscissaPoint.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_AbscissaPoint.gxx
++M GCPnts:pubinclude:GCPnts_UniformDeflection.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_UniformDeflection.gxx
++M GCPnts:pubinclude:GCPnts_UniformAbscissa.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_UniformAbscissa.gxx
++M GCPnts:pubinclude:GCPnts_QuasiUniformAbscissa.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_QuasiUniformAbscissa.gxx
++M GCPnts:pubinclude:GCPnts_QuasiUniformDeflection.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_QuasiUniformDeflection.gxx
++M GCPnts:pubinclude:GCPnts_TangentialDeflection.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_TangentialDeflection.gxx
++M GCPnts:pubinclude:GCPnts_AbscissaPoint.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_AbscissaPoint.lxx
++M GCPnts:pubinclude:GCPnts_UniformAbscissa.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_UniformAbscissa.lxx
++M GCPnts:pubinclude:GCPnts_UniformDeflection.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_UniformDeflection.lxx
++M GCPnts:pubinclude:GCPnts_QuasiUniformDeflection.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_QuasiUniformDeflection.lxx
++M GCPnts:pubinclude:GCPnts_QuasiUniformAbscissa.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_QuasiUniformAbscissa.lxx
++M GCPnts:pubinclude:GCPnts_TangentialDeflection.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GCPnts_TangentialDeflection.lxx
++M GCPnts:dbadmfile:GCPnts_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GCPnts/.adm/GCPnts_obj_inc.In
++M GCPnts:dbadmfile:GCPnts_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GCPnts/.adm/GCPnts_obj_inc.Out
++M GCPnts:dbadmfile:GCPnts_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GCPnts/.adm/GCPnts_obj_inc.Dep

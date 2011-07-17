@@ -1,0 +1,5 @@
++ Geom2dAPI:source:Geom2dAPI_ProjectPointOnCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Geom2dAPI/Geom2dAPI_ProjectPointOnCurve.lxx
++ Geom2dAPI:source:Geom2dAPI_ExtremaCurveCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Geom2dAPI/Geom2dAPI_ExtremaCurveCurve.lxx
++ Geom2dAPI:source:Geom2dAPI_InterCurveCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Geom2dAPI/Geom2dAPI_InterCurveCurve.lxx
+- Geom2dAPI:admfile:Geom2dAPI_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Geom2dAPI/Geom2dAPI_src.Out
+- Geom2dAPI:admfile:Geom2dAPI_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Geom2dAPI/Geom2dAPI_xcpp_src.Out

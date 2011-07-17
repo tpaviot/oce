@@ -1,0 +1,6 @@
++M GGraphic2d:pubinclude:Graphic2d_Curve.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Graphic2d_Curve.hxx
++M GGraphic2d:pubinclude:Graphic2d_CurveDefinitionError.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Graphic2d_CurveDefinitionError.hxx
++M GGraphic2d:pubinclude:Graphic2d_SetOfCurves.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Graphic2d_SetOfCurves.hxx
++M GGraphic2d:dbadmfile:GGraphic2d_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_obj_inc.In
++M GGraphic2d:dbadmfile:GGraphic2d_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_obj_inc.Out
++M GGraphic2d:dbadmfile:GGraphic2d_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GGraphic2d/.adm/GGraphic2d_obj_inc.Dep

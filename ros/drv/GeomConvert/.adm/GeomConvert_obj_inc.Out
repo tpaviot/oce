@@ -1,4 +1,0 @@
-+M GeomConvert:pubinclude:GeomConvert_CompBezierSurfacesToBSplineSurface.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/GeomConvert_CompBezierSurfacesToBSplineSurface.lxx
-+M GeomConvert:dbadmfile:GeomConvert_obj_inc.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GeomConvert/.adm/GeomConvert_obj_inc.In
-+M GeomConvert:dbadmfile:GeomConvert_obj_inc.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GeomConvert/.adm/GeomConvert_obj_inc.Out
-+M GeomConvert:dbadmfile:GeomConvert_obj_inc.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/GeomConvert/.adm/GeomConvert_obj_inc.Dep

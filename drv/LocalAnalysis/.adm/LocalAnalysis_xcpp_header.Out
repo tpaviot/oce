@@ -1,0 +1,13 @@
++M LocalAnalysis:pubinclude:LocalAnalysis.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/LocalAnalysis.hxx
++M LocalAnalysis:privinclude:LocalAnalysis.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis.jxx
++M LocalAnalysis:privinclude:LocalAnalysis.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis.ixx
++M LocalAnalysis:pubinclude:LocalAnalysis_SurfaceContinuity.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/LocalAnalysis_SurfaceContinuity.hxx
++M LocalAnalysis:privinclude:LocalAnalysis_SurfaceContinuity.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis_SurfaceContinuity.jxx
++M LocalAnalysis:privinclude:LocalAnalysis_SurfaceContinuity.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis_SurfaceContinuity.ixx
++M LocalAnalysis:pubinclude:LocalAnalysis_CurveContinuity.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/LocalAnalysis_CurveContinuity.hxx
++M LocalAnalysis:privinclude:LocalAnalysis_CurveContinuity.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis_CurveContinuity.jxx
++M LocalAnalysis:privinclude:LocalAnalysis_CurveContinuity.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/LocalAnalysis_CurveContinuity.ixx
++M LocalAnalysis:pubinclude:LocalAnalysis_StatusErrorType.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/LocalAnalysis_StatusErrorType.hxx
++M LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/.adm/LocalAnalysis_xcpp_header.In
++M LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/.adm/LocalAnalysis_xcpp_header.Out
++M LocalAnalysis:dbadmfile:LocalAnalysis_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/LocalAnalysis/.adm/LocalAnalysis_xcpp_header.Dep

@@ -1,0 +1,13 @@
++M ChFiKPart:pubinclude:ChFiKPart_RstMap.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ChFiKPart_RstMap.hxx
++M ChFiKPart:derivated:ChFiKPart_RstMap_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/ChFiKPart_RstMap_0.cxx
++M ChFiKPart:pubinclude:ChFiKPart_ComputeData.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ChFiKPart_ComputeData.hxx
++M ChFiKPart:privinclude:ChFiKPart_ComputeData.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/ChFiKPart_ComputeData.jxx
++M ChFiKPart:privinclude:ChFiKPart_ComputeData.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/ChFiKPart_ComputeData.ixx
++M ChFiKPart:pubinclude:Handle_ChFiKPart_DataMapNodeOfRstMap.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_ChFiKPart_DataMapNodeOfRstMap.hxx
++M ChFiKPart:pubinclude:ChFiKPart_DataMapNodeOfRstMap.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ChFiKPart_DataMapNodeOfRstMap.hxx
++M ChFiKPart:derivated:ChFiKPart_DataMapNodeOfRstMap_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/ChFiKPart_DataMapNodeOfRstMap_0.cxx
++M ChFiKPart:pubinclude:ChFiKPart_DataMapIteratorOfRstMap.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ChFiKPart_DataMapIteratorOfRstMap.hxx
++M ChFiKPart:derivated:ChFiKPart_DataMapIteratorOfRstMap_0.cxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/ChFiKPart_DataMapIteratorOfRstMap_0.cxx
++M ChFiKPart:dbadmfile:ChFiKPart_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/.adm/ChFiKPart_xcpp_header.In
++M ChFiKPart:dbadmfile:ChFiKPart_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/.adm/ChFiKPart_xcpp_header.Out
++M ChFiKPart:dbadmfile:ChFiKPart_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ChFiKPart/.adm/ChFiKPart_xcpp_header.Dep
