@@ -10,6 +10,7 @@
 #define __STDC_LIMIT_MACROS
 #endif
 #include <stdint.h>
+#include <stdlib.h>
 #endif
 
 #include <set>
