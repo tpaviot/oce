@@ -1,7 +1,7 @@
-+ CPnts:source:CPnts_RealFunction.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/CPnts/CPnts_RealFunction.hxx
-+ CPnts:source:CPnts_MyGaussFunction.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/CPnts/CPnts_MyGaussFunction.lxx
-+ CPnts:source:CPnts_MyRootFunction.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/CPnts/CPnts_MyRootFunction.lxx
-+ CPnts:source:CPnts_AbscissaPoint.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/CPnts/CPnts_AbscissaPoint.lxx
-+ CPnts:source:CPnts_UniformDeflection.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/CPnts/CPnts_UniformDeflection.lxx
-- CPnts:admfile:CPnts_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/CPnts/CPnts_src.Out
-- CPnts:admfile:CPnts_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/CPnts/CPnts_xcpp_src.Out
++ CPnts:source:CPnts_RealFunction.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/CPnts/CPnts_RealFunction.hxx
++ CPnts:source:CPnts_MyGaussFunction.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/CPnts/CPnts_MyGaussFunction.lxx
++ CPnts:source:CPnts_MyRootFunction.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/CPnts/CPnts_MyRootFunction.lxx
++ CPnts:source:CPnts_AbscissaPoint.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/CPnts/CPnts_AbscissaPoint.lxx
++ CPnts:source:CPnts_UniformDeflection.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/CPnts/CPnts_UniformDeflection.lxx
+- CPnts:admfile:CPnts_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/CPnts/CPnts_src.Out
+- CPnts:admfile:CPnts_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/CPnts/CPnts_xcpp_src.Out

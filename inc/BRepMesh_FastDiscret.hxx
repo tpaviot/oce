@@ -55,8 +55,8 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _MeshDS_BaseAllocator_HeaderFile
-#include <MeshDS_BaseAllocator.hxx>
+#ifndef _BRepMesh_BaseAllocator_HeaderFile
+#include <BRepMesh_BaseAllocator.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -70,8 +70,8 @@
 #ifndef _BRepMesh_ClassifierPtr_HeaderFile
 #include <BRepMesh_ClassifierPtr.hxx>
 #endif
-#ifndef _MeshDS_MapOfInteger_HeaderFile
-#include <MeshDS_MapOfInteger.hxx>
+#ifndef _BRepMesh_MapOfInteger_HeaderFile
+#include <BRepMesh_MapOfInteger.hxx>
 #endif
 #ifndef _Handle_BRepMesh_FaceAttribute_HeaderFile
 #include <Handle_BRepMesh_FaceAttribute.hxx>
@@ -87,8 +87,6 @@ class TopoDS_Vertex;
 class BRepMesh_ListOfVertex;
 class TColStd_ListOfInteger;
 class BRepMesh_Delaun;
-class gp_XY;
-class gp_Pnt2d;
 class BRepMesh_Triangle;
 class BRepMesh_Edge;
 class BRepMesh_Vertex;
@@ -131,11 +129,6 @@ public:
 {
   Process(face);
 }
-  //! Returns mode defining if internal vertices on faces <br>
-//! are taken into consideration or not. If this mode is equal to true <br>
-//! that internal vertices on faces are considered during triangulation. <br>
-//! Default value is equal to false (old behaviour). <br>
-        Standard_Boolean& InternalVerticesMode() ;
   
   Standard_EXPORT     BRepMesh_Status CurrentFaceStatus() const;
   //! Gives the number of built triangles. <br>
@@ -153,11 +146,11 @@ public:
   //! Gives the location3d of the vertex of <Index>. <br>
   Standard_EXPORT    const gp_Pnt& Pnt(const Standard_Integer Index) const;
   //! Gives the list of indices of the vertices <br>
-  Standard_EXPORT     void VerticesOfDomain(MeshDS_MapOfInteger& Indices) const;
+  Standard_EXPORT     void VerticesOfDomain(BRepMesh_MapOfInteger& Indices) const;
   //! Gives the list of indices of the edges <br>
-        void EdgesOfDomain(MeshDS_MapOfInteger& Indices) const;
+        void EdgesOfDomain(BRepMesh_MapOfInteger& Indices) const;
   //! Gives the list of indices of the triangles <br>
-        void TrianglesOfDomain(MeshDS_MapOfInteger& Indices) const;
+        void TrianglesOfDomain(BRepMesh_MapOfInteger& Indices) const;
   //! Gives the  number of different  location in 3d <br>
 //!          space.  It  is  different    of the number  of <br>
 //!          vertices if there is more than one surface. <br>
@@ -206,31 +199,28 @@ private:
   
   Standard_EXPORT     Standard_Real Control(const Handle(BRepAdaptor_HSurface)& caro,const Standard_Real defface,BRepMesh_ListOfVertex& inter,TColStd_ListOfInteger& badTri,TColStd_ListOfInteger& nulTri,BRepMesh_Delaun& trigu,const Standard_Boolean isfirst) ;
   
-  Standard_EXPORT     gp_XY FindUV(const TopoDS_Vertex& V,const gp_Pnt2d& XY,const Standard_Integer ip,const Handle(BRepAdaptor_HSurface)& S,const Standard_Real mindist) ;
-  
   Standard_EXPORT     void AddInShape(const TopoDS_Face& face,const Standard_Real defedge) ;
 
-Standard_Real myangle;
-Standard_Real mydeflection;
-Standard_Real mydtotale;
+Standard_Real myAngle;
+Standard_Real myDeflection;
+Standard_Real myDtotale;
 Standard_Boolean myWithShare;
-BRepMesh_DataMapOfVertexInteger vertices;
-BRepMesh_DataMapOfShapePairOfPolygon edges;
-BRepMesh_DataMapOfShapePairOfPolygon internaledges;
-Standard_Integer nbLocat;
-BRepMesh_DataMapOfIntegerPnt Location3d;
-Handle_BRepMesh_DataStructureOfDelaun structure;
-BRepMesh_DataMapOfFaceAttribute mapattrib;
-TColStd_IndexedMapOfInteger myvemap;
-BRepMesh_DataMapOfIntegerListOfXY mylocation2d;
-Standard_Boolean myrelative;
-Standard_Boolean myshapetrigu;
-Standard_Boolean myinshape;
-Standard_Boolean myInternalVerticesMode;
-BRepMesh_Status myfacestate;
-TopTools_DataMapOfShapeReal mapdefle;
-TopTools_ListOfShape mynottriangulated;
-MeshDS_BaseAllocator myAllocator;
+BRepMesh_DataMapOfVertexInteger myVertices;
+BRepMesh_DataMapOfShapePairOfPolygon myEdges;
+BRepMesh_DataMapOfShapePairOfPolygon myInternaledges;
+Standard_Integer myNbLocat;
+BRepMesh_DataMapOfIntegerPnt myLocation3d;
+Handle_BRepMesh_DataStructureOfDelaun myStructure;
+BRepMesh_DataMapOfFaceAttribute myMapattrib;
+TColStd_IndexedMapOfInteger myVemap;
+BRepMesh_DataMapOfIntegerListOfXY myLocation2d;
+Standard_Boolean myRelative;
+Standard_Boolean myShapetrigu;
+Standard_Boolean myInshape;
+BRepMesh_Status myFacestate;
+TopTools_DataMapOfShapeReal myMapdefle;
+TopTools_ListOfShape myNottriangulated;
+BRepMesh_BaseAllocator myAllocator;
 
 
 };

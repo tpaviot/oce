@@ -19,8 +19,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _MeshDS_DegreeOfFreedom_HeaderFile
-#include <MeshDS_DegreeOfFreedom.hxx>
+#ifndef _BRepMesh_DegreeOfFreedom_HeaderFile
+#include <BRepMesh_DegreeOfFreedom.hxx>
 #endif
 
 
@@ -44,15 +44,15 @@ public:
   
   Standard_EXPORT   BRepMesh_Triangle();
   
-  Standard_EXPORT   BRepMesh_Triangle(const Standard_Integer e1,const Standard_Integer e2,const Standard_Integer e3,const Standard_Boolean o1,const Standard_Boolean o2,const Standard_Boolean o3,const MeshDS_DegreeOfFreedom canMove);
+  Standard_EXPORT   BRepMesh_Triangle(const Standard_Integer e1,const Standard_Integer e2,const Standard_Integer e3,const Standard_Boolean o1,const Standard_Boolean o2,const Standard_Boolean o3,const BRepMesh_DegreeOfFreedom canMove);
   
-  Standard_EXPORT     void Initialize(const Standard_Integer e1,const Standard_Integer e2,const Standard_Integer e3,const Standard_Boolean o1,const Standard_Boolean o2,const Standard_Boolean o3,const MeshDS_DegreeOfFreedom canMove) ;
+  Standard_EXPORT     void Initialize(const Standard_Integer e1,const Standard_Integer e2,const Standard_Integer e3,const Standard_Boolean o1,const Standard_Boolean o2,const Standard_Boolean o3,const BRepMesh_DegreeOfFreedom canMove) ;
   
   Standard_EXPORT     void Edges(Standard_Integer& e1,Standard_Integer& e2,Standard_Integer& e3,Standard_Boolean& o1,Standard_Boolean& o2,Standard_Boolean& o3) const;
   
-        MeshDS_DegreeOfFreedom Movability() const;
+        BRepMesh_DegreeOfFreedom Movability() const;
   
-  Standard_EXPORT     void SetMovability(const MeshDS_DegreeOfFreedom Move) ;
+  Standard_EXPORT     void SetMovability(const BRepMesh_DegreeOfFreedom Move) ;
   
   Standard_EXPORT     Standard_Integer HashCode(const Standard_Integer Upper) const;
   
@@ -82,7 +82,7 @@ Standard_Integer Edge2;
 Standard_Boolean Orientation2;
 Standard_Integer Edge3;
 Standard_Boolean Orientation3;
-MeshDS_DegreeOfFreedom myMovability;
+BRepMesh_DegreeOfFreedom myMovability;
 
 
 };

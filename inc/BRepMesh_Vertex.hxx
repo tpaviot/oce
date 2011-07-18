@@ -19,8 +19,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _MeshDS_DegreeOfFreedom_HeaderFile
-#include <MeshDS_DegreeOfFreedom.hxx>
+#ifndef _BRepMesh_DegreeOfFreedom_HeaderFile
+#include <BRepMesh_DegreeOfFreedom.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -51,19 +51,19 @@ public:
   
   Standard_EXPORT   BRepMesh_Vertex();
   
-  Standard_EXPORT   BRepMesh_Vertex(const gp_XY& UV,const Standard_Integer Locat3d,const MeshDS_DegreeOfFreedom Move);
-  //! For MeshAlgo. <br>
-  Standard_EXPORT   BRepMesh_Vertex(const Standard_Real U,const Standard_Real V,const MeshDS_DegreeOfFreedom Move);
+  Standard_EXPORT   BRepMesh_Vertex(const gp_XY& UV,const Standard_Integer Locat3d,const BRepMesh_DegreeOfFreedom Move);
   
-  Standard_EXPORT     void Initialize(const gp_XY& UV,const Standard_Integer Locat3d,const MeshDS_DegreeOfFreedom Move) ;
+  Standard_EXPORT   BRepMesh_Vertex(const Standard_Real U,const Standard_Real V,const BRepMesh_DegreeOfFreedom Move);
+  
+  Standard_EXPORT     void Initialize(const gp_XY& UV,const Standard_Integer Locat3d,const BRepMesh_DegreeOfFreedom Move) ;
   
        const gp_XY& Coord() const;
   
         Standard_Integer Location3d() const;
   
-        MeshDS_DegreeOfFreedom Movability() const;
+        BRepMesh_DegreeOfFreedom Movability() const;
   
-  Standard_EXPORT     void SetMovability(const MeshDS_DegreeOfFreedom Move) ;
+  Standard_EXPORT     void SetMovability(const BRepMesh_DegreeOfFreedom Move) ;
   
   Standard_EXPORT     Standard_Integer HashCode(const Standard_Integer Upper) const;
   
@@ -89,7 +89,7 @@ private:
 
 gp_XY myUV;
 Standard_Integer myLocation;
-MeshDS_DegreeOfFreedom myMovability;
+BRepMesh_DegreeOfFreedom myMovability;
 
 
 };

@@ -259,6 +259,8 @@
 + Extrema:derivated:Extrema_CCLocFOfLocECC2dOfLocateExtCC2d_0.cxx Extrema:msentity:Extrema_CCLocFOfLocECC2dOfLocateExtCC2d
 + Extrema:pubinclude:Extrema_LocECC2dOfLocateExtCC2d.hxx Extrema:msentity:Extrema_LocECC2dOfLocateExtCC2d
 + Extrema:derivated:Extrema_LocECC2dOfLocateExtCC2d_0.cxx Extrema:msentity:Extrema_LocECC2dOfLocateExtCC2d
++ Extrema:pubinclude:Extrema_ExtFlag.hxx Extrema:msentity:Extrema_ExtFlag
++ Extrema:pubinclude:Extrema_ExtAlgo.hxx Extrema:msentity:Extrema_ExtAlgo
 + Extrema:dbadmfile:Extrema_xcpp_header.In Extrema:admfile:Extrema_xcpp_fill.Out
 + Extrema:dbadmfile:Extrema_xcpp_header.Out Extrema:admfile:Extrema_xcpp_fill.Out
 + Extrema:dbadmfile:Extrema_xcpp_header.Dep Extrema:admfile:Extrema_xcpp_fill.Out

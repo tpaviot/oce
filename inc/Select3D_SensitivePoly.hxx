@@ -34,6 +34,9 @@
 #ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 class SelectBasics_EntityOwner;
 class TColgp_Array1OfPnt;
 class TColgp_HArray1OfPnt;
@@ -49,7 +52,7 @@ public:
 
   //! projection of the sensitive primitive in order to <br>
 //!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT   virtual  void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! stores in <boxes> the 2D Boxes which represent the sensitive face <br>
 //!          in the selection algorithm. <br>
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;

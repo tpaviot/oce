@@ -9,8 +9,11 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Standard_DefineHandle_HeaderFile
+#include <Standard_DefineHandle.hxx>
+#endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
 #endif
 
 #ifndef _Standard_Integer_HeaderFile
@@ -34,6 +37,9 @@
 #ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
 #endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
 class V3d_View;
 class Standard_NoSuchObject;
 class gp_Ax2;
@@ -48,21 +54,9 @@ class gp_Lin;
 
 
 //! A framework to define 3D projectors. <br>
-class Select3D_Projector  {
-public:
+class Select3D_Projector : public Standard_Transient {
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+public:
 
   //! Constructs the 3D projector object defined by the 3D view aView. <br>
   Standard_EXPORT   Select3D_Projector(const Handle(V3d_View)& aView);
@@ -80,9 +74,6 @@ public:
   Standard_EXPORT   Select3D_Projector(const gp_Trsf& T,const Standard_Boolean Persp,const Standard_Real Focus,const gp_Vec2d& v1,const gp_Vec2d& v2,const gp_Vec2d& v3);
   //! build a Projector with automatic minmax directions. <br>
   Standard_EXPORT   Select3D_Projector(const gp_GTrsf& GT,const Standard_Boolean Persp,const Standard_Real Focus);
-  
-  Standard_EXPORT   virtual  void Delete() ;
-Standard_EXPORT virtual ~Select3D_Projector(){Delete() ; }
   
   Standard_EXPORT     void Set(const gp_Trsf& T,const Standard_Boolean Persp,const Standard_Real Focus) ;
   //! Sets the 3D view V used at the time of construction. <br>
@@ -118,6 +109,16 @@ Standard_EXPORT virtual ~Select3D_Projector(){Delete() ; }
   //! return a line going through the eye towards the <br>
 //!          2d point <X,Y>. <br>
   Standard_EXPORT   virtual  gp_Lin Shoot(const Standard_Real X,const Standard_Real Y) const;
+  //! Returns the minimum depth value (if clipping plane defined). <br>
+//!         Should be used when call ::Shoot() to compute eyeline. <br>
+        Standard_Real DepthMin() const;
+  //! Returns the maximum depth value (if clipping plane defined). <br>
+//!         Should be used when call ::Shoot() to compute eyeline. <br>
+        Standard_Real DepthMax() const;
+  //! Setup the min/max depth values (doesn't affect <br>
+//!         projection functionality itself). <br>
+//!         Should be used when call ::Shoot() to compute eyeline. <br>
+  Standard_EXPORT     void DepthMinMax(const Standard_Real theDepthMin,const Standard_Real theDepthMax) ;
   
       virtual  void Transform(gp_Pnt& P,const gp_GTrsf& T) const;
   
@@ -126,9 +127,9 @@ Standard_EXPORT virtual ~Select3D_Projector(){Delete() ; }
 
 
 
+  DEFINE_STANDARD_RTTI(Select3D_Projector)
 
 protected:
-
 
 
 Standard_Boolean myPersp;
@@ -141,14 +142,15 @@ gp_Vec2d myD2;
 gp_Vec2d myD3;
 
 
-private:
+private: 
 
   
   Standard_EXPORT     void SetDirection() ;
 
-
 Standard_Integer myType;
 Handle_V3d_View myView;
+Standard_Real myDepthMin;
+Standard_Real myDepthMax;
 
 
 };

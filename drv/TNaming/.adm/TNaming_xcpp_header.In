@@ -48,4 +48,4 @@
 +V TNaming:msentity:TNaming_PtrRefShape .
 +V TNaming:msentity:TNaming_PtrDataMapOfShapePtrRefShape .
 +V TNaming:msentity:TNaming_Node .
-- TNaming:admfile:TNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/TNaming/TNaming_xcpp_fill.Out
+- TNaming:admfile:TNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TNaming/TNaming_xcpp_fill.Out

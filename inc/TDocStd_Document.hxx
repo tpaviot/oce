@@ -226,6 +226,8 @@ protected:
   Standard_EXPORT   virtual  void OpenTransaction() ;
 
 TCollection_ExtendedString myStorageFormat;
+TDF_DeltaList myUndos;
+TDF_DeltaList myRedos;
 
 
 private: 
@@ -237,8 +239,6 @@ private:
 Handle_TDF_Data myData;
 Standard_Integer myUndoLimit;
 TDF_Transaction myUndoTransaction;
-TDF_DeltaList myUndos;
-TDF_DeltaList myRedos;
 Handle_TDF_Delta myFromUndo;
 Handle_TDF_Delta myFromRedo;
 Standard_Integer mySaveTime;

@@ -51,6 +51,10 @@ pubinclude OpenGl_Memory.hxx
 pubinclude OpenGl_TextRender.hxx
 pubinclude OpenGl_graduatedtrihedron.hxx
 pubinclude OpenGl_FrameBuffer.hxx
+pubinclude OpenGl_Resource.hxx
+pubinclude OpenGl_ResourceCleaner.hxx
+pubinclude OpenGl_ResourceVBO.hxx
+pubinclude OpenGl_ResourceTexture.hxx
 dbadmfile OpenGl_obj_inc.In
 dbadmfile OpenGl_obj_inc.Out
 dbadmfile OpenGl_obj_inc.Dep

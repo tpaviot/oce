@@ -73,9 +73,6 @@
 #ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
 #include <Handle_Graphic3d_DataStructureManager.hxx>
 #endif
-#ifndef _Handle_Graphic3d_HSetOfGroup_HeaderFile
-#include <Handle_Graphic3d_HSetOfGroup.hxx>
-#endif
 #ifndef _Graphic3d_TypeOfPrimitive_HeaderFile
 #include <Graphic3d_TypeOfPrimitive.hxx>
 #endif
@@ -109,7 +106,7 @@ class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
 class Graphic3d_VertexNC;
 class Graphic3d_Vector;
-class Graphic3d_HSetOfGroup;
+class Graphic3d_SequenceOfGroup;
 class Graphic3d_MapOfStructure;
 class gp_Pnt;
 class Graphic3d_Plotter;
@@ -290,8 +287,8 @@ public:
   Standard_EXPORT     Standard_Boolean Exploration(const Standard_Integer ElementNumber,Graphic3d_VertexNC& AVertex,Graphic3d_Vector& AVector) const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectFillArea3d FillArea3dAspect() const;
-  //! Returns the set of groups included in the structure <me>. <br>
-  Standard_EXPORT     Handle_Graphic3d_HSetOfGroup Groups() const;
+  //! Returns the groups sequence included in the structure <me> (internal storage). <br>
+  Standard_EXPORT    const Graphic3d_SequenceOfGroup& Groups() const;
   //! Returns the current number of groups in the <br>
 //!	    structure <me>. <br>
   Standard_EXPORT     Standard_Integer NumberOfGroups() const;

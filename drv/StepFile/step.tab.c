@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc
+/*  A Bison parser, made from /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc
  by  GNU Bison version 1.25
   */
 
@@ -30,7 +30,7 @@
 #define	HEXA	273
 #define	QUID	274
 
-#line 3 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 3 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
@@ -746,75 +746,75 @@ yyreduce:
   switch (yyn) {
 
 case 10:
-#line 49 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 49 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_finfile();  return(0);  /*  fini pour celui-la  */  ;
     break;}
 case 15:
-#line 58 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 58 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_finhead();  ;
     break;}
 case 16:
-#line 60 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 60 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);     rec_newarg();  ;
     break;}
 case 17:
-#line 61 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 61 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  /* deja fait par lex*/ 	 rec_newarg();  ;
     break;}
 case 18:
-#line 62 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 62 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 19:
-#line 63 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 63 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 20:
-#line 64 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 64 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_typarg(rec_argMisc);      rec_newarg();
 			   yyerrstatus = 1; yyclearin;  ;
     break;}
 case 21:
-#line 69 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 69 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_listype();  ;
     break;}
 case 22:
-#line 72 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 72 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 23:
-#line 75 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 75 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  if (modeprint > 0)
 		{  printf("Record no : %d -- ",nbrec+1);  rec_print(currec);  }
 	   rec_newent ();  yyerrstatus = 0; ;
     break;}
 case 40:
-#line 102 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 102 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  scope_debut();  ;
     break;}
 case 41:
-#line 105 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 105 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);    rec_newarg();  ;
     break;}
 case 44:
-#line 111 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 111 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 45:
-#line 114 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 114 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  scope_fin();  ;
     break;}
 case 46:
-#line 116 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 116 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  printf("***  Warning : Export List not yet processed\n");
 	   rec_newent();  scope_fin() ; ;
     break;}
 case 47:
-#line 121 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 121 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_ident();  ;
     break;}
 case 48:
-#line 124 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 124 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"
 {  rec_type ();  ;
     break;}
 }
@@ -1015,4 +1015,4 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 126 "/dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/StepFile/step.yacc"
+#line 126 "/dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/StepFile/step.yacc"

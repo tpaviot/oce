@@ -22,8 +22,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _MeshDS_ListOfInteger_HeaderFile
-#include <MeshDS_ListOfInteger.hxx>
+#ifndef _BRepMesh_ListOfInteger_HeaderFile
+#include <BRepMesh_ListOfInteger.hxx>
 #endif
 #ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
@@ -42,7 +42,7 @@ class BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun : public T
 public:
 
   
-      BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun(const BRepMesh_Vertex& K1,const Standard_Integer K2,const MeshDS_ListOfInteger& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+      BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun(const BRepMesh_Vertex& K1,const Standard_Integer K2,const BRepMesh_ListOfInteger& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
   
         BRepMesh_Vertex& Key1() const;
   
@@ -50,7 +50,7 @@ public:
   
         TCollection_MapNodePtr& Next2() const;
   
-        MeshDS_ListOfInteger& Value() const;
+        BRepMesh_ListOfInteger& Value() const;
 
 
 
@@ -67,7 +67,7 @@ private:
 
 BRepMesh_Vertex myKey1;
 Standard_Integer myKey2;
-MeshDS_ListOfInteger myValue;
+BRepMesh_ListOfInteger myValue;
 TCollection_MapNodePtr myNext2;
 
 
@@ -75,8 +75,8 @@ TCollection_MapNodePtr myNext2;
 
 #define TheKey BRepMesh_Vertex
 #define TheKey_hxx <BRepMesh_Vertex.hxx>
-#define TheItem MeshDS_ListOfInteger
-#define TheItem_hxx <MeshDS_ListOfInteger.hxx>
+#define TheItem BRepMesh_ListOfInteger
+#define TheItem_hxx <BRepMesh_ListOfInteger.hxx>
 #define Hasher BRepMesh_NodeHasherOfDataStructureOfDelaun
 #define Hasher_hxx <BRepMesh_NodeHasherOfDataStructureOfDelaun.hxx>
 #define TCollection_IndexedDataMapNode BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun

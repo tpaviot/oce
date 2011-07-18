@@ -22,11 +22,11 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class BRepMesh_Vertex;
 class gp_XY;
+class BRepMesh_Vertex;
 
 
-
+//! Sort two point in a given direction. <br>
 class BRepMesh_ComparatorOfVertexOfDelaun  {
 public:
 
@@ -45,11 +45,11 @@ public:
 
   
   Standard_EXPORT   BRepMesh_ComparatorOfVertexOfDelaun(const gp_XY& theDir,const Standard_Real TheTol);
-  
+  //! returns True if <Left> is lower than <Right> <br>
   Standard_EXPORT     Standard_Boolean IsLower(const BRepMesh_Vertex& Left,const BRepMesh_Vertex& Right) const;
-  
+  //! returns True if <Left> is greater than <Right> <br>
   Standard_EXPORT     Standard_Boolean IsGreater(const BRepMesh_Vertex& Left,const BRepMesh_Vertex& Right) const;
-  
+  //! returns True when <Right> and <Left> are equal. <br>
   Standard_EXPORT     Standard_Boolean IsEqual(const BRepMesh_Vertex& Left,const BRepMesh_Vertex& Right) const;
 
 

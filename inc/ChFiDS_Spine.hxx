@@ -70,31 +70,30 @@ class gp_Circ;
 class TopoDS_Vertex;
 
 
-//! Contient  les  informations  necessaires   a    la <br>
-//!          construction d un conge volumique : <br>
+//! Contains information necessary for construction of <br>
+//!          a 3D fillet : <br>
 //! <br>
 //! <br>
-//!          - ligne guide composee d'edges du solide, tangents <br>
-//!          entre eux, et bordes par des faces tangentes entre <br>
-//!          elles. <br>
+//!          - guideline composed of edges of the solid, tangents <br>
+//!          between them, and borders by faces tangents <br>
+//!          between them. <br>
 //! <br>
-//!          Les outils de construction du   Sp <br>
-//!          par propagation a partir d un  edge du solide sont <br>
-//!          fournis dans le Builder de Fil3d. <br>
+//!          Tools for construction of the Sp <br>
+//!          by propagation from an edge of solid <br>
+//!          are provided in the Builder of Fil3d. <br>
 //! <br>
-//!          Le Spine contient par aileurs     des <br>
-//!          informations concernant la nature des   extremites <br>
-//!          du conge ( sur bord libre, sur cassure ou ferme ). <br>
+//!          The Spine contains among others the <br>
+//!          information about the nature of extremities <br>
+//!          of the fillet ( on free border , on section or closed ). <br>
 //! <br>
-//!          REMARQUE  IMPORTANTE  :    la  ligne  guide  ainsi <br>
-//!          representee n est pas C2, alors que le cheminement <br>
-//!          le  reclame.   Un  certain  nombre d  amenagements <br>
-//!          paliatifs (voir les  methodes en fin) sont prevus, <br>
-//!          s  ils  sont insuffisants  il faudra changer notre <br>
-//!          fusil d  epaule et doubler le Spine d <br>
-//!          une  ligne C2 avec  les consequences que l on sait <br>
-//!          pour gerer les va et  vient entre KPart Blend dans <br>
-//!          Fil3d. <br>
+//!          IMPORTANT NOTE  :    the guideline <br>
+//!          represented in this way is not C2, although the path <br>
+//!          claims it. Several palliative workarounds <br>
+//!          (see the methods at the end) are planned, <br>
+//!          but they are not enough. It is necessary to change <br>
+//!          the approach and double the Spine of line C2 with <br>
+//!          the known consequences for management of <br>
+//!          interactions between KPart Blend in Fil3d. <br>
 class ChFiDS_Spine : public MMgt_TShared {
 
 public:
@@ -103,19 +102,19 @@ public:
   Standard_EXPORT   ChFiDS_Spine();
   
   Standard_EXPORT   ChFiDS_Spine(const Standard_Real Tol);
-  //! stocker les edges qui vont composer la ligne guide <br>
+  //! store edges composing the guideline <br>
         void SetEdges(const TopoDS_Edge& E) ;
-  //!stocker l edge en premiere position avant tous les autres <br>
+  //! store the edge at the first position before all others <br>
         void PutInFirst(const TopoDS_Edge& E) ;
   
         Standard_Integer NbEdges() const;
   
        const TopoDS_Edge& Edges(const Standard_Integer I) const;
-  //! stocker si le debut de l ensemble des edges demarre <br>
-//!          sur une cassure un bord libre ou forme un contour ferme <br>
+  //! stores if the start of a set of edges starts on a <br>
+//! section of free border or forms  a closed contour <br>
         void SetFirstStatus(const ChFiDS_State S) ;
-  //! stocker si la fin de l ensemble des edges demarre <br>
-//!          sur une cassure un bord libre ou forme un contour ferme <br>
+  //! stores if the end of a set of edges starts on a <br>
+//! section of free border or forms  a closed contour <br>
         void SetLastStatus(const ChFiDS_State S) ;
   
   Standard_EXPORT   virtual  void AppendElSpine(const Handle(ChFiDS_HElSpine)& Els) ;
@@ -133,11 +132,12 @@ public:
   Standard_EXPORT     Standard_Boolean SplitDone() const;
   
   Standard_EXPORT     void SplitDone(const Standard_Boolean B) ;
-  //! preparer la ligne guide en fonction  des edges qui <br>
-//!          sont des arcs elementaires (prendre un parametrage <br>
-//!          unique  abscisse curviligne );pour pouvoir appeller <br>
-//!          les methodes sur la geometrie (first,last,value,d1,d2) <br>
-//!          il faut d abord preparer sinon une exception sera levee <br>
+  //! prepare the guideline depending on the edges that <br>
+//!          are elementary arks (take parameters from <br>
+//!          a single curvilinear abscissa); to be able to call <br>
+//!          methods on the geometry (first,last,value,d1,d2) <br>
+//!          it is necessary to start with preparation otherwise an <br>
+//!          exception will be raised <br>
   Standard_EXPORT     void Load() ;
   
   Standard_EXPORT     Standard_Real Resolution(const Standard_Real R3d) const;
@@ -151,13 +151,13 @@ public:
   Standard_EXPORT     void SetFirstParameter(const Standard_Real Par) ;
   
   Standard_EXPORT     void SetLastParameter(const Standard_Real Par) ;
-  //! donne  la longueur cumulee  de tous les  arcs avant le <br>
-//!          numero IndexSp <br>
+  //! gives the total length of all arcs before the <br>
+//!          number IndexSp <br>
   Standard_EXPORT     Standard_Real FirstParameter(const Standard_Integer IndexSpine) const;
-  //! donne  la longueur cumulee  jusqu  a l  arc de  numero <br>
+  //! gives the total length till the ark with number <br>
 //!          IndexSpine (inclus) <br>
   Standard_EXPORT     Standard_Real LastParameter(const Standard_Integer IndexSpine) const;
-  //! donne la longueur de l arc de numero IndexSp <br>
+  //! gives the length of ark with number IndexSp <br>
   Standard_EXPORT     Standard_Real Length(const Standard_Integer IndexSpine) const;
   
   Standard_EXPORT     Standard_Boolean IsPeriodic() const;
@@ -181,7 +181,7 @@ public:
   Standard_EXPORT     void D2(const Standard_Real AbsC,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) ;
   
   Standard_EXPORT     void SetCurrent(const Standard_Integer Index) ;
-  //! set la courbe courante et la renvoie <br>
+  //! sets the current curve and returns it <br>
   Standard_EXPORT    const BRepAdaptor_Curve& CurrentElementarySpine(const Standard_Integer Index) ;
   
         Standard_Integer CurrentIndexOfElementarySpine() const;

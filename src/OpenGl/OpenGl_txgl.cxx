@@ -83,6 +83,7 @@ Old code resulted in crashes on some ATI Radeon cards under Linux.
 #include <stdio.h>
 
 #include <OpenGl_Memory.hxx>
+#include <OpenGl_ResourceCleaner.hxx>
 
 
 #ifdef WNT
@@ -309,7 +310,6 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
       /* recover display lists from dead_ctx, then destroy it */
       ctx = glXCreateContext( disp, vis, dead_ctx, GL_TRUE );
       glXDestroyContext(dead_dpy, dead_ctx);
-      dead_ctx = 0;
     } else if (previous_ctx == 0) {
       ctx = glXCreateContext( disp, vis, NULL, GL_TRUE );
     } else {
@@ -317,6 +317,15 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
       ctx = glXCreateContext( disp, vis, previous_ctx, GL_TRUE );
     }
     previous_ctx = ctx;
+
+    if( ctx )
+      OpenGl_ResourceCleaner::GetInstance()->AppendContext( ctx, true );
+
+    // remove the dead_ctx for ResourceCleaner after appending shared ctx
+    if (dead_ctx) {
+      OpenGl_ResourceCleaner::GetInstance()->RemoveContext(dead_ctx);
+      dead_ctx = 0;
+    }
 
     if( !ctx) return TFailure;
 
@@ -424,11 +433,7 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     if ( pfd.dwFlags & PFD_NEED_PALETTE ) 
     {
-#ifndef _WIN64
-      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLong ( par, GWL_USERDATA );
-#else
-      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLong ( par, GWLP_USERDATA );
-#endif
+      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLongPtr ( par, GWLP_USERDATA );
 
       InterfaceGraphic_RealizePalette (hte -> hDC, wd -> hPal, FALSE,
         s_sysPalInUse = pfd.dwFlags & PFD_NEED_SYSTEM_PALETTE ? TRUE : FALSE); 
@@ -462,12 +467,29 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
       return 0;     
     }  
 
-    if (previous_ctx == 0 )    
-    {
-      previous_ctx = hte -> hGLRC;
-    } else
-      wglShareLists(previous_ctx, hte -> hGLRC);
+    Standard_Boolean isShared = Standard_True;
 
+    if (previous_ctx == 0 )
+      previous_ctx = hte -> hGLRC;
+    // if we already have some shared context
+    else
+    {
+      // try to share context with one from resource cleaner list
+      GLCONTEXT shareCtx = OpenGl_ResourceCleaner::GetInstance()->GetSharedContext();
+      
+      if (shareCtx != 0)
+        isShared = (Standard_Boolean)wglShareLists(shareCtx, hte -> hGLRC);
+      else
+      {
+        isShared = (Standard_Boolean)wglShareLists(previous_ctx, hte -> hGLRC);
+	      // add shared previous_ctx to a control list if it's not there
+        if (isShared)
+          OpenGl_ResourceCleaner::GetInstance()->AppendContext(previous_ctx, isShared);
+      }
+    }
+
+    // add the context to OpenGl_ResourceCleaner control list
+    OpenGl_ResourceCleaner::GetInstance()->AppendContext( hte -> hGLRC, isShared);
     _Txgl_Map.Bind( (Tint)par, hte );
 
     return par;
@@ -600,11 +622,7 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     if ( pfd.dwFlags & PFD_NEED_PALETTE ) 
     {
-#ifndef _WIN64
-      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLong ( par, GWL_USERDATA );
-#else
-      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLong ( par, GWLP_USERDATA );
-#endif
+      WINDOW_DATA* wd = ( WINDOW_DATA* )GetWindowLongPtr ( par, GWLP_USERDATA );
 
       InterfaceGraphic_RealizePalette (hte -> hDC, wd -> hPal, FALSE,
         s_sysPalInUse = pfd.dwFlags & PFD_NEED_SYSTEM_PALETTE ? TRUE : FALSE); 
@@ -793,12 +811,14 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
       * losing any shared display lists (fonts...)
       */
       if (previous_ctx) {
+        OpenGl_ResourceCleaner::GetInstance()->RemoveContext(ctx);
         glXDestroyContext(disp, ctx);
       } else {
         dead_ctx = ctx;
         dead_dpy = disp;
       }
     } else {
+      OpenGl_ResourceCleaner::GetInstance()->RemoveContext(ctx);
       glXDestroyContext(disp, ctx);
     }
 
@@ -817,11 +837,7 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
     /*  palette messages in the main application message loop. */
     /*  In debug version we don't have message loop for most   */
     /*  cases. So, let's restore system colors here now.       */
-#ifndef _WIN64
-    wd = ( WINDOW_DATA* )GetWindowLong ( win, GWL_USERDATA );
-#else
-    wd = ( WINDOW_DATA* )GetWindowLong ( win, GWLP_USERDATA );
-#endif
+    wd = ( WINDOW_DATA* )GetWindowLongPtr ( win, GWLP_USERDATA );
 
     if ( wd != NULL ) InterfaceGraphic_RealizePalette (
       hte -> hDC, wd -> hPal, TRUE, s_sysPalInUse);
@@ -829,12 +845,16 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     if ( --hte -> nUsed == 0 ) 
     { 
+      OpenGl_ResourceCleaner::GetInstance()->RemoveContext( hte -> hGLRC );
 #ifdef OCC954    
       if ( wglGetCurrentContext() != NULL )
 #endif
         wglDeleteContext ( hte -> hGLRC );
       ReleaseDC ( win, hte -> hDC );
       _Txgl_Map.UnBind( (Tint ) win );
+      if( _Txgl_Map.Size() == 0 ) {
+        previous_ctx = 0;
+      }
       delete hte;
     }  
 

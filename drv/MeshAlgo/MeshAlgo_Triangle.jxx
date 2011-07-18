@@ -1,3 +1,0 @@
-#ifndef _MeshAlgo_Triangle_HeaderFile
-#include <MeshAlgo_Triangle.hxx>
-#endif

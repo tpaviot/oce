@@ -911,10 +911,8 @@ TopoDS_Shape  IGESToBRep_TopoCurve::TransferTopoBasicCurve
   }
 
   IGESToBRep_BasicCurve BC(*this);
-
   // 14.05.2009 skl for OCC21131
   BC.SetModeTransfer(Standard_False);
-
   Handle(Geom_Curve) C = BC.TransferBasicCurve(start);
 
   if (C.IsNull()) {
@@ -1007,13 +1005,14 @@ TopoDS_Shape  IGESToBRep_TopoCurve::TransferTopoBasicCurve
 //  BRep_Builder B;
 //  B.UpdateVertex (V1, epsgeom);
 //  B.UpdateVertex (V2, epsgeom);
-  
-/* 14.05.2009 skl for OCC21131
-  if (start->HasTransf()) {
+  // 14.05.2009 skl for OCC21131
+  // 15.03.2011 emv for OCC22294 begin
+  Standard_Boolean bIsNeedTransf = start->IsKind(STANDARD_TYPE(IGESGeom_SplineCurve));
+  if (start->HasTransf() && bIsNeedTransf) {
     gp_Trsf  T;
     SetEpsilon(1.E-04);
     if (IGESData_ToolLocation::ConvertLocation
-	(GetEpsilon(),start->CompoundLocation(),T, GetUnitFactor())) { 
+       (GetEpsilon(),start->CompoundLocation(),T, GetUnitFactor())) { 
       TopLoc_Location L(T);
       myshape.Move(L);
     }
@@ -1023,7 +1022,7 @@ TopoDS_Shape  IGESToBRep_TopoCurve::TransferTopoBasicCurve
     }
     //AddWarning(start, "Transformation skipped (not a similarity)");
   }
-*/  
+  //15.03.2011 emv for OCC22294 end
 
   // debug mjm du 26/07/96 en attendant developpement meilleur
   // sur traitement des Wire et non des Edge dans les programmes appelant

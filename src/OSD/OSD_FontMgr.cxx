@@ -118,7 +118,7 @@ void OSD_FontMgr::InitFontDataBase() {
   Standard_Size req_size;   
   req_size = strlen( getenv("windir") );
 
-  windir_var = new Standard_Character[req_size];
+  windir_var = new Standard_Character[req_size + 1];
 
   strcpy( windir_var, getenv("windir") );
 
@@ -238,10 +238,15 @@ void OSD_FontMgr::InitFontDataBase() {
   Handle(TCollection_HAsciiString) str = new TCollection_HAsciiString;
   Display * disp = XOpenDisplay(NULL);
 
-  if ( !disp ) 
+  if (!disp) 
   {
-    cout << "Display is NULL!" << endl;
-    return ;
+    // let the X server find the available connection
+    disp = XOpenDisplay(":0.0");
+    if (!disp)
+    {
+      cout << "Display is NULL!" << endl;
+      return ;
+    }
   }
 
   Standard_Integer npaths = 0;

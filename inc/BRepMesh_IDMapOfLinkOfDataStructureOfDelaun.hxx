@@ -16,8 +16,8 @@
 #ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
 #endif
-#ifndef _MeshDS_PairOfIndex_HeaderFile
-#include <MeshDS_PairOfIndex.hxx>
+#ifndef _BRepMesh_PairOfIndex_HeaderFile
+#include <BRepMesh_PairOfIndex.hxx>
 #endif
 #ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_HeaderFile
 #include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun.hxx>
@@ -70,9 +70,9 @@ public:
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const BRepMesh_Edge& K,const MeshDS_PairOfIndex& I) ;
+  Standard_EXPORT     Standard_Integer Add(const BRepMesh_Edge& K,const BRepMesh_PairOfIndex& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const BRepMesh_Edge& K,const MeshDS_PairOfIndex& T) ;
+  Standard_EXPORT     void Substitute(const Standard_Integer I,const BRepMesh_Edge& K,const BRepMesh_PairOfIndex& T) ;
   
   Standard_EXPORT     void RemoveLast() ;
   
@@ -80,23 +80,23 @@ public:
   
   Standard_EXPORT    const BRepMesh_Edge& FindKey(const Standard_Integer I) const;
   
-  Standard_EXPORT    const MeshDS_PairOfIndex& FindFromIndex(const Standard_Integer I) const;
-   const MeshDS_PairOfIndex& operator ()(const Standard_Integer I) const
+  Standard_EXPORT    const BRepMesh_PairOfIndex& FindFromIndex(const Standard_Integer I) const;
+   const BRepMesh_PairOfIndex& operator ()(const Standard_Integer I) const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     MeshDS_PairOfIndex& ChangeFromIndex(const Standard_Integer I) ;
-    MeshDS_PairOfIndex& operator ()(const Standard_Integer I) 
+  Standard_EXPORT     BRepMesh_PairOfIndex& ChangeFromIndex(const Standard_Integer I) ;
+    BRepMesh_PairOfIndex& operator ()(const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
   Standard_EXPORT     Standard_Integer FindIndex(const BRepMesh_Edge& K) const;
   
-  Standard_EXPORT    const MeshDS_PairOfIndex& FindFromKey(const BRepMesh_Edge& K) const;
+  Standard_EXPORT    const BRepMesh_PairOfIndex& FindFromKey(const BRepMesh_Edge& K) const;
   
-  Standard_EXPORT     MeshDS_PairOfIndex& ChangeFromKey(const BRepMesh_Edge& K) ;
+  Standard_EXPORT     BRepMesh_PairOfIndex& ChangeFromKey(const BRepMesh_Edge& K) ;
 
 
 

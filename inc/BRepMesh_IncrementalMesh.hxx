@@ -34,6 +34,9 @@
 #ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _BRepMesh_DiscretRoot_HeaderFile
 #include <BRepMesh_DiscretRoot.hxx>
 #endif
@@ -81,6 +84,8 @@ Standard_EXPORT virtual ~BRepMesh_IncrementalMesh();
   Standard_EXPORT     void Update(const TopoDS_Shape& S) ;
   
   Standard_EXPORT     Standard_Boolean IsModified() const;
+  
+  Standard_EXPORT     Standard_Integer GetStatusFlags() const;
 
 
 
@@ -100,6 +105,7 @@ TopTools_DataMapOfShapeReal mymapedge;
 TopTools_IndexedDataMapOfShapeListOfShape myancestors;
 Standard_Real mydtotale;
 Bnd_Box myBox;
+Standard_Integer myStatus;
 
 
 private:

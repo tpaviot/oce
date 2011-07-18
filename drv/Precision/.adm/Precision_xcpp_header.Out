@@ -1,6 +1,6 @@
-+M Precision:pubinclude:Precision.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/inc/Precision.hxx
-+M Precision:privinclude:Precision.jxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Precision/Precision.jxx
-+M Precision:privinclude:Precision.ixx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Precision/Precision.ixx
-+M Precision:dbadmfile:Precision_xcpp_header.In /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Precision/.adm/Precision_xcpp_header.In
-+M Precision:dbadmfile:Precision_xcpp_header.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Precision/.adm/Precision_xcpp_header.Out
-+M Precision:dbadmfile:Precision_xcpp_header.Dep /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/drv/Precision/.adm/Precision_xcpp_header.Dep
++M Precision:pubinclude:Precision.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Precision.hxx
++M Precision:privinclude:Precision.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Precision/Precision.jxx
++M Precision:privinclude:Precision.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Precision/Precision.ixx
++M Precision:dbadmfile:Precision_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Precision/.adm/Precision_xcpp_header.In
++M Precision:dbadmfile:Precision_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Precision/.adm/Precision_xcpp_header.Out
++M Precision:dbadmfile:Precision_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Precision/.adm/Precision_xcpp_header.Dep

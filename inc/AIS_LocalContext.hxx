@@ -67,6 +67,9 @@
 #ifndef _AIS_InteractiveContext_HeaderFile
 #include <AIS_InteractiveContext.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _AIS_ClearMode_HeaderFile
 #include <AIS_ClearMode.hxx>
 #endif
@@ -161,7 +164,7 @@ public:
 //!          returns True if the projectors are identical. <br>
 //!          (no need to update projection of selection primitives <br>
 //!          when closing the local context).... <br>
-  Standard_EXPORT     Standard_Boolean HasSameProjector(const Select3D_Projector& aPrj) const;
+  Standard_EXPORT     Standard_Boolean HasSameProjector(const Handle(Select3D_Projector)& aPrj) const;
   //! to be called when a upper local context was closed... <br>
 //!          useful to put pack the right projector... <br>
   Standard_EXPORT     void Reactivate() ;
@@ -364,6 +367,10 @@ public:
   Standard_EXPORT     void ClearSensitive(const Handle(V3d_View)& aView) ;
   
        const Handle_StdSelect_ViewerSelector3d& MainSelector() const;
+  
+  Standard_EXPORT     Handle_SelectMgr_EntityOwner FindSelectedOwnerFromIO(const Handle(AIS_InteractiveObject)& anIObj) const;
+  
+  Standard_EXPORT     Handle_SelectMgr_EntityOwner FindSelectedOwnerFromShape(const TopoDS_Shape& aShape) const;
 
 
 friend   //! Changes the status of a temporary object. It will be <br>
@@ -423,10 +430,6 @@ private:
   Standard_EXPORT     Standard_Boolean HasFilters(const TopAbs_ShapeEnum aType) const;
   
   Standard_EXPORT     void HilightTriangle(const Standard_Integer Rank,const Handle(V3d_View)& aViou) ;
-  
-  Standard_EXPORT     Handle_SelectMgr_EntityOwner FindSelectedOwnerFromIO(const Handle(AIS_InteractiveObject)& anIObj) const;
-  
-  Standard_EXPORT     Handle_SelectMgr_EntityOwner FindSelectedOwnerFromShape(const TopoDS_Shape& aShape) const;
 
 Handle_AIS_InteractiveContext myCTX;
 Standard_Boolean myLoadDisplayed;

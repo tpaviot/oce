@@ -1,0 +1,6 @@
+#ifndef _gp_XY_HeaderFile
+#include <gp_XY.hxx>
+#endif
+#ifndef _BRepMesh_Circ_HeaderFile
+#include <BRepMesh_Circ.hxx>
+#endif

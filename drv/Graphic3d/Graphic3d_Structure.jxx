@@ -43,8 +43,8 @@
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>
 #endif
-#ifndef _Graphic3d_HSetOfGroup_HeaderFile
-#include <Graphic3d_HSetOfGroup.hxx>
+#ifndef _Graphic3d_SequenceOfGroup_HeaderFile
+#include <Graphic3d_SequenceOfGroup.hxx>
 #endif
 #ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>

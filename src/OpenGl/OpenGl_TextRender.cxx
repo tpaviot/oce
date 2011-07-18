@@ -268,6 +268,8 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   GLdouble xdis = 0., ydis = 0.;
   GLint renderMode;  
 
+  // FTFont changes texture state when it renders and computes size for the text
+  glPushAttrib(GL_TEXTURE_BIT);
   StringSize(str, &widthFont, &ascentFont, &descentFont );
 
   GLdouble identityMatrix[4][4] = 
@@ -296,12 +298,6 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   keyZoom.id = TelTextZoomable;//This flag responding about Zoomable text
   TsmGetAttri( 1, &keyZoom );
   zoom = keyZoom.data.ldata;
-
-  CMN_KEY keyfontName;
-  keyfontName.id = TelTextFont;//This flag responding about TextFontName
-  TsmGetAttri( 1, &keyfontName );
-  char *fontName = new char[strlen((char*)keyfontName.data.pdata) + 1];
-  strcpy(fontName,(char*)keyfontName.data.pdata);
 
   OpenGl_TextRender::instance(); 
 
@@ -341,8 +337,10 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   OpenGl_FontMgr* mgr = OpenGl_FontMgr::instance();
 
   const FTFont* fnt = mgr->fontById( curFont );
-  if ( !fnt )
+  if ( !fnt ) {
+    glPopAttrib();
     return; 
+  }
 
   float export_h = 1.;
 
@@ -398,18 +396,25 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
   if ( renderMode == GL_FEEDBACK ) 
   {
 #ifdef HAVE_GL2PS
+    CMN_KEY keyfontName;
+    keyfontName.id = TelTextFont;//This flag responding about TextFontName
+    TsmGetAttri( 1, &keyfontName );
+    char *fontName = new char[strlen((char*)keyfontName.data.pdata) + 1];
+    strcpy(fontName,(char*)keyfontName.data.pdata);
+
     export_h = float((GLdouble)fnt->FaceSize() / export_h);
     int aligment = alignmentforgl2ps( vh, vv );
     glPopMatrix();
     ExportText( str, fontName, export_h, angle, aligment, x, y, z, is2d!=0 );
+    delete [] fontName;
 #endif
   }
   else
   {
-    mgr->render_text( curFont, str );
+    mgr->render_text( curFont, str, is2d );
     glPopMatrix();
   }
-  delete [] fontName;
+  glPopAttrib();
   return;
 
 }

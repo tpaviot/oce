@@ -1,8 +1,8 @@
-#ifndef _SelectBasics_EntityOwner_HeaderFile
-#include <SelectBasics_EntityOwner.hxx>
-#endif
 #ifndef _Select3D_Projector_HeaderFile
 #include <Select3D_Projector.hxx>
+#endif
+#ifndef _SelectBasics_EntityOwner_HeaderFile
+#include <SelectBasics_EntityOwner.hxx>
 #endif
 #ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>

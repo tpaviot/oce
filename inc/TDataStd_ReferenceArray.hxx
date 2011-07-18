@@ -28,6 +28,9 @@
 #ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
 #endif
@@ -77,7 +80,7 @@ public:
   
   Standard_EXPORT    const Handle_TDataStd_HLabelArray1& InternalArray() const;
   
-  Standard_EXPORT     void SetInternalArray(const Handle(TDataStd_HLabelArray1)& values) ;
+  Standard_EXPORT     void SetInternalArray(const Handle(TDataStd_HLabelArray1)& values,const Standard_Boolean isCheckItems = Standard_True) ;
   
   Standard_EXPORT   TDataStd_ReferenceArray();
   

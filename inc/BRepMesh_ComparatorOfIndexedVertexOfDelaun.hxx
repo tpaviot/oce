@@ -32,7 +32,7 @@ class BRepMesh_DataStructureOfDelaun;
 class gp_XY;
 
 
-
+//! Sort two point in a given direction. <br>
 class BRepMesh_ComparatorOfIndexedVertexOfDelaun  {
 public:
 
@@ -51,11 +51,11 @@ public:
 
   
   Standard_EXPORT   BRepMesh_ComparatorOfIndexedVertexOfDelaun(const gp_XY& theDir,const Standard_Real TheTol,const Handle(BRepMesh_DataStructureOfDelaun)& HDS);
-  
+  //! returns True if <Left> is lower than <Right> <br>
   Standard_EXPORT     Standard_Boolean IsLower(const Standard_Integer Left,const Standard_Integer Right) const;
-  
+  //! returns True if <Left> is greater than <Right> <br>
   Standard_EXPORT     Standard_Boolean IsGreater(const Standard_Integer Left,const Standard_Integer Right) const;
-  
+  //! returns True when <Right> and <Left> are equal. <br>
   Standard_EXPORT     Standard_Boolean IsEqual(const Standard_Integer Left,const Standard_Integer Right) const;
 
 

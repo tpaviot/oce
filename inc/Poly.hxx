@@ -34,9 +34,13 @@
 #ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
 #endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 class Poly_Triangulation;
 class Poly_Polygon3D;
 class Poly_Polygon2D;
+class gp_XY;
 class Poly_Triangle;
 class Poly_Array1OfTriangle;
 class Poly_HArray1OfTriangle;
@@ -49,14 +53,6 @@ class Poly_Connect;
 
 //! This  package  provides  classes  and services  to <br>
 //!          handle : <br>
-//! <br>
-//!          * 3D triangular polyhedrons. <br>
-//! <br>
-//!          * 3D polygons. <br>
-//! <br>
-//!          * 2D polygon. <br>
-//! <br>
-//!          * Tools to dump, save and restore those objects. <br>
 class Poly  {
 public:
 
@@ -114,6 +110,17 @@ public:
   //! Compute node normals for face triangulation <br>
 //!  as mean normal of surrounding triangles <br>
   Standard_EXPORT   static  void ComputeNormals(const Handle(Poly_Triangulation)& Tri) ;
+  //! Computes parameters of the point P on triangle <br>
+//!          defined by points P1, P2, and P3, in 2d. <br>
+//!          The parameters U and V are defined so that <br>
+//!          P = P1 + U * (P2 - P1) + V * (P3 - P1), <br>
+//!          with U >= 0, V >= 0, U + V <= 1. <br>
+//!          If P is located outside of triangle, or triangle <br>
+//!          is degenerated, the returned parameters correspond <br>
+//!          to closest point, and returned value is square of <br>
+//!          the distance from original point to triangle (0 if <br>
+//!          point is inside). <br>
+  Standard_EXPORT   static  Standard_Real PointOnTriangle(const gp_XY& P1,const gp_XY& P2,const gp_XY& P3,const gp_XY& P,gp_XY& UV) ;
 
 
 

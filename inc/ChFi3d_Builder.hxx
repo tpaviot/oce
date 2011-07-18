@@ -198,13 +198,12 @@ Standard_EXPORT virtual ~ChFi3d_Builder(){Delete() ; }
   Standard_EXPORT     Standard_Boolean ClosedAndTangent(const Standard_Integer IC) const;
   //! returns true if the contour of index IC is closed <br>
   Standard_EXPORT     Standard_Boolean Closed(const Standard_Integer IC) const;
-  //! calculation general <br>
-//!          -geometrie sur l ensemble des aretes, <br>
-//!          -reconstruction topologique <br>
+  //! general calculation of geometry on all edges, <br>
+//!          topologic reconstruction. <br>
   Standard_EXPORT     void Compute() ;
   //! returns True if the computation  is  success <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! if (Isdone()) rend le resultat. <br>//! if (!Isdone()) <br>
+  //! if (Isdone()) makes the result. <br>//! if (!Isdone()) <br>
   Standard_EXPORT     TopoDS_Shape Shape() const;
   //! Advanced  function for the history <br>
   Standard_EXPORT    const TopTools_ListOfShape& Generated(const TopoDS_Shape& EouV) ;
@@ -236,9 +235,9 @@ Standard_EXPORT virtual ~ChFi3d_Builder(){Delete() ; }
   Standard_EXPORT     void Reset() ;
   //! Returns the Builder of  topologic operations. <br>
   Standard_EXPORT     Handle_TopOpeBRepBuild_HBuilder Builder() const;
-  //! Methode, implementee dans les heritants, calculant <br>
-//!          les elements de construction de la surface (conge <br>
-//!          ou chanfrein). <br>
+  //! Method, implemented in the inheritants, calculates <br>
+//!          the elements of construction of the surface (fillet or <br>
+//!          chamfer). <br>
   Standard_EXPORT     Standard_Boolean SplitKPart(const Handle(ChFiDS_SurfData)& Data,ChFiDS_SequenceOfSurfData& SetData,const Handle(ChFiDS_Spine)& Spine,const Standard_Integer Iedge,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& I1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& I2,Standard_Boolean& Intf,Standard_Boolean& Intl) ;
   
   Standard_EXPORT     Standard_Integer PerformTwoCornerbyInter(const Standard_Integer Index) ;
@@ -283,9 +282,9 @@ protected:
   Standard_EXPORT     void Trunc(const Handle(ChFiDS_SurfData)& SD,const Handle(ChFiDS_Spine)& Spine,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Integer iedge,const Standard_Boolean isfirst,const Standard_Integer cntlFiOnS) ;
   
   Standard_EXPORT     void CallPerformSurf(Handle(ChFiDS_Stripe)& Stripe,const Standard_Boolean Simul,ChFiDS_SequenceOfSurfData& SeqSD,Handle(ChFiDS_SurfData)& SD,const Handle(ChFiDS_HElSpine)& Guide,const Handle(ChFiDS_Spine)& Spine,const Handle(BRepAdaptor_HSurface)& HS1,const Handle(BRepAdaptor_HSurface)& HS3,const gp_Pnt2d& P1,const gp_Pnt2d& P3,Handle(Adaptor3d_TopolTool)& I1,const Handle(BRepAdaptor_HSurface)& HS2,const Handle(BRepAdaptor_HSurface)& HS4,const gp_Pnt2d& P2,const gp_Pnt2d& P4,Handle(Adaptor3d_TopolTool)& I2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real& First,Standard_Real& Last,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecOnS1,const Standard_Boolean RecOnS2,math_Vector& Soldep,Standard_Boolean& Intf,Standard_Boolean& Intl,Handle(BRepAdaptor_HSurface)& Surf1,Handle(BRepAdaptor_HSurface)& Surf2) ;
-  //! Methode, implementee dans les heritants, calculant <br>
-//!          les elements de construction de la surface (conge <br>
-//!          ou chanfrein). <br>
+  //! Method, implemented in the inheritants, calculating <br>
+//!          elements of construction of the surface (fillet or <br>
+//!          chamfer). <br>
   Standard_EXPORT   virtual  Standard_Boolean PerformSurf(ChFiDS_SequenceOfSurfData& Data,const Handle(ChFiDS_HElSpine)& Guide,const Handle(ChFiDS_Spine)& Spine,const Standard_Integer Choix,const Handle(BRepAdaptor_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& I1,const Handle(BRepAdaptor_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& I2,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real& First,Standard_Real& Last,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecOnS1,const Standard_Boolean RecOnS2,const math_Vector& Soldep,Standard_Boolean& Intf,Standard_Boolean& Intl)  = 0;
   //! Method, implemented  in inheritants, calculates <br>
 //!          the elements of construction of  the surface (fillet <br>
@@ -321,7 +320,7 @@ protected:
   Standard_EXPORT     Standard_Boolean ComputeData(Handle(ChFiDS_SurfData)& Data,const Handle(ChFiDS_HElSpine)& Guide,const Handle(ChFiDS_Spine)& Spine,Handle(BRepBlend_Line)& Lin,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& I1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& I2,Blend_Function& Func,Blend_FuncInv& FInv,const Standard_Real PFirst,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real& First,Standard_Real& Last,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const math_Vector& Soldep,Standard_Boolean& Intf,Standard_Boolean& Intl,Standard_Boolean& Gd1,Standard_Boolean& Gd2,Standard_Boolean& Gf1,Standard_Boolean& Gf2,const Standard_Boolean RecOnS1 = Standard_False,const Standard_Boolean RecOnS2 = Standard_False) ;
   //! Calculates a Line of contact edge/face. <br>
   Standard_EXPORT     Standard_Boolean ComputeData(Handle(ChFiDS_SurfData)& Data,const Handle(ChFiDS_HElSpine)& HGuide,Handle(BRepBlend_Line)& Lin,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& I1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor2d_HCurve2d)& PC2,const Handle(Adaptor3d_TopolTool)& I2,Standard_Boolean& Decroch,Blend_SurfRstFunction& Func,Blend_FuncInv& FInv,Blend_SurfPointFuncInv& FInvP,Blend_SurfCurvFuncInv& FInvC,const Standard_Real PFirst,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real& First,Standard_Real& Last,const math_Vector& Soldep,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP,const Standard_Boolean RecS,const Standard_Boolean RecRst) ;
-  //! Calculated a Line of contact edge/edge. <br>
+  //! Calculates a Line of contact edge/edge. <br>
   Standard_EXPORT     Standard_Boolean ComputeData(Handle(ChFiDS_SurfData)& Data,const Handle(ChFiDS_HElSpine)& HGuide,Handle(BRepBlend_Line)& Lin,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor2d_HCurve2d)& PC1,const Handle(Adaptor3d_TopolTool)& I1,Standard_Boolean& Decroch1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor2d_HCurve2d)& PC2,const Handle(Adaptor3d_TopolTool)& I2,Standard_Boolean& Decroch2,Blend_RstRstFunction& Func,Blend_SurfCurvFuncInv& FInv1,Blend_CurvPointFuncInv& FInvP1,Blend_SurfCurvFuncInv& FInv2,Blend_CurvPointFuncInv& FInvP2,const Standard_Real PFirst,const Standard_Real MaxStep,const Standard_Real Fleche,const Standard_Real TolGuide,Standard_Real& First,Standard_Real& Last,const math_Vector& Soldep,const Standard_Boolean Inside,const Standard_Boolean Appro,const Standard_Boolean Forward,const Standard_Boolean RecP1,const Standard_Boolean RecRst1,const Standard_Boolean RecP2,const Standard_Boolean RecRst2) ;
   
   Standard_EXPORT     Standard_Boolean CompleteData(Handle(ChFiDS_SurfData)& Data,Blend_Function& Func,Handle(BRepBlend_Line)& Lin,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const TopAbs_Orientation Or1,const Standard_Boolean Gd1,const Standard_Boolean Gd2,const Standard_Boolean Gf1,const Standard_Boolean Gf2,const Standard_Boolean Reversed = Standard_False) ;

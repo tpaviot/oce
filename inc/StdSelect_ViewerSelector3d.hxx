@@ -16,8 +16,8 @@
 #include <Handle_StdSelect_ViewerSelector3d.hxx>
 #endif
 
-#ifndef _Select3D_Projector_HeaderFile
-#include <Select3D_Projector.hxx>
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -43,9 +43,9 @@
 #ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
 #endif
+class Select3D_Projector;
 class Graphic3d_Group;
 class Graphic3d_Structure;
-class Select3D_Projector;
 class SelectMgr_Selection;
 class V3d_View;
 class TColgp_Array1OfPnt2d;
@@ -60,14 +60,14 @@ public:
   //! Constructs an empty 3D selector object. <br>
   Standard_EXPORT   StdSelect_ViewerSelector3d();
   //! Constructs a 3D selector object defined by the projector aProj. <br>
-  Standard_EXPORT   StdSelect_ViewerSelector3d(const Select3D_Projector& aProj);
+  Standard_EXPORT   StdSelect_ViewerSelector3d(const Handle(Select3D_Projector)& aProj);
   //! Processes the projection of the sensitive  primitives <br>
 //!          in the active view ; to be done before the selection action... <br>
   Standard_EXPORT     void Convert(const Handle(SelectMgr_Selection)& aSelection) ;
   //! Sets the sensitivity aSensitivity. <br>
   Standard_EXPORT     void Set(const Standard_Integer aSensitivity) ;
   //! Sets the new projector aProj to replace the one used at construction time. <br>
-  Standard_EXPORT     void Set(const Select3D_Projector& aProj) ;
+  Standard_EXPORT     void Set(const Handle(Select3D_Projector)& aProj) ;
   //! Picks the sensitive entity at the pixel coordinates of <br>
 //! the mouse Xpix and Ypix.   The selector looks for touched areas and owners. <br>
   Standard_EXPORT     void Pick(const Standard_Integer XPix,const Standard_Integer YPix,const Handle(V3d_View)& aView) ;
@@ -78,7 +78,7 @@ public:
   //! pick action  - input pixel values for polyline selection for selection. <br>
   Standard_EXPORT     void Pick(const TColgp_Array1OfPnt2d& Polyline,const Handle(V3d_View)& aView) ;
   //! Returns the current Projector. <br>
-       const Select3D_Projector& Projector() const;
+       const Handle_Select3D_Projector& Projector() const;
   //! Puts back the address of the current projector in sensitive primitives... <br>
   Standard_EXPORT     void ReactivateProjector() ;
   //! Displays sensitive areas found in the view aView. <br>
@@ -113,7 +113,7 @@ private:
   
   Standard_EXPORT     void ComputeAreasPrs(const Handle(SelectMgr_Selection)& aSel) ;
 
-Select3D_Projector myprj;
+Handle_Select3D_Projector myprj;
 Standard_Real mycoeff[14];
 Standard_Real myprevcoeff[14];
 Standard_Real mycenter[2];

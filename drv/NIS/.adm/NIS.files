@@ -1,6 +1,7 @@
 dbadmfile NIS_xcpp_header.In
 dbadmfile NIS_xcpp_header.Out
 dbadmfile NIS_xcpp_header.Dep
+pubinclude NIS_Allocator.hxx
 pubinclude NIS_Drawer.hxx
 pubinclude NIS_DrawList.hxx
 pubinclude NIS_InteractiveContext.hxx

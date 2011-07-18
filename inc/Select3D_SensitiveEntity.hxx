@@ -16,8 +16,8 @@
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
 
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
 #endif
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
@@ -40,8 +40,8 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
-class SelectBasics_EntityOwner;
 class Select3D_Projector;
+class SelectBasics_EntityOwner;
 class TopLoc_Location;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
@@ -67,7 +67,7 @@ public:
 //! redefine this function in order to get a sensitive 2D <br>
 //! rectangle from a 3D entity. This rectangle is the <br>
 //! sensitive zone which makes the 3D entity selectable. <br>
-  Standard_EXPORT   virtual  void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! Returns the max number of sensitive areas returned <br>
 //!          by this class is 1 by default. <br>
 //!          Else on must redefine this method. <br>
@@ -121,7 +121,7 @@ public:
   
   Standard_EXPORT     void UpdateLocation(const TopLoc_Location& aLoc) ;
   
-  Standard_EXPORT   virtual  void SetLastPrj(const Select3D_Projector& aPrj) ;
+  Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
 
 
 
@@ -135,7 +135,7 @@ protected:
   
   Standard_EXPORT     void SetLastDepth(const Standard_Real aDepth) ;
 
-Standard_Address mylastprj;
+Handle_Select3D_Projector mylastprj;
 
 
 private: 
