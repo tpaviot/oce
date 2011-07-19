@@ -447,7 +447,7 @@ void OSD_MAllocHook::CollectBySize::Reset()
     myArray = new Numbers[MAX_ALLOC_SIZE];
   else
   {
-    for (int i = 0; i < MAX_ALLOC_SIZE; i++)
+    for (int i = 0; i < (int)MAX_ALLOC_SIZE; i++)
       myArray[i] = Numbers();
   }
   myTotalLeftSize = 0;
@@ -470,7 +470,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
           "BlockSize", "NbAlloc", "NbLeft", "NbLeftPeak",
           "AllocSize", "LeftSize", "PeakSize");
   Standard_Size aTotAlloc = 0;
-  for (int i = 0; i < MAX_ALLOC_SIZE; i++)
+  for (int i = 0; i < (int)MAX_ALLOC_SIZE; i++)
   {
     if (myArray[i].nbAlloc > 0)
     {

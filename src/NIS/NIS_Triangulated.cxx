@@ -764,7 +764,7 @@ Standard_Boolean NIS_Triangulated::Intersect
 
   if ((myType & Type_Triangulation) && myIsDrawPolygons == Standard_False) {
     unsigned int iNode = 0;
-    for (; iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
+    for (; (int)iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
     {
       gp_XYZ aPnt (static_cast<Standard_Real>(mypNodes[iNode+0]),
                    static_cast<Standard_Real>(mypNodes[iNode+1]), 0.);
@@ -1065,7 +1065,7 @@ Standard_Boolean NIS_Triangulated::Intersect
 
   if ((myType & Type_Triangulation) && myIsDrawPolygons == Standard_False) {
     unsigned int iNode = 0;
-    for (; iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
+    for (; (int)iNode < myNNodes * myNodeCoord; iNode += myNodeCoord)
     {
       gp_XYZ aPnt (static_cast<Standard_Real>(mypNodes[iNode+0]),
                    static_cast<Standard_Real>(mypNodes[iNode+1]), 0.);
