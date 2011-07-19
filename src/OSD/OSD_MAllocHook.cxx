@@ -342,7 +342,7 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.size;
     Standard_Size aSizeLeft = nbLeft * aInfo.size;
     Standard_Size aSizePeak = aInfo.nbLeftPeak * aInfo.size;
-    fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Iu %10Iu\n", aInfo.size,
+    fprintf(aRepFile, "%10lu %10d %10d %10d %10lu %10lu %10lu\n", aInfo.size,
             aInfo.nbAlloc, nbLeft, aInfo.nbLeftPeak,
             aSizeAlloc, aSizeLeft, aSizePeak);
     if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
@@ -356,7 +356,7 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
         fprintf(aRepFile, "%10lu\n", *it1);
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Iu %10Iu\n", "Total:",
+  fprintf(aRepFile, "%10s %10s %10s %10s%c %10lu %10lu %10lu\n", "Total:",
           "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
           aTotalLeftSize, aTotalPeakSize);
   fclose(aRepFile);
@@ -375,7 +375,7 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "alloc %10lu %10u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "alloc %10lu %10zu\n", theRequestNum, theSize);
     myMutex.Unlock();
 #ifdef DEBUG
 	if (myBreakSize == theSize)
@@ -399,7 +399,7 @@ void OSD_MAllocHook::LogFileHandler::FreeEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "free  %10lu %10u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "free  %10lu %10zu\n", theRequestNum, theSize);
     myMutex.Unlock();
   }
 }
@@ -481,7 +481,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
       Standard_Size aSizeAlloc = myArray[i].nbAlloc * aSize;
       Standard_Size aSizeLeft = nbLeft * aSize;
       Standard_Size aSizePeak = myArray[i].nbLeftPeak * aSize;
-      fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Iu %10Iu\n", aSize,
+      fprintf(aRepFile, "%10d %10d %10d %10d %10lu %10lu %10lu\n", aSize,
               myArray[i].nbAlloc, nbLeft, myArray[i].nbLeftPeak,
               aSizeAlloc, aSizeLeft, aSizePeak);
       if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
@@ -490,7 +490,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
         aTotAlloc += aSizeAlloc;
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Iu %10Iu\n", "Total:",
+  fprintf(aRepFile, "%10s %10s %10s %10s%c %10lu %10lu %10lu\n", "Total:",
           "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
           myTotalLeftSize, myTotalPeakSize);
   fclose(aRepFile);

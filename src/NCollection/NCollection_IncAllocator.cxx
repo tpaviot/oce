@@ -133,7 +133,7 @@ Standard_EXPORT void IncAllocator_PrintAlive()
         Standard_Size aSize = anAlloc->GetMemSize();
         aTotSize += aSize;
         nbAlloc++;
-        fprintf(ff, "%-8d %8.1f\n", anID, double(aSize)/1024);
+        fprintf(ff, "%-8lu %8.1f\n", anID, double(aSize)/1024);
       }
       fprintf(ff, "Total:\n%-8d %8.1f\n", nbAlloc, double(aTotSize)/1024);
       fclose(ff);

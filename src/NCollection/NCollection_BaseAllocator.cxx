@@ -269,10 +269,10 @@ void NCollection_BaseAllocator::PrintMemUsageStatistics()
 
   if (!StorageIDSet().IsEmpty())
   {
-    fprintf(ff, "Alive allocation numbers of size=%d\n", StandardCallBack_CatchSize());
+    fprintf(ff, "Alive allocation numbers of size=%lu\n", StandardCallBack_CatchSize());
     NCollection_Map<Standard_Size>::Iterator itMap1(StorageIDSet());
     for (; itMap1.More(); itMap1.Next())
-      fprintf(ff, "%d\n", itMap1.Key());
+      fprintf(ff, "%lu\n", itMap1.Key());
   }
   fclose(ff);
 }
