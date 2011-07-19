@@ -31,7 +31,6 @@ call_togl_setplane
   CMN_KEY_DATA    key;
   tel_view_data   vptr;
   TEL_VIEW_REP   *call_viewrep;
-  CALL_DEF_PLANE *plane;
   int j;
   
   // return view representation 

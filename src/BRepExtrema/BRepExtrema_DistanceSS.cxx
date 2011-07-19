@@ -771,7 +771,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Vertex& S1, const TopoDS_Face&
         gp_Pnt Pt,P1=BRep_Tool::Pnt(S1);
         BRepClass_FaceClassifier classifier;
         const Standard_Real tol = BRep_Tool::Tolerance(S2);
-        const Standard_Real epsP = Precision::PConfusion();
  
         for (i = 1; i <= NbExtrema; i++)
         {
@@ -828,7 +827,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Vertex&
         gp_Pnt Pt,P1=BRep_Tool::Pnt(S2);
         BRepClass_FaceClassifier classifier;
         const Standard_Real tol = BRep_Tool::Tolerance(S1);
-        const Standard_Real epsP = Precision::PConfusion();
  
         for (i = 1; i <= NbExtrema; i++)
         {
@@ -1265,7 +1263,6 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Face& S
         gp_Pnt2d PUV;
         Standard_Real U1,V1,U2,V2;
         BRepClass_FaceClassifier classifier;
-        const Standard_Real epsP=Precision::PConfusion();
  
         for (i = 1; i <= NbExtrema; i++)
         {
