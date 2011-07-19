@@ -377,10 +377,12 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
     myMutex.Lock();
     fprintf(myLogFile, "alloc %10lu %10u\n", theRequestNum, theSize);
     myMutex.Unlock();
-    if (myBreakSize == theSize)
+#ifdef DEBUG
+	if (myBreakSize == theSize)
     {
       int a = 1;
     }
+#endif
   }
 }
 
@@ -504,10 +506,12 @@ void OSD_MAllocHook::CollectBySize::AllocEvent
                    (size_t      theSize,
                     long        /*theRequestNum*/)
 {
+#ifdef DEBUG
   if (myBreakSize == theSize)
   {
     int a = 1;
   }
+#endif
   if (theSize > 0)
   {
     myMutex.Lock();
