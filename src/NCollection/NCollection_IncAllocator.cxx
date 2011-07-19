@@ -59,6 +59,7 @@ Standard_EXPORT void IncAllocator_SetDebugFlag(const Standard_Boolean theDebug)
  * numbering of allocators.
  */
 //=======================================================================
+#ifdef DEBUG
 static Standard_Size CurrentID = 0;
 static Standard_Size CATCH_ID = 0;
 
@@ -66,7 +67,6 @@ static Standard_Size CATCH_ID = 0;
 //function : Debug_Create
 //purpose  : Store the allocator address in the internal maps
 //=======================================================================
-
 static void Debug_Create(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
@@ -88,7 +88,6 @@ static void Debug_Create(Standard_Address theAlloc)
 //function : Debug_Destroy
 //purpose  : Forget the allocator address from the internal maps
 //=======================================================================
-
 static void Debug_Destroy(Standard_Address theAlloc)
 {
   static Standard_Mutex aMutex;
@@ -104,7 +103,7 @@ static void Debug_Destroy(Standard_Address theAlloc)
   if (isReentrant)
     aMutex.Unlock();
 }
-
+#endif
 //=======================================================================
 //function : IncAllocator_PrintAlive
 //purpose  : Outputs the alive numbers to the file inc_alive.d
