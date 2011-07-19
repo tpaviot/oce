@@ -60,7 +60,7 @@ OSD_MAllocHook::CollectBySize* OSD_MAllocHook::GetCollectBySize()
 // Platform-dependent methods
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-#ifdef WNT
+#ifdef _MSC_VER
 #include <crtdbg.h>
 
 static long getRequestNum(void* pvData, long lRequest, size_t& theSize)
@@ -139,7 +139,7 @@ void OSD_MAllocHook::SetCallback(Callback* theCB)
     _CrtSetAllocHook(MyAllocHook);
 }
 
-#else // ! WNT
+#else // ! _MSC_VER
 
 // Not yet implemented for non-WNT platform
 
@@ -148,7 +148,7 @@ void OSD_MAllocHook::SetCallback(Callback* theCB)
   MypCurrentCallback = theCB;
 }
 
-#endif // WNT
+#endif // _MSC_VER
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // LogFileHandler handler methods
