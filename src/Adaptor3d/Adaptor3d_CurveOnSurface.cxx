@@ -757,7 +757,7 @@ Standard_Integer Adaptor3d_CurveOnSurface::NbIntervals
   // value into myIntervals which will be equal first value.
   myIntervals = new TColStd_HArray1OfReal(1,nbpoint);
   i=0;
-  for (It.Initialize(tmpIntervals->Set());It.More();It.Next(),i)
+  for (It.Initialize(tmpIntervals->Set());It.More();It.Next())
   { i++;
     myIntervals->SetValue(i,It.Value());
   } 
