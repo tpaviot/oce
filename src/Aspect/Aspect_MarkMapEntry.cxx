@@ -128,8 +128,8 @@ void Aspect_MarkMapEntry::Dump () const {
   Standard_Real X = 0,Y = 0;
 
   cout << " Aspect_MarkMapEntry::Dump ()\n";
-  cout << "      MyStyleIsDef : " << (MyStyleIsDef) ? "True\n" : "False\n";
-  cout << "      MyIndexIsDef : " << (MyIndexIsDef) ? "True\n" : "False\n";
+  cout << "      MyStyleIsDef : " << (MyStyleIsDef ? "True\n" : "False\n");
+  cout << "      MyIndexIsDef : " << (MyIndexIsDef ? "True\n" : "False\n");
   cout << "      MarkerStyle : " << (Standard_Integer) type << " Length : " << length << "\n";//WNT
   if( length ) {
     for( i=1 ; i<=length ; i++ ) 
