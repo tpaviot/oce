@@ -118,9 +118,9 @@ typedef void (APIENTRY * PFNGLBLENDEQUATIONEXTPROC) (GLenum mode);
 
 
 extern GLboolean InitExtensionGLX(Display *display);
-extern GLboolean QueryExtensionGLX(char *extName);
+extern GLboolean QueryExtensionGLX(const char *extName);
 
-extern GLboolean QueryExtension(char *extName);
+extern GLboolean QueryExtension(const char *extName);
 
 extern Display *GetCurrentDisplay(void);
 

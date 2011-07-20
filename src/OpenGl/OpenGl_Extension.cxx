@@ -70,7 +70,7 @@ static GLboolean initOneDotOne = GL_FALSE;
 */
 
 /*----------------------------------------------------------------------*/
-extern GLboolean CheckExtension(char *extName, const char *extString)
+extern GLboolean CheckExtension(const char *extName, const char *extString)
 {
   /*
   ** Search for extName in the extensions string.  Use of strstr()
@@ -178,7 +178,7 @@ extern Display *GetCurrentDisplay(void)
 }
 
 /*----------------------------------------------------------------------*/
-extern GLboolean QueryExtension(char *extName)
+extern GLboolean QueryExtension(const char *extName)
 {
   GLboolean result = GL_FALSE;
 

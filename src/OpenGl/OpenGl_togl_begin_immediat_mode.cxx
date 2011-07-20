@@ -128,7 +128,7 @@ drawing
 #include <OpenGl_tgl.hxx>
 #include <OpenGl_tgl_subrvis.hxx>
 
-int call_util_osd_getenv( char * , char * , int ) ;
+int call_util_osd_getenv( const char * , char * , int ) ;
 
 /*----------------------------------------------------------------------*/
 /* 

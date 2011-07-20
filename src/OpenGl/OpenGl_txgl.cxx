@@ -95,11 +95,11 @@ struct HTBL_ENTRY {
 };
 
 
-int call_util_osd_getenv ( char*, char*, int );
+int call_util_osd_getenv ( const char*, char*, int );
 #endif  /* WNT */
 
 #include <OpenGl_txgl.hxx>
-int call_util_osd_getenv( char * , char * , int ) ;
+int call_util_osd_getenv( const char * , char * , int ) ;
 
 /*----------------------------------------------------------------------*/
 /*
