@@ -37,13 +37,11 @@ class NCollection_BaseVector
   class MemBlock {
   protected:
     MemBlock (NCollection_BaseAllocator* theAlloc)
-      : myAlloc(theAlloc),
-        myFirstInd(0), myLength(0), mySize(0), myData(0L) {}
+      : myFirstInd(0), myLength(0), mySize(0), myAlloc(theAlloc), myData(0L) {}
     MemBlock (const Standard_Integer theFirstInd,
               const Standard_Integer theLength,
               NCollection_BaseAllocator* theAlloc)
-      : myAlloc(theAlloc),
-        myFirstInd(theFirstInd), myLength(0), mySize(theLength), myData(0L) {}
+      : myFirstInd(theFirstInd), myLength(0), mySize(theLength), myAlloc(theAlloc), myData(0L) {}
     virtual void        Reinit     (const Standard_Integer,
                                     const size_t) {}
     Standard_Integer    FirstIndex () const     { return myFirstInd; }

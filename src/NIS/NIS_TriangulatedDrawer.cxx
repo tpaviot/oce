@@ -36,10 +36,10 @@ NIS_TriangulatedDrawer::NIS_TriangulatedDrawer
                                 (const Quantity_Color theNormal,
                                  const Quantity_Color theHilight,
                                  const Quantity_Color theDynHilight)
-  : myLineWidth      (1.f),
+  : myPolygonAsLineLoop (Standard_False),
+    myLineWidth      (1.f),
     myIsDrawPolygons (Standard_False),
-    myPolygonType    (NIS_Triangulated::Polygon_Default),
-    myPolygonAsLineLoop (Standard_False)
+    myPolygonType    (NIS_Triangulated::Polygon_Default)
 {
   myColor[Draw_Normal]       = theNormal;
   myColor[Draw_Top]          = theNormal;
