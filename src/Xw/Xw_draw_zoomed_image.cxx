@@ -34,7 +34,6 @@ float xc, yc, zoom;
   int              wWidth, wHeight, xC, yC, wp, hp, dxp, dyp, isize;
   int              x, y, xp, yp, xn, yn, xq, yq, nxC, nyC;
   unsigned long    pixel;
-  float            ratio;
 
 #ifdef TRACE_DRAW_ZOOMED_IMAGE
   if (Xw_get_trace ())
@@ -86,7 +85,6 @@ float xc, yc, zoom;
   wp = pximage->width;
   hp = pximage->height;
   dxp = dyp = 0;
-  ratio = (float) wp/hp;
   qximage->width  = (int )( wp * zoom );
   qximage->height = (int )( hp * zoom );
   nxC = wWidth  / 2;

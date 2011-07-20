@@ -519,7 +519,7 @@ Standard_Real BRepCheck_Edge::Tolerance()
 
   Standard_Real dist2, tol2, tolCal=0., prm;
   gp_Pnt center, othP;
-  Standard_Integer i, imax;
+  Standard_Integer i;
   for (i= 0; i< NCONTROL; i++) {
     prm = ((NCONTROL-1-i)*First + i*Last)/(NCONTROL-1);
     tol2=dist2=0.;
@@ -531,7 +531,6 @@ Standard_Real BRepCheck_Edge::Tolerance()
     }
     if (tol2>tolCal) {
       tolCal=tol2;
-      imax=i;
     }
   }
   // On prend 5% de marge car au dessus on crontrole severement

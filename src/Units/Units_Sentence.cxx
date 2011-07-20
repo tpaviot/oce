@@ -51,10 +51,12 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
   Handle(Units_TokensSequence) lstlexicon=alexicon->Sequence();
   Units_NoSuchType_Raise_if(lstlexicon.IsNull(),"BAD LEXICON descriptor");
   limchain=strlen(astring);
+/*
   k=0;
   for(l=0; l<255; l++) {
     chain[l]=0;
   }
+*/
   i=0;
 
   TCollection_AsciiString tmpstr = astring;

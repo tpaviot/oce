@@ -587,10 +587,8 @@ void IntPatch_ImpImpIntersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
     Standard_Boolean Addl = Standard_False;
     Standard_Integer v=0;
 #endif
-    Standard_Integer nbv;
     if(slin.Value(i)->ArcType() == IntPatch_Circle) { 
       const Handle(IntPatch_GLine)& glin = *((Handle(IntPatch_GLine)*)&slin.Value(i));
-      nbv = glin->NbVertex();
       if(glin->NbVertex() == 0) { 
 	gp_Circ Circ = glin->Circle();
 	P=ElCLib::Value(0.0,Circ);
@@ -613,7 +611,6 @@ void IntPatch_ImpImpIntersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
     
     else if(slin.Value(i)->ArcType() == IntPatch_Ellipse) { 
       const Handle(IntPatch_GLine)& glin = *((Handle(IntPatch_GLine)*)&slin.Value(i));
-      nbv = glin->NbVertex();
       if(glin->NbVertex() == 0) { 
 	gp_Elips Elips = glin->Ellipse();
 	P=ElCLib::Value(0.0,Elips);

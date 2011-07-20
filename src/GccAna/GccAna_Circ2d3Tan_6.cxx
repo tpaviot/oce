@@ -98,7 +98,6 @@ GccAna_Circ2d3Tan::
 	     Standard_Real dist2 = L2.Distance(Center);
 	     Standard_Real dist3 = Center.Distance(Point3);
 	     Standard_Real Radius=0;
-	     Standard_Integer nbsol1 = 0;
 	     Standard_Integer nbsol2 = 0;
 	     Standard_Integer nbsol3 = 0;
 	     Standard_Boolean ok = Standard_False;
@@ -106,7 +105,6 @@ GccAna_Circ2d3Tan::
 	       if ((((origin1.X()-Center.X())*(-dir1.Y()))+
 		    ((origin1.Y()-Center.Y())*(dir1.X())))<=0){
 		 ok = Standard_True;
-		 nbsol1 = 1;
 		 Radius = dist1;
 	       }
 	     }
@@ -114,13 +112,11 @@ GccAna_Circ2d3Tan::
 	       if ((((origin1.X()-Center.X())*(-dir1.Y()))+
 		    ((origin1.Y()-Center.Y())*(dir1.X())))>=0){
 		 ok = Standard_True;
-		 nbsol1 = 1;
 		 Radius = dist1;
 	       }
 	     }
 	     else if (Qualified1.IsUnqualified()) {
 	       ok = Standard_True;
-	       nbsol1 = 1;
 	       Radius = dist1;
 	     }
 	     if (Qualified2.IsEnclosed()) {

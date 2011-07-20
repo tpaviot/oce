@@ -149,9 +149,9 @@ XW_DRAWMODE *mode ;
 {
 XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow;
 XW_ATTRIB code;
-int j,k;
+int j;
 
-  j = pwindow->textindex; k = j+1;
+  j = pwindow->textindex;
 
   code = pwindow->qgtext[j].code;
 
@@ -163,7 +163,7 @@ int j,k;
 #ifdef  TRACE_GET_TEXT_ATTRIB
 if( Xw_get_trace() > 1 ) {
     printf(" %d = Xw_get_text_attrib(%lx,%d,%d,%d,%d)\n",
-                                k,(long ) pwindow,*color,*type,*font,*mode) ;
+                                j+1,(long ) pwindow,*color,*type,*font,*mode) ;
 }
 #endif
 

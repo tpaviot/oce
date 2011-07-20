@@ -60,7 +60,7 @@ void Dynamic_FuzzyDefinitionsDictionary::Creates(const Standard_CString afilenam
   char line[255];
   char name[80];
   char type[80];
-  char value[80],value1[80],value2[80],value3[80];
+  char value[80];
   Handle(Dynamic_FuzzyDefinition) fuzzydefinition;
   Handle(Dynamic_Parameter) parameter;
   
@@ -122,9 +122,6 @@ void Dynamic_FuzzyDefinitionsDictionary::Creates(const Standard_CString afilenam
 
 	  for(i=0; i<80; i++)type   [i] = 0;
 	  for(i=0; i<80; i++)value  [i] = 0;
-	  for(i=0; i<80; i++)value1 [i] = 0;
-	  for(i=0; i<80; i++)value2 [i] = 0;
-	  for(i=0; i<80; i++)value3 [i] = 0;
 
 //	  fr = sscanf(&line[end+1],"%s%80c",&type,&value);
 	  fr = sscanf(&line[end+1],"%s%80c",type,value);

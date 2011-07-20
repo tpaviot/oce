@@ -46,7 +46,7 @@ const TCollection_AsciiString&  AlienImage_X11XWDAlienData::Name() const
 
 void AlienImage_X11XWDAlienData::Clear()
 
-{ Standard_Integer size ;
+{
 
   myHeader.header_size	= sizeof( myHeader ) ; 
 				/* Size of the entire file header (bytes).*/
@@ -84,8 +84,6 @@ void AlienImage_X11XWDAlienData::Clear()
   }
 
   if ( myColors ) {
-	size = ( Standard_Integer ) 
-			myHeader.ncolors * sizeof( AlienImage_X11XColor ) ;
 	//Free all allocated memory
 	Standard::Free(myColors);
 	myColors = NULL ;

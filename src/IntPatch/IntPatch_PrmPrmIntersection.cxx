@@ -1377,8 +1377,8 @@ void IntPatch_PrmPrmIntersection::PointDepart(Handle(IntSurf_LineOn2S)& LineOn2S
   Standard_Real V0 = S1->FirstVParameter();
   Standard_Real V1 = S1->LastVParameter();
 
-  Standard_Real resu0,resu1,resv0,resv1;
-  resu0=U0;resu1=U1;resv1=V1;resv0=V0;
+  Standard_Real resu0,resv0;
+  resu0=U0;resv0=V0;
 
   Standard_Real  du1,du2,dv1,dv2;
   du1 = (U1-U0)/(SU1-1);
