@@ -133,7 +133,7 @@ void OSD_FontMgr::InitFontDataBase() {
 
 #ifdef TRACE
   cout << "System font directory: " << font_dir << "\n";
-#endif TRACE
+#endif
 
   //read registry
   HKEY fonts_hkey;
