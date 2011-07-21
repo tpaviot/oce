@@ -236,8 +236,8 @@ void ComputeTangency (const IntPatch_TheSOnBounds& solrst,
 	      LocTrans = TopAbs_EXTERNAL; // et pourquoi pas INTERNAL
 	    }
 	    else {
-	      if ((test > 0.)&& arcorien == TopAbs_FORWARD ||
-		  (test < 0.)&& arcorien == TopAbs_REVERSED){
+	      if (((test > 0.)&& arcorien == TopAbs_FORWARD) ||
+		  ((test < 0.)&& arcorien == TopAbs_REVERSED)){
 		LocTrans = TopAbs_FORWARD;
 	      }
 	      else {
@@ -275,8 +275,8 @@ void ComputeTangency (const IntPatch_TheSOnBounds& solrst,
 		      LocTrans = TopAbs_EXTERNAL; // et pourquoi pas INTERNAL
 		    }
 		    else {
-		      if ((test > 0.)&& arcorien == TopAbs_FORWARD ||
-			  (test < 0.)&& arcorien == TopAbs_REVERSED){
+		      if (((test > 0.)&& arcorien == TopAbs_FORWARD) ||
+			  ((test < 0.)&& arcorien == TopAbs_REVERSED)){
 			LocTrans = TopAbs_FORWARD;
 		      }
 		      else {

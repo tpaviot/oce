@@ -462,7 +462,7 @@ Standard_Boolean PlotMgt_PlotterParameter::BValue () const
   if (myType == _T_BOOL) {
     if (myFlags & FLAG_DEFVAL && !myDefValue.IsEmpty()) {
       if (myDefValue.IsEqual("true") ||
-            myDefValue.IsIntegerValue() && myDefValue.IntegerValue())
+            (myDefValue.IsIntegerValue() && myDefValue.IntegerValue()))
         return Standard_True;
     } else
       GET_EMPTY_VALUE_INFO("FALSE");

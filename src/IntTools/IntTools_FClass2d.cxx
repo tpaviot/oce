@@ -624,7 +624,7 @@
       Status = aClassifier.State();
     }
     
-    if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+    if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
       return Status;
     
     if (Status == TopAbs_IN || Status == TopAbs_ON)
@@ -761,7 +761,7 @@
       Status = aClassifier.State();
     }
     
-    if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+    if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
       return Status;
     if (Status == TopAbs_IN || Status == TopAbs_ON)
       return Status;

@@ -75,8 +75,8 @@ Handle(Geom_Curve) GeomAdaptor::MakeCurve (const Adaptor3d_Curve& HC)
 
   // trim the curve if necassary.
   if (! C.IsNull() &&
-      (HC.FirstParameter() != C->FirstParameter()) ||
-      (HC.LastParameter()  != C->LastParameter())) {
+      ((HC.FirstParameter() != C->FirstParameter()) ||
+       (HC.LastParameter()  != C->LastParameter()))) {
 
     C = new Geom_TrimmedCurve(C,HC.FirstParameter(),HC.LastParameter());
   }

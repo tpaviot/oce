@@ -224,13 +224,8 @@ TColStd_Array2OfReal TheMatrix (1, 4, 1, 4);
 	switch (DrawMode ()) {
 		default:
 		case Aspect_GDM_Points:
-#ifdef IMP210100
 			if (! myCurAreDefined || 
 				(myCurDrawMode == Aspect_GDM_Lines) )
-#else
-			if (! myCurAreDefined || myCurAreDefined &&
-				myCurDrawMode == Aspect_GDM_Lines)
-#endif
 					myGroup2->Clear ();
 			DefinePoints ();
 			myCurDrawMode = Aspect_GDM_Points;

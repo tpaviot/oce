@@ -491,7 +491,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::Perform(const gp_Pnt2d& _Puv,
 	Status = aClassifier.State();
       }
 
-      if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+      if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
 	return Status;
       if (Status == TopAbs_IN || Status == TopAbs_ON)
 	return Status;
@@ -623,7 +623,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::TestOnRestriction(const gp_Pnt2d& _Puv,
 	Status = aClassifier.State();
       }
       
-      if (!RecadreOnPeriodic || !IsUPer && !IsVPer)
+      if (!RecadreOnPeriodic || (!IsUPer && !IsVPer))
 	return Status;
       if (Status == TopAbs_IN || Status == TopAbs_ON)
 	return Status;
