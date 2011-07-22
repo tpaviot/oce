@@ -99,9 +99,9 @@ void* Xw_load_image (awindow,aimageinfo,filename)
 		 "\r\nWarning: variable CSF_DefaultImageFormat is undefined!"
 		 " Assuming 'xwd'.\r\n");
       else if (strlen (pchDefExt) != 3 ||
-	          0 != strcasecmp (pchDefExt, "xwd")
+	         (0 != strcasecmp (pchDefExt, "xwd")
 	       && 0 != strcasecmp (pchDefExt, "bmp")
-	       && 0 != strcasecmp (pchDefExt, "gif"))
+	       && 0 != strcasecmp (pchDefExt, "gif")))
         fprintf (stderr,
 		 "\r\nWarning: value '%s' of CSF_DefaultImageFormat "
 		 "is incorrect!\r\n", pchDefExt);

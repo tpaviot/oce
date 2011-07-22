@@ -5,6 +5,6 @@
 
 extern  void  call_util_init_filters(Tint); /* ws */
 extern  Tint  call_util_test_structure(Tint); /* stid */
-EXPORT extern  int   call_util_osd_getenv (char *, char *, int);
+EXPORT extern  int   call_util_osd_getenv (const char *, char *, int);
 
 #endif

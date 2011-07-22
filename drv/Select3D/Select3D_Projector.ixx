@@ -5,6 +5,24 @@
 
 #include <Select3D_Projector.jxx>
 
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+
+
  
+
+
+IMPLEMENT_STANDARD_TYPE(Select3D_Projector)
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
+  STANDARD_TYPE(Standard_Transient),
+
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
+IMPLEMENT_STANDARD_TYPE_END(Select3D_Projector)
+
+
+IMPLEMENT_DOWNCAST(Select3D_Projector,Standard_Transient)
+IMPLEMENT_STANDARD_RTTI(Select3D_Projector)
+
 
 

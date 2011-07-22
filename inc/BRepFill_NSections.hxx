@@ -22,6 +22,9 @@
 #ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
 #endif
+#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
+#include <GeomFill_SequenceOfTrsf.hxx>
+#endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif
@@ -49,6 +52,7 @@
 class TopTools_HArray2OfShape;
 class Geom_BSplineSurface;
 class TopTools_SequenceOfShape;
+class GeomFill_SequenceOfTrsf;
 class TColStd_SequenceOfReal;
 class GeomFill_SectionLaw;
 class TopoDS_Vertex;
@@ -64,7 +68,7 @@ public:
   //! Construct <br>
   Standard_EXPORT   BRepFill_NSections(const TopTools_SequenceOfShape& S,const Standard_Boolean Build = Standard_True);
   //! Construct <br>
-  Standard_EXPORT   BRepFill_NSections(const TopTools_SequenceOfShape& S,const TColStd_SequenceOfReal& P,const Standard_Real VF,const Standard_Real VL,const Standard_Boolean Build = Standard_True);
+  Standard_EXPORT   BRepFill_NSections(const TopTools_SequenceOfShape& S,const GeomFill_SequenceOfTrsf& Trsfs,const TColStd_SequenceOfReal& P,const Standard_Real VF,const Standard_Real VL,const Standard_Boolean Build = Standard_True);
   //! Say if the input shape is a  vertex. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsVertex() const;
   //! Say if the Law is  Constant. <br>
@@ -98,6 +102,7 @@ private:
 Standard_Real VFirst;
 Standard_Real VLast;
 TopTools_SequenceOfShape myShapes;
+GeomFill_SequenceOfTrsf myTrsfs;
 TColStd_SequenceOfReal myParams;
 Handle_TopTools_HArray2OfShape myEdges;
 Handle_Geom_BSplineSurface mySurface;

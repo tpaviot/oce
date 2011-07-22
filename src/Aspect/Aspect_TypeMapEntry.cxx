@@ -141,8 +141,8 @@ void Aspect_TypeMapEntry::Dump () const {
   Standard_Integer i,length = MyType.Length() ;
 
   cout << " Aspect_TypeMapEntry::Dump ()\n";
-  cout << "      MyTypeIsDef : " << (MyTypeIsDef) ? "True\n" : "False\n";
-  cout << "      MyIndexIsDef : " << (MyIndexIsDef) ? "True\n" : "False\n";
+  cout << "      MyTypeIsDef : " << (MyTypeIsDef ? "True\n" : "False\n");
+  cout << "      MyIndexIsDef : " << (MyIndexIsDef ? "True\n" : "False\n");
   cout << "      LineStyle : " << (Standard_Integer) style << " Length : " << length << "\n";//WNT
   if( length ) {
     for( i=(MyType.Values()).Lower() ; i<=(MyType.Values()).Upper() ; i++ ) 

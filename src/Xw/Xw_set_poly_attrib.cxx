@@ -167,9 +167,9 @@ XW_DRAWMODE *mode ;
 {
 XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow;
 XW_ATTRIB code;
-int j,k;
+int j;
 
-  j = pwindow->polyindex; k = j+1;
+  j = pwindow->polyindex;
 
   code = pwindow->qgpoly[j].code;
 
@@ -181,7 +181,7 @@ int j,k;
 #ifdef  TRACE_GET_POLY_ATTRIB
 if( Xw_get_trace() > 1 ) {
     printf(" %d = Xw_get_poly_attrib(%lx,%d,%d,%d,%d)\n",
-				k,(long ) pwindow,*color,*type,*tile,*mode) ;
+				j+1,(long ) pwindow,*color,*type,*tile,*mode) ;
 }
 #endif
 

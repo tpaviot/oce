@@ -109,7 +109,7 @@ void AlienImage_SunRFAlienData::Clear()
 
 Standard_Boolean AlienImage_SunRFAlienData::Write( OSD_File& file ) const
 
-{ Standard_Integer  size;
+{
   AlienImage_SUNRFFileHeader TheHeader = myHeader ;
 
   // Write out TheHeader information
@@ -135,8 +135,6 @@ Standard_Boolean AlienImage_SunRFAlienData::Write( OSD_File& file ) const
 	  return newThis->Write( file ) ;
 	}
   }
-
-  size = ( Standard_Integer ) sizeof( TheHeader ) ;
 
   const Standard_Address pHeader = ( Standard_Address ) &TheHeader ;
 

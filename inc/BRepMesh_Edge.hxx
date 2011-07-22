@@ -16,8 +16,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _MeshDS_DegreeOfFreedom_HeaderFile
-#include <MeshDS_DegreeOfFreedom.hxx>
+#ifndef _BRepMesh_DegreeOfFreedom_HeaderFile
+#include <BRepMesh_DegreeOfFreedom.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -42,15 +42,15 @@ public:
   }
 
   //! Contructs a link beetween to vertices. <br>
-  Standard_EXPORT   BRepMesh_Edge(const Standard_Integer vDebut,const Standard_Integer vFin,const MeshDS_DegreeOfFreedom canMove);
+  Standard_EXPORT   BRepMesh_Edge(const Standard_Integer vDebut,const Standard_Integer vFin,const BRepMesh_DegreeOfFreedom canMove);
   //! Give the index of first node of the Link. <br>
         Standard_Integer FirstNode() const;
   //! Give the index of Last node of the Link. <br>
         Standard_Integer LastNode() const;
   
-        MeshDS_DegreeOfFreedom Movability() const;
+        BRepMesh_DegreeOfFreedom Movability() const;
   
-  Standard_EXPORT     void SetMovability(const MeshDS_DegreeOfFreedom Move) ;
+  Standard_EXPORT     void SetMovability(const BRepMesh_DegreeOfFreedom Move) ;
   
   Standard_EXPORT     Standard_Integer HashCode(const Standard_Integer Upper) const;
   
@@ -78,7 +78,7 @@ private:
 
 Standard_Integer myFirstNode;
 Standard_Integer myLastNode;
-MeshDS_DegreeOfFreedom myMovability;
+BRepMesh_DegreeOfFreedom myMovability;
 
 
 };

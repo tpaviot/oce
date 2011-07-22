@@ -396,11 +396,10 @@ void MAT2d_Tool2d::TrimBisec (      Bisector_Bisec&  B1,
   
   //gp_Vec2d             Tan1,Tan2;
   gp_Pnt2d             Ori; //PEdge;
-  Standard_Integer     IPrec,INext;
+  Standard_Integer     INext;
 #ifdef DEB
   Standard_Real        Tolerance = MAT2d_TOLCONF;
 #endif
-  IPrec = (IndexEdge == 1)  ? theCircuit->NumberOfItems() : (IndexEdge - 1);
   INext = (IndexEdge == theCircuit->NumberOfItems()) ? 1  : (IndexEdge + 1);
   
   Handle(Standard_Type) EdgeType = theCircuit->Value(IndexEdge)->DynamicType();

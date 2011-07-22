@@ -248,7 +248,7 @@ friend Standard_EXPORT Standard_OStream& operator << (Standard_OStream& astream,
 //!    aString.Token("; :,",2) returns "test" <br>
   Standard_EXPORT     TCollection_ExtendedString Token(const Standard_ExtString separators,const Standard_Integer whichone = 1) const;
   //! Returns pointer to ExtString <br>
-  Standard_EXPORT    const Standard_ExtString ToExtString() const;
+  Standard_EXPORT    Standard_ExtString ToExtString() const;
   //! Truncates <me> to <ahowmany> characters. <br>
 //! Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel" <br>
 //!   Exceptions <br>

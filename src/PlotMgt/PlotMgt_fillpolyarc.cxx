@@ -84,28 +84,6 @@ double ftrunc(double a)
   return a;
 }
 
-//trigon functs
-double fsin(double a)
-{
-  return sin(a);
-}
-double fcos(double a)
-{
-  return cos(a);
-}
-double ftan(double a)
-{
-  return tan(a);
-}
-double fatan2(double a, double b)
-{
-  return atan2(a, b);
-}
-double fsqrt(double a)
-{
-  return sqrt(a);
-}
-
 // Determine is angle a is between b and b+c (c>0)
 int mpo_inside(double a, double b, double c)
 {
@@ -129,11 +107,11 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
     }
   delta -= gamma; alpha -= gamma;
 
-  double C1 = b*b*fcos(delta)*fcos(delta) + a*a*fsin(delta)*fsin(delta);
-  double C3 = b*b*fsin(delta)*fsin(delta) + a*a*fcos(delta)*fcos(delta);
-  double C2 = fsin(delta)*fcos(delta)*(b*b - a*a);
+  double C1 = b*b*cos(delta)*cos(delta) + a*a*sin(delta)*sin(delta);
+  double C3 = b*b*sin(delta)*sin(delta) + a*a*cos(delta)*cos(delta);
+  double C2 = sin(delta)*cos(delta)*(b*b - a*a);
 //  cout << "C1 = " << C1 << ";    C2 = " << C2 << ";   C3 = " << C3 << endl << flush;
-  double Ys = a*b/fsqrt(C3 - C2*C2/C1)-0.5*step;
+  double Ys = a*b/sqrt(C3 - C2*C2/C1)-0.5*step;
   int size = int( ftrunc(2*Ys/step) + 1 );
 //  cout << "Ysize = " << Ys << endl << flush;
 //  cout << "Size  = " << size << endl << flush;
@@ -143,20 +121,20 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
   for ( i = 0; i < size; i++)
     {
       double Yt = Ys - i*step;
-      (mpo_lines+i)->X1 = (-C2*Yt - fsqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
-      (mpo_lines+i)->X2 = (-C2*Yt + fsqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
+      (mpo_lines+i)->X1 = (-C2*Yt - sqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
+      (mpo_lines+i)->X2 = (-C2*Yt + sqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
 //    cout << "alpha = " << alpha*180/Standard_PI << "    alpha+beta = " << (alpha+beta)*180/Standard_PI << endl << flush;
-//    cout << "" << fatan2(Yt, (mpo_lines+i)->X2)*180/Standard_PI << "     type " << (mpo_lines+i)->type << endl << flush;;
+//    cout << "" << atan2(Yt, (mpo_lines+i)->X2)*180/Standard_PI << "     type " << (mpo_lines+i)->type << endl << flush;;
 //    cout << "Xleft = " << (mpo_lines+i)->X1 << "     Xright = " << (mpo_lines+i)->X2 << endl << flush;
 //    cout << "C2*C2 - C1*(C3*Yt*Yt - a*a*b*b) = " << C2*C2 - C1*(C3*Yt*Yt - a*a*b*b) << endl << flush;
 //    cout << "C1*(C3*Yt*Yt - a*a*b*b) = " << C1*(C3*Yt*Yt - a*a*b*b) << endl << flush;
 //    cout << "C2*C2 = " << C2*C2 << endl << flush;
       if (Yt > 0.0)
         {
-          if (fsin(alpha) <= 0.0) (mpo_lines+i)->X3 = maxDouble;
-          else (mpo_lines+i)->X3 = Yt/ftan(alpha);
-          if (fsin(alpha+beta) <= 0.0) (mpo_lines+i)->X4 = maxDouble;
-          else (mpo_lines+i)->X4 = Yt/ftan(alpha+beta);
+          if (sin(alpha) <= 0.0) (mpo_lines+i)->X3 = maxDouble;
+          else (mpo_lines+i)->X3 = Yt/tan(alpha);
+          if (sin(alpha+beta) <= 0.0) (mpo_lines+i)->X4 = maxDouble;
+          else (mpo_lines+i)->X4 = Yt/tan(alpha+beta);
           if (((mpo_lines+i)->X3 > (mpo_lines+i)->X2) || ((mpo_lines+i)->X3 < (mpo_lines+i)->X1))
             (mpo_lines+i)->X3 = maxDouble; 
           if (((mpo_lines+i)->X4 > (mpo_lines+i)->X2) || ((mpo_lines+i)->X4 < (mpo_lines+i)->X1))
@@ -176,16 +154,16 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
             {
               (mpo_lines+i)->type = 3; (mpo_lines+i)->X3 = (mpo_lines+i)->X4;
             }
-          else if (mpo_inside(fatan2((double)Yt,(double)((mpo_lines+i)->X2)), alpha, beta))
+          else if (mpo_inside(atan2((double)Yt,(double)((mpo_lines+i)->X2)), alpha, beta))
             (mpo_lines+i)->type = 5;
           else (mpo_lines+i)->type = 4;
         }
       else if (Yt <= 0.0)   //!!!!!
         {
-          if (fsin(alpha) >= 0.0) (mpo_lines+i)->X3 = maxDouble;
-          else (mpo_lines+i)->X3 = Yt/ftan(alpha);
-          if (fsin(alpha+beta) >= 0.0) (mpo_lines+i)->X4 = maxDouble;
-          else (mpo_lines+i)->X4 = Yt/ftan(alpha+beta);
+          if (sin(alpha) >= 0.0) (mpo_lines+i)->X3 = maxDouble;
+          else (mpo_lines+i)->X3 = Yt/tan(alpha);
+          if (sin(alpha+beta) >= 0.0) (mpo_lines+i)->X4 = maxDouble;
+          else (mpo_lines+i)->X4 = Yt/tan(alpha+beta);
           if (((mpo_lines+i)->X3 > (mpo_lines+i)->X2) || ((mpo_lines+i)->X3 < (mpo_lines+i)->X1))
             (mpo_lines+i)->X3 = maxDouble; 
           if (((mpo_lines+i)->X4 > (mpo_lines+i)->X2) || ((mpo_lines+i)->X4 < (mpo_lines+i)->X1))
@@ -199,7 +177,7 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
             else (mpo_lines+i)->type = 1;
           else if ((mpo_lines+i)->X3 != maxDouble) (mpo_lines+i)->type = 3;
           else if ((mpo_lines+i)->X4 != maxDouble) (mpo_lines+i)->type = 2;
-          else if (mpo_inside(fatan2((double)Yt, (double)((mpo_lines+i)->X2)), alpha, beta))
+          else if (mpo_inside(atan2((double)Yt, (double)((mpo_lines+i)->X2)), alpha, beta))
             (mpo_lines+i)->type = 5;
           else (mpo_lines+i)->type = 4;
         }
@@ -214,14 +192,14 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
   for (i = mpo_start; i < mpo_count+mpo_start; i++) 
     {
       double Yt = Ys - i*step;
-      (mpo_lines+i)->Y1 =  (mpo_lines+i)->X1*fsin(gamma) + Yt*fcos(gamma) + Y;
-      (mpo_lines+i)->X1 =  (mpo_lines+i)->X1*fcos(gamma) - Yt*fsin(gamma) + X;
-      (mpo_lines+i)->Y2 =  (mpo_lines+i)->X2*fsin(gamma) + Yt*fcos(gamma) + Y;
-      (mpo_lines+i)->X2 =  (mpo_lines+i)->X2*fcos(gamma) - Yt*fsin(gamma) + X;
-      (mpo_lines+i)->Y3 =  (mpo_lines+i)->X3*fsin(gamma) + Yt*fcos(gamma) + Y;
-      (mpo_lines+i)->X3 =  (mpo_lines+i)->X3*fcos(gamma) - Yt*fsin(gamma) + X;
-      (mpo_lines+i)->Y4 =  (mpo_lines+i)->X4*fsin(gamma) + Yt*fcos(gamma) + Y;
-      (mpo_lines+i)->X4 =  (mpo_lines+i)->X4*fcos(gamma) - Yt*fsin(gamma) + X;
+      (mpo_lines+i)->Y1 =  (mpo_lines+i)->X1*sin(gamma) + Yt*cos(gamma) + Y;
+      (mpo_lines+i)->X1 =  (mpo_lines+i)->X1*cos(gamma) - Yt*sin(gamma) + X;
+      (mpo_lines+i)->Y2 =  (mpo_lines+i)->X2*sin(gamma) + Yt*cos(gamma) + Y;
+      (mpo_lines+i)->X2 =  (mpo_lines+i)->X2*cos(gamma) - Yt*sin(gamma) + X;
+      (mpo_lines+i)->Y3 =  (mpo_lines+i)->X3*sin(gamma) + Yt*cos(gamma) + Y;
+      (mpo_lines+i)->X3 =  (mpo_lines+i)->X3*cos(gamma) - Yt*sin(gamma) + X;
+      (mpo_lines+i)->Y4 =  (mpo_lines+i)->X4*sin(gamma) + Yt*cos(gamma) + Y;
+      (mpo_lines+i)->X4 =  (mpo_lines+i)->X4*cos(gamma) - Yt*sin(gamma) + X;
     }
   return mpo_count;
 }

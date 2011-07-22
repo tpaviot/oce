@@ -35,4 +35,4 @@
 +V IGESDraw:msentity:IGESDraw_Array1OfViewKindEntity .
 +V IGESDraw:msentity:IGESDraw_HArray1OfConnectPoint .
 +V IGESDraw:msentity:IGESDraw_HArray1OfViewKindEntity .
-- IGESDraw:admfile:IGESDraw_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/IGESDraw/IGESDraw_xcpp_fill.Out
+- IGESDraw:admfile:IGESDraw_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IGESDraw/IGESDraw_xcpp_fill.Out

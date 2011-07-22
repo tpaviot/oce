@@ -143,17 +143,17 @@ void TDF_Delta::Apply()
 
 void TDF_Delta::Labels(TDF_LabelList& aLabelList) const
 {
-  Standard_Boolean inList;
   TDF_LabelMap labMap;
   // If <aLabelList> is not empty...
 #ifdef DEB_DELTA
+  Standard_Boolean inList;
   if (aLabelList.Extent() > 0) cout<<"Previously added as modified label(s) ";
 #endif
   for (TDF_ListIteratorOfLabelList it1(aLabelList);
        it1.More(); it1.Next()) {
     const TDF_Label& lab1 = it1.Value();
-    inList = labMap.Add(lab1);
 #ifdef DEB_DELTA
+    inList = labMap.Add(lab1);
     if (!inList) {
       lab1.EntryDump(cout);cout<<" | ";
     }
@@ -171,8 +171,8 @@ void TDF_Delta::Labels(TDF_LabelList& aLabelList) const
        it2.More();
        it2.Next()) {
     const TDF_Label& lab1 = it2.Value()->Label();
-    inList = labMap.Add(lab1);
 #ifdef DEB_DELTA
+    inList = labMap.Add(lab1);
     if (!inList) {
       lab1.EntryDump(cout);cout<<" | ";
     }

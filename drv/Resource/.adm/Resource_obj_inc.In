@@ -1,5 +1,5 @@
-+ Resource:source:Resource_ConvertUnicode.hxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Resource/Resource_ConvertUnicode.hxx
-+ Resource:source:Resource_Shiftjis.h /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Resource/Resource_Shiftjis.h
-+ Resource:source:Resource_gb2312.h /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/Resource/Resource_gb2312.h
-- Resource:admfile:Resource_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Resource/Resource_src.Out
-- Resource:admfile:Resource_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Resource/Resource_xcpp_src.Out
++ Resource:source:Resource_ConvertUnicode.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Resource/Resource_ConvertUnicode.hxx
++ Resource:source:Resource_Shiftjis.h /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Resource/Resource_Shiftjis.h
++ Resource:source:Resource_gb2312.h /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Resource/Resource_gb2312.h
+- Resource:admfile:Resource_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Resource/Resource_src.Out
+- Resource:admfile:Resource_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Resource/Resource_xcpp_src.Out

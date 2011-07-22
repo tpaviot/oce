@@ -193,7 +193,7 @@ static Standard_Integer DDocStd_Open (Draw_Interpretor& di,
 	di << " could not retrieve , permission denied " << "\n" ;  
 	break;
       }
-	
+	  default: /* Do nothing */ break;
       }
       di << "DDocStd_Open : Error" << "\n";
     }	
@@ -255,6 +255,7 @@ static Standard_Integer DDocStd_SaveAs (Draw_Interpretor& di,
       case CDF_SS_Failure: {
 	di << " Write failure " << "\n" ;  
       }
+	  default: /* Do nothing */ break;
       }
       return 1;
     } else {

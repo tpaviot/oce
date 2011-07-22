@@ -19,8 +19,8 @@
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _BRepFill_DataMapOfOrientedShapeListOfShape_HeaderFile
-#include <BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
+#ifndef _BRepFill_IndexedDataMapOfOrientedShapeListOfShape_HeaderFile
+#include <BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx>
 #endif
 #ifndef _BRepFill_OffsetWire_HeaderFile
 #include <BRepFill_OffsetWire.hxx>

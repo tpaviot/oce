@@ -456,9 +456,9 @@ TStatus call_graduatedtrihedron_get(int WsId, CALL_DEF_GRADUATEDTRIHEDRON* data)
     if (index == -1)
     {
         /* Default values */
-        data->xname = "X\0";
-        data->yname = "Y\0"; 
-        data->zname = "Z\0";
+        data->xname = strdup("X\0");
+        data->yname = strdup("Y\0"); 
+        data->zname = strdup("Z\0");
         data->xdrawname = 1;
         data->ydrawname = 1; 
         data->zdrawname = 1;

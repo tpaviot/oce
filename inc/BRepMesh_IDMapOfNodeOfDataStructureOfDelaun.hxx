@@ -16,8 +16,8 @@
 #ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
 #endif
-#ifndef _MeshDS_ListOfInteger_HeaderFile
-#include <MeshDS_ListOfInteger.hxx>
+#ifndef _BRepMesh_ListOfInteger_HeaderFile
+#include <BRepMesh_ListOfInteger.hxx>
 #endif
 #ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_HeaderFile
 #include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun.hxx>
@@ -70,9 +70,9 @@ public:
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const BRepMesh_Vertex& K,const MeshDS_ListOfInteger& I) ;
+  Standard_EXPORT     Standard_Integer Add(const BRepMesh_Vertex& K,const BRepMesh_ListOfInteger& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const BRepMesh_Vertex& K,const MeshDS_ListOfInteger& T) ;
+  Standard_EXPORT     void Substitute(const Standard_Integer I,const BRepMesh_Vertex& K,const BRepMesh_ListOfInteger& T) ;
   
   Standard_EXPORT     void RemoveLast() ;
   
@@ -80,23 +80,23 @@ public:
   
   Standard_EXPORT    const BRepMesh_Vertex& FindKey(const Standard_Integer I) const;
   
-  Standard_EXPORT    const MeshDS_ListOfInteger& FindFromIndex(const Standard_Integer I) const;
-   const MeshDS_ListOfInteger& operator ()(const Standard_Integer I) const
+  Standard_EXPORT    const BRepMesh_ListOfInteger& FindFromIndex(const Standard_Integer I) const;
+   const BRepMesh_ListOfInteger& operator ()(const Standard_Integer I) const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     MeshDS_ListOfInteger& ChangeFromIndex(const Standard_Integer I) ;
-    MeshDS_ListOfInteger& operator ()(const Standard_Integer I) 
+  Standard_EXPORT     BRepMesh_ListOfInteger& ChangeFromIndex(const Standard_Integer I) ;
+    BRepMesh_ListOfInteger& operator ()(const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
   Standard_EXPORT     Standard_Integer FindIndex(const BRepMesh_Vertex& K) const;
   
-  Standard_EXPORT    const MeshDS_ListOfInteger& FindFromKey(const BRepMesh_Vertex& K) const;
+  Standard_EXPORT    const BRepMesh_ListOfInteger& FindFromKey(const BRepMesh_Vertex& K) const;
   
-  Standard_EXPORT     MeshDS_ListOfInteger& ChangeFromKey(const BRepMesh_Vertex& K) ;
+  Standard_EXPORT     BRepMesh_ListOfInteger& ChangeFromKey(const BRepMesh_Vertex& K) ;
 
 
 

@@ -127,6 +127,9 @@
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
+#ifndef _Handle_AIS_LocalContext_HeaderFile
+#include <Handle_AIS_LocalContext.hxx>
+#endif
 class SelectMgr_SelectionManager;
 class PrsMgr_PresentationManager3d;
 class V3d_Viewer;
@@ -1487,6 +1490,13 @@ public:
   Standard_EXPORT     Standard_CString DomainOfMainViewer() const;
   //! Returns the domain name of the Collector viewer. <br>
   Standard_EXPORT     Standard_CString DomainOfCollector() const;
+  
+//! This method is only intended for advanced operation, particularly with <br>
+//! the aim to improve performance when many objects have to be selected <br>
+//! together. Otherwise, you should use other (non-internal) methods of <br>
+//! class AIS_InteractiveContext without trying to obtain an instance of <br>
+//! AIS_LocalContext. <br>
+        Handle_AIS_LocalContext LocalContext() const;
   
        const Handle_SelectMgr_SelectionManager& SelectionManager() const;
   

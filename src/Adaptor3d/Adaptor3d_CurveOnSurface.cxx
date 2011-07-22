@@ -127,13 +127,14 @@ static void Hunt(const TColStd_Array1OfReal& Arr,
   //        when co-ordinate component definitly equals a knot only.
   Standard_Real Tol=Precision::PConfusion()/10;
   Standard_Integer i=1; 
-  while((i<=Arr.Upper())&&(Abs(Coord-Arr(i))>Tol)){
+  while((i <= Arr.Upper()) && (Abs(Coord - Arr(i)) > Tol)){
     i++;}
  
-  if(Abs(Coord-Arr(i))<Tol)
+  if(Abs(Coord - Arr(i)) < Tol)
     Iloc = i;
   else
-    if(Abs(Coord-Arr(i))>Tol) Standard_NotImplemented::Raise("Adaptor3d_CurveOnSurface:Hunt");
+    if(Abs(Coord - Arr(i)) > Tol) 
+      Standard_NotImplemented::Raise("Adaptor3d_CurveOnSurface:Hunt");
 }
 
 //=======================================================================
@@ -438,7 +439,6 @@ static void Locate2Coord(const Standard_Integer Index,
 {
   Standard_Real Tol=Precision::PConfusion()/10;
   Standard_Real Comp1=0,DComp1=0;
-  Standard_Boolean DIsNull = Standard_False;
   if(Index==1)   {   Comp1=UV.X();
 		     DComp1=DUV.X();} 
   else
@@ -465,10 +465,9 @@ static void Locate2Coord(const Standard_Integer Index,
 		 if(Index==2) { LeftBot.SetY(I1);
 				RightTop.SetY(I2);}
 	       }
-	   DIsNull=Standard_False;
 	 }
     else 
-      if(Abs(DComp1)<=Tol) {  DIsNull = Standard_True;
+      if(Abs(DComp1)<=Tol) {
 			      if(Index==1) { LeftBot.SetX(I1) ;
 					     RightTop.SetX(I2);}
 			      if(Index==2) { LeftBot.SetY(I1) ;
@@ -758,7 +757,7 @@ Standard_Integer Adaptor3d_CurveOnSurface::NbIntervals
   // value into myIntervals which will be equal first value.
   myIntervals = new TColStd_HArray1OfReal(1,nbpoint);
   i=0;
-  for (It.Initialize(tmpIntervals->Set());It.More();It.Next(),i)
+  for (It.Initialize(tmpIntervals->Set());It.More();It.Next())
   { i++;
     myIntervals->SetValue(i,It.Value());
   } 

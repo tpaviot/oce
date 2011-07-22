@@ -373,7 +373,7 @@ void BOPTools_Checker::PerformEE()
   myIsDone=Standard_False;
 
   Standard_Boolean justaddinterference;
-  Standard_Integer n1, n2, anIndexIn=0, nE1, nE2;
+  Standard_Integer n1, n2, nE1, nE2;
   Standard_Integer aTmp, aWhat, aWith;
   Standard_Integer i, aNbCPrts;
   //
@@ -459,7 +459,6 @@ void BOPTools_Checker::PerformEE()
 	  
 	aEE.Perform();
 	//
-	anIndexIn=0;
 	//
 	if (aEE.IsDone()) {
 	  //
@@ -483,7 +482,6 @@ void BOPTools_Checker::PerformEE()
 	  for (i=1; i<=aNbCPrts; i++) {
 	    const IntTools_CommonPrt& aCPart=aCPrts(i);
 	    //
-	    anIndexIn=0;
 	    //
 	    TopAbs_ShapeEnum aType=aCPart.Type();
 	    switch (aType) {

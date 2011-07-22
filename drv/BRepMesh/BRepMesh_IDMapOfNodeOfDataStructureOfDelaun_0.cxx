@@ -27,8 +27,8 @@
 
 #define TheKey BRepMesh_Vertex
 #define TheKey_hxx <BRepMesh_Vertex.hxx>
-#define TheItem MeshDS_ListOfInteger
-#define TheItem_hxx <MeshDS_ListOfInteger.hxx>
+#define TheItem BRepMesh_ListOfInteger
+#define TheItem_hxx <BRepMesh_ListOfInteger.hxx>
 #define Hasher BRepMesh_NodeHasherOfDataStructureOfDelaun
 #define Hasher_hxx <BRepMesh_NodeHasherOfDataStructureOfDelaun.hxx>
 #define TCollection_IndexedDataMapNode BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun

@@ -57,6 +57,8 @@ pubinclude NCollection_SparseArray.hxx
 pubinclude NCollection_SparseArrayBase.hxx
 pubinclude NCollection_CellFilter.hxx
 pubinclude NCollection_Handle.hxx
+pubinclude NCollection_Comparator.hxx
+pubinclude NCollection_QuickSort.hxx
 dbadmfile NCollection_obj_inc.In
 dbadmfile NCollection_obj_inc.Out
 dbadmfile NCollection_obj_inc.Dep

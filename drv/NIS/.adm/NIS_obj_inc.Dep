@@ -1,3 +1,4 @@
++ NIS:pubinclude:NIS_Allocator.hxx NIS:source:NIS_Allocator.hxx
 + NIS:pubinclude:NIS_Drawer.hxx NIS:source:NIS_Drawer.hxx
 + NIS:pubinclude:NIS_DrawList.hxx NIS:source:NIS_DrawList.hxx
 + NIS:pubinclude:NIS_InteractiveContext.hxx NIS:source:NIS_InteractiveContext.hxx

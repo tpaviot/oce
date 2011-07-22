@@ -7,6 +7,9 @@
 #ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
 #endif
+#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
+#include <GeomFill_SequenceOfTrsf.hxx>
+#endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif

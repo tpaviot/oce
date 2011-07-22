@@ -1,6 +1,9 @@
 #ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
 #endif
+#ifndef _Bnd_HArray1OfSphere_HeaderFile
+#include <Bnd_HArray1OfSphere.hxx>
+#endif
 #ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
 #endif
@@ -18,6 +21,9 @@
 #endif
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
+#endif
+#ifndef _math_Vector_HeaderFile
+#include <math_Vector.hxx>
 #endif
 #ifndef _Extrema_GenExtPS_HeaderFile
 #include <Extrema_GenExtPS.hxx>

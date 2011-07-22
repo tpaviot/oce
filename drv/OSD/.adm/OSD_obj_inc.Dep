@@ -8,6 +8,7 @@
 + OSD:pubinclude:OSD_NListOfSystemFont.hxx OSD:source:OSD_NListOfSystemFont.hxx
 + OSD:pubinclude:OSD_PerfMeter.h OSD:source:OSD_PerfMeter.h
 + OSD:pubinclude:OSD_PerfMeter.hxx OSD:source:OSD_PerfMeter.hxx
++ OSD:pubinclude:OSD_MAllocHook.hxx OSD:source:OSD_MAllocHook.hxx
 + OSD:dbadmfile:OSD_obj_inc.In OSD:admfile:OSD_src.Out
 + * OSD:admfile:OSD_xcpp_src.Out
 + OSD:dbadmfile:OSD_obj_inc.Out OSD:admfile:OSD_src.Out

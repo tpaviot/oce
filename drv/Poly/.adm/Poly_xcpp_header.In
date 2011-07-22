@@ -14,4 +14,4 @@
 +V Poly:msentity:Poly_CoherentTriPtr .
 +V Poly:msentity:Poly_ListOfTriangulation .
 +V Poly:msentity:Poly_MakeLoops .
-- Poly:admfile:Poly_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Poly/Poly_xcpp_fill.Out
+- Poly:admfile:Poly_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Poly/Poly_xcpp_fill.Out

@@ -48,6 +48,7 @@ privinclude Select3D_SensitiveGroup.jxx
 privinclude Select3D_SensitiveGroup.ixx
 pubinclude Select3D_SensitiveEntitySequence.hxx
 derivated Select3D_SensitiveEntitySequence_0.cxx
+pubinclude Handle_Select3D_Projector.hxx
 pubinclude Select3D_Projector.hxx
 privinclude Select3D_Projector.jxx
 privinclude Select3D_Projector.ixx

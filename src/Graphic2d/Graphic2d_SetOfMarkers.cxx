@@ -292,6 +292,7 @@ Standard_Boolean Graphic2d_SetOfMarkers::Pick( const Standard_ShortReal X1,
 	return Standard_True;
       break;
     }
+	default: /* Do nothing */ break;
   }
 #endif
   return Standard_False;
@@ -332,6 +333,7 @@ Standard_Boolean Graphic2d_SetOfMarkers
 	return Standard_True;
       break;
     }
+	default: /* Do nothing */ break;
   }
 #endif
   return Standard_False;

@@ -1,6 +1,0 @@
-#ifndef _gp_XY_HeaderFile
-#include <gp_XY.hxx>
-#endif
-#ifndef _MeshAlgo_Vertex_HeaderFile
-#include <MeshAlgo_Vertex.hxx>
-#endif

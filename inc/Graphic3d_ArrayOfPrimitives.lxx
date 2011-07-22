@@ -177,13 +177,9 @@ inline void Graphic3d_ArrayOfPrimitives::VertexColor(const Standard_Integer anIn
   Standard_Integer aColor;
   VertexColor(anIndex, aColor);
   if( myPrimitiveArray->vcolours ) { 
-    Standard_Integer r,g,b,a;  
+    Standard_Integer r,g,b;  
     Standard_Integer aColor;
     VertexColor(anIndex, aColor);
-    Standard_Real A;
-    a = aColor & 0xff000000;
-    a >>= 24;
-    A = ((Standard_Real) a) / 255.;
 
     b = aColor & 0x00ff0000;
     b >>= 16;

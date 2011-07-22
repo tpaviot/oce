@@ -25,19 +25,33 @@
 #ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
 #include <Handle_TColgp_HArray2OfPnt.hxx>
 #endif
+#ifndef _Extrema_HUBTreeOfSphere_HeaderFile
+#include <Extrema_HUBTreeOfSphere.hxx>
+#endif
+#ifndef _Handle_Bnd_HArray1OfSphere_HeaderFile
+#include <Handle_Bnd_HArray1OfSphere.hxx>
+#endif
 #ifndef _Extrema_FuncExtPS_HeaderFile
 #include <Extrema_FuncExtPS.hxx>
 #endif
 #ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
 #endif
+#ifndef _Extrema_ExtFlag_HeaderFile
+#include <Extrema_ExtFlag.hxx>
+#endif
+#ifndef _Extrema_ExtAlgo_HeaderFile
+#include <Extrema_ExtAlgo.hxx>
+#endif
 class TColgp_HArray2OfPnt;
+class Bnd_HArray1OfSphere;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
 class gp_Pnt;
 class Adaptor3d_Surface;
 class Extrema_POnSurf;
+class math_Vector;
 
 
 //! It calculates all the extremum distances <br>
@@ -73,7 +87,7 @@ public:
 //!          TolU et TolV are used to determine the conditions <br>
 //!          to stop the iterations; at the iteration number n: <br>
 //!           (Un - Un-1) < TolU and (Vn - Vn-1) < TolV . <br>
-  Standard_EXPORT   Extrema_GenExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Integer NbU,const Standard_Integer NbV,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_GenExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Integer NbU,const Standard_Integer NbV,const Standard_Real TolU,const Standard_Real TolV,const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX,const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
   //! It calculates all the distances. <br>
 //!          The function F(u,v)=distance(P,S(u,v)) has an <br>
 //!          extremum when gradient(F)=0. The algorithm searchs <br>
@@ -86,7 +100,7 @@ public:
 //!          TolU et TolV are used to determine the conditions <br>
 //!          to stop the iterations; at the iteration number n: <br>
 //!           (Un - Un-1) < TolU and (Vn - Vn-1) < TolV . <br>
-  Standard_EXPORT   Extrema_GenExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Integer NbU,const Standard_Integer NbV,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_GenExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Integer NbU,const Standard_Integer NbV,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real Vmin,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV,const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX,const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
   
   Standard_EXPORT     void Initialize(const Adaptor3d_Surface& S,const Standard_Integer NbU,const Standard_Integer NbV,const Standard_Real TolU,const Standard_Real TolV) ;
   
@@ -95,6 +109,10 @@ public:
 //!          An exception is raised if the fields have not <br>
 //!          been initialized. <br>
   Standard_EXPORT     void Perform(const gp_Pnt& P) ;
+  
+  Standard_EXPORT     void SetFlag(const Extrema_ExtFlag F) ;
+  
+  Standard_EXPORT     void SetAlgo(const Extrema_ExtAlgo A) ;
   //! Returns True if the distances are found. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   //! Returns the number of extremum distances. <br>
@@ -118,6 +136,10 @@ private:
 
   
   Standard_EXPORT     Adaptor3d_SurfacePtr Bidon() const;
+  
+  Standard_EXPORT     void BuildTree() ;
+  
+  Standard_EXPORT     void FindSolution(const gp_Pnt& P,const math_Vector& UV,const Standard_Real PasU,const Standard_Real PasV,const Extrema_ExtFlag f) ;
 
 
 Standard_Boolean myDone;
@@ -128,11 +150,15 @@ Standard_Real myvmin;
 Standard_Real myvsup;
 Standard_Integer myusample;
 Standard_Integer myvsample;
-Handle_TColgp_HArray2OfPnt mypoints;
 Standard_Real mytolu;
 Standard_Real mytolv;
+Handle_TColgp_HArray2OfPnt mypoints;
+Extrema_HUBTreeOfSphere mySphereUBTree;
+Handle_Bnd_HArray1OfSphere mySphereArray;
 Extrema_FuncExtPS myF;
 Adaptor3d_SurfacePtr myS;
+Extrema_ExtFlag myFlag;
+Extrema_ExtAlgo myAlgo;
 
 
 };

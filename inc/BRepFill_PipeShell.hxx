@@ -74,6 +74,7 @@ class TopoDS_Shape;
 class TopoDS_Vertex;
 class TopTools_ListOfShape;
 class BRepFill_Section;
+class gp_Trsf;
 class BRepFill_Sweep;
 
 
@@ -175,7 +176,7 @@ private:
   
   Standard_EXPORT     void Prepare() ;
   
-  Standard_EXPORT     void Place(const BRepFill_Section& Sec,TopoDS_Wire& W,Standard_Real& param) ;
+  Standard_EXPORT     void Place(const BRepFill_Section& Sec,TopoDS_Wire& W,gp_Trsf& Trsf,Standard_Real& param) ;
   
   Standard_EXPORT     void ResetLoc() ;
   

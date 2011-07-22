@@ -10,6 +10,9 @@
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif
+#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
+#include <GeomFill_SequenceOfTrsf.hxx>
+#endif
 #ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
 #endif

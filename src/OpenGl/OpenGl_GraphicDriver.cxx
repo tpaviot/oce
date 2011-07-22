@@ -63,10 +63,10 @@ Standard_ShortReal OpenGl_GraphicDriver::DefaultTextHeight() const
 
 GLboolean OpenGl_QueryExtensionGLX (const char *extName)
 {
-  return QueryExtensionGLX(const_cast<char *>(extName));
+  return QueryExtensionGLX(extName);
 }
 
 GLboolean OpenGl_QueryExtension    (const char *extName)
 {
-  return QueryExtension(const_cast<char *>(extName));
+  return QueryExtension(extName);
 }

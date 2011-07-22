@@ -117,15 +117,15 @@ XW_EXT_IMAGEDATA* Xw_load_bmp_image(void *awindow, void *aimageinfo, char *filen
 
   /* Detect format using the size field (.biSize or .bcSize) */
   isOS2Format = _TestSwapDWORD (bmfh.dwHeaderSize) == sizeof (bmch) + 4;
-  if (!isOS2Format && sizeof (bmih) != read (fimage, (char *)&bmih, sizeof (bmih))
-    || isOS2Format && sizeof (bmch) != read (fimage, (char *)&bmch, sizeof (bmch)))
+  if ((!isOS2Format && sizeof (bmih) != read (fimage, (char *)&bmih, sizeof (bmih)))
+    || (isOS2Format && sizeof (bmch) != read (fimage, (char *)&bmch, sizeof (bmch))))
     goto _ExitReadError;
 
 
   nBitCount = _TestSwapWORD (isOS2Format? bmch.bcBitCount: bmih.biBitCount);
-  if (nBitCount != 1 && nBitCount != 4 && nBitCount != 8
-      && nBitCount != 16 && nBitCount != 24 && nBitCount != 32
-      || isOS2Format && (nBitCount == 16 || nBitCount == 32)) {
+  if ((nBitCount != 1 && nBitCount != 4 && nBitCount != 8
+      && nBitCount != 16 && nBitCount != 24 && nBitCount != 32)
+      || (isOS2Format && (nBitCount == 16 || nBitCount == 32))) {
 #ifdef DEB
     fprintf (stderr, "\r\nXw_load_bmp_image: "
 	   "Error: Wrong count of bits per pixel (%d) specified!", nBitCount);
@@ -309,8 +309,8 @@ XW_EXT_IMAGEDATA* Xw_load_bmp_image(void *awindow, void *aimageinfo, char *filen
 
 
 	 /* each run must aligned on a word boundary */
-	 if (iCompression == BI_RLE8 && (bCode & 1)
-	     || iCompression == BI_RLE4 && (bCode & 3))
+	 if ((iCompression == BI_RLE8 && (bCode & 1))
+	     || (iCompression == BI_RLE4 && (bCode & 3)))
 	   ptrByte ++;
        }
      }

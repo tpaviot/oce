@@ -41,6 +41,10 @@
 + OpenGl:pubinclude:OpenGl_TextRender.hxx OpenGl:source:OpenGl_TextRender.hxx
 + OpenGl:pubinclude:OpenGl_graduatedtrihedron.hxx OpenGl:source:OpenGl_graduatedtrihedron.hxx
 + OpenGl:pubinclude:OpenGl_FrameBuffer.hxx OpenGl:source:OpenGl_FrameBuffer.hxx
++ OpenGl:pubinclude:OpenGl_Resource.hxx OpenGl:source:OpenGl_Resource.hxx
++ OpenGl:pubinclude:OpenGl_ResourceCleaner.hxx OpenGl:source:OpenGl_ResourceCleaner.hxx
++ OpenGl:pubinclude:OpenGl_ResourceVBO.hxx OpenGl:source:OpenGl_ResourceVBO.hxx
++ OpenGl:pubinclude:OpenGl_ResourceTexture.hxx OpenGl:source:OpenGl_ResourceTexture.hxx
 + OpenGl:dbadmfile:OpenGl_obj_inc.In OpenGl:admfile:OpenGl_src.Out
 + * OpenGl:admfile:OpenGl_xcpp_src.Out
 + OpenGl:dbadmfile:OpenGl_obj_inc.Out OpenGl:admfile:OpenGl_src.Out

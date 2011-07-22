@@ -27,8 +27,8 @@
 
 #define TheKey BRepMesh_Edge
 #define TheKey_hxx <BRepMesh_Edge.hxx>
-#define TheItem MeshDS_PairOfIndex
-#define TheItem_hxx <MeshDS_PairOfIndex.hxx>
+#define TheItem BRepMesh_PairOfIndex
+#define TheItem_hxx <BRepMesh_PairOfIndex.hxx>
 #define Hasher BRepMesh_LinkHasherOfDataStructureOfDelaun
 #define Hasher_hxx <BRepMesh_LinkHasherOfDataStructureOfDelaun.hxx>
 #define TCollection_IndexedDataMapNode BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun

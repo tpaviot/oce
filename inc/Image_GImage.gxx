@@ -300,10 +300,9 @@ void Image_GImage::Rotate180()
 void Image_GImage::FlipHorizontal()
 
 { anyPixel P ;
-  Standard_Integer x, y, HalfX, HalfY ;
+  Standard_Integer x, y, HalfY ;
   Standard_Integer UpX = UpperX() ;
 
-  HalfX = Width()  / 2 ;
   HalfY = Height() / 2 ;
 
 	for ( x = LowerX() ; x <= UpX ; x++ ){
@@ -318,11 +317,10 @@ void Image_GImage::FlipHorizontal()
 void Image_GImage::FlipVertical()
 
 { anyPixel P ;
-  Standard_Integer x, y, HalfX, HalfY ;
+  Standard_Integer x, y, HalfX ;
   Standard_Integer UpY = UpperY() ;
 
   HalfX = Width()  / 2 ;
-  HalfY = Height() / 2 ;
 
 	for ( y = LowerY() ; y <= UpY ; y++ ){
           for ( x = 0 ; x < HalfX ; x++ ) {

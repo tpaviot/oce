@@ -241,8 +241,7 @@ GeomFill_Sweep::GeomFill_Sweep(const Handle(GeomFill_LocationLaw)& Location,
 					   const Standard_Integer Segmax) 
 {
   Standard_Boolean Ok = Standard_False;
-  Standard_Integer nbsegmax = Segmax, nbspan = myLoc->NbIntervals(GeomAbs_C1);
-  if (Segmax < nbspan)  nbsegmax = nbspan;
+  Standard_Integer nbspan = myLoc->NbIntervals(GeomAbs_C1);
 
   Handle(GeomFill_SweepFunction) Func 
     = new (GeomFill_SweepFunction) (mySec, myLoc, First, SFirst,

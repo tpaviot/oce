@@ -136,7 +136,7 @@ void AppParCurves_Variational::Adjusting(
     vseuil = Sqrt(vocri[1]) + (erold - myMaxError) * 4;
     
 //    if(CNew->NbElements() == TheCurve->NbElements())
-      lrejet = myMaxError > WQuality && myMaxError > erold * 1.01 
+      lrejet = (myMaxError > WQuality && myMaxError > erold * 1.01)
 	|| Sqrt(myCriterium[1]) > vseuil * 1.05;
 //    else
 //      lrejet = myMaxError > WQuality && myMaxError > erold * 1.05 
@@ -160,7 +160,7 @@ void AppParCurves_Variational::Adjusting(
 
 /*     (7) Test de convergence */
 
-    if (iter >= mxiter && myMaxSegment == CNew->NbElements() || myMaxError < WQuality) {
+    if ((iter >= mxiter && myMaxSegment == CNew->NbElements()) || myMaxError < WQuality) {
       loptim = Standard_False;
     }
     

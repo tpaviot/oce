@@ -1,5 +1,5 @@
-+ BRepApprox:source:BRepApprox_ApproxLineGen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/BRepApprox/BRepApprox_ApproxLineGen.gxx
-+ BRepApprox:source:BRepApprox_SurfaceToolGen.gxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/BRepApprox/BRepApprox_SurfaceToolGen.gxx
-+ BRepApprox:source:BRepApprox_SurfaceToolGen.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/BRepApprox/BRepApprox_SurfaceToolGen.lxx
-- BRepApprox:admfile:BRepApprox_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/BRepApprox/BRepApprox_src.Out
-- BRepApprox:admfile:BRepApprox_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/BRepApprox/BRepApprox_xcpp_src.Out
++ BRepApprox:source:BRepApprox_ApproxLineGen.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepApprox/BRepApprox_ApproxLineGen.gxx
++ BRepApprox:source:BRepApprox_SurfaceToolGen.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepApprox/BRepApprox_SurfaceToolGen.gxx
++ BRepApprox:source:BRepApprox_SurfaceToolGen.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BRepApprox/BRepApprox_SurfaceToolGen.lxx
+- BRepApprox:admfile:BRepApprox_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepApprox/BRepApprox_src.Out
+- BRepApprox:admfile:BRepApprox_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepApprox/BRepApprox_xcpp_src.Out

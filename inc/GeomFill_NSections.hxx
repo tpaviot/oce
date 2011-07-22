@@ -22,6 +22,9 @@
 #ifndef _TColGeom_SequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceOfCurve.hxx>
 #endif
+#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
+#include <GeomFill_SequenceOfTrsf.hxx>
+#endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif
@@ -47,6 +50,7 @@ class Geom_BSplineSurface;
 class Standard_OutOfRange;
 class TColGeom_SequenceOfCurve;
 class TColStd_SequenceOfReal;
+class GeomFill_SequenceOfTrsf;
 class TColgp_Array1OfPnt;
 class TColStd_Array1OfReal;
 class TColgp_Array1OfVec;
@@ -76,7 +80,7 @@ public:
 //!          VF and VL are the parametric bounds of the path <br>
 //!          UF and UL are the parametric bounds of the NSections <br>
 //!          Surf is a reference surface used by BRepFill_NSections <br>
-  Standard_EXPORT   GeomFill_NSections(const TColGeom_SequenceOfCurve& NC,const TColStd_SequenceOfReal& NP,const Standard_Real UF,const Standard_Real UL,const Standard_Real VF,const Standard_Real VL,const Handle(Geom_BSplineSurface)& Surf);
+  Standard_EXPORT   GeomFill_NSections(const TColGeom_SequenceOfCurve& NC,const GeomFill_SequenceOfTrsf& Trsfs,const TColStd_SequenceOfReal& NP,const Standard_Real UF,const Standard_Real UL,const Standard_Real VF,const Standard_Real VL,const Handle(Geom_BSplineSurface)& Surf);
   //! compute the section for v = param <br>
   Standard_EXPORT   virtual  Standard_Boolean D0(const Standard_Real Param,TColgp_Array1OfPnt& Poles,TColStd_Array1OfReal& Weigths) ;
   //! compute the first  derivative in v direction  of the <br>
@@ -184,6 +188,7 @@ Standard_Real ULast;
 Standard_Real VFirst;
 Standard_Real VLast;
 TColGeom_SequenceOfCurve mySections;
+GeomFill_SequenceOfTrsf myTrsfs;
 TColStd_SequenceOfReal myParams;
 Handle_Geom_BSplineSurface mySurface;
 Handle_Geom_BSplineSurface myRefSurf;

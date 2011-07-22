@@ -35,7 +35,7 @@ is
 
 fields
 
-    myReadDecimalPoint: Integer from Standard;
-    myLocalDecimalPoint: Integer from Standard;
+    myReadDecimalPoint: Character from Standard;
+    myLocalDecimalPoint: Character from Standard;
 
 end Real2String;

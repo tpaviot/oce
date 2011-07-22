@@ -808,7 +808,7 @@ static Standard_Boolean TestWLineIsARLine(const IntPatch_SequenceOfLine& slinref
       Handle(IntPatch_RLine)& rlin = *((Handle(IntPatch_RLine) *)&(slinref(i)));
       for (Standard_Integer is=0; is<2; is++) {
 	Standard_Boolean onFirst = is==0;
-	if(onFirst && rlin->IsArcOnS1() || !onFirst && rlin->IsArcOnS2()) {
+	if((onFirst && rlin->IsArcOnS1()) || (!onFirst && rlin->IsArcOnS2())) {
 	  Handle(Adaptor2d_HCurve2d) arc;
 	  Standard_Real u,v,u1,v1;
 	  if (onFirst) {
@@ -959,8 +959,8 @@ static void TestWLineToRLine(const IntPatch_SequenceOfLine& slinref,
   Standard_Integer is;
   for (is=0; is<2; is++) {
     Standard_Boolean onFirst = is==0;
-    if( onFirst && WLine->HasArcOnS1() ||
-       !onFirst && WLine->HasArcOnS2()) {
+    if( (onFirst && WLine->HasArcOnS1()) ||
+       (!onFirst && WLine->HasArcOnS2())) {
       PiParOnS piParOnS;
       PQuery pIsOnDomS;
       PArcOnS pArcOnS;

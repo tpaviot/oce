@@ -7,4 +7,4 @@
 +V Select2D:msentity:Select2D_SensitiveBox .
 +V Select2D:msentity:Select2D_Projector .
 +V Select2D:msentity:Select2D_TypeOfSelection .
-- Select2D:admfile:Select2D_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/Select2D/Select2D_xcpp_fill.Out
+- Select2D:admfile:Select2D_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Select2D/Select2D_xcpp_fill.Out

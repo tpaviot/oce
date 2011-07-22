@@ -48,6 +48,7 @@
 + Select3D:privinclude:Select3D_SensitiveGroup.ixx Select3D:msentity:Select3D_SensitiveGroup
 + Select3D:pubinclude:Select3D_SensitiveEntitySequence.hxx Select3D:msentity:Select3D_SensitiveEntitySequence
 + Select3D:derivated:Select3D_SensitiveEntitySequence_0.cxx Select3D:msentity:Select3D_SensitiveEntitySequence
++ Select3D:pubinclude:Handle_Select3D_Projector.hxx Select3D:msentity:Select3D_Projector
 + Select3D:pubinclude:Select3D_Projector.hxx Select3D:msentity:Select3D_Projector
 + Select3D:privinclude:Select3D_Projector.jxx Select3D:msentity:Select3D_Projector
 + Select3D:privinclude:Select3D_Projector.ixx Select3D:msentity:Select3D_Projector

@@ -52,7 +52,8 @@
 //=======================================================================
 BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh() 
 : myRelative(Standard_False),
-  myModified(Standard_False)
+  myModified(Standard_False),
+  myStatus(0)
 {
   mymapedge.Clear();
   myancestors.Clear();
@@ -69,7 +70,8 @@ BRepMesh_IncrementalMesh(const TopoDS_Shape& S,
 			 const Standard_Boolean Rel,
 			 const Standard_Real Ang) :
 			 myRelative(Rel),
-			 myModified(Standard_False)
+			 myModified(Standard_False),
+                         myStatus(0)
 {
   mymapedge.Clear();
   myancestors.Clear();
@@ -140,26 +142,31 @@ void BRepMesh_IncrementalMesh::Perform()
   Init(); 
   //
   BRepBndLib::Add(myShape, aBox);
-  if (aBox.IsVoid() == Standard_False)
-  {
-    myBox = aBox;
+  myBox = aBox;
   //
-    if (!myMesh.IsNull()) {
-      myMesh.Nullify();
-    }
-  //
-    myMesh = new BRepMesh_FastDiscret(myDeflection,
-                                      myAngle,
-                                      aBox,
-                                      Standard_True,
-                                      Standard_True,
-                                      myRelative,
-                                      Standard_True);
-  //
-    Update(myShape);
+  if (!myMesh.IsNull()) {
+    myMesh.Nullify();
   }
+  //
+  myMesh = new BRepMesh_FastDiscret(myDeflection,
+				    myAngle,
+				    aBox,
+				    Standard_True,
+				    Standard_True,
+				    myRelative,
+				    Standard_True);
+  //
+  Update(myShape);
 }
 
+//=======================================================================
+//function : GetStatus
+//purpose  : 
+//=======================================================================
+Standard_Integer BRepMesh_IncrementalMesh::GetStatusFlags() const
+{
+  return myStatus;
+}
 
 //=======================================================================
 //function : Update(shape)
@@ -434,6 +441,7 @@ void  BRepMesh_IncrementalMesh::Update(const TopoDS_Face& F)
       B.UpdateFace(F, TNull);
     }
     myMesh->Add(F);
+    myStatus |= (Standard_Integer)(myMesh->CurrentFaceStatus());
     if (myMesh->CurrentFaceStatus() == BRepMesh_ReMesh) {
 #ifdef DEB_MESH
       cout << " face remaillee + finement que prevu."<< endl;

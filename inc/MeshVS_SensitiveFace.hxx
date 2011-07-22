@@ -31,6 +31,9 @@
 #ifndef _Select3D_TypeOfSensitivity_HeaderFile
 #include <Select3D_TypeOfSensitivity.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -52,7 +55,7 @@ public:
   
   Standard_EXPORT   MeshVS_SensitiveFace(const Handle(SelectBasics_EntityOwner)& theOwner,const TColgp_Array1OfPnt& thePoints,const Select3D_TypeOfSensitivity theSensType = Select3D_TOS_INTERIOR);
   
-  Standard_EXPORT   virtual  void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
   

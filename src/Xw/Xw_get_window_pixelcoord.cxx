@@ -30,9 +30,7 @@ float *ux,*uy ;
 {
 XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow;
 //XW_EXT_DISPLAY *pdisplay = pwindow->connexion ;
-float size ;
 
-	size = ( _WIDTH >= _HEIGHT) ? _WIDTH : _HEIGHT ;
 	*ux = UXPOINT(px) ;
 	*uy = UYPOINT(py) ;
 	

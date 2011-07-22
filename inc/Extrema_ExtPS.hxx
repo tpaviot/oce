@@ -40,6 +40,12 @@
 #ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
 #endif
+#ifndef _Extrema_ExtFlag_HeaderFile
+#include <Extrema_ExtFlag.hxx>
+#endif
+#ifndef _Extrema_ExtAlgo_HeaderFile
+#include <Extrema_ExtAlgo.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -80,7 +86,7 @@ public:
 //!          TolU et TolV are used to determine the conditions <br>
 //!          to stop the iterations; at the iteration number n: <br>
 //!           (Un - Un-1) < TolU and (Vn - Vn-1) < TolV . <br>
-  Standard_EXPORT   Extrema_ExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Real TolU,const Standard_Real TolV,const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX,const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
   //! It calculates all the distances. <br>
 //!          NbU and NbV are used to locate the close points <br>
 //!          to find the zeros. They must be great enough <br>
@@ -89,7 +95,7 @@ public:
 //!          TolU et TolV are used to determine the conditions <br>
 //!          to stop the iterations; at the iteration number n: <br>
 //!           (Un - Un-1) < TolU and (Vn - Vn-1) < TolV . <br>
-  Standard_EXPORT   Extrema_ExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT   Extrema_ExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV,const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX,const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
   //! Initializes the fields of the algorithm. <br>
   Standard_EXPORT     void Initialize(const Adaptor3d_Surface& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolU,const Standard_Real TolV) ;
   //! Computes the distances. <br>
@@ -114,6 +120,10 @@ public:
 //!          dUlVl is a square distance between <P> and the point <br>
 //!          of parameter LastUParameter and LastVParameter <PUlVl>. <br>
   Standard_EXPORT     void TrimmedSquareDistances(Standard_Real& dUfVf,Standard_Real& dUfVl,Standard_Real& dUlVf,Standard_Real& dUlVl,gp_Pnt& PUfVf,gp_Pnt& PUfVl,gp_Pnt& PUlVf,gp_Pnt& PUlVl) const;
+  
+  Standard_EXPORT     void SetFlag(const Extrema_ExtFlag F) ;
+  
+  Standard_EXPORT     void SetAlgo(const Extrema_ExtAlgo A) ;
 
 
 

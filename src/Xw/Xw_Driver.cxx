@@ -538,7 +538,6 @@ float size,slant ;
 void Xw_Driver::InitializeMarkMap (const Handle(Aspect_MarkMap)& Markmap) {
 Aspect_MarkMapEntry entry ;
 Aspect_MarkerStyle style ;
-Aspect_TypeOfMarker type ;
 Standard_Integer index,iindex,oindex,minindex=IntegerLast(),maxindex= -minindex;
 int hindex,length ;
 
@@ -556,7 +555,6 @@ int hindex,length ;
             entry = Markmap->Entry(index) ;
             iindex = entry.Index() ;
             style = entry.Style() ;
-            type = style.Type() ;
             length = style.Length() ;
             const TColStd_Array1OfBoolean& spoint(style.SValues());
             const TShort_Array1OfShortReal& xpoint(style.XValues());

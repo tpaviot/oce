@@ -932,18 +932,18 @@ public:
 
 
 friend   //! Activates all of the views of a viewer attached <br>
-//!	    to a window. <br>
+//!            to a window. <br>
   Standard_EXPORT   void V3d_Viewer::SetViewOn() ;
 friend   //! Activates a particular view in the Viewer . <br>
-//!	    Must be call if the Window attached to the view <br>
-//!	    has been Deiconified . <br>
+//!            Must be call if the Window attached to the view <br>
+//!            has been Deiconified . <br>
   Standard_EXPORT   void V3d_Viewer::SetViewOn(const Handle(V3d_View)& View) ;
 friend   //! Deactivates all the views of a Viewer <br>
-//!	    attached to a window. <br>
+//!            attached to a window. <br>
   Standard_EXPORT   void V3d_Viewer::SetViewOff() ;
 friend   //! Deactivates a particular view in the Viewer. <br>
-//!	    Must be call if the Window attached to the view <br>
-//!	    has been Iconified . <br>
+//!            Must be call if the Window attached to the view <br>
+//!            has been Iconified . <br>
   Standard_EXPORT   void V3d_Viewer::SetViewOff(const Handle(V3d_View)& View) ;
 
 

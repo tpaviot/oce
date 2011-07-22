@@ -1341,8 +1341,8 @@ static Standard_Boolean NewPlane(const TopoDS_Face& F,
   if (!Modify) {
     Newpl = Plorig;
     NormalF = Newpl.Axis();
-    if (Newpl.Direct() && F.Orientation() == TopAbs_REVERSED ||
-	!Newpl.Direct() && F.Orientation() == TopAbs_FORWARD) {
+    if ((Newpl.Direct() && F.Orientation() == TopAbs_REVERSED) ||
+	(!Newpl.Direct() && F.Orientation() == TopAbs_FORWARD)) {
       NormalF.Reverse();
     }
     return Standard_True;
