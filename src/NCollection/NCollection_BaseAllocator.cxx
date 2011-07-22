@@ -12,6 +12,16 @@
 
 #include <stdio.h>
 
+#if defined(_MSC_VER)
+# define FMT_SZ_Q "I"
+#elif defined(__GNUC__)
+# define FMT_SZ_Q "z"
+#elif defined(_OCC64)
+# define FMT_SZ_Q "l"
+#else
+# define FMT_SZ_Q ""
+#endif
+
 IMPLEMENT_STANDARD_HANDLE(NCollection_BaseAllocator,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_BaseAllocator,MMgt_TShared)
 
@@ -259,20 +269,20 @@ void NCollection_BaseAllocator::PrintMemUsageStatistics()
     Standard_Integer nbLeft = aInfo.nbAlloc - aInfo.nbFree;
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.roundSize;
     Standard_Size aSizeLeft = nbLeft * aInfo.roundSize;
-    fprintf(ff, "%12lu %12d %12d %12lu %12lu\n", aInfo.roundSize,
+    fprintf(ff, "%12"FMT_SZ_Q"u %12d %12d %12"FMT_SZ_Q"u %12"FMT_SZ_Q"u\n", aInfo.roundSize,
             aInfo.nbAlloc, nbLeft, aSizeAlloc, aSizeLeft);
     aTotAlloc += aSizeAlloc;
     aTotLeft += aSizeLeft;
   }
-  fprintf(ff, "%12s %12s %12s %12lu %12lu\n", "Total:", "", "",
+  fprintf(ff, "%12s %12s %12s %12"FMT_SZ_Q"u %12"FMT_SZ_Q"u\n", "Total:", "", "",
           aTotAlloc, aTotLeft);
 
   if (!StorageIDSet().IsEmpty())
   {
-    fprintf(ff, "Alive allocation numbers of size=%lu\n", StandardCallBack_CatchSize());
+    fprintf(ff, "Alive allocation numbers of size=%"FMT_SZ_Q"u\n", StandardCallBack_CatchSize());
     NCollection_Map<Standard_Size>::Iterator itMap1(StorageIDSet());
     for (; itMap1.More(); itMap1.Next())
-      fprintf(ff, "%lu\n", itMap1.Key());
+      fprintf(ff, "%"FMT_SZ_Q"u\n", itMap1.Key());
   }
   fclose(ff);
 }

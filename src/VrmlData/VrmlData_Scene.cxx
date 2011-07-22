@@ -40,6 +40,16 @@
 
 #include <stdio.h>
 
+#if defined(_MSC_VER)
+# define FMT_SZ_Q "I"
+#elif defined(__GNUC__)
+# define FMT_SZ_Q "z"
+#elif defined(_OCC64)
+# define FMT_SZ_Q "l"
+#else
+# define FMT_SZ_Q ""
+#endif
+
 static void     dumpNode        (Standard_OStream&              theStream,
                                  const Handle(VrmlData_Node)&   theNode,
                                  const TCollection_AsciiString& theIndent);
@@ -1113,7 +1123,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedFaceSet (%lu vertices, %lu polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedFaceSet (%"FMT_SZ_Q"u vertices, %"FMT_SZ_Q"u polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_IndexedLineSet))) {
     const Handle(VrmlData_IndexedLineSet) aNode =
@@ -1122,7 +1132,7 @@ void dumpNode (Standard_OStream&                theStream,
     const Standard_Size nCoord = aNode->Coordinates()->Length();
     const Standard_Size nPoly  = aNode->Polygons (ppDummy);
     char buf[64];
-    sprintf (buf, "IndexedLineSet (%lu vertices, %lu polygons)", nCoord, nPoly);
+    sprintf (buf, "IndexedLineSet (%"FMT_SZ_Q"u vertices, %"FMT_SZ_Q"u polygons)", nCoord, nPoly);
     dumpNodeHeader (theStream, theIndent, buf, theNode->Name());
   } else if (theNode->IsKind(STANDARD_TYPE(VrmlData_Material))) {
 //     const Handle(VrmlData_Material) aMaterial = 
