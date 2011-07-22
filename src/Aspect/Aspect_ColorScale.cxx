@@ -526,6 +526,7 @@ void Aspect_ColorScale::DrawScale ( const Quantity_Color& theBgColor,
     case Aspect_TOCSP_RIGHT:
       x += colorWidth + spacer;
       break;
+    default: /* Do nothing */ break;
     }
     while (i2 - i1 >= filter || ( i2 == 0 && i1 == 0 )) {
       Standard_Integer pos1 = i1;

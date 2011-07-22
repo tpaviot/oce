@@ -578,6 +578,7 @@ void BRepExtrema_DistShapeShape::Dump(Standard_OStream& o) const
         ParOnFaceS1(i,r1,r2);
         o << "parameters on the first face :  u= " << r1 << " v=" <<  r2 << endl;
         break;
+      default: /* Do nothing */ break;
     }
     switch (SupportTypeShape2(i))
     {
@@ -591,6 +592,7 @@ void BRepExtrema_DistShapeShape::Dump(Standard_OStream& o) const
         ParOnFaceS2(i,r1,r2);
         o << "parameters on the second face : u= " << r1 << " v=" <<  r2 << endl;
         break;
+      default: /* Do nothing */ break;
     }
     o<<endl;
   } 
