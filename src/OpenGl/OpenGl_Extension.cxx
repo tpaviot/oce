@@ -143,7 +143,7 @@ extern GLboolean InitExtensionGLX(Display *display)
 }
 
 /*----------------------------------------------------------------------*/
-extern GLboolean QueryExtensionGLX(char *extName)
+extern GLboolean QueryExtensionGLX(const char *extName)
 {
   GLboolean result = GL_FALSE;
 
