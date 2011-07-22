@@ -614,6 +614,7 @@ static void FUN_NewFirstLast(const GeomAbs_CurveType& ga_ct,
 	  }
       break;
     }
+	default: /* Do nothing */ break;
   }
 }
 //================================================================================
