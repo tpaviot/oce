@@ -920,12 +920,10 @@ void RecadreMemePeriode(const IntSurf_Quadric aQuad1,
 			const Standard_Real anu1,
 			const Standard_Real anu2) 
 { 
-  Standard_Boolean bBothCylinders;
   GeomAbs_SurfaceType aType1, aType2;
   //
   aType1=aQuad1.TypeQuadric();
   aType2=aQuad2.TypeQuadric();
-  bBothCylinders=(aType1==GeomAbs_Cylinder && aType2==GeomAbs_Cylinder);
   //
   while(anu1-u1 > 5.0) {
     u1+=PI+PI;

@@ -37,6 +37,9 @@
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
@@ -91,7 +94,7 @@ public:
         gp_Pnt2d EndPoint2d() const;
   //! projection of the sensitive primitive in order to <br>
 //!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT   virtual  void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! gives the 2D boxes which represent the segment in the <br>
 //!          selection process... <br>
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;

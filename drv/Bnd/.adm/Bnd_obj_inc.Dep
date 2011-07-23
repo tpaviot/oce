@@ -1,4 +1,5 @@
 + Bnd:pubinclude:Bnd_Box.lxx Bnd:source:Bnd_Box.lxx
++ Bnd:pubinclude:Bnd_Sphere.lxx Bnd:source:Bnd_Sphere.lxx
 + Bnd:pubinclude:Bnd_Box2d.lxx Bnd:source:Bnd_Box2d.lxx
 + Bnd:pubinclude:Bnd_B2x.gxx Bnd:source:Bnd_B2x.gxx
 + Bnd:pubinclude:Bnd_B2x.lxx Bnd:source:Bnd_B2x.lxx

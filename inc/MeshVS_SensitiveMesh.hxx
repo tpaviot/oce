@@ -40,6 +40,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 class SelectBasics_EntityOwner;
 class Select3D_SensitiveEntity;
 class TopLoc_Location;
@@ -70,7 +73,7 @@ public:
   
   Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
   
-  Standard_EXPORT     void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
   
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
 
@@ -87,7 +90,7 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void ProjectOneCorner(const Select3D_Projector& aProjector,const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
+  Standard_EXPORT     void ProjectOneCorner(const Handle(Select3D_Projector)& aProjector,const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
 
 Standard_Integer myMode;
 Bnd_Box mybox;

@@ -158,20 +158,16 @@ class Graphic3d_Vertex;
 
 
 //! Defines services on Viewer type objects. <br>
-//!	    The methods of this class allow editing and <br>
-//!	    interrogation of the parameters linked to the viewer <br>
-//!	    its friend classes (View,light,plane). <br>
+//!            The methods of this class allow editing and <br>
+//!            interrogation of the parameters linked to the viewer <br>
+//!            its friend classes (View,light,plane). <br>
 class V3d_Viewer : public Viewer_Viewer {
 
 public:
 
   //! Create a Viewer on the given device with the given parameters  or <br>
-//!          with their default values. <br>//!	If the size of the view is <= 0 <br>
+//!          with their default values. <br>//!        If the size of the view is <= 0 <br>
 //!      if ComputedMode is false, only the degenerate mode will be used. <br>
-//! <br>
-//!  Warning: Client must creates a graphic-device of type <br>
-//!	    Graphic3d_GraphicDevice under UNIX <br>
-//!	 or Graphic3d_WNTGraphicDevice under WindowsNT <br>
   Standard_EXPORT   V3d_Viewer(const Handle(Aspect_GraphicDevice)& Device,const Standard_ExtString aName,const Standard_CString aDomain = "",const Quantity_Length ViewSize = 1000.0,const V3d_TypeOfOrientation ViewProj = V3d_XposYnegZpos,const Quantity_NameOfColor ViewBackground = Quantity_NOC_GRAY30,const V3d_TypeOfVisualization Visualization = V3d_ZBUFFER,const V3d_TypeOfShadingModel ShadingModel = V3d_GOURAUD,const V3d_TypeOfUpdate UpdateMode = V3d_WAIT,const Standard_Boolean ComputedMode = Standard_True,const Standard_Boolean DefaultComputedMode = Standard_True,const V3d_TypeOfSurfaceDetail SurfaceDetail = V3d_TEX_NONE);
   //! creates a view in the viewer according to its <br>
 //!          default parameters. <br>
@@ -181,29 +177,29 @@ public:
   
   Standard_EXPORT     Handle_V3d_PerspectiveView DefaultPerspectiveView() ;
   //! Activates all of the views of a viewer attached <br>
-//!	    to a window. <br>
+//!            to a window. <br>
   Standard_EXPORT     void SetViewOn() ;
   //! Activates a particular view in the Viewer . <br>
-//!	    Must be call if the Window attached to the view <br>
-//!	    has been Deiconified . <br>
+//!            Must be call if the Window attached to the view <br>
+//!            has been Deiconified . <br>
   Standard_EXPORT     void SetViewOn(const Handle(V3d_View)& View) ;
   //! Deactivates all the views of a Viewer <br>
-//!	    attached to a window. <br>
+//!            attached to a window. <br>
   Standard_EXPORT     void SetViewOff() ;
   //! Deactivates a particular view in the Viewer. <br>
-//!	    Must be call if the Window attached to the view <br>
-//!	    has been Iconified . <br>
+//!            Must be call if the Window attached to the view <br>
+//!            has been Iconified . <br>
   Standard_EXPORT     void SetViewOff(const Handle(V3d_View)& View) ;
   //! Updates the display of all the views of a viewer. <br>
-//!	    Must be called when the views must be updated <br>
-//!	    simultaneously while the Update mode is deferred (WAIT). <br>
+//!            Must be called when the views must be updated <br>
+//!            simultaneously while the Update mode is deferred (WAIT). <br>
   Standard_EXPORT     void Update() ;
   //! Updates the lights of all the views of a viewer. <br>
   Standard_EXPORT     void UpdateLights() ;
   //! Redraws all the views of the Viewer even if no <br>
-//!	    modification has taken place. Must be called if <br>
-//!	    all the views of the Viewer are exposed, as for <br>
-//!	   example in a global DeIconification. <br>
+//!            modification has taken place. Must be called if <br>
+//!            all the views of the Viewer are exposed, as for <br>
+//!           example in a global DeIconification. <br>
   Standard_EXPORT     void Redraw() const;
   //! Suppresses the Viewer. <br>
   Standard_EXPORT     void Remove() ;
@@ -212,28 +208,28 @@ public:
   //! UnHighlight all Objects in All the views. <br>
   Standard_EXPORT     void UnHighlight() const;
   //! Defines the default base colour of views attached <br>
-//!	    to the Viewer by supplying the type of colour <br>
-//!	    definition and the three component values.. <br>
+//!            to the Viewer by supplying the type of colour <br>
+//!            definition and the three component values.. <br>
   Standard_EXPORT     void SetDefaultBackgroundColor(const Quantity_TypeOfColor Type,const Quantity_Parameter V1,const Quantity_Parameter V2,const Quantity_Parameter V3) ;
   //! Defines the default background colour of views <br>
-//!	    attached to the viewer by supplying the name of the <br>
-//!	    colour under the form Quantity_NOC_xxxx . <br>
+//!            attached to the viewer by supplying the name of the <br>
+//!            colour under the form Quantity_NOC_xxxx . <br>
   Standard_EXPORT     void SetDefaultBackgroundColor(const Quantity_NameOfColor Name) ;
   //! Defines the default background colour of views <br>
-//!	    attached to the viewer by supplying the color object <br>
+//!            attached to the viewer by supplying the color object <br>
   Standard_EXPORT     void SetDefaultBackgroundColor(const Quantity_Color& Color) ;
   //! Defines the default gradient background colours of view <br>
-//!	    attached to the viewer by supplying the name of the <br>
-//!	    colours under the form Quantity_NOC_xxxx . <br>
+//!            attached to the viewer by supplying the name of the <br>
+//!            colours under the form Quantity_NOC_xxxx . <br>
   Standard_EXPORT     void SetDefaultBgGradientColors(const Quantity_NameOfColor Name1,const Quantity_NameOfColor Name2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR) ;
   //! Defines the default gradient background colours of views <br>
-//!	    attached to the viewer by supplying the colour objects <br>
+//!            attached to the viewer by supplying the colour objects <br>
   Standard_EXPORT     void SetDefaultBgGradientColors(const Quantity_Color& Color1,const Quantity_Color& Color2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR) ;
   //! Gives a default size for the creation of views of <br>
-//!	    the viewer. <br>
+//!            the viewer. <br>
   Standard_EXPORT     void SetDefaultViewSize(const Quantity_Length Size) ;
   //! Gives the default projection for creating views <br>
-//!	    in the viewer. <br>
+//!            in the viewer. <br>
   Standard_EXPORT     void SetDefaultViewProj(const V3d_TypeOfOrientation Orientation) ;
   //! Gives the default visualisation mode.. <br>
   Standard_EXPORT     void SetDefaultVisualization(const V3d_TypeOfVisualization Type) ;
@@ -256,9 +252,9 @@ public:
   
   Standard_EXPORT     void SetDefaultAngle(const Quantity_PlaneAngle Angle) ;
   //! Defines the mode of regenerating the views making <br>
-//!	    up the viewer. This can be immediate <ASAP> or <br>
-//!	    deferred <WAIT>. In this latter case, the views are <br>
-//!	    updated when the method Update(me) is called. <br>
+//!            up the viewer. This can be immediate <ASAP> or <br>
+//!            deferred <WAIT>. In this latter case, the views are <br>
+//!            updated when the method Update(me) is called. <br>
   Standard_EXPORT     void SetUpdateMode(const V3d_TypeOfUpdate Mode) ;
   
   Standard_EXPORT     void SetDefaultTypeOfView(const V3d_TypeOfView Type) ;
@@ -304,7 +300,6 @@ public:
   Standard_EXPORT     V3d_TypeOfUpdate UpdateMode() const;
   //! Returns True if One View more can be <br>
 //!          activated in this Viewer. <br>
-//! <br>
   Standard_EXPORT     Standard_Boolean IfMoreViews() const;
   //! initializes an iteration on the active views. <br>
   Standard_EXPORT     void InitActiveViews() ;
@@ -345,6 +340,10 @@ public:
   Standard_EXPORT     void NextDefinedLights() ;
   
   Standard_EXPORT     Handle_V3d_Light DefinedLight() const;
+  //! Adds Plane in Sequence Of Planes. <br>
+  Standard_EXPORT     void AddPlane(const Handle(V3d_Plane)& MyPlane) ;
+  //! Delete Plane in Sequence Of Planes. <br>
+  Standard_EXPORT     void DelPlane(const Handle(V3d_Plane)& MyPlane) ;
   //! initializes an iteration on the Defined Planes. <br>
   Standard_EXPORT     void InitDefinedPlanes() ;
   //! returns true if there are more Defined Plane(s) to return. <br>
@@ -373,13 +372,13 @@ public:
   Standard_EXPORT     void SetGridEcho(const Standard_Boolean showGrid = Standard_True) ;
   //! Show grid echo <aMarker> to the hit point. <br>
 //!  Warning: When the grid echo marker is not set, <br>
-//!	   a default marker is build with the attributes: <br>
-//!	   marker type : Aspect_TOM_STAR <br>
-//!	   marker color : Quantity_NOC_GRAY90 <br>
-//!	   marker size : 3.0 <br>
+//!           a default marker is build with the attributes: <br>
+//!           marker type : Aspect_TOM_STAR <br>
+//!           marker color : Quantity_NOC_GRAY90 <br>
+//!           marker size : 3.0 <br>
   Standard_EXPORT     void SetGridEcho(const Handle(Graphic3d_AspectMarker3d)& aMarker) ;
   //! Returns TRUE when grid echo must be displayed <br>
-//!	   at hit point. <br>
+//!           at hit point. <br>
   Standard_EXPORT     Standard_Boolean GridEcho() const;
   //! Returns Standard_True if a grid is activated in <me>. <br>
   Standard_EXPORT     Standard_Boolean IsActive() const;
@@ -392,32 +391,32 @@ public:
   //! Returns the definition of the rectangular grid. <br>
   Standard_EXPORT     void RectangularGridValues(Quantity_Length& XOrigin,Quantity_Length& YOrigin,Quantity_Length& XStep,Quantity_Length& YStep,Quantity_PlaneAngle& RotationAngle) const;
   //! Sets the definition of the rectangular grid. <br>
-//!	    <XOrigin>, <YOrigin> defines the origin of the grid. <br>
-//!	    <XStep> defines the interval between 2 vertical lines. <br>
-//!	    <YStep> defines the interval between 2 horizontal lines. <br>
-//!	    <RotationAngle> defines the rotation angle of the grid. <br>
+//!            <XOrigin>, <YOrigin> defines the origin of the grid. <br>
+//!            <XStep> defines the interval between 2 vertical lines. <br>
+//!            <YStep> defines the interval between 2 horizontal lines. <br>
+//!            <RotationAngle> defines the rotation angle of the grid. <br>
   Standard_EXPORT     void SetRectangularGridValues(const Quantity_Length XOrigin,const Quantity_Length YOrigin,const Quantity_Length XStep,const Quantity_Length YStep,const Quantity_PlaneAngle RotationAngle) ;
   //! Returns the definition of the circular grid. <br>
   Standard_EXPORT     void CircularGridValues(Quantity_Length& XOrigin,Quantity_Length& YOrigin,Quantity_Length& RadiusStep,Standard_Integer& DivisionNumber,Quantity_PlaneAngle& RotationAngle) const;
   //! Sets the definition of the circular grid. <br>
-//!	    <XOrigin>, <YOrigin> defines the origin of the grid. <br>
-//!	    <RadiusStep> defines the interval between 2 circles. <br>
-//!	    <DivisionNumber> defines the section number of one half circle. <br>
-//!	    <RotationAngle> defines the rotation angle of the grid. <br>
+//!            <XOrigin>, <YOrigin> defines the origin of the grid. <br>
+//!            <RadiusStep> defines the interval between 2 circles. <br>
+//!            <DivisionNumber> defines the section number of one half circle. <br>
+//!            <RotationAngle> defines the rotation angle of the grid. <br>
   Standard_EXPORT     void SetCircularGridValues(const Quantity_Length XOrigin,const Quantity_Length YOrigin,const Quantity_Length RadiusStep,const Standard_Integer DivisionNumber,const Quantity_PlaneAngle RotationAngle) ;
   //! Returns the location and the size of the grid. <br>
   Standard_EXPORT     void CircularGridGraphicValues(Quantity_Length& Radius,Quantity_Length& OffSet) const;
   //! Sets the location and the size of the grid. <br>
-//!	    <XSize> defines the width of the grid. <br>
-//!	    <YSize> defines the height of the grid. <br>
-//!	    <OffSet> defines the displacement along the plane normal. <br>
+//!            <XSize> defines the width of the grid. <br>
+//!            <YSize> defines the height of the grid. <br>
+//!            <OffSet> defines the displacement along the plane normal. <br>
   Standard_EXPORT     void SetCircularGridGraphicValues(const Quantity_Length Radius,const Quantity_Length OffSet) ;
   //! Returns the location and the size of the grid. <br>
   Standard_EXPORT     void RectangularGridGraphicValues(Quantity_Length& XSize,Quantity_Length& YSize,Quantity_Length& OffSet) const;
   //! Sets the location and the size of the grid. <br>
-//!	    <XSize> defines the width of the grid. <br>
-//!	    <YSize> defines the height of the grid. <br>
-//!	    <OffSet> defines the displacement along the plane normal. <br>
+//!            <XSize> defines the width of the grid. <br>
+//!            <YSize> defines the height of the grid. <br>
+//!            <OffSet> defines the displacement along the plane normal. <br>
   Standard_EXPORT     void SetRectangularGridGraphicValues(const Quantity_Length XSize,const Quantity_Length YSize,const Quantity_Length OffSet) ;
   //! Returns the gradient background of the view. <br>
   Standard_EXPORT     Aspect_GradientBackground GetGradientBackground() const;
@@ -455,10 +454,6 @@ private:
   Standard_EXPORT     void DelView(const Handle(V3d_View)& MyView) ;
   //! Adds Light in Sequence Of Lights. <br>
   Standard_EXPORT     void AddLight(const Handle(V3d_Light)& MyLight) ;
-  //! Adds Plane in Sequence Of Planes. <br>
-  Standard_EXPORT     void AddPlane(const Handle(V3d_Plane)& MyPlane) ;
-  //! Delete Plane in Sequence Of Planes. <br>
-  Standard_EXPORT     void DelPlane(const Handle(V3d_Plane)& MyPlane) ;
   
   Standard_EXPORT     Standard_Boolean IsActive(const Handle(V3d_View)& aView) const;
   

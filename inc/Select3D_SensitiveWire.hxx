@@ -31,6 +31,9 @@
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -65,7 +68,7 @@ public:
   Standard_EXPORT     void Add(const Handle(Select3D_SensitiveEntity)& aSensitive) ;
   //! projection of the sensitive primitive in order to <br>
 //!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! gives the 2D boxes which represent the segment in the <br>
 //!          selection process... <br>
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
@@ -91,7 +94,7 @@ public:
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
   
-  Standard_EXPORT   virtual  void SetLastPrj(const Select3D_Projector& aPrj) ;
+  Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
   //!returns <mymaxrect> <br>
   Standard_EXPORT     Handle_Select3D_SensitiveEntity GetLastDetected() const;
 

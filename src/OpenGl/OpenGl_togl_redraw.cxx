@@ -59,6 +59,7 @@ GLboolean g_fBitmap;
 #include <OpenGl_tgl_funcs.hxx>
 #include <OpenGl_tgl_subrvis.hxx>
 #include <OpenGl_FrameBuffer.hxx>
+#include <OpenGl_ResourceCleaner.hxx>
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
@@ -90,13 +91,15 @@ call_togl_redraw
       aFrameBuffer->BindBuffer();
       swap = 0; // no need to swap buffers
     }
-
+    OpenGl_ResourceCleaner::GetInstance()->Cleanup();
     call_func_redraw_all_structs_begin (aview->WsId);
+    call_togl_setplane( aview );
     if (anunderlayer->ptrLayer)
     {
       call_togl_redraw_layer2d (aview, anunderlayer);
     }
     call_func_redraw_all_structs_proc (aview->WsId);
+    call_subr_displayCB (aview, OCC_REDRAW_WINDOW | OCC_PRE_OVERLAY);
     if (anoverlayer->ptrLayer)
     {
       call_togl_redraw_layer2d (aview, anoverlayer);
@@ -166,12 +169,15 @@ call_togl_redraw_area
       glScissor ((GLint )x,
                  (GLint )((int )aview->DefWindow.dy - (y + height)),
                  (GLsizei )width, (GLsizei )height);
+      OpenGl_ResourceCleaner::GetInstance()->Cleanup();
       call_func_redraw_all_structs_begin (aview->WsId);
+      call_togl_setplane( aview );
       if (anunderlayer->ptrLayer)
       {
         call_togl_redraw_layer2d (aview, anunderlayer);
       }
       call_func_redraw_all_structs_proc (aview->WsId);
+      call_subr_displayCB (aview, OCC_REDRAW_WINDOWAREA | OCC_PRE_OVERLAY);
       if (anoverlayer->ptrLayer)
       {
         call_togl_redraw_layer2d (aview, anoverlayer);

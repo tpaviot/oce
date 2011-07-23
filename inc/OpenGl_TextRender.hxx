@@ -38,15 +38,15 @@ private:
 
   struct FontMapNode 
   {
-    char*     enumName;
-    char*     FontName;
+    const char*     enumName;
+    const char*     FontName;
     OSD_FontAspect  fontAspect;
   };
 
   struct FontEntry
   {
-    char*     name;
-    char*     xlfd;
+    const char*     name;
+    const char*     xlfd;
     float     xsizes[NUM_FONT_SIZES];
     int       count;
   };

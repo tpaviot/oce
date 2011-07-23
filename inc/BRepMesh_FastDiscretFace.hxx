@@ -52,8 +52,8 @@
 #ifndef _TColStd_IndexedMapOfReal_HeaderFile
 #include <TColStd_IndexedMapOfReal.hxx>
 #endif
-#ifndef _MeshDS_BaseAllocator_HeaderFile
-#include <MeshDS_BaseAllocator.hxx>
+#ifndef _BRepMesh_BaseAllocator_HeaderFile
+#include <BRepMesh_BaseAllocator.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -61,8 +61,8 @@
 #ifndef _Handle_BRepAdaptor_HSurface_HeaderFile
 #include <Handle_BRepAdaptor_HSurface.hxx>
 #endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
-#include <Handle_Geom2d_Curve.hxx>
+#ifndef _Handle_Poly_Triangulation_HeaderFile
+#include <Handle_Poly_Triangulation.hxx>
 #endif
 #ifndef _BRepMesh_ClassifierPtr_HeaderFile
 #include <BRepMesh_ClassifierPtr.hxx>
@@ -74,12 +74,14 @@ class TopTools_DataMapOfShapeReal;
 class TopoDS_Vertex;
 class BRepAdaptor_HSurface;
 class TopoDS_Edge;
-class Geom2d_Curve;
+class Poly_Triangulation;
+class TopLoc_Location;
 class BRepMesh_ListOfVertex;
 class TColStd_ListOfInteger;
 class BRepMesh_Delaun;
 class gp_XY;
 class gp_Pnt2d;
+class BRepMesh_DataMapOfIntegerListOfXY;
 class BRepMesh_Triangle;
 class BRepMesh_Edge;
 class BRepMesh_Vertex;
@@ -94,23 +96,21 @@ class BRepMesh_FastDiscretFace : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT   BRepMesh_FastDiscretFace(const Standard_Real angle,const Standard_Boolean withShare = Standard_True,const Standard_Boolean inshape = Standard_False,const Standard_Boolean shapetrigu = Standard_False);
+  Standard_EXPORT   BRepMesh_FastDiscretFace(const Standard_Real theAngle,const Standard_Boolean theWithShare = Standard_True);
   
-  Standard_EXPORT     void Add(const TopoDS_Face& face,const Handle(BRepMesh_FaceAttribute)& attrib,const TopTools_DataMapOfShapeReal& mapdefle) ;
+  Standard_EXPORT     void Add(const TopoDS_Face& theFace,const Handle(BRepMesh_FaceAttribute)& theAttrib,const TopTools_DataMapOfShapeReal& theMapDefle) ;
   
-  Standard_EXPORT     Standard_Boolean Update(const TopoDS_Edge& Edge,const TopoDS_Face& Face,const Handle(Geom2d_Curve)& C,const Standard_Real defedge,const Standard_Real first,const Standard_Real last) ;
+  Standard_EXPORT     Standard_Real Control(const Handle(BRepAdaptor_HSurface)& theCaro,const Standard_Real theDefFace,BRepMesh_ListOfVertex& theInternalV,TColStd_ListOfInteger& theBadTriangles,TColStd_ListOfInteger& theNulTriangles,BRepMesh_Delaun& theTrigu,const Standard_Boolean theIsFirst) ;
   
-  Standard_EXPORT     Standard_Real Control(const Handle(BRepAdaptor_HSurface)& caro,const Standard_Real defface,BRepMesh_ListOfVertex& inter,TColStd_ListOfInteger& badTri,TColStd_ListOfInteger& nulTri,BRepMesh_Delaun& trigu,const Standard_Boolean isfirst) ;
-  
-  Standard_EXPORT     gp_XY FindUV(const TopoDS_Vertex& V,const gp_Pnt2d& XY,const Standard_Integer ip,const Handle(BRepAdaptor_HSurface)& S,const Standard_Real mindist) ;
+  Standard_EXPORT   static  gp_XY FindUV(const TopoDS_Vertex& theV,const gp_Pnt2d& theXY,const Standard_Integer theIp,const Handle(BRepAdaptor_HSurface)& theSFace,const Standard_Real theMinDist,BRepMesh_DataMapOfIntegerListOfXY& theLocation2dMap) ;
   //! Gives the triangle of <Index>. <br>
-  Standard_EXPORT    const BRepMesh_Triangle& Triangle(const Standard_Integer Index) const;
+  Standard_EXPORT    const BRepMesh_Triangle& Triangle(const Standard_Integer theIndex) const;
   //! Gives the edge of index <Index>. <br>
-  Standard_EXPORT    const BRepMesh_Edge& Edge(const Standard_Integer Index) const;
+  Standard_EXPORT    const BRepMesh_Edge& Edge(const Standard_Integer theIndex) const;
   //! Gives the vertex of <Index>. <br>
-  Standard_EXPORT    const BRepMesh_Vertex& Vertex(const Standard_Integer Index) const;
+  Standard_EXPORT    const BRepMesh_Vertex& Vertex(const Standard_Integer theIndex) const;
   //! Gives the location3d of the vertex of <Index>. <br>
-  Standard_EXPORT    const gp_Pnt& Pnt(const Standard_Integer Index) const;
+  Standard_EXPORT    const gp_Pnt& Pnt(const Standard_Integer theIndex) const;
 
 
 
@@ -119,36 +119,35 @@ public:
 
 protected:
 
+  
+  Standard_EXPORT     Standard_Boolean RestoreStructureFromTriangulation(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,const Handle(BRepAdaptor_HSurface)& theSurf,const Handle(Poly_Triangulation)& theTrigu,const Standard_Real theDefEdge,const TopLoc_Location& theLoc) ;
 
 
 
 private: 
 
   
-  Standard_EXPORT     void Add(const TopoDS_Vertex& theVert,const TopoDS_Face& face,const Handle(BRepAdaptor_HSurface)& S) ;
+  Standard_EXPORT     void Add(const TopoDS_Vertex& theVert,const TopoDS_Face& theFace,const Handle(BRepAdaptor_HSurface)& theSFace) ;
   
-  Standard_EXPORT     void InternalVertices(const Handle(BRepAdaptor_HSurface)& caro,BRepMesh_ListOfVertex& inter,const Standard_Real defedge,const BRepMesh_ClassifierPtr& classifier) ;
+  Standard_EXPORT     void InternalVertices(const Handle(BRepAdaptor_HSurface)& theCaro,BRepMesh_ListOfVertex& theInternalV,const Standard_Real theDefFace,const BRepMesh_ClassifierPtr& theClassifier) ;
   
-  Standard_EXPORT     void AddInShape(const TopoDS_Face& face,const Standard_Real defedge) ;
+  Standard_EXPORT     void AddInShape(const TopoDS_Face& theFace,const Standard_Real theDefFace) ;
 
-Standard_Real angle;
-Standard_Boolean WithShare;
-BRepMesh_DataMapOfVertexInteger vertices;
-BRepMesh_DataMapOfShapePairOfPolygon edges;
-BRepMesh_DataMapOfShapePairOfPolygon internaledges;
-Standard_Integer nbLocat;
-BRepMesh_DataMapOfIntegerPnt Location3d;
-Handle_BRepMesh_DataStructureOfDelaun structure;
-BRepMesh_ListOfVertex mylistver;
-TColStd_IndexedMapOfInteger myvemap;
-BRepMesh_DataMapOfIntegerListOfXY mylocation2d;
-Handle_BRepMesh_FaceAttribute myattrib;
-Standard_Boolean myshapetrigu;
-Standard_Boolean myinshape;
+Standard_Real myAngle;
+Standard_Boolean myWithShare;
+BRepMesh_DataMapOfVertexInteger myVertices;
+BRepMesh_DataMapOfShapePairOfPolygon myInternaledges;
+Standard_Integer myNbLocat;
+BRepMesh_DataMapOfIntegerPnt myLocation3d;
+Handle_BRepMesh_DataStructureOfDelaun myStructure;
+BRepMesh_ListOfVertex myListver;
+TColStd_IndexedMapOfInteger myVemap;
+BRepMesh_DataMapOfIntegerListOfXY myLocation2d;
+Handle_BRepMesh_FaceAttribute myAttrib;
 Standard_Boolean myInternalVerticesMode;
 TColStd_IndexedMapOfReal myUParam;
 TColStd_IndexedMapOfReal myVParam;
-MeshDS_BaseAllocator myAllocator;
+BRepMesh_BaseAllocator myAllocator;
 
 
 };

@@ -19,8 +19,11 @@
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
 #endif
-#ifndef _Geom2d_Curve_HeaderFile
-#include <Geom2d_Curve.hxx>
+#ifndef _Poly_Triangulation_HeaderFile
+#include <Poly_Triangulation.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
 #endif
 #ifndef _BRepMesh_ListOfVertex_HeaderFile
 #include <BRepMesh_ListOfVertex.hxx>
@@ -36,6 +39,9 @@
 #endif
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
+#endif
+#ifndef _BRepMesh_DataMapOfIntegerListOfXY_HeaderFile
+#include <BRepMesh_DataMapOfIntegerListOfXY.hxx>
 #endif
 #ifndef _BRepMesh_Triangle_HeaderFile
 #include <BRepMesh_Triangle.hxx>

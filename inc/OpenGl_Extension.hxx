@@ -118,15 +118,15 @@ typedef void (APIENTRY * PFNGLBLENDEQUATIONEXTPROC) (GLenum mode);
 
 
 extern GLboolean InitExtensionGLX(Display *display);
-extern GLboolean QueryExtensionGLX(char *extName);
+extern GLboolean QueryExtensionGLX(const char *extName);
 
-extern GLboolean QueryExtension(char *extName);
+extern GLboolean QueryExtension(const char *extName);
 
 extern Display *GetCurrentDisplay(void);
 
 extern GLboolean supportsOneDotOne(void);
 
-extern GLboolean CheckExtension(char *extName, const char *extString);
+extern GLboolean CheckExtension(const char *extName, const char *extString);
 
 
 /* Methods defined in OpenGl_GraphicDriver.cxx */

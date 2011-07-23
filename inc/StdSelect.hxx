@@ -13,6 +13,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
 #endif
@@ -79,7 +82,7 @@ public:
   }
 
   //! Returns the 3D projector for the view aView. <br>
-  Standard_EXPORT   static  Select3D_Projector GetProjector(const Handle(V3d_View)& aView) ;
+  Standard_EXPORT   static  Handle_Select3D_Projector GetProjector(const Handle(V3d_View)& aView) ;
   //! puts The same drawer in every BRepOwner Of SensitivePrimitive <br>
 //!          Used Only for hilight Of BRepOwner... <br>
   Standard_EXPORT   static  void SetDrawerForBRepOwner(const Handle(SelectMgr_Selection)& aSelection,const Handle(Prs3d_Drawer)& aDrawer) ;

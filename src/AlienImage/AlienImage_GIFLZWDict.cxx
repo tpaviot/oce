@@ -140,7 +140,7 @@ static int _find_child (int prntCode, int chr)
   for (;;) {
 
     if (dict[ idx ].code == UNUSED ||
-        dict[ idx ].prnt == prntCode && dict[ idx ].byte == ( BYTE )chr)
+       (dict[ idx ].prnt == prntCode && dict[ idx ].byte == ( BYTE )chr))
       return idx;
 
     idx = ( idx >= offset ) ? idx - offset : idx + TBL_SIZE - offset;

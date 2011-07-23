@@ -42,8 +42,9 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
 			       const Standard_CString astring)
 {
   Standard_Integer index;
-  Standard_Integer i,k,l,limchain;
-  char chain[255];
+  Standard_Integer i,limchain;
+//  Standard_Integer k,l;
+//  char chain[255];
   Handle(Units_Token) token;
   Handle(Units_Token) referencetoken;
   
@@ -51,10 +52,12 @@ Units_Sentence::Units_Sentence(const Handle(Units_Lexicon)& alexicon,
   Handle(Units_TokensSequence) lstlexicon=alexicon->Sequence();
   Units_NoSuchType_Raise_if(lstlexicon.IsNull(),"BAD LEXICON descriptor");
   limchain=strlen(astring);
+/*
   k=0;
   for(l=0; l<255; l++) {
     chain[l]=0;
   }
+*/
   i=0;
 
   TCollection_AsciiString tmpstr = astring;

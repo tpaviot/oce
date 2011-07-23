@@ -314,6 +314,7 @@ static void CollectShapes(const TopoDS_Shape& SSh, TopoDS_Compound& C,
 //	  TagMap.Bind(SSh, aNS->Label().Tag());
       }
     break;
+  default: /* Do nothing */ break;
   }   
 }
 

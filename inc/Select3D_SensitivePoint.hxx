@@ -28,6 +28,9 @@
 #ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
@@ -61,7 +64,7 @@ public:
   Standard_EXPORT   Select3D_SensitivePoint(const Handle(SelectBasics_EntityOwner)& OwnerId,const gp_Pnt& Point);
   //!Converts the stored 3D point into a 2D point according <br>
 //!         to <aProjector> ; this method is called by the selection Manager. <br>
-  Standard_EXPORT     void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! stores in <aresult> the 2D sensitive box which represents <br>
 //!          the point area in the selection process. <br>
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& aresult) ;

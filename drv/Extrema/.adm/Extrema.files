@@ -259,9 +259,12 @@ pubinclude Extrema_CCLocFOfLocECC2dOfLocateExtCC2d.hxx
 derivated Extrema_CCLocFOfLocECC2dOfLocateExtCC2d_0.cxx
 pubinclude Extrema_LocECC2dOfLocateExtCC2d.hxx
 derivated Extrema_LocECC2dOfLocateExtCC2d_0.cxx
+pubinclude Extrema_ExtFlag.hxx
+pubinclude Extrema_ExtAlgo.hxx
 dbadmfile Extrema_xcpp_header.In
 dbadmfile Extrema_xcpp_header.Out
 dbadmfile Extrema_xcpp_header.Dep
+pubinclude Extrema_HUBTreeOfSphere.hxx
 pubinclude Extrema_CurveTool.lxx
 pubinclude Extrema_Curve2dTool.lxx
 pubinclude Extrema_Point.gxx

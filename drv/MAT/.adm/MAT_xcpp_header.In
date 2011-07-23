@@ -31,4 +31,4 @@
 +V MAT:msentity:MAT_TListNodeOfListOfBisector .
 +V MAT:msentity:MAT_TListNodeOfListOfEdge .
 +V MAT:msentity:MAT_Side .
-- MAT:admfile:MAT_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/MAT/MAT_xcpp_fill.Out
+- MAT:admfile:MAT_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/MAT/MAT_xcpp_fill.Out

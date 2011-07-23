@@ -47,11 +47,11 @@ class gp_Vec;
 class gp_Vec2d;
 
 
-//! Cette fonction calcule le point pts sur la courbe intersection <br>
-//!          entre la normale  a  une courbe (guide) en un parametre choisi <br>
-//!          et une surface  (surf), tel que pts soit a une distance <br>
-//!          donnee de guide. <br>
-//!          X(1),X(2) sont les parametres U,V de pts sur surf. <br>
+//! This function calculates point (pts) on the curve of <br>
+//!          intersection between the normal to a curve (guide) <br>
+//!          in a chosen parameter and a surface  (surf), so <br>
+//!          that pts was at a given distance from the guide. <br>
+//!          X(1),X(2) are the parameters U,V of pts on surf. <br>
 class BlendFunc_Corde  {
 public:
 
@@ -98,8 +98,8 @@ public:
   //! Returns the tangent vector at PointOnS, in the <br>
 //!          parametric space of the first surface. <br>
   Standard_EXPORT    const gp_Vec2d& Tangent2dOnS() const;
-  //! Derivee de la fonction par rapport au parametre <br>
-//!          de la ligne guide <br>
+  //! Derived of the function compared to the parameter <br>
+//! of the guideline <br>
   Standard_EXPORT     void DerFguide(const math_Vector& Sol,gp_Vec2d& DerF) ;
   //! Returns False if Sol is not solution else returns <br>
 //!          True and updates the fields tgs and tg2d <br>

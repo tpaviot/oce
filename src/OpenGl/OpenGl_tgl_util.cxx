@@ -114,7 +114,7 @@ char *symbol, *value
 Gets an environment variable.
 */
 
-EXPORT extern int    call_util_osd_getenv ( char *symbol,
+EXPORT extern int    call_util_osd_getenv ( const char *symbol,
                                            char *value,
                                            int lval )
 {

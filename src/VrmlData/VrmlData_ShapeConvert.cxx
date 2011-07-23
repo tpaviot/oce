@@ -279,6 +279,7 @@ void VrmlData_ShapeConvert::Convert (const Standard_Boolean theExtractFaces,
             }
           }
           break;
+	   default: /* Do nothing */ break;
         }
         
         if (aTShapeNode.IsNull() == Standard_False) {

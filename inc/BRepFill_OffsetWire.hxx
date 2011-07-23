@@ -28,8 +28,8 @@
 #ifndef _GeomAbs_JoinType_HeaderFile
 #include <GeomAbs_JoinType.hxx>
 #endif
-#ifndef _BRepFill_DataMapOfOrientedShapeListOfShape_HeaderFile
-#include <BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
+#ifndef _BRepFill_IndexedDataMapOfOrientedShapeListOfShape_HeaderFile
+#include <BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx>
 #endif
 #ifndef _BRepMAT2d_BisectingLocus_HeaderFile
 #include <BRepMAT2d_BisectingLocus.hxx>
@@ -47,7 +47,7 @@ class BRepMAT2d_BisectingLocus;
 class BRepMAT2d_LinkTopoBilo;
 class TopoDS_Shape;
 class TopTools_ListOfShape;
-class BRepFill_DataMapOfOrientedShapeListOfShape;
+class BRepFill_IndexedDataMapOfOrientedShapeListOfShape;
 
 
 //! Constructs a Offset Wire to a spine (wire or face) <br>
@@ -107,7 +107,7 @@ protected:
 private:
 
   
-  Standard_EXPORT     BRepFill_DataMapOfOrientedShapeListOfShape& Generated() ;
+  Standard_EXPORT     BRepFill_IndexedDataMapOfOrientedShapeListOfShape& Generated() ;
   //! Prepare the spine as follow <br>
 //!          - Cut the spine-Edges at the extrema of curvature and <br>
 //!            at the inflexion points. <br>
@@ -126,7 +126,7 @@ Standard_Real myOffset;
 TopoDS_Shape myShape;
 Standard_Boolean myIsDone;
 GeomAbs_JoinType myJoinType;
-BRepFill_DataMapOfOrientedShapeListOfShape myMap;
+BRepFill_IndexedDataMapOfOrientedShapeListOfShape myMap;
 BRepMAT2d_BisectingLocus myBilo;
 BRepMAT2d_LinkTopoBilo myLink;
 TopTools_DataMapOfShapeShape myMapSpine;

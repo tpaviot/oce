@@ -7484,8 +7484,6 @@ int mmpojac_(doublereal *tparam,
   
     /* Initialized data */
 
-    static integer nbcof = -1;
-
     /* System generated locals */
     integer valjac_dim1, i__1, i__2;
 
@@ -7600,8 +7598,6 @@ int mmpojac_(doublereal *tparam,
 	tnorm[ii - 1] = sqrt(aux2 * (kk1 * 2. + (*iordre << 1) + 1) / pow__ii(&
 		c__2, &i__2));
     }
-
-    nbcof = *ncoeff;
 
 /*      END IF */
 
@@ -10404,7 +10400,6 @@ E*/
   static logical colin;
   static doublereal valaux;
   static integer aux;
-  static logical nul;
  
 /* ***********************************************************************
  */
@@ -10478,7 +10473,6 @@ E*/
     if (*ndimen <= 1 || *ndimen > 3) {
 	goto L9101;
     }
-    nul = FALSE_;
     d__ = 1;
     aux = 0;
     while(d__ <= *ndimen) {

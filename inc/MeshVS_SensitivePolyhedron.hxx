@@ -34,6 +34,9 @@
 #ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
@@ -66,7 +69,7 @@ public:
   
   Standard_EXPORT   MeshVS_SensitivePolyhedron(const Handle(SelectBasics_EntityOwner)& Owner,const TColgp_Array1OfPnt& Nodes,const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo);
   
-  Standard_EXPORT   virtual  void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
   
   Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
   

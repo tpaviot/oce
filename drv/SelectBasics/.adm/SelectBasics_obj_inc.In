@@ -1,4 +1,4 @@
-+ SelectBasics:source:SelectBasics_EntityOwner.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectBasics/SelectBasics_EntityOwner.lxx
-+ SelectBasics:source:SelectBasics_SensitiveEntity.lxx /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/src/SelectBasics/SelectBasics_SensitiveEntity.lxx
-- SelectBasics:admfile:SelectBasics_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SelectBasics/SelectBasics_src.Out
-- SelectBasics:admfile:SelectBasics_xcpp_src.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/SelectBasics/SelectBasics_xcpp_src.Out
++ SelectBasics:source:SelectBasics_EntityOwner.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/SelectBasics/SelectBasics_EntityOwner.lxx
++ SelectBasics:source:SelectBasics_SensitiveEntity.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/SelectBasics/SelectBasics_SensitiveEntity.lxx
+- SelectBasics:admfile:SelectBasics_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/SelectBasics/SelectBasics_src.Out
+- SelectBasics:admfile:SelectBasics_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/SelectBasics/SelectBasics_xcpp_src.Out

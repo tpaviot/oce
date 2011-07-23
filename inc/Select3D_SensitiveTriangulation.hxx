@@ -52,6 +52,9 @@
 #ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
 #endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 #ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
 #endif
@@ -94,7 +97,7 @@ public:
   Standard_EXPORT   Select3D_SensitiveTriangulation(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Poly_Triangulation)& aTriangulation,const TopLoc_Location& aLoc,const Handle(TColStd_HArray1OfInteger)& thefreeedges,const gp_Pnt& theCDG,const Standard_Boolean InteriorFlag);
   //! projection of the sensitive primitive in order to <br>
 //!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Select3D_Projector& aProjector) ;
+  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
   //! stores in <boxes> the 2D Boxes which represent the sensitive face <br>
 //!          in the selection algorithm. <br>
   Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;

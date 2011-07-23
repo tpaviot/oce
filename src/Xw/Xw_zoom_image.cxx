@@ -31,7 +31,6 @@ XW_EXT_IMAGEDATA *pimage = (XW_EXT_IMAGEDATA*)aimage ;
 XImage *pximage,*qximage ;
 int i,j,isize,wp,hp,xp,yp,xq,yq,xn,yn,dxp,dyp,npixel,num_pixel[MAXCOLOR] ;
 unsigned long pixel,bpixel,tab_pixel[MAXCOLOR];
-float ratio;
 
 
     if( !Xw_isdefine_image(pimage) ) {
@@ -58,7 +57,6 @@ float ratio;
     Xw_bytecopy((char*)pximage,(char*)qximage,sizeof(XImage)) ;
 
     wp = pximage->width; hp = pximage->height;
-    ratio = (float)wp/hp;
     qximage->width = (int )( wp * zoom );
     qximage->height = (int )( hp * zoom );
     dxp = dyp = 0;

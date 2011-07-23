@@ -1,3 +1,4 @@
++ Extrema:pubinclude:Extrema_HUBTreeOfSphere.hxx Extrema:source:Extrema_HUBTreeOfSphere.hxx
 + Extrema:pubinclude:Extrema_CurveTool.lxx Extrema:source:Extrema_CurveTool.lxx
 + Extrema:pubinclude:Extrema_Curve2dTool.lxx Extrema:source:Extrema_Curve2dTool.lxx
 + Extrema:pubinclude:Extrema_Point.gxx Extrema:source:Extrema_Point.gxx

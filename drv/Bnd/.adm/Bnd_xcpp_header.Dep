@@ -6,6 +6,14 @@
 + Bnd:pubinclude:Handle_Bnd_HArray1OfBox.hxx Bnd:msentity:Bnd_HArray1OfBox
 + Bnd:pubinclude:Bnd_HArray1OfBox.hxx Bnd:msentity:Bnd_HArray1OfBox
 + Bnd:derivated:Bnd_HArray1OfBox_0.cxx Bnd:msentity:Bnd_HArray1OfBox
++ Bnd:pubinclude:Bnd_Sphere.hxx Bnd:msentity:Bnd_Sphere
++ Bnd:privinclude:Bnd_Sphere.jxx Bnd:msentity:Bnd_Sphere
++ Bnd:privinclude:Bnd_Sphere.ixx Bnd:msentity:Bnd_Sphere
++ Bnd:pubinclude:Bnd_Array1OfSphere.hxx Bnd:msentity:Bnd_Array1OfSphere
++ Bnd:derivated:Bnd_Array1OfSphere_0.cxx Bnd:msentity:Bnd_Array1OfSphere
++ Bnd:pubinclude:Handle_Bnd_HArray1OfSphere.hxx Bnd:msentity:Bnd_HArray1OfSphere
++ Bnd:pubinclude:Bnd_HArray1OfSphere.hxx Bnd:msentity:Bnd_HArray1OfSphere
++ Bnd:derivated:Bnd_HArray1OfSphere_0.cxx Bnd:msentity:Bnd_HArray1OfSphere
 + Bnd:pubinclude:Bnd_Box2d.hxx Bnd:msentity:Bnd_Box2d
 + Bnd:privinclude:Bnd_Box2d.jxx Bnd:msentity:Bnd_Box2d
 + Bnd:privinclude:Bnd_Box2d.ixx Bnd:msentity:Bnd_Box2d

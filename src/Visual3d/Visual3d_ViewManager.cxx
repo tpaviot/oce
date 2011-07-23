@@ -5,7 +5,7 @@
      ----------
         Classe Visual3d_ViewManager.cxx :
 
-	Declaration des variables specifiques aux visualiseurs
+	Declaration of variables specific to visualisers
 
      HISTORIQUE DES MODIFICATIONS   :
      --------------------------------
@@ -30,7 +30,7 @@
 
 /*----------------------------------------------------------------------*/
 /*
- * Constantes
+ * Constants
  */
 
 #define NO_DOWNCAST
@@ -148,7 +148,7 @@ void Visual3d_ViewManager::ChangeDisplayPriority (const Handle(Graphic3d_Structu
 		(MyIterator.Value ())->ChangeDisplayPriority
 			(AStructure, OldPriority, NewPriority);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -158,9 +158,9 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
 
   //Standard_Integer LengthD	= MyDisplayedStructure.Extent() ();
 
-  // Meme si physiquement la structure ne peut pas
-  // etre affichee (pb de type de visualisation)
-  // elle a le statut Displayed.
+  // Even if physically the structure cannot
+  // be displayed (pb of visualisation type)
+  // it has status Displayed.
  
   if (!MyDisplayedStructure.Contains(AStructure))
     return;
@@ -173,7 +173,7 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
   while (MyIterator.More ()) {
     (MyIterator.Value ())->ReCompute (AStructure);
 
-    // MyIterator.Next () se positionne sur la prochaine vue
+    // MyIterator.Next () is located on the next view
     MyIterator.Next ();
   }
   
@@ -193,14 +193,14 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
   Standard_Integer ViewId = theView->Identification ();
 
 
-// Meme si physiquement la structure ne peut pas
-// etre affichee (pb de type de visualisation)
-// elle a le statut Displayed.
+  // Even if physically the structure cannot
+  // be displayed (pb of visualisation type)
+  // it has status Displayed.
   if (!MyDisplayedStructure.Contains(AStructure))
     return;
 	
   //
-  // Recompute structure in one activated view
+  // Recompute structure in all activated views
   //
   Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
@@ -208,7 +208,7 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
     if ((MyIterator.Value ())->Identification () == ViewId)
       theView->ReCompute (AStructure);
 
-    // MyIterator.Next () se positionne sur la prochaine vue
+    // MyIterator.Next () is located on the next view
     MyIterator.Next ();
   }
 
@@ -226,7 +226,7 @@ void Visual3d_ViewManager::Clear (const Handle(Graphic3d_Structure)& AStructure,
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Clear (AStructure, WithDestruction);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next ()  is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -244,7 +244,7 @@ void Visual3d_ViewManager::Connect (const Handle(Graphic3d_Structure)& AMother, 
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Connect (AMother, ADaughter);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next ()  is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -262,7 +262,7 @@ void Visual3d_ViewManager::Disconnect (const Handle(Graphic3d_Structure)& AMothe
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Disconnect (AMother, ADaughter);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next ()  is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -271,9 +271,9 @@ void Visual3d_ViewManager::Disconnect (const Handle(Graphic3d_Structure)& AMothe
 void Visual3d_ViewManager::Display (const Handle(Graphic3d_Structure)& AStructure) { 
 
 
-  // Meme si physiquement la structure ne peut pas
-  // etre affichee (pb de type de visualisation)
-  // elle a le statut Displayed.
+ // Even if physically the structure cannot
+  // be displayed (pb of visualisation type)
+  // it has status Displayed.
 
   MyDisplayedStructure.Add(AStructure);
 
@@ -285,7 +285,7 @@ void Visual3d_ViewManager::Display (const Handle(Graphic3d_Structure)& AStructur
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Display (AStructure);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -294,9 +294,9 @@ void Visual3d_ViewManager::Display (const Handle(Graphic3d_Structure)& AStructur
 void Visual3d_ViewManager::Erase (const Handle(Graphic3d_Structure)& AStructure) {
 
 
-// Meme si physiquement la structure ne pouvait pas
-// etre affichee (pb de type de visualisation)
-// elle avait le statut Displayed.
+// Even if physically the structure cannot
+  // be displayed (pb of visualisation type)
+  // it has status Displayed.
 
  MyDisplayedStructure.Remove(AStructure);
 
@@ -315,7 +315,7 @@ void Visual3d_ViewManager::Erase (const Handle(Graphic3d_Structure)& AStructure)
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Erase (AStructure);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -353,7 +353,7 @@ void Visual3d_ViewManager::Highlight (const Handle(Graphic3d_Structure)& AStruct
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Highlight (AStructure, AMethod);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -371,7 +371,7 @@ void Visual3d_ViewManager::SetTransform (const Handle(Graphic3d_Structure)& AStr
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->SetTransform (AStructure, ATrsf);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -407,7 +407,7 @@ void Visual3d_ViewManager::UnHighlight (const Handle(Graphic3d_Structure)& AStru
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->UnHighlight (AStructure);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -432,7 +432,7 @@ Standard_Integer Dx, Dy;
 		if (Dx > MaxDx) MaxDx = Dx;
 		if (Dy > MaxDy) MaxDy = Dy;
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	    }
 	    if (! MyUnderLayer.IsNull ())
@@ -446,7 +446,7 @@ Standard_Integer Dx, Dy;
 	while (MyIterator.More ()) {
 	    (MyIterator.Value ())->Redraw (MyUnderLayer, MyOverLayer);
 
-	    // MyIterator.Next () se positionne sur la prochaine vue
+	    // MyIterator.Next () is located on the next view
 	    MyIterator.Next ();
 	}
 
@@ -464,7 +464,7 @@ void Visual3d_ViewManager::Update () const {
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->Update (MyUnderLayer, MyOverLayer);
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -485,7 +485,7 @@ Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 		if ((MyIterator.Value ())->IsActive ())
 			SG->Add (MyIterator.Value ());
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -510,8 +510,7 @@ Standard_Boolean Result = Standard_False;
 			Result	=
 			(MyIterator.Value ())->ContainsComputedStructure ();
 
-		// MyIterator.Next () se positionne
-		// sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -528,7 +527,7 @@ Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 	while (MyIterator.More ()) {
 		SG->Add (MyIterator.Value ());
 
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -538,7 +537,7 @@ Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 
 void Visual3d_ViewManager::ConvertCoord (const Handle(Aspect_Window)& AWindow, const Graphic3d_Vertex& AVertex, Standard_Integer& AU, Standard_Integer& AV) const {
 
-// On convertit que si les donnees sont correctes
+// Convert only if the data is correct
 Standard_Boolean Exist;
 Graphic3d_CView  TheCView;
 //Graphic3d_Vertex Point;
@@ -591,8 +590,7 @@ Standard_Real Dx, Dy, Ratio;
 	  stop	= 1;
 	}
 
-	// MyIterator.Next () se positionne
-	// sur la prochaine vue
+	// MyIterator.Next () is located on the next view
 	MyIterator.Next ();
       }
 
@@ -662,7 +660,7 @@ Standard_Real Dx, Dy, Ratio;
 
 Graphic3d_Vertex Visual3d_ViewManager::ConvertCoord (const Handle(Aspect_Window)& AWindow, const Standard_Integer AU, const Standard_Integer AV) const {
 
-// On convertit que si les donnees sont correctes
+// Convert only if the data is correct
 Graphic3d_CView TheCView;
 Graphic3d_Vertex Point;
 
@@ -679,13 +677,13 @@ Standard_Boolean Result;
 				0, 0, Width, Height,
 				AU, AV, x, y, z);
 
-	    // Le unproject est realise par UnProjectRaster
+	    // unproject is done by UnProjectRaster
 	    if (Result) {
 		Point.SetCoord
 		    (Standard_Real (x), Standard_Real (y), Standard_Real (z));
 	    }
-	    // Le unproject n'est pas realisable par UnProjectRaster
-	    // Code a virer des que les drivers Phigs et Pex seront abandonnes.
+	    // unproject cannot be done by UnProjectRaster
+	    // Code suspended since drivers Phigs and Pex are abandoned.
 	    else {
 
 Standard_Real NPCX, NPCY, NPCZ;
@@ -717,8 +715,7 @@ Standard_Boolean BResult;
 			stop	= 1;
 		    }
 
-		    // MyIterator.Next () se positionne
-		    // sur la prochaine vue
+		    // MyIterator.Next () is located on the next view
 		    MyIterator.Next ();
 		}
 
@@ -797,7 +794,7 @@ Standard_Boolean BResult;
 
 void Visual3d_ViewManager::ConvertCoordWithProj (const Handle(Aspect_Window)& AWindow, const Standard_Integer AU, const Standard_Integer AV, Graphic3d_Vertex& Point, Graphic3d_Vector& Proj) const {
 
-// On convertit que si les donnees sont correctes
+// Conversion only if the data is correct
 Graphic3d_CView TheCView;
 
         if (! ViewExists (AWindow, TheCView)) {
@@ -816,7 +813,7 @@ Standard_Boolean Result;
 				0, 0, Width, Height,
 				AU, AV, x, y, z, dx, dy, dz);
 
-	    // Le unproject est realise par UnProjectRaster
+	    // unproject is done by UnProjectRaster
 	    if (Result) {
 		Point.SetCoord
 		    (Standard_Real (x), Standard_Real (y), Standard_Real (z));
@@ -824,8 +821,8 @@ Standard_Boolean Result;
 		    (Standard_Real (dx), Standard_Real (dy), Standard_Real (dz));
                 Proj.Normalize();
 	    }
-	    // Le unproject n'est pas realisable par UnProjectRaster
-	    // Code a virer des que les drivers Phigs et Pex seront abandonnes.
+	    // unproject cannot be done by UnProjectRaster
+	    // Code is suspended since drivers Phigs are Pex abandoned.
 	    else {
 
 Standard_Real NPCX, NPCY, NPCZ;
@@ -857,8 +854,7 @@ Standard_Boolean BResult;
 			stop	= 1;
 		    }
 
-		    // MyIterator.Next () se positionne
-		    // sur la prochaine vue
+		    // MyIterator.Next () is located on the next view
 		    MyIterator.Next ();
 		}
 
@@ -985,14 +981,14 @@ Standard_Boolean BResult;
 
 Visual3d_PickDescriptor Visual3d_ViewManager::Pick (const Visual3d_ContextPick& CTX, const Handle(Aspect_Window)& AWindow, const Standard_Integer AX, const Standard_Integer AY) {
 
-// On active le reperage que si les donnees sont correctes
+// The marking is activated only if the data is correct
 Standard_Boolean DoPick = Standard_False;
 
 CALL_DEF_PICK apick; //@todo CALL_DEF_PICK should have constructor
 Standard_Integer Width, Height;
 
-	// Parcours de la liste des vues pour rechercher
-	// une vue ayant pour fenetre celle specifiee
+	// Parse the list of views to find a 
+	// view having this specified window
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 	int TheWindowIdOfView;
 
@@ -1017,11 +1013,11 @@ const Handle(Xw_Window) theWindow = *(Handle(Xw_Window) *) &AspectWindow;
 const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AspectWindow;
 	TheWindowIdOfView = int (theWindow->HWindow ());
 #endif  // WNT
-		// Comparaison sur les windows ids
+		// Comparision on window IDs
 		if (TheWindowIdOfView == TheSpecifiedWindowId) {
 			DoPick		= Standard_True;
 
-			// Mise a jour
+			// Update
 			apick.WsId	=
 			int ((MyIterator.Value ())->Identification ());
 
@@ -1047,8 +1043,7 @@ const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AspectWindow;
 		}
 	   } /* if ((MyIterator.Value ())->IsDefined ()) { */
 
-	   // MyIterator.Next () se positionne
-	   // sur la prochaine vue
+	   // MyIterator.Next () is located on the next view
 	   MyIterator.Next ();
 	}
 
@@ -1057,7 +1052,7 @@ const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AspectWindow;
 	else
 		apick.Pick.depth	= 0;
 
-	// Picking : le retour
+	// Picking : return
 Standard_Integer i, j=0;
 Standard_Integer NbPick;
 
@@ -1086,7 +1081,7 @@ Visual3d_PickPath PPat;
 	    }
 	}
 
-	// Pas tres efficace, a revoir (CAL 22/09/95)
+	// Not very efficient, revise (CAL 22/09/95)
 	if (apick.Pick.depth > 2) {
 Handle(Graphic3d_Structure) StructCur =
 	Graphic3d_StructureManager::Identification (j);
@@ -1115,8 +1110,7 @@ Graphic3d_MapIteratorOfMapOfStructure IteratorD (Set);
 			PDes.AddPickPath (PPat);
 			NbPick++;
 		    }
-		    // IteratorD.Next () se positionne
-		    // sur la prochaine structure
+		    // IteratorD.Next () is located on the next structure
 		    IteratorD.Next ();
 		}
 	    }
@@ -1134,8 +1128,8 @@ Standard_Boolean Visual3d_ViewManager::ViewExists (const Handle(Aspect_Window)& 
 
 Standard_Boolean Exist = Standard_False;
 
-	// Parcours de la liste des vues pour rechercher
-	// une vue ayant pour fenetre celle specifiee
+	// Parse the list of views to find
+	// a view with the specified window
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 	int TheWindowIdOfView;
 
@@ -1160,15 +1154,14 @@ const Handle(Xw_Window) theWindow = *(Handle(Xw_Window) *) &AspectWindow;
 const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AspectWindow;
 	TheWindowIdOfView = int (theWindow->HWindow ());
 #endif  // WNT
-		// Comparaison sur les windows ids
+		// Comparaison on window IDs
 		if (TheWindowIdOfView == TheSpecifiedWindowId) {
 			Exist	= Standard_True;
 			TheCView	= *(CALL_DEF_VIEW *)(MyIterator.Value ())->CView ();
 		}
 	   } /* if ((MyIterator.Value ())->IsDefined ()) */
 
-	   // MyIterator.Next () se positionne
-	   // sur la prochaine vue
+	   // MyIterator.Next () is located on the next view
 	   MyIterator.Next ();
 	}
 
@@ -1193,8 +1186,7 @@ void Visual3d_ViewManager::Activate () {
 		if (! (MyIterator.Value ())->IsActive ())
 			(MyIterator.Value ())->Activate ();
 
-		// MyIterator.Next () se positionne
-		// sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -1216,8 +1208,7 @@ void Visual3d_ViewManager::Deactivate () {
 		if ((MyIterator.Value ())->IsActive ())
 			(MyIterator.Value ())->Deactivate ();
 
-		// MyIterator.Next () se positionne
-		// sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -1225,8 +1216,8 @@ void Visual3d_ViewManager::Deactivate () {
 
 Standard_Integer Visual3d_ViewManager::MaxNumOfViews () const {
 
-	// on retourne le nombre theorique de vues definissables pour le
-	// Visual3d_ViewManager courant.
+	// Retourne the planned of definable views for the current
+	// Visual3d_ViewManager.
 	return
 (Standard_Integer ((View_IDMAX-View_IDMIN+1)/Visual3d_ViewManager::Limit ()));
 
@@ -1264,7 +1255,7 @@ void Visual3d_ViewManager::SetTransparency (const Standard_Boolean AFlag) {
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 	while (MyIterator.More ()) {
 		(MyIterator.Value ())->SetTransparency (AFlag);
-		// MyIterator.Next () se positionne sur la prochaine vue
+		// MyIterator.Next () is located on the next view
 		MyIterator.Next ();
 	}
 
@@ -1283,19 +1274,19 @@ void Visual3d_ViewManager::SetZBufferAuto (const Standard_Boolean AFlag) {
 	if (MyZBufferAuto && AFlag) return;
 	if (! MyZBufferAuto && ! AFlag) return;
 
-	// si de False on passe a True :
-	// pas de probleme, au prochain update de vue, celle-ci se
-	// posera les bonnes questions pour reagir (SetVisualisation)
-	// si de True on passe a False :
-	// il faut modifier le ZBufferActivity de chaque vue pour que
-	// le zbuffer ne soit actif que si le contexte le demande.
-	// Dans ce cas on passe -1 pour que la vue se pose la question
-	// Rappel : 0 on force la desactivation, 1 on force l'activation
+	// if pass from False to True :
+	// no problem, at the next view update, it 
+	// will properly ask questions to answer (SetVisualisation)
+	// if pass from True to False :
+	// it is necessary to modify ZBufferActivity at each view so that
+	// zbuffer could be active only if required by context.
+	// In this case -1 is passed so that the view ask itself the question
+	// Note : 0 forces the desactivation, 1 forces the activation
 	if (! AFlag) {
 		Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 		while (MyIterator.More ()) {
 			(MyIterator.Value ())->SetZBufferActivity (-1);
-			// MyIterator.Next () se positionne sur la prochaine vue
+			// MyIterator.Next () is located on the next view
 			MyIterator.Next ();
 		}
 	}

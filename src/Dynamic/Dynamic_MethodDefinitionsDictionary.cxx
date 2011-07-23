@@ -3,8 +3,8 @@
 // Author:	Gilles DEBARBOUILLE
 //		<gde@phobox>
 // Historique :
-// CRD : 15/04/97 : Passage WOK++ : Remplacement de TYPE par STANDARD_TYPE
-// CRD : 03/07/97 : Portage Windows NT.
+// CRD : 15/04/97 : Passage WOK++ : Replace TYPE by STANDARD_TYPE
+// CRD : 03/07/97 : Porting Windows NT.
 
 #include <Standard_Stream.hxx>
 
@@ -62,7 +62,7 @@ void Dynamic_MethodDefinitionsDictionary::Creates(const Standard_CString afilena
   char name[80];
   char mode[80];
   char type[80];
-  char value[80],value1[80],value2[80],value3[80];
+  char value[80];
   Handle(Dynamic_CompiledMethod) methoddefinition;
   Handle(Dynamic_Parameter) parameter;
   
@@ -125,9 +125,6 @@ void Dynamic_MethodDefinitionsDictionary::Creates(const Standard_CString afilena
 	  for(i=0; i<80; i++)mode   [i] = 0;
 	  for(i=0; i<80; i++)type   [i] = 0;
 	  for(i=0; i<80; i++)value  [i] = 0;
-	  for(i=0; i<80; i++)value1 [i] = 0;
-	  for(i=0; i<80; i++)value2 [i] = 0;
-	  for(i=0; i<80; i++)value3 [i] = 0;
 
 	  //	  fr = sscanf(&line[end+1],"%s%s%80c",&mode,&type,&value);
 	  fr = sscanf(&line[end+1],"%s%s%80c",mode,type,value);
@@ -191,7 +188,7 @@ Standard_Boolean Dynamic_MethodDefinitionsDictionary::Definition(const Handle(Dy
     }
   else
     {
-      cout<<"la definition n'est pas une method definition"<<endl;
+      cout<<"the definition is not a method definition"<<endl;
       return Standard_False;
     }
 }
@@ -230,7 +227,7 @@ Handle(Dynamic_Parameter) Dynamic_MethodDefinitionsDictionary::Switch(
   const Standard_CString avalue) const
 {
   Handle(Dynamic_ObjectParameter) objectparameter;
-  cout<<"Le parametre "<<aname<<" du type "<<atype<<" avec "<<avalue<<" n'existe pas."<<endl;
+  cout<<"Parameter "<<aname<<" of type "<<atype<<" with "<<avalue<<" does not exist."<<endl;
   return objectparameter;
 }
 

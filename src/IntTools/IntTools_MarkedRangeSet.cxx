@@ -224,8 +224,8 @@ Standard_Integer IntTools_MarkedRangeSet::GetIndex(const Standard_Real theValue,
 {
   Standard_Integer anIndex = 0;
 
-  if(UseLower && (theValue < myRangeSetStorer(1)) ||
-     (!UseLower && (theValue <= myRangeSetStorer(1))))
+  if((UseLower && theValue < myRangeSetStorer(1)) ||
+     (!UseLower && theValue <= myRangeSetStorer(1)))
     anIndex = 0;
   else {
     for(Standard_Integer i = 2; i <= myRangeSetStorer.Length(); i++) {

@@ -31,12 +31,6 @@
 #ifndef _BRepMesh_Delaun_HeaderFile
 #include <BRepMesh_Delaun.hxx>
 #endif
-#ifndef _gp_XY_HeaderFile
-#include <gp_XY.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
-#include <gp_Pnt2d.hxx>
-#endif
 #ifndef _BRepMesh_Triangle_HeaderFile
 #include <BRepMesh_Triangle.hxx>
 #endif

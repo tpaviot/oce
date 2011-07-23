@@ -288,7 +288,6 @@ void PlotMgt_PlotterParameter::ProcessParamVal (
                                TCollection_AsciiString& aValue)
 {
   Standard_Integer i, n = myDescription -> Length ();
-  Standard_Boolean fFound = Standard_False;
   TCollection_AsciiString searchStr = myName, aLine;
 //JR/Hp
   searchStr += (Standard_CString ) (aParamSign ? aParamSign : "");
@@ -304,7 +303,6 @@ void PlotMgt_PlotterParameter::ProcessParamVal (
       STRING_TRIM(aLine);
       myFlags |= aFlag;
       aValue   = aLine;
-      fFound   = Standard_True;
       // Remove all other <aParamSign> strings
       Standard_Integer j = 1;
       while (j <= n) {
@@ -464,7 +462,7 @@ Standard_Boolean PlotMgt_PlotterParameter::BValue () const
   if (myType == _T_BOOL) {
     if (myFlags & FLAG_DEFVAL && !myDefValue.IsEmpty()) {
       if (myDefValue.IsEqual("true") ||
-            myDefValue.IsIntegerValue() && myDefValue.IntegerValue())
+            (myDefValue.IsIntegerValue() && myDefValue.IntegerValue()))
         return Standard_True;
     } else
       GET_EMPTY_VALUE_INFO("FALSE");

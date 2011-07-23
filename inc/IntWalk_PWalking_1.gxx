@@ -357,11 +357,9 @@ Standard_Boolean IntWalk_PWalking::PerformFirstPoint  (const TColStd_Array1OfRea
   close = Standard_False;
   //
   Standard_Integer i;
-  Standard_Real aTmp;
   TColStd_Array1OfReal Param(1,4);
   //
   for (i=1; i<=4; ++i) {
-    aTmp = ParDep(i);
     Param(i) = ParDep(i);
   }
   //-- calcul du premier point solution
@@ -402,7 +400,6 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   //xf
   Standard_Integer i, NbPasOKConseq;
   Standard_Real UFirst1, VFirst1, ULast1, VLast1, UFirst2, VFirst2, ULast2, VLast2;
-  Standard_Real pasMaxSV[4], aTmp;
   TColStd_Array1OfReal Param(1,4);
   IntImp_ConstIsoparametric ChoixIso;
   //xt
@@ -450,13 +447,12 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   line = new IntSurf_LineOn2S ();
   //
   for (i=1; i<=4; ++i) {
-    aTmp=ParDep(i);
     Param(i)=ParDep(i);
   }
   //-- reprise des pas uv lies aux surfaces Caro1 et Caro2
   //-- pasuv[] et pasSav[] sont modifies lors du cheminement
   for(i = 0; i < 4; ++i) { 
-    pasMaxSV[i] = pasSav[i] = pasuv[i] = pasInit[i]; 
+    pasSav[i] = pasuv[i] = pasInit[i]; 
   }
 
   //-- calcul du premier point solution

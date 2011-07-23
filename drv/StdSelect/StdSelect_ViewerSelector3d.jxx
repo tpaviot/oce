@@ -1,11 +1,11 @@
+#ifndef _Select3D_Projector_HeaderFile
+#include <Select3D_Projector.hxx>
+#endif
 #ifndef _Graphic3d_Group_HeaderFile
 #include <Graphic3d_Group.hxx>
 #endif
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Select3D_Projector_HeaderFile
-#include <Select3D_Projector.hxx>
 #endif
 #ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>

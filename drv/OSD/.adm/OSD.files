@@ -192,6 +192,7 @@ pubinclude OSD_PThread.hxx
 pubinclude OSD_NListOfSystemFont.hxx
 pubinclude OSD_PerfMeter.h
 pubinclude OSD_PerfMeter.hxx
+pubinclude OSD_MAllocHook.hxx
 dbadmfile OSD_obj_inc.In
 dbadmfile OSD_obj_inc.Out
 dbadmfile OSD_obj_inc.Dep

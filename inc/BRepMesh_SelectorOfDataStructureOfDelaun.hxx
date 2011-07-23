@@ -16,17 +16,8 @@
 #ifndef _Handle_BRepMesh_DataStructureOfDelaun_HeaderFile
 #include <Handle_BRepMesh_DataStructureOfDelaun.hxx>
 #endif
-#ifndef _MeshDS_MapOfInteger_HeaderFile
-#include <MeshDS_MapOfInteger.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun.hxx>
+#ifndef _BRepMesh_MapOfInteger_HeaderFile
+#include <BRepMesh_MapOfInteger.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -35,18 +26,10 @@ class BRepMesh_DataStructureOfDelaun;
 class BRepMesh_Vertex;
 class BRepMesh_Edge;
 class BRepMesh_Triangle;
-class BRepMesh_NodeHasherOfDataStructureOfDelaun;
-class BRepMesh_LinkHasherOfDataStructureOfDelaun;
-class BRepMesh_ElemHasherOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
-class BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
-class BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
-class BRepMesh_IMapOfElementOfDataStructureOfDelaun;
-class BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
 
 
-
+//! Describes a selector and  an Iterator on a <br>
+//!          selector of components of a Mesh. <br>
 class BRepMesh_SelectorOfDataStructureOfDelaun  {
 public:
 
@@ -79,22 +62,26 @@ public:
   Standard_EXPORT     void NeighboursOfLink(const Standard_Integer indexLink) ;
   
   Standard_EXPORT     void NeighboursOf(const BRepMesh_Triangle& theElem) ;
-  
+  //! All Neighbours  Of the Element. By <br>
+//!          edge or by vertices. <br>
   Standard_EXPORT     void NeighboursOfElement(const Standard_Integer indexElem) ;
-  
+  //! Neighbours by edge Of the Element. <br>
   Standard_EXPORT     void NeighboursByEdgeOf(const BRepMesh_Triangle& theElem) ;
-  
+  //! Adds a level of Neighbours by edge <br>
+//!          to the selector <theSelector>. <br>
   Standard_EXPORT     void NeighboursOf(const BRepMesh_SelectorOfDataStructureOfDelaun& theSelector) ;
-  
+  //! Adds a level of Neighbours by edge <br>
+//!          to the selector <me>. <br>
   Standard_EXPORT     void AddNeighbours() ;
   
-  Standard_EXPORT    const MeshDS_MapOfInteger& Nodes() const;
+  Standard_EXPORT    const BRepMesh_MapOfInteger& Nodes() const;
   
-  Standard_EXPORT    const MeshDS_MapOfInteger& Links() const;
+  Standard_EXPORT    const BRepMesh_MapOfInteger& Links() const;
   
-  Standard_EXPORT    const MeshDS_MapOfInteger& Elements() const;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& FrontierLinks() const;
+  Standard_EXPORT    const BRepMesh_MapOfInteger& Elements() const;
+  //! Gives the  list  of links  incices <br>
+//!          frontier  of  the  selector  <me>. <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& FrontierLinks() const;
 
 
 
@@ -111,10 +98,10 @@ private:
 
 
 Handle_BRepMesh_DataStructureOfDelaun myMesh;
-MeshDS_MapOfInteger myNodes;
-MeshDS_MapOfInteger myLinks;
-MeshDS_MapOfInteger myElements;
-MeshDS_MapOfInteger myFrontier;
+BRepMesh_MapOfInteger myNodes;
+BRepMesh_MapOfInteger myLinks;
+BRepMesh_MapOfInteger myElements;
+BRepMesh_MapOfInteger myFrontier;
 
 
 };

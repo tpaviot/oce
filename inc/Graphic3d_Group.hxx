@@ -221,7 +221,7 @@ public:
   Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_Vector& Normal,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Links up points to create a face drawn <br>
 //!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
+//!      The first and last points are not duplicated. <br>
 //!      The normal is defined and normalised for each vertex. <br>
 //!          The texture coordinate is defined for each vertex. <br>
   Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertexNT& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;

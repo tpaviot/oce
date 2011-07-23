@@ -19,8 +19,8 @@
 #ifndef _BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
 #endif
-#ifndef _MeshDS_ListOfInteger_HeaderFile
-#include <MeshDS_ListOfInteger.hxx>
+#ifndef _BRepMesh_ListOfInteger_HeaderFile
+#include <BRepMesh_ListOfInteger.hxx>
 #endif
 #ifndef _BRepMesh_IDMapOfLinkOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_IDMapOfLinkOfDataStructureOfDelaun.hxx>
@@ -28,23 +28,14 @@
 #ifndef _BRepMesh_IMapOfElementOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_IMapOfElementOfDataStructureOfDelaun.hxx>
 #endif
-#ifndef _MeshDS_MapOfInteger_HeaderFile
-#include <MeshDS_MapOfInteger.hxx>
+#ifndef _BRepMesh_MapOfInteger_HeaderFile
+#include <BRepMesh_MapOfInteger.hxx>
 #endif
-#ifndef _MeshDS_BaseAllocator_HeaderFile
-#include <MeshDS_BaseAllocator.hxx>
+#ifndef _BRepMesh_BaseAllocator_HeaderFile
+#include <BRepMesh_BaseAllocator.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun.hxx>
-#endif
-#ifndef _Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_HeaderFile
-#include <Handle_BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -52,98 +43,115 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _MeshDS_PairOfIndex_HeaderFile
-#include <MeshDS_PairOfIndex.hxx>
+#ifndef _BRepMesh_PairOfIndex_HeaderFile
+#include <BRepMesh_PairOfIndex.hxx>
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
 class BRepMesh_Vertex;
+class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
 class BRepMesh_Edge;
 class BRepMesh_Triangle;
-class BRepMesh_NodeHasherOfDataStructureOfDelaun;
-class BRepMesh_LinkHasherOfDataStructureOfDelaun;
-class BRepMesh_ElemHasherOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
-class BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
-class BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun;
-class BRepMesh_IMapOfElementOfDataStructureOfDelaun;
-class BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun;
-class BRepMesh_SelectorOfDataStructureOfDelaun;
 
 
-
+//! Describes  the data structure  necessary  for  the <br>
+//!          mesh  algorithms  in  two  dimensions  plane or on <br>
+//!          surface by meshing in UV space. <br>
 class BRepMesh_DataStructureOfDelaun : public MMgt_TShared {
 
 public:
 
-  
-  Standard_EXPORT   BRepMesh_DataStructureOfDelaun(const MeshDS_BaseAllocator& theAllocator,const Standard_Integer NodeNumber = 100);
-  
+  //! <NodeNumber>   is just  an   evaluation of the <br>
+//!          presumed  number of nodes  in this mesh.   The <br>
+//!          Mesh   data  structure will   be automatically <br>
+//!          redimensioned if necessary. <br>
+  Standard_EXPORT   BRepMesh_DataStructureOfDelaun(const BRepMesh_BaseAllocator& theAllocator,const Standard_Integer NodeNumber = 100);
+  //! Adds a node to the  mesh  if  the node is  not <br>
+//!          already in the Mesh.  Returns the index of the <br>
+//!          node in the structure. <br>
   Standard_EXPORT     Standard_Integer AddNode(const BRepMesh_Vertex& theNode) ;
-  
+  //! Get the value of node <Index>. <br>
   Standard_EXPORT    const BRepMesh_Vertex& GetNode(const Standard_Integer Index) ;
    const BRepMesh_Vertex& operator ()(const Standard_Integer Index) 
 {
   return GetNode(Index);
 }
-  
-  Standard_EXPORT    const MeshDS_ListOfInteger& GetNodeList(const Standard_Integer Index) ;
-  
+  //! Get the list of node <Index>. <br>
+  Standard_EXPORT    const BRepMesh_ListOfInteger& GetNodeList(const Standard_Integer Index) ;
+  //! Removes the node of index <index> from the mesh. <br>
   Standard_EXPORT     void ForceRemoveNode(const Standard_Integer Index) ;
-  
+  //! Removes the link of index <index> from the mesh. <br>
   Standard_EXPORT     void ForceRemoveLink(const Standard_Integer Index) ;
-  
+  //! Removes the all nodes and sets new map of <br>
+//! nodes from the mesh. <br>
+//! For internal use only. <br>
   Standard_EXPORT     void ReplaceNodes(const BRepMesh_IDMapOfNodeOfDataStructureOfDelaun& NewNodes) ;
-  
+  //! Removes the node of index <index> from the mesh. <br>
   Standard_EXPORT     void RemoveNode(const Standard_Integer Index) ;
-  
+  //! Changes the UV  value of node of index <Index>  by <br>
+//!          <newNode>. Returns false if <newnode> is already in <br>
+//!          the structure. <br>
   Standard_EXPORT     Standard_Boolean MoveNode(const Standard_Integer Index,const BRepMesh_Vertex& newNode) ;
-  
+  //! Gives the number of nodes in this mesh. <br>
   Standard_EXPORT     Standard_Integer NbNodes() const;
-  
+  //! Adds a Link  to the  mesh if  the Link is  not <br>
+//!          already in the structure. Returns the index of <br>
+//!          the link in the structure. <br>
   Standard_EXPORT     Standard_Integer AddLink(const BRepMesh_Edge& theLink) ;
-  
+  //! Get the value of Link <Index>. <br>
   Standard_EXPORT    const BRepMesh_Edge& GetLink(const Standard_Integer Index) ;
-  
+  //! Removes the Link of  index  <Index> from the <br>
+//!          mesh. <br>
   Standard_EXPORT     void RemoveLink(const Standard_Integer Index) ;
-  
+  //! Substitutes  the  Link  of  index  <Index>  by <br>
+//!          <newLink> clear the connectivity. <br>
   Standard_EXPORT     Standard_Boolean SubstituteLink(const Standard_Integer Index,const BRepMesh_Edge& newLink) ;
-  
+  //! Gives the number of elements in this mesh. <br>
   Standard_EXPORT     Standard_Integer NbLinks() const;
-  
+  //! Adds an element  to  the mesh  if it    is not <br>
+//!          already in the  Mesh. Returns the index of the <br>
+//!          element in the structure. <br>
   Standard_EXPORT     Standard_Integer AddElement(const BRepMesh_Triangle& theElement) ;
-  
+  //! Get the value of Element <Index>. <br>
   Standard_EXPORT    const BRepMesh_Triangle& GetElement(const Standard_Integer Index) ;
-  
+  //! Removes the element of index <Index> in the mesh. <br>
   Standard_EXPORT     void RemoveElement(const Standard_Integer Index) ;
-  
+  //! Substitutes  the  element   of  index  <Index>  by <br>
+//!          <newElement>. The links connectivity is updated. <br>
   Standard_EXPORT     Standard_Boolean SubstituteElement(const Standard_Integer Index,const BRepMesh_Triangle& newElement) ;
-  
+  //! Gives the number of elements in this mesh. <br>
   Standard_EXPORT     Standard_Integer NbElements() const;
-  
+  //!  Removes all elements <br>
   Standard_EXPORT     void ClearDomain() ;
-  
+  //! Finds the index of the node.  Returns 0 if the <br>
+//!          node is not in the mesh. <br>
   Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Vertex& aNode) const;
-  
+  //! Finds the index of the Link.  Returns 0 if the <br>
+//!          Link is not in the mesh. <br>
   Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Edge& aLink) const;
-  
+  //! Finds the index  of the Element.  Returns 0 if <br>
+//!          the Element is not in the mesh. <br>
   Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Triangle& anElement) const;
-  
-  Standard_EXPORT    const MeshDS_ListOfInteger& LinkNeighboursOf(const Standard_Integer theNode) const;
-  
-  Standard_EXPORT    const MeshDS_PairOfIndex& ElemConnectedTo(const Standard_Integer theLink) const;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& ElemOfDomain() const;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& LinkOfDomain() const;
-  
+  //! Gives the list of  Link's indices handling the <br>
+//!          node <theNode>. <br>
+  Standard_EXPORT    const BRepMesh_ListOfInteger& LinkNeighboursOf(const Standard_Integer theNode) const;
+  //! Gives the element's indices conected <br>
+//!          to <theLink>. <br>
+  Standard_EXPORT    const BRepMesh_PairOfIndex& ElemConnectedTo(const Standard_Integer theLink) const;
+  //! Gives  the  list  of element's indices <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& ElemOfDomain() const;
+  //! Gives  the  list  of link's indices <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& LinkOfDomain() const;
+  //! This method  substitute the deleted  items  by <br>
+//!          the last in  Indexed Data  Maps  to  have only <br>
+//!          non-deleted  elements, links  or  nodes in the <br>
+//!          structure. <br>
   Standard_EXPORT     void ClearDeleted() ;
-  
+  //! Give informations on map. <br>
   Standard_EXPORT     void Statistics(Standard_OStream& flot) const;
   
-  Standard_EXPORT    const MeshDS_BaseAllocator& Allocator() const;
+  Standard_EXPORT    const BRepMesh_BaseAllocator& Allocator() const;
 
 
 
@@ -157,17 +165,18 @@ protected:
 
 private: 
 
-  
+  //! Deletes  the element of  index <Index> in <br>
+//!          the mesh. Used by RemoveElement. <br>
   Standard_EXPORT     void ClearElement(const Standard_Integer Index,const BRepMesh_Triangle& theElem) ;
 
 BRepMesh_IDMapOfNodeOfDataStructureOfDelaun myNodes;
-MeshDS_ListOfInteger myDelNodes;
+BRepMesh_ListOfInteger myDelNodes;
 BRepMesh_IDMapOfLinkOfDataStructureOfDelaun myLinks;
-MeshDS_ListOfInteger myDelLinks;
+BRepMesh_ListOfInteger myDelLinks;
 BRepMesh_IMapOfElementOfDataStructureOfDelaun myElements;
-MeshDS_MapOfInteger myElemOfDomain;
-MeshDS_MapOfInteger myLinkOfDomain;
-MeshDS_BaseAllocator myAllocator;
+BRepMesh_MapOfInteger myElemOfDomain;
+BRepMesh_MapOfInteger myLinkOfDomain;
+BRepMesh_BaseAllocator myAllocator;
 
 
 };

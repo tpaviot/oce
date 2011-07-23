@@ -25,4 +25,4 @@
 +V XmlMDataStd:msentity:XmlMDataStd_NamedDataDriver .
 +V XmlMDataStd:msentity:XmlMDataStd_AsciiStringDriver .
 +V XmlMDataStd:msentity:XmlMDataStd_IntPackedMapDriver .
-- XmlMDataStd:admfile:XmlMDataStd_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/XmlMDataStd/XmlMDataStd_xcpp_fill.Out
+- XmlMDataStd:admfile:XmlMDataStd_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/XmlMDataStd/XmlMDataStd_xcpp_fill.Out

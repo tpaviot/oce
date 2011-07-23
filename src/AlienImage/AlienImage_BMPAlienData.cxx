@@ -133,7 +133,7 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
   nBitCount = _TestSwapWORD (isOS2Format ? bmch.bcBitCount: bmih.biBitCount);
   if ((nBitCount != 1 &&  nBitCount != 4 && nBitCount != 8 &&
        nBitCount != 16 && nBitCount != 24 && nBitCount != 32) ||
-       isOS2Format && (nBitCount == 16 || nBitCount == 32)) {
+       (isOS2Format && (nBitCount == 16 || nBitCount == 32))) {
     cout << "AlienImage_BMPAlienData::Read() : Bad <nBitCount> value :"
          << nBitCount << " " << isOS2Format << endl << flush;
     goto _ExitReadError;
@@ -291,8 +291,8 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
                                              : (*ptrByte++ & 0xf0) >> 4;
         }
         // each run must aligned on a word boundary
-        if (iCompression == BI_RLE8 && (bCode & 1) ||
-            iCompression == BI_RLE4 && (bCode & 3))
+        if ((iCompression == BI_RLE8 && (bCode & 1)) ||
+            (iCompression == BI_RLE4 && (bCode & 3)))
           ptrByte ++;
       }
     }

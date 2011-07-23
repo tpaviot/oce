@@ -235,7 +235,7 @@ GC gctext,gcpoly,gcline ;
 XW_ATTRIB code ;
 #endif /*XW_PROTOTYPE*/
 {
-int i,ix,iy,mode,length,font = QGFONT(code),type = QGTYPE(code) ;
+int i,ix,iy,length,font = QGFONT(code),type = QGTYPE(code) ;
 float angle,marge,cosa,sina ;
 char *pchar ;
 XPoint points[5] ;
@@ -252,7 +252,6 @@ XPoint points[5] ;
 	      iy = ptextlist->rpoints[i].y ;
 	      angle = ptextlist->rangles[i] ;
 	    }
-	    mode = ptextlist->modes[i] ;
 	    marge = ptextlist->marges[i] ;
 	    pchar = ptextlist->ptexts[i] ;
             if( type & XW_EXTENDEDTEXT_MINHEIGHT ) {

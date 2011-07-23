@@ -10,6 +10,16 @@
 
 #include <stdio.h>
 
+#if defined(_MSC_VER)
+# define FMT_SZ_Q "I"
+#elif defined(__GNUC__)
+# define FMT_SZ_Q "z"
+#elif defined(_OCC64)
+# define FMT_SZ_Q "l"
+#else
+# define FMT_SZ_Q ""
+#endif
+
 IMPLEMENT_STANDARD_HANDLE (NCollection_HeapAllocator, NCollection_BaseAllocator)
 IMPLEMENT_STANDARD_RTTIEXT(NCollection_HeapAllocator, NCollection_BaseAllocator)
 
@@ -25,7 +35,7 @@ void * NCollection_HeapAllocator::Allocate (const Standard_Size theSize)
   void * pResult = malloc(aRoundSize);
   if (!pResult) {
     char buf[128];
-    sprintf (buf, "Failed to allocate %lu bytes in global dynamic heap",theSize);
+    sprintf (buf, "Failed to allocate %"FMT_SZ_Q"u bytes in global dynamic heap",theSize);
     Standard_OutOfMemory::Raise(&buf[0]);
   }
   return pResult;

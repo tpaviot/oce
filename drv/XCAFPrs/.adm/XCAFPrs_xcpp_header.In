@@ -11,4 +11,4 @@
 +V XCAFPrs:msentity:XCAFPrs_DataMapIteratorOfDataMapOfStyleShape .
 +V XCAFPrs:msentity:XCAFPrs_DataMapNodeOfDataMapOfStyleTransient .
 +V XCAFPrs:msentity:XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient .
-- XCAFPrs:admfile:XCAFPrs_xcpp_fill.Out /dn43/OCCT/tmp/results_28.02.2011/occt/release-sources-20110228/.adm/XCAFPrs/XCAFPrs_xcpp_fill.Out
+- XCAFPrs:admfile:XCAFPrs_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/XCAFPrs/XCAFPrs_xcpp_fill.Out

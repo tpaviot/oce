@@ -19,8 +19,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _MeshAlgo_CircleTool_HeaderFile
-#include <MeshAlgo_CircleTool.hxx>
+#ifndef _BRepMesh_CircleTool_HeaderFile
+#include <BRepMesh_CircleTool.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -28,41 +28,27 @@
 #ifndef _BRepMesh_Triangle_HeaderFile
 #include <BRepMesh_Triangle.hxx>
 #endif
-#ifndef _MeshDS_MapOfInteger_HeaderFile
-#include <MeshDS_MapOfInteger.hxx>
-#endif
-#ifndef _Handle_BRepMesh_HArray1OfVertexOfDelaun_HeaderFile
-#include <Handle_BRepMesh_HArray1OfVertexOfDelaun.hxx>
+#ifndef _BRepMesh_MapOfInteger_HeaderFile
+#include <BRepMesh_MapOfInteger.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _MeshDS_MapOfIntegerInteger_HeaderFile
-#include <MeshDS_MapOfIntegerInteger.hxx>
+#ifndef _BRepMesh_MapOfIntegerInteger_HeaderFile
+#include <BRepMesh_MapOfIntegerInteger.hxx>
 #endif
 class BRepMesh_DataStructureOfDelaun;
+class BRepMesh_Array1OfVertexOfDelaun;
+class TColStd_Array1OfInteger;
 class BRepMesh_Vertex;
 class BRepMesh_Edge;
 class BRepMesh_Triangle;
-class BRepMesh_NodeHasherOfDataStructureOfDelaun;
-class BRepMesh_LinkHasherOfDataStructureOfDelaun;
-class BRepMesh_ElemHasherOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
-class BRepMesh_IDMapOfLinkOfDataStructureOfDelaun;
-class BRepMesh_IMapOfElementOfDataStructureOfDelaun;
-class BRepMesh_SelectorOfDataStructureOfDelaun;
-class BRepMesh_ComparatorOfVertexOfDelaun;
-class BRepMesh_ComparatorOfIndexedVertexOfDelaun;
-class BRepMesh_Array1OfVertexOfDelaun;
-class BRepMesh_HArray1OfVertexOfDelaun;
-class BRepMesh_HeapSortVertexOfDelaun;
-class BRepMesh_HeapSortIndexedVertexOfDelaun;
-class TColStd_Array1OfInteger;
 class Bnd_Box2d;
 class TColStd_SequenceOfInteger;
 
 
-
+//! Compute the  Delaunay's triangulation    with  the <br>
+//!          algorithm of Watson. <br>
 class BRepMesh_Delaun  {
 public:
 
@@ -79,49 +65,63 @@ public:
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
 
-  
+  //! Creates the  triangulation with an  empty Mesh <br>
+//!          data structure. <br>
   Standard_EXPORT   BRepMesh_Delaun(BRepMesh_Array1OfVertexOfDelaun& Vertices,const Standard_Boolean ZPositive = Standard_True);
-  
+  //! Creates  the triangulation with   and existant <br>
+//!          Mesh data structure. <br>
   Standard_EXPORT   BRepMesh_Delaun(const Handle(BRepMesh_DataStructureOfDelaun)& OldMesh,BRepMesh_Array1OfVertexOfDelaun& Vertices,const Standard_Boolean ZPositive = Standard_True);
-  
+  //! Creates  the triangulation with   and existant <br>
+//!          Mesh data structure. <br>
   Standard_EXPORT   BRepMesh_Delaun(const Handle(BRepMesh_DataStructureOfDelaun)& OldMesh,TColStd_Array1OfInteger& VertexIndices,const Standard_Boolean ZPositive = Standard_True);
-  
+  //! Adds a new vertex in the triangulation. <br>
   Standard_EXPORT     void AddVertex(const BRepMesh_Vertex& theVertex) ;
-  
+  //! Removes a vertex in the triangulation. <br>
   Standard_EXPORT     void RemoveVertex(const BRepMesh_Vertex& theVertex) ;
-  
+  //! Adds some vertices in the triangulation. <br>
   Standard_EXPORT     void AddVertices(BRepMesh_Array1OfVertexOfDelaun& Vertices) ;
-  
+  //! Substitutes the Edge beetween to  triangles by the <br>
+//!          other  diagonal  of  the  quadrilatere  if  it  is <br>
+//!          possible (convex polygon). Return True if done. <br>
   Standard_EXPORT     Standard_Boolean RevertDiagonal(const Standard_Integer theEdge) ;
-  
+  //! Modify mesh to use the edge. Return True if done. <br>
   Standard_EXPORT     Standard_Boolean UseEdge(const Standard_Integer theEdge) ;
-  
+  //! Smooths the  mesh  in 2d space. The  method  is to <br>
+//!          move  the  free  and  OnSurface  vertices  at  the <br>
+//!          barycentre of their polygon. <br>
   Standard_EXPORT     void SmoothMesh(const Standard_Real Epsilon) ;
-  
+  //! Gives the Mesh data structure. <br>
   Standard_EXPORT    const Handle_BRepMesh_DataStructureOfDelaun& Result() const;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& Frontier() ;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& InternalEdges() ;
-  
-  Standard_EXPORT    const MeshDS_MapOfInteger& FreeEdges() ;
+  //! Gives the list of frontier edges <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& Frontier() ;
+  //! Gives the list of internal edges <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& InternalEdges() ;
+  //! Gives the list of free edges used only one time <br>
+  Standard_EXPORT    const BRepMesh_MapOfInteger& FreeEdges() ;
   
        const BRepMesh_Vertex& GetVertex(const Standard_Integer vIndex) const;
   
        const BRepMesh_Edge& GetEdge(const Standard_Integer eIndex) const;
   
        const BRepMesh_Triangle& GetTriangle(const Standard_Integer tIndex) const;
-  
+  //! Initializes the triangulation with an Array of <br>
+//!          Vertex. <br>
   Standard_EXPORT     void Init(BRepMesh_Array1OfVertexOfDelaun& Vertices) ;
-  
+  //! Computes the triangulation and add the vertices <br>
+//!          edges and triangles to the Mesh data structure. <br>
   Standard_EXPORT     void Compute(TColStd_Array1OfInteger& VertexIndices) ;
-  
+  //! Clear the  existing  triangles  and recomputes <br>
+//!          the triangulation . <br>
   Standard_EXPORT     void ReCompute(TColStd_Array1OfInteger& VertexIndices) ;
-  
+  //! Build the super mesh . <br>
   Standard_EXPORT     void SuperMesh(const Bnd_Box2d& theBox) ;
-  
+  //! Test  if   triangle   of  index   <TrianIndex> <br>
+//!          contains geometricaly <theVertex>. If <EdgeOn> <br>
+//!          is != 0  then theVertex is  on Edge  of  index <br>
+//!          <edgeOn>. <br>
   Standard_EXPORT     Standard_Boolean Contains(const Standard_Integer TrianIndex,const BRepMesh_Vertex& theVertex,Standard_Integer& edgeOn) const;
-  
+  //! Gives  the   index   of  triangle   containing <br>
+//!          geometricaly <theVertex>. <br>
   Standard_EXPORT     Standard_Integer TriangleContaining(const BRepMesh_Vertex& theVertex) ;
 
 
@@ -136,141 +136,37 @@ protected:
 
 private:
 
-  
+  //! Adjust the mesh on the frontier. <br>
   Standard_EXPORT     void FrontierAdjust() ;
-  
+  //! Find left polygon of the edge and call MeshPolygon. <br>
   Standard_EXPORT     void MeshLeftPolygonOf(const Standard_Integer EdgeIndex,const Standard_Boolean EdgeSens) ;
-  
+  //! Mesh closed polygon. <br>
   Standard_EXPORT     void MeshPolygon(TColStd_SequenceOfInteger& Polygon) ;
-  
-  Standard_EXPORT     void CreateTriangles(const Standard_Integer vertexIndex,MeshDS_MapOfIntegerInteger& freeEdges) ;
-  
-  Standard_EXPORT     void DeleteTriangle(const Standard_Integer TrianIndex,MeshDS_MapOfIntegerInteger& freeEdges) ;
+  //! Creates the triangles beetween the node <br>
+//!          <Vertex> and the polyline <freeEdges>. <br>
+  Standard_EXPORT     void CreateTriangles(const Standard_Integer vertexIndex,BRepMesh_MapOfIntegerInteger& freeEdges) ;
+  //! Deletes the triangle of index <TrianIndex> and <br>
+//!          add the free edges to the map. <br>
+//!          When an edge is suppressed more than one time <br>
+//!          it is destroyed. <br>
+  Standard_EXPORT     void DeleteTriangle(const Standard_Integer TrianIndex,BRepMesh_MapOfIntegerInteger& freeEdges) ;
 
 
 Handle_BRepMesh_DataStructureOfDelaun MeshData;
 Standard_Boolean PositiveOrientation;
-MeshAlgo_CircleTool tCircles;
+BRepMesh_CircleTool tCircles;
 Standard_Integer supVert1;
 Standard_Integer supVert2;
 Standard_Integer supVert3;
 BRepMesh_Triangle supTrian;
-MeshDS_MapOfInteger mapEdges;
+BRepMesh_MapOfInteger mapEdges;
 
 
 };
 
-#define Vertex BRepMesh_Vertex
-#define Vertex_hxx <BRepMesh_Vertex.hxx>
-#define Edge BRepMesh_Edge
-#define Edge_hxx <BRepMesh_Edge.hxx>
-#define Triangle BRepMesh_Triangle
-#define Triangle_hxx <BRepMesh_Triangle.hxx>
-#define MeshAlgo_DataStructure BRepMesh_DataStructureOfDelaun
-#define MeshAlgo_DataStructure_hxx <BRepMesh_DataStructureOfDelaun.hxx>
-#define MeshAlgo_NodeHasherOfDataStructure BRepMesh_NodeHasherOfDataStructureOfDelaun
-#define MeshAlgo_NodeHasherOfDataStructure_hxx <BRepMesh_NodeHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_LinkHasherOfDataStructure BRepMesh_LinkHasherOfDataStructureOfDelaun
-#define MeshAlgo_LinkHasherOfDataStructure_hxx <BRepMesh_LinkHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_ElemHasherOfDataStructure BRepMesh_ElemHasherOfDataStructureOfDelaun
-#define MeshAlgo_ElemHasherOfDataStructure_hxx <BRepMesh_ElemHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IDMapOfNodeOfDataStructure BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
-#define MeshAlgo_IDMapOfNodeOfDataStructure_hxx <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IDMapOfLinkOfDataStructure BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
-#define MeshAlgo_IDMapOfLinkOfDataStructure_hxx <BRepMesh_IDMapOfLinkOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IMapOfElementOfDataStructure BRepMesh_IMapOfElementOfDataStructureOfDelaun
-#define MeshAlgo_IMapOfElementOfDataStructure_hxx <BRepMesh_IMapOfElementOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_SelectorOfDataStructure BRepMesh_SelectorOfDataStructureOfDelaun
-#define MeshAlgo_SelectorOfDataStructure_hxx <BRepMesh_SelectorOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_NodeHasherOfDataStructure BRepMesh_NodeHasherOfDataStructureOfDelaun
-#define MeshAlgo_NodeHasherOfDataStructure_hxx <BRepMesh_NodeHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_LinkHasherOfDataStructure BRepMesh_LinkHasherOfDataStructureOfDelaun
-#define MeshAlgo_LinkHasherOfDataStructure_hxx <BRepMesh_LinkHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_ElemHasherOfDataStructure BRepMesh_ElemHasherOfDataStructureOfDelaun
-#define MeshAlgo_ElemHasherOfDataStructure_hxx <BRepMesh_ElemHasherOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IDMapOfNodeOfDataStructure BRepMesh_IDMapOfNodeOfDataStructureOfDelaun
-#define MeshAlgo_IDMapOfNodeOfDataStructure_hxx <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IDMapOfLinkOfDataStructure BRepMesh_IDMapOfLinkOfDataStructureOfDelaun
-#define MeshAlgo_IDMapOfLinkOfDataStructure_hxx <BRepMesh_IDMapOfLinkOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_IMapOfElementOfDataStructure BRepMesh_IMapOfElementOfDataStructureOfDelaun
-#define MeshAlgo_IMapOfElementOfDataStructure_hxx <BRepMesh_IMapOfElementOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_SelectorOfDataStructure BRepMesh_SelectorOfDataStructureOfDelaun
-#define MeshAlgo_SelectorOfDataStructure_hxx <BRepMesh_SelectorOfDataStructureOfDelaun.hxx>
-#define MeshAlgo_ComparatorOfVertex BRepMesh_ComparatorOfVertexOfDelaun
-#define MeshAlgo_ComparatorOfVertex_hxx <BRepMesh_ComparatorOfVertexOfDelaun.hxx>
-#define MeshAlgo_ComparatorOfIndexedVertex BRepMesh_ComparatorOfIndexedVertexOfDelaun
-#define MeshAlgo_ComparatorOfIndexedVertex_hxx <BRepMesh_ComparatorOfIndexedVertexOfDelaun.hxx>
-#define MeshAlgo_Array1OfVertex BRepMesh_Array1OfVertexOfDelaun
-#define MeshAlgo_Array1OfVertex_hxx <BRepMesh_Array1OfVertexOfDelaun.hxx>
-#define MeshAlgo_HArray1OfVertex BRepMesh_HArray1OfVertexOfDelaun
-#define MeshAlgo_HArray1OfVertex_hxx <BRepMesh_HArray1OfVertexOfDelaun.hxx>
-#define MeshAlgo_HeapSortVertex BRepMesh_HeapSortVertexOfDelaun
-#define MeshAlgo_HeapSortVertex_hxx <BRepMesh_HeapSortVertexOfDelaun.hxx>
-#define MeshAlgo_HeapSortIndexedVertex BRepMesh_HeapSortIndexedVertexOfDelaun
-#define MeshAlgo_HeapSortIndexedVertex_hxx <BRepMesh_HeapSortIndexedVertexOfDelaun.hxx>
-#define Handle_MeshAlgo_DataStructure Handle_BRepMesh_DataStructureOfDelaun
-#define MeshAlgo_DataStructure_Type_() BRepMesh_DataStructureOfDelaun_Type_()
-#define Handle_MeshAlgo_HArray1OfVertex Handle_BRepMesh_HArray1OfVertexOfDelaun
-#define MeshAlgo_HArray1OfVertex_Type_() BRepMesh_HArray1OfVertexOfDelaun_Type_()
-#define MeshAlgo_Delaunay BRepMesh_Delaun
-#define MeshAlgo_Delaunay_hxx <BRepMesh_Delaun.hxx>
 
-#include <MeshAlgo_Delaunay.lxx>
+#include <BRepMesh_Delaun.lxx>
 
-#undef Vertex
-#undef Vertex_hxx
-#undef Edge
-#undef Edge_hxx
-#undef Triangle
-#undef Triangle_hxx
-#undef MeshAlgo_DataStructure
-#undef MeshAlgo_DataStructure_hxx
-#undef MeshAlgo_NodeHasherOfDataStructure
-#undef MeshAlgo_NodeHasherOfDataStructure_hxx
-#undef MeshAlgo_LinkHasherOfDataStructure
-#undef MeshAlgo_LinkHasherOfDataStructure_hxx
-#undef MeshAlgo_ElemHasherOfDataStructure
-#undef MeshAlgo_ElemHasherOfDataStructure_hxx
-#undef MeshAlgo_IDMapOfNodeOfDataStructure
-#undef MeshAlgo_IDMapOfNodeOfDataStructure_hxx
-#undef MeshAlgo_IDMapOfLinkOfDataStructure
-#undef MeshAlgo_IDMapOfLinkOfDataStructure_hxx
-#undef MeshAlgo_IMapOfElementOfDataStructure
-#undef MeshAlgo_IMapOfElementOfDataStructure_hxx
-#undef MeshAlgo_SelectorOfDataStructure
-#undef MeshAlgo_SelectorOfDataStructure_hxx
-#undef MeshAlgo_NodeHasherOfDataStructure
-#undef MeshAlgo_NodeHasherOfDataStructure_hxx
-#undef MeshAlgo_LinkHasherOfDataStructure
-#undef MeshAlgo_LinkHasherOfDataStructure_hxx
-#undef MeshAlgo_ElemHasherOfDataStructure
-#undef MeshAlgo_ElemHasherOfDataStructure_hxx
-#undef MeshAlgo_IDMapOfNodeOfDataStructure
-#undef MeshAlgo_IDMapOfNodeOfDataStructure_hxx
-#undef MeshAlgo_IDMapOfLinkOfDataStructure
-#undef MeshAlgo_IDMapOfLinkOfDataStructure_hxx
-#undef MeshAlgo_IMapOfElementOfDataStructure
-#undef MeshAlgo_IMapOfElementOfDataStructure_hxx
-#undef MeshAlgo_SelectorOfDataStructure
-#undef MeshAlgo_SelectorOfDataStructure_hxx
-#undef MeshAlgo_ComparatorOfVertex
-#undef MeshAlgo_ComparatorOfVertex_hxx
-#undef MeshAlgo_ComparatorOfIndexedVertex
-#undef MeshAlgo_ComparatorOfIndexedVertex_hxx
-#undef MeshAlgo_Array1OfVertex
-#undef MeshAlgo_Array1OfVertex_hxx
-#undef MeshAlgo_HArray1OfVertex
-#undef MeshAlgo_HArray1OfVertex_hxx
-#undef MeshAlgo_HeapSortVertex
-#undef MeshAlgo_HeapSortVertex_hxx
-#undef MeshAlgo_HeapSortIndexedVertex
-#undef MeshAlgo_HeapSortIndexedVertex_hxx
-#undef Handle_MeshAlgo_DataStructure
-#undef MeshAlgo_DataStructure_Type_
-#undef Handle_MeshAlgo_HArray1OfVertex
-#undef MeshAlgo_HArray1OfVertex_Type_
-#undef MeshAlgo_Delaunay
-#undef MeshAlgo_Delaunay_hxx
 
 
 // other Inline functions and methods (like "C++: function call" methods)

@@ -46,7 +46,7 @@ Standard_Integer props(Draw_Interpretor& di, Standard_Integer n, const char** a)
   Standard_Boolean onlyClosed = Standard_False;
   Standard_Real eps = 1.0;
   Standard_Boolean witheps = Standard_False;
-  if(n > 2 && *a[2]=='c' || n > 3 && *a[3]=='c') onlyClosed = Standard_True;
+  if((n > 2 && *a[2]=='c') || (n > 3 && *a[3]=='c')) onlyClosed = Standard_True;
   if(n > 2 && *a[2]!='c' && n != 5) {eps = atof (a[2]); witheps = Standard_True;}
 
   if (witheps){
