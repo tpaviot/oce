@@ -561,7 +561,7 @@ void Extrema_GenExtPS::Perform(const gp_Pnt& P)
       Bnd_SphereUBTreeSelectorMin aSelector(mySphereArray, aSol);
       //aSelector.SetMaxDist( RealLast() );
       aSelector.DefineCheckPoint( P );
-      Standard_Integer aNbSel = mySphereUBTree->Select( aSelector );
+      mySphereUBTree->Select( aSelector );
       //TODO: check if no solution in binary tree
       Bnd_Sphere& aSph = aSelector.Sphere();
 
@@ -576,7 +576,7 @@ void Extrema_GenExtPS::Perform(const gp_Pnt& P)
       Bnd_SphereUBTreeSelectorMax aSelector(mySphereArray, aSol);
       //aSelector.SetMaxDist( RealLast() );
       aSelector.DefineCheckPoint( P );
-      Standard_Integer aNbSel = mySphereUBTree->Select( aSelector );
+      mySphereUBTree->Select( aSelector );
       //TODO: check if no solution in binary tree
       Bnd_Sphere& aSph = aSelector.Sphere();
 

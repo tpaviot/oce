@@ -206,8 +206,7 @@
     anArray1OfRoots(j)=mySequenceOfRoots(j);
   }
   
-  IntTools_QuickSort aQS;
-  aQS.Sort(anArray1OfRoots, aComparator);
+  IntTools_QuickSort::Sort(anArray1OfRoots, aComparator);
   
   mySequenceOfRoots.Clear();
   for (j=1; j<=aNbRoots; j++) {

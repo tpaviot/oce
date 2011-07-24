@@ -1193,8 +1193,6 @@ Standard_Real BRepMesh_FastDiscretFace::Control(const Handle(BRepAdaptor_HSurfac
   Standard_Boolean caninsert;
 
   Standard_Real sqdefface = theDefFace * theDefFace;
-  Standard_Real ddu = theCaro->UResolution(theDefFace);
-  Standard_Real ddv = theCaro->VResolution(theDefFace);
 
   GeomAbs_SurfaceType thetype = theCaro->GetType();
   Handle(Geom_Surface) BSpl;

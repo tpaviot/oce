@@ -61,9 +61,8 @@
       anArray1OfPave(i)=aPave;
     }
     
-    BOPTools_QuickSortPave aQuickSortPave;
     BOPTools_ComparePave   aComparePave;
-    aQuickSortPave.Sort (anArray1OfPave, aComparePave);
+    BOPTools_QuickSortPave::Sort (anArray1OfPave, aComparePave);
     
     myPaveList.Clear();
     for (i=1; i<=aNbPaves; i++){
