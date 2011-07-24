@@ -373,7 +373,7 @@ Standard_Integer OSD_Process :: ProcessId () {
 
 OSD_Path OSD_Process :: CurrentDirectory () {
 
- Standard_PCharacter pBuff;
+ Standard_PCharacter pBuff = NULL;
  DWORD            dwSize = 0;
  OSD_Path         retVal;
 
