@@ -70,7 +70,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete (void *,void *)
+  {
 
+  }
   //! Creates a NULL Shape referring to nothing. <br>
       TopoDS_Shape();
   //! Returns true if this shape is null. In other words, it <br>

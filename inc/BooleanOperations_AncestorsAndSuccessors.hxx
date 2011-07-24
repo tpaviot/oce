@@ -44,7 +44,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete (void *,void *)
+  {
 
+  }
   
   Standard_EXPORT   BooleanOperations_AncestorsAndSuccessors();
   //! allocates space and fills it with the data of AncSuccessors. <br>
