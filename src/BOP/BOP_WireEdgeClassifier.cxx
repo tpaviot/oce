@@ -256,7 +256,7 @@ static
   IntTools_Tools::MakeFaceFromWireAndFace (aW2, theFace, aFN2);  
   
   anExp1.Init (aFN1, TopAbs_EDGE);
-  for (; anExp1.More(); anExp1.Next()){
+  if(anExp1.More()){
     const TopoDS_Edge& aE1=TopoDS::Edge(anExp1.Current());
     //
     // The block that choises step in 2D taking into account
