@@ -240,10 +240,6 @@ Standard_Integer OSD_Environment::Error() const
 
 #include <stdio.h>
 
-#ifdef _MSC_VER
-#pragma warning( disable : 4700 )
-#endif
-
 static void __fastcall _set_error ( OSD_Error&, DWORD );
 
 OSD_Environment :: OSD_Environment () {

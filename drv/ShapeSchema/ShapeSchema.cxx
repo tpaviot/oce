@@ -476,6 +476,11 @@
 #include <ShapeSchema_PCollection_HExtendedString.hxx>
 #endif
 
+// avoid warnings on 'extern "C"' functions returning C++ classes
+#ifdef _MSC_VER
+#pragma warning(disable:4190)
+#endif
+
 IMPLEMENT_STANDARD_HANDLE(ShapeSchema,Storage_Schema)
 IMPLEMENT_STANDARD_RTTIEXT(ShapeSchema,Storage_Schema)
 

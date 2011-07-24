@@ -216,10 +216,6 @@ Standard_Integer OSD_Process::Error()const{
 #include <stdint.h>
 #endif
 
-#ifdef _MSC_VER
-#pragma warning( disable : 4700 )
-#endif
-
 void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 
 OSD_Process :: OSD_Process () {

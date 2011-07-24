@@ -184,7 +184,9 @@ Standard_Integer OSD_Host::Error()const{
 
 #include <OSD_Host.hxx>
 
+#ifdef _MSC_VER
 #pragma comment( lib, "WSOCK32.LIB" )
+#endif
 
 void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 

@@ -55,24 +55,20 @@ int Standard_Atomic_Decrement (volatile int* theValue)
   return __sync_sub_and_fetch (theValue, 1);
 }
 
-#elif defined(_MSC_VER) || defined(__BORLANDC__)
-#ifdef __BORLANDC__
-extern "C" {
-  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
-  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
- }
-#else
-extern "C" {
-  long _InterlockedIncrement (volatile long* lpAddend);
-  long _InterlockedDecrement (volatile long* lpAddend);
-}
-#endif
-
-#if defined(_MSC_VER)
-  // force intrinsic instead of WinAPI calls
-  #pragma intrinsic (_InterlockedIncrement)
-  #pragma intrinsic (_InterlockedDecrement)
-#endif
+#elif (defined(_WIN32) || defined(__WIN32__))
+  #ifdef _MSC_VER
+    extern "C" {
+      long _InterlockedIncrement(long volatile* lpAddend);
+      long _InterlockedDecrement(long volatile* lpAddend);
+    }
+  #else
+    extern "C" {
+      __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+      __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+    }
+    #define _InterlockedIncrement InterlockedIncrement
+    #define _InterlockedDecrement InterlockedDecrement
+  #endif
 
 // WinAPI function or MSVC intrinsic
 // Note that we safely cast int* to long*, as they have same size and endian-ness
