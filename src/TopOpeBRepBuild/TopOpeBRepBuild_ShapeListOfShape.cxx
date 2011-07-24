@@ -30,7 +30,9 @@
 #define Msr Standard_Real
 #define Msi Standard_Integer
 #define Msb Standard_Boolean
+#ifndef Mso
 #define Mso Standard_Ostream
+#endif
 #define Mtcas TCollection_AsciiString
 
 #ifdef DEB
