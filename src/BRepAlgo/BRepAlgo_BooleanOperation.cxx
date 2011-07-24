@@ -60,11 +60,11 @@ Standard_IMPORT Standard_Integer TopOpeBRepTool_BOOOPE_CHECK_DEB;
 //modified by NIZHNY-MZV  Wed Apr 19 17:19:11 2000
 //see comments at the top of file TopOpeBRepBuild_Builder1.cxx
 //about using of this global variable
-Standard_IMPORT Standard_Boolean GLOBAL_USE_NEW_BUILDER;
+extern Standard_Boolean GLOBAL_USE_NEW_BUILDER;
 //
 //modified by NIZNHY-PKV Sun Dec 15 17:17:56 2002 f
-Standard_IMPORT void FDSCNX_Close();// see TopOpeBRepDS_connex.cxx
-Standard_IMPORT void FDSSDM_Close();// see TopOpeBRepDS_samdom.cxx
+extern void FDSCNX_Close();// see TopOpeBRepDS_connex.cxx
+extern void FDSSDM_Close();// see TopOpeBRepDS_samdom.cxx
 
 //=======================================================================
 //function : Delete 

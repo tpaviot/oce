@@ -85,7 +85,7 @@
 #endif
 
 extern ViewerTest_DoubleMapOfInteractiveAndName& GetMapOfAIS();
-Standard_IMPORT int ViewerMainLoop(Standard_Integer argc, const char** argv);
+extern int ViewerMainLoop(Standard_Integer argc, const char** argv);
 extern Handle(AIS_InteractiveContext)& TheAISContext();
 
 
