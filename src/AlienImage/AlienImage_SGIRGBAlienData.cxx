@@ -693,7 +693,7 @@ static int img_rle_compact(	unsigned short *expbuf,
 #define doexpand				\
 	while(1) {				\
 	    pixel = *iptr++;			\
-	    if ( !(bblcount = (pixel & 0x7f)) )	\
+	    if ( (bblcount = (pixel & 0x7f)) == 0)	\
 		return;				\
 	    if(pixel & 0x80) {			\
 	       while(bblcount--)		\
