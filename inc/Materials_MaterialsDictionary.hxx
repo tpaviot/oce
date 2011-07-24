@@ -89,9 +89,13 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
-Standard_Integer thetime;
 Handle_Materials_MaterialsSequence thematerialssequence;
 
+#ifdef _MSC_VER
+__time64_t thetime;
+#else
+time_t thetime;
+#endif
 
 };
 
