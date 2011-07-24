@@ -127,11 +127,6 @@ const TopoDS_Shape&  TopExp_Explorer::Current()const
 //purpose  : 
 //=======================================================================
 
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4291) // to avoid warning when using new(buffer) syntax
-#endif
-
 void  TopExp_Explorer::Next()
 {
   Standard_Integer NewSize;
@@ -209,9 +204,6 @@ void  TopExp_Explorer::Next()
   hasMore = Standard_False;
 }
 
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
 
 //=======================================================================
 //function : ReInit

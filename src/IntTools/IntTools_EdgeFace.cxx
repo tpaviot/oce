@@ -55,10 +55,6 @@
 #include <GeomAdaptor_HSurface.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 
-#ifdef _MSC_VER
-#pragma warning ( disable : 4101 )
-#endif
-
 static
   Standard_Boolean IsCoplanar (const BRepAdaptor_Curve&  ,
 			       const BRepAdaptor_Surface& );
@@ -1595,7 +1591,3 @@ Standard_Integer AdaptiveDiscret (const Standard_Integer iDiscret,
   return iDiscretNew;
 }
 
-
-#ifdef _MSC_VER
-#pragma warning ( default : 4101 )
-#endif

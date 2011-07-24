@@ -11,9 +11,6 @@
 #include <BOPTools_QuickSortPave.hxx>
 #include <BOPTools_ComparePave.hxx>
 
-#ifdef _MSC_VER
-#pragma warning ( disable : 4101 )
-#endif
 
 //=======================================================================
 // function: BOPTools_PaveSet::BOPTools_PaveSet
@@ -75,6 +72,4 @@
     }
   }
 }
-#ifdef _MSC_VER
-#pragma warning ( default : 4101 )
-#endif
+

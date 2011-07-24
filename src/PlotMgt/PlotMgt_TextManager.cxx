@@ -6,10 +6,6 @@
 #include <PlotMgt_TextManager.ixx>
 #include <Aspect_Units.hxx>
 
-#ifdef _MSC_VER
-#pragma warning (disable : 4244)
-#endif
-
 //#define TRACE
 #define MAXPATHPOINTS  800
 #define MAXCHARPATHS   20

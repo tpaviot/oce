@@ -6,10 +6,6 @@
 
 #include <Poly_CoherentTriPtr.hxx>
 
-#ifdef _MSC_VER
-#pragma warning(disable:4291)
-#endif
-
 //=======================================================================
 //function : Iterator::Next
 //purpose  :

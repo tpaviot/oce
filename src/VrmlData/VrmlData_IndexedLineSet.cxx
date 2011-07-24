@@ -17,7 +17,6 @@
 
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_DEPRECATE
-#pragma warning (disable:4996)
 #endif
 
 IMPLEMENT_STANDARD_HANDLE  (VrmlData_IndexedLineSet, VrmlData_Geometry)
