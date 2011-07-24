@@ -482,7 +482,6 @@ void OpenGl_GraphicDriver::GraduatedTrihedronDisplay(const Graphic3d_CView& view
     cubic.yname = (char*) yname; 
     cubic.zname = (char*) zname;
     
-	/* @todo fields in cubic should be booleans intead of chars? */
 	/* Draw names */
     cubic.xdrawname = xdrawname; 
     cubic.ydrawname = ydrawname; 
