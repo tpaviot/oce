@@ -81,6 +81,7 @@ class LDOM_MemManager : public MMgt_TShared
 
   // ---- CLASS HashTable ----
   class HashTable {
+
     friend class LDOM_MemManager;
     HashTable                   (/* const Standard_Integer theMask, */
                                  LDOM_MemManager&       theMemManager);
@@ -89,6 +90,10 @@ class LDOM_MemManager : public MMgt_TShared
                                  Standard_Integer&      theHashIndex);
     static Standard_Integer Hash(const char             * theString,
                                  const Standard_Integer theLen);
+
+	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+	HashTable & operator = (const HashTable &) { return *this; }
+	
     struct TableItem {
       char             * str;
       struct TableItem * next;

@@ -23,7 +23,10 @@ class Handle_VrmlData_Coordinate;
 
 class VrmlData_ShapeConvert 
 {
- public:
+	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+	VrmlData_ShapeConvert & operator = (const VrmlData_ShapeConvert &) { return *this; }
+
+public:
 
   typedef struct {
     TCollection_AsciiString Name;

@@ -14,6 +14,10 @@
  * Structure passed to the methods dealing with input stream.
  */
 struct VrmlData_InBuffer {
+private:
+	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+	VrmlData_InBuffer & operator = (const VrmlData_InBuffer &) { return *this; }
+public:
   Standard_IStream& Input;
   char              Line[8096];
   char *            LinePtr;
