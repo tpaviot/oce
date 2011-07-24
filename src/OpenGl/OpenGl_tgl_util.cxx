@@ -120,7 +120,7 @@ EXPORT extern int    call_util_osd_getenv ( const char *symbol,
 {
   char *s;
 
-  if ((s = getenv (symbol)) == NULL) return (0);
+  if ((s = getenv ((char *)symbol)) == NULL) return (0); // @todo Remove cast when getenv will take const char *
   if ((int)strlen (s) > lval) return (0);
   strcpy (value, s);
   return (1);
