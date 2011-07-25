@@ -35,7 +35,7 @@ public:
 
 static Init_ init;
 
-int cPrintf ( char* fmt, ... ) {
+int cPrintf ( const char* fmt, ... ) {
 
   static BOOL   first = TRUE;
   static HANDLE hConsole = NULL;
@@ -64,7 +64,7 @@ int cPrintf ( char* fmt, ... ) {
 
 }  /* end cPrintf */
 
-int fcPrintf ( int dummy, char* fmt, ... ) {
+int fcPrintf ( int dummy, const char* fmt, ... ) {
 
   static BOOL   first = TRUE;
   static HANDLE hConsole = NULL;
@@ -93,7 +93,7 @@ int fcPrintf ( int dummy, char* fmt, ... ) {
 
 }  /* end fcPrintf */
 
-char* GetEnv ( char* name ) {
+char* GetEnv ( const char* name ) {
 
   DWORD dwLen;
   PENV  env = ( PENV )TlsGetValue ( tlsIndex );
