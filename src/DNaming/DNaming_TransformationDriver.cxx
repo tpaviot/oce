@@ -306,13 +306,15 @@ static void CollectShapes(const TopoDS_Shape& SSh, TopoDS_Compound& C,
     }
     break;
   case TopAbs_VERTEX:
-    const Handle(TNaming_NamedShape) aNS =  TNaming_Tool::NamedShape(SSh, theLab);
+  {
+	  const Handle(TNaming_NamedShape) aNS =  TNaming_Tool::NamedShape(SSh, theLab);
     if(!aNS.IsNull())
       if(SMap.Add(SSh)) {
 	aB.Add(C,SSh); 
 //	if(isPrimitive)
 //	  TagMap.Bind(SSh, aNS->Label().Tag());
       }
+  }
     break;
   default: /* Do nothing */ break;
   }   
