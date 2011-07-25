@@ -13,8 +13,8 @@ extern "C" {
 #  endif  /* __InterfaceGraphic_DLL */
 # endif  /* __InterfaceGraphic_API */
 
-__InterfaceGraphic_API int   cPrintf ( char*, ... );
-__InterfaceGraphic_API int   fcPrintf ( int, char*, ... );
+__InterfaceGraphic_API int   cPrintf ( const char*, ... );
+__InterfaceGraphic_API int   fcPrintf ( int, const char*, ... );
 __InterfaceGraphic_API char* form ( char*, ... );
 __InterfaceGraphic_API char* GetEnv ( const char* );
 
