@@ -16,7 +16,7 @@ extern "C" {
 __InterfaceGraphic_API int   cPrintf ( char*, ... );
 __InterfaceGraphic_API int   fcPrintf ( int, char*, ... );
 __InterfaceGraphic_API char* form ( char*, ... );
-__InterfaceGraphic_API char* GetEnv ( char* );
+__InterfaceGraphic_API char* GetEnv ( const char* );
 
 # ifdef __cplusplus
 }

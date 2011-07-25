@@ -93,7 +93,7 @@ int fcPrintf ( int dummy, char* fmt, ... ) {
 
 }  /* end fcPrintf */
 
-char* GetEnv ( char* name ) {
+char* GetEnv ( const char* name ) {
 
   DWORD dwLen;
   PENV  env = ( PENV )TlsGetValue ( tlsIndex );
