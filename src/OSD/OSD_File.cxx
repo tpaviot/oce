@@ -1533,11 +1533,6 @@ OSD_File OSD_File :: BuildTemporary () {
 
 //-------------------------------------------------finpri???980424
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return
-#endif
 
 void OSD_File :: SetLock ( const OSD_LockType Lock ) {
 
@@ -1548,12 +1543,13 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
  
  ZeroMemory (  &ovlp, sizeof ( OVERLAPPED )  );
 
- __try {
+ bool Ret = true;
+ if (Ret){
 
   if (  ( myLock = Lock ) == OSD_NoLock  ) {
 
    UnLock ();
-   __leave;
+   Ret = false;
 
   } else if ( myLock == OSD_ReadLock || myLock == OSD_ExclusiveLock ) {
 
@@ -1562,32 +1558,26 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
   } else
 
    dwFlags = 0;
+ }
 
+ if (Ret)
+ {
   LARGE_INTEGER aSize;
   aSize.QuadPart = Size();
   if (!LockFileEx (myFileHandle, dwFlags, 0, aSize.LowPart, aSize.HighPart, &ovlp)) {
 
    _osd_wnt_set_error ( myError, OSD_WFile );
-   __leave;
+   Ret = false;
 
   }  // end if
-
+ }
+ if (Ret)
+ {
   ImperativeFlag = Standard_True;
+ }
 
- }  // end __try
-
- __finally {}
-
-#ifdef VAC
-leave: ;         // added for VisualAge
-#endif
 }  // end OSD_File :: SetLock
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 void OSD_File :: UnLock () {
 
@@ -1677,11 +1667,6 @@ Standard_Boolean OSD_File :: IsOpen () const {
 
 }  // end OSD_File :: IsOpen
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd (
                                  const OSD_Protection& prot, BOOL fDir, wchar_t* fName
@@ -1712,34 +1697,46 @@ PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd (
  PSECURITY_DESCRIPTOR pfSD = NULL;
  BOOL                 fDummy;
  PFILE_ACE            pFileACE;
+ bool                 Ret = true;
 
- __try {
+ if (Ret) {
 
   j = fDir ? 1 : 0;
 
   if (  !OpenProcessToken (
           GetCurrentProcess (), TOKEN_QUERY, &hProcess
          )
-  ) __leave;
+  ) Ret = false;
+ }
 
+  if (Ret) {
   if (   (  pTkGroups = ( PTOKEN_GROUPS )GetTokenInformationEx (
                                           hProcess, TokenGroups
                                          )
          ) == NULL
-  ) __leave; 
+  ) Ret = false;
+  }
   
+  if (Ret)
+  {
   if (   (  pTkOwner = ( PTOKEN_OWNER )GetTokenInformationEx (
                                         hProcess, TokenOwner
                                        )
          ) == NULL
-  ) __leave;
+  ) Ret = false;
+  }
 
+  if (Ret)
+  {
   if (   (  pTkPrimaryGroup = ( PTOKEN_PRIMARY_GROUP )GetTokenInformationEx (
                                                        hProcess, TokenPrimaryGroup
                                                       )
          ) == NULL
-  ) __leave;
+  ) Ret = false;
+  }
 
+  if (Ret)
+  {
 
 retry:
   if ( fName == NULL )
@@ -1795,7 +1792,11 @@ retry:
                   ( ( GetLengthSid ( pSIDworld ) + ACE_HEADER_SIZE ) << j )
                );
 
-  if (   (  pACL = CreateAcl ( dwACLsize )  ) == NULL   ) __leave;
+  if (   (  pACL = CreateAcl ( dwACLsize )  ) == NULL   ) Ret = false;
+  }
+
+  if (Ret)
+  {
 
   if ( dwAccessAdmin != 0 )
 
@@ -1901,17 +1902,17 @@ retry:
    }  // end for
 
   }  // end if
+  } // if (Ret)
 
-  if (   (  retVal = AllocSD ()  ) == NULL   ) __leave;
+  if (Ret)
+  if (   (  retVal = AllocSD ()  ) == NULL   ) Ret = false;
 
-  if (  !SetSecurityDescriptorDacl ( retVal, TRUE, pACL, TRUE )  ) __leave;
+  if (Ret)
+  if (  !SetSecurityDescriptorDacl ( retVal, TRUE, pACL, TRUE )  ) Ret = false;
 
+  if (Ret)
   fOK = TRUE;
 
- }  // end __try
-
- __finally {
- 
   if ( !fOK ) {
 
    if ( retVal != NULL )
@@ -1932,21 +1933,10 @@ retry:
   if ( pTkPrimaryGroup != NULL ) FreeTokenInformation ( pTkPrimaryGroup );
   if ( pfSD            != NULL ) FreeFileSecurity     ( pfSD            );
  
- }  // end __finally
-
-#ifdef VAC
-leave: ;     // added for VisualAge
-#endif
-
  return retVal;
  
 }  // end _osd_wnt_protection_to_sd */
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static void __fastcall _test_raise ( HANDLE hFile, Standard_CString str ) {
 
@@ -2426,11 +2416,6 @@ Standard_Integer __fastcall _get_file_type (
 
 }  // end _get_file_type
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 BOOL __fastcall _osd_wnt_sd_to_protection (
                  PSECURITY_DESCRIPTOR pSD, OSD_Protection& prot, BOOL fDir
@@ -2451,21 +2436,29 @@ BOOL __fastcall _osd_wnt_sd_to_protection (
  BOOL          retVal = FALSE;
  GET_PROT_FUNC _get_prot_func = fDir ? &_get_protection_dir : &_get_protection;
 
- __try {
+ BOOL          Ret = true;
+ if (Ret) {
 
-  if (  !GetSecurityDescriptorOwner ( pSD, &pSIDowner, &fDefaulted )  ) __leave;
+  if (  !GetSecurityDescriptorOwner ( pSD, &pSIDowner, &fDefaulted )  ) Ret = false;
+ }
 
+ if (Ret)
+ {
   if (  !GetSecurityDescriptorDacl ( pSD, &fPresent, &pACL, &fDefaulted ) ||
         !fPresent
-  ) __leave;
+  ) Ret = false;
+ }
 
+ if (Ret)
+ {
   if ( pSIDowner == NULL || pACL == NULL ) {
   
    SetLastError ( ERROR_NO_SECURITY_ON_OBJECT );
-   __leave;
-  
+   Ret = false;
   }  // end if
- 
+ }
+ if (Ret)
+ {
   pSIDadmin = AdminSid ();
   pSIDworld = WorldSid ();
 
@@ -2506,23 +2499,12 @@ BOOL __fastcall _osd_wnt_sd_to_protection (
 
   retVal = TRUE;
   
- }  // end __try
-
- __finally {}
+ }   
        
-#ifdef VAC
-leave: ;      // added for VisualAge
-#endif
-
  return retVal;
 
 }  // end _osd_wnt_sd_to_protection
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static OSD_SingleProtection __fastcall _get_protection ( DWORD mask ) {
 
@@ -2740,11 +2722,6 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD mask ) {
 
 }  // end _get_protection_dir
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return fOK
-#endif
 
 BOOL __fastcall _osd_print (const Standard_PCharacter pName, const wchar_t* fName ) {
 
@@ -2752,41 +2729,49 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, const wchar_t* fNam
  HANDLE hPrinter = NULL;
  BYTE   jobInfo[ MAX_PATH + sizeof ( DWORD ) ];
  DWORD  dwNeeded, dwCode = 0;
+ bool Ret = true;
 
  fOK = fJob = FALSE;
 
- __try {
+ if (Ret) {
  
   if (  !OpenPrinter ( Standard_PCharacter(pName), &hPrinter, NULL )  ) {
   
    hPrinter = NULL;
-   __leave;
+   Ret = false;
   
   }  // end if
+ }
 
+ if (Ret)
+ {
   if (   !AddJobW (
            hPrinter, 1, jobInfo, MAX_PATH + sizeof ( DWORD ), &dwNeeded
           )
-  ) __leave;
+  ) Ret = false;
+ }
 
+ if (Ret)
+ { 
   fJob = TRUE;
 
   if (  !CopyFileW (
           fName, (LPWSTR) (  ( ADDJOB_INFO_1* )jobInfo  ) -> Path, FALSE
          )
-  ) __leave;
+  )  Ret = false;
+ }
 
+ if (Ret)
+ {
   if (  !ScheduleJob (
           hPrinter, (  ( ADDJOB_INFO_1* )jobInfo  ) -> JobId
          )
-  ) __leave;
+  ) Ret = false;
+ }
   
+ if (Ret)
   fOK = TRUE;
- 
- }  // end __try
 
- __finally {
- 
   if ( !fOK ) {
   
    BYTE  info[ 1024 ];
@@ -2812,12 +2797,6 @@ BOOL __fastcall _osd_print (const Standard_PCharacter pName, const wchar_t* fNam
   }  // end if
 
   if ( hPrinter != NULL ) ClosePrinter ( hPrinter );
- 
- }  // end __finally
-
-#ifdef VAC
-leave: ;       // added for VisualAge
-#endif
 
  if ( !fOK ) SetLastError ( dwCode );
 
@@ -2825,11 +2804,6 @@ leave: ;       // added for VisualAge
                 
 }  // end _osd_print
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 Standard_Boolean OSD_File::IsReadable()
 {

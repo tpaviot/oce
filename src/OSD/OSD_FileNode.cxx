@@ -953,11 +953,6 @@ void _osd_wnt_set_error ( OSD_Error& err, OSD_WhoAmI who, ... ) {
 
 }  // end _set_error
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
 
 static BOOL __fastcall _get_file_time (
                         Standard_ExtString fName, LPSYSTEMTIME lpSysTime, BOOL fAccess
@@ -968,45 +963,32 @@ static BOOL __fastcall _get_file_time (
  FILETIME   ftLastWriteTime;
  LPFILETIME lpftPtr;
  HANDLE     hFile = INVALID_HANDLE_VALUE;
-
- __try {
-
+ bool       Ret = true;
+ 
   if (   (  hFile = CreateFileW ((const wchar_t*) fName, 0, 0,
                                  NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL)
          ) == INVALID_HANDLE_VALUE
-  ) __leave;
+  ) Ret = false;
 
-  if (  !GetFileTime ( hFile, &ftCreationTime, NULL, &ftLastWriteTime )  ) __leave;
+  if (  !GetFileTime ( hFile, &ftCreationTime, NULL, &ftLastWriteTime )  ) Ret = false;
 
+  if (Ret)
+  {
   lpftPtr = fAccess ? &ftLastWriteTime : &ftCreationTime;
 
-  if (  !FileTimeToSystemTime ( lpftPtr, lpSysTime )  ) __leave;
+  if (  !FileTimeToSystemTime ( lpftPtr, lpSysTime )  ) Ret = false;
+  }
 
+  if(Ret)
   retVal = TRUE;
 
- }  // end __try
-
- __finally {
- 
   if ( hFile != INVALID_HANDLE_VALUE )
-
    CloseHandle ( hFile );
- 
- }  // end __finally
-
-#ifdef VAC
-leave: ;      // added for VisualAge
-#endif
 
  return retVal;
 
 }  // end _get_file_time
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 static void __fastcall _test_raise ( TCollection_AsciiString fName, Standard_CString str ) {
 
