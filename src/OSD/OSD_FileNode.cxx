@@ -446,14 +446,6 @@ Standard_Integer OSD_FileNode::Error()const{
 #define TEST_RAISE( arg ) _test_raise (  fName, ( arg )  )
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
 
-#ifndef _MSC_VER
-# define  __leave goto leave
-#endif
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-# define  __try
-# define  __finally
-#endif
-
 PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection&, BOOL, char* = NULL );
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
                                  PSECURITY_DESCRIPTOR pSD, OSD_Protection& prot, BOOL
@@ -990,35 +982,29 @@ static BOOL __fastcall _get_file_time (
  FILETIME   ftLastWriteTime;
  LPFILETIME lpftPtr;
  HANDLE     hFile = INVALID_HANDLE_VALUE;
-
- __try {
-
+ bool       Ret = true;
+ 
   if (   (  hFile = CreateFile (
                      fName, 0, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL
                     )
          ) == INVALID_HANDLE_VALUE
-  ) __leave;
+  ) Ret = false;
 
-  if (  !GetFileTime ( hFile, &ftCreationTime, NULL, &ftLastWriteTime )  ) __leave;
+  if (Ret)
+  if (  !GetFileTime ( hFile, &ftCreationTime, NULL, &ftLastWriteTime )  ) Ret = false;
 
+  if (Ret)
+  {
   lpftPtr = fAccess ? &ftLastWriteTime : &ftCreationTime;
 
-  if (  !FileTimeToSystemTime ( lpftPtr, lpSysTime )  ) __leave;
+  if (  !FileTimeToSystemTime ( lpftPtr, lpSysTime )  ) Ret = false;
+  }
 
+  if(Ret)
   retVal = TRUE;
 
-#ifndef _MSC_VER
-   leave: ;
-#endif
- }  // end __try
-
- __finally {
- 
   if ( hFile != INVALID_HANDLE_VALUE )
-
    CloseHandle ( hFile );
- 
- }  // end __finally
 
  return retVal;
 
