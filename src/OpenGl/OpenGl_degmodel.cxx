@@ -49,7 +49,8 @@ static TStatus DegenerateModelAdd ( TSM_ELEM_DATA d, Tint n, cmn_key* k ) {
 static TStatus DegenerateModelDelete  ( TSM_ELEM_DATA d, Tint n, cmn_key* k ) {
 
   //cmn_freemem ( d.pdata );
-  delete d.pdata;
+  if (d.pdata)
+    free(d.pdata);
 
   return TSuccess;
 
