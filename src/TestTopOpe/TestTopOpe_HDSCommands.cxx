@@ -729,7 +729,7 @@ static void tds_help(Draw_Interpretor& di)
 }
 
 typedef Standard_Integer (*tf_SeeShape)(const Standard_Integer I,const TopoDS_Shape& S);
-Standard_IMPORT void OthersCommands_flags(Standard_Integer& na,const char** a,TestTopOpeDraw_Displayer& TD);
+extern void OthersCommands_flags(Standard_Integer& na,const char** a,TestTopOpeDraw_Displayer& TD);
 void COUTNOHDS(Draw_Interpretor& di) {di<<"no current HDS"<<"\n";}
 Standard_Integer tsee_SeeShapefunc(Draw_Interpretor& di,Standard_Integer na_in,const char** a,tf_SeeShape SeeShapefunc)
 {

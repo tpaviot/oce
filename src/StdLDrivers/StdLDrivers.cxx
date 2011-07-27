@@ -16,7 +16,7 @@
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef _MSC_VER
-#pragma warning(4:4190)
+#pragma warning(disable:4190)
 #endif
 
 static Standard_GUID StdLStorageDriver     ("bd696000-5b34-11d1-b5ba-00a0c9064368");

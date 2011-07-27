@@ -75,11 +75,6 @@ if (withDelta) { \
   aDelta->AddAttributeDelta(DELTACREATION); \
 }
 
-#ifdef _MSC_VER
-// Disable the warning: "operator new unmatched by delete"
-#pragma warning (disable:4291)
-#endif
-
 //=======================================================================
 //function : TDF_Data
 //purpose  : empty constructor
@@ -97,10 +92,6 @@ myAllowModification     (Standard_True)
   myLabelNodeAllocator = anIncAllocator;
   myRoot = new (anIncAllocator) TDF_LabelNode (this);
 }
-
-#ifdef _MSC_VER
-#pragma warning (default:4291)
-#endif
 
 //=======================================================================
 //function : Destroy

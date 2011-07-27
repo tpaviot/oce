@@ -95,6 +95,11 @@
 #include <StdSchema_PTopLoc_ItemLocation.hxx>
 #endif
 
+// avoid warnings on 'extern "C"' functions returning C++ classes
+#ifdef _MSC_VER
+#pragma warning(disable:4190)
+#endif
+
 IMPLEMENT_STANDARD_HANDLE(StdSchema,Storage_Schema)
 IMPLEMENT_STANDARD_RTTIEXT(StdSchema,Storage_Schema)
 

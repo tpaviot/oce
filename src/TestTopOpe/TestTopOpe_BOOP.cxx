@@ -37,7 +37,7 @@
 Standard_IMPORT Draw_Viewer dout;
 #endif
 
-Standard_IMPORT Standard_Integer TOPOPE_SeeShape(char *name);
+extern Standard_Integer TOPOPE_SeeShape(char *name);
 
 #ifdef DEB
 #include <TopOpeBRepTool_KRO.hxx>

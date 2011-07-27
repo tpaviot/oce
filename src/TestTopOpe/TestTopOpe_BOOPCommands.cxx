@@ -18,7 +18,7 @@
 # include <strings.h>
 #endif
 
-Standard_IMPORT void suppressarg(Standard_Integer& na,const char** a,const Standard_Integer d);
+extern void suppressarg(Standard_Integer& na,const char** a,const Standard_Integer d);
 #ifdef DEB
 Standard_IMPORT void TopOpeBRepTool_SettraceEND(const Standard_Boolean);
 Standard_IMPORT Standard_Boolean TopOpeBRepTool_GettraceEND();

@@ -6,10 +6,6 @@
 #include <PlotMgt_TextManager.ixx>
 #include <Aspect_Units.hxx>
 
-#ifdef _MSC_VER
-#pragma warning (disable : 4244)
-#endif
-
 //#define TRACE
 #define MAXPATHPOINTS  800
 #define MAXCHARPATHS   20
@@ -73,7 +69,7 @@ Standard_Boolean PlotMgt_TextManager::SetCharBoundingBox (const Quantity_Length 
   if (theUnderlinePos > 0.) {
     if (!theNchar)
       theXmin = Standard_ShortReal (X1);
-    theXmax = Sqrt(X2*X2 + Y2*Y2);
+    theXmax = (Standard_ShortReal) Sqrt(X2*X2 + Y2*Y2);
   }
   return Standard_True;
 }
@@ -106,7 +102,7 @@ void PlotMgt_TextManager::BeginString (const Quantity_Length X,
   // Force to OUTLINE if required
   if (!thePaintType && (theTypeOfText == Aspect_TOT_OUTLINE))
     thePaintType = 2;
-  theX = X; theY = Y;
+  theX = (Standard_ShortReal) X; theY = (Standard_ShortReal) Y;
   theXmin = theXmax = 0.;
   theNchar = 0;
   theSlant = aSlant;
@@ -136,8 +132,8 @@ Standard_Boolean PlotMgt_TextManager::BeginChar (const Standard_Integer aCharCod
   thePoint     = 0;
   thePathCount = 0;
   theCPath[0]  = 0;
-  thePX        = X;
-  thePY        = Y;
+  thePX        = (Standard_ShortReal)X;
+  thePY        = (Standard_ShortReal)Y;
   return Standard_True;
 }
 
@@ -153,8 +149,8 @@ Standard_Boolean PlotMgt_TextManager::Moveto (const Quantity_Length X,
   else if (theCPath[thePathCount] > 0)
     --thePoint;
   theCPath[thePathCount] = 1;
-  thePX = X; thePY = Y;
-  ADD_POINT (theX, theY, X, Y);
+  thePX = (Standard_ShortReal)X; thePY = (Standard_ShortReal)Y;
+  ADD_POINT (theX, theY, (Standard_ShortReal)X, (Standard_ShortReal)Y);
   return Standard_True;
 }
 
@@ -166,7 +162,7 @@ Standard_Boolean PlotMgt_TextManager::Lineto (const Quantity_Length X,
   cout << " PlotMgt_TextManager::Lineto(" << X << "," << Y << ")" << endl << flush;
 #endif
   theCPath[thePathCount]++;
-  ADD_POINT (theX, theY, X, Y);
+  ADD_POINT (theX, theY, (Standard_ShortReal)X, (Standard_ShortReal)Y);
   return Standard_True;
 }
 
@@ -189,9 +185,9 @@ Standard_Boolean PlotMgt_TextManager::Curveto (const Quantity_Length X1,
     if (theCPath[thePathCount] > 0)
       thePathCount++;
     theCPath[thePathCount] = -1;
-    ADD_POINT (theX, theY, X2, Y2);
-    ADD_POINT (theX, theY, X3, Y3);
-    ADD_POINT (theX, theY, X4, Y4);
+    ADD_POINT (theX, theY, (Standard_ShortReal)X2, (Standard_ShortReal) Y2);
+    ADD_POINT (theX, theY, (Standard_ShortReal)X3, (Standard_ShortReal)Y3);
+    ADD_POINT (theX, theY, (Standard_ShortReal)X4, (Standard_ShortReal)Y4);
     thePathCount++;
     theCPath[thePathCount] = 0;
     return Standard_True;

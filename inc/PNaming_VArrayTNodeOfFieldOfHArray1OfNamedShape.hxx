@@ -43,6 +43,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete (void *,void *)
+  {
+
+  }
 
   
       PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape();

@@ -8,11 +8,6 @@
 #include <LDOM_BasicText.hxx>
 #include <LDOM_MemManager.hxx>
 
-#ifdef _MSC_VER
-// Disable the warning: "operator new unmatched by delete"
-#pragma warning (disable:4291)
-#endif
-
 //=======================================================================
 //function : LDOM_BasicText()
 //purpose  : Constructor

@@ -27,8 +27,8 @@
 #include <TopOpeBRepDS_ShapeWithState.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 
-Standard_IMPORT void BREP_sortonparameter(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
-Standard_IMPORT void BREP_mergePDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
+void BREP_sortonparameter(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
+void BREP_mergePDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
 
 
 #ifdef DEB
@@ -305,8 +305,8 @@ static
 
 } // FUN_shareNOG
 
-Standard_IMPORT  TopoDS_Shape GLOBALDS_shape1;
-Standard_IMPORT  TopoDS_Shape GLOBALDS_shape2;
+extern TopoDS_Shape GLOBALDS_shape1;
+extern TopoDS_Shape GLOBALDS_shape2;
 
 //=======================================================================
 //function : Insert

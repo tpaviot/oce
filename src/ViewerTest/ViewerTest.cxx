@@ -56,7 +56,6 @@
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_DEPRECATE
 #pragma warning(4:4190)
-#pragma warning (disable:4996)
 #endif
 
 #include <NIS_InteractiveContext.hxx>

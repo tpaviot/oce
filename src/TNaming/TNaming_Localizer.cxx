@@ -302,9 +302,8 @@ void TNaming_Localizer::GoBack (const TopoDS_Shape&         S,
     //----------------------------------------------------------
     TDF_Label        Father  = Lab.Father();
     TNaming_Iterator itLab(Father);
-    for (; itLab.More(); itLab.Next()) {
+    if(itLab.More()) {
       Sol = itLab.OldShape();
-      break;
     }
     //-------------------------------------------
     // Recherche des ancetres dans des features.

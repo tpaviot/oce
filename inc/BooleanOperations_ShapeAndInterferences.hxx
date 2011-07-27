@@ -58,6 +58,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete (void *,void *)
+  {
+
+  }
 
   
   Standard_EXPORT   BooleanOperations_ShapeAndInterferences();

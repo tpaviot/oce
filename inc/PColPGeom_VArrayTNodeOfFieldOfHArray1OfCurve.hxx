@@ -43,7 +43,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete ( void * , void *)
+  {
 
+  }
   
       PColPGeom_VArrayTNodeOfFieldOfHArray1OfCurve();
   

@@ -23,7 +23,7 @@
 #include <Image_PixMap.hxx>
 
 extern Draw_Interpretor theCommands;
-Standard_IMPORT Standard_Boolean Draw_VirtualWindows;
+extern Standard_Boolean Draw_VirtualWindows;
 static Tcl_Interp *interp;        /* Interpreter for this application. */
 
 /*
