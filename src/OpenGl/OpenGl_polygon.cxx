@@ -989,7 +989,7 @@ PolygonDelete( TSM_ELEM_DATA data, Tint n, cmn_key *k )
     delete p->display;
   }
   if (data.pdata)
-    delete data.pdata;
+    free(data.pdata);
   return TSuccess;
 }
 

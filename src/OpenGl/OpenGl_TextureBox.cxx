@@ -509,7 +509,7 @@ static void MyBindTextureEXT(TextureID ID, int Context)
   TextureDataID data;
   data = textab[ID].data;
 
-  if (textab[ID].status == TEXDATA_NONE)
+  if (textab[ID].status == TEX_NONE)
     return;
 
 #ifdef PRINT
