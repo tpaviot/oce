@@ -236,7 +236,7 @@ PolylineDelete( TSM_ELEM_DATA data, Tint n, cmn_key *k )
     delete[] p->vcolours;
 #endif
   if (data.pdata)
-    delete data.pdata;
+    free(data.pdata);
 
   return TSuccess;
 }

@@ -188,7 +188,7 @@ OSD_Function new_GLGraphicDriver =
 Standard_Boolean Graphic3d_GraphicDevice::ShrIsDefined (Standard_CString& aShr) const {
 
   char *glso, *glul, *pkno;
-  char *glshr, *casroot;
+  const char *glshr, *casroot;
 
   casroot = getenv("CASROOT");
   glso = getenv("CSF_GraphicShr");
@@ -212,8 +212,9 @@ Standard_Boolean Graphic3d_GraphicDevice::ShrIsDefined (Standard_CString& aShr) 
 #else
     buffString = buffString + "/lib/libTKOpenGl.so";
 #endif
-    glshr = (char *) malloc (buffString.Length() + 1);
-    memcpy(glshr, buffString.ToCString(), buffString.Length() + 1);
+    char* newGlShr = (char *) malloc (buffString.Length() + 1);
+    memcpy(newGlShr, buffString.ToCString(), buffString.Length() + 1);
+    glshr = newGlShr;
   } else {
 #ifdef OCE_DEFAULT_CSF_GraphicShr
     glshr = OCE_DEFAULT_CSF_GraphicShr;

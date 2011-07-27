@@ -92,15 +92,15 @@ extern console_semaphore_value volatile console_semaphore;
 extern char console_command[1000];
 #endif
 
-static void ReadInitFile(char* filename)
+static void ReadInitFile(const char* filename)
 {
 #ifdef WNT
   if (!Draw_Batch) {
     try {
       OCC_CATCH_SIGNALS
-      for(Standard_Integer i = 0; filename[i] != 0; i++)
-	if(filename[i] == '\\') filename[i] = '/';
       sprintf(console_command,"source \"%s\"",filename);
+      for(Standard_Integer i = 0; console_command[i] != 0; i++)
+        if(console_command[i] == '\\') console_command[i] = '/';
       console_semaphore = HAS_CONSOLE_COMMAND;
       while (console_semaphore == HAS_CONSOLE_COMMAND)
         Sleep(10);

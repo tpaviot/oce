@@ -783,7 +783,7 @@ TriangleMeshDelete( TSM_ELEM_DATA data, Tint n, cmn_key *k )
     delete[] p->d.bDraw;
 #endif  /* G003 */
   if (data.pdata)
-    delete data.pdata;
+    free(data.pdata);
   return TSuccess;
 }
 

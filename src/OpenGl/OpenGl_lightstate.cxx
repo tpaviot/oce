@@ -101,7 +101,7 @@ LightSrcStateDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
 static  TStatus
 LightSrcStateDelete( TSM_ELEM_DATA data, Tint n, cmn_key *k )
 {
-  delete [] data.pdata;
+  free(data.pdata);
   return TSuccess;
 }
 
