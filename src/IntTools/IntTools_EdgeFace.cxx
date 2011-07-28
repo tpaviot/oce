@@ -55,10 +55,6 @@
 #include <GeomAdaptor_HSurface.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 
-#ifdef _MSC_VER
-#pragma warning ( disable : 4101 )
-#endif
-
 static
   Standard_Boolean IsCoplanar (const BRepAdaptor_Curve&  ,
 			       const BRepAdaptor_Surface& );
@@ -730,9 +726,8 @@ static
       anArray1OfRange(n+i).SetLast (aFSeq(i));
     }
     
-    IntTools_QuickSortRange aQuickSortRange;
     IntTools_CompareRange aComparator;
-    aQuickSortRange.Sort (anArray1OfRange, aComparator);
+    IntTools_QuickSortRange::Sort (anArray1OfRange, aComparator);
     
     // filling the  output arrays
     myArgsArray.Resize(k);
@@ -1595,7 +1590,3 @@ Standard_Integer AdaptiveDiscret (const Standard_Integer iDiscret,
   return iDiscretNew;
 }
 
-
-#ifdef _MSC_VER
-#pragma warning ( default : 4101 )
-#endif

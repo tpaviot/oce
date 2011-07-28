@@ -43,11 +43,6 @@
 #include <TColStd_MapOfInteger.hxx>
 #include <BOPTColStd_Dump.hxx>
 
-
-#ifdef _MSC_VER
-#pragma warning ( disable : 4291 )
-#endif
-
 static
   void Message(const Standard_Integer i);
 
@@ -886,11 +881,6 @@ void Message(const Standard_Integer i)
   myListOfShapeAndInterferences[index-1].GetOrientations(theArrayOfOrientations,orientationsNumber);
 }
 //modified by NIZNHY-PKV Wed Feb  2 14:44:08 2005f
-/*
-#ifdef WNT
-#pragma warning ( default : 4291 )
-#endif
-*/
 /*
 //===========================================================================
 //function : InsertInterference

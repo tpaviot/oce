@@ -74,7 +74,7 @@
 #include <GC_MakePlane.hxx>
 
 extern Viewer2dTest_DoubleMapOfInteractiveAndName& GetMapOfAIS2D();
-Standard_IMPORT int ViewerMainLoop2d (Standard_Integer argc, const char** argv);
+extern int ViewerMainLoop2d (Standard_Integer argc, const char** argv);
 extern Handle(AIS2D_InteractiveContext)& TheAIS2DContext();
 
 //==============================================================================

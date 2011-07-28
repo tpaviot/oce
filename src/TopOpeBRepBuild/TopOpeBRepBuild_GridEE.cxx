@@ -221,13 +221,13 @@ void debfillp2(const Standard_Integer i) {cout <<"+ + debfillp2 "<<i<<endl;}
 #endif
 
 //Standard_IMPORT extern Standard_Boolean GLOBAL_faces2d;
-Standard_IMPORT Standard_Boolean GLOBAL_faces2d;
+extern Standard_Boolean GLOBAL_faces2d;
 
 Standard_EXPORT Standard_Boolean FDS_SIisGIofIofSBAofTofI(const TopOpeBRepDS_DataStructure& BDS,const Standard_Integer SI,const Handle(TopOpeBRepDS_Interference)& I);
 //Standard_IMPORT extern Standard_Boolean GLOBAL_IEtoMERGE; // xpu240498
 Standard_IMPORT Standard_Boolean GLOBAL_IEtoMERGE; // xpu240498
 //Standard_IMPORT extern Standard_Integer GLOBAL_issp;
-Standard_IMPORT Standard_Integer GLOBAL_issp;
+extern Standard_Integer GLOBAL_issp;
 //Standard_IMPORT extern Standard_Integer GLOBAL_hassd;
 Standard_IMPORT Standard_Integer GLOBAL_hassd;
 

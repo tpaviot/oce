@@ -19,7 +19,7 @@
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef _MSC_VER
-#pragma warning(4:4190)
+#pragma warning(disable:4190)
 #endif
 
 static Standard_GUID BinStorageDriver  ("03a56835-8269-11d5-aab2-0050044b1af1");

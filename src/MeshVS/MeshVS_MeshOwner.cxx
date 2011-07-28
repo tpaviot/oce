@@ -136,21 +136,21 @@ void MeshVS_MeshOwner::HilightWithColor (const Handle(PrsMgr_PresentationManager
     if( !aNodes.IsNull() && aNodes->Map().Extent() == 1 )
     {
       TColStd_MapIteratorOfPackedMapOfInteger anIt( aNodes->Map() );
-      for( ; anIt.More(); anIt.Next() )
+      if(anIt.More())
       {
 	if( myLastID != anIt.Key() )
 	  myLastID = anIt.Key();
-	break;
+	
       }
     }  
     else if( !aElems.IsNull() && aElems->Map().Extent() == 1 )
     {
       TColStd_MapIteratorOfPackedMapOfInteger anIt( aElems->Map() );
-      for( ; anIt.More(); anIt.Next() )
+      if(anIt.More())
       {
 	if( myLastID != anIt.Key() )
 	  myLastID = anIt.Key();
-	break;
+
       }
     }
 
@@ -186,24 +186,23 @@ Standard_Boolean MeshVS_MeshOwner::IsForcedHilight () const
     if( !aNodes.IsNull() && aNodes->Map().Extent() == 1 )
     {
       TColStd_MapIteratorOfPackedMapOfInteger anIt( aNodes->Map() );
-      for( ; anIt.More(); anIt.Next() )
+      if(anIt.More())
       {
 	aKey = anIt.Key();
 	if( myLastID == aKey )
 	  aHilight = Standard_False;
-	break;
+
       }
     }  
     Handle(TColStd_HPackedMapOfInteger) aElems = GetDetectedElements();
     if( !aElems.IsNull() && aElems->Map().Extent() == 1 )
     {
       TColStd_MapIteratorOfPackedMapOfInteger anIt( aElems->Map() );
-      for( ; anIt.More(); anIt.Next() )
+      if(anIt.More())
       {
 	aKey = anIt.Key();
 	if( myLastID == aKey )
 	  aHilight = Standard_False;
-	break;
       }
     }
   } 

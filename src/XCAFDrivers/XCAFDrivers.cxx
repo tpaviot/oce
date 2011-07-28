@@ -21,7 +21,7 @@
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef _MSC_VER
-#pragma warning(4:4190)
+#pragma warning(disable:4190)
 #endif
 
 static Standard_GUID XSStorageDriver  ("ed8793f8-3142-11d4-b9b5-0060b0ee281b");

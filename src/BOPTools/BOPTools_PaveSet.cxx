@@ -11,9 +11,6 @@
 #include <BOPTools_QuickSortPave.hxx>
 #include <BOPTools_ComparePave.hxx>
 
-#ifdef _MSC_VER
-#pragma warning ( disable : 4101 )
-#endif
 
 //=======================================================================
 // function: BOPTools_PaveSet::BOPTools_PaveSet
@@ -64,9 +61,8 @@
       anArray1OfPave(i)=aPave;
     }
     
-    BOPTools_QuickSortPave aQuickSortPave;
     BOPTools_ComparePave   aComparePave;
-    aQuickSortPave.Sort (anArray1OfPave, aComparePave);
+    BOPTools_QuickSortPave::Sort (anArray1OfPave, aComparePave);
     
     myPaveList.Clear();
     for (i=1; i<=aNbPaves; i++){
@@ -75,6 +71,4 @@
     }
   }
 }
-#ifdef _MSC_VER
-#pragma warning ( default : 4101 )
-#endif
+

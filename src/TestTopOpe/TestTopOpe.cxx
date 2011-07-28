@@ -40,9 +40,9 @@ void  TestTopOpe::AllCommands(Draw_Interpretor& theCommands)
 }
 
 //Standard_IMPORT extern TestTopOpe_HDSDisplayer* PHDSD;
-Standard_IMPORT TestTopOpe_HDSDisplayer* PHDSD;
+extern TestTopOpe_HDSDisplayer* PHDSD;
 //Standard_IMPORT extern TestTopOpe_BOOP* PBOOP;
-Standard_IMPORT TestTopOpe_BOOP* PBOOP;
+extern TestTopOpe_BOOP* PBOOP;
 
 //=======================================================================
 //function : Shapes

@@ -23,9 +23,6 @@
 #include <TColStd_ListIteratorOfListOfReal.hxx>
 #include <gce_ErrorType.hxx>
 
-#ifdef _MSC_VER
-#pragma warning ( disable : 4101 )
-#endif
 //=======================================================================
 //function : IntTools::GetRadius
 //purpose  : 
@@ -209,8 +206,7 @@
     anArray1OfRoots(j)=mySequenceOfRoots(j);
   }
   
-  IntTools_QuickSort aQS;
-  aQS.Sort(anArray1OfRoots, aComparator);
+  IntTools_QuickSort::Sort(anArray1OfRoots, aComparator);
   
   mySequenceOfRoots.Clear();
   for (j=1; j<=aNbRoots; j++) {
@@ -365,7 +361,3 @@
   }
   return 1;
 }
-
-#ifdef _MSC_VER
-#pragma warning ( default : 4101 )
-#endif

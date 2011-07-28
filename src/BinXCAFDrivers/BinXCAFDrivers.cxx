@@ -14,7 +14,7 @@
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef _MSC_VER
-#pragma warning(4:4190)
+#pragma warning(disable:4190)
 #endif
 
 static Standard_GUID BinXCAFStorageDriver  ("a78ff496-a779-11d5-aab4-0050044b1af1");

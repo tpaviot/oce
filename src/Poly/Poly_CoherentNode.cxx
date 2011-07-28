@@ -7,10 +7,6 @@
 #include <Poly_CoherentNode.hxx>
 #include <Poly_CoherentTriangle.hxx>
 
-#ifdef _MSC_VER
-#pragma warning(disable:4291 4996)
-#endif
-
 #include <stdio.h>
 
 //=======================================================================

@@ -263,13 +263,13 @@ typedef struct
     /* Names of axes */
     char *xname, *yname, *zname;
     /* Draw names */
-    unsigned char xdrawname, ydrawname, zdrawname;
+    Standard_Boolean xdrawname, ydrawname, zdrawname;
     /* Draw values */
-    unsigned char xdrawvalues, ydrawvalues, zdrawvalues;
+    Standard_Boolean xdrawvalues, ydrawvalues, zdrawvalues;
     /* Draw grid */
-    unsigned char drawgrid;
+    Standard_Boolean drawgrid;
     /* Draw axes */
-    unsigned char drawaxes;
+    Standard_Boolean drawaxes;
     /* Number of splits along axes */
     unsigned int nbx, nby, nbz;
     /* Offset for drawing values */
@@ -277,7 +277,7 @@ typedef struct
     /* Offset for drawing names of axes */
     int xaxisoffset, yaxisoffset, zaxisoffset;
     /* Draw tickmarks */
-    unsigned char xdrawtickmarks, ydrawtickmarks, zdrawtickmarks;
+    Standard_Boolean xdrawtickmarks, ydrawtickmarks, zdrawtickmarks;
     /* Length of tickmarks */
     unsigned int xtickmarklength, ytickmarklength, ztickmarklength;
     /* Grid color */

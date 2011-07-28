@@ -161,6 +161,11 @@
 #include <StdLSchema_PColStd_HArray2OfInteger.hxx>
 #endif
 
+// avoid warnings on 'extern "C"' functions returning C++ classes
+#ifdef _MSC_VER
+#pragma warning(disable:4190)
+#endif
+
 IMPLEMENT_STANDARD_HANDLE(StdLSchema,Storage_Schema)
 IMPLEMENT_STANDARD_RTTIEXT(StdLSchema,Storage_Schema)
 
