@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
   FILE *fp2 = fopen(argv[2],"r");
   if(fp2 == NULL) { 
     fprintf(stderr,"\n Unable to open file2:%s \n",argv[2]);
+    fclose(fp1);
     return(-3);
   }
 
@@ -38,7 +39,8 @@ int main(int argc, char **argv) {
       }    
     }
   }
-  
+  fclose(fp1);
+  fclose(fp2);
   return(0);
 }
   
