@@ -78,26 +78,9 @@ extern "C" int getpagesize() ;
 
 //     
 // MMAP_BASE_ADDRESS,  MMAP_FLAGS
-#if defined (__hpux) || defined(HPUX)
-#define MMAP_BASE_ADDRESS 0x80000000
-#define MMAP_FLAGS (MAP_ANONYMOUS | MAP_PRIVATE | MAP_VARIABLE)
-#elif defined (__osf__) || defined(DECOSF1)
-#define MMAP_BASE_ADDRESS 0x1000000000
-#define MMAP_FLAGS (MAP_ANONYMOUS | MAP_PRIVATE | MAP_VARIABLE)
-#elif defined(_AIX)
-#define MMAP_BASE_ADDRESS  0x80000000
-#define MMAP_FLAGS (MAP_ANONYMOUS | MAP_PRIVATE | MAP_VARIABLE)
-#elif defined(__APPLE__)
-#define MMAP_BASE_ADDRESS  0x80000000
-#define MMAP_FLAGS (MAP_ANON | MAP_PRIVATE)
-#elif defined(LIN)
-#define MMAP_BASE_ADDRESS 0x20000000
-#define MMAP_FLAGS (MAP_PRIVATE)
-#elif defined(WNT)
-//static HANDLE myhMap;
-#else
-#define MMAP_BASE_ADDRESS 0x60000000
-#define MMAP_FLAGS (MAP_PRIVATE)
+#ifndef WNT
+#define MMAP_BASE_ADDRESS NULL
+#define MMAP_FLAGS (MAP_ANONYMOUS | MAP_PRIVATE)
 #endif
 
 // Round size up to the specified page size
@@ -246,55 +229,7 @@ void Standard_MMgrOpt::Initialize()
 
   // initialize memory mapped files
   if(myMMap) {
-#if defined (__sgi) || defined(IRIX)
-    /* Probleme de conflit en la zone des malloc et la zone des mmap sur SGI */
-    /* Ce probleme a ete identifie en IRIX 5.3 jusqu'en  IRIX 6.2. Le probleme */
-    /* ne semble pas apparaitre en IRIX 6.4 */
-    /* Les malloc successifs donnent des adresses croissantes (a partir de 0x0x10000000) */
-    /* ce que l'on appelle le pointeur de BREAK */
-    /* Le premier mmap est force a l'addresse MMAP_BASE_ADDRESS (soit 0x60000000 sur SGI) */
-    /* mais les mmap suivants sont decides par le systeme (flag MAP_VARIABLE). Malheureusement */
-    /* il renvoie une addresse la plus basse possible dans la zone des malloc juste au dessus */
-    /* du BREAK soit 0x18640000 ce qui donne un espace d'allocation d'environ 140 Mo pour les */
-    /* malloc. Sur des gros modeles on peut avoir des pointes a 680 Mo en Rev6 pour une maquette */
-    /* de 2 000 000 de points. En Rev7, la meme maquette n'excedera pas 286 Mo (voir vision.for) */
-    /* Pour palier ce comportement, la solution adoptee est la suivante :                        */
-    /*   Lorsque l'on entre dans alloc_startup (ici), on n'a pas encore fait de mmap.            */
-    /*   On fait alors un malloc (d'environ 700Mo) que l'on libere de suite. Cela a pour         */
-    /*  consequence de deplacer le BREAK tres haut. Le BREAK ne redescend jamais meme lors du free */
-    /*  Le mmap donnant une adresse (environ 100 Mo au dessus du BREAK) on se retrouve alors avec */
-    /* le partage des zones de memoire suivant :                                                  */
-    /*   700 Mo pour les malloc  - 500 Mo (1,2Go - 700Mo )  pour les mmap. Avec un CLD_SD_SIZE  */
-    /* de 2 000 000 on atteind jamais 500 Mo de mmap, meme en chargeant des applications (qui   */
-    /* utilisent la zone de mmap                                                                    */
-    /* Ce partage des zones memoire pourra eventuellemt etre regle par une variable d'environnement */
-    /* CLD_HIGH_SBRK                                                                                */
-    char *var;
-    Standard_Size high_sbrk;
-    
-    high_sbrk = 700*1024*1024;
-    if ( (var=getenv("CLD_HIGH_SBRK")) != NULL ) {
-      high_sbrk = atoi(var);
-    }
-
-    var = (char*)malloc(high_sbrk); // 700 Mb
-    if ( var )
-      free(var);
-    else
-      perror("ERR_MEMRY_FAIL");
-#endif
-    
-#if defined(IRIX) || defined(__sgi) || defined(SOLARIS) || defined(__sun) || defined(LIN) || defined(linux) || defined(__FreeBSD__)
-    if ((myMMap = open ("/dev/zero", O_RDWR)) < 0) {
-      if ((myMMap = open ("/dev/null", O_RDWR)) < 0){
-        myMMap = 0;
-      }
-    }
-    if (!myMMap)
-      perror("ERR_MMAP_FAIL");
-#else
     myMMap = -1;
-#endif
   }
   
   // initialize free lists
