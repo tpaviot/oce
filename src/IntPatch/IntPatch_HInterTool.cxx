@@ -46,6 +46,7 @@ Standard_Integer IntPatch_HInterTool::NbSamplesV (const Handle(Adaptor3d_HSurfac
     case GeomAbs_Torus:
     case GeomAbs_SurfaceOfRevolution:
     case GeomAbs_SurfaceOfExtrusion: return 15;
+	default: /* do nothing */ break;
   }
   return 10;
 }
