@@ -286,6 +286,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
       strcat(thedefault,casroot);
       strcat (thedefault,"/src/DrawResources/DrawDefault");
       ReadInitFile(thedefault);
+      free(thedefault);
     }
   }
   else
