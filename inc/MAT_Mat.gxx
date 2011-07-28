@@ -146,14 +146,15 @@ void MAT_Mat::CreateMat(Tool& atool)
   toleranceofconfusion = atool.ToleranceOfConfusion();
   NumberMaxOfIte       = noofedges*noofedges;
 
-  Standard_Integer* firstarea = new Standard_Integer[noofedges];
-  Standard_Integer* lastarea  = new Standard_Integer[noofedges];
   Standard_Integer* noofarea  = new Standard_Integer[noofedges];
 
   if (noofarea == 0) {
     cout <<" Erreur d allocation "<<endl;
     return;
   }
+
+  Standard_Integer* firstarea = new Standard_Integer[noofedges];
+  Standard_Integer* lastarea  = new Standard_Integer[noofedges];
 
   Standard_Integer  parama[2];
   Standard_Integer  paramb[2];
