@@ -106,14 +106,6 @@ int call_util_osd_getenv( const char * , char * , int ) ;
 * Variables statiques
 */
 
-#ifndef _MSC_VER
-# define __leave goto leave
-#endif
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-# define  __try
-# define  __finally
-#endif
-
 #ifndef WNT
 typedef NCollection_DataMap<Tint, GLCONTEXT> GLContextMap;
 #else
@@ -701,13 +693,18 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     HTBL_ENTRY*   hte;
     TStatus       retVal = TFailure;
+    bool Ret = true;
 
-    __try {
+    if (Ret){
 
       if ( !_Txgl_Map.IsBound( ( Tint )win ) ) {
         printf("OpenGL interface:  TxglWinset failed.UNKNOWN win %x\n",win);
-        __leave;
+        Ret = false;
       }
+    }
+
+    if (Ret)
+    {
       hte = _Txgl_Map.ChangeFind( ( Tint )win );
 
 #ifdef BUC60691
@@ -730,16 +727,8 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 #endif
         retVal = TFailure;  
       } else retVal = TSuccess;
-
-#ifndef _MSC_VER
-      leave: ;
-#endif     
-    }  /* end __try */
-
-
-    __finally 
-    {    
-    }  
+    
+    }  /* end if(Ret) */
 
     return retVal;
 
