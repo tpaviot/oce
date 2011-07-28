@@ -3,14 +3,6 @@
 
 #include <windowsx.h>
 
-#ifndef _MSC_VER
-# define  __leave goto leave
-#endif
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-# define  __try
-# define  __finally
-#endif
-
 #ifndef max
 # define max(a, b)  (((a) > (b)) ? (a) : (b)) 
 #endif
@@ -285,32 +277,28 @@ LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
   LONG res = 0;
   SIZE size;
   _TCHAR* dummy = NULL;
-  __try {
+  bool Ret = true;
+
     dummy = _tcsdup (lpText);
-#ifndef _MSC_VER
-    {  // new scope needed to let compiler cross variable initialization
-#endif
-    if ( !dummy ) __leave;
+   
+    if ( !dummy ) Ret = false;
+
+    if (Ret)
+    {
     short txtW = 0, txtH = 0;
     _TCHAR* tok = _tcstok ( dummy, TEXT( "\n" ) );
+
     while ( tok ) {
-      if ( !GetTextExtentPoint32 (hdc, tok, _tcslen(tok), (LPSIZE)&size) ) __leave;
+      if ( !GetTextExtentPoint32 (hdc, tok, _tcslen(tok), (LPSIZE)&size) ) { Ret = false; break; }
       txtH += (short)size.cy;
       if ( txtW < size.cx )
         txtW = (short)size.cx;
       tok = _tcstok ( NULL, TEXT( "\n" ) );
     }
+    if (Ret)
     res = MAKELONG (MapX(txtW), MapY(txtH));
-#ifndef _MSC_VER
-    }
-    leave: ;
-#endif
   }
-
-  __finally {
     free (dummy);
-  }
-
   return res;
 }
 
@@ -369,19 +357,17 @@ _TINT MsgBox ( HWND hParent,
   short           butCount  = 0, butMaxWidth = 0, butMaxHeight = 0;
   short           butSpace = 8, butOffset = 0;
 
-  __try {
+  {
     /* Get dialog base units & map it to dialog units*/
     hDisp = CreateDC ( TEXT( "DISPLAY" ), NULL, NULL, NULL );
-#ifndef _MSC_VER
-    {  // new scope needed to let compiler cross variable initialization
-#endif
-    if ( !hDisp ) __leave;
+
+    if ( !hDisp ) goto leave;
     scrW = GetDeviceCaps ( hDisp, HORZRES );
     scrH = GetDeviceCaps ( hDisp, VERTRES );
     scrW = MapX (scrW);
     scrH = MapY (scrH);
     LONG txtParam = GetTextParams ( hDisp, lpText );
-    if ( !txtParam ) __leave;
+    if ( !txtParam ) goto leave;
  
     // Calculate needed size of buffer
     bufSize = 14*sizeof(WORD)  + _tcslen(lpCaption)*CHR_SIZE;
@@ -401,7 +387,7 @@ _TINT MsgBox ( HWND hParent,
     }
 
     pDlgTemplate = p = (PWORD) LocalAlloc (LPTR, bufSize);
-    if ( !pDlgTemplate )  __leave;
+    if ( !pDlgTemplate ) goto leave;
 
     lStyle = DS_MODALFRAME | DS_SYSMODAL | WS_POPUP | WS_CAPTION;
     *p++ = LOWORD (lStyle);
@@ -520,13 +506,13 @@ _TINT MsgBox ( HWND hParent,
         *pItemsCount += 1;
       }
     } // Childs
-#ifndef _MSC_VER
-    }
-    leave: ;
-#endif
-  }  // __try
+	
+	
+  }
+  leave:
   /*----------------------------------------------------------------------*/
-  __finally {
+  
+  {
     int res = -1;
     if ( pDlgTemplate )
       res = DialogBoxIndirect (

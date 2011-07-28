@@ -44,14 +44,6 @@ static Standard_Boolean fSETranslator =
 #include <malloc.h>
 #endif
 
-#ifndef _MSC_VER
-# define  __leave goto leave
-#endif
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-# define  __try
-# define  __finally
-#endif
-
 #ifdef __BORLANDC__
 # include <malloc.h>
 # define FPE_DENORMAL 0x82
@@ -720,29 +712,33 @@ LONG _osd_debug ( void ) {
   SECURITY_ATTRIBUTES sa;
   PROCESS_INFORMATION pi;
   STARTUPINFO         si;
-
-  __try {
-  
+  bool Ret = true;
+    
    if (  RegOpenKey (
           HKEY_LOCAL_MACHINE,
           TEXT( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug" ),
           &hKey
          ) != ERROR_SUCCESS
-   ) __leave;
+   ) Ret = false;
 
+   if (Ret)
+   {
    dwValueLen = sizeof ( keyValue );
   
    if (  RegQueryValueEx (
           hKey, TEXT( "Debugger" ), NULL, &dwKeyType, ( unsigned char* )keyValue, &dwValueLen
          ) != ERROR_SUCCESS
-   ) __leave;
+   ) Ret = false;
 
    sa.nLength              = sizeof ( SECURITY_ATTRIBUTES );
    sa.lpSecurityDescriptor = NULL;
    sa.bInheritHandle       = TRUE;
 
-   if (   (  hEvent = CreateEvent ( &sa, TRUE, FALSE, NULL )  ) == NULL   ) __leave;
+   if (   (  hEvent = CreateEvent ( &sa, TRUE, FALSE, NULL )  ) == NULL   ) Ret = false;
+   }
 
+   if (Ret)
+   {
    wsprintf (  cmdLine, keyValue, GetCurrentProcessId (), hEvent  );
 
    ZeroMemory (  &si, sizeof ( STARTUPINFO )  );
@@ -755,8 +751,11 @@ LONG _osd_debug ( void ) {
            NULL, cmdLine, NULL, NULL, TRUE, CREATE_DEFAULT_ERROR_MODE,
            NULL, NULL, &si, &pi
           )
-   ) __leave;
+   ) Ret = false;
+   }
 
+   if (Ret)
+   {
 //   cout << "_osd_debug -> WaitForSingleObject " << endl ;
    WaitForSingleObject ( hEvent, INFINITE );
 //   cout << "_osd_debug <- WaitForSingleObject -> CloseHandle " << endl ;
@@ -767,21 +766,13 @@ LONG _osd_debug ( void ) {
 //   cout << "_osd_debug fDbgLoaded  " << endl ;
    fDbgLoaded = TRUE;
   
-#ifndef _MSC_VER
-   leave: ;
-#endif
-  }  // end __try
-
-  __finally {
-  
+  } 
 //   cout << "_osd_debug -> CloseHandle(hKey) " << endl ;
    if ( hKey   != NULL ) CloseHandle ( hKey   );
 //   cout << "_osd_debug -> CloseHandle(hEvent) " << endl ;
    if ( hEvent != INVALID_HANDLE_VALUE ) CloseHandle ( hEvent );
 //   cout << "_osd_debug end __finally " << endl ;
   
-  }  // end __finally
-
  }  /* end if */
 
  action = fDbgLoaded ? EXCEPTION_CONTINUE_EXECUTION : EXCEPTION_EXECUTE_HANDLER;

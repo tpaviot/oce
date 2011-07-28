@@ -50,14 +50,6 @@
 #define WINNT35X() (WNT_osVer.dwPlatformId   == VER_PLATFORM_WIN32_NT && \
                     WNT_osVer.dwMajorVersion == 3 )
 
-#ifndef _MSC_VER
-# define __leave goto leave
-#endif
-#ifdef __MINGW32__
-# define __finally catch(...)
-#endif
-
-
 //***//
 typedef struct {
 
@@ -117,6 +109,7 @@ HBITMAP LoadImageFromFile (
  HANDLE   hFile, hFileMap = NULL;
  HBITMAP  retVal = NULL;
  DWORD    dwProtect, dwAccess;
+ bool Ret = true;
 
  if ( WNT_osVer.dwPlatformId == VER_PLATFORM_WIN32_WINDOWS ) {
 
@@ -152,7 +145,7 @@ HBITMAP LoadImageFromFile (
  _makepath ( ifl, drv, dir, fnm, ext );
 #endif
 
- __try {
+ if (Ret) {
 
   hFile = CreateFile (
 #ifdef IMP080200
@@ -163,22 +156,32 @@ HBITMAP LoadImageFromFile (
            OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL
 		  );
 
-  if ( hFile == INVALID_HANDLE_VALUE ) __leave;
-
+  if ( hFile == INVALID_HANDLE_VALUE ) Ret = false;
+ }
+ if (Ret)
+ {
   dwFileSize = GetFileSize ( hFile, NULL );
 
-  if ( dwFileSize == 0xFFFFFFFF ) __leave;
+  if ( dwFileSize == 0xFFFFFFFF ) Ret = false;
+ }
+ if (Ret)
+ {
 
   hFileMap = CreateFileMapping (
               hFile, NULL, dwProtect, 0, dwFileSize, NULL
              );
 
-  if ( hFileMap == NULL ) __leave;
+  if ( hFileMap == NULL ) Ret = false;
+ }
+ if (Ret)
+ {
 
   lpvFile = MapViewOfFile ( hFileMap, FILE_MAP_COPY, 0, 0, 0 );
 
-  if ( lpvFile == NULL ) __leave;
-
+  if ( lpvFile == NULL ) Ret = false;
+ }
+ if (Ret)
+ {
   if (   memcmp (  ( const void* )lpvFile, ( const void* )"BM", 2  ) == 0   )
 
    retVal = loadBMP ( gDev );
@@ -192,14 +195,7 @@ HBITMAP LoadImageFromFile (
   else  // assume XWD file
 
    retVal = loadXWD ( gDev );
-
-#ifndef _MSC_VER
-  leave: ;
-#endif
-
- }  // end __try
-
- __finally {
+ }
 
   if ( lpvFile  != NULL ) {
 
@@ -210,8 +206,6 @@ HBITMAP LoadImageFromFile (
 
   if ( hFileMap != NULL                 ) CloseHandle ( hFileMap );
   if ( hFile    != INVALID_HANDLE_VALUE ) CloseHandle ( hFile    );
-
- }  // end __finally
 
  if ( hDevCtx == NULL ) ReleaseDC ( NULL, hDC );
 
@@ -228,8 +222,9 @@ int __WNT_API SaveWindowToFile (
  HDC      hDCmem = NULL;
  HBITMAP  hBmp = NULL, hOldBmp = NULL;
  HPALETTE hOldPal = NULL;
+ bool Ret = true;
 
- __try {
+ if (Ret) {
 
   hDC = GetDC ( hWnd );
 #ifdef TEST
@@ -247,8 +242,10 @@ int __WNT_API SaveWindowToFile (
 
   hBmp = CreateCompatibleBitmap ( hDC, w, h );
 
-  if ( hBmp == NULL ) __leave;
-
+  if ( hBmp == NULL ) Ret = false;
+ }
+ if (Ret)
+ {
   hOldBmp = SelectBitmap ( hDCmem, hBmp );
 
    BitBlt ( hDCmem, 0, 0, w, h, hDC, x, y, SRCCOPY );
@@ -256,14 +253,7 @@ int __WNT_API SaveWindowToFile (
   SelectBitmap ( hDCmem, hOldBmp );
 
   retVal = SaveBitmapToFile ( gDev, hBmp, fName, 0, 0, w, h );
-
-#ifndef _MSC_VER
-  leave: ;
-#endif
-
- }  // end __try
-
- __finally {
+ }  
 
 #ifdef TEST
   fWindow = FALSE;
@@ -277,8 +267,6 @@ int __WNT_API SaveWindowToFile (
 
   DeleteDC ( hDCmem );
   ReleaseDC ( hWnd, hDC );
-
- }  // end __finally
 
  return retVal;
 
@@ -353,8 +341,8 @@ int SaveBitmapToFile (Handle(WNT_GraphicDevice)& gDev,
   HBITMAP  hNewBmp = NULL;
   HPALETTE hOldPal = NULL;
   BOOL     newBmp  = FALSE, newDC = FALSE;
-
-  __try {
+  bool Ret = true;
+  if (Ret) {
 
   #ifdef TEST
     if (!fWindow)
@@ -393,23 +381,22 @@ int SaveBitmapToFile (Handle(WNT_GraphicDevice)& gDev,
       {
         SelectPalette (hDC, hOldPal, FALSE);
       }
-      if (hNewBmp == NULL) __leave;
+      if (hNewBmp == NULL) Ret = false;
     }
     else
     {
       hNewBmp = hBmp;
     }
-
+  }
+  if (Ret)
+  {
     retVal = DumpBitmapToFile (gDev, NULL,
                                hNewBmp, fName);
-#ifndef _MSC_VER
-    leave: ;
-#endif
-  }  // end __try
-  __finally {
+  } 
+ 
     if (hNewBmp != NULL && newBmp) DeleteObject (hNewBmp);
     if (newDC) ReleaseDC (NULL, hDC);
-  }  // end __finally
+
   return retVal;
 }  // end SaveBitmapToFile
 //***//
@@ -444,7 +431,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
  LPVOID           imageData;
  DWORD            dataSize;
 
- __try {
+ {
 
   xwdHdr = ( XWDFileHeader* )lpvFile;
 
@@ -453,7 +440,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
   if ( xwdHdr -> file_version  != XWD_FILE_VERSION ||
        xwdHdr -> pixmap_format != ZPixmap          ||
        xwdHdr -> header_size   <  sizeof ( XWDFileHeader )
-  ) __leave;
+  ) goto leave;
 
   xColor = ( XColor* )(  ( char* )lpvFile + xwdHdr -> header_size  );
 
@@ -489,7 +476,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
 	else
 
-	 __leave;
+	 goto leave;
 
     break;
 
@@ -514,7 +501,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
 	 else
 
-	  __leave;
+	  goto leave;
 
     break;
 
@@ -522,7 +509,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
   pBmi = ( PBITMAPINFO )MALLOC( nBytes );
 
-  if ( pBmi == NULL ) __leave;
+  if ( pBmi == NULL ) goto leave;
 
   pBmi -> bmiHeader.biSize          = sizeof ( BITMAPINFOHEADER );
   pBmi -> bmiHeader.biWidth	        = xwdHdr -> pixmap_width;
@@ -561,7 +548,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
 	  pbInit = ( PBYTE )MALLOC( bitmapSize );
 
-	  if ( pbInit == NULL ) __leave;
+	  if ( pbInit == NULL ) goto leave;
 
 	  newMem = TRUE;
 
@@ -581,7 +568,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
      ptrDIB = ( PBYTE )MALLOC( dataSize );
 
-	 if ( ptrDIB == NULL ) __leave;
+	 if ( ptrDIB == NULL ) goto leave;
 
 	 CopyMemory (  ( PVOID )ptrDIB, ( PVOID )pbInit, dataSize  );
 	 FillMemory (  ( PVOID )colors, MAXCOLOR * sizeof ( WORD ), 0xFFFF );
@@ -644,7 +631,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
 	  pbInit = ( PBYTE )MALLOC( bitmapSize );
 
-	  if ( pbInit == NULL ) __leave;
+	  if ( pbInit == NULL ) goto leave;
 
 	  newMem = TRUE;
 
@@ -710,7 +697,7 @@ AllocColors_16:
 
 	  pbInit = ( PBYTE )MALLOC( bitmapSize );
 
-	  if ( pbInit == NULL ) __leave;
+	  if ( pbInit == NULL ) goto leave;
 
 	  newMem = TRUE;
 
@@ -763,7 +750,7 @@ AllocColors_16:
 
 	   default:
 
-	    __leave;
+	    goto leave;
 
       }  // end switch ( xwdHdr -> bits_per_pixel . . . )
 
@@ -773,7 +760,7 @@ AllocColors_16:
 
      case 24:
 
-      __leave;
+      goto leave;
 
      case 32:
 
@@ -847,18 +834,12 @@ AllocColors_16:
 
    SelectPalette ( hDC, hOldPal, FALSE );
 
-#ifndef _MSC_VER
-  leave: ;
-#endif
+leave: ;
 
  }  // end try
 
- __finally {
-
   if ( pbInit != NULL && newMem ) FREE( pbInit );
   if ( pBmi   != NULL           ) FREE( pBmi   );
-
- }  // end finally
 
  return retVal;
 
@@ -930,8 +911,7 @@ static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
  UINT              nColors;
  DWORD             dwWidth, dwHeight;
  BOOL              os2Flag = FALSE;
-
- __try {
+ bool Ret = true;
 
   pBmfh = ( PBITMAPFILEHEADER )lpvFile;
   pBmih = ( PBITMAPINFOHEADER )(  ( PBYTE )lpvFile + sizeof ( BITMAPFILEHEADER )  );
@@ -948,8 +928,10 @@ static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
 						         sizeof ( RGBQUAD ) * nColors
 					            );
 
-   if ( pBmih == NULL ) __leave;
+   if ( pBmih == NULL ) Ret = false;
 
+  if (Ret)
+  {
    pBmih -> biSize        = sizeof ( BITMAPINFOHEADER );
    pBmih -> biWidth       = pBmch -> bcWidth;
    pBmih -> biHeight      = pBmch -> bcHeight;
@@ -965,12 +947,12 @@ static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
    	 (  ( PBITMAPCOREINFO )pBmch  ) -> bmciColors[ i ].rgbtGreen;
    	(  ( PBITMAPINFO )pBmih  ) -> bmiColors[ i ].rgbBlue =
    	 (  ( PBITMAPCOREINFO )pBmch  ) -> bmciColors[ i ].rgbtBlue;
-
    }  // end for
 
    pRGB     = (  ( PBITMAPINFO )pBmih  ) -> bmiColors;
    os2Flag  = TRUE;
 
+  } // if Ret
   } else {  // Windows DIB
 
    pRGB     = ( LPRGBQUAD )(  ( PBYTE )pBmih + pBmih -> biSize  );
@@ -1000,16 +982,7 @@ static HBITMAP loadBMP (  Handle( WNT_GraphicDevice )& gDev  ) {
 
    SelectPalette ( hDC, hOldPal, FALSE );
 
-#ifndef _MSC_VER
-  leave: ;
-#endif
- }  // end __try
-
- __finally {
-
   if ( os2Flag && pBmih ) FREE( pBmih );
-
- }  // end __finally
 
   return retVal;
 
@@ -1051,7 +1024,7 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
   Suffix = Prefix = OutCode = NULL;
 #endif
 
- __try {
+ {
 
 #ifdef BUC60837
   OutCode = ( PUINT )MALLOC(  1026 * sizeof ( UINT )  );
@@ -1063,7 +1036,7 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
   Prefix  = ( PUINT )MALLOC(  4096 * sizeof ( UINT )  );
   Suffix  = ( PUINT )MALLOC(  4096 * sizeof ( UINT )  );
 
-  if ( OutCode == NULL || Prefix == NULL || Suffix == NULL ) __leave;
+  if ( OutCode == NULL || Prefix == NULL || Suffix == NULL ) goto leave;
 
   byte = NEXT_BYTE;
 
@@ -1073,13 +1046,13 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
   BitMask     = nColors - 1;
   ++ptr;
 
-  if ( NEXT_BYTE ) __leave;
+  if ( NEXT_BYTE ) goto leave;
 
   pBmi = ( PBITMAPINFO )MALLOC(
                          sizeof ( BITMAPINFO ) + sizeof ( RGBQUAD ) * 256
 					    );
 
-  if ( pBmi == NULL ) __leave;
+  if ( pBmi == NULL ) goto leave;
 
   if ( hasColormap ) {
 
@@ -1103,11 +1076,11 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
 
   }  // end while
 
-  if ( NEXT_BYTE != IMAGESEP ) __leave;
+  if ( NEXT_BYTE != IMAGESEP ) goto leave;
 
   rasterPtr = ( PBYTE )MALLOC( dwFileSize );
 
-  if ( rasterPtr == NULL ) __leave;
+  if ( rasterPtr == NULL ) goto leave;
 
   ptr += 4;
 
@@ -1142,7 +1115,7 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
 
    }  // end while
 
-   if (  ( UINT )( ptr1 - rasterPtr ) > dwFileSize  ) __leave;  // corrupt file - unblock
+   if (  ( UINT )( ptr1 - rasterPtr ) > dwFileSize  ) goto leave;  // corrupt file - unblock
 
   } while ( byte1 );
 
@@ -1151,7 +1124,7 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
 
   pData = ( PBYTE )MALLOC( dataSize );
 
-  if ( pData == NULL ) __leave;
+  if ( pData == NULL ) goto leave;
 
   x = y = pass = OutCount = BitOffset = ByteOffset = 0;
 
@@ -1206,7 +1179,7 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
 #ifdef BUC60837
 					break;
 #else
-					__leave;
+					goto leave;
 #endif
 	 OutCode[ OutCount++ ] = Suffix[ CurCode ];
 	 CurCode               = Prefix[ CurCode ];
@@ -1278,13 +1251,12 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
 
    SelectPalette ( hDC, hOldPal, FALSE );
 
-#ifndef _MSC_VER
+
   leave: ;
-#endif
 
- }  // end __try
 
- __finally {
+ } 
+
 
   if ( pData     != NULL ) FREE( pData     );
   if ( rasterPtr != NULL ) FREE( rasterPtr );
@@ -1293,7 +1265,6 @@ static HBITMAP loadGIF (  Handle( WNT_GraphicDevice )& gDev  ) {
   if ( Prefix    != NULL ) FREE( Prefix    );
   if ( OutCode   != NULL ) FREE( OutCode   );
 
- }  // end __finally
 
  return retVal;
 

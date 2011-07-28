@@ -52,9 +52,6 @@ static RESPONSE_DIR_PROC _response_dir_proc;
 #define SID_WORLD         7
 #define SID_NULL          8
 
-#ifndef _MSC_VER
-# define  __leave goto leave
-#endif
 
 /***/
 /******************************************************************************/
@@ -115,12 +112,6 @@ void FreeSD ( PSECURITY_DESCRIPTOR pSD ) {
 /******************************************************************************/
 /***/
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return buffer
-#endif
-
 LPVOID GetTokenInformationEx ( HANDLE hToken, TOKEN_INFORMATION_CLASS tic ) {
 
  DWORD  errVal;
@@ -128,8 +119,7 @@ LPVOID GetTokenInformationEx ( HANDLE hToken, TOKEN_INFORMATION_CLASS tic ) {
  DWORD  dwSizeNeeded = 0;
  LPVOID buffer       = NULL;
  BOOL   fOK          = FALSE;
-
- __try {
+ bool   Ret = true;
 
   do {
 
@@ -139,44 +129,34 @@ LPVOID GetTokenInformationEx ( HANDLE hToken, TOKEN_INFORMATION_CLASS tic ) {
    if (  !GetTokenInformation ( hToken, tic, buffer, dwSize, &dwSizeNeeded )  ) {
 
     if (   (  errVal = GetLastError ()  ) != ERROR_INSUFFICIENT_BUFFER   )
-        
-     __leave;
+    {    
+      Ret = false;
+      break;
+    }
 
     if (  ( buffer = HeapAlloc (  hHeap, 0, dwSizeNeeded  ) ) == NULL  )
-
-     __leave;
+    {    
+      Ret = false;
+      break;
+    }
 
    }  /* end if */
  
   } while ( errVal != ERROR_SUCCESS );
 
+  if (Ret)
   fOK = TRUE;
 
-#ifndef _MSC_VER
-  leave: ;
-#endif
- }  /* end __try */
-
- __finally {
- 
   if ( !fOK && buffer != NULL ) {
   
    HeapFree ( hHeap, 0, buffer );
    buffer = NULL;
   
   }  /* end if */
- 
- }  /* end __finally */
 
  return buffer;
 
 }  /* end GetTokenInformationEx */
-
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 /***/
 /******************************************************************************/
@@ -436,13 +416,6 @@ PSID NullSid ( void ) {
 /******************************************************************************/
 /***/
 
-
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
-
 PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION si ) {
 
  DWORD                errVal;
@@ -450,8 +423,8 @@ PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION 
  DWORD                dwSizeNeeded = 0;
  PSECURITY_DESCRIPTOR retVal = NULL;
  BOOL                 fOK    = FALSE;
-
- __try {
+ bool                 Ret = true;
+ 
 
   do {
 
@@ -464,24 +437,24 @@ PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION 
           )
    ) {
  
-    if (   (  errVal = GetLastError ()  ) != ERROR_INSUFFICIENT_BUFFER   ) __leave;
+    if (   (  errVal = GetLastError ()  ) != ERROR_INSUFFICIENT_BUFFER   ) {    
+      Ret = false;
+      break;
+    }
 
     if (   (  retVal = ( PSECURITY_DESCRIPTOR )HeapAlloc ( hHeap, 0, dwSizeNeeded )
            ) == NULL
-    ) __leave;
+    ) {    
+      Ret = false;
+      break;
+    }
 
    }  /* end if */
  
   } while ( errVal != ERROR_SUCCESS );
 
+  if (Ret)
   fOK = TRUE;
-
-#ifndef _MSC_VER
-  leave: ;
-#endif
- }  /* end __try */
-
- __finally {
  
   if ( !fOK && retVal != NULL ) {
   
@@ -490,17 +463,9 @@ PSECURITY_DESCRIPTOR GetFileSecurityEx ( LPCTSTR fileName, SECURITY_INFORMATION 
   
   }  /* end if */
  
- }  /* end __finally */
-
  return retVal;
 
 }  /* end GetFileSecurityEx */
-
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 /***/
 /******************************************************************************/
@@ -528,12 +493,6 @@ void FreeFileSecurity ( PSECURITY_DESCRIPTOR pSD ) {
 /******************************************************************************/
 /***/
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#define __try
-#define __finally
-#define __leave return retVal
-#endif
-
 BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
 
  DWORD        errVal;
@@ -541,8 +500,7 @@ BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
  DWORD        dwSizeDomain = 0;
  BOOL         retVal       = FALSE;
  SID_NAME_USE eUse;
-
- __try {
+ bool Ret = true;
 
   do {   
 
@@ -553,24 +511,26 @@ BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
           )
    ) {
    
-    if (   (  errVal = GetLastError ()  ) != ERROR_INSUFFICIENT_BUFFER   ) __leave;
+    if (   (  errVal = GetLastError ()  ) != ERROR_INSUFFICIENT_BUFFER   ) 
+    {    
+      Ret = false;
+      break;
+    }
 
     if (   (  *name   = ( LPTSTR )HeapAlloc ( hHeap, 0, dwSizeName   )  ) == NULL ||
            (  *domain = ( LPTSTR )HeapAlloc ( hHeap, 0, dwSizeDomain )  ) == NULL
-    ) __leave;
+    ) 
+    {    
+      Ret = false;
+      break;
+    }
    
    }  /* end if */
 
   } while ( errVal != ERROR_SUCCESS );
 
+  if (Ret)
   retVal = TRUE;
- 
-#ifndef _MSC_VER
-  leave: ;
-#endif
- }  /* end __try */
-
- __finally {
 
   if ( !retVal ) {
   
@@ -579,17 +539,9 @@ BOOL LookupAccountSidEx ( PSID pSID, LPTSTR* name, LPTSTR* domain ) {
   
   }  /* end if */
  
- }  /* end __finally */
-
  return retVal;
 
 }  /* end LookupAccountSidEx */
-
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
-#undef __try
-#undef __finally
-#undef __leave
-#endif
 
 /***/
 /******************************************************************************/
