@@ -46,11 +46,11 @@ public:
   }
   void* operator new(size_t size) 
   {
-    return Standard::Allocate(size); 
+    return Allocate(size); 
   }
   void  operator delete(void *anAddress) 
   {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
+    if (anAddress) Free((Standard_Address&)anAddress); 
   }
 
   //!  Allocates memory blocks <br>
