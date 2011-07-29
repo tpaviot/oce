@@ -99,7 +99,7 @@ static void  ComputeTrsf2d(const Handle(TheWLine)& theline,
     pfunc = &IntSurf_PntOn2S::ParametersOnS2;
   for(Standard_Integer i=1;i<=nbp;i++) { 
     const IntSurf_PntOn2S&  POn2S = theline->Point(i);
-    Standard_Real  U,V;
+    Standard_Real  U=0.0,V=0.0;
     (POn2S.*pfunc)(U,V);
     if(U<u0) u0=U;
     if(U>u1) u1=U;
