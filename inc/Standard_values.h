@@ -22,20 +22,18 @@ Facility : CAS-CADE V1.3A
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 
-#ifndef WNT
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
+#include <oce-config.h>
 
-#ifdef OCE_HAVE_CLIMITS
-# include <climits>
-#elif defined (OCE_HAVE_LIMITS)
-# include <limits>
-#elif defined (OCE_HAVE_LIMITS_H)
-# include <limits.h>
-#else
-#error "check config.h file or compilation options: OCE_HAVE_CLIMITS, OCE_HAVE_LIMITS, or OCE_HAVE_LIMITS_H should be defined"
-#endif
+#ifndef WNT
+# ifdef OCE_HAVE_CLIMITS
+#  include <climits>
+# elif defined (OCE_HAVE_LIMITS)
+#  include <limits>
+# elif defined (OCE_HAVE_LIMITS_H)
+#  include <limits.h>
+# else
+#  error "check oce-config.h file or compilation options: OCE_HAVE_CLIMITS, OCE_HAVE_LIMITS, or OCE_HAVE_LIMITS_H should be defined"
+# endif
 #endif
 
 
