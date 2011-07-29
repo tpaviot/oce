@@ -7,9 +7,7 @@
 # include <stdlib.h>
 #endif
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
+#include <oce-config.h>
 
 #ifdef HAVE_FTGL_NEWER212
 # include <FTGL/ftgl.h>
