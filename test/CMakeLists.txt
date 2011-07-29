@@ -1,4 +1,4 @@
 SET(GTEST_ROOT /usr/local/lib)
 FIND_PACKAGE(GTest)
 
-SUBDIRS(gtest_sandbox gp_test BRepPrimAPI_test)
+SUBDIRS(gtest_sandbox gp_test BRepPrimAPI_test BRepAlgoAPI_test BRepGProp_test)
