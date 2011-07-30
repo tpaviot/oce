@@ -716,19 +716,19 @@ void PrintState (Draw_Interpretor& aDI,
   //
   switch (aState) {
   case TopAbs_IN:		
-    sprintf(sbf, sIN.ToCString());
+    sprintf(sbf, "%s",sIN.ToCString());
     break;
   case TopAbs_OUT:		
-    sprintf(sbf, sOUT.ToCString());
+    sprintf(sbf, "%s",sOUT.ToCString());
     break;
   case TopAbs_ON:		
-    sprintf(sbf, sON.ToCString());
+    sprintf(sbf, "%s",sON.ToCString());
     break;
   case TopAbs_UNKNOWN:		
-    sprintf(sbf, sUNKNOWN.ToCString());
+    sprintf(sbf, "%s",sUNKNOWN.ToCString());
     break;
   default:
-    sprintf(sbf, sUNKNOWN.ToCString()); 
+    sprintf(sbf, "%s",sUNKNOWN.ToCString()); 
     break;
   }
   aDI<<sbf; 

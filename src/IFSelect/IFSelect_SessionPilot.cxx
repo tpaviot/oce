@@ -222,7 +222,7 @@ static TCollection_AsciiString nulword;
 
   for (;;) {
     char ligne[100];
-    if (!lefic) printf (theprompt.ToCString());
+    if (!lefic) printf ("%s",theprompt.ToCString());
     ligne[0] = '\0';
     fgets(ligne,100,fic);
     if (feof(fic)) break;

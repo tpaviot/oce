@@ -102,7 +102,7 @@ static TStatus DegenerateModelPrint ( TSM_ELEM_DATA data, Tint n, cmn_key* k ) {
 
   }  /* end switch */
 
-  fprintf ( stdout, ptr );
+  fprintf ( stdout,"%s", ptr );
 
   return TSuccess;
 

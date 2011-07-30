@@ -152,6 +152,8 @@ void MAT_Mat::CreateMat(Tool& atool)
 
   if (noofarea == 0) {
     cout <<" Erreur d allocation "<<endl;
+    delete [] firstarea;
+    delete [] lastarea;
     return;
   }
 
