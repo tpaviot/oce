@@ -1,0 +1,12 @@
+This is the OCE unittest framework.
+
+In order to run tests, you have to compile GoogleTest from the source code
+available in the folder oce/test/gtest-1.6.0
+
+You just have to :
+$cd src/gtest-1.6.0/lib
+$ cmake ..
+$ make -j2
+
+And that's all. After that, the CMake builder will find the proper library and headers
+locations.
