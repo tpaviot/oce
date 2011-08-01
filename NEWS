@@ -1,3 +1,36 @@
+Version 0.5.0 - August 2011
+
+This released integrated OCCT 6.5.1, continued on the warning cleanup, and 
+fixed some bugs. This a ABI breaking release, due to the warning fixes 
+and the new OCCT version. 
+Programs compiled with OCCT 6.5.1 will compile untouched with OCE 0.5.0
+
+ *   OCCT 6.5.1 : aligned to the lasted OpenCascade Tecnology release, 
+     while mantaining all the patches previously applyed.
+ 
+ *   Breaking changes : to allow the removal of many compiler warnings, we 
+     did some breaking changes in some of the headers, mainly related to the 
+     type of private class fields. Existing code will still compile untouched.
+     
+ *   Warning removal and code cleanup : we removed many other warnings and 
+     cleaned up some functions. Some cppcheck warnings were also fixed.
+     
+ *   Added TBB support in memory allocation : OCE builds compiled with the 
+     TBB option on will benefit from it's multithreaded memory allocator.
+    
+ *   Bug fixes : some bugs were spotted during the cleanup process, and 
+     were fixed and reported. Other bugs were noticed from the forum and
+     fixed.
+
+ *   Installing version information : Programs using CMake will allow to find 
+     OCE with a specific version string.
+ 
+ *   Program using OCE won't require to compile with -DHAVE_OCE_CONFIG anymore.
+ 
+Users who contributed to this release:
+     Thomas Paviot, Denis Barbier, QbProg, Hugues Delorme, Muellni,
+     Philippe Carret
+     
 Version 0.4.0 - July 2011
 
 This release focused on improving code quality and the cmake build system.
