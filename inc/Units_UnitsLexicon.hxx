@@ -72,7 +72,7 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
-Standard_Integer thetime;
+time_t thetime;
 
 
 };
