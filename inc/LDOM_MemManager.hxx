@@ -91,9 +91,9 @@ class LDOM_MemManager : public MMgt_TShared
     static Standard_Integer Hash(const char             * theString,
                                  const Standard_Integer theLen);
 
-	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
-	HashTable & operator = (const HashTable &) { return *this; }
-	
+    // Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+    HashTable & operator = (const HashTable &) { return *this; }
+
     struct TableItem {
       char             * str;
       struct TableItem * next;

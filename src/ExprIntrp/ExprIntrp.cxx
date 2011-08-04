@@ -35,10 +35,10 @@ Standard_Boolean ExprIntrp::Parse(const Handle(ExprIntrp_Generator)& gen, const 
     catch (Standard_Failure) {
 
 #if defined(NO_CXX_EXCEPTION) || defined(OCC_CONVERT_SIGNALS)
-		return Standard_False;
+      return Standard_False;
 #endif
 
-	}
+    }
   }
 
 #if defined(NO_CXX_EXCEPTION) || defined(OCC_CONVERT_SIGNALS)

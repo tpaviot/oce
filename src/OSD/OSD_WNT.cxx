@@ -51,8 +51,6 @@ static RESPONSE_DIR_PROC _response_dir_proc;
 #define SID_ADMIN         6
 #define SID_WORLD         7
 #define SID_NULL          8
-
-
 /***/
 /******************************************************************************/
 /* Function : AllocSD                                                       */

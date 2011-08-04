@@ -826,7 +826,7 @@ void Intf_InterferencePolygonPolyhedron::Intersect
   if(NoIntersectionWithTriangle == Standard_False) { 
     gp_XYZ spLieu=BegO.XYZ()+((EndO.XYZ()-BegO.XYZ())*param);
     Standard_Real dPiE[3], dPtPi[3], sigd;
-	dPiE[0]=dPiE[1]=dPiE[2]=0;
+    dPiE[0]=dPiE[1]=dPiE[2]=0;
 #ifndef DEB
     Standard_Integer is =0;
 #else
@@ -1131,7 +1131,7 @@ void Intf_InterferencePolygonPolyhedron::Intersect
   if(NoIntersectionWithTriangle == Standard_False) { 
     gp_XYZ spLieu=BegO.XYZ()+((EndO.XYZ()-BegO.XYZ())*param);
     Standard_Real dPiE[3], dPtPi[3], sigd;
-	dPiE[0]=dPiE[1]=dPiE[2]=0;
+    dPiE[0]=dPiE[1]=dPiE[2]=0;
 #ifndef DEB
     Standard_Integer is =0;
 #else

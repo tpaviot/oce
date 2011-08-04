@@ -181,7 +181,7 @@ GeomAbs_Shape GeomAdaptor_Surface::UContinuity() const
         case GeomAbs_CN : return GeomAbs_CN; 
         case GeomAbs_C2 : return GeomAbs_C1; 
         case GeomAbs_C1 : return GeomAbs_C0;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       Standard_NoSuchObject::Raise("GeomAdaptor_Surface::UContinuity");
 	  break;
@@ -224,7 +224,7 @@ GeomAbs_Shape GeomAdaptor_Surface::VContinuity() const
         case GeomAbs_CN : return GeomAbs_CN; 
         case GeomAbs_C2 : return GeomAbs_C1;
         case GeomAbs_C1 : return GeomAbs_C0;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       Standard_NoSuchObject::Raise("GeomAdaptor_Surface::VContinuity");
       break;
@@ -274,12 +274,12 @@ Standard_Integer GeomAdaptor_Surface::NbUIntervals(const GeomAbs_Shape S) const
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       return Sur.NbUIntervals(BaseS);
     }
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   return 1;
 }
@@ -317,12 +317,12 @@ Standard_Integer GeomAdaptor_Surface::NbVIntervals(const GeomAbs_Shape S) const
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       return Sur.NbVIntervals(BaseS);
 	}
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   return 1;
 }
@@ -367,13 +367,13 @@ void GeomAdaptor_Surface::UIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       myNbUIntervals = Sur.NbUIntervals(BaseS);
       Sur.UIntervals(T, BaseS);
     }
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
 
   T(T.Lower()) = myUFirst;
@@ -420,13 +420,13 @@ void GeomAdaptor_Surface::VIntervals(TColStd_Array1OfReal& T, const GeomAbs_Shap
         case GeomAbs_C0: BaseS = GeomAbs_C1; break;
         case GeomAbs_C1: BaseS = GeomAbs_C2; break;
         case GeomAbs_C2: BaseS = GeomAbs_C3; break;
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       GeomAdaptor_Surface Sur((*((Handle(Geom_OffsetSurface)*)&mySurface))->BasisSurface());
       myNbVIntervals = Sur.NbVIntervals(BaseS);
       Sur.VIntervals(T, BaseS);
     }
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   
   T(T.Lower()) = myVFirst;

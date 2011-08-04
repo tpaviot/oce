@@ -481,8 +481,7 @@ void OpenGl_GraphicDriver::GraduatedTrihedronDisplay(const Graphic3d_CView& view
     cubic.xname = (char*) xname;
     cubic.yname = (char*) yname; 
     cubic.zname = (char*) zname;
-    
-	/* Draw names */
+    /* Draw names */
     cubic.xdrawname = xdrawname; 
     cubic.ydrawname = ydrawname; 
     cubic.zdrawname = zdrawname;

@@ -112,7 +112,7 @@ class TDF_LabelNode {
   
   void operator delete ( void * aBuffer , const Handle(NCollection_IncAllocator)& anAlloc )
   {
-	  anAlloc->Free(aBuffer);
+    anAlloc->Free(aBuffer);
   }
 
   void  operator delete(void *) { }
