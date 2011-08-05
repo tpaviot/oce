@@ -35,10 +35,6 @@
 #ifdef HAVE_STRINGS_H
 # include <strings.h>
 #endif
-#ifdef WNT
-#define stat _stat
-//#define strcasecmp _stricoll
-#endif
 
 //=======================================================================
 //function : Dynamic_MethodDefinitionsDictionary
