@@ -23,8 +23,8 @@ class Handle_VrmlData_Coordinate;
 
 class VrmlData_ShapeConvert 
 {
-	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
-	VrmlData_ShapeConvert & operator = (const VrmlData_ShapeConvert &) { return *this; }
+  // Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+  VrmlData_ShapeConvert & operator = (const VrmlData_ShapeConvert &) { return *this; }
 
 public:
 

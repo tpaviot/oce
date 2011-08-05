@@ -27,8 +27,8 @@
 
 class Bnd_SphereUBTreeSelector : public Extrema_UBTreeOfSphere::Selector
 {
-	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
-	Bnd_SphereUBTreeSelector & operator=( const Bnd_SphereUBTreeSelector & ) { return *this; }
+  // Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+  Bnd_SphereUBTreeSelector & operator=( const Bnd_SphereUBTreeSelector & ) { return *this; }
  public:
 
   Bnd_SphereUBTreeSelector (const Handle(Bnd_HArray1OfSphere)& theSphereArray,

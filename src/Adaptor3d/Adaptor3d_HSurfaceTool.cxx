@@ -17,7 +17,7 @@ Standard_Integer Adaptor3d_HSurfaceTool::NbSamplesU(const Handle(Adaptor3d_HSurf
       return (nbs < 2 ? 2 : nbs);
     }
     case GeomAbs_Torus: return 20;
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   return 10;
 }
@@ -39,7 +39,7 @@ Standard_Integer Adaptor3d_HSurfaceTool::NbSamplesV(const Handle(Adaptor3d_HSurf
     case GeomAbs_Torus:
     case GeomAbs_SurfaceOfRevolution:
     case GeomAbs_SurfaceOfExtrusion: return 15;
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   return 10;
 }

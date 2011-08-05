@@ -9,8 +9,8 @@
 
 class SelectMgr_CompareResults: public TCollection_CompareOfInteger
 {
-	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
-	SelectMgr_CompareResults & operator = ( const SelectMgr_CompareResults & ) { return *this; } ;
+  // Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+  SelectMgr_CompareResults & operator = ( const SelectMgr_CompareResults & ) { return *this; } ;
  public:
   SelectMgr_CompareResults
         (const SelectMgr_IndexedDataMapOfOwnerCriterion& aMapOfCriterion)

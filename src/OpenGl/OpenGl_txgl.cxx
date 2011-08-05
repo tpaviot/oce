@@ -693,8 +693,8 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     HTBL_ENTRY*   hte;
     TStatus       retVal = TFailure;
-    bool Ret = true;
 
+    bool Ret = true;
     if (Ret){
 
       if ( !_Txgl_Map.IsBound( ( Tint )win ) ) {

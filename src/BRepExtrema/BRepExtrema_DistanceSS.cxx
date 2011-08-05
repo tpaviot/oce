@@ -529,7 +529,7 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( V1, F2, B1, B2 );
           break;
         }
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       break;
     }
@@ -570,7 +570,7 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( E1, F2, B1, B2 );
           break;
         }
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       break;
     }
@@ -603,11 +603,11 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Shape& S1, const TopoDS_Shape&
           Perform( F1, F2, B1, B2 );
           break;
         }
-		default: /* Do nothing */ break;
+        default: /* Do nothing */ break;
       }
       break;
     }
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
 }
 

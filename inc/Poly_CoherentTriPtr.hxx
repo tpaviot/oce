@@ -84,10 +84,9 @@ class Poly_CoherentTriPtr
     return theAllocator->Allocate(theSize);
   }
 
-  /** Matching Operator for deletion. Does nothing. The operator does nothing and is called in case of "new" throwing. */
   void operator delete (void * aBuffer, const Handle(NCollection_BaseAllocator)& theAllocator) 
   {
-	  theAllocator->Free(aBuffer);
+    theAllocator->Free(aBuffer);
   };
 
   /**

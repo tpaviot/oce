@@ -388,7 +388,7 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
     fprintf(myLogFile, "alloc %10lu %10"FMT_SZ_Q"u\n", theRequestNum, theSize);
     myMutex.Unlock();
 #ifdef DEBUG
-	if (myBreakSize == theSize)
+    if (myBreakSize == theSize)
     {
       int a = 1;
     }

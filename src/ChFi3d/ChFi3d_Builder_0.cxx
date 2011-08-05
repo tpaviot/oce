@@ -1749,7 +1749,7 @@ TopAbs_Orientation ChFi3d_TrsfTrans(const IntSurf_TypeTrans T1)
   switch (T1)  {
     case IntSurf_In:  return TopAbs_FORWARD;
     case IntSurf_Out: return TopAbs_REVERSED;
-	default: /* Do nothing */ break;
+    default: /* Do nothing */ break;
   }
   return TopAbs_INTERNAL;
 }

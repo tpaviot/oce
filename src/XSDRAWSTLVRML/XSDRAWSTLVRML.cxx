@@ -163,7 +163,7 @@ static Standard_Integer loadvrml
       case VrmlData_NonPositiveSize:    aStr = "NonPositiveSize"; break;
       case VrmlData_ReadUnknownNode:    aStr = "ReadUnknownNode"; break;
       case VrmlData_NonSupportedFeature:aStr = "NonSupportedFeature"; break;
-	  default: /* Do nothing */ break;
+      default: /* Do nothing */ break;
       }
       if (aStr) {
         di << " ++ VRML Error: " << aStr << " in line "

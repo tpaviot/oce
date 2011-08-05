@@ -871,7 +871,7 @@ void TopOpeBRepDS_BuildTool::ComputePCurves
   Handle(Geom2d_Curve) PC2new;
   
   if(C3D.IsNull()) {
-	Standard_Real tolreached2d1 = Precision::Confusion() , tolreached2d2 = Precision::Confusion(), r1, r2, tol=0;
+    Standard_Real tolreached2d1 = Precision::Confusion() , tolreached2d2 = Precision::Confusion(), r1, r2, tol=0;
     if (comppc1) PC1new = myCurveTool.MakePCurveOnFace(F1,C3D,tolreached2d1);
     if (comppc2) PC2new = myCurveTool.MakePCurveOnFace(F2,C3D,tolreached2d2);
     

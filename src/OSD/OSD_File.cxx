@@ -2716,9 +2716,9 @@ BOOL __fastcall _osd_wnt_sd_to_protection (
  DWORD         dwAccessAdmin = 0;
  DWORD         dwAccessWorld = 0;
  BOOL          retVal = FALSE;
- BOOL          Ret = true;
  GET_PROT_FUNC _get_prot_func = fDir ? &_get_protection_dir : &_get_protection;
 
+ BOOL          Ret = true;
  if (Ret) {
 
   if (  !GetSecurityDescriptorOwner ( pSD, &pSIDowner, &fDefaulted )  ) Ret = false;
