@@ -35,10 +35,10 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.6 )
 
 # Define helper macro OPTION_WITH_DEFAULT
 MACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
-        IF( NOT DEFINED ${OPTION_NAME} )
-                SET( ${OPTION_NAME} ${OPTION_DEFAULT} )
-        ENDIF( NOT DEFINED ${OPTION_NAME} )
-        OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
+	IF( NOT DEFINED ${OPTION_NAME} )
+		SET( ${OPTION_NAME} ${OPTION_DEFAULT} )
+	ENDIF( NOT DEFINED ${OPTION_NAME} )
+	OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
 ENDMACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 
 IF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
@@ -52,7 +52,7 @@ IF (${CMAKE_SIZEOF_VOID_P} MATCHES "8") # It is 64bit, otherwise 32 bit systems 
 	ADD_DEFINITIONS(-D_OCC64)
 	SET(BIT 64)
 ELSE (${CMAKE_SIZEOF_VOID_P} MATCHES "8")
-  SET(BIT 32)
+	SET(BIT 32)
 ENDIF(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 
 MESSAGE(STATUS "Build ${BIT}bit")
@@ -66,7 +66,7 @@ IF (NOT MSVC)
 ENDIF(NOT MSVC)
 
 IF(CMAKE_BUILD_TOOL STREQUAL "nmake")
-        SET(NMAKE TRUE)
+	SET(NMAKE TRUE)
 ENDIF(CMAKE_BUILD_TOOL STREQUAL "nmake")
 
 IF(MSVC)
@@ -78,9 +78,9 @@ IF(MSVC)
 ENDIF(MSVC)
 
 IF (MSVC AND NOT NMAKE)
-    SET(${PROJECT_NAME}_COMPILER_SUPPORTS_PCH TRUE)
-	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_USE_PCH "Use Precompiled Headers" ON )    
-	MARK_AS_ADVANCED(${PROJECT_NAME}_USE_PCH)   
+	SET(${PROJECT_NAME}_COMPILER_SUPPORTS_PCH TRUE)
+	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_USE_PCH "Use Precompiled Headers" ON )
+	MARK_AS_ADVANCED(${PROJECT_NAME}_USE_PCH)
 ENDIF(MSVC AND NOT NMAKE)
 
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_BUILD_SHARED_LIB "Build shared ${PROJECT_NAME} libs" ON )
@@ -111,7 +111,7 @@ ENDIF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" GREATER 2.8 )
 OPTION( ${PROJECT_NAME}_MULTITHREAD_LIBRARY "Multithread library" ${${PROJECT_NAME}_MULTITHREAD_LIBRARY} )
 
 IF( ${PROJECT_NAME}_MULTITHREAD_LIBRARY STREQUAL "TBB" )
-    OPTION_WITH_DEFAULT( ${PROJECT_NAME}_TBB_MALLOC_SUPPORT "Use TBB for memory allocation" ON )
+	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_TBB_MALLOC_SUPPORT "Use TBB for memory allocation" ON )
 ENDIF( ${PROJECT_NAME}_MULTITHREAD_LIBRARY STREQUAL "TBB" )
 
 IF( NOT DEFINED ${PROJECT_NAME}_INSTALL_PREFIX )
@@ -141,13 +141,12 @@ ENDIF( ${PROJECT_NAME}_BUILD_SHARED_LIB )
 
 # MSVC specific options
 IF(MSVC_IDE)
-   IF (NOT DEFINED ${PROJECT_NAME}_USE_MSVC_EXPRESS )
-       SET (${PROJECT_NAME}_USE_MSVC_EXPRESS OFF)
-   ENDIF (NOT DEFINED ${PROJECT_NAME}_USE_MSVC_EXPRESS)
-   
-   OPTION( ${PROJECT_NAME}_USE_MSVC_EXPRESS "Use a Visual C++ express IDE"
-     ${${PROJECT_NAME}_USE_MSVC_EXPRESS} )
-ENDIF(MSVC_IDE)  
+	IF (NOT DEFINED ${PROJECT_NAME}_USE_MSVC_EXPRESS )
+		SET (${PROJECT_NAME}_USE_MSVC_EXPRESS OFF)
+	ENDIF (NOT DEFINED ${PROJECT_NAME}_USE_MSVC_EXPRESS)
+	OPTION( ${PROJECT_NAME}_USE_MSVC_EXPRESS "Use a Visual C++ express IDE"
+		${${PROJECT_NAME}_USE_MSVC_EXPRESS} )
+ENDIF(MSVC_IDE)
 
 #
 # Check components dependencies
@@ -185,12 +184,12 @@ IF(${PROJECT_NAME}_MULTITHREAD_LIBRARY STREQUAL "TBB")
 	IF(TBB_INCLUDE_DIR)
 		FIND_LIBRARY( TBB_LIBRARY tbb "Path to the TBB library" )
 		IF (${PROJECT_NAME}_TBB_MALLOC_SUPPORT)
-		    FIND_LIBRARY( TBB_MALLOC_LIBRARY tbbmalloc "Path to the TBB MALLOC library")
+			FIND_LIBRARY( TBB_MALLOC_LIBRARY tbbmalloc "Path to the TBB MALLOC library")
 		ENDIF (${PROJECT_NAME}_TBB_MALLOC_SUPPORT)
 		IF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 			FIND_LIBRARY( TBB_LIBRARY_DEBUG tbb_debug "Path to the TBB debug library" )
 			IF (${PROJECT_NAME}_TBB_MALLOC_SUPPORT)
-			    FIND_LIBRARY( TBB_MALLOC_LIBRARY_DEBUG tbbmalloc_debug "Path to the TBB MALLOC debug library")
+				FIND_LIBRARY( TBB_MALLOC_LIBRARY_DEBUG tbbmalloc_debug "Path to the TBB MALLOC debug library")
 			ENDIF (${PROJECT_NAME}_TBB_MALLOC_SUPPORT)
 		ENDIF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 	ENDIF(TBB_INCLUDE_DIR)
@@ -230,12 +229,12 @@ IF(${PROJECT_NAME}_VISUALISATION_FULL)
 	ENDIF(NOT WIN32)
 
 	IF (NOT APPLE)
-	  FIND_PACKAGE(OpenGL REQUIRED)
+		FIND_PACKAGE(OpenGL REQUIRED)
 	ELSE (NOT APPLE)
-	  # under OSX, builtin FindOpenGl.cmake returns Cocoa OpenGL implementation
-	  # oce requires the X11 based OpenGL
-	  SET(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
-	  SET(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
+		# under OSX, builtin FindOpenGl.cmake returns Cocoa OpenGL implementation
+		# oce requires the X11 based OpenGL
+		SET(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
+		SET(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
 	ENDIF (NOT APPLE)
 
 	## FreeType / FTGL
@@ -308,18 +307,18 @@ ENDIF(${PROJECT_NAME}_DATAEXCHANGE)
 
 IF(${PROJECT_NAME}_DRAW)
 	IF (NOT APPLE)
-	  FIND_PACKAGE(TCL REQUIRED)
+		FIND_PACKAGE(TCL REQUIRED)
 	ELSE(NOT APPLE)
-	  # under OSX, should use a X11 based TCL/TK, for instance fink's implementation
-	  SET(FINK_INSTALL_PATH /sw)
-	  MARK_AS_ADVANCED(FINK_INSTALL_PATH)
-	  SET(TCL_LIBRARY ${FINK_INSTALL_PATH}/lib/libtcl.dylib)
-	  SET(TCL_INCLUDE_PATH ${FINK_INSTALL_PATH}/include)
-	  SET(TCL_TCLSH ${FINK_INSTALL_PATH}/bin/tclsh)
-	  SET(TK_LIBRARY ${FINK_INSTALL_PATH}/lib/libtk.dylib)
-	  SET(TK_INCLUDE_PATH ${FINK_INSTALL_PATH}/include)
-	  SET(TK_WISH ${FINK_INSTALL_PATH}/bin/wish)
-	  MARK_AS_ADVANCED(TCL_INCLUDE_PATH TK_INCLUDE_PATH TCL_LIBRARY TK_LIBRARY)
+		# under OSX, should use a X11 based TCL/TK, for instance fink's implementation
+		SET(FINK_INSTALL_PATH /sw)
+		MARK_AS_ADVANCED(FINK_INSTALL_PATH)
+		SET(TCL_LIBRARY ${FINK_INSTALL_PATH}/lib/libtcl.dylib)
+		SET(TCL_INCLUDE_PATH ${FINK_INSTALL_PATH}/include)
+		SET(TCL_TCLSH ${FINK_INSTALL_PATH}/bin/tclsh)
+		SET(TK_LIBRARY ${FINK_INSTALL_PATH}/lib/libtk.dylib)
+		SET(TK_INCLUDE_PATH ${FINK_INSTALL_PATH}/include)
+		SET(TK_WISH ${FINK_INSTALL_PATH}/bin/wish)
+		MARK_AS_ADVANCED(TCL_INCLUDE_PATH TK_INCLUDE_PATH TCL_LIBRARY TK_LIBRARY)
 	ENDIF(NOT APPLE)
 	MESSAGE(STATUS "TCL LIB: ${TCL_LIBRARY}")
 	MESSAGE(STATUS "TK LIB: ${TK_LIBRARY}")
@@ -340,14 +339,14 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/vmdltest
 		src/DrawResources/wing.brep )
 ENDIF(${PROJECT_NAME}_DRAW)
- 
+
 IF (${PROJECT_NAME}_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 	MESSAGE("Using OCE Bundle")
 	IF (${PROJECT_NAME}_VISUALISATION_FULL)
 		SET(FTGL_INCLUDE_DIR ${OCE_BUNDLE_ROOT_PATH}/include/FTGL CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_freetype2 ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_ft2build ${OCE_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
-		SET(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build}) 
+		SET(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
 		SET(FREETYPE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		SET(FREETYPE_LIBRARIES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		SET(FREETYPE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/libd/freetyped.lib CACHE FILEPATH "" FORCE)
@@ -402,137 +401,136 @@ ENDIF(WIN32)
 # Check required headers, functions and libraries #
 ###################################################
 IF (NOT WIN32)
-    # Check headers
-    # I think these should all be check cxx headers, as I think there is no c
-    # compilation anywhere in ${PROJECT_NAME}
-    INCLUDE(CheckIncludeFile)
-    #INCLUDE(CheckIncludeFiles)
-    CHECK_INCLUDE_FILE(string.h HAVE_STRING_H)
-    CHECK_INCLUDE_FILE(dlfcn.h HAVE_DLFCN_H)
-    CHECK_INCLUDE_FILE(dl.h HAVE_DL_H)
-    CHECK_INCLUDE_FILE(ieeefp.h HAVE_IEEEFP_H)
-    CHECK_INCLUDE_FILE(time.h HAVE_TIME_H)
-    CHECK_INCLUDE_FILE(sys/time.h HAVE_SYS_TIME_H)
-    CHECK_INCLUDE_FILE(pwd.h HAVE_PWD_H)
-    CHECK_INCLUDE_FILE(sys/statvfs.h HAVE_SYS_STATVFS_H)
-    CHECK_INCLUDE_FILE(sys/vfs.h HAVE_SYS_VFS_H)
-    CHECK_INCLUDE_FILE(sys/param.h HAVE_SYS_PARAM_H)
-    CHECK_INCLUDE_FILE(osfcn.h HAVE_OSFCN_H)
-    CHECK_INCLUDE_FILE(netdb.h HAVE_NETDB_H)
-    CHECK_INCLUDE_FILE(sys/ioctl.h HAVE_SYS_IOCTL_H)
-    CHECK_INCLUDE_FILE(net/if.h HAVE_NET_IF_H)
-    CHECK_INCLUDE_FILE(sys/systeminfo.h HAVE_SYS_SYSTEMINFO_H)
-    CHECK_INCLUDE_FILE(sys/utsname.h HAVE_SYS_UTSNAME_H)
-    CHECK_INCLUDE_FILE(sysent.h HAVE_SYSENT_H)
-    CHECK_INCLUDE_FILE(unistd.h HAVE_UNISTD_H)
-    CHECK_INCLUDE_FILE(sys/unistd.h HAVE_SYS_UNISTD_H)
-    CHECK_INCLUDE_FILE(sys/socket.h HAVE_SYS_SOCKET_H)
-    CHECK_INCLUDE_FILE(ndir.h HAVE_NDIR_H)
-    CHECK_INCLUDE_FILE(sys/ndir.h HAVE_SYS_NDIR_H)
-    CHECK_INCLUDE_FILE(sys/dir.h HAVE_SYS_DIR_H)
-    CHECK_INCLUDE_FILE(signal.h HAVE_SIGNAL_H)
-    CHECK_INCLUDE_FILE(sys/signal.h HAVE_SYS_SIGNAL_H)
-    CHECK_INCLUDE_FILE(sigfpe.h HAVE_SIGFPE_H)
-    CHECK_INCLUDE_FILE(floatingpoint.h HAVE_FLOATINGPOINT_H)
-    CHECK_INCLUDE_FILE(sys/machsig.h HAVE_SYS_MACHSIG_H)
-    CHECK_INCLUDE_FILE(sys/siginfo.h HAVE_SYS_SIGINFO_H)
-    CHECK_INCLUDE_FILE(malloc.h HAVE_MALLOC_H)
-    CHECK_INCLUDE_FILE(strings.h HAVE_STRINGS_H)
-    CHECK_INCLUDE_FILE(sys/stat.h HAVE_SYS_STAT_H)
-    CHECK_INCLUDE_FILE(sys/sem.h HAVE_SYS_SEM_H)
-    CHECK_INCLUDE_FILE(sys/ipc.h HAVE_SYS_IPC_H)
-    CHECK_INCLUDE_FILE(sys/times.h HAVE_SYS_TIMES_H)
-    CHECK_INCLUDE_FILE(dirent.h HAVE_DIRENT_H)
-    INCLUDE(CheckIncludeFileCXX)
-    CHECK_INCLUDE_FILE_CXX(iomanip.h OCE_HAVE_IOMANIP_H)
-    CHECK_INCLUDE_FILE_CXX(limits OCE_HAVE_LIMITS)
-    CHECK_INCLUDE_FILE_CXX(climits OCE_HAVE_CLIMITS)
-    CHECK_INCLUDE_FILE_CXX(limits.h OCE_HAVE_LIMITS_H)
-    CHECK_INCLUDE_FILE_CXX(values.h HAVE_VALUES_H)
-    CHECK_INCLUDE_FILE_CXX(fstream OCE_HAVE_FSTREAM)
-    CHECK_INCLUDE_FILE_CXX(ios HAVE_IOS)
-    CHECK_INCLUDE_FILE_CXX(iomanip OCE_HAVE_IOMANIP)
-    CHECK_INCLUDE_FILE_CXX(iostream OCE_HAVE_IOSTREAM)
-    CHECK_INCLUDE_FILE_CXX(fstream.h OCE_HAVE_FSTREAM_H)
-    CHECK_INCLUDE_FILE_CXX(ios.h HAVE_IOS_H)
-    CHECK_INCLUDE_FILE_CXX(iostream.h OCE_HAVE_IOSTREAM_H)
-    CHECK_INCLUDE_FILE_CXX(stdlib.h HAVE_STDLIB_H)
-    CHECK_INCLUDE_FILE_CXX(sys/types.h HAVE_SYS_TYPES_H)
-    CHECK_INCLUDE_FILE_CXX(sys/select.h HAVE_SYS_SELECT_H)
-    CHECK_INCLUDE_FILE_CXX(X11/extensions/readdisplay.h HAVE_X11_EXTENSIONS_READDISPLAY_H)
-    CHECK_INCLUDE_FILE_CXX(X11/extensions/multibuf.h HAVE_X11_EXTENSIONS_MULTIBUF_H)
-    CHECK_INCLUDE_FILE_CXX(sys/filio.h HAVE_SYS_FILIO_H)
-    CHECK_INCLUDE_FILE_CXX(sys/mman.h HAVE_SYS_MMAN_H)
-    CHECK_INCLUDE_FILE_CXX(libc.h HAVE_LIBC_H)
-    # Check library functions
-    INCLUDE(CheckFunctionExists)
-    CHECK_FUNCTION_EXISTS(alloca HAVE_ALLOCA)
-    CHECK_FUNCTION_EXISTS(memcmp HAVE_MEMCMP)
-    CHECK_FUNCTION_EXISTS(signal HAVE_SIGNAL)
-    CHECK_FUNCTION_EXISTS(statfs HAVE_STATFS)
-    CHECK_FUNCTION_EXISTS(statvfs HAVE_STATVFS)
-    CHECK_FUNCTION_EXISTS(finite HAVE_FINITE)
-    SET(CMAKE_REQUIRED_LIBRARIES sunmath)
-    CHECK_FUNCTION_EXISTS(ieee_handler HAVE_SUNMATH)
-    SET(CMAKE_REQUIRED_LIBRARIES)
-    INCLUDE(CheckTypeSize)
-    SET(CMAKE_EXTRA_INCLUDE_FILES sys/time.h)
-    CHECK_TYPE_SIZE(tm TM_IN_SYS_TIME)
-    SET(CMAKE_EXTRA_INCLUDE_FILES)
-    INCLUDE (CheckCSourceCompiles)
-    CHECK_C_SOURCE_COMPILES("
-    #include <sys/time.h>
-    #include <sys/sem.h>
-    int main(){union semun c;return 0;}
-    "
-    SEMUN_DEFINED)
-    IF (SEMUN_DEFINED)
-    	CHECK_C_SOURCE_COMPILES("
-    	#include <sys/time.h>
-    	#include <sys/sem.h>
-    	int main(){union semun c;c.__buf = 0;return 0;}
-    	"
-    	SEMUN_BUF_DEFINED)
-    ENDIF (SEMUN_DEFINED)
-    CHECK_C_SOURCE_COMPILES("
-    #include <sys/sem.h>
-    static struct sembuf event_flag;
-    int main(){int status; int *semid;status = semop(*semid,event_flag,1);return 0;}
-    "
-    SEMOP_NO_REFERENCE)
+	# Check headers
+	# I think these should all be check cxx headers, as I think there is no c
+	# compilation anywhere in ${PROJECT_NAME}
+	INCLUDE(CheckIncludeFile)
+	#INCLUDE(CheckIncludeFiles)
+	CHECK_INCLUDE_FILE(string.h HAVE_STRING_H)
+	CHECK_INCLUDE_FILE(dlfcn.h HAVE_DLFCN_H)
+	CHECK_INCLUDE_FILE(dl.h HAVE_DL_H)
+	CHECK_INCLUDE_FILE(ieeefp.h HAVE_IEEEFP_H)
+	CHECK_INCLUDE_FILE(time.h HAVE_TIME_H)
+	CHECK_INCLUDE_FILE(sys/time.h HAVE_SYS_TIME_H)
+	CHECK_INCLUDE_FILE(pwd.h HAVE_PWD_H)
+	CHECK_INCLUDE_FILE(sys/statvfs.h HAVE_SYS_STATVFS_H)
+	CHECK_INCLUDE_FILE(sys/vfs.h HAVE_SYS_VFS_H)
+	CHECK_INCLUDE_FILE(sys/param.h HAVE_SYS_PARAM_H)
+	CHECK_INCLUDE_FILE(osfcn.h HAVE_OSFCN_H)
+	CHECK_INCLUDE_FILE(netdb.h HAVE_NETDB_H)
+	CHECK_INCLUDE_FILE(sys/ioctl.h HAVE_SYS_IOCTL_H)
+	CHECK_INCLUDE_FILE(net/if.h HAVE_NET_IF_H)
+	CHECK_INCLUDE_FILE(sys/systeminfo.h HAVE_SYS_SYSTEMINFO_H)
+	CHECK_INCLUDE_FILE(sys/utsname.h HAVE_SYS_UTSNAME_H)
+	CHECK_INCLUDE_FILE(sysent.h HAVE_SYSENT_H)
+	CHECK_INCLUDE_FILE(unistd.h HAVE_UNISTD_H)
+	CHECK_INCLUDE_FILE(sys/unistd.h HAVE_SYS_UNISTD_H)
+	CHECK_INCLUDE_FILE(sys/socket.h HAVE_SYS_SOCKET_H)
+	CHECK_INCLUDE_FILE(ndir.h HAVE_NDIR_H)
+	CHECK_INCLUDE_FILE(sys/ndir.h HAVE_SYS_NDIR_H)
+	CHECK_INCLUDE_FILE(sys/dir.h HAVE_SYS_DIR_H)
+	CHECK_INCLUDE_FILE(signal.h HAVE_SIGNAL_H)
+	CHECK_INCLUDE_FILE(sys/signal.h HAVE_SYS_SIGNAL_H)
+	CHECK_INCLUDE_FILE(sigfpe.h HAVE_SIGFPE_H)
+	CHECK_INCLUDE_FILE(floatingpoint.h HAVE_FLOATINGPOINT_H)
+	CHECK_INCLUDE_FILE(sys/machsig.h HAVE_SYS_MACHSIG_H)
+	CHECK_INCLUDE_FILE(sys/siginfo.h HAVE_SYS_SIGINFO_H)
+	CHECK_INCLUDE_FILE(malloc.h HAVE_MALLOC_H)
+	CHECK_INCLUDE_FILE(strings.h HAVE_STRINGS_H)
+	CHECK_INCLUDE_FILE(sys/stat.h HAVE_SYS_STAT_H)
+	CHECK_INCLUDE_FILE(sys/sem.h HAVE_SYS_SEM_H)
+	CHECK_INCLUDE_FILE(sys/ipc.h HAVE_SYS_IPC_H)
+	CHECK_INCLUDE_FILE(sys/times.h HAVE_SYS_TIMES_H)
+	CHECK_INCLUDE_FILE(dirent.h HAVE_DIRENT_H)
+	INCLUDE(CheckIncludeFileCXX)
+	CHECK_INCLUDE_FILE_CXX(iomanip.h OCE_HAVE_IOMANIP_H)
+	CHECK_INCLUDE_FILE_CXX(limits OCE_HAVE_LIMITS)
+	CHECK_INCLUDE_FILE_CXX(climits OCE_HAVE_CLIMITS)
+	CHECK_INCLUDE_FILE_CXX(limits.h OCE_HAVE_LIMITS_H)
+	CHECK_INCLUDE_FILE_CXX(values.h HAVE_VALUES_H)
+	CHECK_INCLUDE_FILE_CXX(fstream OCE_HAVE_FSTREAM)
+	CHECK_INCLUDE_FILE_CXX(ios HAVE_IOS)
+	CHECK_INCLUDE_FILE_CXX(iomanip OCE_HAVE_IOMANIP)
+	CHECK_INCLUDE_FILE_CXX(iostream OCE_HAVE_IOSTREAM)
+	CHECK_INCLUDE_FILE_CXX(fstream.h OCE_HAVE_FSTREAM_H)
+	CHECK_INCLUDE_FILE_CXX(ios.h HAVE_IOS_H)
+	CHECK_INCLUDE_FILE_CXX(iostream.h OCE_HAVE_IOSTREAM_H)
+	CHECK_INCLUDE_FILE_CXX(stdlib.h HAVE_STDLIB_H)
+	CHECK_INCLUDE_FILE_CXX(sys/types.h HAVE_SYS_TYPES_H)
+	CHECK_INCLUDE_FILE_CXX(sys/select.h HAVE_SYS_SELECT_H)
+	CHECK_INCLUDE_FILE_CXX(X11/extensions/readdisplay.h HAVE_X11_EXTENSIONS_READDISPLAY_H)
+	CHECK_INCLUDE_FILE_CXX(X11/extensions/multibuf.h HAVE_X11_EXTENSIONS_MULTIBUF_H)
+	CHECK_INCLUDE_FILE_CXX(sys/filio.h HAVE_SYS_FILIO_H)
+	CHECK_INCLUDE_FILE_CXX(sys/mman.h HAVE_SYS_MMAN_H)
+	CHECK_INCLUDE_FILE_CXX(libc.h HAVE_LIBC_H)
+	# Check library functions
+	INCLUDE(CheckFunctionExists)
+	CHECK_FUNCTION_EXISTS(alloca HAVE_ALLOCA)
+	CHECK_FUNCTION_EXISTS(memcmp HAVE_MEMCMP)
+	CHECK_FUNCTION_EXISTS(signal HAVE_SIGNAL)
+	CHECK_FUNCTION_EXISTS(statfs HAVE_STATFS)
+	CHECK_FUNCTION_EXISTS(statvfs HAVE_STATVFS)
+	CHECK_FUNCTION_EXISTS(finite HAVE_FINITE)
+	SET(CMAKE_REQUIRED_LIBRARIES sunmath)
+	CHECK_FUNCTION_EXISTS(ieee_handler HAVE_SUNMATH)
+	SET(CMAKE_REQUIRED_LIBRARIES)
+	INCLUDE(CheckTypeSize)
+	SET(CMAKE_EXTRA_INCLUDE_FILES sys/time.h)
+	CHECK_TYPE_SIZE(tm TM_IN_SYS_TIME)
+	SET(CMAKE_EXTRA_INCLUDE_FILES)
+	INCLUDE (CheckCSourceCompiles)
+	CHECK_C_SOURCE_COMPILES("
+		#include <sys/time.h>
+		#include <sys/sem.h>
+		int main(){union semun c;return 0;}
+		"
+		SEMUN_DEFINED)
+	IF (SEMUN_DEFINED)
+		CHECK_C_SOURCE_COMPILES("
+			#include <sys/time.h>
+			#include <sys/sem.h>
+			int main(){union semun c;c.__buf = 0;return 0;}
+			"
+			SEMUN_BUF_DEFINED)
+	ENDIF (SEMUN_DEFINED)
+	CHECK_C_SOURCE_COMPILES("
+		#include <sys/sem.h>
+		static struct sembuf event_flag;
+		int main(){int status; int *semid;status = semop(*semid,event_flag,1);return 0;}
+		"
+		SEMOP_NO_REFERENCE)
 
-    CHECK_C_SOURCE_COMPILES("
-    #include <sys/sem.h>
-    int get_semaphore(int *semid,int *event,int *value)
-    {
-        int status;
-        status = semctl((*semid),*event,GETVAL,value);
-        return 0;
-    }
-    int main(){ int *a,*b,*c;
-    if(get_semaphore(a,b,c))
-        return 0;
-    return 0;}
-    "
-    SEMCTL_NO_REFERENCE)
+	CHECK_C_SOURCE_COMPILES("
+		#include <sys/sem.h>
+		int get_semaphore(int *semid,int *event,int *value)
+		{
+			int status;
+			status = semctl((*semid),*event,GETVAL,value);
+			return 0;
+		}
+		int main(){ int *a,*b,*c;
+		if(get_semaphore(a,b,c))
+			return 0;
+		return 0;}
+		"
+		SEMCTL_NO_REFERENCE)
 
-    INCLUDE (CheckCXXSourceCompiles)
-    CHECK_CXX_SOURCE_COMPILES("
-    #include <ios>
-    int main(){static const int input = (std::ios::in)|(std::ios::nocreate);
-    static const int output = (std::ios::out);return 0;}
-    "
-    DEF_IOS_OK)
-    CHECK_CXX_SOURCE_COMPILES("
-    #include <iostream>
-    int main(){std::cout << std::cout.form(\"%9.3e\", 3.14159627e-4) << std::endl;return 0;}
-    "
-    OSTREAM_FORM_OK)
-    INCLUDE(TestBigEndian)
-    TEST_BIG_ENDIAN(WORDS_BIGENDIAN)
-    SET(STDC_HEADERS TRUE) # Only for really old systems, being lazy
-    SET(STACK_DIRECTION 0) # Don't have a test for this, TODO?
-
+	INCLUDE (CheckCXXSourceCompiles)
+	CHECK_CXX_SOURCE_COMPILES("
+		#include <ios>
+		int main(){static const int input = (std::ios::in)|(std::ios::nocreate);
+		static const int output = (std::ios::out);return 0;}
+		"
+		DEF_IOS_OK)
+	CHECK_CXX_SOURCE_COMPILES("
+		#include <iostream>
+		int main(){std::cout << std::cout.form(\"%9.3e\", 3.14159627e-4) << std::endl;return 0;}
+		"
+		OSTREAM_FORM_OK)
+	INCLUDE(TestBigEndian)
+	TEST_BIG_ENDIAN(WORDS_BIGENDIAN)
+	SET(STDC_HEADERS TRUE) # Only for really old systems, being lazy
+	SET(STACK_DIRECTION 0) # Don't have a test for this, TODO?
 
 # TODO: check all headers/functions/libraries that are checked in configure.ac original OCC script
 ENDIF(NOT WIN32)
@@ -541,58 +539,58 @@ ENDIF(NOT WIN32)
 # Check platforms - Define specific compilation flags #
 #######################################################
 IF(UNIX)
-  IF(APPLE)
-    ######### MacOSX ###########
-    MESSAGE(STATUS "MacOSX platform detected")
-    SET(PLATFORM Darwin)
-  ELSE(APPLE)
-    ######### Unix/Linux ###########
-    MESSAGE(STATUS "Unix/Linux platform detected")
-    SET(PLATFORM Unix)
-  ENDIF(APPLE)
-  ADD_DEFINITIONS(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
+	IF(APPLE)
+		######### MacOSX ###########
+		MESSAGE(STATUS "MacOSX platform detected")
+		SET(PLATFORM Darwin)
+	ELSE(APPLE)
+		######### Unix/Linux ###########
+		MESSAGE(STATUS "Unix/Linux platform detected")
+		SET(PLATFORM Unix)
+	ENDIF(APPLE)
+	ADD_DEFINITIONS(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 ELSE(UNIX)
-  IF(WIN32)
-    ######### Windows ###########
-    MESSAGE(STATUS "Windows system detected")
-    ADD_DEFINITIONS(-DWNT -DWIN32 -D_WINDOWS -DCSFDB)
-    SET(PLATFORM win)
-  ELSE(WIN32)
-    MESSAGE(STATUS "Unknown platform")
-  ENDIF(WIN32)
+	IF(WIN32)
+		######### Windows ###########
+		MESSAGE(STATUS "Windows system detected")
+		ADD_DEFINITIONS(-DWNT -DWIN32 -D_WINDOWS -DCSFDB)
+		SET(PLATFORM win)
+	ELSE(WIN32)
+		MESSAGE(STATUS "Unknown platform")
+	ENDIF(WIN32)
 ENDIF(UNIX)
 # TODO: better detection of different Unices (Linux, Solaris etc.)
 # TODO: add CXX compiler flags for each platform
 
 # Enable Extra warnings for each compiler
 IF( ${PROJECT_NAME}_EXTRA_WARNINGS)
-  IF(MSVC)
-    ADD_DEFINITIONS("/W4 /wd4100 /wd4206 /wd4127")
-  ENDIF(MSVC)
-  IF(CMAKE_COMPILER_IS_GNUCXX)
-    ADD_DEFINITIONS("-Wall")
-  ENDIF(CMAKE_COMPILER_IS_GNUCXX)
-  IF(BORLAND)
-    #TODO
-  ENDIF(BORLAND)
+	IF(MSVC)
+		ADD_DEFINITIONS("/W4 /wd4100 /wd4206 /wd4127")
+	ENDIF(MSVC)
+	IF(CMAKE_COMPILER_IS_GNUCXX)
+		ADD_DEFINITIONS("-Wall")
+	ENDIF(CMAKE_COMPILER_IS_GNUCXX)
+	IF(BORLAND)
+		#TODO
+	ENDIF(BORLAND)
 ENDIF(${PROJECT_NAME}_EXTRA_WARNINGS)
 
 ################################################
 # Define output path for generated libraries:  #
-# platform/compiler-build_type-bits           #
+# platform/compiler-build_type-bits            #
 # for instance:                                #
 #     ./win32/bin/vc7.1-release-64             #
 #     ./win32/bin/vc9-debug-32                 #
-#     ./Unix/i386-debug-64                      #
+#     ./Unix/i386-debug-64                     #
 ################################################
 IF(WIN32)
-    IF(MSVC) # The compiler used is MSVC
-        MESSAGE(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
-    ELSE(MSVC)
-        SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
-    ENDIF(MSVC)
+	IF(MSVC) # The compiler used is MSVC
+		MESSAGE(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
+	ELSE(MSVC)
+		SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
+	ENDIF(MSVC)
 ELSE(WIN32)
-   		SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
+	SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
 ENDIF(WIN32)
 MESSAGE(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
@@ -612,16 +610,15 @@ IF (MSVC)
    ADD_DEFINITIONS("/D_CRT_SECURE_NO_WARNINGS")
    ADD_DEFINITIONS("/D_CRT_NONSTDC_NO_WARNINGS")
 ENDIF(MSVC)
-   
-IF(MSVC_IDE)
-  IF(NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
-     #Use solution folders.
-     SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
-     SET(USE_SOLUTION_FOLDERS TRUE)
-  ELSE( NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
-     SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS OFF)
-  ENDIF( NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
 
+IF(MSVC_IDE)
+	IF(NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
+		#Use solution folders.
+		SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS ON)
+		SET(USE_SOLUTION_FOLDERS TRUE)
+	ELSE( NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
+		SET_PROPERTY(GLOBAL PROPERTY USE_FOLDERS OFF)
+	ENDIF( NOT ${PROJECT_NAME}_USE_MSVC_EXPRESS)
 ENDIF(MSVC_IDE)
 
 # Libraries are installed by default in /usr/local/lib on UNIX
@@ -674,7 +671,7 @@ IF(NOT DEFINED ${PROJECT_NAME}_INSTALL_INCLUDE_DIR)
 	SET(${PROJECT_NAME}_INSTALL_INCLUDE_DIR inc)
 ENDIF(NOT DEFINED ${PROJECT_NAME}_INSTALL_INCLUDE_DIR)
 
-# Scripts 
+# Scripts
 IF(NOT DEFINED ${PROJECT_NAME}_INSTALL_SCRIPT_DIR)
 	SET(${PROJECT_NAME}_INSTALL_SCRIPT_DIR ${CMAKE_INSTALL_PREFIX})
 ENDIF(NOT DEFINED ${PROJECT_NAME}_INSTALL_SCRIPT_DIR)
@@ -691,9 +688,9 @@ ENDIF(NOT DEFINED ${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR)
 FILE(RELATIVE_PATH ${PROJECT_NAME}_CMAKE_DATA_TO_INCLUDE_RELATIVE_DIR "${CMAKE_INSTALL_PREFIX}/${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR}" "${CMAKE_INSTALL_PREFIX}/${${PROJECT_NAME}_INSTALL_INCLUDE_DIR}")
 
 FOREACH(RESOURCE_FILE ${INSTALL_RESOURCE_FILES})
-        GET_FILENAME_COMPONENT(RESOURCE_PATH ${RESOURCE_FILE} PATH)
-        INSTALL(FILES ${RESOURCE_FILE}
-                DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/${RESOURCE_PATH})
+	GET_FILENAME_COMPONENT(RESOURCE_PATH ${RESOURCE_FILE} PATH)
+	INSTALL(FILES ${RESOURCE_FILE}
+		DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/${RESOURCE_PATH})
 ENDFOREACH(RESOURCE_FILE ${INSTALL_RESOURCE_FILES})
 
 CONFIGURE_FILE( ${${PROJECT_NAME}_SOURCE_DIR}/env.sh.cmake
@@ -740,17 +737,17 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h
 IF(${PROJECT_NAME}_DRAW)
 	CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/DrawDefault.cmake
 		${CMAKE_CURRENT_BINARY_DIR}/DrawDefault @ONLY )
-        INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/DrawDefault
-                DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/src/DrawResources)
+	INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/DrawDefault
+		DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/src/DrawResources)
 ENDIF(${PROJECT_NAME}_DRAW)
 
 # Version information
-CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake 
+CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake
 				${CMAKE_CURRENT_BINARY_DIR}/Version.rc)
 
 MACRO(PROCESS_OCC_MODULE modulename modules)
 	FOREACH(module ${modules})
-		LIST(APPEND ${PROJECT_NAME}_LIBRARIES ${module}) 
+		LIST(APPEND ${PROJECT_NAME}_LIBRARIES ${module})
 		SET(TOOLKIT_MODULES "")
 		SET(TOOLKIT_DEPENDS "")
 		SET(TOOLKIT_INCLUDE_DIRECTORIES "")
@@ -758,9 +755,8 @@ MACRO(PROCESS_OCC_MODULE modulename modules)
 		ADD_SUBDIRECTORY( adm/cmake/${module} )
 
 		IF (USE_SOLUTION_FOLDERS)
-      SET_TARGET_PROPERTIES(${module} PROPERTIES FOLDER ${modulename} )
-    ENDIF(USE_SOLUTION_FOLDERS)
-    
+			SET_TARGET_PROPERTIES(${module} PROPERTIES FOLDER ${modulename} )
+		ENDIF(USE_SOLUTION_FOLDERS)
 	ENDFOREACH(module ${modules})
 ENDMACRO(PROCESS_OCC_MODULE modulename modules)
 
@@ -808,9 +804,9 @@ IF(${PROJECT_NAME}_DRAW)
 	PROCESS_OCC_MODULE( "Draw" DRAWEXE )
 ENDIF(${PROJECT_NAME}_DRAW)
 
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfig.cmake.in 
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfig.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake @ONLY )
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfigVersion.cmake.in 
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfigVersion.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake @ONLY )
 INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
 	DESTINATION ${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR} COMPONENT Development )
@@ -823,19 +819,19 @@ ENDIF(NOT (WIN32 AND (CMAKE_CONFIGURATION_TYPES OR NMAKE)))
 # UnitTesting #
 ###############
 IF(${PROJECT_NAME}_TESTING)
-    SET( ${PROJECT_NAME}_EXTRA_WARNINGS ON CACHE BOOL "Extra warnings required by testing framework" FORCE)
-    INCLUDE(CTest)
-    ENABLE_TESTING()
-    SUBDIRS(test)	
+	SET( ${PROJECT_NAME}_EXTRA_WARNINGS ON CACHE BOOL "Extra warnings required by testing framework" FORCE)
+	INCLUDE(CTest)
+	ENABLE_TESTING()
+	SUBDIRS(test)
 ENDIF(${PROJECT_NAME}_TESTING)
 IF(${PROJECT_NAME}_COVERAGE)
-    SET(${PROJECT_NAME}_TESTING ON CACHE BOOL "Testing enabled by coverage option" FORCE)
-    # build static libs, better coverage report
-    SET( ${PROJECT_NAME}_BUILD_SHARED_LIB OFF CACHE BOOL "Build static libs" FORCE )
-    SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
-    SET(CMAKE_C_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
-    SET(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
-    SET(${PROJECT_NAME}_BUILD_TYPE "Debug" CACHE STRING "Build type required by testing framework" FORCE)
+	SET(${PROJECT_NAME}_TESTING ON CACHE BOOL "Testing enabled by coverage option" FORCE)
+	# build static libs, better coverage report
+	SET( ${PROJECT_NAME}_BUILD_SHARED_LIB OFF CACHE BOOL "Build static libs" FORCE )
+	SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
+	SET(CMAKE_C_FLAGS_DEBUG "-O0 -g -fprofile-arcs -ftest-coverage" CACHE STRING "Extra compile flags required by code coverage" FORCE)
+	SET(CMAKE_MODULE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage" CACHE STRING "Extra linker flags required by code coverage" FORCE)
+	SET(${PROJECT_NAME}_BUILD_TYPE "Debug" CACHE STRING "Build type required by testing framework" FORCE)
 ENDIF(${PROJECT_NAME}_COVERAGE)
 
 ###############################################################################
@@ -862,30 +858,30 @@ SET(CPACK_PACKAGE_CONTACT "OCE Developers <oce-dev@googlegroups.com>")
 #set(CPACK_GENERATOR "DEB")                                                   #
 ###############################################################################
 if( CPACK_GENERATOR MATCHES ".*DEB.*" )
-  if( ${CMAKE_VERSION} STREQUAL "2.8.2" )
-    # bug http://vtk.org/Bug/view.php?id=11020
-    message( WARNING "CMake/CPack version 2.8.2 will not create working .deb packages!")
-  endif()
-  set(CPACK_DEBIAN_PACKAGE_SECTION "science")
-  # debian source packages aren't yet supported by cmake, but the following list will help anyone who is trying to figure out what to apt-get install before building.
-  set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.6), libtool,
-  libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
-  libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
-  libftgl-dev, libgl2ps-dev")
-  set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1), libftgl2 (>= 2.1.3~rc5),
-  libgcc1 (>= 1:4.1.1), libgl1-mesa-glx, libgl2ps0, libglu1-mesa,
-  libgomp1 (>= 4.2.1), libstdc++6 (>= 4.4.0), libx11-6, libxext6,
-  libxmu6, libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
-  set(CPACK_DEBIAN_PACKAGE_SUGGESTS "opencascade-doc")
-  set(CPACK_DEBIAN_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0,
-  libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0,
-  libopencascade-ocaf-6.5.0, opencascade-draw")
-  if( BIT EQUAL 64 )
-	set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64" )
-  else()
-	set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "i386" )
-  endif()
-  string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}" CPACK_PACKAGE_FILE_NAME )
+	if( ${CMAKE_VERSION} STREQUAL "2.8.2" )
+		# bug http://vtk.org/Bug/view.php?id=11020
+		message( WARNING "CMake/CPack version 2.8.2 will not create working .deb packages!")
+	endif()
+	set(CPACK_DEBIAN_PACKAGE_SECTION "science")
+	# debian source packages aren't yet supported by cmake, but the following list will help anyone who is trying to figure out what to apt-get install before building.
+	set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.6), libtool,
+		libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
+		libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
+		libftgl-dev, libgl2ps-dev")
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1), libftgl2 (>= 2.1.3~rc5),
+		libgcc1 (>= 1:4.1.1), libgl1-mesa-glx, libgl2ps0, libglu1-mesa,
+		libgomp1 (>= 4.2.1), libstdc++6 (>= 4.4.0), libx11-6, libxext6,
+		libxmu6, libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
+	set(CPACK_DEBIAN_PACKAGE_SUGGESTS "opencascade-doc")
+	set(CPACK_DEBIAN_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0,
+		libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0,
+		libopencascade-ocaf-6.5.0, opencascade-draw")
+	if( BIT EQUAL 64 )
+		set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64" )
+	else()
+		set( CPACK_DEBIAN_PACKAGE_ARCHITECTURE "i386" )
+	endif()
+	string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}" CPACK_PACKAGE_FILE_NAME )
 endif()
 
 ###############################################################################
@@ -900,22 +896,22 @@ endif()
 # correct directory, and packages specified after RPM won't be built.         #
 ###############################################################################
 if( CPACK_GENERATOR MATCHES ".*RPM.*" )
-  set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libftgl2 >= 2.1.3, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
-  set( CPACK_RPM_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0, libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0, libopencascade-ocaf-6.5.0, opencascade-draw" )
-  set( CPACK_PACKAGE_RELOCATABLE "FALSE" )
-  if( BIT EQUAL 64 )
-	set( CPACK_RPM_PACKAGE_ARCHITECTURE "x86_64" )
-  else()
-	set( CPACK_RPM_PACKAGE_ARCHITECTURE "i586" )
-  endif()
-  #CPackRPM ignores CPACK_RPM_FILE_NAME. Must set two other vars instead, and they interfere
-  string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_RPM_PACKAGE_ARCHITECTURE}.rpm" CPACK_OUTPUT_FILE_NAME )
-  if( NOT CPACK_GENERATOR STREQUAL "RPM" )
-    message( WARNING "Generating an RPM with other package type(s). Due to a bug in CPackRPM, the package will not get copied to the current directory. It will be found in _CPack_Packages/Linux/RPM, and other packages may fail to build." )
-  else()
-    #this variable is used by other packagers, don't set it unless RPM is built by itself.
-    set( CPACK_PACKAGE_FILE_NAME ${CPACK_OUTPUT_FILE_NAME} )
-  endif()
+	set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libftgl2 >= 2.1.3, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
+	set( CPACK_RPM_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0, libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0, libopencascade-ocaf-6.5.0, opencascade-draw" )
+	set( CPACK_PACKAGE_RELOCATABLE "FALSE" )
+	if( BIT EQUAL 64 )
+		set( CPACK_RPM_PACKAGE_ARCHITECTURE "x86_64" )
+	else()
+		set( CPACK_RPM_PACKAGE_ARCHITECTURE "i586" )
+	endif()
+	#CPackRPM ignores CPACK_RPM_FILE_NAME. Must set two other vars instead, and they interfere
+	string( TOLOWER "${CPACK_PACKAGE_NAME}-${OCE_VERSION}_${CPACK_RPM_PACKAGE_ARCHITECTURE}.rpm" CPACK_OUTPUT_FILE_NAME )
+	if( NOT CPACK_GENERATOR STREQUAL "RPM" )
+		message( WARNING "Generating an RPM with other package type(s). Due to a bug in CPackRPM, the package will not get copied to the current directory. It will be found in _CPack_Packages/Linux/RPM, and other packages may fail to build." )
+	else()
+		#this variable is used by other packagers, don't set it unless RPM is built by itself.
+		set( CPACK_PACKAGE_FILE_NAME ${CPACK_OUTPUT_FILE_NAME} )
+	endif()
 endif()
 
 INCLUDE(CPack)

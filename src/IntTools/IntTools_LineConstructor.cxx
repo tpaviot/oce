@@ -323,7 +323,7 @@ void IntTools_LineConstructor::Perform(const Handle(IntPatch_Line)& L)
           case IntPatch_Ellipse:   Pmid = ElCLib::Value(pmid,GLine->Ellipse()); break;
           case IntPatch_Hyperbola: Pmid = ElCLib::Value(pmid,GLine->Hyperbola()); break;
           case IntPatch_Parabola:  Pmid = ElCLib::Value(pmid,GLine->Parabola()); break;
-		  default: /* Do nothing */ break;
+          default: /* Do nothing */ break;
         }
 	Parameters(myHS1,myHS2,Pmid,u1,v1,u2,v2);
 	Recadre(myHS1,myHS2,u1,v1,u2,v2);

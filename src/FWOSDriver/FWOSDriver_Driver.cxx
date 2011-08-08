@@ -56,7 +56,7 @@ Standard_Boolean FWOSDriver_Driver::HasReadPermission(const TCollection_Extended
     case OSD_RWXD:
       return Standard_True;
     default:
-		break;
+      break;
     }
   return Standard_False;
 }

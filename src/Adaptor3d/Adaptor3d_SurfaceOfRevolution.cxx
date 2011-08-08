@@ -597,7 +597,7 @@ GeomAbs_SurfaceType Adaptor3d_SurfaceOfRevolution::GetType() const
     }
     
   default:
-     break;
+    break;
   }
   
   // portage WNT

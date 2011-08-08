@@ -26,8 +26,8 @@ struct entityRef {
   const int    length;
   entityRef (const char * aName, const int aLen) : name(aName), length(aLen) {}
 private:
-	// Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
-	entityRef & operator = (const entityRef & ) { return *this; }
+  // Note : This operator must be implemented on first use. It is currently defined to avoid compiler warnings
+  entityRef & operator = (const entityRef & ) { return *this; }
 };
 
 //=======================================================================
