@@ -1,6 +1,4 @@
-#ifndef WNT
-# include <X11/Xlib.h>
-#endif  // WNT
+#include <Aspect_XWD.hxx>
 #include <AlienImage_X11XWDFileHeader.hxx>
 
 const Handle(Standard_Type)& STANDARD_TYPE(AlienImage_X11XWDFileHeader)

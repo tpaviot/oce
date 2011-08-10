@@ -11,9 +11,7 @@
 #define TEST	//GG_140699
 //		Check file extension, must be ".xwd".
 
-#ifndef WNT
-# include <X11/Xlib.h>
-#endif  // WNT
+#include <Aspect_XWD.hxx>
 #include <Aspect_GenericColorMap.hxx>
 #include <Image_PseudoColorImage.hxx>
 #include <AlienImage_MemoryOperations.hxx>
