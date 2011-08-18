@@ -3,6 +3,7 @@
 
 # ifndef WNT
 #  include <X11/XWDFile.h>
+#  include <X11/X.h>
 # else
 
 # ifdef WORD64
