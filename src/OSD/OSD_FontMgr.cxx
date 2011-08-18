@@ -9,9 +9,6 @@
 #ifdef WNT
 # include <windows.h>
 # include <stdlib.h>
-#else  //WNT
-# include <dirent.h>
-# include <X11/Xlib.h>
 #endif //WNT
 
 #include <NCollection_List.hxx>
@@ -39,6 +36,14 @@ static Standard_Character font_service_conf[font_service_conf_size][64] = { {"/e
                                                                             {"/usr/X11R6/lib/X11/fs/config"},
                                                                             {"/usr/X11/lib/X11/fs/config"}
                                                                            };
+
+#ifdef X11_FONT_PATH
+# define stringify(s) #s
+# define tostring(s) stringify(s)
+# define X11_FONT_PATH_STR tostring(X11_FONT_PATH)
+#else
+# define X11_FONT_PATH_STR ""
+#endif
 
 DEFINE_LIST( StringList, NCollection_List, TCollection_HAsciiString );
 
@@ -106,6 +111,41 @@ OSD_FontMgr::OSD_FontMgr() {
 
 }
 
+
+#ifndef WNT
+static void
+process_paths_with_font_dir(const Standard_Character* paths, StringList& dirs)
+{
+  TCollection_AsciiString fontpath(paths);
+
+  while (fontpath.Length() > 0)
+  {
+    TCollection_AsciiString next_fontpath("");
+    Standard_Integer position = fontpath.Search(";");
+    if (position >= 0)
+    {
+      next_fontpath = fontpath.Split(position);
+      fontpath.Trunc(fontpath.Length() - 1);
+    }
+#ifdef TRACE
+    cout << "Font Path: " << fontpath << endl;
+#endif
+    if ( fontpath.Value(1) == '/' ) {
+      find_path_with_font_dir( fontpath, dirs );
+    }
+    else
+    {
+      TCollection_AsciiString aFontPath( fontpath );
+      TCollection_AsciiString aCutFontPath;
+      Standard_Integer location = aFontPath.Location( "/",1,aFontPath.Length() );
+      if( location > 0 )
+        aCutFontPath.AssignCat( aFontPath.SubString(location, aFontPath.Length() ) );
+      find_path_with_font_dir( aCutFontPath, dirs );
+    }
+    fontpath = next_fontpath;
+  }
+}
+#endif
 
 void OSD_FontMgr::InitFontDataBase() {
 
@@ -235,48 +275,12 @@ void OSD_FontMgr::InitFontDataBase() {
 
 #ifndef WNT
   StringList dirs;
-  Handle(TCollection_HAsciiString) str = new TCollection_HAsciiString;
-  Display * disp = XOpenDisplay(NULL);
 
-  if (!disp) 
-  {
-    // let the X server find the available connection
-    disp = XOpenDisplay(":0.0");
-    if (!disp)
-    {
-      cout << "Display is NULL!" << endl;
-      return ;
-    }
-  }
-
-  Standard_Integer npaths = 0;
-
-  Standard_Character** fontpath = XGetFontPath(disp, &npaths);
-#ifdef TRACE
-  cout << "NPATHS = " << npaths << endl ;
-#endif
-  for (Standard_Integer i = 0; i < npaths; i++  ) 
-  {  
-#ifdef TRACE         
-    cout << "Font Path: " << fontpath[i] << endl;
-#endif
-    if ( fontpath[i][0] == '/' ) {
-      TCollection_AsciiString aFontPath( fontpath[i] );
-      find_path_with_font_dir( aFontPath, dirs );
-    }
-    else
-    {
-      TCollection_AsciiString aFontPath( fontpath[i] );
-      TCollection_AsciiString aCutFontPath;        
-      Standard_Integer location = -1 ;
-       location = aFontPath.Location( "/",1,aFontPath.Length() );
-      if( location > 0 )
-        aCutFontPath.AssignCat( aFontPath.SubString(location, aFontPath.Length() ) );
-      find_path_with_font_dir( aCutFontPath, dirs ); 
-    }
-  }
-  XFreeFontPath(fontpath);
-
+  Standard_Character* font_path_env = getenv("FONTPATH");
+  if (font_path_env != NULL)
+    process_paths_with_font_dir( font_path_env, dirs );
+  else
+    process_paths_with_font_dir( X11_FONT_PATH_STR, dirs );
 
   OSD_OpenMode aMode =  OSD_ReadOnly;
   OSD_Protection  aProtect( OSD_R, OSD_R, OSD_R, OSD_R );
