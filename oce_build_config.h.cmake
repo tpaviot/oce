@@ -254,7 +254,7 @@
 #cmakedefine _POSIX_SOURCE
 
 /* Location where resource files will be installed. */
-#cmakedefine OCE_INSTALL_DATA_DIR "@OCE_INSTALL_DATA_DIR@"
+#cmakedefine OCE_INSTALL_DATA_DIR "@OCE_ABSPATH_DATA_DIR@"
 
 /* Location where TKOpenGl shared library will be installed. */
 #cmakedefine OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@"
