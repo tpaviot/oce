@@ -1,6 +1,6 @@
 #!/bin/csh
 
-setenv CASROOT @OCE_INSTALL_DATA_DIR@
+setenv CASROOT @OCE_ABSPATH_DATA_DIR@
 
 setenv CSF_MDTVFontDirectory $CASROOT/src/FontMFT
 setenv CSF_LANGUAGE us
