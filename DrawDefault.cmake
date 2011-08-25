@@ -11,7 +11,7 @@ if { [info exists env(DRAWHOME) ] } {
     if { [info exists env(CASROOT) ] } {
   set dir [file join $env(CASROOT) src DrawResources]
     } else {
-  set dir [file join "@OCE_INSTALL_DATA_DIR@" src DrawResources]
+  set dir [file join "@OCE_ABSPATH_DATA_DIR@" src DrawResources]
     }
 }
 

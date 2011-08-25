@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CASROOT=@OCE_INSTALL_DATA_DIR@
+export CASROOT=@OCE_ABSPATH_DATA_DIR@
 
 export CSF_MDTVFontDirectory=$CASROOT/src/FontMFT
 export CSF_LANGUAGE=us
