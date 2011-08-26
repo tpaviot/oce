@@ -3,6 +3,8 @@
 // Author    : Jacques GOUSSARD
 // Copyright : Matra Datavision 1993
 
+#include <Adaptor3d_HVertex.hxx>
+
 inline Standard_Boolean BRepBlend_BlendTool::SingularOnUMin (const Handle(Adaptor3d_HSurface)& )
 {
   return Standard_False;
