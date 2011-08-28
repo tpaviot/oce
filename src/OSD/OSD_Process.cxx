@@ -70,7 +70,11 @@ int status;
  if (status == -1) myError.SetValue (errno, Iam, "GetSystem");
  else {
   secs = tval.tv_sec;
+#ifdef HAVE_LOCALTIME_R
+  localtime_r(&secs, &transfert);
+#else
   memcpy(&transfert, localtime(&secs), sizeof(struct tm));
+#endif
   month = transfert.tm_mon + 1;  // Add to January (month #1)
   day   = transfert.tm_mday;
   year  = transfert.tm_year;
