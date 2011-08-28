@@ -62,14 +62,15 @@ Quantity_Date  OSD_Process::SystemDate(){
 Quantity_Date result;
 Standard_Integer month=0,day=0,year=0,hh=0,mn=0,ss=0;
 struct tm transfert;
+time_t secs;
 struct timeval tval;
 int status;
 
  status = gettimeofday( &tval, NULL );
  if (status == -1) myError.SetValue (errno, Iam, "GetSystem");
  else {
-  memcpy(&transfert, localtime((time_t *)&tval.tv_sec), sizeof(struct
-tm));
+  secs = tval.tv_sec;
+  memcpy(&transfert, localtime(&secs), sizeof(struct tm));
   month = transfert.tm_mon + 1;  // Add to January (month #1)
   day   = transfert.tm_mday;
   year  = transfert.tm_year;
