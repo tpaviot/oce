@@ -63,10 +63,9 @@ Quantity_Date result;
 Standard_Integer month=0,day=0,year=0,hh=0,mn=0,ss=0;
 struct tm transfert;
 struct timeval tval;
-struct timezone tzone;
 int status;
 
- status = gettimeofday( &tval, &tzone );
+ status = gettimeofday( &tval, NULL );
  if (status == -1) myError.SetValue (errno, Iam, "GetSystem");
  else {
   memcpy(&transfert, localtime((time_t *)&tval.tv_sec), sizeof(struct
