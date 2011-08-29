@@ -336,6 +336,7 @@ IF(${PROJECT_NAME}_DRAW)
 		${DRAWRESOURCES_TCL_FILES}
 		src/DrawResources/DRAW.doc
 		src/DrawResources/DRAW.info
+		src/DrawResources/DrawDefault
 		src/DrawResources/DrawPlugin
 		src/DrawResources/demo
 		src/DrawResources/demo.bat
@@ -758,13 +759,6 @@ CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_install_config.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h )
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h
 		DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDE_DIR} COMPONENT Development )
-
-IF(${PROJECT_NAME}_DRAW)
-	CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/DrawDefault.cmake
-		${CMAKE_CURRENT_BINARY_DIR}/DrawDefault @ONLY )
-	INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/DrawDefault
-		DESTINATION ${${PROJECT_NAME}_INSTALL_DATA_DIR}/src/DrawResources)
-ENDIF(${PROJECT_NAME}_DRAW)
 
 # Version information
 CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake
