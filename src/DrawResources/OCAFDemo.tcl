@@ -1,6 +1,6 @@
 # first , Opening Document write on Unix 
 puts "First , Opening Document write on Unix "
-set Data [file join $env(CASROOT) src TCAF]
+set Data [file join [file dirname [file dirname [info script]] TCAF]
 
 set DocName [file join ${Data} FileUnix.std]
 if [ file exists ${DocName}  ] {

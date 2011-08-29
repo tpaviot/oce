@@ -8,11 +8,7 @@ set dir ""
 if { [info exists env(DRAWHOME) ] } { 
   set dir $env(DRAWHOME)  
 } else {
-  if { [info exists env(CASROOT) ] } {
-    set dir [file join $env(CASROOT) src DrawResources]
-  } else {
-    puts " CASROOT is Mandatory to Run OpenCascade"
-  }
+  set dir [file dirname [info script]]
 }
 
 # san - 02/08/2002 - In Tcl8.3 it is no longer necessary to load Tix explicitly on WNT

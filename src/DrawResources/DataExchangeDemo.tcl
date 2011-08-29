@@ -36,9 +36,11 @@ if { [winfo exists .h ] } {
     destroy .h
 }
 
-if { [info exists env(CASROOT)] } {
-    set thedir [file join $env(CASROOT) src DEResource]
+set thedir [file join [file dirname [file dirname [info script]] DEResource]
+if { [file isdirectory ${thedir}] } {
     cd ${thedir}
+} else {
+    cd [file dirname [info script]]
 }
 
 datadir .
