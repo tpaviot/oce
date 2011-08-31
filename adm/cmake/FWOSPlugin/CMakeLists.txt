@@ -8,5 +8,5 @@ SET(TOOLKIT_DEPENDS
 	TKernel
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

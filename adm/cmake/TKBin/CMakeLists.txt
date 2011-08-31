@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKCDF
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

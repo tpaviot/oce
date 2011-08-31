@@ -24,5 +24,5 @@ SET(TOOLKIT_DEPENDS
 )
 SET(TOOLKIT_LIBS ${CSF_wsock32_LIB})
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

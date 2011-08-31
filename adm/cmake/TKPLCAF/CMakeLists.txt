@@ -17,5 +17,5 @@ SET(TOOLKIT_DEPENDS
 	PTKernel
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

@@ -21,5 +21,5 @@ SET(TOOLKIT_DEPENDS
 	TKGeomAlgo
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 
