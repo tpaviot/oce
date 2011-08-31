@@ -29,5 +29,5 @@ ENDIF(NOT WIN32)
 
 SET(TOOLKIT_IS_PRIVATE TRUE)
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

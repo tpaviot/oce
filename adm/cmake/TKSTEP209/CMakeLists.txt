@@ -12,5 +12,5 @@ SET(TOOLKIT_DEPENDS
 	TKXSBase
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

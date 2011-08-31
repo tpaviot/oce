@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKGeomBase
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

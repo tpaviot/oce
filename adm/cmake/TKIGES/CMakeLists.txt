@@ -36,5 +36,5 @@ SET(TOOLKIT_DEPENDS
 	TKPrim
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

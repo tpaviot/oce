@@ -19,5 +19,5 @@ SET(TOOLKIT_DEPENDS
 	TKXml
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

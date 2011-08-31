@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKStdLSchema
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

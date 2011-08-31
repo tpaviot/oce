@@ -13,5 +13,5 @@ SET(TOOLKIT_DEPENDS
 	TKShapeSchema
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 
