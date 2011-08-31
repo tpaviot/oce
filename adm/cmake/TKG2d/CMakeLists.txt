@@ -15,5 +15,5 @@ SET(TOOLKIT_DEPENDS
 	TKMath
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

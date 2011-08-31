@@ -32,5 +32,5 @@ SET(TOOLKIT_DEPENDS
 
 SET(TOOLKIT_IS_PRIVATE TRUE)
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

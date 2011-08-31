@@ -28,5 +28,5 @@ SET(TOOLKIT_DEPENDS
 	TKBRep
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

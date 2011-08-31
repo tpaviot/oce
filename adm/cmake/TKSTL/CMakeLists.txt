@@ -16,5 +16,5 @@ SET(TOOLKIT_DEPENDS
 	TKTopAlgo
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

@@ -34,5 +34,5 @@ SET(TOOLKIT_DEPENDS TKCAF
 
 SET(TOOLKIT_IS_PRIVATE TRUE)
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 

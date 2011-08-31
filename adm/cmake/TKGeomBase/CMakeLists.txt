@@ -31,5 +31,5 @@ SET(TOOLKIT_DEPENDS
 	TKG2d
 )
 
-INCLUDE(../OccBuildKit.cmake)
+INCLUDE(../BuildToolkit.cmake)
 
