@@ -765,7 +765,7 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h
 CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake
 				${CMAKE_CURRENT_BINARY_DIR}/Version.rc)
 
-MACRO(PROCESS_OCC_MODULE modulename modules)
+MACRO(PROCESS_MODULE modulename modules)
 	FOREACH(module ${modules})
 		LIST(APPEND ${PROJECT_NAME}_LIBRARIES ${module})
 		SET(TOOLKIT_MODULES "")
@@ -778,50 +778,50 @@ MACRO(PROCESS_OCC_MODULE modulename modules)
 			SET_TARGET_PROPERTIES(${module} PROPERTIES FOLDER ${modulename} )
 		ENDIF(USE_SOLUTION_FOLDERS)
 	ENDFOREACH(module ${modules})
-ENDMACRO(PROCESS_OCC_MODULE modulename modules)
+ENDMACRO(PROCESS_MODULE modulename modules)
 
 ####################################################################################
 # Process modules of each ToolKit                                                  #
 ####################################################################################
 # Foundation
-PROCESS_OCC_MODULE( "Kernel" "TKernel;TKMath;TKAdvTools" )
+PROCESS_MODULE( "Kernel" "TKernel;TKMath;TKAdvTools" )
 
 # Modeling Data
 IF (${PROJECT_NAME}_MODEL)
-	PROCESS_OCC_MODULE( "Modeling Data" "TKG2d;TKG3d;TKGeomBase;TKBRep" )
+	PROCESS_MODULE( "Modeling Data" "TKG2d;TKG3d;TKGeomBase;TKBRep" )
 ENDIF (${PROJECT_NAME}_MODEL)
 
 # Modeling Algorithms
 IF (${PROJECT_NAME}_MODEL)
-	PROCESS_OCC_MODULE( "Modeling Algorithms" "TKGeomAlgo;TKTopAlgo;TKPrim;TKBO;TKHLR;TKMesh;TKShHealing;TKXMesh;TKBool;TKFillet;TKFeat;TKOffset" )
+	PROCESS_MODULE( "Modeling Algorithms" "TKGeomAlgo;TKTopAlgo;TKPrim;TKBO;TKHLR;TKMesh;TKShHealing;TKXMesh;TKBool;TKFillet;TKFeat;TKOffset" )
 ENDIF (${PROJECT_NAME}_MODEL)
 
 # Visualisation
 IF(${PROJECT_NAME}_VISU_DEP)
-	PROCESS_OCC_MODULE( "Visualization" "TKService;TKV2d;TKV3d" )
+	PROCESS_MODULE( "Visualization" "TKService;TKV2d;TKV3d" )
 ENDIF(${PROJECT_NAME}_VISU_DEP)
 IF(${PROJECT_NAME}_VISUALISATION)
-	PROCESS_OCC_MODULE( "Visualization" "TKOpenGl;TKMeshVS;TKNIS;TKVoxel" )
+	PROCESS_MODULE( "Visualization" "TKOpenGl;TKMeshVS;TKNIS;TKVoxel" )
 ENDIF(${PROJECT_NAME}_VISUALISATION)
 
 # Application framework
 IF(${PROJECT_NAME}_OCAF)
-	PROCESS_OCC_MODULE( "OCAF" "TKCDF;PTKernel;TKLCAF;FWOSPlugin;TKPShape;TKCAF;TKBinL;TKXmlL;TKPLCAF;TKTObj;TKShapeSchema;TKBin;TKXml;TKPCAF;TKBinTObj;TKXmlTObj;TKStdLSchema;TKStdSchema" )
+	PROCESS_MODULE( "OCAF" "TKCDF;PTKernel;TKLCAF;FWOSPlugin;TKPShape;TKCAF;TKBinL;TKXmlL;TKPLCAF;TKTObj;TKShapeSchema;TKBin;TKXml;TKPCAF;TKBinTObj;TKXmlTObj;TKStdLSchema;TKStdSchema" )
 ENDIF(${PROJECT_NAME}_OCAF)
 
 # Data exchange
 IF(${PROJECT_NAME}_DATAEXCHANGE)
-	PROCESS_OCC_MODULE( "Data Exchange" "TKVRML;TKXCAF;TKSTL;TKXSBase;TKXCAFSchema;TKXmlXCAF;TKBinXCAF;TKSTEPBase;TKIGES;TKSTEPAttr;TKSTEP209;TKXDEIGES;TKSTEP;TKXDESTEP" )
+	PROCESS_MODULE( "Data Exchange" "TKVRML;TKXCAF;TKSTL;TKXSBase;TKXCAFSchema;TKXmlXCAF;TKBinXCAF;TKSTEPBase;TKIGES;TKSTEPAttr;TKSTEP209;TKXDEIGES;TKSTEP;TKXDESTEP" )
 ENDIF(${PROJECT_NAME}_DATAEXCHANGE)
 
 # Draw
 IF(${PROJECT_NAME}_DRAW)
-	PROCESS_OCC_MODULE( "Draw" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW" )
+	PROCESS_MODULE( "Draw" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW" )
 ENDIF(${PROJECT_NAME}_DRAW)
 
 # DRAWEXE application
 IF(${PROJECT_NAME}_DRAW)
-	PROCESS_OCC_MODULE( "Draw" DRAWEXE )
+	PROCESS_MODULE( "Draw" DRAWEXE )
 ENDIF(${PROJECT_NAME}_DRAW)
 
 CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfig.cmake.in
