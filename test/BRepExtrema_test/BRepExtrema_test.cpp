@@ -7,6 +7,12 @@
 
 #include <gtest/gtest.h>
 
+/* @TODO: in the following tests, minimal distances between two shapes.
+It's not obvious anyway to figure out the relationship between the deflection passed to
+BRepExtrema_DistSS (related to the mesh quality) and the precision of the output.
+This has to be investigated further.
+*/
+
 TEST(BRepExtremaTestSuite, testDistSphereSphere)
 {
     // the distance d between sphere1, centered at origin and radius r1, and
@@ -33,7 +39,8 @@ TEST(BRepExtremaTestSuite, testDistSphereSphere)
     Standard_Real expected_result = a-(r1+r2);
     Standard_Real min_dist = distSS.Value();
     // @TODO: should compare with a precision
-    ASSERT_EQ(expected_result,min_dist);
+    float abs_error = 0.001;
+    ASSERT_NEAR(expected_result,min_dist,abs_error);
 }
 
 TEST(BRepExtremaTestSuite, testDistSphereVertex)
@@ -64,8 +71,8 @@ TEST(BRepExtremaTestSuite, testDistSphereVertex)
     Standard_Real expected_result = v.Magnitude()-r1;
     Standard_Real min_dist = distSS.Value();
     
-    ASSERT_LT(expected_result-0.001,min_dist);
-    ASSERT_GT(expected_result+0.001,min_dist);
+    float abs_error = 0.001;
+    ASSERT_NEAR(expected_result,min_dist,abs_error);
 }
 
 int main(int argc, char **argv){
