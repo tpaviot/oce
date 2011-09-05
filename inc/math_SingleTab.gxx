@@ -1,8 +1,8 @@
 //
 
-#include <math_Memory.hxx>
 #include <Standard_OutOfRange.hxx>
 #include <Standard_Failure.hxx>
+#include <string.h>
 
 math_SingleTab::math_SingleTab(const Standard_Integer LowerIndex,
 		               const Standard_Integer UpperIndex) :

@@ -1,5 +1,5 @@
 #include <Standard_OutOfRange.hxx>
-#include <math_Memory.hxx>
+#include <string.h>
 
 inline Item& math_SingleTab::Value(const Standard_Integer Index) const
 {
