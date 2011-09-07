@@ -5,7 +5,7 @@
 #include <Standard_OutOfRange.hxx>
 #include <Standard_Failure.hxx>
 #include <Standard_Integer.hxx>
-#include <string.h>
+#include <cstring>
 
 void math_DoubleTab::Allocate()
 {

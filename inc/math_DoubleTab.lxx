@@ -2,7 +2,7 @@
 // Lpa, le 7/02/92
 
 #include <Standard_OutOfRange.hxx>
-#include <string.h>
+#include <cstring>
 
 #ifdef __BORLANDC__
 #include <mem.h>
