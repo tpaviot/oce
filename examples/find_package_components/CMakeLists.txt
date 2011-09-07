@@ -1,11 +1,23 @@
-# This example shows how to use find_package(OCE).
-# If OCE is not found, try to find an OpenCascade installation.
+# This example shows how to use find_package(OCE) by specifying
+# a list of toolkits.
+# If a toolkit is missing or if OCE is not found, try to find
+# an OpenCascade installation.
 
 cmake_minimum_required(VERSION 2.6)
 
-find_package(OCE)
+set(OCE_TOOLKITS TKPrim)
+find_package(OCE COMPONENTS ${OCE_TOOLKITS})
 if(OCE_FOUND)
     message(STATUS "Found OCE version ${OCE_VERSION}")
+    foreach(toolkit ${OCE_TOOLKITS})
+      if(NOT OCE_${toolkit}_FOUND)
+        set(OCE_FOUND false)
+        message(WARNING "OCE toolkit ${toolkit} not found, ignoring OCE installation")
+      endif(NOT OCE_${toolkit}_FOUND)
+    endforeach(toolkit ${OCE_TOOLKITS})
+endif(OCE_FOUND)
+
+if(OCE_FOUND)
     # Include files reside in ${OCE_INCLUDE_DIRS};
     include_directories(${OCE_INCLUDE_DIRS})
     # We do not need library path, they will be automatically imported.
