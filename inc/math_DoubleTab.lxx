@@ -1,8 +1,8 @@
 // File math_DoubleTab.lxx
 // Lpa, le 7/02/92
 
-#include <math_Memory.hxx>
 #include <Standard_OutOfRange.hxx>
+#include <cstring>
 
 #ifdef __BORLANDC__
 #include <mem.h>
