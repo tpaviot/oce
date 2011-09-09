@@ -2,11 +2,16 @@
 # It defines the following variables
 #  ${PROJECT_NAME}_INCLUDE_DIRS - include directory for ${PROJECT_NAME}
 #  ${PROJECT_NAME}_LIBRARIES    - all libraries to link against (warning, may be slower than just specify the used libs)
+#  ${PROJECT_NAME}_ALL_FOUND    - set to TRUE if all requested COMPONENTS are specified (see below), false otherwise
+#  ${PROJECT_NAME}_MISSING_TOOLKITS - when ${PROJECT_NAME}_ALL_FOUND is FALSE, contains a list of missing toolkits
 #
 # If COMPONENTS is specified in the find_package() commands, it contains
 # a list of toolkit modules which are requested.  For each component,
 # ${PROJECT_NAME}_<toolkit>_FOUND is set to TRUE or FALSE.
 # Warning: <toolkit> is case-sensitive, for instance TKernel.
+# For convenience, ${PROJECT_NAME}_ALL_FOUND is set to TRUE if all
+# toolkits are found, otherwise FALSE.  In the latter case,
+# ${PROJECT_NAME}_MISSING_TOOLKITS contains the list of missing toolkits.
  
 # Tell the user project where to find our headers and libraries
 GET_FILENAME_COMPONENT(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
@@ -15,12 +20,16 @@ SET(@PROJECT_NAME@_INCLUDE_DIRS "${SELF_DIR}/@OCE_CMAKE_DATA_TO_INCLUDE_RELATIVE
 SET(@PROJECT_NAME@_LIBRARIES "@OCE_LIBRARIES@")
 INCLUDE("${SELF_DIR}/@PROJECT_NAME@-libraries.cmake")
 
+SET(@PROJECT_NAME@_ALL_FOUND true)
+SET(@PROJECT_NAME@_MISSING_TOOLKITS)
 IF(@PROJECT_NAME@_FIND_COMPONENTS)
 	FOREACH(toolkit ${@PROJECT_NAME@_FIND_COMPONENTS})
 		IF(TARGET ${toolkit})
 			SET(@PROJECT_NAME@_${toolkit}_FOUND true)
 		ELSE(TARGET ${toolkit})
+			SET(@PROJECT_NAME@_ALL_FOUND false)
 			SET(@PROJECT_NAME@_${toolkit}_FOUND false)
+			SET(@PROJECT_NAME@_MISSING_TOOLKITS ${@PROJECT_NAME@_MISSING_TOOLKITS} ${toolkit})
 			IF(@PROJECT_NAME@_FIND_REQUIRED_${toolkit})
 				MESSAGE(FATAL_ERROR "@PROJECT_NAME@ ${toolkit} not available.")
 			ENDIF(@PROJECT_NAME@_FIND_REQUIRED_${toolkit})
