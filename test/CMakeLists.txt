@@ -8,6 +8,9 @@ INCLUDE_DIRECTORIES(${GTEST_ROOT}/include ${GTEST_ROOT})
 ADD_LIBRARY(gtest STATIC ${GTEST_ROOT}/src/gtest-all.cc )
 TARGET_LINK_LIBRARIES(gtest ${CMAKE_THREAD_LIBS_INIT})
 
+IF (USE_SOLUTION_FOLDERS)
+	SET_TARGET_PROPERTIES(gtest PROPERTIES FOLDER "Tests" )
+ENDIF(USE_SOLUTION_FOLDERS)
 
 # Copied from CMake
 # Thanks to Daniel Blezek <blezek@gmail.com> for the GTEST_ADD_TESTS code
@@ -20,7 +23,11 @@ function(GTEST_ADD_TESTS executable extra_args)
         string(REGEX MATCHALL "TEST_?F?\\(([A-Za-z_0-9 ,]+)\\)" found_tests ${contents})
         foreach(hit ${found_tests})
             string(REGEX REPLACE ".*\\( *([A-Za-z_0-9]+), *([A-Za-z_0-9]+) *\\).*" "\\1.\\2" test_name ${hit})
-            add_test(${test_name} ${executable} --gtest_filter=${test_name} ${extra_args})
+            IF (MSVC)
+				add_test(${test_name} ${EXECUTABLE_OUTPUT_PATH}/${executable} --gtest_filter=${test_name} ${extra_args})
+			ELSE ()
+				add_test(${test_name} ${executable} --gtest_filter=${test_name} ${extra_args})
+			ENDIF(MSVC)
         endforeach()
     endforeach()
 endfunction()
@@ -29,6 +36,10 @@ MACRO(ADD_OCE_TEST test_name libs)
   FILE(GLOB TEST_SOURCES *.cpp)
   SET(SOURCE_FILES ${TEST_SOURCES})
   ADD_EXECUTABLE(${test_name} ${SOURCE_FILES})
+ 
+  IF (USE_SOLUTION_FOLDERS)
+		SET_TARGET_PROPERTIES(${test_name} PROPERTIES FOLDER "Tests" )
+  ENDIF(USE_SOLUTION_FOLDERS)
   
   FOREACH(LIB ${libs})
      TARGET_LINK_LIBRARIES(${test_name} ${LIB})
@@ -42,6 +53,11 @@ MACRO(ADD_OCE_TEST test_name libs)
   GTEST_ADD_TESTS(${test_name} "" ${SOURCE_FILES})
 ENDMACRO(ADD_OCE_TEST test_name libs)
 
+# Since MSVC has multiple configuration and a custom binary path, CTEST 
+# doesn't find it automatically. The next line is required (found in VTK)
+IF(MSVC)
+    SET(CXX_TEST_PATH "${EXECUTABLE_OUTPUT_PATH}")
+ENDIF(MSVC)
 FILE(GLOB TEST_DIRECTORIES ./*_test gtest_sandbox)
 SUBDIRS(${TEST_DIRECTORIES})
 
