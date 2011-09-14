@@ -1,4 +1,4 @@
-# REQUIREMENTS: this script needs CMake 2.6 or higher. Downloads are available at http://www.cmake.org
+# REQUIREMENTS: this script needs CMake 2.8 or higher. Downloads are available at http://www.cmake.org
 
 # How to build OCE using CMake under Unix (Linux, Darwin etc.)?
 # 1. Copy this file, as-is, to the top-level OCE folder
@@ -30,8 +30,8 @@ SET(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}.${OCE_VERSION_PATCH}${
 SET(OCE_ABI_SOVERSION 1)
 SET(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
 
-# Set the minimum version of cmake required to 2.6
-CMAKE_MINIMUM_REQUIRED( VERSION 2.6 )
+# Set the minimum version of cmake required to 2.8
+CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
 # Define helper macro OPTION_WITH_DEFAULT
 MACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
@@ -41,9 +41,9 @@ MACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 	OPTION( ${OPTION_NAME} "${OPTION_STRING}" ${${OPTION_NAME}} )
 ENDMACRO( OPTION_WITH_DEFAULT OPTION_NAME OPTION_STRING OPTION_DEFAULT )
 
-IF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
-	MESSAGE( FATAL_ERROR "CMake >= 2.6.0 required" )
-ENDIF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.5 )
+IF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.7 )
+	MESSAGE( FATAL_ERROR "CMake >= 2.8.0 required" )
+ENDIF( "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.7 )
 
 ############################
 # Check 32/64 bit platform #
@@ -609,10 +609,8 @@ IF(WIN32)
 		SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
 	ENDIF(MSVC)
 	SET(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
-
 ELSE(WIN32)
 	SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
-	SET(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
 ENDIF(WIN32)
 MESSAGE(STATUS "output_path: ${LIBRARY_OUTPUT_PATH}")
 
@@ -977,7 +975,7 @@ if( CPACK_GENERATOR MATCHES ".*DEB.*" )
 	endif()
 	set(CPACK_DEBIAN_PACKAGE_SECTION "science")
 	# debian source packages aren't yet supported by cmake, but the following list will help anyone who is trying to figure out what to apt-get install before building.
-	set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.6), libtool,
+	set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.8), libtool,
 		libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
 		libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
 		libftgl-dev, libgl2ps-dev")
