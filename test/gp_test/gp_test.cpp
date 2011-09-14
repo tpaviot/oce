@@ -24,6 +24,20 @@ TEST(gpTestSuite, testBuildThousandsPoints)
     }
 }
 
+/*  This test fails with OCCT 6.5.1 and GCC 4.2 */
+TEST(gpTestSuite, testGCC42gp_Trsf)
+{
+    gp_Trsf T;
+    T.SetValues(
+        1.0, 0.0, 0.0, 0.0,
+        0.0, 1.0, 0.0, 0.0,
+        0.0, 0.0, 1.0, 0.0,
+        1.e-6, 1.e-6);
+    ASSERT_EQ(1.0,T.Value(1,1));
+    ASSERT_EQ(1.0,T.Value(2,2));
+    ASSERT_EQ(1.0,T.Value(3,3));
+}
+
 int main(int argc, char **argv){
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
