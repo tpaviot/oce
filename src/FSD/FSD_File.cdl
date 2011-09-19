@@ -325,7 +325,7 @@ is
 
     MagicNumber(myclass)
     	returns CString from Standard is private;
-    ---C++: return const
+--    ---C++: return const
     
     fields
     
