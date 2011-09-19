@@ -1,9 +1,0 @@
-+ TFunction:pubinclude:TFunction_Driver.lxx TFunction:source:TFunction_Driver.lxx
-+ TFunction:pubinclude:TFunction_Logbook.lxx TFunction:source:TFunction_Logbook.lxx
-+ TFunction:pubinclude:TFunction_Function.lxx TFunction:source:TFunction_Function.lxx
-+ TFunction:dbadmfile:TFunction_obj_inc.In TFunction:admfile:TFunction_src.Out
-+ * TFunction:admfile:TFunction_xcpp_src.Out
-+ TFunction:dbadmfile:TFunction_obj_inc.Out TFunction:admfile:TFunction_src.Out
-+ * TFunction:admfile:TFunction_xcpp_src.Out
-+ TFunction:dbadmfile:TFunction_obj_inc.Dep TFunction:admfile:TFunction_src.Out
-+ * TFunction:admfile:TFunction_xcpp_src.Out

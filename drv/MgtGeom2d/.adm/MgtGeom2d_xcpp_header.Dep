@@ -1,6 +1,0 @@
-+ MgtGeom2d:pubinclude:MgtGeom2d.hxx MgtGeom2d:msentity:MgtGeom2d
-+ MgtGeom2d:privinclude:MgtGeom2d.jxx MgtGeom2d:msentity:MgtGeom2d
-+ MgtGeom2d:privinclude:MgtGeom2d.ixx MgtGeom2d:msentity:MgtGeom2d
-+ MgtGeom2d:dbadmfile:MgtGeom2d_xcpp_header.In MgtGeom2d:admfile:MgtGeom2d_xcpp_fill.Out
-+ MgtGeom2d:dbadmfile:MgtGeom2d_xcpp_header.Out MgtGeom2d:admfile:MgtGeom2d_xcpp_fill.Out
-+ MgtGeom2d:dbadmfile:MgtGeom2d_xcpp_header.Dep MgtGeom2d:admfile:MgtGeom2d_xcpp_fill.Out

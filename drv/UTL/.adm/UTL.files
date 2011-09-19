@@ -1,9 +1,0 @@
-pubinclude UTL.hxx
-privinclude UTL.jxx
-privinclude UTL.ixx
-dbadmfile UTL_xcpp_header.In
-dbadmfile UTL_xcpp_header.Out
-dbadmfile UTL_xcpp_header.Dep
-dbadmfile UTL_obj_inc.In
-dbadmfile UTL_obj_inc.Out
-dbadmfile UTL_obj_inc.Dep

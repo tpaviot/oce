@@ -1,7 +1,0 @@
-+ BOPTColStd:pubinclude:BOPTColStd_CArray1.gxx BOPTColStd:source:BOPTColStd_CArray1.gxx
-+ BOPTColStd:dbadmfile:BOPTColStd_obj_inc.In BOPTColStd:admfile:BOPTColStd_src.Out
-+ * BOPTColStd:admfile:BOPTColStd_xcpp_src.Out
-+ BOPTColStd:dbadmfile:BOPTColStd_obj_inc.Out BOPTColStd:admfile:BOPTColStd_src.Out
-+ * BOPTColStd:admfile:BOPTColStd_xcpp_src.Out
-+ BOPTColStd:dbadmfile:BOPTColStd_obj_inc.Dep BOPTColStd:admfile:BOPTColStd_src.Out
-+ * BOPTColStd:admfile:BOPTColStd_xcpp_src.Out

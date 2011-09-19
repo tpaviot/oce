@@ -1,6 +1,0 @@
-+ RWStepRepr:dbadmfile:RWStepRepr_obj_inc.In RWStepRepr:admfile:RWStepRepr_src.Out
-+ * RWStepRepr:admfile:RWStepRepr_xcpp_src.Out
-+ RWStepRepr:dbadmfile:RWStepRepr_obj_inc.Out RWStepRepr:admfile:RWStepRepr_src.Out
-+ * RWStepRepr:admfile:RWStepRepr_xcpp_src.Out
-+ RWStepRepr:dbadmfile:RWStepRepr_obj_inc.Dep RWStepRepr:admfile:RWStepRepr_src.Out
-+ * RWStepRepr:admfile:RWStepRepr_xcpp_src.Out

@@ -1,6 +1,0 @@
-+ StepBasic:dbadmfile:StepBasic_obj_inc.In StepBasic:admfile:StepBasic_src.Out
-+ * StepBasic:admfile:StepBasic_xcpp_src.Out
-+ StepBasic:dbadmfile:StepBasic_obj_inc.Out StepBasic:admfile:StepBasic_src.Out
-+ * StepBasic:admfile:StepBasic_xcpp_src.Out
-+ StepBasic:dbadmfile:StepBasic_obj_inc.Dep StepBasic:admfile:StepBasic_src.Out
-+ * StepBasic:admfile:StepBasic_xcpp_src.Out

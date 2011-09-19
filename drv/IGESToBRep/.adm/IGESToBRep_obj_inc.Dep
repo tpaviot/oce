@@ -1,9 +1,0 @@
-+ IGESToBRep:pubinclude:IGESToBRep_CurveAndSurface.lxx IGESToBRep:source:IGESToBRep_CurveAndSurface.lxx
-+ IGESToBRep:pubinclude:IGESToBRep_IGESBoundary.lxx IGESToBRep:source:IGESToBRep_IGESBoundary.lxx
-+ IGESToBRep:pubinclude:IGESToBRep_AlgoContainer.lxx IGESToBRep:source:IGESToBRep_AlgoContainer.lxx
-+ IGESToBRep:dbadmfile:IGESToBRep_obj_inc.In IGESToBRep:admfile:IGESToBRep_src.Out
-+ * IGESToBRep:admfile:IGESToBRep_xcpp_src.Out
-+ IGESToBRep:dbadmfile:IGESToBRep_obj_inc.Out IGESToBRep:admfile:IGESToBRep_src.Out
-+ * IGESToBRep:admfile:IGESToBRep_xcpp_src.Out
-+ IGESToBRep:dbadmfile:IGESToBRep_obj_inc.Dep IGESToBRep:admfile:IGESToBRep_src.Out
-+ * IGESToBRep:admfile:IGESToBRep_xcpp_src.Out

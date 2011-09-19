@@ -1,6 +1,0 @@
-+ MDataStd:dbadmfile:MDataStd_obj_inc.In MDataStd:admfile:MDataStd_src.Out
-+ * MDataStd:admfile:MDataStd_xcpp_src.Out
-+ MDataStd:dbadmfile:MDataStd_obj_inc.Out MDataStd:admfile:MDataStd_src.Out
-+ * MDataStd:admfile:MDataStd_xcpp_src.Out
-+ MDataStd:dbadmfile:MDataStd_obj_inc.Dep MDataStd:admfile:MDataStd_src.Out
-+ * MDataStd:admfile:MDataStd_xcpp_src.Out

@@ -1,9 +1,0 @@
-+M Prs2d:pubinclude:Prs2d_Dimension.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Dimension.lxx
-+M Prs2d:pubinclude:Prs2d_Angle.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Angle.lxx
-+M Prs2d:pubinclude:Prs2d_Length.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Length.lxx
-+M Prs2d:pubinclude:Prs2d_Radius.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Radius.lxx
-+M Prs2d:pubinclude:Prs2d_Diameter.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Diameter.lxx
-+M Prs2d:pubinclude:Prs2d_Repere.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Prs2d_Repere.lxx
-+M Prs2d:dbadmfile:Prs2d_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Prs2d/.adm/Prs2d_obj_inc.In
-+M Prs2d:dbadmfile:Prs2d_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Prs2d/.adm/Prs2d_obj_inc.Out
-+M Prs2d:dbadmfile:Prs2d_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Prs2d/.adm/Prs2d_obj_inc.Dep

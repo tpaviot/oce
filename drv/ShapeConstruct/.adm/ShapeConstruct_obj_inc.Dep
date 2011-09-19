@@ -1,6 +1,0 @@
-+ ShapeConstruct:dbadmfile:ShapeConstruct_obj_inc.In ShapeConstruct:admfile:ShapeConstruct_src.Out
-+ * ShapeConstruct:admfile:ShapeConstruct_xcpp_src.Out
-+ ShapeConstruct:dbadmfile:ShapeConstruct_obj_inc.Out ShapeConstruct:admfile:ShapeConstruct_src.Out
-+ * ShapeConstruct:admfile:ShapeConstruct_xcpp_src.Out
-+ ShapeConstruct:dbadmfile:ShapeConstruct_obj_inc.Dep ShapeConstruct:admfile:ShapeConstruct_src.Out
-+ * ShapeConstruct:admfile:ShapeConstruct_xcpp_src.Out

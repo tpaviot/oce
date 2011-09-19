@@ -1,7 +1,0 @@
-+M GeomLib:pubinclude:GeomLib_MakeCurvefromApprox.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GeomLib_MakeCurvefromApprox.lxx
-+M GeomLib:pubinclude:GeomLib_Interpolate.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GeomLib_Interpolate.lxx
-+M GeomLib:pubinclude:GeomLib_CheckBSplineCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GeomLib_CheckBSplineCurve.lxx
-+M GeomLib:pubinclude:GeomLib_Check2dBSplineCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GeomLib_Check2dBSplineCurve.lxx
-+M GeomLib:dbadmfile:GeomLib_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeomLib/.adm/GeomLib_obj_inc.In
-+M GeomLib:dbadmfile:GeomLib_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeomLib/.adm/GeomLib_obj_inc.Out
-+M GeomLib:dbadmfile:GeomLib_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeomLib/.adm/GeomLib_obj_inc.Dep

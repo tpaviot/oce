@@ -1,6 +1,0 @@
-+ Geom2d:dbadmfile:Geom2d_obj_inc.In Geom2d:admfile:Geom2d_src.Out
-+ * Geom2d:admfile:Geom2d_xcpp_src.Out
-+ Geom2d:dbadmfile:Geom2d_obj_inc.Out Geom2d:admfile:Geom2d_src.Out
-+ * Geom2d:admfile:Geom2d_xcpp_src.Out
-+ Geom2d:dbadmfile:Geom2d_obj_inc.Dep Geom2d:admfile:Geom2d_src.Out
-+ * Geom2d:admfile:Geom2d_xcpp_src.Out

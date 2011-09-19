@@ -1,7 +1,0 @@
-+M AppStd:pubinclude:Handle_AppStd_Application.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Handle_AppStd_Application.hxx
-+M AppStd:pubinclude:AppStd_Application.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppStd_Application.hxx
-+M AppStd:privinclude:AppStd_Application.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppStd/AppStd_Application.jxx
-+M AppStd:privinclude:AppStd_Application.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppStd/AppStd_Application.ixx
-+M AppStd:dbadmfile:AppStd_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppStd/.adm/AppStd_xcpp_header.In
-+M AppStd:dbadmfile:AppStd_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppStd/.adm/AppStd_xcpp_header.Out
-+M AppStd:dbadmfile:AppStd_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppStd/.adm/AppStd_xcpp_header.Dep

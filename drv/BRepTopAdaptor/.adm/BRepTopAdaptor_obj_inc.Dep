@@ -1,7 +1,0 @@
-+ BRepTopAdaptor:pubinclude:BRepTopAdaptor_HVertex.lxx BRepTopAdaptor:source:BRepTopAdaptor_HVertex.lxx
-+ BRepTopAdaptor:dbadmfile:BRepTopAdaptor_obj_inc.In BRepTopAdaptor:admfile:BRepTopAdaptor_src.Out
-+ * BRepTopAdaptor:admfile:BRepTopAdaptor_xcpp_src.Out
-+ BRepTopAdaptor:dbadmfile:BRepTopAdaptor_obj_inc.Out BRepTopAdaptor:admfile:BRepTopAdaptor_src.Out
-+ * BRepTopAdaptor:admfile:BRepTopAdaptor_xcpp_src.Out
-+ BRepTopAdaptor:dbadmfile:BRepTopAdaptor_obj_inc.Dep BRepTopAdaptor:admfile:BRepTopAdaptor_src.Out
-+ * BRepTopAdaptor:admfile:BRepTopAdaptor_xcpp_src.Out

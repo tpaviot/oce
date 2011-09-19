@@ -1,6 +1,0 @@
-+ PColPGeom:dbadmfile:PColPGeom_obj_inc.In PColPGeom:admfile:PColPGeom_src.Out
-+ * PColPGeom:admfile:PColPGeom_xcpp_src.Out
-+ PColPGeom:dbadmfile:PColPGeom_obj_inc.Out PColPGeom:admfile:PColPGeom_src.Out
-+ * PColPGeom:admfile:PColPGeom_xcpp_src.Out
-+ PColPGeom:dbadmfile:PColPGeom_obj_inc.Dep PColPGeom:admfile:PColPGeom_src.Out
-+ * PColPGeom:admfile:PColPGeom_xcpp_src.Out

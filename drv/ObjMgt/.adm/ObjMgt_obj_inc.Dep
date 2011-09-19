@@ -1,6 +1,0 @@
-+ ObjMgt:dbadmfile:ObjMgt_obj_inc.In ObjMgt:admfile:ObjMgt_src.Out
-+ * ObjMgt:admfile:ObjMgt_xcpp_src.Out
-+ ObjMgt:dbadmfile:ObjMgt_obj_inc.Out ObjMgt:admfile:ObjMgt_src.Out
-+ * ObjMgt:admfile:ObjMgt_xcpp_src.Out
-+ ObjMgt:dbadmfile:ObjMgt_obj_inc.Dep ObjMgt:admfile:ObjMgt_src.Out
-+ * ObjMgt:admfile:ObjMgt_xcpp_src.Out

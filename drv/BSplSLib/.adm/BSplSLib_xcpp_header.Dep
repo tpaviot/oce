@@ -1,6 +1,0 @@
-+ BSplSLib:pubinclude:BSplSLib.hxx BSplSLib:msentity:BSplSLib
-+ BSplSLib:privinclude:BSplSLib.jxx BSplSLib:msentity:BSplSLib
-+ BSplSLib:privinclude:BSplSLib.ixx BSplSLib:msentity:BSplSLib
-+ BSplSLib:dbadmfile:BSplSLib_xcpp_header.In BSplSLib:admfile:BSplSLib_xcpp_fill.Out
-+ BSplSLib:dbadmfile:BSplSLib_xcpp_header.Out BSplSLib:admfile:BSplSLib_xcpp_fill.Out
-+ BSplSLib:dbadmfile:BSplSLib_xcpp_header.Dep BSplSLib:admfile:BSplSLib_xcpp_fill.Out

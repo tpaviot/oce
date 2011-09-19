@@ -1,8 +1,0 @@
-+ PCDM:pubinclude:PCDM_DOMHeaderParser.hxx PCDM:source:PCDM_DOMHeaderParser.hxx
-+ PCDM:pubinclude:PCDM_Reader.lxx PCDM:source:PCDM_Reader.lxx
-+ PCDM:dbadmfile:PCDM_obj_inc.In PCDM:admfile:PCDM_src.Out
-+ * PCDM:admfile:PCDM_xcpp_src.Out
-+ PCDM:dbadmfile:PCDM_obj_inc.Out PCDM:admfile:PCDM_src.Out
-+ * PCDM:admfile:PCDM_xcpp_src.Out
-+ PCDM:dbadmfile:PCDM_obj_inc.Dep PCDM:admfile:PCDM_src.Out
-+ * PCDM:admfile:PCDM_xcpp_src.Out

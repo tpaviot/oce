@@ -1,7 +1,0 @@
-+ XCAFApp:pubinclude:Handle_XCAFApp_Application.hxx XCAFApp:msentity:XCAFApp_Application
-+ XCAFApp:pubinclude:XCAFApp_Application.hxx XCAFApp:msentity:XCAFApp_Application
-+ XCAFApp:privinclude:XCAFApp_Application.jxx XCAFApp:msentity:XCAFApp_Application
-+ XCAFApp:privinclude:XCAFApp_Application.ixx XCAFApp:msentity:XCAFApp_Application
-+ XCAFApp:dbadmfile:XCAFApp_xcpp_header.In XCAFApp:admfile:XCAFApp_xcpp_fill.Out
-+ XCAFApp:dbadmfile:XCAFApp_xcpp_header.Out XCAFApp:admfile:XCAFApp_xcpp_fill.Out
-+ XCAFApp:dbadmfile:XCAFApp_xcpp_header.Dep XCAFApp:admfile:XCAFApp_xcpp_fill.Out

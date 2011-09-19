@@ -1,8 +1,0 @@
-+ STEPConstruct:pubinclude:STEPConstruct_Tool.lxx STEPConstruct:source:STEPConstruct_Tool.lxx
-+ STEPConstruct:pubinclude:STEPConstruct_PointHasher.lxx STEPConstruct:source:STEPConstruct_PointHasher.lxx
-+ STEPConstruct:dbadmfile:STEPConstruct_obj_inc.In STEPConstruct:admfile:STEPConstruct_src.Out
-+ * STEPConstruct:admfile:STEPConstruct_xcpp_src.Out
-+ STEPConstruct:dbadmfile:STEPConstruct_obj_inc.Out STEPConstruct:admfile:STEPConstruct_src.Out
-+ * STEPConstruct:admfile:STEPConstruct_xcpp_src.Out
-+ STEPConstruct:dbadmfile:STEPConstruct_obj_inc.Dep STEPConstruct:admfile:STEPConstruct_src.Out
-+ * STEPConstruct:admfile:STEPConstruct_xcpp_src.Out

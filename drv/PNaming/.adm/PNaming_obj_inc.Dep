@@ -1,8 +1,0 @@
-+ PNaming:pubinclude:PNaming_Name.lxx PNaming:source:PNaming_Name.lxx
-+ PNaming:pubinclude:PNaming_Name_1.lxx PNaming:source:PNaming_Name_1.lxx
-+ PNaming:dbadmfile:PNaming_obj_inc.In PNaming:admfile:PNaming_src.Out
-+ * PNaming:admfile:PNaming_xcpp_src.Out
-+ PNaming:dbadmfile:PNaming_obj_inc.Out PNaming:admfile:PNaming_src.Out
-+ * PNaming:admfile:PNaming_xcpp_src.Out
-+ PNaming:dbadmfile:PNaming_obj_inc.Dep PNaming:admfile:PNaming_src.Out
-+ * PNaming:admfile:PNaming_xcpp_src.Out

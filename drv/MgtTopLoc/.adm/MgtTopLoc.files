@@ -1,9 +1,0 @@
-pubinclude MgtTopLoc.hxx
-privinclude MgtTopLoc.jxx
-privinclude MgtTopLoc.ixx
-dbadmfile MgtTopLoc_xcpp_header.In
-dbadmfile MgtTopLoc_xcpp_header.Out
-dbadmfile MgtTopLoc_xcpp_header.Dep
-dbadmfile MgtTopLoc_obj_inc.In
-dbadmfile MgtTopLoc_obj_inc.Out
-dbadmfile MgtTopLoc_obj_inc.Dep

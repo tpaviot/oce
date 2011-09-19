@@ -1,7 +1,0 @@
-+ ViewerTest:pubinclude:ViewerTest_EventManager.lxx ViewerTest:source:ViewerTest_EventManager.lxx
-+ ViewerTest:dbadmfile:ViewerTest_obj_inc.In ViewerTest:admfile:ViewerTest_src.Out
-+ * ViewerTest:admfile:ViewerTest_xcpp_src.Out
-+ ViewerTest:dbadmfile:ViewerTest_obj_inc.Out ViewerTest:admfile:ViewerTest_src.Out
-+ * ViewerTest:admfile:ViewerTest_xcpp_src.Out
-+ ViewerTest:dbadmfile:ViewerTest_obj_inc.Dep ViewerTest:admfile:ViewerTest_src.Out
-+ * ViewerTest:admfile:ViewerTest_xcpp_src.Out

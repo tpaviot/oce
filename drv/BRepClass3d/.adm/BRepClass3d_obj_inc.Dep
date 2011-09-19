@@ -1,7 +1,0 @@
-+ BRepClass3d:pubinclude:BRepClass3d_Intersector3d.lxx BRepClass3d:source:BRepClass3d_Intersector3d.lxx
-+ BRepClass3d:dbadmfile:BRepClass3d_obj_inc.In BRepClass3d:admfile:BRepClass3d_src.Out
-+ * BRepClass3d:admfile:BRepClass3d_xcpp_src.Out
-+ BRepClass3d:dbadmfile:BRepClass3d_obj_inc.Out BRepClass3d:admfile:BRepClass3d_src.Out
-+ * BRepClass3d:admfile:BRepClass3d_xcpp_src.Out
-+ BRepClass3d:dbadmfile:BRepClass3d_obj_inc.Dep BRepClass3d:admfile:BRepClass3d_src.Out
-+ * BRepClass3d:admfile:BRepClass3d_xcpp_src.Out

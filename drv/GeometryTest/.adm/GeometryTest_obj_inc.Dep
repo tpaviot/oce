@@ -1,6 +1,0 @@
-+ GeometryTest:dbadmfile:GeometryTest_obj_inc.In GeometryTest:admfile:GeometryTest_src.Out
-+ * GeometryTest:admfile:GeometryTest_xcpp_src.Out
-+ GeometryTest:dbadmfile:GeometryTest_obj_inc.Out GeometryTest:admfile:GeometryTest_src.Out
-+ * GeometryTest:admfile:GeometryTest_xcpp_src.Out
-+ GeometryTest:dbadmfile:GeometryTest_obj_inc.Dep GeometryTest:admfile:GeometryTest_src.Out
-+ * GeometryTest:admfile:GeometryTest_xcpp_src.Out

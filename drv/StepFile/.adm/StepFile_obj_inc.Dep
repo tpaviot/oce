@@ -1,6 +1,0 @@
-+ StepFile:pubinclude:StepFile_CallFailure.hxx StepFile:source:StepFile_CallFailure.hxx
-+ StepFile:pubinclude:StepFile_Read.hxx StepFile:source:StepFile_Read.hxx
-+ StepFile:pubinclude:StepFile_Transfer.hxx StepFile:source:StepFile_Transfer.hxx
-+ StepFile:dbadmfile:StepFile_obj_inc.In StepFile:admfile:StepFile_src.Out
-+ StepFile:dbadmfile:StepFile_obj_inc.Out StepFile:admfile:StepFile_src.Out
-+ StepFile:dbadmfile:StepFile_obj_inc.Dep StepFile:admfile:StepFile_src.Out

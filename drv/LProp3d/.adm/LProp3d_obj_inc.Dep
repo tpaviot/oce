@@ -1,6 +1,0 @@
-+ LProp3d:dbadmfile:LProp3d_obj_inc.In LProp3d:admfile:LProp3d_src.Out
-+ * LProp3d:admfile:LProp3d_xcpp_src.Out
-+ LProp3d:dbadmfile:LProp3d_obj_inc.Out LProp3d:admfile:LProp3d_src.Out
-+ * LProp3d:admfile:LProp3d_xcpp_src.Out
-+ LProp3d:dbadmfile:LProp3d_obj_inc.Dep LProp3d:admfile:LProp3d_src.Out
-+ * LProp3d:admfile:LProp3d_xcpp_src.Out

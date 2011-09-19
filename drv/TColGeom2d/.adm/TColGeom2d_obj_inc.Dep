@@ -1,6 +1,0 @@
-+ TColGeom2d:dbadmfile:TColGeom2d_obj_inc.In TColGeom2d:admfile:TColGeom2d_src.Out
-+ * TColGeom2d:admfile:TColGeom2d_xcpp_src.Out
-+ TColGeom2d:dbadmfile:TColGeom2d_obj_inc.Out TColGeom2d:admfile:TColGeom2d_src.Out
-+ * TColGeom2d:admfile:TColGeom2d_xcpp_src.Out
-+ TColGeom2d:dbadmfile:TColGeom2d_obj_inc.Dep TColGeom2d:admfile:TColGeom2d_src.Out
-+ * TColGeom2d:admfile:TColGeom2d_xcpp_src.Out

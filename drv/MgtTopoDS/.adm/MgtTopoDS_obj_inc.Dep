@@ -1,6 +1,0 @@
-+ MgtTopoDS:dbadmfile:MgtTopoDS_obj_inc.In MgtTopoDS:admfile:MgtTopoDS_src.Out
-+ * MgtTopoDS:admfile:MgtTopoDS_xcpp_src.Out
-+ MgtTopoDS:dbadmfile:MgtTopoDS_obj_inc.Out MgtTopoDS:admfile:MgtTopoDS_src.Out
-+ * MgtTopoDS:admfile:MgtTopoDS_xcpp_src.Out
-+ MgtTopoDS:dbadmfile:MgtTopoDS_obj_inc.Dep MgtTopoDS:admfile:MgtTopoDS_src.Out
-+ * MgtTopoDS:admfile:MgtTopoDS_xcpp_src.Out

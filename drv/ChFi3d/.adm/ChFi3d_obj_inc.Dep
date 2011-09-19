@@ -1,7 +1,0 @@
-+ ChFi3d:pubinclude:ChFi3d_Builder_0.hxx ChFi3d:source:ChFi3d_Builder_0.hxx
-+ ChFi3d:dbadmfile:ChFi3d_obj_inc.In ChFi3d:admfile:ChFi3d_src.Out
-+ * ChFi3d:admfile:ChFi3d_xcpp_src.Out
-+ ChFi3d:dbadmfile:ChFi3d_obj_inc.Out ChFi3d:admfile:ChFi3d_src.Out
-+ * ChFi3d:admfile:ChFi3d_xcpp_src.Out
-+ ChFi3d:dbadmfile:ChFi3d_obj_inc.Dep ChFi3d:admfile:ChFi3d_src.Out
-+ * ChFi3d:admfile:ChFi3d_xcpp_src.Out

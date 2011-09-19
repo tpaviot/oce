@@ -1,6 +1,0 @@
-+ GeomProjLib:pubinclude:GeomProjLib.hxx GeomProjLib:msentity:GeomProjLib
-+ GeomProjLib:privinclude:GeomProjLib.jxx GeomProjLib:msentity:GeomProjLib
-+ GeomProjLib:privinclude:GeomProjLib.ixx GeomProjLib:msentity:GeomProjLib
-+ GeomProjLib:dbadmfile:GeomProjLib_xcpp_header.In GeomProjLib:admfile:GeomProjLib_xcpp_fill.Out
-+ GeomProjLib:dbadmfile:GeomProjLib_xcpp_header.Out GeomProjLib:admfile:GeomProjLib_xcpp_fill.Out
-+ GeomProjLib:dbadmfile:GeomProjLib_xcpp_header.Dep GeomProjLib:admfile:GeomProjLib_xcpp_fill.Out

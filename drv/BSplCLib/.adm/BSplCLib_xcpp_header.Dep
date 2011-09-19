@@ -1,8 +1,0 @@
-+ BSplCLib:pubinclude:BSplCLib.hxx BSplCLib:msentity:BSplCLib
-+ BSplCLib:privinclude:BSplCLib.jxx BSplCLib:msentity:BSplCLib
-+ BSplCLib:privinclude:BSplCLib.ixx BSplCLib:msentity:BSplCLib
-+ BSplCLib:pubinclude:BSplCLib_KnotDistribution.hxx BSplCLib:msentity:BSplCLib_KnotDistribution
-+ BSplCLib:pubinclude:BSplCLib_MultDistribution.hxx BSplCLib:msentity:BSplCLib_MultDistribution
-+ BSplCLib:dbadmfile:BSplCLib_xcpp_header.In BSplCLib:admfile:BSplCLib_xcpp_fill.Out
-+ BSplCLib:dbadmfile:BSplCLib_xcpp_header.Out BSplCLib:admfile:BSplCLib_xcpp_fill.Out
-+ BSplCLib:dbadmfile:BSplCLib_xcpp_header.Dep BSplCLib:admfile:BSplCLib_xcpp_fill.Out

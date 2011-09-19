@@ -1,6 +1,0 @@
-+ PBRep:dbadmfile:PBRep_obj_inc.In PBRep:admfile:PBRep_src.Out
-+ * PBRep:admfile:PBRep_xcpp_src.Out
-+ PBRep:dbadmfile:PBRep_obj_inc.Out PBRep:admfile:PBRep_src.Out
-+ * PBRep:admfile:PBRep_xcpp_src.Out
-+ PBRep:dbadmfile:PBRep_obj_inc.Dep PBRep:admfile:PBRep_src.Out
-+ * PBRep:admfile:PBRep_xcpp_src.Out

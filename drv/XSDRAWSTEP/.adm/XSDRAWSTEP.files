@@ -1,9 +1,0 @@
-pubinclude XSDRAWSTEP.hxx
-privinclude XSDRAWSTEP.jxx
-privinclude XSDRAWSTEP.ixx
-dbadmfile XSDRAWSTEP_xcpp_header.In
-dbadmfile XSDRAWSTEP_xcpp_header.Out
-dbadmfile XSDRAWSTEP_xcpp_header.Dep
-dbadmfile XSDRAWSTEP_obj_inc.In
-dbadmfile XSDRAWSTEP_obj_inc.Out
-dbadmfile XSDRAWSTEP_obj_inc.Dep

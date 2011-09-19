@@ -1,9 +1,0 @@
-+ BinObjMgt:source:BinObjMgt_PChar.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PChar.hxx
-+ BinObjMgt:source:BinObjMgt_PExtChar.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PExtChar.hxx
-+ BinObjMgt:source:BinObjMgt_PInteger.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PInteger.hxx
-+ BinObjMgt:source:BinObjMgt_PReal.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PReal.hxx
-+ BinObjMgt:source:BinObjMgt_PShortReal.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PShortReal.hxx
-+ BinObjMgt:source:BinObjMgt_PByte.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_PByte.hxx
-+ BinObjMgt:source:BinObjMgt_Persistent.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/BinObjMgt/BinObjMgt_Persistent.lxx
-- BinObjMgt:admfile:BinObjMgt_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BinObjMgt/BinObjMgt_src.Out
-- BinObjMgt:admfile:BinObjMgt_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BinObjMgt/BinObjMgt_xcpp_src.Out

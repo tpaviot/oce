@@ -1,9 +1,0 @@
-+ BSplCLib:pubinclude:BSplCLib_CurveComputation.gxx BSplCLib:source:BSplCLib_CurveComputation.gxx
-+ BSplCLib:pubinclude:BSplCLib_EvaluatorFunction.hxx BSplCLib:source:BSplCLib_EvaluatorFunction.hxx
-+ BSplCLib:pubinclude:BSplCLib.lxx BSplCLib:source:BSplCLib.lxx
-+ BSplCLib:dbadmfile:BSplCLib_obj_inc.In BSplCLib:admfile:BSplCLib_src.Out
-+ * BSplCLib:admfile:BSplCLib_xcpp_src.Out
-+ BSplCLib:dbadmfile:BSplCLib_obj_inc.Out BSplCLib:admfile:BSplCLib_src.Out
-+ * BSplCLib:admfile:BSplCLib_xcpp_src.Out
-+ BSplCLib:dbadmfile:BSplCLib_obj_inc.Dep BSplCLib:admfile:BSplCLib_src.Out
-+ * BSplCLib:admfile:BSplCLib_xcpp_src.Out

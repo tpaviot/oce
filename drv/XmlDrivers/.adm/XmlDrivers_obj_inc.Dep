@@ -1,6 +1,0 @@
-+ XmlDrivers:dbadmfile:XmlDrivers_obj_inc.In XmlDrivers:admfile:XmlDrivers_src.Out
-+ * XmlDrivers:admfile:XmlDrivers_xcpp_src.Out
-+ XmlDrivers:dbadmfile:XmlDrivers_obj_inc.Out XmlDrivers:admfile:XmlDrivers_src.Out
-+ * XmlDrivers:admfile:XmlDrivers_xcpp_src.Out
-+ XmlDrivers:dbadmfile:XmlDrivers_obj_inc.Dep XmlDrivers:admfile:XmlDrivers_src.Out
-+ * XmlDrivers:admfile:XmlDrivers_xcpp_src.Out

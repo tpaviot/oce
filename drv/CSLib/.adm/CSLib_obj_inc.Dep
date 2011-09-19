@@ -1,6 +1,0 @@
-+ CSLib:dbadmfile:CSLib_obj_inc.In CSLib:admfile:CSLib_src.Out
-+ * CSLib:admfile:CSLib_xcpp_src.Out
-+ CSLib:dbadmfile:CSLib_obj_inc.Out CSLib:admfile:CSLib_src.Out
-+ * CSLib:admfile:CSLib_xcpp_src.Out
-+ CSLib:dbadmfile:CSLib_obj_inc.Dep CSLib:admfile:CSLib_src.Out
-+ * CSLib:admfile:CSLib_xcpp_src.Out

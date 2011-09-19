@@ -1,7 +1,0 @@
-+ Transfer:source:Transfer_Mapper.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Transfer/Transfer_Mapper.gxx
-+ Transfer:source:Transfer_SimpleBinder.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Transfer/Transfer_SimpleBinder.gxx
-+ Transfer:source:Transfer_TransferProcess.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Transfer/Transfer_TransferProcess.gxx
-+ Transfer:source:Transfer_Iterator.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Transfer/Transfer_Iterator.gxx
-+ Transfer:source:Transfer_Actor.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/Transfer/Transfer_Actor.gxx
-- Transfer:admfile:Transfer_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Transfer/Transfer_src.Out
-- Transfer:admfile:Transfer_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Transfer/Transfer_xcpp_src.Out

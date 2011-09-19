@@ -1,9 +1,0 @@
-+ Adaptor2d:pubinclude:Adaptor2d_HCurve2d.lxx Adaptor2d:source:Adaptor2d_HCurve2d.lxx
-+ Adaptor2d:pubinclude:Adaptor2d_GenHCurve2d.gxx Adaptor2d:source:Adaptor2d_GenHCurve2d.gxx
-+ Adaptor2d:pubinclude:Adaptor2d_GenHCurve2d.lxx Adaptor2d:source:Adaptor2d_GenHCurve2d.lxx
-+ Adaptor2d:dbadmfile:Adaptor2d_obj_inc.In Adaptor2d:admfile:Adaptor2d_src.Out
-+ * Adaptor2d:admfile:Adaptor2d_xcpp_src.Out
-+ Adaptor2d:dbadmfile:Adaptor2d_obj_inc.Out Adaptor2d:admfile:Adaptor2d_src.Out
-+ * Adaptor2d:admfile:Adaptor2d_xcpp_src.Out
-+ Adaptor2d:dbadmfile:Adaptor2d_obj_inc.Dep Adaptor2d:admfile:Adaptor2d_src.Out
-+ * Adaptor2d:admfile:Adaptor2d_xcpp_src.Out

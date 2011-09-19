@@ -1,6 +1,0 @@
-+ StepData:dbadmfile:StepData_obj_inc.In StepData:admfile:StepData_src.Out
-+ * StepData:admfile:StepData_xcpp_src.Out
-+ StepData:dbadmfile:StepData_obj_inc.Out StepData:admfile:StepData_src.Out
-+ * StepData:admfile:StepData_xcpp_src.Out
-+ StepData:dbadmfile:StepData_obj_inc.Dep StepData:admfile:StepData_src.Out
-+ * StepData:admfile:StepData_xcpp_src.Out

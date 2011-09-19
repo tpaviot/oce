@@ -1,7 +1,0 @@
-+ CDF:pubinclude:CDF_Application.lxx CDF:source:CDF_Application.lxx
-+ CDF:dbadmfile:CDF_obj_inc.In CDF:admfile:CDF_src.Out
-+ * CDF:admfile:CDF_xcpp_src.Out
-+ CDF:dbadmfile:CDF_obj_inc.Out CDF:admfile:CDF_src.Out
-+ * CDF:admfile:CDF_xcpp_src.Out
-+ CDF:dbadmfile:CDF_obj_inc.Dep CDF:admfile:CDF_src.Out
-+ * CDF:admfile:CDF_xcpp_src.Out

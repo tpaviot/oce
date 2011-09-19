@@ -1,6 +1,0 @@
-+ IGESConvGeom:dbadmfile:IGESConvGeom_obj_inc.In IGESConvGeom:admfile:IGESConvGeom_src.Out
-+ * IGESConvGeom:admfile:IGESConvGeom_xcpp_src.Out
-+ IGESConvGeom:dbadmfile:IGESConvGeom_obj_inc.Out IGESConvGeom:admfile:IGESConvGeom_src.Out
-+ * IGESConvGeom:admfile:IGESConvGeom_xcpp_src.Out
-+ IGESConvGeom:dbadmfile:IGESConvGeom_obj_inc.Dep IGESConvGeom:admfile:IGESConvGeom_src.Out
-+ * IGESConvGeom:admfile:IGESConvGeom_xcpp_src.Out

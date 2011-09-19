@@ -1,6 +1,0 @@
-+ TopoDSToStep:dbadmfile:TopoDSToStep_obj_inc.In TopoDSToStep:admfile:TopoDSToStep_src.Out
-+ * TopoDSToStep:admfile:TopoDSToStep_xcpp_src.Out
-+ TopoDSToStep:dbadmfile:TopoDSToStep_obj_inc.Out TopoDSToStep:admfile:TopoDSToStep_src.Out
-+ * TopoDSToStep:admfile:TopoDSToStep_xcpp_src.Out
-+ TopoDSToStep:dbadmfile:TopoDSToStep_obj_inc.Dep TopoDSToStep:admfile:TopoDSToStep_src.Out
-+ * TopoDSToStep:admfile:TopoDSToStep_xcpp_src.Out

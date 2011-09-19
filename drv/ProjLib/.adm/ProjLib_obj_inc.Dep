@@ -1,6 +1,0 @@
-+ ProjLib:dbadmfile:ProjLib_obj_inc.In ProjLib:admfile:ProjLib_src.Out
-+ * ProjLib:admfile:ProjLib_xcpp_src.Out
-+ ProjLib:dbadmfile:ProjLib_obj_inc.Out ProjLib:admfile:ProjLib_src.Out
-+ * ProjLib:admfile:ProjLib_xcpp_src.Out
-+ ProjLib:dbadmfile:ProjLib_obj_inc.Dep ProjLib:admfile:ProjLib_src.Out
-+ * ProjLib:admfile:ProjLib_xcpp_src.Out

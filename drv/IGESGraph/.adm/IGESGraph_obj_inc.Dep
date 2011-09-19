@@ -1,6 +1,0 @@
-+ IGESGraph:dbadmfile:IGESGraph_obj_inc.In IGESGraph:admfile:IGESGraph_src.Out
-+ * IGESGraph:admfile:IGESGraph_xcpp_src.Out
-+ IGESGraph:dbadmfile:IGESGraph_obj_inc.Out IGESGraph:admfile:IGESGraph_src.Out
-+ * IGESGraph:admfile:IGESGraph_xcpp_src.Out
-+ IGESGraph:dbadmfile:IGESGraph_obj_inc.Dep IGESGraph:admfile:IGESGraph_src.Out
-+ * IGESGraph:admfile:IGESGraph_xcpp_src.Out

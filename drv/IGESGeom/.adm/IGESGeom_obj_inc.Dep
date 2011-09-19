@@ -1,6 +1,0 @@
-+ IGESGeom:dbadmfile:IGESGeom_obj_inc.In IGESGeom:admfile:IGESGeom_src.Out
-+ * IGESGeom:admfile:IGESGeom_xcpp_src.Out
-+ IGESGeom:dbadmfile:IGESGeom_obj_inc.Out IGESGeom:admfile:IGESGeom_src.Out
-+ * IGESGeom:admfile:IGESGeom_xcpp_src.Out
-+ IGESGeom:dbadmfile:IGESGeom_obj_inc.Dep IGESGeom:admfile:IGESGeom_src.Out
-+ * IGESGeom:admfile:IGESGeom_xcpp_src.Out

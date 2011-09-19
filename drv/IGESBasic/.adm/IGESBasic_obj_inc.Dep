@@ -1,6 +1,0 @@
-+ IGESBasic:dbadmfile:IGESBasic_obj_inc.In IGESBasic:admfile:IGESBasic_src.Out
-+ * IGESBasic:admfile:IGESBasic_xcpp_src.Out
-+ IGESBasic:dbadmfile:IGESBasic_obj_inc.Out IGESBasic:admfile:IGESBasic_src.Out
-+ * IGESBasic:admfile:IGESBasic_xcpp_src.Out
-+ IGESBasic:dbadmfile:IGESBasic_obj_inc.Dep IGESBasic:admfile:IGESBasic_src.Out
-+ * IGESBasic:admfile:IGESBasic_xcpp_src.Out

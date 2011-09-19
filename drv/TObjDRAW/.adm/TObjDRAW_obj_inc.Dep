@@ -1,6 +1,0 @@
-+ TObjDRAW:dbadmfile:TObjDRAW_obj_inc.In TObjDRAW:admfile:TObjDRAW_src.Out
-+ * TObjDRAW:admfile:TObjDRAW_xcpp_src.Out
-+ TObjDRAW:dbadmfile:TObjDRAW_obj_inc.Out TObjDRAW:admfile:TObjDRAW_src.Out
-+ * TObjDRAW:admfile:TObjDRAW_xcpp_src.Out
-+ TObjDRAW:dbadmfile:TObjDRAW_obj_inc.Dep TObjDRAW:admfile:TObjDRAW_src.Out
-+ * TObjDRAW:admfile:TObjDRAW_xcpp_src.Out

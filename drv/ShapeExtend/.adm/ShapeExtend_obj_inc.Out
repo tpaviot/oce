@@ -1,5 +1,0 @@
-+M ShapeExtend:pubinclude:ShapeExtend_ComplexCurve.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ShapeExtend_ComplexCurve.lxx
-+M ShapeExtend:pubinclude:ShapeExtend_MsgRegistrator.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/ShapeExtend_MsgRegistrator.lxx
-+M ShapeExtend:dbadmfile:ShapeExtend_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeExtend/.adm/ShapeExtend_obj_inc.In
-+M ShapeExtend:dbadmfile:ShapeExtend_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeExtend/.adm/ShapeExtend_obj_inc.Out
-+M ShapeExtend:dbadmfile:ShapeExtend_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/ShapeExtend/.adm/ShapeExtend_obj_inc.Dep

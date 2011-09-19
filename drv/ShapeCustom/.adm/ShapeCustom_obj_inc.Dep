@@ -1,9 +1,0 @@
-+ ShapeCustom:pubinclude:ShapeCustom_Surface.lxx ShapeCustom:source:ShapeCustom_Surface.lxx
-+ ShapeCustom:pubinclude:ShapeCustom_RestrictionParameters.lxx ShapeCustom:source:ShapeCustom_RestrictionParameters.lxx
-+ ShapeCustom:pubinclude:ShapeCustom_BSplineRestriction.lxx ShapeCustom:source:ShapeCustom_BSplineRestriction.lxx
-+ ShapeCustom:dbadmfile:ShapeCustom_obj_inc.In ShapeCustom:admfile:ShapeCustom_src.Out
-+ * ShapeCustom:admfile:ShapeCustom_xcpp_src.Out
-+ ShapeCustom:dbadmfile:ShapeCustom_obj_inc.Out ShapeCustom:admfile:ShapeCustom_src.Out
-+ * ShapeCustom:admfile:ShapeCustom_xcpp_src.Out
-+ ShapeCustom:dbadmfile:ShapeCustom_obj_inc.Dep ShapeCustom:admfile:ShapeCustom_src.Out
-+ * ShapeCustom:admfile:ShapeCustom_xcpp_src.Out

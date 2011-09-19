@@ -1,9 +1,0 @@
-pubinclude BRepBndLib.hxx
-privinclude BRepBndLib.jxx
-privinclude BRepBndLib.ixx
-dbadmfile BRepBndLib_xcpp_header.In
-dbadmfile BRepBndLib_xcpp_header.Out
-dbadmfile BRepBndLib_xcpp_header.Dep
-dbadmfile BRepBndLib_obj_inc.In
-dbadmfile BRepBndLib_obj_inc.Out
-dbadmfile BRepBndLib_obj_inc.Dep

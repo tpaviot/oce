@@ -1,9 +1,0 @@
-+V TShort:msentity:TShort .
-+V TShort:msentity:TShort_Array1OfShortReal .
-+V TShort:msentity:TShort_HArray1OfShortReal .
-+V TShort:msentity:TShort_Array2OfShortReal .
-+V TShort:msentity:TShort_HArray2OfShortReal .
-+V TShort:msentity:TShort_SequenceOfShortReal .
-+V TShort:msentity:TShort_HSequenceOfShortReal .
-+V TShort:msentity:TShort_SequenceNodeOfSequenceOfShortReal .
-- TShort:admfile:TShort_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TShort/TShort_xcpp_fill.Out

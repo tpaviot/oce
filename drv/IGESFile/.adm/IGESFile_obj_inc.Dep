@@ -1,5 +1,0 @@
-+ IGESFile:pubinclude:IGESFile_Read.hxx IGESFile:source:IGESFile_Read.hxx
-+ IGESFile:pubinclude:igesread.h IGESFile:source:igesread.h
-+ IGESFile:dbadmfile:IGESFile_obj_inc.In IGESFile:admfile:IGESFile_src.Out
-+ IGESFile:dbadmfile:IGESFile_obj_inc.Out IGESFile:admfile:IGESFile_src.Out
-+ IGESFile:dbadmfile:IGESFile_obj_inc.Dep IGESFile:admfile:IGESFile_src.Out

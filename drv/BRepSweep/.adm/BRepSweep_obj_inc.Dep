@@ -1,9 +1,0 @@
-+ BRepSweep:pubinclude:BRepSweep_NumLinearRegularSweep.hxx BRepSweep:source:BRepSweep_NumLinearRegularSweep.hxx
-+ BRepSweep:pubinclude:BRepSweep_Builder.lxx BRepSweep:source:BRepSweep_Builder.lxx
-+ BRepSweep:pubinclude:BRepSweep_Iterator.lxx BRepSweep:source:BRepSweep_Iterator.lxx
-+ BRepSweep:dbadmfile:BRepSweep_obj_inc.In BRepSweep:admfile:BRepSweep_src.Out
-+ * BRepSweep:admfile:BRepSweep_xcpp_src.Out
-+ BRepSweep:dbadmfile:BRepSweep_obj_inc.Out BRepSweep:admfile:BRepSweep_src.Out
-+ * BRepSweep:admfile:BRepSweep_xcpp_src.Out
-+ BRepSweep:dbadmfile:BRepSweep_obj_inc.Dep BRepSweep:admfile:BRepSweep_src.Out
-+ * BRepSweep:admfile:BRepSweep_xcpp_src.Out

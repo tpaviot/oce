@@ -1,9 +1,0 @@
-+ BRepFill:pubinclude:BRepFill_Generator.lxx BRepFill:source:BRepFill_Generator.lxx
-+ BRepFill:pubinclude:BRepFill_ShapeLaw.lxx BRepFill:source:BRepFill_ShapeLaw.lxx
-+ BRepFill:pubinclude:BRepFill_Section.lxx BRepFill:source:BRepFill_Section.lxx
-+ BRepFill:dbadmfile:BRepFill_obj_inc.In BRepFill:admfile:BRepFill_src.Out
-+ * BRepFill:admfile:BRepFill_xcpp_src.Out
-+ BRepFill:dbadmfile:BRepFill_obj_inc.Out BRepFill:admfile:BRepFill_src.Out
-+ * BRepFill:admfile:BRepFill_xcpp_src.Out
-+ BRepFill:dbadmfile:BRepFill_obj_inc.Dep BRepFill:admfile:BRepFill_src.Out
-+ * BRepFill:admfile:BRepFill_xcpp_src.Out

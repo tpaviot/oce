@@ -1,6 +1,0 @@
-+ PPoly:dbadmfile:PPoly_obj_inc.In PPoly:admfile:PPoly_src.Out
-+ * PPoly:admfile:PPoly_xcpp_src.Out
-+ PPoly:dbadmfile:PPoly_obj_inc.Out PPoly:admfile:PPoly_src.Out
-+ * PPoly:admfile:PPoly_xcpp_src.Out
-+ PPoly:dbadmfile:PPoly_obj_inc.Dep PPoly:admfile:PPoly_src.Out
-+ * PPoly:admfile:PPoly_xcpp_src.Out

@@ -1,6 +1,0 @@
-+M GeometryTest:pubinclude:GeometryTest.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GeometryTest.hxx
-+M GeometryTest:privinclude:GeometryTest.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeometryTest/GeometryTest.jxx
-+M GeometryTest:privinclude:GeometryTest.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeometryTest/GeometryTest.ixx
-+M GeometryTest:dbadmfile:GeometryTest_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeometryTest/.adm/GeometryTest_xcpp_header.In
-+M GeometryTest:dbadmfile:GeometryTest_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeometryTest/.adm/GeometryTest_xcpp_header.Out
-+M GeometryTest:dbadmfile:GeometryTest_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GeometryTest/.adm/GeometryTest_xcpp_header.Dep

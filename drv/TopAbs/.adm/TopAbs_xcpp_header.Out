@@ -1,9 +1,0 @@
-+M TopAbs:pubinclude:TopAbs.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/TopAbs.hxx
-+M TopAbs:privinclude:TopAbs.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TopAbs/TopAbs.jxx
-+M TopAbs:privinclude:TopAbs.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TopAbs/TopAbs.ixx
-+M TopAbs:pubinclude:TopAbs_ShapeEnum.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/TopAbs_ShapeEnum.hxx
-+M TopAbs:pubinclude:TopAbs_Orientation.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/TopAbs_Orientation.hxx
-+M TopAbs:pubinclude:TopAbs_State.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/TopAbs_State.hxx
-+M TopAbs:dbadmfile:TopAbs_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TopAbs/.adm/TopAbs_xcpp_header.In
-+M TopAbs:dbadmfile:TopAbs_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TopAbs/.adm/TopAbs_xcpp_header.Out
-+M TopAbs:dbadmfile:TopAbs_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TopAbs/.adm/TopAbs_xcpp_header.Dep

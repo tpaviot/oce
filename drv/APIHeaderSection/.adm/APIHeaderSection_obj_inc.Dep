@@ -1,6 +1,0 @@
-+ APIHeaderSection:dbadmfile:APIHeaderSection_obj_inc.In APIHeaderSection:admfile:APIHeaderSection_src.Out
-+ * APIHeaderSection:admfile:APIHeaderSection_xcpp_src.Out
-+ APIHeaderSection:dbadmfile:APIHeaderSection_obj_inc.Out APIHeaderSection:admfile:APIHeaderSection_src.Out
-+ * APIHeaderSection:admfile:APIHeaderSection_xcpp_src.Out
-+ APIHeaderSection:dbadmfile:APIHeaderSection_obj_inc.Dep APIHeaderSection:admfile:APIHeaderSection_src.Out
-+ * APIHeaderSection:admfile:APIHeaderSection_xcpp_src.Out

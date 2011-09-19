@@ -1,6 +1,0 @@
-+ StepAP203:dbadmfile:StepAP203_obj_inc.In StepAP203:admfile:StepAP203_src.Out
-+ * StepAP203:admfile:StepAP203_xcpp_src.Out
-+ StepAP203:dbadmfile:StepAP203_obj_inc.Out StepAP203:admfile:StepAP203_src.Out
-+ * StepAP203:admfile:StepAP203_xcpp_src.Out
-+ StepAP203:dbadmfile:StepAP203_obj_inc.Dep StepAP203:admfile:StepAP203_src.Out
-+ * StepAP203:admfile:StepAP203_xcpp_src.Out
