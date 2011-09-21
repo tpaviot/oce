@@ -380,6 +380,8 @@ static void EdgeInter(const TopoDS_Face&              F,
 	      cout << "hors borne"<<endl;
 	      cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	    }
+// MilTol2 is undefined under bcc32
+#ifndef __BORLANDC__
 	  if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	    {
 	      cout << "Inter2d : Solution rejete "<<endl;
@@ -388,6 +390,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 	      cout<<"P2 = "<<P2.X()<<" "<<P2.Y()<<" "<<P2.Z()<<endl;
 	      cout<<"MaxDist = "<<dist1<<endl;
 	    }
+#endif
 #endif
 	  //define the orientation of a new vertex
 	  TopAbs_Orientation OO1 = TopAbs_REVERSED;
@@ -647,6 +650,8 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 	  cout << "hors borne"<<endl;
 	  cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	}
+// MilTol2 is undefined under bcc32
+#ifndef __BORLANDC__
       if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	{
 	  cout << "Inter2d : Solution rejete "<<endl;
@@ -655,6 +660,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 	  cout<<"P2 = "<<P2.X()<<" "<<P2.Y()<<" "<<P2.Z()<<endl;
 	  cout<<"MaxDist = "<<dist1<<endl;
 	}
+#endif
 #endif
       //define the orientation of a new vertex
       TopAbs_Orientation OO1 = TopAbs_REVERSED;
