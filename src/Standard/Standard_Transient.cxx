@@ -1,4 +1,5 @@
 #include <Standard_Transient.hxx>
+#include <Standard_Address.hxx>
 
 //
 // The Initialization of the Standard_Transient variables
@@ -58,7 +59,7 @@ Standard_Boolean Standard_Transient::IsKind (const Standard_CString theTypeName)
 //============================================================================
 Standard_Integer Standard_Transient::HashCode(const Standard_Integer Lim) const
 {
-  return ::HashCode(this, Lim);
+  return ::HashCode((Standard_Address)this, Lim);
 }
 
 
