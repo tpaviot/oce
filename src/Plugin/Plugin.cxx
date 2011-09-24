@@ -47,7 +47,7 @@ Handle(Standard_Transient) Plugin::Load(const Standard_GUID& aGUID)
 #endif
     thePluginLibrary +=  PluginResource->Value(theResource.ToCString());
 #ifdef WNT
-    thePluginLibrary += ".dll";
+	thePluginLibrary += OCE_DEBUG_POSTFIX ".dll";
 #elif defined(__APPLE__)
     thePluginLibrary += ".dylib";
 #elif defined (HPUX) || defined(_hpux)

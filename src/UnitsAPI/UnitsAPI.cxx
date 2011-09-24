@@ -35,9 +35,9 @@ void UnitsAPI::CheckLoading (const UnitsAPI_SystemUnits aSystemUnits)
     else {
       OSD_Environment CasRootEnv("CASROOT");
       TCollection_AsciiString CasRootString(CasRootEnv.Value());
-#ifdef OCE_INSTALL_DATA_DIR
+#ifdef OCE_CASROOT_FALLBACK_DIR
       if (CasRootString.Length() == 0 )  {
-        CasRootString = OCE_INSTALL_DATA_DIR;
+        CasRootString = OCE_CASROOT_FALLBACK_DIR;
       }
 #endif
       if (CasRootString.Length() > 0 )  {
@@ -54,9 +54,9 @@ void UnitsAPI::CheckLoading (const UnitsAPI_SystemUnits aSystemUnits)
     else {
       OSD_Environment CasRootEnv("CASROOT");
       TCollection_AsciiString CasRootString(CasRootEnv.Value());
-#ifdef OCE_INSTALL_DATA_DIR
+#ifdef OCE_CASROOT_FALLBACK_DIR
       if (CasRootString.Length() == 0 )  {
-        CasRootString = OCE_INSTALL_DATA_DIR;
+        CasRootString = OCE_CASROOT_FALLBACK_DIR;
       }
 #endif
       if (CasRootString.Length() > 0 ) {
