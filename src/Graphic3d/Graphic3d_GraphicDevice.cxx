@@ -126,6 +126,7 @@ Handle(Aspect_GraphicDriver) Graphic3d_GraphicDevice::GraphicDriver () const {
 
 }
 
+#ifdef OCE_BUILD_SHARED_LIB
 void Graphic3d_GraphicDevice::SetGraphicDriver () {
 
 Standard_CString TheShr;
@@ -182,6 +183,18 @@ OSD_Function new_GLGraphicDriver =
 	}
 
 }
+#else
+
+extern "C"
+{
+     Handle(Graphic3d_GraphicDriver) MetaGraphicDriverFactory(const Standard_CString AShrName);
+}
+
+void Graphic3d_GraphicDevice::SetGraphicDriver ()
+{
+     MyGraphicDriver = MetaGraphicDriverFactory("");
+}
+#endif
 
 #define BAD(x) (((x) == NULL) || (strlen((x)) <= 0))
 

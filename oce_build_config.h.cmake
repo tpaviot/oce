@@ -270,3 +270,5 @@
 #cmakedefine OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@"
 #endif
 
+/* Whether OCE is build as shared lib */
+#cmakedefine OCE_BUILD_SHARED_LIB
