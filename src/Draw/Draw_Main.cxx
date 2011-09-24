@@ -128,6 +128,17 @@ extern Standard_Boolean Draw_IsConsoleSubsystem;
 
 Standard_Integer _main_ (int argc, char* argv[], char* envp[], const FDraw_InitAppli fDraw_InitAppli)
 {
+
+/** Tryes to set CASROOT in the standard OCE directory structure*/
+#ifdef _MSC_VER
+	char * casroot = getenv("CASROOT");
+	if (!casroot)
+	{
+		static const char CasStr [1024] = "CASROOT=../../share/oce";
+		putenv(CasStr);
+	}
+#endif
+
   Draw_IsConsoleSubsystem = Standard_True;
   //return _WinMain_(::GetModuleHandle(NULL), NULL, GetCommandLine(), SW_SHOW, fDraw_InitAppli);
   theDraw_InitAppli = fDraw_InitAppli;
