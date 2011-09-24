@@ -72,11 +72,11 @@ Resource_Manager::Resource_Manager(const Standard_CString aName,
   }
   else
   {
-#ifdef OCE_INSTALL_DATA_DIR
+#ifdef OCE_CASROOT_FALLBACK_DIR
     if ( Name.IsEqual("STEP") || Name.IsEqual("IGES"))
-      DefaultVar = OCE_INSTALL_DATA_DIR "/src/XSTEPResource";
+      DefaultVar = OCE_CASROOT_FALLBACK_DIR "/src/XSTEPResource";
     else
-      DefaultVar = OCE_INSTALL_DATA_DIR "/src/StdResource";
+      DefaultVar = OCE_CASROOT_FALLBACK_DIR "/src/StdResource";
     Load(DefaultVar,myName,myRefMap);
 #else
     if (myVerbose)

@@ -35,9 +35,9 @@ Aspect_Driver::Aspect_Driver () {
   fontdir =  getenv("CSF_MDTVFontDirectory" );
   if ( !fontdir) {
     casroot  = getenv("CASROOT");
-#ifdef OCE_INSTALL_DATA_DIR
+#ifdef OCE_CASROOT_FALLBACK_DIR
     if ( !casroot ) {
-      casroot = OCE_INSTALL_DATA_DIR;
+      casroot = OCE_CASROOT_FALLBACK_DIR;
     }
 #endif
     if ( casroot ) {

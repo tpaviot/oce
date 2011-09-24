@@ -272,8 +272,8 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
     {
 #ifdef WNT
 	  ReadInitFile("ddefault");
-#elif defined(OCE_INSTALL_DATA_DIR)
-	  ReadInitFile(OCE_INSTALL_DATA_DIR "/src/DrawResources/DrawDefault");
+#elif defined(OCE_CASROOT_FALLBACK_DIR)
+	  ReadInitFile(OCE_CASROOT_FALLBACK_DIR "/src/DrawResources/DrawDefault");
 #else
 	  cout << " the CASROOT variable is mandatory to Run OpenCascade "<< endl;
 	  cout << "No default file" << endl;

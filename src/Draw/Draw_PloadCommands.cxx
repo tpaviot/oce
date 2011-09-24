@@ -54,9 +54,9 @@ static Standard_Boolean FindPluginFile (TCollection_AsciiString& thePluginName, 
     // now try by CASROOT
     aPluginDir = getenv("CASROOT");
 
-#ifdef OCE_INSTALL_DATA_DIR
+#ifdef OCE_CASROOT_FALLBACK_DIR
     if ( aPluginDir.IsEmpty() ) {
-      aPluginDir = OCE_INSTALL_DATA_DIR;
+      aPluginDir = OCE_CASROOT_FALLBACK_DIR;
     }
 #endif
     if ( !aPluginDir.IsEmpty() ) {
