@@ -531,7 +531,7 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
 #endif
     aPluginLibrary +=  aPluginResource->Value(theKey.ToCString());
 #ifdef WNT
-    aPluginLibrary += ".dll";
+	aPluginLibrary += OCE_DEBUG_POSTFIX ".dll";
 #elif __APPLE__
     aPluginLibrary += ".dylib";
 #elif defined (HPUX) || defined(_hpux)
