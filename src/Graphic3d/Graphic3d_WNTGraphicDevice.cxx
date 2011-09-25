@@ -44,6 +44,7 @@ Handle(Aspect_GraphicDriver) Graphic3d_WNTGraphicDevice::GraphicDriver () const 
 
 }
 
+#ifdef OCE_BUILD_SHARED_LIB
 void Graphic3d_WNTGraphicDevice::SetGraphicDriver () 
 {
 
@@ -94,5 +95,17 @@ void Graphic3d_WNTGraphicDevice::SetGraphicDriver ()
   }
 
 }
+#else
+
+extern "C"
+{
+     Handle(Graphic3d_GraphicDriver) MetaGraphicDriverFactory(const Standard_CString AShrName);
+}
+
+void Graphic3d_WNTGraphicDevice::SetGraphicDriver ()
+{
+     MyGraphicDriver = MetaGraphicDriverFactory("");
+}
+#endif
 
 #endif  // WNT

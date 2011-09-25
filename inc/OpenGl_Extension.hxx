@@ -42,14 +42,17 @@
 # else
 #  define EXPORT
 # endif  /* DLL */
+#else
+# define EXPORT
+#endif  /* WNT */
+
+#if defined(WNT)
 # ifdef STRICT
 #  undef STRICT
 # endif
 # define STRICT
 # include <windows.h>
-#else
-# define EXPORT
-#endif  /* WNT */
+#endif
 
 #include <GL/gl.h>
 #include <GL/glu.h>
