@@ -47,13 +47,19 @@ IF(DEFINED TOOLKIT_INCLUDE_DIRECTORIES)
 	INCLUDE_DIRECTORIES(${TOOLKIT_INCLUDE_DIRECTORIES})
 ENDIF(DEFINED TOOLKIT_INCLUDE_DIRECTORIES)
 FOREACH(MODULE ${TOOLKIT_MODULES})
+	
 	# add all .cxx/*.c files or each module
 	FILE(GLOB source_files
 		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.cxx
 		${${PROJECT_NAME}_SOURCE_DIR}/src/${MODULE}/*.c
 		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.cxx
 		${${PROJECT_NAME}_SOURCE_DIR}/drv/${MODULE}/*.c)
-	#MESSAGE(STATUS "${source_files}")
+	SET (header_files "")
+	
+	IF(${PROJECT_NAME}_ADD_HEADERS)
+		FILE(GLOB header_files  ${${PROJECT_NAME}_SOURCE_DIR}/inc/${MODULE}_*.hxx)
+		LIST(APPEND source_files ${header_files})
+	ENDIF(${PROJECT_NAME}_ADD_HEADERS)
 
 	IF (WIN32)
 		# For compilers under Windows a define must be set per file to correctly set the export macro
