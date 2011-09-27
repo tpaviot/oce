@@ -108,9 +108,8 @@ inline void gp_XY::Multiply (const gp_XY& Other)
 
 inline void gp_XY::Multiply (const gp_Mat2d& Matrix)
 {
-  const Standard_Address M = (Standard_Address)&(Matrix.matrix[0][0]);
-  Standard_Real Xresult = Mat2d00 * x + Mat2d01 * y;
-  y                     = Mat2d10 * x + Mat2d11 * y;
+  Standard_Real Xresult = Matrix.matrix[0][0] * x + Matrix.matrix[0][1] * y;
+  y                     = Matrix.matrix[1][0] * x + Matrix.matrix[1][1] * y;
   x                     = Xresult;
 }
 
@@ -124,9 +123,8 @@ inline gp_XY gp_XY::Multiplied (const gp_XY& Other) const {
 
 inline gp_XY gp_XY::Multiplied (const gp_Mat2d& Matrix) const
 {
-  const Standard_Address M = (Standard_Address)&(Matrix.matrix[0][0]);
-  return gp_XY (Mat2d00 * x + Mat2d01 * y,
-		Mat2d10 * x + Mat2d11 * y);
+  return gp_XY (Matrix.matrix[0][0] * x + Matrix.matrix[0][1] * y,
+		Matrix.matrix[1][0] * x + Matrix.matrix[1][1] * y);
 }
 
 inline void gp_XY::Normalize ()

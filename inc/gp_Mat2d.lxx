@@ -3,44 +3,40 @@
 #include <gp.hxx>
 #include <Standard_OutOfRange.hxx>
 
-#define Mat2d00 ((Standard_Real*)M)[0]
-#define Mat2d01 ((Standard_Real*)M)[1]
-#define Mat2d10 ((Standard_Real*)M)[2]
-#define Mat2d11 ((Standard_Real*)M)[3]
+#define Mat2d00 matrix[0][0]
+#define Mat2d01 matrix[0][1]
+#define Mat2d10 matrix[1][0]
+#define Mat2d11 matrix[1][1]
 
-#define Nat2d00 ((Standard_Real*)N)[0]
-#define Nat2d01 ((Standard_Real*)N)[1]
-#define Nat2d10 ((Standard_Real*)N)[2]
-#define Nat2d11 ((Standard_Real*)N)[3]
+#define Nat2d00 NewMat2d.matrix[0][0]
+#define Nat2d01 NewMat2d.matrix[0][1]
+#define Nat2d10 NewMat2d.matrix[1][0]
+#define Nat2d11 NewMat2d.matrix[1][1]
 
-#define Oat2d00 ((Standard_Real*)O)[0]
-#define Oat2d01 ((Standard_Real*)O)[1]
-#define Oat2d10 ((Standard_Real*)O)[2]
-#define Oat2d11 ((Standard_Real*)O)[3]
+#define Oat2d00 Other.matrix[0][0]
+#define Oat2d01 Other.matrix[0][1]
+#define Oat2d10 Other.matrix[1][0]
+#define Oat2d11 Other.matrix[1][1]
 
 inline gp_Mat2d::gp_Mat2d ()
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 = Mat2d01 = Mat2d10 = Mat2d11 = 0.0;
 }
 
 inline void gp_Mat2d::SetDiagonal (const Standard_Real X1,
 			    const Standard_Real X2)
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 = X1; Mat2d11 = X2;
 }
 
 inline void gp_Mat2d::SetIdentity ()
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 = Mat2d11 = 1.0;
   Mat2d01 = Mat2d10 = 0.0;
 }
 
 inline void gp_Mat2d::SetRotation (const Standard_Real Ang)
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Standard_Real SinA = sin(Ang);
   Standard_Real CosA = cos(Ang);
   Mat2d00 = Mat2d11 = CosA;
@@ -50,7 +46,6 @@ inline void gp_Mat2d::SetRotation (const Standard_Real Ang)
 
 inline void gp_Mat2d::SetScale (const Standard_Real S)
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 = Mat2d11 = S;
   Mat2d01 = Mat2d10 = 0.0;
 }
@@ -66,7 +61,6 @@ inline void gp_Mat2d::SetValue (const Standard_Integer Row,
 
 inline Standard_Real gp_Mat2d::Determinant () const
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   return  Mat2d00 * Mat2d11 - Mat2d10 * Mat2d01;
 }
 
@@ -96,8 +90,6 @@ inline Standard_Boolean gp_Mat2d::IsSingular () const
 
 inline void gp_Mat2d::Add (const gp_Mat2d& Other)
 {
-  const Standard_Address M = (Standard_Address)&(      matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other.matrix[0][0]);
   Mat2d00 += Oat2d00;
   Mat2d01 += Oat2d01;
   Mat2d10 += Oat2d10;
@@ -107,9 +99,6 @@ inline void gp_Mat2d::Add (const gp_Mat2d& Other)
 inline gp_Mat2d gp_Mat2d::Added (const gp_Mat2d& Other) const
 {
   gp_Mat2d NewMat2d;
-  const Standard_Address M = (Standard_Address)&(         matrix[0][0]);
-  const Standard_Address N = (Standard_Address)&(NewMat2d.matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other   .matrix[0][0]);
   Nat2d00 = Mat2d00 + Oat2d00;
   Nat2d01 = Mat2d01 + Oat2d01;
   Nat2d10 = Mat2d10 + Oat2d10;
@@ -119,7 +108,6 @@ inline gp_Mat2d gp_Mat2d::Added (const gp_Mat2d& Other) const
 
 inline void gp_Mat2d::Divide (const Standard_Real Scalar)
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 /= Scalar;
   Mat2d01 /= Scalar;
   Mat2d10 /= Scalar;
@@ -129,8 +117,6 @@ inline void gp_Mat2d::Divide (const Standard_Real Scalar)
 inline gp_Mat2d gp_Mat2d::Divided (const Standard_Real Scalar) const
 {
   gp_Mat2d NewMat2d;
-  const Standard_Address M = (Standard_Address)&(         matrix[0][0]);
-  const Standard_Address N = (Standard_Address)&(NewMat2d.matrix[0][0]);
   Nat2d00 = Mat2d00 / Scalar;
   Nat2d01 = Mat2d01 / Scalar;
   Nat2d10 = Mat2d10 / Scalar;
@@ -155,8 +141,6 @@ inline gp_Mat2d gp_Mat2d::Multiplied (const gp_Mat2d& Other) const
 inline void gp_Mat2d::Multiply (const gp_Mat2d& Other)
 {
   Standard_Real T00,T10;
-  const Standard_Address M = (Standard_Address)&(      matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other.matrix[0][0]);
   T00     = Mat2d00 * Oat2d00 + Mat2d01 * Oat2d10;
   T10     = Mat2d10 * Oat2d00 + Mat2d11 * Oat2d10;
   Mat2d01 = Mat2d00 * Oat2d01 + Mat2d01 * Oat2d11;
@@ -168,8 +152,6 @@ inline void gp_Mat2d::Multiply (const gp_Mat2d& Other)
 inline void gp_Mat2d::PreMultiply (const gp_Mat2d& Other)
 {
   Standard_Real T00,T01;
-  const Standard_Address M = (Standard_Address)&(      matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other.matrix[0][0]);
   T00     = Oat2d00 * Mat2d00 + Oat2d01 * Mat2d10;
   Mat2d10 = Oat2d10 * Mat2d00 + Oat2d11 * Mat2d10;
   T01     = Oat2d00 * Mat2d01 + Oat2d01 * Mat2d11;
@@ -181,8 +163,6 @@ inline void gp_Mat2d::PreMultiply (const gp_Mat2d& Other)
 inline gp_Mat2d gp_Mat2d::Multiplied (const Standard_Real Scalar) const
 {
   gp_Mat2d NewMat2d;
-  const Standard_Address M = (Standard_Address)&(         matrix[0][0]);
-  const Standard_Address N = (Standard_Address)&(NewMat2d.matrix[0][0]);
   Nat2d00 = Mat2d00 * Scalar;
   Nat2d01 = Mat2d01 * Scalar;
   Nat2d10 = Mat2d10 * Scalar;
@@ -192,7 +172,6 @@ inline gp_Mat2d gp_Mat2d::Multiplied (const Standard_Real Scalar) const
 
 inline void gp_Mat2d::Multiply (const Standard_Real Scalar)
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Mat2d00 *= Scalar;
   Mat2d01 *= Scalar;
   Mat2d10 *= Scalar;
@@ -208,8 +187,6 @@ inline gp_Mat2d gp_Mat2d::Powered (const Standard_Integer N) const
 
 inline void gp_Mat2d::Subtract (const gp_Mat2d& Other)
 {
-  const Standard_Address M = (Standard_Address)&(      matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other.matrix[0][0]);
   Mat2d00 -= Oat2d00;
   Mat2d01 -= Oat2d01;
   Mat2d10 -= Oat2d10;
@@ -219,9 +196,6 @@ inline void gp_Mat2d::Subtract (const gp_Mat2d& Other)
 inline gp_Mat2d gp_Mat2d::Subtracted (const gp_Mat2d& Other) const
 {
   gp_Mat2d NewMat2d;
-  const Standard_Address M = (Standard_Address)&(         matrix[0][0]);
-  const Standard_Address N = (Standard_Address)&(NewMat2d.matrix[0][0]);
-  const Standard_Address O = (Standard_Address)&(Other   .matrix[0][0]);
   Nat2d00 = Mat2d00 - Oat2d00;
   Nat2d01 = Mat2d01 - Oat2d01;
   Nat2d10 = Mat2d10 - Oat2d10;
@@ -231,7 +205,6 @@ inline gp_Mat2d gp_Mat2d::Subtracted (const gp_Mat2d& Other) const
 
 inline void gp_Mat2d::Transpose ()
 {
-  const Standard_Address M = (Standard_Address)&(matrix[0][0]);
   Standard_Real Temp;
   Temp     = Mat2d01;
   Mat2d01  = Mat2d10;
@@ -241,8 +214,6 @@ inline void gp_Mat2d::Transpose ()
 inline gp_Mat2d gp_Mat2d::Transposed () const
 {
   gp_Mat2d NewMat2d;
-  const Standard_Address M = (Standard_Address)&(         matrix[0][0]);
-  const Standard_Address N = (Standard_Address)&(NewMat2d.matrix[0][0]);
   Nat2d10 = Mat2d01;
   Nat2d01 = Mat2d10;
   Nat2d00 = Mat2d00;
