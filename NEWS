@@ -1,3 +1,51 @@
+Version 0.6.0 - September 2011
+
+ *   Cmake 2.8 is explicitly required to build OCE.
+
+ *   Removed many X11 dependencies. Now it is possible to build a large part of
+     OCE (with the exception of visualisation) without depending on X11 (using
+     OCE_DISABLE_X11 option).
+
+ *   Cmake support : Cmake users will be able to correctly find OCE using
+     FIND_PACKAGE(OCE). Several examples are added to show how to use it in
+     end-user programs. It is now possible to detect/request single toolkits.
+
+ *   Packaging : change installation paths; we do no more install files at the
+     same location as OpenCascade, but adopted more standard paths.
+
+ *   Tests : integrated gtest 1.6.0 and added other unit tests, which helped in
+     fixing some bugs. Added MSVC support to the testsuite.
+
+ *   Win32/MSVC improvements:
+     + Enabled configuration files in Win32 platforms
+     + Plugins and TKOpenGL are correctly found in debug builds
+     + TKOpenGL works when building static libraries
+
+ *   Modify tcl scripts to not require $env(CASROOT).
+
+ *   Many small changes, bug fixes and warning removals.
+     + Improvements to OSD_Process::SystemDate()
+     + TKernel : add dependency against -ldl.
+     + Bugfix : Work around a cmake bug that prevented building Win64+MSVC+static libs
+     + Bugfix : add missing include in BRepBlend_BlendTool.lxx.
+     + Bugfix : fix mismatch new/delete in Standard_Failure.cxx
+     + Fixed compiler warnings in OpenGl_TextureBox.cxx
+     + Whitespace cleanup
+     + In module TKOpenGL, fixed the two remaining GCC warnings of the form :
+       "comparison between ‘enum texStatus’ and ‘enum texDataStatus’"
+     + Added missing include in BRepBlend_BlendTool.lxx
+     + Fix capitalization of include file
+     + pass NULL for timezone pointer to gettimeofday()
+     + eliminate bad cast by copying to local variable
+     + use localtime_r if available
+     + Do not redefine memmove as an alias for memcpy
+     + Workaround GCC (< 4.3) bugs in gp_Mat, gp_XYZ, gp_Mat2d and gp_XY.
+     + Fix HashCode, it could segault when MMGT_OPT is not set to 1.
+
+Users who contributed to this release:
+     Denis Barbier, Thomas Paviot, Hugues Delorme, QbProg,
+     Matthew Dempsky, Massimo Del Fedele,
+
 Version 0.5.0 - August 2011
 
 This released integrated OCCT 6.5.1, continued on the warning cleanup, and 
