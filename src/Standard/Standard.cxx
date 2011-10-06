@@ -40,6 +40,28 @@
 #define OCCT_MMGT_OPT_DEFAULT 0
 #endif
 
+#ifndef MMGT_OPT_DEFAULT
+# define MMGT_OPT_DEFAULT           0
+#endif
+#ifndef MMGT_CLEAR_DEFAULT
+# define MMGT_CLEAR_DEFAULT         1
+#endif
+#ifndef MMGT_MMAP_DEFAULT
+# define MMGT_MMAP_DEFAULT          1
+#endif
+#ifndef MMGT_CELLSIZE_DEFAULT
+# define MMGT_CELLSIZE_DEFAULT    200
+#endif
+#ifndef MMGT_NBPAGES_DEFAULT
+# define MMGT_NBPAGES_DEFAULT    1000
+#endif
+#ifndef MMGT_THRESHOLD_DEFAULT
+# define MMGT_THRESHOLD_DEFAULT 40000
+#endif
+#ifndef MMGT_REENTRANT_DEFAULT
+# define MMGT_REENTRANT_DEFAULT     0
+#endif
+
 //=======================================================================
 //class    : Standard_MMgrFactory 
 //purpose  : Container for pointer to memory manager;
@@ -83,7 +105,7 @@ Standard_MMgrFactory::Standard_MMgrFactory()
 
   char* aVar;
   aVar = getenv ("MMGT_OPT");
-  Standard_Integer anAllocId   = (aVar ?  atoi (aVar): OCCT_MMGT_OPT_DEFAULT);
+  Standard_Integer anAllocId   = (aVar != NULL ?  atoi (aVar): MMGT_OPT_DEFAULT);
 
 #if defined(_WIN32) && !defined(_WIN64)
   static const DWORD _SSE2_FEATURE_BIT(0x04000000);
@@ -117,7 +139,7 @@ Standard_MMgrFactory::Standard_MMgrFactory()
 #endif
 
   aVar = getenv ("MMGT_CLEAR");
-  Standard_Boolean toClear     = (aVar ? (atoi (aVar) != 0) : Standard_True);
+  Standard_Boolean toClear     = (aVar != NULL ? (atoi (aVar) != 0) : Standard_True);
 
   // on Windows (actual for XP and 2000) activate low fragmentation heap
   // for CRT heap in order to get best performance.
@@ -137,13 +159,13 @@ Standard_MMgrFactory::Standard_MMgrFactory()
     case 1:  // OCCT optimized memory allocator
     {
       aVar = getenv ("MMGT_MMAP");
-      Standard_Boolean bMMap       = (aVar ? (atoi (aVar) != 0) : Standard_True);
+      Standard_Boolean bMMap       = (aVar != NULL ? (atoi (aVar) != 0) : (MMGT_MMAP_DEFAULT != 0));
       aVar = getenv ("MMGT_CELLSIZE");
-      Standard_Integer aCellSize   = (aVar ?  atoi (aVar) : 200);
+      Standard_Integer aCellSize   = (aVar != NULL ?  atoi (aVar) : MMGT_CELLSIZE_DEFAULT);
       aVar = getenv ("MMGT_NBPAGES");
-      Standard_Integer aNbPages    = (aVar ?  atoi (aVar) : 1000);
+      Standard_Integer aNbPages    = (aVar != NULL ?  atoi (aVar) : MMGT_NBPAGES_DEFAULT);
       aVar = getenv ("MMGT_THRESHOLD");
-      Standard_Integer aThreshold  = (aVar ?  atoi (aVar) : 40000);
+      Standard_Integer aThreshold  = (aVar != NULL ?  atoi (aVar) : MMGT_THRESHOLD_DEFAULT);
       myFMMgr = new Standard_MMgrOpt (toClear, bMMap, aCellSize, aNbPages, aThreshold);
       break;
     }
