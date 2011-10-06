@@ -12,6 +12,28 @@
 #include <Standard_MMgrRaw.hxx>
 #include <Standard_MMgrTBBalloc.hxx>
 
+#ifndef MMGT_OPT_DEFAULT
+# define MMGT_OPT_DEFAULT           1
+#endif
+#ifndef MMGT_CLEAR_DEFAULT
+# define MMGT_CLEAR_DEFAULT         1
+#endif
+#ifndef MMGT_MMAP_DEFAULT
+# define MMGT_MMAP_DEFAULT          1
+#endif
+#ifndef MMGT_CELLSIZE_DEFAULT
+# define MMGT_CELLSIZE_DEFAULT    200
+#endif
+#ifndef MMGT_NBPAGES_DEFAULT
+# define MMGT_NBPAGES_DEFAULT    1000
+#endif
+#ifndef MMGT_THRESHOLD_DEFAULT
+# define MMGT_THRESHOLD_DEFAULT 40000
+#endif
+#ifndef MMGT_REENTRANT_DEFAULT
+# define MMGT_REENTRANT_DEFAULT     0
+#endif
+
 // Global reentrant flag
 static Standard_Boolean Standard_IsReentrant = Standard_False;
 
@@ -41,13 +63,13 @@ Standard_MMgrFactory::Standard_MMgrFactory() : myFMMgr(0)
   Standard_Boolean bClear, bMMap, bReentrant;
   Standard_Integer aCellSize, aNbPages, aThreshold, bOptAlloc;
   //
-  bOptAlloc   = atoi(((var = getenv("MMGT_OPT"      )) != NULL) ? var : "1"    ); 
-  bClear      = atoi(((var = getenv("MMGT_CLEAR"    )) != NULL) ? var : "1"    );
-  bMMap       = atoi(((var = getenv("MMGT_MMAP"     )) != NULL) ? var : "1"    ); 
-  aCellSize   = atoi(((var = getenv("MMGT_CELLSIZE" )) != NULL) ? var : "200"  ); 
-  aNbPages    = atoi(((var = getenv("MMGT_NBPAGES"  )) != NULL) ? var : "1000" );
-  aThreshold  = atoi(((var = getenv("MMGT_THRESHOLD")) != NULL) ? var : "40000");
-  bReentrant  = atoi(((var = getenv("MMGT_REENTRANT")) != NULL) ? var : "0"    );
+  bOptAlloc   = ((var = getenv("MMGT_OPT"      )) != NULL) ? atoi(var) :  MMGT_OPT_DEFAULT; 
+  bClear      = ((var = getenv("MMGT_CLEAR"    )) != NULL) ? atoi(var) :  MMGT_CLEAR_DEFAULT;
+  bMMap       = ((var = getenv("MMGT_MMAP"     )) != NULL) ? atoi(var) :  MMGT_MMAP_DEFAULT; 
+  aCellSize   = ((var = getenv("MMGT_CELLSIZE" )) != NULL) ? atoi(var) :  MMGT_CELLSIZE_DEFAULT; 
+  aNbPages    = ((var = getenv("MMGT_NBPAGES"  )) != NULL) ? atoi(var) :  MMGT_NBPAGES_DEFAULT;
+  aThreshold  = ((var = getenv("MMGT_THRESHOLD")) != NULL) ? atoi(var) :  MMGT_THRESHOLD_DEFAULT;
+  bReentrant  = ((var = getenv("MMGT_REENTRANT")) != NULL) ? atoi(var) :  MMGT_REENTRANT_DEFAULT;
   
   if ( bOptAlloc == 1 ) { 
     myFMMgr = new Standard_MMgrOpt(bClear, bMMap, aCellSize, aNbPages,
