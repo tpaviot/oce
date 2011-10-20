@@ -212,7 +212,7 @@ static void CorrectSplitValues(const Handle(TColStd_HSequenceOfReal) orig3d,
   }
   if(new2d->Value(len3d) > Last3d) {
     Standard_Integer ind; // svv #1
-    for( ind = len3d; ind > 1 && !fixNew2d(ind); ind--);
+    for( ind = len3d; ind > 1 && !fixNew2d(ind); ind--) {}
     Standard_Real lastFix = new2d->Value(ind);
     for(i = len3d; i >= ind; i--) { 
       new2d->SetValue(i,lastFix);
@@ -237,7 +237,7 @@ static void CorrectSplitValues(const Handle(TColStd_HSequenceOfReal) orig3d,
   }
   if(new3d->Value(len2d) > Last2d) {
     Standard_Integer ind; // svv #1
-    for(ind = len2d; ind > 1 && !fixNew3d(ind); ind--);
+    for(ind = len2d; ind > 1 && !fixNew3d(ind); ind--) {}
     Standard_Real lastFix = new3d->Value(ind);
     for(i = len2d; i >= ind; i--) { 
       new3d->SetValue(i,lastFix);

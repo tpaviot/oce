@@ -533,7 +533,7 @@ void FEmTool_Assembly::AddConstraint(const Standard_Integer IndexofConstraint,
 	for(i = Aux1->Lower(); i <= Aux1->Upper(); i++) Coeff->SetValue(i, Aux1->Value(i));
 	for(i = Aux1->Upper() + 1; i <= Imax; i++) Coeff->SetValue(i, 0.);
 	Iter.Initialize(L);
-	for(i = 1; i < s1; Iter.Next(), i++);
+	for(i = 1; i < s1; Iter.Next(), i++) {}
 	Iter.Value() = Coeff;
       }
       else if(Imin > Aux1->Upper() && Imax >= Aux2->Lower()) { 
@@ -542,7 +542,7 @@ void FEmTool_Assembly::AddConstraint(const Standard_Integer IndexofConstraint,
 	for(i = Imin; i <= Aux2->Lower() - 1; i++) Coeff->SetValue(i, 0.);
 	for(i = Aux2->Lower(); i <= Aux2->Upper(); i++) Coeff->SetValue(i, Aux2->Value(i));
 	Iter.Initialize(L);
-	for(i = 1; i < s2; Iter.Next(), i++);
+	for(i = 1; i < s2; Iter.Next(), i++) {}
 	Iter.Value() = Coeff;
      }
       else if(Imin > Aux1->Upper() && Imax < Aux2->Lower()) {
@@ -550,7 +550,7 @@ void FEmTool_Assembly::AddConstraint(const Standard_Integer IndexofConstraint,
 	Coeff = new TColStd_HArray1OfReal(Imin,Imax);
 	Coeff->Init(0.);
 	Iter.Initialize(L);
-	for(i = 1; i < s1; Iter.Next(), i++);
+	for(i = 1; i < s1; Iter.Next(), i++) {}
 	L.InsertAfter(Coeff,Iter);
       }
       else {
@@ -560,7 +560,7 @@ void FEmTool_Assembly::AddConstraint(const Standard_Integer IndexofConstraint,
 	for(i = Aux1->Upper() + 1; i <= Aux2->Lower() - 1; i++) Coeff->SetValue(i, 0.);
 	for(i = Aux2->Lower(); i <= Aux2->Upper(); i++) Coeff->SetValue(i, Aux2->Value(i));
 	Iter.Initialize(L);
-	for(i = 1; i < s1; Iter.Next(), i++);
+	for(i = 1; i < s1; Iter.Next(), i++) {}
 	Iter.Value() = Coeff;
 	Iter.Next();
 	L.Remove(Iter);
