@@ -21,7 +21,7 @@
 
 #ifndef UndefinedHandleAddress 
 #ifdef _OCC64
-#define UndefinedHandleAddress ((Standard_Transient *)0xfefdfefdfefd0000)
+#define UndefinedHandleAddress ((Standard_Transient *)0xfefdfefdfefd0000llu)
 #else
 #define UndefinedHandleAddress ((Standard_Transient *)0xfefd0000)
 #endif
