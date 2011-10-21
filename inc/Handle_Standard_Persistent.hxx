@@ -26,7 +26,7 @@
 
 #ifndef PUndefinedAddress 
 #ifdef _OCC64
-#define PUndefinedAddress ((Standard_Persistent *)0xfefdfefdfefd0000)
+#define PUndefinedAddress ((Standard_Persistent *)0xfefdfefdfefd0000llu)
 #else
 #define PUndefinedAddress ((Standard_Persistent *)0xfefd0000)
 #endif
