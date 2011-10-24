@@ -16,6 +16,12 @@ static Standard_Boolean fSETranslator =
 #ifdef NOUSER
 #undef NOUSER
 #endif
+#ifdef NOICONS
+#undef NOICONS
+#endif
+#ifdef NOGDI
+#undef NOGDI
+#endif
 #include <windows.h>
 
 #include <OSD_Exception_ACCESS_VIOLATION.hxx>
