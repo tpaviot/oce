@@ -17,9 +17,8 @@
 // Windows-specific definitions
 //======================================================
 
-// check if WNT macro is not defined but compiler is MSVC
-#if (defined(_MSC_VER) || defined(__BORLANDC__)) && !defined(WNT)
-#error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
+#if (defined(_MSC_VER) || defined(__BORLANDC__) || defined(__MINGW32__) || defined(__MINGW64__)) && !defined(WNT)
+#define WNT
 #endif
 
 # if defined(WNT) && !defined(HAVE_NO_DLL)
