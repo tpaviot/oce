@@ -46,13 +46,11 @@ Here are default flags on Unix
  OCE_BUILD_TYPE              Release
  OCE_DATAEXCHANGE            ON
  OCE_DRAW                    OFF
- OCE_EXTRA_WARNINGS          OFF
  OCE_INSTALL_PREFIX          /usr/local
  OCE_MODEL                   ON
  OCE_MULTITHREAD_LIBRARY     NONE
  OCE_OCAF                    ON
  OCE_VISUALISATION           ON
- OCE_VISUALISATION_FULL      ON
  OCE_WITH_FREEIMAGE          OFF
  OCE_WITH_GL2PS              OFF
 
@@ -97,6 +95,14 @@ If you have more than one (for instance 2) cores on your machine, you can use
  make -j2
 to enable multiprocessed compilation and speedup the whole compilation
 process.
+
+If you enabled tests when configuring by passing -DOCE_TESTING:BOOL=ON
+flag to CMake, you can now run our battery of tests:
+
+ make test
+
+All tests should pass except BRepMeshTestSuite.testMeshTorus, this test
+exhibits a bug which has not been fixed yet.
 
 4. Test installation: OCE Draw Test Harness
 ===========================================
