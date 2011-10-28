@@ -152,7 +152,7 @@ static LXMLCh * getEncodingName (const LXMLCh * theEncodingName)
     anEncoding = anUTFEncoding;
   }
   Standard_Integer aLen = 0;
-  while (anEncoding[aLen++] != chNull);
+  while (anEncoding[aLen++] != chNull) {}
   LXMLCh * aResult = new LXMLCh [aLen];
   memcpy (aResult, anEncoding, aLen * sizeof (LXMLCh));
   return aResult;

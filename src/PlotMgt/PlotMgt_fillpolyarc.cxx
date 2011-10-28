@@ -181,7 +181,6 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
             (mpo_lines+i)->type = 5;
           else (mpo_lines+i)->type = 4;
         }
-      else;
 //      cout << "Xlm  = " << (mpo_lines+i)->X3 << "      Xrm  = " << (mpo_lines+i)->X4 << endl << flush;
 //      cout << "------------ i = " << i << endl << flush;
     }

@@ -1125,7 +1125,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     else { //myNbSamplesU == 3
       //insert in bigger segment
       i = 2;
-      while(!anUFlg(i++));
+      while(!anUFlg(i++)) {}
       if(i < nbsu/2) j = Min(i+(nbsu-i)/2, nbsu-1);
       else j = Max(i/2, 2);
     }
@@ -1204,7 +1204,7 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     else { //myNbSamplesU == 3
       //insert in bigger segment
       i = 2;
-      while(!aVFlg(i++));
+      while(!aVFlg(i++)) {}
       if(i < nbsv/2) j = Min(i+(nbsv-i)/2, nbsv-1);
       else j = Max(i/2, 2);
     }

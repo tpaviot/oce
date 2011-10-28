@@ -512,7 +512,7 @@ void BOP_ArgumentAnalyzer::TestRebuildFace()
 	Standard_Integer nbedgeused = 0;
 	anExpE.Init(aLF.First(), TopAbs_EDGE);
 
-	for(; anExpE.More(); anExpE.Next(), nbedgeused++);
+	for(; anExpE.More(); anExpE.Next(), nbedgeused++) {}
 
 	if(nbstartedges != nbedgeused) {
 	  bBadFace = Standard_True;

@@ -436,7 +436,7 @@ Handle_StlMesh_Mesh RWStl::ReadAscii(const OSD_Path& aPath)
   rewind(file);
 
   // skip header
-  while (getc(file) != '\n');
+  while (getc(file) != '\n') {}
 #ifdef DEB
   cout << "start mesh\n";
 #endif
