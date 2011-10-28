@@ -11,21 +11,20 @@ To be able to use OCE from MSVC, you have to set various "Project Options"
   Set these pointing to <oce-install-dir>\inc
 
 - Linker \ Additional Directories 
-  In DEBUG set these point to <oce-install-dir>\Win32\libd
-  In RELEASE set these point to <oce-install-dir>\Win32\lib
+  Set these point to <oce-install-dir>\Win32\lib
   Eventually change Win32 with Win64 when required
 
 - Linker "Input Libraries"
-  For each toolkit you use , you must add the corresponding .lib files
+  For each toolkit you use, you must add the corresponding .lib files
   Debug libraries have a "d" suffix.
   For example, you will have to add TKernel.lib in RELEASE and TKerneld.lib in DEBUG
   to use the Kernel module.
   If you get linker errors, you likely forgot to add a .lib file to that list.
 
 - Binary search path
-  When you run the program, the system must be able to find the OCE libraries somewhere. You can add the 
-  <oce-install-dir>\Win32\bind and <oce-install-dir>\Win32\bin to your PATH environment variable or 
-  add it locally to your project (preferred way). Also you can copy all the DLLs to your project binary folder.
+  When you run the program, the system must be able to find the OCE libraries somewhere. You can add
+  <oce-install-dir>\Win32\bin to your PATH environment variable or add it locally to your project
+  (preferred way). Also you can copy all the DLLs to your project binary folder.
 
   Be careful when adding multiple OCE version in your search PATH, you will likely end up with loader errors.
 

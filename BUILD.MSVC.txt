@@ -36,7 +36,7 @@ precompiled binaries if you just want to use it in a supported compiler.
 2) PREREQUISITES
 
   2.1) Cmake
-  OCE build system requires CMake 2.6 to function. Download and install it at www.cmake.org
+  OCE build system requires CMake 2.8 to function. Download and install it at www.cmake.org
 
   2.2) External Libraries
     Some modules of OCE require external libraries. These include
@@ -74,7 +74,7 @@ precompiled binaries if you just want to use it in a supported compiler.
         If you want to rebuild the bundle from sources, follow the instructions at 
         http://www.github.com/QbProg/oce-win-bundle
         
-        In this example we will extract the precompiled bundle in C:\oce-win-bundle-win32-0.3\
+        In this example we will extract the precompiled bundle in C:\oce-win-bundle-win32\
   --
     
 3) Extracting the sources
@@ -83,7 +83,7 @@ precompiled binaries if you just want to use it in a supported compiler.
 
 4) Configuring
 
-  We strongly suggest the use of out-of-source cmake builds. This means that the temporary
+  We strongly suggest the use of out-of-source CMake builds. This means that the temporary
   compilation projects and objects will not pollute the source folder.
 
   4.1) Designate a build directory 
@@ -91,7 +91,7 @@ precompiled binaries if you just want to use it in a supported compiler.
     In this case we will use c:\oce-src\Build32\
 
   4.2) Run cmake-gui 
-     This is the gui front-end to cmake. It will help you to select
+     This is the GUI front-end to CMake. It will help you to select
      the compilation options and configurations.  
 
     - In the "Where is the source code" field put the oce source directory : C:\oce-src
@@ -119,20 +119,21 @@ precompiled binaries if you just want to use it in a supported compiler.
       - OCE_xxxxxx : enables or disables a specific component to be built. (i.e. OCE_VISUALIZATION, OCE_DRAW , etc...) 
       - OCE_INSTALL_PDB_FILES : enable this if you want to copy resulting PDB files (debug symbols) in the INSTALL directory
 
-      After you set the required options , press CONFIGURE. You will likely get errors.
+      After you set the required options , press CONFIGURE. You will likely get errors.  To fix those errors, you
+      have to tell CMake where to find headers and libraries for dependencies, this is discussed just below.
       
    4.5) Configuring library paths
       Now, depending on the enabled options, it's time to set the external library directories.
 
     4.5.1) TCL
-      If you use ActiveState TCL, cmake will find it automatically. Else, you should set the variables 
+      If you use ActiveState TCL, CMake will find it automatically. Else, you should set the variables 
       starting with TCL_ and TK (eventually available in the "Advanced" section of cmake-gui)
 
     4.5.2) OCE bundle
      
       - Enable the OCE_USE_BUNDLE option
       - Press Configure
-      - Set OCE_BUNDLE_ROOT_PATH to point to the oce-win-bundle installation directory. For example C:/oce-win-bundle-win32-0.2/
+      - Set OCE_BUNDLE_ROOT_PATH to point to the oce-win-bundle installation directory. For example C:/oce-win-bundle-win32/
       - Configure again
       
       It should automatically set all the library paths. Some of them will appear in red, but the CONFIGURE phase will end successfully at 
@@ -184,11 +185,10 @@ precompiled binaries if you just want to use it in a supported compiler.
  After the INSTALL phase, we'll find the result in c:\oce-bin\Win32
  
  6.1) External libs
-  We miss just one piece : unless you have these in your path, copy all the external DLLs in the \bind and \bin folder of the installation directory.
+  We miss just one piece : unless you have these in your path, copy all the external DLLs in the \bin folder of the installation directory.
   (remember tcl85.dll too)
 
-  If you used oce-win-bundle, copy the dlls from c:\oce-win-bundle-win32-0.3\bin and c:\oce-win-bundle-win32-0.3\bind to your c:\oce-bin\Win32\bind and 
-  c:\oce-bin\Win32\bin  folders. 
+  If you used oce-win-bundle, copy the dlls from c:\oce-win-bundle-win32\bin and c:\oce-win-bundle-win32\bind to your c:\oce-bin\Win32\bin forlder.
  
  6.2) Command line
    Again, in MSVC2010 command prompt you can run
@@ -204,7 +204,7 @@ precompiled binaries if you just want to use it in a supported compiler.
    - Use a "Win64" generator in the Configure phase
    - Use the "win64" oce-win-bundle packages
    - Install TCL for 64 bit and all your libs compiled for 64bits
-   - Use a Build64 folder in the cmake configuration phase
+   - Use a Build64 folder in the CMake configuration phase
    - Installation files will go in OCE_INSTALL_PREFIX/Win64
    
 8) Building for both Win32 and Win64
