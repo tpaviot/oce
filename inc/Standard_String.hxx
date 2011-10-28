@@ -10,8 +10,8 @@
 
 # if OptJr
 
-#define STRLEN(s,i) {(i) = 0;while((s)[(i)++] != '\0');(i)--;}
-#define EXTSTRLEN(s,i) {(i) = 0;while((s)[(i)++] != 0);(i)--;}
+#define STRLEN(s,i) {(i) = 0;while((s)[(i)++] != '\0') {} (i)--;}
+#define EXTSTRLEN(s,i) {(i) = 0;while((s)[(i)++] != 0) {} (i)--;}
 #define STRCPY(s1,s2,i) {for(LoopIndex=0; LoopIndex<(i); LoopIndex++)(s1)[LoopIndex] = (s2)[LoopIndex];}
 #define STRCAT(s1,i,s2,j) {for(LoopIndex=0; LoopIndex<(j); LoopIndex++) (s1)[(i)+LoopIndex] = (s2)[LoopIndex];}
 
@@ -68,14 +68,14 @@ inline Standard_Boolean ExtStringTestOfZero(const Standard_Integer anExtString )
  if ((ptrdiff_t(aString) & 1) == 0) { \
    LoopIndex = 0 ; \
    if ((ptrdiff_t(aString) & 3) == 0) { \
-     while (CStringTestOfZero(((Standard_Integer *)aString)[LoopIndex++])); \
+     while (CStringTestOfZero(((Standard_Integer *)aString)[LoopIndex++])) {} \
      LoopIndex = ( LoopIndex << 2 ) - 4 ; \
    } \
    else { \
-     while (HalfCStringTestOfZero(((Standard_ExtCharacter *)aString)[LoopIndex++])); \
+     while (HalfCStringTestOfZero(((Standard_ExtCharacter *)aString)[LoopIndex++])) {} \
      LoopIndex = ( LoopIndex << 1 ) - 2 ; \
    } \
-   while (aString[LoopIndex++] != '\0'); \
+   while (aString[LoopIndex++] != '\0') {} \
    LoopIndex -= 1 ; \
  } \
  else \
@@ -85,7 +85,7 @@ inline Standard_Boolean ExtStringTestOfZero(const Standard_Integer anExtString )
 #define EXTSTRINGLEN( anExtString , LoopIndex ) { \
  if ((ptrdiff_t(anExtString) & 3) == 0) { \
    LoopIndex = 0 ; \
-   while (ExtStringTestOfZero(((Standard_Integer *)anExtString)[LoopIndex++]));\
+   while (ExtStringTestOfZero(((Standard_Integer *)anExtString)[LoopIndex++])) {} \
    LoopIndex = ( LoopIndex << 1 ) - 2 ; \
    if ( anExtString[ LoopIndex ] != 0 ) \
      LoopIndex += 1 ; \
@@ -878,8 +878,8 @@ inline Standard_Boolean ExtStringTestOfZero(const Standard_Integer anExtString )
 
 #  else
 
-#define STRLEN(s,i) {(i) = 0;while((s)[(i)++] != '\0');(i)--;}
-#define EXTSTRLEN(s,i) {(i) = 0;while((s)[(i)++] != 0);(i)--;}
+#define STRLEN(s,i) {(i) = 0;while((s)[(i)++] != '\0') {} (i)--;}
+#define EXTSTRLEN(s,i) {(i) = 0;while((s)[(i)++] != 0) {}} (i)--;}
 #define STRCPY(s1,s2,i) {for(int j=0; j<(i); j++)(s1)[j] = (s2)[j];}
 #define STRCAT(s1,i,s2,j) {for(int k=0; k<(j); k++) (s1)[(i)+k] = (s2)[k];}
 

@@ -368,7 +368,7 @@ void MgtTopoDS::Translate1
     // count the number of <sub-shape> of the Shape's TShape
     Standard_Integer nbElem = 0;
     TopoDS_Iterator itr(S);
-    for (;itr.More();++nbElem,itr.Next());
+    for (;itr.More();++nbElem,itr.Next()) {}
 
     if (nbElem) {
       Handle(PTopoDS_HArray1OfShape1) myArray = 

@@ -450,7 +450,7 @@ Standard_Boolean BOP_ShellSolid::SplitFace(const Standard_Integer theFaceIndex,
   if(aLF.Extent() != 2) {
     for(; anItNewF.More(); anItNewF.Next()) {
       TopExp_Explorer anExp(anItNewF.Value(), TopAbs_EDGE);
-      for(; anExp.More(); anExp.Next(), nbedgeused++);
+      for(; anExp.More(); anExp.Next(), nbedgeused++) {}
     }
     if(nbedgeused != nbstartedges) {
       return Standard_False;

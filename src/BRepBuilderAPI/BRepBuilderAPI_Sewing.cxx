@@ -2807,13 +2807,13 @@ void BRepBuilderAPI_Sewing::VerticesAssembling()
 #ifdef DEB
       cout << "Assemble " << nbVert << " vertices on faces..." << endl;
 #endif
-      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance));
+      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance)) {}
     }
     if (nbVertFree) {
 #ifdef DEB
       cout << "Assemble " << nbVertFree << " vertices on floating edges..." << endl;
 #endif
-      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance));
+      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance)) {}
     }
   }
 }

@@ -546,7 +546,7 @@ static chist_vec __fastcall mediancut (
   int minr, maxr, ming, maxg, minb, maxb, v;
   int halfsum, lowersum;
 
-  for ( bi = 0; bv[ bi ].colors < 2 && bi < boxes; ++bi );
+  for ( bi = 0; bv[ bi ].colors < 2 && bi < boxes; ++bi ) {}
 
   if ( bi == boxes ) break;
 

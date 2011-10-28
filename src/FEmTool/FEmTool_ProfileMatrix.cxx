@@ -29,7 +29,7 @@
  
   for(i = 1, k = 1; i <= FirstIndexes.Length(); i++)
     for(j = FirstIndexes(i); j <= i; j++) {
-      for(l = i+1; l <= FirstIndexes.Length() && j < FirstIndexes(l); l++);
+      for(l = i+1; l <= FirstIndexes.Length() && j < FirstIndexes(l); l++) {}
 
       if(l > FirstIndexes.Length()) NextCoeff->SetValue(k, 0);
       else NextCoeff->SetValue(k, l);

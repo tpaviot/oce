@@ -153,8 +153,6 @@ int __InitFillPolygon(double* X, double* Y, int n, double step, double gamma)
                 || (level == Ypts[j])) k++;
             if (level == Ypts[j+1])
               if (mpo_sign(Ypts[j] - Ypts[j+1]) == mpo_next_sign(j, n)) k++;
-              else;
-            else;
           }
       mpo_Xs[i] = (double *)malloc(sizeof(double)*k);
       mpo_Ys[i] = (double *)malloc(sizeof(double)*k);
@@ -182,8 +180,6 @@ int __InitFillPolygon(double* X, double* Y, int n, double step, double gamma)
                 {
                   mpo_Xs[i][k] = Xpts[j+1]; k++;
                 }
-              else;
-            else;
           }
 
       if (k != mpo_sizes[i]) 

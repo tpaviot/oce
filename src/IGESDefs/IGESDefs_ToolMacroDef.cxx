@@ -37,7 +37,7 @@ void  IGESDefs_ToolMacroDef::ReadOwnParams
   // Counting the no. of language statements.
   Standard_Integer nbval; // svv Jan 10 2000 : porting on DEC
   for (nbval = 0; PR.CurrentNumber() != PR.NbParams();
-       nbval++, PR.SetCurrentNumber(PR.CurrentNumber() + 1));
+       nbval++, PR.SetCurrentNumber(PR.CurrentNumber() + 1)) {}
 
   PR.SetCurrentNumber(tempCurrent);
   if (nbval > 0) langStatements =
