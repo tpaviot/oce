@@ -1,3 +1,46 @@
+Versione 0.7.0 - October 2011
+
+* Updated build and install instructions
+
+* Allow changing default values of MMGT_* variables  
+  The following macros can be set when compiling to override
+  default settings:
+    MMGT_OPT_DEFAULT  
+    MMGT_CLEAR_DEFAULT  
+    MMGT_MMAP_DEFAULT  
+    MMGT_CELLSIZE_DEFAULT  
+    MMGT_NBPAGES_DEFAULT  
+    MMGT_THRESHOLD_DEFAULT  
+    MMGT_REENTRANT_DEFAULT  
+
+* Allow building unversioned libraries : 
+  Third-party applications which embed OCE may find convenient
+  to drop version numbers from libraries.  
+  With this commit, one can call cmake -DOCE_NO_LIBRARY_VERSION=ON.  
+  This is based on a similar feature found in VTK.
+
+* Disabled the BSpline mesher, since it generates over-refined meshes. 
+  The generic one will be used instead.
+
+* Removed src/FontMFT/*.mft files
+
+* More tests added : Step import and mesher
+
+* Win32 specific changes :
+  - Install Debug and Release libraries into the same directory
+  - Automatically define WNT depending on compiler predefined macros
+  - Auto-install TBB dlls
+  - Export the target informations in Win32. This allows to find OCE from 
+    cmake projects even win 32.
+  - Fixed mingw64 compilation
+
+* Some additional GCC warning removals
+
+* Other minor fixes
+
+Users who contributed to this release:
+     Denis Barbier,He Yuqi,Jerome Robert,QbProg,Thomas Paviot
+
 Version 0.6.0 - September 2011
 
  *   Cmake 2.8 is explicitly required to build OCE.
