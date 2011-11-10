@@ -2,7 +2,6 @@ MeshVS_Buffer.hxx
 MeshVS_EntityType.hxx
 MeshVS_DisplayModeFlags.hxx
 MeshVS_BuilderPriority.hxx
-MeshVS_MeshPrsBuilder.lxx
 MeshVS_TwoColors.hxx
 MeshVS_TwoColors.cxx
 MeshVS_TwoNodes.hxx

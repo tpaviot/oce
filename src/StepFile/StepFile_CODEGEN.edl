@@ -22,7 +22,7 @@ $%CODEGEN_FlexBisHome/flex -P%BaseName  -L -8 %Source
 $%CODEGEN_LEX_CmdPath -P <Module>  -L -8 <LexFile>
 @end;
 
-@set %CODEGEN_LEX_CmdPath = "%WOKHOME%/lib/wnt/flex";
+@set %CODEGEN_LEX_CmdPath = "flex";
 
 @template CODEGEN_LEX_CmdLine  ( %CODEGEN_LEX_CmdPath, %Source, %BaseName, %OutputDir ) is
 $cd %OutputDir;
