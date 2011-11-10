@@ -1,6 +1,0 @@
-+ MPrsStd:dbadmfile:MPrsStd_obj_inc.In MPrsStd:admfile:MPrsStd_src.Out
-+ * MPrsStd:admfile:MPrsStd_xcpp_src.Out
-+ MPrsStd:dbadmfile:MPrsStd_obj_inc.Out MPrsStd:admfile:MPrsStd_src.Out
-+ * MPrsStd:admfile:MPrsStd_xcpp_src.Out
-+ MPrsStd:dbadmfile:MPrsStd_obj_inc.Dep MPrsStd:admfile:MPrsStd_src.Out
-+ * MPrsStd:admfile:MPrsStd_xcpp_src.Out

@@ -1,6 +1,0 @@
-+ BRepTest:dbadmfile:BRepTest_obj_inc.In BRepTest:admfile:BRepTest_src.Out
-+ * BRepTest:admfile:BRepTest_xcpp_src.Out
-+ BRepTest:dbadmfile:BRepTest_obj_inc.Out BRepTest:admfile:BRepTest_src.Out
-+ * BRepTest:admfile:BRepTest_xcpp_src.Out
-+ BRepTest:dbadmfile:BRepTest_obj_inc.Dep BRepTest:admfile:BRepTest_src.Out
-+ * BRepTest:admfile:BRepTest_xcpp_src.Out

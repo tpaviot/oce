@@ -1,6 +1,0 @@
-+ BinTools:dbadmfile:BinTools_obj_inc.In BinTools:admfile:BinTools_src.Out
-+ * BinTools:admfile:BinTools_xcpp_src.Out
-+ BinTools:dbadmfile:BinTools_obj_inc.Out BinTools:admfile:BinTools_src.Out
-+ * BinTools:admfile:BinTools_xcpp_src.Out
-+ BinTools:dbadmfile:BinTools_obj_inc.Dep BinTools:admfile:BinTools_src.Out
-+ * BinTools:admfile:BinTools_xcpp_src.Out

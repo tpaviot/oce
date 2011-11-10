@@ -1,4 +1,0 @@
-+V ChFi2d:msentity:ChFi2d .
-+V ChFi2d:msentity:ChFi2d_Builder .
-+V ChFi2d:msentity:ChFi2d_ConstructionError .
-- ChFi2d:admfile:ChFi2d_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ChFi2d/ChFi2d_xcpp_fill.Out

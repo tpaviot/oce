@@ -1,6 +1,0 @@
-+ PDocStd:dbadmfile:PDocStd_obj_inc.In PDocStd:admfile:PDocStd_src.Out
-+ * PDocStd:admfile:PDocStd_xcpp_src.Out
-+ PDocStd:dbadmfile:PDocStd_obj_inc.Out PDocStd:admfile:PDocStd_src.Out
-+ * PDocStd:admfile:PDocStd_xcpp_src.Out
-+ PDocStd:dbadmfile:PDocStd_obj_inc.Dep PDocStd:admfile:PDocStd_src.Out
-+ * PDocStd:admfile:PDocStd_xcpp_src.Out

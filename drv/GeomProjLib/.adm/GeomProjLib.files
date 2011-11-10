@@ -1,9 +1,0 @@
-pubinclude GeomProjLib.hxx
-privinclude GeomProjLib.jxx
-privinclude GeomProjLib.ixx
-dbadmfile GeomProjLib_xcpp_header.In
-dbadmfile GeomProjLib_xcpp_header.Out
-dbadmfile GeomProjLib_xcpp_header.Dep
-dbadmfile GeomProjLib_obj_inc.In
-dbadmfile GeomProjLib_obj_inc.Out
-dbadmfile GeomProjLib_obj_inc.Dep

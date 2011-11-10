@@ -1,4 +1,0 @@
-+ Primitives:pubinclude:Primitives_Direction.hxx Primitives:msentity:Primitives_Direction
-+ Primitives:dbadmfile:Primitives_xcpp_header.In Primitives:admfile:Primitives_xcpp_fill.Out
-+ Primitives:dbadmfile:Primitives_xcpp_header.Out Primitives:admfile:Primitives_xcpp_fill.Out
-+ Primitives:dbadmfile:Primitives_xcpp_header.Dep Primitives:admfile:Primitives_xcpp_fill.Out

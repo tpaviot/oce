@@ -1,6 +1,0 @@
-+ GccInt:dbadmfile:GccInt_obj_inc.In GccInt:admfile:GccInt_src.Out
-+ * GccInt:admfile:GccInt_xcpp_src.Out
-+ GccInt:dbadmfile:GccInt_obj_inc.Out GccInt:admfile:GccInt_src.Out
-+ * GccInt:admfile:GccInt_xcpp_src.Out
-+ GccInt:dbadmfile:GccInt_obj_inc.Dep GccInt:admfile:GccInt_src.Out
-+ * GccInt:admfile:GccInt_xcpp_src.Out

@@ -1,6 +1,0 @@
-+M Adaptor2d:pubinclude:Adaptor2d_HCurve2d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Adaptor2d_HCurve2d.lxx
-+M Adaptor2d:pubinclude:Adaptor2d_GenHCurve2d.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Adaptor2d_GenHCurve2d.gxx
-+M Adaptor2d:pubinclude:Adaptor2d_GenHCurve2d.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/Adaptor2d_GenHCurve2d.lxx
-+M Adaptor2d:dbadmfile:Adaptor2d_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Adaptor2d/.adm/Adaptor2d_obj_inc.In
-+M Adaptor2d:dbadmfile:Adaptor2d_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Adaptor2d/.adm/Adaptor2d_obj_inc.Out
-+M Adaptor2d:dbadmfile:Adaptor2d_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/Adaptor2d/.adm/Adaptor2d_obj_inc.Dep

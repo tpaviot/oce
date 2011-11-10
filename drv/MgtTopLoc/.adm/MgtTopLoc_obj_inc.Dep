@@ -1,6 +1,0 @@
-+ MgtTopLoc:dbadmfile:MgtTopLoc_obj_inc.In MgtTopLoc:admfile:MgtTopLoc_src.Out
-+ * MgtTopLoc:admfile:MgtTopLoc_xcpp_src.Out
-+ MgtTopLoc:dbadmfile:MgtTopLoc_obj_inc.Out MgtTopLoc:admfile:MgtTopLoc_src.Out
-+ * MgtTopLoc:admfile:MgtTopLoc_xcpp_src.Out
-+ MgtTopLoc:dbadmfile:MgtTopLoc_obj_inc.Dep MgtTopLoc:admfile:MgtTopLoc_src.Out
-+ * MgtTopLoc:admfile:MgtTopLoc_xcpp_src.Out

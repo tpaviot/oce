@@ -1,6 +1,0 @@
-+ BRepTest:pubinclude:BRepTest.hxx BRepTest:msentity:BRepTest
-+ BRepTest:privinclude:BRepTest.jxx BRepTest:msentity:BRepTest
-+ BRepTest:privinclude:BRepTest.ixx BRepTest:msentity:BRepTest
-+ BRepTest:dbadmfile:BRepTest_xcpp_header.In BRepTest:admfile:BRepTest_xcpp_fill.Out
-+ BRepTest:dbadmfile:BRepTest_xcpp_header.Out BRepTest:admfile:BRepTest_xcpp_fill.Out
-+ BRepTest:dbadmfile:BRepTest_xcpp_header.Dep BRepTest:admfile:BRepTest_xcpp_fill.Out

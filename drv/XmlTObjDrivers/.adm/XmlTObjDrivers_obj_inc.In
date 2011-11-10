@@ -1,9 +1,0 @@
-+ XmlTObjDrivers:source:XmlTObjDrivers.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_DocumentRetrievalDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_DocumentStorageDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_IntSparseArrayDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_IntSparseArrayDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_ModelDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_ModelDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_ObjectDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_ObjectDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_ReferenceDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_ReferenceDriver.hxx
-+ XmlTObjDrivers:source:XmlTObjDrivers_XYZDriver.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/XmlTObjDrivers/XmlTObjDrivers_XYZDriver.hxx
-- XmlTObjDrivers:admfile:XmlTObjDrivers_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/XmlTObjDrivers/XmlTObjDrivers_src.Out

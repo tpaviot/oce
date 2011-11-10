@@ -1,6 +1,0 @@
-+ BRepToIGES:dbadmfile:BRepToIGES_obj_inc.In BRepToIGES:admfile:BRepToIGES_src.Out
-+ * BRepToIGES:admfile:BRepToIGES_xcpp_src.Out
-+ BRepToIGES:dbadmfile:BRepToIGES_obj_inc.Out BRepToIGES:admfile:BRepToIGES_src.Out
-+ * BRepToIGES:admfile:BRepToIGES_xcpp_src.Out
-+ BRepToIGES:dbadmfile:BRepToIGES_obj_inc.Dep BRepToIGES:admfile:BRepToIGES_src.Out
-+ * BRepToIGES:admfile:BRepToIGES_xcpp_src.Out

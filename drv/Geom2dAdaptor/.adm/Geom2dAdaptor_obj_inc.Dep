@@ -1,7 +1,0 @@
-+ Geom2dAdaptor:pubinclude:Geom2dAdaptor_Curve.lxx Geom2dAdaptor:source:Geom2dAdaptor_Curve.lxx
-+ Geom2dAdaptor:dbadmfile:Geom2dAdaptor_obj_inc.In Geom2dAdaptor:admfile:Geom2dAdaptor_src.Out
-+ * Geom2dAdaptor:admfile:Geom2dAdaptor_xcpp_src.Out
-+ Geom2dAdaptor:dbadmfile:Geom2dAdaptor_obj_inc.Out Geom2dAdaptor:admfile:Geom2dAdaptor_src.Out
-+ * Geom2dAdaptor:admfile:Geom2dAdaptor_xcpp_src.Out
-+ Geom2dAdaptor:dbadmfile:Geom2dAdaptor_obj_inc.Dep Geom2dAdaptor:admfile:Geom2dAdaptor_src.Out
-+ * Geom2dAdaptor:admfile:Geom2dAdaptor_xcpp_src.Out

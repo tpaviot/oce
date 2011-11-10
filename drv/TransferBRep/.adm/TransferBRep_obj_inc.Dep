@@ -1,7 +1,0 @@
-+ TransferBRep:pubinclude:TransferBRep_TransferResultInfo.lxx TransferBRep:source:TransferBRep_TransferResultInfo.lxx
-+ TransferBRep:dbadmfile:TransferBRep_obj_inc.In TransferBRep:admfile:TransferBRep_src.Out
-+ * TransferBRep:admfile:TransferBRep_xcpp_src.Out
-+ TransferBRep:dbadmfile:TransferBRep_obj_inc.Out TransferBRep:admfile:TransferBRep_src.Out
-+ * TransferBRep:admfile:TransferBRep_xcpp_src.Out
-+ TransferBRep:dbadmfile:TransferBRep_obj_inc.Dep TransferBRep:admfile:TransferBRep_src.Out
-+ * TransferBRep:admfile:TransferBRep_xcpp_src.Out

@@ -1,9 +1,0 @@
-+ IGESConvGeom:pubinclude:IGESConvGeom.hxx IGESConvGeom:msentity:IGESConvGeom
-+ IGESConvGeom:privinclude:IGESConvGeom.jxx IGESConvGeom:msentity:IGESConvGeom
-+ IGESConvGeom:privinclude:IGESConvGeom.ixx IGESConvGeom:msentity:IGESConvGeom
-+ IGESConvGeom:pubinclude:IGESConvGeom_GeomBuilder.hxx IGESConvGeom:msentity:IGESConvGeom_GeomBuilder
-+ IGESConvGeom:privinclude:IGESConvGeom_GeomBuilder.jxx IGESConvGeom:msentity:IGESConvGeom_GeomBuilder
-+ IGESConvGeom:privinclude:IGESConvGeom_GeomBuilder.ixx IGESConvGeom:msentity:IGESConvGeom_GeomBuilder
-+ IGESConvGeom:dbadmfile:IGESConvGeom_xcpp_header.In IGESConvGeom:admfile:IGESConvGeom_xcpp_fill.Out
-+ IGESConvGeom:dbadmfile:IGESConvGeom_xcpp_header.Out IGESConvGeom:admfile:IGESConvGeom_xcpp_fill.Out
-+ IGESConvGeom:dbadmfile:IGESConvGeom_xcpp_header.Dep IGESConvGeom:admfile:IGESConvGeom_xcpp_fill.Out

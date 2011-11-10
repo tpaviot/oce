@@ -1,8 +1,0 @@
-+ TestTopOpeDraw:pubinclude:TestTopOpeDraw_Displayer.hxx TestTopOpeDraw:source:TestTopOpeDraw_Displayer.hxx
-+ TestTopOpeDraw:pubinclude:TestTopOpeDraw_TTOT.hxx TestTopOpeDraw:source:TestTopOpeDraw_TTOT.hxx
-+ TestTopOpeDraw:dbadmfile:TestTopOpeDraw_obj_inc.In TestTopOpeDraw:admfile:TestTopOpeDraw_src.Out
-+ * TestTopOpeDraw:admfile:TestTopOpeDraw_xcpp_src.Out
-+ TestTopOpeDraw:dbadmfile:TestTopOpeDraw_obj_inc.Out TestTopOpeDraw:admfile:TestTopOpeDraw_src.Out
-+ * TestTopOpeDraw:admfile:TestTopOpeDraw_xcpp_src.Out
-+ TestTopOpeDraw:dbadmfile:TestTopOpeDraw_obj_inc.Dep TestTopOpeDraw:admfile:TestTopOpeDraw_src.Out
-+ * TestTopOpeDraw:admfile:TestTopOpeDraw_xcpp_src.Out

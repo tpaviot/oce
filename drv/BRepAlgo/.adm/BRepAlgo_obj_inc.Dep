@@ -1,6 +1,0 @@
-+ BRepAlgo:dbadmfile:BRepAlgo_obj_inc.In BRepAlgo:admfile:BRepAlgo_src.Out
-+ * BRepAlgo:admfile:BRepAlgo_xcpp_src.Out
-+ BRepAlgo:dbadmfile:BRepAlgo_obj_inc.Out BRepAlgo:admfile:BRepAlgo_src.Out
-+ * BRepAlgo:admfile:BRepAlgo_xcpp_src.Out
-+ BRepAlgo:dbadmfile:BRepAlgo_obj_inc.Dep BRepAlgo:admfile:BRepAlgo_src.Out
-+ * BRepAlgo:admfile:BRepAlgo_xcpp_src.Out

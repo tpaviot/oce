@@ -1,6 +1,0 @@
-+ FEmTool:dbadmfile:FEmTool_obj_inc.In FEmTool:admfile:FEmTool_src.Out
-+ * FEmTool:admfile:FEmTool_xcpp_src.Out
-+ FEmTool:dbadmfile:FEmTool_obj_inc.Out FEmTool:admfile:FEmTool_src.Out
-+ * FEmTool:admfile:FEmTool_xcpp_src.Out
-+ FEmTool:dbadmfile:FEmTool_obj_inc.Dep FEmTool:admfile:FEmTool_src.Out
-+ * FEmTool:admfile:FEmTool_xcpp_src.Out

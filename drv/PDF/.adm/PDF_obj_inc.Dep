@@ -1,7 +1,0 @@
-+ PDF:pubinclude:PDF_Data.lxx PDF:source:PDF_Data.lxx
-+ PDF:dbadmfile:PDF_obj_inc.In PDF:admfile:PDF_src.Out
-+ * PDF:admfile:PDF_xcpp_src.Out
-+ PDF:dbadmfile:PDF_obj_inc.Out PDF:admfile:PDF_src.Out
-+ * PDF:admfile:PDF_xcpp_src.Out
-+ PDF:dbadmfile:PDF_obj_inc.Dep PDF:admfile:PDF_src.Out
-+ * PDF:admfile:PDF_xcpp_src.Out

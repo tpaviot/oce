@@ -1,5 +1,0 @@
-+V DDataStd:msentity:DDataStd .
-+V DDataStd:msentity:DDataStd_DrawPresentation .
-+V DDataStd:msentity:DDataStd_DrawDriver .
-+V DDataStd:msentity:DDataStd_TreeBrowser .
-- DDataStd:admfile:DDataStd_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/DDataStd/DDataStd_xcpp_fill.Out

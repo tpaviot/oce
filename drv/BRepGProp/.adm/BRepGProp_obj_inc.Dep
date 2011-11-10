@@ -1,8 +1,0 @@
-+ BRepGProp:pubinclude:BRepGProp_Face.lxx BRepGProp:source:BRepGProp_Face.lxx
-+ BRepGProp:pubinclude:BRepGProp_Domain.lxx BRepGProp:source:BRepGProp_Domain.lxx
-+ BRepGProp:dbadmfile:BRepGProp_obj_inc.In BRepGProp:admfile:BRepGProp_src.Out
-+ * BRepGProp:admfile:BRepGProp_xcpp_src.Out
-+ BRepGProp:dbadmfile:BRepGProp_obj_inc.Out BRepGProp:admfile:BRepGProp_src.Out
-+ * BRepGProp:admfile:BRepGProp_xcpp_src.Out
-+ BRepGProp:dbadmfile:BRepGProp_obj_inc.Dep BRepGProp:admfile:BRepGProp_src.Out
-+ * BRepGProp:admfile:BRepGProp_xcpp_src.Out

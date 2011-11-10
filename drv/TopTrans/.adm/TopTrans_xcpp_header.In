@@ -1,5 +1,0 @@
-+V TopTrans:msentity:TopTrans .
-+V TopTrans:msentity:TopTrans_Array2OfOrientation .
-+V TopTrans:msentity:TopTrans_CurveTransition .
-+V TopTrans:msentity:TopTrans_SurfaceTransition .
-- TopTrans:admfile:TopTrans_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/TopTrans/TopTrans_xcpp_fill.Out

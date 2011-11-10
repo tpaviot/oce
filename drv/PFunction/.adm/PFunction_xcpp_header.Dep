@@ -1,7 +1,0 @@
-+ PFunction:pubinclude:Handle_PFunction_Function.hxx PFunction:msentity:PFunction_Function
-+ PFunction:pubinclude:PFunction_Function.hxx PFunction:msentity:PFunction_Function
-+ PFunction:privinclude:PFunction_Function.jxx PFunction:msentity:PFunction_Function
-+ PFunction:privinclude:PFunction_Function.ixx PFunction:msentity:PFunction_Function
-+ PFunction:dbadmfile:PFunction_xcpp_header.In PFunction:admfile:PFunction_xcpp_fill.Out
-+ PFunction:dbadmfile:PFunction_xcpp_header.Out PFunction:admfile:PFunction_xcpp_fill.Out
-+ PFunction:dbadmfile:PFunction_xcpp_header.Dep PFunction:admfile:PFunction_xcpp_fill.Out

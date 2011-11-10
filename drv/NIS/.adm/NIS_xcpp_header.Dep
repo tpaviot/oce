@@ -1,3 +1,0 @@
-+ NIS:dbadmfile:NIS_xcpp_header.In NIS:admfile:NIS_xcpp_fill.Out
-+ NIS:dbadmfile:NIS_xcpp_header.Out NIS:admfile:NIS_xcpp_fill.Out
-+ NIS:dbadmfile:NIS_xcpp_header.Dep NIS:admfile:NIS_xcpp_fill.Out

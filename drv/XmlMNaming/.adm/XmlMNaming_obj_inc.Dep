@@ -1,7 +1,0 @@
-+ XmlMNaming:pubinclude:XmlMNaming_NamedShapeDriver.lxx XmlMNaming:source:XmlMNaming_NamedShapeDriver.lxx
-+ XmlMNaming:dbadmfile:XmlMNaming_obj_inc.In XmlMNaming:admfile:XmlMNaming_src.Out
-+ * XmlMNaming:admfile:XmlMNaming_xcpp_src.Out
-+ XmlMNaming:dbadmfile:XmlMNaming_obj_inc.Out XmlMNaming:admfile:XmlMNaming_src.Out
-+ * XmlMNaming:admfile:XmlMNaming_xcpp_src.Out
-+ XmlMNaming:dbadmfile:XmlMNaming_obj_inc.Dep XmlMNaming:admfile:XmlMNaming_src.Out
-+ * XmlMNaming:admfile:XmlMNaming_xcpp_src.Out

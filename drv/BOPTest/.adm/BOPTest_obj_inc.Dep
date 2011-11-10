@@ -1,6 +1,0 @@
-+ BOPTest:dbadmfile:BOPTest_obj_inc.In BOPTest:admfile:BOPTest_src.Out
-+ * BOPTest:admfile:BOPTest_xcpp_src.Out
-+ BOPTest:dbadmfile:BOPTest_obj_inc.Out BOPTest:admfile:BOPTest_src.Out
-+ * BOPTest:admfile:BOPTest_xcpp_src.Out
-+ BOPTest:dbadmfile:BOPTest_obj_inc.Dep BOPTest:admfile:BOPTest_src.Out
-+ * BOPTest:admfile:BOPTest_xcpp_src.Out

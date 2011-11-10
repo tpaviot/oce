@@ -1,7 +1,0 @@
-+ BRepTools:pubinclude:BRepTools_Modifier.lxx BRepTools:source:BRepTools_Modifier.lxx
-+ BRepTools:dbadmfile:BRepTools_obj_inc.In BRepTools:admfile:BRepTools_src.Out
-+ * BRepTools:admfile:BRepTools_xcpp_src.Out
-+ BRepTools:dbadmfile:BRepTools_obj_inc.Out BRepTools:admfile:BRepTools_src.Out
-+ * BRepTools:admfile:BRepTools_xcpp_src.Out
-+ BRepTools:dbadmfile:BRepTools_obj_inc.Dep BRepTools:admfile:BRepTools_src.Out
-+ * BRepTools:admfile:BRepTools_xcpp_src.Out

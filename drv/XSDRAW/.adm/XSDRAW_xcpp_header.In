@@ -1,5 +1,0 @@
-+V XSDRAW:msentity:XSDRAW .
-+V XSDRAW:msentity:XSDRAW_Functions .
-+V XSDRAW:msentity:XSDRAW_Shape .
-+V XSDRAW:msentity:XSDRAW_Vars .
-- XSDRAW:admfile:XSDRAW_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/XSDRAW/XSDRAW_xcpp_fill.Out

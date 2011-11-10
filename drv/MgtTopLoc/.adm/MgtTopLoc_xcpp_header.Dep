@@ -1,6 +1,0 @@
-+ MgtTopLoc:pubinclude:MgtTopLoc.hxx MgtTopLoc:msentity:MgtTopLoc
-+ MgtTopLoc:privinclude:MgtTopLoc.jxx MgtTopLoc:msentity:MgtTopLoc
-+ MgtTopLoc:privinclude:MgtTopLoc.ixx MgtTopLoc:msentity:MgtTopLoc
-+ MgtTopLoc:dbadmfile:MgtTopLoc_xcpp_header.In MgtTopLoc:admfile:MgtTopLoc_xcpp_fill.Out
-+ MgtTopLoc:dbadmfile:MgtTopLoc_xcpp_header.Out MgtTopLoc:admfile:MgtTopLoc_xcpp_fill.Out
-+ MgtTopLoc:dbadmfile:MgtTopLoc_xcpp_header.Dep MgtTopLoc:admfile:MgtTopLoc_xcpp_fill.Out

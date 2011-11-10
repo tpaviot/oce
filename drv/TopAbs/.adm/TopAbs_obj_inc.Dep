@@ -1,6 +1,0 @@
-+ TopAbs:dbadmfile:TopAbs_obj_inc.In TopAbs:admfile:TopAbs_src.Out
-+ * TopAbs:admfile:TopAbs_xcpp_src.Out
-+ TopAbs:dbadmfile:TopAbs_obj_inc.Out TopAbs:admfile:TopAbs_src.Out
-+ * TopAbs:admfile:TopAbs_xcpp_src.Out
-+ TopAbs:dbadmfile:TopAbs_obj_inc.Dep TopAbs:admfile:TopAbs_src.Out
-+ * TopAbs:admfile:TopAbs_xcpp_src.Out

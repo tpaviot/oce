@@ -1,5 +1,0 @@
-+V BndLib:msentity:BndLib .
-+V BndLib:msentity:BndLib_Add3dCurve .
-+V BndLib:msentity:BndLib_Add2dCurve .
-+V BndLib:msentity:BndLib_AddSurface .
-- BndLib:admfile:BndLib_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BndLib/BndLib_xcpp_fill.Out

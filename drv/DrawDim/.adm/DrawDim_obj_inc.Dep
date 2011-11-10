@@ -1,6 +1,0 @@
-+ DrawDim:dbadmfile:DrawDim_obj_inc.In DrawDim:admfile:DrawDim_src.Out
-+ * DrawDim:admfile:DrawDim_xcpp_src.Out
-+ DrawDim:dbadmfile:DrawDim_obj_inc.Out DrawDim:admfile:DrawDim_src.Out
-+ * DrawDim:admfile:DrawDim_xcpp_src.Out
-+ DrawDim:dbadmfile:DrawDim_obj_inc.Dep DrawDim:admfile:DrawDim_src.Out
-+ * DrawDim:admfile:DrawDim_xcpp_src.Out

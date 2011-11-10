@@ -1,8 +1,0 @@
-+ Convert:pubinclude:Convert_CosAndSinEvalFunction.hxx Convert:source:Convert_CosAndSinEvalFunction.hxx
-+ Convert:pubinclude:Convert_PolynomialCosAndSin.hxx Convert:source:Convert_PolynomialCosAndSin.hxx
-+ Convert:dbadmfile:Convert_obj_inc.In Convert:admfile:Convert_src.Out
-+ * Convert:admfile:Convert_xcpp_src.Out
-+ Convert:dbadmfile:Convert_obj_inc.Out Convert:admfile:Convert_src.Out
-+ * Convert:admfile:Convert_xcpp_src.Out
-+ Convert:dbadmfile:Convert_obj_inc.Dep Convert:admfile:Convert_src.Out
-+ * Convert:admfile:Convert_xcpp_src.Out

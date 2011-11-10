@@ -1,6 +1,0 @@
-+ XSDRAWSTEP:pubinclude:XSDRAWSTEP.hxx XSDRAWSTEP:msentity:XSDRAWSTEP
-+ XSDRAWSTEP:privinclude:XSDRAWSTEP.jxx XSDRAWSTEP:msentity:XSDRAWSTEP
-+ XSDRAWSTEP:privinclude:XSDRAWSTEP.ixx XSDRAWSTEP:msentity:XSDRAWSTEP
-+ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.In XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_fill.Out
-+ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.Out XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_fill.Out
-+ XSDRAWSTEP:dbadmfile:XSDRAWSTEP_xcpp_header.Dep XSDRAWSTEP:admfile:XSDRAWSTEP_xcpp_fill.Out

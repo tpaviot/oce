@@ -1,7 +1,0 @@
-+ PMMgt:pubinclude:Handle_PMMgt_PManaged.hxx PMMgt:msentity:PMMgt_PManaged
-+ PMMgt:pubinclude:PMMgt_PManaged.hxx PMMgt:msentity:PMMgt_PManaged
-+ PMMgt:privinclude:PMMgt_PManaged.jxx PMMgt:msentity:PMMgt_PManaged
-+ PMMgt:privinclude:PMMgt_PManaged.ixx PMMgt:msentity:PMMgt_PManaged
-+ PMMgt:dbadmfile:PMMgt_xcpp_header.In PMMgt:admfile:PMMgt_xcpp_fill.Out
-+ PMMgt:dbadmfile:PMMgt_xcpp_header.Out PMMgt:admfile:PMMgt_xcpp_fill.Out
-+ PMMgt:dbadmfile:PMMgt_xcpp_header.Dep PMMgt:admfile:PMMgt_xcpp_fill.Out

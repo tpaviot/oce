@@ -1,7 +1,0 @@
-+ BRepBuilderAPI:pubinclude:BRepBuilderAPI_Sewing.lxx BRepBuilderAPI:source:BRepBuilderAPI_Sewing.lxx
-+ BRepBuilderAPI:dbadmfile:BRepBuilderAPI_obj_inc.In BRepBuilderAPI:admfile:BRepBuilderAPI_src.Out
-+ * BRepBuilderAPI:admfile:BRepBuilderAPI_xcpp_src.Out
-+ BRepBuilderAPI:dbadmfile:BRepBuilderAPI_obj_inc.Out BRepBuilderAPI:admfile:BRepBuilderAPI_src.Out
-+ * BRepBuilderAPI:admfile:BRepBuilderAPI_xcpp_src.Out
-+ BRepBuilderAPI:dbadmfile:BRepBuilderAPI_obj_inc.Dep BRepBuilderAPI:admfile:BRepBuilderAPI_src.Out
-+ * BRepBuilderAPI:admfile:BRepBuilderAPI_xcpp_src.Out

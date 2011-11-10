@@ -1,6 +1,0 @@
-+ MgtGeom2d:dbadmfile:MgtGeom2d_obj_inc.In MgtGeom2d:admfile:MgtGeom2d_src.Out
-+ * MgtGeom2d:admfile:MgtGeom2d_xcpp_src.Out
-+ MgtGeom2d:dbadmfile:MgtGeom2d_obj_inc.Out MgtGeom2d:admfile:MgtGeom2d_src.Out
-+ * MgtGeom2d:admfile:MgtGeom2d_xcpp_src.Out
-+ MgtGeom2d:dbadmfile:MgtGeom2d_obj_inc.Dep MgtGeom2d:admfile:MgtGeom2d_src.Out
-+ * MgtGeom2d:admfile:MgtGeom2d_xcpp_src.Out

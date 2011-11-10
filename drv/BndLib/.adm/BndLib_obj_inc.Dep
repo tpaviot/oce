@@ -1,8 +1,0 @@
-+ BndLib:pubinclude:BndLib_Compute.hxx BndLib:source:BndLib_Compute.hxx
-+ BndLib:pubinclude:BndLib_Compute.gxx BndLib:source:BndLib_Compute.gxx
-+ BndLib:dbadmfile:BndLib_obj_inc.In BndLib:admfile:BndLib_src.Out
-+ * BndLib:admfile:BndLib_xcpp_src.Out
-+ BndLib:dbadmfile:BndLib_obj_inc.Out BndLib:admfile:BndLib_src.Out
-+ * BndLib:admfile:BndLib_xcpp_src.Out
-+ BndLib:dbadmfile:BndLib_obj_inc.Dep BndLib:admfile:BndLib_src.Out
-+ * BndLib:admfile:BndLib_xcpp_src.Out

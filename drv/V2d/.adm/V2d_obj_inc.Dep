@@ -1,6 +1,0 @@
-+ V2d:dbadmfile:V2d_obj_inc.In V2d:admfile:V2d_src.Out
-+ * V2d:admfile:V2d_xcpp_src.Out
-+ V2d:dbadmfile:V2d_obj_inc.Out V2d:admfile:V2d_src.Out
-+ * V2d:admfile:V2d_xcpp_src.Out
-+ V2d:dbadmfile:V2d_obj_inc.Dep V2d:admfile:V2d_src.Out
-+ * V2d:admfile:V2d_xcpp_src.Out

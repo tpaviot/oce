@@ -1,7 +1,0 @@
-+ AppStd:pubinclude:Handle_AppStd_Application.hxx AppStd:msentity:AppStd_Application
-+ AppStd:pubinclude:AppStd_Application.hxx AppStd:msentity:AppStd_Application
-+ AppStd:privinclude:AppStd_Application.jxx AppStd:msentity:AppStd_Application
-+ AppStd:privinclude:AppStd_Application.ixx AppStd:msentity:AppStd_Application
-+ AppStd:dbadmfile:AppStd_xcpp_header.In AppStd:admfile:AppStd_xcpp_fill.Out
-+ AppStd:dbadmfile:AppStd_xcpp_header.Out AppStd:admfile:AppStd_xcpp_fill.Out
-+ AppStd:dbadmfile:AppStd_xcpp_header.Dep AppStd:admfile:AppStd_xcpp_fill.Out

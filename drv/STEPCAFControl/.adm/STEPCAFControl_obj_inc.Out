@@ -1,4 +1,0 @@
-+M STEPCAFControl:pubinclude:STEPCAFControl_ExternFile.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/STEPCAFControl_ExternFile.lxx
-+M STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/STEPCAFControl/.adm/STEPCAFControl_obj_inc.In
-+M STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/STEPCAFControl/.adm/STEPCAFControl_obj_inc.Out
-+M STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/STEPCAFControl/.adm/STEPCAFControl_obj_inc.Dep

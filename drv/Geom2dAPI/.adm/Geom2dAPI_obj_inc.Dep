@@ -1,9 +1,0 @@
-+ Geom2dAPI:pubinclude:Geom2dAPI_ProjectPointOnCurve.lxx Geom2dAPI:source:Geom2dAPI_ProjectPointOnCurve.lxx
-+ Geom2dAPI:pubinclude:Geom2dAPI_ExtremaCurveCurve.lxx Geom2dAPI:source:Geom2dAPI_ExtremaCurveCurve.lxx
-+ Geom2dAPI:pubinclude:Geom2dAPI_InterCurveCurve.lxx Geom2dAPI:source:Geom2dAPI_InterCurveCurve.lxx
-+ Geom2dAPI:dbadmfile:Geom2dAPI_obj_inc.In Geom2dAPI:admfile:Geom2dAPI_src.Out
-+ * Geom2dAPI:admfile:Geom2dAPI_xcpp_src.Out
-+ Geom2dAPI:dbadmfile:Geom2dAPI_obj_inc.Out Geom2dAPI:admfile:Geom2dAPI_src.Out
-+ * Geom2dAPI:admfile:Geom2dAPI_xcpp_src.Out
-+ Geom2dAPI:dbadmfile:Geom2dAPI_obj_inc.Dep Geom2dAPI:admfile:Geom2dAPI_src.Out
-+ * Geom2dAPI:admfile:Geom2dAPI_xcpp_src.Out

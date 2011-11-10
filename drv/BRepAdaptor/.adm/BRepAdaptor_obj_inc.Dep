@@ -1,7 +1,0 @@
-+ BRepAdaptor:pubinclude:BRepAdaptor_Surface.lxx BRepAdaptor:source:BRepAdaptor_Surface.lxx
-+ BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.In BRepAdaptor:admfile:BRepAdaptor_src.Out
-+ * BRepAdaptor:admfile:BRepAdaptor_xcpp_src.Out
-+ BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.Out BRepAdaptor:admfile:BRepAdaptor_src.Out
-+ * BRepAdaptor:admfile:BRepAdaptor_xcpp_src.Out
-+ BRepAdaptor:dbadmfile:BRepAdaptor_obj_inc.Dep BRepAdaptor:admfile:BRepAdaptor_src.Out
-+ * BRepAdaptor:admfile:BRepAdaptor_xcpp_src.Out

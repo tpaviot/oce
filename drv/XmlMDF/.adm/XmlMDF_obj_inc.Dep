@@ -1,6 +1,0 @@
-+ XmlMDF:dbadmfile:XmlMDF_obj_inc.In XmlMDF:admfile:XmlMDF_src.Out
-+ * XmlMDF:admfile:XmlMDF_xcpp_src.Out
-+ XmlMDF:dbadmfile:XmlMDF_obj_inc.Out XmlMDF:admfile:XmlMDF_src.Out
-+ * XmlMDF:admfile:XmlMDF_xcpp_src.Out
-+ XmlMDF:dbadmfile:XmlMDF_obj_inc.Dep XmlMDF:admfile:XmlMDF_src.Out
-+ * XmlMDF:admfile:XmlMDF_xcpp_src.Out

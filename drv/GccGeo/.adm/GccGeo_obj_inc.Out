@@ -1,9 +1,0 @@
-+M GccGeo:pubinclude:GccGeo_CurvePGTool.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_CurvePGTool.gxx
-+M GccGeo:pubinclude:GccGeo_ParGenCurve.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_ParGenCurve.gxx
-+M GccGeo:pubinclude:GccGeo_Circ2dTanCen.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_Circ2dTanCen.gxx
-+M GccGeo:pubinclude:GccGeo_Circ2d2TanRad.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_Circ2d2TanRad.gxx
-+M GccGeo:pubinclude:GccGeo_Circ2dTanOnRad.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_Circ2dTanOnRad.gxx
-+M GccGeo:pubinclude:GccGeo_Circ2d2TanOn.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/GccGeo_Circ2d2TanOn.gxx
-+M GccGeo:dbadmfile:GccGeo_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GccGeo/.adm/GccGeo_obj_inc.In
-+M GccGeo:dbadmfile:GccGeo_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GccGeo/.adm/GccGeo_obj_inc.Out
-+M GccGeo:dbadmfile:GccGeo_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/GccGeo/.adm/GccGeo_obj_inc.Dep

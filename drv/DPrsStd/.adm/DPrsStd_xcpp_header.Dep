@@ -1,6 +1,0 @@
-+ DPrsStd:pubinclude:DPrsStd.hxx DPrsStd:msentity:DPrsStd
-+ DPrsStd:privinclude:DPrsStd.jxx DPrsStd:msentity:DPrsStd
-+ DPrsStd:privinclude:DPrsStd.ixx DPrsStd:msentity:DPrsStd
-+ DPrsStd:dbadmfile:DPrsStd_xcpp_header.In DPrsStd:admfile:DPrsStd_xcpp_fill.Out
-+ DPrsStd:dbadmfile:DPrsStd_xcpp_header.Out DPrsStd:admfile:DPrsStd_xcpp_fill.Out
-+ DPrsStd:dbadmfile:DPrsStd_xcpp_header.Dep DPrsStd:admfile:DPrsStd_xcpp_fill.Out

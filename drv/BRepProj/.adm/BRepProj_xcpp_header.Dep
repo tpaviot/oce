@@ -1,6 +1,0 @@
-+ BRepProj:pubinclude:BRepProj_Projection.hxx BRepProj:msentity:BRepProj_Projection
-+ BRepProj:privinclude:BRepProj_Projection.jxx BRepProj:msentity:BRepProj_Projection
-+ BRepProj:privinclude:BRepProj_Projection.ixx BRepProj:msentity:BRepProj_Projection
-+ BRepProj:dbadmfile:BRepProj_xcpp_header.In BRepProj:admfile:BRepProj_xcpp_fill.Out
-+ BRepProj:dbadmfile:BRepProj_xcpp_header.Out BRepProj:admfile:BRepProj_xcpp_fill.Out
-+ BRepProj:dbadmfile:BRepProj_xcpp_header.Dep BRepProj:admfile:BRepProj_xcpp_fill.Out
