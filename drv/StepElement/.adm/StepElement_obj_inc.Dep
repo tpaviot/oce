@@ -1,6 +1,0 @@
-+ StepElement:dbadmfile:StepElement_obj_inc.In StepElement:admfile:StepElement_src.Out
-+ * StepElement:admfile:StepElement_xcpp_src.Out
-+ StepElement:dbadmfile:StepElement_obj_inc.Out StepElement:admfile:StepElement_src.Out
-+ * StepElement:admfile:StepElement_xcpp_src.Out
-+ StepElement:dbadmfile:StepElement_obj_inc.Dep StepElement:admfile:StepElement_src.Out
-+ * StepElement:admfile:StepElement_xcpp_src.Out

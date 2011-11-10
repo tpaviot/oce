@@ -1,7 +1,0 @@
-+ IGESControl:pubinclude:IGESControl_Reader.lxx IGESControl:source:IGESControl_Reader.lxx
-+ IGESControl:dbadmfile:IGESControl_obj_inc.In IGESControl:admfile:IGESControl_src.Out
-+ * IGESControl:admfile:IGESControl_xcpp_src.Out
-+ IGESControl:dbadmfile:IGESControl_obj_inc.Out IGESControl:admfile:IGESControl_src.Out
-+ * IGESControl:admfile:IGESControl_xcpp_src.Out
-+ IGESControl:dbadmfile:IGESControl_obj_inc.Dep IGESControl:admfile:IGESControl_src.Out
-+ * IGESControl:admfile:IGESControl_xcpp_src.Out

@@ -1,9 +1,0 @@
-pubinclude DPrsStd.hxx
-privinclude DPrsStd.jxx
-privinclude DPrsStd.ixx
-dbadmfile DPrsStd_xcpp_header.In
-dbadmfile DPrsStd_xcpp_header.Out
-dbadmfile DPrsStd_xcpp_header.Dep
-dbadmfile DPrsStd_obj_inc.In
-dbadmfile DPrsStd_obj_inc.Out
-dbadmfile DPrsStd_obj_inc.Dep

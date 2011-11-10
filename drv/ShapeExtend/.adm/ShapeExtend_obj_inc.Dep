@@ -1,8 +1,0 @@
-+ ShapeExtend:pubinclude:ShapeExtend_ComplexCurve.lxx ShapeExtend:source:ShapeExtend_ComplexCurve.lxx
-+ ShapeExtend:pubinclude:ShapeExtend_MsgRegistrator.lxx ShapeExtend:source:ShapeExtend_MsgRegistrator.lxx
-+ ShapeExtend:dbadmfile:ShapeExtend_obj_inc.In ShapeExtend:admfile:ShapeExtend_src.Out
-+ * ShapeExtend:admfile:ShapeExtend_xcpp_src.Out
-+ ShapeExtend:dbadmfile:ShapeExtend_obj_inc.Out ShapeExtend:admfile:ShapeExtend_src.Out
-+ * ShapeExtend:admfile:ShapeExtend_xcpp_src.Out
-+ ShapeExtend:dbadmfile:ShapeExtend_obj_inc.Dep ShapeExtend:admfile:ShapeExtend_src.Out
-+ * ShapeExtend:admfile:ShapeExtend_xcpp_src.Out

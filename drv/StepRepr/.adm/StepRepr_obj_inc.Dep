@@ -1,6 +1,0 @@
-+ StepRepr:dbadmfile:StepRepr_obj_inc.In StepRepr:admfile:StepRepr_src.Out
-+ * StepRepr:admfile:StepRepr_xcpp_src.Out
-+ StepRepr:dbadmfile:StepRepr_obj_inc.Out StepRepr:admfile:StepRepr_src.Out
-+ * StepRepr:admfile:StepRepr_xcpp_src.Out
-+ StepRepr:dbadmfile:StepRepr_obj_inc.Dep StepRepr:admfile:StepRepr_src.Out
-+ * StepRepr:admfile:StepRepr_xcpp_src.Out

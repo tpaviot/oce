@@ -1,7 +1,0 @@
-+ BlendFunc:pubinclude:BlendFunc_Tensor.lxx BlendFunc:source:BlendFunc_Tensor.lxx
-+ BlendFunc:dbadmfile:BlendFunc_obj_inc.In BlendFunc:admfile:BlendFunc_src.Out
-+ * BlendFunc:admfile:BlendFunc_xcpp_src.Out
-+ BlendFunc:dbadmfile:BlendFunc_obj_inc.Out BlendFunc:admfile:BlendFunc_src.Out
-+ * BlendFunc:admfile:BlendFunc_xcpp_src.Out
-+ BlendFunc:dbadmfile:BlendFunc_obj_inc.Dep BlendFunc:admfile:BlendFunc_src.Out
-+ * BlendFunc:admfile:BlendFunc_xcpp_src.Out

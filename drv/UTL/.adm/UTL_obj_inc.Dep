@@ -1,6 +1,0 @@
-+ UTL:dbadmfile:UTL_obj_inc.In UTL:admfile:UTL_src.Out
-+ * UTL:admfile:UTL_xcpp_src.Out
-+ UTL:dbadmfile:UTL_obj_inc.Out UTL:admfile:UTL_src.Out
-+ * UTL:admfile:UTL_xcpp_src.Out
-+ UTL:dbadmfile:UTL_obj_inc.Dep UTL:admfile:UTL_src.Out
-+ * UTL:admfile:UTL_xcpp_src.Out

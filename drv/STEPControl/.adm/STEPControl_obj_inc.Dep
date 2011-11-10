@@ -1,6 +1,0 @@
-+ STEPControl:dbadmfile:STEPControl_obj_inc.In STEPControl:admfile:STEPControl_src.Out
-+ * STEPControl:admfile:STEPControl_xcpp_src.Out
-+ STEPControl:dbadmfile:STEPControl_obj_inc.Out STEPControl:admfile:STEPControl_src.Out
-+ * STEPControl:admfile:STEPControl_xcpp_src.Out
-+ STEPControl:dbadmfile:STEPControl_obj_inc.Dep STEPControl:admfile:STEPControl_src.Out
-+ * STEPControl:admfile:STEPControl_xcpp_src.Out

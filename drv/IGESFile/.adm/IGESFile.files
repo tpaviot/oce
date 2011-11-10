@@ -1,5 +1,0 @@
-pubinclude IGESFile_Read.hxx
-pubinclude igesread.h
-dbadmfile IGESFile_obj_inc.In
-dbadmfile IGESFile_obj_inc.Out
-dbadmfile IGESFile_obj_inc.Dep

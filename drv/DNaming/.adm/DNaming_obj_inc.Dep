@@ -1,7 +1,0 @@
-+ DNaming:pubinclude:ModelDefinitions.hxx DNaming:source:ModelDefinitions.hxx
-+ DNaming:dbadmfile:DNaming_obj_inc.In DNaming:admfile:DNaming_src.Out
-+ * DNaming:admfile:DNaming_xcpp_src.Out
-+ DNaming:dbadmfile:DNaming_obj_inc.Out DNaming:admfile:DNaming_src.Out
-+ * DNaming:admfile:DNaming_xcpp_src.Out
-+ DNaming:dbadmfile:DNaming_obj_inc.Dep DNaming:admfile:DNaming_src.Out
-+ * DNaming:admfile:DNaming_xcpp_src.Out

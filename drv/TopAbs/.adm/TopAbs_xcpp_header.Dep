@@ -1,9 +1,0 @@
-+ TopAbs:pubinclude:TopAbs.hxx TopAbs:msentity:TopAbs
-+ TopAbs:privinclude:TopAbs.jxx TopAbs:msentity:TopAbs
-+ TopAbs:privinclude:TopAbs.ixx TopAbs:msentity:TopAbs
-+ TopAbs:pubinclude:TopAbs_ShapeEnum.hxx TopAbs:msentity:TopAbs_ShapeEnum
-+ TopAbs:pubinclude:TopAbs_Orientation.hxx TopAbs:msentity:TopAbs_Orientation
-+ TopAbs:pubinclude:TopAbs_State.hxx TopAbs:msentity:TopAbs_State
-+ TopAbs:dbadmfile:TopAbs_xcpp_header.In TopAbs:admfile:TopAbs_xcpp_fill.Out
-+ TopAbs:dbadmfile:TopAbs_xcpp_header.Out TopAbs:admfile:TopAbs_xcpp_fill.Out
-+ TopAbs:dbadmfile:TopAbs_xcpp_header.Dep TopAbs:admfile:TopAbs_xcpp_fill.Out

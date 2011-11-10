@@ -1,8 +1,0 @@
-+ BRepPrim:pubinclude:BRepPrim_OneAxis.hxx BRepPrim:source:BRepPrim_OneAxis.hxx
-+ BRepPrim:pubinclude:BRepPrim_Builder.lxx BRepPrim:source:BRepPrim_Builder.lxx
-+ BRepPrim:dbadmfile:BRepPrim_obj_inc.In BRepPrim:admfile:BRepPrim_src.Out
-+ * BRepPrim:admfile:BRepPrim_xcpp_src.Out
-+ BRepPrim:dbadmfile:BRepPrim_obj_inc.Out BRepPrim:admfile:BRepPrim_src.Out
-+ * BRepPrim:admfile:BRepPrim_xcpp_src.Out
-+ BRepPrim:dbadmfile:BRepPrim_obj_inc.Dep BRepPrim:admfile:BRepPrim_src.Out
-+ * BRepPrim:admfile:BRepPrim_xcpp_src.Out

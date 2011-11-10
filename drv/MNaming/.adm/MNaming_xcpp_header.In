@@ -1,7 +1,0 @@
-+V MNaming:msentity:MNaming .
-+V MNaming:msentity:MNaming_NamedShapeRetrievalDriver .
-+V MNaming:msentity:MNaming_NamingRetrievalDriver .
-+V MNaming:msentity:MNaming_NamingRetrievalDriver_1 .
-+V MNaming:msentity:MNaming_NamedShapeStorageDriver .
-+V MNaming:msentity:MNaming_NamingStorageDriver .
-- MNaming:admfile:MNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/MNaming/MNaming_xcpp_fill.Out

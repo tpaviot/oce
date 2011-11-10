@@ -1,6 +1,0 @@
-+ ElCLib:pubinclude:ElCLib.hxx ElCLib:msentity:ElCLib
-+ ElCLib:privinclude:ElCLib.jxx ElCLib:msentity:ElCLib
-+ ElCLib:privinclude:ElCLib.ixx ElCLib:msentity:ElCLib
-+ ElCLib:dbadmfile:ElCLib_xcpp_header.In ElCLib:admfile:ElCLib_xcpp_fill.Out
-+ ElCLib:dbadmfile:ElCLib_xcpp_header.Out ElCLib:admfile:ElCLib_xcpp_fill.Out
-+ ElCLib:dbadmfile:ElCLib_xcpp_header.Dep ElCLib:admfile:ElCLib_xcpp_fill.Out

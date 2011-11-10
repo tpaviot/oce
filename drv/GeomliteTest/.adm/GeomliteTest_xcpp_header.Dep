@@ -1,6 +1,0 @@
-+ GeomliteTest:pubinclude:GeomliteTest.hxx GeomliteTest:msentity:GeomliteTest
-+ GeomliteTest:privinclude:GeomliteTest.jxx GeomliteTest:msentity:GeomliteTest
-+ GeomliteTest:privinclude:GeomliteTest.ixx GeomliteTest:msentity:GeomliteTest
-+ GeomliteTest:dbadmfile:GeomliteTest_xcpp_header.In GeomliteTest:admfile:GeomliteTest_xcpp_fill.Out
-+ GeomliteTest:dbadmfile:GeomliteTest_xcpp_header.Out GeomliteTest:admfile:GeomliteTest_xcpp_fill.Out
-+ GeomliteTest:dbadmfile:GeomliteTest_xcpp_header.Dep GeomliteTest:admfile:GeomliteTest_xcpp_fill.Out

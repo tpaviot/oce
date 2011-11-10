@@ -1,8 +1,0 @@
-+ MDF:pubinclude:MDF_RelocationTable.gxx MDF:source:MDF_RelocationTable.gxx
-+ MDF:pubinclude:MDF_DriverTable.gxx MDF:source:MDF_DriverTable.gxx
-+ MDF:dbadmfile:MDF_obj_inc.In MDF:admfile:MDF_src.Out
-+ * MDF:admfile:MDF_xcpp_src.Out
-+ MDF:dbadmfile:MDF_obj_inc.Out MDF:admfile:MDF_src.Out
-+ * MDF:admfile:MDF_xcpp_src.Out
-+ MDF:dbadmfile:MDF_obj_inc.Dep MDF:admfile:MDF_src.Out
-+ * MDF:admfile:MDF_xcpp_src.Out

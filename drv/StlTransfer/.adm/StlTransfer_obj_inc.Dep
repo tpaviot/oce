@@ -1,6 +1,0 @@
-+ StlTransfer:dbadmfile:StlTransfer_obj_inc.In StlTransfer:admfile:StlTransfer_src.Out
-+ * StlTransfer:admfile:StlTransfer_xcpp_src.Out
-+ StlTransfer:dbadmfile:StlTransfer_obj_inc.Out StlTransfer:admfile:StlTransfer_src.Out
-+ * StlTransfer:admfile:StlTransfer_xcpp_src.Out
-+ StlTransfer:dbadmfile:StlTransfer_obj_inc.Dep StlTransfer:admfile:StlTransfer_src.Out
-+ * StlTransfer:admfile:StlTransfer_xcpp_src.Out

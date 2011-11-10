@@ -1,7 +1,0 @@
-+ GeomConvert:pubinclude:GeomConvert_CompBezierSurfacesToBSplineSurface.lxx GeomConvert:source:GeomConvert_CompBezierSurfacesToBSplineSurface.lxx
-+ GeomConvert:dbadmfile:GeomConvert_obj_inc.In GeomConvert:admfile:GeomConvert_src.Out
-+ * GeomConvert:admfile:GeomConvert_xcpp_src.Out
-+ GeomConvert:dbadmfile:GeomConvert_obj_inc.Out GeomConvert:admfile:GeomConvert_src.Out
-+ * GeomConvert:admfile:GeomConvert_xcpp_src.Out
-+ GeomConvert:dbadmfile:GeomConvert_obj_inc.Dep GeomConvert:admfile:GeomConvert_src.Out
-+ * GeomConvert:admfile:GeomConvert_xcpp_src.Out

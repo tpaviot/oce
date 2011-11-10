@@ -1,6 +1,0 @@
-+ StdDrivers:dbadmfile:StdDrivers_obj_inc.In StdDrivers:admfile:StdDrivers_src.Out
-+ * StdDrivers:admfile:StdDrivers_xcpp_src.Out
-+ StdDrivers:dbadmfile:StdDrivers_obj_inc.Out StdDrivers:admfile:StdDrivers_src.Out
-+ * StdDrivers:admfile:StdDrivers_xcpp_src.Out
-+ StdDrivers:dbadmfile:StdDrivers_obj_inc.Dep StdDrivers:admfile:StdDrivers_src.Out
-+ * StdDrivers:admfile:StdDrivers_xcpp_src.Out

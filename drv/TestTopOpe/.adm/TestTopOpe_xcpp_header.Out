@@ -1,6 +1,0 @@
-+M TestTopOpe:pubinclude:TestTopOpe.hxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/TestTopOpe.hxx
-+M TestTopOpe:privinclude:TestTopOpe.jxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TestTopOpe/TestTopOpe.jxx
-+M TestTopOpe:privinclude:TestTopOpe.ixx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TestTopOpe/TestTopOpe.ixx
-+M TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TestTopOpe/.adm/TestTopOpe_xcpp_header.In
-+M TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TestTopOpe/.adm/TestTopOpe_xcpp_header.Out
-+M TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/TestTopOpe/.adm/TestTopOpe_xcpp_header.Dep

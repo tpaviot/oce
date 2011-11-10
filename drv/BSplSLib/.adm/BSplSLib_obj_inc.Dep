@@ -1,8 +1,0 @@
-+ BSplSLib:pubinclude:BSplSLib_EvaluatorFunction.hxx BSplSLib:source:BSplSLib_EvaluatorFunction.hxx
-+ BSplSLib:pubinclude:BSplSLib.lxx BSplSLib:source:BSplSLib.lxx
-+ BSplSLib:dbadmfile:BSplSLib_obj_inc.In BSplSLib:admfile:BSplSLib_src.Out
-+ * BSplSLib:admfile:BSplSLib_xcpp_src.Out
-+ BSplSLib:dbadmfile:BSplSLib_obj_inc.Out BSplSLib:admfile:BSplSLib_src.Out
-+ * BSplSLib:admfile:BSplSLib_xcpp_src.Out
-+ BSplSLib:dbadmfile:BSplSLib_obj_inc.Dep BSplSLib:admfile:BSplSLib_src.Out
-+ * BSplSLib:admfile:BSplSLib_xcpp_src.Out

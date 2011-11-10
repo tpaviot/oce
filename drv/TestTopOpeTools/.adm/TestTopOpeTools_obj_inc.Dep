@@ -1,7 +1,0 @@
-+ TestTopOpeTools:pubinclude:TestTopOpeTools_Trace.hxx TestTopOpeTools:source:TestTopOpeTools_Trace.hxx
-+ TestTopOpeTools:dbadmfile:TestTopOpeTools_obj_inc.In TestTopOpeTools:admfile:TestTopOpeTools_src.Out
-+ * TestTopOpeTools:admfile:TestTopOpeTools_xcpp_src.Out
-+ TestTopOpeTools:dbadmfile:TestTopOpeTools_obj_inc.Out TestTopOpeTools:admfile:TestTopOpeTools_src.Out
-+ * TestTopOpeTools:admfile:TestTopOpeTools_xcpp_src.Out
-+ TestTopOpeTools:dbadmfile:TestTopOpeTools_obj_inc.Dep TestTopOpeTools:admfile:TestTopOpeTools_src.Out
-+ * TestTopOpeTools:admfile:TestTopOpeTools_xcpp_src.Out

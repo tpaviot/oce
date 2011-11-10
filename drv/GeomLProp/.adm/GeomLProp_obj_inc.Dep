@@ -1,6 +1,0 @@
-+ GeomLProp:dbadmfile:GeomLProp_obj_inc.In GeomLProp:admfile:GeomLProp_src.Out
-+ * GeomLProp:admfile:GeomLProp_xcpp_src.Out
-+ GeomLProp:dbadmfile:GeomLProp_obj_inc.Out GeomLProp:admfile:GeomLProp_src.Out
-+ * GeomLProp:admfile:GeomLProp_xcpp_src.Out
-+ GeomLProp:dbadmfile:GeomLProp_obj_inc.Dep GeomLProp:admfile:GeomLProp_src.Out
-+ * GeomLProp:admfile:GeomLProp_xcpp_src.Out

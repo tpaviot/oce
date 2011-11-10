@@ -1,6 +1,0 @@
-+ XSDRAWIGES:pubinclude:XSDRAWIGES.hxx XSDRAWIGES:msentity:XSDRAWIGES
-+ XSDRAWIGES:privinclude:XSDRAWIGES.jxx XSDRAWIGES:msentity:XSDRAWIGES
-+ XSDRAWIGES:privinclude:XSDRAWIGES.ixx XSDRAWIGES:msentity:XSDRAWIGES
-+ XSDRAWIGES:dbadmfile:XSDRAWIGES_xcpp_header.In XSDRAWIGES:admfile:XSDRAWIGES_xcpp_fill.Out
-+ XSDRAWIGES:dbadmfile:XSDRAWIGES_xcpp_header.Out XSDRAWIGES:admfile:XSDRAWIGES_xcpp_fill.Out
-+ XSDRAWIGES:dbadmfile:XSDRAWIGES_xcpp_header.Dep XSDRAWIGES:admfile:XSDRAWIGES_xcpp_fill.Out

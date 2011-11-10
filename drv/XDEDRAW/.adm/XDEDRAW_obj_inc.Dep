@@ -1,6 +1,0 @@
-+ XDEDRAW:dbadmfile:XDEDRAW_obj_inc.In XDEDRAW:admfile:XDEDRAW_src.Out
-+ * XDEDRAW:admfile:XDEDRAW_xcpp_src.Out
-+ XDEDRAW:dbadmfile:XDEDRAW_obj_inc.Out XDEDRAW:admfile:XDEDRAW_src.Out
-+ * XDEDRAW:admfile:XDEDRAW_xcpp_src.Out
-+ XDEDRAW:dbadmfile:XDEDRAW_obj_inc.Dep XDEDRAW:admfile:XDEDRAW_src.Out
-+ * XDEDRAW:admfile:XDEDRAW_xcpp_src.Out

@@ -1,7 +1,0 @@
-+ BinMXCAFDoc:pubinclude:BinMXCAFDoc_LocationDriver.lxx BinMXCAFDoc:source:BinMXCAFDoc_LocationDriver.lxx
-+ BinMXCAFDoc:dbadmfile:BinMXCAFDoc_obj_inc.In BinMXCAFDoc:admfile:BinMXCAFDoc_src.Out
-+ * BinMXCAFDoc:admfile:BinMXCAFDoc_xcpp_src.Out
-+ BinMXCAFDoc:dbadmfile:BinMXCAFDoc_obj_inc.Out BinMXCAFDoc:admfile:BinMXCAFDoc_src.Out
-+ * BinMXCAFDoc:admfile:BinMXCAFDoc_xcpp_src.Out
-+ BinMXCAFDoc:dbadmfile:BinMXCAFDoc_obj_inc.Dep BinMXCAFDoc:admfile:BinMXCAFDoc_src.Out
-+ * BinMXCAFDoc:admfile:BinMXCAFDoc_xcpp_src.Out

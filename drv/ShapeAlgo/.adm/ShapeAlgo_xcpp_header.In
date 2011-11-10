@@ -1,4 +1,0 @@
-+V ShapeAlgo:msentity:ShapeAlgo .
-+V ShapeAlgo:msentity:ShapeAlgo_ToolContainer .
-+V ShapeAlgo:msentity:ShapeAlgo_AlgoContainer .
-- ShapeAlgo:admfile:ShapeAlgo_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ShapeAlgo/ShapeAlgo_xcpp_fill.Out

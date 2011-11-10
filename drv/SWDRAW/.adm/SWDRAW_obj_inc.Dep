@@ -1,6 +1,0 @@
-+ SWDRAW:dbadmfile:SWDRAW_obj_inc.In SWDRAW:admfile:SWDRAW_src.Out
-+ * SWDRAW:admfile:SWDRAW_xcpp_src.Out
-+ SWDRAW:dbadmfile:SWDRAW_obj_inc.Out SWDRAW:admfile:SWDRAW_src.Out
-+ * SWDRAW:admfile:SWDRAW_xcpp_src.Out
-+ SWDRAW:dbadmfile:SWDRAW_obj_inc.Dep SWDRAW:admfile:SWDRAW_src.Out
-+ * SWDRAW:admfile:SWDRAW_xcpp_src.Out

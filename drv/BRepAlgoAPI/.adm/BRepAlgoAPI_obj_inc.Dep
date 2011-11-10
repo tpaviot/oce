@@ -1,6 +1,0 @@
-+ BRepAlgoAPI:dbadmfile:BRepAlgoAPI_obj_inc.In BRepAlgoAPI:admfile:BRepAlgoAPI_src.Out
-+ * BRepAlgoAPI:admfile:BRepAlgoAPI_xcpp_src.Out
-+ BRepAlgoAPI:dbadmfile:BRepAlgoAPI_obj_inc.Out BRepAlgoAPI:admfile:BRepAlgoAPI_src.Out
-+ * BRepAlgoAPI:admfile:BRepAlgoAPI_xcpp_src.Out
-+ BRepAlgoAPI:dbadmfile:BRepAlgoAPI_obj_inc.Dep BRepAlgoAPI:admfile:BRepAlgoAPI_src.Out
-+ * BRepAlgoAPI:admfile:BRepAlgoAPI_xcpp_src.Out

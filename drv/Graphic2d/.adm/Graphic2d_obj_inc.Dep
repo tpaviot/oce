@@ -1,7 +1,0 @@
-+ Graphic2d:pubinclude:Graphic2d_CBitFields8.hxx Graphic2d:source:Graphic2d_CBitFields8.hxx
-+ Graphic2d:dbadmfile:Graphic2d_obj_inc.In Graphic2d:admfile:Graphic2d_src.Out
-+ * Graphic2d:admfile:Graphic2d_xcpp_src.Out
-+ Graphic2d:dbadmfile:Graphic2d_obj_inc.Out Graphic2d:admfile:Graphic2d_src.Out
-+ * Graphic2d:admfile:Graphic2d_xcpp_src.Out
-+ Graphic2d:dbadmfile:Graphic2d_obj_inc.Dep Graphic2d:admfile:Graphic2d_src.Out
-+ * Graphic2d:admfile:Graphic2d_xcpp_src.Out

@@ -1,7 +1,0 @@
-+ GccEnt:pubinclude:GccEnt_QualifiedCurv.gxx GccEnt:source:GccEnt_QualifiedCurv.gxx
-+ GccEnt:dbadmfile:GccEnt_obj_inc.In GccEnt:admfile:GccEnt_src.Out
-+ * GccEnt:admfile:GccEnt_xcpp_src.Out
-+ GccEnt:dbadmfile:GccEnt_obj_inc.Out GccEnt:admfile:GccEnt_src.Out
-+ * GccEnt:admfile:GccEnt_xcpp_src.Out
-+ GccEnt:dbadmfile:GccEnt_obj_inc.Dep GccEnt:admfile:GccEnt_src.Out
-+ * GccEnt:admfile:GccEnt_xcpp_src.Out

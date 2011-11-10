@@ -1,9 +1,0 @@
-+ TColStd:pubinclude:TColStd_PackedMapOfInteger.hxx TColStd:source:TColStd_PackedMapOfInteger.hxx
-+ TColStd:pubinclude:TColStd_MapIteratorOfPackedMapOfInteger.hxx TColStd:source:TColStd_MapIteratorOfPackedMapOfInteger.hxx
-+ TColStd:pubinclude:TColStd_HPackedMapOfInteger.lxx TColStd:source:TColStd_HPackedMapOfInteger.lxx
-+ TColStd:dbadmfile:TColStd_obj_inc.In TColStd:admfile:TColStd_src.Out
-+ * TColStd:admfile:TColStd_xcpp_src.Out
-+ TColStd:dbadmfile:TColStd_obj_inc.Out TColStd:admfile:TColStd_src.Out
-+ * TColStd:admfile:TColStd_xcpp_src.Out
-+ TColStd:dbadmfile:TColStd_obj_inc.Dep TColStd:admfile:TColStd_src.Out
-+ * TColStd:admfile:TColStd_xcpp_src.Out

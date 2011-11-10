@@ -1,7 +1,0 @@
-+ CGM:pubinclude:Handle_CGM_Driver.hxx CGM:msentity:CGM_Driver
-+ CGM:pubinclude:CGM_Driver.hxx CGM:msentity:CGM_Driver
-+ CGM:privinclude:CGM_Driver.jxx CGM:msentity:CGM_Driver
-+ CGM:privinclude:CGM_Driver.ixx CGM:msentity:CGM_Driver
-+ CGM:dbadmfile:CGM_xcpp_header.In CGM:admfile:CGM_xcpp_fill.Out
-+ CGM:dbadmfile:CGM_xcpp_header.Out CGM:admfile:CGM_xcpp_fill.Out
-+ CGM:dbadmfile:CGM_xcpp_header.Dep CGM:admfile:CGM_xcpp_fill.Out

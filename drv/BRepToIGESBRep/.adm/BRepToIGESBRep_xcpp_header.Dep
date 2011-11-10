@@ -1,6 +1,0 @@
-+ BRepToIGESBRep:pubinclude:BRepToIGESBRep_Entity.hxx BRepToIGESBRep:msentity:BRepToIGESBRep_Entity
-+ BRepToIGESBRep:privinclude:BRepToIGESBRep_Entity.jxx BRepToIGESBRep:msentity:BRepToIGESBRep_Entity
-+ BRepToIGESBRep:privinclude:BRepToIGESBRep_Entity.ixx BRepToIGESBRep:msentity:BRepToIGESBRep_Entity
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.In BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_fill.Out
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.Out BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_fill.Out
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_xcpp_header.Dep BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_fill.Out

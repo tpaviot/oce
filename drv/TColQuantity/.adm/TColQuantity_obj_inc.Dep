@@ -1,6 +1,0 @@
-+ TColQuantity:dbadmfile:TColQuantity_obj_inc.In TColQuantity:admfile:TColQuantity_src.Out
-+ * TColQuantity:admfile:TColQuantity_xcpp_src.Out
-+ TColQuantity:dbadmfile:TColQuantity_obj_inc.Out TColQuantity:admfile:TColQuantity_src.Out
-+ * TColQuantity:admfile:TColQuantity_xcpp_src.Out
-+ TColQuantity:dbadmfile:TColQuantity_obj_inc.Dep TColQuantity:admfile:TColQuantity_src.Out
-+ * TColQuantity:admfile:TColQuantity_xcpp_src.Out

@@ -1,8 +1,0 @@
-+M AppBlend:pubinclude:AppBlend_Line.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppBlend_Line.gxx
-+M AppBlend:pubinclude:AppBlend_Line.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppBlend_Line.lxx
-+M AppBlend:pubinclude:AppBlend_SectionGenerator.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppBlend_SectionGenerator.gxx
-+M AppBlend:pubinclude:AppBlend_AppSurf.gxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppBlend_AppSurf.gxx
-+M AppBlend:pubinclude:AppBlend_AppSurf.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/inc/AppBlend_AppSurf.lxx
-+M AppBlend:dbadmfile:AppBlend_obj_inc.In /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppBlend/.adm/AppBlend_obj_inc.In
-+M AppBlend:dbadmfile:AppBlend_obj_inc.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppBlend/.adm/AppBlend_obj_inc.Out
-+M AppBlend:dbadmfile:AppBlend_obj_inc.Dep /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/drv/AppBlend/.adm/AppBlend_obj_inc.Dep

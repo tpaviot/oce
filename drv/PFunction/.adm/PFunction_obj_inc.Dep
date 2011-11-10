@@ -1,6 +1,0 @@
-+ PFunction:dbadmfile:PFunction_obj_inc.In PFunction:admfile:PFunction_src.Out
-+ * PFunction:admfile:PFunction_xcpp_src.Out
-+ PFunction:dbadmfile:PFunction_obj_inc.Out PFunction:admfile:PFunction_src.Out
-+ * PFunction:admfile:PFunction_xcpp_src.Out
-+ PFunction:dbadmfile:PFunction_obj_inc.Dep PFunction:admfile:PFunction_src.Out
-+ * PFunction:admfile:PFunction_xcpp_src.Out
