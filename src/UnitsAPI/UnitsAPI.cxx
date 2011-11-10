@@ -361,7 +361,7 @@ Standard_Real UnitsAPI::AnyToLS(const Standard_Real aData,
   }
 #ifdef OCCT_DEBUG
   else
-    cout<<"Warning: BAD Quantity returns in UnitsAPI::AnyToLS(" << aData << "," << aUnit << "," << aDim << ")" << endl;
+    cout<<"Warning: BAD Quantity returns in UnitsAPI::AnyToLS(" << aData << "," << aUnit << "," << (const void*)aDim << ")" << endl;
 #endif
   return aValue;
 }
