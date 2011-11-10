@@ -27,18 +27,18 @@ raises
 is
     Create returns LinearXYZConstraint; 
     
-    Create  (PPC  :  Array1OfPinpointConstraint; coeff  :  Array1OfReal )
+    Create  (ppc  :  Array1OfPinpointConstraint; coeff  :  Array1OfReal )
            returns LinearXYZConstraint 
 	   raises DimensionMismatch from Standard;
-    --  the length of PPC  have to be the  Row lentgth of  coeff
+    --  the length of ppc  have to be the  Row lentgth of  coeff
     --  
-    Create  (PPC  :  Array1OfPinpointConstraint; coeff  :  Array2OfReal )
+    Create  (ppc  :  Array1OfPinpointConstraint; coeff  :  Array2OfReal )
            returns LinearXYZConstraint 
 	   raises DimensionMismatch from Standard;
-    --  the length of PPC  have to be the  Row lentgth of  coeff
+    --  the length of ppc  have to be the  Row lentgth of  coeff
 
     Create  (ColLen,RowLen  :  Integer ) 
-    -- initialize with 0 valued PPC and Coeffs
+    -- initialize with 0 valued ppc and Coeffs
            returns LinearXYZConstraint;
 
      -- Accessors :
@@ -55,7 +55,7 @@ is
     	Value: PinpointConstraint) 
     	---Purpose:  Sets   the PinPointConstraint of   index Index to
     	--          Value raise if Index is greater than the length of
-    	--          PPC or the Row length of coeff or lower  than 1
+    	--          ppc or the Row length of coeff or lower  than 1
     	raises OutOfRange from Standard;
 
     SetCoeff (me : in out;  
