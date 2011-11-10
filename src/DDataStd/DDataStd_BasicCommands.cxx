@@ -1276,7 +1276,7 @@ static Standard_Integer DDataStd_SetIntPackedMap (Draw_Interpretor& di,
       aMap.Add (atoi(arg[j]));
       j++;
     }
-    const Handle(TColStd_HPackedMapOfInteger)& aHMap = new TColStd_HPackedMapOfInteger(aMap);
+    const Handle(TColStd_HPackedMapOfInteger) aHMap = new TColStd_HPackedMapOfInteger(aMap);
     anAtt->ChangeMap(aHMap);
     cout << "Map extent = " << anAtt->Extent()<<endl;
     return 0; 
@@ -1474,7 +1474,7 @@ static Standard_Integer DDataStd_SetIntPHugeMap (Draw_Interpretor& di,
     for(Standard_Integer i = 1; i<=aNum; i++) {
       aMap.Add (i);
     }
-    const Handle(TColStd_HPackedMapOfInteger)& aHMap = new TColStd_HPackedMapOfInteger(aMap);
+    const Handle(TColStd_HPackedMapOfInteger) aHMap = new TColStd_HPackedMapOfInteger(aMap);
     anAtt->ChangeMap(aHMap);
     cout << "Map extent = " << anAtt->Extent()<<endl;
     return 0; 
