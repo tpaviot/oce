@@ -6,6 +6,10 @@
 //    abv  22.07.99 implementing patch indices
 //    svv  10.01.00 porting on DEC
 
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif
+
 #include <ShapeFix_ComposeShell.ixx>
 
 #include <Precision.hxx>
