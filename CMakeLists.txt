@@ -295,7 +295,7 @@ IF(${PROJECT_NAME}_VISUALISATION)
 	ENDIF(NOT WIN32)
 
 	IF (NOT APPLE)
-		FIND_PACKAGE(OpenGL REQUIRED)
+		FIND_PACKAGE(OpenGL COMPONENTS gl glu REQUIRED)
 	ELSE (NOT APPLE)
 		# under OSX, builtin FindOpenGl.cmake returns Cocoa OpenGL implementation
 		# oce requires the X11 based OpenGL
