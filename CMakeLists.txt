@@ -296,6 +296,9 @@ IF(${PROJECT_NAME}_VISUALISATION)
 
 	IF (NOT APPLE)
 		FIND_PACKAGE(OpenGL REQUIRED)
+		IF(NOT ${OPENGL_GLU_FOUND} STREQUAL "YES")
+			MESSAGE( FATAL_ERROR "GLU not found" )
+		ENDIF(NOT ${OPENGL_GLU_FOUND} STREQUAL "YES")
 	ELSE (NOT APPLE)
 		# under OSX, builtin FindOpenGl.cmake returns Cocoa OpenGL implementation
 		# oce requires the X11 based OpenGL
