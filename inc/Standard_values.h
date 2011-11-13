@@ -22,7 +22,9 @@ Facility : CAS-CADE V1.3A
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 
+#ifdef HAVE_CONFIG_H
 #include <oce-config.h>
+#endif
 
 #ifndef WNT
 # ifdef OCE_HAVE_CLIMITS

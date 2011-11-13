@@ -7,8 +7,9 @@
 #ifndef _Standard_Macro_HeaderFile
 # define _Standard_Macro_HeaderFile
 
+#ifdef HAVE_CONFIG_H
 # include <oce-config.h>
-
+#endif
 // Standard OCC macros: Handle(), STANDARD_TYPE()
 # define   Handle(ClassName)  Handle_##ClassName
 # define   STANDARD_TYPE(aType)   aType##_Type_()
