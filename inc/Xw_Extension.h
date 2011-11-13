@@ -22,7 +22,9 @@
 #define min(a,b) 	(a>b ? b : a)
 #endif
 
+#ifdef HAVE_CONFIG_H
 #include <oce-config.h>
+#endif
 
 #ifdef HAVE_X11_EXTENSIONS_TRANSOLV_H
 #include <X11/extensions/transovl.h>
