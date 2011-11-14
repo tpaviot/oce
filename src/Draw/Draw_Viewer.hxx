@@ -29,18 +29,23 @@
 #include <Draw_SequenceOfDrawable3D.hxx>
 #include <Draw_Color.hxx>
 
-#ifdef WNT
-#include <windows.h>
-#if !defined(__Draw_API) && !defined(HAVE_NO_DLL)
-# ifdef __Draw_DLL
-#  define __Draw_API __declspec( dllexport )
+#if !defined(__Draw_API)
+# ifdef WNT
+#  include <windows.h>
+#  if !defined(HAVE_NO_DLL)
+#   ifdef __Draw_DLL
+#    define __Draw_API __declspec( dllexport )
+#   else
+#    define __Draw_API __declspec( dllimport )
+#   endif
+#  else
+#   define __Draw_API
+#  endif
 # else
-#  define __Draw_API /*__declspec( dllimport )*/
+#  define __Draw_API
 # endif
 #endif
-#else
-#  define __Draw_API  
-#endif
+
 const Standard_Integer MAXVIEW  = 30;
 
 class Draw_View;

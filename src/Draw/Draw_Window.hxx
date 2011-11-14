@@ -357,11 +357,15 @@ void GetNextEvent (Standard_Boolean  theWait,
 #define DRAWTITLE "Draw View"
 #define MAXCOLOR  15
 
-#if !defined(__Draw_API) && !defined(HAVE_NO_DLL)
-# ifdef __Draw_DLL
-#  define __Draw_API __declspec( dllexport )
+#if !defined(__Draw_API)
+# if !defined(HAVE_NO_DLL)
+#  ifdef __Draw_DLL
+#   define __Draw_API __declspec( dllexport )
+#  else
+#   define __Draw_API __declspec( dllimport )
+#  endif
 # else
-#  define __Draw_API __declspec( dllimport )
+#  define __Draw_API
 # endif
 #endif
 
