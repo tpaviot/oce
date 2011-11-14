@@ -44,7 +44,7 @@ Handle(Aspect_GraphicDriver) Graphic3d_WNTGraphicDevice::GraphicDriver () const 
 
 }
 
-#ifdef OCE_BUILD_SHARED_LIB
+#if !defined(OCE_BUILD_STATIC_LIB) && !defined(HAVE_NO_DLL)
 void Graphic3d_WNTGraphicDevice::SetGraphicDriver () 
 {
 
