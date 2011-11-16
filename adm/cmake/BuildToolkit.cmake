@@ -108,7 +108,7 @@ ENDIF(DEFINED X11_FONT_PATH)
 
 # Workaround for Cmake bug #0011240 (see http://public.kitware.com/Bug/view.php?id=11240)
 # Win64+MSVC+static libs = linker error
-IF(MSVC AND (NOT ${PROJECT_NAME}_BUILD_SHARED_LIB) AND (BIT EQUAL 64))
+IF(MSVC AND NOT ${PROJECT_NAME}_BUILD_SHARED_LIB AND BIT EQUAL 64)
   set_target_properties(${TOOLKIT} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
 ENDIF()
 
