@@ -277,8 +277,8 @@ gp_Pnt Select3D_SensitiveCircle::
 GetPoint3d(const Standard_Integer Rank) const
 {
   if(Rank>=0&& Rank<mynbpoints)
-    return ((Select3D_Pnt*)mypolyg3d)[Rank];
-  return ((Select3D_Pnt*)mypolyg3d)[0];
+    return (gp_Pnt)((Select3D_Pnt*)mypolyg3d)[Rank];
+  return (gp_Pnt)((Select3D_Pnt*)mypolyg3d)[0];
 }
 
 

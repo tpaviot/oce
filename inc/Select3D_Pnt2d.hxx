@@ -23,7 +23,7 @@ struct Select3D_Pnt2d{
  {
    x = DToF(thePnt.X());
    y = DToF(thePnt.Y());
-   return *this;
+   return (gp_Pnt2d)*this;
  }
 
 

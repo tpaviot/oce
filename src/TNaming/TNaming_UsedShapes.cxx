@@ -159,8 +159,8 @@ Standard_OStream& TNaming_UsedShapes::Dump(Standard_OStream& anOS) const
     TopAbs::Print(itr.Key().ShapeType(),anOS);
     anOS<<"  ";
     itr.Value()->Label().EntryDump(anOS);
-    anOS << " Key_TShape   = " <<itr.Key().TShape()->This();
-    anOS << " Value_TShape = " <<itr.Value()->Shape().TShape()->This();    
+    anOS << " Key_TShape   = " <<(const void*)itr.Key().TShape()->This();
+    anOS << " Value_TShape = " <<(const void*)itr.Value()->Shape().TShape()->This();
     anOS<<endl;
   }
 #endif
