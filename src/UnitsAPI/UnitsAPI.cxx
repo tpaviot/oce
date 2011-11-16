@@ -338,7 +338,7 @@ Standard_Real UnitsAPI::AnyToLS(const Standard_Real aData,
     aValue = LocalSystemUnits.ConvertSIValueToUserSystem(quantity,aValue);
   }
   else
-    cout<<"Warning: BAD Quantity returns in UnitsAPI::AnyToLS(" << aData << "," << aUnit << "," << aDim << ")" << endl;
+    cout<<"Warning: BAD Quantity returns in UnitsAPI::AnyToLS(" << aData << "," << aUnit << "," << (const void*)aDim << ")" << endl;
   return aValue;
 }
 

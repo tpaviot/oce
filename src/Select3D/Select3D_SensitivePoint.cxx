@@ -121,7 +121,7 @@ Matches (const TColgp_Array1OfPnt2d& aPoly,
 //purpose  : 
 //=======================================================================
 gp_Pnt Select3D_SensitivePoint::Point() const
-{return mypoint;}
+{return (gp_Pnt)mypoint;}
 
 //=======================================================================
 //function : GetConnected

@@ -20,16 +20,16 @@ inline void Select3D_SensitiveSegment::EndPoint (const gp_Pnt& end)
 }
 
 inline gp_Pnt Select3D_SensitiveSegment::StartPoint () const
-{return mystart;}
+{return (gp_Pnt)mystart;}
 
 inline gp_Pnt Select3D_SensitiveSegment::EndPoint () const
-{return myend;}
+{return (gp_Pnt)myend;}
 
 inline gp_Pnt2d Select3D_SensitiveSegment::StartPoint2d () const
-{return myprojstart;}
+{return (gp_Pnt2d)myprojstart;}
 
 inline gp_Pnt2d Select3D_SensitiveSegment::EndPoint2d () const
-{return myprojend;}
+{return (gp_Pnt2d)myprojend;}
 
 inline Standard_Integer Select3D_SensitiveSegment::MaxBoxes()
 const {return mymaxrect;}

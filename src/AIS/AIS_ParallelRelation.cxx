@@ -292,8 +292,8 @@ void AIS_ParallelRelation::ComputeTwoEdgesParallel(const Handle(Prs3d_Presentati
     }
   else return;
 
-  const Handle(Geom_Line)& geom_lin1 = new Geom_Line(l1);
-  const Handle(Geom_Line)& geom_lin2 = new Geom_Line(l2);
+  const Handle(Geom_Line) geom_lin1 = new Geom_Line(l1);
+  const Handle(Geom_Line) geom_lin2 = new Geom_Line(l2);
 
   myDirAttach = l1.Direction();
   // size
