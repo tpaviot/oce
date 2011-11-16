@@ -162,8 +162,10 @@ NCollection_IncAllocator::NCollection_IncAllocator (const size_t theBlockSize)
   printf ("\n..NCollection_IncAllocator: Created (%x)\n",this);
 #endif
 #ifdef DEB
+#ifndef __BORLANDC__
   if (IS_DEBUG)
     Debug_Create(this);
+#endif
 #endif
   const size_t aSize = IMEM_SIZE(sizeof(IBlock)) +
       IMEM_SIZE((theBlockSize > 2*sizeof(IBlock)) ? theBlockSize : 24600);
@@ -186,8 +188,10 @@ NCollection_IncAllocator::NCollection_IncAllocator (const size_t theBlockSize)
 NCollection_IncAllocator::~NCollection_IncAllocator ()
 {
 #ifdef DEB
+#ifndef __BORLANDC__
   if (IS_DEBUG)
     Debug_Destroy(this);
+#endif
 #endif
   Clean();
   free (myFirstBlock);

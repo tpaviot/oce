@@ -788,7 +788,9 @@ Handle(TransferBRep_ShapeBinder) STEPControl_ActorRead::TransferEntity(const Han
 
   
   #ifdef DEB
+  #ifndef __BORLANDC__
   DumpWhatIs(comp);
+  #endif
   #endif
   
   return shbinder;

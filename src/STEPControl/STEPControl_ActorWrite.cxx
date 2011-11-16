@@ -126,7 +126,9 @@ static Standard_Boolean IsManifoldShape(const TopoDS_Shape& theShape) {
   }  
 
   #ifdef DEB
+  #ifndef __BORLANDC__
   DumpWhatIs(aDirectShapes);
+  #endif
   #endif
 
   TopTools_IndexedDataMapOfShapeListOfShape aMapEdgeFaces;
