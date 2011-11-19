@@ -16,9 +16,6 @@
 #include <MainWindow.h>
 #include <Draw_Appli.hxx>
 
-#ifdef __BORLANDC__
-#pragma link "tcl85.lib"
-#endif
 
 /****************************************************\
 *  CommandWindow.cxx :
