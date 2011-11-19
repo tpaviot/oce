@@ -113,6 +113,60 @@
 
 #define TRANSLOG
 
+#ifdef DEB
+// ============================================================================
+// Function: DumpWhatIs   
+// Purpose: Use it in DEB mode to dump your shapes
+// ============================================================================
+
+static void DumpWhatIs(const TopoDS_Shape& S) {
+  TopTools_MapOfShape aMapOfShape;
+  aMapOfShape.Add(S);
+  TopTools_ListOfShape aListOfShape;
+  aListOfShape.Append(S);
+  TopTools_ListIteratorOfListOfShape itL(aListOfShape);
+  Standard_Integer nbSolids = 0,
+                   nbShells = 0,
+                   nbOpenShells = 0,
+                   nbFaces = 0, 
+                   nbWires = 0, 
+                   nbEdges = 0, 
+                   nbVertexes = 0;
+
+  for( ; itL.More(); itL.Next() ) {
+    TopoDS_Iterator it( itL.Value() );
+    for ( ; it.More(); it.Next() ) {
+      TopoDS_Shape aSubShape = it.Value();
+      if ( !aMapOfShape.Add(aSubShape) )
+        continue;
+      aListOfShape.Append(aSubShape);
+      if (aSubShape.ShapeType() == TopAbs_SOLID)
+        nbSolids++;
+      if (aSubShape.ShapeType() == TopAbs_SHELL) {
+        if ( !aSubShape.Closed() )
+          nbOpenShells++;
+        nbShells++;
+      }
+      if (aSubShape.ShapeType() == TopAbs_FACE)
+        nbFaces++;
+      if (aSubShape.ShapeType() == TopAbs_WIRE)
+        nbWires++;
+      if (aSubShape.ShapeType() == TopAbs_EDGE)
+        nbEdges++;
+      if (aSubShape.ShapeType() == TopAbs_VERTEX)
+        nbVertexes++;
+    }
+  }
+  cout << "//What is?// NB SOLIDS: " << nbSolids << endl;
+  cout << "//What is?// NB SHELLS: " << nbShells << endl;
+  cout << "//What is?//    OPEN SHELLS: " << nbOpenShells << endl;
+  cout << "//What is?//    CLOSED SHELLS: " << nbShells - nbOpenShells << endl;
+  cout << "//What is?// NB FACES: " << nbFaces << endl;
+  cout << "//What is?// NB WIRES: " << nbWires << endl;
+  cout << "//What is?// NB EDGES: " << nbEdges << endl;
+  cout << "//What is?// NB VERTEXES: " << nbVertexes << endl;
+}
+#endif
 
 // ============================================================================
 // Method  : STEPControl_ActorRead::STEPControl_ActorRead  ()    
