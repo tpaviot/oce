@@ -24,7 +24,7 @@ struct Select3D_Pnt{
    x = DToF(thePnt.X());
    y = DToF(thePnt.Y());
    z = DToF(thePnt.Z());
-   return (gp_Pnt)*this;
+   return *this;
  }
 
 };
