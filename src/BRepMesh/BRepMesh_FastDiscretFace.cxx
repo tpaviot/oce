@@ -866,8 +866,7 @@ void BRepMesh_FastDiscretFace::InternalVertices(const Handle(BRepAdaptor_HSurfac
       }
     }
   }
-  //disable the BSpline mesher until http://github.com/tpaviot/oce/issues/143 is fixed
-  #if 0
+#if !defined(OCE_DISABLE_BSPLINE_MESHER)
   else if (thetype == GeomAbs_BezierSurface || thetype == GeomAbs_BSplineSurface)
   {
     //define resolutions
