@@ -5,7 +5,7 @@
 
 #include <OSD_MAllocHook.hxx>
 
-#if !defined(WNT) || defined(__MINGW32__)
+#if !defined(WNT) || defined(__MINGW32__) || defined(__BORLANDC__)
 #if !defined __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS
 #endif
