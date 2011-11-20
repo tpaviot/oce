@@ -1,0 +1,1 @@
+ADD_OCE_TEST(TDataXtd_test "TKCAF;TKXCAF")
