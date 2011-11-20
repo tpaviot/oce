@@ -279,6 +279,9 @@ static void EdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
+#ifdef DEB
+  Standard_Real MilTol2 = 1000*Tol*Tol;
+#endif
   Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
   Standard_Integer i;
 
@@ -549,6 +552,9 @@ static void RefEdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
+#ifdef DEB
+  Standard_Real MilTol2 = 1000*Tol*Tol;
+#endif
   Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
   Standard_Integer i;
 
