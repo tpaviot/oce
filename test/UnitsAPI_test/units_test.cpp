@@ -1,5 +1,5 @@
 #include <UnitsAPI.hxx>
-
+#include <OSD_Environment.hxx>
 #include <stdlib.h>
 #include <gtest/gtest.h>
 
@@ -9,20 +9,20 @@
  */
 TEST(UnitsAPITestSuite, testCurrentUnits)
 {
-	setenv("CASROOT", SRC_CASROOT, 1);
-	setenv("CSF_CurrentUnitsUserDefaults", SRC_RESOURCE, 1);
-	UnitsAPI u;
-	u.SetLocalSystem(UnitsAPI_SI);
-	ASSERT_TRUE(0 == strcmp(u.CurrentUnit("LENGTH"), "m"));
+	OSD_Environment v1("CASROOT", SRC_CASROOT); v1.Build();
+	OSD_Environment v2("CSF_CurrentUnitsUserDefaults", SRC_RESOURCE); v2.Build();
+
+	UnitsAPI::SetLocalSystem(UnitsAPI_SI);
+	ASSERT_TRUE(0 == strcmp(UnitsAPI::CurrentUnit("LENGTH"), "m"));
 }
 
 TEST(UnitsAPITestSuite, testMDTVCurrentUnits)
 {
-	setenv("CASROOT", SRC_CASROOT, 1);
-	setenv("CSF_MDTVCurrentUnitsUserDefaults", SRC_RESOURCE, 1);
-	UnitsAPI u;
-	u.SetLocalSystem(UnitsAPI_MDTV);
-	ASSERT_TRUE(0 == strcmp(u.CurrentUnit("LENGTH"), "mm"));
+	OSD_Environment v1("CASROOT", SRC_CASROOT); v1.Build ();
+	OSD_Environment v2("CSF_MDTVCurrentUnitsUserDefaults", SRC_RESOURCE); v2.Build();
+	
+	UnitsAPI::SetLocalSystem(UnitsAPI_MDTV);
+	ASSERT_TRUE(0 == strcmp(UnitsAPI::CurrentUnit("LENGTH"), "mm"));
 }
 
 int main(int argc, char **argv){
