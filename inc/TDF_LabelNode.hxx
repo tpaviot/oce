@@ -109,11 +109,12 @@ class TDF_LabelNode {
   void * operator new (size_t aSize,
                        const Handle(NCollection_IncAllocator)& anAlloc)
         { return anAlloc -> Allocate (aSize); }
-  
+#ifndef __BORLANDC__
   void operator delete ( void * aBuffer , const Handle(NCollection_IncAllocator)& anAlloc )
   {
     anAlloc->Free(aBuffer);
   }
+#endif
 
   void  operator delete(void *) { }
         // nothing to do in operator delete since IncAllocator does not need it
