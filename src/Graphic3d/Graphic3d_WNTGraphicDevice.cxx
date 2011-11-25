@@ -52,7 +52,11 @@ void Graphic3d_WNTGraphicDevice::SetGraphicDriver ()
   OSD_Function new_GLGraphicDriver;
   Standard_CString TheShr = getenv("CSF_GraphicShr");
   if ( ! TheShr || ( strlen( TheShr ) == 0 ) )
+#ifdef OCE_DEBUG_POSTFIX
 	  TheShr = "TKOpenGl" OCE_DEBUG_POSTFIX ".dll";
+#else
+	  TheShr = "TKOpenGl.dll";
+#endif /* OCE_DEBUG_POSTFIX */
 
   MySharedLibrary.SetName ( TheShr );
   Result = MySharedLibrary.DlOpen (OSD_RTLD_LAZY);
