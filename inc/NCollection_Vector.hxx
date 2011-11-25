@@ -89,7 +89,11 @@ template <class TheItemType> class NCollection_Vector
     {
       if (myData) {
         for (size_t i=0; i < mySize; i++)
+#ifdef __BORLANDC__
+          ((TheItemType *) myData)[i].~TheItemType();
+#else
           ((TheItemType *) myData)[i].~TheItemTypeD();
+#endif
         myAlloc->Free(myData);
         myData = NULL;
       }
@@ -107,7 +111,11 @@ template <class TheItemType> class NCollection_Vector
     {
       if (myData) {
         for (size_t i=0; i < Size(); i++)
+#ifdef __BORLANDC__
+          ((TheItemType *) myData)[i].~TheItemType();
+#else
           ((TheItemType *) myData)[i].~TheItemTypeD();
+#endif
         myAlloc->Free(myData);
         myData = NULL;
       }
