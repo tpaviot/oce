@@ -62,3 +62,4 @@ Standard_MMgrTBBalloc.cxx
 Standard_MMgrTBBalloc.hxx
 Standard_Assert.hxx
 Standard_DefineAlloc.hxx
+Standard_StdAllocator.hxx
