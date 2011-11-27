@@ -272,3 +272,6 @@
 
 /* Whether OCE is build as static lib */
 #cmakedefine OCE_BUILD_STATIC_LIB
+
+/* Whether disable or not the bspline mesher */
+#cmakedefine OCE_DISABLE_BSPLINE_MESHER
