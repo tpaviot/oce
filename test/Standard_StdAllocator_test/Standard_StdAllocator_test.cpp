@@ -1,9 +1,11 @@
 #include <Standard_StdAllocator.hxx>
-#include <gtest/gtest.h>
+#include <TopoDS_Shape.hxx>
+#include <TopoDS_Solid.hxx>
+#include <BRepPrimAPI_MakeBox.hxx>
+#include <list>
+#include <vector>
 
-void Standard_StdAllocatorTest::Traits()
-{
-}
+#include <gtest/gtest.h>
 
 TEST(Standard_StdAllocatorTestSuite, testTraits)
 {
@@ -14,10 +16,6 @@ TEST(Standard_StdAllocatorTestSuite, testTraits)
     ASSERT_EQ(sizeof (allocator_type::value_type),sizeof (elem_type));
     ASSERT_EQ(sizeof (allocator_type::pointer),sizeof (void*));
     ASSERT_EQ(sizeof (allocator_type::const_pointer),sizeof (void*));
-
-    elem_type aDummy;
-    allocator_type::reference aRef = aDummy;
-    allocator_type::const_reference aConstRef = aDummy;
 
     ASSERT_EQ(sizeof (allocator_type::size_type),sizeof (size_t));
     ASSERT_EQ(sizeof (allocator_type::difference_type),sizeof (ptrdiff_t));
