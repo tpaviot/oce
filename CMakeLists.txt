@@ -106,6 +106,8 @@ IF( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
 ENDIF( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_ADD_HEADERS "Add headers to project files" OFF )
 MARK_AS_ADVANCED(${PROJECT_NAME}_ADD_HEADERS)
+OPTION_WITH_DEFAULT( ${PROJECT_NAME}_DISABLE_BSPLINE_MESHER "Disable BSpline Mesher" OFF )
+MARK_AS_ADVANCED(${PROJECT_NAME}_DISABLE_BSPLINE_MESHER)
 
 # The default for the DEB define is ON for all the platforms , in debug mode.
 # In MSVC it is not desirable to have it ON by default, since users must 
