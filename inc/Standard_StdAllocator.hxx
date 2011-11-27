@@ -24,7 +24,7 @@
 template<typename T>
 class Standard_StdAllocator {
 public:
-    typedef typename T value_type;
+    typedef T value_type;
     typedef value_type* pointer;
     typedef const value_type* const_pointer;
     typedef value_type& reference;
