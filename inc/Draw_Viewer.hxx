@@ -27,6 +27,8 @@
 # else
 #  define __Draw_API /*__declspec( dllimport )*/
 # endif
+#else
+# define __Draw_API  
 #endif
 #else
 #  define __Draw_API  

@@ -188,6 +188,8 @@ void GetNextEvent(Event&);
 # else
 #  define __Draw_API __declspec( dllimport )
 # endif
+#else
+# define __Draw_API
 #endif
 
 // definition de la classe Segment
