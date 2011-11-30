@@ -329,40 +329,26 @@ void OpenGl_FontMgr::render_text( const Standard_Integer id, const char* text,
     glPushMatrix();
 
     glScalef( _XCurrentScale, _YCurrentScale, 1 );
-    glPushAttrib( GL_ENABLE_BIT );
+    static GLint param;// = new GLint;
 
-    GLboolean enableTexture = glIsEnabled(GL_TEXTURE_2D);
-    GLboolean enableDepthTest = glIsEnabled(GL_DEPTH_TEST);
+    glGetTexEnviv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, &param);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
-    if( !enableTexture )
-      glEnable(GL_TEXTURE_2D);
-    if ( !is2d ) {
-      if ( !enableDepthTest )
-        glEnable(GL_DEPTH_TEST);
-    } 
-    else if ( enableDepthTest ) {
-        glDisable(GL_DEPTH_TEST);
+    GLboolean enableAlpha = glIsEnabled(GL_ALPHA_TEST);
+
+    if (!enableAlpha) {
+      glAlphaFunc(GL_GEQUAL, 0.285f);
+      glEnable(GL_ALPHA_TEST);
     }
 
-    GLint* param = new GLint;    
-    glGetTexEnviv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, param);
-
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE); 
-    glAlphaFunc(GL_GEQUAL, 0.285f);    
-    glEnable(GL_ALPHA_TEST);   
     OGLFont_Cache cache = _FontCache.Find( id );
     cache.Font->Render( text );
 
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, *param);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, param);
 
-    if( !enableTexture )
-      glDisable(GL_TEXTURE_2D);
-    if( !enableDepthTest )
-      glDisable(GL_DEPTH_TEST);
+    if( !enableAlpha )
+      glDisable(GL_ALPHA_TEST);
 
-    delete param;
-
-    glPopAttrib();
     glMatrixMode( GL_MODELVIEW );
     glPopMatrix();
   }
