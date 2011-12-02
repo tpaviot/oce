@@ -4,7 +4,6 @@ MeshVS_DisplayModeFlags.hxx
 MeshVS_DummySensitiveEntity.hxx
 MeshVS_DummySensitiveEntity.cxx
 MeshVS_BuilderPriority.hxx
-MeshVS_MeshPrsBuilder.lxx
 MeshVS_TwoColors.hxx
 MeshVS_TwoColors.cxx
 MeshVS_TwoNodes.hxx

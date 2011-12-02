@@ -8,7 +8,6 @@ TopOpeBRep_vprdeg.cxx
 TopOpeBRep_kpart.cxx
 TopOpeBRep_FaceEdgeFiller_DEB.cxx
 TopOpeBRep_ProcessGR.cxx
-TopOpeBRep_tools.hxx
 TopOpeBRep_ProcessSectionEdges.cxx
 TopOpeBRep_trace.cxx
 TopOpeBRep_traceBOOPNINT.cxx
