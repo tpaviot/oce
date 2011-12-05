@@ -86,7 +86,12 @@ public:
 
     //! Destroys the object.
     /*! Uses object destructor.*/
+    /*  Destructor name must match the class name for __BORLANDC__.*/
+#ifdef __BORLANDC__
+    void destroy( pointer p ) { p->~T(); }
+#else
     void destroy( pointer p ) { p->~value_type(); }
+#endif
 };
 
 //! Implements specialization Standard_StdAllocator<void>.
