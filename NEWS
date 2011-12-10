@@ -2,18 +2,16 @@ Version 0.8.0 - December 2011
 
 * Added more unit tests 
 
-* Modifications needed for correct building of oce under WOK
+* Help building on systems without cmake, in particular with WOK
 
 * Removed deprecated bcc32 project files
 
 * bcc32 and bcc xe edition support
 
-* Allow building on systems without cmake
-
 * Fixes to allow building with cmake 2.6 - cmake 2.8 is stricly required only
   when running unit tests
 
-* Added Roman Lygin's Standard_StdAllocator class + UnitTest
+* Added Standard_StdAllocator class + UnitTest
 
 * Added an option to disable the bspline mesher, and reverts to OFF 
   (not disabled) the default behavoir
@@ -25,21 +23,18 @@ Version 0.8.0 - December 2011
 
 * Solves a copy-paste bug in TDataXtd_PatternStd (bug #195)
 
-* Add support for LIB_SUFFIX to install libraries into lib64
+* Add support installing libraries into lib64
 
 * Ensure that GLU is found when checking for OpenGL
 
 * Fixed opengl (ftgl) font issue
 
-* Strip system paths from RPATH (Several Linux distributions forbid setting 
-  system library paths into RPATH). 
-  See notes on commit message here 
-  https://github.com/tpaviot/oce/commit/267030a5970f2aa7203044bd3e6b6a858ceab090
+* Strip system paths from RPATH.
 
 * Add few missing resource files (UnitsAPI support)
 
 Users who contributed to this release:
-     Denis Barbier,Fotios Sioutis,Thomas Paviot,QbProg
+     Denis Barbier,Fotios Sioutis,Thomas Paviot,QbProg,Richard,Roman Lygin
 
 
 Version 0.7.0 - October 2011
