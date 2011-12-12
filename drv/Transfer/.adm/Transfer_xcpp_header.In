@@ -49,4 +49,4 @@
 +V Transfer:msentity:Transfer_StatusResult .
 +V Transfer:msentity:Transfer_StatusExec .
 +V Transfer:msentity:Transfer_UndefMode .
-- Transfer:admfile:Transfer_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Transfer/Transfer_xcpp_fill.Out
+- Transfer:admfile:Transfer_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Transfer/Transfer_xcpp_fill.Out

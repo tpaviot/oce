@@ -4,4 +4,4 @@
 +V FilletSurf:msentity:FilletSurf_StatusType .
 +V FilletSurf:msentity:FilletSurf_StatusDone .
 +V FilletSurf:msentity:FilletSurf_ErrorTypeStatus .
-- FilletSurf:admfile:FilletSurf_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/FilletSurf/FilletSurf_xcpp_fill.Out
+- FilletSurf:admfile:FilletSurf_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/FilletSurf/FilletSurf_xcpp_fill.Out

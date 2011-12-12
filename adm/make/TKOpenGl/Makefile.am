@@ -56,6 +56,7 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_LightBox.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Memory.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PrimitiveArray.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_PrinterContext.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ResourceCleaner.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ResourceTexture.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ResourceVBO.cxx \

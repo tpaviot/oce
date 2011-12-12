@@ -55,6 +55,9 @@
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
 #include <Handle_Graphic3d_AspectLine3d.hxx>
 #endif
@@ -69,9 +72,6 @@
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Graphic3d_TypeOfPolygon_HeaderFile
 #include <Graphic3d_TypeOfPolygon.hxx>
@@ -136,7 +136,13 @@ public:
   //! Creates a group in the structure <AStructure>. <br>
   Standard_EXPORT   Graphic3d_Group(const Handle(Graphic3d_Structure)& AStructure);
   //! Supress all primitives and attributes of <me>. <br>
-  Standard_EXPORT     void Clear() ;
+//!          To clear group without update in Graphic3d_StructureManager <br>
+//!          pass Standard_False as <theUpdateStructureMgr>. This <br>
+//!          used on context and viewer destruction, when the pointer <br>
+//!          to structure manager in Graphic3d_Structure could be <br>
+//!          already released (pointers are used here to avoid handle <br>
+//!          cross-reference); <br>
+  Standard_EXPORT     void Clear(const Standard_Boolean theUpdateStructureMgr = Standard_True) ;
   //! Supress the group <me> in the structure. <br>
   Standard_EXPORT     void Destroy() ;
 ~Graphic3d_Group()

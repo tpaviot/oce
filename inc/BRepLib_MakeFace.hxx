@@ -94,8 +94,9 @@ public:
   Standard_EXPORT   BRepLib_MakeFace(const gp_Sphere& S);
   //! Make a face from a torus. <br>
   Standard_EXPORT   BRepLib_MakeFace(const gp_Torus& C);
-  //! Make a face from a Surface. <br>
-  Standard_EXPORT   BRepLib_MakeFace(const Handle(Geom_Surface)& S);
+  //! Make a face from a Surface. Accepts tolerance value (TolDegen) <br>
+//!          for resolution of degenerated edges. <br>
+  Standard_EXPORT   BRepLib_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real TolDegen);
   //! Make a face from a plane. <br>
   Standard_EXPORT   BRepLib_MakeFace(const gp_Pln& P,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
   //! Make a face from a cylinder. <br>
@@ -106,8 +107,10 @@ public:
   Standard_EXPORT   BRepLib_MakeFace(const gp_Sphere& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
   //! Make a face from a torus. <br>
   Standard_EXPORT   BRepLib_MakeFace(const gp_Torus& C,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
-  //! Make a face from a Surface. <br>
-  Standard_EXPORT   BRepLib_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
+  //! Make a face from a Surface. Accepts min & max parameters <br>
+//!          to construct the face's bounds. Also accepts tolerance value (TolDegen) <br>
+//!          for resolution of degenerated edges. <br>
+  Standard_EXPORT   BRepLib_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real TolDegen);
   //! Find a surface from the wire and make a face. <br>
 //!          if <OnlyPlane> is true, the computed surface will be <br>
 //!          a plane. If it is not possible to find a plane, the <br>
@@ -129,12 +132,15 @@ public:
   Standard_EXPORT   BRepLib_MakeFace(const TopoDS_Face& F,const TopoDS_Wire& W);
   //! Load the face. <br>
   Standard_EXPORT     void Init(const TopoDS_Face& F) ;
-  //! Creates the face  from the  surface.  If Bound  is <br>
+  //! Creates the face  from the  surface. If Bound is <br>
 //!          True a wire is made from the natural bounds. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Boolean Bound = Standard_True) ;
-  //! Creates the face from the surface  and the min-max <br>
-//!          values. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax) ;
+//!          Accepts tolerance value (TolDegen) for resolution <br>
+//!          of degenerated edges. <br>
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Boolean Bound,const Standard_Real TolDegen) ;
+  //! Creates the face from the surface and the min-max <br>
+//!          values. Accepts tolerance value (TolDegen) for resolution <br>
+//!          of degenerated edges. <br>
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real TolDegen) ;
   //! Adds the wire <W> in the current face. <br>
   Standard_EXPORT     void Add(const TopoDS_Wire& W) ;
   

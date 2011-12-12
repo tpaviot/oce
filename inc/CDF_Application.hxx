@@ -19,8 +19,8 @@
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
 #endif
-#ifndef _CDF_RetrievableStatus_HeaderFile
-#include <CDF_RetrievableStatus.hxx>
+#ifndef _PCDM_ReaderStatus_HeaderFile
+#include <PCDM_ReaderStatus.hxx>
 #endif
 #ifndef _CDM_Application_HeaderFile
 #include <CDM_Application.hxx>
@@ -113,13 +113,13 @@ public:
 //!             of CDM_MetaData <br>
   Standard_EXPORT     Handle_CDM_Document Retrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion,const Standard_Boolean UseStorageConfiguration = Standard_True) ;
   
-  Standard_EXPORT     CDF_RetrievableStatus CanRetrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName) ;
+  Standard_EXPORT     PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName) ;
   
-  Standard_EXPORT     CDF_RetrievableStatus CanRetrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion) ;
+  Standard_EXPORT     PCDM_ReaderStatus CanRetrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion) ;
   
   Standard_EXPORT   virtual  void Formats(TColStd_SequenceOfExtendedString& Formats)  = 0;
   //! Checks  status  after  Retrieve <br>
-        CDF_RetrievableStatus GetRetrieveStatus() const;
+        PCDM_ReaderStatus GetRetrieveStatus() const;
   
   Standard_EXPORT     Standard_Boolean FindReader(const TCollection_ExtendedString& aFileName) ;
   
@@ -150,7 +150,7 @@ protected:
   
   Standard_EXPORT   CDF_Application();
 
-CDF_RetrievableStatus myRetrievableStatus;
+PCDM_ReaderStatus myRetrievableStatus;
 
 
 private: 
@@ -182,7 +182,7 @@ private:
   
   Standard_EXPORT     CDF_TypeOfActivation TypeOfActivation(const Handle(CDM_MetaData)& aMetaData) ;
   
-  Standard_EXPORT     CDF_RetrievableStatus CanRetrieve(const Handle(CDM_MetaData)& aMetaData) ;
+  Standard_EXPORT     PCDM_ReaderStatus CanRetrieve(const Handle(CDM_MetaData)& aMetaData) ;
 
 TCollection_ExtendedString myDefaultFolder;
 

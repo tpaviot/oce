@@ -47,4 +47,4 @@
 +V Prs2d:msentity:Prs2d_TypeOfTolerance .
 +V Prs2d:msentity:Prs2d_TypeOfSymbol .
 +V Prs2d:msentity:Prs2d_TypeOfRadius .
-- Prs2d:admfile:Prs2d_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Prs2d/Prs2d_xcpp_fill.Out
+- Prs2d:admfile:Prs2d_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Prs2d/Prs2d_xcpp_fill.Out

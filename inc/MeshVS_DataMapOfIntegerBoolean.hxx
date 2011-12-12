@@ -25,6 +25,9 @@
 #ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TColStd_MapIntegerHasher;
@@ -83,6 +86,10 @@ public:
 {
   return ChangeFind(K);
 }
+  
+  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
 
 
 

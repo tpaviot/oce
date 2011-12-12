@@ -69,7 +69,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKDraw.lib;TKMesh.lib;TKMesh.lib;TKTopAlgo.lib;TKTopAlgo.lib;TKHLR.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKGeomBase.lib;TKG2d.lib;TKG2d.lib;TKBRep.lib;TKBRep.lib;TKMath.lib;TKMath.lib;TKG3d.lib;TKG3d.lib;TKernel.lib;TKernel.lib;TKService.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKDraw.lib;TKMesh.lib;TKMesh.lib;TKernel.lib;TKernel.lib;TKTopAlgo.lib;TKTopAlgo.lib;TKHLR.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKGeomBase.lib;TKG2d.lib;TKG2d.lib;TKBRep.lib;TKBRep.lib;TKMath.lib;TKMath.lib;TKG3d.lib;TKG3d.lib;TKService.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\..\..\..\win64\vc10\bin\DRAWEXE.pdb</ProgramDatabaseFile>
@@ -107,7 +107,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKDraw.lib;TKMesh.lib;TKMesh.lib;TKTopAlgo.lib;TKTopAlgo.lib;TKHLR.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKGeomBase.lib;TKG2d.lib;TKG2d.lib;TKBRep.lib;TKBRep.lib;TKMath.lib;TKMath.lib;TKG3d.lib;TKG3d.lib;TKernel.lib;TKernel.lib;TKService.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKDraw.lib;TKMesh.lib;TKMesh.lib;TKernel.lib;TKernel.lib;TKTopAlgo.lib;TKTopAlgo.lib;TKHLR.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKGeomBase.lib;TKG2d.lib;TKG2d.lib;TKBRep.lib;TKBRep.lib;TKMath.lib;TKMath.lib;TKG3d.lib;TKG3d.lib;TKService.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>

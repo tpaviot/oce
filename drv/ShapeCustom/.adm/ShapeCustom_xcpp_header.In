@@ -9,4 +9,4 @@
 +V ShapeCustom:msentity:ShapeCustom_ConvertToRevolution .
 +V ShapeCustom:msentity:ShapeCustom_SweptToElementary .
 +V ShapeCustom:msentity:ShapeCustom_ConvertToBSpline .
-- ShapeCustom:admfile:ShapeCustom_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ShapeCustom/ShapeCustom_xcpp_fill.Out
+- ShapeCustom:admfile:ShapeCustom_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/ShapeCustom/ShapeCustom_xcpp_fill.Out

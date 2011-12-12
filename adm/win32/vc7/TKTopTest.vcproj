@@ -1616,6 +1616,27 @@
 							CompileAs="0"/>
 					</FileConfiguration>
 				</File>
+				<File
+					RelativePath="..\..\..\src\GeometryTest\GeometryTest_TestProjCommands.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\GeometryTest,..\..\..\src\GeometryTest"
+                                                        PreprocessorDefinitions="__GeometryTest_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\GeometryTest,..\..\..\src\GeometryTest"
+                                                        PreprocessorDefinitions="__GeometryTest_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
 			</Filter>
 			<Filter
 				Name="HLRTest"

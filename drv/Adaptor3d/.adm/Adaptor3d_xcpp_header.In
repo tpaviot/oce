@@ -22,4 +22,4 @@
 +V Adaptor3d:msentity:Adaptor3d_CurvePtr .
 +V Adaptor3d:msentity:Adaptor3d_SurfacePtr .
 +V Adaptor3d:msentity:Adaptor3d_CurveOnSurfacePtr .
-- Adaptor3d:admfile:Adaptor3d_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Adaptor3d/Adaptor3d_xcpp_fill.Out
+- Adaptor3d:admfile:Adaptor3d_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Adaptor3d/Adaptor3d_xcpp_fill.Out

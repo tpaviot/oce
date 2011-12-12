@@ -50,6 +50,7 @@ pubinclude Handle_PCDM_DriverError.hxx
 pubinclude PCDM_DriverError.hxx
 derivated PCDM_DriverError_0.cxx
 pubinclude PCDM_ReaderStatus.hxx
+pubinclude PCDM_StoreStatus.hxx
 pubinclude PCDM_TypeOfFileDriver.hxx
 pubinclude PCDM_BaseDriverPointer.hxx
 dbadmfile PCDM_xcpp_header.In

@@ -50,6 +50,7 @@
 + PCDM:pubinclude:PCDM_DriverError.hxx PCDM:msentity:PCDM_DriverError
 + PCDM:derivated:PCDM_DriverError_0.cxx PCDM:msentity:PCDM_DriverError
 + PCDM:pubinclude:PCDM_ReaderStatus.hxx PCDM:msentity:PCDM_ReaderStatus
++ PCDM:pubinclude:PCDM_StoreStatus.hxx PCDM:msentity:PCDM_StoreStatus
 + PCDM:pubinclude:PCDM_TypeOfFileDriver.hxx PCDM:msentity:PCDM_TypeOfFileDriver
 + PCDM:pubinclude:PCDM_BaseDriverPointer.hxx PCDM:msentity:PCDM_BaseDriverPointer
 + PCDM:dbadmfile:PCDM_xcpp_header.In PCDM:admfile:PCDM_xcpp_fill.Out

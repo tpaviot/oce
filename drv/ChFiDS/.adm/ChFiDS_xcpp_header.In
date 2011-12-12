@@ -34,4 +34,4 @@
 +V ChFiDS:msentity:ChFiDS_State .
 +V ChFiDS:msentity:ChFiDS_ChamfMethod .
 +V ChFiDS:msentity:ChFiDS_ErrorStatus .
-- ChFiDS:admfile:ChFiDS_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ChFiDS/ChFiDS_xcpp_fill.Out
+- ChFiDS:admfile:ChFiDS_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/ChFiDS/ChFiDS_xcpp_fill.Out

@@ -16,6 +16,7 @@ privinclude BRepMesh_ShapeTool.ixx
 pubinclude BRepMesh_Circ.hxx
 privinclude BRepMesh_Circ.jxx
 privinclude BRepMesh_Circ.ixx
+pubinclude Handle_BRepMesh_DiscretRoot.hxx
 pubinclude BRepMesh_DiscretRoot.hxx
 privinclude BRepMesh_DiscretRoot.jxx
 privinclude BRepMesh_DiscretRoot.ixx
@@ -41,6 +42,9 @@ privinclude BRepMesh_DataStructureOfDelaun.ixx
 pubinclude BRepMesh_CircleTool.hxx
 privinclude BRepMesh_CircleTool.jxx
 privinclude BRepMesh_CircleTool.ixx
+pubinclude BRepMesh_VertexTool.hxx
+privinclude BRepMesh_VertexTool.jxx
+privinclude BRepMesh_VertexTool.ixx
 pubinclude BRepMesh_Array1OfVertexOfDelaun.hxx
 derivated BRepMesh_Array1OfVertexOfDelaun_0.cxx
 pubinclude Handle_BRepMesh_HArray1OfVertexOfDelaun.hxx
@@ -56,6 +60,8 @@ pubinclude BRepMesh_LinkHasherOfDataStructureOfDelaun.hxx
 derivated BRepMesh_LinkHasherOfDataStructureOfDelaun_0.cxx
 pubinclude BRepMesh_ElemHasherOfDataStructureOfDelaun.hxx
 derivated BRepMesh_ElemHasherOfDataStructureOfDelaun_0.cxx
+pubinclude BRepMesh_DataMapOfIntegerListOfInteger.hxx
+derivated BRepMesh_DataMapOfIntegerListOfInteger_0.cxx
 pubinclude BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx
 derivated BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_0.cxx
 pubinclude BRepMesh_IDMapOfLinkOfDataStructureOfDelaun.hxx
@@ -98,6 +104,7 @@ derivated BRepMesh_DataMapOfFaceAttribute_0.cxx
 pubinclude BRepMesh_Classifier.hxx
 privinclude BRepMesh_Classifier.jxx
 privinclude BRepMesh_Classifier.ixx
+pubinclude Handle_BRepMesh_IncrementalMesh.hxx
 pubinclude BRepMesh_IncrementalMesh.hxx
 privinclude BRepMesh_IncrementalMesh.jxx
 privinclude BRepMesh_IncrementalMesh.ixx
@@ -111,6 +118,11 @@ privinclude BRepMesh_PairOfPolygon.jxx
 privinclude BRepMesh_PairOfPolygon.ixx
 pubinclude BRepMesh_DataMapOfShapePairOfPolygon.hxx
 derivated BRepMesh_DataMapOfShapePairOfPolygon_0.cxx
+pubinclude Handle_BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger.hxx
+pubinclude BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger.hxx
+derivated BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx
+pubinclude BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger.hxx
+derivated BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx
 pubinclude Handle_BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun.hxx
 pubinclude BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun.hxx
 derivated BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_0.cxx
@@ -169,6 +181,7 @@ pubinclude BRepMesh_PDiscretRoot.hxx
 dbadmfile BRepMesh_xcpp_header.In
 dbadmfile BRepMesh_xcpp_header.Out
 dbadmfile BRepMesh_xcpp_header.Dep
+pubinclude BRepMesh_PluginEntryType.hxx
 pubinclude BRepMesh_PluginMacro.hxx
 pubinclude BRepMesh_ClassifierPtr.hxx
 pubinclude BRepMesh_CellFilter.hxx
@@ -179,6 +192,9 @@ pubinclude BRepMesh_ListOfInteger.hxx
 pubinclude BRepMesh_BaseAllocator.hxx
 pubinclude BRepMesh_PairOfIndex.hxx
 pubinclude BRepMesh_Status.hxx
+pubinclude BRepMesh_VertexCellFilter.hxx
+pubinclude BRepMesh_VertexInspector.hxx
+pubinclude BRepMesh_VectorOfVertex.hxx
 pubinclude BRepMesh_Vertex.lxx
 pubinclude BRepMesh_Edge.lxx
 pubinclude BRepMesh_Triangle.lxx

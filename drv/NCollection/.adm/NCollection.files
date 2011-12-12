@@ -59,6 +59,7 @@ pubinclude NCollection_CellFilter.hxx
 pubinclude NCollection_Handle.hxx
 pubinclude NCollection_Comparator.hxx
 pubinclude NCollection_QuickSort.hxx
+pubinclude NCollection_Haft.h
 dbadmfile NCollection_obj_inc.In
 dbadmfile NCollection_obj_inc.Out
 dbadmfile NCollection_obj_inc.Dep

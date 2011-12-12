@@ -1,0 +1,63 @@
+#!/bin/sh
+# ====================================================================
+# This script is just here to illustrate the procedure for preparing
+# the configure process. It creates configuration files (ex:
+# ltmain.sh) using libtoolize, the aclocal macro, the configure script
+# using autoconf and some scripts used in building process (ex:
+# install-sh) using automake. Automake is used here to creates the
+# files Makefile.in from the files Makefile.am.
+# ====================================================================
+
+# ____________________________________________________________________
+# aclocal creates the aclocal.m4 file from the standard macro and the
+# custom macro embedded in the directory salome_adm/unix/config_files.
+# output:
+#   aclocal.m4
+#   autom4te.cache (directory)
+echo "====================================================== aclocal"
+
+aclocal || exit 1
+
+# ____________________________________________________________________
+# libtoolize creates some configuration files (ltmain.sh,
+# config.guess and config.sub). It only depends on the libtool
+# version. The files are created in the directory specified with the
+# AC_CONFIG_AUX_DIR(<mydir>) tag (see configure.ac).
+# output:
+#   make/config.guess
+#   make/config.sub
+#   make/ltmain.sh
+echo "====================================================== libtoolize"
+
+libtoolize --force --copy --automake || exit 1
+
+# ____________________________________________________________________
+# autoheader creates config.h.in
+# output:
+#   configure
+echo "====================================================== autoheader"
+
+autoheader
+
+# ____________________________________________________________________
+# automake creates some scripts used in building process
+# (install-sh, missing, ...). It only depends on the automake
+# version. This step also creates the Makefile.in files from 
+# the Makefile.am files
+# output:
+#   make/depcomp
+#   make/config_files/install-sh
+#   make/missing
+#   Makefile.in (from Makefile.am)
+echo "====================================================== automake"
+
+automake --add-missing --copy --gnu
+
+# ____________________________________________________________________
+# autoconf creates the configure script from the file configure.ac (or
+# configure.in if configure.ac doesn't exist)
+# output:
+#   configure
+echo "====================================================== autoconf"
+
+autoconf

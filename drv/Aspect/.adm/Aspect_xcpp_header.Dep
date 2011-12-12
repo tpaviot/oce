@@ -271,6 +271,7 @@
 + Aspect:pubinclude:Aspect_TypeOfColorScaleData.hxx Aspect:msentity:Aspect_TypeOfColorScaleData
 + Aspect:pubinclude:Aspect_TypeOfColorScalePosition.hxx Aspect:msentity:Aspect_TypeOfColorScalePosition
 + Aspect:pubinclude:Aspect_TypeOfColorScaleOrientation.hxx Aspect:msentity:Aspect_TypeOfColorScaleOrientation
++ Aspect:pubinclude:Aspect_PrintAlgo.hxx Aspect:msentity:Aspect_PrintAlgo
 + Aspect:pubinclude:Aspect_DriverPtr.hxx Aspect:msentity:Aspect_DriverPtr
 + Aspect:pubinclude:Aspect_WindowDriverPtr.hxx Aspect:msentity:Aspect_WindowDriverPtr
 + Aspect:dbadmfile:Aspect_xcpp_header.In Aspect:admfile:Aspect_xcpp_fill.Out

@@ -1,3 +1,4 @@
++ BRepMesh:pubinclude:BRepMesh_PluginEntryType.hxx BRepMesh:source:BRepMesh_PluginEntryType.hxx
 + BRepMesh:pubinclude:BRepMesh_PluginMacro.hxx BRepMesh:source:BRepMesh_PluginMacro.hxx
 + BRepMesh:pubinclude:BRepMesh_ClassifierPtr.hxx BRepMesh:source:BRepMesh_ClassifierPtr.hxx
 + BRepMesh:pubinclude:BRepMesh_CellFilter.hxx BRepMesh:source:BRepMesh_CellFilter.hxx
@@ -8,6 +9,9 @@
 + BRepMesh:pubinclude:BRepMesh_BaseAllocator.hxx BRepMesh:source:BRepMesh_BaseAllocator.hxx
 + BRepMesh:pubinclude:BRepMesh_PairOfIndex.hxx BRepMesh:source:BRepMesh_PairOfIndex.hxx
 + BRepMesh:pubinclude:BRepMesh_Status.hxx BRepMesh:source:BRepMesh_Status.hxx
++ BRepMesh:pubinclude:BRepMesh_VertexCellFilter.hxx BRepMesh:source:BRepMesh_VertexCellFilter.hxx
++ BRepMesh:pubinclude:BRepMesh_VertexInspector.hxx BRepMesh:source:BRepMesh_VertexInspector.hxx
++ BRepMesh:pubinclude:BRepMesh_VectorOfVertex.hxx BRepMesh:source:BRepMesh_VectorOfVertex.hxx
 + BRepMesh:pubinclude:BRepMesh_Vertex.lxx BRepMesh:source:BRepMesh_Vertex.lxx
 + BRepMesh:pubinclude:BRepMesh_Edge.lxx BRepMesh:source:BRepMesh_Edge.lxx
 + BRepMesh:pubinclude:BRepMesh_Triangle.lxx BRepMesh:source:BRepMesh_Triangle.lxx

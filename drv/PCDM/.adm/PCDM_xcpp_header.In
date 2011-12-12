@@ -14,6 +14,7 @@
 +V PCDM:msentity:PCDM_SequenceNodeOfSequenceOfReference .
 +V PCDM:msentity:PCDM_DriverError .
 +V PCDM:msentity:PCDM_ReaderStatus .
++V PCDM:msentity:PCDM_StoreStatus .
 +V PCDM:msentity:PCDM_TypeOfFileDriver .
 +V PCDM:msentity:PCDM_BaseDriverPointer .
-- PCDM:admfile:PCDM_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/PCDM/PCDM_xcpp_fill.Out
+- PCDM:admfile:PCDM_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/PCDM/PCDM_xcpp_fill.Out

@@ -5,6 +5,24 @@
 
 #include <BRepMesh_DiscretRoot.jxx>
 
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+
+
  
+
+
+IMPLEMENT_STANDARD_TYPE(BRepMesh_DiscretRoot)
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
+  STANDARD_TYPE(Standard_Transient),
+
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
+IMPLEMENT_STANDARD_TYPE_END(BRepMesh_DiscretRoot)
+
+
+IMPLEMENT_DOWNCAST(BRepMesh_DiscretRoot,Standard_Transient)
+IMPLEMENT_STANDARD_RTTI(BRepMesh_DiscretRoot)
+
 
 

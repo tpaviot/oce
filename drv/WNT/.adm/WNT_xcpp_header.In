@@ -30,4 +30,4 @@
 +V WNT:msentity:WNT_LogFont .
 +V WNT:msentity:WNT_ColorRef .
 +V WNT:msentity:WNT_WindowData .
-- WNT:admfile:WNT_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/WNT/WNT_xcpp_fill.Out
+- WNT:admfile:WNT_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/WNT/WNT_xcpp_fill.Out

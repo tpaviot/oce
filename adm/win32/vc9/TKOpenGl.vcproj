@@ -902,6 +902,29 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-DSILGL -DSILGL_VRS=50 "
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\OpenGl,..\..\..\src\OpenGl"
+                                                        PreprocessorDefinitions="__OpenGl_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-DSILGL -DSILGL_VRS=50 "
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\OpenGl,..\..\..\src\OpenGl"
+                                                        PreprocessorDefinitions="__OpenGl_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_ResourceCleaner.cxx">
 					<FileConfiguration
 						Name="Release|Win32">

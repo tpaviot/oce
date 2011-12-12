@@ -55,6 +55,7 @@ pubinclude OpenGl_Resource.hxx
 pubinclude OpenGl_ResourceCleaner.hxx
 pubinclude OpenGl_ResourceVBO.hxx
 pubinclude OpenGl_ResourceTexture.hxx
+pubinclude OpenGl_PrinterContext.hxx
 dbadmfile OpenGl_obj_inc.In
 dbadmfile OpenGl_obj_inc.Out
 dbadmfile OpenGl_obj_inc.Dep

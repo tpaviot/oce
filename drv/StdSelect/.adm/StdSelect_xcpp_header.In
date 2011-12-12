@@ -17,4 +17,4 @@
 +V StdSelect:msentity:StdSelect_DisplayMode .
 +V StdSelect:msentity:StdSelect_TypeOfFace .
 +V StdSelect:msentity:StdSelect_TypeOfEdge .
-- StdSelect:admfile:StdSelect_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/StdSelect/StdSelect_xcpp_fill.Out
+- StdSelect:admfile:StdSelect_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/StdSelect/StdSelect_xcpp_fill.Out

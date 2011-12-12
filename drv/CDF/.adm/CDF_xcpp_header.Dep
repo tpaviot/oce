@@ -38,9 +38,7 @@
 + CDF:pubinclude:CDF_MetaDataDriverError.hxx CDF:msentity:CDF_MetaDataDriverError
 + CDF:derivated:CDF_MetaDataDriverError_0.cxx CDF:msentity:CDF_MetaDataDriverError
 + CDF:pubinclude:CDF_TypeOfActivation.hxx CDF:msentity:CDF_TypeOfActivation
-+ CDF:pubinclude:CDF_StoreStatus.hxx CDF:msentity:CDF_StoreStatus
 + CDF:pubinclude:CDF_TryStoreStatus.hxx CDF:msentity:CDF_TryStoreStatus
-+ CDF:pubinclude:CDF_RetrievableStatus.hxx CDF:msentity:CDF_RetrievableStatus
 + CDF:pubinclude:CDF_SubComponentStatus.hxx CDF:msentity:CDF_SubComponentStatus
 + CDF:pubinclude:CDF_StoreSetNameStatus.hxx CDF:msentity:CDF_StoreSetNameStatus
 + CDF:dbadmfile:CDF_xcpp_header.In CDF:admfile:CDF_xcpp_fill.Out

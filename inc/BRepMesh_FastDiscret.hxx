@@ -80,6 +80,7 @@ class BRepMesh_DataStructureOfDelaun;
 class Bnd_Box;
 class TopoDS_Shape;
 class TopoDS_Face;
+class TopTools_IndexedDataMapOfShapeListOfShape;
 class TopoDS_Edge;
 class BRepAdaptor_HSurface;
 class Geom2d_Curve;
@@ -120,7 +121,7 @@ public:
   //! Build triangulation on the whole shape <br>
   Standard_EXPORT     void Perform(const TopoDS_Shape& shape) ;
   //! Record a face for further processing. <br>
-  Standard_EXPORT     void Add(const TopoDS_Face& face) ;
+  Standard_EXPORT     void Add(const TopoDS_Face& face,const TopTools_IndexedDataMapOfShapeListOfShape& ancestor) ;
   //! Triangulate a face previously recorded for <br>
 //!          processing by call to Add(). Can be executed in <br>
 //!          parallel threads. <br>
@@ -131,6 +132,17 @@ public:
 }
   
   Standard_EXPORT     BRepMesh_Status CurrentFaceStatus() const;
+  //! Returns computed relative deflection for edge <br>
+  Standard_EXPORT   static  Standard_Real RelativeEdgeDeflection(const TopoDS_Edge& edge,const Standard_Real defle,const Standard_Real dtotale,Standard_Real& cdef) ;
+  //! Returns the maximal dimension of Bnd_Box <br>
+  Standard_EXPORT   static  void BoxMaxDimension(const Bnd_Box& box,Standard_Real& maxdim) ;
+  
+//! Request algorithm to launch in multiple threads <br>
+//! to improve performance (should be supported by plugin). <br>
+  Standard_EXPORT     void SetParallel(const Standard_Boolean theInParallel) ;
+  
+//! Returns the multi-threading usage flag. <br>
+  Standard_EXPORT     Standard_Boolean IsParallel() const;
   //! Gives the number of built triangles. <br>
   Standard_EXPORT     Standard_Integer NbTriangles() const;
   //! Gives the triangle of <Index>. <br>
@@ -189,7 +201,7 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Add(const TopoDS_Edge& edge,const TopoDS_Face& face,const Handle(BRepAdaptor_HSurface)& S,const Handle(Geom2d_Curve)& C,const Standard_Real defedge,const Standard_Real first,const Standard_Real last) ;
+  Standard_EXPORT     void Add(const TopoDS_Edge& edge,const TopoDS_Face& face,const Handle(BRepAdaptor_HSurface)& S,const Handle(Geom2d_Curve)& C,const TopTools_IndexedDataMapOfShapeListOfShape& ancestor,const Standard_Real defedge,const Standard_Real first,const Standard_Real last) ;
   
   Standard_EXPORT     void Add(const TopoDS_Vertex& theVert,const TopoDS_Face& face,const Handle(BRepAdaptor_HSurface)& S) ;
   
@@ -205,6 +217,7 @@ Standard_Real myAngle;
 Standard_Real myDeflection;
 Standard_Real myDtotale;
 Standard_Boolean myWithShare;
+Standard_Boolean myInParallel;
 BRepMesh_DataMapOfVertexInteger myVertices;
 BRepMesh_DataMapOfShapePairOfPolygon myEdges;
 BRepMesh_DataMapOfShapePairOfPolygon myInternaledges;

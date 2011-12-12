@@ -10,9 +10,7 @@
 +V CDF:msentity:CDF_Timer .
 +V CDF:msentity:CDF_MetaDataDriverError .
 +V CDF:msentity:CDF_TypeOfActivation .
-+V CDF:msentity:CDF_StoreStatus .
 +V CDF:msentity:CDF_TryStoreStatus .
-+V CDF:msentity:CDF_RetrievableStatus .
 +V CDF:msentity:CDF_SubComponentStatus .
 +V CDF:msentity:CDF_StoreSetNameStatus .
-- CDF:admfile:CDF_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/CDF/CDF_xcpp_fill.Out
+- CDF:admfile:CDF_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/CDF/CDF_xcpp_fill.Out

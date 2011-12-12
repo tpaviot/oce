@@ -275,6 +275,27 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -401,6 +422,27 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -507,6 +549,27 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfFaceAttribute_0.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfInteger_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -1515,6 +1578,48 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepMesh\BRepMesh_Vertex.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_VertexInspector.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="2"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							Optimization="0"
+							AdditionalIncludeDirectories="..\..\..\inc,..\..\..\drv\BRepMesh,..\..\..\src\BRepMesh"
+                                                        PreprocessorDefinitions="__BRepMesh_DLL;"
+							CompileAs="0"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool

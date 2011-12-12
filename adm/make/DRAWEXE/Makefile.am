@@ -13,6 +13,7 @@ bin_PROGRAMS= DRAWEXE
  DRAWEXE_SOURCES = @top_srcdir@/src/DRAWEXE/DRAWEXE.cxx 
  DRAWEXE_LDADD = ../TKDraw/libTKDraw.la \
 ../TKMesh/libTKMesh.la \
+../TKernel/libTKernel.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKHLR/libTKHLR.la \
@@ -21,6 +22,5 @@ bin_PROGRAMS= DRAWEXE
 ../TKBRep/libTKBRep.la \
 ../TKMath/libTKMath.la \
 ../TKG3d/libTKG3d.la \
-../TKernel/libTKernel.la \
 ../TKService/libTKService.la \
  $(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) $(CSF_TBB_LIB) $(CSF_SOCKETLibs_LIB) $(CSF_FPELibs_LIB) $(CSF_ThreadLibs_LIB) $(CSF_kernel32_LIB) $(CSF_MotifLibs_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_FreeImagePlus_LIB)  

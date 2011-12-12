@@ -12,6 +12,7 @@
 +V BRepMesh:msentity:BRepMesh_Delaun .
 +V BRepMesh:msentity:BRepMesh_DataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_CircleTool .
++V BRepMesh:msentity:BRepMesh_VertexTool .
 +V BRepMesh:msentity:BRepMesh_Array1OfVertexOfDelaun .
 +V BRepMesh:msentity:BRepMesh_HArray1OfVertexOfDelaun .
 +V BRepMesh:msentity:BRepMesh_HeapSortVertexOfDelaun .
@@ -19,6 +20,7 @@
 +V BRepMesh:msentity:BRepMesh_NodeHasherOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_LinkHasherOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_ElemHasherOfDataStructureOfDelaun .
++V BRepMesh:msentity:BRepMesh_DataMapOfIntegerListOfInteger .
 +V BRepMesh:msentity:BRepMesh_IDMapOfNodeOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_IDMapOfLinkOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_IMapOfElementOfDataStructureOfDelaun .
@@ -41,6 +43,8 @@
 +V BRepMesh:msentity:BRepMesh_DataMapOfIntegerPnt .
 +V BRepMesh:msentity:BRepMesh_PairOfPolygon .
 +V BRepMesh:msentity:BRepMesh_DataMapOfShapePairOfPolygon .
++V BRepMesh:msentity:BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger .
++V BRepMesh:msentity:BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger .
 +V BRepMesh:msentity:BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun .
 +V BRepMesh:msentity:BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun .
@@ -72,5 +76,9 @@
 +V BRepMesh:msentity:BRepMesh_PairOfIndex .
 +V BRepMesh:msentity:BRepMesh_CircleInspector .
 +V BRepMesh:msentity:BRepMesh_CellFilter .
++V BRepMesh:msentity:BRepMesh_VertexInspector .
++V BRepMesh:msentity:BRepMesh_VertexCellFilter .
++V BRepMesh:msentity:BRepMesh_VectorOfVertex .
 +V BRepMesh:msentity:BRepMesh_ClassifierPtr .
-- BRepMesh:admfile:BRepMesh_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/BRepMesh/BRepMesh_xcpp_fill.Out
++V BRepMesh:msentity:BRepMesh_PluginEntryType .
+- BRepMesh:admfile:BRepMesh_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/BRepMesh/BRepMesh_xcpp_fill.Out

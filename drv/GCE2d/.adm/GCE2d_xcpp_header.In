@@ -14,4 +14,4 @@
 +V GCE2d:msentity:GCE2d_MakeMirror .
 +V GCE2d:msentity:GCE2d_MakeRotation .
 +V GCE2d:msentity:GCE2d_MakeScale .
-- GCE2d:admfile:GCE2d_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/GCE2d/GCE2d_xcpp_fill.Out
+- GCE2d:admfile:GCE2d_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/GCE2d/GCE2d_xcpp_fill.Out

@@ -34,8 +34,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _CDF_StoreStatus_HeaderFile
-#include <CDF_StoreStatus.hxx>
+#ifndef _PCDM_StoreStatus_HeaderFile
+#include <PCDM_StoreStatus.hxx>
 #endif
 #ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
@@ -57,7 +57,7 @@ public:
   Standard_EXPORT     Standard_Boolean IsConsistent() const;
   //! stores each object of the storelist in the reverse <br>
 //!          order of which they had been added. <br>
-  Standard_EXPORT     CDF_StoreStatus Store(Handle(CDM_MetaData)& aMetaData,TCollection_ExtendedString& aStatusAssociatedText) ;
+  Standard_EXPORT     PCDM_StoreStatus Store(Handle(CDM_MetaData)& aMetaData,TCollection_ExtendedString& aStatusAssociatedText) ;
   
   Standard_EXPORT     void Init() ;
   

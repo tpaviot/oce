@@ -59,6 +59,7 @@
 + NCollection:pubinclude:NCollection_Handle.hxx NCollection:source:NCollection_Handle.hxx
 + NCollection:pubinclude:NCollection_Comparator.hxx NCollection:source:NCollection_Comparator.hxx
 + NCollection:pubinclude:NCollection_QuickSort.hxx NCollection:source:NCollection_QuickSort.hxx
++ NCollection:pubinclude:NCollection_Haft.h NCollection:source:NCollection_Haft.h
 + NCollection:dbadmfile:NCollection_obj_inc.In NCollection:admfile:NCollection_src.Out
 + NCollection:dbadmfile:NCollection_obj_inc.Out NCollection:admfile:NCollection_src.Out
 + NCollection:dbadmfile:NCollection_obj_inc.Dep NCollection:admfile:NCollection_src.Out

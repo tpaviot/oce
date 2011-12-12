@@ -55,6 +55,9 @@
 #ifndef _Graphic3d_CBitFields8_HeaderFile
 #include <Graphic3d_CBitFields8.hxx>
 #endif
+#ifndef _Graphic3d_CGraduatedTrihedron_HeaderFile
+#include <Graphic3d_CGraduatedTrihedron.hxx>
+#endif
 #ifndef _Graphic3d_DataStructureManager_HeaderFile
 #include <Graphic3d_DataStructureManager.hxx>
 #endif
@@ -127,6 +130,9 @@
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
 #endif
+#ifndef _Aspect_PrintAlgo_HeaderFile
+#include <Aspect_PrintAlgo.hxx>
+#endif
 #ifndef _Graphic3d_PtrFrameBuffer_HeaderFile
 #include <Graphic3d_PtrFrameBuffer.hxx>
 #endif
@@ -151,7 +157,9 @@ class Visual3d_Layer;
 class Aspect_Background;
 class Aspect_GradientBackground;
 class TColStd_Array2OfReal;
+class TCollection_ExtendedString;
 class Quantity_Color;
+class TCollection_AsciiString;
 class Graphic3d_MapOfStructure;
 class Graphic3d_Structure;
 class Aspect_GraphicDriver;
@@ -339,10 +347,10 @@ public:
   Standard_EXPORT     void TriedronErase() ;
   //! Highlights the echo zone of the Triedron. <br>
   Standard_EXPORT     void TriedronEcho(const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
-  //! Returns data of a graduated trihedron. <br>
-  Standard_EXPORT     void GetGraduatedTrihedron(Standard_CString& xname,Standard_CString& yname,Standard_CString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,Standard_CString& fontOfNames,OSD_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,Standard_CString& fontOfValues,OSD_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
+  //! Returns data of a graduated trihedron if displayed (return value is True) <br>
+  Standard_EXPORT     Standard_Boolean GetGraduatedTrihedron(TCollection_ExtendedString& xname,TCollection_ExtendedString& yname,TCollection_ExtendedString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,TCollection_AsciiString& fontOfNames,OSD_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,TCollection_AsciiString& fontOfValues,OSD_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
   //! Displays a graduated trihedron. <br>
-  Standard_EXPORT     void GraduatedTrihedronDisplay(const Standard_CString xname,const Standard_CString yname,const Standard_CString zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color& gridcolor,const Quantity_Color& xnamecolor,const Quantity_Color& ynamecolor,const Quantity_Color& znamecolor,const Quantity_Color& xcolor,const Quantity_Color& ycolor,const Quantity_Color& zcolor,const Standard_CString fontOfNames,const OSD_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const Standard_CString fontOfValues,const OSD_FontAspect styleOfValues,const Standard_Integer sizeOfValues) ;
+  Standard_EXPORT     void GraduatedTrihedronDisplay(const TCollection_ExtendedString& xname,const TCollection_ExtendedString& yname,const TCollection_ExtendedString& zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color& gridcolor,const Quantity_Color& xnamecolor,const Quantity_Color& ynamecolor,const Quantity_Color& znamecolor,const Quantity_Color& xcolor,const Quantity_Color& ycolor,const Quantity_Color& zcolor,const TCollection_AsciiString& fontOfNames,const OSD_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const TCollection_AsciiString& fontOfValues,const OSD_FontAspect styleOfValues,const Standard_Integer sizeOfValues) ;
   //! Erases a graduated trihedron from the view. <br>
   Standard_EXPORT     void GraduatedTrihedronErase() ;
   //! Returns the value of the default window background. <br>
@@ -436,16 +444,30 @@ public:
 //! (background is white) <br>
 //! else set to TRUE for printing with current background color. <br>
 //! <filename>: If != NULL, then the view will be printed to a file. <br>
+//! <printAlgo>: Select print algorithm: stretch, tile. <br>
+//! <theScaleFactor>: Scaling coefficient, used internally to scale the <br>
+//! printings accordingly to the scale factor selected in the printer <br>
+//! properties dialog. <br>
+//! Returns Standard_True if the data is passed to the printer, otherwise <br>
+//! Standard_False if the print operation failed due to printer error <br>
+//! or insufficient memory. <br>
 //!  Warning: Works only under Windows. <br>
-  Standard_EXPORT     void Print(const Handle(Visual3d_Layer)& AnUnderLayer,const Handle(Visual3d_Layer)& AnOverLayer,const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename) const;
+  Standard_EXPORT     Standard_Boolean Print(const Handle(Visual3d_Layer)& AnUnderLayer,const Handle(Visual3d_Layer)& AnOverLayer,const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH,const Standard_Real theScaleFactor = 1.0) const;
   //! print the contents of the view to printer. <br>
 //! <hPrnDC> : Pass the PrinterDeviceContext (HDC), <br>
 //! <showBackground> : When set to FALSE then print the view without background color <br>
 //! (background is white) <br>
 //! else set to TRUE for printing with current background color. <br>
 //! <filename>: If != NULL, then the view will be printed to a file. <br>
+//! <printAlgo>: Select print algorithm: stretch, tile. <br>
+//! <theScaleFactor>: Scaling coefficient, used internally to scale the <br>
+//! printings accordingly to the scale factor selected in the printer <br>
+//! properties dialog. <br>
+//! Returns Standard_True if the data is passed to the printer, otherwise <br>
+//! Standard_False if the print operation failed due to printer error <br>
+//! or insufficient memory. <br>
 //!  Warning: Works only under Windows. <br>
-  Standard_EXPORT     void Print(const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename) const;
+  Standard_EXPORT     Standard_Boolean Print(const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH,const Standard_Real theScaleFactor = 1.0) const;
   //! if <AFlag> is Standard_True then the transparency <br>
 //!	    is managed in the view <me>. <br>
 //!	    Default Standard_False <br>
@@ -581,6 +603,7 @@ Aspect_GradientBackground MyGradientBackground;
 Graphic3d_MapOfStructure MyDisplayedStructure;
 Visual3d_ViewManagerPtr MyPtrViewManager;
 Graphic3d_CBitFields8 MyCBitFields;
+Graphic3d_CGraduatedTrihedron MyGTrihedron;
 
 
 };

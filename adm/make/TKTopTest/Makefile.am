@@ -111,6 +111,7 @@ libTKTopTest_la_SOURCES = \
 @top_srcdir@/src/GeometryTest/GeometryTest_FairCurveCommands.cxx \
 @top_srcdir@/src/GeometryTest/GeometryTest_PolyCommands.cxx \
 @top_srcdir@/src/GeometryTest/GeometryTest_SurfaceCommands.cxx \
+@top_srcdir@/src/GeometryTest/GeometryTest_TestProjCommands.cxx \
 @top_srcdir@/src/GeomliteTest/GeomliteTest.cxx \
 @top_srcdir@/src/GeomliteTest/GeomliteTest_API2dCommands.cxx \
 @top_srcdir@/src/GeomliteTest/GeomliteTest_ApproxCommands.cxx \

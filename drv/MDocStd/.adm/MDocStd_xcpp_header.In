@@ -3,4 +3,4 @@
 +V MDocStd:msentity:MDocStd_DocumentRetrievalDriver .
 +V MDocStd:msentity:MDocStd_XLinkStorageDriver .
 +V MDocStd:msentity:MDocStd_XLinkRetrievalDriver .
-- MDocStd:admfile:MDocStd_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/MDocStd/MDocStd_xcpp_fill.Out
+- MDocStd:admfile:MDocStd_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/MDocStd/MDocStd_xcpp_fill.Out

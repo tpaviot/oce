@@ -243,6 +243,9 @@
     <ClCompile Include="..\..\..\src\GeometryTest\GeometryTest_SurfaceCommands.cxx">
       <Filter>Source files\GeometryTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\GeometryTest\GeometryTest_TestProjCommands.cxx">
+      <Filter>Source files\GeometryTest</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\HLRTest\HLRTest.cxx">
       <Filter>Source files\HLRTest</Filter>
     </ClCompile>

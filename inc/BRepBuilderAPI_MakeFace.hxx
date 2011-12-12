@@ -97,8 +97,9 @@ public:
   Standard_EXPORT   BRepBuilderAPI_MakeFace(const gp_Sphere& S);
   //! Make a face from a torus. <br>
   Standard_EXPORT   BRepBuilderAPI_MakeFace(const gp_Torus& C);
-  //! Make a face from a Surface. <br>
-  Standard_EXPORT   BRepBuilderAPI_MakeFace(const Handle(Geom_Surface)& S);
+  //! Make a face from a Surface. Accepts tolerance value (TolDegen) <br>
+//! for resolution of degenerated edges. <br>
+  Standard_EXPORT   BRepBuilderAPI_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real TolDegen);
   //! Make a face from a plane. <br>
   Standard_EXPORT   BRepBuilderAPI_MakeFace(const gp_Pln& P,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
   //! Make a face from a cylinder. <br>
@@ -109,8 +110,9 @@ public:
   Standard_EXPORT   BRepBuilderAPI_MakeFace(const gp_Sphere& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
   //! Make a face from a torus. <br>
   Standard_EXPORT   BRepBuilderAPI_MakeFace(const gp_Torus& C,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
-  //! Make a face from a Surface. <br>
-  Standard_EXPORT   BRepBuilderAPI_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax);
+  //! Make a face from a Surface. Accepts tolerance value (TolDegen) <br>
+//!          for resolution of degenerated edges. <br>
+  Standard_EXPORT   BRepBuilderAPI_MakeFace(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real TolDegen);
   //! Find a surface from the wire and make a face. <br>
 //!          if <OnlyPlane> is true, the computed surface will be <br>
 //!          a plane. If it is not possible to find a plane, the <br>
@@ -178,13 +180,15 @@ public:
 //! want to work on the geometries of the two faces independently. <br>
   Standard_EXPORT     void Init(const TopoDS_Face& F) ;
   //! Initializes (or reinitializes) the construction of a face on <br>
-//! the surface S. If Bound is true (the default value), a wire is <br>
+//! the surface S. If Bound is true, a wire is <br>
 //! automatically created from the natural bounds of the <br>
 //! surface S and added to the face in order to bound it. If <br>
 //! Bound is false, no wire is added. This option is used <br>
 //! when real bounds are known. These will be added to <br>
 //! the face after this initialization, using the function Add. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Boolean Bound = Standard_True) ;
+//! TolDegen parameter is used for resolution of degenerated edges <br>
+//! if calculation of natural bounds is turned on. <br>
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Boolean Bound,const Standard_Real TolDegen) ;
   //!  Initializes (or reinitializes) the construction of a face on <br>
 //! the surface S, limited in the u parametric direction by <br>
 //! the two parameter values UMin and UMax and in the <br>
@@ -194,7 +198,8 @@ public:
 //! -      BRepBuilderAPI_ParametersOutOfRange <br>
 //!    when the parameters given are outside the bounds of the <br>
 //!    surface or the basis surface of a trimmed surface. <br>
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax) ;
+//! TolDegen parameter is used for resolution of degenerated edges. <br>
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S,const Standard_Real UMin,const Standard_Real UMax,const Standard_Real VMin,const Standard_Real VMax,const Standard_Real TolDegen) ;
   //! Adds the wire W to the constructed face as a hole. <br>
 //! Warning <br>
 //! W must not cross the other bounds of the face, and all <br>

@@ -38,9 +38,7 @@ pubinclude Handle_CDF_MetaDataDriverError.hxx
 pubinclude CDF_MetaDataDriverError.hxx
 derivated CDF_MetaDataDriverError_0.cxx
 pubinclude CDF_TypeOfActivation.hxx
-pubinclude CDF_StoreStatus.hxx
 pubinclude CDF_TryStoreStatus.hxx
-pubinclude CDF_RetrievableStatus.hxx
 pubinclude CDF_SubComponentStatus.hxx
 pubinclude CDF_StoreSetNameStatus.hxx
 dbadmfile CDF_xcpp_header.In

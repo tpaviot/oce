@@ -24,7 +24,6 @@
 + Standard:pubinclude:Standard_Real.hxx Standard:source:Standard_Real.hxx
 + Standard:pubinclude:Standard_SStream.hxx Standard:source:Standard_SStream.hxx
 + Standard:pubinclude:Standard_ShortReal.hxx Standard:source:Standard_ShortReal.hxx
-+ Standard:pubinclude:Standard_Static.hxx Standard:source:Standard_Static.hxx
 + Standard:pubinclude:Standard_Stream.hxx Standard:source:Standard_Stream.hxx
 + Standard:pubinclude:Standard_String.hxx Standard:source:Standard_String.hxx
 + Standard:pubinclude:Standard_Transient.hxx Standard:source:Standard_Transient.hxx

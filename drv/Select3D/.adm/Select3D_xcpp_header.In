@@ -24,4 +24,4 @@
 +V Select3D:msentity:Select3D_Pnt .
 +V Select3D:msentity:Select3D_Pnt2d .
 +V Select3D:msentity:Select3D_Box2d .
-- Select3D:admfile:Select3D_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Select3D/Select3D_xcpp_fill.Out
+- Select3D:admfile:Select3D_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Select3D/Select3D_xcpp_fill.Out

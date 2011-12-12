@@ -13,4 +13,4 @@
 +V DNaming:msentity:DNaming_DataMapOfShapeOfName .
 +V DNaming:msentity:DNaming_DataMapNodeOfDataMapOfShapeOfName .
 +V DNaming:msentity:DNaming_DataMapIteratorOfDataMapOfShapeOfName .
-- DNaming:admfile:DNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/DNaming/DNaming_xcpp_fill.Out
+- DNaming:admfile:DNaming_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/DNaming/DNaming_xcpp_fill.Out

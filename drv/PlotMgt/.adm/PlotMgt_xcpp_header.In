@@ -18,4 +18,4 @@
 +V PlotMgt:msentity:PlotMgt_PlottingType .
 +V PlotMgt:msentity:PlotMgt_PaperFormat .
 +V PlotMgt:msentity:PlotMgt_PlotterDriverPtr .
-- PlotMgt:admfile:PlotMgt_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/PlotMgt/PlotMgt_xcpp_fill.Out
+- PlotMgt:admfile:PlotMgt_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/PlotMgt/PlotMgt_xcpp_fill.Out

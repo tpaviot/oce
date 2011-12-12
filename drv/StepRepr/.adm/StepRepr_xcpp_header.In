@@ -67,4 +67,4 @@
 +V StepRepr:msentity:StepRepr_HSequenceOfRepresentationItem .
 +V StepRepr:msentity:StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation .
 +V StepRepr:msentity:StepRepr_SequenceNodeOfSequenceOfRepresentationItem .
-- StepRepr:admfile:StepRepr_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/StepRepr/StepRepr_xcpp_fill.Out
+- StepRepr:admfile:StepRepr_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/StepRepr/StepRepr_xcpp_fill.Out

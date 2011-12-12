@@ -25,6 +25,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -94,6 +97,10 @@ public:
   Standard_EXPORT    const Standard_Integer& FindFromKey(const BOPTColStd_ShapeWithRank& K) const;
   
   Standard_EXPORT     Standard_Integer& ChangeFromKey(const BOPTColStd_ShapeWithRank& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const BOPTColStd_ShapeWithRank& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const BOPTColStd_ShapeWithRank& K) ;
 
 
 

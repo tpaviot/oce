@@ -99,6 +99,9 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceCleaner.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>

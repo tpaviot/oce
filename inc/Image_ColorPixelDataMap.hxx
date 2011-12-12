@@ -25,6 +25,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class Aspect_ColorPixel;
@@ -84,6 +87,10 @@ public:
 {
   return ChangeFind(K);
 }
+  
+  Standard_EXPORT     Standard_Address Find1(const Aspect_ColorPixel& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFind1(const Aspect_ColorPixel& K) ;
 
 
 

@@ -55,4 +55,4 @@
 +V IGESGeom:msentity:IGESGeom_HArray1OfBoundary .
 +V IGESGeom:msentity:IGESGeom_HArray1OfCurveOnSurface .
 +V IGESGeom:msentity:IGESGeom_HArray1OfTransformationMatrix .
-- IGESGeom:admfile:IGESGeom_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IGESGeom/IGESGeom_xcpp_fill.Out
+- IGESGeom:admfile:IGESGeom_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/IGESGeom/IGESGeom_xcpp_fill.Out

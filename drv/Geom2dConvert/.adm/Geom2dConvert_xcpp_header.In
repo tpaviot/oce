@@ -3,4 +3,4 @@
 +V Geom2dConvert:msentity:Geom2dConvert_BSplineCurveToBezierCurve .
 +V Geom2dConvert:msentity:Geom2dConvert_CompCurveToBSplineCurve .
 +V Geom2dConvert:msentity:Geom2dConvert_ApproxCurve .
-- Geom2dConvert:admfile:Geom2dConvert_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/Geom2dConvert/Geom2dConvert_xcpp_fill.Out
+- Geom2dConvert:admfile:Geom2dConvert_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Geom2dConvert/Geom2dConvert_xcpp_fill.Out

@@ -271,6 +271,7 @@ pubinclude Aspect_GradientFillMethod.hxx
 pubinclude Aspect_TypeOfColorScaleData.hxx
 pubinclude Aspect_TypeOfColorScalePosition.hxx
 pubinclude Aspect_TypeOfColorScaleOrientation.hxx
+pubinclude Aspect_PrintAlgo.hxx
 pubinclude Aspect_DriverPtr.hxx
 pubinclude Aspect_WindowDriverPtr.hxx
 dbadmfile Aspect_xcpp_header.In

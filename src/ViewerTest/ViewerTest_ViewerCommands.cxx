@@ -24,6 +24,8 @@
 #include <Draw_Interpretor.hxx>
 #include <Draw.hxx>
 #include <Draw_Appli.hxx>
+#include <Aspect_PrintAlgo.hxx>
+#include <Image_PixMap.hxx>
 
 #ifndef WNT
 #include <Graphic3d_GraphicDevice.hxx>
@@ -1661,52 +1663,238 @@ static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char 
 //function : VGraduatedTrihedron
 //purpose  : Displays a graduated trihedron
 //==============================================================================
+
+static void AddMultibyteString (TCollection_ExtendedString &name, const char *arg)
+{
+  const char *str = arg;
+  while (*str)
+  {
+    unsigned short c1 = *str++;
+    unsigned short c2 = *str++;
+    if (!c1 || !c2) break;
+    name += (Standard_ExtCharacter)((c1 << 8) | c2);
+  }
+}
+
 static int VGraduatedTrihedron(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  Handle(V3d_View) V3dView = ViewerTest::CurrentView();
-  if (V3dView.IsNull())
-      return 1;
-
-  if (argc < 2)
+  // Check arguments
+  if (argc != 2 && argc < 5)
   {
-    di << argv[0] << " Invalid number of arguments" << "\n";
+    di<<"Error: "<<argv[0]<<" - invalid number of arguments\n";
+    di<<"Usage: type help "<<argv[0]<<"\n";
+    return 1; //TCL_ERROR
+  }
+
+  Handle(V3d_View) aV3dView = ViewerTest::CurrentView();
+
+  // Create 3D view if it doesn't exist
+  if ( aV3dView.IsNull() )
+  {
+    ViewerTest::ViewerInit(); 
+    aV3dView = ViewerTest::CurrentView();
+    if( aV3dView.IsNull() )
+    {
+      di << "Error: Cannot create a 3D view\n";
+      return 1; //TCL_ERROR
+    }
+  }
+
+  // Erase (==0) or display (!=0)
+  const int display = atoi(argv[1]);
+
+  if (display)
+  {
+    // Text font
+    TCollection_AsciiString font;
+    if (argc < 6)
+      font.AssignCat("Courier");
+    else
+      font.AssignCat(argv[5]);
+
+    // Text is multibyte
+    const Standard_Boolean isMultibyte = (argc < 7)? Standard_False : (atoi(argv[6]) != 0);
+
+    // Set axis names
+    TCollection_ExtendedString xname, yname, zname;
+    if (argc >= 5)
+    {
+      if (isMultibyte)
+      {
+        AddMultibyteString(xname, argv[2]);
+        AddMultibyteString(yname, argv[3]);
+        AddMultibyteString(zname, argv[4]);
+      }
+      else
+      {
+        xname += argv[2];
+        yname += argv[3];
+        zname += argv[4];
+      }
+    }
+    else
+    {
+      xname += "X (mm)";
+      yname += "Y (mm)";
+      zname += "Z (mm)";
+    }
+
+    aV3dView->GraduatedTrihedronDisplay(xname, yname, zname,
+                                        Standard_True/*xdrawname*/, Standard_True/*ydrawname*/, Standard_True/*zdrawname*/,
+                                        Standard_True/*xdrawvalues*/, Standard_True/*ydrawvalues*/, Standard_True/*zdrawvalues*/,
+                                        Standard_True/*drawgrid*/,
+                                        Standard_True/*drawaxes*/,
+                                        5/*nbx*/, 5/*nby*/, 5/*nbz*/,
+                                        10/*xoffset*/, 10/*yoffset*/, 10/*zoffset*/,
+                                        30/*xaxisoffset*/, 30/*yaxisoffset*/, 30/*zaxisoffset*/,
+                                        Standard_True/*xdrawtickmarks*/, Standard_True/*ydrawtickmarks*/, Standard_True/*zdrawtickmarks*/,
+                                        10/*xtickmarklength*/, 10/*ytickmarklength*/, 10/*ztickmarklength*/,
+                                        Quantity_NOC_WHITE/*gridcolor*/,
+                                        Quantity_NOC_RED/*xnamecolor*/,Quantity_NOC_GREEN/*ynamecolor*/,Quantity_NOC_BLUE1/*znamecolor*/,
+                                        Quantity_NOC_RED/*xcolor*/,Quantity_NOC_GREEN/*ycolor*/,Quantity_NOC_BLUE1/*zcolor*/,font);
+  }
+  else
+    aV3dView->GraduatedTrihedronErase();
+
+  ViewerTest::GetAISContext()->UpdateCurrentViewer();
+  aV3dView->Redraw();
+
+  return 0;
+}
+
+//==============================================================================
+//function : VPrintView
+//purpose  : Test printing algorithm, print the view to image file with given
+//           width and height. Printing implemented only for WNT.
+//==============================================================================
+static int VPrintView (Draw_Interpretor& di, Standard_Integer argc, 
+                       const char** argv)
+{
+#ifndef WNT
+  di << "Printing implemented only for wnt!\n";
+  return 1;
+#else
+
+  Handle(AIS_InteractiveContext) aContextAIS = NULL;
+  Handle(V3d_View) aView = NULL;
+  aContextAIS = ViewerTest::GetAISContext();
+  if (!aContextAIS.IsNull())
+  {
+    const Handle(V3d_Viewer)& Vwr = aContextAIS->CurrentViewer();
+    Vwr->InitActiveViews();
+    if(Vwr->MoreActiveViews())
+      aView = Vwr->ActiveView();
+  }
+
+  // check for errors
+  if (aView.IsNull())
+  {
+    di << "Call vinit before!\n";
+    return 1;
+  }
+  else if (argc < 4)
+  {
+    di << "Use: " << argv[0];
+    di << " width height filename [print algo=0]\n";
+    di << "width, height of the intermediate buffer for operation\n";
+    di << "algo : {0|1}\n";
+    di << "        0 - stretch algorithm\n";
+    di << "        1 - tile algorithm\n";
+    di << "test printing algorithms into an intermediate buffer\n";
+    di << "with saving output to an image file\n";
     return 1;
   }
 
-  Standard_CString xname = "X (mm)";
-  Standard_CString yname = "Y (mm)";
-  Standard_CString zname = "Z (mm)";
+  // get the input params
+  Standard_Integer aWidth  = atoi (argv[1]);
+  Standard_Integer aHeight = atoi (argv[2]);
+  Standard_Integer aMode   = 0;
+  TCollection_AsciiString aFileName = TCollection_AsciiString (argv[3]);
+  if (argc==5)
+    aMode = atoi (argv[4]);
 
-  if (argc > 2)
+  // check the input parameters
+  if (aWidth <= 0 || aHeight <= 0)
   {
-      if (argc != 5)
-      {
-        di << argv[0] << " Define all X, Y and Z axes names, please" << "\n";
-        return 1;
-      }
-      xname = argv[2];
-      yname = argv[3];
-      zname = argv[4];
+    di << "Width and height must be positive values!\n";
+    return 1;
+  }
+  if (aMode != 0 && aMode != 1)
+    aMode = 0;
+
+  Image_CRawBufferData aRawBuffer;
+  HDC anDC = CreateCompatibleDC(0);
+
+  // define compatible bitmap
+  BITMAPINFO aBitmapData;
+  memset (&aBitmapData, 0, sizeof (BITMAPINFOHEADER));
+  aBitmapData.bmiHeader.biSize          = sizeof (BITMAPINFOHEADER);
+  aBitmapData.bmiHeader.biWidth         = aWidth ;
+  aBitmapData.bmiHeader.biHeight        = aHeight;
+  aBitmapData.bmiHeader.biPlanes        = 1;
+  aBitmapData.bmiHeader.biBitCount      = 24;
+  aBitmapData.bmiHeader.biXPelsPerMeter = 0;
+  aBitmapData.bmiHeader.biYPelsPerMeter = 0;
+  aBitmapData.bmiHeader.biClrUsed       = 0;
+  aBitmapData.bmiHeader.biClrImportant  = 0;
+  aBitmapData.bmiHeader.biCompression   = BI_RGB;
+  aBitmapData.bmiHeader.biSizeImage     = 0;
+
+  // Create Device Independent Bitmap
+  HBITMAP aMemoryBitmap = CreateDIBSection (anDC, &aBitmapData, DIB_RGB_COLORS,
+                                            &aRawBuffer.dataPtr, NULL, 0);
+  HGDIOBJ anOldBitmap   = SelectObject(anDC, aMemoryBitmap);
+
+  Standard_Boolean isSaved = Standard_False, isPrinted = Standard_False;
+  if (aRawBuffer.dataPtr != 0)
+  {    
+    if (aMode == 0)
+      isPrinted = aView->Print(anDC,1,1,0,Aspect_PA_STRETCH);
+    else
+      isPrinted = aView->Print(anDC,1,1,0,Aspect_PA_TILE);
+
+    // succesfully printed into an intermediate buffer
+    if (isPrinted)
+    {
+      Handle(Image_PixMap) anImageBitmap =
+                         new Image_PixMap ((Standard_PByte)aRawBuffer.dataPtr,
+                                           aWidth, aHeight,
+                                           aWidth*3 + aWidth%4, 24, 0);
+      isSaved = anImageBitmap->Dump(aFileName.ToCString());
+    }
+    else
+    {
+      di << "Print operation failed due to printing errors or\n";
+      di << "insufficient memory available\n";
+      di << "Please, try to use smaller dimensions for this test\n";
+      di << "command, as it allocates intermediate buffer for storing\n";
+      di << "the result\n";
+    }
+  }
+  else
+  {
+    di << "Can't allocate memory for intermediate buffer\n";
+    di << "Please use smaller dimensions\n";
   }
 
-  int display = atoi(argv[1]);
-  if (display)
-    V3dView->GraduatedTrihedronDisplay(xname, yname, zname,
-                                       Standard_True/*xdrawname*/, Standard_True/*ydrawname*/, Standard_True/*zdrawname*/,
-                                       Standard_True/*xdrawvalues*/, Standard_True/*ydrawvalues*/, Standard_True/*zdrawvalues*/,
-                                       Standard_True/*drawgrid*/,
-                                       Standard_True/*drawaxes*/,
-                                       5/*nbx*/, 5/*nby*/, 5/*nbz*/,
-                                       10/*xoffset*/, 10/*yoffset*/, 10/*zoffset*/,
-                                       30/*xaxisoffset*/, 30/*yaxisoffset*/, 30/*zaxisoffset*/,
-                                       Standard_True/*xdrawtickmarks*/, Standard_True/*ydrawtickmarks*/, Standard_True/*zdrawtickmarks*/,
-                                       10/*xtickmarklength*/, 10/*ytickmarklength*/, 10/*ztickmarklength*/);
-  else
-    V3dView->GraduatedTrihedronErase();
+  if (aMemoryBitmap)
+  {
+    SelectObject (anDC, anOldBitmap);
+    DeleteObject (aMemoryBitmap);
+    DeleteDC(anDC);
+  }
 
-  ViewerTest::GetAISContext()->UpdateCurrentViewer();
-  V3dView->Redraw();
+  if (!isSaved)
+  {
+    di << "Save to file operation failed. This operation may fail\n";
+    di << "if you don't have enough available memory, then you can\n";
+    di << "use smaller dimensions for the output file\n";
+    return 1;
+  }
+
   return 0;
+
+#endif
 }
 
 //=======================================================================
@@ -1773,6 +1961,10 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vcolorscale     : vcolorscale [RangeMin = 0 RangeMax = 100 Intervals = 10 HeightFont = 16 Position = 2 X = 0 Y = 0]: draw color scale",
     __FILE__,VColorScale,group);
   theCommands.Add("vgraduatedtrihedron",
-    "vgraduatedtrihedron : 1/0 (display/erase) [Xname Yname Zname]",
+    "vgraduatedtrihedron : 1/0 (display/erase) [Xname Yname Zname [Font [isMultibyte]]]",
     __FILE__,VGraduatedTrihedron,group);
+  theCommands.Add("vprintview" ,
+    "vprintview : width height filename [algo=0] : Test print algorithm: algo = 0 - stretch, algo = 1 - tile",
+    __FILE__,VPrintView,group);
+
 }

@@ -29,4 +29,4 @@
 +V StepDimTol:msentity:StepDimTol_Array1OfDatumReference .
 +V StepDimTol:msentity:StepDimTol_HArray1OfDatumReference .
 +V StepDimTol:msentity:StepDimTol_LimitCondition .
-- StepDimTol:admfile:StepDimTol_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/StepDimTol/StepDimTol_xcpp_fill.Out
+- StepDimTol:admfile:StepDimTol_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/StepDimTol/StepDimTol_xcpp_fill.Out

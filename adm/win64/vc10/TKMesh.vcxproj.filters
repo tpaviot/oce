@@ -21,6 +21,9 @@
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute_0.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY_0.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
@@ -39,6 +42,9 @@
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfFaceAttribute_0.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY_0.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
@@ -55,6 +61,9 @@
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfFaceAttribute_0.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfInteger_0.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepMesh\BRepMesh_DataMapOfIntegerListOfXY_0.cxx">
@@ -199,6 +208,12 @@
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_Vertex.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexInspector.cxx">
+      <Filter>Source files\BRepMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepMesh\BRepMesh_VertexTool.cxx">
       <Filter>Source files\BRepMesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPoly\IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx">

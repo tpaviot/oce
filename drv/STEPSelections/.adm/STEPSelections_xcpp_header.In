@@ -14,4 +14,4 @@
 +V STEPSelections:msentity:STEPSelections_Counter .
 +V STEPSelections:msentity:STEPSelections_SequenceNodeOfSequenceOfAssemblyLink .
 +V STEPSelections:msentity:STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent .
-- STEPSelections:admfile:STEPSelections_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/STEPSelections/STEPSelections_xcpp_fill.Out
+- STEPSelections:admfile:STEPSelections_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/STEPSelections/STEPSelections_xcpp_fill.Out

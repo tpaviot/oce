@@ -60,4 +60,4 @@
 +V IGESSolid:msentity:IGESSolid_HArray1OfFace .
 +V IGESSolid:msentity:IGESSolid_HArray1OfShell .
 +V IGESSolid:msentity:IGESSolid_HArray1OfVertexList .
-- IGESSolid:admfile:IGESSolid_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IGESSolid/IGESSolid_xcpp_fill.Out
+- IGESSolid:admfile:IGESSolid_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/IGESSolid/IGESSolid_xcpp_fill.Out

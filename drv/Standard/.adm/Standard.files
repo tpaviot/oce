@@ -139,7 +139,6 @@ pubinclude Standard_PrimitiveTypes.hxx
 pubinclude Standard_Real.hxx
 pubinclude Standard_SStream.hxx
 pubinclude Standard_ShortReal.hxx
-pubinclude Standard_Static.hxx
 pubinclude Standard_Stream.hxx
 pubinclude Standard_String.hxx
 pubinclude Standard_Transient.hxx

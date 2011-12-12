@@ -10,4 +10,4 @@
 +V IFGraph:msentity:IFGraph_StrongComponants .
 +V IFGraph:msentity:IFGraph_Cycles .
 +V IFGraph:msentity:IFGraph_SCRoots .
-- IFGraph:admfile:IFGraph_xcpp_fill.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/IFGraph/IFGraph_xcpp_fill.Out
+- IFGraph:admfile:IFGraph_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/IFGraph/IFGraph_xcpp_fill.Out

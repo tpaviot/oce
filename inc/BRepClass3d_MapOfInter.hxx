@@ -87,6 +87,10 @@ public:
 {
   return ChangeFind(K);
 }
+  
+  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
 
 
 

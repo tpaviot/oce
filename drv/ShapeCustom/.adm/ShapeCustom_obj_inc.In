@@ -1,5 +1,5 @@
-+ ShapeCustom:source:ShapeCustom_Surface.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ShapeCustom/ShapeCustom_Surface.lxx
-+ ShapeCustom:source:ShapeCustom_RestrictionParameters.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ShapeCustom/ShapeCustom_RestrictionParameters.lxx
-+ ShapeCustom:source:ShapeCustom_BSplineRestriction.lxx /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/src/ShapeCustom/ShapeCustom_BSplineRestriction.lxx
-- ShapeCustom:admfile:ShapeCustom_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ShapeCustom/ShapeCustom_src.Out
-- ShapeCustom:admfile:ShapeCustom_xcpp_src.Out /dn43/OCCT/tmp/results_31.05.2011/occt/release-sources-20110531/.adm/ShapeCustom/ShapeCustom_xcpp_src.Out
++ ShapeCustom:source:ShapeCustom_Surface.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/ShapeCustom/ShapeCustom_Surface.lxx
++ ShapeCustom:source:ShapeCustom_RestrictionParameters.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/ShapeCustom/ShapeCustom_RestrictionParameters.lxx
++ ShapeCustom:source:ShapeCustom_BSplineRestriction.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/ShapeCustom/ShapeCustom_BSplineRestriction.lxx
+- ShapeCustom:admfile:ShapeCustom_src.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/ShapeCustom/ShapeCustom_src.Out
+- ShapeCustom:admfile:ShapeCustom_xcpp_src.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/ShapeCustom/ShapeCustom_xcpp_src.Out
