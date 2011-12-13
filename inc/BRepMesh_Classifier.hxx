@@ -28,9 +28,6 @@
 #ifndef _BRepMesh_Status_HeaderFile
 #include <BRepMesh_Status.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _Handle_BRepMesh_DataStructureOfDelaun_HeaderFile
 #include <Handle_BRepMesh_DataStructureOfDelaun.hxx>
 #endif
@@ -40,7 +37,6 @@
 class TopoDS_Face;
 class BRepMesh_DataMapOfShapePairOfPolygon;
 class TColStd_IndexedMapOfInteger;
-class BRepMesh_IndexedMapOfVertex;
 class BRepMesh_DataStructureOfDelaun;
 class gp_Pnt2d;
 class TColgp_SequenceOfPnt2d;
@@ -64,15 +60,11 @@ public:
   }
 
   
-  Standard_EXPORT   BRepMesh_Classifier(const TopoDS_Face& F,const Standard_Real Tol,const BRepMesh_DataMapOfShapePairOfPolygon& edges,const TColStd_IndexedMapOfInteger& themap,const BRepMesh_IndexedMapOfVertex& Str,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax);
-  
   Standard_EXPORT   BRepMesh_Classifier(const TopoDS_Face& F,const Standard_Real Tol,const BRepMesh_DataMapOfShapePairOfPolygon& edges,const TColStd_IndexedMapOfInteger& themap,const Handle(BRepMesh_DataStructureOfDelaun)& Str,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax);
   
   Standard_EXPORT     TopAbs_State Perform(const gp_Pnt2d& Puv) const;
   
         BRepMesh_Status State() const;
-  
-        Standard_Boolean NaturalRestriction() const;
   
   Standard_EXPORT     void Destroy() ;
 ~BRepMesh_Classifier()
@@ -105,7 +97,6 @@ Standard_Real V1;
 Standard_Real U2;
 Standard_Real V2;
 BRepMesh_Status myState;
-Standard_Boolean isnatural;
 
 
 };

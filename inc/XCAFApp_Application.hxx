@@ -55,14 +55,14 @@ public:
 
 protected:
 
+  //! methods from CDF_Application <br>
+//!          ============================ <br>
+  Standard_EXPORT   XCAFApp_Application();
 
 
 
 private: 
 
-  //! methods from CDF_Application <br>
-//!          ============================ <br>
-  Standard_EXPORT   XCAFApp_Application();
 
 
 

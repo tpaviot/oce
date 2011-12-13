@@ -13,6 +13,9 @@
 #include <Standard_Macro.hxx>
 #endif
 
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class TopoDS_Shape;
 class Bnd_Box;
 
@@ -53,7 +56,7 @@ public:
 //! -   This algorithm is time consuming if triangulation has not <br>
 //!   been inserted inside the data structure of the shape S. <br>
 //! -   The resulting bounding box may be somewhat larger than the object. <br>
-  Standard_EXPORT   static  void Add(const TopoDS_Shape& S,Bnd_Box& B) ;
+  Standard_EXPORT   static  void Add(const TopoDS_Shape& S,Bnd_Box& B,const Standard_Boolean useTriangulation = Standard_True) ;
   //! Adds the shape S to the bounding box B. <br>
 //! This is a quick algorithm but only works if the shape S is <br>
 //! composed of polygonal planar faces, as is the case if S is <br>

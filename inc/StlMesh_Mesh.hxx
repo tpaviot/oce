@@ -119,16 +119,16 @@ public:
 protected:
 
 
-
-
-private: 
-
-
 Standard_Integer nbTriangles;
 Standard_Integer nbVertices;
 StlMesh_SequenceOfMeshDomain domains;
 gp_XYZ xyzmax;
 gp_XYZ xyzmin;
+
+
+private: 
+
+
 
 
 };

@@ -100,6 +100,10 @@ public:
   Standard_EXPORT    const Standard_Address& FindFromKey(const Handle(Standard_Transient)& K) const;
   
   Standard_EXPORT     Standard_Address& ChangeFromKey(const Handle(Standard_Transient)& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const Handle(Standard_Transient)& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const Handle(Standard_Transient)& K) ;
 
 
 

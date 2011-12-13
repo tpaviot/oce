@@ -109,11 +109,15 @@ public:
   Standard_EXPORT    const TopoDS_Face& Face2() const;
   
 //! Returns True if faces are tangent <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean TangentFaces() const;
   
-//! Provides post-processing the result lines, <br>
-//! which includes spliting closed curves. <br>
-  Standard_EXPORT     void PrepareLines3D() ;
+//! Provides post-processing the result lines. <br>
+//! <bToSplit> - the flag. <br>
+//!  In case of <bToSplit> is true the closed 3D-curves will be splitted <br>
+//!  on parts. <br>
+//!  In case of <bToSplit> is false the closed 3D-curves remain untouched. <br>
+  Standard_EXPORT     void PrepareLines3D(const Standard_Boolean bToSplit = Standard_True) ;
   
   Standard_EXPORT     void SetList(IntSurf_ListOfPntOn2S& ListOfPnts) ;
 

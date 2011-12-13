@@ -5,6 +5,25 @@
 
 #include <BRepMesh_IncrementalMesh.jxx>
 
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+
+
  
+
+
+IMPLEMENT_STANDARD_TYPE(BRepMesh_IncrementalMesh)
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
+  STANDARD_TYPE(BRepMesh_DiscretRoot),
+  STANDARD_TYPE(Standard_Transient),
+
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
+IMPLEMENT_STANDARD_TYPE_END(BRepMesh_IncrementalMesh)
+
+
+IMPLEMENT_DOWNCAST(BRepMesh_IncrementalMesh,Standard_Transient)
+IMPLEMENT_STANDARD_RTTI(BRepMesh_IncrementalMesh)
+
 
 

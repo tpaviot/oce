@@ -4,7 +4,7 @@ rem Launch MS VC with environment prepared for building OCCT
 rem Use:
 rem - first argument specifies version of Visual Studio (vc8, vc9, or vc10),
 rem - second argument specifies mode (win32 or win64),
-rem - third argument specifies path to solution to be loaded
+rem - third argument specifies building mode (Release or Debug)
 rem - fourth argument is path to MS project solution
 rem Default options are:
 rem   vc8 win32 Debug adm\win32\vc8\OCCT.sln

@@ -94,9 +94,6 @@
 #ifndef _Aspect_TypeOfTriedronEcho_HeaderFile
 #include <Aspect_TypeOfTriedronEcho.hxx>
 #endif
-#ifndef _OSD_FontAspect_HeaderFile
-#include <OSD_FontAspect.hxx>
-#endif
 #ifndef _Graphic3d_CGraduatedTrihedron_HeaderFile
 #include <Graphic3d_CGraduatedTrihedron.hxx>
 #endif
@@ -117,6 +114,9 @@
 #endif
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
+#endif
+#ifndef _Aspect_PrintAlgo_HeaderFile
+#include <Aspect_PrintAlgo.hxx>
 #endif
 #ifndef _Graphic3d_ExportFormat_HeaderFile
 #include <Graphic3d_ExportFormat.hxx>
@@ -378,10 +378,8 @@ public:
   Standard_EXPORT     void TriedronErase(const Graphic3d_CView& ACView) ;
   //! call_togl_triedron_echo <br>
   Standard_EXPORT     void TriedronEcho(const Graphic3d_CView& ACView,const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
-  //! call_togl_graduatedtrihedron_get <br>
-  Standard_EXPORT     void GetGraduatedTrihedron(const Graphic3d_CView& view,Standard_CString& xname,Standard_CString& yname,Standard_CString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,Standard_CString& fontOfNames,OSD_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,Standard_CString& fontOfValues,OSD_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
   //! call_togl_graduatedtrihedron_display <br>
-  Standard_EXPORT     void GraduatedTrihedronDisplay(const Graphic3d_CView& view,Graphic3d_CGraduatedTrihedron& cubic,const Standard_CString xname,const Standard_CString yname,const Standard_CString zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color& gridcolor,const Quantity_Color& xnamecolor,const Quantity_Color& ynamecolor,const Quantity_Color& znamecolor,const Quantity_Color& xcolor,const Quantity_Color& ycolor,const Quantity_Color& zcolor,const Standard_CString fontOfNames,const OSD_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const Standard_CString fontOfValues,const OSD_FontAspect styleOfValues,const Standard_Integer sizeOfValues) ;
+  Standard_EXPORT     void GraduatedTrihedronDisplay(const Graphic3d_CView& view,const Graphic3d_CGraduatedTrihedron& cubic) ;
   //! call_togl_graduatedtrihedron_erase <br>
   Standard_EXPORT     void GraduatedTrihedronErase(const Graphic3d_CView& view) ;
   //! call_togl_graduatedtrihedron_minmaxvalues <br>
@@ -478,7 +476,18 @@ public:
 //! (background is white) <br>
 //! else set to TRUE for printing with current background color. <br>
 //! <filename>: If != NULL, then the view will be printed to a file. <br>
-  Standard_EXPORT     void Print(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer,const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename) const;
+//! <printAlgorithm>: Select print algorithm: stretch, tile. <br>
+//! <theScaleFactor>: Scaling coefficient, used internally to scale the <br>
+//! printings accordingly to the scale factor selected in the printer <br>
+//! properties dialog. <br>
+//! Returns Standard_True if the data is passed to the printer, otherwise <br>
+//! Standard_False if the print operation failed due to the printer errors, <br>
+//! or lack of system memory. This might be related to insufficient memory <br>
+//! or some internal errors. All this errors are indicated by the message <br>
+//! boxes (on level of OpenGl_GraphicDriver). <br>
+//! Warning: This function can reuse FBO assigned to the view <br>
+//! Please take it into account if you use it for your purposes; <br>
+  Standard_EXPORT     Standard_Boolean Print(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer,const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH,const Standard_Real theScaleFactor = 1.0) const;
   
   Standard_EXPORT   virtual  void Export(const Standard_CString FileName,const Graphic3d_ExportFormat Format,const Graphic3d_SortType SortType,const Standard_Integer W,const Standard_Integer H,const Graphic3d_CView& View,const Aspect_CLayer2d& Under,const Aspect_CLayer2d& Over,const Standard_Real Precision = 0.005,const Standard_Address ProgressBarFunc = NULL,const Standard_Address ProgressObject = NULL) ;
   //! call_togl_depthtest() <br>
@@ -503,6 +512,11 @@ public:
   Standard_EXPORT     void SetGLLightEnabled(const Graphic3d_CView& view,const Standard_Boolean isEnabled) const;
   //! call_togl_isgllight() <br>
   Standard_EXPORT     Standard_Boolean IsGLLightEnabled(const Graphic3d_CView& view) const;
+  //! Clear visualization data in graphical driver and <br>
+//! stop displaying the primitives array of the graphical group <br>
+//! <theCGroup>. This method is internal and should be used <br>
+//! by Graphic3d_Group only. <br>
+  Standard_EXPORT     void RemovePrimitiveArray(const Graphic3d_CGroup& theCGroup,const Graphic3d_PrimitiveArray& thePArray) ;
 
 
 

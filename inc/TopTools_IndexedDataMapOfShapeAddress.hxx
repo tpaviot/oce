@@ -97,6 +97,10 @@ public:
   Standard_EXPORT    const Standard_Address& FindFromKey(const TopoDS_Shape& K) const;
   
   Standard_EXPORT     Standard_Address& ChangeFromKey(const TopoDS_Shape& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const TopoDS_Shape& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const TopoDS_Shape& K) ;
 
 
 

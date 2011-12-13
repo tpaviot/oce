@@ -19,6 +19,12 @@
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+#ifndef _PCDM_StoreStatus_HeaderFile
+#include <PCDM_StoreStatus.hxx>
+#endif
 #ifndef _PCDM_Writer_HeaderFile
 #include <PCDM_Writer.hxx>
 #endif
@@ -67,6 +73,14 @@ public:
   Standard_EXPORT     void SetFormat(const TCollection_ExtendedString& aformat) ;
   
   Standard_EXPORT     TCollection_ExtendedString GetFormat() const;
+  
+  Standard_EXPORT     Standard_Boolean IsError() const;
+  
+  Standard_EXPORT     void SetIsError(const Standard_Boolean theIsError) ;
+  
+  Standard_EXPORT     PCDM_StoreStatus GetStoreStatus() const;
+  
+  Standard_EXPORT     void SetStoreStatus(const PCDM_StoreStatus theStoreStatus) ;
 
 
 
@@ -82,6 +96,8 @@ private:
 
 
 TCollection_ExtendedString myFormat;
+Standard_Boolean myIsError;
+PCDM_StoreStatus myStoreStatus;
 
 
 };

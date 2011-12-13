@@ -16,14 +16,14 @@
 #include <Handle_BRepMesh_DataStructureOfDelaun.hxx>
 #endif
 
-#ifndef _BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_HeaderFile
-#include <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
-#endif
-#ifndef _BRepMesh_ListOfInteger_HeaderFile
-#include <BRepMesh_ListOfInteger.hxx>
+#ifndef _BRepMesh_VertexTool_HeaderFile
+#include <BRepMesh_VertexTool.hxx>
 #endif
 #ifndef _BRepMesh_IDMapOfLinkOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_IDMapOfLinkOfDataStructureOfDelaun.hxx>
+#endif
+#ifndef _BRepMesh_ListOfInteger_HeaderFile
+#include <BRepMesh_ListOfInteger.hxx>
 #endif
 #ifndef _BRepMesh_IMapOfElementOfDataStructureOfDelaun_HeaderFile
 #include <BRepMesh_IMapOfElementOfDataStructureOfDelaun.hxx>
@@ -50,7 +50,7 @@
 #include <Standard_OStream.hxx>
 #endif
 class BRepMesh_Vertex;
-class BRepMesh_IDMapOfNodeOfDataStructureOfDelaun;
+class BRepMesh_VertexTool;
 class BRepMesh_Edge;
 class BRepMesh_Triangle;
 
@@ -86,7 +86,7 @@ public:
   //! Removes the all nodes and sets new map of <br>
 //! nodes from the mesh. <br>
 //! For internal use only. <br>
-  Standard_EXPORT     void ReplaceNodes(const BRepMesh_IDMapOfNodeOfDataStructureOfDelaun& NewNodes) ;
+  Standard_EXPORT     void ReplaceNodes(const BRepMesh_VertexTool& NewNodes) ;
   //! Removes the node of index <index> from the mesh. <br>
   Standard_EXPORT     void RemoveNode(const Standard_Integer Index) ;
   //! Changes the UV  value of node of index <Index>  by <br>
@@ -126,7 +126,7 @@ public:
   Standard_EXPORT     void ClearDomain() ;
   //! Finds the index of the node.  Returns 0 if the <br>
 //!          node is not in the mesh. <br>
-  Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Vertex& aNode) const;
+  Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Vertex& aNode) ;
   //! Finds the index of the Link.  Returns 0 if the <br>
 //!          Link is not in the mesh. <br>
   Standard_EXPORT     Standard_Integer IndexOf(const BRepMesh_Edge& aLink) const;
@@ -152,6 +152,9 @@ public:
   Standard_EXPORT     void Statistics(Standard_OStream& flot) const;
   
   Standard_EXPORT    const BRepMesh_BaseAllocator& Allocator() const;
+  //! Give the data structure for cell size and <br>
+//!          tolerance initialization. <br>
+  Standard_EXPORT     BRepMesh_VertexTool& Data() ;
 
 
 
@@ -169,8 +172,7 @@ private:
 //!          the mesh. Used by RemoveElement. <br>
   Standard_EXPORT     void ClearElement(const Standard_Integer Index,const BRepMesh_Triangle& theElem) ;
 
-BRepMesh_IDMapOfNodeOfDataStructureOfDelaun myNodes;
-BRepMesh_ListOfInteger myDelNodes;
+BRepMesh_VertexTool myNodes;
 BRepMesh_IDMapOfLinkOfDataStructureOfDelaun myLinks;
 BRepMesh_ListOfInteger myDelLinks;
 BRepMesh_IMapOfElementOfDataStructureOfDelaun myElements;

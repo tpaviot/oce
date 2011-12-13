@@ -10,11 +10,11 @@
 #define __STDC_LIMIT_MACROS
 #endif
 #include <stdint.h>
-#include <stdlib.h>
 #endif
 
 #include <set>
 #include <map>
+#include <cstdlib>
 
 #ifndef SIZE_MAX
 #define SIZE_MAX UINT_MAX
