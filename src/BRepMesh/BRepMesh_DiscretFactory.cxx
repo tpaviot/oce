@@ -85,9 +85,14 @@ void BRepMesh_DiscretFactory::clear()
 //=======================================================================
 BRepMesh_DiscretFactory& BRepMesh_DiscretFactory::Get()
 {
+#ifdef __BORLANDC__
+  static BRepMesh_DiscretFactory* sFactory = new BRepMesh_DiscretFactory;
+  return *sFactory;
+#else
   //! global factory instance
   static BRepMesh_DiscretFactory THE_GLOBAL_FACTORY;
   return THE_GLOBAL_FACTORY;
+#endif
 }
 
 //=======================================================================
