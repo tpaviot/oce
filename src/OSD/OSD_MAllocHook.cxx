@@ -291,10 +291,10 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     while (*pStr != ' ' && *pStr) pStr++;
     *pStr++ = '\0';
     while (*pStr == ' ' && *pStr) pStr++;
-    aReqNum = atol(pStr);
+    aReqNum = std::atol(pStr);
     while (*pStr != ' ' && *pStr) pStr++;
     while (*pStr == ' ' && *pStr) pStr++;
-    aSize = atol(pStr);
+    aSize = std::atol(pStr);
     Standard_Boolean isAlloc = Standard_False;
     if (strcmp(aType, "alloc") == 0)
     {
