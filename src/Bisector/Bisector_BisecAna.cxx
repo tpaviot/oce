@@ -1014,14 +1014,14 @@ void Bisector_BisecAna::Perform(const Handle(Geom2d_Point)& afirstpoint  ,
 				const Standard_Boolean      oncurve       )
 {
   Standard_Boolean sense,ok;
-  Standard_Real distanceptsol,parameter;
+  Standard_Real parameter;
 
   GccAna_Pnt2dBisec bisector(afirstpoint->Pnt2d(),asecondpoint->Pnt2d());
   gp_Lin2d line = bisector.ThisSolution();
   Handle(GccInt_Bisec) solution = new GccInt_BLine(line);
 
   sense = Standard_False;
-  distanceptsol = Distance(apoint,solution,
+  Distance(apoint,solution,
 			   afirstvector,asecondvector,
 			   adirection,parameter,sense,ok);
   if (ok || !oncurve) {

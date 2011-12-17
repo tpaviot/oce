@@ -249,9 +249,6 @@ Matches (const TColgp_Array1OfPnt2d& aPoly,
 { 
   Standard_Real Umin,Vmin,Umax,Vmax;
   aBox.Get(Umin,Vmin,Umax,Vmax);
-  Standard_Real Tolu,Tolv;
-  Tolu = 1e-7;
-  Tolv = 1e-7;
   CSLib_Class2d aClassifier2d(aPoly,aTol,aTol,Umin,Vmin,Umax,Vmax);
 
   for(Standard_Integer j=1;j<=mynbpoints;j++){

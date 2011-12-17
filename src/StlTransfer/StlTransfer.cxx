@@ -105,7 +105,6 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
     Standard_ConstructionError::Raise ("StlTransfer::BuildIncrementalMesh");
     }
   
-  Standard_Integer NbVertices, NbTriangles;
   BRepMesh::Mesh (Shape, Deflection);
   for (TopExp_Explorer itf(Shape,TopAbs_FACE); itf.More(); itf.Next()) {
     TopoDS_Face face = TopoDS::Face(itf.Current());
@@ -134,7 +133,7 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
       gp_Pnt p = thePoints.Value(i);
       p.Transform(Loc.Transformation());
       p.Coord (X1, Y1, Z1);
-      NbVertices = Mesh->AddVertex (X1, Y1, Z1);
+      Mesh->AddVertex (X1, Y1, Z1);
     }
     try {
       OCC_CATCH_SIGNALS
@@ -167,7 +166,7 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
 	    A=V1;B=V2;C=V3;
 	  }
 	}
-	NbTriangles = Mesh->AddTriangle (A, B, C, average.X(), average.Y(), average.Z());
+	Mesh->AddTriangle (A, B, C, average.X(), average.Y(), average.Z());
       }
     }
     catch(Standard_Failure)

@@ -735,15 +735,13 @@ static void FUN_ProcessEdgeInterferences(const Standard_Integer EIX
   }
 #endif
 
-  Standard_Integer nF = 0, nE = 0, nFE = 0;
-
   // LI -> (lF + lFE) + lE + [LI]
   // lF  = {interference on edge <EIX> :  (T(face),G=POINT/VERTEX,S)
   // lFE = {interference on edge <EIX> :  (T(face),G=POINT/VERTEX,S=EDGE)
   // lE  = {interference on edge <EIX> :  (T(edge),G=POINT/VERTEX,S)
-  TopOpeBRepDS_ListOfInterference lF; nF = FUN_selectTRASHAinterference(LI,TopAbs_FACE,lF);
-  TopOpeBRepDS_ListOfInterference lFE; nFE = FUN_selectSKinterference(lF,TopOpeBRepDS_EDGE,lFE);
-  TopOpeBRepDS_ListOfInterference lE; nE = FUN_selectTRASHAinterference(LI,TopAbs_EDGE,lE);
+  TopOpeBRepDS_ListOfInterference lF; FUN_selectTRASHAinterference(LI,TopAbs_FACE,lF);
+  TopOpeBRepDS_ListOfInterference lFE; FUN_selectSKinterference(lF,TopOpeBRepDS_EDGE,lFE);
+  TopOpeBRepDS_ListOfInterference lE; FUN_selectTRASHAinterference(LI,TopAbs_EDGE,lE);
 
 #ifdef DEB 
   TopOpeBRepDS_Dumper DSD(HDS);	      
@@ -972,7 +970,6 @@ void TopOpeBRepDS_EIR::ProcessEdgeInterferences(const Standard_Integer EIX)
     for (tki.Init(); tki.More(); tki.Next()) {
       TopOpeBRepDS_Kind K; Standard_Integer G; tki.Value(K,G);
       TopOpeBRepDS_ListOfInterference& loi = tki.ChangeValue(K,G);
-      Standard_Integer nloi = loi.Extent();
       if (K != TopOpeBRepDS_POINT) {
 	LI.Append(loi);
 	continue;
@@ -1018,7 +1015,6 @@ void TopOpeBRepDS_EIR::ProcessEdgeInterferences(const Standard_Integer EIX)
 	if (curvefound) break;
       } // itlfx.More()
       
-      nloi = loi.Extent();
 #ifdef DEB
 //      Standard_Integer nLI = LI.Extent();
 #endif

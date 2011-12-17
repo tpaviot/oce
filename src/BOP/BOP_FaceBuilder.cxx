@@ -274,7 +274,6 @@ static void DoTopologicalVerification(TopoDS_Face& F);
 //=======================================================================
   void BOP_FaceBuilder::BuildNewFaces() 
 {
-  Standard_Integer nF, nW, nE;
   Standard_Real    aTol;
   TopLoc_Location aLoc;
   TopoDS_Face newFace;
@@ -288,19 +287,19 @@ static void DoTopologicalVerification(TopoDS_Face& F);
   myNewFaces.Clear();
   myNegatives.Clear();
 
-  nF=InitFace();
+  InitFace();
   for (; MoreFace(); NextFace()) {
     bValidFace=Standard_False;
     aBB.MakeFace (newFace, aSurface, aLoc, aTol);
 
-    nW=InitWire();
+    InitWire();
     for (; MoreWire(); NextWire()) {
       if (IsOldWire()) {
 	newWire=TopoDS::Wire(OldWire());
       }
       else {
 	aBB.MakeWire(newWire);
-	nE=InitEdge();
+	InitEdge();
 	for (; MoreEdge(); NextEdge()) {
 	  const TopoDS_Edge& newEdge=Edge();
 	  aBB.Add(newWire, newEdge);

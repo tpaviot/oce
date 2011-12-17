@@ -553,15 +553,13 @@ static
 //=======================================================================
   void BOPTools_SolidStateFiller::DoSections()
 {
-  Standard_Integer i, j, aNb, aNbCurves,  n1, n2, nE;
+  Standard_Integer i, j, aNb, aNbCurves,  nE;
   
   BOPTools_CArray1OfSSInterference& aFFs=myIntrPool->SSInterferences();
   
   aNb=aFFs.Extent();
   for (i=1; i<=aNb; i++) {
     BOPTools_SSInterference& aFF=aFFs(i);
-    n1=aFF.Index1();
-    n2=aFF.Index2();
     BOPTools_SequenceOfCurves& aSC=aFF.Curves();
     aNbCurves=aSC.Length();
     for (j=1; j<=aNbCurves; j++) {

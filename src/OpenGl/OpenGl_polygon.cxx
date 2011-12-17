@@ -892,7 +892,7 @@ draw_polygon_concav( tel_polygon_data d, Tint front_lighting_model, Tint hflag )
 static void
 draw_tmesh( tel_polygon_data d, Tint v )
 {
-  Tint      i, j, k;
+  Tint      i, j;
   DISPLAY_ *dis;
   SEQ_     *s;
   extra_vertex b;
@@ -907,7 +907,7 @@ draw_tmesh( tel_polygon_data d, Tint v )
     {
     case 1:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff )
             glVertex3fv( d->vertices[ (long)s->tmesh_sequence[ j ] ].xyz );
@@ -921,7 +921,7 @@ draw_tmesh( tel_polygon_data d, Tint v )
       }
     case 2:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff ) {
             glColor3fv( d->vcolours[ (long) s->tmesh_sequence[ j ] ].rgb );
@@ -936,7 +936,7 @@ draw_tmesh( tel_polygon_data d, Tint v )
       }
     case 3:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff ) {
             glNormal3fv( d->vnormals[ (long) s->tmesh_sequence[ j ] ].xyz);

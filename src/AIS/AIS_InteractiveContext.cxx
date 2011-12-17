@@ -960,11 +960,11 @@ void AIS_InteractiveContext::Remove(const Handle(AIS_InteractiveObject)& anIObj,
   }
   else
     {
-      Standard_Boolean  WasInCtx = myLocalContexts(myCurLocalIndex)->Remove(anIObj);
+      myLocalContexts(myCurLocalIndex)->Remove(anIObj);
       AIS_DataMapIteratorOfDataMapOfILC It(myLocalContexts);
       for (;It.More() ;It.Next()){
         if(It.Value()->AcceptErase())
-          WasInCtx = It.Value()->Remove(anIObj);
+          It.Value()->Remove(anIObj);
         
       }
       //      if(!WasInCtx)

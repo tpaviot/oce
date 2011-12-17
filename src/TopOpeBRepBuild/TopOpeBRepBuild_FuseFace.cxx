@@ -144,7 +144,7 @@ void TopOpeBRepBuild_FuseFace::PerformFace()
     
   TopTools_ListIteratorOfListOfShape it2,it3,it4;
   TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itt1,itt2,itt3;
-  TopAbs_Orientation ori,ori1;
+  TopAbs_Orientation ori1;
 
   Standard_Boolean Ori3dReversed = Standard_False;
   Standard_Boolean Ori3dForward = Standard_False;
@@ -282,7 +282,6 @@ void TopOpeBRepBuild_FuseFace::PerformFace()
 	  TopTools_ListOfShape myWireLE;
 	  for (itt3.Initialize(mapEdgLEdg); itt3.More(); itt3.Next()) {
 	    const TopoDS_Shape& edg = itt3.Key();
-	    ori = edg.Orientation();
 	    const TopTools_ListOfShape& LEdg1 = mapEdgLEdg.Find(edg);
 	    Standard_Boolean OriReversed = Standard_False;
 	    Standard_Boolean OriForward = Standard_False;

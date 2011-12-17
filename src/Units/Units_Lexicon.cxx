@@ -43,7 +43,7 @@ void Units_Lexicon::Creates(const Standard_CString afilename)
   char *Oper = oper ;
   char *Coeff = coeff ;
 #endif
-  Standard_Integer fr,i;
+  Standard_Integer i;
   Standard_Real value;
   Handle(Units_Token) token;
   struct stat buf;
@@ -73,19 +73,19 @@ void Units_Lexicon::Creates(const Standard_CString afilename)
     if(len == 1) continue; //skl - ???
     for ( i = 0 ; i < 30 ; i++ ) {
       if ( i < len )
-        fr=sscanf(&line[i],"%c",&chain[i]);
+        sscanf(&line[i],"%c",&chain[i]);
       else
         chain[i] = 0 ;
     }
     for ( i = 0 ; i < 10 ; i++ ) {
       if ( 30+i < len )
-        fr=sscanf(&line[30+i],"%c",&oper[i]);
+        sscanf(&line[30+i],"%c",&oper[i]);
       else
         oper[i] = 0 ;
     }
     for ( i = 0 ; i < 30 ; i++ ) {
       if ( 40+i < len )
-        fr=sscanf(&line[40+i],"%c",&coeff[i]);
+        sscanf(&line[40+i],"%c",&coeff[i]);
       else
         coeff[i] = 0 ;
     }

@@ -712,21 +712,18 @@ static
 							 const BOPTools_SSInterference& aFFi)
 							 
 {
-  Standard_Real aTolC, aTE, aT11, aT12;
+  Standard_Real aTE;
   Standard_Integer nV11, nV12, nV21, nV22, iVV, iVE, nE2, iCount=0, iCountExt=1;
   Standard_Integer iV;
 
-  aTolC=aFFi.TolR3D();
   // V11
   const BOPTools_Pave& aPave11=aPB.Pave1();
   nV11=aPave11.Index();
   const TopoDS_Vertex& aV11=TopoDS::Vertex(myDS->GetShape(nV11));
-  aT11=aPave11.Param();
   // V12
   const BOPTools_Pave& aPave12=aPB.Pave2();
   nV12=aPave12.Index();
   const TopoDS_Vertex& aV12=TopoDS::Vertex(myDS->GetShape(nV12));
-  aT12=aPave12.Param();
   //
   const BOPTools_ListOfPaveBlock& aLPB=aFFi.PaveBlocks();
   BOPTools_ListIteratorOfListOfPaveBlock anIt(aLPB);
@@ -1204,7 +1201,7 @@ static
 //=======================================================================
   void BOPTools_PaveFiller::MakeSectionEdges()
 {
-  Standard_Integer i, j, aNbCurves, aNbFFs, nF1, nF2, nV1, nV2, aNbPaveBlocks,
+  Standard_Integer i, j, aNbCurves, aNbFFs, nF1, nF2, nV1, nV2,
                    aNewShapeIndex ;
   Standard_Real    t1, t2;
   TopoDS_Edge aESect;
@@ -1237,7 +1234,6 @@ static
       const IntTools_Curve& aIC=aBC.Curve();
       //
       const BOPTools_ListOfPaveBlock& aSectEdges=aBC.NewPaveBlocks();
-      aNbPaveBlocks=aSectEdges.Extent();
       BOPTools_ListIteratorOfListOfPaveBlock aPBIt(aSectEdges);
       pbi = 0;
       for (; aPBIt.More(); aPBIt.Next()) {
@@ -3153,7 +3149,6 @@ Standard_Integer RejectBuildingEdge(const IntTools_Curve& theC,
     return 0;
 
   Handle(Geom_Curve) aTCurve;
-  Standard_Real aTT;
   
   Standard_Integer eIndex = 0;
   Standard_Boolean edgeFound = Standard_False;
@@ -3187,7 +3182,6 @@ Standard_Integer RejectBuildingEdge(const IntTools_Curve& theC,
     if(sameParam) {
       Standard_Real f,l;
       aTCurve = BRep_Tool::Curve(aE,f,l);
-      aTT = BRep_Tool::Tolerance(aE);
       edgeFound = Standard_True;
     }
     if(edgeFound)

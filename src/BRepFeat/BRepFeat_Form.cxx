@@ -179,7 +179,6 @@ static void Descendants(const TopoDS_Shape&,
   TColGeom_SequenceOfCurve scur;
   Curves(scur);
 
-  Standard_Integer tempo;
   Standard_Real locmin;
   Standard_Real locmax;
   Standard_Real mf, Mf, mu, Mu;
@@ -225,7 +224,6 @@ static void Descendants(const TopoDS_Shape&,
 #endif
   {
 //  Determination sens,locmin,locmax,FFrom,FUntil
-    tempo=0;
     locmin = RealFirst();
     locmax = RealLast();
     for (Standard_Integer jj=1; jj<=scur.Length(); jj++) {

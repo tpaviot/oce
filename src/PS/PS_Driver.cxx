@@ -574,7 +574,6 @@ void PS_Driver::InitializeFontMap (const Handle(Aspect_FontMap)& aFontMap)
     TCollection_AsciiString aname;
     Aspect_FontStyle style;
     Standard_Boolean theCapsHeight;
-    Quantity_PlaneAngle theFontSlant;
     Quantity_Length theFontSize;
     Standard_ShortReal fsize;
 
@@ -583,7 +582,6 @@ void PS_Driver::InitializeFontMap (const Handle(Aspect_FontMap)& aFontMap)
       iindex = entry.Index();
       style = entry.Type();
       theFontSize = TOMILLIMETER(style.Size());
-      theFontSlant = style.Slant();
       aname = style.AliasName();
       theCapsHeight = style.CapsHeight();
       fsize = theFontSize;

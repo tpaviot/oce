@@ -788,7 +788,7 @@ void BOPTools_Checker::PerformEF()
     //
     // FF
     Standard_Boolean bToApproxC3d, bToApproxC2dOnS1, bToApproxC2dOnS2;
-    Standard_Real anApproxTol, aTolR3D, aTolR2D;
+    Standard_Real anApproxTol, aTolR3D;
     //
     bToApproxC3d     = mySectionAttribute.Approximation();
     bToApproxC2dOnS1 = mySectionAttribute.PCurveOnS1();
@@ -807,7 +807,6 @@ void BOPTools_Checker::PerformEF()
     if (aFF.IsDone()) {
       // Add Interference to the Pool
       aTolR3D=aFF.TolReached3d();
-      aTolR2D=aFF.TolReached2d();
       if (aTolR3D < 1.e-7){
 	aTolR3D=1.e-7;
       } 

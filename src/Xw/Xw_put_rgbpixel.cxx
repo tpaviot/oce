@@ -43,7 +43,6 @@ union {
 int fpixel,lpixel,simage,index,isapproximate ;
 register int np ;
 unsigned long pixel ;
-XW_STATUS status ;
 XImage *pximage;
 
         if( !Xw_isdefine_image(pimage) ) {
@@ -54,11 +53,11 @@ XImage *pximage;
 
 	switch ( _CCLASS ) {
 	    case TrueColor :
-		status = Xw_get_color_pixel(_ICOLORMAP,r,g,b,&pixel,&isapproximate) ;
+		Xw_get_color_pixel(_ICOLORMAP,r,g,b,&pixel,&isapproximate) ;
 		break ;
 
 	    case PseudoColor :
-		status = Xw_get_color_index(_ICOLORMAP,r,g,b,&index) ;
+		Xw_get_color_index(_ICOLORMAP,r,g,b,&index) ;
 		pixel = _ICOLORMAP->pixels[index] ;
 		break ;
 	    

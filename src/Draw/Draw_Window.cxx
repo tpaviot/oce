@@ -752,7 +752,6 @@ Standard_Boolean Draw_Window::Save (const char* theFileName) const
 void ProcessEvent(Draw_Window& win, XEvent& xev)
 {
   Standard_Integer X,Y,button,lenk;
-  char c;
   KeySym keysym;
   XComposeStatus stat;
   char chainekey[10];
@@ -784,12 +783,6 @@ void ProcessEvent(Draw_Window& win, XEvent& xev)
                          10,
                          &keysym,
                          &stat);
-    if (lenk==1)
-      c = chainekey[0];
-    else
-      c = '\0';
-
-    //WKeyPress(c,keysym);
     break;
 
   case MotionNotify :

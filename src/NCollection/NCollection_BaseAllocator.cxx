@@ -201,7 +201,6 @@ void NCollection_BaseAllocator::StandardCallBack
     // statistics by alive objects
     NCollection_DataMap<Standard_Address, Standard_Size>& aStIDMap = StorageIDMap();
     NCollection_Map<Standard_Size>& aStIDSet = StorageIDSet();
-    int a;
     if (theIsAlloc)
     {
       aStIDMap.Bind(theStorage, ++CurrentID);
@@ -209,7 +208,6 @@ void NCollection_BaseAllocator::StandardCallBack
       if (CurrentID == StandardCallBack_CatchID())
       {
         // Place for break point for allocation of investigated ID
-        a = 1;
       }
     }
     else
@@ -221,7 +219,6 @@ void NCollection_BaseAllocator::StandardCallBack
         if (anID == StandardCallBack_CatchID())
         {
           // Place for break point for freeing of investigated ID
-          a = 0;
         }
       }
     }

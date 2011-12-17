@@ -277,10 +277,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
   gp_Vec vec1(dir1);
   vec1 *= cer.Radius();
-#ifdef DEB
-  gp_Pnt p1 =
-#endif
-              CenterPoint.Translated(vec1);
+  CenterPoint.Translated(vec1);
   gp_Vec vec2(dir2);
   vec2 *= cer.Radius();
   gp_Pnt p2 = CenterPoint.Translated(vec2);
@@ -542,10 +539,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
   gp_Vec vec1(dir1);
   vec1 *= cer.Radius();
-#ifdef DEB
-  gp_Pnt p1 =
-#endif
-              CenterPoint.Translated(vec1);
+  CenterPoint.Translated(vec1);
   gp_Vec vec2(dir2);
   vec2 *= cer.Radius();
   gp_Pnt p2 = CenterPoint.Translated(vec2);
@@ -666,10 +660,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
   gp_Vec vec1(dir1);
   vec1 *= cer.Radius();
-#ifdef DEB
-  gp_Pnt p1 =
-#endif
-              CenterPoint.Translated(vec1);
+  CenterPoint.Translated(vec1);
   gp_Vec vec2(dir2);
   vec2 *= cer.Radius();
   gp_Pnt p2 = CenterPoint.Translated(vec2);
@@ -794,10 +785,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
   gp_Vec vec1(dir1);
   vec1 *= cer.Radius();
-#ifdef DEB
-  gp_Pnt p1 =
-#endif
-              CenterPoint.Translated(vec1);
+  CenterPoint.Translated(vec1);
   gp_Vec vec2(dir2);
   vec2 *= cer.Radius();
   gp_Pnt p2 = CenterPoint.Translated(vec2);

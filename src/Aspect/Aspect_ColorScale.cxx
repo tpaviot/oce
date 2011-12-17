@@ -422,7 +422,6 @@ void Aspect_ColorScale::DrawScale( const Quantity_Color& aBgColor,
 
   TCollection_ExtendedString aTitle = GetTitle();
 
-  Standard_Integer titleWidth = 0;
   Standard_Integer titleHeight = 0;
 
   Standard_Integer aGray = (Standard_Integer)(255 * ( aBgColor.Red() * 11 + aBgColor.Green() * 16 + aBgColor.Blue() * 5 ) / 32);
@@ -430,7 +429,6 @@ void Aspect_ColorScale::DrawScale( const Quantity_Color& aBgColor,
 
   // Draw title
   if ( aTitle.Length() ) {
-    titleWidth = TextWidth( aTitle );
     titleHeight = TextHeight( aTitle ) + 2 * spacer;
     PaintText( aTitle, X + spacer, Y + spacer, aFgColor );
   }

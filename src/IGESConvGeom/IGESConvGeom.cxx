@@ -561,10 +561,9 @@ Standard_Integer IGESConvGeom::IncreaseSurfaceContinuity  (const Handle(Geom_BSp
 {
   if (continuity < 1) return continuity;
   Standard_Boolean isC1 = Standard_True, isC2 = Standard_True;
-  Standard_Integer i,j;
+  Standard_Integer i;
 
   i = res->LastUKnotIndex();   //knots.Upper();
-  j = res->FirstUKnotIndex();  //knots.Lower();
   Standard_Integer DegreeU = res->UDegree();
   
   Standard_Boolean isModified;

@@ -140,9 +140,6 @@ int AdvApp2Var_SysBase::macinit_(integer *imode,
 
 {
  
-  /* Fortran I/O blocks */
-  static cilist io______1 = { 0, 0, 0, (char*) "(' --- Debug-mode : ',I10,' ---')", 0 };
-  
   /* ************************************************************************/
   /*     FONCTION : */
   /*     ---------- */
@@ -210,13 +207,6 @@ int AdvApp2Var_SysBase::macinit_(integer *imode,
     mblank__.imp = *ival;
   } else if (*imode == 2) {
     mblank__.ibb = *ival;
-    io______1.ciunit = mblank__.imp;
-    /*
-    s__wsfe(&io______1);
-    */
-    /*
-    do__fio(&c____1, (char *)&mblank__.ibb, (ftnlen)sizeof(integer));
-    */
     AdvApp2Var_SysBase::e__wsfe();
   } else if (*imode == 3) {
     mblank__.lec = *ival;
@@ -792,7 +782,7 @@ int macrgfl_(long int *iadfld,
   static integer ibid, ienr;
   static doublereal t[1];
   static integer novfl;
-  static long int ioff,iadrfl, iadt;
+  static long int ioff,iadt;
   
   
   /* ***********************************************************************
@@ -926,7 +916,6 @@ int macrgfl_(long int *iadfld,
   t[ioff] = -134744073.;
   
   /*  APPEL BIDON POUR PERMETTRE L'ARRET AU DEBUGGER : */
-  iadrfl = *iadfld;
   macrbrk_();
   
   /*  MISE A JOUR DU FLAG DE DEBUT */
@@ -934,7 +923,6 @@ int macrgfl_(long int *iadfld,
   t[ioff] = -134744073.;
     
   /*  APPEL BIDON POUR PERMETTRE L'ARRET AU DEBUGGER : */
-  iadrfl = *iadflf;
   macrbrk_();
   
   return 0 ;
@@ -955,14 +943,9 @@ int macrmsg_(const char *,//crout,
 {
   
   /* Local variables */
-  static integer inum, iunite;
+  static integer inum;
   static char cfm[80], cln[3];
   
-  /* Fortran I/O blocks */
-  static cilist io___5 = { 0, 0, 0, cfm, 0 };
-  static cilist io___6 = { 0, 0, 0, cfm, 0 };
-  static cilist io___7 = { 0, 0, 0, cfm, 0 };
- 
 
 /* ***********************************************************************
  */
@@ -1210,32 +1193,12 @@ t !! ')", 80L, 54L);
    */
   /*  REALISATION DU WRITE , AVEC OU SANS DONNEES : */
   
-  iunite = AdvApp2Var_SysBase::mnfnimp_();
   if (inum == 0) {
-    io___5.ciunit = iunite;
-    /*
-    s__wsfe(&io___5);
-    */
     AdvApp2Var_SysBase::e__wsfe();
   } else if (inum == 1) {
-    io___6.ciunit = iunite;
-    /*
-    s__wsfe(&io___6);
-    */
-    /*
-    do__fio(&c__1, (char *)&it[1], (ftnlen)sizeof(integer));
-    */
     AdvApp2Var_SysBase::e__wsfe();
   } else {
     /*  LE MESSAGE N'EXISTE PAS ... */
-    io___7.ciunit = iunite;
-    /*
-    s__wsfe(&io___7);
-    */
-    /*
-    do__fio(&c__1, (char *)&(*num), (ftnlen)sizeof(integer));
-    do__fio(&c__1, crout, crout_len);
-    */
     AdvApp2Var_SysBase::e__wsfe();
   }
   
@@ -3025,7 +2988,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
   static doublereal dfmt;
   static integer ifmt, iver;
   static char subr[7];
-  static integer ksys , ibyte, irest, isyst, ier;
+  static integer ksys , ibyte, irest, ier;
   static long int iadfd, iadff, iaddr,lofset, loc;
   static integer izu;
 
@@ -3276,7 +3239,6 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
 
 /* DEMANDE D'ALLOCATION */
 
-    isyst = 0;
 /* L1001: */
 /*      IF ( ISYST.EQ.0.AND.IBYTE .LE. 100 * 1024 ) THEN */
 /*        ALLOCATION SUR TABLE */
@@ -3465,8 +3427,6 @@ void AdvApp2Var_SysBase::miraz_(integer *taille,
 				char *adt)
 
 {
-  integer offset;
-  offset = *taille;
   memset(adt , '\0' , *taille) ;
 }
 //=======================================================================
@@ -3622,9 +3582,6 @@ int AdvApp2Var_SysBase::mswrdbg_(const char *,//ctexte,
 
 {
 
-  static cilist io___1 = { 0, 0, 0, 0, 0 };
-  
-
 /* ***********************************************************************
  */
 
@@ -3671,8 +3628,6 @@ int AdvApp2Var_SysBase::mswrdbg_(const char *,//ctexte,
  */
 
     if (AdvApp2Var_SysBase::mnfndeb_() >= 1) {
-	io___1.ciunit = AdvApp2Var_SysBase::mnfnimp_();
-	//s__wsle(&io___1);
 	//do__lio(&c__9, &c__1, "Dbg ", 4L);
 	//do__lio(&c__9, &c__1, ctexte, ctexte_len);
 	AdvApp2Var_SysBase::e__wsle();

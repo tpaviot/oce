@@ -194,13 +194,11 @@ void AIS_DiameterDimension::ComputeSelection(
     
     Standard_Real dist    = center.Distance(AttachmentPoint);
     Standard_Real aRadius = myCircle.Radius();
-    Standard_Real inside  = Standard_False;
     
     gp_Pnt pt1 = AttachmentPoint;
     if (dist < aRadius) {
       pt1 = ptoncirc;
       dist = aRadius;
-      inside = Standard_True;
     }
     vecrap.Normalize();
     vecrap *= (dist+aRadius);

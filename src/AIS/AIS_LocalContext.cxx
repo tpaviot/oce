@@ -428,7 +428,6 @@ Standard_Boolean AIS_LocalContext::Remove(const Handle(AIS_InteractiveObject)& a
   const Handle(AIS_LocalStatus)& Att = myActiveObjects(aSelectable);
   
   TColStd_ListIteratorOfListOfInteger It;
-  Standard_Boolean jobdone(Standard_False);
   // it is checked which were the temporary attributes 
   // and they are set to 0
 
@@ -451,7 +450,6 @@ Standard_Boolean AIS_LocalContext::Remove(const Handle(AIS_InteractiveObject)& a
       if(myMainPM->IsDisplayed(aSelectable,Att->HilightMode()))
 	myMainPM->Erase(aSelectable,Att->HilightMode());
       //	myMainPM->Clear(aSelectable,Att->HilightMode());
-      jobdone = Standard_True;
     }
   // if below intensity
   else

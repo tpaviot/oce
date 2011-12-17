@@ -1140,11 +1140,10 @@ void AIS2D_InteractiveContext::DisplayedObjects (AIS2D_ListOfIO& aListOfIO,
 	     theMap.Add(It.Key());
     }
     
-    Standard_Integer NbDisp;
     for ( AIS2D_DataMapIteratorOfDataMapOfLC it1(myLocalContexts);
 	      it1.More(); it1.Next() ) {
       const Handle(AIS2D_LocalContext)& LC = it1.Value();
-      NbDisp =  LC->DisplayedObjects(theMap);
+      LC->DisplayedObjects(theMap);
 	}
 		  
     Handle(AIS2D_InteractiveObject) curIO;
@@ -1747,22 +1746,18 @@ void AIS2D_InteractiveContext::Highlight( const Handle(AIS2D_InteractiveObject)&
 	 Standard_Integer DispMode,SelMode;
      AIS2D_TypeOfDetection HiMode = AIS2D_TOD_NONE;
 	 GetDefModes( anIObj, DispMode, HiMode, SelMode );
-     Standard_Integer pInd;
      anIObj->Highlight(myMainVwr->InitializeColor( mySelectionColor ));
      switch( HiMode ) {
 	 default:
      case AIS2D_TOD_OBJECT:
        break;
      case AIS2D_TOD_PRIMITIVE:
-       pInd = anIObj->PickedIndex();
        anIObj->Unhighlight();
        break;
      case AIS2D_TOD_ELEMENT:
-       pInd = anIObj->PickedIndex();
        anIObj->Unhighlight();
        break;
      case AIS2D_TOD_VERTEX:
-       pInd = anIObj->PickedIndex();
        anIObj->Unhighlight();
        break;
      } //end switch

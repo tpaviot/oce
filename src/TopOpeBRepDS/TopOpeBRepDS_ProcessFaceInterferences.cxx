@@ -287,8 +287,6 @@ Standard_EXPORT void FUN_resolveFUNKNOWN
 
     Standard_Boolean isclosedFF = BRep_Tool::IsClosed(EE,FF);
     Standard_Boolean isclosedFS = BRep_Tool::IsClosed(EE,FS);
-    Standard_Boolean go = Standard_True;
-    go = (isclosedFF || isclosedFS);
 //    if (!go) continue;
 
     // la face FF transitionne par la transition T1.IsUnknown()

@@ -134,14 +134,13 @@ void  BRepGProp::VolumeProperties(const TopoDS_Shape& S, GProp_GProps& Props, co
   // find the origin
   gp_Pnt P(0,0,0);  P.Transform(S.Location());
   Props = GProp_GProps(P);
-  Standard_Real Error = 0.0;
   if(OnlyClosed){
     TopExp_Explorer ex(S,TopAbs_SHELL);
     for (; ex.More(); ex.Next()) {
       const TopoDS_Shape& Sh = ex.Current();
-      if(BRep_Tool::IsClosed(Sh)) Error = volumeProperties(Sh,Props,1.0);
+      if(BRep_Tool::IsClosed(Sh)) volumeProperties(Sh,Props,1.0);
     }
-  } else Error = volumeProperties(S,Props,1.0);
+  } else volumeProperties(S,Props,1.0);
 }
 
 //=======================================================================

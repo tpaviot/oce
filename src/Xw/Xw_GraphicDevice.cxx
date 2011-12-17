@@ -117,13 +117,12 @@ Xw_TypeOfVisual v3d = Xw_TOV_PREFERRED_TRUECOLOR ;
 	MyFontMap = new Xw_FontMap(MyDisplay.ToCString()) ;
 	MyMarkMap = new Xw_MarkMap(MyDisplay.ToCString()) ;
 
-Standard_Address Bof;
-	Bof	= ExtendedColorMap2D();
-	Bof	= ExtendedColorMap3D();
-	Bof	= ExtendedTypeMap();
-	Bof	= ExtendedWidthMap();
-	Bof	= ExtendedFontMap();
-	Bof	= ExtendedMarkMap();
+	ExtendedColorMap2D();
+	ExtendedColorMap3D();
+	ExtendedTypeMap();
+	ExtendedWidthMap();
+	ExtendedFontMap();
+	ExtendedMarkMap();
 
 	if( !ExtendedColorMap2D() ||
 	    !ExtendedColorMap3D() ||

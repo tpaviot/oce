@@ -128,14 +128,12 @@ void BRepFeat_RibSlot::LFPerform()
 
   Standard_Boolean ChangeOpe = Standard_False;
       // On espere qu`il n`y a qu`un solide dans le resultat
-  Standard_Boolean UntilInShape = Standard_False;
 
   TopTools_MapOfShape M;
   TopTools_ListOfShape LShape;
   TopTools_ListOfShape LTool;
 
   if (!mySUntil.IsNull()) {
-    UntilInShape = Standard_True;
     for (exp2.Init(mySUntil,TopAbs_FACE); exp2.More(); exp2.Next()) {
       const TopoDS_Shape& funtil = exp2.Current();
       for (exp.Init(mySbase,TopAbs_FACE); exp.More(); exp.Next()) {
@@ -144,7 +142,6 @@ void BRepFeat_RibSlot::LFPerform()
 	}
       }
       if (!exp.More()) {
-	UntilInShape = Standard_False;
 	break;
       }
       else {
@@ -1367,9 +1364,6 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
       f = f - bnd/10000; l = l +bnd/10000;
       Handle(Geom_TrimmedCurve) curve;
       curve = new Geom_TrimmedCurve(Cur, f, l, Standard_True);
-#ifdef DEB
-      gp_Pnt P1 = 
-#endif
 	BRep_Tool::Pnt(TopExp::FirstVertex(E,Standard_True));
       gp_Pnt P2 = BRep_Tool::Pnt(TopExp::LastVertex(E,Standard_True));
       ex1.Init(mySbase, TopAbs_FACE);

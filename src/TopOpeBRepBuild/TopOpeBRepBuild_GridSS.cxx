@@ -482,20 +482,15 @@ void TopOpeBRepBuild_Builder::GFillShellSFS(const TopoDS_Shape& SH,
       cout<<endl;}
 #endif
   
-  Standard_Integer nlsfs = SFS.ChangeStartShapes().Extent();
   TopOpeBRepTool_ShapeExplorer exFace;
-  Standard_Integer ifor = 0;
   
   // 1/ : toutes les faces HasSameDomain
   for (exFace.Init(SH,TopAbs_FACE); exFace.More(); exFace.Next()) {
-    nlsfs = SFS.ChangeStartShapes().Extent();
     const TopoDS_Shape& FOR = exFace.Current();
-    ifor = myDataStructure->Shape(FOR);
     Standard_Boolean hsd = myDataStructure->HasSameDomain(FOR);
     if ( hsd ) {
       GFillFaceSFS(FOR,LSO2,G1,SFS);
     } // hsd
-    nlsfs = SFS.ChangeStartShapes().Extent();
   } // exFace.More()
   
 #ifdef DEB
@@ -506,14 +501,11 @@ void TopOpeBRepBuild_Builder::GFillShellSFS(const TopoDS_Shape& SH,
   
   // 2/ : toutes les faces non HasSameDomain
   for (exFace.Init(SH,TopAbs_FACE); exFace.More(); exFace.Next()) {
-    nlsfs = SFS.ChangeStartShapes().Extent();
     const TopoDS_Shape& FOR = exFace.Current();
-    ifor = myDataStructure->Shape(FOR);
     Standard_Boolean hsd = myDataStructure->HasSameDomain(FOR);
     if ( !hsd ) {
       GFillFaceSFS(FOR,LSO2,G1,SFS);
     } // hsd
-    nlsfs = SFS.ChangeStartShapes().Extent();
   }
   
 } // GFillShellSFS

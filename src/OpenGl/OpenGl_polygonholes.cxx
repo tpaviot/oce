@@ -302,9 +302,7 @@ PolygonHolesDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   Tint           fl=0;
   Tint           front_lighting_model, back_lighting_model;
   Tint           front_lighting_model_preserve, back_lighting_model_preserve;
-  Tint           front_shading_method;
   Tint           interior_style;
-  Tint           interior_index;
   TEL_COLOUR     interior_colour, back_interior_colour;
   TEL_COLOUR     point_colour, edge_colour;
   TelCullMode    face_culling_mode;
@@ -334,12 +332,10 @@ PolygonHolesDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   face_distinguishing_mode = k11.data.ldata;
   front_lighting_model     = k12.data.ldata;
   front_lighting_model_preserve = k12.data.ldata;
-  front_shading_method     = k13.data.ldata;
   back_lighting_model      = k14.data.ldata;
   back_lighting_model_preserve = k14.data.ldata;
   face_culling_mode        = (TelCullMode)k16.data.ldata;
   interior_style           = k17.data.ldata;
-  interior_index           = k19.data.ldata;
 
   if( k[0]->id == TOn )
   {                          /* Use highlight colours */
@@ -546,7 +542,7 @@ draw_polygon_holes( tel_polygon_holes_data d,
 static void
 draw_tmesh( tel_polygon_holes_data d, Tint v )
 {
-  Tint     i, j, k;
+  Tint     i, j;
   DISPLAY_ *dis;
   SEQ_     *s;
 
@@ -560,7 +556,7 @@ draw_tmesh( tel_polygon_holes_data d, Tint v )
     {
     case 1:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff ) {
             glVertex3fv( d->vertices[ (long)s->tmesh_sequence[ j ] ].xyz );
@@ -574,7 +570,7 @@ draw_tmesh( tel_polygon_holes_data d, Tint v )
       }
     case 2:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff ) {
             glColor3fv( d->vcolours[ (long) s->tmesh_sequence[ j ] ].rgb );
@@ -589,7 +585,7 @@ draw_tmesh( tel_polygon_holes_data d, Tint v )
       }
     case 3:
       {
-        for( j = 0, k = 0; j < s->ts_num; j++ )
+        for( j = 0; j < s->ts_num; j++ )
         {
           if ( s->tmesh_sequence[j] < (void *)0xffff) {
             glNormal3fv( d->vnormals[ (long) s->tmesh_sequence[ j ] ].xyz );

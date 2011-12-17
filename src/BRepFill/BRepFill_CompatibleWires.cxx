@@ -387,10 +387,7 @@ static Standard_Boolean EdgeIntersectOnWire (const gp_Pnt& P1,
 	isol = iss;
       }
     }
-#ifdef DEB
-    gp_Pnt Psol = 
-#endif
-      DSS.PointOnShape2(isol);
+    DSS.PointOnShape2(isol);
     // la solution est-elle un nouveau vertex ?
     NewVertex = (DSS.SupportTypeShape2(isol) != BRepExtrema_IsVertex);
     if (NewVertex) {

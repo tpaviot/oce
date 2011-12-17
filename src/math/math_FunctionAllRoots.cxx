@@ -28,11 +28,11 @@
     Standard_Real DebNul,FinNul;
     Standard_Integer Indd,Indf;
     Standard_Real cst,val,valsav=0,valbid;
-    Standard_Boolean bid,fini;
+    Standard_Boolean fini;
     Standard_Integer Nbp,i;
 
     Nbp=S.NbPoints();
-    bid=F.Value(S.GetParameter(1),val);
+    F.Value(S.GetParameter(1),val);
     PNul=Abs(val)<=EpsNul;
     if (!PNul) {valsav=val;}
     InterNul=Standard_False;
@@ -44,7 +44,7 @@
 
     while (!fini) {
 
-      bid=F.Value(S.GetParameter(i),val);
+      F.Value(S.GetParameter(i),val);
       Nul=Abs(val)<=EpsNul;
       if (!Nul) {
 	valsav=val;
@@ -88,7 +88,7 @@
 	InterNul=Standard_True;
 	if (i==2) {
 	  DebNul=S.GetParameter(1);
-	  bid = F.Value(DebNul,valbid);
+	  F.Value(DebNul,valbid);
 	  Indd = F.GetStateNumber();
 	  Nuld=Standard_True;
 	}
@@ -130,7 +130,7 @@
       pdeb.Append(DebNul);
       ideb.Append(Indd);
       FinNul = S.GetParameter(Nbp);
-      bid = F.Value(FinNul,valbid);
+      F.Value(FinNul,valbid);
       Indf = F.GetStateNumber();
       pfin.Append(FinNul);
       ifin.Append(Indf);

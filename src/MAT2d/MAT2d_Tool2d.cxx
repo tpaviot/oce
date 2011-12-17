@@ -527,7 +527,6 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
   Handle(Standard_Type)       Type   = Elt->DynamicType();	
   Handle(Geom2d_TrimmedCurve) Curve; 
   Standard_Integer            INext;   
-  Standard_Real               ParameterOnC;
   Standard_Real               Eps = MAT2d_TOLCONF;//*10.;
 
   if (Type == STANDARD_TYPE(Geom2d_CartesianPoint)) {	
@@ -578,7 +577,6 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
       if (Extremas.NbExt() == 0 ) return Standard_False; // Pas de solution!
       for (Standard_Integer i = 1; i <= Extremas.NbExt(); i++) {
 	if (Extremas.SquareDistance(i) < Distance * Distance) {
-	  ParameterOnC  = Extremas.Point(i).Parameter();
 	  Distance      = sqrt (Extremas.SquareDistance(i));
 	}
       }

@@ -188,13 +188,11 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
 
   // take all the SHELL args, place them in the solid <sol>
   TopoDS_Solid sol; BB.MakeSolid(sol);
-  Standard_Boolean yashell = Standard_False;
   for (i = i1; i < i2; i++) {
     const TopoDS_Shape& S = DBRep::Get(a[i]);
     if (S.IsNull()) continue;
     if (S.ShapeType() == TopAbs_SHELL) {
       BB.Add(sol,S);
-      yashell = Standard_True;
     }
   }
 
@@ -219,7 +217,7 @@ Standard_Integer MKSOLSHE(Draw_Interpretor&, Standard_Integer narg, const char**
 Standard_Integer GRILLE(Draw_Interpretor& di, Standard_Integer narg, const char** a)
 {
   if (narg != 10) return 1;
-  Standard_Real xmin,ymin,zmin,xmax,ymax,zmax,dx,dy,dz;
+  Standard_Real xmin,ymin,zmin,xmax,ymax,zmax,dx,dy;
   Standard_Integer nbx,nby,nbz;
   xmin = atof(a[1]);
   ymin = atof(a[2]);
@@ -234,7 +232,6 @@ Standard_Integer GRILLE(Draw_Interpretor& di, Standard_Integer narg, const char*
     return 1;
   if(nbx) dx = (xmax-xmin)/nbx; else dx=0;
   if(nby) dy = (ymax-ymin)/nby; else dy=0;
-  if(nbz) dz = (zmax-zmin)/nbz; else dz=0;
   di<<"compound CE"<<"\n";
   for(Standard_Real x=xmin; x<xmax; x+=dx) { 
     for(Standard_Real y=ymin; y<ymax; y+=dx) { 

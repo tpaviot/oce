@@ -1232,7 +1232,6 @@ Standard_Real X, Y, Z;
 Standard_Boolean VUPIsModified  = Standard_False;
 Standard_Boolean VRPIsModified  = Standard_False;
 Standard_Boolean VRUIsModified  = Standard_False;
-Standard_Boolean ScaleIsModified  = Standard_False;
 Standard_Boolean CustomIsModified = Standard_False;
 
         (MyViewOrientation.ViewReferencePoint ()).Coord (X, Y, Z);
@@ -1265,10 +1264,6 @@ Standard_Boolean CustomIsModified = Standard_False;
 Standard_Real Sx, Sy, Sz;
 
         MyViewOrientation.AxialScale(Sx, Sy, Sz);
-	ScaleIsModified =
-            MyCView.Orientation.ViewScaleX != float (X)
-         || MyCView.Orientation.ViewScaleY != float (Y)
-         || MyCView.Orientation.ViewScaleZ != float (Z);
         MyCView.Orientation.ViewScaleX                  = float (Sx);
         MyCView.Orientation.ViewScaleY                  = float (Sy);
         MyCView.Orientation.ViewScaleZ                  = float (Sz);

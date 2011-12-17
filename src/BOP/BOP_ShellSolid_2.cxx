@@ -1348,7 +1348,7 @@ void SecondInternal(TopoDS_Edge& aSS,
   //
   IntTools_Context& aContext=pPaveFiller->ChangeContext();
   //
-  Standard_Integer nEF1, nF2, nSpF1, nSpF2, nEF2, nSpTaken, iRankF1, nF2x, iRankF2, iSenseFlag;
+  Standard_Integer nEF1, nF2, nSpF1, nSpF2, nEF2, nSpTaken, iRankF1, nF2x, iSenseFlag;
   TopAbs_Orientation anOrEF1;
   TopExp_Explorer anExp;
   TopTools_IndexedMapOfShape aM;
@@ -1369,8 +1369,6 @@ void SecondInternal(TopoDS_Edge& aSS,
   if (iSenseFlag==1) {
     return ;
   }
-  //
-  iRankF2=aDS.Rank(nF2);
   //
   pPaveFiller->SplitsOnFace(0, nF1, nF2, aSplitsOnF1);
   //
