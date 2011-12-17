@@ -35,6 +35,11 @@
 
 Standard_Boolean StepToGeom_MakeCurve::Convert (const Handle(StepGeom_Curve)& SC, Handle(Geom_Curve)& CC)
 {
+  //Drop the null curve here.
+  if (SC.IsNull ()) {
+    return Standard_False;
+  }
+  
   if (SC->IsKind(STANDARD_TYPE(StepGeom_Line))) {
     const Handle(StepGeom_Line) L = Handle(StepGeom_Line)::DownCast(SC);
     return StepToGeom_MakeLine::Convert(L,*((Handle(Geom_Line)*)&CC));
