@@ -10,11 +10,11 @@
 #define __STDC_LIMIT_MACROS
 #endif
 #include <stdint.h>
-#include <stdlib.h>
 #endif
 
 #include <set>
 #include <map>
+#include <cstdlib>
 
 #ifndef SIZE_MAX
 #define SIZE_MAX UINT_MAX
@@ -291,10 +291,10 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     while (*pStr != ' ' && *pStr) pStr++;
     *pStr++ = '\0';
     while (*pStr == ' ' && *pStr) pStr++;
-    aReqNum = atol(pStr);
+    aReqNum = std::atol(pStr);
     while (*pStr != ' ' && *pStr) pStr++;
     while (*pStr == ' ' && *pStr) pStr++;
-    aSize = atol(pStr);
+    aSize = std::atol(pStr);
     Standard_Boolean isAlloc = Standard_False;
     if (strcmp(aType, "alloc") == 0)
     {

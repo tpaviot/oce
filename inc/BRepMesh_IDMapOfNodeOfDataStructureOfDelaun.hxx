@@ -28,6 +28,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -97,6 +100,10 @@ public:
   Standard_EXPORT    const BRepMesh_ListOfInteger& FindFromKey(const BRepMesh_Vertex& K) const;
   
   Standard_EXPORT     BRepMesh_ListOfInteger& ChangeFromKey(const BRepMesh_Vertex& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const BRepMesh_Vertex& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const BRepMesh_Vertex& K) ;
 
 
 

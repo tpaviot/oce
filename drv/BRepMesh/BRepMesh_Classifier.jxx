@@ -7,9 +7,6 @@
 #ifndef _TColStd_IndexedMapOfInteger_HeaderFile
 #include <TColStd_IndexedMapOfInteger.hxx>
 #endif
-#ifndef _BRepMesh_IndexedMapOfVertex_HeaderFile
-#include <BRepMesh_IndexedMapOfVertex.hxx>
-#endif
 #ifndef _BRepMesh_DataStructureOfDelaun_HeaderFile
 #include <BRepMesh_DataStructureOfDelaun.hxx>
 #endif

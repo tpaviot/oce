@@ -23,7 +23,12 @@ PCDM_RS_TypeNotFoundInSchema,
 PCDM_RS_UnrecognizedFileFormat,
 PCDM_RS_MakeFailure,
 PCDM_RS_PermissionDenied,
-PCDM_RS_DriverFailure
+PCDM_RS_DriverFailure,
+PCDM_RS_AlreadyRetrievedAndModified,
+PCDM_RS_AlreadyRetrieved,
+PCDM_RS_UnknownDocument,
+PCDM_RS_WrongResource,
+PCDM_RS_NoModel
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

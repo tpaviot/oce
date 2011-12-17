@@ -28,14 +28,14 @@
 #ifndef _XmlObjMgt_SRelocationTable_HeaderFile
 #include <XmlObjMgt_SRelocationTable.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _PCDM_StorageDriver_HeaderFile
 #include <PCDM_StorageDriver.hxx>
 #endif
 #ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _XmlObjMgt_Element_HeaderFile
 #include <XmlObjMgt_Element.hxx>
@@ -65,8 +65,6 @@ public:
   
   Standard_EXPORT   virtual  void Write(const Handle(CDM_Document)& theDocument,const TCollection_ExtendedString& theFileName) ;
   
-  Standard_EXPORT     Standard_Boolean IsError() const;
-  
   Standard_EXPORT   virtual  Handle_XmlMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
@@ -87,7 +85,6 @@ protected:
 
 Handle_XmlMDF_ADriverTable myDrivers;
 XmlObjMgt_SRelocationTable myRelocTable;
-Standard_Boolean myIsError;
 
 
 private: 

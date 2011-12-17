@@ -1,7 +1,7 @@
 oce stands for *o*pencascade *c*ommunity *e*dition.
 
 This project aims at gathering patches/changes/improvements from the OCC community over the latest release
-(currently OCCT 6.5.1).
+(currently OCCT 6.5.2).
 
 We use the following online resources:
   * Sources

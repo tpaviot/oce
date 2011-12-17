@@ -25,6 +25,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -94,6 +97,10 @@ public:
   Standard_EXPORT    const BOPTools_PaveSet& FindFromKey(const Standard_Integer& K) const;
   
   Standard_EXPORT     BOPTools_PaveSet& ChangeFromKey(const Standard_Integer& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const Standard_Integer& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const Standard_Integer& K) ;
 
 
 

@@ -31,9 +31,6 @@
 #ifndef _BRepMesh_MapOfInteger_HeaderFile
 #include <BRepMesh_MapOfInteger.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _BRepMesh_MapOfIntegerInteger_HeaderFile
 #include <BRepMesh_MapOfIntegerInteger.hxx>
 #endif
@@ -74,22 +71,12 @@ public:
   //! Creates  the triangulation with   and existant <br>
 //!          Mesh data structure. <br>
   Standard_EXPORT   BRepMesh_Delaun(const Handle(BRepMesh_DataStructureOfDelaun)& OldMesh,TColStd_Array1OfInteger& VertexIndices,const Standard_Boolean ZPositive = Standard_True);
-  //! Adds a new vertex in the triangulation. <br>
-  Standard_EXPORT     void AddVertex(const BRepMesh_Vertex& theVertex) ;
   //! Removes a vertex in the triangulation. <br>
   Standard_EXPORT     void RemoveVertex(const BRepMesh_Vertex& theVertex) ;
   //! Adds some vertices in the triangulation. <br>
   Standard_EXPORT     void AddVertices(BRepMesh_Array1OfVertexOfDelaun& Vertices) ;
-  //! Substitutes the Edge beetween to  triangles by the <br>
-//!          other  diagonal  of  the  quadrilatere  if  it  is <br>
-//!          possible (convex polygon). Return True if done. <br>
-  Standard_EXPORT     Standard_Boolean RevertDiagonal(const Standard_Integer theEdge) ;
   //! Modify mesh to use the edge. Return True if done. <br>
   Standard_EXPORT     Standard_Boolean UseEdge(const Standard_Integer theEdge) ;
-  //! Smooths the  mesh  in 2d space. The  method  is to <br>
-//!          move  the  free  and  OnSurface  vertices  at  the <br>
-//!          barycentre of their polygon. <br>
-  Standard_EXPORT     void SmoothMesh(const Standard_Real Epsilon) ;
   //! Gives the Mesh data structure. <br>
   Standard_EXPORT    const Handle_BRepMesh_DataStructureOfDelaun& Result() const;
   //! Gives the list of frontier edges <br>
@@ -110,9 +97,6 @@ public:
   //! Computes the triangulation and add the vertices <br>
 //!          edges and triangles to the Mesh data structure. <br>
   Standard_EXPORT     void Compute(TColStd_Array1OfInteger& VertexIndices) ;
-  //! Clear the  existing  triangles  and recomputes <br>
-//!          the triangulation . <br>
-  Standard_EXPORT     void ReCompute(TColStd_Array1OfInteger& VertexIndices) ;
   //! Build the super mesh . <br>
   Standard_EXPORT     void SuperMesh(const Bnd_Box2d& theBox) ;
   //! Test  if   triangle   of  index   <TrianIndex> <br>
@@ -120,9 +104,6 @@ public:
 //!          is != 0  then theVertex is  on Edge  of  index <br>
 //!          <edgeOn>. <br>
   Standard_EXPORT     Standard_Boolean Contains(const Standard_Integer TrianIndex,const BRepMesh_Vertex& theVertex,Standard_Integer& edgeOn) const;
-  //! Gives  the   index   of  triangle   containing <br>
-//!          geometricaly <theVertex>. <br>
-  Standard_EXPORT     Standard_Integer TriangleContaining(const BRepMesh_Vertex& theVertex) ;
 
 
 
@@ -150,6 +131,10 @@ private:
 //!          When an edge is suppressed more than one time <br>
 //!          it is destroyed. <br>
   Standard_EXPORT     void DeleteTriangle(const Standard_Integer TrianIndex,BRepMesh_MapOfIntegerInteger& freeEdges) ;
+  
+  Standard_EXPORT     void Perform(Bnd_Box2d& theBndBox,TColStd_Array1OfInteger& theVertexIndices) ;
+  //! Creates the triangles on new nodes <br>
+  Standard_EXPORT     void CreateTrianglesOnNewVertices(TColStd_Array1OfInteger& theVertexIndices) ;
 
 
 Handle_BRepMesh_DataStructureOfDelaun MeshData;

@@ -8,6 +8,7 @@ rem Default is vc8 win32
 
 set VCVER=vc8
 set "VCVARS=%VS80COMNTOOLS%..\..\VC\vcvarsall.bat"
+set "DevEnvDir=%VS80COMNTOOLS%..\IDE"
 if not "%1" == "" (
     if /I "%1" == "vc8" (
         set VCVER=vc8
@@ -93,5 +94,5 @@ if /I "%VCVER%" == "vc10" (
         set "PATH=%VS100COMNTOOLS%..\..\VC\bin\x86_amd64;%PATH%"
     )
     echo Attention: If you get problem during compilation with embedding manifests 
-    echo            ^(mt.exe^), try buildng ^(not rebuilding^) for the second time 
+    echo            ^(mt.exe^), try building ^(not rebuilding^) for the second time 
 )

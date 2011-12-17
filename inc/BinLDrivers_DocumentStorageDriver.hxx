@@ -25,9 +25,6 @@
 #ifndef _BinObjMgt_SRelocationTable_HeaderFile
 #include <BinObjMgt_SRelocationTable.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
 #endif
@@ -51,6 +48,9 @@
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
@@ -78,8 +78,6 @@ public:
   //! Write <theDocument> to the binary file <theFileName> <br>
   Standard_EXPORT   virtual  void Write(const Handle(CDM_Document)& theDocument,const TCollection_ExtendedString& theFileName) ;
   
-  Standard_EXPORT     Standard_Boolean IsError() const;
-  
   Standard_EXPORT   virtual  Handle_BinMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
   //! Create a section that should be written after the OCAF data <br>
   Standard_EXPORT     void AddSection(const TCollection_AsciiString& theName,const Standard_Boolean isPostRead = Standard_True) ;
@@ -103,7 +101,6 @@ protected:
 
 Handle_BinMDF_ADriverTable myDrivers;
 BinObjMgt_SRelocationTable myRelocTable;
-Standard_Boolean myIsError;
 
 
 private: 

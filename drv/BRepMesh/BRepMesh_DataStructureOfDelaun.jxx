@@ -1,8 +1,8 @@
 #ifndef _BRepMesh_Vertex_HeaderFile
 #include <BRepMesh_Vertex.hxx>
 #endif
-#ifndef _BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_HeaderFile
-#include <BRepMesh_IDMapOfNodeOfDataStructureOfDelaun.hxx>
+#ifndef _BRepMesh_VertexTool_HeaderFile
+#include <BRepMesh_VertexTool.hxx>
 #endif
 #ifndef _BRepMesh_Edge_HeaderFile
 #include <BRepMesh_Edge.hxx>

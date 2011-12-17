@@ -57,6 +57,7 @@ HISTORIQUE DES MODIFICATIONS   :
 #include <Visual3d_Layer.hxx>
 
 #include <OpenGl_Extension.hxx>
+#include <OpenGl_PrinterContext.hxx>
 
 /*----------------------------------------------------------------------*/
 /*
@@ -111,7 +112,6 @@ static float     layerBlue      = -1.;
 static float     layerFontRed   = -1.;
 static float     layerFontGreen = -1.;
 static float     layerFontBlue  = -1.;
-
 
 static OSD_FontAspect FTGLLayerFontAspect = OSD_FA_Regular;
 static Tint           FTGLLayerFontHeight = 16;
@@ -294,6 +294,35 @@ call_togl_redraw_layer2d (
   printf ("\tratio %f new ortho %f %f %f %f\n",
     ratio, left, right, bottom, top);
 #endif
+
+#ifdef WNT
+  // Check printer context that exists only for print operation
+  OpenGl_PrinterContext* aPrinterContext = 
+    OpenGl_PrinterContext::GetPrinterContext (GET_GL_CONTEXT());
+
+  if (aPrinterContext)
+  {
+    // additional transformation matrix could be applied to
+    // render only those parts of viewport that will be
+    // passed to a printer as a current "frame" to provide
+    // tiling; scaling of graphics by matrix helps render a
+    // part of a view (frame) in same viewport, but with higher
+    // resolution
+    GLfloat aProjMatrix[16];
+    aPrinterContext->GetProjTransformation (aProjMatrix);
+    glLoadMatrixf ((GLfloat*) aProjMatrix);
+
+    // printing operation also assumes other viewport dimension
+    // to comply with transformation matrix or graphics scaling
+    // factors for tiling for layer redraw
+    GLsizei anViewportX = 0;
+    GLsizei anViewportY = 0;
+    aPrinterContext->GetLayerViewport (anViewportX, anViewportY);
+    if (anViewportX != 0 && anViewportY != 0)
+      glViewport (0, 0, anViewportX, anViewportY);
+  }
+#endif 
+
   glOrtho (left, right, bottom, top, -1.0, 1.0);
 
 #ifdef TRACE_MAT
@@ -596,16 +625,15 @@ call_togl_rectangle2d
 
 /*----------------------------------------------------------------------*/
 void EXPORT
-call_togl_text2d ( char *s,
+call_togl_text2d ( Techar *s,
                   float x,
                   float y,
                   float height )
 {
-  call_def_ptrLayer ptrLayer;
   GLdouble objx1, objy1, objz1;
 
-  ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
-  if (ptrLayer == NULL) return;
+  call_def_ptrLayer ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
+  if (!ptrLayer) return;
   if (ptrLayer->listIndex == 0) return;
 #ifdef TRACE_TEXT
   printf ("call_togl_text2d %d\n", ptrLayer->listIndex);
@@ -624,6 +652,15 @@ call_togl_text2d ( char *s,
   objy1 = y,
   objz1 = 0.0;
 
+  //szv: conversion of Techar to wchar_t
+  wchar_t *s1 = (wchar_t*)s;
+  if (sizeof(Techar) != sizeof(wchar_t))
+  {
+    Tint i = 0; while (s[i++]);
+    s1 = new wchar_t[i];
+    i = 0; while (s1[i++] = (wchar_t)(*s++));
+  }
+
   /*
   * On traite les differents types d'affichage de texte
   */
@@ -634,7 +671,7 @@ call_togl_text2d ( char *s,
     printf ("texte normal %f %f\n", objx1, objy1);
 #endif
 
-    textRender->RenderText(s , fontBase, 1, (float )objx1, (float )objy1, 0.f );
+    textRender->RenderText(s1, fontBase, 1, (float )objx1, (float )objy1, 0.f );
 
     break;
   case 1 : /* Aspect_TODT_SubTitle */
@@ -721,8 +758,7 @@ call_togl_text2d ( char *s,
     glColor3f (layerRed, layerGreen, layerBlue);
 #endif /* OK */
 
-
-    textRender->RenderText(s, fontBase, 1, (float )objx1, (float )objy1, 0.f); 
+    textRender->RenderText(s1, fontBase, 1, (float )objx1, (float )objy1, 0.f); 
 
     break;
   case 2 : /* Aspect_TODT_Dekale */
@@ -774,7 +810,7 @@ call_togl_text2d ( char *s,
 
 
     OpenGl_TextRender* textRender=OpenGl_TextRender::instance();
-    textRender->RenderText(s, fontBase, 1, objx2, objy2, 0.f);
+    textRender->RenderText(s1, fontBase, 1, objx2, objy2, 0.f);
 
 
     winx2 = winx1-1;
@@ -787,7 +823,7 @@ call_togl_text2d ( char *s,
     printf ("status %s\n", (status == GL_FALSE ? "ko" : "ok"));
 #endif
 
-    textRender->RenderText(s, fontBase, 1, objx2, objy2, 0.f);
+    textRender->RenderText(s1, fontBase, 1, objx2, objy2, 0.f);
 
 
     winx2 = winx1-1;
@@ -801,7 +837,7 @@ call_togl_text2d ( char *s,
 #endif
 
 
-    textRender->RenderText(s, fontBase, 1, objx2, objy2, 0.f);
+    textRender->RenderText(s1, fontBase, 1, objx2, objy2, 0.f);
 
     winx2 = winx1+1;
     winy2 = winy1-1;
@@ -813,12 +849,12 @@ call_togl_text2d ( char *s,
     printf ("status %s\n", (status == GL_FALSE ? "ko" : "ok"));
 #endif
 
-    textRender->RenderText(s, fontBase, 1, objx2, objy2, 0.f);
+    textRender->RenderText(s1, fontBase, 1, objx2, objy2, 0.f);
 
     glColor3f (layerRed, layerGreen, layerBlue);
 #endif /* OK */
 
-    textRender->RenderText(s, fontBase, 1, (float )objx1, (float )objy1, 0.f);
+    textRender->RenderText(s1, fontBase, 1, (float )objx1, (float )objy1, 0.f);
 
 #ifdef DEBUG
     printf ("---------------------\n");
@@ -853,7 +889,7 @@ call_togl_text2d ( char *s,
 #else
     glColor3f (layerRed, layerGreen, layerBlue);
 
-    textRender->RenderText(s, fontBase, 1, (float )objx1, (float )objy1, 0.f);
+    textRender->RenderText(s1, fontBase, 1, (float )objx1, (float )objy1, 0.f);
 
 
 #endif //WNT
@@ -864,7 +900,7 @@ call_togl_text2d ( char *s,
     printf ("texte blend %f %f\n", objx1, objy1);
 #endif
 
-    textRender->RenderText(s, fontBase, 1, (float )objx1, (float )objy1, 0.f);
+    textRender->RenderText(s1, fontBase, 1, (float )objx1, (float )objy1, 0.f);
 
 #ifdef DEBUG
     printf ("---------------------\n");
@@ -872,35 +908,47 @@ call_togl_text2d ( char *s,
 #endif /* OK */
     break;
   }
+  //szv: delete temporary wide string
+  if (sizeof(Techar) != sizeof(wchar_t))
+    delete[] s1;
 }
 
 void EXPORT
 call_togl_textsize2d
 (
- char *s,
+ Techar *s,
  float height,
  float *width,
  float *ascent,
  float *descent
  )
 {
-  call_def_ptrLayer ptrLayer;
 
-
-  ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
-  if (ptrLayer == NULL) return;
+  call_def_ptrLayer ptrLayer = (call_def_ptrLayer) ACLayer.ptrLayer;
+  if (!ptrLayer) return;
   if (ptrLayer->listIndex == 0) return;
 
+  OpenGl_TextRender* textRender =  OpenGl_TextRender::instance();
 
-  if ( FTGLLayerFontHeight != height || layerFontFlag == IsModified || FTGLLayerFontCurrent == 0 ) {
+  if ( FTGLLayerFontHeight != height || layerFontFlag == IsModified || FTGLLayerFontCurrent == 0 )
+  {
     layerFontFlag = IsNotModified;
     FTGLLayerFontHeight = (Tint)height;  
-    OpenGl_TextRender*  textRender =  OpenGl_TextRender::instance();
     FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, (Tfloat)FTGLLayerFontHeight);
-    textRender -> StringSize(s, &FTGLLayerFontWidth, &FTGLLayerFontAscent, &FTGLLayerFontDescent);
   }
 
-  
+  //szv: conversion of Techar to wchar_t
+  wchar_t *s1 = (wchar_t*)s, *s2 = 0;
+  if (sizeof(Techar) != sizeof(wchar_t))
+  {
+    Tint i = 0; while (s[i++]);
+    s1 = s2 = new wchar_t[i];
+    i = 0; while (s1[i++] = (wchar_t)(*s++));
+  }
+  textRender->StringSize(s1, &FTGLLayerFontWidth, &FTGLLayerFontAscent, &FTGLLayerFontDescent);
+  //szv: delete temporary wide string
+  if (s2) delete[] s2;
+
   *width = (float) FTGLLayerFontWidth;
   *ascent = (float) FTGLLayerFontAscent;
   *descent = (float) FTGLLayerFontDescent;
@@ -1088,7 +1136,7 @@ void call_togl_set_text_attributes( Tchar* font,
     FTGLLayerFontXScale = FTGLLayerFontYScale = 1.f;
     OpenGl_TextRender*  textRender =  OpenGl_TextRender::instance();
     FTGLLayerFontCurrent = textRender -> FindFont(FTGLLayerFontName, FTGLLayerFontAspect, (Tfloat)FTGLLayerFontHeight);
-   
+
     layerFontRed = r;
     layerFontGreen = g;
     layerFontBlue = b;
