@@ -25,8 +25,8 @@
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
 #endif
-#ifndef _CDF_StoreStatus_HeaderFile
-#include <CDF_StoreStatus.hxx>
+#ifndef _PCDM_StoreStatus_HeaderFile
+#include <PCDM_StoreStatus.hxx>
 #endif
 #ifndef _CDF_TryStoreStatus_HeaderFile
 #include <CDF_TryStoreStatus.hxx>
@@ -151,7 +151,7 @@ public:
 //!           thes methods worked correctly, and if not why. <br>
   Standard_EXPORT     void SetMain() ;
   
-  Standard_EXPORT     CDF_StoreStatus StoreStatus() const;
+  Standard_EXPORT     PCDM_StoreStatus StoreStatus() const;
   
   Standard_EXPORT     Standard_ExtString AssociatedStatusText() const;
   //! defines the name under which the document should be stored. <br>
@@ -189,7 +189,7 @@ Standard_Boolean myIsMainDocument;
 TCollection_ExtendedString myLastName;
 TCollection_ExtendedString myPath;
 TCollection_ExtendedString myText;
-CDF_StoreStatus myStatus;
+PCDM_StoreStatus myStatus;
 
 
 };

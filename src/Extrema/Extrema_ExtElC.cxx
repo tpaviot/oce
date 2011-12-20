@@ -21,16 +21,18 @@
 #include <gp_Dir.hxx>
 #include <gp_Ax1.hxx>
 
-
-
-//======================================================================
+//modified by NIZNHY-PKV Wed Sep 21 08:02:16 2011f
+static
+  void RefineDir(gp_Dir& aDir);
+//modified by NIZNHY-PKV Wed Sep 21 08:02:20 2011t
+//=======================================================================
+//class    : ExtremaExtElC_TrigonometricRoots
+//purpose  : 
 //==  Classe Interne (Donne des racines classees d un polynome trigo)
 //==  Code duplique avec IntAna_IntQuadQuad.cxx (lbr le 26 mars 98)
 //==  Solution fiable aux problemes de coefficients proches de 0 
 //==  avec essai de rattrapage si coeff<1.e-10 (jct le 27 avril 98) 
-//======================================================================
-static const Standard_Real PIpPI=Standard_PI+Standard_PI;
-
+//=======================================================================
 class ExtremaExtElC_TrigonometricRoots {
  private:
   Standard_Real Roots[4];
@@ -38,132 +40,188 @@ class ExtremaExtElC_TrigonometricRoots {
   Standard_Integer NbRoots;
   Standard_Boolean infinite_roots;
  public:
-  ExtremaExtElC_TrigonometricRoots(const Standard_Real CC
-		     ,const Standard_Real SC
-		     ,const Standard_Real C
-		     ,const Standard_Real S
-		     ,const Standard_Real Cte
-		     ,const Standard_Real Binf
-		     ,const Standard_Real Bsup);
-
-  Standard_Boolean IsDone() { return(done); }
-
+  ExtremaExtElC_TrigonometricRoots(const Standard_Real CC,
+				   const Standard_Real SC,
+				   const Standard_Real C,
+				   const Standard_Real S,
+				   const Standard_Real Cte,
+				   const Standard_Real Binf,
+				   const Standard_Real Bsup);
+  //
+  Standard_Boolean IsDone() {
+    return done; 
+  }
+  //
   Standard_Boolean IsARoot(Standard_Real u) {
+    Standard_Integer i;
+    Standard_Real PIpPI, aEps;
+    //
+    aEps=RealEpsilon();
+    PIpPI=Standard_PI+Standard_PI;
     for(Standard_Integer i=0 ; i<NbRoots; i++) {
-      if(Abs(u - Roots[i])<=RealEpsilon()) return(Standard_True);
-      if(Abs(u - Roots[i]-PIpPI)<=RealEpsilon()) return(Standard_True);
+      if(Abs(u - Roots[i])<=aEps) {
+	return Standard_True ;
+      }
+      if(Abs(u - Roots[i]-PIpPI)<=aEps) {
+	return Standard_True;
+      }
     }
-    return(Standard_False);
+    return Standard_False;
   }
-
+  //
   Standard_Integer NbSolutions() { 
-    if(!done) StdFail_NotDone::Raise();
-    return(NbRoots); 
+    if(!done) {
+      StdFail_NotDone::Raise();
+    }
+    return NbRoots; 
   }
+  //
   Standard_Boolean InfiniteRoots() { 
-    if(!done) StdFail_NotDone::Raise();
-    return(infinite_roots); 
+    if(!done) {
+      StdFail_NotDone::Raise();
+    }
+    return infinite_roots; 
   }
-  Standard_Real    Value(const Standard_Integer& n) {
-    if((!done)||(n>NbRoots)) StdFail_NotDone::Raise();
-    return(Roots[n-1]);
+  //
+  Standard_Real Value(const Standard_Integer& n) {
+    if((!done)||(n>NbRoots)) {
+      StdFail_NotDone::Raise();
+    }
+    return Roots[n-1];
   }
 }; 
-//----------------------------------------------------------------------
-ExtremaExtElC_TrigonometricRoots::ExtremaExtElC_TrigonometricRoots(const Standard_Real CC
-				       ,const Standard_Real SC
-				       ,const Standard_Real C
-				       ,const Standard_Real S
-				       ,const Standard_Real Cte
-				       ,const Standard_Real Binf
-				       ,const Standard_Real Bsup) {
-
-  Standard_Integer i ;
-  Standard_Integer nbessai = 1;
-  Standard_Real cc = CC, sc = SC, c = C, s = S, cte = Cte;
+//=======================================================================
+//function : ExtremaExtElC_TrigonometricRoots
+//purpose  : 
+//=======================================================================
+ExtremaExtElC_TrigonometricRoots::
+  ExtremaExtElC_TrigonometricRoots(const Standard_Real CC,
+				   const Standard_Real SC,
+				   const Standard_Real C,
+				   const Standard_Real S,
+				   const Standard_Real Cte,
+				   const Standard_Real Binf,
+				   const Standard_Real Bsup) 
+{
+  Standard_Integer i, nbessai;
+  Standard_Real cc ,sc, c, s, cte;
+  //
+  nbessai = 1;
+  cc = CC;
+  sc = SC;
+  c = C;
+  s = S;
+  cte = Cte;
   done=Standard_False;
   while (nbessai<=2 && !done) {
     //-- F= AA*CN*CN+2*BB*CN*SN+CC*CN+DD*SN+EE;
     math_TrigonometricFunctionRoots MTFR(cc,sc,c,s,cte,Binf,Bsup); 
+    //
     if(MTFR.IsDone()) {
       done=Standard_True;
       if(MTFR.InfiniteRoots()) {
 	infinite_roots=Standard_True;
       }
-      else {
-	NbRoots=MTFR.NbSolutions();
-	for( i=0;i<NbRoots;i++) {
-	  Roots[i]=MTFR.Value(i+1);
-	  if(Roots[i]<0.0) Roots[i]+=PI+PI;
-	  if(Roots[i]>(PI+PI)) Roots[i]-=PI+PI;
-	}
+      else { //else #1
 	Standard_Boolean Triee;
-      Standard_Integer j;
-	
+	Standard_Integer j, SvNbRoots;
+	Standard_Real aTwoPI, aMaxCoef, aPrecision;
+	//
+	aTwoPI=PI+PI;
+	NbRoots=MTFR.NbSolutions();
+	for(i=0;i<NbRoots;++i) {
+	  Roots[i]=MTFR.Value(i+1);
+	  if(Roots[i]<0.) {
+	    Roots[i]=Roots[i]+aTwoPI;
+	  }
+	  if(Roots[i]>aTwoPI) {
+	    Roots[i]=Roots[i]-aTwoPI;
+	  }
+	}
 	//-- La recherche directe donne n importe quoi. 
 	// modified by OCC  Tue Oct  3 18:41:27 2006.BEGIN
-	Standard_Real aMaxCoef = Max(CC,SC);
+	aMaxCoef = Max(CC,SC);
 	aMaxCoef = Max(aMaxCoef,C);
 	aMaxCoef = Max(aMaxCoef,S);
 	aMaxCoef = Max(aMaxCoef,Cte);
-	const Standard_Real aPrecision = Max(1.e-8,1.e-12*aMaxCoef);
+	aPrecision = Max(1.e-8, 1.e-12*aMaxCoef);
 	// modified by OCC  Tue Oct  3 18:41:33 2006.END
 
-	Standard_Integer SvNbRoots=NbRoots;
-	for(i=0;i<SvNbRoots;i++) {
+	SvNbRoots=NbRoots;
+	for(i=0; i<SvNbRoots; ++i) {
 	  Standard_Real y;
-	Standard_Real co=cos(Roots[i]);
+	  Standard_Real co=cos(Roots[i]);
 	  Standard_Real si=sin(Roots[i]);
 	  y=co*(CC*co + (SC+SC)*si + C) + S*si + Cte;
 	  // modified by OCC  Tue Oct  3 18:43:00 2006
 	  if(Abs(y)>aPrecision) {
-#ifdef DEB
-	    printf("\n**IntAna_IntQuadQuad** Solution : %g ( %g cos2 + 2  %g cos sin + %g cos + %g sin  + %g) = %g\n",
-		   Roots[i],CC,SC,C,S,Cte,y);
-#endif
 	    NbRoots--;
 	    Roots[i]=1000.0;
 	  }
 	}
-	
+	//
 	do {
+	  Standard_Real t;
+	  //
 	  Triee=Standard_True;
-	  for(i=1,j=0;i<SvNbRoots;i++,j++) {
+	  for(i=1, j=0; i<SvNbRoots; ++i, ++j) {
 	    if(Roots[i]<Roots[j]) {
 	      Triee=Standard_False;
-	      Standard_Real t=Roots[i]; Roots[i]=Roots[j]; Roots[j]=t;
+	      t=Roots[i]; 
+	      Roots[i]=Roots[j]; 
+	      Roots[j]=t;
 	    }
 	  }
 	}
 	while(!Triee);
+	//
 	infinite_roots=Standard_False;
-	if(NbRoots==0) { //--!!!!! Detection du cas Pol = Cte ( 1e-50 ) !!!!
+	if(NbRoots==0) { 
+	  //--!!!!! Detection du cas Pol = Cte ( 1e-50 ) !!!!
 	  if((Abs(CC) + Abs(SC) + Abs(C) + Abs(S)) < 1e-10) {
 	    if(Abs(Cte) < 1e-10)  {
 	      infinite_roots=Standard_True;
 	    }
 	  }
 	}
-      }
-    }
+      } // else #1
+    } // if(MTFR.IsDone()) {
     else {
 	// on essaie en mettant les tres petits coeff. a ZERO
-      if (Abs(CC)<1e-10) cc = 0.0;
-      if (Abs(SC)<1e-10) sc = 0.0;
-      if (Abs(C)<1e-10) c = 0.0;
-      if (Abs(S)<1e-10) s = 0.0;
-      if (Abs(Cte)<1e-10) cte = 0.0;
+      if (Abs(CC)<1e-10) {
+	cc = 0.0;
+      }
+      if (Abs(SC)<1e-10) {
+	sc = 0.0;
+      }
+      if (Abs(C)<1e-10) {
+	c = 0.0;
+      }
+      if (Abs(S)<1e-10){
+	s = 0.0;
+      }
+      if (Abs(Cte)<1e-10){
+	cte = 0.0;
+      }
       nbessai++;
     }
-  }
+  } // while (nbessai<=2 && !done) {
 }
 
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC () { myDone = Standard_False; }
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Lin& C2,
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC () 
+{
+  myDone = Standard_False; 
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
+				const gp_Lin& C2,
 				const Standard_Real)
 // Fonction:
 //    Recherche de la distance minimale entre 2 droites.
@@ -242,9 +300,12 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Lin& C2,
   }
   myDone = Standard_True;
 }
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Circ& C2,
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
+				const gp_Circ& C2,
 				const Standard_Real)
 /*-----------------------------------------------------------------------------
 Fonction:
@@ -279,59 +340,97 @@ Methode:
     cette equation.
 -----------------------------------------------------------------------------*/
 {
+  Standard_Real Dx,Dy,Dz,aRO2O1, aTolRO2O1;
+  Standard_Real R, A1, A2, A3, A4, A5, aTol;
+  gp_Dir x2, y2, z2, D, D1;
+  //
   myIsPar = Standard_False;
   myDone = Standard_False;
   myNbExt = 0;
-
-// Calcul de T1 dans le repere du cercle ...
-  gp_Dir D = C1.Direction();
-  gp_Dir D1 = D;
-  gp_Dir x2, y2, z2;
+  //
+  // Calcul de T1 dans le repere du cercle ...
+  D = C1.Direction();
+  D1 = D;
   x2 = C2.XAxis().Direction();
   y2 = C2.YAxis().Direction();
   z2 = C2.Axis().Direction();
-  Standard_Real Dx = D.Dot(x2);
-  Standard_Real Dy = D.Dot(y2);
-  Standard_Real Dz = D.Dot(z2);
-  D.SetCoord(Dx,Dy,Dz);
-
-// Calcul de V dans le repere du cercle:
+  Dx = D.Dot(x2);
+  Dy = D.Dot(y2);
+  Dz = D.Dot(z2);
+  //
+  D.SetCoord(Dx, Dy, Dz);
+  //modified by NIZNHY-PKV Wed Sep 21 08:02:46 2011f
+  RefineDir(D);
+  D.Coord(Dx, Dy, Dz);
+  //modified by NIZNHY-PKV Wed Sep 21 08:02:48 2011t
+  //
+  // Calcul de V dans le repere du cercle:
   gp_Pnt O1 = C1.Location();
   gp_Pnt O2 = C2.Location();
   gp_Vec O2O1 (O2,O1);
-  O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
+  //
+  //modified by NIZNHY-PKV Wed Sep 21 07:45:39 2011f
+  aTolRO2O1=gp::Resolution();
+  aRO2O1=O2O1.Magnitude();
+  if (aRO2O1 > aTolRO2O1) {
+    gp_Dir aDO2O1;
+    //
+    O2O1.Multiply(1./aRO2O1);
+    aDO2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
+    RefineDir(aDO2O1);
+    O2O1.SetXYZ(aRO2O1*aDO2O1.XYZ());
+  }
+  else {
+    O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
+  }
+  //O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
+  //modified by NIZNHY-PKV Wed Sep 21 07:45:42 2011t
+  //
   gp_XYZ Vxyz = (D.XYZ()*(O2O1.Dot(D)))-O2O1.XYZ();
-
-// Calcul des coefficients de l equation en Cos et Sin ...
-  Standard_Real R = C2.Radius();
-  Standard_Real A5 = R*R*Dx*Dy;
-  Standard_Real A1 = -2.*A5;
-  Standard_Real A2 = R*R*(Dx*Dx-Dy*Dy)/2.0;
-  Standard_Real A3 = R*Vxyz.Y();
-  Standard_Real A4 = -R*Vxyz.X();
- // Standard_Real TolU = Tol * R;
-
-  
-  if(fabs(A5) <= 1.e-12) A5 = 0.;
-  if(fabs(A1) <= 1.e-12) A1 = 0.;
-  if(fabs(A2) <= 1.e-12) A2 = 0.;
-  if(fabs(A3) <= 1.e-12) A3 = 0.;
-  if(fabs(A4) <= 1.e-12) A4 = 0.;
-  
-
+  //
+  // Calcul des coefficients de l equation en Cos et Sin ... 
+  aTol=1.e-12;
+  R = C2.Radius();
+  A5 = R*R*Dx*Dy;
+  A1 = -2.*A5;
+  A2 = R*R*(Dx*Dx-Dy*Dy)/2.;
+  A3 = R*Vxyz.Y();
+  A4 = -R*Vxyz.X();
+  //
+  if(fabs(A5) <= aTol) {
+    A5 = 0.;
+  }
+  if(fabs(A1) <= aTol) {
+    A1 = 0.;
+  }
+  if(fabs(A2) <= aTol) {
+    A2 = 0.;
+  }
+  if(fabs(A3) <= aTol) {
+    A3 = 0.;
+  }
+  if(fabs(A4) <= aTol) {
+    A4 = 0.;
+  }
+  //
   ExtremaExtElC_TrigonometricRoots Sol(A1,A2,A3,A4,A5,0.,PI+PI);
-  if (!Sol.IsDone()) { return; }
+  if (!Sol.IsDone()) { 
+    return; 
+  }
   if (Sol.InfiniteRoots()) { 
     myIsPar = Standard_True;
     mySqDist[0] = R*R;
     myDone = Standard_True;
     return; 
   }
-// Stockage des solutions ...
-  gp_Pnt P1,P2;
+  //
+  // Stockage des solutions ...
+  Standard_Integer NoSol, NbSol;
   Standard_Real U1,U2;
-  Standard_Integer NbSol = Sol.NbSolutions();
-  for (Standard_Integer NoSol = 1; NoSol <= NbSol; NoSol++) {
+  gp_Pnt P1,P2;
+  //
+  NbSol = Sol.NbSolutions();
+  for (NoSol=1; NoSol<=NbSol; ++NoSol) {
     U2 = Sol.Value(NoSol);
     P2 = ElCLib::Value(U2,C2);
     U1 = (gp_Vec(O1,P2)).Dot(D1);
@@ -343,10 +442,12 @@ Methode:
   }
   myDone = Standard_True;
 }
-
-
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Elips& C2)
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1,
+				const gp_Elips& C2)
 {
 /*-----------------------------------------------------------------------------
 Fonction:
@@ -413,7 +514,17 @@ Methode:
   Standard_Real A2 =(R2*Dx*Dx -r2*Dy*Dy -R2 +r2)/2.0;
   Standard_Real A3 = MinR*Vxyz.Y();
   Standard_Real A4 = -MajR*Vxyz.X();
-
+  //
+  //modified by NIZNHY-PKV Thu Feb 03 14:51:04 2011f
+  Standard_Real aEps=1.e-12;
+  //
+  if(fabs(A5) <= aEps) A5 = 0.;
+  if(fabs(A1) <= aEps) A1 = 0.;
+  if(fabs(A2) <= aEps) A2 = 0.;
+  if(fabs(A3) <= aEps) A3 = 0.;
+  if(fabs(A4) <= aEps) A4 = 0.;
+  //modified by NIZNHY-PKV Thu Feb 03 14:51:08 2011t
+  //
   ExtremaExtElC_TrigonometricRoots Sol(A1,A2,A3,A4,A5,0.,PI+PI);
   if (!Sol.IsDone()) { return; }
 
@@ -433,9 +544,13 @@ Methode:
   }
   myDone = Standard_True;
 }
-//=============================================================================
 
-Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Hypr& C2)
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
+				const gp_Hypr& C2)
 {
 /*-----------------------------------------------------------------------------
 Fonction:
@@ -530,9 +645,12 @@ Methode:
   }
   myDone = Standard_True;
 }
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, const gp_Parab& C2)
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
+				const gp_Parab& C2)
 {
 /*-----------------------------------------------------------------------------
 Fonction:
@@ -615,107 +733,12 @@ Methode:
   }
   myDone = Standard_True;
 }
-//=============================================================================
-Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Elips&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Hypr&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Parab&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Elips&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Hypr&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Parab&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Hypr&, const gp_Hypr&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Hypr&, const gp_Parab&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Extrema_ExtElC::Extrema_ExtElC (const gp_Parab&, const gp_Parab&)
-{
-  Standard_NotImplemented::Raise();
-}
-//=============================================================================
-
-Standard_Boolean Extrema_ExtElC::IsDone () const { return myDone; }
-//=============================================================================
-
-Standard_Boolean Extrema_ExtElC::IsParallel () const
-{
-  if (!IsDone()) { StdFail_NotDone::Raise(); }
-  return myIsPar;
-}
-//=============================================================================
-
-Standard_Integer Extrema_ExtElC::NbExt () const
-{
-  if (IsParallel()) { StdFail_InfiniteSolutions::Raise(); }
-  return myNbExt;
-}
-//=============================================================================
-
-Standard_Real Extrema_ExtElC::SquareDistance (const Standard_Integer N) const
-{
-  if (!myDone) { StdFail_NotDone::Raise(); }
-  if (myIsPar) {
-    if (N < 1 || N > 2) { Standard_OutOfRange::Raise(); }
-  }
-  else {  
-    if (N < 1 || N > NbExt()) { Standard_OutOfRange::Raise(); }
-  }
-  return mySqDist[N-1];
-}
-//=============================================================================
-
-void Extrema_ExtElC::Points (const Standard_Integer N,
-			     Extrema_POnCurv& P1, Extrema_POnCurv& P2) const
-{
-  if (N < 1 || N > NbExt()) { Standard_OutOfRange::Raise(); }
-  P1 = myPoint[N-1][0];
-  P2 = myPoint[N-1][1];
-}
-//=============================================================================
-//=============================================================================
-//
-//modified by NIZNHY-PKV Fri Nov 21 10:48:46 2008f
 //=======================================================================
 //function : Extrema_ExtElC
 //purpose  : 
 //=======================================================================
-Extrema_ExtElC::Extrema_ExtElC (const gp_Circ& C1, const gp_Circ& C2)
+Extrema_ExtElC::Extrema_ExtElC (const gp_Circ& C1, 
+				const gp_Circ& C2)
 {
   Standard_Boolean bIsSamePlane, bIsSameAxe;
   Standard_Real aTolD, aTolD2, aTolA, aD2, aDC2;
@@ -865,4 +888,170 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Circ& C1, const gp_Circ& C2)
     }// if (!bOut || !bIn) {
   }// else
 }
-//modified by NIZNHY-PKV Fri Nov 21 10:48:56 2008t
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Elips&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Hypr&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Circ&, const gp_Parab&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Elips&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Hypr&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Elips&, const gp_Parab&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Hypr&, const gp_Hypr&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Hypr&, const gp_Parab&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : Extrema_ExtElC
+//purpose  : 
+//=======================================================================
+Extrema_ExtElC::Extrema_ExtElC (const gp_Parab&, const gp_Parab&)
+{
+  Standard_NotImplemented::Raise();
+}
+//=======================================================================
+//function : IsDone
+//purpose  : 
+//=======================================================================
+Standard_Boolean Extrema_ExtElC::IsDone () const {
+  return myDone; 
+}
+//=======================================================================
+//function : IsParallel
+//purpose  : 
+//=======================================================================
+Standard_Boolean Extrema_ExtElC::IsParallel () const
+{
+  if (!IsDone()) { 
+    StdFail_NotDone::Raise(); 
+  }
+  return myIsPar;
+}
+//=======================================================================
+//function : NbExt
+//purpose  : 
+//=======================================================================
+Standard_Integer Extrema_ExtElC::NbExt () const
+{
+  if (IsParallel()) {
+    StdFail_InfiniteSolutions::Raise(); 
+  }
+  return myNbExt;
+}
+//=======================================================================
+//function : SquareDistance
+//purpose  : 
+//=======================================================================
+Standard_Real Extrema_ExtElC::SquareDistance (const Standard_Integer N) const
+{
+  if (!myDone) { 
+    StdFail_NotDone::Raise(); 
+  }
+  if (myIsPar) {
+    if (N < 1 || N > 2) { 
+      Standard_OutOfRange::Raise(); 
+    }
+  }
+  else {  
+    if (N < 1 || N > NbExt()) { 
+      Standard_OutOfRange::Raise(); 
+    }
+  }
+  return mySqDist[N-1];
+}
+//=======================================================================
+//function : Points
+//purpose  : 
+//=======================================================================
+void Extrema_ExtElC::Points (const Standard_Integer N,
+			     Extrema_POnCurv& P1, 
+			     Extrema_POnCurv& P2) const
+{
+  if (N < 1 || N > NbExt()) { 
+    Standard_OutOfRange::Raise(); 
+  }
+  P1 = myPoint[N-1][0];
+  P2 = myPoint[N-1][1];
+}
+//modified by NIZNHY-PKV Wed Sep 21 07:59:19 2011f
+//=======================================================================
+//function : RefineDir
+//purpose  : 
+//=======================================================================
+void RefineDir(gp_Dir& aDir)
+{
+  Standard_Integer i, j, k, iK;
+  Standard_Real aCx[3], aEps, aX1, aX2, aOne;
+  //
+  iK=3;
+  aEps=RealEpsilon();
+  aDir.Coord(aCx[0], aCx[1], aCx[2]);
+  //
+  for (i=0; i<iK; ++i) {
+    aOne=(aCx[i]>0.) ? 1. : -1.;
+    aX1=aOne-aEps;
+    aX2=aOne+aEps;
+    //
+    if (aCx[i]>aX1 && aCx[i]<aX2) {
+      j=(i+1)%iK;
+      k=(i+2)%iK;
+      aCx[i]=aOne;
+      aCx[j]=0.;
+      aCx[k]=0.;
+      aDir.SetCoord(aCx[0], aCx[1], aCx[2]);
+      return;
+    }
+  }
+}
+//modified by NIZNHY-PKV Wed Sep 21 07:59:26 2011t

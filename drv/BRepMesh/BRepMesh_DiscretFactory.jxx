@@ -4,6 +4,9 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
+#ifndef _BRepMesh_DiscretRoot_HeaderFile
+#include <BRepMesh_DiscretRoot.hxx>
+#endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif

@@ -4,16 +4,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <TCollection_AsciiString.hxx>
-#include <TCollection_HAsciiString.hxx>
-
-#include <Standard_Stream.hxx>
-
+#include <OpenGl_tgl_all.hxx>
 #include <OpenGl_FontMgr.hxx>   
 #include <OpenGl_tgl_funcs.hxx>
 #include <OpenGl_TextRender.hxx>
 #include <OpenGl_telem_attri.hxx>
 #include <OpenGl_cmn_varargs.hxx>
+#include <OpenGl_PrinterContext.hxx>
+#include <Standard_Stream.hxx>
+#include <TCollection_AsciiString.hxx>
+#include <TCollection_HAsciiString.hxx>
 
 #include <OSD_Environment.hxx>
 #include <Quantity_NameOfColor.hxx>
@@ -236,7 +236,7 @@ Tint OpenGl_TextRender::FindFont ( Tchar* fontName,
 }
 
 /*-----------------------------------------------------------------------------*/
-void OpenGl_TextRender::StringSize(char *str, GLint *Width, GLint *Ascent, GLint *Descent)
+void OpenGl_TextRender::StringSize(const wchar_t *str, GLint *Width, GLint *Ascent, GLint *Descent)
 {
 
   /*    int       dir, asc, des;*/
@@ -260,7 +260,7 @@ void OpenGl_TextRender::StringSize(char *str, GLint *Width, GLint *Ascent, GLint
 
 /*-----------------------------------------------------------------------------*/
 
-void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x, GLfloat y, GLfloat z ) 
+void OpenGl_TextRender::RenderText ( const wchar_t* str, GLuint base, int is2d, GLfloat x, GLfloat y, GLfloat z ) 
 {
   GLdouble projMatrix[4][4], modelMatrix[4][4];
   GLint viewport[4];
@@ -351,7 +351,7 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
     glTranslatef(x, y, 0.f);
     glRotatef( 180, 1, 0, 0 );
   }
-  else {   
+  else {
     GLdouble wx, wy, wz;
     GLdouble x1, y1, z1;
     GLdouble x2, y2, z2;
@@ -385,6 +385,22 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
 
     if( ! zoom )
     {
+#ifdef WNT
+      // if the context has assigned printer context, use it's parameters
+      OpenGl_PrinterContext* aPrinterContext = 
+        OpenGl_PrinterContext::GetPrinterContext( GET_GL_CONTEXT() );
+      if( aPrinterContext )
+      {
+        // get printing scaling in x and y dimensions
+        GLfloat aTextScalex = 1, aTextScaley = 1;
+        aPrinterContext->GetScale( aTextScalex, aTextScaley );
+        
+        // text should be scaled in all directions with same
+        // factor to save its proportions, so use height (y) scaling
+        // as it is better for keeping text/3d graphics proportions
+        glScalef( aTextScaley, aTextScaley, aTextScaley );
+      }
+#endif
       glScaled( h, h, h );
     }
     else
@@ -415,7 +431,6 @@ void OpenGl_TextRender::RenderText ( char* str, GLuint base, int is2d, GLfloat x
     glPopMatrix();
   }
   glPopAttrib();
-  return;
 
 }
 
@@ -465,7 +480,7 @@ int OpenGl_TextRender::alignmentforgl2ps(int vh, int vy)
 #endif
 
 /*-----------------------------------------------------------------------------*/
-void OpenGl_TextRender::ExportText( char* str, char* fontname, GLfloat height, GLfloat angle, GLint alignment,
+void OpenGl_TextRender::ExportText( const wchar_t* text, char* fontname, GLfloat height, GLfloat angle, GLint alignment,
                                     GLfloat x, GLfloat y, GLfloat z, GLboolean is2d )
 {
 #ifdef HAVE_GL2PS
@@ -479,11 +494,15 @@ void OpenGl_TextRender::ExportText( char* str, char* fontname, GLfloat height, G
     glRasterPos2f( x, y );
   else
     glRasterPos3f( x, y, z );
-  
+
   glBitmap( 1, 1, 0, 0, 0, 0, &zero );
 
-  gl2psTextOpt( str, ps_font, (GLshort)height, alignment, angle);
+  //szv: workaround for gl2ps!
+  const int len = 4 * (wcslen(text) + 1); //szv: should be more than enough
+  char *astr = new char[len];
+  wcstombs(astr,text,len);
+  gl2psTextOpt(astr, ps_font, (GLshort)height, alignment, angle);
+  delete[] astr;
 
 #endif
-
 }

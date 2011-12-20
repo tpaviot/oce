@@ -28,6 +28,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Address_HeaderFile
+#include <Standard_Address.hxx>
+#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -97,6 +100,10 @@ public:
   Standard_EXPORT    const Handle_Standard_Transient& FindFromKey(const Handle(Standard_Transient)& K) const;
   
   Standard_EXPORT     Handle_Standard_Transient& ChangeFromKey(const Handle(Standard_Transient)& K) ;
+  
+  Standard_EXPORT     Standard_Address FindFromKey1(const Handle(Standard_Transient)& K) const;
+  
+  Standard_EXPORT     Standard_Address ChangeFromKey1(const Handle(Standard_Transient)& K) ;
 
 
 

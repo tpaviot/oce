@@ -62,6 +62,8 @@ public:
   //! defines     command  to    test  the    polyhedral <br>
 //!          triangulations and the polygons from the Poly package. <br>
   Standard_EXPORT   static  void PolyCommands(Draw_Interpretor& I) ;
+  //! defines commands to test projection of geometric objects <br>
+  Standard_EXPORT   static  void TestProjCommands(Draw_Interpretor& I) ;
 
 
 

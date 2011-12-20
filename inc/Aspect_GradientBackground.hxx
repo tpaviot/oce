@@ -51,8 +51,6 @@ public:
   Standard_EXPORT   Aspect_GradientBackground(const Quantity_Color& AColor1,const Quantity_Color& AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
   //! Modifies the colours of the window gradient background <me>. <br>
   Standard_EXPORT     void SetColors(const Quantity_Color& AColor1,const Quantity_Color& AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR) ;
-  
-  Standard_EXPORT     void SetBgGradientFillMethod(const Aspect_GradientFillMethod AMethod = Aspect_GFM_NONE) const;
   //! Returns colours of the window gradient background <me>. <br>
   Standard_EXPORT     void Colors(Quantity_Color& AColor1,Quantity_Color& AColor2) const;
   //! Returns the current gradient background fill mode. <br>

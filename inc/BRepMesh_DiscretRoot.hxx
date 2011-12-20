@@ -9,8 +9,11 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Standard_DefineHandle_HeaderFile
+#include <Standard_DefineHandle.hxx>
+#endif
+#ifndef _Handle_BRepMesh_DiscretRoot_HeaderFile
+#include <Handle_BRepMesh_DiscretRoot.hxx>
 #endif
 
 #ifndef _Standard_Real_HeaderFile
@@ -22,47 +25,48 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Standard_Transient_HeaderFile
+#include <Standard_Transient.hxx>
+#endif
 class TopoDS_Shape;
 
 
 
-class BRepMesh_DiscretRoot  {
+//! This is a common interface for meshing algorithms <br>
+//! instantiated by Mesh Factory and implemented by plugins. <br>
+class BRepMesh_DiscretRoot : public Standard_Transient {
+
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
-
   
+//! Setup linear deflection. <br>
   Standard_EXPORT     void SetDeflection(const Standard_Real theDeflection) ;
 Standard_EXPORT virtual ~BRepMesh_DiscretRoot();
   
+//! Returns linear deflection. <br>
   Standard_EXPORT     Standard_Real Deflection() const;
   
+//! Setup angular deflection. <br>
   Standard_EXPORT     void SetAngle(const Standard_Real theAngle) ;
   
+//! Returns angular deflection. <br>
   Standard_EXPORT     Standard_Real Angle() const;
   
+//! Set the shape to triangulate. <br>
   Standard_EXPORT     void SetShape(const TopoDS_Shape& theShape) ;
   
   Standard_EXPORT    const TopoDS_Shape& Shape() const;
   
+//! Compute triangulation for set shape. <br>
   Standard_EXPORT   virtual  void Perform()  = 0;
   
+//! Returns true if triangualtion was performed and has success. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
 
 
 
 
+  DEFINE_STANDARD_RTTI(BRepMesh_DiscretRoot)
 
 protected:
 
@@ -75,15 +79,13 @@ protected:
   
   Standard_EXPORT   virtual  void Init() ;
 
-
 Standard_Real myDeflection;
 Standard_Real myAngle;
 TopoDS_Shape myShape;
 Standard_Boolean myIsDone;
 
 
-private:
-
+private: 
 
 
 

@@ -51,7 +51,8 @@ uses    Boolean                   from Standard,
         Curve                     from Geom2d,
         MapOfInteger              from BRepMesh,
         BaseAllocator             from BRepMesh,
-        DataMapOfFaceAttribute    from BRepMesh
+        DataMapOfFaceAttribute    from BRepMesh,
+        IndexedDataMapOfShapeListOfShape from TopTools
 
 
 is
@@ -92,7 +93,8 @@ is
         Perform (me: mutable; shape: Shape from TopoDS) is static;
         ---Purpose: Build triangulation on the whole shape
 
-        Add (me: mutable; face: Face from TopoDS) is static;
+        Add (me: mutable; face: Face from TopoDS;
+                          ancestor : IndexedDataMapOfShapeListOfShape from TopTools) is static;
         ---Purpose: Record a face for further processing.
 
         Process (me; face: Face from TopoDS) is static;
@@ -109,6 +111,7 @@ is
              face   : Face     from TopoDS;
              S      : HSurface from BRepAdaptor;
              C      : Curve    from Geom2d;
+             ancestor : IndexedDataMapOfShapeListOfShape from TopTools;
              defedge: Real     from Standard;
              first  : Real     from Standard;
              last   : Real     from Standard)
@@ -128,6 +131,18 @@ is
                 last   : Real     from Standard)     
         returns Boolean is private;
 
+        RelativeEdgeDeflection(myclass;
+                               edge    : Edge    from TopoDS;
+                               defle   : Real    from Standard;
+                               dtotale : Real    from Standard;
+                               cdef    : out Real    from Standard)
+        ---Purpose: Returns computed relative deflection for edge
+          returns Real from Standard;
+
+        BoxMaxDimension(myclass;
+                        box    : in Box from Bnd;
+                        maxdim : out Real from Standard);
+        ---Purpose: Returns the maximal dimension of Bnd_Box
 
         InternalVertices
                (me         : mutable;
@@ -153,6 +168,16 @@ is
                    defedge: Real from Standard)
         is static private;
 
+        SetParallel (           me : mutable;
+                     theInParallel : Boolean from Standard);
+        ---Purpose:
+        -- Request algorithm to launch in multiple threads
+        -- to improve performance (should be supported by plugin).
+
+        IsParallel (me)
+            returns Boolean from Standard;
+        ---Purpose:
+        -- Returns the multi-threading usage flag.
 
 -- Output :
 
@@ -281,6 +306,7 @@ fields
       myDeflection   : Real                          from Standard;
       myDtotale      : Real                          from Standard;
       myWithShare    : Boolean                       from Standard;
+      myInParallel   : Boolean                       from Standard;
       myVertices     : DataMapOfVertexInteger        from BRepMesh;
       myEdges        : DataMapOfShapePairOfPolygon   from BRepMesh;
       myInternaledges: DataMapOfShapePairOfPolygon   from BRepMesh;

@@ -19,8 +19,12 @@
 #ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
 class StlMesh_Mesh;
 class OSD_Path;
+class Message_ProgressIndicator;
 
 
 //! This package contains the methods to be used in <br>
@@ -52,23 +56,23 @@ public:
   //! write the meshing in a file following the <br>
 //!         binary format of an STL file. <br>
 //!         Returns false if the cannot be opened; <br>
-  Standard_EXPORT   static  Standard_Boolean WriteBinary(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath) ;
+  Standard_EXPORT   static  Standard_Boolean WriteBinary(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
   //! write the meshing in a file following the <br>
 //!         Ascii  format of an STL file. <br>
 //!         Returns false if the cannot be opened; <br>
-  Standard_EXPORT   static  Standard_Boolean WriteAscii(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath) ;
+  Standard_EXPORT   static  Standard_Boolean WriteAscii(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
   //! This method will chwck if the file is a binary <br>
 //!         file or an AsciiFile testing  the 5 first <br>
 //!         characters of the file wich are :"solid" in an <br>
 //!         ascii file. If we do not find that word we assume <br>
 //!         that it is a binary file. <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadFile(const OSD_Path& aPath) ;
+  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadFile(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
   //! Read a meshing from a binary file <br>
 //!        Raises NoMoreObject from Standard if a statement <br>
 //!        does not contain the right number of tokens <br>
 //!        Raises TypeMisMatch if a token has not the good <br>
 //!        type (often real) <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadBinary(const OSD_Path& aPath) ;
+  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadBinary(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
   //! Read a meshing from a binary file <br>
 //!        Raises NoMoreObject from Standard if a statement <br>
 //!        does not contain the right number of tokens <br>
@@ -76,7 +80,7 @@ public:
 //!        type (often real) <br>
 //!        Raises MoMoreObject if a file is finished before <br>
 //!        having found the word endsolid; <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadAscii(const OSD_Path& aPath) ;
+  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadAscii(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
 
 
 

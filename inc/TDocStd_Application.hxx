@@ -34,11 +34,11 @@
 #ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
 #endif
-#ifndef _CDF_RetrievableStatus_HeaderFile
-#include <CDF_RetrievableStatus.hxx>
+#ifndef _PCDM_ReaderStatus_HeaderFile
+#include <PCDM_ReaderStatus.hxx>
 #endif
-#ifndef _CDF_StoreStatus_HeaderFile
-#include <CDF_StoreStatus.hxx>
+#ifndef _PCDM_StoreStatus_HeaderFile
+#include <PCDM_StoreStatus.hxx>
 #endif
 class Resource_Manager;
 class Standard_NoSuchObject;
@@ -172,21 +172,21 @@ public:
 //! In order not to override a version of aDoc which <br>
 //! is already in memory, this method can be made <br>
 //! to depend on the value returned by IsInSession. <br>
-  Standard_EXPORT     CDF_RetrievableStatus Open(const TCollection_ExtendedString& path,Handle(TDocStd_Document)& aDoc) ;
+  Standard_EXPORT     PCDM_ReaderStatus Open(const TCollection_ExtendedString& path,Handle(TDocStd_Document)& aDoc) ;
   //!  Save the  active document  in the file  <name> in the <br>
 //!           path <path> ; o verwrites  the file  if  it already exists. <br>
-  Standard_EXPORT     CDF_StoreStatus SaveAs(const Handle(TDocStd_Document)& aDoc,const TCollection_ExtendedString& path) ;
+  Standard_EXPORT     PCDM_StoreStatus SaveAs(const Handle(TDocStd_Document)& aDoc,const TCollection_ExtendedString& path) ;
   //! Save aDoc active document. <br>
 //! Exceptions: <br>
 //!  Standard_NotImplemented if the document <br>
 //! was not retrieved in the applicative session by using Open. <br>
-  Standard_EXPORT     CDF_StoreStatus Save(const Handle(TDocStd_Document)& aDoc) ;
+  Standard_EXPORT     PCDM_StoreStatus Save(const Handle(TDocStd_Document)& aDoc) ;
   //!  Save the  active document  in the file  <name> in the <br>
 //!           path <path>  .  overwrite  the file  if  it <br>
 //!          already exist. <br>
-  Standard_EXPORT     CDF_StoreStatus SaveAs(const Handle(TDocStd_Document)& aDoc,const TCollection_ExtendedString& path,TCollection_ExtendedString& theStatusMessage) ;
+  Standard_EXPORT     PCDM_StoreStatus SaveAs(const Handle(TDocStd_Document)& aDoc,const TCollection_ExtendedString& path,TCollection_ExtendedString& theStatusMessage) ;
   //! Save the document overwriting the previous file <br>
-  Standard_EXPORT     CDF_StoreStatus Save(const Handle(TDocStd_Document)& aDoc,TCollection_ExtendedString& theStatusMessage) ;
+  Standard_EXPORT     PCDM_StoreStatus Save(const Handle(TDocStd_Document)& aDoc,TCollection_ExtendedString& theStatusMessage) ;
 
 
 friend class TDocStd_Document;
