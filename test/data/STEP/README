@@ -1,2 +1,6 @@
 This files are from the CAX-IF forum:
 http://www.cax-if.org/library/index.html
+
+null-swept-curve.stp:
+  This is a sample STEP file to test for importing a surface of linear
+  extrusion with a null swept curve.
