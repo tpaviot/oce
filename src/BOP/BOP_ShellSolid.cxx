@@ -1249,7 +1249,7 @@ Standard_Boolean BOP_ShellSolid::CheckArgTypes() const
 //=======================================================================
   void BOP_ShellSolid::FillSectionEdges()
 {
-  Standard_Integer i, j, nF1, nF2,  aNbFFs, aNbS, aNbCurves, nSect;
+  Standard_Integer i, j, aNbFFs, aNbS, aNbCurves, nSect;
   //
   const BooleanOperations_ShapesDataStructure& aDS=myDSFiller->DS();
   const BOPTools_InterferencePool& anInterfPool=myDSFiller->InterfPool();
@@ -1261,9 +1261,6 @@ Standard_Boolean BOP_ShellSolid::CheckArgTypes() const
   aNbFFs=aFFs.Extent();
   for (i=1; i<=aNbFFs; ++i) {
     BOPTools_SSInterference& aFFi=aFFs(i);
-    //
-    nF1=aFFi.Index1();
-    nF2=aFFi.Index2();
     //
     // Old Section Edges
     const BOPTools_ListOfPaveBlock& aSectList=aFFi.PaveBlocks();

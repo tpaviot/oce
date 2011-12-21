@@ -176,7 +176,7 @@ static
   const BOPTools_PaveFiller& aPaveFiller=myDSFiller->PaveFiller();
   const BOPTools_CommonBlockPool& aCommonBlockPool=aPaveFiller.CommonBlockPool();
 
-  Standard_Integer i, aNbCB, nSpTaken, iBeg, iEnd;
+  Standard_Integer i, nSpTaken, iBeg, iEnd;
   TopAbs_ShapeEnum aType, aTypeArg1, aTypeArg2;
   BOPTools_ListIteratorOfListOfCommonBlock anItCB;
   //
@@ -200,7 +200,6 @@ static
     }
     //
     const BOPTools_ListOfCommonBlock& aLCB=aCommonBlockPool(aDS.RefEdge(i));
-    aNbCB=aLCB.Extent();
 
     anItCB.Initialize(aLCB);
     for (; anItCB.More(); anItCB.Next()) {

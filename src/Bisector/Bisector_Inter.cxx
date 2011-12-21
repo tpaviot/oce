@@ -328,13 +328,8 @@ void Bisector_Inter::NeighbourPerform(const Handle(Bisector_BisecCC)&  Bis1,
   // Changement ligne guide sur Bis2.
   BisTemp      = Bis2->ChangeGuide();
   Guide        = Bis2->Curve(2);
-#ifdef DEB
-  gp_Pnt2d P2S = Bis2->ValueAndDist(D2.FirstParameter(),U1,UMax,Dist);
-  gp_Pnt2d P2E = Bis2->ValueAndDist(D2.LastParameter() ,U1,UMin,Dist);
-#else
   Bis2->ValueAndDist(D2.FirstParameter(),U1,UMax,Dist);
   Bis2->ValueAndDist(D2.LastParameter() ,U1,UMin,Dist);
-#endif
   // Calcul du domaine d intersection sur la ligne guide.
   UMin = Max (D1.FirstParameter(),UMin);
   UMax = Min (D1.LastParameter() ,UMax);

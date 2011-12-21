@@ -43,7 +43,6 @@ int button ;
 #endif /*XW_PROTOTYPE*/
 {
 XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow ;
-XW_STATUS status ;
 XW_EVENTTYPE mask1=(XW_EVENTTYPE ) 0 ,mask2=(XW_EVENTTYPE ) 0 ;
 
         if( !Xw_isdefine_window(pwindow) ) {
@@ -69,25 +68,25 @@ XW_EVENTTYPE mask1=(XW_EVENTTYPE ) 0 ,mask2=(XW_EVENTTYPE ) 0 ;
 	switch (type) {
 
 	    case XW_WITHOUT_CURSOR :
-		status = Xw_set_internal_event(pwindow,mask1,NULL) ;
-		status = Xw_set_internal_event(pwindow,mask2,NULL) ;
+		Xw_set_internal_event(pwindow,mask1,NULL) ;
+		Xw_set_internal_event(pwindow,mask2,NULL) ;
 		break ;
 	    case XW_RUBBERLINE_CURSOR :
-		status = Xw_set_internal_event(pwindow,mask1,
+		Xw_set_internal_event(pwindow,mask1,
 							Xw_rubberline_cursor) ;
-		status = Xw_set_internal_event(pwindow,mask2,
+		Xw_set_internal_event(pwindow,mask2,
 							Xw_rubberline_cursor) ;
 		break ;
 	    case XW_RUBBERBAND_CURSOR :
-		status = Xw_set_internal_event(pwindow,mask1,
+		Xw_set_internal_event(pwindow,mask1,
 							Xw_rubberband_cursor) ;
-		status = Xw_set_internal_event(pwindow,mask2,
+		Xw_set_internal_event(pwindow,mask2,
 							Xw_rubberband_cursor) ;
 		break ;
 	    case XW_USERDEFINED_CURSOR :
-		status = Xw_set_internal_event(pwindow,mask1,
+		Xw_set_internal_event(pwindow,mask1,
 							Xw_userdefined_cursor) ;
-		status = Xw_set_internal_event(pwindow,mask2,
+		Xw_set_internal_event(pwindow,mask2,
 							Xw_userdefined_cursor) ;
 		break ;
 #ifndef DEB

@@ -632,9 +632,6 @@ void AIS_EqualDistanceRelation::ComputeTwoVerticesLength( const Handle( Prs3d_Pr
   }
   
   // size
-  Standard_Real arrsize = ArrowSize;
-  if (Abs(Val) <= confusion) arrsize =0.;
-
   if (AutomaticPos) {
    if (!samePoint) {
      gp_Pnt curpos((FirstAttach.XYZ()+SecondAttach.XYZ())*0.5);

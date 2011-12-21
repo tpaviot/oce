@@ -929,7 +929,6 @@ void AIS_AngleDimension::ComputeTwoEdgesNotNullAngle(const Handle(Prs3d_Presenta
   else d2 = l2->Lin().Direction();
   if (!isInfinite1) {
     Standard_Boolean In1(Standard_False);
-    Standard_Boolean In2(Standard_False);
     if ( !(Abs(d1.Angle(d2) - Abs(myVal)) <= Precision::Confusion())
 	 &&  (Abs(myVal) <  PI) ) {
       Standard_Real parcent1 = ElCLib::Parameter(l1->Lin(), myCenter);
@@ -948,7 +947,6 @@ void AIS_AngleDimension::ComputeTwoEdgesNotNullAngle(const Handle(Prs3d_Presenta
       }
       }
       if ( !In1) {
-	In2 = Standard_True;
 	d2.Reverse();
       }
     }
@@ -1267,11 +1265,6 @@ void AIS_AngleDimension::ComputeTwoEdgesNullAngle(const Handle(Prs3d_Presentatio
       tabdist(3) = tabdist(4) = 0.;
     }
     if ( SameLines ) {
-      Standard_Real dist1(RealLast());
-      if (!isInfinite1) dist1 = Max(tabdist(1),tabdist(2));
-      Standard_Real dist2(RealLast());
-      if (!isInfinite2) dist2 = Max(tabdist(3),tabdist(4));      
-      
       myFAttach = myCenter;
       mySAttach = myCenter;
       P1 = myFAttach;
@@ -1953,9 +1946,6 @@ void AIS_AngleDimension::ComputeConeAngleSelection(const Handle(SelectMgr_Select
  
   Standard_Boolean IsArrowOut = Standard_True;    //Is arrows inside or outside of the cone
   //Standard_Real PntOnMainAxis = 0;   //Is projection of aPosition inside of the cone = 0, above = 1, or below = -1
-  Standard_Boolean IsConeTrimmed = Standard_False; 
-
-  if( CircVmin.Radius() > 0.01 ) IsConeTrimmed = Standard_True;
 
   gp_Pnt AttachmentPnt;
   gp_Pnt OppositePnt;

@@ -1170,11 +1170,11 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
     }
 
     TopOpeBRepDS_Transition TFEe3; TopAbs_State TFEe3bef = TFEe3.Before(); TopAbs_State TFEe3aft = TFEe3.After();
-    TopAbs_Orientation oe3FORF = TopAbs_FORWARD; Standard_Boolean e3BoundFOR = Standard_False;
+    TopAbs_Orientation oe3FORF = TopAbs_FORWARD;
     if (ssif) {
       TFEe3 = ssie3->Transition();
       TFEe3bef = TFEe3.Before();
-      e3BoundFOR = FUN_tool_orientEinFFORWARD(e3,FOR,oe3FORF);	
+      FUN_tool_orientEinFFORWARD(e3,FOR,oe3FORF);	
     }
 
     if (FFinSDSO) {

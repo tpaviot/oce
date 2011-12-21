@@ -236,11 +236,7 @@
 
 
 //derivee seconde du triedre
-#ifdef DEB
-  gp_Vec DTDN = DTo.Crossed(DNormal);
-#else
   DTo.Crossed(DNormal);
-#endif
   Standard_Real TN2 = TN.SquareMagnitude();
 
   D2Normal.SetLinearForm(-2*ndn, dn, 

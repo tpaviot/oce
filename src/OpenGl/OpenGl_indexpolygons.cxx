@@ -1418,14 +1418,13 @@ doDraw:
 #ifdef G003
 static void draw_degenerates_as_points ( tel_indexpoly_data p ) {
 
-  Tint*      ind, *vis;
-  Tint       i, j, n, a, newList = 0;
+  Tint*      ind;
+  Tint       i, j, n, a;
   GLfloat    pt[ 3 ];
   tel_point  pv;
 
   pv  = p -> vertices;
   ind = p -> indices;
-  vis = p -> edge_vis;
 
   LightOff ();
 
@@ -1440,7 +1439,6 @@ static void draw_degenerates_as_points ( tel_indexpoly_data p ) {
     p -> d.degMode   = 3;
     p -> d.skipRatio = g_fSkipRatio;
     glNewList ( p -> d.dlist, GL_COMPILE_AND_EXECUTE );
-    newList = 1;
 doDraw:
     if ( g_fSkipRatio == 0.0F ) {
 

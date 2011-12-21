@@ -33,13 +33,11 @@ Prs2d_Diameter::Prs2d_Diameter( const Handle(Graphic2d_GraphicObject)& aGO,
    gp_Vec2d theVec( PTonCirc, aPnt2 );
    Standard_Real theDist = aPnt2.Distance( aPnt1 ),
                  theRad  = aCircle.Radius();
-   Standard_Boolean inside  = Standard_False;
    myInside=Standard_False;
    
    if ( theDist < theRad ) {
     aPnt1    = PTonCirc;
     theDist  = theRad;
-    inside   = Standard_True;
     myInside = Standard_True;
    }
 

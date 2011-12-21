@@ -254,7 +254,7 @@ const TopTools_ListOfShape& BRepAlgo_TopOpe::GetSectionEdgeSet()
   TopTools_MapOfShape ME;
   ME.Clear();
 
-  Standard_Integer i, j,  aNbFFs, aNbS, aNbCurves, nSect;
+  Standard_Integer i, j,  aNbFFs, aNbCurves, nSect;
     
   const BooleanOperations_ShapesDataStructure& aDS=myDSFiller->DS();
   const BOPTools_InterferencePool& anInterfPool=myDSFiller->InterfPool();
@@ -270,7 +270,6 @@ const TopTools_ListOfShape& BRepAlgo_TopOpe::GetSectionEdgeSet()
     //
     // Old Section Edges
     const BOPTools_ListOfPaveBlock& aSectList=aFFi.PaveBlocks();
-    aNbS=aSectList.Extent();
     BOPTools_ListIteratorOfListOfPaveBlock anIt(aSectList);
     for (; anIt.More();anIt.Next()) {
       const BOPTools_PaveBlock& aPB=anIt.Value();
@@ -291,7 +290,6 @@ const TopTools_ListOfShape& BRepAlgo_TopOpe::GetSectionEdgeSet()
     for (j=1; j<=aNbCurves; j++) {
       BOPTools_Curve& aBC=aBCurves(j);
       const BOPTools_ListOfPaveBlock& aSectEdges=aBC.NewPaveBlocks();
-      aNbS=aSectEdges.Extent();
       
       BOPTools_ListIteratorOfListOfPaveBlock aPBIt(aSectEdges);
       for (; aPBIt.More(); aPBIt.Next()) {

@@ -162,11 +162,8 @@ Standard_Integer ChFi3d_Builder::PerformTwoCornerbyInter(const Standard_Integer 
   // Otherwise the opposite face  
   // and the eventual intersection of 2 pcurves on this face are found.
 
-  ChFiDS_State Stat1,Stat2;
   Standard_Boolean isfirst1 = (Sens1 == 1);
   Standard_Boolean isfirst2 = (Sens2 == 1);
-  Stat1 = Corner1->Spine()->Status(isfirst1);
-  Stat2 = Corner2->Spine()->Status(isfirst2);
 /*#ifdef DEB
   Standard_Boolean evolcoin = ((Stat1 == ChFiDS_OnSame && Stat2 == ChFiDS_OnDiff) || 
 			       (Stat2 == ChFiDS_OnSame && Stat1 == ChFiDS_OnDiff));

@@ -186,15 +186,13 @@ void TopOpeBRep_FacesFiller::ProcessVPonclosingR(const TopOpeBRep_VPointInter& V
   
   // dummy if !<hasOOedge>
   Standard_Integer OOedgeIndex = 0; 
-  Standard_Boolean OOclosing,OOisrest; OOclosing = OOisrest = Standard_False;
   TopoDS_Edge OOedge;
   if ( hasOOedge ) {
     TopoDS_Shape OOe;
     if (on2edges) OOe = VP.Edge(OOShapeIndex);
     else          OOe = VP.EdgeON(OOShapeIndex);
     OOedge = TopoDS::Edge(OOe);
-    OOisrest = myDS->IsSectionEdge(OOedge);
-    OOclosing = TopOpeBRepTool_ShapeTool::Closed(OOedge,OOFace);
+    TopOpeBRepTool_ShapeTool::Closed(OOedge,OOFace);
     if (myDS->HasShape(OOedge)) OOedgeIndex = myDS->Shape(OOedge);
     else                        OOedgeIndex = myDS->AddShape(OOedge,OOShapeIndex);
   }

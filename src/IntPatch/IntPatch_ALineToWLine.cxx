@@ -621,7 +621,7 @@ static
   do { 
     Standard_Boolean RemoveVtxo, RemoveVtx;
     Standard_Integer vo, voo;
-    Standard_Real ponl, ponlo, ponloo, aDist13, aDist23;
+    Standard_Real ponl, ponlo, aDist13, aDist23;
     //
     APointHasBeenRemoved = Standard_False;
     RemoveVtxo = Standard_False;
@@ -647,7 +647,6 @@ static
 		  if(voo!=v && voo!=vo) {
 		    if(newparamvertex(voo)>=0.) { 
 		      const IntPatch_Point& Vtxoo = aline->Vertex(voo);
-		      ponloo = Vtxoo.ParameterOnLine();
 		      const gp_Pnt& aPoo=Vtxoo.Value();
 		      //
 		      aDist13=aP.Distance(aPoo);
@@ -920,10 +919,6 @@ void RecadreMemePeriode(const IntSurf_Quadric aQuad1,
 			const Standard_Real anu1,
 			const Standard_Real anu2) 
 { 
-  GeomAbs_SurfaceType aType1, aType2;
-  //
-  aType1=aQuad1.TypeQuadric();
-  aType2=aQuad2.TypeQuadric();
   //
   while(anu1-u1 > 5.0) {
     u1+=PI+PI;

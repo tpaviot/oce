@@ -104,12 +104,11 @@ union {
 }
 
 void Xw_Window::PrintError() {
-Standard_CString ErrorMessag ;
 Standard_Integer ErrorNumber ;
 Standard_Integer ErrorGravity ;
 
         status = XW_SUCCESS ;
-        ErrorMessag = Xw_get_error(&ErrorNumber,&ErrorGravity) ;
+        Xw_get_error(&ErrorNumber,&ErrorGravity) ;
         Xw_print_error() ;
 }
 
@@ -725,9 +724,8 @@ XW_RESIZETYPE state ;
 
 Standard_Boolean Xw_Window::DoMapping () const {
 int pxc,pyc,width,height;
-XW_WINDOWSTATE state;
 
-      state = Xw_get_window_position (MyExtendedWindow,&pxc,&pyc,&width,&height);
+      Xw_get_window_position (MyExtendedWindow,&pxc,&pyc,&width,&height);
 
       return IsMapped();
 }

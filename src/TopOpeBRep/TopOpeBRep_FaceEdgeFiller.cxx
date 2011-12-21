@@ -83,9 +83,6 @@ void TopOpeBRep_FaceEdgeFiller::Insert
                         FEINT.State();
     Standard_Real parE = FEINT.Parameter();
 
-#ifdef DEB
-    TopOpeBRepDS_Transition TFF =
-#endif
                                   FEINT.Transition(1,EEori); //  EEori bidon = EXTERNAL
     TopOpeBRepDS_Transition TEE = FEINT.Transition(2,FFori);
     TEE.Index(FFindex);

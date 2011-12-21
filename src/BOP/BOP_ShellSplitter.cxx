@@ -441,7 +441,7 @@ Standard_Boolean GetShells(TopTools_SequenceOfShape& Lface,
 			   TopTools_SequenceOfShape& ErrFaces) 
 {
   Standard_Boolean done = Standard_False;
-  Standard_Integer i, j, aNbLfaceLength;
+  Standard_Integer i, j;
 
   j=Lface.Length();
   if(!j) {
@@ -460,7 +460,6 @@ Standard_Boolean GetShells(TopTools_SequenceOfShape& Lface,
   j=1;
   //
   for(; i<=Lface.Length(); i++)  {
-    aNbLfaceLength=Lface.Length();
     TopTools_MapOfShape dtemp, rtemp;
     Standard_Integer nbbe=0, nbe = 0;
     
@@ -523,7 +522,6 @@ Standard_Boolean GetShells(TopTools_SequenceOfShape& Lface,
     if( nbe != 0 && nbbe != 0) {
       ErrFaces.Append(aF);
       Lface.Remove(i);
-      aNbLfaceLength=Lface.Length();
       j++;
       continue;
     }
@@ -560,7 +558,6 @@ Standard_Boolean GetShells(TopTools_SequenceOfShape& Lface,
       B.Add(nshell, aF);
       aMapFaceShells.Bind(aF, nshell);
       Lface.Remove(i);
-      aNbLfaceLength=Lface.Length();
       if(isMultiConnex && BRep_Tool::IsClosed(nshell)) {
         aSeqShells.Append(nshell);
         TopoDS_Shell nshellnext;
@@ -835,7 +832,6 @@ void CreateClosedShell(TopTools_SequenceOfShape& OpenShells,
     // 
     for(j=i+1; j<=OpenShells.Length(); j++)  {
       Standard_Integer nbedge =0;
-      Standard_Boolean isReversed = Standard_False;
       
       const TopoDS_Shape& anOpenShellj=OpenShells.Value(j);
 
@@ -866,13 +862,6 @@ void CreateClosedShell(TopTools_SequenceOfShape& OpenShells,
 	  }
 
           isClosedShell = Standard_True;
-
-	  TopAbs_Orientation anOrE2;
-	  anOrE2=aE2.Orientation();
-          if((anOrE2 == TopAbs_FORWARD  && bDireContains) || 
-	     (anOrE2 == TopAbs_REVERSED && bReveContains)) {
-            isReversed = Standard_True;
-	  }
           nbedge++;
         }
       }// for(; aExpF2.More() && !nbedge; aExpF2.Next())

@@ -767,13 +767,13 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       Standard_Integer iOOFace = myDS->Shape(OOFace);
 
       TopoDS_Edge edge,OOedge; Standard_Integer SIedgeIndex,OOedgeIndex;
-      Standard_Real paredge,OOparedge;
+      Standard_Real paredge;
       Standard_Integer onbound;
       if (SIErest) 
 	{edge = Erest;  SIedgeIndex = iErest; paredge = parRest; onbound = obRest; 
-	 OOedge = OOE;  OOedgeIndex = iOO;    OOparedge = OOpar;} 
+	 OOedge = OOE;  OOedgeIndex = iOO;    } 
       else         
-	{OOedge = Erest;OOedgeIndex = iErest; OOparedge = parRest;   onbound = obOO;
+	{OOedge = Erest;OOedgeIndex = iErest; onbound = obOO;
 	 edge = OOE;    SIedgeIndex = iOO;    paredge = OOpar;}
       
       // PVIndex :
@@ -807,7 +807,6 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       const TopOpeBRepDS_Transition& llt2 = FaceFaceTransition(2);
       TopOpeBRepDS_Transition Trans = (ShapeIndex == 1)? llt1 : llt2;
       Standard_Boolean TransUNK = Trans.IsUnknown();
-      TopAbs_Orientation Transori; if (!TransUNK) Transori = Trans.Orientation(TopAbs_IN); 
       
       TopOpeBRepDS_Transition transEdge; Standard_Boolean Tunk = Standard_True;
       if (!TransUNK) { //xpu281098 PRO12875(edge9,OOface11)

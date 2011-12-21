@@ -201,8 +201,8 @@ void Graphic2d_Image::FillAndDraw (const Handle(Graphic2d_Drawer)& aDrawer) cons
 
 Standard_ShortReal a,b;
 
-Standard_Integer LowerX, LowerY;
-Standard_Integer UpperX, UpperY;
+Standard_Integer LowerY;
+Standard_Integer UpperY;
 Standard_Integer Width, Height;
 Aspect_RGBPixel *pixels;
 
@@ -217,10 +217,7 @@ Standard_Real R, G, B;
         Width   = myImage->Width ();
         Height  = myImage->Height ();
 
-        LowerX  = myImage->LowerX ();
         LowerY  = myImage->LowerY ();
-
-        UpperX  = myImage->UpperX ();
         UpperY  = myImage->UpperY ();
 
         if (Height*Width <= Graphic2d_Image::SmallSize ()) {
@@ -275,9 +272,6 @@ Standard_Real R, G, B;
 void Graphic2d_Image::ComputeCenter(const Handle(Graphic2d_Drawer)& aDrawer,
                                     Standard_ShortReal& cx,
                                     Standard_ShortReal& cy) const {
-     Standard_Integer Width, Height;
-     Width = myImage->Width ();
-     Height = myImage->Height ();
      Standard_ShortReal dx = aDrawer->Convert(myImage->Width());
      Standard_ShortReal dy = aDrawer->Convert(myImage->Height());
 

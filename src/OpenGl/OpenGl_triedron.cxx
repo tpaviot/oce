@@ -647,10 +647,9 @@ TStatus call_zbuffer_triedron_redraw (
   GLfloat TriedronScale = (float)0.1 ;
   GLint   TriedronPosition = 0; /* def = Aspect_TOTP_CENTER */
 
-  GLdouble L, l, rayon ;
+  GLdouble L, rayon ;
   GLdouble minUV;
   int      NbFacettes = 12;
-  double   Angle;
   GLdouble TriedronCoord[3] = { 1.0, 0.0, 0.0 };
 
   GLuint fontBase = 0;
@@ -1070,9 +1069,7 @@ TStatus call_zbuffer_triedron_redraw (
   glPopAttrib();
 
   /* fleches au bout des axes (= cones de la couleur demandee) */
-  l = L - L/4. ; /* distance a l'origine */
   rayon = L/30. ; /* rayon de la base du cone */
-  Angle = 2. * M_PI/ NbFacettes;
 
   glDeleteLists(startList, 4); 
 

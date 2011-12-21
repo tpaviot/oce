@@ -296,7 +296,6 @@ ExecuteStructureDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   register Tint     display = 1;
   register Tint     highl = TOff;
   register TelType  elem;
-  Tint              vp;
   CMN_KEY           key;
 #ifdef G003
   static GLboolean s_fWire            = GL_FALSE;
@@ -353,7 +352,6 @@ ExecuteStructureDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   }  /* end if */
 #endif  /* G003 */
 
-  vp = key.data.ldata;
   for( i = 0; i < num; i++, node = node->next )
   {
     elem = node->elem.el;

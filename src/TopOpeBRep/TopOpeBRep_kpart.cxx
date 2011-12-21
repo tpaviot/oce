@@ -332,7 +332,6 @@ Standard_Boolean FUNBREP_topowalki
     lastinin = lastinin && (lasttransLine.After() == TopAbs_IN);
   }
   
-  Standard_Boolean LIdefinie = Standard_False;
   Standard_Boolean LITdefinie = Standard_False;
   Standard_Boolean LITonsort = Standard_False;
   TopOpeBRepDS_Transition LIT;
@@ -340,7 +339,6 @@ Standard_Boolean FUNBREP_topowalki
   Standard_Boolean nointerf = DSCIL.IsEmpty();
   if (!nointerf) {
     I = DSCIL.Last();
-    LIdefinie = Standard_True;
     LIT = I->Transition();
     LITdefinie = ! LIT.IsUnknown();
     if (LITdefinie) LITonsort = (LIT.Orientation(TopAbs_OUT) == TopAbs_FORWARD);
@@ -612,8 +610,6 @@ Standard_Boolean FUNBREP_topogline
   }
   Standard_Boolean onsort = (transLine.Orientation(TopAbs_OUT) == TopAbs_FORWARD);
   Standard_Boolean lastdefinie = ! lasttransLine.IsUnknown();
-  Standard_Boolean lastonsort = Standard_False;
-  if (lastdefinie) lastonsort = (lasttransLine.Orientation(TopAbs_OUT) == TopAbs_FORWARD);
 
   Standard_Boolean LITdefinie = Standard_False;
   Standard_Boolean LITonsort = Standard_False;

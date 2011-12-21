@@ -434,11 +434,10 @@ static void draw_tmesh (
 {
 
   Tint              i, newList = 0;
-  tel_point         pv, pfn, pvn;
+  tel_point         pv, pvn;
   tel_colour        pfc, pvc;
   tel_texture_coord pvt;
 
-  pfn = p -> fnormals;
   pfc = p -> fcolours;
   pv  = p -> vertices;
   pvc = p -> vcolours;

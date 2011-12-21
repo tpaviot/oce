@@ -40,7 +40,7 @@ Handle(Dynamic_Parameter) Materials_MaterialDefinition::Switch(
   const Standard_CString atype,
   const Standard_CString avalue) const
 {
-  Standard_Integer fr,i;
+  Standard_Integer i;
   char value1[80],value2[80],value3[80];
   Handle(Dynamic_Parameter) parameter;
   Handle(Dynamic_ObjectParameter) objectparameter;
@@ -51,7 +51,7 @@ Handle(Dynamic_Parameter) Materials_MaterialDefinition::Switch(
       for(i=0; i<80; i++)value2[i] = 0;
       for(i=0; i<80; i++)value3[i] = 0;
       //      fr = sscanf(avalue,"%s%s%s",&value1,&value2,&value3);
-      fr = sscanf(avalue,"%s%s%s",value1,value2,value3);
+      sscanf(avalue,"%s%s%s",value1,value2,value3);
       
       Handle(Materials_Color) pcolor =
 	new Materials_Color(Quantity_Color(atof(value1),

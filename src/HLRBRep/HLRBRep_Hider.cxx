@@ -325,7 +325,6 @@ void HLRBRep_Hider::Hide(const Standard_Integer FI,
 
 	Standard_Boolean foundHidden = Standard_False;
 	
-	Standard_Integer aStartLevel;
 	if (!ILHidden.IsEmpty()) {    
 
 	  HLRBRep_EdgeIList::ProcessComplex // complex transition on ILHidden
@@ -335,7 +334,6 @@ void HLRBRep_Hider::Hide(const Standard_Integer FI,
 	    level = myDS->HidingStartLevel(E,ed,ILHidden);  // **************
 	  	  HLRAlgo_ListIteratorOfInterferenceList It(ILHidden); 
 	  
-	  aStartLevel = level;
 	  while(It.More()) {           // suppress multi-inside Intersections
 	                               // ***********************************
 	  

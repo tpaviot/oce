@@ -70,13 +70,12 @@ call_togl_triedron_display
 {
 
   CMN_KEY_DATA  data;
-  TStatus status;
 
 #ifdef PRINT
   printf("call_togl_triedron_display  r = %f, g = %f, b = %f", r, g, b);
   printf(", aScale = %f, aPosition = %d \n", aScale, aPosition );
 #endif
-  status = call_triedron_init (aview, aPosition, r, g, b, aScale, asWireframe);
+  call_triedron_init (aview, aPosition, r, g, b, aScale, asWireframe);
 
   /* Mise a jour de l'update_mode */
   data.ldata = TNotDone;

@@ -486,7 +486,7 @@ void AppParCurves_LeastSquare::Perform(const math_Vector& Parameters) {
     math_Vector myTABB(1, Nincx, 0.0);
     
     MakeTAA(TheAA, mytab);
-    Standard_Integer Error = DACTCL_Decompose(TheAA, Index);
+    DACTCL_Decompose(TheAA, Index);
     
     Standard_Integer kk2;
     for (j = 1; j <= B2.ColNumber(); j++) {
@@ -495,7 +495,7 @@ void AppParCurves_LeastSquare::Perform(const math_Vector& Parameters) {
 	myTABB(kk2) = mytab(i, j);
 	kk2++;
       }
-      Error = DACTCL_Solve(TheAA, myTABB, Index);
+      DACTCL_Solve(TheAA, myTABB, Index);
       
       i2 = 1;
       for (k = resinit; k <= resfin; k++) {
@@ -854,7 +854,7 @@ void AppParCurves_LeastSquare::Perform(const math_Vector&  Parameters,
 
   math_Vector myTABB(1, Nincx, 0.0);
 
-  Standard_Integer Error = DACTCL_Decompose(AA, Index);
+  DACTCL_Decompose(AA, Index);
   
   Standard_Integer kk2;
   for (j = 1; j <= B2.ColNumber(); j++) {
@@ -864,7 +864,7 @@ void AppParCurves_LeastSquare::Perform(const math_Vector&  Parameters,
       kk2++;
     }
     
-    Error = DACTCL_Solve(AA, myTABB, Index);
+    DACTCL_Solve(AA, myTABB, Index);
     
     i2 = 1;
     for (k = resinit; k <= resfin; k++) {

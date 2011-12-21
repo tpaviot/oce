@@ -65,11 +65,7 @@ void Extrema_ExtElCS::Perform(const gp_Lin& C,
   myIsPar = Standard_False;
 
   gp_Ax3 Pos = S.Position();
-#ifdef DEB
-  gp_Pnt O = Pos.Location();
-#else
   Pos.Location();
-#endif
   Standard_Real radius = S.Radius();
   Extrema_ExtElC Extrem(gp_Lin(Pos.Axis()), C, Precision::Angular());
   if (Extrem.IsParallel()) {

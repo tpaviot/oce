@@ -111,10 +111,7 @@ static void FUN_test_draw(TCollection_AsciiString aa,
   Standard_Boolean coldef = Standard_False;
   TopExp_Explorer ex(F,TopAbs_EDGE);
   Draw_Color col;
-#ifdef DEB
-  Draw_Color savecol =
-#endif
-                       DrawTrSurf_CurveColor(Draw_Color(Draw_rouge));
+  DrawTrSurf_CurveColor(Draw_Color(Draw_rouge));
   for (; ex.More(); ex.Next()) 
     if (E.IsEqual(ex.Current())) 
       {col = DBRep_ColorOrientation(ex.Current().Orientation()); 
@@ -778,10 +775,7 @@ static Standard_Integer normal(Draw_Interpretor& di, Standard_Integer n, const c
 #endif
   Standard_Real dist=0.; gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_projPonF(p,f,uv,dist);
   if (!ok) {di<<"projection failed"<<"\n"; return 1;}
-#ifdef DEB
-  gp_Vec ngf =
-#endif
-               FUN_tool_nggeomF(uv,f);
+  FUN_tool_nggeomF(uv,f);
   TCollection_AsciiString aa("ngS"); 
 #ifdef DRAW
   FUN_tool_draw(aa,p,ngf,length);
@@ -810,7 +804,6 @@ static Standard_Integer curvature(Draw_Interpretor& di, Standard_Integer n, cons
   
   Standard_Real tol = Precision::Confusion();
   BRepLProp_SLProps props(BS,2,tol);
-  Standard_Real Cur1=0., Cur2=0.;
   gp_Dir Norm,D1,D2;  
   for (Standard_Integer i = 1; i <= npnts; i++) {
     gp_Pnt p = intcs.Point(i);
@@ -821,14 +814,11 @@ static Standard_Integer curvature(Draw_Interpretor& di, Standard_Integer n, cons
     if (!curdef) {di<<"!IsCurvatureDefined"<<"\n"; continue;}
     Standard_Boolean umbilic = props.IsUmbilic();
     if (umbilic) { 
-      Cur1 = Cur2 = props.MeanCurvature();
       D1 = gp_Dir(0,0,1);
       D2 = gp_Dir(0,1,0);   
       di<<"umbilic";
     }
     else {
-      Cur1 = props.MaxCurvature();
-      Cur2 = props.MinCurvature();
       props.CurvatureDirections(D1,D2);
     }
     Norm = gp_Dir(D1^D2); 

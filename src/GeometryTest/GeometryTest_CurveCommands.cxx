@@ -406,7 +406,7 @@ static Standard_Integer project (Draw_Interpretor& di,
   Standard_Real U1,U2,V1,V2;
   GS->Bounds(U1,U2,V1,V2);
 
-  Standard_Boolean Verif = Standard_False, Extent = Standard_False;
+  Standard_Boolean Verif = Standard_False;
   Standard_Integer NbPoints=0;
 
   Standard_Integer index = 4;
@@ -418,7 +418,6 @@ static Standard_Integer project (Draw_Interpretor& di,
       Standard_Real dU = p * (U2 - U1) / 100.;
       Standard_Real dV = p * (V2 - V1) / 100.;
       U1 -= dU; U2 += dU; V1 -= dV; V2 += dV;
-      Extent = Standard_True;
     }
     else if ( a[index][1] == 'v') {
       Verif = Standard_True;
@@ -750,7 +749,7 @@ static Standard_Integer bisec (Draw_Interpretor& di,
 
 static Standard_Integer movelaw (Draw_Interpretor& di, Standard_Integer n, const char** a)
 {
-  Standard_Integer dimension,
+  Standard_Integer 
   ii,
   condition=0,
   error_status ;
@@ -762,7 +761,6 @@ static Standard_Integer movelaw (Draw_Interpretor& di, Standard_Integer n, const
   u = atof(a[2]);
   x = atof(a[3]);
   tolerance = 1.0e-5 ;
-  dimension = 2 ;
   if (n < 5) {
       return 1 ;
   }
@@ -872,7 +870,6 @@ static Standard_Integer crvpoints (Draw_Interpretor& di, Standard_Integer /*n*/,
   Draw::Set(a[1], aDrCrv);
 
   Standard_Real dmax = 0., ufmax = 0., ulmax = 0.;
-  Standard_Integer imax = 0;
 
   for(i = 1; i < nbp; ++i) {
     Standard_Real uf = aKnots(i);
@@ -892,7 +889,6 @@ static Standard_Integer crvpoints (Draw_Interpretor& di, Standard_Integer /*n*/,
 	dmax = d;
 	ufmax = uf;
 	ulmax = ul;
-	imax = i;
       }
     }
   }

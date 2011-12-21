@@ -86,7 +86,7 @@ static gp_Pnt2d EvalPnt2d( const gp_Pnt& P, const gp_Cone& C)
   Standard_Real X = OP.Dot(gp_Vec(C.Position().XDirection()));
   Standard_Real Y = OP.Dot(gp_Vec(C.Position().YDirection()));
   Standard_Real Z = OP.Dot(gp_Vec(C.Position().Direction()));
-  Standard_Real U,V;
+  Standard_Real U;
 
   if ( Abs(X) > Precision::PConfusion() ||
        Abs(Y) > Precision::PConfusion() ) {
@@ -95,8 +95,6 @@ static gp_Pnt2d EvalPnt2d( const gp_Pnt& P, const gp_Cone& C)
   else {
     U = 0.;
   }
-
-  V = Z / Cos(C.SemiAngle());
 
   return gp_Pnt2d( U, Z);
 }
