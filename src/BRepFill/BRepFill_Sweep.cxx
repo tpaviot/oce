@@ -2221,7 +2221,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 	 }
        }
 
-      if (ipath == 1)
+      if (ipath == 1) {
 	if (uclose && (isec == NbLaw)) {
 	  Vertex(isec+1, 1) =  Vertex(1, 1);
 	}  
@@ -2241,6 +2241,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 	    VEdge(isec, 1) = NullEdge(Vertex(isec, 1)); 
 	  }
 	}
+      }
 
       if (uclose && (isec == NbLaw)) {
 	Vertex(isec+1, ipath+1) = Vertex(1, ipath+1);

@@ -1112,18 +1112,20 @@ static void ChoixUV(const TopoDS_Edge& Last,
     if (surf.IsUPeriodic())
       if ((fabs(p2d.Y() - plst.Y()) <= toll) || 
         ((surf.IsVPeriodic())             && 
-        (fabs(fabs(p2d.Y() - plst.Y()) - surf.VPeriod()) <= toll)))
+        (fabs(fabs(p2d.Y() - plst.Y()) - surf.VPeriod()) <= toll))) {
         if (fabs(p2d.X() - plst.X() - surf.UPeriod()) <= toll)
           p2d.SetX(p2d.X() - surf.UPeriod());
         else if (fabs(plst.X() - p2d.X() - surf.UPeriod()) <= toll)
           p2d.SetX(p2d.X() + surf.UPeriod());
+      }
 
     if (surf.IsVPeriodic())
-      if (fabs(p2d.X() - plst.X()) <= toll)
+      if (fabs(p2d.X() - plst.X()) <= toll) {
         if (fabs(p2d.Y() - plst.Y() - surf.VPeriod()) <= toll)
           p2d.SetY(p2d.Y() - surf.VPeriod());
         else if (fabs(plst.Y() - p2d.Y() - surf.VPeriod()) <= toll)
           p2d.SetY(p2d.Y() + surf.VPeriod());
+      }
 
     tol = BRep_Tool::Tolerance(vtx);
     tol = Max(surf.UResolution(tol), surf.VResolution(tol));

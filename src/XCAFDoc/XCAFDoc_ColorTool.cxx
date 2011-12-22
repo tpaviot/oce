@@ -444,7 +444,7 @@ Standard_Boolean XCAFDoc_ColorTool::SetInstanceColor (const TopoDS_Shape& theSha
     return Standard_False;
   Handle(XCAFDoc_GraphNode) aSHUO;
   // set the SHUO structure for this component if it is not exist
-  if ( !ShapeTool()->FindSHUO( aLabels, aSHUO ) )
+  if ( !ShapeTool()->FindSHUO( aLabels, aSHUO ) ) {
     if (aLabels.Length() == 1) {
       // set color directly for component as NAUO
       SetColor(aLabels.Value(1), color, type);
@@ -452,6 +452,7 @@ Standard_Boolean XCAFDoc_ColorTool::SetInstanceColor (const TopoDS_Shape& theSha
     }
     else if ( !IsCreateSHUO ||  !ShapeTool()->SetSHUO( aLabels, aSHUO ) )
       return Standard_False;
+  }
   TDF_Label aSHUOLabel = aSHUO->Label();
   SetColor( aSHUOLabel, color, type );
   return Standard_True;

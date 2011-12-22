@@ -2048,7 +2048,7 @@ Discretise(const Handle(GeomPlate_HArray1OfSequenceOfReal)& PntInter,
 		    // pour sortir de la boucle sans stocker le point	 
 		  }
 	      else
-		{ if (l+1>=NbPtInter) 
+		{ if (l+1>=NbPtInter) {
 		    // on a parcouru tout le tableau : Le point 
 		    // n'appartient pas a un interval point commun 
 		    if (NbPtG1G1!=0) 
@@ -2083,6 +2083,7 @@ Discretise(const Handle(GeomPlate_HArray1OfSequenceOfReal)& PntInter,
 		      { myPlateCont->ChangeValue(i).Append(Inter);
 			// on ajoute le point
 		      }
+		  }
 		}
 	      }
 	  }

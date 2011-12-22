@@ -581,11 +581,12 @@ static Standard_Integer hidesel
     {
       Handle( MeshVS_MeshEntityOwner ) anOwner =
         Handle( MeshVS_MeshEntityOwner )::DownCast( aContext->SelectedOwner() );
-      if( !anOwner.IsNull() )
+      if( !anOwner.IsNull() ) {
         if( anOwner->Type()==MeshVS_ET_Node )
           aHiddenNodes->ChangeMap().Add( anOwner->ID() );
         else
           aHiddenElements->ChangeMap().Add( anOwner->ID() );
+      }
     }
     aContext->ClearSelected();
     aMesh->SetHiddenNodes( aHiddenNodes );
@@ -626,11 +627,12 @@ static Standard_Integer showonly
     {
       Handle( MeshVS_MeshEntityOwner ) anOwner =
         Handle( MeshVS_MeshEntityOwner )::DownCast( aContext->SelectedOwner() );
-      if( !anOwner.IsNull() )
+      if( !anOwner.IsNull() ) {
         if( anOwner->Type()==MeshVS_ET_Node )
           aHiddenNodes->ChangeMap().Remove( anOwner->ID() );
         else
           aHiddenElements->ChangeMap().Remove( anOwner->ID() );
+      }
     }
     aMesh->SetHiddenNodes( aHiddenNodes );
     aMesh->SetHiddenElems( aHiddenElements );
