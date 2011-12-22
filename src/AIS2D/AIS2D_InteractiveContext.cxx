@@ -348,9 +348,9 @@ void AIS2D_InteractiveContext::EraseMode(
 
   if ( !myObjects.IsBound( anIObj ) ) return;
   
-  if ( anIObj->HasDisplayMode() ) 
+  if ( anIObj->HasDisplayMode() ) {
     if ( anIObj->DisplayMode() == aMode ) return;
-  else if ( myDisplayMode == aMode) return;
+  } else if ( myDisplayMode == aMode) return;
   Handle(AIS2D_GlobalStatus) GStatus = myObjects( anIObj );
   if ( GStatus->GraphicStatus() != AIS2D_DS_Displayed ) return;
   if ( GStatus->IsDModeIn( aMode ) ) {}
