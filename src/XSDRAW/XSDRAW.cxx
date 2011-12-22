@@ -118,10 +118,7 @@ void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
 {
   char mess[100];
   sprintf (mess,command,varname);
-#ifdef DEB
-  IFSelect_ReturnStatus stat = 
-#endif
-    thepilot->Execute (mess);
+  thepilot->Execute (mess);
   return 1;  // stat ?
 }
 

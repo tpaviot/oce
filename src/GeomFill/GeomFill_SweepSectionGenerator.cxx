@@ -27,8 +27,7 @@
 
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
-#endif
-#ifdef DEB
+
 static Standard_Boolean Affich     = Standard_False;
 static Standard_Integer NbSECTIONS = 0;
 #endif
@@ -256,11 +255,6 @@ void GeomFill_SweepSectionGenerator::Perform(const Standard_Boolean Polynomial)
   myPolynomial = Polynomial;
 
   // eval myNbSections.
-#ifdef DEB
-  Standard_Integer Deg = myPath->Degree();
-#else
-  myPath->Degree();
-#endif
   Standard_Integer NSpans = myPath->NbKnots()-1;
 
   myNbSections = 21 * NSpans;

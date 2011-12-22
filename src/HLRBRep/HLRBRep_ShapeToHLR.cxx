@@ -86,10 +86,6 @@ HLRBRep_ShapeToHLR::Load(const Handle(HLRTopoBRep_OutLiner)& S,
 
   // Create the data structure
   Handle(HLRBRep_Data) DS = new HLRBRep_Data (nbVert, nbEdge, nbFace);
-#ifdef DEB
-  HLRBRep_Array1OfEData& ED = 
-#endif
-    DS->EDataArray ();
   HLRBRep_EdgeData* ed = NULL; 
   if(nbEdge != 0) ed = &(DS->EDataArray().ChangeValue(1));
 //  ed++;

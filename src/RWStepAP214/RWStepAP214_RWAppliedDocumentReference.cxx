@@ -21,11 +21,7 @@ void  RWStepAP214_RWAppliedDocumentReference::ReadStep
   // --- inherited field : assigned_document
   
   Handle(StepBasic_Document) adoc;
-#ifdef DEB
-  Standard_Boolean stat1 = 
-#endif
-    data->ReadEntity
-      (num, 1,"assigned_document", ach, STANDARD_TYPE(StepBasic_Document), adoc);
+  data->ReadEntity(num, 1,"assigned_document", ach, STANDARD_TYPE(StepBasic_Document), adoc);
   
   // --- inherited field : source ---
 

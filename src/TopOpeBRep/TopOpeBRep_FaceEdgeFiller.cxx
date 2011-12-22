@@ -63,10 +63,7 @@ void TopOpeBRep_FaceEdgeFiller::Insert
 
   // --- Add <FF,EE> in BDS
   Standard_Integer FFindex = BDS.AddShape(FF,1);
-#ifdef DEB
-  Standard_Integer EEindex =
-#endif
-                             BDS.AddShape(EE,2);
+  BDS.AddShape(EE,2);
 
   // --- get list of interferences connected to edges <FF>,<EE>
   TopOpeBRepDS_ListOfInterference& EIL1 = BDS.ChangeShapeInterferences(FF);
@@ -77,10 +74,6 @@ void TopOpeBRep_FaceEdgeFiller::Insert
 
   for (; FEINT.MorePoint(); FEINT.NextPoint() ) {
     gp_Pnt2d      pUV; FEINT.UVPoint(pUV);
-#ifdef DEB
-    TopAbs_State  sta =
-#endif
-                        FEINT.State();
     Standard_Real parE = FEINT.Parameter();
 
                                   FEINT.Transition(1,EEori); //  EEori bidon = EXTERNAL

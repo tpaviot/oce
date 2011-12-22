@@ -429,7 +429,6 @@
 #ifdef DEB
 static Standard_Integer DoTrace = Standard_False; 
 static Standard_Integer DoError = Standard_False; 
-static Standard_Integer IndexPlusOnePerCentThree [] = { 1 , 2 , 0 };
 #endif
 //=======================================================================
 //function : HLRBRep_PolyAlgo

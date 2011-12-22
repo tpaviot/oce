@@ -623,10 +623,7 @@ TopoDS_Edge ChFi2d_Builder::BuildNewEdge(const TopoDS_Edge& E1,
   TopoDS_Edge anEdge = makeEdge;
   anEdge.Orientation(E1.Orientation());
 //  anEdge.Location(E1.Location());
-#ifdef DEB
-  BRepLib_EdgeError error = 
-#endif
-    makeEdge.Error();
+  makeEdge.Error();
   return anEdge;
 }
 

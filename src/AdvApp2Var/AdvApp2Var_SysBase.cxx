@@ -944,7 +944,7 @@ int macrmsg_(const char *,//crout,
   
   /* Local variables */
   static integer inum;
-  static char cfm[80], cln[3];
+  static char cln[3];
   
 
 /* ***********************************************************************

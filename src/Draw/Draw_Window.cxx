@@ -751,7 +751,7 @@ Standard_Boolean Draw_Window::Save (const char* theFileName) const
 
 void ProcessEvent(Draw_Window& win, XEvent& xev)
 {
-  Standard_Integer X,Y,button,lenk;
+  Standard_Integer X,Y,button;
   KeySym keysym;
   XComposeStatus stat;
   char chainekey[10];
@@ -778,7 +778,7 @@ void ProcessEvent(Draw_Window& win, XEvent& xev)
     break;
 
   case KeyPress :
-    lenk = XLookupString(&(xev.xkey),
+    XLookupString(&(xev.xkey),
                          chainekey,
                          10,
                          &keysym,

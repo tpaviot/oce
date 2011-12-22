@@ -1513,15 +1513,14 @@ doDraw:
 
 static void draw_degenerates_as_bboxs ( tel_indexpoly_data p ) {
 
-  Tint*     ind, *vis;
-  Tint      i, j, n, a, newList = 0;
+  Tint*     ind;
+  Tint      i, j, n, a;
   GLfloat   minp[ 3 ] = { FLT_MAX, FLT_MAX, FLT_MAX };
   GLfloat   maxp[ 3 ] = { FLT_MIN, FLT_MIN, FLT_MIN };
   tel_point pv;
 
   pv  = p -> vertices;
   ind = p -> indices;
-  vis = p -> edge_vis;
 
   LightOff ();
 
@@ -1536,7 +1535,6 @@ static void draw_degenerates_as_bboxs ( tel_indexpoly_data p ) {
     p -> d.degMode = 4;
 
     glNewList ( p -> d.dlist, GL_COMPILE_AND_EXECUTE );
-    newList = 1;
 doDraw:
     for ( i = 0, j = 0, a = 0; i < p -> num_bounds; ++i ) {
 

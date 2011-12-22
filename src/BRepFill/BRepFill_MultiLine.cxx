@@ -39,7 +39,7 @@
 #include <DrawTrSurf.hxx>
 #endif
 
-#ifdef DEB
+#ifdef DRAW
 static Standard_Boolean AffichCurve = Standard_False;
 static Standard_Integer NbProj = 1;
 #endif

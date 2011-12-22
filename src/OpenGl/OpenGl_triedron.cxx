@@ -640,7 +640,6 @@ TStatus call_zbuffer_triedron_redraw (
 
   GLdouble TriedronAxeX[3] = { 1.0, 0.0, 0.0 };
   GLdouble TriedronAxeY[3] = { 0.0, 1.0, 0.0 };
-  GLdouble TriedronAxeZ[3] = { 0.0, 0.0, 1.0 };
   GLdouble TriedronOrigin[3] = { 0.0, 0.0, 0.0 };
   GLfloat TriedronColor[3] = { 1.0, 1.0, 1.0 }; /* def = blanc */
 
@@ -742,10 +741,6 @@ TStatus call_zbuffer_triedron_redraw (
   TriedronAxeY[0] = TriedronOrigin[0] + 0.0;
   TriedronAxeY[1] = TriedronOrigin[1] + L ;
   TriedronAxeY[2] = TriedronOrigin[2] + 0.0;
-
-  TriedronAxeZ[0] = TriedronOrigin[0] + 0.0;
-  TriedronAxeZ[1] = TriedronOrigin[1] + 0.0;
-  TriedronAxeZ[2] = TriedronOrigin[2] + L ;
 
   /* Check position in the ViewPort */
   glGetDoublev( GL_MODELVIEW_MATRIX,  (GLdouble *) modelMatrix );

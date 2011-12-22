@@ -30,7 +30,6 @@
 //  Utilisation de Visit
   Standard_Integer nb = thegraph.Size();
   for (Standard_Integer i = 1; i <= nb; i ++) {
-    Standard_Integer visited;
     thenow = 0;
     if (thegraph.IsPresent(i)) Visit(i);
   }

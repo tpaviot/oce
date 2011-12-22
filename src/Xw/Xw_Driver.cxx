@@ -110,12 +110,17 @@ union {
 }
 
 void Xw_Driver::PrintError() {
+#ifndef PRO12934
 Standard_CString ErrorMessag ;
+#endif
 Standard_Integer ErrorNumber ;
 Standard_Integer ErrorGravity ;
  
         status = XW_SUCCESS ;
-        ErrorMessag = Xw_get_error(&ErrorNumber,&ErrorGravity) ;
+#ifndef PRO12934
+        ErrorMessag = 
+#endif
+          Xw_get_error(&ErrorNumber,&ErrorGravity) ;
 #ifdef PRO12934
         Xw_print_error() ;
 #else

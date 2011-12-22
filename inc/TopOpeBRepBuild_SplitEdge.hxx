@@ -36,11 +36,6 @@ void TopOpeBRepBuild_Builder::SplitEdge1(const TopoDS_Shape& Eoriented,
 {
   // work on a FORWARD edge <Eforward>
 
-#ifdef DEB
-  TopAbs_Orientation Eori =
-#endif
-                            Eoriented.Orientation();
-
   TopoDS_Shape Eforward = Eoriented; 
   Eforward.Orientation(TopAbs_FORWARD);
 
@@ -66,8 +61,6 @@ void TopOpeBRepBuild_Builder::SplitEdge1(const TopoDS_Shape& Eoriented,
   TopTools_ListOfShape LE1,LE2;
   LE1.Append(Eforward);
   FindSameDomain(LE1,LE2);
-  Standard_Integer n1 = LE1.Extent();
-  Standard_Integer n2 = LE2.Extent();
 
 #ifdef DEB
   if(tSPS){GdumpSAMDOM(LE1, (char *) "1 : ");}

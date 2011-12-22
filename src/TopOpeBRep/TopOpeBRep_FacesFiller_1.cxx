@@ -231,10 +231,6 @@ static Standard_Boolean FUN_findTF(const TopOpeBRepDS_PDataStructure pDS,
     if (!OOdone) return Standard_False;
 
     const TopoDS_Edge& E   = TopoDS::Edge(pDS->Shape(iE));
-#ifdef DEB
-    const TopoDS_Face& F   =
-#endif
-                     TopoDS::Face(pDS->Shape(iF));
     const TopoDS_Face& OOF = TopoDS::Face(pDS->Shape(iOOF));
 
     Standard_Real f,l; FUN_tool_bounds(E,f,l);
@@ -734,10 +730,7 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
     Standard_Integer iOO = myDS->AddShape(OOE,OOrank);
 
     Standard_Real OOpar; 
-#ifdef DEB
-    Standard_Boolean okOO =
-#endif
-               VP.ParonE(OOE,OOpar);
+    VP.ParonE(OOE,OOpar);
  
     // xpu091198 : 1d interf done in EdgesFiller processing (cto cylcong *)     
     Standard_Boolean sdmeds = FUN_ds_sdm((*myDS),Erest,OOE);
@@ -975,8 +968,8 @@ void TopOpeBRep_FacesFiller::FillLineVPonR()
   //----------------------------------------------------------------------
   
 #ifdef DEB
-  Standard_Boolean trcd = Standard_False;
 #ifdef DRAW
+  Standard_Boolean trcd = Standard_False;
   if (trcd) FUN_DrawMap(myDataforDegenEd);
 #endif
 #endif
@@ -1185,10 +1178,6 @@ void TopOpeBRep_FacesFiller::StoreCurveInterference(const Handle(TopOpeBRepDS_In
   if ( myDSCIndex == 0 ) {
     TopOpeBRepDS_Curve DSC;
     myDSCIndex = myDS->AddCurve(DSC);
-    
-#ifdef DEB
-    const TopOpeBRepDS_Curve& CCC = myDS->Curve(myDSCIndex);
-#endif
     
 #ifdef DEB
     if (TopOpeBRepDS_GettraceDSF() || TopOpeBRepDS_GettraceDSNC()) 
