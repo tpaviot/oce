@@ -189,9 +189,8 @@
   const TopoDS_Edge& TopOpeBRepBuild_VertexInfo::CurrentOut () 
 {
 
-  Standard_Integer i, aNbOut, aNbPassed ;
+  Standard_Integer i, aNbOut;
   aNbOut =myLocalEdgesOut.Extent();
-  aNbPassed=myEdgesPassed.Extent();
   
   TopTools_IndexedMapOfOrientedShape aMapPassed;
   TopTools_ListIteratorOfListOfShape anIt(myEdgesPassed);

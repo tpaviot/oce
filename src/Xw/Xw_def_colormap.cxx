@@ -946,12 +946,11 @@ int nmap;
 //		  unsigned long pixel;
 		  color.red = color.green = color.blue = 0xFFFF;
 #ifdef TEST
-		  char *serror;
 		  Xw_print_error();
 		  if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,True) ;
               	  status = XAllocColor(_CDISPLAY,cinfo->colormap,&color);
 		  if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,False) ;
-              	  serror = Xw_get_error(&error,&gravity);
+              	  Xw_get_error(&error,&gravity);
               	  if( status && (error < 1000) ) {
 #else
               	  if( XAllocColor(_CDISPLAY,cinfo->colormap,&color) ) {

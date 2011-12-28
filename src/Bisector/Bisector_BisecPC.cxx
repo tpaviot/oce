@@ -588,7 +588,7 @@ gp_Vec2d Bisector_BisecPC::DN (const Standard_Real     U,
 Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
 					     const Standard_Real U2) const
 {
-  Standard_Real Dist1,Dist2,DistMid,U11,U22; 
+  Standard_Real Dist1,DistMid,U11,U22; 
 #ifndef DEB
   Standard_Real UMid = 0.;
 #else
@@ -598,7 +598,6 @@ Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
   Standard_Real DistMax2 = distMax*distMax;
   U11 = U1; U22 = U2;
   Dist1 = Distance(U11);
-  Dist2 = Distance(U22);
   
   while ((U22 - U11) > Tol) {
     UMid    = 0.5*( U22 + U11);
@@ -609,7 +608,6 @@ Standard_Real Bisector_BisecPC::SearchBound (const Standard_Real U1,
     }
     else {
       U22    = UMid;
-      Dist2 = DistMid;
     }
   }
   return UMid;

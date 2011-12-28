@@ -24,7 +24,6 @@ XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow ;
 int xc,yc,width,height ;
 XW_WINDOWSTATE state ;
 XW_DOUBLEBUFFERMODE dbmode ;
-XW_STATUS status ;
 XW_RESIZETYPE mode = XW_TOR_UNKNOWN ;
 int xleft,ytop,xright,ybottom,mask = 0 ;
 
@@ -86,7 +85,7 @@ int xleft,ytop,xright,ybottom,mask = 0 ;
 	    dbmode = Xw_get_double_buffer(pwindow) ;
 	    _DRAWABLE = 0 ;
 	    if( _PIXMAP  || _NWBUFFER > 0 ) Xw_close_pixmap(awindow) ;
-	    status = Xw_set_double_buffer(pwindow,dbmode) ;
+	    Xw_set_double_buffer(pwindow,dbmode) ;
 	} 
 
 #ifdef  TRACE_RESIZE_WINDOW

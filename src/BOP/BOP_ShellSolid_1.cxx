@@ -81,12 +81,9 @@ static
   BOPTools_InterferencePool* pIntrPool=(BOPTools_InterferencePool*)&myDSFiller->InterfPool();
   BOPTools_CArray1OfSSInterference& aFFs=pIntrPool->SSInterferences();
   //
-  Standard_Integer i, aNbCurves, nF2,  nE, iRankF1;
-  //
-  iRankF1=aDS.Rank(nF1);
+  Standard_Integer i, aNbCurves, nE;
   //
   BOPTools_SSInterference& aFF=aFFs(iFF);
-  nF2=aFF.OppositeIndex(nF1);
   //
   BOPTools_SequenceOfCurves& aSC=aFF.Curves();
   aNbCurves=aSC.Length();
@@ -318,7 +315,7 @@ static
   BOPTools_PaveFiller* pPaveFiller=(BOPTools_PaveFiller*)&aPF;
   BOPTools_CommonBlockPool& aCBPool=pPaveFiller->ChangeCommonBlockPool();
   //
-  Standard_Integer iRankF1, iRankF2, nF2, nSpEF2, nEF2,  nFace;
+  Standard_Integer iRankF2, nF2, nSpEF2, nEF2,  nFace;
   TopExp_Explorer anExp2;
   TopAbs_Orientation anOrEF2;
   //
@@ -327,7 +324,6 @@ static
   //
   const TopoDS_Face& aF2=TopoDS::Face(aDS.Shape(nF2));
   //
-  iRankF1=aDS.Rank(nF1);
   iRankF2=aDS.Rank(nF2);
   //
   // EF2\F1 Processing

@@ -67,11 +67,10 @@ static void TraceRevol(const Standard_Real t,
 {
   gp_Vec T, N, B;
   gp_Pnt P;
-  Standard_Boolean Ok;
   gp_Ax3 Rep(gp::Origin(), gp::DZ(), gp::DX());
 
   Curve->D0(t, P);
-  Ok = Law->D0(t, T, N, B);
+  Law->D0(t, T, N, B);
 
   gp_Mat M(N.XYZ(), B.XYZ(), T.XYZ());
   M *= Trans;

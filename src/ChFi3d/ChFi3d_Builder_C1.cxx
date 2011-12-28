@@ -3814,10 +3814,9 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
     if(!CV1.IsOnArc() && !CV2.IsOnArc())
       Standard_Failure::Raise("Corner intersmore : no point on arc");
     else if(CV1.IsOnArc() && CV2.IsOnArc()){
-      Standard_Boolean sur1 = 0, sur2 = 0;
+      Standard_Boolean sur2 = 0;
       for(ex.Init(CV1.Arc(),TopAbs_VERTEX); ex.More(); ex.Next()){
 	if(Vtx.IsSame(ex.Current())) {
-	  sur1 = 1;
 	  break;
 	}
       }

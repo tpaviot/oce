@@ -75,7 +75,7 @@ void RemoveFaces(const TopoDS_Shape& theComp, const BOPTools_PDSFiller& theDSFil
     aCompMap.Add(anExp.Current());
   }
 
-  Standard_Integer aNbFFs=aFFs.Extent(), i, j, aNbS, aNbCurves, nSect;
+  Standard_Integer aNbFFs=aFFs.Extent(), i, j, aNbCurves, nSect;
 
     for (i=1; i<=aNbFFs; ++i) {
       BOPTools_SSInterference& aFFi=aFFs(i);
@@ -83,7 +83,6 @@ void RemoveFaces(const TopoDS_Shape& theComp, const BOPTools_PDSFiller& theDSFil
       //
       // Old Section Edges
       const BOPTools_ListOfPaveBlock& aSectList=aFFi.PaveBlocks();
-      aNbS=aSectList.Extent();
       BOPTools_ListIteratorOfListOfPaveBlock anIt(aSectList);
       for (; anIt.More();anIt.Next()) {
 	const BOPTools_PaveBlock& aPB=anIt.Value();
@@ -112,7 +111,6 @@ void RemoveFaces(const TopoDS_Shape& theComp, const BOPTools_PDSFiller& theDSFil
       for (j=1; j<=aNbCurves; j++) {
 	BOPTools_Curve& aBC=aBCurves(j);
 	const BOPTools_ListOfPaveBlock& aSectEdges=aBC.NewPaveBlocks();
-	aNbS=aSectEdges.Extent();
 	
 	BOPTools_ListIteratorOfListOfPaveBlock aPBIt(aSectEdges);
 	for (; aPBIt.More(); aPBIt.Next()) {

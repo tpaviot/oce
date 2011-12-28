@@ -108,13 +108,13 @@ Standard_Real V3d_PerspectiveView::Angle()const  {
 void V3d_PerspectiveView::SetPerspective(const Standard_Real Angle, const Standard_Real UVRatio,
                                          const Standard_Real ZNear, const Standard_Real ZFar)
 {
-  Standard_Real Umin,Vmin,Umax,Vmax,Xrp,Yrp,Zrp,du,dv;
+  Standard_Real Umin,Vmin,Umax,Vmax,Yrp,Zrp,du,dv;
 
   Viewer_BadValue_Raise_if ( ZNear <= 0. || ZFar <= 0. || ZNear >= ZFar, "V3d_PerspectiveView::SetPerspective, bad distances");
   Viewer_BadValue_Raise_if ( Angle <= 0. || Angle >= Standard_PI, "V3d_PerspectiveView::SetAngle, bad angle");
 
   Graphic3d_Vertex PRP = MyViewMapping.ProjectionReferencePoint() ;
-  Xrp = Yrp = Zrp = 0.;
+  Yrp = Zrp = 0.;
 
   PRP.SetCoord(Zrp, Yrp, Zrp);
   MyViewMapping.SetProjectionReferencePoint(PRP);

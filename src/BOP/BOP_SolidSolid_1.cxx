@@ -95,7 +95,6 @@ void BOP_SolidSolid::PrepareFaceSplits()
   BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger aFFMap;
   BOP_BuilderTools::DoMap(aFFs, aFFMap);
   TopTools_ListOfShape aListOfNewFaces;
-  TopAbs_Orientation anOriF1 = TopAbs_FORWARD;
 
   TColStd_DataMapOfIntegerListOfInteger& aMapOfFaceSplits = myDSFiller->ChangeSplitFacePool();
   
@@ -107,7 +106,6 @@ void BOP_SolidSolid::PrepareFaceSplits()
     nF1 = aFFMap.FindKey(i);
     TopoDS_Face aF1 = TopoDS::Face(aDS.Shape(nF1));
     
-    anOriF1 = aF1.Orientation();
     iRank   = aDS.Rank(nF1);
 
     TopTools_DataMapOfShapeInteger aMapOfEdgeIndex;

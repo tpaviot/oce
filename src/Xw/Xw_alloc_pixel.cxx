@@ -84,7 +84,6 @@ XW_STATUS status = XW_ERROR;
         if( _CCLASS == PseudoColor ) {
 	  XColor color;
 	  int error,gravity;
-	  char *serror;
 	  color.pixel = pixel;
           color.red = (unsigned short) (r*65535.);
           color.green = (unsigned short) (g*65535.);
@@ -95,7 +94,7 @@ XW_STATUS status = XW_ERROR;
           if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,True);
           XStoreColor(_CDISPLAY,_CINFO.colormap,&color);
           if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,False);
-          serror = Xw_get_error(&error,&gravity);
+          Xw_get_error(&error,&gravity);
           if( error < 1000 ) status = XW_SUCCESS;
 	}
 
@@ -135,13 +134,12 @@ XW_STATUS status = XW_ERROR;
 
         if( _CCLASS == PseudoColor ) {
 	  int error,gravity;
-	  char *serror;
 
           Xw_print_error();
           if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,True);
           XFreeColors(_CDISPLAY,_CINFO.colormap,&pixel,1,0);
           if( !Xw_get_trace() ) Xw_set_synchronize(_CDISPLAY,False);
-          serror = Xw_get_error(&error,&gravity);
+          Xw_get_error(&error,&gravity);
           if( error < 1000 ) status = XW_SUCCESS;
 	}
 

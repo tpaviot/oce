@@ -107,7 +107,6 @@ CurveDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   CMN_KEY        key;
   TEL_COLOUR     colour;
   int            i, j;
-  GLfloat          reseau[4][3];
 
   d = (tel_curve_data)data.pdata;
 
@@ -133,11 +132,6 @@ CurveDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
     key.data.pdata = &colour;
     TsmGetAttri( 1, &key );
   }
-
-  /* Recopie des points du reseau : Pb prototypage en c ansi */
-  for( i = 0; i < 4; i++ )
-    for( j = 0; i < 3; i++ )
-      reseau[i][j] = d->vertices[i].xyz[j];
 
   /* Determination du type de courbe */
   switch( d->type )

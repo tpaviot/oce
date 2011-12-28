@@ -74,7 +74,6 @@ static Standard_Real DoInterpolation(	const TColStd_Array1OfReal&    NXF,
   }
   else {
   	Standard_Integer i;
-  	Standard_Boolean BResult;
   	TColStd_Array1OfReal V(1,4), R(1,4) ;
   	TColStd_Array2OfReal M( 1, 4, 1, 4 ) ;
   	TColStd_Array2OfReal MINV( 1, 4, 1, 4 ) ;
@@ -85,7 +84,7 @@ static Standard_Real DoInterpolation(	const TColStd_Array1OfReal&    NXF,
 		V(i)   = NZF(i) ;
   	}
 
-  	BResult = Aspect::Inverse (M, MINV);
+  	Aspect::Inverse (M, MINV);
 
   	// R = M * V ;
 	R (1)	= M (1, 1) * V (1) + M (1, 2) * V (2)

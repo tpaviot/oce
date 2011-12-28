@@ -180,9 +180,6 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	      //-- et le dernier point enregistre dans SeqPnt2d
 	      //-- On cherche a eloigner le premier point de l edge courant 
 	      //-- du dernier point enregistre
-#ifdef DEB
-	      gp_Pnt2d Pnt2dDebutEdgeCourant=
-#endif
 	      C.Value(u);
 
 	      //Standard_Real Baillement2dU=0;

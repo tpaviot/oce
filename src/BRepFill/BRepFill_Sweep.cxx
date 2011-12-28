@@ -900,20 +900,16 @@ static Standard_Boolean Filling(const TopoDS_Shape& EF,
 		     f2, l2, C3);
   C2 = C3;
 
-  Standard_Boolean pointu_f,  pointu_l;
 //  P1 = BT.Pnt(Vf);
   P1 = BRep_Tool::Pnt(Vf);
 //  P2 = BT.Pnt(V1);
   P2 = BRep_Tool::Pnt(V1);
 //  pointu_f = Vf.IsSame(V1) || (P1.Distance(P2) < BT.Tolerance(Vf));
-  pointu_f = Vf.IsSame(V1) || (P1.Distance(P2) < BRep_Tool::Tolerance(Vf));
 //  P1 = BT.Pnt(Vl);
   P1 = BRep_Tool::Pnt(Vl);
 //  P2 = BT.Pnt(V2);
   P2 = BRep_Tool::Pnt(V2);
 //  pointu_l = Vl.IsSame(V2) || (P1.Distance(P2) < BT.Tolerance(Vl));
-  pointu_l = Vl.IsSame(V2) || (P1.Distance(P2) < BRep_Tool::Tolerance(Vl));
-
 
   P2d.SetCoord(0.,f1);
   L = new (Geom2d_Line) (P2d, gp::DX2d());

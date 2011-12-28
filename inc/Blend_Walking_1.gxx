@@ -168,8 +168,6 @@ Standard_Boolean Blend_Walking::PerformFirstSection
 
   Pos1 = Pos2 = TopAbs_UNKNOWN;
 
-  Blend_Status State;
-
   param = Pdep;
   Func.Set(param);
 
@@ -193,7 +191,7 @@ Standard_Boolean Blend_Walking::PerformFirstSection
     return Standard_False;
   }
 
-  State = TestArret(Func, Blend_OK, Standard_False);
+  TestArret(Func, Blend_OK, Standard_False);
 #ifdef DEB
   if (Blend_GettraceDRAWSECT()){
     Drawsect(surf1,surf2,sol,param,Func);

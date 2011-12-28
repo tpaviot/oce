@@ -200,13 +200,11 @@ void Graphic3d_GraphicDevice::SetGraphicDriver ()
 
 Standard_Boolean Graphic3d_GraphicDevice::ShrIsDefined (Standard_CString& aShr) const {
 
-  char *glso, *glul, *pkno;
+  char *glso;
   const char *glshr, *casroot;
 
   casroot = getenv("CASROOT");
   glso = getenv("CSF_GraphicShr");
-  glul = getenv("GRAPHICHOME");
-  pkno = getenv("CSF_Graphic3dLib");
 
   if (! BAD(glso)) {
     glshr = getenv("CSF_GraphicShr");

@@ -34,12 +34,10 @@ call_togl_set_environment
  char * adisplay
  )
 {
-  int status;
-
   if (call_thedisplay == NULL) {
     if (strlen (adisplay) != 0)
       call_util_osd_putenv ((Tchar*)"DISPLAY", (Tchar*)adisplay);
-    status = call_tox_open_display ();
+    call_tox_open_display ();
   }
   return;
 }

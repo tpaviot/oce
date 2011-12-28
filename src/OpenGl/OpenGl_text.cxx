@@ -187,7 +187,6 @@ TextDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   GLdouble        obj3X, obj3Y, obj3Z;
   GLdouble        winx1, winy1, winz1;
   GLdouble        winx, winy, winz;
-  GLint           status;
 
 #ifdef TEXT_DEGENER
   if ( g_nDegenerateModel > 0 && g_fSkipRatio == 1. )
@@ -283,31 +282,31 @@ TextDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
       objrefX = (float)d->attach_pt.xyz[0];   
       objrefY = (float)d->attach_pt.xyz[1];   
       objrefZ = (float)d->attach_pt.xyz[2];
-      status = gluProject (objrefX, objrefY, objrefZ, modelMatrix, projMatrix, viewport,
+      gluProject (objrefX, objrefY, objrefZ, modelMatrix, projMatrix, viewport,
         &winx1, &winy1, &winz1);
 
       winx = winx1;
       winy = winy1-sDescent;
       winz = winz1+0.00001;     
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &objX, &objY, &objZ);
 
       winx = winx1 + sWidth;
       winy = winy1-sDescent;
       winz = winz1+0.00001; /* il vaut mieux F+B / 1000000 ? */     
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &obj1X, &obj1Y, &obj1Z);
 
       winx = winx1 + sWidth;
       winy = winy1 + sAscent;
       winz = winz1+0.00001;     
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &obj2X, &obj2Y, &obj2Z);
 
       winx = winx1;
       winy = winy1+ sAscent;
       winz = winz1+0.00001;   
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &obj3X, &obj3Y, &obj3Z);
 
       glColor3fv( colours.rgb );
@@ -323,32 +322,32 @@ TextDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
       objrefX = (float)d->attach_pt.xyz[0];   
       objrefY = (float)d->attach_pt.xyz[1];   
       objrefZ = (float)d->attach_pt.xyz[2];
-      status = gluProject (objrefX, objrefY, objrefZ, modelMatrix, projMatrix, viewport,
+      gluProject (objrefX, objrefY, objrefZ, modelMatrix, projMatrix, viewport,
         &winx1, &winy1, &winz1);
 
       winx = winx1+1;
       winy = winy1+1;
       winz = winz1+0.00001;     
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &objX, &objY, &objZ);
 
       glColor3fv( colours.rgb );
       textRender->RenderText( d->sdata, fontBase, 0, (float)objX, (float)objY,(float)objZ );
       winx = winx1-1;
       winy = winy1-1;
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &objX, &objY, &objZ);
 
       textRender->RenderText( d->sdata, fontBase, 0, (float)objX, (float)objY,(float)objZ );
       winx = winx1-1;
       winy = winy1+1;
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &objX, &objY, &objZ); 
 
       textRender->RenderText( d->sdata, fontBase, 0, (float)objX, (float)objY,(float)objZ );
       winx = winx1+1;
       winy = winy1-1;
-      status = gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
+      gluUnProject (winx, winy, winz, modelMatrix, projMatrix, viewport,
         &objX, &objY, &objZ);
       textRender->RenderText( d->sdata, fontBase, 0, (float)objX, (float)objY,(float)objZ );
       break;

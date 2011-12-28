@@ -363,7 +363,7 @@ static void TreatSDSeams (const TopoDS_Edge& aSpE1Seam11,
   BOPTools_PaveFiller* pPaveFiller=(BOPTools_PaveFiller*) &aPaveFiller;
   BOPTools_CommonBlockPool& aCBPool=pPaveFiller->ChangeCommonBlockPool();
   //
-  Standard_Integer aBid=0, nE1, nE2, aNbSpON, nSp1, nSp2, iRankF1;
+  Standard_Integer aBid=0, nE1, nE2, aNbSpON, nSp1, iRankF1;
   Standard_Real aT1, aT2, aT, aTs; /*, U, V;*/ 
   Standard_Boolean aFlag;
   TColStd_ListOfInteger aLs;
@@ -425,7 +425,6 @@ static void TreatSDSeams (const TopoDS_Edge& aSpE1Seam11,
 	// aPB2
 	BOPTools_PaveBlock& aPB2=aCB.PaveBlock2(nE1);
 	nE2=aPB2.OriginalEdge();
-	nSp2=aPB2.Edge();
 	const TopoDS_Edge& anE2=TopoDS::Edge(aDS.GetShape(nE2));
 	//
 	IntTools_Context& aContext=pPaveFiller->ChangeContext();
@@ -1285,7 +1284,7 @@ void TreatSDSeams (const TopoDS_Edge& aSpE1Seam11,
 			 TopoDS_Edge& aSS)
 				      
 {
-  Standard_Real a, b, aD1121, aD1122, aTol=1.e-7;
+  Standard_Real a, b, aD1121, aTol=1.e-7;
   Handle(Geom2d_Curve) aC2DSeam11, aC2DSeam21, aC2DSeam22;
   gp_Pnt2d aP2D11, aP2D21, aP2D22;
 
@@ -1299,7 +1298,6 @@ void TreatSDSeams (const TopoDS_Edge& aSpE1Seam11,
   aC2DSeam22->D0(aT2, aP2D22);
 
   aD1121=aP2D11.Distance(aP2D21);
-  aD1122=aP2D11.Distance(aP2D22);
   
   aSS=aSpE1Seam22;
   if (aD1121<aTol) {

@@ -32,7 +32,7 @@
   for (Standard_Integer i = 1; i <= nb; i ++) {
     Standard_Integer visited;
     thenow = 0;
-    if (thegraph.IsPresent(i)) visited = Visit(i);
+    if (thegraph.IsPresent(i)) Visit(i);
   }
 //  Resultat dans thelist
   Reset();

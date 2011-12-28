@@ -455,7 +455,7 @@
 					       Standard_Real& tRoot)
 {
   Standard_Real tm, t1, t2;
-  Standard_Integer anIsProj1, anIsProj2, anIsProjm;
+  Standard_Integer anIsProj1, anIsProjm;
   //
   // Root can be on the ends of [tt1, tt2]
   Standard_Integer anOldErrorStatus=myErrorStatus;
@@ -480,7 +480,6 @@
   t1=tt1;  
   t2=tt2;
   anIsProj1=ff1;
-  anIsProj2=ff2;
   
   while (1) {
     if (fabs(t1-t2) < myEpsT) {
@@ -492,7 +491,6 @@
     
     if (anIsProjm != anIsProj1) {
       t2=tm;
-      anIsProj2=anIsProjm;
     }
     else {
       t1=tm;
@@ -787,7 +785,7 @@
   //
   //
   Standard_Boolean aVFlag1, aVFlag2, aGeomFlag1, aGeomFlag2;
-  Standard_Real Df2m2, Dm2l2, Df2l2, df2m2, dm2l2, df2l2, df1m1, dm1l1, df1l1;
+  Standard_Real Df2m2, Dm2l2, Df2l2, df2m2, dm2l2, df2l2, df1l1;
   Standard_Real tV1, tV2;
   //
   // parametric differences for C2
@@ -823,8 +821,6 @@
   }
   //
   // geometric distances for C1
-  df1m1=aPf1.Distance(aPm1);
-  dm1l1=aPm1.Distance(aPl1);
   df1l1=aPf1.Distance(aPl1);
   //
   // if geometric distances between boundaries is less than myCriteria
@@ -950,7 +946,7 @@
   void IntTools_EdgeEdge::IsIntersection (const Standard_Real ta, 
 					  const Standard_Real tb) 
 {
-  Standard_Integer i, aNb, pri;
+  Standard_Integer i, aNb;
   Standard_Real t, f;
   GeomAbs_CurveType aCT1, aCT2;
   IntTools_CArray1OfReal anArgs, aFunc;
@@ -1006,7 +1002,7 @@
   }
   //
   // Prepare values of arguments for the interval [ta, tb]
-  pri=IntTools::PrepareArgs (myCFrom, tb, ta, myDiscret, myDeflection, anArgs);
+  IntTools::PrepareArgs (myCFrom, tb, ta, myDiscret, myDeflection, anArgs);
   aNb=anArgs.Length();
 
   aFunc.Resize(aNb);
@@ -1030,7 +1026,7 @@
 					     const IntTools_CArray1OfReal& f)  
 {
   Standard_Integer i, n, k;
-  Standard_Real fr, tr, anEpsNull;
+  Standard_Real tr, anEpsNull;
   IntTools_CArray1OfReal fd;
   TColStd_SequenceOfReal aTSeq, aFSeq;
   
@@ -1077,7 +1073,6 @@
     //aa
     if (fd1*fd2 < 0.) {
       tr=FindSimpleRoot(2, t1, t2, fd1);
-      fr=DistanceFunction(tr);
       myPar1=tr;
       myParallel=Standard_False;
       break;
@@ -1085,7 +1080,6 @@
     
     if (!bF1 && bF2) {
       tr=t2;
-      fr=fd2;
       myPar1=tr;
       myParallel=Standard_False;
       break;
@@ -1093,7 +1087,6 @@
     
     if (bF1 && !bF2) {
       tr=t1;
-      fr=fd1;
       myPar1=tr;
       myParallel=Standard_False;
       break;
@@ -1341,7 +1334,7 @@
   Standard_Real aTFR1, aTLR1, aTFR2, aTLR2;
   Standard_Real aTL1, aTL2, aTC1, aTC2;
   Standard_Real aRC, aDLC, aD2, aC2, aTLx, aTCx;
-  GeomAbs_CurveType aTFrom, aTTo;
+  GeomAbs_CurveType aTFrom;
   gp_Circ aCirc;
   gp_Lin  aLine;
   gp_Pnt aPC, aPLx, aPCx;
@@ -1351,7 +1344,6 @@
   (aCP.Ranges2())(1).Range(aTFR2, aTLR2);
   //
   aTFrom=myCFrom.GetType();
-  aTTo  =myCTo.GetType();
   //
   aTL1=aTFR1;
   aTL2=aTLR1;
@@ -1527,13 +1519,12 @@
      (myCFrom.GetType() == GeomAbs_Circle && myCTo.GetType() == GeomAbs_Line))
   {
     Standard_Real aRadius;
-    GeomAbs_CurveType aTFrom, aTTo;
+    GeomAbs_CurveType aTFrom;
     gp_Circ aCirc;
     gp_Lin  aLine;
     gp_Pnt aPCenter, aPOnLine;
 
     aTFrom=myCFrom.GetType();
-    aTTo  =myCTo.GetType();
     
     if (aTFrom==GeomAbs_Circle) {
       aCirc=myCFrom.Circle();

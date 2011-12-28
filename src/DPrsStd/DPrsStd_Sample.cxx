@@ -177,10 +177,6 @@ static void Sample()
     P->Display(Standard_True); 
     TPrsStd_AISViewer::Update(ShapeLabel);  //Update presenation of the attribute in a viewer's window
 
-    //Getting Standard_GUID of attribute with which TPrsStd_AISPresentation attribute is associeted
-
-    Standard_GUID guid = P->GetDriverGUID();
-
     //Setting a color to the displayd attribute
 
     P->SetColor(Quantity_NOC_RED);

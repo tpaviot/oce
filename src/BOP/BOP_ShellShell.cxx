@@ -216,7 +216,7 @@
   //
   // vars
   Standard_Boolean bIsTouchCase, bIsTouch;
-  Standard_Integer i, aNb, j, aNbj, iFF, nF1, iRank;
+  Standard_Integer i, aNb, j, aNbj, iFF, nF1;
   TopTools_ListOfShape aListOfNewFaces;
   TopTools_IndexedMapOfShape anEMap;
   TopAbs_Orientation anOriF1;
@@ -234,7 +234,6 @@
     const TopoDS_Face& aF1=TopoDS::Face(aDS.Shape(nF1));
     
     anOriF1=aF1.Orientation();
-    iRank=aDS.Rank(nF1);
     
     myFace=aF1;
     myFace.Orientation(TopAbs_FORWARD);
@@ -273,8 +272,6 @@
 	BOPTools_SSInterference& aFF=aFFs(iFF);
 	bIsTouch=aFF.IsTangentFaces();
 	if (bIsTouch) {
-	  Standard_Integer nF2;
-	  nF2=aFF.OppositeIndex(nF1);
 	  AddINON2DPartsSh(nF1, iFF, aWES);
 	}
       }

@@ -44,14 +44,14 @@ void OpenGl_GraphicDriver::Marker (const Graphic3d_CGroup& ACGroup, const Graphi
   amarker.y = float (APoint.Y ());
   amarker.z = float (APoint.Z ());
 
-  Standard_Real AMR, AMG, AMB, R, G, B;
+  Standard_Real AMR, R, G, B;
   Aspect_TypeOfMarker AMType;
   Standard_Real AMScale, AScale;
 
   // Sauvegarde des valeurs initiales
   AMR = R = Standard_Real (MyCGroup.ContextMarker.Color.r);
-  AMG = G = Standard_Real (MyCGroup.ContextMarker.Color.g);
-  AMB = B = Standard_Real (MyCGroup.ContextMarker.Color.b);
+  G = Standard_Real (MyCGroup.ContextMarker.Color.g);
+  B = Standard_Real (MyCGroup.ContextMarker.Color.b);
   AMType  = Aspect_TypeOfMarker (MyCGroup.ContextMarker.MarkerType);
   AMScale = AScale = Standard_Real (MyCGroup.ContextMarker.Scale);
 
@@ -295,14 +295,14 @@ void OpenGl_GraphicDriver::MarkerSet (const Graphic3d_CGroup& ACGroup,
   almarkers.NbMarkers = int (ListVertex.Length ());
   almarkers.Markers = (CALL_DEF_MARKER *) &ListVertex (Lower);
 
-  Standard_Real AMR, AMG, AMB, R, G, B;
+  Standard_Real AMR, R, G, B;
   Aspect_TypeOfMarker AMType;
   Standard_Real AMScale, AScale;
 
   // Sauvegarde des valeurs initiales
   AMR = R = Standard_Real (MyCGroup.ContextMarker.Color.r);
-  AMG = G = Standard_Real (MyCGroup.ContextMarker.Color.g);
-  AMB = B = Standard_Real (MyCGroup.ContextMarker.Color.b);
+  G = Standard_Real (MyCGroup.ContextMarker.Color.g);
+  B = Standard_Real (MyCGroup.ContextMarker.Color.b);
   AMType  = Aspect_TypeOfMarker (MyCGroup.ContextMarker.MarkerType);
   AMScale = AScale = Standard_Real (MyCGroup.ContextMarker.Scale);
 

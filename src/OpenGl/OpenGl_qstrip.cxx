@@ -504,13 +504,12 @@ static void draw_qstrip (
 {
 
   Tint              i, m, newList = 0;
-  Tint              nf, nv, nr, nc;
+  Tint              nr, nc;
   Tint              lighting_model;
-  tel_point         pv, pfn, pvn;
+  tel_point         pv, pvn;
   tel_colour        pfc, pvc;
   tel_texture_coord pvt;
 
-  pfn = p -> fnormals;
   pfc = p -> fcolours;
   pv  = p -> vertices;
   pvc = p -> vcolours;
@@ -538,8 +537,6 @@ static void draw_qstrip (
     lighting_model = front_lighting_model;
     nr             = p -> num_rows;
     nc             = p -> num_columns;
-    nf             = nr * nc;
-    nv             = ( nr + 1 ) * ( nc + 1 );
 #ifdef G003
 #ifdef BUC60876
     if ( !g_fAnimation )
@@ -1079,7 +1076,6 @@ static void draw_edges (
   Tint      edge_type, line_type_preserve;
   Tfloat    edge_width, line_width_preserve;
   GLboolean texture_on;
-  tel_point pv;     
 #ifdef G003
   if ( interior_style != TSM_HIDDENLINE && !forceDraw ) 
   {
@@ -1093,8 +1089,6 @@ static void draw_edges (
     if ( k.data.ldata == TOff ) return;
 
   }  /* end if */
-
-  pv = p -> vertices;
 
   LightOff ();
   texture_on = IsTextureEnabled ();

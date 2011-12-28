@@ -120,15 +120,9 @@ void IntAna_Quadric::NewCoefficients( Standard_Real& _CXX,Standard_Real& _CYY,St
   Standard_Real Cxx,Cyy,Czz,Cxy,Cxz,Cyz,Cx,Cy,Cz,Ccte;            
 
 
-#ifdef DEB  
-  gp_Dir DirX = Axis.XDirection();
-  gp_Dir DirY = Axis.YDirection();
-  gp_Dir DirZ = Axis.Direction();
-#else
   Axis.XDirection();
   Axis.YDirection();
   Axis.Direction();
-#endif
   
   gp_Trsf Trans;
   

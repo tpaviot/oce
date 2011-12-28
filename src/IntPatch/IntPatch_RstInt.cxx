@@ -684,11 +684,10 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
 	      (!Domain->Has3d() && Standard_Integer(nptCh)+1 < Nbptlin);
 	    if (!isNptLow && !IsSegment2dSmall(Brise,UMinAr,UMaxAr,tolU,tolV)) {
 	      // treat both ends
-	      Standard_Real UMinChP,UMaxChP,UMinArP,UMaxArP;
+	      Standard_Real UMinChP,UMinArP,UMaxArP;
 	      UMinChP = IntegerPart(UMinCh); UMinArP = IntegerPart(UMinAr);
-	      UMaxChP = IntegerPart(UMaxCh); UMaxArP = IntegerPart(UMaxAr);
-	      Standard_Integer irangCh1,irangCh2,irangAr1,irangAr2;
-	      irangCh1 = Standard_Integer(UMinChP)+1; irangCh2 = Standard_Integer(UMaxChP)+1;
+	                                     UMaxArP = IntegerPart(UMaxAr);
+	      Standard_Integer irangAr1,irangAr2;
 	      irangAr1 = Standard_Integer(UMinArP)+1; irangAr2 = Standard_Integer(UMaxArP)+1;
 	      UMinChP = UMinCh - UMinChP; UMinArP = UMinAr - UMinArP;
 	      //UMaxChP = UMaxCh - UMaxChP; UMaxArP = UMaxAr - UMaxArP;

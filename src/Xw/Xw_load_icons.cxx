@@ -611,7 +611,6 @@ XW_EXT_WINDOW *qwindow = (XW_EXT_WINDOW*)fwindow ;
 XW_EXT_DISPLAY *pdisplay;
 XW_EXT_IMAGEDATA *pimage ;
 XW_EXT_ICON *piconinfo = NULL;
-XW_WINDOWSTATE state ;
 XW_STATUS status ;
 //int iimage,iwidth,iheight,wxc,wyc,wwidth,wheight ;
 int iwidth,iheight,wxc,wyc,wwidth,wheight ;
@@ -653,7 +652,7 @@ time_t t_start,t_finish;
 	if( width <= 0 ) width = _DWIDTH;
 	if( height <= 0 ) height = _DHEIGHT;
 
-	state = Xw_get_window_position(qwindow,
+	Xw_get_window_position(qwindow,
 					&wxc,&wyc,&wwidth,&wheight) ;
 
 	status = Xw_get_window_pixelcoord(qwindow,wwidth/2,wheight/2,&xi,&yi) ;
@@ -733,7 +732,6 @@ XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow ;
 XW_EXT_IMAGEDATA *pimage;
 XW_EXT_ICON *piconinfo ;
 //XW_WINDOWSTATE state ;
-XW_STATUS status ;
 float xi,yi,tw,th,x0,y0,iw,ih ;
 //int i,j,n,wxc,wyc,wsize,wxi,wyi,nimage = 0,maximagewidth = 0,maximageheight = 0 ;
 int i,j,wxc,wyc,wsize,wxi,wyi,nimage = 0,maximagewidth = 0,maximageheight = 0 ;
@@ -763,24 +761,23 @@ int i,j,wxc,wyc,wsize,wxi,wyi,nimage = 0,maximagewidth = 0,maximageheight = 0 ;
 
 	{
 	    int wwidth,wheight,usize = 1+(int)sqrt((double)nimage-1) ;
-	    XW_WINDOWSTATE state ;
 
-	    state = Xw_get_window_position(pwindow,
+	    Xw_get_window_position(pwindow,
 					&wxc,&wyc,&wwidth,&wheight) ;
 	    wsize = min(wwidth,wheight)/max(maximagewidth,maximageheight) ;
 
 	    if( usize > wsize ) {	/* Grows IconBox */
 		wsize = usize ;
-		status = Xw_set_window_position(pwindow,
+		Xw_set_window_position(pwindow,
 			wxc,wyc,wsize*maximagewidth,wsize*maximageheight) ;
 		Xw_resize_window(pwindow) ;
 	    }
 	}
 
 				/* POP and erase IconBox */
-	status = Xw_set_window_state(pwindow,XW_POP) ;
+	Xw_set_window_state(pwindow,XW_POP) ;
 
-	status = Xw_erase_window(pwindow) ;
+	Xw_erase_window(pwindow) ;
 
 	nimage = 0 ;
 	for( piconinfo=(XW_EXT_ICON*) pwindow->other ; piconinfo ;
@@ -789,7 +786,7 @@ int i,j,wxc,wyc,wsize,wxi,wyi,nimage = 0,maximagewidth = 0,maximageheight = 0 ;
 		i = nimage%wsize ; j = nimage/wsize ;
 		wxi = i*maximagewidth+maximagewidth/2 ;
 		wyi = j*maximageheight+maximageheight/2 ;
-		status = Xw_get_window_pixelcoord(pwindow,wxi,wyi,&xi,&yi) ;
+		Xw_get_window_pixelcoord(pwindow,wxi,wyi,&xi,&yi) ;
 		Xw_draw_image(pwindow,piconinfo->pimage,xi,yi) ;
 		Xw_get_text_size(pwindow,0,piconinfo->pname,&tw,&th,&x0,&y0) ;
 		Xw_draw_text(pwindow,xi-tw/2.,yi-th/2.,piconinfo->pname,0.,0) ;

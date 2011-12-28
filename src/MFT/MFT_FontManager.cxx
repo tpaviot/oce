@@ -1739,7 +1739,6 @@ TCollection_ExtendedString estring(aString);
 // =============================================================================
 
 void MFT_FontManager::DrawText(const Handle(MFT_TextManager)& aTextManager, const Standard_CString aString, const Quantity_Length anX, const Quantity_Length anY, const Quantity_PlaneAngle anOrientation) {
-Standard_Boolean vazy;
 
     this->SetTextAttribs(aString,anOrientation);
 
@@ -1754,7 +1753,7 @@ Standard_Boolean vazy;
 				Cwidth,Cheight,Cslant,myPaintType);
     while ( theCharCount < theStringLength ) {
       aPosition = Standard_Integer((unsigned char)theAsciiString.Value(theCharCount+1));
-      vazy = this->DrawChar(aTextManager,aPosition);
+      this->DrawChar(aTextManager,aPosition);
       theCharCount++;
     }
     aTextManager->EndString();
@@ -1771,7 +1770,6 @@ Standard_Boolean vazy;
 // =============================================================================
 
 void MFT_FontManager::DrawText(const Handle(MFT_TextManager)& aTextManager, const Standard_ExtString aString, const Quantity_Length anX, const Quantity_Length anY, const Quantity_PlaneAngle anOrientation) {
-Standard_Boolean vazy;
 
     this->SetTextAttribs(aString,anOrientation);
 
@@ -1789,7 +1787,7 @@ Standard_Boolean vazy;
         aPosition = Standard_Integer((unsigned char)theAsciiString.Value(theCharCount+1));
       else
         aPosition = Standard_Integer((unsigned short)theExtendedString.Value(theCharCount+1));
-      vazy = this->DrawChar(aTextManager,aPosition);
+      this->DrawChar(aTextManager,aPosition);
       theCharCount++;
     }
     aTextManager->EndString();

@@ -629,7 +629,7 @@
   BOPTools_CArray1OfSSInterference& aFFs=(myFiller->InterfPool())->SSInterferences();
   
   BOPTools_ListIteratorOfListOfPaveBlock anIt;
-  Standard_Integer i, aNb, nF2, nSp, nV;
+  Standard_Integer i, aNb, nF2, nV;
 
   //ZZ const TopoDS_Edge& aDE=TopoDS::Edge(myDS->Shape(nED));
   
@@ -647,7 +647,6 @@
     anIt.Initialize(aLPBSplits);
     for (; anIt.More(); anIt.Next()) {
       const BOPTools_PaveBlock& aPBSp=anIt.Value();
-      nSp=aPBSp.Edge();
       
       const BOPTools_Pave& aPave1=aPBSp.Pave1();
       nV=aPave1.Index();

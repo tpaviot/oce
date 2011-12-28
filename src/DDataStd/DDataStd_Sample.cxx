@@ -57,12 +57,6 @@ static void Sample()
 
   Handle(TDataStd_Integer) I = TDataStd_Integer::Set(aLabel, i);
 
-  // Getting the value stored in TDataStd_Integer attribute
-
-  Standard_Integer aValue;
-
-  aValue = I->Get();
-
   // Setting the new value in the attribute 
     
   I->Set( 25 );
@@ -221,11 +215,6 @@ static void Sample()
   
   Handle(TDF_Reference) reference = TDF_Reference::Set(aLabel, referencedlabel);
 
-  // Getting a label to TDF_Reference attribute refers to
-   
-  TDF_Label refLabel = reference->Get();
-
-
   //------------------------- TDataXtd_Point ----------------
   //---------------------------------------------------------
   gp_Pnt Pnt;
@@ -362,7 +351,7 @@ static void Sample()
 
   // Creating a new label in directory
 
-  TDF_Label newlabel = TDataStd_Directory::MakeObjectLabel(newdirectory);
+  TDataStd_Directory::MakeObjectLabel(newdirectory);
 
    
   //------------------------- TDataStd_TreeNode ---------------

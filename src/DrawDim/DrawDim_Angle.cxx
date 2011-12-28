@@ -110,10 +110,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
   if (!DrawDim::Pln(myPlane2,pln2)) return; 
   IntAna_QuadQuadGeo ip (pln1,pln2,Precision::Confusion(), Precision::Angular());
   if (!ip.IsDone()) return;
-#ifdef DEB
-  gp_Lin linter =
-#endif
-                  ip.Line(1);
+  ip.Line(1);
   
   //Handle(Geom_Surface) curve1 = BRep_Tool::Surface(myPlane1);
   //Handle(Geom_PlaneLine) line1 = Handle(Geom_Line)::DownCast(curve1);    

@@ -388,7 +388,7 @@ void IntTools_FaceFace::SetList(IntSurf_ListOfPntOn2S& aListOfPnts)
   void IntTools_FaceFace::Perform(const TopoDS_Face& aF1,
 				  const TopoDS_Face& aF2)
 {
-  Standard_Boolean hasCone, RestrictLine, bTwoPlanes, bReverse;
+  Standard_Boolean hasCone, RestrictLine, bReverse;
   Standard_Integer aNbLin, aNbPnts, i, NbLinPP;
   Standard_Real TolArc, TolTang, Deflection, UVMaxStep;
   Standard_Real umin, umax, vmin, vmax;
@@ -404,7 +404,6 @@ void IntTools_FaceFace::SetList(IntSurf_ListOfPntOn2S& aListOfPnts)
   myIsDone = Standard_False;
   myNbrestr=0;//?
   hasCone = Standard_False;
-  bTwoPlanes = Standard_False;
   //
   myFace1=aF1;
   myFace2=aF2;
@@ -445,7 +444,6 @@ void IntTools_FaceFace::SetList(IntSurf_ListOfPntOn2S& aListOfPnts)
   //
   NbLinPP = 0;
   if(aType1==GeomAbs_Plane && aType2==GeomAbs_Plane){
-    bTwoPlanes = Standard_True;
 
     BRepTools::UVBounds(myFace1, umin, umax, vmin, vmax);
     myHS1->ChangeSurface().Load(S1, umin, umax, vmin, vmax);

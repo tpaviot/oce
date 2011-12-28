@@ -463,9 +463,8 @@ Standard_Integer boperationFiller (Standard_Integer n,
     return 1;
   }
 
-  Standard_Boolean aMFlag, anIsDone;
+  Standard_Boolean anIsDone;
 
-  aMFlag=Standard_False;
   //
   BRepAlgoAPI_BooleanOperation* pBuilder=NULL;
   // 
@@ -1374,7 +1373,7 @@ Standard_Integer bopscts (Draw_Interpretor& di,
     di << " Prepare BOPTools_DSFiller first >bop S1 S2\n";
     return 0;
   }
-  Standard_Integer i, nF1, nF2,  aNbFFs, aNbOldSects, aSectExist=0, nSect;
+  Standard_Integer i, nF1, aNbFFs, aNbOldSects, aSectExist=0, nSect;
   Standard_Integer j, aNbCurves, aNbPaveBlocks, nNewEdge;
   Draw_Color aTextColor(Draw_cyan);
   TCollection_AsciiString aNm("t");
@@ -1389,7 +1388,6 @@ Standard_Integer bopscts (Draw_Interpretor& di,
     BOPTools_SSInterference& aFFi=aFFs(i);
     //
     nF1=aFFi.Index1();
-    nF2=aFFi.Index2();
     TCollection_AsciiString aInd(nF1), anUnd("_");
     //
     // Old Section Edges
@@ -1777,7 +1775,7 @@ Standard_Integer bopwho (Draw_Interpretor& di,
   // PaveBlocks 
   if (aTypeOfShapeToFind==TopAbs_EDGE) {
     //
-    Standard_Integer aNbPaveBlocks, nE, nOriginalEdge, aNbCommonBlocks;
+    Standard_Integer nE, nOriginalEdge;
     Standard_Integer nFace, nE2,  nOriginalEdge2;
     //
     const BOPTools_CommonBlockPool& aCommonBlockPool=pDF->CommonBlockPool();
@@ -1785,7 +1783,6 @@ Standard_Integer bopwho (Draw_Interpretor& di,
     aNbLines=aSplitShapesPool.Extent();
     for (i=1; i<=aNbLines; ++i) {
       const BOPTools_ListOfPaveBlock& aSplitEdges=aSplitShapesPool(i);
-      aNbPaveBlocks=aSplitEdges.Extent();
       
       BOPTools_ListIteratorOfListOfPaveBlock aPBIt(aSplitEdges);
       for (; aPBIt.More(); aPBIt.Next()) {
@@ -1797,7 +1794,6 @@ Standard_Integer bopwho (Draw_Interpretor& di,
 	  di << "  PaveBlock [Base Edge #" << nOriginalEdge << "]\n";
 	  const BOPTools_ListOfCommonBlock& aLCB=
 	    aCommonBlockPool(aDS.RefEdge(nOriginalEdge));
-	  aNbCommonBlocks=aLCB.Extent();
 	  
 	  BOPTools_ListIteratorOfListOfCommonBlock aCBIt(aLCB);
 	  for (; aCBIt.More(); aCBIt.Next()) {

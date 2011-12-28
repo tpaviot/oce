@@ -58,9 +58,8 @@ static Standard_Integer ExprIntrp_nbdiff;
 
 extern "C" void ExprIntrp_StartFunction()
 {
-  int nbcar;
   char funcname[100];
-  nbcar = ExprIntrp_GetResult(funcname);
+  ExprIntrp_GetResult(funcname);
   TCollection_AsciiString name(funcname);
   ExprIntrp_Recept.PushName(name);
   ExprIntrp_nbargs = 0;
@@ -68,9 +67,8 @@ extern "C" void ExprIntrp_StartFunction()
 
 extern "C" void ExprIntrp_StartDerivate()
 {
-  int nbcar;
   char funcname[100];
-  nbcar = ExprIntrp_GetResult(funcname);
+  ExprIntrp_GetResult(funcname);
   TCollection_AsciiString name(funcname);
   ExprIntrp_Recept.PushName(name);
 }
@@ -86,9 +84,6 @@ extern "C" void ExprIntrp_Derivation()
 {
   ExprIntrp_Recept.PushValue(1);
   char name[100];
-#ifdef DEB
-  Standard_Integer nbcar = 
-#endif
     ExprIntrp_GetResult(name);
   TCollection_AsciiString thename(name);
   Handle(Expr_NamedExpression) namexp = ExprIntrp_Recept.GetNamed(thename);
@@ -104,8 +99,7 @@ extern "C" void ExprIntrp_Derivation()
 extern "C" void ExprIntrp_DerivationValue()
 {
   char num[30];
-  int nbcar;
-  nbcar = ExprIntrp_GetResult(num);
+  ExprIntrp_GetResult(num);
   Standard_Integer degree = ExprIntrp_Recept.PopValue();
   degree = atoi(num);
   ExprIntrp_Recept.PushValue(degree);
@@ -129,9 +123,6 @@ extern "C" void ExprIntrp_StartDifferential()
 extern "C" void ExprIntrp_DiffDegreeVar()
 {
   char name[100];
-#ifdef DEB
-  Standard_Integer nbcar = 
-#endif
     ExprIntrp_GetResult(name);
 #ifndef WNT 
   if (strncasecmp(name,"X",1)) {
@@ -156,9 +147,6 @@ extern "C" void ExprIntrp_DiffVar()
 extern "C" void ExprIntrp_DiffDegree()
 {
   char name[100];
-#ifdef DEB
-  Standard_Integer nbcar = 
-#endif
     ExprIntrp_GetResult(name);
   Standard_Integer deg = atoi(name);
   ExprIntrp_Recept.PushValue(deg);
@@ -167,9 +155,6 @@ extern "C" void ExprIntrp_DiffDegree()
 extern "C" void ExprIntrp_VerDiffDegree()
 {
   char name[100];
-#ifdef DEB
-  Standard_Integer nbcar = 
-#endif
     ExprIntrp_GetResult(name);
   Standard_Integer deg = atoi(name);
   Standard_Integer thedeg = ExprIntrp_Recept.PopValue();
@@ -461,8 +446,7 @@ extern "C" void ExprIntrp_UnaryMinusOperator()
 extern "C" void ExprIntrp_VariableIdentifier()
 {
   char name[30];
-  int nbcar;
-  nbcar = ExprIntrp_GetResult(name);
+  ExprIntrp_GetResult(name);
   TCollection_AsciiString thename(name);
   Handle(Expr_NamedExpression) nameexp = ExprIntrp_Recept.GetNamed(thename);
   if (nameexp.IsNull()) {
@@ -475,8 +459,7 @@ extern "C" void ExprIntrp_VariableIdentifier()
 extern "C" void ExprIntrp_NumValue()
 {
   char num[30];
-  int nbcar;
-  nbcar = ExprIntrp_GetResult(num);
+  ExprIntrp_GetResult(num);
   Standard_Real value = atof(num);
   Handle(Expr_NumericValue) nval = new Expr_NumericValue(value);
   ExprIntrp_Recept.Push(nval);
@@ -484,15 +467,13 @@ extern "C" void ExprIntrp_NumValue()
 
 extern "C" void ExprIntrp_AssignVariable()
 {
-  int nbcar;
-  nbcar = ExprIntrp_GetResult(ExprIntrp_assname);
+  ExprIntrp_GetResult(ExprIntrp_assname);
 }
 
 extern "C" void ExprIntrp_Deassign()
 {
-  int nbcar;
   char name[100];
-  nbcar = ExprIntrp_GetResult(name);
+  ExprIntrp_GetResult(name);
   TCollection_AsciiString thename(name);
   Handle(Expr_NamedExpression) nameexp = ExprIntrp_Recept.GetNamed(thename);
   if (nameexp.IsNull()) {
@@ -606,9 +587,6 @@ extern "C" void ExprIntrp_EndOfFuncDef()
 extern "C" void ExprIntrp_ConstantIdentifier()
 {
   char name[100];
-#ifdef DEB
-  Standard_Integer nbcar = 
-#endif
     ExprIntrp_GetResult(name);
   TCollection_AsciiString thename(name);
   ExprIntrp_Recept.PushName(thename);
@@ -618,8 +596,7 @@ extern "C" void ExprIntrp_ConstantDefinition()
 {
   TCollection_AsciiString name = ExprIntrp_Recept.PopName();
   char num[30];
-  int nbcar;
-  nbcar = ExprIntrp_GetResult(num);
+  ExprIntrp_GetResult(num);
   Standard_Real val = atof(num);
   Handle(Expr_NamedConstant) theconst = new Expr_NamedConstant(name,val);
   ExprIntrp_Recept.Use(theconst);
