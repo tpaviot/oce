@@ -116,9 +116,11 @@
 #include <stdio.h>
 #endif
 
-#ifdef DEB
-static Standard_Boolean AffichGeom = Standard_False;
+#if defined(DRAW) || defined(DEB)
 static Standard_Boolean AffichEdge = Standard_False;
+#endif
+#ifdef DRAW
+static Standard_Boolean AffichGeom = Standard_False;
 static Standard_Integer NbFACES       = 0;
 static Standard_Integer NbTRIMFACES   = 0;
 static Standard_Integer NbVEVOS       = 0;
@@ -327,10 +329,6 @@ static Standard_Boolean IsPlanar(const TopoDS_Edge& E)
 static Standard_Integer Side(const TopoDS_Wire&  Profil,
 			     const Standard_Real Tol)
 {
-#ifdef DEB
-  Standard_Boolean OnLeft  = Standard_False;
-  Standard_Boolean OnRight = Standard_False;
-#endif
   TopoDS_Vertex    V1,V2;
   // Rem : il suffit de tester sur le premier edge du Wire.
   //       ( Correctement decoupe dans PrepareProfil)
@@ -1844,10 +1842,7 @@ void BRepFill_Evolved::Add(      BRepFill_Evolved& Vevo,
 #else
     Standard_Boolean   Commun;
 #endif
-#ifdef DEB
-    TopAbs_Orientation OriSide = 
-#endif
-      Relative(myProfile,Prof,
+    Relative(myProfile,Prof,
 	       TopoDS::Vertex(VV),
 	       Commun);
 
@@ -2939,11 +2934,6 @@ TopAbs_Orientation OriEdgeInFace (const TopoDS_Edge& E,
 				  const TopoDS_Face& F )
 
 {
-#ifdef DEB
-  TopAbs_Orientation O = 
-#endif
-    F.Orientation();
-
   TopExp_Explorer Exp(F.Oriented(TopAbs_FORWARD),TopAbs_EDGE);
 
   for (; Exp.More() ;Exp.Next()) {

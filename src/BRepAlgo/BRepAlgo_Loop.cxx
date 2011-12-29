@@ -494,26 +494,22 @@ void BRepAlgo_Loop::Perform()
 #ifdef DEB
   if (AffichLoop) {
     cout <<"NewLoop"<<endl;
-    Standard_Integer NbEdges = 1;
     NbLoops++;
 #ifdef DRAW
+    Standard_Integer NbEdges = 1;
     sprintf(name,"FLoop_%d",NbLoops);
     DBRep::Set(name,myFace);
-#endif
     for (Mapit.Initialize(myVerOnEdges); Mapit.More(); Mapit.Next()) { 
       const TopoDS_Edge& E = TopoDS::Edge(Mapit.Key());
-#ifdef DRAW
       sprintf(name,"EEE_%d_%d",NbLoops,NbEdges++);
       DBRep::Set(name,E);
-#endif
     }
     for (itl.Initialize(myConstEdges); itl.More(); itl.Next()) {
       const TopoDS_Edge& E = TopoDS::Edge(itl.Value());    
-#ifdef DRAW
       sprintf(name,"EEE_%d_%d",NbLoops,NbEdges++);
       DBRep::Set(name,E);
-#endif
     }
+#endif
   }
 #endif
   

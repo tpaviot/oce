@@ -17,9 +17,6 @@
 #include <Intf_SeqOfTangentZone.hxx>
 #include <Intf.hxx>
 
-#ifdef DEB
-static  Standard_Integer debug=0;
-#endif
 #if 0
 static  Standard_Real PRCANG=0.1;
 #endif

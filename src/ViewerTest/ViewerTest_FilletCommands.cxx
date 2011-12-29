@@ -63,10 +63,6 @@ static Standard_Real tapp_angle = 1.e-2;
 static GeomAbs_Shape blend_cont = GeomAbs_C1;
 
 static BRepFilletAPI_MakeFillet* Rakk = 0;
-#ifdef DEB
-static BRepFilletAPI_MakeFillet* Rake = 0;
-static char name[100];
-#endif
 
 
 static void printtolblend(Draw_Interpretor& di)
@@ -105,9 +101,6 @@ static Standard_Integer VBLEND(Draw_Interpretor& di, Standard_Integer narg, cons
   if (narg<5) return 1;
   
   Standard_Integer NbToPick = (narg -4)/2;
-#ifdef DEB
-  Standard_Boolean autonaming = !strcasecmp(a[3],".");
-#endif
   Handle(TopTools_HArray1OfShape) arr = new TopTools_HArray1OfShape(1,NbToPick);
   if(ViewerTest::PickShapes(TopAbs_EDGE,arr)){
     for(Standard_Integer i=1;i<=NbToPick;i++){

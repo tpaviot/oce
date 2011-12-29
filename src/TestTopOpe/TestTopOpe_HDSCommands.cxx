@@ -236,13 +236,6 @@ static void SetCurve
   const Handle(Geom_Curve) GC = DSC.Curve();
   if ( GC.IsNull() ) { cout<<"Curve() nulle"<<endl; return; }
   
-#ifdef DEB
-  static Standard_Integer Cdiscret = 16;
-  static Standard_Real Cdeflect = 0.01;
-  static Standard_Integer Cdrawmod = 1;
-  static Standard_Boolean Cdisplayorigin = Standard_True;
-#endif
-  
   Standard_Real f = GC->FirstParameter();
   Standard_Real l = GC->LastParameter();
   
@@ -364,10 +357,7 @@ static Standard_Integer SeeSectionEdge(const Standard_Integer ISE)
   if ( ISE < 1 || ISE > nse ) return 0;
   const TopoDS_Shape& SE  = PHDSD->CurrentBDS().SectionEdge(ISE);
   if (SE.IsNull()) return 0;
-#ifdef DEB
-  Standard_Integer ids =
-#endif
-                         PHDSD->CurrentBDS().Shape(SE,SFindKeep);
+  PHDSD->CurrentBDS().Shape(SE,SFindKeep);
   
   TCollection_AsciiString namedbrep; PHDSD->SectionEdgeName(ISE,SE,namedbrep); 
   TCollection_AsciiString namedisp; PHDSD->SectionEdgeDisplayName(ISE,SE,namedisp);
@@ -534,9 +524,6 @@ static Standard_Integer SeeGeometry(const TopOpeBRepDS_Kind TK)
   
   const TopOpeBRepDS_DataStructure& BDS = PHDSD->CurrentBDS();
 
-#ifdef DEB  
-  Standard_Integer ig,ng = 0;
-#endif
   if      (TK == TopOpeBRepDS_POINT) {
     TopOpeBRepDS_PointExplorer pex(BDS,GFindKeep);
     for (; pex.More(); pex.Next()) {
@@ -1132,10 +1119,6 @@ Standard_Integer tds(Draw_Interpretor& di,Standard_Integer na,const char** a)
   if (PHDSD == NULL) return 0;
   const Handle(TopOpeBRepDS_HDataStructure)& HDS = PHDSD->CurrentHDS();
   if (HDS.IsNull()) {COUTNOHDS(di);return 0;}
-#ifdef DEB
-  const TopOpeBRepDS_DataStructure& BDS =
-#endif
-                                          PHDSD->CurrentBDS();
   
   TopOpeBRepDS_Dumper Dumper(HDS);
   if ( na == 1 ) { Dumper.Dump(cout,TDSkeep,TDScompact); return 0; }

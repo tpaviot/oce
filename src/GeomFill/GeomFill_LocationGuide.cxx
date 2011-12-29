@@ -628,12 +628,6 @@ static void InGoodPeriod(const Standard_Real Prec,
   gp_Vec T, N, B;
   gp_Pnt P;
   Standard_Boolean Ok;
-#ifdef DEB
-  Standard_Real U = myFirstS + ratio*(Param-myCurve->FirstParameter());
-#else
-  myCurve->FirstParameter() ;
-#endif
-    
 
   myCurve->D0(Param, P);
   V.SetXYZ(P.XYZ());
@@ -738,12 +732,6 @@ static void InGoodPeriod(const Standard_Real Prec,
   if (rotation) {  
     return Standard_False;
     
-#ifdef DEB
-    Standard_Real U = myFirstS + ratio*(Param-myCurve->FirstParameter());
-#else
-    
-#endif
-      
 #if 0 // @todo Should be really dead code?
     // initialisation du germe 
     InitX(Param);      

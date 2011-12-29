@@ -34,7 +34,7 @@ Standard_EXPORT TopTools_IndexedMapOfOrientedShape STATIC_PURGE_mapeds;
 static void FUN_RaiseError()
 {
 #ifdef DEB
-  Standard_Boolean trc = TopOpeBRepTool_GettraceCORRISO();
+//  Standard_Boolean trc = TopOpeBRepTool_GettraceCORRISO();
   FUN_REINIT(); 
 //  if (trc) cout <<"*********failure in CORRISO***********\n";
 #endif
@@ -72,10 +72,7 @@ TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()
 TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO(const TopoDS_Face& Fref)
 {
   myFref = Fref;
-#ifdef DEB
-  Standard_Boolean closed =
-#endif
-               FUN_tool_closedS(myFref,myUclosed,myUper,myVclosed,myVper);
+  FUN_tool_closedS(myFref,myUclosed,myUper,myVclosed,myVper);
 
   const Handle(Geom_Surface)& SU = BRep_Tool::Surface(myFref);
   myGAS = GeomAdaptor_Surface(SU);
@@ -153,10 +150,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::Init(const TopoDS_Shape& S)
 //    Standard_Real f,l,tol; Handle(Geom2d_Curve) PC = FC2D_CurveOnSurface(E,myFref,f,l,tol);
     Handle(Geom2d_Curve) PC; Standard_Real f,l,tol;
     Standard_Boolean hasold = FC2D_HasOldCurveOnSurface(E,myFref,PC);
-#ifdef DEB
-    Standard_Boolean hasnew =
-#endif
-                 FC2D_HasNewCurveOnSurface(E,myFref,PC);
+    FC2D_HasNewCurveOnSurface(E,myFref,PC);
     PC = FC2D_EditableCurveOnSurface(E,myFref,f,l,tol);
     if (!hasold) FC2D_AddNewCurveOnSurface(PC,E,myFref,f,l,tol);
     if (PC.IsNull()) return Standard_False;
@@ -168,7 +162,10 @@ Standard_Boolean TopOpeBRepTool_CORRISO::Init(const TopoDS_Shape& S)
     for (; exv.More(); exv.Next()){
       const TopoDS_Vertex& v = TopoDS::Vertex(exv.Current());   
 #ifdef DEB
-      Standard_Integer iv = STATIC_PURGE_mapv.Add(v);
+#ifdef DRAW
+      Standard_Integer iv =
+#endif
+        STATIC_PURGE_mapv.Add(v);
 #ifdef DRAW
       if (trc) {TCollection_AsciiString bb = TCollection_AsciiString("v"); FUN_tool_draw(bb,v,iv);}
 #endif      
@@ -334,15 +331,7 @@ static Standard_Boolean FUN_isonOcE(const TopOpeBRepTool_CORRISO CO, const TopoD
     TopOpeBRepTool_C2DF OcE2d; Standard_Boolean isOb = CO.UVRep(OcE,OcE2d);
     if (!isOb) return Standard_False; // NYIRAISE
     
-#ifdef DEB
-    const TopoDS_Vertex& vce1 =
-#endif
-                      TopoDS::Vertex(vcE(1)); 
     Standard_Real parvce1 = TopOpeBRepTool_TOOL::ParE(1,cE);   gp_Pnt2d UVvce1 = TopOpeBRepTool_TOOL::UVF(parvce1,cE2d);
-#ifdef DEB
-    const TopoDS_Vertex& vOce2 =
-#endif
-                       TopoDS::Vertex(vOcE(2)); 
     Standard_Real parvOcE2 = TopOpeBRepTool_TOOL::ParE(2,OcE); gp_Pnt2d UVvOcE2 = TopOpeBRepTool_TOOL::UVF(parvOcE2,OcE2d);
     Standard_Real tol = Max(tttuvcE,tttuvOcE);
     isonOcE2d = (UVvce1.Distance(UVvOcE2) < tol);
@@ -380,10 +369,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
 
   if      (fyceds.Extent() == 1) {// ivf == 3 : cto016G*
     TopTools_DataMapOfOrientedShapeInteger fyeds;
-#ifdef DEB
-    Standard_Boolean found =
-#endif
-                EdgesWithFaultyUV(myEds,3,fyeds);
+    EdgesWithFaultyUV(myEds,3,fyeds);
     Standard_Integer nfy = fyeds.Extent();
 
     TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger itm(fyceds);
@@ -411,15 +397,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
       TopOpeBRepTool_C2DF OcE2d; Standard_Boolean isOb = UVRep(OcE,OcE2d);
       if (!isOb) return Standard_False; // NYIRAISE
       
-#ifdef DEB
-      const TopoDS_Vertex& vce1 =
-#endif
-                         TopoDS::Vertex(vcE(1)); 
       Standard_Real parvce1 = TopOpeBRepTool_TOOL::ParE(1,cE);   gp_Pnt2d UVvce1 = TopOpeBRepTool_TOOL::UVF(parvce1,cE2d);
-#ifdef DEB
-      const TopoDS_Vertex& vOce2 =
-#endif
-                         TopoDS::Vertex(vOcE(2)); 
       Standard_Real parvOcE2 = TopOpeBRepTool_TOOL::ParE(2,OcE); gp_Pnt2d UVvOcE2 = TopOpeBRepTool_TOOL::UVF(parvOcE2,OcE2d);
       Standard_Real tol = Max(tttuvcE,tttuvOcE);
       isoncE = (UVvce1.Distance(UVvOcE2) < tol);
@@ -523,14 +501,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
       Standard_Real tttuvOcE = Max(Tol(1,tttolOcE),Tol(2,tttolOcE));
       TopOpeBRepTool_C2DF OcE2d; Standard_Boolean isOb = UVRep(OcE,OcE2d);
       if (!isOb) return Standard_False; // NYIRAISE
-#ifdef DEB 
-      const TopoDS_Vertex& vce1 = TopoDS::Vertex(vcE(1));
-#endif 
       Standard_Real parvce1 = TopOpeBRepTool_TOOL::ParE(1,cE);   gp_Pnt2d UVvce1 = TopOpeBRepTool_TOOL::UVF(parvce1,cE2d);
-#ifdef DEB
-      const TopoDS_Vertex& vOce2 =
-#endif
-                         TopoDS::Vertex(vOcE(2)); 
       Standard_Real parvOcE2 = TopOpeBRepTool_TOOL::ParE(2,OcE); gp_Pnt2d UVvOcE2 = TopOpeBRepTool_TOOL::UVF(parvOcE2,OcE2d);
       Standard_Real tol = Max(tttuvcE,tttuvOcE);
       isonOcE2d = (UVvce1.Distance(UVvOcE2) < tol);
@@ -547,10 +518,6 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
       // <vce> (boundary of <cE>):   
       const TopoDS_Vertex& vce = TopoDS::Vertex(vcE(ivce)); 
       TopTools_ListOfShape loe; isb = Connexity(vce,loe);
-#ifdef DEB
-      Standard_Integer nloe =
-#endif
-                 loe.Extent(); // DEB
       if (!isb) return Standard_False; // NYIRAISE
 
       Standard_Real parvce = TopOpeBRepTool_TOOL::ParE(ivce,cE); gp_Pnt2d UVvce = TopOpeBRepTool_TOOL::UVF(parvce,cE2d);
@@ -684,9 +651,6 @@ Standard_Integer TopOpeBRepTool_CORRISO::EdgeOUTofBoundsUV(const TopoDS_Edge& E,
   Standard_Real xlast   = onU ? myGAS.LastUParameter() : myGAS.LastVParameter(); // xlast=xfirst+xperiod
   Standard_Real xperiod = onU ? myUper : myVper;
 
-#ifdef DEB
-  Standard_Boolean inbounds=Standard_False;  
-#endif
   Standard_Boolean isou,isov; gp_Pnt2d o2d; gp_Dir2d d2d; 
   Standard_Boolean iso = TopOpeBRepTool_TOOL::UVISO(PC,isou,isov,d2d,o2d);
 
@@ -834,10 +798,6 @@ Standard_Boolean TopOpeBRepTool_CORRISO::EdgeWithFaultyUV(const TopoDS_Edge& E, 
     // <vEok> :
     Standard_Boolean vEok = Standard_False;
     const TopTools_ListOfShape& loe = myVEds.Find(vE);
-#ifdef DEB
-    Standard_Integer nloe =
-#endif
-               loe.Extent(); //DEB
     for (TopTools_ListIteratorOfListOfShape ite(loe); ite.More(); ite.Next()) {
       const TopoDS_Edge& e = TopoDS::Edge(ite.Value());
       TopAbs_Orientation oe = e.Orientation();
@@ -848,14 +808,6 @@ Standard_Boolean TopOpeBRepTool_CORRISO::EdgeWithFaultyUV(const TopoDS_Edge& E, 
       if (e.IsSame(E)) continue;      
       if (M_INTERNAL(oe) || M_EXTERNAL(oe)) continue;
 
-#ifdef DEB
-      Standard_Real tttole =
-#endif
-                   BRep_Tool::Tolerance(e);
-#ifdef DEB
-      Standard_Real tttuve = Max(Tol(1,tttole),Tol(2,tttole));
-#endif
-      
       Standard_Boolean isb = myERep2d.IsBound(e);
       if (!isb) {FUN_RaiseError(); return Standard_False;}
       const TopOpeBRepTool_C2DF& C2DF = myERep2d.Find(e);
@@ -979,17 +931,11 @@ Standard_Boolean TopOpeBRepTool_CORRISO::TrslUV(const Standard_Boolean onU, cons
 {
   gp_Vec2d tt2d; 
   if (onU) {Standard_Real uper;
-#ifdef DEB
-            Standard_Boolean ok =
-#endif
-                     Refclosed(1,uper);
+            Refclosed(1,uper);
             if (!uper) return Standard_False;
 	    tt2d = gp_Vec2d(uper,0.);}
   else     {Standard_Real vper;
-#ifdef DEB
-            Standard_Boolean ok =
-#endif
-                     Refclosed(2,vper);
+            Refclosed(2,vper);
             if (!vper) return Standard_False;
 	    tt2d = gp_Vec2d(0.,vper);}
   TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger itm(FyEds);
@@ -1079,10 +1025,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::AddNewConnexity(const TopoDS_Vertex& ,
   if (!isb) {
     Handle(Geom2d_Curve) PC; Standard_Real f,l,tol;
     Standard_Boolean hasold = FC2D_HasOldCurveOnSurface(E,myFref,PC);
-#ifdef DEB
-    Standard_Boolean hasnew =
-#endif
-                 FC2D_HasNewCurveOnSurface(E,myFref,PC);
+    FC2D_HasNewCurveOnSurface(E,myFref,PC);
     PC = FC2D_EditableCurveOnSurface(E,myFref,f,l,tol);
     if (!hasold) FC2D_AddNewCurveOnSurface(PC,E,myFref,f,l,tol);
     if (PC.IsNull()) return Standard_False;

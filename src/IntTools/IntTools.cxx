@@ -221,7 +221,7 @@
 				 const Standard_Real myEpsNull)
 {
   Standard_Integer aType, j, aNbRoots;
-  Standard_Real t, t1, t2, f1, f2, absf2;
+  Standard_Real t1, t2, f1, f2, absf2;
 
   aNbRoots=mySequenceOfRoots.Length();
 

@@ -112,10 +112,7 @@ DBRep_IsoBuilder::DBRep_IsoBuilder (const TopoDS_Face&     TopologicalFace,
     //-- Test if a TrimmedCurve is necessary
     if(   Abs(PCurve->FirstParameter()-U1)<= Precision::PConfusion() 
        && Abs(PCurve->LastParameter()-U2)<= Precision::PConfusion()) { 
-#ifdef DEB
-      Standard_Integer IndE =
-#endif
-                              AddElement (PCurve, TopologicalEdge.Orientation()) ;      
+      AddElement (PCurve, TopologicalEdge.Orientation());
     }
     else { 
       if (!PCurve->IsPeriodic()) {
@@ -123,10 +120,7 @@ DBRep_IsoBuilder::DBRep_IsoBuilder (const TopoDS_Face&     TopologicalFace,
 	if (!TrimPCurve.IsNull()) {
 	  if (TrimPCurve->BasisCurve()->FirstParameter()-U1 > Precision::PConfusion() ||
 	      U2-TrimPCurve->BasisCurve()->LastParameter()  > Precision::PConfusion()) {
-#ifdef DEB
-	    Standard_Integer IndE =
-#endif
-                                    AddElement (PCurve, TopologicalEdge.Orientation()) ;      
+	    AddElement (PCurve, TopologicalEdge.Orientation()) ;      
 #ifdef DEB
 	    cout<<"DBRep_IsoBuilder TrimPCurve : parameters out of range "<<endl;
 	    cout<<"    U1("<<U1<<"), Umin("<<PCurve->FirstParameter()
@@ -157,10 +151,7 @@ DBRep_IsoBuilder::DBRep_IsoBuilder (const TopoDS_Face&     TopologicalFace,
       if (Abs(U1-U2) <= Precision::PConfusion()) continue;
       
       Handle (Geom2d_TrimmedCurve) TrimPCurve = new Geom2d_TrimmedCurve (PCurve, U1, U2) ;
-#ifdef DEB
-      Standard_Integer IndE =
-#endif
-                              AddElement (TrimPCurve, TopologicalEdge.Orientation()) ;
+      AddElement (TrimPCurve, TopologicalEdge.Orientation()) ;
     }
   }
 

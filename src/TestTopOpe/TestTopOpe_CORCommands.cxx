@@ -253,10 +253,6 @@ Standard_Integer reguso(Draw_Interpretor& di, Standard_Integer n, const char** a
     TopOpeBRepBuild_ShellToSolid SheToSo;      
     for (; itm.More(); itm.Next()) {
       const TopTools_ListOfShape& lns = itm.Value();
-#ifdef DEB
-      Standard_Integer nlns =
-#endif
-                              lns.Extent();
       TopTools_ListIteratorOfListOfShape itsh(lns);
       for (; itsh.More(); itsh.Next()) {
 	const TopoDS_Shell& she = TopoDS::Shell(itsh.Value());
@@ -599,9 +595,6 @@ static Standard_Integer classifBnd2d(Draw_Interpretor& di, Standard_Integer n, c
   TopoDS_Shape W1 = DBRep::Get(a[1]);
   TopoDS_Shape W2 = DBRep::Get(a[2]);
   TopoDS_Shape F = DBRep::Get(a[3]);
-#ifdef DEB
-  Standard_Integer i = atoi(a[4]);
-#endif
   
   TopoDS_Wire w1 = TopoDS::Wire(W1);
   TopoDS_Wire w2 = TopoDS::Wire(W2);
@@ -770,9 +763,6 @@ static Standard_Integer normal(Draw_Interpretor& di, Standard_Integer n, const c
 //  TopoDS_Face f = TopoDS::Face(DBRep::Get(a[1]));
   if (f.IsNull()) {di<<"null shape"<<"\n";return 1;}
   gp_Pnt p; DrawTrSurf::GetPoint(a[2], p);
-#ifdef DEB
-  Standard_Real length = atof(a[3]);
-#endif
   Standard_Real dist=0.; gp_Pnt2d uv; Standard_Boolean ok = FUN_tool_projPonF(p,f,uv,dist);
   if (!ok) {di<<"projection failed"<<"\n"; return 1;}
   FUN_tool_nggeomF(uv,f);

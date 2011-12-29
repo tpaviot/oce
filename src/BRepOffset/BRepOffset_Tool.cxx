@@ -146,9 +146,11 @@
 #include <DBRep.hxx>
 #endif
 
-#ifdef DEB       
-Standard_Boolean AffichInter  = Standard_False;
+#if defined(DRAW) || defined(DEB)
 static Standard_Boolean AffichExtent = Standard_False;
+#endif
+#ifdef DRAW
+Standard_Boolean AffichInter  = Standard_False;
 static Standard_Integer NbNewEdges  = 1;
 static Standard_Integer NbFaces     = 1;
 static Standard_Integer NbFOB       = 1;
@@ -185,10 +187,6 @@ TopAbs_Orientation BRepOffset_Tool::OriEdgeInFace (const TopoDS_Edge& E,
 						   const TopoDS_Face& F )
 
 {
-#ifdef DEB
-  TopAbs_Orientation O = 
-#endif
-    F.Orientation();
   TopExp_Explorer Exp;
   Exp.Init(F.Oriented(TopAbs_FORWARD),TopAbs_EDGE);
 

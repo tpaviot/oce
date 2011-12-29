@@ -950,10 +950,6 @@ static Standard_Boolean IsInside(const TopoDS_Face& F,
   TopoDS_Shape aLocalShape = F.EmptyCopied();
   TopoDS_Face newFace = TopoDS::Face(aLocalShape);
   //  TopoDS_Face newFace = TopoDS::Face(F.EmptyCopied());
-#ifdef DEB
-  TopAbs_Orientation orWire =
-#endif
-    W2.Orientation();
   newFace.Orientation(TopAbs_FORWARD);
   B.Add(newFace,W2);
   //  GProp_GProps GP;

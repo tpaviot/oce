@@ -2191,8 +2191,6 @@ Standard_Integer Index = IsComputed (AStructure);
                   cout << flush;
                 }
 #endif
-Standard_Integer OldStructId =
-        MyCOMPUTEDSequence.Value (Index)->Identification ();
 
                 // Case COMPUTED valide
                 if (MyCOMPUTEDSequence.Value (Index)->HLRValidation ()) {
@@ -2224,8 +2222,6 @@ Standard_Integer OldStructId =
                         if (! IsDisplayed (AStructure)) {
                             MyCOMPUTEDSequence.SetValue
                                 (Index, MyCOMPUTEDSequence.Value (NewIndex));
-                            OldStructId = MyCOMPUTEDSequence.Value (NewIndex)->
-                                                        Identification ();
                             MyDisplayedStructure.Add (AStructure);
                             MyGraphicDriver->DisplayStructure (
                                 MyCView,
@@ -2375,8 +2371,6 @@ void Visual3d_View::Erase (const Handle(Graphic3d_Structure)& AStructure) {
 
 void Visual3d_View::Erase (const Handle(Graphic3d_Structure)& AStructure, const Aspect_TypeOfUpdate AnUpdateMode) {
 
-Standard_Integer StructId;
-
         if (IsDeleted ()) return;
 
         // No test on window as the structure is displayed only if 
@@ -2414,9 +2408,9 @@ Standard_Integer Index = IsComputed (AStructure);
                     if ((Index != 0) && (! DegenerateModeIsOn ()))
 #endif  // G003
                     {
-                        StructId =
-                        MyCOMPUTEDSequence.Value (Index)->Identification ();
 #ifdef TRACE_COMP
+                        Standard_Integer StructId =
+                        MyCOMPUTEDSequence.Value (Index)->Identification ();
         cout << "Structure " << AStructure->Identification ()
              << " calculated, in the view "
              << Identification () << ", by the structure "
@@ -3143,10 +3137,10 @@ Standard_Integer Index = IsComputed (AStructure);
 #endif
                 }
                 else {
-		  Standard_Integer OldStructId, NewStructId;
+#ifdef TRACE_COMP
+		  Standard_Integer OldStructId;
                         OldStructId =
                         MyCOMPUTEDSequence.Value (Index)->Identification ();
-#ifdef TRACE_COMP
 	Standard_Integer StructId = AStructure->Identification ();
         cout << "Structure " << StructId
              << " calculated, in the view "
@@ -3212,7 +3206,6 @@ Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
                         // Ot is ranged
                         // Find structure <AStructure>
                         // in the sequence of structures to be calculated.
-                        NewStructId = TheStructure->Identification ();
 
                         // The previous calculation is removed and the new one is dislayed
                         MyGraphicDriver->EraseStructure (

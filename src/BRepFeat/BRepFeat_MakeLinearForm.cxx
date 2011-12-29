@@ -622,10 +622,6 @@ void BRepFeat_MakeLinearForm::Init(const TopoDS_Shape& Sbase,
 	counter1++;
 	NewListOfEdges.Append(edg);
 	theEdge = eeee;
-#ifdef DEB
-	Standard_Real dist1 = 
-#endif
-	  theLastPnt.Distance(myLastPnt);
 
 	if(dist <= myTol) 
 	  theFEdge = edg;
@@ -1147,13 +1143,7 @@ void BRepFeat_MakeLinearForm::Perform()
       // on arrive pas a chainer la section
       return Standard_False;
     }
-// #ifdef DEB
-//     Standard_Boolean isnb=
-// #endif
     TopTools_ListOfShape thelist1;
-#ifdef DEB
-     Standard_Boolean isnb=
-#endif
     mySlface.Bind(CurrentFace, thelist1);
     mySlface(CurrentFace).Append(edg1);
     myListOfEdges.Append(edg1);
@@ -1196,10 +1186,6 @@ static void MajMap(const TopoDS_Shape& theB,
   
   for (exp.Init(theB,TopAbs_EDGE); exp.More(); exp.Next()) {
     if (!theMap.IsBound(exp.Current())) {
-#ifdef DEB
-      const TopoDS_Edge& e = 
-#endif
-      TopoDS::Edge(exp.Current());
       TopTools_ListOfShape thelist2; 
       theMap.Bind(exp.Current(), thelist2);
       theMap(exp.Current()) = theP.Shapes(exp.Current());

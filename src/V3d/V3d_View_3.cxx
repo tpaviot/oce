@@ -55,10 +55,6 @@ void V3d_View::Move(const Standard_Real Dx, const Standard_Real Dy, const Standa
   Zeye = Zrp*Zpn + Dx*XZ + Dy*YZ + Dz*ZZ ;
   Zrp = sqrt( Xeye*Xeye + Yeye*Yeye + Zeye*Zeye ) ;
   Viewer_BadValue_Raise_if( Zrp <= 0. ,"V3d_View::Move:: Eye,At are Confused");
-#ifdef DEB
-  Standard_Real focale = 
-#endif
-    Focale();
   Prp.SetCoord(Xrp,Yrp,Zrp) ;
   MyViewMapping.SetProjectionReferencePoint(Prp) ;
   Xpn = Xeye / Zrp ; Ypn = Yeye / Zrp ; Zpn = Zeye / Zrp ;
@@ -107,10 +103,6 @@ void V3d_View::Move(const Standard_Real Length, const Standard_Boolean Start) {
   Zrp = sqrt( Xeye*Xeye + Yeye*Yeye + Zeye*Zeye ) ;
   Viewer_BadValue_Raise_if( Zrp <= 0. ,"V3d_View::Move:: Eye,At are Confused");
   
-#ifdef DEB
-  Standard_Real focale = 
-#endif
-    Focale();
   Prp.SetCoord(Xrp,Yrp,Zrp) ;
   MyViewMapping.SetProjectionReferencePoint(Prp) ;
   Xpn = Xeye / Zrp ; Ypn = Yeye / Zrp ; Zpn = Zeye / Zrp ;

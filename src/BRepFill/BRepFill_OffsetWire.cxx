@@ -96,13 +96,14 @@
 #include <DBRep.hxx>
 #endif
 
-#ifdef DEB
+#if defined(DRAW) || defined(DEB)
+static Standard_Boolean AffichEdge  = Standard_False;
+#endif
+#ifdef DRAW
 static Standard_Boolean AffichGeom  = Standard_False;
 static Standard_Boolean Affich2d    = Standard_False;
-static Standard_Boolean AffichEdge  = Standard_False;
 static Standard_Integer NbTRIMEDGES = 0;
 static Standard_Integer NbOFFSET    = 0;
-static Standard_Integer NbEDGES     = 0;
 static Standard_Integer NbBISSEC    = 0;
 #ifndef WNT
 static char tname[100];
@@ -1836,10 +1837,6 @@ void MakeOffset (const TopoDS_Edge&        E,
     // si l offset est superieur ou egal au rayon et du cote de la 
     // concavite du cercle => edge null.
     gp_Circ2d C1(AC.Circle());
-#ifdef DEB
-    Standard_Real radius = 
-#endif
-                           C1.Radius();
     gp_Ax22d axes( C1.Axis());
     gp_Dir2d Xd = axes.XDirection();
     gp_Dir2d Yd = axes.YDirection();

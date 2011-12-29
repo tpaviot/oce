@@ -863,7 +863,6 @@ char *dirname;
 {
 XW_EXT_WINDOW *pwindow = (XW_EXT_WINDOW*)awindow ;
 XW_EXT_ICON *piconinfo,*qiconinfo ;
-int status ;
 FILE *ficon = NULL;
 char *pname,filename[256],iconname[80],lf ;
 //int n,f,skip,nicons = 0 ;
@@ -893,13 +892,13 @@ int skip,nicons = 0 ;
 					/* READ Icon File Directory */
 	while( !feof(ficon) ) {
 	    skip = False ;
-	    status = fscanf(ficon,"%s%c",filename,&lf) ;
+	    fscanf(ficon,"%s%c",filename,&lf) ;
 	    if( filename[0] == '#' ) {
-		while( lf != '\n' ) status = fscanf(ficon,"%c",&lf) ;
+		while( lf != '\n' ) fscanf(ficon,"%c",&lf) ;
 		skip = True ;
 	    } else if( lf != '\n' ) {
-	        status = fscanf(ficon,"%s%c",iconname,&lf) ;
-	        while( lf != '\n' ) status = fscanf(ficon,"%c",&lf) ;
+	        fscanf(ficon,"%s%c",iconname,&lf) ;
+	        while( lf != '\n' ) fscanf(ficon,"%c",&lf) ;
 	        if( iconname[0] == '#' ) {
 		  fprintf(stderr,"*Xw_load_icons*Unimplemented Default Icon Name %s\n",
 								filename);
@@ -961,7 +960,6 @@ int iwidth = pximage->width ;
 int iheight = pximage->height ;
 int wx,wy,ix,iy ;
 int error,gravity ;
-char *serror;
 
  	if( width == 0 ) width = iwidth ;
 	wx = (width - iwidth)/2 ; ix = 0 ;
@@ -980,7 +978,7 @@ char *serror;
 	pixmap = XCreatePixmap(_DISPLAY,_WINDOW,width,height,_DEPTH) ;
 	if( !Xw_get_trace() ) Xw_set_synchronize(_DISPLAY,False) ;
 
-        serror = Xw_get_error(&error,&gravity);
+        Xw_get_error(&error,&gravity);
         if( !pixmap || (error > 1000) ) {
           Xw_set_error(104,"Xw_create_icon_pixmap",0) ;
           return (0) ;

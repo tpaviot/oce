@@ -37,8 +37,7 @@
 
 #ifdef DRAW 
 #include <DBRep.hxx>
-#endif
-#ifdef DEB
+
 #ifndef WNT
 extern Standard_Integer AffichInt2d;
 #else
@@ -1402,7 +1401,7 @@ void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&   AsDes,
 				  const TopTools_MapOfShape&      NewEdges,
 				  const Standard_Real             Tol)
 {
-#ifdef DEB
+#ifdef DRAW
   NbF2d++;
   NbE2d = 0;
 #endif 

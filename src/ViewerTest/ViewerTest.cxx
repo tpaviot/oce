@@ -671,12 +671,6 @@ Handle(AIS_InteractiveObject) DetectedFromContext(
       Handle(AIS_InteractiveObject) aisPickedShape =
 	Handle(AIS_InteractiveObject)::DownCast(aContext->DetectedInteractive());
       ret = aisPickedShape;
-#ifdef DEB
-      const char *name =
-#endif
-                   (  GetMapOfAIS().IsBound1(aisPickedShape) )?
-	GetMapOfAIS().Find1(aisPickedShape).ToCString() :
-	 (char *)  "????";
     }
   }
   return ret;
