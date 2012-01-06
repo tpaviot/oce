@@ -25,7 +25,7 @@
 #ifdef DRAW
 #include <DBRep.hxx>
 #endif
-#ifdef DEB
+#ifdef DRAW
 Standard_Integer NbF = 1;
 static Standard_Boolean Affich = Standard_False;
 //POP pour NT

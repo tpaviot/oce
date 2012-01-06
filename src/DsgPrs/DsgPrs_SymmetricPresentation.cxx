@@ -537,10 +537,6 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   if (parcur < parmin) parmin = parcur;
   if (parcur > parmax) parmax = parcur;
   parcur = ElCLib::Parameter(L3,OffsetPnt);
-#ifdef DEB
-  gp_Pnt offp =
-#endif
-                ElCLib::Value(parcur,L3);
 
   Standard_Boolean outside = Standard_False;
   if (parcur < parmin) {
@@ -890,10 +886,6 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     if (parcur < parmin) parmin = parcur;
     if (parcur > parmax) parmax = parcur;
     parcur = ElCLib::Parameter(L3,OffsetPoint);
-#ifdef DEB
-    gp_Pnt offp =
-#endif
-                  ElCLib::Value(parcur,L3);
     
     Standard_Boolean outside = Standard_False;
     if (parcur < parmin) {

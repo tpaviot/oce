@@ -534,10 +534,6 @@ void HLRBRep_Data::Write (const Handle(HLRBRep_Data)& DS,
 			  const Standard_Integer de,
 			  const Standard_Integer df)
 {
-#ifdef DEB
-  Standard_Integer n1vert = 
-#endif
-    DS->NbVertices();
   Standard_Integer n1edge = DS->NbEdges();
   Standard_Integer n1face = DS->NbFaces();
 
@@ -1575,10 +1571,7 @@ HLRBRep_Data::HidingStartLevel (const Standard_Integer E,
 #else
   Standard_Integer level;
 #endif
-#ifdef DEB
-  TopAbs_State st = 
-#endif
-    Classify(E,EData,Standard_True,level,param);
+  Classify(E,EData,Standard_True,level,param);
   Loop = Standard_True;
   It.Initialize(IL);
 

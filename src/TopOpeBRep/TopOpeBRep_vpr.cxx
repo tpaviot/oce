@@ -184,10 +184,6 @@ static void FUN_VPgeometryfound
   
   const TopOpeBRepDS_DataStructure& BDS = HDS->DS();
   if (BDS.HasShape(edge)) {
-#ifdef DEB
-    Standard_Integer iedge =
-#endif
-                BDS.Shape(edge);
     const TopOpeBRepDS_ListOfInterference& EPIL = BDS.ShapeInterferences(edge);
     TopOpeBRepDS_ListIteratorOfListOfInterference itEPIL(EPIL);
     EPIfound = FF.GetGeometry(itEPIL,VP,PVIndex,PVKind);
@@ -233,10 +229,6 @@ static void FUN_VPgeometryfound
     Standard_Real tolOOe = FUN_tool_maxtol(OOedge);
     Standard_Real OOtolp = Precision::Parametric(tolOOe);
     if (BDS.HasShape(OOedge)) {
-#ifdef DEB
-      Standard_Integer iooedge =
-#endif
-                    BDS.Shape(OOedge);
       const TopOpeBRepDS_ListOfInterference& OOEPIL = BDS.ShapeInterferences(OOedge);
       TopOpeBRepDS_ListIteratorOfListOfInterference OOitEPIL(OOEPIL);
       OOEPIfound = FF.GetGeometry(OOitEPIL,VP,PVIndex,PVKind);
@@ -546,9 +538,6 @@ static void FUN_processCPI
  Standard_Integer& keptVPnbr)
 //-----------------------------------------------------------------------
 {    
-#ifdef DEB
-  Standard_Boolean CPIfound = !Ifound.IsNull();
-#endif
   Standard_Integer OOShapeIndex = (ShapeIndex == 1) ? 2 : 1;
 
   TopOpeBRepDS_Transition ttransLine = transLine;

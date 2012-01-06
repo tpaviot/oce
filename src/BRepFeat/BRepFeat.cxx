@@ -175,11 +175,7 @@ Standard_Real BRepFeat::ParametricBarycenter(const TopoDS_Shape& S,
 	  }
 	}
 	nbp++;
-#ifdef DEB
-	Standard_Real prmp = extpc.Point(kmin).Parameter();
-#else
         extpc.Point(kmin).Parameter();
-#endif
       }	  
     }
   }

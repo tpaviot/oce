@@ -659,8 +659,6 @@ __declspec( dllexport ) int __fastcall __OpenGl_INIT__ (
 
     Bool  i;
     GLXContext ctx;
-    GLenum errorcode;
-    const GLubyte *errorstring;
 
     if ( !_Txgl_Map.IsBound( win ) )
       return TFailure;

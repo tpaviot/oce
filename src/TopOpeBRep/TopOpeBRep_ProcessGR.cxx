@@ -150,8 +150,8 @@ TopAbs_State TopOpeBRep_FacesFiller::StBipVPonF
   gp_Pnt pmil = BC.Value(parmil);
   
 #ifdef DEB
-  Standard_Boolean trc = TopOpeBRep_GettraceBIPS();
 #ifdef DRAW
+  Standard_Boolean trc = TopOpeBRep_GettraceBIPS();
   if (trc) {TCollection_AsciiString aa("pmil"); FUN_brep_draw(aa,pmil);}
 #endif
 #endif
@@ -202,10 +202,6 @@ void TopOpeBRep_FacesFiller::Lminmax(const TopOpeBRep_LineInter& L,
   VPI.Init(L,Standard_False);
   for (; VPI.More(); VPI.Next()) {
     const TopOpeBRep_VPointInter& VP = VPI.CurrentVP();
-#ifdef DEB
-    Standard_Integer iVP =
-#endif
-              VPI.CurrentVPIndex();
     Standard_Real p = VP.ParameterOnLine();
     pmin = Min(pmin,p);
     pmax = Max(pmax,p);
@@ -315,10 +311,6 @@ Standard_Real TopOpeBRep_FacesFiller::VPParamOnER(const TopOpeBRep_VPointInter& 
   // If vp(index) is an edge boundary returns the point's parameter.
 
   const TopoDS_Edge& E = TopoDS::Edge(Lrest.Arc());
-#ifdef DEB
-  Standard_Boolean isdg =
-#endif
-             BRep_Tool::Degenerated(E);
   Standard_Boolean isedge1 =  Lrest.ArcIsEdge(1);
   Standard_Boolean isedge2 =  Lrest.ArcIsEdge(2);
   if (isedge1 && vp.IsVertexOnS1()) {

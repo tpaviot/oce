@@ -48,8 +48,7 @@
 
 #ifdef DRAW
 #include <DrawTrSurf.hxx>
-#endif
-#ifdef DEB
+
 static Standard_Boolean Affich = Standard_False;
 static Standard_Integer NBPROJ = 1;
 #endif
@@ -326,12 +325,6 @@ Handle(Geom_Curve) GeomProjLib::Project( const Handle(Geom_Curve)& C,
     Standard_Real TolU = Pow(Tol, 2./3);
     Standard_Real TolV = Pow(Tol, 2./3);
     ProjLib_CompProjectedCurve Proj(HS,HC,TolU,TolV,-1.);
-    
-#ifdef DEB
-    Standard_Integer NbCurves = Proj.NbCurves();
-#else
-    Proj.NbCurves();
-#endif
     Standard_Real f,l;
     Proj.Bounds(1,f,l);
     Handle(Adaptor2d_HCurve2d) HC2d = Proj.Trim(f,l,TolU);

@@ -1247,10 +1247,6 @@ void V3d_View::SetDepth(const Standard_Real Depth) {
   Viewer_BadValue_Raise_if( Depth <= 0. ,"V3d_View::SetDepth, bad depth");
 #endif
 
-#ifdef DEB
-  Standard_Real twist =
-#endif
-    Twist();
   MyViewReferencePoint = MyViewOrientation.ViewReferencePoint() ;
   MyViewReferencePlane = MyViewOrientation.ViewReferencePlane() ;
   MyProjReferencePoint = MyViewMapping.ProjectionReferencePoint() ;

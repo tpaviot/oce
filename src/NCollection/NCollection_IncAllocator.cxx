@@ -103,7 +103,6 @@ static void Debug_Create(Standard_Address theAlloc)
   if (CurrentID == CATCH_ID)
   {
     // Place for break point for creation of investigated allocator
-    int a = 1;
   }
 }
 

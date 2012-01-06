@@ -390,9 +390,6 @@ void Prs2d_Angle::DrawElement( const Handle(Graphic2d_Drawer)& aDrawer,
     
     /////////////////////////////////////////
     Standard_ShortReal txtAngle=Standard_ShortReal(myAbsAngle);
-    Standard_Real theSmbX,theSmbY;
-    theSmbX=myAbsX;
-    theSmbY=myAbsY;
     /////////////////////////////////////////
     Standard_ShortReal a = myCentX, b = myCentY, c = myRad, e = myFAngle, 
                        f = mySAngle,t1 = Standard_ShortReal( myAbsX ),

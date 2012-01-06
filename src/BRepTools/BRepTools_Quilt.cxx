@@ -194,11 +194,6 @@ void BRepTools_Quilt::Add(const TopoDS_Shape& S)
 	  TopoDS_Wire NW;
 	  B.MakeWire(NW);
 	  TopoDS_Iterator ite(W,Standard_False);
-#ifdef DEB
-	  Standard_Real   Tol = BRep_Tool::Tolerance(F);
-#else
-          BRep_Tool::Tolerance(F);
-#endif
 	  Standard_Real   UFirst,ULast;
 	  
 	  // Reconstruction des wires.

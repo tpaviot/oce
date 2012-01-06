@@ -494,14 +494,6 @@ Standard_Boolean TopOpeBRepTool_TOOL::TgINSIDE(const TopoDS_Vertex& v, const Top
 Standard_Boolean TopOpeBRepTool_TOOL::TggeomE(const Standard_Real par, const BRepAdaptor_Curve& BC, 
 				 gp_Vec& Tg)
 {
-#ifdef DEB
-  GeomAbs_CurveType ct =
-#endif
-                         BC.GetType();
-#ifdef DEB
-  Standard_Boolean apoles = (ct == GeomAbs_BezierCurve)||(ct == GeomAbs_BSplineCurve);
-#endif
-  
   Standard_Real f = BC.FirstParameter(), l = BC.LastParameter();
   Standard_Real tolE = BC.Tolerance(); Standard_Real tolp = BC.Resolution(tolE);
   
@@ -510,7 +502,6 @@ Standard_Boolean TopOpeBRepTool_TOOL::TggeomE(const Standard_Real par, const BRe
 
   if ((!inbounds) && (!onf) && (!onl)) return Standard_False;
   Standard_Real thepar = par;
-//  if (apoles && (onf || onl)) thepar = onf ? (thepar+tolp) : (thepar-tolp);
 
   gp_Pnt thepnt; BC.D1(thepar, thepnt, Tg);
   Tg.Normalize(); 
@@ -948,10 +939,7 @@ Standard_Boolean TopOpeBRepTool_TOOL::UVISO(const TopoDS_Edge& E, const TopoDS_F
   //  Standard_Real f,l,tol; Handle(Geom2d_Curve) PC = FC2D_CurveOnSurface(E,F,f,l,tol);
   Handle(Geom2d_Curve) PC; Standard_Real f,l,tol;
   Standard_Boolean hasold = FC2D_HasOldCurveOnSurface(E,F,PC);
-#ifdef DEB
-  Standard_Boolean hasnew =
-#endif
-               FC2D_HasNewCurveOnSurface(E,F,PC);
+  FC2D_HasNewCurveOnSurface(E,F,PC);
   PC = FC2D_EditableCurveOnSurface(E,F,f,l,tol);
   if (!hasold) FC2D_AddNewCurveOnSurface(PC,E,F,f,l,tol);
   
@@ -1117,17 +1105,10 @@ Standard_Boolean TopOpeBRepTool_TOOL::Getduv(const TopoDS_Face& f,const gp_Pnt2d
   Bnd_Box bndf; BRepBndLib::AddClose(f,bndf);
   Standard_Real f1,f2,f3,l1,l2,l3; bndf.Get(f1,f2,f3,l1,l2,l3);
   gp_Vec d123(f1-l1, f2-l2, f3-l3);
-#ifdef DEB
-  Standard_Real dmax =
-#endif
-             d123.Dot(dir);
 
   gp_Pnt p; FUN_tool_value(uv,f,p); p.Translate(dir.Multiplied(factor));
   Standard_Real d; gp_Pnt2d uvtr;
-#ifdef DEB
-  Standard_Boolean ok =
-#endif
-           FUN_tool_projPonF(p,f, uvtr,d);
+  FUN_tool_projPonF(p,f, uvtr,d);
   Standard_Real tolf = BRep_Tool::Tolerance(f); tolf *= 1.e2; //NYIXPUTOL
   if (d > tolf) return Standard_False;
 
@@ -1340,9 +1321,6 @@ Standard_Boolean TopOpeBRepTool_TOOL::MatterKPtg(const TopoDS_Face& f1,const Top
   Standard_Real x = 0.45678; Standard_Real pare = (1-x)*f+x*l;
 
   Standard_Real eps = 0.123; //NYIXPU190199
-#ifdef DEB
-  Standard_Real tola = Precision::Angular()*1.e3;
-#endif
 
   gp_Pnt2d uv1; FUN_tool_paronEF(e,pare,f1,uv1);
   gp_Dir nt1; Standard_Boolean ok1 = TopOpeBRepTool_TOOL::Nt(uv1,f1,nt1);
@@ -1359,20 +1337,6 @@ Standard_Boolean TopOpeBRepTool_TOOL::MatterKPtg(const TopoDS_Face& f1,const Top
   Standard_Real dot = v12.Dot(nt1);
   ang = (dot < 0.) ? 0. : 2.*PI;
 
-//  gp_Dir nt1; ok1 = TopOpeBRepTool_TOOL::Nt(uv1,f1,nt1);
-//  if (!ok1) return Standard_False;
-//  gp_Dir xx1; ok1 = TopOpeBRepTool_TOOL::XX(uv1,f1,pare,e,xx1);
-//  if (!ok1) return Standard_False;    
-//  gp_Pnt2d uv2; Standard_Boolean ok2 = TopOpeBRepTool_TOOL::uvApp(f2,e,pare,eps,uv2);
-//  if (!ok2) return Standard_False;
-//  gp_Dir nt2; ok2 = TopOpeBRepTool_TOOL::Nt(uv2,f2,nt2);
-//  if (!ok2) return Standard_False;
-//  gp_Dir xx2; ok2 = TopOpeBRepTool_TOOL::XX(uv2,f2,pare,e,xx2);
-//  if (!ok2) return Standard_False;  
-//  Standard_Real angapp; Standard_Boolean ok = TopOpeBRepTool_TOOL::Matter(xx1,nt1, xx2,nt2,tola,angapp);
-//  if (!ok) return Standard_False;
-//  Standard_Boolean is0 = (Abs(angapp) < Abs(2.*PI-angapp));
-//  ang = is0 ? 0. : 2.*PI;
   return Standard_True;
 }
 

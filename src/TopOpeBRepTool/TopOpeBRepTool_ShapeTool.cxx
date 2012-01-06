@@ -192,19 +192,11 @@ void TopOpeBRepTool_ShapeTool::AdjustOnPeriodic(const TopoDS_Shape& F,
 
   if (isUperio) {
     Standard_Real Uperiod = Surf->UPeriod();
-#ifdef DEB
-    Standard_Real ubid = UFfirst;
-#endif
-//    ElCLib::AdjustPeriodic(UFfirst,UFfirst + Uperiod,tol,ubid,u);
     if (Abs(u - UFfirst-Uperiod) > tol)
       u = ElCLib::InPeriod(u,UFfirst,UFfirst + Uperiod);
   }
   if (isVperio) {
     Standard_Real Vperiod = Surf->VPeriod();
-#ifdef DEB
-    Standard_Real vbid = VFfirst;
-#endif
-//    ElCLib::AdjustPeriodic(VFfirst,VFfirst + Vperiod,tol,vbid,v);
     if (Abs(v - VFfirst-Vperiod) > tol)
       v = ElCLib::InPeriod(v,VFfirst,VFfirst + Vperiod);
   }

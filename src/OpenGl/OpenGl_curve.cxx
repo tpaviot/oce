@@ -106,7 +106,6 @@ CurveDisplay( TSM_ELEM_DATA data, Tint n, cmn_key *k )
   tel_curve_data d;
   CMN_KEY        key;
   TEL_COLOUR     colour;
-  int            i, j;
 
   d = (tel_curve_data)data.pdata;
 

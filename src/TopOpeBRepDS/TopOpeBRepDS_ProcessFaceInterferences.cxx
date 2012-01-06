@@ -285,8 +285,6 @@ Standard_EXPORT void FUN_resolveFUNKNOWN
 
     const TopoDS_Face& FS = TopoDS::Face(BDS.Shape(S1));
 
-    Standard_Boolean isclosedFF = BRep_Tool::IsClosed(EE,FF);
-    Standard_Boolean isclosedFS = BRep_Tool::IsClosed(EE,FS);
 //    if (!go) continue;
 
     // la face FF transitionne par la transition T1.IsUnknown()
