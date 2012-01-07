@@ -553,7 +553,7 @@ VrmlData_ErrorStatus VrmlData_TextureCoordinate::Read
     // Match the name with the current word in the stream
     if (VRMLDATA_LCOMPARE (theBuffer.LinePtr, "point"))
       // Read the body of the data node (comma-separated list of duplets)
-      if (OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+      if (OK(aStatus, VrmlData_Scene::ReadLine(theBuffer))) {
         if (theBuffer.LinePtr[0] != '[')  // opening bracket
           aStatus = VrmlData_VrmlFormatError;
         else {
@@ -583,6 +583,7 @@ VrmlData_ErrorStatus VrmlData_TextureCoordinate::Read
             break;
           }
         }
+      }
     if (OK(aStatus) && OK(aStatus, readBrace (theBuffer))) {
       myLength = vecValues.Length();
       if (myLength > 0) {
@@ -644,7 +645,7 @@ VrmlData_ErrorStatus VrmlData_ArrayVec3d::ReadArray
         theBuffer.LinePtr++;
     }
     // Read the body of the data node (list of triplets)
-    if (OK(aStatus) && OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+    if (OK(aStatus) && OK(aStatus, VrmlData_Scene::ReadLine(theBuffer))) {
       if (theBuffer.LinePtr[0] != '[')  // opening bracket
         aStatus = VrmlData_VrmlFormatError;
       else {
@@ -671,6 +672,7 @@ VrmlData_ErrorStatus VrmlData_ArrayVec3d::ReadArray
           }
         }
       }
+    }
     if (OK(aStatus) && OK(aStatus, readBrace (theBuffer))) {
       myLength = vecValues.Length();
       if (myLength > 0) {

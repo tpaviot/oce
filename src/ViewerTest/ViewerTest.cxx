@@ -449,13 +449,14 @@ Handle(AIS_Shape) GetAISShapeFromName(const char* name)
     const Handle(AIS_InteractiveObject) IO =
       Handle(AIS_InteractiveObject)::DownCast(GetMapOfAIS().Find2(name));
     if (!IO.IsNull()) {
-      if(IO->Type()==AIS_KOI_Shape)
+      if(IO->Type()==AIS_KOI_Shape) {
         if(IO->Signature()==0){
           retsh = *((Handle(AIS_Shape)*)&IO);
         }
         else
           cout << "an Object which is not an AIS_Shape "
             "already has this name!!!"<<endl;
+      }
     }
     return retsh;
   }
@@ -949,12 +950,12 @@ static int VSubInt(Draw_Interpretor& di, Standard_Integer argc, const char** arg
     TCollection_AsciiString name = argv[2];
     if(GetMapOfAIS().IsBound2(name)){
       IO = Handle(AIS_InteractiveObject)::DownCast(GetMapOfAIS().Find2(name));
-      if (!IO.IsNull())
+      if (!IO.IsNull()) {
         if(On==1)
           Ctx->SubIntensityOn(IO);
         else
           Ctx->SubIntensityOff(IO);
-
+      }
     }
     else return 1;
   }
@@ -1069,12 +1070,13 @@ static int VColor2 (Draw_Interpretor& di, Standard_Integer argc, const char** ar
       while ( it.More() ) {
 	const Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        if (!ashape.IsNull())
+        if (!ashape.IsNull()) {
           if(HaveToSet)
             TheAISContext()->SetColor(ashape,GetColorFromName(argv[1]),
                                       Standard_False);
           else
             TheAISContext()->UnsetColor(ashape,Standard_False);
+        }
 	it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1175,12 +1177,13 @@ static int VTransparency  (Draw_Interpretor& di, Standard_Integer argc,
       while ( it.More() ) {
 	Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        if (!ashape.IsNull())
+        if (!ashape.IsNull()) {
           if(HaveToSet)
             TheAISContext()->SetTransparency(ashape,atof(argv[1]),
                                              Standard_False);
           else
             TheAISContext()->UnsetTransparency(ashape,Standard_False);
+        }
 	it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1237,12 +1240,13 @@ static int VMaterial (Draw_Interpretor& di, Standard_Integer argc, const char** 
     if ( ThereIsName && IsBound ) {
       Handle(AIS_InteractiveObject) ashape =
         Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2(name));
-      if (!ashape.IsNull())
+      if (!ashape.IsNull()) {
         if (HaveToSet)
           TheAISContext()->SetMaterial (ashape,
                                         GetMaterialFromName (argv[2]) );
         else
           TheAISContext()->UnsetMaterial(ashape);
+      }
     }
     //=======================================================================
     // Il n'y a pas de nom de shape
@@ -1273,12 +1277,13 @@ static int VMaterial (Draw_Interpretor& di, Standard_Integer argc, const char** 
       while ( it.More() ) {
 	Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast (it.Key1());
-	if (!ashape.IsNull())
+	if (!ashape.IsNull()) {
           if (HaveToSet)
 	  TheAISContext()->SetMaterial(ashape,GetMaterialFromName(argv[1]),
                                        Standard_False );
           else
             TheAISContext()->UnsetMaterial(ashape,Standard_False);
+	}
 	it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1373,11 +1378,12 @@ static int VWidth (Draw_Interpretor& di, Standard_Integer argc, const char** arg
      while ( it.More() ) {
        Handle(AIS_InteractiveObject) ashape =
          Handle(AIS_InteractiveObject)::DownCast (it.Key1());
-       if (!ashape.IsNull())
+       if (!ashape.IsNull()) {
          if (HaveToSet)
            TheAISContext()->SetWidth(ashape,atof (argv[1]),Standard_False );
          else
            TheAISContext()->UnsetWidth (ashape,Standard_False);
+       }
        it.Next();
      }
      TheAISContext()->UpdateCurrentViewer();

@@ -126,7 +126,7 @@ void IGESData_GlobalSection::Init(const Handle(Interface_ParamSet)& params,
 
   // Sending of message : Incorrect number of parameters (following the IGES version)
   // Version less than 5.3 
-  if  (theIGESVersion < 11) 
+  if  (theIGESVersion < 11) {
     if ((nbp < 24) || (nbp > 25)) {
        // 24 or 25 parameters are expected (parameter 25 is not required)
       Message_Msg Msg39 ("XSTEP_39");
@@ -135,7 +135,7 @@ void IGESData_GlobalSection::Init(const Handle(Interface_ParamSet)& params,
       if (nbp < 24) ach->SendFail(Msg39);
       else          ach->SendWarning(Msg39);
     }
-
+  }
   // Version 5.3 
   else if ((nbp < 25) || (nbp > 26)) {
     // 25 or 26 parameters are expected (parameter 25 is not required)

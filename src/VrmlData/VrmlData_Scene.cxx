@@ -211,11 +211,12 @@ VrmlData_ErrorStatus VrmlData_Scene::readLine (VrmlData_InBuffer& theBuffer)
     const int stat = theBuffer.Input.rdstate();
     if (stat & ios::badbit)
       aStatus = VrmlData_UnrecoverableError;
-    else if (stat & ios::failbit)
+    else if (stat & ios::failbit) {
       if (stat & ios::eofbit)
         aStatus = VrmlData_EndOfFile;
       else
         aStatus = VrmlData_GeneralError;
+    }
     theBuffer.LinePtr = &theBuffer.Line[0];
     theBuffer.IsProcessed = Standard_False;
   }
@@ -450,7 +451,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
   TCollection_AsciiString aName;
  
   // Read the DEF token to assign the node name
-  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer)))
+  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer))) {
     if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "DEF")) {
       if (VrmlData_Node::OK(aStatus, ReadWord (theBuffer, aName)))
         aStatus = ReadLine(theBuffer);
@@ -458,6 +459,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       theNode.Nullify();
       return aStatus;
     }
+  }
 
   const char * strName = aName.ToCString();
   if (aStatus == VrmlData_StatusOK) {
@@ -507,7 +509,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       aStatus = ReadWord (theBuffer, aTitle);
       if (isProto) {
         aStatus = ReadLine(theBuffer);
-        if (aStatus == VrmlData_StatusOK)
+        if (aStatus == VrmlData_StatusOK) {
           if (theBuffer.LinePtr[0] != '[')
             aStatus = VrmlData_VrmlFormatError;
           else {
@@ -531,6 +533,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
               }
             }
           }
+        }
       }
       if (aStatus == VrmlData_StatusOK)
         aNode = new VrmlData_UnknownNode(* this,
@@ -549,13 +552,14 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
     aNode->myLineCount = theBuffer.LineCount;
 #endif
   }
-  if (aStatus == VrmlData_StatusOK)
+  if (aStatus == VrmlData_StatusOK) {
     if (theBuffer.LinePtr[0] == '{') {
       theBuffer.LinePtr++;
       theNode = aNode;
       myAllNodes.Append(aNode);
     } else
       aStatus = VrmlData_VrmlFormatError;
+  }
   return aStatus;
 }
 
@@ -710,13 +714,14 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXYZ
       theBuffer.LinePtr = endptr;
     }
   }
-  if (aStatus == VrmlData_StatusOK)
+  if (aStatus == VrmlData_StatusOK) {
     if (isScale)
       theXYZ.SetCoord (aVal[0] * myLinearScale,
                        aVal[1] * myLinearScale,
                        aVal[2] * myLinearScale);
     else
       theXYZ.SetCoord (aVal[0], aVal[1], aVal[2]);
+  }
   return aStatus;
 }
 
@@ -749,11 +754,12 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadXY
       theBuffer.LinePtr = endptr;
     }
   }
-  if (aStatus == VrmlData_StatusOK)
+  if (aStatus == VrmlData_StatusOK) {
     if (isScale)
       theXY.SetCoord (aVal[0] * myLinearScale, aVal[1] * myLinearScale);
     else
       theXY.SetCoord (aVal[0], aVal[1]);
+  }
   return aStatus;
 }
 
@@ -770,7 +776,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadArrIndex
 {
   VrmlData_ErrorStatus aStatus;
   theNBlocks = 0;
-  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer)))
+  if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer))) {
     if (theBuffer.LinePtr[0] != '[')  // opening bracket
       aStatus = VrmlData_VrmlFormatError;
     else {
@@ -837,6 +843,7 @@ VrmlData_ErrorStatus VrmlData_Scene::ReadArrIndex
         }
       }
     }
+  }
   return aStatus;
 }
 
@@ -907,7 +914,7 @@ VrmlData_ErrorStatus VrmlData_Scene::WriteXYZ
                                  const char             * thePostfix) const
 {
   char buf[240];
-  if (IsDummyWrite() == Standard_False)
+  if (IsDummyWrite() == Standard_False) {
     if (isApplyScale && myLinearScale > Precision::Confusion())
       sprintf (buf, "%.12g %.12g %.12g%s", theXYZ.X() / myLinearScale,
                theXYZ.Y() / myLinearScale, theXYZ.Z() / myLinearScale,
@@ -915,6 +922,7 @@ VrmlData_ErrorStatus VrmlData_Scene::WriteXYZ
     else
       sprintf (buf, "%.12g %.12g %.12g%s", theXYZ.X(), theXYZ.Y(), theXYZ.Z(),
                thePostfix ? thePostfix : "");
+  }
   return WriteLine (buf);
 }
 

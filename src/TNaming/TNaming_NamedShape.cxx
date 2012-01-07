@@ -1101,7 +1101,7 @@ static void SelectSameShape (TNaming_Node*&          myNode,
     if (Trans < 0) Valid = pdn->myAtt->IsValid(); 
     else Valid = pdn->IsValidInTrans(Trans);
 
-    if (Valid)
+    if (Valid) {
       if (Old) {
 	if( pdn->myOld == RS && pdn->myNew != 0L && pdn->myNew != RS) {
 	  break;
@@ -1112,6 +1112,7 @@ static void SelectSameShape (TNaming_Node*&          myNode,
 	  break;
 	}
       }
+    }
     pdn = pdn->NextSameShape(RS);
   }
   myNode = pdn;
