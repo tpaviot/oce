@@ -271,7 +271,7 @@ void NIS_TriangulatedDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
                     aType, pObject->mypLines);
   else {
     Standard_Boolean isLoop;
-    if (pObject->IsLine(isLoop))
+    if (pObject->IsLine(isLoop)) {
       if (isLoop) {
 //         glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements (GL_LINE_LOOP, pObject->NLineNodes(),
@@ -281,6 +281,7 @@ void NIS_TriangulatedDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
         glDrawElements (GL_LINE_STRIP, pObject->NLineNodes(),
                         aType, pObject->mypLines);
       }
+    }
   }
 
 }

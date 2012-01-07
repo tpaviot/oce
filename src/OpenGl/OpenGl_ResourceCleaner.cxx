@@ -135,7 +135,7 @@ void OpenGl_ResourceCleaner::Cleanup()
   GLCONTEXT aContext = GET_GL_CONTEXT();
 
   // if we have active context, we can delete the resources
-  if (aContext != NULL) 
+  if (aContext != NULL) {
     // if the context is found in shared list
     if (mySharedContexts.Contains(aContext)) 
     {
@@ -155,6 +155,7 @@ void OpenGl_ResourceCleaner::Cleanup()
         aQueue->Pop();
       }
     }
+  }
 }
 
 //=======================================================================

@@ -223,7 +223,7 @@ static void PolyTest(const TColStd_Array1OfReal&         Herm,
       if ((max==0)||(max==3))                                                
 	for (i=0;i<=3;i++)
 	  Polesinit(i).SetCoord(0.0,(Polesinit(i).Y()-TolPoles*Polemax));
-      if ((max==1)||(max==2))
+      if ((max==1)||(max==2)) {
 	if ((min==0)||(min==3))                                             
 	  for (i=0;i<=3;i++)
 	    Polesinit(i).SetCoord(0.0,(Polesinit(i).Y()-(1/TolPoles)*Polemin));
@@ -266,6 +266,7 @@ static void PolyTest(const TColStd_Array1OfReal&         Herm,
 	    }
 	  }
 	}
+      }
     }
   }                          //end of the loop
   
@@ -428,7 +429,7 @@ static void PolyTest(const TColStd_Array1OfReal&        Herm,
       if ((max==0)||(max==3))                                                
 	for (i=0;i<=3;i++)
 	  Polesinit(i).SetCoord(0.0,(Polesinit(i).Y()-TolPoles*Polemax));
-      if ((max==1)||(max==2))
+      if ((max==1)||(max==2)) {
 	if ((min==0)||(min==3))                                             
 	  for (i=0;i<=3;i++)
 	    Polesinit(i).SetCoord(0.0,(Polesinit(i).Y()-(1/TolPoles)*Polemin));
@@ -471,6 +472,7 @@ static void PolyTest(const TColStd_Array1OfReal&        Herm,
 	    }
 	  }
 	}
+      }
     }
   }                          //end of the loop
   

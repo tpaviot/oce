@@ -348,9 +348,9 @@ void AIS2D_InteractiveContext::EraseMode(
 
   if ( !myObjects.IsBound( anIObj ) ) return;
   
-  if ( anIObj->HasDisplayMode() ) 
+  if ( anIObj->HasDisplayMode() ) {
     if ( anIObj->DisplayMode() == aMode ) return;
-  else if ( myDisplayMode == aMode) return;
+  } else if ( myDisplayMode == aMode) return;
   Handle(AIS2D_GlobalStatus) GStatus = myObjects( anIObj );
   if ( GStatus->GraphicStatus() != AIS2D_DS_Displayed ) return;
   if ( GStatus->IsDModeIn( aMode ) ) {}
@@ -1978,7 +1978,7 @@ AIS2D_StatusOfDetection AIS2D_InteractiveContext::MoveTo(
          
        myLastPicked = Handle(AIS2D_InteractiveObject)::DownCast( theGOi );
        ( is_main ) ? myLastinMain = myLastPicked : myLastinColl = myLastPicked;
-       if ( myLastPicked->HasHighlightMode() ) 
+       if ( myLastPicked->HasHighlightMode() ) {
 
          if ( AvailableToDetect(myLastPicked) ) {
              if ( myLastPicked->HighlightMode() == AIS2D_TOD_OBJECT )
@@ -1995,6 +1995,7 @@ AIS2D_StatusOfDetection AIS2D_InteractiveContext::MoveTo(
           
          } else theStat = AIS2D_SOD_Selected;
        }
+      }
      } // end for
     
      myResetDetect= Standard_False;   
@@ -2105,7 +2106,7 @@ AIS2D_StatusOfDetection AIS2D_InteractiveContext
       Handle(Graphic2d_GraphicObject) theGOi = dList->Value(i);
     if ( theGOi->IsKind(STANDARD_TYPE(AIS2D_InteractiveObject))) { 
       theIO = Handle(AIS2D_InteractiveObject)::DownCast( theGOi );
-      if ( theIO->HasHighlightMode() ) 
+      if ( theIO->HasHighlightMode() ) {
        if ( AvailableToDetect( theIO ) ) {
         if ( theIO->HighlightMode() == AIS2D_TOD_OBJECT )
              theIO->Highlight( ind );
@@ -2113,6 +2114,7 @@ AIS2D_StatusOfDetection AIS2D_InteractiveContext
         DoDetectObject( theIO, theDrawer );
        
        } else theStat = AIS2D_SOD_Selected;
+      }
     } 
    } // end for
    theDrawer->EndDraw();
@@ -2136,13 +2138,14 @@ AIS2D_StatusOfDetection AIS2D_InteractiveContext
 
 AIS2D_StatusOfPick AIS2D_InteractiveContext::Select( const Standard_Boolean UpdateVwr ) {
 
- if ( HasOpenedContext() )
+ if ( HasOpenedContext() ) {
   if ( myWasLastMain )
       return myLocalContexts(myCurLocalIndex)->Select(UpdateVwr);
     else {
 	  myLocalContexts( myCurLocalIndex )->SetSelected( myLastPicked, UpdateVwr );
 	  return AIS2D_SOP_OneSelected;
   }
+ }
   
  if ( ! mySeqOfDetIO->IsEmpty() ) {
     Handle(AIS2D_InteractiveObject) theIO;

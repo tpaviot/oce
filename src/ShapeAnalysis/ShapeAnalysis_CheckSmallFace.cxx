@@ -357,12 +357,13 @@ static Standard_Boolean MinMaxSmall
     else return Standard_False;
   }
   //   Now, check these two edge to define a strip !
-  if (!E1.IsNull()&&!E2.IsNull()) 
+  if (!E1.IsNull()&&!E2.IsNull()) {
     if(!CheckStripEdges (E1,E2,tol,dmax)) return Standard_False; 
       else {   
 	myStatusStrip = ShapeExtend::EncodeStatus (ShapeExtend_DONE3);
 	return Standard_True ;
       }
+  }
   return Standard_False;
 }
 
@@ -582,8 +583,10 @@ static Standard_Boolean CheckPoles(const TColgp_Array2OfPnt& poles, Standard_Int
   Standard_Integer i0 = (uorv == 1 ? poles.LowerCol() : poles.LowerRow());
   Standard_Integer i1 = (uorv == 1 ? poles.UpperCol() : poles.UpperRow());
   for (Standard_Integer i = i0; i <= i1-1; i ++) {
-    if (uorv == 1) if(poles(rank,i).IsEqual(poles(rank, i+1), 1e-15)) return Standard_True;
-    else      if(poles(i,rank).IsEqual(poles(i+1,rank), 1e-15)) return Standard_True;
+    if (uorv == 1) {
+      if(poles(rank,i).IsEqual(poles(rank, i+1), 1e-15)) return Standard_True;
+    } else
+      if(poles(i,rank).IsEqual(poles(i+1,rank), 1e-15)) return Standard_True;
   }  
   return Standard_False;
 }

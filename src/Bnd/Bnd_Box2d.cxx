@@ -204,13 +204,13 @@ void Bnd_Box2d::Add (const gp_Dir2d& D)
 {
   Standard_Real DX = D.X();
   Standard_Real DY = D.Y();
-  if (DX < 0)
+  if (DX < 0) {
     if (DX < - gp::Resolution()) OpenXmin();
-  else
+  } else
     if (DX >   gp::Resolution()) OpenXmax();
-  if (DY < 0)
+  if (DY < 0) {
     if (DY < - gp::Resolution()) OpenYmin();
-  else
+  } else
     if (DY >   gp::Resolution()) OpenYmax();
 }
 

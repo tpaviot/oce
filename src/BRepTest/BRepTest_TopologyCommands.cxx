@@ -106,12 +106,13 @@ static Standard_Integer section(Draw_Interpretor& , Standard_Integer n, const ch
 	  else
 	    if (strcasecmp(a[4], "-no2d"))
 	      return 1;
-      if(n > 5)
+      if(n > 5) {
 	if (!strcasecmp(a[5], "-a")) 
 	  Sec.Approximation(TopOpeBRepTool_APPROX);
 	else 
 	  if (strcasecmp(a[5], "-p"))
 	    return 1;
+      }
     } else {// fin a[4],"-2d"
       if (!strcasecmp(a[4], "-a") || !strcasecmp(a[4], "-p")) {
 	if (!strcasecmp(a[4], "-a")) 
