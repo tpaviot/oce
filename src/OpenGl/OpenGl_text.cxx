@@ -153,6 +153,7 @@ TextAdd( TSM_ELEM_DATA d, Tint n, cmn_key *k )
 
   wchar_t *wstr = new wchar_t[i];
   if( !wstr )
+    delete data;
     return TFailure;
 
   data->attach_pt = *pt;
