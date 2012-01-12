@@ -146,7 +146,7 @@ call_subr_polyline_data( CALL_DEF_LISTPOINTS * alpoints )
 
 #ifdef IMP190602
   delete[] points;
-  delete col;
+  delete [] col;
 #endif
 
   return;
