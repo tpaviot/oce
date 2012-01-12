@@ -180,7 +180,7 @@ TCollection_AsciiString OSD_Host::InternetAddress(){
  struct utsname info; 
  uname(&info);
  char noaddress[100];
- strcat(noaddress,"NO-ETHERNET-ADDRESS-AVAILABLE-ON-");
+ strcpy(noaddress,"NO-ETHERNET-ADDRESS-AVAILABLE-ON-");
  TCollection_AsciiString result(strcat(noaddress,info.sysname));
  return (result);
 }
