@@ -85,7 +85,7 @@ public:
     Standard_EXPORT virtual int underflow();
     //virtual int uflow();
 
-    Standard_EXPORT virtual int xsputn(const char* s, int n);
+    Standard_EXPORT virtual std::streamsize xsputn(const char* s, std::streamsize n);
     //virtual int xsgetn(char* s, int n);
     //virtual int sync();
 
