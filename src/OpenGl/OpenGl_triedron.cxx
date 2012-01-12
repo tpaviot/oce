@@ -605,7 +605,7 @@ TStatus call_triedron_redraw (
       glEnable(GL_CLIP_PLANE0 + ii);
     }
   } 
-  free(isPlaneActive);
+  delete [] isPlaneActive;
 
 #endif
 
@@ -1108,7 +1108,7 @@ TStatus call_zbuffer_triedron_redraw (
       glEnable(GL_CLIP_PLANE0 + i);
     }
   }
-  free(isPlaneActive);
+  delete [] isPlaneActive;
 #endif
 
   if (!isWithinView) { /* restore matrix */
