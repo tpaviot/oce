@@ -268,6 +268,7 @@ PolygonIndicesAdd( TSM_ELEM_DATA d, Tint n, cmn_key *k )
   {
     //cmn_freemem( data->vertices );
     delete[] data->vertices;
+    delete data;
     return TFailure;
   }
   //cmn_memreserve( data->bounds, data->num_bounds, 0 );
