@@ -45,20 +45,22 @@ static void CheckCurveData
  const Standard_Boolean            Periodic)
 {
   if (Degree < 1 || Degree > Geom_BSplineCurve::MaxDegree()) {
-    Standard_ConstructionError::Raise();  
+    Standard_ConstructionError::Raise("BSpline degree smaller than 1 or greeter than max value.");
   }
   
-  if (CPoles.Length() < 2)                Standard_ConstructionError::Raise();
-  if (CKnots.Length() != CMults.Length()) Standard_ConstructionError::Raise();
+  if (CPoles.Length() < 2)
+    Standard_ConstructionError::Raise("BSpline with less than 2 poles");
+  if (CKnots.Length() != CMults.Length())
+    Standard_ConstructionError::Raise("BSpline with number of knots different of number of knot multiplicity");
   
   for (Standard_Integer I = CKnots.Lower(); I < CKnots.Upper(); I++) {
     if (CKnots (I+1) - CKnots (I) <= Epsilon (Abs(CKnots (I)))) {
-      Standard_ConstructionError::Raise();
+      Standard_ConstructionError::Raise("Too small distance between knots in a BSpline curve");
     }
   }
   
   if (CPoles.Length() != BSplCLib::NbPoles(Degree,Periodic,CMults))
-    Standard_ConstructionError::Raise();
+    Standard_ConstructionError::Raise("Wrong number of poles in a BSpline curve: "+CPoles.Length());
 }
 
 //=======================================================================
