@@ -70,7 +70,7 @@ is
 fields
 
     thefilename          : HAsciiString from TCollection;
-    thetime              : Integer from Standard;
+    thetime              : Time from Standard;
     thematerialssequence : MaterialsSequence from Materials;
 
 end MaterialsDictionary;
