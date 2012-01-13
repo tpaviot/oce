@@ -35,7 +35,7 @@ Standard_Boolean BinMDF_TagSourceDriver::Paste
                                  BinObjMgt_RRelocationTable&  ) const
 {
   Handle(TDF_TagSource) aTag = Handle(TDF_TagSource)::DownCast(theTarget);
-  Standard_Integer aValue;
+  Standard_Integer aValue=0;
   Standard_Boolean ok = theSource >> aValue;
   if (ok)
     aTag->Set(aValue);
