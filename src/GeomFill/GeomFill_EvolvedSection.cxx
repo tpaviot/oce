@@ -49,7 +49,7 @@ GeomFill_EvolvedSection::GeomFill_EvolvedSection(const Handle(Geom_Curve)& C,
     char*  name = new char[100];
     sprintf(name,"UnifSect_%d",++NumSec);
     DrawTrSurf::Set(name, myCurve);
-    delete name;
+    delete [] name;
   }
 #endif
 }
