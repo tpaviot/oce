@@ -70,6 +70,6 @@ is
 fields
 
     thefilename     : HAsciiString from TCollection;
-    thetime         : Integer;
+    thetime         : Time;
 
 end UnitsLexicon;
