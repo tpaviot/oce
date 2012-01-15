@@ -2915,8 +2915,8 @@ static TopAbs_Orientation Relative (const TopoDS_Wire&   W1,
   }
   Commun = Standard_True;
 
-  TopoDS_Wire WW1 = BRepLib_MakeWire(E1);
-  TopoDS_Wire WW2 = BRepLib_MakeWire(E2);
+  TopoDS_Wire WW1 = (TopoDS_Wire) BRepLib_MakeWire(E1);
+  TopoDS_Wire WW2 = (TopoDS_Wire) BRepLib_MakeWire(E2);
   Standard_Real Tol = BRepFill_Confusion();
   if (Side(WW1,Tol) < 4 && Side(WW2,Tol) < 4) // les deux a gauche
     return TopAbs_FORWARD;

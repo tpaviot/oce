@@ -1753,7 +1753,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 	while (!edges.IsEmpty())
 	  {
 	    TopoDS_Edge anEdge = TopoDS::Edge( edges.First() );
-	    TopoDS_Wire aWire = BRepLib_MakeWire( anEdge ), resWire;
+	    TopoDS_Wire aWire = (TopoDS_Wire) BRepLib_MakeWire( anEdge ), resWire;
 	    TColStd_SequenceOfInteger Candidates;
 	    for (k = 1; k <= wseq.Length(); k++)
 	      {
@@ -1795,7 +1795,7 @@ void BRepOffset_Tool::Inter3D(const TopoDS_Face& F1,
 			  }
 		      }
 		  }
-		TopoDS_Wire NewWire = BRepLib_MakeWire( resWire, TopoDS::Edge(edges(Candidates(minind))) );
+		TopoDS_Wire NewWire = (TopoDS_Wire) BRepLib_MakeWire( resWire, TopoDS::Edge(edges(Candidates(minind))) );
 		wseq(k) = NewWire;
 		edges.Remove(Candidates(minind));
 	      }
