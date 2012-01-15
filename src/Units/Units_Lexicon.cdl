@@ -90,7 +90,7 @@ is
 fields
 
     thefilename         : HAsciiString from TCollection;
-    thetime             : Integer;
+    thetime             : Time;
     thesequenceoftokens : TokensSequence from Units;
 
 end Lexicon;

@@ -49,6 +49,7 @@ is
     primitive PByte;
     primitive PCharacter;
     primitive PExtCharacter;
+	primitive Time;
 
     deferred class ErrorHandlerCallback;
     class ErrorHandler;

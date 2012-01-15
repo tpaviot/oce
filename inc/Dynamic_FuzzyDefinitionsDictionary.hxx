@@ -19,8 +19,8 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Time_HeaderFile
+#include <Standard_Time.hxx>
 #endif
 #ifndef _Handle_Dynamic_SequenceOfFuzzyDefinitions_HeaderFile
 #include <Handle_Dynamic_SequenceOfFuzzyDefinitions.hxx>
@@ -39,6 +39,9 @@
 #endif
 #ifndef _Handle_Dynamic_FuzzyClass_HeaderFile
 #include <Handle_Dynamic_FuzzyClass.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
@@ -104,13 +107,9 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
+Standard_Time thetime;
 Handle_Dynamic_SequenceOfFuzzyDefinitions thesequenceoffuzzydefinitions;
 
-#ifdef _MSC_VER
-__time64_t thetime;
-#else
-time_t thetime;
-#endif
 
 };
 

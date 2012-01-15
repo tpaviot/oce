@@ -19,8 +19,8 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Time_HeaderFile
+#include <Standard_Time.hxx>
 #endif
 #ifndef _Handle_Units_TokensSequence_HeaderFile
 #include <Handle_Units_TokensSequence.hxx>
@@ -85,7 +85,7 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
-time_t thetime;
+Standard_Time thetime;
 Handle_Units_TokensSequence thesequenceoftokens;
 
 
