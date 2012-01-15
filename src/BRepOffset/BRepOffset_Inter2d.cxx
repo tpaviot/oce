@@ -358,7 +358,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 	    }
 	  
 	  gp_Pnt P = ResPoints(i); //ponc1.Value();
-	  TopoDS_Vertex aNewVertex = BRepLib_MakeVertex(P);
+	  TopoDS_Vertex aNewVertex = (TopoDS_Vertex) BRepLib_MakeVertex(P);
 	  B.UpdateVertex( aNewVertex, aT1, E1, Tol );
 	  B.UpdateVertex( aNewVertex, aT2, E2, Tol );
 	  gp_Pnt P1 = CE1.Value(aT1);
@@ -439,7 +439,7 @@ static void EdgeInter(const TopoDS_Face&              F,
       gp_Pnt P2 = BRep_Tool::Pnt(V2[k]);
       Standard_Real Dist = P1.Distance(P2); 
       if (Dist < TolConf) {
-	TopoDS_Vertex V = BRepLib_MakeVertex(P1);
+	TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
 	U1 = (j == 0) ? f[1] : l[1];
 	U2 = (k == 0) ? f[2] : l[2];
 	TopoDS_Shape aLocalShape = V.Oriented(TopAbs_INTERNAL);
@@ -628,7 +628,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 	}
       
       gp_Pnt P = ResPoints(i); //ponc1.Value();
-      TopoDS_Vertex aNewVertex = BRepLib_MakeVertex(P);
+      TopoDS_Vertex aNewVertex = (TopoDS_Vertex) BRepLib_MakeVertex(P);
       B.UpdateVertex( aNewVertex, aT1, E1, Tol );
       B.UpdateVertex( aNewVertex, aT2, E2, Tol );
       gp_Pnt P1 = CE1.Value(aT1);
@@ -708,7 +708,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
       gp_Pnt P2 = BRep_Tool::Pnt(V2[k]);
       Standard_Real Dist = P1.Distance(P2); 
       if (Dist < TolConf) {
-	TopoDS_Vertex V = BRepLib_MakeVertex(P1);
+	TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
 	U1 = (j == 0) ? f[1] : l[1];
 	U2 = (k == 0) ? f[2] : l[2];
 	TopoDS_Shape aLocalShape = V.Oriented(TopAbs_INTERNAL);

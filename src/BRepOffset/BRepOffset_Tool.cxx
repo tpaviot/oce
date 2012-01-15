@@ -2468,7 +2468,7 @@ void BRepOffset_Tool::Inter2d (const TopoDS_Face&    F,
 	}
 	if (YaSol) {
 	  gp_Pnt        P   = S->Value(P2d.X(),P2d.Y());
-	  TopoDS_Vertex V = BRepLib_MakeVertex(P);
+	  TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P);
 	  V.Orientation(TopAbs_INTERNAL);
 	  TopoDS_Shape aLocalEdge = E1.Oriented(TopAbs_FORWARD);
 	  B.UpdateVertex(V,U1,TopoDS::Edge(aLocalEdge),TolConf);

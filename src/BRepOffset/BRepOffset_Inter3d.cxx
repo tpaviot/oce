@@ -73,8 +73,8 @@ static void ExtentEdge(const TopoDS_Face& F,
   BRep_Builder B;
   B.Range(NE,f,l);
   BRepAdaptor_Curve CE(E);
-  TopoDS_Vertex V1 = BRepLib_MakeVertex(CE.Value(f));
-  TopoDS_Vertex V2 = BRepLib_MakeVertex(CE.Value(l));
+  TopoDS_Vertex V1 = (TopoDS_Vertex) BRepLib_MakeVertex(CE.Value(f));
+  TopoDS_Vertex V2 = (TopoDS_Vertex) BRepLib_MakeVertex(CE.Value(l));
   B.Add(NE,V1.Oriented(TopAbs_FORWARD));
   B.Add(NE,V2.Oriented(TopAbs_REVERSED));
   NE.Orientation(E.Orientation());

@@ -3225,8 +3225,8 @@ void CutEdge (const TopoDS_Edge& E,
     gp_Pnt2d P1 = CT2d->Value(m1);
     gp_Pnt2d P2 = CT2d->Value(m2);
 
-    TopoDS_Vertex VL1 = BRepLib_MakeVertex(gp_Pnt(P1.X(), P1.Y(), 0.));
-    TopoDS_Vertex VL2 = BRepLib_MakeVertex(gp_Pnt(P2.X(), P2.Y(), 0.));
+    TopoDS_Vertex VL1 = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(P1.X(), P1.Y(), 0.));
+    TopoDS_Vertex VL2 = (TopoDS_Vertex) BRepLib_MakeVertex(gp_Pnt(P2.X(), P2.Y(), 0.));
     TopoDS_Shape aLocalShape1 = E.EmptyCopied();
     TopoDS_Shape aLocalShape2 = E.EmptyCopied();
     TopoDS_Shape aLocalShape3 = E.EmptyCopied();

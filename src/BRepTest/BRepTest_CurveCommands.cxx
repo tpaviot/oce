@@ -1582,7 +1582,7 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
   for (;EInter.MorePoint();EInter.NextPoint()) {
     const TopOpeBRep_Point2d& P2D = EInter.Point();
     gp_Pnt           P    = P2D.Value();
-    TopoDS_Vertex    V    = BRepLib_MakeVertex(P);
+    TopoDS_Vertex    V    = (TopoDS_Vertex) BRepLib_MakeVertex(P);
     NbV ++;
     sprintf(name,"%s_%d",a[1],NbV);
     DBRep::Set(name,V);
