@@ -411,7 +411,7 @@ static Standard_Integer edge(Draw_Interpretor& , Standard_Integer n, const char*
   TopoDS_Shape V1 = DBRep::Get(a[2],TopAbs_VERTEX);
   TopoDS_Shape V2 = DBRep::Get(a[3],TopAbs_VERTEX);
   if (V1.IsNull() || V2.IsNull()) return 1;
-  TopoDS_Edge E = BRepBuilderAPI_MakeEdge(TopoDS::Vertex(V1),
+  TopoDS_Edge E = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(TopoDS::Vertex(V1),
 				   TopoDS::Vertex(V2));
   DBRep::Set(a[1],E);
   return 0;
@@ -456,7 +456,7 @@ static Standard_Integer isoedge(Draw_Interpretor& , Standard_Integer n, const ch
     L = new Geom2d_Line(gp_Pnt2d(0,p),gp_Dir2d(1,0));
   }
 
-  TopoDS_Edge E = BRepBuilderAPI_MakeEdge(C,p1,p2);
+  TopoDS_Edge E = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(C,p1,p2);
   E.Location(Loc);
   BRep_Builder B;
   B.UpdateEdge(E,L,TopoDS::Face(Sh),0.);
