@@ -751,7 +751,7 @@ void BRepOffset_Tool::PipeInter(const TopoDS_Face& F1,
     for (Standard_Integer i = 1; i <= Inter.NbLines(); i++) {
       CI = Inter.Line(i);
       if (ToSmall(CI)) continue;
-      TopoDS_Edge E = BRepLib_MakeEdge(CI);
+      TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(CI);
       if (Inter.HasLineOnS1(i)) {
 	Handle(Geom2d_Curve) C2 = Inter.LineOnS1(i);
 	PutInBounds  (F1,E,C2);
@@ -2058,7 +2058,7 @@ void BRepOffset_Tool::InterOrExtent(const TopoDS_Face& F1,
       CI = Inter.Line(i);
       
       if (ToSmall(CI)) continue;
-      TopoDS_Edge E = BRepLib_MakeEdge(CI);
+      TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(CI);
       BuildPCurves (E,F1);
       BuildPCurves (E,F2);
       OrientSection (E,F1,F2,O1,O2);

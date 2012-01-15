@@ -2559,7 +2559,7 @@ static void AddDegeneratedEdge(TopoDS_Face& F,
 	  Handle(Geom2d_Line) C2d = new Geom2d_Line(PrevP,gp_Dir2d(V));
 	  Standard_Real f = 0, l = PrevP.Distance(P1);
 	  Handle(Geom2d_TrimmedCurve) CT = new Geom2d_TrimmedCurve(C2d,f,l);
-	  TopoDS_Edge NE = BRepLib_MakeEdge(C2d,S);
+	  TopoDS_Edge NE = (TopoDS_Edge) BRepLib_MakeEdge(C2d,S);
 	  B.Degenerated(NE,Standard_True);
 	  B.Add(NE,V1.Oriented(TopAbs_FORWARD));
 	  B.Add(NE,V1.Oriented(TopAbs_REVERSED));
@@ -2578,7 +2578,7 @@ static void AddDegeneratedEdge(TopoDS_Face& F,
 	Handle(Geom2d_Line) C2d = new Geom2d_Line(P2,gp_Dir2d(V));
 	Standard_Real f = 0, l = P2.Distance(PF);
 	Handle(Geom2d_TrimmedCurve) CT = new Geom2d_TrimmedCurve(C2d,f,l);
-	TopoDS_Edge NE = BRepLib_MakeEdge(C2d,S);
+	TopoDS_Edge NE = (TopoDS_Edge) BRepLib_MakeEdge(C2d,S);
 	B.Degenerated(NE,Standard_True);
 	B.Add(NE,VF.Oriented(TopAbs_FORWARD));
 	B.Add(NE,VF.Oriented(TopAbs_REVERSED));
@@ -3166,7 +3166,7 @@ void CutEdgeProf (const TopoDS_Edge&                  E,
 	
 	VV = BRepLib_MakeVertex( C->Value(Param));
 	
-	TopoDS_Edge EE = BRepLib_MakeEdge(C,Vf,VV);
+	TopoDS_Edge EE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vf,VV);
 	EE.Orientation(E.Orientation());
 	if ( EE.Orientation() == TopAbs_FORWARD)
 	  Cuts.Append(EE);
@@ -3180,7 +3180,7 @@ void CutEdgeProf (const TopoDS_Edge&                  E,
     }
   }
 
-  TopoDS_Edge EE = BRepLib_MakeEdge(C,Vf,Vl);
+  TopoDS_Edge EE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vf,Vl);
   EE.Orientation(E.Orientation());
   if ( EE.Orientation() == TopAbs_FORWARD)
     Cuts.Append(EE);
