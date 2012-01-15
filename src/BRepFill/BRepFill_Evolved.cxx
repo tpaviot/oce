@@ -361,7 +361,7 @@ void BRepFill_Evolved::Perform(const TopoDS_Wire&      Spine,
 			       const Standard_Boolean  Solid)
 {
   mySpineType = Standard_False;
-  TopoDS_Face aFace = BRepLib_MakeFace(Spine,Standard_True);
+  TopoDS_Face aFace = (TopoDS_Face) BRepLib_MakeFace(Spine,Standard_True);
   PrivatePerform( aFace, Profile, AxeProf, Join, Solid);
 }
 
@@ -2045,7 +2045,7 @@ void BRepFill_Evolved::AddTopAndBottom(BRepTools_Quilt& Glue)
     BRepAlgo_Loop Loop;
     // Construction des supports.
     gp_Pln S (0.,0.,1.,- Altitud(V[i]));
-    TopoDS_Face F = BRepLib_MakeFace(S);
+    TopoDS_Face F = (TopoDS_Face) BRepLib_MakeFace(S);
     Loop.Init(F);
 
     TopExp_Explorer     ExpSpine(mySpine,TopAbs_EDGE);
