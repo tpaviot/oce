@@ -3,6 +3,8 @@
 // Author:	Andrey BETENEV
 //		<abv@doomox.nnov.matra-dtv.fr>
 
+#define BUC60577	//TP_14012011 Fix out of bound.
+
 #include <XCAFPrs_AISObject.ixx>
 #include <TCollection_ExtendedString.hxx>
 #include <gp_Pnt.hxx>
