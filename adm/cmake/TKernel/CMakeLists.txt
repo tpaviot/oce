@@ -1,6 +1,7 @@
 SET(TOOLKIT TKernel)
 
 SET(TOOLKIT_MODULES
+	StdFail
 	FSD
 	MMgt
 	OSD
@@ -9,7 +10,6 @@ SET(TOOLKIT_MODULES
 	Resource
 	SortTools
 	Standard
-	StdFail
 	Storage
 	TColStd
 	TCollection
