@@ -73,6 +73,10 @@ IF(MSVC)
 	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_USE_BUNDLE "Use OCE Windows Bundle" OFF )
 ENDIF(MSVC)
 
+IF(BORLAND)
+	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_INSTALL_TDS_FILES "Instal TDS files (debug informations)" ON )
+ENDIF(BORLAND)
+
 IF(${PROJECT_NAME}_USE_BUNDLE)
 	OPTION_WITH_DEFAULT( ${PROJECT_NAME}_BUNDLE_AUTOINSTALL "Autoinstall bundle DLLs" ON )
 	MARK_AS_ADVANCED(${PROJECT_NAME}_BUNDLE_AUTOINSTALL)
@@ -115,11 +119,11 @@ MARK_AS_ADVANCED(${PROJECT_NAME}_RPATH_FILTER_SYSTEM_PATHS)
 # In MSVC it is not desirable to have it ON by default, since users must 
 # compile/use the OCE debug libraries to build it's own programs in DEBUG mode.
 # DEB should be enabled by developers only, in this case
-IF (MSVC AND CMAKE_CONFIGURATION_TYPES)
+IF ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
   SET (DEB_DEFAULT "OFF")
 ELSE ()
    SET (DEB_DEFAULT "ON")
-ENDIF (MSVC AND CMAKE_CONFIGURATION_TYPES)
+ENDIF ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
 
 OPTION_WITH_DEFAULT( ${PROJECT_NAME}_ENABLE_DEB_FLAG "Enables DEB define in debug configuration" ${DEB_DEFAULT} )
 MARK_AS_ADVANCED(${PROJECT_NAME}_ENABLE_DEB_FLAG)
@@ -184,7 +188,7 @@ SET_DIRECTORY_PROPERTIES(PROPERTIES COMPILE_DEFINITIONS_MINSIZEREL NDEBUG)
 SET_DIRECTORY_PROPERTIES(PROPERTIES COMPILE_DEFINITIONS_RELWITHDEBINFO  NDEBUG)
 
 IF(${PROJECT_NAME}_ENABLE_DEB_FLAG)
-  SET_DIRECTORY_PROPERTIES(PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEB;_DEBUG")
+  SET_DIRECTORY_PROPERTIES(PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEB=1;_DEBUG")
 ELSE ()
   SET_DIRECTORY_PROPERTIES(PROPERTIES COMPILE_DEFINITIONS_DEBUG "_DEBUG")
 ENDIF (${PROJECT_NAME}_ENABLE_DEB_FLAG)
@@ -635,6 +639,65 @@ IF (NOT WIN32)
 ENDIF(NOT WIN32)
 
 #######################################################
+# Check compiler version - Determine Borland compiler #
+#######################################################
+IF(BORLAND AND NOT BORLAND_VERSION)
+	IF(EXISTS ${CMAKE_CXX_COMPILER})
+		EXECUTE_PROCESS(
+			COMMAND ${CMAKE_CXX_COMPILER}  /?
+			OUTPUT_VARIABLE _output
+			ERROR_QUIET
+		)
+		
+		string(REGEX MATCH "Embarcadero C[+][+] [0-9]+.[0-9]+"
+			_borland_version "${_output}")
+			
+		if(_borland_version)
+			string(REGEX MATCHALL "[0-9]+" _borland_version_list "${_borland_version}")
+			list(GET _borland_version_list 0 _borland_major)
+			list(GET _borland_version_list 1 _borland_minor)
+		else()
+			string(REGEX MATCH "Borland C[+][+] [0-9]+].[0-9]+"
+				_borland_version "${_output}")
+			
+			if(_borland_version)
+				string(REGEX MATCHALL "[0-9]+" _borland_version_list "${_borland_version}")
+				list(GET _borland_version_list 0 _borland_major)
+				list(GET _borland_version_list 1 _borland_minor)
+			endif()
+		endif()
+			
+		# XE2 compiler?
+		if("v${_borland_major}.${_borland_minor}" STREQUAL "v6.41")
+			SET(BORLAND_VERSION "bcc32 v6.41 (RS XE2)")
+			SET(BORLAND_VERSION_RS_XE2 1)
+		# XE compiler?
+		elseif("v${_borland_major}.${_borland_minor}" STREQUAL "v6.30")
+			SET(BORLAND_VERSION "bcc32 v6.30 (RS XE)")
+			SET(BORLAND_VERSION_RS_XE 1)
+		# 2010 compiler?
+		elseif("v${_borland_major}.${_borland_minor}" STREQUAL "v6.20")
+			SET(BORLAND_VERSION "bcc32 v6.20 (RS 2010)")
+			SET(BORLAND_VERSION_RS_2010 1)
+		# TODO: 2009 compiler?
+		# TODO: 2007 compiler?
+		# 2006 compiler?
+		elseif("v${_borland_major}.${_borland_minor}" STREQUAL "v5.82")
+			SET(BORLAND_VERSION "bcc32 v5.82 (BDS 2006)")
+			SET(BORLAND_VERSION_BDS_2006 1)
+		#TODO: Older compilers?
+		else()
+			SET(BORLAND_VERSION "Unknown")
+		endif()
+		
+		UNSET(_output)
+		UNSET(_borland_version)
+		UNSET(_borland_major)
+		UNSET(_borland_minor)
+	ENDIF()
+ENDIF()
+
+#######################################################
 # Check platforms - Define specific compilation flags #
 #######################################################
 IF(UNIX)
@@ -653,6 +716,11 @@ ELSE(UNIX)
 		######### Windows ###########
 		MESSAGE(STATUS "Windows system detected")
 		ADD_DEFINITIONS(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H )
+		######### Borland ###########
+		IF(BORLAND)
+			MESSAGE(STATUS "Borland compiler detected: ${BORLAND_VERSION}")
+			ADD_DEFINITIONS(-DHAVE_IOS )
+		ENDIF(BORLAND)
 		SET(PLATFORM win)
 	ELSE(WIN32)
 		MESSAGE(STATUS "Unknown platform")
@@ -686,9 +754,11 @@ IF(WIN32)
 	IF(MSVC) # The compiler used is MSVC
 		MESSAGE(STATUS "Found MSVC compiler: ${MSVC} ${MSVC_VERSION}")
 		SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
-	ELSE(MSVC)
+	ELSEIF (BORLAND) # The compiler used is BORLAND
+		SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/win${BIT}/bin/${CMAKE_BUILD_TYPE})
+	ELSE()
 		SET(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
-	ENDIF(MSVC)
+	ENDIF()
 	SET(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
 ELSE(WIN32)
 	SET(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
