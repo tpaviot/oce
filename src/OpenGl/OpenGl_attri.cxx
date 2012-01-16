@@ -81,6 +81,11 @@ used in immediat mode context.
 /*#define BUC60918*/        /*GG CADPAK_V2/RINA Enable transparency using Zbuffer
                             */
 
+/* Workaround for internal bcc32 compiler bug? */						
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif						
+	
 /*----------------------------------------------------------------------*/
 /*
 * Constantes

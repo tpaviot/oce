@@ -16,6 +16,11 @@ xx-xx-xx : xxx ; Creation.
 
 ************************************************************************/
 
+/* Workaround for internal bcc32 compiler bug? */						
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif						
+
 /*----------------------------------------------------------------------*/
 /*
 * Includes

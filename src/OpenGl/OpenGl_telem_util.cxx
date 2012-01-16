@@ -53,6 +53,11 @@ when a face has confused or aligned points.
 */
 #define QTOCC_PATCH
 
+/* Workaround for internal bcc32 compiler bug? */						
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif						
+
 /*----------------------------------------------------------------------*/
 /*
 * Includes

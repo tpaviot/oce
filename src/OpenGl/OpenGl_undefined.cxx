@@ -25,6 +25,11 @@ Suppression call_tox_set_colormap_mapping()
 
 ************************************************************************/
 
+/* Workaround for internal bcc32 compiler bug? */						
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif						
+
 /*----------------------------------------------------------------------*/
 /*
 * Includes

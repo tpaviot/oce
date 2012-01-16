@@ -64,6 +64,10 @@ from higher API */
 if any was defined
 */
 
+/* Workaround for internal bcc32 compiler bug? */						
+#ifdef __BORLANDC__
+#pragma option -x-
+#endif						
 
 /*----------------------------------------------------------------------*/
 /*
