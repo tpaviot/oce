@@ -22,6 +22,11 @@
 #include <TCollection_AsciiString.hxx>
 #include <Image_PixMap.hxx>
 
+/* Earlier versions of tcl protect inclusion of stdio.h , and it is needed 
+   for gets definition */
+   
+#include <stdio.h>
+
 extern Draw_Interpretor theCommands;
 extern Standard_Boolean Draw_VirtualWindows;
 static Tcl_Interp *interp;        /* Interpreter for this application. */
