@@ -38,3 +38,18 @@ ENDIF()
 
 INCLUDE(../BuildToolkit.cmake)
 
+IF(BORLAND AND BORLAND_VERSION_RS_XE2)
+	# For bcc32 compiler v6.40 and up -x- compiler option must be passed as a compiler option
+	# in stead of #pragma option -x- in code.
+	foreach(source_file ${TOOLKIT_SOURCE_FILES} )
+		if((source_file MATCHES "OpenGl_attri.cxx") OR
+		   (source_file MATCHES "OpenGl_depthcue.cxx") OR
+		   (source_file MATCHES "OpenGl_pick.cxx") OR
+		   (source_file MATCHES "OpenGl_telem_util.cxx") OR
+		   (source_file MATCHES "OpenGl_undefined.cxx") OR
+		   (source_file MATCHES "OpenGl_view.cxx"))
+			MESSAGE(STATUS "(bcc32) Disabling exceptions for ${source_file}.")
+			set_source_files_properties("${source_file}" PROPERTIES COMPILE_FLAGS "-x-")
+		endif()
+	endforeach(source_file)
+ENDIF(BORLAND AND BORLAND_VERSION_RS_XE2)
