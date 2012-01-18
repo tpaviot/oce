@@ -22,9 +22,6 @@
 #include <TCollection_AsciiString.hxx>
 #include <Image_PixMap.hxx>
 
-/* Earlier versions of tcl protect inclusion of stdio.h , and it is needed 
-   for gets definition */
-   
 #include <stdio.h>
 
 extern Draw_Interpretor theCommands;
@@ -130,7 +127,6 @@ defaultPrompt:
 #include <Draw_WindowBase.hxx>
 #include <X11/XWDFile.h>
 
-#include <stdio.h>
 #include <tk.h>
 
 /*
