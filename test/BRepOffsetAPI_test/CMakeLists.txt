@@ -1,1 +1,3 @@
-ADD_OCE_TEST(BRepOffsetAPI_test "TKOffset")
+IF (${PROJECT_NAME}_MODEL)
+    ADD_OCE_TEST(BRepOffsetAPI_test "TKOffset")
+ENDIF (${PROJECT_NAME}_MODEL)
