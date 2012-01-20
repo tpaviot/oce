@@ -32,9 +32,6 @@
 #include <Quantity_Color.hxx>
 #include <TCollection_AsciiString.hxx>
 
-#ifdef WNT
-#define stat _stat
-#endif
 //#define strcasecmp _stricoll
 #include <stdio.h>
 //#endif
