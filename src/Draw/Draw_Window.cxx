@@ -22,6 +22,8 @@
 #include <TCollection_AsciiString.hxx>
 #include <Image_PixMap.hxx>
 
+#include <stdio.h>
+
 extern Draw_Interpretor theCommands;
 extern Standard_Boolean Draw_VirtualWindows;
 static Tcl_Interp *interp;        /* Interpreter for this application. */
@@ -125,7 +127,6 @@ defaultPrompt:
 #include <Draw_WindowBase.hxx>
 #include <X11/XWDFile.h>
 
-#include <stdio.h>
 #include <tk.h>
 
 /*
