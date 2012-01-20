@@ -111,7 +111,7 @@ int LDOM_SBuffer::underflow()
 //function : xsputn()
 //purpose  : redefined virtual
 //=======================================================================
-int LDOM_SBuffer::xsputn(const char* aStr, int n)
+int LDOM_SBuffer::xsputn(const char* aStr, std::streamsize n)
 {
   int aLen = n + 1;
   int freeLen = myMaxBuf - myCurString->len - 1;
