@@ -251,6 +251,7 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
 
     if( Nvalid < N ) {
       Done = Standard_False;
+      delete [] ptrval;
       return;
     }
 

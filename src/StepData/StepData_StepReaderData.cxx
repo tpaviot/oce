@@ -1823,7 +1823,7 @@ void StepData_StepReaderData::SetEntityNumbers(const Standard_Boolean withmap)
       subpile->SetValue(nbsubpil,num);      // Append(num);
     }
   }
-  delete [] inds; delete [] indi; delete [] indr;    //  subpile->Detroy();
+  delete [] inds; delete [] indi; delete [] indr; delete [] indm;   //  subpile->Detroy();
   if (indx) delete [] indx;
 }
 

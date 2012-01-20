@@ -326,6 +326,11 @@ read_texture(char *name, int *width, int *height, int *components) {
   bbuf = (unsigned char *)malloc(image->xsize*sizeof(unsigned char));
   abuf = (unsigned char *)malloc(image->xsize*sizeof(unsigned char));
   if(!base || !rbuf || !gbuf || !bbuf)
+    free(base);
+    free(rbuf);
+    free(gbuf);
+    free(bbuf);
+    free(abuf);
     return NULL;
   lptr = base;
   for(y=0; y<image->ysize; y++) {

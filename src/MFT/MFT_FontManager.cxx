@@ -2284,7 +2284,10 @@ Standard_CString pencoding;
       if( this->IsDefinedChar(i) ) {
         this->DrawChar(theTextManager,i);
         pencoding = theTextManager->Encoding();
-	if( !strcmp(anEncoding,pencoding) ) return i;
+	if( !strcmp(anEncoding,pencoding) ) {
+        delete pencoding;
+        return i;
+        }
       }
     }
 

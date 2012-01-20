@@ -62,7 +62,7 @@ Standard_Boolean BinMDataStd_IntPackedMapDriver::Paste
   }
   if(aSize) {
     Handle(TColStd_HPackedMapOfInteger) aHMap = new TColStd_HPackedMapOfInteger ();
-    Standard_Integer aKey;
+    Standard_Integer aKey=0;
     for(Standard_Integer i = 0; i< aSize; i++) {
       Standard_Boolean ok = Source >> aKey;
       if (!ok) {

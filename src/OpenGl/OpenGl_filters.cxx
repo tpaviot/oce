@@ -348,6 +348,8 @@ TglNamesetRemove( Tint num, Tint *set )
   size = num, size %= LIST_GROW_SIZE, size++, size *= LIST_GROW_SIZE;
   temp = new Tint[size];
   if( !temp )
+    delete [] ptr;
+    delete [] temp;
     return TFailure;
   memcpy( temp, set, num*sizeof(Tint) );
 

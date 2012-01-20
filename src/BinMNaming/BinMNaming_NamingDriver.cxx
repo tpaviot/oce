@@ -139,7 +139,7 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
   TNaming_Name& aName = anAtt->ChangeName();
   TCollection_ExtendedString aMsg;
 //1. NameType
-  Standard_Character aValue;
+  Standard_Character aValue='\0';
   Standard_Boolean ok = theSource >> aValue;
   Standard_Boolean aNewF = Standard_False;
   if (ok) {
@@ -158,7 +158,7 @@ Standard_Boolean BinMNaming_NamingDriver::Paste
       
 //3. Args
       Standard_Integer aNbArgs=0;
-      Standard_Integer anIndx;
+      Standard_Integer anIndx=0;
       Handle(TNaming_NamedShape) aNS;
       ok = theSource >> aNbArgs;
       if (ok) {
