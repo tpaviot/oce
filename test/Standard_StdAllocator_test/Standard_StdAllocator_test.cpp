@@ -28,7 +28,7 @@ TEST(Standard_StdAllocatorTestSuite, testContainers)
 {
     //typed allocator
     std::list<TopoDS_Shape, Standard_StdAllocator<TopoDS_Shape> > aL;
-    TopoDS_Solid aSolid = BRepPrimAPI_MakeBox (10., 20., 30.);
+    TopoDS_Solid aSolid = (TopoDS_Solid) BRepPrimAPI_MakeBox (10., 20., 30.);
     aL.push_back (aSolid);
     ASSERT_EQ(aL.size(), size_t (1));
 

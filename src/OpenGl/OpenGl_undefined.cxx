@@ -25,6 +25,12 @@ Suppression call_tox_set_colormap_mapping()
 
 ************************************************************************/
 
+/* Workaround for internal bcc32 compiler bug. */						
+/* Starting from bcc32 v6.40 this flag should be passed as a compiler option. */
+#if defined(__BORLANDC__) && __BORLANDC__ < 0x0640 /* bcc32 v6.40 */
+#pragma option -x-
+#endif					
+
 /*----------------------------------------------------------------------*/
 /*
 * Includes

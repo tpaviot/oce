@@ -1668,7 +1668,7 @@ static Standard_Boolean TryNewPCurve (const TopoDS_Edge &E, const TopoDS_Face &f
 
   if ( ! mkedge.IsDone() ) return Standard_False;
 
-  TopoDS_Edge edge = mkedge;
+  TopoDS_Edge edge = (TopoDS_Edge) mkedge;
   BRep_Builder B;
   B.UpdateEdge ( edge, c2d, face, 0. );
   B.Range ( edge, face, first, last );

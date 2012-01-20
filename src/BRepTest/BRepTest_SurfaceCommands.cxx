@@ -183,7 +183,7 @@ static Standard_Integer mkplane(Draw_Interpretor& , Standard_Integer n, const ch
     OnlyPlane =  !strcmp(a[3],"1");
   }
 
-  TopoDS_Face F = BRepBuilderAPI_MakeFace(TopoDS::Wire(S), OnlyPlane);
+  TopoDS_Face F = (TopoDS_Face) BRepBuilderAPI_MakeFace(TopoDS::Wire(S), OnlyPlane);
 
   DBRep::Set(a[1],F);
   return 0;

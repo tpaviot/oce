@@ -8,10 +8,10 @@
 TEST(BRepAlgoAPITestSuite, testCutBox)
 {
     // create the first shape: a cube, a corner at the origin
-    TopoDS_Solid box1 = BRepPrimAPI_MakeBox(10.,10.,10.);
+    TopoDS_Solid box1 = (TopoDS_Solid) BRepPrimAPI_MakeBox(10.,10.,10.);
     ASSERT_FALSE(box1.IsNull());
     // the second shape: a smaller cube, a corner at the origin
-    TopoDS_Solid box2 = BRepPrimAPI_MakeBox(5.,5.,5.);
+    TopoDS_Solid box2 = (TopoDS_Solid) BRepPrimAPI_MakeBox(5.,5.,5.);
     ASSERT_FALSE(box2.IsNull());
     // boolean cut
     TopoDS_Shape shp_result = BRepAlgoAPI_Cut(box1,box2);
