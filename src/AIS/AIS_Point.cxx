@@ -149,7 +149,7 @@ void AIS_Point::UnsetColor()
 TopoDS_Vertex AIS_Point::Vertex() const
 {
   gp_Pnt P = myComponent->Pnt();
-  return BRepBuilderAPI_MakeVertex(P);
+  return (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(P);
 }
 
 //=======================================================================

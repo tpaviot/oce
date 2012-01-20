@@ -620,7 +620,7 @@ TopoDS_Edge ChFi2d_Builder::BuildNewEdge(const TopoDS_Edge& E1,
     makeEdge.Init(curve, NewExtr, lastVertex);  
   else 
     makeEdge.Init(curve, firstVertex, NewExtr);
-  TopoDS_Edge anEdge = makeEdge;
+  TopoDS_Edge anEdge = (TopoDS_Edge) makeEdge;
   anEdge.Orientation(E1.Orientation());
 //  anEdge.Location(E1.Location());
   makeEdge.Error();

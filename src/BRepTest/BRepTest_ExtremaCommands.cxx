@@ -43,7 +43,7 @@ static Standard_Integer distance (Draw_Interpretor& di,
   if (!BRepExtrema_Poly::Distance(S1,S2,P1,P2,D)) return 1;
   //cout << " distance : " << D << endl;
   di << " distance : " << D << "\n";
-  TopoDS_Edge E = BRepLib_MakeEdge(P1,P2);
+  TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge(P1,P2);
   DBRep::Set("distance",E);
   return 0;
 }
@@ -81,7 +81,7 @@ static Standard_Integer distmini(Draw_Interpretor& di, Standard_Integer n, const
 	     P2 = (dst.PointOnShape2(i1));
              if (dst.Value()<=1.e-9) 
              {
-              TopoDS_Vertex V =BRepLib_MakeVertex(P1);
+              TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
               char namev[100];
               if (i1==1) 
 	      sprintf(namev, "%s" ,ns0);
@@ -92,7 +92,7 @@ static Standard_Integer distmini(Draw_Interpretor& di, Standard_Integer n, const
               }
              else
 	     {char name[100];
-              TopoDS_Edge E = BRepLib_MakeEdge (P1, P2);
+              TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge (P1, P2);
 	      if (i1==1)
               {sprintf(name,"%s",ns0);}
               else {sprintf(name,"%s%d",ns0,i1);}

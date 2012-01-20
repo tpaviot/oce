@@ -474,7 +474,7 @@ static void BuildFace(const Handle(Geom_Surface)& S,
 	  TE3->Tolerance( Precision::Confusion() );
 	  TE4->Tolerance( Precision::Confusion() );
 	  
-	  TopoDS_Wire theWire = BRepLib_MakeWire( E1, E2, E3, E4 );
+	  TopoDS_Wire theWire = (TopoDS_Wire) BRepLib_MakeWire( E1, E2, E3, E4 );
 	  Standard_Integer NbPoints = NumberOfPoles( theWire );
 	  if (NbPoints <= 100) //limitation for CPU
 	    {

@@ -37,7 +37,7 @@ static Standard_Real FindExtrema(const gp_Pnt&        aPnt,
 {
   Standard_Integer intvalue=0;
   Dist = RealLast();
-  TopoDS_Vertex RefVertex = BRepBuilderAPI_MakeVertex(aPnt);
+  TopoDS_Vertex RefVertex = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(aPnt);
   
   BRepExtrema_ExtPF ext(RefVertex,aFace);
   
