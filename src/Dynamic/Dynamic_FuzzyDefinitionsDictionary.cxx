@@ -35,11 +35,6 @@
 # include <strings.h>
 #endif
 
-#ifdef WNT
-//#define strcasecmp _stricoll
-#define stat _stat
-#endif
-
 //=======================================================================
 //function : Dynamic_FuzzyDefinitionsDictionary
 //purpose  : 
