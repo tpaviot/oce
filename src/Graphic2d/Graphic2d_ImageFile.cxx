@@ -400,6 +400,7 @@ Standard_Integer readheader     = 0;
         if (readheader != sizeheader) {
                 cout << "Unable to read dump file header.\n" << flush;
                 if( !Reopen ) aFile.Close ();
+                free(pheader);
                 return Result;
         }
 

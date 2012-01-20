@@ -122,7 +122,7 @@ void Message_PrinterOStream::Send (const TCollection_ExtendedString &theString,
     char* astr = new char[theString.LengthOfCString()+1];
     theString.ToUTF8CString (astr);
     Send ( astr, theGravity, putEndl );
-    delete astr;
+    delete [] astr;
   }
   else {
     TCollection_AsciiString aStr ( theString, '?' );

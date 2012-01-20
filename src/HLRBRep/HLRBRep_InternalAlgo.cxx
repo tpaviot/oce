@@ -915,9 +915,9 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
       }
     }
     
-    delete Val;
-    delete Size;
-    delete Index;
+    delete [] Val;
+    delete [] Size;
+    delete [] Index;
     
 #ifdef DEB
     if (myDebug) {

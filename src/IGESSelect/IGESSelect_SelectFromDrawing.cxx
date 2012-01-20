@@ -41,7 +41,7 @@
     Standard_Integer nv = G.EntityNumber (igesent->View());
     if (nv > 0 && nv <= nb) list.GetOneItem(igesent);
   }
-  delete nums;
+  delete [] nums;
   return list;
 }
 

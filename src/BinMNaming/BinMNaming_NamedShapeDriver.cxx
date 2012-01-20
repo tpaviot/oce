@@ -103,7 +103,7 @@ static int TranslateFrom  (const BinObjMgt_Persistent&  theSource,
                          TopoDS_Shape&                  theResult,
                          BinTools_ShapeSet&            theShapeSet)
 {
-  Standard_Integer aShapeID, aLocID;
+  Standard_Integer aShapeID=0, aLocID=0;
   Standard_Character aCharOrient;
   Standard_Boolean Ok = theSource >> aShapeID; //TShapeID;
   if(!Ok) return 1;
@@ -159,11 +159,11 @@ Standard_Boolean BinMNaming_NamedShapeDriver::Paste
   TDF_Label aLabel = theTarget->Label ();
   TNaming_Builder   aBuilder   (aLabel);
   if (aNbShapes == 0) return Standard_False;
-  Standard_Integer aVer;
+  Standard_Integer aVer=0;
   Standard_Boolean ok = theSource >> aVer;
   if(!ok) return Standard_False;
   aTAtt->SetVersion(aVer); //Version
-  Standard_Character aCharEvol;
+  Standard_Character aCharEvol='\0';
   ok = theSource >> aCharEvol;
   if(!ok) return Standard_False;
   TNaming_Evolution anEvol  = EvolutionToEnum(aCharEvol); //Evolution

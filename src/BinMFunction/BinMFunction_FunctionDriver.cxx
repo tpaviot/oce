@@ -49,7 +49,7 @@ Standard_Boolean BinMFunction_FunctionDriver::Paste
   Standard_Boolean ok = theSource >> aGUID;
   if (ok) {
     anAtt->SetDriverGUID(aGUID);  
-    Standard_Integer aValue;
+    Standard_Integer aValue=0;
     ok = theSource >> aValue;
     if(ok)
       anAtt->SetFailure(aValue); 
