@@ -16,7 +16,7 @@
 
 #if!defined(TM_IN_SYS_TIME) && defined(HAVE_TIME_H)
 # include <time.h>
-#elif HAVE_SYS_TIME_H
+#elif defined(HAVE_SYS_TIME_H)
 # include <sys/time.h>
 #endif
 
