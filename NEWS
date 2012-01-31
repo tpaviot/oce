@@ -1,3 +1,29 @@
+Version 0.9.0 - January 2012
+
+* Upgraded to OCCT 6.5.2
+
+* Added support for CMake uninstall feature. make uninstall is now possible
+
+* Many cppcheck QA and warning fixes
+
+* Added support for Standard_Time in OCE to make OCE changes portable to 
+  wok system.
+
+* Many fixes and CMake support for embarcadero compilers (v6.20 and up)
+
+* Let a mingw64 TKernel works in Wine
+
+* Compile and run tests only if the needed components have been compiled
+
+* Fixed TBB support in debug/msvc
+
+* Geom_BSplineCurve.cxx: Add explicit exception message in case of error
+
+* Other compilation and build fixes
+
+Users who contributed to this release:
+  Denis Barbier,Fotios Sioutis,Jerome Robert,Thomas Paviot,Davyw
+
 Version 0.8.0 - December 2011
 
 * Added more unit tests 
