@@ -21,7 +21,7 @@ PROJECT(OCE)
 
 SET(OCE_VERSION_MAJOR 0)
 SET(OCE_VERSION_MINOR 9)
-SET(OCE_VERSION_PATCH 0)
+SET(OCE_VERSION_PATCH 1)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 SET(OCE_VERSION_DEVEL )
 
