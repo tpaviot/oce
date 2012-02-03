@@ -165,9 +165,11 @@ void OSD_FontMgr::InitFontDataBase() {
   Standard_Character *font_dir = new Standard_Character[ req_size + strlen("\\Fonts\\") + 1 ]  ;  
 
   if( !strcpy( font_dir, windir_var ) )
+  {
     delete [] windir_var;
     delete [] font_dir;
     return  ;   
+  }   
   if( !strcat( font_dir, "\\Fonts\\" ) )
     return ;  
 

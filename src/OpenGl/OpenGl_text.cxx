@@ -153,10 +153,11 @@ TextAdd( TSM_ELEM_DATA d, Tint n, cmn_key *k )
 
   wchar_t *wstr = new wchar_t[i];
   if( !wstr )
+  {      
     delete data;
     delete [] wstr;
     return TFailure;
-
+  }
   data->attach_pt = *pt;
   data->length    = i;
   //szv: instead of memcpy
