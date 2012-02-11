@@ -1121,7 +1121,6 @@ ENDIF(${PROJECT_NAME}_BUNDLE_AUTOINSTALL)
 # UnitTesting #
 ###############
 IF(${PROJECT_NAME}_TESTING)
-	SET( ${PROJECT_NAME}_EXTRA_WARNINGS ON CACHE BOOL "Extra warnings required by testing framework" FORCE)
 	INCLUDE(CTest)
 	ENABLE_TESTING()
 	SUBDIRS(test)
