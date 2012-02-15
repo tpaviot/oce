@@ -140,8 +140,7 @@ Standard_Boolean TopOpeBRepBuild_SolidBuilder::IsOldShell() const
 const TopoDS_Shape& TopOpeBRepBuild_SolidBuilder::OldShell() const
 {
   const Handle(TopOpeBRepBuild_Loop)& L = mySolidAreaBuilder.Loop();
-  const TopoDS_Shape& B = L->Shape();
-  return B;
+  return L->Shape();
 }
 
 //=======================================================================

@@ -121,8 +121,7 @@ const TopoDS_Shape& TopOpeBRepBuild_EdgeBuilder::Vertex() const
 {
   const Handle(TopOpeBRepBuild_Loop)& L = Loop();
   const Handle(TopOpeBRepBuild_Pave)& PV = *((Handle(TopOpeBRepBuild_Pave)*)&L);
-  const TopoDS_Shape& V = PV->Vertex();
-  return V;
+  return PV->Vertex();
 }
 
 //=======================================================================

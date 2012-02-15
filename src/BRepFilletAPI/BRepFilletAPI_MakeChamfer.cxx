@@ -272,8 +272,7 @@ const TopoDS_Edge& BRepFilletAPI_MakeChamfer::Edge(const Standard_Integer I,
 					     const Standard_Integer J)const
 {
   const Handle(ChFiDS_Spine)& Spine = myBuilder.Value(I);
-  const TopoDS_Edge& E = Spine->Edges(J);
-  return E;
+  return Spine->Edges(J);
 }
 
 //=======================================================================

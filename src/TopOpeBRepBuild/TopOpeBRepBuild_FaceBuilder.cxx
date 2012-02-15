@@ -536,8 +536,7 @@ Standard_Boolean TopOpeBRepBuild_FaceBuilder::IsOldWire() const
 const TopoDS_Shape& TopOpeBRepBuild_FaceBuilder::OldWire() const
 {
   const Handle(TopOpeBRepBuild_Loop)& L = myFaceAreaBuilder.Loop();
-  const TopoDS_Shape& B = L->Shape();
-  return B;
+  return L->Shape();
 }
 
 //=======================================================================

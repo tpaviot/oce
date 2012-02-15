@@ -183,8 +183,7 @@ inline const HatchGen_PointOnHatching& Geom2dHatch_Hatcher::Point (const Standar
 #if RAISE_IF_NOSUCHOBJECT
   Standard_OutOfRange_Raise_if (IndP < 0 || IndP > Hatching.NbPoints(), "") ;
 #endif
-  const HatchGen_PointOnHatching& PntH = Hatching.Point (IndP) ;
-  return PntH ;
+  return Hatching.Point(IndP);
 }
 
 //=======================================================================

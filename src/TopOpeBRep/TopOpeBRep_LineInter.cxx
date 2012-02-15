@@ -490,14 +490,12 @@ const TopoDS_Shape& TopOpeBRep_LineInter::Arc() const
     if(myILR->IsArcOnS1()) { 
       const Handle(Adaptor2d_HCurve2d)& AHC2D = myILR->ArcOnS1();
       const BRepAdaptor_Curve2d& BC2DP = *((BRepAdaptor_Curve2d*)&(AHC2D->Curve2d()));
-      const TopoDS_Shape& S = BC2DP.Edge();
-      return S;
+      return BC2DP.Edge();
     }
     else { 
       const Handle(Adaptor2d_HCurve2d)& AHC2D = myILR->ArcOnS2();
       const BRepAdaptor_Curve2d& BC2DP = *((BRepAdaptor_Curve2d*)&(AHC2D->Curve2d()));
-      const TopoDS_Shape& S = BC2DP.Edge();
-      return S;
+      return BC2DP.Edge();
     }
   }
   else

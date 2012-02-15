@@ -407,8 +407,7 @@ const TopoDS_Edge& BRepFilletAPI_MakeFillet::Edge(const Standard_Integer I,
 						  const Standard_Integer J)const
 {
   const Handle(ChFiDS_Spine)& Spine = myBuilder.Value(I);
-  const TopoDS_Edge& S = Spine->Edges(J);
-  return S;
+  return Spine->Edges(J);
 }
 
 

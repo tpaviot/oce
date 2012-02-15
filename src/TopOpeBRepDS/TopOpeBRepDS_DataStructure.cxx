@@ -442,8 +442,7 @@ const TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::SurfaceInterf
     return myEmptyListOfInterference;
   }
   const TopOpeBRepDS_SurfaceData& SD = mySurfaces.Find(I);
-  const TopOpeBRepDS_ListOfInterference& LI = SD.Interferences();
-  return LI;
+  return SD.Interferences();
 }
 
 
@@ -458,8 +457,7 @@ TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::ChangeSurfaceInterf
     return myEmptyListOfInterference;
   }
   TopOpeBRepDS_SurfaceData& SD = mySurfaces.ChangeFind(I);
-  TopOpeBRepDS_ListOfInterference& LI = SD.ChangeInterferences();
-  return LI;
+  return SD.ChangeInterferences();
 }
 
 //=======================================================================
@@ -473,8 +471,7 @@ const TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::CurveInterfer
     return myEmptyListOfInterference;
   }
   const TopOpeBRepDS_CurveData& CD = myCurves.Find(I);
-  const TopOpeBRepDS_ListOfInterference& LI = CD.Interferences();
-  return LI;
+  return CD.Interferences();
 }
 
 
@@ -489,8 +486,7 @@ TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::ChangeCurveInterfer
     return myEmptyListOfInterference;
   }
   TopOpeBRepDS_CurveData& CD = myCurves.ChangeFind(I);
-  TopOpeBRepDS_ListOfInterference& LI = CD.ChangeInterferences();
-  return LI;
+  return CD.ChangeInterferences();
 }
 
 
@@ -505,8 +501,7 @@ const TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::PointInterfer
     return myEmptyListOfInterference;
   }
   const TopOpeBRepDS_PointData& PD = myPoints.Find(I);
-  const TopOpeBRepDS_ListOfInterference& LI = PD.Interferences();
-  return LI;
+  return PD.Interferences();
 }
 
 
@@ -521,8 +516,7 @@ TopOpeBRepDS_ListOfInterference& TopOpeBRepDS_DataStructure::ChangePointInterfer
     return myEmptyListOfInterference;
   }
   TopOpeBRepDS_PointData& PD = myPoints.ChangeFind(I);
-  TopOpeBRepDS_ListOfInterference& LI = PD.ChangeInterferences();
-  return LI;
+  return PD.ChangeInterferences();
 }
 
 
@@ -582,8 +576,7 @@ const TopTools_ListOfShape& TopOpeBRepDS_DataStructure::ShapeSameDomain(const To
   if(!S.IsNull())
     if (myShapes.Contains(S)) {
       const TopOpeBRepDS_ShapeData& SD = myShapes.FindFromKey(S);
-      const TopTools_ListOfShape& l = SD.mySameDomain;
-      return l;
+      return SD.mySameDomain;
     }
   return myEmptyListOfShape;
 }
@@ -608,8 +601,7 @@ const TopTools_ListOfShape& TopOpeBRepDS_DataStructure::ShapeSameDomain(const St
 {
   if (I >= 1 && I <= myShapes.Extent()) {
     const TopOpeBRepDS_ShapeData& SD = myShapes.FindFromIndex(I);
-    const TopTools_ListOfShape& l = SD.mySameDomain;
-    return l;
+    return SD.mySameDomain;
   }
   else {
     return myEmptyListOfShape;
@@ -1152,8 +1144,7 @@ const TopOpeBRepDS_Curve& TopOpeBRepDS_DataStructure::Curve(const Standard_Integ
 {
   if ( myCurves.IsBound(I) ) {
     const TopOpeBRepDS_CurveData& CD = myCurves(I);
-    const TopOpeBRepDS_Curve& C = CD.myCurve;
-    return C;
+    return CD.myCurve;
   }
   else
     return myEmptyCurve;
@@ -1167,8 +1158,7 @@ TopOpeBRepDS_Curve& TopOpeBRepDS_DataStructure::ChangeCurve(const Standard_Integ
 {
   if ( myCurves.IsBound(I) ) {
     TopOpeBRepDS_CurveData& CD = myCurves.ChangeFind(I);
-    TopOpeBRepDS_Curve& C = CD.myCurve;
-    return C;
+    return CD.myCurve;
   }
   return myEmptyCurve;
 }
