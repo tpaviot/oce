@@ -359,8 +359,7 @@ const TopTools_ListOfShape& TopOpeBRepBuild_Builder::Splits(const TopoDS_Shape& 
 
   if ((*p).IsBound(S)) {
     const TopOpeBRepDS_ListOfShapeOn1State& losos = (*p).Find(S);
-    const TopTools_ListOfShape& L = losos.ListOnState();
-    return L;
+    return losos.ListOnState();
   }
   return myEmptyShapeList;
 } // Splits
@@ -388,8 +387,7 @@ TopTools_ListOfShape& TopOpeBRepBuild_Builder::ChangeSplit(const TopoDS_Shape& S
   TopOpeBRepDS_ListOfShapeOn1State thelist1;
   if (!(*p).IsBound(S)) (*p).Bind(S, thelist1);
   TopOpeBRepDS_ListOfShapeOn1State& losos = (*p).ChangeFind(S);
-  TopTools_ListOfShape& L = losos.ChangeListOnState();
-  return L;
+  return losos.ChangeListOnState();
 } // ChangeSplit
 
 //=======================================================================
