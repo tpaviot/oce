@@ -171,8 +171,11 @@ void OSD_FontMgr::InitFontDataBase() {
     return  ;   
   }   
   if( !strcat( font_dir, "\\Fonts\\" ) )
+  {
+    delete [] windir_var;
+    delete [] font_dir;
     return ;  
-
+  }
   Handle(TCollection_HAsciiString) HFontDir = new TCollection_HAsciiString(font_dir);
 
 #ifdef TRACE
