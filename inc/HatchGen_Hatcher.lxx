@@ -172,8 +172,7 @@ inline const HatchGen_PointOnHatching& HatchGen_Hatcher::Point (const Standard_I
 #if RAISE_IF_NOSUCHOBJECT
   Standard_OutOfRange_Raise_if (IndP < 0 || IndP > Hatching.NbPoints(), "") ;
 #endif
-  const HatchGen_PointOnHatching& PntH = Hatching.Point (IndP) ;
-  return PntH ;
+  return Hatching.Point(IndP);
 }
 
 //=======================================================================

@@ -56,8 +56,7 @@ Standard_EXPORT const TopTools_ListOfShape& FDSCNX_EdgeConnexityShapeIndex(const
   Standard_Integer re = BDS.AncestorRank(E); if (re == 0) return *GLOBAL_los;
   TopTools_DataMapOfShapeListOfShape* pelf = (SI == 1) ? GLOBAL_elf1 : GLOBAL_elf2;
   TopTools_DataMapOfShapeListOfShape& elf = *pelf;
-  const TopTools_ListOfShape& lof = elf.Find(E);
-  return lof;
+  return elf.Find(E);
 }
 
 // S = edge --> liste de faces connexes par S
@@ -73,8 +72,7 @@ Standard_EXPORT const TopTools_ListOfShape& FDSCNX_EdgeConnexitySameShape(const 
   else if (t == TopAbs_FACE) {
     TopTools_DataMapOfShapeListOfShape& fle = *GLOBAL_fle;
     if (fle.IsBound(S)) {
-      const TopTools_ListOfShape& le = fle.Find(S);
-      return le;
+      return fle.Find(S);
     }
   }
   return *GLOBAL_los;

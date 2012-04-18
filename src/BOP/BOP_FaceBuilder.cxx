@@ -481,8 +481,7 @@ static void DoTopologicalVerification(TopoDS_Face& F);
   const TopoDS_Shape& BOP_FaceBuilder::OldWire() const
 {
   const Handle(BOP_Loop)& L = myFaceAreaBuilder.Loop();
-  const TopoDS_Shape& B = L->Shape();
-  return B;
+  return L->Shape();
 }
 //=======================================================================
 //function : Wire
