@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BinMDF -I@top_srcdir@/src/BinMDF \
 -I@top_srcdir@/drv/BinMDataStd -I@top_srcdir@/src/BinMDataStd \
@@ -28,11 +28,11 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBinL.la
 
-libTKBinL_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
+libTKBinL_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKernel/libTKernel.la \
+../TKLCAF/libTKLCAF.la
+
 
 libTKBinL_la_SOURCES = \
 @top_srcdir@/drv/BinMDF/BinMDF_DataMapIteratorOfTypeADriverMap_0.cxx \

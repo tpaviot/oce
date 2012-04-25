@@ -28,7 +28,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/IGESData -I@top_srcdir@/src/IGESData \
 -I@top_srcdir@/drv/IGESFile -I@top_srcdir@/src/IGESFile \
@@ -52,21 +52,21 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKIGES.la
 
-libTKIGES_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKXSBase/libTKXSBase.la \
-../TKG3d/libTKG3d.la \
-../TKMath/libTKMath.la \
-../TKOffset/libTKOffset.la \
-../TKG2d/libTKG2d.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKShHealing/libTKShHealing.la \
-../TKTopAlgo/libTKTopAlgo.la \
+libTKIGES_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKShHealing/libTKShHealing.la \
+../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-../TKBool/libTKBool.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) 
+../TKBool/libTKBool.la \
+../TKOffset/libTKOffset.la \
+../TKXSBase/libTKXSBase.la
+
 
 libTKIGES_la_SOURCES = \
 @top_srcdir@/drv/IGESAppli/IGESAppli_Array1OfFiniteElement_0.cxx \

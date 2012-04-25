@@ -1,14 +1,26 @@
-// File:	IntCurve_Polygon2dGen.lxx
-// Created:	Thu 3 Jun 1993
-// Author:	Laurent BUCHARD
-//		<lbr@nonox>
+// Created on: 1993-06-03
+// Created by: Laurent BUCHARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_OutOfRange.hxx>
 
-//======================================================================	   
-inline const Bnd_Box2d& IntCurve_Polygon2dGen::Bounding(void) const {
-  return(TheBnd);
-}
 //======================================================================
 inline Standard_Real IntCurve_Polygon2dGen::DeflectionOverEstimation() const {
   return(TheDeflection);
@@ -16,33 +28,15 @@ inline Standard_Real IntCurve_Polygon2dGen::DeflectionOverEstimation() const {
 inline void IntCurve_Polygon2dGen::SetDeflectionOverEstimation
   (const Standard_Real x) {
   TheDeflection = x;
-  TheBnd.Enlarge(TheDeflection);
+  myBox.Enlarge(TheDeflection);
 }
 //======================================================================
 inline void IntCurve_Polygon2dGen::Closed(const Standard_Boolean flag) {
   ClosedPolygon = flag;
 }
 //======================================================================
-inline Standard_Boolean IntCurve_Polygon2dGen::Closed(void) const {
-  return(Standard_False);    //-- Voir si le cas Closed est traitable
-}
-//======================================================================
 inline Standard_Integer IntCurve_Polygon2dGen::NbSegments(void) const {
   return((ClosedPolygon)? NbPntIn : NbPntIn-1);
-}
-//======================================================================
-inline const gp_Pnt2d& IntCurve_Polygon2dGen::EndOfSeg(const Standard_Integer Index) const {
-  Standard_Integer ind = Index;
-  if (Index >= NbPntIn) {
-    if (!ClosedPolygon)
-      Standard_OutOfRange::Raise("OutOfRange Polygon2d::EndOfSeg !");
-    ind = 0;
-  }
-  return ThePnts(TheIndex(ind+1));
-}
-//======================================================================
-inline const gp_Pnt2d& IntCurve_Polygon2dGen::BeginOfSeg(const Standard_Integer Index) const {
-  return ThePnts(TheIndex(Index));
 }
 //======================================================================
 inline Standard_Real IntCurve_Polygon2dGen::InfParameter() const {

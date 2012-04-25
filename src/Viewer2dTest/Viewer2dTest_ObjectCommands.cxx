@@ -1,9 +1,23 @@
-// File:	Viewer2dTest_ObjectsCommands.cxx
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //===============================================
-//
 //    AIS2D Objects Creation : Datums (axis,trihedrons,lines,planes)
-//
 //===============================================
 
 #ifdef HAVE_CONFIG_H
@@ -239,7 +253,7 @@ static int V2dTrihedron2D (Draw_Interpretor& , Standard_Integer argc, const char
   gp_Dir TheZVector (coord[3],coord[4],coord[5]);
   gp_Dir TheXVector (coord[6],coord[7],coord[8]);
 
-  if (!TheZVector.IsNormal(TheXVector,PI/180))
+  if (!TheZVector.IsNormal(TheXVector,M_PI/180))
   {
     cout << argv[0] << " VectorX is not normal to VectorZ" << endl;
     return 1;
@@ -1120,7 +1134,7 @@ static int V2dPlaneBuilder (Draw_Interpretor& , Standard_Integer argc, const cha
 	if (mySurface.GetType() == GeomAbs_Plane)
         {
 	  gp_Pln myPlane = mySurface.Plane();
-	  myPlane.Rotate(myRotAxis, PI/2);
+	  myPlane.Rotate(myRotAxis, M_PI/2);
 	  
 	  Handle(Geom_Plane) theGeomPlane = new Geom_Plane(myPlane);
 	  gp_Pnt theMiddle ((Aa.X()+Ab.X())/2, (Aa.Y()+Ab.Y())/2, (Aa.Z()+Ab.Z())/2);
@@ -1168,7 +1182,7 @@ static int V2dPlaneBuilder (Draw_Interpretor& , Standard_Integer argc, const cha
 	if (mySurface.GetType() == GeomAbs_Plane)
         {
 	  gp_Pln myPlane = mySurface.Plane();
-	  myPlane.Rotate(myRotAxis, PI/2);
+	  myPlane.Rotate(myRotAxis, M_PI/2);
 	  Handle(Geom_Plane) theGeomPlane = new Geom_Plane(myPlane);
 	  gp_Pnt theMiddle ((Ba.X()+Bb.X())/2, (Ba.Y()+Bb.Y())/2, (Ba.Z()+Bb.Z())/2);
 	  Handle(AIS2D_Plane) myAIS2DPlane = new AIS2D_Plane(theGeomPlane, theMiddle);

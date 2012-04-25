@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{861DC4B0-1337-04ED-0CA7-20A2778A58A6}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc10\obj\TKBO\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc10\objd\TKBO\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc10\obj\TKBO\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc10\objd\TKBO\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bin\TKBO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\obj\TKBO/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\obj\TKBO/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\obj\TKBO/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bin\TKBO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc10\bin\TKBO.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\lib\TKBO.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc10\bind\TKBO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKBO/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc10\objd\TKBO/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc10\objd\TKBO/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc10\bind\TKBO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc10\bind\TKBO.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc10\libd\TKBO.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bin\TKBO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\obj\TKBO/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\obj\TKBO/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\obj\TKBO/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bin\TKBO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc10\bin\TKBO.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\lib\TKBO.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc10\bind\TKBO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKBO/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc10\objd\TKBO/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc10\objd\TKBO/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc10\bind\TKBO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc10\bind\TKBO.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc10\libd\TKBO.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfPnt2d_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfIntegerIndexedMapOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfIntegerInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfSWRInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfIntegerInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfSWRInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_ListIteratorOfListOfListOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_ListNodeOfListOfListOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTColStd\BOPTColStd_ListOfListOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTColStd\BOPTColStd_Dump.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTColStd\BOPTColStd_Failure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTColStd\BOPTColStd_ShapeWithRank.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTColStd\BOPTColStd_ShapeWithRankHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_Array1OfPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_Array2OfIntersectionStatus_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfEEInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfESInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfInterferenceLine_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfSSInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfVEInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfVSInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CArray1OfVVInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_CommonBlockPool_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_HArray2OfIntersectionStatus_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IDMapOfPaveBlockIMapOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IDMapOfPaveBlockIMapOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IMapOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIDMapOfPaveBlockIMapOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIDMapOfPaveBlockIMapOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerDEInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerPaveSet_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerState_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerDEInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerPaveSet_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerState_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfShapeWithState_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedMapNodeOfIMapOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedMapNodeOfIndexedMapOfCoupleOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_IndexedMapOfCoupleOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCheckResults_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCommonBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCoupleOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfShapeEnum_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCheckResults_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCommonBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCoupleOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfShapeEnum_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfCheckResults_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfCommonBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfCoupleOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfInterference_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_ListOfShapeEnum_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_PavePool_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_QuickSortPave_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_SequenceNodeOfSequenceOfCurves_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_SequenceNodeOfSequenceOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_SequenceOfCurves_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_SequenceOfPaveBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOPTools\BOPTools_SplitShapesPool_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_CheckResult.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Checker.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_CommonBlock.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_CommonBlockAPI.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_ComparePave.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_CoupleOfInteger.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_CoupleOfIntegerMapHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_DEInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_DEProcessor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_DSFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_EEInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_ESInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Interference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_InterferenceLine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_InterferencePool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_IteratorOfCoupleOfShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PCurveMaker.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Pave.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveBlock.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveBlockIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveBlockMapHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveFiller_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveFiller_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveFiller_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveFiller_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PaveSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_PointBetween.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_RoughShapeIntersector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_SSInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_SSIntersectionAttribute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_ShapeShapeInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_SolidStateFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_StateFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Tools.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Tools2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Tools3D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Tools3D_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_Tools3D_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_VEInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_VSInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_VVInterference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTools\BOPTools_WireStateFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfEdgeListFaceInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfVertexListEdgeInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapOfEdgeListFaceInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapOfSolidClassifier_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_IndexedDataMapOfVertexListEdgeInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfCheckResult_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfConnexityBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfEdgeInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfFaceInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListIteratorOfListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfCheckResult_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfConnexityBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfEdgeInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfFaceInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListNodeOfListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfCheckResult_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfConnexityBlock_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfEdgeInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfFaceInfo_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_ListOfLoop_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_SeqOfSeqOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BOP\BOP_SequenceNodeOfSeqOfSeqOfShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Area2dBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Area3dBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_AreaBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ArgumentAnalyzer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_BlockBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_BlockIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Builder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_BuilderTools.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_CheckResult.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_CompositeClassifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ConnexityBlock.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_CorrectTolerances.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Draw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_EdgeInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_EmptyBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_FaceAreaBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_FaceBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_FaceInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_HistoryCollector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Loop.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_LoopClassifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_LoopSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Refiner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SDFWESFiller.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SFSCorrector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_Section.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SectionHistoryCollector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShapeSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellFaceClassifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellFaceSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSolidHistoryCollector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSolid_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSolid_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSolid_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_ShellSplitter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidAreaBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidBuilder.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidClassifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidSolidHistoryCollector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_SolidSolid_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WESCorrector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireEdgeClassifier.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireEdgeSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireShell.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireSolid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireSolidHistoryCollector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireSplitter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOP\BOP_WireWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeAncestorsSuccessors_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapOfShapeAncestorsSuccessors_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapOfShapeInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_AncestorsAndSuccessors.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_AncestorsSeqAndSuccessorsSeq.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_Explorer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_OnceExplorer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_ShapeAndInterferences.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BooleanOperations\BooleanOperations_ShapesDataStructure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_Array1OfRange_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_Array1OfRoots_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_CArray1OfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_CArray1OfReal_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapNodeOfDataMapOfCurveSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapOfCurveSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_DataMapOfSurfaceSampleBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_IndexedDataMapOfTransientAddress_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfCurveRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListIteratorOfListOfSurfaceRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfCurveRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListNodeOfListOfSurfaceRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfBox_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfCurveRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_ListOfSurfaceRangeSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapIteratorOfMapOfCurveSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapIteratorOfMapOfSurfaceSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapOfCurveSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_MapOfSurfaceSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_QuickSortRange_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_QuickSort_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfCommonPrts_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfCurves_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfPntOn2Faces_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfRanges_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceNodeOfSequenceOfRoots_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfCommonPrts_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfCurves_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfPntOn2Faces_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfRanges_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_SequenceOfRoots_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_StdMapNodeOfMapOfCurveSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\IntTools\IntTools_StdMapNodeOfMapOfSurfaceSample_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BaseRangeSample.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanBeanIntersector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_BeanFaceIntersector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CommonPrt.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Compare.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CompareRange.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Context.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeLocalizeData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSample.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSampleMapHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_FClass2d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_FaceFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_LineConstructor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_MarkedRangeSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_PntOn2Faces.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_PntOnFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Range.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_ShrunkRange.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeLocalizeData.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeSample.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_SurfaceRangeSampleMapHasher.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_Tools.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_TopolTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Common.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Cut.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Fuse.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Section.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKBO.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

@@ -1,7 +1,22 @@
-// File:	DsgPrs_MidPointPresentation.cxx
-// Created:	Fri Oct 20 16:00:58 2000
-// Author:	Julia DOROVSKIKH
-//		<jfa@androx.nnov.matra-dtv.fr>
+// Created on: 2000-10-20
+// Created by: Julia DOROVSKIKH
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <DsgPrs_MidPointPresentation.ixx>
 
@@ -56,7 +71,7 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
       // center of the symmetry - circle around the MidPoint
       Prs3d_Root::NewGroup(aPresentation);
       Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
-      Standard_Real alpha = 2*Standard_PI;
+      Standard_Real alpha = 2 * M_PI;
       Standard_Integer nbp = 100;
       Graphic3d_Array1OfVertex VC(1,nbp);
       Standard_Real dteta = alpha/(nbp-1);
@@ -131,7 +146,7 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
       // center of the symmetry - circle around the MidPoint
       Prs3d_Root::NewGroup(aPresentation);
       Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
-      Standard_Real alpha = 2*Standard_PI;
+      Standard_Real alpha = 2 * M_PI;
       Standard_Integer nbp = 100;
       Graphic3d_Array1OfVertex VC(1,nbp);
       Standard_Real dteta = alpha/(nbp-1);
@@ -213,7 +228,7 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
       // center of the symmetry - circle around the MidPoint
       Prs3d_Root::NewGroup(aPresentation);
       Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
-      Standard_Real alpha = 2*Standard_PI;
+      Standard_Real alpha = 2 * M_PI;
       Standard_Integer nbp = 100;
       Graphic3d_Array1OfVertex VC(1,nbp);
       Standard_Real dteta = alpha/(nbp-1);
@@ -259,8 +274,8 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
   Standard_Real pf = ElCLib::Parameter(aCircle,Point1);
   Standard_Real pl = ElCLib::Parameter(aCircle,Point2);
   Standard_Real alpha = pl - pf;
-  if ( alpha < 0 ) alpha += 2*Standard_PI;
-  Standard_Integer nb = (Standard_Integer)(50.0*alpha/PI);
+  if ( alpha < 0 ) alpha += 2 * M_PI;
+  Standard_Integer nb = (Standard_Integer)(50.0*alpha/M_PI);
   Standard_Integer nbp = Max(4,nb);
   Graphic3d_Array1OfVertex VC1(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);
@@ -306,7 +321,7 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
       // center of the symmetry - circle around the MidPoint
       Prs3d_Root::NewGroup(aPresentation);
       Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
-      Standard_Real alpha = 2*Standard_PI;
+      Standard_Real alpha = 2 * M_PI;
       Standard_Integer nbp = 100;
       Graphic3d_Array1OfVertex VC(1,nbp);
       Standard_Real dteta = alpha/(nbp-1);
@@ -352,8 +367,8 @@ void DsgPrs_MidPointPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
   Standard_Real pf = ElCLib::Parameter(aCircle,Point1);
   Standard_Real pl = ElCLib::Parameter(aCircle,Point2);
   Standard_Real alpha = pl - pf;
-  if ( alpha < 0 ) alpha += 2*Standard_PI;
-  Standard_Integer nb = (Standard_Integer)(50.0*alpha/PI);
+  if ( alpha < 0 ) alpha += 2 * M_PI;
+  Standard_Integer nb = (Standard_Integer)(50.0*alpha/M_PI);
   Standard_Integer nbp = Max(4,nb);
   Graphic3d_Array1OfVertex VC1(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);

@@ -1,7 +1,0 @@
-+V TopBas:msentity:TopBas .
-+V TopBas:msentity:TopBas_Interference .
-+V TopBas:msentity:TopBas_TestInterference .
-+V TopBas:msentity:TopBas_ListOfTestInterference .
-+V TopBas:msentity:TopBas_ListNodeOfListOfTestInterference .
-+V TopBas:msentity:TopBas_ListIteratorOfListOfTestInterference .
-- TopBas:admfile:TopBas_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/TopBas/TopBas_xcpp_fill.Out

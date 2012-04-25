@@ -1,7 +1,0 @@
-+ StepToTopoDS:pubinclude:StepToTopoDS_Root.lxx StepToTopoDS:source:StepToTopoDS_Root.lxx
-+ StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.In StepToTopoDS:admfile:StepToTopoDS_src.Out
-+ * StepToTopoDS:admfile:StepToTopoDS_xcpp_src.Out
-+ StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.Out StepToTopoDS:admfile:StepToTopoDS_src.Out
-+ * StepToTopoDS:admfile:StepToTopoDS_xcpp_src.Out
-+ StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.Dep StepToTopoDS:admfile:StepToTopoDS_src.Out
-+ * StepToTopoDS:admfile:StepToTopoDS_xcpp_src.Out

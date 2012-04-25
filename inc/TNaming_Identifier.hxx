@@ -60,7 +60,7 @@ public:
   
   Standard_EXPORT   TNaming_Identifier(const TDF_Label& Lab,const TopoDS_Shape& S,const TopoDS_Shape& Context,const Standard_Boolean Geom);
   
-  Standard_EXPORT   TNaming_Identifier(const TDF_Label& Lab,const TopoDS_Shape& S,const Handle(TNaming_NamedShape)& Context,const Standard_Boolean Geom);
+  Standard_EXPORT   TNaming_Identifier(const TDF_Label& Lab,const TopoDS_Shape& S,const Handle(TNaming_NamedShape)& ContextNS,const Standard_Boolean Geom);
   
   Standard_EXPORT     Standard_Boolean IsDone() const;
   
@@ -106,6 +106,8 @@ protected:
 
 private:
 
+  
+  Standard_EXPORT     void Init(const TopoDS_Shape& Context) ;
 
 
 TDF_Label myTDFAcces;

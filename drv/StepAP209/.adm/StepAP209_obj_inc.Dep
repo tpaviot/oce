@@ -1,6 +1,0 @@
-+ StepAP209:dbadmfile:StepAP209_obj_inc.In StepAP209:admfile:StepAP209_src.Out
-+ * StepAP209:admfile:StepAP209_xcpp_src.Out
-+ StepAP209:dbadmfile:StepAP209_obj_inc.Out StepAP209:admfile:StepAP209_src.Out
-+ * StepAP209:admfile:StepAP209_xcpp_src.Out
-+ StepAP209:dbadmfile:StepAP209_obj_inc.Dep StepAP209:admfile:StepAP209_src.Out
-+ * StepAP209:admfile:StepAP209_xcpp_src.Out

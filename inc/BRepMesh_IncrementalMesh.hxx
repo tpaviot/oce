@@ -66,7 +66,7 @@ Standard_EXPORT virtual ~BRepMesh_IncrementalMesh();
 //!          each edge will be <D> * Size of Edge. <br>
 //!          the deflection used for the faces will be the maximum <br>
 //!          deflection of their edges. <br>
-  Standard_EXPORT   BRepMesh_IncrementalMesh(const TopoDS_Shape& S,const Standard_Real D,const Standard_Boolean Relatif = Standard_False,const Standard_Real Ang = 0.5);
+  Standard_EXPORT   BRepMesh_IncrementalMesh(const TopoDS_Shape& S,const Standard_Real D,const Standard_Boolean Relatif = Standard_False,const Standard_Real Ang = 0.5,const Standard_Boolean InParallel = Standard_False);
   
   Standard_EXPORT     void SetRelative(const Standard_Boolean theFlag) ;
   

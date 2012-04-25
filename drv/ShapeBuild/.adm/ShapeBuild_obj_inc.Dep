@@ -1,6 +1,0 @@
-+ ShapeBuild:dbadmfile:ShapeBuild_obj_inc.In ShapeBuild:admfile:ShapeBuild_src.Out
-+ * ShapeBuild:admfile:ShapeBuild_xcpp_src.Out
-+ ShapeBuild:dbadmfile:ShapeBuild_obj_inc.Out ShapeBuild:admfile:ShapeBuild_src.Out
-+ * ShapeBuild:admfile:ShapeBuild_xcpp_src.Out
-+ ShapeBuild:dbadmfile:ShapeBuild_obj_inc.Dep ShapeBuild:admfile:ShapeBuild_src.Out
-+ * ShapeBuild:admfile:ShapeBuild_xcpp_src.Out

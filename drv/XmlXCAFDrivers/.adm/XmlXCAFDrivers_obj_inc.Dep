@@ -1,6 +1,0 @@
-+ XmlXCAFDrivers:dbadmfile:XmlXCAFDrivers_obj_inc.In XmlXCAFDrivers:admfile:XmlXCAFDrivers_src.Out
-+ * XmlXCAFDrivers:admfile:XmlXCAFDrivers_xcpp_src.Out
-+ XmlXCAFDrivers:dbadmfile:XmlXCAFDrivers_obj_inc.Out XmlXCAFDrivers:admfile:XmlXCAFDrivers_src.Out
-+ * XmlXCAFDrivers:admfile:XmlXCAFDrivers_xcpp_src.Out
-+ XmlXCAFDrivers:dbadmfile:XmlXCAFDrivers_obj_inc.Dep XmlXCAFDrivers:admfile:XmlXCAFDrivers_src.Out
-+ * XmlXCAFDrivers:admfile:XmlXCAFDrivers_xcpp_src.Out

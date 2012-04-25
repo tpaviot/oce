@@ -15,7 +15,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/SWDRAW -I@top_srcdir@/src/SWDRAW \
 -I@top_srcdir@/drv/XSDRAW -I@top_srcdir@/src/XSDRAW \
@@ -26,31 +26,31 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXSDRAW.la
 
-libTKXSDRAW_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKXSBase/libTKXSBase.la \
-../TKIGES/libTKIGES.la \
-../TKVRML/libTKVRML.la \
-../TKViewerTest/libTKViewerTest.la \
-../TKG2d/libTKG2d.la \
-../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKShHealing/libTKShHealing.la \
-../TKService/libTKService.la \
-../TKSTL/libTKSTL.la \
+libTKXSDRAW_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKV3d/libTKV3d.la \
 ../TKMath/libTKMath.la \
-../TKBRep/libTKBRep.la \
+../TKNIS/libTKNIS.la \
+../TKernel/libTKernel.la \
+../TKService/libTKService.la \
+../TKXSBase/libTKXSBase.la \
+../TKMeshVS/libTKMeshVS.la \
+../TKG3d/libTKG3d.la \
+../TKViewerTest/libTKViewerTest.la \
+../TKV2d/libTKV2d.la \
+../TKG2d/libTKG2d.la \
+../TKSTEPBase/libTKSTEPBase.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKShHealing/libTKShHealing.la \
 ../TKGeomBase/libTKGeomBase.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKMesh/libTKMesh.la \
 ../TKDraw/libTKDraw.la \
-../TKSTEPBase/libTKSTEPBase.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKSTEP/libTKSTEP.la \
-../TKMeshVS/libTKMeshVS.la \
-../TKNIS/libTKNIS.la \
-../TKV2d/libTKV2d.la \
-$(STLPort_LIB) 
+../TKIGES/libTKIGES.la \
+../TKSTL/libTKSTL.la \
+../TKVRML/libTKVRML.la
+
 
 libTKXSDRAW_la_SOURCES = \
 @top_srcdir@/drv/XSDRAWSTLVRML/XSDRAWSTLVRML_CoordsMap_0.cxx \

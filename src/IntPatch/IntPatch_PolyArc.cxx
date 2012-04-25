@@ -1,7 +1,23 @@
-// File:      IntPatch_PolyArc.cxx
-// Created:   Wed Jan 27 09:44:03 1993
-// Author:    Isabelle GRIGNON
-// Copyright: Matra Datavision 1993
+// Created on: 1993-01-27
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_PolyArc.ixx>
 
@@ -72,10 +88,10 @@ IntPatch_PolyArc::IntPatch_PolyArc(const Handle(Adaptor2d_HCurve2d)& Line ,
     Xs = p2d.X(); Ys = p2d.Y();
     brise(1).SetCoord(Xs,Ys);
     
-    boite.SetVoid();
+    myBox.SetVoid();
     
-    boite.Add(brise(1));
-    fleche =0.;
+    myBox.Add(brise(1));
+    myError =0.;
     
     for (Standard_Integer i =2; i<=NbSample;i++) {
       param(i) = Pdeb + (i-1)*Pas;
@@ -111,12 +127,12 @@ IntPatch_PolyArc::IntPatch_PolyArc(const Handle(Adaptor2d_HCurve2d)& Line ,
 	if(IndexSup<i) IndexSup=Min(i+1,NbSample);
       }
       
-      boite.Add(brise(i));
+      myBox.Add(brise(i));
       Line->D0(param(i)-Pas*0.5,p2d);
       Xm = p2d.X() - XXs;
       Ym = p2d.Y() - YYs;
       Xm = Sqrt(Xm*Xm+Ym*Ym);
-      fleche =Max (fleche , Xm);
+      myError =Max (myError , Xm);
       Xs = X;
       Ys = Y;
     }
@@ -145,24 +161,13 @@ IntPatch_PolyArc::IntPatch_PolyArc(const Handle(Adaptor2d_HCurve2d)& Line ,
     }
   }
   while((IndexInf > IndexSup) && nbloop<=10); 
-  fleche*=1.2;
-  if(fleche<0.00000001) 
-    fleche = 0.00000001;
-  boite.Enlarge(fleche);
+  myError*=1.2;
+  if(myError<0.00000001) 
+    myError = 0.00000001;
+  myBox.Enlarge(myError);
 
-  if(Line->Value(aPdeb).Distance(Line->Value(aPfin))<=1e-7) {
-    ferme=Standard_True;
-  }
-  else { 
-    ferme=Standard_False;
-  }
+  ferme = (Line->Value(aPdeb).Distance(Line->Value(aPfin)) <= 1e-7);
 }
-
-const Bnd_Box2d& IntPatch_PolyArc::Bounding() const {
-  return(boite);
-}
-
-Standard_Real IntPatch_PolyArc::Error() const {return fleche;}
 
 Standard_Boolean IntPatch_PolyArc::Closed() const { return ferme;}
 
@@ -183,16 +188,16 @@ Standard_Real IntPatch_PolyArc::Parameter(const Standard_Integer Index ) const
 
 void IntPatch_PolyArc::SetOffset(const Standard_Real ox,const Standard_Real oy) { 
   Standard_Real xmin,ymin,xmax,ymax,g;
-  boite.Get(xmin,ymin,xmax,ymax);
-  g = boite.GetGap();
+  myBox.Get(xmin,ymin,xmax,ymax);
+  g = myBox.GetGap();
   
-  boite.SetVoid();
+  myBox.SetVoid();
   
-  boite.Update(xmin-offsetx,ymin-offsety,
+  myBox.Update(xmin-offsetx,ymin-offsety,
 	       xmax-offsetx,ymax-offsety);
   offsetx = ox;
   offsety = oy;
-  boite.Update(xmin+offsetx,ymin+offsety,
+  myBox.Update(xmin+offsetx,ymin+offsety,
 	       xmax+offsetx,ymax+offsety);
-  boite.SetGap(g);
+  myBox.SetGap(g);
 }

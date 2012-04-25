@@ -11,17 +11,17 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/FWOSDriver -I@top_srcdir@/src/FWOSDriver
 
 
 lib_LTLIBRARIES=libFWOSPlugin.la
 
-libFWOSPlugin_la_LIBADD = \
+libFWOSPlugin_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKCDF/libTKCDF.la
+
 
 libFWOSPlugin_la_SOURCES = \
 @top_srcdir@/src/FWOSDriver/FWOSDriver.cxx \

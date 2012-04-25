@@ -1,7 +1,23 @@
-// File:	ProjLib_CompProjectedCurve.cxx
-// Created:	Tue Sep 23 09:41:46 1997
-// Author:	Roman BORISOV
-//		<rbv@pronox.nnov.matra-dtv.fr>
+// Created on: 1997-09-23
+// Created by: Roman BORISOV
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ProjLib_CompProjectedCurve.ixx>
@@ -19,10 +35,9 @@
 #include <GeomAbs_CurveType.hxx>
 #include <GeomLib.hxx>
 
-
 #define FuncTol 1.e-10
 
-#if DEB
+#ifdef __OCC_DEBUG_CHRONO
 #include <OSD_Timer.hxx>
 
 static OSD_Chronometer chr_init_point, chr_dicho_bound;
@@ -45,7 +60,6 @@ static void ResultChron( OSD_Chronometer & ch, Standard_Real & time)
 }
 #endif
 
-static Handle(TColStd_HArray1OfReal) TabInt;
 
 //=======================================================================
 //function : d1
@@ -159,7 +173,7 @@ static void d1(const Standard_Real t,
 //purpose  : computes first derivative of the 3d projected curve
 //=======================================================================
 
-#ifdef DEB
+#if 0
 static void d1CurvOnSurf(const Standard_Real t,
                          const Standard_Real u,
                          const Standard_Real v,
@@ -398,7 +412,7 @@ static void DichExactBound(gp_Pnt& Sol,
                            const Handle(Adaptor3d_HCurve)& Curve, 
                            const Handle(Adaptor3d_HSurface)& Surface)
 {
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_dicho_bound);
 #endif
 
@@ -426,7 +440,7 @@ static void DichExactBound(gp_Pnt& Sol,
     }
     else aNotSol = t; 
   }
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
       ResultChron(chr_dicho_bound,t_dicho_bound);
       dicho_bound_count++;
 #endif
@@ -533,7 +547,7 @@ static Standard_Boolean InitialPoint(const gp_Pnt& Point,
 
  void ProjLib_CompProjectedCurve::Init() 
 {
-  TabInt.Nullify();
+  myTabInt.Nullify();
 
   Standard_Real Tol;// Tolerance for ExactBound
   Standard_Integer i, Nend = 0;
@@ -632,11 +646,11 @@ static Standard_Boolean InitialPoint(const gp_Pnt& Point,
       if (!initpoint) 
       {        
          myCurve->D0(t,CPoint);
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
          InitChron(chr_init_point);
 #endif
          initpoint=InitialPoint(CPoint, t,myCurve,mySurface, myTolU, myTolV, U, V);
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
          ResultChron(chr_init_point,t_init_point);
          init_point_count++;
 #endif
@@ -1278,15 +1292,9 @@ gp_Vec2d ProjLib_CompProjectedCurve::DN(const Standard_Real t,
 
  Standard_Integer ProjLib_CompProjectedCurve::NbIntervals(const GeomAbs_Shape S) const
 {
-  TabInt.Nullify();
+  const_cast<ProjLib_CompProjectedCurve*>(this)->myTabInt.Nullify();
   BuildIntervals(S);
-  Standard_Integer NbInt;
-  NbInt=TabInt->Length() - 1;
-
-#ifdef DEB
-//  cout<<"NbIntervals = "<<NbInt<<endl;
-#endif
-  return NbInt;
+  return myTabInt->Length() - 1;
 }
 
 //=======================================================================
@@ -1296,16 +1304,8 @@ gp_Vec2d ProjLib_CompProjectedCurve::DN(const Standard_Real t,
 
  void ProjLib_CompProjectedCurve::Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const
 {
-  if(TabInt.IsNull()) BuildIntervals(S);
-  T = TabInt->Array1();
-
-#if DEB
-/*  cout<<"Intervals = ";
-  for(Standard_Integer i = 1; i <= T.Length(); i++)
-    cout<<T(i)<<" ";
-  cout<<endl;
-*/
-#endif
+  if (myTabInt.IsNull()) BuildIntervals (S);
+  T = myTabInt->Array1();
 }
 
 //=======================================================================
@@ -1315,11 +1315,7 @@ gp_Vec2d ProjLib_CompProjectedCurve::DN(const Standard_Real t,
 
  void ProjLib_CompProjectedCurve::BuildIntervals(const GeomAbs_Shape S) const
 {
-#ifndef DEB
   GeomAbs_Shape SforS = GeomAbs_CN;
-#else
-  GeomAbs_Shape SforS;
-#endif
   switch(S) {
   case GeomAbs_C0: 
     SforS = GeomAbs_C1; 
@@ -1512,9 +1508,9 @@ gp_Vec2d ProjLib_CompProjectedCurve::DN(const Standard_Real t,
       BArr->ChangeValue(i) = Fusion(i);
   }
 
-  TabInt = new TColStd_HArray1OfReal(1, BArr->Length());
+  const_cast<ProjLib_CompProjectedCurve*>(this)->myTabInt = new TColStd_HArray1OfReal(1, BArr->Length());
   for(i = 1; i <= BArr->Length(); i++)
-    TabInt->ChangeValue(i) = BArr->Value(i);
+    myTabInt->ChangeValue(i) = BArr->Value(i);
 
 }
 
@@ -1544,24 +1540,3 @@ GeomAbs_CurveType ProjLib_CompProjectedCurve::GetType() const
 {
   return GeomAbs_OtherCurve;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

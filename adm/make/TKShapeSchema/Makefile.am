@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/ShapeSchema -I@top_srcdir@/src/ShapeSchema \
 -I@top_srcdir@/drv/PCDMShape -I@top_srcdir@/src/PCDMShape
@@ -20,14 +20,14 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKShapeSchema.la
 
-libTKShapeSchema_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKPShape/libTKPShape.la \
+libTKShapeSchema_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../PTKernel/libPTKernel.la \
 ../TKG2d/libTKG2d.la \
+../PTKernel/libPTKernel.la \
+../TKMath/libTKMath.la \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKPShape/libTKPShape.la
+
 
 libTKShapeSchema_la_SOURCES = \
 @top_srcdir@/drv/ShapeSchema/ShapeSchema.cxx \

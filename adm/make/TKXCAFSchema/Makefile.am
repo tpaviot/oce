@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/MXCAFDoc -I@top_srcdir@/src/MXCAFDoc \
 -I@top_srcdir@/drv/PXCAFDoc -I@top_srcdir@/src/PXCAFDoc \
@@ -24,19 +24,20 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXCAFSchema.la
 
-libTKXCAFSchema_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
-../TKStdSchema/libTKStdSchema.la \
+libTKXCAFSchema_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKPLCAF/libTKPLCAF.la \
-../TKPShape/libTKPShape.la \
+../TKernel/libTKernel.la \
 ../PTKernel/libPTKernel.la \
-../TKXCAF/libTKXCAF.la \
+../TKMath/libTKMath.la \
+../TKPShape/libTKPShape.la \
 ../TKCDF/libTKCDF.la \
 ../TKShapeSchema/libTKShapeSchema.la \
+../TKLCAF/libTKLCAF.la \
+../TKPCAF/libTKPCAF.la \
+../TKXCAF/libTKXCAF.la \
 ../TKStdLSchema/libTKStdLSchema.la \
-$(STLPort_LIB) 
+../TKStdSchema/libTKStdSchema.la
+
 
 libTKXCAFSchema_la_SOURCES = \
 @top_srcdir@/drv/PXCAFDoc/PXCAFDoc_GraphNodeSequence_0.cxx \

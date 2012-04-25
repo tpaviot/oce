@@ -1,0 +1,79 @@
+-- Created on: 1999-10-08
+-- Created by: Vladislav ROMASHKO
+-- Copyright (c) 1999-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
+
+class Fillet from QANewBRepNaming inherits TopNaming from QANewBRepNaming
+
+	---Purpose: For topological naming of a fillet
+
+uses
+
+     MakeFillet from BRepFilletAPI,
+     Shape      from TopoDS,
+     Label      from TDF
+
+is
+
+    Create returns Fillet from QANewBRepNaming;
+
+    Create(ResultLabel : Label from TDF)
+    returns Fillet from QANewBRepNaming;
+
+    Init(me : in out; ResultLabel : Label from TDF);
+
+
+    Load (me; part     :        Shape      from TopoDS;
+    	      mkFillet : in out MakeFillet from BRepFilletAPI);
+      ---Purpose: Loads a fillet in a data framework
+
+    DeletedFaces(me)
+    ---Purpose: Returns a label for deleted faces of the part.
+    returns Label from TDF;
+
+    ModifiedFaces(me)
+    ---Purpose: Returns a label for modified faces of the part.
+    returns Label from TDF;
+
+    FacesFromEdges(me)
+    ---Purpose: Returns a label for faces generated from edges of the part.
+    returns Label from TDF;
+
+    FacesFromVertices(me)
+    ---Purpose: Returns a label for faces generated from vertices of the part.
+    returns Label from TDF;
+
+    WRFace1(me)
+    ---Purpose: Returns a label for WorkAround Face number 1
+    returns Label from TDF;
+
+    WRFace2(me)
+    ---Purpose: Returns a label for WorkAround Face number 2
+    returns Label from TDF;
+
+    WREdge1(me)
+    ---Purpose: Returns a label for WorkAround Edge number 1
+    returns Label from TDF;
+
+    WREdge2(me)
+    ---Purpose: Returns a label for WorkAround Edge number 2
+    returns Label from TDF;
+
+
+end Fillet;

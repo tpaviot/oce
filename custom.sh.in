@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Mandatory 3rd-parties switches
+export HAVE_FREETYPE=@HAVE_FREETYPE@
+export HAVE_FTGL=@HAVE_FTGL@
+export HAVE_TCLTK=@HAVE_TCLTK@
+# Optional 3rd-parties switches
+export HAVE_FREEIMAGE=@HAVE_FREEIMAGE@
+export HAVE_GL2PS=@HAVE_GL2PS@
+export HAVE_TBB=@HAVE_TBB@
+export HAVE_QT=@HAVE_QT@
+
+export CSF_OPT_INC="@CSF_OPT_INC@"
+export CSF_OPT_LIB@ARCH@="@CSF_OPT_LIB@"
+export CSF_OPT_BIN@ARCH@="@CSF_OPT_BIN@"

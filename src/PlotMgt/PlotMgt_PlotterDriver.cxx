@@ -1,7 +1,22 @@
-// File:      PlotMgt_PlotterDriver.cxx
-// Created:   DEC-98
-// Author:    SYL & DCB
-// Copyright: Matra Datavision 1993
+// Created by: SYL & DCB
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define BUC60766    //GG 041000
 //              The plotter filename must be preserved when it contains
@@ -624,10 +639,10 @@ Standard_Boolean PlotMgt_PlotterDriver::DrawArc (const Standard_ShortReal X,
 {
   Standard_Boolean Done = Standard_False;
   float san, oan;
-  if (anOpenAngle == 0.F || anOpenAngle > 2*PI) {
-    san = 0.F;  oan = 2.*PI;
+  if (anOpenAngle == 0.F || anOpenAngle > 2*M_PI) {
+    san = 0.F;  oan = 2.*M_PI;
   } else if (anOpenAngle < 0.F) {
-    san = 2.*PI + aStartAngle + anOpenAngle;
+    san = 2.*M_PI + aStartAngle + anOpenAngle;
     oan = -anOpenAngle;
   } else {
     san = aStartAngle; oan = anOpenAngle;
@@ -646,7 +661,7 @@ Standard_Boolean PlotMgt_PlotterDriver::DrawArc (const Standard_ShortReal X,
     if (aRadius > precis)
       value = Max (0.0044, Min (0.7854, 2. * ACos(1.-precis/aRadius)));
     else
-      value = PI/4.;
+      value = M_PI/4.;
     Standard_Integer nbpoints = Min(MAXPOINT,
                         Standard_Integer(Abs(oan)/value)+2);
 
@@ -675,10 +690,10 @@ Standard_Boolean PlotMgt_PlotterDriver::DrawPolyArc (const Standard_ShortReal X,
 {
   Standard_Boolean Done = Standard_False;
   float san, oan;
-  if (anOpenAngle == 0.F || anOpenAngle > 2*PI) {
-    san = 0.F;  oan = 2.*PI;
+  if (anOpenAngle == 0.F || anOpenAngle > 2*M_PI) {
+    san = 0.F;  oan = 2.*M_PI;
   } else if (anOpenAngle < 0.F) {
-    san = 2.*PI + aStartAngle + anOpenAngle;
+    san = 2.*M_PI + aStartAngle + anOpenAngle;
     oan = -anOpenAngle;
   } else {
     san = aStartAngle; oan = anOpenAngle;
@@ -698,7 +713,7 @@ Standard_Boolean PlotMgt_PlotterDriver::DrawPolyArc (const Standard_ShortReal X,
     if (aRadius > precis)
       value = Max (0.0044, Min (0.7854, 2. * ACos(1.-precis/aRadius)));
     else
-      value = PI/4.;
+      value = M_PI/4.;
     Standard_Integer nbpoints = Min(MAXPOINT,
                         Standard_Integer(Abs(oan)/value)+2);
 
@@ -741,8 +756,8 @@ void PlotMgt_PlotterDriver::DrawMarker (const Standard_Integer aMarker,
       const TColStd_Array1OfBoolean&  ams =
         MarkMap ()->Entry(aMarker+1).Style().SValues();
       Standard_Integer i, sl, su;
-      Standard_ShortReal Ca = (float)Cos((3*Standard_PI)/2+Angle),
-                         Sa = (float)Sin((3*Standard_PI)/2+Angle);
+      Standard_ShortReal Ca = (float)Cos((3 * M_PI) / 2 + Angle),
+                         Sa = (float)Sin((3 * M_PI) / 2 + Angle);
       Standard_ShortReal dx, dy, Cx, Cy;
 
       // Remember the old attributes

@@ -34,6 +34,9 @@
 #ifndef _Geom_Transformation_HeaderFile
 #include <Geom_Transformation.hxx>
 #endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
 #ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
 #endif

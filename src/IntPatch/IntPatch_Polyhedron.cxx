@@ -1,7 +1,23 @@
-// File:      IntPatch_Polyhedron.cxx
-// Created:   Wed Feb  3 11:33:09 1993
-// Author:    Laurent BUCHARD
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-02-03
+// Created by: Laurent BUCHARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_Polyhedron.ixx>
 
@@ -194,9 +210,6 @@ Standard_Real IntPatch_Polyhedron::DeflectionOnTriangle
   gp_XYZ XYZ3=P1.XYZ()-P3.XYZ();
   gp_Vec NormalVector((XYZ1^XYZ2)+(XYZ2^XYZ3)+(XYZ3^XYZ1));
   NormalVector.Normalize();
-#ifdef DEB
-  Standard_Real PolarDistance = NormalVector * P1.XYZ();
-#endif
   //-- Calcul du point u,v  au centre du triangle
   Standard_Real u = (u1+u2+u3)/3.0;
   Standard_Real v = (v1+v2+v3)/3.0;
@@ -317,10 +330,6 @@ Standard_Integer IntPatch_Polyhedron::TriConnex (const Standard_Integer Triang,
 						 Standard_Integer&      TriCon,
 						 Standard_Integer&      OtherP)   const {
 
-#ifdef DEB
-  Standard_Integer nbdeltaUp1 = nbdeltaU + 1;
-  Standard_Integer nbdeltaUm2 = nbdeltaU + nbdeltaU;
-#endif
   Standard_Integer Pivotm1    = Pivot-1;
   Standard_Integer nbdeltaVp1 = nbdeltaV+1;
   Standard_Integer nbdeltaVm2 = nbdeltaV + nbdeltaV;

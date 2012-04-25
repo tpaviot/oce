@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <IGESControl_ActorWrite.ixx>
 #include <TransferBRep_ShapeMapper.hxx>
 #include <Interface_Macros.hxx>
@@ -53,7 +70,8 @@ Handle(Transfer_Binder)  IGESControl_ActorWrite::Transfer
     Standard_Real maxTol = Interface_Static::RVal("read.maxprecision.val");
     shape = XSAlgo::AlgoContainer()->ProcessShape( shape, Tol, maxTol, 
                                                    "write.iges.resource.name", 
-                                                   "write.iges.sequence", info );
+                                                   "write.iges.sequence", info,
+                                                   FP->GetProgress() );
 //  modified by NIZHNY-EAP Tue Aug 29 11:17:01 2000 ___END___
 
     BRepToIGES_BREntity   BR0; BR0.SetModel(modl);  BR0.SetTransferProcess(FP);

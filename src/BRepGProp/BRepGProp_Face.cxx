@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <BRepGProp_Face.ixx>
 #include <BRep_Tool.hxx>
 #include <TopoDS.hxx>
@@ -318,7 +336,7 @@ void BRepGProp_Face::UKnots(TColStd_Array1OfReal& Knots) const
   case GeomAbs_Cone: 
   case GeomAbs_Sphere: 
   case GeomAbs_Torus:
-    Knots(1) = 0.0;  Knots(2) = PI*2.0/3.0;  Knots(3) = PI*4.0/3.0;  Knots(4) = PI*6.0/3.0;
+    Knots(1) = 0.0;  Knots(2) = M_PI*2.0/3.0;  Knots(3) = M_PI*4.0/3.0;  Knots(4) = M_PI*6.0/3.0;
     break;
   case GeomAbs_BSplineSurface: 
     (*((Handle(Geom_BSplineSurface)*)&((mySurface.Surface()).Surface())))->UKnots(Knots);
@@ -343,10 +361,10 @@ void BRepGProp_Face::VKnots(TColStd_Array1OfReal& Knots) const
     Knots(1) = mySurface.FirstUParameter();  Knots(2) = mySurface.LastUParameter();  
     break;
   case GeomAbs_Sphere: 
-    Knots(1) = -PI/2.0;  Knots(2) = 0.0;  Knots(3) = +PI/2.0;
+    Knots(1) = -M_PI/2.0;  Knots(2) = 0.0;  Knots(3) = +M_PI/2.0;
     break;
   case GeomAbs_Torus:
-    Knots(1) = 0.0;  Knots(2) = PI*2.0/3.0;  Knots(3) = PI*4.0/3.0;  Knots(4) = PI*6.0/3.0;
+    Knots(1) = 0.0;  Knots(2) = M_PI*2.0/3.0;  Knots(3) = M_PI*4.0/3.0;  Knots(4) = M_PI*6.0/3.0;
     break;
   case GeomAbs_BSplineSurface: 
     (*((Handle(Geom_BSplineSurface)*)&((mySurface.Surface()).Surface())))->VKnots(Knots);
@@ -365,8 +383,8 @@ void BRepGProp_Face::VKnots(TColStd_Array1OfReal& Knots) const
 Standard_Integer BRepGProp_Face::LIntOrder(const Standard_Real Eps) const
 {
   Bnd_Box2d aBox;
-  BndLib_Add2dCurve aB;
-  aB.Add(myCurve, 1.e-7, aBox);
+
+  BndLib_Add2dCurve::Add(myCurve, 1.e-7, aBox);
   Standard_Real aXmin, aXmax, aYmin, aYmax;
   aBox.Get(aXmin, aYmin, aXmax, aYmax);
   Standard_Real aVmin = mySurface.FirstVParameter();
@@ -450,7 +468,7 @@ void BRepGProp_Face::LKnots(TColStd_Array1OfReal& Knots) const
     break;
   case GeomAbs_Circle:
   case GeomAbs_Ellipse:
-    Knots(1) = 0.0;  Knots(2) = PI*2.0/3.0;  Knots(3) = PI*4.0/3.0;  Knots(2) = PI*6.0/3.0;
+    Knots(1) = 0.0;  Knots(2) = M_PI*2.0/3.0;  Knots(3) = M_PI*4.0/3.0;  Knots(2) = M_PI*6.0/3.0;
     break;
   case GeomAbs_Parabola:
   case GeomAbs_Hyperbola:

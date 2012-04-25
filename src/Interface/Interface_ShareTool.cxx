@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Interface_ShareTool.ixx>
 #include <Interface_InterfaceError.hxx>
 #include <Interface_IntList.hxx>
@@ -31,15 +48,16 @@ Interface_ShareTool::Interface_ShareTool (const Handle(Interface_InterfaceModel)
 
 Interface_ShareTool::Interface_ShareTool (const Interface_Graph& agraph)
 {
-  theHGraph = new Interface_HGraph(agraph);
+  theHGraph = new Interface_HGraph(agraph.Model());
 }
 
 Interface_ShareTool::Interface_ShareTool (const Handle(Interface_HGraph)& ahgraph)
-     : theHGraph(ahgraph)
-{}
+{
+  theHGraph = ahgraph;
+}
 
 //    Ajout des "Implied" sur toutes les Entites du Graphe
-void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
+/*void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
 {
   Interface_Graph& thegraph = theHGraph->CGraph();
   Standard_Integer nb = thegraph.Size();
@@ -59,7 +77,7 @@ void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
     }
   }
   if (yena) thegraph.EvalSharings();
-}
+}*/
 
 
     Handle(Interface_InterfaceModel) Interface_ShareTool::Model () const
@@ -75,9 +93,9 @@ void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
   (const Handle(Standard_Transient)& ent) const
 {
   const Interface_Graph& thegraph = theHGraph->Graph();
-  Interface_IntList list =
-    thegraph.SharingNums (thegraph.EntityNumber(ent));
-  return (list.Length() > 0);
+  Handle(TColStd_HSequenceOfTransient) list =
+    thegraph.GetShareds (ent);
+  return (!list.IsNull() && list->Length() > 0);
 }
 
     Interface_EntityIterator  Interface_ShareTool::Shareds
@@ -94,12 +112,14 @@ void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
    const Handle(Standard_Type)& atype) const
 {
   Interface_Graph& thegraph = theHGraph->CGraph();
-  Interface_IntList list =
-    thegraph.SharingNums (thegraph.EntityNumber(ent));
+  Handle(TColStd_HSequenceOfTransient) list = thegraph.GetSharings (ent);
+  if(list.IsNull())
+    return 0;
+
   Standard_Integer result = 0;
-  Standard_Integer n = list.Length();
+  Standard_Integer n = list->Length();
   for (Standard_Integer i = 1; i <= n; i ++) {
-    Handle(Standard_Transient) entsh = thegraph.Entity(list.Value(i));
+    Handle(Standard_Transient) entsh = list->Value(i);
     if (entsh.IsNull()) continue;
     if (entsh->IsKind(atype)) result ++;
   }
@@ -111,13 +131,14 @@ void Interface_ShareTool::AddImplied (const Handle(Interface_GTool)& gtool)
    const Handle(Standard_Type)& atype) const
 {
   Interface_Graph& thegraph = theHGraph->CGraph();
-  Interface_IntList list =
-    thegraph.SharingNums (thegraph.EntityNumber(ent));
+  Handle(TColStd_HSequenceOfTransient) list = thegraph.GetSharings(ent);
+  if(list.IsNull())
+    return 0;
   Handle(Standard_Transient) entresult;
   Standard_Integer result = 0;
-  Standard_Integer n = list.Length();
+  Standard_Integer n = list->Length();
   for (Standard_Integer i = 1; i <= n; i ++) {
-    Handle(Standard_Transient) entsh = thegraph.Entity(list.Value(i));
+    Handle(Standard_Transient) entsh = list->Value(i);
     if (entsh.IsNull()) continue;
     if (entsh->IsKind(atype)) {
       entresult = entsh;

@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/XmlXCAFDrivers -I@top_srcdir@/src/XmlXCAFDrivers \
 -I@top_srcdir@/drv/XmlMXCAFDoc -I@top_srcdir@/src/XmlMXCAFDoc
@@ -20,20 +20,20 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXmlXCAF.la
 
-libTKXmlXCAF_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKMath/libTKMath.la \
-../TKLCAF/libTKLCAF.la \
-../TKG2d/libTKG2d.la \
+libTKXmlXCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKXmlL/libTKXmlL.la \
 ../TKBRep/libTKBRep.la \
-../TKG3d/libTKG3d.la \
-../TKXCAF/libTKXCAF.la \
-../TKCAF/libTKCAF.la \
 ../TKCDF/libTKCDF.la \
+../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
+../TKG2d/libTKG2d.la \
 ../TKGeomBase/libTKGeomBase.la \
-../TKXml/libTKXml.la \
-$(STLPort_LIB) 
+../TKCAF/libTKCAF.la \
+../TKG3d/libTKG3d.la \
+../TKLCAF/libTKLCAF.la \
+../TKXCAF/libTKXCAF.la \
+../TKXml/libTKXml.la
+
 
 libTKXmlXCAF_la_SOURCES = \
 @top_srcdir@/src/XmlMXCAFDoc/XmlMXCAFDoc.cxx \

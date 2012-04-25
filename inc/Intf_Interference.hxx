@@ -57,23 +57,23 @@ public:
 
   //! Gives the number   of  points of  intersection  in the <br>
 //!          interference. <br>
-  Standard_EXPORT     Standard_Integer NbSectionPoints() const;
+        Standard_Integer NbSectionPoints() const;
   //! Gives the point of  intersection of address  Index in <br>
 //!          the interference. <br>
-  Standard_EXPORT    const Intf_SectionPoint& PntValue(const Standard_Integer Index) const;
+       const Intf_SectionPoint& PntValue(const Standard_Integer Index) const;
   //! Gives the number  of polylines of  intersection in the <br>
 //!          interference. <br>
-  Standard_EXPORT     Standard_Integer NbSectionLines() const;
+        Standard_Integer NbSectionLines() const;
   //! Gives the polyline of intersection at address <Index> in <br>
 //!          the interference. <br>
-  Standard_EXPORT    const Intf_SectionLine& LineValue(const Standard_Integer Index) const;
+       const Intf_SectionLine& LineValue(const Standard_Integer Index) const;
   //! Gives the number of zones of tangence in the interference. <br>
-  Standard_EXPORT     Standard_Integer NbTangentZones() const;
+        Standard_Integer NbTangentZones() const;
   //! Gives  the zone of  tangence at address   Index in the <br>
 //!          interference. <br>
-  Standard_EXPORT    const Intf_TangentZone& ZoneValue(const Standard_Integer Index) const;
+       const Intf_TangentZone& ZoneValue(const Standard_Integer Index) const;
   //! Gives the tolerance used for the calculation. <br>
-  Standard_EXPORT     Standard_Real GetTolerance() const;
+        Standard_Real GetTolerance() const;
   //! Tests if the polylines of  intersection or the zones of <br>
 //!          tangence contain the point of intersection <ThePnt>. <br>
   Standard_EXPORT     Standard_Boolean Contains(const Intf_SectionPoint& ThePnt) const;
@@ -115,6 +115,7 @@ private:
 };
 
 
+#include <Intf_Interference.lxx>
 
 
 

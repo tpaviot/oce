@@ -33,6 +33,7 @@ class TopoDS_Shape;
 class TopoDS_Wire;
 class TopoDS_Face;
 class TopoDS_Edge;
+class TopoDS_Compound;
 class TopTools_ListOfShape;
 
 
@@ -76,6 +77,14 @@ public:
         void Add(const TopoDS_Wire& W,const TopoDS_Face& F) ;
   //! Adds the edge <E> on the face <F>. <br>
         void Add(const TopoDS_Edge& E,const TopoDS_Face& F) ;
+  //! Adds the compound <Comp> on the face <F>. The <br>
+//!          compound <Comp> must consist of edges lying on the <br>
+//!          face <F>. If edges are geometrically connected, <br>
+//!          they must be connected topologically, i.e. they <br>
+//!          must share common vertices. <br>
+//! <br>
+//! Raises NoSuchObject  if <F> does not belong to the original shape. <br>
+        void Add(const TopoDS_Compound& Comp,const TopoDS_Face& F) ;
   //! Adds the edge <E> on the existing edge <EOn>. <br>
         void Add(const TopoDS_Edge& E,const TopoDS_Edge& EOn) ;
   //! Returns  the faces   which  are the  left of   the <br>

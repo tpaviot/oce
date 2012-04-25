@@ -1,6 +1,0 @@
-+ UnitsMethods:pubinclude:UnitsMethods.hxx UnitsMethods:msentity:UnitsMethods
-+ UnitsMethods:privinclude:UnitsMethods.jxx UnitsMethods:msentity:UnitsMethods
-+ UnitsMethods:privinclude:UnitsMethods.ixx UnitsMethods:msentity:UnitsMethods
-+ UnitsMethods:dbadmfile:UnitsMethods_xcpp_header.In UnitsMethods:admfile:UnitsMethods_xcpp_fill.Out
-+ UnitsMethods:dbadmfile:UnitsMethods_xcpp_header.Out UnitsMethods:admfile:UnitsMethods_xcpp_fill.Out
-+ UnitsMethods:dbadmfile:UnitsMethods_xcpp_header.Dep UnitsMethods:admfile:UnitsMethods_xcpp_fill.Out

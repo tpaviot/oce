@@ -17,7 +17,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/TopOpeBRep -I@top_srcdir@/src/TopOpeBRep \
 -I@top_srcdir@/drv/TopOpeBRepDS -I@top_srcdir@/src/TopOpeBRepDS \
@@ -30,19 +30,19 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBool.la
 
-libTKBool_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
-../TKG3d/libTKG3d.la \
-../TKGeomBase/libTKGeomBase.la \
+libTKBool_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKMath/libTKMath.la \
-../TKBO/libTKBO.la \
-../TKG2d/libTKG2d.la \
-../TKShHealing/libTKShHealing.la \
-../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) 
+../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
+../TKShHealing/libTKShHealing.la \
+../TKGeomBase/libTKGeomBase.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKBO/libTKBO.la
+
 
 libTKBool_la_SOURCES = \
 @top_srcdir@/drv/BRepAlgo/BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean_0.cxx \

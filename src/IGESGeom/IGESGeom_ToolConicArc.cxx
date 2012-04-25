@@ -1,10 +1,23 @@
+// Created by: CKY / Contract Toubro-Larsen
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //--------------------------------------------------------------------
-//
-//  File Name : IGESGeom_ConicArc.cxx
-//  Date      :
-//  Author    : CKY / Contract Toubro-Larsen
-//  Copyright : MATRA-DATAVISION 1993
-//
 //--------------------------------------------------------------------
 
 #include <IGESGeom_ToolConicArc.ixx>
@@ -230,10 +243,10 @@ void IGESGeom_ToolConicArc::OwnCheck(const Handle(IGESGeom_ConicArc)& ent,
       gp_Dir2d d2(ent->EndPoint().X()   - xc, ent->EndPoint().Y()   - yc);
       Standard_Real t1 = d0.Angle(d1);
       Standard_Real t2 = d0.Angle(d2);
-      t1 += (t1  >  0 ? 0 : 2*PI);
-      t2 += (t2  >  0 ? 0 : 2*PI);
-      t2 += (t1 <= t2 ? 0 : 2*PI);
-      if ( !(0 <= t1 && t1 <= 2*PI) || !(0 <= t2-t1 && t2-t1 <= 2*PI) )
+      t1 += (t1  >  0 ? 0 : 2*M_PI);
+      t2 += (t2  >  0 ? 0 : 2*M_PI);
+      t2 += (t1 <= t2 ? 0 : 2*M_PI);
+      if ( !(0 <= t1 && t1 <= 2*M_PI) || !(0 <= t2-t1 && t2-t1 <= 2*M_PI) )
 	ach.AddFail("Parameter Error for Hyperbola");
     }
   else if (ent->FormNumber() == 3)
@@ -245,7 +258,7 @@ void IGESGeom_ToolConicArc::OwnCheck(const Handle(IGESGeom_ConicArc)& ent,
       gp_Dir2d d2(ent->EndPoint().X()   - xc, ent->EndPoint().Y()   - yc);
       Standard_Real t1 = d0.Angle(d1);
       Standard_Real t2 = d0.Angle(d2);
-      if ( !(-PI/2 < t1 && t1 < PI/2) || !(-PI/2 < t2 && t2 < PI/2) )
+      if ( !(-M_PI/2 < t1 && t1 < M_PI/2) || !(-M_PI/2 < t2 && t2 < M_PI/2) )
 	ach.AddFail("Parameter Error for Parabola");
     }
 */

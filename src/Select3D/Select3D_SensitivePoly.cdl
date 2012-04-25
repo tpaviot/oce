@@ -1,7 +1,27 @@
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 deferred class SensitivePoly from Select3D 
 inherits SensitiveEntity from Select3D
 
     ---Purpose: Sensitive Entity to make a face selectable.
+    -- In some cases this class can raise Standard_ConstructionError and 
+    -- Standard_OutOfRange exceptions from its member Select3D_PointData 
+    -- mypolyg.
 
 uses
     EntityOwner       from SelectBasics,
@@ -9,8 +29,13 @@ uses
     ListOfBox2d       from SelectBasics,
     Array1OfPnt       from TColgp,
     HArray1OfPnt      from TColgp,
-    Array1OfPnt2d   from TColgp,
-    Box2d             from Select3D
+    Array1OfPnt2d     from TColgp,
+    Box2d             from Select3D,
+    PointData         from Select3D
+
+raises    
+    ConstructionError from Standard,
+    OutOfRange        from Standard
 
 is
 
@@ -38,7 +63,7 @@ is
         ---Level: Public 
         ---Purpose: Constructs the sensitive circle object defined by the
         -- owner OwnerId, the circle Circle, the Boolean
-        -- FilledCircle and the number of points NbOfPoints.
+        -- FilledCircle and the number of points NbOfPoints. 
 
     Project (me:mutable;aProjector : Projector from Select3D) is redefined virtual;
     ---Level: Public 
@@ -58,15 +83,8 @@ is
     ---Purpose: Returns the 2D points of the array used at construction time.
     ---C++: inline
 
-
-    Destroy(me: mutable);
-    ---C++: alias ~
-
-
 fields
  
-    mypolyg3d       : Address   from Standard is protected;
-    mypolyg2d       : Address   from Standard is protected;
     mybox2d         : Box2d     from Select3D is protected;
-    mynbpoints      : Integer   from Standard is protected;
-end SensitiveFace;
+    mypolyg         : PointData from Select3D is protected;
+end SensitivePoly;

@@ -19,10 +19,14 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
 #ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
 #endif
 class TopoDS_Shape;
+class Message_ProgressIndicator;
 class ShapeBuild_ReShape;
 class ShapeFix_Root;
 class ShapeFix_EdgeProjAux;
@@ -81,8 +85,10 @@ public:
 //!           Tolerance <br>
 //!           Returns True when done, False if an exception has been raised <br>
 //!           In case of exception anyway, as many edges as possible have <br>
-//!           been processed <br>
-  Standard_EXPORT   static  Standard_Boolean SameParameter(const TopoDS_Shape& shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0) ;
+//!           been processed. The passed progress indicator allows user <br>
+//!           to consult the current progress stage and abort algorithm <br>
+//!           if needed. <br>
+  Standard_EXPORT   static  Standard_Boolean SameParameter(const TopoDS_Shape& shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const Handle(Message_ProgressIndicator)& theProgress = 0) ;
   //! Runs EncodeRegularity from BRepLib taking into account <br>
 //!           shared components of assemblies, so that each component <br>
 //!           is processed only once <br>

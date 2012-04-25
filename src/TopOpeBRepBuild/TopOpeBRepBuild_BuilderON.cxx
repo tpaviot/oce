@@ -1,7 +1,23 @@
-// file:	TopOpeBRepBuild_BuilderON.cxx
-// Created:	Thu Mar  7 10:49:33 1996
-// Author:	Jean Yves LEBEY
-//		<jyl@meteox>
+// Created on: 1996-03-07
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepBuild_BuilderON.ixx>
 
@@ -1548,12 +1564,12 @@ void TopOpeBRepBuild_BuilderON::GFillONPartsWES2(const Handle(TopOpeBRepDS_Inter
 	  if (!ok2) return;
 	  
 	  Standard_Real sum = matfs+matfor;
-	  Standard_Boolean sumisPI = (Abs(sum-PI) < tola1);
-	  Standard_Boolean fsinfPI  = (matfs < PI);
-	  Standard_Boolean forinfPI = (matfor < PI);
+	  Standard_Boolean sumisPI = (Abs(sum-M_PI) < tola1);
+	  Standard_Boolean fsinfPI  = (matfs < M_PI);
+	  Standard_Boolean forinfPI = (matfor < M_PI);
 	  if      (sumisPI)  b = Standard_False;
-	  else if (sum < PI) b = Standard_True;
-	  else { //sum > PI
+	  else if (sum < M_PI) b = Standard_True;
+	  else { //sum > M_PI
 	    if (fsinfPI && forinfPI) b = Standard_False;
 	    else { // (!fsinfPI) || (!forinfPI)
 	      Standard_Boolean sammat = (Abs(matfs-matfor)<tola1);

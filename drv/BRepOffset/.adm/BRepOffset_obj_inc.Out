@@ -1,5 +1,0 @@
-+M BRepOffset:pubinclude:BRepOffset_Offset.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/BRepOffset_Offset.lxx
-+M BRepOffset:pubinclude:BRepOffset_Interval.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/BRepOffset_Interval.lxx
-+M BRepOffset:dbadmfile:BRepOffset_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepOffset/.adm/BRepOffset_obj_inc.In
-+M BRepOffset:dbadmfile:BRepOffset_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepOffset/.adm/BRepOffset_obj_inc.Out
-+M BRepOffset:dbadmfile:BRepOffset_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepOffset/.adm/BRepOffset_obj_inc.Dep

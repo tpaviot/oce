@@ -1,0 +1,160 @@
+-- Created on: 1999-09-24
+-- Created by: Sergey ZARITCHNY
+-- Copyright (c) 1999-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
+
+package QANewBRepNaming 
+
+	---Purpose: Implements  methods   to   load  the  Make   Shape
+	--          operations in  the  naming data-structure (package
+	--          TNaming),  which    provides  topological   naming
+	--          facilities.  Shape  generation, modifications  and
+	--          deletions   are  recorded in   the  data-framework
+	--          (package  TDF)   using the builder  from   package
+	--          TNaming.
+
+uses 
+ 
+    TDF,
+    TNaming,
+    TopAbs,
+    TopLoc,
+    TopTools,
+    TopoDS, 
+--    FeatAlgo, 
+    BRepAlgo,
+    BRepAlgoAPI,
+    BRepPrimAPI, 
+    BRepBuilderAPI, 
+    BRepOffsetAPI, 
+    BRepFilletAPI,
+    QANewModTopOpe
+    
+is
+
+    ---Level: Public
+
+    enumeration TypeOfPrimitive3D is
+	SHELL,
+	SOLID
+    end TypeOfPrimitive3D;
+
+    class LoaderParent;
+
+    class Loader;
+
+    deferred class TopNaming;
+
+    	---Level: Primitives
+
+    	class Box;
+    
+    	class Prism; 
+     
+    	class Revol; 
+
+    	--class Cone;
+
+    	class Cylinder;
+
+    	class Sphere; 
+	 
+	--class Torus; 
+	 
+	--class Pipe;
+
+	--class PipeShell;
+
+	--class CircularPipe;
+
+
+    	---Level: Boolean operation (Cut, Fuse, Common)
+
+    	class BooleanOperation;      -- creation of a new part (primitive)
+
+    	deferred class BooleanOperationFeat;  -- modification one of the shapes (feature)
+	
+    	    class Common;
+
+    	    class Cut;
+
+    	    class Fuse;
+
+    	    --class Section;
+
+
+    	---Level: Fillet & Chamfer
+
+    	class Fillet;
+
+    	class Chamfer;
+
+    
+    	---Level: Importation
+
+    	class ImportShape;
+
+    	class Gluing;
+	
+	class Intersection;
+	
+	class Limitation;
+
+
+    	---Level: Offset
+
+        --class Draft;		  
+ 
+    	--class ThickSolid; 
+	 
+	--class ThruSections; 
+	 
+	--class Vary;
+
+
+    	---Level: Features
+
+	--class DPrism; 
+	 
+    	--class Hole;
+
+    	--class LinearForm; 
+	 
+	--class Mirror; 
+	 
+	--class PipeFeat;
+
+    	--class Scale;
+
+    	--class PrismFeat; 
+	 
+	--class RevolFeat;
+
+    	CleanStructure (theLabel : Label from TDF);
+
+    	LoadNamedShape (theBuilder : in out Builder from TNaming;
+			theEvol : Evolution from TNaming;
+			theOS : Shape from TopoDS;
+			theNS : Shape from TopoDS);
+
+    	Displace (theLabel : Label from TDF;
+                  theLoc : Location from TopLoc;
+                  theWithOld : Boolean from Standard);
+
+end QANewBRepNaming;

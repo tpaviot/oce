@@ -13,7 +13,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/XCAFApp -I@top_srcdir@/src/XCAFApp \
 -I@top_srcdir@/drv/XCAFDoc -I@top_srcdir@/src/XCAFDoc \
@@ -22,20 +22,20 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXCAF.la
 
-libTKXCAF_la_LIBADD = \
+libTKXCAF_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
 ../TKService/libTKService.la \
-../TKV3d/libTKV3d.la \
-../TKLCAF/libTKLCAF.la \
 ../TKG2d/libTKG2d.la \
-../TKCDF/libTKCDF.la \
-../TKCAF/libTKCAF.la \
-../TKBRep/libTKBRep.la \
-../TKV2d/libTKV2d.la \
-../TKG3d/libTKG3d.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) 
+../TKV3d/libTKV3d.la \
+../TKCDF/libTKCDF.la \
+../TKLCAF/libTKLCAF.la \
+../TKG3d/libTKG3d.la \
+../TKV2d/libTKV2d.la \
+../TKCAF/libTKCAF.la
+
 
 libTKXCAF_la_SOURCES = \
 @top_srcdir@/drv/XCAFDoc/XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel_0.cxx \

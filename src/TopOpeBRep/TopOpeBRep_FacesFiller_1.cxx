@@ -1,7 +1,23 @@
-// File:      TopOpeBRep_FacesFiller_1.cxx
-// Created:   Thu Feb 17 11:02:12 1994
-// Author:    Jean Yves LEBEY
-// Copyright: OPEN CASCADE 1994
+// Created on: 1994-02-17
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -734,10 +750,7 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
     Standard_Integer iOO = myDS->AddShape(OOE,OOrank);
 
     Standard_Real OOpar; 
-#ifdef DEB
-    Standard_Boolean okOO =
-#endif
-               VP.ParonE(OOE,OOpar);
+    VP.ParonE(OOE,OOpar);
  
     // xpu091198 : 1d interf done in EdgesFiller processing (cto cylcong *)     
     Standard_Boolean sdmeds = FUN_ds_sdm((*myDS),Erest,OOE);
@@ -1186,10 +1199,6 @@ void TopOpeBRep_FacesFiller::StoreCurveInterference(const Handle(TopOpeBRepDS_In
   if ( myDSCIndex == 0 ) {
     TopOpeBRepDS_Curve DSC;
     myDSCIndex = myDS->AddCurve(DSC);
-    
-#ifdef DEB
-    const TopOpeBRepDS_Curve& CCC = myDS->Curve(myDSCIndex);
-#endif
     
 #ifdef DEB
     if (TopOpeBRepDS_GettraceDSF() || TopOpeBRepDS_GettraceDSNC()) 

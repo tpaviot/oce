@@ -1,27 +1,38 @@
-// File:	ChFi3d_Builder_CnCrn.cxx
-// Created:	03-01-97 
-// Author:      MPS  
+// Created on: 1997-03-01
+// Created by: MPS  
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified by  MPS (14-04-97)  traitement des cas  ou il n'y a pas
 //                              d'intersection entre les stripes 
 //  Modified by  MPS (16-06-97) : on tient compte du fait que GeomPlate
 //                                rend les courbes 2d dans meme ordre que les
 //                                courbes frontieres passees en entree   
 //  Modified by JLR (20-08-97) mise en place des nouveaux constructeurs de GeomPlate
-//
 //  Modified by MPS (03-11-97) on ne cree pas un  batten lorsque le rapport
 //  entre les deux resolutions sur la surface est trop grand (PRO10649)  
-//
 //  Modified by MPS (05-12-97) on ne tient pas compte des aretes degenerees
 //                             lors du calcul du nombre d'aretes.
-//
 //  Modified by JCT (08-12-97) traitement des aretes vives consecutives ou non
 //                             (grille EDC412 sauf D2, L1, L2, L3)
-//
 //  Modified by JCT (11-12-97) pb osf avec indpoint + orientation de plate
 //                             ( --> D2, L1, L2, L3 valides mais laids)
-//  
 //  Modified by MPS (24-02-98)  traitement des aretes de regularite 
-//
 //  Modified by MPS (01-06-98)  traitement des aretes de couture 
 //  Modified by MPS (01-12-98)  traitement des bords libres 
 //  Modified by MPS (01-02-99)  traitement des aretes de regularite 
@@ -491,15 +502,15 @@ static void CalculBatten (const Handle (GeomAdaptor_HSurface) ASurf,
   Bat.SetFreeSliding (Standard_True);
   Standard_Real ang1,ang2;
   ang1=dir1.Angle(dir3);
-  if (dir1.Angle(dir4) >0 ) ang2=PI-dir1.Angle(dir4);
-  else ang2=-PI-dir1.Angle(dir4);
+  if (dir1.Angle(dir4) >0 ) ang2=M_PI-dir1.Angle(dir4);
+  else ang2=-M_PI-dir1.Angle(dir4);
   if (contraint1&&contraint2) 
   anglebig=(Abs(ang1)>1.2)|| (Abs(ang2)>1.2 );
   else if (contraint1) 
   anglebig=Abs(ang1)>1.2;
   else if (contraint2)
   anglebig=Abs(ang2)>1.2; 
-  if (isplane && (Abs(ang1)>PI/2 || Abs(ang2)>PI/2))
+  if (isplane && (Abs(ang1)>M_PI/2 || Abs(ang2)>M_PI/2))
   isplane=Standard_False;
   if (anglebig && !isplane) {
     CalculDroite(p2d1,xdir,ydir,pcurve);
@@ -994,7 +1005,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
   Standard_Boolean droit=Standard_False;
   if (bordlibre) {nedge=(nedge-2)/2 +2;
      Standard_Real angedg=Abs(ChFi3d_AngleEdge(V1,edgelibre1,edgelibre2));
-     droit=Abs(angedg-PI)<0.01;   
+     droit=Abs(angedg-M_PI)<0.01;   
   }
   else  nedge=nedge/2;
   Standard_Integer size=nedge*2;
@@ -1248,7 +1259,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 	if (ind!=ic) {
 	  TopoDS_Edge ecur=TopoDS::Edge(Evive.Value(ind));
 	  Standard_Real ang=Abs(ChFi3d_AngleEdge(V1,ecur,ereg)); 
-	  if (ang<0.01 || Abs(ang-PI) <0.01) {
+	  if (ang<0.01 || Abs(ang-M_PI) <0.01) {
 	    regul.SetValue(ic,Standard_False);
 	    tangentregul.SetValue(ic,Standard_True);
 	    trouve=Standard_True;
@@ -1290,7 +1301,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
          if ( !E1.IsSame(edgelibre1) && !E1.IsSame(edgelibre2) &&
               !E2.IsSame(edgelibre1) && !E2.IsSame(edgelibre2)){ 
 	   Standard_Real ang=Abs(ChFi3d_AngleEdge(V1 ,E1,E2));
-	   deuxconges=(ang<0.01 || Abs(ang-PI)<0.01);
+	   deuxconges=(ang<0.01 || Abs(ang-M_PI)<0.01);
          }
        }
      }
@@ -1339,7 +1350,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 	Indices(nedge,ic,icplus,icmoins);
         TopoDS_Edge Arc=TopoDS::Edge(Evive.Value(ic));
 	ChFiDS_CommonPoint cp1, cp2;
-        Standard_Real angedg=PI;
+        Standard_Real angedg=M_PI;
         TopoDS_Vertex Vcom;
 	if (!sharp.Value(icplus)) {
 	  isfirst=(sens.Value(icplus)==1);
@@ -1349,7 +1360,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 	  if (cp1.IsOnArc()){
             ChFi3d_cherche_vertex(Arc,cp1.Arc(),Vcom,trouve);
             if (trouve) angedg=Abs(ChFi3d_AngleEdge(Vcom,Arc,cp1.Arc()));
-	    if (!cp1.Arc().IsSame(Arc) && Abs(angedg-PI)<0.01){
+	    if (!cp1.Arc().IsSame(Arc) && Abs(angedg-M_PI)<0.01){
 	      Evive.SetValue(ic,cp1.Arc());
 	      ChFi3d_edge_common_faces(myEFMap(cp1.Arc()),F1,F2);
 	      if (!Fvive.Value(ic,icplus).IsSame(F1) && !Fvive.Value(ic,icplus).IsSame(F2)) {
@@ -1378,10 +1389,10 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
 	  cp2 = CD.Value(icmoins)->SetOfSurfData()->Value(Index.Value(icmoins))->
 	    ChangeVertex (isfirst,jf.Value(icmoins));
 	  if (cp2.IsOnArc()) {
-            angedg=PI;
+            angedg=M_PI;
             ChFi3d_cherche_vertex(Arc,cp2.Arc(),Vcom,trouve);
             if (trouve) angedg=Abs(ChFi3d_AngleEdge(Vcom,Arc,cp2.Arc()));
-	    if (!cp2.Arc().IsSame(Arc)&&Abs(angedg-PI)<0.01) {
+	    if (!cp2.Arc().IsSame(Arc)&&Abs(angedg-M_PI)<0.01) {
 	      Evive.SetValue(ic,cp2.Arc());
 	      ChFi3d_edge_common_faces(myEFMap(cp2.Arc()),F1,F2);
 	      if (!Fvive.Value(ic,icmoins).IsSame(F1) && !Fvive.Value(ic,icmoins).IsSame(F2)) {
@@ -1459,7 +1470,7 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
       Standard_Integer iface;
       // if two edges are tangent the intersection is not attempted (cts60046)
       angedg=Abs(ChFi3d_AngleEdge(V1,TopoDS::Edge(Evive.Value(ic)),TopoDS::Edge(Evive.Value(icplus))));
-      if (Abs(angedg-PI)>0.01)
+      if (Abs(angedg-M_PI)>0.01)
 	ok = ChFi3d_SearchFD(DStr,CD.Value(ic),CD.Value(icplus),sens.Value(ic),sens.Value(icplus),
 				  i1,i2,pa1,pa2,
 				  Index.Value(ic),Index.Value(icplus),
@@ -2230,20 +2241,20 @@ void  ChFi3d_Builder::PerformMoreThreeCorner(const Standard_Integer Jndex,
         if (couture) {
 	  Standard_Boolean PI1=Standard_False, PI2=Standard_False;
 	  Standard_Real xx;
-	  PI1=0<=p2d1.X() && p2d1.X() <=PI;
-	  PI2=0<=p2d2.X() && p2d2.X() <=PI;
+	  PI1=0<=p2d1.X() && p2d1.X() <=M_PI;
+	  PI2=0<=p2d2.X() && p2d2.X() <=M_PI;
 	  
 	  if (Evive.Value(ic).IsSame(edgecouture)){
 	    xx=p2d1.X();
-	    if (PI2&&!PI1) xx=xx-2*PI;
-	    if (!PI2&&PI1) xx=xx+2*PI;
+	    if (PI2&&!PI1) xx=xx-2*M_PI;
+	    if (!PI2&&PI1) xx=xx+2*M_PI;
 	    p2d1.SetX(xx);
               
 	  }
 	  if (Evive.Value(icplus).IsSame(edgecouture)){
 	    xx=p2d2.X();
-	    if (PI2&&!PI1) xx=xx+2*PI;
-	    if (!PI2&&PI1) xx=xx-2*PI;
+	    if (PI2&&!PI1) xx=xx+2*M_PI;
+	    if (!PI2&&PI1) xx=xx-2*M_PI;
 	    p2d2.SetX(xx); 
 	  }
         }

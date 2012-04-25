@@ -1,7 +1,23 @@
-// File:	GeomFill_SweepSectionGenerator.cxx
-// Created:	Mon Feb 28 14:14:53 1994
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1994-02-28
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GeomFill_SweepSectionGenerator.ixx>
 
@@ -256,11 +272,6 @@ void GeomFill_SweepSectionGenerator::Perform(const Standard_Boolean Polynomial)
   myPolynomial = Polynomial;
 
   // eval myNbSections.
-#ifdef DEB
-  Standard_Integer Deg = myPath->Degree();
-#else
-  myPath->Degree();
-#endif
   Standard_Integer NSpans = myPath->NbKnots()-1;
 
   myNbSections = 21 * NSpans;
@@ -319,11 +330,11 @@ void GeomFill_SweepSectionGenerator::Perform(const Standard_Boolean Polynomial)
     myFirstSect = GeomConvert::CurveToBSplineCurve(Circ);
     // le cercle est segmente car AppBlend_AppSurf ne gere
     // pas les courbes periodiques.
-    myFirstSect->Segment(0., 2.*PI);
+    myFirstSect->Segment(0., 2.*M_PI);
 */
     Handle(Geom_TrimmedCurve) Circ = 
       new Geom_TrimmedCurve(new Geom_Circle( CircleAxis, myRadius), 
-			    0., 2.*PI); 
+			    0., 2.*M_PI); 
     
     myFirstSect = GeomConvert::CurveToBSplineCurve(Circ,Convert_QuasiAngular);
   }
@@ -414,7 +425,7 @@ void GeomFill_SweepSectionGenerator::Knots(TColStd_Array1OfReal& TKnots) const
 {
 /*
   if (myType == 1) {
-    Standard_Real U = 2.*PI/3.;
+    Standard_Real U = 2.*M_PI/3.;
     for ( Standard_Integer i = 1; i <= 4; i++) 
       TKnots(i) = ( i-1) * U;
   }

@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define IMP140901       //GG 14/09/01 goback to avoid a regression
 //			See V2d_Viewer
 
@@ -341,23 +358,6 @@ void AIS2D_InteractiveContext::Erase(
    
 }
 
-void AIS2D_InteractiveContext::EraseMode(
-	           const Handle(AIS2D_InteractiveObject)& anIObj,
-			   const Standard_Integer aMode,
-			   const Standard_Boolean /*UpdateVwr*/ ) {
-
-  if ( anIObj.IsNull() ) return;
-
-  if ( !myObjects.IsBound( anIObj ) ) return;
-  
-  if ( anIObj->HasDisplayMode() ) 
-    if ( anIObj->DisplayMode() == aMode ) return;
-  else if ( myDisplayMode == aMode) return;
-  Handle(AIS2D_GlobalStatus) GStatus = myObjects( anIObj );
-  if ( GStatus->GraphicStatus() != AIS2D_DS_Displayed ) return;
-  if ( GStatus->IsDModeIn( aMode ) ) {}
-}
-
 void AIS2D_InteractiveContext::EraseAll (const Standard_Boolean /*PutInCollector*/, 
                                          const Standard_Boolean UpdateVwr)
 {
@@ -483,10 +483,6 @@ Standard_Integer AIS2D_InteractiveContext::OpenLocalContext( const Standard_Bool
                                                              const Standard_Boolean AcceptEraseOfObj ) {
   if ( !IsCurrent( myLastPicked ) ) 
     if ( !myLastPicked.IsNull() ) {
-#ifdef DEB
-      AIS2D_TypeOfDetection HiMod = myLastPicked -> HasHighlightMode() ? 
-		              myLastPicked->HighlightMode() : myLastPicked->DefaultHighlightMode();
-#endif
       myLastPicked->Unhighlight();
 	 }
   
@@ -545,9 +541,6 @@ void AIS2D_InteractiveContext::CloseLocalContext( const Standard_Integer ind,
    
    if ( GoodIndex == myCurLocalIndex ) {
      myCurLocalIndex = HighestIndex();
-#ifdef DEB
-     const Handle(AIS2D_LocalContext)& LocCtx = myLocalContexts(myCurLocalIndex);
-#endif
    }
    
  }
@@ -1772,10 +1765,6 @@ void AIS2D_InteractiveContext::Highlight( const Handle(AIS2D_InteractiveObject)&
 	 break;
    }
    case AIS2D_DS_Erased:	{
-#ifdef DEB
-     Standard_Integer HiMode = anIObj->HasHighlightMode() ? 
-                      anIObj->HighlightMode() : anIObj->DefaultHighlightMode();
-#endif
      anIObj->Highlight(myCollectorVwr->InitializeColor( mySelectionColor ));
      if ( updateVwr ) myCollectorVwr->Update();
      break;
@@ -1821,7 +1810,6 @@ void AIS2D_InteractiveContext::HighlightWithColor( const Handle(AIS2D_Interactiv
       }
       case AIS2D_DS_Erased: {
 #ifdef DEB
-	    Standard_Integer HiMode = anIObj->HasHighlightMode()? anIObj->HighlightMode():0;
 	    Standard_Integer indCol = myCollectorVwr->InitializeColor( aCol );
 #endif
 		if ( updateVwr) myCollectorVwr->Update();
@@ -2165,10 +2153,7 @@ AIS2D_StatusOfPick AIS2D_InteractiveContext::Select( const Standard_Boolean Upda
 	  myLocalContexts( myCurLocalIndex )->SetSelected( myLastPicked, UpdateVwr );
 	  return AIS2D_SOP_OneSelected;
   }
-#ifdef DEB
-  AIS2D_StatusOfPick PS( AIS2D_SOP_NothingSelected );
-#endif
-  
+
  if ( ! mySeqOfDetIO->IsEmpty() ) {
     Handle(AIS2D_InteractiveObject) theIO;
     Handle(AIS2D_HSequenceOfPrimArchit) thePA;

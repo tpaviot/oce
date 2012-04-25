@@ -1,10 +1,25 @@
-// File:      GeomAdaptor_Surface.cxx
-// Created:   Fri May 14 16:30:25 1993
-// Author:    Bruno DUMORTIER
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-05-14
+// Created by: Joelle CHAUVET
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // Modified:	Thu Nov 26 16:37:18 1998
-// Author:	Joelle CHAUVET
 //		correction in NbUIntervals for SurfaceOfLinearExtrusion 
 //		(PRO16346)
 
@@ -43,6 +58,7 @@
 #include <BSplCLib.hxx>
 #include <Precision.hxx>
 #include <Standard_NoSuchObject.hxx>
+#include <Standard_NullObject.hxx>
 
 #define myBspl (*((Handle(Geom_BSplineSurface)*)&mySurface))
 #define myExtSurf (*((Handle(Geom_SurfaceOfLinearExtrusion)*)&mySurface))
@@ -97,7 +113,7 @@ GeomAbs_Shape LocalContinuity(Standard_Integer         Degree,
 //purpose  : 
 //=======================================================================
 
-void GeomAdaptor_Surface::Load(const Handle(Geom_Surface)& S,
+void GeomAdaptor_Surface::load(const Handle(Geom_Surface)& S,
                                const Standard_Real UFirst,
                                const Standard_Real ULast,
                                const Standard_Real VFirst,
@@ -105,9 +121,6 @@ void GeomAdaptor_Surface::Load(const Handle(Geom_Surface)& S,
                                const Standard_Real TolU,
                                const Standard_Real TolV)
 {
-  if(UFirst>ULast || VFirst>VLast)
-    Standard_ConstructionError::Raise("GeomAdaptor_Surface::Load");
-
   myTolU =  TolU;
   myTolV =  TolV;  
   myUFirst = UFirst;
@@ -860,7 +873,7 @@ Standard_Real GeomAdaptor_Surface::UResolution(const Standard_Real R3d) const
   if ( Res <= 1.)  
     return 2.*ASin(Res);
   
-  return 2.*PI;
+  return 2.*M_PI;
 }
 
 //=======================================================================
@@ -927,7 +940,7 @@ Standard_Real GeomAdaptor_Surface::VResolution(const Standard_Real R3d) const
   if ( Res <= 1.) 
     return 2.*ASin(Res);
 
-  return 2.*PI;
+  return 2.*M_PI;
 }
 
 //=======================================================================

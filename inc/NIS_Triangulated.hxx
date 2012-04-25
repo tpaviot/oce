@@ -1,7 +1,22 @@
-// File:      NIS_Triangulated.hxx
-// Created:   17.07.07 08:42
-// Author:    Alexander GRIGORIEV
-// Copyright: Open Cascade 2007
+// Created on: 2007-07-17
+// Created by: Alexander GRIGORIEV
+// Copyright (c) 2007-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #ifndef NIS_Triangulated_HeaderFile
@@ -9,12 +24,6 @@
 
 #include <NIS_InteractiveObject.hxx>
 #include <Quantity_Color.hxx>
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
-#endif
 
 class Handle_NIS_TriangulatedDrawer;
 class NCollection_BaseAllocator;
@@ -465,24 +474,13 @@ class NIS_Triangulated : public NIS_InteractiveObject
    */
   Standard_EXPORT virtual void Delete () const; 
 
-  /**
-   * Operator new for memory allocation uses Open CASCADE memory manager
-   */
-  void* operator new    (size_t size)
-  {
-    return Standard::Allocate(size);
-  }
-
  protected:
 
   /**
    * Allocator-based operator new for dynamic allocations in method Clone()
    */
-  void* operator new    (Standard_Size theSz,
-                         const Handle(NCollection_BaseAllocator)& theAllocator)
-  {
-    return theAllocator->Allocate(theSz);
-  }
+  DEFINE_STANDARD_ALLOC
+  DEFINE_NCOLLECTION_ALLOC
 
   /**
    * Create a 3D bounding box of the object.
@@ -535,9 +533,5 @@ DEFINE_STANDARD_RTTI (NIS_Triangulated)
 
 // Definition of HANDLE object using Standard_DefineHandle.hxx
 DEFINE_STANDARD_HANDLE (NIS_Triangulated, NIS_InteractiveObject)
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

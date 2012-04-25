@@ -1,9 +1,0 @@
-+ TopClass:pubinclude:TopClass_Intersection3d.hxx TopClass:msentity:TopClass_Intersection3d
-+ TopClass:privinclude:TopClass_Intersection3d.jxx TopClass:msentity:TopClass_Intersection3d
-+ TopClass:privinclude:TopClass_Intersection3d.ixx TopClass:msentity:TopClass_Intersection3d
-+ TopClass:pubinclude:TopClass_SolidExplorer.hxx TopClass:msentity:TopClass_SolidExplorer
-+ TopClass:privinclude:TopClass_SolidExplorer.jxx TopClass:msentity:TopClass_SolidExplorer
-+ TopClass:privinclude:TopClass_SolidExplorer.ixx TopClass:msentity:TopClass_SolidExplorer
-+ TopClass:dbadmfile:TopClass_xcpp_header.In TopClass:admfile:TopClass_xcpp_fill.Out
-+ TopClass:dbadmfile:TopClass_xcpp_header.Out TopClass:admfile:TopClass_xcpp_fill.Out
-+ TopClass:dbadmfile:TopClass_xcpp_header.Dep TopClass:admfile:TopClass_xcpp_fill.Out

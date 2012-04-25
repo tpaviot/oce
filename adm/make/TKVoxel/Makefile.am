@@ -11,26 +11,26 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Voxel -I@top_srcdir@/src/Voxel
 
 
 lib_LTLIBRARIES=libTKVoxel.la
 
-libTKVoxel_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
-../TKService/libTKService.la \
-../TKMesh/libTKMesh.la \
-../TKV3d/libTKV3d.la \
-../TKG2d/libTKG2d.la \
-../TKV2d/libTKV2d.la \
+libTKVoxel_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
+../TKV3d/libTKV3d.la \
+../TKMath/libTKMath.la \
+../TKService/libTKService.la \
 ../TKGeomBase/libTKGeomBase.la \
-../TKG3d/libTKG3d.la \
+../TKG2d/libTKG2d.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la \
+../TKV2d/libTKV2d.la \
+../TKMesh/libTKMesh.la
+
 
 libTKVoxel_la_SOURCES = \
 @top_srcdir@/src/Voxel/Voxel_BoolDS.cxx \

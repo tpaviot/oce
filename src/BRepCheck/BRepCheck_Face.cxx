@@ -1,7 +1,23 @@
-// File:	BRepCheck_Face.cxx
-// Created:	Fri Dec 15 11:49:58 1995
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1995-12-15
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepCheck_Face.ixx>
@@ -147,7 +163,7 @@ void BRepCheck_Face::InContext(const TopoDS_Shape& S)
 void BRepCheck_Face::Blind()
 {
   if (!myBlind) {
-    // rien de plus que dans le minimum
+    // nothing more than in the minimum
     myBlind = Standard_True;
   }
 }
@@ -174,14 +190,14 @@ BRepCheck_Status BRepCheck_Face::IntersectWires(const Standard_Boolean Update)
 
   TopExp_Explorer exp1,exp2;
 
-  // on mape les wires
+  // the wires are mapped
   exp1.Init(myShape.Oriented(TopAbs_FORWARD),TopAbs_WIRE);
   TopTools_ListOfShape theListOfShape;
   while (exp1.More()) {
     if (!myMapImb.IsBound(exp1.Current())) {
       myMapImb.Bind(exp1.Current(), theListOfShape);
     }
-    else { // on a 2 fois le meme wire...
+    else { // the same wire is met twice...
       myIntres = BRepCheck_RedundantWire;
       if (Update) {
 	BRepCheck::Add(myMap(myShape),myIntres);
@@ -266,10 +282,7 @@ BRepCheck_Status BRepCheck_Face::ClassifyWires(const Standard_Boolean Update)
     TopoDS_Shape aLocalShape = myShape.EmptyCopied();
     TopoDS_Face newFace = TopoDS::Face(aLocalShape);
 //    TopoDS_Face newFace = TopoDS::Face(myShape.EmptyCopied());
-#ifdef DEB
-    TopAbs_Orientation orWire = 
-#endif
-      wir1.Orientation();
+
     newFace.Orientation(TopAbs_FORWARD);
     B.Add(newFace,wir1);
 
@@ -277,7 +290,7 @@ BRepCheck_Status BRepCheck_Face::ClassifyWires(const Standard_Boolean Update)
     Standard_Boolean WireBienOriente = Standard_False;
     if(FClass2d.PerformInfinitePoint() != TopAbs_OUT) { 
       WireBienOriente=Standard_True;
-      //le wire donne definit un trou
+      // the given wire defines a hole
       myMapImb.UnBind(wir1);
       myMapImb.Bind(wir1.Reversed(), theListOfShape);
     }
@@ -293,10 +306,10 @@ BRepCheck_Status BRepCheck_Face::ClassifyWires(const Standard_Boolean Update)
       }
     }
   }
-  // On doit avoir 1 wire qui contient tous les autres, et les autres 
-  // ne contenant rien (cas solide fini) ou
-  // que des wires ne contenant rien : dans ce cas les wires doivent etre
-  // des trous dans une face infinie.
+  // It is required to have 1 wire that contains all others, and the others should not  
+  // contain anything (case solid ended) or
+  // the wires do not contain anything : in this case the wires should be
+  // holes in an infinite face.
   TopoDS_Wire Wext;
   for (TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(myMapImb);
        itm.More();
@@ -325,7 +338,7 @@ BRepCheck_Status BRepCheck_Face::ClassifyWires(const Standard_Boolean Update)
       return myImbres;
     }
   }
-  // sortie sans erreurs
+  // quit without errors
   if (Update) {
     BRepCheck::Add(myMap(myShape),myImbres);
   }
@@ -393,7 +406,7 @@ BRepCheck_Status BRepCheck_Face::OrientationOfWires
     const TopoDS_Wire& wir = TopoDS::Wire(exp.Current());
     if (!Wext.IsNull() && wir.IsSame(Wext)) {
       if (wir.Orientation() != Wext.Orientation()) {
-	//le wire exterieur definit un trou
+	//the exterior wire defines a hole 
 	if( CheckThin(wir,myShape.Oriented(TopAbs_FORWARD)) )
 	  return myOrires;
 	myOrires = BRepCheck_BadOrientationOfSubshape;
@@ -409,9 +422,9 @@ BRepCheck_Status BRepCheck_Face::OrientationOfWires
 	  break;
 	}
       }
-      // Pas de controle sur More()
+      // No control on More()
       if (itm.Key().Orientation() == wir.Orientation()) {
-	//le wire donne ne definit pas un trou
+	// the given wire does not define a hole
 	myOrires = BRepCheck_BadOrientationOfSubshape;
 	if (Update) {
 	  BRepCheck::Add(myMap(myShape),myOrires);
@@ -420,7 +433,7 @@ BRepCheck_Status BRepCheck_Face::OrientationOfWires
       }
     }
   }
-  // sortie sans erreur
+  // quit withour error
   if (Update) {
     BRepCheck::Add(myMap(myShape),myOrires);
   }

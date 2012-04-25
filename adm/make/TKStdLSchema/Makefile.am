@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StdLSchema -I@top_srcdir@/src/StdLSchema \
 -I@top_srcdir@/drv/StdLDrivers -I@top_srcdir@/src/StdLDrivers
@@ -20,14 +20,14 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKStdLSchema.la
 
-libTKStdLSchema_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKPLCAF/libTKPLCAF.la \
-../TKLCAF/libTKLCAF.la \
-../PTKernel/libPTKernel.la \
+libTKStdLSchema_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
+../PTKernel/libPTKernel.la \
+../TKernel/libTKernel.la \
 ../TKShapeSchema/libTKShapeSchema.la \
-$(STLPort_LIB) 
+../TKLCAF/libTKLCAF.la \
+../TKPLCAF/libTKPLCAF.la
+
 
 libTKStdLSchema_la_SOURCES = \
 @top_srcdir@/drv/StdLSchema/StdLSchema.cxx \

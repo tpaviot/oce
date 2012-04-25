@@ -1,8 +1,0 @@
-+ MAT2d:pubinclude:MAT2d_BisectingLocus.gxx MAT2d:source:MAT2d_BisectingLocus.gxx
-+ MAT2d:pubinclude:MAT2d_MapBiIntHasher.lxx MAT2d:source:MAT2d_MapBiIntHasher.lxx
-+ MAT2d:dbadmfile:MAT2d_obj_inc.In MAT2d:admfile:MAT2d_src.Out
-+ * MAT2d:admfile:MAT2d_xcpp_src.Out
-+ MAT2d:dbadmfile:MAT2d_obj_inc.Out MAT2d:admfile:MAT2d_src.Out
-+ * MAT2d:admfile:MAT2d_xcpp_src.Out
-+ MAT2d:dbadmfile:MAT2d_obj_inc.Dep MAT2d:admfile:MAT2d_src.Out
-+ * MAT2d:admfile:MAT2d_xcpp_src.Out

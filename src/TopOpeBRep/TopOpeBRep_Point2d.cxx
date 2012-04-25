@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_Point2d.cxx
-// Created:	Thu Oct 29 09:55:47 1998
-// Author:	Jean Yves LEBEY
-//		<jyl@langdox.paris1.matra-dtv.fr>
+// Created on: 1998-10-29
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef DRAW
 #include <TopOpeBRepTool_DRAW.hxx>
@@ -90,7 +106,6 @@ void TopOpeBRep_Point2d::Dump(const Standard_Integer E1index,const Standard_Inte
   
   Standard_Boolean isvertex1 = IsVertex(1); TopoDS_Vertex V1; if (isvertex1) V1 = Vertex(1);
   Standard_Boolean isvertex2 = IsVertex(2); TopoDS_Vertex V2; if (isvertex2) V2 = Vertex(2);
-  Standard_Boolean isvertex = isvertex1 || isvertex2;
 
   Standard_Integer ia1,ia2; SegmentAncestors(ia1,ia2);
   cout<<endl<<"p2d "<<index<<"  k="<<keep<<" pos="<<pos;

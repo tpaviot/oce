@@ -1,5 +1,20 @@
-
-//static const char* sccsid = "@(#)math_DirectPolynomialRoots.cxx	3.2 95/01/10"; // Do not delete this line. Used by sccs.
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 //#ifndef DEB
 #define No_Standard_RangeError
@@ -14,13 +29,12 @@
 
 
 
-    // Reference pour solution equation 3ieme degre et 2ieme degre :
-    //     ALGORITHMES NUMERIQUES ANALYSE ET MISE EN OEUVRE, tome 2
-    //          (equations et systemes non lineaires)
-    //
-    // J. VIGNES editions TECHNIP.
+// Reference pour solution equation 3ieme degre et 2ieme degre :
+//     ALGORITHMES NUMERIQUES ANALYSE ET MISE EN OEUVRE, tome 2
+//          (equations et systemes non lineaires)
+// J. VIGNES editions TECHNIP.
 
-    const Standard_Real ZERO = 1.0e-30;
+const Standard_Real ZERO = 1.0e-30;
     const Standard_Real EPSILON = RealEpsilon();
     const Standard_Real RADIX = 2;
     const Standard_Real Un_Sur_Log_RADIX = 1.0/log(2.0);
@@ -375,7 +389,7 @@ void math_DirectPolynomialRoots::Solve(const Standard_Real a,
         else {
           Omega = atan(0.5 * Q / sqrt(- Discr));
           Sp3 = sqrt(-P / 3.0);
-          Y1 = -2.0 * Sb * Sp3 * cos(PI / 6.0 - Sb * Omega / 3.0);          
+          Y1 = -2.0 * Sb * Sp3 * cos(M_PI / 6.0 - Sb * Omega / 3.0);          
           TheRoots[0] = - Beta / 3.0 + Y1;
           if(Beta * Q <= 0.0) {
             TheRoots[1] = - Beta / 3.0 + 2.0 * Sp3 * sin(Omega / 3.0);

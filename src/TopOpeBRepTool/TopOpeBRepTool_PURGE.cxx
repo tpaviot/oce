@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_PURGE.cxx
-// Created:	Thu Nov 13 13:45:48 1997
-// Author:	Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1997-11-13
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool.hxx>
 #include <TopOpeBRepTool_TOOL.hxx>
@@ -138,10 +154,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_ClosedW(const TopoDS_Wire& W)
   TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itvFine(mapvFine);
   for (; itvFine.More(); itvFine.Next()){
     const TopoDS_Shape& vFine = itvFine.Key();
-#ifdef DEB
-    const TopTools_ListOfShape& edsvFine =
-#endif
-                             itvFine.Value();
     Standard_Boolean vIine = mapvIine.IsBound(vFine);
     if (vIine) {mapvok.Add(vFine); continue;}
     Standard_Boolean vRine = mapvRine.IsBound(vFine);
@@ -153,10 +165,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_ClosedW(const TopoDS_Wire& W)
   TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itvRine(mapvRine);
   for (; itvRine.More(); itvRine.Next()){
     const TopoDS_Shape& vRine = itvRine.Key();
-#ifdef DEB
-    const TopTools_ListOfShape& edsvRine =
-#endif
-                             itvRine.Value();
     Standard_Boolean vok = mapvok.Contains(vRine);
     if (vok) continue;
     Standard_Boolean vIine = mapvIine.IsBound(vRine);
@@ -315,7 +323,7 @@ Standard_Boolean TopOpeBRepTool::PurgeClosingEdges(const TopoDS_Face& Fin, const
   Standard_Boolean uviso = FUN_tool_IsUViso(PC,isuiso,isviso,d2d,O2d);
   if (!uviso) return Standard_False;
 
-  Standard_Real period = 2*PI;
+  Standard_Real period = 2*M_PI;
   Standard_Real piso = isuiso? O2d.X(): O2d.Y();
   Standard_Real tol2d = 1.e-6;
   Standard_Boolean is0   = Abs(piso) < tol2d;

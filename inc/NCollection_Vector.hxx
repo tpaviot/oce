@@ -1,7 +1,22 @@
-// File:      NCollection_Vector.hxx
-// Created:   23.04.02 19:24:33
-// Author:    Alexander GRIGORIEV
-// Copyright: Open Cascade 2002
+// Created on: 2002-04-23
+// Created by: Alexander GRIGORIEV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #ifndef NCollection_Vector_HeaderFile
@@ -12,12 +27,6 @@
 
 #if !defined No_Exception && !defined No_Standard_OutOfRange
 #include <Standard_OutOfRange.hxx>
-#endif
-
-#ifdef WNT
-// Disable the warning: "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
 #endif
 
 /**
@@ -54,8 +63,9 @@ template <class TheItemType> class NCollection_Vector
   //! Nested class MemBlock
   class MemBlock : public NCollection_BaseVector::MemBlock
   {
-  public:
-    void * operator new (size_t, void * theAddress) { return theAddress; }
+   public:
+    DEFINE_STANDARD_ALLOC
+
     //! Empty constructor
     MemBlock (NCollection_BaseAllocator* theAlloc)
       : NCollection_BaseVector::MemBlock(0,0,theAlloc)
@@ -67,7 +77,7 @@ template <class TheItemType> class NCollection_Vector
       : NCollection_BaseVector::MemBlock (theFirstInd, theSize, theAlloc)
     {
       myData = myAlloc->Allocate(theSize * sizeof(TheItemType));
-      for (size_t i=0; i < theSize; i++)
+      for (Standard_Integer i=0; i < theSize; i++)
         new (&((TheItemType *) myData)[i]) TheItemType;
     }
     //! Copy constructor
@@ -77,7 +87,7 @@ template <class TheItemType> class NCollection_Vector
     {
       myLength = theOther.Length();
       myData = myAlloc->Allocate(Size() * sizeof(TheItemType));
-      size_t i;
+      Standard_Integer i;
       for (i=0; i < Length(); i++)
         new (&((TheItemType *) myData)[i]) TheItemType(theOther.Value(i));
       for (; i < Size(); i++)
@@ -85,17 +95,17 @@ template <class TheItemType> class NCollection_Vector
     }
     //! Reinit
     virtual void Reinit (const Standard_Integer theFirst,
-                         const size_t           theSize)
+                         const Standard_Integer theSize)
     {
       if (myData) {
-        for (size_t i=0; i < mySize; i++)
+        for (Standard_Integer i=0; i < mySize; i++)
           ((TheItemType *) myData)[i].~TheItemTypeD();
         myAlloc->Free(myData);
         myData = NULL;
       }
       if (theSize > 0) {
         myData = myAlloc->Allocate(theSize * sizeof(TheItemType));
-        for (size_t i=0; i < theSize; i++)
+        for (Standard_Integer i=0; i < theSize; i++)
           new (&((TheItemType *) myData)[i]) TheItemType;
       }
       myFirstInd = theFirst;
@@ -106,7 +116,7 @@ template <class TheItemType> class NCollection_Vector
     virtual ~MemBlock ()
     {
       if (myData) {
-        for (size_t i=0; i < Size(); i++)
+        for (Standard_Integer i=0; i < Size(); i++)
           ((TheItemType *) myData)[i].~TheItemTypeD();
         myAlloc->Free(myData);
         myData = NULL;
@@ -156,10 +166,6 @@ template <class TheItemType> class NCollection_Vector
     //! Variable value access
     virtual TheItemType& ChangeValue (void) const       {
       return ((MemBlock *) CurBlockV()) -> ChangeValue(myCurIndex); }
-    //! Operator new for allocating iterators
-    void* operator new(size_t theSize,
-                       const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
   }; // End of the nested class Iterator
 
   // ----------------------------------------------------------------------
@@ -305,9 +311,5 @@ template <class TheItemType> class NCollection_Vector
 
   friend class Iterator;
 };
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

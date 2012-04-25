@@ -1,6 +1,22 @@
-// File         V3d_PerspectiveView.cxx
-// Created      September 1992
-// Author       GG
+// Created by: GG
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified	07-10-96 : CQ ; correction PRO4522
 // Modified	23-02-98 : FMN ; Replace PI by Standard_PI
 // Modified     25-02-98 : FMN ; PERF.27: Optimisation of view creation from an existing view
@@ -11,7 +27,6 @@
 
 // IMP240100       //GG -> Activates WalkThrough model.
 
-//-Copyright    MatraDatavision 1991,1992
 
 //-Version
 
@@ -64,7 +79,7 @@ void V3d_PerspectiveView::SetAngle(const Standard_Real Angle) {
   
   Standard_Real focale,Umin,Vmin,Umax,Vmax,Dxv,Dyv,Rap,Xrp,Yrp;     
 
-  Viewer_BadValue_Raise_if ( Angle <= 0. || Angle >= Standard_PI, "V3d_PerspectiveView::SetAngle, bad angle");
+  Viewer_BadValue_Raise_if ( Angle <= 0. || Angle >= M_PI, "V3d_PerspectiveView::SetAngle, bad angle");
 
   MyViewMapping.WindowLimit(Umin,Vmin,Umax,Vmax) ;
   Dxv = Abs(Umax - Umin)/2. ; Dyv = Abs(Vmax - Vmin)/2.;
@@ -89,7 +104,7 @@ Standard_Real V3d_PerspectiveView::Angle()const  {
   
 //  Graphic3d_Vertex Prp ;
   Standard_Real focale,Umin,Vmin,Umax,Vmax,Dxv,Dyv ;     
-  Standard_Real angle = Standard_PI ;
+  Standard_Real angle = M_PI ;
   
   MyViewMapping.WindowLimit(Umin,Vmin,Umax,Vmax) ;
   focale = Focale() ;
@@ -111,7 +126,7 @@ void V3d_PerspectiveView::SetPerspective(const Standard_Real Angle, const Standa
   Standard_Real Umin,Vmin,Umax,Vmax,Xrp,Yrp,Zrp,du,dv;
 
   Viewer_BadValue_Raise_if ( ZNear <= 0. || ZFar <= 0. || ZNear >= ZFar, "V3d_PerspectiveView::SetPerspective, bad distances");
-  Viewer_BadValue_Raise_if ( Angle <= 0. || Angle >= Standard_PI, "V3d_PerspectiveView::SetAngle, bad angle");
+  Viewer_BadValue_Raise_if ( Angle <= 0. || Angle >= M_PI, "V3d_PerspectiveView::SetAngle, bad angle");
 
   Graphic3d_Vertex PRP = MyViewMapping.ProjectionReferencePoint() ;
   Xrp = Yrp = Zrp = 0.;

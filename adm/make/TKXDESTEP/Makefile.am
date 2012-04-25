@@ -11,28 +11,28 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/STEPCAFControl -I@top_srcdir@/src/STEPCAFControl
 
 
 lib_LTLIBRARIES=libTKXDESTEP.la
 
-libTKXDESTEP_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
-../TKXCAF/libTKXCAF.la \
-../TKLCAF/libTKLCAF.la \
-../TKXSBase/libTKXSBase.la \
-../TKSTEPBase/libTKSTEPBase.la \
-../TKG2d/libTKG2d.la \
-../TKSTEP/libTKSTEP.la \
+libTKXDESTEP_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
-../TKG3d/libTKG3d.la \
-../TKCAF/libTKCAF.la \
 ../TKSTEPAttr/libTKSTEPAttr.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
+../TKXSBase/libTKXSBase.la \
+../TKG2d/libTKG2d.la \
+../TKCAF/libTKCAF.la \
+../TKSTEPBase/libTKSTEPBase.la \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKLCAF/libTKLCAF.la \
+../TKG3d/libTKG3d.la \
+../TKXCAF/libTKXCAF.la \
+../TKSTEP/libTKSTEP.la
+
 
 libTKXDESTEP_la_SOURCES = \
 @top_srcdir@/drv/STEPCAFControl/STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_0.cxx \

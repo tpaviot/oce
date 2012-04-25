@@ -1,7 +1,22 @@
-// File:      BRep_Tool.cxx
-// Created:   Wed Jul  7 15:35:57 1993
-// Author:    Remi LEQUETTE
-//            <rle@phylox>
+// Created on: 1993-07-07
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 
 #include <BRep_Tool.ixx>
@@ -128,8 +143,7 @@ Standard_Boolean  BRep_Tool::NaturalRestriction(const TopoDS_Face& F)
 //           In <First> and <Last> the parameter range.
 //=======================================================================
 
-static Handle(Geom_Curve) nullCurve;
-static Handle(Poly_Polygon3D) nullPolygon3D;
+static const Handle(Geom_Curve) nullCurve;
 
 const Handle(Geom_Curve)&  BRep_Tool::Curve(const TopoDS_Edge& E,
                                             TopLoc_Location& L,
@@ -210,6 +224,8 @@ Standard_Boolean  BRep_Tool::IsGeometric(const TopoDS_Edge& E)
 //           handle. Returns in <L> the location for the polygon.
 //=======================================================================
 
+static const Handle(Poly_Polygon3D) nullPolygon3D;
+
 const Handle(Poly_Polygon3D)& BRep_Tool::Polygon3D(const TopoDS_Edge& E,
                                                    TopLoc_Location&   L)
 {
@@ -264,7 +280,7 @@ Handle(Geom2d_Curve) BRep_Tool::CurveOnSurface(const TopoDS_Edge& E,
 //           <First> and <Last> the parameter range.
 //=======================================================================
 
-static Handle(Geom2d_Curve) nullPCurve;
+static const Handle(Geom2d_Curve) nullPCurve;
 
 Handle(Geom2d_Curve) BRep_Tool::CurveOnSurface(const TopoDS_Edge& E, 
                                                const Handle(Geom_Surface)& S,
@@ -291,7 +307,6 @@ Handle(Geom2d_Curve) BRep_Tool::CurveOnSurface(const TopoDS_Edge& E,
     }
     itcr.Next();
   }
-  
 
   // for planar surface and 3d curve try a projection
   // modif 21-05-97 : for RectangularTrimmedSurface, try a projection
@@ -314,7 +329,7 @@ Handle(Geom2d_Curve) BRep_Tool::CurveOnSurface(const TopoDS_Edge& E,
 
     TopLoc_Location LC;
 
-    Standard_Real f, l;// pour les malins qui appellent avec (u,u).
+    Standard_Real f, l;// for those who call with (u,u).
     Handle(Geom_Curve) C3d =
       BRep_Tool::Curve(E,/*LC,*/f,l); // transforming plane instead of curve
     // we can loose scale factor of Curve transformation (eap 13 May 2002)
@@ -418,9 +433,9 @@ void  BRep_Tool::CurveOnSurface(const TopoDS_Edge& E,
       if (i > Index) break;
       if (i == Index) {
         // JMB le 21 Mai 1999
-        // on fait comme dans les autres methodes CurveOnSurface. c.a.d on tient
-        // compte de l'orientation dans le cas des aretes de coutures (renvoi de PCurve2)
-        // sinon on risque de louper des curves ou de ne pas obtenir la bonne.
+        // it is done as in the other CurveOnSurface methods, ie. take into account
+        // the orientation in case of cut edges (return PCurve2)
+        // otherwise there is a risk to loop curves or to not get the prover one.
         if (GC->IsCurveOnClosedSurface() && Eisreversed)
           C = GC->PCurve2();
         else
@@ -469,7 +484,7 @@ Handle(Poly_Polygon2D) BRep_Tool::PolygonOnSurface(const TopoDS_Edge& E,
 //           handle  if this polygon  does not exist.
 //=======================================================================
 
-static Handle(Poly_Polygon2D) nullPolygon2D;
+static const Handle(Poly_Polygon2D) nullPolygon2D;
 
 Handle(Poly_Polygon2D) 
      BRep_Tool::PolygonOnSurface(const TopoDS_Edge& E, 
@@ -575,7 +590,7 @@ void BRep_Tool::PolygonOnSurface(const TopoDS_Edge&      E,
 //           handle  if this polygon  does not exist.
 //=======================================================================
 
-static Handle(Poly_PolygonOnTriangulation) nullArray;
+static const Handle(Poly_PolygonOnTriangulation) nullArray;
 
 const Handle(Poly_PolygonOnTriangulation)&
 BRep_Tool::PolygonOnTriangulation(const TopoDS_Edge&                E, 
@@ -1372,7 +1387,7 @@ gp_Pnt2d  BRep_Tool::Parameters(const TopoDS_Vertex& V,
   L = L.Predivided(V.Location());
   BRep_ListIteratorOfListOfPointRepresentation itpr
     ((*((Handle(BRep_TVertex)*) &V.TShape()))->Points());
-  // On regarde dabord si il y des PointRepresentation (cas non Manifold)
+  // It is checked if there is PointRepresentation (case non Manifold)
 
   while (itpr.More()) {
     if (itpr.Value()->IsPointOnSurface(S,L)) {
@@ -1384,8 +1399,8 @@ gp_Pnt2d  BRep_Tool::Parameters(const TopoDS_Vertex& V,
 
  TopoDS_Vertex Vf,Vl;
  TopoDS_Edge E;
- // Sinon on explore les aretes (PMN 4/06/97) On ne peut pas faire un raise 999/1000!
- // meme si souvent il y a moyen de faire plus economique au dessus...
+ // Otherwise the edges are searched (PMN 4/06/97) It is not possible to succeed 999/1000!
+ // even if often there is a way to make more economically than above...
  TopExp_Explorer exp;
  for (exp.Init(F, TopAbs_EDGE); exp.More(); exp.Next()) { 
     E = TopoDS::Edge(exp.Current());  
@@ -1394,7 +1409,7 @@ gp_Pnt2d  BRep_Tool::Parameters(const TopoDS_Vertex& V,
       gp_Pnt2d Pf, Pl;
       UVPoints(E, F, Pf, Pl);
       if (V.IsSame(Vf)) return Pf;
-      else              return Pl;//Ambiguite (naturelle) pour les edges degenerees.
+      else              return Pl;//Ambiguity (natural) for degenerated edges.
     }
   }
   Standard_NoSuchObject::Raise("BRep_Tool:: no parameters on surface");

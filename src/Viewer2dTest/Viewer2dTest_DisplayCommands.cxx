@@ -1,7 +1,22 @@
-// File:      Viewer2dTest_DisplayCommands.cxx
-// Created:   22.01.02 16:21:20
-// Author:    Julia DOROVSKIKH
-// Copyright: Open Cascade 2001
+// Created on: 2002-01-22
+// Created by: Julia DOROVSKIKH
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Viewer2dTest.hxx>
 
@@ -1915,7 +1930,7 @@ static int drawFinishSymbol( Draw_Interpretor& , Standard_Integer argc, const ch
   gp_Pnt2d rightTopPoint(location.X() + length/2, location.Y() + length);
 				
   gp_Trsf2d trsf;
-  trsf.SetRotation(location, angle*PI/180);
+  trsf.SetRotation(location, angle*M_PI/180);
   
   startPoint.Transform(trsf);
   leftTopPoint.Transform(trsf);
@@ -2122,8 +2137,6 @@ static int v2dtable (Draw_Interpretor& , Standard_Integer argc, const char** arg
   
   Standard_Real x1 = 24, y1 = 24;
   Standard_Integer numberOfColumn = 1, numberOfRows = 1;
-  Quantity_PlaneAngle anAngle = 0.0;
-  Quantity_Factor     aScale = 1.0;
    
   if( argc >= 3 )
     x1 = atof( argv[2] );
@@ -2297,11 +2310,11 @@ static int drawLengthDim1( Draw_Interpretor& , Standard_Integer argc, const char
   
   double text_scale = 15;
   double length = 0; 
-  int distance_type = 0; 
-  double arrow_angle = 24;
-  double arrow_length = 24;
-  int arrow_type = 2;
-  int arrow_side = 3;
+  //int distance_type = 0; 
+  //double arrow_angle = 24;
+  //double arrow_length = 24;
+  //int arrow_type = 2;
+  //int arrow_side = 3;
   
   double distance = FirstPt.Distance(LastPt);
   
@@ -2400,7 +2413,6 @@ static int drawRadiusDim( Draw_Interpretor& , Standard_Integer argc, const char*
   gp_Pnt2d anAp2(240, 240);
   gp_Circ2d aCirc(gp_Ax2d(anAp2,gp_Dir2d(0,1)),100.);
   
-  Quantity_Length aRadius = 100;
   TCollection_ExtendedString aText("Rad = 10%");
   
   Handle(Prs2d_Radius) theRadius;			
@@ -2434,7 +2446,6 @@ static int drawSymbDim( Draw_Interpretor& , Standard_Integer argc, const char** 
   gp_Pnt2d anAp2(240, 240);
   gp_Circ2d aCirc(gp_Ax2d(anAp2,gp_Dir2d(0,1)),100.);
   
-  Quantity_Length aRadius = 100;
   TCollection_ExtendedString aText("Rad = 10%");
   
   Handle(AIS2D_InteractiveObject) aIO = new AIS2D_InteractiveObject();

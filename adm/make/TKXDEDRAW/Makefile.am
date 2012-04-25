@@ -11,39 +11,39 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/XDEDRAW -I@top_srcdir@/src/XDEDRAW
 
 
 lib_LTLIBRARIES=libTKXDEDRAW.la
 
-libTKXDEDRAW_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
-../TKXSBase/libTKXSBase.la \
-../TKXCAF/libTKXCAF.la \
-../TKViewerTest/libTKViewerTest.la \
-../TKXSDRAW/libTKXSDRAW.la \
-../TKG3d/libTKG3d.la \
-../TKCAF/libTKCAF.la \
-../TKV3d/libTKV3d.la \
-../TKService/libTKService.la \
-../TKMath/libTKMath.la \
+libTKXDEDRAW_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
 ../TKBRep/libTKBRep.la \
-../TKDCAF/libTKDCAF.la \
-../TKMesh/libTKMesh.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKG2d/libTKG2d.la \
-../TKDraw/libTKDraw.la \
-../TKSTEPBase/libTKSTEPBase.la \
+../TKXCAF/libTKXCAF.la \
+../TKernel/libTKernel.la \
 ../TKIGES/libTKIGES.la \
-../TKXDESTEP/libTKXDESTEP.la \
+../TKV3d/libTKV3d.la \
+../TKMath/libTKMath.la \
 ../TKNIS/libTKNIS.la \
+../TKService/libTKService.la \
+../TKXSBase/libTKXSBase.la \
+../TKG2d/libTKG2d.la \
+../TKCAF/libTKCAF.la \
+../TKDraw/libTKDraw.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKLCAF/libTKLCAF.la \
+../TKG3d/libTKG3d.la \
+../TKSTEPBase/libTKSTEPBase.la \
 ../TKSTEP/libTKSTEP.la \
+../TKMesh/libTKMesh.la \
+../TKXSDRAW/libTKXSDRAW.la \
 ../TKXDEIGES/libTKXDEIGES.la \
-$(STLPort_LIB) 
+../TKXDESTEP/libTKXDESTEP.la \
+../TKDCAF/libTKDCAF.la \
+../TKViewerTest/libTKViewerTest.la
+
 
 libTKXDEDRAW_la_SOURCES = \
 @top_srcdir@/src/XDEDRAW/XDEDRAW.cxx \

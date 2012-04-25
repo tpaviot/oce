@@ -1,14 +1,29 @@
+// Created by: NW,JPB,CAL
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File         Graphic3d_Group_8.cxx (PrimitivesAspect)
-// Created      Fevrier 1992
-// Author       NW,JPB,CAL
+
 // modified:     1/07/97 ; PCT : ajout texture mapping
 //              20/07/97 ; PCT : ajout transparence texture
 //              08/04/98 ; FGU : Ajout emission surface
 //              30/11/98 ; FMN : S4069. Textes always visible.   
 //              22/03/04 ; SAN : OCC4895 High-level interface for controlling polygon offsets */
 
-//-Copyright    MatraDatavision 1991,1992
 
 //-Version      
 
@@ -251,13 +266,15 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectFil
 
   /*** Texture map ***/
   Handle(Graphic3d_TextureMap) GroupTextureMap = CTX->TextureMap();
-  if (! GroupTextureMap.IsNull() )
+  if (! GroupTextureMap.IsNull() ) {
     MyCGroup.ContextFillArea.Texture.TexId = GroupTextureMap->TextureId();
-  else
+    MyCGroup.ContextFillArea.Texture.doTextureMap =
+      CTX->TextureMapState () ? 1 : 0;
+  }
+  else {
     MyCGroup.ContextFillArea.Texture.TexId = -1;
-
-  MyCGroup.ContextFillArea.Texture.doTextureMap =
-    CTX->TextureMapState () ? 1 : 0;
+    MyCGroup.ContextFillArea.Texture.doTextureMap = 0;
+  }
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
   Standard_Integer aPolyMode;

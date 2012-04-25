@@ -34,6 +34,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
 #ifndef _Handle_ShapeFix_Shell_HeaderFile
 #include <Handle_ShapeFix_Shell.hxx>
 #endif
@@ -57,6 +60,7 @@
 #endif
 class ShapeFix_Solid;
 class TopoDS_Shape;
+class Message_ProgressIndicator;
 class ShapeFix_Shell;
 class ShapeFix_Face;
 class ShapeFix_Wire;
@@ -76,7 +80,7 @@ public:
   //! Initislises by shape. <br>
   Standard_EXPORT     void Init(const TopoDS_Shape& shape) ;
   //! Iterates on sub- shape and performs fixes <br>
-  Standard_EXPORT     Standard_Boolean Perform() ;
+  Standard_EXPORT     Standard_Boolean Perform(const Handle(Message_ProgressIndicator)& theProgress = 0) ;
   //! Returns resulting shape <br>
   Standard_EXPORT     TopoDS_Shape Shape() const;
   //! Returns tool for fixing solids. <br>
@@ -132,8 +136,10 @@ public:
 
 protected:
 
-  
-  Standard_EXPORT     void SameParameter(const TopoDS_Shape& shape,const Standard_Boolean force) ;
+  //! Fixes same parameterization problem on the passed shape <br>
+//!          by updating tolerances of the corresponding topological <br>
+//!          entitites. <br>
+  Standard_EXPORT     void SameParameter(const TopoDS_Shape& shape,const Standard_Boolean enforce,const Handle(Message_ProgressIndicator)& theProgress = 0) ;
 
 TopoDS_Shape myResult;
 Handle_ShapeFix_Solid myFixSolid;

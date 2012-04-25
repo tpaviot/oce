@@ -1,7 +1,0 @@
-+ STEPCAFControl:pubinclude:STEPCAFControl_ExternFile.lxx STEPCAFControl:source:STEPCAFControl_ExternFile.lxx
-+ STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.In STEPCAFControl:admfile:STEPCAFControl_src.Out
-+ * STEPCAFControl:admfile:STEPCAFControl_xcpp_src.Out
-+ STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.Out STEPCAFControl:admfile:STEPCAFControl_src.Out
-+ * STEPCAFControl:admfile:STEPCAFControl_xcpp_src.Out
-+ STEPCAFControl:dbadmfile:STEPCAFControl_obj_inc.Dep STEPCAFControl:admfile:STEPCAFControl_src.Out
-+ * STEPCAFControl:admfile:STEPCAFControl_xcpp_src.Out

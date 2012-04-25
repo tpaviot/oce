@@ -1,12 +1,27 @@
-// File:	Draw_Viewer.cxx
-// Created:	Mon Apr  6 13:12:18 1992
-// Author:	Remi LEQUETTE
-//		<rle@sdsun1>
+// Created on: 1992-04-06
+// Created by: Remi LEQUETTE
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Updated by GG Tue Oct 22 16:22:10 1996
 //              reason : Try to compress the pixel image
 //                       in PseudoColor 8 planes format
 //              see : SaveView(filename)
-//
 
 #include <Draw_Viewer.hxx>
 
@@ -180,135 +195,135 @@ Standard_Boolean Draw_View::Init (const char* typ)
     }
   else if (!strcmp("-Y+X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),M_PI/2);
     }
   else if (!strcmp("-X-Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),M_PI);
     }
   else if (!strcmp("+Y-X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-M_PI/2);
     }
   else if (!strcmp("+Y+X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-X+Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI);
     }
   else if (!strcmp("-Y-X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+X-Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI);
     }
   else if (!strcmp("+X+Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
     }
   else if (!strcmp("-Z+X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-X-Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+Z-X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+Z+X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-X+Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-Z-X",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+X-Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
     }
   else if (!strcmp("+Y+Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-Z+Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
     }
   else if (!strcmp("-Y-Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+Z-Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),-M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+Z+Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
     }
   else if (!strcmp("-Y+Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("-Z-Y",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI);
       Matrix.Multiply(T);
     }
   else if (!strcmp("+Y-Z",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),PI/2);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),PI/2);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(0,1,0)),M_PI/2);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),M_PI/2);
       Matrix.Multiply(T);
     }
   else if (!strcmp("AXON",typ))
     {
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/4);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-PI/4);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/4);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-M_PI/4);
       Matrix.Multiply(T);
     }
   else if (!strcmp("PERS",typ))
     {
       FlagPers =1;
-      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-PI/4);
-      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-PI/4);
+      Matrix.SetRotation(gp_Ax1(Pvise,gp_Dir(1,0,0)),-M_PI/4);
+      T.SetRotation(gp_Ax1(Pvise,gp_Dir(0,0,1)),-M_PI/4);
       Matrix.Multiply(T);
     }
   else {
@@ -498,9 +513,6 @@ void   Draw_Viewer::RotateView  (const Standard_Integer id,
   if (Draw_Batch) return;
   if (myViews[id]) {
     gp_Trsf T = myViews[id]->Matrix;
-#ifdef DEB
-    Standard_Real z = myViews[id]->Zoom;
-#endif
 
     T.Invert();
     gp_Pnt PP(0,0,0);

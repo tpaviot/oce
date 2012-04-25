@@ -1,6 +1,22 @@
-//----------------------------------------------
-//-- C o n t a p _ C o n t o u r _ 2 . g x x  --
-//----------------------------------------------
+// Created on: 1993-02-05
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 
 #include <math_Vector.hxx>
@@ -97,14 +113,14 @@ static void Recadre(const TheSurface& myHS1,
      }
   }
   if(myHS1IsUPeriodic) {
-    lmf = PI+PI; //-- myHS1->UPeriod();
+    lmf = M_PI+M_PI; //-- myHS1->UPeriod();
     f = myHS1->FirstUParameter();
     l = myHS1->LastUParameter();
     while(u1 < f) { u1+=lmf; } 
     while(u1 > l) { u1-=lmf; }
   }
   if(myHS1IsVPeriodic) {
-    lmf = PI+PI; //-- myHS1->VPeriod(); 
+    lmf = M_PI+M_PI; //-- myHS1->VPeriod(); 
     f = myHS1->FirstVParameter();
     l = myHS1->LastVParameter();
     while(v1 < f) { v1+=lmf; } 
@@ -128,13 +144,8 @@ static void LineConstructor(Contap_TheSequenceOfLine& slin,
     Standard_Integer nbvtx = L.NbVertex();
     //-- cout<<" WLine -> "<<nbvtx<<" vtx"<<endl;
     for(Standard_Integer i=1;i<nbvtx;i++) { 
-//#ifndef DEB
       Standard_Integer firstp = (Standard_Integer) L.Vertex(i).ParameterOnLine();
       Standard_Integer lastp =  (Standard_Integer) L.Vertex(i+1).ParameterOnLine();
-//#else
-//      Standard_Integer firstp = L.Vertex(i).ParameterOnLine();
-//      Standard_Integer lastp =  L.Vertex(i+1).ParameterOnLine();
-//#endif
       if(firstp!=lastp) {  
 	Standard_Integer pmid = (firstp+lastp)/2; //-- entiers
 	const IntSurf_PntOn2S& Pmid = L.Point(pmid);
@@ -210,7 +221,7 @@ static void LineConstructor(Contap_TheSequenceOfLine& slin,
     Standard_Boolean novtx = Standard_True;
     if(nbvtx) novtx=Standard_False;
     for(Standard_Integer i=1;i<nbvtx  || novtx;i++) { 
-      Standard_Real firstp=0,lastp=PI+PI;
+      Standard_Real firstp=0,lastp=M_PI+M_PI;
       if(novtx == Standard_False) { 
 	firstp = L.Vertex(i).ParameterOnLine();
 	lastp =  L.Vertex(i+1).ParameterOnLine();
@@ -253,7 +264,7 @@ static void LineConstructor(Contap_TheSequenceOfLine& slin,
     }
     if(nbvtx)  {
       Standard_Real firstp = L.Vertex(nbvtx).ParameterOnLine();
-      Standard_Real lastp =  L.Vertex(1).ParameterOnLine() + PI+PI;
+      Standard_Real lastp =  L.Vertex(1).ParameterOnLine() + M_PI+M_PI;
       if(Abs(firstp-lastp)>0.0000000001) {  
 	Standard_Real pmid = (firstp+lastp)*0.5;
 	gp_Pnt Pmid =  ElCLib::Value(pmid,L.Circle());
@@ -281,7 +292,7 @@ static void LineConstructor(Contap_TheSequenceOfLine& slin,
 	  Contap_ThePoint pvtx = L.Vertex(nbvtx);
 	  Line.Add(pvtx);
 
-	  pvtx = L.Vertex(1);  pvtx.SetParameter(pvtx.ParameterOnLine()+PI+PI);
+	  pvtx = L.Vertex(1);  pvtx.SetParameter(pvtx.ParameterOnLine()+M_PI+M_PI);
 	  Line.Add(pvtx);
 	  Line.SetTransitionOnS(L.TransitionOnS());
 	  slin.Append(Line);
@@ -705,11 +716,7 @@ void ProcessSegments (const Contap_TheSearch& solrst,
   Contap_ThePathPointOfTheSearch PStartf,PStartl;
 
   Standard_Boolean dofirst,dolast,procf,procl;
-#ifndef DEB
   Standard_Real paramf =0.,paraml =0.,U;
-#else
-  Standard_Real paramf,paraml,U;
-#endif
   Contap_TheLine theline;
 
   gp_Vec tgline;//,norm1,norm2;
@@ -853,11 +860,7 @@ void ComputeInternalPointsOnRstr
   gp_Pnt pcour;
   gp_Pnt2d p2d;
   gp_Vec2d d2d;
-  Standard_Boolean found,ok
-#ifndef DEB
-    = Standard_False
-#endif
-  ,toutvu,solution;
+  Standard_Boolean found,ok = Standard_False,toutvu,solution;
   Standard_Real paramp,paraminf,paramsup,toler;
 
   if (Line.TypeContour() != Contap_Restriction) {
@@ -1003,17 +1006,8 @@ void ComputeInternalPoints
   Standard_Integer indexinf,indexsup,index;
   gp_Vec tgt, vecref, vectest, vtestb, vecregard;
   //gp_Pnt pprec,pcour;
-  Standard_Boolean found,ok
-#ifndef DEB
-    = Standard_False
-#endif
-      ,toutvu,solution;
-
-  Standard_Real paramp
-#ifndef DEB
-    = Standard_False
-#endif
-      ,U,V;
+  Standard_Boolean found,ok = Standard_False,toutvu,solution;
+  Standard_Real paramp = 0.,U,V;
 
   math_Vector XInf(1,2),XSup(1,2),X(1,2),F(1,1);
   math_Matrix DF(1,1,1,2);

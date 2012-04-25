@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
 
 FONCTION :
@@ -23,22 +41,8 @@ xx-xx-xx : xxx ; Creation.
 #ifndef  OPENGL_TELEM_UTIL_H
 #define  OPENGL_TELEM_UTIL_H
 
-#ifndef IMP190100
-#define IMP190100       /*GG To avoid too many REDRAW in immediat mode,
-//                      Add TelMakeFrontAndBackBufCurrent() function
-*/
-#endif
-
-#define BUC60823    /* GG 05/03/01 Avoid to crash in normal computation
-//        between confused points
-*/
-
-#include <math.h>
-#include <GL/gl.h>
-#ifndef WNT
-#include <GL/glx.h>
-#endif
-#include <OpenGl_telem.hxx>
+#include <InterfaceGraphic_telem.hxx>
+#include <cmath>
 
 /*
 * ShortRealLast () = 3.40282346638528860e+38
@@ -78,17 +82,12 @@ xx-xx-xx : xxx ; Creation.
 #define  vecmg2(a)       (square((a)[0])+square((a)[1])+square((a)[2]))
 
 /* magnitude */
-#define  vecmag(a)       (sqrt((double)vecmg2(a)))
+#define  vecmag(a)       (std::sqrt((double)vecmg2(a)))
 
 /* normalize */
-#ifdef BUC60823
 #define  vecnrmd(a,d)    ( d = (Tfloat)vecmag(a), \
   ( d > 1e-10 ? (a[0] /= d, a[1] /= d, a[2] /= d, d) : (Tfloat)0. ) )
 #define  vecnrm(a)       { Tfloat d; vecnrmd(a,d); }
-#else
-#define  vecnrm(a)       { Tfloat d; d = ( Tfloat )vecmag(a); \
-  (a)[0] /= d; (a)[1] /= d; (a)[2] /= d; }
-#endif
 
 /* angle between two vectors */
 #define  vecang(a,b,d)   { d = (Tfloat)(vecmag(a)*vecmag(b)); \
@@ -130,90 +129,8 @@ Tmatrix3Struct;
   } \
 }
 
-extern Tint TelRemdupnames( Tint*, Tint ); /* list, num */
-#ifdef BUC60823
 extern int TelGetPolygonNormal( tel_point, Tint*, Tint, Tfloat* );
 extern int TelGetNormal( Tfloat*, Tfloat*, Tfloat*, Tfloat* );
-#else
-extern void TelGetNormal( Tfloat*, Tfloat*, Tfloat*, Tfloat* );
-#endif
-/* point1,  point2,  point3,  normal */
-extern Tint TelIsBackFace( Tmatrix3, Tfloat* ); /* normal */
-extern Tint TelIsBackFacePerspective( Tmatrix3, Tfloat*, Tfloat*, Tfloat* ); 
-/* matrix,  point 1, point 2, point 3 */
 extern void TelMultiplymat3( Tmatrix3, Tmatrix3, Tmatrix3 );
-/* mat out, mat in, mat in */
-extern void TelTransposemat3( Tmatrix3 ); /* mat in out */
-extern void TelTranpt3( Tfloat [4], Tfloat [4], Tmatrix3 ); /* out, in, mat */
-
-extern  void  TelInitWS( Tint, Tint, Tint, Tfloat, Tfloat, Tfloat );
-/* ws, width, height, bgcolr, bgcolg, bgcolb */
-extern  void  TelSwapBuffers( Tint );
-extern  void  TelCopyBuffers( Tint, GLenum, GLenum,
-                             Tfloat, Tfloat, Tfloat, Tfloat, Tfloat, Tfloat, Tint );
-extern  TStatus TelProjectionRaster( Tint ws, Tfloat x, Tfloat y, Tfloat z,
-                                    Tfloat *xr, Tfloat *yr);
-extern  TStatus TelUnProjectionRaster( Tint ws, Tint xr, Tint yr,
-                                      Tfloat *x, Tfloat *y, Tfloat *z);
-TStatus
-TelUnProjectionRasterWithRay(Tint ws, Tint xr, Tint yr, Tfloat *x, Tfloat *y, Tfloat *z,
-                             Tfloat *dx, Tfloat *dy, Tfloat *dz);
-extern  Tint  TelBackBufferRestored(void);
-extern  void  TelSetBackBufferRestored( Tint );
-extern  void  TelEnable( Tint );
-extern  void  TelDisable( Tint );
-extern  void  TelFlush( Tint );
-
-extern void TelSetFrontFaceAttri(
-                                 Tint,          /* interior_style */
-                                 Tint,          /* back_interior_style */
-                                 Tint,          /* interior_index */
-                                 Tint,          /* back_interior_index */
-                                 Tint,          /* front_shading_method */
-                                 Tint,          /* back_shading_method */
-                                 Tint,          /* front_lighting_model */
-                                 Tint,          /* back_lighting_model */
-                                 tel_surf_prop, /* surf_prop */
-                                 tel_surf_prop, /* back_surf_prop */
-                                 tel_colour,    /* interior_colour */
-                                 tel_colour    /* back_interior_colour */
-                                 );
-extern void TelSetBackFaceAttri(
-                                Tint,          /* interior_style */
-                                Tint,          /* back_interior_style */
-                                Tint,          /* interior_index */
-                                Tint,          /* back_interior_index */
-                                Tint,          /* front_shading_method */
-                                Tint,          /* back_shading_method */
-                                Tint,          /* front_lighting_model */
-                                Tint,          /* back_lighting_model */
-                                tel_surf_prop, /* surf_prop */
-                                tel_surf_prop, /* back_surf_prop */
-                                tel_colour,    /* interior_colour */
-                                tel_colour    /* back_interior_colour */
-                                );
-
-extern  void  TelReadImage(Tint , GLenum , Tint , Tint , Tint , Tint , unsigned int *);
-extern  void  TelDrawImage(Tint , GLenum , Tint , Tint , Tint , Tint , unsigned int *);
-extern  void  TelReadDepths(Tint , Tint , Tint , Tint , Tint , float *);
-
-extern  void TelMakeFrontBufCurrent(Tint );
-extern  void TelMakeBackBufCurrent(Tint );
-#ifdef IMP190100
-extern  void TelMakeFrontAndBackBufCurrent(Tint );
-#endif
-
-#ifndef WNT
-extern  void TelSetPixmapDBParams(Display *dpy,
-                                  Window window,
-                                  int width, int height, int depth, GC gc,
-                                  Pixmap pixmap,
-                                  GLXPixmap glxpixmap,
-                                  GLXContext ctx);
-extern  GLXPixmap TelGetGLXPixmap(void);
-extern  void TelSetPixmapDB(int flag);
-extern  int TelTestPixmapDB(void);
-extern  void TelDrawBuffer(GLenum buf);
-#endif  /* WNT*/
 
 #endif

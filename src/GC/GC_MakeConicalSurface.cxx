@@ -1,7 +1,23 @@
-// File:	GC_MakeConicalSurface.cxx
-// Created:	Fri Oct  2 16:33:58 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-10-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GC_MakeConicalSurface.ixx>
 #include <gce_MakeCone.hxx>
@@ -14,7 +30,7 @@ GC_MakeConicalSurface::GC_MakeConicalSurface(const gp_Ax2&       A2    ,
 					       const Standard_Real Radius)
 {
   if (Radius < 0.) { TheError = gce_NegativeRadius; }
-  else if (Ang <= gp::Resolution() || Ang >= PI/2. - gp::Resolution()) {
+  else if (Ang <= gp::Resolution() || Ang >= M_PI/2. - gp::Resolution()) {
     TheError = gce_BadAngle;
   }
   else {
@@ -42,10 +58,10 @@ GC_MakeConicalSurface::GC_MakeConicalSurface(const gp_Cone& , //C,
 }
 
 //=========================================================================
-//   Creation d un cone par quatre points.                                +
-//   les deux premiers donnent l axe.                                     +
-//   le troisieme donne le rayon de la base.                              +
-//   le troisieme et le quatrieme le demi angle.                          +
+//   Creation of a cone by four points.                                +
+//   two first give the axis.                                     +
+//   the third gives the base radius.                              +
+//   the third and the fourth the half-angle.                          +
 //=========================================================================
 
 GC_MakeConicalSurface::GC_MakeConicalSurface(const gp_Pnt& P1 ,

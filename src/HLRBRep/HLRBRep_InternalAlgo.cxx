@@ -1,12 +1,29 @@
-// File:	HLRBRep_InternalAlgo.cxx
-// Created:	Thu Apr 17 21:49:17 1997
-// Author:	Christophe MARION
-//		<cma@partox.paris1.matra-dtv.fr>
+// Created on: 1997-04-17
+// Created by: Christophe MARION
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_Stream.hxx>
 #include <HLRBRep_InternalAlgo.ixx>
 
 #include <Standard_ErrorHandler.hxx>
+#include <TColStd_Array1OfReal.hxx>
 #include <HLRAlgo.hxx>
 #include <HLRBRep_ShapeToHLR.hxx>
 #include <HLRBRep_Hider.hxx>
@@ -109,13 +126,8 @@ void HLRBRep_InternalAlgo::Update ()
   if (!myShapes.IsEmpty()) {
     Standard_Integer n = myShapes.Length();
     Handle(HLRBRep_Data) *DS = new Handle(HLRBRep_Data) [n];
-#ifndef DEB
-    static
-#endif
-      Standard_Integer i,dv,de,df,nv,ne,nf;
-    nv = 0;
-    ne = 0;
-    nf = 0;
+
+    Standard_Integer i,dv,de,df,nv=0,ne=0,nf=0;
 
     for (i = 1; i <= n; i++) {
       HLRBRep_ShapeBounds& SB = myShapes(i);
@@ -797,29 +809,29 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
     
 
 //--
-    Standard_Integer *Val    = new Standard_Integer [nf+1];
-    Standard_Real    *Size   = new Standard_Real [nf+1];
-    Standard_Integer *Index  = new Standard_Integer [nf+1];
+    TColStd_Array1OfInteger Val(1, nf);
+    TColStd_Array1OfReal    Size(1, nf);
+    TColStd_Array1OfInteger Index(1, nf);
 
 
     fd = &(myDS->FDataArray().ChangeValue(1));
     for (f = 1; f <= nf; f++) {
-      if(fd->Plane())          Val[f]=10;
-      else if(fd->Cylinder())  Val[f]=9;
-      else if(fd->Cone())      Val[f]=8;
-      else if(fd->Sphere())    Val[f]=7;
-      else if(fd->Torus())     Val[f]=6;
-      else Val[f]=0;
-      if(fd->Cut())            Val[f]-=10;
-      if(fd->Side())           Val[f]-=100;
-      if(fd->WithOutL())       Val[f]-=20;
+      if(fd->Plane())          Val(f)=10;
+      else if(fd->Cylinder())  Val(f)=9;
+      else if(fd->Cone())      Val(f)=8;
+      else if(fd->Sphere())    Val(f)=7;
+      else if(fd->Torus())     Val(f)=6;
+      else Val(f)=0;
+      if(fd->Cut())            Val(f)-=10;
+      if(fd->Side())           Val(f)-=100;
+      if(fd->WithOutL())       Val(f)-=20;
   
-      Size[f]=fd->Size();
+      Size(f)=fd->Size();
       fd++;
     }
 
     for(Standard_Integer tt=1;tt<=nf;tt++) { 
-      Index[tt]=tt;
+      Index(tt)=tt;
     }
 
     //-- ======================================================================
@@ -828,13 +840,13 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
       Standard_Integer t,tp1;
       TriOk=Standard_True;
       for(t=1,tp1=2;t<nf;t++,tp1++) { 
-	if(Val[Index[t]]<Val[Index[tp1]]) {
-	  Standard_Integer q=Index[t]; Index[t]=Index[tp1]; Index[tp1]=q;
+	if(Val(Index(t))<Val(Index(tp1))) {
+	  Standard_Integer q=Index(t); Index(t)=Index(tp1); Index(tp1)=q;
 	  TriOk=Standard_False;
 	}
-	else if(Val[Index[t]]==Val[Index[tp1]]) { 
-	  if(Size[Index[t]]<Size[Index[tp1]]) { 
-	    Standard_Integer q=Index[t]; Index[t]=Index[tp1]; Index[tp1]=q;
+	else if(Val(Index(t))==Val(Index(tp1))) { 
+	  if(Size(Index(t))<Size(Index(tp1))) { 
+	    Standard_Integer q=Index(t); Index(t)=Index(tp1); Index(tp1)=q;
 	    TriOk=Standard_False;
 	  }
 	}
@@ -850,13 +862,13 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
       ir=nf;
       for(;;) { 
 	if(l>1) { 
-	  rra=Index[--l]; 
+	  rra=Index(--l); 
 	} 
 	else {    
-	  rra=Index[ir]; 
-	  Index[ir]=Index[1];
+	  rra=Index(ir); 
+	  Index(ir)=Index(1);
 	  if(--ir == 1) { 
-	    Index[1]=rra;
+	    Index(1)=rra;
 	    break;
 	  }
 	}
@@ -864,20 +876,20 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
 	j=l+l;
 	while(j<=ir) { 
 	  if(j<ir) { 
-	    if(Val[Index[j]] > Val[Index[j+1]])
+	    if(Val(Index(j)) > Val(Index(j+1)))
 	      j++;
-	    else if(Val[Index[j]] == Val[Index[j+1]]) { 
-	      if(Size[Index[j]] > Size[Index[j+1]]) 
+	    else if(Val(Index(j)) == Val(Index(j+1))) { 
+	      if(Size(Index(j)) > Size(Index(j+1))) 
 		j++;
 	    }
 	  }
-	  if(Val[rra] > Val[Index[j]]) { 
-	    Index[i]=Index[j];
+	  if(Val(rra) > Val(Index(j))) { 
+	    Index(i)=Index(j);
 	    i=j;
 	    j<<=1;
 	  }
-	  else if((Val[rra] == Val[Index[j]]) && (Size[rra] > Size[Index[j]])) { 
-	    Index[i]=Index[j];
+	  else if((Val(rra) == Val(Index(j))) && (Size(rra) > Size(Index(j)))) { 
+	    Index(i)=Index(j);
 	    i=j;
 	    j<<=1;
 	  }
@@ -885,7 +897,7 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
 	    j=ir+1;
 	  }
 	}
-	Index[i]=rra;
+	Index(i)=rra;
       }
     }
 
@@ -894,7 +906,7 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
     
     QWE=0;
     for (f = 1; f <= nf; f++) {
-      Standard_Integer fi = Index[f];
+      Standard_Integer fi = Index(f);
       fd=&(FD.ChangeValue(fi));
       if (fd->Selected()) {
 	if (fd->Hiding()) {
@@ -914,10 +926,6 @@ void HLRBRep_InternalAlgo::HideSelected (const Standard_Integer I,
 	}
       }
     }
-    
-    delete Val;
-    delete Size;
-    delete Index;
     
 #ifdef DEB
     if (myDebug) {
@@ -974,4 +982,3 @@ Standard_Boolean HLRBRep_InternalAlgo::Debug () const
 
 Handle(HLRBRep_Data) HLRBRep_InternalAlgo::DataStructure () const
 { return myDS; }
-

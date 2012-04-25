@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StdSchema -I@top_srcdir@/src/StdSchema \
 -I@top_srcdir@/drv/StdDrivers -I@top_srcdir@/src/StdDrivers
@@ -20,21 +20,21 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKStdSchema.la
 
-libTKStdSchema_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKPCAF/libTKPCAF.la \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
-../TKCAF/libTKCAF.la \
-../TKPLCAF/libTKPLCAF.la \
-../TKPShape/libTKPShape.la \
-../PTKernel/libPTKernel.la \
-../TKG2d/libTKG2d.la \
-../TKG3d/libTKG3d.la \
+libTKStdSchema_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
+../PTKernel/libPTKernel.la \
+../TKPLCAF/libTKPLCAF.la \
+../TKernel/libTKernel.la \
+../TKCAF/libTKCAF.la \
 ../TKShapeSchema/libTKShapeSchema.la \
+../TKLCAF/libTKLCAF.la \
 ../TKStdLSchema/libTKStdLSchema.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la \
+../TKPShape/libTKPShape.la \
+../TKMath/libTKMath.la \
+../TKG2d/libTKG2d.la \
+../TKPCAF/libTKPCAF.la
+
 
 libTKStdSchema_la_SOURCES = \
 @top_srcdir@/drv/StdSchema/StdSchema.cxx \

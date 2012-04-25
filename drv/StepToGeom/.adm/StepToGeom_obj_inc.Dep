@@ -1,6 +1,0 @@
-+ StepToGeom:dbadmfile:StepToGeom_obj_inc.In StepToGeom:admfile:StepToGeom_src.Out
-+ * StepToGeom:admfile:StepToGeom_xcpp_src.Out
-+ StepToGeom:dbadmfile:StepToGeom_obj_inc.Out StepToGeom:admfile:StepToGeom_src.Out
-+ * StepToGeom:admfile:StepToGeom_xcpp_src.Out
-+ StepToGeom:dbadmfile:StepToGeom_obj_inc.Dep StepToGeom:admfile:StepToGeom_src.Out
-+ * StepToGeom:admfile:StepToGeom_xcpp_src.Out

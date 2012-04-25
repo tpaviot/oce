@@ -1,7 +1,23 @@
-// File:	TestTopOpe_HDSCommands.cxx
-// Created:	Mon Oct 24 10:33:48 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@bravox>
+// Created on: 1994-10-24
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -364,10 +380,6 @@ static Standard_Integer SeeSectionEdge(const Standard_Integer ISE)
   if ( ISE < 1 || ISE > nse ) return 0;
   const TopoDS_Shape& SE  = PHDSD->CurrentBDS().SectionEdge(ISE);
   if (SE.IsNull()) return 0;
-#ifdef DEB
-  Standard_Integer ids =
-#endif
-                         PHDSD->CurrentBDS().Shape(SE,SFindKeep);
   
   TCollection_AsciiString namedbrep; PHDSD->SectionEdgeName(ISE,SE,namedbrep); 
   TCollection_AsciiString namedisp; PHDSD->SectionEdgeDisplayName(ISE,SE,namedisp);
@@ -534,9 +546,6 @@ static Standard_Integer SeeGeometry(const TopOpeBRepDS_Kind TK)
   
   const TopOpeBRepDS_DataStructure& BDS = PHDSD->CurrentBDS();
 
-#ifdef DEB  
-  Standard_Integer ig,ng = 0;
-#endif
   if      (TK == TopOpeBRepDS_POINT) {
     TopOpeBRepDS_PointExplorer pex(BDS,GFindKeep);
     for (; pex.More(); pex.Next()) {
@@ -1133,10 +1142,7 @@ Standard_Integer tds(Draw_Interpretor& di,Standard_Integer na,const char** a)
   if (PHDSD == NULL) return 0;
   const Handle(TopOpeBRepDS_HDataStructure)& HDS = PHDSD->CurrentHDS();
   if (HDS.IsNull()) {COUTNOHDS(di);return 0;}
-#ifdef DEB
-  const TopOpeBRepDS_DataStructure& BDS =
-#endif
-                                          PHDSD->CurrentBDS();
+  PHDSD->CurrentBDS();
   
   TopOpeBRepDS_Dumper Dumper(HDS);
   if ( na == 1 ) { Dumper.Dump(cout,TDSkeep,TDScompact); return 0; }

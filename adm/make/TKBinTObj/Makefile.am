@@ -11,21 +11,21 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BinTObjDrivers -I@top_srcdir@/src/BinTObjDrivers
 
 
 lib_LTLIBRARIES=libTKBinTObj.la
 
-libTKBinTObj_la_LIBADD = \
+libTKBinTObj_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKCDF/libTKCDF.la \
 ../TKernel/libTKernel.la \
 ../TKTObj/libTKTObj.la \
 ../TKMath/libTKMath.la \
 ../TKLCAF/libTKLCAF.la \
-../TKBinL/libTKBinL.la \
-../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKBinL/libTKBinL.la
+
 
 libTKBinTObj_la_SOURCES = \
 @top_srcdir@/src/BinTObjDrivers/BinTObjDrivers.cxx \

@@ -16,18 +16,18 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
+#ifndef _Intf_Polygon2d_HeaderFile
+#include <Intf_Polygon2d.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-class Bnd_Box2d;
+class Standard_OutOfRange;
 class gp_Pnt2d;
 
 
 
-class IntPatch_Polygo  {
+class IntPatch_Polygo  : public Intf_Polygon2d {
 public:
 
   void* operator new(size_t,void* anAddress) 
@@ -44,18 +44,19 @@ public:
   }
 
   
-  Standard_EXPORT   virtual  void Delete() ;
-Standard_EXPORT virtual ~IntPatch_Polygo(){Delete() ; }
-  
-  Standard_EXPORT   virtual const Bnd_Box2d& Bounding() const = 0;
-  
-  Standard_EXPORT   virtual  Standard_Real Error() const = 0;
-  
-  Standard_EXPORT   virtual  Standard_Boolean Closed() const = 0;
+        Standard_Real Error() const;
   
   Standard_EXPORT   virtual  Standard_Integer NbPoints() const = 0;
   
   Standard_EXPORT   virtual  gp_Pnt2d Point(const Standard_Integer Index) const = 0;
+  //! Returns the tolerance of the polygon. <br>
+      virtual  Standard_Real DeflectionOverEstimation() const;
+  //! Returns the number of Segments in the polyline. <br>
+      virtual  Standard_Integer NbSegments() const;
+  //! Returns the points of the segment <Index> in the Polygon. <br>
+      virtual  void Segment(const Standard_Integer theIndex,gp_Pnt2d& theBegin,gp_Pnt2d& theEnd) const;
+  
+  Standard_EXPORT     void Dump() const;
 
 
 
@@ -63,8 +64,11 @@ Standard_EXPORT virtual ~IntPatch_Polygo(){Delete() ; }
 
 protected:
 
+  
+  Standard_EXPORT   IntPatch_Polygo(const Standard_Real theError = 0.0);
 
 
+Standard_Real myError;
 
 
 private:
@@ -76,6 +80,7 @@ private:
 };
 
 
+#include <IntPatch_Polygo.lxx>
 
 
 

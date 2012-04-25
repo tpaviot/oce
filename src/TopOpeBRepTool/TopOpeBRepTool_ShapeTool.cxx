@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_ShapeTool.cxx
-// Created:	Wed Feb  9 16:24:57 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@phobox>
+// Created on: 1994-02-09
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_ShapeTool.ixx>
 
@@ -192,18 +208,18 @@ void TopOpeBRepTool_ShapeTool::AdjustOnPeriodic(const TopoDS_Shape& F,
 
   if (isUperio) {
     Standard_Real Uperiod = Surf->UPeriod();
-#ifdef DEB
-    Standard_Real ubid = UFfirst;
-#endif
+
+//    Standard_Real ubid = UFfirst;
+
 //    ElCLib::AdjustPeriodic(UFfirst,UFfirst + Uperiod,tol,ubid,u);
     if (Abs(u - UFfirst-Uperiod) > tol)
       u = ElCLib::InPeriod(u,UFfirst,UFfirst + Uperiod);
   }
   if (isVperio) {
     Standard_Real Vperiod = Surf->VPeriod();
-#ifdef DEB
-    Standard_Real vbid = VFfirst;
-#endif
+
+//    Standard_Real vbid = VFfirst;
+
 //    ElCLib::AdjustPeriodic(VFfirst,VFfirst + Vperiod,tol,vbid,v);
     if (Abs(v - VFfirst-Vperiod) > tol)
       v = ElCLib::InPeriod(v,VFfirst,VFfirst + Vperiod);

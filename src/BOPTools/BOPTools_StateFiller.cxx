@@ -1,7 +1,22 @@
-// File:	BOPTools_StateFiller.cxx
-// Created:	Mon Feb  4 10:08:20 2002
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2002-02-04
+// Created by: Peter KURNEV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Tue Aug 24 12:31:16 2004 OCC6450
 
@@ -33,7 +48,7 @@
 // function:  BOPTools_StateFiller::BOPTools_StateFiller
 // purpose: 
 //=======================================================================
-  BOPTools_StateFiller::BOPTools_StateFiller(const BOPTools_PaveFiller& aFiller)
+BOPTools_StateFiller::BOPTools_StateFiller(const BOPTools_PaveFiller& aFiller)
 :
   myIsDone(Standard_False)
 {
@@ -204,12 +219,12 @@
       gp_Pnt aP3d = aSurf->Value(aParU, aParV);
 
       const TopoDS_Solid          &aRefSolid = TopoDS::Solid(aRef);
-      IntTools_Context            &aContext  = myFiller->ChangeContext();
-      BRepClass3d_SolidClassifier &aSC       = 
-	                               aContext.SolidClassifier(aRefSolid);
-  //
+      const Handle(IntTools_Context)& aContext  = myFiller->Context();
+      BRepClass3d_SolidClassifier &aSC = 
+	aContext->SolidClassifier(aRefSolid);
+      //
       aSC.Perform(aP3d, 1e-7);
-  //
+      //
       aSt = aSC.State();
     }
   }
@@ -264,8 +279,8 @@
   }
   //
   const TopoDS_Solid& aRefSolid=TopoDS::Solid(Ref);
-  IntTools_Context& aContext=myFiller->ChangeContext();
-  BRepClass3d_SolidClassifier& aSC=aContext.SolidClassifier(aRefSolid);
+  const Handle(IntTools_Context)& aContext=myFiller->Context();
+  BRepClass3d_SolidClassifier& aSC=aContext->SolidClassifier(aRefSolid);
   //
   aSC.Perform(aP3d, 1e-7);
   //

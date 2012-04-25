@@ -1,7 +1,0 @@
-+M PS:pubinclude:Handle_PS_Driver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/Handle_PS_Driver.hxx
-+M PS:pubinclude:PS_Driver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/PS_Driver.hxx
-+M PS:privinclude:PS_Driver.jxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/PS/PS_Driver.jxx
-+M PS:privinclude:PS_Driver.ixx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/PS/PS_Driver.ixx
-+M PS:dbadmfile:PS_xcpp_header.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/PS/.adm/PS_xcpp_header.In
-+M PS:dbadmfile:PS_xcpp_header.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/PS/.adm/PS_xcpp_header.Out
-+M PS:dbadmfile:PS_xcpp_header.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/PS/.adm/PS_xcpp_header.Dep

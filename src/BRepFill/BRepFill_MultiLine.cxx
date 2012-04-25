@@ -1,7 +1,23 @@
-// File:	BRepFill_MultiLine.cxx
-// Created:	Mon Nov 14 15:32:23 1994
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1994-11-14
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFill_MultiLine.ixx>
@@ -143,7 +159,7 @@ myKPart(0)
   }
   
 
-  // recuperons les isos dans leur domaine de restriction.
+  // return isos in their domain of restriction.
   Handle(Geom_Curve) UU1, UU2, VV1, VV2;
   Handle(Geom_Surface) S;
   S = BRep_Tool::Surface(myFace1,L);  
@@ -197,7 +213,7 @@ myKPart(0)
     Vmax = dummyUmax;
   }
 
-  // essai dub
+  // try duplication
   GeomAdaptor_Surface GAS1(S);
   GeomAbs_SurfaceType Type1 = GAS1.GetType();
 
@@ -215,15 +231,15 @@ myKPart(0)
   }
   if (GAS1.GetType() == GeomAbs_Sphere) {
     if (myIsoU1)
-      ElCLib::AdjustPeriodic(-PI/2.,PI/2.,
+      ElCLib::AdjustPeriodic(-M_PI/2.,M_PI/2.,
 			     Precision::PConfusion(),
 			     Umin, Umax);
     else
-      ElCLib::AdjustPeriodic(-PI/2.,PI/2.,
+      ElCLib::AdjustPeriodic(-M_PI/2.,M_PI/2.,
 			     Precision::PConfusion(),
 			     Vmin, Vmax);
   }
-  // fin essai dub
+  // end try duplication
 
   myU1 = Geom2dAdaptor_Curve(GeomProjLib::Curve2d(UU1, BasisPlane),
 			     Umin, Umax);
@@ -260,7 +276,7 @@ myKPart(0)
     }
   }
 
-  // recuperons les isos dans leur domaine de restriction.
+  // return isos in their domain of restriction.
   S = BRep_Tool::Surface(myFace2,L);
 
   if (!L.IsIdentity())
@@ -313,7 +329,7 @@ myKPart(0)
     Vmax = dummyUmax;
   }
 
-  // essai dub
+  // try duplication
   GeomAdaptor_Surface GAS2(S);
   GeomAbs_SurfaceType Type2 = GAS2.GetType();
 
@@ -331,15 +347,15 @@ myKPart(0)
   }
   if (GAS2.GetType() == GeomAbs_Sphere) {
     if (myIsoU2)
-      ElCLib::AdjustPeriodic(-PI/2.,PI/2.,
+      ElCLib::AdjustPeriodic(-M_PI/2.,M_PI/2.,
 			     Precision::PConfusion(),
 			     Umin, Umax);
     else
-      ElCLib::AdjustPeriodic(-PI/2.,PI/2.,
+      ElCLib::AdjustPeriodic(-M_PI/2.,M_PI/2.,
 			     Precision::PConfusion(),
 			     Vmin, Vmax);
   }
-  // fin essai dub
+  // end try duplication
 
   myU2 = Geom2dAdaptor_Curve(GeomProjLib::Curve2d(UU2, BasisPlane),
 			     Umin, Umax);
@@ -350,12 +366,12 @@ myKPart(0)
 			     Vmin, Vmax);
 
   // eval if in a particular case.
-  // Cas Particulier si :
-  //     1) - Bissec droite
-  //        - Bissec orthogonale a l`element de la base.
-  //        ==> Iso sur les 2 faces.
-  //     2) - Bissec droite
-  //        - les 2 surfaces sont des plans.
+  // Particular case if :
+  //     1) - Straight Bissectrice
+  //        - Bissectrice orthogonal to the base element.
+  //        ==> Iso on 2 faces.
+  //     2) - Straight Bissectrice
+  //        - 2 surfaces are planes.
   myCont  = GeomAbs_C0;
 
   if ( myBis.GetType() == GeomAbs_Line) {
@@ -408,8 +424,8 @@ void BRepFill_MultiLine::Curves(Handle(Geom_Curve)& Curve,
     P1   = ValueOnF1(myBis.FirstParameter());
     P2   = ValueOnF1(myBis.LastParameter());
 
-    // on recherche la valeur de l iso avec le point milieu 
-    // les bouts pouvant etre des points degeneres.
+    // find value of the with medium point 
+    // the ends can be degenerated points.
 
     PMil = ValueOnF1(0.5*(myBis.FirstParameter() + myBis.LastParameter()));
     
@@ -600,7 +616,7 @@ static gp_Pnt2d ValueOnFace(const Standard_Real        U,
     UU = Ext.LowerDistanceParameter();
     Dist = Ext.LowerDistance();
   }
-  // Controle avec les `bouts` 
+  // Control with `ends` 
   D1 = P.Distance(TheU.Value(TheU.FirstParameter()));
   D2 = P.Distance(TheU.Value(TheU.LastParameter()));
 
@@ -612,7 +628,7 @@ static gp_Pnt2d ValueOnFace(const Standard_Real        U,
 	Standard_Real Ang = Axis.Angle(D12d);
 	if ( !TheU.Circle().IsDirect()) Ang = -Ang;
 	UU = ElCLib::InPeriod( Ang, TheU.FirstParameter(), 
-			            TheU.FirstParameter() + 2*PI);
+			            TheU.FirstParameter() + 2*M_PI);
 	Dist = TheU.Circle().Radius();
       }
       else {
@@ -646,7 +662,7 @@ static gp_Pnt2d ValueOnFace(const Standard_Real        U,
     VV = TheV.LastParameter();
   }  
   else {  
-    // test si la courbe est du cote `Y negatif`.
+    // test if the curve is at the side `negative Y`.
     if ( Min( PF.Y(),PL.Y()) < -Tol)  Dist = -Dist;
    
     Handle(Geom2d_Line) Line 

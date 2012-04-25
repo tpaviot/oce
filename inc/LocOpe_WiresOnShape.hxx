@@ -22,6 +22,9 @@
 #ifndef _TopTools_IndexedDataMapOfShapeShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeShape.hxx>
 #endif
+#ifndef _TopTools_MapOfShape_HeaderFile
+#include <TopTools_MapOfShape.hxx>
+#endif
 #ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
 #endif
@@ -40,6 +43,7 @@
 class TopoDS_Shape;
 class TopoDS_Wire;
 class TopoDS_Face;
+class TopoDS_Compound;
 class TopoDS_Edge;
 class TopoDS_Vertex;
 
@@ -55,6 +59,8 @@ public:
   Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
   
   Standard_EXPORT     void Bind(const TopoDS_Wire& W,const TopoDS_Face& F) ;
+  
+  Standard_EXPORT     void Bind(const TopoDS_Compound& Comp,const TopoDS_Face& F) ;
   
   Standard_EXPORT     void Bind(const TopoDS_Edge& E,const TopoDS_Face& F) ;
   
@@ -86,6 +92,8 @@ public:
 //!          edge in <P>. <br>
 //!          Else returns <Standard_False>. <br>
   Standard_EXPORT     Standard_Boolean OnEdge(const TopoDS_Vertex& V,TopoDS_Edge& E,Standard_Real& P) ;
+  //! tells is the face to be split by section or not <br>
+        Standard_Boolean IsFaceWithSection(const TopoDS_Shape& aFace) const;
 
 
 
@@ -102,6 +110,7 @@ private:
 
 TopoDS_Shape myShape;
 TopTools_IndexedDataMapOfShapeShape myMapEF;
+TopTools_MapOfShape myFacesWithSection;
 TopTools_DataMapOfShapeShape myMap;
 Standard_Boolean myDone;
 Standard_Integer myIndex;

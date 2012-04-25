@@ -1,4 +1,21 @@
-//File Convert_HyperbolaToBSplineCurve.cxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //JCV 16/10/91
 
 
@@ -43,7 +60,7 @@ Convert_HyperbolaToBSplineCurve::Convert_HyperbolaToBSplineCurve
   knots->ChangeArray1()(1) = UF;  mults->ChangeArray1()(1) = 3;  
   knots->ChangeArray1()(2) = UL;  mults->ChangeArray1()(2) = 3;  
   
-  // construction de l hyperbole dans le repere de reference xOy.
+  // construction of hyperbola in the reference xOy.
   
   Standard_Real R = H.MajorRadius();
   Standard_Real r = H.MinorRadius();
@@ -51,10 +68,10 @@ Convert_HyperbolaToBSplineCurve::Convert_HyperbolaToBSplineCurve
   gp_Dir2d Oy = H.Axis().YDirection();
   Standard_Real S = ( Ox.X() * Oy.Y() - Ox.Y() * Oy.X() > 0.) ?  1 : -1;
   
-  // poles exprimes dans le repere de reference
-  // le 2eme pole est a l intersection des 2 tangentes a la courbe
-  // aux pointx P(UF), P(UL)
-  // le poids de ce pole est egal a : Cosh((UL-UF)/2)
+  // poles expressed in the reference mark
+  // the 2nd pole is at the intersection of 2 tangents to the curve
+  // at points P(UF), P(UL)
+  // the weight of this pole is equal to : Cosh((UL-UF)/2)
 
   weights->ChangeArray1()(1) = 1.;
   weights->ChangeArray1()(2) = Cosh((UL-UF)/2);
@@ -67,7 +84,7 @@ Convert_HyperbolaToBSplineCurve::Convert_HyperbolaToBSplineCurve
   poles->ChangeArray1()(2) = gp_Pnt2d( x, y);
   poles->ChangeArray1()(3) = gp_Pnt2d( R * Cosh(UL), S * r * Sinh(UL));
 
-  // on replace la bspline dans le repere de l hyperbole
+  // replace the bspline in the mark of the hyperbola
   gp_Trsf2d Trsf;
   Trsf.SetTransformation( H.Axis().XAxis(), gp::OX2d());
   poles->ChangeArray1()(1).Transform( Trsf);

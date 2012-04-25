@@ -26,7 +26,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/IntCurvesFace -I@top_srcdir@/src/IntCurvesFace \
 -I@top_srcdir@/drv/MAT -I@top_srcdir@/src/MAT \
@@ -48,15 +48,15 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKTopAlgo.la
 
-libTKTopAlgo_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
+libTKTopAlgo_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
+../TKernel/libTKernel.la \
 ../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKBRep/libTKBRep.la \
-$(STLPort_LIB) 
+../TKGeomAlgo/libTKGeomAlgo.la
+
 
 libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/drv/BRepApprox/BRepApprox_ApproxLine_0.cxx \

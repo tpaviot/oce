@@ -1,8 +1,0 @@
-+V Adaptor2d:msentity:Adaptor2d .
-+V Adaptor2d:msentity:Adaptor2d_Curve2d .
-+V Adaptor2d:msentity:Adaptor2d_HCurve2d .
-+V Adaptor2d:msentity:Adaptor2d_GenHCurve2d .
-+V Adaptor2d:msentity:Adaptor2d_Line2d .
-+V Adaptor2d:msentity:Adaptor2d_HLine2d .
-+V Adaptor2d:msentity:Adaptor2d_Curve2dPtr .
-- Adaptor2d:admfile:Adaptor2d_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Adaptor2d/Adaptor2d_xcpp_fill.Out

@@ -1,7 +1,23 @@
-// File:      IntPatch_RstInt.cxx
-// Created:   Fri May  7 12:45:18 1993
-// Author:    Jacques GOUSSARD
-// Copyright: Matra Datavision 1993
+// Created on: 1993-05-07
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // ----------------------------------------------------------------------
 //-- lbr: Modifs importantes du 16-17 Nov 95
@@ -26,7 +42,6 @@
 #include <Precision.hxx>
 
 #include <Adaptor2d_HCurve2d.hxx>
-#include <IntPatch_PolygoTool.hxx>
 #include <IntPatch_WLine.hxx>
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_HInterTool.hxx>
@@ -56,15 +71,15 @@ static void Recadre(GeomAbs_SurfaceType typeS1,
   case GeomAbs_Cone:
   case GeomAbs_Sphere:
   case GeomAbs_Torus:
-    while(U1<(U1p-1.5*PI)) U1+=PI+PI;
-    while(U1>(U1p+1.5*PI)) U1-=PI+PI;
+    while(U1<(U1p-1.5*M_PI)) U1+=M_PI+M_PI;
+    while(U1>(U1p+1.5*M_PI)) U1-=M_PI+M_PI;
     break;
   default: 
     break;
   }
   if(typeS1==GeomAbs_Torus) { 
-    while(V1<(V1p-1.5*PI)) V1+=PI+PI;
-    while(V1>(V1p+1.5*PI)) V1-=PI+PI;
+    while(V1<(V1p-1.5*M_PI)) V1+=M_PI+M_PI;
+    while(V1>(V1p+1.5*M_PI)) V1-=M_PI+M_PI;
   }
   
   switch(typeS2) { 
@@ -72,15 +87,15 @@ static void Recadre(GeomAbs_SurfaceType typeS1,
   case GeomAbs_Cone:
   case GeomAbs_Sphere:
   case GeomAbs_Torus:
-    while(U2<(U2p-1.5*PI)) U2+=PI+PI;
-    while(U2>(U2p+1.5*PI)) U2-=PI+PI;
+    while(U2<(U2p-1.5*M_PI)) U2+=M_PI+M_PI;
+    while(U2>(U2p+1.5*M_PI)) U2-=M_PI+M_PI;
     break;
   default: 
     break;
   }
   if(typeS2==GeomAbs_Torus) { 
-    while(V2<(V1p-1.5*PI)) V2+=PI+PI;
-    while(V2>(V2p+1.5*PI)) V2-=PI+PI;
+    while(V2<(V1p-1.5*M_PI)) V2+=M_PI+M_PI;
+    while(V2>(V2p+1.5*M_PI)) V2-=M_PI+M_PI;
   }
 }
 
@@ -572,15 +587,15 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
       }
     }
 
-    Bnd_Box2d BPLin = IntPatch_PolygoTool::Bounding(PLin);
+    Bnd_Box2d BPLin = PLin.Bounding();
 
     if(SurfaceIsPeriodic) { 
       Standard_Real xmin,ymin,xmax,ymax,g;
       BPLin.Get(xmin,ymin,xmax,ymax);
       g = BPLin.GetGap();
       BPLin.SetVoid();
-      BPLin.Update(xmin-PI-PI,ymin,
-		   xmax+PI+PI,ymax);
+      BPLin.Update(xmin-M_PI-M_PI,ymin,
+		   xmax+M_PI+M_PI,ymax);
       BPLin.SetGap(g);
     }
     if(SurfaceIsBiPeriodic) { 
@@ -588,8 +603,8 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
       BPLin.Get(xmin,ymin,xmax,ymax);
       g = BPLin.GetGap();
       BPLin.SetVoid();
-      BPLin.Update(xmin,ymin-PI-PI,
-		   xmax,ymax+PI+PI);
+      BPLin.Update(xmin,ymin-M_PI-M_PI,
+		   xmax,ymax+M_PI+M_PI);
       BPLin.SetGap(g);
     }
 
@@ -627,23 +642,23 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
     
     do { 
       if(IndiceOffsetBiPeriodic == 1) 
-	OffsetV = -PI-PI;
+	OffsetV = -M_PI-M_PI;
       else if(IndiceOffsetBiPeriodic == 2) 
-	OffsetV = PI+PI;
+	OffsetV = M_PI+M_PI;
       
       do { 
 	if(IndiceOffsetPeriodic == 1) 
-	  OffsetU = -PI-PI;
+	  OffsetU = -M_PI-M_PI;
 	else if(IndiceOffsetPeriodic == 2) 
-	  OffsetU = PI+PI;
+	  OffsetU = M_PI+M_PI;
 	
 	Brise.SetOffset(OffsetU,OffsetV);
 	
 	static int debug_polygon2d =0;
 	if(debug_polygon2d) { 
 	  cout<<" ***** Numero Restriction : "<<NumeroEdge<<" *****"<<endl;
-	  IntPatch_PolygoTool::Dump(PLin);
-	  IntPatch_PolygoTool::Dump(Brise);
+	  PLin.Dump();
+	  Brise.Dump();
 	}
 	
 	Commun.Perform(PLin,Brise);
@@ -1134,10 +1149,10 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
     case GeomAbs_Cylinder:
     case GeomAbs_Cone:
     case GeomAbs_Sphere:
-      pu1=PI+PI;
+      pu1=M_PI+M_PI;
       break;
     case GeomAbs_Torus:
-      pu1=pv1=PI+PI;
+      pu1=pv1=M_PI+M_PI;
       break;
     default:
       {
@@ -1165,10 +1180,10 @@ void IntPatch_RstInt::PutVertexOnLine (Handle(IntPatch_Line)& L,
     case GeomAbs_Cone:
     case GeomAbs_Sphere:
 
-      pu2=PI+PI;
+      pu2=M_PI+M_PI;
       break;
     case GeomAbs_Torus:
-      pu2=pv2=PI+PI;
+      pu2=pv2=M_PI+M_PI;
       break;
     default:
       { 

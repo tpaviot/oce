@@ -1,7 +1,23 @@
-// File:	BRepFill_TrimEdgeTool.cxx
-// Created:	Mon Apr 24 16:40:33 1995
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1995-04-24
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFill_TrimEdgeTool.ixx>
@@ -83,7 +99,7 @@ myBisec(Bisec)
   isPoint1 = (S1->DynamicType() == STANDARD_TYPE(Geom2d_CartesianPoint));
   isPoint2 = (S2->DynamicType() == STANDARD_TYPE(Geom2d_CartesianPoint));
 
-  // recuperation des geometries des shapes.
+// return geometries of shapes.
 //  Standard_Real f,l;
   if (isPoint1) {
     myP1 = Handle(Geom2d_Point)::DownCast(S1)->Pnt2d();
@@ -112,7 +128,7 @@ myBisec(Bisec)
     }
 #endif
   }
-  // recuperer l expression simple de la bisectrice
+  // return the simple expression of the bissectrice
   Handle(Geom2d_Curve) Bis;
   SimpleExpression(myBisec, Bis);
   myBis = Geom2dAdaptor_Curve(Bis);
@@ -127,7 +143,7 @@ myBisec(Bisec)
 
 //=======================================================================
 //function : Bubble
-//purpose  : Ordonne la sequence de point en x croissant. 
+//purpose  : Order the sequence of points by increasing x. 
 //=======================================================================
 
 static void Bubble(TColgp_SequenceOfPnt& Seq) 
@@ -149,7 +165,7 @@ static void Bubble(TColgp_SequenceOfPnt& Seq)
 
 
 //=======================================================================
-//function : EvalParameters   (lbr le 8 juillet, je duplique pour modifier)
+//function : EvalParameters  
 //purpose  : 
 //=======================================================================
 
@@ -218,7 +234,7 @@ static void EvalParameters(const Geom2dAdaptor_Curve& Bis,
     }
   }
 
-  // Ordonne la sequence en param croissant sur la bissectrice.
+  // Order the sequence by growing parameter on the bissectrice.
   Bubble( Params);
 }
 			   
@@ -282,7 +298,7 @@ static void EvalParametersBis(const Geom2dAdaptor_Curve& Bis,
     }
   }
 
-  // Ordonne la sequence en param croissant sur la bissectrice.
+  // Order the sequence by parameter growing on the bissectrice.
   Bubble( Params);
 }
 
@@ -298,7 +314,7 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
 {
   Params.Clear();
 
-  // recuperer les courbes associees aux edges.
+  // return curves associated to edges.
   TopLoc_Location L;
   Standard_Real   f,l;
   Handle(Geom_Surface) Surf;
@@ -333,7 +349,7 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
   }
 #endif
   
-  // Calcul intersection
+  // Calculate intersection
   TColgp_SequenceOfPnt Points2;
   gp_Pnt PSeq;
 
@@ -359,7 +375,7 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
 	     (Points2.Length() == 0 && Params.Length() == 0) ) ) {
 
 #ifdef DEB
-    cout << "BRepFill_TrimEdgeTool: incoherent intersection. On essaie avec une tol plus grande" << endl;
+    cout << "BRepFill_TrimEdgeTool: incoherent intersection. Try with a greater tolerance" << endl;
 #endif
 
     Params.Clear();
@@ -421,10 +437,10 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
     }
   }
 
-  // petite manip destinee a eliminer les intersections incoherentes:
-  // on ne renvoie que les intersections communes ( meme parametre sur
-  // la bissectrice.).
-  // La tolerance pourra eventuellement etre reglee.
+  // small manipulation to remove incorrect intersections:
+  // return only common intersections (same parameter
+  // on the bissectrice.).
+  // The tolerance can be eventually changed.
 
   gp_Pnt P1,P2;
   Standard_Real Tol = 4 * 100 * Precision::PConfusion();
@@ -449,11 +465,11 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
 
     if ( P1xP2x > Tol ) {
 #ifdef DEB
-      cout << "BRepFill_TrimEdgeTool: Pas le meme parametre sur la bissectrice" << endl;
+      cout << "BRepFill_TrimEdgeTool: no same parameter on the bissectrice" << endl;
 #endif
       if(P1xP2x>TolInit) { 
 #ifdef DEB
-      cout << "BRepFill_TrimEdgeTool: On continue quand meme" << endl;
+      cout << "BRepFill_TrimEdgeTool: Continue somehow" << endl;
 #endif	
       i++;
       }
@@ -482,9 +498,9 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
 
 //=======================================================================
 //function : AddOrConfuse
-//purpose  : le premier ou le dernier point de la bissectrice est sur la 
-//           parallele si on ne l a pas trouve dans les intersections on
-//          le projette sur les paralleles et on l ajoute dans les params 
+//purpose  : the first or the last point of the bissectrice is on the 
+//           parallel if it was not found in the intersections, 
+//           it is projected on parallel lines and added in the parameters 
 //=======================================================================
 
 void BRepFill_TrimEdgeTool::AddOrConfuse(const Standard_Boolean  Start,
@@ -497,7 +513,7 @@ const
   gp_Pnt2d          PBis;
   Standard_Real     Tol = 10*Precision::Confusion(); 
 
-  // recuperer les courbes associees aux edges.
+  // return curves associated to edges.
   TopLoc_Location L;
   Standard_Real   f,l;
   Handle(Geom_Surface) Surf;
@@ -510,7 +526,7 @@ const
   if (Start) PBis = myBis.Value(myBis.FirstParameter());
   else       PBis = myBis.Value(myBis.LastParameter ()); 
 
-  // Test si le bout de la bissectrice est dans l ensemble des points d intersection.
+  // Test if the end of the bissectrice is in the set of intersection points.
   if (!Params.IsEmpty()) {
     gp_Pnt2d P;
     if (Start) P = AC1.Value(Params.First().Y());
@@ -520,10 +536,10 @@ const
   
   if (ToProj) {
 #ifdef DEB
-    cout << " projection extremite bissectrice sur parallele."<<endl;
+    cout << " project extremity bissectrice on parallel."<<endl;
 #endif
 
-    // Projection du point sur les paralleles et ajout dans Params
+    // Project point on parallels and add in Params
 
     Standard_Real f2,l2;
     Handle(Geom2d_Curve) C2;
@@ -534,19 +550,19 @@ const
 
     if (Projector1.NbPoints() == 0) {
 #ifdef DEB
-      cout << "Echec projection dans BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
+      cout << "Failed projection in BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
 #endif
       return;
     }
     if (!Projector1.NearestPoint().IsEqual(PBis,Tol)) {
 #ifdef DEB
-      cout <<" Mauvaisesolution dans BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
+      cout <<"Incorrect solution in BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
 #endif
       return;
     }
     if (Projector2.NbPoints() == 0) {
 #ifdef DEB
-      cout << "Echec projection dans BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
+      cout << "Failed projection in BRepFill_TrimEdgeTool::AddOrConfuse"<<endl;
 #endif
       return;
     }

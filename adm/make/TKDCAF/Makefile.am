@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/DDF -I@top_srcdir@/src/DDF \
 -I@top_srcdir@/drv/DDocStd -I@top_srcdir@/src/DDocStd \
@@ -28,29 +28,29 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKDCAF.la
 
-libTKDCAF_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKBool/libTKBool.la \
-../TKLCAF/libTKLCAF.la \
-../TKCAF/libTKCAF.la \
-../TKViewerTest/libTKViewerTest.la \
-../TKBO/libTKBO.la \
-../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
+libTKDCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKGeomBase/libTKGeomBase.la \
-../TKV3d/libTKV3d.la \
-../TKService/libTKService.la \
-../TKMath/libTKMath.la \
-../TKCDF/libTKCDF.la \
 ../TKBRep/libTKBRep.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-../TKFillet/libTKFillet.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
 ../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
 ../TKDraw/libTKDraw.la \
-../TKPrim/libTKPrim.la \
+../TKCDF/libTKCDF.la \
+../TKV3d/libTKV3d.la \
 ../TKNIS/libTKNIS.la \
+../TKService/libTKService.la \
+../TKLCAF/libTKLCAF.la \
 ../TKV2d/libTKV2d.la \
-$(STLPort_LIB) 
+../TKFillet/libTKFillet.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKPrim/libTKPrim.la \
+../TKBool/libTKBool.la \
+../TKBO/libTKBO.la \
+../TKCAF/libTKCAF.la \
+../TKViewerTest/libTKViewerTest.la
+
 
 libTKDCAF_la_SOURCES = \
 @top_srcdir@/drv/DDF/DDF_StackIteratorOfTransactionStack_0.cxx \

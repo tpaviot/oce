@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{5A0E8196-08AB-0685-0171-113E731B21CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\V3d">
+      <UniqueIdentifier>{48759872-0EEF-032B-0F53-0080F412477D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Graphic3d">
+      <UniqueIdentifier>{1375A278-0AE1-0C58-0697-8499C58B6199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Visual3d">
+      <UniqueIdentifier>{B4AD1EDD-184C-0E49-12F9-395715843EFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Select3D">
+      <UniqueIdentifier>{43FC0775-131A-12FC-0286-991F6FDEE715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Prs3d">
+      <UniqueIdentifier>{154A83AC-18AF-06C9-089A-D0E612B0B685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StdPrs">
+      <UniqueIdentifier>{9F0239D4-0000-08C3-15C5-95264A04D26B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\SelectMgr">
+      <UniqueIdentifier>{929E82CE-0604-18C3-170A-D38AD6402823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\PrsMgr">
+      <UniqueIdentifier>{0B386DCA-05D9-1107-0191-9939C09E8DE5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\AIS">
+      <UniqueIdentifier>{75CF5988-116C-1430-131D-2741E557608D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\DsgPrs">
+      <UniqueIdentifier>{83F12994-1796-0C5A-02F5-F0CF46B82C55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\StdSelect">
+      <UniqueIdentifier>{66A4357A-08C3-0968-1013-E509E7ED36CB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\V3d\V3d_UnMapped_0.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_AmbientLight.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_CircularGrid.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ColorScale.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ColorScaleLayerItem.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_DirectionalLight.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_LayerMgr.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Light.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ListOfTransient.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_OrthographicView.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PerspectiveView.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Plane.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionLight.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionalLight.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_RectangularGrid.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_SpotLight.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_1.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_2.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_3.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_4.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_5.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_Print.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_1.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_2.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_3.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_4.cxx">
+      <Filter>Source files\V3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVector_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexC_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNC_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNT_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexN_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertex_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexC_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNC_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNT_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexN_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertex_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_AspectTextDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_CycleError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_GroupDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_InitialisationError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfPArray_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfShortReal_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfSetListOfSetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfPArray_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfShortReal_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfSetListOfSetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfPArray_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapIteratorOfMapOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PickIdDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PlotterDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PriorityDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfAddress_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfAddress_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetIteratorOfSetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetListOfSetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetOfGroup_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StructureDefinitionError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_TransformError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolygons.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolylines.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPrimitives.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangleStrips.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangles.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfSegments.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleFans.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleStrips.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangles.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectFillArea3d.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectLine3d.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectMarker3d.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectText3d.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields16.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields20.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields4.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields8.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBounds.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGraduatedTrihedron.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CInitTexture.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPlane.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTexture.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTransPersStruct.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CUserDraw.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDevice.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDriver.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_1.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_10.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_13.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_3.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_5.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_7.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Plotter.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Strips.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Structure.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_StructureManager.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1D.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dmanual.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dsegment.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2D.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dmanual.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dplane.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureEnv.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureMap.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureRoot.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vector.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexC.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexN.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexNC.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexNT.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_WNTGraphicDevice.cxx">
+      <Filter>Source files\Graphic3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ClipDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ContextPickDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_DepthCueingDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSequenceOfPickPath_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LayerDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LightDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_PickError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceOfPickPath_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfClipPlane_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfLight_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfView_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransformError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransientDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewManagerDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewMappingDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewOrientationDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ZClippingDefinitionError_0.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ClipPlane.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ContextPick.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ContextView.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_Layer.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_LayerItem.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_Light.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickDescriptor.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickPath.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_TransientManager.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewMapping.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewOrientation.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View_Print.cxx">
+      <Filter>Source files\Visual3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitive_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitiveTriangle_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitive_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitiveTriangle_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitive_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SensitiveEntitySequence_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SequenceNodeOfSensitiveEntitySequence_0.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_Projector.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCircle.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCurve.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveEntity.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveFace.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveGroup.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoint.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoly.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangulation.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveWire.cxx">
+      <Filter>Source files\Select3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Prs3d\Prs3d_InvalidAngle_0.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_AngleAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_AnglePresentation.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Arrow.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ArrowAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_BasicAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_CompositeAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_DatumAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Drawer.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_IsoAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LengthAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LengthPresentation.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LineAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PlaneAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PlaneSet.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PointAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Presentation.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_RadiusAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Root.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShadingAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShapeTool.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Text.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_TextAspect.cxx">
+      <Filter>Source files\Prs3d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_HLRShape_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_Point_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_Vertex_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFDeflectionShape_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFRestrictedFace_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFShape_0.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Curve.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_DeflectionCurve.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRPolyShape.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRToolShape.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Plane.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_PoleCurve.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedShape.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedSurface.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolPoint.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolRFace.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolShadedShape.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolVertex.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionRestrictedFace.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionSurface.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFPoleSurface.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
+      <Filter>Source files\StdPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfIntegerSensitive_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfObjectSelectors_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfSelectionActivation_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapOfOwnerCriterion_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedMapOfOwner_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListIteratorOfListOfFilter_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListNodeOfListOfFilter_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListOfFilter_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfFilter_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfOwner_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelection_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelector_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfFilter_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfOwner_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelection_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelector_0.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_EntityOwner.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SortCriterion.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
+      <Filter>Source files\SelectMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PrsMgr\PrsMgr_Presentations_0.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PrsMgr\PrsMgr_SequenceNodeOfPresentations_0.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_ModedPresentation.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentableObject.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation2d.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager2d.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Prs.cxx">
+      <Filter>Source files\PrsMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfILC_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfIOStatus_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfSelStat_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfILC_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfIOStatus_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfSelStat_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfILC_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfIOStatus_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfSelStat_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapofIntegerListOfinteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_IndexedDataMapOfOwnerPrs_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListIteratorOfListOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListNodeOfListOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_MapIteratorOfMapOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_MapOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceNodeOfSequenceOfDimension_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceNodeOfSequenceOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceOfDimension_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_StdMapNodeOfMapOfInteractive_0.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AngleDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AttributeFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Axis.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_BadEdgeFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_C0RegularityFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf2dDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf3dDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Circle.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedShape.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Drawer.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualDistanceRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualRadiusRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ExclusionFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_FixRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GlobalStatus.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GraphicTool.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_IdenticRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_1.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_2.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_3.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveObject.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LengthDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Line.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext_1.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalStatus.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MaxRadiusDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MidPointRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MinRadiusDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedInteractive.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedShape.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_OffsetDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ParallelRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PerpendicularRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Plane.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PlaneTrihedron.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Point.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_RadiusDimension.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Relation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Selection.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Shape.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SignatureFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SymmetricRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TexturedShape.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Triangulation.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Trihedron.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TypeFilter.cxx">
+      <Filter>Source files\AIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DsgPrs\DsgPrs_DatumPrs_0.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_AnglePresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_Chamf2dPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ConcentricPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DatumTool.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DiameterPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EllipseRadiusPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualDistancePresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualRadiusPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FilletRadiusPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FixPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_IdenticPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_LengthPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_MidPointPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_OffsetPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ParalPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_PerpenPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_RadiusPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShadedPlanePresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShapeDirPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymbPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymmetricPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_TangentPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZAxisPresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZPlanePresentation.cxx">
+      <Filter>Source files\DsgPrs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSelect\StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSelect\StdSelect_IndexedDataMapOfOwnerPrs_0.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepHilighter.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepSelectionTool.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_EdgeFilter.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_FaceFilter.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Prs.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_SensitiveText2d.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Shape.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ShapeTypeFilter.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_TextProjector2d.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector2d.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector3d.cxx">
+      <Filter>Source files\StdSelect</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

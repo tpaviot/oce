@@ -1,7 +1,23 @@
-// File:	SWDRAW_ShapeFix.cxx
-// Created:	Tue Mar  9 15:49:13 1999
-// Author:	data exchange team
-//		<det@kinox.nnov.matra-dtv.fr>
+// Created on: 1999-03-09
+// Created by: data exchange team
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <SWDRAW_ShapeFix.ixx>
@@ -17,6 +33,7 @@
 #include <TopoDS_Iterator.hxx>
 #include <TopExp_Explorer.hxx>
 #include <BRep_Tool.hxx>
+#include <BRep_Builder.hxx>
 #include <BRepBuilderAPI.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
 
@@ -40,9 +57,18 @@
 #include <Message_ListIteratorOfListOfMsg.hxx>
 #include <Message_Msg.hxx>
 #include <TCollection_AsciiString.hxx>
+#include <TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger.hxx>
+#include <TColStd_DataMapOfAsciiStringInteger.hxx>
 #include <TopTools_MapOfShape.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopAbs_State.hxx>
+
+#include <Draw_ProgressIndicator.hxx>
+#include <ShapeAnalysis_FreeBounds.hxx>
+#include <TopTools_HSequenceOfShape.hxx>
+#include <BRep_Builder.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
+#include <TopExp.hxx>
 
 #ifdef AIX
 #include <strings.h>
@@ -393,15 +419,15 @@ static Standard_Integer fixshape (Draw_Interpretor& di, Standard_Integer argc, c
     if ( argv[i][0] == '-' || argv[i][0] == '+' || argv[i][0] == '*' ) {
       Standard_Integer val = ( argv[i][0] == '-' ? 0 : argv[i][0] == '+' ? 1 : -1 );
       switch ( argv[i][1] ) {
-      case 'l': sfs->FixWireTool()->FixLackingMode()          = val;
-      case 'o': sfs->FixFaceTool()->FixOrientationMode()      = val;
-      case 'h': sfs->FixWireTool()->FixShiftedMode()          = val;
-      case 'm': sfs->FixFaceTool()->FixMissingSeamMode()      = val;
-      case 'd': sfs->FixWireTool()->FixDegeneratedMode()      = val;
-      case 's': sfs->FixWireTool()->FixSmallMode()            = val;
-      case 'i': sfs->FixWireTool()->FixSelfIntersectionMode() = val;
-      case 'n': sfs->FixWireTool()->FixNotchedEdgesMode()     = val;
-      case '?': mess                                          = val;
+      case 'l': sfs->FixWireTool()->FixLackingMode()          = val; break;
+      case 'o': sfs->FixFaceTool()->FixOrientationMode()      = val; break;
+      case 'h': sfs->FixWireTool()->FixShiftedMode()          = val; break;
+      case 'm': sfs->FixFaceTool()->FixMissingSeamMode()      = val; break;
+      case 'd': sfs->FixWireTool()->FixDegeneratedMode()      = val; break;
+      case 's': sfs->FixWireTool()->FixSmallMode()            = val; break;
+      case 'i': sfs->FixWireTool()->FixSelfIntersectionMode() = val; break;
+      case 'n': sfs->FixWireTool()->FixNotchedEdgesMode()     = val; break;
+      case '?': mess                                          = val; break;
       }
       continue;
     }
@@ -437,28 +463,54 @@ static Standard_Integer fixshape (Draw_Interpretor& di, Standard_Integer argc, c
     di << "For enhanced message output, use switch '+?'" << "\n"; 
     return 1;
   }
-  
-  sfs->Perform();
-  DBRep::Set (res,sfs->Shape());
-  
-  if ( mess ) {
-    Standard_Integer num = 0;
-    const ShapeExtend_DataMapOfShapeListOfMsg &map = msg->MapShape();
-    for ( ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg it(map); it.More(); it.Next() ) {
-      //cout << it.Key().TShape()->DynamicType()->Name() << " " << *(void**)&it.Key().TShape();
-      Standard_SStream aSStream;
-      aSStream << it.Key().TShape()->DynamicType()->Name() << " " << *(void**)&it.Key().TShape();
-      di << aSStream;
 
-      if ( mess <0 ) {
-        char buff[256];
-        sprintf ( buff, "%s_%d", res, ++num );
-        di << " (saved in DRAW shape " << buff << ")";
-        DBRep::Set (buff,it.Key());
+  Handle(Draw_ProgressIndicator) aProgress = new Draw_ProgressIndicator (di, 1);
+  sfs->Perform (aProgress);
+  DBRep::Set (res,sfs->Shape());
+
+  if ( mess ) 
+  {
+    TColStd_DataMapOfAsciiStringInteger aMapOfNumberOfFixes;
+    Standard_SStream aSStream;
+    TopoDS_Compound aCompound;
+    BRep_Builder aBuilder;
+    aBuilder.MakeCompound (aCompound);
+    const ShapeExtend_DataMapOfShapeListOfMsg &map = msg->MapShape();
+    // Counting the number of each type of fixes. If the switch '*?' store all modified shapes in compound.
+    for ( ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg it ( map ); it.More(); it.Next() )
+    {
+      for ( Message_ListIteratorOfListOfMsg iter ( it.Value() ); iter.More(); iter.Next() )
+      {
+        if ( aMapOfNumberOfFixes.IsBound ( iter.Value().Value() ) )
+        {
+          aMapOfNumberOfFixes ( iter.Value().Value() )++;
+        }
+        else
+        {
+          aMapOfNumberOfFixes.Bind ( iter.Value().Value(), 1 );
+        }
       }
-      di << ":" << "\n";
-      for (Message_ListIteratorOfListOfMsg iter (it.Value()); iter.More(); iter.Next())
-        di << "  " << TCollection_AsciiString(iter.Value().Value()).ToCString() << "\n";
+      if ( mess < 0 )
+      {
+        aBuilder.Add ( aCompound, it.Key() );
+      }
+    }
+    
+    aSStream << " Fix" << setw (58) << "Count\n";
+    aSStream << " ------------------------------------------------------------\n";
+    for ( TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger anIter ( aMapOfNumberOfFixes ); anIter.More(); anIter.Next() )
+    {
+      aSStream << " " << anIter.Key() << setw ( 60 - anIter.Key().Length() ) << anIter.Value() << "\n";
+    }
+    aSStream << " ------------------------------------------------------------\n";
+    di << aSStream;
+
+    if ( mess < 0 )
+    {
+      char buff[256];
+      sprintf ( buff, "%s_%s", res, "m" );
+      di << " Modified shapes saved in compound: " << buff;
+      DBRep::Set (buff, aCompound);
     }
   }
   
@@ -534,7 +586,7 @@ static Standard_Integer fixsmalledges(Draw_Interpretor& di, Standard_Integer n, 
   Standard_Integer k = 3;
   Standard_Real tol = 100000;
   Standard_Integer mode = 2;
-  Standard_Real tolang = PI/2;
+  Standard_Real tolang = M_PI/2;
   if(n > k) 
     tol = atof(a[k++]);
   
@@ -641,6 +693,69 @@ static Standard_Integer checkfclass2d(Draw_Interpretor& di, Standard_Integer n, 
   return 0;
 }
 
+static Standard_Integer connectedges(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if( n < 3) {
+    di<<"Invalid number of arguments. Should be : result shape [toler shared]"<<"\n";
+    return 1;
+  }
+  TopoDS_Shape aSh1 = DBRep::Get(a[2]);
+  if(aSh1.IsNull()) {
+    di<<"Shape is null"<<"\n";
+    return 1;
+  }
+  Standard_Real aTol = Precision::Confusion();
+  if( n > 3)
+    aTol = atof(a[3]);
+  
+  Standard_Boolean shared = Standard_True;
+  if( n > 4)
+    shared = (atoi(a[4]) == 1);
+  TopExp_Explorer aExpE(aSh1,TopAbs_EDGE);
+  Handle(TopTools_HSequenceOfShape) aSeqEdges = new TopTools_HSequenceOfShape;
+  Handle(TopTools_HSequenceOfShape) aSeqWires = new TopTools_HSequenceOfShape;
+  TopTools_IndexedMapOfShape aMapEdges;
+  for( ; aExpE.More(); aExpE.Next())
+  {
+    aSeqEdges->Append(aExpE.Current());
+    aMapEdges.Add(aExpE.Current());
+  }
+  
+  ShapeAnalysis_FreeBounds::ConnectEdgesToWires(aSeqEdges,aTol,shared,aSeqWires );
+  TopoDS_Compound aComp;
+  BRep_Builder aB;
+  aB.MakeCompound(aComp);
+  Standard_Integer i = 1;
+  for( ; i <= aSeqWires->Length() ; i++)
+  {
+    TopoDS_Shape aW = aSeqWires->Value(i);
+    di<<"Wire - "<<i<<" : "<<"\n";
+    
+    TopExp_Explorer aExp1(aW, TopAbs_EDGE);
+    for( ; aExp1.More(); aExp1.Next())
+    {
+      if(shared)
+      {
+        Standard_Integer ind = aMapEdges.FindIndex(aExp1.Current());
+        di<<ind<<" ";
+      }
+       else
+      {
+        TopoDS_Vertex aV1, aV2;
+        TopExp::Vertices(TopoDS::Edge(aExp1.Current()), aV1,aV2);
+        gp_Pnt aP = BRep_Tool::Pnt(aV1);
+        di<<aP.X()<<" "<<aP.Y()<<" "<<aP.Z()<<"\n";
+      }
+    }
+   
+    di<<"\n";
+    aB.Add( aComp,aSeqWires->Value(i));
+  }
+  DBRep::Set(a[1],aComp);
+  return 0;
+  
+}
+
 //=======================================================================
 //function : InitCommands
 //purpose  : 
@@ -675,5 +790,8 @@ static Standard_Integer checkfclass2d(Draw_Interpretor& di, Standard_Integer n, 
 		   __FILE__,checkoverlapedges,g);
   theCommands.Add ("checkfclass2d","face ucoord vcoord",
 		   __FILE__,checkfclass2d,g);
+  theCommands.Add ("connectedges","res shape [toler shared]",
+		   __FILE__,connectedges,g);
+  
 }
 

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define PRO7689 //GG_300597
 //              La hauteur des caracteres avec CapsHeight TRUE doit etre
 //              relative a la hauteur de la lettre H et non pas
@@ -6,7 +24,6 @@
 #define MFT     //GG_MFT Etude G1343
 //              Utilisation du FontManager MFT permettant de traiter
 //              les chaines de caracteres EUCLID3 orientees et slantees.
-//
 
 #define PRO8709 //GG_170697
 //              Les textes encadres ou caches ne fonctionnent pas en mode
@@ -924,7 +941,7 @@ Standard_Boolean PS_Driver::PlotArc (const Standard_ShortReal Xpos,
               << Ypos + aYradius*Sin(san) << " " << MOVETO;
     (*Cout()) << GSAVE << Xpos << " " << Ypos << " " << aXradius << " ";
 
-    if (Abs(fan)-Abs(san) >= 2.*PI) {
+    if (Abs(fan)-Abs(san) >= 2.*M_PI) {
       (*Cout()) << " 0 360 " << ARC << STROKE << GRESTORE << endl;
     } else {
       Standard_Real a1 = san/DRAD;
@@ -949,14 +966,14 @@ Standard_Boolean PS_Driver::PlotPolyArc (const Standard_ShortReal Xpos,
 
   if (Abs(aXradius-aYradius) <= 1.) {
     PLOT_PCOLOR (myPolyColorIndex);
-    if (Abs(oAngle) < 2.*PI)
+    if (Abs(oAngle) < 2.*M_PI)
       (*Cout()) << Xpos << " " << Ypos << " " << MOVETO;
     else
       (*Cout()) << Xpos + aXradius*Cos(san) << " "
                 << Ypos + aXradius*Sin(san) << " " << MOVETO;
     (*Cout())  << GSAVE << Xpos << " " << Ypos << " " << aXradius << " ";
 
-    if (Abs(fan) - Abs(san) >= 2.*PI) {
+    if (Abs(fan) - Abs(san) >= 2.*M_PI) {
       (*Cout()) << " 0 360 " << ARC << FILL << GRESTORE << endl;
     } else {
       Standard_Real a1 = san/DRAD;

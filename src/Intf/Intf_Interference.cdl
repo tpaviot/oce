@@ -1,8 +1,23 @@
--- File:	Interference.cdl
--- Created:	Mon Jun 24 10:15:49 1991
--- Author:	Didier PIFFAULT
---		<dpf@phobox>
----Copyright:	Matra Datavision 1991, 1992
+-- Created on: 1991-06-24
+-- Created by: Didier PIFFAULT
+-- Copyright (c) 1991-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 deferred class Interference from Intf
@@ -31,6 +46,7 @@ is  Initialize(Self : Boolean from Standard);
     	    	    returns Integer is static;
     ---Purpose: Gives the number   of  points of  intersection  in the
     --          interference.
+    ---C++: inline
 
     PntValue       (me;
     	    	    Index      : in Integer)
@@ -41,12 +57,13 @@ is  Initialize(Self : Boolean from Standard);
     --          the interference.
     --
     ---C++: return const &
-
+    ---C++: inline
 
     NbSectionLines (me)
     	    	    returns Integer is static;
     ---Purpose: Gives the number  of polylines of  intersection in the
     --          interference.
+    ---C++: inline
 
     LineValue      (me;
     	    	    Index      : in Integer)
@@ -57,12 +74,12 @@ is  Initialize(Self : Boolean from Standard);
     --          the interference.
     --
     ---C++: return const &
-
-
+    ---C++: inline
 
     NbTangentZones  (me)
     	    	    returns Integer is static;
     ---Purpose: Gives the number of zones of tangence in the interference.
+    ---C++: inline
 
     ZoneValue      (me;
     	    	    Index      : in Integer)
@@ -73,13 +90,13 @@ is  Initialize(Self : Boolean from Standard);
     --          interference.
     --
     ---C++: return const &
-
+    ---C++: inline
 
     GetTolerance   (me)
     	    	    returns Real
     	    	    is static;
     ---Purpose: Gives the tolerance used for the calculation.
-
+    ---C++: inline
 
 -- Implementation functions :
 
@@ -115,6 +132,6 @@ fields    mySPoins  : SeqOfSectionPoint from Intf is protected;
     	  mySLines  : SeqOfSectionLine  from Intf is protected;
     	  myTZones  : SeqOfTangentZone  from Intf is protected;
     	  SelfIntf  : Boolean from Standard is protected;
-	  Tolerance : Real from Standard is protected;
+          Tolerance : Real from Standard is protected;
 
 end Interference;

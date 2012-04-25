@@ -1,4 +1,0 @@
-+M StepToTopoDS:pubinclude:StepToTopoDS_Root.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/StepToTopoDS_Root.lxx
-+M StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/StepToTopoDS/.adm/StepToTopoDS_obj_inc.In
-+M StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/StepToTopoDS/.adm/StepToTopoDS_obj_inc.Out
-+M StepToTopoDS:dbadmfile:StepToTopoDS_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/StepToTopoDS/.adm/StepToTopoDS_obj_inc.Dep

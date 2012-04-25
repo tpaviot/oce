@@ -1,7 +1,23 @@
-// File:	AIS_LocalContext.cxx
-// Created:	Fri Jan 17 13:36:48 1997
-// Author:	Robert COUBLANC
-//		<rob@robox.paris1.matra-dtv.fr>
+// Created on: 1997-01-17
+// Created by: Robert COUBLANC
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //Modified by ROB : Traque des UpdateConversion intempestifs.
 
 #define BUC60688       //GG 25/05/00 Add SetSensitivity() methods.
@@ -881,7 +897,6 @@ void AIS_LocalContext::SetDisplayPriority(const Handle(AIS_InteractiveObject)& a
   
 }
 
-
 //=======================================================================
 //function : DisplayedObjects
 //purpose  : 
@@ -1209,14 +1224,63 @@ Standard_Boolean AIS_LocalContext::EndImmediateDraw(const Handle(V3d_View)& aVie
 Standard_Boolean AIS_LocalContext::IsImmediateModeOn() const
 {return myMainPM->IsImmediateModeOn();}
 
-#ifdef BUC60688
+void AIS_LocalContext::SetSensitivityMode(const StdSelect_SensitivityMode aMode) {
+
+  myMainVS->SetSensitivityMode(aMode);
+}
+
+StdSelect_SensitivityMode AIS_LocalContext::SensitivityMode() const {
+
+  return myMainVS->SensitivityMode();
+}
+
 void AIS_LocalContext::SetSensitivity(const Standard_Real aPrecision) {
 
   myMainVS->SetSensitivity(aPrecision);
 }
 
-void AIS_LocalContext::SetSensitivity(const Standard_Integer aPrecision) {
+Standard_Real AIS_LocalContext::Sensitivity() const {
 
-  myMainVS->Set(aPrecision);
+  return myMainVS->Sensitivity();
 }
-#endif
+
+void AIS_LocalContext::SetPixelTolerance(const Standard_Integer aPrecision) {
+
+  myMainVS->SetPixelTolerance(aPrecision);
+}
+
+Standard_Integer AIS_LocalContext::PixelTolerance() const {
+
+  return myMainVS->PixelTolerance();
+}
+
+//=======================================================================
+//function : SetZLayer
+//purpose  :
+//=======================================================================
+
+void AIS_LocalContext::SetZLayer (const Handle(AIS_InteractiveObject)& theIObj,
+                                  const Standard_Integer theLayerId)
+{
+  if (!myActiveObjects.IsBound (theIObj)) 
+    return;
+
+  const Handle(AIS_LocalStatus)& aStatus = myActiveObjects (theIObj);
+  if (aStatus->DisplayMode () == -1)
+    return;
+
+  theIObj->SetZLayer (myMainPM, theLayerId);
+}
+
+//=======================================================================
+//function : GetZLayer
+//purpose  : 
+//=======================================================================
+
+Standard_Integer AIS_LocalContext::GetZLayer (const Handle(AIS_InteractiveObject)& theIObj) const
+{
+  if (!myActiveObjects.IsBound (theIObj)) 
+    return -1;
+
+  return theIObj->GetZLayer (myMainPM);
+}

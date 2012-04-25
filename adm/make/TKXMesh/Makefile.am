@@ -11,20 +11,20 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/XBRepMesh -I@top_srcdir@/src/XBRepMesh
 
 
 lib_LTLIBRARIES=libTKXMesh.la
 
-libTKXMesh_la_LIBADD = \
-../TKMesh/libTKMesh.la \
-../TKG2d/libTKG2d.la \
-../TKernel/libTKernel.la \
-../TKMath/libTKMath.la \
+libTKXMesh_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
-$(STLPort_LIB) 
+../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
+../TKG2d/libTKG2d.la \
+../TKMesh/libTKMesh.la
+
 
 libTKXMesh_la_SOURCES = \
 @top_srcdir@/src/XBRepMesh/XBRepMesh.cxx

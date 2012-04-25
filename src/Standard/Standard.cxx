@@ -1,7 +1,23 @@
-// File:	Standard.cxx
-// Created:	Tue Mar 15 17:33:31 2005
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2005-03-15
+// Created by: Peter KURNEV
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Standard.ixx>
@@ -12,8 +28,13 @@
 #include <Standard_MMgrRaw.hxx>
 #include <Standard_MMgrTBBalloc.hxx>
 
+#if(defined(_WIN32) || defined(__WIN32__))
+#include <windows.h>
+#include <malloc.h>
+#endif
+
 // Global reentrant flag
-static Standard_Boolean Standard_IsReentrant = Standard_False;
+static Standard_Boolean Standard_IsReentrant = Standard_True;
 
 //=======================================================================
 //class    : Standard_MMgrFactory 
@@ -35,34 +56,49 @@ class Standard_MMgrFactory {
 //purpose  : Check environment variables and create appropriate memory manager
 //=======================================================================
 
-Standard_MMgrFactory::Standard_MMgrFactory() : myFMMgr(0)
+Standard_MMgrFactory::Standard_MMgrFactory()
+: myFMMgr (NULL)
 {
-  char *var;
-  Standard_Boolean bClear, bMMap, bReentrant;
-  Standard_Integer aCellSize, aNbPages, aThreshold, bOptAlloc;
-  //
-  bOptAlloc   = atoi((var = getenv("MMGT_OPT"      )) ? var : "1"    ); 
-  bClear      = atoi((var = getenv("MMGT_CLEAR"    )) ? var : "1"    );
-  bMMap       = atoi((var = getenv("MMGT_MMAP"     )) ? var : "1"    ); 
-  aCellSize   = atoi((var = getenv("MMGT_CELLSIZE" )) ? var : "200"  ); 
-  aNbPages    = atoi((var = getenv("MMGT_NBPAGES"  )) ? var : "1000" );
-  aThreshold  = atoi((var = getenv("MMGT_THRESHOLD")) ? var : "40000");
-  bReentrant  = atoi((var = getenv("MMGT_REENTRANT")) ? var : "0"    );
-  
-  if ( bOptAlloc == 1 ) { 
-    myFMMgr = new Standard_MMgrOpt(bClear, bMMap, aCellSize, aNbPages,
-                                   aThreshold, bReentrant);
-  }
-  else if ( bOptAlloc == 2 ) {
-    myFMMgr = new Standard_MMgrTBBalloc(bClear);
-  }
-  else {
-    myFMMgr = new Standard_MMgrRaw(bClear);
-  }
+  char* aVar;
+  Standard_Integer anAllocId   = (aVar = getenv ("MMGT_OPT"      )) ?  atoi (aVar)       : 0;
+  Standard_Boolean toClear     = (aVar = getenv ("MMGT_CLEAR"    )) ? (atoi (aVar) != 0) : Standard_True;
 
-  // Set grobal reentrant flag according to MMGT_REENTRANT environment variable
-  if ( ! Standard_IsReentrant )
-    Standard_IsReentrant = bReentrant;
+
+  // on Windows (actual for XP and 2000) activate low fragmentation heap
+  // for CRT heap in order to get best performance.
+  // Environment variable MMGT_LFH can be used to switch off this action (if set to 0)
+#if defined(_MSC_VER)
+  aVar = getenv ("MMGT_LFH");
+  if ( aVar == NULL || atoi (aVar) != 0 )
+  {
+    ULONG aHeapInfo = 2;
+    HANDLE aCRTHeap = (HANDLE)_get_heap_handle();
+    HeapSetInformation (aCRTHeap, HeapCompatibilityInformation, &aHeapInfo, sizeof(aHeapInfo));
+  }
+#endif
+
+  aVar = getenv ("MMGT_REENTRANT");
+  if ( aVar != NULL ) 
+    Standard_IsReentrant = (atoi (aVar) != 0);
+
+  switch (anAllocId)
+  {
+    case 1:  // OCCT optimized memory allocator
+    {
+      Standard_Boolean bMMap       = (aVar = getenv ("MMGT_MMAP"     )) ? (atoi (aVar) != 0) : Standard_True;
+      Standard_Integer aCellSize   = (aVar = getenv ("MMGT_CELLSIZE" )) ?  atoi (aVar) : 200;
+      Standard_Integer aNbPages    = (aVar = getenv ("MMGT_NBPAGES"  )) ?  atoi (aVar) : 1000;
+      Standard_Integer aThreshold  = (aVar = getenv ("MMGT_THRESHOLD")) ?  atoi (aVar) : 40000;
+      myFMMgr = new Standard_MMgrOpt (toClear, bMMap, aCellSize, aNbPages, aThreshold, Standard_IsReentrant);
+      break;
+    }
+    case 2:  // TBB memory allocator
+      myFMMgr = new Standard_MMgrTBBalloc (toClear);
+      break;
+    case 0:
+    default: // system default memory allocator
+      myFMMgr = new Standard_MMgrRaw (toClear);
+  }
 }
 
 //=======================================================================

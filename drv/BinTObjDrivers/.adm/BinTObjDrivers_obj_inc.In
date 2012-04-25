@@ -1,9 +1,0 @@
-+ BinTObjDrivers:source:BinTObjDrivers.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_DocumentRetrievalDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_DocumentRetrievalDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_DocumentStorageDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_DocumentStorageDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_IntSparseArrayDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_IntSparseArrayDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_ModelDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_ModelDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_ObjectDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_ObjectDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_ReferenceDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_ReferenceDriver.hxx
-+ BinTObjDrivers:source:BinTObjDrivers_XYZDriver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/BinTObjDrivers/BinTObjDrivers_XYZDriver.hxx
-- BinTObjDrivers:admfile:BinTObjDrivers_src.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/BinTObjDrivers/BinTObjDrivers_src.Out

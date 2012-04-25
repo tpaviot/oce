@@ -1,7 +1,23 @@
-// File:	GeomFill_DraftTrihedron.cxx
-// Created:	Wed Apr 15 14:59:31 1998
-// Author:	 Stephanie HUMEAU
-//		<shu@sun17>
+// Created on: 1998-04-15
+// Created by: Stephanie HUMEAU
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <GeomFill_DraftTrihedron.ixx>
@@ -17,11 +33,7 @@
 static gp_Vec DDeriv(const gp_Vec& F, const gp_Vec& DF, const gp_Vec& D2F)
 {
   Standard_Real Norma = F.Magnitude();
-#ifdef DEB
-  Standard_Real dot = F.Dot(DF);
-#else
-  F.Dot(DF);
-#endif
+
   gp_Vec Result = (D2F - 2*DF*(F*DF)/(Norma*Norma))/Norma - 
      F*((DF.SquareMagnitude() + F*D2F 
         - 3*(F*DF)*(F*DF)/(Norma*Norma))/(Norma*Norma*Norma));
@@ -47,7 +59,7 @@ static gp_Vec DDeriv(const gp_Vec& F, const gp_Vec& DF, const gp_Vec& D2F)
 //=======================================================================
  void GeomFill_DraftTrihedron::SetAngle(const Standard_Real Angle)
 {
-  myAngle = PI/2 + Angle;
+  myAngle = M_PI/2 + Angle;
   myCos = Cos(myAngle);
 }
 
@@ -229,7 +241,7 @@ Standard_Boolean GeomFill_DraftTrihedron::D2(const Standard_Real Param,
  Handle(GeomFill_TrihedronLaw) GeomFill_DraftTrihedron::Copy() const
 {
  Handle(GeomFill_DraftTrihedron) copy = 
-   new (GeomFill_DraftTrihedron) (B,myAngle-PI/2);
+   new (GeomFill_DraftTrihedron) (B,myAngle-M_PI/2);
  copy->SetCurve(myCurve);
  return copy;
 } 

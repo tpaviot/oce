@@ -1,7 +1,23 @@
-// File:	IntAna_IntQuadQuad.cxx
-// Created:	Mon Jun 29 11:59:35 1992
-// Author:	Laurent BUCHARD
-//		<lbr@topsn3>
+// Created on: 1992-06-29
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <stdio.h>
 
@@ -55,7 +71,7 @@ class TrigonometricRoots {
   Standard_Boolean IsARoot(Standard_Real u) {
     Standard_Integer i;
     Standard_Real aEps=RealEpsilon();
-    Standard_Real PIpPI = Standard_PI+Standard_PI;
+    Standard_Real PIpPI = M_PI + M_PI;
     //
     for(i=0 ; i<NbRoots; ++i) {
       if(Abs(u - Roots[i])<=aEps) {
@@ -103,7 +119,7 @@ TrigonometricRoots::TrigonometricRoots(const Standard_Real CC,
 {
   Standard_Integer i, j, SvNbRoots;
   Standard_Boolean Triee;
-  Standard_Real PIpPI = Standard_PI+Standard_PI;
+  Standard_Real PIpPI = M_PI + M_PI;
   //
   done=Standard_False;
   //
@@ -269,7 +285,7 @@ void IntAna_IntQuadQuad::Perform(const gp_Cylinder& Cyl,
   Z_NEGATIF=Standard_False;
   //
   Standard_Real Qxx,Qyy,Qzz,Qxy,Qxz,Qyz,Qx,Qy,Qz,Q1, aRealEpsilon, RCyl, R2;
-  Standard_Real PIpPI = Standard_PI+Standard_PI;
+  Standard_Real PIpPI = M_PI + M_PI;
   //
   for(Standard_Integer raz = 0 ; raz < myNbMaxCurves ; raz++) {
     previouscurve[raz] = nextcurve[raz] = 0;
@@ -370,7 +386,7 @@ void IntAna_IntQuadQuad::Perform(const gp_Cylinder& Cyl,
 	//-- Si Positif  ---> 2 Courbes
 	//-- Sinon       ---> Pas de solution
 	//--------------------------------------------------------------
-	if(MTF.Value(PI) >= -aRealEpsilon) {
+	if(MTF.Value(M_PI) >= -aRealEpsilon) {
 
 	  TheCurve[0].SetCylinderQuadValues(Cyl,Qxx,Qyy,Qzz,Qxy,Qxz,Qyz,Qx,Qy,Qz,Q1,
 					    myEpsilon,0.0,PIpPI,
@@ -404,7 +420,7 @@ void IntAna_IntQuadQuad::Perform(const gp_Cylinder& Cyl,
 	  //--       entre les 2 racines ( Ici Tout le domaine )
 	  //-- Sinon Seulement un point Tangent
 	  //------------------------------------------------------------
-	  if(MTF.Value(PolDIS.Value(1)+PI) >= -aRealEpsilon ) {
+	  if(MTF.Value(PolDIS.Value(1)+M_PI) >= -aRealEpsilon ) {
 	    //------------------------------------------------------------
 	    //-- On a Un Point de Tangence + Une Courbe Solution
 	    //------------------------------------------------------------
@@ -582,7 +598,7 @@ void IntAna_IntQuadQuad::Perform(const gp_Cone& Cone,
   Standard_Integer i;
   Standard_Real Qxx,Qyy,Qzz,Qxy,Qxz,Qyz,Qx,Qy,Qz,Q1;
   Standard_Real Theta1, Theta2, TgAngle;
-  Standard_Real PIpPI = Standard_PI+Standard_PI;
+  Standard_Real PIpPI = M_PI + M_PI;
   //
   done=Standard_True;
   identical = Standard_False;
@@ -745,7 +761,7 @@ void IntAna_IntQuadQuad::Perform(const gp_Cone& Cone,
   //                     2
   //        f(z,t)=A(t)*z + B(t)*z + C(t)      Discriminant(t) != 0 
   //
-  if(!nbsol && (MTF.Value(PI)<0.) ) {
+  if(!nbsol && (MTF.Value(M_PI)<0.) ) {
     //-- Discriminant signe constant negatif
     return;
   }

@@ -7,6 +7,12 @@
 # install-sh) using automake. Automake is used here to creates the
 # files Makefile.in from the files Makefile.am.
 # ====================================================================
+# CONF_DIR is the path containing the present script
+#
+CONF_DIR=`echo $0 | sed -e "s,[^/]*$,,;s,/$,,;s,^$,.,"`
+cd ${CONF_DIR}
+
+mkdir -p make
 
 # ____________________________________________________________________
 # aclocal creates the aclocal.m4 file from the standard macro and the

@@ -1,7 +1,23 @@
-// File:	AIS_TangentRelation.cdl
-// Created:	Tue Dec  5 15:09:04 1996
-// Author:	Jean-Pierre COMBE/Odile Olivier
-//              <ODL>
+// Created on: 1996-12-05
+// Created by: Jean-Pierre COMBE/Odile Olivier
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_NotImplemented.hxx>
 
@@ -227,7 +243,7 @@ static Standard_Boolean ComputeTangencyPoint(const Handle(Geom_Curve)& GC1,
 	      ElCLib::D1(par_inter,ellipse->Elips(),P2,aVector2);
 	    }
 //	  if ( aVector1.IsParallel(aVector2, 100*Precision::Angular()) ) break;
-	  if ( aVector1.IsParallel(aVector2, Standard_PI/360.0) ) break; // 0.5 graduce
+	  if ( aVector1.IsParallel(aVector2, M_PI / 360.0) ) break; // 0.5 graduce
 	}
     }
   aPoint = PC1;
@@ -297,7 +313,7 @@ void AIS_TangentRelation::ComputeTwoEdgesTangent(const Handle(Prs3d_Presentation
     }
   else return;
 
-  //On cherche d'abord le vertex de tangence s'il existe
+  //First find the tangengy vector if exists
   TopoDS_Vertex VCom;
   TopExp_Explorer expF(TopoDS::Edge(myFShape),TopAbs_VERTEX);
   TopExp_Explorer expS(TopoDS::Edge(mySShape),TopAbs_VERTEX);

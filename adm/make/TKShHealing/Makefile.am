@@ -20,7 +20,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_wsock32_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_wsock32_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/ShapeBuild -I@top_srcdir@/src/ShapeBuild \
 -I@top_srcdir@/drv/ShapeExtend -I@top_srcdir@/src/ShapeExtend \
@@ -36,16 +36,16 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_wsock32_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKShHealing.la
 
-libTKShHealing_la_LIBADD = \
+libTKShHealing_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
 ../TKMath/libTKMath.la \
 ../TKG2d/libTKG2d.la \
-../TKG3d/libTKG3d.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-../TKBRep/libTKBRep.la \
+../TKG3d/libTKG3d.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-$(STLPort_LIB) $(CSF_wsock32_LIB) 
+$(CSF_wsock32_LIB) 
 
 libTKShHealing_la_SOURCES = \
 @top_srcdir@/drv/ShapeAnalysis/ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal_0.cxx \

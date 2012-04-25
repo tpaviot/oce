@@ -1,9 +1,0 @@
-+V BRepClass:msentity:BRepClass .
-+V BRepClass:msentity:BRepClass_Edge .
-+V BRepClass:msentity:BRepClass_Intersector .
-+V BRepClass:msentity:BRepClass_FacePassiveClassifier .
-+V BRepClass:msentity:BRepClass_FaceExplorer .
-+V BRepClass:msentity:BRepClass_FClassifier .
-+V BRepClass:msentity:BRepClass_FaceClassifier .
-+V BRepClass:msentity:BRepClass_FClass2dOfFClassifier .
-- BRepClass:admfile:BRepClass_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/BRepClass/BRepClass_xcpp_fill.Out

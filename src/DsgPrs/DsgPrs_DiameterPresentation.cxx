@@ -1,11 +1,25 @@
-// Copyright: 	Matra-Datavision 1996
-// File:	DsgPrs_DiameterPresentation.cxx
-// Created:	Wed Aug 21 15:36:02 1996
-// Author:	Jacques MINOT
-//		<jmi>
+// Created on: 1996-08-21
+// Created by: Jacques MINOT
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //              modified 12-january-98
 //              Sergey ZARITCHNY
-//		<szy@androxx.nnov.matra-dtv.fr>
 //              szy
 #include <DsgPrs_DiameterPresentation.ixx>
 
@@ -114,18 +128,18 @@ static Standard_Boolean DsgPrs_InDomain(const Standard_Real fpar,
     if(lpar > fpar)
       return ((para >= fpar) && (para <= lpar));
     else { // fpar > lpar
-      Standard_Real delta = 2*PI-fpar;
+      Standard_Real delta = 2*M_PI-fpar;
       Standard_Real lp, par, fp;
       lp = lpar + delta;
       par = para + delta;
-      while(lp > 2*PI) lp-=2*PI;
-      while(par > 2*PI) par-=2*PI;
+      while(lp > 2*M_PI) lp-=2*M_PI;
+      while(par > 2*M_PI) par-=2*M_PI;
       fp = 0.;
       return ((par >= fp) && (par <= lp));
     }
       
   }
-  if (para >= (fpar+2*PI)) return Standard_True;
+  if (para >= (fpar+2*M_PI)) return Standard_True;
   if (para <= lpar) return Standard_True;
   return Standard_False;
 }
@@ -148,9 +162,9 @@ void DsgPrs_DiameterPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
 {
   Standard_Real fpara = uFirst;
   Standard_Real lpara = uLast;
-  while (lpara > 2*PI) {
-    fpara -= 2*PI;
-    lpara -= 2*PI;
+  while (lpara > 2*M_PI) {
+    fpara -= 2*M_PI;
+    lpara -= 2*M_PI;
   }
 
   Handle(Prs3d_LengthAspect) LA = aDrawer->LengthAspect();
@@ -167,8 +181,8 @@ void DsgPrs_DiameterPresentation::Add (const Handle(Prs3d_Presentation)& aPresen
   gp_Pnt SecondPoint = ElCLib::Value(uLast, aCircle);
 
   if ( !DsgPrs_InDomain(fpara,lpara,parEndOfArrow)) {
-    Standard_Real otherpar = parEndOfArrow + PI;// not in domain
-    if (otherpar > 2*PI) otherpar -= 2*PI;
+    Standard_Real otherpar = parEndOfArrow + M_PI;// not in domain
+    if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
     if (DsgPrs_InDomain(fpara,lpara,otherpar)) {
       parEndOfArrow = otherpar; // parameter on circle
       EndOfArrow = ElCLib::Value(parEndOfArrow, aCircle);

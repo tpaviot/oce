@@ -1,38 +1,27 @@
-// File:	IntTools_EdgeEdge.cxx
-// Created:	Thu Oct 26 10:14:32 2000
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2000-10-26
+// Created by: Peter KURNEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 #include <IntTools_EdgeEdge.ixx>
 
-#include <BRep_Tool.hxx>
+#include <Precision.hxx>
 
-#include <GCPnts_QuasiUniformDeflection.hxx>
-
-#include <GeomAPI_ProjectPointOnCurve.hxx>
-#include <GeomAPI_ExtremaCurveCurve.hxx>
-
-#include <TColStd_ListOfReal.hxx>
-#include <TColStd_ListIteratorOfListOfReal.hxx>
-#include <TColStd_MapOfInteger.hxx>
-#include <TColStd_ListOfReal.hxx>
 #include <TColStd_SequenceOfReal.hxx>
-
-#include <IntTools.hxx>
-#include <IntTools_Range.hxx>
-#include <IntTools_CArray1OfInteger.hxx>
-#include <IntTools_CArray1OfReal.hxx>
-#include <IntTools_Array1OfRange.hxx>
-#include <IntTools_QuickSortRange.hxx>
-#include <IntTools_CompareRange.hxx>
-#include <IntTools_Root.hxx>
-#include <IntTools_Array1OfRoots.hxx>
-#include <IntTools_Compare.hxx>
-#include <IntTools_QuickSort.hxx>
-#include <IntTools_Root.hxx>
-#include <IntTools_CommonPrt.hxx>
-#include <IntTools_SequenceOfRanges.hxx>
 
 #include <gp_Circ.hxx>
 #include <gp_Ax1.hxx>
@@ -40,28 +29,36 @@
 #include <gp_Dir.hxx>
 #include <gp_Pnt.hxx>
 
-#include <gce_MakeCirc.hxx>
-#include <Precision.hxx>
-#include <IntTools.hxx>
-//
-#include <Bnd_Box.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopExp.hxx>
-#include <BndLib_Add3dCurve.hxx>
-#include <IntTools_BeanBeanIntersector.hxx>
-#include <IntTools_Tools.hxx>
+#include <ElCLib.hxx>
+#include <Geom_Curve.hxx>
+
+#include <Geom_BSplineCurve.hxx>
+#include <GeomAdaptor_Curve.hxx>
 
 #include <CPnts_AbscissaPoint.hxx>
-#include <gp_Circ.hxx>
+
+#include <GeomAPI_ProjectPointOnCurve.hxx>
+
 #include <Extrema_ExtElC.hxx>
 #include <Extrema_POnCurv.hxx>
+#include <Extrema_ExtCC.hxx>
+
 #include <TopoDS_Iterator.hxx>
+#include <BRep_Tool.hxx>
+
+#include <IntTools.hxx>
+#include <IntTools_Range.hxx>
+#include <IntTools_CArray1OfReal.hxx>
+#include <IntTools_CommonPrt.hxx>
+#include <IntTools_SequenceOfRanges.hxx>
+#include <IntTools_Tools.hxx>
+#include <IntTools_BeanBeanIntersector.hxx>
 
 //=======================================================================
 //function : IntTools_EdgeEdge::IntTools_EdgeEdge
 //purpose  : 
 //=======================================================================
-  IntTools_EdgeEdge::IntTools_EdgeEdge()
+IntTools_EdgeEdge::IntTools_EdgeEdge()
 {
   myTol1=1.e-7;
   myTol2=1.e-7;
@@ -239,23 +236,29 @@
 //=======================================================================
   void IntTools_EdgeEdge::Perform() 
 {
-  Standard_Integer i, pri;
+  Standard_Boolean bIsSameCurves;
+  Standard_Integer i, pri, aNbCommonPrts, aNbRange;
+  Standard_Real aT1, aT2, aPC;
   IntTools_CommonPrt aCommonPrt;
-  GeomAbs_CurveType   aCTFrom, aCTTo;
-  
+  GeomAbs_CurveType aCTFrom, aCTTo;
+  //
+  myIsDone=Standard_False;
   myErrorStatus=0;
+  //
   CheckData();
   if (myErrorStatus)
     return;
   //
-  // ProjectableRanges, etc
   Prepare();
+
   if (myErrorStatus) {
     return;
   }
   //
-
-  if(myCFrom.GetType() == GeomAbs_Line && myCTo.GetType() == GeomAbs_Line) {
+  aCTFrom = myCFrom.GetType();
+  aCTTo   = myCTo.GetType();
+  //
+  if(aCTFrom==GeomAbs_Line && aCTTo==GeomAbs_Line) {
     ComputeLineLine();
     if (myOrder) {
       TopoDS_Edge aTmp;
@@ -265,66 +268,85 @@
     }
     return;
   }
-
+  //
+  bIsSameCurves=IsSameCurves();
+  if (bIsSameCurves) {
+    aCommonPrt.SetType(TopAbs_EDGE);
+    aCommonPrt.SetRange1 (myTminFrom, myTmaxFrom);
+    aCommonPrt.AppendRange2 (myTminTo, myTmaxTo);
+    mySeqOfCommonPrts.Append(aCommonPrt);
+    myIsDone=Standard_True;
+    return;
+  }
+  //
   IntTools_BeanBeanIntersector anIntersector(myCFrom, myCTo, myTolFrom, myTolTo);
   anIntersector.SetBeanParameters(Standard_True, myTminFrom, myTmaxFrom);
   anIntersector.SetBeanParameters(Standard_False, myTminTo, myTmaxTo);
+  //
   anIntersector.Perform();
-  
   if(!anIntersector.IsDone()) {
     myIsDone = Standard_False;
     return;
   }
-  aCTFrom = myCFrom.GetType();
-  aCTTo   = myCTo.GetType();
-  
+  //
+  aPC=Precision::PConfusion();
   aCommonPrt.SetEdge1(myCFrom.Edge());
   aCommonPrt.SetEdge2(myCTo.Edge());
-
-  for(Standard_Integer r = 1; r <= anIntersector.Result().Length(); r++) {
-    const IntTools_Range& aRange = anIntersector.Result().Value(r);
-    
-    if(IsProjectable(IntTools_Tools::IntermediatePoint(aRange.First(), aRange.Last()))) {
-      aCommonPrt.SetRange1(aRange.First(), aRange.Last());
-
-      if(((aRange.First() - myTminFrom) < Precision::PConfusion()) &&
-	 ((myTmaxFrom  - aRange.Last()) < Precision::PConfusion())) {
+  //
+  const IntTools_SequenceOfRanges& aSR=anIntersector.Result();
+  aNbRange=aSR.Length();
+  for(i=1; i <=aNbRange; ++i) {
+    const IntTools_Range& aRange =aSR.Value(i);
+    aT1=aRange.First();
+    aT2=aRange.Last();
+    //
+    if(IsProjectable(IntTools_Tools::IntermediatePoint(aT1, aT2))) {
+      aCommonPrt.SetRange1(aT1, aT2);
+      //
+      if(((aT1 - myTminFrom)<aPC) && ((myTmaxFrom  - aT2)<aPC)) {
 	aCommonPrt.SetAllNullFlag(Standard_True);
       }
       mySeqOfCommonPrts.Append(aCommonPrt);
     }
   }
-  
-  Standard_Integer aNbCommonPrts;
+  //
   aNbCommonPrts=mySeqOfCommonPrts.Length();
-  
-  for (i=1; i<=aNbCommonPrts; i++) {
+  for (i=1; i<=aNbCommonPrts; ++i) {
     IntTools_CommonPrt& aCmnPrt=mySeqOfCommonPrts.ChangeValue(i);
     pri=FindRangeOnCurve2 (aCmnPrt); 
-    
     if (pri) {
       myErrorStatus=10;
       return;
     }
   }
   //
-  
-  {
-    // Line Circle's Common Parts treatement
-    if ((aCTFrom==GeomAbs_Line   && aCTTo==GeomAbs_Circle) || 
-	(aCTFrom==GeomAbs_Circle && aCTTo==GeomAbs_Line) ||
-	(aCTFrom==GeomAbs_Ellipse && aCTTo==GeomAbs_Ellipse) ||
-	(aCTFrom==GeomAbs_Circle && aCTTo==GeomAbs_Circle))  {
-      for (i=1; i<=aNbCommonPrts; i++) {
-	IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
-	TopAbs_ShapeEnum aType=aCP.Type();
-	Standard_Boolean bIsTouch;
-	Standard_Real aTx1, aTx2;
-	//
-	if ((aType==TopAbs_EDGE) && !aCommonPrt.AllNullFlag()) {
-	  bIsTouch=CheckTouch (aCP, aTx1, aTx2);
+  // Line Circle's Common Parts treatement
+  if ((aCTFrom==GeomAbs_Line   && aCTTo==GeomAbs_Circle) || 
+      (aCTFrom==GeomAbs_Circle && aCTTo==GeomAbs_Line) ||
+      (aCTFrom==GeomAbs_Ellipse && aCTTo==GeomAbs_Ellipse) ||
+      (aCTFrom==GeomAbs_Circle && aCTTo==GeomAbs_Circle))  {
+    for (i=1; i<=aNbCommonPrts; i++) {
+      IntTools_CommonPrt& aCP=mySeqOfCommonPrts(i);
+      TopAbs_ShapeEnum aType=aCP.Type();
+      Standard_Boolean bIsTouch;
+      Standard_Real aTx1, aTx2;
+      //
+      if ((aType==TopAbs_EDGE) && !aCommonPrt.AllNullFlag()) {
+	bIsTouch=CheckTouch (aCP, aTx1, aTx2);
+	if (bIsTouch) {
+	  aCP.SetType(TopAbs_VERTEX);
+	  aCP.SetVertexParameter1(aTx1);
+	  aCP.SetRange1 (aTx1, aTx1);
+	  IntTools_Range& aRange2=(aCP.ChangeRanges2()).ChangeValue(1);
+	  aRange2.SetFirst(aTx2);
+	  aRange2.SetLast (aTx2);
+	}
+      }
+      //
+      if (aType==TopAbs_VERTEX) {
+	if(aCTFrom==GeomAbs_Line || aCTTo==GeomAbs_Line) {
+	  bIsTouch=CheckTouchVertex (aCP, aTx1, aTx2);
 	  if (bIsTouch) {
-	    aCP.SetType(TopAbs_VERTEX);
 	    aCP.SetVertexParameter1(aTx1);
 	    aCP.SetRange1 (aTx1, aTx1);
 	    IntTools_Range& aRange2=(aCP.ChangeRanges2()).ChangeValue(1);
@@ -332,32 +354,20 @@
 	    aRange2.SetLast (aTx2);
 	  }
 	}
-	//
-	if (aType==TopAbs_VERTEX) {
-	  if(aCTFrom==GeomAbs_Line || aCTTo==GeomAbs_Line) {
-	    bIsTouch=CheckTouchVertex (aCP, aTx1, aTx2);
-	    if (bIsTouch) {
-	      aCP.SetVertexParameter1(aTx1);
-	      aCP.SetRange1 (aTx1, aTx1);
-	      IntTools_Range& aRange2=(aCP.ChangeRanges2()).ChangeValue(1);
-	      aRange2.SetFirst(aTx2);
-	      aRange2.SetLast (aTx2);
-	    }
-	  }
-	}
       }
     }
   }
-
+  //
   if (myOrder) {
     TopoDS_Edge aTmp;
     aTmp=myEdge1;
     myEdge1=myEdge2;
     myEdge2=aTmp;
   }
-    
+  //
   myIsDone=Standard_True;
 } 
+
 //=======================================================================
 //function : CheckData
 //purpose  : 
@@ -383,29 +393,24 @@
 //=======================================================================
   void IntTools_EdgeEdge::Prepare() 
 {
-  Standard_Real aLE1, aLE2;
-  
+  Standard_Real aLE1, aLE2, aT1, aT2, aTol1, aTol2;
+  GeomAdaptor_Curve aGAC;
+  GeomAbs_CurveType aCT1, aCT2;
   //
   // 1.Prepare Curves' data
-  aLE1 = 0.;
-
-  if (!BRep_Tool::Degenerated(myEdge1) &&
-      BRep_Tool::IsGeometric(myEdge1)) {
-    Standard_Real f, l;
-    const Handle(Geom_Curve)&  aCurve   =BRep_Tool::Curve  (myEdge1, f, l);
-    GeomAdaptor_Curve   aGACurve   (aCurve, myRange1.First(), myRange1.Last());
-    aLE1 = CPnts_AbscissaPoint::Length(aGACurve, myRange1.First(), myRange1.Last());
-  }
-  aLE2 = 0.;
-
-  if (!BRep_Tool::Degenerated(myEdge2) &&
-      BRep_Tool::IsGeometric(myEdge2)) {
-    Standard_Real f, l;
-    const Handle(Geom_Curve)&  aCurve   =BRep_Tool::Curve  (myEdge2, f, l);
-    GeomAdaptor_Curve   aGACurve   (aCurve, myRange2.First(), myRange2.Last());
-    aLE2 = CPnts_AbscissaPoint::Length(aGACurve, myRange2.First(), myRange2.Last());
-  }
-  
+  const Handle(Geom_Curve)& aC1=BRep_Tool::Curve  (myEdge1, aT1, aT2);
+  aT1=myRange1.First();
+  aT2=myRange1.Last();
+  aGAC.Load(aC1, myRange1.First(), myRange1.Last());
+  aLE1=CPnts_AbscissaPoint::Length(aGAC, aT1, aT2);
+  //
+  const Handle(Geom_Curve)& aC2=BRep_Tool::Curve  (myEdge2,  aT1, aT2);
+  aT1=myRange2.First();
+  aT2=myRange2.Last();
+  aGAC.Load(aC2, aT1, aT2);
+  aLE2=CPnts_AbscissaPoint::Length(aGAC, aT1, aT2);
+  //
+  myOrder=Standard_False;
   if (aLE1 <= aLE2) {
     myCFrom.Initialize(myEdge1);
     myCTo  .Initialize(myEdge2);
@@ -425,82 +430,24 @@
     myTmaxFrom=myRange2.Last ();
     myTminTo  =myRange1.First();
     myTmaxTo  =myRange1.Last ();
-
+    //
     myOrder=Standard_True; // revesed order
   }
   //
   // 2.Prepare myCriteria
-  GeomAbs_CurveType aCT1, aCT2;
   aCT1=myCFrom.GetType();
-  aCT2=myCTo.GetType()  ;
-  
-  Standard_Real aTol1, aTol2;
-  aTol1=(aCT1==GeomAbs_BSplineCurve||
-	 aCT1==GeomAbs_BezierCurve) ? 1.20*myTol1 : myTol1;
-  
-  aTol2=(aCT2==GeomAbs_BSplineCurve||
-	 aCT2==GeomAbs_BezierCurve) ? 1.20*myTol2 : myTol2;
-  
+  aCT2=myCTo.GetType();
+  //
+  aTol1=myTol1;
+  if(aCT1==GeomAbs_BSplineCurve|| aCT1==GeomAbs_BezierCurve){
+    aTol1=1.2*myTol1;
+  }
+  aTol2=myTol2;
+  if(aCT2==GeomAbs_BSplineCurve|| aCT2==GeomAbs_BezierCurve){
+    aTol2=1.2*myTol2;
+  }
   myCriteria=aTol1+aTol2;
 }
-
-//=======================================================================
-//function : FindProjectableRoot
-//purpose  : 
-//=======================================================================
-  void IntTools_EdgeEdge::FindProjectableRoot (const Standard_Real tt1,
-					       const Standard_Real tt2,
-					       const Standard_Integer ff1,
-					       const Standard_Integer ff2,
-					       Standard_Real& tRoot)
-{
-  Standard_Real tm, t1, t2;
-  Standard_Integer anIsProj1, anIsProj2, anIsProjm;
-  //
-  // Root can be on the ends of [tt1, tt2]
-  Standard_Integer anOldErrorStatus=myErrorStatus;
-
-  t1=DistanceFunction(tt1);
-  myErrorStatus=anOldErrorStatus;
-  if (fabs(t1)<myCriteria) {
-    tRoot=tt1;
-    return;
-  }
-
-  t1=DistanceFunction(tt2);
-  myErrorStatus=anOldErrorStatus;
-  if (fabs(t1)<myCriteria) {
-    tRoot=tt2;
-    return;
-  }
-  
-  
-  //
-  // Root is inside [tt1, tt2]
-  t1=tt1;  
-  t2=tt2;
-  anIsProj1=ff1;
-  anIsProj2=ff2;
-  
-  while (1) {
-    if (fabs(t1-t2) < myEpsT) {
-      tRoot=.5*(t1+t2);
-      return;
-    }
-    tm=.5*(t1+t2);
-    anIsProjm=IsProjectable(tm);
-    
-    if (anIsProjm != anIsProj1) {
-      t2=tm;
-      anIsProj2=anIsProjm;
-    }
-    else {
-      t1=tm;
-      anIsProj1=anIsProjm;
-    }
-  }
-}
-
 //=======================================================================
 //function : IsProjectable
 //purpose  : 
@@ -620,47 +567,7 @@
   return aD2; 
 }
 
-//=======================================================================
-//function : FindGoldRoot
-//purpose  : [private]
-//=======================================================================
-  Standard_Real IntTools_EdgeEdge::FindGoldRoot (const Standard_Real tA,
-						 const Standard_Real tB,
-						 const Standard_Real coeff)
-{
-  Standard_Real gs=0.61803399;
-  Standard_Real a, b, xp, xl, yp, yl;
 
-  a=tA;  b=tB;
-  
-  xp=a+(b-a)*gs;
-  xl=b-(b-a)*gs;
-  yp=coeff*DistanceFunction(xp);
-  yl=coeff*DistanceFunction(xl);
-  
- 
-  while (1) {
-    
-    if (fabs(b-a) < myEpsT) {
-      return .5*(b+a);
-    }
-    
-    if (yp < yl) {
-      a=xl;
-      xl=xp;
-      xp=a+(b-a)*gs;
-      yp=coeff*DistanceFunction(xp);
-    }
-    
-    else {
-      b=xp;
-      xp=xl;
-      yp=yl;
-      xl=b-(b-a)*gs;
-      yl=coeff*DistanceFunction(xl);
-    }
-  }
-}  
 //=======================================================================
 //function : FindSimpleRoot
 //purpose  : [private]
@@ -1323,12 +1230,7 @@
 //      on myCTo
 //   
 
-#include <Precision.hxx>
-#include <Geom_Curve.hxx>
-#include <GeomAdaptor_Curve.hxx>
-#include <BRep_Tool.hxx>
-#include <Extrema_ExtCC.hxx>
-#include <ElCLib.hxx>
+
 //=======================================================================
 //function : CheckTouchVertex 
 //purpose  : line/Circle refinement
@@ -1586,60 +1488,6 @@
 
   return theflag;
 }
-//=======================================================================
-//function :  CheckInterval
-//purpose  : 
-//=======================================================================
-  Standard_Boolean IntTools_EdgeEdge::CheckInterval(const Standard_Real aT1,
-						    const Standard_Real aT2)
-{
-  Standard_Boolean bFlag=Standard_False;
-  Standard_Integer i, aNb=4;
-  Standard_Real aT, dT, aDist;
-  
-  dT=(aT2-aT1)/aNb;
-  
-  for (i=1; i<aNb; ++i) {
-    aT=aT1+i*dT;
-    aDist=DistanceFunction(aT);
-    if (aDist>myEpsNull) {
-      return bFlag;
-    }
-  }
-  return !bFlag;
-}
-
-//=======================================================================
-//function : RemoveIdenticalRoots 
-//purpose  : 
-//=======================================================================
-  void IntTools_EdgeEdge::RemoveIdenticalRoots()
-{
-  Standard_Integer aNbRoots, j, k;
-
-  aNbRoots=mySequenceOfRoots.Length();
-  for (j=1; j<=aNbRoots; j++) { 
-    const IntTools_Root& aRj=mySequenceOfRoots(j);
-    for (k=j+1; k<=aNbRoots; k++) {
-      const IntTools_Root& aRk=mySequenceOfRoots(k);
-      
-      Standard_Real aTj, aTk, aDistance;
-      gp_Pnt aPj, aPk;
-
-      aTj=aRj.Root();
-      aTk=aRk.Root();
-
-      myCFrom.D0(aTj, aPj);
-      myCFrom.D0(aTk, aPk);
-
-      aDistance=aPj.Distance(aPk);
-      if (aDistance < myCriteria) {
-	mySequenceOfRoots.Remove(k);
-	aNbRoots=mySequenceOfRoots.Length();
-      }
-    }
-  }
-}
 
 //=======================================================================
 //function : ComputeLineLine 
@@ -1733,7 +1581,6 @@
     return;
   }
   //
-  //modified by NIZNHY-PKV Tue Mar 29 08:29:14 2011f
   {
     TopoDS_Iterator aIt1, aIt2;
     //
@@ -1750,7 +1597,6 @@
       }
     }
   }
-  //modified by NIZNHY-PKV Tue Mar 29 08:29:16 2011t
   //
   Standard_Real aSin2 = 1. - aCos*aCos;
   gp_Pnt O1 = C1.Location();
@@ -1786,137 +1632,313 @@
   mySeqOfCommonPrts.Append(aCommonPrt);
   
 }
-/*
+//modified by NIZNHY-PKV Mon Dec 26 13:44:53 2011f
+static
+  Standard_Boolean IsSameReal(const Standard_Real aR1, 
+			      const Standard_Real aR2);
+static 
+  Standard_Boolean IsSameXYZ(const gp_XYZ& aXYZ1, const gp_XYZ& aXYZ2);
+static
+  Standard_Boolean IsSameDir(const gp_Dir& aDir1, const gp_Dir& aDir2);
+static
+  Standard_Boolean IsSamePnt(const gp_Pnt& aP1, const gp_Pnt& aP2);
+static
+  Standard_Boolean IsSameAx1(const gp_Ax1& aAx1, const gp_Ax1& aAx2);
+static
+  Standard_Boolean IsSameAx2(const gp_Ax2& aAx21, const gp_Ax2& aAx22);
+static
+  Standard_Boolean IsSameElips(const gp_Elips& aElips1, 
+			       const gp_Elips& aElips2);
+static
+  Standard_Boolean IsSameBSplineCurve(const BRepAdaptor_Curve& myCFrom,
+				      const BRepAdaptor_Curve& myCTo);
+
 //=======================================================================
-//function : CheckTouchVertex 
+//function : IsSameCurves
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeEdge::CheckTouchVertex (const IntTools_CommonPrt& aCP,
-							Standard_Real& aTx1,
-							Standard_Real& aTx2) const
+Standard_Boolean IntTools_EdgeEdge::IsSameCurves()
 {
-  Standard_Real aTF1, aTL1, aTF2, aTL2, Tol, af, al, aDist, aDistNew;
-  Standard_Real aTFR1, aTLR1, aTFR2, aTLR2;
-  Standard_Boolean theflag=Standard_False;
-  Standard_Integer iNb, aNbExt, i;
-
-  aCP.Range1(aTFR1, aTLR1);
-  (aCP.Ranges2())(1).Range(aTFR2, aTLR2);
-  
-  Tol = Precision::PConfusion();
-  
-  GeomAbs_CurveType aTFrom, aTTo;
-
-  aTFrom=myCFrom.GetType();
-  aTTo  =myCTo.GetType();
-  gp_Circ aCirc;
-  gp_Lin  aLine;
-
-  if (aTFrom==GeomAbs_Circle) {
-    aCirc=myCFrom.Circle();
-    aLine=myCTo.Line();
+  Standard_Boolean bRet;
+  GeomAbs_CurveType aCTFrom, aCTTo;
+  //
+  aCTFrom=myCFrom.GetType();
+  aCTTo  =myCTo.GetType();
+  //
+  bRet=(aCTFrom==aCTTo);
+  if (!bRet) {
+    return bRet;
   }
-  else {
-    aCirc=myCTo.Circle();
-    aLine=myCFrom.Line();
-  }
-  
-  Standard_Real aRadius;
-  gp_Pnt aPCenter;
-  aPCenter=aCirc.Location();
-  aRadius =aCirc.Radius();
-  
-  aDist=aLine.Distance(aPCenter);
-  aDist=fabs (aDist-aRadius);
-  if (aDist > Tol) {
-    return theflag;
+  // 
+  bRet=IsSameReal(myTminFrom, myTminTo);
+  if (!bRet) {
+    return bRet;
   }
   //
-  aTF1=myTminFrom;
-  aTL1=myTmaxFrom;
-  aTF2=myTminTo;
-  aTL2=myTmaxTo;
-
-  const Handle(Geom_Curve)&  Curve1   =BRep_Tool::Curve  (myCFrom.Edge(), af, al);
-  const Handle(Geom_Curve)&  Curve2   =BRep_Tool::Curve  (myCTo.Edge()  , af, al);
-  
-  GeomAdaptor_Curve   TheCurve1   (Curve1, aTF1, aTL1);
-  GeomAdaptor_Curve   TheCurve2   (Curve2, aTF2, aTL2);
-				 
-  Extrema_ExtCC anExtrema (TheCurve1, 
-			   TheCurve2, 
-			   aTF1-Tol, 
-			   aTL1+Tol, 
-			   aTF2-Tol, 
-			   aTL2+Tol, 
-			   Tol, Tol);
-  
-  if(!anExtrema.IsDone()) {
-    return theflag;
-  }
-  if (anExtrema.IsParallel()) {
-    return theflag;
-  }
-  
-  aNbExt=anExtrema.NbExt() ;
-  if (!aNbExt) {
-     return theflag;
+  bRet=IsSameReal(myTmaxFrom, myTmaxTo);
+  if (!bRet) {
+    return bRet;
   }
   //
-  iNb=0;
-  Standard_Real aTx1Av=0., aTx2Av=0.;
+  bRet=!bRet; // false
+  //
+  if (aCTTo==GeomAbs_Ellipse) {
+    gp_Elips aC1, aC2;
+    //
+    aC1=myCFrom.Ellipse();
+    aC2=myCTo.Ellipse();
+    //
+    bRet=IsSameElips(aC1, aC2);
+    //
+    return bRet;
+  } //if (aCTTo==GeomAbs_Ellipse) {
+  //
+  else if (aCTTo==GeomAbs_BSplineCurve) {
+    bRet=IsSameBSplineCurve(myCFrom, myCTo);
+    if(!bRet) {
+      return bRet;
+    }
+  }// if (aCTTo==GeomAbs_BSplineCurve) {
+  return bRet;
+}
+//=======================================================================
+//function : IsSameBSplineCurve
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameBSplineCurve(const BRepAdaptor_Curve& myCFrom,
+				    const BRepAdaptor_Curve& myCTo)
+{
+  Standard_Boolean bRet, bIsRational, bIsPreiodic;
+  Standard_Integer iNbPoles, iNbKnots, iDegree;
+  //
+  bIsRational=myCFrom.IsRational();
+  bRet=(bIsRational==myCTo.IsRational());
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  iNbPoles=myCFrom.NbPoles();
+  bRet=(iNbPoles==myCTo.NbPoles());
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  iNbKnots=myCFrom.NbKnots();
+  bRet=(iNbKnots==myCTo.NbKnots());
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  iDegree=myCFrom.Degree();
+  bRet=(iDegree==myCTo.Degree());
+  if (!bRet) {
+    return bRet;
+  } 
+  //
+  bIsPreiodic=myCFrom.IsPeriodic();
+  bRet=(bIsPreiodic==myCTo.IsPeriodic());
+  if (!bRet) {
+    return bRet;
+  }
+  //-------------------------------------------
+  Standard_Integer i, j, aM[2];
+  Standard_Real aT1[2], aT2[2], aX0[4], aX1[4];
+  gp_Pnt aP;
+  Handle(Geom_Curve) aC;
+  Handle(Geom_BSplineCurve) aBSp[2];
+  TopoDS_Edge aE[2];
+  //
+  aE[0]=myCFrom.Edge();
+  aE[1]=myCTo.Edge();
+  //
+  aC=BRep_Tool::Curve (aE[0], aT1[0], aT2[0]);
+  aBSp[0]=Handle(Geom_BSplineCurve)::DownCast(aC);
+  //
+  aC=BRep_Tool::Curve (aE[1], aT1[1], aT2[1]);
+  aBSp[1]=Handle(Geom_BSplineCurve)::DownCast(aC);
+  //
+  bRet=IsSameReal(aT1[0], aT1[1]);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  bRet=IsSameReal(aT2[0], aT2[1]);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  // Poles / Weights
+  for(i=1; i<=iNbPoles; ++i) {
+    aP=aBSp[0]->Pole(i);
+    aP.Coord(aX0[0], aX0[1], aX0[2]);
+    aX0[3]=aBSp[0]->Weight(i);
+    //
+    aP=aBSp[1]->Pole(i);
+    aP.Coord(aX1[0], aX1[1], aX1[2]);
+    aX1[3]=aBSp[1]->Weight(i);
+    //
+    for (j=0; j<4; ++j) {
+      bRet=IsSameReal(aX0[j], aX1[j]);
+      if(!bRet) {
+	return bRet;
+      }
+    }
+  }//for(i=1; i<iNbPoles; ++i) {
+  //
+  // Knots / Multiplicities
+  for(i=1; i<=iNbKnots; ++i) {
+    aX0[0]=aBSp[0]->Knot(i);
+    aX0[1]=aBSp[1]->Knot(i);
+    bRet=IsSameReal(aX0[0], aX0[1]);
+    if(!bRet) {
+      return bRet;
+    }
+    //
+    aM[0]=aBSp[0]->Multiplicity(i);
+    aM[1]=aBSp[1]->Multiplicity(i);
+    bRet=(aM[0]==aM[1]);
+    if(!bRet) {
+      return bRet;
+    }
+  }// for(i=1; i<=iNbKnots; ++i) {
+  return bRet;
+}
+//=======================================================================
+//function : IsSameElips
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameElips(const gp_Elips& aElips1, 
+			     const gp_Elips& aElips2)
+{
+  Standard_Boolean bRet;
+  Standard_Real aR1, aR2;
+  //
+  aR1=aElips1.MajorRadius();
+  aR2=aElips2.MajorRadius();
+  bRet=IsSameReal(aR1, aR2);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  aR1=aElips1.MinorRadius();
+  aR2=aElips2.MinorRadius();
+  bRet=IsSameReal(aR1, aR2);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  const gp_Ax2& aAx21=aElips1.Position();
+  const gp_Ax2& aAx22=aElips2.Position();
+  bRet=IsSameAx2(aAx21, aAx22);
+  return bRet;
+}
+//=======================================================================
+//function : IsSameAx2
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameAx2(const gp_Ax2& aAx21, const gp_Ax2& aAx22)
+{
+  Standard_Boolean bRet;
+  //
+  const gp_Ax1& aAx1=aAx21.Axis();
+  const gp_Ax1& aAx2=aAx22.Axis();
+  //
+  bRet=IsSameAx1(aAx1, aAx2);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  const gp_Dir& aDirX1=aAx21.XDirection();
+  const gp_Dir& aDirX2=aAx22.XDirection();
+  //
+  bRet=IsSameDir(aDirX1, aDirX2);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  //
+  const gp_Dir& aDirY1=aAx21.YDirection();
+  const gp_Dir& aDirY2=aAx22.YDirection();
+  //
+  bRet=IsSameDir(aDirY1, aDirY2);
+  //
+  return bRet;
+}
+//=======================================================================
+//function : IsSameAx1
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameAx1(const gp_Ax1& aAx1, const gp_Ax1& aAx2)
+{
+  Standard_Boolean bRet;
+  //
+  const gp_Pnt& aP1=aAx1.Location();
+  const gp_Pnt& aP2=aAx2.Location();
+  //
+  bRet=IsSamePnt(aP1, aP2);
+  if (!bRet) {
+    return bRet;
+  }
+  //
+  const gp_Dir& aDir1=aAx1.Direction();
+  const gp_Dir& aDir2=aAx2.Direction();
+  //
+  bRet=IsSameDir(aDir1, aDir2);
+  return bRet;
+}
+//=======================================================================
+//function : IsSamePnt
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSamePnt(const gp_Pnt& aP1, const gp_Pnt& aP2)
+{
+  const gp_XYZ& aXYZ1=aP1.XYZ();
+  const gp_XYZ& aXYZ2=aP2.XYZ();
+  return IsSameXYZ(aXYZ1, aXYZ2);
+}
+//=======================================================================
+//function : IsSameDir
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameDir(const gp_Dir& aDir1, const gp_Dir& aDir2)
+{
+  const gp_XYZ& aXYZ1=aDir1.XYZ();
+  const gp_XYZ& aXYZ2=aDir2.XYZ();
+  return IsSameXYZ(aXYZ1, aXYZ2);
+}
+//=======================================================================
+//function : IsSameXYZ
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameXYZ(const gp_XYZ& aXYZ1, const gp_XYZ& aXYZ2)
+{
+  Standard_Boolean bRet;
+  Standard_Integer i;
+  Standard_Real aX1[3], aX2[3];
   
-  gp_Pnt aPC1, aPC2;
-  
-  for (i=1; i<=aNbExt; ++i) {
-    Extrema_POnCurv aPOnC1, aPOnC2;
-    anExtrema.Points(i, aPOnC1, aPOnC2);
-    
-    aTx1=aPOnC1.Parameter();
-    aTx2=aPOnC2.Parameter();
-    if (fabs (aTx1-aTFR1) < 1.e-4 && fabs (aTx2-aTFR2) < 1.e-4) {
-      aTx1Av=aTx1Av+aTx1;
-      aTx2Av=aTx2Av+aTx2;
-      iNb++;
+  aXYZ1.Coord(aX1[0], aX1[1], aX1[2]);
+  aXYZ2.Coord(aX2[0], aX2[1], aX2[2]);
+  //
+  for (i=0; i<3; ++i) {
+    bRet=IsSameReal(aX1[i], aX2[i]);
+    if(!bRet) {
+      break;
     }
   }
-
-  if (!iNb) {
-    return theflag;
-  }
-
-  aTx1=aTx1Av/iNb;
-  aTx2=aTx2Av/iNb;
-  
-  Curve1->D0(aTx1, aPC1);
-  Curve2->D0(aTx2, aPC2);
-  //
-  aDistNew=aPC1.Distance(aPC2);
-  if (aDistNew > aDist) {
-    aTx1=0.5*(aTFR1+aTLR1);
-    aTx2=0.5*(aTFR2+aTLR2);
-    return !theflag;
-  }
-  //
-
-  aDist=aDistNew;
-  if (aDist > myCriteria) {
-    return theflag;
-  }
-  
-  if (fabs (aTx1-aTF1) < Tol) {
-    return !theflag;
-  }
-
-  if (fabs (aTx1-aTL1) < Tol) {
-    return !theflag;
-  }
-
-  if (aTx1 > (aTF1-Tol) && aTx1 < (aTL1+Tol) ) {
-    return !theflag;
-  }
-
-  return theflag;
+  return bRet;
 }
-
-*/
+//=======================================================================
+//function : IsSameReal
+//purpose  : 
+//=======================================================================
+Standard_Boolean IsSameReal(const Standard_Real aR1, 
+			    const Standard_Real aR2)
+{
+  Standard_Boolean bRet;
+  Standard_Real aEpsilon;
+  //
+  aEpsilon=Epsilon(aR1);
+  bRet=(fabs(aR1-aR2)<aEpsilon);
+  return bRet;
+}
+//modified by NIZNHY-PKV Mon Dec 26 13:44:55 2011t

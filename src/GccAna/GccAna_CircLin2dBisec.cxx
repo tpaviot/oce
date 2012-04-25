@@ -1,10 +1,26 @@
-// File:	GccAna_CircLin2dBisec.cxx
-// Created:	Fri Oct 11 08:19:14 1991
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1991-10-11
+// Created by: Remi GILET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   CREATION DE LA BISSECTICE ENTRE UN CERCLE ET UNE DROITE.             +
+//   CREATION of the BISSECTICE between a CIRCLE and a STRAIGHT LINE.             +
 //=========================================================================
 
 #include <GccAna_CircLin2dBisec.ixx>
@@ -29,11 +45,11 @@ GccAna_CircLin2dBisec::
 {
 
 //=========================================================================
-//  Initialisation des champs :                                           +
-//            - circle   (Le cercle.)                                     +
-//            - line     (la droite.)                                     +
-//            - NbrSol   (nombre de solution.)                            +
-//            - WellDone (Booleen indiquant le succes ou non de l algo.). +
+//  Initialization of fields :                                           +
+//            - circle                                       +
+//            - line     (straight line.)                                     +
+//            - NbrSol   (number of solution.)                            +
+//            - WellDone (Booleen showing success or failure of algorithm). +
 //=========================================================================
 
    NbrSol = 2;
@@ -41,15 +57,15 @@ GccAna_CircLin2dBisec::
  }
 
 //=========================================================================
-//  Traitement.                                                           +
-//  On recupere les coordonees des origines de la droite (xloc,yloc) et   +
-//  du cercle (xcencir, ycencir).                                         +
-//  On recupere aussi les coordonees dela direction de la droite (xdir,   +
-//  ydir) et le rayon du cercle R1.                                       +
-//  On regarde de quel cote de la droite se trouve le centre du cercle    +
-//  pour orienter la parabole (signe).                                    +
-//  On cree l axe de chacune des paraboles (axeparab1, axeparb2), puis    +
-//  les deux paraboles (biscirlin1, biscirlin1).                          +
+//  Processing.                                                           +
+//  Return coordinates of origins of the straight line (xloc,yloc) and the  +
+//  circle (xcencir, ycencir).                                         +
+//  Also return the coordinates of the direction of the straight line (xdir,   +
+//  ydir) and the radius of circle R1.                                       +
+//  Check at which side of the straight line is found the center of the circle    +
+//  to orientate the parabola (sign).                                    +
+//  Create axis of each parabola (axeparab1, axeparb2), then     +
+//  two parabolas (biscirlin1, biscirlin1).                          +
 //=========================================================================
 
 Handle(GccInt_Bisec) GccAna_CircLin2dBisec::

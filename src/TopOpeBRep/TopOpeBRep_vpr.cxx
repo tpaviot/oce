@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_FacesFiller_VPonR.cxx
-// Created:	Fri Aug  4 10:57:30 1995
-// Author:	Jean Yves LEBEY
-//		<jyl@meteox>
+// Created on: 1995-08-04
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -184,10 +200,6 @@ static void FUN_VPgeometryfound
   
   const TopOpeBRepDS_DataStructure& BDS = HDS->DS();
   if (BDS.HasShape(edge)) {
-#ifdef DEB
-    Standard_Integer iedge =
-#endif
-                BDS.Shape(edge);
     const TopOpeBRepDS_ListOfInterference& EPIL = BDS.ShapeInterferences(edge);
     TopOpeBRepDS_ListIteratorOfListOfInterference itEPIL(EPIL);
     EPIfound = FF.GetGeometry(itEPIL,VP,PVIndex,PVKind);
@@ -233,10 +245,6 @@ static void FUN_VPgeometryfound
     Standard_Real tolOOe = FUN_tool_maxtol(OOedge);
     Standard_Real OOtolp = Precision::Parametric(tolOOe);
     if (BDS.HasShape(OOedge)) {
-#ifdef DEB
-      Standard_Integer iooedge =
-#endif
-                    BDS.Shape(OOedge);
       const TopOpeBRepDS_ListOfInterference& OOEPIL = BDS.ShapeInterferences(OOedge);
       TopOpeBRepDS_ListIteratorOfListOfInterference OOitEPIL(OOEPIL);
       OOEPIfound = FF.GetGeometry(OOitEPIL,VP,PVIndex,PVKind);
@@ -412,9 +420,6 @@ Standard_EXPORT Standard_Boolean FUN_newtransEdge
   Standard_Boolean rest = inERL || isse;
   Standard_Boolean interf2d = EtgOOF && Lonrest && rest;
   Standard_Boolean interf3dtg = EtgOOF && rest && !interf2d; // xpu260898 :cto902D6,(e15,p3,f9)
-#ifdef DEB
-  Standard_Boolean interf3d = !interf2d && !interf3dtg;
-#endif
 
   Standard_Real factor = 1.e-2; 
   TopOpeBRepTool_makeTransition MKT; 
@@ -546,9 +551,6 @@ static void FUN_processCPI
  Standard_Integer& keptVPnbr)
 //-----------------------------------------------------------------------
 {    
-#ifdef DEB
-  Standard_Boolean CPIfound = !Ifound.IsNull();
-#endif
   Standard_Integer OOShapeIndex = (ShapeIndex == 1) ? 2 : 1;
 
   TopOpeBRepDS_Transition ttransLine = transLine;
@@ -990,13 +992,7 @@ void TopOpeBRep_FacesFiller::ProcessVPonR
     }
   }//myLineINL
 
-#ifdef DEB
-  Standard_Integer SEPI = (EPIfound) ? IEPI->Support() : 0;
-#endif
   TopOpeBRepDS_Kind SKEPI; if(EPIfound) SKEPI=IEPI->SupportType();
-#ifdef DEB
-  Standard_Integer SCPI = (CPIfound) ? ICPI->Support() : 0;
-#endif
   TopOpeBRepDS_Kind SKCPI; if(CPIfound) SKCPI=ICPI->SupportType();
 
   // Gfound = VP corresponds with an existing geometry of ShapeIndex

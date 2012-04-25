@@ -17,7 +17,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/HLRTopoBRep -I@top_srcdir@/src/HLRTopoBRep \
 -I@top_srcdir@/drv/HLRBRep -I@top_srcdir@/src/HLRBRep \
@@ -30,16 +30,16 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKHLR.la
 
-libTKHLR_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKMath/libTKMath.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
+libTKHLR_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKG2d/libTKG2d.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKTopAlgo/libTKTopAlgo.la
+
 
 libTKHLR_la_SOURCES = \
 @top_srcdir@/drv/Contap/Contap_Contour_0.cxx \
@@ -89,7 +89,6 @@ libTKHLR_la_SOURCES = \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_IntConicCurveOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_InterCSurf_0.cxx \
-@top_srcdir@/drv/HLRBRep/HLRBRep_InterferencePoly2dOfTheIntPCurvePCurveOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ListIteratorOfListOfBPnt2D_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ListIteratorOfListOfBPoint_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ListNodeOfListOfBPnt2D_0.cxx \
@@ -113,7 +112,6 @@ libTKHLR_la_SOURCES = \
 @top_srcdir@/drv/HLRBRep/HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_0.cxx \
-@top_srcdir@/drv/HLRBRep/HLRBRep_ThePolygon2dToolOfTheIntPCurvePCurveOfCInter_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ThePolygonOfInterCSurf_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ThePolygonToolOfInterCSurf_0.cxx \
 @top_srcdir@/drv/HLRBRep/HLRBRep_ThePolyhedronOfInterCSurf_0.cxx \

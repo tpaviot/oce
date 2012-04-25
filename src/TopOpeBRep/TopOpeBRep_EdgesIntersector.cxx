@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_EdgesIntersector.cxx
-// Created:	Fri Oct  7 14:16:31 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@bravox>
+// Created on: 1994-10-07
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef DRAW
 #include <TestTopOpeDraw_TTOT.hxx>
@@ -108,9 +124,6 @@ void TopOpeBRep_EdgesIntersector::SetFaces(const TopoDS_Shape& F1,const TopoDS_S
 //=======================================================================
 void TopOpeBRep_EdgesIntersector::SetFaces(const TopoDS_Shape& F1,const TopoDS_Shape& F2,const Bnd_Box& B1,const Bnd_Box& B2)
 {
-#ifdef DEB
-  Standard_Boolean memesfaces = F1.IsSame(F2);
-#endif
   Standard_Boolean computerestriction = Standard_False;
   
   Standard_Boolean so11 = Standard_True;
@@ -282,14 +295,7 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
 {
   mysp2d.Clear();
   myip2d = 1; mynp2d = 0;
-#ifdef DEB
-  TopAbs_Orientation E1ori =
-#endif
-               E1.Orientation();
-#ifdef DEB
-  TopAbs_Orientation E2ori =
-#endif
-               E2.Orientation();
+
   myEdge1 = TopoDS::Edge(E1);
   myEdge2 = TopoDS::Edge(E2);
   
@@ -374,13 +380,7 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
         Standard_Real toll =
 #endif
                    BRep_Tool::Tolerance(vl);
-#ifdef DEB
-	Standard_Real tol = Max (tolf,toll);
-#endif
 	Standard_Boolean onf = (df < tolf);
-#ifdef DEB
-        Standard_Boolean onl = (dl < toll);
-#endif
 	TopoDS_Vertex v1 = onf ? vf : vl;
 	TopTools_IndexedDataMapOfShapeListOfShape mapVE; TopExp::MapShapesAndAncestors(myFace1,TopAbs_VERTEX,TopAbs_EDGE,mapVE);
 	const TopTools_ListOfShape& Edsanc = mapVE.FindFromKey(v1);
@@ -559,7 +559,6 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       Standard_Boolean T1INT = (T1.Orientation(TopAbs_IN) == TopAbs_INTERNAL);
 #ifdef DEB
       Standard_Boolean T1EXT = (T1.Orientation(TopAbs_IN) == TopAbs_EXTERNAL);
-      Standard_Boolean INTEXT1 = T1INT || T1EXT;
 #endif
       if (T1INT && isvertex2 && !isvertex1) {
 	const TopoDS_Vertex& V2 = P2D.Vertex(2);	
@@ -656,15 +655,6 @@ Standard_Boolean TopOpeBRep_EdgesIntersector::ComputeSameDomain()
   Standard_Boolean rr = (Abs(r1-r2) < Precision::Confusion()); //xpu281098 (cto019D2) tolerance a revoir
   if (!rr) return SetSameDomain(Standard_False);
 
-#ifdef DEB
-  const gp_Ax22d& pos1 =
-#endif
-                         c1.Position();
-#ifdef DEB
-  const gp_Ax22d& pos2 =
-#endif
-                         c2.Position();
-
   const gp_Pnt2d& p1 = c1.Location();
   const gp_Pnt2d& p2 = c2.Location();
 
@@ -739,10 +729,6 @@ Standard_Boolean TopOpeBRep_EdgesIntersector::ReduceSegment(TopOpeBRep_Point2d& 
   
   Standard_Boolean pospsa = psa.IsPointOfSegment();
   TopOpeBRep_P2Dstatus stspsa = psa.Status();
-#ifdef DEB
-  const gp_Pnt& Ppsa =
-#endif
-                       psa.Value();
   Standard_Real tpsa1 = psa.Parameter(1);
   Standard_Real tpsa2 = psa.Parameter(2);
   const TopOpeBRepDS_Transition& Tpsa1 = psa.Transition(1);
@@ -750,10 +736,6 @@ Standard_Boolean TopOpeBRep_EdgesIntersector::ReduceSegment(TopOpeBRep_Point2d& 
   
   Standard_Boolean pospsb = psb.IsPointOfSegment();
   TopOpeBRep_P2Dstatus stspsb = psb.Status();
-#ifdef DEB
-  const gp_Pnt& Ppsb =
-#endif
-                       psb.Value();
   Standard_Real tpsb1 = psb.Parameter(1);
   Standard_Real tpsb2 = psb.Parameter(2);
   const TopOpeBRepDS_Transition& Tpsb1 = psb.Transition(1);
@@ -801,10 +783,7 @@ Standard_Boolean TopOpeBRep_EdgesIntersector::ReduceSegment(TopOpeBRep_Point2d& 
     psb.SetKeep(Standard_False);
     
     TopOpeBRepDS_Config cpsa = psa.EdgesConfig();
-#ifdef DEB
-    TopOpeBRepDS_Config cpsb =
-#endif
-                               psb.EdgesConfig();
+
     Pn.SetEdgesConfig(cpsa);
     
     Standard_Boolean isvpsa1 = psa.IsVertex(1);if (isvpsa1) Pn.SetVertex(1,psa.Vertex(1));

@@ -1,6 +1,0 @@
-+V CSLib:msentity:CSLib .
-+V CSLib:msentity:CSLib_Class2d .
-+V CSLib:msentity:CSLib_NormalPolyDef .
-+V CSLib:msentity:CSLib_DerivativeStatus .
-+V CSLib:msentity:CSLib_NormalStatus .
-- CSLib:admfile:CSLib_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/CSLib/CSLib_xcpp_fill.Out

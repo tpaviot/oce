@@ -1,7 +1,23 @@
-// File:	IntPatch_ALine.cxx
-// Created:	Mon Apr  6 11:17:45 1992
-// Author:	Jacques GOUSSARD
-// Copyright:	OPEN CASCADE 1992
+// Created on: 1992-04-06
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_ALine.ixx>
 
@@ -240,7 +256,7 @@ void IntPatch_ALine::ComputeVertexParameters(const Standard_Real Tol) {
   for(i=1; i<=nbvtx; i++) { 
     IntPatch_Point& VTX   = svtx.ChangeValue(i); 
     Standard_Real p=VTX.ParameterOnLine();
-    Standard_Real pmpimpi=p-PI-PI;
+    Standard_Real pmpimpi=p-M_PI-M_PI;
     if(pmpimpi >= ParamMinOnLine) { 
       gp_Pnt P1 = Value(pmpimpi);
       Standard_Real d1 = P1.Distance(VTX.Value());
@@ -250,7 +266,7 @@ void IntPatch_ALine::ComputeVertexParameters(const Standard_Real Tol) {
 	svtx.Append(OVTX);
       }
     }
-    pmpimpi=p+PI+PI;
+    pmpimpi=p+M_PI+M_PI;
     if(pmpimpi <= ParamMaxOnLine) { 
       gp_Pnt P1 = Value(pmpimpi);
       Standard_Real d1 = P1.Distance(VTX.Value());
@@ -488,11 +504,6 @@ void IntPatch_ALine::ComputeVertexParameters(const Standard_Real Tol) {
   nbvtx     = NbVertex();
   if(nbvtx>1) { 
     IntPatch_Point& VTX0   = svtx.ChangeValue(1);
-#ifdef DEB
-    //Standard_Real d;
-    IntPatch_Point& VTX1   = 
-#endif
-      svtx.ChangeValue(2);
     if(   (VTX0.IsOnDomS1() == Standard_False)
        && (VTX0.IsOnDomS2() == Standard_False)) { 
       svtx.Remove(1);
@@ -504,10 +515,6 @@ void IntPatch_ALine::ComputeVertexParameters(const Standard_Real Tol) {
   }
   if(nbvtx>1) { 
     IntPatch_Point& VTX0   = svtx.ChangeValue(nbvtx);
-#ifdef DEB
-    IntPatch_Point& VTX1   = 
-#endif
-      svtx.ChangeValue(nbvtx-1);
     if(   (VTX0.IsOnDomS1() == Standard_False)
        && (VTX0.IsOnDomS2() == Standard_False)) { 
       svtx.Remove(nbvtx);

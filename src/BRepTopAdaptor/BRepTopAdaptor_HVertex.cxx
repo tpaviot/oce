@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <BRepTopAdaptor_HVertex.ixx>
 
 #include <BRepAdaptor_HCurve2d.hxx>
@@ -18,7 +36,7 @@ BRepTopAdaptor_HVertex::BRepTopAdaptor_HVertex
 gp_Pnt2d BRepTopAdaptor_HVertex::Value ()
 {
 //  return myCurve->Value(Parameter(myCurve));
-  return gp_Pnt2d(RealFirst(),RealFirst()); // rien a faire
+  return gp_Pnt2d(RealFirst(),RealFirst()); // do nothing 
 }
 
 Standard_Real BRepTopAdaptor_HVertex::Parameter 
@@ -65,13 +83,13 @@ Standard_Real BRepTopAdaptor_HVertex::Resolution
 
   }
 
-  // a defaut de mieux on borne la resolution parametrique a 
-  // 10 million*la tolerance du point
+  // for lack of better options limit the parametric solution to 
+  // 10 million*tolerance of the point
 
   if(tv > 1.e7*mag) ResUV = 1.e7;
   else ResUV = tv/mag;
 
-  // Controle
+  // Control
   if (Or == TopAbs_REVERSED) pp = p+ResUV;
   else pp = p-ResUV;
 
@@ -85,7 +103,7 @@ Standard_Real BRepTopAdaptor_HVertex::Resolution
 
   Standard_Real Dist=P.Distance(P1);
   if ((Dist>1e-12) && ((Dist > 1.1*tv) || (Dist< 0.8*tv))) {
-  // Raffinement si possible
+  // Refine if possible
     Standard_Real Dist1;
     if (Or == TopAbs_REVERSED) pp = p+tv/Dist;
     else pp = p-tv/Dist;
@@ -98,7 +116,7 @@ Standard_Real BRepTopAdaptor_HVertex::Resolution
     DC.SetLinearForm(v2d.X(),DU,v2d.Y(),DV);
     Dist1 = P.Distance(P1);
     if (Abs(Dist1-tv) < Abs(Dist-tv)) {
-      // On prend le resultat d'interpolation
+      // Take the result of interpolation
       ResUV = tv/Dist;
       Dist = Dist1;
     }
@@ -115,7 +133,7 @@ Standard_Real BRepTopAdaptor_HVertex::Resolution
     S.D0(p2d.X(),p2d.Y(),P1);
     Dist1 = P.Distance(P1);
     if (Abs(Dist1-tv) < Abs(Dist-tv)) {
-      // On prend la nouvelle estimation
+      // Take the new estimation
       ResUV = tv/mag;
       Dist = Dist1;
     }        

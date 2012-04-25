@@ -15,7 +15,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/CDM -I@top_srcdir@/src/CDM \
 -I@top_srcdir@/drv/PCDM -I@top_srcdir@/src/PCDM \
@@ -26,9 +26,9 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKCDF.la
 
-libTKCDF_la_LIBADD = \
-../TKernel/libTKernel.la \
-$(STLPort_LIB) 
+libTKCDF_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKernel/libTKernel.la
+
 
 libTKCDF_la_SOURCES = \
 @top_srcdir@/drv/CDF/CDF_MetaDataDriverError_0.cxx \

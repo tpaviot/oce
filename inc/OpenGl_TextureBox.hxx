@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /*
 * Fonction
 * ~~~~~~~~
@@ -42,20 +59,8 @@
 #ifndef _OPENGL_TEXTUREBOX_H_
 #define _OPENGL_TEXTUREBOX_H_
 
-/*----------------------------------------------------------------------*/
-/*
-* Includes
-*/
-
-#include <OpenGl_tgl_all.hxx>
-
-#include <GL/gl.h>
-
-
-/*----------------------------------------------------------------------*/
-/*
-* Constantes
-*/
+#include <OpenGl_GlCore11.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 typedef int TextureID;
 #define TEXTUREBOX_ERROR ((TextureID)-1)
@@ -76,14 +81,9 @@ struct _TextureData
   GLfloat scalex,  scaley;
   GLfloat transx, transy;
   GLfloat angle;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef _TextureData TextureData;
-
-/*----------------------------------------------------------------------*/
-/*
-* Prototypes
-*/
 
 /* 
 * Gestion des textures
@@ -121,9 +121,9 @@ void SetTextureDecal(TextureID ID);
 void SetTextureClamp(TextureID ID);
 void SetTextureRepeat(TextureID ID);
 
-void SetModeObject(TextureID ID, GLfloat sparams[4], GLfloat tparams[4]);
+void SetModeObject(TextureID ID, const GLfloat sparams[4], const GLfloat tparams[4]);
 void SetModeSphere(TextureID ID);
-void SetModeEye(TextureID ID, GLfloat sparams[4], GLfloat tparams[4]);
+void SetModeEye(TextureID ID, const GLfloat sparams[4], const GLfloat tparams[4]);
 void SetModeManual(TextureID ID);
 
 void SetRenderNearest(TextureID ID);

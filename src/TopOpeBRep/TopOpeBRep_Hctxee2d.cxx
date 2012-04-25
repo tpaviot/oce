@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_Hctxee2d.cxx
-// Created:	Thu Oct 29 12:46:21 1998
-// Author:	Jean Yves LEBEY
-//		<jyl@langdox.paris1.matra-dtv.fr>
+// Created on: 1998-10-29
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_Hctxee2d.ixx>
 #include <TopOpeBRep_define.hxx>
@@ -113,13 +129,7 @@ void TopOpeBRep_Hctxee2d::SetEdges(const TopoDS_Edge& E1,const TopoDS_Edge& E2,
         Standard_Real toll =
 #endif
                    BRep_Tool::Tolerance(vl);
-#ifdef DEB
-	Standard_Real tol = Max (tolf,toll);
-#endif
 	Standard_Boolean onf = (df < tolf);
-#ifdef DEB
-        Standard_Boolean onl = (dl < toll);
-#endif
 	TopoDS_Vertex v1 = onf ? vf : vl;
 	TopTools_IndexedDataMapOfShapeListOfShape mapVE; TopExp::MapShapesAndAncestors(F1,TopAbs_VERTEX,TopAbs_EDGE,mapVE);
 	const TopTools_ListOfShape& Edsanc = mapVE.FindFromKey(v1);
@@ -161,11 +171,6 @@ void TopOpeBRep_Hctxee2d::SetEdges(const TopoDS_Edge& E1,const TopoDS_Edge& E2,
     }
   }
   
-#ifdef DEB
-  GeomAbs_CurveType myCurveType1 = myCurve1.GetType();
-  GeomAbs_CurveType myCurveType2 = myCurve2.GetType();
-#endif
-
 } // SetEdges
 
 //=======================================================================

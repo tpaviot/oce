@@ -1,4 +1,21 @@
-// File GccAna_Circ2d3Tan.cxx_4, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // cas de 2 cercles concentriques JCT 28/11/97
 
 #include <ElCLib.hxx>
@@ -21,7 +38,7 @@
 
 static Standard_Integer MaxSol = 20;
 //=========================================================================
-//   Creation d un cercle tangent a deux cercles et a un point.           +
+//   Creation of a circle tangent to two circles and a point.           +
 //=========================================================================
 
 GccAna_Circ2d3Tan::
@@ -31,7 +48,7 @@ GccAna_Circ2d3Tan::
 		      const Standard_Real         Tolerance  ):
 
 //=========================================================================
-//   Initialisation des champs.                                           +
+//   Initialization of fields.                                           +
 //=========================================================================
 
    cirsol(1,MaxSol)     ,
@@ -65,7 +82,7 @@ GccAna_Circ2d3Tan::
    }
 
 //=========================================================================
-//   Traitement.                                                          +
+//   Processing.                                                          +
 //=========================================================================
 
    gp_Circ2d C1(Qualified1.Qualified());
@@ -289,8 +306,8 @@ GccAna_Circ2d3Tan::
 		   else {
 		     TheSame2(NbrSol) = 0;
 		     gp_Dir2d dc(center2.XY()-Center.XY());
-		     // cas des cercles concentriques : 
-		     // le 2eme point de tangence est de l'autre cote du cercle solution
+		     // case of concentric circles : 
+		     // 2nd tangency point is at the other side of the circle solution
 		     Standard_Real alpha = 1.;
 		     if (center1.Distance(center2)<=Tolerance) alpha = -1;
 		     pnttg2sol(NbrSol)=gp_Pnt2d(Center.XY()+alpha*Radius(k1)*dc.XY());
@@ -318,7 +335,7 @@ GccAna_Circ2d3Tan::
      }
    }
 
-   // Debug grossier pour que le point soit sur les cercles solutions.
+   // Debug to create the point on the solution circles.
 
    Standard_Integer kk ;
    for ( kk = 1; kk <= NbrSol; kk++) {
@@ -329,8 +346,8 @@ GccAna_Circ2d3Tan::
      }
    }
 
-   // Debug grossier pour eliminer solution multiple.
-   // ca arrive dans le cas d intersection ligne hyperbole.
+   // Debug to eliminate multiple solution.
+   // this happens in case of intersection line hyperbola.
    Standard_Real Tol2 = Tol*Tol;
    for (kk = 1; kk <NbrSol; kk++) {
      gp_Pnt2d PK = cirsol(kk).Location();

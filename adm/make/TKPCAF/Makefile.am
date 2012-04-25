@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/PDataXtd -I@top_srcdir@/src/PDataXtd \
 -I@top_srcdir@/drv/PNaming -I@top_srcdir@/src/PNaming \
@@ -28,22 +28,22 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKPCAF.la
 
-libTKPCAF_la_LIBADD = \
+libTKPCAF_la_LIBADD = $(CSF_OPT_LIBS) \
+../PTKernel/libPTKernel.la \
+../TKBRep/libTKBRep.la \
+../TKMath/libTKMath.la \
 ../TKernel/libTKernel.la \
-../TKCAF/libTKCAF.la \
-../TKLCAF/libTKLCAF.la \
-../TKPLCAF/libTKPLCAF.la \
-../TKG3d/libTKG3d.la \
+../TKCDF/libTKCDF.la \
+../TKG2d/libTKG2d.la \
 ../TKV3d/libTKV3d.la \
 ../TKService/libTKService.la \
-../PTKernel/libPTKernel.la \
-../TKMath/libTKMath.la \
-../TKG2d/libTKG2d.la \
-../TKPShape/libTKPShape.la \
-../TKCDF/libTKCDF.la \
+../TKG3d/libTKG3d.la \
 ../TKV2d/libTKV2d.la \
-../TKBRep/libTKBRep.la \
-$(STLPort_LIB) 
+../TKPShape/libTKPShape.la \
+../TKCAF/libTKCAF.la \
+../TKLCAF/libTKLCAF.la \
+../TKPLCAF/libTKPLCAF.la
+
 
 libTKPCAF_la_SOURCES = \
 @top_srcdir@/drv/PNaming/PNaming_FieldOfHArray1OfNamedShape_0.cxx \

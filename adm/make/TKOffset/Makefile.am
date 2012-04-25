@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BRepOffsetAPI -I@top_srcdir@/src/BRepOffsetAPI \
 -I@top_srcdir@/drv/Draft -I@top_srcdir@/src/Draft \
@@ -24,21 +24,21 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKOffset.la
 
-libTKOffset_la_LIBADD = \
-../TKBool/libTKBool.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
-../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
+libTKOffset_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKFillet/libTKFillet.la \
+../TKBRep/libTKBRep.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKMath/libTKMath.la \
-../TKBO/libTKBO.la \
+../TKernel/libTKernel.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
-../TKBRep/libTKBRep.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKShHealing/libTKShHealing.la \
-../TKFillet/libTKFillet.la \
+../TKBO/libTKBO.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) 
+../TKBool/libTKBool.la
+
 
 libTKOffset_la_SOURCES = \
 @top_srcdir@/drv/BRepOffset/BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval_0.cxx \

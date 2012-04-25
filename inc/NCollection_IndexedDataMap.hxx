@@ -1,7 +1,22 @@
-// File:        NCollection_IndexedDataMap.hxx
-// Created:     Thu Apr 24 15:02:53 2002
-// Author:      Alexander KARTOMIN (akm)
-//              <akm@opencascade.com>
+// Created on: 2002-04-24
+// Created by: Alexander KARTOMIN (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_IndexedDataMap_HeaderFile
 #define NCollection_IndexedDataMap_HeaderFile
@@ -11,14 +26,11 @@
 #include <NCollection_TListNode.hxx>
 #include <Standard_TypeMismatch.hxx>
 #include <Standard_NoSuchObject.hxx>
+
+#include <NCollection_DefaultHasher.hxx>
+
 #if !defined No_Exception && !defined No_Standard_OutOfRange
 #include <Standard_OutOfRange.hxx>
-#endif
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
 #endif
 
 /**
@@ -39,7 +51,11 @@
  *              See  the  class   Map   from NCollection   for   a
  *              discussion about the number of buckets.
  */            
-template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap 
+
+template < class TheKeyType, 
+           class TheItemType, 
+           class Hasher = NCollection_DefaultHasher<TheKeyType> > 
+  class NCollection_IndexedDataMap 
   : public NCollection_BaseCollection<TheItemType>,
     public NCollection_BaseMap
 {
@@ -120,10 +136,6 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
 #endif
       return myMap->ChangeFromIndex(myIndex);
     }
-    //! Operator new for allocating iterators
-    void* operator new(size_t theSize,
-                       const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
     
   private:
     NCollection_IndexedDataMap * myMap;   //!< Pointer to the map being iterated
@@ -167,8 +179,8 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
     {
       TheKeyType aKey1 = theOther.FindKey(i);
       TheItemType anItem = theOther.FindFromIndex(i);
-      Standard_Integer iK1 = HashCode (aKey1, NbBuckets());
-      Standard_Integer iK2 = HashCode (i, NbBuckets());
+      Standard_Integer iK1 = Hasher::HashCode (aKey1, NbBuckets());
+      Standard_Integer iK2 = ::HashCode (i, NbBuckets());
       IndexedDataMapNode * pNode = 
         new (this->myAllocator) IndexedDataMapNode (aKey1, i, anItem,
                                               myData1[iK1], myData2[iK2]);
@@ -201,8 +213,8 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
             p = (IndexedDataMapNode *) myData1[i];
             while (p) 
             {
-              iK1 = HashCode (p->Key1(), newBuck);
-              iK2 = HashCode (p->Key2(), newBuck);
+              iK1 = Hasher::HashCode (p->Key1(), newBuck);
+              iK2 = ::HashCode (p->Key2(), newBuck);
               q = (IndexedDataMapNode*) p->Next();
               p->Next()  = ppNewData1[iK1];
               p->Next2() = ppNewData2[iK2];
@@ -225,17 +237,17 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
   {
     if (Resizable()) 
       ReSize(Extent());
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
+    Standard_Integer iK1 = Hasher::HashCode (theKey1, NbBuckets());
     IndexedDataMapNode * pNode;
     pNode = (IndexedDataMapNode *) myData1[iK1];
     while (pNode)
     {
-      if (IsEqual (pNode->Key1(), theKey1))
+      if (Hasher::IsEqual (pNode->Key1(), theKey1))
         return pNode->Key2();
       pNode = (IndexedDataMapNode *) pNode->Next();
     }
     Increment();
-    Standard_Integer iK2 = HashCode(Extent(),NbBuckets());
+    Standard_Integer iK2 = ::HashCode(Extent(),NbBuckets());
     pNode = new (this->myAllocator) IndexedDataMapNode (theKey1, Extent(), theItem,
                                                   myData1[iK1], myData2[iK2]);
     myData1[iK1] = pNode;
@@ -248,12 +260,12 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
+    Standard_Integer iK1 = Hasher::HashCode (theKey1, NbBuckets());
     IndexedDataMapNode * pNode1;
     pNode1 = (IndexedDataMapNode *) myData1[iK1];
     while (pNode1) 
     {
-      if (IsEqual(pNode1->Key1(), theKey1)) 
+      if (Hasher::IsEqual(pNode1->Key1(), theKey1)) 
         return Standard_True;
       pNode1 = (IndexedDataMapNode *) pNode1->Next();
     }
@@ -271,17 +283,17 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
 #endif
     IndexedDataMapNode * p;
     // check if theKey1 is not already in the map
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
+    Standard_Integer iK1 = Hasher::HashCode (theKey1, NbBuckets());
     p = (IndexedDataMapNode *) myData1[iK1];
     while (p) 
     {
-      if (IsEqual (p->Key1(), theKey1)) 
+      if (Hasher::IsEqual (p->Key1(), theKey1)) 
         Standard_DomainError::Raise("NCollection_IndexedDataMap::Substitute");
       p = (IndexedDataMapNode *) p->Next();
     }
 
     // Find the node for the index I
-    Standard_Integer iK2 = HashCode (theIndex, NbBuckets());
+    Standard_Integer iK2 = ::HashCode (theIndex, NbBuckets());
     p = (IndexedDataMapNode *) myData2[iK2];
     while (p) 
     {
@@ -291,7 +303,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
     }
     
     // remove the old key
-    Standard_Integer iK = HashCode (p->Key1(), NbBuckets());
+    Standard_Integer iK = Hasher::HashCode (p->Key1(), NbBuckets());
     IndexedDataMapNode * q = (IndexedDataMapNode *) myData1[iK];
     if (q == p)
       myData1[iK] = (IndexedDataMapNode *) p->Next();
@@ -318,7 +330,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
 #endif
     IndexedDataMapNode * p, * q;
     // Find the node for the last index and remove it
-    Standard_Integer iK2 = HashCode (Extent(), NbBuckets());
+    Standard_Integer iK2 = ::HashCode (Extent(), NbBuckets());
     p = (IndexedDataMapNode *) myData2[iK2];
     q = NULL;
     while (p) 
@@ -334,7 +346,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       q->Next2() = p->Next2();
     
     // remove the key
-    Standard_Integer iK1 = HashCode (p->Key1(), NbBuckets());
+    Standard_Integer iK1 = Hasher::HashCode (p->Key1(), NbBuckets());
     q = (IndexedDataMapNode *) myData1[iK1];
     if (q == p)
       myData1[iK1] = (IndexedDataMapNode *) p->Next();
@@ -357,7 +369,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       Standard_OutOfRange::Raise ("NCollection_IndexedDataMap::FindKey");
 #endif
     IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[HashCode(theKey2,NbBuckets())];
+      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
     while (pNode2)
     {
       if (pNode2->Key2() == theKey2)
@@ -376,7 +388,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       Standard_OutOfRange::Raise ("NCollection_IndexedDataMap::FindFromIndex");
 #endif
     IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[HashCode(theKey2,NbBuckets())];
+      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
     while (pNode2)
     {
       if (pNode2->Key2() == theKey2)
@@ -399,7 +411,7 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       Standard_OutOfRange::Raise("NCollection_IndexedDataMap::ChangeFromIndex");
 #endif
     IndexedDataMapNode * pNode2 =
-      (IndexedDataMapNode *) myData2[HashCode(theKey2,NbBuckets())];
+      (IndexedDataMapNode *) myData2[::HashCode(theKey2,NbBuckets())];
     while (pNode2)
     {
       if (pNode2->Key2() == theKey2)
@@ -419,10 +431,10 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
   {
     if (IsEmpty()) return 0;
     IndexedDataMapNode * pNode1 = 
-      (IndexedDataMapNode *) myData1[HashCode(theKey1,NbBuckets())];
+      (IndexedDataMapNode *) myData1[Hasher::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
-      if (IsEqual (pNode1->Key1(), theKey1)) 
+      if (Hasher::IsEqual (pNode1->Key1(), theKey1)) 
         return pNode1->Key2();
       pNode1 = (IndexedDataMapNode*) pNode1->Next();
     }
@@ -437,10 +449,10 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       Standard_NoSuchObject::Raise ("NCollection_IndexedDataMap::FindFromKey");
 #endif
     IndexedDataMapNode * pNode1 = 
-      (IndexedDataMapNode *) myData1[HashCode(theKey1,NbBuckets())];
+      (IndexedDataMapNode *) myData1[Hasher::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
-      if (IsEqual (pNode1->Key1(), theKey1)) 
+      if (Hasher::IsEqual (pNode1->Key1(), theKey1)) 
         return pNode1->Value();
       pNode1 = (IndexedDataMapNode*) pNode1->Next();
     }
@@ -456,10 +468,10 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
       Standard_NoSuchObject::Raise("NCollection_IndexedDataMap::ChangeFromKey");
 #endif
     IndexedDataMapNode * pNode1 = 
-      (IndexedDataMapNode *) myData1[HashCode(theKey1,NbBuckets())];
+      (IndexedDataMapNode *) myData1[Hasher::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
-      if (IsEqual (pNode1->Key1(), theKey1)) 
+      if (Hasher::IsEqual (pNode1->Key1(), theKey1)) 
         return pNode1->ChangeValue();
       pNode1 = (IndexedDataMapNode*) pNode1->Next();
     }
@@ -497,9 +509,5 @@ template <class TheKeyType, class TheItemType> class NCollection_IndexedDataMap
   { return *(new (this->IterAllocator()) Iterator(*this)); }
 
 };
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

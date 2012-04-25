@@ -1,3 +1,0 @@
-+ GccGeo:dbadmfile:GccGeo_xcpp_header.In GccGeo:admfile:GccGeo_xcpp_fill.Out
-+ GccGeo:dbadmfile:GccGeo_xcpp_header.Out GccGeo:admfile:GccGeo_xcpp_fill.Out
-+ GccGeo:dbadmfile:GccGeo_xcpp_header.Dep GccGeo:admfile:GccGeo_xcpp_fill.Out

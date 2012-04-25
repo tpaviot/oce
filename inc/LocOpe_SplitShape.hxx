@@ -75,6 +75,8 @@ public:
   Standard_EXPORT     void Add(const TopoDS_Vertex& V,const Standard_Real P,const TopoDS_Edge& E) ;
   //! Adds the wire <W> on the face <F>. <br>
   Standard_EXPORT     void Add(const TopoDS_Wire& W,const TopoDS_Face& F) ;
+  //! Adds the list of wires <Lwires> on the face <F>. <br>
+  Standard_EXPORT     void Add(const TopTools_ListOfShape& Lwires,const TopoDS_Face& F) ;
   //! Returns the "original" shape. <br>
        const TopoDS_Shape& Shape() const;
   //! Returns the list of descendant shapes of <S>. <br>

@@ -99,6 +99,10 @@ private:
   Standard_EXPORT     Standard_Integer DisplayPriority() const;
   
   Standard_EXPORT     void SetDisplayPriority(const Standard_Integer aNewPrior) ;
+  //! Set Z layer ID for the presentation <br>
+  Standard_EXPORT     void SetZLayer(const Standard_Integer theLayerId) ;
+  //! Get Z layer ID for the presentation <br>
+  Standard_EXPORT     Standard_Integer GetZLayer() const;
   
   Standard_EXPORT     void Highlight(const Standard_Integer anIndex) const;
   //! Allows the drawing on a plotter of the graphic object <br>

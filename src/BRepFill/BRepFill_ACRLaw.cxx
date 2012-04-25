@@ -1,7 +1,23 @@
-// File:	BRepFill_ACRLaw.cxx
-// Created:	Tue Sep 1 14:13:11 1998
-// Author:	Stephanie Humeau
-//		<shu@sun17>
+// Created on: 1998-09-01
+// Created by: Stephanie Humeau
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFill_ACRLaw.ixx>
@@ -27,12 +43,12 @@ BRepFill_ACRLaw::BRepFill_ACRLaw(const TopoDS_Wire& Path,
 {
   Init(Path);
 
-// calcul du nb d'edge du path
+// calculate the nb of edge of the path
   BRepTools_WireExplorer wexp;
   Standard_Integer NbEdge = 0; 
   for (wexp.Init(myPath); wexp.More(); wexp.Next()) NbEdge++;
 
-// tab pour memoriser les ACR pour chaque edge
+// tab to memorize ACR for each edge
   OrigParam = new (TColStd_HArray1OfReal)(0,NbEdge);
   TColStd_Array1OfReal Orig (0,NbEdge);
   BRepFill::ComputeACR(Path, Orig);
@@ -46,12 +62,12 @@ BRepFill_ACRLaw::BRepFill_ACRLaw(const TopoDS_Wire& Path,
   Handle(GeomAdaptor_HCurve) AC;
   Standard_Real First, Last;
 
-// on recupere les ACR des edges de la trajectoire
+// return ACR of edges of the trajectory
   OrigParam->SetValue(0,0); 
   for (ipath=1;ipath<=NbEdge;ipath++)
     OrigParam->SetValue(ipath, Orig(ipath));
 
-// on traite chaque edge de la trajectoire
+// process each edge of the trajectory
   for (ipath=0, wexp.Init(myPath); 
        wexp.More(); wexp.Next()) {
     E = wexp.Current();
@@ -64,14 +80,14 @@ BRepFill_ACRLaw::BRepFill_ACRLaw(const TopoDS_Wire& Path,
       if (Or == TopAbs_REVERSED) {
 	Handle(Geom_TrimmedCurve) CBis = 
 	  new (Geom_TrimmedCurve) (C, First, Last);
-	CBis->Reverse(); // Pour eviter de deteriorer la topologie
+	CBis->Reverse(); // To avoid damaging the topology
 	C = CBis;
         First =  C->FirstParameter();
 	Last  =  C->LastParameter();
       }
       AC = new  (GeomAdaptor_HCurve) (C, First, Last);
 
-      // on Set les parametres pour le cas multi-edges
+      // Set the parameters for the case multi-edges
       Standard_Real t1 = OrigParam->Value(ipath-1);
       Standard_Real t2 = OrigParam->Value(ipath);
       Handle(GeomFill_LocationGuide) Loc;

@@ -1,6 +1,0 @@
-+ RWHeaderSection:dbadmfile:RWHeaderSection_obj_inc.In RWHeaderSection:admfile:RWHeaderSection_src.Out
-+ * RWHeaderSection:admfile:RWHeaderSection_xcpp_src.Out
-+ RWHeaderSection:dbadmfile:RWHeaderSection_obj_inc.Out RWHeaderSection:admfile:RWHeaderSection_src.Out
-+ * RWHeaderSection:admfile:RWHeaderSection_xcpp_src.Out
-+ RWHeaderSection:dbadmfile:RWHeaderSection_obj_inc.Dep RWHeaderSection:admfile:RWHeaderSection_src.Out
-+ * RWHeaderSection:admfile:RWHeaderSection_xcpp_src.Out

@@ -1,5 +1,0 @@
-+M BRepCheck:pubinclude:BRepCheck_Result.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/BRepCheck_Result.lxx
-+M BRepCheck:pubinclude:BRepCheck_Analyzer.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/BRepCheck_Analyzer.lxx
-+M BRepCheck:dbadmfile:BRepCheck_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepCheck/.adm/BRepCheck_obj_inc.In
-+M BRepCheck:dbadmfile:BRepCheck_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepCheck/.adm/BRepCheck_obj_inc.Out
-+M BRepCheck:dbadmfile:BRepCheck_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BRepCheck/.adm/BRepCheck_obj_inc.Dep

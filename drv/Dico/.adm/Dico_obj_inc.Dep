@@ -1,9 +1,0 @@
-+ Dico:pubinclude:Dico_Dictionary.gxx Dico:source:Dico_Dictionary.gxx
-+ Dico:pubinclude:Dico_Iterator.gxx Dico:source:Dico_Iterator.gxx
-+ Dico:pubinclude:Dico_StackItem.gxx Dico:source:Dico_StackItem.gxx
-+ Dico:dbadmfile:Dico_obj_inc.In Dico:admfile:Dico_src.Out
-+ * Dico:admfile:Dico_xcpp_src.Out
-+ Dico:dbadmfile:Dico_obj_inc.Out Dico:admfile:Dico_src.Out
-+ * Dico:admfile:Dico_xcpp_src.Out
-+ Dico:dbadmfile:Dico_obj_inc.Dep Dico:admfile:Dico_src.Out
-+ * Dico:admfile:Dico_xcpp_src.Out

@@ -1,7 +1,23 @@
-// File:	LocOpe_FindEdges.cxx
-// Created:	Thu Feb 15 09:43:04 1996
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1996-02-15
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <LocOpe_FindEdges.ixx>
@@ -116,21 +132,21 @@ void LocOpe_FindEdges::Set(const TopoDS_Shape& FFrom,
 	  Standard_Real prm1 = ElCLib::Parameter(cit,p1);
 	  Standard_Real Tol2d = Precision::PConfusion();
 	  if (Abs(prm1-ft) <= Tol2d) prm1 = ft;
-	  prm1 = ElCLib::InPeriod(prm1,ft,ft+2.*PI);
+	  prm1 = ElCLib::InPeriod(prm1,ft,ft+2.*M_PI);
 	  ElCLib::D1(prm1,cit,p1,tgt);
 
 	  Standard_Real prm2 = ElCLib::Parameter(cit,p2);
 	  if (tgt.Dot(tgf) > 0.) { // meme sens
 	    while (prm2 <= prm1) {
-	      prm2 += 2.*PI;
+	      prm2 += 2.*M_PI;
 	    }
 	  }
 	  else {
 	    if (Abs(prm1-ft) <= Precision::Angular()) {
-	      prm1 += 2.*PI;
+	      prm1 += 2.*M_PI;
 	    }
 	    while (prm2 >= prm1) {
-	      prm2 -= 2.*PI;
+	      prm2 -= 2.*M_PI;
 	    }
 	  }
 
@@ -168,21 +184,21 @@ void LocOpe_FindEdges::Set(const TopoDS_Shape& FFrom,
 	  p2 = ElCLib::Value(lf,cif);
 
 	  Standard_Real prm1 = ElCLib::Parameter(cit,p1);
-	  prm1 = ElCLib::InPeriod(prm1,ft,ft+2.*PI);
+	  prm1 = ElCLib::InPeriod(prm1,ft,ft+2.*M_PI);
 	  ElCLib::D1(prm1,cit,p1,tgt);
 
 	  Standard_Real prm2 = ElCLib::Parameter(cit,p2);
 	  if (tgt.Dot(tgf) > 0.) { // meme sens
 	    while (prm2 <= prm1) {
-	      prm2 += 2.*PI;
+	      prm2 += 2.*M_PI;
 	    }
 	  }
 	  else {
 	    if (Abs(prm1-ft) <= Precision::Angular()) {
-	      prm1 += 2.*PI;
+	      prm1 += 2.*M_PI;
 	    }
 	    while (prm2 >= prm1) {
-	      prm2 -= 2.*PI;
+	      prm2 -= 2.*M_PI;
 	    }
 	  }
 

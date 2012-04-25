@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/XmlLDrivers -I@top_srcdir@/src/XmlLDrivers \
 -I@top_srcdir@/drv/XmlMDF -I@top_srcdir@/src/XmlMDF \
@@ -28,12 +28,12 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXmlL.la
 
-libTKXmlL_la_LIBADD = \
+libTKXmlL_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKCDF/libTKCDF.la \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
-../TKLCAF/libTKLCAF.la \
-../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKLCAF/libTKLCAF.la
+
 
 libTKXmlL_la_SOURCES = \
 @top_srcdir@/drv/XmlLDrivers/XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef_0.cxx \

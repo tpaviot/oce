@@ -1,6 +1,0 @@
-+ GeomliteTest:dbadmfile:GeomliteTest_obj_inc.In GeomliteTest:admfile:GeomliteTest_src.Out
-+ * GeomliteTest:admfile:GeomliteTest_xcpp_src.Out
-+ GeomliteTest:dbadmfile:GeomliteTest_obj_inc.Out GeomliteTest:admfile:GeomliteTest_src.Out
-+ * GeomliteTest:admfile:GeomliteTest_xcpp_src.Out
-+ GeomliteTest:dbadmfile:GeomliteTest_obj_inc.Dep GeomliteTest:admfile:GeomliteTest_src.Out
-+ * GeomliteTest:admfile:GeomliteTest_xcpp_src.Out

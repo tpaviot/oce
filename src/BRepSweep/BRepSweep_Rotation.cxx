@@ -1,7 +1,23 @@
-// File:	BRepSweep_Rotation.cxx
-// Created:	Mon Feb 15 17:48:39 1993
-// Author:	Laurent BOURESCHE
-//		<lbo@phylox>
+// Created on: 1993-02-15
+// Created by: Laurent BOURESCHE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BRepSweep_Rotation.ixx>
 #include <BRepTools_Quilt.hxx>
@@ -139,7 +155,7 @@ TopoDS_Shape  BRepSweep_Rotation::MakeEmptyVertex
   (const TopoDS_Shape& aGenV, 
    const Sweep_NumShape& aDirV)
 {
-  //appele uniquement en mode de construction avec copie.
+  //call only in construction mode with copy.
   Standard_ConstructionError_Raise_if
     (!myCopy,"BRepSweep_Translation::MakeEmptyVertex");
   gp_Pnt P = BRep_Tool::Pnt(TopoDS::Vertex(aGenV));
@@ -176,8 +192,8 @@ TopoDS_Shape  BRepSweep_Rotation::MakeEmptyDirectingEdge
   O.Translate(V.Dot(gp_Vec(O,P)) * V);
   if (O.IsEqual(P,Precision::Confusion())) {
     // make a degenerated edge
-    // temporairement on fout une courbe 3d nulle pour que les 
-    // parametres soient enregistres.
+    // temporary make 3D curve null so that 
+    // parameters should be registered.
     // myBuilder.Builder().MakeEdge(E);
     gp_Ax2 Axis(O,Dirz);
     Handle(Geom_Circle) GC = new Geom_Circle(Axis,0.);
@@ -211,8 +227,7 @@ TopoDS_Shape  BRepSweep_Rotation::MakeEmptyGeneratingEdge
   (const TopoDS_Shape& aGenE, 
    const Sweep_NumShape& aDirV)
 {
-  //appele dans le cas de construction avec copie, ou exceptionnellement
-  //lorsque le meridien touche myaxe.
+  //call in case of construction with copy, or only when meridian touches myaxe.
   Standard_Real First,Last;
   TopLoc_Location Loc;
   Handle(Geom_Curve) C = Handle(Geom_Curve)::DownCast
@@ -243,8 +258,7 @@ void  BRepSweep_Rotation::SetParameters
    const TopoDS_Shape& aGenV, 
    const Sweep_NumShape&)
 {
-  //Colle le parametre des vertex directement inclus dans les faces
-  //bouchons.
+  //Glue the parameter of vertices directly included in cap faces.
   gp_Pnt2d pnt2d = BRep_Tool::Parameters(TopoDS::Vertex(aGenV),
 					 TopoDS::Face(aGenF));
   myBuilder.Builder().UpdateVertex
@@ -402,8 +416,8 @@ void  BRepSweep_Rotation::SetPCurve
    const Sweep_NumShape&,
    const TopAbs_Orientation orien)
 {
-  //Met sur edges des faces bouchons des pcurves identiques a celles 
-  //des edges de la face generatrice.
+  //Set on edges of cap faces the same pcurves as 
+  //on edges of the generator face.
   Standard_Real First,Last;
   SetThePCurve(myBuilder.Builder(),
 	       TopoDS::Edge(aNewEdge),
@@ -456,7 +470,7 @@ void  BRepSweep_Rotation::SetGeneratingPCurve
     Standard_Real U = BC.FirstParameter();
     point = BC.Value(U);
     if (point.Distance(tor.Location()) < Precision::Confusion()) {
-      v = PI;
+      v = M_PI;
 //  modified by NIZHNY-EAP Wed Mar  1 17:49:29 2000 ___BEGIN___
       u = 0.;
     }
@@ -465,15 +479,15 @@ void  BRepSweep_Rotation::SetGeneratingPCurve
 			      tor.MinorRadius(),point,u,v);
     }
 //    u = 0.;
-    v = ElCLib::InPeriod(v,0.,2*PI);
-    if((2*PI - v) <= Precision::PConfusion()) v -= 2*PI;
+    v = ElCLib::InPeriod(v,0.,2*M_PI);
+    if((2*M_PI - v) <= Precision::PConfusion()) v -= 2*M_PI;
     if (aDirV.Index() == 2) {
       Standard_Real uLeft = u-myAng;
-      ElCLib::AdjustPeriodic(-PI,PI,Precision::PConfusion(),uLeft,u);
+      ElCLib::AdjustPeriodic(-M_PI,M_PI,Precision::PConfusion(),uLeft,u);
     }
     else {
       Standard_Real uRight = u+myAng;
-      ElCLib::AdjustPeriodic(-PI,PI,Precision::PConfusion(),u,uRight);
+      ElCLib::AdjustPeriodic(-M_PI,M_PI,Precision::PConfusion(),u,uRight);
     }
 //  modified by NIZHNY-EAP Wed Mar  1 17:49:32 2000 ___END___
     pnt2d.SetCoord(u,v-U);
@@ -577,7 +591,7 @@ void  BRepSweep_Rotation::SetDirectingPCurve
       BRepAdaptor_Curve BC(TopoDS::Edge(aGenE));
       p1 = BC.Value(BC.FirstParameter());
       if (p1.Distance(tor.Location()) < Precision::Confusion()){
-	v1 = PI;
+	v1 = M_PI;
 //  modified by NIZHNY-EAP Thu Mar  2 09:43:26 2000 ___BEGIN___
 	u1 = 0.;
 //  modified by NIZHNY-EAP Thu Mar  2 15:28:59 2000 ___END___
@@ -588,16 +602,16 @@ void  BRepSweep_Rotation::SetDirectingPCurve
       }
       p2 = BC.Value(BC.LastParameter());
       if (p2.Distance(tor.Location()) < Precision::Confusion()){
-	v2 = PI;
+	v2 = M_PI;
       }
       else {
 	ElSLib::TorusParameters(tor.Position(),tor.MajorRadius(),
 				tor.MinorRadius(),p2,u2,v2);
       }
-      ElCLib::AdjustPeriodic(0.,2*PI,Precision::PConfusion(),v1,v2);
+      ElCLib::AdjustPeriodic(0.,2*M_PI,Precision::PConfusion(),v1,v2);
 //  modified by NIZHNY-EAP Thu Mar  2 15:29:04 2000 ___BEGIN___
       u2 = u1 + myAng;
-      ElCLib::AdjustPeriodic(-PI,PI,Precision::PConfusion(),u1,u2);
+      ElCLib::AdjustPeriodic(-M_PI,M_PI,Precision::PConfusion(),u1,u2);
       if (aGenV.Orientation()==TopAbs_FORWARD){
 	p22d.SetCoord(u1,v1);
       }
@@ -749,7 +763,7 @@ Standard_Boolean BRepSweep_Rotation::GDDShapeIsToAdd
        aGenS.ShapeType() == TopAbs_FACE &&
        aDirS.Type() == TopAbs_EDGE &&
        aSubDirS.Type() == TopAbs_VERTEX ){
-    return ( Abs(myAng - 2 * PI) > Precision::Angular() );
+    return ( Abs(myAng - 2 * M_PI) > Precision::Angular() );
   }
   else if ( aNewShape.ShapeType() == TopAbs_FACE &&
        aNewSubShape.ShapeType() == TopAbs_EDGE &&
@@ -759,7 +773,7 @@ Standard_Boolean BRepSweep_Rotation::GDDShapeIsToAdd
     TopLoc_Location Loc;
     GeomAdaptor_Surface AS(BRep_Tool::Surface(TopoDS::Face(aNewShape),Loc));
     if (AS.GetType()==GeomAbs_Plane){
-      return ( Abs(myAng - 2 * PI) > Precision::Angular() );
+      return ( Abs(myAng - 2 * M_PI) > Precision::Angular() );
     }
     else {
       return Standard_True;
@@ -791,7 +805,7 @@ Standard_Boolean BRepSweep_Rotation::SeparatedWires
     TopLoc_Location Loc;
     GeomAdaptor_Surface AS(BRep_Tool::Surface(TopoDS::Face(aNewShape),Loc));
     if (AS.GetType()==GeomAbs_Plane){
-      return (Abs(myAng-2*PI) <= Precision::Angular());
+      return (Abs(myAng-2*M_PI) <= Precision::Angular());
     }
     else{
       return Standard_False;

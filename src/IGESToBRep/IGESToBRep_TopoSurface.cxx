@@ -1,5 +1,21 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //=======================================================================
-//file    : IGESToBRep_TopoSurface
 //modified: 
 // Integration to ensure SCCS base integrity
 // 21.12.98 rln, gka S4054
@@ -60,7 +76,7 @@
 
 #include <IGESData_IGESEntity.hxx>
 #include <IGESData_ToolLocation.hxx>
-  
+
 #include <IGESGeom_BSplineSurface.hxx>
 #include <IGESGeom_BoundedSurface.hxx>
 #include <IGESGeom_CurveOnSurface.hxx>
@@ -733,11 +749,11 @@ TopoDS_Shape IGESToBRep_TopoSurface::TransferSurfaceOfRevolution
   //Standard_Real startAngle = st->StartAngle();
   //Standard_Real endAngle = st->EndAngle();
   gp_Ax1 revolAxis(pt1, gp_Dir( gp_Vec (pt2, pt1)));
-  Standard_Real startAngle = 2 * PI - st->EndAngle();
-  Standard_Real endAngle = 2 * PI - st->StartAngle();
+  Standard_Real startAngle = 2 * M_PI - st->EndAngle();
+  Standard_Real endAngle = 2 * M_PI - st->StartAngle();
   Standard_Real deltaAngle = endAngle - startAngle;
-  Standard_Boolean IsFullAngle = ( deltaAngle > 2.*PI-Precision::PConfusion() );
-  if (IsFullAngle) deltaAngle = 2.*PI;  // ** CKY 18-SEP-1996
+  Standard_Boolean IsFullAngle = ( deltaAngle > 2.*M_PI-Precision::PConfusion() );
+  if (IsFullAngle) deltaAngle = 2.*M_PI;  // ** CKY 18-SEP-1996
   // il faudra translater les courbes 2d de startAngle pour 
   // etre en phase IGES et BRep
   startLoc.SetRotation(revolAxis, startAngle);
@@ -890,7 +906,7 @@ TopoDS_Shape IGESToBRep_TopoSurface::TransferTabulatedCylinder
         tmpF = aBasisCurve->FirstParameter();
         tmpL = aBasisCurve->LastParameter();
         tmpToler = Precision::PConfusion();
-        if ( (fabs(tmpF) >= tmpToler) && (fabs(tmpL - 2*PI) >= tmpToler) )
+        if ( (fabs(tmpF) >= tmpToler) && (fabs(tmpL - 2*M_PI) >= tmpToler) )
           reparamBSpline (aBasisCurve, tmpF, tmpL);
       }
       gp_Vec dir (pt1, pt2);
@@ -1736,9 +1752,9 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
 	gp_Pnt2d startpoint = circ->StartPoint();
 	paramv -= ElCLib::Parameter (gp_Circ2d (gp_Ax2d (circ->Center(), gp_Dir2d(1,0)), circ->Radius()), startpoint);
 	if (Surf->IsKind (STANDARD_TYPE(Geom_SphericalSurface)))
-	  paramv += ShapeAnalysis::AdjustToPeriod(paramv, - PI, PI);
+	  paramv += ShapeAnalysis::AdjustToPeriod(paramv, - M_PI, M_PI);
 	else if (Surf->IsKind (STANDARD_TYPE(Geom_ToroidalSurface)))
-	  paramv += ShapeAnalysis::AdjustToPeriod(paramv, 0, PI * 2);
+	  paramv += ShapeAnalysis::AdjustToPeriod(paramv, 0, M_PI * 2);
       }
     }
     else if (st->IsKind (STANDARD_TYPE (IGESGeom_TabulatedCylinder))) {
@@ -1748,7 +1764,7 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
 	DeclareAndCast (IGESGeom_CircularArc, circ, directrix);
 	gp_Pnt2d startpoint = circ->StartPoint();
 	paramu -= ElCLib::Parameter (gp_Circ2d (gp_Ax2d (circ->Center(), gp_Dir2d(1,0)), circ->Radius()), startpoint);
-	paramu += ShapeAnalysis::AdjustToPeriod(paramu, 0, PI * 2);
+	paramu += ShapeAnalysis::AdjustToPeriod(paramu, 0, M_PI * 2);
       }
     }
 
@@ -1768,7 +1784,7 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
     DeclareAndCast(IGESGeom_SurfaceOfRevolution, st120, isrf);
     //S4181 pdn 19.04.99 defining transformation matrix
     gp_Trsf2d tmp;
-    tmp.SetTranslation(gp_Vec2d (0, -2 * PI));
+    tmp.SetTranslation(gp_Vec2d (0, -2 * M_PI));
     trans.PreMultiply(tmp);
     tmp.SetMirror(gp::OX2d());
     trans.PreMultiply(tmp);
@@ -1778,7 +1794,7 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
     //#30 rln 19.10.98
     //CAS.CADE SA = 2*PI - IGES TA
     //paramu = st120->StartAngle();
-    paramu = -(2 * PI - st120->EndAngle());
+    paramu = -(2 * M_PI - st120->EndAngle());
   }
   else
     paramu = 0.;
@@ -1805,11 +1821,11 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
   
   if (isrf->IsKind(STANDARD_TYPE(IGESSolid_CylindricalSurface))||
       isrf->IsKind(STANDARD_TYPE(IGESSolid_ConicalSurface))) {
-    uscale = PI/180.;
+    uscale = M_PI/180.;
   }
   
   if (isrf->IsKind(STANDARD_TYPE(IGESSolid_SphericalSurface))) {
-    cscale = PI/180.;
+    cscale = M_PI/180.;
     uscale = 1.;
   }
       
@@ -1822,8 +1838,8 @@ TopoDS_Shape IGESToBRep_TopoSurface::ParamSurface(const Handle(IGESData_IGESEnti
     tmp.SetMirror(gp_Ax2d (gp::Origin2d(), gp_Dir2d (1.,1.)));
     trans.PreMultiply(tmp);
     if(paramv > 0)
-      paramv = paramv*180./PI;
-    cscale = PI/180.;
+      paramv = paramv*180./M_PI;
+    cscale = M_PI/180.;
     uscale = 1.;
   } 
     

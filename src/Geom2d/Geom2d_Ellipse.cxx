@@ -1,10 +1,24 @@
-// File:	Geom2d_Ellipse.cxx
-// Created:	Wed Mar 24 19:22:03 1993
-// Author:	JCV
-//		<fid@sdsun2>
-// Copyright:	Matra Datavision 1993
+// Created on: 1993-03-24
+// Created by: JCV
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-//File Geom2d_Ellipse.cxx, JCV 19/07/1991
+
 
 
 #include <Geom2d_Ellipse.ixx>
@@ -149,7 +163,7 @@ gp_Elips2d Geom2d_Ellipse::Elips2d () const
 
 Standard_Real Geom2d_Ellipse::ReversedParameter( const Standard_Real U) const 
 {
-  return (2. * PI - U);
+  return (2. * M_PI - U);
 }
 
 //=======================================================================
@@ -279,7 +293,7 @@ Standard_Real Geom2d_Ellipse::FirstParameter () const
 
 Standard_Real Geom2d_Ellipse::LastParameter () const     
 {
-  return 2.0 * PI; 
+  return 2.0 * M_PI; 
 }
 
 //=======================================================================

@@ -1,6 +1,27 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #ifndef _Standard_Transient_proto_HeaderFile
 #define _Standard_Transient_proto_HeaderFile
 
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -21,21 +42,8 @@ class Standard_Transient
     friend class Handle(Standard_Transient);
 
  public:
-    //! Operator new for placement in pre-allocated memory
-    void* operator new(size_t,void* anAddress) 
-      {
-        return anAddress;
-      }
-    //! Operator new for memory allocation uses Open CASCADE memory manager
-    void* operator new(size_t size) 
-      { 
-        return Standard::Allocate(size); 
-      }
-    //! Operator delete symmetric to operator new
-    void  operator delete(void *anAddress) 
-      { 
-        if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-      }
+    
+    DEFINE_STANDARD_ALLOC
 
     //! Empty constructor
     Standard_Transient() : count(0) {}
@@ -51,10 +59,6 @@ class Standard_Transient
 
     //! Memory deallocator for transient classes
     Standard_EXPORT virtual void Delete() const;
-
-    //! Returns a hash code value for this object. 
-    //! The value is in the range 1..Upper.
-    Standard_EXPORT virtual Standard_Integer HashCode(const Standard_Integer Upper) const;
 
     Standard_EXPORT virtual void ShallowDump(Standard_OStream& ) const;
     

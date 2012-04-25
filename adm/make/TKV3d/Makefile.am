@@ -21,7 +21,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/V3d -I@top_srcdir@/src/V3d \
 -I@top_srcdir@/drv/Graphic3d -I@top_srcdir@/src/Graphic3d \
@@ -38,20 +38,20 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CS
 
 lib_LTLIBRARIES=libTKV3d.la
 
-libTKV3d_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKService/libTKService.la \
-../TKMath/libTKMath.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
-../TKHLR/libTKHLR.la \
+libTKV3d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
-../TKMesh/libTKMesh.la \
+../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
+../TKService/libTKService.la \
+../TKTopAlgo/libTKTopAlgo.la \
 ../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
+../TKGeomBase/libTKGeomBase.la \
+../TKMesh/libTKMesh.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKV2d/libTKV2d.la \
-$(STLPort_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) 
+../TKHLR/libTKHLR.la \
+$(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) 
 
 libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/AIS/AIS_DataMapIteratorOfDataMapOfILC_0.cxx \
@@ -161,7 +161,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/drv/SelectMgr/SelectMgr_SequenceOfSelector_0.cxx \
 @top_srcdir@/drv/StdPrs/StdPrs_HLRShape_0.cxx \
 @top_srcdir@/drv/StdPrs/StdPrs_Point_0.cxx \
-@top_srcdir@/drv/StdPrs/StdPrs_ShadedShape_0.cxx \
 @top_srcdir@/drv/StdPrs/StdPrs_Vertex_0.cxx \
 @top_srcdir@/drv/StdPrs/StdPrs_WFDeflectionShape_0.cxx \
 @top_srcdir@/drv/StdPrs/StdPrs_WFRestrictedFace_0.cxx \
@@ -316,39 +315,15 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/Graphic3d/Graphic3d_DataStructureManager.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_GraphicDevice.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_1.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_2.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_3.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_4.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_5.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_6.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_7.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_703.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_705.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_707.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_709.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_710.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_711.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_712.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_713.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_8.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_9.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_Export.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_Layer.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_GraphicDriver_Print.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_1.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_10.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_Group_11.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_Group_12.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_13.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_2.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_3.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_Group_4.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_5.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_7.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Group_8.cxx \
-@top_srcdir@/src/Graphic3d/Graphic3d_Group_9.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_MaterialAspect.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Plotter.cxx \
 @top_srcdir@/src/Graphic3d/Graphic3d_Strips.cxx \
@@ -432,7 +407,7 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/StdPrs/StdPrs_HLRToolShape.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_Plane.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_PoleCurve.cxx \
-@top_srcdir@/src/StdPrs/StdPrs_ShadedPoleSurface.cxx \
+@top_srcdir@/src/StdPrs/StdPrs_ShadedShape.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_ShadedSurface.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_ToolPoint.cxx \
 @top_srcdir@/src/StdPrs/StdPrs_ToolRFace.cxx \
@@ -457,7 +432,6 @@ libTKV3d_la_SOURCES = \
 @top_srcdir@/src/StdSelect/StdSelect_ViewerSelector3d.cxx \
 @top_srcdir@/src/V3d/V3d.cxx \
 @top_srcdir@/src/V3d/V3d_AmbientLight.cxx \
-@top_srcdir@/src/V3d/V3d_Camera.cxx \
 @top_srcdir@/src/V3d/V3d_CircularGrid.cxx \
 @top_srcdir@/src/V3d/V3d_ColorScale.cxx \
 @top_srcdir@/src/V3d/V3d_ColorScaleLayerItem.cxx \

@@ -1,3 +1,21 @@
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /*
 File: InterfaceGraphic_telem.h
 
@@ -14,45 +32,14 @@ for InterfaceGraphic_Parray.hxx definitions
 #define  INTERFACEGRAPHIC_TELEM_H
 
 #include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 #include <InterfaceGraphic_tgl_all.hxx>
 #include <stdlib.h>
-
-//if SUN compiler
-#if defined(__SUNPRO_CC) && (__SUNPRO_CC <= 0x530) && ! defined(typename)
-#define IMPLEMENT_MEMORY_OPERATORS \
-  void* operator new (size_t size) {\
-  void* p = malloc( size );\
-  memset(p, 0, size);\
-  return p;\
-  }\
-  void operator delete(void* p) {\
-  free( p );\
-  }
-#else
-//if other
-#define IMPLEMENT_MEMORY_OPERATORS \
-  void* operator new (size_t size) {\
-  void* p = malloc( size );\
-  memset(p, 0, size);\
-  return p;\
-  }\
-  void* operator new[] (size_t size) {\
-  void* p = malloc( size );\
-  memset(p, 0, size);\
-  return p;\
-  }\
-  void operator delete(void* p) { \
-  free( p );\
-  }\
-  void operator delete[](void* p) {\
-  free( p );\
-  }
-#endif
 
 struct TEL_TEXTURE_COORD
 {
   float xy[2];
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 
 typedef TEL_TEXTURE_COORD* tel_texture_coord;
@@ -60,23 +47,7 @@ typedef TEL_TEXTURE_COORD* tel_texture_coord;
 struct TEL_POINT
 {
   float  xyz[3];
-  IMPLEMENT_MEMORY_OPERATORS
-    /*void* operator new (size_t size) {
-    void* p = malloc( size );
-    memset(p, 0, size);
-    return p;
-    }
-    void* operator new[] (size_t size) {
-    void* p = malloc( size );
-    memset(p, 0, size);
-    return p;
-    }
-    void operator delete(void* p) {
-    free( p );
-    }
-    void operator delete[](void* p) {
-    free( p );
-    }*/
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_POINT* tel_point;
 
@@ -84,7 +55,7 @@ struct TEL_COLOUR
 {
   /* OCC8854: san -- number of color components increased to include alpha value */
   float    rgb[4];
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_COLOUR* tel_colour;
 
@@ -92,7 +63,7 @@ struct TEL_POINT_DATA
 {
   int      num;
   TEL_POINT* data;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_POINT_DATA* tel_point_data;
 
@@ -100,7 +71,7 @@ struct TEL_TINT_DATA
 {
   int   num;
   int*  data;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_TINT_DATA* tel_tint_data;
 
@@ -108,7 +79,7 @@ struct TEL_MATRIX3_DATA
 {
   TComposeType  mode;
   Tmatrix3      mat;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_MATRIX3_DATA* tel_matrix3_data;
 
@@ -116,7 +87,7 @@ struct TEL_ALIGN_DATA
 {
   Tint Hmode;
   Tint Vmode;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_ALIGN_DATA* tel_align_data;
 
@@ -149,7 +120,7 @@ struct  TEL_SURF_PROP
   int       isamb, isdiff, isspec, isemsv;
   int       isphysic; 
   TEL_COLOUR speccol, difcol, ambcol, emscol, matcol;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_SURF_PROP* tel_surf_prop;
 
@@ -304,7 +275,7 @@ struct  TEL_POFFSET_PARAM
   int   mode;
   float factor;
   float units;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_POFFSET_PARAM* tel_poffset_param;
 /* OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets */
@@ -316,7 +287,7 @@ struct TEL_TRANSFORM_PERSISTENCE
   float     pointX;
   float     pointY;
   float     pointZ;
-  IMPLEMENT_MEMORY_OPERATORS
+  DEFINE_STANDARD_ALLOC
 };
 typedef TEL_TRANSFORM_PERSISTENCE* tel_transform_persistence;
 /* ABD 29/10/04  Transform Persistence of Presentation( pan, zoom, rotate ) */

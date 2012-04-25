@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_EdgesFiller.cxx
-// Created:	Wed Oct 12 16:18:53 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@bravox>
+// Created on: 1994-10-12
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_EdgesFiller.ixx>
 #include <TopOpeBRep_PointGeomTool.hxx>
@@ -83,25 +99,12 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
   Standard_Boolean reducesegment = (hs && !esd);
 #endif
 
-#ifdef DEB
-  TopAbs_Orientation E1ori =
-#endif
-               E1.Orientation();
-#ifdef DEB
-  TopAbs_Orientation E2ori =
-#endif
-               E2.Orientation();
-  
   // --- Add <E1,E2> in BDS
   Standard_Integer E1index = myPDS->AddShape(E1,1);
   Standard_Integer E2index = myPDS->AddShape(E2,2);
   
   // --- get list of interferences connected to edges <E1>,<E2>
   TopOpeBRepDS_ListOfInterference& EIL1 = myPDS->ChangeShapeInterferences(E1);
-#ifdef DEB
-  TopOpeBRepDS_ListOfInterference& EIL2 =
-#endif
-                 myPDS->ChangeShapeInterferences(E2);
   
   Handle(TopOpeBRepDS_Interference) EPI;  //edge/point interference
   Handle(TopOpeBRepDS_Interference) EVI;  //edge/vertex interference
@@ -119,9 +122,6 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     Standard_Boolean pointofsegment =
 #endif
                          P2D.IsPointOfSegment();
-#ifdef DEB
-    Standard_Boolean reducesegmentpoint = (reducesegment && pointofsegment);
-#endif
 
 #ifdef DEB
     if (trc) {
@@ -377,10 +377,7 @@ Standard_Boolean TopOpeBRep_EdgesFiller::MakeGeometry(const TopOpeBRep_Point2d& 
   Standard_Boolean isvertex2 = P2D.IsVertex(2);
   if (isvertex1 && isvertex2) {
     Standard_Integer G1 = myPDS->AddShape(P2D.Vertex(1),1);
-#ifdef DEB
-    Standard_Integer G2 =
-#endif
-              myPDS->AddShape(P2D.Vertex(2),2);
+    myPDS->AddShape(P2D.Vertex(2),2);
     G = G1;
     K = TopOpeBRepDS_VERTEX;
   }
@@ -466,15 +463,6 @@ Handle(TopOpeBRepDS_Interference) TopOpeBRep_EdgesFiller::StoreVI(const TopOpeBR
 Standard_Boolean TopOpeBRep_EdgesFiller::ToRecompute(const TopOpeBRep_Point2d& P2D,const Handle(TopOpeBRepDS_Interference)& I,const Standard_Integer IEmother)
 {
   Standard_Boolean b = Standard_True;
-  const TopOpeBRepDS_Transition& T = I->Transition();
-#ifdef DEB
-  TopAbs_State sb =
-#endif
-            T.Before();
-#ifdef DEB
-  TopAbs_State sa =
-#endif
-            T.After();
   Standard_Boolean pointofsegment = P2D.IsPointOfSegment();
   Standard_Boolean esd = myPEI->SameDomain();
   b = b && (pointofsegment && !esd);

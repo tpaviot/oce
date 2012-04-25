@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCAS], [5.0DVP1])
+AC_INIT([OpenCASCADE], [6.5.3])
 AC_CONFIG_AUX_DIR(make)
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
@@ -73,6 +73,43 @@ AC_SUBST(CSF_ThreadLibs_LIB)
 AC_CHECK_LIB([dl],[dlopen],[],[AC_MSG_ERROR([dl library is required])])
 CSF_SOCKETLibs_LIB=-ldl
 
+#---------------------------------------------------------------------
+#
+# Test for 64-bit platforms
+#  
+#  
+#---------------------------------------------------------------------
+AC_MSG_CHECKING([if platform is 64-bit])
+AC_TRY_COMPILE( [], 
+ [int array[((int)sizeof(void*))-6];],
+ [AC_MSG_RESULT([yes]); ARCH=64; CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
+ [AC_MSG_RESULT([no]); ARCH=32;] )
+AC_SUBST(ARCH)
+
+if test "x${CSF_OPT_INC}" != "x"; then
+   CSF_OPT_INCLUDES=
+   for c in `echo ${CSF_OPT_INC} | sed 's/:/ /g'`; do
+       CSF_OPT_INCLUDES="-I$c ${CSF_OPT_INCLUDES}"
+   done
+fi
+if test "$ARCH" = "32" -a "x${CSF_OPT_LIB32}" != "x"; then
+   CSF_OPT_LIB=${CSF_OPT_LIB32}
+   CSF_OPT_LIBS=
+   for c in `echo ${CSF_OPT_LIB32} | sed 's/:/ /g'`; do
+       CSF_OPT_LIBS="-L$c ${CSF_OPT_LIBS}"
+   done
+fi
+if test "$ARCH" = "64" -a "x${CSF_OPT_LIB64}" != "x"; then
+   CSF_OPT_LIB=${CSF_OPT_LIB64}
+   CSF_OPT_LIBS=
+   for c in `echo ${CSF_OPT_LIB64} | sed 's/:/ /g'`; do
+       CSF_OPT_LIBS="-L$c ${CSF_OPT_LIBS}"
+   done
+fi
+
+AC_SUBST(CSF_OPT_INCLUDES)
+AC_SUBST(CSF_OPT_LIBS)
+
 #------------------------------------------------------------------------------
 # Get Tcl and TK configuration information from tclConfig.sh.
 #------------------------------------------------------------------------------
@@ -87,10 +124,16 @@ if test "xyes" = "x$HAVE_TCL"; then
     CSF_TclTkLibs_INCLUDES="${TK_INCLUDE_SPEC}"
     CSF_TclLibs_LIB="${TCL_LIB_SPEC}"
     CSF_TclTkLibs_LIB="${TK_LIB_SPEC}"
+    CSF_OPT_INC="${TCL_PREFIX}/include:${TK_PREFIX}/include:${CSF_OPT_INC}"
+    CSF_OPT_LIB="${TCL_PREFIX}/lib:${TK_PREFIX}/lib:${CSF_OPT_LIB}"
   fi
+fi
+if test "x${HAVE_TCLTK}" != "xyes"; then
+   DISABLE_TCLTK_REASON="(tcltk was not found)"
 fi
 AC_SUBST(TCL_VERSION)
 AC_SUBST(TK_VERSION)
+AC_SUBST(HAVE_TCLTK)
 AC_SUBST(CSF_TclLibs_INCLUDES)
 AC_SUBST(CSF_TclTkLibs_INCLUDES)
 AC_SUBST(CSF_TclLibs_LIB)
@@ -132,29 +175,29 @@ AC_CHECK_FUNCS(gethostname putenv re_comp regcomp strcspn strdup strtol)
 AC_CHECK_FUNCS(statfs statvfs)
 
 
-AC_CACHE_CHECK(if it is OK to define stream input and output,
-def_ios_ok,
+AC_CACHE_CHECK([if it is OK to define stream input and output],
+def_cv_ios_ok,
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <stream.h>
 static const int input = (ios::in) | (ios::nocreate);
 static const int output= (ios::out);],
 [return 0;],
- def_ios_ok=yes, def_ios_ok=no)
+ def_cv_ios_ok=yes, def_cv_ios_ok=no)
 ])
-if test "$def_ios_ok" = yes; then
+if test "$def_cv_ios_ok" = yes; then
   AC_DEFINE(DEF_IOS_OK,,[define if the compiler allows redefinition of stream input and output])
 fi
 
 
 AC_CACHE_CHECK([if class ostream has member function form],
-ostream_form_ok,
+[ostream_cv_form_ok],
 [AC_LANG([C++])
  AC_TRY_COMPILE([#include <iostream.h>],
 [cout << cout.form("%9.3e", 3.14159627e-4) << endl;
 return 0;],
- ostream_form_ok=yes, ostream_form_ok=no)
+ ostream_cv_form_ok=yes, ostream_cv_form_ok=no)
 ])
-if test "$ostream_form_ok" = yes; then
+if test "$ostream_cv_form_ok" = yes; then
   AC_DEFINE(OSTREAM_FORM_OK,,[define if the class ostream has member function form])
 fi
 
@@ -164,29 +207,29 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 # if the following code compiles then the union semun is
 # defined in the header <sys/sem.h>
 
-AC_CACHE_CHECK(if union semun is defined in <sys/sem.h>,
-semun_defined,
+AC_CACHE_CHECK([if union semun is defined in <sys/sem.h>],
+[semun_cv_defined],
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/time.h>
 #include <sys/sem.h>],
 [union semun c;],
- semun_defined=yes, semun_defined=no)
+ semun_cv_defined=yes, semun_cv_defined=no)
 ])
-if test "$semun_defined" = yes; then
+if test "$semun_cv_defined" = yes; then
   AC_DEFINE(SEMUN_DEFINED,,[define if the union semun is in sys/sem.h])
 fi
 
 # if the following code compiles then the union semun has
 # the member __buf
 
-if test "$semun_defined" = yes; then
+if test "$semun_cv_defined" = yes; then
 
  AC_CACHE_CHECK(if union semun has member __buf,
- semun_buf_defined,
+ semun_cv_buf_defined,
  [AC_LANG([C])
  AC_TRY_COMPILE([#include <sys/sem.h>],
  [ union semun c; c.__buf = 0;],
- semun_buf_defined=yes, semun_buf_defined=no)
+ semun_cv_buf_defined=yes, semun_cv_buf_defined=no)
  ])
  if test "$sumun_buf_defined" = yes; then
   AC_DEFINE(SEMUN_BUF_DEFINED,,[define if semun has member __buf])
@@ -194,8 +237,8 @@ if test "$semun_defined" = yes; then
 fi
 
 
-AC_CACHE_CHECK(if function semop takes a value,
-semop_no_reference,
+AC_CACHE_CHECK([if function semop takes a value],
+[semop_cv_no_reference],
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
 static struct sembuf event_flag ;],
@@ -203,15 +246,15 @@ static struct sembuf event_flag ;],
  int *semid;
  status = semop(*semid,event_flag,1);
 ],
- semop_no_reference=yes, semop_no_reference=no)
+ semop_cv_no_reference=yes, semop_cv_no_reference=no)
 ])
-if test "$semop_no_reference" = yes; then
+if test "$semop_cv_no_reference" = yes; then
   AC_DEFINE(SEMOP_NO_REFERENCE,,[define if the function semop takes a value])
 fi
 
 
-AC_CACHE_CHECK(if function semctl takes a value,
-semctl_no_reference,
+AC_CACHE_CHECK([if function semctl takes a value],
+[semctl_cv_no_reference],
 [AC_LANG([C])
 AC_TRY_COMPILE([#include <sys/sem.h>
 int get_semaphore(semid,event,value)
@@ -224,9 +267,9 @@ int get_semaphore(semid,event,value)
 int *a,*b,*c;],
 [if(get_semaphore(a,b,c))
  exit 0;],
- semctl_no_reference=yes, semctl_no_reference=no)
+ semctl_cv_no_reference=yes, semctl_cv_no_reference=no)
 ])
-if test "$semctl_no_reference" = yes; then
+if test "$semctl_cv_no_reference" = yes; then
   AC_DEFINE(SEMCTL_NO_REFERENCE,,[define if the function semctl takes a value])
 fi
 
@@ -390,15 +433,37 @@ AC_ARG_WITH([freetype],
   [freetype="${withval}"],[freetype=])
 
 CSF_FREETYPE_INCLUDES=""
+CSF_FREETYPE_LIB=""
 
 if test "xyes" = "x${HAVE_GL}"; then
   AC_LANG([C++])
-  HAVE_FREETYPE=yes
+  HAVE_FREETYPE=no
+  HAVE_FREETYPE_INC=yes
   CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
   AC_CHECK_HEADER( [ft2build.h], [], [HAVE_FREETYPE=no] )
-  if test "x$HAVE_FREETYPE" = "xyes"; then
+  if test ! -d $freetype; then
+	DISABLE_FREETYPE_REASON="($freetype directory is not exists)"
+	AC_MSG_ERROR([$freetype directory is not exists])
+  elif test "x$HAVE_FREETYPE_INC" = "xyes"; then
     CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
+    LDFLAGS="-L$freetype/lib"
+    AC_CHECK_LIB(freetype, FT_Init_FreeType,
+    [
+	HAVE_FREETYPE=yes
+	CSF_FREETYPE_LIB="$LDFLAGS `$freetype/bin/freetype-config --libs`"
+	LIBS="$CSF_FREETYPE_LIB $LIBS"
+	CSF_OPT_INC="$freetype/include:$freetype/include/freetype2:${CSF_OPT_INC}"
+	CSF_OPT_LIB="$freetype/lib:${CSF_OPT_LIB}"
+    ],
+    [
+	DISABLE_FREETYPE_REASON="(freetype was not found)"
+	AC_MSG_ERROR([Unable to locate the required FreeType library])
+    ])
+  else
+	DISABLE_FREETYPE_REASON="(freetype was not found)"
   fi
+else
+  DISABLE_FREETYPE_REASON="(--with-freetype=DIR option was not defined)"
 fi
 AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] )
 
@@ -417,13 +482,17 @@ CSF_FTGL_LIB=""
 
 if test "xno" = "x${HAVE_FREETYPE}"; then
   HAVE_FTGL=no
+  DISABLE_FTGL_REASON=$DISABLE_FREETYPE_REASON
 else
   AC_LANG([C++])
-  HAVE_FTGL=yes
+  HAVE_FTGL=no
   HAVE_FTGL_INC=yes
   CPPFLAGS="-I$ftgl/include $CPPFLAGS";
   AC_CHECK_HEADER( [FTGL/FTGL.h], [], [HAVE_FTGL_INC=no] )
-  if test "x$HAVE_FTGL_INC" = "xyes"; then
+  if test ! -d $ftgl; then
+	DISABLE_FTGL_REASON="($ftgl directory is not exists)"
+	AC_MSG_ERROR([$ftgl directory is not exists])
+  elif test "x$HAVE_FTGL_INC" = "xyes"; then
     CSF_FTGL_INCLUDES="-I$ftgl/include/FTGL"
     HAVE_FTGL_LIB=yes
     AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
@@ -437,14 +506,18 @@ else
 #include <FTGL/FTGLTextureFont.h>
 ], [
 FTGLTextureFont font("");], [
+CSF_OPT_INC="$ftgl/include:${CSF_OPT_INC}"
+CSF_OPT_LIB="$ftgl/lib:${CSF_OPT_LIB}"
 AC_MSG_RESULT(yes)
 ], [
 AC_MSG_RESULT(no)
 ]) 
     LIBS=$LIBS_sv
   fi
-  if test "xno" = "x$HAVE_FTGL_LIB"; then
-    HAVE_FTGL=no
+  if test "xyes" = "x$HAVE_FTGL_LIB"; then
+    HAVE_FTGL=yes
+  else
+    DISABLE_FTGL_REASON="(ftgl was not found)"
   fi
 fi
 AM_CONDITIONAL( HAVE_FTGL, [test "xyes" = "x$HAVE_FTGL"] )
@@ -461,33 +534,48 @@ AC_ARG_WITH([gl2ps],
 
 if test "xno" = "xno$gl2ps"; then
 # user specified --without-gl2ps
-HAVE_GL2PS=no
-DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
+  HAVE_GL2PS=no
+  DISABLE_GL2PS_REASON="(--with-gl2ps=DIR option was not defined)"
 else
-CSF_GL2PS_INCLUDES=""
-CSF_GL2PS_LIB=""
+  CSF_GL2PS_INCLUDES=""
+  CSF_GL2PS_LIB=""
 
-if test "xno" = "x$HAVE_GL"; then
-HAVE_GL2PS=no
-else
-AC_LANG([C++])
-HAVE_GL2PS=yes
-HAVE_GL2PS_INC=yes
-CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
-AC_CHECK_HEADER( [gl2ps.h], [], [HAVE_GL2PS_INC=no] )
-	if test "x$HAVE_GL2PS_INC" = "xyes"; then
-	CSF_GL2PS_INCLUDES="-I$gl2ps/include -DHAVE_GL2PS"
-	HAVE_GL2PS_LIB=yes
-	AC_MSG_CHECKING([for gl2psEndPage in -lgl2ps])
-	LDFLAGS="-L$gl2ps/lib $LDFLAGS"
-	LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-	AC_CHECK_LIB( [gl2ps], [gl2psEndPage], [CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"], [HAVE_GL2PS_LIB=no] )
+  if test "xno" = "x$HAVE_GL"; then
+   	HAVE_GL2PS=no
+  	DISABLE_GL2PS_REASON="(OpenGL  was not found)"
+  else
+	AC_LANG([C++])
+	HAVE_GL2PS=no
+	HAVE_GL2PS_INC=no
+	CPPFLAGS="-I$gl2ps/include $CPPFLAGS";
+	AC_CHECK_HEADER( [gl2ps.h], [HAVE_GL2PS_INC=yes], [HAVE_GL2PS_INC=no] )
+	if test ! -d $gl2ps; then
+	   DISABLE_GL2PS_REASON="($gl2ps directory is not exists)"
+	   AC_MSG_ERROR([$gl2ps directory is not exists])
+	elif test "x$HAVE_GL2PS_INC" = "xyes"; then
+	   CSF_GL2PS_INCLUDES="-I$gl2ps/include -DHAVE_GL2PS"
+	   HAVE_GL2PS_LIB=yes
+	   AC_MSG_CHECKING([for gl2psEndPage in -lgl2ps])
+	   LDFLAGS="-L$gl2ps/lib $LDFLAGS"
+	   LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+	   AC_CHECK_LIB( [gl2ps], [gl2psEndPage],
+	   [
+		CSF_GL2PS_LIB="-L$gl2ps/lib -lgl2ps"
+		CSF_OPT_INC="$gl2ps/include:${CSF_OPT_INC}"
+		CSF_OPT_LIB="$gl2ps/lib:${CSF_OPT_LIB}"
+		HAVE_GL2PS_LIB=yes
+	   ],
+	   [
+		HAVE_GL2PS_LIB=no
+	   ])
 	fi
-	  if test "xno" = "x$HAVE_GL2PS_LIB"; then
+	if test "xyes" = "x$HAVE_GL2PS_LIB"; then
+	    HAVE_GL2PS=yes
+	else
 	    HAVE_GL2PS=no
             DISABLE_GL2PS_REASON="(gl2ps was not found)"
-	  fi
-fi
+	fi
+  fi
 fi
 AM_CONDITIONAL( HAVE_GL2PS, [test "xyes" = "x$HAVE_GL2PS"] )
 
@@ -506,25 +594,34 @@ if test "xno" = "xno$freeimage"; then
   HAVE_FREEIMAGE=no
   DISABLE_FREEIMAGE_REASON="(--with-freeimage=DIR option was not defined)"
 else
-	CSF_FreeImagePlus_INCLUDES=""
-	CSF_FreeImagePlus_LIB=""
+  CSF_FreeImagePlus_INCLUDES=""
+  CSF_FreeImagePlus_LIB=""
 
   AC_LANG([C++])
-  HAVE_FREEIMAGE=yes
+  HAVE_FREEIMAGE=no
   HAVE_FREEIMAGE_INC=yes
   CPPFLAGS="-I$freeimage/include $CPPFLAGS";
   AC_CHECK_HEADER( [FreeImage.h], [], [HAVE_FREEIMAGE_INC=no] )
-  if test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
+  if test ! -d $freeimage; then
+    DISABLE_FREEIMAGE_REASON="($freeimage directory is not exists)"
+    AC_MSG_ERROR([$freeimage directory is not exists])
+  elif test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
     CSF_FreeImagePlus_INCLUDES="-I$freeimage/include -DHAVE_FREEIMAGE"
     HAVE_FREEIMAGE_LIB=yes
     AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimageplus])
     LDFLAGS="-L$freeimage/lib $LDFLAGS"
     LIBS="$CSF_FreeImagePlus_LIB $LIBS"
-    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE_LIB=no] )
-    else
-    HAVE_FREEIMAGE_LIB=no
+    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory],
+    [
+	HAVE_FREEIMAGE_LIB=yes;
+	CSF_OPT_INC="$freeimage/include:${CSF_OPT_INC}"
+	CSF_OPT_LIB="$freeimage/lib:${CSF_OPT_LIB}"
+	CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"
+    ], [HAVE_FREEIMAGE_LIB=no] )
   fi
-  if test "xno" = "x$HAVE_FREEIMAGE_LIB"; then
+  if test "xyes" = "x$HAVE_FREEIMAGE_LIB"; then
+    HAVE_FREEIMAGE=yes
+  else
     HAVE_FREEIMAGE=no
     DISABLE_FREEIMAGE_REASON="(freeimage was not found)"
   fi
@@ -544,23 +641,25 @@ AC_ARG_WITH([tbb-include],
 if test "xno" = "xno$tbb_inc"; then
   # user specified --without-tbb-lib
   HAVE_TBB=no
+  HAVE_TBB_INC=no
   DISABLE_TBB_REASON_INC="(--with-tbb-include=DIR option was not defined)"
 else
-
-CSF_TBB_INCLUDES=""
-AC_LANG([C++])
-HAVE_TBB_INC=yes
-if test "x$tbb_inc" != "x"; then
-  CPPFLAGS="-I$tbb_inc $CPPFLAGS";
-else
-  AC_MSG_NOTICE("--with-tbb-include key is not defined")
-fi
-AC_CHECK_HEADER( [tbb/tbb.h], [], [HAVE_TBB_INC=no] )
-if test "x$HAVE_TBB_INC" != "xyes"; then
-  AC_MSG_NOTICE("Specify --with-tbb-include to enable TBB support")
-  DISABLE_TBB_REASON_INC="(tbb includes were not found)"
-fi
-
+  CSF_TBB_INCLUDES=""
+  AC_LANG([C++])
+  HAVE_TBB_INC=yes
+  if test ! -d $tbb_inc; then
+    DISABLE_TBB_REASON_INC="($tbb_inc directory is not exists)"
+    AC_MSG_ERROR([$tbb_inc directory is not exists])
+  elif test "x$tbb_inc" != "x"; then
+     CPPFLAGS="-I$tbb_inc $CPPFLAGS";
+  else
+     AC_MSG_NOTICE("--with-tbb-include key is not defined")
+  fi
+  AC_CHECK_HEADER( [tbb/tbb.h], [], [HAVE_TBB_INC=no] )
+  if test "x$HAVE_TBB_INC" != "xyes"; then
+     AC_MSG_NOTICE("Specify --with-tbb-include to enable TBB support")
+     DISABLE_TBB_REASON_INC="(tbb includes were not found)"
+  fi
 fi
 
 #---------------------------------------------------------------------
@@ -576,32 +675,44 @@ AC_ARG_WITH([tbb-library],
 if test "xno" = "xno$tbb_lib"; then
   # user specified --without-tbb
   HAVE_TBB=no
-  DISABLE_TBB_REASON_LIB="(--with-tbb-lib=DIR option was not defined)"
+  DISABLE_TBB_REASON_LIB="(--with-tbb-library=DIR option was not defined)"
 else
-CSF_TBB_LIB=""
-HAVE_TBB=yes
+  CSF_TBB_LIB=""
+  HAVE_TBB=yes
 
-if test "x$HAVE_TBB_INC" = "xyes"; then
-  if test "x$tbb_lib" != "x"; then
-    LDFLAGS="-L$tbb_lib $LDFLAGS"
+  if test "x$HAVE_TBB_INC" = "xyes"; then
+     if test ! -d $tbb_lib; then
+     	DISABLE_TBB_REASON_LIB="($tbb_lib directory is not exists)"
+    	AC_MSG_ERROR([$tbb_lib directory is not exists])
+     elif test "x$tbb_lib" != "x"; then
+     	LDFLAGS="-L$tbb_lib $LDFLAGS"
+     fi
+     AC_CHECK_LIB([tbb], [TBB_runtime_interface_version], [], [HAVE_TBB=no])
+  else
+     HAVE_TBB=no
   fi
-  AC_CHECK_LIB([tbb], [TBB_runtime_interface_version], [], [HAVE_TBB=no])
-else
-  HAVE_TBB=no
-fi
 
-if test "x$HAVE_TBB" = "xyes"; then
-  if test "x$tbb_inc" != "x"; then
-    CSF_TBB_INCLUDES="-I$tbb_inc -DHAVE_TBB"
+  if test "x$HAVE_TBB" = "xyes"; then
+     if test "x$tbb_inc" != "x"; then
+     	CSF_TBB_INCLUDES="-I$tbb_inc -DHAVE_TBB"
+     else
+	HAVE_TBB=no
+     fi
+     if test "x$tbb_lib" != "x"; then
+     	CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
+     else
+	HAVE_TBB=no
+     fi
+     if test "x$HAVE_TBB" = "xyes"; then
+     	CSF_OPT_INC="$tbb_inc:${CSF_OPT_INC}"
+     	CSF_OPT_LIB="$tbb_lib:${CSF_OPT_LIB}"
+     else
+	DISABLE_TBB_REASON="(tbb was not found)";
+     fi
+  else
+     AC_MSG_NOTICE("Specify --with-tbb-library to enable TBB support")
+     DISABLE_TBB_REASON_LIB="(tbb libraries were not found)"
   fi
-  if test "x$tbb_lib" != "x"; then
-    CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
-  fi
-else
-  AC_MSG_NOTICE("Specify --with-tbb-library to enable TBB support")
-  DISABLE_TBB_REASON_LIB="(tbb libraries were not found)"
-fi
-
 fi
 
 AM_CONDITIONAL( HAVE_TBB, [test "xyes" = "x$HAVE_TBB"] )
@@ -654,18 +765,6 @@ CPPFLAGS="$CPPFLAGS_save"
 LDFLAGS="$LDFLAGS_save"
 LIBS="$LIBS_save"
 
-#---------------------------------------------------------------------
-#
-# Test for 64-bit platforms
-#  
-#  
-#---------------------------------------------------------------------
-AC_MSG_CHECKING([if platform is 64-bit])
-AC_TRY_COMPILE( [], 
- [int array[((int)sizeof(void*))-6];],
- [AC_MSG_RESULT([yes]); CPPFLAGS="$CPPFLAGS -D_OCC64"; case $platform in Linux*) CPPFLAGS="$CPPFLAGS -m64";; esac],
- [AC_MSG_RESULT([no])] )
-
 AC_ARG_ENABLE([debug],
               [AC_HELP_STRING([--enable-debug],[Debug Symbols])],
               [enable_debug=${enableval}],[enable_debug=no])
@@ -697,25 +796,27 @@ fi
 # Enalbe/Disable Modules
 #
 #----------------------------------------------------------------------
-
-AC_ARG_ENABLE([model],
-  [AC_HELP_STRING([--disable-model],[Disable model components])],
-  [ENABLE_MODEL=${enableval}],[ENABLE_MODEL=yes])
+AC_ARG_ENABLE([foc],
+  [AS_HELP_STRING([--disable-foc],[Disable FoundationClasses components])],
+  [ENABLE_FOC=${enableval}],[ENABLE_FOC=yes])
+AC_ARG_ENABLE([data],
+  [AS_HELP_STRING([--disable-data],[Disable ModelingData components])],
+  [ENABLE_DATA=${enableval}],[ENABLE_DATA=yes])
+AC_ARG_ENABLE([algo],
+  [AS_HELP_STRING([--disable-algo],[Disable ModelingAlgorithms components])],
+  [ENABLE_ALGO=${enableval}],[ENABLE_ALGO=yes])
 AC_ARG_ENABLE([vis],
-  [AC_HELP_STRING([--disable-vis],[Don't build visualization component])],
-  [ENABLE_VIS=${enableval}],[ENABLE_VIS=])
-AC_ARG_ENABLE([ocaf],
-  [AC_HELP_STRING([--disable-ocaf],[Don't build application framework])],
-  [ENABLE_OCAF=${enableval}],[ENABLE_OCAF=])
-AC_ARG_ENABLE([de],
-  [AC_HELP_STRING([--disable-de],[Don't build data exchange])],
-  [ENABLE_DE=${enableval}],[ENABLE_DE=])
+  [AS_HELP_STRING([--disable-vis],[Disable Visualization components])],
+  [ENABLE_VIS=${enableval}],[ENABLE_VIS=yes])
+AC_ARG_ENABLE([caf],
+  [AS_HELP_STRING([--disable-caf],[Disable ApplicationFramework components])],
+  [ENABLE_CAF=${enableval}],[ENABLE_CAF=yes])
+AC_ARG_ENABLE([dxe],
+  [AS_HELP_STRING([--disable-dxe],[Disable DataExchange components])],
+  [ENABLE_DXE=${enableval}],[ENABLE_DXE=yes])
 AC_ARG_ENABLE([draw],
-  [AC_HELP_STRING([--disable-draw],[Don't build test harness])],
-  [ENABLE_DRAW=${enableval}],[ENABLE_DRAW=])
-AC_ARG_ENABLE([wrappers],
-  [AC_HELP_STRING([--disable-wrappers],[Don't build wrapper libraries])],
-  [ENABLE_WRAPPERS=${enableval}],[ENABLE_WRAPPERS=])
+  [AS_HELP_STRING([--disable-draw],[Disable Draw components])],
+  [ENABLE_DRAW=${enableval}],[ENABLE_DRAW=yes])
 
 # Process options from above.  The behavior we want is:
 #
@@ -730,118 +831,172 @@ AC_ARG_ENABLE([wrappers],
 #                  because of some missing system requirement.  Inform
 #                  if disabled because some other required component 
 #                  was disabled.
-
-# Visualization Component: requires model component, X11, and optionally OpenGL
-if test "x" = "x$ENABLE_VIS"; then
-  if test "xno" = "x$ENABLE_MODEL"; then
-    AC_MSG_NOTICE( [Disabling visualization component: not building model component] )
-    DISABLE_VIS_REASON="(Model Component Disabled)"
+if test "xyes" != "x$ENABLE_FOC"; then
+  DISABLE_FOC_REASON="(Disabled)"
+fi
+if test "xyes" = "x$ENABLE_DATA"; then
+  if test "xyes" = "x$ENABLE_DATA" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling ModelingData: not building FoundationClasses component])
+    DISABLE_DATA_REASON="(FoundationClasses component disabled)"
+    ENABLE_DATA=no
+  fi
+else
+  DISABLE_DATA_REASON="(Disabled)"
+fi
+if test "xyes" = "x$ENABLE_ALGO"; then
+  if test "xyes" = "x$ENABLE_ALGO" -a "xyes" != "x$ENABLE_DATA"; then
+    AC_MSG_NOTICE([Disabling ModelingAlgorithms: not building ModelingData component])
+    DISABLE_ALGO_REASON="(ModelingData component disabled)"
+    ENABLE_ALGO=no
+  fi
+  if test "xyes" = "x$ENABLE_ALGO" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling ModelingAlgorithms: not building FoundationClasses component])
+    DISABLE_ALGO_REASON="(FoundationClasses component disabled)"
+    ENABLE_ALGO=no
+  fi
+else
+  DISABLE_ALGO_REASON="(Disabled)"
+fi
+if test "xyes" = "x$ENABLE_VIS"; then
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$ENABLE_ALGO"; then
+    AC_MSG_NOTICE([Disabling Visualization: not building ModelingAlgorithms component])
+    DISABLE_VIS_REASON="(ModelingAlgorithms component disabled)"
     ENABLE_VIS=no
-  elif test "xyes" != "x$HAVE_X11"; then
-    AC_MSG_WARN( [Disabling visualization component: X not found] )
-    DISABLE_VIS_REASON="(X not found)"
+  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$ENABLE_DATA"; then
+    AC_MSG_NOTICE([Disabling Visualization: not building ModelingData component])
+    DISABLE_VIS_REASON="(ModelingData component disabled)"
     ENABLE_VIS=no
-  elif test "xyes" != "x$HAVE_GL"; then
-    AC_MSG_WARN( [Disabling OpenGL portion of visualization component: GL not found] )
+  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling Visualization: not building FoundationClasses component])
+    DISABLE_VIS_REASON="(FoundationClasses component disabled)"
+    ENABLE_VIS=no
+  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_X11"; then
+    AC_MSG_NOTICE([Disabling Visualization: X11 not found])
+    DISABLE_VIS_REASON="(X11 not found)"
+    ENABLE_VIS=no
+  fi
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_GL"; then
+    AC_MSG_NOTICE([Disabling Visualization: GL not found])
     DISABLE_VIS_REASON="(GL not found)"
     ENABLE_VIS=no
-  else
-    ENABLE_VIS=yes
   fi
-elif test "xno" != "x$ENABLE_VIS"; then
-  if test "xno" = "x$ENABLE_MODEL"; then
-    AC_MSG_ERROR([Visualization requires model component.])
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_FREETYPE"; then
+    AC_MSG_NOTICE([Disabling Visualization: FREETYPE not found])
+    DISABLE_VIS_REASON="(FREETYPE not found)"
+    ENABLE_VIS=no
   fi
-fi  
-
-# Lightwieght Application Framework: requires Visualization component
-if test "x" = "x$ENABLE_OCAF"; then
-  if test "xno" = "x$ENABLE_VIS"; then
-    AC_MSG_NOTICE( [Disabling application framework: not building visualization component] )
-    DISABLE_OCAF_REASON="(Visualization Component Disabled)"
-    ENABLE_OCAF=no
-  else
-    ENABLE_OCAF=yes
+  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_FTGL"; then
+    AC_MSG_NOTICE([Disabling Visualization: FTGL not found])
+    DISABLE_VIS_REASON="(FTGL not found)"
+    ENABLE_VIS=no
   fi
-elif test "xno" != "x$ENABLE_OCAF"; then
-  if test "xno" = "x$ENABLE_VIS"; then
-    AC_MSG_ERROR([Application framework requires visualization component.])
-  fi
+else
+  DISABLE_VIS_REASON="(Disabled)"
 fi
-
-# Data Exchange Component: requires OCAF
-if test "x" = "x$ENABLE_DE"; then
-  if test "xno" = "x$ENABLE_OCAF"; then
-    AC_MSG_NOTICE( [Disabling data exchange component: not building OCAF] )
-    DISABLE_DE_REASON="(Application Framework Component Disabled)"
-    ENABLE_DE=no
-  else
-    ENABLE_DE=yes
+if test "xyes" = "x$ENABLE_CAF"; then
+  if test "xyes" = "x$ENABLE_CAF" -a "xyes" != "x$ENABLE_VIS"; then
+    AC_MSG_NOTICE([Disabling ApplicationFramework: not building Visualization component])
+    DISABLE_CAF_REASON="(Visualization component disabled)"
+    ENABLE_CAF=no
   fi
-elif test "xno" != "x$ENABLE_DE"; then
-  if test "xno" = "x$ENABLE_OCAF"; then
-    AC_MSG_ERROR([Data exchange requires application framework component.])
+  if test "xyes" = "x$ENABLE_CAF" -a "xyes" != "x$ENABLE_ALGO"; then
+    AC_MSG_NOTICE([Disabling ApplicationFramework: not building ModelingAlgorithms component])
+    DISABLE_CAF_REASON="(ModelingAlgorithms component disabled)"
+    ENABLE_CAF=no
   fi
+  if test "xyes" = "x$ENABLE_CAF" -a "xyes" != "x$ENABLE_DATA"; then
+    AC_MSG_NOTICE([Disabling ApplicationFramework: not building ModelingData component])
+    DISABLE_CAF_REASON="(ModelingData component disabled)"
+    ENABLE_CAF=no
+  fi
+  if test "xyes" = "x$ENABLE_CAF" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling ApplicationFramework: not building FoundationClasses component])
+    DISABLE_CAF_REASON="(FoundationClasses component disabled)"
+    ENABLE_CAF=no
+  fi
+else
+  DISABLE_CAF_REASON="(Disabled)"
 fi
-
-# Test Harness: requires most components and Tck/TK
-if test "x" = "x$ENABLE_DRAW"; then
-  if test "xno" = "x$ENABLE_VIS"; then
-    AC_MSG_NOTICE([Disabling test harness because visualization component will not be build.])
-    DISABLE_DRAW_REASON="(Visualiziation Component Disabled)"
-    ENABLE_DRAW=no
-  elif test "xno" = "x$ENABLE_OCAF"; then
-    AC_MSG_NOTICE([Disabling test harness because OCAF component will not be build.])
-    DISABLE_DRAW_REASON="(Application Framework Disabled)"
-    ENABLE_DRAW=no
-  elif test "xno" = "x$ENABLE_DE"; then
-    AC_MSG_NOTICE([Disabling test harness because DE component will not be build.])
-    DISABLE_DRAW_REASON="(Data Exchange Disabled)"
-    ENABLE_DRAW=no
-  elif test "xyes" != "x$HAVE_TCLTK"; then
-    AC_MSG_WARN([Disabling test harness: Tcl/TK not found.])
-    DISABLE_DRAW_REASON="(Tcl/Tk Not Found)"
-    ENABLE_DRAW=no
-  else
-    ENABLE_DRAW=yes
+if test "xyes" = "x$ENABLE_DXE"; then
+  if test "xyes" = "x$ENABLE_DXE" -a "xyes" != "x$ENABLE_CAF"; then
+    AC_MSG_NOTICE([Disabling DataExchange: not building ApplicationFramework component])
+    DISABLE_DXE_REASON="(ApplicationFramework component disabled)"
+    ENABLE_DXE=no
   fi
-elif test "xno" != "x$ENABLE_DRAW"; then
-  if test "xno" = "x$ENABLE_VIS"; then
-    AC_MSG_ERROR([Test harness requires visualization component.])
-  elif test "xno" = "x$ENABLE_OCAF"; then
-    AC_MSG_ERROR([Test harness requires OCAF component.])
-  elif test "xno" = "x$ENABLE_DE"; then
-    AC_MSG_ERROR([Test harness requires DE component.])
-  elif test "xyes" != "x$HAVE_TCLTK"; then
-    AC_MSG_ERROR([Test harness requires Tcl/Tk.])
+  if test "xyes" = "x$ENABLE_DXE" -a "xyes" != "x$ENABLE_VIS"; then
+    AC_MSG_NOTICE([Disabling DataExchange: not building Visualization component])
+    DISABLE_DXE_REASON="(Visualization component disabled)"
+    ENABLE_DXE=no
   fi
+  if test "xyes" = "x$ENABLE_DXE" -a "xyes" != "x$ENABLE_ALGO"; then
+    AC_MSG_NOTICE([Disabling DataExchange: not building ModelingAlgorithms component])
+    DISABLE_DXE_REASON="(ModelingAlgorithms component disabled)"
+    ENABLE_DXE=no
+  fi
+  if test "xyes" = "x$ENABLE_DXE" -a "xyes" != "x$ENABLE_DATA"; then
+    AC_MSG_NOTICE([Disabling DataExchange: not building ModelingData component])
+    DISABLE_DXE_REASON="(ModelingData component disabled)"
+    ENABLE_DXE=no
+  fi
+  if test "xyes" = "x$ENABLE_DXE" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling DataExchange: not building FoundationClasses component])
+    DISABLE_DXE_REASON="(FoundationClasses component disabled)"
+    ENABLE_DXE=no
+  fi
+else
+  DISABLE_DXE_REASON="(Disabled)"
 fi
-
-# Wrappers: requires java
-if test "x" = "x$ENABLE_WRAPPERS"; then
-  if test "xyes" != "x$HAVE_JAVA"; then
-    AC_MSG_WARN( [Disabling wrappers because java was not found.] )
-    ENABLE_WRAPPERS=no
-    DISABLE_WRAPPERS_REASON="(Java Not Found)"
-  else
-    ENABLE_WRAPPERS=yes
+if test "xyes" = "x$ENABLE_DRAW"; then
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_DXE"; then
+    AC_MSG_NOTICE([Disabling Draw: not building DataExchange component])
+    DISABLE_DRAW_REASON="(DataExchange component disabled)"
+    ENABLE_DRAW=no
   fi
-elif test "xno" != "x$ENABLE_WRAPPERS"; then
-  if test "xyes" != "x$HAVE_JAVA"; then
-    AC_MSG_ERROR( [Wrappers requires java.] )
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_CAF"; then
+    AC_MSG_NOTICE([Disabling Draw: not building ApplicationFramework component])
+    DISABLE_DRAW_REASON="(ApplicationFramework component disabled)"
+    ENABLE_DRAW=no
   fi
-fi  
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_VIS"; then
+    AC_MSG_NOTICE([Disabling Draw: not building Visualization component])
+    DISABLE_DRAW_REASON="(Visualization component disabled)"
+    ENABLE_DRAW=no
+  fi
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_ALGO"; then
+    AC_MSG_NOTICE([Disabling Draw: not building ModelingAlgorithms component])
+    DISABLE_DRAW_REASON="(ModelingAlgorithms component disabled)"
+    ENABLE_DRAW=no
+  fi
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_DATA"; then
+    AC_MSG_NOTICE([Disabling Draw: not building ModelingData component])
+    DISABLE_DRAW_REASON="(ModelingData component disabled)"
+    ENABLE_DRAW=no
+  fi
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$ENABLE_FOC"; then
+    AC_MSG_NOTICE([Disabling Draw: not building FoundationClasses component])
+    DISABLE_DRAW_REASON="(FoundationClasses component disabled)"
+    ENABLE_DRAW=no
+  fi
+  if test "xyes" = "x$ENABLE_DRAW" -a "xyes" != "x$HAVE_TCLTK"; then
+    AC_MSG_NOTICE([Disabling Draw: TCLTK not found])
+    DISABLE_DRAW_REASON="(TCLTK not found)"
+    ENABLE_DRAW=no
+  fi
+else
+  DISABLE_DRAW_REASON="(Disabled)"
+fi
 
 # Convert to automake conditional values
-AM_CONDITIONAL(ENABLE_MODEL,[test "xno" != "x$ENABLE_MODEL"])
-AM_CONDITIONAL(ENABLE_VIS,[test "xno" != "x$ENABLE_VIS"])
-AM_CONDITIONAL(ENABLE_OCAF,[test "xno" != "x$ENABLE_OCAF"])
-AM_CONDITIONAL(ENABLE_DE,[test "xno" != "x$ENABLE_DE"])
-AM_CONDITIONAL(ENABLE_DRAW,[test "xno" != "x$ENABLE_DRAW"])
-AM_CONDITIONAL(ENABLE_WRAPPERS,[test "xno" != "x$ENABLE_WRAPPERS"])
-
-
-
+AM_CONDITIONAL([ENABLE_FOC], [test "xyes" = "x$ENABLE_FOC"])
+AM_CONDITIONAL([ENABLE_DATA], [test "xyes" = "x$ENABLE_DATA"])
+AM_CONDITIONAL([ENABLE_ALGO], [test "xyes" = "x$ENABLE_ALGO"])
+AM_CONDITIONAL([ENABLE_VIS], [test "xyes" = "x$ENABLE_VIS"])
+AM_CONDITIONAL([ENABLE_CAF], [test "xyes" = "x$ENABLE_CAF"])
+AM_CONDITIONAL([ENABLE_DXE], [test "xyes" = "x$ENABLE_DXE"])
+AM_CONDITIONAL([ENABLE_DRAW], [test "xyes" = "x$ENABLE_DRAW"])
 
 #----------------------------------------------------------------------
 #
@@ -866,11 +1021,16 @@ AC_SUBST(CSF_SOCKETLibs_LIB)
 AC_SUBST(CSF_FPELibs_LIB)
 AC_SUBST(CSF_OpenGlLibs_INCLUDES)
 AC_SUBST(CSF_OpenGlLibs_LIB)
+AC_SUBST(HAVE_FREETYPE)
 AC_SUBST(CSF_FREETYPE_INCLUDES)
+AC_SUBST(CSF_FREETYPE_LIB)
+AC_SUBST(HAVE_FTGL)
 AC_SUBST(CSF_FTGL_INCLUDES)
 AC_SUBST(CSF_FTGL_LIB)
+AC_SUBST(HAVE_GL2PS)
 AC_SUBST(CSF_GL2PS_INCLUDES)
 AC_SUBST(CSF_GL2PS_LIB)
+AC_SUBST(HAVE_FREEIMAGE)
 AC_SUBST(CSF_FreeImagePlus_INCLUDES)
 AC_SUBST(CSF_FreeImagePlus_LIB)
 AC_SUBST(CSF_advapi32_LIB)
@@ -881,11 +1041,16 @@ AC_SUBST(CSF_XwLibs_LIB)
 AC_SUBST(CSF_MotifLibs_LIB)
 AC_SUBST(CSF_XmuLibs_LIB)
 AC_SUBST(CSF_XmuLibs_INCLUDES)
+AC_SUBST(HAVE_TBB)
 AC_SUBST(CSF_TBB_INCLUDES)
 AC_SUBST(CSF_TBB_LIB)
+AC_SUBST(HAVE_QT)
 AC_SUBST(CSF_QT_INCLUDES)
 AC_SUBST(CSF_QT_LIB)
 
+AC_SUBST(CSF_OPT_INC)
+AC_SUBST(CSF_OPT_LIB)
+AC_SUBST(CSF_OPT_BIN)
 
 echo
 echo "CC       = $CC"
@@ -895,6 +1060,12 @@ echo "CXXFLAGS = $CXXFLAGS"
 echo "CPPFLAGS = $CPPFLAGS"
 echo "LDFLAGS  = $LDFLAGS"
 echo 
+echo "3rdparty mandatory products       "
+echo "---------------------------------"
+echo "freetype      : $HAVE_FREETYPE $DISABLE_FREETYPE_REASON"
+echo "ftgl          : $HAVE_FTGL $DISABLE_FTGL_REASON"
+echo "tcltk         : $HAVE_TCLTK $DISABLE_TCLTK_REASON"
+echo
 echo "3rdparty optional products       "
 echo "---------------------------------"
 echo "gl2ps         : $HAVE_GL2PS $DISABLE_GL2PS_REASON"
@@ -904,15 +1075,17 @@ echo "tbb libraries : $HAVE_TBB $DISABLE_TBB_REASON_LIB"
 echo
 echo "Component                   Build"
 echo "--------------------------  -----"
-echo "Model data & algorithms     $ENABLE_MODEL $DISABLE_MODEL_REASON"
+echo "FoundationClasses           $ENABLE_FOC $DISABLE_FOC_REASON"
+echo "ModelingData                $ENABLE_DATA $DISABLE_DATA_REASON"
+echo "ModelingAlgorithms          $ENABLE_ALGO $DISABLE_ALGO_REASON"
 echo "Visualization               $ENABLE_VIS $DISABLE_VIS_REASON"
-echo "Data Exchange               $ENABLE_DE $DISABLE_DE_REASON"
-echo "Application Framework       $ENABLE_OCAF $DISABLE_OCAF_REASON"
-echo "Test Harness (DRAW)         $ENABLE_DRAW $DISABLE_DRAW_REASON"
+echo "ApplicationFramework        $ENABLE_CAF $DISABLE_CAF_REASON"
+echo "DataExchange                $ENABLE_DXE $DISABLE_DXE_REASON"
+echo "Draw                        $ENABLE_DRAW $DISABLE_DRAW_REASON"
+
 echo
 
-
-AC_OUTPUT([Makefile adm/make/Makefile \
+AC_OUTPUT([Makefile adm/make/Makefile custom.sh \
 adm/make/TKernel/Makefile \
 adm/make/TKMath/Makefile \
 adm/make/TKAdvTools/Makefile \
@@ -924,14 +1097,14 @@ adm/make/TKGeomAlgo/Makefile \
 adm/make/TKTopAlgo/Makefile \
 adm/make/TKPrim/Makefile \
 adm/make/TKBO/Makefile \
-adm/make/TKHLR/Makefile \
-adm/make/TKMesh/Makefile \
-adm/make/TKShHealing/Makefile \
-adm/make/TKXMesh/Makefile \
 adm/make/TKBool/Makefile \
+adm/make/TKHLR/Makefile \
 adm/make/TKFillet/Makefile \
-adm/make/TKFeat/Makefile \
 adm/make/TKOffset/Makefile \
+adm/make/TKFeat/Makefile \
+adm/make/TKMesh/Makefile \
+adm/make/TKXMesh/Makefile \
+adm/make/TKShHealing/Makefile \
 adm/make/TKService/Makefile \
 adm/make/TKV2d/Makefile \
 adm/make/TKV3d/Makefile \
@@ -939,38 +1112,38 @@ adm/make/TKOpenGl/Makefile \
 adm/make/TKMeshVS/Makefile \
 adm/make/TKNIS/Makefile \
 adm/make/TKVoxel/Makefile \
-adm/make/TKCDF/Makefile \
 adm/make/PTKernel/Makefile \
-adm/make/TKLCAF/Makefile \
-adm/make/FWOSPlugin/Makefile \
 adm/make/TKPShape/Makefile \
+adm/make/TKCDF/Makefile \
+adm/make/TKLCAF/Makefile \
 adm/make/TKCAF/Makefile \
 adm/make/TKBinL/Makefile \
 adm/make/TKXmlL/Makefile \
-adm/make/TKPLCAF/Makefile \
-adm/make/TKTObj/Makefile \
 adm/make/TKShapeSchema/Makefile \
+adm/make/TKPLCAF/Makefile \
 adm/make/TKBin/Makefile \
 adm/make/TKXml/Makefile \
 adm/make/TKPCAF/Makefile \
-adm/make/TKBinTObj/Makefile \
-adm/make/TKXmlTObj/Makefile \
+adm/make/FWOSPlugin/Makefile \
 adm/make/TKStdLSchema/Makefile \
 adm/make/TKStdSchema/Makefile \
-adm/make/TKVRML/Makefile \
-adm/make/TKXCAF/Makefile \
-adm/make/TKSTL/Makefile \
+adm/make/TKTObj/Makefile \
+adm/make/TKBinTObj/Makefile \
+adm/make/TKXmlTObj/Makefile \
 adm/make/TKXSBase/Makefile \
-adm/make/TKXCAFSchema/Makefile \
-adm/make/TKXmlXCAF/Makefile \
-adm/make/TKBinXCAF/Makefile \
 adm/make/TKSTEPBase/Makefile \
-adm/make/TKIGES/Makefile \
 adm/make/TKSTEPAttr/Makefile \
 adm/make/TKSTEP209/Makefile \
-adm/make/TKXDEIGES/Makefile \
 adm/make/TKSTEP/Makefile \
+adm/make/TKIGES/Makefile \
+adm/make/TKXCAF/Makefile \
+adm/make/TKXCAFSchema/Makefile \
+adm/make/TKXDEIGES/Makefile \
 adm/make/TKXDESTEP/Makefile \
+adm/make/TKSTL/Makefile \
+adm/make/TKVRML/Makefile \
+adm/make/TKXmlXCAF/Makefile \
+adm/make/TKBinXCAF/Makefile \
 adm/make/TKDraw/Makefile \
 adm/make/TKTopTest/Makefile \
 adm/make/TKViewerTest/Makefile \
@@ -978,5 +1151,6 @@ adm/make/TKXSDRAW/Makefile \
 adm/make/TKDCAF/Makefile \
 adm/make/TKXDEDRAW/Makefile \
 adm/make/TKTObjDRAW/Makefile \
+adm/make/TKQADraw/Makefile \
 adm/make/DRAWEXE/Makefile \
 ])

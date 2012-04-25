@@ -1,7 +1,23 @@
-// File:	IntRes2d_Intersection.cxx
-// Created:	Tue Apr 28 10:21:36 1992
-// Author:	Laurent BUCHARD
-//		<lbr@topsn3>
+// Created on: 1992-04-28
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <IntRes2d_Intersection.ixx>
@@ -233,41 +249,10 @@ void IntRes2d_Intersection::Append( const IntRes2d_Intersection& Other
 	const IntRes2d_IntersectionPoint& AnP1=lseg(j).FirstPoint();
 	Standard_Real AnP1PParamOnFirst=AnP1.ParamOnFirst();
 	Standard_Real AnP1PParamOnSecond=AnP1.ParamOnSecond();
-#if DEB
-	const IntRes2d_Transition& AnP1T1=AnP1.TransitionOfFirst();
-#else
-        AnP1.TransitionOfFirst();
-#endif
-#if DEB
-	const IntRes2d_Transition& AnP1T2=AnP1.TransitionOfSecond();
-#else
-        AnP1.TransitionOfSecond();
-#endif
-#if DEB
-	const gp_Pnt2d& AnPt1=AnP1.Value();
-#else
-        AnP1.Value();
-#endif
 	
 	const IntRes2d_IntersectionPoint& AnP2=lseg(j).LastPoint();
 	Standard_Real AnP2PParamOnFirst=AnP2.ParamOnFirst();
 	Standard_Real AnP2PParamOnSecond=AnP2.ParamOnSecond();
-#if DEB
-	const IntRes2d_Transition& AnP2T1=AnP2.TransitionOfFirst();
-#else
-        AnP2.TransitionOfFirst();
-#endif
-#if DEB
-	const IntRes2d_Transition& AnP2T2=AnP2.TransitionOfSecond();
-#else
-        AnP2.TransitionOfSecond();
-#endif
-#if DEB
-	const gp_Pnt2d& AnPt2=AnP2.Value();
-#else
-        AnP2.Value();
-#endif
-
 
 	if(Opposite == lseg(j).IsOpposite()) {
 	  //---------------------------------------------------------------

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 /***********************************************************************
 
@@ -48,6 +66,7 @@
 #include <Standard_ErrorHandler.hxx>
 
 #include <Aspect.hxx>
+#include <Aspect_IdentDefinitionError.hxx>
 
 #include <Graphic3d_GraphicDriver.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
@@ -81,11 +100,14 @@ MyViewGenId (View_IDMIN+((View_IDMIN+View_IDMAX)/(Visual3d_ViewManager::Limit ()
 MyZBufferAuto (Standard_False),
 MyTransparency (Standard_False)
 {
+  // default layer is always presented in display layer sequence
+  // it can not be removed
+  myLayerIds.Add (0);
+  myLayerSeq.Append (0);
 
-Handle(Aspect_GraphicDriver) agd = aDevice->GraphicDriver ();
+  Handle(Aspect_GraphicDriver) agd = aDevice->GraphicDriver ();
 
-	MyGraphicDriver = *(Handle(Graphic3d_GraphicDriver) *) &agd;
-
+  MyGraphicDriver = *(Handle(Graphic3d_GraphicDriver) *) &agd;
 }
 
 //-Destructors
@@ -110,11 +132,6 @@ void Visual3d_ViewManager::Remove () {
 	//
 	// Destroy all defined views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 
 #ifdef DESTROY
 	cout << "The Manager " << MyId << " have " << Length << " defined views\n";
@@ -137,11 +154,6 @@ void Visual3d_ViewManager::ChangeDisplayPriority (const Handle(Graphic3d_Structu
 	//
 	// Change structure priority in all defined views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -192,8 +204,6 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
 #endif
   Standard_Integer ViewId = theView->Identification ();
 
-  Standard_Integer indexD = 0;
-
   // Even if physically the structure cannot
   // be displayed (pb of visualisation type)
   // it has status Displayed.
@@ -217,11 +227,6 @@ void Visual3d_ViewManager::ReCompute (const Handle(Graphic3d_Structure)& AStruct
 
 void Visual3d_ViewManager::Clear (const Handle(Graphic3d_Structure)& AStructure, const Standard_Boolean WithDestruction) {
 
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -235,11 +240,6 @@ void Visual3d_ViewManager::Clear (const Handle(Graphic3d_Structure)& AStructure,
 
 void Visual3d_ViewManager::Connect (const Handle(Graphic3d_Structure)& AMother, const Handle(Graphic3d_Structure)& ADaughter) {
 
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -253,11 +253,6 @@ void Visual3d_ViewManager::Connect (const Handle(Graphic3d_Structure)& AMother, 
 
 void Visual3d_ViewManager::Disconnect (const Handle(Graphic3d_Structure)& AMother, const Handle(Graphic3d_Structure)& ADaughter) {
 
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -306,11 +301,6 @@ void Visual3d_ViewManager::Erase (const Handle(Graphic3d_Structure)& AStructure)
 	//
 	// Erase structure in all defined views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -344,11 +334,6 @@ void Visual3d_ViewManager::Highlight (const Handle(Graphic3d_Structure)& AStruct
 	//
 	// Highlight in all activated views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -362,11 +347,6 @@ void Visual3d_ViewManager::Highlight (const Handle(Graphic3d_Structure)& AStruct
 
 void Visual3d_ViewManager::SetTransform (const Handle(Graphic3d_Structure)& AStructure, const TColStd_Array2OfReal& ATrsf) {
 
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -398,11 +378,6 @@ void Visual3d_ViewManager::UnHighlight (const Handle(Graphic3d_Structure)& AStru
 	//
 	// UnHighlight in all activated views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -475,11 +450,6 @@ Handle(Visual3d_HSetOfView) Visual3d_ViewManager::ActivatedView () const {
 
 Handle (Visual3d_HSetOfView) SG = new Visual3d_HSetOfView ();
 
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
 
 	while (MyIterator.More ()) {
@@ -573,11 +543,6 @@ Standard_Real Dx, Dy, Ratio;
       Standard_Real APT;
 
       Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
-#ifdef DEB
-      Standard_Integer Length = MyDefinedView.Extent ();
-#else
-      MyDefinedView.Extent ();
-#endif
 
       Standard_Integer stop = 0;
 
@@ -980,150 +945,6 @@ Standard_Boolean BResult;
 
 }
 
-Visual3d_PickDescriptor Visual3d_ViewManager::Pick (const Visual3d_ContextPick& CTX, const Handle(Aspect_Window)& AWindow, const Standard_Integer AX, const Standard_Integer AY) {
-
-// The marking is activated only if the data is correct
-Standard_Boolean DoPick = Standard_False;
-
-CALL_DEF_PICK apick;
-Standard_Integer Width, Height;
-
-	// Parse the list of views to find a 
-	// view having this specified window
-	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
-	int TheWindowIdOfView;
-
-#ifndef WNT
-const Handle(Xw_Window) THEWindow = *(Handle(Xw_Window) *) &AWindow;
-	int TheSpecifiedWindowId = int (THEWindow->XWindow ());
-#else
-const Handle(WNT_Window) THEWindow = *(Handle(WNT_Window) *) &AWindow;
-	int TheSpecifiedWindowId = int (THEWindow->HWindow ());
-#endif  // WNT
-
-	while ((! DoPick) && (MyIterator.More ())) {
-
-	   if ( ((MyIterator.Value ())->IsDefined ()) &&
-		((MyIterator.Value ())->IsActive ()) ) {
-
-const Handle(Aspect_Window) AspectWindow = (MyIterator.Value ())->Window ();
-#ifndef WNT
-const Handle(Xw_Window) theWindow = *(Handle(Xw_Window) *) &AspectWindow;
-	TheWindowIdOfView = int (theWindow->XWindow ());
-#else
-const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AspectWindow;
-	TheWindowIdOfView = int (theWindow->HWindow ());
-#endif  // WNT
-		// Comparision on window IDs
-		if (TheWindowIdOfView == TheSpecifiedWindowId) {
-			DoPick		= Standard_True;
-
-			// Update
-			apick.WsId	=
-			int ((MyIterator.Value ())->Identification ());
-
-			apick.ViewId	=
-			int ((MyIterator.Value ())->Identification ());
-#ifndef WNT
-			apick.DefWindow.XWindow	= TheSpecifiedWindowId;
-#else
-			apick.DefWindow.XWindow	= (HWND) TheSpecifiedWindowId;
-#endif
-
-			apick.x			= int (AX);
-			apick.y			= int (AY);
-
-			theWindow->Size (Width, Height);
-			apick.DefWindow.dx	= float (Width);
-			apick.DefWindow.dy	= float (Height);
-
-			apick.Context.aperture	= (float) CTX.Aperture ();
-			apick.Context.order	= int (CTX.Order ());
-			apick.Context.depth	= int (CTX.Depth ());
-
-		}
-	   } /* if ((MyIterator.Value ())->IsDefined ()) { */
-
-	   // MyIterator.Next () is located on the next view
-	   MyIterator.Next ();
-	}
-
-	if (DoPick)
-		MyGraphicDriver->Pick (apick);
-	else
-		apick.Pick.depth	= 0;
-
-	// Picking : return
-Standard_Integer i, j=0;
-Standard_Integer NbPick;
-
-Visual3d_PickDescriptor PDes (CTX);
-Visual3d_PickPath PPat;
-
-	PDes.Clear ();
-	NbPick	= 0;
-	// For i=0 it is not a graphic structure it is a view structure
-	// For i=1 it is the displayed graphic structure
-	// For i=2 to apick.Pick.depth-1 it is the connected graphic structures
-	if (apick.Pick.depth != 0) {
-	    j = apick.Pick.listid[1];
-	    if ((Graphic3d_StructureManager::Identification (j))->
-						IsSelectable ()) {
-		// Maj element number
-		PPat.SetElementNumber (apick.Pick.listelem[1]);
-		// Maj pick identifier
-		PPat.SetPickIdentifier (apick.Pick.listpickid[1]);
-		// Maj structure
-		PPat.SetStructIdentifier
-			(Graphic3d_StructureManager::Identification (j));
-		// Maj PickPath
-		PDes.AddPickPath (PPat);
-		NbPick++;
-	    }
-	}
-
-	// Not very efficient, revise (CAL 22/09/95)
-	if (apick.Pick.depth > 2) {
-Handle(Graphic3d_Structure) StructCur =
-	Graphic3d_StructureManager::Identification (j);
-Standard_Boolean found;
-Graphic3d_MapOfStructure Set;
-
-	    for (i=2; i<apick.Pick.depth; i++) {
-		found = Standard_False;
-		j = apick.Pick.listid[i-1];
-		Set.Clear ();
-		StructCur->Descendants (Set);
-Graphic3d_MapIteratorOfMapOfStructure IteratorD (Set);
-
-		j = apick.Pick.listid[i];
-		while (IteratorD.More () && !found) {
-		    StructCur = IteratorD.Key ();
-		    if (StructCur->Identification () == j ) {
-			found = Standard_True;
-			// Maj element number
-			PPat.SetElementNumber (apick.Pick.listelem[i]);
-			// Maj pick identifier
-			PPat.SetPickIdentifier (apick.Pick.listpickid[i]);
-			// Maj structure
-			PPat.SetStructIdentifier (StructCur);
-			// Maj PickPath
-			PDes.AddPickPath (PPat);
-			NbPick++;
-		    }
-		    // IteratorD.Next () is located on the next structure
-		    IteratorD.Next ();
-		}
-	    }
-	}
-
-	apick.Pick.depth	= int (NbPick);
-
-	MyGraphicDriver->InitPick ();
-
-	return (PDes);
-
-}
 
 Standard_Boolean Visual3d_ViewManager::ViewExists (const Handle(Aspect_Window)& AWindow, Graphic3d_CView& TheCView) const {
 
@@ -1177,12 +998,6 @@ void Visual3d_ViewManager::Activate () {
 	//
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
-
 	while (MyIterator.More ()) {
 		if (! (MyIterator.Value ())->IsActive ())
 			(MyIterator.Value ())->Activate ();
@@ -1198,11 +1013,6 @@ void Visual3d_ViewManager::Deactivate () {
 	//
 	// Deactivates all activated views
 	//
-#ifdef DEB
-	Standard_Integer Length = MyDefinedView.Extent ();
-#else
-        MyDefinedView.Extent ();
-#endif
 	Visual3d_SetIteratorOfSetOfView MyIterator(MyDefinedView);
  
 	while (MyIterator.More ()) {
@@ -1338,4 +1148,144 @@ const Handle(Visual3d_Layer)& Visual3d_ViewManager::OverLayer () const {
 
 	return (MyOverLayer);
 
+}
+
+//=======================================================================
+//function : ChangeZLayer
+//purpose  : 
+//=======================================================================
+
+void Visual3d_ViewManager::ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure,
+                                         const Standard_Integer theLayerId)
+{
+  if (!myLayerIds.Contains (theLayerId))
+    return;
+  
+  // change display layer for structure in all views
+  if (MyDisplayedStructure.Contains (theStructure))
+  {
+    Visual3d_SetIteratorOfSetOfView aViewIt(MyDefinedView);
+    for ( ; aViewIt.More (); aViewIt.Next ())
+      (aViewIt.Value ())->ChangeZLayer (theStructure, theLayerId);
+  }
+  
+  // tell graphic driver to update the structure's display layer
+  MyGraphicDriver->ChangeZLayer (
+    (*(Graphic3d_CStructure*)theStructure->CStructure ()), theLayerId);
+}
+
+//=======================================================================
+//function : GetZLayer
+//purpose  :
+//=======================================================================
+
+Standard_Integer Visual3d_ViewManager::GetZLayer (const Handle(Graphic3d_Structure)& theStructure) const
+{
+  Graphic3d_CStructure& aStructure =
+    (*(Graphic3d_CStructure*)theStructure->CStructure ());
+
+  return MyGraphicDriver->GetZLayer (aStructure);
+}
+
+//=======================================================================
+//function : AddZLayer
+//purpose  :
+//=======================================================================
+
+Standard_Boolean Visual3d_ViewManager::AddZLayer (Standard_Integer& theLayerId)
+{
+  try
+  {
+    OCC_CATCH_SIGNALS
+    theLayerId = getZLayerGenId ().Next ();
+    myLayerIds.Add (theLayerId);
+    myLayerSeq.Append (theLayerId);
+  }
+  catch (Aspect_IdentDefinitionError)
+  {
+    // new index can't be generated
+    return Standard_False;
+  }
+
+  // tell all managed views to remove display layers
+  Visual3d_SetIteratorOfSetOfView aViewIt(MyDefinedView);
+  for ( ; aViewIt.More (); aViewIt.Next ())
+    (aViewIt.Value ())->AddZLayer (theLayerId);
+
+  return Standard_True;
+}
+
+//=======================================================================
+//function : RemoveZLayer
+//purpose  : 
+//=======================================================================
+
+Standard_Boolean Visual3d_ViewManager::RemoveZLayer (const Standard_Integer theLayerId)
+{
+  if (!myLayerIds.Contains (theLayerId) || theLayerId == 0)
+    return Standard_False;
+
+  // tell all managed views to remove display layers
+  Visual3d_SetIteratorOfSetOfView aViewIt(MyDefinedView);
+  for ( ; aViewIt.More (); aViewIt.Next ())
+    (aViewIt.Value ())->RemoveZLayer (theLayerId);
+
+  MyGraphicDriver->UnsetZLayer (theLayerId);
+
+  // remove index
+  for (int aIdx = 1; aIdx <= myLayerSeq.Length (); aIdx++)
+    if (myLayerSeq(aIdx) == theLayerId)
+    {
+      myLayerSeq.Remove (aIdx);
+      break;
+    }
+
+  myLayerIds.Remove (theLayerId);
+  getZLayerGenId ().Free (theLayerId);
+
+  return Standard_True;
+}
+
+//=======================================================================
+//function : GetAllZLayers
+//purpose  :
+//=======================================================================
+
+void Visual3d_ViewManager::GetAllZLayers (TColStd_SequenceOfInteger& theLayerSeq) const
+{
+  theLayerSeq.Assign (myLayerSeq);
+}
+
+//=======================================================================
+//function : getZLayerGenId
+//purpose  :
+//=======================================================================
+
+Aspect_GenId& Visual3d_ViewManager::getZLayerGenId ()
+{
+  static Aspect_GenId aGenId (1, IntegerLast());
+  return aGenId;
+}
+
+//=======================================================================
+//function : InstallZLayers
+//purpose  :
+//=======================================================================
+
+void Visual3d_ViewManager::InstallZLayers(const Handle(Visual3d_View)& theView) const
+{
+  if (!MyDefinedView.Contains (theView))
+    return;
+  
+  // erase and insert layers iteratively to provide the same layer order as
+  // in the view manager's sequence. This approach bases on the layer insertion
+  // order: the new layers are always appended to the end of the list
+  // inside of view, while layer remove operation doesn't affect the order.
+  // Starting from second layer : no need to change the default z layer.
+  for (Standard_Integer aSeqIdx = 2; aSeqIdx <= myLayerSeq.Length (); aSeqIdx++)
+  {
+    Standard_Integer aLayerID = myLayerSeq.Value (aSeqIdx);
+    theView->RemoveZLayer (aLayerID);
+    theView->AddZLayer (aLayerID);
+  }
 }

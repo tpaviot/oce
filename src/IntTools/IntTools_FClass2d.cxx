@@ -1,7 +1,23 @@
-// File:	IntTools_FClass2d.cxx
-// Created:	Wed Mar 22 09:44:18 1995
-// Author:	Laurent BUCHARD
-//		<lbr@mastox>
+// Created on: 1995-03-22
+// Created by: Laurent BUCHARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntTools_FClass2d.ixx>
 
@@ -38,7 +54,7 @@
 //function : IntTools_FClass2d:IntTools:_FClass2d
 //purpose  : 
 //=======================================================================
-  IntTools_FClass2d::IntTools_FClass2d()
+IntTools_FClass2d::IntTools_FClass2d()
 {
 }
 //=======================================================================
@@ -473,21 +489,21 @@
        || surf->GetType()==GeomAbs_Torus
        || surf->GetType()==GeomAbs_Sphere
        || surf->GetType()==GeomAbs_SurfaceOfRevolution) { 
-      Standard_Real uuu=PI+PI-(Umax-Umin);
+      Standard_Real uuu=M_PI+M_PI-(Umax-Umin);
       if(uuu<0) uuu=0;
       U1 = Umin-uuu*0.5;
-      U2 = U1+PI+PI;
+      U2 = U1+M_PI+M_PI;
     }
     else { 
       U1=U2=0.0; 
     } 
     
     if(surf->GetType()==GeomAbs_Torus) { 
-      Standard_Real uuu=PI+PI-(Vmax-Vmin);
+      Standard_Real uuu=M_PI+M_PI-(Vmax-Vmin);
       if(uuu<0) uuu=0;
       
       V1 = Vmin-uuu*0.5;
-      V2 = V1+PI+PI;
+      V2 = V1+M_PI+M_PI;
     }
     else { 
       V1=V2=0.0; 

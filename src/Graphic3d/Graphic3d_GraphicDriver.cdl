@@ -1,7 +1,23 @@
+-- Created on: 1997-01-28
+-- Created by: CAL
+-- Copyright (c) 1997-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
 --
--- File:    Graphic3d_GraphicDriver.cdl
--- Created: Mardi 28 janvier 1997
--- Author:  CAL
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 -- Modified:    01/08/97 ; PCT : ajout texture mapping
 --              07/08/97 ; PCT : ajout texture environnante
 --              27/08/97 ; PCT : ajout coordonnee texture
@@ -25,19 +41,15 @@
 --      23/12/02 ; SAV : Added methods to set background image and its
 --                       appearence style
 --              20/01/09 ; ABD : Integration support of system fonts (using FTGL and FreeType)
---
---              Copyright:  MatraDatavision 1997
---
 
 deferred class GraphicDriver from Graphic3d inherits GraphicDriver from Aspect
 
     ---Version:
 
-    ---Purpose: This class allows the definition of a graphic
-    --      driver and encapsulates the Pex driver, the
-    --      OpenGl driver, the Optimizer driver and the Phigs driver.
+    ---Purpose: This class allows the definition of a graphic driver
+    --      (currently only OpenGl driver is used).
 
-    ---Keywords: Pex, OpenGl, Optimizer, Phigs
+    ---Keywords: OpenGl
 
     ---Warning:
     ---References:
@@ -50,6 +62,7 @@ uses
     Array1OfReal        from TColStd,
     Array2OfReal        from TColStd,
 
+    AsciiString         from TCollection,
     ExtendedString      from TCollection,
 
     NameOfColor         from Quantity,
@@ -321,59 +334,6 @@ is
         is deferred;
     ---Purpose: call_togl_structure
 
-    --------------------------------
-    -- Category: Exploration methods
-    --------------------------------
-
-    DumpGroup ( me      : mutable;
-                ACGroup : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_structure_exploration
-
-    DumpStructure ( me          : mutable;
-                    ACStructure : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_structure_exploration
-
-    DumpView ( me       : mutable;
-               ACView   : CView from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_view_exploration
-
-    ElementExploration ( me             : mutable;
-                         ACStructure    : CStructure from Graphic3d;
-                         ElementNumber  : Integer from Standard;
-                         AVertex        : out VertexNC from Graphic3d;
-                         AVector        : out Vector from Graphic3d )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_element_exploration
-
-    ElementType ( me            : mutable;
-                  ACStructure   : CStructure from Graphic3d;
-                  ElementNumber : Integer from Standard )
-        returns TypeOfPrimitive from Graphic3d
-        is deferred;
-    ---Purpose: call_togl_element_type
-
-    ------------------------------------
-    -- Category: Pick management methods
-    ------------------------------------
-
-    InitPick ( me   : mutable )
-        is deferred;
-    ---Purpose: call_togl_init_pick
-
-    Pick ( me   : mutable;
-           ACPick   : out CPick from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_pick
-
-    PickId ( me         : mutable;
-             ACGroup    : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_pickid
-
     ------------------------------------
     -- Category: Structured mode methods
     ------------------------------------
@@ -400,7 +360,7 @@ is
 			 AColor2: Color from Quantity;
                          FillStyle : GradientFillMethod from Aspect
                        )
-    is virtual;
+    is deferred;
     ---Purpose: call_togl_gradient_background
 
 
@@ -418,7 +378,7 @@ is
     SetBgGradientStyle( me        : mutable;
                         ACView    : CView from Graphic3d;
                         FillStyle : GradientFillMethod from Aspect )
-    is virtual;
+    is deferred;
 
     ClipLimit ( me      : mutable;
                 ACView  : CView from Graphic3d;
@@ -594,166 +554,6 @@ is
         is deferred;
     ---Purpose: call_togl_polygon
 
-    Polygon ( me            : mutable;
-              ACGroup       : CGroup from Graphic3d;
-              ListVertex    : Array1OfVertex from Graphic3d;
-              Normal        : Vector from Graphic3d;
-              AType         : TypeOfPolygon from Graphic3d = Graphic3d_TOP_CONVEX;
-              EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon
-
-    Polygon ( me            : mutable;
-              ACGroup       : CGroup from Graphic3d;
-              ListVertex    : Array1OfVertexN from Graphic3d;
-              AType         : TypeOfPolygon from Graphic3d = Graphic3d_TOP_CONVEX;
-              EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon
-
-    Polygon ( me            : mutable;
-              ACGroup       : CGroup from Graphic3d;
-              ListVertex    : Array1OfVertexN from Graphic3d;
-              Normal        : Vector from Graphic3d;
-              AType         : TypeOfPolygon from Graphic3d = Graphic3d_TOP_CONVEX;
-              EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon
-
-    Polygon ( me            : mutable;
-              ACGroup       : CGroup from Graphic3d;
-              ListVertex    : Array1OfVertexNT from Graphic3d;
-              AType         : TypeOfPolygon from Graphic3d = Graphic3d_TOP_CONVEX;
-              EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon
-
-    PolygonHoles ( me          : mutable;
-                   ACGroup     : CGroup from Graphic3d;
-                   Bounds      : Array1OfInteger from TColStd;
-                   ListVertex  : Array1OfVertex from Graphic3d;
-                   EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_holes
-
-    PolygonHoles ( me          : mutable;
-                   ACGroup     : CGroup from Graphic3d;
-                   Bounds      : Array1OfInteger from TColStd;
-                   ListVertex  : Array1OfVertex from Graphic3d;
-                   Normal      : Vector from Graphic3d;
-                   EvalMinMax  : Boolean from Standard = Standard_True )
-                   is deferred;
-    ---Purpose: call_togl_polygon_holes
-
-    PolygonHoles ( me          : mutable;
-                   ACGroup     : CGroup from Graphic3d;
-                   Bounds      : Array1OfInteger from TColStd;
-                   ListVertex  : Array1OfVertexN from Graphic3d;
-                   EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_holes
-
-    PolygonHoles ( me          : mutable;
-                   ACGroup     : CGroup from Graphic3d;
-                   Bounds      : Array1OfInteger from TColStd;
-                   ListVertex  : Array1OfVertexN from Graphic3d;
-                   Normal      : Vector from Graphic3d;
-                   EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_holes
-
-    ----------------------------------------
-    -- Category: Methods to create Polyline
-    -- for Purpose : see Graphic3d_Group.cdl
-    ----------------------------------------
-
-    Polyline ( me                       : mutable;
-               ACGroup                  : CGroup from Graphic3d;
-               X1, Y1, Z1, X2, Y2, Z2   : Real from Standard;
-               EvalMinMax               : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polyline
-
-    Polyline ( me           : mutable;
-               ACGroup      : CGroup from Graphic3d;
-               ListVertex   : Array1OfVertex from Graphic3d;
-               EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polyline
-
-    Polyline ( me           : mutable;
-               ACGroup      : CGroup from Graphic3d;
-               ListVertex   : Array1OfVertexC from Graphic3d;
-               EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polyline
-
-    -----------------------------------------
-    -- Category: Methods to create Quadrangle
-    -- for Purpose : see Graphic3d_Group.cdl
-    -----------------------------------------
-
-    QuadrangleMesh ( me         : mutable;
-                     ACGroup    : CGroup from Graphic3d;
-                     ListVertex : Array2OfVertex from Graphic3d;
-                     EvalMinMax : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_quadrangle
-
-    QuadrangleMesh ( me         : mutable;
-                     ACGroup    : CGroup from Graphic3d;
-                     ListVertex : Array2OfVertexN from Graphic3d;
-                     EvalMinMax : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_quadrangle
-
-    QuadrangleMesh ( me         : mutable;
-                     ACGroup    : CGroup from Graphic3d;
-                     ListVertex : Array2OfVertexNT from Graphic3d;
-                     EvalMinMax : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_quadrangle
-
-    QuadrangleSet ( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    ListVertex  : Array1OfVertex from Graphic3d;
-                    ListEdge    : Array1OfEdge from Aspect;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    QuadrangleSet ( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    ListVertex  : Array1OfVertexN from Graphic3d;
-                    ListEdge    : Array1OfEdge from Aspect;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    QuadrangleSet ( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    ListVertex  : Array1OfVertexNT from Graphic3d;
-                    ListEdge    : Array1OfEdge from Aspect;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    QuadrangleSet ( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    ListVertex  : Array1OfVertexC from Graphic3d;
-                    ListEdge    : Array1OfEdge from Aspect;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    QuadrangleSet ( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    ListVertex  : Array1OfVertexNC from Graphic3d;
-                    ListEdge    : Array1OfEdge from Aspect;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
     ----------------------------------------
     -- Category: Methods to create Text
     -- for Purpose : see Graphic3d_Group.cdl
@@ -808,67 +608,6 @@ is
     -- for Purpose : see Graphic3d_Group.cdl
     ----------------------------------------
 
-    TriangleMesh ( me           : mutable;
-                   ACGroup      : CGroup from Graphic3d;
-                   ListVertex   : Array1OfVertex from Graphic3d;
-                   EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_triangle
-
-    TriangleMesh ( me           : mutable;
-                   ACGroup      : CGroup from Graphic3d;
-                   ListVertex   : Array1OfVertexN from Graphic3d;
-                   EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_triangle
-
-    TriangleMesh ( me           : mutable;
-                   ACGroup      : CGroup from Graphic3d;
-                   ListVertex   : Array1OfVertexNT from Graphic3d;
-                   EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_triangle
-
-    TriangleSet ( me            : mutable;
-                  ACGroup       : CGroup from Graphic3d;
-                  ListVertex    : Array1OfVertex from Graphic3d;
-                  ListEdge      : Array1OfEdge from Aspect;
-                  EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    TriangleSet ( me            : mutable;
-                  ACGroup       : CGroup from Graphic3d;
-                  ListVertex    : Array1OfVertexN from Graphic3d;
-                  ListEdge      : Array1OfEdge from Aspect;
-                  EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    TriangleSet ( me            : mutable;
-                  ACGroup       : CGroup from Graphic3d;
-                  ListVertex    : Array1OfVertexNT from Graphic3d;
-                  ListEdge      : Array1OfEdge from Aspect;
-                  EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    TriangleSet ( me            : mutable;
-                  ACGroup       : CGroup from Graphic3d;
-                  ListVertex    : Array1OfVertexC from Graphic3d;
-                  ListEdge      : Array1OfEdge from Aspect;
-                  EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
-    TriangleSet ( me            : mutable;
-                  ACGroup       : CGroup from Graphic3d;
-                  ListVertex    : Array1OfVertexNC from Graphic3d;
-                  ListEdge      : Array1OfEdge from Aspect;
-                  EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon_indices
-
     PrimitiveArray( me          : mutable;
                     ACGroup     : CGroup from Graphic3d;
                     parray      : PrimitiveArray from Graphic3d;
@@ -884,8 +623,13 @@ is
 
     EnableVBO( me       : mutable;
                status   : Boolean from Standard )
-               is virtual;
+               is deferred;
     ---Purpose: enables/disables usage of OpenGL vertex buffer arrays while drawing primitiev arrays
+
+    MemoryInfo (me;
+                theFreeBytes : out Size from Standard;
+                theInfo      : out AsciiString from TCollection) returns Boolean from Standard is deferred;
+    ---Purpose: Returns information about GPU memory usage.
 
     ----------------------------------------
     ---Category: Methods to create Triedron
@@ -948,26 +692,6 @@ is
                                    zmax : ShortReal from Standard)
     ---Purpose: call_togl_graduatedtrihedron_minmaxvalues
     is deferred;
-
-    ----------------------------------------
-    -- Category: Internal methods
-    -- for Purpose : see Graphic3d_Group.cdl
-    ----------------------------------------
-
-    Bezier ( me         : mutable;
-             ACGroup    : CGroup from Graphic3d;
-             ListVertex : Array1OfVertex from Graphic3d;
-             EvalMinMax : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_bezier
-
-    Bezier ( me         : mutable;
-             ACGroup    : CGroup from Graphic3d;
-             ListVertex : Array1OfVertex from Graphic3d;
-             ListWeight : Array1OfReal from TColStd;
-             EvalMinMax : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_bezier_weight
 
     ---------------------------
     -- Category: Animation mode
@@ -1202,8 +926,12 @@ is
                         R       : ShortReal from Standard;
                         G       : ShortReal from Standard;
                         B       : ShortReal from Standard )
-        is virtual;
-    ---Purpose: call_togl_set_text_attributes
+        is deferred;
+    ---Purpose: Set text attributes for under-/overlayer.
+    -- <Font> argument defines the name of the font to be used,
+    -- <Type> argument defines the display type of the text,
+    -- <R> <G> <B> values define the color of decal or subtitle background.
+    -- To set the color of the text you can use the SetColor method.
 
     Text ( me       : mutable;
            AText    : CString from Standard;
@@ -1321,17 +1049,23 @@ is
     -- or insufficient system memory available.
     ---Warning: Works only under Windows.
 
-
         Export( me: mutable;
-                FileName         : CString from Standard;
-                Format           : ExportFormat from Graphic3d;
-                SortType         : SortType from Graphic3d;
-                W, H             : Integer from Standard;
-                View             : CView from Graphic3d;
-                Under, Over      : CLayer2d from Aspect;
-                Precision        : Real from Standard = 0.005;
-                ProgressBarFunc  : Address from Standard = NULL;
-                ProgressObject   : Address from Standard = NULL ) is deferred;
+                theFileName         : CString from Standard;
+                theFormat           : ExportFormat from Graphic3d;
+                theSortType         : SortType from Graphic3d;
+                theWidth, theHeight : Integer from Standard;
+                theView             : CView from Graphic3d;
+                theLayerUnder       : CLayer2d from Aspect;
+                theLayerOver        : CLayer2d from Aspect;
+                thePrecision        : Real from Standard = 0.005;
+                theProgressBarFunc  : Address from Standard = NULL;
+                theProgressObject   : Address from Standard = NULL )
+        returns Boolean from Standard
+        is deferred;
+    ---Purpose:
+    -- Export scene into the one of the Vector graphics formats (SVG, PS, PDF...).
+    -- In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
+    -- Notice however that results may differ a lot and do not contain some elements.
 
     RemovePrimitiveArray( me        : mutable;
                           theCGroup : CGroup from Graphic3d;
@@ -1341,6 +1075,52 @@ is
         -- stop displaying the primitives array of the graphical group
         -- <theCGroup>. This method is internal and should be used
         -- by Graphic3d_Group only.
+
+    AddZLayer( me         : mutable;
+               theCView   : CView from Graphic3d;
+               theLayerId : Integer from Standard )
+        is deferred;
+        ---Purpose: Add a new top-level z layer with ID <theLayerId> for
+        -- the view. Z layers allow drawing structures in higher layers
+        -- in foreground of structures in lower layers. To add a structure
+        -- to desired layer on display it is necessary to set the layer
+        -- ID for the structure.
+
+    RemoveZLayer( me         : mutable;
+                  theCView   : CView from Graphic3d;
+                  theLayerId : Integer from Standard )
+        is deferred;
+        ---Purpose: Remove Z layer from the specified view. All structures
+        -- displayed at the moment in layer will be displayed in default layer
+        -- ( the bottom-level z layer ). To unset layer ID from associated
+        -- structures use method UnsetZLayer (...).
+
+    UnsetZLayer( me         : mutable;
+                 theLayerId : Integer from Standard ) 
+        is deferred;
+        ---Purpose: Unset Z layer ID for all structures. The structure
+        -- indexes will be set to default layer ( the bottom-level z layer
+        -- with ID = 0 ).
+
+    ChangeZLayer( me            : mutable;
+                  theCStructure : CStructure from Graphic3d;
+                  theLayerId    : Integer from Standard )
+        is deferred;
+        ---Purpose: Change Z layer of a structure. The new z layer ID will
+        -- be used to define the associated layer for structure on display.
+
+    ChangeZLayer( me            : mutable;
+                  theCStructure : CStructure from Graphic3d;
+                  theCView      : CView from Graphic3d;
+                  theNewLayerId : Integer from Standard )
+        is deferred;
+        ---Purpose: Change Z layer of a structure already presented in view.
+
+    GetZLayer( me;
+               theCStructure : CStructure from Graphic3d )
+        returns Integer from Standard is deferred;
+        ---Purpose: Get Z layer ID of structure. If the structure doesn't
+        -- exists in graphic driver, the method returns -1.
 
     --------------------------
     -- Category: Class methods

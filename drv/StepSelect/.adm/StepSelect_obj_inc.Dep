@@ -1,6 +1,0 @@
-+ StepSelect:dbadmfile:StepSelect_obj_inc.In StepSelect:admfile:StepSelect_src.Out
-+ * StepSelect:admfile:StepSelect_xcpp_src.Out
-+ StepSelect:dbadmfile:StepSelect_obj_inc.Out StepSelect:admfile:StepSelect_src.Out
-+ * StepSelect:admfile:StepSelect_xcpp_src.Out
-+ StepSelect:dbadmfile:StepSelect_obj_inc.Dep StepSelect:admfile:StepSelect_src.Out
-+ * StepSelect:admfile:StepSelect_xcpp_src.Out

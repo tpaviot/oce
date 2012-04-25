@@ -1,7 +1,23 @@
-// File:	BRepFill_TrimSurfaceTool.cxx
-// Created:	Fri Oct 21 14:56:32 1994
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1994-10-21
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <stdio.h>
@@ -61,12 +77,12 @@ static Standard_Integer NBCALL  = 1;
 
 //=======================================================================
 //function : BRepFill_TrimSurfaceTool
-//purpose  : Initialisation  avec les deux face voisines
-//          Edge1 et Edge2 sont les edges paralleles correspondant
-//          a une iso minimum sur F1 et F2 respectivement.
-//          ie Edge1 est Umin ou VMin sur F1.
-//          Inv1 et Inv2 indique si Edge1 et Edge2 sont des
-//          parallleles retournees.   
+//purpose  : Initialisation with two neighbor faces
+//          Edge1 and Edge2 are parallel edges corresponding
+//          to minimum iso on F1 and F2 respectively.
+//          ie Edge1 is Umin or VMin on F1.
+//          Inv1 and Inv2 show if Edge1 and Edge2 are
+//          returned parallel.   
 //=======================================================================
 
 BRepFill_TrimSurfaceTool::BRepFill_TrimSurfaceTool
@@ -115,7 +131,7 @@ myBis  (Bis)
 
 //=======================================================================
 //function : Bubble
-//purpose  : Ordonne la sequence de point en x croissant. 
+//purpose  : Order the sequence of points by increasing x. 
 //=======================================================================
 
 static void Bubble(TColgp_SequenceOfPnt& Seq) 
@@ -166,7 +182,7 @@ static Standard_Real EvalPhase(const TopoDS_Edge& Edge,
   gp_Pnt P = GAS.Value(0., V);
   
   if ( gp_Vec(Axis.Location(), P).Dot(Axis.XDirection()) < 0.) 
-    return PI;
+    return M_PI;
   else
     return 0.;
 }
@@ -183,7 +199,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
 			         TColgp_SequenceOfPnt& Seq  ) 
 {
   Standard_Boolean Degener = BRep_Tool::Degenerated(Edge);
-  // recuperer les courbes 3d associees aux edges.
+  // return curves 3d associated to edges.
   TopLoc_Location L;
   Standard_Real   f,l;
 
@@ -205,7 +221,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
     Handle(Geom_Curve) C = BRep_Tool::Curve(Edge,L,f,l);
     CT = new Geom_TrimmedCurve(C,f,l);
     CT->Transform(L.Transformation());
-    // projection de ces courbes 3d dans le plan xOy
+    // projection of 3d curves in the plane xOy
     Handle(Geom2d_Curve) C2d = GeomProjLib::Curve2d(CT,Plane);
 
     Geom2dAdaptor_Curve AC(C2d);
@@ -268,7 +284,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
     if (NbSegments > 0) {
 #ifdef DEB
       cout << " IntersectWith : " << NbSegments  
-	   << " Segments d`intersection" << endl;
+	   << " Segments of intersection" << endl;
 #endif
       IntRes2d_IntersectionSegment Seg;
       for ( Standard_Integer i = 1; i <= NbSegments; i++) {
@@ -283,7 +299,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
 	Seq.Append(P);
       }
     }
-    // Ordonne la sequence en param croissant sur la bissectrice.
+    // Order the sequence by increasing parameter on the bissectrice.
     Bubble( Seq);
     
 //  modified by NIZHNY-EAP Fri Dec 24 18:47:24 1999 ___BEGIN___
@@ -301,8 +317,8 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
 //  modified by NIZHNY-EAP Fri Dec 24 18:47:28 1999 ___END___
   }
   else {
-    // l`edge est degenere : on recupere le point et on cherche s`il est sur
-    // la bissectrice.
+    // the edge is degenerated : the point and it is found if it is
+    // on the bissectrice.
 
     gp_Pnt P3d = BRep_Tool::Pnt( TopExp::FirstVertex(Edge));
     gp_Pnt2d P2d( P3d.X(), P3d.Y());
@@ -325,7 +341,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
       if ( PBis.Distance(P2d) > Tol) return;
     }
 
-    // eval parametre intersection.
+    // evaluate parameter intersection.
     Handle(Geom_Surface) GS = BRep_Tool::Surface(Face);
     GeomAdaptor_Surface GAS(GS);
 
@@ -338,8 +354,8 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
       Axis = GAS.Sphere().Position(); break;
     case GeomAbs_Cone: {
       //----------------------------------------------------------
-      // si myFace1 n est pas du meme cote de l apex que le point
-      // de parametre 0 0 sur le cone => phase = PI.
+      // if myFace1 is not at the same side of the apex as the point
+      // of parameter 0 0 on the cone => phase = M_PI.
       //----------------------------------------------------------
       Axis = GAS.Cone().Position(); 
       Phase = EvalPhase(Edge,Face,GAS,Axis);
@@ -351,8 +367,8 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
       Axis = GAS.Cylinder().Position(); break;
     case GeomAbs_SurfaceOfRevolution: {      
       //----------------------------------------------------------
-      // si myFace1 n est pas du meme cote de l apex que le point
-      // de parametre 0 0 sur le cone => phase = PI.
+      // if myFace1 is not at the same side of the apex as the point
+      // of parameter 0 0 on the cone => phase = M_PI.
       //----------------------------------------------------------
       Handle(Geom_SurfaceOfRevolution) GSRev = 
 	Handle(Geom_SurfaceOfRevolution)::DownCast(GS);
@@ -373,7 +389,7 @@ static void EvalParameters(const TopoDS_Edge&          Edge,
     Standard_Real U = Axis.XDirection().
       AngleWithRef(D1,Axis.XDirection()^Axis.YDirection());
     U += Phase;
-    if ( U < 0.) U += 2*PI;
+    if ( U < 0.) U += 2*M_PI;
 
     P = gp_Pnt(Bis->FirstParameter(), U, 0.);
     Seq.Append(P);
@@ -455,11 +471,11 @@ Standard_Real BRepFill_TrimSurfaceTool::ProjOn(const gp_Pnt2d& Point,
   Handle(Geom_TrimmedCurve) CT = new Geom_TrimmedCurve(C1,f,l);
   CT->Transform(L.Transformation());
   
-  // projection de ces courbes 3d dans le plan xOy
+  // projection of curves 3d in the plane xOy
   Handle(Geom_Plane) Plane = new Geom_Plane(0,0,1,0);
   Handle(Geom2d_Curve) C2d = GeomProjLib::Curve2d(CT,Plane);
 
-  // eval the projection of the point on the curve.
+  // evaluate the projection of the point on the curve.
   Geom2dAPI_ProjectPointOnCurve Projector(Point, C2d);
 #ifdef DEB  
   Standard_Real Dist = 
@@ -468,7 +484,7 @@ Standard_Real BRepFill_TrimSurfaceTool::ProjOn(const gp_Pnt2d& Point,
 #ifdef DEB
   if ( Dist > Precision::Confusion() ) {
     cout << " *** WARNING  TrimSurfaceTool:  *** " << endl;
-    cout << "      --> le point n'est pas sur l'edge" <<endl;
+    cout << "      --> the point is not on the edge" <<endl;
     cout << "          distance  = " << Dist << endl;
   }
 #endif

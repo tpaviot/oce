@@ -18,7 +18,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/PDF -I@top_srcdir@/src/PDF \
 -I@top_srcdir@/drv/PDataStd -I@top_srcdir@/src/PDataStd \
@@ -32,12 +32,12 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKPLCAF.la
 
-libTKPLCAF_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
+libTKPLCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
 ../PTKernel/libPTKernel.la \
-$(STLPort_LIB) 
+../TKernel/libTKernel.la \
+../TKLCAF/libTKLCAF.la
+
 
 libTKPLCAF_la_SOURCES = \
 @top_srcdir@/drv/MDF/MDF_ARDriverHSequence_0.cxx \

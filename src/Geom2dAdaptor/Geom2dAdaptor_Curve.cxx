@@ -1,7 +1,23 @@
-// File:	Geom2dAdaptor_Curve.cxx
-// Created:	Fri Jun  4 10:39:27 1993
-// Author:	Bruno DUMORTIER
-//		<dub@topsn3>
+// Created on: 1993-06-04
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // 20/02/97 : PMN -> Positionement local sur BSpline (PRO6902)
 // 10/07/97 : PMN -> Pas de calcul de resolution dans Nb(Intervals) (PRO9248)
 // 20/10/97 : JPI -> traitement des offset curves
@@ -34,6 +50,7 @@
 
 #include <Standard_OutOfRange.hxx>
 #include <Standard_NoSuchObject.hxx>
+#include <Standard_NullObject.hxx>
 #include <Standard_NotImplemented.hxx>
 
 #define myBspl (*((Handle(Geom2d_BSplineCurve)*)&myCurve))
@@ -109,6 +126,9 @@ GeomAbs_Shape Geom2dAdaptor_Curve::LocalContinuity(const Standard_Real U1,
 //=======================================================================
 
 Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()
+ : myTypeCurve(GeomAbs_OtherCurve),
+   myFirst(0.),
+   myLast(0.)
 {
 }
 
@@ -117,8 +137,9 @@ Geom2dAdaptor_Curve::Geom2dAdaptor_Curve()
 //purpose  : 
 //=======================================================================
 
-Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C) {
-  Load(C,C->FirstParameter(),C->LastParameter());
+Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C) 
+{
+  Load(C);
 }
 
 //=======================================================================
@@ -128,29 +149,21 @@ Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C) {
 
 Geom2dAdaptor_Curve::Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C,
 					 const Standard_Real UFirst,
-					 const Standard_Real ULast) {
-  if ( UFirst > ULast) Standard_ConstructionError::Raise();
+					 const Standard_Real ULast) 
+{
   Load(C,UFirst,ULast);
 }
 
-//=======================================================================
-//function : Load
-//purpose  : 
-//=======================================================================
-
-void Geom2dAdaptor_Curve::Load(const Handle(Geom2d_Curve)& C) {
-  Load(C,C->FirstParameter(),C->LastParameter());
-}
 
 //=======================================================================
 //function : Load
 //purpose  : 
 //=======================================================================
 
-void Geom2dAdaptor_Curve::Load(const Handle(Geom2d_Curve)& C,
-			       const Standard_Real UFirst,
-			       const Standard_Real ULast) {
-  if ( UFirst > ULast) Standard_ConstructionError::Raise();
+void Geom2dAdaptor_Curve::load(const Handle(Geom2d_Curve)& C,
+			                         const Standard_Real UFirst,
+			                         const Standard_Real ULast) 
+{
   myFirst = UFirst;
   myLast  = ULast;
 
@@ -688,7 +701,7 @@ Standard_Real Geom2dAdaptor_Curve::Resolution(const Standard_Real Ruv) const {
     if ( R > Ruv/2.)
       return 2*ASin(Ruv/(2*R));
     else
-      return 2*PI;
+      return 2*M_PI;
   }
   case GeomAbs_Ellipse: {
     return Ruv / (*((Handle(Geom2d_Ellipse)*)&myCurve))->MajorRadius();

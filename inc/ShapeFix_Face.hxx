@@ -126,6 +126,9 @@ public:
   //! Returns (modifiable) the auto-correct precision mode <br>
 //!          by default False. <br>
         Standard_Integer& AutoCorrectPrecisionMode() ;
+  //! Returns (modifiable) the activation flag for periodic <br>
+//!          degenerated fix. False by default. <br>
+        Standard_Integer& FixPeriodicDegeneratedMode() ;
   //! Returns a face which corresponds to the current state <br>
 //!  Warning: The finally produced face may be another one ... but with the <br>
 //!          same support <br>
@@ -198,6 +201,12 @@ public:
   //! Split face if there are more than one out wire <br>
 //!          using inrormation after FixOrientation() <br>
   Standard_EXPORT     Standard_Boolean FixSplitFace(const TopTools_DataMapOfShapeListOfShape& MapWires) ;
+  //! Fixes topology for a specific case when face is composed <br>
+//!          by a single wire belting a periodic surface. In that case <br>
+//!          a degenerated edge is reconstructed in the degenerated pole <br>
+//!          of the surface. Initial wire gets consistent orientation. <br>
+//!          Must be used in couple and before FixMissingSeam routine <br>
+  Standard_EXPORT     Standard_Boolean FixPeriodicDegenerated() ;
   //! Returns the status of last call to Perform() <br>
 //!          ShapeExtend_OK   : face was OK, nothing done <br>
 //!          ShapeExtend_DONE1: some wires are fixed <br>
@@ -246,6 +255,7 @@ Standard_Integer myFixLoopWiresMode;
 Standard_Integer myFixIntersectingWiresMode;
 Standard_Integer myFixSplitFaceMode;
 Standard_Integer myAutoCorrectPrecisionMode;
+Standard_Integer myFixPeriodicDegenerated;
 
 
 };

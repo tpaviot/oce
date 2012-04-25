@@ -1,7 +1,23 @@
-// File:	BRepTest_FillingCommands.cxx
-// Created:	Wed Jul 10 13:23:02 1996
-// Author:	Xavier BENVENISTE
-//		<xab@mentox.paris1.matra-dtv.fr>
+// Created on: 1996-07-10
+// Created by: Joelle CHAUVET
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified:	Wed Mar  5 09:45:42 1997
 //    by:	Joelle CHAUVET
 //              G1134 : new command "approxplate"
@@ -10,9 +26,8 @@
 //              Mise a jour suite a la modification des methodes Curves2d 
 //		et Sense GeomPlate_BuildPlateSurface.
 // Modified:	Mon Nov  3 10:24:07 1997
-// Author:	Joelle CHAUVET
 //		utilisation de BRepFill_CurveConstraint
- 
+
 
 
 #include <GeometryTest.hxx>
@@ -193,10 +208,6 @@ static Standard_Integer plate (Draw_Interpretor & di,Standard_Integer n,const ch
     DBRep::Set(name, E);
     MW.Add(E);
     if (MW.IsDone()==Standard_False) {
-#if DEB
-      BRepBuilderAPI_WireError err =
-#endif
-                                     MW.Error();
       Standard_Failure::Raise("mkWire is over ");
     }
       
@@ -429,10 +440,6 @@ static Standard_Integer approxplate (Draw_Interpretor & di,Standard_Integer n,co
     BRepLib::BuildCurve3d(E);
     MW.Add(E);
     if (MW.IsDone()==Standard_False) {
-#ifdef DEB
-      BRepBuilderAPI_WireError err =
-#endif
-                                     MW.Error();
       Standard_Failure::Raise("mkWire is over ");
     }
   }
@@ -469,9 +476,9 @@ static Standard_Integer filling( Draw_Interpretor & di, Standard_Integer n, cons
 				   TolCurv,
 				   MaxDeg,
 				   MaxSegments );
-    TopoDS_Shape aLocalFace(DBRep::Get( a[5], TopAbs_FACE ) );
-    TopoDS_Face InitFace = TopoDS::Face( aLocalFace);
-//  TopoDS_Face InitFace = TopoDS::Face( DBRep::Get( a[5], TopAbs_FACE ) );
+  //TopoDS_Shape aLocalFace(DBRep::Get( a[5], TopAbs_FACE ) );
+  //TopoDS_Face InitFace = TopoDS::Face( aLocalFace);
+  TopoDS_Face InitFace = TopoDS::Face( DBRep::Get(a[5], TopAbs_FACE) );
   if (! InitFace.IsNull())
     MakeFilling.LoadInitSurface( InitFace );
   
@@ -484,14 +491,14 @@ static Standard_Integer filling( Draw_Interpretor & di, Standard_Integer n, cons
     { 
       E.Nullify();
       F.Nullify();
-      TopoDS_Shape aLocalEdge(DBRep::Get( a[i], TopAbs_EDGE ));
-      E = TopoDS::Edge(aLocalEdge);
-//      E = TopoDS::Edge( DBRep::Get( a[i], TopAbs_EDGE ) );
+      //TopoDS_Shape aLocalEdge(DBRep::Get( a[i], TopAbs_EDGE ));
+      //E = TopoDS::Edge(aLocalEdge);
+      E = TopoDS::Edge( DBRep::Get(a[i], TopAbs_EDGE) );
       if (! E.IsNull())
 	i++;
-      aLocalFace =  DBRep::Get( a[i], TopAbs_FACE ) ;
-      F = TopoDS::Face(aLocalFace);
-//      F = TopoDS::Face( DBRep::Get( a[i], TopAbs_FACE ) );
+      //aLocalFace =  DBRep::Get( a[i], TopAbs_FACE ) ;
+      //F = TopoDS::Face(aLocalFace);
+      F = TopoDS::Face( DBRep::Get(a[i], TopAbs_FACE) );
       if (! F.IsNull())
 	i++;
 
@@ -517,18 +524,18 @@ static Standard_Integer filling( Draw_Interpretor & di, Standard_Integer n, cons
     { 
       E.Nullify();
       F.Nullify();
-      TopoDS_Shape aLocalEdge(DBRep::Get( a[i++], TopAbs_EDGE ));
-      E = TopoDS::Edge( aLocalEdge);
-//      E = TopoDS::Edge( DBRep::Get( a[i++], TopAbs_EDGE ) );
+      //TopoDS_Shape aLocalEdge(DBRep::Get( a[i++], TopAbs_EDGE ));
+      //E = TopoDS::Edge( aLocalEdge);
+      E = TopoDS::Edge( DBRep::Get(a[i++], TopAbs_EDGE) );
       if (E.IsNull())
 	{
 	  //cout<<"Wrong parameters"<<endl;
 	  di<<"Wrong parameters"<<"\n";
 	  return 1;
 	}
-      TopoDS_Shape alocalFace(DBRep::Get( a[i], TopAbs_FACE ) );
-      F = TopoDS::Face( aLocalFace);
-//      F = TopoDS::Face( DBRep::Get( a[i], TopAbs_FACE ) );
+      //TopoDS_Shape alocalFace(DBRep::Get( a[i], TopAbs_FACE ) );
+      //F = TopoDS::Face( alocalFace);
+      F = TopoDS::Face( DBRep::Get(a[i], TopAbs_FACE) );
       if (! F.IsNull())
 	i++;
       
@@ -549,9 +556,9 @@ static Standard_Integer filling( Draw_Interpretor & di, Standard_Integer n, cons
       else
 	{
 	  Standard_Real U = atof( a[i++] ), V = atof( a[i++] );
-	  aLocalFace = DBRep::Get( a[i++], TopAbs_FACE );
-	  F = TopoDS::Face( aLocalFace);
-//	  F = TopoDS::Face( DBRep::Get( a[i++], TopAbs_FACE ));
+	  //aLocalFace = DBRep::Get( a[i++], TopAbs_FACE );
+	  //F = TopoDS::Face( aLocalFace);
+	  F = TopoDS::Face( DBRep::Get(a[i++], TopAbs_FACE));
 	  if (F.IsNull()) 
 	    {
 	      //cout<<"Wrong parameters"<<endl;

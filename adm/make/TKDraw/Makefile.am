@@ -13,7 +13,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_user32_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_user32_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Draw -I@top_srcdir@/src/Draw \
 -I@top_srcdir@/drv/DBRep -I@top_srcdir@/src/DBRep \
@@ -22,19 +22,19 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES)
 
 lib_LTLIBRARIES=libTKDraw.la
 
-libTKDraw_la_LIBADD = \
+libTKDraw_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
+../TKG2d/libTKG2d.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKG3d/libTKG3d.la \
 ../TKMath/libTKMath.la \
 ../TKBRep/libTKBRep.la \
-../TKMesh/libTKMesh.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKG2d/libTKG2d.la \
-../TKHLR/libTKHLR.la \
-../TKGeomBase/libTKGeomBase.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKMesh/libTKMesh.la \
 ../TKService/libTKService.la \
-$(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) 
+../TKHLR/libTKHLR.la \
+$(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_gdi32_LIB) $(CSF_advapi32_LIB) $(CSF_user32_LIB) 
 
 libTKDraw_la_SOURCES = \
 @top_srcdir@/drv/DBRep/DBRep_ListIteratorOfListOfEdge_0.cxx \

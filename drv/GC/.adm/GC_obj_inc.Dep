@@ -1,7 +1,0 @@
-+ GC:pubinclude:GC_Root.lxx GC:source:GC_Root.lxx
-+ GC:dbadmfile:GC_obj_inc.In GC:admfile:GC_src.Out
-+ * GC:admfile:GC_xcpp_src.Out
-+ GC:dbadmfile:GC_obj_inc.Out GC:admfile:GC_src.Out
-+ * GC:admfile:GC_xcpp_src.Out
-+ GC:dbadmfile:GC_obj_inc.Dep GC:admfile:GC_src.Out
-+ * GC:admfile:GC_xcpp_src.Out

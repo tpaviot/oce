@@ -32,7 +32,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/ProjLib -I@top_srcdir@/src/ProjLib \
 -I@top_srcdir@/drv/GeomProjLib -I@top_srcdir@/src/GeomProjLib \
@@ -60,12 +60,12 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKGeomBase.la
 
-libTKGeomBase_la_LIBADD = \
+libTKGeomBase_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKG3d/libTKG3d.la \
 ../TKMath/libTKMath.la \
 ../TKG2d/libTKG2d.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la
+
 
 libTKGeomBase_la_SOURCES = \
 @top_srcdir@/drv/AdvApp2Var/AdvApp2Var_SequenceNodeOfSequenceOfNode_0.cxx \

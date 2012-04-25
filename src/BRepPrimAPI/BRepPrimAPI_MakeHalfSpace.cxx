@@ -1,7 +1,23 @@
-// File:	BRepPrimAPI_MakeHalfSpace.cxx
-// Created:	Wed Mar  8 13:47:15 1995
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1995-03-08
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepPrimAPI_MakeHalfSpace.ixx>
@@ -24,7 +40,7 @@
 //           1) return true if extrema are found.
 //           2) Set in:
 //             - Dist : The lower distance found.
-//             - anOppositePnt : The corresponding point laying on the face
+//             - anOppositePnt : The corresponding point lying on the face
 //             - U,V : The parameters of <anOppositePnt> on the face <aFace>
 //=======================================================================
 
@@ -102,7 +118,7 @@ BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace(const TopoDS_Face& Face,
     myBuilder.MakeShell(Shell);
     myBuilder.Add(Shell,Face);
     
-    // Normale, produit scalaire et sens.
+    // Normal, scalair product and direction.
     Standard_Real Prec = gp::Resolution();
 //    BRepLProp_SLProps Props(BRepAdaptor_Surface(Face),U,V,2,Prec);
     BRepLProp_SLProps Props = BRepLProp_SLProps(BRepAdaptor_Surface(Face),U,V,2,Prec);
@@ -110,10 +126,10 @@ BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace(const TopoDS_Face& Face,
     gp_Dir OppRef(RefPnt.XYZ()-MinPnt.XYZ());
     Standard_Real Sca = Normale*OppRef;
     
-    // Construction du solide ouvert.
+    // Construction of the open solid.
     myBuilder.MakeSolid(mySolid);
     if (Sca > 0.) {
-      // Directions identiques: cas inverse.
+      // Same directions: inverted case.
       Shell.Reverse();
     }
     
@@ -139,7 +155,7 @@ BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace(const TopoDS_Shell& Shell,
   Standard_Real MinDist = RealLast();
   Standard_Real CurDist, U, V, MinU=0, MinV=0;
 
-  // Chercher le point de la peau le plus proche du point de reference.
+  // Find the point of the skin closest to the reference point.
   Standard_Boolean YaExt = Standard_False;
 
   TopoDS_Shell aShell = Shell;
@@ -160,7 +176,7 @@ BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace(const TopoDS_Shell& Shell,
   }
 
   if ( YaExt) {
-    // Normale, produit scalaire et sens.
+    // Normal, scalar product and direction.
     BRep_Builder myBuilder;
     Standard_Real Prec = gp::Resolution();
 //    BRepLProp_SLProps Props(BRepAdaptor_Surface(MinFace),MinU,MinV,2,Prec);
@@ -169,10 +185,10 @@ BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace(const TopoDS_Shell& Shell,
     gp_Dir OppRef(RefPnt.XYZ()-MinPnt.XYZ());
     Standard_Real Sca = Normale*OppRef;
     
-    // Construction du solide ouvert.
+    // Construction of the open solid.
     myBuilder.MakeSolid(mySolid);
     if (Sca > 0.) {
-      // Directions identiques: cas inverse.
+      // Same directions: inverted case.
       aShell.Reverse();
     }
     myBuilder.Add(mySolid,aShell);

@@ -22,6 +22,9 @@
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
 #endif
+#ifndef _TopoDS_Compound_HeaderFile
+#include <TopoDS_Compound.hxx>
+#endif
 #ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
 #endif

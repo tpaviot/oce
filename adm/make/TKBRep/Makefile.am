@@ -17,7 +17,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/TopoDS -I@top_srcdir@/src/TopoDS \
 -I@top_srcdir@/drv/TopExp -I@top_srcdir@/src/TopExp \
@@ -30,13 +30,13 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBRep.la
 
-libTKBRep_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
+libTKBRep_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
 ../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
-$(STLPort_LIB) 
+../TKGeomBase/libTKGeomBase.la
+
 
 libTKBRep_la_SOURCES = \
 @top_srcdir@/drv/BRep/BRep_ListIteratorOfListOfCurveRepresentation_0.cxx \

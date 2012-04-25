@@ -11,22 +11,22 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/MeshVS -I@top_srcdir@/src/MeshVS
 
 
 lib_LTLIBRARIES=libTKMeshVS.la
 
-libTKMeshVS_la_LIBADD = \
-../TKService/libTKService.la \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
+libTKMeshVS_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKV3d/libTKV3d.la \
-../TKV2d/libTKV2d.la \
-../TKG2d/libTKG2d.la \
+../TKMath/libTKMath.la \
+../TKService/libTKService.la \
+../TKernel/libTKernel.la \
 ../TKG3d/libTKG3d.la \
-$(STLPort_LIB) 
+../TKV2d/libTKV2d.la \
+../TKG2d/libTKG2d.la
+
 
 libTKMeshVS_la_SOURCES = \
 @top_srcdir@/drv/MeshVS/MeshVS_Array1OfSequenceOfInteger_0.cxx \

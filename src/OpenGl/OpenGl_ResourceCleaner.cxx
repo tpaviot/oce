@@ -1,6 +1,22 @@
-// File:      OpenGl_ResourceCleaner.cxx
-// Created:   18.03.11 9:40:00
-// Author:    Anton POLETAEV
+// Created on: 2011-03-18
+// Created by: Anton POLETAEV
+// Copyright (c) 2011-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <OpenGl_ResourceCleaner.hxx>
 #include <OpenGl_ResourceVBO.hxx>
@@ -56,7 +72,7 @@ void OpenGl_ResourceCleaner::AppendContext(GLCONTEXT theContext, Standard_Boolea
 //           memory resource
 //=======================================================================
 
-Standard_Boolean OpenGl_ResourceCleaner::AddResource(GLCONTEXT theContext, Handle_OpenGl_Resource theResource) 
+Standard_Boolean OpenGl_ResourceCleaner::AddResource(GLCONTEXT theContext, const Handle(OpenGl_Resource)& theResource) 
 {
   // if context found in the shared list
   if (mySharedContexts.Contains(theContext)) 
@@ -130,31 +146,31 @@ void OpenGl_ResourceCleaner::ClearShared()
 //purpose  : Clear the unused resources for active OpenGl context
 //=======================================================================
 
-void OpenGl_ResourceCleaner::Cleanup() 
+void OpenGl_ResourceCleaner::Cleanup (const Handle(OpenGl_Context)& theGlContext)
 {
   GLCONTEXT aContext = GET_GL_CONTEXT();
+  if (aContext == NULL)
+    return;
 
-  // if we have active context, we can delete the resources
-  if (aContext != NULL) 
-    // if the context is found in shared list
-    if (mySharedContexts.Contains(aContext)) 
+  // if the context is found in shared list
+  if (mySharedContexts.Contains (aContext)) 
+  {
+    while (mySharedQueue.Size() > 0) 
     {
-      while(mySharedQueue.Size() > 0) 
-      {
-        mySharedQueue.Front()->Clean();  // delete resource memory
-        mySharedQueue.Pop();
-      }
+      mySharedQueue.Front()->Clean (theGlContext); // delete resource memory
+      mySharedQueue.Pop();
     }
-    // if the context is found in non-shared list
-    else if (myInstanceQueue.IsBound(aContext)) 
+  }
+  // if the context is found in non-shared list
+  else if (myInstanceQueue.IsBound (aContext)) 
+  {
+    QueueOfResources* aQueue = &myInstanceQueue.ChangeFind (aContext);
+    while (aQueue->Size() > 0) 
     {
-      QueueOfResources * aQueue = &myInstanceQueue.ChangeFind(aContext);
-      while(aQueue->Size() > 0) 
-      {
-        aQueue->Front()->Clean();          // delete resource memory
-        aQueue->Pop();
-      }
+      aQueue->Front()->Clean (theGlContext); // delete resource memory
+      aQueue->Pop();
     }
+  }
 }
 
 //=======================================================================

@@ -1,10 +1,25 @@
-// File         V3d.cxx
-// Created      September 1992
-// Author       GG
+// Created by: GG
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified     23/02/98 : FMN ; Remplacement PI par Standard_PI
 //              02.15.100 : JR : Clutter
 
-//-Copyright    MatraDatavision 1991,1992
 
 //-Version
 
@@ -159,8 +174,8 @@ Graphic3d_Array1OfVertex V2(1,2);
 
         for (i = 1 ; i <= NbPoints ; i++) {
 
-            cosinus = Cos ( 2 * Standard_PI / NbPoints * (i-1) );   
-            sinus = Sin ( 2 * Standard_PI / NbPoints * (i-1) );
+            cosinus = Cos ( 2 * M_PI / NbPoints * (i-1) );   
+            sinus = Sin ( 2 * M_PI / NbPoints * (i-1) );
 
             X = Xc + (cosinus * Xi + sinus * Xj) * Lng * Tg;
             Y = Yc + (cosinus * Yi + sinus * Yj) * Lng * Tg;
@@ -180,7 +195,7 @@ void V3d::CircleInPlane(const Handle(Graphic3d_Group)& gcircle,const Standard_Re
 Standard_Real VX,VY,VZ,X,Y,Z,Xn,Yn,Zn,Xi,Yi,Zi,Xj,Yj,Zj,Norme;
 Standard_Integer NFACES = 30 , i;
 Standard_Real Alpha = 0. ;
-Standard_Real Dalpha = 2.*Standard_PI/NFACES ;
+Standard_Real Dalpha = 2. * M_PI / NFACES ;
 Graphic3d_Array1OfVertex Points(0,NFACES);
 
       Norme = Sqrt ( DX*DX + DY*DY + DZ*DZ );
@@ -239,8 +254,8 @@ void V3d::DrawSphere(const Handle(V3d_Viewer)& aViewer,const Quantity_Length ray
   Standard_Real R,X,Y,Z ;
   Standard_Real Beta = 0. ;
   Standard_Real Alpha = 0. ;
-  Standard_Real Dbeta = 2.*Standard_PI/NFACES ;
-  Standard_Real Dalpha = 2.*Standard_PI/NFACES ;
+  Standard_Real Dbeta = 2. * M_PI / NFACES ;
+  Standard_Real Dalpha = 2. * M_PI / NFACES ;
   Standard_Integer i,j ;
   for( j=0 ; j<NFACES/2 ; j++ ) {
     Alpha = 0. ;

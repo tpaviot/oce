@@ -1,7 +1,23 @@
-// File:	Extrema_GExtCC2d.gxx
-// Created:	Wed Jul  6 15:08:36 1994
-// Author:	Laurent PAINNOT
-//		<lpa@metrox>
+// Created on: 1994-07-06
+// Created by: Laurent PAINNOT
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include Extrema_ECC2d_hxx
@@ -99,22 +115,22 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
     switch(type2) {
       case GeomAbs_Circle: {
 	Extrema_ExtElC2d Xtrem(Tool1::Circle(C1), Tool2::Circle(*((Curve2*)myC)));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 2*M_PI);
         }
 	break;
       case GeomAbs_Ellipse: {
 	Extrema_ExtElC2d Xtrem(Tool1::Circle(C1), Tool2::Ellipse(*((Curve2*)myC)));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 2*PI );
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 2*M_PI );
         }
 	break;
       case GeomAbs_Parabola: {
 	Extrema_ExtElC2d Xtrem(Tool1::Circle(C1), Tool2::Parabola(*((Curve2*)myC)));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 0.);
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 0.);
       }
 	break;
       case GeomAbs_Hyperbola: {
 	Extrema_ExtElC2d Xtrem(Tool1::Circle(C1), Tool2::Hyperbola(*((Curve2*)myC)));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 0. );
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 0. );
       }
 	break;
       case GeomAbs_BezierCurve:
@@ -124,13 +140,13 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
 			    NbU, NbV, mytolc1, mytolc2);
 	Standard_Real Period2 = 0.;
 	if (Tool2::IsPeriodic(*((Curve2*)myC))) Period2 = Tool2::Period(*((Curve2*)myC));
-	Results(Xtrem, C1, U11, U12, U21, U22, 2*PI,Period2);
+	Results(Xtrem, C1, U11, U12, U21, U22, 2*M_PI,Period2);
         }
 	break;
       case GeomAbs_Line: {
 	inverse = Standard_True;
 	Extrema_ExtElC2d Xtrem(Tool2::Line(*((Curve2*)myC)), Tool1::Circle(C1), Tol);
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 0.);
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 0.);
         }
 	break;
       };  // switch(type2)
@@ -146,28 +162,28 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
       case GeomAbs_Circle: {
 	inverse = Standard_True;
 	Extrema_ExtElC2d Xtrem(Tool2::Circle(*((Curve2*)myC)), Tool1::Ellipse(C1));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 2*M_PI);
         }
 	break;
       case GeomAbs_Ellipse: {
 	//Extrema_ExtElC2d Xtrem(Tool1::Ellipse(C1), Tool2::Ellipse(*((Curve2*)myC)));
 	Extrema_ECC2d Xtrem(C1, *((Curve2*)myC), 
 			    NbU, NbV, mytolc1, mytolc2);
-	Results(Xtrem, C1, U11, U12, U21, U22,2*PI, 2*PI);
+	Results(Xtrem, C1, U11, U12, U21, U22,2*M_PI, 2*M_PI);
         }
 	break;
       case GeomAbs_Parabola: {
 	//Extrema_ExtElC2d Xtrem(Tool1::Ellipse(C1), Tool2::Parabola(*((Curve2*)myC)));
 	Extrema_ECC2d Xtrem(C1, *((Curve2*)myC), 
 			    NbU, NbV, mytolc1, mytolc2);
-	Results(Xtrem, C1, U11, U12, U21, U22, 2*PI, 0.);
+	Results(Xtrem, C1, U11, U12, U21, U22, 2*M_PI, 0.);
       }
 	break;
       case GeomAbs_Hyperbola: {
 	//Extrema_ExtElC2d Xtrem(Tool1::Ellipse(C1), Tool2::Hyperbola(*((Curve2*)myC)));
 	Extrema_ECC2d Xtrem(C1, *((Curve2*)myC), 
 			    NbU, NbV, mytolc1, mytolc2);
-	Results(Xtrem, C1, U11, U12, U21, U22, 2*PI, 0.);
+	Results(Xtrem, C1, U11, U12, U21, U22, 2*M_PI, 0.);
       }
 	break;
       case GeomAbs_BezierCurve:
@@ -177,13 +193,13 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
 			    NbU, NbV, mytolc1, mytolc2);	
 	Standard_Real Period2 = 0.;
 	if (Tool2::IsPeriodic(*((Curve2*)myC))) Period2 = Tool2::Period(*((Curve2*)myC));
-	Results(Xtrem, C1, U11, U12, U21, U22, 2*PI,Period2);
+	Results(Xtrem, C1, U11, U12, U21, U22, 2*M_PI,Period2);
         }
 	break;
       case GeomAbs_Line: {
         inverse = Standard_True;
 	Extrema_ExtElC2d Xtrem(Tool2::Line(*((Curve2*)myC)), Tool1::Ellipse(C1));
-	Results(Xtrem, U11, U12, U21, U22, 2*PI, 0.);
+	Results(Xtrem, U11, U12, U21, U22, 2*M_PI, 0.);
         }
 	break;
       };  // switch(type2)
@@ -199,7 +215,7 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
       case GeomAbs_Circle: {
 	inverse = Standard_True;
 	Extrema_ExtElC2d Xtrem(Tool2::Circle(*((Curve2*)myC)), Tool1::Parabola(C1));
-	Results(Xtrem, U11, U12, U21, U22, 0., 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 0., 2*M_PI);
         }
 	break;
       case GeomAbs_Ellipse: {
@@ -207,7 +223,7 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
 	//Extrema_ExtElC2d Xtrem(Tool2::Ellipse(*((Curve2*)myC)), Tool1::Parabola(C1));
 	Extrema_ECC2d Xtrem(C1, *((Curve2*)myC), 
 			    NbU, NbV, mytolc1, mytolc2);
-	Results(Xtrem, C1, U11, U12, U21, U22, 0., 2*PI);
+	Results(Xtrem, C1, U11, U12, U21, U22, 0., 2*M_PI);
         }
 	break;
       case GeomAbs_Parabola: {
@@ -254,7 +270,7 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
       case GeomAbs_Circle: {
 	inverse = Standard_True;
 	Extrema_ExtElC2d Xtrem(Tool2::Circle(*((Curve2*)myC)), Tool1::Hyperbola(C1));
-	Results(Xtrem, U11, U12, U21, U22, 0., 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 0., 2*M_PI);
         }
 	break;
       case GeomAbs_Ellipse: {
@@ -262,7 +278,7 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
 	//Extrema_ExtElC2d Xtrem(Tool2::Ellipse(*((Curve2*)myC)), Tool1::Hyperbola(C1));
 	Extrema_ECC2d Xtrem(C1, *((Curve2*)myC), 
 			    NbU, NbV, mytolc1, mytolc2);
-	Results(Xtrem, C1, U11, U12, U21, U22, 0., 2*PI );
+	Results(Xtrem, C1, U11, U12, U21, U22, 0., 2*M_PI );
         }
 	break;
       case GeomAbs_Parabola: {
@@ -323,12 +339,12 @@ void Extrema_GExtCC2d::Perform (const Curve1&       C1,
     switch(type2) {
       case GeomAbs_Circle: {
   	Extrema_ExtElC2d Xtrem(Tool1::Line(C1), Tool2::Circle(*((Curve2*)myC)), Tol);
-	Results(Xtrem, U11, U12, U21, U22, 0., 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 0., 2*M_PI);
         }
 	break;
       case GeomAbs_Ellipse: {
 	Extrema_ExtElC2d Xtrem(Tool1::Line(C1), Tool2::Ellipse(*((Curve2*)myC)));
-	Results(Xtrem, U11, U12, U21, U22, 0., 2*PI);
+	Results(Xtrem, U11, U12, U21, U22, 0., 2*M_PI);
         }
 	break;
       case GeomAbs_Parabola: {

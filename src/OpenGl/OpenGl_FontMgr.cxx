@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <OpenGl_FontMgr.hxx>
 
 #include <FTGLTextureFont.h>        
@@ -338,8 +355,8 @@ void OpenGl_FontMgr::render_text( const Standard_Integer id, const wchar_t* text
         glDisable(GL_DEPTH_TEST);
     }
 
-    GLint* param = new GLint;    
-    glGetTexEnviv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, param);
+    GLint param;
+    glGetTexEnviv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, &param);
 
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE); 
     glAlphaFunc(GL_GEQUAL, 0.285f);    
@@ -347,14 +364,12 @@ void OpenGl_FontMgr::render_text( const Standard_Integer id, const wchar_t* text
     OGLFont_Cache cache = _FontCache.Find( id );
     cache.Font->Render( text );
 
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, *param);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, param);
 
     if( !enableTexture )
       glDisable(GL_TEXTURE_2D);
     if( !enableDepthTest )
       glDisable(GL_DEPTH_TEST);
-
-    delete param;
 
     glPopAttrib();
     glMatrixMode( GL_MODELVIEW );

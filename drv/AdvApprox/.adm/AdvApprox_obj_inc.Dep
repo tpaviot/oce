@@ -1,8 +1,0 @@
-+ AdvApprox:pubinclude:AdvApprox_EvaluatorFunction.hxx AdvApprox:source:AdvApprox_EvaluatorFunction.hxx
-+ AdvApprox:pubinclude:AdvApprox_ApproxAFunction.lxx AdvApprox:source:AdvApprox_ApproxAFunction.lxx
-+ AdvApprox:dbadmfile:AdvApprox_obj_inc.In AdvApprox:admfile:AdvApprox_src.Out
-+ * AdvApprox:admfile:AdvApprox_xcpp_src.Out
-+ AdvApprox:dbadmfile:AdvApprox_obj_inc.Out AdvApprox:admfile:AdvApprox_src.Out
-+ * AdvApprox:admfile:AdvApprox_xcpp_src.Out
-+ AdvApprox:dbadmfile:AdvApprox_obj_inc.Dep AdvApprox:admfile:AdvApprox_src.Out
-+ * AdvApprox:admfile:AdvApprox_xcpp_src.Out

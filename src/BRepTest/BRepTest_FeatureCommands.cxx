@@ -1,7 +1,23 @@
-// File:	BRepTest_FeatureCommands.cxx
-// Created:	Fri Jun 16 14:28:00 1995
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1995-06-16
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -729,12 +745,12 @@ static Standard_Integer SPLS(Draw_Interpretor& ,
 	  return 1; // on n`a rien recupere
 	}
 	TopAbs_ShapeEnum wtyp = W.ShapeType();
-	if (wtyp != TopAbs_WIRE && wtyp != TopAbs_EDGE && pick) {
+	if (wtyp != TopAbs_WIRE && wtyp != TopAbs_EDGE && wtyp != TopAbs_COMPOUND && pick) {
 	  Standard_Real u,v;
 	  DBRep_DrawableShape::LastPick(W,u,v);
 	  wtyp = W.ShapeType();
 	}
-	if (wtyp != TopAbs_WIRE && wtyp != TopAbs_EDGE) {
+	if (wtyp != TopAbs_WIRE && wtyp != TopAbs_EDGE && wtyp != TopAbs_COMPOUND) {
 	  EF = DBRep::Get(a[i]);
 	  break;
 	}
@@ -745,9 +761,12 @@ static Standard_Integer SPLS(Draw_Interpretor& ,
 	  if (wtyp == TopAbs_WIRE) {
 	    Spls.Add(TopoDS::Wire(W),TopoDS::Face(EF));
 	  }
-	  else {
+	  else if (wtyp == TopAbs_EDGE) {
 	    Spls.Add(TopoDS::Edge(W),TopoDS::Face(EF));
 	  }
+          else {
+	    Spls.Add(TopoDS::Compound(W),TopoDS::Face(EF));
+          }
 	}
 	i++;
       }
@@ -1107,7 +1126,7 @@ static Standard_Integer ROW(Draw_Interpretor& theCommands,
   FFrom   = DBRep::Get(a[4],TopAbs_SHAPE);
   if (FFrom.IsNull()) {
     Angle = atof(a[4]);
-    Angle *=PI/180.;
+    Angle *=M_PI/180.;
     i = 5;
   }
   else {
@@ -1268,7 +1287,7 @@ static Standard_Integer ROF(Draw_Interpretor& theCommands,
   FFrom   = DBRep::Get(a[4],TopAbs_SHAPE);
   if (FFrom.IsNull()) {
     Angle = atof(a[4]);
-    Angle *=PI/180.;
+    Angle *=M_PI/180.;
     i = 5;
   }
   else {
@@ -1589,7 +1608,7 @@ static Standard_Integer DEFIN(Draw_Interpretor& theCommands,
 	theCommands << "Invalid DPrism base";
 	return 1;
       }
-      Standard_Real Angle = atof(a[4])*PI/360; 
+      Standard_Real Angle = atof(a[4])*M_PI/360; 
       dprdef = Standard_True;
       theDPrism.Init(Sbase,TopoDS::Face(Pbase),Skface,Angle,Fuse,Modify);
     }
@@ -1773,7 +1792,7 @@ static Standard_Integer PERF(Draw_Interpretor& theCommands,
 	thePrism.Perform(Val);
       }
       else if (Kas == 2) {
-	Val *=(PI/180.);
+	Val *=(M_PI/180.);
 	theRevol.Perform(Val);
       }
       else if (Kas == 4) {
@@ -1795,7 +1814,7 @@ static Standard_Integer PERF(Draw_Interpretor& theCommands,
 	thePrism.PerformUntilHeight(FUntil, Val);
       }
       else if (Kas == 2) {
-	Val *=(PI/180.);
+	Val *=(M_PI/180.);
 	theRevol.PerformUntilAngle(FUntil, Val);
       }
       else if (Kas == 4) {
@@ -2239,7 +2258,7 @@ void BRepTest::FeatureCommands (Draw_Interpretor& theCommands)
 
 
   theCommands.Add("splitshape",
-		  "splitshape result shape face wire/edge [wire/edge ...][face wire/edge [wire/edge...] ...] [@ edgeonshape edgeonwire [edgeonshape edgeonwire...]]",
+		  "splitshape result shape face wire/edge/compound [wire/edge/compound ...][face wire/edge/compound [wire/edge/compound...] ...] [@ edgeonshape edgeonwire [edgeonshape edgeonwire...]]",
 		  __FILE__,SPLS,g);
 
 

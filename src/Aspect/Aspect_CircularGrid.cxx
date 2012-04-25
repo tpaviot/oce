@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified	23/02/98 : FMN ; Remplacement PI par Standard_PI
 
 #define CSR577  //GG 25/09/00 Avoid to have unaccuracy coordinates computation
@@ -71,7 +88,7 @@ void Aspect_CircularGrid::Compute(const Quantity_Length X,
   Standard_Real cosinus = (X-xo)/d;
   Standard_Real a = ACos(cosinus);
   Standard_Real ra = RotationAngle();
-  if ( Y < yo ) a = 2*Standard_PI - a;
+  if ( Y < yo ) a = 2 * M_PI - a;
 #ifdef OCC192_193
   n = (Standard_Integer ) ((a-ra)/myAlpha + Sign(0.5, a-ra)) ;
 #else
@@ -149,6 +166,6 @@ return myDivisionNumber;
 }
 
 void Aspect_CircularGrid::Init () {
-  myAlpha = Standard_PI /Standard_Real(myDivisionNumber);
+  myAlpha = M_PI / Standard_Real(myDivisionNumber);
   myA1 = Cos(myAlpha); myB1=Sin(myAlpha);
 }

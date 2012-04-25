@@ -188,6 +188,7 @@ Handle_TColStd_HArray1OfBoolean myUIso;
 Handle_TColStd_HArray1OfBoolean myVIso;
 Handle_TColStd_HArray1OfBoolean mySnglPnts;
 Handle_TColStd_HArray1OfReal myMaxDistance;
+Handle_TColStd_HArray1OfReal myTabInt;
 
 
 };

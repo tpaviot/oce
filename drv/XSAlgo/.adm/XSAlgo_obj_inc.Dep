@@ -1,7 +1,0 @@
-+ XSAlgo:pubinclude:XSAlgo_AlgoContainer.lxx XSAlgo:source:XSAlgo_AlgoContainer.lxx
-+ XSAlgo:dbadmfile:XSAlgo_obj_inc.In XSAlgo:admfile:XSAlgo_src.Out
-+ * XSAlgo:admfile:XSAlgo_xcpp_src.Out
-+ XSAlgo:dbadmfile:XSAlgo_obj_inc.Out XSAlgo:admfile:XSAlgo_src.Out
-+ * XSAlgo:admfile:XSAlgo_xcpp_src.Out
-+ XSAlgo:dbadmfile:XSAlgo_obj_inc.Dep XSAlgo:admfile:XSAlgo_src.Out
-+ * XSAlgo:admfile:XSAlgo_xcpp_src.Out

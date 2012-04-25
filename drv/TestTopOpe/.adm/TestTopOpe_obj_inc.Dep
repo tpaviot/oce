@@ -1,9 +1,0 @@
-+ TestTopOpe:pubinclude:TestTopOpe_BOOP.hxx TestTopOpe:source:TestTopOpe_BOOP.hxx
-+ TestTopOpe:pubinclude:TestTopOpe_VarsTopo.hxx TestTopOpe:source:TestTopOpe_VarsTopo.hxx
-+ TestTopOpe:pubinclude:TestTopOpe_HDSDisplayer.hxx TestTopOpe:source:TestTopOpe_HDSDisplayer.hxx
-+ TestTopOpe:dbadmfile:TestTopOpe_obj_inc.In TestTopOpe:admfile:TestTopOpe_src.Out
-+ * TestTopOpe:admfile:TestTopOpe_xcpp_src.Out
-+ TestTopOpe:dbadmfile:TestTopOpe_obj_inc.Out TestTopOpe:admfile:TestTopOpe_src.Out
-+ * TestTopOpe:admfile:TestTopOpe_xcpp_src.Out
-+ TestTopOpe:dbadmfile:TestTopOpe_obj_inc.Dep TestTopOpe:admfile:TestTopOpe_src.Out
-+ * TestTopOpe:admfile:TestTopOpe_xcpp_src.Out

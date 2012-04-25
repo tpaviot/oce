@@ -8,7 +8,6 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/Adaptor2d : @top_srcdir@/src/Adaptor2d: \
 @top_srcdir@/drv/Geom2dLProp : @top_srcdir@/src/Geom2dLProp: \
 @top_srcdir@/drv/Geom2dAdaptor : @top_srcdir@/src/Geom2dAdaptor: \
-@top_srcdir@/drv/TopAbs : @top_srcdir@/src/TopAbs: \
 @top_srcdir@/drv/GProp : @top_srcdir@/src/GProp
 
 
@@ -18,7 +17,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Geom2d -I@top_srcdir@/src/Geom2d \
 -I@top_srcdir@/drv/LProp -I@top_srcdir@/src/LProp \
@@ -26,16 +25,15 @@ INCLUDES = $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/Adaptor2d -I@top_srcdir@/src/Adaptor2d \
 -I@top_srcdir@/drv/Geom2dLProp -I@top_srcdir@/src/Geom2dLProp \
 -I@top_srcdir@/drv/Geom2dAdaptor -I@top_srcdir@/src/Geom2dAdaptor \
--I@top_srcdir@/drv/TopAbs -I@top_srcdir@/src/TopAbs \
 -I@top_srcdir@/drv/GProp -I@top_srcdir@/src/GProp
 
 
 lib_LTLIBRARIES=libTKG2d.la
 
-libTKG2d_la_LIBADD = \
-../TKMath/libTKMath.la \
+libTKG2d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-$(STLPort_LIB) 
+../TKMath/libTKMath.la
+
 
 libTKG2d_la_SOURCES = \
 @top_srcdir@/drv/Adaptor2d/Adaptor2d_HLine2d_0.cxx \
@@ -108,6 +106,5 @@ libTKG2d_la_SOURCES = \
 @top_srcdir@/src/Geom2dLProp/Geom2dLProp_CurAndInf2d.cxx \
 @top_srcdir@/src/Geom2dLProp/Geom2dLProp_Curve2dTool.cxx \
 @top_srcdir@/src/LProp/LProp_AnalyticCurInf.cxx \
-@top_srcdir@/src/LProp/LProp_CurAndInf.cxx \
-@top_srcdir@/src/TopAbs/TopAbs.cxx
+@top_srcdir@/src/LProp/LProp_CurAndInf.cxx
 

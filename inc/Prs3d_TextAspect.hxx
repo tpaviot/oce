@@ -46,9 +46,6 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Graphic3d_AspectText3d;
 class Quantity_Color;
 
@@ -114,8 +111,6 @@ public:
 //! -   height/width ratio, that is, the expansion factor, and <br>
 //! -   space between characters. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectText3d Aspect() const;
-  
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
 
 
 

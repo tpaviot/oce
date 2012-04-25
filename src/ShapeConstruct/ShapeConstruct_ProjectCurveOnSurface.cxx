@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //:k1 abv 16.12.98 K4L PRO10107, PRO10108, PRO10109
 //:j8 abv 10.12.98 TR10 r0501_db.stp #9423
 //:S4030 abv, pdn: new methods - interface to standard ProjLib_CompProjectedCurve
@@ -52,7 +69,7 @@
 #include <Approx_CurveOnSurface.hxx>
 
 #define NCONTROL 23
-  
+
 //=======================================================================
 //function : ShapeConstruct_ProjectCurveOnSurface
 //purpose  : 
@@ -1159,28 +1176,29 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
   // will store 0 when the point is to be removed, 1 otherwise
   TColStd_Array1OfInteger tmpParam(firstElem, lastElem);
   for (i = firstElem; i<=lastElem ; i++) tmpParam.SetValue(i,1);
-  Standard_Real DistMin = RealLast();
+  Standard_Real DistMin2 = RealLast();
   gp_Pnt Prev = points->Value (lastValid);
   gp_Pnt Curr;
   for (i = firstElem + 1; i <= lastElem ; i ++) {
     Curr = points->Value(i);
-    Standard_Real CurDist = Prev.Distance(Curr);
-    if (CurDist == 0.) {  // test 0 ???
+    Standard_Real CurDist2 = Prev.SquareDistance(Curr);
+    if (CurDist2 < gp::Resolution()) {  // test 0
       nbPntDropped ++;
       if ( i == lastElem ) tmpParam.SetValue(lastValid, 0); // last point kept
       else tmpParam.SetValue(i, 0);    // current dropped, lastValid unchanged
     } else {
-      if (CurDist < DistMin) {  DistMin = CurDist;  preci = DistMin;  }
+      if (CurDist2 < DistMin2) 
+        DistMin2 = CurDist2;
       // lastValid becomes the current (i.e. i)
       lastValid = i;
       Prev = Curr;
     }
   }
-  if (nbPntDropped == 0) {
-    preci = preci * 0.9; // preci est la distance min entre les points
-                       // on la reduit un peu
+  if (DistMin2 < RealLast())
+    preci = 0.9 * Sqrt (DistMin2); // preci est la distance min entre les points on la reduit un peu
+  if (nbPntDropped == 0)
     return;
-  }
+
 #ifdef DEBUG
   cout << "Warning : removing 3d points for interpolation" << endl;
 #endif
@@ -1206,7 +1224,6 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
   }
   points = newPnts;
   params = newParams;
-  preci = preci * 0.9; // preci est la distance min entre les points
   // on la reduit un peu
 }
 
@@ -1230,27 +1247,29 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
   for (i = firstElem; i<=lastElem ; i++) {
     tmpParam.SetValue(i,1);
   }
-  Standard_Real DistMin = RealLast();
+  Standard_Real DistMin2 = RealLast();
   gp_Pnt2d Prev = points->Value(lastValid);
   gp_Pnt2d Curr;
   for (i = firstElem + 1; i<=lastElem ; i++) {
     Curr = points->Value(i);
-    Standard_Real CurDist = Prev.Distance(Curr);
-    if (CurDist == 0.) {  // test 0 ???
+    Standard_Real CurDist2 = Prev.SquareDistance(Curr);
+    if (CurDist2 < gp::Resolution()) {  // test 0
       nbPntDropped ++;
       if ( i == lastElem ) tmpParam.SetValue(lastValid, 0); // last point kept
       else tmpParam.SetValue(i, 0);    // current dropped, lastValid unchanged
     } else {
-      if (CurDist < DistMin) {  DistMin = CurDist;  preci = DistMin;  }
+      if (CurDist2 < DistMin2) 
+        DistMin2 = CurDist2;
       // lastValid becomes the current (i.e. i)
       lastValid = i;
       Prev = Curr;
     }
   }
-  if (nbPntDropped == 0) {
-    preci = preci * 0.9;
+  if (DistMin2 < RealLast())
+    preci = 0.9 * Sqrt (DistMin2);
+  if (nbPntDropped == 0)
     return;
-  }
+
 #ifdef DEBUG
   cout << "Warning : removing 2d points for interpolation" << endl;
 #endif
@@ -1291,7 +1310,6 @@ Handle(Geom_Curve) ShapeConstruct_ProjectCurveOnSurface::InterpolateCurve3d(cons
   }
   points = newPnts;
   params = newParams;
-  preci = preci * 0.9;
 }
 
 //=======================================================================

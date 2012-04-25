@@ -1,7 +1,22 @@
-// File:	XCAFPrs_AISObject.cxx
-// Created:	Fri Aug 11 16:49:09 2000
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 2000-08-11
+// Created by: Andrey BETENEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <XCAFPrs_AISObject.ixx>
 #include <TCollection_ExtendedString.hxx>
@@ -70,60 +85,100 @@ XCAFPrs_AISObject::XCAFPrs_AISObject (const TDF_Label &lab) : AIS_Shape(TopoDS_S
 }
 
 //=======================================================================
-//function : Compute
+//function : SetColor
 //purpose  : 
 //=======================================================================
 
-void DisplayBox(const Handle(Prs3d_Presentation)& aPrs,
-		       const Bnd_Box& B,
-		       const Handle(Prs3d_Drawer)& aDrawer)
+void XCAFPrs_AISObject::SetColor(const Quantity_Color &aCol)
 {
-  Standard_Real X[2],Y[2],Z[2];
-  Standard_Integer Indx [16] ;
-  if ( B.IsVoid() )
-    return;
-  
-#ifdef BUC60577
-  Indx [0]=1;Indx [1]=2;Indx [2]=4;Indx [3]=3;
-  Indx [4]=5;Indx [5]=6;Indx [6]=8;Indx [7]=7;
-  Indx [8]=1;Indx [9]=3;Indx [10]=7;Indx [11]=5;
-  Indx [12]=2;Indx [13]=4;Indx [14]=8;Indx [15]=6;
-  B.Get(X[0], Y[0], Z[0], X[1], Y[1], Z[1]);
-#else
-  Indx [0]=1;Indx [1]=2;Indx [2]=3;Indx [3]=4;Indx [4]=5;Indx [5]=6;Indx [6]=7;
-  Indx [7]=8;Indx [8]=1;Indx [9]=2;Indx [10]=6;Indx [10]=5;Indx [10]=3;
-  Indx [10]=4;Indx [10]=8;Indx [10]=7;
-  B.Get(X[1], Y[1], Z[1], X[2], Y[2], Z[2]);
-#endif
-
-  Graphic3d_Array1OfVertex V(1,8);
-  Standard_Integer Rank(0);
-  for(Standard_Integer k=0;k<=1;k++)
-    for(Standard_Integer j=0;j<=1;j++)
-      for(Standard_Integer i=0;i<=1;i++)
-	V(++Rank) = Graphic3d_Vertex(X[i],Y[j],Z[k]);
-  
-  
-  Handle(Graphic3d_Group) G = Prs3d_Root::CurrentGroup(aPrs);
-  Quantity_Color Q;
-  Aspect_TypeOfLine A;
-  Standard_Real W;
-  aDrawer->LineAspect()->Aspect()->Values(Q,A,W);
-  
-
-  G->SetGroupPrimitivesAspect(new Graphic3d_AspectLine3d(Q,Aspect_TOL_DOTDASH,W));
-  
-  G->BeginPrimitives();Standard_Integer I,J;
-  Graphic3d_Array1OfVertex VVV (1,5);
-  for(I=1;I<=4;I++){
-    for(J=1;J<=4;J++){
-      VVV.SetValue(J,V(Indx[J+4*I-5]));
-    }
-    VVV.SetValue(5,VVV(1));
-    G->Polyline(VVV);
-  }
-  G->EndPrimitives();
+  AIS_Shape::SetColor(aCol);
+  LoadRecomputable(1);
 }
+
+//=======================================================================
+//function : UnsetColor
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::UnsetColor()
+{
+  if (HasColor())
+  {
+    AIS_Shape::UnsetColor();
+    LoadRecomputable(1);
+  }
+  else
+  {
+    myToRecomputeModes.Clear();
+  }
+}
+
+//=======================================================================
+//function : SetMaterial
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::SetMaterial(const Graphic3d_NameOfMaterial aMat)
+{
+  AIS_Shape::SetMaterial(aMat);
+  LoadRecomputable(1);
+}
+
+//=======================================================================
+//function : SetMaterial
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::SetMaterial(const Graphic3d_MaterialAspect& aMat)
+{
+  AIS_Shape::SetMaterial(aMat);
+  LoadRecomputable(1);
+}
+
+//=======================================================================
+//function : UnsetMaterial
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::UnsetMaterial()
+{
+  if (HasMaterial())
+  {
+    AIS_Shape::UnsetMaterial();
+    LoadRecomputable(1);
+  }
+  else
+  {
+    myToRecomputeModes.Clear();
+  }
+}
+
+//=======================================================================
+//function : SetTransparency
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::SetTransparency(const Standard_Real AValue)
+{
+  AIS_Shape::SetTransparency(AValue);
+  LoadRecomputable(1);
+}
+
+//=======================================================================
+//function : UnsetTransparency
+//purpose  : 
+//=======================================================================
+
+void XCAFPrs_AISObject::UnsetTransparency()
+{
+  AIS_Shape::UnsetTransparency();
+  LoadRecomputable(1);
+}
+
+//=======================================================================
+//function : AddStyledItem
+//purpose  : 
+//=======================================================================
 
 void XCAFPrs_AISObject::AddStyledItem (const XCAFPrs_Style &style, 
                                        const TopoDS_Shape &shape, 
@@ -327,7 +382,6 @@ static void DisplayText (const TDF_Label& aLabel,
       }
     }
   }
-  
 }
 			 
 //=======================================================================
@@ -338,21 +392,18 @@ static void DisplayText (const TDF_Label& aLabel,
 // support different color settings for different subshapes of a single shape
   
 void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,
-				 const Handle(Prs3d_Presentation)& aPrs,
-				 const Standard_Integer aMode)
+                                 const Handle(Prs3d_Presentation)& aPrs,
+                                 const Standard_Integer aMode)
 {  
 #ifdef DEB
-  cout << "XCAFPrs_AISObject: Update called" << endl;
+  //cout << "XCAFPrs_AISObject: Update called" << endl;
 #endif
   aPrs->Clear();
 
   // abv: 06 Mar 00: to have good colors
   Handle(TPrsStd_AISPresentation) prs = Handle(TPrsStd_AISPresentation)::DownCast ( GetOwner() );
-  Graphic3d_NameOfMaterial material = ( prs.IsNull() ? Graphic3d_NOM_PLASTIC : prs->Material() );
-//  Graphic3d_NameOfMaterial material = Material();
-  SetMaterial ( material );
-  
-//  SetMaterial ( Graphic3d_NOM_PLASTIC );
+  if ( prs.IsNull() || !prs->HasOwnMaterial() )
+    AIS_Shape::SetMaterial ( Graphic3d_NOM_PLASTIC );
 
   TopoDS_Shape shape;
   if ( ! XCAFDoc_ShapeTool::GetShape ( myLabel, shape ) || shape.IsNull() ) return;
@@ -377,7 +428,7 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& aPr
   XCAFPrs_DataMapOfShapeStyle settings;
   XCAFPrs::CollectStyleSettings ( myLabel, L, settings );
 #ifdef DEB
-  cout << "Styles collected" << endl;
+  //cout << "Styles collected" << endl;
 #endif
 
   // dispatch (sub)shapes by their styles
@@ -388,32 +439,22 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& aPr
   DefStyle.SetColorCurv ( White );
   XCAFPrs::DispatchStyles ( shape, settings, items, DefStyle );
 #ifdef DEB
-  cout << "Dispatch done" << endl;
+  //cout << "Dispatch done" << endl;
 #endif
 
   // add subshapes to presentation (one shape per style)
   XCAFPrs_DataMapIteratorOfDataMapOfStyleShape it ( items );
 #ifdef DEB
-  Standard_Integer i=1;
+  //Standard_Integer i=1;
 #endif
   for ( ; it.More(); it.Next() ) {
     XCAFPrs_Style s = it.Key();
 #ifdef DEB
-    cout << "Style " << i << ": [" << 
-      ( s.IsSetColorSurf() ? Quantity_Color::StringName ( s.GetColorSurf().Name() ) : "" ) << ", " <<
-      ( s.IsSetColorCurv() ? Quantity_Color::StringName ( s.GetColorCurv().Name() ) : "" ) << "]" <<
-	" --> si_" << i << ( s.IsVisible() ? "" : " <invisible>" ) << endl;
-#ifdef DEBUG
-    char str[200];
-    sprintf ( str, "si_%d", i );
-    DBRep::Set ( str, it.Value() );
-    try { OCC_CATCH_SIGNALS  ; } // to handle all till the end of for
-    catch (Standard_Failure) {
-      cout << "Exception in AddStyledItem!" << endl;
-      continue;
-    }
-#endif
-    i++;
+    //cout << "Style " << i << ": [" << 
+    //  ( s.IsSetColorSurf() ? Quantity_Color::StringName ( s.GetColorSurf().Name() ) : "" ) << ", " <<
+    //  ( s.IsSetColorCurv() ? Quantity_Color::StringName ( s.GetColorCurv().Name() ) : "" ) << "]" <<
+	//" --> si_" << i << ( s.IsVisible() ? "" : " <invisible>" ) << endl;
+    //i++;
 #endif
     if (! s.IsVisible() ) continue;
     AddStyledItem ( s, it.Value(), aPresentationManager, aPrs, aMode );
@@ -422,13 +463,13 @@ void XCAFPrs_AISObject::Compute (const Handle(PrsMgr_PresentationManager3d)& aPr
   if ( XCAFPrs::GetViewNameMode() ) {
   // Displaying Name attributes
 #ifdef DEB
-    cout << "Now display name of shapes" << endl;
+    //cout << "Now display name of shapes" << endl;
 #endif
     aPrs->SetDisplayPriority(10);
     DisplayText (myLabel, aPrs, Attributes()->LengthAspect()->TextAspect(), TopLoc_Location());//no location
   }
 #ifdef DEB
-  cout << "Compute finished" << endl;
+  //cout << "Compute finished" << endl;
 #endif
   
   aPrs->ReCompute(); // for hidden line recomputation if necessary...

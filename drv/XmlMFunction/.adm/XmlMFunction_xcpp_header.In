@@ -1,5 +1,0 @@
-+V XmlMFunction:msentity:XmlMFunction .
-+V XmlMFunction:msentity:XmlMFunction_FunctionDriver .
-+V XmlMFunction:msentity:XmlMFunction_ScopeDriver .
-+V XmlMFunction:msentity:XmlMFunction_GraphNodeDriver .
-- XmlMFunction:admfile:XmlMFunction_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/XmlMFunction/XmlMFunction_xcpp_fill.Out

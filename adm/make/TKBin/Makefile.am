@@ -15,7 +15,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BinDrivers -I@top_srcdir@/src/BinDrivers \
 -I@top_srcdir@/drv/BinMDataXtd -I@top_srcdir@/src/BinMDataXtd \
@@ -26,18 +26,18 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBin.la
 
-libTKBin_la_LIBADD = \
+libTKBin_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKMath/libTKMath.la \
 ../TKernel/libTKernel.la \
-../TKBinL/libTKBinL.la \
-../TKLCAF/libTKLCAF.la \
 ../TKG2d/libTKG2d.la \
-../TKCAF/libTKCAF.la \
-../TKV3d/libTKV3d.la \
-../TKBRep/libTKBRep.la \
 ../TKG3d/libTKG3d.la \
+../TKCAF/libTKCAF.la \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKLCAF/libTKLCAF.la \
+../TKV3d/libTKV3d.la \
+../TKBinL/libTKBinL.la
+
 
 libTKBin_la_SOURCES = \
 @top_srcdir@/src/BinDrivers/BinDrivers.cxx \

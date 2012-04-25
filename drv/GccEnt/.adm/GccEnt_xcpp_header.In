@@ -1,8 +1,0 @@
-+V GccEnt:msentity:GccEnt .
-+V GccEnt:msentity:GccEnt_QualifiedLin .
-+V GccEnt:msentity:GccEnt_QualifiedCirc .
-+V GccEnt:msentity:GccEnt_QualifiedCurv .
-+V GccEnt:msentity:GccEnt_Array1OfPosition .
-+V GccEnt:msentity:GccEnt_BadQualifier .
-+V GccEnt:msentity:GccEnt_Position .
-- GccEnt:admfile:GccEnt_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/GccEnt/GccEnt_xcpp_fill.Out

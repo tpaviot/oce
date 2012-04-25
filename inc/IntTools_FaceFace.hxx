@@ -43,10 +43,14 @@
 #ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #include <IntSurf_ListOfPntOn2S.hxx>
 #endif
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
+#endif
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
 #endif
 class GeomAdaptor_HSurface;
+class IntTools_Context;
 class StdFail_NotDone;
 class TopoDS_Face;
 class IntTools_SequenceOfCurves;
@@ -120,6 +124,13 @@ public:
   Standard_EXPORT     void PrepareLines3D(const Standard_Boolean bToSplit = Standard_True) ;
   
   Standard_EXPORT     void SetList(IntSurf_ListOfPntOn2S& ListOfPnts) ;
+  
+//! Sets the intersecton context <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& aContext) ;
+  
+//! Gets the intersecton context <br>
+//! <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
 
 
 
@@ -157,6 +168,7 @@ TopoDS_Face myFace1;
 TopoDS_Face myFace2;
 IntTools_SequenceOfPntOn2Faces myPnts;
 IntSurf_ListOfPntOn2S myListOfPnts;
+Handle_IntTools_Context myContext;
 
 
 };

@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_ProcessSectionEdges.cxx
-// Created:	Thu Jun 12 10:13:09 1997
-// Author:	Jean Yves LEBEY
-//		<jyl@bistrox.paris1.matra-dtv.fr>
+// Created on: 1997-06-12
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_FacesFiller.ixx>
 
@@ -58,10 +74,6 @@ void TopOpeBRep_FacesFiller::GetESL(TopTools_ListOfShape& LES)
     
     if (isrest) {
       const TopoDS_Edge& E = TopoDS::Edge(L.Arc());
-#ifdef DEB
-      Standard_Boolean FIisrest =
-#endif
-                     myFacesIntersector->IsRestriction(E);
       
 #ifdef DEB
       if (trRL) {
@@ -101,7 +113,7 @@ Standard_Boolean TopOpeBRep_FacesFiller::KeepRLine
 (const TopOpeBRep_LineInter& L,const Standard_Boolean checkkeep) const
 { 
 #ifdef DEB
-  Standard_Boolean trc = (TopOpeBRepDS_GettraceDSF() || TopOpeBRepDS_GettraceDSNC());
+  //Standard_Boolean trc = (TopOpeBRepDS_GettraceDSF() || TopOpeBRepDS_GettraceDSNC());
 #endif
 
   TopOpeBRep_TypeLineCurve t = L.TypeLineCurve();
@@ -340,10 +352,7 @@ void TopOpeBRep_FacesFiller::ProcessSectionEdges()
        itLES.Next(),itLOI.Next()) {
     const TopoDS_Shape& E1 = itLES.Value();
     Standard_Integer rE1 = itLOI.Value();
-#ifdef DEB
-    Standard_Integer iE1 =
-#endif
-              myDS->AddShape(E1,rE1);
+    myDS->AddShape(E1,rE1);
   }
   
   // determination des aretes SameDomain en 3d pur

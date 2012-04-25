@@ -1,14 +1,21 @@
-// File:        TDF_Data.cxx
-//              -------------
-// Author:      DAUTRY Philippe
-//              <fid@fox.paris1.matra-dtv.fr>
-// Copyright:   Matra Datavision 1997
-
-// Version:     0.0
-// History:     Version Date            Purpose
-//              0.0     Feb  6 1997     Creation
-
-
+// Created by: DAUTRY Philippe
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 #include <TDF_Data.ixx>
 
@@ -32,6 +39,8 @@
 
 #include <Standard_NoMoreObject.hxx>
 #include <Standard_NullObject.hxx>
+
+#include <NCollection_IncAllocator.hxx>
 
 #undef DEB_DELTA_CREATION
 #undef TDF_DATA_COMMIT_OPTIMIZED
@@ -75,11 +84,6 @@ if (withDelta) { \
   aDelta->AddAttributeDelta(DELTACREATION); \
 }
 
-#ifdef WNT
-// Disable the warning: "operator new unmatched by delete"
-#pragma warning (disable:4291)
-#endif
-
 //=======================================================================
 //function : TDF_Data
 //purpose  : empty constructor
@@ -98,10 +102,6 @@ myAllowModification     (Standard_True)
   myRoot = new (anIncAllocator) TDF_LabelNode (this);
 }
 
-#ifdef WNT
-#pragma warning (default:4291)
-#endif
-
 //=======================================================================
 //function : Destroy
 //purpose  : Used to implement the destructor ~.
@@ -110,7 +110,8 @@ myAllowModification     (Standard_True)
 void TDF_Data::Destroy()
 {
   AbortUntilTransaction(1);
-  delete myRoot;
+  myRoot->Destroy (myLabelNodeAllocator);
+  myRoot = NULL;
 }
 
 

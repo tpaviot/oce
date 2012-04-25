@@ -31,9 +31,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Quantity_Color;
 
 
@@ -59,8 +56,6 @@ public:
   Standard_EXPORT     void SetNumber(const Standard_Integer aNumber) ;
   //! returns the number of U or V isoparametric curves drawn for a single face. <br>
   Standard_EXPORT     Standard_Integer Number() const;
-  
-  Standard_EXPORT   virtual  void Print(Standard_OStream& s) const;
 
 
 

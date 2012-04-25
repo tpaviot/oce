@@ -1,6 +1,0 @@
-+ UTL:pubinclude:UTL.hxx UTL:msentity:UTL
-+ UTL:privinclude:UTL.jxx UTL:msentity:UTL
-+ UTL:privinclude:UTL.ixx UTL:msentity:UTL
-+ UTL:dbadmfile:UTL_xcpp_header.In UTL:admfile:UTL_xcpp_fill.Out
-+ UTL:dbadmfile:UTL_xcpp_header.Out UTL:admfile:UTL_xcpp_fill.Out
-+ UTL:dbadmfile:UTL_xcpp_header.Dep UTL:admfile:UTL_xcpp_fill.Out

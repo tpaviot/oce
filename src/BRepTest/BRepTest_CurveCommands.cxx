@@ -1,7 +1,23 @@
-// File:	DBRep_3.cxx
-// Created:	Thu Jul 22 16:38:58 1993
-// Author:	Remi LEQUETTE
-//		<rle@nonox>
+// Created on: 1993-07-22
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepTest.hxx>
@@ -700,7 +716,7 @@ static Standard_Integer profile(Draw_Interpretor& di,
     case 'r':
       i++;
       if (i >= n) goto badargs;
-      angle = atof(a[i]) * PI180;
+      angle = atof(a[i]) * (M_PI / 180.0);
       if ((a[i-1][1] == 'R') || (a[i-1][1] == 'r')) {
 	dx = Cos(angle);
 	dy = Sin(angle);
@@ -736,7 +752,7 @@ static Standard_Integer profile(Draw_Interpretor& di,
       if (i >= n) goto badargs;
       radius = atof(a[i-1]);
       if (Abs(radius) > Precision::Confusion()) {
-	angle = atof(a[i]) * PI180;
+	angle = atof(a[i]) * (M_PI / 180.0);
 	move = circle;
       }
       break;
@@ -987,8 +1003,8 @@ static Standard_Integer bsplineprof(Draw_Interpretor& di,
     }
   }
 //
-//  reste a faire : fermer le profil avec le premier point du contour
-//                  et le point pris avec mouse button 3 
+//  to be done : close the profile using the first point of the contour
+//               and the point taken with mouse button 3 
 //
  Handle(Geom2d_BSplineCurve) C ;
  Handle(Geom_Curve) curve3d_ptr ;
@@ -1128,7 +1144,6 @@ static Standard_Integer bsplineprof(Draw_Interpretor& di,
   return 0;
 
 #ifdef DEB  
- badargs:
   di << "profile : bad number of arguments";
   return 1;
 #endif
@@ -1288,7 +1303,7 @@ static Standard_Integer profile2d(Draw_Interpretor& di,
     case 'r':
       i++;
       if (i >= n) goto badargs;
-      angle = atof(a[i]) * PI180;
+      angle = atof(a[i]) * (M_PI / 180.0);
       if ((a[i-1][1] == 'R') || (a[i-1][1] == 'r')) {
 	dx = Cos(angle);
 	dy = Sin(angle);
@@ -1324,7 +1339,7 @@ static Standard_Integer profile2d(Draw_Interpretor& di,
       if (i >= n) goto badargs;
       radius = atof(a[i-1]);
       if (Abs(radius) > Precision::Confusion()) {
-	angle = atof(a[i]) * PI180;
+	angle = atof(a[i]) * (M_PI / 180.0);
 	move = circle;
       }
       break;
@@ -1559,7 +1574,7 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
   TopOpeBRep_EdgesIntersector EInter;
   char name[100];
   //------------------------------------------------------
-  // Calcul des point d intersection en 2d
+  // Calculate point of intersection 2D
   //-----------------------------------------------------
   EInter.SetFaces(F,F);
   Standard_Real TolInter = 1.e-7;
@@ -1569,8 +1584,8 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
   EInter.Perform (E[0],E[1],reducesegments);
   
   if (EInter.IsEmpty()) {
-    //cout << " Pas d'intersection trouvee" << endl;
-    di << " Pas d'intersection trouvee" << "\n";
+    //cout << " No intersection found" << endl;
+    di << " No intersection found" << "\n";
     return 0;
   }
 
@@ -1590,8 +1605,8 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
     DBRep::Set(name,V);
     for (Standard_Integer i = 1; i <= 2; i++) {
       //---------------------------------------------------------------
-      // pour pouvoir ranger le parametre sur l edge
-      // il faut le coder interne....
+      // to be able to rank parameter on edge
+      // it is necessary to code it internally
       //---------------------------------------------------------------
       Standard_Real U = P2D.Parameter(i);
       
@@ -1600,7 +1615,7 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
 //      B.UpdateVertex(TopoDS::Vertex(V.Oriented(TopAbs_INTERNAL)),
 //		     U,E[i-1],Tol);
       //---------------------------------------------------------------
-      // Orientation du vertex en fct de la transition.
+      // Orientation of vertex in the transition.
       //---------------------------------------------------------------
       TopAbs_Orientation OO = TopAbs_REVERSED;
       if (P2D.IsVertex(i)) {
@@ -1609,8 +1624,8 @@ Standard_Integer edgeintersector(Draw_Interpretor& di,
       else if (P2D.Transition(i).Before() == TopAbs_OUT) {
 	OO = TopAbs_FORWARD;
       }
-      //cout << " Orientation du vertex " << NbV << " sur " << a[i+1] << ": ";
-      di << " Orientation du vertex " << NbV << " sur " << a[i+1] << ": ";
+      //cout << " Orientation of vertex " << NbV << " on " << a[i+1] << ": ";
+      di << " Orientation of vertex " << NbV << " on " << a[i+1] << ": ";
       if (OO == TopAbs_FORWARD) {
 	//cout << "FORWARD" << endl;
 	di << "FORWARD" << "\n";
@@ -1647,7 +1662,7 @@ static Standard_Integer concatwire(Draw_Interpretor&, Standard_Integer n, const 
   TopoDS_Wire res;
 
 
-  res=BRepAlgo::ConcatenateWire(W,Option);              //treatment
+  res=BRepAlgo::ConcatenateWire(W,Option);              //processing
   DBRep::Set(c[1],res);
   return 0;
 }
@@ -1662,8 +1677,8 @@ Standard_Integer  build3d(Draw_Interpretor& di,
 {
 
   if ( (n <2) || (n>3) ) {
-    //cout << " 1 ou 2 arguments attendus" << endl;
-    di << " 1 ou 2 arguments attendus" << "\n";
+    //cout << " 1 or 2 arguments expected" << endl;
+    di << " 1 or 2 arguments expected" << "\n";
     return 1;
   }
     
@@ -1679,6 +1694,29 @@ Standard_Integer  build3d(Draw_Interpretor& di,
   return 0;
 }
 
+//=======================================================================
+//function : reducepcurves
+//purpose  : remove pcurves that are unused in this shape
+//=======================================================================
+
+Standard_Integer reducepcurves(Draw_Interpretor& di, 
+                               Standard_Integer n, const char** a)
+{
+  if (n < 2) return 1;
+
+  Standard_Integer i;
+  for (i = 1; i < n; i++)
+  {
+    TopoDS_Shape aShape = DBRep::Get(a[i]);
+    if (aShape.IsNull())
+      //cout << a[i] << " is not a valid shape" << endl;
+      di << a[i] << " is not a valid shape" << "\n";
+    else
+      BRepTools::RemoveUnusedPCurves(aShape);
+  }
+  
+  return 0;
+}
 
 //=======================================================================
 //function : CurveCommands
@@ -1785,6 +1823,10 @@ void  BRepTest::CurveCommands(Draw_Interpretor& theCommands)
   theCommands.Add("build3d",
 		  "build3d S [tol]",
 		  build3d, g);
+
+  theCommands.Add("reducepcurves",
+		  "reducepcurves shape1 shape2 ...",
+		  reducepcurves, g);
 
   theCommands.Add("concatwire",
 		  "concatwire result wire [option](G1/C1)",

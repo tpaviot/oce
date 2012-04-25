@@ -1,6 +1,0 @@
-+ TestTopOpe:pubinclude:TestTopOpe.hxx TestTopOpe:msentity:TestTopOpe
-+ TestTopOpe:privinclude:TestTopOpe.jxx TestTopOpe:msentity:TestTopOpe
-+ TestTopOpe:privinclude:TestTopOpe.ixx TestTopOpe:msentity:TestTopOpe
-+ TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.In TestTopOpe:admfile:TestTopOpe_xcpp_fill.Out
-+ TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.Out TestTopOpe:admfile:TestTopOpe_xcpp_fill.Out
-+ TestTopOpe:dbadmfile:TestTopOpe_xcpp_header.Dep TestTopOpe:admfile:TestTopOpe_xcpp_fill.Out

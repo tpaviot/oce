@@ -23,7 +23,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_wsock32_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_wsock32_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StepAP214 -I@top_srcdir@/src/StepAP214 \
 -I@top_srcdir@/drv/RWStepAP214 -I@top_srcdir@/src/RWStepAP214 \
@@ -42,21 +42,21 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_wsock32_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKSTEP.la
 
-libTKSTEP_la_LIBADD = \
+libTKSTEP_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKXSBase/libTKXSBase.la \
-../TKSTEPBase/libTKSTEPBase.la \
 ../TKSTEPAttr/libTKSTEPAttr.la \
+../TKSTEP209/libTKSTEP209.la \
+../TKSTEPBase/libTKSTEPBase.la \
+../TKBRep/libTKBRep.la \
 ../TKMath/libTKMath.la \
-../TKG3d/libTKG3d.la \
 ../TKG2d/libTKG2d.la \
 ../TKShHealing/libTKShHealing.la \
-../TKSTEP209/libTKSTEP209.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKBRep/libTKBRep.la \
 ../TKTopAlgo/libTKTopAlgo.la \
+../TKG3d/libTKG3d.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-$(STLPort_LIB) $(CSF_wsock32_LIB) 
+../TKXSBase/libTKXSBase.la \
+$(CSF_wsock32_LIB) 
 
 libTKSTEP_la_SOURCES = \
 @top_srcdir@/drv/STEPConstruct/STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient_0.cxx \

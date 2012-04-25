@@ -1,9 +1,0 @@
-pubinclude StlTransfer.hxx
-privinclude StlTransfer.jxx
-privinclude StlTransfer.ixx
-dbadmfile StlTransfer_xcpp_header.In
-dbadmfile StlTransfer_xcpp_header.Out
-dbadmfile StlTransfer_xcpp_header.Dep
-dbadmfile StlTransfer_obj_inc.In
-dbadmfile StlTransfer_obj_inc.Out
-dbadmfile StlTransfer_obj_inc.Dep

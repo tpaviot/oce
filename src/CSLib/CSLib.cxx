@@ -1,9 +1,24 @@
-// File:	CSLib.cxx
-// Created:	Mon Sep 9 11:19:10 1991
-// Author:	Michel Chauvat
-//		Modif JCV Decembre 1991 :  Ajout des Status
-//              Modif JPI Octobre 1996 : Ajout des methodes DNNUV et DNNormal
-//              Modif JPI Novembre 1996 : Ajout de la methode Normal pour les cas singuliers
+// Created on: 1991-09-09
+// Created by: Michel Chauvat
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 
 #include <CSLib.ixx>
 
@@ -45,7 +60,7 @@ CSLib_DerivativeStatus& Status,
 gp_Dir&              Normal
 ) {
 
-// Fonction: Calcul de la normale a partir des tangentes en u et en v.
+// Function: Calculation of the normal from tangents by u and by v.
 
   Standard_Real D1UMag = D1U.SquareMagnitude(); 
   Standard_Real D1VMag = D1V.SquareMagnitude();
@@ -80,8 +95,8 @@ CSLib_NormalStatus& Status,
 gp_Dir&          Normal
 ) {
 
-//  Calcul d'une normale approchee dans le cas d'une normale nulle.
-//  On utilise le developpement limite de la normale a l'ordre 1:
+//  Calculation of an approximate normale in case of a null normal.
+//  Use limited development of the normal of order 1:
 //     N(u0+du,v0+dv) = N0 + dN/du(u0,v0) * du + dN/dv(u0,v0) * dv + epsilon
 //  -> N ~ dN/du + dN/dv.
 
@@ -143,7 +158,7 @@ const Standard_Real        MagTol,
 CSLib_NormalStatus& Status, 
 gp_Dir&              Normal
 ) {
-// Fonction: Calcul de la normale a partir des tangentes en u et en v.
+// Function: Calculate the normal from tangents by u and by v.
 
   Standard_Real D1UMag = D1U.Magnitude(); 
   Standard_Real D1VMag = D1V.Magnitude();
@@ -160,7 +175,7 @@ gp_Dir&              Normal
   
 
 }
-// Calcul du vecteur normal dans les cas singuliers
+// Calculate normal vector in singular cases
 //
 void CSLib::Normal(const Standard_Integer MaxOrder, 
                    const TColgp_Array2OfVec& DerNUV, 
@@ -182,8 +197,8 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
 //  Status = Singular;
   Standard_Real Norme;
   gp_Vec D;
-  //Recherche de k0 tel que toutes des derivee de N=dS/du ^ dS/dv soient nulles
-  //jusqu'a l'ordre k0-1
+  //Find k0 such that all derivatives N=dS/du ^ dS/dv are null
+  //till order k0-1
   while(!Trouve && Order < MaxOrder)
   {
     Order++;
@@ -199,7 +214,7 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
   }
   OrderU=i+1;
   OrderV=Order-OrderU;
-  //Vko premiere derivee de N non nulle : reference
+  //Vko first non null derivative of N : reference
   if(Trouve)
   {
      if(Order == 0) 
@@ -212,7 +227,7 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
       gp_Vec Vk0;  
       Vk0=DerNUV(OrderU,OrderV);
       TColStd_Array1OfReal Ratio(0,Order);
-      //Calcul des lambda i
+      //Calculate lambda i
       i=0;
       Standard_Boolean definie=Standard_False;
       while(i<=Order && !definie)
@@ -236,59 +251,71 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
             }
          }
          i++;
-      }//fin while
+      }//end while
       if(!definie)
-      {  //Tout les lambda i existent
+      {  //All lambda i exist
          Standard_Integer SP;
          Standard_Real inf,sup;
-         inf=0.0-Standard_PI;
-         sup=0.0+Standard_PI;
+         inf = 0.0 - M_PI;
+         sup = 0.0 + M_PI;
          Standard_Boolean FU,LU,FV,LV;
 
-         //Creation du domaine de definition en fonction de la position
-         //du point singulier (milieu, bord, coin).
+         //Creation of the domain of definition depending on the position
+         //of a single point (medium, border, corner).
          FU=(Abs(U-Umin) < Precision::PConfusion());
          LU=(Abs(U-Umax) < Precision::PConfusion() );
          FV=(Abs(V-Vmin) < Precision::PConfusion() );
          LV=(Abs(V-Vmax) < Precision::PConfusion() );
-         if(LU)
+         if (LU)
          {
-            inf=Standard_PI/2;
-            sup=3*inf;
-            if(LV){inf=Standard_PI;}
-            if(FV){sup=Standard_PI;}
+            inf = M_PI / 2;
+            sup = 3 * inf;
+            if (LV)
+            {
+              inf = M_PI;
+            }
+            if (FV)
+            {
+              sup = M_PI;
+            }
          }
-         else if(FU)
+         else if (FU)
          {
-            sup=Standard_PI/2;
-	    inf=-sup;
-	    if(LV){sup=0;}
-	    if(FV){inf=0;}
+            sup = M_PI / 2;
+	    inf = -sup;
+	    if (LV)
+            { 
+              sup = 0;
+            }
+	    if (FV)
+            {
+              inf = 0;
+            }
 	 }
-	 else if(LV)
+	 else if (LV)
 	 {
-	    inf=0.0-Standard_PI;
-	    sup=0;
+	    inf = 0.0 - M_PI;
+	    sup = 0;
          }
-	 else if(FV)
+	 else if (FV)
 	 {
-            inf=0;
-	    sup=Standard_PI;
+            inf = 0;
+	    sup = M_PI;
 	 }
 	 Standard_Boolean CS=0;
 	 Standard_Real Vprec=0,Vsuiv;
-	 //Creation du polynome
+	 //Creation of the polynom
 	 CSLib_NormalPolyDef  Poly(Order,Ratio);
-	 //Recherche des zeros de SAPS
+	 //Find zeros of SAPS
 	 math_FunctionRoots FindRoots(Poly,inf,sup,200,1e-5,
 			           Precision::Confusion(),
                                    Precision::Confusion());
-	 //Si il y a des zeros
+	 //If there are zeros
 	 if(FindRoots.IsDone())
 	 {
 	    if(FindRoots.NbSolutions()>0)
 	    {
-               //rangement par ordre crossant des racines de SAPS dans Sol0
+               //ranking by increasing order of roots of SAPS in Sol0
 
                TColStd_Array1OfReal Sol0(0,FindRoots.NbSolutions()+1);
                Sol0(1)=FindRoots.Value(1);
@@ -304,12 +331,12 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
 	          }
 	          Sol0(i+1)=ASOL;
 	          n++;
-               }//fin while(n
-               //Ajouts des bornes du domaines 
+               }//end while(n
+               //Add limits of the domains 
                Sol0(0)=inf;
                Sol0(FindRoots.NbSolutions()+1)=sup;
-               //Recherche des changement de signe de SAPS par comparaison de ses
-               //valeurs a gauche et a droite de chaque racines
+               //Find change of sign of SAPS in comparison with its
+               //values to the left and right of each root
                Standard_Integer ifirst=0;
                for (i=0;i<=FindRoots.NbSolutions();i++) 
                {
@@ -332,20 +359,20 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
             }
             else
             {
-               //SAPS n'a pas de racine donc forcement ne change pas de signe
+               //SAPS has no root, so forcedly do not change the sign
                CS=Standard_False;
                Poly.Value(inf,Vsuiv);
             }
             //fin if(MFR.NbSolutions()>0)
          }//fin if(MFR>IsDone())
          if(CS)
-         //Le polynome change de signe
+         //Polynom changes the sign
             SP=0;
 	 else if(Vsuiv>0)
-	         //Le polynome est toujours positif
+	         //Polynom is always positive
                  SP=1;
               else
-                 //Le polynome est toujours negatif
+                 //Polynom is always negative
                  SP=-1;
          if(SP==0)
              Status = InfinityOfSolutions;
@@ -364,7 +391,7 @@ void CSLib::Normal(const Standard_Integer MaxOrder,
    }
 }
 //
-// Calcul de la derivee du vecteur normal non norme
+// Calculate the derivative of the non-normed normal vector
 //
 gp_Vec CSLib::DNNUV(const Standard_Integer Nu, 
 		    const Standard_Integer Nv,
@@ -372,8 +399,6 @@ gp_Vec CSLib::DNNUV(const Standard_Integer Nu,
 {
   Standard_Integer i,j;
   gp_Vec D(0,0,0),VG,VD,PV;
-  PLib::Binomial(Nu);
-  PLib::Binomial(Nv);
   for(i=0;i<=Nu;i++)
     for(j=0;j<=Nv;j++){
       VG=DerSurf.Value(i+1,j);
@@ -396,8 +421,6 @@ gp_Vec CSLib::DNNUV(const Standard_Integer Nu,
 {
   Standard_Integer i,j;
   gp_Vec D(0,0,0),VG,VD,PV;
-  PLib::Binomial(Nu);
-  PLib::Binomial(Nv);
   for(i=0;i<=Nu;i++)
     for(j=0;j<=Nv;j++){
       VG=DerSurf1.Value(i+1,j);
@@ -409,8 +432,8 @@ gp_Vec CSLib::DNNUV(const Standard_Integer Nu,
 }
 
 //
-// CalCul des derivees du vecteur normal norme en fonction des derivees
-// du vecteur normal non norme
+// Calculate the derivatives of the normed normal vector depending on the  derivatives
+// of the non-normed normal vector
 //
 gp_Vec CSLib::DNNormal(const Standard_Integer Nu,
 		       const Standard_Integer Nv,
@@ -431,8 +454,6 @@ DerVecNor.SetValue(0,0,DerNor);
 Dnorm=DerNUV.Value(Iduref,Idvref)*DerVecNor.Value(0,0);
 TabNorm.SetValue(0,0,Dnorm);
 TabScal.SetValue(0,0,0.);
-PLib::Binomial(Kderiv + Iduref);
-PLib::Binomial(Kderiv + Idvref);
 for ( Mderiv = 1;Mderiv <= Kderiv; Mderiv++)
     for ( Pderiv = 0 ; Pderiv <= Mderiv ; Pderiv++)
         {
@@ -440,7 +461,7 @@ for ( Mderiv = 1;Mderiv <= Kderiv; Mderiv++)
           if (Pderiv <= Nu && Qderiv <= Nv)
             {
 //
-//  Compute n . derivee(p,q) de n
+//  Compute n . derivee(p,q) of n
           Scal = 0.;
           if ( Pderiv > Qderiv )
              { 

@@ -1,7 +1,23 @@
-// File:	LocOpe_CSIntersector.lxx
-// Created:	Tue Jun 11 09:11:57 1996
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1996-06-11
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <LocOpe_CSIntersector.ixx>
@@ -131,16 +147,12 @@ void LocOpe_CSIntersector::Perform(const LocOpe_SequenceOfCirc& Scir)
   TopExp_Explorer exp(myShape,TopAbs_FACE);
   Handle(GeomAdaptor_HCurve) HC = new GeomAdaptor_HCurve ();
   Standard_Real binf = 0.;
-  Standard_Real bsup = 2.*PI;
+  Standard_Real bsup = 2.*M_PI;
 
 
   for (; exp.More(); exp.Next()) {
     const TopoDS_Face& theface = TopoDS::Face(exp.Current());
     IntCurvesFace_Intersector theInt(theface,0.);
-#ifdef DEB
-    TopAbs_Orientation orface =
-#endif
-                                theface.Orientation();
     for (Standard_Integer i = 1; i<=myNbelem; i++) {
 
       HC->ChangeCurve().Load(new Geom_Circle(Scir(i)));
@@ -179,10 +191,6 @@ void LocOpe_CSIntersector::Perform(const TColGeom_SequenceOfCurve& Scur)
   for (; exp.More(); exp.Next()) {
     const TopoDS_Face& theface = TopoDS::Face(exp.Current());
     IntCurvesFace_Intersector theInt(theface,0.);
-#ifdef DEB
-    TopAbs_Orientation orface =
-#endif
-                                theface.Orientation();
     for (Standard_Integer i = 1; i<=myNbelem; i++) {
       if (Scur(i).IsNull()) {
 	continue;
@@ -599,10 +607,6 @@ static void AddPoints(IntCurvesFace_Intersector& theInt,
   Standard_Integer nbpoints = theSeq.Length();
   Standard_Integer newpnt = theInt.NbPnt();
   Standard_Real param,paramu,paramv;
-#ifdef DEB
-  TopAbs_Orientation orface =
-#endif
-                              theface.Orientation();
   for (Standard_Integer j = 1; j<=newpnt; j++) {
     const gp_Pnt& thept = theInt.Pnt(j);
     param = theInt.WParameter(j);

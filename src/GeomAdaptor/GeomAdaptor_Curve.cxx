@@ -1,7 +1,23 @@
-// File:      GeomAdaptor_Curve.cxx
-// Created:   Thu Apr 29 11:54:32 1993
-// Author:    Bruno DUMORTIER
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-04-29
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // 20/02/97 : PMN -> Positionement local sur BSpline (PRO6902)
 // 10/07/97 : PMN -> Pas de calcul de resolution dans Nb(Intervals)(PRO9248)
@@ -34,6 +50,7 @@
 
 #include <Standard_OutOfRange.hxx>
 #include <Standard_NoSuchObject.hxx>
+#include <Standard_NullObject.hxx>
 #include <Standard_NotImplemented.hxx>
 #include <Geom_OffsetCurve.hxx>
 
@@ -109,11 +126,10 @@ GeomAbs_Shape GeomAdaptor_Curve::LocalContinuity(const Standard_Real U1,
 //purpose  : 
 //=======================================================================
 
-void GeomAdaptor_Curve::Load(const Handle(Geom_Curve)& C,
+void GeomAdaptor_Curve::load(const Handle(Geom_Curve)& C,
                              const Standard_Real UFirst,
                              const Standard_Real ULast)
 {
-  if ( UFirst > ULast) Standard_ConstructionError::Raise();
   myFirst = UFirst;
   myLast  = ULast;
 
@@ -673,7 +689,7 @@ Standard_Real GeomAdaptor_Curve::Resolution(const Standard_Real R3D) const
     if ( R > R3D/2. )
       return 2*ASin(R3D/(2*R));
     else
-      return 2*PI;
+      return 2*M_PI;
   }
   case GeomAbs_Ellipse: {
     return R3D / (*((Handle(Geom_Ellipse)*)&myCurve))->MajorRadius();

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
 
      FONCTION :
@@ -865,7 +883,7 @@ Standard_Boolean setattrib = Standard_False;
 Standard_Boolean Xw_Driver::IsKnownImage(const Handle(Standard_Transient)& anImage) {
 
         MyImage = Xw_get_image_handle( MyExtendedDrawable, 
-                                (void*)(anImage->HashCode(IntegerLast())) ) ;
+                                (void*)(::HashCode (anImage, IntegerLast())) ) ;
 
         if( MyImage ) return (Standard_True) ;
         else return Standard_False;
@@ -899,7 +917,7 @@ float zoom;
 void Xw_Driver::ClearImage (const Handle(Standard_Transient)& anImage) {
 
         MyImage = Xw_get_image_handle( MyExtendedDrawable, 
-                                (void*) (anImage->HashCode(IntegerLast())) ) ;
+                                (void*) (::HashCode (anImage, IntegerLast())) ) ;
 
         if( MyImage ) {
             status = Xw_close_image (MyImage);
@@ -921,7 +939,7 @@ XW_EXT_IMAGEDATA *pimage;
 void Xw_Driver::DrawImage (const Handle(Standard_Transient)& anImage, const Standard_ShortReal aX, const Standard_ShortReal aY) {
 
         MyImage = Xw_get_image_handle( MyExtendedDrawable, 
-                                (void*) (anImage->HashCode(IntegerLast())) ) ;
+                                (void*) (::HashCode (anImage, IntegerLast())) ) ;
 
         if( MyImage ) {
             status = Xw_draw_image (MyExtendedDrawable, MyImage, aX, aY);
@@ -973,7 +991,7 @@ GRAPHIC2D_PIXEL pixel;
         if ((aWidth > 0) && (aHeight > 0)) {
             if( !MyImage ) {
                 MyImage = Xw_open_image (MyExtendedDrawable,
-                        (void*) (anImage->HashCode(IntegerLast())),
+                                (void*) (::HashCode (anImage, IntegerLast())),
                                 int (aWidth),int (aHeight));
             }
             if( !MyImage ) {
@@ -1092,7 +1110,7 @@ GRAPHIC2D_PIXEL pixel;
         if ((aWidth > 0) && (aHeight > 0) && (anIndexOfLine == 0)) {
             if( !MyImage ) {    
                 MyImage = Xw_open_image (MyExtendedDrawable,
-                        (void*) (anImage->HashCode(IntegerLast())),
+                                (void*) (::HashCode (anImage, IntegerLast())),
                                 int (aWidth),int (aHeight));
             }
         }

@@ -1,7 +1,22 @@
-// File:	BOPTools_Tools3D.cxx
-// Created:	Mon Apr  5 12:29:22 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-04-05
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BOPTools_Tools3D.ixx>
 
@@ -72,7 +87,7 @@ static Standard_Boolean CheckKeepArguments(const TopoDS_Face& F1,
 //purpose  : 
 //=======================================================================
   void BOPTools_Tools3D::RemoveSims (const TopoDS_Shape& aS,
-				     IntTools_Context& aContext)
+				     const Handle(IntTools_Context)& aContext)
 {
   TopExp_Explorer anExp(aS, TopAbs_FACE);
   for (; anExp.More(); anExp.Next()) {
@@ -87,7 +102,7 @@ static Standard_Boolean CheckKeepArguments(const TopoDS_Face& F1,
 //purpose  : 
 //=======================================================================
   void BOPTools_Tools3D::RemoveSims (const TopoDS_Face& aFF,
-				     IntTools_Context& aContext)
+				     const Handle(IntTools_Context)& aContext)
 {
   Standard_Boolean anIsClosed, anIsPointInFace1, anIsPointInFace2;
   Standard_Real aT1, aT2, aT, aX, aY, dt=1.e-7, aTol;
@@ -139,12 +154,12 @@ static Standard_Boolean CheckKeepArguments(const TopoDS_Face& F1,
 	aP2Dx.SetX(aP2D.X()+dt*aV2Dx.X());
 	aP2Dx.SetY(aP2D.Y()+dt*aV2Dx.Y());
 	//
-	anIsPointInFace1=aContext.IsPointInFace(aF, aP2Dx);
+	anIsPointInFace1=aContext->IsPointInFace(aF, aP2Dx);
 	//
 	aP2Dx.SetX(aP2D.X()-dt*aV2Dx.X());
 	aP2Dx.SetY(aP2D.Y()-dt*aV2Dx.Y());
 	//
-	anIsPointInFace2=aContext.IsPointInFace(aF, aP2Dx);
+	anIsPointInFace2=aContext->IsPointInFace(aF, aP2Dx);
 	//
 	
 	if (anIsPointInFace1 && anIsPointInFace2) {
@@ -475,7 +490,7 @@ Standard_Boolean BOPTools_Tools3D::DoSplitSEAMOnFace(const TopoDS_Edge& theSplit
 //=======================================================================
   Standard_Boolean BOPTools_Tools3D::IsSplitToReverse1 (const TopoDS_Edge& aEF1,
 							const TopoDS_Edge& aEF2,
-							IntTools_Context& aContext)
+							const Handle(IntTools_Context)& aContext)
 {
   Standard_Boolean aFlag;
   Standard_Real aT1, aT2, aScPr, a, b;
@@ -494,7 +509,7 @@ Standard_Boolean BOPTools_Tools3D::DoSplitSEAMOnFace(const TopoDS_Edge& theSplit
 
   gp_Dir aDT1(aV1);
   //
-  aFlag=aContext.ProjectPointOnEdge(aP, aEF2, aT2);
+  aFlag=aContext->ProjectPointOnEdge(aP, aEF2, aT2);
   //
   aFlag=BOPTools_Tools2D::EdgeTangent(aEF2, aT2, aV2);
   if(!aFlag) {
@@ -940,7 +955,7 @@ static void GetApproxNormalToFaceOnEdgeEx(const TopoDS_Edge& aE,
 				    const TopoDS_Edge& anE1,
 				    const TopoDS_Face& aF1,
 				    TopAbs_State& aStPF1,
-				    IntTools_Context& aContext)
+				    const Handle(IntTools_Context)& aContext)
 {
   Standard_Boolean bIsAdjExists;
 
@@ -1008,21 +1023,21 @@ static void GetApproxNormalToFaceOnEdgeEx(const TopoDS_Edge& aE,
       BOPTools_Tools3D::GetApproxNormalToFaceOnEdge (aSpxSimm, aFx1, aT, aPx2, aDNFx2); 
     }
 
-    aContext.ProjectPointOnEdge(aPx, anE1, aT1);
+    aContext->ProjectPointOnEdge(aPx, anE1, aT1);
     PointNearE (anE1, aF1, aT1, aPF1, aMoreShift);
   }
 
   else {// if (bIsAdjExists)
     BOPTools_Tools3D::GetApproxNormalToFaceOnEdge (aSpxSimm, aFx2, aT, aPx2, aDNFx2);
     //  
-    aContext.ProjectPointOnEdge(aPx, anE1, aT1);
+    aContext->ProjectPointOnEdge(aPx, anE1, aT1);
     PointNearE (anE1, aF1, aT1, aPF1, aMoreShift);
   }
   
   {
     Standard_Real d12, d1, anAlfa12, anAlfa1, aTwoPI;
     
-    aTwoPI=Standard_PI+Standard_PI;
+    aTwoPI = M_PI + M_PI;
     
     gp_Vec aVx1(aPx, aPx1);
     gp_Dir aDBx1 (aVx1);
@@ -1129,7 +1144,7 @@ static void GetApproxNormalToFaceOnEdgeEx(const TopoDS_Edge& aE,
 	for( iKey = 1; iKey <= nbKeys; iKey++ ) {
 	  const TopoDS_Vertex& iV = TopoDS::Vertex(mapVE.FindKey(iKey));
 	  if( iV.IsNull() ) continue;
-	  Standard_Real TolV = BRep_Tool::Tolerance(iV);
+	  //Standard_Real TolV = BRep_Tool::Tolerance(iV);
 	  const TopTools_ListOfShape& iLE = mapVE.FindFromIndex(iKey);
 	  Standard_Integer nbE = iLE.Extent();
 	  if( nbE != 2 ) {
@@ -1251,7 +1266,7 @@ static Standard_Boolean PseudoSDFaces(const BRepAdaptor_Surface& BS1,
 
 
   const TopoDS_Face& aF1 = BS1.Face();
-  Standard_Real maxTolE1 = 1.e-7, maxTolV1 = 1.e-7;
+  Standard_Real maxTolE1 = 1.e-7;
   Standard_Integer nbE1 = 0, nbOnE1 = 0;
   for(anExpE.Init(aF1, TopAbs_EDGE); anExpE.More(); anExpE.Next()) {
     const TopoDS_Edge& aE = TopoDS::Edge(anExpE.Current());
@@ -1307,7 +1322,7 @@ static Standard_Boolean PseudoSDFaces(const BRepAdaptor_Surface& BS1,
     return Standard_False;
 
   const TopoDS_Face& aF2 = BS1.Face();
-  Standard_Real maxTolE2 = 1.e-7, maxTolV2 = 1.e-7;
+  Standard_Real maxTolE2 = 1.e-7;
   Standard_Integer nbE2 = 0, nbOnE2 = 0;
   for(anExpE.Init(aF2, TopAbs_EDGE); anExpE.More(); anExpE.Next()) {
     const TopoDS_Edge& aE = TopoDS::Edge(anExpE.Current());

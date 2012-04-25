@@ -19,7 +19,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/ChFiDS -I@top_srcdir@/src/ChFiDS \
 -I@top_srcdir@/drv/ChFi2d -I@top_srcdir@/src/ChFi2d \
@@ -34,17 +34,17 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKFillet.la
 
-libTKFillet_la_LIBADD = \
+libTKFillet_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKernel/libTKernel.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
-../TKBool/libTKBool.la \
-../TKG3d/libTKG3d.la \
-../TKGeomBase/libTKGeomBase.la \
 ../TKMath/libTKMath.la \
+../TKGeomBase/libTKGeomBase.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKG2d/libTKG2d.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-../TKBRep/libTKBRep.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la \
+../TKBool/libTKBool.la
+
 
 libTKFillet_la_SOURCES = \
 @top_srcdir@/drv/BRepBlend/BRepBlend_AppSurf_0.cxx \

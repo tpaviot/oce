@@ -1,4 +1,21 @@
-// file GccAna_Circ2dTanOnRad_3.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2dTanOnRad.jxx>
 
@@ -12,17 +29,16 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Cercle tangent a un cercle   Qualified1 (C1).                        +
-//          centre sur un cercle  OnCirc.                                 +
-//          de rayon              Radius.                                 +
+//   Circle tangent to a circle   Qualified1 (C1).                        +
+//          center on a circle  OnCirc.                                   +
+//          of radius              Radius.                                +
 //                                                                        +
-//  On initialise le tableau de solutions cirsol ainsi que tous les       +
-//  champs.                                                               +
-//  On elimine les cas ne presentant pas de solution.                     +
-//  On cree la (les) parallele(s) a C1 dans le (les) sens voulu(s).       +
-//  On intersecte cette (ces) parallele(s) avec OnCirc et on obtient le   +
-//  (les) point(s) de centre de la (des) solution(s) recherchee(s).       +
-//  On cree cette (ces) solution(s) cirsol.                               +
+//  Initialize the table of solutions cirsol and all fields.              +
+//  Eliminate cases not being the solution.                     +
+//  Create parallel(s) to C1 in the required direction(s).       +
+//  Intersect parallel(s) with OnCirc and obtain the   +
+//  center point(s) of found solution(s).       +
+//  Create solution(s) cirsol.                               +
 //=========================================================================
 
 GccAna_Circ2dTanOnRad::

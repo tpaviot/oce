@@ -1,7 +1,23 @@
-// File:	DBRep_IsoBuilder.cxx
-// Created:	Fri Mar 25 16:44:21 1994
-// Author:	Jean Marc LACHAUME
-//		<jml@phobox>
+// Created on: 1994-03-25
+// Created by: Jean Marc LACHAUME
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <DBRep_IsoBuilder.ixx>
@@ -89,81 +105,98 @@ DBRep_IsoBuilder::DBRep_IsoBuilder (const TopoDS_Face&     TopologicalFace,
 // Retreiving the edges and loading them into the hatcher.
 //-----------------------------------------------------------------------
 
-  TopExp_Explorer ExpEdges ;
-  for (ExpEdges.Init (TopologicalFace, TopAbs_EDGE) ; ExpEdges.More() ; ExpEdges.Next()) {
-    const TopoDS_Edge& TopologicalEdge = TopoDS::Edge (ExpEdges.Current()) ;
-    Standard_Real U1, U2 ;
-    const Handle(Geom2d_Curve) PCurve = BRep_Tool::CurveOnSurface (TopologicalEdge, TopologicalFace, U1, U2) ;
+  TopExp_Explorer ExpEdges;
+  for (ExpEdges.Init (TopologicalFace, TopAbs_EDGE); ExpEdges.More(); ExpEdges.Next())
+  {
+    const TopoDS_Edge& TopologicalEdge = TopoDS::Edge (ExpEdges.Current());
+    Standard_Real U1, U2;
+    const Handle(Geom2d_Curve) PCurve = BRep_Tool::CurveOnSurface (TopologicalEdge, TopologicalFace, U1, U2);
 
-    if ( PCurve.IsNull() ) {
-#ifdef DEB
-      cout<<"DBRep_IsoBuilder : PCurve nulle"<<endl;
-#endif
+    if (PCurve.IsNull())
+    {
+    #ifdef DEB
+      cout << "DBRep_IsoBuilder : PCurve is null\n";
+    #endif
       return;
     }
-
-    if ( U1==U2) {
-#ifdef DEB
-      cout<<"DBRep_IsoBuilder PCurve : U1==U2"<<endl;
-#endif
+    else if (U1 == U2)
+    {
+    #ifdef DEB
+      cout << "DBRep_IsoBuilder PCurve : U1==U2\n";
+    #endif
       return;
     }
 
     //-- Test if a TrimmedCurve is necessary
-    if(   Abs(PCurve->FirstParameter()-U1)<= Precision::PConfusion() 
-       && Abs(PCurve->LastParameter()-U2)<= Precision::PConfusion()) { 
-#ifdef DEB
-      Standard_Integer IndE =
-#endif
-                              AddElement (PCurve, TopologicalEdge.Orientation()) ;      
+    if (Abs(PCurve->FirstParameter()-U1)<= Precision::PConfusion()
+     && Abs(PCurve->LastParameter()-U2)<= Precision::PConfusion())
+    {
+      AddElement (PCurve, TopologicalEdge.Orientation());
     }
-    else { 
-      if (!PCurve->IsPeriodic()) {
-	Handle (Geom2d_TrimmedCurve) TrimPCurve =Handle(Geom2d_TrimmedCurve)::DownCast(PCurve);
-	if (!TrimPCurve.IsNull()) {
-	  if (TrimPCurve->BasisCurve()->FirstParameter()-U1 > Precision::PConfusion() ||
-	      U2-TrimPCurve->BasisCurve()->LastParameter()  > Precision::PConfusion()) {
-#ifdef DEB
-	    Standard_Integer IndE =
-#endif
-                                    AddElement (PCurve, TopologicalEdge.Orientation()) ;      
-#ifdef DEB
-	    cout<<"DBRep_IsoBuilder TrimPCurve : parameters out of range "<<endl;
-	    cout<<"    U1("<<U1<<"), Umin("<<PCurve->FirstParameter()
-	      <<"), U2("<<U2<<"), Umax("<<PCurve->LastParameter()<<")"<<endl;
-#endif
-	    return;
-	  }
-	}
-	else {
-	  if (PCurve->FirstParameter()-U1 > Precision::PConfusion()){
-#ifdef DEB
-	    cout<<"DBRep_IsoBuilder PCurve : U1 parameters out of range "<<endl;
-	    cout<<"    U1("<<U1<<"), Umin("<<PCurve->FirstParameter()<<")"<<endl;
-#endif
-	    U1=PCurve->FirstParameter();
-	  }
-	  if (U2-PCurve->LastParameter()  > Precision::PConfusion()){
-#ifdef DEB
-	    cout<<"DBRep_IsoBuilder PCurve : U2 parameters out of range "<<endl;
-	    cout<<"    U2("<<U2<<"), Umax("<<PCurve->LastParameter()<<")"<<endl;
-#endif
-	    U2=PCurve->LastParameter();
-	  }
-	}
+    else
+    {
+      if (!PCurve->IsPeriodic())
+      {
+        Handle (Geom2d_TrimmedCurve) TrimPCurve = Handle(Geom2d_TrimmedCurve)::DownCast (PCurve);
+        if (!TrimPCurve.IsNull())
+        {
+          if (TrimPCurve->BasisCurve()->FirstParameter() - U1 > Precision::PConfusion() ||
+              TrimPCurve->BasisCurve()->FirstParameter() - U2 > Precision::PConfusion() ||
+              U1 - TrimPCurve->BasisCurve()->LastParameter()  > Precision::PConfusion() ||
+              U2 - TrimPCurve->BasisCurve()->LastParameter()  > Precision::PConfusion())
+          {
+            AddElement (PCurve, TopologicalEdge.Orientation());
+          #ifdef DEB
+            cout << "DBRep_IsoBuilder TrimPCurve : parameters out of range\n";
+            cout << "    U1(" << U1 << "), Umin(" << PCurve->FirstParameter()
+                 << "), U2("  << U2 << "), Umax(" << PCurve->LastParameter() << ")\n";
+          #endif
+            return;
+          }
+        }
+        else
+        {
+          if (PCurve->FirstParameter() - U1 > Precision::PConfusion())
+          {
+          #ifdef DEB
+            cout << "DBRep_IsoBuilder PCurve : parameters out of range\n";
+            cout << "    U1(" << U1 << "), Umin(" << PCurve->FirstParameter() << ")\n";
+          #endif
+            U1 = PCurve->FirstParameter();
+          }
+          if (PCurve->FirstParameter() - U2 > Precision::PConfusion())
+          {
+          #ifdef DEB
+            cout << "DBRep_IsoBuilder PCurve : parameters out of range\n";
+            cout << "    U2(" << U2 << "), Umin(" << PCurve->FirstParameter() << ")\n";
+          #endif
+            U2 = PCurve->FirstParameter();
+          }
+          if (U1 - PCurve->LastParameter() > Precision::PConfusion())
+          {
+          #ifdef DEB
+            cout << "DBRep_IsoBuilder PCurve : parameters out of range\n";
+            cout << "    U1(" << U1 << "), Umax(" << PCurve->LastParameter() << ")\n";
+          #endif
+            U1 = PCurve->LastParameter();
+          }
+          if (U2 - PCurve->LastParameter() > Precision::PConfusion())
+          {
+          #ifdef DEB
+            cout << "DBRep_IsoBuilder PCurve : parameters out of range\n";
+            cout << "    U2(" << U2 << "), Umax(" << PCurve->LastParameter() << ")\n";
+          #endif
+            U2 = PCurve->LastParameter();
+          }
+        }
       }
-      
-      //if U1 and U2 coincide-->do nothing
-      if (Abs(U1-U2) <= Precision::PConfusion()) continue;
-      
-      Handle (Geom2d_TrimmedCurve) TrimPCurve = new Geom2d_TrimmedCurve (PCurve, U1, U2) ;
-#ifdef DEB
-      Standard_Integer IndE =
-#endif
-                              AddElement (TrimPCurve, TopologicalEdge.Orientation()) ;
+
+      // if U1 and U2 coincide-->do nothing
+      if (Abs (U1 - U2) <= Precision::PConfusion()) continue;
+      Handle (Geom2d_TrimmedCurve) TrimPCurve = new Geom2d_TrimmedCurve (PCurve, U1, U2);
+      AddElement (TrimPCurve, TopologicalEdge.Orientation());
     }
   }
-
 
 //-----------------------------------------------------------------------
 // Loading and trimming the hatchings.

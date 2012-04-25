@@ -1,7 +1,23 @@
-// File:	ApproxInt_ImpPrmSvSurfaces.gxx
-// Created:	Wed Mar 17 12:42:28 1993
-// Author:	Laurent BUCHARD
-//		<lbr@topsn3>
+// Created on: 1993-03-17
+// Created by: Laurent BUCHARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TColStd_Array1OfReal.hxx>
 #include <math_FunctionSetRoot.hxx>
@@ -329,8 +345,8 @@ Standard_Boolean ApproxInt_ImpPrmSvSurfaces::Compute( Standard_Real& u1
 	v2 = X(2)-TranslationV;
 	ComputeParametersOnImplicitSurface(MyISurf,P,u1,v1);
 	if(MyISurf.TypeQuadric() != GeomAbs_Plane) { 
-	  while(u1-tu1>PI)  u1-=PI+PI;
-	  while(tu1-u1>PI)  u1+=PI+PI;
+	  while(u1-tu1>M_PI)  u1-=M_PI+M_PI;
+	  while(tu1-u1>M_PI)  u1+=M_PI+M_PI;
 	}
 	MyParOnS1.SetCoord(tu1,tv1);
 	MyParOnS2.SetCoord(tu2,tv2);
@@ -342,8 +358,8 @@ Standard_Boolean ApproxInt_ImpPrmSvSurfaces::Compute( Standard_Real& u1
 	v1 = X(2)-TranslationV;
 	ComputeParametersOnImplicitSurface(MyISurf,P,u2,v2);
 	if(MyISurf.TypeQuadric() != GeomAbs_Plane) { 
-	  while(u2-tu2>PI)  u2-=PI+PI;
-	  while(tu2-u2>PI)  u2+=PI+PI;
+	  while(u2-tu2>M_PI)  u2-=M_PI+M_PI;
+	  while(tu2-u2>M_PI)  u2+=M_PI+M_PI;
 	}
 	MyParOnS1.SetCoord(tu1,tv1);
 	MyParOnS2.SetCoord(tu2,tu2);

@@ -1,6 +1,0 @@
-+ StdPrs:dbadmfile:StdPrs_obj_inc.In StdPrs:admfile:StdPrs_src.Out
-+ * StdPrs:admfile:StdPrs_xcpp_src.Out
-+ StdPrs:dbadmfile:StdPrs_obj_inc.Out StdPrs:admfile:StdPrs_src.Out
-+ * StdPrs:admfile:StdPrs_xcpp_src.Out
-+ StdPrs:dbadmfile:StdPrs_obj_inc.Dep StdPrs:admfile:StdPrs_src.Out
-+ * StdPrs:admfile:StdPrs_xcpp_src.Out

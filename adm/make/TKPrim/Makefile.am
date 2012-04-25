@@ -15,7 +15,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BRepPrim -I@top_srcdir@/src/BRepPrim \
 -I@top_srcdir@/drv/Primitives -I@top_srcdir@/src/Primitives \
@@ -26,15 +26,15 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKPrim.la
 
-libTKPrim_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
-../TKG2d/libTKG2d.la \
+libTKPrim_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
+../TKG2d/libTKG2d.la \
 ../TKGeomBase/libTKGeomBase.la \
 ../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) 
+../TKTopAlgo/libTKTopAlgo.la
+
 
 libTKPrim_la_SOURCES = \
 @top_srcdir@/drv/BRepPrim/BRepPrim_GWedge_0.cxx \

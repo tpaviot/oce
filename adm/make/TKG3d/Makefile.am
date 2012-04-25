@@ -8,7 +8,8 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/AdvApprox : @top_srcdir@/src/AdvApprox: \
 @top_srcdir@/drv/GeomLProp : @top_srcdir@/src/GeomLProp: \
 @top_srcdir@/drv/Adaptor3d : @top_srcdir@/src/Adaptor3d: \
-@top_srcdir@/drv/LProp3d : @top_srcdir@/src/LProp3d
+@top_srcdir@/drv/LProp3d : @top_srcdir@/src/LProp3d: \
+@top_srcdir@/drv/TopAbs : @top_srcdir@/src/TopAbs
 
 
 AM_CXXFLAGS = 
@@ -17,7 +18,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Geom -I@top_srcdir@/src/Geom \
 -I@top_srcdir@/drv/TColGeom -I@top_srcdir@/src/TColGeom \
@@ -25,16 +26,17 @@ INCLUDES = $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/AdvApprox -I@top_srcdir@/src/AdvApprox \
 -I@top_srcdir@/drv/GeomLProp -I@top_srcdir@/src/GeomLProp \
 -I@top_srcdir@/drv/Adaptor3d -I@top_srcdir@/src/Adaptor3d \
--I@top_srcdir@/drv/LProp3d -I@top_srcdir@/src/LProp3d
+-I@top_srcdir@/drv/LProp3d -I@top_srcdir@/src/LProp3d \
+-I@top_srcdir@/drv/TopAbs -I@top_srcdir@/src/TopAbs
 
 
 lib_LTLIBRARIES=libTKG3d.la
 
-libTKG3d_la_LIBADD = \
+libTKG3d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
 ../TKernel/libTKernel.la \
-../TKG2d/libTKG2d.la \
-$(STLPort_LIB) 
+../TKG2d/libTKG2d.la
+
 
 libTKG3d_la_SOURCES = \
 @top_srcdir@/drv/Adaptor3d/Adaptor3d_HCurveOnSurface_0.cxx \
@@ -156,5 +158,6 @@ libTKG3d_la_SOURCES = \
 @top_srcdir@/src/GeomLProp/GeomLProp_CurveTool.cxx \
 @top_srcdir@/src/GeomLProp/GeomLProp_SurfaceTool.cxx \
 @top_srcdir@/src/LProp3d/LProp3d_CurveTool.cxx \
-@top_srcdir@/src/LProp3d/LProp3d_SurfaceTool.cxx
+@top_srcdir@/src/LProp3d/LProp3d_SurfaceTool.cxx \
+@top_srcdir@/src/TopAbs/TopAbs.cxx
 

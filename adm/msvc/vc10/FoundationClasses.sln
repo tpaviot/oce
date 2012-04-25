@@ -1,0 +1,51 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKernel", "TKernel.vcxproj", "{16467126-13A4-10AF-03BE-EE6843FF19A6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKMath", "TKMath.vcxproj", "{ECF1B34F-07EE-027A-11D0-08E9F23710EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16467126-13A4-10AF-03BE-EE6843FF19A6} = {16467126-13A4-10AF-03BE-EE6843FF19A6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TKAdvTools", "TKAdvTools.vcxproj", "{38EED30C-09B8-05E4-12D9-34380148D58D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{16467126-13A4-10AF-03BE-EE6843FF19A6} = {16467126-13A4-10AF-03BE-EE6843FF19A6}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Debug|Win32.Build.0 = Debug|Win32
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Release|Win32.ActiveCfg = Release|Win32
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Release|Win32.Build.0 = Release|Win32
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Debug|x64.ActiveCfg = Debug|x64
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Debug|x64.Build.0 = Debug|x64
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Release|x64.ActiveCfg = Release|x64
+		{16467126-13A4-10AF-03BE-EE6843FF19A6}.Release|x64.Build.0 = Release|x64
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Debug|Win32.Build.0 = Debug|Win32
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Release|Win32.ActiveCfg = Release|Win32
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Release|Win32.Build.0 = Release|Win32
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Debug|x64.ActiveCfg = Debug|x64
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Debug|x64.Build.0 = Debug|x64
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Release|x64.ActiveCfg = Release|x64
+		{ECF1B34F-07EE-027A-11D0-08E9F23710EF}.Release|x64.Build.0 = Release|x64
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Debug|Win32.Build.0 = Debug|Win32
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Release|Win32.ActiveCfg = Release|Win32
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Release|Win32.Build.0 = Release|Win32
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Debug|x64.ActiveCfg = Debug|x64
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Debug|x64.Build.0 = Debug|x64
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Release|x64.ActiveCfg = Release|x64
+		{38EED30C-09B8-05E4-12D9-34380148D58D}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

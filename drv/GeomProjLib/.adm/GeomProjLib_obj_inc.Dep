@@ -1,6 +1,0 @@
-+ GeomProjLib:dbadmfile:GeomProjLib_obj_inc.In GeomProjLib:admfile:GeomProjLib_src.Out
-+ * GeomProjLib:admfile:GeomProjLib_xcpp_src.Out
-+ GeomProjLib:dbadmfile:GeomProjLib_obj_inc.Out GeomProjLib:admfile:GeomProjLib_src.Out
-+ * GeomProjLib:admfile:GeomProjLib_xcpp_src.Out
-+ GeomProjLib:dbadmfile:GeomProjLib_obj_inc.Dep GeomProjLib:admfile:GeomProjLib_src.Out
-+ * GeomProjLib:admfile:GeomProjLib_xcpp_src.Out

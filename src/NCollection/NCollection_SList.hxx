@@ -1,7 +1,22 @@
-// File:        NCollection_SList.hxx
-// Created:     17.04.02 10:12:48
-// Author:      Alexander Kartomin (akm)
-// Copyright:   Open Cascade 2002
+// Created on: 2002-04-17
+// Created by: Alexander Kartomin (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_SList_HeaderFile
 #define NCollection_SList_HeaderFile
@@ -10,11 +25,6 @@
 
 #if !defined No_Exception && !defined No_Standard_NoSuchObject
 #include <Standard_NoSuchObject.hxx>
-#endif
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (disable:4291)
 #endif
 
 /**
@@ -76,15 +86,10 @@ template <class TheItemType> class NCollection_SList
       myTail->Clear();
       myTail->myAllocator->Free(myTail);
     }
-    //! Operator new for allocating nodes
-    void* operator new(size_t theSize,
-                       const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
-    //! news to avoid warnings on hiding  - not for use
-    void* operator new(size_t theSize) 
-    { return Standard::Allocate(theSize); }
-    void* operator new(size_t /*theSize*/, void* theAddress) 
-    { return theAddress; }
+
+    DEFINE_STANDARD_ALLOC
+    DEFINE_NCOLLECTION_ALLOC
+
   private:
     // ---------- PRIVATE FIELDS ------------
     Standard_Integer    myCount; //!< Reference count
@@ -117,11 +122,6 @@ template <class TheItemType> class NCollection_SList
     if (myNode)
       myNode->myCount++;
   }
-
-  //! Operator new for creating 'iterator'
-  void* operator new(size_t theSize,
-                     const Handle(NCollection_BaseAllocator)& theAllocator) 
-  { return theAllocator->Allocate(theSize); }
 
   //! Clear the items out
   void Clear (void)
@@ -286,9 +286,5 @@ template <class TheItemType> class NCollection_SList
 
   friend class SListNode;
 };
-
-#ifdef WNT
-#pragma warning (default:4291)
-#endif
 
 #endif

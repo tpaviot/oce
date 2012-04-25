@@ -1,9 +1,0 @@
-pubinclude StepAP209_Construct.hxx
-privinclude StepAP209_Construct.jxx
-privinclude StepAP209_Construct.ixx
-dbadmfile StepAP209_xcpp_header.In
-dbadmfile StepAP209_xcpp_header.Out
-dbadmfile StepAP209_xcpp_header.Dep
-dbadmfile StepAP209_obj_inc.In
-dbadmfile StepAP209_obj_inc.Out
-dbadmfile StepAP209_obj_inc.Dep

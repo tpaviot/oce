@@ -1,7 +1,0 @@
-+ ShapeAlgo:pubinclude:ShapeAlgo_AlgoContainer.lxx ShapeAlgo:source:ShapeAlgo_AlgoContainer.lxx
-+ ShapeAlgo:dbadmfile:ShapeAlgo_obj_inc.In ShapeAlgo:admfile:ShapeAlgo_src.Out
-+ * ShapeAlgo:admfile:ShapeAlgo_xcpp_src.Out
-+ ShapeAlgo:dbadmfile:ShapeAlgo_obj_inc.Out ShapeAlgo:admfile:ShapeAlgo_src.Out
-+ * ShapeAlgo:admfile:ShapeAlgo_xcpp_src.Out
-+ ShapeAlgo:dbadmfile:ShapeAlgo_obj_inc.Dep ShapeAlgo:admfile:ShapeAlgo_src.Out
-+ * ShapeAlgo:admfile:ShapeAlgo_xcpp_src.Out

@@ -1,4 +1,21 @@
-//File Convert_EllipseToBSplineCurve.cxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //JCV 16/10/91
 
 
@@ -18,24 +35,21 @@
 #include <Precision.hxx>
 
 //Attention :
-//Pour eviter de trainer des tableaux persistent dans les champs
-//on dimensionne les tableaux au maxi (TheNbKnots et TheNbPoles)
-//qui correspondent au cercle complet.  Pour un arc de cercle on a
-//evidemment besoin de moins de poles et de noeuds, c'est pourquoi les
-//champs nbKnots et nbPoles sont presents et sont mis a jour dans le
-//constructeur d'un arc de cercle B-spline pour tenir compte du nombre
-//effectif de poles et de noeuds.
+//To avoid use of persistent tables in the fields
+//the tables are dimensioned to the maximum (TheNbKnots and TheNbPoles)
+//that correspond to the full circle. For an arc of circle there is a
+//need of less poles and nodes, that is why the fields
+//nbKnots and nbPoles are present and updated in the 
+//constructor of an arc of B-spline circle to take into account 
+//the real number of poles and nodes.
 
 
-// parametrization :
+// parameterization :
 // Reference : Rational B-spline for Curve and Surface Representation
 //             Wayne Tiller  CADG September 1983
-//
 // x(t) = (1 - t^2) / (1 + t^2)
 // y(t) =  2 t / (1 + t^2)
-//
 // then t = Sqrt(2) u /  ((Sqrt(2) - 2) u + 2)
-//
 // => u = 2 t / (Sqrt(2) + (2 - Sqrt(2)) t)
 
 //=======================================================================
@@ -62,12 +76,12 @@ Convert_EllipseToBSplineCurve::Convert_EllipseToBSplineCurve
 
   if (Parameterisation != Convert_TgtThetaOver2 &&
     Parameterisation != Convert_RationalC1) {
-    // Dans ce cas BuildCosAndSin ne sait pas gerer la periodicite
-    // => on trim sur 0,2*PI
+    // If BuildCosAndSin cannot manage the periodicity
+    // => trim on 0,2*PI
     isperiodic = Standard_False;
     Convert_ConicToBSplineCurve::
       BuildCosAndSin(Parameterisation,
-		     0, 2*PI,
+		     0, 2*M_PI,
 		     CosNumeratorPtr,
 		     SinNumeratorPtr,
 		     weights,
@@ -105,8 +119,8 @@ Convert_EllipseToBSplineCurve::Convert_EllipseToBSplineCurve
     value = -r ;
    }
   
-  // On replace la bspline dans le repere du cercle.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the mark of the circle.
+  // and calculate the weight of the bspline.
 
   for (ii = 1; ii <= nbPoles ; ii++) {
      poles->ChangeArray1()(ii).SetCoord(1, R * CosNumeratorPtr->Value(ii)) ;
@@ -131,7 +145,7 @@ Convert_EllipseToBSplineCurve::Convert_EllipseToBSplineCurve
   Standard_Real Tol = Precision::PConfusion();
   Standard_Real delta = ULast - UFirst;
 #endif
-  Standard_DomainError_Raise_if( (delta > (2*PI+Tol)) || (delta <= 0.0e0),
+  Standard_DomainError_Raise_if( (delta > (2*M_PI+Tol)) || (delta <= 0.0e0),
 				"Convert_EllipseToBSplineCurve");
   Standard_Integer ii;
   Standard_Real R, r, value;
@@ -167,8 +181,8 @@ Convert_EllipseToBSplineCurve::Convert_EllipseToBSplineCurve
     value = -r ;
   }
   
-  // On replace la bspline dans le repere du cercle.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the mark of the circle.
+  // and calculate the weight of the bspline.
   
   for (ii = 1; ii <= nbPoles ; ii++) {
     poles->ChangeArray1()(ii).SetCoord(1, R * CosNumeratorPtr->Value(ii)) ;

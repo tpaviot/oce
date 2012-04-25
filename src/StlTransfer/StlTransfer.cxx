@@ -1,8 +1,23 @@
+// Created on: 2000-06-23
+// Created by: Sergey MOZOKHIN
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //=======================================================================
-// File:	StlTransfer.cxx
-// Created:	Fri Jun 23 14:36:58 2000
-// Author:	Sergey MOZOKHIN
-//		<smh@russox.nnov.matra-dtv.fr>
 #include <StlTransfer.ixx>
 #include <Standard_ErrorHandler.hxx>
 #include <Standard_Failure.hxx>
@@ -21,7 +36,7 @@
 #include <CSLib.hxx>
 #include <gp_Dir.hxx>
 #include <gp_XYZ.hxx>
-#include <BRepMesh.hxx>
+#include <BRepMesh_IncrementalMesh.hxx>
 #include <TopAbs.hxx>
 #include <Precision.hxx>
 #include <TopExp_Explorer.hxx>
@@ -98,15 +113,16 @@ static void Normal(const TopoDS_Face&  aFace,
   
 }
 void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
-					const Standard_Real  Deflection,
-					const Handle(StlMesh_Mesh)& Mesh)
+										const Standard_Real  Deflection,
+										const Standard_Boolean  InParallel,
+										const Handle(StlMesh_Mesh)& Mesh)
 {
   if (Deflection <= Precision::Confusion ()) {
     Standard_ConstructionError::Raise ("StlTransfer::BuildIncrementalMesh");
     }
   
   Standard_Integer NbVertices, NbTriangles;
-  BRepMesh::Mesh (Shape, Deflection);
+  BRepMesh_IncrementalMesh aMesher(Shape, Deflection, Standard_False, 0.5, InParallel);
   for (TopExp_Explorer itf(Shape,TopAbs_FACE); itf.More(); itf.Next()) {
     TopoDS_Face face = TopoDS::Face(itf.Current());
     TopLoc_Location Loc, loc;
@@ -115,11 +131,6 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
     Poly_Array1OfTriangle theTriangles(1,theTriangulation->NbTriangles());
     theTriangles.Assign(theTriangulation->Triangles());
     Mesh->AddDomain (Deflection);
-    
-#ifdef DEB
-    TopAbs_Orientation orientation = 
-#endif
-      face.Orientation();
     
     TColgp_Array1OfPnt thePoints(1, theTriangulation->NbNodes());
     thePoints.Assign(theTriangulation->Nodes());
@@ -160,7 +171,7 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
 	//	vec.Transform(loc);
 	if (modul1>Precision::Confusion () && modul2>Precision::Confusion ()) {
 	  Standard_Real an = vec.Angle(average);
-	  if ( an > PI/2)  {
+	  if ( an > M_PI/2)  {
 	    A = V3;B=V2;C=V1;
 	  }
 	  else {

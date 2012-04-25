@@ -1,6 +1,0 @@
-+ AppStdL:dbadmfile:AppStdL_obj_inc.In AppStdL:admfile:AppStdL_src.Out
-+ * AppStdL:admfile:AppStdL_xcpp_src.Out
-+ AppStdL:dbadmfile:AppStdL_obj_inc.Out AppStdL:admfile:AppStdL_src.Out
-+ * AppStdL:admfile:AppStdL_xcpp_src.Out
-+ AppStdL:dbadmfile:AppStdL_obj_inc.Dep AppStdL:admfile:AppStdL_src.Out
-+ * AppStdL:admfile:AppStdL_xcpp_src.Out

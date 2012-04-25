@@ -1,7 +1,22 @@
-// File:	BRepFill_TrimShellCorner.cxx
-// Created:	Tue Oct 21 17:58:29 2003
-// Author:	Mikhail KLOKOV
-//		<mkk@kurox>
+// Created on: 2003-10-21
+// Created by: Mikhail KLOKOV
+// Copyright (c) 2003-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BRepFill_TrimShellCorner.ixx>
 
@@ -2281,8 +2296,8 @@ static Standard_Boolean ChooseSection(const TopoDS_Shape& Comp,
 		continue;
 
 	      Standard_Real Angle = aPln.Axis().Angle( bis.Axis() );
-	      if (Angle > PI/2)
-		Angle = PI - Angle;
+	      if (Angle > M_PI/2)
+		Angle = M_PI - Angle;
 	      
 	      if (Angle < MinAngle)
 		{
@@ -2341,7 +2356,7 @@ static Standard_Boolean ChoosePlane(const TopoDS_Shape& Comp,
   TColgp_Array1OfPnt Origins( 0, NumberOfEdges*2-1 );
   TColgp_Array1OfDir Normals( 0, NumberOfEdges*2-1 );
   TColStd_Array1OfBoolean IsSingular( 0, NumberOfEdges*2-1 );
-  Standard_Real MinAngle = PI/2;
+  Standard_Real MinAngle = M_PI/2;
   Standard_Integer MinInd;
   for (ind = 0; ind < NumberOfEdges*2; ind++)
     {
@@ -2355,8 +2370,8 @@ static Standard_Boolean ChoosePlane(const TopoDS_Shape& Comp,
 	  Origins(ind) = Axe.Location();
 	  Normals(ind) = Axe.Direction();
 	  Standard_Real Angle = bis.Angle( Axe );
-	  if (Angle > PI/2)
-	    Angle = PI - Angle;
+	  if (Angle > M_PI/2)
+	    Angle = M_PI - Angle;
 	  if (Angle < MinAngle)
 	    {
 	      MinAngle = Angle;
@@ -2366,15 +2381,15 @@ static Standard_Boolean ChoosePlane(const TopoDS_Shape& Comp,
     }
 
   gp_Ax2 TheAxe( Origins(MinInd), Normals(MinInd) );
-  Standard_Real MaxAngleWithPln = PI/16;
+  Standard_Real MaxAngleWithPln = M_PI/16;
   TColStd_SequenceOfInteger iseq;
   TColgp_SequenceOfPnt Pseq;
   for (ind = 0; ind < NumberOfEdges*2; ind++)
     if (!IsSingular(ind))
       {
 	Standard_Real Angle = Normals(ind).Angle( TheAxe.Direction() );
-	  if (Angle > PI/2)
-	    Angle = PI - Angle;
+	  if (Angle > M_PI/2)
+	    Angle = M_PI - Angle;
 	if (Angle <= MaxAngleWithPln)
 	  {
 	    iseq.Append(ind);

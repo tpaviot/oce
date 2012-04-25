@@ -1,51 +1,47 @@
-// File:	ChFi2d_Builder.cxx
-// Created:	Fri Jul  7 16:39:57 1995
-// Author:	Philippe DERVIEUX
-//		<phd@tlefon>
+// Created on: 1995-07-07
+// Created by: Joelle CHAUVET
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified:	Tue Oct 15 10:12:02 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              correction in BuildFilletEdge (PRO3529 : computation of dist)
 // Modified:	Tue Oct 22 09:23:11 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              correction in BuildFilletEdge (PRO5827 : computation of vec1)
 // Modified:	Tue Oct 22 09:23:11 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              new status in ComputeFillet for degenerated edges (PRO4896)
 // Modified:	Thu Dec  5 16:25:44 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              correction in BuildFilletEdge (PRO4896 : NewExtr1, NewExtr2)
 // Modified:	Tue Apr 22 16:25:44 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              correction in BuildFilletEdge (ID140047 : inside)
 // Modified:	Fri Oct 24 10:47:52 1997
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              distinction point de tangence --> on arrete
 //                         point de rebroussement --> on continue
 //              (PRO10404 : Ve3, Ve4)
 // Modified:	Tue Oct 28 11:55:53 1997
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //              construction de filletEdge avec les parametres U1 et Vv1
 //              au lieu des vertex (PRO10434)
 // Modified:	Tue Apr  7 14:35:58 1998
-// Author:	Joelle CHAUVET
-//		<jct@sgi64>
 //              construction de filletEdge avec les parametres U1 et Vv1
 //              ET les vertex NewExtr1, NewExtr2 sinon pb sur qq aretes
 //              degenerees (GER60069 + controle de PRO10434)
 // Modified:	Mon Jun 22 13:32:25 1998
-// Author:	Joelle CHAUVET
-//		<jct@sgi64>
 //              verification de la validite des parametres (PRO13078 partiel)
 // Modified:	Fri Sep 25 09:38:04 1998
-// Author:	Joelle CHAUVET
-//		<jct@sgi64>
 //              status = ChFi2d_NotAuthorized si les aretes ne sont pas
 //              des droites ou des cercles; fonction IsLineOrCircle
 //              (BUC60288)
@@ -623,10 +619,6 @@ TopoDS_Edge ChFi2d_Builder::BuildNewEdge(const TopoDS_Edge& E1,
   TopoDS_Edge anEdge = makeEdge;
   anEdge.Orientation(E1.Orientation());
 //  anEdge.Location(E1.Location());
-#ifdef DEB
-  BRepLib_EdgeError error = 
-#endif
-    makeEdge.Error();
   return anEdge;
 }
 
@@ -975,13 +967,13 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
         inside = (PPU2<param3 && PPU2>param4) || (PPU2<param4 && PPU2>param3);
         //  case of arc of circle passing on the sewing
         if ( ( basisC2->DynamicType() == STANDARD_TYPE(Geom2d_Circle) ) && 
-            ( (2*PI<param3 && 2*PI>param4) || (2*PI<param4 && 2*PI>param3) ) ) {
+            ( (2*M_PI<param3 && 2*M_PI>param4) || (2*M_PI<param4 && 2*M_PI>param3) ) ) {
         //  cas param3<param4
-          inside = (param3<PPU2 && PPU2<2*PI) 
-                     || (0<=PPU2 && PPU2<param4-2*PI);
+          inside = (param3<PPU2 && PPU2<2*M_PI) 
+                     || (0<=PPU2 && PPU2<param4-2*M_PI);
         //  cas param4<param3
-          inside = inside || (param4<PPU2 && PPU2<2*PI) 
-                               || (0<=PPU2 && PPU2<param3-2*PI);
+          inside = inside || (param4<PPU2 && PPU2<2*M_PI) 
+                               || (0<=PPU2 && PPU2<param3-2*M_PI);
         }
 	if ( inside && dist < dist1) {
 	  numsol = nsol;
@@ -1005,12 +997,12 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
     inside = (U2 < param1 && U2 >= param2) || (U2 <= param2 && U2 > param1);
     /////////////////////////////////////////////////////
     if ( (basisC1->DynamicType() == STANDARD_TYPE(Geom2d_Circle))
-      &&  ( (2*PI<param1 && 2*PI>param2) || (2*PI<param2 && 2*PI>param1) ) ) {
+      &&  ( (2*M_PI<param1 && 2*M_PI>param2) || (2*M_PI<param2 && 2*M_PI>param1) ) ) {
       // arc of circle containing the circle origin
       //  case param1<param2
-      inside = (param1<U2 && U2<2*PI) || (0<=U2 && U2<param2-2*PI);
+      inside = (param1<U2 && U2<2*M_PI) || (0<=U2 && U2<param2-2*M_PI);
       //  case param2<param1
-      inside = inside || (param2<U2 && U2<2*PI) || (0<=U2 && U2<param1-2*PI);
+      inside = inside || (param2<U2 && U2<2*M_PI) || (0<=U2 && U2<param1-2*M_PI);
     }
     if (!inside) {
       status = ChFi2d_ComputationError;
@@ -1022,12 +1014,12 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
     inside = (Vv2 < param3 && Vv2 >= param4) || (Vv2 <= param4 && Vv2 > param3);
     /////////////////////////////////////////////////////
     if ( (basisC2->DynamicType() == STANDARD_TYPE(Geom2d_Circle))
-      &&  ( (2*PI<param3 && 2*PI>param4) || (2*PI<param4 && 2*PI>param3) ) ) {
+      &&  ( (2*M_PI<param3 && 2*M_PI>param4) || (2*M_PI<param4 && 2*M_PI>param3) ) ) {
     // arc of circle containing the circle origin
       //  cas param3<param4
-      inside = (param3<Vv2 && Vv2<2*PI) || (0<=Vv2 && Vv2<param4-2*PI);
+      inside = (param3<Vv2 && Vv2<2*M_PI) || (0<=Vv2 && Vv2<param4-2*M_PI);
       //  cas param4<param3
-      inside = inside || (param4<Vv2 && Vv2<2*PI) || (0<=Vv2 && Vv2<param3-2*PI);
+      inside = inside || (param4<Vv2 && Vv2<2*M_PI) || (0<=Vv2 && Vv2<param3-2*M_PI);
     }
     if (!inside) {
       status = ChFi2d_ComputationError;
@@ -1098,8 +1090,8 @@ TopoDS_Edge ChFi2d_Builder::BuildFilletEdge(const TopoDS_Vertex& V,
     } // if (OE1 ...
     Standard_Real cross = vec1*vec;
     Standard_Boolean Sense = cross > 0.;
-    if (U1 > Vv1 && U1 > 2.*PI) {
-      ElCLib::AdjustPeriodic(0.,2.*PI,Precision::Confusion(),U1,Vv1);
+    if (U1 > Vv1 && U1 > 2.*M_PI) {
+      ElCLib::AdjustPeriodic(0.,2.*M_PI,Precision::Confusion(),U1,Vv1);
     } // if (U1 ... 
     if (O1 == TopAbs_FORWARD && OE1 == TopAbs_FORWARD ||
 	O1 == TopAbs_REVERSED && OE1 == TopAbs_REVERSED ) {

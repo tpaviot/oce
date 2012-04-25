@@ -1,7 +1,0 @@
-+M CGM:pubinclude:Handle_CGM_Driver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/Handle_CGM_Driver.hxx
-+M CGM:pubinclude:CGM_Driver.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/CGM_Driver.hxx
-+M CGM:privinclude:CGM_Driver.jxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/CGM/CGM_Driver.jxx
-+M CGM:privinclude:CGM_Driver.ixx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/CGM/CGM_Driver.ixx
-+M CGM:dbadmfile:CGM_xcpp_header.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/CGM/.adm/CGM_xcpp_header.In
-+M CGM:dbadmfile:CGM_xcpp_header.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/CGM/.adm/CGM_xcpp_header.Out
-+M CGM:dbadmfile:CGM_xcpp_header.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/CGM/.adm/CGM_xcpp_header.Dep

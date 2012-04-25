@@ -93,6 +93,8 @@ public:
   Standard_EXPORT     Standard_Integer MaxBoxes() const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! Sets the owner for all entities in wire <br>
+  Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
   
   Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
   //!returns <mymaxrect> <br>

@@ -1,7 +1,23 @@
-// File:	BRepTopAdaptor_FClass2d.cxx
-// Created:	Wed Mar 22 09:44:18 1995
-// Author:	Laurent BUCHARD
-//		<lbr@mastox>
+// Created on: 1995-03-22
+// Created by: Laurent BUCHARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define AFFICHAGE 0
 
@@ -78,7 +94,7 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
   STAT.NbConstrShape++;
 #endif
 
-  //-- impasse sur les surfs definies sur plus d une periode
+  //-- dead end on surfaces defined on more than one period
 
   Face.Orientation(TopAbs_FORWARD);
   Handle(BRepAdaptor_HSurface) surf = new BRepAdaptor_HSurface();
@@ -141,7 +157,7 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	      //if(degenerated==Standard_False)
 	      //  C3d.Initialize(edge,Face);
 
-	      //-- Verification des cas ou on a oublie de coder degenereted :  PRO17410 (janv 99)
+	      //-- Check cases when it was forgotten to code degenerated :  PRO17410 (janv 99)
 	      if(degenerated == Standard_False)
 		{
 		  C3d.Initialize(edge,Face);
@@ -168,7 +184,7 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	      
 	      //Standard_Integer nbs = 1 + Geom2dInt_Geom2dCurveTool::NbSamples(C);
 	      Standard_Integer nbs = Geom2dInt_Geom2dCurveTool::NbSamples(C);
-	      //-- Attention aux bsplines rationnelles de degree 3. (bouts de cercles entre autres)
+	      //-- Attention to rational bsplines of degree 3. (ends of circles among others)
 	      if (nbs > 2) nbs*=4;
 	      du = (plbid-pfbid)/(Standard_Real)(nbs-1);
 
@@ -176,10 +192,10 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	      else { u = plbid; du=-du;	}
 	
 	      //-- ------------------------------------------------------------
-	      //-- On regarde la distance uv entre le point de debut de l edge
-	      //-- et le dernier point enregistre dans SeqPnt2d
-	      //-- On cherche a eloigner le premier point de l edge courant 
-	      //-- du dernier point enregistre
+	      //-- Check distance uv between the start point of the edge
+	      //-- and the last point registered in SeqPnt2d
+	      //-- Try to remote the first point of the current edge 
+	      //-- from the last saved point
 #ifdef DEB
 	      gp_Pnt2d Pnt2dDebutEdgeCourant=
 #endif
@@ -247,14 +263,14 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	} //-- Edges -> for(Ware.Explorer
 
       if(NbEdges)
-	{ //-- on compte ++ avec un explorateur normal et -- avec le Wire Exploreur
+	{ //-- on compte ++ with a normal explorer and with the Wire Explorer
 /*
 #ifdef DEB  
 
 	  cout << endl;
 	  cout << "*** BRepTopAdaptor_Fclass2d  ** Wire Probablement FAUX **" << endl;
-	  cout << "*** WireExplorer ne trouve pas tous les edges " << endl;
-	  cout << "*** On Branche l ancien classifieur" << endl;
+	  cout << "*** WireExplorer does not find all edges " << endl;
+	  cout << "*** Connect old classifier" << endl;
 #endif
 */
 	  TColgp_Array1OfPnt2d PClass(1,2);
@@ -269,15 +285,15 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	{
 	  //Standard_Real anglep=0,anglem=0;
 	  TColgp_Array1OfPnt2d PClass(1,nbpnts);
-	  Standard_Real angle = 0.0, square = 0.0;
+	  Standard_Real square = 0.0;
 
 	  //-------------------------------------------------------------------
-	  //-- ** Le mode de calcul a ete un peu change 
-	  //-- Avant le 31 oct 97 , on evaluait l'angle total de 
-	  //-- rotation du wire sur tous les angles sauf le dernier
-	  //-- ** Maintenant , on evalue exactement l'angle de rotation
-	  //-- Si trouve une valeur eloignee de 2PI ou -2PI, c'est qu il 
-	  //-- y a eu un nombre impair de boucles
+	  //-- ** The mode of calculation was somewhat changed 
+	  //-- Before Oct 31 97 , the total angle of  
+	  //-- rotation of the wire was evaluated on all angles except for the last 
+	  //-- ** Now, exactly the angle of rotation is evaluated
+	  //-- If a value remote from 2PI or -2PI is found, it means that there is 
+	  //-- an uneven number of loops
 
 	  if(nbpnts>3)
 	    {
@@ -318,9 +334,9 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 //		  TabOrien.Append(-1);
 //#ifdef DEB  
 //		  cout << endl;
-//		  cout << "*** BRepTopAdaptor_Fclass2d  ** Wire Probablement FAUX **" << endl;
-//		  cout << "*** Angle de rotation cumule du wire : " << angle << endl;
-//		  cout << "*** On Branche l ancien classifieur" << endl;
+//		  cout << "*** BRepTopAdaptor_Fclass2d  ** Wire Probably FALSE **" << endl;
+//		  cout << "*** Total rotation angle of the wire : " << angle << endl;
+//		  cout << "*** Connect the old classifier" << endl;
 //#endif
 //		} 
 //	      else TabOrien.Append(((angle>0.0)? 1 : 0));
@@ -330,9 +346,9 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	    { 
 #ifdef DEB  
 	      cout << endl;
-	      cout << "*** BRepTopAdaptor_Fclass2d  ** Wire Probablement FAUX **" << endl;
-	      cout << "*** Le wire echantillonne comporte moins de 3 points" << endl;
-	      cout << "*** On Branche l ancien classifieur" << endl;
+	      cout << "*** BRepTopAdaptor_Fclass2d  ** Wire Probably FALSE **" << endl;
+	      cout << "*** The sample wire contains less than 3 points" << endl;
+	      cout << "*** Connect the old classifier" << endl;
 #endif       
 	      BadWire=1;
 	      TabOrien.Append(-1);
@@ -348,7 +364,7 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 
   if(nbtabclass>0)
     {
-      //-- Si une erreur sur un wire a ete detecte : On met tous les TabOrien a -1
+      //-- If an error was detected on a wire: set all TabOrien to -1
       if(BadWire) TabOrien(1)=-1;
 
       if(   surf->GetType()==GeomAbs_Cone
@@ -358,19 +374,19 @@ BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d(const TopoDS_Face& aFace,const 
 	 || surf->GetType()==GeomAbs_SurfaceOfRevolution)
 	
 	{
-	  Standard_Real uuu=PI+PI-(Umax-Umin);
+	  Standard_Real uuu=M_PI+M_PI-(Umax-Umin);
 	  if(uuu<0) uuu=0;
 	  U1 = 0.0;  // modified by NIZHNY-OFV  Thu May 31 14:24:10 2001 ---> //Umin-uuu*0.5;
-	  U2 = 2*PI; // modified by NIZHNY-OFV  Thu May 31 14:24:35 2001 ---> //U1+PI+PI;
+	  U2 = 2*M_PI; // modified by NIZHNY-OFV  Thu May 31 14:24:35 2001 ---> //U1+M_PI+M_PI;
 	}
       else { U1=U2=0.0; } 
     
       if(surf->GetType()==GeomAbs_Torus)
 	{ 
-	  Standard_Real uuu=PI+PI-(Vmax-Vmin);
+	  Standard_Real uuu=M_PI+M_PI-(Vmax-Vmin);
 	  if(uuu<0) uuu=0;
 	  V1 = 0.0;  // modified by NIZHNY-OFV  Thu May 31 14:24:55 2001 ---> //Vmin-uuu*0.5;
-	  V2 = 2*PI; // modified by NIZHNY-OFV  Thu May 31 14:24:59 2001 ---> //V1+PI+PI;
+	  V2 = 2*M_PI; // modified by NIZHNY-OFV  Thu May 31 14:24:59 2001 ---> //V1+M_PI+M_PI;
 	}
       else { V1=V2=0.0; }   
     }
@@ -402,7 +418,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::Perform(const gp_Pnt2d& _Puv,
     return(TopAbs_IN);
   }
   
-  //-- U1 est le First Param et U2 ds ce cas est U1+Period
+  //-- U1 is the First Param and U2 in this case is U1+Period
   Standard_Real u=_Puv.X();
   Standard_Real v=_Puv.Y();
   Standard_Real uu = u, vv = v;
@@ -485,7 +501,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::Perform(const gp_Pnt2d& _Puv,
 	  Status = TopAbs_OUT;
 	}
       }
-      else {  //-- TabOrien(1)=-1    Wire Faux
+      else {  //-- TabOrien(1)=-1    False Wire
 	BRepClass_FaceClassifier aClassifier;
 	aClassifier.Perform(Face,Puv,Toluv);
 	Status = aClassifier.State();
@@ -538,7 +554,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::TestOnRestriction(const gp_Pnt2d& _Puv,
     return(TopAbs_IN);
   }
   
-  //-- U1 est le First Param et U2 ds ce cas est U1+Period
+  //-- U1 is the First Param and U2 in this case is U1+Period
   Standard_Real u=_Puv.X();
   Standard_Real v=_Puv.Y();
   Standard_Real uu = u, vv = v;
@@ -617,7 +633,7 @@ TopAbs_State BRepTopAdaptor_FClass2d::TestOnRestriction(const gp_Pnt2d& _Puv,
 	  Status = TopAbs_OUT;
 	}
       }
-      else {  //-- TabOrien(1)=-1    Wire Faux
+      else {  //-- TabOrien(1)=-1    False Wire
 	BRepClass_FaceClassifier aClassifier;
 	aClassifier.Perform(Face,Puv,Tol);
 	Status = aClassifier.State();

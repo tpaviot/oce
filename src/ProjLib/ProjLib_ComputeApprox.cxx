@@ -1,7 +1,23 @@
-// File:	ProjLib_ComputeApprox.gxx
-// Created:	Tue Sep  7 16:37:49 1993
-// Author:	Bruno DUMORTIER
-//		<dub@topsn3>
+// Created on: 1993-09-07
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // modified by NIZHNY-OFV  Thu Jan 20 11:04:19 2005
 
 #include <ProjLib_ComputeApprox.hxx>
@@ -122,9 +138,9 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
  
   if ( VCouture) {
     if(SType == GeomAbs_Sphere) {
-      if ( Abs( S - U1 ) > PI ) {
-	T = PI - T;
-	S = PI + S;
+      if ( Abs( S - U1 ) > M_PI ) {
+	T = M_PI - T;
+	S = M_PI + S;
       }
       S = ElCLib::InPeriod(S, U1, U2);
     }
@@ -236,7 +252,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       }      
       else {
 	UCouture = Standard_True;
-	myU2 = myU1 + 2*PI;
+	myU2 = myU1 + 2*M_PI;
       }
       
     }
@@ -257,17 +273,17 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	ElSLib::Parameters( Cone, P, U, V);
 	U += Delta;
 	d = U - U1;
-	if(d > PI)  {
-	  if( ( (IsEqual(U,(2*PI),1.e-10) && (U1 >= 0. && U1 <= PI)) && 
+	if(d > M_PI)  {
+	  if( ( (IsEqual(U,(2*M_PI),1.e-10) && (U1 >= 0. && U1 <= M_PI)) && 
 	       (IsEqual(U,Ul,1.e-10) && !IsEqual(Uf,0.,1.e-10)) ) && isclandper ) U = 0.;
-	  else Delta -= 2*PI;
+	  else Delta -= 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	}
-	else if(d < -PI)	  {
-	  if( ( (IsEqual(U,0.,1.e-10) && (U1 >= PI && U1 <= (2*PI))) &&
-	       (IsEqual(U,Ul,1.e-10) && !IsEqual(Uf,(2*PI),1.e-10)) ) && isclandper ) U = 2*PI;
-	  else Delta += 2*PI;
+	else if(d < -M_PI)	  {
+	  if( ( (IsEqual(U,0.,1.e-10) && (U1 >= M_PI && U1 <= (2*M_PI))) &&
+	       (IsEqual(U,Ul,1.e-10) && !IsEqual(Uf,(2*M_PI),1.e-10)) ) && isclandper ) U = 2*M_PI;
+	  else Delta += 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	}
@@ -280,11 +296,11 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       if(!(Abs(pmin - W1) <= Precision::PConfusion() || Abs(pmin - W2) <= Precision::PConfusion()) ) myU1 -= dmax*.5;
       if(!(Abs(pmax - W1) <= Precision::PConfusion() || Abs(pmax - W2) <= Precision::PConfusion()) ) myU2 += dmax*.5;
 
-      if((myU1 >=0. && myU1 <= 2*PI) && (myU2 >=0. && myU2 <= 2*PI) ) UCouture = Standard_False;
+      if((myU1 >=0. && myU1 <= 2*M_PI) && (myU2 >=0. && myU2 <= 2*M_PI) ) UCouture = Standard_False;
       else{
 	U = ( myU1 + myU2 ) /2.;
-	myU1 = U - PI;
-	myU2 = U + PI;
+	myU1 = U - M_PI;
+	myU2 = U + M_PI;
 	UCouture = Standard_True;
       }
     }
@@ -309,18 +325,18 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       if ( !myCurve->IsClosed()) {
 	if ( myU1 < U && U < myU2) {
 	  U = ( myU1 + myU2 ) /2.;
-	  myU1 = U - PI;
-	  myU2 = U + PI;
+	  myU1 = U - M_PI;
+	  myU2 = U + M_PI;
 	}
 	else {
 	  U = ( myU1 + myU2 ) /2.;
 	  if ( myU1 < U) {
-	    myU1 = U - 2*PI;
+	    myU1 = U - 2*M_PI;
 	    myU2 = U;
 	  }
 	  else {
 	    myU1 = U;
-	    myU2 = U + 2*PI;
+	    myU2 = U + 2*M_PI;
 	  }
 	}
 	UCouture = Standard_True;
@@ -335,11 +351,11 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	
 	UCouture = Standard_True;
 	if ( dU > 0.) {
-	  myU2 = myU1 + 2*PI;
+	  myU2 = myU1 + 2*M_PI;
 	}
 	else {
 	  myU2 = myU1;
-	  myU1 -= 2*PI;
+	  myU1 -= 2*M_PI;
 	}
       }
     }
@@ -347,7 +363,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       Standard_Real U1, V1, U , V;
       ElSLib::Parameters( Cylinder, P1, U1, V1);
       Standard_Real Step = .1, Delta = 0.;
-      Standard_Real eps = PI, dmax = 0., d = 0.;
+      Standard_Real eps = M_PI, dmax = 0., d = 0.;
       Standard_Integer nbp = (Standard_Integer)((W2 - W1) / Step + 1);
       nbp = Max(nbp, 3);
       Step = (W2 - W1) / (nbp - 1);
@@ -360,13 +376,13 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	d = U - U1;
 	if(d > eps) {
 	  U -= Delta;
-	  Delta -= 2*PI;
+	  Delta -= 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	  }
 	else if(d < -eps) {
 	  U -= Delta;
-	  Delta += 2*PI;
+	  Delta += 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	}
@@ -381,14 +397,14 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       if(!(Abs(pmax - W1) <= Precision::PConfusion() ||
 	   Abs(pmax - W2) <= Precision::PConfusion())  ) myU2 += dmax*.5;
       
-      if((myU1 >=0. && myU1 <= 2*PI) &&
-	 (myU2 >=0. && myU2 <= 2*PI)    ) {
+      if((myU1 >=0. && myU1 <= 2*M_PI) &&
+	 (myU2 >=0. && myU2 <= 2*M_PI)    ) {
 	UCouture = Standard_False;
       }
       else {
 	U = ( myU1 + myU2 ) /2.;
-	myU1 = U - PI;
-	myU2 = U + PI;
+	myU1 = U - M_PI;
+	myU2 = U + M_PI;
 	UCouture = Standard_True;
       }
     }
@@ -465,7 +481,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       ElSLib::Parameters(SP, P, UU, V1);
       Standard_Real UUmi = Min(Min(U1,UU),Min(UU,U2));
       Standard_Real UUma = Max(Max(U1,UU),Max(UU,U2));
-      Standard_Boolean reCalc = ((UUmi >= 0. && UUmi <= PI) && (UUma >= 0. && UUma <= PI));
+      Standard_Boolean reCalc = ((UUmi >= 0. && UUmi <= M_PI) && (UUma >= 0. && UUma <= M_PI));
       // box+sphere <<
       
       ElSLib::Parameters(SP, P1, U1, V1);//*
@@ -473,28 +489,28 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       Parameters(myCurve, mySurface, P1, 1, aTPC, U1, V1);
       //
       //
-      P2 = myCurve->Value(W1+PI/8);
+      P2 = myCurve->Value(W1+M_PI/8);
       ElSLib::Parameters(SP,P2,U2,V2);
       //
       if ( NbSolutions == 1) {
-	if ( Abs(U1-U2) > PI) { // on traverse la couture
-	  if ( U1 > PI) {
+	if ( Abs(U1-U2) > M_PI) { // on traverse la couture
+	  if ( U1 > M_PI) {
 	    myU1 = U1;
-	    myU2 = U1+2*PI;
+	    myU2 = U1+2*M_PI;
 	  }
 	  else {
 	    myU2 = U1;
-	    myU1 = U1-2*PI;
+	    myU1 = U1-2*M_PI;
 	  }
 	}
 	else { // on ne traverse pas la couture
 	  if ( U1 > U2) {
 	    myU2 = U1;
-	    myU1 = U1-2*PI;
+	    myU1 = U1-2*M_PI;
 	  }
 	  else {
 	    myU1 = U1;
-	    myU2 = U1+2*PI;
+	    myU2 = U1+2*M_PI;
 	  }
 	}
       }
@@ -502,8 +518,8 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	gp_Pnt Center = Circle.Location();
 	Standard_Real U,V;
 	ElSLib::SphereParameters(gp_Ax3(gp::XOY()),1,Center, U, V);
-	myU1 = U-PI;
-	myU2 = U+PI;
+	myU1 = U-M_PI;
+	myU2 = U+M_PI;
       }
       //
       // eval the VCouture.
@@ -515,12 +531,12 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	UCouture = Standard_True;
 	
 	if ( D/C < 0.) {
-	  myV1 =   - PI / 2.;
-	  myV2 = 3 * PI / 2.;
+	  myV1 =   - M_PI / 2.;
+	  myV2 = 3 * M_PI / 2.;
 	}
 	else {
-	  myV1 = -3 * PI / 2.;
-	  myV2 =      PI / 2.;
+	  myV1 = -3 * M_PI / 2.;
+	  myV2 =      M_PI / 2.;
 	}
 	
 	// si P1.Z() vaut +/- R on est sur le sommet : pas significatif.
@@ -530,8 +546,8 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	  gp_Pnt Center = Circle.Location();
 	  Standard_Real U,V;
 	  ElSLib::SphereParameters(gp_Ax3(gp::XOY()),1,Center, U, V);
-	  myU1 = U-PI;
-	  myU2 = U+PI;
+	  myU1 = U-M_PI;
+	  myU2 = U+M_PI;
 	  VCouture = Standard_False;
 	}
 	else {
@@ -539,27 +555,27 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	  //
 	  Parameters(myCurve, mySurface, P1, 1, aTPC, U1, V1);
 	  //
-	  P2 = myCurve->Value(W1+PI/8);
+	  P2 = myCurve->Value(W1+M_PI/8);
 	  ElSLib::Parameters(SP,P2,U2,V2);
 	  
-	  if ( Abs(U1-U2) > PI) { // on traverse la couture
-	    if ( U1 > PI) {
+	  if ( Abs(U1-U2) > M_PI) { // on traverse la couture
+	    if ( U1 > M_PI) {
 	      myU1 = U1;
-	      myU2 = U1+2*PI;
+	      myU2 = U1+2*M_PI;
 	    }
 	    else {
 	      myU2 = U1;
-	      myU1 = U1-2*PI;
+	      myU1 = U1-2*M_PI;
 	    }
 	  }
 	  else { // on ne traverse pas la couture
 	    if ( U1 > U2) {
 	      myU2 = U1;
-	      myU1 = U1-2*PI;
+	      myU1 = U1-2*M_PI;
 	    }
 	    else {
 	      myU1 = U1;
-	      myU2 = U1+2*PI;
+	      myU2 = U1+2*M_PI;
 	    }
 	  }
 	}
@@ -568,12 +584,12 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       // box+sphere >>
       myV1 = -1.e+100; myV2 = 1.e+100;
       Standard_Real UU1 = myU1, UU2 = myU2;
-      if((Abs(UU1) <= (2.*PI) && Abs(UU2) <= (2.*PI)) && NbSolutions == 1 && reCalc) {
+      if((Abs(UU1) <= (2.*M_PI) && Abs(UU2) <= (2.*M_PI)) && NbSolutions == 1 && reCalc) {
 	gp_Pnt Center = Circle.Location();
 	Standard_Real U,V;
 	ElSLib::SphereParameters(gp_Ax3(gp::XOY()),1,Center, U, V);
-	myU1 = U-PI;
-	myU2 = U+PI;
+	myU1 = U-M_PI;
+	myU2 = U+M_PI;
 	myU1 = Min(UU1,myU1);
 	myU2 = Max(UU2,myU2);
       }
@@ -585,7 +601,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       Standard_Real U1, V1, U , V;
       ElSLib::Parameters( SP, P1, U1, V1);
       Standard_Real Step = .1, Delta = 0.;
-      Standard_Real eps = PI, dmax = 0., d = 0.;
+      Standard_Real eps = M_PI, dmax = 0., d = 0.;
       Standard_Integer nbp = (Standard_Integer)((W2 - W1) / Step + 1);
       nbp = Max(nbp, 3);
       Step = (W2 - W1) / (nbp - 1);
@@ -598,13 +614,13 @@ static void Function_SetUVBounds(Standard_Real& myU1,
 	d = U - U1;
 	if(d > eps) {
 	  U -= Delta;
-	  Delta -= 2*PI;
+	  Delta -= 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	}
 	else if(d < -eps) {
 	  U -= Delta;
-	  Delta += 2*PI;
+	  Delta += 2*M_PI;
 	  U += Delta;
 	  d = U - U1;
 	  }
@@ -619,16 +635,16 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       if(!(Abs(pmax - W1) <= Precision::PConfusion() ||
 	   Abs(pmax - W2) <= Precision::PConfusion())  ) myU2 += dmax*.5;
       
-      if((myU1 >=0. && myU1 <= 2*PI) &&
-	 (myU2 >=0. && myU2 <= 2*PI)    ) {
+      if((myU1 >=0. && myU1 <= 2*M_PI) &&
+	 (myU2 >=0. && myU2 <= 2*M_PI)    ) {
 	myU1 = 0.;
-	myU2 = 2.*PI;
+	myU2 = 2.*M_PI;
 	UCouture = Standard_False;
       }
       else {
 	U = ( myU1 + myU2 ) /2.;
-	myU1 = U - PI;
-	myU2 = U + PI;
+	myU1 = U - M_PI;
+	myU2 = U + M_PI;
 	UCouture = Standard_True;
       }
       
@@ -642,7 +658,7 @@ static void Function_SetUVBounds(Standard_Real& myU1,
     Standard_Real U1, V1, U , V;
     ElSLib::Parameters( TR, P1, U1, V1);
     Standard_Real Step = .1, DeltaU = 0., DeltaV = 0.;
-    Standard_Real eps = PI, dmaxU = 0., dU = 0., dmaxV = 0., dV = 0.;
+    Standard_Real eps = M_PI, dmaxU = 0., dU = 0., dmaxV = 0., dV = 0.;
     Standard_Integer nbp = (Standard_Integer)((W2 - W1) / Step + 1);
     nbp = Max(nbp, 3);
     Step = (W2 - W1) / (nbp - 1);
@@ -659,25 +675,25 @@ static void Function_SetUVBounds(Standard_Real& myU1,
       dV = V - V1;
       if(dU > eps) {
 	U -= DeltaU;
-	DeltaU -= 2*PI;
+	DeltaU -= 2*M_PI;
 	U += DeltaU;
 	dU = U - U1;
       }
       else if(dU < -eps) {
 	U -= DeltaU;
-	DeltaU += 2*PI;
+	DeltaU += 2*M_PI;
 	U += DeltaU;
 	dU = U - U1;
       }
       if(dV > eps) {
 	V -= DeltaV;
-	DeltaV -= 2*PI;
+	DeltaV -= 2*M_PI;
 	V += DeltaV;
 	dV = V - V1;
       }
       else if(dV < -eps) {
 	V -= DeltaV;
-	DeltaV += 2*PI;
+	DeltaV += 2*M_PI;
 	V += DeltaV;
 	dV = V - V1;
       }
@@ -700,26 +716,26 @@ static void Function_SetUVBounds(Standard_Real& myU1,
     if(!(Abs(pmaxV - W1) <= Precision::PConfusion() ||
 	 Abs(pmaxV - W2) <= Precision::PConfusion())  ) myV2 += dmaxV*.5;
     
-    if((myU1 >=0. && myU1 <= 2*PI) &&
-       (myU2 >=0. && myU2 <= 2*PI)    ) {
+    if((myU1 >=0. && myU1 <= 2*M_PI) &&
+       (myU2 >=0. && myU2 <= 2*M_PI)    ) {
       myU1 = 0.;
-      myU2 = 2.*PI;
+      myU2 = 2.*M_PI;
       UCouture = Standard_False;
     }
     else {
       U = ( myU1 + myU2 ) /2.;
-      myU1 = U - PI;
-      myU2 = U + PI;
+      myU1 = U - M_PI;
+      myU2 = U + M_PI;
       UCouture = Standard_True;
     }
-    if((myV1 >=0. && myV1 <= 2*PI) &&
-       (myV2 >=0. && myV2 <= 2*PI)    ) {
+    if((myV1 >=0. && myV1 <= 2*M_PI) &&
+       (myV2 >=0. && myV2 <= 2*M_PI)    ) {
       VCouture = Standard_False;
     }
     else {
       V = ( myV1 + myV2 ) /2.;
-      myV1 = V - PI;
-      myV2 = V + PI;
+      myV1 = V - M_PI;
+      myV2 = V + M_PI;
 	  VCouture = Standard_True;
     }
     
@@ -753,7 +769,7 @@ void Parameters(const Handle(Adaptor3d_HCurve)&   myCurve,
   GeomAbs_CurveType aCType;
   gp_Pnt aP2;
   //
-  aTwoPI=2.*PI;
+  aTwoPI=2.*M_PI;
   //
   aSType=mySurface->GetType();
   aCType=myCurve->GetType();
@@ -779,7 +795,7 @@ void Parameters(const Handle(Adaptor3d_HCurve)&   myCurve,
       ElSLib::Parameters(aSp, aP2, aU2, aV2);
       //
       aU1=0.;
-      if (aU2>PI) {
+      if (aU2>M_PI) {
 	aU1=aTwoPI;
       }
     }
@@ -1097,11 +1113,11 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
     Standard_Integer number;
     if (F.VCouture)
       { 
-	if (SType == GeomAbs_Sphere && Abs(u-F.myU1) > PI)
+	if (SType == GeomAbs_Sphere && Abs(u-F.myU1) > M_PI)
 	  {
 	    ToMirror = Standard_True;
-	    dv = -PI;
-	    v = PI - v;
+	    dv = -M_PI;
+	    v = M_PI - v;
 	  }
 	Standard_Real newV = ElCLib::InPeriod( v, F.myV1, F.myV2 );
 	number = (Standard_Integer) (Floor((newV-v)/(F.myV2-F.myV1)));
@@ -1110,8 +1126,8 @@ ProjLib_ComputeApprox::ProjLib_ComputeApprox
     if (F.UCouture || F.VCouture && SType == GeomAbs_Sphere)
       {
 	gp_Pnt2d P2d = F.Value( UFirst );
-	number = (Standard_Integer) (Floor((P2d.X()-u)/PI + Epsilon(PI)));
-	du = -number*PI;
+	number = (Standard_Integer) (Floor((P2d.X()-u)/M_PI + Epsilon(M_PI)));
+	du = -number*M_PI;
       }
 
     if (!myBSpline.IsNull())

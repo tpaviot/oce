@@ -1,7 +1,23 @@
+-- Created on: 1991-09-17
+-- Created by: NW,JPB,CAL
+-- Copyright (c) 1991-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
 --
--- File:	Visual3d_View.cdl
--- Created:	Mardi 17 Septembre 1991
--- Author:	NW,JPB,CAL
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 --		05-97: CAL; Ajout du Clear sur les TOS_COMPUTED.
 --		10-97: CAL; Retrait des DataStructure.
 --		11-97: CAL; Retrait de la dependance avec math.Calcul developpe.
@@ -24,19 +40,14 @@
 --		THA  - 17/08/00 Thomas HARTL <t-hartl@muenchen.matra-dtv.fr>
 --				-> Add Print methods (works only under Windows).-
 --		GG - RIC120302 Add NEW SetWindow method.
---
 --		30-04-02: JMB; MyDisplayedStructure is now a Map instead
 --		               of a Set. Improves performance of Selection
 --		               mechanisms
---
 
 --              SAV  - 22/10/01 -> Add EnableDepthTest() & IsDepthTestEnabled() methods.
 --              SAV  - 25/10/01 -> Add EnableGLLight() & IsGLLightEnabled() methods.
 --              VSV - 28/05/02: ZBUFFER mode of Trihedron
 --              SAV  - 23/12/02 Added methods too set background image
---
----Copyright:	MatraDatavision 1991,1992,1993,1994,2001
---
 
 class View from Visual3d inherits DataStructureManager from Graphic3d
 
@@ -887,6 +898,27 @@ is
 	---Purpose: Changes the display priority of the structure <AStructure>.
 	---Category: Private methods
 
+        AddZLayer ( me         : mutable;
+                    theLayerId : Integer from Standard )
+          is static private;
+        ---Purpose: Add a new top-level Z layer to the view with ID
+        -- <theLayerId>. The z layer mechanism allows to display
+        -- structures in higher layers in overlay of structures in lower layers.
+        -- The layers in a particular view should be managed centrally
+        -- by its view manager so to avoid IDs mismatching and provide correct
+        -- display of graphics in all views.
+
+        RemoveZLayer ( me         : mutable;
+                       theLayerId : Integer from Standard )
+          is static private;
+        ---Purpose: Remove z layer from the view by its ID.
+
+        ChangeZLayer ( me           : mutable;
+                       theStructure : Structure from Graphic3d;
+                       theLayerId   : Integer from Standard )
+           is static private;
+        ---Purpose: Change Z layer of already displayed structure in the view.
+
 	Clear ( me		: mutable;
 		AStructure	: Structure from Graphic3d;
 		WithDestruction	: Boolean from Standard )
@@ -939,12 +971,6 @@ is
 		is static private;
 	---Level: Internal
 	---Purpose: Erases the structure <AStructure> from the view <me>.
-	---Category: Private methods
-
-	Exploration ( me )
-		is static;
-	---Level: Internal
-	---Purpose: Prints informations about the view <me>.
 	---Category: Private methods
 
 	Highlight ( me			: mutable;
@@ -1230,12 +1256,17 @@ is
 	--          currently used in triedron displaying
 
         Export( me;
-                FileName         : CString from Standard;
-                Format           : ExportFormat from Graphic3d;
-                SortType         : SortType from Graphic3d = Graphic3d_ST_BSP_Tree;
-                Precision        : Real from Standard = 0.005;
-                ProgressBarFunc  : Address from Standard = NULL;
-                ProgressObject   : Address from Standard = NULL );
+                theFileName        : CString from Standard;
+                theFormat          : ExportFormat from Graphic3d;
+                theSortType        : SortType from Graphic3d = Graphic3d_ST_BSP_Tree;
+                thePrecision       : Real from Standard = 0.005;
+                theProgressBarFunc : Address from Standard = NULL;
+                theProgressObject  : Address from Standard = NULL )
+        returns Boolean from Standard;
+    ---Purpose:
+    -- Export scene into the one of the Vector graphics formats (SVG, PS, PDF...).
+    -- In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
+    -- Notice however that results may differ a lot and do not contain some elements.
 
 fields
 

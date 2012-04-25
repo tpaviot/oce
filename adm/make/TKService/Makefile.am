@@ -23,7 +23,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = -DXW
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_XwLibs_INCLUDES) $(CSF_dpsLibs_INCLUDES) $(CSF_XmuLibs_INCLUDES) $(CSF_FreeImagePlus_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_XwLibs_INCLUDES) $(CSF_dpsLibs_INCLUDES) $(CSF_XmuLibs_INCLUDES) $(CSF_FreeImagePlus_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Aspect -I@top_srcdir@/src/Aspect \
 -I@top_srcdir@/drv/InterfaceGraphic -I@top_srcdir@/src/InterfaceGraphic \
@@ -42,10 +42,10 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_XwLibs_INCLUDES) $(CSF_dpsLibs_INCLUDES) $(
 
 lib_LTLIBRARIES=libTKService.la
 
-libTKService_la_LIBADD = \
+libTKService_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
-$(STLPort_LIB) $(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_FreeImagePlus_LIB) 
+$(CSF_XwLibs_LIB) $(CSF_dpsLibs_LIB) $(CSF_XmuLibs_LIB) $(CSF_FreeImagePlus_LIB) 
 
 libTKService_la_SOURCES = \
 @top_srcdir@/drv/Aspect/Aspect_Array1OfEdge_0.cxx \

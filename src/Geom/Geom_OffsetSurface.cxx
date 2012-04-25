@@ -1,16 +1,29 @@
-// File:	Geom_OffsetSurface.cxx
-// Created:	Wed Mar 10 09:54:38 1993
-// Author:	JCV
-//		<fid@phylox>
-// Copyright:	Matra Datavision 1993
+// Created on: 1991-06-25
+// Created by: JCV
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// Created:	Tue Jun 25 15:42:54 1991
-// Author:	JCV
+
 // Modified     04/10/96 : JCT : derivee des surfaces offset utilisation de
 //                               CSLib
 // Modified     15/11/96 : JPI : ajout equivalent surface pour les surfaces canoniques et modif des methodes D0 D1, ... UIso,VIso
 // Modified     18/11/96 : JPI : inversion de l'offsetValue dans UReverse et Vreverse
-   
+
 #include <Geom_OffsetSurface.ixx>
 #include <gp.hxx>
 #include <gp_Vec.hxx>
@@ -1497,7 +1510,7 @@ Handle(Geom_Surface) Geom_OffsetSurface::Surface() const
       Result = new Geom_CylindricalSurface( Axis, Radius);
     }
     else if ( Radius <= -Tol ){
-      Axis.Rotate(gp_Ax1(Axis.Location(),Axis.Direction()),PI);
+      Axis.Rotate(gp_Ax1(Axis.Location(),Axis.Direction()),M_PI);
       Result = new Geom_CylindricalSurface( Axis, Abs(Radius));
       Result->UReverse();
     }
@@ -1537,7 +1550,7 @@ Handle(Geom_Surface) Geom_OffsetSurface::Surface() const
       Result = new Geom_SphericalSurface(Axis, Radius);
     }
     else if ( Radius <= -Tol ) {
-      Axis.Rotate(gp_Ax1(Axis.Location(),Axis.Direction()),PI);
+      Axis.Rotate(gp_Ax1(Axis.Location(),Axis.Direction()),M_PI);
       Axis.ZReverse();
       Result = new Geom_SphericalSurface(Axis, -Radius);
       Result->UReverse();

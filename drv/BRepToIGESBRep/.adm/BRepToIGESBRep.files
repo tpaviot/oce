@@ -1,9 +1,0 @@
-pubinclude BRepToIGESBRep_Entity.hxx
-privinclude BRepToIGESBRep_Entity.jxx
-privinclude BRepToIGESBRep_Entity.ixx
-dbadmfile BRepToIGESBRep_xcpp_header.In
-dbadmfile BRepToIGESBRep_xcpp_header.Out
-dbadmfile BRepToIGESBRep_xcpp_header.Dep
-dbadmfile BRepToIGESBRep_obj_inc.In
-dbadmfile BRepToIGESBRep_obj_inc.Out
-dbadmfile BRepToIGESBRep_obj_inc.Dep

@@ -1,6 +1,0 @@
-+M TestTopOpe:pubinclude:TestTopOpe_BOOP.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TestTopOpe_BOOP.hxx
-+M TestTopOpe:pubinclude:TestTopOpe_VarsTopo.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TestTopOpe_VarsTopo.hxx
-+M TestTopOpe:pubinclude:TestTopOpe_HDSDisplayer.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TestTopOpe_HDSDisplayer.hxx
-+M TestTopOpe:dbadmfile:TestTopOpe_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TestTopOpe/.adm/TestTopOpe_obj_inc.In
-+M TestTopOpe:dbadmfile:TestTopOpe_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TestTopOpe/.adm/TestTopOpe_obj_inc.Out
-+M TestTopOpe:dbadmfile:TestTopOpe_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TestTopOpe/.adm/TestTopOpe_obj_inc.Dep

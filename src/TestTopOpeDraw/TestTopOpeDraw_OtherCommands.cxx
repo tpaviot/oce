@@ -1,7 +1,23 @@
-// File:	TestTopOpeDraw_OtherCommands.cxx
-// Created:	Fri Feb  2 15:30:24 1996
-// Author:	Jean Yves LEBEY
-//		<jyl@meteox>
+// Created on: 1996-02-02
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -98,21 +114,21 @@ Standard_EXPORT void OthersCommands_flags(Standard_Integer& na,const char** a,Te
 	}
 	else if(a[iloc][j] == 'c') {
 	  col=Standard_True;
-	  if(a[iloc+1] == "blanc") Color = Draw_blanc;
-	  else if (a[iloc+1] == "rouge")   Color = Draw_rouge;
-	  else if (a[iloc+1] == "vert")    Color = Draw_vert;
-	  else if (a[iloc+1] == "bleu")    Color = Draw_bleu;
-	  else if (a[iloc+1] == "cyan")    Color = Draw_cyan;
-	  else if (a[iloc+1] == "or")      Color = Draw_or;
-	  else if (a[iloc+1] == "magenta") Color = Draw_magenta;
-	  else if (a[iloc+1] == "marron")  Color = Draw_marron;
-	  else if (a[iloc+1] == "orange")  Color = Draw_orange;
-	  else if (a[iloc+1] == "rose")    Color = Draw_rose;
-	  else if (a[iloc+1] == "saumon")  Color = Draw_saumon;
-	  else if (a[iloc+1] == "violet")  Color = Draw_violet;
-	  else if (a[iloc+1] == "jaune")   Color = Draw_jaune;
-	  else if (a[iloc+1] == "kaki")    Color = Draw_kaki;
-	  else if (a[iloc+1] == "corail")  Color = Draw_corail;
+	  if(strcmp(a[iloc+1], "blanc") == 0)         Color = Draw_blanc;
+	  else if (strcmp(a[iloc+1], "rouge") == 0)   Color = Draw_rouge;
+	  else if (strcmp(a[iloc+1], "vert") == 0)    Color = Draw_vert;
+	  else if (strcmp(a[iloc+1], "bleu") == 0)    Color = Draw_bleu;
+	  else if (strcmp(a[iloc+1], "cyan") == 0)    Color = Draw_cyan;
+	  else if (strcmp(a[iloc+1], "or") == 0)      Color = Draw_or;
+	  else if (strcmp(a[iloc+1], "magenta") == 0) Color = Draw_magenta;
+	  else if (strcmp(a[iloc+1], "marron") == 0)  Color = Draw_marron;
+	  else if (strcmp(a[iloc+1], "orange") == 0)  Color = Draw_orange;
+	  else if (strcmp(a[iloc+1], "rose") == 0)    Color = Draw_rose;
+	  else if (strcmp(a[iloc+1], "saumon") == 0)  Color = Draw_saumon;
+	  else if (strcmp(a[iloc+1], "violet") == 0) Color = Draw_violet;
+	  else if (strcmp(a[iloc+1], "jaune") == 0)   Color = Draw_jaune;
+	  else if (strcmp(a[iloc+1], "kaki") == 0)    Color = Draw_kaki;
+	  else if (strcmp(a[iloc+1], "corail") == 0)  Color = Draw_corail;
 	  decal++;dloc++;
 	}
       }

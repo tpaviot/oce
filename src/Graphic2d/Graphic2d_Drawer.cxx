@@ -1,9 +1,25 @@
+// Created on: 1993-11-22
+// Created by: Stephane CALLEGARI
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define xTRACE
 
-// File:        Graphic2d_Drawer.cxx
-// Created:     Mon Nov 22 18:50:16 1993
-// Author:      Stephane CALLEGARI
-//              <cal@sparc5>
 // Modified     23/02/98 : FMN ; Remplacement PI par Standard_PI
 // Modified     16/03/98 GG
 //              OPTIMISATION
@@ -868,14 +884,14 @@ void Graphic2d_Drawer::DrawArc(
         Standard_ShortReal mx,my,a1,a2,da;
         mx = Standard_ShortReal(aDeltaX);
         my = Standard_ShortReal(aDeltaY);
-        a1 = (Angle1 >= 0.) ? Angle1 : Angle1 + Standard_ShortReal(2.*Standard_PI);
-        a2 = (Angle2 >= 0.) ? Angle2 : Angle2 + Standard_ShortReal(2.*Standard_PI);
+        a1 = (Angle1 >= 0.) ? Angle1 : Angle1 + Standard_ShortReal(2. * M_PI);
+        a2 = (Angle2 >= 0.) ? Angle2 : Angle2 + Standard_ShortReal(2. * M_PI);
         if( a2 > a1 ) {
           da = a2 - a1;
         } else if( a2 < a1 ) {
-          da = Standard_ShortReal(2.*Standard_PI + a2 - a1);
+          da = Standard_ShortReal(2. * M_PI + a2 - a1);
         } else {
-          a1 = 0.; da = Standard_ShortReal(2.*Standard_PI);
+          a1 = 0.; da = Standard_ShortReal(2. * M_PI);
         }
         
         if( aRadius > 0. ) {    // Try to use hardware first
@@ -959,14 +975,14 @@ void Graphic2d_Drawer::DrawPolyArc(
         Standard_ShortReal mx,my,a1,a2,da;
         mx = Standard_ShortReal(aDeltaX);
         my = Standard_ShortReal(aDeltaY);
-        a1 = (Angle1 >= 0.) ? Angle1 : Angle1 + Standard_ShortReal(2.*Standard_PI);
-        a2 = (Angle2 >= 0.) ? Angle2 : Angle2 + Standard_ShortReal(2.*Standard_PI);
+        a1 = (Angle1 >= 0.) ? Angle1 : Angle1 + Standard_ShortReal(2. * M_PI);
+        a2 = (Angle2 >= 0.) ? Angle2 : Angle2 + Standard_ShortReal(2. * M_PI);
         if( a2 > a1 ) {
           da = a2 - a1;
         } else if( a2 < a1 ) {
-          da = Standard_ShortReal(2.*Standard_PI + a2 - a1);
+          da = Standard_ShortReal(2. * M_PI + a2 - a1);
         } else {
-          a1 = 0.; da = Standard_ShortReal(2.*Standard_PI);
+          a1 = 0.; da = Standard_ShortReal(2. * M_PI);
         }
         
         if( aRadius > 0. ) {    // Try to use hardware first

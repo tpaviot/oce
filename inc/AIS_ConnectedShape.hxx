@@ -49,17 +49,14 @@
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
-#include <Handle_SelectMgr_Selection.hxx>
-#endif
 #ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager2d.hxx>
 #endif
 #ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
 #include <Handle_Graphic2d_GraphicObject.hxx>
+#endif
+#ifndef _Handle_SelectMgr_Selection_HeaderFile
+#include <Handle_SelectMgr_Selection.hxx>
 #endif
 class Standard_NotImplemented;
 class AIS_Shape;
@@ -68,10 +65,9 @@ class TopLoc_Location;
 class Prs3d_Projector;
 class Prs3d_Presentation;
 class Geom_Transformation;
-class PrsMgr_PresentationManager3d;
-class SelectMgr_Selection;
 class PrsMgr_PresentationManager2d;
 class Graphic2d_GraphicObject;
+class SelectMgr_Selection;
 class TopoDS_Shape;
 
 
@@ -109,13 +105,6 @@ public:
 //! an Interactive Object, this connection is removed. <br>
 //! This syntax also initiates the location of the Connected Interactive Object. <br>
   Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIobj,const TopLoc_Location& aLocation) ;
-  //! this method is redefined virtual; <br>
-//!          when the instance is connected to another <br>
-//!          InteractiveObject,this method doesn't <br>
-//!          compute anything, but just uses the <br>
-//!          presentation of this last object, with <br>
-//!          a transformation if there's one stored. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
   //! this method should fill the presentation according to the <br>
 //!          enumerated mode of the application and to the display parameter <br>
 //!          of the application. <br>
@@ -141,15 +130,10 @@ private:
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
   
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
-  
-//! Recovers and calculates any sensitive primitive, <br>
-//! aSelection, available in Shape mode, specified by <br>
-//! aMode . As a rule, these are sensitive faces. <br>
-//! This method is defined as virtual. This enables you to <br>
-//! implement it in the creation of a new class of <br>
-//! Interactive Object. You need to do this and in so <br>
-//! doing, redefine this method, if you create a class <br>
-//! which enriches the list of signatures and types. <br>
+  //! Generates sensitive entities by copying <br>
+//! them from myReferense selection specified by aMode, <br>
+//! creates and sets an entity owner for this entities and adds <br>
+//! them to aSelection. <br>
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
   
   Standard_EXPORT     void UpdateShape(const Standard_Boolean WithLocation = Standard_True) ;

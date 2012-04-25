@@ -1,15 +1,27 @@
-// File:	Geom_OffsetCurve.cxx
-// Created:	Wed Mar 10 09:49:18 1993
-// Author:	JCV
-//		<fid@phylox>
-// Copyright:	Matra Datavision 1993
+// Created on: 1991-06-25
+// Created by: JCV
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// Created:	Tue Jun 25 15:36:30 1991
-// Author:	JCV
+
 // 24-Aug-95 : xab removed C1 and C2 test : appeller  D1 et D2 
 //             avec discernement !
 // 19-09-97  : JPI correction derivee seconde
-//
 
 
 #include <Geom_OffsetCurve.ixx>
@@ -529,12 +541,6 @@ void Geom_OffsetCurve::D1 ( const Standard_Real U,
 
    // P'(u) = p'(u) + (Offset / R**2) * (DNdir/DU * R -  Ndir * (DR/R))
 
-
-#ifdef DEB
-  GeomAbs_Shape Continuity = basisCurve->Continuity();
-#else
-  basisCurve->Continuity();
-#endif
   basisCurve->D2 (U, PBasis, V1basis, V2basis);
   V1 = V1basis;
   Vec V2 = V2basis;
@@ -589,12 +595,6 @@ void Geom_OffsetCurve::D2 (const Standard_Real U,
 
    // P"(u) = p"(u) + (Offset / R) * (D2Ndir/DU - DNdir * (2.0 * Dr/ R**2) +
    //         Ndir * ( (3.0 * Dr**2 / R**4) - (D2r / R**2)))
-
-#ifdef DEB
-  GeomAbs_Shape Continuity = basisCurve->Continuity();
-#else
-  basisCurve->Continuity();
-#endif
 
   basisCurve->D3 (U, PBasis, V1basis, V2basis, V3basis);
   Standard_Integer Index = 2;

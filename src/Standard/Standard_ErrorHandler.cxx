@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //============================================================================
 //==== Titre: Standard_ErrorHandler.cxx
 //==== Role : class "Standard_ErrorHandler" implementation.
@@ -66,9 +84,10 @@ Standard_ErrorHandler::Standard_ErrorHandler () :
 void Standard_ErrorHandler::Destroy()
 {
   Unlink();
-  if(myStatus==Standard_HandlerJumped) {
-    //jumped, but not caut
-    Abort();
+  if (myStatus == Standard_HandlerJumped)
+  {
+    // jumped, but not caught
+    Abort (myCaughtError);
   }
 }
 
@@ -138,21 +157,18 @@ Standard_Boolean Standard_ErrorHandler::IsInTryBlock()
 //====    Abort if there is a non null 'Error'
 //============================================================================
 
-void Standard_ErrorHandler::Abort ()
+void Standard_ErrorHandler::Abort (const Handle(Standard_Failure)& theError)
 {
   Standard_ErrorHandler* anActive = FindHandler(Standard_HandlerVoid, Standard_True);
-    
+
   //==== Check if can do the "longjmp" =======================================
   if(anActive == NULL || anActive->myLabel == NULL) {
     cerr << "*** Abort *** an exception was raised, but no catch was found." << endl;
-    Handle(Standard_Failure) anErr = 
-      ( anActive != NULL && ! anActive->myCaughtError.IsNull() ?
-        anActive->myCaughtError : Standard_Failure::Caught() );
-    if ( ! anErr.IsNull() )
-      cerr << "\t... The exception is:" << anErr->GetMessageString() << endl;
+    if (!theError.IsNull())
+      cerr << "\t... The exception is:" << theError->GetMessageString() << endl;
     exit(1);
   }
-  
+
   anActive->myStatus = Standard_HandlerJumped;
   longjmp(anActive->myLabel, Standard_True);
 }
@@ -196,15 +212,14 @@ Handle(Standard_Failure) Standard_ErrorHandler::Error() const
 }
 
 
-void Standard_ErrorHandler::Error(const Handle(Standard_Failure)& aError)
+void Standard_ErrorHandler::Error (const Handle(Standard_Failure)& theError)
 {
-  Standard_ErrorHandler* anActive = FindHandler(Standard_HandlerVoid, Standard_False);
-  if(anActive==0)
-    Abort();
-  
-  anActive->myCaughtError = aError;
-}
+  Standard_ErrorHandler* anActive = FindHandler (Standard_HandlerVoid, Standard_False);
+  if (anActive == NULL)
+    Abort (theError);
 
+  anActive->myCaughtError = theError;
+}
 
 
 Standard_ErrorHandler* Standard_ErrorHandler::FindHandler(const Standard_HandlerStatus theStatus,

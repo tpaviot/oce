@@ -1,7 +1,24 @@
-// File:	AIS_DiameterDimension.cdl
-// Created:	Tue Dec  5 15:09:04 1996
+// Created on: 1996-12-05
+// Created by: Jacques MINOT/Odile Olivier/Sergey ZARITCHNY
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified     Mon 12-january-98
-// Author:	Jacques MINOT/Odile Olivier/Sergey ZARITCHNY
 //              <ODL>, <SZY>
 
 
@@ -242,17 +259,17 @@ void AIS_DiameterDimension::ComputeArcSelection(const Handle(SelectMgr_Selection
 
   Handle(SelectMgr_EntityOwner) own = new SelectMgr_EntityOwner(this,7);
   gp_Pnt theCenter = myCircle.Location();
-  while (lpara > 2*PI) {
-    fpara -= 2*PI;
-    lpara -= 2*PI;
+  while (lpara > 2*M_PI) {
+    fpara -= 2*M_PI;
+    lpara -= 2*M_PI;
   }
   Standard_Real parat = ElCLib::Parameter(myCircle,myPosition);
   Standard_Boolean otherside(Standard_False);
   gp_Pnt attpoint = myPosition;
 
   if (!AIS::InDomain(fpara,lpara,parat)) {
-    Standard_Real otherpar = parat + PI;
-    if (otherpar > 2*PI) otherpar -= 2*PI;
+    Standard_Real otherpar = parat + M_PI;
+    if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
     if (AIS::InDomain(fpara,lpara,otherpar)) {
       parat = otherpar;
       otherside = Standard_True;
@@ -530,7 +547,7 @@ void AIS_DiameterDimension::ComputeArcDiameter(
   myFirstPar = parfirst;
   myLastPar  = parend;
   if ( parfirst > parend) {
-    parfirst -= 2*PI;
+    parfirst -= 2*M_PI;
   }
   if (myAutomaticPosition) {
     Standard_Real pcurpos = (parfirst + parend)/2.;
@@ -667,7 +684,7 @@ void AIS_DiameterDimension::ComputeOnePlanarFaceDiameter(const Handle(Prs3d_Pres
       parfirst = ElCLib::Parameter(myCircle, ptfirst);
       parend   = ElCLib::Parameter(myCircle, ptend);
       if ( parfirst > parend) {
-	parfirst -= 2*PI;
+	parfirst -= 2*M_PI;
       }
       Standard_Real parcurPos = (parfirst + parend) * 0.5;
       curPos = ElCLib::Value(parcurPos, myCircle);

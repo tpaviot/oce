@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_GEOMETRY.cxx
-// Created:	Tue Oct  6 11:06:01 1998
-// Author:	Jean Yves LEBEY
-//		<jyl@langdox.paris1.matra-dtv.fr>
+// Created on: 1998-10-06
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_GEOMETRY.hxx>
 
@@ -78,11 +94,7 @@ Standard_EXPORT Standard_Boolean FUN_tool_onapex(const gp_Pnt2d& p2d,const Handl
     isapex = (dist < tol);
   }
   if (ST == GeomAbs_Sphere) {
-    Standard_Real pisur2 = PI*.5;
-#ifdef DEB
-    Standard_Real u =
-#endif
-            p2d.X();
+    Standard_Real pisur2 = M_PI*.5;
     Standard_Real v = p2d.Y();
     Standard_Boolean vpisur2 = (Abs(v-pisur2) < toluv);
     Standard_Boolean vmoinspisur2 = (Abs(v+pisur2) < toluv);
@@ -118,10 +130,6 @@ Standard_EXPORT gp_Dir FUN_tool_ngS(const gp_Pnt2d& p2d,const Handle(Geom_Surfac
       }
       else if (du < tol) {
 	Standard_Real vf = GS.FirstVParameter();
-#ifdef DEB
-        Standard_Real vl =
-#endif
-                 GS.LastVParameter();
 	Standard_Boolean onvf = Abs(p2d.Y()-vf)<toluv;
 
 	Standard_Real x = p2d.X(); Standard_Real y = p2d.Y();
@@ -134,8 +142,8 @@ Standard_EXPORT gp_Dir FUN_tool_ngS(const gp_Pnt2d& p2d,const Handle(Geom_Surfac
       }
     }
     if (ST == GeomAbs_Sphere) {
-//      Standard_Real deuxpi = 2*PI;
-      Standard_Real pisur2 = PI*.5;
+//      Standard_Real deuxpi = 2*M_PI;
+      Standard_Real pisur2 = M_PI*.5;
       Standard_Real u = p2d.X(),v = p2d.Y();
 //      Standard_Boolean u0  =(Abs(u) < toluv);
 //      Standard_Boolean u2pi=(Abs(u-deuxpi) < toluv);
@@ -217,9 +225,7 @@ Standard_EXPORT Standard_Boolean FUN_tool_line(const Handle(Geom2d_Curve)& pc)
   if (pcb.IsNull()) return Standard_False;
   Geom2dAdaptor_Curve GC2d(pcb);
   GeomAbs_CurveType typ = GC2d.GetType();
-#ifdef DEB
-  Standard_Boolean isquad = Standard_False;
-#endif
+
   if (typ == GeomAbs_Line) return Standard_True;
 
   return Standard_False ;

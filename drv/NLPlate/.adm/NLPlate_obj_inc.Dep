@@ -1,6 +1,0 @@
-+ NLPlate:dbadmfile:NLPlate_obj_inc.In NLPlate:admfile:NLPlate_src.Out
-+ * NLPlate:admfile:NLPlate_xcpp_src.Out
-+ NLPlate:dbadmfile:NLPlate_obj_inc.Out NLPlate:admfile:NLPlate_src.Out
-+ * NLPlate:admfile:NLPlate_xcpp_src.Out
-+ NLPlate:dbadmfile:NLPlate_obj_inc.Dep NLPlate:admfile:NLPlate_src.Out
-+ * NLPlate:admfile:NLPlate_xcpp_src.Out

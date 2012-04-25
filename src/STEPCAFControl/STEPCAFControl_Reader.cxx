@@ -1,7 +1,22 @@
-// File:	STEPCAFControl_Reader.cxx
-// Created:	Tue Aug 15 12:42:41 2000
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 2000-08-15
+// Created by: Andrey BETENEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <STEPCAFControl_Reader.ixx>
 
@@ -145,6 +160,7 @@
 #include <StepShape_SolidModel.hxx>
 #include <StepShape_ShellBasedSurfaceModel.hxx>
 #include <StepShape_GeometricSet.hxx>
+#include <StepBasic_ProductDefinition.hxx>
 
 //#include <BRepTools.hxx>
 
@@ -1888,13 +1904,17 @@ Standard_Boolean STEPCAFControl_Reader::ReadMaterials(const Handle(XSControl_Wor
   for(Standard_Integer i=1; i<=SeqPDS->Length(); i++) {
     Handle(StepRepr_ProductDefinitionShape) PDS =
       Handle(StepRepr_ProductDefinitionShape)::DownCast(SeqPDS->Value(i));
-    if(PDS.IsNull()) continue;
+    if(PDS.IsNull()) 
+      continue;
+    Handle(StepBasic_ProductDefinition) aProdDef = PDS->Definition().ProductDefinition();
+    if(aProdDef.IsNull())
+      continue;
     Handle(TCollection_HAsciiString) aName = new TCollection_HAsciiString("");
     Handle(TCollection_HAsciiString) aDescription = new TCollection_HAsciiString("");
     Handle(TCollection_HAsciiString) aDensName = new TCollection_HAsciiString("");
     Handle(TCollection_HAsciiString) aDensValType = new TCollection_HAsciiString("");
     Standard_Real aDensity=0;
-    Interface_EntityIterator subs = graph.Sharings(PDS);
+    Interface_EntityIterator subs = graph.Sharings( aProdDef);
     for(subs.Start(); subs.More(); subs.Next()) {
       Handle(StepRepr_PropertyDefinition) PropD =
         Handle(StepRepr_PropertyDefinition)::DownCast(subs.Value());

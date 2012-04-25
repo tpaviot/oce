@@ -19,17 +19,17 @@
 #ifndef _Interface_EntityList_HeaderFile
 #include <Interface_EntityList.hxx>
 #endif
-#ifndef _Interface_DataMapOfTransientInteger_HeaderFile
-#include <Interface_DataMapOfTransientInteger.hxx>
+#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
+#include <Handle_TColStd_HArray1OfInteger.hxx>
 #endif
 #ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
@@ -49,6 +49,7 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
+class TColStd_HArray1OfInteger;
 class Standard_NoSuchObject;
 class Standard_Transient;
 class Interface_InterfaceModel;
@@ -68,8 +69,6 @@ public:
 
   //! Creates an empty STEP model with an empty header. <br>
   Standard_EXPORT   StepData_StepModel();
-  //! The standard reservation is completed for the map (id-num) <br>
-  Standard_EXPORT   virtual  void Reservate(const Standard_Integer nbent) ;
   //! returns entity given its rank. <br>
 //!           Same as InterfaceEntity, but with a shorter name <br>
   Standard_EXPORT     Handle_Standard_Transient Entity(const Standard_Integer num) const;
@@ -124,7 +123,7 @@ private:
 
 
 Interface_EntityList theheader;
-Interface_DataMapOfTransientInteger theidnums;
+Handle_TColStd_HArray1OfInteger theidnums;
 
 
 };

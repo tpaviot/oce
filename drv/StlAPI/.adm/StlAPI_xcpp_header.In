@@ -1,4 +1,0 @@
-+V StlAPI:msentity:StlAPI .
-+V StlAPI:msentity:StlAPI_Writer .
-+V StlAPI:msentity:StlAPI_Reader .
-- StlAPI:admfile:StlAPI_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/StlAPI/StlAPI_xcpp_fill.Out

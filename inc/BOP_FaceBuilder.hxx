@@ -16,18 +16,6 @@
 #ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
 #endif
-#ifndef _BOP_LoopSet_HeaderFile
-#include <BOP_LoopSet.hxx>
-#endif
-#ifndef _BOP_BlockIterator_HeaderFile
-#include <BOP_BlockIterator.hxx>
-#endif
-#ifndef _BOP_BlockBuilder_HeaderFile
-#include <BOP_BlockBuilder.hxx>
-#endif
-#ifndef _BOP_FaceAreaBuilder_HeaderFile
-#include <BOP_FaceAreaBuilder.hxx>
-#endif
 #ifndef _BOP_PWireEdgeSet_HeaderFile
 #include <BOP_PWireEdgeSet.hxx>
 #endif
@@ -37,17 +25,18 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
 #endif
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
+class IntTools_Context;
 class BOP_WireEdgeSet;
 class TopTools_ListOfShape;
-class TopoDS_Shape;
-class TopoDS_Wire;
-class TopoDS_Edge;
 
 
 
@@ -78,7 +67,15 @@ public:
 //! 2.  Make Loops from wires <br>
 //! 3.  Make Areas from Loops <br>
 //! 4.  Make Faces from Areas <br>
+//! Make Faces from Areas <br>
+//! <br>
   Standard_EXPORT     void Do(const BOP_WireEdgeSet& aWES,const Standard_Boolean aForceClass = Standard_True) ;
+  
+//! Sets intersection context <aCtx> <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& aCtx) ;
+  
+//! Returns intersection context <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Selector <br>
   Standard_EXPORT    const BOP_WireEdgeSet& WES() const;
@@ -92,54 +89,31 @@ public:
   Standard_EXPORT     void SetTreatment(const Standard_Integer aTreatment) ;
   
 //! Modifier <br>
-  Standard_EXPORT     void SetManifoldFlag(const Standard_Boolean aMFlag) ;
-  
-//! Modifier <br>
 //! 1 -Treat scale configured same domain faces, <br>
 //! 0 -Do not treat them. <br>
-  Standard_EXPORT     void SetTreatSDScales(const Standard_Integer aTreatment) ;
-  
+//! <br>
+//!    SetManifoldFlag(me: out; <br>
+//!    	aMFlag:  Boolean from Standard); <br>
+//! Modifier <br>
+//! <br>
+//!    ManifoldFlag(me) <br>
+//!    	returns Boolean from Standard; <br>
 //! Selector <br>
-  Standard_EXPORT     Standard_Boolean ManifoldFlag() const;
+  Standard_EXPORT     void SetTreatSDScales(const Standard_Integer aTreatment) ;
   
 //! Selector <br>
   Standard_EXPORT     Standard_Integer Treatment() const;
   
 //! Selector <br>
-  Standard_EXPORT     Standard_Integer TreatSDScales() const;
-  
-  Standard_EXPORT     Standard_Integer InitFace() ;
-  
-  Standard_EXPORT     Standard_Boolean MoreFace() const;
-  
 //! <br>
 //! <br>
 //! Wires' iterator <br>
 //! <br>
-  Standard_EXPORT     void NextFace() ;
-  
-  Standard_EXPORT     Standard_Integer InitWire() ;
-  
-  Standard_EXPORT     Standard_Boolean MoreWire() const;
-  
-  Standard_EXPORT     void NextWire() ;
-  
-  Standard_EXPORT     Standard_Boolean IsOldWire() const;
-  
-  Standard_EXPORT    const TopoDS_Shape& OldWire() const;
-  
+//!    InitWire(me:out) <br>
+//!    	returns Integer from Standard; <br>
 //! <br>
-  Standard_EXPORT    const TopoDS_Wire& Wire() const;
-  
-  Standard_EXPORT     void FindNextValidElement() ;
-  
-  Standard_EXPORT     Standard_Integer InitEdge() ;
-  
-  Standard_EXPORT     Standard_Boolean MoreEdge() const;
-  
-  Standard_EXPORT     void NextEdge() ;
-  
-  Standard_EXPORT    const TopoDS_Edge& Edge() const;
+//! Make Loops from wires <br>
+  Standard_EXPORT     Standard_Integer TreatSDScales() const;
 
 
 
@@ -147,37 +121,29 @@ public:
 
 protected:
 
+  
+//! Processes internal edges if they exists <br>
+  Standard_EXPORT     void DoInternalEdges() ;
+  
+//! Treatment SD faces with a "scale" <br>
+  Standard_EXPORT     void SDScales() ;
+  
+  Standard_EXPORT     void PerformAreas(BOP_WireEdgeSet& SS) ;
 
 
 
 
 private:
 
-  
-//! Processes internal edges if they exists <br>
-  Standard_EXPORT     void DoInternalEdges() ;
-  
-//! Make Faces from Areas <br>
-  Standard_EXPORT     void BuildNewFaces() ;
-  
-//! Make Loops from wires <br>
-  Standard_EXPORT     void MakeLoops(BOP_WireEdgeSet& SS) ;
-  
-//! Treatment SD faces with a "scale" <br>
-  Standard_EXPORT     void SDScales() ;
 
 
 TopoDS_Face myFace;
-BOP_LoopSet myLoopSet;
-BOP_BlockIterator myBlockIterator;
-BOP_BlockBuilder myBlockBuilder;
-BOP_FaceAreaBuilder myFaceAreaBuilder;
 BOP_PWireEdgeSet myWES;
 TopTools_ListOfShape myNewFaces;
 Standard_Integer myTreatment;
-Standard_Boolean myManifoldFlag;
 Standard_Integer myTreatSDScales;
 TColStd_SequenceOfInteger myNegatives;
+Handle_IntTools_Context myContext;
 
 
 };

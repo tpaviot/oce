@@ -1,6 +1,0 @@
-+M BSplSLib:pubinclude:BSplSLib.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/BSplSLib.hxx
-+M BSplSLib:privinclude:BSplSLib.jxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BSplSLib/BSplSLib.jxx
-+M BSplSLib:privinclude:BSplSLib.ixx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BSplSLib/BSplSLib.ixx
-+M BSplSLib:dbadmfile:BSplSLib_xcpp_header.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BSplSLib/.adm/BSplSLib_xcpp_header.In
-+M BSplSLib:dbadmfile:BSplSLib_xcpp_header.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BSplSLib/.adm/BSplSLib_xcpp_header.Out
-+M BSplSLib:dbadmfile:BSplSLib_xcpp_header.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/BSplSLib/.adm/BSplSLib_xcpp_header.Dep

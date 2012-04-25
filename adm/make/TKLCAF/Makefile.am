@@ -15,7 +15,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/TDF -I@top_srcdir@/src/TDF \
 -I@top_srcdir@/drv/TDataStd -I@top_srcdir@/src/TDataStd \
@@ -26,10 +26,10 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKLCAF.la
 
-libTKLCAF_la_LIBADD = \
-../TKernel/libTKernel.la \
+libTKLCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKernel/libTKernel.la
+
 
 libTKLCAF_la_SOURCES = \
 @top_srcdir@/drv/TDF/TDF_AttributeArray1_0.cxx \

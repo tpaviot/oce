@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Dynamic -I@top_srcdir@/src/Dynamic \
 -I@top_srcdir@/drv/Materials -I@top_srcdir@/src/Materials \
@@ -28,9 +28,9 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKAdvTools.la
 
-libTKAdvTools_la_LIBADD = \
-../TKernel/libTKernel.la \
-$(STLPort_LIB) 
+libTKAdvTools_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKernel/libTKernel.la
+
 
 libTKAdvTools_la_SOURCES = \
 @top_srcdir@/drv/Dynamic/Dynamic_ParameterNode_0.cxx \

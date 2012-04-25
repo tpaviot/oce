@@ -1,7 +1,23 @@
-// File:	ShapeFix_Shape.cxx
-// Created:	Wed Aug 09 12:27:47 1999
-// Author:	Galina Kulikova
-//		<gka@nnov.matra-dtv.fr>
+// Created on: 1999-08-09
+// Created by: Galina Kulikova
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ShapeFix_Shape.ixx>
 
@@ -25,6 +41,8 @@
 #include <ShapeFix_Face.hxx>
 #include <ShapeFix_Shell.hxx>
 #include <ShapeFix_Solid.hxx>
+
+#include <Message_ProgressSentry.hxx>
 
 //=======================================================================
 //function : ShapeFix_Shape
@@ -81,11 +99,11 @@ void ShapeFix_Shape::Init(const TopoDS_Shape& shape)
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean ShapeFix_Shape::Perform() 
+Standard_Boolean ShapeFix_Shape::Perform(const Handle(Message_ProgressIndicator)& theProgress) 
 {
   Standard_Integer savFixSmallAreaWireMode = 0;
 
-  Handle(ShapeFix_Face) fft = Handle(ShapeFix_Face)::DownCast ( FixFaceTool() );
+  Handle(ShapeFix_Face) fft = Handle(ShapeFix_Face)::DownCast( FixFaceTool() );
   if ( !fft.IsNull() ) {
     savFixSmallAreaWireMode = fft->FixSmallAreaWireMode();
     if ( savFixSmallAreaWireMode == -1 &&
@@ -117,41 +135,60 @@ Standard_Boolean ShapeFix_Shape::Perform()
     ShapeFix::FixVertexPosition(S,Precision(),Context());
 
   st = S.ShapeType();
+
+  // Open progress indication scope for the following fix stages:
+  // - Fix on Solid or Shell;
+  // - Fix same parameterization;
+  Message_ProgressSentry aPSentry(theProgress, "Fixing stage", 0, 2, 1);
+
   switch ( st ) {
   case TopAbs_COMPOUND:  
   case TopAbs_COMPSOLID: {
     TopoDS_Shape shape = myShape;
     Standard_Boolean savFixSameParameterMode = myFixSameParameterMode;
     myFixSameParameterMode = Standard_False;
-    for( TopoDS_Iterator iter(S); iter.More(); iter.Next()) {
-      myShape = iter.Value();
-      if ( Perform() ) status = Standard_True;
+
+    Standard_Integer aShapesNb = 0;
+    for ( TopoDS_Iterator anIter(S); anIter.More(); anIter.Next() )
+      ++aShapesNb;
+
+    // Open progress indication scope for sub-shape fixing
+    Message_ProgressSentry aPSentry(theProgress, "Fixing sub-shape", 0, aShapesNb, 1);
+    for ( TopoDS_Iterator anIter(S); anIter.More() && aPSentry.More(); anIter.Next(), aPSentry.Next() )
+    {
+      myShape = anIter.Value();
+      if ( Perform(theProgress) )
+        status = Standard_True;
     }
+    if ( !aPSentry.More() )
+      return Standard_False; // aborted execution
+
     myFixSameParameterMode = savFixSameParameterMode;
     myShape = shape;
-//    myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE5 );
     break;
   }
   case TopAbs_SOLID: {  
-    if ( ! NeedFix ( myFixSolidMode ) ) break;
+    if ( !NeedFix(myFixSolidMode) )
+      break;
     myFixSolid->Init(TopoDS::Solid(S)); 
     myFixSolid->SetContext(Context());
-    if(myFixSolid->Perform()) {
-//      Context()->Replace(S,myFixSolid->Solid());
+
+    if ( myFixSolid->Perform(theProgress) )
       status = Standard_True;
-    }
+
     myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE4 );
     break;
   }
   case TopAbs_SHELL:  {
-    if ( ! NeedFix ( myFixShellMode ) ) break;
+    if ( !NeedFix(myFixShellMode) )
+      break;
     Handle(ShapeFix_Shell) sfsh = FixShellTool(); 
-    sfsh->Init(TopoDS::Shell(S)); 
-    sfsh->SetContext(Context());
-    if(sfsh->Perform()) {
-//      Context()->Replace(S,sfsh->Shell());
+    sfsh->Init( TopoDS::Shell(S) ); 
+    sfsh->SetContext( Context() );
+
+    if ( sfsh->Perform(theProgress) )
       status = Standard_True;
-    }
+
     myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE4 );
     break;
   }
@@ -162,8 +199,8 @@ Standard_Boolean ShapeFix_Shape::Perform()
     sff->FixWireTool()->ModifyTopologyMode() = Standard_True;
     sff->Init(TopoDS::Face(S)); 
     sff->SetContext(Context());
+
     if(sff->Perform()) {
-//      Context()->Replace(S,sff->Face());
       status = Standard_True;
     }
     sff->FixWireTool()->ModifyTopologyMode() = savTopoMode;
@@ -178,7 +215,6 @@ Standard_Boolean ShapeFix_Shape::Perform()
     sfw->ModifyTopologyMode() = Standard_True;
     if ( ! S.Closed() ) 
       sfw->ClosedWireMode() = Standard_False;
-//    sfw->FixEdgeCurvesMode() =0;
     sfw->SetFace(TopoDS_Face());
     sfw->Load(TopoDS::Wire(S));
     sfw->SetContext(Context());
@@ -201,10 +237,16 @@ Standard_Boolean ShapeFix_Shape::Perform()
   case TopAbs_SHAPE :    
   default           : break;
   }
+
+  // Switch to the second progress indication scope if it exists
+  aPSentry.Next();
   
-  myResult  = Context()->Apply(S);  
-  if ( NeedFix ( myFixSameParameterMode ) ) 
-    SameParameter (myResult,Standard_False);
+  myResult = Context()->Apply(S);  
+
+  if ( NeedFix(myFixSameParameterMode) )
+  {
+    SameParameter(myResult, Standard_False, theProgress);
+  }
 
   if ( !fft.IsNull() )
     fft->FixSmallAreaWireMode() = savFixSmallAreaWireMode;
@@ -217,9 +259,11 @@ Standard_Boolean ShapeFix_Shape::Perform()
 //purpose  : 
 //=======================================================================
 
-void ShapeFix_Shape::SameParameter(const TopoDS_Shape& sh, const Standard_Boolean enforce)
+void ShapeFix_Shape::SameParameter(const TopoDS_Shape& sh,
+                                   const Standard_Boolean enforce,
+                                   const Handle(Message_ProgressIndicator)& theProgress)
 {
-  ShapeFix::SameParameter(sh, enforce);
+  ShapeFix::SameParameter(sh, enforce, 0.0, theProgress);
 }
 
 //=======================================================================

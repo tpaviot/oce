@@ -34,8 +34,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _IntTools_PContext_HeaderFile
-#include <IntTools_PContext.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
@@ -55,6 +55,7 @@
 #ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
 #endif
+class IntTools_Context;
 class TopoDS_Edge;
 class TopoDS_Face;
 class IntTools_Range;
@@ -121,8 +122,11 @@ public:
 //! The algorithm processes edge inside these boundaries. <br>
   Standard_EXPORT     void SetRange(const Standard_Real aFirst,const Standard_Real aLast) ;
   
-//! Set container of projection algorithms <br>
-  Standard_EXPORT     void SetContext(const IntTools_PContext& theContext) ;
+//! Sets the intersecton context <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
+  
+//! Gets the intersecton context <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Launches the process <br>
   Standard_EXPORT     void Perform() ;
@@ -210,7 +214,7 @@ BRepAdaptor_Surface myS;
 Standard_Real myCriteria;
 Standard_Boolean myIsDone;
 Standard_Integer myErrorStatus;
-IntTools_PContext myContext;
+Handle_IntTools_Context myContext;
 IntTools_SequenceOfRanges myProjectableRanges;
 IntTools_FClass2d myFClass2d;
 IntTools_CArray1OfReal myFuncArray;

@@ -1,7 +1,23 @@
-// File:	BRepOffset_MakeOffset.cxx
-// Created:	Fri Oct 27 10:30:44 1995
-// Author:	Yves FRICAUD
-//		<yfr@stylox>
+// Created on: 1995-10-27
+// Created by: Yves FRICAUD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 //  Modified by skv - Tue Mar 15 16:20:43 2005
@@ -101,7 +117,7 @@
 #include <GeomFill_Generator.hxx>
 
 
-// POP pour NT
+// POP for NT
 #include <stdio.h>
 
 #ifdef DRAW
@@ -127,25 +143,27 @@
 //purpose  : 
 //=======================================================================
 
-static void DEBVerticesControl (const TopTools_MapOfShape&    NewEdges,
-				      Handle(BRepAlgo_AsDes)  AsDes)
+static void DEBVerticesControl (const TopTools_IndexedMapOfShape& NewEdges,
+				      Handle(BRepAlgo_AsDes)      AsDes)
 {
   Standard_Integer NVP = 0;
   Standard_Integer NVM = 0;
   Standard_Integer NVN = 0;
 
   TopTools_ListOfShape               LVP;
-  TopTools_MapIteratorOfMapOfShape   it;
+  //TopTools_MapIteratorOfMapOfShape   it;
   TopTools_ListIteratorOfListOfShape it1LE ;    
   TopTools_ListIteratorOfListOfShape it2LE ;
   
-  for (it.Initialize(NewEdges) ; it.More(); it.Next()) {
-    const TopoDS_Edge& NE = TopoDS::Edge(it.Key());
+  //for (it.Initialize(NewEdges) ; it.More(); it.Next()) {
+  Standard_Integer i;
+  for (i = 1; i <= NewEdges.Extent(); i++) {
+    const TopoDS_Edge& NE = TopoDS::Edge(NewEdges(i));
     if (AsDes->HasDescendant(NE)) {
       for (it1LE.Initialize(AsDes->Descendant(NE)); it1LE.More(); it1LE.Next()) {
 	if (AsDes->Ascendant(it1LE.Value()).Extent() < 3) {
 	  LVP.Append(it1LE.Value());
-	  cout <<"Vertex sur moins de 3 edges."<<endl;
+	  cout <<"Vertex on at least 3 edges."<<endl;
 #ifdef DRAW
 	  if (AffichInt2d) {
 	    sprintf (name,"VP_%d",NVP++);
@@ -154,7 +172,7 @@ static void DEBVerticesControl (const TopTools_MapOfShape&    NewEdges,
 #endif
 	}
 	else if (AsDes->Ascendant(it1LE.Value()).Extent() > 3) {
-	  cout <<"Vertex sur plus de 3 edges."<<endl;
+	  cout <<"Vertex on more than 3 edges."<<endl;
 #ifdef DRAW
 	  if (AffichInt2d) {
 	    sprintf (name,"VM_%d",NVM++);
@@ -175,14 +193,15 @@ static void DEBVerticesControl (const TopTools_MapOfShape&    NewEdges,
     }
   }
   //------------------------------------------------
-  // Essai de confusion des vertex pourris.
+  // Try to mix spoiled vertices.
   //------------------------------------------------
   BRep_Builder B;
   TopTools_ListIteratorOfListOfShape it1(LVP);
   Standard_Real                      TolConf = 1.e-5;
   Standard_Real                      Tol     = Precision::Confusion();
-  Standard_Integer                   i = 1;
-
+  //Standard_Integer                   i = 1;
+  
+  i = 1;
   for ( ; it1.More(); it1.Next()) {
     TopoDS_Shape   V1 = it1.Value();
     gp_Pnt         P1 = BRep_Tool::Pnt(TopoDS::Vertex(V1));
@@ -220,14 +239,14 @@ static void DEBVerticesControl (const TopTools_MapOfShape&    NewEdges,
       j++;
     }
     i++;
-    cout <<" distmin entre VP : "<<distmin<<endl;
+    cout <<" distmin between VP : "<<distmin<<endl;
   }
 }  
 #endif
 
 
-static void UpdateTolerance (      TopoDS_Shape&        myShape,
-			     const TopTools_MapOfShape& myFaces);
+static void UpdateTolerance (      TopoDS_Shape&               myShape,
+			     const TopTools_IndexedMapOfShape& myFaces);
 
 
 static Standard_Boolean FindParameter(const TopoDS_Vertex& V, 
@@ -563,15 +582,15 @@ void BRepOffset_MakeOffset::SetOffsetOnFace(const TopoDS_Face&  F,
 //purpose  : 
 //=======================================================================
 
-static void RemoveCorks (TopoDS_Shape&        S,
-			 TopTools_MapOfShape& Faces)
+static void RemoveCorks (TopoDS_Shape&               S,
+			 TopTools_IndexedMapOfShape& Faces)
 {  
   TopoDS_Compound SS;
   BRep_Builder    B;
   B.MakeCompound (SS);
   //-----------------------------------------------------
-  // Construction d un shape sans les bouchons.
-  // et Orientation des bouchons comme dans le shape S.
+  // Construction of a shape without caps.
+  // and Orientation of caps as in shape S.
   //-----------------------------------------------------
   TopExp_Explorer exp(S,TopAbs_FACE);
   for (; exp.More(); exp.Next()) {
@@ -580,8 +599,14 @@ static void RemoveCorks (TopoDS_Shape&        S,
       B.Add(SS,Cork);
     }
     else {
-      Faces.Remove (Cork);
-      Faces.Add    (Cork); // pour la remettre avec la bonne orientation.
+      //Faces.Remove (Cork);
+      //begin instead of Remove//
+      TopoDS_Shape LastShape = Faces(Faces.Extent());
+      Faces.RemoveLast();
+      if (Faces.FindIndex(Cork) != 0)
+        Faces.Substitute(Faces.FindIndex(Cork), LastShape);
+      //end instead of Remove  //
+      Faces.Add(Cork); // to reset it with proper orientation.
     }
   }
   S = SS;
@@ -612,9 +637,9 @@ static Standard_Boolean IsConnectedShell( const TopoDS_Shape& S )
 //purpose  : 
 //=======================================================================
 
-static void MakeList (TopTools_ListOfShape&      OffsetFaces,
-		      const BRepAlgo_Image&    myInitOffsetFace,
-		      const TopTools_MapOfShape& myFaces)
+static void MakeList (TopTools_ListOfShape&             OffsetFaces,
+		      const BRepAlgo_Image&             myInitOffsetFace,
+		      const TopTools_IndexedMapOfShape& myFaces)
 {
   TopTools_ListIteratorOfListOfShape itLOF(myInitOffsetFace.Roots());
   for ( ; itLOF.More(); itLOF.Next()) {
@@ -650,7 +675,7 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
 {  
   myDone     = Standard_False;
   //------------------------------------------
-  // Constuction de myShape sans les bouchons.
+  // Construction of myShape without caps.
   //------------------------------------------
   RemoveCorks (myShape,myFaces);
   
@@ -671,10 +696,10 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
   Standard_Real TolAngle = 4*ASin(myTol/Abs(myOffset*0.5));
   myAnalyse.Perform(myShape,TolAngle);
   //---------------------------------------------------
-  // Construction des Offset a partir de la preanalyse.
+  // Construction of Offset from preanalysis.
   //---------------------------------------------------  
   //----------------------------
-  // MaJ de la SD Face - Offset
+  // MaJ of SD Face - Offset
   //----------------------------
   UpdateFaceOffset();
 
@@ -683,7 +708,7 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
   else if (myJoin == GeomAbs_Intersection) 
     BuildOffsetByInter();
   //-----------------
-  // Auto debouclage.
+  // Auto unwinding.
   //-----------------
   // if (mySelfInter)  SelfInter(Modif);
   //-----------------
@@ -694,17 +719,17 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
   //-----------------
   // Intersection2D
   //-----------------
-  TopTools_MapOfShape& Modif    = Inter.TouchedFaces(); 
-  TopTools_MapOfShape& NewEdges = Inter.NewEdges();
+  TopTools_IndexedMapOfShape& Modif    = Inter.TouchedFaces(); 
+  TopTools_IndexedMapOfShape& NewEdges = Inter.NewEdges();
 
   if (!Modif.IsEmpty()) Intersection2D (Modif,NewEdges);
   //-------------------------------------------------------
-  // Debouclage 2D et reconstruction des faces modifiees
+  // Unwinding 2D and reconstruction of modified faces
   //----------------------------------------------------
   MakeLoops (Modif);
   //-----------------------------------------------------
-  // Reconstuction des faces non modifie mais qui partage 
-  // des edges recontruits
+  // Reconstruction of non modified faces sharing 
+  // reconstructed edges
   //------------------------------------------------------
   if (!Modif.IsEmpty()) MakeFaces (Modif);
 
@@ -712,24 +737,24 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
     MakeMissingWalls();
 
   //-------------------------
-  // Construction des shells.
+  // Construction of shells.
   //-------------------------
   MakeShells ();
   //--------------
-  // Debouclage3d.
+  // Unwinding 3D.
   //--------------
   SelectShells ();
   //----------------------------------
-  // Codage ges regularites.
+  // Coding of regularities.
   //----------------------------------
   EncodeRegularity();
   //----------------------
-  // Creation des solides.
+  // Creation of solids.
   //----------------------
   MakeSolid ();
 
   //-----------------------------
-  // MAJ Tolerance edge et Vertex
+  // MAJ Tolerance edge and Vertex
   // ----------------------------
   if (!myOffsetShape.IsNull()) {
     UpdateTolerance (myOffsetShape,myFaces);
@@ -751,13 +776,13 @@ void BRepOffset_MakeOffset::MakeOffsetShape()
 void BRepOffset_MakeOffset::MakeThickSolid() 
 {
   //--------------------------------------------------------------
-  // Construction shell parallele au shell (initial sans bouchon).
+  // Construction of shell parallel to shell (initial without cap).
   //--------------------------------------------------------------
   MakeOffsetShape ();
 
   //--------------------------------------------------------------------
-  // Construction d un solide avec le shell initial le shell parallele
-  // limite par les bouchons.
+  // Construction of a solid with the initial shell, parallel shell 
+  // limited by caps.
   //--------------------------------------------------------------------
   if (!myFaces.IsEmpty()) {
     TopoDS_Solid    Res;
@@ -790,8 +815,8 @@ void BRepOffset_MakeOffset::MakeThickSolid()
     Res.Closed(Standard_True);
     myOffsetShape = Res;
 
-    // Test de Validite du resultat le Solide epais doit avoir 
-    // plus de face que le solide initial.
+    // Test of Validity of the result of thick Solid 
+    // more face than the initial solid.
         
     Standard_Integer NbOF = 0;
     for (exp.Init(myOffsetShape,TopAbs_FACE);exp.More(); exp.Next()) {
@@ -840,8 +865,8 @@ const TopoDS_Shape&  BRepOffset_MakeOffset::Shape() const
 
 //=======================================================================
 //function : TrimEdge
-//purpose  : Trim l edge au plus large par ses descendants dans AsDes2d.
-//           Range dans AsDes les deux vertex qui ont trimme l edge.
+//purpose  : Trim the edge of the largest of descendants in AsDes2d.
+//           Order in AsDes two vertices that have trimmed the edge.
 //=======================================================================
 
 static void TrimEdge (TopoDS_Edge&                  NE,
@@ -912,7 +937,7 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
 {
 #ifdef  DEB
   if ( ChronBuild) {
-    cout << " CONSTRUCTION DES OFFSETS :" << endl;
+    cout << " CONSTRUCTION OF OFFSETS :" << endl;
     Clock.Reset();
     Clock.Start();
   }
@@ -922,7 +947,7 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
   TopTools_MapOfShape             Done;
   Standard_Boolean OffsetOutside = (myOffset > 0.)? Standard_True : Standard_False;
   //--------------------------------------------------------
-  // Construction des faces paralleles a des faces initiales
+  // Construction of faces parallel to initial faces
   //--------------------------------------------------------
   TopExp_Explorer Exp;
   TopTools_ListOfShape LF;
@@ -980,20 +1005,20 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
   Handle(BRepAlgo_AsDes)       AsDes = new BRepAlgo_AsDes();
 
   //-------------------------------------------------------------------
-  // Extension des faces et calcul des nouvelles edges d intersection.
+  // Extension of faces and calculation of new edges of intersection.
   //-------------------------------------------------------------------
   Standard_Boolean  ExtentContext = 0;
   if (myOffset > 0) ExtentContext = 1;
 
   BRepOffset_Inter3d Inter3 (AsDes,Side,myTol);
-  // Intersection entre faces paralleles
+  // Intersection between parallel faces
   Inter3.ConnexIntByInt(myShape,MapSF,myAnalyse,MES,Build,Failed );
-  // Intersection avec les bouchons.
+  // Intersection with caps.
   Inter3.ContextIntByInt(myFaces,ExtentContext,MapSF,myAnalyse,MES,Build,Failed );
 
 
   //---------------------------------------------------------------------------------
-  // Extension des edges voisines des nouvelles edges.et intersection  entre les voisins.
+  // Extension of neighbor edges of new edges and intersection between neighbors.
   //--------------------------------------------------------------------------------
   Handle(BRepAlgo_AsDes) AsDes2d = new BRepAlgo_AsDes();
   for (Exp.Init(myShape,TopAbs_FACE) ; Exp.More(); Exp.Next()) {
@@ -1004,16 +1029,13 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
 //  Modified by skv - Mon Jan 12 11:50:03 2004 OCC4455 End
   }
   //-----------------------------------------------------------
-  // Restriction large des nouvelles edges et mise a jour AsDes.
+  // Great restriction of new edges and update of AsDes.
   //------------------------------------------ ----------------
-  TopTools_MapOfShape NewEdges;
+  TopTools_IndexedMapOfShape NewEdges;
   TopExp_Explorer Exp2,ExpC;
   TopoDS_Shape    NE;
   TopoDS_Edge     TNE;
   TopoDS_Face     NF;
-#ifdef DEB
-  TopAbs_Orientation Or;
-#endif
   
   for (Exp.Init(myShape,TopAbs_FACE) ; Exp.More(); Exp.Next()) {
     const TopoDS_Face& FI = TopoDS::Face(Exp.Current());
@@ -1030,9 +1052,9 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
 	  }
 	  else {
 	    //------------------------------------------------------------
-	    // Les Intersections sont en plusieurs edges.
-	    // Les morceaux sans intersections avec les voisins 
-	    // sont supprimes de AsDes.
+	    // The Intersections are on several edges.
+	    // The pieces without intersections with neighbors  
+	    // are removed from AsDes.
 	    //------------------------------------------------------------
 	    for (ExpC.Init(NE,TopAbs_EDGE); ExpC.More(); ExpC.Next()) {
 	      if (NewEdges.Add(ExpC.Current())) {
@@ -1065,7 +1087,7 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
   }
   
   //--------------------------------- 
-  // Intersection2d sur les //
+  // Intersection 2D on //
   //---------------------------------  
   TopTools_ListOfShape LFE; 
   BRepAlgo_Image     IMOE;
@@ -1085,24 +1107,24 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
     BRepOffset_Inter2d::Compute(AsDes,NEF,NewEdges,myTol);
   }
   //----------------------------------------------
-  // Intersections 2d sur les bouchons.
+  // Intersections 2d on caps.
   //----------------------------------------------
-  TopTools_MapIteratorOfMapOfShape itCork(myFaces);
-  for (; itCork.More(); itCork.Next()) {
-    const TopoDS_Face& Cork = TopoDS::Face(itCork.Key());
+  Standard_Integer i;
+  for (i = 1; i <= myFaces.Extent(); i++) {
+    const TopoDS_Face& Cork = TopoDS::Face(myFaces(i));
     BRepOffset_Inter2d::Compute(AsDes,Cork,NewEdges,myTol);
   }
 
   //-------------------------------
-  // Debouclage des Faces etendues.
+  // Unwinding of extended Faces.
   //-------------------------------
   myMakeLoops.Build(LFE  ,AsDes,IMOE);
 
 #ifdef DEB
-  TopTools_MapOfShape COES;
+  TopTools_IndexedMapOfShape COES;
 #endif
   //---------------------------
-  // MAJ SD. pour les faces //
+  // MAJ SD. for faces //
   //---------------------------
   for (Exp.Init(myShape,TopAbs_FACE) ; Exp.More(); Exp.Next()) {
     const TopoDS_Shape& FI   = Exp.Current();
@@ -1288,11 +1310,11 @@ void BRepOffset_MakeOffset::BuildOffsetByInter()
 //  Modified by skv - Tue Mar 15 16:20:43 2005
 
   //---------------------------
-  // MAJ SD. pour les bouchons
+  // MAJ SD. for caps 
   //---------------------------
-  TopTools_MapOfShape View; 
-  for (itCork.Initialize(myFaces); itCork.More(); itCork.Next()) {
-    const TopoDS_Shape& Cork = itCork.Key();
+  //TopTools_MapOfShape View; 
+  for (i = 1; i <= myFaces.Extent(); i++) {
+    const TopoDS_Shape& Cork = myFaces(i);
     const TopTools_ListOfShape& LE = AsDes->Descendant(Cork);
     for (itLF.Initialize(LE) ; itLF.More(); itLF.Next()) {
       const TopoDS_Edge& OE = TopoDS::Edge(itLF.Value());
@@ -1349,7 +1371,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
 {
 #ifdef  DEB
   if ( ChronBuild) {
-    cout << " CONSTRUCTION DES OFFSETS :" << endl;
+    cout << " CONSTRUCTION OF OFFSETS :" << endl;
     Clock.Reset();
     Clock.Start();
   }
@@ -1359,7 +1381,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
   TopTools_MapOfShape             Done;
   Standard_Boolean OffsetOutside = (myOffset > 0.)? Standard_True : Standard_False;
   //--------------------------------------------------------
-  // Construction des faces paralleles a des faces initiales
+  // Construction of faces parallel to initial faces
   //--------------------------------------------------------
   TopExp_Explorer Exp;
   TopTools_ListOfShape LF;
@@ -1406,7 +1428,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
     MapSF.Bind(F,OF);
   }
   //--------------------------------------------------------
-  // Construction des tuyaux sur arete.
+  // Construction of tubes on edge.
   //--------------------------------------------------------
   BRepOffset_Type    OT = BRepOffset_Convex;
   if (myOffset < 0.) OT = BRepOffset_Concave; 
@@ -1463,7 +1485,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
       }
       else {
 	// ----------------------
-	// bord libre.
+	// free border.
 	// ----------------------
 	TopoDS_Shape aLocalShape = MapSF(Anc.First()).Generated(E);
 	TopoDS_Edge EOn1 = TopoDS::Edge(aLocalShape);
@@ -1475,7 +1497,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
   }
 
   //--------------------------------------------------------
-  // Construction des shperes sur vertex.
+  // Construction of spheres on vertex.
   //--------------------------------------------------------
   Done.Clear();
   TopTools_ListIteratorOfListOfShape it;
@@ -1490,7 +1512,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
       if (LE.Extent() >= 3 && LE.Extent() == LA.Extent()) {
 	TopTools_ListOfShape LOE;
 	//--------------------------------------------------------
-	// Recuperation des edges connexes sur les tuyaux.
+	// Return connected edges on tubes.
 	//--------------------------------------------------------
 	for (it.Initialize(LE) ; it.More(); it.Next()) {
 	  LOE.Append(MapSF(it.Value()).Generated(V).Reversed());
@@ -1508,7 +1530,7 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
 	MapSF.Bind(V,OF);
       }
       //--------------------------------------------------------------
-      // Traitemnet particulier si V est sur au moins un bord libre.
+      // Particular processing if V is at least a free border.
       //-------------------------------------------------------------
       TopTools_ListOfShape LBF;
       myAnalyse.Edges(V,BRepOffset_FreeBoundary,LBF);
@@ -1529,8 +1551,8 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
   }
 
   //------------------------------------------------------------
-  // Extension des faces paralleles jusq au contexte.
-  // Les faces etendues sont rangees en SD et Supprime de MapSF.
+  // Extension of parallel faces to the context.
+  // Extended faces are ordered in DS and removed from MapSF.
   //------------------------------------------------------------
   if (!myFaces.IsEmpty()) ToContext (MapSF);
 
@@ -1540,17 +1562,13 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
   BRepOffset_Type    RT = BRepOffset_Concave;
   if (myOffset < 0.) RT = BRepOffset_Convex;
   BRepOffset_DataMapIteratorOfDataMapOfShapeOffset It(MapSF);
-#ifdef DEB
-  Standard_Integer MapSFNb = MapSF.Extent();
-#endif
   for ( ; It.More(); It.Next()) {
     const TopoDS_Shape& SI = It.Key(); 
     const BRepOffset_Offset& SF = It.Value();
     if (SF.Status() == BRepOffset_Reversed ||
 	SF.Status() == BRepOffset_Degenerated ) {
       //------------------------------------------------
-      // Les faces degenerees ou retournees ne sont pas 
-      // stockes.
+      // Degenerated or returned faces are not stored.
       //------------------------------------------------
       continue; 
     }	
@@ -1558,15 +1576,15 @@ void BRepOffset_MakeOffset::BuildOffsetByArc()
     const TopoDS_Face&  OF = It.Value().Face();
     myInitOffsetFace.Bind    (SI,OF);      
     myInitOffsetFace.SetRoot (SI);      // Initial<-> Offset
-    myImageOffset.SetRoot    (OF);      // FaceOffset racine des images
+    myImageOffset.SetRoot    (OF);      // FaceOffset root of images
     
     if (SI.ShapeType() == TopAbs_FACE) {
       for (Exp.Init(SI.Oriented(TopAbs_FORWARD),TopAbs_EDGE); 
 	   Exp.More(); Exp.Next()) {
 	//--------------------------------------------------------------------
-	// A chaque face // on associe les edges qui la restreignent
-	// Les edges qui ne genere pas de tuyaux ou qui ne sont pas tangentes
-	// a deux faces sont supprimees.
+	// To each face are associatedthe edges that restrict that 
+	// The edges that do not generate tubes or are not tangent
+	// to two faces are removed.
 	//--------------------------------------------------------------------
 	const TopoDS_Edge& E = TopoDS::Edge(Exp.Current());
 	const BRepOffset_ListOfInterval& L  = myAnalyse.Type(E);
@@ -1626,8 +1644,7 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
 {
   TopTools_DataMapOfShapeShape        Created;   
   TopTools_DataMapOfShapeShape        MEF;
-  TopTools_MapOfShape                 FacesToBuild;
-  TopTools_MapIteratorOfMapOfShape    it(myFaces); 
+  TopTools_IndexedMapOfShape          FacesToBuild;
   TopTools_ListIteratorOfListOfShape  itl;
   TopExp_Explorer                     exp;
 
@@ -1635,27 +1652,32 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
 //  if (myOffset < 0.) Side = TopAbs_OUT;
 
   TopAbs_State       Side = TopAbs_OUT; 
- 
-  for (; it.More(); it.Next()) {
-    const TopoDS_Face& CF = TopoDS::Face(it.Key());
+
+  /*
+  Standard_Integer i;
+  for (i = 1; i <= myFaces.Extent(); i++) {
+    const TopoDS_Face& CF = TopoDS::Face(myFaces(i));
     for (exp.Init(CF.Oriented(TopAbs_FORWARD),TopAbs_EDGE); 
 	 exp.More(); exp.Next()) {
       const TopoDS_Edge& E = TopoDS::Edge(exp.Current());
       if (!myAnalyse.HasAncestor(E)) {
 	//----------------------------------------------------------------
-	// Les edges des faces de contexte qui ne sont pas dans le shape
-	// initiales peuvent apparaitre dans le resultat.
+	// The edges of context faces that are not in the initial shape
+	// can appear in the result.
 	//----------------------------------------------------------------
 	//myAsDes->Add(CF,E);
       }  
     }
   }
+  */
+  
   //--------------------------------------------------------
-  // Determination des edges et des faces a reconstruire par 
+  // Determine the edges and faces reconstructed by  
   // intersection.
   //---------------------------------------------------------
-  for ( it.Initialize(myFaces); it.More(); it.Next()) {
-    const TopoDS_Face& CF = TopoDS::Face(it.Key());
+  Standard_Integer j;
+  for (j = 1; j <= myFaces.Extent(); j++) {
+    const TopoDS_Face& CF = TopoDS::Face(myFaces(j));
     for (exp.Init(CF.Oriented(TopAbs_FORWARD),TopAbs_EDGE); 
 	 exp.More(); exp.Next()) {
       const TopoDS_Edge& E = TopoDS::Edge(exp.Current()); 
@@ -1683,7 +1705,7 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
     }
   }
   //---------------------------
-  // Reconstruction des faces.
+  // Reconstruction of faces.
   //---------------------------
   TopoDS_Face        F,NF;
   BRepOffset_Type    RT = BRepOffset_Concave;
@@ -1691,8 +1713,8 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
   TopoDS_Shape       OE,NE;
   TopAbs_Orientation Or;
 
-  for (it.Initialize(FacesToBuild); it.More(); it.Next()) {
-    const TopoDS_Shape& S   = it.Key();
+  for (j = 1; j <= FacesToBuild.Extent(); j++) {
+    const TopoDS_Shape& S   = FacesToBuild(j);
     BRepOffset_Offset   BOF;
     BOF = MapSF(S);
     F = TopoDS::Face(BOF.Face());
@@ -1731,7 +1753,7 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
     }
     else {
       //------------------
-      // Tuyau
+      // Tube
       //---------------------
       for (exp.Init(NF.Oriented(TopAbs_FORWARD),TopAbs_EDGE); 
 	   exp.More(); exp.Next()) {
@@ -1741,9 +1763,9 @@ void BRepOffset_MakeOffset::ToContext (BRepOffset_DataMapOfShapeOffset& MapSF)
     MapSF.UnBind(S);
   }
 
-  //----------------
-  // MAJ bords libre
-  //----------------
+  //------------------
+  // MAJ free borders
+  //------------------
   TopTools_DataMapIteratorOfDataMapOfShapeShape itc;
   for (itc.Initialize(Created); itc.More(); itc.Next()) {
     OE = itc.Key();
@@ -1838,7 +1860,7 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 	      //Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &anEdge.TShape());
 	      if (BRep_Tool::Degenerated(anEdge))
 		{
-		  //Check wether anEdge is a really degenerated edge or not
+		  //Check if anEdge is a really degenerated edge or not
 		  BRepAdaptor_Curve BACurve(anEdge, aFace);
 		  gp_Pnt Pfirst, Plast, Pmid;
 		  Pfirst = BACurve.Value(BACurve.FirstParameter());
@@ -1947,7 +1969,7 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 	ElSLib::Parameters( theSphere, fPnt, Uf, Vf );
 	ElSLib::Parameters( theSphere, lPnt, Ul, Vl );
 	if (Abs(Ul) <= Precision::Confusion())
-	  Ul = 2.*PI;
+	  Ul = 2.*M_PI;
 	Handle(Geom_Curve) aCurv = aSphSurf->VIso(Vf);
 	/*
 	if (!isFirstFace)
@@ -2079,11 +2101,11 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
     Standard_Real Vfirst, Vlast;
     if (p2d1.Y() > 0.)
       {
-	Vfirst = p2d1.Y(); Vlast = PI/2.;
+	Vfirst = p2d1.Y(); Vlast = M_PI/2.;
       }
     else
       {
-	Vfirst = -PI/2.; Vlast = p2d1.Y();
+	Vfirst = -M_PI/2.; Vlast = p2d1.Y();
       }
     TopoDS_Face NewSphericalFace = BRepLib_MakeFace(aSphSurf, Ufirst, Ulast, Vfirst, Vlast, Precision::Confusion());
     TopoDS_Edge OldEdge;
@@ -2155,12 +2177,12 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 	    apex = OffSurf->Value( Uapex, Vapex );
 
 	  //Making new degenerated edge
-	  Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*PI, Vapex ) );
+	  Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*M_PI, Vapex ) );
 	  TopoDS_Edge NewEdge;
 	  BB.MakeEdge( NewEdge );
 	  NewEdge.Orientation(TopAbs_FORWARD);
 	  BB.UpdateEdge( NewEdge, theLine, Cone, Precision::Confusion() );
-	  BB.Range( NewEdge, 0., 2.*PI );
+	  BB.Range( NewEdge, 0., 2.*M_PI );
 	  BB.SameParameter( NewEdge, Standard_True );
 	  BB.SameRange( NewEdge, Standard_True );
 	  BB.Degenerated( NewEdge, Standard_True );
@@ -2251,12 +2273,12 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 		apex = OffSurf->Value( Uapex, Vapex );
 	      
 	      //Making new degenerated edge
-	      Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*PI, Vapex ) );
+	      Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*M_PI, Vapex ) );
 	      TopoDS_Edge NewEdge;
 	      BB.MakeEdge( NewEdge );
 	      NewEdge.Orientation(TopAbs_FORWARD);
 	      BB.UpdateEdge( NewEdge, theLine, Cone, BRep_Tool::Tolerance( Circ ) );
-	      BB.Range( NewEdge, 0., 2.*PI );
+	      BB.Range( NewEdge, 0., 2.*M_PI );
 	      BB.SameParameter( NewEdge, Standard_True );
 	      BB.SameRange( NewEdge, Standard_True );
 	      BB.Degenerated( NewEdge, Standard_True );
@@ -2359,9 +2381,9 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 		  ElSLib::Parameters( theSphere, OrPnt, Uor, Vor );
 		  TopoDS_Face NewFace;
 		  if (Vor > 0.)
-		    NewFace = BRepLib_MakeFace( theSphere, 0., 2.*PI, Vor, PI/2. );
+		    NewFace = BRepLib_MakeFace( theSphere, 0., 2.*M_PI, Vor, M_PI/2. );
 		  else
-		    NewFace = BRepLib_MakeFace( theSphere, 0., 2.*PI, -PI/2., Vor );
+		    NewFace = BRepLib_MakeFace( theSphere, 0., 2.*M_PI, -M_PI/2., Vor );
 		  
 		  //Updating the bound of NewFace
 		  TopoDS_Edge Bound;
@@ -2437,12 +2459,12 @@ void BRepOffset_MakeOffset::CorrectConicalFaces()
 		    apex = OffSurf->Value( Uapex, Vapex );
 		  
 		  //Making new degenerated edge
-		  Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*PI, Vapex ) );
+		  Handle(Geom2d_Line) theLine = GCE2d_MakeLine( gp_Pnt2d( 0., Vapex ), gp_Pnt2d( 2.*M_PI, Vapex ) );
 		  TopoDS_Edge NewEdge;
 		  BB.MakeEdge( NewEdge );
 		  NewEdge.Orientation(TopAbs_FORWARD);
 		  BB.UpdateEdge( NewEdge, theLine, Cone, BRep_Tool::Tolerance( Circ ) );
-		  BB.Range( NewEdge, 0., 2.*PI );
+		  BB.Range( NewEdge, 0., 2.*M_PI );
 		  BB.SameParameter( NewEdge, Standard_True );
 		  BB.SameRange( NewEdge, Standard_True );
 		  BB.Degenerated( NewEdge, Standard_True );
@@ -2550,30 +2572,30 @@ void BRepOffset_MakeOffset::Intersection3D(BRepOffset_Inter3d& Inter)
     Clock.Start();  
   }
 #endif
-  TopTools_ListOfShape OffsetFaces;  // liste des faces // crees.
+  TopTools_ListOfShape OffsetFaces;  // list of faces // created.
   MakeList (OffsetFaces,myInitOffsetFace,myFaces);
 
   if (!myFaces.IsEmpty()) {     
-    Standard_Boolean InSide = (myOffset < 0.); // PROVISOIRE 
-    // il faut calculer Inside en tenant compte de la concavite ou convexite des arretes
-    // entre le bouchon et la piece.
+    Standard_Boolean InSide = (myOffset < 0.); // Temporary
+    // it is necessary to calculate Inside taking account of the concavity or convexity of edges
+    // between the cap and the part.
 
     if (myJoin == GeomAbs_Arc) 
       Inter.ContextIntByArc (myFaces,InSide,myAnalyse,myInitOffsetFace,myInitOffsetEdge);
   }
   if (myInter) {
     //-------------
-    //Complet.
+    //Complete.
     //-------------
     Inter.CompletInt (OffsetFaces,myInitOffsetFace);
-    TopTools_MapOfShape& NewEdges = Inter.NewEdges();
+    TopTools_IndexedMapOfShape& NewEdges = Inter.NewEdges();
     if (myJoin == GeomAbs_Intersection) {
       BRepOffset_Tool::CorrectOrientation (myShape,NewEdges,myAsDes,myInitOffsetFace,myOffset);
     }
   }
   else {
     //--------------------------------
-    // Seulememt entre face voisines.
+    // Only between neighbor faces.
     //--------------------------------
     Inter.ConnexIntByArc(OffsetFaces,myShape,myAnalyse,myInitOffsetFace);
   }
@@ -2587,8 +2609,8 @@ void BRepOffset_MakeOffset::Intersection3D(BRepOffset_Inter3d& Inter)
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_MakeOffset::Intersection2D(const TopTools_MapOfShape& Modif,
-					   const TopTools_MapOfShape& NewEdges)
+void BRepOffset_MakeOffset::Intersection2D(const TopTools_IndexedMapOfShape& Modif,
+					   const TopTools_IndexedMapOfShape& NewEdges)
 {
 #ifdef DEB
   if (ChronBuild) {
@@ -2597,16 +2619,17 @@ void BRepOffset_MakeOffset::Intersection2D(const TopTools_MapOfShape& Modif,
     Clock.Start();  
   }
 #endif
-  //-----------------------------------------------------------
-  // calcul des intersections2d sur les faces touchees par les 
+  //--------------------------------------------------------
+  // calculate intersections2d on faces concerned by 
   // intersection3d
   //---------------------------------------------------------
-  TopTools_MapIteratorOfMapOfShape it(Modif);
+  //TopTools_MapIteratorOfMapOfShape it(Modif);
   //-----------------------------------------------
-  // Intersection des edges 2 a 2.
+  // Intersection of edges 2 by 2.
   //-----------------------------------------------
-  for ( it.Initialize(Modif); it.More(); it.Next()) {
-    const TopoDS_Face&                 F  = TopoDS::Face(it.Key());
+  Standard_Integer i;
+  for (i = 1; i <= Modif.Extent(); i++) {
+    const TopoDS_Face& F  = TopoDS::Face(Modif(i));
     BRepOffset_Inter2d::Compute(myAsDes,F,NewEdges,myTol);
   }
 
@@ -2624,7 +2647,7 @@ void BRepOffset_MakeOffset::Intersection2D(const TopTools_MapOfShape& Modif,
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_MakeOffset::MakeLoops(TopTools_MapOfShape& Modif)
+void BRepOffset_MakeOffset::MakeLoops(TopTools_IndexedMapOfShape& Modif)
 {
 #ifdef DEB
   if (ChronBuild) {
@@ -2633,22 +2656,24 @@ void BRepOffset_MakeOffset::MakeLoops(TopTools_MapOfShape& Modif)
      Clock.Start(); 
   }
 #endif
-  TopTools_MapIteratorOfMapOfShape    it(Modif);
+  //TopTools_MapIteratorOfMapOfShape    it(Modif);
   TopTools_ListOfShape                LF,LC;
   //-----------------------------------------
-  // debouclage des faces // modifiees.
+  // unwinding of faces // modified.
   //-----------------------------------------
-  for (; it.More(); it.Next()) { 
-    if (!myFaces.Contains(it.Key())) LF.Append(it.Key());
+  Standard_Integer i;
+  for (i = 1; i <= Modif.Extent(); i++) { 
+    if (!myFaces.Contains(Modif(i)))
+      LF.Append(Modif(i));
   }
   myMakeLoops.Build(LF,myAsDes,myImageOffset);
 
   //-----------------------------------------
-  // debouclage des bouchons.
+  // unwinding of caps.
   //-----------------------------------------
-  for (it.Initialize(myFaces); it.More(); it.Next()) { 
-    LC.Append(it.Key());
-  }
+  for (i = 1; i <= myFaces.Extent(); i++)
+    LC.Append(myFaces(i));
+
   Standard_Boolean   InSide = 1;
   if (myOffset > 0 ) InSide = 0;
   myMakeLoops.BuildOnContext(LC,myAnalyse,myAsDes,myImageOffset,InSide);
@@ -2660,15 +2685,15 @@ void BRepOffset_MakeOffset::MakeLoops(TopTools_MapOfShape& Modif)
 
 //=======================================================================
 //function : MakeFaces
-//purpose  : Reconstruction des faces topologiquement inchangees qui
-//           partage des edges qui ont ete reconstruites.
+//purpose  : Reconstruction of topologically unchanged faces that
+//           share edges that were reconstructed.
 //=======================================================================
 
-void BRepOffset_MakeOffset::MakeFaces(TopTools_MapOfShape& Modif)
+void BRepOffset_MakeOffset::MakeFaces(TopTools_IndexedMapOfShape& Modif)
 {
 #ifdef DEb
   if (ChronBuild) {  
-    cout << " RECONSTRUCTION DES FACES:" << endl;
+    cout << " RECONSTRUCTION OF FACES:" << endl;
     Clock.Reset();
     Clock.Start();
   }
@@ -2677,7 +2702,7 @@ void BRepOffset_MakeOffset::MakeFaces(TopTools_MapOfShape& Modif)
   const TopTools_ListOfShape& Roots = myInitOffsetFace.Roots();
   TopTools_ListOfShape        LOF;
   //----------------------------------
-  // Boucle sur toutes les faces //.
+  // Loop on all faces //.
   //----------------------------------
   for (itr.Initialize(Roots); itr.More(); itr.Next()) {
     TopoDS_Face F = TopoDS::Face(myInitOffsetFace.Image(itr.Value()).First());
@@ -2692,7 +2717,7 @@ void BRepOffset_MakeOffset::MakeFaces(TopTools_MapOfShape& Modif)
 
 //=======================================================================
 //function : UpdateInitOffset
-//purpose  : mis a jour et purge de myInitOffset 
+//purpose  : Update and cleaning of myInitOffset 
 //=======================================================================
 
 static void UpdateInitOffset (BRepAlgo_Image&         myInitOffset,
@@ -2828,65 +2853,67 @@ void BRepOffset_MakeOffset::MakeMissingWalls ()
 	  Standard_Boolean IsPlanar = Standard_False;
 	  if (BAcurve.GetType() == GeomAbs_Circle &&
 	      BAcurveOE.GetType() == GeomAbs_Circle)
-	    {
-	      gp_Circ aCirc = BAcurve.Circle();
-	      gp_Dir CircAxisDir = aCirc.Axis().Direction();
-	      if (OffsetDir.IsParallel( CircAxisDir, Precision::Confusion() )) //case of cylinder
-		theSurf = GC_MakeCylindricalSurface(aCirc).Value();
-	      else if (Abs(OffsetDir * CircAxisDir) > Precision::PConfusion()) //case of cone
-		{
-		  gp_Circ aCircOE = BAcurveOE.Circle();
-		  gp_Cone theCone = gce_MakeCone(aCirc.Location(), aCircOE.Location(),
-						 aCirc.Radius(), aCircOE.Radius());
-		  gp_Ax3 theAx3(aCirc.Position());
-		  if (CircAxisDir * theCone.Axis().Direction() < 0.)
-		    {
-		      theAx3.ZReverse();
-		      CircAxisDir.Reverse();
-		    }
-		  theCone.SetPosition(theAx3);
-		  theSurf = new Geom_ConicalSurface(theCone);
-		}
-	      if (!theSurf.IsNull())
-		{
-		  TopLoc_Location Loc;
-		  EdgeLine2d = new Geom2d_Line(gp_Pnt2d(0., 0.), gp_Dir2d(1., 0.));
-		  BB.UpdateEdge(anEdge, EdgeLine2d, theSurf, Loc, Precision::Confusion());
-		  Standard_Real Coeff = (OffsetDir * CircAxisDir > 0.)? 1. : -1.;
-		  OELine2d = new Geom2d_Line(gp_Pnt2d(0., OffsetVal*Coeff), gp_Dir2d(1., 0.));
-		  BB.UpdateEdge(OE, OELine2d, theSurf, Loc, Precision::Confusion());
-		  aLine2d  = new Geom2d_Line(gp_Pnt2d(ParV2, 0.), gp_Dir2d(0., Coeff));
-		  aLine2d2 = new Geom2d_Line(gp_Pnt2d(ParV1, 0.), gp_Dir2d(0., Coeff));
-		  if (E3.IsSame(E4))
-		    {
-		      if (Coeff > 0.)
-			BB.UpdateEdge(E3, aLine2d, aLine2d2, theSurf, Loc, Precision::Confusion());
-		      else
-			{
-			  BB.UpdateEdge(E3, aLine2d2, aLine2d, theSurf, Loc, Precision::Confusion());
-			  theWire.Nullify();
-			  BB.MakeWire(theWire);
-			  BB.Add(theWire, anEdge.Oriented(TopAbs_REVERSED));
-			  BB.Add(theWire, E4);
-			  BB.Add(theWire, OE.Oriented(TopAbs_FORWARD));
-			  BB.Add(theWire, E3);
-			  theWire.Closed(Standard_True);
-			}
-		    }
-		  else
-		    {
-		      BB.SameParameter(E3, Standard_False);
-		      BB.SameRange(E3, Standard_False);
-		      BB.SameParameter(E4, Standard_False);
-		      BB.SameRange(E4, Standard_False);
-		      BB.UpdateEdge(E3, aLine2d,  theSurf, Loc, Precision::Confusion());
-		      BB.Range(E3, theSurf, Loc, 0., OffsetVal);
-		      BB.UpdateEdge(E4, aLine2d2, theSurf, Loc, Precision::Confusion());
-		      BB.Range(E4, theSurf, Loc, 0., OffsetVal);
-		    }
-		  NewFace = BRepLib_MakeFace(theSurf, theWire);
-		}
-	    }
+          {
+            gp_Circ aCirc = BAcurve.Circle();
+            gp_Circ aCircOE = BAcurveOE.Circle();
+            gp_Lin anAxisLine(aCirc.Axis());
+            gp_Dir CircAxisDir = aCirc.Axis().Direction();
+            if (aCirc.Axis().IsParallel(aCircOE.Axis(), Precision::Confusion()) &&
+                anAxisLine.Contains(aCircOE.Location(), Precision::Confusion()))
+            { //cylinder or cone
+              if (Abs(aCirc.Radius() - aCircOE.Radius()) <= Precision::Confusion()) //case of cylinder
+                theSurf = GC_MakeCylindricalSurface(aCirc).Value();
+              else //case of cone
+              {
+                gp_Cone theCone = gce_MakeCone(aCirc.Location(), aCircOE.Location(),
+                                               aCirc.Radius(), aCircOE.Radius());
+                gp_Ax3 theAx3(aCirc.Position());
+                if (CircAxisDir * theCone.Axis().Direction() < 0.)
+                {
+                  theAx3.ZReverse();
+                  CircAxisDir.Reverse();
+                }
+                theCone.SetPosition(theAx3);
+                theSurf = new Geom_ConicalSurface(theCone);
+              }
+              TopLoc_Location Loc;
+              EdgeLine2d = new Geom2d_Line(gp_Pnt2d(0., 0.), gp_Dir2d(1., 0.));
+              BB.UpdateEdge(anEdge, EdgeLine2d, theSurf, Loc, Precision::Confusion());
+              Standard_Real Coeff = (OffsetDir * CircAxisDir > 0.)? 1. : -1.;
+              OELine2d = new Geom2d_Line(gp_Pnt2d(0., OffsetVal*Coeff), gp_Dir2d(1., 0.));
+              BB.UpdateEdge(OE, OELine2d, theSurf, Loc, Precision::Confusion());
+              aLine2d  = new Geom2d_Line(gp_Pnt2d(ParV2, 0.), gp_Dir2d(0., Coeff));
+              aLine2d2 = new Geom2d_Line(gp_Pnt2d(ParV1, 0.), gp_Dir2d(0., Coeff));
+              if (E3.IsSame(E4))
+              {
+                if (Coeff > 0.)
+                  BB.UpdateEdge(E3, aLine2d, aLine2d2, theSurf, Loc, Precision::Confusion());
+                else
+                {
+                  BB.UpdateEdge(E3, aLine2d2, aLine2d, theSurf, Loc, Precision::Confusion());
+                  theWire.Nullify();
+                  BB.MakeWire(theWire);
+                  BB.Add(theWire, anEdge.Oriented(TopAbs_REVERSED));
+                  BB.Add(theWire, E4);
+                  BB.Add(theWire, OE.Oriented(TopAbs_FORWARD));
+                  BB.Add(theWire, E3);
+                  theWire.Closed(Standard_True);
+                }
+              }
+              else
+              {
+                BB.SameParameter(E3, Standard_False);
+                BB.SameRange(E3, Standard_False);
+                BB.SameParameter(E4, Standard_False);
+                BB.SameRange(E4, Standard_False);
+                BB.UpdateEdge(E3, aLine2d,  theSurf, Loc, Precision::Confusion());
+                BB.Range(E3, theSurf, Loc, 0., OffsetVal);
+                BB.UpdateEdge(E4, aLine2d2, theSurf, Loc, Precision::Confusion());
+                BB.Range(E4, theSurf, Loc, 0., OffsetVal);
+              }
+              NewFace = BRepLib_MakeFace(theSurf, theWire);
+            } //cylinder or cone
+          } //if both edges are arcs of circles
 	  if (NewFace.IsNull())
 	    {
 	      BRepLib_MakeFace MF(theWire, Standard_True); //Only plane
@@ -3059,7 +3086,7 @@ void BRepOffset_MakeOffset::MakeShells ()
 {
 #ifdef DEB
   if (ChronBuild) {  
-    cout << " RECONSTRUCTION DES SHELLS:" << endl;
+    cout << " RECONSTRUCTION OF SHELLS:" << endl;
     Clock.Reset();
     Clock.Start();
   }
@@ -3143,9 +3170,9 @@ void BRepOffset_MakeOffset::SelectShells ()
   TopTools_MapOfShape FreeEdges;
   TopExp_Explorer exp(myShape,TopAbs_EDGE);
   //-------------------------------------------------------------
-  // FreeEdges ensemble des edges qui peuvent etre bord libre dans 
-  // le shell parallele
-  // 1 - les bord libres de myShape .
+  // FreeEdges all edges that can have free border in the  
+  // parallel shell
+  // 1 - free borders of myShape .
   //-------------------------------------------------------------
   for ( ; exp.More(); exp.Next()) {
     const TopoDS_Edge& E = TopoDS::Edge(exp.Current());
@@ -3156,8 +3183,8 @@ void BRepOffset_MakeOffset::SelectShells ()
       }
     }  
   }
-  // myShape a des bords libres et il n y a pas de bouchons.
-  // pas de debouclage3d.
+  // myShape has free borders and there are no caps
+  // no unwinding 3d.
   if (!FreeEdges.IsEmpty() && myFaces.IsEmpty()) return;
 
   myOffsetShape = BRepOffset_Tool::Deboucle3D(myOffsetShape,FreeEdges);
@@ -3202,7 +3229,7 @@ const BRepAlgo_Image& BRepOffset_MakeOffset::OffsetEdgesFromShapes() const
 //purpose  : 
 //=======================================================================
 
-const TopTools_MapOfShape& BRepOffset_MakeOffset::ClosingFaces () const
+const TopTools_IndexedMapOfShape& BRepOffset_MakeOffset::ClosingFaces () const
 {
   return myFaces;
 }
@@ -3218,14 +3245,14 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
 {
 #ifdef DEB
   if (ChronBuild) {  
-    cout << " CODAGE DES REGULARITES:" << endl;
+    cout << " CODING OF REGULARITIES:" << endl;
     Clock.Reset();
     Clock.Start();
   }
 #endif
 
   if (myOffsetShape.IsNull()) return;
-  // recherche des edges G1 dans le resultat
+  // find edges G1 in the result
   TopExp_Explorer exp(myOffsetShape,TopAbs_EDGE);
 
   BRep_Builder B;
@@ -3246,7 +3273,7 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
     if (LofOF.Extent() != 2) {
 #ifdef DEB
       if ( Standard_False)
-	cout << " Edge partage par " << LofOF.Extent() << " Faces" << endl;
+	cout << " Edge shared by " << LofOF.Extent() << " Faces" << endl;
 #endif
       continue;
     }
@@ -3265,12 +3292,12 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
  
     if (F1.IsSame(F2)) {      
       if (BRep_Tool::IsClosed(OE,F1)) {
-	// Debug provisoire pour le Bench.
-	// Voir avec YFR.
-	// En mode intersection, les aretes ne sont pas codees dans myInitOffsetEdge
-	// on gere donc au cas par cas.
-	// Remarque DUB; Pour les parties cachees, il FAUT coder CN 
-	//  les Surf Analytiques.
+	// Temporary Debug for the Bench.
+	// Check with YFR.
+	// In mode intersection, the edges are not coded in myInitOffsetEdge
+	// so, manage case by case
+	// Note DUB; for Hidden parts, it is NECESSARY to code CN 
+	// Analytic Surfaces.
 	if (myJoin == GeomAbs_Intersection) {
 	  BRepAdaptor_Surface BS(F1,Standard_False);
 	  GeomAbs_SurfaceType SType = BS.GetType();
@@ -3281,7 +3308,7 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
 	    B.Continuity(OE,F1,F1,GeomAbs_CN);
 	  }
 	  else {
-	    // Voir YFR : MaJ de myInitOffsetFace
+	    // See YFR : MaJ of myInitOffsetFace
 	  }
 	}
 	else if (myInitOffsetEdge.IsImage(ROE)) {
@@ -3302,16 +3329,15 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
     }
 
 
-    // on code les regularites G1 entre :
-    //    - sphere et tuyau : une root est un vertex, l'autre un edge 
-    //                        et le vertex est inclus dans l'edge
-    //    - face et tuyau   : une root est une face, l'autre un edge 
-    //                        et l'edge est inclus dans la face
-    //    - face et face    : si les 2 faces root sont tangentes dans 
-    //                        le shape initial, elles le seront dans 
-    //                        le shape offset
-    //    - tuyau et tuyau  : si les 2 edges generant les tuyaux sont
-    //                        tangents, les 2 tuyaux le seront.
+    //  code regularities G1 between :
+    //    - sphere and tube : one root is a vertex, the other is an edge 
+    //                        and the vertex is included in the edge
+    //    - face and tube   : one root is a face, the other an edge 
+    //                        and the edge is included in the face
+    //    - face and face    : if two root faces are tangent in 
+    //                        the initial shape, they will be tangent in the offset shape
+    //    - tube and tube  : if 2 edges generating tubes are
+    //                        tangents, the 2 will be tangent either.
     if ( Type1 == TopAbs_EDGE && Type2 == TopAbs_VERTEX) {
       TopoDS_Vertex V1,V2;
       TopExp::Vertices(TopoDS::Edge(Root1), V1, V2);
@@ -3345,8 +3371,8 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
       }
     }
     else if ( Type1 == TopAbs_FACE && Type2 == TopAbs_FACE) {
-      // si les 2 faces root sont tangentes dans le shape initial,
-      // elles le seront dans le shape offset
+    //  if two root faces are tangent in 
+    //  the initial shape, they will be tangent in the offset shape
       TopTools_ListOfShape LE,LV;
       BRepOffset_Tool::HasCommonShapes(TopoDS::Face(Root1),
 				       TopoDS::Face(Root2),
@@ -3402,16 +3428,16 @@ void BRepOffset_MakeOffset::EncodeRegularity ()
 //=======================================================================
 
 static void UpdateTolerance (TopoDS_Shape& S,
-			     const TopTools_MapOfShape& Faces)
+			     const TopTools_IndexedMapOfShape& Faces)
 {
   BRep_Builder B;
   TopTools_MapOfShape View;
   TopoDS_Vertex V[2];
 
-  // Les edges des bouchons ne sont pas modifiees.
-  TopTools_MapIteratorOfMapOfShape it;
-  for (it.Initialize(Faces); it.More(); it.Next()) {
-    const TopoDS_Shape& F = it.Key();
+  // The edges of caps are not modified.
+  Standard_Integer j;
+  for (j = 1; j <= Faces.Extent(); j++) {
+    const TopoDS_Shape& F = Faces(j);
     TopExp_Explorer Exp;
     for (Exp.Init(F,TopAbs_EDGE); Exp.More(); Exp.Next()) {
       View.Add(Exp.Current());
@@ -3435,7 +3461,7 @@ static void UpdateTolerance (TopoDS_Shape& S,
 	  TV->Tolerance(0.);
 	  Handle(BRepCheck_Vertex) VertexCorrector = new BRepCheck_Vertex(V[i]);
 	  B.UpdateVertex (V[i],VertexCorrector->Tolerance());
-	  // on profite de l occasion pour purger le vertex.
+	  // use the occasion to clean the vertices.
 	  (TV->ChangePoints()).Clear();
 	}
 	B.UpdateVertex(V[i],Tol);

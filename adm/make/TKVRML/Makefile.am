@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/VrmlConverter -I@top_srcdir@/src/VrmlConverter \
 -I@top_srcdir@/drv/VrmlAPI -I@top_srcdir@/src/VrmlAPI \
@@ -24,21 +24,21 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKVRML.la
 
-libTKVRML_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKG3d/libTKG3d.la \
+libTKVRML_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKMath/libTKMath.la \
-../TKBRep/libTKBRep.la \
-../TKMesh/libTKMesh.la \
-../TKG2d/libTKG2d.la \
-../TKHLR/libTKHLR.la \
 ../TKGeomBase/libTKGeomBase.la \
+../TKernel/libTKernel.la \
 ../TKPrim/libTKPrim.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
+../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
+../TKMesh/libTKMesh.la \
+../TKHLR/libTKHLR.la \
 ../TKService/libTKService.la \
-../TKV3d/libTKV3d.la \
-$(STLPort_LIB) 
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKV3d/libTKV3d.la
+
 
 libTKVRML_la_SOURCES = \
 @top_srcdir@/src/Vrml/Vrml.cxx \

@@ -11,19 +11,19 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/TObj -I@top_srcdir@/src/TObj
 
 
 lib_LTLIBRARIES=libTKTObj.la
 
-libTKTObj_la_LIBADD = \
-../TKMath/libTKMath.la \
-../TKernel/libTKernel.la \
-../TKLCAF/libTKLCAF.la \
+libTKTObj_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
+../TKLCAF/libTKLCAF.la
+
 
 libTKTObj_la_SOURCES = \
 @top_srcdir@/src/TObj/TObj_Application.cxx \

@@ -1,7 +1,23 @@
-// File:	GccIter_Circ2d3Tan.gxx
-// Created:	Fri Dec 13 15:27:54 1991
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1991-12-13
+// Created by: Remi GILET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
 //   Creation d un cercle tangent a deux elements : Droite.               +
@@ -76,11 +92,7 @@ GccIter_Circ2d3Tan::
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d point1,point2,point3;
      gp_Vec2d Tan1,Tan2,Tan3;
      TheCurveTool::D1(Cu1,Ufirst(1),point1,Tan1);
@@ -191,23 +203,19 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(2) = TheCurveTool::FirstParameter(Cu2);
    Umin(3) = TheCurveTool::FirstParameter(Cu3);
-   Umax(1) = 2*PI;
+   Umax(1) = 2*M_PI;
    Umax(2) = TheCurveTool::LastParameter(Cu2);
    Umax(3) = TheCurveTool::LastParameter(Cu3);
    Ufirst(1) = Param1;
    Ufirst(2) = Param2;
    Ufirst(3) = Param3;
-   tol(1) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
    tol(2) = TheCurveTool::EpsX(Cu2,Abs(Tolerance));
    tol(3) = TheCurveTool::EpsX(Cu3,Abs(Tolerance));   
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(C1.Location());
      Standard_Real R1 = C1.Radius();
      gp_Pnt2d point1(centre1.XY()+R1*gp_XY(Cos(Ufirst(1)),Sin(Ufirst(1))));
@@ -323,23 +331,19 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(2) = 0.;
    Umin(3) = TheCurveTool::FirstParameter(Cu3);
-   Umax(1) = 2*PI;
-   Umax(2) = 2*PI;
+   Umax(1) = 2*M_PI;
+   Umax(2) = 2*M_PI;
    Umax(3) = TheCurveTool::LastParameter(Cu3);
    Ufirst(1) = Param1;
    Ufirst(2) = Param2;
    Ufirst(3) = Param3;
-   tol(1) = 2.e-15*PI;
-   tol(2) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
+   tol(2) = 2.e-15*M_PI;
    tol(3) = TheCurveTool::EpsX(Cu3,Abs(Tolerance));   
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(C1.Location());
      Standard_Real R1 = C1.Radius();
      gp_Pnt2d point1(centre1.XY()+R1*gp_XY(Cos(Ufirst(1)),Sin(Ufirst(1))));
@@ -470,11 +474,7 @@ GccIter_Circ2d3Tan::
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(L1.Location());
      gp_Pnt2d point1(centre1.XY()+Ufirst(1)*L1.Direction().XY());
      gp_Pnt2d point2,point3;
@@ -605,11 +605,7 @@ GccIter_Circ2d3Tan::
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(L1.Location());
      gp_Pnt2d point1(centre1.XY()+Ufirst(1)*L1.Direction().XY());
      gp_Pnt2d centre2(L2.Location());
@@ -721,23 +717,19 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(2) = TheCurveTool::FirstParameter(Cu1);
    Umin(3) = TheCurveTool::FirstParameter(Cu2);
-   Umax(1) = 2*PI;
+   Umax(1) = 2*M_PI;
    Umax(2) = TheCurveTool::LastParameter(Cu1);
    Umax(3) = TheCurveTool::LastParameter(Cu2);
-   Ufirst(1) = PI;
+   Ufirst(1) = M_PI;
    Ufirst(2) = Param1;
    Ufirst(3) = Param2;
-   tol(1) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
    tol(2) = TheCurveTool::EpsX(Cu1,Abs(Tolerance));
    tol(3) = TheCurveTool::EpsX(Cu2,Abs(Tolerance));
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d point1,point2;
 //     gp_Vec2d Tan1,Tan2,Nor1,Nor2;
      gp_Vec2d Tan1,Tan2;
@@ -838,23 +830,19 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(2) = 0.;
    Umin(3) = TheCurveTool::FirstParameter(Cu1);
-   Umax(1) = 2*PI;
-   Umax(2) = 2*PI;
+   Umax(1) = 2*M_PI;
+   Umax(2) = 2*M_PI;
    Umax(3) = TheCurveTool::LastParameter(Cu1);
-   Ufirst(1) = PI;
-   Ufirst(2) = PI;
+   Ufirst(1) = M_PI;
+   Ufirst(2) = M_PI;
    Ufirst(3) = Param1;
-   tol(1) = 2.e-15*PI;
-   tol(2) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
+   tol(2) = 2.e-15*M_PI;
    tol(3) = TheCurveTool::EpsX(Cu1,Abs(Tolerance));
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d point3;
 //     gp_Vec2d Tan3,Nor3;
      gp_Vec2d Tan3;
@@ -954,21 +942,17 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umax(2) = RealLast();
    Umax(3) = TheCurveTool::LastParameter(Cu2);
-   Umax(1) = 2*PI;
+   Umax(1) = 2*M_PI;
    Ufirst(2) = Param1;
    Ufirst(3) = Param2;
-   Ufirst(1) = PI;
+   Ufirst(1) = M_PI;
    tol(1) = 2.e-15;
    tol(2) = 1.e-15;
    tol(3) = TheCurveTool::EpsX(Cu2,Abs(Tolerance));
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(L1.Location());
      gp_Pnt2d point1(centre1.XY()+Ufirst(2)*L1.Direction().XY());
      gp_Pnt2d point2;
@@ -1075,22 +1059,18 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(2) = RealFirst();
    Umin(3) = TheCurveTool::FirstParameter(Cu3);
-   Umax(1) = 2*PI;
+   Umax(1) = 2*M_PI;
    Umax(2) = RealLast();
    Umax(3) = TheCurveTool::LastParameter(Cu3);
    Ufirst(1) = Param1;
    Ufirst(2) = Param2;
    Ufirst(3) = Param3;
-   tol(1) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
    tol(2) = 1.e-15;
    tol(3) = TheCurveTool::EpsX(Cu3,Abs(Tolerance));
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      Root.Root(Ufirst);
      gp_Pnt2d centre1(C1.Location());
      Standard_Real R1 = C1.Radius();
@@ -1206,23 +1186,19 @@ GccIter_Circ2d3Tan::
    Umin(1) = 0.;
    Umin(3) = TheCurveTool::FirstParameter(Cu2);
    Umin(2) = 0.;
-   Umax(1) = 2*PI;
+   Umax(1) = 2*M_PI;
    Umax(3) = TheCurveTool::LastParameter(Cu2);
-   Umax(2) = 2*PI;
+   Umax(2) = 2*M_PI;
    Ufirst(1) = Param1;
-   Ufirst(2) = PI;
+   Ufirst(2) = M_PI;
    Ufirst(3) = Param2;
-   tol(1) = 2.e-15*PI;
-   tol(2) = 2.e-15*PI;
+   tol(1) = 2.e-15*M_PI;
+   tol(2) = 2.e-15*M_PI;
    tol(3) = TheCurveTool::EpsX(Cu2,Abs(Tolerance));
    math_FunctionSetRoot Root(Func,Ufirst,tol,Umin,Umax);
    if (Root.IsDone()) {
      Root.Root(Ufirst);
-#ifdef DEB
-     Standard_Boolean Ok = Func.Value(Ufirst,Umin);
-#else
      Func.Value(Ufirst,Umin);
-#endif
      gp_Pnt2d centre1(C1.Location());
      Standard_Real R1 = C1.Radius();
      gp_Pnt2d point1(centre1.XY()+R1*gp_XY(Cos(Ufirst(1)),Sin(Ufirst(1))));

@@ -1,4 +1,0 @@
-+V StdDrivers:msentity:StdDrivers .
-+V StdDrivers:msentity:StdDrivers_DocumentRetrievalDriver .
-+V StdDrivers:msentity:StdDrivers_DocumentStorageDriver .
-- StdDrivers:admfile:StdDrivers_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/StdDrivers/StdDrivers_xcpp_fill.Out

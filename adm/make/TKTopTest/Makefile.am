@@ -20,7 +20,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/TestTopOpeDraw -I@top_srcdir@/src/TestTopOpeDraw \
 -I@top_srcdir@/drv/TestTopOpeTools -I@top_srcdir@/src/TestTopOpeTools \
@@ -36,28 +36,28 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKTopTest.la
 
-libTKTopTest_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKBool/libTKBool.la \
+libTKTopTest_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-../TKMesh/libTKMesh.la \
-../TKG3d/libTKG3d.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKFeat/libTKFeat.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-../TKBO/libTKBO.la \
+../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
+../TKBO/libTKBO.la \
 ../TKG2d/libTKG2d.la \
-../TKOffset/libTKOffset.la \
+../TKG3d/libTKG3d.la \
+../TKDraw/libTKDraw.la \
+../TKHLR/libTKHLR.la \
+../TKGeomBase/libTKGeomBase.la \
+../TKMesh/libTKMesh.la \
 ../TKService/libTKService.la \
 ../TKV3d/libTKV3d.la \
-../TKHLR/libTKHLR.la \
-../TKBRep/libTKBRep.la \
-../TKFillet/libTKFillet.la \
-../TKDraw/libTKDraw.la \
-../TKPrim/libTKPrim.la \
 ../TKV2d/libTKV2d.la \
-$(STLPort_LIB) 
+../TKFillet/libTKFillet.la \
+../TKPrim/libTKPrim.la \
+../TKBool/libTKBool.la \
+../TKOffset/libTKOffset.la \
+../TKFeat/libTKFeat.la
+
 
 libTKTopTest_la_SOURCES = \
 @top_srcdir@/drv/TestTopOpeDraw/TestTopOpeDraw_Array1OfDrawableMesure_0.cxx \

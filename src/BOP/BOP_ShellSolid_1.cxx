@@ -1,7 +1,22 @@
-// File:	BOP_ShellSolid_1.cxx
-// Created:	Fri Nov  2 12:36:51 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-11-02
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BOP_ShellSolid.ixx>
@@ -63,7 +78,7 @@ static
 				     const Standard_Integer      theFaceIndex,
 				     const BOPTools_PDSFiller&   theDSFiller, 
 				     const BOP_Operation&        theOperation,
-				     IntTools_Context&           theContext);
+				     const Handle(IntTools_Context)& theContext);
 
 //=======================================================================
 // 
@@ -123,7 +138,7 @@ static
   BOPTools_PaveFiller* pPaveFiller=(BOPTools_PaveFiller*)&aPaveFiller;
   BOPTools_CommonBlockPool& aCBPool=pPaveFiller->ChangeCommonBlockPool();
   //
-  IntTools_Context& aContext=pPaveFiller->ChangeContext();
+  const Handle(IntTools_Context)& aContext=pPaveFiller->Context();
   //
   Standard_Integer nEF1, nF2, nSpF1, nSpF2, nEF2, nSpTaken, iRankF1;
   Standard_Boolean bToReverse;
@@ -592,7 +607,7 @@ static
   BOPTools_PaveFiller* pPaveFiller=(BOPTools_PaveFiller*)&aPF;
   BOPTools_CommonBlockPool& aCBPool=pPaveFiller->ChangeCommonBlockPool();
   //
-  IntTools_Context& aContext=pPaveFiller->ChangeContext();
+  const Handle(IntTools_Context)& aContext=pPaveFiller->Context();
   //
   Standard_Integer nEF1, nF2, nSpF1, nSpF2, nEF2, nSpTaken, nF2x, iRankF1;
   Standard_Boolean bToReverse;
@@ -782,7 +797,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 				   const Standard_Integer      theFaceIndex,
 				   const BOPTools_PDSFiller&   theDSFiller, 
 				   const BOP_Operation&        theOperation,
-				   IntTools_Context&           theContext) {
+				   const Handle(IntTools_Context)&  theContext) {
 
   Standard_Integer anE = -1;
 
@@ -823,7 +838,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 	      gp_Pnt aPoint3d;
 	      Standard_Real aTolerance = BRep_Tool::Tolerance(theSplit); //???
 	      BOPTools_Tools3D::PointNearEdge(theSplit, aFaceCur, amidpar, aTolerance, aPoint2d, aPoint3d);
-	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext.ProjPS(aFace);
+	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext->ProjPS(aFace);
 	      aProjector.Perform(aPoint3d);
 
 	      if(aProjector.IsDone()) {
@@ -833,7 +848,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 		if(adist < BRep_Tool::Tolerance(aFace)) {
 		  aProjector.LowerDistanceParameters(U, V);
 
-		  if(theContext.IsPointInFace(aFace, gp_Pnt2d(U, V))) {
+		  if(theContext->IsPointInFace(aFace, gp_Pnt2d(U, V))) {
 		    avoid = Standard_False;
 		    break;
 		  }
@@ -851,7 +866,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 	      gp_Pnt aPoint3d;
 	      Standard_Real aTolerance = BRep_Tool::Tolerance(theSplit); //???
 	      BOPTools_Tools3D::PointNearEdge(theSplit, aFaceCur, amidpar, aTolerance, aPoint2d, aPoint3d);
-	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext.ProjPS(aFace);
+	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext->ProjPS(aFace);
 	      aProjector.Perform(aPoint3d);
 
 	      if(aProjector.IsDone()) {
@@ -861,7 +876,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 		if(adist < BRep_Tool::Tolerance(aFace)) {
 		  aProjector.LowerDistanceParameters(U, V);
 
-		  if(theContext.IsPointInFace(aFace, gp_Pnt2d(U, V))) {
+		  if(theContext->IsPointInFace(aFace, gp_Pnt2d(U, V))) {
 		    avoid = Standard_False;
 		    break;
 		  }
@@ -879,7 +894,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 	      gp_Pnt aPoint3d;
 	      Standard_Real aTolerance = BRep_Tool::Tolerance(theSplit); //???
 	      BOPTools_Tools3D::PointNearEdge(theSplit, aFaceCur, amidpar, aTolerance, aPoint2d, aPoint3d);
-	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext.ProjPS(aFace);
+	      GeomAPI_ProjectPointOnSurf& aProjector =  theContext->ProjPS(aFace);
 	      aProjector.Perform(aPoint3d);
 
 	      if(aProjector.IsDone()) {
@@ -889,7 +904,7 @@ Standard_Boolean CheckSplitToAvoid(const TopoDS_Edge&          theSplit,
 		if(adist < BRep_Tool::Tolerance(aFace)) {
 		  aProjector.LowerDistanceParameters(U, V);
 
-		  if(theContext.IsPointInFace(aFace, gp_Pnt2d(U, V))) {
+		  if(theContext->IsPointInFace(aFace, gp_Pnt2d(U, V))) {
 		    avoid = Standard_False;
 		    break;
 		  }

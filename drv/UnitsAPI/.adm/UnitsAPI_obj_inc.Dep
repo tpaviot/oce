@@ -1,6 +1,0 @@
-+ UnitsAPI:dbadmfile:UnitsAPI_obj_inc.In UnitsAPI:admfile:UnitsAPI_src.Out
-+ * UnitsAPI:admfile:UnitsAPI_xcpp_src.Out
-+ UnitsAPI:dbadmfile:UnitsAPI_obj_inc.Out UnitsAPI:admfile:UnitsAPI_src.Out
-+ * UnitsAPI:admfile:UnitsAPI_xcpp_src.Out
-+ UnitsAPI:dbadmfile:UnitsAPI_obj_inc.Dep UnitsAPI:admfile:UnitsAPI_src.Out
-+ * UnitsAPI:admfile:UnitsAPI_xcpp_src.Out

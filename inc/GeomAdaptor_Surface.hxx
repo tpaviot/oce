@@ -95,7 +95,7 @@ public:
   
         void Load(const Handle(Geom_Surface)& S) ;
   //! ConstructionError is raised if UFirst>ULast or VFirst>VLast <br>
-  Standard_EXPORT     void Load(const Handle(Geom_Surface)& S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,const Standard_Real TolU = 0.0,const Standard_Real TolV = 0.0) ;
+        void Load(const Handle(Geom_Surface)& S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,const Standard_Real TolU = 0.0,const Standard_Real TolV = 0.0) ;
   
        const Handle_Geom_Surface& Surface() const;
   
@@ -255,6 +255,8 @@ private:
   Standard_EXPORT     void Span(const Standard_Integer Side,const Standard_Integer Ideb,const Standard_Integer Ifin,Standard_Integer& OutIdeb,Standard_Integer& OutIfin,const Standard_Integer NbKnots) const;
   
   Standard_EXPORT     Standard_Boolean IfUVBound(const Standard_Real U,const Standard_Real V,Standard_Integer& Ideb,Standard_Integer& Ifin,Standard_Integer& IVdeb,Standard_Integer& IVfin,const Standard_Integer USide,const Standard_Integer VSide) const;
+  
+  Standard_EXPORT     void load(const Handle(Geom_Surface)& S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,const Standard_Real TolU = 0.0,const Standard_Real TolV = 0.0) ;
 
 
 Handle_Geom_Surface mySurface;

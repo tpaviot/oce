@@ -1,7 +1,23 @@
-// File:	BRepFill_SectionPlacement.cxx
-// Created:	Wed Feb 11 16:23:18 1998
-// Author:	Philippe MANGIN
-//		<pmn@sgi29>
+// Created on: 1998-02-11
+// Created by: Philippe MANGIN
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFill_SectionPlacement.ixx>
@@ -144,7 +160,7 @@ BRepFill_SectionPlacement(const Handle(BRepFill_LocationLaw)& Law,
 
   // modified by NIZHNY-629  Fri Jul 25 11:10:27 2003 b
 
-//   // section ponctuelle
+//   // punctual section
 //  Ex.Init(mySection, TopAbs_EDGE);
 //   Standard_Boolean isPonctual = Standard_False;
 //  if (Ex.More()) {
@@ -270,7 +286,7 @@ BRepFill_SectionPlacement(const Handle(BRepFill_LocationLaw)& Law,
 
   GeomFill_SectionPlacement Place(myLaw->Law(1), theSection);
 
-  // Dans le cas generale : Localisation via une concatenation de la spine
+  // In the general case : Localisation via concatenation of the spine
   TColStd_Array1OfReal SuperKnot(1, myLaw->NbLaw()+1); 
   TColStd_Array1OfInteger Index(1, myLaw->NbLaw()); 
   for (ii=1; ii<=myLaw->NbLaw(); ii++) {
@@ -310,7 +326,7 @@ BRepFill_SectionPlacement(const Handle(BRepFill_LocationLaw)& Law,
   Ind1 = Index(Ind1);
   if (Ind2) Ind2 = Index(Ind2);
   
-  // Positionnement sur l'edge (ou les 2 Edges) localisee(s)
+  // Positioning on the localized edge (or 2 Edges)
   Standard_Real Angle;
   Place.SetLocation(myLaw->Law(Ind1));
   if(TheV.IsNull())

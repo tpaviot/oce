@@ -1,7 +1,23 @@
-// File:	ChFiKPart_ComputeData_ChAsymPlnCon.cxx
-// Created:	Thu Jun 18 09:30:15 1998
-// Author:	Philippe NOUAILLE
-//		<pne@cleox.paris1.matra-dtv.fr>
+// Created on: 1998-06-18
+// Created by: Philippe NOUAILLE
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ChFiKPart_ComputeData.ixx>
@@ -128,11 +144,11 @@ Standard_Boolean ChFiKPart_MakeChAsym(TopOpeBRepDS_DataStructure& DStr,
 #endif
 	return Standard_False;
       }
-      SemiAngl = PI / 2. - Angle;      
+      SemiAngl = M_PI / 2. - Angle;      
     }
     else {
       ChamfRad = Spine.Radius() + Dis;
-      SemiAngl = Angle - PI / 2.;
+      SemiAngl = Angle - M_PI / 2.;
     }
 
     if (ouvert) {
@@ -148,7 +164,7 @@ Standard_Boolean ChFiKPart_MakeChAsym(TopOpeBRepDS_DataStructure& DStr,
     if (ouvert) {
       SemiAngl =  Abs(angCon) + Angle;
 
-      if ( (PI / 2. - SemiAngl) < Precision::Confusion() ) {
+      if ( (M_PI / 2. - SemiAngl) < Precision::Confusion() ) {
 	cout <<"wrong choice of angle for the chamfer"<<endl;
 	return Standard_False;
       }
@@ -328,10 +344,10 @@ Standard_Boolean ChFiKPart_MakeChAsym(TopOpeBRepDS_DataStructure& DStr,
 		Or.Z()+Rad*Dx.Z());
     ElSLib::Parameters(Con,Pt ,u,v);
     Standard_Real tol = Precision::PConfusion();
-    if(u >= 2*PI - tol && u <= 2*PI) u = 0.;
+    if(u >= 2*M_PI - tol && u <= 2*M_PI) u = 0.;
     if(u >= fu - tol && u < fu) u = fu;
     if(u <= lu + tol && u > lu) u = lu;
-    if(u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*PI);
+    if(u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*M_PI);
     ElSLib::D1(u,v,Con,Pt,deru,derv);
     gp_Pnt2d p2dCon(u,v);
     gp_Dir2d d2dCon;
@@ -505,10 +521,10 @@ Standard_Boolean ChFiKPart_MakeChAsym(TopOpeBRepDS_DataStructure& DStr,
 		Or.Z()+Rad*Dx.Z());
     ElSLib::Parameters(Con,Pt ,u,v);
     Standard_Real tol = Precision::PConfusion();
-    if (u >= 2*PI - tol && u <= 2*PI) u = 0.;
+    if (u >= 2*M_PI - tol && u <= 2*M_PI) u = 0.;
     if (u >= fu - tol && u < fu) u = fu;
     if (u <= lu + tol && u > lu) u = lu;
-    if (u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*PI);
+    if (u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*M_PI);
     ElSLib::D1(u,v,Con,Pt,deru,derv);
     gp_Pnt2d p2dCon(u,v);
     gp_Dir2d d2dCon;

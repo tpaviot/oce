@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <ShapeAnalysis_CheckSmallFace.ixx>
 #include <Standard_ErrorHandler.hxx>  
 #include <TopTools_ListOfShape.hxx>
@@ -582,8 +599,10 @@ static Standard_Boolean CheckPoles(const TColgp_Array2OfPnt& poles, Standard_Int
   Standard_Integer i0 = (uorv == 1 ? poles.LowerCol() : poles.LowerRow());
   Standard_Integer i1 = (uorv == 1 ? poles.UpperCol() : poles.UpperRow());
   for (Standard_Integer i = i0; i <= i1-1; i ++) {
-    if (uorv == 1) if(poles(rank,i).IsEqual(poles(rank, i+1), 1e-15)) return Standard_True;
-    else      if(poles(i,rank).IsEqual(poles(i+1,rank), 1e-15)) return Standard_True;
+    if (uorv == 1) {
+      if(poles(rank,i).IsEqual(poles(rank, i+1), 1e-15)) return Standard_True;
+    } else
+      if(poles(i,rank).IsEqual(poles(i+1,rank), 1e-15)) return Standard_True;
   }  
   return Standard_False;
 }
@@ -918,7 +937,7 @@ Standard_Boolean  ShapeAnalysis_CheckSmallFace::CheckTwisted (const TopoDS_Face&
 	}
 //       cout << "angle1 "   << angle1<< endl;
 //       cout << "angle2 "   << angle2<< endl;
-      if ((angle1<=0.001 && angle2<=0.01) || ((PI-angle2)<= 0.001 && (PI-angle2)<= 0.01)) return Standard_True;
+      if ((angle1<=0.001 && angle2<=0.01) || ((M_PI-angle2)<= 0.001 && (M_PI-angle2)<= 0.01)) return Standard_True;
       else return Standard_False;
     } 
     

@@ -1,8 +1,0 @@
-+ ExprIntrp:pubinclude:ExprIntrp_yaccanal.hxx ExprIntrp:source:ExprIntrp_yaccanal.hxx
-+ ExprIntrp:pubinclude:ExprIntrp_yaccintrf.hxx ExprIntrp:source:ExprIntrp_yaccintrf.hxx
-+ ExprIntrp:dbadmfile:ExprIntrp_obj_inc.In ExprIntrp:admfile:ExprIntrp_src.Out
-+ * ExprIntrp:admfile:ExprIntrp_xcpp_src.Out
-+ ExprIntrp:dbadmfile:ExprIntrp_obj_inc.Out ExprIntrp:admfile:ExprIntrp_src.Out
-+ * ExprIntrp:admfile:ExprIntrp_xcpp_src.Out
-+ ExprIntrp:dbadmfile:ExprIntrp_obj_inc.Dep ExprIntrp:admfile:ExprIntrp_src.Out
-+ * ExprIntrp:admfile:ExprIntrp_xcpp_src.Out

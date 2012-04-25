@@ -1,7 +1,23 @@
-// File:	ViewerTest_CstAndDimension.cxx
-// Created:	Thu Nov 12 15:00:17 1998
-// Author:	Robert COUBLANC
-//		<rob@robox.paris1.matra-dtv.fr>
+// Created on: 1998-11-12
+// Created by: Robert COUBLANC
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ViewerTest.hxx>
@@ -242,7 +258,7 @@ static int VAngleDimBuilder(Draw_Interpretor& di, Standard_Integer argc, const c
     TheAISContext()->CloseLocalContext(myCurrentIndex);
     
     // Construction de l'AIS dimension
-    Handle (AIS_AngleDimension) myAISDim= new AIS_AngleDimension (TopoDS::Edge(ShapeA) ,TopoDS::Edge(ShapeB) ,theGeomPlane ,PI/2.0 ,TheMessage_Str );
+    Handle (AIS_AngleDimension) myAISDim= new AIS_AngleDimension (TopoDS::Edge(ShapeA) ,TopoDS::Edge(ShapeB) ,theGeomPlane ,M_PI/2.0 ,TheMessage_Str );
     GetMapOfAIS().Bind (myAISDim,argv[1]);
     TheAISContext()->Display(myAISDim );
     
@@ -1671,7 +1687,7 @@ static int VPerpendicularBuilder(Draw_Interpretor& di, Standard_Integer argc, co
     // on verifie si les edges sont orthogonaux.
     //gp_Lin theLineA=theCurveA.Line();
     //gp_Lin theLineB=theCurveB.Line();
-    //if (abs(theLineA.Angle(theLineB) ) != PI/2 ) {cout<<"vperpendicular error: Edges are not  othogonals."<<endl;return 1;}
+    //if (abs(theLineA.Angle(theLineB) ) != M_PI/2 ) {cout<<"vperpendicular error: Edges are not  othogonals."<<endl;return 1;}
     
     // On recupere 3 points A,B,C des  curves.
     gp_Pnt A=theCurveA.Value(0.1);

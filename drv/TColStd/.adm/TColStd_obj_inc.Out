@@ -1,6 +1,0 @@
-+M TColStd:pubinclude:TColStd_PackedMapOfInteger.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TColStd_PackedMapOfInteger.hxx
-+M TColStd:pubinclude:TColStd_MapIteratorOfPackedMapOfInteger.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TColStd_MapIteratorOfPackedMapOfInteger.hxx
-+M TColStd:pubinclude:TColStd_HPackedMapOfInteger.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/TColStd_HPackedMapOfInteger.lxx
-+M TColStd:dbadmfile:TColStd_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TColStd/.adm/TColStd_obj_inc.In
-+M TColStd:dbadmfile:TColStd_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TColStd/.adm/TColStd_obj_inc.Out
-+M TColStd:dbadmfile:TColStd_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/TColStd/.adm/TColStd_obj_inc.Dep

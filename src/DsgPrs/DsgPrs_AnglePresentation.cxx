@@ -1,5 +1,22 @@
-// File:	DsgPrs_AnglePresentation.cxx
-// Created:	Tue Feb  7 12:18:14 1995
+// Created on: 1995-02-07
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <DsgPrs_AnglePresentation.ixx>
@@ -96,7 +113,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
  
   aPnt = Apex;
   gp_Pnt P1 = ElCLib::Value(0., myCircle);
-  gp_Pnt P2 = ElCLib::Value(Standard_PI, myCircle);
+  gp_Pnt P2 = ElCLib::Value(M_PI, myCircle);
 
   gce_MakePln mkPln(P1, P2,  aPnt);   // create a plane whitch defines plane for projection aPosition on it
 
@@ -130,8 +147,8 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Standard_Real OppParam = ElCLib::Parameter(aCircle2, OppositePnt);    
   gp_Dir aDir, aDir2;
   
-  while ( AttParam >= 2*Standard_PI ) AttParam -= 2*Standard_PI;
-  while ( OppParam >= 2*Standard_PI ) OppParam -= 2*Standard_PI;
+  while ( AttParam >= 2 * M_PI ) AttParam -= 2 * M_PI;
+  while ( OppParam >= 2 * M_PI ) OppParam -= 2 * M_PI;
 
   //-------------------------- Compute angle ------------------------
    if( txt.Length() == 0 ) {
@@ -157,15 +174,15 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   param = AttParam;
 
   if(IsArrowOut) {
-    aDir = gp_Dir( ( gp_Vec( ElCLib::Value( AttParam - Standard_PI/12, aCircle2 ), AttachmentPnt) ) );
-    aDir2 = gp_Dir( ( gp_Vec( ElCLib::Value( OppParam + Standard_PI/12, aCircle2 ), OppositePnt) ) );
+    aDir = gp_Dir( ( gp_Vec( ElCLib::Value( AttParam - M_PI / 12, aCircle2 ), AttachmentPnt) ) );
+    aDir2 = gp_Dir( ( gp_Vec( ElCLib::Value( OppParam + M_PI / 12, aCircle2 ), OppositePnt) ) );
   }
   else {
-    aDir = gp_Dir( ( gp_Vec( ElCLib::Value( AttParam + Standard_PI/12, aCircle2 ), AttachmentPnt ) ) );
-    aDir2 = gp_Dir( ( gp_Vec( ElCLib::Value( OppParam - Standard_PI/12, aCircle2 ),  OppositePnt ) ) );
+    aDir = gp_Dir( ( gp_Vec( ElCLib::Value( AttParam + M_PI / 12, aCircle2 ), AttachmentPnt ) ) );
+    aDir2 = gp_Dir( ( gp_Vec( ElCLib::Value( OppParam - M_PI / 12, aCircle2 ),  OppositePnt ) ) );
   }
   
-  while ( angle > 2*Standard_PI ) angle -= 2*Standard_PI;
+  while ( angle > 2 * M_PI ) angle -= 2 * M_PI;
   for( i = 0; i <= 11; i++ ) {                                            //calculating of arc             
     ( ElCLib::Value(param + angle/11 * i, aCircle2) ).Coord(X, Y, Z);
     V(i+1).SetCoord(X, Y, Z);
@@ -183,9 +200,9 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   tmpPnt =  tmpPnt.Translated(gp_Vec(0, 0, -1)*2);
   Prs3d_Text::Draw(aPresentation,aLengthAspect->TextAspect(), txt, tmpPnt);   //add the TCollection_ExtendedString
 
-  angle = 2*Standard_PI - param ; 
+  angle = 2 * M_PI - param ; 
   if( param > OppParam ) {
-    while ( angle > 2*Standard_PI ) angle -= 2*Standard_PI;
+    while ( angle > 2 * M_PI ) angle -= 2 * M_PI;
     for( i = 11; i >= 0; i-- ) {       //calculating of arc             
       ( ElCLib::Value(-angle/11 * i, aCircle2) ).Coord(X, Y, Z);
       V(i+1).SetCoord(X, Y, Z);
@@ -210,7 +227,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
     if ( AboveInBelowCone( VmaxCircle, VminCircle, myCircle ) == 0 ) return;
     Graphic3d_Array1OfVertex V3(1,2);
     gp_Pnt P11 = ElCLib::Value( 0., VmaxCircle );
-    gp_Pnt P12 = ElCLib::Value( Standard_PI, VmaxCircle );
+    gp_Pnt P12 = ElCLib::Value( M_PI, VmaxCircle );
   
     AttachmentPnt.Coord(X, Y, Z);
     V3(1).SetCoord(X, Y, Z);
@@ -293,11 +310,11 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Standard_Real ufin = uc2;
 
   if (uco > ufin) {
-    if (Abs(theval)<PI) {
+    if (Abs(theval)<M_PI) {
       // test if uco is in the opposite sector 
-      if (uco > udeb+PI && uco < ufin+PI){
-	udeb = udeb + PI;
-	ufin = ufin + PI;
+      if (uco > udeb+M_PI && uco < ufin+M_PI){
+	udeb = udeb + M_PI;
+	ufin = ufin + M_PI;
 	uc1  = udeb;
 	uc2  = ufin;
       }
@@ -305,16 +322,16 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   }
 
   if (uco > ufin) {
-    if ((uco-uc2) < (uc1-uco+(2*PI))) {
+    if ((uco-uc2) < (uc1-uco+(2*M_PI))) {
       ufin = uco;
     }
     else {
-      udeb = uco - 2*PI;
+      udeb = uco - 2*M_PI;
     }
   }
 
   Standard_Real alpha = Abs(ufin-udeb);
-  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / PI));
+  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / M_PI));
   Graphic3d_Array1OfVertex V(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);
   gp_Pnt ptcur;
@@ -429,10 +446,10 @@ void DsgPrs_AnglePresentation::Add( const Handle(Prs3d_Presentation)& aPresentat
   Graphic3d_Array1OfVertex Vrap(1,2);
 
   // Creating the angle's arc or line if null angle
-  if (theval > Precision::Angular() && Abs( PI-theval ) > Precision::Angular())
+  if (theval > Precision::Angular() && Abs( M_PI-theval ) > Precision::Angular())
     {
       Standard_Real Alpha  = Abs( LastParAngleCirc - FirstParAngleCirc );
-      Standard_Integer NodeNumber = Max (4 , Standard_Integer (50. * Alpha / PI));
+      Standard_Integer NodeNumber = Max (4 , Standard_Integer (50. * Alpha / M_PI));
       Graphic3d_Array1OfVertex ApproxArc( 0, NodeNumber-1 );
       Standard_Real delta = Alpha / (Standard_Real)( NodeNumber - 1 );
       gp_Pnt CurPnt;
@@ -484,7 +501,7 @@ void DsgPrs_AnglePresentation::Add( const Handle(Prs3d_Presentation)& aPresentat
 	{
 	  // Creating the arc from AttachmentPoint2 to its projection
 	  Standard_Real Alpha  = Abs( LastParAttachCirc - FirstParAttachCirc );
-	  Standard_Integer NodeNumber = Max (4 , Standard_Integer (50. * Alpha / PI));
+	  Standard_Integer NodeNumber = Max (4 , Standard_Integer (50. * Alpha / M_PI));
 	  Graphic3d_Array1OfVertex ApproxArc( 0, NodeNumber-1 );
 	  Standard_Real delta = Alpha / (Standard_Real)( NodeNumber - 1 );
 	  gp_Pnt CurPnt;
@@ -536,7 +553,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
     Norm = dir1.Crossed(dir2B);
   }
 
-  if (Abs(theval) > PI) Norm.Reverse();
+  if (Abs(theval) > M_PI) Norm.Reverse();
 
   gp_Ax2 ax(CenterPoint,Norm,dir1);
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
@@ -558,11 +575,11 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Standard_Real ufin = uc2;
 
   if (uco > ufin) {
-    if (Abs(theval)<PI) {
+    if (Abs(theval)<M_PI) {
       // test if uco is in the opposite sector 
-      if (uco > udeb+PI && uco < ufin+PI){
-	udeb = udeb + PI;
-	ufin = ufin + PI;
+      if (uco > udeb+M_PI && uco < ufin+M_PI){
+	udeb = udeb + M_PI;
+	ufin = ufin + M_PI;
 	uc1  = udeb;
 	uc2  = ufin;
       }
@@ -570,16 +587,16 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   }
 
   if (uco > ufin) {
-    if ((uco-uc2) < (uc1-uco+(2*PI))) {
+    if ((uco-uc2) < (uc1-uco+(2*M_PI))) {
       ufin = uco;
     }
     else {
-      udeb = uco - 2*PI;
+      udeb = uco - 2*M_PI;
     }
   }
 
   Standard_Real alpha = Abs(ufin-udeb);
-  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / PI));
+  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / M_PI));
   Graphic3d_Array1OfVertex V(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);
   gp_Pnt ptcur;
@@ -660,7 +677,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
   gp_Dir Norm = dir1.Crossed(dir2);
 
-  if (Abs(theval) > PI) Norm.Reverse();
+  if (Abs(theval) > M_PI) Norm.Reverse();
 
   gp_Ax2 ax(CenterPoint,Norm,dir1);
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
@@ -682,11 +699,11 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Standard_Real ufin = uc2;
 
   if (uco > ufin) {
-    if (Abs(theval)<PI) {
+    if (Abs(theval)<M_PI) {
       // test if uco is in the opposite sector 
-      if (uco > udeb+PI && uco < ufin+PI){
-	udeb = udeb + PI;
-	ufin = ufin + PI;
+      if (uco > udeb+M_PI && uco < ufin+M_PI){
+	udeb = udeb + M_PI;
+	ufin = ufin + M_PI;
 	uc1  = udeb;
 	uc2  = ufin;
       }
@@ -694,16 +711,16 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   }
 
   if (uco > ufin) {
-    if ((uco-uc2) < (uc1-uco+(2*PI))) {
+    if ((uco-uc2) < (uc1-uco+(2*M_PI))) {
       ufin = uco;
     }
     else {
-      udeb = uco - 2*PI;
+      udeb = uco - 2*M_PI;
     }
   }
 
   Standard_Real alpha = Abs(ufin-udeb);
-  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / PI));
+  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / M_PI));
   Graphic3d_Array1OfVertex V(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);
   gp_Pnt ptcur;
@@ -788,7 +805,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Prs3d_Root::CurrentGroup(aPresentation)->SetPrimitivesAspect(LA->LineAspect()->Aspect());
   gp_Dir Norm = dir1.Crossed(dir2);
 
-  if (Abs(theval) > PI) Norm.Reverse();
+  if (Abs(theval) > M_PI) Norm.Reverse();
 
   gp_Ax2 ax(CenterPoint,Norm,dir1);
   gp_Circ cer(ax,CenterPoint.Distance(OffsetPoint));
@@ -810,11 +827,11 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   Standard_Real ufin = uc2;
 
   if (uco > ufin) {
-    if (Abs(theval)<PI) {
+    if (Abs(theval)<M_PI) {
       // test if uco is in the opposite sector 
-      if (uco > udeb+PI && uco < ufin+PI){
-	udeb = udeb + PI;
-	ufin = ufin + PI;
+      if (uco > udeb+M_PI && uco < ufin+M_PI){
+	udeb = udeb + M_PI;
+	ufin = ufin + M_PI;
 	uc1  = udeb;
 	uc2  = ufin;
       }
@@ -822,16 +839,16 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   }
 
   if (uco > ufin) {
-    if ((uco-uc2) < (uc1-uco+(2*PI))) {
+    if ((uco-uc2) < (uc1-uco+(2*M_PI))) {
       ufin = uco;
     }
     else {
-      udeb = uco - 2*PI;
+      udeb = uco - 2*M_PI;
     }
   }
 
   Standard_Real alpha = Abs(ufin-udeb);
-  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / PI));
+  Standard_Integer nbp = Max (4 , Standard_Integer (50. * alpha / M_PI));
   Graphic3d_Array1OfVertex V(1,nbp);
   Standard_Real dteta = alpha/(nbp-1);
   gp_Pnt ptcur;
@@ -904,7 +921,7 @@ void DsgPrs_AnglePresentation::Add (const Handle(Prs3d_Presentation)& aPresentat
   gp_Ax2 ax(CenterPoint,theAxe.Direction(),dir1);
   gp_Circ cer(ax,CenterPoint.Distance(AttachmentPoint1));
 
-  Standard_Integer nbp = Max (4 , Standard_Integer (50. * theval / PI));
+  Standard_Integer nbp = Max (4 , Standard_Integer (50. * theval / M_PI));
   Graphic3d_Array1OfVertex V(1,nbp);
   Standard_Real dteta = theval/(nbp-1);
   gp_Pnt ptcur;

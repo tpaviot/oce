@@ -1,7 +1,22 @@
-// File:      VrmlData_Group.cxx
-// Created:   06.11.06 08:01
-// Author:    Alexander GRIGORIEV
-// Copyright: Open Cascade 2006
+// Created on: 2006-11-06
+// Created by: Alexander GRIGORIEV
+// Copyright (c) 2006-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <VrmlData_Group.hxx>
@@ -193,6 +208,58 @@ VrmlData_ErrorStatus VrmlData_Group::Read (VrmlData_InBuffer& theBuffer)
         if (isBracketed == Standard_False)
           break;
       }
+    }
+    else if (VRMLDATA_LCOMPARE (theBuffer.LinePtr, "Separator") ||
+             VRMLDATA_LCOMPARE (theBuffer.LinePtr, "Switch")) {
+      Standard_Boolean isBracketed (Standard_False);
+      // Read the opening bracket for the list of children
+      if (!OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+        break;
+      
+      if (theBuffer.LinePtr[0] == '{') {
+        theBuffer.LinePtr++;
+        if (!OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+          break;
+        isBracketed = Standard_True;
+      }
+
+      // Read the child nodes
+      Handle(VrmlData_Node) aChildNode;
+      while (OK(aStatus, VrmlData_Scene::ReadLine(theBuffer))) {
+        // read the end-of-list bracket
+        if (isBracketed && theBuffer.LinePtr[0] == '}') {
+          theBuffer.LinePtr++;
+          break;
+        }
+	
+        // otherwise read a node
+        if (!OK(aStatus, ReadNode (theBuffer, aChildNode)))
+          break;
+	
+        AddNode (aChildNode);
+        if (isBracketed == Standard_False)
+          break;
+      }
+    }
+    else if (VRMLDATA_LCOMPARE (theBuffer.LinePtr, "ShapeHints")) {
+      // Skip this tag
+      if (!OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+        break;
+      
+      if (theBuffer.LinePtr[0] == '{') {
+        theBuffer.LinePtr++;
+        if (!OK(aStatus, VrmlData_Scene::ReadLine(theBuffer)))
+          break;
+	
+        while (OK(aStatus, VrmlData_Scene::ReadLine(theBuffer))) {
+          // read the end-of-list bracket
+          if (theBuffer.LinePtr[0] == '}') {
+            theBuffer.LinePtr++;
+            break;
+          }
+          theBuffer.LinePtr++;
+        }
+      }
     } else if (VRMLDATA_LCOMPARE (theBuffer.LinePtr, "center"))
       if (myIsTransform)
         aStatus = Scene().ReadXYZ (theBuffer, aCenter,
@@ -271,19 +338,21 @@ VrmlData_ErrorStatus VrmlData_Group::Read (VrmlData_InBuffer& theBuffer)
             // because each name must remain unique in the global scene.
             if (aNode->Name())
               if (* aNode->Name() != '\0') {
-                char buf[1024];
-                strncpy (buf, aFileName.ToCString(), sizeof(buf));
-                char * ptr = strchr (buf, '.');
-                if (!ptr)
-                  ptr = strchr (buf,'\0');
-                * ptr = '_';
-                strncpy (ptr+1, aNode->Name(), (&buf[sizeof(buf)]-ptr)-2);
-                const size_t len = strlen(buf) + 1;
+                TCollection_AsciiString buf;
+                buf += aFileName;
+                Standard_Integer aCharLocation = buf.Location (1, '.', 1, buf.Length());
+                if (aCharLocation != 0)
+                {
+                  buf.Remove (aCharLocation, buf.Length() - aCharLocation + 1);
+                }
+                buf += '_';
+                buf += aNode->Name();
+                const size_t len = buf.Length();
                 char * aNewName =
                   static_cast<char *> (Scene().Allocator()->Allocate (len));
                 if (aNewName) {
                   aNode->myName = aNewName;
-                  memcpy (aNewName, buf, len);
+                  memcpy (aNewName, buf.ToCString(), len);
                 }
               }
           }

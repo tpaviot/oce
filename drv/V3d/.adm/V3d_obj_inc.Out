@@ -1,5 +1,0 @@
-+M V3d:pubinclude:V3d_Static.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/V3d_Static.hxx
-+M V3d:pubinclude:V3d_LayerMgr.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/V3d_LayerMgr.lxx
-+M V3d:dbadmfile:V3d_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/V3d/.adm/V3d_obj_inc.In
-+M V3d:dbadmfile:V3d_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/V3d/.adm/V3d_obj_inc.Out
-+M V3d:dbadmfile:V3d_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/V3d/.adm/V3d_obj_inc.Dep

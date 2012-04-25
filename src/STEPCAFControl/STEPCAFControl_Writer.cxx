@@ -1,15 +1,27 @@
-// File:	STEPCAFControl_Writer.cxx
-// Created:	Tue Aug 15 17:35:36 2000
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 2000-08-15
+// Created by: Andrey BETENEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // CURRENT LIMITATIONS: 
-//
 // when val props and names assigned to instance of 
 // component in assembly, it is in fact supposed that only one CDSR corresponds
 // to such shape. This can be wrong and should be handled more carefully
 // (analysis of SDRs which the CDSR links should be done)
-//
 // Names and validation props are supported for top-level shapes only
 
 #include <STEPCAFControl_Writer.ixx>
@@ -157,7 +169,7 @@
 #include <StepBasic_HArray1OfDerivedUnitElement.hxx>
 #include <StepBasic_DerivedUnit.hxx>
 #include <StepRepr_MeasureRepresentationItem.hxx>
-
+#include <StepBasic_ProductDefinition.hxx>
 
 //=======================================================================
 //function : GetLabelName
@@ -1039,13 +1051,14 @@ Standard_Boolean STEPCAFControl_Writer::WriteColors (const Handle(XSControl_Work
         }
       }
       if ( CTool->GetColor ( lab, XCAFDoc_ColorGen, C ) ) {
-	style.SetColorCurv ( C );
-	style.SetColorSurf ( C );
+        style.SetColorCurv ( C );
+        style.SetColorSurf ( C );
       }
       if ( CTool->GetColor ( lab, XCAFDoc_ColorSurf, C ) )
-	style.SetColorSurf ( C );
+        style.SetColorSurf ( C );
       if ( CTool->GetColor ( lab, XCAFDoc_ColorCurv, C ) )
-	style.SetColorCurv ( C );
+        style.SetColorCurv ( C );
+      
       // commented, cause we are need to take reference from 
 //       if ( isComponent && lab == L && !isVisible)
 //         if ( !style.IsSetColorSurf() && !style.IsSetColorCurv() ) {
@@ -2365,6 +2378,10 @@ Standard_Boolean STEPCAFControl_Writer::WriteMaterials (const Handle(XSControl_W
       Handle(Standard_Transient) ent = seqRI.Value(1);
       FindPDSforRI(aGraph,ent,PDS,RC);
       if(PDS.IsNull()) continue;
+      Handle(StepBasic_ProductDefinition) aProdDef = 
+        PDS->Definition().ProductDefinition();
+      if(aProdDef.IsNull())
+        continue;
       // write material entities
       TDF_Label MatL = Node->Father()->Label();
       Handle(TCollection_HAsciiString) aName;
@@ -2429,7 +2446,7 @@ Standard_Boolean STEPCAFControl_Writer::WriteMaterials (const Handle(XSControl_W
       }
       // write chain PDS---(DRI,MRI)
       StepRepr_CharacterizedDefinition CD1;
-      CD1.SetValue(PDS);
+      CD1.SetValue(aProdDef);
       Handle(StepRepr_PropertyDefinition) PropD1 = new StepRepr_PropertyDefinition;
       PropD1->Init(new TCollection_HAsciiString("material property"),Standard_True,
                    new TCollection_HAsciiString("material name"),CD1);
@@ -2441,7 +2458,7 @@ Standard_Boolean STEPCAFControl_Writer::WriteMaterials (const Handle(XSControl_W
       PDR1->Init(RD1,RepDRI);
       Model->AddWithRefs(PDR1);
       StepRepr_CharacterizedDefinition CD2;
-      CD2.SetValue(PDS);
+      CD2.SetValue(aProdDef);
       Handle(StepRepr_PropertyDefinition) PropD2 = new StepRepr_PropertyDefinition;
       PropD2->Init(new TCollection_HAsciiString("material property"),Standard_True,
                    new TCollection_HAsciiString("density"),CD2);

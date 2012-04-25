@@ -45,7 +45,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Hatch -I@top_srcdir@/src/Hatch \
 -I@top_srcdir@/drv/GeomInt -I@top_srcdir@/src/GeomInt \
@@ -86,14 +86,14 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKGeomAlgo.la
 
-libTKGeomAlgo_la_LIBADD = \
+libTKGeomAlgo_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKG3d/libTKG3d.la \
-../TKGeomBase/libTKGeomBase.la \
 ../TKMath/libTKMath.la \
+../TKG3d/libTKG3d.la \
 ../TKG2d/libTKG2d.la \
-../TKBRep/libTKBRep.la \
-$(STLPort_LIB) 
+../TKGeomBase/libTKGeomBase.la \
+../TKBRep/libTKBRep.la
+
 
 libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/GccAna/GccAna_NoSolution_0.cxx \
@@ -132,7 +132,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_GInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_Geom2dCurveTool_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_IntConicCurveOfGInter_0.cxx \
-@top_srcdir@/drv/Geom2dInt/Geom2dInt_InterferencePoly2dOfTheIntPCurvePCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_0.cxx \
@@ -144,7 +143,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_0.cxx \
-@top_srcdir@/drv/Geom2dInt/Geom2dInt_ThePolygon2dToolOfTheIntPCurvePCurveOfGInter_0.cxx \
 @top_srcdir@/drv/Geom2dInt/Geom2dInt_TheProjPCurOfGInter_0.cxx \
 @top_srcdir@/drv/GeomFill/GeomFill_AppSurf_0.cxx \
 @top_srcdir@/drv/GeomFill/GeomFill_AppSweep_0.cxx \
@@ -221,7 +219,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/drv/IntCurveSurface/IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_CSFunction_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_CurvIntSurf_0.cxx \
-@top_srcdir@/drv/IntPatch/IntPatch_SearchPnt_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceNodeOfSequenceOfLine_0.cxx \
 @top_srcdir@/drv/IntPatch/IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds_0.cxx \
@@ -482,7 +479,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntPatch/IntPatch_PolyArc.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_PolyLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Polygo.cxx \
-@top_srcdir@/src/IntPatch/IntPatch_PolygoTool.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_Polyhedron.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_PolyhedronTool.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_PrmPrmIntersection.cxx \
@@ -502,7 +498,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntPolyh/IntPolyh_Intersection.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_Intersection_1.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_MaillageAffinage.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_MaillageAffinage_1.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_Point.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_SectionLine.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_StartPoint.cxx \
@@ -526,6 +521,8 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntSurf/IntSurf_Transition.cxx \
 @top_srcdir@/src/Intf/Intf.cxx \
 @top_srcdir@/src/Intf/Intf_Interference.cxx \
+@top_srcdir@/src/Intf/Intf_InterferencePolygon2d.cxx \
+@top_srcdir@/src/Intf/Intf_Polygon2d.cxx \
 @top_srcdir@/src/Intf/Intf_SectionLine.cxx \
 @top_srcdir@/src/Intf/Intf_SectionPoint.cxx \
 @top_srcdir@/src/Intf/Intf_TangentZone.cxx \

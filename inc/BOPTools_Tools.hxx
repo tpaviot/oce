@@ -19,6 +19,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
+#endif
 class gp_Pnt;
 class TopoDS_Vertex;
 class TopoDS_Edge;
@@ -98,7 +101,7 @@ public:
   
 //! Returns TRUE if PaveBlock <aPB> lays on the face <aF>, i.e <br>
 //! the <PB> is IN or ON in 2D of <aF> <br>
-  Standard_EXPORT   static  Standard_Boolean IsBlockInOnFace(const BOPTools_PaveBlock& aPB,const TopoDS_Face& aF,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsBlockInOnFace(const BOPTools_PaveBlock& aPB,const TopoDS_Face& aF,const Handle(IntTools_Context)& aContext) ;
   
 //! Get a  Map <aM> containing the shape itself and all its subshapes <br>
   Standard_EXPORT   static  void MapShapes(const TopoDS_Shape& aS,TopTools_IndexedMapOfShape& aM) ;

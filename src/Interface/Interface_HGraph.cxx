@@ -1,32 +1,52 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Interface_HGraph.ixx>
 
 
-
-    Interface_HGraph::Interface_HGraph (const Interface_Graph& agraph)
+Interface_HGraph::Interface_HGraph (const Interface_Graph& agraph)
     :  thegraph(agraph)    {  }
-
+   
 
     Interface_HGraph::Interface_HGraph
   (const Handle(Interface_InterfaceModel)& amodel,
-   const Interface_GeneralLib& lib)
-     :  thegraph (amodel,lib)    {  }
+   const Interface_GeneralLib& lib,
+   const Standard_Boolean theModeStat)
+     :  thegraph (amodel,lib,theModeStat)    {  }
 
 
      Interface_HGraph::Interface_HGraph
   (const Handle(Interface_InterfaceModel)& amodel,
-   const Handle(Interface_Protocol)& protocol)
-     :  thegraph (amodel,protocol)    {  }
+   const Handle(Interface_Protocol)& protocol,
+   const Standard_Boolean theModeStat)
+     :  thegraph (amodel,protocol,theModeStat)    {  }
 
 
      Interface_HGraph::Interface_HGraph
   (const Handle(Interface_InterfaceModel)& amodel,
-   const Handle(Interface_GTool)& gtool)
-     :  thegraph (amodel,gtool)    {  }
+   const Handle(Interface_GTool)& gtool,
+   const Standard_Boolean theModeStat)
+     :  thegraph (amodel,gtool,theModeStat)    {  }
 
 
      Interface_HGraph::Interface_HGraph
-  (const Handle(Interface_InterfaceModel)& amodel)
-     :  thegraph (amodel)    {  }
+  (const Handle(Interface_InterfaceModel)& amodel,
+    const Standard_Boolean theModeStat)
+     :  thegraph (amodel,theModeStat)    {  }
 
 
     const Interface_Graph&  Interface_HGraph::Graph () const

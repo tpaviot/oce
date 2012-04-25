@@ -1,8 +1,0 @@
-+ BinObjMgt:pubinclude:BinObjMgt_Persistent.hxx BinObjMgt:msentity:BinObjMgt_Persistent
-+ BinObjMgt:privinclude:BinObjMgt_Persistent.jxx BinObjMgt:msentity:BinObjMgt_Persistent
-+ BinObjMgt:privinclude:BinObjMgt_Persistent.ixx BinObjMgt:msentity:BinObjMgt_Persistent
-+ BinObjMgt:pubinclude:BinObjMgt_SRelocationTable.hxx BinObjMgt:msentity:BinObjMgt_SRelocationTable
-+ BinObjMgt:pubinclude:BinObjMgt_RRelocationTable.hxx BinObjMgt:msentity:BinObjMgt_RRelocationTable
-+ BinObjMgt:dbadmfile:BinObjMgt_xcpp_header.In BinObjMgt:admfile:BinObjMgt_xcpp_fill.Out
-+ BinObjMgt:dbadmfile:BinObjMgt_xcpp_header.Out BinObjMgt:admfile:BinObjMgt_xcpp_fill.Out
-+ BinObjMgt:dbadmfile:BinObjMgt_xcpp_header.Dep BinObjMgt:admfile:BinObjMgt_xcpp_fill.Out

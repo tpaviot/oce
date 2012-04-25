@@ -1,7 +1,23 @@
-// File:	IntCurve_IntPolyPolyGen.gxx
-// Created:	Tue Oct 13 11:12:26 1992
-// Author:	Laurent BUCHARD
-//		<lbr@sdsun2>
+// Created on: 1992-10-13
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Tue Mar  1 14:22:09 2005 OCC8169
 
@@ -26,6 +42,7 @@
 #include <Intf_SectionPoint.hxx>
 #include <Intf_SectionLine.hxx>
 #include <Intf_TangentZone.hxx>
+#include <Intf_InterferencePolygon2d.hxx>
 
 #include <gp_Vec2d.hxx>
 
@@ -44,7 +61,6 @@
 
 //----------------------------------------------------------------------
 
-static Standard_Boolean AnErrorOccurred=Standard_False;
 
 
 
@@ -77,7 +93,7 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
 				      ,const Standard_Real TheTol)
 {
 
-  AnErrorOccurred = Standard_False;
+  Standard_Boolean AnErrorOccurred = Standard_False;
 
   this->ResetFields();
   DomainOnCurve1=D1;
@@ -248,8 +264,6 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
 				      ,const Standard_Real TheTol)
 {
 
-  AnErrorOccurred = Standard_False;
-
   this->ResetFields();
   DomainOnCurve1=D1;
   DomainOnCurve2=D1; 
@@ -354,6 +368,7 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
   gp_Pnt2d P1,P2;
   Standard_Integer nbsamples;
   done = Standard_False;
+  Standard_Boolean AnErrorOccurred = Standard_False;
   
   
   nbsamples = TheCurveTool::NbSamples(C1,D1.FirstParameter(),D1.LastParameter());
@@ -389,7 +404,7 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
     Poly1.SetDeflectionOverEstimation(TolConf);
   }
 
-  IntCurve_InterferencePoly2d InterPP(Poly1);  
+  Intf_InterferencePolygon2d InterPP(Poly1);  
   IntCurve_ExactIntersectionPoint  EIP(C1,C1,TolConf);
   Standard_Real U,V;
   
@@ -770,6 +785,7 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
   gp_Pnt2d P1,P2;
   Standard_Integer nbsamplesOnC1,nbsamplesOnC2;
   done = Standard_False;
+  Standard_Boolean AnErrorOccurred = Standard_False;
 
   if(NbIter>NBITER_MAX_POLYGON) return;
 
@@ -844,7 +860,7 @@ void IntCurve_IntPolyPolyGen::Perform( const TheCurve& C1
   if(PtrPoly2->DeflectionOverEstimation() < TolConf) { 
     PtrPoly2->SetDeflectionOverEstimation(TolConf);
   }
-  IntCurve_InterferencePoly2d InterPP(*PtrPoly1,*PtrPoly2);  
+  Intf_InterferencePolygon2d InterPP(*PtrPoly1,*PtrPoly2);  
   IntCurve_ExactIntersectionPoint  EIP(C1,C2,TolConf);
   Standard_Real U,V;
   

@@ -1,8 +1,23 @@
-// Copyright: 	Matra-Datavision 1995
-// File:	BRepToIGES_BRSolid.cxx
-// Created:	Mon Jan 30 11:51:46 1995
-// Author:	Marie Jose MARTZ
-//		<mjm>
+// Created on: 1995-01-30
+// Created by: Marie Jose MARTZ
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepToIGES_BRSolid.ixx>
@@ -37,7 +52,7 @@
 #include <TopExp_Explorer.hxx>
 
 
-// Dans un premier temps on ne transfere que la geometrie ( point,courbe...)
+// At first only the geometry is translated (point, curve...)
 
 //=============================================================================
 // BRepToIGES_BRSolid
@@ -82,7 +97,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferSolid(const TopoDS_Shap
     res = TransferCompound(C);
   }  
   else {
-    // message d`erreur
+    // error message
   }  
   return res;
 }
@@ -206,7 +221,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
   BRepToIGES_BRWire BW(*this);
   Handle(TColStd_HSequenceOfTransient) Seq = new TColStd_HSequenceOfTransient();
 
-  // on prend tous les Solids
+  // take all Solids
   for (Ex.Init(start, TopAbs_SOLID); Ex.More(); Ex.Next()) {
     TopoDS_Solid S = TopoDS::Solid(Ex.Current());
     if (S.IsNull()) {
@@ -218,7 +233,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
     }
   }
 
-  // on prend tous les Shells isoles
+  // take all isolated Shells 
   for (Ex.Init(start, TopAbs_SHELL, TopAbs_SOLID); Ex.More(); Ex.Next()) {
     TopoDS_Shell S = TopoDS::Shell(Ex.Current());
     if (S.IsNull()) {
@@ -231,7 +246,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
   }
 
 
-  // on prend toutes les Faces isoles
+  // take all isolated Faces 
   for (Ex.Init(start, TopAbs_FACE, TopAbs_SHELL); Ex.More(); Ex.Next()) {
     TopoDS_Face S = TopoDS::Face(Ex.Current());
     if (S.IsNull()) {
@@ -244,7 +259,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
   }
 
 
-  // on prend tous les Wires isoles
+  // take all isolated Wires 
   for (Ex.Init(start, TopAbs_WIRE, TopAbs_FACE); Ex.More(); Ex.Next()) {
     TopoDS_Wire S = TopoDS::Wire(Ex.Current());
     if (S.IsNull()) {
@@ -257,7 +272,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
   }
 
 
-  // on prend tous les Edges isoles
+  // take all isolated Edges 
   for (Ex.Init(start, TopAbs_EDGE, TopAbs_WIRE); Ex.More(); Ex.Next()) {
     TopoDS_Edge S = TopoDS::Edge(Ex.Current());
     if (S.IsNull()) {
@@ -270,7 +285,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
   }
 
 
-  // on prend tous les Vertices isoles
+  // take all isolated Vertices 
   for (Ex.Init(start, TopAbs_VERTEX, TopAbs_EDGE); Ex.More(); Ex.Next()) {
     TopoDS_Vertex S = TopoDS::Vertex(Ex.Current());
     if (S.IsNull()) {
@@ -282,7 +297,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRSolid ::TransferCompound(const TopoDS_C
     }
   }
 
-  // on construit le groupe
+  // construct the group
   Standard_Integer nbshapes = Seq->Length();
   Handle(IGESData_HArray1OfIGESEntity) Tab;
   if (nbshapes >=1) {

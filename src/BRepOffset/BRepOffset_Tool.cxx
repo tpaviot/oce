@@ -1,7 +1,23 @@
-// File:	BRepOffset_Tool.cxx
-// Created:	Mon Oct 23 14:25:07 1995
-// Author:	Yves FRICAUD
-//		<yfr@stylox>
+// Created on: 1995-10-23
+// Created by: Yves FRICAUD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <stdio.h>
 
@@ -140,7 +156,7 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <ShapeCustom_Curve2d.hxx>
 #include <GeomAPI_ExtremaCurveCurve.hxx>
-  
+
 
 #ifdef DRAW
 #include <DBRep.hxx>
@@ -185,10 +201,6 @@ TopAbs_Orientation BRepOffset_Tool::OriEdgeInFace (const TopoDS_Edge& E,
 						   const TopoDS_Face& F )
 
 {
-#ifdef DEB
-  TopAbs_Orientation O = 
-#endif
-    F.Orientation();
   TopExp_Explorer Exp;
   Exp.Init(F.Oriented(TopAbs_FORWARD),TopAbs_EDGE);
 
@@ -994,7 +1006,7 @@ static Standard_Boolean BSplineEdges(const TopoDS_Edge& E1,
 
   if (Der1.Magnitude() <= gp::Resolution() ||
       Der2.Magnitude() <= gp::Resolution())
-    angle = PI/2.;
+    angle = M_PI/2.;
   else
     angle = Der1.Angle(Der2);
 
@@ -1031,7 +1043,7 @@ static Standard_Real AngleWireEdge(const TopoDS_Wire& aWire,
   if (V11.IsSame(CV) && V21.IsSame(CV))
     {
       BSplineEdges( FirstEdge, anEdge, 0, 0, Angle );
-      Angle = PI - Angle;
+      Angle = M_PI - Angle;
     }
   else if (V11.IsSame(CV) && V22.IsSame(CV))
     BSplineEdges( FirstEdge, anEdge, 0, 1, Angle );
@@ -1040,7 +1052,7 @@ static Standard_Real AngleWireEdge(const TopoDS_Wire& aWire,
   else
     {
       BSplineEdges( FirstEdge, anEdge, 1, 1, Angle );
-      Angle = PI - Angle;
+      Angle = M_PI - Angle;
     }
   return Angle;
 }
@@ -3949,7 +3961,7 @@ static Standard_Boolean IsInOut (BRepTopAdaptor_FClass2d& FC,
 //=======================================================================
 
 void BRepOffset_Tool::CorrectOrientation(const TopoDS_Shape&        SI,
-					 const TopTools_MapOfShape& NewEdges,
+					 const TopTools_IndexedMapOfShape& NewEdges,
 					 Handle(BRepAlgo_AsDes)&    AsDes,
 					 BRepAlgo_Image&            InitOffset,
 					 const Standard_Real        Offset)

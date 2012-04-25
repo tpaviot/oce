@@ -1,7 +1,23 @@
-// File:	BRepOffset_Analyse.cxx
-// Created:	Fri Oct 20 18:19:36 1995
-// Author:	Yves FRICAUD
-//		<yfr@stylox>
+// Created on: 1995-10-20
+// Created by: Yves FRICAUD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepOffset_Analyse.ixx>
@@ -85,7 +101,7 @@ static void EdgeAnalyse(const TopoDS_Edge&         E,
   f = C.FirstParameter();
   l = C.LastParameter();
   
-  // Tangent si la regularite estaum moins G1.
+  // Tangent if the regularity is at least G1.
   if (BRep_Tool::HasContinuity(E,F1,F2)) {
     if (BRep_Tool::Continuity(E,F1,F2) > GeomAbs_C0) {
       BRepOffset_Interval I;
@@ -95,9 +111,9 @@ static void EdgeAnalyse(const TopoDS_Edge&         E,
       return;
     }
   }
-  // Premiere etape : Type determine par un des bout.
-  // Calcul des normales et tangentes sur les courbes et surface.
-  // normales sont dirigees vers l exterieur.
+  // First stage : Type determined by one of ends.
+  // Calculate normals and tangents on the curves and surface.
+  // normals are oriented outwards.
   
   Standard_Real ParOnC = 0.5*(f+l);
   gp_Vec T1 = C.DN(ParOnC,1).Transformed(L.Transformation());
@@ -133,15 +149,15 @@ static void EdgeAnalyse(const TopoDS_Edge&         E,
   I.First(f); I.Last(l);
 
   if (Abs(NormProVec) < SinTol) {
-    // plat
+    // plane
     if (DN1.Dot(DN2) > 0) {   
       //Tangent
       I.Type(BRepOffset_Tangent);
     }
     else  {                   
-      //Confondu  pas fini!
+      //Mixed not finished!
 #ifdef DEB
-      cout <<" face localement confondues"<<endl;
+      cout <<" faces locally mixed"<<endl;
 #endif
       I.Type(BRepOffset_Convex);
     }
@@ -151,11 +167,11 @@ static void EdgeAnalyse(const TopoDS_Edge&         E,
       ProVec.Normalize();
     Standard_Real Prod  = T1.Dot(DN1^DN2);
     if (Prod > 0.) {       
-      //Saillant
+      //
       I.Type(BRepOffset_Convex);
     }
     else {                       
-      //rentrant
+      //reenters
       I.Type(BRepOffset_Concave);
     }
   }
@@ -174,7 +190,7 @@ static void BuildAncestors (const TopoDS_Shape&                        S,
   TopExp::MapShapesAndAncestors(S,TopAbs_VERTEX,TopAbs_EDGE,MA);
   TopExp::MapShapesAndAncestors(S,TopAbs_EDGE  ,TopAbs_FACE,MA);
 
-  // Purge des ancetres.
+  // Purge ancestors.
   TopTools_MapOfShape Map;
   for (Standard_Integer i = 1; i <= MA.Extent(); i++) {
     Map.Clear();
@@ -420,8 +436,8 @@ void BRepOffset_Analyse::Explode(      TopTools_ListOfShape& List,
       TopoDS_Compound Co;
       B.MakeCompound(Co);
       B.Add(Co,Face);
-      // on ajoute a Co toutes les faces constituant la nappe de faces
-      // G1 creee a partir de <Face>
+      // add to Co all faces from the cloud of faces
+      // G1 created from <Face>
       AddFaces(Face,Co,Map,T);
       List.Append(Co);
     }
@@ -448,8 +464,8 @@ void BRepOffset_Analyse::Explode(      TopTools_ListOfShape& List,
       TopoDS_Compound Co;
       B.MakeCompound(Co);
       B.Add(Co,Face);
-      // on ajoute a Co toutes les faces constituant la nappe de faces
-      // G1 creee a partir de <Face>
+      // add to Co all faces from the cloud of faces
+      // G1 created from  <Face>
       AddFaces(Face,Co,Map,T1,T2);
       List.Append(Co);
     }
@@ -473,7 +489,7 @@ void BRepOffset_Analyse::AddFaces (const TopoDS_Face&    Face,
     const TopoDS_Edge& E = TopoDS::Edge(exp.Current());
     const BRepOffset_ListOfInterval& LI = Type(E);
     if (!LI.IsEmpty() && LI.First().Type() == T) {
-      // alors ca y est <NewFace> est raccordee G1 a <Face>
+      // so <NewFace> is attached to G1 by <Face>
       const TopTools_ListOfShape& L = Ancestors(E);
       if (L.Extent() == 2) {
 	TopoDS_Face F1 = TopoDS::Face(L.First());
@@ -505,7 +521,7 @@ void BRepOffset_Analyse::AddFaces (const TopoDS_Face&    Face,
     const BRepOffset_ListOfInterval& LI = Type(E);
     if (!LI.IsEmpty() && 
 	(LI.First().Type() == T1 || LI.First().Type() == T2)) {
-      // alors ca y est <NewFace> est raccordee G1 a <Face>
+      // so <NewFace> is attached to G1 by <Face>
       const TopTools_ListOfShape& L = Ancestors(E);
       if (L.Extent() == 2) {
 	TopoDS_Face F1 = TopoDS::Face(L.First());

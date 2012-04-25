@@ -1,7 +1,0 @@
-+V HLRTest:msentity:HLRTest .
-+V HLRTest:msentity:HLRTest_ShapeData .
-+V HLRTest:msentity:HLRTest_DrawableEdgeTool .
-+V HLRTest:msentity:HLRTest_DrawablePolyEdgeTool .
-+V HLRTest:msentity:HLRTest_Projector .
-+V HLRTest:msentity:HLRTest_OutLiner .
-- HLRTest:admfile:HLRTest_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/HLRTest/HLRTest_xcpp_fill.Out

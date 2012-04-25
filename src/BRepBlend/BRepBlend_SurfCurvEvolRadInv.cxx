@@ -1,7 +1,23 @@
-// File:	BRepBlend_SurfCurvEvolRadInv.cxx
-// Created:	Tue Jul 29 12:13:34 1997
-// Author:	Jerome LEMONIER
-//		<jlr@sgi64>
+// Created on: 1997-07-29
+// Created by: Jerome LEMONIER
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepBlend_SurfCurvEvolRadInv.ixx>
@@ -100,9 +116,6 @@ const Handle(Adaptor3d_HCurve)& Cg,
   ray=sg1*ray;
   dray=sg1*dray;
   gp_Vec nplan = d1gui.Multiplied(unsurnormd1gui);
-#ifdef DEB
-  Standard_Real theD = -(nplan.XYZ().Dot(ptgui.XYZ()));
-#endif
   gp_Vec dnplan;
   dnplan.SetLinearForm(-nplan.Dot(d2gui),nplan,d2gui);
   dnplan.Multiply(unsurnormd1gui);

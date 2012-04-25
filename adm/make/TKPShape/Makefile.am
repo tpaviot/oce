@@ -25,7 +25,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/PBRep -I@top_srcdir@/src/PBRep \
 -I@top_srcdir@/drv/PTopoDS -I@top_srcdir@/src/PTopoDS \
@@ -46,14 +46,14 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKPShape.la
 
-libTKPShape_la_LIBADD = \
+libTKPShape_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKMath/libTKMath.la \
-../TKG2d/libTKG2d.la \
 ../TKernel/libTKernel.la \
-../PTKernel/libPTKernel.la \
-../TKBRep/libTKBRep.la \
+../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
-$(STLPort_LIB) 
+../PTKernel/libPTKernel.la \
+../TKBRep/libTKBRep.la
+
 
 libTKPShape_la_SOURCES = \
 @top_srcdir@/drv/PColPGeom/PColPGeom_FieldOfHArray1OfBSplineCurve_0.cxx \

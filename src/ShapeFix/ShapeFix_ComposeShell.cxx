@@ -1,7 +1,23 @@
-// File:	ShapeFix_ComposeShell.cxx
-// Created:	Tue Apr 27 11:34:07 1999
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 1999-04-27
+// Created by: Andrey BETENEV
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //    pdn  01.06.99 S4205: handling not-SameRange edges
 //    abv  22.07.99 implementing patch indices
 //    svv  10.01.00 porting on DEC
@@ -1992,7 +2008,7 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
     Standard_Integer index = 0;
     Standard_Boolean misoriented = Standard_True, samepatch = Standard_False;
     Standard_Boolean reverse = Standard_False, connected = Standard_False;
-    Standard_Real angle = -PI, mindist = RealLast();
+    Standard_Real angle = -M_PI, mindist = RealLast();
     Standard_Integer weigth = 0;
     Standard_Real shiftu=0., shiftv=0.;
 
@@ -2083,8 +2099,8 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
 	}
 	
 	// short segment is to be taken with highest priority by angle
-        Standard_Real ang = ( shorts(i) >0 ? PI : endTan.Angle ( lVec ) );
-	if ( myClosedMode && shorts(i) <=0 && PI-ang < ::Precision::Angular() )
+        Standard_Real ang = ( shorts(i) >0 ? M_PI : endTan.Angle ( lVec ) );
+	if ( myClosedMode && shorts(i) <=0 && M_PI-ang < ::Precision::Angular() )
 	  ang = 0.; // abv 21 Mar 00: trj3_s1-md-214.stp #2471: avoid going back
         // abv 05 Feb 02: face from Parasolid: use tolerance of edges for check
         // for coincidence (instead of vertex tolerance) in order 

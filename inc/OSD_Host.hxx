@@ -66,8 +66,6 @@ public:
   Standard_EXPORT     Standard_Integer AvailableMemory() ;
   //! Returns Internet address of current host. <br>
   Standard_EXPORT     TCollection_AsciiString InternetAddress() ;
-  //! Returns Ethernet address of current host. <br>
-  Standard_EXPORT     TCollection_AsciiString EthernetAddress() ;
   //! Returns type of current machine. <br>
   Standard_EXPORT     OSD_OEMType MachineType() ;
   //! Returns TRUE if an error occurs <br>

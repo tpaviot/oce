@@ -1,7 +1,23 @@
-// File:	Select3D_Projector.cxx
-// Created:	Fri Mar 13 11:08:32 1992
-// Author:	Christophe MARION
-//		<cma@sdsun2>
+// Created on: 1992-03-13
+// Created by: Christophe MARION
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define IMP240100	//GG
 //			Change RefToPix()/Convert() to Project() method.
@@ -28,9 +44,6 @@
 Select3D_Projector::Select3D_Projector(const Handle(V3d_View)& aViou)
 : myPersp(aViou->Type()==V3d_PERSPECTIVE),
   myFocus(aViou->Focale()),
-  myD1(1,0),
-  myD2(0,1),
-  myD3(1,1),
   myView(aViou),
   myDepthMin(-Precision::Infinite()),
   myDepthMax( Precision::Infinite())
@@ -60,14 +73,10 @@ Select3D_Projector::Select3D_Projector(const Handle(V3d_View)& aViou)
 Select3D_Projector::Select3D_Projector()
 : myPersp(Standard_False),
   myFocus(0),
-  myD1(1,0),
-  myD2(0,1),
-  myD3(1,1),
   myDepthMin(-Precision::Infinite()),
   myDepthMax( Precision::Infinite())
 {
   Scaled();
-  SetDirection();
 }
 
 //=======================================================================
@@ -84,7 +93,6 @@ Select3D_Projector::Select3D_Projector (const gp_Ax2& CS)
   myScaledTrsf.SetTransformation(CS);
   myGTrsf.SetTrsf(myScaledTrsf);
   Scaled();
-  SetDirection();
 }
 
 //=======================================================================
@@ -102,7 +110,6 @@ Select3D_Projector::Select3D_Projector (const gp_Ax2& CS,
   myScaledTrsf.SetTransformation(CS);
   myGTrsf.SetTrsf(myScaledTrsf);
   Scaled();
-  SetDirection();
 }
 
 //=======================================================================
@@ -116,31 +123,6 @@ Select3D_Projector::Select3D_Projector (const gp_Trsf& T,
 : myPersp(Persp),
   myFocus(Focus),
   myScaledTrsf(T),
-  myDepthMin(-Precision::Infinite()),
-  myDepthMax( Precision::Infinite())
-{
-  myGTrsf.SetTrsf(myScaledTrsf);
-  Scaled();
-  SetDirection();
-}
-
-//=======================================================================
-//function : Select3D_Projector
-//purpose  :
-//=======================================================================
-
-Select3D_Projector::Select3D_Projector (const gp_Trsf& T,
-                                        const Standard_Boolean Persp,
-                                        const Standard_Real Focus,
-                                        const gp_Vec2d& v1,
-                                        const gp_Vec2d& v2,
-                                        const gp_Vec2d& v3)
-: myPersp(Persp),
-  myFocus(Focus),
-  myScaledTrsf(T),
-  myD1(v1),
-  myD2(v2),
-  myD3(v3),
   myDepthMin(-Precision::Infinite()),
   myDepthMax( Precision::Infinite())
 {
@@ -163,7 +145,6 @@ Select3D_Projector::Select3D_Projector (const gp_GTrsf& GT,
   myDepthMax( Precision::Infinite())
 {
   Scaled();
-  SetDirection();
 }
 
 //=======================================================================
@@ -180,7 +161,6 @@ void Select3D_Projector::Set
   myFocus      = Focus;
   myScaledTrsf = T;
   Scaled();
-  SetDirection();
 }
 
 //=======================================================================
@@ -438,19 +418,6 @@ void Select3D_Projector::Project (const gp_Pnt& P,
   }
 }
 
-//=======================================================================
-//function : BoxAdd
-//purpose  :
-//=======================================================================
-
-void Select3D_Projector::BoxAdd
-  (const gp_Pnt2d& P,
-   Bnd_Box& B) const
-{
-  gp_Vec2d V(P.X(),P.Y());
-  gp_Pnt PP(myD1 * V, myD2 * V, myD3 * V);
-  B.Add(PP);
-}
 
 //=======================================================================
 //function : Shoot
@@ -475,30 +442,6 @@ gp_Lin Select3D_Projector::Shoot
   return L;
 }
 
-
-//=======================================================================
-//function : SetDirection
-//purpose  :
-//=======================================================================
-
-void Select3D_Projector::SetDirection ()
-{
-  gp_Vec V1(1,0,0);
-  Transform(V1);
-  if ((Abs(V1.X()) + Abs(V1.Y())) < Precision::Angular()) V1.SetCoord(1,1,0);
-  gp_Vec2d D1(V1.X(),V1.Y());
-  myD1.SetCoord(-D1.Y(),D1.X());
-  gp_Vec V2(0,1,0);
-  Transform(V2);
-  if ((Abs(V2.X()) + Abs(V2.Y())) < Precision::Angular()) V2.SetCoord(1,1,0);
-  gp_Vec2d D2(V2.X(),V2.Y());
-  myD2.SetCoord(-D2.Y(),D2.X());
-  gp_Vec V3(0,0,1);
-  Transform(V3);
-  if ((Abs(V3.X()) + Abs(V3.Y())) < Precision::Angular()) V3.SetCoord(1,1,0);
-  gp_Vec2d D3(V3.X(),V3.Y());
-  myD3.SetCoord(-D3.Y(),D3.X());
-}
 
 void Select3D_Projector::SetView(const Handle(V3d_View)& aViou)
 {

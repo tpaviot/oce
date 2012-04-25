@@ -1,7 +1,0 @@
-+V XmlLDrivers:msentity:XmlLDrivers .
-+V XmlLDrivers:msentity:XmlLDrivers_DocumentStorageDriver .
-+V XmlLDrivers:msentity:XmlLDrivers_DocumentRetrievalDriver .
-+V XmlLDrivers:msentity:XmlLDrivers_NamespaceDef .
-+V XmlLDrivers:msentity:XmlLDrivers_SequenceOfNamespaceDef .
-+V XmlLDrivers:msentity:XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef .
-- XmlLDrivers:admfile:XmlLDrivers_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/XmlLDrivers/XmlLDrivers_xcpp_fill.Out

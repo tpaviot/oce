@@ -1,8 +1,0 @@
-+ BRepClass:pubinclude:BRepClass_Edge.lxx BRepClass:source:BRepClass_Edge.lxx
-+ BRepClass:pubinclude:BRepClass_FaceExplorer.lxx BRepClass:source:BRepClass_FaceExplorer.lxx
-+ BRepClass:dbadmfile:BRepClass_obj_inc.In BRepClass:admfile:BRepClass_src.Out
-+ * BRepClass:admfile:BRepClass_xcpp_src.Out
-+ BRepClass:dbadmfile:BRepClass_obj_inc.Out BRepClass:admfile:BRepClass_src.Out
-+ * BRepClass:admfile:BRepClass_xcpp_src.Out
-+ BRepClass:dbadmfile:BRepClass_obj_inc.Dep BRepClass:admfile:BRepClass_src.Out
-+ * BRepClass:admfile:BRepClass_xcpp_src.Out

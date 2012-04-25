@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BOPTColStd -I@top_srcdir@/src/BOPTColStd \
 -I@top_srcdir@/drv/BOPTools -I@top_srcdir@/src/BOPTools \
@@ -28,16 +28,16 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBO.la
 
-libTKBO_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKG3d/libTKG3d.la \
+libTKBO_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKMath/libTKMath.la \
-../TKBRep/libTKBRep.la \
+../TKernel/libTKernel.la \
 ../TKG2d/libTKG2d.la \
+../TKG3d/libTKG3d.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-$(STLPort_LIB) 
+../TKGeomBase/libTKGeomBase.la
+
 
 libTKBO_la_SOURCES = \
 @top_srcdir@/drv/BOP/BOP_IndexedDataMapNodeOfIndexedDataMapOfEdgeListFaceInfo_0.cxx \

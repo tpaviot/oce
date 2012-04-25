@@ -1,7 +1,23 @@
-// File:	MainWindow.cxx
-// Created:	Thu Aug  6 10:00:35 1998
-// Author:	Administrateur Atelier MDL
-//		<mdl@efalakox.paris1.matra-dtv.fr>
+// Created on: 1998-08-06
+// Created by: Administrateur Atelier MDL
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 
@@ -15,7 +31,7 @@
 #include <Draw_Window.hxx>
 #include <CommandWindow.h>
 
-Standard_Boolean Draw_Interprete(char* command); // Implemente dans Draw.cxx
+Standard_Boolean Draw_Interprete(char* command); // Implemented in Draw.cxx
 extern Standard_Boolean Draw_IsConsoleSubsystem;
 
 //extern "C" int  compat_unlink(const char *fname); // Implemente dans TCL
@@ -59,14 +75,14 @@ LONG APIENTRY WndProc(HWND hWndFrame, UINT wMsg, WPARAM wParam, LONG lParam )
 
 /*--------------------------------------------------------------------------*\
 |  CLIENT CREATE PROCEDURE
-|     Handler pour le message WM_CREATE. Creation de la fenetre de control MDI
+|     Handler for message WM_CREATE. Creation of control window MDI
 |
 \*--------------------------------------------------------------------------*/
 BOOL CreateProc(HWND hWndFrame)
 {
   HWND hWnd;
 
-  // Enregistre le hWnd dans la fenetre principale dans extra memory en 0
+  // Save hWnd in the main window in extra memory in 0
   if (hWnd = CreateMDIClientWindow(hWndFrame))
     SetWindowLong(hWndFrame, CLIENTWND, (LONG)hWnd);
   return(TRUE);
@@ -75,12 +91,12 @@ BOOL CreateProc(HWND hWndFrame)
 
 /*--------------------------------------------------------------------------*\
 |  COMMAND PROCEDURE
-|  		Handler pour le message WM_COMMAND   
+|  		Handler for message WM_COMMAND   
 |
 \*--------------------------------------------------------------------------*/
 BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
 {
-  HWND hWndClient; // Handle sur la fenetre MDI
+  HWND hWndClient; // Handle on window MDI
   HWND hWndActive;
 
 	hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND);
@@ -120,7 +136,7 @@ BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
 
 /*--------------------------------------------------------------------------*\
 |  CLIENT DESTROY PROCEDURE
-|     Handler pour le message WM_DESTROY.
+|     Handler for message WM_DESTROY.
 |
 \*--------------------------------------------------------------------------*/
 VOID DestroyProc(HWND hWnd)

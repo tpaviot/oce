@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_RegularizeW.cxx
-// Created:	Wed Dec 23 15:34:12 1998
-// Author:      Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1998-12-23
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <TopOpeBRepTool.hxx>
@@ -626,10 +642,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_ClassifW(const TopoDS_Face& F,
   // noldW = 1
   // ---------
   if (noldW == 1) {
-#ifdef DEB
-    const TopoDS_Shape& owi =
-#endif  
-                     itm.Key(); // DEB
     const TopTools_ListOfShape& low = itm.Value();
     Standard_Boolean ok = CLASSI.Classilist(low,mapWlow);
     if (!ok) return Standard_False;
@@ -662,10 +674,7 @@ Standard_EXPORT Standard_Boolean FUN_tool_ClassifW(const TopoDS_Face& F,
     if (!isb1) continue; 
 
     const TopTools_ListOfShape& lw1 = mapOwNw.Find(Ow1);
-#ifdef DEB
-    Standard_Integer nw1 =
-#endif
-              lw1.Extent();
+
     if (nOw == 1) { 
       // all wires of <mapWs> have been treated, except the last one
       // if (nw1 == 0) mapWlow binds already (Ow1,null); 
@@ -706,10 +715,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_ClassifW(const TopoDS_Face& F,
 		cout<<endl;}
 #endif
       const TopTools_ListOfShape& lw2 = mapOwNw.Find(Ow2);
-#ifdef DEB
-      Standard_Integer nw2 =
-#endif
-                lw2.Extent();
      
       TopTools_ListOfShape lw1r; FUN_addOwlw(Ow1,lw1,lw1r);
       TopTools_ListOfShape lw2r; FUN_addOwlw(Ow2,lw2,lw2r);

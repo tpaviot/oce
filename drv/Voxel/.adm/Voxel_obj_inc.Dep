@@ -1,8 +1,0 @@
-+ Voxel:pubinclude:Voxel_VisData.h Voxel:source:Voxel_VisData.h
-+ Voxel:pubinclude:Voxel_TypeDef.hxx Voxel:source:Voxel_TypeDef.hxx
-+ Voxel:dbadmfile:Voxel_obj_inc.In Voxel:admfile:Voxel_src.Out
-+ * Voxel:admfile:Voxel_xcpp_src.Out
-+ Voxel:dbadmfile:Voxel_obj_inc.Out Voxel:admfile:Voxel_src.Out
-+ * Voxel:admfile:Voxel_xcpp_src.Out
-+ Voxel:dbadmfile:Voxel_obj_inc.Dep Voxel:admfile:Voxel_src.Out
-+ * Voxel:admfile:Voxel_xcpp_src.Out

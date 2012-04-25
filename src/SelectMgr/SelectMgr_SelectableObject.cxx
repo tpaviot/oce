@@ -1,8 +1,23 @@
-// Copyright:   Matra-Datavision 1995
-// File:        SelectMgr_SelectableObject.cxx
-// Created:     Mon Feb 20 17:40:49 1995
-// Author:      Mister rmi
-//              <rmi>
+// Created on: 1995-02-20
+// Created by: Mister rmi
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 
@@ -216,6 +231,11 @@ void SelectMgr_SelectableObject::UpdateLocation(const Handle(SelectMgr_Selection
     SE =  *((Handle(Select3D_SensitiveEntity)*) &(Sel->Sensitive()));
     if(!SE.IsNull()){
       SE->UpdateLocation(myLocation);
+      const Handle(SelectBasics_EntityOwner)& aEOwner = SE->OwnerId();
+      Handle(SelectMgr_EntityOwner) aMgrEO =
+                              Handle(SelectMgr_EntityOwner)::DownCast (aEOwner);
+      if (!aMgrEO.IsNull())
+        aMgrEO->SetLocation (myLocation);
     }
   }
 }
@@ -237,9 +257,8 @@ void SelectMgr_SelectableObject::HilightSelected
 //=======================================================================
 void SelectMgr_SelectableObject::ClearSelected ()
 {
-  //Standard_NotImplemented::Raise ("SelectMgr_SelectableObject::HilightOwnerWithColor");
   if( !mySelectionPrs.IsNull() )
-    mySelectionPrs->Clear();  
+    mySelectionPrs->Clear();
 }
 
 //=======================================================================
@@ -303,3 +322,42 @@ Handle(Prs3d_Presentation) SelectMgr_SelectableObject::GetSelectPresentation( co
   return mySelectionPrs;
 }
 
+//=======================================================================
+//function : SetZLayer
+//purpose  :
+//=======================================================================
+void SelectMgr_SelectableObject::SetZLayer 
+  (const Handle(PrsMgr_PresentationManager)& thePrsMgr,
+   const Standard_Integer theLayerId)
+{
+  if (thePrsMgr.IsNull())
+    return;
+
+  // update own presentations
+  PrsMgr_PresentableObject::SetZLayer (thePrsMgr, theLayerId);
+
+  // update selection presentations
+  if (!mySelectionPrs.IsNull())
+    mySelectionPrs->SetZLayer (theLayerId);
+
+  if (!myHilightPrs.IsNull())
+    myHilightPrs->SetZLayer (theLayerId);
+
+  // update all entity owner presentations
+  for (Init (); More () ;Next ())
+  {
+    const Handle(SelectMgr_Selection)& aSel = CurrentSelection();
+    for (aSel->Init (); aSel->More (); aSel->Next ())
+    {
+      Handle(Select3D_SensitiveEntity) aEntity = 
+        Handle(Select3D_SensitiveEntity)::DownCast (aSel->Sensitive());
+      if (!aEntity.IsNull())
+      {
+        Handle(SelectMgr_EntityOwner) aOwner = 
+          Handle(SelectMgr_EntityOwner)::DownCast (aEntity->OwnerId());
+        if (!aOwner.IsNull())
+          aOwner->SetZLayer (thePrsMgr, theLayerId);
+      }
+    }
+  }
+}

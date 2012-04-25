@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/LocOpe -I@top_srcdir@/src/LocOpe \
 -I@top_srcdir@/drv/BRepFeat -I@top_srcdir@/src/BRepFeat
@@ -20,19 +20,19 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKFeat.la
 
-libTKFeat_la_LIBADD = \
-../TKGeomAlgo/libTKGeomAlgo.la \
-../TKernel/libTKernel.la \
-../TKBool/libTKBool.la \
-../TKG3d/libTKG3d.la \
-../TKMath/libTKMath.la \
-../TKBO/libTKBO.la \
-../TKG2d/libTKG2d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKGeomBase/libTKGeomBase.la \
+libTKFeat_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) 
+../TKG2d/libTKG2d.la \
+../TKBO/libTKBO.la \
+../TKG3d/libTKG3d.la \
+../TKBool/libTKBool.la
+
 
 libTKFeat_la_SOURCES = \
 @top_srcdir@/drv/LocOpe/LocOpe_DataMapIteratorOfDataMapOfShapePnt_0.cxx \

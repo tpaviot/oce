@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StepElement -I@top_srcdir@/src/StepElement \
 -I@top_srcdir@/drv/StepFEA -I@top_srcdir@/src/StepFEA \
@@ -24,11 +24,11 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKSTEP209.la
 
-libTKSTEP209_la_LIBADD = \
-../TKSTEPBase/libTKSTEPBase.la \
+libTKSTEP209_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
 ../TKXSBase/libTKXSBase.la \
-$(STLPort_LIB) 
+../TKSTEPBase/libTKSTEPBase.la
+
 
 libTKSTEP209_la_SOURCES = \
 @top_srcdir@/drv/StepElement/StepElement_Array1OfCurveElementEndReleasePacket_0.cxx \

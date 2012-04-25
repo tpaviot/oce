@@ -18,7 +18,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StepBasic -I@top_srcdir@/src/StepBasic \
 -I@top_srcdir@/drv/RWStepBasic -I@top_srcdir@/src/RWStepBasic \
@@ -32,11 +32,11 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKSTEPBase.la
 
-libTKSTEPBase_la_LIBADD = \
+libTKSTEPBase_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
 ../TKXSBase/libTKXSBase.la \
-../TKMath/libTKMath.la \
-$(STLPort_LIB) 
+../TKMath/libTKMath.la
+
 
 libTKSTEPBase_la_SOURCES = \
 @top_srcdir@/drv/StepBasic/StepBasic_Array1OfApproval_0.cxx \

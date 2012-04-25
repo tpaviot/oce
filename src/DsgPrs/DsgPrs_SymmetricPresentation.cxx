@@ -1,7 +1,23 @@
-// File:	DsgPrs_SymmetricPresentation.cxx
-// Created:	Wed Jan 22 18:47:51 1997
-// Author:	Prestataire Michael ALEONARD
-//		<mal>
+// Created on: 1997-01-22
+// Created by: Prestataire Michael ALEONARD
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <DsgPrs_SymmetricPresentation.ixx>
@@ -577,8 +593,8 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
 
   alpha = fabs(ParamP1 - ParamPAttach1);
   if(ParamP1 < ParamPAttach1){
-    if(alpha > PI){
-      alpha  = (2*PI) - alpha;
+    if(alpha > M_PI){
+      alpha  = (2*M_PI) - alpha;
       nbp    = (Standard_Integer ) IntegerPart(alpha/(alpha*.02));
       Dalpha = alpha/(nbp - 1);
     }
@@ -588,8 +604,8 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     }
   }
   else{
-    if(alpha > PI){
-      alpha  = (2*PI) - alpha;
+    if(alpha > M_PI){
+      alpha  = (2*M_PI) - alpha;
       nbp    = (Standard_Integer ) IntegerPart(alpha/(alpha*.02));
       Dalpha = -alpha/(nbp - 1);
     }
@@ -630,8 +646,8 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
   alpha = fabs(ParamP2 - ParamPAttach2);
   if (alpha <= Precision::Confusion()) alpha = 1.e-5;
   if(ParamP2 < ParamPAttach2){
-    if(alpha > PI){
-      alpha  = (2*PI) - alpha;
+    if(alpha > M_PI){
+      alpha  = (2*M_PI) - alpha;
       nbp    = (Standard_Integer ) IntegerPart(alpha/(alpha*.02));
       Dalpha = alpha/(nbp - 1);
     }
@@ -641,8 +657,8 @@ void DsgPrs_SymmetricPresentation::Add (const Handle(Prs3d_Presentation)& aPrese
     }
   }
   else{
-    if(alpha > PI){
-      alpha  = (2*PI) - alpha;
+    if(alpha > M_PI){
+      alpha  = (2*M_PI) - alpha;
       nbp    = (Standard_Integer ) IntegerPart(alpha/(alpha*.02));
       Dalpha = -alpha/(nbp - 1);
     }

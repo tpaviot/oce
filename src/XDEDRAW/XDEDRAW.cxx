@@ -1,7 +1,21 @@
-// File:	XDEDRAW.cxx
-// Created:	Fri Aug  4 14:38:55 2000
-// Author:	Pavel TELKOV
-//		<ptv@zamox.nnov.matra-dtv.fr>
+// Created on: 2000-08-04
+// Created by: Pavel TELKOV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 
 #include <XDEDRAW.ixx>
@@ -30,14 +44,19 @@
 #include <TDF_Data.hxx>
 #include <TDF_LabelSequence.hxx>
 #include <TDF_AttributeIterator.hxx>
+#include <TDF_Reference.hxx>
 #include <TDocStd_Document.hxx>
 #include <TDataStd_UAttribute.hxx>
 #include <TDataStd_TreeNode.hxx>
 #include <TDataStd_Integer.hxx>
 #include <TDataStd_Real.hxx>
 #include <TDataStd_Name.hxx>
+#include <TDataStd_Comment.hxx>
+#include <TDataStd_AsciiString.hxx>
 #include <TNaming_NamedShape.hxx>
+#include <TDataStd_IntegerArray.hxx>
 #include <TDataStd_RealArray.hxx>
+#include <TDataStd_ByteArray.hxx>
 #include <TPrsStd_AISPresentation.hxx>
 #include <TPrsStd_NamedShapeDriver.hxx>
 #include <TPrsStd_AISViewer.hxx>
@@ -529,7 +548,7 @@ static Standard_Integer XAttributeValue (Draw_Interpretor& di, Standard_Integer 
 
   const Handle(TDF_Attribute)& att = itr.Value();
   if ( att->IsKind(STANDARD_TYPE(TDataStd_TreeNode)) ) {
-    Standard_CString type;
+    Standard_CString type = "";
     if ( att->ID() == XCAFDoc::ShapeRefGUID() ) type = "Shape Instance Link";
     else if ( att->ID() == XCAFDoc::ColorRefGUID(XCAFDoc_ColorGen) ) type = "Generic Color Link";
     else if ( att->ID() == XCAFDoc::ColorRefGUID(XCAFDoc_ColorSurf) ) type = "Surface Color Link";
@@ -537,7 +556,6 @@ static Standard_Integer XAttributeValue (Draw_Interpretor& di, Standard_Integer 
     else if ( att->ID() == XCAFDoc::DimTolRefGUID() ) type = "DGT Link";
     else if ( att->ID() == XCAFDoc::DatumRefGUID() ) type = "Datum Link";
     else if ( att->ID() == XCAFDoc::MaterialRefGUID() ) type = "Material Link";
-    else return 0;
     Handle(TDataStd_TreeNode) TN = Handle(TDataStd_TreeNode)::DownCast(att);
     TCollection_AsciiString ref;
     if ( TN->HasFather() ) {
@@ -548,13 +566,19 @@ static Standard_Integer XAttributeValue (Draw_Interpretor& di, Standard_Integer 
       di << type << " <== (" << ref.ToCString();
       Handle(TDataStd_TreeNode) child = TN->First();
       while ( ! child.IsNull() ) {
-	TDF_Tool::Entry ( child->Label(), ref );
-	if ( child != TN->First() ) di << ", ";
-	di << ref.ToCString();
-	child = child->Next();
+        TDF_Tool::Entry ( child->Label(), ref );
+        if ( child != TN->First() ) di << ", ";
+        di << ref.ToCString();
+        child = child->Next();
       }
       di << ")";
     }
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDF_Reference)) ) {
+    Handle(TDF_Reference) val = Handle(TDF_Reference)::DownCast ( att );
+    TCollection_AsciiString ref;
+    TDF_Tool::Entry ( val->Get(), ref );
+    di << "==> " << ref.ToCString();
   }
   else if ( att->IsKind(STANDARD_TYPE(TDataStd_Integer)) ) {
     Handle(TDataStd_Integer) val = Handle(TDataStd_Integer)::DownCast ( att );
@@ -565,6 +589,51 @@ static Standard_Integer XAttributeValue (Draw_Interpretor& di, Standard_Integer 
     Handle(TDataStd_Real) val = Handle(TDataStd_Real)::DownCast ( att );
     TCollection_AsciiString str ( val->Get() );
     di << str.ToCString();
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_Name)) ) {
+    Handle(TDataStd_Name) val = Handle(TDataStd_Name)::DownCast ( att );
+    TCollection_AsciiString str ( val->Get(), '?' );
+    di << str.ToCString();
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_Comment)) ) {
+    Handle(TDataStd_Comment) val = Handle(TDataStd_Comment)::DownCast ( att );
+    TCollection_AsciiString str ( val->Get(), '?' );
+    di << str.ToCString();
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_AsciiString)) ) {
+    Handle(TDataStd_AsciiString) val = Handle(TDataStd_AsciiString)::DownCast ( att );
+    TCollection_AsciiString str ( val->Get(), '?' );
+    di << str.ToCString();
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_IntegerArray)) ) {
+    Handle(TDataStd_IntegerArray) val = Handle(TDataStd_IntegerArray)::DownCast ( att );
+    for ( Standard_Integer j=val->Lower(); j <= val->Upper(); j++ ) {
+      if ( j > val->Lower() ) di << ", ";
+      TCollection_AsciiString str ( val->Value(j) );
+      di << str.ToCString();
+    }
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_RealArray)) ) {
+    Handle(TDataStd_RealArray) val = Handle(TDataStd_RealArray)::DownCast ( att );
+    for ( Standard_Integer j=val->Lower(); j <= val->Upper(); j++ ) {
+      if ( j > val->Lower() ) di << ", ";
+      TCollection_AsciiString str ( val->Value(j) );
+      di << str.ToCString();
+    }
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TDataStd_ByteArray)) ) {
+    Handle(TDataStd_ByteArray) val = Handle(TDataStd_ByteArray)::DownCast ( att );
+    for ( Standard_Integer j=val->Lower(); j <= val->Upper(); j++ ) {
+      if ( j > val->Lower() ) di << ", ";
+      TCollection_AsciiString str ( val->Value(j) );
+      di << str.ToCString();
+    }
+  }
+  else if ( att->IsKind(STANDARD_TYPE(TNaming_NamedShape)) ) {
+    Handle(TNaming_NamedShape) val = Handle(TNaming_NamedShape)::DownCast ( att );
+    TopoDS_Shape S = val->Get();
+    di << S.TShape()->DynamicType()->Name();
+    if ( ! S.Location().IsIdentity() ) di << "(located)";
   }
   else if ( att->IsKind(STANDARD_TYPE(XCAFDoc_Volume)) ) {
     Handle(XCAFDoc_Volume) val = Handle(XCAFDoc_Volume)::DownCast ( att );
@@ -586,25 +655,6 @@ static Standard_Integer XAttributeValue (Draw_Interpretor& di, Standard_Integer 
     di <<" , ";
     di << myCentroid.Z();
     di << ")";
-  }
-  else if ( att->IsKind(STANDARD_TYPE(TDataStd_Name)) ) {
-    Handle(TDataStd_Name) val = Handle(TDataStd_Name)::DownCast ( att );
-    TCollection_AsciiString str ( val->Get(), '?' );
-    di << str.ToCString();
-  }
-  else if ( att->IsKind(STANDARD_TYPE(TDataStd_RealArray)) ) {
-    Handle(TDataStd_RealArray) val = Handle(TDataStd_RealArray)::DownCast ( att );
-    for ( Standard_Integer j=val->Lower(); j <= val->Upper(); j++ ) {
-      if ( j > val->Lower() ) di << ", ";
-      TCollection_AsciiString str ( val->Value(j) );
-      di << str.ToCString();
-    }
-  }
-  else if ( att->IsKind(STANDARD_TYPE(TNaming_NamedShape)) ) {
-    Handle(TNaming_NamedShape) val = Handle(TNaming_NamedShape)::DownCast ( att );
-    TopoDS_Shape S = val->Get();
-    di << S.TShape()->DynamicType()->Name();
-    if ( ! S.Location().IsIdentity() ) di << "(located)";
   }
   else if ( att->IsKind(STANDARD_TYPE(TDataStd_UAttribute)) ) {
     if ( att->ID() == XCAFDoc::AssemblyGUID() ) di << "is assembly";
@@ -732,6 +782,55 @@ static Standard_Integer getviewName (Draw_Interpretor&  di, Standard_Integer /*a
 
 
 //=======================================================================
+//function : XSetTransparency
+//purpose  :
+//=======================================================================
+static Standard_Integer XSetTransparency (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc < 3) {
+    di<<"Use: "<<argv[0]<<" Doc Transparency [label1 label2 ...] "<<"\n";
+    return 1;
+  }
+
+  Handle(TDocStd_Document) Doc;
+  DDocStd::GetDocument(argv[1], Doc);
+  if ( Doc.IsNull() ) { di << argv[1] << " is not a document" << "\n"; return 1; }
+
+  const Standard_Real aTransparency = atof(argv[2]);
+
+  // collect sequence of labels
+  Handle(XCAFDoc_ShapeTool) shapes = XCAFDoc_DocumentTool::ShapeTool(Doc->Main());
+  TDF_LabelSequence seq;
+  if ( argc > 3 ) {
+    for ( Standard_Integer i=3; i < argc; i++ ) {
+      TDF_Label aLabel;
+      TDF_Tool::Label(Doc->GetData(), argv[i], aLabel);
+      if ( aLabel.IsNull() || ! shapes->IsShape ( aLabel ) ) {
+        di << argv[i] << " is not a valid shape label!";
+        continue;
+      }
+      seq.Append ( aLabel );
+    }
+  }
+  else {
+    shapes->GetFreeShapes ( seq );
+  }
+
+  // find presentations and set transparency
+  for ( Standard_Integer i=1; i <= seq.Length(); i++ ) {
+    Handle(TPrsStd_AISPresentation) prs;
+    if ( ! seq.Value(i).FindAttribute ( TPrsStd_AISPresentation::GetID(), prs ) ) {
+      prs = TPrsStd_AISPresentation::Set(seq.Value(i),XCAFPrs_Driver::GetID());
+      prs->SetMaterial ( Graphic3d_NOM_PLASTIC );
+    }
+    prs->SetTransparency( aTransparency );
+  }
+  TPrsStd_AISViewer::Update(Doc->GetData()->Root());
+  return 0;
+}
+
+
+//=======================================================================
 //function : Init
 //purpose  :
 //=======================================================================
@@ -791,6 +890,9 @@ void XDEDRAW::Init(Draw_Interpretor& di)
 
   di.Add ("XGetViewNameMode", "\t: Print if  mode of displaying names is turn on.",
 		   __FILE__, getviewName, g);
+
+  di.Add ("XSetTransparency", "Doc Transparency [label1 label2 ...]\t: Set transparency for given label(s) or whole doc",
+		   __FILE__, XSetTransparency, g);
 
   // Specialized commands
   XDEDRAW_Shapes::InitCommands ( di );

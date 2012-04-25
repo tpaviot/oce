@@ -1,7 +1,23 @@
-// File:      IntPatch_LineConstructor.cxx
-// Created:   Thu Nov  7 11:26:20 1996 
-// Author:    Laurent BUCHARD
-// Copyright: OPEN CASCADE 1996
+// Created on: 1996-11-07
+// Created by: Laurent BUCHARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_LineConstructor.ixx>
 
@@ -88,28 +104,28 @@ static void Recadre(const Handle(Adaptor3d_HSurface)& myHS1,
      }
   }
   if(myHS1IsUPeriodic) {
-    lmf = PI+PI; //-- myHS1->UPeriod();
+    lmf = M_PI+M_PI; //-- myHS1->UPeriod();
     f = myHS1->FirstUParameter();
     l = myHS1->LastUParameter();
     while(u1 < f) { u1+=lmf; } 
     while(u1 > l) { u1-=lmf; }
   }
   if(myHS1IsVPeriodic) {
-    lmf = PI+PI; //-- myHS1->VPeriod(); 
+    lmf = M_PI+M_PI; //-- myHS1->VPeriod(); 
     f = myHS1->FirstVParameter();
     l = myHS1->LastVParameter();
     while(v1 < f) { v1+=lmf; } 
     while(v1 > l) { v1-=lmf; }
   }
   if(myHS2IsUPeriodic) { 
-    lmf = PI+PI; //-- myHS2->UPeriod();
+    lmf = M_PI+M_PI; //-- myHS2->UPeriod();
     f = myHS2->FirstUParameter();
     l = myHS2->LastUParameter();
     while(u2 < f) { u2+=lmf; } 
     while(u2 > l) { u2-=lmf; }
   }
   if(myHS2IsVPeriodic) { 
-    lmf = PI+PI; //-- myHS2->VPeriod();
+    lmf = M_PI+M_PI; //-- myHS2->VPeriod();
     f = myHS2->FirstVParameter();
     l = myHS2->LastVParameter();
     while(v2 < f) { v2+=lmf; } 
@@ -318,7 +334,7 @@ static Standard_Real LocalLastParameter (const Handle(IntPatch_Line)& L)
 
 	case IntPatch_Circle:
 	case IntPatch_Ellipse:
-	  lastp = PI+PI;
+	  lastp = M_PI+M_PI;
 	  break;
 	default:
 	  {
@@ -694,9 +710,9 @@ static void AddLine(const Handle(IntPatch_Line)& L,
       if(i!=j) { 
 	if ((typl == IntPatch_Circle || typl == IntPatch_Ellipse) && i>j) {
 	  IntPatch_Point Vtx=GLine->Vertex(j);
-	  Vtx.SetParameter(GLine->Vertex(j).ParameterOnLine()+PI+PI);
+	  Vtx.SetParameter(GLine->Vertex(j).ParameterOnLine()+M_PI+M_PI);
 	  glig->AddVertex(Vtx);
-	  IndexLastVertex+=AppendSameVertexG(glig,GLine,j,PI+PI,TabIndex);
+	  IndexLastVertex+=AppendSameVertexG(glig,GLine,j,M_PI+M_PI,TabIndex);
 	}
 	else {
 	  glig->AddVertex(GLine->Vertex(j));
@@ -1395,10 +1411,6 @@ void IntPatch_LineConstructor::Perform(const IntPatch_SequenceOfLine& slinref,
   }
   else if (typl != IntPatch_Restriction) { // JAG 01.07.96
     Standard_Real u1,v1,u2,v2;
-#ifdef DEB
-    Standard_Real paramminonvtx=RealLast();
-    Standard_Real parammaxonvtx=-paramminonvtx;
-#endif
     Handle(IntPatch_GLine)& GLine 
       =  *((Handle(IntPatch_GLine) *)&L);
     slin.Clear();
@@ -1468,12 +1480,12 @@ void IntPatch_LineConstructor::Perform(const IntPatch_SequenceOfLine& slinref,
     }
     if(typl == IntPatch_Circle || typl == IntPatch_Ellipse) { 
       firstp = GLine->Vertex(nbvtx).ParameterOnLine();
-      lastp  = PI + PI + GLine->Vertex(1).ParameterOnLine();
+      lastp  = M_PI + M_PI + GLine->Vertex(1).ParameterOnLine();
       Standard_Real cadrinf = LocalFirstParameter(L);
       Standard_Real cadrsup = LocalLastParameter(L);
       Standard_Real acadr = (firstp+lastp)*0.5;
-      while(acadr < cadrinf) { acadr+=PI+PI; }
-      while(acadr > cadrsup) { acadr-=PI+PI; } 
+      while(acadr < cadrinf) { acadr+=M_PI+M_PI; }
+      while(acadr > cadrsup) { acadr-=M_PI+M_PI; } 
       if(acadr>=cadrinf && acadr<=cadrsup) { 
 	if(Abs(firstp-lastp)>Precision::PConfusion()) {
 	  intrvtested = Standard_True;

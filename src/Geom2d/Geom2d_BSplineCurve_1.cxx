@@ -1,12 +1,24 @@
-// File:	Geom2d_BSplineCurve_1.cxx
-// Created:	Wed Mar 31 18:11:15 1993
-// Author:	JCV
-//		<fid@sdsun2>
-// Copyright:	Matra Datavision 1993
+// Created on: 1991-07-05
+// Created by: JCV
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File:	Geom2d_BSplineCurve_1.cxx
-// Created:	Fri Jul  5 16:37:59 1991
-// Author:	JCV
+
 // 03-02-97 : pmn ->LocateU sur Periodic (PRO6963), 
 //            bon appel a LocateParameter (PRO6973) et mise en conformite avec
 //            le cdl de LocateU, lorsque U est un noeud (PRO6988)
@@ -711,23 +723,24 @@ void Geom2d_BSplineCurve::LocateU
   PeriodicNormalization(NewU); //Attention a la periode
   Standard_Real UFirst = CKnots (1);
   Standard_Real ULast  = CKnots (CKnots.Length());
-  if (Abs (NewU - UFirst) <= Abs(ParametricTolerance)) { I1 = I2 = 1; }
-  else if (Abs (U - ULast) <= Abs(ParametricTolerance)) { 
+  Standard_Real PParametricTolerance = Abs(ParametricTolerance);
+  if (Abs (NewU - UFirst) <= PParametricTolerance) { I1 = I2 = 1; }
+  else if (Abs (NewU - ULast) <= PParametricTolerance) { 
     I1 = I2 = CKnots.Length();
   }
-  else if (NewU < UFirst - Abs(ParametricTolerance)) {
+  else if (NewU < UFirst) {
     I2 = 1;
     I1 = 0;
   }
-  else if (NewU > ULast + Abs(ParametricTolerance)) {
+  else if (NewU > ULast) {
     I1 = CKnots.Length();
     I2 = I1 + 1;
   }
   else {
     I1 = 1;
     BSplCLib::Hunt (CKnots, NewU, I1);
-    while ( Abs( CKnots(I1+1) - NewU) <= Abs(ParametricTolerance)) I1++;
-    if ( Abs( CKnots(I1) - NewU) <= Abs(ParametricTolerance)) {
+    while ( Abs( CKnots(I1+1) - NewU) <= PParametricTolerance) I1++;
+    if ( Abs( CKnots(I1) - NewU) <= PParametricTolerance) {
       I2 = I1;
     }
     else {

@@ -1,7 +1,23 @@
-// File:	DBRep.cxx
-// Created:	Wed Jul 21 16:11:15 1993
-// Author:	Remi LEQUETTE
-//		<rle@nonox>
+// Created on: 1993-07-21
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -52,7 +68,7 @@ extern Draw_Viewer dout;
 
 
 //==========================================
-// usefull methods
+// useful methods
 //==========================================
 
 Standard_EXPORT void DBRep_WriteColorOrientation ()
@@ -97,9 +113,9 @@ static Standard_Real    size    = 100.;
 static Standard_Integer discret = 30;
 static Standard_Boolean disptriangles = Standard_False;
 static Standard_Boolean disppolygons = Standard_False;
-static Standard_Real    anglHLR = 35 * PI / 180;
-static Standard_Real    HAngMin =  1 * PI / 180;
-static Standard_Real    HAngMax = 35 * PI / 180;
+static Standard_Real    anglHLR = 35 * M_PI / 180;
+static Standard_Real    HAngMin =  1 * M_PI / 180;
+static Standard_Real    HAngMax = 35 * M_PI / 180;
 static Standard_Boolean withHLR = Standard_False;
 static Standard_Boolean withRg1 = Standard_True;
 static Standard_Boolean withRgN = Standard_False;
@@ -171,8 +187,8 @@ static Standard_Integer hlr (Draw_Interpretor& di,
       else         di << " no HiddenLines";
       di << "\n";
       if (withHLR) {
-	di << "Angle de discretisation : ";
-	di << anglHLR * 180 / PI << " degres" << "\n";
+	di << "Angle of discretization : ";
+	di << anglHLR * 180 / M_PI << " degrees" << "\n";
       }
     }
     else di << " wireframe";
@@ -207,7 +223,7 @@ static Standard_Integer hlr (Draw_Interpretor& di,
     }
     else if (!strcasecmp(a[1],"ang"  )) {
       di << "Angle de discretisation : ";
-      di << anglHLR * 180 / PI << " degres" << "\n";
+      di << anglHLR * 180 / M_PI << " degres" << "\n";
     }
     else return 1;
   }
@@ -218,12 +234,12 @@ static Standard_Integer hlr (Draw_Interpretor& di,
     nFirst = 3;
     if (n == 3) {
       Standard_Real ang = atof(a[2]);
-      anglHLR = ang * PI / 180;
+      anglHLR = ang * M_PI / 180;
       if (anglHLR < HAngMin) anglHLR = HAngMin;
       if (anglHLR > HAngMax) anglHLR = HAngMax;
     }
-    di << "Angle de discretisation : ";
-    di << anglHLR * 180 / PI << " degres" << "\n";
+    di << "Angle of discretization : ";
+    di << anglHLR * 180 / M_PI << " degrees" << "\n";
   }
 
   if (n >= nFirst + 1) {
@@ -264,7 +280,7 @@ static Standard_Integer hlr (Draw_Interpretor& di,
 	  }
 	  else if (!strcasecmp(a[1],"ang"  )) {
 	    Standard_Real ang = atof(a[2]);
-	    localAng = ang * PI / 180;
+	    localAng = ang * M_PI / 180;
 	  }
 	  else return 1;
 	  S->DisplayHLR(localHLR, localRg1, localRgN, localHid,
@@ -759,7 +775,7 @@ static Standard_Integer orientation(Draw_Interpretor& ,
 #include <TCollection_AsciiString.hxx>
 
 //=======================================================================
-// numshapes meme chose que nbshapes sauf que la sortie est cout
+// numshapes same as nbshapes but the output is cout
 //=======================================================================
 
 static Standard_Integer numshapes(Draw_Interpretor& di,
@@ -1151,7 +1167,7 @@ void  DBRep::BasicCommands(Draw_Interpretor& theCommands)
 //  theCommands.Add("dumpmmgt",
 //		  "dump le contenu du gestionnaire de memoire",__FILE__,dumpmmgt,g);
   theCommands.Add("purgemmgt",
-		  "rend la memoire libre du gestionnaire de memoire au systeme",
+		  "returns the free memory from the system to the memory manager",
 		  __FILE__,purgemmgt,g);
   
   // Add command for DRAW-specific ProgressIndicator

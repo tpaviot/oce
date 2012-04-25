@@ -1,6 +1,0 @@
-+V Plugin:msentity:Plugin .
-+V Plugin:msentity:Plugin_MapOfFunctions .
-+V Plugin:msentity:Plugin_DataMapNodeOfMapOfFunctions .
-+V Plugin:msentity:Plugin_DataMapIteratorOfMapOfFunctions .
-+V Plugin:msentity:Plugin_Failure .
-- Plugin:admfile:Plugin_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Plugin/Plugin_xcpp_fill.Out

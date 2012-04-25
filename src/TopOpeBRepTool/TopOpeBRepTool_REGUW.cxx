@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_REGUW.cxx
-// Created:	Tue Dec  8 18:07:24 1998
-// Author:      Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1998-12-08
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Geom2d_Curve.hxx>
@@ -298,10 +314,6 @@ Standard_Boolean TopOpeBRepTool_REGUW::MapS()
   TopExp_Explorer exe(CS, TopAbs_EDGE);
   for (; exe.More(); exe.Next()){
     const TopoDS_Edge& ed = TopoDS::Edge(exe.Current());
-#ifdef DEB
-    TopAbs_Orientation oed =
-#endif
-               ed.Orientation();
 
     Standard_Boolean isdgE = BRep_Tool::Degenerated(ed); 
     Standard_Boolean iscE = TopOpeBRepTool_TOOL::IsClosingE(ed,myCORRISO.S(),Fref()); 
@@ -482,9 +494,9 @@ Standard_Boolean TopOpeBRepTool_REGUW::InitBlock()
   for (; exv.More(); exv.Next()){
     const TopoDS_Shape& vcur = exv.Current();
     TopOpeBRepTool_connexity& cco = mymapvEds.ChangeFromKey(vcur);
-#ifdef DEB
-    Standard_Boolean ok =
-#endif
+//#ifdef DEB
+//    Standard_Boolean ok =
+//#endif
              cco.RemoveItem(myed);
 //    if (!ok) return Standard_False; see for closing vertices
   }
@@ -525,9 +537,6 @@ Standard_Boolean TopOpeBRepTool_REGUW::NearestE(const TopTools_ListOfShape& loe,
   Standard_Real fac = 0.45678;
   Standard_Real tola = Precision::Angular();
   Standard_Integer iv0e1 = (iStep == 1) ? REVERSED : FORWARD;
-#ifdef DEB
-  Standard_Integer iv1e1 = (iStep == 1) ? FORWARD : REVERSED;
-#endif
 
   // initializing 
   TopTools_ListIteratorOfListOfShape ite(loe);
@@ -542,7 +551,7 @@ Standard_Boolean TopOpeBRepTool_REGUW::NearestE(const TopTools_ListOfShape& loe,
   if (M_REVERSED(efound.Orientation())) tg2dfound.Reverse();
   Standard_Real angfound = 1.e7;
   if (iStep == 1) angfound = TopOpeBRepTool_TOOL::Matter(mytg2d,tg2dfound);
-  else            angfound = 2.*PI - TopOpeBRepTool_TOOL::Matter(tg2dfound,mytg2d);
+  else            angfound = 2.*M_PI - TopOpeBRepTool_TOOL::Matter(tg2dfound,mytg2d);
 #ifdef DEB
   if (trc) cout<<"ang(e"<<FUN_adds(myed)<<",e"<<FUN_adds(efound)<<")="<<angfound<<endl;
 #endif
@@ -564,15 +573,12 @@ Standard_Boolean TopOpeBRepTool_REGUW::NearestE(const TopTools_ListOfShape& loe,
     
     Standard_Real angi = 1.e7;
     if (iStep == 1) angi = TopOpeBRepTool_TOOL::Matter(mytg2d,tg2di);
-    else            angi = 2.*PI - TopOpeBRepTool_TOOL::Matter(tg2di,mytg2d);
+    else            angi = 2.*M_PI - TopOpeBRepTool_TOOL::Matter(tg2di,mytg2d);
     Standard_Boolean eq = Abs(angi-angfound) < tola;
 #ifdef DEB
     if (trc) cout<<"ang(e"<<FUN_adds(myed)<<",e"<<FUN_adds(ei)<<")="<<angi<<endl;
 #endif
     if (eq) {
-#ifdef DEB
-      Standard_Boolean dummy=Standard_True;//DEB
-#endif
       FUN_Raise(); 
       return Standard_False;
     }
@@ -645,16 +651,12 @@ Standard_Boolean TopOpeBRepTool_REGUW::NextinBlock()
     myed = efound;
   }
 
-#ifdef DEB
-  TopOpeBRepTool_connexity& newco =
-#endif
-                mymapvEds.ChangeFromKey(myv);
   TopExp_Explorer exv(myed, TopAbs_VERTEX);
   for (; exv.More(); exv.Next()){
     TopOpeBRepTool_connexity& cco = mymapvEds.ChangeFromKey(exv.Current());
-#ifdef DEB
-    Standard_Boolean ok =
-#endif
+//#ifdef DEB
+//    Standard_Boolean ok =
+//#endif
              cco.RemoveItem(myed);
 //    if (!ok) {FUN_Raise(); return Standard_False;} closed edges
   }

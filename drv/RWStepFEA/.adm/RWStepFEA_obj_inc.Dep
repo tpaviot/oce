@@ -1,6 +1,0 @@
-+ RWStepFEA:dbadmfile:RWStepFEA_obj_inc.In RWStepFEA:admfile:RWStepFEA_src.Out
-+ * RWStepFEA:admfile:RWStepFEA_xcpp_src.Out
-+ RWStepFEA:dbadmfile:RWStepFEA_obj_inc.Out RWStepFEA:admfile:RWStepFEA_src.Out
-+ * RWStepFEA:admfile:RWStepFEA_xcpp_src.Out
-+ RWStepFEA:dbadmfile:RWStepFEA_obj_inc.Dep RWStepFEA:admfile:RWStepFEA_src.Out
-+ * RWStepFEA:admfile:RWStepFEA_xcpp_src.Out

@@ -1,7 +1,22 @@
-// File:	BOPTools_Checker.cxx
-// Created:	Mon Aug  5 16:06:12 2002
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2002-08-05
+// Created by: Peter KURNEV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BOPTools_Checker.ixx>
@@ -60,6 +75,7 @@
 #include <BooleanOperations_AncestorsSeqAndSuccessorsSeq.hxx>
 
 #include <BOPTColStd_Failure.hxx>
+#include <IntTools_Context.hxx>
 
 //=======================================================================
 // function:  BOPTools_Checker::BOPTools_Checker
@@ -149,6 +165,10 @@ void BOPTools_Checker::Perform()
 {
   myCheckResults.Clear();
   try {
+    //
+    if (myContext.IsNull()) {
+      myContext=new IntTools_Context;
+    }
     //
     // 0. Prepare the IteratorOfCoupleOfShape
     myDSIt.SetDataStructure(myDS);
@@ -284,7 +304,7 @@ void BOPTools_Checker::PerformVE()
       continue;
     }
     //
-    aFlag=myContext.ComputeVE (aV1, aE2, aT);
+    aFlag=myContext->ComputeVE (aV1, aE2, aT);
     //
     if (!aFlag) {
       char buf[512];
@@ -345,7 +365,7 @@ void BOPTools_Checker::PerformVF()
       continue;
     }
     //
-    aFlag=myContext.ComputeVS (aV1, aF2, aU, aV);
+    aFlag=myContext->ComputeVS (aV1, aF2, aU, aV);
     //
     if (!aFlag) {
       char buf[512];
@@ -857,7 +877,7 @@ void BOPTools_Checker::PerformEF()
 	    
 	    aC.Bounds(aT1, aT2, aP1, aP2);
 	    //
-	    bValid=myContext.IsValidBlockForFaces(aT1, aT2, aC, aF1, aF2, 1.e-3);
+	    bValid=myContext->IsValidBlockForFaces(aT1, aT2, aC, aF1, aF2, 1.e-3);
 	    //
 	    if (bValid) {
 	      char buf[512];

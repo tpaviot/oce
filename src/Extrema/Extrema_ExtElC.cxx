@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <stdio.h>
 
@@ -21,10 +39,9 @@
 #include <gp_Dir.hxx>
 #include <gp_Ax1.hxx>
 
-//modified by NIZNHY-PKV Wed Sep 21 08:02:16 2011f
 static
   void RefineDir(gp_Dir& aDir);
-//modified by NIZNHY-PKV Wed Sep 21 08:02:20 2011t
+
 //=======================================================================
 //class    : ExtremaExtElC_TrigonometricRoots
 //purpose  : 
@@ -53,11 +70,10 @@ class ExtremaExtElC_TrigonometricRoots {
   }
   //
   Standard_Boolean IsARoot(Standard_Real u) {
-    Standard_Integer i;
     Standard_Real PIpPI, aEps;
     //
     aEps=RealEpsilon();
-    PIpPI=Standard_PI+Standard_PI;
+    PIpPI = M_PI + M_PI;
     for(Standard_Integer i=0 ; i<NbRoots; i++) {
       if(Abs(u - Roots[i])<=aEps) {
 	return Standard_True ;
@@ -127,7 +143,7 @@ ExtremaExtElC_TrigonometricRoots::
 	Standard_Integer j, SvNbRoots;
 	Standard_Real aTwoPI, aMaxCoef, aPrecision;
 	//
-	aTwoPI=PI+PI;
+	aTwoPI=M_PI+M_PI;
 	NbRoots=MTFR.NbSolutions();
 	for(i=0;i<NbRoots;++i) {
 	  Roots[i]=MTFR.Value(i+1);
@@ -138,15 +154,14 @@ ExtremaExtElC_TrigonometricRoots::
 	    Roots[i]=Roots[i]-aTwoPI;
 	  }
 	}
+	//
 	//-- La recherche directe donne n importe quoi. 
-	// modified by OCC  Tue Oct  3 18:41:27 2006.BEGIN
 	aMaxCoef = Max(CC,SC);
 	aMaxCoef = Max(aMaxCoef,C);
 	aMaxCoef = Max(aMaxCoef,S);
 	aMaxCoef = Max(aMaxCoef,Cte);
 	aPrecision = Max(1.e-8, 1.e-12*aMaxCoef);
-	// modified by OCC  Tue Oct  3 18:41:33 2006.END
-
+	
 	SvNbRoots=NbRoots;
 	for(i=0; i<SvNbRoots; ++i) {
 	  Standard_Real y;
@@ -176,8 +191,7 @@ ExtremaExtElC_TrigonometricRoots::
 	while(!Triee);
 	//
 	infinite_roots=Standard_False;
-	if(NbRoots==0) { 
-	  //--!!!!! Detection du cas Pol = Cte ( 1e-50 ) !!!!
+	if(NbRoots==0) { //--!!!!! Detect case Pol = Cte ( 1e-50 ) !!!!
 	  if((Abs(CC) + Abs(SC) + Abs(C) + Abs(S)) < 1e-10) {
 	    if(Abs(Cte) < 1e-10)  {
 	      infinite_roots=Standard_True;
@@ -187,7 +201,7 @@ ExtremaExtElC_TrigonometricRoots::
       } // else #1
     } // if(MTFR.IsDone()) {
     else {
-	// on essaie en mettant les tres petits coeff. a ZERO
+	// try to set very small coefficients to ZERO
       if (Abs(CC)<1e-10) {
 	cc = 0.0;
       }
@@ -223,26 +237,25 @@ Extrema_ExtElC::Extrema_ExtElC ()
 Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
 				const gp_Lin& C2,
 				const Standard_Real)
-// Fonction:
-//    Recherche de la distance minimale entre 2 droites.
+// Function:
+//   Find min distance between 2 straight lines.
 
-// Methode:
-//   Soit D1 et D2, les 2 directions des droites C1 et C2.
-//   2 cas sont consideres:
-//   1- si Angle(D1,D2) < AngTol, les droites sont paralleles.
-//      La distance est la distance entre un point quelconque de C1 et la droite
-//      C2.
-//   2- si Angle(D1,D2) > AngTol:
-//      Soit P1=C1(u1) et P2=C2(u2) les 2 points solutions:
-//      Alors, ( P1P2.D1 = 0. (1)
+// Method:
+//   Let D1 and D2, be 2 directions of straight lines C1 and C2.
+//   2 cases are considered:
+//   1- if Angle(D1,D2) < AngTol, straight lines are parallel.
+//      The distance is the distance between a point of C1 and the straight line C2.
+//   2- if Angle(D1,D2) > AngTol:
+//      Let P1=C1(u1) and P2=C2(u2) be 2 solution points:
+//      Then, ( P1P2.D1 = 0. (1)
 //             ( P1P2.D2 = 0. (2)
-//   Soit O1 et O2 les origines de C1 et C2;
-//   Alors, (1) <=> (O1P2-u1*D1).D1 = 0.       car O1P1 = u1*D1
-// 	     <=> u1 = O1P2.D1               car D1.D1 = 1.
-//          (2) <=> (P1O2+u2*D2).D2 = 0.       car O2P2 = u2*D2
-// 	     <=> u2 = O2P1.D2               car D2.D2 = 1.
+//   Let O1 and O2 be the origins of C1 and C2;
+//   THen, (1) <=> (O1P2-u1*D1).D1 = 0.       as O1P1 = u1*D1
+// 	     <=> u1 = O1P2.D1               as D1.D1 = 1.
+//          (2) <=> (P1O2+u2*D2).D2 = 0.       as O2P2 = u2*D2
+// 	     <=> u2 = O2P1.D2               as D2.D2 = 1.
 // 	     <=> u2 = (O2O1+O1P1).D2
-// 	     <=> u2 = O2O1.D2+((O1P2.T1)T1).T2) car O1P1 = u1*T1 = (O1P2.T1)T1
+// 	     <=> u2 = O2O1.D2+((O1P2.T1)T1).T2) as O1P1 = u1*T1 = (O1P2.T1)T1
 // 	     <=> u2 = O2O1.D2+(((O1O2+O2P2).D1)D1).D2)
 // 	     <=> u2 = O2O1.D2+((O1O2.D1)D1).D2)+(O2P2.D1)(D1.D2)
 // 	     <=> u2 = ((O1O2.D1)D1-O1O2).D2 + u2*(D2.D1)(D1.D2)
@@ -303,42 +316,38 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1,
 //=======================================================================
 //function : Extrema_ExtElC
 //purpose  : 
+// Find extreme distances between straight line C1 and circle C2.
+//
+//Method:
+//   Let P1=C1(u1) and P2=C2(u2) be two solution points
+//        D the direction of straight line C1
+//	T tangent at point P2;
+//  Then, ( P1P2.D = 0. (1)
+//         ( P1P2.T = 0. (2)
+//  Let O1 and O2 be the origins of C1 and C2;
+//  Then, (1) <=> (O1P2-u1*D).D = 0.         as O1P1 = u1*D
+//	     <=> u1 = O1P2.D                as D.D = 1.
+//         (2) <=> P1O2.T = 0.                as O2P2.T = 0.
+//             <=> ((P2O1.D)D+O1O2).T = 0.    as P1O1 = -u1*D = (P2O1.D)D
+//	     <=> (((P2O2+O2O1).D)D+O1O2).T = 0.
+//	     <=> ((P2O2.D)(D.T)+((O2O1.D)D-O2O1).T = 0.
+//  We are in the reference of the circle; let:
+//         Cos = Cos(u2) and Sin = Sin(u2),
+//         P2 (R*Cos,R*Sin,0.),
+//         T (-R*Sin,R*Cos,0.),
+//	 D (Dx,Dy,Dz),
+//	 V (Vx,Vy,Vz) = (O2O1.D)D-O2O1;
+//  Then, the equation by Cos and Sin is as follows:
+//    -(2*R*R*Dx*Dy)   * Cos**2  +       A1
+//   R*R*(Dx**2-Dy**2) * Cos*Sin +    2* A2
+//         R*Vy        * Cos     +       A3
+//	-R*Vx        * Sin     +       A4
+//      R*R*Dx*Dy                = 0.    A5
+//Use the algorithm math_TrigonometricFunctionRoots to solve this equation.
 //=======================================================================
 Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1, 
 				const gp_Circ& C2,
 				const Standard_Real)
-/*-----------------------------------------------------------------------------
-Fonction:
-   Recherche des distances extremales entre la droite C1 et le cercle C2.
-
-Methode:
-   Soit P1=C1(u1) et P2=C2(u2) deux points solutions
-        D la direction de la droite C1
-	T la tangente au point P2;
-  Alors, ( P1P2.D = 0. (1)
-         ( P1P2.T = 0. (2)
-  Soit O1 et O2 les origines de C1 et C2;
-  Alors, (1) <=> (O1P2-u1*D).D = 0.         car O1P1 = u1*D
-	     <=> u1 = O1P2.D                car D.D = 1.
-         (2) <=> P1O2.T = 0.                car O2P2.T = 0.
-             <=> ((P2O1.D)D+O1O2).T = 0.    car P1O1 = -u1*D = (P2O1.D)D
-	     <=> (((P2O2+O2O1).D)D+O1O2).T = 0.
-	     <=> ((P2O2.D)(D.T)+((O2O1.D)D-O2O1).T = 0.
-  On se place dans le repere du cercle; soit:
-         Cos = Cos(u2) et Sin = Sin(u2),
-         P2 (R*Cos,R*Sin,0.),
-         T (-R*Sin,R*Cos,0.),
-	 D (Dx,Dy,Dz),
-	 V (Vx,Vy,Vz) = (O2O1.D)D-O2O1;
-  Alors, on obtient l'equation en Cos et Sin suivante:
-    -(2*R*R*Dx*Dy)   * Cos**2  +       A1
-   R*R*(Dx**2-Dy**2) * Cos*Sin +    2* A2
-         R*Vy        * Cos     +       A3
-	-R*Vx        * Sin     +       A4
-      R*R*Dx*Dy                = 0.    A5
-     On utilise l'algorithme math_TrigonometricFunctionRoots pour resoudre
-    cette equation.
------------------------------------------------------------------------------*/
 {
   Standard_Real Dx,Dy,Dz,aRO2O1, aTolRO2O1;
   Standard_Real R, A1, A2, A3, A4, A5, aTol;
@@ -347,8 +356,8 @@ Methode:
   myIsPar = Standard_False;
   myDone = Standard_False;
   myNbExt = 0;
-  //
-  // Calcul de T1 dans le repere du cercle ...
+
+  // Calculate T1 in the reference of the circle ...
   D = C1.Direction();
   D1 = D;
   x2 = C2.XAxis().Direction();
@@ -359,17 +368,14 @@ Methode:
   Dz = D.Dot(z2);
   //
   D.SetCoord(Dx, Dy, Dz);
-  //modified by NIZNHY-PKV Wed Sep 21 08:02:46 2011f
   RefineDir(D);
   D.Coord(Dx, Dy, Dz);
-  //modified by NIZNHY-PKV Wed Sep 21 08:02:48 2011t
   //
   // Calcul de V dans le repere du cercle:
   gp_Pnt O1 = C1.Location();
   gp_Pnt O2 = C2.Location();
   gp_Vec O2O1 (O2,O1);
   //
-  //modified by NIZNHY-PKV Wed Sep 21 07:45:39 2011f
   aTolRO2O1=gp::Resolution();
   aRO2O1=O2O1.Magnitude();
   if (aRO2O1 > aTolRO2O1) {
@@ -383,13 +389,11 @@ Methode:
   else {
     O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
   }
-  //O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
-  //modified by NIZNHY-PKV Wed Sep 21 07:45:42 2011t
   //
   gp_XYZ Vxyz = (D.XYZ()*(O2O1.Dot(D)))-O2O1.XYZ();
   //
-  // Calcul des coefficients de l equation en Cos et Sin ... 
-  aTol=1.e-12;
+  //modified by NIZNHY-PKV Tue Mar 20 10:36:38 2012
+  /*
   R = C2.Radius();
   A5 = R*R*Dx*Dy;
   A1 = -2.*A5;
@@ -397,6 +401,9 @@ Methode:
   A3 = R*Vxyz.Y();
   A4 = -R*Vxyz.X();
   //
+  aTol=1.e-12;
+  //
+  /*
   if(fabs(A5) <= aTol) {
     A5 = 0.;
   }
@@ -412,8 +419,36 @@ Methode:
   if(fabs(A4) <= aTol) {
     A4 = 0.;
   }
+  */
   //
-  ExtremaExtElC_TrigonometricRoots Sol(A1,A2,A3,A4,A5,0.,PI+PI);
+  aTol=1.e-12;
+  // Calculate the coefficients of the equation by Cos and Sin ...
+  // [divided by R]
+  R = C2.Radius();
+  A5 = R*Dx*Dy;
+  A1 = -2.*A5;
+  A2 = 0.5*R*(Dx*Dx-Dy*Dy);// /2.;
+  A3 = Vxyz.Y();
+  A4 = -Vxyz.X();
+  //
+  if (A1>=-aTol && A1<=aTol) {
+    A1 = 0.;
+  }
+  if (A2>=-aTol && A2<=aTol) {
+    A2 = 0.;
+  }
+  if (A3>=-aTol && A3<=aTol) {
+    A3 = 0.;
+  }
+  if (A4>=-aTol && A4<=aTol) {
+    A4 = 0.;
+  }
+  if (A5>=-aTol && A5<=aTol) {
+    A5 = 0.;
+  }
+  //modified by NIZNHY-PKV Tue Mar 20 10:36:40 2012t
+  //
+  ExtremaExtElC_TrigonometricRoots Sol(A1, A2, A3, A4, A5, 0., M_PI+M_PI);
   if (!Sol.IsDone()) { 
     return; 
   }
@@ -423,8 +458,7 @@ Methode:
     myDone = Standard_True;
     return; 
   }
-  //
-  // Stockage des solutions ...
+  // Storage of solutions ...
   Standard_Integer NoSol, NbSol;
   Standard_Real U1,U2;
   gp_Pnt P1,P2;
@@ -436,8 +470,12 @@ Methode:
     U1 = (gp_Vec(O1,P2)).Dot(D1);
     P1 = ElCLib::Value(U1,C1);
     mySqDist[myNbExt] = P1.SquareDistance(P2);
-    myPoint[myNbExt][0] = Extrema_POnCurv(U1,P1);
-    myPoint[myNbExt][1] = Extrema_POnCurv(U2,P2);
+    //modified by NIZNHY-PKV Wed Mar 21 08:11:33 2012f
+    //myPoint[myNbExt][0] = Extrema_POnCurv(U1,P1);
+    //myPoint[myNbExt][1] = Extrema_POnCurv(U2,P2);
+    myPoint[myNbExt][0].SetValues(U1,P1);
+    myPoint[myNbExt][1].SetValues(U2,P2);
+    //modified by NIZNHY-PKV Wed Mar 21 08:11:36 2012t
     myNbExt++;
   }
   myDone = Standard_True;
@@ -450,42 +488,41 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1,
 				const gp_Elips& C2)
 {
 /*-----------------------------------------------------------------------------
-Fonction:
-   Recherche des distances extremales entre la droite C1 et l ellipse C2.
+Function:
+  Find extreme distances between straight line C1 and ellipse C2.
 
-Methode:
-   Soit P1=C1(u1) et P2=C2(u2) deux points solutions
-        D la direction de la droite C1
-	T la tangente au point P2;
-  Alors, ( P1P2.D = 0. (1)
+Method:
+  Let P1=C1(u1) and P2=C2(u2) two solution points
+        D the direction of straight line C1
+	T the tangent to point P2;
+  Then, ( P1P2.D = 0. (1)
          ( P1P2.T = 0. (2)
-  Soit O1 et O2 les origines de C1 et C2;
-  Alors, (1) <=> (O1P2-u1*D).D = 0.         car O1P1 = u1*D
-	     <=> u1 = O1P2.D                car D.D = 1.
-         (2) <=> P1O2.T = 0.                car O2P2.T = 0.
-             <=> ((P2O1.D)D+O1O2).T = 0.    car P1O1 = -u1*D = (P2O1.D)D
+  Let O1 and O2 be the origins of C1 and C2;
+  Then, (1) <=> (O1P2-u1*D).D = 0.        as O1P1 = u1*D
+	     <=> u1 = O1P2.D              as D.D = 1.
+         (2) <=> P1O2.T = 0.              as O2P2.T = 0.
+             <=> ((P2O1.D)D+O1O2).T = 0.  as P1O1 = -u1*D = (P2O1.D)D
 	     <=> (((P2O2+O2O1).D)D+O1O2).T = 0.
 	     <=> ((P2O2.D)(D.T)+((O2O1.D)D-O2O1).T = 0.
-  On se place dans le repere de l ellipse; soit:
-         Cos = Cos(u2) et Sin = Sin(u2),
+  We are in the reference of the ellipse; let:
+         Cos = Cos(u2) and Sin = Sin(u2),
          P2 (MajR*Cos,MinR*Sin,0.),
          T (-MajR*Sin,MinR*Cos,0.),
 	 D (Dx,Dy,Dz),
 	 V (Vx,Vy,Vz) = (O2O1.D)D-O2O1;
-  Alors, on obtient l'equation en Cos et Sin suivante:
+  Then,  get the following equation by Cos and Sin:
     -(2*MajR*MinR*Dx*Dy)             * Cos**2  +
    (MajR*MajR*Dx**2-MinR*MinR*Dy**2) * Cos*Sin +
          MinR*Vy                     * Cos     +
        - MajR*Vx                     * Sin     +
       MinR*MajR*Dx*Dy                = 0.
-     On utilise l'algorithme math_TrigonometricFunctionRoots pour resoudre
-    cette equation.
+  Use algorithm math_TrigonometricFunctionRoots to solve this equation.
 -----------------------------------------------------------------------------*/
   myIsPar = Standard_False;
   myDone = Standard_False;
   myNbExt = 0;
 
-// Calcul de T1 dans le repere de l'ellipse ...
+// Calculate T1 the reference of the ellipse ...
   gp_Dir D = C1.Direction();
   gp_Dir D1 = D;
   gp_Dir x2, y2, z2;
@@ -497,14 +534,14 @@ Methode:
   Standard_Real Dz = D.Dot(z2);
   D.SetCoord(Dx,Dy,Dz);
 
-// Calcul de V ...
+// Calculate V ...
   gp_Pnt O1 = C1.Location();
   gp_Pnt O2 = C2.Location();
   gp_Vec O2O1 (O2,O1);
   O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
   gp_XYZ Vxyz = (D.XYZ()*(O2O1.Dot(D)))-O2O1.XYZ();
 
-// Calcul des coefficients de l equation en Cos et Sin ...
+// Calculate the coefficients of the equation by Cos and Sin ...
   Standard_Real MajR = C2.MajorRadius();
   Standard_Real MinR = C2.MinorRadius();
   Standard_Real A5 = MajR*MinR*Dx*Dy;
@@ -515,7 +552,6 @@ Methode:
   Standard_Real A3 = MinR*Vxyz.Y();
   Standard_Real A4 = -MajR*Vxyz.X();
   //
-  //modified by NIZNHY-PKV Thu Feb 03 14:51:04 2011f
   Standard_Real aEps=1.e-12;
   //
   if(fabs(A5) <= aEps) A5 = 0.;
@@ -523,12 +559,11 @@ Methode:
   if(fabs(A2) <= aEps) A2 = 0.;
   if(fabs(A3) <= aEps) A3 = 0.;
   if(fabs(A4) <= aEps) A4 = 0.;
-  //modified by NIZNHY-PKV Thu Feb 03 14:51:08 2011t
   //
-  ExtremaExtElC_TrigonometricRoots Sol(A1,A2,A3,A4,A5,0.,PI+PI);
+  ExtremaExtElC_TrigonometricRoots Sol(A1,A2,A3,A4,A5,0.,M_PI+M_PI);
   if (!Sol.IsDone()) { return; }
 
-// Stockage des solutions ...
+// Storage of solutions ...
   gp_Pnt P1,P2;
   Standard_Real U1,U2;
   Standard_Integer NbSol = Sol.NbSolutions();
@@ -553,46 +588,45 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1,
 				const gp_Hypr& C2)
 {
 /*-----------------------------------------------------------------------------
-Fonction:
-   Recherche des distances extremales entre la droite C1 et l'hyperbole C2.
+Function:
+  Find extrema between straight line C1 and hyperbola C2.
 
-Methode:
-   Soit P1=C1(u1) et P2=C2(u2) deux points solutions
-        D la direction de la droite C1
-	T la tangente au point P2;
-  Alors, ( P1P2.D = 0. (1)
-         ( P1P2.T = 0. (2)
-  Soit O1 et O2 les origines de C1 et C2;
-  Alors, (1) <=> (O1P2-u1*D).D = 0.         car O1P1 = u1*D
-	     <=> u1 = O1P2.D                car D.D = 1.
+Method:
+  Let P1=C1(u1) and P2=C2(u2) be two solution points
+        D the direction of straight line C1
+	T the tangent at point P2;
+  Then, ( P1P2.D = 0. (1)
+        ( P1P2.T = 0. (2)
+  Let O1 and O2 be the origins of C1 and C2;
+  Then, (1) <=> (O1P2-u1*D).D = 0.         as O1P1 = u1*D
+	     <=> u1 = O1P2.D               as D.D = 1.
          (2) <=> (P1O2 + O2P2).T= 0.
-             <=> ((P2O1.D)D+O1O2 + O2P2).T = 0.  car P1O1 = -u1*D = (P2O1.D)D
+             <=> ((P2O1.D)D+O1O2 + O2P2).T = 0.  as P1O1 = -u1*D = (P2O1.D)D
 	     <=> (((P2O2+O2O1).D)D+O1O2 + O2P2).T = 0.
 	     <=> (P2O2.D)(D.T)+((O2O1.D)D-O2O1).T + O2P2.T= 0.
-  On se place dans le repere de l'hyperbole; soit:
-         en ecrivant P (R* Chu, r* Shu, 0.0)
-	 et Chu = (v**2 + 1)/(2*v) ,
-	    Shu = (V**2 - 1)/(2*v)
+  We are in the reference of the hyperbola; let:
+         by writing P (R* Chu, r* Shu, 0.0)
+	 and Chu = (v**2 + 1)/(2*v) ,
+	     Shu = (V**2 - 1)/(2*v)
 
 	 T(R*Shu, r*Chu)
 	 D (Dx,Dy,Dz),
 	 V (Vx,Vy,Vz) = (O2O1.D)D-O2O1;
 
-  Alors, on obtient l'equation en v suivante:
+  Then we obtain the following equation by v:
          (-2*R*r*Dx*Dy - R*R*Dx*Dx-r*r*Dy*Dy + R*R + r*r)     * v**4  +
 	 (2*R*Vx + 2*r*Vy)                                    * v**3  +
 	 (-2*R*Vx + 2*r*Vy)                                   * v     +
 	 (-2*R*r*Dx*Dy - (R*R*Dx*Dx-r*r*Dy*Dy + R*R + r*r))  = 0
 
 
-     On utilise l'algorithme math_DirectPolynomialRoots pour resoudre
-    cette equation.
+  Use the algorithm math_DirectPolynomialRoots to solve this equation.
 -----------------------------------------------------------------------------*/
   myIsPar = Standard_False;
   myDone = Standard_False;
   myNbExt = 0;
 
-// Calcul de T1 dans le repere de l'hyperbole ...
+// Calculate T1 in the reference of the hyperbola...
   gp_Dir D = C1.Direction();
   gp_Dir D1 = D;
   gp_Dir x2, y2, z2;
@@ -604,7 +638,7 @@ Methode:
   Standard_Real Dz = D.Dot(z2);
   D.SetCoord(Dx,Dy,Dz);
 
-// Calcul de V ...
+// Calculate V ...
   gp_Pnt O1 = C1.Location();
   gp_Pnt O2 = C2.Location();
   gp_Vec O2O1 (O2,O1);
@@ -613,7 +647,7 @@ Methode:
   Standard_Real Vx = Vxyz.X();
   Standard_Real Vy = Vxyz.Y();
 
-// Calcul des coefficients de l equation en v
+// Calculate coefficients of the equation by v
   Standard_Real R = C2.MajorRadius();
   Standard_Real r = C2.MinorRadius();
   Standard_Real a = -2*R*r*Dx*Dy;
@@ -626,7 +660,7 @@ Methode:
   math_DirectPolynomialRoots Sol(A1,A2,0.0,A4, A5);
   if (!Sol.IsDone()) { return; }
 
-// Stockage des solutions ...
+// Store solutions ...
   gp_Pnt P1,P2;
   Standard_Real U1,U2, v;
   Standard_Integer NbSol = Sol.NbSolutions();
@@ -653,42 +687,41 @@ Extrema_ExtElC::Extrema_ExtElC (const gp_Lin& C1,
 				const gp_Parab& C2)
 {
 /*-----------------------------------------------------------------------------
-Fonction:
-   Recherche des distances extremales entre la droite C1 et la parabole C2.
+Function:
+  Find extreme distances between straight line C1 and parabole C2.
 
-Methode:
-   Soit P1=C1(u1) et P2=C2(u2) deux points solutions
-        D la direction de la droite C1
-	T la tangente au point P2;
-  Alors, ( P1P2.D = 0. (1)
-         ( P1P2.T = 0. (2)
-  Soit O1 et O2 les origines de C1 et C2;
-  Alors, (1) <=> (O1P2-u1*D).D = 0.         car O1P1 = u1*D
-	     <=> u1 = O1P2.D                car D.D = 1.
+Method:
+   Let P1=C1(u1) and P2=C2(u2) be two solution points
+        D the direction of straight line C1
+	T the tangent to point P2;
+  Then, ( P1P2.D = 0. (1)
+        ( P1P2.T = 0. (2)
+  Let O1 and O2 be the origins of C1 and C2;
+  Then, (1) <=> (O1P2-u1*D).D = 0.         as O1P1 = u1*D
+	     <=> u1 = O1P2.D               as D.D = 1.
          (2) <=> (P1O2 + O2P2).T= 0.
-             <=> ((P2O1.D)D+O1O2 + O2P2).T = 0.  car P1O1 = -u1*D = (P2O1.D)D
+             <=> ((P2O1.D)D+O1O2 + O2P2).T = 0.  as P1O1 = -u1*D = (P2O1.D)D
 	     <=> (((P2O2+O2O1).D)D+O1O2 + O2P2).T = 0.
 	     <=> (P2O2.D)(D.T)+((O2O1.D)D-O2O1).T + O2P2.T = 0.
-  On se place dans le repere de la parabole; soit:
+  We are in the reference of the parabola; let:
          P2 (y*y/(2*p), y, 0)
          T (y/p, 1, 0)
 	 D (Dx,Dy,Dz),
 	 V (Vx,Vy,Vz) = (O2O1.D)D-O2O1;
 
-  Alors, on obtient l'equation en y suivante:
+  Then, get the following equation by y:
      ((1-Dx*Dx)/(2*p*p))            *  y*y*y  +        A1
      (-3*Dx*Dy/(2*p))               *  y*y    +        A2
      (1-Dy*Dy + Vx/p)               *  y      +        A3 
         Vy                          = 0.               A4
 
-     On utilise l'algorithme math_DirectPolynomialRoots pour resoudre
-    cette equation.
+  Use the algorithm math_DirectPolynomialRoots to solve this equation.
 -----------------------------------------------------------------------------*/
   myIsPar = Standard_False;
   myDone = Standard_False;
   myNbExt = 0;
 
-// Calcul de T1 dans le repere de la parabole ...
+// Calculate T1 in the reference of the parabola...
   gp_Dir D = C1.Direction();
   gp_Dir D1 = D;
   gp_Dir x2, y2, z2;
@@ -700,14 +733,14 @@ Methode:
   Standard_Real Dz = D.Dot(z2);
   D.SetCoord(Dx,Dy,Dz);
 
-// Calcul de V ...
+// Calculate V ...
   gp_Pnt O1 = C1.Location();
   gp_Pnt O2 = C2.Location();
   gp_Vec O2O1 (O2,O1);
   O2O1.SetCoord(O2O1.Dot(x2), O2O1.Dot(y2), O2O1.Dot(z2));
   gp_XYZ Vxyz = (D.XYZ()*(O2O1.Dot(D)))-O2O1.XYZ();
 
-// Calcul des coefficients de l equation en y
+// Calculate coefficients of the equation by y
   Standard_Real P = C2.Parameter();
   Standard_Real A1 = (1-Dx*Dx)/(2.0*P*P);
   Standard_Real A2 = (-3.0*Dx*Dy/(2.0*P));
@@ -717,7 +750,7 @@ Methode:
   math_DirectPolynomialRoots Sol(A1,A2,A3,A4);
   if (!Sol.IsDone()) { return; }
 
-// Stockage des solutions ...
+// Storage of solutions ...
   gp_Pnt P1,P2;
   Standard_Real U1,U2;
   Standard_Integer NbSol = Sol.NbSolutions();
@@ -1024,7 +1057,8 @@ void Extrema_ExtElC::Points (const Standard_Integer N,
   P1 = myPoint[N-1][0];
   P2 = myPoint[N-1][1];
 }
-//modified by NIZNHY-PKV Wed Sep 21 07:59:19 2011f
+
+
 //=======================================================================
 //function : RefineDir
 //purpose  : 
@@ -1054,4 +1088,3 @@ void RefineDir(gp_Dir& aDir)
     }
   }
 }
-//modified by NIZNHY-PKV Wed Sep 21 07:59:26 2011t

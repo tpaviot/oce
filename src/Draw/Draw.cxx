@@ -1,7 +1,23 @@
-// File:	Draw.cxx
-// Created:	Fri Aug 13 09:22:06 1993
-// Author:	Bruno DUMORTIER
-//		<dub@phylox>
+// Created on: 1993-08-13
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -89,15 +105,16 @@ extern console_semaphore_value volatile console_semaphore;
 extern char console_command[1000];
 #endif
 
-static void ReadInitFile(char* filename)
+static void ReadInitFile (const TCollection_AsciiString& theFileName)
 {
+  TCollection_AsciiString aPath = theFileName;
 #ifdef WNT
   if (!Draw_Batch) {
     try {
       OCC_CATCH_SIGNALS
-      for(Standard_Integer i = 0; filename[i] != 0; i++)
-	if(filename[i] == '\\') filename[i] = '/';
-      sprintf(console_command,"source \"%s\"",filename);
+      aPath.ChangeAll ('\\', '/');
+
+      sprintf(console_command, "source \"%s\"", aPath.ToCString());
       console_semaphore = HAS_CONSOLE_COMMAND;
       while (console_semaphore == HAS_CONSOLE_COMMAND)
         Sleep(10);
@@ -108,9 +125,9 @@ static void ReadInitFile(char* filename)
     }
   } else {
 #endif
-    char* com = new char [strlen(filename)+strlen("source ")+2];
-    sprintf(com,"source %s",filename);
-    Draw_Interprete(com);
+    char* com = new char [aPath.Length() + strlen ("source ") + 2];
+    sprintf (com, "source %s", aPath.ToCString());
+    Draw_Interprete (com);
     delete [] com;
 #ifdef WNT
   }
@@ -159,7 +176,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
   // analyze arguments
   // *****************************************************************
   Draw_Batch = Standard_False;
-  char* runfile = NULL;
+  TCollection_AsciiString aRunFile;
   Standard_Integer i;
   Standard_Boolean isInteractiveForced = Standard_False;
 #ifndef WNT
@@ -181,7 +198,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
     } else if (strcasecmp(argv[i],"-f") == 0) { // -f option should be LAST!
       Draw_VirtualWindows = !isInteractiveForced;
       if (++i < argc) {
-        runfile = argv[i];
+        aRunFile = TCollection_AsciiString (argv[i]);
       }
       break;
     }
@@ -199,7 +216,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
       Draw_VirtualWindows = !isInteractiveForced;
       p = strtok(NULL," \t");
       if (p != NULL) {
-        runfile = p;
+        aRunFile = TCollection_AsciiString (p);
       }
       break;
     }
@@ -261,35 +278,32 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
   // read init files
   // *****************************************************************
   // default
-  char* dflt = getenv("DRAWDEFAULT");
-  if (dflt == NULL)
+
+  if (getenv ("DRAWDEFAULT") == NULL)
   {
-    char* casroot = getenv("CASROOT");
-    if (casroot == NULL)
+    if (getenv ("CASROOT") == NULL)
     {
 #ifdef WNT
-	  ReadInitFile("ddefault");
+      ReadInitFile ("ddefault");
 #else
-	  cout << " the CASROOT variable is mandatory to Run OpenCascade "<< endl;
-	  cout << "No default file" << endl;
+      cout << " the CASROOT variable is mandatory to Run OpenCascade "<< endl;
+      cout << "No default file" << endl;
 #endif
     }
     else
     {
-      char* thedefault =  (char *) malloc (128);
-      thedefault[0] = '\0';
-      strcat(thedefault,casroot);
-      strcat (thedefault,"/src/DrawResources/DrawDefault");
-      ReadInitFile(thedefault);
+      TCollection_AsciiString aDefStr (getenv ("CASROOT"));
+      aDefStr += "/src/DrawResources/DrawDefault";
+      ReadInitFile (aDefStr);
     }
   }
   else
   {
-    ReadInitFile(dflt);
+    ReadInitFile (getenv ("DRAWDEFAULT"));
   }
 
   // pure batch
-  if (runfile) {
+  if (!aRunFile.IsEmpty()) {
     // do not map raise the windows, so test programs are discrete
 #ifndef WNT
     Draw_LowWindows = Standard_True;
@@ -300,7 +314,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
     Draw_LowWindows = Standard_False;
 #endif
 
-    ReadInitFile(runfile);
+    ReadInitFile (aRunFile);
     // provide a clean exit, this is usefull for some analysis tools
 #ifndef WNT
     return;

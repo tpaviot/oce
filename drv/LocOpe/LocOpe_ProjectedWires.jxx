@@ -7,6 +7,9 @@
 #ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
 #endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
 #ifndef _LocOpe_ProjectedWires_HeaderFile
 #include <LocOpe_ProjectedWires.hxx>
 #endif

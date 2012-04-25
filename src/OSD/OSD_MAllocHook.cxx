@@ -1,7 +1,22 @@
-// File:	OSD_MAllocHook.cxx
-// Created:	04.02.2011
-// Author:	Mikhail SAZONOV
-// Copyright:	Open CASCADE S.A.S. 2011
+// Created on: 2011-02-04
+// Created by: Mikhail SAZONOV
+// Copyright (c) 2011-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <OSD_MAllocHook.hxx>
 
@@ -470,16 +485,14 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
   Standard_Size aTotAlloc = 0;
   for (int i = 0; i < MAX_ALLOC_SIZE; i++)
   {
-    if (myArray[i].nbAlloc > 0)
+    if (myArray[i].nbAlloc > 0 || myArray[i].nbFree > 0)
     {
       Standard_Integer nbLeft = myArray[i].nbAlloc - myArray[i].nbFree;
-      if (nbLeft < 0)
-        nbLeft = 0;
       int aSize = i + 1;
       Standard_Size aSizeAlloc = myArray[i].nbAlloc * aSize;
-      Standard_Size aSizeLeft = nbLeft * aSize;
+      ptrdiff_t     aSizeLeft = nbLeft * aSize;
       Standard_Size aSizePeak = myArray[i].nbLeftPeak * aSize;
-      fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Iu %10Iu\n", aSize,
+      fprintf(aRepFile, "%10d %10d %10d %10d %10Iu %10Id %10Iu\n", aSize,
               myArray[i].nbAlloc, nbLeft, myArray[i].nbLeftPeak,
               aSizeAlloc, aSizeLeft, aSizePeak);
       if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
@@ -488,7 +501,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
         aTotAlloc += aSizeAlloc;
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Iu %10Iu\n", "Total:",
+  fprintf(aRepFile, "%10s %10s %10s %10s%c%10Iu %10Id %10Iu\n", "Total:",
           "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
           myTotalLeftSize, myTotalPeakSize);
   fclose(aRepFile);
@@ -512,13 +525,12 @@ void OSD_MAllocHook::CollectBySize::AllocEvent
   {
     myMutex.Lock();
     int ind = (theSize > MAX_ALLOC_SIZE ? MAX_ALLOC_SIZE-1 : (int)(theSize-1));
-    if (myArray[ind].nbAlloc + 1 > 0)
-      myArray[ind].nbAlloc++;
+    myArray[ind].nbAlloc++;
     myTotalLeftSize += theSize;
     int nbLeft = myArray[ind].nbAlloc - myArray[ind].nbFree;
     if (nbLeft > myArray[ind].nbLeftPeak)
       myArray[ind].nbLeftPeak = nbLeft;
-    if (myTotalLeftSize > myTotalPeakSize)
+    if (myTotalLeftSize > (ptrdiff_t)myTotalPeakSize)
       myTotalPeakSize = myTotalLeftSize;
     myMutex.Unlock();
   }
@@ -534,12 +546,11 @@ void OSD_MAllocHook::CollectBySize::FreeEvent
                     size_t      theSize,
                     long        /*theRequestNum*/)
 {
-  if (theSize > 0 && myTotalLeftSize >= theSize)
+  if (theSize > 0)
   {
     myMutex.Lock();
     int ind = (theSize > MAX_ALLOC_SIZE ? MAX_ALLOC_SIZE-1 : (int)(theSize-1));
-    if (myArray[ind].nbFree + 1 > 0)
-      myArray[ind].nbFree++;
+    myArray[ind].nbFree++;
     myTotalLeftSize -= theSize;
     myMutex.Unlock();
   }

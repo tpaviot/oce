@@ -1,7 +1,23 @@
-// File:        GeomFill_CorrectedFrenet.cxx
-// Created:     Fri Dec 19 13:25:12 1997
-// Author:      Roman BORISOV /Philippe MANGIN
-//              <pmn@sgi29>
+// Created on: 1997-12-19
+// Created by: Roman BORISOV /Philippe MANGIN
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <stdio.h>
 
@@ -445,7 +461,7 @@ Handle(GeomFill_TrihedronLaw) GeomFill_CorrectedFrenet::Copy() const
       currParam = Last;
 
     frenet->D0(currParam, Tangent, Normal, BN);
-    if (prevTangent.Angle(Tangent) < PI/3 || i == 1) {
+    if (prevTangent.Angle(Tangent) < M_PI/3 || i == 1) {
       parameters.Append(currParam);
       //OCC78
       SeqPoles.Append(Param);      
@@ -556,7 +572,7 @@ Standard_Real GeomFill_CorrectedFrenet::CalcAngleAT(const gp_Vec& Tangent, const
   else
     Normal_rot = Normal;
   Standard_Real angleAT = Normal_rot.Angle(prevNormal);
-  if(angleAT > Precision::Angular() && PI - angleAT > Precision::Angular())
+  if(angleAT > Precision::Angular() && M_PI - angleAT > Precision::Angular())
     if (Normal_rot.Crossed(prevNormal).IsOpposite(prevTangent, Precision::Angular())) 
       angleAT = -angleAT;
   return angleAT;
@@ -566,13 +582,13 @@ Standard_Real GeomFill_CorrectedFrenet::CalcAngleAT(const gp_Vec& Tangent, const
 // Purpose : This family of functions produce conversion of angle utility
 //===============================================================
 static Standard_Real corrPI_2PI(Standard_Real Ang){
-  return Ang = (Ang >= 0.0? Ang: 2*PI+Ang);
+  return Ang = (Ang >= 0.0? Ang: 2*M_PI+Ang);
 };
 static Standard_Real corr2PI_PI(Standard_Real Ang){
-  return Ang = (Ang < PI? Ang: Ang-2*PI);
+  return Ang = (Ang < M_PI? Ang: Ang-2*M_PI);
 };
 static Standard_Real diffAng(Standard_Real A, Standard_Real Ao){
-  Standard_Real dA = (A-Ao) - Floor((A-Ao)/2.0/PI)*2.0*PI;
+  Standard_Real dA = (A-Ao) - Floor((A-Ao)/2.0/M_PI)*2.0*M_PI;
   return dA = dA >= 0? corr2PI_PI(dA): -corr2PI_PI(-dA);
 };
 //===============================================================
@@ -592,10 +608,6 @@ Standard_Real GeomFill_CorrectedFrenet::GetAngleAT(const Standard_Real Param) co
     };
     if(HArrPoles->Value(iC) == Param || Param == HArrPoles->Value(iC+1)) return TLaw->Value(Param);
   };
-#ifdef DEB
-  Standard_Real Po = 
-#endif
-    HArrPoles->Value(iC);
   //  Calculate differenciation between apporoximated and local values of AngleAT
   Standard_Real AngP = TLaw->Value(Param), AngPo = HArrAngle->Value(iC), dAng = AngP - AngPo;
   gp_Vec Tangent, Normal, BN;
@@ -603,7 +615,7 @@ Standard_Real GeomFill_CorrectedFrenet::GetAngleAT(const Standard_Real Param) co
   Standard_Real DAng = CalcAngleAT(Tangent, Normal, HArrTangent->Value(iC), HArrNormal->Value(iC));
   Standard_Real DA = diffAng(DAng,dAng);
   // The correction (there is core of OCC78 bug)
-  if(Abs(DA) > PI/2.0){
+  if(Abs(DA) > M_PI/2.0){
     AngP = AngPo + DAng;
   };
   return AngP;

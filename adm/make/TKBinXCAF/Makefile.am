@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BinXCAFDrivers -I@top_srcdir@/src/BinXCAFDrivers \
 -I@top_srcdir@/drv/BinMXCAFDoc -I@top_srcdir@/src/BinMXCAFDoc
@@ -20,19 +20,19 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKBinXCAF.la
 
-libTKBinXCAF_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKMath/libTKMath.la \
-../TKLCAF/libTKLCAF.la \
-../TKG2d/libTKG2d.la \
-../TKBinL/libTKBinL.la \
+libTKBinXCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKBRep/libTKBRep.la \
-../TKBin/libTKBin.la \
-../TKG3d/libTKG3d.la \
 ../TKXCAF/libTKXCAF.la \
+../TKMath/libTKMath.la \
+../TKernel/libTKernel.la \
+../TKBinL/libTKBinL.la \
+../TKG2d/libTKG2d.la \
 ../TKCAF/libTKCAF.la \
 ../TKCDF/libTKCDF.la \
-$(STLPort_LIB) 
+../TKG3d/libTKG3d.la \
+../TKLCAF/libTKLCAF.la \
+../TKBin/libTKBin.la
+
 
 libTKBinXCAF_la_SOURCES = \
 @top_srcdir@/src/BinMXCAFDoc/BinMXCAFDoc.cxx \

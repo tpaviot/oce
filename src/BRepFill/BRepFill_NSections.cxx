@@ -1,7 +1,23 @@
-// File:	BRepFill_NSections.cxx
-// Created:	Tue Dec 29 17:01:25 1998
-// Author:	Joelle CHAUVET
-//		<jct@sgi64>
+// Created on: 1998-12-29
+// Created by: Joelle CHAUVET
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <stdio.h>
 
@@ -109,7 +125,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 
   for (j=jdeb; j<=jfin; j++) {
 
-    // cas des sections bouclantes
+    // case of looping sections
     if (j==jfin && vClosed) {
       section.AddCurve(BS1);
     }
@@ -118,7 +134,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
       // read the first edge to initialise CompBS;
       edge =  TopoDS::Edge(shapes.Value(1,j));
       if (BRep_Tool::Degenerated(edge)) {
-	// edge degeneree : construction d'une courbe ponctuelle
+	// degenerated edge : construction of a point curve
 	TopExp::Vertices(edge,vl,vf);
 	TColgp_Array1OfPnt Extremities(1,2);
 	Extremities(1) = BRep_Tool::Pnt(vf);
@@ -129,7 +145,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 					 curv->LastParameter());
       }
       else {
-	// recuperation de la courbe sur l'edge
+	// return the curve on the edge
 	Handle(Geom_Curve) curv = BRep_Tool::Curve(edge, loc, first, last);
 	curvTrim = new Geom_TrimmedCurve(curv, first, last);
 	curvTrim->Transform(loc.Transformation());
@@ -138,7 +154,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 	curvTrim->Reverse();
       }
 
-      // transformation en BSpline reparametree sur [i-1,i]
+      // transformation into BSpline reparameterized on [i-1,i]
       curvBS = Handle(Geom_BSplineCurve)::DownCast(curvTrim);
       if (curvBS.IsNull()) {
 	Handle(Geom_Curve) theCurve = curvTrim->BasisCurve();
@@ -156,14 +172,14 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
       BSplCLib::Reparametrize(0.,1.,BSK);
       curvBS->SetKnots(BSK);
       
-      // initialisation
+      // initialization
       GeomConvert_CompCurveToBSplineCurve CompBS(curvBS);
 
       for (i=2; i<=NbEdges; i++) {  
 	// read the edge
 	edge =  TopoDS::Edge(shapes.Value(i,j));
 	if (BRep_Tool::Degenerated(edge)) {
-	  // edge degeneree : construction d'une courbe ponctuelle
+	  // degenerated edge : construction of a point curve
 	  TopExp::Vertices(edge,vl,vf);
 	  TColgp_Array1OfPnt Extremities(1,2);
 	  Extremities(1) = BRep_Tool::Pnt(vf);
@@ -174,7 +190,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 					   curv->LastParameter());
 	}
 	else {
-	  // recuperation de la courbe sur l'edge
+	  // return the curve on the edge
 	  Handle(Geom_Curve) curv = BRep_Tool::Curve(edge, loc, first, last);
 	  curvTrim = new Geom_TrimmedCurve(curv, first, last);
 	  curvTrim->Transform(loc.Transformation());
@@ -183,7 +199,7 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 	  curvTrim->Reverse();
 	}
 
-	// transformation en BSpline reparametree sur [i-1,i]
+	// transformation into BSpline reparameterized on [i-1,i]
 	curvBS = Handle(Geom_BSplineCurve)::DownCast(curvTrim);
 	if (curvBS.IsNull()) { 
 	  Handle(Geom_Curve) theCurve = curvTrim->BasisCurve();
@@ -213,11 +229,11 @@ static Handle(Geom_BSplineSurface) totalsurf(const TopTools_Array2OfShape& shape
 				   Standard_True, Standard_False, 1);
       }
 
-      // recuperation de la section finale
+      // return the final section
       BS = CompBS.BSplineCurve();
       section.AddCurve(BS);
 
-      // cas des sections bouclantes
+      // case of looping sections
       if (j==jdeb && vClosed) {
 	BS1 = BS;
       }
@@ -399,7 +415,7 @@ BRepFill_NSections::BRepFill_NSections(const TopTools_SequenceOfShape& S,
 
 //=======================================================================
 //function : Init
-//purpose  : On cree une table de GeomFill_SectionLaw
+//purpose  : Create a table of GeomFill_SectionLaw
 //=======================================================================
 void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
 			      const Standard_Boolean Build)
@@ -415,7 +431,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
   Standard_Real First, Last;
   TopoDS_Wire W;
 
-  // On regarde si les wires debut et fin sont ponctuels
+  // Check if the start and end wires are punctual
   W = TopoDS::Wire(myShapes(1));
   for (wexp.Init(W); wexp.More(); wexp.Next()) 
 //    w1Point = w1Point && B.Degenerated(wexp.Current());
@@ -427,10 +443,10 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
     w2Point = w2Point && BRep_Tool::Degenerated(wexp.Current());
   if (w2Point) ifin--;
 
-  // On regarde si les wires debut et fin sont identiques
+  // Check if the start and end wires are identical
   vclosed = myShapes(1).IsSame(myShapes(NbSects));
 
-  // On compte le nombre d'aretes non degenerees
+  // Count the number of non-degenerated edges
   W = TopoDS::Wire(myShapes(ideb));
   for (NbEdge=0, wexp.Init(W); wexp.More(); wexp.Next()) 
 //    if (! B.Degenerated(wexp.Current())) NbEdge++;
@@ -438,7 +454,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
 
   myEdges = new (TopTools_HArray2OfShape) (1, NbEdge, 1, NbSects);
   
-  // On Remplit les tables
+  // Fill tables
   uclosed = Standard_True;
   for (jj=ideb;jj<=ifin;jj++){
 
@@ -453,11 +469,11 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
       }
     }
 
-  // La loi est elle fermee en U ?
+  // Is the law closed by U ?
 
     wClosed = W.Closed();
     if (!wClosed) {
-      // le flag n'etant pas tres sur, on fait une verif
+      // if unsure about the flag, make check
       TopoDS_Edge Edge1, Edge2;
       TopoDS_Vertex V1,V2;
       Edge1 = TopoDS::Edge (myEdges->Value(NbEdge,jj));
@@ -492,7 +508,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
     if (!wClosed) uclosed = Standard_False;
   }
 
-  // sections en bout ponctuelles
+  // point sections at end
   if (w1Point) {
     W = TopoDS::Wire(myShapes(1));
     wexp.Init(W);
@@ -518,9 +534,9 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
   mySurface = totalsurf(myEdges->Array2(),myShapes.Length(),NbEdge,
 			myParams,w1Point,w2Point,uclosed,vclosed,tol);
    
-  // On augmente le degre pour que le positionnement D2 
-  // sur les GeomFill_NSections soit correct
-  // cf commentaires dans GeomFill_NSections
+  // Increase the degree so that the position D2 
+  // on GeomFill_NSections could be correct
+  // see comments in GeomFill_NSections
   if (mySurface->VDegree()<2) {
     mySurface->IncreaseDegree(mySurface->UDegree(),2);
   }
@@ -532,7 +548,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
   }
 #endif
 
-  // On Remplit les tables
+  // Fill tables
   if (Build) {
     for (ii=1; ii<=NbEdge ; ii++) {
       TColGeom_SequenceOfCurve NC;
@@ -563,18 +579,18 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
 	  if (E.Orientation() == TopAbs_REVERSED) {
 	    Standard_Real aux;
 	    Handle(Geom_Curve) CBis;
-	    CBis = C->Reversed(); // Pour eviter de deteriorer la topologie
+	    CBis = C->Reversed(); // To avoid the spoiling of the topology
 	    aux = C->ReversedParameter(First);
 	    First = C->ReversedParameter(Last);
 	    Last = aux;
 	    C =  CBis;
 	  } 
-	  if ((ii>1) || (!E.Closed()) ) { // On trimme C
+	  if ((ii>1) || (!E.Closed()) ) { // Cut C
 	    Handle(Geom_TrimmedCurve) TC = 
 	      new (Geom_TrimmedCurve) (C,First, Last);
 	    C  = TC;
 	  } 
-	  //  sinon On garde l'integrite de la courbe
+	  //  otherwise preserve the integrity of the curve
 	}
 	NC.Append(C);
       }
@@ -646,7 +662,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
 
 ///=======================================================================
 //function : VertexTol
-//purpose  : Evalue le trou entre 2 edges de la section
+//purpose  : Evaluate the hole between 2 edges of the section
 //=======================================================================
  Standard_Real BRepFill_NSections::VertexTol(const Standard_Integer Index,
 					      const Standard_Real Param) const
@@ -654,7 +670,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
   Standard_Real Tol = Precision::Confusion();
   Standard_Integer I1, I2;
   if ( (Index==0) || (Index==myEdges->ColLength()) ) {
-    if (!uclosed) return Tol; //Le moins faux possible
+    if (!uclosed) return Tol; //The least possible error
     I1 = myEdges->ColLength();
     I2 = 1;
   }
@@ -753,7 +769,7 @@ void BRepFill_NSections::Init(const TColStd_SequenceOfReal & P,
 
    TopoDS_Edge Edge1, Edge2;
    if ( (Index==0) || (Index==myEdges->ColLength()) ) {
-     if (!uclosed) return GeomAbs_C0; //Le moins faux possible
+     if (!uclosed) return GeomAbs_C0; //The least possible error
      
      Edge1 = TopoDS::Edge (myEdges->Value(myEdges->ColLength(),jj));
      Edge2 = TopoDS::Edge (myEdges->Value(1,jj));

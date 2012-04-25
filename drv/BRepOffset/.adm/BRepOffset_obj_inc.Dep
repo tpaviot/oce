@@ -1,8 +1,0 @@
-+ BRepOffset:pubinclude:BRepOffset_Offset.lxx BRepOffset:source:BRepOffset_Offset.lxx
-+ BRepOffset:pubinclude:BRepOffset_Interval.lxx BRepOffset:source:BRepOffset_Interval.lxx
-+ BRepOffset:dbadmfile:BRepOffset_obj_inc.In BRepOffset:admfile:BRepOffset_src.Out
-+ * BRepOffset:admfile:BRepOffset_xcpp_src.Out
-+ BRepOffset:dbadmfile:BRepOffset_obj_inc.Out BRepOffset:admfile:BRepOffset_src.Out
-+ * BRepOffset:admfile:BRepOffset_xcpp_src.Out
-+ BRepOffset:dbadmfile:BRepOffset_obj_inc.Dep BRepOffset:admfile:BRepOffset_src.Out
-+ * BRepOffset:admfile:BRepOffset_xcpp_src.Out

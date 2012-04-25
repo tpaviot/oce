@@ -1,14 +1,30 @@
-// File:	GccAna_Circ2d2TanOn_11.cxx
-// Created:	Thu Jan  2 16:00:53 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-01-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   Creation d un cercle tangent a deux elements : Droite.               +
-//                                                  Cercle.               +
+//   Creation of a circle tangent to two elements : Straight line.        +
+//                                                  Circle.               +
 //                                                  Point.                +
-//                        centre sur un troisieme : Droite.               +
-//                                                  Cercle.               +
+//                              center on a third : Straight line.        +
+//                                                  Circle.               +
 //=========================================================================
 
 #include <GccAna_Circ2d2TanOn.jxx>
@@ -21,15 +37,15 @@
 #include <GccAna_Lin2dBisec.hxx>
 
 //=========================================================================
-//   Creation d un cercle Passant par : 2 points Point1 et Point2.        +
-//                        Centre sur  : 1 cercle OnCirc.                  +
-//   avec une Tolerance de precision  : Tolerance.                        +
+//   Creation of a circle passing by  : 2 points Point1 and Point2.        +
+//                        Center on   : 1 circle OnCirc.                  +
+//   with a Tolerance of precision    : Tolerance.                        +
 //                                                                        +
-//   On cree L1 la droite des points equidistant de Point1 et Point2.     +
-//   On cree alors les solutions cirsol telles que :                      +
-//   cirsol est l ensemble des cercle ayant pour centre une des inter-    +
-//   sections de L1 avec OnCirc et de rayon la distance entre Point1 et   +
-//   le point ci dessus calcule.                                          +
+//   Create L1 the straight line of points equidistant to Point1 and Point2.     +
+//   Create then solutions cirsol so that :                      +
+//   cirsol is the set of circles with center in one of inter-    +
+//   sections of L1 with OnCirc and the radius the distance between Point1 and   +
+//   the point calculated below.                                          +
 //=========================================================================
 
 GccAna_Circ2d2TanOn::

@@ -1,9 +1,0 @@
-+M XmlObjMgt:pubinclude:XmlObjMgt_Element.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_Element.hxx
-+M XmlObjMgt:pubinclude:XmlObjMgt_Document.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_Document.hxx
-+M XmlObjMgt:pubinclude:XmlObjMgt_DOMString.hxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_DOMString.hxx
-+M XmlObjMgt:pubinclude:XmlObjMgt_Persistent.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_Persistent.lxx
-+M XmlObjMgt:pubinclude:XmlObjMgt_Array1.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_Array1.gxx
-+M XmlObjMgt:pubinclude:XmlObjMgt_Array1.lxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/inc/XmlObjMgt_Array1.lxx
-+M XmlObjMgt:dbadmfile:XmlObjMgt_obj_inc.In /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/XmlObjMgt/.adm/XmlObjMgt_obj_inc.In
-+M XmlObjMgt:dbadmfile:XmlObjMgt_obj_inc.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/XmlObjMgt/.adm/XmlObjMgt_obj_inc.Out
-+M XmlObjMgt:dbadmfile:XmlObjMgt_obj_inc.Dep /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/drv/XmlObjMgt/.adm/XmlObjMgt_obj_inc.Dep

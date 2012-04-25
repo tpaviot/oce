@@ -102,7 +102,7 @@ private:
 //!          to "calling routines". <br>
 //! Warning: If no catch is prepared for this exception, it displays the <br>
 //!          exception name and calls "exit(1)". <br>
-  Standard_EXPORT   static  void Abort() ;
+  Standard_EXPORT   static  void Abort(const Handle(Standard_Failure)& theError) ;
   //! Set the Error which will be transmitted to "calling routines". <br>
   Standard_EXPORT   static  void Error(const Handle(Standard_Failure)& aError) ;
   //! Returns the current handler (Top in former implemntations) <br>

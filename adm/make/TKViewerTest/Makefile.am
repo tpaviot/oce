@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_OpenGlLibs_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Viewer2dTest -I@top_srcdir@/src/Viewer2dTest \
 -I@top_srcdir@/drv/ViewerTest -I@top_srcdir@/src/ViewerTest
@@ -20,30 +20,30 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_TclLibs_INCLUDES) $(CSF_TclTkLibs_INCLUDES)
 
 lib_LTLIBRARIES=libTKViewerTest.la
 
-libTKViewerTest_la_LIBADD = \
-../TKernel/libTKernel.la \
-../TKBool/libTKBool.la \
-../TKV2d/libTKV2d.la \
-../TKG2d/libTKG2d.la \
-../TKOffset/libTKOffset.la \
-../TKG3d/libTKG3d.la \
+libTKViewerTest_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKGeomBase/libTKGeomBase.la \
-../TKTopAlgo/libTKTopAlgo.la \
-../TKV3d/libTKV3d.la \
-../TKService/libTKService.la \
-../TKMath/libTKMath.la \
-../TKBRep/libTKBRep.la \
-../TKMesh/libTKMesh.la \
-../TKOpenGl/libTKOpenGl.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKFillet/libTKFillet.la \
-../TKTopTest/libTKTopTest.la \
+../TKBRep/libTKBRep.la \
+../TKTopAlgo/libTKTopAlgo.la \
 ../TKHLR/libTKHLR.la \
-../TKDraw/libTKDraw.la \
-../TKVoxel/libTKVoxel.la \
+../TKernel/libTKernel.la \
+../TKMath/libTKMath.la \
 ../TKNIS/libTKNIS.la \
+../TKService/libTKService.la \
+../TKBool/libTKBool.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) $(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) 
+../TKGeomAlgo/libTKGeomAlgo.la \
+../TKG2d/libTKG2d.la \
+../TKTopTest/libTKTopTest.la \
+../TKG3d/libTKG3d.la \
+../TKOffset/libTKOffset.la \
+../TKVoxel/libTKVoxel.la \
+../TKMesh/libTKMesh.la \
+../TKV2d/libTKV2d.la \
+../TKV3d/libTKV3d.la \
+../TKDraw/libTKDraw.la \
+../TKOpenGl/libTKOpenGl.la \
+$(CSF_TclLibs_LIB) $(CSF_TclTkLibs_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_OpenGlLibs_LIB) 
 
 libTKViewerTest_la_SOURCES = \
 @top_srcdir@/drv/Viewer2dTest/Viewer2dTest_DataMapIteratorOfDataMapOfText_0.cxx \
@@ -66,6 +66,7 @@ libTKViewerTest_la_SOURCES = \
 @top_srcdir@/src/ViewerTest/ViewerTest_EventManager.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_FilletCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_ObjectCommands.cxx \
+@top_srcdir@/src/ViewerTest/ViewerTest_OpenGlCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_RelationCommands.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_Tool.cxx \
 @top_srcdir@/src/ViewerTest/ViewerTest_ViewerCommands.cxx \

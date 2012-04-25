@@ -12,7 +12,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_TBB_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_TBB_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/BRepMesh -I@top_srcdir@/src/BRepMesh \
 -I@top_srcdir@/drv/IntPoly -I@top_srcdir@/src/IntPoly
@@ -20,16 +20,16 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_TBB_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKMesh.la
 
-libTKMesh_la_LIBADD = \
+libTKMesh_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKMath/libTKMath.la \
 ../TKernel/libTKernel.la \
 ../TKG2d/libTKG2d.la \
-../TKGeomBase/libTKGeomBase.la \
-../TKBRep/libTKBRep.la \
 ../TKG3d/libTKG3d.la \
-../TKGeomAlgo/libTKGeomAlgo.la \
+../TKGeomBase/libTKGeomBase.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) $(CSF_TBB_LIB) 
+../TKGeomAlgo/libTKGeomAlgo.la \
+$(CSF_TBB_LIB) 
 
 libTKMesh_la_SOURCES = \
 @top_srcdir@/drv/BRepMesh/BRepMesh_Array1OfBiPoint_0.cxx \

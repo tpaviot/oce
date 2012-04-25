@@ -1,9 +1,0 @@
-+ LProp:source:LProp_CurveTool.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_CurveTool.gxx
-+ LProp:source:LProp_SurfaceTool.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_SurfaceTool.gxx
-+ LProp:source:LProp_CLProps.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_CLProps.gxx
-+ LProp:source:LProp_SLProps.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_SLProps.gxx
-+ LProp:source:LProp_FuncCurExt.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_FuncCurExt.gxx
-+ LProp:source:LProp_FuncCurNul.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_FuncCurNul.gxx
-+ LProp:source:LProp_NumericCurInf.gxx /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/src/LProp/LProp_NumericCurInf.gxx
-- LProp:admfile:LProp_src.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/LProp/LProp_src.Out
-- LProp:admfile:LProp_xcpp_src.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/LProp/LProp_xcpp_src.Out

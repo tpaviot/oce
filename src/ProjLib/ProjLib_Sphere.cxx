@@ -1,7 +1,23 @@
-// File:	ProjLib_Sphere.cxx
-// Created:	Tue Aug 24 17:18:17 1993
-// Author:	Bruno DUMORTIER
-//		<dub@topsn3>
+// Created on: 1993-08-24
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 //  Modified by skv - Tue Aug  1 16:29:59 2006 OCC13116
@@ -88,7 +104,7 @@ static gp_Pnt2d EvalPnt2d( const gp_Vec P, const gp_Sphere& Sp)
   if ( Abs(X) > Precision::PConfusion() ||
        Abs(Y) > Precision::PConfusion() ) {
     Standard_Real UU = ATan2(Y,X);
-    U = ElCLib::InPeriod(UU, 0., 2*PI);
+    U = ElCLib::InPeriod(UU, 0., 2*M_PI);
   }
   else {
     U = 0.;
@@ -142,21 +158,21 @@ void  ProjLib_Sphere::Project(const gp_Circ& C)
     P2d1 = EvalPnt2d(gp_Vec(Xc),mySphere);
     P2d2 = EvalPnt2d(gp_Vec(Yc),mySphere);
     
-    if (isIsoU && (Abs(P2d1.Y()-PI/2.) < Precision::PConfusion() ||
-		   Abs(P2d1.Y()+PI/2.) < Precision::PConfusion()   )) {
+    if (isIsoU && (Abs(P2d1.Y()-M_PI/2.) < Precision::PConfusion() ||
+		   Abs(P2d1.Y()+M_PI/2.) < Precision::PConfusion()   )) {
       // then P1 is on the apex of the sphere and U is undefined
       // The value of U is given by P2d2.Y() .
       P2d1.SetX(P2d2.X());
     }
-    else if ( Abs( Abs(P2d1.X()-P2d2.X()) - PI) < Precision::PConfusion()) {
+    else if ( Abs( Abs(P2d1.X()-P2d2.X()) - M_PI) < Precision::PConfusion()) {
       // then we have U2 = U1 + PI; V2;
       // we have to assume that U1 = U2 
       //   so V2 = PI - V2;
       P2d2.SetX( P2d1.X());
       if (P2d2.Y() < 0.) 
-	P2d2.SetY( -PI - P2d2.Y());
+	P2d2.SetY( -M_PI - P2d2.Y());
       else
-	P2d2.SetY(  PI - P2d2.Y());
+	P2d2.SetY(  M_PI - P2d2.Y());
     }
     else {
       P2d2.SetX( P2d1.X());
@@ -171,7 +187,7 @@ void  ProjLib_Sphere::Project(const gp_Circ& C)
     //P2d(U,V) :first point of the PCurve.
     Standard_Real U = Xs.AngleWithRef(Xc, Xs^Ys);
     if (U<0) 
-      U += 2*PI;
+      U += 2*M_PI;
     Standard_Real Z = gp_Vec(O,C.Location()).Dot(Zs);
     Standard_Real V = ASin(Z/mySphere.Radius());
     P2d1 = gp_Pnt2d(U,V);
@@ -214,7 +230,7 @@ void ProjLib_Sphere::SetInBounds(const Standard_Real U)
   
   // first set the y of the first point in -pi/2 pi/2
   Standard_Real newY, Y = ElCLib::Value(U,myLin).Y();
-  newY = ElCLib::InPeriod( Y, -PI, PI);
+  newY = ElCLib::InPeriod( Y, -M_PI, M_PI);
   
   myLin.Translate(gp_Vec2d(0.,newY-Y));
 
@@ -224,18 +240,18 @@ void ProjLib_Sphere::SetInBounds(const Standard_Real U)
   Standard_Real Tol = 1.e-7;
   gp_Dir2d D2d = myLin.Direction();
 //  Modified by skv - Tue Aug  1 16:29:59 2006 OCC13116 Begin
-//   if ((P.Y() > PI/2) || 
-  if ((P.Y() - PI/2 > Tol) || 
+//   if ((P.Y() > M_PI/2) || 
+  if ((P.Y() - M_PI/2 > Tol) || 
 //  Modified by skv - Tue Aug  1 16:29:59 2006 OCC13116 End
-      (Abs(P.Y()-PI/2)<Tol && D2d.IsEqual(gp::DY2d(),Tol))) {
-    Axis = gp_Ax2d( gp_Pnt2d( 0., PI/2.), gp::DX2d());
+      (Abs(P.Y()-M_PI/2)<Tol && D2d.IsEqual(gp::DY2d(),Tol))) {
+    Axis = gp_Ax2d( gp_Pnt2d( 0., M_PI/2.), gp::DX2d());
   }
 //  Modified by skv - Tue Aug  1 16:29:59 2006 OCC13116 Begin
-//   else if ((P.Y() < -PI/2) || 
-  else if ((P.Y() + PI/2 < -Tol) || 
+//   else if ((P.Y() < -M_PI/2) || 
+  else if ((P.Y() + M_PI/2 < -Tol) || 
 //  Modified by skv - Tue Aug  1 16:29:59 2006 OCC13116 End
-	   (Abs(P.Y()+PI/2)<Tol && D2d.IsOpposite(gp::DY2d(),Tol))) {
-    Axis = gp_Ax2d( gp_Pnt2d( 0., -PI/2.), gp::DX2d());
+	   (Abs(P.Y()+M_PI/2)<Tol && D2d.IsOpposite(gp::DY2d(),Tol))) {
+    Axis = gp_Ax2d( gp_Pnt2d( 0., -M_PI/2.), gp::DX2d());
   }
   else 
     return;
@@ -243,10 +259,10 @@ void ProjLib_Sphere::SetInBounds(const Standard_Real U)
   Trsf.SetMirror(Axis);
   myLin.Transform(Trsf);
 
-  myLin.Translate(gp_Vec2d(PI,0.));
+  myLin.Translate(gp_Vec2d(M_PI,0.));
 
   // il faut maintenant recadrer en U
   Standard_Real newX, X = ElCLib::Value(U,myLin).X();
-  newX = ElCLib::InPeriod( X, 0., 2.*PI);
+  newX = ElCLib::InPeriod( X, 0., 2.*M_PI);
   myLin.Translate(gp_Vec2d(newX-X,0.));
 }

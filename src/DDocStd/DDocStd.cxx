@@ -1,13 +1,27 @@
-// File:	DDocStd.cxx
-// Created:	Wed Mar  1 14:05:40 2000
-// Author:	Denis PASCAL
-//		<dp@dingox.paris1.matra-dtv.fr>
+// Created on: 2000-03-01
+// Created by: Denis PASCAL
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <DDocStd.ixx>
 #include <DDocStd_DrawDocument.hxx>
 #include <TDocStd_Document.hxx>
 #include <Draw_Interpretor.hxx>
-//
 #include <TCollection_AsciiString.hxx>
 #include <Draw.hxx>
 #include <TDF_Tool.hxx>
@@ -77,9 +91,6 @@ Standard_Boolean DDocStd::Find (const Handle(TDocStd_Document)& D,
 				const Standard_Boolean  Complain)
 {
   Label.Nullify();
-#ifdef DEB
-  Standard_Boolean Found;
-#endif
   TDF_Tool::Label(D->GetData(),Entry,Label,Standard_False);
   if (Label.IsNull() && Complain) cout<<"No label for entry "<<Entry<<endl;
   return !Label.IsNull();
@@ -96,9 +107,6 @@ Standard_Boolean DDocStd::Find (const Handle(TDocStd_Document)& D,
 				Handle(TDF_Attribute)&  A,
 				const Standard_Boolean  Complain) 
 {
-#ifdef DEB
-  Standard_Boolean found;
-#endif
   TDF_Label L;
   if (Find(D,Entry,L,Complain)) {
     if (L.FindAttribute(ID,A)) return Standard_True;

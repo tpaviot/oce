@@ -1,7 +1,0 @@
-+V Intrv:msentity:Intrv .
-+V Intrv:msentity:Intrv_Interval .
-+V Intrv:msentity:Intrv_Intervals .
-+V Intrv:msentity:Intrv_SequenceOfInterval .
-+V Intrv:msentity:Intrv_SequenceNodeOfSequenceOfInterval .
-+V Intrv:msentity:Intrv_Position .
-- Intrv:admfile:Intrv_xcpp_fill.Out /dn43/OCCT/tmp/results_30.09.2011/occt/release-sources-20110930/.adm/Intrv/Intrv_xcpp_fill.Out

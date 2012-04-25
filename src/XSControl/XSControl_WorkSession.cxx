@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //:i1 pdn 03.04.99  BUC60301  
 
 #include <XSControl_WorkSession.ixx>
@@ -282,32 +299,7 @@ Standard_Boolean  XSControl_WorkSession::PrintTransferStatus(const Standard_Inte
     binder = TP->MapItem (ne);
     S<<endl;
     TP->StartTrace (binder,ent,0,0);
-/*skl
-    if (!binder.IsNull()) {
-      // infos complementaires : cas et attributs
-      Standard_Integer icas, nbcas = binder->NbCases();
-      if (nbcas > 0) S<<"Recorded Cases : "<<nbcas<<" :";
-      for (icas = 1; icas <= nbcas; icas ++) S<<"  "<<binder->CaseName(icas);
-      if (nbcas > 0) S<<endl;
-      Standard_Integer nbatr = 0;
-      Handle(Dico_DictionaryOfTransient) atrs = binder->AttrList();
-      Dico_IteratorOfDictionaryOfTransient iatr (atrs);
-      for (; iatr.More(); iatr.Next()) {
-	Handle(Standard_Transient) atr = iatr.Value();
-	if (atr.IsNull()) continue;
-	if (nbatr == 0) S<<"-- List of Attributes"<<endl;
-	nbatr ++;
-	S<<iatr.Name()<<" : ";
-	DeclareAndCast(Interface_IntVal,intatr,atr);
-	if (!intatr.IsNull()) S<<"Integer="<<intatr->Value();
-	DeclareAndCast(Geom2d_Point,realtr,atr);
-	if (!realtr.IsNull()) S<<"Real="<<realtr->X();
-	if (intatr.IsNull() && realtr.IsNull()) S<<"Type:"<<atr->DynamicType()->Name();
-	S<<endl;
-      }
-      if (nbatr > 0) S<<"-- Total of Attributes : "<<nbatr<<endl;
-    }
-skl*/
+
   }
 
 //   ***   CHECK (commun READ+WRITE)   ***
@@ -471,8 +463,6 @@ Handle(Standard_Transient)  XSControl_WorkSession::Result
 Standard_Integer  XSControl_WorkSession::TransferReadOne
   (const Handle(Standard_Transient)& ent)
 {
-  //Standard_OStream& sout = Interface_TraceFile::Def();
-  //Standard_Integer level = Interface_TraceFile::DefLevel();
   Handle(Interface_InterfaceModel) model = Model();
   if (ent == model) return TransferReadRoots();
 
@@ -507,8 +497,14 @@ Handle(Interface_InterfaceModel) XSControl_WorkSession::NewModel ()
   Handle(Interface_InterfaceModel) newmod;
   if (theController.IsNull()) return newmod;
   newmod = theController->NewModel();
+  
   SetModel(newmod);
+  if(!MapReader().IsNull())
+    MapReader()->Clear();
+  //clear all contains of WS
+  theTransferRead->Clear(3);
   theTransferWrite->Clear(-1);
+
   return newmod;
 }
 

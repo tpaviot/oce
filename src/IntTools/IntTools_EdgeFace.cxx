@@ -1,8 +1,22 @@
-// File:	IntTools_EdgeFace.cxx
-// Created:	Mon Feb 26 10:23:38 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-02-26
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntTools_EdgeFace.ixx>
 
@@ -86,9 +100,24 @@ static
   myErrorStatus=1;
   myParallel=Standard_False;
   myPar1=0.;
-  myContext = NULL;
+}
+//=======================================================================
+//function : SetContext
+//purpose  : 
+//=======================================================================
+void IntTools_EdgeFace::SetContext(const Handle(IntTools_Context)& theContext) 
+{
+  myContext = theContext;
 }
 
+//=======================================================================
+//function : Context
+//purpose  : 
+//=======================================================================
+const Handle(IntTools_Context)& IntTools_EdgeFace::Context()const 
+{
+  return myContext;
+}
 //=======================================================================
 //function : SetEdge
 //purpose  : 
@@ -181,7 +210,7 @@ static
 //function : IsDone
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_EdgeFace::IsDone()const 
+Standard_Boolean IntTools_EdgeFace::IsDone()const 
 {
   return myIsDone;
 } 
@@ -189,7 +218,7 @@ static
 //function : ErrorStatus
 //purpose  : 
 //=======================================================================
-  Standard_Integer IntTools_EdgeFace::ErrorStatus()const 
+Standard_Integer IntTools_EdgeFace::ErrorStatus()const 
 {
   return myErrorStatus;
 }
@@ -197,7 +226,7 @@ static
 //function : CommonParts
 //purpose  : 
 //=======================================================================
-  const IntTools_SequenceOfCommonPrts& IntTools_EdgeFace::CommonParts() const 
+const IntTools_SequenceOfCommonPrts& IntTools_EdgeFace::CommonParts() const 
 {
   return mySeqOfCommonPrts;
 }
@@ -205,7 +234,7 @@ static
 //function : Range
 //purpose  : 
 //=======================================================================
-  const IntTools_Range&  IntTools_EdgeFace::Range() const
+const IntTools_Range&  IntTools_EdgeFace::Range() const
 {
   return myRange;
 } 
@@ -214,7 +243,7 @@ static
 //function : CheckData
 //purpose  : 
 //=======================================================================
-  void IntTools_EdgeFace::CheckData()
+void IntTools_EdgeFace::CheckData()
 {
   if (BRep_Tool::Degenerated(myEdge)) {
     myErrorStatus=2;
@@ -223,8 +252,6 @@ static
      myErrorStatus=3;
   }
 }
-
-
 //=======================================================================
 //function : Prepare
 //purpose  : 
@@ -391,7 +418,6 @@ static
   Standard_Boolean bFlag;
   Standard_Real Umin, Usup, Vmin, Vsup;
 
-  const Handle(Geom_Surface)& GS=BRep_Tool::Surface(myFace);
   Umin=myS.FirstUParameter();
   Usup=myS.LastUParameter();
   Vmin=myS.FirstVParameter();
@@ -403,22 +429,12 @@ static
   //
   Standard_Real ULD, VLD;
 
-  if(myContext == NULL) {
-    aProjector.Init(P, GS, Umin, Usup, Vmin, Vsup, myEpsT);
-    bFlag=aProjector.IsDone();
-    
-    if(bFlag) {
-      aProjector.LowerDistanceParameters(ULD, VLD);
-    }
-  }
-  else {
-    GeomAPI_ProjectPointOnSurf& aLocProj = myContext->ProjPS(myFace);
-    aLocProj.Perform(P);
-    bFlag = aLocProj.IsDone();
-    
-    if(bFlag) {
-      aLocProj.LowerDistanceParameters(ULD, VLD);
-    }
+  GeomAPI_ProjectPointOnSurf& aLocProj = myContext->ProjPS(myFace);
+  aLocProj.Perform(P);
+  bFlag = aLocProj.IsDone();
+  
+  if(bFlag) {
+    aLocProj.LowerDistanceParameters(ULD, VLD);
   }
   //
 
@@ -429,12 +445,7 @@ static
     TopAbs_State aState;
     gp_Pnt2d aP2d(ULD, VLD);
 
-    if(myContext == NULL) {
-      aState=myFClass2d.Perform(aP2d);
-    }
-    else {
-      aState = myContext->FClass2d(myFace).Perform(aP2d);
-    }
+    aState = myContext->FClass2d(myFace).Perform(aP2d);
     //
     
     if (aState==TopAbs_IN || aState==TopAbs_ON) {
@@ -462,8 +473,6 @@ static
     aD=aD-myCriteria;
     return aD; 
   }
-  //
-  const Handle(Geom_Surface)& GS=BRep_Tool::Surface(myFace);
   
   Umin=myS.FirstUParameter();
   Usup=myS.LastUParameter();
@@ -473,23 +482,12 @@ static
   //
   Standard_Boolean bFlag = Standard_False;
 
-  if(myContext == NULL) {
-    GeomAPI_ProjectPointOnSurf aProjector;
-    aProjector.Init(P, GS, Umin, Usup, Vmin, Vsup, myEpsT);
-    bFlag=aProjector.IsDone();
-
-    if(bFlag) {
-      aD=aProjector.LowerDistance();
-    }
-  }
-  else {
-    GeomAPI_ProjectPointOnSurf& aLocProj = myContext->ProjPS(myFace);
-    aLocProj.Perform(P);
-    bFlag = aLocProj.IsDone();
-    
-    if(bFlag) {
-      aD = aLocProj.LowerDistance();
-    }
+  GeomAPI_ProjectPointOnSurf& aLocProj = myContext->ProjPS(myFace);
+  aLocProj.Perform(P);
+  bFlag = aLocProj.IsDone();
+  
+  if(bFlag) {
+    aD = aLocProj.LowerDistance();
   }
   //
   
@@ -1253,14 +1251,6 @@ static
   return theflag;
 }
 
-//=======================================================================
-//function : SetContext
-//purpose  : 
-//=======================================================================
-  void IntTools_EdgeFace::SetContext(const IntTools_PContext& theContext) 
-{
-  myContext = theContext;
-}
 
 //=======================================================================
 //function : Perform
@@ -1270,17 +1260,19 @@ static
 {
   Standard_Integer i, aNb;
   IntTools_CommonPrt aCommonPrt;
-  //IntTools_Root aRoot; // Wng in Gcc 3.0
-  //...
-
-  aCommonPrt.SetEdge1(myEdge);
   //
+  aCommonPrt.SetEdge1(myEdge);
   //
   myErrorStatus=0;
   CheckData();
-  if (myErrorStatus)
+  if (myErrorStatus) {
     return;
-
+  }
+  //
+  if (myContext.IsNull()) {
+    myContext=new IntTools_Context;
+  }
+  //
   myIsDone = Standard_False;
   myC.Initialize(myEdge);
   GeomAbs_CurveType aCurveType;
@@ -1307,7 +1299,7 @@ static
 
   myS.Initialize (myFace,Standard_True);
 
-  if(myContext == NULL) {
+  if(myContext.IsNull()) {
     myFClass2d.Init(myFace, 1.e-6);
   }
 

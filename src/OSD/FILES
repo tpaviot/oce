@@ -7,8 +7,6 @@ OSD_Function.cxx
 OSD_Getkey.c
 OSD_Function.hxx
 OSD_ErrorList.hxx
-ethernet.h-sgi
-ethernet.h-dec
 OSD_WNT.cxx
 OSD_WNT_1.cxx
 OSD_WNT.hxx
@@ -25,3 +23,5 @@ OSD_PerfMeter.h
 OSD_PerfMeter.hxx
 OSD_MAllocHook.cxx
 OSD_MAllocHook.hxx
+OSD_MemInfo.hxx
+OSD_MemInfo.cxx

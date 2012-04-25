@@ -1,7 +1,23 @@
-// File:	BRepTools_Quilt.cxx
-// Created:	Fri Dec 23 10:37:05 1994
-// Author:	Remi LEQUETTE
-//		<rle@bravox>
+// Created on: 1994-12-23
+// Created by: Remi LEQUETTE
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepTools_Quilt.ixx>
@@ -194,11 +210,6 @@ void BRepTools_Quilt::Add(const TopoDS_Shape& S)
 	  TopoDS_Wire NW;
 	  B.MakeWire(NW);
 	  TopoDS_Iterator ite(W,Standard_False);
-#ifdef DEB
-	  Standard_Real   Tol = BRep_Tool::Tolerance(F);
-#else
-          BRep_Tool::Tolerance(F);
-#endif
 	  Standard_Real   UFirst,ULast;
 	  
 	  // Reconstruction des wires.
@@ -444,8 +455,6 @@ TopoDS_Shape BRepTools_Quilt::Shells() const
               TopoDS_Shape arefShape = SH.Oriented(TopAbs_FORWARD) ;
 	      B.Add  ( arefShape ,Fo.Oriented(NewO));
 	    }
-            Standard_Integer kk =1;
-            Standard_Integer p =0;
 	    // Rebind the free edges of the old shell to the new shell
             //gka BUG 6491
             TopExp_Explorer aexp(SH,TopAbs_EDGE);

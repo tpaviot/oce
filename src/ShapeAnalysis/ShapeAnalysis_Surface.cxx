@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // 06.01.99 pdn private method SurfaceNewton PRO17015: fix against hang in Extrema
 // 11.01.99 pdn PRO10109 4517: protect against wrong result
 //%12 pdn 11.02.99 PRO9234 project degenerated
@@ -146,12 +163,12 @@ void ShapeAnalysis_Surface::ComputeSingularities()
     //szv#4:S4163:12Mar99 warning - possible div by zero
     Standard_Real Ang = ACos (Min (1., majorR / minorR));
     myPreci   [0] = myPreci[1] = Max (0., majorR - minorR);
-    myP3d     [0] = mySurf->Value (0., PI-Ang);
-    myFirstP2d[0].SetCoord (su1, PI-Ang);
-    myLastP2d [0].SetCoord (su2, PI-Ang);
-    myP3d     [1] = mySurf->Value (0., PI+Ang);
-    myFirstP2d[1].SetCoord (su2, PI+Ang);
-    myLastP2d [1].SetCoord (su1, PI+Ang);
+    myP3d     [0] = mySurf->Value (0., M_PI-Ang);
+    myFirstP2d[0].SetCoord (su1, M_PI-Ang);
+    myLastP2d [0].SetCoord (su2, M_PI-Ang);
+    myP3d     [1] = mySurf->Value (0., M_PI+Ang);
+    myFirstP2d[1].SetCoord (su2, M_PI+Ang);
+    myLastP2d [1].SetCoord (su1, M_PI+Ang);
     myFirstPar[0] = myFirstPar[1] = su1;
     myLastPar [0] = myLastPar [1] = su2;
     myUIsoDeg [0] = myUIsoDeg [1] = Standard_False;
@@ -917,29 +934,29 @@ gp_Pnt2d ShapeAnalysis_Surface::ValueOfUV(const gp_Pnt& P3D,const Standard_Real 
     {
       gp_Cylinder Cylinder = SurfAdapt.Cylinder();
       ElSLib::Parameters( Cylinder, P3D, S, T);
-      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*PI);
+      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*M_PI);
       break;
     }
   case GeomAbs_Cone :
     {
       gp_Cone Cone = SurfAdapt.Cone();
       ElSLib::Parameters( Cone, P3D, S, T);
-      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*PI);
+      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*M_PI);
       break;
     }
   case GeomAbs_Sphere :
     {
       gp_Sphere Sphere = SurfAdapt.Sphere();
       ElSLib::Parameters( Sphere, P3D, S, T);
-      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*PI);
+      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*M_PI);
       break;
     }
   case GeomAbs_Torus :
     {
       gp_Torus Torus = SurfAdapt.Torus();
       ElSLib::Parameters( Torus, P3D, S, T);
-      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*PI);
-      T += ShapeAnalysis::AdjustByPeriod(T,0.5*(vf+vl),2*PI);
+      S += ShapeAnalysis::AdjustByPeriod(S,0.5*(uf+ul),2*M_PI);
+      T += ShapeAnalysis::AdjustByPeriod(T,0.5*(vf+vl),2*M_PI);
       break;
     }
   case GeomAbs_BezierSurface :
@@ -985,6 +1002,7 @@ gp_Pnt2d ShapeAnalysis_Surface::ValueOfUV(const gp_Pnt& P3D,const Standard_Real 
 	              dv = Min (myVDelt, SurfAdapt.VResolution (preci));
         myExtSrf = mySurf;
 	Standard_Real Tol = Precision::PConfusion();
+        myExtPS.SetFlag (Extrema_ExtFlag_MIN);
 	myExtPS.Initialize ( myExtSrf, uf-du, ul+du, vf-dv, vl+dv, Tol, Tol );
 	myExtOK = Standard_True;
       }

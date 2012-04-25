@@ -1,7 +1,23 @@
-// File:	SWDRAW_ShapeUpgrade.cxx
-// Created:	Tue Mar  9 15:49:27 1999
-// Author:	data exchange team
-//		<det@kinox.nnov.matra-dtv.fr>
+// Created on: 1999-03-09
+// Created by: data exchange team
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //gka,rln 30.04.99 S4137: new commands for testing ShapeDivide added, some removed
 //abv,pdn 05.05.99 S4174: new commands for testing ShapeDivide added, some removed
 //pdn,gka 10.06.99 S4189: command DT_ShapeConvertRev added
@@ -65,6 +81,9 @@
 #include <ShapeCustom.hxx>
 #include <ShapeUpgrade_ShapeDivideClosed.hxx>
 #include <ShapeUpgrade_RemoveInternalWires.hxx>
+#include <ShapeUpgrade_RemoveLocations.hxx>
+#include <BRepBuilderAPI_Transform.hxx>
+
 // the plane (equation z=0) shared by PlaneDividedFaceContinuity and PlaneGridShell
 //static Handle(Geom_Plane) ThePlane= new Geom_Plane(0,0,1,0);
 
@@ -447,7 +466,7 @@ static Standard_Integer DT_SplitAngle(Draw_Interpretor& di,
     if ( maxangle <1 ) maxangle = 1;
   }
   
-  ShapeUpgrade_ShapeDivideAngle tool(maxangle*PI/180,inputShape);
+  ShapeUpgrade_ShapeDivideAngle tool(maxangle * M_PI/180,inputShape);
   tool.Perform();
   TopoDS_Shape res = tool.Result();
 
@@ -1403,6 +1422,49 @@ static Standard_Integer removeinternalwires (Draw_Interpretor& di,
   return 0;
 }
 
+static Standard_Integer removeloc (Draw_Interpretor& di, 
+                                   Standard_Integer argc, 
+                                   const char** argv)
+{
+  if (argc<3) {
+    di << "bad number of arguments. Should be:  removeloc res shape" <<"\n";
+    return 1;
+  }
+  
+  TopoDS_Shape aShape = DBRep::Get(argv[2]);
+  if(aShape.IsNull())
+    return 1;
+  ShapeUpgrade_RemoveLocations aRemLoc;
+  aRemLoc.Remove(aShape);
+  TopoDS_Shape aNewShape = aRemLoc.GetResult();
+  
+  DBRep::Set(argv[1],aNewShape);
+  return 0;
+}
+static Standard_Integer copytranslate(Draw_Interpretor& di, 
+                                   Standard_Integer argc, 
+                                   const char** argv)
+{
+  if (argc<6) {
+    di << "bad number of arguments. Should be:  removeloc res shape dx dyy dz" <<"\n";
+    return 1;
+  }
+  TopoDS_Shape aShape = DBRep::Get(argv[2]);
+  if(aShape.IsNull())
+    return 1;
+  Standard_Real aDx = atof(argv[3]);
+  Standard_Real aDy = atof(argv[4]);
+  Standard_Real aDz = atof(argv[5]);
+  gp_Trsf aTrsf;
+  aTrsf.SetTranslation(gp_Vec(aDx, aDy, aDz));
+  BRepBuilderAPI_Transform builderTransform(aTrsf);
+  builderTransform.Perform (aShape, true); 
+  TopoDS_Shape aNewShape = builderTransform.Shape();
+  DBRep::Set(argv[1],aNewShape);
+  return 0;
+  
+}
+
 //=======================================================================
 //function : InitCommands
 //purpose  : 
@@ -1497,4 +1559,7 @@ static Standard_Integer removeinternalwires (Draw_Interpretor& di,
   
   theCommands.Add ("RemoveIntWires","result minarea wholeshape [faces or wires] [moderemoveface ]",
                    __FILE__,removeinternalwires,g);
+  
+  theCommands.Add ("removeloc","result shape",__FILE__,removeloc,g);
+  theCommands.Add ("copytranslate","result shape dx dy dz",__FILE__,copytranslate,g);
 }

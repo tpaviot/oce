@@ -1,7 +1,23 @@
-// File:	BndLib_AddSurface.gxx
-// Created:	Mon Jul 24 14:18:23 1995
-// Author:	Modelistation
-//		<model@metrox>
+// Created on: 1995-07-24
+// Created by: Modelistation
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Fri Aug 27 12:29:04 2004 OCC6503
 
@@ -240,9 +256,9 @@ void BndLib_AddSurface::Add(const Adaptor3d_Surface& S,
   case GeomAbs_Sphere: 
     {
       if (Abs(UMin) < Precision::Angular() &&
-	  Abs(UMax - 2.*PI) < Precision::Angular() &&
-	  Abs(VMin + PI/2.) < Precision::Angular() &&
-	  Abs(VMax - PI/2.) < Precision::Angular()) // a whole sphere
+	  Abs(UMax - 2.*M_PI) < Precision::Angular() &&
+	  Abs(VMin + M_PI/2.) < Precision::Angular() &&
+	  Abs(VMax - M_PI/2.) < Precision::Angular()) // a whole sphere
 	BndLib::Add(S.Sphere(),Tol,B);
       else
 	BndLib::Add(S.Sphere(),UMin,UMax,VMin,VMax,Tol,B);

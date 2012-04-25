@@ -1,0 +1,15 @@
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TNaming_Builder_HeaderFile
+#include <TNaming_Builder.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopLoc_Location_HeaderFile
+#include <TopLoc_Location.hxx>
+#endif
+#ifndef _QANewBRepNaming_HeaderFile
+#include <QANewBRepNaming.hxx>
+#endif

@@ -1,19 +1,38 @@
-// File:      OpenGl_PrinterContext.hxx
-// Created:   20.05.11 10:00:00
-// Author:    Anton POLETAEV
+// Created on: 2011-05-20
+// Created by: Anton POLETAEV
+// Copyright (c) 2011-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef _OPENGL_PRINTERCONTEXT_H
 #define _OPENGL_PRINTERCONTEXT_H
+
+#include <OpenGl_GlCore11.hxx>
 
 #include <MMgt_TShared.hxx>
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
 #include <Handle_MMgt_TShared.hxx>
-#include <OpenGl_tgl_all.hxx>
 #include <NCollection_DataMap.hxx>
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 #include <TColStd_Array2OfReal.hxx>
+
+#include <OpenGl_Workspace.hxx>
 
 class Standard_Transient;
 class Handle(Standard_Type);
@@ -107,10 +126,18 @@ private:
   GLCONTEXT            myCtx;
 
   // the printer context could be created only in method call_togl_print
-  friend Standard_Boolean call_togl_print (CALL_DEF_VIEW *, CALL_DEF_LAYER *,
+  /*friend Standard_Boolean call_togl_print (CALL_DEF_VIEW *, CALL_DEF_LAYER *,
                                            CALL_DEF_LAYER *, 
                                            const Aspect_Drawable, const int,
-                                           const char*, const int, const float);
+                                           const char*, const int, const float);*/
+  friend Standard_Boolean OpenGl_Workspace::Print (const Graphic3d_CView& ACView,
+                                                  const Aspect_CLayer2d& ACUnderLayer, 
+                                                  const Aspect_CLayer2d& ACOverLayer,
+                                                  const Aspect_Handle    hPrintDC,
+                                                  const Standard_Boolean showBackground,
+                                                  const Standard_CString filename,
+                                                  const Aspect_PrintAlgo printAlgorithm,
+                                                  const Standard_Real theScaleFactor);
 };
 
 #endif

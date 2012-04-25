@@ -31,9 +31,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Prs3d_LineAspect;
 
 
@@ -66,8 +63,6 @@ public:
   Standard_EXPORT     Quantity_Length SecondAxisLength() const;
   //! Returns the length of the displayed third axis. <br>
   Standard_EXPORT     Quantity_Length ThirdAxisLength() const;
-  
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
 
 
 

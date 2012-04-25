@@ -1,7 +1,23 @@
-// File:	TestTopOpe.cxx
-// Created:	Thu Jul 24 10:58:20 1997
-// Author:	Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1997-07-24
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TestTopOpe.hxx>
 #include <TopOpeBRepTool_2d.hxx>
@@ -256,10 +272,6 @@ Standard_Integer reguso(Draw_Interpretor& di, Standard_Integer n, const char** a
     TopOpeBRepBuild_ShellToSolid SheToSo;      
     for (; itm.More(); itm.Next()) {
       const TopTools_ListOfShape& lns = itm.Value();
-#ifdef DEB
-      Standard_Integer nlns =
-#endif
-                              lns.Extent();
       TopTools_ListIteratorOfListOfShape itsh(lns);
       for (; itsh.More(); itsh.Next()) {
 	const TopoDS_Shell& she = TopoDS::Shell(itsh.Value());
@@ -602,9 +614,6 @@ static Standard_Integer classifBnd2d(Draw_Interpretor& di, Standard_Integer n, c
   TopoDS_Shape W1 = DBRep::Get(a[1]);
   TopoDS_Shape W2 = DBRep::Get(a[2]);
   TopoDS_Shape F = DBRep::Get(a[3]);
-#ifdef DEB
-  Standard_Integer i = atoi(a[4]);
-#endif
   
   TopoDS_Wire w1 = TopoDS::Wire(W1);
   TopoDS_Wire w2 = TopoDS::Wire(W2);

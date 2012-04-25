@@ -1,9 +1,23 @@
-//static const char* sccsid = "@(#)ExprIntrp.cxx	3.2 95/01/10"; // Do not delete this line. Used by sccs.
-// Copyright: 	Matra-Datavision 1992
-// File:	ExprIntrp.cxx
-// Created:	Mon Aug 17 18:40:44 1992
-// Author:	Arnaud BOUZY
-//		<adn>
+// Created on: 1992-08-17
+// Created by: Arnaud BOUZY
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ExprIntrp.ixx>
 #include <ExprIntrp_yaccintrf.hxx>
@@ -28,14 +42,14 @@ Standard_Boolean ExprIntrp::Parse(const Handle(ExprIntrp_Generator)& gen, const 
     try {
       OCC_CATCH_SIGNALS
       while (kerror!=0) {
-	kerror = ExprIntrpparse();
+        kerror = ExprIntrpparse();
       }
+      ExprIntrp_stop_string();
       return Standard_True;
     }
-    catch (Standard_Failure) {
-      return Standard_False;
-    }
+    catch (Standard_Failure) {}
   }
+  ExprIntrp_stop_string();
   return Standard_False;
 }
 

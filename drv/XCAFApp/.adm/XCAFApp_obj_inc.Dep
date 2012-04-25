@@ -1,6 +1,0 @@
-+ XCAFApp:dbadmfile:XCAFApp_obj_inc.In XCAFApp:admfile:XCAFApp_src.Out
-+ * XCAFApp:admfile:XCAFApp_xcpp_src.Out
-+ XCAFApp:dbadmfile:XCAFApp_obj_inc.Out XCAFApp:admfile:XCAFApp_src.Out
-+ * XCAFApp:admfile:XCAFApp_xcpp_src.Out
-+ XCAFApp:dbadmfile:XCAFApp_obj_inc.Dep XCAFApp:admfile:XCAFApp_src.Out
-+ * XCAFApp:admfile:XCAFApp_xcpp_src.Out

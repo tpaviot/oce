@@ -1,7 +1,23 @@
-// File:	ShapeCustom_BSplineRestriction.cxx
-// Created:	Fri Jun 18 12:02:57 1999
-// Author:	Galina Koulikova
-//		<gka@zamox.nnov.matra-dtv.fr>
+// Created on: 1999-06-18
+// Created by: Galina Koulikova
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ShapeAnalysis_Curve.hxx>
@@ -594,8 +610,8 @@ Standard_Boolean ShapeCustom_BSplineRestriction::ConvertSurface(const Handle(Geo
     Abs(v1-VF) > Precision::PConfusion() || Abs(v2- VL) > Precision::PConfusion()) {
       /*if(aSurf->IsUPeriodic() ) {
       Standard_Real aDelta = (UL > UF ? UL - UF : UF - UL );
-      u1 = (aDelta > 2.*PI ? 0. : UF + ShapeAnalysis::AdjustByPeriod(UF,0.5*(UL+UF),2*PI)); 
-      u2 = (aDelta > 2.*PI ? 2.*PI : u1 + aDelta); 
+      u1 = (aDelta > 2.*M_PI ? 0. : UF + ShapeAnalysis::AdjustByPeriod(UF,0.5*(UL+UF),2*M_PI)); 
+      u2 = (aDelta > 2.*M_PI ? 2.*M_PI : u1 + aDelta); 
       }*/
       Standard_Boolean isTrim = Standard_False;
       if(!aSurf->IsUPeriodic() ) { //else {
@@ -605,8 +621,8 @@ Standard_Boolean ShapeCustom_BSplineRestriction::ConvertSurface(const Handle(Geo
       /*if(aSurf->IsVPeriodic()) {
 
       Standard_Real aDelta = (VL > VF ? VL - VF : VF - VL );
-      v1 = (aDelta > 2.*PI ? 0. : VF + ShapeAnalysis::AdjustByPeriod(VF,0.5*(UL+UF),2*PI)); ; 
-      v2 = (aDelta > 2.*PI ? 2.* PI : v1 + aDelta); 
+      v1 = (aDelta > 2.*M_PI ? 0. : VF + ShapeAnalysis::AdjustByPeriod(VF,0.5*(UL+UF),2*M_PI)); ; 
+      v2 = (aDelta > 2.*M_PI ? 2.* M_PI : v1 + aDelta); 
       }*/
       if(!aSurf->IsVPeriodic()) {//else 
         v1 = Max(v1,VF); v2 = Min(v2,VL);

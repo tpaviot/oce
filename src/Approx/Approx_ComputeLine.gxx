@@ -1,4 +1,21 @@
-// File Approx_ComputeLine.gxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Approx_ParametrizationType.hxx>
 #include Approx_ParLeastSquareOfMyGradient_hxx
@@ -22,9 +39,6 @@
 #include <AppParCurves_ConstraintCouple.hxx>
 
 #include <stdio.h>
-
-static Standard_Boolean IsClear = Standard_False;
-static Standard_Integer nbML = 0;
 
 #ifdef DEB
 static Standard_Boolean mydebug = Standard_False;
@@ -78,7 +92,6 @@ static void DUMP(const AppParCurves_MultiCurve& C) {
   static Standard_Integer nbappel = 0;
   Standard_Integer i;
   Standard_Integer nbpoles = C.NbPoles();
-  Standard_Integer deg = C.Degree();
 
   Handle(Geom_BezierCurve) BSp;
   Handle(Geom2d_BezierCurve) BSp2d;
@@ -391,6 +404,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Integer NbIterations,
 		     const Standard_Boolean cutting,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myfirstParam = new TColStd_HArray1OfReal(Parameters.Lower(), 
 					   Parameters.Upper());
@@ -422,6 +437,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Integer NbIterations,
 		     const Standard_Boolean cutting,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myfirstParam = new TColStd_HArray1OfReal(Parameters.Lower(), 
 					   Parameters.Upper());
@@ -451,6 +468,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Boolean cutting,
 		     const Approx_ParametrizationType parametrization,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myConstraints = new AppParCurves_HArray1OfConstraintCouple(1, 2);
   Par = parametrization;
@@ -477,6 +496,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Boolean cutting,
 		     const Approx_ParametrizationType parametrization,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myConstraints = new AppParCurves_HArray1OfConstraintCouple(1, 2);
   alldone = Standard_False;
@@ -501,14 +522,15 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 #ifdef DEB
   if (mydebug) DUMP(Line);
 #endif
-  if (!IsClear) {
+  if (!myIsClear)
+  {
     myMultiCurves.Clear();
     myPar.Clear();
     Tolers3d.Clear();
     Tolers2d.Clear();
-    nbML = 0;
+    myMultiLineNb = 0;
   }
-  else  IsClear = Standard_False;
+  else myIsClear = Standard_False;
 
   Standard_Integer i, nbp, Thefirstpt, Thelastpt, oldlastpt;
   Standard_Boolean Finish = Standard_False,
@@ -613,8 +635,8 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 	    -LineTool::LastPoint(OtherLine);
 
 	  //-- Si MakeML a echoue   on retourne une ligne vide
-	  
-	  if(    (nbpdsotherligne == 0) || nbML >= 3) { 
+	  if ((nbpdsotherligne == 0) || myMultiLineNb >= 3)
+	  {
 	    FailOnPointsAdded = Standard_True; 
 	    //-- cout<<" ** ApproxComputeLine MakeML Echec ** LBR lbr "<<endl;
 	    if (myfirstpt == mylastpt) break;  // Pour etre sur de ne pas 
@@ -676,12 +698,13 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 	    mylastpt = Thelastpt;
 	    
 	  }
-	  else { 
-	    IsClear = Standard_True;
-	    nbML++;
+	  else
+	  {
+	    myIsClear = Standard_True;
+	    ++myMultiLineNb;
 	    Perform(OtherLine);
 	    myfirstpt = mylastpt;
-	    mylastpt = Thelastpt; 
+	    mylastpt = Thelastpt;
 	  }
 	}
 	

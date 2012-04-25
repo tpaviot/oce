@@ -29,7 +29,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES) $(CSF_SOCKETLibs_INCLUDES) $(CSF_FPELibs_INCLUDES) $(CSF_ThreadLibs_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_kernel32_INCLUDES) $(CSF_TBB_INCLUDES) $(CSF_MotifLibs_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_SOCKETLibs_INCLUDES) $(CSF_FPELibs_INCLUDES) $(CSF_ThreadLibs_INCLUDES) $(CSF_advapi32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_kernel32_INCLUDES) $(CSF_TBB_INCLUDES) $(CSF_MotifLibs_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/FSD -I@top_srcdir@/src/FSD \
 -I@top_srcdir@/drv/MMgt -I@top_srcdir@/src/MMgt \
@@ -54,8 +54,8 @@ INCLUDES = $(STLPort_INCLUDES) $(CSF_SOCKETLibs_INCLUDES) $(CSF_FPELibs_INCLUDES
 
 lib_LTLIBRARIES=libTKernel.la
 
-libTKernel_la_LIBADD = \
-$(STLPort_LIB) $(CSF_SOCKETLibs_LIB) $(CSF_FPELibs_LIB) $(CSF_ThreadLibs_LIB) $(CSF_advapi32_LIB) $(CSF_gdi32_LIB) $(CSF_user32_LIB) $(CSF_kernel32_LIB) $(CSF_TBB_LIB) $(CSF_MotifLibs_LIB) 
+libTKernel_la_LIBADD = $(CSF_OPT_LIBS) \
+$(CSF_SOCKETLibs_LIB) $(CSF_FPELibs_LIB) $(CSF_ThreadLibs_LIB) $(CSF_advapi32_LIB) $(CSF_gdi32_LIB) $(CSF_user32_LIB) $(CSF_kernel32_LIB) $(CSF_TBB_LIB) $(CSF_MotifLibs_LIB) 
 
 libTKernel_la_SOURCES = \
 @top_srcdir@/drv/Dico/Dico_DictionaryOfInteger_0.cxx \
@@ -396,6 +396,7 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/OSD/OSD_Localizer.cxx \
 @top_srcdir@/src/OSD/OSD_MAllocHook.cxx \
 @top_srcdir@/src/OSD/OSD_MailBox.cxx \
+@top_srcdir@/src/OSD/OSD_MemInfo.cxx \
 @top_srcdir@/src/OSD/OSD_Path.cxx \
 @top_srcdir@/src/OSD/OSD_PerfMeter.c \
 @top_srcdir@/src/OSD/OSD_Printer.cxx \
@@ -424,7 +425,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/Standard/Handle_Standard_Persistent.cxx \
 @top_srcdir@/src/Standard/Handle_Standard_Transient.cxx \
 @top_srcdir@/src/Standard/Standard.cxx \
-@top_srcdir@/src/Standard/StandardCSFDB.cxx \
 @top_srcdir@/src/Standard/Standard_Address.cxx \
 @top_srcdir@/src/Standard/Standard_AncestorIterator.cxx \
 @top_srcdir@/src/Standard/Standard_Boolean.cxx \
@@ -436,7 +436,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/Standard/Standard_ExtString.cxx \
 @top_srcdir@/src/Standard/Standard_Failure.cxx \
 @top_srcdir@/src/Standard/Standard_GUID.cxx \
-@top_srcdir@/src/Standard/Standard_Geteth.cxx \
 @top_srcdir@/src/Standard/Standard_HashCode.cxx \
 @top_srcdir@/src/Standard/Standard_IStream.cxx \
 @top_srcdir@/src/Standard/Standard_Integer.cxx \

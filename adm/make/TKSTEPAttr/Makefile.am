@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StepVisual -I@top_srcdir@/src/StepVisual \
 -I@top_srcdir@/drv/RWStepVisual -I@top_srcdir@/src/RWStepVisual \
@@ -24,11 +24,11 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKSTEPAttr.la
 
-libTKSTEPAttr_la_LIBADD = \
-../TKSTEPBase/libTKSTEPBase.la \
+libTKSTEPAttr_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
 ../TKXSBase/libTKXSBase.la \
-$(STLPort_LIB) 
+../TKSTEPBase/libTKSTEPBase.la
+
 
 libTKSTEPAttr_la_SOURCES = \
 @top_srcdir@/drv/StepDimTol/StepDimTol_Array1OfDatumReference_0.cxx \

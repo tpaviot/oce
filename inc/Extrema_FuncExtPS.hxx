@@ -45,8 +45,7 @@ class math_Matrix;
 class Extrema_POnSurf;
 
 
-//! Fonction permettant de rechercher les extrema de la <br>
-//!          distance entre un point et une surface. <br>
+
 class Extrema_FuncExtPS  : public math_FunctionSetWithDerivatives {
 public:
 
@@ -75,22 +74,20 @@ public:
   Standard_EXPORT     Standard_Integer NbVariables() const;
   
   Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! Calcul de Fi(U,V). <br>
+  //! Calculate Fi(U,V). <br>
   Standard_EXPORT     Standard_Boolean Value(const math_Vector& UV,math_Vector& F) ;
-  //! Calcul de Fi'(U,V). <br>
+  //! Calculate Fi'(U,V). <br>
   Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& UV,math_Matrix& DF) ;
-  //! Calcul de Fi(U,V) et Fi'(U,V). <br>
+  //! Calculate Fi(U,V) and Fi'(U,V). <br>
   Standard_EXPORT     Standard_Boolean Values(const math_Vector& UV,math_Vector& F,math_Matrix& DF) ;
-  //! Memorise l'extremum trouve. <br>
+  //! Save the found extremum. <br>
   Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
-  //! Renvoie le nombre d'extrema trouves. <br>
+  //! Return the number of found extrema. <br>
   Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Renvoie la valeur de la Nieme distance. <br>
+  //! Return the value of the Nth distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Renvoie le Nieme extremum. <br>
+  //! Returns the Nth extremum. <br>
   Standard_EXPORT     Extrema_POnSurf Point(const Standard_Integer N) const;
-  
-  Standard_EXPORT     Standard_Boolean HasDegIso() const;
 
 
 
@@ -104,8 +101,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT     Adaptor3d_SurfacePtr Bidon() const;
 
 
 gp_Pnt myP;
@@ -117,8 +112,6 @@ TColStd_SequenceOfReal mySqDist;
 Extrema_SequenceOfPOnSurf myPoint;
 Standard_Boolean myPinit;
 Standard_Boolean mySinit;
-Standard_Boolean myUIsoIsDeg;
-Standard_Boolean myVIsoIsDeg;
 
 
 };

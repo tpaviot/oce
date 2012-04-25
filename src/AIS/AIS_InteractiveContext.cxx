@@ -1,8 +1,24 @@
-// File:        AIS_InteractiveContext.cxx
-// Created:     Fri Jan 17 13:36:48 1997
-// Author:      Robert COUBLANC
+// Created on: 1997-01-17
+// Created by: Robert COUBLANC
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified by  XAB & Serguei Dec 97 (angle &deviation coeffts)
-//              <rob@robox.paris1.matra-dtv.fr>
 
 #define BUC60577        //GG_101099     Enable to compute correctly
 //                      transparency with more than one object in the view.
@@ -26,11 +42,11 @@
 #define OCC172          //SAV clear static map before destroying context.
 
 #define OCC204          //SAV 26/02/02 : pass <updateviewer> flag to 
-                        // AddOrRemoveCurrentObject method from ClearGlobal.
+// AddOrRemoveCurrentObject method from ClearGlobal.
 
 #define OCC4373         //SAN 10/11/03 : improve display mode management in
-                        // Display( IO, updateviewer ) and 
-                        // SetDisplayMode( IO, mode, updateviewer ) methods
+// Display( IO, updateviewer ) and 
+// SetDisplayMode( IO, mode, updateviewer ) methods
 
 #include <AIS_InteractiveContext.ixx>
 
@@ -70,7 +86,7 @@
 // is always equal to 0 if it is -1.
 #define BUC61051
 
-// On close the local context the method ::ResetOriginalState() sets the selection mode equal to 0
+// The local context is closed the method ::ResetOriginalState() sets the selection mode equal to 0
 // in spite of the selection mode of the interactive object in Natural Point.
 #define OCC166
 
@@ -172,12 +188,7 @@ myIsAutoActivateSelMode( Standard_True )
 {
   InitAttributes();
   mgrSelector->Add(myCollectorSel);
-#ifdef BUC60688
-  SetSensitivity();
-#else
-  myCollectorSel->Set(4);
-#endif
-
+  SetPixelTolerance();
 }
 
 void AIS_InteractiveContext::Delete() const
@@ -226,7 +237,7 @@ void AIS_InteractiveContext::UpdateCurrentViewer()
 void AIS_InteractiveContext::OpenCollector()
 {
   myIsCollClosed =Standard_True;
-  // a completer....
+  // to be completed....
 }
 
 
@@ -263,7 +274,7 @@ void AIS_InteractiveContext::DisplayedObjects(AIS_ListOfInteractive& aListOfIO,
   }
   else{
     TColStd_MapOfTransient theMap;
-    // point neutre
+    // neutral point
     for(;It.More();It.Next()){
       if(It.Value()->GraphicStatus()==AIS_DS_Displayed)
         theMap.Add(It.Key());
@@ -272,7 +283,7 @@ void AIS_InteractiveContext::DisplayedObjects(AIS_ListOfInteractive& aListOfIO,
     cout<<"\tFrom Neutral Point : "<<theMap.Extent()<<endl;
 #endif
 
-    //balayons tous les contextes locaux...
+    //parse all local contexts...
     Standard_Integer NbDisp;
     for(AIS_DataMapIteratorOfDataMapOfILC it1(myLocalContexts);it1.More();it1.Next()){
       const Handle(AIS_LocalContext)& LC = it1.Value();
@@ -457,7 +468,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
   if(!anIObj->HasInteractiveContext()) 
     anIObj->SetContext(aThis);
   
-  //PAS DE CONTEXTE LOCAL OUVERT
+  //NO LOCAL CONTEXT OPEN
   if(!HasOpenedContext()) {
 #ifndef OCC4373
     // SAN : Do not return here. Perform advanced display mode analysis a bit later...
@@ -465,7 +476,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
 #endif
     Standard_Boolean updcol = Standard_False;
     
-    // il n'existait pas encore
+    // it did not yet exist
     if(!myObjects.IsBound(anIObj)){
       
       Handle(AIS_GlobalStatus) STATUS= 
@@ -485,7 +496,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
         
      if(updateviewer) myMainVwr->Update();
     }
-    // il est quelque part ailleurs....
+    // it is somewhere else...
     else {
       // CLE
       // const Handle(AIS_GlobalStatus)& STATUS = myObjects(anIObj);
@@ -498,7 +509,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
         myCollectorPM->Erase(anIObj,HiMod);
         mgrSelector->Deactivate(anIObj,myCollectorSel);
         updcol = updateviewer;
-                         }// attention on fait expres de ne pas mettre de break..
+                         }// attention the break is not set on purpose...
       case AIS_DS_FullErased:{
         TColStd_ListIteratorOfListOfInteger ItL (STATUS->DisplayedModes());
         for (;ItL.More();ItL.Next()){
@@ -565,7 +576,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
     if(updcol && !myCollectorVwr.IsNull()) myCollectorVwr->Update();
   }
   
-  //  CONTEXTE LOCAL OUVERT
+  //  LOCAL CONTEXT OPEN
   else
   {
     myLocalContexts(myCurLocalIndex)->Display(anIObj,DispMode,anIObj->AcceptShapeDecomposition(),SelMode);
@@ -593,7 +604,7 @@ void AIS_InteractiveContext::Display(const Handle(AIS_InteractiveObject)& anIObj
 
   if(!anIObj->HasInteractiveContext()) anIObj->SetContext(this);
   
-  // si aucun contexte local...
+  // if no local context...
   if(!HasOpenedContext()) {
     //    if(!anIObj->HasDisplayMode())
     //      anIObj->SetDisplayMode(aDisplayMode);
@@ -685,9 +696,8 @@ void AIS_InteractiveContext::Erase(const Handle(AIS_InteractiveObject)& anIObj,
   }
   else
     {
-      // d'abors on regarde si on peut effacer dans le contexte local courant
-      // ensuite, on essaye d'effacer dans les autres contextes locaux,
-      // s'ils le permettent...
+      // First it is checked if it is possible to remove in the current local context
+      // then one tries to remove in other local contexts, if they allow it...
       
       Standard_Boolean WasInCtx = myLocalContexts(myCurLocalIndex)->Erase(anIObj);
 //      if(!WasInCtx) {
@@ -1488,7 +1498,7 @@ void AIS_InteractiveContext::RecomputeSelectionOnly(const Handle(AIS_Interactive
   mgrSelector->RecomputeSelection(anIObj);
 
 
-  // A VOIR SI ENCORE UTILE...
+
   TColStd_ListOfInteger LI;
   TColStd_ListIteratorOfListOfInteger Lit;
   ActivatedModes(anIObj,LI);
@@ -1576,7 +1586,7 @@ void AIS_InteractiveContext::SetLocation(const Handle(AIS_InteractiveObject)& an
   }
   if(aLoc.IsIdentity()) return ;
 
-  // d'abord faire un reset de la precedente location pour tout nettoyer proprement...
+  // first reset the previous location to properly clean everything...
   if(anIObj->HasLocation())
     anIObj->ResetLocation();
 
@@ -1651,7 +1661,7 @@ void AIS_InteractiveContext::SetDeviationAngle(const Standard_Real anAngle)
 
 Standard_Real AIS_InteractiveContext::DeviationAngle() const
 {
-  return PI/180.0e0 ;
+  return M_PI/180.0e0 ;
   //  return myDefaultDrawer->DeviationAngle();
 }
 
@@ -1950,7 +1960,7 @@ void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIOb
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
 
@@ -1964,7 +1974,7 @@ void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIOb
 //     gp_Dir D =Tr->Component()->XDirection();
 //     gp_Pnt O = Tr->Component()->Location();
 //     gp_Vec V(D);V*=Lx/5.;
-//     T.SetRotation(gp_Ax1(O,D),PI/6.);
+//     T.SetRotation(gp_Ax1(O,D),M_PI/6.);
 //     T.SetTranslationPart(V);
 //     TopLoc_Location L,IncLoc(T);
    
@@ -2025,7 +2035,7 @@ void AIS_InteractiveContext::SetDeviationCoefficient(
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
   if(updateviewer) UpdateCurrentViewer();
@@ -2069,7 +2079,7 @@ void AIS_InteractiveContext::SetHLRDeviationCoefficient(
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
   if(updateviewer) UpdateCurrentViewer();
@@ -2112,7 +2122,7 @@ void AIS_InteractiveContext::SetDeviationAngle(
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
   if(updateviewer) UpdateCurrentViewer();
@@ -2129,7 +2139,7 @@ void AIS_InteractiveContext::SetAngleAndDeviation(
 {
 //  cout<<" Angle:"<< anAngle <<endl;
   if(anIObj.IsNull()) return ;
-//   Standard_Real anAngleRad = PI*anAngle/180; test rob...
+//   Standard_Real anAngleRad = M_PI*anAngle/180; test rob...
   if(!anIObj->HasInteractiveContext())
     anIObj->SetContext(this);
 
@@ -2183,7 +2193,7 @@ void AIS_InteractiveContext::SetHLRAngleAndDeviation(
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
   if(updateviewer) UpdateCurrentViewer();
@@ -2225,7 +2235,7 @@ void AIS_InteractiveContext::SetHLRDeviationAngle(
         }
       anIObj->SetRecomputeOk();
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
     }
   if(updateviewer) UpdateCurrentViewer();
@@ -2253,7 +2263,7 @@ void AIS_InteractiveContext::UnsetColor(const Handle(AIS_InteractiveObject)& anI
           NbDisp++;
         }
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
       anIObj->SetRecomputeOk();
     }
@@ -2326,7 +2336,7 @@ void AIS_InteractiveContext::SetWidth(const Handle(AIS_InteractiveObject)& anIOb
           NbDisp++;
         }
 #ifdef DEB
-      cout<<"nb de modes a recalculer : "<<NbDisp<<endl;
+      cout<<"nb of modes to recalculate : "<<NbDisp<<endl;
 #endif
       anIObj->SetRecomputeOk();
     }
@@ -2764,13 +2774,10 @@ void AIS_InteractiveContext::ClearGlobal(const Handle(AIS_InteractiveObject)& an
       myAISDetectedSeq.Remove( i );
   }
 
-  if(myWasLastMain && !myLastinMain.IsNull())
-    if(myLastinMain == anIObj)
-      myLastinMain.Nullify();
-  else 
-    if(!myWasLastMain && !myLastinColl.IsNull())
-      if(myLastinColl == anIObj)
-        myLastinColl.Nullify();
+  if(myLastinMain == anIObj)
+    myLastinMain.Nullify();
+  if(myLastinColl == anIObj)
+    myLastinColl.Nullify();
 
   if(myLastPicked == anIObj)
     myLastPicked.Nullify();
@@ -2965,7 +2972,33 @@ void AIS_InteractiveContext::UnsetSelectionMode(const Handle_AIS_InteractiveObje
 {
 }
 
-#ifdef BUC60688
+//=======================================================================
+//function : SetSensitivityMode
+//purpose  : 
+//=======================================================================
+
+void AIS_InteractiveContext::SetSensitivityMode(const StdSelect_SensitivityMode aMode) {
+
+  if( HasOpenedContext() )
+        myLocalContexts(myCurLocalIndex)->SetSensitivityMode(aMode);
+  else {
+    myMainSel->SetSensitivityMode(aMode);
+    if( !myCollectorSel.IsNull() ) myCollectorSel->SetSensitivityMode(aMode);
+  }
+}
+
+//=======================================================================
+//function : SensitivityMode
+//purpose  : 
+//=======================================================================
+
+StdSelect_SensitivityMode AIS_InteractiveContext::SensitivityMode() const {
+
+  if( HasOpenedContext() )
+        return myLocalContexts(myCurLocalIndex)->SensitivityMode();
+  return myMainSel->SensitivityMode();
+}
+
 //=======================================================================
 //function : SetSensitivity
 //purpose  : 
@@ -2982,20 +3015,43 @@ void AIS_InteractiveContext::SetSensitivity(const Standard_Real aPrecision) {
 }
 
 //=======================================================================
-//function : SetSensitivity
+//function : Sensitivity
 //purpose  : 
 //=======================================================================
 
-void AIS_InteractiveContext::SetSensitivity(const Standard_Integer aPrecision) {
+Standard_Real AIS_InteractiveContext::Sensitivity() const {
 
   if( HasOpenedContext() )
-        myLocalContexts(myCurLocalIndex)->SetSensitivity(aPrecision);
+        return myLocalContexts(myCurLocalIndex)->Sensitivity();
+  return myMainSel->Sensitivity();
+}
+
+//=======================================================================
+//function : SetPixelTolerance
+//purpose  : 
+//=======================================================================
+
+void AIS_InteractiveContext::SetPixelTolerance(const Standard_Integer aPrecision) {
+
+  if( HasOpenedContext() )
+        myLocalContexts(myCurLocalIndex)->SetPixelTolerance(aPrecision);
   else {
-    myMainSel->Set(aPrecision);
-    if( !myCollectorSel.IsNull() ) myCollectorSel->Set(aPrecision);
+    myMainSel->SetPixelTolerance(aPrecision);
+    if( !myCollectorSel.IsNull() ) myCollectorSel->SetPixelTolerance(aPrecision);
   }
 }
-#endif
+
+//=======================================================================
+//function : PixelTolerance
+//purpose  : 
+//=======================================================================
+
+Standard_Integer AIS_InteractiveContext::PixelTolerance() const {
+
+  if( HasOpenedContext() )
+        return myLocalContexts(myCurLocalIndex)->PixelTolerance();
+  return myMainSel->PixelTolerance();
+}
 
 //=======================================================================
 //function : IsInLocal
@@ -3051,11 +3107,7 @@ void AIS_InteractiveContext::InitAttributes()
   HLA->SetTypeOfLine(Aspect_TOL_DASH);
 
   // tolerance to 4 pixels...
-#ifdef BUC60688
-  SetSensitivity();
-#else
-  myMainSel->Set(4);
-#endif
+  SetPixelTolerance();
 
   // Customizing the drawer for trihedrons and planes...
 
@@ -3150,4 +3202,61 @@ void AIS_InteractiveContext::SetAutoActivateSelection( const Standard_Boolean Au
 Standard_Boolean AIS_InteractiveContext::GetAutoActivateSelection() const
 {
   return myIsAutoActivateSelMode;
+}
+
+//=======================================================================
+//function : SetZLayer
+//purpose  : 
+//=======================================================================
+
+void AIS_InteractiveContext::SetZLayer (const Handle(AIS_InteractiveObject)& theIObj,
+                                        const Standard_Integer theLayerId)
+{
+  if (theIObj.IsNull ())
+    return;
+
+  if (myObjects.IsBound (theIObj))
+  {
+    switch (myObjects (theIObj)->GraphicStatus ())
+    {
+      case AIS_DS_Displayed:
+      {
+        theIObj->SetZLayer (myMainPM, theLayerId);
+        break;
+      }
+      case AIS_DS_Erased:
+      {
+        theIObj->SetZLayer (myCollectorPM, theLayerId);
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  else if (HasOpenedContext ())
+  {
+    myLocalContexts (myCurLocalIndex)->SetZLayer (theIObj, theLayerId);
+  }
+}
+
+//=======================================================================
+//function : GetZLayer
+//purpose  : 
+//=======================================================================
+
+Standard_Integer AIS_InteractiveContext::GetZLayer (const Handle(AIS_InteractiveObject)& theIObj) const
+{
+  if (theIObj.IsNull ())
+    return -1;
+
+  if (myObjects.IsBound (theIObj))
+  {
+    return theIObj->GetZLayer (myMainPM);
+  }
+  else if (HasOpenedContext ())
+  {
+    return myLocalContexts (myCurLocalIndex)->GetZLayer (theIObj);
+  }
+
+  return -1;
 }

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define PERF	//GG_200898
 //		The MinMax are now computed at the right time and no more
@@ -43,8 +61,8 @@ Graphic2d_Text::Graphic2d_Text
 
       SetFamily(Graphic2d_TOP_TEXT);
 
-      while (myAngle < 0.) myAngle += Standard_ShortReal(2.*Standard_PI);
-      while (myAngle >= 2.*Standard_PI) myAngle -= Standard_ShortReal(2.*Standard_PI);
+      while (myAngle < 0.) myAngle += Standard_ShortReal(2. * M_PI);
+      while (myAngle >= 2. * M_PI) myAngle -= Standard_ShortReal(2. * M_PI);
 
 #ifndef PERF
       this->ComputeMinMax();
@@ -68,8 +86,8 @@ void Graphic2d_Text::SetFontIndex (const Standard_Integer anIndex) {
 void Graphic2d_Text::SetSlant (const Quantity_PlaneAngle aSlant) {
 
 	mySlant = Standard_ShortReal(aSlant);
-        while (mySlant < 0.) mySlant += Standard_ShortReal(2.*Standard_PI);
-        while (mySlant >= 2.*Standard_PI) mySlant -= Standard_ShortReal(2.*Standard_PI);
+        while (mySlant < 0.) mySlant += Standard_ShortReal(2. * M_PI);
+        while (mySlant >= 2. * M_PI) mySlant -= Standard_ShortReal(2. * M_PI);
 #ifdef PERF
 	myMinX = myMinY = ShortRealLast ();
 	myMaxX = myMaxY = ShortRealFirst ();

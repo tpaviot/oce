@@ -1,6 +1,0 @@
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_obj_inc.In BRepToIGESBRep:admfile:BRepToIGESBRep_src.Out
-+ * BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_src.Out
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_obj_inc.Out BRepToIGESBRep:admfile:BRepToIGESBRep_src.Out
-+ * BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_src.Out
-+ BRepToIGESBRep:dbadmfile:BRepToIGESBRep_obj_inc.Dep BRepToIGESBRep:admfile:BRepToIGESBRep_src.Out
-+ * BRepToIGESBRep:admfile:BRepToIGESBRep_xcpp_src.Out

@@ -1,7 +1,23 @@
-// File:	Extrema_ExtPElC2d.cxx
-// Created:	Mon Dec 13 12:37:09 1993
-// Author:	Christophe MARION
-//		<cma@zerox>
+// Created on: 1993-12-13
+// Created by: Christophe MARION
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Precision.hxx>
 #include <Extrema_ExtPElC2d.ixx>
@@ -84,13 +100,13 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
     radius = C.Radius();
     P1 = OC.Translated(radius*V);
     U1 = ElCLib::Parameter(C, P1);
-    U2 = U1 + PI;
+    U2 = U1 + M_PI;
     P2 = OC.Translated(-radius*V);
     Standard_Real myuinf = Uinf;
-    ElCLib::AdjustPeriodic(Uinf, Uinf+2*PI, Precision::PConfusion(), myuinf, U1);
-    ElCLib::AdjustPeriodic(Uinf, Uinf+2*PI, Precision::PConfusion(), myuinf, U2);
-    if (((U1-2*PI-Uinf) < Tol) && ((U1-2*PI-Uinf) > -Tol)) U1 = Uinf;
-    if (((U2-2*PI-Uinf) < Tol) && ((U2-2*PI-Uinf) > -Tol)) U2 = Uinf;
+    ElCLib::AdjustPeriodic(Uinf, Uinf+2*M_PI, Precision::PConfusion(), myuinf, U1);
+    ElCLib::AdjustPeriodic(Uinf, Uinf+2*M_PI, Precision::PConfusion(), myuinf, U2);
+    if (((U1-2*M_PI-Uinf) < Tol) && ((U1-2*M_PI-Uinf) > -Tol)) U1 = Uinf;
+    if (((U2-2*M_PI-Uinf) < Tol) && ((U2-2*M_PI-Uinf) > -Tol)) U2 = Uinf;
 
     if (((Uinf-U1) < Tol) && ((U1-Usup) < Tol)) {
       Extrema_POnCurv2d MyPOnCurve(U1, P1);
@@ -144,11 +160,6 @@ void Extrema_ExtPElC2d::Perform (const gp_Pnt2d&     P,
     myDone = Standard_False;
   }
   else {
-#ifdef DEB
-    Standard_Real VMagn = V.Magnitude();
-#else
-    V.Magnitude();
-#endif
     Standard_Real X = V.Dot(gp_Vec2d(E.XAxis().Direction()));
     Standard_Real Y = V.Dot(gp_Vec2d(E.YAxis().Direction()));
 
@@ -195,11 +206,6 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
   Standard_Real R = H.MajorRadius();
   Standard_Real r = H.MinorRadius();
   gp_Vec2d OPp(O,P);
-#ifdef DEB
-  Standard_Real OPpMagn = OPp.Magnitude();
-#else
-  OPp.Magnitude();
-#endif
   Standard_Real Tol2 = Tol * Tol;
   Standard_Real X = OPp.Dot(gp_Vec2d(H.XAxis().Direction()));
   Standard_Real Y = OPp.Dot(gp_Vec2d(H.YAxis().Direction()));
@@ -263,11 +269,6 @@ void Extrema_ExtPElC2d::Perform(const gp_Pnt2d&     P,
   Standard_Real Tol2 = Tol * Tol;
   Standard_Real F = C.Focal();
   gp_Vec2d OPp (O,P);
-#ifdef DEB
-  Standard_Real OPpMagn = OPp.Magnitude();
-#else
-  OPp.Magnitude();
-#endif
   Standard_Real X = OPp.Dot(gp_Vec2d(C.MirrorAxis().Direction()));
   Standard_Real Y = OPp.Dot(gp_Vec2d(C.Axis().YAxis().Direction()));
 

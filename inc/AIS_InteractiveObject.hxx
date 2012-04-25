@@ -503,8 +503,6 @@ protected:
   //! The TypeOfPresention3d means that the interactive object <br>
 //!          may have a presentation dependant of the view of Display <br>
   Standard_EXPORT   AIS_InteractiveObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-  
-  Standard_EXPORT   virtual  void Fill(const Handle(PrsMgr_PresentationManager)& aPresentationManager,const Handle(PrsMgr_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
 
 Handle_AIS_Drawer myDrawer;
 Standard_Real myTransparency;

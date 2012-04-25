@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_BoxSort.cxx
-// Created:	Mon Jul 12 16:33:26 1993
-// Author:	Jean Yves LEBEY
-//		<jyl@zerox>
+// Created on: 1993-07-12
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_BoxSort.ixx>
 
@@ -290,10 +306,6 @@ const Bnd_Box& TopOpeBRepTool_BoxSort::Box(const TopoDS_Shape& S) const
   }
 
   if ( myHBT->HasBox(S) ) {
-#ifdef DEB
-    Standard_Integer i =
-#endif
-            myHBT->Index(S);
     const Bnd_Box& B = myHBT->Box(S);
     return B;
   }

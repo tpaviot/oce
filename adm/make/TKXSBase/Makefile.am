@@ -26,7 +26,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/Interface -I@top_srcdir@/src/Interface \
 -I@top_srcdir@/drv/Transfer -I@top_srcdir@/src/Transfer \
@@ -48,16 +48,16 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKXSBase.la
 
-libTKXSBase_la_LIBADD = \
+libTKXSBase_la_LIBADD = $(CSF_OPT_LIBS) \
+../TKBRep/libTKBRep.la \
 ../TKernel/libTKernel.la \
 ../TKMath/libTKMath.la \
 ../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
-../TKShHealing/libTKShHealing.la \
-../TKBRep/libTKBRep.la \
-../TKGeomBase/libTKGeomBase.la \
 ../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) 
+../TKGeomBase/libTKGeomBase.la \
+../TKShHealing/libTKShHealing.la
+
 
 libTKXSBase_la_SOURCES = \
 @top_srcdir@/drv/IFSelect/IFSelect_HSeqOfSelection_0.cxx \

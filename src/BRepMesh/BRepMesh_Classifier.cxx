@@ -1,7 +1,23 @@
-// File:	BRepMesh_Classifier.cxx
-// Created:	Thu Jun 26 14:54:02 1997
-// Author:	Laurent PAINNOT
-//		<lpa@penox.paris1.matra-dtv.fr>
+// Created on: 1997-06-26
+// Created by: Laurent PAINNOT
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepMesh_Classifier.ixx>
@@ -48,7 +64,7 @@ static Standard_Integer debclass = 0;
 #endif
 static const Standard_Real MIN_DIST = 2.E-5; //EPA: real mesh is created in the grid 10E5x10E5, so intersection should be cheched
                                              //     with double of discretization.
-static const Standard_Real PARALL_COND = Sin(PI/3.0);
+static const Standard_Real PARALL_COND = Sin(M_PI/3.0);
 static const Standard_Real RESOLUTION = 1.0E-16; //OCC319
 
 
@@ -119,7 +135,7 @@ void BRepMesh_Classifier::AnalizeWire (const TColgp_SequenceOfPnt2d&  theSeqPnt2
       const Standard_Real a = A.Angle(B);
       const Standard_Real aa = Abs(a);
       // Check if vectors are opposite
-      if (aa > Precision::Angular() && (PI - aa) > Precision::Angular())
+      if (aa > Precision::Angular() && (M_PI - aa) > Precision::Angular())
       {
         theangle += a;
         p1 = p2;
@@ -340,7 +356,7 @@ static Standard_Boolean checkWiresIntersection(const Standard_Integer           
         aLoopArea += triangle2Area(p2, p3); 
         aLoopArea += triangle2Area(p3, aStartPoint); // Last triangle area
 
-        if( Abs(aLoopArea)/2 > PI*MIN_DIST )
+        if( Abs(aLoopArea)/2 > M_PI*MIN_DIST )
         {
           if ( findNextIntersection )
           {

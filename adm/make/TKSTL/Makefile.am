@@ -14,7 +14,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/StlMesh -I@top_srcdir@/src/StlMesh \
 -I@top_srcdir@/drv/StlAPI -I@top_srcdir@/src/StlAPI \
@@ -24,15 +24,15 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKSTL.la
 
-libTKSTL_la_LIBADD = \
-../TKMath/libTKMath.la \
+libTKSTL_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKG2d/libTKG2d.la \
-../TKMesh/libTKMesh.la \
+../TKMath/libTKMath.la \
 ../TKBRep/libTKBRep.la \
+../TKG2d/libTKG2d.la \
 ../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
-$(STLPort_LIB) 
+../TKMesh/libTKMesh.la \
+../TKTopAlgo/libTKTopAlgo.la
+
 
 libTKSTL_la_SOURCES = \
 @top_srcdir@/drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx \

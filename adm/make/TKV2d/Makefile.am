@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/V2d -I@top_srcdir@/src/V2d \
 -I@top_srcdir@/drv/Graphic2d -I@top_srcdir@/src/Graphic2d \
@@ -28,18 +28,18 @@ INCLUDES = $(STLPort_INCLUDES)  \
 
 lib_LTLIBRARIES=libTKV2d.la
 
-libTKV2d_la_LIBADD = \
+libTKV2d_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
-../TKService/libTKService.la \
-../TKG2d/libTKG2d.la \
-../TKG3d/libTKG3d.la \
-../TKTopAlgo/libTKTopAlgo.la \
 ../TKMath/libTKMath.la \
-../TKBRep/libTKBRep.la \
 ../TKGeomBase/libTKGeomBase.la \
-../TKHLR/libTKHLR.la \
+../TKG2d/libTKG2d.la \
 ../TKGeomAlgo/libTKGeomAlgo.la \
-$(STLPort_LIB) 
+../TKBRep/libTKBRep.la \
+../TKHLR/libTKHLR.la \
+../TKTopAlgo/libTKTopAlgo.la \
+../TKG3d/libTKG3d.la \
+../TKService/libTKService.la
+
 
 libTKV2d_la_SOURCES = \
 @top_srcdir@/drv/AIS2D/AIS2D_DataMapIteratorOfDataMapOfIOStatus_0.cxx \

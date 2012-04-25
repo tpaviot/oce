@@ -1,8 +1,24 @@
+// Created on: 1995-10-06
+// Created by: Jing Cheng MEI
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File:	DsgPrs_ShapeDirPresentation.cxx
-// Created:	Fri Oct  6 12:33:19 1995
-// Author:	Jing Cheng MEI
-//		<mei@junon>
+
 
 #include <DsgPrs_ShapeDirPresentation.ixx>
 
@@ -118,10 +134,7 @@ static Standard_Boolean FindPointOnFace(const TopoDS_Face& face, gp_Pnt2d& pt2d)
   // verify that (upar vpar) is a point on the face
 
   BRepClass_FaceClassifier fClass(face, pt2d, gp::Resolution());
-#ifdef DEB
-  TopAbs_State state =
-#endif
-                       fClass.State();
+
   if ((fClass.State() == TopAbs_OUT) || (fClass.State() == TopAbs_UNKNOWN)) {
     // try to find a point on face
     pt2d=points(1);
@@ -268,7 +281,7 @@ void DsgPrs_ShapeDirPresentation::Add(const Handle(Prs3d_Presentation)& prs,
   Prs3d_Root::CurrentGroup(prs)->SetPrimitivesAspect(drawer->LineAspect()->Aspect());
   Prs3d_Root::CurrentGroup(prs)->Polyline(line);
 
-  Prs3d_Arrow::Draw(prs, pt2, dir, PI/180.*10., leng*0.3);
+  Prs3d_Arrow::Draw(prs, pt2, dir, M_PI/180.*10., leng*0.3);
 }
 
 

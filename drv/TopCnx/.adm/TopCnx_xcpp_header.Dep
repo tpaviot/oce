@@ -1,6 +1,0 @@
-+ TopCnx:pubinclude:TopCnx_EdgeFaceTransition.hxx TopCnx:msentity:TopCnx_EdgeFaceTransition
-+ TopCnx:privinclude:TopCnx_EdgeFaceTransition.jxx TopCnx:msentity:TopCnx_EdgeFaceTransition
-+ TopCnx:privinclude:TopCnx_EdgeFaceTransition.ixx TopCnx:msentity:TopCnx_EdgeFaceTransition
-+ TopCnx:dbadmfile:TopCnx_xcpp_header.In TopCnx:admfile:TopCnx_xcpp_fill.Out
-+ TopCnx:dbadmfile:TopCnx_xcpp_header.Out TopCnx:admfile:TopCnx_xcpp_fill.Out
-+ TopCnx:dbadmfile:TopCnx_xcpp_header.Dep TopCnx:admfile:TopCnx_xcpp_fill.Out

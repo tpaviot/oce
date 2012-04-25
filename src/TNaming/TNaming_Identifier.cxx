@@ -1,7 +1,23 @@
-// File:	TNaming_Identifier.cxx
-// Created:	Tue Mar  4 16:22:47 1997
-// Author:	Yves FRICAUD
-//		<yfr@claquox.paris1.matra-dtv.fr>
+// Created on: 1997-03-04
+// Created by: Yves FRICAUD
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <TNaming_Identifier.ixx>
@@ -65,16 +81,42 @@ TNaming_Identifier::TNaming_Identifier(const TDF_Label&        LabAcces,
 myDone(Standard_False),myIsFeature(Standard_False)
 
 {
+  Init(Context); 
+}
+
+//=======================================================================
+//function : TNaming_Identifier
+//purpose  : 
+//=======================================================================
+
+TNaming_Identifier::TNaming_Identifier(const TDF_Label&        LabAcces,
+				       const TopoDS_Shape&                     S,
+				       const Handle(TNaming_NamedShape)&       ContextNS,
+				       const Standard_Boolean                  OneOnly)
+:myTDFAcces(LabAcces), myShape(S), myOneOnly(OneOnly),
+myDone(Standard_False),myIsFeature(Standard_False)
+
+{
+  const TopoDS_Shape& aContext = TNaming_Tool::GetShape (ContextNS);
+  Init(aContext); 
+}
+
+//=======================================================================
+//function : Init
+//purpose  : 
+//=======================================================================                                         
+void TNaming_Identifier::Init(const TopoDS_Shape&     Context)
+{
   Handle(TNaming_UsedShapes) US;
-  LabAcces.Root().FindAttribute(TNaming_UsedShapes::GetID(),US);
+  myTDFAcces.Root().FindAttribute(TNaming_UsedShapes::GetID(),US);
   
   TNaming_Localizer Localizer;
-  Localizer.Init (US,LabAcces.Transaction());
+  Localizer.Init (US,myTDFAcces.Transaction());
   
   Handle(TNaming_NamedShape) NS;
-  NS   = TNaming_Tool::NamedShape(S,LabAcces);
+  NS   = TNaming_Tool::NamedShape(myShape, myTDFAcces);
   if (NS.IsNull()) {
-    AncestorIdentification(Localizer,Context);
+    AncestorIdentification(Localizer, Context);
     return;
   }
 #ifdef MDTV_DEB_IDF
@@ -95,9 +137,7 @@ myDone(Standard_False),myIsFeature(Standard_False)
   else {
     Identification(Localizer,NS);
   }
-}
-
-
+}                                         
 
 //=======================================================================
 //function : Type

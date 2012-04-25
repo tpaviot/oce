@@ -1,8 +1,25 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <ShapeFix_Solid.ixx>
-  
+
 #include <Standard_ErrorHandler.hxx>
 #include <Standard_Failure.hxx>
-  
+
 #include <BRep_Builder.hxx>
 #include <BRepClass3d_SolidClassifier.hxx>
 #include <Precision.hxx>
@@ -44,6 +61,7 @@
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopTools_IndexedDataMapOfShapeShape.hxx>
 #include <Message_Msg.hxx>
+#include <Message_ProgressSentry.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 
@@ -51,7 +69,6 @@
 #include <Geom_Curve.hxx>
 #include <ShapeAnalysis_FreeBounds.hxx>
 
-  
 //======================================================
 //function : ShapeFix_Solid
 //purpose  : 
@@ -341,36 +358,55 @@ static Standard_Boolean CreateSolids(const TopoDS_Shape aShape,TopTools_IndexedM
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean ShapeFix_Solid::Perform() 
+Standard_Boolean ShapeFix_Solid::Perform(const Handle(Message_ProgressIndicator)& theProgress) 
 {
 
   Standard_Boolean status = Standard_False;
-  if(Context().IsNull())
+  if ( Context().IsNull() )
     SetContext ( new ShapeBuild_ReShape );
   myFixShell->SetContext(Context());
-  Standard_Integer NbShells =0;
+
+  Standard_Integer NbShells = 0;
   TopoDS_Shape S = Context()->Apply ( myShape );
-  if (  NeedFix ( myFixShellMode ) ) {
-    
-    // call FixShell
-    for( TopoDS_Iterator iter(S); iter.More(); iter.Next()) { 
-      TopoDS_Shape sh = iter.Value();
-      if(sh.ShapeType() != TopAbs_SHELL)
-	continue;
-      myFixShell->Init(TopoDS::Shell(sh));
-      if(myFixShell->Perform()) {
-        //    Context()->Replace(sh,myFixShell->Shell());
+
+  // Calculate number of underlying shells
+  Standard_Integer aNbShells = 0;
+  for ( TopExp_Explorer aExpSh(S, TopAbs_SHELL); aExpSh.More(); aExpSh.Next() )
+    aNbShells++;
+
+  // Start progress scope (no need to check if progress exists -- it is safe)
+  Message_ProgressSentry aPSentry(theProgress, "Fixing solid stage", 0, 2, 1);
+
+  if ( NeedFix(myFixShellMode) )
+  {
+    // Start progress scope (no need to check if progress exists -- it is safe)
+    Message_ProgressSentry aPSentry(theProgress, "Fixing shell", 0, aNbShells, 1);
+
+    // Fix shell by shell using ShapeFix_Shell tool
+    for ( TopExp_Explorer aExpSh(S, TopAbs_SHELL); aExpSh.More() && aPSentry.More(); aExpSh.Next(), aPSentry.Next() )
+    { 
+      TopoDS_Shape sh = aExpSh.Current();
+
+      myFixShell->Init( TopoDS::Shell(sh) );
+      if ( myFixShell->Perform(theProgress) )
+      {
         status = Standard_True;
         myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE1 );
       }
       NbShells+= myFixShell->NbShells();
     }
+
+    // Halt algorithm in case of user's abort
+    if ( !aPSentry.More() )
+      return Standard_False;
   }
-  else {
-    for(TopExp_Explorer aExpSh(myShape,TopAbs_SHELL); aExpSh.More(); aExpSh.Next())
-      NbShells++;
+  else 
+  {
+    NbShells = aNbShells;
   }
-  //if(!status) return status;
+
+  // Switch to the second stage
+  aPSentry.Next();
     
   if(NbShells ==1) {
     TopoDS_Shape tmpShape = Context()->Apply(myShape);
@@ -441,7 +477,11 @@ Standard_Boolean ShapeFix_Solid::Perform()
         BRep_Builder aB;
         TopoDS_Compound aComp;
         aB.MakeCompound(aComp);
-        for(Standard_Integer i =1; i <= aMapSolids.Extent(); i++) {
+        Message_ProgressSentry aPSentry(theProgress, "Creating solid",
+                                        0, aMapSolids.Extent(), 1);
+        for(Standard_Integer i =1; (i <= aMapSolids.Extent()) && (aPSentry.More()); 
+            i++, aPSentry.Next()) 
+        {
           TopoDS_Shape aResSh =aMapSolids.FindKey(i);
           if(aResShape.ShapeType() == TopAbs_SHELL && myCreateOpenSolidMode) {
             aResSh.Closed(Standard_False);
@@ -456,6 +496,8 @@ Standard_Boolean ShapeFix_Solid::Perform()
           aB.Add(aComp,aResSh);
           
         }
+        if ( !aPSentry.More() )
+          return Standard_False; // aborted execution
         Context()->Replace(aResShape,aComp);
       }
     }
