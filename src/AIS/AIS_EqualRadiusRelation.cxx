@@ -1,7 +1,23 @@
-// File:	AIS_EqualRadiusRelation.cxx
-// Created:	Tue Jan 20 19:19:54 1998
-// Author:	Julia GERASIMOVA
-//		<jgv@orthodox.nnov.matra-dtv.fr>
+// Created on: 1998-01-20
+// Created by: Julia GERASIMOVA
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define BUC60915        //GG 05/06/01 Enable to compute the requested arrow size
 //                      if any in all dimensions.
@@ -84,8 +100,8 @@ void AIS_EqualRadiusRelation::Compute( const Handle( PrsMgr_PresentationManager3
     }
   else {
     Standard_Real aPar =  ElCLib::Parameter(FirstCirc, myFirstPoint);
-    if (IntegerPart(0.5*LastPar1/PI) != 0 &&  aPar < FirstPar1 )
-      aPar +=2*PI*IntegerPart(0.5*LastPar1/PI);
+    if (IntegerPart(0.5*LastPar1/M_PI) != 0 &&  aPar < FirstPar1 )
+      aPar +=2*M_PI*IntegerPart(0.5*LastPar1/M_PI);
     Standard_Real aRadius = FirstCirc.Radius();
 
     if (Abs(myFirstPoint.Distance(myFirstCenter) - aRadius) >= Precision::Confusion())
@@ -104,8 +120,8 @@ void AIS_EqualRadiusRelation::Compute( const Handle( PrsMgr_PresentationManager3
   
     
     aPar =  ElCLib::Parameter(SecondCirc, mySecondPoint);
-    if (IntegerPart(0.5*LastPar2/PI) != 0 &&  aPar < FirstPar2 )
-      aPar +=2*PI*IntegerPart(0.5*LastPar2/PI);
+    if (IntegerPart(0.5*LastPar2/M_PI) != 0 &&  aPar < FirstPar2 )
+      aPar +=2*M_PI*IntegerPart(0.5*LastPar2/M_PI);
     
     aRadius = SecondCirc.Radius();
     if (Abs(mySecondPoint.Distance(mySecondCenter) - aRadius) >= Precision::Confusion())

@@ -125,6 +125,8 @@ public:
   Standard_EXPORT   virtual  void SetLocation(const TopLoc_Location& aLoc) ;
   
   Standard_EXPORT   virtual  void ResetLocation() ;
+  //! Set Z layer ID and update all presentations. <br>
+  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
 
 
 

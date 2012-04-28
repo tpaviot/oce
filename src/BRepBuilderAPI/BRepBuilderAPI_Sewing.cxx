@@ -1,7 +1,23 @@
-// File:        BRepBuilderAPI_Sewing.cxx
-// Created:        Fri Mar 24 09:45:44 1995
-// Author:        Jing Cheng MEI
-//                <mei@junon>
+// Created on: 1995-03-24
+// Created by: Jing Cheng MEI
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // dcl          CCI60011 : Correction of degeneratedSection
 //              Improvement of SameParameter Edge to treat case of failure in BRepLib::SameParameter
 // dcl          Thu Aug 20 09:24:49 1998
@@ -21,8 +37,8 @@
 //              Add of SameParameter call
 
 
-//-- lbr le 1er avril 97
-//-- dpf le 10 decembre 1997 Traitement des collections de pcurve
+//-- lbr April 1 97
+//-- dpf December 10 1997 Processing of pcurve collections
 
 //rln 02.02.99 BUC60449 Making compilable on NT in DEB mode 
 //rln 02.02.99 BUC60449 Protection against exception on NT
@@ -107,6 +123,11 @@
 #include <BRep_PointOnCurve.hxx>
 #include <BRep_ListOfPointRepresentation.hxx>
 #include <BRep_TVertex.hxx>
+#include <Message_ProgressSentry.hxx>
+#include <BRepBuilderAPI_VertexInspector.hxx>
+#include <BRepBuilderAPI_CellFilter.hxx>
+#include <BRepBuilderAPI_BndBoxTreeSelector.hxx>
+#include <NCollection_UBTreeFiller.hxx>
 
 static void SortBox (const Handle(Bnd_HArray1OfBox) hSetBoxes,
 		     const Bnd_Box& aBox,
@@ -146,7 +167,7 @@ Handle(Geom2d_Curve) BRepBuilderAPI_Sewing::SameRange(const Handle(Geom2d_Curve)
 
 //=======================================================================
 //function : WhichFace
-//purpose  : Give the face dont ledge est le bord
+//purpose  : Give the face whose edge is the border
 //=======================================================================
 
 TopoDS_Face BRepBuilderAPI_Sewing::WhichFace(const TopoDS_Edge& theEdg, const Standard_Integer index) const
@@ -191,7 +212,7 @@ static Standard_Boolean IsClosedShape(const TopoDS_Shape& theshape,
   if (TotLength > 0.0) {
     gp_Pnt p1 = BRep_Tool::Pnt(TopoDS::Vertex(v1));
     gp_Pnt p2 = BRep_Tool::Pnt(TopoDS::Vertex(v2));
-    return (p1.Distance(p2) < TotLength/(1.2 * PI));
+    return (p1.Distance(p2) < TotLength/(1.2 * M_PI));
   }
   return Standard_False;
 }
@@ -485,17 +506,9 @@ static Standard_Boolean findNMVertices(const TopoDS_Edge& theEdge,
   return Standard_True;
 }
 
-static Standard_Real ComputeToleranceVertex(Standard_Real dist, Standard_Real Tol1, Standard_Real Tol2)
+static inline Standard_Real ComputeToleranceVertex(const Standard_Real dist, const Standard_Real Tol1, const Standard_Real Tol2)
 {
-  Standard_Real resTol =0;
-  if((dist + Tol1) <= Tol2)
-    resTol = Tol2;
-  else if((dist + Tol2) <= Tol1)
-    resTol = Tol1;
-  else 
-    resTol =(dist + Tol1 + Tol2)*0.5;
-  return resTol;
-  
+  return (dist * 0.5 + Tol1 + Tol2);
 }
 TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirst,
 					       const TopoDS_Edge& edgeLast,
@@ -580,6 +593,25 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
     TopExp::Vertices(edge1,V11,V12);
     TopExp::Vertices(edge2,V21,V22);
 
+    //check that edges merged valid way (for edges having length less than specified
+    //tolerance
+    // Check if edges are closed
+    Standard_Boolean isClosed1 = V11.IsSame(V12);
+    Standard_Boolean isClosed2 = V21.IsSame(V22);
+    if(!isClosed1 && !isClosed2)
+    {
+      if(secForward )
+      {
+        if( V11.IsSame(V22) || V12.IsSame(V21) )
+          return TopoDS_Edge();
+      }
+      else
+      {
+        if( V11.IsSame(V21) || V12.IsSame(V22) )
+          return TopoDS_Edge();
+      }
+    }
+
     //szv: do not reshape here!!!
     //V11 = TopoDS::Vertex(myReShape->Apply(V11));
     //V12 = TopoDS::Vertex(myReShape->Apply(V12));
@@ -591,9 +623,7 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
     gp_Pnt p21 = BRep_Tool::Pnt(V21); 
     gp_Pnt p22 = BRep_Tool::Pnt(V22);
 
-    // Check if edges are closed
-    Standard_Boolean isClosed1 = V11.IsSame(V12);
-    Standard_Boolean isClosed2 = V21.IsSame(V22);
+    
 
     //Standard_Boolean isRev = Standard_False;
     gp_Pnt pfirst;
@@ -601,38 +631,38 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
     if (isClosed1 || isClosed2) {
       // at least one of the edges is closed
       if (isClosed1 && isClosed2) {
-	// both edges are closed
-	pfirst.SetXYZ(0.5*(p11.XYZ() + p21.XYZ()));
+        // both edges are closed
+        pfirst.SetXYZ(0.5*(p11.XYZ() + p21.XYZ()));
         gp_Vec v1 =  p21.XYZ() - p11.XYZ();
         Standard_Real d1 = v1.Magnitude();
         Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V21));
-	//Tol1 = Max(pfirst.Distance(p11),pfirst.Distance(p21));
+        //Tol1 = Max(pfirst.Distance(p11),pfirst.Distance(p21));
       }
       else if (isClosed1) {
-	// only first edge is closed
+        // only first edge is closed
         gp_XYZ pt =0.5*(p21.XYZ()+ p22.XYZ());
-  	    pfirst.SetXYZ(0.5*(p11.XYZ() + pt));
+        pfirst.SetXYZ(0.5*(p11.XYZ() + pt));
         gp_Vec v1 =  p22.XYZ() - p21.XYZ();
         Standard_Real d1 = v1.Magnitude();
         Tol1= ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V22),BRep_Tool::Tolerance(V21));
         gp_Vec v2 =  p11.XYZ() - pt;
         Standard_Real d2 = v2.Magnitude();
         Tol1= ComputeToleranceVertex(d2,Tol1,BRep_Tool::Tolerance(V11));
-	//Tol1 = Max(pfirst.Distance(p21),pfirst.Distance(p22));
-	//Tol1 = Max(pfirst.Distance(p11),Tol1);
+        //Tol1 = Max(pfirst.Distance(p21),pfirst.Distance(p22));
+        //Tol1 = Max(pfirst.Distance(p11),Tol1);
       }
       else {
-	// only second edge is closed
+        // only second edge is closed
         gp_XYZ pt = 0.5*(p11.XYZ()+ p12.XYZ());
-	    pfirst.SetXYZ(0.5*(p21.XYZ() + pt));
+        pfirst.SetXYZ(0.5*(p21.XYZ() + pt));
         gp_Vec v1 =  p11.XYZ() - p12.XYZ();
         Standard_Real d1 = v1.Magnitude();
         Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V12));
         gp_Vec v2 =  p21.XYZ() - pt;
         Standard_Real d2 = v2.Magnitude();
         Tol1 = ComputeToleranceVertex(d2,Tol1,BRep_Tool::Tolerance(V21));
-	//Tol1 = Max(pfirst.Distance(p11),pfirst.Distance(p12));
-	//Tol1 = Max(pfirst.Distance(p21),Tol1);
+        //Tol1 = Max(pfirst.Distance(p11),pfirst.Distance(p12));
+        //Tol1 = Max(pfirst.Distance(p21),Tol1);
       }
       aBuilder.MakeVertex(V1New,pfirst,Tol1);
       V2New = V1New;
@@ -641,43 +671,56 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
       // both edges are open
       gp_Pnt plast;
       Standard_Real Tol2 = 0.;
+      Standard_Boolean isOldFirst = ( secForward ? V11.IsSame(V21) :  V11.IsSame(V22) );
+      Standard_Boolean isOldLast = ( secForward ? V12.IsSame(V22) : V12.IsSame(V21)) ;
       if (secForward) {
-	    pfirst.SetXYZ(0.5*(p11.XYZ() + p21.XYZ()));
-	    plast.SetXYZ(0.5*(p12.XYZ() + p22.XYZ()));
-        gp_Vec v1 =  p21.XYZ() - p11.XYZ();
-        Standard_Real d1 = v1.Magnitude();
-        gp_Vec v2 =  p22.XYZ() - p12.XYZ();
-        Standard_Real d2 = v2.Magnitude();
-        Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V21));
-        Tol2 = ComputeToleranceVertex(d2,BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V22));
+        //case if vertices already sewed
+        if(!isOldFirst)
+        {
+          pfirst.SetXYZ(0.5*(p11.XYZ() + p21.XYZ()));
+          gp_Vec v1 =  p21.XYZ() - p11.XYZ();
+          Standard_Real d1 = v1.Magnitude();
+          Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V21));
+        }
+        if(!isOldLast)
+        {
+          plast.SetXYZ(0.5*(p12.XYZ() + p22.XYZ()));
 
-//	Tol1 = Max(Max(pfirst.Distance(p11),pfirst.Distance(p21)),
-//		   Max(BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V21)));
-//	Tol2 = Max(Max(plast.Distance(p12),plast.Distance(p22)),
-//		   Max(BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V22)));
+          gp_Vec v2 =  p22.XYZ() - p12.XYZ();
+          Standard_Real d2 = v2.Magnitude();
+
+          Tol2 = ComputeToleranceVertex(d2,BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V22));
+        }
+
       }
       else {
-	    pfirst.SetXYZ(0.5*(p11.XYZ() + p22.XYZ()));
-	    plast.SetXYZ(0.5*(p12.XYZ() + p21.XYZ()));
-        
-        gp_Vec v1 =  p22.XYZ() - p11.XYZ();
-        Standard_Real d1 = v1.Magnitude();
-        gp_Vec v2 =  p21.XYZ() - p12.XYZ();
-        Standard_Real d2 = v2.Magnitude();
-        Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V22));
-        Tol2 = ComputeToleranceVertex(d2,BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V21));
-//        Tol1 = Max(Max(pfirst.Distance(p11),pfirst.Distance(p22)),
-//		   Max(BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V22)));
-//	Tol2 = Max(Max(plast.Distance(p12),plast.Distance(p21)),
-//		   Max(BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V21)));
+        if(!isOldFirst)
+        {
+          pfirst.SetXYZ(0.5*(p11.XYZ() + p22.XYZ()));
+          gp_Vec v1 =  p22.XYZ() - p11.XYZ();
+          Standard_Real d1 = v1.Magnitude();
+          Tol1 = ComputeToleranceVertex(d1,BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V22));
+        }
+        if(!isOldLast)
+        {
+          plast.SetXYZ(0.5*(p12.XYZ() + p21.XYZ()));
+          gp_Vec v2 =  p21.XYZ() - p12.XYZ();
+          Standard_Real d2 = v2.Magnitude();
+          Tol2 = ComputeToleranceVertex(d2,BRep_Tool::Tolerance(V12),BRep_Tool::Tolerance(V21));
+        }
+
       }
-      //gp_Pnt pcu;
-      ///c3d->D0(first3d,pcu);
-      //Tol1 = Max(pfirst.Distance(pcu) + Max(BRep_Tool::Tolerance(V11),BRep_Tool::Tolerance(V22));
-      aBuilder.MakeVertex(V1New,pfirst,Tol1);
-      //c3d->D0(last3d,pcu);
-      //Tol2 = plast.Distance(pcu);
-      aBuilder.MakeVertex(V2New,plast,Tol2);
+      if(!isOldFirst)
+        aBuilder.MakeVertex(V1New,pfirst,Tol1);
+      else
+        V1New = V11;
+       
+
+      if(!isOldLast)
+        aBuilder.MakeVertex(V2New,plast,Tol2);
+      else
+        V2New = V12;
+
     }
 
     // Add the vertices in the good sense
@@ -710,7 +753,7 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
 
     surf2 = BRep_Tool::Surface(fac2, loc2);
     Standard_Boolean isSeam2 = ((IsUClosedSurface(surf2,edge2,loc2) || IsVClosedSurface(surf2,edge2,loc2)) &&
-				BRep_Tool::IsClosed(TopoDS::Edge(edge2),fac2));
+      BRep_Tool::IsClosed(TopoDS::Edge(edge2),fac2));
     if (isSeam2) {
       if (!myNonmanifold) return TopoDS_Edge();
       TopoDS_Shape aTmpShape = edge2.Reversed(); //for porting
@@ -722,25 +765,25 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
     if (!c2d21.IsNull()) {
       c2d21 = Handle(Geom2d_Curve)::DownCast(c2d21->Copy());
       if (!secForward) {
-	if (c2d21->IsKind(STANDARD_TYPE(Geom2d_Line)))
-	  c2d21 = new Geom2d_TrimmedCurve(c2d21, firstOld, lastOld);
-	Standard_Real first2d = firstOld; //c2dTmp->FirstParameter(); BUG USA60321
-	Standard_Real last2d = lastOld;   //c2dTmp->LastParameter();
-	firstOld = c2d21->ReversedParameter(last2d);
-	lastOld = c2d21->ReversedParameter(first2d);
-	c2d21->Reverse();
+        if (c2d21->IsKind(STANDARD_TYPE(Geom2d_Line)))
+          c2d21 = new Geom2d_TrimmedCurve(c2d21, firstOld, lastOld);
+        Standard_Real first2d = firstOld; //c2dTmp->FirstParameter(); BUG USA60321
+        Standard_Real last2d = lastOld;   //c2dTmp->LastParameter();
+        firstOld = c2d21->ReversedParameter(last2d);
+        lastOld = c2d21->ReversedParameter(first2d);
+        c2d21->Reverse();
       }
       c2d21 = SameRange(c2d21,firstOld,lastOld,first,last);
     }
 
     // Make second PCurve sameRange with the 3d curve
     c2d2 = Handle(Geom2d_Curve)::DownCast(c2d2->Copy());
-
+    
     if (!secForward) {
       if (c2d2->IsKind(STANDARD_TYPE(Geom2d_Line)))
-	c2d2 = new Geom2d_TrimmedCurve(c2d2, firstOld, lastOld);
-      Standard_Real first2d = firstOld; //c2dTmp->FirstParameter(); BUG USA60321
-      Standard_Real last2d = lastOld;   //c2dTmp->LastParameter();
+        c2d2 = new Geom2d_TrimmedCurve(c2d2, firstOld, lastOld);
+      Standard_Real first2d = firstOld; 
+      Standard_Real last2d = lastOld;   
       firstOld = c2d2->ReversedParameter(last2d);
       lastOld = c2d2->ReversedParameter(first2d);
       c2d2->Reverse();
@@ -748,7 +791,7 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
 
     c2d2 = SameRange(c2d2,firstOld,lastOld,first,last);
     if (c2d2.IsNull()) continue;
-    
+
     // Add second PCurve
     Standard_Boolean isSeam = Standard_False;
     TopAbs_Orientation Ori = TopAbs_FORWARD;
@@ -765,14 +808,14 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
       Handle(Geom_Surface) surf1 = BRep_Tool::Surface(fac1, loc1);
       Standard_Real first2d, last2d;
       Standard_Boolean isSeam1 = ((IsUClosedSurface(surf1,edge1,loc1) || IsVClosedSurface(surf1,edge1,loc1)) &&
-				  BRep_Tool::IsClosed(TopoDS::Edge(edge1),fac1));
+        BRep_Tool::IsClosed(TopoDS::Edge(edge1),fac1));
       c2d1 = BRep_Tool::CurveOnSurface(edge1, fac1, first2d, last2d);
       Ori = edge1.Orientation();
       if (fac1.Orientation() == TopAbs_REVERSED) 
         Ori = TopAbs::Reverse(Ori);
-      
+
       if (isSeam1) {
-	if (!myNonmanifold) return TopoDS_Edge();
+        if (!myNonmanifold) return TopoDS_Edge();
         TopoDS_Shape aTmpShape = edge1.Reversed(); //for porting
         c2d11 = BRep_Tool::CurveOnSurface(TopoDS::Edge(aTmpShape), fac1, first2d, last2d);
         //if(fac1.Orientation() == TopAbs_REVERSED) //
@@ -782,34 +825,31 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
           aBuilder.UpdateEdge(edge,c2d11,c2d1,fac1,0);
       }
       else  aBuilder.UpdateEdge(edge,c2d1,fac1,0);
-      
+
       if (c2d1.IsNull() && c2d11.IsNull()) continue;
 
-      //Ori = edge1.Orientation();
-      //if (fac1.Orientation() == TopAbs_REVERSED) TopAbs::Reverse(Ori);
-
       if (surf2 == surf1) {
-	// Merge sections which are on the same face
-	if (!loc2.IsDifferent(loc1)) {
-	  Standard_Boolean uclosed = IsUClosedSurface(surf2,edge2,loc2);
-	  Standard_Boolean vclosed = IsVClosedSurface(surf2,edge2,loc2);
-	  if (uclosed || vclosed) {
-	    Standard_Real pf = c2d1->FirstParameter();
-//	    Standard_Real pl = c2d1->LastParameter();
-	    gp_Pnt2d p1n = c2d1->Value(Max(first,pf));
-//	    gp_Pnt2d p2n = c2d1->Value(Min(pl,last));
+        // Merge sections which are on the same face
+        if (!loc2.IsDifferent(loc1)) {
+          Standard_Boolean uclosed = IsUClosedSurface(surf2,edge2,loc2);
+          Standard_Boolean vclosed = IsVClosedSurface(surf2,edge2,loc2);
+          if (uclosed || vclosed) {
+            Standard_Real pf = c2d1->FirstParameter();
+            //	    Standard_Real pl = c2d1->LastParameter();
+            gp_Pnt2d p1n = c2d1->Value(Max(first,pf));
+            //	    gp_Pnt2d p2n = c2d1->Value(Min(pl,last));
             gp_Pnt2d p21n = c2d2->Value(Max(first,c2d2->FirstParameter()));
             gp_Pnt2d p22n = c2d2->Value(Min(last,c2d2->LastParameter()));
             Standard_Real aDist = Min(p1n.Distance(p21n), p1n.Distance(p22n));
-	    Standard_Real U1, U2, V1, V2;
-	    surf2->Bounds(U1, U2, V1, V2);
-	    isSeam = ((uclosed && aDist > 0.75*(fabs(U2-U1))) ||
-		      (vclosed && aDist > 0.75*(fabs(V2-V1))));
+            Standard_Real U1, U2, V1, V2;
+            surf2->Bounds(U1, U2, V1, V2);
+            isSeam = ((uclosed && aDist > 0.75*(fabs(U2-U1))) ||
+              (vclosed && aDist > 0.75*(fabs(V2-V1))));
             if( !isSeam && BRep_Tool::IsClosed(TopoDS::Edge(edge),fac1)) continue;
-	  }
-	}
+          }
+        }
       }
-     
+
       isResEdge = Standard_True;
       if (isSeam) {
         if (Ori == TopAbs_FORWARD)
@@ -819,15 +859,15 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
       }
       else if (isSeam2) {
         TopAbs_Orientation InitOri  = edge2.Orientation();
-         TopAbs_Orientation SecOri  = edge.Orientation();
+        TopAbs_Orientation SecOri  = edge.Orientation();
         if (fac2.Orientation() == TopAbs_REVERSED) {
-          
+
           InitOri = TopAbs::Reverse(InitOri);
           SecOri = TopAbs::Reverse(SecOri);
         }
         if(!secForward)
           InitOri = TopAbs::Reverse(InitOri);
-        
+
         if (InitOri == TopAbs_FORWARD)
           aBuilder.UpdateEdge(edge, c2d2,c2d21, surf2, loc2, Precision::Confusion());
         else
@@ -836,11 +876,11 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
       else {
         aBuilder.UpdateEdge(edge, c2d2, surf2, loc2, Precision::Confusion());
       }
-      
+
     }
   }
   if(isResEdge)
-  // Try to make the edge sameparameter
+    // Try to make the edge sameparameter
     SameParameter(edge);
 
   //  Standard_Real tolReached = BRep_Tool::Tolerance(edge);
@@ -851,7 +891,7 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
     // Try to merge on the second section
     Standard_Boolean second_ok = Standard_True;
     TopoDS_Edge s_edge = SameParameterEdge(edgeFirst,edgeLast,listFacesFirst,listFacesLast,
-					   secForward,whichSecn,Standard_False);
+      secForward,whichSecn,Standard_False);
     //if (s_edge.IsNull()) return s_edge; // gka version for free edges
     if (s_edge.IsNull()) second_ok = Standard_False;
     else if (!BRep_Tool::SameParameter(s_edge)) second_ok = Standard_False;
@@ -875,17 +915,17 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Edge& edgeFirs
 
       for (j = 1; more; j++) {
         Handle(Geom2d_Curve) c2d2;
-	BRep_Tool::CurveOnSurface(edge, c2d2, surf2, loc2, first, last, j);
-	more = !c2d2.IsNull();
-	if (more) {
+        BRep_Tool::CurveOnSurface(edge, c2d2, surf2, loc2, first, last, j);
+        more = !c2d2.IsNull();
+        if (more) {
 
-	  deltaT = (last - first) / (nbp + 1);
-	  for (i = 1; i <= nbp; i++) {
-	    c2d2->Value(first + i*deltaT).Coord(u,v);
-	    dist = surf2->Value(u,v).Distance(c3dpnt(i));
-	    if (dist > maxTol) maxTol = dist;
-	  }
-	}
+          deltaT = (last - first) / (nbp + 1);
+          for (i = 1; i <= nbp; i++) {
+            c2d2->Value(first + i*deltaT).Coord(u,v);
+            dist = surf2->Value(u,v).Distance(c3dpnt(i));
+            if (dist > maxTol) maxTol = dist;
+          }
+        }
       }
 
       if (maxTol >= 0.) aBuilder.UpdateEdge(edge, maxTol);
@@ -963,7 +1003,7 @@ void BRepBuilderAPI_Sewing::EvaluateAngulars(TopTools_SequenceOfShape& sequenceS
       else if ((n.Magnitude()>gp::Resolution()) && (normRef(j).Magnitude()>gp::Resolution())) {
 	nbComputedAngle++;
 	Standard_Real angular = n.Angle(normRef(j));
-	if (angular > PI/2.) angular = PI - angular;
+	if (angular > M_PI/2.) angular = M_PI - angular;
 	cumulateAngular += angular;
       }
     }
@@ -979,7 +1019,6 @@ void BRepBuilderAPI_Sewing::EvaluateAngulars(TopTools_SequenceOfShape& sequenceS
 // Evaluate distance beetween edges with indice indRef and the following edges in the list
 // Remarks (lengSec - indRef) must be >= 1 
 //=======================================================================
-
 void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequenceSec,
                                               TColStd_Array1OfBoolean& secForward,
                                               TColStd_Array1OfReal& tabDst,
@@ -990,6 +1029,7 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
   secForward.Init(Standard_True);
   tabDst.Init(-1.0);
   arrLen.Init(0.);
+  tabMinDist.Init(Precision::Infinite());
   const Standard_Integer npt = 8; // Number of points for curve discretization
   TColgp_Array1OfPnt ptsRef(1, npt), ptsSec(1, npt);
 
@@ -998,7 +1038,7 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
 
   Handle(Geom_Curve) c3dRef;
   Standard_Real firstRef=0., lastRef=0.;
-
+  
   for (i = indRef; i <= lengSec; i++) {
 
     // reading of the edge (attention for the first one: reference)
@@ -1016,11 +1056,13 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
       c3dRef = c3d; firstRef = first; lastRef = last;
     }
 
-    Standard_Real dist, distFor = -1.0, distRev = -1.0;
+    Standard_Real dist = Precision::Infinite(), distFor = -1.0, distRev = -1.0;
     Standard_Real aMinDist = Precision::Infinite();
 
     Standard_Real T, deltaT = (last - first) / (npt - 1);
     Standard_Real aLenSec2 = 0.;
+   
+    Standard_Integer nbFound = 0;
     for (j = 1; j <= npt; j++) {
 
       // Uniform parameter on curve
@@ -1030,14 +1072,16 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
 
       // Take point on curve
       gp_Pnt pt = c3d->Value(T);
-
+     
       if (i == indRef) {
         ptsRef(j) = pt;
+        if(j > 1)
+          aLenSec2 += pt.SquareDistance(ptsRef(j-1));
       }
       else {
         ptsSec(j) = pt;
         //protection to avoid merging with small sections
-        if( j >1)
+        if(j > 1)
           aLenSec2 += pt.SquareDistance(ptsSec(j-1));
         // To evaluate mutual orientation and distance
         dist = pt.Distance(ptsRef(j));
@@ -1045,9 +1089,19 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
           aMinDist = dist;
         if (distFor < dist) distFor = dist;
         dist = pt.Distance(ptsRef(npt-j+1));
+   
         if(aMinDist > dist)
           aMinDist = dist;
         if (distRev < dist) distRev = dist;
+
+        // Check that point lays between vertices of reference curve
+        const gp_Pnt &p11 = ptsRef(1);
+        const gp_Pnt &p12 = ptsRef(npt);
+        const gp_Vec aVec1(pt,p11);
+        const gp_Vec aVec2(pt,p12);
+        const gp_Vec aVecRef(p11,p12);
+        if((aVecRef * aVec1) * (aVecRef * aVec2) < 0.)
+          nbFound++;
       }
     }
 
@@ -1061,18 +1115,39 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
     secForward(i) = isForward;
 
     dist = (isForward? distFor : distRev);
-    if (dist < /*Precision::Confusion()*/ myTolerance) {
-      // Section is close - record distance
+    if(i == indRef || (dist < myTolerance && nbFound >= npt * 0.5) )
+    {
       tabDst(i) = dist;
       tabMinDist(i) = aMinDist;
-
     }
-    else {
-      // Section is distant - record points
-      for (j = 1; j <= npt; j++) seqSec.Append(ptsSec(j));
+    else
+    {
+      nbFound = 0, aMinDist = Precision::Infinite(), dist = -1;
+      TColgp_Array1OfPnt arrProj(1, npt);
+      TColStd_Array1OfReal arrDist(1, npt), arrPara(1, npt);
+      if( arrLen(indRef) >= arrLen(i)) 
+        ProjectPointsOnCurve(ptsSec,c3dRef,firstRef,lastRef,arrDist,arrPara,arrProj,Standard_False);
+      else
+        ProjectPointsOnCurve(ptsRef,c3d,first,last,arrDist,arrPara,arrProj,Standard_False);
+      for( j = 1; j <= npt; j++ )
+      {
+        if(arrDist(j) < 0. || arrDist(j) > myTolerance)
+          continue;
+        if(dist < arrDist(j))
+          dist = arrDist(j);
+        if( aMinDist > arrDist(j))
+          aMinDist = arrDist(j);
+        nbFound++;
+      }
+      if(nbFound > 1)
+      {
+        tabDst(i) = dist;
+        tabMinDist(i) =  aMinDist;
+      }
     }
   }
 
+  /*
   // Project distant points
   Standard_Integer nbFailed = seqSec.Length();
   if (!nbFailed) return;
@@ -1081,7 +1156,7 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
   for (i = 1; i <= nbFailed; i++) arrPnt(i) = seqSec(i); seqSec.Clear();
   TColStd_Array1OfReal arrDist(1, nbFailed), arrPara(1, nbFailed);
 
-  ProjectPointsOnCurve(arrPnt,c3dRef,firstRef,lastRef,arrDist,arrPara,arrProj);
+  ProjectPointsOnCurve(arrPnt,c3dRef,firstRef,lastRef,arrDist,arrPara,arrProj,Standard_False);
 
   // Process distant sections
   Standard_Integer idx1 = 1;
@@ -1130,7 +1205,7 @@ void BRepBuilderAPI_Sewing::EvaluateDistances(TopTools_SequenceOfShape& sequence
     }
 
     idx1++; // To the next distant curve
-  }
+  }*/
 }
 
 //=======================================================================
@@ -1705,8 +1780,10 @@ void BRepBuilderAPI_Sewing::Add(const TopoDS_Shape& aShape)
 #include <OSD_Timer.hxx>
 #endif
 
-void BRepBuilderAPI_Sewing::Perform()
+void BRepBuilderAPI_Sewing::Perform(const Handle(Message_ProgressIndicator)& thePI)
 {
+  const Standard_Integer aNumberOfStages = myAnalysis + myCutting + mySewing + 2;
+  Message_ProgressSentry aPS (thePI, "Sewing", 0, aNumberOfStages, 1);
 #ifdef DEB
   Standard_Real t_total = 0., t_analysis = 0., t_assembling = 0., t_cutting = 0., t_merging = 0.;
   OSD_Chronometer chr_total, chr_local;
@@ -1715,13 +1792,17 @@ void BRepBuilderAPI_Sewing::Perform()
 #endif
 
   // face analysis
-  if (myAnalysis) {
+  if (myAnalysis)
+  {
 #if DEB
     cout << "Begin face analysis..." << endl;
     chr_local.Reset();
     chr_local.Start();
 #endif
-    FaceAnalysis();
+    FaceAnalysis (thePI);
+    if (!aPS.More())
+      return;
+    aPS.Next();
 #if DEB
     chr_local.Stop();
     chr_local.Show(t_analysis);
@@ -1729,34 +1810,43 @@ void BRepBuilderAPI_Sewing::Perform()
 #endif
   }
 
-  if (myNbShapes || !myShape.IsNull()) {
+  if (myNbShapes || !myShape.IsNull())
+  {
 
     FindFreeBoundaries();
 
-    if (myBoundFaces.Extent()) {
+    if (myBoundFaces.Extent())
+    {
 
 #if DEB
       cout << "Begin vertices assembling..." << endl;
       chr_local.Reset();
       chr_local.Start();
 #endif
-      VerticesAssembling();
+      VerticesAssembling (thePI);
+      if (!aPS.More())
+        return;
+      aPS.Next();
 #if DEB
       chr_local.Stop();
       chr_local.Show(t_assembling);
       cout << "Vertices assembling finished after " << t_assembling << " s" << endl;
 #endif
-      if (myCutting) {
+      if (myCutting)
+      {
 #if DEB
-	cout << "Begin cutting..." << endl;
-	chr_local.Reset();
-	chr_local.Start();
+        cout << "Begin cutting..." << endl;
+        chr_local.Reset();
+        chr_local.Start();
 #endif
-	Cutting();
+        Cutting (thePI);
+        if (!aPS.More())
+          return;
+        aPS.Next();
 #if DEB
-	chr_local.Stop();
-	chr_local.Show(t_cutting);
-	cout << "Cutting finished after " << t_cutting << " s" << endl;
+        chr_local.Stop();
+        chr_local.Show(t_cutting);
+        cout << "Cutting finished after " << t_cutting << " s" << endl;
 #endif
       }
 #if DEB
@@ -1764,30 +1854,61 @@ void BRepBuilderAPI_Sewing::Perform()
       chr_local.Reset();
       chr_local.Start();
 #endif
-      Merging(Standard_True);
+      Merging (Standard_True, thePI);
+      if (!aPS.More())
+        return;
+      aPS.Next();
 #if DEB
       chr_local.Stop();
       chr_local.Show(t_merging);
       cout << "Merging finished after " << t_merging << " s" << endl;
 #endif
     }
+    else
+    {
+      aPS.Next( 1, Handle(TCollection_HAsciiString)());
+      if (myCutting)
+        aPS.Next( 1, Handle(TCollection_HAsciiString)());
+      aPS.Next( 1, Handle(TCollection_HAsciiString)());
+      if (!aPS.More())
+        return;
+    }
 
-    if (mySewing) {
+    if (mySewing)
+    {
 
 #if DEB
       cout << "Creating sewed shape..." << endl;
 #endif
       // examine the multiple edges if any and process sameparameter for edges if necessary
-      EdgeProcessing();
+      EdgeProcessing (thePI);
+      if (!aPS.More())
+        return;
       CreateSewedShape();
-      if (mySameParameterMode && myFaceMode) SameParameterShape();
+      if (!aPS.More())
+      {
+        mySewedShape.Nullify();
+        return;
+      }
+      if (mySameParameterMode && myFaceMode)
+        SameParameterShape();
+      if (!aPS.More())
+      {
+        mySewedShape.Nullify();
+        return;
+      }
 #if DEB
       cout << "Sewed shape created" << endl;
 #endif
     }
-    
+
     // create edge informations for output
     CreateOutputInformations();
+    if (!aPS.More())
+    {
+      mySewedShape.Nullify();
+      return;
+    }
   }
 #if DEB
   chr_total.Stop();
@@ -2079,7 +2200,7 @@ void BRepBuilderAPI_Sewing::Dump() const
 //                      myDegenerated
 //=======================================================================
 
-void BRepBuilderAPI_Sewing::FaceAnalysis()
+void BRepBuilderAPI_Sewing::FaceAnalysis(const Handle(Message_ProgressIndicator)& thePI)
 {
   if (!myShape.IsNull() && myOldShapes.IsEmpty()) {
     Add(myShape);
@@ -2090,7 +2211,8 @@ void BRepBuilderAPI_Sewing::FaceAnalysis()
   TopTools_MapOfShape SmallEdges;
   TopTools_DataMapOfShapeListOfShape GluedVertices;
   Standard_Integer i = 1;
-  for (i = 1; i <= myOldShapes.Extent(); i++) {
+  Message_ProgressSentry aPS (thePI, "Shape analysis", 0, myOldShapes.Extent(), 1);
+  for (i = 1; i <= myOldShapes.Extent() && aPS.More(); i++, aPS.Next()) {
     for (TopExp_Explorer fexp(myOldShapes(i),TopAbs_FACE); fexp.More(); fexp.Next()) {
 
       // Retrieve current face
@@ -2618,13 +2740,16 @@ static Standard_Integer IsMergedVertices(const TopoDS_Shape& face1,
 }
 
 static Standard_Boolean GlueVertices(TopTools_IndexedDataMapOfShapeShape& aVertexNode,
-				     TopTools_DataMapOfShapeListOfShape& aNodeEdges,
-				     const TopTools_IndexedDataMapOfShapeListOfShape& aBoundFaces,
-				     const Standard_Real Tolerance)
+                                     TopTools_DataMapOfShapeListOfShape& aNodeEdges,
+                                     const TopTools_IndexedDataMapOfShapeListOfShape& aBoundFaces,
+                                     const Standard_Real Tolerance,
+                                     const Handle(Message_ProgressIndicator)& theProgress)
 {
   Standard_Integer i, nbVertices = aVertexNode.Extent();
   // Create map of node -> vertices
   TopTools_IndexedDataMapOfShapeListOfShape NodeVertices;
+  BRepBuilderAPI_CellFilter aFilter (Tolerance);
+  BRepBuilderAPI_VertexInspector anInspector (Tolerance);
   for (i = 1; i <= nbVertices; i++) {
     TopoDS_Shape vertex = aVertexNode.FindKey(i);
     TopoDS_Vertex node = TopoDS::Vertex(aVertexNode(i));
@@ -2635,37 +2760,34 @@ static Standard_Boolean GlueVertices(TopTools_IndexedDataMapOfShapeShape& aVerte
       TopTools_ListOfShape vlist;
       vlist.Append(vertex);
       NodeVertices.Add(node,vlist);
+      gp_Pnt aPnt = BRep_Tool::Pnt (TopoDS::Vertex (node));
+      aFilter.Add (NodeVertices.FindIndex (node), aPnt.XYZ());
+      anInspector.Add (aPnt.XYZ());
     }
   }
   Standard_Integer nbNodes = NodeVertices.Extent();
 #ifdef DEB
   cout << "Glueing " << nbNodes << " nodes..." << endl;
 #endif
-  // Create array of boxes with nodes
-  Handle(Bnd_HArray1OfBox) hSetBoxes = new Bnd_HArray1OfBox(1,nbNodes);
-  Bnd_Box aBox;
-  Standard_Real eps = Tolerance*0.5;
-  for (i = 1; i <= nbNodes; i++) {
-    gp_Pnt pt = BRep_Tool::Pnt(TopoDS::Vertex(NodeVertices.FindKey(i)));
-    aBox.Set(pt);
-    aBox.Enlarge(eps);
-    hSetBoxes->SetValue(i,aBox);
-  }
   // Merge nearest nodes
   TopTools_IndexedDataMapOfShapeShape NodeNearestNode;
-  for (i = 1; i <= nbNodes; i++) {
+  Message_ProgressSentry aPS (theProgress, "Glueing nodes", 0, nbNodes, 1, Standard_True);
+  for (i = 1; i <= nbNodes && aPS.More(); i++, aPS.Next()) {
     TopoDS_Vertex node1 = TopoDS::Vertex(NodeVertices.FindKey(i));
     // Find near nodes
-    TColStd_ListOfInteger listIndex;
-    SortBox(hSetBoxes,hSetBoxes->Value(i),listIndex);
-    if (listIndex.IsEmpty()) continue;
+    gp_Pnt pt1 = BRep_Tool::Pnt (node1);
+    anInspector.SetCurrent (pt1.XYZ());
+    gp_XYZ aPntMin = anInspector.Shift (pt1.XYZ(), -Tolerance);
+    gp_XYZ aPntMax = anInspector.Shift (pt1.XYZ(), Tolerance);
+    aFilter.Inspect (aPntMin, aPntMax, anInspector);
+    if (anInspector.ResInd().IsEmpty()) continue;
     // Retrieve list of edges for the first node
     const TopTools_ListOfShape& ledges1 = aNodeEdges(node1);
     // Explore list of near nodes and fill the sequence of glued nodes
     TopTools_SequenceOfShape SeqNodes;
     TopTools_ListOfShape listNodesSameEdge;
-    gp_Pnt pt1 = BRep_Tool::Pnt(node1);
-    TColStd_ListIteratorOfListOfInteger iter1(listIndex);
+    //gp_Pnt pt1 = BRep_Tool::Pnt(node1);
+    TColStd_ListIteratorOfListOfInteger iter1(anInspector.ResInd());
     for (; iter1.More(); iter1.Next()) {
       TopoDS_Vertex node2 = TopoDS::Vertex(NodeVertices.FindKey(iter1.Value()));
       if (node1 == node2) continue;
@@ -2773,19 +2895,20 @@ static Standard_Boolean GlueVertices(TopTools_IndexedDataMapOfShapeShape& aVerte
       if (SeqNodes.Length())
 	NodeNearestNode.Add(node1,SeqNodes.First());
     }
+    anInspector.ClearResList();
   }
 
   // Create new nodes for chained nearest nodes
   if (NodeNearestNode.IsEmpty()) return Standard_False;
-  hSetBoxes.Nullify();
 
   return CreateNewNodes(NodeNearestNode,NodeVertices,aVertexNode,aNodeEdges);
 }
 
-void BRepBuilderAPI_Sewing::VerticesAssembling()
+void BRepBuilderAPI_Sewing::VerticesAssembling(const Handle(Message_ProgressIndicator)& thePI)
 {
   Standard_Integer nbVert = myVertexNode.Extent();
   Standard_Integer nbVertFree = myVertexNodeFree.Extent();
+  Message_ProgressSentry aPS (thePI, "Vertices assembling", 0, 2, 1);
   if (nbVert || nbVertFree) {
     // Fill map node -> sections
     Standard_Integer i;
@@ -2807,13 +2930,16 @@ void BRepBuilderAPI_Sewing::VerticesAssembling()
 #ifdef DEB
       cout << "Assemble " << nbVert << " vertices on faces..." << endl;
 #endif
-      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance)) {}
+      while (GlueVertices(myVertexNode,myNodeSections,myBoundFaces,myTolerance, thePI)) {}
     }
+    if (!aPS.More())
+      return;
+    aPS.Next();
     if (nbVertFree) {
 #ifdef DEB
       cout << "Assemble " << nbVertFree << " vertices on floating edges..." << endl;
 #endif
-      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance)) {}
+      while (GlueVertices(myVertexNodeFree,myNodeSections,myBoundFaces,myTolerance, thePI)) {}
     }
   }
 }
@@ -2972,11 +3098,13 @@ static void ReplaceEdge(const TopoDS_Shape& oldEdge,
 //
 //=======================================================================
 
-void BRepBuilderAPI_Sewing::Merging(const Standard_Boolean /* firstTime */)
+void BRepBuilderAPI_Sewing::Merging(const Standard_Boolean /* firstTime */, 
+                                    const Handle(Message_ProgressIndicator)& thePI)
 {
   BRep_Builder B;
   //  TopTools_MapOfShape MergedEdges;
-  for (Standard_Integer i = 1; i <= myBoundFaces.Extent(); i++) {
+  Message_ProgressSentry aPS (thePI, "Merging bounds", 0, myBoundFaces.Extent(), 1);
+  for (Standard_Integer i = 1; i <= myBoundFaces.Extent() && aPS.More(); i++, aPS.Next()) {
 
     TopoDS_Shape bound = myBoundFaces.FindKey(i);
 
@@ -3469,26 +3597,31 @@ Standard_Boolean BRepBuilderAPI_Sewing::MergedNearestEdges(const TopoDS_Shape& e
 //                     myCuttingNode
 //=======================================================================
 
-void BRepBuilderAPI_Sewing::Cutting()
+void BRepBuilderAPI_Sewing::Cutting(const Handle(Message_ProgressIndicator)& thePI)
 {
   Standard_Integer i, nbVertices = myVertexNode.Extent();
   if (!nbVertices) return;
-  // Create a sort box with vertices
+  // Create a box tree with vertices
   Standard_Real eps = myTolerance*0.5;
-  Handle(Bnd_HArray1OfBox) hSetBoxes = new Bnd_HArray1OfBox(1,nbVertices);
+  BRepBuilderAPI_BndBoxTree aTree;
+  NCollection_UBTreeFiller <Standard_Integer, Bnd_Box> aTreeFiller (aTree);
+  BRepBuilderAPI_BndBoxTreeSelector aSelector;
   for (i = 1; i <= nbVertices; i++) {
     gp_Pnt pt = BRep_Tool::Pnt(TopoDS::Vertex(myVertexNode.FindKey(i)));
     Bnd_Box aBox;
     aBox.Set(pt);
     aBox.Enlarge(eps);
-    hSetBoxes->ChangeValue(i) = aBox;
+    aTreeFiller.Add (i, aBox);
   }
+  aTreeFiller.Fill();
+
   Handle(Geom_Curve) c3d;
   TopLoc_Location loc;
   Standard_Real first, last;
   // Iterate on all boundaries
   Standard_Integer nbBounds = myBoundFaces.Extent();
-  for (i = 1; i <= nbBounds; i++) {
+  Message_ProgressSentry aPS (thePI, "Cutting bounds", 0, nbBounds, 1);
+  for (i = 1; i <= nbBounds && aPS.More(); i++, aPS.Next()) {
     const TopoDS_Edge& bound = TopoDS::Edge(myBoundFaces.FindKey(i));
     // Do not cut floating edges
     if (!myBoundFaces(i).Extent()) continue;
@@ -3510,16 +3643,16 @@ void BRepBuilderAPI_Sewing::Cutting()
         GeomAdaptor_Curve adptC(c3d,first,last);
         BndLib_Add3dCurve::Add(adptC,myTolerance,aGlobalBox);
         // Sort vertices to find candidates
-        TColStd_ListOfInteger listIndex;
-        SortBox(hSetBoxes,aGlobalBox,listIndex);
+        aSelector.SetCurrent (aGlobalBox);
+        aTree.Select (aSelector); 
         // Skip bound if no node is in the boundind box
-        if (!listIndex.Extent()) continue;
+        if (!aSelector.ResInd().Extent()) continue;
         // Retrieve bound nodes
         TopExp::Vertices(bound,V1,V2);
         const TopoDS_Shape& Node1 = myVertexNode.FindFromKey(V1);
         const TopoDS_Shape& Node2 = myVertexNode.FindFromKey(V2);
         // Fill map of candidate vertices
-        TColStd_ListIteratorOfListOfInteger itl(listIndex);
+        TColStd_ListIteratorOfListOfInteger itl(aSelector.ResInd());
         for (; itl.More(); itl.Next()) {
           const Standard_Integer index = itl.Value();
           const TopoDS_Shape& Node = myVertexNode.FindFromIndex(index);
@@ -3528,6 +3661,7 @@ void BRepBuilderAPI_Sewing::Cutting()
             CandidateVertices.Add(vertex);
           }
         }
+        aSelector.ClearResList();
       }
       Standard_Integer nbCandidates = CandidateVertices.Extent();
       if (!nbCandidates) continue;
@@ -3536,7 +3670,7 @@ void BRepBuilderAPI_Sewing::Cutting()
       TColgp_Array1OfPnt arrPnt(1,nbCandidates), arrProj(1,nbCandidates);
       for (Standard_Integer j = 1; j <= nbCandidates; j++)
         arrPnt(j) = BRep_Tool::Pnt(TopoDS::Vertex(CandidateVertices(j)));
-      ProjectPointsOnCurve(arrPnt,c3d,first,last,arrDist,arrPara,arrProj);
+      ProjectPointsOnCurve(arrPnt,c3d,first,last,arrDist,arrPara,arrProj,Standard_True);
       // Create cutting nodes
       TopTools_SequenceOfShape seqNode;
       TColStd_SequenceOfReal seqPara;
@@ -3824,12 +3958,13 @@ static TopoDS_Edge DegeneratedSection(const TopoDS_Shape& section, const TopoDS_
 //              - make the contigous edges sameparameter
 //=======================================================================
 
-void BRepBuilderAPI_Sewing::EdgeProcessing()
+void BRepBuilderAPI_Sewing::EdgeProcessing(const Handle(Message_ProgressIndicator)& thePI)
 {
   // constructs sectionEdge
   TopTools_MapOfShape MapFreeEdges;
   TopTools_DataMapOfShapeShape EdgeFace;
-  for (Standard_Integer i = 1; i <= myBoundFaces.Extent(); i++) {
+  Message_ProgressSentry aPS (thePI, "Edge processing", 0, myBoundFaces.Extent(), 1);
+  for (Standard_Integer i = 1; i <= myBoundFaces.Extent() && aPS.More(); i++, aPS.Next()) {
     const TopoDS_Shape& bound = myBoundFaces.FindKey(i);
     const TopTools_ListOfShape& listFaces = myBoundFaces(i);
     if (listFaces.Extent() == 1) {
@@ -4119,7 +4254,8 @@ void BRepBuilderAPI_Sewing::ProjectPointsOnCurve(const TColgp_Array1OfPnt& arrPn
                                                  const Standard_Real last,
                                                  TColStd_Array1OfReal& arrDist,
                                                  TColStd_Array1OfReal& arrPara,
-                                                 TColgp_Array1OfPnt& arrProj) const
+                                                 TColgp_Array1OfPnt& arrProj,
+                                                 const Standard_Boolean isConsiderEnds) const
 {
   arrDist.Init(-1.0);
 
@@ -4180,7 +4316,7 @@ void BRepBuilderAPI_Sewing::ProjectPointsOnCurve(const TColgp_Array1OfPnt& arrPn
       Standard_Failure::Caught()->Print(cout); cout << endl;
 #endif
     }
-    if (!isProjected) {
+    if (!isProjected && isConsiderEnds) {
       if (Min(distF2,distL2) < worktol * worktol) {
         if (distF2 < distL2) {
           arrDist(i1) = sqrt (distF2);
@@ -4561,4 +4697,26 @@ void BRepBuilderAPI_Sewing::SameParameterShape()
       continue;
     }
   }
+}
+
+//=======================================================================
+//function : Inspect
+//purpose  : Used for selection and storage of coinciding points
+//=======================================================================
+
+NCollection_CellFilter_Action BRepBuilderAPI_VertexInspector::Inspect (const Standard_Integer theTarget)
+{
+  /*gp_Pnt aPnt = gp_Pnt (myPoints.Value (theTarget - 1));
+  if (aPnt.SquareDistance (gp_Pnt (myCurrent)) <= myTol)
+    myResInd.Append (theTarget);*/
+
+  const gp_XYZ& aPnt = myPoints.Value (theTarget - 1);
+  Standard_Real aDx, aDy, aDz;
+  aDx = myCurrent.X() - aPnt.X();
+  aDy = myCurrent.Y() - aPnt.Y();
+  aDz = myCurrent.Z() - aPnt.Z();
+
+  if ((aDx*aDx <= myTol) && (aDy*aDy <= myTol) && (aDz*aDz <= myTol))
+    myResInd.Append (theTarget);
+  return CellFilter_Keep; 
 }

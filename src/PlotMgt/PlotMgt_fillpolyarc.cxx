@@ -1,7 +1,23 @@
-// File:        fill.cxx
-// Created:     Wed May 21 10:48:27 1997
-// Author:      Prihodyko Michael
-//              <kim@maniax>
+// Created on: 1997-05-21
+// Created by: Prihodyko Michael
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified by mpo, Tue Jul  8 15:31:23 1997
 // Modified     23/02/98 : FMN ; Remplacement PI par Standard_PI
 
@@ -26,9 +42,11 @@
 //--------------------------------------------------------
 #include <math.h>
 #include <stdlib.h>
+#ifndef __MATH_WNT_H
+# include <Standard_math.hxx>
+#endif  /* __MATH_WNT_H */
 #include <Standard_Stream.hxx>
 #include <PlotMgt_fill.hxx>
-#define Standard_PI (3.14159)
 #define maxDouble ((double)1.E+30)
 //--------------------------------------------------------
 
@@ -87,12 +105,12 @@ double ftrunc(double a)
 // Determine is angle a is between b and b+c (c>0)
 int mpo_inside(double a, double b, double c)
 {
-  while (b<0) {b += 2*Standard_PI;}; b -= 2*Standard_PI*ftrunc(b/(2*Standard_PI));
-  c -= 2*Standard_PI*ftrunc(c/(2*Standard_PI));
-  while (a<0) {a+=2*Standard_PI;}; a -= 2*Standard_PI*ftrunc(a/(2*Standard_PI));
-//  while(c<0) {c+=2*Standard_PI;}; c-=2*Standard_PI*ftrunc(c/(2*Standard_PI));
+  while (b<0) {b += 2*M_PI;}; b -= 2*M_PI*ftrunc(b/(2*M_PI));
+  c -= 2*M_PI*ftrunc(c/(2*M_PI));
+  while (a<0) {a+=2*M_PI;}; a -= 2*M_PI*ftrunc(a/(2*M_PI));
+//  while(c<0) {c+=2*M_PI;}; c-=2*M_PI*ftrunc(c/(2*M_PI));
   if ((a > b) && (a < b+c)) return 1;
-  else if ((2*Standard_PI+a > b) && (2*Standard_PI+a < b+c)) return 1;
+  else if ((2*M_PI+a > b) && (2*M_PI+a < b+c)) return 1;
   return 0;
 }
 
@@ -100,7 +118,7 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
                   double beta, double gamma, double delta, double step)
 {
   int i ;
-  alpha -= 2*Standard_PI*ftrunc(alpha/(2*Standard_PI)); beta -= 2*Standard_PI*ftrunc(beta/(2*Standard_PI));
+  alpha -= 2*M_PI*ftrunc(alpha/(2*M_PI)); beta -= 2*M_PI*ftrunc(beta/(2*M_PI));
   if (beta < 0.0) 
     {
       alpha += beta; beta = -beta;
@@ -115,16 +133,16 @@ int __InitFillArc(double X,  double Y, double a, double b, double alpha,
   int size = int( ftrunc(2*Ys/step) + 1 );
 //  cout << "Ysize = " << Ys << endl << flush;
 //  cout << "Size  = " << size << endl << flush;
-//  cout << "Alpha = " << alpha*180/Standard_PI << endl << flush;
-//  cout << "Beta  = " << beta*180/Standard_PI << endl << flush;
+//  cout << "Alpha = " << alpha*180/M_PI << endl << flush;
+//  cout << "Beta  = " << beta*180/M_PI << endl << flush;
   mpo_lines = (mpo_one_line*)malloc(sizeof(mpo_one_line)*size);
   for ( i = 0; i < size; i++)
     {
       double Yt = Ys - i*step;
       (mpo_lines+i)->X1 = (-C2*Yt - sqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
       (mpo_lines+i)->X2 = (-C2*Yt + sqrt(C2*C2*Yt*Yt - C1*(C3*Yt*Yt - a*a*b*b)))/C1;
-//    cout << "alpha = " << alpha*180/Standard_PI << "    alpha+beta = " << (alpha+beta)*180/Standard_PI << endl << flush;
-//    cout << "" << atan2(Yt, (mpo_lines+i)->X2)*180/Standard_PI << "     type " << (mpo_lines+i)->type << endl << flush;;
+//    cout << "alpha = " << alpha*180/M_PI << "    alpha+beta = " << (alpha+beta)*180/M_PI << endl << flush;
+//    cout << "" << atan2(Yt, (mpo_lines+i)->X2)*180/M_PI << "     type " << (mpo_lines+i)->type << endl << flush;;
 //    cout << "Xleft = " << (mpo_lines+i)->X1 << "     Xright = " << (mpo_lines+i)->X2 << endl << flush;
 //    cout << "C2*C2 - C1*(C3*Yt*Yt - a*a*b*b) = " << C2*C2 - C1*(C3*Yt*Yt - a*a*b*b) << endl << flush;
 //    cout << "C1*(C3*Yt*Yt - a*a*b*b) = " << C1*(C3*Yt*Yt - a*a*b*b) << endl << flush;

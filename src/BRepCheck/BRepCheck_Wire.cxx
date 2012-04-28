@@ -1,13 +1,27 @@
-// File:        BRepCheck_Wire.cxx
-// Created:        Tue Dec 12 17:49:08 1995
-// Author:        Jacques GOUSSARD
-//                <jag@bravox>
-// Modified by dpf, Fri Dec 19 15:31:03 1997 
-//   Taitement de la fermeture en 2d.
+// Created on: 1995-12-12
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+// Modified by dpf, Fri Dec 19 15:31:03 1997 
+//  Processing of closing in 2d.
 //  modified by eap Tue Dec 18 14:14:25 2001 (bug OCC23)
 //   Check self-intersection in case of closed edge
-//
 //  modified by eap Fri Dec 21 17:36:55 2001 (bug OCC35)
 //   Closed2d() added
 
@@ -137,7 +151,7 @@ void BRepCheck_Wire::Minimum()
     myMap.Bind(myShape, thelist);
     BRepCheck_ListOfStatus& lst = myMap(myShape);
 
-    // on verifie que le wire est "connexe" == check that the wire is "connex"
+    // check that the wire is "connex"
     TopExp_Explorer exp(myShape,TopAbs_EDGE);
     Standard_Integer nbedge = 0;
     myMapVE.Clear();
@@ -212,7 +226,7 @@ void BRepCheck_Wire::InContext(const TopoDS_Shape& S)
 
   case TopAbs_FACE:
     {
-      TopoDS_Edge ed1,ed2; // bidon
+      TopoDS_Edge ed1,ed2; 
       if (myGctrl) 
         st = SelfIntersect(TopoDS::Face(S),ed1,ed2,Standard_True);
       if (st != BRepCheck_NoError) break;
@@ -240,7 +254,7 @@ void BRepCheck_Wire::InContext(const TopoDS_Shape& S)
 void BRepCheck_Wire::Blind()
 {
   if (!myBlind) {
-    // rien de plus que dans le minimum
+    // nothing more that the minimum
     myBlind = Standard_True;
   }
 }
@@ -258,12 +272,12 @@ BRepCheck_Status BRepCheck_Wire::Closed(const Standard_Boolean Update)
     return myCstat;
   }
 
-  myCdone = Standard_True; // ce sera fait...
+  myCdone = Standard_True;
 
   BRepCheck_ListIteratorOfListOfStatus itl(myMap(myShape));
   if (itl.Value() != BRepCheck_NoError) {
     myCstat = itl.Value();
-    return myCstat; // deja enregistre
+    return myCstat; // already saved 
   }
 
   myCstat = BRepCheck_NoError;
@@ -583,8 +597,8 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
     while (Index < nbOriNoDegen) {
       ledge.Clear();
       ListOfPassedEdge.Clear();
-      // on cherche les edges qui s`enchainent sur VL si !VL.IsNull 
-      // sinon sur VF.
+      // find edges that make a chain on VL if !VL.IsNull 
+      // otherwise on VF.
       
       Standard_Integer ind;
       if (!VL.IsNull()) {
@@ -633,17 +647,17 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
             TopAbs_Orientation vto = vte.Current().Orientation();
             if (!VL.IsNull()) {
               if (vto == TopAbs_FORWARD && VL.IsSame(vte.Current())) {
-                // Si on travaille en 2d (face non nulle) ou 
-                // si l'edge n'est pas degenere on l'ajoute
+                // If the processing is in 2d (face not null) or 
+                // if the edge is not degenerated it is added
                 if (!F.IsNull() || !BRep_Tool::Degenerated(edg))
                   ledge.Append(edg);
                 break;
               }
             }
-            else { // VF n`est pas nul
+            else { // VF is not null
               if (vto == TopAbs_REVERSED && VF.IsSame(vte.Current())) {
-                // Si on travaille en 2d (face non nulle) ou 
-                // si l'edge n'est pas degenere on l'ajoute
+                //    // If the processing is in 2d (face not null) or 
+                // if the edge is not degenerated it is added
                 if (!F.IsNull() || !BRep_Tool::Degenerated(edg))
                   ledge.Append(edg);
                 break;
@@ -660,11 +674,11 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
             if (Update) {
               BRepCheck::Add(myMap(myShape),theOstat);
             }
-            return theOstat; // on sort
+            return theOstat; // leave
           }
           else {
-            Index--; // parce que apres Index++ et on n`a pas enchaine
-            VL.Nullify(); // on force a enchainer sur VF
+            Index--; // because after Index++ and if there is no chain,
+            VL.Nullify(); // chain on VF is forced
             theEdge = theRef;
             Changedesens = Standard_True;
           }
@@ -678,8 +692,8 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
         }
       }
 
-      // JAG 03/07   else if (nbconnex >= 2 && !F.IsNull())  // On essaie de voir en 2d
-      else if (!F.IsNull()) { // On essaie de voir en 2d
+      // JAG 03/07   else if (nbconnex >= 2 && !F.IsNull())  // Try to see in 2d
+      else if (!F.IsNull()) { // Try to see in 2d
         TopoDS_Vertex pivot;
         if (!VL.IsNull()) {
           pivot = VL;
@@ -710,7 +724,7 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
         return theOstat;
       }
       else if (nbconnex == 1) {
-        // decaler le vertex
+        // offset the vertex
         for (vte.Init(ledge.First(),TopAbs_VERTEX);vte.More(); vte.Next()) {
           TopAbs_Orientation vto = vte.Current().Orientation();
           if (!VL.IsNull()) {
@@ -719,7 +733,7 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
               break;
             }
           }
-          else { // VF n`est pas nul
+          else { // VF is not null
             if (vto == TopAbs_FORWARD) {
               VF = TopoDS::Vertex(vte.Current());
               break;
@@ -745,7 +759,7 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
 	return theOstat;
       }
 
-      // On verifie la fermeture du wire en 2d (pas fait dans Closed())
+      // Check the closure of the wire in 2d (not done in Closed())
       
       TopoDS_Vertex    aVRef;
       Standard_Boolean isCheckClose = Standard_False;
@@ -790,7 +804,7 @@ BRepCheck_Status BRepCheck_Wire::Orientation(const TopoDS_Face& F,
 	  return theOstat;
 	}
       }
-      // Fin controle fermeture 2d
+      // End control closure 2d
 
       Index ++;
     }
@@ -822,8 +836,8 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
   TopTools_IndexedMapOfOrientedShape EMap;
   TopTools_MapOfOrientedShape auxmape;
   //
-  //-- on verifie plus loin avec les bonnes tolerances si on n a 
-  //-- pas un point dans la tolerance d un vertex.
+  //-- check with proper tolerances if there is no 
+  //-- point in the tolerance of a vertex.
   tolint = 1.e-10; 
   HS = new BRepAdaptor_HSurface();
   HS->ChangeSurface().Initialize(F,Standard_False);
@@ -885,6 +899,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
     //
     if(Inter.IsDone()) { 
       Standard_Integer nbp = Inter.NbPoints();
+      //Standard_Integer nbs = Inter.NbSegments();
       //
       for(Standard_Integer p=1;p<=nbp;p++) {
 	const IntRes2d_IntersectionPoint& IP=Inter.Point(p);
@@ -892,15 +907,15 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	const IntRes2d_Transition& Tr2 = IP.TransitionOfSecond();
 	if(   Tr1.PositionOnCurve() == IntRes2d_Middle
 	   || Tr2.PositionOnCurve() == IntRes2d_Middle) { 
-	  //-- Verification des points avec les vraies tolerances (ie Tol en 3d)
-	  //-- Si le point d intersection est dans la tolearnce d un des vertex
-	  //-- on considere que cette intersection est bonne (pas d erreur)
+	  //-- Checking of points with true tolerances (ie Tol in 3d)
+	  //-- If the point of intersection is within the tolearnce of a vertex
+	  //-- this intersection is considered correct (no error)
 	  Standard_Boolean localok = Standard_False;
 	  Standard_Real f,l;
 	  TopLoc_Location L;
 	  const Handle(Geom_Curve) ConS = BRep_Tool::Curve(E1,L,f,l);
 	  if(!ConS.IsNull()) { 
-	    //-- on va tester en 3d. (ParamOnSecond donne le m resultat)
+	    //-- try to test in 3d. (ParamOnSecond gives the same result)
 	    P3d = ConS->Value(IP.ParamOnFirst()); 
 	    P3d.Transform(L.Transformation());
 	    //  Modified by Sergey KHROMOV - Mon Apr 15 12:34:22 2002 Begin
@@ -988,7 +1003,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
       //modified by NIZNHY-PKV Fri Oct 29 10:09:02 2010t
       //
       //-- ************************************************************
-      //-- ******* I n t e r s e c t i o n   C 1   e t   C 2   ********
+      //-- ******* I n t e r s e c t i o n   C 1   and   C 2   ********
       //-- ************************************************************
       Inter.Perform(C1,myDomain1,C2,tabDom[j-1],tolint,tolint);
       //
@@ -1027,9 +1042,9 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	  Tr2 = IP.TransitionOfSecond();
 	  if(   Tr1.PositionOnCurve() == IntRes2d_Middle
 	     || Tr2.PositionOnCurve() == IntRes2d_Middle)   {
-	    //-- Verification des points avec les vraies tolerances (ie Tol en 3d)
-	    //-- Si le point d intersection est dans la tolearnce d un des vertex
-	    //-- on considere que cette intersection est bonne (pas d erreur)
+	    //-- Checking of points with true tolerances (ie Tol in 3d)
+	    //-- If the point of intersection is within the tolerance of a vertex
+	    //-- this intersection is considered correct (no error)
 	    Standard_Boolean localok = Standard_False;  
 	    Standard_Real f1,l1, f2, l2;
 	    TopLoc_Location L, L2;
@@ -1082,10 +1097,10 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 	    }
 	    
 	    //-- --------------------------------------------------------
-	    //-- Verification sur le baillement maximum entre les 2 edges
+	    //-- Check maximum yawn between 2 edges
 	    //--
-	    //-- On verifie la distance des edges a la courbe joignant 
-	    //-- le point d intersection au vertex (s il existe)
+	    //-- Check distance from edges to the curve joining 
+	    //-- the point of intersection with vertex (if exists)
 	    if (localok == Standard_False && !CommonVertices.IsEmpty()) {
 #ifdef DEB	
 	      cout << "\n------------------------------------------------------\n" <<endl;
@@ -1144,7 +1159,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 		localok = Standard_True;
 		Standard_Real tole1 = BRep_Tool::Tolerance(E1);
 		for (k = 2; localok && k < 9; k++)	{ 
-		  Standard_Real u = VParaOnEdge1 + k*du1;  // voyons deja voir si ca marche
+		  Standard_Real u = VParaOnEdge1 + k*du1;  // check if it works
 		  gp_Pnt P1;
 		  //  Modified by Sergey KHROMOV - Mon Apr 15 12:34:22 2002 Begin
 		  if (!ConS.IsNull()) {
@@ -1164,7 +1179,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 		    localok = Standard_False;
 		  }
 		}
-		//-- meme chose pour edge2
+		//-- same for edge2
 		//  Modified by skv - Wed Jul 23 12:22:20 2003 OCC1764 Begin
 		gp_Dir aTmpDir(P3d2.XYZ().Subtracted(VertexLePlusProche.XYZ()));
 		
@@ -1172,7 +1187,7 @@ BRepCheck_Status BRepCheck_Wire::SelfIntersect(const TopoDS_Face& F,
 		//  Modified by skv - Wed Jul 23 12:22:23 2003 OCC1764 End
 		Standard_Real tole2 = BRep_Tool::Tolerance(E2);
 		for (k = 2; localok && k < 9; k++) {
-		  Standard_Real u = VParaOnEdge2 + k*du2;  // voyons deja voir si ca marche
+		  Standard_Real u = VParaOnEdge2 + k*du2;  // check if it works
 		  gp_Pnt        P2;
 		  //  Modified by Sergey KHROMOV - Mon Apr 15 12:34:22 2002 Begin
 		  if (!ConS2.IsNull()) {
@@ -1407,8 +1422,8 @@ static void Propagate(const TopTools_IndexedDataMapOfShapeListOfShape& mapVE,
   if (mapE.Contains(edg)) {
     return;
   }
-  mapE.Add(edg); // attention, si oriented == Standard_True, edg doit
-                 // etre FORWARD ou REVERSED. Ce n`est pas verifie.
+  mapE.Add(edg); // attention, if oriented == Standard_True, edge should
+                 // be FORWARD or REVERSED. It is not checked.
                  // =============
                  // attention, if oriented == Standard_True, <edg> must
                  // be FORWARD or REVERSED. That is not checked.
@@ -1416,7 +1431,7 @@ static void Propagate(const TopTools_IndexedDataMapOfShapeListOfShape& mapVE,
   TopExp_Explorer ex;
   for (ex.Init(edg,TopAbs_VERTEX); ex.More(); ex.Next()) {
     const TopoDS_Vertex& vtx = TopoDS::Vertex(ex.Current());
-    // debug jag sur vertex
+    // debug on vertex
     Standard_Integer indv = mapVE.FindIndex(vtx);
     if (indv != 0) {
       for (TopTools_ListIteratorOfListOfShape itl(mapVE(indv)); itl.More(); itl.Next()) {
@@ -1482,12 +1497,12 @@ static TopAbs_Orientation GetOrientation(const TopTools_MapOfShape& mapE,
   Standard_Real tol = Max(ures,vres);
   if(tol<=0.0) { 
 #ifdef DEB 
-    //-- lbr le 29 jan 98 
-    cout<<"BRepCheck_Wire : UResolution et VResolution = 0.0 (Face trop petite ?)"<<endl;cout.flush();
+
+    cout<<"BRepCheck_Wire : UResolution and VResolution = 0.0 (Face too small ?)"<<endl;cout.flush();
 #endif
   }
   else {
-    tol += tol; //pour YFR.
+    tol += tol; 
   }
   //
   Handle(Geom2d_Curve) C2d = BRep_Tool::CurveOnSurface(Edg, F, f, l);
@@ -1540,7 +1555,7 @@ static TopAbs_Orientation GetOrientation(const TopTools_MapOfShape& mapE,
     angle = DerRef.Angle( Der );
     angle *= -1.;
     if (angle < 0.)
-      angle += 2.*PI;
+      angle += 2.*M_PI;
     
     if (F.Orientation() == TopAbs_FORWARD) { 
       if (angle < MinAngle) {
@@ -1556,14 +1571,14 @@ static TopAbs_Orientation GetOrientation(const TopTools_MapOfShape& mapE,
     }
   }//end of for
   //
-  // Mise a jour ledge
+  // Update edge
   if (imin == 0)
     if (L.Extent() == 1) {
       Standard_Boolean onjette = 0; //all right
       Evois = TopoDS::Edge(L.First());
       if (dist2d > tol) {
 #ifdef DEB 
-	cout<<"BRepCheckWire : controle fermeture en 2d --> faux"<<endl;cout.flush();
+	cout<<"BRepCheckWire : control closure in 2d --> false"<<endl;cout.flush();
 #endif
 	if(Evois.IsNull() || BRep_Tool::Degenerated(Edg) ||
 	   BRep_Tool::Degenerated(Evois)){
@@ -1596,7 +1611,7 @@ static TopAbs_Orientation GetOrientation(const TopTools_MapOfShape& mapE,
 	    }
 #ifdef DEB
 	    else
-	      cout<<"controle fermeture en 3d --> ok"<<endl;cout.flush();
+	      cout<<"control closure in 3d --> ok"<<endl;cout.flush();
 #endif
 	  }
 	}
@@ -1606,7 +1621,7 @@ static TopAbs_Orientation GetOrientation(const TopTools_MapOfShape& mapE,
       }
       if(onjette) {
 #ifdef DEB
-	cout<<"controle fermeture en 3d --> faux"<<endl;cout.flush();
+	cout<<"control closure in 3d --> false"<<endl;cout.flush();
 #endif
 	L.Clear();
       }

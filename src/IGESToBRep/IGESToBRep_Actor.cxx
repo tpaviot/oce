@@ -1,27 +1,45 @@
-#include <Standard_ErrorHandler.hxx>
-#include <IGESToBRep_Actor.ixx>
-#include <Standard_Failure.hxx>
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
+#include <IGESToBRep_Actor.ixx>
 #include <IGESToBRep.hxx>
 #include <IGESData_IGESEntity.hxx>
 #include <IGESData_IGESModel.hxx>
 #include <IGESData_GlobalSection.hxx>
-
 #include <IGESToBRep_CurveAndSurface.hxx>
+
+#include <BRepLib.hxx>
+
+#include <Standard_Failure.hxx>
+#include <Standard_ErrorHandler.hxx>
+#include <ShapeExtend_Explorer.hxx>
+#include <ShapeFix_ShapeTolerance.hxx>
 
 #include <Interface_Macros.hxx>
 #include <Interface_Static.hxx>
 
-#include <TopoDS_Shape.hxx>
+#include <Message_ProgressSentry.hxx>
 
+#include <TopoDS_Shape.hxx>
 #include <TransferBRep.hxx>
 #include <TransferBRep_ShapeBinder.hxx>
 
 #include <XSAlgo.hxx>
 #include <XSAlgo_AlgoContainer.hxx>
-#include <ShapeFix_ShapeTolerance.hxx>
-#include <BRepLib.hxx>
-#include <ShapeExtend_Explorer.hxx>
 
 //=======================================================================
 //function : IGESToBRep_Actor
@@ -144,6 +162,10 @@ Handle(Transfer_Binder) IGESToBRep_Actor::Transfer
       (typnum == 402 && (fornum == 1 || fornum == 7|| 
                          fornum == 14 || fornum == 15)) || 
       (typnum == 408) || (typnum == 308)) {
+
+    // Start progress scope (no need to check if progress exists -- it is safe)
+    Message_ProgressSentry aPSentry(TP->GetProgress(), "Transfer stage", 0, 2, 1);
+
     XSAlgo::AlgoContainer()->PrepareForTransfer();
     IGESToBRep_CurveAndSurface CAS;
     CAS.SetModel(mymodel);
@@ -175,16 +197,19 @@ Handle(Transfer_Binder) IGESToBRep_Actor::Transfer
 	shape.Nullify();
       }
     }
+
+    // Switch to fix stage.
+    aPSentry.Next();
     
     // fixing shape
-//    shape =  XSAlgo::AlgoContainer()->PerformFixShape( shape, TP, theeps, CAS.GetMaxTol() );
     Handle(Standard_Transient) info;
     shape = XSAlgo::AlgoContainer()->ProcessShape( shape, theeps, CAS.GetMaxTol(), 
                                                    "read.iges.resource.name", 
-                                                   "read.iges.sequence", info );
+                                                   "read.iges.sequence", info,
+                                                   TP->GetProgress() );
     XSAlgo::AlgoContainer()->MergeTransferInfo(TP, info, nbTPitems);
   }
-// if (!shape.IsNull()) TransferBRep::SameParameter (shape,Standard_False,eps);
+
   ShapeExtend_Explorer SBE;
   if (SBE.ShapeType(shape,Standard_True) != TopAbs_SHAPE) {
     if (!shape.IsNull()) {

@@ -1,4 +1,21 @@
-// File GccAna_Circ2d3Tan_3.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ElCLib.hxx>
 #include <GccAna_Circ2d3Tan.jxx>
@@ -12,13 +29,13 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Creation d un cercle tangent a trois droites.                        +
-//   On cree les Bissectrices a Qualified1 et Qualified2 et               +
-//           les Bissectrices a Qualified1 et Qualified3.                 +
-//   On intersecte les bissectrices ainsi calculees ==> Points de centre. +
-//   On Choisit le point de centre qui correspond aux qualifieurs et on   +
-//   construit la solution de rayon egal a la distance entre le point de  +
-//   centre choisi et la droite Qualified1.                               +
+//   Creation of a circle tangent to three straight lines.                +
+//   Create Bissectrices at Qualified1 and Qualified2 and                 +
+//          Bissectrices at Qualified1 and Qualified3.                    +
+//   Intersect bissectrices calculated in this way ==> Center points      +
+//   Choose the center point that corresponds to qualifiers and           +
+//   construct the solution of radius equal to the distance between the   +
+//   chosen center point and straight line Qualified1.                               +
 //=========================================================================
 
 GccAna_Circ2d3Tan::
@@ -32,7 +49,7 @@ GccAna_Circ2d3Tan::
                      ):
 
 //=========================================================================
-//   Initialisation des champs.                                           +
+//   Initialization of fields.                                           +
 //=========================================================================
 
    cirsol(1,4)     ,
@@ -70,7 +87,7 @@ GccAna_Circ2d3Tan::
    }
 
 //=========================================================================
-//   Traitement.                                                          +
+//   Processing.                                                          +
 //=========================================================================
 
    gp_Lin2d L1(Qualified1.Qualified());

@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
  
      FONCTION :
@@ -147,7 +164,7 @@ void V3d_DirectionalLight::Symbol (const Handle(Graphic3d_Group)& gsymbol, const
 //  A sphere is drawn
   V3d::CircleInPlane(gsymbol,Xi,Yi,Zi,VX,VY,VZ,Rayon/40.);
   for( j=1 ; j<=3 ; j++ ) {
-    Beta = j * Standard_PI/4.;
+    Beta = j * M_PI / 4.;
     CosBeta = Cos(Beta);
     SinBeta = Sin(Beta);
     Coef = 1. - CosBeta;
@@ -178,7 +195,7 @@ void V3d_DirectionalLight::Symbol (const Handle(Graphic3d_Group)& gsymbol, const
   Line(0).SetCoord(Xi,Yi,Zi);
   Line(1).SetCoord(X,Y,Z);
   gsymbol->Polyline(Line);
-  V3d::ArrowOfRadius(gsymbol,X,Y,Z,DX,DY,DZ,Standard_PI/15.,Rayon/20.);
+  V3d::ArrowOfRadius(gsymbol, X, Y, Z, DX, DY, DZ, M_PI / 15., Rayon / 20.);
 }
 
 void V3d_DirectionalLight::Display( const Handle(V3d_View)& aView,
@@ -228,7 +245,6 @@ void V3d_DirectionalLight::Display( const Handle(V3d_View)& aView,
 
 //Display of the position of the light.
 
-  glight->SetPickId(1);
   this->Color(Quantity_TOC_RGB,R1,G1,B1);
   Quantity_Color Col1(R1,G1,B1,Quantity_TOC_RGB);
   Handle(Graphic3d_AspectLine3d) Asp1 = new Graphic3d_AspectLine3d();
@@ -242,7 +258,6 @@ void V3d_DirectionalLight::Display( const Handle(V3d_View)& aView,
     
     Rayon = this->Radius(); 
     aView->Proj(VX,VY,VZ);
-    gsphere->SetPickId(2);
     V3d::CircleInPlane(gsphere,X0,Y0,Z0,VX,VY,VZ,Rayon);
     
 //Display of the meridian

@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_EdgesIntersector.cxx
-// Created:	Fri Oct  7 14:16:31 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@bravox>
+// Created on: 1994-10-07
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef DRAW
 #include <TestTopOpeDraw_TTOT.hxx>
@@ -279,6 +295,7 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
 {
   mysp2d.Clear();
   myip2d = 1; mynp2d = 0;
+
   myEdge1 = TopoDS::Edge(E1);
   myEdge2 = TopoDS::Edge(E2);
   
@@ -353,7 +370,16 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       if (apex) {
 	TopoDS_Vertex vf,vl; TopExp::Vertices(myEdge1,vf,vl);
 	gp_Pnt ptf = BRep_Tool::Pnt(vf); Standard_Real df = pt2.Distance(ptf); 
+	gp_Pnt ptl = BRep_Tool::Pnt(vl);
+#ifdef DEB
+        Standard_Real dl =
+#endif
+                 pt2.Distance(ptl); 
 	Standard_Real tolf = BRep_Tool::Tolerance(vf);
+#ifdef DEB
+        Standard_Real toll =
+#endif
+                   BRep_Tool::Tolerance(vl);
 	Standard_Boolean onf = (df < tolf);
 	TopoDS_Vertex v1 = onf ? vf : vl;
 	TopTools_IndexedDataMapOfShapeListOfShape mapVE; TopExp::MapShapesAndAncestors(myFace1,TopAbs_VERTEX,TopAbs_EDGE,mapVE);
@@ -531,6 +557,9 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       Standard_Boolean isvertex11 = isvertex1 && !isvertex12;
 
       Standard_Boolean T1INT = (T1.Orientation(TopAbs_IN) == TopAbs_INTERNAL);
+#ifdef DEB
+      Standard_Boolean T1EXT = (T1.Orientation(TopAbs_IN) == TopAbs_EXTERNAL);
+#endif
       if (T1INT && isvertex2 && !isvertex1) {
 	const TopoDS_Vertex& V2 = P2D.Vertex(2);	
 	TopOpeBRepDS_Transition newT; Standard_Boolean computed = ::EdgesIntersector_checkT1D(myEdge1,myEdge2,V2,newT);
@@ -754,6 +783,7 @@ Standard_Boolean TopOpeBRep_EdgesIntersector::ReduceSegment(TopOpeBRep_Point2d& 
     psb.SetKeep(Standard_False);
     
     TopOpeBRepDS_Config cpsa = psa.EdgesConfig();
+
     Pn.SetEdgesConfig(cpsa);
     
     Standard_Boolean isvpsa1 = psa.IsVertex(1);if (isvpsa1) Pn.SetVertex(1,psa.Vertex(1));

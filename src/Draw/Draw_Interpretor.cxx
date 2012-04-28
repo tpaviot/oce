@@ -1,7 +1,23 @@
-// File:	Draw_Interpretor.cxx
-// Created:	Thu Feb 23 17:53:09 1995
-// Author:	Remi LEQUETTE
-//		<rle@bravox>
+// Created on: 1995-02-23
+// Created by: Remi LEQUETTE
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Draw_Interpretor.ixx>
@@ -152,14 +168,14 @@ static void CommandDelete (ClientData clientData)
 Draw_Interpretor::Draw_Interpretor() :
   isAllocated(Standard_False)
 {
-// On ne cree pas tout de suite l'interpreteur tcl car s'il est detenu
-// par une variable globale il est cree et ecrase avant le main().
+// The tcl interpreter is not created immediately as it is kept 
+// by a global variable and created and deleted before the main().
   myInterp  = NULL;
 }
 
 //=======================================================================
 //function : Init
-//purpose  : Il faut appeler cette fonction
+//purpose  : It is necessary to call this function
 //=======================================================================
 
 void Draw_Interpretor::Init()
@@ -261,6 +277,8 @@ void Draw_Interpretor::Add(const Standard_CString n,
   a_string[jj] = '\0' ;
  
   Tcl_SetVar2(myInterp,"Draw_Files",pN,a_string,TCL_GLOBAL_ONLY);
+
+  delete [] a_string;
 
 }
 

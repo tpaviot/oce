@@ -37,9 +37,6 @@
 #ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Graphic3d_AspectMarker3d;
 class Quantity_Color;
 class TColStd_HArray1OfByte;
@@ -71,8 +68,6 @@ public:
   Standard_EXPORT     void SetScale(const Standard_Real aScale) ;
   
   Standard_EXPORT     Handle_Graphic3d_AspectMarker3d Aspect() const;
-  
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
   //! Returns marker's texture size. <br>
   Standard_EXPORT     void GetTextureSize(Standard_Integer& AWidth,Standard_Integer& AHeight) ;
   //! Returns marker's texture. <br>

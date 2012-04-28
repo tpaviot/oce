@@ -1,7 +1,23 @@
-// File:	BRepFeat_MakePipe.cxx
-// Created:	Tue Sep  3 11:18:26 1996
-// Author:	Jacques GOUSSARD
-//		<jag@mobilox.lyon.matra-dtv.fr>
+// Created on: 1996-09-03
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFeat_MakePipe.ixx>
@@ -124,7 +140,7 @@ void BRepFeat_MakePipe::Init(const TopoDS_Shape& Sbase,
 
 //=======================================================================
 //function : Add
-//purpose  : add faces de collage
+//purpose  : add faces of gluing
 //=======================================================================
 
 void BRepFeat_MakePipe::Add(const TopoDS_Edge& E,
@@ -238,7 +254,7 @@ void BRepFeat_MakePipe::Perform()
 
 //=======================================================================
 //function : Perform
-//purpose  : jusqu'au shape Until
+//purpose  : till shape Until
 //=======================================================================
 
 void BRepFeat_MakePipe::Perform(const TopoDS_Shape& Until)
@@ -282,7 +298,7 @@ void BRepFeat_MakePipe::Perform(const TopoDS_Shape& Until)
 
 //=======================================================================
 //function : Perform
-//purpose  : entre From et Until
+//purpose  : between From and Until
 //=======================================================================
 
 void BRepFeat_MakePipe::Perform(const TopoDS_Shape& From,
@@ -343,7 +359,7 @@ void BRepFeat_MakePipe::Perform(const TopoDS_Shape& From,
 
 //=======================================================================
 //function : Curves
-//purpose  : courbes paralleles au wire-generarice du pipe
+//purpose  : curves parallel to the generating wire of the pipe
 //=======================================================================
 
 void BRepFeat_MakePipe::Curves(TColGeom_SequenceOfCurve& scur)
@@ -353,7 +369,7 @@ void BRepFeat_MakePipe::Curves(TColGeom_SequenceOfCurve& scur)
 
 //=======================================================================
 //function : BarycCurve
-//purpose  : passe par le centre des masses
+//purpose  : pass through the center of mass
 //=======================================================================
 
 Handle(Geom_Curve) BRepFeat_MakePipe::BarycCurve()
@@ -362,11 +378,65 @@ Handle(Geom_Curve) BRepFeat_MakePipe::BarycCurve()
 }
 
 
+//=======================================================================
+//function : SetGluedFaces
+//purpose  : management of faces of gluing and sliding  
+//=======================================================================
+
+static void SetGluedFaces(const TopoDS_Face& theSkface,
+			  const TopoDS_Shape& theSbase,
+			  const TopoDS_Shape& thePbase,
+			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
+			  LocOpe_Pipe& thePipe,
+			  TopTools_DataMapOfShapeShape& theMap)
+{
+  TopExp_Explorer exp;
+  if (!theSkface.IsNull() && thePbase.ShapeType() == TopAbs_FACE) {
+    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
+      if (exp.Current().IsSame(theSkface)) {
+	theMap.Bind(thePbase,theSkface);
+	break;
+      }
+    }
+  }
+  else {
+    TopExp_Explorer exp2;
+    for (exp.Init(thePbase,TopAbs_FACE);exp.More();exp.Next()) {
+      const TopoDS_Face& fac = TopoDS::Face(exp.Current());
+      for (exp2.Init(theSbase,TopAbs_FACE);exp2.More();exp2.Next()) {
+	if (exp2.Current().IsSame(fac)) {
+	  theMap.Bind(fac,fac);
+	  break;
+	}
+      }
+    }
+  }
+
+  // Sliding
+  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(theSlmap);
+  if(!theSlmap.IsEmpty()) {
+    for (; itm.More(); itm.Next()) {
+      const TopoDS_Face& fac = TopoDS::Face(itm.Key());
+      const TopTools_ListOfShape& ledg = itm.Value();
+      TopTools_ListIteratorOfListOfShape it;
+      for (it.Initialize(ledg); it.More(); it.Next()) {
+	const TopTools_ListOfShape& gfac = thePipe.Shapes(it.Value());
+	if (gfac.Extent() != 1) {
+#ifdef DEB
+	  Standard_Boolean trc = BRepFeat_GettraceFEAT();
+	  if (trc) cout << " BRepFeat_MakeDPipe : Pb SetGluedFace" << endl;
+#endif
+	}
+	theMap.Bind(gfac.First(),fac);
+      }
+    }
+  }
+}
 
 
 //=======================================================================
 //function : MajMap
-//purpose  : gestion de descendants
+//purpose  : management of descendants
 //=======================================================================
 
 static void MajMap(const TopoDS_Shape& theB,

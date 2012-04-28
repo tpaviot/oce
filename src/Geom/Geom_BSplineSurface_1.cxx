@@ -1,11 +1,24 @@
-// File:	Geom_BSplineSurface_1.cxx
-// Created:	Tue Mar  9 19:45:52 1993
-// Author:	JCV
-//		<fid@phylox>
-// Copyright:	Matra Datavision 1993
-
-// File Geom_BSplineSurface.cxx jcv - Juillet 1991
+// Created on: 1993-03-09
+// Created by: JCV
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 // xab : 30-Mar-95 introduced cache mechanism for surfaces
 // xab : 21-Jun-95 in remove knots sync size of weights and poles
 // pmn : 28-Jun-96 Distinction entre la continuite en U et V (bug PRO4625)
@@ -14,7 +27,6 @@
 // pmn : 03-Feb-97 Prise en compte de la periode dans Locate(U/V) (PRO6963)
 //                 + bon appel a LocateParameter (PRO6973).
 // RBD : 15/10/98 ; Le cache est desormais defini sur [-1,1] (pro15537).
-//
 
 #define No_Standard_OutOfRange
 #define No_Standard_DimensionError
@@ -1443,25 +1455,26 @@ void Geom_BSplineSurface::LocateU
   const TColStd_Array1OfReal & Knots = TheKnots->Array1();
   Standard_Real UFirst = Knots (1);
   Standard_Real ULast  = Knots (Knots.Length());
-  if (Abs (NewU - UFirst) <= Abs(ParametricTolerance)) { 
+  Standard_Real PParametricTolerance = Abs(ParametricTolerance);
+  if (Abs (NewU - UFirst) <= PParametricTolerance) { 
     I1 = I2 = 1; 
   }
-  else if (Abs (NewU - ULast) <= Abs(ParametricTolerance)) { 
+  else if (Abs (NewU - ULast) <= PParametricTolerance) { 
     I1 = I2 = Knots.Length();
   }
-  else if (NewU < UFirst - Abs(ParametricTolerance)) {
+  else if (NewU < UFirst) {
     I2 = 1;
     I1 = 0;
   }
-  else if (NewU > ULast + Abs(ParametricTolerance)) {
+  else if (NewU > ULast) {
     I1 = Knots.Length();
     I2 = I1 + 1;
   }
   else {
     I1 = 1;
     BSplCLib::Hunt (Knots, NewU, I1);
-    while ( Abs( Knots(I1+1) - NewU) <= Abs(ParametricTolerance)) I1++;
-    if ( Abs( Knots(I1) - NewU) <= Abs(ParametricTolerance)) {
+    while ( Abs( Knots(I1+1) - NewU) <= PParametricTolerance) I1++;
+    if ( Abs( Knots(I1) - NewU) <= PParametricTolerance) {
       I2 = I1;
     }
     else {
@@ -1492,23 +1505,24 @@ void Geom_BSplineSurface::LocateV
   const TColStd_Array1OfReal & Knots = TheKnots->Array1();
   Standard_Real VFirst = Knots (1);
   Standard_Real VLast  = Knots (Knots.Length());
-  if (Abs (NewV - VFirst) <= Abs(ParametricTolerance)) { I1 = I2 = 1; }
-  else if (Abs (NewV - VLast) <= Abs(ParametricTolerance)) { 
+  Standard_Real PParametricTolerance = Abs(ParametricTolerance);
+  if (Abs (NewV - VFirst) <= PParametricTolerance) { I1 = I2 = 1; }
+  else if (Abs (NewV - VLast) <= PParametricTolerance) { 
     I1 = I2 = Knots.Length();
   }
-  else if (NewV < VFirst - Abs(ParametricTolerance)) {
+  else if (NewV < VFirst - PParametricTolerance) {
     I2 = 1;
     I1 = 0;
   }
-  else if (NewV > VLast + Abs(ParametricTolerance)) {
+  else if (NewV > VLast + PParametricTolerance) {
     I1 = Knots.Length();
     I2 = I1 + 1;
   }
   else {
     I1 = 1;
     BSplCLib::Hunt (Knots, NewV, I1);
-    while ( Abs( Knots(I1+1) - NewV) <= Abs(ParametricTolerance)) I1++;
-    if ( Abs( Knots(I1) - NewV) <= Abs(ParametricTolerance)) {
+    while ( Abs( Knots(I1+1) - NewV) <= PParametricTolerance) I1++;
+    if ( Abs( Knots(I1) - NewV) <= PParametricTolerance) {
       I2 = I1;
     }
     else {

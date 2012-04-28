@@ -24,10 +24,10 @@ class BOPTools_DSFiller;
 
 
 
-//! File:	BRepAlgoAPI_Cut.cdl <br>
-//! Created:	Thu Oct 14 18:27:02 1993 <br>
-//! Author:	Remi LEQUETTE <br>
-//!		<rle@phylox> <br>//!  The class Cut provides a Boolean <br>
+//! Created on: 1993-10-14 <br>
+//! Created by: Remi LEQUETTE <br>
+//! Copyright (c) 1993-1999 Matra Datavision <br>
+//! Copyright (c) 1999-2012 OPEN CASCADE SAS <br>//!  The class Cut provides a Boolean <br>
 //! cut operation on a pair of arguments (Boolean Subtraction). <br>
 //! The class Cut provides a framework for: <br>
 //!   -      Defining the construction of a cut shape <br>

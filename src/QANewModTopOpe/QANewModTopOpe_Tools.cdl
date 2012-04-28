@@ -1,0 +1,86 @@
+-- Created on: 2003-05-06
+-- Created by: Michael KLOKOV
+-- Copyright (c) 2003-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
+
+
+class Tools from QANewModTopOpe
+uses
+    Edge from TopoDS,
+    Shape from TopoDS,
+    State from TopAbs,
+    PDSFiller from BOPTools,
+    ListOfShape from TopTools,
+    IndexedDataMapOfShapeListOfShape from TopTools
+
+is
+
+    NbPoints(myclass; theDSFiller: PDSFiller from BOPTools)
+    	returns Integer from Standard;
+
+    NewVertex(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	       theIndex   : Integer from Standard)
+    	returns Shape from TopoDS;
+
+    HasSameDomain(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	    	   theFace    : Shape from TopoDS)
+    	returns Boolean from Standard;
+    
+    SameDomain(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	    	theFace    : Shape from TopoDS;
+    	    	    	theResultList: out ListOfShape from TopTools);
+
+    IsSplit(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	     theEdge    : Shape from TopoDS;
+    	    	     theState   : State from TopAbs)
+    	returns Boolean from Standard;
+	---Warning: This method could be called only after boolean operation,
+	---         arguments of which was solids or compounds of solids.
+	---
+
+    Splits(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	    theEdge    : Shape from TopoDS;
+    	    	    theState   : State from TopAbs;
+    	    	    theResultList: out ListOfShape from TopTools);
+	---Warning: This method could be called only after boolean operation,
+	---         arguments of which was solids or compounds of solids.
+	---
+
+    SplitE(myclass; theEdge  : Edge from TopoDS;
+    	    	    theSplits: out ListOfShape from TopTools)
+    	returns Boolean from Standard;
+
+    EdgeCurveAncestors(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	    	    	theEdge    : Shape from TopoDS;
+				theFace1   : out Shape from TopoDS;
+				theFace2   : out Shape from TopoDS)
+    	returns Boolean from Standard;
+    
+    EdgeSectionAncestors(myclass; theDSFiller: PDSFiller from BOPTools;
+    	    	    	    	  theEdge    : Shape from TopoDS;
+    	    	    	    	  LF1,LF2    : out ListOfShape from TopTools;
+				  LE1,LE2 : out ListOfShape from TopTools)
+    	returns Boolean from Standard;
+
+    BoolOpe(myclass; theFace1: Shape from TopoDS;
+    	    	     theFace2: Shape from TopoDS;
+		     IsCommonFound: out Boolean from Standard;
+    	    	     theHistoryMap: out IndexedDataMapOfShapeListOfShape from TopTools)
+    	returns Boolean from Standard;
+
+end Tools from QANewModTopOpe;

@@ -109,19 +109,10 @@ class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
 class Graphic3d_Vertex;
 class Graphic3d_Array1OfVertex;
-class Graphic3d_Vector;
-class Graphic3d_Array1OfVertexN;
-class Graphic3d_Array1OfVertexNT;
 class TColStd_Array1OfInteger;
 class Graphic3d_Array1OfVertexC;
-class Graphic3d_Array2OfVertex;
-class Graphic3d_Array2OfVertexN;
-class Graphic3d_Array2OfVertexNT;
-class Aspect_Array1OfEdge;
-class Graphic3d_Array1OfVertexNC;
 class TCollection_ExtendedString;
 class Graphic3d_ArrayOfPrimitives;
-class TColStd_Array1OfReal;
 
 
 //! This class allows the definition of groups <br>
@@ -186,19 +177,6 @@ public:
   //! Sets the coordinates of the boundary box of the <br>
 //!      group <me>. <br>
   Standard_EXPORT     void SetMinMaxValues(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real ZMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real ZMax) ;
-  //! Returns the pick identifier of the group <me>. <br>
-//!  Category: Methods to manage the pick identifier <br>
-//!  Warning: Returns 0 if the pick identifier is not defined. <br>
-  Standard_EXPORT     Standard_Integer PickId() const;
-  //! Removes the pick identifier of the group <me>. <br>
-//!  Category: Methods to manage the pick identifier <br>
-//!  Warning: Now the Pick Identifier is null. <br>
-  Standard_EXPORT     void RemovePickId() ;
-  //! Places a pick identifier in the group <me>. <br>
-//!  Category: Methods to manage the pick identifier <br>
-//!  Warning: A Pick Identifier is an integer greater than zero. <br>
-//!     Raises PickIdDefinitionError if <Id> is a negative value. <br>
-  Standard_EXPORT     void SetPickId(const Standard_Integer Id) ;
   //! Creates a marker in position <APoint> which will be drawn <br>
 //!      with the current attribute (AspectMarker). <br>
   Standard_EXPORT     void Marker(const Graphic3d_Vertex& APoint,const Standard_Boolean EvalMinMax = Standard_True) ;
@@ -209,70 +187,6 @@ public:
 //!      using the current fill attributes (AspectFillArea3d)) <br>
 //!      The first and last points are not duplicates. <br>
   Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      The normal to the polygon is defined normalised. <br>
-  Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_Vector& Normal,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      The normal is defined and normalised for each vertex. <br>
-  Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      The normal is defined for each vertex. <br>
-//!      The normal to the polygon is defined normalised. <br>
-  Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_Vector& Normal,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicated. <br>
-//!      The normal is defined and normalised for each vertex. <br>
-//!          The texture coordinate is defined for each vertex. <br>
-  Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertexNT& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a face with holes. <br>
-//!      The face is described by the total number <br>
-//!      of vertices on the external contour and around the holes, <br>
-//!      and by the list of vertices. <br>
-//!      The face will be drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      Bounds : total number of interior and exterior vertices <br>
-//!      ListVertex : a list of the interior and exterior vertices <br>
-  Standard_EXPORT     void Polygon(const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a face with holes. <br>
-//!      The face is described by the total number <br>
-//!      of vertices on the external contour and around the holes, <br>
-//!      and by the list of vertices. <br>
-//!      The face will be drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      The normal to the polygon is normalised. <br>
-//!      Bounds : total number of interior and exterior vertices <br>
-//!      ListVertex : a list of the interior and exterior vertices <br>
-  Standard_EXPORT     void Polygon(const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_Vector& Normal,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a face with holes. <br>
-//!      The face is described by the total number <br>
-//!      of vertices on the external contour and around the holes, <br>
-//!      and by the list of vertices. <br>
-//!      The face will be drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      Bounds : total number of interior and exterior vertices <br>
-//!      ListVertex : a list of the interior and exterior vertices <br>
-  Standard_EXPORT     void Polygon(const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a face with holes. <br>
-//!      The face is described by the total number <br>
-//!      of vertices on the external contour and around the holes, <br>
-//!      and by the list of vertices. <br>
-//!      The face will be drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-//!      The normal to the polygon is normalised. <br>
-//!      Bounds : total number of interior and exterior vertices <br>
-//!      ListVertex : a list of the interior and exterior vertices <br>
-  Standard_EXPORT     void Polygon(const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_Vector& Normal,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Links up points to create a set of face drawn <br>
 //!      using the current fill attributes (AspectFillArea3d)) <br>
 //!      The first and last points are not duplicates. <br>
@@ -288,76 +202,6 @@ public:
 //!      except for the colour which is defined <br>
 //!      for each vertex. <br>
   Standard_EXPORT     void Polyline(const Graphic3d_Array1OfVertexC& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrilaterals from a list of <br>
-//!      points, such that their vertices are: <br>
-//!      Ki,j; Ki,j+1; Ki+1,j+1; Ki+1,j. <br>
-//!      The quadrilaterals will be drawn according to the <br>
-//!      current attributes (AspectFillArea3d). <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points. <br>
-  Standard_EXPORT     void QuadrangleMesh(const Graphic3d_Array2OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrilaterals from a list of <br>
-//!      points, such that their vertices are: <br>
-//!      Ki,j; Ki,j+1; Ki+1,j+1; Ki+1,j. <br>
-//!      The quadrilaterals will be drawn according to the <br>
-//!      current attributes (AspectFillArea3d). <br>
-//!      For each vertex the normal is given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points. <br>
-  Standard_EXPORT     void QuadrangleMesh(const Graphic3d_Array2OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrilaterals from a list of <br>
-//!      points, such that their vertices are: <br>
-//!      Ki,j; Ki,j+1; Ki+1,j+1; Ki+1,j. <br>
-//!      The quadrilaterals will be drawn according to the <br>
-//!      current attributes (AspectFillArea3d). <br>
-//!      For each vertex the normal is given. <br>
-//!      For each vertex a texture coordinate is given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points. <br>
-  Standard_EXPORT     void QuadrangleMesh(const Graphic3d_Array2OfVertexNT& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points or if <ListEdge> contains <br>
-//!      less than four edges. <br>
-  Standard_EXPORT     void QuadrangleSet(const Graphic3d_Array1OfVertex& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal is given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points or if <ListEdge> contains <br>
-//!      less than four edges. <br>
-  Standard_EXPORT     void QuadrangleSet(const Graphic3d_Array1OfVertexN& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal is given. <br>
-//!      For each vertex a texture coordinate is given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points or if <ListEdge> contains <br>
-//!      less than four edges. <br>
-  Standard_EXPORT     void QuadrangleSet(const Graphic3d_Array1OfVertexNT& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the color is given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points or if <ListEdge> contains <br>
-//!      less than four edges. <br>
-  Standard_EXPORT     void QuadrangleSet(const Graphic3d_Array1OfVertexC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of quadrangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal and the color are given. <br>
-//!  Category: Methods to create Quadrangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than four points or if <ListEdge> contains <br>
-//!      less than four edges. <br>
-  Standard_EXPORT     void QuadrangleSet(const Graphic3d_Array1OfVertexNC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Creates the string <AText> at position <APoint>. <br>
 //!      The 3D point of attachment is projected. The text is <br>
 //!      written in the plane of projection. <br>
@@ -408,73 +252,6 @@ public:
 //!      AHta    : HTA_LEFT <br>
 //!      AVta    : VTA_BOTTOM <br>
   Standard_EXPORT     void Text(const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates triangles from an array of points such that <br>
-//!      the Kth triangle contains the vertices K, K+1, K+2. <br>
-//!      The triangle will be drawn using the current fill <br>
-//!      attributes (AspectFillArea3d) <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points. <br>
-  Standard_EXPORT     void TriangleMesh(const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates triangles from an array of points such that <br>
-//!      the Kth triangle contains the vertices K, K+1, K+2. <br>
-//!      The triangle will be drawn using the current fill <br>
-//!      attributes (AspectFillArea3d) <br>
-//!      The normal is given for each vertex. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points. <br>
-  Standard_EXPORT     void TriangleMesh(const Graphic3d_Array1OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates triangles from an array of points such that <br>
-//!      the Kth triangle contains the vertices K, K+1, K+2. <br>
-//!      The triangle will be drawn using the current fill <br>
-//!      attributes (AspectFillArea3d) <br>
-//!      The normal is given for each vertex. <br>
-//!      A texture coordinate is given for each vertex. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points. <br>
-  Standard_EXPORT     void TriangleMesh(const Graphic3d_Array1OfVertexNT& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of triangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points or if <ListEdge> contains <br>
-//!      less than three edges. <br>
-  Standard_EXPORT     void TriangleSet(const Graphic3d_Array1OfVertex& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of triangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal is given. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points or if <ListEdge> contains <br>
-//!      less than three edges. <br>
-  Standard_EXPORT     void TriangleSet(const Graphic3d_Array1OfVertexN& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of triangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal is given. <br>
-//!      For each vertex a texture coordinate is given. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points or if <ListEdge> contains <br>
-//!      less than three edges. <br>
-  Standard_EXPORT     void TriangleSet(const Graphic3d_Array1OfVertexNT& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of triangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the color is given. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points or if <ListEdge> contains <br>
-//!      less than three edges. <br>
-  Standard_EXPORT     void TriangleSet(const Graphic3d_Array1OfVertexC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a group of triangles defined by a table of <br>
-//!      vertices and a table of edges, visible or not. <br>
-//!      For each vertex the normal and the color are given. <br>
-//!  Category: Methods to create Triangle <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than three points or if <ListEdge> contains <br>
-//!      less than three edges. <br>
-  Standard_EXPORT     void TriangleSet(const Graphic3d_Array1OfVertexNC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Adds an array of primitives for display <br>
   Standard_EXPORT     void AddPrimitiveArray(const Handle(Graphic3d_ArrayOfPrimitives)& elem,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Remove the array of primitives of rank <aRank> <br>
@@ -517,28 +294,10 @@ public:
   Standard_EXPORT     void MinMaxValues(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
   //! Returns the structure containing the group <me>. <br>
   Standard_EXPORT     Handle_Graphic3d_Structure Structure() const;
-  //! Prints informations about the group <me>. <br>
-  Standard_EXPORT     void Exploration() const;
   
   Standard_EXPORT     void BeginPrimitives() ;
   
   Standard_EXPORT     void EndPrimitives() ;
-  //! Creates a non rational Bezier curve with a set of poles : <br>
-//!      ListVertex. The weights are defaulted to all being 1. <br>
-//!  Category: Methods to create Curve <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than two points. <br>
-  Standard_EXPORT     void Bezier(const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Creates a non rational Bezier curve with a set of poles : <br>
-//!      ListVertex and the set of weights ListWeight. <br>
-//!      If all the weights are identical the curve is considered <br>
-//!      as non rational. <br>
-//!  Category: Methods to create Curve <br>
-//!  Warning: Raises GroupDefinitionError if <ListVertex> contains <br>
-//!      less than two points or <ListVertex> and <ListWeight> <br>
-//!      have not the same length or one weight value is lower <br>
-//!      or equal to Resolution from package gp. <br>
-  Standard_EXPORT     void Bezier(const Graphic3d_Array1OfVertex& ListVertex,const TColStd_Array1OfReal& ListWeight,const Standard_Boolean EvalMinMax = Standard_True) ;
 
 friend   //! Suppress in the structure <me>, the group <AGroup>. <br>
 //!	    It will be erased at the next screen update. <br>

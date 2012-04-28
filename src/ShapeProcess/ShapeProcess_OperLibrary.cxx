@@ -1,7 +1,22 @@
-// File:	ShapeProcess_OperLibrary.cxx
-// Created:	Thu Aug 31 11:34:26 2000
-// Author:	Andrey BETENEV
-//		<abv@nnov.matra-dtv.fr>
+// Created on: 2000-08-31
+// Created by: Andrey BETENEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ShapeProcess_OperLibrary.ixx>
 
@@ -13,6 +28,8 @@
 #include <BRepLib.hxx>
 
 #include <Message_MsgFile.hxx>
+#include <Message_ProgressIndicator.hxx>
+
 #include <ShapeExtend_MsgRegistrator.hxx>
 #include <ShapeProcess.hxx>
 #include <ShapeProcess_UOperator.hxx>
@@ -109,7 +126,7 @@ static Standard_Boolean directfaces (const Handle(ShapeProcess_Context)& context
   TopoDS_Shape res = ShapeProcess_OperLibrary::ApplyModifier ( ctx->Result(), ctx, DM, map );
   ctx->RecordModification ( map );
   ctx->SetResult ( res );
-  return 0;
+  return Standard_True;
 }
 
 
@@ -170,7 +187,7 @@ static Standard_Boolean splitangle (const Handle(ShapeProcess_Context)& context)
   Handle(ShapeProcess_ShapeContext) ctx = Handle(ShapeProcess_ShapeContext)::DownCast ( context );
   if ( ctx.IsNull() ) return Standard_False;
   
-  ShapeUpgrade_ShapeDivideAngle SDA ( ctx->RealVal ( "Angle", 2*PI ), ctx->Result() );
+  ShapeUpgrade_ShapeDivideAngle SDA ( ctx->RealVal ( "Angle", 2*M_PI ), ctx->Result() );
   SDA.SetMaxTolerance ( ctx->RealVal ( "MaxTolerance", 1. ) );
   
   if ( ! SDA.Perform() && SDA.Status (ShapeExtend_FAIL) ) {
@@ -623,7 +640,11 @@ static Standard_Boolean fixshape (const Handle(ShapeProcess_Context)& context)
   sfw->FixNonAdjacentIntersectingEdgesMode() = ctx->IntegerVal ( "FixNonAdjacentIntersectingEdgesMode", -1 );
   
   sfs->Init(ctx->Result());
-  sfs->Perform();
+  sfs->Perform(ctx->Progress());
+
+  if ( !ctx->Progress().IsNull() && ctx->Progress()->UserBreak() )
+    return Standard_False;
+
   TopoDS_Shape result = sfs->Shape();
   if ( result != ctx->Result() ) {
     ctx->RecordModification ( sfs->Context(), msg );

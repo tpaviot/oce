@@ -1,6 +1,23 @@
--- File:    Viewer.cdl
--- Created: Fri Jan 17 11:23:08 1992
--- Author:  GG
+-- Created on: 1992-01-17
+-- Created by: GG
+-- Copyright (c) 1992-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 -- Modified FMN - 02/02/98 -> Specifique UNIX
 --          CAL - 16/07/98 -> S3892. Ajout grilles 3d.
 --          GG  - 15/12/99 -> GER61351 Add SetDefaultBackgroundColor()
@@ -10,8 +27,6 @@
 --                                      Add GridEcho() method.
 --                                      Add ShowGridEcho() private method
 --          SAV - 26/11/02 -> Add new field to store grid echo aspect
---
----Copyright:        Matra Datavision 1992
 
 class Viewer from V3d
 
@@ -43,6 +58,7 @@ uses
         Plane from V3d,
         ListOfTransient from V3d,
         ListIteratorOfListOfTransient from TColStd,
+        SequenceOfInteger from TColStd,
         TypeOfView from V3d,
         Vector from Graphic3d,
         ViewManager from Visual3d,
@@ -138,9 +154,7 @@ is
 
         Update (me:mutable ) is redefined static;
         ---Level: Public
-        ---Purpose: Updates the display of all the views of a viewer.
-        --            Must be called when the views must be updated
-        --            simultaneously while the Update mode is deferred (WAIT).
+        ---Purpose: Deprecated, Redraw() should be used instead.
 
         UpdateLights (me: mutable);
         ---Level: Public
@@ -655,6 +669,31 @@ is
                         aPoint: Vertex from Graphic3d) is private;
         ---Purpose:
         -- Display grid echo at requested point in the view.
+
+        AddZLayer ( me : mutable;
+                    theLayerId : in out Integer from Standard )
+           returns Boolean from Standard is static;
+        ---Purpose: Add a new top-level Z layer to all managed views and get
+        -- its ID as <theLayerId> value. The Z layers are controlled entirely
+        -- by viewer, it is not possible to add a layer to a
+        -- particular view. The method returns Standard_False if the layer can
+        -- not be created. The layer mechanism allows to display structures
+        -- in higher layers in overlay of structures in lower layers.
+
+        RemoveZLayer ( me : mutable;
+                       theLayerId : Integer from Standard )
+           returns Boolean from Standard is static;
+        ---Purpose: Remove Z layer with ID <theLayerId>. Method returns
+        -- Standard_False if the layer can not be removed or doesn't exists.
+        -- By default, there are always default bottom-level layer that can't
+        -- be removed.
+
+        GetAllZLayers ( me;
+                        theLayerSeq : out SequenceOfInteger from TColStd )
+           is static;
+        ---Purpose: Return all Z layer ids in sequence ordered by overlay level
+        -- from lowest layer to highest ( foreground ). The first layer ID
+        -- in sequence is the default layer that can't be removed.
 
 fields
 

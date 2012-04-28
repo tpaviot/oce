@@ -19,14 +19,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Handle_Geom_Curve_HeaderFile
+#include <Handle_Geom_Curve.hxx>
+#endif
 #ifndef _Select3D_SensitivePoly_HeaderFile
 #include <Select3D_SensitivePoly.hxx>
 #endif
 #ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
-#include <Handle_Geom_Curve.hxx>
 #endif
 #ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
@@ -40,16 +40,25 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
-class SelectBasics_EntityOwner;
+#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
+#include <Handle_Select3D_SensitiveEntity.hxx>
+#endif
 class Geom_Curve;
+class Standard_ConstructionError;
+class Standard_OutOfRange;
+class SelectBasics_EntityOwner;
 class TColgp_HArray1OfPnt;
 class TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 class gp_Lin;
+class Select3D_SensitiveEntity;
+class TopLoc_Location;
 
 
 //! A framework to define a sensitive 3D curve. <br>
+//! In some cases this class can raise Standard_ConstructionError and <br>
+//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly. <br>
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 
 public:
@@ -76,6 +85,8 @@ public:
         Standard_Integer GetLastDetected() const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! Returns the copy of this <br>
+  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& theLocation) ;
 
 
 
@@ -93,6 +104,7 @@ private:
   Standard_EXPORT     void LoadPoints(const Handle(Geom_Curve)& aCurve,const Standard_Integer NbPoints) ;
 
 Standard_Integer mylastseg;
+Handle_Geom_Curve myCurve;
 
 
 };

@@ -22,11 +22,11 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Select3D_SensitivePoly_HeaderFile
-#include <Select3D_SensitivePoly.hxx>
+#ifndef _Select3D_Pnt2d_HeaderFile
+#include <Select3D_Pnt2d.hxx>
 #endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
-#include <Handle_SelectBasics_EntityOwner.hxx>
+#ifndef _Select3D_Pnt_HeaderFile
+#include <Select3D_Pnt.hxx>
 #endif
 #ifndef _Handle_Geom_Circle_HeaderFile
 #include <Handle_Geom_Circle.hxx>
@@ -34,23 +34,42 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Select3D_SensitivePoly_HeaderFile
+#include <Select3D_SensitivePoly.hxx>
+#endif
+#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
+#include <Handle_SelectBasics_EntityOwner.hxx>
+#endif
 #ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
-class SelectBasics_EntityOwner;
+#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
+#include <Handle_Select3D_SensitiveEntity.hxx>
+#endif
+#ifndef _Handle_Select3D_Projector_HeaderFile
+#include <Handle_Select3D_Projector.hxx>
+#endif
 class Geom_Circle;
+class Standard_ConstructionError;
+class Standard_OutOfRange;
+class SelectBasics_EntityOwner;
 class TColgp_HArray1OfPnt;
 class TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 class gp_Lin;
 class gp_Pnt;
+class Select3D_SensitiveEntity;
+class TopLoc_Location;
+class Select3D_Projector;
 
 
 //! A framework to define sensitive 3D arcs and circles. <br>
+//! In some cases this class can raise Standard_ConstructionError and <br>
+//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly. <br>
 class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 
 public:
@@ -68,10 +87,13 @@ public:
 //! owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle. <br>
 //! apolyg3d is an array of consecutive triangles on the <br>
 //! circle. The triangle i+1 lies on the intersection of the <br>
-//! tangents to the circle of i and i+2. <br>
+//! tangents to the circle of i and i+2. Note, that the first point of apolyg3d <br>
+//! must be equal to the last point of apolyg3d. <br>
   Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(TColgp_HArray1OfPnt)& apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
   //! Constructs the sensitive circle object defined by the <br>
 //! owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle. <br>
+//! If the length of apolyg3d is more then 1, the first point of apolyg3d <br>
+//! must be equal to the last point of apolyg3d. <br>
   Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const TColgp_Array1OfPnt& apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
   
   Standard_EXPORT     Standard_Boolean Matches(const Standard_Real X,const Standard_Real Y,const Standard_Real aTol,Standard_Real& DMin) ;
@@ -87,6 +109,10 @@ public:
   Standard_EXPORT     gp_Pnt GetPoint3d(const Standard_Integer rank) const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! Returns the copy of this. <br>
+  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& theLocation) ;
+  
+  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
 
 
 
@@ -100,9 +126,16 @@ protected:
 
 private: 
 
+  //! Computes myCenter3D as the barycenter of points from mypolyg3d <br>
+  Standard_EXPORT     void ComputeCenter3D() ;
 
 Standard_Boolean myFillStatus;
 Standard_Integer myDetectedIndex;
+Select3D_Pnt2d myCenter2D;
+Select3D_Pnt myCenter3D;
+Handle_Geom_Circle myCircle;
+Standard_Real mystart;
+Standard_Real myend;
 
 
 };

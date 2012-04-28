@@ -1,9 +1,25 @@
-// File:	BRepTools_Modifier.cxx
-// Created:	Thu Aug 25 10:48:00 1994
-// Author:	Jacques GOUSSARD
-//		<jag@ecolox>
+// Created on: 1994-08-25
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// IFV 04.06.99 - PRO18974 - treatment of INTERNAL shapes.
+
+// IFV 04.06.99 - PRO18974 - processing of INTERNAL shapes.
 
 #include <BRepTools_Modifier.ixx>
 
@@ -104,8 +120,7 @@ void BRepTools_Modifier::Perform(const Handle(BRepTools_Modification)& M)
   }
   TopTools_DataMapIteratorOfDataMapOfShapeShape theIter(myMap);
 
-  // Remise a Null des shapes value, dans le cas ou on applique une autre
-  // modification au shape de depart.
+  // Set to Null the value of shapes, in case when another modification is applied to the start shape.
 
   if (!theIter.Value().IsNull()) {
     while (theIter.More()) {
@@ -136,7 +151,7 @@ void BRepTools_Modifier::Perform(const Handle(BRepTools_Modification)& M)
     myMap(myShape).Orientation(myShape.Orientation());
   }
 
-  // Mise a jour des continuites
+  // Update the continuities
 
   TopTools_IndexedDataMapOfShapeListOfShape theEFMap;
   TopExp::MapShapesAndAncestors(myShape,TopAbs_EDGE,TopAbs_FACE,theEFMap);
@@ -236,7 +251,7 @@ Standard_Boolean BRepTools_Modifier::Rebuild
   BRep_Builder B;
   Standard_Real tol;
   Standard_Boolean No3DCurve = Standard_False; // en fait, si on n`a pas de 
-  //modif de geometrie 3d , il faudrait tester l`existence d`une courbe 3d.
+  //modif geometry 3d , it is necessary to test the existence of a curve 3d.
 
   // new geometry ?
 
@@ -355,11 +370,10 @@ Standard_Boolean BRepTools_Modifier::Rebuild
 	if (M->NewCurve2d(edge, face,TopoDS::Edge(myMap(ex.Current())),
 			  TopoDS::Face(result),curve2d, tol)) 
         {
-	  // rem dub 16/09/97 : On fait de la topologie constante ou on
-	  // n'en fait pas.
-	  // On n'en fait pas si CopySurface = 1
-	  // Atention, les VRAIES aretes de couture (RealyClosed) le 
-	  // restent meme si CopySurface est vrai.
+	  // rem dub 16/09/97 : Make constant topology or not make at all.
+	  // Do not make if CopySurface = 1
+	  // Atention, TRUE sewing edges (RealyClosed)  
+	  // stay even if  CopySurface is true.
     
           // check that edge contains two pcurves on this surface:
           // either it is true seam on the current face, or belongs to two faces

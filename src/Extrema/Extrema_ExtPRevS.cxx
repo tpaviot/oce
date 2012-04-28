@@ -1,7 +1,23 @@
-// File:	Extrema_ExtPRevS.cxx
-// Created:	Tue Sep 21 15:50:01 1999
-// Author:	Edward AGAPOV
-//		<eap@strelox.nnov.matra-dtv.fr>
+// Created on: 1999-09-21
+// Created by: Edward AGAPOV
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Extrema_ExtPRevS.ixx>
@@ -96,10 +112,10 @@ static void PerformExtPElC (Extrema_ExtPElC& E,
     E.Perform(P, C->Line(), Tol, -Precision::Infinite(),Precision::Infinite());
     return;
   case GeomAbs_Circle:
-    E.Perform(P, C->Circle(), Tol, 0.0, 2.0 * PI);
+    E.Perform(P, C->Circle(), Tol, 0.0, 2.0 * M_PI);
     return;
   case GeomAbs_Ellipse:
-    E.Perform(P, C->Ellipse(), Tol, 0.0, 2.0 * PI);
+    E.Perform(P, C->Ellipse(), Tol, 0.0, 2.0 * M_PI);
     return;
   case GeomAbs_Parabola:
     E.Perform(P, C->Parabola(), Tol, -Precision::Infinite(),Precision::Infinite());
@@ -309,18 +325,18 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
   else {
     Ppp = Pp.Translated(Z.Multiplied(-OPpz));
     if (O.IsEqual(Ppp,Precision::Confusion())) 
-      U = PI/2;
+      U = M_PI/2;
     else {
       U = gp_Vec(O,Ppp).AngleWithRef(gp_Vec(O,Pp),Dir);
     }
   }
 
-  gp_Vec OPpp (O,Ppp), OPq (O, myS->Value(PI/2,0));
-  if (U != PI/2) {
+  gp_Vec OPpp (O,Ppp), OPq (O, myS->Value(M_PI/2,0));
+  if (U != M_PI/2) {
     if (Abs(OPq.Magnitude()) <= gp::Resolution()) 
-      OPq = gp_Vec(O, myS->Value(PI/2,anACurve->LastParameter()/10));
+      OPq = gp_Vec(O, myS->Value(M_PI/2,anACurve->LastParameter()/10));
     if (OPpp.AngleWithRef(OPq,Dir) < 0)
-      U += PI;
+      U += M_PI;
   }
   
   gp_Trsf T;
@@ -346,7 +362,7 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 
 	if((anACurve->GetType() == GeomAbs_Circle) || 
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
-	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * PI);
+	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * M_PI);
 
 	  if (newV > myvsup) {
 	    newV = myvsup;
@@ -366,7 +382,7 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 
 	if((anACurve->GetType() == GeomAbs_Circle) || 
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
-	  newV = ElCLib::InPeriod(V, myvsup - 2. * PI, myvsup);
+	  newV = ElCLib::InPeriod(V, myvsup - 2. * M_PI, myvsup);
 	  
 	  if(newV < myvinf)
 	    newV = myvinf;
@@ -385,14 +401,14 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
       }
     }
   }
-  T.SetRotation(Ax, PI);
+  T.SetRotation(Ax, M_PI);
   P1.Transform(T);
   
   PerformExtPElC(anExt, P1, anACurve, mytolv);
   if (anExt.IsDone()) {
     myDone = Standard_True;
 
-    U += PI;
+    U += M_PI;
     
     for (i=1; i<=anExt.NbExt(); i++) {
       Extrema_POnCurv POC=anExt.Point(i);
@@ -405,7 +421,7 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 
 	if((anACurve->GetType() == GeomAbs_Circle) || 
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
-	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * PI);
+	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * M_PI);
 
 	  if (newV > myvsup) {
 	    newV = myvsup;
@@ -422,7 +438,7 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 
 	if((anACurve->GetType() == GeomAbs_Circle) || 
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
-	  newV = ElCLib::InPeriod(V, myvsup - 2. * PI, myvsup);
+	  newV = ElCLib::InPeriod(V, myvsup - 2. * M_PI, myvsup);
 	  
 	  if(newV < myvinf)
 	    newV = myvinf;

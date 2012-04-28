@@ -1,18 +1,28 @@
-// File:      NCollection_UBTree.hxx
-// Created:   30.07.02 09:51:33
-// Author:    Michael SAZONOV
-// Copyright: Open CASCADE 2002
+// Created on: 2002-07-30
+// Created by: Michael SAZONOV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_UBTree_HeaderFile
 #define NCollection_UBTree_HeaderFile
 
 #include <NCollection_BaseAllocator.hxx>
-
-#ifdef WNT
-// Disable the warning: "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
-#endif
+#include <NCollection_DefineAlloc.hxx>
 
 /**
  * The algorithm of unbalanced binary tree of overlapped bounding boxes.
@@ -117,6 +127,10 @@ template <class TheObjType, class TheBndType> class NCollection_UBTree
   class TreeNode
   {
   public:
+    DEFINE_STANDARD_ALLOC
+    DEFINE_NCOLLECTION_ALLOC
+
+  public:
     TreeNode (const TheObjType& theObj, const TheBndType& theBnd)
       : myBnd(theBnd), myObject(theObj), myChildren(0), myParent(0) {}
 
@@ -194,20 +208,6 @@ template <class TheObjType, class TheBndType> class NCollection_UBTree
 
 //  ~TreeNode () { if (myChildren) delete [] myChildren; }
     ~TreeNode () { myChildren = 0L; }
-
-    /**
-     * Allocator of a tree node.
-     */
-    void * operator new (size_t theSize,
-                         const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
-
-    /**
-     * Allocator of a tree node.
-     */
-    void * operator new (size_t,
-                         void * theMem) 
-    { return theMem; }
 
     /**
      * Deleter of tree node. The whole hierarchy of its children also deleted.
@@ -499,9 +499,5 @@ DEFINE_STANDARD_HANDLE (_HUBTREE, _HPARENT)
 #define IMPLEMENT_HUBTREE(_HUBTREE, _HPARENT)                           \
 IMPLEMENT_STANDARD_HANDLE (_HUBTREE, _HPARENT)                          \
 IMPLEMENT_STANDARD_RTTIEXT(_HUBTREE, _HPARENT)
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

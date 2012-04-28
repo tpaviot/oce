@@ -1,8 +1,23 @@
-// Copyright:   Matra-Datavision 1995
-// File:    Select3D_SensitiveFace.cxx
-// Created: Mon Mar 27 10:15:15 1995
-// Author:  Robert COUBLANC
-//      <rob>
+// Created on: 1995-03-27
+// Created by: Robert COUBLANC
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //Modif on jun-24-97 : introduction de CSLib_Class2d de LBR
 //                     pour teste si on est dedans ou dehors...
 //Modif on jul-21-97 : changement en harray1 pour eventuelles connexions ...
@@ -36,8 +51,8 @@
 
 Select3D_SensitiveFace::
 Select3D_SensitiveFace(const Handle(SelectBasics_EntityOwner)& OwnerId,
-               const TColgp_Array1OfPnt& ThePoints,
-               const Select3D_TypeOfSensitivity aType):
+                       const TColgp_Array1OfPnt& ThePoints,
+                       const Select3D_TypeOfSensitivity aType):
 Select3D_SensitivePoly(OwnerId, ThePoints),
 mytype (aType),
 myDetectedIndex(-1)
@@ -46,14 +61,14 @@ myDetectedIndex(-1)
 }
 
 //==================================================
-// Function: 
+// Function: Creation
 // Purpose :
 //==================================================
 
 Select3D_SensitiveFace::
 Select3D_SensitiveFace(const Handle(SelectBasics_EntityOwner)& OwnerId,
-               const Handle(TColgp_HArray1OfPnt)& ThePoints,
-               const Select3D_TypeOfSensitivity aType):
+                       const Handle(TColgp_HArray1OfPnt)& ThePoints,
+                       const Select3D_TypeOfSensitivity aType):
 Select3D_SensitivePoly(OwnerId, ThePoints),
 mytype (aType),
 myDetectedIndex(-1)
@@ -62,15 +77,15 @@ myDetectedIndex(-1)
 }
 
 //==================================================
-// Function: 
+// Function: Matches
 // Purpose :
 //==================================================
 
 Standard_Boolean Select3D_SensitiveFace::
 Matches(const Standard_Real X,
-    const Standard_Real Y,
-    const Standard_Real aTol,
-    Standard_Real& DMin)
+        const Standard_Real Y,
+        const Standard_Real aTol,
+        Standard_Real& DMin)
 {
 #ifndef DEB
   Standard_Real DMin2 = 0.;
@@ -78,7 +93,8 @@ Matches(const Standard_Real X,
   Standard_Real DMin2;
 #endif
   Standard_Real Xmin = 0.0,Ymin = 0.0,Xmax = RealLast(),Ymax = RealLast();
-  if(!Bnd_Box2d(mybox2d).IsVoid()){
+  if(!Bnd_Box2d(mybox2d).IsVoid())
+  {
     Bnd_Box2d(mybox2d).Get(Xmin,Ymin,Xmax,Ymax);
     DMin2 = gp_XY(Xmax-Xmin,Ymax-Ymin).SquareModulus();
   }
@@ -87,26 +103,27 @@ Matches(const Standard_Real X,
   // then min. distance of the polyhedron or cdg...
 
   Standard_Real aTol2 = aTol*aTol;
-  gp_XY CDG(0.,0.);
-//  for(Standard_Integer I=1;I<=Nbp-1;I++){
-  Standard_Integer I;
-  for(I=1;I<mynbpoints-1;I++){
-    CDG+=((Select3D_Pnt2d*)mypolyg2d)[I-1];
+  Standard_Integer aSize = mypolyg.Size(), anIndex;
+  gp_XY CDG;
+  for(anIndex=0;anIndex<aSize;++anIndex)
+  {
+    CDG+=mypolyg.Pnt2d(anIndex);
   }
-  
-  if(mynbpoints>1){
-    CDG/= (mynbpoints-1);
+
+  if(aSize>1)
+  {
+    CDG/=(aSize-1);
   }
   DMin2=Min(DMin2,gp_XY(CDG.X()-X,CDG.Y()-Y).SquareModulus());
   DMin = Sqrt(DMin2);
-  
-  
+
   Standard_Boolean isplane2d(Standard_True);
-  
-  for( I=1;I<mynbpoints-1;I++){
-    gp_XY V1(((Select3D_Pnt2d*)mypolyg2d)[I]),V(X,Y);
-    V1-=((Select3D_Pnt2d*)mypolyg2d)[I-1];
-    V-=((Select3D_Pnt2d*)mypolyg2d)[I-1];
+
+  for(anIndex=1;anIndex<aSize;++anIndex)
+  {
+    gp_XY V1(mypolyg.Pnt2d(anIndex)),V(X,Y);
+    V1-=mypolyg.Pnt2d(anIndex-1);
+    V-=mypolyg.Pnt2d(anIndex-1);
     Standard_Real Vector = V1^V;
     Standard_Real V1V1 = V1.SquareModulus();
     DMin2 = 
@@ -114,7 +131,8 @@ Matches(const Standard_Real X,
     Min(DMin2,V.SquareModulus()): // if the segment is too small...
       Min(DMin2,Vector*Vector/V1V1);
     //cdg ...
-    gp_XY PlaneTest(CDG);PlaneTest-=((Select3D_Pnt2d*)mypolyg2d)[I-1];
+    gp_XY PlaneTest(CDG);
+    PlaneTest-=mypolyg.Pnt2d(anIndex-1);
     Standard_Real valtst = PlaneTest^V1;
     if(isplane2d && Abs(valtst)>aTol) isplane2d=Standard_False;
   }
@@ -122,32 +140,22 @@ Matches(const Standard_Real X,
   {
     return Select3D_SensitiveEntity::Matches(X,Y,aTol,DMin);
   }
-  //detection d'une auto - intersection dans le polygon 2D; si oui on sort
-//    if (!AutoComputeFlag(myautointer)) {
-//      if(mypolyg2d.Length()>4) {
-//        if (SelectBasics_BasicTool::AutoInter(mypolyg2d)) {
-//      SetAutoInterFlag(myautointer);
-//        }
-//      }
-//      SetAutoComputeFlag(myautointer);
-//    }
-//   if (AutoInterFlag(myautointer)) return Standard_True;
-// //  
 
   //otherwise it is checked if the point is in the face...
-  TColgp_Array1OfPnt2d aArrayOf2dPnt(1, mynbpoints);
+  TColgp_Array1OfPnt2d aArrayOf2dPnt(1, aSize);
   Points2D(aArrayOf2dPnt);
   CSLib_Class2d TheInOutTool(aArrayOf2dPnt,aTol,aTol,Xmin,Ymin,Xmax,Ymax);
   Standard_Integer TheStat = TheInOutTool.SiDans(gp_Pnt2d(X,Y));
-  
+
   Standard_Boolean res(Standard_False);
-  switch(TheStat){
+  switch(TheStat)
+  {
   case 0:
     res = Standard_True;
   case 1:
     {
       if(mytype!=Select3D_TOS_BOUNDARY)
-	res = Standard_True;
+        res = Standard_True;
     }
   }
   if (res)
@@ -164,16 +172,18 @@ Matches(const Standard_Real X,
 
 Standard_Boolean Select3D_SensitiveFace::
 Matches (const Standard_Real XMin,
-     const Standard_Real YMin,
-     const Standard_Real XMax,
-     const Standard_Real YMax,
-     const Standard_Real aTol)
-{ 
+         const Standard_Real YMin,
+         const Standard_Real XMax,
+         const Standard_Real YMax,
+         const Standard_Real aTol)
+{
   Bnd_Box2d BoundBox;
   BoundBox.Update(XMin-aTol,YMin-aTol,XMax+aTol,YMax+aTol);
-  
-  for(Standard_Integer j=1;j<=mynbpoints-1;j++){
-    if(BoundBox.IsOut(((Select3D_Pnt2d*)mypolyg2d)[j-1])) return Standard_False;
+
+  for(Standard_Integer anIndex=0;anIndex<mypolyg.Size();++anIndex)
+  {
+    if(BoundBox.IsOut(mypolyg.Pnt2d(anIndex)))
+      return Standard_False;
   }
   return Standard_True;
 }
@@ -185,25 +195,28 @@ Matches (const Standard_Real XMin,
 
 Standard_Boolean Select3D_SensitiveFace::
 Matches (const TColgp_Array1OfPnt2d& aPoly,
-     const Bnd_Box2d& aBox,
-     const Standard_Real aTol)
-{ 
+         const Bnd_Box2d& aBox,
+         const Standard_Real aTol)
+{
   Standard_Real Umin,Vmin,Umax,Vmax;
   aBox.Get(Umin,Vmin,Umax,Vmax);
   CSLib_Class2d aClassifier2d(aPoly,aTol,aTol,Umin,Vmin,Umax,Vmax);
 
-  for(Standard_Integer j=1;j<=mynbpoints;j++){
-    Standard_Integer RES = aClassifier2d.SiDans(((Select3D_Pnt2d*)mypolyg2d)[j-1]);
-    if(RES!=1) return Standard_False;
+  gp_Pnt2d aPnt2d;
+  for(Standard_Integer anIndex=0;anIndex<mypolyg.Size();++anIndex)
+  {
+    Standard_Integer RES = aClassifier2d.SiDans(mypolyg.Pnt2d(anIndex));
+    if(RES!=1)
+      return Standard_False;
   }
   return Standard_True;
 }
-
 
 //=======================================================================
 //function : Dump
 //purpose  : 
 //=======================================================================
+
 void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean FullDump) const
 {
   S<<"\tSensitiveFace 3D :"<<endl;;
@@ -213,10 +226,9 @@ void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean Ful
   if(mytype==Select3D_TOS_BOUNDARY) 
     S<<"\t\tSelection Of Bounding Polyline Only"<<endl;
   
-  if(FullDump){
-    S<<"\t\tNumber Of Points :"<<mynbpoints<<endl;
-    
-//    S<<"\t\t\tOwner:"<<myOwnerId<<endl;
+  if(FullDump)
+  {
+    S<<"\t\tNumber Of Points :"<<mypolyg.Size()<<endl;
     Select3D_SensitiveEntity::DumpBox(S,mybox2d);
   }
 }
@@ -225,19 +237,48 @@ void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean Ful
 //function : ComputeDepth
 //purpose  : 
 //=======================================================================
+
 Standard_Real Select3D_SensitiveFace::ComputeDepth(const gp_Lin& EyeLine) const
 {
   Standard_Real aDepth = Precision::Infinite();
+
   Standard_Real aDepthMin = !mylastprj.IsNull() ? mylastprj->DepthMin() : -Precision::Infinite();
   Standard_Real aDepthMax = !mylastprj.IsNull() ? mylastprj->DepthMax() :  Precision::Infinite();
   Standard_Real aDepthTest;
-  for (Standard_Integer i = 0; i < mynbpoints - 1; i++)
+
+  for (Standard_Integer anIndex = 0; anIndex < mypolyg.Size()-1; ++anIndex)
   {
-    aDepthTest = ElCLib::Parameter (EyeLine, ((Select3D_Pnt* )mypolyg3d)[i]);
+    aDepthTest = ElCLib::Parameter (EyeLine, mypolyg.Pnt(anIndex));
     if (aDepthTest < aDepth && (aDepthTest > aDepthMin) && (aDepthTest < aDepthMax))
     {
       aDepth = aDepthTest;
     }
   }
   return aDepth;
+}
+
+//=======================================================================
+//function : GetConnected
+//purpose  : 
+//=======================================================================
+
+Handle(Select3D_SensitiveEntity) Select3D_SensitiveFace::GetConnected(const TopLoc_Location &theLocation) 
+{
+  // Create a copy of this
+  Standard_Integer aSize = mypolyg.Size();
+  TColgp_Array1OfPnt aPoints(1, aSize);
+  for (Standard_Integer anIndex = 1; anIndex <= aSize; ++anIndex)
+  {
+    aPoints.SetValue(anIndex, mypolyg.Pnt(anIndex-1));
+  }
+
+  Handle(Select3D_SensitiveEntity) aNewEntity =
+    new Select3D_SensitiveFace(myOwnerId, aPoints, mytype);
+
+  if (HasLocation())
+    aNewEntity->SetLocation(Location());
+
+  aNewEntity->UpdateLocation(theLocation);
+
+  return aNewEntity;
 }

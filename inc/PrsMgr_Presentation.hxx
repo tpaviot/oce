@@ -87,6 +87,10 @@ private:
   Standard_EXPORT   virtual  Standard_Integer DisplayPriority() const = 0;
   
   Standard_EXPORT   virtual  void SetDisplayPriority(const Standard_Integer aNewPrior)  = 0;
+  //! Set Z layer ID for the presentation <br>
+  Standard_EXPORT   virtual  void SetZLayer(const Standard_Integer theLayerId)  = 0;
+  //! Get Z layer ID for the presentation <br>
+  Standard_EXPORT   virtual  Standard_Integer GetZLayer() const = 0;
   
   Standard_EXPORT   virtual  void Clear()  = 0;
 

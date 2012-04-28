@@ -13,9 +13,6 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Bnd_Box2d_HeaderFile
-#include <Bnd_Box2d.hxx>
-#endif
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif
@@ -31,18 +28,17 @@
 #ifndef _Handle_IntPatch_RLine_HeaderFile
 #include <Handle_IntPatch_RLine.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
 #ifndef _IntPatch_Polygo_HeaderFile
 #include <IntPatch_Polygo.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
 class IntPatch_WLine;
 class IntPatch_RLine;
-class Bnd_Box2d;
 class gp_Pnt2d;
 
 
@@ -74,12 +70,6 @@ public:
   
   Standard_EXPORT     void ResetError() ;
   
-  Standard_EXPORT    const Bnd_Box2d& Bounding() const;
-  
-  Standard_EXPORT     Standard_Real Error() const;
-  
-  Standard_EXPORT     Standard_Boolean Closed() const;
-  
   Standard_EXPORT     Standard_Integer NbPoints() const;
   
   Standard_EXPORT     gp_Pnt2d Point(const Standard_Integer Index) const;
@@ -100,13 +90,11 @@ private:
   Standard_EXPORT     void Prepare() ;
 
 
-Bnd_Box2d box;
 gp_Pnt2d pnt;
 IntPatch_IType typ;
 Standard_Boolean onfirst;
 Handle_IntPatch_WLine wpoly;
 Handle_IntPatch_RLine rpoly;
-Standard_Real defle;
 
 
 };

@@ -48,7 +48,7 @@ class TopoDS_Edge;
 class TopoDS_Vertex;
 
 
-//! Constructs a evolved volume from a spine (wire or face) <br>
+//! Constructs an evolved volume from a spine (wire or face) <br>
 //!          and  a profile ( wire). <br>
 class BRepFill_Evolved  {
 public:
@@ -70,10 +70,10 @@ public:
   Standard_EXPORT   BRepFill_Evolved();
   //! Creates an evolved shape by sweeping the <Profile> <br>
 //!          along the  <Spine>.  <AxeProf> is  used to set the <br>
-//!          position of <Profile> along  <Spine> as  follow: <br>
-//!          l <AxeProf> glisse  sur le profil  avec  sa <br>
-//!          direction colineaire a la normale au <Spine>, et sa <br>
-//!          <XDirection> confondue avec la tangente au <Spine>. <br>
+//!          position of <Profile> along  <Spine> as  follows: <br>
+//!          <AxeProf> slides on the profile with direction <br>
+//!          colinear to the normal to <Spine>, and its <br>
+//!          <XDirection> mixed with the tangent to <Spine>. <br>
 //! <br>
   Standard_EXPORT   BRepFill_Evolved(const TopoDS_Wire& Spine,const TopoDS_Wire& Profile,const gp_Ax3& AxeProf,const GeomAbs_JoinType Join = GeomAbs_Arc,const Standard_Boolean Solid = Standard_False);
   //! Creates an  evolved shape  by sweeping the <Profile> <br>

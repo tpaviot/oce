@@ -87,9 +87,9 @@ public:
   //! ConstructionError is raised if Ufirst>Ulast <br>
   Standard_EXPORT   Geom2dAdaptor_Curve(const Handle(Geom2d_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast);
   
-  Standard_EXPORT     void Load(const Handle(Geom2d_Curve)& C) ;
+        void Load(const Handle(Geom2d_Curve)& C) ;
   //! ConstructionError is raised if Ufirst>Ulast <br>
-  Standard_EXPORT     void Load(const Handle(Geom2d_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
+        void Load(const Handle(Geom2d_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
   
        const Handle_Geom2d_Curve& Curve() const;
   
@@ -182,6 +182,8 @@ private:
 
   
   Standard_EXPORT     GeomAbs_Shape LocalContinuity(const Standard_Real U1,const Standard_Real U2) const;
+  
+  Standard_EXPORT     void load(const Handle(Geom2d_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
 
 
 Handle_Geom2d_Curve myCurve;

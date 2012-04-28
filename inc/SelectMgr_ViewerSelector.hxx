@@ -123,6 +123,8 @@ public:
   //! changes the Sensitivity of picking <br>
 //!          Input value is Real. <br>
   Standard_EXPORT     void SetSensitivity(const Standard_Real aTol) ;
+  //! returns the Sensitivity of picking <br>
+        Standard_Real Sensitivity() const;
   //! sets the clipping limits of dynamic picking <br>
 //!          input value are Real <br>
   Standard_EXPORT     void SetClipping(const Standard_Real Xc,const Standard_Real Yc,const Standard_Real Height,const Standard_Real Width) ;

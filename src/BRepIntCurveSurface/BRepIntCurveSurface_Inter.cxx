@@ -1,8 +1,23 @@
-// File:	BRepIntCurveSurface_Inter.cxx
-// Created:	Mon Feb  7 15:52:37 1994
-// Author:	Modelistation
-//		<model@nonox>
-//-Copyright:	 Matra Datavision 1994
+// Created on: 1994-02-07
+// Created by: Modelistation
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepIntCurveSurface_Inter.ixx>
@@ -90,7 +105,7 @@ void BRepIntCurveSurface_Inter::Find() {
       Standard_Real U = intcs.Point(currentindex).U();
       Standard_Real V = intcs.Point(currentindex).V();
       //-------------------------------------------------------
-      //-- On Cherche a recadrer le point U,V ds la face UV
+      //-- Try to reframe point U,V in the face UV
       //-- 
       if(PeriodU) { 
 	while(U>UMin) 
@@ -102,9 +117,9 @@ void BRepIntCurveSurface_Inter::Find() {
       }
 //    Standard_Real UInit = U;
       Standard_Real VInit = V;
-      do { //-- Boucle Sur U  
+      do { //-- Loop on U  
 	V = VInit;
-	do { //-- Boucle sur V
+	do { //-- Loop on V
 	  gp_Pnt2d Puv(U,V);
 	  //--- 
 	  //-- classifier.Perform(TopoDS::Face(explorer.Current()),Puv,tolerance);
@@ -135,7 +150,7 @@ void BRepIntCurveSurface_Inter::Find() {
     
     brepadaptsurf.Initialize(face,Standard_True);
     //----------------------------------------------
-    //-- Mise a jour des variables PeriodU,PeriodV
+    //-- Update variables PeriodU,PeriodV
     //--
 
     SurfForFastClass->ChangeSurface().Initialize(face); //-- MODIF

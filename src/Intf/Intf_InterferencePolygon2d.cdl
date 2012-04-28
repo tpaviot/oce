@@ -1,29 +1,39 @@
--- File:	InterferencePolygon2d.cdl
--- Created:	Mon Sep 28 17:09:45 1992
--- Author:	Didier PIFFAULT
---		<dpf@phylox>
----Copyright:	 Matra Datavision 1992
+-- Created on: 1992-09-28
+-- Created by: Didier PIFFAULT
+-- Copyright (c) 1992-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
 
 
-generic class InterferencePolygon2d from Intf
-    (Polygon2d1 as any;
-     ToolPolygon2d1 as any;         -- as ToolPolygon(Pnt2d, Polygon2d1, Box2d)
-     Polygon2d2 as any;
-     ToolPolygon2d2 as any)         -- as ToolPolygon(Pnt2d, Polygon2d2, Box2d)
-    inherits Interference from Intf
 
+class InterferencePolygon2d from Intf
+
+inherits Interference from Intf
 
 	---Purpose: Computes the  interference between two  polygons or
 	--          the    self intersection of    a  polygon  in  two
 	--          dimensions.
 
-
 uses    Pnt2d             from gp,
     	SectionPoint      from Intf,
     	SeqOfSectionPoint from Intf,
     	TangentZone       from Intf,
-    	SeqOfTangentZone  from Intf
-
+    	SeqOfTangentZone  from Intf,
+        Polygon2d         from Intf
 
 raises  OutOfRange from Standard
 
@@ -35,23 +45,23 @@ is
     ---Purpose: Constructs an empty interference of Polygon.
 
 
-    Create         (Obje1: in Polygon2d1 ;Obje2 : in Polygon2d2) 
+    Create         (Obje1, Obje2 : in Polygon2d) 
     	            returns InterferencePolygon2d from Intf;
     ---Purpose: Constructs and computes an interference between two Polygons.
 
 
-    Create         (Obje       : in Polygon2d1) 
+    Create         (Obje       : in Polygon2d) 
     	            returns InterferencePolygon2d from Intf;
     ---Purpose: Constructs and computes the auto interference of a Polygon.
 
 
     Perform        (me         : in out;
-    	    	    Obje1: Polygon2d1 ;Obje2 : in Polygon2d2);
+    	    	    Obje1, Obje2 : in Polygon2d);
     ---Purpose: Computes an interference between two Polygons.
 
 
     Perform        (me         : in out;
-    	    	    Obje       : in Polygon2d1);
+    	    	    Obje       : in Polygon2d);
     ---Purpose: Computes the self interference of a Polygon.
 
 
@@ -66,24 +76,25 @@ is
 
 -- Implementation :
 
-    Interference   (me         : in out;
-    	    	    Obje1      : in Polygon2d1;
-     	    	    Obje2      : in Polygon2d2)
+    Interference   (me : in out; Obje1, Obje2 : in Polygon2d)
     	    	    is private;
 
-    Interference   (me         : in out;
-    	    	    Obje       : in Polygon2d1)
+    Interference   (me : in out; Obje : in Polygon2d)
     	    	    is private;
 
     Clean          (me   : in out) is private;
 
     Intersect      (me         : in out;
-		    BegO : in Pnt2d from gp;
-		    EndO : in Pnt2d from gp;
-		    BegT : in Pnt2d from gp;
-		    EndT : in Pnt2d from gp)
+                    iO, iT     : Integer from Standard;
+                    BegO, EndO : in Pnt2d from gp;
+                    BegT, EndT : in Pnt2d from gp)
     	    	    is private;
     ---Purpose: Computes the intersection between two segments 
     --          <BegO><EndO> et <BegT><EndT>.
+
+fields
+
+    oClos, tClos         : Boolean from Standard;
+    nbso                 : Integer from Standard;
 
 end InterferencePolygon2d;

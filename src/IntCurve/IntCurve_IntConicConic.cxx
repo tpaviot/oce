@@ -1,7 +1,23 @@
-// File:	IntCurve_IntConicConic.cxx
-// Created:	Mon Apr 27 18:35:13 1992
-// Author:	Laurent BUCHARD
-//		<lbr@topsn3>
+// Created on: 1992-04-27
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified:    OFV Thu Nov  6 17:03:52 2003
 
 
@@ -196,7 +212,7 @@ void IntCurve_IntConicConic::Perform(const gp_Lin2d&        L,
   Inter.SetReversedParameters(ReversedParameters());
   if(! DE.IsClosed()) {
     IntRes2d_Domain D(DE);
-    D.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+PI+PI);
+    D.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+M_PI+M_PI);
     Inter.Perform(ITool,DL,PCurve,D,TolConf,Tol);
     }
   else { 
@@ -298,7 +314,7 @@ void IntCurve_IntConicConic::Perform(const gp_Circ2d&       C,
 
   IntRes2d_Domain D(DC);
   if(! DC.IsClosed()) {
-    D.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+PI+PI);
+    D.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+M_PI+M_PI);
   }
   
   Standard_Real binf = Precision::Infinite(),bsup = -Precision::Infinite(),maxtol;
@@ -374,10 +390,10 @@ void IntCurve_IntConicConic::Perform(const gp_Circ2d&       C,
 
   if(! DC.IsClosed()) {
     IntRes2d_Domain D1(DC);
-    D1.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+PI+PI);
+    D1.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+M_PI+M_PI);
     if(! DE.IsClosed()) {
       IntRes2d_Domain D2(DE);
-      D2.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+PI+PI);
+      D2.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+M_PI+M_PI);
       Inter.Perform(ITool,D1,PCurve,D2,TolConf,Tol);
     }
     else { 
@@ -387,7 +403,7 @@ void IntCurve_IntConicConic::Perform(const gp_Circ2d&       C,
   else { 
     if(! DE.IsClosed()) {
       IntRes2d_Domain D2(DE);
-      D2.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+PI+PI);
+      D2.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+M_PI+M_PI);
       Inter.Perform(ITool,DC,PCurve,D2,TolConf,Tol);
     }
     else { 
@@ -416,7 +432,7 @@ void IntCurve_IntConicConic::Perform(const gp_Circ2d&       C,
   IntRes2d_Domain D(DC);
 
   if(! DC.IsClosed()) {
-    D.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+PI+PI); 
+    D.SetEquivalentParameters(DC.FirstParameter(),DC.FirstParameter()+M_PI+M_PI); 
   }
   Standard_Real binf = Precision::Infinite(),bsup = -Precision::Infinite(),maxtol;
   gp_Pnt2d Pntinf,Pntsup;
@@ -562,7 +578,7 @@ void IntCurve_IntConicConic::Perform(const gp_Elips2d&      E,
 
   IntRes2d_Domain D(DE);
   if(! DE.IsClosed()) {
-    D.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+PI+PI);
+    D.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+M_PI+M_PI);
   }  
 
   //-- cout<<" Parab Elips "<<endl;
@@ -720,10 +736,10 @@ void IntCurve_IntConicConic::Perform(const gp_Elips2d&      E1,
 
   if(! DE1.IsClosed()) {
     IntRes2d_Domain D1(DE1);
-    D1.SetEquivalentParameters(DE1.FirstParameter(),DE1.FirstParameter()+PI+PI);
+    D1.SetEquivalentParameters(DE1.FirstParameter(),DE1.FirstParameter()+M_PI+M_PI);
     if(! DE2.IsClosed()) {
       IntRes2d_Domain D2(DE2);
-      D2.SetEquivalentParameters(DE2.FirstParameter(),DE2.FirstParameter()+PI+PI);
+      D2.SetEquivalentParameters(DE2.FirstParameter(),DE2.FirstParameter()+M_PI+M_PI);
       Inter.Perform(ITool,D1,PCurve,D2,TolConf,Tol);
     }
     else { 
@@ -733,7 +749,7 @@ void IntCurve_IntConicConic::Perform(const gp_Elips2d&      E1,
   else { 
     if(! DE2.IsClosed()) {
       IntRes2d_Domain D2(DE2);
-      D2.SetEquivalentParameters(DE2.FirstParameter(),DE2.FirstParameter()+PI+PI);
+      D2.SetEquivalentParameters(DE2.FirstParameter(),DE2.FirstParameter()+M_PI+M_PI);
       Inter.Perform(ITool,DE1,PCurve,D2,TolConf,Tol);
     }
     else { 
@@ -762,7 +778,7 @@ void IntCurve_IntConicConic::Perform(const gp_Elips2d&      E,
   IntRes2d_Domain DEModif(DE);
 
   if(! DE.IsClosed()) {
-    DEModif.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+PI+PI);
+    DEModif.SetEquivalentParameters(DE.FirstParameter(),DE.FirstParameter()+M_PI+M_PI);
   }
   
   Standard_Real binf = Precision::Infinite(),bsup = -Precision::Infinite(),maxtol;

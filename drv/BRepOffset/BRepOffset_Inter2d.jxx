@@ -4,8 +4,8 @@
 #ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
 #endif
-#ifndef _TopTools_MapOfShape_HeaderFile
-#include <TopTools_MapOfShape.hxx>
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
 #endif
 #ifndef _BRepOffset_Offset_HeaderFile
 #include <BRepOffset_Offset.hxx>

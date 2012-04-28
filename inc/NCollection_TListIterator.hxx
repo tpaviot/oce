@@ -1,7 +1,22 @@
-// File:        NCollection_TListIterator.hxx
-// Created:     Tue Apr 23 17:33:02 2002
-// Author:      Alexander KARTOMIN
-//              <a-kartomin@opencascade.com>
+// Created on: 2002-04-23
+// Created by: Alexander KARTOMIN
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_TListIterator_HeaderFile
 #define NCollection_TListIterator_HeaderFile
@@ -9,12 +24,6 @@
 #include <NCollection_BaseCollection.hxx>
 #include <NCollection_BaseList.hxx>
 #include <NCollection_TListNode.hxx>
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
-#endif
 
 /**
  * Purpose:     This Iterator class iterates on BaseList of TListNode and is 
@@ -54,14 +63,6 @@ template <class TheItemType> class NCollection_TListIterator
   //! Variable Value access
   virtual TheItemType& ChangeValue (void) const
   { return ((NCollection_TListNode<TheItemType> *)myCurrent)->ChangeValue(); }
-  //! Operator new for allocating iterators
-  void* operator new(size_t theSize,
-                     const Handle(NCollection_BaseAllocator)& theAllocator) 
-  { return theAllocator->Allocate(theSize); }
 };
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

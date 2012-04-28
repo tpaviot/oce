@@ -177,6 +177,11 @@ Standard_Real ddu[10];
 Standard_Real ddv[10];
 Standard_Integer maxConstraintOrder;
 Standard_Boolean PolynomialPartOnly;
+Standard_Real Uold;
+Standard_Real Vold;
+Standard_Real U2;
+Standard_Real R;
+Standard_Real L;
 
 
 };

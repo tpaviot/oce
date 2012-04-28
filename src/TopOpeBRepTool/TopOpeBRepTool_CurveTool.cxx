@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_CurveTool.cxx
-// Created:	Thu Jun 24 18:45:58 1993
-// Author:	Jean Yves LEBEY
-//		<jyl@zerox>
+// Created on: 1993-06-24
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_CurveTool.ixx>
 
@@ -908,14 +924,14 @@ Handle(Geom2d_Curve) TopOpeBRepTool_CurveTool::MakePCurveOnFace
       Handle(Geom2d_Curve) PCT = Handle(Geom2d_Curve)::DownCast(C2D->Copy());
       // make mirror relative to the isoline of apex -PI/2 or PI/2
       gp_Trsf2d aTrsf;
-      gp_Pnt2d po(0,-PI/2);
-      if (maxcond) po.SetY(PI/2);
+      gp_Pnt2d po(0,-M_PI/2);
+      if (maxcond) po.SetY(M_PI/2);
       aTrsf.SetMirror(gp_Ax2d(po, gp_Dir2d(1,0)));
       PCT->Transform(aTrsf);
       // add translation along U direction on PI
-      gp_Vec2d vec(PI,0);
+      gp_Vec2d vec(M_PI,0);
       Standard_Real UFirst = BAS.FirstUParameter();
-      if (u2-UFirst-PI > -1e-7) vec.Reverse();
+      if (u2-UFirst-M_PI > -1e-7) vec.Reverse();
       PCT->Translate(vec);
       C2D = PCT;
       // recompute the test point

@@ -1,4 +1,21 @@
-// File GccGeo_Circ2d2TanRad.gxx, REG 19/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ElCLib.hxx>
 #include <gp_Ax2d.hxx>
@@ -339,8 +356,8 @@ GccGeo_Circ2d2TanRad::
      for (Standard_Integer jcote1 = 1 ; jcote1 <= nbrcote1 ; jcote1++) {
        gp_Circ2d Circ(C1.XAxis(),R1+cote1(jcote1));
        IntRes2d_Domain D1(ElCLib::Value(0.,Circ),   0.,Tol,
-			  ElCLib::Value(2.*PI,Circ),2.*PI,Tol);
-       D1.SetEquivalentParameters(0.,2.*PI);
+			  ElCLib::Value(2.*M_PI,Circ),2.*M_PI,Tol);
+       D1.SetEquivalentParameters(0.,2.*M_PI);
        for (Standard_Integer jcote2 = 1 ; jcote2 <= nbrcote2 ; jcote2++) {
 	 Handle(TheHParGenCurve) HCu2 = new TheHParGenCurve(Cu2);
 	 TheParGenCurve C2(HCu2,cote2(jcote2));
@@ -470,8 +487,8 @@ GccGeo_Circ2d2TanRad::
      }
      gp_Circ2d Circ(gp_Ax2d(Point2,gp_Dir2d(1.,0.)),Radius);
      IntRes2d_Domain D1(ElCLib::Value(0.,Circ),   0.,Tol,
-			ElCLib::Value(PI+PI,Circ),PI+PI,Tol);
-     D1.SetEquivalentParameters(0.,PI+PI);
+			ElCLib::Value(M_PI+M_PI,Circ),M_PI+M_PI,Tol);
+     D1.SetEquivalentParameters(0.,M_PI+M_PI);
      TheIntConicCurve Intp;
      for (Standard_Integer jcote1 = 1 ; jcote1 <= nbrcote1 ; jcote1++) {
        Handle(TheHParGenCurve) HCu1 = new TheHParGenCurve(Cu1);

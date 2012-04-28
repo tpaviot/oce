@@ -251,6 +251,8 @@ protected:
   
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
   
+  Standard_EXPORT     void LoadRecomputable(const Standard_Integer TheMode) ;
+  
   Standard_EXPORT   static  void DisplayBox(const Handle(Prs3d_Presentation)& aPrs,const Bnd_Box& aBox,const Handle(Prs3d_Drawer)& aDrawer) ;
 
 TopoDS_Shape myshape;
@@ -260,8 +262,6 @@ Standard_Boolean myCompBB;
 
 private: 
 
-  
-  Standard_EXPORT     void LoadRecomputable(const Standard_Integer TheMode) ;
   
   Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation,const TopoDS_Shape& ashape) ;
 

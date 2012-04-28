@@ -1,7 +1,24 @@
-// File:	HLRBRep_PolyAlgo.cxx
-// Created:	Fri May  5 15:58:19 1995
-// Author:	Christophe MARION
-//		<cma@ecolox>
+// Created on: 1995-05-05
+// Created by: Christophe MARION
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 // Modified by cma, Tue Apr  1 11:39:48 1997
 // Modified by cma, Tue Apr  1 11:40:30 1997
 
@@ -437,7 +454,7 @@ static Standard_Integer DoError = Standard_False;
 
 HLRBRep_PolyAlgo::HLRBRep_PolyAlgo () :
 myDebug     (Standard_False),
-myAngle     (5 * PI / 180.),
+myAngle     (5 * M_PI / 180.),
 myTolSta    (0.1),
 myTolEnd    (0.9),
 myTolAngular(0.001)
@@ -473,7 +490,7 @@ HLRBRep_PolyAlgo::HLRBRep_PolyAlgo (const Handle(HLRBRep_PolyAlgo)& A)
 
 HLRBRep_PolyAlgo::HLRBRep_PolyAlgo (const TopoDS_Shape& S) :
 myDebug     (Standard_False),
-myAngle     (5 * PI / 180.),
+myAngle     (5 * M_PI / 180.),
 myTolSta    (0.1),
 myTolEnd    (0.9),
 myTolAngular(0.001)
@@ -2628,7 +2645,6 @@ HLRBRep_PolyAlgo::CheckFrBackTriangles (HLRAlgo_ListOfBPoint& List,
   Standard_Real dd,dX,dY,nX,nY;
   Standard_Boolean FrBackInList;
   Standard_Address TData ,PISeg ,PINod ;
-#ifndef DEB
 /*  Standard_Address IndexPtr = NULL; 
   const Handle(HLRAlgo_PolyInternalData)& pid1 =
     *(Handle(HLRAlgo_PolyInternalData)*)&(PID(F1Index));
@@ -2643,10 +2659,6 @@ HLRBRep_PolyAlgo::CheckFrBackTriangles (HLRAlgo_ListOfBPoint& List,
   PINod2 = &pid2->PISeg();*/
   Standard_Address TData1 = NULL,PISeg1 = NULL,PINod1 = NULL;
   Standard_Address TData2 = NULL,PISeg2 = NULL,PINod2 = NULL;
-#else
-  Standard_Address TData1,PISeg1,PINod1;
-  Standard_Address TData2,PISeg2,PINod2;
-#endif
   Standard_Address Nod11Indices,Nod12Indices,Nod13Indices;
   Standard_Address Nod11RValues,Nod12RValues,Nod13RValues;
   Standard_Address Tri1Indices;

@@ -1,9 +1,22 @@
-// File:        NCollection_BaseList.hxx
-// Created:     17.04.02 10:12:48
-// Author:      Alexander Kartomin (akm)
-//              <a-kartomin@opencascade.com>
-// Copyright:   Open Cascade 2002
-//              
+// Created on: 2002-04-17
+// Created by: Alexander Kartomin (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Purpose:     This is a base  class  for the  List, Set, Queue  and Stack
 //              collections. It offers operations on abstract lists (of the
 //              objects of class NCollection_ListNode).
@@ -12,18 +25,12 @@
 //              node representation),  here is an  important new  feature - 
 //              the  list  length is  continuously updated,  so the  method 
 //              Extent is quite quick.
-//              
 
 #ifndef NCollection_BaseList_HeaderFile
 #define NCollection_BaseList_HeaderFile
 
 #include <Standard_NoSuchObject.hxx>
 #include <NCollection_ListNode.hxx>
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (disable:4291)
-#endif
 
 typedef void (* NCollection_DelListNode) 
      (NCollection_ListNode*, Handle(NCollection_BaseAllocator)& theAl);
@@ -48,6 +55,11 @@ class NCollection_BaseList
     {
       myCurrent  = theList.myFirst;
       myPrevious = NULL;
+    }
+    // ******** Initialisation
+    void Initialize (const NCollection_BaseList& theList)
+    {
+      Init(theList);
     }
     // ******** More
     Standard_Boolean More (void) const

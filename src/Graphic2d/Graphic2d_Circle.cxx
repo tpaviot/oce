@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define PRO3730
 
@@ -39,7 +57,7 @@ Graphic2d_Circle::Graphic2d_Circle
 
     DoMinMax();
     myFirstAngle = 0.;
-    mySecondAngle = Standard_ShortReal(2.*Standard_PI);
+    mySecondAngle = Standard_ShortReal(2. * M_PI);
     myisArc = Standard_False;
     myNumOfElem = MAXPOINTS + 1;
     myNumOfVert = 3;
@@ -61,13 +79,13 @@ Graphic2d_Circle::Graphic2d_Circle
     myNumOfElem = MAXPOINTS + 1;
     myNumOfVert = 3;
 #ifdef PRO3730
-	Standard_ShortReal TwoPI = Standard_ShortReal(2.*Standard_PI);
+	Standard_ShortReal TwoPI = Standard_ShortReal(2. * M_PI);
 	myFirstAngle	= Standard_ShortReal (Alpha);
     mySecondAngle	= Standard_ShortReal (Beta);
 	while( myFirstAngle < 0. ) myFirstAngle += TwoPI;
-	while( myFirstAngle > 2.*Standard_PI ) myFirstAngle -= TwoPI;
+	while( myFirstAngle > 2. * M_PI ) myFirstAngle -= TwoPI;
 	while( mySecondAngle < 0. ) mySecondAngle += TwoPI;
-	while( mySecondAngle > 2.*Standard_PI ) mySecondAngle -= TwoPI;
+	while( mySecondAngle > 2. * M_PI ) mySecondAngle -= TwoPI;
 	if( mySecondAngle < myFirstAngle ) mySecondAngle += TwoPI;
 	if ( (mySecondAngle - myFirstAngle < ShortRealEpsilon()) || 
 			(mySecondAngle - myFirstAngle >= TwoPI) ) {
@@ -86,7 +104,7 @@ Graphic2d_Circle::Graphic2d_Circle
           myMaxY = myMaxY < Ycur ? Ycur : myMaxY;
 
           for( Acur = 0.,Xcur = 1.,Ycur = 0.; 
-		       Acur < mySecondAngle; Acur += Standard_ShortReal(Standard_PI/2.) ) {
+		       Acur < mySecondAngle; Acur += Standard_ShortReal(M_PI / 2.) ) {
 	        if( Acur > myFirstAngle ) {
               myMinX = ( myMinX < Xcur ? myMinX : Xcur );
               myMaxX = ( myMaxX < Xcur ? Xcur : myMaxX );
@@ -177,7 +195,7 @@ void Graphic2d_Circle::Draw (const Handle(Graphic2d_Drawer)& aDrawer) {
 	   E = Standard_Real (e); F = Standard_Real (f);
 	   aTrsf.Transforms (A, B);
 	   a = Standard_ShortReal (A); b = Standard_ShortReal (B);
-	   if( Abs(f-e) < Standard_ShortReal(2.*Standard_PI) ) {
+	   if( Abs(f-e) < Standard_ShortReal(2. * M_PI) ) {
 	  // To calculate new aperture angles 
 	  // the calculation is done on the trigonometric circle
 	  // and in this case the translation is not taken into account

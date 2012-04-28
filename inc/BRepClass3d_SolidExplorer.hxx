@@ -43,6 +43,7 @@
 class TopoDS_Shape;
 class gp_Pnt;
 class TopoDS_Face;
+class gp_Vec;
 class BRepAdaptor_HSurface;
 class TopoDS_Shell;
 class gp_Lin;
@@ -88,6 +89,8 @@ Standard_EXPORT virtual ~BRepClass3d_SolidExplorer(){Destroy() ; }
   
   Standard_EXPORT   static  Standard_Boolean FindAPointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param) ;
   
+  Standard_EXPORT   static  Standard_Boolean FindAPointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param,gp_Vec& theVecD1U,gp_Vec& theVecD1V) ;
+  
   Standard_EXPORT   static  Standard_Boolean FindAPointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v) ;
   
   Standard_EXPORT   static  Standard_Boolean FindAPointInTheFace(const TopoDS_Face& F,gp_Pnt& P) ;
@@ -95,9 +98,11 @@ Standard_EXPORT virtual ~BRepClass3d_SolidExplorer(){Destroy() ; }
   Standard_EXPORT   static  Standard_Boolean FindAPointInTheFace(const TopoDS_Face& F,Standard_Real& u,Standard_Real& v) ;
   
   Standard_EXPORT     Standard_Boolean PointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param,Standard_Integer& Index) const;
+  
+  Standard_EXPORT     Standard_Boolean PointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param,Standard_Integer& Index,const Handle(BRepAdaptor_HSurface)& surf,const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2) const;
   //! <Index> gives point index  to  search from and returns <br>
 //!          point index of succeseful search <br>
-  Standard_EXPORT     Standard_Boolean PointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param,Standard_Integer& Index,const Handle(BRepAdaptor_HSurface)& surf,const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2) const;
+  Standard_EXPORT     Standard_Boolean PointInTheFace(const TopoDS_Face& F,gp_Pnt& P,Standard_Real& u,Standard_Real& v,Standard_Real& Param,Standard_Integer& Index,const Handle(BRepAdaptor_HSurface)& surf,const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,gp_Vec& theVecD1U,gp_Vec& theVecD1V) const;
   //! Starts an exploration of the shells. <br>
   Standard_EXPORT     void InitShell() ;
   //! Returns True if there is a current shell. <br>

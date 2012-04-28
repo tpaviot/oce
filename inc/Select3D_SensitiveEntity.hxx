@@ -72,7 +72,12 @@ public:
 //!          by this class is 1 by default. <br>
 //!          Else on must redefine this method. <br>
   Standard_EXPORT   virtual  Standard_Integer MaxBoxes() const;
-  //! Returns the sensitive entity found at the location  aLocation. <br>
+  //! Originally this method intended to return sensitive <br>
+//! entity with new location aLocation, but currently sensitive <br>
+//! entities do not hold a location, instead HasLocation() and <br>
+//! Location() methods call corresponding entity owner's methods. <br>
+//! Thus all entities returned by GetConnected() share the same <br>
+//! location propagated from corresponding selectable object. <br>
 //! You must redefine this function for any type of <br>
 //! sensitive entity which can accept another connected <br>
 //! sensitive entity.//can be connected to another sensitive entity. <br>

@@ -1,7 +1,23 @@
-// File:	ChFiKPart_ComputeData_Rotule.cxx
-// Created:	Mon Jun 27 15:22:06 1994
-// Author:	Laurent BOURESCHE
-//		<lbo@phylox>
+// Created on: 1994-06-27
+// Created by: Laurent BOURESCHE
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ChFiKPart_ComputeData.jxx>
@@ -89,7 +105,7 @@ Standard_Boolean ChFiKPart_MakeRotule(TopOpeBRepDS_DataStructure& DStr,
   //------------------------------------------------------------
   gp_Pnt pp;
   gp_Vec du,dv;
-  ElSLib::TorusD1(0.,PI/2,ppos,r,r,pp,du,dv);
+  ElSLib::TorusD1(0.,M_PI/2,ppos,r,r,pp,du,dv);
   gp_Dir drot(du.Crossed(dv));
   Standard_Boolean reversecur = ( drot.Dot(dplnat) <= 0. );
   Standard_Boolean reversefil = ( drot.Dot(dfpl) <= 0. );
@@ -113,7 +129,7 @@ Standard_Boolean ChFiKPart_MakeRotule(TopOpeBRepDS_DataStructure& DStr,
 		ppos.YDirection().Dot(pl.Position().YDirection()));
   gp_Ax22d circ2dax(p2dcirc,dx2d,dy2d);
   Handle(Geom2d_Circle) GC2d = new Geom2d_Circle(circ2dax,r);
-  gp_Pnt2d p2dlin(0.,PI/2);
+  gp_Pnt2d p2dlin(0.,M_PI/2);
   Handle(Geom2d_Line) GL2d = new Geom2d_Line(p2dlin,gp::DX2d());
   TopAbs_Orientation trans = TopAbs_REVERSED; 
   if (reversecur) trans = TopAbs_FORWARD; 
@@ -124,7 +140,7 @@ Standard_Boolean ChFiKPart_MakeRotule(TopOpeBRepDS_DataStructure& DStr,
   //--------------
   Handle(Geom_Curve) bid;
   Handle(Geom2d_Curve) bid2d;
-  p2dlin.SetCoord(0.,PI);
+  p2dlin.SetCoord(0.,M_PI);
   Handle(Geom2d_Line) GL2dcoin = new Geom2d_Line(p2dlin,gp::DX2d());
   Data->ChangeInterferenceOnS2().
     SetInterference(ChFiKPart_IndexCurveInDS(bid,DStr),trans,bid2d,GL2dcoin);
@@ -132,7 +148,7 @@ Standard_Boolean ChFiKPart_MakeRotule(TopOpeBRepDS_DataStructure& DStr,
   //et les points
   //-------------
   Data->ChangeVertexFirstOnS1().SetPoint(pp);
-  ElSLib::TorusD0(alpha,PI/2,ppos,r,r,pp);
+  ElSLib::TorusD0(alpha,M_PI/2,ppos,r,r,pp);
   Data->ChangeVertexLastOnS1().SetPoint(pp);
   Data->ChangeInterferenceOnS1().SetFirstParameter(0.);
   Data->ChangeInterferenceOnS1().SetLastParameter(alpha);

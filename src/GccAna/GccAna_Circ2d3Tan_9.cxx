@@ -1,4 +1,21 @@
-// File GccAna_Circ2d3Tan.cxx_9, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2d3Tan.jxx>
 
@@ -12,20 +29,19 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Creation d un cercle passant par trois points.                       +
-//   Trois cas de figures :                                               +
-//      1/ Les trois points sont confondus.                               +
+//   Creation of a circle passing by three points.                       +
+//   Three cases  :                                               +
+//      1/ Three points coincide.                               +
 //      -----------------------------------                               +
-//      Le resultat est le cercle centre en Point1 de rayon zero.         +
-//      2/ Deux des trois points sont confondus.                          +
+//      The result is the circle with center in Point1 with zero radius.  +
+//      2/ Two of three points coincide.                          +
 //      ----------------------------------------                          +
-//      On cree la mediatrice a deux points non confondus ainsi que la    +
-//      droite passant par ces deux points.                               +
-//      La solution a pour centre l intersection de ces deux droite et    +
-//      pour rayon la distance entre ce centre et l un des trois points.  +
-//      3/ Les trois points sont distinct.                                +
+//      Create the medium line between two non-coinciding points and      +
+//      the straight line passing by these two points.                               +
+//      The center of the solution is the intersection of two straight lines and the   +
+//      radius is the distance between this center and one of three points.  +
+//      3/ The three points are distinct.                                +
 //      ----------------------------------                                +
-//      
 //=========================================================================
 
 GccAna_Circ2d3Tan::
@@ -35,7 +51,7 @@ GccAna_Circ2d3Tan::
 		      const Standard_Real      Tolerance ):
 
 //=========================================================================
-//   Initialisation des champs.                                           +
+//   Initialization of fields.                                           +
 //=========================================================================
 
    cirsol(1,1)     ,
@@ -61,7 +77,7 @@ GccAna_Circ2d3Tan::
    NbrSol = 0;
 
 //=========================================================================
-//   Traitement.                                                          +
+//   Processing.                                                          +
 //=========================================================================
 
    Standard_Real dist1 = Point1.Distance(Point2);

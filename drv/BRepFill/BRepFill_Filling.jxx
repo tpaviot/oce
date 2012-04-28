@@ -19,11 +19,14 @@
 #ifndef _BRepFill_SequenceOfEdgeFaceAndOrder_HeaderFile
 #include <BRepFill_SequenceOfEdgeFaceAndOrder.hxx>
 #endif
-#ifndef _TopTools_MapOfShape_HeaderFile
-#include <TopTools_MapOfShape.hxx>
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
 #endif
-#ifndef _TColgp_SequenceOfPnt_HeaderFile
-#include <TColgp_SequenceOfPnt.hxx>
+#ifndef _TopTools_SequenceOfShape_HeaderFile
+#include <TopTools_SequenceOfShape.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
 #endif
 #ifndef _BRepFill_Filling_HeaderFile
 #include <BRepFill_Filling.hxx>

@@ -99,7 +99,7 @@ public:
   //! Computes the 3d curve for the edge  <E> if it does <br>
 //!          not exist. Returns True  if the curve was computed <br>
 //!          or  existed. Returns False  if there is no  planar <br>
-//!          pcurve. <br>
+//!          pcurve or the computation failed. <br>
 //!          <MaxSegment> >= 30 in approximation <br>
   Standard_EXPORT   static  Standard_Boolean BuildCurve3d(const TopoDS_Edge& E,const Standard_Real Tolerance = 1.0e-5,const GeomAbs_Shape Continuity = GeomAbs_C1,const Standard_Integer MaxDegree = 14,const Standard_Integer MaxSegment = 0) ;
   //! Computes  the 3d curves  for all the  edges of <S> <br>

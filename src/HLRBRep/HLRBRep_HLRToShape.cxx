@@ -1,7 +1,23 @@
-// File:	HLRBRep_HLRToShape.cxx
-// Created:	Mon Oct 11 16:55:56 1993
-// Author:	Christophe MARION
-//		<cma@nonox>
+// Created on: 1993-10-11
+// Created by: Christophe MARION
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <HLRBRep_HLRToShape.ixx>
 #include <TopoDS.hxx>
@@ -180,36 +196,41 @@ HLRBRep_HLRToShape::DrawEdge (const Standard_Boolean visible,
 			      TopoDS_Shape& Result,
 			      Standard_Boolean& added) const
 {
-  Standard_Boolean todraw;
+  Standard_Boolean todraw = Standard_False;
   if      (inFace)   todraw = Standard_True;
   else if (typ == 3) todraw = ed.Rg1Line() && !ed.RgNLine();
   else if (typ == 4) todraw = ed.RgNLine();
   else               todraw =!ed.Rg1Line();
+
   if (todraw) {
     Standard_Real sta,end;
     Standard_ShortReal tolsta,tolend;
     BRep_Builder B;
+    TopoDS_Edge E;
     HLRAlgo_EdgeIterator It;
-    if (visible) {
-      
-      for (It.InitVisible(ed.Status());
-	   It.MoreVisible();
-	   It.NextVisible()) {
-	It.Visible(sta,tolsta,end,tolend);
-	B.Add(Result,HLRBRep::MakeEdge(ed.Geometry(),sta,end));
-	added = Standard_True;
+    if (visible)
+    {
+      for (It.InitVisible(ed.Status()); It.MoreVisible(); It.NextVisible()) {
+        It.Visible(sta,tolsta,end,tolend);
+        E = HLRBRep::MakeEdge(ed.Geometry(),sta,end);
+        if (!E.IsNull())
+        {
+          B.Add(Result,E);
+          added = Standard_True;
+        }
       }
     }
-    else {
-      
-      for (It.InitHidden(ed.Status());
-	   It.MoreHidden();
-	   It.NextHidden()) {
-	It.Hidden(sta,tolsta,end,tolend);
-	B.Add(Result,HLRBRep::MakeEdge(ed.Geometry(),sta,end));
-	added = Standard_True;
+    else
+    {
+      for (It.InitHidden(ed.Status()); It.MoreHidden(); It.NextHidden()) {
+        It.Hidden(sta,tolsta,end,tolend);
+        E = HLRBRep::MakeEdge(ed.Geometry(),sta,end);
+        if (!E.IsNull())
+        {
+          B.Add(Result,E);
+          added = Standard_True;
+        }
       }
     }
   }
 }
-

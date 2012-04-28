@@ -1,7 +1,23 @@
-// File:	gce_MakeCirc.cxx
-// Created:	Wed Sep  2 10:34:28 1992
-// Author:	Remi GILET
-//		<reg@sdsun1>
+// Created on: 1992-09-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <gce_MakeCone.ixx>
 #include <StdFail_NotDone.hxx>
@@ -18,7 +34,7 @@ gce_MakeCone::gce_MakeCone(const gp_Ax2&       A2    ,
 {
   if (Radius < 0.0) { TheError = gce_NegativeRadius; }
   else {
-    if (Ang <= gp::Resolution() || PI/2-Ang <= gp::Resolution()) {
+    if (Ang <= gp::Resolution() || M_PI/2-Ang <= gp::Resolution()) {
       TheError = gce_BadAngle;
     }
     else {
@@ -58,7 +74,7 @@ gce_MakeCone::gce_MakeCone(const gp_Pnt& P1 ,
   Standard_Real Dist4 = L1.Distance(P4);
   Standard_Real DifRad = Dist3-Dist4;
   Standard_Real angle = Abs(ATan(DifRad/(Dist13-Dist14)));
-  if(Abs(PI/2.-angle) < RealEpsilon() || Abs(angle) < RealEpsilon()) { TheError = gce_NullRadius; return; }
+  if(Abs(M_PI/2.-angle) < RealEpsilon() || Abs(angle) < RealEpsilon()) { TheError = gce_NullRadius; return; }
   Standard_Real R1 = PP3.Distance(P3);
   Standard_Real R2 = PP4.Distance(P4);
   if (R1 < 0.0 || R2 < 0.0) { TheError = gce_NegativeRadius; return; }
@@ -165,7 +181,7 @@ gce_MakeCone::gce_MakeCone(const gp_Pnt&       P1   ,
     }
     else {
       Standard_Real Angle = Abs(atan((R1-R2)/dist));
-      if (Abs(PI/2.-Angle)<RealEpsilon() || Abs(Angle)<RealEpsilon()) {
+      if (Abs(M_PI/2.-Angle)<RealEpsilon() || Abs(Angle)<RealEpsilon()) {
 	TheError = gce_NullAngle;
       }
       else {

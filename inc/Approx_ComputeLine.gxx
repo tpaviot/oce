@@ -1,4 +1,21 @@
-// File Approx_ComputeLine.gxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Approx_ParametrizationType.hxx>
 #include Approx_ParLeastSquareOfMyGradient_hxx
@@ -22,9 +39,6 @@
 #include <AppParCurves_ConstraintCouple.hxx>
 
 #include <stdio.h>
-
-static Standard_Boolean IsClear = Standard_False;
-static Standard_Integer nbML = 0;
 
 #ifdef DEB
 static Standard_Boolean mydebug = Standard_False;
@@ -390,6 +404,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Integer NbIterations,
 		     const Standard_Boolean cutting,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myfirstParam = new TColStd_HArray1OfReal(Parameters.Lower(), 
 					   Parameters.Upper());
@@ -421,6 +437,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Integer NbIterations,
 		     const Standard_Boolean cutting,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myfirstParam = new TColStd_HArray1OfReal(Parameters.Lower(), 
 					   Parameters.Upper());
@@ -450,6 +468,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Boolean cutting,
 		     const Approx_ParametrizationType parametrization,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myConstraints = new AppParCurves_HArray1OfConstraintCouple(1, 2);
   Par = parametrization;
@@ -476,6 +496,8 @@ Approx_ComputeLine::Approx_ComputeLine
 		     const Standard_Boolean cutting,
 		     const Approx_ParametrizationType parametrization,
 		     const Standard_Boolean Squares)
+: myMultiLineNb (0),
+  myIsClear (Standard_False)
 {
   myConstraints = new AppParCurves_HArray1OfConstraintCouple(1, 2);
   alldone = Standard_False;
@@ -500,14 +522,15 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 #ifdef DEB
   if (mydebug) DUMP(Line);
 #endif
-  if (!IsClear) {
+  if (!myIsClear)
+  {
     myMultiCurves.Clear();
     myPar.Clear();
     Tolers3d.Clear();
     Tolers2d.Clear();
-    nbML = 0;
+    myMultiLineNb = 0;
   }
-  else  IsClear = Standard_False;
+  else myIsClear = Standard_False;
 
   Standard_Integer i, nbp, Thefirstpt, Thelastpt, oldlastpt;
   Standard_Boolean Finish = Standard_False,
@@ -600,6 +623,7 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 	// ========================================
 	GoUp = Standard_False;
 	Ok = Standard_True;
+	Standard_Boolean FailOnPointsAdded = Standard_False;
 	if (MyStatus == Approx_PointsAdded) {
 	  // Appel recursif du decoupage:
 	  GoUp = Standard_True;
@@ -611,8 +635,9 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 	    -LineTool::LastPoint(OtherLine);
 
 	  //-- Si MakeML a echoue   on retourne une ligne vide
-	  
-	  if(    (nbpdsotherligne == 0) || nbML >= 3) { 
+	  if ((nbpdsotherligne == 0) || myMultiLineNb >= 3)
+	  {
+	    FailOnPointsAdded = Standard_True; 
 	    //-- cout<<" ** ApproxComputeLine MakeML Echec ** LBR lbr "<<endl;
 	    if (myfirstpt == mylastpt) break;  // Pour etre sur de ne pas 
 	    // planter la station !!
@@ -673,12 +698,13 @@ void Approx_ComputeLine::Perform(const MultiLine& Line)
 	    mylastpt = Thelastpt;
 	    
 	  }
-	  else { 
-	    IsClear = Standard_True;
-	    nbML++;
+	  else
+	  {
+	    myIsClear = Standard_True;
+	    ++myMultiLineNb;
 	    Perform(OtherLine);
 	    myfirstpt = mylastpt;
-	    mylastpt = Thelastpt; 
+	    mylastpt = Thelastpt;
 	  }
 	}
 	
@@ -807,10 +833,11 @@ void Approx_ComputeLine::Parameters(const MultiLine& Line,
 			       const Standard_Integer lastP,
 			       math_Vector& TheParameters) const
 {
-  Standard_Integer i, j, nbP2d, nbP3d;
+  Standard_Integer i, j, Nbp, nbP2d, nbP3d;
   Standard_Real dist;
   gp_Pnt P1, P2;
   gp_Pnt2d P12d, P22d;
+  Nbp = lastP-firstP+1;
 
   if (Par == Approx_ChordLength || Par == Approx_Centripetal) {
     nbP3d = LineTool::NbP3d(Line);
@@ -972,12 +999,12 @@ Standard_Boolean  Approx_ComputeLine::ComputeCurve(const MultiLine& Line,
   gp_Vec2d V12d, V22d;
   gp_Pnt P1, P2;
   gp_Pnt2d P12d, P22d;
-  Standard_Boolean Tangent1, Tangent2, mydone= Standard_False;
-#ifdef DEB
-  Standard_Boolean Parallel;
-#endif
+  Standard_Boolean Tangent1, Tangent2, Parallel, mydone= Standard_False;
   Standard_Integer myfirstpt = firstpt, mylastpt = lastpt;
   Standard_Integer nbp = lastpt-firstpt+1, Kopt = 0;
+  AppParCurves_Constraint FirstC, LastC;
+  FirstC = AppParCurves_PassPoint;
+  LastC = AppParCurves_PassPoint;
   math_Vector Para(firstpt, lastpt);
 
   Parameters(Line, firstpt, lastpt, Para);
@@ -1020,17 +1047,13 @@ Standard_Boolean  Approx_ComputeLine::ComputeCurve(const MultiLine& Line,
   if (nbp == 2) {
     // S il n y a que 2 points, on verifie quand meme que les tangentes sont 
     // alignees.
-#ifdef DEB
     Parallel = Standard_True;
-#endif
     if (Tangent1) {
       for (i = 1; i <= nbP3d; i++) {
 	gp_Vec PVec(tabP1(i), tabP2(i));
 	V13d = tabV1(i);
 	if (!PVec.IsParallel(V13d, Precision::Angular())) {
-#ifdef DEB
 	  Parallel = Standard_False;
-#endif
 	  break;
 	}
       }
@@ -1038,9 +1061,7 @@ Standard_Boolean  Approx_ComputeLine::ComputeCurve(const MultiLine& Line,
 	gp_Vec2d PVec2d(tabP12d(i), tabP22d(i));
 	V12d = tabV12d(i);
 	if (!PVec2d.IsParallel(V12d, Precision::Angular())) {
-#ifdef DEB
 	  Parallel = Standard_False;
-#endif
 	  break;
 	}
       }
@@ -1051,9 +1072,7 @@ Standard_Boolean  Approx_ComputeLine::ComputeCurve(const MultiLine& Line,
 	gp_Vec PVec(tabP1(i), tabP2(i));
 	V23d = tabV2(i);
 	if (!PVec.IsParallel(V23d, Precision::Angular())) {
-#ifdef DEB
 	  Parallel = Standard_False;
-#endif
 	  break;
 	}
       }
@@ -1061,9 +1080,7 @@ Standard_Boolean  Approx_ComputeLine::ComputeCurve(const MultiLine& Line,
 	gp_Vec2d PVec2d(tabP12d(i), tabP22d(i));
 	V22d = tabV22d(i);
 	if (!PVec2d.IsParallel(V22d, Precision::Angular())) {
-#ifdef DEB
 	  Parallel = Standard_False;
-#endif
 	  break;
 	}
       }

@@ -1,6 +1,22 @@
-// File:	BOP_WireSplitter.cxx
-// Created:	Mon Apr  9 11:00:15 2001
-// Author:	Peter KURNEV
+// Created on: 2001-04-09
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BOP_WireSplitter.ixx>
 
@@ -715,7 +731,7 @@ Standard_Real AngleIn(const TopoDS_Edge& aEIn,
 Standard_Real ClockWiseAngle(const Standard_Real aAngleIn,
                              const Standard_Real aAngleOut)
 {
-  const Standard_Real aTwoPi=Standard_PI+Standard_PI;
+  const Standard_Real aTwoPi = M_PI + M_PI;
   Standard_Real dA, A1, A2, AIn, AOut ;
 
   AIn=aAngleIn;
@@ -728,7 +744,7 @@ Standard_Real ClockWiseAngle(const Standard_Real aAngleIn,
     AOut=AOut-aTwoPi;
   }
 
-  A1=AIn+Standard_PI;
+  A1 = AIn + M_PI;
   
   if (A1 >= aTwoPi) {
     A1=A1-aTwoPi;
@@ -815,7 +831,7 @@ Standard_Real Angle2D (const TopoDS_Vertex& aV,
 Standard_Real Angle (const gp_Dir2d& aDir2D)
 {
   const Standard_Real anAngle = gp_Dir2d(1.,0.).Angle(aDir2D);
-  return ((anAngle < 0.)? anAngle + Standard_PI + Standard_PI : anAngle);
+  return ((anAngle < 0.)? anAngle + M_PI + M_PI : anAngle);
 }
 
 //=======================================================================
@@ -974,7 +990,7 @@ Standard_Boolean RecomputeAngles(const BOP_ListOfEdgeInfo& aLEInfo,
 	  bIgnore = (aD > theTol2D);
 	}
 
-	if(!bIgnore && (theTol2D > PI)) {
+	if(!bIgnore && (theTol2D > M_PI)) {
 	  Standard_Real udist = fabs(aP2Dx.X() - thePb.X());
 	  Standard_Real vdist = fabs(aP2Dx.Y() - thePb.Y());
 	  Standard_Real aTolU = 2. * UTolerance2D(theVb, theGAS);

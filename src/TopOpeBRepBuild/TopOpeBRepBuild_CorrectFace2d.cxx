@@ -1,7 +1,22 @@
-// File:	TopOpeBRepBuild_CorrectFace2d.cxx
-// Created:	Wed Jan 26 10:04:31 2000
-// Author:	Peter KURNEV
-//		<pkv@irinox.nnov.matra-dtv.fr>
+// Created on: 2000-01-26
+// Created by: Peter KURNEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <TopOpeBRepBuild_CorrectFace2d.ixx>
@@ -46,7 +61,7 @@
 // function :TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d
 // purpose: 
 //=======================================================================
-  TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()
+TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()
 {
   myIsDone=Standard_False;
   myErrorStatus=1;
@@ -447,17 +462,17 @@
     Standard_Boolean nonPV = (fabs(V) < 1e-7) ? Standard_True : Standard_False;
 
     if(!nonPU && UP) {
-      Standard_Real dU = fmod(fabs(U), 2*PI);
-      nonPU = (dU > 1e-7 && (2*PI - dU > 1e-7)) ? Standard_True : Standard_False;
+      Standard_Real dU = fmod(fabs(U), 2*M_PI);
+      nonPU = (dU > 1e-7 && (2*M_PI - dU > 1e-7)) ? Standard_True : Standard_False;
     }
     
     if(!nonPV && VP) {
-      Standard_Real dV = fmod(fabs(V), 2*PI);
-      nonPV = (dV > 1e-7 && (2*PI - dV > 1e-7)) ? Standard_True : Standard_False;
+      Standard_Real dV = fmod(fabs(V), 2*M_PI);
+      nonPV = (dV > 1e-7 && (2*M_PI - dV > 1e-7)) ? Standard_True : Standard_False;
     }
 
-//    printf("(fmod(fabs(U), 2*PI) =%lf\n", (fmod(fabs(U), 2*PI)));
-//    printf(" (fmod(fabs(V), 2*PI) > 1e-7)=%lf\n", (fmod(fabs(V), 2*PI)));
+//    printf("(fmod(fabs(U), 2*M_PI) =%lf\n", (fmod(fabs(U), 2*M_PI)));
+//    printf(" (fmod(fabs(V), 2*M_PI) > 1e-7)=%lf\n", (fmod(fabs(V), 2*M_PI)));
     
     if(nonPU && nonPV && !BRep_Tool::Degenerated(anEdge))
       return 1;
@@ -900,7 +915,7 @@
   Standard_Integer b, k;
   gp_Vec2d aTrV;
 
-  TwoPI=2.*PI;
+  TwoPI=2.*M_PI;
 
   BndBoxWire(anOuterWire, B2dOuterWire);
   B2dOuterWire.Get(OuterU1,OuterV1,OuterU2,OuterV2);

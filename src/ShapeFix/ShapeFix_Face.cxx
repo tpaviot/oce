@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // pdn 10.12.98: tr9_r0501-ug
 // pdn 28.12.98: PRO10366 shifting pcurve between two singularities
 //:k7 abv 5.01.99: USA60022.igs ent 243: FixMissingSeam() improved
@@ -41,7 +58,10 @@
 #include <BRep_Builder.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
 #include <BRepTools.hxx>
+#include <BRepTools_WireExplorer.hxx>
 #include <BRepBuilderAPI_MakeFace.hxx>
+#include <BRepBuilderAPI_MakeVertex.hxx>
+#include <BRepBuilderAPI_MakeWire.hxx>
 
 #include <Message_Msg.hxx>  
 #include <ShapeBuild_ReShape.hxx>
@@ -51,8 +71,10 @@
 #include <ShapeFix_Edge.hxx>
 #include <ShapeAnalysis_Edge.hxx>
 #include <Bnd_Box2d.hxx>
+#include <Geom_Circle.hxx>
 #include <Geom_SphericalSurface.hxx>
 #include <Geom_RectangularTrimmedSurface.hxx>
+#include <Geom_ConicalSurface.hxx>
 #include <ShapeAnalysis_Wire.hxx>
 #include <ShapeAnalysis_Surface.hxx>
 
@@ -124,15 +146,16 @@ ShapeFix_Face::ShapeFix_Face(const TopoDS_Face &face)
 
 void ShapeFix_Face::ClearModes()
 {
-  myFixWireMode = -1;
-  myFixOrientationMode = -1;
-  myFixAddNaturalBoundMode = -1;
-  myFixMissingSeamMode = -1;
-  myFixSmallAreaWireMode = -1;
+  myFixWireMode              = -1;
+  myFixOrientationMode       = -1;
+  myFixAddNaturalBoundMode   = -1;
+  myFixMissingSeamMode       = -1;
+  myFixSmallAreaWireMode     = -1;
   myFixIntersectingWiresMode = -1;
-  myFixLoopWiresMode =-1;
-  myFixSplitFaceMode =-1;
-  myAutoCorrectPrecisionMode = 1;
+  myFixLoopWiresMode         = -1;
+  myFixSplitFaceMode         = -1;
+  myAutoCorrectPrecisionMode =  1;
+  myFixPeriodicDegenerated   = -1;
 }
 
 //=======================================================================
@@ -445,6 +468,11 @@ Standard_Boolean ShapeFix_Face::Perform()
   
   myResult = myFace;
   TopoDS_Shape savShape = myFace; //gka BUG 6555
+
+  // Specific case for conic surfaces
+  if ( NeedFix(myFixPeriodicDegenerated) )
+    this->FixPeriodicDegenerated();
+
   // fix missing seam
   if ( NeedFix ( myFixMissingSeamMode ) ) {
     if ( FixMissingSeam() ) {
@@ -517,7 +545,8 @@ Standard_Boolean ShapeFix_Face::Perform()
         //fix for loop of wire
         TopTools_SequenceOfShape aLoopWires;
         if(NeedFix ( myFixLoopWiresMode) && FixLoopWire(aLoopWires)) {
-          
+          if (aLoopWires.Length() > 1)
+            SendWarning ( wire, Message_Msg ( "FixAdvFace.FixLoopWire.MSG0" ) );// Wire was splitted on several wires
           myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE7 );
           fixed = Standard_True;
           Standard_Integer k=1;
@@ -776,7 +805,7 @@ Standard_Boolean ShapeFix_Face::FixAddNaturalBound()
     }
 
 //    B.UpdateFace (myFace,myPrecision);
-    SendWarning (Message_Msg ("FixAdvFace.FixOrientation.MSG0"));//Face created with natural bounds
+    SendWarning ( myFace, Message_Msg ( "FixAdvFace.FixOrientation.MSG0" ) );// Face created with natural bounds
     BRepTools::Update(myFace);
     return Standard_True;
   }
@@ -926,7 +955,7 @@ Standard_Boolean ShapeFix_Face::FixAddNaturalBound()
 #ifdef DEBUG
   cout<<"Natural bound on sphere or torus with holes added"<<endl; // mise au point !
 #endif
-  SendWarning (Message_Msg ("FixAdvFace.FixOrientation.MSG0"));//Face created with natural bounds
+  SendWarning ( myFace, Message_Msg ( "FixAdvFace.FixOrientation.MSG0" ) );// Face created with natural bounds
   return Standard_True;
 }
 
@@ -1033,7 +1062,7 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
         new ShapeExtend_WireData (TopoDS::Wire(ws.Value(1)));
       sbdw->Reverse ( myFace );
       ws.SetValue ( 1, sbdw->Wire() );
-      SendWarning (Message_Msg ("FixAdvFace.FixOrientation.MSG5"));//Wire on face was reversed
+      SendWarning ( sbdw->Wire(), Message_Msg ( "FixAdvFace.FixOrientation.MSG5" ) );// Wire on face was reversed
       done = Standard_True;
 #ifdef DEBUG
       cout<<"Wire reversed"<<endl; // mise au point !
@@ -1179,10 +1208,7 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
       }
 
       if (sta == TopAbs_UNKNOWN) {    // ERREUR
-	Message_Msg MSG ("FixAdvFace.FixOrientation.MSG11"); //Cannot orient wire %d of %d
-	MSG.Arg (i);
-	MSG.Arg (nb);
-	SendWarning (MSG);
+        SendWarning ( aw, Message_Msg ( "FixAdvFace.FixOrientation.MSG11" ) );// Cannot orient wire
       } 
       else {
         MW.Bind(aw,IntWires);
@@ -1193,6 +1219,7 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
             ShapeExtend_WireData sewd (aw);
             sewd.Reverse(myFace);
             ws.SetValue (i,sewd.Wire());
+            SendWarning ( sewd.Wire(), Message_Msg ( "FixAdvFace.FixOrientation.MSG5" ) );// Wire on face was reversed
             aSeqReversed.Append(i);
             done = Standard_True;
             SI.Bind(ws.Value(i),1);
@@ -1223,6 +1250,7 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
             ShapeExtend_WireData sewd (aw);
             sewd.Reverse(myFace);
             ws.SetValue (i,sewd.Wire());
+            SendWarning ( sewd.Wire(), Message_Msg ( "FixAdvFace.FixOrientation.MSG5" ) );// Wire on face was reversed
             aSeqReversed.Append(i);
             done = Standard_True;
             MapWires.Bind(ws.Value(i),IW);
@@ -1235,6 +1263,7 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
             ShapeExtend_WireData sewd (aw);
             sewd.Reverse(myFace);
             ws.SetValue (i,sewd.Wire());
+            SendWarning ( sewd.Wire(), Message_Msg ( "FixAdvFace.FixOrientation.MSG5" ) );// Wire on face was reversed
             aSeqReversed.Append(i);
             done = Standard_True;
           }
@@ -1271,13 +1300,10 @@ Standard_Boolean ShapeFix_Face::FixOrientation(TopTools_DataMapOfShapeListOfShap
     myFace = TopoDS::Face ( S );
     BRepTools::Update(myFace);
     Standard_Integer k =1;
-    for( ; k <= aSeqReversed.Length();k++) {
-      Message_Msg MSG ("FixAdvFace.FixOrientation.MSG10"); //Wire %d of %d on face was reversed
-      MSG.Arg (aSeqReversed.Value(k));
-      MSG.Arg (nb);
-      SendWarning (MSG);
+    for( ; k <= aSeqReversed.Length(); k++ )
+    {
 #ifdef DEBUG
-	cout<<"Wire no "<<aSeqReversed.Value(k)<<" of "<<nb<<" reversed"<<endl; // mise au point !
+      cout<<"Wire no "<<aSeqReversed.Value(k)<<" of "<<nb<<" reversed"<<endl; // mise au point !
 #endif
     }
       
@@ -1444,14 +1470,14 @@ Standard_Boolean ShapeFix_Face::FixMissingSeam()
     // this means that degenerated edge should be added to one of poles, and
     // then usual procedure applied
     if ( ismodeu && mySurf->Surface()->IsKind(STANDARD_TYPE(Geom_SphericalSurface)) ) {
-      gp_Pnt2d p ( ( ismodeu < 0 ? 0. : 2.*PI ), ismodeu * 0.5 * PI );
+      gp_Pnt2d p ( ( ismodeu < 0 ? 0. : 2.*M_PI ), ismodeu * 0.5 * M_PI );
       gp_Dir2d d ( -ismodeu, 0. );
       Handle(Geom2d_Line) line = new Geom2d_Line ( p, d );
       TopoDS_Edge edge;
       B.MakeEdge ( edge );
       B.Degenerated ( edge, Standard_True );
       B.UpdateEdge ( edge, line, myFace, ::Precision::Confusion() );
-      B.Range ( edge, myFace, 0., 2*PI );
+      B.Range ( edge, myFace, 0., 2*M_PI );
       TopoDS_Vertex V;
       B.MakeVertex ( V, mySurf->Value ( p.X(), p.Y() ), ::Precision::Confusion() );
       V.Orientation(TopAbs_FORWARD);
@@ -1653,7 +1679,7 @@ Standard_Boolean ShapeFix_Face::FixMissingSeam()
     BRepTools::Update(myFace); //:p4
   }
 
-  SendWarning (Message_Msg ("FixAdvFace.FixMissingSeam.MSG0"));//Missing seam-edge added
+  SendWarning ( Message_Msg ( "FixAdvFace.FixMissingSeam.MSG0" ) );// Missing seam-edge added
   return Standard_True;
 }
 
@@ -1682,8 +1708,13 @@ Standard_Boolean ShapeFix_Face::FixSmallAreaWire()
         continue;
     TopoDS_Wire wire = TopoDS::Wire ( wi.Value() );
     Handle(ShapeAnalysis_Wire) saw = new ShapeAnalysis_Wire(wire,myFace,prec);
-    if ( saw->CheckSmallArea(prec) ) nbRemoved++;
-    else {
+    if ( saw->CheckSmallArea(prec) )
+    {
+      SendWarning ( wire, Message_Msg ("FixAdvFace.FixSmallAreaWire.MSG0") );// Null area wire detected, wire skipped
+      nbRemoved++;
+    }
+    else
+    {
       B.Add(face,wire);
       nbWires++;
     }
@@ -1701,7 +1732,6 @@ Standard_Boolean ShapeFix_Face::FixSmallAreaWire()
 #endif
   if ( ! Context().IsNull() ) Context()->Replace ( myFace, face );
   myFace = face;
-  SendWarning (Message_Msg ("FixAdvFace.FixSmallAreaWire.MSG0"));//Null area wire detected, wire skipped
   return Standard_True;
 }
 //=======================================================================
@@ -1910,12 +1940,10 @@ Standard_Boolean ShapeFix_Face::FixLoopWire(TopTools_SequenceOfShape& aResWires)
   }
   
   Standard_Boolean isDone =(aResWires.Length() && isClosed);
-  if(isDone && aResWires.Length() >1) {
-    
-      Message_Msg MSG ("FixAdvFace.FixLoopWire.MSG0"); //Wire was splitted on %d wires
-      MSG.Arg (aResWires.Length());
+  if(isDone && aResWires.Length() >1)
+  {
 #ifdef DEBUG
-      cout<<"Wire was splitted on "<<aResWires.Length()<<" wires"<< endl;
+    cout<<"Wire was splitted on "<<aResWires.Length()<<" wires"<< endl;
 #endif
   }
 
@@ -2223,4 +2251,230 @@ Standard_Boolean ShapeFix_Face::FixSplitFace(const TopTools_DataMapOfShapeListOf
   }
 
   return Standard_False;
+}
+
+//=======================================================================
+//function : IsPeriodicConicalLoop
+//purpose  : Checks whether the passed wire makes up a periodic loop on
+//           passed conical surface
+//=======================================================================
+
+static Standard_Boolean IsPeriodicConicalLoop(const Handle(Geom_ConicalSurface)& theSurf,
+                                              const TopoDS_Wire& theWire,
+                                              const Standard_Real theTolerance,
+                                              Standard_Real& theMinU,
+                                              Standard_Real& theMaxU,
+                                              Standard_Real& theMinV,
+                                              Standard_Real& theMaxV,
+                                              Standard_Boolean& isUDecrease)
+{
+  if ( theSurf.IsNull() )
+    Standard_False;
+
+  ShapeAnalysis_Edge aSAE;
+  TopLoc_Location aLoc;
+
+  Standard_Real aCumulDeltaU = 0.0, aCumulDeltaUAbs = 0.0;
+  Standard_Real aMinU = RealLast();
+  Standard_Real aMinV = aMinU;
+  Standard_Real aMaxU = -aMinU;
+  Standard_Real aMaxV = aMaxU;
+
+  // Iterate over the edges to check whether the wire is periodic on conical surface
+  BRepTools_WireExplorer aWireExp(theWire);
+  for ( ; aWireExp.More(); aWireExp.Next() )
+  {
+    const TopoDS_Edge& aCurrentEdge = aWireExp.Current();
+    Handle(Geom2d_Curve) aC2d;
+    Standard_Real aPFirst, aPLast;
+
+    aSAE.PCurve(aCurrentEdge, theSurf, aLoc, aC2d, aPFirst, aPLast, Standard_True);
+
+    if ( aC2d.IsNull() )
+      return Standard_False;
+
+    gp_Pnt2d aUVFirst = aC2d->Value(aPFirst),
+             aUVLast = aC2d->Value(aPLast);
+
+    Standard_Real aUFirst = aUVFirst.X(), aULast = aUVLast.X();
+    Standard_Real aVFirst = aUVFirst.Y(), aVLast = aUVLast.Y();
+
+    Standard_Real aCurMaxU = Max(aUFirst, aULast),
+                  aCurMinU = Min(aUFirst, aULast);
+    Standard_Real aCurMaxV = Max(aVFirst, aVLast),
+                  aCurMinV = Min(aVFirst, aVLast);
+    
+    if ( aCurMinU < aMinU )
+      aMinU = aCurMinU;
+    if ( aCurMaxU > aMaxU )
+      aMaxU = aCurMaxU;
+    if ( aCurMinV < aMinV )
+      aMinV = aCurMinV;
+    if ( aCurMaxV > aMaxV )
+      aMaxV = aCurMaxV;
+
+    Standard_Real aDeltaU = aULast - aUFirst;
+
+    aCumulDeltaU += aDeltaU;
+    aCumulDeltaUAbs += Abs(aDeltaU);
+  }
+
+  theMinU = aMinU;
+  theMaxU = aMaxU;
+  theMinV = aMinV;
+  theMaxV = aMaxV;
+  isUDecrease = (aCumulDeltaU < 0 ? Standard_True : Standard_False);
+
+  Standard_Boolean is2PIDelta = Abs(aCumulDeltaUAbs - 2*M_PI) <= theTolerance;
+  Standard_Boolean isAroundApex = Abs(theMaxU - theMinU) > 2*M_PI - theTolerance;
+
+  return is2PIDelta && isAroundApex;
+}
+
+//=======================================================================
+//function : FixPeriodicDegenerated
+//purpose  : 
+//=======================================================================
+
+Standard_Boolean ShapeFix_Face::FixPeriodicDegenerated() 
+{
+  /* =====================
+   *  Prepare fix routine
+   * ===================== */
+
+  if ( !Context().IsNull() )
+  {
+    TopoDS_Shape aSh = Context()->Apply(myFace);
+    myFace = TopoDS::Face(aSh);
+  }
+
+  /* ================================================
+   *  Check if fix can be applied on the passed face
+   * ================================================ */
+
+  // Collect all wires owned by the face
+  TopTools_SequenceOfShape aWireSeq;
+  for ( TopoDS_Iterator aWireIt(myFace, Standard_False); aWireIt.More(); aWireIt.Next() )
+  {
+    const TopoDS_Shape& aSubSh = aWireIt.Value();
+    if (  aSubSh.ShapeType() != TopAbs_WIRE || ( aSubSh.Orientation() != TopAbs_FORWARD &&
+                                                 aSubSh.Orientation() != TopAbs_REVERSED ) ) 
+      continue;
+
+    aWireSeq.Append( aWireIt.Value() );
+  }
+
+  // Get number of wires and surface
+  Standard_Integer aNbWires = aWireSeq.Length();
+  Handle(Geom_Surface) aSurface = BRep_Tool::Surface(myFace);
+
+  // Only single wires on conical surfaces are checked
+  if ( aNbWires != 1 || aSurface.IsNull() || 
+       aSurface->DynamicType() != STANDARD_TYPE(Geom_ConicalSurface) )
+    return Standard_False;
+
+  // Get the single wire
+  TopoDS_Wire aSoleWire = TopoDS::Wire( aWireSeq.Value(1) );
+
+  // Check whether this wire is belting the conical surface by period
+  Handle(Geom_ConicalSurface) aConeSurf = Handle(Geom_ConicalSurface)::DownCast(aSurface);
+  Standard_Real aMinLoopU = 0.0, aMaxLoopU = 0.0, aMinLoopV = 0.0, aMaxLoopV = 0.0;
+  Standard_Boolean isUDecrease = Standard_False;
+
+  Standard_Boolean isConicLoop = IsPeriodicConicalLoop(aConeSurf, aSoleWire, Precision(),
+                                                       aMinLoopU, aMaxLoopU,
+                                                       aMinLoopV, aMaxLoopV,
+                                                       isUDecrease);
+
+  if ( !isConicLoop )
+    return Standard_False;
+
+  /* ===============
+   *  Retrieve apex
+   * =============== */
+
+  // Get base circle of the conical surface (the circle it was built from)
+  Handle(Geom_Curve) aConeBaseCrv = aConeSurf->VIso(0.0);
+  Handle(Geom_Circle) aConeBaseCirc = Handle(Geom_Circle)::DownCast(aConeBaseCrv);
+
+  // Retrieve conical props
+  Standard_Real aConeBaseR = aConeBaseCirc->Radius();
+  Standard_Real aSemiAngle = aConeSurf->SemiAngle();
+
+  if ( fabs(aSemiAngle) <= Precision::Confusion() )
+    return Standard_False; // Bad surface
+
+  // Find the V parameter of the apex
+  Standard_Real aConeBaseH = aConeBaseR / Sin(aSemiAngle);
+  Standard_Real anApexV = -aConeBaseH;
+
+  // Get apex vertex
+  TopoDS_Vertex anApex = BRepBuilderAPI_MakeVertex( aConeSurf->Apex() );
+
+  // ====================================
+  //  Build degenerated edge in the apex
+  // ====================================
+        
+  TopoDS_Edge anApexEdge;
+  BRep_Builder aBuilder;
+  aBuilder.MakeEdge(anApexEdge);
+
+  // Check if positional relationship between the initial wire and apex
+  // line in 2D is going to be consistent
+  if ( fabs(anApexV - aMinLoopV) <= Precision() ||
+       fabs(anApexV - aMaxLoopV) <= Precision() ||
+      ( anApexV < aMaxLoopV && anApexV > aMinLoopV ) )
+    return Standard_False;
+
+  Handle(Geom2d_Line) anApexCurve2d;
+
+  // Apex curve below the wire
+  if ( anApexV < aMinLoopV )
+  {
+    anApexCurve2d = new Geom2d_Line( gp_Pnt2d(aMinLoopU, anApexV), gp_Dir2d(1, 0) );
+    if ( !isUDecrease )
+      aSoleWire.Reverse();
+  }
+
+  // Apex curve above the wire
+  if ( anApexV > aMaxLoopV )
+  {
+    anApexCurve2d = new Geom2d_Line( gp_Pnt2d(aMaxLoopU, anApexV), gp_Dir2d(-1, 0) );
+    if ( isUDecrease )
+      aSoleWire.Reverse();
+  }
+
+  // Create degenerated edge & wire for apex
+  aBuilder.UpdateEdge( anApexEdge, anApexCurve2d, myFace, Precision() );
+  aBuilder.Add( anApexEdge, anApex );
+  aBuilder.Add( anApexEdge, anApex.Reversed() );
+  aBuilder.Degenerated(anApexEdge, Standard_True);
+  aBuilder.Range( anApexEdge, 0, fabs(aMaxLoopU - aMinLoopU) );
+  TopoDS_Wire anApexWire = BRepBuilderAPI_MakeWire(anApexEdge);
+
+  // ===============================================================
+  //  Finalize the fix building new face and setting up the results
+  // ===============================================================
+
+  // Collect the resulting set of wires
+  TopTools_SequenceOfShape aNewWireSeq;
+  aNewWireSeq.Append(aSoleWire);
+  aNewWireSeq.Append(anApexWire);
+
+  // Assemble new face
+  TopoDS_Face aNewFace = TopoDS::Face( myFace.EmptyCopied() );
+  aNewFace.Orientation(TopAbs_FORWARD);
+  BRep_Builder aFaceBuilder;
+  for ( Standard_Integer i = 1; i <= aNewWireSeq.Length(); i++ )
+  {
+    TopoDS_Wire aNewWire = TopoDS::Wire( aNewWireSeq.Value(i) );
+    aFaceBuilder.Add(aNewFace, aNewWire);
+  }
+  aNewFace.Orientation( myFace.Orientation() );
+ 
+  // Adjust the resulting state of the healing tool
+  myResult = aNewFace;
+  Context()->Replace(myFace, myResult);
+
+  return Standard_True;
 }

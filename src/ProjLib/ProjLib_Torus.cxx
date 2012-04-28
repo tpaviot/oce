@@ -1,7 +1,23 @@
-// File:	ProjLib_Torus.cxx
-// Created:	Tue Aug 24 18:50:08 1993
-// Author:	Bruno DUMORTIER
-//		<dub@topsn3>
+// Created on: 1993-08-24
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ProjLib_Torus.ixx>
@@ -125,43 +141,43 @@ void  ProjLib_Torus::Project(const gp_Circ& C)
     Standard_Real V;
 
     if ( Z > 1.) {         
-      V = PI/2.;          // protection stupide 
+      V = M_PI/2.;          // protection stupide 
     }                     // contre les erreurs de calcul
     else if ( Z < -1.) {  // il arrive que Z soit legerement 
-      V = -PI/2;          // superieur a 1.
+      V = -M_PI/2;          // superieur a 1.
     }
     else {
       V = ASin(Z);
     }
 
     if (C.Radius() < myTorus.MajorRadius()) {
-      V = PI - V;
+      V = M_PI - V;
     }
     else if ( V < 0.) {
-      V += 2*PI;
+      V += 2*M_PI;
     }
     P1.SetY(V);
     P2.SetY(V);
     gp_Vec2d V2d ( P1, P2);
     // Normalement Abs( P1.X() - P2.X()) = PI/2
     // Si != PI/2, on a traverse la periode => On reverse la Direction
-    if ( Abs( P1.X() - P2.X()) > PI) V2d.Reverse();
+    if ( Abs( P1.X() - P2.X()) > M_PI) V2d.Reverse();
     
     gp_Dir2d D2( V2d);
     if ( P1.X() < 0) 
-      P1.SetX( 2*PI + P1.X());
+      P1.SetX( 2*M_PI + P1.X());
     myLin = gp_Lin2d( P1, D2);
   }
   else {
     // Iso U  -> U = angle( Xt, OC)
     Standard_Real U = Xt.AngleWithRef( OC, Xt^Yt);
     if ( U < 0.) 
-      U += 2*PI;
+      U += 2*M_PI;
     
     // Origine de la droite
     Standard_Real V1 = OC.AngleWithRef(Xc, OC^Zt);
     if ( V1 < 0.)
-      V1 += 2*PI;
+      V1 += 2*M_PI;
 
     gp_Pnt2d P1( U, V1);
     

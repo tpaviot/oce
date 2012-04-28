@@ -1,14 +1,21 @@
-// File:        TDF_LabelNode.cxx
-//              ------------------
-// Author:      DAUTRY Philippe
-//              <fid@fox.paris1.matra-dtv.fr>
-// Copyright:   Matra Datavision 1997
-
-// Version:     0.0
-// History:     Version Date            Purpose
-//              0.0     Feb  6 1997     Creation
-//              MSV 21.03.2003: protect against stack overflow in destructor
-
+// Created by: DAUTRY Philippe
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 #include <TDF_LabelNode.hxx>
 
@@ -73,21 +80,25 @@ TDF_LabelNode::TDF_LabelNode
 }
 
 //=======================================================================
-//function : ~TDF_LabelNode
+//function : Destroy
 //purpose  : 
 //=======================================================================
 
-TDF_LabelNode::~TDF_LabelNode()
+void TDF_LabelNode::Destroy (const TDF_HAllocator& theAllocator)
 {
   // MSV 21.03.2003: do not delete brother, rather delete all children in a loop
   //                 to avoid stack overflow
   while (myFirstChild != NULL) {
     TDF_LabelNode* aSecondChild = myFirstChild->Brother();
-    delete myFirstChild;
+    myFirstChild->Destroy (theAllocator);
     myFirstChild = aSecondChild;
   }
   myFirstAttribute.Nullify();
-  myLastFoundChild = NULL;      //jfa 10.01.2003
+  myFather = myBrother = myFirstChild = myLastFoundChild = NULL;
+  myTag = myFlags = 0;
+
+  // deallocate memory (does nothing for IncAllocator)
+  theAllocator->Free (this);
 }
 
 //=======================================================================

@@ -1,4 +1,21 @@
-//File Convert_ConeToBSplineSurface.cxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //JCV 16/10/91
 
 #include <Convert_ConeToBSplineSurface.ixx>
@@ -26,9 +43,9 @@ static void ComputePoles( const Standard_Real R,
   
   Standard_Integer i;
 
-  // Nombre de spans : ouverture maximale = 150 degres ( = PI / 1.2 rds)
+  // Number of spans : maximum opening = 150 degrees ( = PI / 1.2 rds)
   Standard_Integer 
-    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / PI) + 1;
+    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / M_PI) + 1;
   Standard_Real AlfaU = deltaU / ( nbUSpans * 2);
 
   Standard_Real x[TheNbVPoles];
@@ -78,7 +95,7 @@ Convert_ConeToBSplineSurface::Convert_ConeToBSplineSurface
 {
   Standard_Real deltaU = U2 - U1;
   Standard_DomainError_Raise_if( (Abs(V2-V1) <= Abs(Epsilon(V1))) ||
-				 (deltaU  >  2*PI)                || 
+				 (deltaU  >  2*M_PI)                || 
 				 (deltaU  <  0.  ),
 				 "Convert_ConeToBSplineSurface");
 
@@ -86,11 +103,11 @@ Convert_ConeToBSplineSurface::Convert_ConeToBSplineSurface
   isvperiodic = Standard_False;
 
   Standard_Integer i,j;
-  // construction du cone dans le repere de reference xOy.
+  // construction of cone in the reference mark xOy.
 
-  // Nombre de spans : ouverture maximale = 150 degres ( = PI / 1.2 rds)
+  // Number of spans : maximum opening = 150 degrees ( = PI / 1.2 rds)
   Standard_Integer 
-    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / PI) + 1;
+    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / M_PI) + 1;
   Standard_Real AlfaU = deltaU / ( nbUSpans * 2);
 
   nbUPoles = 2 * nbUSpans + 1;
@@ -112,8 +129,8 @@ Convert_ConeToBSplineSurface::Convert_ConeToBSplineSurface
   vknots(1) = V1; vmults(1) = 2;
   vknots(2) = V2; vmults(2) = 2;
 
-  // On replace la bspline dans le repere de la sphere.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the mark of the sphere.
+  // and calculate the weight of the bspline.
   Standard_Real W1;
   gp_Trsf Trsf;
   Trsf.SetTransformation( C.Position(), gp::XOY());
@@ -151,12 +168,12 @@ Convert_ConeToBSplineSurface::Convert_ConeToBSplineSurface
   isuperiodic = Standard_True;
   isvperiodic = Standard_False;
 
-  // construction du cone dans le repere de reference xOy.
+  // construction of the cone in the reference mark xOy.
 
   Standard_Real R = C.RefRadius();
   Standard_Real A = C.SemiAngle();
   
-  ComputePoles( R, A, 0., 2.*PI, V1, V2, poles); 
+  ComputePoles( R, A, 0., 2.*M_PI, V1, V2, poles); 
 
   nbUPoles = 6;
   nbUKnots = 4;
@@ -164,14 +181,14 @@ Convert_ConeToBSplineSurface::Convert_ConeToBSplineSurface
   nbVKnots = 2;
   
   for ( i = 1; i <= nbUKnots; i++) {
-    uknots(i) = ( i-1) * 2. * PI /3.;
+    uknots(i) = ( i-1) * 2. * M_PI /3.;
     umults(i) = 2;
   }
   vknots(1) = V1;  vmults(1) = 2;
   vknots(2) = V2;  vmults(2) = 2;
 
-  // On replace la bspline dans le repere du cone.
-  // et on calcule les poids de la bspline.
+  // replace bspline in the mark of the cone.
+  // and calculate the weight of bspline.
   Standard_Real W;
   gp_Trsf Trsf;
   Trsf.SetTransformation( C.Position(), gp::XOY());

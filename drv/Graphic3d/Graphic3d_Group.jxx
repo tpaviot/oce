@@ -37,44 +37,17 @@
 #ifndef _Graphic3d_Array1OfVertex_HeaderFile
 #include <Graphic3d_Array1OfVertex.hxx>
 #endif
-#ifndef _Graphic3d_Vector_HeaderFile
-#include <Graphic3d_Vector.hxx>
-#endif
-#ifndef _Graphic3d_Array1OfVertexN_HeaderFile
-#include <Graphic3d_Array1OfVertexN.hxx>
-#endif
-#ifndef _Graphic3d_Array1OfVertexNT_HeaderFile
-#include <Graphic3d_Array1OfVertexNT.hxx>
-#endif
 #ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
 #endif
 #ifndef _Graphic3d_Array1OfVertexC_HeaderFile
 #include <Graphic3d_Array1OfVertexC.hxx>
 #endif
-#ifndef _Graphic3d_Array2OfVertex_HeaderFile
-#include <Graphic3d_Array2OfVertex.hxx>
-#endif
-#ifndef _Graphic3d_Array2OfVertexN_HeaderFile
-#include <Graphic3d_Array2OfVertexN.hxx>
-#endif
-#ifndef _Graphic3d_Array2OfVertexNT_HeaderFile
-#include <Graphic3d_Array2OfVertexNT.hxx>
-#endif
-#ifndef _Aspect_Array1OfEdge_HeaderFile
-#include <Aspect_Array1OfEdge.hxx>
-#endif
-#ifndef _Graphic3d_Array1OfVertexNC_HeaderFile
-#include <Graphic3d_Array1OfVertexNC.hxx>
-#endif
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
 #endif
 #ifndef _Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Graphic3d_ArrayOfPrimitives.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
-#include <TColStd_Array1OfReal.hxx>
 #endif
 #ifndef _Graphic3d_Group_HeaderFile
 #include <Graphic3d_Group.hxx>

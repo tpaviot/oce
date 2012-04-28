@@ -143,6 +143,8 @@ Standard_Real myLength;
 Standard_Real myLength1;
 Standard_Real myLength2;
 Standard_Real myTolLen;
+Standard_Real myPrevS;
+Standard_Real myPrevU;
 Handle_TColStd_HArray1OfReal myUi_1;
 Handle_TColStd_HArray1OfReal mySi_1;
 Handle_TColStd_HArray1OfReal myUi_2;

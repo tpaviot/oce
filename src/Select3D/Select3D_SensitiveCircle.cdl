@@ -1,8 +1,23 @@
--- File:    Select3D_SensitiveCircle.cdl
--- Created: Tue Feb  6 11:35:02 1996
--- Author:  Robert COUBLANC
---      <rob@fidox>
----Copyright:    Matra Datavision 1996
+-- Created on: 1996-02-06
+-- Created by: Robert COUBLANC
+-- Copyright (c) 1996-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 
@@ -10,6 +25,8 @@ class SensitiveCircle from Select3D
 inherits SensitivePoly from Select3D
 
     ---Purpose: A framework to define sensitive 3D arcs and circles. 
+    -- In some cases this class can raise Standard_ConstructionError and 
+    -- Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
 uses
     Pnt             from gp,
     Pnt2d           from gp,
@@ -22,7 +39,16 @@ uses
     HArray1OfPnt    from TColgp,
     Array1OfPnt2d   from TColgp,
     Box2d           from Bnd,
-    Location        from TopLoc
+    Location        from TopLoc,
+    Pnt             from Select3D, 
+    Pnt2d           from Select3D, 
+    Projector       from Select3D,
+    SensitiveEntity from Select3D, 
+    Circle          from Geom
+
+raises
+    ConstructionError from Standard,
+    OutOfRange from Standard
 
 is
     Create (OwnerId      : EntityOwner from SelectBasics;
@@ -57,14 +83,17 @@ is
         -- owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle.
         -- apolyg3d is an array of consecutive triangles on the
         -- circle. The triangle i+1 lies on the intersection of the
-        -- tangents to the circle of i and i+2.
+        -- tangents to the circle of i and i+2. Note, that the first point of apolyg3d 
+        -- must be equal to the last point of apolyg3d. 
 
     Create(OwnerId  : EntityOwner from SelectBasics;
            apolyg3d : Array1OfPnt   from TColgp;
        FilledCircle : Boolean from Standard = Standard_False)
     returns mutable SensitiveCircle;
         ---Purpose: Constructs the sensitive circle object defined by the
-        -- owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle.
+        -- owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle. 
+        -- If the length of apolyg3d is more then 1, the first point of apolyg3d 
+        -- must be equal to the last point of apolyg3d. 
 
     Matches(me  :mutable; 
             X,Y : Real from Standard;
@@ -96,12 +125,29 @@ is
     GetPoint3d(me;rank:Integer) returns Pnt from gp;
         ---Level: Internal 
 
-    Dump(me; S: in out OStream;FullDump : Boolean from Standard = Standard_True) is redefined virtual;
+    Dump(me; S: in out OStream;FullDump : Boolean from Standard = Standard_True) is redefined virtual; 
+
+    GetConnected(me: mutable; theLocation : Location from TopLoc) 
+    returns SensitiveEntity from Select3D 
+    is redefined virtual; 
+        ---Level: Public 
+        ---Purpose: Returns the copy of this. 
+
+    Project(me: mutable;aProjector: Projector from Select3D) is redefined virtual;
+
+    ComputeCenter3D(me: mutable) is private; 
+        ---Level: Internal 
+        ---Purpose: Computes myCenter3D as the barycenter of points from mypolyg3d
 
 fields
 
     myFillStatus    : Boolean;
     myDetectedIndex : Integer from Standard; -- used for depth...
+    myCenter2D      : Pnt2d from Select3D; -- used for Matches()
+    myCenter3D      : Pnt from Select3D; -- used for Matches()
+    myCircle        : Circle from Geom;
+    mystart         : Real from Standard; -- used for GetConnected() 
+    myend           : Real from Standard; -- used for GetConnected()
     
 end SensitiveCircle;
 

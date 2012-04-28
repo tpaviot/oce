@@ -1,6 +1,21 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // AdvApp2Var_MathBase.cxx
-//
 #include <math.h>
 #include <AdvApp2Var_SysBase.hxx>
 #include <AdvApp2Var_Data_f2c.hxx>
@@ -255,50 +270,42 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
   /* System generated locals */
   integer i__1;
   doublereal d__1;
-  
+
   /* Local variables */
   static integer i__;
   static doublereal differ[100];
   static integer  ier;
-  long int iofset, j;
+  intptr_t iofset, j;
 
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        CALCULE LA DISTANCE ENTRE DEUX POINTS */
+/*        CALCULATE DISTANCE BETWEEN TWO POINTS */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        DISTANCE,POINT. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMEN: Dimension de l' espace. */
-/*        POINT1: Tableau des coordonnees du 1er point. */
-/*        POINT2: Tableau des coordonnees du 2eme point. */
+/*        NDIMEN: Space Dimension. */
+/*        POINT1: Table of coordinates of the 1st point. */
+/*        POINT2: Table of coordinates of the 2nd point. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        DISTAN: Distance des 2 points. */
+/*        DISTAN: Distance between 2 points. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     21-07-94 : PMN ; La valeur seuil pour alloc passe de 3 a 100 */
-/*     15-07-93 : PMN ; Protection des points... */
-/*     08-09-90 : DHU ; Utilisation de MZSNORM */
-/*     18-07-88 : RBD ; AJOUT D' UN EN TETE STANDARD */
-/*     ??-??-?? : XXX ; CREATION */
 /* > */
 /* ********************************************************************** 
 */
@@ -306,11 +313,11 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 
 /* ***********************************************************************
  */
-/*                      INITIALISATIONS */
+/*                      INITIALISATION */
 /* ***********************************************************************
  */
 
-    /* Parameter adjustments */
+    /* Parameter adjustment */
     --point2;
     --point1;
 
@@ -328,7 +335,7 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 	AdvApp2Var_SysBase::mcrrqst_(&c__8, ndimen, differ, &iofset, &ier);
     }
 
-/* --- Si l'allocation est refuse, on applique la methode trivial */
+/* --- If allocation is refused, the trivial method is applied. */
 
     if (ier > 0) {
 
@@ -341,7 +348,7 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 	}
 	*distan = sqrt(*distan);
 
-/* --- Sinon on utilise MZSNORM pour minimiser les risques d'overflow 
+/* --- Otherwise MZSNORM is used to minimize the risks of overflow 
 */
 
     } else {
@@ -357,11 +364,11 @@ int AdvApp2Var_MathBase::mdsptpt_(integer *ndimen,
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
-/* --- Desallocation dynamique */
+/* --- Dynamic Desallocation */
 
     if (iofset != 0) {
 	AdvApp2Var_SysBase::mcrdelt_(&c__8, ndimen, differ, &iofset, &ier);
@@ -413,61 +420,54 @@ int AdvApp2Var_MathBase::mmapcmp_(integer *ndim,
   /* System generated locals */
   integer crvold_dim1, crvold_offset, crvnew_dim1, crvnew_offset, i__1, 
   i__2;
-  
+
   /* Local variables */
   static integer ipair, nd, ndegre, impair, ibb, idg;
   //extern  int  mgsomsg_();//mgenmsg_(),
-  
-  
 
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Compression de la courbe CRVOLD en un tableau comprenant */
-/*        les coeff. de rang pair : CRVNEW(*,0,*) */
-/*        et de rang impair : CRVNEW(*,1,*). */
+/*        Compression of curve CRVOLD in a table of  */
+/*        coeff. of even : CRVNEW(*,0,*) */
+/*        and uneven range : CRVNEW(*,1,*). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        COMPRESSION,COURBE. */
+/*        COMPRESSION,CURVE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*     NDIM   : Dimension de l' espace. */
-/*     NCOFMX : Le nbre maximum de coeff. de la courbe a compacter. */
-/*     NCOEFF : Le nbre maximum de coeff. de la courbe compactee. */
-/*     CRVOLD : La courbe (0:NCOFMX-1,NDIM) a compacter. */
+/*     NDIM   : Space Dimension. */
+/*     NCOFMX : Max nb of coeff. of the curve to compress. */
+/*     NCOEFF : Max nb of coeff. of the compressed curve. */
+/*     CRVOLD : The curve (0:NCOFMX-1,NDIM) to compress. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     CRVNEW : La coube compactee en (0:(NCOEFF-1)/2,0,NDIM) (contenant 
+/*     CRVNEW : Curve compacted in (0:(NCOEFF-1)/2,0,NDIM) (containing 
 */
-/*              les termes pairs) et en (0:(NCOEFF-1)/2,1,NDIM) */
-/*              (contenant les termes impairs). */
+/*              even terms) and in (0:(NCOEFF-1)/2,1,NDIM) */
+/*              (containing uneven terms). */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Cette routine est utile pour preparer les coefficients d' une */
-/*     courbe dans une base orthogonale (Legendre ou Jacobi) avant de */
-/*     calculer les coefficients dans la base canonique [-1,1] par */
+/*     This routine is useful to prepare coefficients of a */
+/*     curve in an orthogonal base (Legendre or Jacobi) before */
+/*     calculating the coefficients in the canonical; base [-1,1] by */
 /*     MMJACAN. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     12-04-1989 : RBD ; Creation. */
-/* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
     /* Parameter adjustments */
     crvold_dim1 = *ncofmx;
@@ -536,60 +536,54 @@ int mmaper0_(integer *ncofmx,
   /* System generated locals */
   integer crvlgd_dim1, crvlgd_offset, i__1, i__2;
   doublereal d__1;
-  
+
   /* Local variables */
   static integer ncut;
-    static doublereal bidon;
+  static doublereal bidon;
   static integer ii, nd;
-  
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcule l' erreur d' approximation maxi faite lorsque l' on */
-/*        ne conserve que les premiers NCFNEW coefficients d' une courbe 
+/*        Calculate the max error of approximation done when */
+/*        only the first NCFNEW coefficients of a curve are preserved.  
 */
-/*        de degre NCOEFF-1 ecrite dans la base de Legendre (Jacobi */
-/*        d' ordre 0). */
+/*        Degree NCOEFF-1 written in the base of Legendre (Jacobi */
+/*        of  order 0). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,APPROXIMATION,ERREUR. */
+/*        LEGENDRE,POLYGON,APPROXIMATION,ERROR. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Degre maximum de la courbe. */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 de la courbe. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        NCOFMX : Max. degree of the curve. */
+/*        NDIMEN : Space dimension. */
+/*        NCOEFF : Degree +1 of the curve. */
+/*        CRVLGD : Curve the degree which of should be lowered. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary Table (max error on each dimension). 
 */
-/*        ERRMAX : La precision de l' approximation. */
+/*        ERRMAX : Precision of the approximation. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     08-08-1991: RBD; Creation. */
-/* > */
 /* ***********************************************************************
  */
 
 
-/* ------------------- Init pour calcul d' erreur ----------------------- 
+/* ------------------- Init to calculate an error ----------------------- 
 */
 
     /* Parameter adjustments */
@@ -605,7 +599,7 @@ int mmaper0_(integer *ncofmx,
 /* L100: */
     }
 
-/* ------ Degre minimum pouvant etre atteint : Arret a 1 ou NCFNEW ------ 
+/* ------ Minimum that can be reached : Stop at 1 or NCFNEW ------ 
 */
 
     ncut = 1;
@@ -613,27 +607,27 @@ int mmaper0_(integer *ncofmx,
 	ncut = *ncfnew + 1;
     }
 
-/* -------------- Elimination des coefficients de haut degre ----------- 
+/* -------------- Elimination of high degree coefficients----------- 
 */
-/* ----------- Boucle sur la serie de Legendre: NCUT --> NCOEFF -------- 
+/* ----------- Loop on the series of Legendre: NCUT --> NCOEFF -------- 
 */
 
     i__1 = *ncoeff;
     for (ii = ncut; ii <= i__1; ++ii) {
-/*   Facteur de renormalisation (Maximum de Li(t)). */
+/*   Factor of renormalization (Maximum of Li(t)). */
 	bidon = ((ii - 1) * 2. + 1.) / 2.;
 	bidon = sqrt(bidon);
 
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvlgd[ii + nd * crvlgd_dim1], abs(d__1)) * 
+	    ycvmax[nd] += (d__1 = crvlgd[ii + nd * crvlgd_dim1], advapp_abs(d__1)) * 
 		    bidon;
 /* L310: */
 	}
 /* L300: */
     }
 
-/* -------------- L'erreur est la norme du vecteur erreur --------------- 
+/* -------------- The error is the norm of the vector error --------------- 
 */
 
     *errmax = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
@@ -733,48 +727,40 @@ int mmaper2_(integer *ncofmx,
 
 /*     FONCTION : */
 /*     ---------- */
-/*        Calcule l' erreur d' approximation maxi faite lorsque l' on */
+/*        Calculate max approximation error i faite lorsque l' on */
 /*        ne conserve que les premiers NCFNEW coefficients d' une courbe 
 */
 /*        de degre NCOEFF-1 ecrite dans la base de Jacobi d' ordre 2. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        JACOBI,POLYGONE,APPROXIMATION,ERREUR. */
-
-/*     ARGUMENTS D'ENTREE : */
+/*        JACOBI, POLYGON, APPROXIMATION, ERROR. */
+/*
+/*  INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Degre maximum de la courbe. */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 de la courbe. */
-/*        CRVJAC : La courbe dont on veut baisser le degre. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        NCOFMX : Max. degree of the curve. */
+/*        NDIMEN : Space dimension. */
+/*        NCOEFF : Degree +1 of the curve. */
+/*        CRVLGD : Curve the degree which of should be lowered. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary Table (max error on each dimension). 
 */
-/*        ERRMAX : La precision de l' approximation. */
+/*        ERRMAX : Precision of the approximation. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
-
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     12-02-1992: RBD; Correction d'indice de lecture de XMAXJ */
-/*     08-08-1991: RBD; Creation. */
-/* > */
-/* ***********************************************************************
- */
 
 
-/* ------------------ Table des maximums de (1-t2)*Ji(t) ---------------- 
+/* ------------------ Table of maximums of (1-t2)*Ji(t) ---------------- 
 */
 
     /* Parameter adjustments */
@@ -787,7 +773,7 @@ int mmaper2_(integer *ncofmx,
 
 
 
-/* ------------------- Init pour calcul d' erreur ----------------------- 
+/* ------------------- Init for error  calculation ----------------------- 
 */
 
     i__1 = *ndimen;
@@ -796,33 +782,33 @@ int mmaper2_(integer *ncofmx,
 /* L100: */
     }
 
-/* ------ Degre minimum pouvant etre atteint : Arret a 3 ou NCFNEW ------ 
+/* ------ Min. Degree that can be attained : Stop at 3 or NCFNEW ------ 
 */
 
     idec = 3;
 /* Computing MAX */
     i__1 = idec, i__2 = *ncfnew + 1;
-    ncut = max(i__1,i__2);
+    ncut = advapp_max(i__1,i__2);
 
-/* -------------- Elimination des coefficients de haut degre ----------- 
+/* -------------- Removal of coefficients of high degree ----------- 
 */
-/* ----------- Boucle sur la serie de Jacobi :NCUT --> NCOEFF ---------- 
+/* ----------- Loop on the series of Jacobi :NCUT --> NCOEFF ---------- 
 */
 
     i__1 = *ncoeff;
     for (ii = ncut; ii <= i__1; ++ii) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = xmaxj[ii - idec];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], abs(d__1)) * 
+	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], advapp_abs(d__1)) * 
 		    bidon;
 /* L310: */
 	}
 /* L300: */
     }
 
-/* -------------- L'erreur est la norme du vecteur erreur --------------- 
+/* -------------- The error is the norm of the vector error --------------- 
 */
 
     *errmax = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
@@ -923,50 +909,44 @@ int mmaper4_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcule l' erreur d' approximation maxi faite lorsque l' on */
-/*        ne conserve que les premiers NCFNEW coefficients d' une courbe 
+/*        Calculate the max. error of approximation made when  */
+/*        only first NCFNEW coefficients of a curve are preserved 
 */
-/*        de degre NCOEFF-1 ecrite dans la base de Jacobi d' ordre 4. */
-
-/*     MOTS CLES : */
+/*        degree NCOEFF-1 is written in the base of Jacobi of order 4. */
+/*        KEYWORDS : */
 /*     ----------- */
-/*        JACOBI,POLYGONE,APPROXIMATION,ERREUR. */
+/*        LEGENDRE,POLYGON,APPROXIMATION,ERROR. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Degre maximum de la courbe. */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 de la courbe. */
-/*        CRVJAC : La courbe dont on veut baisser le degre. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        NCOFMX : Max. degree of the curve. */
+/*        NDIMEN : Space dimension. */
+/*        NCOEFF : Degree +1 of the curve. */
+/*        CRVJAC : Curve the degree which of should be lowered. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary Table (max error on each dimension). 
 */
-/*        ERRMAX : La precision de l' approximation. */
+/*        ERRMAX : Precision of the approximation. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
-/*     ----------------------------------- */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     12-02-1992: RBD; Correction d'indice de lecture de XMAXJ */
-/*     08-08-1991: RBD; Creation. */
-/* > */
+
 /* ***********************************************************************
  */
 
 
-/* ---------------- Table des maximums de ((1-t2)2)*Ji(t) --------------- 
+/* ---------------- Table of maximums of ((1-t2)2)*Ji(t) --------------- 
 */
 
     /* Parameter adjustments */
@@ -979,7 +959,7 @@ int mmaper4_(integer *ncofmx,
 
 
 
-/* ------------------- Init pour calcul d' erreur ----------------------- 
+/* ------------------- Init for error calculation ----------------------- 
 */
 
     i__1 = *ndimen;
@@ -988,38 +968,38 @@ int mmaper4_(integer *ncofmx,
 /* L100: */
     }
 
-/* ------ Degre minimum pouvant etre atteint : Arret a 5 ou NCFNEW ------ 
+/* ------ Min. Degree that can be attained : Stop at 5 or NCFNEW ------ 
 */
 
     idec = 5;
 /* Computing MAX */
     i__1 = idec, i__2 = *ncfnew + 1;
-    ncut = max(i__1,i__2);
+    ncut = advapp_max(i__1,i__2);
 
-/* -------------- Elimination des coefficients de haut degre ----------- 
+/* -------------- Removal of high degree coefficients ----------- 
 */
-/* ----------- Boucle sur la serie de Jacobi :NCUT --> NCOEFF ---------- 
+/* ----------- Loop on the series of Jacobi :NCUT --> NCOEFF ---------- 
 */
 
     i__1 = *ncoeff;
     for (ii = ncut; ii <= i__1; ++ii) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalisation. */
 	bidon = xmaxj[ii - idec];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], abs(d__1)) * 
+	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], advapp_abs(d__1)) * 
 		    bidon;
 /* L310: */
 	}
 /* L300: */
     }
 
-/* -------------- L'erreur est la norme du vecteur erreur --------------- 
+/* -------------- The error is the norm of the error vector --------------- 
 */
 
     *errmax = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- End -------------------------------- 
 */
 
     return 0;
@@ -1107,51 +1087,43 @@ int mmaper6_(integer *ncofmx,
 
 /* ***********************************************************************
  */
-
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcule l' erreur d' approximation maxi faite lorsque l' on */
-/*        ne conserve que les premiers NCFNEW coefficients d' une courbe 
+/*        Calculate the max. error of approximation made when  */
+/*        only first NCFNEW coefficients of a curve are preserved 
 */
-/*        de degre NCOEFF-1 ecrite dans la base de Jacobi d' ordre 6. */
-
-/*     MOTS CLES : */
+/*        degree NCOEFF-1 is written in the base of Jacobi of order 6. */
+/*        KEYWORDS : */
 /*     ----------- */
-/*        JACOBI,POLYGONE,APPROXIMATION,ERREUR. */
+/*        JACOBI,POLYGON,APPROXIMATION,ERROR. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Degre maximum de la courbe. */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 de la courbe. */
-/*        CRVJAC : La courbe dont on veut baisser le degre. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        NCOFMX : Max. degree of the curve. */
+/*        NDIMEN : Space dimension. */
+/*        NCOEFF : Degree +1 of the curve. */
+/*        CRVJAC : Curve the degree which of should be lowered. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary Table (max error on each dimension). 
 */
-/*        ERRMAX : La precision de l' approximation. */
+/*        ERRMAX : Precision of the approximation. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
-/*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     12-02-1992: RBD; Correction d'indice de lecture de XMAXJ */
-/*     08-08-1991: RBD; Creation. */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /* > */
 /* ***********************************************************************
  */
 
 
-/* ---------------- Table des maximums de ((1-t2)3)*Ji(t) --------------- 
+/* ---------------- Table of maximums of ((1-t2)3)*Ji(t) --------------- 
 */
 
     /* Parameter adjustments */
@@ -1164,7 +1136,7 @@ int mmaper6_(integer *ncofmx,
 
 
 
-/* ------------------- Init pour calcul d' erreur ----------------------- 
+/* ------------------- Init for error calculation ----------------------- 
 */
 
     i__1 = *ndimen;
@@ -1173,38 +1145,38 @@ int mmaper6_(integer *ncofmx,
 /* L100: */
     }
 
-/* ------ Degre minimum pouvant etre atteint : Arret a 3 ou NCFNEW ------ 
+/* ------ Min Degree that can be attained : Stop at 3 or NCFNEW ------ 
 */
 
     idec = 7;
 /* Computing MAX */
     i__1 = idec, i__2 = *ncfnew + 1;
-    ncut = max(i__1,i__2);
+    ncut = advapp_max(i__1,i__2);
 
-/* -------------- Elimination des coefficients de haut degre ----------- 
+/* -------------- Removal of high degree coefficients ----------- 
 */
-/* ----------- Boucle sur la serie de Jacobi :NCUT --> NCOEFF ---------- 
+/* ----------- Loop on the series of Jacobi :NCUT --> NCOEFF ---------- 
 */
 
     i__1 = *ncoeff;
     for (ii = ncut; ii <= i__1; ++ii) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = xmaxj[ii - idec];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], abs(d__1)) * 
+	    ycvmax[nd] += (d__1 = crvjac[ii + nd * crvjac_dim1], advapp_abs(d__1)) * 
 		    bidon;
 /* L310: */
 	}
 /* L300: */
     }
 
-/* -------------- L'erreur est la norme du vecteur erreur --------------- 
+/* -------------- The error is the norm of the vector error --------------- 
 */
 
     *errmax = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- END -------------------------------- 
 */
 
     return 0;
@@ -1227,59 +1199,48 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 {
   /* System generated locals */
   integer crvjac_dim1, crvjac_offset;
-  
+
   /* Local variables */
   static integer jord;
- 
 
 /* ********************************************************************** 
 */
-
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcule l' erreur d' approximation maxi faite lorsque l' on */
-/*        ne conserve que les premiers NCFNEW coefficients d' une courbe 
+/*        Calculate the max. error of approximation made when  */
+/*        only first NCFNEW coefficients of a curve are preserved 
 */
-/*        de degre NCOEFF-1 ecrite dans la base de Jacobi d' ordre */
-/*        IORDRE. */
-
-/*     MOTS CLES : */
+/*        degree NCOEFF-1 is written in the base of Jacobi of order IORDRE. */
+/*        KEYWORDS : */
 /*     ----------- */
-/*        JACOBI,LEGENDRE,POLYGONE,APPROXIMATION,ERREUR. */
+/*        JACOBI,LEGENDRE,POLYGON,APPROXIMATION,ERROR. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Degre maximum de la courbe. */
-/*        NDIMEN   : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 de la courbe. */
-/*        IORDRE : Ordre de continuite aux extremites. */
-/*        CRVJAC : La courbe dont on veut baisser le degre. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        NCOFMX : Max. degree of the curve. */
+/*        NDIMEN : Space dimension. */
+/*        NCOEFF : Degree +1 of the curve. */ 
+/*        IORDRE : Order of continuity at the extremities. */
+/*        CRVJAC : Curve the degree which of should be lowered. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire. */
-/*        ERRMAX : La precision de l' approximation. */
+/*        YCVMAX : Auxiliary Table (max error on each dimension). 
+*/
+/*        ERRMAX : Precision of the approximation. */
 /*        IERCOD = 0, OK */
-/*               = 1, L'ordre des contraintes (IORDRE) n'est pas dans */
-/*                    les valeurs autorisees. */
-
-/*     COMMONS UTILISES   : */
+/*               = 1, order of constraints (IORDRE) is not within the */
+/*                    autorized values. */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Annule et remplace MMAPERR. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     08-08-91: RBD; Creation d'apres MMAPERR, utilisation des nouveaux 
-*/
-/*                    majorants, appel aux MMAPER0, 2, 4 et 6. */
-/* > */
+/*     Canceled and replaced MMAPERR. */
 /* ***********************************************************************
  */
 
@@ -1292,7 +1253,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 
     /* Function Body */
     *iercod = 0;
-/* --> L'ordre des polynomes de Jacobi */
+/* --> Order of Jacobi polynoms */
     jord = ( *iordre + 1) << 1;
 
     if (jord == 0) {
@@ -1349,87 +1310,69 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     Creation de la courbe C2(v) definie sur (0,1) identique a la */
-/*     courbe C1(u) definie sur (U0,U1) (changement du parametre d' une */
-/*     courbe). */
+/*     Creation of curve C2(v) defined on (0,1) identic to */
+/*     curve C1(u) defined on (U0,U1) (change of parameter */
+/*     of a curve). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LIMITATION, RESTRICTION, COURBE */
+/*        LIMITATION, RESTRICTION, CURVE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*   NDIMAX : Dimensionnement de l' espace. */
-/*   NDIMEN   : Dimension de la courbe. */
-/*   NCOEFF : Nbre de coefficients de la courbe. */
-/*   CRVOLD : La courbe a limiter. */
-/*   UPARA0     : Borne min de l' intervalle de restriction de la courbe. 
+/*   NDIMAX : Space Dimensioning. */
+/*   NDIMEN : Curve Dimension. */
+/*   NCOEFF : Nb of coefficients of the curve. */
+/*   CRVOLD : Curve to be limited. */
+/*   UPARA0     : Min limit of the interval limiting the curve. 
 */
-/*   UPARA1     : Borne max de l' intervalle de restriction de la courbe. 
+/*   UPARA1     : Max limit of the interval limiting the curve. 
 */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   CRVNEW : La courbe relimitee, definie dans (0,1) et egale a */
-/*            CRVOLD definie dans (U0,U1). */
+/*   CRVNEW : Relimited curve, defined on (0,1) and equal to */
+/*            CRVOLD defined on (U0,U1). */
 /*   IERCOD : = 0, OK */
-/*            =10, Nbre de coeff. <1 ou > 61. */
+/*            =10, Nb of coeff. <1 or > 61. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
-
-/*      .Neant. */
-
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 /*           MAERMSG              MCRFILL              MVCVIN2 */
 /*           MVCVINV */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/* ---> L' algorithme employe dans le cas general est base sur le */
-/*     principe suivant : */
-/*        Soient S(t) = a0 + a1*t + a2*t**2 + ... de degre NCOEFF-1, et */
-/*               U(t) = b0 + b1*t, on calcule alors les coeff. de */
-/*        S(U(t)) de proche en proche a l' aide du tableau TBAUX. */
-/*        A chaque etape numero N (N=2 a NCOEFF), TBAUX(n) contient le */
-/*        n-ieme coefficient de U(t)**N pour n=1 a N. (RBD) */
+/* ---> Algorithm used in this general case is based on the */
+/*     following principle  : */
+/*        Let S(t) = a0 + a1*t + a2*t**2 + ... of degree NCOEFF-1, and */
+/*               U(t) = b0 + b1*t, then the coeff. of */
+/*        S(U(t)) are calculated step by step with help of table TBAUX. */
+/*        At each step number N (N=2 to NCOEFF), TBAUX(n) contains */
+/*        the n-th coefficient of U(t)**N for n=1 to N. (RBD) */
 /* ---> Reference : KNUTH, 'The Art of Computer Programming', */
 /*                        Vol. 2/'Seminumerical Algorithms', */
 /*                        Ex. 11 p:451 et solution p:562. (RBD) */
 
-/* ---> L' ecrasement de l' argument d' entree CRVOLD par CRVNEW est */
-/*     possible, c' est a dire que l' appel : */
+/* ---> Removal of the input argument CRVOLD by CRVNEW is */
+/*     possible, which means that the call : */
 /*       CALL MMARC41(NDIMAX,NDIMEN,NCOEFF,CURVE,UPARA0,UPARA1 */
 /*                  ,CURVE,IERCOD) */
-/*     est tout a fait LEGAL. (RBD) */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     18-09-1995 : JMF ; Verfor + implicit none */
-/*     18-10-88   : RBD ; Documentation de la FONCTION. */
-/*     24-06-88   : RBD ; Refonte totale du code pour le cas general : */
-/*                        optimisation et suppression du commun des CNP */
-/*                        qui ne sert plus. */
-/*     22-06-88   : NAK ; TRAITEMENT DES CAS PARTICULIERS SIMPLES ET */
-/*                        FREQUENTS. */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB. */
-/*     22-02-1988 : JJM ; Appel GERMSG -> MAERMSG. */
-/*     26-07-1985 : Remplacement de CAUX par CRVNEW, ajout du */
-/*                  common MBLANK. */
-/*     28-11-1985 : Creation JJM (NDIMAX en plus). */
+/*     is absolutely LEGAL. (RBD) */
 
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
-/*   Tableau auxiliaire des coefficients de (UPARA1-UPARA0)T+UPARA0 a */
-/*   la puissance N=1 a NCOEFF-1. */
+/*   Auxiliary table of coefficients of (UPARA1-UPARA0)T+UPARA0  */
+/*   with power N=1 to NCOEFF-1. */
 
 
     /* Parameter adjustments */
@@ -1444,7 +1387,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
     *iercod = 0;
 /* ********************************************************************** 
 */
-/*                CAS OU LE TRAITEMENT NE PEUT ETRE FAIT */
+/*                CASE WHEN PROCESSING CAN'T BE DONE */
 /* ********************************************************************** 
 */
     if (*ncoeff > 61 || *ncoeff < 1) {
@@ -1453,19 +1396,19 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
     }
 /* ********************************************************************** 
 */
-/*                         SI PAS DE CHANGEMENT */
+/*                         IF NO CHANGES */
 /* ********************************************************************** 
 */
     if (*ndimen == *ndimax && *upara0 == 0. && *upara1 == 1.) {
 	nboct = (*ndimax << 3) * *ncoeff;
-	AdvApp2Var_SysBase::mcrfill_((integer *)&nboct,
-		 (char *)&crvold[crvold_offset], 
-		 (char *)&crvnew[crvnew_offset]);
+	AdvApp2Var_SysBase::mcrfill_(&nboct,
+		 &crvold[crvold_offset], 
+		 &crvnew[crvnew_offset]);
 	goto L9999;
     }
 /* ********************************************************************** 
 */
-/*                    INVERSION 3D : TRAITEMENT RAPIDE */
+/*                    INVERSION 3D : FAST PROCESSING */
 /* ********************************************************************** 
 */
     if (*upara0 == 1. && *upara1 == 0.) {
@@ -1476,7 +1419,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 	}
 /* ******************************************************************
 **** */
-/*                    INVERSION 2D : TRAITEMENT RAPIDE */
+/*                    INVERSION 2D : FAST PROCESSING */
 /* ******************************************************************
 **** */
 	if (*ndimen == 2 && *ndimax == 2 && *ncoeff <= 21) {
@@ -1487,10 +1430,10 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
     }
 /* ********************************************************************** 
 */
-/*                          TRAITEMENT GENERAL */
+/*                          GENERAL PROCESSING */
 /* ********************************************************************** 
 */
-/* -------------------------- Initialisations --------------------------- 
+/* -------------------------- Initializations --------------------------- 
 */
 
     i__1 = *ndimen;
@@ -1504,13 +1447,13 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
     tbaux[0] = *upara0;
     tbaux[1] = *upara1 - *upara0;
 
-/* ----------------------- Calcul des coeff. de CRVNEW ------------------ 
+/* ----------------------- Calculation of coeff. of CRVNEW ------------------ 
 */
 
     i__1 = *ncoeff - 1;
     for (ncf = 2; ncf <= i__1; ++ncf) {
 
-/* ------------ Prise en compte du NCF-ieme coeff. de CRVOLD --------
+/* ------------ Take into account NCF-th coeff. of CRVOLD --------
 ---- */
 
 	i__2 = ncf - 1;
@@ -1533,7 +1476,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 /* L500: */
 	}
 
-/* --------- Calcul des (NCF+1) coeff. de ((U1-U0)*t + U0)**(NCF) ---
+/* --------- Calculate (NCF+1) coeff. of ((U1-U0)*t + U0)**(NCF) ---
 ---- */
 
 	bid = *upara1 - *upara0;
@@ -1547,7 +1490,7 @@ int AdvApp2Var_MathBase::mmaperx_(integer *ncofmx,
 /* L200: */
     }
 
-/* -------------- Prise en compte du dernier coeff. de CRVOLD ----------- 
+/* -------------- Take into account the last coeff. of CRVOLD ----------- 
 */
 
     i__1 = *ncoeff - 1;
@@ -1611,56 +1554,48 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
 
 
 /* ********************************************************************** 
+*//*     FUNCTION : */
+/*     ---------- */
+/*     Creation of curve C2(v) defined on [U0,U1] identic to */
+/*     curve C1(u) defined on [-1,1] (change of parameter */
+/*     of a curve) with INVERSION of indices of the resulting table. */
+
+/*     KEYWORDS : */
+/*     ----------- */
+/*        GENERALIZED LIMITATION, RESTRICTION, INVERSION, CURVE */
+
+/*     INPUT ARGUMENTS : */
+/*     ------------------ */
+/*   NDIMAX : Maximum Space Dimensioning. */
+/*   NDIMEN : Curve Dimension. */
+/*   NCOEFF : Nb of coefficients of the curve. */
+/*   CRVOLD : Curve to be limited. */
+/*   U0     : Min limit of the interval limiting the curve. 
+*/
+/*   U1     : Max limit of the interval limiting the curve. 
 */
 
-/*     FONCTION : */
-/*     ---------- */
-/*     Creation de la courbe C2(v) definie sur [U0,U1] identique a */
-/*     la courbe C1(u) definie sur [-1,1] (changement du parametre */
-/*     d' une courbe) avec INVERSION des indices du tableau resultat. */
-
-/*     MOTS CLES : */
-/*     ----------- */
-/*        LIMITATION GENERALISEE,RESTRICTION,INVERSION,COURBE */
-
-/*     ARGUMENTS D'ENTREE : */
-/*     ------------------ */
-/*   NDIMAX : Dimensionnement maximal de l' espace. */
-/*   NDIM   : Dimension de la courbe. */
-/*   NCOEFF : Nbre de coefficients de la courbe. */
-/*   CRVOLD : La courbe a limiter. */
-/*   U0     : Borne min de l' intervalle de restriction de la courbe. */
-/*   U1     : Borne max de l' intervalle de restriction de la courbe. */
-
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   CRVNEW : La courbe relimitee, definie dans [U0,U1] et egale a */
-/*            CRVOLD definie dans [-1,1]. */
+/*   CRVNEW : Relimited curve, defined on  [U0,U1] and equal to */
+/*            CRVOLD defined on [-1,1]. */
 /*   IERCOD : = 0, OK */
-/*            =10, Nbre de coeff. <1 ou > 61. */
-/*            =13, L' intervalle de variation demande est nul. */
-
-/*     COMMONS UTILISES   : */
+/*            =10, Nb of coeff. <1 or > 61. */
+/*            =13, the requested interval of variation is null. */
+/*     COMMONS USED   : */
 /*     ---------------- */
-
-/*     REFERENCES APPELEES   : */
-/*     ----------------------- */
-
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     REFERENCES CALLED   : */
+/*     ---------------------- */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*        21-11-1989 : RBD ; Correction Trait. general parametre X1. */
-/*        12-04-1989 : RBD ; Creation d' apres MMARC41. */
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
-/*   Tableau auxiliaire des coefficients de X1*T+X0 a */
-/*   la puissance N=1 a NCOEFF-1. */
+/*   Auxiliary table of coefficients of X1*T+X0 */
+/*   with power N=1 to NCOEFF-1. */
 
 
     /* Parameter adjustments */
@@ -1677,10 +1612,10 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
 	AdvApp2Var_SysBase::mgenmsg_("MMARCIN", 7L);
     }
 
-/* On teste au zero machine que l' intervalle d' arrivee n' est pas nul */
+/* At zero machine it is tested if the output interval is not null */
 
     AdvApp2Var_MathBase::mmveps3_(&eps3);
-    if ((d__1 = *u1 - *u0, abs(d__1)) < eps3) {
+    if ((d__1 = *u1 - *u0, advapp_abs(d__1)) < eps3) {
 	*iercod = 13;
 	goto L9999;
     }
@@ -1688,7 +1623,7 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
 
 /* ********************************************************************** 
 */
-/*                CAS OU LE TRAITEMENT NE PEUT ETRE FAIT */
+/*                CASE WHEN THE PROCESSING IS IMPOSSIBLE */
 /* ********************************************************************** 
 */
     if (*ncoeff > 61 || *ncoeff < 1) {
@@ -1697,8 +1632,8 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
     }
 /* ********************************************************************** 
 */
-/*          SI PAS DE CHANGEMENT DE L' INTERVALLE DE DEFINITION */
-/*          (SEULEMENT INVERSION DES INDICES DU TABLEAU CRVOLD) */
+/*          IF NO CHANGE OF THE INTERVAL OF DEFINITION */
+/*          (ONLY INVERSION OF INDICES OF TABLE CRVOLD) */
 /* ********************************************************************** 
 */
     if (*ndim == *ndimax && *u0 == -1. && *u1 == 1.) {
@@ -1708,7 +1643,7 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
     }
 /* ********************************************************************** 
 */
-/*          CAS OU LE NOUVEL INTERVALLE DE DEFINITION EST [0,1] */
+/*          CASE WHEN THE NEW INTERVAL OF DEFINITION IS [0,1] */
 /* ********************************************************************** 
 */
     if (*u0 == 0. && *u1 == 1.) {
@@ -1718,10 +1653,10 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
     }
 /* ********************************************************************** 
 */
-/*                          TRAITEMENT GENERAL */
+/*                          GENERAL PROCESSING */
 /* ********************************************************************** 
 */
-/* -------------------------- Initialisations --------------------------- 
+/* -------------------------- Initialization --------------------------- 
 */
 
     x0 = -(*u1 + *u0) / (*u1 - *u0);
@@ -1737,13 +1672,13 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
     tabaux[0] = x0;
     tabaux[1] = x1;
 
-/* ----------------------- Calcul des coeff. de CRVNEW ------------------ 
+/* ----------------------- Calculation of coeff. of CRVNEW ------------------ 
 */
 
     i__1 = *ncoeff - 1;
     for (ncf = 2; ncf <= i__1; ++ncf) {
 
-/* ------------ Prise en compte du NCF-ieme coeff. de CRVOLD --------
+/* ------------ Take into account the NCF-th coeff. of CRVOLD --------
 ---- */
 
 	i__2 = ncf - 1;
@@ -1766,7 +1701,7 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
 /* L500: */
 	}
 
-/* --------- Calcul des (NCF+1) coeff. de [X1*t + X0]**(NCF) --------
+/* --------- Calculation of (NCF+1) coeff. of [X1*t + X0]**(NCF) --------
 ---- */
 
 	tabaux[ncf] = tabaux[ncf - 1] * x1;
@@ -1779,7 +1714,7 @@ int AdvApp2Var_MathBase::mmarcin_(integer *ndimax,
 /* L200: */
     }
 
-/* -------------- Prise en compte du dernier coeff. de CRVOLD ----------- 
+/* -------------- Take into account the last coeff. of CRVOLD ----------- 
 */
 
     i__1 = *ncoeff - 1;
@@ -1841,62 +1776,52 @@ int mmatvec_(integer *nligne,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      EFFECUE LE PRODUIT MATRICE VECTEUR OU LA MATRICE EST SOUS FORME */
-/*      DE PROFIL */
+/*      Produce vector matrix in form of profile */
 
 
 /*     MOTS CLES : */
 /*     ----------- */
-/*      RESERVE, MATRICE, PRODUIT, VECTEUR, PROFIL */
+/*      RESERVE, MATRIX, PRODUCT, VECTOR, PROFILE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       NLIGNE : NOMBRE DE LIGNE DE LA MATRICE DES CONTRAINTES */
-/*       NCOLON :NOMBRE DE COLONNE DE LA MATRICE DES CONTRAINTES */
-/*       GNSTOC: NOMBRE DE COEFFICIENTS DANS LE PROFILE de la matrice */
-/*               GMATRI */
+/*       NLIGNE : Line number of the matrix of constraints */
+/*       NCOLON : Number of column of the matrix of constraints */
+/*       GNSTOC: Number of coefficients in the profile of matrix GMATRI */
 
-/*       GPOSIT: TABLE DE POSITIONNEMENT DES TERMES DE STOCKAGE */
-/*               GPOSIT(1,I) CONTIENT LE NOMBRE DE TERMES-1 SUR LA LIGNE 
-*/
-/*               I DANS LE PROFIL DE LA MATRICE */
-/*              GPOSIT(2,I) CONTIENT L'INDICE DE STOCKAGE DU TERME DIAGONA
-L*/
-/*               DE LA LIGNE I */
-/*               GPOSIT(3,I) CONTIENT L'INDICE COLONE DU PREMIER TERME DU 
-*/
-/*                           PROFIL DE LA LIGNE I */
-/*       GNSTOC: NOMBRE DE COEFFICIENTS DANS LE PROFILE de la matrice */
+/*       GPOSIT: Table of positioning of terms of storage */
+/*               GPOSIT(1,I) contains the number of terms-1 on the line I 
+/*               in the profile of the matrix. */
+/*              GPOSIT(2,I) contains the index of storage of diagonal term*/
+/*               of line I */
+/*               GPOSIT(3,I) contains the index of column of the first term of */
+/*                           profile of line I */
+/*       GNSTOC: Number of coefficients in the profile of matrix */
 /*               GMATRI */
-/*       GMATRI : MATRICE DES CONTRAINTES SOUS FORME DE PROFIL */
-/*       VECIN  : VECTEUR ENTRE */
-/*       DEBLIG : INDICE DE LIGNE A PARTIR DUQUEL ON VEUT CALCULER */
-/*                LE PRODUIT MATRICE VECTEUR */
-/*     ARGUMENTS DE SORTIE : */
+/*       GMATRI : Matrix of constraints in form of profile */
+/*       VECIN  : Input vector */
+/*       DEBLIG : Line indexusing which the vector matrix is calculated */
+/*               
+/*     OUTPUT ARGUMENTS */
 /*     --------------------- */
-/*       VECOUT : VECTEUR PRODUIT */
+/*       VECOUT : VECTOR PRODUCT */
 
-/*       IERCOD : CODE D'ERREUR */
+/*       IERCOD : ERROR CODE */
 
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     22-09-95 : ...; ECRITURE VERSION ORIGINALE. */
-/* > */
 /* ***********************************************************************
  */
 /*                            DECLARATIONS */
@@ -1926,11 +1851,11 @@ L*/
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                    Processing */
 /* ***********************************************************************
  */
-    AdvApp2Var_SysBase::mvriraz_((integer *)nligne, 
-	     (char *)&vecout[1]);
+    AdvApp2Var_SysBase::mvriraz_(nligne, 
+	     &vecout[1]);
     i__1 = *nligne;
     for (i__ = *deblig; i__ <= i__1; ++i__) {
 	somme = 0.;
@@ -1953,7 +1878,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
@@ -1962,7 +1887,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -1999,54 +1924,35 @@ int AdvApp2Var_MathBase::mmbulld_(integer *nbcoln,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        TRI PAR BULLE DES COLONNES D'UN TABLEAU D'ENTIER DANS LE SENS */
-/*     CROISSANT */
-
-/*     MOTS CLES : */
+/*        Parsing of columns of a table of integers in increasing order */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     POINT-ENTREE, TRI, BULLE */
-
-/*     ARGUMENTS D'ENTREE : */
+/*     POINT-ENTRY, PARSING */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       - NBCOLN : NOMBRE DE COLONNES DU TABLEAU */
-/*       - NBLIGN : NOMBRE DE LIGNE DU TABLEAU */
-/*       - DTABTR : TABLEAU D'ENTIER A TRIER */
-/*       - NUMCLE : POSITION DE LA CLE SUR LA COLONNE */
+/*       - NBCOLN : Number of columns in the table */
+/*       - NBLIGN : Number of lines in the table */
+/*       - DTABTR : Table of integers to be parsed */
+/*       - NUMCLE : Position of the key on the column */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*       - DTABTR : TABLEAU TRIE */
+/*       - DTABTR : Parsed table */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     PARTICULIEREMENT PERFORMANT LORSQUE LE TABLEAU EST PRESQUE TRIE */
-/*     Dans le cas contraire il vaut mieux utiliser MVSHELD */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     25-09-1995: PMN; ECRITURE VERSION ORIGINALE d'apres MBULLE */
-/* > */
-/* ***********************************************************************
- */
-/*                            DECLARATIONS */
-/* ***********************************************************************
- */
-
-
-
-/* ***********************************************************************
- */
-/*                      INITIALISATIONS */
+/*     Particularly performant if the table is almost parsed */
+/*     In the opposite case it is better to use MVSHELD */
 /* ***********************************************************************
  */
 
@@ -2066,15 +1972,15 @@ int AdvApp2Var_MathBase::mmbulld_(integer *nbcoln,
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
-/* ---->ALGORITHME EN N^2 / 2 ITERATION AU PLUS */
+/* ---->ALGORITHM in N^2 / 2 additional iteration */
 
     while(nchan != 0) {
 
-/* ----> PARCOURS DE GAUCHE A DROITE */
+/* ----> Parsing from left to the right */
 
 	nchan = 0;
 	i__1 = nite1;
@@ -2095,7 +2001,7 @@ int AdvApp2Var_MathBase::mmbulld_(integer *nbcoln,
 	}
 	--nite1;
 
-/* ----> PARCOURS DE DROITE A GAUCHE */
+/* ----> Parsing from right to the left */
 
 	if (nchan != 0) {
 	    nchan = 0;
@@ -2124,16 +2030,15 @@ int AdvApp2Var_MathBase::mmbulld_(integer *nbcoln,
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
-/* ----> PAS D'ERREURS EN APPELANT DES FONCTIONS, ON A UNIQUEMENT DES */
-/*      TESTS ET DES BOUCLES. */
+/* ----> No errors at calling functions, only tests and loops. */
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -2172,52 +2077,52 @@ int AdvApp2Var_MathBase::mmcdriv_(integer *ndimen,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     CALCUL DE LA MATRICE D'UNE COURBE DERIVEE D' ORDRE IDERIV. */
-/*     AVEC PARAMETRES D' ENTRE DISTINCT DES PARAMETRES DE SORTIE. */
+/*     Calculate matrix of a derivate curve of order IDERIV. */
+/*     with input parameters other than output parameters. */
 
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     COEFFICIENTS,COURBE,DERIVEE I-EME. */
+/*     COEFFICIENTS,CURVE,DERIVATE I-EME. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*   NDIMEN   : Dimension de l'espace (2 ou 3 en general) */
-/*   NCOEFF  : Le degre +1 de la courbe. */
-/*   COURBE  : Tableau des coefficients de la courbe. */
-/*   IDERIV : Ordre de derivation demande : 1=derivee 1ere, etc... */
+/*   NDIMEN  : Space dimension (2 or 3 in general) */
+/*   NCOEFF  : Degree +1 of the curve. */
+/*   COURBE  : Table of coefficients of the curve. */
+/*   IDERIV  : Required order of derivation : 1=1st derivate, etc... */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   NCOFDV  : Le degre +1 de la derivee d' ordre IDERIV de la courbe. */
-/*   CRVDRV  : Tableau des coefficients de la derivee d' ordre IDERIV */
-/*            de la courbe. */
+/*   NCOFDV  : Degree +1 of the derivative of order IDERIV of the curve. */
+/*   CRVDRV  : Table of coefficients of the derivative of order IDERIV */
+/*            of the curve. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* ---> Il est possible de prendre comme argument de sortie la courbe */
-/*     et le nombre de coeff passes en entree en faisant : */
+/* ---> It is possible to take as output argument the curve */
+/*     and the number of coeff passed at input by making : */
 /*        CALL MMCDRIV(NDIMEN,NCOEFF,COURBE,IDERIV,NCOEFF,COURBE). */
-/*     Apres cet appel, NCOEFF doone le nbre de coeff de la courbe */
-/*     derivee dont les coefficients sont stockes dans COURBE. */
-/*     Attention alors aux coefficients de COURBE de rang superieur a */
-/*     NCOEFF : il ne sont pas mis a zero. */
+/*     After this call, NCOEFF does the number of coeff of the derived */
+/*     curve the coefficients which of are stored in CURVE. */
+/*     Attention to the coefficients of CURVE of rank superior to */
+/*     NCOEFF : they are not set to zero. */
 
-/* ---> Algorithme : */
-/*     Le code ci dessous a ete ecrit a partir de l' algorithme suivant: 
+/* ---> Algorithm : */
+/*     The code below was written basing on the following algorithm: 
 */
 
-/*     Soit P(t) = a1 + a2*t + ... an*t**n. La derivee d' ordre k de P */
-/*     (comportant n-k coefficients) est calculee ainsi : */
+/*     Let P(t) = a1 + a2*t + ... an*t**n. Derivate of order k of P */
+/*     (containing n-k coefficients) is calculated as follows : */
 
 /*       Pk(t) = a(k+1)*CNP(k,k)*k! */
 /*             + a(k+2)*CNP(k+1,k)*k! * t */
@@ -2225,48 +2130,34 @@ int AdvApp2Var_MathBase::mmcdriv_(integer *ndimen,
 /*             . */
 /*             . */
 /*             + a(n)*CNP(n-1,k)*k! * t**(n-k-1). */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     09-01-90 : TE ; COMMON MCCNP -> MMCMCNP.INC & INDICES DES CNP */
-/*     07-10-88 : RBD; Creation. */
-/* > */
 /* ***********************************************************************
  */
 
 
-/* -------------- Cas ou l' ordre de derivee est plus ------------------- 
+/* -------------- Case when the order of derivative is  ------------------- 
 */
-/* ---------------- grand que le degre de la courbe --------------------- 
+/* ---------------- greater than the degree of the curve --------------------- 
 */
 
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a fournir les coefficients du binome (triangle de Pascal). */
+/*      Serves to provide the coefficients of binome (Pascal's triangle). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      Coeff du binome de 0 a 60. read only . init par block data */
+/*      Binomial coeff from 0 to 60. read only . init par block data */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Les coefficients du binome forment une matrice triangulaire. */
-/*     On complete cette matrice dans le tableau CNP par sa transposee. */
-/*     On a donc: CNP(I,J) = CNP(J,I) pour I et J = 0, ..., 60. */
+/*     Binomial coefficients form a triangular matrix. */
+/*     This matrix is completed in table CNP by its transposition. */
+/*     So: CNP(I,J) = CNP(J,I) for I and J = 0, ..., 60. */
 
-/*     L'initialisation est faite a partir du block-data MMLLL09.RES, */
-/*     cree par le programme MQINICNP.FOR (voir l'equipe (AC) ). */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     03-07-90 : RBD; Ajout commentaires (nom du block-data). */
-/*     19-06-90 : RBD; Le commun MMCMCNP remplace MCCNP qui est obsolete. 
-*/
-/*     08-01-90 : TE ; CREATION */
-/* > */
+/*     Initialization is done by block-data MMLLL09.RES, */
+/*     created by program MQINICNP.FOR). */
 /* ********************************************************************** 
 */
 
@@ -2295,10 +2186,10 @@ int AdvApp2Var_MathBase::mmcdriv_(integer *ndimen,
     }
 /* ********************************************************************** 
 */
-/*                         Traitement general */
+/*                        General processing */
 /* ********************************************************************** 
 */
-/* --------------------- Calcul de Factorielle(IDERIV) ------------------ 
+/* --------------------- Calculation of Factorial(IDERIV) ------------------ 
 */
 
     k = *ideriv;
@@ -2309,10 +2200,10 @@ int AdvApp2Var_MathBase::mmcdriv_(integer *ndimen,
 /* L50: */
     }
 
-/* ------------ Calcul des coeff de la derivee d' ordre IDERIV ---------- 
+/* ------------ Calculation of coeff of the derived of order IDERIV ---------- 
 */
-/* ---> Attention : le coefficient binomial C(n,m) est represente dans */
-/*                 MCCNP par CNP(N+1,M+1). */
+/* ---> Attention :  coefficient binomial C(n,m) is represented in */
+/*                 MCCNP by CNP(N+1,M+1). */
 
     i__1 = *ncoeff;
     for (j = k + 1; j <= i__1; ++j) {
@@ -2371,72 +2262,67 @@ int AdvApp2Var_MathBase::mmcglc1_(integer *ndimax,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Permet de calculer la longueur d'un arc de courbe POLYNOMIAL */
-/*      sur un intervalle [A,B] quelconque. */
+/*      Allows calculating the length of an arc of curve POLYNOMIAL */
+/*      on an interval [A,B]. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LONGUEUR,COURBE,GAUSS,PRIVE. */
+/*        LENGTH,CURVE,GAUSS,PRIVATE. */
 
-/*     ARGUMENTS DD'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*      NDIMAX : Nombre de lignes maximum des tableaux */
-/*               (i.e. nbre maxi des polynomes). */
-/*      NDIMEN : Dimension de l'espace (nbre de polynomes). */
-/*      NCOEFF : Nombre de coefficients du polynome. C'est le degre + 1. 
+/*      NDIMAX : Max. number of lines of tables */
+/*               (i.e. max. nb of polynoms). */
+/*      NDIMEN : Dimension of the space (nb of polynoms). */
+/*      NCOEFF : Nb of coefficients of the polynom. This is degree + 1. 
 */
-/*      COURBE(NDIMAX,NCOEFF) : Coefficients de la courbe. */
-/*      TDEBUT : Borne inferieure de l'intervalle d'integration pour */
-/*               le calcul de la longueur. */
-/*      TFINAL : Borne superieure de l'intervalle d'integration pour */
-/*               le calcul de la longueur. */
-/*      EPSILN : Precision DEMANDEE sur le calcul de la longueur. */
+/*      COURBE(NDIMAX,NCOEFF) : Coefficients of the curve. */
+/*      TDEBUT : Lower limit of the interval of integration for  */
+/*               length calculation. */
+/*      TFINAL : Upper limit of the interval of integration for */
+/*               length calculation. */
+/*      EPSILN : REQIRED precision for length calculation. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*      XLONGC : Longueur de l'arc de courbe */
-/*      ERREUR : Precision OBTENUE sur le calcul de la longueur. */
-/*      IERCOD : Code d' erreur, 0 OK, >0 Erreur grave. */
-/*               = 1 Trop d'iterations, on sort le meilleur resultat */
-/*                   calcule (a ERREUR pres) */
-/*               = 2 Pb MMLONCV (pas de resultat) */
-/*               = 3 NDIM ou NCOEFF invalides (pas de resultat) */
+/*      XLONGC : Length of the arc of curve */
+/*      ERREUR : Precision OBTAINED for the length calculation. */
+/*      IERCOD : Error code, 0 OK, >0 Serious error. */
+/*               = 1 Too much iterations, the best calculated resultat */
+/*                   (is almost ERROR) */
+/*               = 2 Pb MMLONCV (no result) */
+/*               = 3 NDIM or NCOEFF invalid (no result) */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*      Le polynome est en fait un ensemble de polynomes dont les */
-/*      coefficients sont ranges dans un tableau a 2 indices, chaque */
-/*      ligne etant relative a 1 polynome. */
-/*      Le polynome est defini par ses coefficients ordonne par les */
-/*      puissances croissantes de la variable. */
-/*      Tous les polynomes ont le meme nombre de coefficients (donc le */
-/*      meme degre). */
+/*      The polynom is actually a set of polynoms with */
+/*      coefficients arranged in a table of 2 indices, */
+/*      each line relative to the polynom. */
+/*      The polynom is defined by these coefficients ordered */
+/*      by increasing power of the variable. */
+/*      All polynoms have the same number of coefficients (the */
+/*      same degree). */
 
-/*      Ce programme annule et remplace LENGCV, MLONGC et MLENCV. */
+/*      This program cancels and replaces LENGCV, MLONGC and MLENCV. */
 
-/*      ATTENTION : si TDEBUT > TFINAL, la longueur est alors NEGATIVE. */
+/*      ATTENTION : if TDEBUT > TFINAL, the length is NEGATIVE. */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     22-04-1991: ALR; ITMAX en dur a 13 */
-/*     14-05-1990: RBD; Appel MITERR au lieu de MEPSNR pour ITMAX */
-/*     26-04-1990: RBD; Creation. */
 /* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 
-/* ------------------------ Initialisation generale --------------------- 
+/* ------------------------ General Initialization --------------------- 
 */
 
     /* Parameter adjustments */
@@ -2454,43 +2340,40 @@ int AdvApp2Var_MathBase::mmcglc1_(integer *ndimax,
     *xlongc = 0.;
     *erreur = 0.;
 
-/* ------ Test d'egalite des bornes */
+/* ------ Test of equity of limits */
 
     if (*tdebut == *tfinal) {
 	*iercod = 0;
 	goto L9999;
     }
 
-/* ------ Test de la dimension et du nombre de coefficients */
+/* ------ Test of the dimension and the number of coefficients */
 
     if (*ndimen <= 0 || *ncoeff <= 0) {
 	goto L9003;
     }
 
-/* ------ Nbre de decoupe en cours, nbre d'iteration, */
-/*       nbre max d'iterations */
+/* ----- Nb of current cutting, nb of iteration, */
+/*       max nb of iterations */
 
     ndec = 1;
     iter = 1;
 
-/* ALR     NE PAS APPELER DE NOMBRE D ITERATION VENANT */
-/*        D'ON NE SAIT OU !! 8 EST MIS EN DUR EXPRES !! */
-
     itmax = 13;
 
-/* ------ Variation du nombre d'intervalles */
-/*       On multiplie par 2 a chaque iteration */
+/* ------ Variation of the nb of intervals */
+/*       Multiplied by 2 at each iteration */
 
 L5000:
     pas = (*tfinal - *tdebut) / ndec;
     sottc = 0.;
 
-/* ------ Boucle sur tous les NDEC intervalles en cours */
+/* ------ Loop on all current NDEC intervals */
 
     i__1 = ndec;
     for (kk = 1; kk <= i__1; ++kk) {
 
-/* ------ Bornes de l'intervalle d'integration en cours */
+/* ------ Limits of the current integration interval */
 
 	tdeb = *tdebut + (kk - 1) * pas;
 	tfin = tdeb + pas;
@@ -2506,10 +2389,10 @@ L5000:
     }
 
 
-/* ----------------- Test sur le nombre maximum d'iterations ------------ 
+/* ----------------- Test of the maximum number of iterations ------------ 
 */
 
-/*  Test si passe au moins 1 fois ** */
+/*  Test if passes at least once ** */
 
     if (iter == 1) {
 	oldso = sottc;
@@ -2518,23 +2401,23 @@ L5000:
 	goto L5000;
     } else {
 
-/* ------ Prise en compte du DIF - Test de convergence */
+/* ------ Take into account DIF - Test of convergence */
 
 	++iter;
-	dif = (d__1 = sottc - oldso, abs(d__1));
+	dif = (d__1 = sottc - oldso, advapp_abs(d__1));
 
-/* ------ Si DIF est OK, on va sortir..., sinon: */
+/* ------ If DIF is OK, leave..., otherwise: */
 
 	if (dif > *epsiln) {
 
-/* ------ Si nbre iteration depasse, on sort */
+/* ------ If nb iteration exceeded, leave */
 
 	    if (iter > itmax) {
 		*iercod = 1;
 		goto L9000;
 	    } else {
 
-/* ------ Sinon on continue en decoupant l'intervalle initial.
+/* ------ Otherwise continue by cutting the initial interval.
  */
 
 		oldso = sottc;
@@ -2552,13 +2435,13 @@ L9000:
     *erreur = dif;
     goto L9999;
 
-/* ---> PB dans MMLONCV */
+/* ---> PB in MMLONCV */
 
 L9002:
     *iercod = 2;
     goto L9999;
 
-/* ---> NCOEFF ou NDIM invalides. */
+/* ---> NCOEFF or NDIM invalid. */
 
 L9003:
     *iercod = 3;
@@ -2604,49 +2487,44 @@ int mmchole_(integer *,//mxcoef,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ----------                                                  T */
-/*     Effectue la decomposition de choleski de la matrice A en S.S */
-/*     Calcul la matrice triangulaire inferieure S. */
+/*     Produce decomposition of choleski of matrix A in S.S */
+/*     Calculate inferior triangular matrix S. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     RESOLUTION, MFACTORISATION, MATRICE_PROFILE, CHOLESKI */
+/*     RESOLUTION, MFACTORISATION, MATRIX_PROFILE, CHOLESKI */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*     MXCOEF : Nombres maximale de termes dans le profile du hessien */
-/*     DIMENS : Dimension du probleme */
-/*     AMATRI(MXCOEF) : Coefficients du profil de la matrice */
-/*        APOSIT(1,*) : Distance diagonnale-extrimite gauche de la ligne 
+/*     MXCOEF : Max number of terms in the hessian profile */
+/*     DIMENS : Dimension of the problem */
+/*     AMATRI(MXCOEF) : Coefficients of the matrix profile */
+/*        APOSIT(1,*) : Distance diagonal-left extremity of the line 
 */
-/*        APOSIT(2,*) : Position des termes diagonnaux dans HESSIE */
-/*     POSUIV(MXCOEF): premiere ligne inferieure non hors profil */
+/*        APOSIT(2,*) : Position of diagonal terms in HESSIE */
+/*     POSUIV(MXCOEF) :  first line inferior not out of profile */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*      CHOMAT(MXCOEF) : Matrice triangulaire inferieure qui conserve */
-/*                       le profil de AMATRI. */
-/*      IERCOD : code d'erreur */
+/*      CHOMAT(MXCOEF) : Inferior triangular matrix preserving the */
+/*                       profile of AMATRI. */
+/*      IERCOD : error code */
 /*               = 0 : ok */
-/*               = 1 : Matrice non definie positive */
+/*               = 1 : non-defined positive matrix */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     NIVEAU DE DEBUG = 4 */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     14-02-1994: PMN; ECRITURE VERSION ORIGINALE. */
-/* > */
+/*     DEBUG LEVEL = 4 */
 /* ***********************************************************************
  */
 /*                            DECLARATIONS */
@@ -2676,7 +2554,7 @@ int mmchole_(integer *,//mxcoef,
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                    PROCESSING */
 /* ***********************************************************************
  */
 
@@ -2705,13 +2583,13 @@ int mmchole_(integer *,//mxcoef,
 	    i__ = posuiv[ptcou];
 	    ptcou = aposit[(i__ << 1) + 2] - (i__ - j);
 
-/*           Calcul la somme de S  .S   pour k =1 a j-1 */
+/*           Calculate the sum of S  .S   for k =1 a j-1 */
 /*                               ik  jk */
 	    somme = 0.;
 /* Computing MAX */
 	    i__2 = i__ - aposit[(i__ << 1) + 1], i__3 = j - aposit[(j << 1) + 
 		    1];
-	    kmin = max(i__2,i__3);
+	    kmin = advapp_max(i__2,i__3);
 	    i__2 = j - 1;
 	    for (k = kmin; k <= i__2; ++k) {
 		somme += chomat[aposit[(i__ << 1) + 2] - (i__ - k)] * chomat[
@@ -2726,7 +2604,7 @@ int mmchole_(integer *,//mxcoef,
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
@@ -2736,7 +2614,7 @@ L9101:
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                  RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -2779,76 +2657,64 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcul d' une courbe polynomiale verifiant des */
-/*        contraintes de passages (interpolation) */
-/*        de derivees premieres etc... aux extremites. */
-/*        Les parametres aux extremites sont supposes etre -1 et 1. */
+/*        Calculate a polynomial curve checking the  */
+/*        passage constraints (interpolation) */
+/*        from first derivatives, etc... to extremities. */
+/*        Parameters at the extremities are supposed to be -1 and 1. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     TOUS, AB_SPECIFI::CONTRAINTES&,INTERPOLATION,&COURBE */
+/*     ALL, AB_SPECIFI::CONSTRAINTS&,INTERPOLATION,&CURVE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*     NDIMEN : Dimension de l' espace. */
-/*     NCOFMX : Nre de coeff. de la courbe CRVRES sur chaque */
+/*     NDIMEN : Space Dimension. */
+/*     NCOFMX : Nb of coeff. of curve CRVRES on each */
 /*              dimension. */
-/*     NDERIV : Ordre de contrainte aux derivees : */
+/*     NDERIV : Order of constraint with derivatives : */
 /*              0 --> interpolation simple. */
-/*              1 --> interpolation+contraintes aux derivees 1eres. */
-/*              2 --> cas (0)+ (1) +   "         "     "     2emes. */
+/*              1 --> interpolation+constraints with 1st. */
+/*              2 --> cas (0)+ (1) +   "         "   2nd derivatives. */
 /*                 etc... */
-/*     CTRTES : Tableau des contraintes. */
-/*              CTRTES(*,1,*) = contraintes en -1. */
-/*              CTRTES(*,2,*) = contraintes en  1. */
+/*     CTRTES : Table of constraints. */
+/*              CTRTES(*,1,*) = contraints at -1. */
+/*              CTRTES(*,2,*) = contraints at  1. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     CRVRES : La courbe resultat definie dans (-1,1). */
-/*     TABAUX : Matrice auxilliaire. */
-/*     XMATRI : Matrice auxilliaire. */
+/*     CRVRES : Resulting curve defined on (-1,1). */
+/*     TABAUX : Auxilliary matrix. */
+/*     XMATRI : Auxilliary matrix. */
 
 /*     COMMONS UTILISES   : */
 /*     ---------------- */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 /*           MAERMSG         R*8  DFLOAT              MGENMSG */
 /*           MGSOMSG              MMEPS1               MMRSLW */
 /*      I*4  MNFNDEB */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*        Le polynome (ou la courbe) est calculee en resolvant un */
-/*        systeme d' equations lineaires. Si le degre impose est grand */
-/*        il est preferable de faire appel a une routine basee sur */
-/*        l' interpolation de Lagrange ou d' Hermite suivant le cas. */
-/*        (pour un degre eleve la matrice du systeme peut etre mal */
-/*        conditionnee). */
-/*        Cette routine retourne une courbe definie dans (-1,1). */
-/*        Pour un cas general, il faut utiliser MCVCTG. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     18-09-1995 : JMF ; Verfor */
-/*     14-02-1990 : RBD ; Correction declaration de NOMPRG. */
-/*     12-04-1989 : RBD ; Suppression des chaines de caracteres pour */
-/*                        les appel a MMRSLW. */
-/*     31-05-1988 : JJM ; Reorganisation contraintes. */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     22-02-1988 : JJM ; Appel GERMSG -> MAERMSG */
-/*     24-11-1987 : Cree par RBD. */
-
+/*        The polynom (or the curve) is calculated by solving a */
+/*        system of linear equations. If the imposed degree is great */
+/*        it is preferable to call a routine based on */
+/*        Lagrange or Hermite interpolation depending on the case. */
+/*        (for a high degree the matrix of the system can be badly */
+/*        conditionned). */
+/*        This routine returns a curve defined in (-1,1). */
+/*        In general case, it is necessary to use MCVCTG. */
 /* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 
     /* Parameter adjustments */
@@ -2870,12 +2736,12 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
     if (ibb >= 3) {
 	AdvApp2Var_SysBase::mgenmsg_("MMCVCTX", 7L);
     }
-/*   Les precisions. */
+/*   Precision. */
     AdvApp2Var_MathBase::mmeps1_(&eps1);
 
-/* ****************** CALCUL DES COEFFICIENTS PAIRS ********************* 
+/* ****************** CALCULATION OF EVEN COEFFICIENTS ********************* 
 */
-/* ------------------------- Initialisation ----------------------------- 
+/* ------------------------- Initialization ----------------------------- 
 */
 
     nordr = *nderiv + 1;
@@ -2885,7 +2751,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L100: */
     }
 
-/* ---------------- Calcul des termes correspondants aux derivees ------- 
+/* ---------------- Calculation of terms corresponding to derivatives ------- 
 */
 
     i__1 = nordr;
@@ -2899,7 +2765,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L200: */
     }
 
-/* ------------------ Ecriture du deuxieme membre ----------------------- 
+/* ------------------ Writing the second member ----------------------- 
 */
 
     moup1 = 1;
@@ -2916,7 +2782,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L400: */
     }
 
-/* -------------------- Resolution du systeme --------------------------- 
+/* -------------------- Resolution of the system --------------------------- 
 */
 
     mmrslw_(&nordr, &nordr, ndimen, &eps1, &tabaux[tabaux_offset], &xmatri[
@@ -2935,9 +2801,9 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L600: */
     }
 
-/* ***************** CALCUL DES COEFFICIENTS IMPAIRS ******************** 
+/* ***************** CALCULATION OF UNEVEN COEFFICIENTS ******************** 
 */
-/* ------------------------- Initialisation ----------------------------- 
+/* ------------------------- Initialization ----------------------------- 
 */
 
 
@@ -2947,7 +2813,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L1100: */
     }
 
-/* ---------------- Calcul des termes correspondants aux derivees ------- 
+/* ---------------- Calculation of terms corresponding to derivatives ------- 
 */
 
     i__1 = nordr;
@@ -2961,7 +2827,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L1200: */
     }
 
-/* ------------------ Ecriture du deuxieme membre ----------------------- 
+/* ------------------ Writing of the second member ----------------------- 
 */
 
     moup1 = -1;
@@ -2978,7 +2844,7 @@ int AdvApp2Var_MathBase::mmcvctx_(integer *ndimen,
 /* L1400: */
     }
 
-/* -------------------- Resolution du systeme --------------------------- 
+/* -------------------- Solution of the system --------------------------- 
 */
 
     mmrslw_(&nordr, &nordr, ndimen, &eps1, &tabaux[tabaux_offset], &xmatri[
@@ -3036,45 +2902,36 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Inversion des arguments de la courbe finale. */
+/*        Inversion of arguments of the final curve. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LISSAGE,COURBE */
+/*        SMOOTHING,CURVE */
 
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
 
-/*        NDIM: Dimension de l' espace. */
-/*        NCOEF: Degre du polynome. */
-/*        CURVEO: La courbe avant inversion. */
+/*        NDIM: Space Dimension. */
+/*        NCOEF: Degree of the polynom. */
+/*        CURVEO: The curve before inversion. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        CURVE: La courbe apres inversion. */
+/*        CURVE: The curve after inversion. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED : */
 /*     ---------------- */
-
 /*     REFERENCES APPELEES   : */
 /*     ----------------------- */
-
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*        15-07-1987: Cree par JJM. */
-
-/* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   The name of the routine */
     /* Parameter adjustments */
     curve_dim1 = *ndimax;
     curve_offset = curve_dim1 + 1;
@@ -3126,75 +2983,59 @@ int mmcvstd_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Transforme une courbe definie entre [-1,1] a [0,1]. */
+/*        Transform curve defined between [-1,1] into [0,1]. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LIMITATION,RESTRICTION,COURBE */
+/*        LIMITATION,RESTRICTION,CURVE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMAX : Dimensionnement de l' espace. */
-/*        NDIMEN   : Dimension de la courbe. */
-/*        NCOEFF : Degre de la courbe. */
-/*        CRVCAN(NCOFMX,NDIMEN): La courbe definie entre [-1,1]. */
+/*        NDIMAX : Dimension of the space. */
+/*        NDIMEN : Dimension of the curve. */
+/*        NCOEFF : Degree of the curve. */
+/*        CRVCAN(NCOFMX,NDIMEN): The curve is defined at the interval [-1,1]. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        COURBE(NDIMAX,NCOEFF): La courbe definie dans [0,1]. */
+/*        CURVE(NDIMAX,NCOEFF): Curve defined at the interval [0,1]. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     09-01-90 : TE ; COMMON MCCNP -> MMCMCNP.INC & INDICES DES CNP */
-/*     12-04-89 : RBD ; Appel MGSOMSG. */
-/*     22-02-88 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     19-02-88 : JJM ; Remontee des PARAMETER */
-/*     14-01-88 : JJM ; Suppression de MINOMBR */
-/*     28-11-86 : Creation JJM. */
 /* > */
 /* ***********************************************************************
  */
 
-/*   Le nom du programme. */
+/*   Name of the program. */
 
 
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a fournir les coefficients du binome (triangle de Pascal). */
+/*      Provides binomial coefficients (Pascal triangle). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      Coeff du binome de 0 a 60. read only . init par block data */
+/*      Binomial coefficient from 0 to 60. read only . init by block data */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Les coefficients du binome forment une matrice triangulaire. */
-/*     On complete cette matrice dans le tableau CNP par sa transposee. */
-/*     On a donc: CNP(I,J) = CNP(J,I) pour I et J = 0, ..., 60. */
+/*     Binomial coefficients form a triangular matrix. */
+/*     This matrix is completed in table CNP by its transposition. */
+/*     So: CNP(I,J) = CNP(J,I) for I and J = 0, ..., 60. */
 
-/*     L'initialisation est faite a partir du block-data MMLLL09.RES, */
-/*     cree par le programme MQINICNP.FOR (voir l'equipe (AC) ). */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     03-07-90 : RBD; Ajout commentaires (nom du block-data). */
-/*     19-06-90 : RBD; Le commun MMCMCNP remplace MCCNP qui est obsolete. 
-*/
-/*     08-01-90 : TE ; CREATION */
+/*     Initialization is done with block-data MMLLL09.RES, */
+/*     created by the program MQINICNP.FOR. */
 /* > */
 /* ********************************************************************** 
 */
@@ -3218,7 +3059,7 @@ int mmcvstd_(integer *ncofmx,
     }
     ndeg = *ncoeff - 1;
 
-/* ------------------ Construction de la courbe resultat ---------------- 
+/* ------------------ Construction of the resulting curve ---------------- 
 */
 
     i__1 = *ndimen;
@@ -3248,7 +3089,7 @@ int mmcvstd_(integer *ncofmx,
 /* L300: */
     }
 
-/* ------------------- Renormalisation de COURBE -------------------------
+/* ------------------- Renormalization of the CURVE -------------------------
  */
 
     bid = 1.;
@@ -3296,59 +3137,59 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcul des derivees successives de l' equation COURBE au */
-/*        parametres -1, 1 de l' ordre 0 jusqu' a l' ordre IORDRE */
-/*        inclus.Le calcul se fait sans connaitre les coefficients des */
-/*        derivees de la courbe. */
+/*        Calculation of successive derivatives of equation CURVE with */
+/*        parameters -1, 1 from order 0 to order IORDRE */
+/*        included. The calculation is produced without knowing the coefficients of */
+/*        derivatives of the curve. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        POSITIONNEMENT,EXTREMITES,COURBE,DERIVEE. */
+/*        POSITIONING,EXTREMITIES,CURVE,DERIVATIVE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        IORDRE   : Ordre maximal de calcul des derivees. */
-/*        NDIMEN   : Dimension de l' espace. */
-/*        NCOEFF  : Nombre de coefficients de la courbe (degre+1). */
-/*        COURBE  : Tableau des coefficients de la courbe. */
+/*        IORDRE  : Maximum order of calculation of derivatives. */
+/*        NDIMEN  : Dimension of the space. */
+/*        NCOEFF  : Number of coefficients of the curve (degree+1). */
+/*        COURBE  : Table of coefficients of the curve. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        POINTS    : Tableau des valeurs des derivees successives */
-/*                 au parametres -1.D0 et 1.D0. */
-/*        MFACTAB : Tableau auxiliaire pour le calcul de factorielle(I). 
+/*        POINTS    : Table of values of consecutive derivatives */
+/*                 of parameters -1.D0 and 1.D0. */
+/*        MFACTAB : Auxiliary table for calculation of factorial(I). 
 */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
-/*        Aucun. */
+/*        None. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* ---> ATTENTION, les coefficients de la courbe sont ranges */
-/*     "A L' ENVERS". */
+/* ---> ATTENTION, the coefficients of the curve are  */
+/*     in a reverse order. */
 
-/* ---> L' algorithme de calcul des derivees est base sur la */
-/*     generalisation du schema de Horner : */
+/* ---> The algorithm of calculation of derivatives is based on */
+/*     generalization of Horner scheme : */
 /*                          k             2 */
-/*          Soit C(t) = uk.t  + ... + u2.t  + u1.t + u0 . */
+/*          Let C(t) = uk.t  + ... + u2.t  + u1.t + u0 . */
 
 
-/*     On pose a0 = uk, b0 = 0, c0 = 0 et pour 1<=j<=k, on calcule : */
+/*      a0 = uk, b0 = 0, c0 = 0 and for 1<=j<=k, it is calculated : */
 
 /*          aj = a(j-1).x + u(k-j) */
 /*          bj = b(j-1).x + a(j-1) */
 /*          cj = c(j-1).x + b(j-1) */
 
-/*     On obtient alors : C(x) = ak, C'(x) = bk, C"(x) = 2.ck  . */
+/*     So : C(x) = ak, C'(x) = bk, C"(x) = 2.ck  . */
 
-/*     L' algorithme se generalise facilement pour le calcul de */
+/*     The algorithm is generalized easily for calculation of */
 
 /*               (n) */
 /*              C  (x)   . */
@@ -3359,18 +3200,11 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 /*      ---------              Vol. 2/Seminumerical Algorithms */
 /*                             Addison-Wesley Pub. Co. (1969) */
 /*                             pages 423-425. */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     29-01-1990 : RBD ; Correction de l' en-tete, mise au normes. */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     25-11-1987 : Cree par JJM (d' apres MDRCRV). */
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
     /* Parameter adjustments */
     points_dim2 = *iordre + 1;
@@ -3390,7 +3224,7 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 	goto L9999;
     }
 
-/* ------------------- Initialisation du tableau POINTS ----------------- 
+/* ------------------- Initialization of table POINTS ----------------- 
 */
 
     ndgcb = *ncoeff - 1;
@@ -3414,7 +3248,7 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 /* L300: */
     }
 
-/*    Calcul au parametre -1 et 1 */
+/*    Calculation with parameter -1 and 1 */
 
     i__1 = *ndimen;
     for (nd = 1; nd <= i__1; ++nd) {
@@ -3437,7 +3271,7 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 /* L600: */
     }
 
-/* --------------------- Multiplication par factorielle(I) -------------- 
+/* --------------------- Multiplication by factorial(I) -------------- 
 */
 
     if (*iordre > 1) {
@@ -3457,7 +3291,7 @@ int AdvApp2Var_MathBase::mmdrc11_(integer *iordre,
 	}
     }
 
-/* ---------------------------- Fin ------------------------------------- 
+/* ---------------------------- End ------------------------------------- 
 */
 
 L9999:
@@ -3488,59 +3322,58 @@ int mmdrvcb_(integer *ideriv,
   
 
 /* ***********************************************************************
- */
-
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Calcul des derivees successives de l' equation COURBE au */
-/*      parametre TPARAM de l' ordre 0 jusqu' a l' ordre IDERIV inclus. */
-/*      Le calcul se fait sans utiliser les coefficients des */
-/*      derivees de COURBE. */
 
-/*     MOTS CLES : */
+/*        Calculation of successive derivatives of equation CURVE with */
+/*        parameter TPARAM from order 0 to order IDERIV included. */
+/*        The calculation is produced without knowing the coefficients of */
+/*        derivatives of the CURVE. */
+
+/*     KEYWORDS : */
 /*     ----------- */
-/*      POSITIONNEMENT,PARAMETRE,COURBE,DERIVEE. */
+/*        POSITIONING,PARAMETER,CURVE,DERIVATIVE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*      IDERIV : Ordre maximal de calcul des derivees. */
-/*      NDIM   : Dimension de l' espace. */
-/*      NCOEFF : Nombre de coefficients de la courbe (degre+1). */
-/*      COURBE : Tableau des coefficients de la courbe. */
-/*      TPARAM : Valeur du parametre ou la courbe doit etre evaluee. */
+/*        IORDRE  : Maximum order of calculation of derivatives. */
+/*        NDIMEN  : Dimension of the space. */
+/*        NCOEFF  : Number of coefficients of the curve (degree+1). */
+/*        COURBE  : Table of coefficients of the curve. */
+/*        TPARAM  : Value of the parameter where the curve should be evaluated. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*      TABPNT : Tableau des valeurs des derivees successives */
-/*               au parametre TPARAM. */
-/*      IERCOD : 0 = OK, */
-/*               1 = Entrees incoherentes. */
+/*        TABPNT  : Table of values of consecutive derivatives */
+/*                  of parameter TPARAM. */
+  /*        IERCOD  : 0 = OK, */
+/*                    1 = incoherent input. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED  : */
 /*     ---------------- */
-/*        Aucun. */
+/*        None. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*     L' algorithme de calcul des derivees est base sur la */
-/*     generalisation du schema de Horner : */
+/*     The algorithm of  calculation of derivatives is based on */
+/*     generalization of the Horner scheme : */
 /*                          k             2 */
-/*          Soit C(t) = uk.t  + ... + u2.t  + u1.t + u0 . */
+/*          Let C(t) = uk.t  + ... + u2.t  + u1.t + u0 . */
 
 
-/*     On pose a0 = uk, b0 = 0, c0 = 0 et pour 1<=j<=k, on calcule : */
+/*      a0 = uk, b0 = 0, c0 = 0 and for 1<=j<=k, it is calculated : */
 
 /*          aj = a(j-1).x + u(k-j) */
 /*          bj = b(j-1).x + a(j-1) */
 /*          cj = c(j-1).x + b(j-1) */
 
-/*     On obtient alors : C(x) = ak, C'(x) = bk, C"(x) = 2.ck  . */
+/*     So, it is obtained : C(x) = ak, C'(x) = bk, C"(x) = 2.ck  . */
 
-/*     L' algorithme se generalise facilement pour le calcul de */
+/*     The algorithm can be easily generalized for the calculation of */
 
 /*               (n) */
 /*              C  (x)   . */
@@ -3552,18 +3385,13 @@ int mmdrvcb_(integer *ideriv,
 /*                             Addison-Wesley Pub. Co. (1969) */
 /*                             pages 423-425. */
 
-/* ----> Pour evaluer les derivees en 0 et en 1, il est preferable */
-/*      d' utiliser la routine MDRV01.FOR . */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     28-06-1988 : Cree par RBD. */
-
+/* ---> To evaluare derivatives at 0 and 1, it is preferable */
+/*      to use routine MDRV01.FOR . */
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
     /* Parameter adjustments */
     tabpnt_dim1 = *ndim;
@@ -3583,7 +3411,7 @@ int mmdrvcb_(integer *ideriv,
     }
     *iercod = 0;
 
-/* ------------------- Initialisation du tableau TABPNT ----------------- 
+/* ------------------- Initialization of table TABPNT ----------------- 
 */
 
     ndgcrb = *ncoeff - 1;
@@ -3597,11 +3425,11 @@ int mmdrvcb_(integer *ideriv,
 	goto L200;
     }
     iptpnt = *ndim * *ideriv;
-    AdvApp2Var_SysBase::mvriraz_((integer *)&iptpnt, 
-	     (char *)&tabpnt[tabpnt_dim1 + 1]);
+    AdvApp2Var_SysBase::mvriraz_(&iptpnt, 
+	     &tabpnt[tabpnt_dim1 + 1]);
 L200:
 
-/* ------------------------ Calcul au parametre TPARAM ------------------ 
+/* ------------------------ Calculation of parameter TPARAM ------------------ 
 */
 
     i__1 = ndgcrb;
@@ -3621,7 +3449,7 @@ L200:
 /* L500: */
     }
 
-/* --------------------- Multiplication par factorielle(I) ------------- 
+/* --------------------- Multiplication by factorial(I) ------------- 
 */
 
     i__1 = *ideriv;
@@ -3685,41 +3513,41 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
 
 /*     FONCTION : */
 /*     ---------- */
-/*     CALCUL DE LA VALEUR D'UNE COURBE DERIVEE D' ORDRE IDERIV EN */
-/*     UN POINT DE PARAMETRE TPARAM. */
+/*     Calculate the value of a derived curve of order IDERIV in */
+/*     a point of parameter TPARAM. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     POSITIONNEMENT,COURBE,DERIVEE D' ORDRE K. */
+/*     POSITIONING,CURVE,DERIVATIVE of ORDER K. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*   NCOEFF  : Le degre +1 de la courbe. */
-/*   NDIMEN   : Dimension de l'espace (2 ou 3 en general) */
-/*   COURBE  : Tableau des coefficients de la courbe. */
-/*   IDERIV : Ordre de derivation demande : 1=derivee 1ere, etc... */
-/*   TPARAM : Valeur du parametre de la courbe. */
+/*   NCOEFF  : Degree +1 of the curve. */
+/*   NDIMEN   : Dimension of the space (2 or 3 in general) */
+/*   COURBE  : Table of coefficients of the curve. */
+/*   IDERIV : Required order of derivation : 1=1st derivative, etc... */
+/*   TPARAM : Value of parameter of the curve. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS  : */
 /*     ------------------- */
-/*   PNTCRB  : Le point de parametre TPARAM sur la derivee d' ordre */
-/*            IDERIV de COURBE. */
+/*   PNTCRB  : Point of parameter TPARAM on the derivative of order */
+/*            IDERIV of CURVE. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 /*    MMCMCNP */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
-/*      .Neant. */
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*      None. */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*    Le code ci dessous a ete ecrit a partir de l' algorithme suivant : 
+/*    The code below was written basing on the following algorithm : 
 */
 
-/*    Soit P(t) = a1 + a2*t + ... an*t**n. La derivee d' ordre k de P */
-/*    (comportant n-k coefficients) est calculee ainsi : */
+/*    Let P(t) = a1 + a2*t + ... an*t**n. The derivative of order k of P */
+/*    (containing n-k coefficients) is calculated as follows : */
 
 /*       Pk(t) = a(k+1)*CNP(k,k)*k! */
 /*             + a(k+2)*CNP(k+1,k)*k! * t */
@@ -3728,47 +3556,34 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
 /*             . */
 /*             + a(n)*CNP(n-1,k)*k! * t**(n-k-1). */
 
-/*    L' evaluation se fait suivant un schema de Horner classique. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*      8-09-1995 : JMF ; Performance */
-/*     09-01-90 : TE ; COMMON MCCNP -> MMCMCNP.INC & INDICES DES CNP */
-/*     06-07-88 : RBD; Creation, sur une idee de GD. */
+/*    Evaluation is produced following the classic Horner scheme. */
 /* > */
 /* ***********************************************************************
  */
 
 
-/*     Factorielles (1 a 21)  caculees  sur VAX en R*16 */
+/*     Factorials (1 to 21)  caculated on VAX in R*16 */
 
 
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a fournir les coefficients du binome (triangle de Pascal). */
+/*      Serves to provide binomial coefficients (Pascal triangle). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      Coeff du binome de 0 a 60. read only . init par block data */
+/*      Binomial Coeff from 0 to 60. read only . init by block data */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Les coefficients du binome forment une matrice triangulaire. */
-/*     On complete cette matrice dans le tableau CNP par sa transposee. */
-/*     On a donc: CNP(I,J) = CNP(J,I) pour I et J = 0, ..., 60. */
+/*     Binomial coefficients form a triangular matrix. */
+/*     This matrix is completed in table CNP by its transposition. */
+/*     So: CNP(I,J) = CNP(J,I) for I and J = 0, ..., 60. */
 
-/*     L'initialisation est faite a partir du block-data MMLLL09.RES, */
-/*     cree par le programme MQINICNP.FOR (voir l'equipe (AC) ). */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     03-07-90 : RBD; Ajout commentaires (nom du block-data). */
-/*     19-06-90 : RBD; Le commun MMCMCNP remplace MCCNP qui est obsolete. 
-*/
-/*     08-01-90 : TE ; CREATION */
+/*     Initialization is done by block-data MMLLL09.RES, */
+/*     created by program MQINICNP.FOR. */
 /* > */
 /* ********************************************************************** 
 */
@@ -3786,9 +3601,9 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
 
     /* Function Body */
 
-/* -------------- Cas ou l' ordre de derivee est plus ------------------- 
+/* -------------- Case when the order of derivative is greater than ------------------- 
 */
-/* ---------------- grand que le degre de la courbe --------------------- 
+/* ---------------- the degree of the curve --------------------- 
 */
 
     if (*ideriv >= *ncoeff) {
@@ -3801,10 +3616,10 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
     }
 /* ********************************************************************** 
 */
-/*                         Traitement general */
+/*                         General processing*/
 /* ********************************************************************** 
 */
-/* --------------------- Calcul de Factorielle(IDERIV) ------------------ 
+/* --------------------- Calculation of Factorial(IDERIV) ------------------ 
 */
 
     k = *ideriv;
@@ -3819,10 +3634,10 @@ int AdvApp2Var_MathBase::mmdrvck_(integer *ncoeff,
 	}
     }
 
-/* ------- Calcul de la derivee d' ordre IDERIV de COURBE en TPARAM ----- 
+/* ------- Calculation of derivative of order IDERIV of CURVE in TPARAM ----- 
 */
-/* ---> Attention : le coefficient binomial C(n,m) est represente dans */
-/*                 MCCNP par CNP(N,M). */
+/* ---> Attention : binomial coefficient C(n,m) is represented in */
+/*                 MCCNP by CNP(N,M). */
 
     i__1 = *ndimen;
     for (nd = 1; nd <= i__1; ++nd) {
@@ -3861,44 +3676,38 @@ int AdvApp2Var_MathBase::mmeps1_(doublereal *epsilo)
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Extraction du EPS1 du COMMON MPRCSN. EPS1 est le zero spatial */
-/*     egal a 1.D-9 */
+/*        Extraction of EPS1 from COMMON MPRCSN. EPS1 is spatial zero  */
+/*     equal to 1.D-9 */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        MPRCSN,PRECISON,EPS1. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        Neant */
+/*        None */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        EPSILO : Valeur de EPS1 (Le zero spatial (10**-9)) */
+/*        EPSILO : Value of EPS1 (spatial zero (10**-9)) */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     EPS1 est le zero spatial ABSOLU , c.a.d. que l' on doit */
-/*     l' utiliser chaque fois que l' on veut tester si une variable */
-/*     est nulle. Par exemple, si la norme d' un vecteur est inferieure */
-/*     a EPS1, c' est que ce vecteur est NUL ! (lorsqu' on travaille en */
-/*     REAL*8) Il est vivement deconseille de tester des arguments par */
-/*     rapport a EPS1**2. Vu les erreurs d' arrondis inevitables lors */
-/*     des calculs, cela revient a tester par rapport a 0.D0. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     29-01-90 : DH ; Nettoyage */
-/*     27-07-88 : RBD; Ajouts de commentaires. */
-/*     29-10-87 : Cree par JJM. */
+/*     EPS1 is ABSOLUTE spatial zero, so it is necessary */
+/*     to use it whenever it is necessary to test if a variable */
+/*     is null. For example, if the norm of a vector is lower than */
+/*     EPS1, this vector is NULL ! (when one works in */
+/*     REAL*8) It is absolutely not advised to test arguments  */
+/*     compared to EPS1**2. Taking into account the rounding errors inevitable */
+/*     during calculations, this causes testing compared to 0.D0. */
 /* > */
 /* ***********************************************************************
  */
@@ -3908,49 +3717,41 @@ int AdvApp2Var_MathBase::mmeps1_(doublereal *epsilo)
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*          DONNE LES TOLERANCES DE NULLITE DANS STRIM */
-/*          AINSI QUE LES BORNES DES PROCESSUS ITERATIFS */
+/*          Gives tolerances of invalidity in stream */
+/*          as well as limits of iterative processes */
 
-/*          CONTEXTE GENERAL, MODIFIABLE PAR L'UTILISATEUR */
+/*          general context, modifiable by the user */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*          PARAMETRE , TOLERANCE */
+/*          PARAMETER , TOLERANCE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*       INITIALISATION   :  PROFIL , **VIA MPRFTX** A L' ENTREE DANS STRI
-M*/
+/*       INITIALISATION   :  profile , **VIA MPRFTX** at input in stream
+/*       loading of default values of the profile in MPRFTX at input */
+/*       in stream. They are preserved in local variables of MPRFTX */
 
-/*       CHARGEMENT DES VALEURS PAR DEFAUT DU PROFIL DANS MPRFTX A L'ENTRE
-E*/
-/*        DANS STRIM. ELLES SONT CONSERVEES DANS DES VARIABLES LOCALES */
-/*        DE MPRFTX */
+/*        Reset of default values                  : MDFINT */
+/*        Interactive modification by the user   : MDBINT */
 
-/*        REMISE DES VALEURS PAR DEFAUT                  : MDFINT */
-/*        MODIFICATION INTERACTIVE  PAR L'UTILISATEUR    : MDBINT */
-
-/*        FONCTION D'ACCES :  MMEPS1   ...  EPS1 */
+/*        ACCESS FUNCTION  :  MMEPS1   ...  EPS1 */
 /*                            MEPSPB  ...  EPS3,EPS4 */
 /*                            MEPSLN  ...  EPS2, NITERM , NITERR */
 /*                            MEPSNR  ...  EPS2 , NITERM */
 /*                            MITERR  ...  NITERR */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*      01-02-90 : NAK  ; ENTETE */
 /* > */
 /* ***********************************************************************
  */
 
-/*     NITERM : NB D'ITERATIONS MAXIMAL */
-/*     NITERR : NB D'ITERATIONS RAPIDES */
-/*     EPS1   : TOLERANCE DE DISTANCE 3D NULLE */
-/*     EPS2   : TOLERANCE DE DISTANCE PARAMETRIQUE NULLE */
-/*     EPS3   : TOLERANCE POUR EVITER LES DIVISIONS PAR 0.. */
-/*     EPS4   : TOLERANCE ANGULAIRE */
+/*     NITERM : max nb of iterations */
+/*     NITERR : nb of rapid iterations */
+/*     EPS1   : tolerance of 3D null distance */
+/*     EPS2   : tolerance of parametric null distance */
+/*     EPS3   : tolerance to avoid division by 0.. */
+/*     EPS4   : angular tolerance */
 
 
 
@@ -3981,75 +3782,60 @@ int mmexthi_(integer *ndegre,
 
 /*     FONCTION : */
 /*     ---------- */
-/*  Extrait du commun LDGRTL les poids des formules de quadrature de */
-/*  Gauss sur toutes les racines des polynomes de Legendre de degre */
-/*  NDEGRE defini sur [-1,1]. */
+/*  Extract of common LDGRTL the weight of formulas of  */
+/*  Gauss quadrature on all roots of Legendre polynoms of degree */
+/*  NDEGRE defined on [-1,1]. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     TOUS, AB_SPECIFI::COMMON&, EXTRACTION, &POIDS, &GAUSS. */
+/*     ALL, AB_SPECIFI::COMMON&, EXTRACTION, &WEIGHT, &GAUSS. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*   NDEGRE : Degre mathematique du polynome de Legendre. On doit avoir */
+/*   NDEGRE : Mathematic degree of Legendre polynom. It should have */
 /*            2 <= NDEGRE <= 61. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   HWGAUS : Le tableau des poids des formules de quadrature de Gauss */
-/*            relatifs aux NDEGRE racines d' un polynome de Legendre de */
+/*   HWGAUS : The table of weights of Gauss quadrature formulas */
+/*            relative to NDEGRE roots of a polynome de Legendre de */
 /*            degre NDEGRE. */
 
 /*     COMMONS UTILISES   : */
 /*     ---------------- */
 /*     MLGDRTL */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     ATTENTION: La condition sur NDEGRE ( 2 <= NDEGRE <= 61) n'est */
-/*     pas testee. A l'appelant de faire le test. */
+/*     ATTENTION: The condition on NDEGRE ( 2 <= NDEGRE <= 61) is not  */
+/*     tested. The caller should make the test.
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/* 23-03-90 : RBD ; Mise a jour en-tete, declaration variables locales, */
-/*                  correction poids associe racines negatives (bug */
-/*                  ENORME). */
-/* 15-01-90 : NAK ; MLGDRTL PAR INCLUDE MMLGDRT */
-/* 22-04-88 : JJM ; Creation. */
-/* > */
-/* ********************************************************************** 
-*/
-
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 
-/*   Le common MLGDRTL: */
-/*   Ce common comprend les racines POSITIVES des polynomes de Legendre */
-/*   ET les poids des formules de quadrature de Gauss sur toutes les */
-/*   racines POSITIVES des polynomes de Legendre. */
+/*   Common MLGDRTL: */
+/*   This common includes POSITIVE roots of Legendre polynims */
+/*   AND weights of Gauss quadrature formulas on all */
+/*   POSITIVE roots of Legendre polynoms. */
 
 
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*   Le common des racines de Legendre. */
+/*   The common of Legendre roots. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        BASE LEGENDRE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     11-01-90 : NAK  ; Creation version originale */
 /* > */
 /* ***********************************************************************
  */
@@ -4057,18 +3843,17 @@ int mmexthi_(integer *ndegre,
 
 
 
-/*   ROOTAB : Tableau de toutes les racines des polynomes de Legendre */
-/*   comprises entre ]0,1]. Elles sont rangees pour des degres croissants 
-*/
-/*   de 2 a 61. */
-/*   HILTAB : Tableau des interpolants de Legendre concernant ROOTAB. */
-/*   L' adressage est le meme. */
-/*   HI0TAB : Tableau des interpolants de Legendre pour la racine x=0 */
-/*   des polynomes de degre IMPAIR. */
-/*   RTLTB0 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre PAIR. */
-/*   RTLTB1 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre IMPAIR. */
+/*   ROOTAB : Table of all roots of Legendre polynoms */
+/*   within the interval [0,1]. They are ranked for the degrees increasing from */
+/*   2 to 61. */
+/*   HILTAB : Table of Legendre interpolators concerning ROOTAB. */
+/*   The adressing is the same. */
+/*   HI0TAB : Table of Legendre interpolators for root x=0 */
+/*   of polynoms of UNEVEN degree. */
+/*   RTLTB0 : Table of Li(uk) where uk are the roots of */
+/*  Legendre polynom of EVEN degree. */
+/*   RTLTB1 : Table of Li(uk) where uk are the roots of */
+/*  Legendre polynom of UNEVEN degree. */
 
 
 /************************************************************************
@@ -4085,17 +3870,17 @@ int mmexthi_(integer *ndegre,
     ndeg2 = *ndegre / 2;
     nmod2 = *ndegre % 2;
 
-/*   Adresse du poids de Gauss associe a la 1ere racine strictement */
-/*   positive du polynome de Legendre de degre NDEGRE dans MLGDRTL. */
+/*   Address of Gauss weight associated to the 1st strictly */
+/*   positive root of Legendre polynom of degree NDEGRE in MLGDRTL. */
 
     iadd = ndeg2 * (ndeg2 - 1) / 2 + 1;
 
-/*   Indice du 1er element de HWGAUS associe a la 1ere racine */
-/*   strictement positive du polynome de Legendre de degre NDEGRE. */
+/*   Index of the 1st HWGAUS element associated to the 1st strictly  */
+/*   positive root of Legendre polynom of degree NDEGRE. */
 
     ideb = (*ndegre + 1) / 2 + 1;
 
-/*   Lecture des poids associes aux racines strictement positives. */
+/*   Reading of weights associated to strictly positive roots. */
 
     i__1 = *ndegre;
     for (ii = ideb; ii <= i__1; ++ii) {
@@ -4104,7 +3889,7 @@ int mmexthi_(integer *ndegre,
 /* L100: */
     }
 
-/*   Pour les racines strictement negatives, les poids sont les memes. */
+/*   For strictly negative roots, the weight is the same. */
 /*   i.e HW(1) = HW(NDEGRE), HW(2) = HW(NDEGRE-1), etc... */
 
     i__1 = ndeg2;
@@ -4113,8 +3898,8 @@ int mmexthi_(integer *ndegre,
 /* L200: */
     }
 
-/*   Cas NDEGRE impair, 0 est racine du polynome de Legendre, on */
-/*   charge le poids de Gauss associe. */
+/*   Case of uneven NDEGRE, 0 is root of Legendre polynom, */
+/*   associated Gauss weights are loaded. */
 
     if (nmod2 == 1) {
 	hwgaus[ndeg2 + 1] = mlgdrtl_.hi0tab[ndeg2];
@@ -4147,93 +3932,75 @@ int mmextrl_(integer *ndegre,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/* Extrait du Common LDGRTL les racines du polynome de Legendre */
-/* de degre NDEGRE defini sur [-1,1]. */
+/* Extract of the Common LDGRTL of Legendre polynom roots */
+/* of degree NDEGRE defined on [-1,1]. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     TOUS, AB_SPECIFI::COMMON&, EXTRACTION, &RACINE, &LEGENDRE. */
+/*     ALL, AB_SPECIFI::COMMON&, EXTRACTION, &ROOT, &LEGENDRE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*   NDEGRE : Degre mathematique du polynome de Legendre. On doit avoir */
-/*            2 <= NDEGRE <= 61. */
+/*   NDEGRE : Mathematic degree of Legendre polynom.  */
+/*            It is required to have 2 <= NDEGRE <= 61. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   ROOTLG : Le tableau des racines du polynome de Legendre de degre */
-/*            NDEGRE et defini sur [-1,1]. */
+/*   ROOTLG : The table of roots of Legendre polynom of degree */
+/*            NDEGRE defined on [-1,1]. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 /*     MLGDRTL */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     ATTENTION: La condition sur NDEGRE ( 2 <= NDEGRE <= 61) n'est */
-/*     pas testee. A l'appelant de faire le test. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     23-03-90 : RBD ; Ajout commentaires + declarations. */
-/*     15-01-90 : NAK ; MLGDRTL PAR INCLUDE MMLGDRT */
-/*     04-03-88 : JJM ; Raccoursissement de MLGDRTL. */
-/*     22-02-88 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     23-10-87 : JJM ; Cree par JJM */
+/*     ATTENTION: Condition of NDEGRE ( 2 <= NDEGRE <= 61) is not */
+/*     tested. The caller should make the test. */
 /* > */
 /* ********************************************************************** 
 */
 
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 
-/*   Le common MLGDRTL: */
-/*   Ce common comprend les racines POSITIVES des polynomes de Legendre */
-/*   ET les poids des formules de quadrature de Gauss sur toutes les */
-/*   racines POSITIVES des polynomes de Legendre. */
+/*   Common MLGDRTL: */
+/*   This common includes POSITIVE roots of Legendre polynoms */
+/*   AND the weight of Gauss quadrature formulas on all */
+/*   POSITIVE roots of Legendre polynoms. */
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*   Le common des racines de Legendre. */
+/*   The common of Legendre roots. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        BASE LEGENDRE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
-/*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     11-01-90 : NAK  ; Creation version originale */
-/* > */
 /* ***********************************************************************
  */
 
-
-
-
-/*   ROOTAB : Tableau de toutes les racines des polynomes de Legendre */
-/*   comprises entre ]0,1]. Elles sont rangees pour des degres croissants 
-*/
-/*   de 2 a 61. */
-/*   HILTAB : Tableau des interpolants de Legendre concernant ROOTAB. */
-/*   L' adressage est le meme. */
-/*   HI0TAB : Tableau des interpolants de Legendre pour la racine x=0 */
-/*   des polynomes de degre IMPAIR. */
-/*   RTLTB0 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre PAIR. */
-/*   RTLTB1 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre IMPAIR. */
+/*   ROOTAB : Table of all roots of Legendre polynoms */
+/*   within the interval [0,1]. They are ranked for the degrees increasing from */
+/*   2 to 61. */
+/*   HILTAB : Table of Legendre interpolators concerning ROOTAB. */
+/*   The adressing is the same. */
+/*   HI0TAB : Table of Legendre interpolators for root x=0 */
+/*   of polynoms of UNEVEN degree. */
+/*   RTLTB0 : Table of Li(uk) where uk are the roots of */
+/*  Legendre polynom of EVEN degree. */
+/*   RTLTB1 : Table of Li(uk) where uk are the roots of */
+/*  Legendre polynom of UNEVEN degree. */
 
 
 /************************************************************************
@@ -4250,17 +4017,17 @@ int mmextrl_(integer *ndegre,
     ndeg2 = *ndegre / 2;
     nmod2 = *ndegre % 2;
 
-/*   Adresse de la 1ere racine strictement positive du polynome de */
-/*   Legendre de degre NDEGRE dans MLGDRTL. */
+/*   Address of the 1st strictly positive root of Legendre polynom */
+/*   of degree NDEGRE in MLGDRTL. */
 
     iadd = ndeg2 * (ndeg2 - 1) / 2 + 1;
 
-/*   Indice, dans ROOTLG, de la 1ere racine strictement positive du */
-/*   polynome de Legendre de degre NDEGRE. */
+/*   Indice, in ROOTLG, of the 1st strictly positive root */
+/*   of Legendre polynom of degree NDEGRE. */
 
     ideb = (*ndegre + 1) / 2 + 1;
 
-/*   Lecture des racines strictement positives. */
+/*   Reading of strictly positive roots. */
 
     i__1 = *ndegre;
     for (ii = ideb; ii <= i__1; ++ii) {
@@ -4269,9 +4036,9 @@ int mmextrl_(integer *ndegre,
 /* L100: */
     }
 
-/*   Les racines strictement negatives sont egales aux racines positives 
+/*   Strictly negative roots are equal to positive roots 
 */
-/*   au signe pres i.e RT(1) = -RT(NDEGRE), RT(2) = -RT(NDEGRE-1), etc... 
+/*   to the sign i.e RT(1) = -RT(NDEGRE), RT(2) = -RT(NDEGRE-1), etc... 
 */
 
     i__1 = ndeg2;
@@ -4280,7 +4047,7 @@ int mmextrl_(integer *ndegre,
 /* L200: */
     }
 
-/*   Cas NDEGRE impair, 0 est racine du polynome de Legendre. */
+/*   Case NDEGRE uneven, 0 is root of Legendre polynom. */
 
     if (nmod2 == 1) {
 	rootlg[ndeg2 + 1] = 0.;
@@ -4299,12 +4066,12 @@ int mmextrl_(integer *ndegre,
 //function : AdvApp2Var_MathBase::mmfmca8_
 //purpose  : 
 //=======================================================================
-int AdvApp2Var_MathBase::mmfmca8_(integer *ndimen,
-				  integer *ncoefu,
-				  integer *ncoefv,
-				  integer *ndimax, 
-				  integer *ncfumx, 
-				  integer *,//ncfvmx, 
+int AdvApp2Var_MathBase::mmfmca8_(const integer *ndimen,
+				  const integer *ncoefu,
+				  const integer *ncoefv,
+				  const integer *ndimax, 
+				  const integer *ncfumx, 
+				  const integer *,//ncfvmx, 
 				  doublereal *tabini,
 				  doublereal *tabres)
 
@@ -4321,51 +4088,47 @@ int AdvApp2Var_MathBase::mmfmca8_(integer *ndimen,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Expansion d' un tableau ne contenant que l' essentiel */
-/*        en un tableau de donnees plus grand. */
+/*        Expansion of a table containing only most important things into a  */
+/*        greater data table. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     TOUS, MATH_ACCES:: CARREAU&, DECOMPRESSION, &CARREAU */
+/*     ALL, MATH_ACCES:: CARREAU&, DECOMPRESSION, &CARREAU */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMEN: Dimension de l' espace de travail. */
-/*        NCOEFU: Le degre +1 du tableau en u. */
-/*        NCOEFV: Le degre +1 du tableau en v. */
-/*        NDIMAX: Dimension maxi de l' espace. */
-/*        NCFUMX: Degre maximal +1 du tableau en u. */
-/*        NCFVMX: Degre maximal +1 du tableau en v. */
-/*        TABINI: Le tableau a decompacter. */
+/*        NDIMEN: Dimension of the workspace. */
+/*        NCOEFU: Degree +1 of the table by u. */
+/*        NCOEFV: Degree +1 of the table by v. */
+/*        NDIMAX: Max dimension of the space. */
+/*        NCFUMX: Max Degree +1 of the table by u. */
+/*        NCFVMX: Max Degree +1 of the table by v. */
+/*        TABINI: The table to be decompressed. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        TABRES: Le tableau decompacte. */
+/*        TABRES: Decompressed table. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     L' appel suivant : */
+/*     The following call : */
 
 /*  CALL MMFMCA8(NDIMEN,NCOEFU,NCOEFV,NDIMAX,NCFUMX,NCFVMX,TABINI,TABINI) 
 */
 
-/*     ou TABINI est un argument d' entree/sortie, est possible pourvu */
-/*     que l' appelant ait declare TABINI en (NDIMAX,NCFUMX,NCFVMX) */
+/*     where TABINI is input/output argument, is possible provided */
+/*     that the caller has declared TABINI in (NDIMAX,NCFUMX,NCFVMX) */
 
-/*     ATTENTION : on ne verifie pas que NDIMAX >= NDIMEN, */
-/*                 NCOEFU >= NCFMXU et NCOEFV >= NCFMXV. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     03-08-1989 : RBD; Creation */
+/*     ATTENTION : it is not checked that NDIMAX >= NDIMEN, */
+/*                 NCOEFU >= NCFMXU and NCOEFV >= NCFMXV. */
 /* > */
 /* ********************************************************************** 
 */
@@ -4411,9 +4174,9 @@ L1000:
     }
     ilong = (*ndimen << 3) * *ncoefu;
     for (k = *ncoefv; k >= 1; --k) {
-	AdvApp2Var_SysBase::mcrfill_((integer *)&ilong, 
-		 (char *)&tabini[(k * tabini_dim2 + 1) * tabini_dim1 + 1], 
-		 (char *)&tabres[(k * tabres_dim2 + 1) * tabres_dim1 + 1]);
+	AdvApp2Var_SysBase::mcrfill_(&ilong, 
+		 &tabini[(k * tabini_dim2 + 1) * tabini_dim1 + 1], 
+		 &tabres[(k * tabres_dim2 + 1) * tabres_dim1 + 1]);
 /* L500: */
     }
     goto L9999;
@@ -4423,9 +4186,9 @@ L1000:
 
 L2000:
     ilong = (*ndimen << 3) * *ncoefu * *ncoefv;
-    AdvApp2Var_SysBase::mcrfill_((integer *)&ilong, 
-	     (char *)&tabini[tabini_offset], 
-	     (char *)&tabres[tabres_offset]);
+    AdvApp2Var_SysBase::mcrfill_(&ilong, 
+	     &tabini[tabini_offset], 
+	     &tabres[tabres_offset]);
     goto L9999;
 
 /* ---------------------------- The end --------------------------------- 
@@ -4461,55 +4224,51 @@ L9999:
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Compression d' un tableau de donnees en un tableau ne */
-/*        contenant que l' essentiel (Le tableau d' entree n' est */
-/*        pas ecrase). */
+/*        Compression of a data table in a table */
+/*        containing only the main data (the input table is not removed). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS: */
 /*     ----------- */
-/*     TOUS, MATH_ACCES:: CARREAU&, COMPRESSION, &CARREAU */
+/*     ALL, MATH_ACCES:: CARREAU&, COMPRESSION, &CARREAU */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMAX: Dimension maxi de l' espace. */
-/*        NCFUMX: Degre maximal +1 du tableau en u. */
-/*        NCFVMX: Degre maximal +1 du tableau en v. */
-/*        NDIMEN: Dimension de l' espace de travail. */
-/*        NCOEFU: Le degre +1 du tableau en u. */
-/*        NCOEFV: Le degre +1 du tableau en v. */
-/*        TABINI: Le tableau a compacter. */
+/*        NDIMAX: Max dimension of the space. */
+/*        NCFUMX: Max degree +1 of the table by u. */
+/*        NCFVMX: Max degree +1 of the table by v. */
+/*        NDIMEN: Dimension of the workspace. */
+/*        NCOEFU: Degree +1 of the table by u. */
+/*        NCOEFV: Degree +1 of the table by v. */
+/*        TABINI: The table to compress. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        TABRES: Le tableau compacte. */
+/*        TABRES: The compressed table. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     L' appel suivant : */
+/*     The following call : */
 
 /* CALL MMFMCA9(NDIMAX,NCFUMX,NCFVMX,NDIMEN,NCOEFU,NCOEFV,TABINI,TABINI) 
 */
 
-/*     ou TABINI est un argument d' entree/sortie, est possible pourvu */
-/*     que l' appelant ait bien verifie que : */
+/*     where TABINI is input/output argument, is possible provided */
+/*     that the caller has checked that : */
 
 /*            NDIMAX > NDIMEN, */
-/*         ou NDIMAX = NDIMEN et NCFUMX > NCOEFU */
-/*         ou NDIMAX = NDIMEN, NCFUMX = NCOEFU et NCFVMX > NCOEFV */
+/*         or NDIMAX = NDIMEN and NCFUMX > NCOEFU */
+/*         or  NDIMAX = NDIMEN, NCFUMX = NCOEFU and NCFVMX > NCOEFV */
 
-/*     Ces conditions ne sont pas testees dans le programme. */
+/*     These conditions are not tested in the program. */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     18-01-199O : RBD ; Creation. */
 /* > */
 /* ********************************************************************** 
 */
@@ -4559,9 +4318,9 @@ L1000:
     ilong = (*ndimen << 3) * *ncoefu;
     i__1 = *ncoefv;
     for (k = 1; k <= i__1; ++k) {
-	AdvApp2Var_SysBase::mcrfill_((integer *)&ilong, 
-		 (char *)&tabini[(k * tabini_dim2 + 1) * tabini_dim1 + 1], 
-		 (char *)&tabres[(k * tabres_dim2 + 1) * tabres_dim1 + 1]);
+	AdvApp2Var_SysBase::mcrfill_(&ilong, 
+		 &tabini[(k * tabini_dim2 + 1) * tabini_dim1 + 1], 
+		 &tabres[(k * tabres_dim2 + 1) * tabres_dim1 + 1]);
 /* L500: */
     }
     goto L9999;
@@ -4571,9 +4330,9 @@ L1000:
 
 L2000:
     ilong = (*ndimen << 3) * *ncoefu * *ncoefv;
-    AdvApp2Var_SysBase::mcrfill_((integer *)&ilong,
-	     (char *)&tabini[tabini_offset], 
-	     (char *)&tabres[tabres_offset]);
+    AdvApp2Var_SysBase::mcrfill_(&ilong,
+	     &tabini[tabini_offset], 
+	     &tabres[tabres_offset]);
     goto L9999;
 
 /* ---------------------------- The end --------------------------------- 
@@ -4608,72 +4367,63 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
     /* Local variables */
     static doublereal tbaux[1];
     static integer ksize, numax, kk;
-    static long int iofst;
+    static intptr_t iofst;
     static integer ibb, ier;
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       LIMITATION D'UN CARREAU DEFINI SUR (0,1)*(0,1) ENTRE LES ISOS */
-/*       UPARA1 ET UPARA2 (EN U) ET VPARA1 ET VPARA2 EN V. */
+/*       LIMITATION OF A SQUARE DEFINED ON (0,1)*(0,1) BETWEEN ISOS */
+/*       UPARA1 AND UPARA2 (BY U) AND VPARA1 AND VPARA2 BY V. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*       LIMITATION , CARREAU , PARAMETRE */
+/*       LIMITATION , SQUARE , PARAMETER */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*     NCOFMX: NBRE MAXI DE COEFF EN U DU CARREAU */
-/*     NCOEFU: NBRE DE COEFF EN U DU CARREAU */
-/*     NCOEFV: NBRE DE COEFF EN V DU CARREAU */
-/*    PATOLD : LE CARREAU A LIMITER SUIVANT UPARA1,UPARA2 ET VPARA1,VPARA2
+/*     NCOFMX: MAX NUMBER OF COEFF OF THE SQUARE BY U */
+/*     NCOEFU: NUMBER OF COEFF OF THE SQUARE BY U */
+/*     NCOEFV: NUMBER OF COEFF OF THE SQUARE BY V */
+/*     PATOLD : THE SQUARE IS LIMITED BY UPARA1,UPARA2 AND VPARA1,VPARA2
 .*/
-/*     UPARA1    : BORNE INF DES U */
-/*     UPARA2    : BORNE SUP DES U */
-/*     VPARA1    : BORNE INF DES V */
-/*     VPARA2    : BORNE SUP DES V */
+/*     UPARA1    : LOWER LIMIT OF U */
+/*     UPARA2    : UPPER LIMIT OF U */
+/*     VPARA1    : LOWER LIMIT OF V */
+/*     VPARA2    : UPPER LIMIT OF V */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     PATNEW : LE CARREAU RELIMITE, DEFINI DANS (0,1)**2 */
-/*     IERCOD : =10 NBR DE COEFF TROP GRAND OU NUL */
-/*              =13 PB DANS L' ALLOCATION DYNAMIQUE */
+/*     PATNEW : RELIMITED SQUARE, DEFINED ON (0,1)**2 */
+/*     IERCOD : =10 COEFF NB TOO GREAT OR NULL */
+/*              =13 PB IN THE DYNAMIC ALLOCATION */
 /*              = 0 OK. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
-/*     ----------------------- */
-
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/* --->    L' appel suivant : */
+/* --->    The following call : */
 /*   CALL MMFMCAR(NCOFMX,NCOEFU,NCOEFV,PATOLD,UPARA1,UPARA2,VPARA1,VPARA2 
 */
 /*              ,PATOLD), */
-/*        ou PATOLD est un argument d' entree/sortie est tout a fait */
-/*        legal. */
+/*        where PATOLD is input/output argument is absolutely legal. */
 
-/* --->    Le nombre maximum de coeff en u et en v de PATOLD est 61 */
+/* --->    The max number of coeff by u and v of PATOLD is 61 */
 
-/* --->    Si NCOEFU < NCOFMX, on compresse les donnees par MMFMCA9 avant 
+/* --->    If NCOEFU < NCOFMX, the data is compressed by MMFMCA9 before
+/*        limitation by v to get time during the execution */
+/*        of MMARC41 that follows (the square is processed as a curve of 
 */
-/*        la limitation en v pour gagner du temps lors de l' execution */
-/*        de MMARC41 qui suit (le carreau est traite comme une courbe de 
-*/
-/*        dimension NDIMEN*NCOEFU possedant NCOEFV coefficients). */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*        02-08-89 : RBD; CREATION. */
+/*        dimension NDIMEN*NCOEFU possessing NCOEFV coefficients). */
 /* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 
     /* Parameter adjustments */
@@ -4696,7 +4446,7 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
 
 /* ********************************************************************** 
 */
-/*                  TEST DES NOMBRES DE COEFFICIENTS */
+/*                  TEST OF COEFFICIENT NUMBERS */
 /* ********************************************************************** 
 */
 
@@ -4711,21 +4461,21 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
 
 /* ********************************************************************** 
 */
-/*                    CAS OU UPARA1=VPARA1=0 ET UPARA2=VPARA2=1 */
+/*                  CASE WHEN UPARA1=VPARA1=0 AND UPARA2=VPARA2=1 */
 /* ********************************************************************** 
 */
 
     if (*upara1 == 0. && *upara2 == 1. && *vpara1 == 0. && *vpara2 == 1.) {
 	ksize = (*ndimen << 3) * *ncofmx * *ncoefv;
-	AdvApp2Var_SysBase::mcrfill_((integer *)&ksize, 
-		 (char *)&patold[patold_offset], 
-		 (char *)&patnew[patnew_offset]);
+	AdvApp2Var_SysBase::mcrfill_(&ksize, 
+		 &patold[patold_offset], 
+		 &patnew[patnew_offset]);
 	goto L9999;
     }
 
 /* ********************************************************************** 
 */
-/*                        LIMITATION EN U */
+/*                        LIMITATION BY U */
 /* ********************************************************************** 
 */
 
@@ -4742,7 +4492,7 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
 
 /* ********************************************************************** 
 */
-/*                         LIMITATION EN V */
+/*                         LIMITATION BY V */
 /* ********************************************************************** 
 */
 
@@ -4751,12 +4501,12 @@ L2000:
 	goto L9999;
     }
 
-/* ----------- LIMITATION EN V (AVEC COMPRESSION I.E. NCOEFU<NCOFMX) ---- 
+/* ----------- LIMITATION BY V (WITH COMPRESSION I.E. NCOEFU<NCOFMX) ---- 
 */
 
     numax = *ndimen * *ncoefu;
     if (*ncofmx != *ncoefu) {
-/* ------------------------- Allocation dynamique -------------------
+/* ------------------------- Dynamic allocation -------------------
 ---- */
 	ksize = *ndimen * *ncoefu * *ncoefv;
 	AdvApp2Var_SysBase::mcrrqst_(&c__8, &ksize, tbaux, &iofst, &ier);
@@ -4764,7 +4514,7 @@ L2000:
 	    *iercod = 13;
 	    goto L9900;
 	}
-/* --------------- Compression en (NDIMEN,NCOEFU,NCOEFV) ------------
+/* --------------- Compression by (NDIMEN,NCOEFU,NCOEFV) ------------
 ---- */
 	if (*upara1 == 0. && *upara2 == 1.) {
 	  AdvApp2Var_MathBase::mmfmca9_(ndimen, 
@@ -4785,17 +4535,17 @@ L2000:
 					&patnew[patnew_offset],
 					&tbaux[iofst]);
 	}
-/* ------------------------- Limitation en v ------------------------
+/* ------------------------- Limitation by v ------------------------
 ---- */
 	mmarc41_(&numax, &numax, ncoefv, &tbaux[iofst], vpara1, vpara2, &
 		tbaux[iofst], iercod);
-/* --------------------- Expansion de TBAUX dans PATNEW -------------
+/* --------------------- Expansion of TBAUX into PATNEW -------------
 --- */
 	AdvApp2Var_MathBase::mmfmca8_(ndimen, ncoefu, ncoefv, ndimen, ncofmx, ncoefv, &tbaux[iofst]
 		, &patnew[patnew_offset]);
 	goto L9900;
 
-/* -------- LIMITATION EN V (SANS COMPRESSION I.E. NCOEFU=NCOFMX) ---
+/* -------- LIMITATION BY V (WITHOUT COMPRESSION I.E. NCOEFU=NCOFMX) ---
 ---- */
 
     } else {
@@ -4863,55 +4613,50 @@ int AdvApp2Var_MathBase::mmfmcb5_(integer *isenmsc,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       Reformattage (et compactage/decompactage eventuel) de courbe */
-/*       (ndim,.) en (.,ndim) et reciproquement . */
+/*       Reformating (and  eventual compression/decompression) of curve */
+/*       (ndim,.) by (.,ndim) and vice versa. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      TOUS , MATH_ACCES :: */
+/*      ALL , MATH_ACCES :: */
 /*      COURBE&, REORGANISATION,COMPRESSION,INVERSION , &COURBE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*        ISENMSC : sens du transfert demande : */
-/*            1   :   passage de (NDIMEN,.) ---> (.,NDIMEN)  sens vers AB 
+/*        ISENMSC : required direction of the transfer : */
+/*           1   :  passage of (NDIMEN,.) ---> (.,NDIMEN)  direction to AB 
 */
-/*          -1   :   passage de (.,NDIMEN) ---> (NDIMEN,.)  sens vers TS,T
+/*          -1   :  passage of (.,NDIMEN) ---> (NDIMEN,.)  direction to TS,T
 V*/
 /*        NDIMAX : format / dimension */
-/*        NCF1MX : format en t de COURB1 */
-/*   si ISENMSC= 1 : COURB1: La courbe a traiter (NDIMAX,.) */
-/*        NCOEFF : nombre de coef de la courbe */
-/*        NCF2MX : format en t de COURB2 */
-/*        NDIMEN : dimension de la courbe et format de COURB2 */
-/*   si ISENMSC=-1 : COURB2: La courbe a traiter (.,NDIMEN) */
+/*        NCF1MX : format by t of COURB1 */
+/*   if ISENMSC= 1 : COURB1: The curve to be processed (NDIMAX,.) */
+/*        NCOEFF : number of coeff of the curve */
+/*        NCF2MX : format by t of COURB2 */
+/*        NDIMEN : dimension of the curve and format of COURB2 */
+/*   if ISENMSC=-1 : COURB2: The curve to be processed (.,NDIMEN) */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*   si ISENMSC= 1 : COURB2: La courbe resultat (.,NDIMEN) */
-/*   si ISENMSC=-1 : COURB1: La courbe resultat (NDIMAX,.) */
+/*   if ISENMSC= 1 : COURB2: The resulting curve (.,NDIMEN) */
+/*   if ISENMSC=-1 : COURB1: The resulting curve (NDIMAX,.) */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     permet de traiter les transferts usuels suivant : */
+/*     allow to process the usual transfers as follows : */
 /*     | ---- ISENMSC = 1 ---- |      | ---- ISENMSC =-1 ----- | */
 /*    TS  (3,21) --> (21,3)  AB  ;  AB  (21,3) --> (3,21)  TS */
 /*    TS  (3,21) --> (NU,3)  AB  ;  AB  (NU,3) --> (3,21)  TS */
 /*        (3,NU) --> (21,3)  AB  ;  AB  (21,3) --> (3,NU) */
 /*        (3,NU) --> (NU,3)  AB  ;  AB  (NU,3) --> (3,NU) */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*       .07-08-89 : JG ; VERSION ORIGINALE (ANNULE ET REMPLACE MMCVINV) 
-*/
 /* > */
 /* ***********************************************************************
  */
@@ -4933,14 +4678,14 @@ V*/
     if (*ndimen == 1 && *ncf1mx == *ncf2mx) {
 	nboct = *ncf2mx << 3;
 	if (*isenmsc == 1) {
-	    AdvApp2Var_SysBase::mcrfill_((integer *)&nboct, 
-		     (char *)&courb1[courb1_offset], 
-		     (char *)&courb2[courb2_offset]);
+	    AdvApp2Var_SysBase::mcrfill_(&nboct, 
+		     &courb1[courb1_offset], 
+		     &courb2[courb2_offset]);
 	}
 	if (*isenmsc == -1) {
-	    AdvApp2Var_SysBase::mcrfill_((integer *)&nboct, 
-		     (char *)&courb2[courb2_offset], 
-		     (char *)&courb1[courb1_offset]);
+	    AdvApp2Var_SysBase::mcrfill_(&nboct, 
+		     &courb2[courb2_offset], 
+		     &courb1[courb1_offset]);
 	}
 	*iercod = -3136;
 	goto L9999;
@@ -5011,61 +4756,54 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
     /* Local variables */
     static doublereal work[1];
     static integer ilong, isize, ii, jj, ier;
-    static long int iofst,iipt, jjpt;
+    static intptr_t iofst,iipt, jjpt;
 
 
 /************************************************************************
 *******/
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     Inversion des elements d'un tableau rectangulaire (T1(i,j) */
-/*     est charge dans T2(j,i)) */
+/*     Inversion of elements of a rectangular table (T1(i,j) */
+/*     loaded in T2(j,i)) */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      TOUS, MATH_ACCES :: TABLEAU&, INVERSION, &TABLEAU */
+/*      ALL, MATH_ACCES :: TABLEAU&, INVERSION, &TABLEAU */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*     MAXSZ1: Nbre maxi d'elements suivant la 1ere dimension de */
-/*             TABLE1. */
-/*     TABLE1: Table de reels a deux dimensions. */
-/*     ISIZE1: Nbre d'elements utiles de TABLE1 sur la 1ere dimension */
-/*     JSIZE1: Nbre d'elements utiles de TABLE1 sur la 2eme dimension */
-/*     MAXSZ2: Nbre maxi d'elements suivant la 1ere dimension de */
-/*             TABLE2. */
+/*     MAXSZ1: Max Nb of elements by the 1st dimension of TABLE1. */
+/*     TABLE1: Table of reals by two dimensions. */
+/*     ISIZE1: Nb of useful elements of TABLE1 on the 1st dimension */
+/*     JSIZE1: Nb of useful elements of TABLE1 on the 2nd dimension */
+/*     MAXSZ2: Nb max of elements by the 1st dimension of TABLE2. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     TABLE2: Table de reels a deux dimensions, contenant la transposee 
-*/
-/*             du tableau rectangulaire TABLE1. */
-/*     ISIZE2: Nbre d'elements utiles de TABLE2 sur la 1ere dimension */
-/*     JSIZE2: Nbre d'elements utiles de TABLE2 sur la 2eme dimension */
-/*     IERCOD: Code d'erreur. */
+/*     TABLE2: Table of reals by two dimensions, containing the transposition 
+/*             of the rectangular table TABLE1. */
+/*     ISIZE2: Nb of useful elements of TABLE2 on the 1st dimension */
+/*     JSIZE2: Nb of useful elements of TABLE2 on the 2nd dimension */
+/*     IERCOD: Erroe coder. */
 /*             = 0, ok. */
-/*             = 1, erreur dans le dimensionnement des tables */
-/*                  soit MAXSZ1 < ISIZE1 (tableau TABLE1 trop petit). */
-/*                  soit MAXSZ2 < JSIZE1 (tableau TABLE2 trop petit). */
+/*             = 1, error in the dimension of tables */
+/*                  ether MAXSZ1 < ISIZE1 (table TABLE1 too small). */
+/*                  or MAXSZ2 < JSIZE1 (table TABLE2 too small). */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*    On peut utiliser TABLE1 comme tableau d'entree et de sortie i.e. */
-/*    l'appel: */
+/*    It is possible to use TABLE1 as input and output table i.e. */
+/*    call: */
 /*    CALL MMFMTB1(MAXSZ1,TABLE1,ISIZE1,JSIZE1,MAXSZ2,TABLE1 */
 /*               ,ISIZE2,JSIZE2,IERCOD) */
-/*    est valable. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     07-06-91: RBD; Creation d'apres VCRINV de NAK. */
+/*    is valuable. */
 /* > */
 /* ********************************************************************** 
 */
@@ -5092,7 +4830,7 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 	goto L9200;
     }
 
-/*             NE PAS CRAINDRE D'ECRASEMENT. */
+/*             DO NOT BE AFRAID OF CRUSHING. */
 
     i__1 = *isize1;
     for (ii = 1; ii <= i__1; ++ii) {
@@ -5106,11 +4844,11 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 /* L100: */
     }
     ilong = isize << 3;
-    AdvApp2Var_SysBase::mcrfill_((integer *)&ilong, 
-	     (char *)&work[iofst], 
-	     (char *)&table2[table2_offset]);
+    AdvApp2Var_SysBase::mcrfill_(&ilong, 
+	     &work[iofst], 
+	     &table2[table2_offset]);
 
-/* -------------- On recupere le nombre d'elements de TABLE2 ------------ 
+/* -------------- The number of elements of TABLE2 is returned ------------ 
 */
 
     ii = *isize1;
@@ -5121,11 +4859,11 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 
 /* ------------------------------- THE END ------------------------------ 
 */
-/* --> Entree invalide. */
+/* --> Invalid input. */
 L9100:
     *iercod = 1;
     goto L9999;
-/* --> Pb d'alloc. */
+/* --> Pb of allocation. */
 L9200:
     *iercod = 2;
     goto L9999;
@@ -5174,109 +4912,95 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 /* ********************************************************************** 
 */
 
-/*      FONCTION : */
+/*      FUNCTION : */
 /*      -------- */
 
-/*      Calcul de l'integrale de la fonction BFUNX passee en parametre */
-/*      entre les bornes XD et XF . */
-/*      La fonction doit etre calculable pour n'importe quelle valeur */
-/*      de la variable dans l'intervalle donne.. */
-/*      La methode utilisee est celle de GAUSS-LEGENDRE. Des explications 
-*/
-/*      peuvent etre obtenus sur le livre : */
+/*      Calculate the integral of  function BFUNX passed in parameter */
+/*      between limits XD and XF . */
+/*      The function should be calculated for any value */
+/*      of the variable in the given interval.. */
+/*      The method GAUSS-LEGENDRE is used. 
+/*      For explications refer to the book : */
 /*          Complements de mathematiques a l'usage des Ingenieurs de */
 /*          l'electrotechnique et des telecommunications. */
 /*          Par Andre ANGOT - Collection technique et scientifique du CNET
  */
 /*          page 772 .... */
-/*      Le degre des polynomes de LEGENDRE utilise est passe en parametre.
+/*      The degree of LEGENDRE polynoms used is passed in parameter.
  */
-
-/*      MOTS CLES : */
+/*      KEYWORDS : */
 /*      --------- */
 /*         INTEGRATION,LEGENDRE,GAUSS */
 
-/*      ARGUMENTS D'ENTREE : */
+/*      INPUT ARGUMENTS : */
 /*      ------------------ */
 
-/*      NDIMF : Dimension de la fonction */
-/*      BFUNX : Fonction a integrer passee en argument */
-/*              Doit etre declaree en EXTERNAL dans la routine d'appel. */
+/*      NDIMF : Dimension of the function */
+/*      BFUNX : Function to integrate passed as argument */
+/*              Should be declared as EXTERNAL in the call routine. */
 /*                   SUBROUTINE BFUNX(NDIMF,X,VAL,IER) */
 /*                   REAL *8 X,VAL */
-/*     K      : Parametre determinant le degre du polynome de LEGENDRE qui
+/*     K      : Parameter determining the degree of the LEGENDRE polynom that 
 */
-/*               peut prendre une valeur comprise entre 0 et 10. */
-/*               Le degre du polynome est egal a 4 k, c'est a dire 4, 8, 
+/*               can take a value between 0 and 10. */
+/*               The degree of the polynom is equal to 4 k, that is 4, 8, 
 */
-/*               12, 16, 20, 24, 28, 32, 36 et 40. */
-/*               Si K n'est pas bon, le degre est pris a 40 directement. 
+/*               12, 16, 20, 24, 28, 32, 36 and 40. */
+/*               If K is not correct, the degree is set to 40 directly. 
 */
-/*      XD     : Borne inferieure de l'intervalle d'integration. */
-/*      XF     : Borne superieure de l'intervalle d'integration. */
-/*      SAUX1  : Tableau auxiliaire */
-/*      SAUX2  : Tableau auxiliaire */
+/*      XD     : Lower limit of the interval of integration. */
+/*      XF     : Upper limit of the interval of integration. */
+/*      SAUX1  : Auxiliary table */
+/*      SAUX2  : Auxiliary table */
 
-/*      ARGUMENTS DE SORTIE : */
+/*      OUTPUT ARGUMENTS : */
 /*      ------------------- */
 
-/*      SOMME : Valeur de l'integrale */
-/*      NITER : Nombre d'iterations effectues. */
-/*              Il est egal au degre du polynome. */
+/*      SOMME : Value of the integral */
+/*      NITER : Number of iterations to be carried out. */
+/*              It is equal to the degree of the polynom. */
 
-/*      IER   : Code d'erreur : */
+/*      IER   : Error code : */
 /*              < 0 ==> Attention - Warning */
-/*              = 0 ==> Tout est OK */
-/*              > 0 ==> Erreur severe - Faire un traitement special */
-/*                  ==> Erreur dans le calcul de BFUNX (code de retour */
-/*                      de cette routine */
+/*              = 0 ==> Everything is OK */
+/*              > 0 ==> Critical error - Apply special processing */
+/*                  ==> Error in the calculation of BFUNX (return code */
+/*                      of this routine */
 
-/*              Si erreur => SOMME = 0 */
+/*              If error => SUM = 0 */
 
-/*      COMMONS UTILISES : */
+/*      COMMONS USED : */
 /*      ----------------- */
 
 
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 
 /*     Type  Name */
 /*    @      BFUNX               MVGAUS0 */
 
-/*      DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*      DESCRIPTION/NOTES/LIMITATIONS : */
 /*      --------------------------------- */
 
-/*      Voir les explications detaillees sur le listing */
-
-/*      Utilisation de la methode de GAUSS (polynomes orthogonaux) */
-/*      On utilise la symetrie des racines de ces polynomes */
-
-/*      En fonction de K, le degre du polynome d'interpolation augmente. 
+/*      See the explanations detailed in the listing */
+/*      Use of the GAUSS method (orthogonal polynoms) */
+/*      The symmetry of roots of these polynomes is used */
+/*      Depending on K, the degree of the interpolated polynom grows. 
 */
-/*      Si vous voulez calculer l'integrale avec une precision donnee, */
-/*     boucler sur k variant de 1 a 10 et tester la difference de 2 iteres
+/*      If you wish to calculate the integral with a given precision, */
+/*      loop on k varying from 1 to 10 and test the difference of 2
 */
-/*      consecutifs. Arreter la boucle si cette difference est inferieure 
-*/
-/*      a une valeur epsilon fixee a 10E-6 par exemple. */
-/*      Si S1 et S2 sont 2 iteres successifs, tester suivant cet exemple :
+/*      consecutive iterations. Stop the loop if this difference is less that 
+/*      an epsilon value set to 10E-6 for example. */
+/*      If S1 and S2 are 2 successive iterations, test following this example :
  */
 
 /*            AF=DABS(S1-S2) */
 /*            AS=DABS(S2) */
-/*            Si AS < 1 alors tester si FS < eps sinon tester AF/AS < eps 
+/*            If AS < 1 test if FS < eps otherwise test if AF/AS < eps 
 */
 /*            --        -----                    ----- */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ---------------------------- */
-/*         3-09-1993 : PMN; CREATION D'APRES VGAUS1 (SAUX1 et SAUX2 en */
-/*                    arguments) */
-/*        . 04-10-89 : JP;AJOUT EXTERNAL BFUNX SGI_420_144 */
-/*        . 20-08-87 : JP;INTEGRATION D'UNE FONCTION VECTORIELLE */
-/*        . 08-08-87 : GD; Version originale */
-
 /* > */
 /************************************************************************
 ******/
@@ -5286,7 +5010,7 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 
 
 
-/* ****** Initialisation generale ** */
+/* ****** General Initialization */
 
     /* Parameter adjustments */
     --somme;
@@ -5294,11 +5018,11 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
     --saux1;
 
     /* Function Body */
-    AdvApp2Var_SysBase::mvriraz_((integer *)ndimf, 
-	     (char *)&somme[1]);
+    AdvApp2Var_SysBase::mvriraz_(ndimf, 
+	     &somme[1]);
     *iercod = 0;
 
-/* ****** Chargement des coefficients U et H ** */
+/* ****** Loading of coefficients U and H ** */
 /* -------------------------------------------- */
 
     mvgaus0_(k, u, h__, &ndeg, iercod);
@@ -5306,14 +5030,14 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 	goto L9999;
     }
 
-/* ****** C1X => Point milieu intervalle  [XD,XF] */
-/* ****** C2X => 1/2 amplitude intervalle [XD,XF] */
+/* ****** C1X => Medium interval point  [XD,XF] */
+/* ****** C2X => 1/2 amplitude interval [XD,XF] */
 
     c1x = (*xf + *xd) * .5;
     c2x = (*xf - *xd) * .5;
 
 /* ---------------------------------------- */
-/* ****** Integration pour un degre NDEG ** */
+/* ****** Integration for degree NDEG ** */
 /* ---------------------------------------- */
 
     i__1 = ndeg;
@@ -5345,7 +5069,7 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 	somme[idimf] *= c2x;
     }
 
-/* ****** Fin du sous-programme ** */
+/* ****** End of sub-program ** */
 
 L9999:
 
@@ -5383,59 +5107,52 @@ int mmherm0_(doublereal *debfin,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      INIT DES COEFFS. DES POLYNOMES D'INTERPOL. D'HERMITE */
+/*      INIT OF COEFFS. OF POLYNOMS OF HERMIT INTERPOLATION */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*      MATH_ACCES :: HERMITE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS */
 /*     -------------------- */
-/*       DEBFIN : PARAMETRES OU SONT DONNEES LES CONTRAINTES */
-/*                 DEBFIN(1) : PREMIER PARAMETRE */
-/*                 DEBFIN(2) : DEUXIEME PARAMETRE */
+/*       DEBFIN : PARAMETERS DEFINING THE CONSTRAINTS */
+/*                 DEBFIN(1) : FIRST PARAMETER */
+/*                 DEBFIN(2) : SECOND PARAMETER */
 
-/*     ON DOIT AVOIR: */
+/*      ONE SHOULD HAVE: */
 /*                 ABS (DEBFIN(I)) < 100 */
-/*                 et */
+/*                 and */
 /*                 (ABS(DEBFIN(1)+ABS(DEBFIN(2))) > 1/100 */
-/*           (pour les overflows) */
+/*           (for overflows) */
 
 /*      ABS(DEBFIN(2)-DEBFIN(1)) / (ABS(DEBFIN(1)+ABS(DEBFIN(2))) > 1/100 
 */
-/*           (pour le conditionnement ) */
+/*           (for the conditioning) */
 
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
 
-/*       IERCOD : Code d'erreur : 0 : O.K. */
-/*                                1 : LES valeur de DEBFIN */
-/*                                ne sont pas raisonnables */
-/*                                -1 : L'init etait deja faite */
-/*                                   (OK mais pas de traitement) */
+/*       IERCOD : Error code : 0 : O.K. */
+/*                                1 : value of DEBFIN */
+/*                                are unreasonable */
+/*                                -1 : init was already done */
+/*                                   (OK but no processing) */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ---------------------- */
 /*     Type  Name */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*        Ce programme initialise les coefficients des polynomes */
-/*     d'Hermite qui sont ensuite lus par MMHERM1 */
-
-/*     HISTORIQUE */
-/*     --------------------------------------------------------- */
-/*     06-01-92: ALR; mise a 0 des termes de MAT non recalcules */
-/*     23-12-91: ALR; 2 CORRECTIONS */
-/*     12-11-91: ALR; ECRITURE VERSION ORIGINALE. */
-/* > */
+/*        This program initializes the coefficients of Hermit polynoms */
+/*     that are read later by MMHERM1 */
 /* ***********************************************************************
  */
 
@@ -5444,25 +5161,19 @@ int mmherm0_(doublereal *debfin,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a STOCKER les coefficients des polynomes de */
-/*      l'interpolation d'Hermite */
+/*      Used to STORE  coefficients of Hermit interpolation polynoms
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*      HERMITE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*     les coefficients des polynomes d'hermitesont calcules par */
-/*     la routine MMHERM0 et lus par la routine MMHERM1 */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     23-11-91: ALR; MODIF DIMENSIONNEMENT */
-/*     12-11-91: ALR; CREATION */
+/*     The coefficients of hermit polynoms are calculated by */
+/*     the routine MMHERM0 and read by the routine MMHERM1 */
 /* > */
 /* ********************************************************************** 
 */
@@ -5471,10 +5182,7 @@ int mmherm0_(doublereal *debfin,
 
 
 
-/*     NBCOEF est la taille de CMHERM (voir plus bas) */
-
-
-
+/*     NBCOEF is the size of CMHERM (see below) */
 /* ***********************************************************************
  */
 
@@ -5486,7 +5194,7 @@ int mmherm0_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*     Verification des donnees */
+/*     Data checking */
 /* ***********************************************************************
  */
 
@@ -5495,12 +5203,12 @@ int mmherm0_(doublereal *debfin,
     --debfin;
 
     /* Function Body */
-    d1 = abs(debfin[1]);
+    d1 = advapp_abs(debfin[1]);
     if (d1 > (float)100.) {
 	goto L9101;
     }
 
-    d2 = abs(debfin[2]);
+    d2 = advapp_abs(debfin[2]);
     if (d2 > (float)100.) {
 	goto L9101;
     }
@@ -5510,7 +5218,7 @@ int mmherm0_(doublereal *debfin,
 	goto L9101;
     }
 
-    d1 = (d__1 = debfin[2] - debfin[1], abs(d__1));
+    d1 = (d__1 = debfin[2] - debfin[1], advapp_abs(d__1));
     if (d1 / d2 < (float).01) {
 	goto L9101;
     }
@@ -5518,7 +5226,7 @@ int mmherm0_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*     Initialisations */
+/*     Initialization */
 /* ***********************************************************************
  */
 
@@ -5530,9 +5238,9 @@ int mmherm0_(doublereal *debfin,
 /* ***********************************************************************
  */
 
-/*     EST-CE DEJA INITIALISE ? */
+/*     IS IT ALREADY INITIALIZED ? */
 
-    d1 = abs(debfin[1]) + abs(debfin[2]);
+    d1 = advapp_abs(debfin[1]) + advapp_abs(debfin[2]);
     d1 *= 16111959;
 
     if (debfin[1] != mmcmher_.tdebut) {
@@ -5551,18 +5259,18 @@ int mmherm0_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*     CALCUL */
+/*     CALCULATION */
 /* ***********************************************************************
  */
 
 
 L100:
 
-/*     Init. matrice identite: */
+/*     Init. matrix identity : */
 
     ncmat = 36;
-    AdvApp2Var_SysBase::mvriraz_((integer *)&ncmat, 
-	     (char *)miden);
+    AdvApp2Var_SysBase::mvriraz_(&ncmat, 
+	     miden);
 
     for (ii = 1; ii <= 6; ++ii) {
 	miden[ii + ii * 6 - 7] = 1.;
@@ -5571,11 +5279,11 @@ L100:
 
 
 
-/*     Init a 0 du tableau CMHERM */
+/*     Init to 0 of table CMHERM */
 
-    AdvApp2Var_SysBase::mvriraz_((integer *)&c__576, (char *)mmcmher_.cmherm);
+    AdvApp2Var_SysBase::mvriraz_(&c__576, mmcmher_.cmherm);
 
-/*     Calcul par resolution de systemes lineaires */
+/*     Calculation by solution of linear systems */
 
     for (iord1 = -1; iord1 <= 2; ++iord1) {
 	for (iord2 = -1; iord2 <= 2; ++iord2) {
@@ -5590,7 +5298,7 @@ L100:
 
 	    ncf = iord[0] + iord[1] + 2;
 
-/*        Calcul matrice MAT a inverser: */
+/*        Calculate matrix MAT to invert: */
 
 	    for (cot = 1; cot <= 2; ++cot) {
 
@@ -5620,7 +5328,7 @@ L100:
 		    i__2 = ncf;
 		    for (jj = pp; jj <= i__2; ++jj) {
 
-/*        tout se passe dans ces 3 lignes peu lisibles
+/*        everything is done in these 3 lines 
  */
 
 			mat[ii + jj * 6 - 7] = cof[jj - 1] * prod;
@@ -5668,12 +5376,12 @@ L100:
 /* ***********************************************************************
  */
 
-/*     On positionne le flag initialise: */
+/*     The initialized flag is located: */
 
     mmcmher_.tdebut = debfin[1];
     mmcmher_.tfinal = debfin[2];
 
-    d1 = abs(debfin[1]) + abs(debfin[2]);
+    d1 = advapp_abs(debfin[1]) + advapp_abs(debfin[2]);
     mmcmher_.verifi = d1 * 16111959;
 
 
@@ -5726,71 +5434,63 @@ int mmherm1_(doublereal *debfin,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      lecture des coeffs. des polynomes d'interpol. d'HERMITE */
+/*      reading of coeffs. of HERMIT interpolation polynoms */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      MATH_ACCES :: HERMITE */
+/*      MATH_ACCES :: HERMIT */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       DEBFIN : PARAMETRES OU SONT DONNEES LES CONTRAINTES */
-/*                 DEBFIN(1) : PREMIER PARAMETRE */
-/*                 DEBFIN(2) : DEUXIEME PARAMETRE */
+/*       DEBFIN : PARAMETES DEFINING THE CONSTRAINTS */
+/*                 DEBFIN(1) : FIRST PARAMETER */
+/*                 DEBFIN(2) : SECOND PARAMETER */
 
-/*           Doivent etre egaux aux argeuments correspondant lors */
-/*           du dernier appel a MMHERM0 pour l'init. des coeffs. */
+/*           Should be equal to the corresponding arguments during the */
+/*           last call to MMHERM0 for the initialization of coeffs. */
 
-/*       ORDRMX : sert a indiquer le dimensionnent de HERMIT: */
-/*              on n'a pas le choix : ORDRMX doit etre egal a la valeur */
-/*              du PARAMETER IORDMX de l'INCLUDE MMCMHER, soit 2 pour */
-/*              l'instant. */
+/*       ORDRMX : indicates the dimensioning of HERMIT: */
+/*              there is no choice : ORDRMX should be equal to the value */
+/*              of PARAMETER IORDMX of INCLUDE MMCMHER, or 2 for the moment */
 
-/*       IORDRE (2) : Ordres de contraintes en chaque parametre DEBFIN(I) 
-*/
-/*              corrspondant. doivent etre compris entre -1 (pas de */
-/*              contrainte) et ORDRMX. */
+/*       IORDRE (2) : Orders of constraints in each corresponding parameter DEBFIN(I) 
+/*              should be between -1 (no constraints) and ORDRMX. */
 
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
 
-/*       HERMIT : HERMIT(1:IORDRE(1)+IORDRE(2)+2, j, cote) sont les */
-/*       coefficients dans la base canonique du polynome d'Hermite */
-/*       correspondant aux ordres IORDRE aux paramtres DEBFIN pour */
-/*       la contrainte d'ordre j en DEBFIN(cote). j est compris entre */
-/*       0 et IORDRE(cote). */
+/*       HERMIT : HERMIT(1:IORDRE(1)+IORDRE(2)+2, j, cote) are the  */
+/*       coefficients in the canonic base of Hermit polynom */
+/*       corresponding to orders IORDRE with parameters DEBFIN for */
+/*       the constraint of order j on DEBFIN(cote). j is between 0 and IORDRE(cote). */
 
 
-/*       IERCOD : Code d'erreur : */
-/*          -1: O.K mais on a du reinitialise les coefficients */
-/*                 (info pour optimisation) */
+/*       IERCOD : Error code : */
+/*          -1: O.K but necessary to reinitialize the coefficients */
+/*                 (info for optimization) */
 /*          0 : O.K. */
-/*          1 : Erreur dans MMHERM0 */
-/*          2 : arguments invalides */
+/*          1 : Error in MMHERM0 */
+/*          2 : arguments invalid */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*        Ce programme lit les  coefficients des polynomes */
-/*     d'Hermite qui ont ete au prealable initialise par MMHERM0 */
+/*     This program reads coefficients of Hermit polynoms */
+/*     that were earlier initialized by MMHERM0 */
 
-/* PMN : L'initialisation n'est plus a la charge de l'appelant. */
+/* PMN : initialisation is no more done by the caller. */
 
-/*     HISTORIQUE */
-/*     --------------------------------------------------------- */
-/*     14-01-94: PMN; On appelle MMHERM0 si pas initialise. */
-/*     12-11-91: ALR; ECRITURE VERSION ORIGINALE. */
-/* > */
+
 /* ***********************************************************************
  */
 
@@ -5799,25 +5499,20 @@ int mmherm1_(doublereal *debfin,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a STOCKER les coefficients des polynomes de */
-/*      l'interpolation d'Hermite */
+/*      Serves to STORE the coefficients of Hermit interpolation polynoms
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*      HERMITE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*     les coefficients des polynomes d'hermitesont calcules par */
-/*     la routine MMHERM0 et lus par la routine MMHERM1 */
+/*     the coefficients of Hetmit polynoms are calculated by */
+/*     routine MMHERM0 and read by routine MMHERM1 */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     23-11-91: ALR; MODIF DIMENSIONNEMENT */
-/*     12-11-91: ALR; CREATION */
 /* > */
 /* ********************************************************************** 
 */
@@ -5826,7 +5521,7 @@ int mmherm1_(doublereal *debfin,
 
 
 
-/*     NBCOEF est la taille de CMHERM (voir plus bas) */
+/*     NBCOEF is the size of CMHERM (see lower) */
 
 
 
@@ -5839,7 +5534,7 @@ int mmherm1_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*     Initialisations */
+/*     Initializations */
 /* ***********************************************************************
  */
 
@@ -5857,7 +5552,7 @@ int mmherm1_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*     Verification des donnees */
+/*     Data Checking */
 /* ***********************************************************************
  */
 
@@ -5877,12 +5572,12 @@ int mmherm1_(doublereal *debfin,
     }
 
 
-/*     EST-CE BIEN INITIALISE ? */
+/*     IS-IT CORRECTLY INITIALIZED ? */
 
-    d1 = abs(debfin[1]) + abs(debfin[2]);
+    d1 = advapp_abs(debfin[1]) + advapp_abs(debfin[2]);
     d1 *= 16111959;
 
-/*     SINON ON INITIALISE */
+/*     OTHERWISE IT IS INITIALIZED */
 
     if (debfin[1] != mmcmher_.tdebut || debfin[2] != mmcmher_.tfinal || d1 
 	    != mmcmher_.verifi) {
@@ -5896,7 +5591,7 @@ int mmherm1_(doublereal *debfin,
 
 /* ***********************************************************************
  */
-/*        LECTURE */
+/*        READING */
 /* ***********************************************************************
  */
 
@@ -5971,54 +5666,41 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       CONVERSION LA TABLE TCBOLD DES COEFFICIENTS DES  COURBES */
-/*       POLYNOMIALES EXPRIMEES DANS LA BASE HERMITE JACOBI, EN UNE */
-/*       TABLE DE COEFFICIENTS TCBNEW DES COURBES EXPRIMEES DANS LA */
-/*       BASE CANONIQUE */
+/*       CONVERSION OF TABLE TCBOLD OF POLYNOMIAL CURVE COEFFICIENTS */
+/*       EXPRESSED IN HERMIT JACOBI BASE, INTO A */
+/*       TABLE OF COEFFICIENTS TCBNEW OF COURVES EXPRESSED IN THE CANONIC BASE */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      CANNONIQUE, HERMITE, JACCOBI */
+/*      CANNONIC, HERMIT, JACCOBI */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       ORDHER : ORDRE DES POLYNOMES D'HERMITE OU ORDRE DE CONTINUITE */
-/*       NCOEFS : NOMBRE DE COEFFICIENTS DE UNE LA COURBE POLYNOMIALE */
-/*                POUR UNE DE SES NDIM COMPOSANTS;(DEGRE+1 DE LA COURBE) 
+/*       ORDHER : ORDER OF HERMIT POLYNOMS OR ORDER OF CONTINUITY */
+/*       NCOEFS : NUMBER OF COEFFICIENTS OF A POLYNOMIAL CURVE */
+/*                FOR ONE OF ITS NDIM COMPONENTS;(DEGREE+1 OF THE CURVE) 
 */
-/*       NDIM   : DIMENSION DE LA COURBE */
-/*       CBHEJA : TABLE DE COEFFICIENTS DE LA COURBE DANS LA BASE */
-/*                HERMITE JACOBI */
+/*       NDIM   : DIMENSION OF THE CURVE */
+/*       CBHEJA : TABLE OF COEFFICIENTS OF THE CURVE IN THE BASE */
+/*                HERMIT JACOBI */
 /*                (H(0,-1),..,H(ORDHER,-1),H(0,1),..,H(ORDHER,1), */
 /*                 JA(ORDHER+1,2*ORDHER+2),....,JA(ORDHER+1,NCOEFS-1) */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS  : */
 /*     --------------------- */
-/*       CBRCAN : TABLE DE COEFFICIENTS DE LA COURBE DANS LA BASE */
-/*                CANONIQUE */
+/*       CBRCAN : TABLE OF COEFFICIENTS OF THE CURVE IN THE CANONIC BASE */
 /*                (1, t, ...) */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
-/*     ----------------------------------- */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     8-09-95 : KHN/PMN; ECRITURE VERSION ORIGINALE. */
-/* > */
-/* ***********************************************************************
- */
-/*                            DECLARATIONS */
 /* ***********************************************************************
  */
 
@@ -6026,20 +5708,16 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Sert a fournir les constantes entieres de 0 a 1000 */
+/*        Providesinteger constants from 0 to 1000 */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        TOUS,ENTIERS */
+/*        ALL, INTEGER */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     11-10-89 : DH ; Creation version originale */
 /* > */
 /* ***********************************************************************
  */
@@ -6053,7 +5731,7 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 
 /* ***********************************************************************
  */
-/*                      INITIALISATIONS */
+/*                      INITIALIZATION */
 /* ***********************************************************************
  */
 
@@ -6080,7 +5758,7 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
@@ -6091,7 +5769,7 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 	goto L9101;
     }
 
-/*     CALCUL DES POLYNOMES D'HERMITE DANS LA BASE CANONIQUE SUR (-1,1) */
+/*     CALCULATION OF HERMIT POLYNOMS IN THE CANONIC BASE ON (-1,1) */
 
 
     iordre[0] = *orcont;
@@ -6118,11 +5796,10 @@ int AdvApp2Var_MathBase::mmhjcan_(integer *ndimen,
 	i__2 = *ndimen;
 	for (d__ = 1; d__ <= i__2; ++d__) {
 
-/*     CONVERSION DES COEFFICIENTS DE LA PARTIE DE LA COURBE EXPRI
-MEE */
-/*     DANS LA BASE HERMITE, DANS LA BASE CANONIQUE */
+/*     CONVERSION OF THE COEFFICIENTS OF THE PART OF THE CURVE EXPRESSED */
+/*     IN HERMIT BASE, INTO THE CANONIC BASE */
 
-	    AdvApp2Var_SysBase::mvriraz_((integer *)&ncoeff, (char *)taux1);
+	    AdvApp2Var_SysBase::mvriraz_(&ncoeff, taux1);
 
 	    i__3 = aux2;
 	    for (k = 1; k <= i__3; ++k) {
@@ -6145,17 +5822,16 @@ MEE */
 			tcbold_dim1];
 	    }
 
-/*     CONVERSION DES COEFFICIENTS DE LA PARTIE DE LA COURBE EXPRI
-MEE */
-/*     DANS LA BASE CANONIQUE-JACOBI , DANS LA BASE CANONIQUE */
+/*     CONVERSION OF THE COEFFICIENTS OF THE PART OF THE CURVE EXPRESSED */
+/*     IN CANONIC-JACOBI BASE, INTO THE CANONIC BASE */
+
 
 
 	    AdvApp2Var_MathBase::mmapcmp_(&minombr_.nbr[1], &c__21, &ncoeff, taux1, tjacap);
 	    AdvApp2Var_MathBase::mmjacan_(orcont, &ndeg, tjacap, taux1);
 
-/*        RECOPIE  DES COEFS RESULTANT DE LA CONVERSION DANS LA TA
-BLE */
-/*        DES RESULTAT */
+/*        RECOPY THE COEFS RESULTING FROM THE CONVERSION IN THE TABLE */
+/*        OF RESULTS */
 
 	    i__3 = ncoeff;
 	    for (i__ = 1; i__ <= i__3; ++i__) {
@@ -6170,7 +5846,7 @@ BLE */
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   PROCESSING OF ERRORS */
 /* ***********************************************************************
  */
 
@@ -6183,7 +5859,7 @@ L9102:
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -6221,66 +5897,61 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        . Insertion d'une ligne dans une table triee sans redondance */
+/*        . Insert a line in a table parsed without redundance */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*      TOUS,MATH_ACCES :: TABLEAU&,INSERTION,&TABLEAU */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*        . NCOLMX : Nombre de colonnes du tableau */
-/*        . NLGNMX : Nombre de lignes du tableau */
-/*        . TABTRI : Tableau trie par lignes sans redondances */
-/*        . NBRCOL : Nombre de colonnes utilisees */
-/*        . NBRLGN : Nombre de lignes utilisees */
-/*        . AJOUTE : Ligne a ajouter */
-/*        . EPSEGA : Epsilon pour le test de redondance */
+/*        . NCOLMX : Number of columns in the table */
+/*        . NLGNMX : Number of lines in the table */
+/*        . TABTRI : Table parsed by lines without redundances */
+/*        . NBRCOL : Number of columns used */
+/*        . NBRLGN : Number of lines used */
+/*        . AJOUTE : Line to be added */
+/*        . EPSEGA : Epsilon to test the redundance */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*        . TABTRI : Tableau trie par lignes sans redondances */
-/*        . NBRLGN : Nombre de lignes utilisees */
-/*        . IERCOD : 0 -> Pas de probleme */
-/*                   1 -> La table est pleine */
+/*        . TABTRI : Table parsed by lines without redundances */
+/*        . NBRLGN : Number of lines used */
+/*        . IERCOD : 0 -> No problem */
+/*                   1 -> The table is full */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*        . On n'insere la ligne que si il n'y a pas de ligne tq tous ses 
+/*        . The line is inserted only if there is no line with all 
 */
-/*     elements soient egaux a ceux qu'on veut inserer a epsilon pres. */
+/*     elements equl to those which are planned to be insered, to epsilon. */
 
-/*        . Niveau de debug = 3 */
+/*        . Level of de debug = 3 */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*        . 24-06-91 : RBD; Suppression des accents (Pb. Bull). */
-/*        . 01-10-89 : VV ; Version originale */
-/* > */
-/* ***********************************************************************
- */
-/*     DECLARATIONS , CONTROLE DES ARGUMENTS D'ENTREE , INITIALISATION */
+
+/*
+/*     DECLARATIONS , CONTROL OF INPUT ARGUMENTS , INITIALIZATION */
 /* ***********************************************************************
  */
 
-/* --- Parametres */
+/* --- Parameters */
 
 
-/* --- Fonctions */
+/* --- Functions */
 
 
-/* --- Variables locales */
+/* --- Local variables */
 
 
-/* --- Messagerie */
+/* --- Messages */
 
     /* Parameter adjustments */
     tabtri_dim1 = *ncolmx;
@@ -6295,20 +5966,20 @@ L9999:
 	AdvApp2Var_SysBase::mgenmsg_("MMINLTT", 7L);
     }
 
-/* --- Controle arguments */
+/* --- Control arguments */
 
     if (*nbrlgn >= *nlgnmx) {
 	goto L9001;
     }
 
 /* -------------------- */
-/* *** INITIALISATIONS */
+/* *** INITIALIZATION */
 /* -------------------- */
 
     *iercod = 0;
 
 /* ---------------------------- */
-/* *** RECHERCHE DE REDONDANCE */
+/* *** SEARCH OF REDUNDANCE */
 /* ---------------------------- */
 
     i__1 = *nbrlgn;
@@ -6334,7 +6005,7 @@ L20:
     }
 
 /* ----------------------------------- */
-/* *** RECHERCHE DU POINT D'INSERTION */
+/* *** SEARCH OF THE INSERTION POINT */
 /* ----------------------------------- */
 
 L30:
@@ -6366,35 +6037,35 @@ L70:
     inser = ilgn;
     ++(*nbrlgn);
 
-/* --- Decalage vers le bas */
+/* --- Shift lower */
 
     nlgn = *nbrlgn - inser;
     if (nlgn > 0) {
 	noct = (*ncolmx << 3) * nlgn;
-	AdvApp2Var_SysBase::mcrfill_((integer *)&noct, 
-		 (char *)&tabtri[inser * tabtri_dim1 + 1], 
-		 (char *)&tabtri[(inser + 1)* tabtri_dim1 + 1]);
+	AdvApp2Var_SysBase::mcrfill_(&noct, 
+		 &tabtri[inser * tabtri_dim1 + 1], 
+		 &tabtri[(inser + 1)* tabtri_dim1 + 1]);
     }
 
-/* --- Copie de la ligne */
+/* --- Copy line */
 
     noct = *nbrcol << 3;
-    AdvApp2Var_SysBase::mcrfill_((integer *)&noct, 
-	     (char *)&ajoute[1], 
-	     (char *)&tabtri[inser * tabtri_dim1 + 1]);
+    AdvApp2Var_SysBase::mcrfill_(&noct, 
+	     &ajoute[1], 
+	     &tabtri[inser * tabtri_dim1 + 1]);
 
     goto L9999;
 
 /* ******************************************************************** */
-/*       SORTIE ERREUR , RETOUR PROGRAMME APPELANT , MESSAGERIE */
+/*       OUTPUT ERROR , RETURN CALLING PROGRAM , MESSAGES */
 /* ******************************************************************** */
 
-/* --- La table est deja pleine */
+/* --- The table is already full */
 
 L9001:
     *iercod = 1;
 
-/* --- Fin */
+/* --- End */
 
 L9999:
     if (*iercod != 0) {
@@ -6410,7 +6081,7 @@ L9999:
 //function : AdvApp2Var_MathBase::mmjacan_
 //purpose  : 
 //=======================================================================
- int AdvApp2Var_MathBase::mmjacan_(integer *ideriv, 
+ int AdvApp2Var_MathBase::mmjacan_(const integer *ideriv, 
 			    integer *ndeg, 
 			    doublereal *poljac, 
 			    doublereal *polcan)
@@ -6425,82 +6096,68 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     Routine de transfert de Jacobi normalise a canonique [-1,1], les */
-/*     tableaux etant ranges en termes de degre pair puis impair. */
+/*     Routine of transfer of Jacobi normalized to canonic [-1,1], */
+/*     the tables are ranked by even, then by uneven degree. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        LEGENDRE,JACOBI,PASSAGE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*        IDERIV : Ordre de Jacobi compris entre -1 et 2. */
-/*        NDEG : Le degre vrai du polynome. */
-/*        POLJAC : Le polynome dans la base de Jacobi. */
+/*        IDERIV : Order of Jacobi between -1 and 2. */
+/*        NDEG :   The true degree of the polynom. */
+/*        POLJAC : The polynom in the Jacobi base. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        POLCAN : La courbe exprimee dans la base canonique [-1,1]. */
+/*        POLCAN : The curve expressed in the canonic base [-1,1]. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     04-01-90 : NAK ; COMMON MMJCOBI PAR INCLUDE MMJCOBI */
-/*     12-04-1989 : RBD ; Appel MGSOMSG. */
-/*     27-04-1988 : JJM ; Test NDEG=0 */
-/*     01-03-1988 : JJM ; Creation. */
 
 /* > */
 /* ***********************************************************************
  */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
-/*   Matrices de conversion */
+/*   Matrices of conversion */
 
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        MATRICE DE TRANSFORMATION DS LA BASE DE LEGENDRE */
+/*        MATRIX OF TRANSFORMATION OF LEGENDRE BASE */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        MATH */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     04-01-90 : NAK ; Creation version originale */
 /* > */
 /* ***********************************************************************
  */
 
 
 
-/*  Common de Legendre/Casteljau comprime. */
+/*  Legendre common / Restricted Casteljau. */
 
-/*   0:1 0 Concerne les termes pairs, 1 les termes impairs. */
-/*   CANPLG : Matrice de passage de canonique vers Jacobi avec parites */
-/*            comptees */
-/*   PLGCAN : Matrice de passage de Jacobi vers canonique avec parites */
-/*            comptees. */
-
-
+/*   0:1      0 Concerns the even terms, 1 the uneven terms. */
+/*   CANPLG : Matrix of passage to canonic from Jacobi with calculated parities */
+/*   PLGCAN : Matrix of passage from Jacobi to canonic with calculated parities */
 
 
 /* ***********************************************************************
@@ -6515,7 +6172,7 @@ L9999:
 	AdvApp2Var_SysBase::mgenmsg_("MMJACAN", 7L);
     }
 
-/* ----------------- Expression des termes de degre pair ---------------- 
+/* ----------------- Expression of terms of even degree ---------------- 
 */
 
     i__1 = *ndeg / 2;
@@ -6532,7 +6189,7 @@ L9999:
 /* L300: */
     }
 
-/* --------------- Expression des termes de degre impair ---------------- 
+/* --------------- Expression of terms of uneven degree ---------------- 
 */
 
     if (*ndeg == 0) {
@@ -6567,10 +6224,10 @@ L9999:
 //function : AdvApp2Var_MathBase::mmjaccv_
 //purpose  : 
 //=======================================================================
- int AdvApp2Var_MathBase::mmjaccv_(integer *ncoef, 
-			    integer *ndim, 
-			    integer *ider, 
-			    doublereal *crvlgd,
+ int AdvApp2Var_MathBase::mmjaccv_(const integer *ncoef, 
+			    const integer *ndim, 
+			    const integer *ider, 
+			    const doublereal *crvlgd,
 			    doublereal *polaux,
 			    doublereal *crvcan)
 
@@ -6589,46 +6246,41 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Passage de la base de Jacobi normalisee a la base canonique. */
+/*        Passage from the normalized Jacobi base to the canonic base. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LISSAGE,BASE,LEGENDRE */
+/*        SMOOTHING, BASE, LEGENDRE */
 
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIM: Dimension de l' espace. */
-/*        NCOEF: Degre +1 du polynome. */
-/*        IDER: Ordre des polynomes de Jacobi. */
-/*        CRVLGD : La courbe dans la base de Jacobi. */
+/*        NDIM: Space Dimension. */
+/*        NCOEF: Degree +1 of the polynom. */
+/*        IDER: Order of Jacobi polynoms. */
+/*        CRVLGD : Curve in the base of Jacobi. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        POLAUX : Espace auxilliaire. */
-/*        CRVCAN : La courbe dans la base canonique [-1,1] */
+/*        POLAUX : Auxilliary space. */
+/*        CRVCAN : The curve in the canonic base [-1,1] */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     26-04-1988 : RBD ; Cas de la courbe reduite a 1 point. */
-/*     01-03-1988 : JJM ; Creation. */
 
 /* > */
 /* ********************************************************************* 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
     /* Parameter adjustments */
     polaux_dim1 = (*ncoef - 1) / 2 + 1;
     crvcan_dim1 = *ncoef - 1 + 1;
@@ -6649,7 +6301,7 @@ L9999:
 
     i__1 = *ndim;
     for (nd = 1; nd <= i__1; ++nd) {
-/*   Chargement du tableau auxilliaire. */
+/*  Loading of the auxilliary table. */
 	ii = 0;
 	i__2 = ndeg / 2;
 	for (i__ = 0; i__ <= i__2; ++i__) {
@@ -6667,7 +6319,7 @@ L9999:
 /* L320: */
 	    }
 	}
-/*   Appel a la routine de changement de base. */
+/*   Call the routine of base change. */
 	AdvApp2Var_MathBase::mmjacan_(ider, &ndeg, polaux, &crvcan[nd * crvcan_dim1]);
 /* L300: */
     }
@@ -6712,102 +6364,79 @@ int mmloncv_(integer *ndimax,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : Longueur d'un arc de courbe sur un intervalle donne */
-/*     ---------- pour une fonction dont la representation mathematique */
-/*                est faite un polynome multidimensionnel. */
-/*      Le polynome est en fait un ensemble de polynomes dont les coeffi- 
-*/
-/*      cients sont ranges dans un tableau a 2 indices, chaque ligne */
-/*      etant relative a 1 polynome. */
-/*      Le polynome est defini par ses coefficients ordonne par les puis- 
-*/
-/*      sances croissantes de la variable. */
-/*      Tous les polynomes ont le meme nombre de coefficients (donc le */
-/*      meme degre). */
+/*     FUNCTION : Length of an arc of curve on a given interval */
+/*     ---------- for a function the mathematic representation  */
+/*                which of is a multidimensional polynom. */
+/*      The polynom is a set of polynoms the coefficients which of are ranked
+	/*  in a table with 2 indices, each line relative to 1 polynom. */
+/*      The polynom is defined by its coefficients ordered by increasing 
+*       power of the variable. */
+/*      All polynoms have the same number of coefficients (and the same degree). */
 
-/*     MOTS CLES : LONGUEUR, COURBE */
+/*     KEYWORDS : LENGTH, CURVE */
 /*     ----------- */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
 
-/*      NDIMAX : Nombre de lignes maximum des tableaux */
-/*               (nombre maxi de polynomes). */
-/*      NDIMEN  : Dimension du polynome (Nombre de polynomes). */
-/*      NCOEFF : Nombre de coefficients du polynome (pas de limitation) */
-/*               C'est le degre + 1 */
-/*      COURBE : Coefficients du polynome ordonne par les puissances */
-/*               croissantes. A dimensionner a (NDIMAX,NCOEFF). */
-/*      TDEBUT : Bornes inferieure de l'integration pour calcul de la */
-/*               longueur. */
-/*      TFINAL : Bornes superieure de l'integration pour calcul de la */
-/*               longueur. */
+/*      NDIMAX : Max number of lines of tables (max number of polynoms). */
+/*      NDIMEN : Dimension of the polynom (Nomber of polynoms). */
+/*      NCOEFF : Number of coefficients of the polynom (no limitation) */
+/*               This is degree + 1 */
+/*      COURBE : Coefficients of the polynom ordered by increasing power */
+/*               Dimension to (NDIMAX,NCOEFF). */
+/*      TDEBUT : Lower limit of integration for length calculation. */
+/*      TFINAL : Upper limit of integration for length calculation.  */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*      XLONGC : Longueur de l'arc de courbe */
+/*      XLONGC : Length of arc of curve */
 
-/*      IERCOD : Code d'erreur : */
-/*             = 0 ==> Tout est OK */
-/*             = 1 ==> NDIMEN ou NCOEFF negatif ou nul */
-/*             = 2 ==> Pb chargement racines Legendre et poids de Gauss */
-/*                     par MVGAUS0. */
+/*      IERCOD : Error code : */
+/*             = 0 ==> All is OK */
+/*             = 1 ==> NDIMEN or NCOEFF negative or null */
+/*             = 2 ==> Pb loading Legendre roots and Gauss weight */
+/*                     by MVGAUS0. */
 
-/*     Si erreur => XLONGC = 0 */
+/*     If error => XLONGC = 0 */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 /*           MAERMSG         R*8  DSQRT          I*4  MIN */
 /*           MVGAUS0 */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/*      Voir VGAUSS pour bien comprendre la technique. */
-/*      On integre en verite SQRT (dpi^2) pour i=1,nbdime */
-/*      Le calcul de la derivee est mele dans le code pour ne pas faire */
-/*      un appel supplementaire a une routine. */
+/*      See VGAUSS to understand well the technique. */
+/*      Actually SQRT (dpi^2) is integrated for i=1,nbdime */
+/*      Calculation of the derivative is included in the code to avoid an additional */
+/*      call of the routine. */
 
-/*      La fonction que l'on integre est strictement croissante, il */
-/*      n'est pas necessaire d'utiliser un haut degre pour la methode */
-/*      GAUSS */
+/*      The integrated function is strictly increasing, it */
+/*      is not necessary to use a high degree for the GAUSS method GAUSS. */
 
-/*      Le degre du polynome de LEGENDRE est fonction du degre du */
-/*      polynome a integrer. Il peut varier de 4 a 40 (par pas de 4). */
+/*      The degree of LEGENDRE polynom results from the degree of the */
+/*      polynom to be integrated. It can vary from 4 to 40 (with step of 4). */
 
-/*      La precision (relative) de l'integration est de l'ordre */
-/*      de 1.D-8. */
+/*      The precision (relative) of integration is of order 1.D-8. */
 
-/*      ATTENTION : si TDEBUT > TFINAL, la longueur est alors NEGATIVE. */
+/*      ATTENTION : if TDEBUT > TFINAL, the length is NEGATIVE. */
 
-/*      Attention : la precision sur le resultat n'est pas controlee. */
-/*      Si vous desirez la controler utiliser plutot MMCGLC1, tout en */
-/*      sachant que les performances (en temps) seront quand meme moins */
-/*      bonnes. */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*      8-09-1995 : Performance */
-/*     08-04-94 : JMC ; Rem: Appeler MMCGLC1 pour controler la precision 
-*/
-/*     26-04-90 : RBD ; Augmentation du nbre de points KK pour calcul */
-/*                      + precis, appel a MXVINIT et MXVSAVE, recup */
-/*                      code d'erreur MVGAUS0, ajout commentaires. */
-/*      08-06-89 : GD ; Suppression des 2 parties de l'integration, */
-/*                      MVGAUS0 est appelle que si le degre a change. */
-/*      10-06-88 : GD ; Variation dynamique du degre LEGENDRE */
-/*      18-08-87 : GD ; Version originale */
+/*      Attention : the precision of the result is not controlled. */
+/*      If you wish to control it, use  MMCGLC1, taking into account that  */
+/*      the performance (in time) will be worse. */
 
 /* >===================================================================== 
 */
 
-/*      ATTENTION : SAUVER KGAR WGAUS et UROOT EVENTUELLEMENT */
+/*      ATTENTION : SAVE KGAR WGAUS and UROOT EVENTUALLY */
 /*     ,IERXV */
 /*      INTEGER I1,I20 */
 /*      PARAMETER (I1=1,I20=20) */
@@ -6819,38 +6448,38 @@ int mmloncv_(integer *ndimax,
 
     /* Function Body */
 
-/* ****** Initialisation generale ** */
+/* ****** General initialization ** */
 
     *iercod = 999999;
     *xlongc = 0.;
 
-/* ****** Initialisation de UROOT, WGAUS, NGAUS et KGAR ** */
+/* ****** Initialization of UROOT, WGAUS, NGAUS and KGAR ** */
 
 /*      CALL MXVINIT(IERXV,'INTEGER',I1,KGAR,'INTEGER',I1,NGAUS */
 /*     1    ,'DOUBLE PRECISION',I20,UROOT,'DOUBLE PRECISION',I20,WGAUS) */
 /*      IF (IERXV.GT.0) KGAR=0 */
 
-/* ****** Test d'egalite des bornes ** */
+/* ****** Test the equity of limits ** */
 
     if (*tdebut == *tfinal) {
 	*iercod = 0;
 	goto L9900;
     }
 
-/* ****** Test de la dimension et du nombre de coefficients ** */
+/* ****** Test the dimension and the number of coefficients ** */
 
     if (*ndimen <= 0 || *ncoeff <= 0) {
 	*iercod = 1;
 	goto L9900;
     }
 
-/* ****** Calcul du degre optimum ** */
+/* ****** Calculate the optimal degree ** */
 
     kk = *ncoeff / 4 + 1;
-    kk = min(kk,10);
+    kk = advapp_min(kk,10);
 
-/* ****** Recuperation des coefficients pour l'integrale (DEGRE=4*KK) */
-/*       si KK <> KGAR. */
+/* ****** Return the coefficients for the integral (DEGRE=4*KK) */
+/*       if KK <> KGAR. */
 
     if (kk != kgar) {
 	mvgaus0_(&kk, uroot, wgaus, &ngaus, iercod);
@@ -6862,14 +6491,14 @@ int mmloncv_(integer *ndimax,
 	kgar = kk;
     }
 
-/*      C1 => Point milieu intervalle */
-/*      C2 => 1/2 amplitude intervalle */
+/*      C1 => Point medium interval */
+/*      C2 => 1/2 amplitude interval */
 
     c1 = (*tfinal + *tdebut) * .5;
     c2 = (*tfinal - *tdebut) * .5;
 
 /* ----------------------------------------------------------- */
-/* ****** Integration - Boucle sur les intervalles de GAUSS ** */
+/* ****** Integration - Loop on GAUSS intervals ** */
 /* ----------------------------------------------------------- */
 
     som = 0.;
@@ -6877,13 +6506,13 @@ int mmloncv_(integer *ndimax,
     i__1 = ngaus;
     for (jj = 1; jj <= i__1; ++jj) {
 
-/* ****** Integration en tenant compte de la symetrie ** */
+/* ****** Integration taking the symmetry into account ** */
 
 	tran = c2 * uroot[jj - 1];
 	x1 = c1 + tran;
 	x2 = c1 - tran;
 
-/* ****** Derivation sur la dimension de l'espace ** */
+/* ****** Derivation on the dimension of the space ** */
 
 	der1 = 0.;
 	der2 = 0.;
@@ -6906,30 +6535,30 @@ int mmloncv_(integer *ndimax,
 
 	som += wgaus[jj - 1] * c2 * (sqrt(der1) + sqrt(der2));
 
-/* ****** Fin de boucle dur les intervalles de GAUSS ** */
+/* ****** End of loop on GAUSS intervals ** */
 
 /* L300: */
     }
 
-/* ****** Travail termine ** */
+/* ****** Work ended ** */
 
     *xlongc = som;
 
-/* ****** On force IERCOD  =  0 ** */
+/* ****** It is forced IERCOD  =  0 ** */
 
     *iercod = 0;
 
-/* ****** Traitement de fin ** */
+/* ****** Final processing ** */
 
 L9900:
 
-/* ****** Sauvegarde de UROOT, WGAUS, NGAUS et KGAR ** */
+/* ****** Save UROOT, WGAUS, NGAUS and KGAR ** */
 
 /*      CALL MXVSAVE(IERXV,'INTEGER',I1,KGAR,'INTEGER',I1,NGAUS */
 /*     1    ,'DOUBLE PRECISION',I20,UROOT,'DOUBLE PRECISION',I20,WGAUS) */
 /*      IF (IERXV.GT.0) KGAR=0 */
 
-/* ****** Fin du sous-programme ** */
+/* ****** End of sub-program ** */
 
     if (*iercod != 0) {
 	AdvApp2Var_SysBase::maermsg_("MMLONCV", iercod, 7L);
@@ -6975,53 +6604,48 @@ L9900:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       Positionnement sur les polynomes de la base hermite-Jacobi */
-/*       et leurs derives succesives */
+/*       Position on the polynoms of base hermit-Jacobi */
+/*       and their succesive derivatives */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      PUBLIC, POSITIONEMENT, HERMITE, JACOBI */
+/*      PUBLIC, POSITION, HERMIT, JACOBI */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       TPARAM : Parametre pour lequel on se positionne. */
-/*       IORDRE : Ordre d'hermite-Jacobi (-1,0,1, ou 2) */
-/*       NCOEFF : Nombre de coeeficients des polynomes (Nb de valeur a */
-/*                calculer) */
-/*       NDERIV : Nombre de derive a calculer (0<= N <=3) */
-/*              0 -> Positionement simple sur les fonctions de base */
-/*              N -> Positionement sur les fonctions de base et lerive */
-/*              d'ordre 1 a N */
+/*       TPARAM : Parameter for which the position is found. */
+/*       IORDRE : Orderof hermit-Jacobi (-1,0,1, ou 2) */
+/*       NCOEFF : Number of coefficients of polynoms (Nb of value to calculate) */
+/*       NDERIV : Number of derivative to calculate (0<= N <=3) */
+/*              0 -> Position simple on base functions */
+/*              N -> Position on base functions and derivative */
+/*              of order 1 to N */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*     VALBAS (NCOEFF, 0:NDERIV) : les valeur calculee */
+/*     VALBAS (NCOEFF, 0:NDERIV) : calculated value */
 /*           i */
 /*          d    vj(t)  = VALBAS(J, I) */
 /*          -- i */
 /*          dt */
 
-/*    IERCOD : Code d'erreur */
+/*    IERCOD : Error code */
 /*      0 : Ok */
-/*      1 : Incoherance des arguments d'entre */
+/*      1 : Incoherence of input arguments */
 
-/*     COMMONS UTILISES : */
-/*     ------------------ */
-
-
-/*     REFERENCES APPELEES : */
-/*     --------------------- */
+/*     COMMONS USED : */
+/*     -------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     REFERENCES CALLED : */
+/*     ------------------- */
+
+
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     19-07-1995: PMN; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -7039,7 +6663,7 @@ L9900:
 
 /* ***********************************************************************
  */
-/*                      INITIALISATIONS */
+/*                      INITIALIZATIONS */
 /* ***********************************************************************
  */
 
@@ -7047,7 +6671,7 @@ L9900:
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
@@ -7065,9 +6689,9 @@ L9900:
     iord[1] = *iordre;
     iorjac = (*iordre + 1) << 1;
 
-/*  (1) Calculs generiques .... */
+/*  (1) Generic Calculations .... */
 
-/*  (1.a) Calcul des polynomes d'hermite */
+/*  (1.a) Calculation of hermit polynoms */
 
     if (*iordre >= 0) {
 	mmherm1_(moin11, &c__2, iord, hermit, &ier);
@@ -7076,7 +6700,7 @@ L9900:
 	}
     }
 
-/*  (1.b) Evaluation des polynomes d'hermite */
+/*  (1.b) Evaluation of hermit polynoms */
 
     jj = 1;
     iunit = *nderiv + 1;
@@ -7113,7 +6737,7 @@ L9900:
 	}
     }
 
-/*  (1.c) Evaluation des polynomes de Jaccobi */
+/*  (1.c) Evaluation of Jacobi polynoms */
 
     ii = *ncoeff - iorjac;
 
@@ -7122,13 +6746,13 @@ L9900:
 	goto L9102;
     }
 
-/*  (1.d) Evaluation de W(t) */
+/*  (1.d) Evaluation of W(t) */
 
 /* Computing MAX */
     i__1 = iorjac + 1;
-    nwcof = max(i__1,1);
-    AdvApp2Var_SysBase::mvriraz_((integer *)&nwcof, 
-	     (char *)wpoly);
+    nwcof = advapp_max(i__1,1);
+    AdvApp2Var_SysBase::mvriraz_(&nwcof, 
+	     wpoly);
     wpoly[0] = 1.;
     if (*iordre == 2) {
 	wpoly[2] = -3.;
@@ -7150,7 +6774,7 @@ L9900:
     kk2 = kk1 << 1;
     kk3 = kk1 * 3;
 
-/*  (2) Evaluation a l'ordre 0 */
+/*  (2) Evaluation of order 0 */
 
     jj = 1;
     i__1 = iorjac;
@@ -7164,7 +6788,7 @@ L9900:
 	valbas[ii + iorjac] = wval[0] * vjac[ii - 1];
     }
 
-/*  (3) Evaluation a l'ordre 1 */
+/*  (3) Evaluation of order 1 */
 
     if (*nderiv >= 1) {
 	jj = 2;
@@ -7182,7 +6806,7 @@ L9900:
 	}
     }
 
-/*  (4)  Evaluation a l'ordre 2 */
+/*  (4)  Evaluation of order 2 */
 
     if (*nderiv >= 2) {
 	jj = 3;
@@ -7200,7 +6824,7 @@ L9900:
 	}
     }
 
-/*  (5) Evaluation a l'ordre 3 */
+/*  (5) Evaluation of order 3 */
 
     if (*nderiv >= 3) {
 	jj = 4;
@@ -7222,7 +6846,7 @@ L9900:
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
@@ -7235,7 +6859,7 @@ L9102:
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -7270,44 +6894,41 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        CALCULE LES COORDONNEES D'UN POINT D'UNE COURBE DE PARAMETRE */
-/*        DONNE TPARAM ( CECI EN 2D, 3D OU PLUS) */
+/*        CALCULATE THE COORDINATES OF A POINT OF A CURVE OF GIVEN PARAMETER */
+/*        TPARAM ( IN 2D, 3D OR MORE) */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*       TOUS , MATH_ACCES :: COURBE&,PARAMETRE& , POSITIONNEMENT , &POINT
  */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*        NDIMAX : format / dimension de la courbe */
-/*        NCOEFF : Nbre de coefficients de la courbe */
-/*        COURBE : Matrice des coefficients de la courbe */
-/*        NDIM   : Dimension utile de l'espace de travail */
-/*        TPARAM : Valeur du parametre ou est calcule le point */
+/*        NDIMAX : format / dimension of the curve */
+/*        NCOEFF : Nb of coefficients of the curve */
+/*        COURBE : Matrix of coefficients of the curve */
+/*        NDIM   : Dimension useful of the workspace  */
+/*        TPARAM : Value of the parameter where the point is calculated */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        PNTCRB : Coordonnees du point calcule */
+/*        PNTCRB : Coordinates of the calculated point */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 /*           MIRAZ                MVPSCR2              MVPSCR3 */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*       20-11-89 : JG : VERSION ORIGINALE */
 /* > */
 /* ***********************************************************************
  */
@@ -7324,24 +6945,24 @@ L9999:
 
     /* Function Body */
     isize = *ndim << 3;
-    AdvApp2Var_SysBase::miraz_((integer *)&isize, 
-	   (char *)&pntcrb[1]);
+    AdvApp2Var_SysBase::miraz_(&isize, 
+	   &pntcrb[1]);
 
     if (*ncoeff <= 0) {
 	goto L9999;
     }
 
-/*   Traitement optimal 3d */
+/*   optimal processing 3d */
 
     if (*ndim == 3 && *ndimax == 3) {
 	mvpscr3_(ncoeff, &courbe[courbe_offset], tparam, &pntcrb[1]);
 
-/*   Traitement optimal 2d */
+/*   optimal processing 2d */
 
     } else if (*ndim == 2 && *ndimax == 2) {
 	mvpscr2_(ncoeff, &courbe[courbe_offset], tparam, &pntcrb[1]);
 
-/*   Dimension quelconque - schema de HORNER */
+/*   Any dimension - scheme of HORNER */
 
     } else if (*tparam == 0.) {
 	i__1 = *ndim;
@@ -7402,40 +7023,35 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Positionnement d'un point sur une courbe (ncofmx,ndim). */
+/*        Position of a point on curve (ncofmx,ndim). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        TOUS , AB_SPECIFI :: COURBE&,POLYNOME&,POSITIONNEMENT,&POINT */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*        NCOFMX: Format / degre de la COURBE. */
-/*        NDIM  : Dimension de l' espace. */
-/*        NDEG  : Degre du polynome. */
-/*        COURBE: Les coefficients de la courbe. */
-/*        TPARAM: parametre sur la courbe */
+/*        NCOFMX: Format / degree of the CURVE. */
+/*        NDIM  : Dimension of the space. */
+/*        NDEG  : Degree of the polynom. */
+/*        COURBE: Coefficients of the curve. */
+/*        TPARAM: Parameter on the curve */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS  : */
 /*     ------------------- */
-/*        TABVAL(NDIM): Le point resultat (ou tableau de valeurs) */
+/*        TABVAL(NDIM): The resulting point (or table of values) */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     05-01-90 : JG : optimisation (supprim appel a MGENMSG) , nettoyage 
-*/
-/*     18-09-85 : Cree par JJM. */
 /* > */
 /* ***********************************************************************
  */
@@ -7496,53 +7112,49 @@ int mmpojac_(doublereal *tparam,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       Positionnement sur les polynomes de Jacobi et leurs derives */
-/*       successives par un algorithme de recurence */
+/*       Positioning on Jacobi polynoms and their derivatives */
+/*       successive by a recurrent algorithm */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      RESERVE, POSITIONEMENT, JACOBI */
+/*      RESERVE, POSITIONING, JACOBI */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       TPARAM : Parametre pour lequel on se positionne. */
-/*       IORDRE : Ordre d'hermite-?? (-1,0,1, ou 2) */
-/*       NCOEFF : Nombre de coeeficients des polynomes (Nb de valeur a */
-/*                calculer) */
-/*       NDERIV : Nombre de derive a calculer (0<= N <=3) */
-/*              0 -> Positionement simple sur les fonctions de jacobi */
-/*              N -> Positionement sur les fonctions de jacobi et leurs */
-/*              derive d'ordre 1 a N. */
+/*       TPARAM : Parameter for which positioning is done. */
+/*       IORDRE : Order of hermit-?? (-1,0,1, or 2) */
+/*       NCOEFF : Number of coeeficients of polynoms (Nb of value to */
+/*                calculate) */
+/*       NDERIV : Number of derivative to calculate (0<= N <=3) */
+/*              0 -> Position simple on jacobi functions */
+/*              N -> Position on jacobi functions and their */
+/*              derivatives of order 1 to N. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*     VALJAC (NCOEFF, 0:NDERIV) : les valeur calculee */
+/*     VALJAC (NCOEFF, 0:NDERIV) : the calculated values */
 /*           i */
 /*          d    vj(t)  = VALJAC(J, I) */
 /*          -- i */
 /*          dt */
 
-/*    IERCOD : Code d'erreur */
+/*    IERCOD : Error Code */
 /*      0 : Ok */
-/*      1 : Incoherance des arguments d'entre */
+/*      1 : Incoherence of input arguments */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     19-07-1995: PMN; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -7551,7 +7163,7 @@ int mmpojac_(doublereal *tparam,
  */
 
 
-/*     varaibles statiques */
+/*     static varaibles */
 
 
 
@@ -7571,7 +7183,7 @@ int mmpojac_(doublereal *tparam,
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     Processing */
 /* ***********************************************************************
  */
 
@@ -7582,7 +7194,7 @@ int mmpojac_(doublereal *tparam,
 	goto L9101;
     }
 
-/*  --- Calcul des normes */
+/*  --- Calculation of norms */
 
 /*      IF (NCOEFF.GT.NBCOF) THEN */
     i__1 = *ncoeff;
@@ -7601,7 +7213,7 @@ int mmpojac_(doublereal *tparam,
 
 /*      END IF */
 
-/*  --- Positionements triviaux ----- */
+/*  --- Trivial Positions ----- */
 
     valjac[1] = 1.;
     aux1 = (doublereal) (*iordre + 1);
@@ -7622,7 +7234,7 @@ int mmpojac_(doublereal *tparam,
 	}
     }
 
-/*  --- Positionement par reccurence */
+/*  --- Positioning by recurrence */
 
     i__1 = *ncoeff;
     for (ii = 3; ii <= i__1; ++ii) {
@@ -7661,7 +7273,7 @@ int mmpojac_(doublereal *tparam,
 	}
     }
 
-/*    ---> Normalisation */
+/*    ---> Normalization */
 
     i__1 = *ncoeff;
     for (ii = 1; ii <= i__1; ++ii) {
@@ -7676,7 +7288,7 @@ int mmpojac_(doublereal *tparam,
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   PROCESSING OF ERRORS */
 /* ***********************************************************************
  */
 
@@ -7687,7 +7299,7 @@ L9101:
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -7721,58 +7333,49 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       REMPLISSAGE DE LA TABLE DE POSITIONNEMENT POSUIV QUI PERMET DE */
-/*       PARCOURIR EN COLONNE LA PARTIE TRAINGULAIRE INFERIEUR DE LA */
-/*       MATRICE  SOUS FORME DE PROFIL */
+/*       FILL THE TABLE OF POSITIONING POSUIV WHICH ALLOWS TO */
+/*       PARSE BY COLUMN THE INFERIOR TRIANGULAR PART OF THE */
+/*       MATRIX  IN FORM OF PROFILE */
 
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      RESERVE, MATRICE, PROFIL */
+/*      RESERVE, MATRIX, PROFILE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
 
-/*       NISTOC: NOMBRE DE COEFFICIENTS DANS LE PROFILE */
-/*       DIMMAT: NOMBRE DE LIGNE DE LA MATRICE CARRE SYMETRIQUE */
-/*       APOSIT: TABLE DE POSITIONNEMENT DES TERMES DE STOCKAGE */
-/*               APOSIT(1,I) CONTIENT LE NOMBRE DE TERMES-1 SUR LA LIGNE 
-*/
-/*               I DANS LE PROFIL DE LA MATRICE */
-/*              APOSIT(2,I) CONTIENT L'INDICE DE STOCKAGE DU TERME DIAGONA
-L*/
-/*               DE LA LIGNE I */
+/*       NISTOC: NUMBER OF COEFFICIENTS IN THE PROFILE */
+/*       DIMMAT: NUMBER OF LINE OF THE SYMMETRIC SQUARE MATRIX */
+/*       APOSIT: TABLE OF POSITIONING OF STORAGE TERMS */
+/*               APOSIT(1,I) CONTAINS THE NUMBER OF TERMES-1 ON LINE 
+/*               I IN THE PROFILE OF THE MATRIX */
+/*               APOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF DIAGONAL TERM 
+/*               OF LINE I */
 
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*       POSUIV: POSUIV(K) (OU K EST L'INDICE DE STOCKAGE DE MAT(I,J)) */
-/*               CONTIENT LE PLUS PETIT NUMERO IMIN>I DE LA  LIGNE QUI */
-/*               POSSEDE UN TERME MAT(IMIN,J) QUI EST DANS LE PROFIL. */
-/*               S'IL N'Y A PAS LE TERME MAT(IMIN,J) DANS LE PROFIL */
-/*               ALORS POSUIV(K)=-1 */
+/*       POSUIV: POSUIV(K) (WHERE K IS THE INDEX OF STORAGE OF MAT(I,J)) */
+/*               CONTAINS THE SMALLEST NUMBER IMIN>I OF THE  LINE THAT */
+/*               POSSESSES A TERM MAT(IMIN,J) THAT IS IN THE PROFILE. */
+/*               IF THERE IS NO TERM MAT(IMIN,J) IN THE PROFILE THEN POSUIV(K)=-1 */
 
 
-
-
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     23-08-95 : KHN; ECRITURE VERSION ORIGINALE. */
-/* > */
 /* ***********************************************************************
  */
 /*                            DECLARATIONS */
@@ -7783,7 +7386,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                      INITIALISATIONS */
+/*                      INITIALIZATIONS */
 /* ***********************************************************************
  */
 
@@ -7801,7 +7404,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
@@ -7838,7 +7441,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
@@ -7847,7 +7450,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -7893,11 +7496,11 @@ L9999:
     static logical ldbg;
     static doublereal mcho[100];
     static integer jmin, jmax, i__, j, k, l;
-    static long int iofv1, iofv2, iofv3, iofv4;
+    static intptr_t iofv1, iofv2, iofv3, iofv4;
     static doublereal v1[100], v2[100], v3[100], v4[100];
     static integer deblig, dimhch;
     static doublereal hchole[100];
-    static long int iofmch, iofmam, iofhch;
+    static intptr_t iofmch, iofmam, iofhch;
     static doublereal matsym[100];
     static integer ier;
     static integer aux;
@@ -7907,80 +7510,68 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       RESOLUTION DU SYSTEME */
+/*       SOLUTION OF THE SYSTEM */
 /*       H  t(G)   V     B */
 /*                    = */
 /*       G    0    L     C */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      RESERVE, RESOLUTION, SYSTEME, LAGRANGIEN */
+/*      RESERVE, SOLUTION, SYSTEM, LAGRANGIAN */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*      HDIMEN: NOMBRE DE LIGNE(OU COLONNE) DE LA MATRICE HESSIENNE */
-/*      GDIMEN: NOMBRE DE LIGNE DE LA MATRICE DES CONTRAINTES */
-/*      HNSTOC: NOMBRES DE TERMES DANS LE PROFIL DE LA MATRICE HESSIENNE 
+/*      HDIMEN: NOMBER OF LINE (OR COLUMN) OF THE HESSIAN MATRIX */
+/*      GDIMEN: NOMBER OF LINE OF THE MATRIX OF CONSTRAINTS */
+/*      HNSTOC: NOMBErS OF TERMS IN THE PROFILE OF HESSIAN MATRIX 
 */
-/*      GNSTOC: NOMBRES DE TERMES DANS LE PROFIL DE LA MATRICE DES */
-/*              CONTRAINTES */
-/*      MNSTOC: NOMBRES DE TERMES DANS LE PROFIL DE LA MATRICE */
-/*              M= G H t(G) */
-/*              ou H EST LA MATRICE HESSIENNE ET G LA MATRICE DES */
-/*              CONTRAINTES */
-/*      MATSYH: PARTIE TRIANGULAIRE INFERIEUR DE LA MATRICE */
-/*              HESSIENNE SOUS FORME DE PROFIL */
-/*      MATSYG: MATRICE DES CONTRAINTES SOUS FORME DE PROFIL */
-/*      VECSYH: VECTEUR DU SECOND MEMBRE ASSOCIE A MATSYH */
-/*      VECSYG: VECTEUR DU SECOND MEMBRE ASSOCIE A MATSYG */
-/*      HPOSIT: TABLE DE POSITIONNEMENT DE LA MATRICE HESSIENNE */
-/*              HPOSIT(1,I) CONTIENT LE NOMBRE DE TERMES -1 */
-/*              QUI SONT DANS LE PROFIL A LA LIGNE I */
-/*              HPOSIT(2,I) CONTIENT L'INDICE DE STOCKAGE DU TERME */
-/*              DIAGNALE DE LA MATRICE A LA LIGNE I */
-/*      HPOSUI: TABLE PERMETTANT DE BALAYER EN COLONNE LA MATRICE */
-/*              HESSIENNE SOUS FORME DE PROFIL */
-/*             HPOSUI(K) CONTIENT LE NUMERO DE LIGNE IMIN SUIVANT  LA LIGN
-E*/
-/*              COURANT I OU H(I,J)=MATSYH(K) TEL QUE IL EXISTE DANS LA */
-/*              MEME COLONNE J UN TERME DANS LE PROFIL DE LA LIGNE IMIN */
-/*              SI UN TEL TERME N'EXISTE PAS IMIN=-1 */
-/*      GPOSIT: TABLE DE POSITIONNEMENT DE LA MATRICE DES CONTRAINTES */
-/*              GPOSIT(1,I) CONTIENT LE NOMBRE DE TERMES DE LA LIGNE I */
-/*                          QUI SONT DANS LE PROFIL */
-/*              GPOSIT(2,I) CONTIENT L'INDICE DE STOKAGE DU DERNIER TERME 
-*/
-/*                          DE LA LIGNE I QUI EST DANS LE PROFIL */
-/*              GPOSIT(3,I) CONTIENT LE NUMERO DE COLONNE CORRESPONDANT */
-/*                          AU PREMIER TERME DE LA LIGNE I QUI EST DANS */
-/*                          LE PROFIL */
-/*      MMPOSUI, MPOSIT: MEME STRUCTURE QUE HPOSUI, MAIS POUR LA MATRICE 
-*/
+/*      GNSTOC: NOMBERS OF TERMS IN THE PROFILE OF THE MATRIX OF CONSTRAINTS */
+/*      MNSTOC: NOMBERS OF TERMS IN THE PROFILE OF THE MATRIX M= G H t(G) */
+/*              where H IS THE HESSIAN MATRIX AND G IS THE MATRIX OF CONSTRAINTS */
+/*      MATSYH: TRIANGULAR INFERIOR PART OF THE HESSIAN MATRIX
+/*              IN FORM OF PROFILE */
+/*      MATSYG: MATRIX OF CONSTRAINTS IN FORM OF PROFILE */
+/*      VECSYH: VECTOR OF THE SECOND MEMBER ASSOCIATED TO MATSYH */
+/*      VECSYG: VECTOR OF THE SECOND MEMBER ASSOCIATED TO MATSYG */
+/*      HPOSIT: TABLE OF POSITIONING OF THE HESSIAN MATRIX */
+/*              HPOSIT(1,I) CONTAINS THE NUMBER OF TERMS -1 */
+/*              WHICH ARE IN THE PROFILE AT LINE I */
+/*              HPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF TERM */
+/*              DIAGONAL OF THE MATRIX AT LINE I */
+/*      HPOSUI: TABLE ALLOWING TO PARSE THE HESSIAN MATRIX BY COLUMN */
+/*              IN FORM OF PROFILE */
+/*             HPOSUI(K) CONTAINS THE NUMBER OF LINE IMIN FOLLOWING THE CURRENT LINE*/
+/*              I WHERE H(I,J)=MATSYH(K) AS IT EXISTS IN THE */
+/*              SAME COLUMN J A TERM IN THE PROFILE OF LINE IMIN */
+/*              IF SUCH TERM DOES NOT EXIST IMIN=-1 */
+/*      GPOSIT: TABLE OF POSITIONING OF THE MATRIX OF CONSTRAINTS */
+/*              GPOSIT(1,I) CONTAINS THE NUMBER OF TERMS OF LINE I */
+/*                          WHICH ARE IN THE PROFILE */
+/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE LAST TERM 
+/*                          OF LINE I WHICH IS IN THE PROFILE */
+/*              GPOSIT(3,I) CONTAINS THE NUMBER OF COLUMN CORRESPONDING */
+/*                          TO THE FIRST TERM OF LINE I WHICH IS IN THE PROFILE */
+/*      MMPOSUI, MPOSIT: SAME STRUCTURE AS HPOSUI, BUT FOR MATRIX 
 /*              M=G H t(G) */
 
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*       VECSOL: VECTEUR SOLUTION V DU SYSTEME */
-/*       IERCOD: CODE D'ERREUR */
+/*       VECSOL: VECTOR SOLUTION V OF THE SYSTEM */
+/*       IERCOD: ERROR CODE */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     21-09-96 : KHN; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -8022,11 +7613,11 @@ E*/
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
-/*     Allocation dynamique */
+/*    Dynamic allocation */
 
     AdvApp2Var_SysBase::macrar8_(hdimen, &c__100, v1, &iofv1, &ier);
     if (ier > 0) {
@@ -8038,8 +7629,8 @@ E*/
 	goto L9102;
     }
 
-/*   RESOL DU SYST 1     H V1 = b */
-/*     ou H=MATSYH  et b=VECSYH */
+/*   solution of system 1     H V1 = b */
+/*   where H=MATSYH  and b=VECSYH */
 
     mmchole_(hnstoc, hdimen, &matsyh[1], &hposit[3], &hposui[1], &hchole[
 	    iofhch], &ier);
@@ -8052,14 +7643,14 @@ E*/
 	goto L9102;
     }
 
-/*     CAS OU IL Y A DES CONTRAINTES */
+/*    Case when there are constraints */
 
     if (*gdimen > 0) {
 
-/*    CALCUL LE VECTEUR DU SECOND MEMBRE V2=G H(-1) b -c = G v1-c */
-/*    DU SYSTEME D'INCONNU LE VECTEUR MULTIP DE LAGRANGE */
-/*    ou G=MATSYG */
-/*       c=VECSYG */
+/*    Calculate the vector of the second member V2=G H(-1) b -c = G v1-c */
+/*    of system of unknown Lagrangian vector MULTIP */
+/*    where G=MATSYG */
+/*          c=VECSYG */
 
 	AdvApp2Var_SysBase::macrar8_(gdimen, &c__100, v2, &iofv2, &ier);
 	if (ier > 0) {
@@ -8089,20 +7680,20 @@ E*/
 	    v2[i__ + iofv2 - 1] -= vecsyg[i__];
 	}
 
-/*     CALCUL de la matrice M= G H(-1) t(G) */
+/*     Calculate the matrix M= G H(-1) t(G) */
 /*     RESOL DU SYST 2 : H qi = gi */
-/*             ou gi est un vecteur colonne de t(G) */
+/*            where is a vector column of t(G) */
 /*                qi=v3 */
-/*            puis calcul G qi */
-/*            puis construire M sous forme de profil */
+/*            then calculate G qi */
+/*            then construct M in form of profile */
 
 
 
 	i__1 = *gdimen;
 	for (i__ = 1; i__ <= i__1; ++i__) {
-	    AdvApp2Var_SysBase::mvriraz_((integer *)hdimen, (char *)&v1[iofv1]);
-	    AdvApp2Var_SysBase::mvriraz_((integer *)hdimen, (char *)&v3[iofv3]);
-	    AdvApp2Var_SysBase::mvriraz_((integer *)gdimen, (char *)&v4[iofv4]);
+	    AdvApp2Var_SysBase::mvriraz_(hdimen, &v1[iofv1]);
+	    AdvApp2Var_SysBase::mvriraz_(hdimen, &v3[iofv3]);
+	    AdvApp2Var_SysBase::mvriraz_(gdimen, &v4[iofv4]);
 	    jmin = gposit[i__ * 3 + 3];
 	    jmax = gposit[i__ * 3 + 1] + gposit[i__ * 3 + 3] - 1;
 	    aux = gposit[i__ * 3 + 2] - gposit[i__ * 3 + 1] - jmin + 1;
@@ -8134,11 +7725,11 @@ E*/
 	}
 
 
-/*    RESOL SYST 3  M L = V2 */
-/*     AVEC L=V4 */
+/*    SOLVE SYST 3  M L = V2 */
+/*     WITH L=V4 */
 
 
-	AdvApp2Var_SysBase::mvriraz_((integer *)gdimen, (char *)&v4[iofv4]);
+	AdvApp2Var_SysBase::mvriraz_(gdimen, &v4[iofv4]);
 	AdvApp2Var_SysBase::macrar8_(mnstoc, &c__100, mcho, &iofmch, &ier);
 	if (ier > 0) {
 	    goto L9102;
@@ -8155,11 +7746,11 @@ E*/
 	}
 
 
-/*    CALCUL LE VECTEUR DU SECOND MEMBRE DU SYSTEME  Hx = b - t(G) L 
+/*    CALCULATE THE VECTOR OF THE SECOND MEMBER OF THE SYSTEM  Hx = b - t(G) L 
 */
 /*                                                      = V1 */
 
-	AdvApp2Var_SysBase::mvriraz_((integer *)hdimen, (char *)&v1[iofv1]);
+	AdvApp2Var_SysBase::mvriraz_(hdimen, &v1[iofv1]);
 	mmtmave_(gdimen, hdimen, &gposit[4], gnstoc, &matsyg[1], &v4[iofv4], &
 		v1[iofv1], &ier);
 	if (ier > 0) {
@@ -8189,7 +7780,7 @@ E*/
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   PROCESSING OF ERRORS */
 /* ***********************************************************************
  */
 
@@ -8199,12 +7790,12 @@ L9101:
     goto L9999;
 
 L9102:
-    AdvApp2Var_SysBase::mswrdbg_("MMRESOL : PROBLEME AVEC DIMMAT", 30L);
+    AdvApp2Var_SysBase::mswrdbg_("MMRESOL : PROBLEM WITH DIMMAT", 30L);
     *iercod = 2;
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -8272,52 +7863,48 @@ int mmrslss_(integer *,//mxcoef,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FuNCTION : */
 /*     ----------                     T */
-/*       Resoud le systeme lineaire SS x = b ou S est une matrice */
-/*       triangulaire inferieure donnee sous forme profil */
+/*       Solves linear system SS x = b where S is a  */
+/*       triangular lower matrix given in form of profile */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*     RESERVE, MATRICE_PROFILE, RESOLUTION, CHOLESKI */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*     MXCOEF  : Nombre maximal de coefficient non nuls dans la matrice */
-/*     DIMENS  : Dimension de la matrice */
-/*     SMATRI(MXCOEF) : Valeurs des coefficients de la matrice */
+/*     MXCOEF  : Maximum number of non-null coefficient in the matrix */
+/*     DIMENS  : Dimension of the matrix */
+/*     SMATRI(MXCOEF) : Values of coefficients of the matrix */
 /*     SPOSIT(2,DIMENS): */
-/*       SPOSIT(1,*) : Distance diagonnal-extrimite de la ligne */
-/*       SPOSIT(2,*) : Position des termes diagonnaux dans AMATRI */
-/*     POSUIV(MXCOEF): premiere ligne inferieure non hors profil */
-/*     MSCNMBR(DIMENS): Vecteur second membre de l'equation */
+/*       SPOSIT(1,*) : Distance diagonal-extremity of the line */
+/*       SPOSIT(2,*) : Position of diagonal terms in AMATRI */
+/*     POSUIV(MXCOEF): first line inferior not out of profile */
+/*     MSCNMBR(DIMENS): Vector second member of the equation */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*     SOLUTI(NDIMEN) : Vecteur resultat */
-/*     IERCOD   : Code d'erreur 0  : ok */
+/*     SOLUTI(NDIMEN) : Result vector */
+/*     IERCOD   : Error code 0  : ok */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 /*       T */
-/*     SS  est la decomposition de choleski d'une matrice symetrique */
-/*     definie postive, qui peut s'obtenir par la routine MMCHOLE. */
+/*     SS  is the decomposition of choleski of a symmetric matrix */
+/*     defined postive, that can result from routine MMCHOLE. */
 
-/*     Pour une matrice pleine on peut utiliser MRSLMSC */
+/*     For a full matrix it is possible to use MRSLMSC */
 
-/*     NIVEAU DE DEBUG = 4 */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     14-02-1994: PMN; ECRITURE VERSION ORIGINALE. */
+/*     LEVEL OF DEBUG = 4 */
 /* > */
 /* ***********************************************************************
  */
@@ -8349,11 +7936,11 @@ int mmrslss_(integer *,//mxcoef,
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
-/* ----- Resolution de Sw = b */
+/* ----- Solution of Sw = b */
 
     i__1 = *dimens;
     for (i__ = 1; i__ <= i__1; ++i__) {
@@ -8368,7 +7955,7 @@ int mmrslss_(integer *,//mxcoef,
 	soluti[i__] = (mscnmbr[i__] - somme) / smatri[pointe];
     }
 /*                     T */
-/* ----- Resolution de S u = w */
+/* ----- Solution of S u = w */
 
     for (i__ = *dimens; i__ >= 1; --i__) {
 
@@ -8388,14 +7975,14 @@ int mmrslss_(integer *,//mxcoef,
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN PROGRAM CALLING */
 /* ***********************************************************************
  */
 
@@ -8435,89 +8022,76 @@ int mmrslw_(integer *normax,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*  Resolution d' un systeme lineaire A.x = B de N equations a N */
-/*  inconnues par la methode de Gauss (pivot partiel) ou : */
-/*          A est une matrice NORDRE * NORDRE, */
-/*          B est une matrice NORDRE (lignes) * NDIMEN (colonnes), */
-/*          x est une matrice NORDRE (lignes) * NDIMEN (colonnes). */
-/*  Dans ce programme, A et B sont stockes dans la matrice ABMATR dont */
-/*  les lignes et les colonnes ont ete inversees. ABMATR(k,j) est le */
-/*  terme A(j,k) si k <= NORDRE, B(j,k-NORDRE) sinon (cf. exemple). */
+/*  Solution of a linear system A.x = B of N equations to N */
+/*  unknown by Gauss method (partial pivot) or : */
+/*          A is matrix NORDRE * NORDRE, */
+/*          B is matrix NORDRE (lines) * NDIMEN (columns), */
+/*          x is matrix NORDRE (lines) * NDIMEN (columns). */
+/*  In this program, A and B are stored in matrix ABMATR  */
+/*  the lines and columns which of were inverted. ABMATR(k,j) is */
+/*  term A(j,k) if k <= NORDRE, B(j,k-NORDRE) otherwise (see example). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /* TOUS, MATH_ACCES::EQUATION&, MATRICE&, RESOLUTION, GAUSS, &SOLUTION */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*   NORMAX : Taille maximale du premier indice de XMATRI. Cet argument */
-/*            ne sert que pour la declaration de dimension de XMATRI et */
-/*            doit etre superieur ou egal a NORDRE. */
-/*   NORDRE :  Ordre de la matrice i.e. nombre d'equations et */
-/*             d'inconnues du systeme lineaire a resoudre. */
-/*   NDIMEN : Nombre de second membre. */
-/*   EPSPIV : Valeur minimale d'un pivot. Si au cours du calcul la */
-/*            valeur absolue du pivot est inferieure a EPSPIV, le */
-/*            systeme d'equations est declare singulier. EPSPIV doit */
-/*            etre un "petit" reel. */
+/*   NORMAX : Max size of the first index of XMATRI. This argument */
+/*            serves only for the declaration of dimension of XMATRI and should be */
+/*            above or equal to NORDRE. */
+/*   NORDRE : Order of the matrix i.e. number of equations and  */
+/*            unknown quantities of the linear system to be solved. */
+/*   NDIMEN : Number of the second member. */
+/*   EPSPIV : Minimal value of a pivot. If during the calculation  */
+/*            the absolute value of the pivot is below EPSPIV, the */
+/*            system of equations is declared singular. EPSPIV should */
+/*            be a "small" real. */
 
-/*   ABMATR(NORDRE+NDIMEN,NORDRE) : Matrice auxiliaire contenant la */
-/*                                  matrice A et la matrice B. */
+/*   ABMATR(NORDRE+NDIMEN,NORDRE) : Auxiliary matrix containing  */
+/*                                  matrix A and matrix B. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*   XMATRI : Matrice contenant les NORDRE*NDIMEN solutions. */
-/*   IERCOD=0 indique que toutes les solutions sont calculees. */
-/*   IERCOD=1 indique que la matrice est de rang inferieur a NORDRE */
-/*            (le systeme est singulier). */
+/*   XMATRI : Matrix containing  NORDRE*NDIMEN solutions. */
+/*   IERCOD=0 shows that all solutions are calculated. */
+/*   IERCOD=1 shows that the matrix is of lower rank than NORDRE */
+/*            (the system is singular). */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     ATTENTION : les indices de ligne et de colonne sont inverses */
-/*                 par rapport aux indices habituels. */
-/*                 Le systeme : */
+/*     ATTENTION : the indices of line and column are inverted */
+/*                 compared to usual indices. */
+/*                 System : */
 /*                        a1*x + b1*y = c1 */
 /*                        a2*x + b2*y = c2 */
-/*                 doit etre represente par la matrice ABMATR : */
+/*                 should be represented by matrix ABMATR : */
 
 /*                 ABMATR(1,1) = a1  ABMATR(1,2) = a2 */
 /*                 ABMATR(2,1) = b1  ABMATR(2,2) = b2 */
 /*                 ABMATR(3,1) = c1  ABMATR(3,2) = c2 */
 
-/*     Pour resoudre ce systeme, il faut poser: */
+/*     To solve this system, it is necessary to set : */
 
-/*                 NORDRE = 2 (il y a 2 equations a 2 inconnues), */
-/*                 NDIMEN = 1 (il y a un seul second membre), */
-/*                 NORMAX peut etre pris quelconque >= NORDRE. */
+/*                 NORDRE = 2 (there are 2 equations with 2 unknown values), */
+/*                 NDIMEN = 1 (there is only one second member), */
+/*                 any NORMAX can be taken >= NORDRE. */
 
-/*     Pour utiliser cette routine, il est conseille de se */
-/*     servir de l'une des interfaces : MMRSLWI ou de MMMRSLWD. */
-
-/*     HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*    24-11-1995 : JPI ; annulation des modifs concernant la factorisation
-*/
-/*                        de 1/PIVOT (Pb numerique) */
-/*     08-09-1995 : JMF ; performances */
-/*     06-04-1990 : RBD ; Ajout commentaires et Implicit none. */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     22-02-1988 : JJM ; Appel GERMSG -> MAERMSG */
-/*     21-09-1987 : creation de la matrice unique ABMATR et des */
-/*                  interfaces MMRSLWI et MMMRSLWD (RBD). */
-/*     01-07-1987 : Cree par R. Beraud. */
+/*     To use this routine, it is recommended to use one of */
+/*     interfaces : MMRSLWI or MMMRSLWD. */
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
 /*      INTEGER IBB,MNFNDEB */
 
@@ -8536,21 +8110,21 @@ int mmrslw_(integer *normax,
 
 /* ********************************************************************* 
 */
-/*                  Triangulation de la matrice ABMATR. */
+/*                  Triangulation of matrix ABMATR. */
 /* ********************************************************************* 
 */
 
     i__1 = *nordre;
     for (kk = 1; kk <= i__1; ++kk) {
 
-/* ---------- Recherche du pivot maxi sur la colonne KK. ------------
+/* ---------- Find max pivot in column KK. ------------
 --- */
 
 	pivot = *epspiv;
 	kpiv = 0;
 	i__2 = *nordre;
 	for (jj = kk; jj <= i__2; ++jj) {
-	    akj = (d__1 = abmatr[kk + jj * abmatr_dim1], abs(d__1));
+	    akj = (d__1 = abmatr[kk + jj * abmatr_dim1], advapp_abs(d__1));
 	    if (akj > pivot) {
 		pivot = akj;
 		kpiv = jj;
@@ -8561,7 +8135,7 @@ int mmrslw_(integer *normax,
 	    goto L9900;
 	}
 
-/* --------- Permutation de la ligne KPIV et avec la ligne KK. ------
+/* --------- Swapping of line KPIV with line KK. ------
 --- */
 
 	if (kpiv != kk) {
@@ -8575,7 +8149,7 @@ int mmrslw_(integer *normax,
 	    }
 	}
 
-/* -------------------- Elimination et triangularisation. -----------
+/* ---------- Removal and triangularization. -----------
 --- */
 
 	pivot = -abmatr[kk + kk * abmatr_dim1];
@@ -8597,14 +8171,14 @@ int mmrslw_(integer *normax,
 
 /* ********************************************************************* 
 */
-/*          Resolution du systeme d'equations triangulaires. */
-/*   La matrice ABMATR(NORDRE+JJ,II), contient les second membres du */
-/*             systeme pour 1<=j<=NDIMEN et 1<=i<=NORDRE. */
+/*          Solution of the system of triangular equations. */
+/*   Matrix ABMATR(NORDRE+JJ,II), contains second members  */
+/*             of the system for 1<=j<=NDIMEN and 1<=i<=NORDRE. */
 /* ********************************************************************* 
 */
 
 
-/* ---------------- Calcul des solutions en remontant. ----------------- 
+/* ---------------- Calculation of solutions by ascending. ----------------- 
 */
 
     for (kk = *nordre; kk >= 1; --kk) {
@@ -8625,9 +8199,8 @@ int mmrslw_(integer *normax,
     }
     goto L9999;
 
-/* ------Si la valeur absolue de l' un des pivot est plus petit -------- 
-*/
-/* ------------ que EPSPIV: recuperation du code d' erreur. ------------ 
+/* ------If the absolute value of a pivot is smaller than -------- 
+/* ---------- EPSPIV: return the code of error. ------------ 
 */
 
 L9900:
@@ -8673,75 +8246,65 @@ L9999:
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Resolution d' un systeme lineaire par la methode de Gauss ou */
-/*        le second membre est un tableau de vecteurs. Methode du pivot */
-/*        partiel. */
+/*        Solution of a linear system by Gauss method where */
+/*        the second member is a table of vectors. Method of partial pivot. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        TOUS , MATH_ACCES :: */
+/*        ALL, MATH_ACCES :: */
 /*        SYSTEME&,EQUATION&, RESOLUTION,GAUSS ,&VECTEUR */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NORMAX : Dimensionnement maxi de AMAT. */
-/*        NORDRE :  Ordre de la matrice. */
-/*        NDIM : Nombre de colonnes de BMAT et XMAT. */
-/*        AMAT(NORMAX,NORDRE) : La matrice traitee. */
-/*        BMAT(NORMAX,NDIM) : La matrice des second membre. */
-/*        XMAT(NORMAX,NDIM) : La matrice des solutions. */
-/*        EPSPIV : Valeur minimale d'un pivot. */
+/*        NORMAX : Max. Dimension of AMAT. */
+/*        NORDRE :  Order of the matrix. */
+/*        NDIM : Number of columns of BMAT and XMAT. */
+/*        AMAT(NORMAX,NORDRE) : The processed matrix. */
+/*        BMAT(NORMAX,NDIM)   : The matrix of second member. */
+/*        XMAT(NORMAX,NDIM)   : The matrix of solutions. */
+/*        EPSPIV : Min value of a pivot. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        AAUX(NORDRE+NDIM,NORDRE) : Matrice auxiliaire. */
-/*        XMAT(NORMAX,NDIM) : La matrice des solutions. */
-/*        IERCOD=0 indique que les solutions dans XMAT sont valables. */
-/*        IERCOD=1 indique que la matrice AMAT est de rang inferieur */
-/*                 a NORDRE. */
+/*        AAUX(NORDRE+NDIM,NORDRE) : Auxiliary matrix. */
+/*        XMAT(NORMAX,NDIM) : Matrix of solutions. */
+/*        IERCOD=0 shows that solutions in XMAT are valid. */
+/*        IERCOD=1 shows that matrix AMAT is of lower rank than NORDRE. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ---------------------- */
 /*     Type  Name */
 /*           MAERMSG              MGENMSG              MGSOMSG */
 /*           MMRSLW          I*4  MNFNDEB */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*    ATTENTION :les lignes et les colonnes sont dans l' ordre */
-/*               habituel : */
-/*               1er indice  = indice ligne */
-/*               2eme indice = indice colonne */
-/*    Exemple, Le systeme : */
+/*    ATTENTION : lines and columns are located in usual order : */
+/*               1st index  = index line */
+/*               2nd index = index column */
+/*    Example, the system : */
 /*                 a1*x + b1*y = c1 */
 /*                 a2*x + b2*y = c2 */
-/*    est represente par la matrice AMAT : */
+/*    is represented by matrix AMAT : */
 
 /*                 AMAT(1,1) = a1  AMAT(2,1) = a2 */
 /*                 AMAT(1,2) = b1  AMAT(2,2) = b2 */
 
-/*     Le premier indice est l' indice de ligne, le second indice */
-/*     est l' indice des colonnes (Comparer avec MMRSLWI qui est */
-/*     plus rapide). */
+/*     The first index is the index of line, the second index */
+/*     is the index of columns (Compare with MMRSLWI which is faster). */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     11-09-1995 : JMF ; Implicit none */
-/*     22-02-1988 : JJM ; Appel MFNDEB -> MNFNDEB */
-/*     22-02-1988 : JJM ; Appel GERMSG -> MAERMSG */
-/*     17-09-1987: Cree par RBD */
 /* > */
 /* ********************************************************************** 
 */
 
-/*   Le nom de la routine */
+/*   Name of the routine */
 
     /* Parameter adjustments */
     amat_dim1 = *normax;
@@ -8763,7 +8326,7 @@ L9999:
 	AdvApp2Var_SysBase::mgenmsg_("MMMRSLW", 7L);
     }
 
-/*   Initialisation de la matrice auxiliaire. */
+/*   Initialization of the auxiliary matrix. */
 
     i__1 = *nordre;
     for (i__ = 1; i__ <= i__1; ++i__) {
@@ -8775,7 +8338,7 @@ L9999:
 /* L100: */
     }
 
-/*    Second membre. */
+/*    Second member. */
 
     i__1 = *nordre;
     for (i__ = 1; i__ <= i__1; ++i__) {
@@ -8787,7 +8350,7 @@ L9999:
 /* L300: */
     }
 
-/*    Resolution du systeme d' equations. */
+/*    Solution of the system of equations. */
 
     mmrslw_(normax, nordre, ndim, epspiv, &aaux[aaux_offset], &xmat[
 	    xmat_offset], iercod);
@@ -8816,71 +8379,63 @@ L9999:
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     Extrait du Common LDGRTL les racines STRICTEMENT positives du */
-/*     polynome de Legendre de degre NDGLGD, pour 2 <= NDGLGD <= 61. */
+/*     Extracts from Common LDGRTL the STRICTLY positive roots of the */
+/*     Legendre polynom of degree NDGLGD, for 2 <= NDGLGD <= 61. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*     TOUS, AB_SPECIFI::COMMON&, EXTRACTION, &RACINE, &LEGENDRE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDGLGD : Degre mathematique du polynome de Legendre. */
-/*                 Ce degre doit etre superieur ou egal a 2 et */
-/*                 inferieur ou egal a 61. */
+/*        NDGLGD : Mathematic degree of Legendre polynom. */
+/*                 This degree should be above or equal to 2 and */
+/*                 below or equal to 61. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        RTLEGD : Le tableau des racines strictement positives du */
-/*                 polynome de Legendre de degre NDGLGD. */
+/*        RTLEGD : The table of strictly positive roots of */
+/*                 Legendre polynom of degree NDGLGD. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     ATTENTION: La condition sur NDEGRE ( 2 <= NDEGRE <= 61) n'est */
-/*     pas testee. A l'appelant de faire le test. */
+/*     ATTENTION: the condition on NDEGRE ( 2 <= NDEGRE <= 61) is not */
+/*     tested. The caller should make the test. */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     23-03-1990 : RBD ; Ajout commentaires + declaration. */
-/*     15-01-1990 : NAK ; MLGDRTL PAR INCLUDE MMLGDRT */
-/*     21-04-1989 : RBD ; Creation. */
 /* > */
 /* ********************************************************************** 
 */
-/*   Le nom de la routine */
+/*   Nome of the routine */
 
 
-/*   Le common MLGDRTL: */
-/*   Ce common comprend les racines POSITIVES des polynomes de Legendre */
-/*   ET les poids des formules de quadrature de Gauss sur toutes les */
-/*   racines POSITIVES des polynomes de Legendre. */
+/*   Common MLGDRTL: */
+/*   This common includes POSITIVE roots of Legendre polynoms */
+/*   AND the weight of Gauss quadrature formulas on all */
+/*   POSITIVE roots of Legendre polynoms. */
 
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*   Le common des racines de Legendre. */
+/*   The common of Legendre roots. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        BASE LEGENDRE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     11-01-90 : NAK  ; Creation version originale */
 /* > */
 /* ***********************************************************************
  */
@@ -8888,18 +8443,16 @@ L9999:
 
 
 
-/*   ROOTAB : Tableau de toutes les racines des polynomes de Legendre */
-/*   comprises entre ]0,1]. Elles sont rangees pour des degres croissants 
-*/
-/*   de 2 a 61. */
-/*   HILTAB : Tableau des interpolants de Legendre concernant ROOTAB. */
-/*   L' adressage est le meme. */
-/*   HI0TAB : Tableau des interpolants de Legendre pour la racine x=0 */
-/*   des polynomes de degre IMPAIR. */
-/*   RTLTB0 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre PAIR. */
-/*   RTLTB1 : Tableau des Li(uk) ou les uk sont les racines d' un */
-/*  polynome de Legendre de degre IMPAIR. */
+/*   ROOTAB : Table of all rotts of Legendre polynoms */
+/*   between [0,1]. They are ranked for degrees increasing from 2 to 61. */
+/*   HILTAB : Table of Legendre interpolators concerning ROOTAB. */
+/*   The address is the same. */
+/*   HI0TAB : Table of Legendre interpolators for root x=0 */
+/*   the polynoms of UNEVEN degree. */
+/*   RTLTB0 : Table of Li(uk) where uk are roots of a */
+/*   Legendre polynom of EVEN degree. */
+/*   RTLTB1 : Table of Li(uk) where uk are roots of a */
+/*   Legendre polynom of UNEVEN degree. */
 
 
 /************************************************************************
@@ -8921,9 +8474,9 @@ L9999:
 
     ilong = nsur2 << 3;
     ideb = nsur2 * (nsur2 - 1) / 2 + 1;
-    AdvApp2Var_SysBase::mcrfill_((integer *)&ilong, 
-	     (char *)&mlgdrtl_.rootab[ideb + nmod2 * 465 - 1], 
-	     (char *)&rtlegd[1]);
+    AdvApp2Var_SysBase::mcrfill_(&ilong, 
+	     &mlgdrtl_.rootab[ideb + nmod2 * 465 - 1], 
+	     &rtlegd[1]);
 
 /* ----------------------------- The end -------------------------------- 
 */
@@ -8956,55 +8509,50 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     -------- */
 
-/*     Recherche l'intervalle correspondant a une valeur donnee dans */
-/*     une suite croissante de reels double precision. */
+/*     Find the interval corresponding to a valueb given in  */
+/*     increasing order of real numbers with double precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     --------- */
 /*     TOUS,MATH_ACCES::TABLEAU&,POINT&,CORRESPONDANCE,&RANG */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
 
-/*     TPARAM  : Valeur a tester. */
-/*     NBRVAL  : Taille de TABLEV */
-/*     TABLEV  : Tableau de reels. */
-/*     EPSIL   : Epsilon de precision */
+/*     TPARAM  : Value to be tested. */
+/*     NBRVAL  : Size of TABLEV */
+/*     TABLEV  : Table of reals. */
+/*     EPSIL   : Epsilon of precision */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
 
-/*     NUMINT  : Numero de l'intervalle (entre 1 et NBRVAL-1). */
-/*     ITYPEN  : = 0 TPARAM est a l'interieur de l'intervalle NUMINT */
-/*               = 1 : TPARAM correspond a la borne inferieure de */
-/*                    l'intervalle fourni. */
-/*               = 2 : TPARAM correspond a la borne superieure de */
-/*                    l'intervalle fourni. */
+/*     NUMINT  : Number of the interval (between 1 and NBRVAL-1). */
+/*     ITYPEN  : = 0 TPARAM is inside the interval NUMINT */
+/*               = 1 : TPARAM corresponds to the lower limit of */
+/*               the provided interval. */
+/*               = 2 : TPARAM corresponds to the upper limit of */
+/*               the provided interval. */
 
-/*     IERCOD : Code d'erreur */
+/*     IERCOD : Error code. */
 /*                     = 0 : OK */
-/*                     = 1 : TABLEV ne contient pas assez d' elements. */
-/*                     = 2 : TPARAM hors des bornes de TABLEV. */
+/*                     = 1 : TABLEV does not contain enough elements. */
+/*                     = 2 : TPARAM out of limits of TABLEV. */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     ------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     --------------------------------- */
-/*     Il y a NBRVAL valeurs dans TABLEV soit NBRVAL-1 intervalles. */
-/*     On fait une recherche de l' intervalle contenant TPARAM par */
-/*     dichotomie. Complexite de l' algorithme : Log(n)/Log(2).(RBD). */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ---------------------------- */
-/*     13-07-93 : MCL ; Version originale (a partir de MSRREI) */
+/*     There are NBRVAL values in TABLEV which stands for NBRVAL-1 intervals. */
+/*     One searches the interval containing TPARAM by */
+/*     dichotomy. Complexity of the algorithm : Log(n)/Log(2).(RBD). */
 /* > */
 /* ***********************************************************************
  */
@@ -9027,33 +8575,33 @@ L9999:
     ideb = 1;
     ifin = *nbrval;
 
-/* TABLEV doit contenir au moins deux valeurs */
+/* TABLEV should contain at least two values */
 
     if (*nbrval < 2) {
 	*iercod = 1;
 	goto L9999;
     }
 
-/* TPARAM doit etre entre les bornes extremes de TABLEV. */
+/* TPARAM should be between extreme limits of TABLEV. */
 
     if (*tparam < tablev[1] || *tparam > tablev[*nbrval]) {
 	*iercod = 2;
 	goto L9999;
     }
 
-/* ----------------------- RECHERCHE DE L'INTERVALLE -------------------- 
+/* ----------------------- SEARCH OF THE INTERVAL -------------------- 
 */
 
 L1000:
 
-/* Test de fin de boucle (on a trouve). */
+/* Test end of loop (found). */
 
     if (ideb + 1 == ifin) {
 	*numint = ideb;
 	goto L2000;
     }
 
-/* Recherche par dichotomie sur les valeurs croissantes de TABLEV. */
+/* Find by dichotomy on increasing values of TABLEV. */
 
     imil = (ideb + ifin) / 2;
     if (*tparam >= tablev[ideb] && *tparam <= tablev[imil]) {
@@ -9064,17 +8612,16 @@ L1000:
 
     goto L1000;
 
-/* -------------- TEST POUR VOIR SI TPARAM N'EST PAS UNE VALEUR --------- 
-*/
-/* ------------------------ DE TABLEV A EPSIL PRES ---------------------- 
+/* -------------- TEST IF TPARAM IS NOT A VALUE --------- 
+/* ------------------------OF TABLEV UP TO EPSIL ---------------------- 
 */
 
 L2000:
-    if ((d__1 = *tparam - tablev[ideb], abs(d__1)) < *epsil) {
+    if ((d__1 = *tparam - tablev[ideb], advapp_abs(d__1)) < *epsil) {
 	*itypen = 1;
 	goto L9999;
     }
-    if ((d__1 = *tparam - tablev[ifin], abs(d__1)) < *epsil) {
+    if ((d__1 = *tparam - tablev[ifin], advapp_abs(d__1)) < *epsil) {
 	*itypen = 2;
 	goto L9999;
     }
@@ -9119,55 +8666,47 @@ int mmtmave_(integer *nligne,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
 /*                          t */
-/*      EFFECUE LE PRODUIT   G V */
-/*      OU LA MATRICE G EST SOUS FORME DE PROFIL */
+/*      CREATES PRODUCT   G V */
+/*      WHERE THE MATRIX IS IN FORM OF PROFILE */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      RESERVE, PRODUIT, MATRICE, PROFIL, VECTEUR */
+/*      RESERVE, PRODUCT, MATRIX, PROFILE, VECTOR */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*       NLIGNE : NOMBRE DE LIGNE DE LA MATRICE */
-/*       NCOLON : NOMBRE DE COLONNE DE LA MATRICE */
-/*       GPOSIT: TABLE DE POSITIONNEMENT DES TERMES DE STOCKAGE */
-/*               GPOSIT(1,I) CONTIENT LE NOMBRE DE TERMES-1 SUR LA LIGNE 
-*/
-/*               I DANS LE PROFIL DE LA MATRICE */
-/*              GPOSIT(2,I) CONTIENT L'INDICE DE STOCKAGE DU TERME DIAGONA
-L*/
-/*               DE LA LIGNE I */
-/*               GPOSIT(3,I) CONTIENT L'INDICE COLONE DU PREMIER TERME DU 
-*/
-/*                           PROFIL DE LA LIGNE I */
-/*       GNSTOC : NOMBRE DE TERME DANS LE PROFIL DE GMATRI */
-/*       GMATRI : MATRICE DES CONTRAINTES SOUS FORME DE PROFIL */
-/*       VECIN : VECTEUR D'ENTRE */
+/*       NLIGNE : NUMBER OF LINE OF THE MATRIX */
+/*       NCOLON : NOMBER OF COLUMN OF THE MATRIX */
+/*       GPOSIT: TABLE OF POSITIONING OF TERMS OF STORAGE */
+/*               GPOSIT(1,I) CONTAINS THE NUMBER of TERMS-1 ON LINE 
+               I IN THE PROFILE OF THE MATRIX */
+/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE DIAGONAL TERM
+/*               OF LINE I */
+/*               GPOSIT(3,I) CONTAINS THE INDEX COLUMN OF THE FIRST TERM OF 
+/*                           PROFILE OF LINE I */
+/*       GNSTOC : NOMBER OF TERM IN THE PROFILE OF GMATRI */
+/*       GMATRI : MATRIX OF CONSTRAINTS IN FORM OF PROFILE */
+/*       VECIN :  INPUT VECTOR */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*       VECOUT :VECTEUR PRODUIT */
-/*       IERCOD : CODE D'ERREUR */
+/*       VECOUT : VECTOR PRODUCT */
+/*       IERCOD : ERROR CODE */
 
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     21-08-95 : KHN; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -9198,7 +8737,7 @@ L*/
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
@@ -9228,14 +8767,14 @@ L*/
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -9277,47 +8816,42 @@ int mmtrpj0_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Baisse le degre d' une courbe definie sur (-1,1) au sens de */
-/*        Legendre a une precision donnee. */
+/*        Lowers the degree of a curve defined on (-1,1) in the direction of */
+/*        Legendre with a given precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,TRONCONNAGE,COURBE,LISSAGE. */
+/*        LEGENDRE, POLYGON, TRUNCATION, CURVE, SMOOTHING. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Nbre maxi de coeff. de la courbe (dimensionnement). */
-/*        NDIMEN   : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 du polynome. */
-/*        EPSI3D  : La precision demandee pour l' approximation. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
+/*        NCOFMX : Max Nb of coeff. of the curve (dimensioning). */
+/*        NDIMEN : Dimension of the space. */
+/*        NCOEFF : Degree +1 of the polynom. */
+/*        EPSI3D : Precision required for the approximation. */
+/*        CRVLGD : The curve the degree which of it is required to lower. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        EPSTRC : La precision de l' approximation. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        EPSTRC : Precision of the approximation. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/* 17-05-1991 : RBD ; Si le degre n'est pas baisse, l'erreur est nulle */
-/* 12-12-1989 : RBD ; Creation. */
 /* > */
 /* ***********************************************************************
  */
 
 
-/* ------- Degre minimum pouvant etre atteint : Arret a 1 (RBD) --------- 
+/* ------- Minimum degree that can be attained : Stop at 1 (RBD) --------- 
 */
 
     /* Parameter adjustments */
@@ -9328,7 +8862,7 @@ int mmtrpj0_(integer *ncofmx,
 
     /* Function Body */
     *ncfnew = 1;
-/* ------------------- Init pour calcul d' erreur ----------------------- 
+/* ------------------- Init for error calculation ----------------------- 
 */
     i__1 = *ndimen;
     for (i__ = 1; i__ <= i__1; ++i__) {
@@ -9338,37 +8872,37 @@ int mmtrpj0_(integer *ncofmx,
     *epstrc = 0.;
     error = 0.;
 
-/*   Coupure des coefficients. */
+/*   Cutting of coefficients. */
 
     ncut = 2;
-/* ------ Boucle sur la serie de Legendre :NCOEFF --> 2 (RBD) ----------- 
+/* ------ Loop on the series of Legendre :NCOEFF --> 2 (RBD) ----------- 
 */
     i__1 = ncut;
     for (i__ = *ncoeff; i__ >= i__1; --i__) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = ((i__ - 1) * 2. + 1.) / 2.;
 	bidon = sqrt(bidon);
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1)) *
+	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1)) *
 		     bidon;
 /* L310: */
 	}
-/*   On arrete de couper si la norme devient trop grande. */
+/*   Cutting is stopped if the norm becomes too great. */
 	error = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 	if (error > *epsi3d) {
 	    *ncfnew = i__;
 	    goto L9999;
 	}
 
-/* --- Erreur max cumulee lorsque le I-eme coeff est ote. */
+/* ---  Max error cumulee when the I-th coeff is removed. */
 
 	*epstrc = error;
 
 /* L300: */
     }
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- End -------------------------------- 
 */
 
 L9999:
@@ -9463,46 +8997,38 @@ int mmtrpj2_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Baisse le degre d' une courbe definie sur (-1,1) au sens de */
-/*        Legendre a une precision donnee. */
+/*        Lower the degree of a curve defined on (-1,1) in the direction of */
+/*        Legendre with a given precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,TRONCONNAGE,COURBE,LISSAGE. */
+/*        LEGENDRE, POLYGON, TRUNCATION, CURVE, SMOOTHING. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Nbre maxi de coeff. de la courbe (dimensionnement). */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 du polynome. */
-/*        EPSI3D : La precision demandee pour l' approximation. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
+/*        NCOFMX : Max nb of coeff. of the curve (dimensioning). */
+/*        NDIMEN : Dimension of the space. */
+/*        NCOEFF : Degree +1 of the polynom. */
+/*        EPSI3D : Precision required for the approximation. */
+/*        CRVLGD : The curve the degree which of will be lowered. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary table (error max on each dimension). 
 */
-/*        EPSTRC : La precision de l' approximation. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        EPSTRC : Precision of the approximation. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/* 17-05-1991 : RBD ; Si le degre n'est pas baisse, l'erreur est nulle */
-/* 15-01-1991 : RBD ; Correction coupure des coeff. nuls du polynome */
-/*                    d' interpolation. */
-/* 12-12-1989 : RBD ; Creation. */
-
 /* > */
 /* ***********************************************************************
  */
@@ -9518,11 +9044,11 @@ int mmtrpj2_(integer *ncofmx,
 
 
 
-/*   Degre minimum pouvant etre atteint : Arret a IA (RBD). ------------- 
+/*   Minimum degree that can be reached : Stop at IA (RBD). ------------- 
 */
     ia = 2;
     *ncfnew = ia;
-/* Init pour calcul d' erreur. */
+/* Init for calculation of error. */
     i__1 = *ndimen;
     for (i__ = 1; i__ <= i__1; ++i__) {
 	ycvmax[i__] = 0.;
@@ -9531,36 +9057,36 @@ int mmtrpj2_(integer *ncofmx,
     *epstrc = 0.;
     error = 0.;
 
-/*   Coupure des coefficients. */
+/*   Cutting of coefficients. */
 
     ncut = ia + 1;
-/* ------ Boucle sur la serie de Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
+/* ------ Loop on the series of Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
 */
     i__1 = ncut;
     for (i__ = *ncoeff; i__ >= i__1; --i__) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = xmaxj[i__ - ncut];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1)) *
+	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1)) *
 		     bidon;
 /* L310: */
 	}
-/*   On arrete de couper si la norme devient trop grande. */
+/*   One stops to cut if the norm becomes too great. */
 	error = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 	if (error > *epsi3d) {
 	    *ncfnew = i__;
 	    goto L400;
 	}
 
-/* --- Erreur max cumulee lorsque le I-eme coeff est ote. */
+/* --- Max error cumulated when the I-th coeff is removed. */
 
 	*epstrc = error;
 
 /* L300: */
     }
 
-/* ------- Coupure des coeff. nuls du pol. d' interpolation (RBD) ------- 
+/* ------- Cutting of zero coeffs of interpolation (RBD) ------- 
 */
 
 L400:
@@ -9570,7 +9096,7 @@ L400:
 	    bid = 0.;
 	    i__1 = *ndimen;
 	    for (nd = 1; nd <= i__1; ++nd) {
-		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1));
+		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1));
 /* L600: */
 	    }
 	    if (bid > eps1) {
@@ -9579,11 +9105,11 @@ L400:
 	    }
 /* L500: */
 	}
-/* --- Si tous les coeff peuvent etre otes, c'est un point. */
+/* --- If all coeffs can be removed, this is a point. */
 	*ncfnew = 1;
     }
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- End -------------------------------- 
 */
 
 L9999:
@@ -9676,46 +9202,38 @@ int mmtrpj4_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Baisse le degre d' une courbe definie sur (-1,1) au sens de */
-/*        Legendre a une precision donnee. */
+/*        Lowers the degree of a curve defined on (-1,1) in the direction of */
+/*        Legendre with a given precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,TRONCONNAGE,COURBE,LISSAGE. */
+/*        LEGENDRE, POLYGON, TRONCATION, CURVE, SMOOTHING. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Nbre maxi de coeff. de la courbe (dimensionnement). */
-/*        NDIMEN   : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 du polynome. */
-/*        EPSI3D  : La precision demandee pour l' approximation. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
+/*        NCOFMX : Max nb of coeff. of the curve (dimensioning). */
+/*        NDIMEN : Dimension of the space. */
+/*        NCOEFF : Degree +1 of the polynom. */
+/*        EPSI3D : Precision required for the approximation. */
+/*        CRVLGD : The curve which wishes to lower the degree. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
+/*        YCVMAX : Auxiliary table (max error on each dimension). 
 */
-/*        EPSTRC : La precision de l' approximation. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        EPSTRC : Precision of the approximation. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/* 17-05-1991 : RBD ; Si le degre n'est pas baisse, l'erreur est nulle */
-/* 15-01-1991 : RBD ; Correction coupure des coeff. nuls du polynome */
-/*                    d' interpolation. */
-/* 12-12-1989 : RBD ; Creation. */
-
 /* > */
 /* ***********************************************************************
  */
@@ -9731,11 +9249,11 @@ int mmtrpj4_(integer *ncofmx,
 
 
 
-/*   Degre minimum pouvant etre atteint : Arret a IA (RBD). ------------- 
+/*   Minimum degree that can be reached : Stop at IA (RBD). ------------- 
 */
     ia = 4;
     *ncfnew = ia;
-/* Init pour calcul d' erreur. */
+/* Init for error calculation. */
     i__1 = *ndimen;
     for (i__ = 1; i__ <= i__1; ++i__) {
 	ycvmax[i__] = 0.;
@@ -9744,36 +9262,36 @@ int mmtrpj4_(integer *ncofmx,
     *epstrc = 0.;
     error = 0.;
 
-/*   Coupure des coefficients. */
+/*   Cutting of coefficients. */
 
     ncut = ia + 1;
-/* ------ Boucle sur la serie de Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
+/* ------ Loop on the series of Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
 */
     i__1 = ncut;
     for (i__ = *ncoeff; i__ >= i__1; --i__) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = xmaxj[i__ - ncut];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1)) *
+	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1)) *
 		     bidon;
 /* L310: */
 	}
-/*   On arrete de couper si la norme devient trop grande. */
+/*   Stop cutting if the norm becomes too great. */
 	error = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 	if (error > *epsi3d) {
 	    *ncfnew = i__;
 	    goto L400;
 	}
 
-/* --- Erreur max cumulee lorsque le I-eme coeff est ote. */
+/* -- Error max cumulated when the I-eme coeff is removed. */
 
 	*epstrc = error;
 
 /* L300: */
     }
 
-/* ------- Coupure des coeff. nuls du pol. d' interpolation (RBD) ------- 
+/* ------- Cutting of zero coeffs of the pole of interpolation (RBD) ------- 
 */
 
 L400:
@@ -9783,7 +9301,7 @@ L400:
 	    bid = 0.;
 	    i__1 = *ndimen;
 	    for (nd = 1; nd <= i__1; ++nd) {
-		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1));
+		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1));
 /* L600: */
 	    }
 	    if (bid > eps1) {
@@ -9792,11 +9310,11 @@ L400:
 	    }
 /* L500: */
 	}
-/* --- Si tous les coeff peuvent etre otes, c'est un point. */
+/* --- If all coeffs can be removed, this is a point. */
 	*ncfnew = 1;
     }
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- End -------------------------------- 
 */
 
 L9999:
@@ -9888,46 +9406,37 @@ int mmtrpj6_(integer *ncofmx,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Baisse le degre d' une courbe definie sur (-1,1) au sens de */
-/*        Legendre a une precision donnee. */
+/*        Lowers the degree of a curve defined on (-1,1) in the direction of */
+/*        Legendre to a given precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,TRONCONNAGE,COURBE,LISSAGE. */
+/*        LEGENDRE,POLYGON,TRUNCATION,CURVE,SMOOTHING. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Nbre maxi de coeff. de la courbe (dimensionnement). */
-/*        NDIMEN   : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 du polynome. */
-/*        EPSI3D  : La precision demandee pour l' approximation. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
+/*        NCOFMX : Max nb of coeff. of the curve (dimensioning). */
+/*        NDIMEN : Dimension of the space. */
+/*        NCOEFF : Degree +1 of the polynom. */
+/*        EPSI3D : Precision required for the approximation. */
+/*        CRVLGD : The curve the degree which of will be lowered. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Tableau auxiliaire (erreur max sur chaque dimension). 
-*/
-/*        EPSTRC : La precision de l' approximation. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        YCVMAX : Auxiliary table (max error on each dimension). 
+/*        EPSTRC : Precision of the approximation. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/* 17-05-1991 : RBD ; Si le degre n'est pas baisse, l'erreur est nulle */
-/* 15-01-1991 : RBD ; Correction coupure des coeff. nuls du polynome */
-/*                    d' interpolation. */
-/* 12-12-1989 : RBD ; Creation. */
-
 /* > */
 /* ***********************************************************************
  */
@@ -9943,11 +9452,11 @@ int mmtrpj6_(integer *ncofmx,
 
 
 
-/*   Degre minimum pouvant etre atteint : Arret a IA (RBD). ------------- 
+/*   Minimum degree that can be reached : Stop at IA (RBD). ------------- 
 */
     ia = 6;
     *ncfnew = ia;
-/* Init pour calcul d' erreur. */
+/* Init for error calculation. */
     i__1 = *ndimen;
     for (i__ = 1; i__ <= i__1; ++i__) {
 	ycvmax[i__] = 0.;
@@ -9956,36 +9465,36 @@ int mmtrpj6_(integer *ncofmx,
     *epstrc = 0.;
     error = 0.;
 
-/*   Coupure des coefficients. */
+/*   Cutting of coefficients. */
 
     ncut = ia + 1;
-/* ------ Boucle sur la serie de Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
+/* ------ Loop on the series of Jacobi :NCOEFF --> IA+1 (RBD) ---------- 
 */
     i__1 = ncut;
     for (i__ = *ncoeff; i__ >= i__1; --i__) {
-/*   Facteur de renormalisation. */
+/*   Factor of renormalization. */
 	bidon = xmaxj[i__ - ncut];
 	i__2 = *ndimen;
 	for (nd = 1; nd <= i__2; ++nd) {
-	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1)) *
+	    ycvmax[nd] += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1)) *
 		     bidon;
 /* L310: */
 	}
-/*   On arrete de couper si la norme devient trop grande. */
+/*   Stop cutting if the norm becomes too great. */
 	error = AdvApp2Var_MathBase::mzsnorm_(ndimen, &ycvmax[1]);
 	if (error > *epsi3d) {
 	    *ncfnew = i__;
 	    goto L400;
 	}
 
-/* --- Erreur max cumulee lorsque le I-eme coeff est ote. */
+/* --- Max error cumulated when the I-th coeff is removed. */
 
 	*epstrc = error;
 
 /* L300: */
     }
 
-/* ------- Coupure des coeff. nuls du pol. d' interpolation (RBD) ------- 
+/* ------- Cutting of zero coeff. of the pole of interpolation (RBD) ------- 
 */
 
 L400:
@@ -9995,7 +9504,7 @@ L400:
 	    bid = 0.;
 	    i__1 = *ndimen;
 	    for (nd = 1; nd <= i__1; ++nd) {
-		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], abs(d__1));
+		bid += (d__1 = crvlgd[i__ + nd * crvlgd_dim1], advapp_abs(d__1));
 /* L600: */
 	    }
 	    if (bid > eps1) {
@@ -10004,11 +9513,11 @@ L400:
 	    }
 /* L500: */
 	}
-/* --- Si tous les coeff peuvent etre otes, c'est un point. */
+/* --- If all coeffs can be removed, this is a point. */
 	*ncfnew = 1;
     }
 
-/* --------------------------------- Fin -------------------------------- 
+/* --------------------------------- End -------------------------------- 
 */
 
 L9999:
@@ -10039,43 +9548,37 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Baisse le degre d' une courbe definie sur (-1,1) au sens de */
-/*        Legendre a une precision donnee. */
+/*        Lower the degree of a curve defined on (-1,1) in the direction of */
+/*        Legendre with a given precision. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        LEGENDRE,POLYGONE,TRONCONNAGE,COURBE,LISSAGE. */
+/*        LEGENDRE, POLYGON, TRUNCATION, CURVE, SMOOTHING. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOFMX : Nbre maxi de coeff. de la courbe (dimensionnement). */
-/*        NDIMEN : Dimension de l' espace. */
-/*        NCOEFF : Le degre +1 du polynome. */
-/*        EPSI3D : La precision demandee pour l' approximation. */
-/*        IORDRE : Ordre de continuite aux extremites. */
-/*        CRVLGD : La courbe dont on veut baisser le degre. */
+/*        NCOFMX : Max Nb coeff. of the curve (dimensioning). */
+/*        NDIMEN : Dimension of the space. */
+/*        NCOEFF : Degree +1 of the polynom. */
+/*        EPSI3D : Precision required for the approximation. */
+/*        IORDRE : Order of continuity at the extremities. */
+/*        CRVLGD : The curve the degree which of should be lowered. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        ERRMAX : La precision de l' approximation. */
-/*        NCFNEW : Le degre +1 du polynome resultat. */
+/*        ERRMAX : Precision of the approximation. */
+/*        NCFNEW : Degree +1 of the resulting polynom. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     06-08-91 : RBD; Declaration de dimension de YCVMAX. */
-/*     18-01-90 : RBD; Creation. */
-
 /* > */
 /* ***********************************************************************
  */
@@ -10104,7 +9607,7 @@ L9999:
 		ycvmax[1], errmax, ncfnew);
     }
 
-/* ------------------------ Fin ----------------------------------------- 
+/* ------------------------ End ----------------------------------------- 
 */
 
     return 0;
@@ -10140,54 +9643,44 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        CALCUL DU VECTEUR NORME A PARTIR D'UN VECTEUR QUELCONQUE */
-/*        AVEC UNE PRECISION DONNEE PAR L' UTILISATEUR. */
+/*        CALCULATE THE NORMAL VECTOR BASING ON ANY VECTOR */
+/*        WITH PRECISION GIVEN BY THE USER. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        TOUS, MATH_ACCES :: */
+/*        ALL, MATH_ACCES :: */
 /*        VECTEUR&, NORMALISATION, &VECTEUR */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMEN   : DIMENSION DE L'ESPACE */
-/*        VECTOR : VECTEUR A NORMER */
-/*        EPSILN : L' EPSILON EN DESSOUS DUQUEL ON CONSIDERE QUE LA */
-/*                 NORME DU VECTEUR EST NULLE. SI EPSILN<=0, UNE VALEUR */
-/*                 PAR DEFAUT EST IMPOSEE (10.D-17 SUR VAX). */
+/*        NDIMEN   : DIMENSION OF THE SPACE */
+/*        VECTOR   : VECTOR TO BE NORMED */
+/*        EPSILN   : EPSILON BELOW WHICH IT IS CONSIDERED THAT THE */
+/*                 NORM OF THE VECTOR IS NULL. IF EPSILN<=0, A DEFAULT VALUE */
+/*                 IS IMPOSED (10.D-17 ON VAX). */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        VECNRM : VECTEUR NORME */
-/*        IERCOD  101 : LE VECTEUR EST NUL A EPSILN PRES. */
+/*        VECNRM : NORMED VECTOR */
+/*        IERCOD  101 : THE VECTOR IS NULL UP TO EPSILN. */
 /*                  0 : OK. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     VECTOR et VECNRM peuvent etre identiques. */
+/*     VECTOR and VECNRM can be identic. */
 
-/*     On calcule la norme du vecteur et on divise chaque composante par 
-*/
-/*     cette norme. Apres cela on verifie si toutes les composantes du */
-/*     vecteur sauf une vaut 0 a la precision machine pres. Dans */
-/*     ce cas on met les composantes quasi-nulles a 0.D0. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     14-12-90 : RBD; Correction cas ou une seule composante est */
-/*                     significative, appel a MAOVSR8 pour la precision */
-/*                     machine. */
-/*     11-01-89 : RBD; Correction precision par defaut. */
-/*     05-10-88 : RBD; Creation d' apres UNITVT. */
-/*     23-01-85 : DH ; Creation version originale de UNITVT. */
+/*     The norm of vector is calculated and each component is divided by
+/*     this norm. After this it is checked if all componentes of the */
+/*     vector except for one cost 0 with machine precision. In */
+/*     this case the quasi-null components are set to 0.D0. */
 /* > */
 /* ***********************************************************************
  */
@@ -10200,7 +9693,7 @@ L9999:
     /* Function Body */
     *iercod = 0;
 
-/* -------- Precision par defaut : le zero machine 10.D-17 sur Vax ------ 
+/* -------- Precision by default : zero machine 10.D-17 on Vax ------ 
 */
 
     AdvApp2Var_SysBase::maovsr8_(&nchif);
@@ -10211,17 +9704,17 @@ L9999:
 	eps0 = *epsiln;
     }
 
-/* ----------------------------- Calcul de la norme --------------------- 
+/* ------------------------- Calculation of the norm -------------------- 
 */
 
     vnorm = AdvApp2Var_MathBase::mzsnorm_(ndimen, &vector[1]);
     if (vnorm <= eps0) {
-	AdvApp2Var_SysBase::mvriraz_((integer *)ndimen, (char *)&vecnrm[1]);
+	AdvApp2Var_SysBase::mvriraz_(ndimen, &vecnrm[1]);
 	*iercod = 101;
 	goto L9999;
     }
 
-/* ---------------------- Calcul du vecteur norme ----------------------- 
+/* ---------------------- Calculation of the vector norm  --------------- 
 */
 
     izero = 0;
@@ -10230,7 +9723,7 @@ L9999:
     i__1 = *ndimen;
     for (ii = 1; ii <= i__1; ++ii) {
 	vecnrm[ii] = vector[ii] / vnorm;
-	if ((d__1 = vecnrm[ii], abs(d__1)) <= eps0) {
+	if ((d__1 = vecnrm[ii], advapp_abs(d__1)) <= eps0) {
 	    ++izero;
 	} else {
 	    iunit = ii;
@@ -10238,9 +9731,9 @@ L9999:
 /* L20: */
     }
 
-/* ------ Cas ou toutes les coordonnees sauf une sont presque nulles ---- 
+/* ------ Case when all coordinates except for one are almost null ---- 
 */
-/* ------------- alors l' une des coordonnees vaut 1.D0 ou -1.D0 -------- 
+/* ------------- then one of coordinates costs 1.D0 or -1.D0 -------- 
 */
 
     if (izero == *ndimen - 1) {
@@ -10281,36 +9774,31 @@ L9999:
 /************************************************************************
 *******/
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Extraction du EPS1 du COMMON MPRCSN. */
+/*        Extraction of EPS1 from COMMON MPRCSN. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        MPRCSN,PRECISON,EPS3. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
 /*       Humm. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        EPS3 : Le zero spatial du denominateur (10**-9) */
-/*       EPS3 devrait valoir 10**-15 */
+/*        EPS3 :  space zero of the denominator (10**-9) */
+/*        EPS3 should value 10**-15 */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*        08-01-90 : ACS ; MPRCSN REMPLACE PAR INCLUDE */
-/*        21-01-1988: JJM ; Creation. */
 
 /* > */
 /* ***********************************************************************
@@ -10321,49 +9809,42 @@ L9999:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*          DONNE LES TOLERANCES DE NULLITE DANS STRIM */
-/*          AINSI QUE LES BORNES DES PROCESSUS ITERATIFS */
+/*          GIVES TOLERANCES OF NULLITY IN STRIM */
+/*          AND LIMITS OF ITERATIVE PROCESSES */
 
-/*          CONTEXTE GENERAL, MODIFIABLE PAR L'UTILISATEUR */
+/*          GENERAL CONTEXT, MODIFIABLE BY THE UTILISER */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*          PARAMETRE , TOLERANCE */
+/*          PARAMETER , TOLERANCE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*       INITIALISATION   :  PROFIL , **VIA MPRFTX** A L' ENTREE DANS STRI
-M*/
+/*       INITIALISATION   :  PROFILE , **VIA MPRFTX** AT INPUT IN STRIM*/
+/*       LOADING OF DEFAULT VALUES OF THE PROFILE IN MPRFTX AT INPUT*/
+/*       IN STRIM. THEY ARE PRESERVED IN THE LOCAL VARIABLES OF MPRFTX */
 
-/*       CHARGEMENT DES VALEURS PAR DEFAUT DU PROFIL DANS MPRFTX A L'ENTRE
-E*/
-/*        DANS STRIM. ELLES SONT CONSERVEES DANS DES VARIABLES LOCALES */
-/*        DE MPRFTX */
+/*        RESET DEFAULT VALUES                   : MDFINT */
+/*        MODIFICATION INTERACTIVE BY THE USER   : MDBINT */
 
-/*        REMISE DES VALEURS PAR DEFAUT                  : MDFINT */
-/*        MODIFICATION INTERACTIVE  PAR L'UTILISATEUR    : MDBINT */
-
-/*        FONCTION D'ACCES :  MMEPS1   ...  EPS1 */
+/*        ACCESS FUNCTION  :  MMEPS1  ...  EPS1 */
 /*                            MEPSPB  ...  EPS3,EPS4 */
 /*                            MEPSLN  ...  EPS2, NITERM , NITERR */
 /*                            MEPSNR  ...  EPS2 , NITERM */
 /*                            MITERR  ...  NITERR */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*      01-02-90 : NAK  ; ENTETE */
 /* > */
 /* ***********************************************************************
  */
 
-/*     NITERM : NB D'ITERATIONS MAXIMAL */
-/*     NITERR : NB D'ITERATIONS RAPIDES */
-/*     EPS1   : TOLERANCE DE DISTANCE 3D NULLE */
-/*     EPS2   : TOLERANCE DE DISTANCE PARAMETRIQUE NULLE */
-/*     EPS3   : TOLERANCE POUR EVITER LES DIVISIONS PAR 0.. */
-/*     EPS4   : TOLERANCE ANGULAIRE */
+/*     NITERM : MAX NB OF ITERATIONS */
+/*     NITERR : NB OF RAPID ITERATIONS */
+/*     EPS1   : TOLERANCE OF 3D NULL DISTANCE */
+/*     EPS2   : TOLERANCE OF ZERO PARAMETRIC DISTANCE */
+/*     EPS3   : TOLERANCE TO AVOID DIVISION BY 0.. */
+/*     EPS4   : TOLERANCE ANGULAR */
 
 
 
@@ -10404,40 +9885,34 @@ E*/
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       CALCUL UN  VECTEUR NON COLINEAIRE A UN VECTEUR DONNEE */
-/*       NON NUL */
+/*       CALCULATE A VECTOR NON-COLINEAR TO A GIVEN NON-NULL VECTOR */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      PUBLIC, VECTEUR, LIBRE */
+/*      PUBLIC, VECTOR, FREE */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     -------------------- */
-/*       ndimen :dimension de l'espace */
-/*       vecin  :vecteur entre */
+/*       ndimen : dimension of the space */
+/*       vecin  : input vector */
 
-
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
 
-/*       vecout : vecteur non colineaire a vecin */
-/*     COMMONS UTILISES : */
+/*       vecout : vector non colinear to vecin */
+
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     25-08-95 : KHN; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -10466,7 +9941,7 @@ E*/
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
@@ -10529,7 +10004,7 @@ E*/
 
 /* ***********************************************************************
  */
-/*                   TRAITEMENT DES ERREURS */
+/*                   ERROR PROCESSING */
 /* ***********************************************************************
  */
 
@@ -10541,7 +10016,7 @@ L9101:
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 
@@ -10572,41 +10047,38 @@ void AdvApp2Var_MathBase::mmwprcs_(doublereal *epsil1,
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*     ACCES EN ECRITURE POUR LE COMMON MPRCSN */
+/*     ACCESS IN WRITING FOR COMMON MPRCSN */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*     ECRITURE */
+/*     WRITING */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     -------------------- */
-/*     EPSIL1  : TOLERANCE DE DISTANCE 3D NULLE */
-/*     EPSIL2  : TOLERANCE DE DISTANCE PARAMETRIQUE NULLE */
-/*     EPSIL3  : TOLERANCE POUR EVITER LES DIVISIONS PAR 0.. */
-/*     EPSIL4  : TOLERANCE ANGULAIRE */
-/*     NITER1  : NB D'ITERATIONS MAXIMAL */
-/*     NITER2  : NB D'ITERATIONS RAPIDES */
+/*     EPSIL1  : TOLERANCE OF 3D NULL DISTANCE */
+/*     EPSIL2  : TOLERANCE OF PARAMETRIC NULL DISTANCE */
+/*     EPSIL3  : TOLERANCE TO AVOID DIVISION BY 0.. */
+/*     EPSIL4  : ANGULAR TOLERANCE */
+/*     NITER1  : MAX NB OF ITERATIONS */
+/*     NITER2  : NB OF RAPID ITERATIONS */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     --------------------- */
-/*     NEANT */
+/*     NONE */
 
-/*     COMMONS UTILISES : */
+/*     COMMONS USED : */
 /*     ------------------ */
 
 
-/*     REFERENCES APPELEES : */
+/*     REFERENCES CALLED : */
 /*     --------------------- */
 
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     13-05-96 :  JPI; ECRITURE VERSION ORIGINALE. */
 /* > */
 /* ***********************************************************************
  */
@@ -10617,63 +10089,55 @@ void AdvApp2Var_MathBase::mmwprcs_(doublereal *epsil1,
 
 /* ***********************************************************************
  */
-/*                      INITIALISATIONS */
+/*                      INITIALIZATIONS */
 /* ***********************************************************************
  */
 
 /* ***********************************************************************
  */
-/*                      TRAITEMENT */
+/*                      PROCESSING */
 /* ***********************************************************************
  */
 
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*          DONNE LES TOLERANCES DE NULLITE DANS STRIM */
-/*          AINSI QUE LES BORNES DES PROCESSUS ITERATIFS */
+/*          GIVES TOLERANCES OF NULLITY IN STRIM */
+/*          AND  LIMITS OF ITERATIVE PROCESSES */
 
-/*          CONTEXTE GENERAL, MODIFIABLE PAR L'UTILISATEUR */
+/*          GENERAL CONTEXT, MODIFIABLE BY THE UTILISER */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*          PARAMETRE , TOLERANCE */
+/*          PARAMETER , TOLERANCE */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*       INITIALISATION   :  PROFIL , **VIA MPRFTX** A L' ENTREE DANS STRI
-M*/
+/*       INITIALISATION   :  PROFILE , **VIA MPRFTX** AT INPUT IN STRIM*/
+/*       LOADING OF DEFAULT VALUES OF THE PROFILE IN MPRFTX AT INPUT*/
+/*       IN STRIM. THEY ARE PRESERVED IN THE LOCAL VARIABLES OF MPRFTX */
 
-/*       CHARGEMENT DES VALEURS PAR DEFAUT DU PROFIL DANS MPRFTX A L'ENTRE
-E*/
-/*        DANS STRIM. ELLES SONT CONSERVEES DANS DES VARIABLES LOCALES */
-/*        DE MPRFTX */
+/*        RESET DEFAULT VALUES                   : MDFINT */
+/*        MODIFICATION INTERACTIVE BY THE USER   : MDBINT */
 
-/*        REMISE DES VALEURS PAR DEFAUT                  : MDFINT */
-/*        MODIFICATION INTERACTIVE  PAR L'UTILISATEUR    : MDBINT */
-
-/*        FONCTION D'ACCES :  MMEPS1   ...  EPS1 */
+/*        ACCESS FUNCTION  :  MMEPS1  ...  EPS1 */
 /*                            MEPSPB  ...  EPS3,EPS4 */
 /*                            MEPSLN  ...  EPS2, NITERM , NITERR */
 /*                            MEPSNR  ...  EPS2 , NITERM */
 /*                            MITERR  ...  NITERR */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*      01-02-90 : NAK  ; ENTETE */
 /* > */
 /* ***********************************************************************
  */
 
-/*     NITERM : NB D'ITERATIONS MAXIMAL */
-/*     NITERR : NB D'ITERATIONS RAPIDES */
-/*     EPS1   : TOLERANCE DE DISTANCE 3D NULLE */
-/*     EPS2   : TOLERANCE DE DISTANCE PARAMETRIQUE NULLE */
-/*     EPS3   : TOLERANCE POUR EVITER LES DIVISIONS PAR 0.. */
-/*     EPS4   : TOLERANCE ANGULAIRE */
-
+/*     NITERM : MAX NB OF ITERATIONS */
+/*     NITERR : NB OF RAPID ITERATIONS */
+/*     EPS1   : TOLERANCE OF 3D NULL DISTANCE */
+/*     EPS2   : TOLERANCE OF ZERO PARAMETRIC DISTANCE */
+/*     EPS3   : TOLERANCE TO AVOID DIVISION BY 0.. */
+/*     EPS4   : TOLERANCE ANGULAR */
 
 
 /* ***********************************************************************
@@ -10716,37 +10180,33 @@ E*/
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcul la fonction puissance entiere pas forcement de la maniere
-	  la plus efficace ; 
+/*        Calculate integer function power not obligatory in the most efficient way ; 
 */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*       PUISSANCE */
+/*       POWER */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        X      :  argument de X**N */
-/*        N      :  puissance */
+/*        X      :  argument of X**N */
+/*        N      :  power */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        retourne X**N */
+/*        return X**N */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     16-10-95 : XAB ; Creation */
 /* > */
 /* ***********************************************************************/
 
@@ -10777,38 +10237,36 @@ integer pow__ii(integer *x,
 
 /* ********************************************************************** 
 */
-
-/*     FONCTION : */
-/*     ---------- */
-/*        Calcul la fonction puissance entiere pas forcement de la maniere
-	  la plus efficace ; 
+/* ********************************************************************** 
 */
 
-/*     MOTS CLES : */
+/*     FUNCTION : */
+/*     ---------- */
+/*        Calculate integer function power not obligatory in the most efficient way ; 
+*/
+
+/*     KEYWORDS : */
 /*     ----------- */
-/*       PUISSANCE   */
+/*       POWER */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        X      :  argument de X**N */
-/*        N      :  puissance */
+/*        X      :  argument of X**N */
+/*        N      :  power */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        retourne X**N */
+/*        return X**N */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     16-10-95 : XAB ; Creation */
 /* > */
 /* ***********************************************************************/
 
@@ -10834,37 +10292,31 @@ integer pow__ii(integer *x,
 /************************************************************************
 *******/
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Calcul du produit scalaire de 2 vecteurs dans l' espace */
-/*        de dimension NDIMEN. */
+/*        Calculate the scalar product of 2 vectors in the space */
+/*        of dimension NDIMEN. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        PRODUIT MSCALAIRE. */
+/*        PRODUCT MSCALAIRE. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*        NDIMEN : Dimension de l' espace. */
-/*        VECTE1,VECTE2: Les vecteurs. */
+/*        NDIMEN : Dimension of the space. */
+/*        VECTE1,VECTE2: Vectors. */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED     : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED : */
 /*     ----------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*        18-07-1988: RBD ; Changement de nom des arguments pour plus */
-/*                          de lisibilite. */
-/*        16-01-1987: Verification implicite NDIMEN >0 JJM. */
 
 /* > */
 /* ***********************************************************************
@@ -10917,47 +10369,38 @@ int mvcvin2_(integer *ncoeff,
 
 /*     FONCTION : */
 /*     ---------- */
-/*        INVERSION DU PARAMETRAGE SUR UNE CRBE 2D. */
+/*        INVERSION OF THE PARAMETERS ON CURVE 2D. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        COURBE,2D,INVERSION,PARAMETRE. */
+/*        CURVE,2D,INVERSION,PARAMETER. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOEFF   : NBRE DE COEFF DE LA COURBE. */
-/*        CRVOLD   : LA COURBE D'ORIGINE */
+/*        NCOEFF   : NB OF COEFF OF THE CURVE. */
+/*        CRVOLD   : CURVE OF ORIGIN */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        CRVNEW   : LA CRBE RESULTAT APRES CHANGT DE T EN 1-T */
+/*        CRVNEW   : THE RESULTING CURVE AFTER CHANGE OF T BY 1-T */
 /*        IERCOD   :  0 OK, */
-/*                   10 NBRE DE COEFF NUL OU TROP GRAND. */
+/*                   10 NB OF COEFF NULL OR TOO GREAT. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 /*    MCCNP */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*            Neant */
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     L' APPEL SUIVANT EST TOUT A FAIT LEGAL : */
-/*          CALL MVCVIN2(NCOEFF,CURVE,CURVE,IERCOD), LE TABLEAU CURVE */
-/*     DEVENANT UN ARGUMENT D' ENTREE ET DE SORTIE (RBD). */
-/*     A CAUSE DE MCCNP, LE NBRE DE COEFF DE LA COURBE EST LIMITE A */
+/*     THE FOLLOWING CALL IS ABSOLUTELY LEGAL : */
+/*          CALL MVCVIN2(NCOEFF,CURVE,CURVE,IERCOD), THE TABLE CURVE */
+/*     BECOMES INPUT AND OUTPUT ARGUMENT (RBD). */
+/*     BECAUSE OF MCCNP, THE NB OF COEFF OF THE CURVE IS LIMITED TO */
 /*     NDGCNP+1 = 61. */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     24-09-93 : MPS ; PRISE EN COMPTE NCOEFF=1 */
-/*                      IMPLICIT NONE */
-/*     09-01-90 : TE ; COMMON MCCNP -> MCNCNP.INC & INDICES DES CNP */
-/*     05-08-88 : RBD ; ACTIVATION DE L' IERCOD */
-/*     27-06-88 : RBD ; VERIFICATION QUE LES IDENTIFICATEURS CRVNEW ET */
-/*                      CRVOLD PEUVENT DESIGNER LA MEME COURBE. */
-/*     14-04-88 : NAK ; VERSION ORIGINALE */
 /* > */
 /* ***********************************************************************
  */
@@ -10966,29 +10409,24 @@ int mvcvin2_(integer *ncoeff,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a fournir les coefficients du binome (triangle de Pascal). */
+/*      Serves to provide coefficients of the binome (triangle of Pascal). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      Coeff du binome de 0 a 60. read only . init par block data */
+/*      Coeff of binome from 0 to 60. read only . init par block data */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Les coefficients du binome forment une matrice triangulaire. */
-/*     On complete cette matrice dans le tableau CNP par sa transposee. */
-/*     On a donc: CNP(I,J) = CNP(J,I) pour I et J = 0, ..., 60. */
+/*     The coefficients of the binome form a triangular matrix. */
+/*     This matrix is completed in table CNP by transposition. */
+/*     So: CNP(I,J) = CNP(J,I) for I and J = 0, ..., 60. */
 
-/*     L'initialisation est faite a partir du block-data MMLLL09.RES, */
-/*     cree par le programme MQINICNP.FOR (voir l'equipe (AC) ). */
+/*     Initialization is done by block-data MMLLL09.RES, */
+/*     created by program MQINICNP.FOR (see the team (AC) ). */
 
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     03-07-90 : RBD; Ajout commentaires (nom du block-data). */
-/*     19-06-90 : RBD; Le commun MMCMCNP remplace MCCNP qui est obsolete. 
-*/
-/*     08-01-90 : TE ; CREATION */
+
 /* > */
 /* ********************************************************************** 
 */
@@ -11010,7 +10448,7 @@ int mvcvin2_(integer *ncoeff,
     *iercod = 0;
 
 
-/* TERME CONSTANT DE LA NOUVELLE COURBE */
+/* CONSTANT TERM OF THE NEW CURVE */
 
     cij1 = crvold[3];
     cij2 = crvold[4];
@@ -11025,7 +10463,7 @@ int mvcvin2_(integer *ncoeff,
 	goto L9999;
     }
 
-/* PUISSANCES INTERMEDIAIRES DU PARAMETRE */
+/* INTERMEDIARY POWERS OF THE PARAMETER */
 
     ncfm1 = *ncoeff - 1;
     m1jm1 = 1;
@@ -11044,7 +10482,7 @@ int mvcvin2_(integer *ncoeff,
 	crvnew[(j << 1) + 2] = cij2 * m1jm1;
     }
 
-/* TERME DE PLUS HAUT DEGRE */
+/* TERM OF THE HIGHEST  DEGREE */
 
     crvnew[(*ncoeff << 1) + 1] = -crvold[(*ncoeff << 1) + 1] * m1jm1;
     crvnew[(*ncoeff << 1) + 2] = -crvold[(*ncoeff << 1) + 2] * m1jm1;
@@ -11079,50 +10517,40 @@ int mvcvinv_(integer *ncoeff,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        INVERSION DU PARAMETRAGE SUR UNE CRBE 3D (I.E. INVERSION DU */
-/*        SENS DE PARCOURS). */
+/*        INVERSION OF THE PARAMETER ON A CURBE 3D (I.E. INVERSION */
+/*        OF THE DIRECTION OF PARSING). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        COURBE,INVERSION,PARAMETRE. */
+/*        CURVE,INVERSION,PARAMETER. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NCOEFF   : NBRE DE COEFF DE LA COURBE. */
-/*        CRVOLD   : lA COURBE D'ORIGINE */
+/*        NCOEFF   : NB OF COEFF OF THE CURVE. */
+/*        CRVOLD   : CURVE OF ORIGIN */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        CRVNEW   : LA CRBE RESULTAT APRES CHANGT DE T EN 1-T */
+/*        CRVNEW   : RESULTING CURVE AFTER CHANGE OF T INTO 1-T */
 /*        IERCOD   :  0 OK, */
-/*                   10 NBRE DE COEFF NUL OU TROP GRAND. */
+/*                   10 NB OF COEFF NULL OR TOO GREAT. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 /*    MCCNP */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*            Neant */
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     L' APPEL SUIVANT EST TOUT A FAIT LEGAL : */
-/*          CALL MVCVINV(NCOEFF,CURVE,CURVE,IERCOD), LE TABLEAU CURVE */
-/*     DEVENANT UN ARGUMENT D' ENTREE ET DE SORTIE (RBD). */
-/*     LE NOMBRE DE COEFF DE LA COURBE EST LIMITE A NDGCNP+1 = 61 */
-/*     A CAUSE DE L' UTILISATION DU COMMUN MCCNP. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     10-05-90 : JG ; NCOEFF=1 n'etait pas gere */
-/*     09-01-90 : TE ; COMMON MCCNP -> MMCMCNP.INC & INDICES DES CNP */
-/*     05-08-88 : RBD ; ACTIVATION DE L' IERCOD */
-/*     27-06-88 : RBD ; VERIFICATION QUE LES IDENTIFICATEURS CRVNEW ET */
-/*                      CRVOLD PEUVENT DESIGNER LA MEME COURBE. */
-/*     02-03-87 : NAK ; BRSTN --> MCCNP */
-/*     01-10-86 : NAK ; PRISE EN COMPTE LES ISOS DE LA FORME 1-T */
+/*     THE FOLLOWING CALL IS ABSOLUTELY LEGAL : */
+/*          CALL MVCVINV(NCOEFF,CURVE,CURVE,IERCOD), TABLE CURVE */
+/*     BECOMES INPUT AND OUTPUT ARGUMENT (RBD). */
+/*     THE NUMBER OF COEFF OF THE CURVE IS LIMITED TO NDGCNP+1 = 61 */
+/*     BECAUSE OF USE OF COMMON MCCNP. */
 /* > */
 /* ***********************************************************************
  */
@@ -11130,29 +10558,22 @@ int mvcvinv_(integer *ncoeff,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*      Sert a fournir les coefficients du binome (triangle de Pascal). */
+/*      Serves to provide the binomial coefficients (triangle of Pascal). */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*      Coeff du binome de 0 a 60. read only . init par block data */
+/*      Binomial Coeff from 0 to 60. read only . init par block data */
 
-/*     DEMSCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     Les coefficients du binome forment une matrice triangulaire. */
-/*     On complete cette matrice dans le tableau CNP par sa transposee. */
-/*     On a donc: CNP(I,J) = CNP(J,I) pour I et J = 0, ..., 60. */
+/*     The binomial coefficients form a triangular matrix. */
+/*     This matrix is completed in table CNP by its transposition. */
+/*     So: CNP(I,J) = CNP(J,I) for I and J = 0, ..., 60. */
 
-/*     L'initialisation est faite a partir du block-data MMLLL09.RES, */
-/*     cree par le programme MQINICNP.FOR (voir l'equipe (AC) ). */
-
-/* $    HISTORIQUE DES MODIFICATIONS : */
-/*     ------------------------------ */
-/*     03-07-90 : RBD; Ajout commentaires (nom du block-data). */
-/*     19-06-90 : RBD; Le commun MMCMCNP remplace MCCNP qui est obsolete. 
-*/
-/*     08-01-90 : TE ; CREATION */
+/*     Initialisation is done by block-data MMLLL09.RES, */
+/*     created by program MQINICNP.FOR (see the team (AC) ). */
 /* > */
 /* ********************************************************************** 
 */
@@ -11173,7 +10594,7 @@ int mvcvinv_(integer *ncoeff,
     }
     *iercod = 0;
 
-/* TERME CONSTANT DE LA NOUVELLE COURBE */
+/* CONSTANT TERM OF THE NEW CURVE */
 
     cij1 = crvold[4];
     cij2 = crvold[5];
@@ -11192,7 +10613,7 @@ int mvcvinv_(integer *ncoeff,
 	goto L9999;
     }
 
-/* PUISSANCES INTERMEDIAIRES DU PARAMETRE */
+/* INTERMEDIARY POWER OF THE PARAMETER */
 
     ncfm1 = *ncoeff - 1;
     m1jm1 = 1;
@@ -11216,7 +10637,7 @@ int mvcvinv_(integer *ncoeff,
 /* L50: */
     }
 
-/* TERME DE PLUS HAUT DEGRE */
+    /* TERM OF THE HIGHEST DEGREE */
 
     crvnew[*ncoeff * 3 + 1] = -crvold[*ncoeff * 3 + 1] * m1jm1;
     crvnew[*ncoeff * 3 + 2] = -crvold[*ncoeff * 3 + 2] * m1jm1;
@@ -11248,75 +10669,66 @@ int mvgaus0_(integer *kindic,
 /* ********************************************************************** 
 */
 
-/*      FONCTION : */
+/*      FUNCTION : */
 /*      -------- */
-/*  Chargement pour un degre donne des racines du polynome de LEGENDRE */
-/*  DEFINI SUR [-1,1] et des poids des formules de quadrature de Gauss */
-/*  (bases sur les interpolants de LAGRANGE correspondants). */
-/*  La symetrie par rapport a 0 entre [-1,0] et [0,1] est utilisee. */
+/*  Loading of a degree gives roots of LEGENDRE polynom */
+/*  DEFINED on [-1,1] and weights of Gauss quadrature formulas */
+/*  (based on corresponding LAGRANGIAN interpolators). */
+/*  The symmetry relative to 0 is used between [-1,0] and [0,1]. */
 
-/*      MOTS CLES : */
+/*      KEYWORDS : */
 /*      --------- */
-/*         . VOLUMIQUE,LEGENDRE,LAGRANGE,GAUSS */
+/*         . VOLUMIC, LEGENDRE, LAGRANGE, GAUSS */
 
-/*      ARGUMENTS D'ENTREE : */
+/*      INPUT ARGUMENTSE : */
 /*      ------------------ */
 
-/*  KINDIC : Prends les valeurs de 1 a 10 en fonction du degre du */
-/*           polynome a utiliser. */
-/*           Le degre du polynome est egal a 4 k, c'est a dire 4, 8, */
-/*           12, 16, 20, 24, 28, 32, 36 et 40. */
+/*  KINDIC : Takes values from 1 to 10 depending of the degree */
+/*           of the used polynom. */
+/*           The degree of the polynom is equal to 4 k, i.e. 4, 8, */
+/*           12, 16, 20, 24, 28, 32, 36 and 40. */
 
-/*      ARGUMENTS DE SORTIE : */
+/*      OUTPUT ARGUMENTS : */
 /*      ------------------- */
 
-/*  UROOTL : Racines du polynome de LEGENDRE dans le domaine [1,0] */
-/*           ordonnees en decroissant. Pour le domaine [-1,0], il faut */
-/*           prendre les valeurs opposees. */
-/*  HILTAB : Interpolant de LAGRANGE associes aux racines. Pour les */
-/*           racines opposes, les interpolants sont egaux. */
-/*  NBRVAL : Nombre de coefficients. C'est egal a la moitie du degre en */
-/*           raison de la symetrie (i.e. 2*KINDIC). */
+/*  UROOTL : Roots of LEGENDRE polynom in domain [1,0] */
+/*           given in decreasing order. For domain [-1,0], it is */
+/*           necessary to take the opposite values. */
+/*  HILTAB : LAGRANGE interpolators associated to roots. For */
+/*           opposed roots, interpolatorsare equal. */
+/*  NBRVAL : Nb of coefficients. Is equal to the half of degree */
+/*           depending on the symmetry (i.e. 2*KINDIC). */
 
-/*  IERCOD  :  Code d'erreur : */
+/*  IERCOD  :  Error code: */
 /*          < 0 ==> Attention - Warning */
-/*          =-1 ==> Valeur de KINDIC erronne. NBRVAL est force a 20 */
-/*                  (ordre 40) */
-/*          = 0 ==> Tout est OK */
+/*          =-1 ==> Value of false KINDIC. NBRVAL is forced to 20 */
+/*                  (order 40) */
+/*          = 0 ==> Everything is OK */
 
-/*      COMMON UTILISES : */
+/*      COMMON USED : */
 /*      ---------------- */
 
-/*      REFERENCES APPELEES : */
+/*      REFERENCES CALLED : */
 /*      ------------------- */
 
-/*      DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*      DESCRIPTION/NOTES/LIMITATIONS : */
 /*      --------------------------------- */
-/*      Si KINDIC n'est pas bon (i.e < 1 ou > 10), le degre est pris */
-/*      a 40 directement (ATTENTION au debordement - pour l'eviter, */
-/*      prevoir UROOTL et HILTAB dimensionne a 20 au moins). */
+/*      If KINDIC is not correct (i.e < 1 or > 10), the degree is set */
+/*      to 40 directly (ATTENTION to overload - to avoid it, */
+/*      preview UROOTL and HILTAB dimensioned at least to 20). */
 
-/*      La valeur des coefficients a ete calculee en quadruple precision 
-*/
-/*      par JJM avec l'aide de GD. */
-/*      La verification des racines a ete faite par GD. */
+/*      The value of coefficients was calculated with quadruple precision 
+/*      by JJM with help of GD. */
+/*      Checking of roots was done by GD. */
 
-/*      Voir les explications detaillees sur le listing */
-
-/* $    HISTORIQUES DES MODIFICATIONS : */
-/*     ----------------------------- */
-/*        . 23-03-90 : RBD; Les valeurs sont extraites du commun MLGDRTL 
-*/
-/*                          via MMEXTHI et MMEXTRL. */
-/*        . 28-06-88 : JP; DECLARATIONS REAL *8  MAL PLACEES */
-/*        . 08-08-87 : GD; Version originale */
+/*      See detailed explications on the listing */
 /* > */
 /* ********************************************************************** 
 */
 
 
 /* ------------------------------------ */
-/* ****** Test de validite de KINDIC ** */
+/* ****** Test  validity of KINDIC ** */
 /* ------------------------------------ */
 
     /* Parameter adjustments */
@@ -11335,11 +10747,11 @@ int mvgaus0_(integer *kindic,
 
 /* ---------------------------------------------------------------------- 
 */
-/* ****** Chargement des NBRVAL racines positives en fonction du degre ** 
+/* ****** Load NBRVAL positive roots depending on the degree ** 
 */
 /* ---------------------------------------------------------------------- 
 */
-/* ATTENTION : Le signe moins (-) dans la boucle est intentionnel. */
+/* ATTENTION : Sign minus (-) in the loop is intentional. */
 
     mmextrl_(&ndegl, tamp);
     i__1 = *nbrval;
@@ -11349,7 +10761,7 @@ int mvgaus0_(integer *kindic,
     }
 
 /* ------------------------------------------------------------------- */
-/* ****** Chargement des NBRVAL poids de Gauss en fonction du degre ** */
+/* ****** Loading of NBRVAL Gauss weight depending on the degree ** */
 /* ------------------------------------------------------------------- */
 
     mmexthi_(&ndegl, tamp);
@@ -11360,7 +10772,7 @@ int mvgaus0_(integer *kindic,
     }
 
 /* ------------------------------- */
-/* ****** Fin du sous-programme ** */
+/* ****** End of sub-program ** */
 /* ------------------------------- */
 
     return 0;
@@ -11387,48 +10799,44 @@ int mvpscr2_(integer *ncoeff,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*  POSITIONNEMENT SUR UNE COURBE (NCF,2) DANS L'ESPACE DE DIMENSION 2. */
+/*  POSITIONING ON CURVE (NCF,2) IN SPACE OF DIMENSION 2. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*     TOUS,MATH_ACCES:: COURBE&,POSITIONNEMENT,&POINT. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*     NCOEFF : NOMBRE DE COEFFICIENTS DE LA COURBE */
-/*     CURVE2 : EQUATION DE LA COURBE 2D */
-/*     TPARAM : VALEUR DU PARAMETRE AU POINT CONSIDERE */
+/*     NCOEFF : NUMBER OF COEFFICIENTS OF THE CURVE */
+/*     CURVE2 : EQUATION OF CURVE 2D */
+/*     TPARAM : VALUE OF PARAMETER AT GIVEN POINT */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     PNTCRB : COORDONNEES DU POINT CORRESPONDANT AU PARAMETRE */
-/*              TPARAM SUR LA COURBE 2D CURVE2. */
+/*     PNTCRB : COORDINATES OF POINT CORRESPONDING TO PARAMETER */
+/*              TPARAM ON CURVE 2D CURVE2. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     MSCHEMA DE HORNER. */
+/*     MSCHEMA OF HORNER. */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     16-05-90 : RBD; Optimisation sur une idee de GD. */
-/*     12-09-86 : NAK;ECRITURE VERSION ORIGINALE */
 /* > */
 /* ********************************************************************** 
 */
 
 
-/* -------- INITIALISATIONS ET TRAITEMENT DES CAS PARTICULIERS ---------- 
+/* -------- INITIALIZATIONS AND PROCESSING OF PARTICULAR CASES ---------- 
 */
 
-/* ---> Cas ou NCOEFF > 1 (cas STANDARD). */
+/* ---> Cas when NCOEFF > 1 (case STANDARD). */
     /* Parameter adjustments */
     --pntcrb;
     curve2 -= 3;
@@ -11437,7 +10845,7 @@ int mvpscr2_(integer *ncoeff,
     if (*ncoeff >= 2) {
 	goto L1000;
     }
-/* ---> Cas ou NCOEFF <= 1. */
+/* ---> Case when NCOEFF <= 1. */
     if (*ncoeff <= 0) {
 	pntcrb[1] = 0.;
 	pntcrb[2] = 0.;
@@ -11448,7 +10856,7 @@ int mvpscr2_(integer *ncoeff,
 	goto L9999;
     }
 
-/* -------------------- MSCHEMA DE HORNER (CAS PARTICULIER) --------------
+/* -------------------- MSCHEMA OF HORNER (PARTICULAR CASE) --------------
  */
 
 L1000:
@@ -11469,9 +10877,9 @@ L1000:
 	goto L9999;
     }
 
-/* ---------------------------- MSCHEMA DE HORNER ------------------------
+/* ---------------------------- MSCHEMA OF HORNER ------------------------
  */
-/* ---> Ici TPARAM est different de 1.D0 et de 0.D0. */
+/* ---> TPARAM is different from 1.D0 and 0.D0. */
 
     ndeg = *ncoeff - 1;
     xxx = curve2[(*ncoeff << 1) + 1];
@@ -11483,7 +10891,7 @@ L1000:
     }
     goto L5000;
 
-/* ------------------------ RECUPERATION DU POINT CALCULE --------------- 
+/* ------------------------ RECOVER THE CALCULATED POINT --------------- 
 */
 
 L5000:
@@ -11519,41 +10927,35 @@ int mvpscr3_(integer *ncoeff,
 /* ********************************************************************** 
 */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/* POSITIONNEMENT SUR UNE COURBE (3,NCF) DANS L'ESPACE DE DIMENSION 3. */
+/* POSITIONING ON A CURVE (3,NCF) IN THE SPACE OF DIMENSION 3. */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*     TOUS, MATH_ACCES:: COURBE&,POSITIONNEMENT,&POINT. */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS  : */
 /*     ------------------ */
-/*     NCOEFF : NOMBRE DE COEFFICIENTS DE LA COURBE */
-/*     CURVE3 : EQUATION DE LA COURBE 3D */
-/*     TPARAM : VALEUR DU PARAMETRE AU POINT CONSIDERE */
+/*     NCOEFF : NB OF COEFFICIENTS OF THE CURVE */
+/*     CURVE3 : EQUATION OF CURVE 3D */
+/*     TPARAM : VALUE OF THE PARAMETER AT THE GIVEN POINT */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     PNTCRB : COORDONNEES DU POINT CORRESPONDANT AU PARAMETRE */
-/*              TPARAM SUR LA COURBE 3D CURVE3. */
+/*     PNTCRB : COORDINATES OF THE POINT CORRESPONDING TO PARAMETER */
+/*              TPARAM ON CURVE 3D CURVE3. */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*            Neant */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     MSCHEMA DE HORNER. */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     16-05-90 : RBD; Optimisation sur une idee de GD (gain=10 pour */
-/*                     cent pour des courbes de degre 10 a 20). */
-/*     12-09-86 : NAK; ECRITURE VERSION ORIGINALE */
+/*     MSCHEMA OF HORNER. */
 /* > */
 /* ********************************************************************** 
 */
@@ -11562,10 +10964,10 @@ int mvpscr3_(integer *ncoeff,
 */
 
 
-/* -------- INITIALISATIONS ET TRAITEMENT DES CAS PARTICULIERS ---------- 
+/* -------- INITIALISATIONS AND PROCESSING OF PARTICULAR CASES ---------- 
 */
 
-/* ---> Cas ou NCOEFF > 1 (cas STANDARD). */
+/* ---> Case when NCOEFF > 1 (cas STANDARD). */
     /* Parameter adjustments */
     --pntcrb;
     curve3 -= 4;
@@ -11574,7 +10976,7 @@ int mvpscr3_(integer *ncoeff,
     if (*ncoeff >= 2) {
 	goto L1000;
     }
-/* ---> Cas ou NCOEFF <= 1. */
+/* ---> Case when NCOEFF <= 1. */
     if (*ncoeff <= 0) {
 	pntcrb[1] = 0.;
 	pntcrb[2] = 0.;
@@ -11587,7 +10989,7 @@ int mvpscr3_(integer *ncoeff,
 	goto L9999;
     }
 
-/* -------------------- MSCHEMA DE HORNER (CAS PARTICULIER) --------------
+/* -------------------- MSCHEMA OF HORNER (PARTICULAR CASE) --------------
  */
 
 L1000:
@@ -11611,9 +11013,9 @@ L1000:
 	goto L9999;
     }
 
-/* ---------------------------- MSCHEMA DE HORNER ------------------------
+/* ---------------------------- MSCHEMA OF HORNER ------------------------
  */
-/* ---> Ici TPARAM est different de 1.D0 et de 0.D0. */
+/* ---> Here TPARAM is different from 1.D0 and 0.D0. */
 
     ndeg = *ncoeff - 1;
     xxx = curve3[*ncoeff * 3 + 1];
@@ -11627,7 +11029,7 @@ L1000:
     }
     goto L5000;
 
-/* ------------------------ RECUPERATION DU POINT CALCULE --------------- 
+/* ------------------------ RETURN THE CALCULATED POINT ------------------ 
 */
 
 L5000:
@@ -11664,45 +11066,38 @@ L9999:
 /************************************************************************
 *******/
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*       TRI LES COLONNES D'UN TABLEAU DE REAL*8 SUIVANT LA METHODE DE SHE
-LL*/
-/*        (DANS L'ORDRE CROISSANT) */
+/*       PARSING OF COLUMNS OF TABLE OF REAL*8 BY SHELL METHOD*/
+/*        (IN INCREASING ORDER) */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
-/*        POINT-ENTREE, TRI, SHELL */
+/*        POINT-ENTRY, PARSING, SHELL */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        N      : NOMBRE DE COLONNES DU TABLEAU */
-/*        IS     : NOMBRE DE LIGNE DU TABLEAU */
-/*        DTAB   : TABLEAU DE REAL*8 A TRIER */
-/*        ICLE   : POSITION DE LA CLE SUR LA COLONNE */
+/*        N      : NUMBER OF COLUMNS OF THE TABLE */
+/*        IS     : NUMBER OF LINE OF THE TABLE */
+/*        DTAB   : TABLE OF REAL*8 TO BE PARSED */
+/*        ICLE   : POSITION OF THE KEY ON THE COLUMN */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        DTAB   : TABLEAU TRIE */
+/*        DTAB   : PARSED TABLE */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*            Neant */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*     METHODE CLASSIQUE DE SHELL : TRI PAR SERIES */
-/*     La declaration DTAB(IS, 1) correspond en fait a DTAB(IS, *) */
-
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     24-09-93 : PMN; NETTOYAGE ET CORRECTION DE L'EN-TETE */
-/*     13-07-84 : BF ; VERSION D'ORIGINE */
-
+/*     CLASSIC SHELL METHOD : PARSING BY SERIES */
+/*     Declaration DTAB(IS, 1) corresponds to DTAB(IS, *) */
 /* > */
 /* ***********************************************************************
  */
@@ -11719,8 +11114,8 @@ LL*/
     }
 /*     ------------------------ */
 
-/*  INITIALISATION DE LA SUITE DES INCREMENTS */
-/*  RECHERCHE DU PLUS GRAND INCREMENT TEL QUE INCR < N/9 */
+/*  INITIALIZATION OF THE SEQUENCE OF INCREMENTS */
+/*  FIND THE GREATEST INCREMENT SO THAT INCR < N/9 */
 
     incr = 1;
 L1001:
@@ -11731,8 +11126,8 @@ L1001:
     incr = incr * 3 + 1;
     goto L1001;
 
-/*  BOUCLE SUR LES INCREMENTS JUSQU'A INCR = 1 */
-/*  TRI PAR SERIES DISTANTES DE INCR */
+/*  LOOP ON INCREMENTS TILL INCR = 1 */
+/*  PARSING BY SERIES DISTANT FROM INCR */
 
 L1002:
     incrp1 = incr + 1;
@@ -11741,7 +11136,7 @@ L1002:
     for (i3 = incrp1; i3 <= i__1; ++i3) {
 /*        ---------------------- */
 
-/*  METTRE L'ELEMENT I3 A SA PLACE DANS SA SERIE */
+/*  SET ELEMENT I3 AT ITS PLACE IN THE SERIES */
 
 	i4 = i3 - incr;
 L1004:
@@ -11770,7 +11165,7 @@ L1003:
     }
 /*           -------- */
 
-/*  PASSAGE A L'INCREMENT SUIVANT */
+/*  PASSAGE TO THE NEXT INCREMENT */
 
     incr /= 3;
     if (incr >= 1) {
@@ -11802,46 +11197,42 @@ L9900:
 /* ***********************************************************************
  */
 
-/*     FONCTION : */
+/*     FUNCTION : */
 /*     ---------- */
-/*        Sert a calculer la norme euclidienne d'un vecteur : */
+/*        SERVES to calculate the euclidian norm of a vector : */
 /*                       ____________________________ */
 /*                  Z = V  V(1)**2 + V(2)**2 + ... */
 
-/*     MOTS CLES : */
+/*     KEYWORDS : */
 /*     ----------- */
 /*        SURMFACIQUE, */
 
-/*     ARGUMENTS D'ENTREE : */
+/*     INPUT ARGUMENTS : */
 /*     ------------------ */
-/*        NDIMEN : Dimension du vecteur */
-/*        VECTEU : vecteur de dimension NDIMEN */
+/*        NDIMEN : Dimension of the vector */
+/*        VECTEU : vector of dimension NDIMEN */
 
-/*     ARGUMENTS DE SORTIE : */
+/*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        MZSNORM : Valeur de la norme euclidienne du vecteur VECTEU */
+/*        MZSNORM : Value of the euclidian norm of vector VECTEU */
 
-/*     COMMONS UTILISES   : */
+/*     COMMONS USED   : */
 /*     ---------------- */
 
 /*      .Neant. */
 
-/*     REFERENCES APPELEES   : */
+/*     REFERENCES CALLED   : */
 /*     ---------------------- */
 /*     Type  Name */
 /*      R*8  ABS            R*8  SQRT */
 
-/*     DESCRIPTION/REMARQUES/LIMITATIONS : */
+/*     DESCRIPTION/NOTESS/LIMITATIONS : */
 /*     ----------------------------------- */
-/*        Pour limiter les risques d'overflow, on met en facteur */
-/*     le terme de plus forte valeur absolue : */
+/*     To limit the risks of overflow, */
+/*     the term of the strongest absolute value is factorized : */
 /*                                _______________________ */
 /*                  Z = !V(1)! * V  1 + (V(2)/V(1))**2 + ... */
 
-/* $    HISTORIQUE DES MODIFICATIONS   : */
-/*     -------------------------------- */
-/*     11-09-1995 : JMF ; implicit none */
-/*     20-03-89 : DH ; Creation version originale */
 /* > */
 /* ***********************************************************************
  */
@@ -11852,11 +11243,11 @@ L9900:
 
 /* ***********************************************************************
  */
-/*                     TRAITEMENT */
+/*                     PROCESSING */
 /* ***********************************************************************
  */
 
-/* ___ Recherche du terme de plus forte valeur absolue */
+/* ___ Find the strongest absolute value term */
 
     /* Parameter adjustments */
     --vecteu;
@@ -11865,16 +11256,16 @@ L9900:
     irmax = 1;
     i__1 = *ndimen;
     for (i__ = 2; i__ <= i__1; ++i__) {
-	if ((d__1 = vecteu[irmax], abs(d__1)) < (d__2 = vecteu[i__], abs(d__2)
+	if ((d__1 = vecteu[irmax], advapp_abs(d__1)) < (d__2 = vecteu[i__], advapp_abs(d__2)
 		)) {
 	    irmax = i__;
 	}
 /* L100: */
     }
 
-/* ___ Calcul de la norme */
+/* ___ Calculate the norme */
 
-    if ((d__1 = vecteu[irmax], abs(d__1)) < 1.) {
+    if ((d__1 = vecteu[irmax], advapp_abs(d__1)) < 1.) {
 	xsom = 0.;
 	i__1 = *ndimen;
 	for (i__ = 1; i__ <= i__1; ++i__) {
@@ -11897,12 +11288,12 @@ L9900:
 	    }
 /* L300: */
 	}
-	ret_val = (d__1 = vecteu[irmax], abs(d__1)) * sqrt(xsom);
+	ret_val = (d__1 = vecteu[irmax], advapp_abs(d__1)) * sqrt(xsom);
     }
 
 /* ***********************************************************************
  */
-/*                   RETOUR PROGRAMME APPELANT */
+/*                   RETURN CALLING PROGRAM */
 /* ***********************************************************************
  */
 

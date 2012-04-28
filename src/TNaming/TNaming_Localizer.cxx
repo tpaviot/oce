@@ -1,7 +1,23 @@
-// File:	TNaming_Localizer.cxx
-// Created:	Wed Jun 11 09:59:42 1997
-// Author:	Yves FRICAUD
-//		<yfr@claquox.paris1.matra-dtv.fr>
+// Created on: 1997-06-11
+// Created by: Yves FRICAUD
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <TNaming_Localizer.ixx>
@@ -241,10 +257,10 @@ const TopTools_IndexedDataMapOfShapeListOfShape& TNaming_Localizer::Ancestors
 #else
   TopAbs_ShapeEnum TA=TopAbs_COMPOUND;
 #endif
-  if (TS == TopAbs_EDGE)   TA = TopAbs_FACE;
-  if (TS == TopAbs_VERTEX) TA = TopAbs_EDGE;
-  if (TS == TopAbs_FACE)   TA = TopAbs_SOLID;// 25.09.2009 - szy 
-  if (TS == TopAbs_EDGE || TS == TopAbs_VERTEX || TS == TopAbs_FACE && TA >= In.ShapeType()) {
+  if (TS == TopAbs_VERTEX)      TA = TopAbs_EDGE;
+  else if (TS == TopAbs_EDGE)   TA = TopAbs_FACE;
+  else if (TS == TopAbs_FACE)   TA = TopAbs_SOLID;
+  if ((TS == TopAbs_EDGE || TS == TopAbs_VERTEX || TS == TopAbs_FACE) && TA >= In.ShapeType()) {
     TopExp::MapShapesAndAncestors(In, TS, TA, myAncestors.First());
   }
   else {

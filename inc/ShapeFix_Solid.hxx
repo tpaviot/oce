@@ -31,6 +31,9 @@
 #ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
 #ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
 #endif
@@ -42,6 +45,7 @@
 #endif
 class ShapeFix_Shell;
 class TopoDS_Solid;
+class Message_ProgressIndicator;
 class TopoDS_Shell;
 class TopoDS_Shape;
 class ShapeExtend_BasicMsgRegistrator;
@@ -60,8 +64,10 @@ public:
   //! Initializes by solid . <br>
   Standard_EXPORT   virtual  void Init(const TopoDS_Solid& solid) ;
   //! Iterates on shells and performs fixes <br>
-//!          (calls ShapeFix_Shell for each subshell) <br>
-  Standard_EXPORT   virtual  Standard_Boolean Perform() ;
+//!          (calls ShapeFix_Shell for each subshell). The passed <br>
+//!          progress indicator allows user to consult the current <br>
+//!          progress stage and abort algorithm if needed. <br>
+  Standard_EXPORT   virtual  Standard_Boolean Perform(const Handle(Message_ProgressIndicator)& theProgress = 0) ;
   //! Calls MakeSolid and orients the solid to be "not infinite" <br>
   Standard_EXPORT     TopoDS_Solid SolidFromShell(const TopoDS_Shell& shell) ;
   //! Returns the status of the last Fix. <br>

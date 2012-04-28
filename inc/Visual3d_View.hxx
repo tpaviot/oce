@@ -421,8 +421,6 @@ public:
 //!	    structure <AStructure> displayed in <me> <br>
 //!	    with the type Graphic3d_TOS_COMPUTED. <br>
   Standard_EXPORT     void ReCompute(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Prints informations about the view <me>. <br>
-  Standard_EXPORT     void Exploration() const;
   //! Returns the identification number of the view <me>. <br>
   Standard_EXPORT     Standard_Integer Identification() const;
   //! Returns the current matrix of mapping of the view <me>. <br>
@@ -511,7 +509,10 @@ public:
 //!          currently used in triedron displaying <br>
   Standard_EXPORT     Standard_Boolean IsGLLightEnabled() const;
   
-  Standard_EXPORT     void Export(const Standard_CString FileName,const Graphic3d_ExportFormat Format,const Graphic3d_SortType SortType = Graphic3d_ST_BSP_Tree,const Standard_Real Precision = 0.005,const Standard_Address ProgressBarFunc = NULL,const Standard_Address ProgressObject = NULL) const;
+//! Export scene into the one of the Vector graphics formats (SVG, PS, PDF...). <br>
+//! In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer). <br>
+//! Notice however that results may differ a lot and do not contain some elements. <br>
+  Standard_EXPORT     Standard_Boolean Export(const Standard_CString theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType = Graphic3d_ST_BSP_Tree,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL) const;
 
 friend class Visual3d_ViewManager;
 
@@ -541,6 +542,17 @@ private:
   Standard_EXPORT     void Compute() ;
   //! Changes the display priority of the structure <AStructure>. <br>
   Standard_EXPORT     void ChangeDisplayPriority(const Handle(Graphic3d_Structure)& AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority) ;
+  //! Add a new top-level Z layer to the view with ID <br>
+//! <theLayerId>. The z layer mechanism allows to display <br>
+//! structures in higher layers in overlay of structures in lower layers. <br>
+//! The layers in a particular view should be managed centrally <br>
+//! by its view manager so to avoid IDs mismatching and provide correct <br>
+//! display of graphics in all views. <br>
+  Standard_EXPORT     void AddZLayer(const Standard_Integer theLayerId) ;
+  //! Remove z layer from the view by its ID. <br>
+  Standard_EXPORT     void RemoveZLayer(const Standard_Integer theLayerId) ;
+  //! Change Z layer of already displayed structure in the view. <br>
+  Standard_EXPORT     void ChangeZLayer(const Handle(Graphic3d_Structure)& theStructure,const Standard_Integer theLayerId) ;
   //! Clears the structure <AStructure> to the view <me>. <br>
   Standard_EXPORT     void Clear(const Handle(Graphic3d_Structure)& AStructure,const Standard_Boolean WithDestruction) ;
   //! Connects the structures <AMother> and <ADaughter>. <br>

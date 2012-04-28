@@ -28,15 +28,6 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _IntTools_SequenceOfRanges_HeaderFile
-#include <IntTools_SequenceOfRanges.hxx>
-#endif
-#ifndef _IntTools_CArray1OfReal_HeaderFile
-#include <IntTools_CArray1OfReal.hxx>
-#endif
-#ifndef _IntTools_SequenceOfRoots_HeaderFile
-#include <IntTools_SequenceOfRoots.hxx>
-#endif
 #ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
 #include <IntTools_SequenceOfCommonPrts.hxx>
 #endif
@@ -137,12 +128,6 @@ public:
 
 protected:
 
-
-
-
-
-private:
-
   
 //! Fool-proof chechking the input data. <br>
 //! The  following  data is not  available <br>
@@ -163,37 +148,6 @@ private:
 //! Othrwise it returns  0. <br>
   Standard_EXPORT     Standard_Integer IsProjectable(const Standard_Real t) const;
   
-//! Find a bound of a projectable range for the From-Curve <br>
-//! using  bisection  method. <br>
-//! t1, t2  - interval for searching along t. <br>
-//! f1, f2  - values of the function IsProjectable() <br>
-//! at t1 and t2. <br>
-  Standard_EXPORT     void FindProjectableRoot(const Standard_Real t1,const Standard_Real t2,const Standard_Integer f1,const Standard_Integer f2,Standard_Real& tRoot) ;
-  
-//! Calculates the DistanceFunction D(t). <br>
-//! D(t)=D1(t) - myCriteria; <br>
-//! where <br>
-//! D1(t) -  the lower distance between a point from <br>
-//! the  From-Curve at  parameter t  and <br>
-//! projection point of  this point on To-Curve; <br>
-//! myCriteria=myTol1+myTol2. <br>
-  Standard_EXPORT     Standard_Real DistanceFunction(const Standard_Real t) ;
-  
-//! Calculates the first derivative of <br>
-//! the DistanceFunction D(t). <br>
-  Standard_EXPORT     Standard_Real DerivativeFunction(const Standard_Real t) ;
-  
-//! Find the Root of the function on given interval <br>
-//! of the argument [ta,tb] using  bisection  method . <br>
-//! IP  - a  flag; <br>
-//! =1  -  use DistanceFunction; <br>
-//! =2  -  use DerivativeFunction; <br>
-  Standard_EXPORT     Standard_Real FindSimpleRoot(const Standard_Integer IP,const Standard_Real ta,const Standard_Real tb,const Standard_Real fA) ;
-  
-//! Find the Root of the function on given interval <br>
-//! of the argument [ta,tb] using Fibonacci method . <br>
-  Standard_EXPORT     Standard_Real FindGoldRoot(const Standard_Real ta,const Standard_Real tb,const Standard_Real coeff) ;
-  
 //! Find the range on the curve Curve-To that  corresponds <br>
 //! to  the  given  range on the curve Curve-From. <br>
   Standard_EXPORT     Standard_Integer FindRangeOnCurve2(IntTools_CommonPrt& aCP) ;
@@ -209,15 +163,40 @@ private:
   
   Standard_EXPORT     void FindDerivativeRoot(const IntTools_CArray1OfReal& t,const IntTools_CArray1OfReal& f) ;
   
-  Standard_EXPORT     void RemoveIdenticalRoots() ;
+//! Find the Root of the function on given interval <br>
+//! of the argument [ta,tb] using  bisection  method . <br>
+//! IP  - a  flag; <br>
+//! =1  -  use DistanceFunction; <br>
+//! =2  -  use DerivativeFunction; <br>
+//! <br>
+  Standard_EXPORT     Standard_Real FindSimpleRoot(const Standard_Integer IP,const Standard_Real ta,const Standard_Real tb,const Standard_Real fA) ;
+  
+//! Calculates the DistanceFunction D(t). <br>
+//! D(t)=D1(t) - myCriteria; <br>
+//! where <br>
+//! D1(t) -  the lower distance between a point from <br>
+//! the  From-Curve at  parameter t  and <br>
+//! projection point of  this point on To-Curve; <br>
+//! myCriteria=myTol1+myTol2. <br>
+  Standard_EXPORT     Standard_Real DistanceFunction(const Standard_Real t) ;
+  
+//! Calculates the first derivative of <br>
+//! the DistanceFunction D(t). <br>
+  Standard_EXPORT     Standard_Real DerivativeFunction(const Standard_Real t) ;
   
   Standard_EXPORT     Standard_Boolean CheckTouch(const IntTools_CommonPrt& aCP,Standard_Real& t1,Standard_Real& t2) ;
   
   Standard_EXPORT     Standard_Boolean CheckTouchVertex(const IntTools_CommonPrt& aCP,Standard_Real& t1,Standard_Real& t2) const;
   
-  Standard_EXPORT     Standard_Boolean CheckInterval(const Standard_Real t1,const Standard_Real t2) ;
-  
   Standard_EXPORT     void ComputeLineLine() ;
+  
+  Standard_EXPORT     Standard_Boolean IsSameCurves() ;
+
+
+
+
+private:
+
 
 
 TopoDS_Edge myEdge1;
@@ -239,15 +218,10 @@ Standard_Real myTolTo;
 Standard_Real myCriteria;
 Standard_Boolean myIsDone;
 Standard_Integer myErrorStatus;
-IntTools_SequenceOfRanges myProjectableRanges;
-IntTools_CArray1OfReal myFuncArray;
-IntTools_CArray1OfReal myArgsArray;
-IntTools_SequenceOfRoots mySequenceOfRoots;
 IntTools_SequenceOfCommonPrts mySeqOfCommonPrts;
 Standard_Boolean myOrder;
 Standard_Real myPar1;
 Standard_Boolean myParallel;
-Standard_Boolean myAllNullFlag;
 IntTools_Range myRange1;
 IntTools_Range myRange2;
 

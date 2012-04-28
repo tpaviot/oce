@@ -47,7 +47,7 @@ class SelectBasics_SensitiveEntity : public MMgt_TShared {
 public:
 
   
-  Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
+  Standard_EXPORT   virtual  void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
   
   Standard_EXPORT    const Handle_SelectBasics_EntityOwner& OwnerId() const;
   //! to be implemented specifically by each type of <br>

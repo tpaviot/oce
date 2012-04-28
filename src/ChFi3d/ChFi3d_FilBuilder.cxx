@@ -1,8 +1,24 @@
-// File:	ChFi3d_FilBuilder.cxx
-// Created:	Tue Apr 25 11:08:46 1995
+// Created on: 1995-04-25
+// Created by: Modelistation
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified:    MPS :  (10-04-97) portage WNT pour GetFilletShape
-// Author:	Modelistation
-//		<model@phylox>
 
 
 #include <ChFi3d_FilBuilder.ixx>
@@ -542,9 +558,9 @@ void  ChFi3d_FilBuilder::SimulKPart(const Handle(ChFiDS_SurfData)& SD) const
       gp_Torus To = AS.Torus();
       Standard_Real majr = To.MajorRadius(), minr = To.MinorRadius();
 //#ifndef DEB
-      Standard_Integer n = (Standard_Integer) (36.*ang/PI + 1);
+      Standard_Integer n = (Standard_Integer) (36.*ang/M_PI + 1);
 //#else
-//      Standard_Integer n = 36.*ang/PI + 1;
+//      Standard_Integer n = 36.*ang/M_PI + 1;
 //#endif
       if(n<2) n = 2;
       sec = new ChFiDS_SecHArray1(1, n);
@@ -565,9 +581,9 @@ void  ChFi3d_FilBuilder::SimulKPart(const Handle(ChFiDS_SurfData)& SD) const
       gp_Sphere Sp = AS.Sphere();
       Standard_Real rad = Sp.Radius();
 //#ifndef DEB
-      Standard_Integer n = (Standard_Integer) (36.*ang/PI + 1);
+      Standard_Integer n = (Standard_Integer) (36.*ang/M_PI + 1);
 //#else
-//      Standard_Integer n = 36.*ang/PI + 1;
+//      Standard_Integer n = 36.*ang/M_PI + 1;
 //#endif
       if(n<2) n = 2;
       sec = new ChFiDS_SecHArray1(1, n);

@@ -1,9 +1,0 @@
-#ifndef _Bnd_Box2d_HeaderFile
-#include <Bnd_Box2d.hxx>
-#endif
-#ifndef _IntPatch_Polygo_HeaderFile
-#include <IntPatch_Polygo.hxx>
-#endif
-#ifndef _IntPatch_PolygoTool_HeaderFile
-#include <IntPatch_PolygoTool.hxx>
-#endif

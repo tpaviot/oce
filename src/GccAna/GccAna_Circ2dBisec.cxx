@@ -1,11 +1,27 @@
-// File:	GccAna_Circ2dBisec.cxx
-// Created:	Mon Oct  7 16:17:54 1991
-// Author:	Remi GILET
-//		<reg@phobox>
+// Created on: 1991-10-07
+// Created by: Remi GILET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 //=========================================================================
-//   CREATION DE LA BISSECTICE ENTRE DEUX CERCLES.                        +
+//   CREATION of the BISSECTICE between two CIRCLES.                        +
 //=========================================================================
 
 #include <GccAna_Circ2dBisec.ixx>
@@ -34,15 +50,15 @@ GccAna_Circ2dBisec::
 		       const gp_Circ2d& Circ2    ) {
 
 //=========================================================================
-//  Initialisation des champs :                                           +
-//            - circle1   (Cercle : premier argument.)                    +
-//            - circle2  (Ligne  : deuxieme argument.)                    +
-//            - intersection (Entier indiquant la position du plus petit  +
-//                            des deux cercles par rapport a l autre.)    +
-//            - sameradius   (Booleen indiquant si les deux cercles ont   +
-//                            meme rayon ou non.)                         +
-//            - NbrSol   (Entier indiquant le nombre de solutions.)       +
-//            - WellDone (Booleen indiquant le succes ou non de l algo.). +
+//  Initialization of fields :                                            +
+//            - circle1  (Circle : first argument.)                       +
+//            - circle2  (Line   : second argument.)                      +
+//            - intersection (Integer showing the smallest position       +
+//                            of two circles correspondingly to each other.) +
+//            - sameradius   (Booleen showing if the two circles have   +
+//                            the same radius or not.)                         +
+//            - NbrSol   (Integer showing the number of solutions.)       +
+//            - WellDone (Boolean showing succes or failure of the algo.). +
 //=========================================================================
 
    WellDone = Standard_False;
@@ -115,10 +131,10 @@ GccAna_Circ2dBisec::
  }
 
 //=========================================================================
-//  Traitement.                                                           +
-//  On recupere les coordonees des centres des cercles circle1 et circle2 +
+//  Processing.                                                           +
+//  Return the coordinates of centers of circles circle1 and circle2      +
 //  (xcencir1, ycencir1, xcencir2, ycencir2).                             +
-//  On recupere aussi les rayons des deux cercles R1 et R2.               +
+//  Also return the radiuses of two circles R1 and R2.                    +
 //=========================================================================
 
 Handle(GccInt_Bisec) GccAna_Circ2dBisec::

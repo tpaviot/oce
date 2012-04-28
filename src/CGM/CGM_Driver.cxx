@@ -1,7 +1,23 @@
-// File:        CGM_Driver.cxx
-// Created:     Fri Sep 13 12:04:31 1996
-// Author:      DCB
-// Copyright:   MatraDatavision 1998
+// Created on: 1996-09-13
+// Created by: DCB
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define xBUG    //  GG 140699
 //              Ascendante compatibillity using OLD driver constructor
@@ -38,7 +54,7 @@ static Handle(Image_Image) myImage;
 #define TRANSFORMCOLOR(c) \
   { if (TypeOfCgm == CgmCharEncoding) c = (((c+1) << 2) - 1); }
 
-#define DRAD       (PI/180.)
+#define DRAD       (M_PI/180.)
 #define DEFPLOTTER "DIRECT_CGM"
 
 //-----------------------------------------------------------------
@@ -541,7 +557,7 @@ Standard_Boolean CGM_Driver::PlotArc (const Standard_ShortReal Xpos,
 {
   Standard_ShortReal san = sAngle;
   Standard_ShortReal fan = sAngle + oAngle;
-  if (oAngle >= 2*PI) {
+  if (oAngle >= 2*M_PI) {
     PlotPolyAttrib (myLineColorIndex, -1, Standard_True);
     if (aXradius == aYradius) {
       ptabreal[0] = (float)Xpos; ptabreal[1] = (float)Ypos;
@@ -582,7 +598,7 @@ Standard_Boolean CGM_Driver::PlotPolyArc (const Standard_ShortReal Xpos,
 {
   Standard_ShortReal san = sAngle;
   Standard_ShortReal fan = sAngle + oAngle;
-  if (oAngle >= 2.*PI) {
+  if (oAngle >= 2.*M_PI) {
     if (aXradius == aYradius) {
       ptabreal[0] = (float)Xpos; ptabreal[1] = (float)Ypos;
       ptabreal[2] = (float)aXradius;

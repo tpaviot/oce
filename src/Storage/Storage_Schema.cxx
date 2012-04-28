@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Storage_Schema.ixx>
 
 #include <TColStd_HSequenceOfAsciiString.hxx>
@@ -52,16 +70,11 @@ typedef NCollection_DataMap <TCollection_AsciiString,
 
 #endif
 
-extern Standard_Address StandardCSFDB_Reallocate
-                         (Standard_Address&,
-                          const Standard_Size,
-                          const Standard_Size);
-
 // IMPLEMENTATION BucketOfPersistent
 //
 Storage_Bucket::~Storage_Bucket()
 {
-  StandardCSFDB_Free((Standard_Address&)mySpace);
+  Standard::Free((Standard_Address&)mySpace);
   mySpace = 0L;
   mySpaceSize = 0;
   Clear();
@@ -110,7 +123,7 @@ Storage_BucketOfPersistent::Storage_BucketOfPersistent
 : myNumberOfBucket(1),myNumberOfBucketAllocated(theBucketNumber),myBucketSize
                          (theBucketSize)
 {
-  myBuckets =  (Storage_Bucket**)StandardCSFDB_Allocate
+  myBuckets =  (Storage_Bucket**)Standard::Allocate
                          (sizeof(Storage_Bucket*) * theBucketNumber);
   myBuckets[0] = new Storage_Bucket(myBucketSize);
   myCurrentBucket = myBuckets[0];
@@ -141,7 +154,7 @@ Storage_BucketOfPersistent::~Storage_BucketOfPersistent()
 {
   Clear();
   delete myBuckets[0];
-  StandardCSFDB_Free((Standard_Address&)myBuckets);
+  Standard::Free((Standard_Address&)myBuckets);
   myBuckets = 0L;
 }
 
@@ -182,7 +195,7 @@ void Storage_BucketOfPersistent::Append(const Handle(Standard_Persistent)& sp)
 
   if (myNumberOfBucket > myNumberOfBucketAllocated) {
     Standard_Size e = sizeof(Storage_Bucket*) * myNumberOfBucketAllocated;
-    myBuckets =  (Storage_Bucket**)StandardCSFDB_Reallocate((Standard_Address&)myBuckets,e,e * 2);
+    myBuckets =  (Storage_Bucket**)Standard::Reallocate((Standard_Address&)myBuckets, e * 2);
     myNumberOfBucketAllocated *= 2;
   }
 

@@ -1,9 +1,26 @@
-// File GccAna_Circ2dTanCen.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 
-//========================================================================
-//    Creation d'un cercle tangent a un element et centre en un point    +
-//========================================================================
+
+//================================================================================
+//    Creation of a circle tangent to an element and having center in a point    +
+//================================================================================
 
 #include <GccAna_Circ2dTanCen.ixx>
 
@@ -17,16 +34,15 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //========================================================================
-//     Creation d'un cercle tangent a un cercle centre en un point.      +
-//   - On calcule la distance entre le centre du cercle et le point de   +
-//     centre : dist                                                     +
-//   - On verifie que cette distance est compatible avec le qualifieur   +
-//     du cercle.                                                        +
-//       Si oui le rayon de la solution sera :                           +
-//          C1.Radius()-dist si le qualifieur est Enclosed.              +
-//          C1.Radius()+dist si le qualifieur est Enclosing.             +
-//          dist-C1.Radius() si le qualifieur est Outside.               +
-//          un melange de ces valeurs si le qualifieur est Unqualified.  +
+//     Creation of a circle tangent to a circle with center in a point.      +
+//   - Calculate the distance between the center of the circle and the point of  +
+//     center : dist                                                     +
+//   - Check that this distance is compatible with the qualifier of the circle.                                                        +
+//       Si yes, the radius of the solution will be :                           +
+//          C1.Radius()-dist if the qualifier is Enclosed.              +
+//          C1.Radius()+dist if the qualifier is Enclosing.             +
+//          dist-C1.Radius() if the qualifier is Outside.               +
+//          a mix of these values if the qualifier is Unqualified.  +
 //========================================================================
 
 
@@ -36,7 +52,7 @@ GccAna_Circ2dTanCen::
 			const Standard_Real                  Tolerance ):
 
 //========================================================================
-//   Initialisation des champs.                                          +
+//   Initialization of fields.                                          +
 //========================================================================
 
    cirsol(1,2)   ,
@@ -151,9 +167,9 @@ GccAna_Circ2dTanCen::
  }
 
 //=========================================================================
-//   Cercle tangent a une ligne Linetan et centre en un point Pcenter.    +
-//   On calcule la distance du point a la ligne ==> Rayon.                +
-//   On cree le cercle de centre Pcenter de rayon Rayon.                  +
+//   Circle tangent to line Linetan and center in a point Pcenter.    +
+//   Calculate the distance from the point to the line ==> Radius.                +
+//   Create the circle with center Pcenter of radius Radius.                  +
 //=========================================================================
 
 GccAna_Circ2dTanCen::
@@ -161,7 +177,7 @@ GccAna_Circ2dTanCen::
                         const gp_Pnt2d&            Pcenter    ):
 
 //=========================================================================
-//   Initialisation des champs.                                           +
+//   Initialisation of fields.                                           +
 //=========================================================================
 
    cirsol(1,1)   ,
@@ -199,9 +215,9 @@ GccAna_Circ2dTanCen::
  }
 
 //=========================================================================
-//   Cercle tangent a un point Point1 et centre en un point Pcenter.      +
-//   On calcule la distance de Pcenter a Point1 ==> Rayon.                +
-//   On cree le cercle de centre Pcenter de rayon Rayon.                  +
+//   Circle tangent to point Point1 and centered in a point Pcenter.      +
+//   Calculate the distance from Pcenter to Point1 ==> Radius.                +
+//   Create the circle with center Pcenter of radius Radius.                  +
 //=========================================================================
 
 GccAna_Circ2dTanCen::
@@ -209,7 +225,7 @@ GccAna_Circ2dTanCen::
                         const gp_Pnt2d&            Pcenter    ):
 
 //=========================================================================
-//   Initialisation des champs.                                           +
+//   Initialisation of fields.                                           +
 //=========================================================================
 
    cirsol(1,1)   ,

@@ -1,7 +1,23 @@
-// File:	BRepOffset_Offset.cxx
-// Created:	Thu Oct 19 14:59:59 1995
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1995-10-19
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepOffset_Offset.ixx>
@@ -83,8 +99,7 @@ static void UpdateEdge(const TopoDS_Edge& E,
 		       const TopLoc_Location& L,
 		       const Standard_Real Tol)
 {
-  // Detrime les courbes pour eviter des copies dans
-  //les extensions. 
+  // Cut curves to avoid copies in the extensions. 
   BRep_Builder B;
   Handle(Geom_TrimmedCurve) BC = Handle(Geom_TrimmedCurve)::DownCast(C);
   if (!BC.IsNull()) {
@@ -105,8 +120,7 @@ static void UpdateEdge(const TopoDS_Edge& E,
 		       const TopoDS_Face& F, 
 		       const Standard_Real Tol) 
 {
-  // Detrime les courbes pour eviter des copies dans
-  //les extensions. 
+  // Cut curves to avoid copies in the extensions. 
   BRep_Builder B;
   Handle(Geom2d_TrimmedCurve) BC = Handle(Geom2d_TrimmedCurve)::DownCast(C);
   if (!BC.IsNull()) {
@@ -128,8 +142,7 @@ static void UpdateEdge (const TopoDS_Edge& E,
 			const TopoDS_Face& F, 
 			const Standard_Real Tol) 
 {
-  // Detrime les courbes pour eviter des copies dans
-  //les extensions. 
+  // Cut curves to avoid copies in the extensions. 
   BRep_Builder B;
   Handle(Geom2d_Curve) NC1,NC2;
   Handle(Geom2d_TrimmedCurve) BC1 = Handle(Geom2d_TrimmedCurve)::DownCast(C1);
@@ -142,7 +155,7 @@ static void UpdateEdge (const TopoDS_Edge& E,
 //=======================================================================
 //function : Range3d
 //purpose  : Set the range only on the 3d curve 
-//           en attendant que le BRep_Builder le fasse !!
+//           waitint that BRep_Builder does it !!
 //=======================================================================
 
 static void Range3d (const TopoDS_Edge&  E, 
@@ -193,20 +206,20 @@ static void ComputeCurve3d(TopoDS_Edge           Edge,
 
   Standard_Boolean IsComputed = Standard_False;
 
-  // Seach only isos on analytiques surfaces.
+  // Search only isos on analytic surfaces.
   Geom2dAdaptor_Curve C(Curve);
   GeomAdaptor_Surface S(Surf);
   GeomAbs_CurveType   CTy = C.GetType();
   GeomAbs_SurfaceType STy = S.GetType();
   BRep_Builder TheBuilder;
 
-  if ( STy != GeomAbs_Plane) { // if plane buildcurve3d gere KPart
+  if ( STy != GeomAbs_Plane) { // if plane buildcurve3d manage KPart
     if ( CTy == GeomAbs_Line) {
       gp_Dir2d D = C.Line().Direction();
       if ( D.IsParallel(gp::DX2d(),Precision::Angular())) { // Iso V.
 	if ( STy == GeomAbs_Sphere) {
 	  gp_Pnt2d  P    = C.Line().Location();
-	  if ( Abs( Abs(P.Y()) -PI/2. ) < Precision::PConfusion()) {
+	  if ( Abs( Abs(P.Y()) -M_PI/2. ) < Precision::PConfusion()) {
 	    TheBuilder.Degenerated(Edge, Standard_True);
 	  }
 	  else {
@@ -281,10 +294,10 @@ static void ComputeCurve3d(TopoDS_Edge           Edge,
 	  gp_Sphere Sph  = S.Sphere();
 	  gp_Pnt2d  P    = C.Line().Location();
 	  gp_Ax3    Axis = Sph.Position();
-	  // calculde l'iso 0.
+	  // calculate iso 0.
 	  gp_Circ   Ci   = ElSLib::SphereUIso(Axis, Sph.Radius(),0.);
 
-	  // mise a sameparameter (rotation du cercle - decalage du Y)
+	  // set to sameparameter (rotation of circle - offset of Y)
 	  gp_Dir DRev = Axis.XDirection().Crossed(Axis. Direction());
 	  gp_Ax1 AxeRev(Axis.Location(),DRev);
 	  Ci.Rotate(AxeRev, P.Y());
@@ -1394,18 +1407,18 @@ void BRepOffset_Offset::Init(const TopoDS_Vertex&        Vertex,
     //                         V` = +/- PI + 2 k` PI
     gp_Pnt2d P2d = PCurve->Value(f);
     Standard_Boolean IsToAdjust = Standard_False;
-    if ( P2d.Y() < -PI/2.) {
+    if ( P2d.Y() < -M_PI/2.) {
       IsToAdjust = Standard_True;
-      PCurve->Mirror(gp_Ax2d(gp_Pnt2d(0.,-PI/2.),gp::DX2d()));
+      PCurve->Mirror(gp_Ax2d(gp_Pnt2d(0.,-M_PI/2.),gp::DX2d()));
     }
-    else if ( P2d.Y() > PI/2.) {
+    else if ( P2d.Y() > M_PI/2.) {
       IsToAdjust = Standard_True;
-      PCurve->Mirror(gp_Ax2d(gp_Pnt2d(0., PI/2.),gp::DX2d()));
+      PCurve->Mirror(gp_Ax2d(gp_Pnt2d(0., M_PI/2.),gp::DX2d()));
     }
     if ( IsToAdjust) {
       // set the u firstpoint in [0,2*pi]
-      gp_Vec2d Tr( PI, 0.);
-      if ( P2d.X() > PI) Tr.Reverse();
+      gp_Vec2d Tr( M_PI, 0.);
+      if ( P2d.X() > M_PI) Tr.Reverse();
       PCurve->Translate(Tr);
     }
 

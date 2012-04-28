@@ -1,7 +1,22 @@
-// File:	AIS_MidPointRelation.cxx
-// Created:	Fri Oct 20 16:00:58 2000
-// Author:	Julia DOROVSKIKH
-//		<jfa@androx.nnov.matra-dtv.fr>
+// Created on: 2000-10-20
+// Created by: Julia DOROVSKIKH
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <AIS_MidPointRelation.ixx>
 
@@ -487,7 +502,7 @@ void AIS_MidPointRelation::ComputePointsOnCirc(const gp_Circ& aCirc,
   
   Standard_Real pcurpos = ElCLib::Parameter(aCirc,curpos);
 
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
   Standard_Real segm;
 
   Standard_Real pFPnt;
@@ -507,18 +522,18 @@ void AIS_MidPointRelation::ComputePointsOnCirc(const gp_Circ& aCirc,
       Standard_Real deltap = pSAttachM - pFAttach;
       if ( deltap < 0 )
 	{
-	  deltap += 2*Standard_PI;
-	  pSAttachM += 2*Standard_PI;
+	  deltap += 2 * M_PI;
+	  pSAttachM += 2 * M_PI;
 	}
       pSAttachM -= pFAttach;
 
-      Standard_Real pmiddleout = pSAttachM/2.0 + Standard_PI;
+      Standard_Real pmiddleout = pSAttachM/2.0 + M_PI;
 
       Standard_Real pcurpos1 = pcurpos;
       // define where curpos lays
       if ( pcurpos1 < pFAttach )
 	{
-	  pcurpos1 = pcurpos1 + 2*Standard_PI - pFAttach;
+	  pcurpos1 = pcurpos1 + 2 * M_PI - pFAttach;
 	  if ( pcurpos1 > pSAttachM ) // out
 	    {
 	      segm = Min(rad,deltap*0.75);
@@ -614,7 +629,7 @@ void AIS_MidPointRelation::ComputePointsOnElips(const gp_Elips& anEll,
   
   Standard_Real pcurpos = ElCLib::Parameter(anEll,curpos);
 
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
   Standard_Real segm;
 
   Standard_Real pFPnt;
@@ -634,18 +649,18 @@ void AIS_MidPointRelation::ComputePointsOnElips(const gp_Elips& anEll,
       Standard_Real deltap = pSAttachM - pFAttach;
       if ( deltap < 0 )
 	{
-	  deltap += 2*Standard_PI;
-	  pSAttachM += 2*Standard_PI;
+	  deltap += 2 * M_PI;
+	  pSAttachM += 2 * M_PI;
 	}
       pSAttachM -= pFAttach;
 
-      Standard_Real pmiddleout = pSAttachM/2.0 + Standard_PI;
+      Standard_Real pmiddleout = pSAttachM / 2.0 + M_PI;
 
       Standard_Real pcurpos1 = pcurpos;
       // define where curpos lays
       if ( pcurpos1 < pFAttach )
 	{
-	  pcurpos1 = pcurpos1 + 2*Standard_PI - pFAttach;
+	  pcurpos1 = pcurpos1 + 2 * M_PI - pFAttach;
 	  if ( pcurpos1 > pSAttachM ) // out
 	    {
 	      segm = Min(rad,deltap*0.75);

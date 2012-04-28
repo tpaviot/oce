@@ -9,8 +9,11 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Standard_DefineHandle_HeaderFile
+#include <Standard_DefineHandle.hxx>
+#endif
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 
 #ifndef _TopTools_IndexedDataMapOfShapeAddress_HeaderFile
@@ -18,6 +21,9 @@
 #endif
 #ifndef _IntTools_IndexedDataMapOfTransientAddress_HeaderFile
 #include <IntTools_IndexedDataMapOfTransientAddress.hxx>
+#endif
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
 #endif
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
@@ -57,21 +63,9 @@ class IntTools_Curve;
 //! The instance of the class allows to avoid repeated <br>
 //! computations by mapping internal objects in the <br>
 //!  instance. <br>
-class IntTools_Context  {
-public:
+class IntTools_Context : public MMgt_TShared {
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+public:
 
   
 //! Empty constructor <br>
@@ -201,15 +195,14 @@ Standard_EXPORT virtual ~IntTools_Context();
 
 
 
+  DEFINE_STANDARD_RTTI(IntTools_Context)
 
 protected:
 
 
 
 
-
-private:
-
+private: 
 
 
 TopTools_IndexedDataMapOfShapeAddress myFClass2dMap;

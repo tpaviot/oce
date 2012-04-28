@@ -1,10 +1,24 @@
-// File:	BRepBlend_RstRstEvolRad.cxx
-// Created:	Mon Feb 10 10:32:10 1997
-// Author:	Laurent BOURESCHE
-// Author:	Jacques GOUSSARD
-//		<lbo@pomalox.paris1.matra-dtv.fr>
-// Modif : jlr le 28/07/97 modif de section pour Edge/Face
-//         modif de set (courbe bornee)
+// Created on: 1997-02-10
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 #include <BRepBlend_RstRstEvolRad.ixx>
 #include <math_Gauss.hxx>
 #include <math_SVD.hxx>
@@ -355,12 +369,12 @@ Standard_Boolean BRepBlend_RstRstEvolRad::IsSolution(const math_Vector&  Sol,
     Sina = nplan.Dot(n1.Crossed(n2));
 
     if (choix%2 != 0) {
-      Sina = -Sina;  //nplan est change en -nplan
+      Sina = -Sina;  //nplan is changed into -nplan
     }
     
     Angle = ACos(Cosa);
     if (Sina < 0.) {
-      Angle = 2.*PI - Angle;
+      Angle = 2.*M_PI - Angle;
     }
     
     if (Angle > maxang) {maxang = Angle;}
@@ -673,7 +687,7 @@ void BRepBlend_RstRstEvolRad::Section(const Standard_Real Param,
   Pfin = ElCLib::Parameter(C, ptrst2);
 
   // Test negative and quasi null angles: Special case
-  if (Pfin > 1.5 * PI) {
+  if (Pfin > 1.5 * M_PI) {
     np.Reverse();
     C.SetPosition(gp_Ax2(Center, np, ns));
     Pfin = ElCLib::Parameter(C, ptrst2);
@@ -1003,10 +1017,10 @@ Standard_Boolean BRepBlend_RstRstEvolRad::Section(const Blend_Point& P,
     }
     else {
       d1rst1rst2 *= 0.5;
-      // Normale a la courbe en P1    
+      // Normal to the curve in P1    
       d1n1 = - (d1rst1rst2 + Invdray * n1) / ray;
 
-      // Normale a la courbe en P2
+      // Normal to the curve in P2
       d1n2 = (d1rst1rst2 - Invdray * n2) / ray;       
     }   
   }

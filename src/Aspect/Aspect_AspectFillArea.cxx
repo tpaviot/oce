@@ -1,20 +1,35 @@
+// Created by: NW,JPB,CAL
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File		Aspect_AspectFillArea.cxx
-// Created	Mars 1992
-// Author	NW,JPB,CAL
+
 // Modified:    15/01/98 ; FMN : Ajout Hidden Line
 
-//-Copyright	MatraDatavision 1991,1992
 
 //-Version	
 
-//-Design	Declaration des variables specifiques au contexte
-//		de trace des facettes
+//-Design	Declaration of variables specific to the context
+//		of tracing facets
 
-//-Warning	Un contexte de trace de facette est defini par :
-//		- le style de l'interieur de la facette
-//		- le style du bord de la facette
-//		- la couleur
+//-Warning	Context of tracing facets id defined by:
+//		- the style of the interior of the facet
+//		- the style of the border of the facet
+//		- the color
 
 //-References	
 
@@ -29,16 +44,16 @@
 
 //-Global data definitions
 
-//	-- l'interieur
+//	-- interior
 //	MyInteriorStyle	:	InteriorStyle;
 //	MyInteriorColor	:	Color;
 
-//	-- le bord
+//	-- border
 //	MyEdgeColor	:	Color;
 //	MyEdgeType	:	TypeOfLine;
 //	MyEdgeWidth	:	Standard_Real;
 
-//	-- les hachures
+//	-- shading
 //	MyHatchStyle	:	HatchStyle;
 
 

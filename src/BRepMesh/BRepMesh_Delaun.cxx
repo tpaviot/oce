@@ -1,7 +1,23 @@
-// File:        BRepMesh_Delaun.cxx
-// Created:     Wed May 12 08:58:20 1993
-// Author:      Didier PIFFAULT
-//              <dpf@zerox>
+// Created on: 1993-05-12
+// Created by: Didier PIFFAULT
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BRepMesh_Delaun.ixx>
 #include <gp_XY.hxx>
@@ -321,7 +337,7 @@ void BRepMesh_Delaun::FrontierAdjust()
         }
       }
 
-      // Destruction des triangles :
+    // Destruction of triangles :
       Standard_Integer kk = 0;
       for (; !tril.IsEmpty(); tril.RemoveFirst()) {
         DeleteTriangle(tril.First(), loopEdges);
@@ -351,7 +367,7 @@ void BRepMesh_Delaun::FrontierAdjust()
         (itFr.Key()==e3 && !o3))   {
 #ifdef TRIANGULATION_DEBUG
           if (Triangulation_Trace>0) {
-            cout << "---> destruction du triangle " << aPair.Index(j) << endl;
+            cout << "---> destruction of triangle " << aPair.Index(j) << endl;
           }
 #endif
           tril.Append(aPair.Index(j));
@@ -427,7 +443,7 @@ void BRepMesh_Delaun::MeshLeftPolygonOf(const Standard_Integer indexEdg,
   if (oth==0) {
 #ifdef TRIANGULATION_DEBUG
     if (Triangulation_Trace>0)
-      cout << " MeshLeftPolygonOf : Aucun chemin Edge précédente !" << endl; 
+      cout << " MeshLeftPolygonOf : No path previous Edge!" << endl; 
 #endif
     return;
   }
@@ -521,7 +537,7 @@ void BRepMesh_Delaun::MeshLeftPolygonOf(const Standard_Integer indexEdg,
           //there is a risk of looping (attention to open contours)
 #ifdef TRIANGULATION_DEBUG
           if (Triangulation_Trace>0)
-            cout << " MeshLeftPolygonOf : pas de fermeture du polygone !" 
+            cout << " MeshLeftPolygonOf : no closing of the polygon !" 
             << endl; 
 #endif
 
@@ -554,7 +570,7 @@ void BRepMesh_Delaun::MeshLeftPolygonOf(const Standard_Integer indexEdg,
     else {
 #ifdef TRIANGULATION_DEBUG
       if (Triangulation_Trace>0)
-        cout << " MeshLeftPolygonOf : Pas de suivante !" << endl; 
+        cout << " MeshLeftPolygonOf : No next !" << endl; 
 #endif
       return;
     }
@@ -822,7 +838,7 @@ void BRepMesh_Delaun::CreateTriangles (const Standard_Integer theVertexIndex,
 #ifdef TRIANGULATION_DEBUG
     else {
       if (Triangulation_Trace>0)
-        cout << " CreateTriangles : produit vectoriel trop petit !" << endl;
+        cout << " CreateTriangles : vector product too small !" << endl;
     }
 #endif
   }

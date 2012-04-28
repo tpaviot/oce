@@ -1,8 +1,23 @@
--- File:	BRepOffset_Inter3d.cdl
--- Created:	Fri Aug 30 10:23:06 1996
--- Author:	Yves FRICAUD
---		<yfr@claquox.paris1.matra-dtv.fr>
----Copyright:	 Matra Datavision 1996
+-- Created on: 1996-08-30
+-- Created by: Yves FRICAUD
+-- Copyright (c) 1996-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class Inter3d from BRepOffset 
@@ -18,7 +33,8 @@ uses
     Shape                     from TopoDS,
     Face                      from TopoDS,
     ListOfShape               from TopTools,
-    MapOfShape                from TopTools,
+    --MapOfShape                from TopTools,
+    IndexedMapOfShape         from TopTools,
     DataMapOfShapeShape       from TopTools,
     DataMapOfShapeListOfShape from TopTools,
     Real                      from Standard,
@@ -55,7 +71,7 @@ is
     is static;
      
     ContextIntByInt( me             : in  out;   
-                     ContextFaces   :        MapOfShape           from TopTools; 
+                     ContextFaces   :        IndexedMapOfShape    from TopTools; 
 		     ExtentContext  :        Boolean              from Standard;	
     	             MapSF          :        DataMapOfShapeOffset from BRepOffset;
 		     A              :        Analyse              from BRepOffset;
@@ -65,11 +81,11 @@ is
     is  static; 
      
     ContextIntByArc(me : in out;
-    	      	    ContextFaces   :        MapOfShape from TopTools;
-    	    	    ExtentContext  :        Boolean    from Standard;	
-    	       	    Analyse        :        Analyse    from BRepOffset;
-    	      	    InitOffsetFace :        Image      from BRepAlgo;
-    	       	    InitOffsetEdge : in out Image      from BRepAlgo)
+    	      	    ContextFaces   :        IndexedMapOfShape from TopTools;
+    	    	    ExtentContext  :        Boolean           from Standard;	
+    	       	    Analyse        :        Analyse           from BRepOffset;
+    	      	    InitOffsetFace :        Image             from BRepAlgo;
+    	       	    InitOffsetEdge : in out Image             from BRepAlgo)
     is static;	       	
     
     AddCommonEdges(me : in out; 
@@ -85,14 +101,14 @@ is
     returns Boolean from Standard
     is static;
     
-    TouchedFaces(me : in out) returns MapOfShape from TopTools
+    TouchedFaces(me : in out) returns IndexedMapOfShape from TopTools
 	---C++: return &
     is static;
     
     AsDes(me) returns AsDes from BRepAlgo
     is static;
     
-    NewEdges(me : in out) returns MapOfShape from TopTools
+    NewEdges(me : in out) returns IndexedMapOfShape from TopTools
     	---C++:  return &
     is static;
     
@@ -105,9 +121,9 @@ is
 fields
 
    myAsDes        : AsDes                     from BRepAlgo;
-   myTouched      : MapOfShape                from TopTools;
+   myTouched      : IndexedMapOfShape         from TopTools;
    myDone         : DataMapOfShapeListOfShape from TopTools;
-   myNewEdges     : MapOfShape                from TopTools;
+   myNewEdges     : IndexedMapOfShape         from TopTools;
    mySide         : State                     from TopAbs;
    myTol          : Real                      from Standard;
    

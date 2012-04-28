@@ -21,7 +21,7 @@
 #endif
 class gp_Pnt;
 class gp_XYZ;
-class Intf_ToolPolygon;
+class Intf_Polygon2d;
 class Intf_ToolPolyhedron;
 class Intf_Array1OfLin;
 class Intf_SectionPoint;
@@ -81,7 +81,7 @@ private:
 
 
 
-friend class Intf_ToolPolygon;
+friend class Intf_Polygon2d;
 friend class Intf_ToolPolyhedron;
 friend class Intf_Array1OfLin;
 friend class Intf_SectionPoint;

@@ -143,7 +143,11 @@ public:
 //!  Warning: No default attributes <br>
   Standard_EXPORT     void SetLineAttributes(const Aspect_TypeOfLine AType,const Standard_Real AWidth) ;
   //! Modifies the current texts attributes. <br>
-//!  Warning: No default attributes <br>
+//! <AFont> defines the name of the font to be used. <br>
+//! <AType> defines the display type of the text. <br>
+//! <AColor> defines the color of decal or subtitle background. <br>
+//! To set the color of the text you can use the SetColor method. <br>
+//! Warning: No default attributes <br>
   Standard_EXPORT     void SetTextAttributes(const Standard_CString AFont,const Aspect_TypeOfDisplayText AType,const Quantity_Color& AColor) ;
   //! Modifies the current coordinates system of the layer <me>. <br>
   Standard_EXPORT     void SetOrtho(const Standard_Real Left,const Standard_Real Right,const Standard_Real Bottom,const Standard_Real Top,const Aspect_TypeOfConstraint Attach = Aspect_TOC_BOTTOM_LEFT) ;

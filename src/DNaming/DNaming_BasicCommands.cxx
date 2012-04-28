@@ -1,6 +1,23 @@
-// File:	DNaming_BasicCommands.cxx
-// Created:	Mon Jan 13 14:25:34 1997
-// Author:	VAUTHIER Jean-Claude
+// Created on: 1997-01-13
+// Created by: VAUTHIER Jean-Claude
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <DNaming.hxx>
 #include <TCollection_AsciiString.hxx>
@@ -477,22 +494,7 @@ void  DNaming::BasicCommands(Draw_Interpretor& theCommands)
   theCommands.Add("InitialShape","InitialShape df shape res",        __FILE__,Initialshape,    g);
   theCommands.Add("CurrentShape","Currentshape df entry [drawname]", __FILE__,Currentshape,    g);
   theCommands.Add("GetShape",    "GetShape df entry [drawname]",     __FILE__,Getshape ,       g);  
-  theCommands.Add("Collect",     "Collect  df entry [onlymodif 0/1]",__FILE__,Collect ,       g);  
-  theCommands.Add ("GeneratedShape",
-		   "Generatedshape df shape Generationentry [drawname]",
-		   __FILE__,Generatedshape,g);
-  theCommands.Add("ImportShape",
-		  "ImportShape Doc Shape [Name]",
-		  __FILE__, DNaming_ImportShape, g);  
+  theCommands.Add("Collect",     "Collect  df entry [onlymodif 0/1]",__FILE__,Collect ,        g);  
+  theCommands.Add ("GeneratedShape", "Generatedshape df shape Generationentry [drawname]", __FILE__,Generatedshape,g);
+  theCommands.Add("ImportShape", "ImportShape Doc Entry Shape [Name]",__FILE__,DNaming_ImportShape, g);  
 }
-
-
-
-
-
-
-
-
-
-
-

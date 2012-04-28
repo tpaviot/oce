@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <DsgPrs.ixx>
 
 #include <TCollection_AsciiString.hxx>
@@ -439,7 +457,7 @@ void DsgPrs::ComputeFacesAnglePresentation( const Standard_Real ArrowLength,
 					    Standard_Real & FirstParAttachCirc,
 					    Standard_Real & LastParAttachCirc )
 {
-  if (Value > Precision::Angular() && Abs( PI-Value ) > Precision::Angular())
+  if (Value > Precision::Angular() && Abs( M_PI-Value ) > Precision::Angular())
     {
       // Computing presentation of angle's arc
       gp_Ax2 ax( CenterPoint, axisdir, dir1 );
@@ -475,8 +493,8 @@ void DsgPrs::ComputeFacesAnglePresentation( const Standard_Real ArrowLength,
 	}
       else if (Sign1 == -1 && Sign2 == 1)
 	{
-	  Par1 += PI;
-	  Par2 += PI;
+	  Par1 += M_PI;
+	  Par2 += M_PI;
 	  FirstParAngleCirc = Par1;
 	  LastParAngleCirc  = Par2;
 	}
@@ -541,7 +559,7 @@ void DsgPrs::ComputeFacesAnglePresentation( const Standard_Real ArrowLength,
 	  Intersection.NearestPoints( ProjAttachPoint2, ProjAttachPoint2 );
 	  
 	  Standard_Real U2 = ElCLib::Parameter( AttachCirc, ProjAttachPoint2 );
-	  if (U2 <= PI)
+	  if (U2 <= M_PI)
 	    {
 	      FirstParAttachCirc = 0;
 	      LastParAttachCirc  = U2;
@@ -549,7 +567,7 @@ void DsgPrs::ComputeFacesAnglePresentation( const Standard_Real ArrowLength,
 	  else
 	    {
 	      FirstParAttachCirc = U2;
-	      LastParAttachCirc  = 2*PI;
+	      LastParAttachCirc  = 2*M_PI;
 	    }
 	}
     }
@@ -577,7 +595,7 @@ void DsgPrs::ComputeFilletRadiusPresentation( const Standard_Real ArrowLength,
   gp_Dir dir1(gp_Vec(Center, FirstPoint));
   gp_Dir dir2(gp_Vec(Center, SecondPoint));
   Standard_Real Angle = dir1.Angle(dir2);
-  if(Angle <= Precision::Angular() || ( PI - Angle ) <= Precision::Angular() ||
+  if(Angle <= Precision::Angular() || ( M_PI - Angle ) <= Precision::Angular() ||
      Value <= Precision::Confusion()) SpecCase = Standard_True;
   else SpecCase = Standard_False;
   if ( !SpecCase )
@@ -608,7 +626,7 @@ void DsgPrs::ComputeFilletRadiusPresentation( const Standard_Real ArrowLength,
 	  gp_Dir direction(PosVec) ;
 	  Standard_Real angle = dir1.Angle(direction) ;
           if (( dir1 ^ direction) * NormalDir < 0.0e0)   angle = -angle ;
-	  if(Sign1 == -1) angle += PI;
+	  if(Sign1 == -1) angle += M_PI;
 	  EndOfArrow = ElCLib::Value(angle, FilletCirc); //***
 	  	   
 	}
@@ -704,37 +722,37 @@ Standard_Real DsgPrs::DistanceFromApex(const gp_Elips & elips,
 {
   Standard_Real dist;
   Standard_Real parApex = ElCLib::Parameter ( elips, Apex );
-  if(parApex == 0.0 || parApex == PI) 
+  if(parApex == 0.0 || parApex == M_PI) 
     {//Major case
       if(parApex == 0.0) //pos Apex
-	dist = (par < PI) ? par : (2*PI - par);
+	dist = (par < M_PI) ? par : (2*M_PI - par);
       else //neg Apex
-	dist = (par < PI) ? ( PI - par) : ( par - PI );
+	dist = (par < M_PI) ? ( M_PI - par) : ( par - M_PI );
     }
   else 
     {// Minor case
-      if(parApex == PI / 2) //pos Apex
+      if(parApex == M_PI / 2) //pos Apex
 	{
-	  if(par <= parApex + PI && par > parApex )
+	  if(par <= parApex + M_PI && par > parApex )
 	    dist = par - parApex;
 	  else 
 	    { 
-	      if(par >  parApex + PI)
-		dist = 2*PI - par + parApex;
+	      if(par >  parApex + M_PI)
+		dist = 2*M_PI - par + parApex;
 	      else
-		dist = parApex - par; // 0 < par < PI/2
+		dist = parApex - par; // 0 < par < M_PI/2
 	    }
 	}
       else //neg Apex == 3/2 PI
 	{
-	  if(par <= parApex && par >= PI/2) 
+	  if(par <= parApex && par >= M_PI/2) 
 	    dist = parApex - par;
 	  else
 	    {
 	      if(par >  parApex) 
 		dist = par - parApex;
 	      else
-		dist = par + PI/2; // 0 < par < PI/2
+		dist = par + M_PI/2; // 0 < par < PI/2
 	    }
 	}
     }

@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
  
   V3d_PositionLight.cxx
@@ -185,7 +202,6 @@ void V3d_PositionLight::Display( const Handle(V3d_View)& aView,
   
 // Display of the light position.
 
-  glight->SetPickId(1);
   this->Color(Quantity_TOC_RGB,R1,G1,B1);
   Quantity_Color Col1(R1,G1,B1,Quantity_TOC_RGB);
   Handle(Graphic3d_AspectLine3d) Asp1 = new Graphic3d_AspectLine3d();
@@ -199,7 +215,6 @@ void V3d_PositionLight::Display( const Handle(V3d_View)& aView,
       
     Rayon = this->Radius();
     aView->Proj(VX,VY,VZ);
-    gsphere->SetPickId(2);
     V3d::CircleInPlane(gsphere,X0,Y0,Z0,VX,VY,VZ,Rayon);
 
 
@@ -208,17 +223,14 @@ void V3d_PositionLight::Display( const Handle(V3d_View)& aView,
       //Display of the radius of the sphere (line + text)
 
 			if (Pres == V3d_COMPLETE) {
-				gradius->SetPickId(3);
-				gExtArrow->SetPickId(4);
-				gIntArrow->SetPickId(5);
 				PRadius(0).SetCoord(X0,Y0,Z0);
 				this->Position(X,Y,Z);
 				PRadius(1).SetCoord(X,Y,Z);
 				gnopick->Polyline(PRadius);
 				V3d::ArrowOfRadius(gExtArrow,X-(X-X0)/10.,
 				 Y-(Y-Y0)/10.,
-				 Z-(Z-Z0)/10.,X-X0,Y-Y0,Z-Z0,PI/15.,Rayon/20.);
-				V3d::ArrowOfRadius(gIntArrow,X0,Y0,Z0,X0-X,Y0-Y,Z0-Z,PI/15.,Rayon/20.);
+				 Z-(Z-Z0)/10.,X-X0,Y-Y0,Z-Z0,M_PI/15.,Rayon/20.);
+				V3d::ArrowOfRadius(gIntArrow,X0,Y0,Z0,X0-X,Y0-Y,Z0-Z,M_PI/15.,Rayon/20.);
 				TCollection_AsciiString ValOfRadius(Rayon);
 				PText.SetCoord( (X0+X)/2., (Y0+Y)/2. , (Z0+Z)/2. );
 				gradius->Text(ValOfRadius.ToCString(),PText,0.01);
@@ -266,57 +278,6 @@ void V3d_PositionLight::Display( const Handle(V3d_View)& aView,
   TheViewer->SetUpdateMode(UpdSov);
 }
 
-V3d_TypeOfPickLight V3d_PositionLight::Pick(const Handle(V3d_View)& aView,
-					      const Standard_Integer Xpix,
-					      const Standard_Integer Ypix) 
-const {
-  
-  Standard_Integer i, Lng, Id;
-  Standard_Boolean kcont;
-  V3d_TypeOfPickLight TPick;
-  
-  Handle(Visual3d_ViewManager) VM = (aView->Viewer())->Viewer();
-#ifdef WNT
-  Handle( WNT_Window ) WW = Handle( WNT_Window ) :: DownCast (  aView -> Window ()  );
-#else
-  Handle( Xw_Window  ) WW = Handle( Xw_Window  ) :: DownCast (  aView -> Window ()  );
-#endif
-  Visual3d_ContextPick CTXP;
-  Visual3d_PickDescriptor Pdes = VM->Pick(CTXP,WW,Xpix,Ypix);
-  Visual3d_PickPath OnePPath;
-  Handle(Visual3d_HSequenceOfPickPath) PPath = Pdes.PickPath();
-  Lng = PPath->Length();      
-  kcont = Standard_True;
-  TPick = V3d_NOTHING;  
-  for (i=1; i<=Lng && kcont; i++) {
-    OnePPath = PPath->Value(i);
-    Id = OnePPath.PickIdentifier();
-    if (MyGraphicStructure == OnePPath.StructIdentifier()){
-      switch (Id) {
-      case 1 : 
-	TPick = V3d_POSITIONLIGHT;
-	break;
-      case 2 : 
-	TPick = V3d_SPACELIGHT;
-	break;
-      case 3 :
-	if (MyType != V3d_DIRECTIONAL)
-	  TPick = V3d_RADIUSTEXTLIGHT;
-	break;
-      case 4 : 
-	if (MyType != V3d_DIRECTIONAL)
-  	TPick = V3d_ExtRADIUSLIGHT;
-	break;
-      case 5 : 
-	if (MyType != V3d_DIRECTIONAL)
-  	TPick = V3d_IntRADIUSLIGHT;
-	break;
-      }
-      kcont = Standard_False;
-    }
-  }
-  return TPick;
-}
 
 void V3d_PositionLight::Tracking( const Handle(V3d_View)& aView,
 			  const V3d_TypeOfPickLight WhatPick,

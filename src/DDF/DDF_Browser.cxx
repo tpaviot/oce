@@ -1,13 +1,27 @@
-// File:	DDF_Browser.cxx
+// Created by: DAUTRY Philippe
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //      	---------------
-// Author:	DAUTRY Philippe
-//		<fid@fox.paris1.matra-dtv.fr>
-// Copyright:	Matra Datavision 1997
 
 // Version:	0.0
-// History:	Version	Date		Purpose
+//Version	Date		Purpose
 //		0.0	Oct  3 1997	Creation
-
 
 
 #include <DDF_Browser.ixx>
@@ -118,7 +132,8 @@ TCollection_AsciiString DDF_Browser::OpenRoot() const
   Handle(TDataStd_Name) name;
   list.AssignCat(TDF_BrowserSeparator2);
   list.AssignCat("\"");
-  if (root.FindAttribute(TDataStd_Name::GetID(),name)) {
+  if (root.FindAttribute(TDataStd_Name::GetID(),name))
+  {
     TCollection_AsciiString tmpStr(name->Get(),'?');
     tmpStr.ChangeAll(' ','_');
     list.AssignCat(tmpStr);
@@ -128,13 +143,7 @@ TCollection_AsciiString DDF_Browser::OpenRoot() const
   if (!root.MayBeModified()) list.AssignCat("Not");
   list.AssignCat("Modified");
   list.AssignCat(TDF_BrowserSeparator2);
-  if (root.HasAttribute() || (root.HasChild())) {
-    list.AssignCat("1");
-  }
-  else {
-    list.AssignCat("0");
-  }
-  //cout<<"OpenRoot: "<<list<<endl;
+  list.AssignCat((root.HasAttribute() || root.HasChild())? "1" : "0");
   return list;
 }
 
@@ -154,7 +163,8 @@ TCollection_AsciiString DDF_Browser::OpenLabel(const TDF_Label& aLab) const
 {
   Standard_Boolean split = Standard_False;
   TCollection_AsciiString entry, list;
-  if (aLab.HasAttribute() || aLab.AttributesModified()) {
+  if (aLab.HasAttribute() || aLab.AttributesModified())
+  {
     list.AssignCat("AttributeList");
     list.AssignCat(TDF_BrowserSeparator2);
     if (!aLab.AttributesModified()) list.AssignCat("Not");
@@ -162,13 +172,15 @@ TCollection_AsciiString DDF_Browser::OpenLabel(const TDF_Label& aLab) const
     split = Standard_True;
   }
   Handle(TDataStd_Name) name;
-  for (TDF_ChildIterator itr(aLab); itr.More(); itr.Next()) {
+  for (TDF_ChildIterator itr(aLab); itr.More(); itr.Next())
+  {
     if (split) list.AssignCat(TDF_BrowserSeparator1);
     TDF_Tool::Entry(itr.Value(),entry);
     list.AssignCat(entry);
     list.AssignCat(TDF_BrowserSeparator2);
     list.AssignCat("\"");
-    if (itr.Value().FindAttribute(TDataStd_Name::GetID(),name)) {
+    if (itr.Value().FindAttribute(TDataStd_Name::GetID(),name))
+    {
       TCollection_AsciiString tmpStr(name->Get(),'?');
       tmpStr.ChangeAll(' ','_');
       list.AssignCat(tmpStr);
@@ -179,14 +191,9 @@ TCollection_AsciiString DDF_Browser::OpenLabel(const TDF_Label& aLab) const
     list.AssignCat("Modified");
     list.AssignCat(TDF_BrowserSeparator2);
     // May be open.
-    if (itr.Value().HasAttribute() || (itr.Value().HasChild()))
-      list.AssignCat("1");
-    else
-      list.AssignCat("0");
-
+    list.AssignCat((itr.Value().HasAttribute() || itr.Value().HasChild())? "1" : "0");
     split = Standard_True;
   }
-  //cout<<"OpenLabel: "<<list<<endl;
   return list;
 }
 
@@ -204,7 +211,8 @@ TCollection_AsciiString DDF_Browser::OpenAttributeList
 {
   TCollection_AsciiString list;
   Standard_Boolean split1 = Standard_False;
-  for (TDF_AttributeIterator itr(aLab,Standard_False);itr.More();itr.Next()) {
+  for (TDF_AttributeIterator itr(aLab,Standard_False);itr.More();itr.Next())
+  {
     if (split1) list.AssignCat(TDF_BrowserSeparator1);
     const Handle(TDF_Attribute)& att = itr.Value();
     const Standard_Integer index = myAttMap.Add(att);
@@ -229,11 +237,9 @@ TCollection_AsciiString DDF_Browser::OpenAttributeList
     // May be open.
     list.AssignCat(TDF_BrowserSeparator2);
     DDF_AttributeBrowser* br = DDF_AttributeBrowser::FindBrowser(att);
-    if (br) list.AssignCat("1");
-    else    list.AssignCat("0");
+    list.AssignCat(br? "1" : "0");
     split1 = Standard_True;
   }
-  //cout<<"OpenAttributeList: "<<list<<endl;
   return list;
 }
 
@@ -250,7 +256,6 @@ TCollection_AsciiString DDF_Browser::OpenAttribute
   Handle(TDF_Attribute) att = myAttMap.FindKey(anIndex);
   DDF_AttributeBrowser* br = DDF_AttributeBrowser::FindBrowser(att);
   if (br) list = br->Open(att);
-  //cout<<"OpenAttribute: "<<list<<endl;
   return list;
 }
 
@@ -289,5 +294,3 @@ TCollection_AsciiString DDF_Browser::Information(const Standard_Integer /*anInde
   TCollection_AsciiString list;
   return list;
 }
-
-

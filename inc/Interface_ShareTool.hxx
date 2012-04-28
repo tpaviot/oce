@@ -90,11 +90,9 @@ public:
   //! Creates a ShareTool from an already defined Graph <br>
 //!           Remark that the data of the Graph are copied <br>
   Standard_EXPORT   Interface_ShareTool(const Interface_Graph& agraph);
-  
-  Standard_EXPORT   Interface_ShareTool(const Handle(Interface_HGraph)& ahgraph);
   //! Completes the Graph by Adding Implied References. Hence, they <br>
 //!           are considered as Sharing References in all the other queries <br>
-  Standard_EXPORT     void AddImplied(const Handle(Interface_GTool)& gtool) ;
+  Standard_EXPORT   Interface_ShareTool(const Handle(Interface_HGraph)& ahgraph);
   //! Returns the Model used for Creation (directly or for Graph) <br>
   Standard_EXPORT     Handle_Interface_InterfaceModel Model() const;
   //! Returns the data used by the ShareTool to work <br>

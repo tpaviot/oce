@@ -16,6 +16,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
 #endif
@@ -48,7 +51,7 @@ public:
   }
 
   
-  Standard_EXPORT   static  void BuildIncrementalMesh(const TopoDS_Shape& Shape,const Standard_Real Deflection,const Handle(StlMesh_Mesh)& Mesh) ;
+  Standard_EXPORT   static  void BuildIncrementalMesh(const TopoDS_Shape& Shape,const Standard_Real Deflection,const Standard_Boolean InParallel,const Handle(StlMesh_Mesh)& Mesh) ;
 
 
 

@@ -1,7 +1,23 @@
-// File:      IntPatch_PolyLine.cxx
-// Created:   Fri Jan 29 17:14:59 1993
-// Author:    Isabelle GRIGNON
-// Copyright: Matra Datavision 1993
+// Created on: 1993-01-29
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //-- lbr le 12 juin : Ajout des fleches sur les Lines
 //-- msv 13.03.2002 : compute deflection for WLine; Error() returns deflection
@@ -18,7 +34,7 @@
 //=======================================================================
 
 IntPatch_PolyLine::IntPatch_PolyLine ()
-     : defle(INITDEFLE)
+     : IntPatch_Polygo(INITDEFLE)
 {}
 
 //=======================================================================
@@ -27,7 +43,7 @@ IntPatch_PolyLine::IntPatch_PolyLine ()
 //=======================================================================
 
 IntPatch_PolyLine::IntPatch_PolyLine (const Standard_Real InitDefle)
-     : defle(InitDefle)
+     : IntPatch_Polygo(InitDefle)
 {}
 
 //=======================================================================
@@ -64,9 +80,9 @@ void IntPatch_PolyLine::SetRLine(const Standard_Boolean OnFirst, const Handle(In
 void IntPatch_PolyLine::Prepare()
 {
   Standard_Integer i;
-  box.SetVoid();
+  myBox.SetVoid();
   Standard_Integer n=NbPoints();
-  Standard_Real eps = defle;
+  Standard_Real eps = myError;
 
   gp_Pnt2d P1, P2;
   if (n >= 3) {
@@ -82,7 +98,7 @@ void IntPatch_PolyLine::Prepare()
 	d = V13.CrossMagnitude(V12) / d13;
       else
 	d = eps;
-      if (d > defle) {
+      if (d > myError) {
 	// try to compute deflection more precisely using parabola interpolation
 	gp_XY V23 = P3.XY() - P2.XY();
 	Standard_Real d12 = V12.Modulus(), d23 = V23.Modulus();
@@ -119,13 +135,13 @@ void IntPatch_PolyLine::Prepare()
 	  // select min deflection from linear and parabolic ones
 	  if (d1 < d) d = d1;
 	}
-	if (d > defle) defle=d;
+	if (d > myError) myError=d;
       }
       P1 = P2; P2 = P3;
     }
-    box.Add(P3);
+    myBox.Add(P3);
   }
-  box.Enlarge(defle);  
+  myBox.Enlarge(myError);  
 }
 
 //=======================================================================
@@ -135,38 +151,7 @@ void IntPatch_PolyLine::Prepare()
 
 void IntPatch_PolyLine::ResetError()
 {
-  defle = INITDEFLE;
-}
-
-//=======================================================================
-//function : Bounding
-//purpose  : 
-//=======================================================================
-
-const Bnd_Box2d& IntPatch_PolyLine::Bounding() const 
-{
-  return box;
-}
-
-//=======================================================================
-//function : Error
-//purpose  : 
-//=======================================================================
-
-Standard_Real IntPatch_PolyLine::Error() const
-{
-  // return 0.0000001;
-  return defle;
-}
-
-//=======================================================================
-//function : Closed
-//purpose  : 
-//=======================================================================
-
-Standard_Boolean IntPatch_PolyLine::Closed() const
-{
-  return Standard_False;
+  myError = INITDEFLE;
 }
 
 //=======================================================================

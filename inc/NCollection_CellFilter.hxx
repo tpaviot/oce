@@ -1,7 +1,22 @@
-// File:      NCollection_CellFilter.hxx
-// Created:   Sat May 26 06:05:25 2007
-// Author:    Andrey BETENEV
-// Copyright: Open CASCADE SAS 2007
+// Created on: 2007-05-26
+// Created by: Andrey BETENEV
+// Copyright (c) 2007-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_CellFilter_HeaderFile
 #define NCollection_CellFilter_HeaderFile
@@ -11,12 +26,7 @@
 #include <NCollection_Map.hxx>
 #include <NCollection_DataMap.hxx>
 #include <NCollection_BaseAllocator.hxx>
-
-// work-around for obsolete SUN WorkShop 5.3 compiler 
-// which does not recognize typename keyword
-#if defined(__SUNPRO_CC) && (__SUNPRO_CC <= 0x530) && ! defined(typename)
-#define typename
-#endif
+#include <NCollection_TypeDef.hxx>
 
 //! Auxiliary enumeration serving as responce from method Inspect
 enum NCollection_CellFilter_Action 
@@ -109,8 +119,8 @@ template <class Inspector>
 class NCollection_CellFilter
 {  
 public:
-  typedef typename Inspector::Target Target;
-  typedef typename Inspector::Point  Point;
+  typedef TYPENAME Inspector::Target Target;
+  typedef TYPENAME Inspector::Point  Point;
 
 public:
 

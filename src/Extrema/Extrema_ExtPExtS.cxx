@@ -1,8 +1,23 @@
-// File:	Extrema_ExtPExtS.cdl
-// Created:	Thu Sep 16 16:53:38 1999
-// Author:	Edward AGAPOV
-//		<eap@strelox.nnov.matra-dtv.fr>
-// Copyright:	 Matra Datavision 1999
+// Created on: 1999-09-16
+// Created by: Edward AGAPOV
+// Copyright (c) 1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_NotImplemented.hxx>
 #include <Standard_OutOfRange.hxx>
@@ -247,7 +262,7 @@ void Extrema_ExtPExtS::Perform (const gp_Pnt& P)
     if (myC->IsPeriodic())
       {
 	Standard_Real U2 = U;
-	ElCLib::AdjustPeriodic(myuinf, myuinf + 2.*PI, Precision::PConfusion(), U, U2);
+	ElCLib::AdjustPeriodic(myuinf, myuinf + 2.*M_PI, Precision::PConfusion(), U, U2);
       }
     //////////////////////////////////////////////////
     gp_Pnt E = POC.Value();
@@ -398,10 +413,10 @@ static void PerformExtPElC (Extrema_ExtPElC& E,
     E.Perform(P, C->Line(), Tol, -Precision::Infinite(),Precision::Infinite());
     return;
   case GeomAbs_Circle:
-    E.Perform(P, C->Circle(), Tol, 0.0, 2.0 * PI);
+    E.Perform(P, C->Circle(), Tol, 0.0, 2.0 * M_PI);
     return;
   case GeomAbs_Ellipse:
-    E.Perform(P, C->Ellipse(), Tol, 0.0, 2.0 * PI);
+    E.Perform(P, C->Ellipse(), Tol, 0.0, 2.0 * M_PI);
     return;
   case GeomAbs_Parabola:
     E.Perform(P, C->Parabola(), Tol, -Precision::Infinite(),Precision::Infinite());

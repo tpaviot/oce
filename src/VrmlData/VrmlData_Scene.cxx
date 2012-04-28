@@ -1,7 +1,22 @@
-// File:      VrmlData_Scene.cxx
-// Created:   25.05.06 16:33:25
-// Author:    Alexander GRIGORIEV
-// Copyright: Open Cascade 2006
+// Created on: 2006-05-25
+// Created by: Alexander GRIGORIEV
+// Copyright (c) 2006-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <VrmlData_Scene.hxx>
 #include <VrmlData_InBuffer.hxx>
@@ -449,7 +464,7 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
   VrmlData_ErrorStatus    aStatus;
   Handle(VrmlData_Node)   aNode;
   TCollection_AsciiString aName;
- 
+
   // Read the DEF token to assign the node name
   if (VrmlData_Node::OK(aStatus, ReadLine(theBuffer))) {
     if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "DEF")) {
@@ -474,8 +489,13 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       aNode = new VrmlData_Color          (* this, strName);
     else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Cone"))
       aNode = new VrmlData_Cone           (* this, strName);
-    else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Coordinate"))
+    else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Coordinate")) {
       aNode = new VrmlData_Coordinate     (* this, strName);
+      
+      // Check for "Coordinate3"
+      if (VRMLDATA_LCOMPARE (theBuffer.LinePtr, "3"))
+        theBuffer.LinePtr++;
+    }
     else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Cylinder"))
       aNode = new VrmlData_Cylinder       (* this, strName);
     else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Group"))
@@ -485,6 +505,12 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
       aNode = new VrmlData_Group          (* this, strName,
                                            Standard_True);
     else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Inline"))
+      aNode = new VrmlData_Group          (* this, strName,
+                                           Standard_False);
+    else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Separator"))
+      aNode = new VrmlData_Group          (* this, strName,
+                                           Standard_False);
+    else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "Switch"))
       aNode = new VrmlData_Group          (* this, strName,
                                            Standard_False);
     else if (VRMLDATA_LCOMPARE(theBuffer.LinePtr, "ImageTexture"))
@@ -548,9 +574,6 @@ VrmlData_ErrorStatus VrmlData_Scene::createNode
     if (theType.IsNull() == Standard_False)
       if (aNode->IsKind(theType) == Standard_False)
         aStatus = VrmlData_VrmlFormatError;
-#ifdef _DEBUG
-    aNode->myLineCount = theBuffer.LineCount;
-#endif
   }
   if (aStatus == VrmlData_StatusOK) {
     if (theBuffer.LinePtr[0] == '{') {
@@ -617,23 +640,24 @@ void VrmlData_Scene::createShape
           isSingleShape = Standard_False;
         const Handle(TopoDS_TShape) aTShape = aNodeGeom->TShape();
         aSingleShape.TShape(aTShape);
-        if (aSingleShape.IsNull() == Standard_False)
+        if (aSingleShape.IsNull() == Standard_False) {
           aBuilder.Add (outShape, aSingleShape);
-        if (pMapShapeApp != 0L) {
-          const Handle(VrmlData_Appearance)& anAppearance =
-            aNodeShape->Appearance();
-          if (anAppearance.IsNull() == Standard_False) {
-            // Check if the current topology is a single face
-            if (aTShape->IsKind(STANDARD_TYPE(TopoDS_TFace)))
-              pMapShapeApp->Bind(aTShape, anAppearance);
-            else {
-              // This is not a face, explode it in faces and bind each face
-              TopoDS_Shape aCurShape;
-              aCurShape.TShape(aTShape);
-              TopExp_Explorer anExp(aCurShape, TopAbs_FACE);
-              for (; anExp.More(); anExp.Next()) {
-                const TopoDS_Face& aFace = TopoDS::Face(anExp.Current());
-                pMapShapeApp->Bind(aFace.TShape(), anAppearance);
+          if (pMapShapeApp != 0L) {
+            const Handle(VrmlData_Appearance)& anAppearance =
+              aNodeShape->Appearance();
+            if (anAppearance.IsNull() == Standard_False) {
+              // Check if the current topology is a single face
+              if (aTShape->IsKind(STANDARD_TYPE(TopoDS_TFace)))
+                pMapShapeApp->Bind(aTShape, anAppearance);
+              else {
+                // This is not a face, explode it in faces and bind each face
+                TopoDS_Shape aCurShape;
+                aCurShape.TShape(aTShape);
+                TopExp_Explorer anExp(aCurShape, TopAbs_FACE);
+                for (; anExp.More(); anExp.Next()) {
+                  const TopoDS_Face& aFace = TopoDS::Face(anExp.Current());
+                  pMapShapeApp->Bind(aFace.TShape(), anAppearance);
+                }
               }
             }
           }
@@ -1026,21 +1050,23 @@ VrmlData_ErrorStatus VrmlData_Scene::WriteNode
           aStatus = theNode->Write (thePrefix);
         else {
           // Name is written under DEF clause
-          char buf[1024], * ptr;
-          if (myNamedNodesOut.Contains (theNode)) {
-            memcpy (buf, "USE ", 4);
-            strncpy (&buf[4], theNode->Name(), sizeof(buf)-5);
-            aStatus = WriteLine (thePrefix, buf);
-          } else {
-            if (thePrefix) {
-              strncpy (buf, thePrefix, sizeof(buf));
-              ptr = strchr (buf, '\0');
-              * ptr++ = ' ';
-            } else
-              ptr = &buf[0];
-            strcpy (ptr, "DEF ");
-            strncpy (ptr+4, theNode->Name(), &buf[sizeof(buf)] - (ptr+5));
-            aStatus = theNode->Write (buf);
+          TCollection_AsciiString buf;
+          if (myNamedNodesOut.Contains (theNode))
+          {
+            buf += "USE ";
+            buf += theNode->Name();
+            aStatus = WriteLine (thePrefix, buf.ToCString());
+          } 
+          else 
+          {
+            if (thePrefix)
+            {
+              buf += thePrefix;
+              buf += ' ';
+            }
+            buf += "DEF ";
+            buf += theNode->Name();
+            aStatus = theNode->Write (buf.ToCString());
             const_cast<VrmlData_MapOfNode&>(myNamedNodesOut).Add (theNode);
           }
         }

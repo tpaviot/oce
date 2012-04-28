@@ -1,4 +1,20 @@
-// File:        GeomToIGES_GeomCurve.cxx
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // modif du 04/03/96 mjm
 // modif dans IGESConvGeom_GeomBuilder
@@ -63,7 +79,7 @@
 #include <IGESGeom_TransformationMatrix.hxx>
 
 #include <Interface_Macros.hxx>
-  
+
 #include <Precision.hxx>
 
 #include <TColgp_HArray1OfXYZ.hxx>
@@ -522,7 +538,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomCurve::TransferCurve
   //gka BUG 6542 1.09.04 BSpline curve was written in the IGES instead circle.
   gp_Pnt pfirst,plast;
   start->D0(U1,pfirst);
-  if(Abs (Ufin - Udeb - 2 * PI) <= Precision::PConfusion())
+  if(Abs (Ufin - Udeb - 2 * M_PI) <= Precision::PConfusion())
     plast = pfirst;
   else
     start->D0(U2,plast);
@@ -568,12 +584,12 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomCurve::TransferCurve
 
   //#35 rln 22.10.98 BUC60391 face 9
   //Closed Conic Arc is incorrectly oriented when reading back to CAS.CADE
-  if (Abs (Ufin - Udeb - 2 * PI) <= Precision::PConfusion()) {
+  if (Abs (Ufin - Udeb - 2 * M_PI) <= Precision::PConfusion()) {
     //#53 rln 24.12.98 CCI60005
     //Trimmed ellipse. To avoid huge weights in B-Spline first rotate it and then convert
     Handle(Geom_Ellipse) copystart = Handle(Geom_Ellipse)::DownCast (start->Copy());
     gp_Ax2 pos = copystart->Position();
-    copystart->SetPosition (pos.Rotated (pos.Axis(), gp_Ax3 (pos).Direct() ? Udeb : 2 * PI - Udeb));
+    copystart->SetPosition (pos.Rotated (pos.Axis(), gp_Ax3 (pos).Direct() ? Udeb : 2 * M_PI - Udeb));
     Handle(Geom_BSplineCurve) Bspline;
     //:q3 abv 17 Mar 99: use GeomConvert_ApproxCurve for precise conversion
     GeomConvert_ApproxCurve approx (copystart, Precision::Approximation(), 
@@ -583,7 +599,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomCurve::TransferCurve
       GeomConvert::CurveToBSplineCurve (copystart, Convert_QuasiAngular);
     TColStd_Array1OfReal Knots(1, Bspline->NbKnots());
     Bspline->Knots (Knots);
-    BSplCLib::Reparametrize (Udeb, Udeb + 2 * PI, Knots);
+    BSplCLib::Reparametrize (Udeb, Udeb + 2 * M_PI, Knots);
     Bspline->SetKnots (Knots);
     return TransferCurve (Bspline, Udeb, Ufin);
   }

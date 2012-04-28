@@ -1,7 +1,22 @@
-// File:	ShapeFix.cxx
-// Created:	Fri Jan 21 12:00:39 2000
-// Author:	data exchange team
-//		<det@nnov.matra-dtv.fr>
+// Created on: 2000-01-21
+// Created by: data exchange team
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ShapeFix.hxx>
@@ -38,7 +53,7 @@
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Geom_RectangularTrimmedSurface.hxx>
 #include <ShapeAnalysis_Surface.hxx>
-  
+
 #include <ShapeFix_Edge.hxx>
 #include <ShapeFix_Shape.hxx>
 #include <ShapeFix_Wire.hxx>
@@ -59,6 +74,7 @@
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopExp.hxx>
 
+#include <Message_ProgressSentry.hxx>
 
 //=======================================================================
 //function : SameParameter
@@ -67,8 +83,19 @@
 
 Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
                                          const Standard_Boolean enforce,
-                                         const Standard_Real preci)
+                                         const Standard_Real preci,
+                                         const Handle(Message_ProgressIndicator)& theProgress)
 {
+  // Calculate number of edges
+  Standard_Integer aNbEdges = 0;
+  for ( TopExp_Explorer anEdgeExp(shape, TopAbs_EDGE); anEdgeExp.More(); anEdgeExp.Next() )
+    ++aNbEdges;
+
+  // Calculate number of faces
+  Standard_Integer aNbFaces = 0;
+  for ( TopExp_Explorer anEdgeExp(shape, TopAbs_FACE); anEdgeExp.More(); anEdgeExp.Next() )
+    ++aNbFaces;
+
   BRep_Builder B;
   //Standard_Integer nbexcp = 0; 
   Standard_Integer nbfail = 0,  numedge = 0; 
@@ -78,88 +105,118 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
   Handle(ShapeFix_Edge) sfe = new ShapeFix_Edge;
   TopExp_Explorer ex(shape,TopAbs_EDGE);
 
-  while (ex.More()) {
-    TopoDS_Edge E;
-    while (ex.More()) {
-      numedge ++;
-      int ierr = 0;
-      TopLoc_Location loc;  //Standard_Real u0,u1; //szv#4:S4163:12Mar99 moved down unused
-      E = TopoDS::Edge (ex.Current());
-      ex.Next();
-	
-      //pdn degenerated edges shuld be samerange and sameparameter.
-      //if (BRep_Tool::Degenerated(E)) continue;  // ne vaut pas
-      if (!iatol) tol = BRep_Tool::Tolerance (E);
-      if (enforce) {
-	B.SameRange     (E,Standard_False);
-	B.SameParameter (E,Standard_False);
-      }
-//:pdn	if (BRep_Tool::SameParameter(E)) continue;
-//	Handle(Geom_Curve) crv = BRep_Tool::Curve (E,loc,u0,u1);
-//	if (crv.IsNull()) BRepLib::BuildCurve3d (E,tol);
-      sfe->FixSameParameter (E);  // et non BRepLib::  jusqu a K2-SEP97
-      if (!BRep_Tool::SameParameter (E)) { ierr = 1; nbfail ++; }
-      
-      if (ierr) {
-	status = Standard_False;
-	B.SameRange (E,Standard_False);
-	B.SameParameter (E,Standard_False);
-      }
-      
-    }    // -- end while
-  }
+  // Start progress scope (no need to check if progress exists -- it is safe)
+  Message_ProgressSentry aPSentry(theProgress, "Fixing same parameter problem", 0, 2, 1);
 
-  //:i2 abv 21 Aug 98: ProSTEP TR8 Motor.rle face 710:
-  // Update tolerance of edges on planes (no pcurves are stored)
-  for ( TopExp_Explorer exp ( shape, TopAbs_FACE ); exp.More(); exp.Next() ) {
-    TopoDS_Face face = TopoDS::Face ( exp.Current() );
-    Handle(Geom_Surface) Surf = BRep_Tool::Surface ( face );
-      
-    Handle(Geom_Plane) plane = Handle(Geom_Plane)::DownCast ( Surf );
-    if ( plane.IsNull() ) {
-      Handle(Geom_RectangularTrimmedSurface) GRTS = 
-	Handle(Geom_RectangularTrimmedSurface)::DownCast ( Surf );
-      if ( ! GRTS.IsNull() ) 
-	plane = Handle(Geom_Plane)::DownCast ( GRTS->BasisSurface() );
-      if ( plane.IsNull() ) continue;
+  {
+    // Start progress scope (no need to check if progress exists -- it is safe)
+    Message_ProgressSentry aPSentry(theProgress, "Fixing edge", 0, aNbEdges, 1);
+
+    while ( ex.More() )
+    {
+      TopoDS_Edge E;
+      while ( ex.More() && aPSentry.More() )
+      {
+        numedge ++;
+        int ierr = 0;
+        TopLoc_Location loc;
+        E = TopoDS::Edge (ex.Current());
+        ex.Next();
+  	
+        if (!iatol)
+          tol = BRep_Tool::Tolerance (E);
+        if (enforce)
+        {
+          B.SameRange     (E,Standard_False);
+          B.SameParameter (E,Standard_False);
+        }
+
+        sfe->FixSameParameter (E); // K2-SEP97
+
+        if (!BRep_Tool::SameParameter (E)) { ierr = 1; nbfail ++; }
+        
+        if (ierr)
+        {
+          status = Standard_False;
+          B.SameRange (E,Standard_False);
+          B.SameParameter (E,Standard_False);
+        }
+
+        // Complete step in current progress scope
+        aPSentry.Next();     
+      } // -- end while
+
+      // Halt algorithm in case of user's abort
+      if ( !aPSentry.More() )
+        return Standard_False;
     }
-      
-//      Handle(ShapeConstruct_ProjectCurveOnSurface) Proj = new ShapeConstruct_ProjectCurveOnSurface; //:k2 abv 16 Dec 98: use existing tool //smh#14
-//      Handle(ShapeAnalysis_Surface) sas = new ShapeAnalysis_Surface ( plane );
-//      Proj->Init ( sas, Precision::Confusion() ); // projection will be analitic
-    Handle(GeomAdaptor_HSurface) AS = new GeomAdaptor_HSurface ( plane );
-    for ( TopExp_Explorer ed ( face, TopAbs_EDGE ); ed.More(); ed.Next() ) {
-      TopoDS_Edge edge = TopoDS::Edge ( ed.Current() );
-      Standard_Real f, l;
-      Handle(Geom_Curve) crv = BRep_Tool::Curve ( edge, f, l );
-      if ( crv.IsNull() ) continue;
-	
-//	Handle(Geom2d_Curve) c2d;
-//	Proj->Perform ( crv, f, l, c2d );
-      Handle(Geom2d_Curve) c2d = BRep_Tool::CurveOnSurface ( edge, face, f, l );;
-      if ( c2d.IsNull() ) continue;
-      Handle(Geom2dAdaptor_HCurve) GHPC = new Geom2dAdaptor_HCurve ( c2d, f, l );
-      Adaptor3d_CurveOnSurface ACS(GHPC,AS);//sas->Adaptor3d());
-	
-      Standard_Real tol0 = BRep_Tool::Tolerance ( edge );
-      tol = tol0;
-      Standard_Real tol2 = tol*tol;
-      const Standard_Integer NCONTROL = 23;
-      for ( Standard_Integer i=0; i < NCONTROL; i++ ) {
-	Standard_Real par = ( f * ( NCONTROL - 1 - i ) + l * i ) / ( NCONTROL - 1 );
-	gp_Pnt pnt = crv->Value ( par );
-	gp_Pnt prj = ACS.Value( par );
-	Standard_Real dist = pnt.SquareDistance(prj);
-	if ( tol2 < dist ) tol2 = dist;
+
+  }
+  // Switch to "Update tolerances" step
+  aPSentry.Next();
+
+  {
+    // Start progress scope (no need to check if progress exists -- it is safe)
+    Message_ProgressSentry aPSentry(theProgress, "Update tolerances", 0, aNbFaces, 1);
+
+    //:i2 abv 21 Aug 98: ProSTEP TR8 Motor.rle face 710:
+    // Update tolerance of edges on planes (no pcurves are stored)
+    for ( TopExp_Explorer exp ( shape, TopAbs_FACE ); exp.More() && aPSentry.More(); exp.Next(), aPSentry.Next() )
+    {
+      TopoDS_Face face = TopoDS::Face ( exp.Current() );
+      Handle(Geom_Surface) Surf = BRep_Tool::Surface ( face );
+        
+      Handle(Geom_Plane) plane = Handle(Geom_Plane)::DownCast ( Surf );
+      if ( plane.IsNull() ) {
+        Handle(Geom_RectangularTrimmedSurface) GRTS = 
+          Handle(Geom_RectangularTrimmedSurface)::DownCast ( Surf );
+        if ( ! GRTS.IsNull() ) 
+          plane = Handle(Geom_Plane)::DownCast ( GRTS->BasisSurface() );
+        if ( plane.IsNull() )
+           continue;
       }
-      tol = 1.00005 * sqrt(tol2); // coeff: see trj3_pm1-ct-203.stp #19681, edge 10
-      if ( tol >= tol0 ) {
-	B.UpdateEdge ( edge, tol );
-	for ( TopoDS_Iterator itV(edge); itV.More(); itV.Next() ) {
-	  TopoDS_Shape S = itV.Value();
-	  B.UpdateVertex ( TopoDS::Vertex ( S ), tol );
-	}
+
+      Handle(GeomAdaptor_HSurface) AS = new GeomAdaptor_HSurface ( plane );
+      for ( TopExp_Explorer ed ( face, TopAbs_EDGE ); ed.More(); ed.Next() ) {
+        TopoDS_Edge edge = TopoDS::Edge ( ed.Current() );
+        Standard_Real f, l;
+        Handle(Geom_Curve) crv = BRep_Tool::Curve ( edge, f, l );
+        if ( crv.IsNull() )
+          continue;
+  	
+        Handle(Geom2d_Curve) c2d = BRep_Tool::CurveOnSurface ( edge, face, f, l );;
+        if ( c2d.IsNull() ) continue;
+        Handle(Geom2dAdaptor_HCurve) GHPC = new Geom2dAdaptor_HCurve ( c2d, f, l );
+        Adaptor3d_CurveOnSurface ACS(GHPC,AS);
+  	
+        Standard_Real tol0 = BRep_Tool::Tolerance(edge);
+        tol = tol0;
+        Standard_Real tol2 = tol*tol;
+        const Standard_Integer NCONTROL = 23;
+        for ( Standard_Integer i = 0; i < NCONTROL; i++ )
+        {
+          Standard_Real par = ( f * ( NCONTROL - 1 - i ) + l * i ) / ( NCONTROL - 1 );
+          gp_Pnt pnt = crv->Value ( par );
+          gp_Pnt prj = ACS.Value( par );
+          Standard_Real dist = pnt.SquareDistance(prj);
+          if ( tol2 < dist )
+            tol2 = dist;
+        }
+        tol = 1.00005 * sqrt(tol2); // coeff: see trj3_pm1-ct-203.stp #19681, edge 10
+        if ( tol >= tol0 )
+        {
+          B.UpdateEdge ( edge, tol );
+          for ( TopoDS_Iterator itV(edge); itV.More(); itV.Next() )
+          {
+            TopoDS_Shape S = itV.Value();
+            B.UpdateVertex ( TopoDS::Vertex ( S ), tol );
+          }
+        }
       }
+
+      // Halt algorithm in case of user's abort
+      if ( !aPSentry.More() )
+        return Standard_False;
     }
   }
 
@@ -167,7 +224,6 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
 #ifdef DEB
     cout<<"** SameParameter not complete. On "<<numedge<<" Edges:";
     if (nbfail > 0) cout<<"  "<<nbfail<<" Failed";
-    //if (nbexcp > 0) cout<<"  "<<nbexcp<<" Raised"; //SK original
     cout<<endl;
 #endif
   }

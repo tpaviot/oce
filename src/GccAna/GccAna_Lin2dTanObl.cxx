@@ -1,8 +1,25 @@
-//File GccAna_Lin2dTanObl.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   CREATION D UNE DROITE TANGENTE A UN CERCLE OU PASSANT PAR UN POINT   +
-//                ET FAISANT UN ANGLE A AVEC UNE DROITE.                  +
+//   CREATION of a STRAIGHT LINE TANGENT to a CIRCLE or PASSING by a POINT +
+//                and MAKING ANGLE A with a STRAIGHT LINE.                   +
 //=========================================================================
 
 #include <GccAna_Lin2dTanObl.ixx>
@@ -19,12 +36,12 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Creation d une droite passant par un point : ThePoint                +
-//                         faisant un angle     : TheAngle                +
-//                         avec une droite      : TheLine.                +
-//   On fait subir a la droite (ThePoint,TheLine.Location()) une rotation +
-//   d angle TheAngle ==> D1.                                             +
-//   on cree la droite passant par ThePoint de direction D1.              +
+//   Creation of a straight line passing by a point : ThePoint                +
+//                         making an angle     : TheAngle                +
+//                         with straight line  : TheLine.                +
+//   Subject the straight line (ThePoint,TheLine.Location()) to a rotation +
+//   by angle TheAngle ==> D1.                                            +
+//   create straight line passing through ThePoint of direction D1.              +
 //=========================================================================
 
 GccAna_Lin2dTanObl::
@@ -72,12 +89,12 @@ GccAna_Lin2dTanObl::
  }
 
 //=========================================================================
-//   Creation d une droite tangent a un cercle  : Qualified1 (C1)         +
-//                         faisant un angle     : TheAngle                +
-//                         avec une droite      : TheLine.                +
-//   On fait subir a la droite (C1.Location,TheLine.Location()) une       +
-//   rotation d angle TheAngle ou -TheAngle ==> D1.                       +
-//   on cree la droite passant par C1 de direction D1.                    +
+//   Creation of a straight line tangent to a circle  : Qualified1 (C1)         +
+//                         making angle           : TheAngle                +
+//                         with a straight line   : TheLine.                +
+//   Subject the straight line  (C1.Location,TheLine.Location()) to a       +
+//   rotation by angle TheAngle or -TheAngle ==> D1.                       +
+//   create the straight line passing by C1 of direction D1.                    +
 //=========================================================================
 
 GccAna_Lin2dTanObl::

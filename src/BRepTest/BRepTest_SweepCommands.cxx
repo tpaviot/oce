@@ -1,7 +1,23 @@
-// File:	BRepTest_SweepCommands.cxx
-// Created:	Thu Jul 22 16:40:19 1993
-// Author:	Remi LEQUETTE
-//		<rle@nonox>
+// Created on: 1993-07-22
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 
@@ -100,7 +116,7 @@ static Standard_Integer revol(Draw_Interpretor& ,
   gp_Dir D(atof(a[6]),atof(a[7]),atof(a[8]));
   gp_Ax1 A(P,D);
 
-  Standard_Real angle = atof(a[9]) * PI180;
+  Standard_Real angle = atof(a[9]) * (M_PI / 180.0);
   
   Standard_Boolean copy = n > 10;
 
@@ -543,7 +559,7 @@ static Standard_Integer addsweep(Draw_Interpretor& di,
 
   if (n > 2) { 
     Standard_Integer cur = 2;
-    // Lecture du Vertex
+    // Reading of Vertex
     TopoDS_Shape InputVertex(DBRep::Get(a[cur],TopAbs_VERTEX));
     Vertex = TopoDS::Vertex(InputVertex);
 //    Vertex = TopoDS::Vertex(DBRep::Get(a[cur],TopAbs_VERTEX));
@@ -552,25 +568,25 @@ static Standard_Integer addsweep(Draw_Interpretor& di,
       HasVertex = Standard_True;
     }
    
-    // Lecture de l'option de translation
+    // Reading of the translation option
     if ((n>cur) && !strcmp(a[cur],"-T")) {
       cur++;
       isT = Standard_True;
     }
 
-    // Lecture de l'option de rotation
+    // Reading of the rotation option
     if ((n>cur) && !strcmp(a[cur],"-R")) {
       cur++;
       isR = Standard_True;
     }
 
-    // loi ?
+    // law ?
     if (n>cur) {
       Standard_Integer nbreal = n-cur;
       if ( (nbreal < 4) || (nbreal % 2 != 0) ) {
 	//cout << "bad arguments ! :" <<a[cur] << endl;
 	di << "bad arguments ! :" <<a[cur] << "\n";
-      } else { //loi d'interpolation
+      } else { //law of interpolation
 	Standard_Integer ii, L= nbreal/2;
 	TColgp_Array1OfPnt2d ParAndRad(1, L);
 	for (ii=1; ii<=L; ii++, cur+=2) {
@@ -664,7 +680,7 @@ static Standard_Integer buildsweep(Draw_Interpretor& di,
   if (n>cur) {
     BRepBuilderAPI_TransitionMode Transition = BRepBuilderAPI_Transformed;
 
-    // Lecture Transition
+    // Reading Transition
     if (!strcmp(a[cur],"-C")) {
       Transition = BRepBuilderAPI_RightCorner;
       cur++;
@@ -675,7 +691,7 @@ static Standard_Integer buildsweep(Draw_Interpretor& di,
     }
     Sweep->SetTransitionMode(Transition);
   }
-  // Lecture solide ?
+  // Reading solid ?
   if ((n>cur) && (!strcmp(a[cur],"-S")) ) mksolid = Standard_True;
 
   // Calcul le resultat
@@ -746,7 +762,7 @@ static Standard_Integer simulsweep(Draw_Interpretor& di,
     Sweep->SetTransitionMode(Transition);
   }
 
-  // Calcul le resultat
+  // Calculate the result
   Sweep->Simulate(N, List);
   for (ii=1, it.Initialize(List); it.More(); it.Next(), ii++) {
     sprintf(name,"%s_%d",a[1],ii);

@@ -67,9 +67,6 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Prs3d_IsoAspect;
 class Prs3d_LineAspect;
 class Prs3d_TextAspect;
@@ -359,8 +356,6 @@ public:
   Standard_EXPORT   virtual  Handle_Prs3d_LineAspect SectionAspect() ;
   //! Sets the parameter anAspect for display attributes of sections. <br>
   Standard_EXPORT   virtual  void SetSectionAspect(const Handle(Prs3d_LineAspect)& anAspect) ;
-  
-  Standard_EXPORT   virtual  void Print(Standard_OStream& s) const;
 
 
 

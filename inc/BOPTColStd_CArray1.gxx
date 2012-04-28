@@ -1,15 +1,29 @@
-// File:	BOPTools_CArray1.gxx
-// Created:	Tue Nov 14 11:18:24 2000
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2000-11-14
+// Created by: Peter KURNEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=======================================================================
 //function : BOPTools_CArray1::BOPTools_CArray1
 //purpose  : 
 //=======================================================================
-  BOPTColStd_CArray1::BOPTColStd_CArray1
-       (const Standard_Integer aLength,
-	const Standard_Integer aBlockLength)
+BOPTColStd_CArray1::BOPTColStd_CArray1  (const Standard_Integer aLength,
+					 const Standard_Integer aBlockLength)
   :  
   myStart(NULL), 
   myLength(0), 
@@ -23,7 +37,7 @@
 //function : Resize
 //purpose  : 
 //=======================================================================
-  void BOPTColStd_CArray1::Resize(const Standard_Integer aNL) 
+void BOPTColStd_CArray1::Resize(const Standard_Integer aNL) 
 {
   Array1Item* p = NULL;
   if (aNL>0) {
@@ -33,7 +47,7 @@
     
     if (!p) {
       Standard_OutOfMemory::Raise
-	("IntBOPTools_CArray1 : Allocation failed.");
+	("BOPTools_CArray1 : Allocation failed.");
     }
 
     else {
@@ -48,43 +62,44 @@
 //function : Remove
 //purpose  : 
 //=======================================================================
-  void BOPTColStd_CArray1::Remove(const Standard_Integer anInd)
+void BOPTColStd_CArray1::Remove(const Standard_Integer anInd)
 {
-  if (myIsAllocated)  {
-    if (IsInvalidIndex(anInd)) {
-      Standard_OutOfMemory::Raise
-	("IntBOPTools_CArray1 : Attempt to remove inexisting Item.");
-    }
-    
-    const Standard_Integer aNFL=myFactLength-1;
-  
-    Array1Item *p=NULL;
-    p = new Array1Item[aNFL];
-  
-    if (!p) {
-      Standard_OutOfMemory::Raise
-	("IntBOPTools_CArray1::Append: Allocation failed.");
-    }
-
-    Standard_Integer i, j, anIndx, iLength;
-
-    iLength=myLength;
-
-    anIndx=anInd-1;
-    for (i=0, j=0; i<myLength; ++i) {
-      if (i!=anIndx) {
-	p[j]= ((Array1Item *)myStart)[i];
-	j++;
-      }
-    }
-
-    Destroy();
-
-    myFactLength=aNFL;
-    myLength=iLength-1;
-    myIsAllocated=Standard_True;
-    myStart = (void*) p;
+  if (!myIsAllocated)  {
+    return;
   }
+  
+  if (IsInvalidIndex(anInd)) {
+    Standard_OutOfMemory::Raise
+      ("BOPTools_CArray1 : Attempt to remove inexisting Item.");
+  }
+  
+  const Standard_Integer aNFL=myFactLength-1;
+  Array1Item *p=NULL;
+  p = new Array1Item[aNFL];
+  
+  if (!p) {
+    Standard_OutOfMemory::Raise
+      ("BOPTools_CArray1::Append: Allocation failed.");
+    }
+  
+  Standard_Integer i, j, anIndx, iLength;
+  
+  iLength=myLength;
+  
+  anIndx=anInd-1;
+  for (i=0, j=0; i<myLength; ++i) {
+    if (i!=anIndx) {
+      p[j]= ((Array1Item *)myStart)[i];
+      j++;
+    }
+  }
+  
+  Destroy();
+  
+  myFactLength=aNFL;
+  myLength=iLength-1;
+  myIsAllocated=Standard_True;
+  myStart = (void*) p;
 }
 //=======================================================================
 //function : Append
@@ -114,6 +129,7 @@
     
     Destroy();
 
+    
     myFactLength=iLengthToAllocate;
     myIsAllocated=Standard_True;
     myStart = (void*) p;
@@ -130,8 +146,8 @@
 //function : IsInvalidIndex
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTColStd_CArray1::IsInvalidIndex
-        (const Standard_Integer anInd)const
+Standard_Boolean BOPTColStd_CArray1::IsInvalidIndex 
+  (const Standard_Integer anInd)const
 {
   Standard_Boolean aFlag;
   Standard_Integer anIndx=anInd-1;
@@ -142,7 +158,7 @@
 //function : Destroy
 //purpose  : 
 //=======================================================================
-  void BOPTColStd_CArray1::Destroy() 
+void BOPTColStd_CArray1::Destroy() 
 {
   if (myIsAllocated) {
     delete [] (Array1Item *)myStart;
@@ -151,13 +167,13 @@
     myLength=0;
     myStart=NULL;
   }
-  //myStart=NULL;
 }
+
 //=======================================================================
 //function : Length
 //purpose  : 
 //=======================================================================
-  Standard_Integer BOPTColStd_CArray1::Length() const
+Standard_Integer BOPTColStd_CArray1::Length() const
 {
   return myLength;
 }
@@ -165,7 +181,7 @@
 //function : Extent
 //purpose  : 
 //=======================================================================
-  Standard_Integer BOPTColStd_CArray1::Extent() const
+Standard_Integer BOPTColStd_CArray1::Extent() const
 {
   return myLength;
 }
@@ -173,7 +189,7 @@
 //function : FactLength
 //purpose  : 
 //=======================================================================
-  Standard_Integer BOPTColStd_CArray1::FactLength() const
+Standard_Integer BOPTColStd_CArray1::FactLength() const
 {
   return myFactLength;
 }
@@ -189,16 +205,17 @@
 //function : SetBlockLength
 //purpose  : 
 //=======================================================================
-  void BOPTColStd_CArray1::SetBlockLength(const Standard_Integer aBL) 
+void BOPTColStd_CArray1::SetBlockLength(const Standard_Integer aBL) 
 {
-  if (aBL > 0)
+  if (aBL > 0) {
     myBlockLength=aBL;
+  }
 }
 //=======================================================================
 //function : Value
 //purpose  : 
 //=======================================================================
-  const Array1Item& BOPTColStd_CArray1::Value
+const Array1Item& BOPTColStd_CArray1::Value
       (const Standard_Integer Index) const
 {
   if (IsInvalidIndex(Index)) {
@@ -210,7 +227,7 @@
 //function : ChangeValue
 //purpose  : 
 //=======================================================================
-  Array1Item& BOPTColStd_CArray1::ChangeValue
+Array1Item& BOPTColStd_CArray1::ChangeValue
       (const Standard_Integer Index) 
 {
   if (IsInvalidIndex(Index)) {
@@ -218,3 +235,53 @@
   }
   return ((Array1Item *)myStart)[Index-1];
 }
+//modified by NIZNHY-PKV Wed Nov 09 10:03:01 2011f
+//=======================================================================
+//function : Purge
+//purpose  : 
+//=======================================================================
+void BOPTColStd_CArray1::Purge() 
+{
+  if (!myIsAllocated) {
+    return;
+  }
+  //
+  if (myLength>0 && myLength<myFactLength) {
+    Standard_Integer i, aLength;
+    Array1Item *p = NULL;
+    //
+    p=new Array1Item[myLength];
+    if (!p) {
+      Standard_OutOfMemory::Raise
+	("BOPTools_CArray1 : Allocation failed.");
+    }
+    //
+    for (i=0; i<myLength; i++) {
+      p[i]=((Array1Item *)myStart)[i];
+    }
+    //
+    aLength=myLength;
+    //
+    Destroy();
+    //
+    myIsAllocated=Standard_True;
+    myLength=aLength;
+    myFactLength=myLength;
+    myStart = (void*) p;
+  }
+}
+//modified by NIZNHY-PKV Wed Nov 09 10:03:07 2011t
+/*
+//=======================================================================
+//function : Dump
+//purpose  : 
+//=======================================================================
+void BOPTColStd_CArray1::Dump() const
+{
+  printf("\n--  BOPTColStd_CArray1::Dump --\n");
+  printf("myIsAllocated =%d\n", myIsAllocated);
+  printf("myLength      =%d\n", myLength);
+  printf("myFactLength  =%d\n", myFactLength);
+  printf("myBlockLength =%d\n", myBlockLength);
+}
+*/
