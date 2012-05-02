@@ -17,6 +17,10 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 #if (defined(_WIN32) || defined(__WIN32__))
   #include <windows.h>
   #include <winbase.h>
@@ -33,6 +37,14 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
 
 #include <OSD_MemInfo.hxx>
 
