@@ -1146,13 +1146,13 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Edge& S
         {
           if (fabs(Dstmin-sqrt(Ext.SquareDistance(i)))<myEps)
           {
-            Pt1=Ext.PointOnEdge(i);
-            Pt2=Ext.PointOnFace(i);
+            Pt1=Ext.PointOnFace(i);
+            Pt2=Ext.PointOnEdge(i);
             if (TRI_SOLUTION(SeqSolShape1,Pt1) || TRI_SOLUTION(SeqSolShape2,Pt2))
             {
               // Check if the parameter does not correspond to a vertex
-              const Standard_Real t1 = Ext.ParameterOnEdge(i);
-              if ((fabs(t1-Udeb)>=epsP)&&(fabs(t1-Ufin)>epsP))
+              const Standard_Real t2 = Ext.ParameterOnEdge(i);
+              if ((fabs(t2-Udeb)>=epsP)&&(fabs(t2-Ufin)>epsP))
               {
                 Ext.ParameterOnFace(i,U,V);
                 const gp_Pnt2d PUV(U,V);
@@ -1162,8 +1162,8 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Face& S1, const TopoDS_Edge& S
                   if (myDstRef > Dstmin)
                     myDstRef=Dstmin;
                   myModif=Standard_True;
-                  const BRepExtrema_SolutionElem Sol2(Dstmin,Pt1,BRepExtrema_IsOnEdge,S2,t1);
-                  const BRepExtrema_SolutionElem Sol1(Dstmin,Pt2,BRepExtrema_IsInFace,S1,U,V);
+                  const BRepExtrema_SolutionElem Sol1(Dstmin,Pt1,BRepExtrema_IsInFace,S1,U,V);
+                  const BRepExtrema_SolutionElem Sol2(Dstmin,Pt2,BRepExtrema_IsOnEdge,S2,t2);
                   SeqSolShape1.Append(Sol1);
                   SeqSolShape2.Append(Sol2);		  
                 }
