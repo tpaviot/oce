@@ -47,6 +47,7 @@
 #include <TopExp_Explorer.hxx>
 #include <GProp_GProps.hxx>
 #include <Standard_ErrorHandler.hxx>
+#include <stdio.h>
 
 //=======================================================================
 //function :  OCC332
