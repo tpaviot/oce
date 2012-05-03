@@ -109,7 +109,7 @@ static Standard_Integer DFOpenLabel (Draw_Interpretor& di,
   TDF_Label lab;
   if (n == 3) TDF_Tool::Label(browser->Data(),a[2],lab);
 
-  TCollection_AsciiString list(lab.IsNull()? browser->OpenRoot() : browser->OpenLabel(lab));
+  TCollection_AsciiString list = lab.IsNull() ? browser->OpenRoot() : browser->OpenLabel(lab);
   di<<list.ToCString();
   return 0;
 }

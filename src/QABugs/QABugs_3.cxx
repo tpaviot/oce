@@ -1413,7 +1413,7 @@ static int BUC60831_1(Draw_Interpretor& di, Standard_Integer argc, const char **
     L.Root().AddAttribute(MDF);
   }
 
-  di<<!MDF->IsEmpty();
+  di<<(const Standard_Integer)!MDF->IsEmpty();
   return 0;
 }
 

@@ -178,6 +178,10 @@ int _resetstkoflw(void)
 
 typedef void (*_se_translator_function)(unsigned int, EXCEPTION_POINTERS*);
 
+#ifndef _CRTIMP
+#define _CRTIMP
+#endif
+
 _CRTIMP _se_translator_function __cdecl _set_se_translator(_se_translator_function _NewPtFunc)
 {
   return _NewPtFunc;

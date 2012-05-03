@@ -56,7 +56,7 @@ public:
     Iterator  (const NCollection_Array2& theArray) :
       myCurrent (0),
       mySize    (theArray.Length()),
-      myArray   ((NCollection_Array2 *) &theArray) {}
+      myArray   ((NCollection_Array2<TheItemType> *) &theArray) {}
     //! Initialisation
     void Init (const NCollection_Array2& theArray)
     { 
