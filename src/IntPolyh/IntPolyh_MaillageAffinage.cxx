@@ -48,6 +48,8 @@
 #include <IntPolyh_Edge.hxx>
 #include <IntPolyh_Couple.hxx>
 
+#include <stdio.h>
+
 static Standard_Real MyTolerance=10.0e-7;
 static Standard_Real MyConfusionPrecision=10.0e-12;
 static Standard_Real SquareMyConfusionPrecision=10.0e-24;

@@ -30,6 +30,7 @@
 #include <TopoDS_Shape.hxx>
 
 #include <tcl.h>
+#include <stdio.h>
 
 #include <gp_Ax2.hxx>
 #include <gp_Circ.hxx>

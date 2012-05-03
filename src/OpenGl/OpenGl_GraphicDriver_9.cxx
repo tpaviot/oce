@@ -30,6 +30,8 @@
 #include <AlienImage_AlienImage.hxx>
 #include <Image_Image.hxx>
 
+#include <stdio.h>
+
 void OpenGl_GraphicDriver::Environment(const Graphic3d_CView& ACView)
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;

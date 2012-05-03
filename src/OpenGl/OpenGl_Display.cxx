@@ -28,6 +28,8 @@
 
 #include <OpenGl_Light.hxx>
 
+#include <stdio.h>
+
 #if (!defined(_WIN32) && !defined(__WIN32__))
   #include <X11/Xlib.h> // XOpenDisplay()
 #endif

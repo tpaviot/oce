@@ -30,6 +30,8 @@
 
 #include <GL/glu.h>
 
+#include <stdio.h>
+
 #if (defined(_WIN32) || defined(__WIN32__))
   #define STATIC
 #else
