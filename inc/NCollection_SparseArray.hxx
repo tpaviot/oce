@@ -264,7 +264,7 @@ private:
   //! Call destructor to the item at given address
   virtual void destroyItem (Standard_Address theAddress)
   {
-    ((TheItemType*)theAddress)->TheItemType::~TheItemType();
+    ((TheItemType*)theAddress)->~TheItemType();
   }
 
   //! Call assignment operator to the item
