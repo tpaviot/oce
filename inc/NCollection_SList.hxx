@@ -73,7 +73,7 @@ template <class TheItemType> class NCollection_SList
                const NCollection_SList& theTail) :
                  myCount(1),
                  myValue(theItem) 
-    { myTail = new (theTail.myAllocator) NCollection_SList(theTail); }
+    { myTail = new (theTail.myAllocator) NCollection_SList <TheItemType> (theTail); }
     //! Tail
     NCollection_SList& Tail (void)
     { return (*myTail); }
@@ -165,7 +165,7 @@ template <class TheItemType> class NCollection_SList
     for (; anIter.More(); anIter.Next())
     {
       aNode = new (this->myAllocator) SListNode 
-        (anIter.Value(), NCollection_SList(this->myAllocator));
+        (anIter.Value(), NCollection_SList <TheItemType> (this->myAllocator));
       if (IsEmpty())
         myNode = aNode;
       else
@@ -237,11 +237,11 @@ template <class TheItemType> class NCollection_SList
 
   //! Construct
   void Construct(const TheItemType& theItem)
-  { *this = NCollection_SList (theItem, *this); }
+  { *this = NCollection_SList <TheItemType> (theItem, *this); }
 
   //! Constructed
   NCollection_SList Constructed(const TheItemType& theItem) const
-  { return NCollection_SList (theItem, *this); }
+  { return NCollection_SList <TheItemType> (theItem, *this); }
 
   //! ToTail
   void ToTail (void)

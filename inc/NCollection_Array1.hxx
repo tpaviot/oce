@@ -75,7 +75,7 @@ template <class TheItemType> class NCollection_Array1
     //! Constructor with initialisation
     Iterator  (const NCollection_Array1& theArray) :
       myCurrent (theArray.Lower()),
-      myArray   ((NCollection_Array1 *) &theArray) {}
+      myArray   ((NCollection_Array1<TheItemType> *) &theArray) {}
     //! Initialisation
     void Init (const NCollection_Array1& theArray)
     { 
