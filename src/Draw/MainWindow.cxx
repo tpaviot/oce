@@ -83,7 +83,7 @@ BOOL CreateProc(HWND hWndFrame)
   HWND hWnd;
 
   // Save hWnd in the main window in extra memory in 0
-  if (hWnd = CreateMDIClientWindow(hWndFrame))
+  if ((hWnd = CreateMDIClientWindow(hWndFrame)) != NULL)
     SetWindowLong(hWndFrame, CLIENTWND, (LONG)hWnd);
   return(TRUE);
 }

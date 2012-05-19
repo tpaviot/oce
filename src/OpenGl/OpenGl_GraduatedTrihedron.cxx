@@ -243,7 +243,7 @@ OpenGl_GraduatedTrihedron::OpenGl_GraduatedTrihedron (const Graphic3d_CGraduated
   {
     Standard_ExtString iname = AData.xname.ToExtString();
     wchar_t *xname = new wchar_t[len+1];
-    len = 0; while (xname[len] = (wchar_t)(iname[len])) len++;
+    len = 0; while ((xname[len] = (wchar_t)(iname[len])) != 0) len++;
     myXName = xname;
   }
   /* Y-name */
@@ -252,7 +252,7 @@ OpenGl_GraduatedTrihedron::OpenGl_GraduatedTrihedron (const Graphic3d_CGraduated
   {
     Standard_ExtString iname = AData.yname.ToExtString();
     wchar_t *yname = new wchar_t[len+1];
-    len = 0; while (yname[len] = (wchar_t)(iname[len])) len++;
+    len = 0; while ((yname[len] = (wchar_t)(iname[len])) != 0) len++;
     myYName = yname;
   }
   /* Z-name */
@@ -261,7 +261,7 @@ OpenGl_GraduatedTrihedron::OpenGl_GraduatedTrihedron (const Graphic3d_CGraduated
   {
     Standard_ExtString iname = AData.zname.ToExtString();
     wchar_t *zname = new wchar_t[len+1];
-    len = 0; while (zname[len] = (wchar_t)(iname[len])) len++;
+    len = 0; while ((zname[len] = (wchar_t)(iname[len])) != 0 ) len++;
     myZName = zname;
   }
   /* Grid color */
