@@ -59,10 +59,8 @@ Standard_Integer BOOPNINTL::Set(const Standard_Boolean b,Standard_Integer n,char
     mynl++;
     return 0;
   }
-  else {
-    return 1;
-  }
-  return 0;
+ 
+   return 1;
 }
 
 Standard_Boolean BOOPNINTL::Get(Standard_Integer n,char**a){

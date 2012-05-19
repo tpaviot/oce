@@ -165,9 +165,7 @@ static Standard_Boolean GetOrigin(const Handle(Geom2d_Curve)& PCIN, gp_Pnt2d& o)
     o = Handle(Geom2d_Line)::DownCast(PC)->Location();
     return Standard_True;
   }
-  else  {
-    return Standard_False;
-  }
+ 
   return Standard_False;
 }
 #endif
@@ -196,9 +194,7 @@ static Standard_Boolean GetOrigin(const Handle(Geom_Curve)& CIN, gp_Pnt& o)
     o = Handle(Geom_Line)::DownCast(C)->Position().Location();
     return Standard_True;
   }
-  else  {
-    return Standard_False;
-  }
+ 
   return Standard_False;
 }
 #endif
