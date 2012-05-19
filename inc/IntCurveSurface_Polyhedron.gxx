@@ -465,15 +465,10 @@ Standard_Integer IntCurveSurface_Polyhedron::TriConnex
   }
 
 // Triangle position General case :
-#ifndef DEB
   Standard_Integer linT =0, colT =0;
   Standard_Integer linO =0, colO =0;
   Standard_Integer t =0, tt =0;
-#else
-  Standard_Integer linT, colT;
-  Standard_Integer linO, colO;
-  Standard_Integer t,tt;
-#endif
+
   if (Triang!=0) {
     t = (Triang-1)/(nbdeltaVm2);
     tt= (Triang-1)-t*nbdeltaVm2;

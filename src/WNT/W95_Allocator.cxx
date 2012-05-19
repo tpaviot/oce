@@ -713,8 +713,8 @@ void W32_ImageNote :: Play ( BOOL fDummy ) {
 
  int     xx, yy, w, h;
  HDC     hdc, hdcMem;
- BITMAP  bmp;
- HBITMAP hbo;
+ BITMAP  bmp = {};
+ HBITMAP hbo = NULL;
  SIZE    sz;
  POINT   up[ 4 ];
  BOOL    fScale = FALSE;

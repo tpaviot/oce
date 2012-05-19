@@ -51,11 +51,11 @@ void AppParCurves_Variational::TheMotor(
   Handle(TColStd_HArray1OfReal) CurrentTi, NewTi, OldTi;  
   Handle(TColStd_HArray2OfInteger) Dependence;
   Standard_Boolean lestim, lconst, ToOptim, iscut;
-  Standard_Boolean isnear, again = Standard_True; 
+  Standard_Boolean isnear = Standard_False, again = Standard_True; 
   Standard_Integer NbEst, ICDANA, NumPnt, Iter;
   Standard_Integer MaxNbEst =5; 
   Standard_Real VOCRI[3] = {BigValue, BigValue, BigValue}, EROLD = BigValue,
-                VALCRI[3], ERRMAX, ERRMOY, ERRQUA;
+                VALCRI[3], ERRMAX = 0, ERRMOY, ERRQUA;
   Standard_Real CBLONG, LNOLD;
   Standard_Integer NbrPnt = myLastPoint - myFirstPoint + 1;
   Standard_Integer NbrConstraint = myNbPassPoints + myNbTangPoints + myNbCurvPoints;

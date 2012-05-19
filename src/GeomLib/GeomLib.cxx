@@ -1668,7 +1668,7 @@ void GeomLib::ExtendSurfByLength(Handle(Geom_BoundedSurface)& Surface,
   }
   
 //  tableaux necessaires pour l'extension
-  Standard_Integer Ksize2 = Ksize+Cdeg, NbPoles, NbKnots;
+  Standard_Integer Ksize2 = Ksize+Cdeg, NbPoles, NbKnots = 0;
   TColStd_Array1OfReal  FK(1, Ksize2) ; 
   Standard_Real * FKRadr = &FK(1);
 

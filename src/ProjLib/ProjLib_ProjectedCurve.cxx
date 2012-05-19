@@ -711,7 +711,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	// doit etre une et une seule courbe !!!
 	// De plus, cette courbe ne doit pas etre Single point
 	Standard_Integer NbCurves = Projector.NbCurves();
-	Standard_Real Udeb,Ufin;
+	Standard_Real Udeb = 0.0,Ufin = 0.0;
 	if (NbCurves > 0) {
 	  Projector.Bounds(1,Udeb,Ufin);
 	}

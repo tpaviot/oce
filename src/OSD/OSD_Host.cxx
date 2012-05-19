@@ -246,8 +246,8 @@ OSD_Host :: OSD_Host () {
 
  DWORD              nSize;
  Standard_Character szHostName[ MAX_COMPUTERNAME_LENGTH + 1 ];
- char*              hostAddr;
- MEMORYSTATUS       ms;
+ char*              hostAddr = NULL;
+ MEMORYSTATUS       ms = {};
  WSADATA            wd;
  PHOSTENT           phe;
  IN_ADDR            inAddr;

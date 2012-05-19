@@ -905,7 +905,7 @@ Standard_Boolean IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       }
       //
       if(aAng2<=aTolang2) {// IsParallel = Standard_True;
-	Standard_Boolean bFlag;
+	Standard_Boolean bFlag = false;
 	Standard_Integer i;
 	Standard_Real aD;
 	gp_Pnt aPL[2];

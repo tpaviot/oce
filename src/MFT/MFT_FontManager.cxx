@@ -2478,7 +2478,7 @@ Standard_Boolean MFT_FontManager::Restore(const Standard_CString anAliasName)
 static TCollection_AsciiString svalue;
 Standard_CString path = Path(anAliasName,".dat");
 Standard_Integer i,j,n,rp,status;
-char skip,astring[128];
+char skip = 0,astring[128];
 
     FILE *aRFileHandle = fopen(path,"r");
     if( !aRFileHandle ) {

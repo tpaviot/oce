@@ -124,7 +124,7 @@ HBITMAP LoadImageFromFile (
          Handle( WNT_GraphicDevice )& gDev, char* fileName, HDC hDevCtx
 	    ) {
 
- HANDLE   hFile, hFileMap = NULL;
+ HANDLE   hFile = NULL, hFileMap = NULL;
  HBITMAP  retVal = NULL;
  DWORD    dwProtect, dwAccess;
  bool Ret = true;
@@ -429,7 +429,7 @@ void SetOutputFormat ( WNT_TypeOfImage type ) {
 static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 
  UINT             i, j, k;
- UINT             red_shift, green_shift, blue_shift;
+ UINT             red_shift = 0, green_shift = 0, blue_shift = 0;
  HBITMAP          retVal = NULL;
  PBITMAPINFO      pBmi   = NULL;
  PBYTE            pbInit = NULL;
