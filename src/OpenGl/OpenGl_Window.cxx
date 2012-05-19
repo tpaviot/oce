@@ -58,8 +58,8 @@ namespace
 
     int       iPixelFormat = 0;
     int       iGood = 0;
-    const int cBits[] = { 32, 24 };
-    const int dBits[] = { 32, 24, 16 };
+    const BYTE cBits[] = { 32, 24 };
+    const BYTE dBits[] = { 32, 24, 16 };
 
     int i, j;
     for (i = 0; i < sizeof(dBits) / sizeof(int); i++)

@@ -589,7 +589,7 @@ static HBITMAP loadXWD (  Handle( WNT_GraphicDevice )& gDev  ) {
 	 if ( ptrDIB == NULL ) goto leave;
 
 	 CopyMemory (  ( PVOID )ptrDIB, ( PVOID )pbInit, dataSize  );
-	 FillMemory (  ( PVOID )colors, MAXCOLOR * sizeof ( WORD ), 0xFFFF );
+	 FillMemory (  ( PVOID )colors, MAXCOLOR * sizeof ( WORD ), 0xFF );
 
 	 for ( i = 0; i < dataSize; ++i ) {
 
