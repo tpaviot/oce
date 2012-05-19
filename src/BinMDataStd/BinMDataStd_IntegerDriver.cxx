@@ -48,7 +48,7 @@ Standard_Boolean BinMDataStd_IntegerDriver::Paste
                                  BinObjMgt_RRelocationTable&  ) const
 {
   Handle(TDataStd_Integer) anAtt = Handle(TDataStd_Integer)::DownCast(theTarget);
-  Standard_Integer aValue;
+  Standard_Integer aValue=0;
   Standard_Boolean ok = theSource >> aValue;
   if (ok)
     anAtt->Set(aValue);

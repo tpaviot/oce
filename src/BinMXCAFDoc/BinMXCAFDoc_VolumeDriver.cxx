@@ -41,7 +41,7 @@ Standard_Boolean BinMXCAFDoc_VolumeDriver::Paste(const BinObjMgt_Persistent& the
 						 BinObjMgt_RRelocationTable& /*theRelocTable*/) const
 {
   Handle(XCAFDoc_Volume) anAtt = Handle(XCAFDoc_Volume)::DownCast(theTarget);
-  Standard_Real aVol;
+  Standard_Real aVol=0.0;
   Standard_Boolean isOk = theSource >> aVol;
   if(isOk)
     anAtt->Set(aVol);

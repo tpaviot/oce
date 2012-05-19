@@ -168,6 +168,7 @@ void AdvApp2Var_Iso::MakeApprox(const AdvApp2Var_Context& Conditions,
   case GeomAbs_NoneIso:
     //pkv t
   default:
+	  return;
     break;
     //#endif
   }

@@ -448,10 +448,10 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
     {
       if (myDrawer->IsAutoTriangulation())
       {
-        Standard_Real aPrevAngle;
-        Standard_Real aNewAngle;
-        Standard_Real aPrevCoeff;
-        Standard_Real aNewCoeff;
+        Standard_Real aPrevAngle = 0;
+        Standard_Real aNewAngle = 0;
+        Standard_Real aPrevCoeff = 0;
+        Standard_Real aNewCoeff = 0;
 
         Standard_Boolean isOwnDeviationAngle       = OwnDeviationAngle (aNewAngle, aPrevAngle);
         Standard_Boolean isOwnDeviationCoefficient = OwnDeviationCoefficient (aNewCoeff,aPrevCoeff);

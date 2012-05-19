@@ -219,7 +219,7 @@ const LDOM_BasicNode * LDOM_BasicElement::AddAttribute
                                    const LDOM_BasicNode           * aLastCh)
 {
   //  Create attribute
-  Standard_Integer aHash;
+  Standard_Integer aHash = 0;
   LDOM_BasicAttribute& anAttr =
     LDOM_BasicAttribute::Create (anAttrName, aDocument, aHash);
   anAttr.myValue = anAttrValue;
@@ -449,7 +449,7 @@ void LDOM_BasicElement::ReplaceElement
 loop_attr:
   LDOM_BasicNode * aLastAttr = (LDOM_BasicNode *) aLastChild;
   for (; aBNode != NULL; aBNode = aBNode -> GetSibling()) {
-    Standard_Integer aHash;
+    Standard_Integer aHash = 0;
     if (aBNode -> isNull()) continue;
     const LDOM_BasicAttribute * aBNodeAtt= (const LDOM_BasicAttribute *) aBNode;
     LDOM_BasicAttribute * aNewAtt =

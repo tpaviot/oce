@@ -516,7 +516,7 @@ LONG _osd_debug ( void ) {
   TCHAR               keyValue[ MAX_PATH ];
   TCHAR               cmdLine[ MAX_PATH ];
   SECURITY_ATTRIBUTES sa;
-  PROCESS_INFORMATION pi;
+  PROCESS_INFORMATION pi = {};
   STARTUPINFO         si;
   bool Ret = true;
     

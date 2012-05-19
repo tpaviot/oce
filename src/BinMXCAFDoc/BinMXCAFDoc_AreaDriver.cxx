@@ -41,7 +41,7 @@ Standard_Boolean BinMXCAFDoc_AreaDriver::Paste(const BinObjMgt_Persistent& theSo
 					       BinObjMgt_RRelocationTable& ) const 
 {
   Handle(XCAFDoc_Area) anAtt = Handle(XCAFDoc_Area)::DownCast(theTarget);
-  Standard_Real aValue;
+  Standard_Real aValue = 0.0;
   Standard_Boolean isOk = theSource >> aValue;
   if(isOk)
     anAtt->Set(aValue);

@@ -41,7 +41,7 @@ Standard_Boolean BinMXCAFDoc_CentroidDriver::Paste(const BinObjMgt_Persistent& t
 						   BinObjMgt_RRelocationTable& /*theRelocTable*/) const
 {
   Handle(XCAFDoc_Centroid) anAtt = Handle(XCAFDoc_Centroid)::DownCast(theTarget);
-  Standard_Real x, y, z;
+  Standard_Real x =0.0, y = 0.0, z=0.0;
   Standard_Boolean isOk = theSource >> x >> y >> z;
   if(isOk) {
     gp_Pnt aPnt(x, y, z);

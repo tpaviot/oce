@@ -50,7 +50,7 @@ Standard_Boolean BinMPrsStd_AISPresentationDriver::Paste
                                  BinObjMgt_RRelocationTable&  ) const
 {
   Handle(TPrsStd_AISPresentation) anAtt = Handle(TPrsStd_AISPresentation)::DownCast(theTarget);
-  Standard_Integer aValue;
+  Standard_Integer aValue = 0;
 //Display status
   Standard_Boolean ok = theSource >> aValue;
   if (!ok) return ok;
@@ -75,7 +75,7 @@ Standard_Boolean BinMPrsStd_AISPresentationDriver::Paste
   else anAtt->UnsetMaterial();
 
 //Transparency
-  Standard_Real aRValue;
+  Standard_Real aRValue = 0.0;
   ok = theSource >> aRValue;
   if (!ok) return ok;
   if(aRValue != -1.)  anAtt->SetTransparency(aRValue);
