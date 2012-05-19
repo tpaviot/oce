@@ -34,6 +34,12 @@
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
+
+/* Disable warnings in this auto-generated file */
+#ifdef _MSC_VER
+#pragma warning(push,0)
+#endif
+
 /*
 #define stepparse STEPparse
 #define steplex STEPlex
@@ -1016,3 +1022,8 @@ yyerrhandle:
   goto yynewstate;
 }
 #line 146 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif

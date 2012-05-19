@@ -1,3 +1,8 @@
+/* Disable warnings in this auto-generated file */
+#ifdef _MSC_VER
+#pragma warning(push,0)
+#endif
+
 #define yy_create_buffer ExprIntrp_create_buffer
 #define yy_delete_buffer ExprIntrp_delete_buffer
 #define yy_scan_buffer ExprIntrp_scan_buffer
@@ -3221,4 +3226,8 @@ int main()
 	yylex();
 	return 0;
 	}
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(pop)
 #endif
