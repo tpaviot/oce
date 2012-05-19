@@ -126,9 +126,11 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
   myBgColor.rgb[2] = theCWindow.Background.b;
 
   WINDOW aParent = (WINDOW )theCWindow.XWindow;
+  
+#if (!defined(_WIN32) && !defined(__WIN32__))
+
   DISPLAY* aDisp = (DISPLAY* )myDisplay->GetDisplay();
 
-#if (!defined(_WIN32) && !defined(__WIN32__))
   XWindowAttributes wattr;
   XGetWindowAttributes (aDisp, aParent, &wattr);
   const int scr = DefaultScreen (aDisp);

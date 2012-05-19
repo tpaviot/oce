@@ -237,8 +237,6 @@ static void KPartCurve3d(TopoDS_Edge           Edge,
   TopLoc_Location Loc;
   Standard_Real Tol = Precision::Confusion();
 
-  Standard_Boolean IsComputed = Standard_False;
-
   // Seach only isos on analytical surfaces.
   Geom2dAdaptor_Curve C(Curve);
   GeomAdaptor_Surface S(Surf);

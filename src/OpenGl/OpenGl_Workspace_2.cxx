@@ -972,7 +972,7 @@ void OpenGl_Workspace::DisplayCallback (const Graphic3d_CView& ACView, int reaso
     callData.viewID = ACView.ViewId;
     callData.gcontext = myGContext;
 
-    int status = (*ACView.GDisplayCB)( ACView.DefWindow.XWindow, ACView.GClientData, &callData );
+    /* int status = */ (*ACView.GDisplayCB)( ACView.DefWindow.XWindow, ACView.GClientData, &callData );
   }
 }
 

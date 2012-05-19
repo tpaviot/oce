@@ -1330,7 +1330,7 @@ int mma1jak_(integer *ndimen,
 {
   /* System generated locals */
   integer somtab_dim1, somtab_offset, diftab_dim1, diftab_offset, 
-  crvjac_dim1, crvjac_offset, cgauss_dim1;
+  crvjac_dim1, crvjac_offset;
 
   /* Local variables */
   static integer ibb;
