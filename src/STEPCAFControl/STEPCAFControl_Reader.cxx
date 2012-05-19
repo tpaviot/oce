@@ -940,7 +940,6 @@ static TDF_Label GetLabelFromPD (const Handle(StepBasic_ProductDefinition) &PD,
   S = TransferBRep::ShapeResult ( TP, binder );
   if ( S.IsNull() ) return L;
 
-  if ( S.IsNull() ) return L;
   if ( ShapeLabelMap.IsBound ( S ) )
     L = ShapeLabelMap.Find ( S );
   if ( L.IsNull() )
