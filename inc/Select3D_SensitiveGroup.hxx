@@ -119,6 +119,8 @@ public:
   Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
   
   Standard_EXPORT   virtual  void SetLastPrj(const Handle(Select3D_Projector)& aPrj) ;
+  //! Sets the owner for all entities in group <br>
+  Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
   //! Gets group content <br>
        const Select3D_ListOfSensitive& GetEntities() const;
 

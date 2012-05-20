@@ -1,7 +1,23 @@
-// File:	ChFi3d_Builder_SpKP.cxx
-// Created:	Thu Jan 20 14:41:30 1994
-// Author:	Isabelle GRIGNON
-//		<isg@nonox>
+// Created on: 1994-01-20
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_NotImplemented.hxx>
 #include <Precision.hxx>
@@ -363,7 +379,7 @@ void ChFi3d_Builder::Trunc(const Handle(ChFiDS_SurfData)&    SD,
   Standard_Real Ang = dsp.Angle(ded);
   Standard_Real dis1 = psp.Distance(ped);
   Standard_Real dis2 = p1.Distance(p2);
-  if(Ang > PI/18.) tron = Standard_True;
+  if(Ang > M_PI/18.) tron = Standard_True;
   if(dis1 >= 0.1*dis2) tron = Standard_True;
   Standard_Integer ivois;
   if(!tron && YaUnVoisin(Spine,iedge,ivois,isfirst)) {

@@ -41,6 +41,7 @@ class TopoDS_Wire;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeListOfShape;
 class TopTools_MapOfShape;
+class TopTools_IndexedMapOfShape;
 class BRepAlgo_AsDes;
 class BRepAlgo_Image;
 class Geom_Curve;
@@ -123,7 +124,7 @@ public:
 //!   in this verion only the first point is implemented. <br>
   Standard_EXPORT   static  TopoDS_Shape Deboucle3D(const TopoDS_Shape& S,const TopTools_MapOfShape& Boundary) ;
   
-  Standard_EXPORT   static  void CorrectOrientation(const TopoDS_Shape& SI,const TopTools_MapOfShape& NewEdges,Handle(BRepAlgo_AsDes)& AsDes,BRepAlgo_Image& InitOffset,const Standard_Real Offset) ;
+  Standard_EXPORT   static  void CorrectOrientation(const TopoDS_Shape& SI,const TopTools_IndexedMapOfShape& NewEdges,Handle(BRepAlgo_AsDes)& AsDes,BRepAlgo_Image& InitOffset,const Standard_Real Offset) ;
   
   Standard_EXPORT   static  Standard_Real Gabarit(const Handle(Geom_Curve)& aCurve) ;
 

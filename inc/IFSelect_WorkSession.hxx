@@ -179,6 +179,12 @@ public:
   //! Sets a new ShareOut. Fills Items which its content <br>
 //!  Warning : data from the former ShareOut are lost <br>
   Standard_EXPORT     void SetShareOut(const Handle(IFSelect_ShareOut)& shareout) ;
+  //! Set value of mode responsible for precence of selections after loading <br>
+//! If mode set to true that different selections will be accessible after loading <br>
+//! else selections will be not accessible after loading( for economy memory in applicatios) <br>
+  Standard_EXPORT     void SetModeStat(const Standard_Boolean theMode) ;
+  //! Return value of mode defining of filling selection during loading <br>
+  Standard_EXPORT     Standard_Boolean GetModeStat() const;
   //! Sets a WorkLibrary, which will be used to Read and Write Files <br>
   Standard_EXPORT     void SetLibrary(const Handle(IFSelect_WorkLibrary)& lib) ;
   //! Returns the WorkLibrary. Null Handle if not yet set <br>
@@ -745,8 +751,13 @@ public:
 //! <br>
 //!           The Model and File Modifiers recorded to be applied on sending <br>
 //!           files are. <br>
-//!           Returns a status of execution : Done if OK, Void if no def. <br>
-//!             available, Error if errors occured, Fail if no file written <br>
+//!           Returns a status of execution : <br>
+//!             Done if OK, <br>
+//!             Void if no data available, <br>
+//!             Error if errors occured (work library is not defined), errors <br>
+//!             during translation <br>
+//!             Fail if exception during translation is raised <br>
+//!             Stop if no disk space or disk, file is write protected <br>
 //!           Fills LastRunCheckList <br>
   Standard_EXPORT     IFSelect_ReturnStatus SendAll(const Standard_CString filename,const Standard_Boolean computegraph = Standard_False) ;
   //! Sends a part of the starting Model into one file, without <br>
@@ -1015,6 +1026,7 @@ Interface_CheckIterator thechecklist;
 TCollection_AsciiString thecheckana;
 Handle_IFSelect_ModelCopier thecopier;
 Handle_Interface_InterfaceModel theoldel;
+Standard_Boolean themodelstat;
 
 
 };

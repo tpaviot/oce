@@ -1,7 +1,23 @@
-// File:	BRepCheck_Vertex.cxx
-// Created:	Thu Dec  7 11:12:16 1995
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1995-12-07
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepCheck_Vertex.ixx>
@@ -54,7 +70,7 @@ BRepCheck_Vertex::BRepCheck_Vertex(const TopoDS_Vertex& V)
 void BRepCheck_Vertex::Minimum()
 {
   if (!myMin) {
-    // consisterait a verifier l`existence d`un point 3D
+    // checks the existence of a point 3D
     BRepCheck_ListOfStatus thelist;
     myMap.Bind(myShape, thelist);
     myMap(myShape).Append(BRepCheck_NoError);
@@ -85,7 +101,7 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
   }
   if (!exp.More()) {
     BRepCheck::Add(myMap(S),BRepCheck_SubshapeNotInShape);
-    return; // on sort
+    return; // leaves
   }
 
 
@@ -98,7 +114,7 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
 
   case TopAbs_EDGE:
     {
-      // On essaie de retrouver le vertex sur l`edge
+      // Try to find the vertex on the edge
       
       const TopoDS_Edge& E = TopoDS::Edge(S);
       TopoDS_Iterator itv(E.Oriented(TopAbs_FORWARD));
@@ -115,7 +131,7 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
 		 VF.Orientation() == TopAbs_REVERSED) ||
 		(VFind.Orientation() == TopAbs_REVERSED &&
 		 VF.Orientation() == TopAbs_FORWARD)) {
-	      // on a le vertex a la fois F et R sur l`edge
+	      // the vertex on the edge is at once F and R
 	      multiple = Standard_True; 
 	    }
 	    if (VFind.Orientation() != TopAbs_FORWARD && 
@@ -130,11 +146,11 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
 	itv.Next();
       }
 
-      // on est sur que VFind n`est pas nul
+      // VFind is not null for sure
       TopAbs_Orientation orv = VFind.Orientation();
 
       Standard_Real Tol  = BRep_Tool::Tolerance(TopoDS::Vertex(myShape));
-      Tol = Max(Tol,BRep_Tool::Tolerance(E)); // a voir
+      Tol = Max(Tol,BRep_Tool::Tolerance(E)); // to check
       Tol *= Tol;
 
       Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*)&E.TShape());
@@ -143,14 +159,14 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
 
       BRep_ListIteratorOfListOfPointRepresentation itpr;
       while (itcr.More()) {
-	// Pour chaque CurveRepresentation, on verifie le parametre fourni
+	// For each CurveRepresentation, the provided parameter is checked
 	const Handle(BRep_CurveRepresentation)& cr = itcr.Value();
 	const TopLoc_Location& loc = cr->Location();
 	TopLoc_Location L = (Eloc * loc).Predivided(myShape.Location());
 
 	if (cr->IsCurve3D()) {
 	  const Handle(Geom_Curve)& C = cr->Curve3D();
-	  if (!C.IsNull()) { // edge non degenere
+	  if (!C.IsNull()) { // edge non degenerated
 	    itpr.Initialize(TV->Points());
 	    while (itpr.More()) {
 	      const Handle(BRep_PointRepresentation)& pr = itpr.Value();
@@ -232,7 +248,7 @@ void BRepCheck_Vertex::InContext(const TopoDS_Shape& S)
       TopLoc_Location L = (Floc * TFloc).Predivided(myShape.Location());
 
       Standard_Real Tol  = BRep_Tool::Tolerance(TopoDS::Vertex(myShape));
-      Tol = Max(Tol,BRep_Tool::Tolerance(TopoDS::Face(S))); // a voir
+      Tol = Max(Tol,BRep_Tool::Tolerance(TopoDS::Face(S))); // to check
       Tol *= Tol;
 
       BRep_ListIteratorOfListOfPointRepresentation itpr(TV->Points());
@@ -270,11 +286,11 @@ void BRepCheck_Vertex::Blind()
   if (myBlind) {
     return;
   }
-// modified by NIZHNY-MKK  Fri May  7 16:43:38 2004.BEGIN
-// The body of this function is removed because of its useless 
-// (see specification "Substitution existing set of evaluation DRAW commands to one").
+//   modified by NIZHNY-MKK  Fri May  7 16:43:38 2004.BEGIN
+//   The body of this function is removed because of its useless 
+//   (see specification "Substitution existing set of evaluation DRAW commands to one").
 
-  // Check all the representations  of the vertex. (i-e checks the TVertex
+//   Check all the representations  of the vertex. (i-e checks the TVertex
 //   BRepCheck_ListOfStatus& lst = myMap(myShape);
 //   lst.Clear(); // there was NoError...
 

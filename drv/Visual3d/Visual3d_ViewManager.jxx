@@ -22,14 +22,14 @@
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>
 #endif
-#ifndef _Visual3d_PickDescriptor_HeaderFile
-#include <Visual3d_PickDescriptor.hxx>
-#endif
-#ifndef _Visual3d_ContextPick_HeaderFile
-#include <Visual3d_ContextPick.hxx>
-#endif
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
+#ifndef _Aspect_GenId_HeaderFile
+#include <Aspect_GenId.hxx>
 #endif
 #ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>

@@ -94,6 +94,11 @@ private:
 Standard_Integer nbSeg;
 Standard_Real beginOnCurve[6];
 Standard_Real endOnCurve[6];
+Standard_Integer bord[12];
+Standard_Real xint[12];
+Standard_Real yint[12];
+Standard_Real zint[12];
+Standard_Real parint[12];
 
 
 };

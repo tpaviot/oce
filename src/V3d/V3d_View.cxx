@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
 
 FONCTION :
@@ -187,7 +204,7 @@ static OSD_Timer FullTimer;
 */
 
 #define Zmargin 1.
-#define DEUXPI (2.*Standard_PI)
+#define DEUXPI (2. * M_PI)
 
 // in case of NO_TRACE_ECHO and NO_TRACE_POINTS, in V3d_View_4.cxx and in
 // V3d_View.cxx, change MyGridEchoStructure and MyGridEchoGroup in cdl
@@ -696,10 +713,13 @@ void V3d_View::SetBgGradientColors( const Quantity_NameOfColor Color1,
 /*----------------------------------------------------------------------*/
 
 void V3d_View::SetBgGradientStyle( const Aspect_GradientFillMethod FillStyle,
-                                   const Standard_Boolean update) const
+                                   const Standard_Boolean update)
 {
+  Quantity_Color Color1, Color2;
+  MyGradientBackground.Colors( Color1, Color2 );
+  MyGradientBackground.SetColors( Color1, Color2, FillStyle );
   if( MyView->IsDefined() )
-    MyView->SetBgGradientStyle( FillStyle , update ) ;
+    MyView->SetBgGradientStyle( FillStyle, update ) ;
 }
 
 /*----------------------------------------------------------------------*/
@@ -2555,8 +2575,8 @@ Standard_Real V3d_View::Twist()const  {
   if( angle > 1. ) angle = 1. ;
   else if( angle < -1. ) angle = -1. ;
   angle = asin(angle) ;
-  if( sca < 0. ) angle = Standard_PI - angle ;
-  if( angle > 0. && angle < Standard_PI ) {
+  if( sca < 0. ) angle = M_PI - angle ;
+  if( angle > 0. && angle < M_PI ) {
     sca = pvx*Xpn + pvy*Ypn + pvz*Zpn ;
     if( sca < 0. ) angle = DEUXPI - angle ;
   }
@@ -3129,13 +3149,13 @@ void V3d_View::Rotation(const Standard_Integer X,
     dz = atan2(Standard_Real(X)-rx/2., ry/2.-Standard_Real(Y)) -
       atan2(sx-rx/2.,ry/2.-sy);
   } else {
-    dx = (Standard_Real(X) - sx) * Standard_PI/rx;
-    dy = (sy - Standard_Real(Y)) * Standard_PI/ry;
+    dx = (Standard_Real(X) - sx) * M_PI / rx;
+    dy = (sy - Standard_Real(Y)) * M_PI / ry;
   }
   Rotate(dx, dy, dz, gx, gy, gz, Standard_False);
 #else
-  Standard_Real dx = (Standard_Real(X - sx)) * Standard_PI;
-  Standard_Real dy = (Standard_Real(sy - Y)) * Standard_PI;
+  Standard_Real dx = (Standard_Real(X - sx)) * M_PI;
+  Standard_Real dy = (Standard_Real(sy - Y)) * M_PI;
   Rotate(dx/rx, dy/ry, 0., gx, gy, gz, Standard_False);
 #endif
 #ifdef IMP020300

@@ -16,8 +16,8 @@
 #ifndef _Handle_BRepAlgo_AsDes_HeaderFile
 #include <Handle_BRepAlgo_AsDes.hxx>
 #endif
-#ifndef _TopTools_MapOfShape_HeaderFile
-#include <TopTools_MapOfShape.hxx>
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
 #endif
 #ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
@@ -39,7 +39,7 @@ class TopoDS_Shape;
 class BRepOffset_Analyse;
 class BRepOffset_DataMapOfShapeOffset;
 class TopTools_DataMapOfShapeShape;
-class TopTools_MapOfShape;
+class TopTools_IndexedMapOfShape;
 
 
 //! Computes the intersection face face in a set of faces <br>
@@ -71,9 +71,9 @@ public:
   
   Standard_EXPORT     void ConnexIntByInt(const TopoDS_Shape& SI,const BRepOffset_DataMapOfShapeOffset& MapSF,const BRepOffset_Analyse& A,TopTools_DataMapOfShapeShape& MES,TopTools_DataMapOfShapeShape& Build,TopTools_ListOfShape& Failed) ;
   
-  Standard_EXPORT     void ContextIntByInt(const TopTools_MapOfShape& ContextFaces,const Standard_Boolean ExtentContext,const BRepOffset_DataMapOfShapeOffset& MapSF,const BRepOffset_Analyse& A,TopTools_DataMapOfShapeShape& MES,TopTools_DataMapOfShapeShape& Build,TopTools_ListOfShape& Failed) ;
+  Standard_EXPORT     void ContextIntByInt(const TopTools_IndexedMapOfShape& ContextFaces,const Standard_Boolean ExtentContext,const BRepOffset_DataMapOfShapeOffset& MapSF,const BRepOffset_Analyse& A,TopTools_DataMapOfShapeShape& MES,TopTools_DataMapOfShapeShape& Build,TopTools_ListOfShape& Failed) ;
   
-  Standard_EXPORT     void ContextIntByArc(const TopTools_MapOfShape& ContextFaces,const Standard_Boolean ExtentContext,const BRepOffset_Analyse& Analyse,const BRepAlgo_Image& InitOffsetFace,BRepAlgo_Image& InitOffsetEdge) ;
+  Standard_EXPORT     void ContextIntByArc(const TopTools_IndexedMapOfShape& ContextFaces,const Standard_Boolean ExtentContext,const BRepOffset_Analyse& Analyse,const BRepAlgo_Image& InitOffsetFace,BRepAlgo_Image& InitOffsetEdge) ;
   
   Standard_EXPORT     void AddCommonEdges(const TopTools_ListOfShape& SetOfFaces) ;
   
@@ -81,11 +81,11 @@ public:
   
   Standard_EXPORT     Standard_Boolean IsDone(const TopoDS_Face& F1,const TopoDS_Face& F2) const;
   
-  Standard_EXPORT     TopTools_MapOfShape& TouchedFaces() ;
+  Standard_EXPORT     TopTools_IndexedMapOfShape& TouchedFaces() ;
   
   Standard_EXPORT     Handle_BRepAlgo_AsDes AsDes() const;
   
-  Standard_EXPORT     TopTools_MapOfShape& NewEdges() ;
+  Standard_EXPORT     TopTools_IndexedMapOfShape& NewEdges() ;
 
 
 
@@ -104,9 +104,9 @@ private:
 
 
 Handle_BRepAlgo_AsDes myAsDes;
-TopTools_MapOfShape myTouched;
+TopTools_IndexedMapOfShape myTouched;
 TopTools_DataMapOfShapeListOfShape myDone;
-TopTools_MapOfShape myNewEdges;
+TopTools_IndexedMapOfShape myNewEdges;
 TopAbs_State mySide;
 Standard_Real myTol;
 

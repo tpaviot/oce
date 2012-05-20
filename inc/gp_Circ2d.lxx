@@ -1,4 +1,21 @@
-//File gp_Circ2d.lxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_ConstructionError.hxx>
 
@@ -38,7 +55,7 @@ inline void gp_Circ2d::SetRadius (const Standard_Real Radius)
 }
 
 inline   Standard_Real gp_Circ2d::Area() const
-{ return Standard_PI*radius*radius; }
+{ return M_PI * radius * radius; }
 
 inline void gp_Circ2d::Coefficients (Standard_Real& A,
 				     Standard_Real& B,
@@ -80,7 +97,7 @@ inline Standard_Real gp_Circ2d::SquareDistance (const gp_Pnt2d& P) const
 }
 
 inline   Standard_Real gp_Circ2d::Length() const
-{ return 2.*Standard_PI*radius; }
+{ return 2. * M_PI * radius; }
 
 inline const gp_Pnt2d& gp_Circ2d::Location () const
 {return pos.Location(); }

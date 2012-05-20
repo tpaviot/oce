@@ -1,7 +1,23 @@
-// File:	BRepTools_WireExplorer.cxx
-// Created:	Thu Jan 21 19:09:53 1993
-// Author:	Remi LEQUETTE
-//		<rle@phylox>
+// Created on: 1993-01-21
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepTools_WireExplorer.ixx>
@@ -212,7 +228,7 @@ void  BRepTools_WireExplorer::Init(const TopoDS_Wire& W,
       it.Next();
     }
 
-  //Construction de l ensemble des aretes doubles.
+  //Construction of the set of double edges.
   TopoDS_Iterator it2(W);  
   TopTools_MapOfShape emap;
   while (it2.More()) {
@@ -261,8 +277,8 @@ void  BRepTools_WireExplorer::Init(const TopoDS_Wire& W,
       const TopoDS_Edge& E = TopoDS::Edge(it.Value());
       TopAbs_Orientation Eori = E.Orientation();
       if (Eori == TopAbs_INTERNAL || Eori == TopAbs_EXTERNAL) {
-	// JYL 10-03-97 : en attendant un traitement correct 
-	// des aretes INTERNAL/EXTERNAL
+	// JYL 10-03-97 : waiting for correct processing 
+	// of INTERNAL/EXTERNAL edges
 	it.Next();
 	continue;
       }
@@ -369,15 +385,15 @@ void  BRepTools_WireExplorer::Next()
   }
   else {
     if (myFace.IsNull()) {
-      // Sans la Face On essait qd meme de renvoyer les aretes
-      // le plus logiquement possible
-      // En premier choix les aretes degenerees.
+      // Without Face - try to return edges
+      // as logically as possible
+      // At first degenerated edges.
       TopoDS_Edge E = myEdge;
       if (SelectDegenerated(l,E)) {
 	myEdge = E;
 	return;
       }
-      // En deuxieme choix les aretes doubles.
+      // At second double edges.
       E = myEdge;
       if (SelectDouble(myDoubles,l,E)) {
 	myEdge = E;
@@ -442,7 +458,7 @@ void  BRepTools_WireExplorer::Next()
 	Standard_Integer k = 1, kMin = 0, iDone = 0;
 	Standard_Boolean isDegenerated = Standard_True;
 	Standard_Real dmin = RealLast();
-	Standard_Real dfMinAngle = 3.0*PI, dfCurAngle = 3.0*PI;
+	Standard_Real dfMinAngle = 3.0*M_PI, dfCurAngle = 3.0*M_PI;
 
 	for(iDone = 0; iDone < 2; iDone++)
 	  {

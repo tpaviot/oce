@@ -1,7 +1,23 @@
-// File:	GccAna_Circ2d2TanRad_2.cxx
-// Created:	Tue Sep 24 09:12:49 1991
-// Author:	Remi GILET
-//		<reg@topsn2>
+// Created on: 1991-09-24
+// Created by: Remi GILET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2d2TanRad.jxx>
 
@@ -14,19 +30,19 @@
 #include <Standard_NegativeValue.hxx>
 #include <GccEnt_BadQualifier.hxx>
 
-// circulaire tangent a un cercle et un point et de rayon donne
+// circulare tangent to a circle a point and a given radius
 //=============================================================
 
 //========================================================================
-// On initialise WellDone a false.                                       +
-// On recupere le cercle C1.                                             +
-// On sort en erreur dans les cas ou la construction est impossible.     +
-// On fait la parallele a C1 dans le bon sens.                           +
-// On fait le cercle centre en Point1 de rayon Radius.                   +
-// On intersecte la parallele et le cercle.                              +
-//                              ==> Le point de centre de la solution.   +
-// On cree la solution qu on ajoute aux solutions deja trouvees.         +
-// On remplit les champs.                                                +
+// Initialize WellDone to false.                                       +
+// Return circle C1.                                             +
+// Leave with error if the construction is impossible.     +
+// Create parallel to C1 in the proper direction.                           +
+// Create circle with center in Point1 of radius Radius.                   +
+// Intersect the parallel and the circle.                              +
+//                              ==> The center point of the solution.   +
+// Create the solution that will be added to already found solutions.         +
+// Fill the fields.                                                +
 //========================================================================
 
 GccAna_Circ2d2TanRad::

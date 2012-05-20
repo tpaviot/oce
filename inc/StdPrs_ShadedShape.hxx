@@ -22,16 +22,16 @@
 #ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
 #endif
-class TopoDS_Shape;
-class TopoDS_Face;
-class BRepMesh_Triangle;
-class BRepMesh_Edge;
-class StdPrs_ToolShadedShape;
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class Prs3d_Presentation;
+class TopoDS_Shape;
 class Prs3d_Drawer;
+class gp_Pnt2d;
 
 
-
+//! unknown. <br>
 class StdPrs_ShadedShape  : public Prs3d_Root {
 public:
 
@@ -48,8 +48,10 @@ public:
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
 
-  
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const TopoDS_Shape& aShape,const Handle(Prs3d_Drawer)& aDrawer) ;
+  //! Shades <theShape>. <br>
+  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
+  //! Shades <theShape> with texture coordinates. <br>
+  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d& theUVOrigin,const gp_Pnt2d& theUVRepeat,const gp_Pnt2d& theUVScale) ;
 
 
 

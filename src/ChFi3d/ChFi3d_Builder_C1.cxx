@@ -1,7 +1,23 @@
-// File:	ChFi3d_Builder_3.cxx
-// Created:	Wed Mar  9 15:48:03 1994
-// Author:	Isabelle GRIGNON
-//		<isg@zerox>
+// Created on: 1994-03-09
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Mon Jun  7 18:38:57 2004 OCC5898
 //  Modified by skv - Thu Aug 21 11:55:58 2008 OCC20222
@@ -973,13 +989,21 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 	Geom2dAdaptor_Curve anOtherPCurve;
 	if (IShape == aData->IndexOfS1())
 	{
-	  anOtherPCurve.Load (aData->InterferenceOnS1().PCurveOnFace(),
+    const Handle(Geom2d_Curve)& aPCurve = aData->InterferenceOnS1().PCurveOnFace();
+    if(aPCurve.IsNull())
+      continue;
+
+	  anOtherPCurve.Load (aPCurve,
 			      aData->InterferenceOnS1().FirstParameter(),
 			      aData->InterferenceOnS1().LastParameter());
 	}
 	else if (IShape == aData->IndexOfS2())
 	{
-	  anOtherPCurve.Load (aData->InterferenceOnS2().PCurveOnFace(),
+    const Handle(Geom2d_Curve)& aPCurve = aData->InterferenceOnS2().PCurveOnFace();
+    if(aPCurve.IsNull())
+      continue;
+
+	  anOtherPCurve.Load (aPCurve,
 			      aData->InterferenceOnS2().FirstParameter(),
 			      aData->InterferenceOnS2().LastParameter());
 	}
@@ -2033,7 +2057,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
         trouve=Standard_False;
         ChFi3d_cherche_vertex ( Edge[0],Edge[1],Vcom,trouve);
         if (Vcom.IsSame(Vtx)) ang1=ChFi3d_AngleEdge(Vtx,Edge[0],Edge[1]);
-	if (Abs(ang1-PI)<0.01) {
+	if (Abs(ang1-M_PI)<0.01) {
 	  oneintersection1=Standard_True;
 	  facesau=Face[0];
 	  edgesau=Edge[1];
@@ -2046,7 +2070,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
           trouve=Standard_False;
           ChFi3d_cherche_vertex ( Edge[1],Edge[2],Vcom,trouve);
           if (Vcom.IsSame(Vtx)) ang1=ChFi3d_AngleEdge(Vtx,Edge[1],Edge[2]);
-	  if (Abs(ang1-PI)<0.01) {
+	  if (Abs(ang1-M_PI)<0.01) {
 	    oneintersection2=Standard_True;
 	    facesau=Face[1];
 	    edgesau=Edge[1];
@@ -2406,17 +2430,17 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
 //       deb=pfildeb.X();
 //       xx1=pfil1.X();
 //       xx2=pfil2.X();
-//       moins2pi=Abs(deb)< Abs(Abs(deb)-2*PI);
-//       moins2pi1=Abs(xx1)< Abs(Abs(xx1)-2*PI);
-//       moins2pi2=Abs(xx2)< Abs(Abs(xx2)-2*PI);
+//       moins2pi=Abs(deb)< Abs(Abs(deb)-2*M_PI);
+//       moins2pi1=Abs(xx1)< Abs(Abs(xx1)-2*M_PI);
+//       moins2pi2=Abs(xx2)< Abs(Abs(xx2)-2*M_PI);
 //       if (moins2pi1!=moins2pi2) {
 //         if  (moins2pi) {
-//           if (!moins2pi1) xx1=xx1-2*PI;
-//           if (!moins2pi2) xx2=xx2-2*PI;
+//           if (!moins2pi1) xx1=xx1-2*M_PI;
+//           if (!moins2pi2) xx2=xx2-2*M_PI;
 //         }
 //         else {
-//           if (moins2pi1) xx1=xx1+2*PI;
-//           if (moins2pi2) xx2=xx2+2*PI;
+//           if (moins2pi1) xx1=xx1+2*M_PI;
+//           if (moins2pi2) xx2=xx2+2*M_PI;
 //         }
 //       }
 //       pfil1.SetX(xx1);
@@ -2429,17 +2453,17 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
 //       deb=ufmin;
 //       xx1=pfac1.X();
 //       xx2=pfac2.X();
-//       moins2pi=Abs(deb)< Abs(Abs(deb)-2*PI);
-//       moins2pi1=Abs(xx1)< Abs(Abs(xx1)-2*PI);
-//       moins2pi2=Abs(xx2)< Abs(Abs(xx2)-2*PI);
+//       moins2pi=Abs(deb)< Abs(Abs(deb)-2*M_PI);
+//       moins2pi1=Abs(xx1)< Abs(Abs(xx1)-2*M_PI);
+//       moins2pi2=Abs(xx2)< Abs(Abs(xx2)-2*M_PI);
 //       if (moins2pi1!=moins2pi2) {
 //         if  (moins2pi) {
-//           if (!moins2pi1) xx1=xx1-2*PI;
-//           if (!moins2pi2) xx2=xx2-2*PI;
+//           if (!moins2pi1) xx1=xx1-2*M_PI;
+//           if (!moins2pi2) xx2=xx2-2*M_PI;
 //         }
 //         else {
-//           if (moins2pi1) xx1=xx1+2*PI;
-//           if (moins2pi2) xx2=xx2+2*PI;
+//           if (moins2pi1) xx1=xx1+2*M_PI;
+//           if (moins2pi2) xx2=xx2+2*M_PI;
 //         }
 //       }
 //       pfac1.SetX(xx1);

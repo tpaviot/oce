@@ -1,0 +1,147 @@
+-- Created on: 1999-09-27
+-- Created by: Open CASCADE Support
+-- Copyright (c) 1999-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
+
+
+deferred class BooleanOperationFeat from QANewBRepNaming inherits TopNaming from QANewBRepNaming
+
+	---Purpose: To load the BooleanOperationFeat results
+	
+uses BooleanOperation from BRepAlgoAPI,
+     Label            from TDF, 
+     Builder          from TNaming,
+     Shape            from TopoDS, 
+     ShapeEnum        from TopAbs
+is
+     
+    Initialize returns BooleanOperationFeat from QANewBRepNaming;
+
+    Initialize(ResultLabel : Label from TDF) 
+    returns BooleanOperationFeat from QANewBRepNaming;
+
+    Init(me : in out; ResultLabel : Label from TDF);
+
+    ModifiedFaces (me)
+    	---Purpose : Returns the label to insert modified faces of an Object.
+    returns Label from TDF;  
+    
+    ModifiedEdges (me)
+    	---Purpose : Returns the label to insert modified edges of an Object.
+    returns Label from TDF;  
+
+    DeletedFaces (me)
+    	---Purpose : Returns the label to insert deleted faces of an Object.
+    returns Label from TDF; 
+     
+    DeletedEdges (me)
+    	---Purpose : Returns the label to insert deleted edges of an Object.
+    returns Label from TDF; 
+     
+    DeletedVertices (me)
+    	---Purpose : Returns the label to insert deleted vertices of an Object.
+    returns Label from TDF; 
+     
+    NewShapes (me)
+    	---Purpose : Returns the label to insert added shapes to an Object
+    	-- (given from tool).
+    returns Label from TDF; 
+
+    Content (me)
+    	---Purpose : 
+    returns Label from TDF; 
+     
+    DeletedDegeneratedEdges (me)
+    	---Purpose : 
+    returns Label from TDF; 
+
+    IsResultChanged(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: Returns true if the result is not the same as the object shape.
+    returns Boolean from Standard;   
+     
+
+    ShapeType(myclass; theShape : Shape from TopoDS) 
+    ---Purpose: If the shape is a compound the method  
+    --          returns the underlying shape type.
+    returns ShapeEnum from TopAbs;      
+
+ 
+    IsWRCase(myclass; theMS : BooleanOperation from BRepAlgoAPI)  
+    ---Purpose: Returns true if workaround case identified
+    returns Boolean from Standard;       
+    
+    IsWRCase2(myclass; theMS : BooleanOperation from BRepAlgoAPI)  
+    ---Purpose: Returns true if workaround case identified
+    returns Boolean from Standard;       
+    
+      
+    ---Category: Protected methods
+     
+    GetShape(me; theShape : Shape from TopoDS) 
+    ---Purpose: If the shape is a compound the method  
+    --          returns the underlying shape.
+    returns Shape from TopoDS
+    is protected;
+
+    LoadWire(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: A default implementation for naming of a wire as an object of
+    --          a boolean operation.
+    is protected;
+
+    LoadShell(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: A default implementation for naming of a shell as an object of
+    --          a boolean operation.
+    is protected;
+
+    LoadContent(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: Loads the content of the result.
+    is protected;
+
+    LoadResult(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: Loads the result.
+    is protected;
+    LoadDegenerated(me; MakeShape : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose: Loads the deletion of the degenerated edges.
+    is protected; 
+    
+    LoadModified1n(me; theMS : in out BooleanOperation from BRepAlgoAPI;  
+    	    	     theShapeIn : Shape from TopoDS; theKindOfShape : ShapeEnum from TopAbs) 
+    ---Purpose: To process special cases with evolution 1 to n
+    is protected; 
+     
+    Load1nFaces(me; theMS : in out BooleanOperation from BRepAlgoAPI;  
+    	    	    theShapeIn : Shape from TopoDS)
+    ---Purpose: used inside LoadModified1n
+    is private; 
+     
+    LoadModified11(me; theMS : in out BooleanOperation from BRepAlgoAPI;  
+    	    	       theShapeIn : Shape from TopoDS; theKindOfShape : ShapeEnum from TopAbs) 
+    ---Purpose: To process special cases with evolution 1 to 1
+    is protected;
+     
+    LoadSymmetricalEdges(me; theMS : in out BooleanOperation from BRepAlgoAPI)  
+    ---Purpose: To process special case when result has symmetrical edges
+    is protected; 
+
+    LoadWRCase(me; theMS : in out BooleanOperation from BRepAlgoAPI)
+    ---Purpose:    
+    is protected;
+
+
+end BooleanOperationFeat;

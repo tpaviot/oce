@@ -1,9 +1,24 @@
-// File:	TPrsStd_ConstraintTools.cxx
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Language:    C++
 // Version:     Euclid Designer 2.0
 // Purpose:     Update AIS object from a TDataXtd_Constraint.
 // Modified     Mon 30 10:15:43 1998 by SZY
-//		<szy@philipox.nnov.matra-dtv.fr>
 
 
 #include <TPrsStd_ConstraintTools.ixx>
@@ -1139,7 +1154,6 @@ void TPrsStd_ConstraintTools::ComputeRadius (const Handle(TDataXtd_Constraint)& 
   ComputeTextAndValue(aConst,val1,txt,Standard_False);
 
   //  Update de l'AIS
-// Unused :
   Standard_Boolean isplanar(aConst->IsPlanar());
   if (isplanar) GetGoodShape(shape1);
 
@@ -1751,6 +1765,7 @@ void TPrsStd_ConstraintTools::ComputeOffset (const Handle(TDataXtd_Constraint)& 
   TCollection_ExtendedString txt;
   Handle(AIS_LengthDimension) ais;
   //Handle(AIS_Drawer) aDrawer;
+  Standard_Boolean NotNull = Standard_False;
 
   if (nbgeom == 1) {
       
@@ -1758,6 +1773,7 @@ void TPrsStd_ConstraintTools::ComputeOffset (const Handle(TDataXtd_Constraint)& 
   
     if (!anAIS.IsNull()) {
       ais = Handle(AIS_LengthDimension)::DownCast(anAIS);
+      NotNull = Standard_True; 
     }
    
     if (S1.ShapeType() == TopAbs_FACE && S2.ShapeType() == TopAbs_FACE) {
@@ -1871,6 +1887,7 @@ void TPrsStd_ConstraintTools::ComputeOffset (const Handle(TDataXtd_Constraint)& 
       }
     }
     S2 = nearest;
+    if( !anAIS.IsNull() ) NotNull = Standard_True; 
     ais = Handle(AIS_LengthDimension)::DownCast(anAIS);
     if (ais.IsNull()) {
       ais = new AIS_LengthDimension (S1,S2,aplane,val1,txt);

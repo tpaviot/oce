@@ -1,7 +1,23 @@
-// File:	GccAna_Circ2d2TanOn_1.cxx
-// Created:	Thu Jan  2 15:50:43 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-01-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2d2TanOn.jxx>
 
@@ -17,18 +33,17 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Creation d un cercle tangent a un Cercle C1 et a une Droite L2.      +
-//                        centre sur une Droite.                          +
-//  Nous commencons par distinguer les differents cas limites que nous    +
-//  allons traiter separement.                                            +
-//  Pour le cas general:                                                  +
+//   Creation of a circle tangent to Circle C1 and a straight line L2.    +
+//                        centered on a straight line.                    +
+//  We start by making difference between cases that we are going to      +
+//  proceess separately.                                            +
+//  In general case:                                                  +
 //  ====================                                                  +
-//  Nous calculons les bissectrices a C1 et L2 qui nous donnent           +
-//  l ensemble des lieux possibles des centres de tous les cercles        +
-//  tangents a C1 et L2.                                                  +
-//  Nous intersectons ces bissectrices avec la droite OnLine ce qui nous  +
-//  donne les points parmis lesquels nous allons choisir les solutions.   +
-//  Les choix s effectuent a partir des Qualifieurs qualifiant C1 et L2.  +
+//  We calculate bissectrices to C1 and L2 that give us            +
+//  all possibles locations of centers of all circles tangent to C1 and L2+                                                  +
+//  We intersect these bissectrices with straight line OnLine which gives   +
+//  us points among which we'll choose the solutions.   +
+//  The choices are made basing on Qualifiers of C1 and L2.  +
 //=========================================================================
 
 GccAna_Circ2d2TanOn::
@@ -75,7 +90,7 @@ GccAna_Circ2d2TanOn::
    gp_Dir2d normL2(-dirL2.Y(),dirL2.X());
 
 //=========================================================================
-//   Traitement des cas limites.                                          +
+//   Processing of limit cases.                                          +
 //=========================================================================
 
    Standard_Real distcl = OnLine.Distance(center1);
@@ -151,7 +166,7 @@ GccAna_Circ2d2TanOn::
    }
 
 //=========================================================================
-//   Cas general.                                                         +
+//   General case.                                                        +
 //=========================================================================
 
    GccAna_CircLin2dBisec Bis(C1,L2);

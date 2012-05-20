@@ -1,14 +1,30 @@
-// File:	GccAna_Circ2d2TanOn_8.cxx
-// Created:	Thu Jan  2 15:58:06 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-01-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   Creation d un cercle tangent a deux elements : Droite.               +
-//                                                  Cercle.               +
+//   Creation of a circle tangent to two elements : Straight line.        +
+//                                                  Circle.               +
 //                                                  Point.                +
-//                        centre sur un troisieme : Droite.               +
-//                                                  Cercle.               +
+//                              center on a third : Straight line.        +
+//                                                  Circle.               +
 //=========================================================================
 
 #include <GccAna_Circ2d2TanOn.jxx>
@@ -64,7 +80,7 @@ GccAna_Circ2d2TanOn::
   gp_Pnt2d center1(C1.Location());
 
 //=========================================================================
-//   Traitement des cas limites.                                          +
+//   Processing of boundary cases.                                          +
 //=========================================================================
 
   Standard_Integer nbsol1 = 1;
@@ -140,7 +156,7 @@ GccAna_Circ2d2TanOn::
   }
   
 //=========================================================================
-//   cas general.                                                         +
+//   General case.                                                         +
 //=========================================================================
 
   GccAna_CircPnt2dBisec Bis(C1,Point2);
@@ -196,7 +212,7 @@ GccAna_Circ2d2TanOn::
 	    if (ok) {
 	      for (Standard_Integer k = 1 ; k <= nbsol ; k++) {
 		
-		// pop : protection contre le cas center1 == Center
+		// pop : protection against case center1 == Center
 		if (center1.IsEqual(Center,Precision::Confusion())) {
 		  continue;
 		}		  

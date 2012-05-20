@@ -1,7 +1,23 @@
-// File:	BRepFeat_RibSlot.cxx
-// Created:	Wed Oct  8 11:17:13 1997
-// Author:	Olga KOULECHOVA
-//		<opt@cleox.paris1.matra-dtv.fr>
+// Created on: 1997-10-08
+// Created by: Olga KOULECHOVA
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFeat_RibSlot.ixx>
@@ -99,7 +115,7 @@ Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEATRIB();
 
 //=======================================================================
 //function : LFPerform
-//purpose  : reconstruction topologique des nervures
+//purpose  : topological reconstruction of ribs 
 //=======================================================================
 
 void BRepFeat_RibSlot::LFPerform()
@@ -127,13 +143,15 @@ void BRepFeat_RibSlot::LFPerform()
   }
 
   Standard_Boolean ChangeOpe = Standard_False;
-      // On espere qu`il n`y a qu`un solide dans le resultat
+      // Hope that there is just a solid in the result
+  Standard_Boolean UntilInShape = Standard_False;
 
   TopTools_MapOfShape M;
   TopTools_ListOfShape LShape;
   TopTools_ListOfShape LTool;
 
   if (!mySUntil.IsNull()) {
+    UntilInShape = Standard_True;
     for (exp2.Init(mySUntil,TopAbs_FACE); exp2.More(); exp2.Next()) {
       const TopoDS_Shape& funtil = exp2.Current();
       for (exp.Init(mySbase,TopAbs_FACE); exp.More(); exp.Next()) {
@@ -171,7 +189,7 @@ void BRepFeat_RibSlot::LFPerform()
 
   LocOpe_Gluer theGlue;
   
-  //cas de collage 
+  //case of gluing 
 
   if (theOpe == 1) {
     Standard_Boolean Collage = Standard_True;  
@@ -213,12 +231,12 @@ void BRepFeat_RibSlot::LFPerform()
       theOpe = 2;
       ChangeOpe = Standard_True;
 #ifdef DEB
-      cout << "Passage en ope. topologique" << endl;
+      cout << "Passage to topological operations" << endl;
 #endif
     }
   }
 
-// collage est toujours applicable
+// gluing is always applicable
 
   if (theOpe == 1) {
     theGlue.Perform();
@@ -229,7 +247,7 @@ void BRepFeat_RibSlot::LFPerform()
       //TopTools_ListIteratorOfListOfShape itt1;
       if (!LShape.IsEmpty()) {
 	LocOpe_Builder theTOpe(theGlue.ResultingShape());
-	// On utilise LTool en temporaire
+	// Use of LTool is temporary
 	for (it2.Initialize(LShape);it2.More();it2.Next()) {
 	  const TopTools_ListOfShape& ldf = myMap(it2.Value());
 	  if (ldf.Extent() == 1 && ldf.First().IsSame(it2.Value())) {
@@ -315,7 +333,7 @@ void BRepFeat_RibSlot::LFPerform()
 	    theOpe = 2;
 	    ChangeOpe = Standard_True;
 #ifdef DEB
-	    cout << "Passage en ope. topologique" << endl;
+	    cout << "Passage to. topologic operation" << endl;
 #endif
 	  }
 
@@ -337,16 +355,16 @@ void BRepFeat_RibSlot::LFPerform()
       theOpe = 2;
       ChangeOpe = Standard_True;
 #ifdef DEB
-      cout << "Passage en ope. topologique" << endl;
+      cout << "Passage to topologic operation" << endl;
 #endif
     }
   }
 
 
-// cas sans collage
+// case without gluing
 
   if (theOpe == 2) {
-// Attention si echec de collage, myGShape avec collage n'est pas correct
+// Attention, if gluing fails, myGShape with gluing is not correct
     if (ChangeOpe) {
       myStatusError = BRepFeat_NoGluer;
       NotDone();
@@ -501,7 +519,7 @@ void BRepFeat_RibSlot::LFPerform()
 //	  myStatusError = BRepFeat_LocOpeNotDone;
 //	}
 //	else {
-	  myStatusError = BRepFeat_LocOpeInvNotDone;// dernier recours (attention new et tangent edges)
+	  myStatusError = BRepFeat_LocOpeInvNotDone;// last resort (attention to new and tangent edges)
 #ifdef DEB
 	  if (trc) cout << " Parts of Tool : direct Ope. Top." << endl;
 #endif
@@ -591,7 +609,7 @@ const TopTools_ListOfShape& BRepFeat_RibSlot::Generated
   if(S.ShapeType() != TopAbs_FACE) {
     myGenerated.Clear();
     if(myLFMap.IsEmpty() || !myLFMap.IsBound(S)) {
-      if (myMap.IsBound(S)) { // voir si on filtre sur face ou pas
+      if (myMap.IsBound(S)) { // check if filter on face or not
 	static TopTools_ListOfShape list;
 	list.Clear();
 	TopTools_ListIteratorOfListOfShape ite(myMap(S));
@@ -724,7 +742,7 @@ void BRepFeat_RibSlot::UpdateDescendants(const LocOpe_Gluer& G)
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the belonging to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 	  myMap.ChangeFind(orig).Append(itm.Key());
@@ -809,7 +827,7 @@ BRepFeat_StatusError BRepFeat_RibSlot::CurrentStatusError() const
 
 //=======================================================================
 //function : CheckPoint
-//purpose  : point detrompeur cote matiere (cote d'extrusion)
+//purpose  : Proofing point material side (side of extrusion)
 //=======================================================================
 
 gp_Pnt BRepFeat_RibSlot::CheckPoint(const TopoDS_Edge& e,
@@ -821,9 +839,9 @@ gp_Pnt BRepFeat_RibSlot::CheckPoint(const TopoDS_Edge& e,
   Standard_Boolean trc = BRepFeat_GettraceFEATRIB();
   if (trc) cout << "BRepFeat_RibSlot::CheckPoint" << endl;
 #endif
-// Produit vectoriel : normale au plan X direction Wire
-// -> donne le cote matiere
-// point detrompeur legerement a l'interieur cote matiere
+// Vector product : normal to plane X direction Wire
+// -> gives the material side
+// Proofing point somewhat inside the material side
   Standard_Real f, l;
   Handle(Geom_Curve) cc = BRep_Tool::Curve(e, f, l);
 
@@ -844,7 +862,7 @@ gp_Pnt BRepFeat_RibSlot::CheckPoint(const TopoDS_Edge& e,
 
 //=======================================================================
 //function : Normal
-//purpose  : calcul de la normale a une face dans un point
+//purpose  : calculate the normal to a face in a point
 //=======================================================================
 
 gp_Dir BRepFeat_RibSlot::Normal(const TopoDS_Face& F,const gp_Pnt& P)
@@ -891,7 +909,7 @@ gp_Dir BRepFeat_RibSlot::Normal(const TopoDS_Face& F,const gp_Pnt& P)
 
 //=======================================================================
 //function : IntPar
-//purpose  : calcul du parametre d'un point sur une courbe
+//purpose  : calculate the parameter of a point on a curve
 //=======================================================================
 
 Standard_Real BRepFeat_RibSlot::IntPar(const Handle(Geom_Curve)& C,
@@ -930,7 +948,7 @@ Standard_Real BRepFeat_RibSlot::IntPar(const Handle(Geom_Curve)& C,
 
 //=======================================================================
 //function : EdgeExtention
-//purpose  : extention d'un edge en tangence
+//purpose  : extention of a edge by tangence
 //=======================================================================
 
 void BRepFeat_RibSlot::EdgeExtention(TopoDS_Edge& e,
@@ -990,7 +1008,7 @@ void BRepFeat_RibSlot::EdgeExtention(TopoDS_Edge& e,
 
 //=======================================================================
 //function : ChoiceOfFaces
-//purpose  : choix de la face d'appui dans le cas d'appui sur un edge
+//purpose  : choose face of support in case of support on an edge
 //=======================================================================
 
 TopoDS_Face BRepFeat_RibSlot::ChoiceOfFaces(TopTools_ListOfShape& faces,
@@ -1020,7 +1038,7 @@ TopoDS_Face BRepFeat_RibSlot::ChoiceOfFaces(TopTools_ListOfShape& faces,
   gp_Ax1 Axe(pp, Pln->Position().Direction());
   for ( Standard_Integer i = 1; i <=8; i++) {
     Handle(Geom_Curve) L = 
-      Handle(Geom_Curve)::DownCast(l1->Rotated(Axe, i*PI/9.));
+      Handle(Geom_Curve)::DownCast(l1->Rotated(Axe, i*M_PI/9.));
     scur.Append(L);
     Counter++;
   }
@@ -1050,7 +1068,7 @@ TopoDS_Face BRepFeat_RibSlot::ChoiceOfFaces(TopTools_ListOfShape& faces,
 
 //=======================================================================
 //function : HeightMax
-//purpose  : Calcul de la hauteur du prisme selon les parametres d`une boite englobante
+//purpose  : Calculate the height of the prism following the parameters of a bounding box
 //=======================================================================
 
 Standard_Real BRepFeat_RibSlot::HeightMax(const TopoDS_Shape& theSbase,
@@ -1080,7 +1098,7 @@ Standard_Real BRepFeat_RibSlot::HeightMax(const TopoDS_Shape& theSbase,
 
 //=======================================================================
 //function : ExtremeFaces
-//purpose  : Calcul des faces d'appui de la nervure
+//purpose  : Calculate the base faces of the rib
 //=======================================================================
 
 Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
@@ -1127,7 +1145,7 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
     NumberOfEdges++;
   }
 
-// ---Le wire comporte 1 seul edge
+// ---the wire includes only one edge
   if(NumberOfEdges == 1) {
 #ifdef DEB
     if (trc) cout << " One Edge" << endl;
@@ -1136,7 +1154,7 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
     Standard_Real f, l;//, f1, l1, temp;
     gp_Pnt firstpoint, lastpoint;
    
-// Points limite de l`unique edge
+// Points limit the unique edge
     const TopoDS_Edge& E = TopoDS::Edge(exp.Current());
     Handle(Geom_Curve) cc = BRep_Tool::Curve(E, f, l);
     gp_Pnt p1 = BRep_Tool::Pnt(TopExp::FirstVertex(E,Standard_True));
@@ -1145,8 +1163,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
     Standard_Real FirstPar = f; Standard_Real LastPar = l;
 
 
-// ---Recherche si les 2 points limites de l`unique edge du wire
-//    sont sur un edge ou un vertex du shape de base
+// ---Find if 2 points limiting the unique edge of the wire
+//    are on an edge or a vertex of the base shape
     Standard_Boolean PtOnFirstVertex = Standard_False; 
     Standard_Boolean PtOnLastVertex = Standard_False;
     TopoDS_Vertex OnFirstVertex, OnLastVertex;
@@ -1159,8 +1177,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 
     if(PtOnFirstEdge) {
       if (!PtOnFirstVertex) {
-// Recherche de FirstFace : face du shape de base contenant OnFirstEdge
-//                          satisfaisant ChoiceOfFaces
+// Find FirstFace : face of the base shape containing OnFirstEdge
+//                  meeting ChoiceOfFaces
 	TopExp_Explorer ex4, ex5;
 	ex4.Init(mySbase, TopAbs_FACE);
 	TopTools_ListOfShape faces;
@@ -1183,8 +1201,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 	}
       }
       else if(PtOnFirstVertex) {
-// Recherche de FirstFace : face du shape de base contenant OnFirstVertex
-//                          satisfaisant ChoiceOfFaces
+// Find FirstFace : face of the base shape containing OnFirstVertex
+//                  meeting ChoiceOfFaces
 	TopExp_Explorer ex4, ex5;
 	ex4.Init(mySbase, TopAbs_FACE);
 	TopTools_ListOfShape faces;
@@ -1215,8 +1233,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 
     if(PtOnLastEdge) {
       if (!PtOnLastVertex) {
-// Recherche de LastFace : face du shape de base contenant OnLastEdge
-//                         satisfaisant ChoiceOfFaces
+// Find LastFace : face of the base shape containing OnLastEdge
+//                 meeting ChoiceOfFaces
 	TopExp_Explorer ex4, ex5;
 	ex4.Init(mySbase, TopAbs_FACE);
 	TopTools_ListOfShape faces;
@@ -1240,8 +1258,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 	}
       }
       else if(PtOnLastEdge && PtOnLastVertex) {
-// Recherche de LastFace : face du shape de base contenant OnLastVertex
-//                         satisfaisant ChoiceOfFaces
+// Find LastFace : face of the base shape containing OnLastVertex
+//                 meeting ChoiceOfFaces
 	TopExp_Explorer ex4, ex5;
 	ex4.Init(mySbase, TopAbs_FACE);
 	TopTools_ListOfShape faces;
@@ -1274,7 +1292,7 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
       return Standard_True;
     }
 
-//--- On n'a pas trouve FirstFace ou LastFace
+//--- FirstFace or LastFace was not found
 #ifdef DEB
     if (trc) cout << " FirstFace or LastFace null" << endl;
 #endif
@@ -1351,7 +1369,7 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
     
     return Data;
   }
-// ---Le wire comporte plusieurs edges
+// ---The wire consists of several edges
   else {
 #ifdef DEB
     if (trc) cout << " Multiple Edges" << endl;
@@ -1397,7 +1415,7 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 	    }
 	  }
 
-// ---Recherche thepoint est sur un edge ou un vertex de la face f
+// ---Find thepoint on an edge or a vertex of face f
 	  PtOnEdgeVertex(RevolRib, f, thePoint, FirstVertex, LastVertex,
 			 PtOnEdge,OnEdge,PtOnVertex,OnVertex);
 
@@ -1541,8 +1559,8 @@ Standard_Boolean BRepFeat_RibSlot::ExtremeFaces(const Standard_Boolean RevolRib,
 
 //=======================================================================
 //function : PtOnEdgeVertex
-//purpose  : Recherche si les 2 points limites de l`unique edge du wire
-//           sont sur un edge ou un vertex du shape de base
+//purpose  : Find if 2 limit points of the unique edge of a wire
+//           are on an edge or a vertex of the base shape
 //=======================================================================
 
 void BRepFeat_RibSlot::PtOnEdgeVertex(const Standard_Boolean RevolRib,
@@ -1613,7 +1631,7 @@ void BRepFeat_RibSlot::PtOnEdgeVertex(const Standard_Boolean RevolRib,
 
 //=======================================================================
 //function : SlidingProfile
-//purpose  : construction de la face profil en cas de glissement
+//purpose  : construction of the profile face in case of sliding
 //=======================================================================
  
 Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
@@ -1636,9 +1654,9 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
   if (trc) cout << "BRepFeat_RibSlot::SlidingProfile" << endl;
 #endif
   Standard_Boolean ProfileOK = Standard_True;
-// --cas de glissement : construction du wire du profil
-//   -> 1 partie boite englobante + 1 partie wire
-//   attention a la compatibilite des orientations
+// --case of sliding : construction of the wire of the profile
+// --> 1 part bounding box + 1 part wire
+//   attention to the compatibility of orientations
 
   gp_Dir FN, LN;
   BRepLib_MakeWire WW;
@@ -1646,9 +1664,9 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
   FN = Normal(FirstFace, myFirstPnt);
   LN = Normal(LastFace, myLastPnt);
 
-// Cas de la rainure (cut) <> nervure (fuse)
-// -> on est dans la matiere
-// -> on fait tout en 2d dans le plan de travail : plus facile  
+// Case of the groove (cut) <> rib (fuse)
+// -> we are in the material
+// -> make everything in 2d in the working plane : easier  
   if(!myFuse) {
     FN = -FN;
     LN = -LN;
@@ -1675,7 +1693,7 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
       Standard_Real par1 = ElCLib::Parameter(ln1->Lin(), myFirstPnt);
       Standard_Real par2 = ElCLib::Parameter(ln2->Lin(), myLastPnt);
       if(par1 >= myTol  ||  par2 >= myTol)  {
-	Concavite = 2;    //paralelle et concave
+	Concavite = 2;    //paralel and concave
 	BRepLib_MakeEdge e1(myLastPnt, myFirstPnt);
 	WW.Add(e1);
       } 
@@ -1694,19 +1712,19 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
     }
   }
 
-// ---Construction de la face profil
+// ---Construction of the profile face 
   if(Concavite == 1) {
-// Si concave : on peut prolonger les premiers et dernier edges du wire
-//              jusque boite englobante
+// if concave : it is possible to extend first and last edges of the wire
+//              to the bounding box
     BRepLib_MakeEdge e1(myLastPnt, Pt);
     WW.Add(e1);
     BRepLib_MakeEdge e2(Pt, myFirstPnt);
     WW.Add(e2);
   }
   else if(Concavite == 3) {
-// BndEdge : edges d'intersection avce la boite englobante
+// BndEdge : edges of intersection with the bounding box
     TopoDS_Edge BndEdge1, BndEdge2;
-// Points d'intersection boite englobante / Profil recherche
+// Points of intersection with the bounding box / Find Profile
     gp_Pnt BndPnt1, BndPnt2, LastPnt;
     TopExp_Explorer expl;
     expl.Init(BndFace, TopAbs_WIRE);
@@ -1761,7 +1779,7 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
     WW.Add(e1);
     
     if(BndEdge1.IsSame(BndEdge2)) {
-// Cas particulier : meme edge -> cheminement simple a determiner
+// Particular case : same edge -> simply determined path
       BRepLib_MakeEdge e2(BndPnt1, BndPnt2);
       WW.Add(e2);
       BRepLib_MakeEdge e3(BndPnt2, myFirstPnt);
@@ -1793,9 +1811,9 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
       }
       else explo.Init(BndWire);
 
-// On controle si on est dans BndEdge2
-// -> si oui : il faut tourner pour rejoindre FirstPnt
-// -> si non : on ajoute les edges
+// Check if this is BndEdge2
+// -> if yes : it is required to turn to join FirstPnt
+// -> if no : add edges
       Standard_Boolean Fin = Standard_False;
       while(!Fin) {
 	const TopoDS_Edge& e = TopoDS::Edge(explo.Current());
@@ -1807,8 +1825,8 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
 	  LastPnt = pp;
 	}
 	else {
-// le chemin est ferme
-// -> des que l'on recontre BndEdge2, fin des bords sur BndFace
+// the path is closed
+// -> since met BndEdge2, end of borders on BndFace
 	  Fin = Standard_True;
 	  BRepLib_MakeEdge ee(LastPnt, BndPnt2);
 	  WW.Add(ee);
@@ -1828,10 +1846,10 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
     }   
   }
 
-// ---Construction du profil
+// ---Construction of the profile
 
-// On explore le wire fourni par l'utilisateur
-// BRepTools_WireExplorer : bon ordre - sans repetition <> TopExp : non ordonne
+// Explore the wire provided by the user
+// BRepTools_WireExplorer : correct order - without repetition <> TopExp : non ordered
   BRepTools_WireExplorer EX(myWire);
   
   Standard_Real ff, ll;
@@ -1861,7 +1879,7 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
     WW.Add(el);
   }
   else {
-// 1 seul edge : traitement particulier
+// only one edge : particular processing
     Standard_Real fpar = IntPar(FirstCurve, myFirstPnt);
     Standard_Real lpar = IntPar(FirstCurve, myLastPnt);
     Handle(Geom_Curve) c;
@@ -1886,19 +1904,19 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
   }
   
   if(Concavite != 3) {
-// Si concave : fac est OK
+// if concave : face is OK
     Prof = fac;
   }
   else {
-// Si non concave
-// CheckPnt : point legerement a l'interieur cote matiere
-// Bndface  : face/coupe de la boite englobante dans le plen du profil
+// if not concave
+// CheckPnt : point slightly inside the material side
+// Bndface  : face/cut of the bounding box in the plane of the profile
     BRepTopAdaptor_FClass2d Cl(fac, BRep_Tool::Tolerance(fac));
     Standard_Real u, v;
     ElSLib::Parameters(myPln->Pln(), CheckPnt, u, v);
     gp_Pnt2d checkpnt2d(u, v);
     if(Cl.Perform(checkpnt2d, Standard_True) == TopAbs_OUT) {
-// Si fac n'est pas le bon morceau de BndFace on prend le complementaire
+// If face is not the correct part of BndFace take the complementary
       //modified by NIZNHY-PKV Fri Mar 22 16:46:20 2002 f
       //BRepAlgo_Cut c(BndFace, fac);     
       BRepAlgoAPI_Cut c(BndFace, fac);     
@@ -1909,7 +1927,7 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
       Prof = TopoDS::Face(ffx.Shape());
     }
     else {
-// Si fac est le bon morceau de BndFace  : fac est OK
+// If face is the correct part of BndFace  : face is OK
       Prof = fac;
     }
   }
@@ -1925,7 +1943,7 @@ Standard_Boolean BRepFeat_RibSlot::SlidingProfile(TopoDS_Face& Prof,
 }
 //=======================================================================
 //function : NoSlidingProfile
-//purpose  : construction de la face profil en cas de glissement
+//purpose  : construction of the face profile in case of sliding
 //=======================================================================
  
 Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
@@ -1989,7 +2007,7 @@ Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
       Standard_Real par1 = ElCLib::Parameter(firstln->Lin(), myFirstPnt);
       Standard_Real par2 = ElCLib::Parameter(lastln->Lin(), myLastPnt);
       if(par1 >= myTol  ||  par2 >= myTol)  
-	Concavite = 2;    //paralelle et concave
+	Concavite = 2;    //parallel and concave
     }      
     if(d1.IsEqual(d2, myTol)) {
        if(Concavite == 3) TestOK = Standard_False;
@@ -2005,7 +2023,7 @@ Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
     }
   }
 
-// ---Construction de la face profil  
+// ---Construction of the face profile  
   if(Concavite == 3) {
     if(OnFirstFace) {
       Standard_Real f, l;
@@ -2321,7 +2339,7 @@ Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
       if(!theLastEdge.IsNull()) {
 	const TopoDS_Vertex& v1 = TopExp::LastVertex(theLastEdge,Standard_True);
 	TopoDS_Vertex v2;
-// Attention cas Wire Reversed -> LastVertex sans Standard_True
+// Attention case Wire Reversed -> LastVertex without Standard_True
 	const gp_Pnt& pp = BRep_Tool::Pnt(TopExp::LastVertex(FirstEdge));
 	if(!theFV.IsNull() && theFirstpoint.Distance(pp) <= myTol) {
 	  v2 = theFV;
@@ -2664,7 +2682,7 @@ Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the belonging to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 //	  const TopoDS_Shape& sh = itm.Key();
@@ -2721,7 +2739,7 @@ Standard_Boolean BRepFeat_RibSlot::NoSlidingProfile(TopoDS_Face& Prof,
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the belonging to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 //	  const TopoDS_Shape& sh = itm.Key();

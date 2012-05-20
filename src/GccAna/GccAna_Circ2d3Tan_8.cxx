@@ -1,5 +1,22 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File GccAna_Circ2d3Tan.cxx, REG 08/07/91
+
 
 #include <GccAna_Circ2d3Tan.jxx>
 
@@ -18,7 +35,7 @@
 #include <GccEnt_BadQualifier.hxx>
 #include <Precision.hxx>
 //=========================================================================
-//   Creation d un cercle tangent a une droite et a deux points.          +
+//   Creation of a circle tangent to a straight line and two points.      +
 //=========================================================================
 
 GccAna_Circ2d3Tan::
@@ -56,7 +73,7 @@ GccAna_Circ2d3Tan::
    }
 
 //=========================================================================
-//   Traitement.                                                          +
+//   Processing.                                                          +
 //=========================================================================
 
    gp_Lin2d L1  = Qualified1.Qualified();
@@ -95,7 +112,9 @@ GccAna_Circ2d3Tan::
 	   gp_Pnt2d Center(Intp.Point(j).Value());
 	   Standard_Real dist1 = L1.Distance(Center);
 	   Standard_Real dist2 = Center.Distance(Point2);
+
 	   Standard_Real Radius=0;
+	   Standard_Integer nbsol1 = 0;
 //	   Standard_Integer nbsol2 = 0;
 	   Standard_Integer nbsol3 = 0;
 	   Standard_Boolean ok = Standard_False;

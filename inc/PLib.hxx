@@ -19,9 +19,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -82,13 +79,8 @@ public:
   Standard_EXPORT   static  void GetPoles(const TColStd_Array1OfReal& FP,TColgp_Array1OfPnt2d& Poles) ;
   //! Get from FP the coordinates of the poles. <br>
   Standard_EXPORT   static  void GetPoles(const TColStd_Array1OfReal& FP,TColgp_Array1OfPnt2d& Poles,TColStd_Array1OfReal& Weights) ;
-  //! Returns the Binomial Cnp , without testing anything. <br>
-      static  Standard_Real Bin(const Standard_Integer N,const Standard_Integer P) ;
-  //!  test on N >  maxbinom and build the PASCAL triangle <br>
-//!          on size N if necessary. <br>
-      static  void Binomial(const Standard_Integer N) ;
-  //! only called by Binomial(N,P) <br>
-  Standard_EXPORT   static  void InternalBinomial(const Standard_Integer N,Standard_Integer& maxbinom,Standard_Address& binom) ;
+  //! Returns the Binomial Cnp. N should be <= BSplCLib::MaxDegree(). <br>
+  Standard_EXPORT   static  Standard_Real Bin(const Standard_Integer N,const Standard_Integer P) ;
   //! Computes the derivatives of a ratio at order <br>
 //!          <N> in dimension <Dimension>. <br>
 //! <br>

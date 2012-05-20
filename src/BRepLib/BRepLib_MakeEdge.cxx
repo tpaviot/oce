@@ -1,10 +1,24 @@
-// File:	BRepLib_MakeEdge.cxx
-// Created:	Fri Jul 23 15:51:46 1993
-// Author:	Remi LEQUETTE
-//		<rle@nonox>
+// Created on: 1993-07-23
+// Created by: Joelle CHAUVET
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified:	Wed Oct 23 09:17:47 1996
-// Author:	Joelle CHAUVET
-//		<jct@sgi38>
 //		check ponctuallity (PRO4896)
 
 #include <BRepLib_MakeEdge.ixx>
@@ -100,11 +114,9 @@ static Standard_Boolean Project(const Handle(Geom2d_Curve)& C,
   Standard_Real Eps2 = BRep_Tool::Tolerance(V);
   Eps2 *= Eps2;
   
-  static Handle(Geom2dAdaptor_HCurve) HG2AHC;
-  if ( HG2AHC.IsNull() ) HG2AHC = new Geom2dAdaptor_HCurve();
+  Handle(Geom2dAdaptor_HCurve) HG2AHC = new Geom2dAdaptor_HCurve();
   HG2AHC->Set(C);
-  static Handle(GeomAdaptor_HSurface) HGAHS;
-  if ( HGAHS.IsNull() ) HGAHS = new GeomAdaptor_HSurface();
+  Handle(GeomAdaptor_HSurface) HGAHS = new GeomAdaptor_HSurface();
   HGAHS->Set(S);
   Adaptor3d_CurveOnSurface ACOS(HG2AHC,HGAHS);
 
@@ -763,7 +775,7 @@ void  BRepLib_MakeEdge::Init(const Handle(Geom_Curve)& CC,
   Standard_Real p2 = pp2;
   Standard_Real cf = C->FirstParameter();
   Standard_Real cl = C->LastParameter();
-  Standard_Real epsilon = Precision::Confusion();
+  Standard_Real epsilon = Precision::PConfusion();
   Standard_Boolean periodic = C->IsPeriodic();
 
 
@@ -1032,7 +1044,7 @@ void  BRepLib_MakeEdge::Init(const Handle(Geom2d_Curve)& CC,
   Standard_Real p2 = pp2;
   Standard_Real cf = C->FirstParameter();
   Standard_Real cl = C->LastParameter();
-  Standard_Real epsilon = Precision::Confusion();
+  Standard_Real epsilon = Precision::PConfusion();
   Standard_Boolean periodic = C->IsPeriodic();
 
 

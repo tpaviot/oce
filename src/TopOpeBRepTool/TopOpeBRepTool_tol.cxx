@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_tol.cxx
-// Created:	Tue Apr  1 11:22:56 1997
-// Author:	Jean Yves LEBEY
-//		<jyl@bistrox.paris1.matra-dtv.fr>
+// Created on: 1997-04-01
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_tol.hxx>
 
@@ -21,9 +37,12 @@ Standard_EXPORT void FTOL_FaceTolerances
  Standard_Real& myTol1, Standard_Real& myTol2,
  Standard_Real& Deflection, Standard_Real& MaxUV)
 {
-  // ============================================================
-  // ==   t o l e r a n c e s   d   I n t e r s e c t i o n    ==
-  // ============================================================
+  Standard_Real aTolF1 = BRep_Tool::Tolerance(myFace1);
+  Standard_Real aTolF2 = BRep_Tool::Tolerance(myFace2);
+  //
+  myTol1 = aTolF1 + aTolF2;
+  myTol2 = myTol1;
+  
   Standard_Real x0,y0,z0,x1,y1,z1,dx,dy,dz;
   Standard_Boolean Box1OK,Box2OK;
 
@@ -94,19 +113,13 @@ Standard_EXPORT void FTOL_FaceTolerances
  //jmb le 30 juillet 99. on ne multiplie pas la tolerance par la dimension de la piece
  // Standard_Real tolbox = tolef*dx;
   Standard_Real tolbox = tolef;
-  myTol1 = tolbox;
-  myTol2 = tolbox;
 
   Standard_Real tolmin = Precision::Confusion();
-  if (tolmin>myTol1) myTol1 = tolmin;
-  if (tolmin>myTol2) myTol2 = tolmin;
 
   Deflection=0.01;
   MaxUV=0.01;
   Deflection*=dx;
 
-  Standard_Real MTOL1 = Max(myTol1,1e-8);
-  Standard_Real MTOL2 = Max(myTol2,1e-8);
   Standard_Real MDEFLECTION = Deflection;
   Standard_Real MMAXUV=0.01;
 
@@ -137,15 +150,9 @@ Standard_EXPORT void FTOL_FaceTolerances
 //  printf("\n FaceTolerances3d : TOL1 = %5.5eg TOL2=%5.5eg DEFL=%5.5eg MAXUV=%5.5eg\n",MTOL1,MTOL2,MDEFLECTION,0.01);
 #endif
 
-  if(MTOL1>1e-4*dx) MTOL1=1e-4*dx;
-  if(MTOL2>1e-4*dx) MTOL2=1e-4*dx;
-  if(MTOL1<1e-8) MTOL1=1e-8;
-  if(MTOL2<1e-8) MTOL2=1e-8;
   if(MMAXUV<1e-3) MMAXUV=1e-3;
   if(MDEFLECTION<1e-3) MDEFLECTION = 1e-3;
 
-  if(MTOL1>0.5) MTOL1=0.5;
-  if(MTOL2>0.5) MTOL2=0.5;
   if(MMAXUV>0.01) MMAXUV=0.01;
   if(MDEFLECTION>0.1) MDEFLECTION = 0.1;
 
@@ -153,11 +160,8 @@ Standard_EXPORT void FTOL_FaceTolerances
 //  printf("TOL1 = %5.5eg TOL2=%5.5eg DEFL=%5.5eg MAXUV=%5.5eg\n",MTOL1,MTOL2,MDEFLECTION,MMAXUV);
 #endif
 
-  myTol1 = MTOL1;
-  myTol2 = MTOL2;
   Deflection = MDEFLECTION;
   MaxUV = MMAXUV;
-
 } // FTOL_FaceTolerances
  
  Standard_EXPORT void FTOL_FaceTolerances3d

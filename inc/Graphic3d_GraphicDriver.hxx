@@ -49,12 +49,6 @@
 #ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
 #endif
-#ifndef _Graphic3d_TypeOfPrimitive_HeaderFile
-#include <Graphic3d_TypeOfPrimitive.hxx>
-#endif
-#ifndef _Graphic3d_CPick_HeaderFile
-#include <Graphic3d_CPick.hxx>
-#endif
 #ifndef _Aspect_GradientFillMethod_HeaderFile
 #include <Aspect_GradientFillMethod.hxx>
 #endif
@@ -87,6 +81,9 @@
 #endif
 #ifndef _Graphic3d_CUserDraw_HeaderFile
 #include <Graphic3d_CUserDraw.hxx>
+#endif
+#ifndef _Standard_Size_HeaderFile
+#include <Standard_Size.hxx>
 #endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
@@ -142,32 +139,23 @@
 #ifndef _Graphic3d_CPlane_HeaderFile
 #include <Graphic3d_CPlane.hxx>
 #endif
+#ifndef _Graphic3d_CPick_HeaderFile
+#include <Graphic3d_CPick.hxx>
+#endif
 class Graphic3d_TransformError;
 class TColStd_Array2OfReal;
 class TColStd_HArray1OfByte;
-class Graphic3d_VertexNC;
-class Graphic3d_Vector;
 class Quantity_Color;
 class Graphic3d_Vertex;
 class Graphic3d_Array1OfVertex;
-class Graphic3d_Array1OfVertexN;
-class Graphic3d_Array1OfVertexNT;
-class TColStd_Array1OfInteger;
-class Graphic3d_Array1OfVertexC;
-class Graphic3d_Array2OfVertex;
-class Graphic3d_Array2OfVertexN;
-class Graphic3d_Array2OfVertexNT;
-class Aspect_Array1OfEdge;
-class Graphic3d_Array1OfVertexNC;
 class TCollection_ExtendedString;
-class TColStd_Array1OfReal;
+class TCollection_AsciiString;
 class AlienImage_AlienImage;
 class TColStd_HArray1OfReal;
 
 
-//! This class allows the definition of a graphic <br>
-//!      driver and encapsulates the Pex driver, the <br>
-//!      OpenGl driver, the Optimizer driver and the Phigs driver. <br>
+//! This class allows the definition of a graphic driver <br>
+//!      (currently only OpenGl driver is used). <br>
 class Graphic3d_GraphicDriver : public Aspect_GraphicDriver {
 
 public:
@@ -233,22 +221,6 @@ public:
   Standard_EXPORT   virtual  void RemoveStructure(const Graphic3d_CStructure& ACStructure)  = 0;
   //! call_togl_structure <br>
   Standard_EXPORT   virtual  void Structure(Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_structure_exploration <br>
-  Standard_EXPORT   virtual  void DumpGroup(const Graphic3d_CGroup& ACGroup)  = 0;
-  //! call_togl_structure_exploration <br>
-  Standard_EXPORT   virtual  void DumpStructure(const Graphic3d_CStructure& ACStructure)  = 0;
-  //! call_togl_view_exploration <br>
-  Standard_EXPORT   virtual  void DumpView(const Graphic3d_CView& ACView)  = 0;
-  //! call_togl_element_exploration <br>
-  Standard_EXPORT   virtual  Standard_Boolean ElementExploration(const Graphic3d_CStructure& ACStructure,const Standard_Integer ElementNumber,Graphic3d_VertexNC& AVertex,Graphic3d_Vector& AVector)  = 0;
-  //! call_togl_element_type <br>
-  Standard_EXPORT   virtual  Graphic3d_TypeOfPrimitive ElementType(const Graphic3d_CStructure& ACStructure,const Standard_Integer ElementNumber)  = 0;
-  //! call_togl_init_pick <br>
-  Standard_EXPORT   virtual  void InitPick()  = 0;
-  //! call_togl_pick <br>
-  Standard_EXPORT   virtual  void Pick(Graphic3d_CPick& ACPick)  = 0;
-  //! call_togl_pickid <br>
-  Standard_EXPORT   virtual  void PickId(const Graphic3d_CGroup& ACGroup)  = 0;
   //! call_togl_activateview <br>
   Standard_EXPORT   virtual  void ActivateView(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_antialiasing <br>
@@ -256,13 +228,13 @@ public:
   //! call_togl_background <br>
   Standard_EXPORT   virtual  void Background(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_gradient_background <br>
-  Standard_EXPORT   virtual  void GradientBackground(const Graphic3d_CView& ACView,const Quantity_Color& AColor1,const Quantity_Color& AColor2,const Aspect_GradientFillMethod FillStyle) ;
+  Standard_EXPORT   virtual  void GradientBackground(const Graphic3d_CView& ACView,const Quantity_Color& AColor1,const Quantity_Color& AColor2,const Aspect_GradientFillMethod FillStyle)  = 0;
   
   Standard_EXPORT   virtual  void BackgroundImage(const Standard_CString FileName,const Graphic3d_CView& ACView,const Aspect_FillMethod FillStyle)  = 0;
   
   Standard_EXPORT   virtual  void SetBgImageStyle(const Graphic3d_CView& ACView,const Aspect_FillMethod FillStyle)  = 0;
   
-  Standard_EXPORT   virtual  void SetBgGradientStyle(const Graphic3d_CView& ACView,const Aspect_GradientFillMethod FillStyle) ;
+  Standard_EXPORT   virtual  void SetBgGradientStyle(const Graphic3d_CView& ACView,const Aspect_GradientFillMethod FillStyle)  = 0;
   //! call_togl_cliplimit <br>
   Standard_EXPORT   virtual  void ClipLimit(const Graphic3d_CView& ACView,const Standard_Boolean AWait)  = 0;
   //! call_togl_deactivateview <br>
@@ -310,44 +282,6 @@ public:
   Standard_EXPORT   virtual  void MarkerSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_polygon <br>
   Standard_EXPORT   virtual  void Polygon(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon <br>
-  Standard_EXPORT   virtual  void Polygon(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_Vector& Normal,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon <br>
-  Standard_EXPORT   virtual  void Polygon(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon <br>
-  Standard_EXPORT   virtual  void Polygon(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_Vector& Normal,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon <br>
-  Standard_EXPORT   virtual  void Polygon(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNT& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_holes <br>
-  Standard_EXPORT   virtual  void PolygonHoles(const Graphic3d_CGroup& ACGroup,const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_holes <br>
-  Standard_EXPORT   virtual  void PolygonHoles(const Graphic3d_CGroup& ACGroup,const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_Vector& Normal,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_holes <br>
-  Standard_EXPORT   virtual  void PolygonHoles(const Graphic3d_CGroup& ACGroup,const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_holes <br>
-  Standard_EXPORT   virtual  void PolygonHoles(const Graphic3d_CGroup& ACGroup,const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertexN& ListVertex,const Graphic3d_Vector& Normal,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polyline <br>
-  Standard_EXPORT   virtual  void Polyline(const Graphic3d_CGroup& ACGroup,const Standard_Real X1,const Standard_Real Y1,const Standard_Real Z1,const Standard_Real X2,const Standard_Real Y2,const Standard_Real Z2,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polyline <br>
-  Standard_EXPORT   virtual  void Polyline(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polyline <br>
-  Standard_EXPORT   virtual  void Polyline(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexC& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_quadrangle <br>
-  Standard_EXPORT   virtual  void QuadrangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array2OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_quadrangle <br>
-  Standard_EXPORT   virtual  void QuadrangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array2OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_quadrangle <br>
-  Standard_EXPORT   virtual  void QuadrangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array2OfVertexNT& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void QuadrangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void QuadrangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexN& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void QuadrangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNT& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void QuadrangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void QuadrangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_text <br>
   Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const Standard_CString AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_text <br>
@@ -356,28 +290,14 @@ public:
   Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle,const Graphic3d_TextPath ATp,const Graphic3d_HorizontalTextAlignment AHta,const Graphic3d_VerticalTextAlignment AVta,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_text <br>
   Standard_EXPORT   virtual  void Text(const Graphic3d_CGroup& ACGroup,const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_triangle <br>
-  Standard_EXPORT   virtual  void TriangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_triangle <br>
-  Standard_EXPORT   virtual  void TriangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexN& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_triangle <br>
-  Standard_EXPORT   virtual  void TriangleMesh(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNT& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void TriangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void TriangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexN& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void TriangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNT& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void TriangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_polygon_indices <br>
-  Standard_EXPORT   virtual  void TriangleSet(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertexNC& ListVertex,const Aspect_Array1OfEdge& ListEdge,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_parray <br>
   Standard_EXPORT   virtual  void PrimitiveArray(const Graphic3d_CGroup& ACGroup,const Graphic3d_PrimitiveArray& parray,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_userdraw <br>
   Standard_EXPORT   virtual  void UserDraw(const Graphic3d_CGroup& ACGroup,const Graphic3d_CUserDraw& AUserDraw)  = 0;
   //! enables/disables usage of OpenGL vertex buffer arrays while drawing primitiev arrays <br>
-  Standard_EXPORT   virtual  void EnableVBO(const Standard_Boolean status) ;
+  Standard_EXPORT   virtual  void EnableVBO(const Standard_Boolean status)  = 0;
+  //! Returns information about GPU memory usage. <br>
+  Standard_EXPORT   virtual  Standard_Boolean MemoryInfo(Standard_Size& theFreeBytes,TCollection_AsciiString& theInfo) const = 0;
   //! call_togl_ztriedron_setup <br>
   Standard_EXPORT   virtual  void ZBufferTriedronSetup(const Quantity_NameOfColor XColor = Quantity_NOC_RED,const Quantity_NameOfColor YColor = Quantity_NOC_GREEN,const Quantity_NameOfColor ZColor = Quantity_NOC_BLUE1,const Standard_Real SizeRatio = 0.8,const Standard_Real AxisDiametr = 0.05,const Standard_Integer NbFacettes = 12)  = 0;
   //! call_togl_triedron_display <br>
@@ -392,10 +312,6 @@ public:
   Standard_EXPORT   virtual  void GraduatedTrihedronErase(const Graphic3d_CView& view)  = 0;
   //! call_togl_graduatedtrihedron_minmaxvalues <br>
   Standard_EXPORT   virtual  void GraduatedTrihedronMinMaxValues(const Standard_ShortReal xmin,const Standard_ShortReal ymin,const Standard_ShortReal zmin,const Standard_ShortReal xmax,const Standard_ShortReal ymax,const Standard_ShortReal zmax)  = 0;
-  //! call_togl_bezier <br>
-  Standard_EXPORT   virtual  void Bezier(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
-  //! call_togl_bezier_weight <br>
-  Standard_EXPORT   virtual  void Bezier(const Graphic3d_CGroup& ACGroup,const Graphic3d_Array1OfVertex& ListVertex,const TColStd_Array1OfReal& ListWeight,const Standard_Boolean EvalMinMax = Standard_True)  = 0;
   //! call_togl_begin_animation <br>
   Standard_EXPORT   virtual  void BeginAnimation(const Graphic3d_CView& ACView)  = 0;
   //! call_togl_end_animation <br>
@@ -470,8 +386,12 @@ public:
   Standard_EXPORT   virtual  void UnsetTransparency()  = 0;
   //! call_togl_set_line_attributes <br>
   Standard_EXPORT   virtual  void SetLineAttributes(const Standard_Integer Type,const Standard_ShortReal Width)  = 0;
-  //! call_togl_set_text_attributes <br>
-  Standard_EXPORT   virtual  void SetTextAttributes(const Standard_CString Font,const Standard_Integer Type,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B) ;
+  //! Set text attributes for under-/overlayer. <br>
+//! <Font> argument defines the name of the font to be used, <br>
+//! <Type> argument defines the display type of the text, <br>
+//! <R> <G> <B> values define the color of decal or subtitle background. <br>
+//! To set the color of the text you can use the SetColor method. <br>
+  Standard_EXPORT   virtual  void SetTextAttributes(const Standard_CString Font,const Standard_Integer Type,const Standard_ShortReal R,const Standard_ShortReal G,const Standard_ShortReal B)  = 0;
   //! call_togl_text2d <br>
 //! If AHeight < 0 default text height is used by driver (DefaultTextHeight method) <br>
   Standard_EXPORT   virtual  void Text(const Standard_CString AText,const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal AHeight)  = 0;
@@ -518,12 +438,38 @@ public:
 //! or insufficient system memory available. <br>
   Standard_EXPORT   virtual  Standard_Boolean Print(const Graphic3d_CView& ACView,const Aspect_CLayer2d& ACUnderLayer,const Aspect_CLayer2d& ACOverLayer,const Aspect_Handle hPrnDC,const Standard_Boolean showBackground,const Standard_CString filename,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH,const Standard_Real theScaleFactor = 1.0) const = 0;
   
-  Standard_EXPORT   virtual  void Export(const Standard_CString FileName,const Graphic3d_ExportFormat Format,const Graphic3d_SortType SortType,const Standard_Integer W,const Standard_Integer H,const Graphic3d_CView& View,const Aspect_CLayer2d& Under,const Aspect_CLayer2d& Over,const Standard_Real Precision = 0.005,const Standard_Address ProgressBarFunc = NULL,const Standard_Address ProgressObject = NULL)  = 0;
+//! Export scene into the one of the Vector graphics formats (SVG, PS, PDF...). <br>
+//! In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer). <br>
+//! Notice however that results may differ a lot and do not contain some elements. <br>
+  Standard_EXPORT   virtual  Standard_Boolean Export(const Standard_CString theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_CView& theView,const Aspect_CLayer2d& theLayerUnder,const Aspect_CLayer2d& theLayerOver,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL)  = 0;
   //! Clear visualization data in graphical driver and <br>
 //! stop displaying the primitives array of the graphical group <br>
 //! <theCGroup>. This method is internal and should be used <br>
 //! by Graphic3d_Group only. <br>
   Standard_EXPORT   virtual  void RemovePrimitiveArray(const Graphic3d_CGroup& theCGroup,const Graphic3d_PrimitiveArray& thePArray)  = 0;
+  //! Add a new top-level z layer with ID <theLayerId> for <br>
+//! the view. Z layers allow drawing structures in higher layers <br>
+//! in foreground of structures in lower layers. To add a structure <br>
+//! to desired layer on display it is necessary to set the layer <br>
+//! ID for the structure. <br>
+  Standard_EXPORT   virtual  void AddZLayer(const Graphic3d_CView& theCView,const Standard_Integer theLayerId)  = 0;
+  //! Remove Z layer from the specified view. All structures <br>
+//! displayed at the moment in layer will be displayed in default layer <br>
+//! ( the bottom-level z layer ). To unset layer ID from associated <br>
+//! structures use method UnsetZLayer (...). <br>
+  Standard_EXPORT   virtual  void RemoveZLayer(const Graphic3d_CView& theCView,const Standard_Integer theLayerId)  = 0;
+  //! Unset Z layer ID for all structures. The structure <br>
+//! indexes will be set to default layer ( the bottom-level z layer <br>
+//! with ID = 0 ). <br>
+  Standard_EXPORT   virtual  void UnsetZLayer(const Standard_Integer theLayerId)  = 0;
+  //! Change Z layer of a structure. The new z layer ID will <br>
+//! be used to define the associated layer for structure on display. <br>
+  Standard_EXPORT   virtual  void ChangeZLayer(const Graphic3d_CStructure& theCStructure,const Standard_Integer theLayerId)  = 0;
+  //! Change Z layer of a structure already presented in view. <br>
+  Standard_EXPORT   virtual  void ChangeZLayer(const Graphic3d_CStructure& theCStructure,const Graphic3d_CView& theCView,const Standard_Integer theNewLayerId)  = 0;
+  //! Get Z layer ID of structure. If the structure doesn't <br>
+//! exists in graphic driver, the method returns -1. <br>
+  Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Graphic3d_CStructure& theCStructure) const = 0;
   //! call_togl_light <br>
   Standard_EXPORT   static  Standard_Integer Light(const Graphic3d_CLight& ACLight,const Standard_Boolean Update) ;
   //! call_togl_plane <br>

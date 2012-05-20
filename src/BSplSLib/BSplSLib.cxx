@@ -1,6 +1,23 @@
-// File:	BSplSLib.cxx
-// Created :	Mon Aug 26 07:39:13 1991
-// Author:	JCV
+// Created on: 1991-08-26
+// Created by: JCV
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // Modifed RLE Aug 93 - Complete rewrite
 // xab  21-Mar-95  implemented cache mecanism
@@ -9,11 +26,9 @@
 // pmn  07-10-96 : Correction de DN dans le cas rationnal.
 // pmn  06-02-97 : Correction des poids dans RationalDerivative. (PRO700)
 
-#define No_Standard_RangeError
-#define No_Standard_OutOfRange
-
 #include <BSplSLib.ixx>
 #include <PLib.hxx>
+#include <PLib_LocalArray.hxx>
 #include <BSplCLib.hxx>
 #include <TColgp_Array2OfXYZ.hxx>
 #include <TColgp_Array1OfXYZ.hxx>
@@ -23,7 +38,7 @@
 #include <math_Matrix.hxx>
 
 // for null derivatives
-static Standard_Real BSplSLib_zero[3] = {0.,0.,0.};
+static Standard_Real BSplSLib_zero[3] = {0.0, 0.0, 0.0};
 #ifdef WNT
 #define M_SQRT2 1.4142135623730950488016887 
 #endif
@@ -34,14 +49,13 @@ static Standard_Real BSplSLib_zero[3] = {0.,0.,0.};
 //         evaluation of bspline (allocated in the stack)
 //=======================================================================
 
-struct BSplSLib_DataContainer 
+struct BSplSLib_DataContainer
 {
-  BSplSLib_DataContainer (Standard_Integer UDegree, Standard_Integer VDegree) 
+  BSplSLib_DataContainer (Standard_Integer UDegree, Standard_Integer VDegree)
   {
-    if ( UDegree > BSplCLib::MaxDegree() || 
-         VDegree > BSplCLib::MaxDegree() || 
-         BSplCLib::MaxDegree() != 25 )
-      Standard_OutOfRange::Raise ("BSplCLib: bspline degree is greater than maximum supported");
+    Standard_OutOfRange_Raise_if (UDegree > BSplCLib::MaxDegree() ||
+        VDegree > BSplCLib::MaxDegree() || BSplCLib::MaxDegree() > 25,
+        "BSplSLib: bspline degree is greater than maximum supported");
   }
 
   Standard_Real poles[4*(25+1)*(25+1)];
@@ -50,35 +64,7 @@ struct BSplSLib_DataContainer
   Standard_Real ders[48];
 };
 
-//=======================================================================
-//class : BSplSLib_LocalArray
-//purpose: Auxiliary class optimizing creation of array buffer for
-//         evaluation of bspline (using stack allocation for small arrays)
-//=======================================================================
-
-#define LOCARRAY_BUFFER 1024
-class BSplSLib_LocalArray 
-{
- public: 
-  BSplSLib_LocalArray (Standard_Integer Size)
-    : myPtr(myBuffer)
-  {
-    if ( Size > LOCARRAY_BUFFER )
-      myPtr = (Standard_Real*)Standard::Allocate (Size * sizeof(Standard_Real));
-  }
-
-  ~BSplSLib_LocalArray ()
-  {
-    if ( myPtr != myBuffer )
-      Standard::Free (*(Standard_Address*)&myPtr);
-  }
-
-  operator Standard_Real* () { return myPtr; }
-  
- private:
-  Standard_Real myBuffer[LOCARRAY_BUFFER];
-  Standard_Real* myPtr;
-};
+typedef PLib_LocalArray BSplSLib_LocalArray;
 
 //**************************************************************************
 //                     Evaluation methods
@@ -207,12 +193,10 @@ void  BSplSLib::RationalDerivative(const Standard_Integer UDeg,
     }
   } 
 
-  // ---------------  Calcul ----------------
+  // ---------------  Calculation ----------------
 
   iiM1 = - M1;
   iiM3 = - M3;
-  PLib::Binomial(N);
-  PLib::Binomial(M);
 
   for (ii = 0 ; ii <= N  ; ii++) {
     iiM1  += M1;
@@ -278,7 +262,7 @@ void  BSplSLib::RationalDerivative(const Standard_Integer UDeg,
 //
 // PrepareEval :
 //
-// Pepare all data for computing points :
+// Prepare all data for computing points :
 //  local arrays of knots
 //  local array  of poles (multiplied by the weights if rational)
 //
@@ -2770,17 +2754,16 @@ void BSplSLib::MovePoint (const Standard_Real            U,
 }
 
 //=======================================================================
-//function : Resolution
-//purpose  : this computes an estimate for the maximum of the 
+// function : Resolution
+// purpose  : this computes an estimate for the maximum of the 
 // partial derivatives both in U and in V
 //
 //
-//le calcul est en tout point semblable a celui des courbes avec un
-//indice  de  plus  pour  les  point  de controles. Soient Si,j les
-//points de controle pour ls surface  et  Di,j  les  poids  le  cas
-//echeant.  La  preuve  des  majorants pour les derivees partielles
-//sera omise et on a pour Su le majorant suivant dans le cas  poly-
-//nomial :
+// The calculation resembles at the calculation of curves with 
+// additional index for the control point. Let Si,j be the
+// control points for ls surface  and  Di,j  the weights.  
+// The checking of upper bounds for the partial derivatives 
+// will be omitted and Su is the next upper bound in the polynomial case :
 //
 //
 //
@@ -2790,7 +2773,7 @@ void BSplSLib::MovePoint (const Standard_Real            U,
 //                i=1.m
 //
 //
-// et dans le cas rationel :
+// and in the rational case :
 //
 //
 //
@@ -2806,7 +2789,7 @@ void BSplSLib::MovePoint (const Standard_Real            U,
 //
 //
 //
-// avec Rj = {j-d, ....,  j+d+d+1}.
+// with Rj = {j-d, ....,  j+d+d+1}.
 //
 //
 //=======================================================================
@@ -3090,7 +3073,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
   Standard_Integer VLength = VParameters.Length();
   Standard_Real * poles_array;
   
-  // extraction des iso u
+  // extraction of iso u
   dimension = 4*ULength;
   TColStd_Array2OfReal Points(1, VLength, 
 			      1, dimension);
@@ -3109,7 +3092,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
     }
   }
 
-  // interpolation des iso u
+  // interpolation of iso u
   poles_array = (Standard_Real *) &Points.ChangeValue(1,1) ;
   BSplCLib::Interpolate(VDegree,
 			VFlatKnots,
@@ -3120,7 +3103,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
 			InversionProblem) ;
   if (InversionProblem != 0) return;
 
-  // extraction des iso v
+  // extraction of iso v
 
   dimension = VLength*4;
   TColStd_Array2OfReal IsoPoles(1, ULength, 
@@ -3139,7 +3122,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
       IsoPoles (ii,ll+3) = Points(jj, kk+3);
     }
   }
-  // interpolation des iso v
+  // interpolation of iso v
   BSplCLib::Interpolate(UDegree,
 			UFlatKnots,
 			UParameters,
@@ -3148,7 +3131,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
 			poles_array[0],
 			InversionProblem);
 
-  // recuperation des resultats
+  // return results
 
   for (ii=1; ii <= ULength; ii++) {
 
@@ -3179,7 +3162,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
   Standard_Integer VLength = VParameters.Length();
   Standard_Real * poles_array;
   
-  // extraction des iso u
+  // extraction of iso u
   dimension = 3*ULength;
   TColStd_Array2OfReal Points(1, VLength, 
 			      1, dimension);
@@ -3197,7 +3180,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
     }
   }
   
-  // interpolation des iso u
+  // interpolation of iso u
   poles_array = (Standard_Real *) &Points.ChangeValue(1,1) ;
   BSplCLib::Interpolate(VDegree,
 			VFlatKnots,
@@ -3208,7 +3191,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
 			InversionProblem) ;
   if (InversionProblem != 0) return;
   
-  // extraction des iso v
+  // extraction of iso v
   
   dimension = VLength*3;
   TColStd_Array2OfReal IsoPoles(1, ULength, 
@@ -3226,7 +3209,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
       IsoPoles (ii,ll+2) = Points(jj, kk+2);
     }
   }
-  // interpolation des iso v
+  // interpolation of iso v
   BSplCLib::Interpolate(UDegree,
 			UFlatKnots,
 			UParameters,
@@ -3235,7 +3218,7 @@ void BSplSLib::Interpolate(const Standard_Integer UDegree,
 			poles_array[0],
 			InversionProblem);
   
-  // recuperation des resultats
+  // return results
 
   for (ii=1; ii <= ULength; ii++) {
 
@@ -3317,7 +3300,7 @@ void BSplSLib::FunctionMultiply
 		      NewDenominator(ii,jj),
 		      NewNumerator(ii,jj)) ;
 	
-	Function(0,
+	Function.Evaluate (0,
 		 UParameters(ii),
 		 VParameters(jj),
 		 result,
@@ -3346,4 +3329,3 @@ void BSplSLib::FunctionMultiply
     Standard_ConstructionError::Raise();
   }
 }
-

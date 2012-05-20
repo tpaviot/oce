@@ -60,15 +60,24 @@ public:
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
 
+  //! Creates a empty BitMap <br>
+  Standard_EXPORT   Interface_BitMap();
   //! Creates a BitMap for <nbitems> items <br>
 //!           One flag is defined, n0 0 <br>
 //!           <resflags> prepares allocation for <resflags> more flags <br>
 //!           Flags values start at false <br>
   Standard_EXPORT   Interface_BitMap(const Standard_Integer nbitems,const Standard_Integer resflags = 0);
+  //! Initialize empty bit by <nbitems> items <br>
+//!           One flag is defined, n0 0 <br>
+//!           <resflags> prepares allocation for <resflags> more flags <br>
+//!           Flags values start at false <br>
+  Standard_EXPORT     void Initialize(const Standard_Integer nbitems,const Standard_Integer resflags = 0) ;
   //! Creates a BitMap from another one <br>
 //!           if <copied> is True, copies data <br>
 //!           else, data are not copied, only the header object is <br>
   Standard_EXPORT   Interface_BitMap(const Interface_BitMap& other,const Standard_Boolean copied = Standard_False);
+  //! Initialize a BitMap from another one <br>
+  Standard_EXPORT     void Initialize(const Interface_BitMap& other,const Standard_Boolean copied = Standard_False) ;
   //! Returns internal values, used for copying <br>
 //!           Flags values start at false <br>
   Standard_EXPORT     void Internals(Standard_Integer& nbitems,Standard_Integer& nbwords,Standard_Integer& nbflags,Handle(TColStd_HArray1OfInteger)& flags,Handle(TColStd_HSequenceOfAsciiString)& names) const;
@@ -120,6 +129,8 @@ public:
   //! Initialises all the values of Flag Number <flag> to a given <br>
 //!           value <val> <br>
   Standard_EXPORT     void Init(const Standard_Boolean val,const Standard_Integer flag = 0) const;
+  //! Clear all field of bit map <br>
+  Standard_EXPORT     void Clear() ;
 
 
 

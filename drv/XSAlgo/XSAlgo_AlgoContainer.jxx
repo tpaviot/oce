@@ -7,6 +7,9 @@
 #ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
 #endif
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
 #endif

@@ -7,6 +7,9 @@
 #ifndef _Aspect_GraphicDriver_HeaderFile
 #include <Aspect_GraphicDriver.hxx>
 #endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
 #ifndef _Graphic3d_GraphicDevice_HeaderFile
 #include <Graphic3d_GraphicDevice.hxx>
 #endif

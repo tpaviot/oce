@@ -270,11 +270,11 @@ friend Standard_EXPORT Standard_OStream& operator << (Standard_OStream& astream,
 //! Note: if astring is ASCII, the computed value is <br>
 //! the same as the value computed with the HashCode function on a <br>
 //! TCollection_AsciiString string composed with equivalent ASCII characters <br>
-  Standard_EXPORT   static  Standard_Integer HashCode(const TCollection_ExtendedString& astring,const Standard_Integer Upper) ;
+      static  Standard_Integer HashCode(const TCollection_ExtendedString& astring,const Standard_Integer Upper) ;
   //! Returns true if the characters in this extended <br>
 //! string are identical to the characters in the other extended string. <br>
 //! Note that this method is an alias of operator ==. <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const TCollection_ExtendedString& string1,const TCollection_ExtendedString& string2) ;
+      static  Standard_Boolean IsEqual(const TCollection_ExtendedString& string1,const TCollection_ExtendedString& string2) ;
   //! Converts the internal <mystring> to UTF8 coding and <br>
 //!          returns length of the out CString. A memory for the <br>
 //!          <theCString> should be allocated before call! <br>
@@ -308,6 +308,7 @@ Standard_Integer mylength;
 };
 
 
+#include <TCollection_ExtendedString.lxx>
 
 
 

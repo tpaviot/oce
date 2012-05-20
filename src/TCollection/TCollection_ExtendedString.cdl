@@ -1,8 +1,23 @@
--- File:	TCollection_ExtendedString.cdl
--- Created:	Mon Feb 22 16:58:21 1993
--- Author:	Mireille MERCIEN
---		<mip@sdsun4>
----Copyright:	 Matra Datavision 1993
+-- Created on: 1993-02-22
+-- Created by: Mireille MERCIEN
+-- Copyright (c) 1993-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 class ExtendedString from TCollection
     ---Purpose: A variable-length sequence of "extended"
@@ -324,11 +339,13 @@ is
  
    HashCode(myclass ; astring : ExtendedString from TCollection; Upper : Integer)
    returns Integer;
+   ---Level: Internal
    ---Purpose: Returns a hashed value for the extended string
    -- astring within the range 1..Upper.
    -- Note: if astring is ASCII, the computed value is
    -- the same as the value computed with the HashCode function on a
    -- TCollection_AsciiString string composed with equivalent ASCII characters
+   ---C++: inline
 
    IsEqual(myclass ; string1 : ExtendedString from TCollection; 
            string2 : ExtendedString from TCollection)
@@ -336,6 +353,7 @@ is
    ---Purpose: Returns true if the characters in this extended
    -- string are identical to the characters in the other extended string.
    -- Note that this method is an alias of operator ==. 
+   ---C++: inline
     
    ToUTF8CString(me; theCString : out PCharacter from Standard) 
    returns Integer from Standard; 

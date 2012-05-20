@@ -1,7 +1,22 @@
-// File:	ShapeAnalysis_Wire.cxx
-// Created:	Thu Jan 20 14:46:55 2000
-// Author:	data exchange team
-//		<det@nnov>
+// Created on: 2000-01-20
+// Created by: data exchange team
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //:pdn 11.12.98: FixDegenerated improved
 //:pdn 05.01.99: renaming method CheckLittle to CheckSmall
@@ -395,7 +410,9 @@ void ShapeAnalysis_Wire::SetSurface (const Handle(Geom_Surface)& surface,
   
   Standard_Boolean isFail = Standard_False, isDone = Standard_False;
   for(Standard_Integer num1 = 1; num1 < nb-1; num1++) {
-    Standard_Integer fin = (num1 == 1 ? nb-1 : nb);
+    Standard_Integer fin = nb;
+    if (CheckClosed(Precision::Confusion()) && 1 == num1)
+      fin = nb-1;
     for(Standard_Integer num2 = num1+2; num2 <= fin; num2++) 
       if(!boxes(num1).IsOut(boxes(num2))){
 	CheckIntersectingEdges(num1, num2);
@@ -549,6 +566,11 @@ Standard_Boolean ShapeAnalysis_Wire::CheckOrder(ShapeAnalysis_WireOrder& sawo,
     if ( mode3d ) {
       TopoDS_Vertex V1 = EA.FirstVertex (E); 
       TopoDS_Vertex V2 = EA.LastVertex  (E); 
+      if (V1.IsNull() || V2.IsNull())
+      {
+        myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
+        return Standard_False;
+      }
       gp_Pnt p1 = BRep_Tool::Pnt (V1);
       gp_Pnt p2 = BRep_Tool::Pnt (V2);
       sawo.Add (p1.XYZ(),p2.XYZ());
@@ -598,6 +620,11 @@ Standard_Boolean ShapeAnalysis_Wire::CheckConnected (const Standard_Integer num,
   ShapeAnalysis_Edge sae;
   TopoDS_Vertex V1 = sae.LastVertex (E1);
   TopoDS_Vertex V2 = sae.FirstVertex (E2);
+  if (V1.IsNull() || V2.IsNull())
+  {
+    myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
+    return Standard_False;
+  }
   if (V1.IsSame(V2)) return Standard_False;
 
   gp_Pnt p1 = BRep_Tool::Pnt (V1);
@@ -1476,8 +1503,8 @@ Standard_Boolean ShapeAnalysis_Wire::CheckLacking (const Standard_Integer num,
   myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE1 );
 
   if ( myMax2d < Precision::PConfusion() || //:abv 03.06.02 CTS21866.stp
-       ( v1.SquareMagnitude() > gp::Resolution() && Abs ( v12.Angle ( v1 ) ) > 0.9 * PI ) ||
-       ( v2.SquareMagnitude() > gp::Resolution() && Abs ( v12.Angle ( v2 ) ) > 0.9 * PI ) ) 
+       ( v1.SquareMagnitude() > gp::Resolution() && Abs ( v12.Angle ( v1 ) ) > 0.9 * M_PI ) ||
+       ( v2.SquareMagnitude() > gp::Resolution() && Abs ( v12.Angle ( v2 ) ) > 0.9 * M_PI ) ) 
        myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE2 );
   return Standard_True;
 }

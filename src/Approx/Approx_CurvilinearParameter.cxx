@@ -1,7 +1,23 @@
-// File:	Approx_CurvilinearParameter.cxx
-// Created:	Fri Aug 22 09:11:03 1997
-// Author:	Sergey SOKOLOV
-//		<ssv@nonox.nnov.matra-dtv.fr>
+// Created on: 1997-08-22
+// Created by: Sergey SOKOLOV
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Approx_CurvilinearParameter.ixx>
 
@@ -29,7 +45,7 @@
 #include <CPnts_AbscissaPoint.hxx>
 #include <Approx_CurvlinFunc.hxx>
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
 #include <OSD_Timer.hxx>
 static OSD_Chronometer chr_total, chr_init, chr_approx;
 
@@ -118,7 +134,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor3d_
 							 const Standard_Integer MaxDegree,
 							 const Standard_Integer MaxSegments)
 {
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   t_total = t_init = t_approx = t_uparam = 0;
   uparam_count = 0;
   InitChron(chr_total);
@@ -131,11 +147,11 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor3d_
   Handle(TColStd_HArray1OfReal) ThreeDTol  = new TColStd_HArray1OfReal(1,Num3DSS);
   ThreeDTol->Init(Tol); 
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_init);
 #endif
   Handle(Approx_CurvlinFunc) fonct = new Approx_CurvlinFunc(C3D, Tol/10);
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_init, t_init);
 #endif
 
@@ -150,7 +166,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor3d_
   fonct->Intervals(CutPnts_C3,GeomAbs_C3);
   AdvApprox_PrefAndRec CutTool(CutPnts_C2,CutPnts_C3);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_approx);
 #endif
 
@@ -161,7 +177,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor3d_
 				     MaxDegree, MaxSegments,
 				     evC, CutTool);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_approx, t_approx);
 #endif
 
@@ -178,7 +194,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor3d_
   }
   myMaxError3d = aApprox.MaxError(3,1);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_total, t_total);
 
   cout<<" total reparametrization time = "<<t_total<<endl;
@@ -256,7 +272,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
 							 const Standard_Integer MaxDegree,
 							 const Standard_Integer MaxSegments)
 {
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   t_total = t_init = t_approx = t_uparam = 0;
   uparam_count = 0;
   InitChron(chr_total);
@@ -281,11 +297,11 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   Handle(TColStd_HArray1OfReal) ThreeDTol = new TColStd_HArray1OfReal(1,Num3DSS);
   ThreeDTol->Init(Tol/2.); 
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_init);
 #endif
   Handle(Approx_CurvlinFunc) fonct = new Approx_CurvlinFunc(C2D, Surf, Tol/20);
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_init, t_init);
 #endif
 
@@ -300,7 +316,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   fonct->Intervals(CutPnts_C3,GeomAbs_C3);
   AdvApprox_PrefAndRec CutTool(CutPnts_C2,CutPnts_C3);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_approx);
 #endif
 
@@ -311,7 +327,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
 				     MaxDegree, MaxSegments,
 				     evCOnS, CutTool);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_approx, t_approx);
 #endif
 
@@ -339,7 +355,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   myMaxError2d1 = Max (aApprox.MaxError(1,1),aApprox.MaxError(1,2));
   myMaxError3d  = aApprox.MaxError(3,1);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_total, t_total);
 
   cout<<" total reparametrization time = "<<t_total<<endl;
@@ -421,7 +437,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
 {
   Standard_Integer i;
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   t_total = t_init = t_approx = t_uparam = 0;
   uparam_count = 0;
   InitChron(chr_total);
@@ -446,11 +462,11 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   Handle(TColStd_HArray1OfReal) ThreeDTol = new TColStd_HArray1OfReal(1,Num3DSS);
   ThreeDTol->Init(Tol/2); 
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_init);
 #endif
   Handle(Approx_CurvlinFunc) fonct = new Approx_CurvlinFunc(C2D1, C2D2, Surf1, Surf2, Tol/20);
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_init, t_init);
 #endif
 
@@ -465,7 +481,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   fonct->Intervals(CutPnts_C3,GeomAbs_C3);
   AdvApprox_PrefAndRec CutTool(CutPnts_C2,CutPnts_C3);  
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_approx);
 #endif
 
@@ -476,7 +492,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
 				     MaxDegree, MaxSegments,
 				     evCOn2S, CutTool);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_approx, t_approx);
 #endif
 
@@ -512,7 +528,7 @@ Approx_CurvilinearParameter::Approx_CurvilinearParameter(const Handle(Adaptor2d_
   myMaxError2d2 = Max (aApprox.MaxError(1,3),aApprox.MaxError(1,4));
   myMaxError3d  = aApprox.MaxError(3,1);
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_total, t_total);
 
   cout<<" total reparametrization time = "<<t_total<<endl;

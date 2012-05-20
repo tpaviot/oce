@@ -25,6 +25,9 @@
 #ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
 #endif
@@ -50,15 +53,15 @@ public:
 //!           Remark that the starting Graph is duplicated <br>
   Standard_EXPORT   Interface_HGraph(const Interface_Graph& agraph);
   //! Creates an HGraph with a Graph created from <amodel> and <lib> <br>
-  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib);
+  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib,const Standard_Boolean theModeStats = Standard_True);
   //! Creates an HGraph with a graph itself created from <amodel> <br>
 //!           and <protocol> <br>
-  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol);
+  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol,const Standard_Boolean theModeStats = Standard_True);
   //! Creates an HGraph with a graph itself created from <amodel> <br>
 //!           and <protocol> <br>
-  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_GTool)& gtool);
+  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_GTool)& gtool,const Standard_Boolean theModeStats = Standard_True);
   //! Same a above, but works with the GTool in the model <br>
-  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel);
+  Standard_EXPORT   Interface_HGraph(const Handle(Interface_InterfaceModel)& amodel,const Standard_Boolean theModeStats = Standard_True);
   //! Returns the Graph contained in <me>, for Read Only Operations <br>
 //!           Remark that it is returns as "const &" <br>
 //!           Getting it in a new variable instead of a reference would be <br>

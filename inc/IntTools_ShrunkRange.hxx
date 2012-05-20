@@ -25,8 +25,8 @@
 #ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
 #endif
-#ifndef _IntTools_PContext_HeaderFile
-#include <IntTools_PContext.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -34,10 +34,10 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+class IntTools_Context;
 class TopoDS_Edge;
 class TopoDS_Vertex;
 class IntTools_Range;
-class IntTools_Context;
 class Bnd_Box;
 
 
@@ -65,7 +65,14 @@ public:
 //! Empty constructor <br>
   Standard_EXPORT   IntTools_ShrunkRange();
   
-  Standard_EXPORT   IntTools_ShrunkRange(const TopoDS_Edge& aE,const TopoDS_Vertex& aV1,const TopoDS_Vertex& aV2,const IntTools_Range& aR,const IntTools_Context& ICtx);
+  Standard_EXPORT   IntTools_ShrunkRange(const TopoDS_Edge& aE,const TopoDS_Vertex& aV1,const TopoDS_Vertex& aV2,const IntTools_Range& aR,const Handle(IntTools_Context)& ICtx);
+  
+//! Sets the intersecton context <br>
+//! <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& aContext) ;
+  
+//! Gets the intersecton context <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Sets an shrunk range <br>
   Standard_EXPORT     void SetShrunkRange(const IntTools_Range& aR) ;
@@ -123,7 +130,7 @@ TopoDS_Vertex myV2;
 IntTools_Range myRange;
 IntTools_Range myShrunkRange;
 Bnd_Box myBndBox;
-IntTools_PContext myCtx;
+Handle_IntTools_Context myContext;
 Standard_Boolean myIsDone;
 Standard_Integer myErrorStatus;
 

@@ -1,5 +1,22 @@
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <ProjLib_ComputeApproxOnPolarSurface.hxx>
 #include <AppCont_Function2d.hxx>
 #include <ElSLib.hxx>
@@ -114,36 +131,36 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
       {
 	gp_Cylinder Cylinder = Surf->Cylinder();
 	ElSLib::Parameters( Cylinder, p, S, T);
-	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*PI))-1;
-	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*PI))+1;
-	S += decalU*2*PI;
+	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*M_PI))-1;
+	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*M_PI))+1;
+	S += decalU*2*M_PI;
 	break;
       }
     case GeomAbs_Cone:
       {
 	gp_Cone Cone = Surf->Cone();
 	ElSLib::Parameters( Cone, p, S, T);
-	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*PI))-1;
-	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*PI))+1;
-	S += decalU*2*PI;
+	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*M_PI))-1;
+	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*M_PI))+1;
+	S += decalU*2*M_PI;
 	break;
       }
     case GeomAbs_Sphere:
       {
 	gp_Sphere Sphere = Surf->Sphere();
 	ElSLib::Parameters( Sphere, p, S, T);
-	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*PI))-1;
-	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*PI))+1;
-	S += decalU*2*PI;
-	if(V0 < Vinf) decalV = -int((Vinf - V0)/(2*PI))-1;
-	if(V0 > (Vsup+(Vsup-Vinf))) decalV =  int((V0 - Vsup+(Vsup-Vinf))/(2*PI))+1;
-	T += decalV*2*PI;
-	if(0.4*PI < Abs(U0 - S) && Abs(U0 - S) < 1.6*PI) {
-	  T = PI - T;
+	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*M_PI))-1;
+	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*M_PI))+1;
+	S += decalU*2*M_PI;
+	if(V0 < Vinf) decalV = -int((Vinf - V0)/(2*M_PI))-1;
+	if(V0 > (Vsup+(Vsup-Vinf))) decalV =  int((V0 - Vsup+(Vsup-Vinf))/(2*M_PI))+1;
+	T += decalV*2*M_PI;
+	if(0.4*M_PI < Abs(U0 - S) && Abs(U0 - S) < 1.6*M_PI) {
+	  T = M_PI - T;
 	  if(U0 < S)
-	    S -= PI;
+	    S -= M_PI;
 	  else
-	    S += PI;
+	    S += M_PI;
 	}
 	break;
       }
@@ -151,11 +168,11 @@ static gp_Pnt2d Function_Value(const Standard_Real U,
       {
 	gp_Torus Torus = Surf->Torus();
 	ElSLib::Parameters( Torus, p, S, T);
-	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*PI))-1;
-	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*PI))+1;
-	if(V0 < Vinf) decalV = -int((Vinf - V0)/(2*PI))-1;
-	if(V0 > Vsup) decalV =  int((V0 - Vsup)/(2*PI))+1;
-	S += decalU*2*PI; T += decalV*2*PI;
+	if(U0 < Uinf) decalU = -int((Uinf - U0)/(2*M_PI))-1;
+	if(U0 > Usup) decalU =  int((U0 - Usup)/(2*M_PI))+1;
+	if(V0 < Vinf) decalV = -int((Vinf - V0)/(2*M_PI))-1;
+	if(V0 > Vsup) decalV =  int((V0 - Vsup)/(2*M_PI))+1;
+	S += decalU*2*M_PI; T += decalV*2*M_PI;
 	break;
       }
     default:
@@ -307,10 +324,10 @@ class ProjLib_PolarFunction : public AppCont_Function2d
   ~ProjLib_PolarFunction() {}
   
   Standard_Real FirstParameter() const
-    {return (myCurve->FirstParameter()+1.e-9);}
+  {return (myCurve->FirstParameter()/*+1.e-9*/);}
   
   Standard_Real LastParameter() const
-    {return (myCurve->LastParameter()-1.e-9);}
+  {return (myCurve->LastParameter()/*-1.e-9*/);}
   
   gp_Pnt2d Value(const Standard_Real t) const {
     return Function_Value
@@ -744,13 +761,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;
 	  ElSLib::Parameters( Cylinder, Pts(i), S, T);
-	  if(Abs(Sloc - S) > PI) {
+	  if(Abs(Sloc - S) > M_PI)
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
-	  }
-	  Pts2d(i).SetCoord(S+usens*2*PI,T);
+	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
 	}
 	myProjIsDone = Standard_True;
 	break;
@@ -766,13 +782,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;
 	  ElSLib::Parameters( Cone, Pts(i), S, T);
-	  if(Abs(Sloc - S) > PI) {
+	  if(Abs(Sloc - S) > M_PI)
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
-	  }
-	  Pts2d(i).SetCoord(S+usens*2*PI,T);
+	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
 	}
 	myProjIsDone = Standard_True;
 	break;
@@ -788,13 +803,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;Tloc = T;
 	  ElSLib::Parameters( Sphere, Pts(i), S, T);
-	  if(1.6*PI < Abs(Sloc - S)) {
+	  if(1.6*M_PI < Abs(Sloc - S))
 	    if(Sloc > S)
 	      usens += 2;
 	    else
 	      usens -= 2;
-	  }
-	  if(1.6*PI > Abs(Sloc - S) && Abs(Sloc - S) > 0.4*PI) {
+	  if(1.6*M_PI > Abs(Sloc - S) && Abs(Sloc - S) > 0.4*M_PI) {
 	    vparit = !vparit;
 	    if(Sloc > S)
 	      usens++;
@@ -806,10 +820,10 @@ Handle(Adaptor2d_HCurve2d)
 	      vsens--;
 	  }
 	  if(vparit) {
-	    Pts2d(i).SetCoord(S+usens*PI,(PI - T)*(vsens-1));
+	    Pts2d(i).SetCoord(S+usens*M_PI,(M_PI - T)*(vsens-1));
 	  }	  
 	  else {
-	    Pts2d(i).SetCoord(S+usens*PI,T+vsens*PI);
+	    Pts2d(i).SetCoord(S+usens*M_PI,T+vsens*M_PI);
 	    
 	  }
 	}
@@ -826,19 +840,17 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S; Tloc = T;
 	  ElSLib::Parameters( Torus, Pts(i), S, T);
-	  if(Abs(Sloc - S) > PI) {
+	  if(Abs(Sloc - S) > M_PI)
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
-	  }
-	  if(Abs(Tloc - T) > PI) {
+	  if(Abs(Tloc - T) > M_PI)
 	    if(Tloc > T)
 	      vsens++;
 	    else
 	      vsens--;
-	  }
-	  Pts2d(i).SetCoord(S+usens*2*PI,T+vsens*2*PI);
+	  Pts2d(i).SetCoord(S+usens*2*M_PI,T+vsens*2*M_PI);
 	}
 	myProjIsDone = Standard_True;
 	break;
@@ -1272,8 +1284,8 @@ Handle(Geom2d_BSplineCurve)
       gp_Pnt p22 = BSS->Pole(2,2);
       gp_Vec V1(p11,p12);
       gp_Vec V2(p21,p22);
-      if(V1.IsEqual(V2,Tol3d,Tol3d/(p11.Distance(p12)*180/PI))){  //OCC217
-      //if(V1.IsEqual(V2,myTolerance,myTolerance/(p11.Distance(p12)*180/PI))){
+      if(V1.IsEqual(V2,Tol3d,Tol3d/(p11.Distance(p12)*180/M_PI))){  //OCC217
+      //if(V1.IsEqual(V2,myTolerance,myTolerance/(p11.Distance(p12)*180/M_PI))){
 	//  so the polar surface is plane
 	//  and if it is enough to projet the  poles of Curve
 	Standard_Integer Dist2Min = IntegerLast();
@@ -1373,8 +1385,8 @@ Handle(Geom2d_BSplineCurve)
       gp_Pnt p22 = BS->Pole(2,2);
       gp_Vec V1(p11,p12);
       gp_Vec V2(p21,p22);
-      if(V1.IsEqual(V2,Tol3d,Tol3d/(p11.Distance(p12)*180/PI))){ //OCC217
-      //if (V1.IsEqual(V2,myTolerance,myTolerance/(p11.Distance(p12)*180/PI))){ 
+      if(V1.IsEqual(V2,Tol3d,Tol3d/(p11.Distance(p12)*180/M_PI))){ //OCC217
+      //if (V1.IsEqual(V2,myTolerance,myTolerance/(p11.Distance(p12)*180/M_PI))){ 
 	//    and if it is enough to project the poles of Curve
 	Standard_Integer Dist2Min = IntegerLast();
 	Standard_Real u,v;
@@ -1566,8 +1578,8 @@ Handle(Geom2d_BSplineCurve)
     Standard_Integer NbKnots = NbCurves + 1;
     
     // The start and end nodes are not correct : Cf: opening of the interval
-    Knots( 1) -= 1.e-9;
-    Knots(NbKnots) += 1.e-9; 
+    //Knots( 1) -= 1.e-9;
+    //Knots(NbKnots) += 1.e-9; 
     
     
     TColStd_Array1OfInteger   Mults( 1, NbKnots);

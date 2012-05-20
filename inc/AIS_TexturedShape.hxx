@@ -55,7 +55,6 @@ class TopoDS_Shape;
 class TCollection_AsciiString;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
-class gp_Pnt;
 
 
 //! This class allows to map textures on shapes <br>
@@ -174,8 +173,6 @@ protected:
 
 private: 
 
-  
-  Standard_EXPORT     Standard_Boolean TriangleIsValid(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3) const;
 
 Graphic3d_NameOfTexture2D myPredefTexture;
 TCollection_AsciiString myTextureFile;

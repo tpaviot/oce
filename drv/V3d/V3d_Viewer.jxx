@@ -58,6 +58,9 @@
 #ifndef _Graphic3d_Vertex_HeaderFile
 #include <Graphic3d_Vertex.hxx>
 #endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>
 #endif

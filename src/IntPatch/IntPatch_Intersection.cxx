@@ -1,7 +1,21 @@
-// File       : IntPatch_Intersection.cxx
-// Created    : Wed Jui 7 18:00:00 1993
-// Author     : Modelization
-// Copyright  : OPEN CASCADE 1993
+// Created by: Modelization
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_Intersection.ixx>
 
@@ -285,7 +299,7 @@ static void FUN_GetUiso(const Handle(Geom_Surface)& GS,
   if(T !=  GeomAbs_OffsetSurface)
   {
     Handle(Geom_Curve) gc = GS->UIso(U);
-    if(IsVP && (FirstV == 0.0 && LastV == (2.*PI))) I = gc;
+    if(IsVP && (FirstV == 0.0 && LastV == (2.*M_PI))) I = gc;
     else
 	{
 	  Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
@@ -303,7 +317,7 @@ static void FUN_GetUiso(const Handle(Geom_Surface)& GS,
     if(IsVP || IsVC || GACT == GeomAbs_BSplineCurve || GACT == GeomAbs_BezierCurve || Abs(LastV - FirstV) < 1.e+5)
 	{
 	  Handle(Geom_Curve) gc = gos->UIso(U);
-	  if(IsVP && (FirstV == 0.0 && LastV == (2*PI))) I = gc;
+	  if(IsVP && (FirstV == 0.0 && LastV == (2*M_PI))) I = gc;
 	  else
       {
 	    Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstV,LastV);
@@ -355,7 +369,7 @@ static void FUN_GetViso(const Handle(Geom_Surface)& GS,
   if(T !=  GeomAbs_OffsetSurface)
   {
     Handle(Geom_Curve) gc = GS->VIso(V);
-    if(IsUP && (FirstU == 0.0 && LastU == (2*PI))) I = gc;
+    if(IsUP && (FirstU == 0.0 && LastU == (2*M_PI))) I = gc;
     else
 	{
 	  Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);
@@ -373,7 +387,7 @@ static void FUN_GetViso(const Handle(Geom_Surface)& GS,
     if(IsUP || IsUC || GACT == GeomAbs_BSplineCurve || GACT == GeomAbs_BezierCurve || Abs(LastU - FirstU) < 1.e+5)
 	{
 	  Handle(Geom_Curve) gc = gos->VIso(V);
-	  if(IsUP && (FirstU == 0.0 && LastU == (2*PI))) I = gc;
+	  if(IsUP && (FirstU == 0.0 && LastU == (2*M_PI))) I = gc;
 	  else
 	  {
 	    Handle(Geom_TrimmedCurve) gtc = new Geom_TrimmedCurve(gc,FirstU,LastU);

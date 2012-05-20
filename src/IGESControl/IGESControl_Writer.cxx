@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //cky 16.01.99 Remove couts.
 //rln 28.12.98 CCI60005
 
@@ -35,12 +52,13 @@
 IGESControl_Writer::IGESControl_Writer ()
     :  theTP (new Transfer_FinderProcess(10000)) ,
        thedit (IGESSelect_WorkLibrary::DefineProtocol()) ,
-       thecr (0) , thest (Standard_False)
+       thest (Standard_False)
 {
 //  faudrait aussi (?) prendre les parametres par defaut ... ?
   IGESControl_Controller::Init();
   thedit.SetUnitName(Interface_Static::CVal ("write.iges.unit"));
   thedit.ApplyUnit(); 
+  thecr = Interface_Static::IVal ("write.iges.brep.mode");
   themod = thedit.Model();
 }
 
@@ -101,13 +119,17 @@ Standard_Boolean IGESControl_Writer::AddShape (const TopoDS_Shape& theShape)
   Standard_Real maxTol = Interface_Static::RVal("read.maxprecision.val");
   TopoDS_Shape Shape = XSAlgo::AlgoContainer()->ProcessShape( theShape, Tol, maxTol, 
                                                               "write.iges.resource.name", 
-                                                              "write.iges.sequence", info );
+                                                              "write.iges.sequence", info,
+                                                              progress );
   //  modified by NIZHNY-EAP Tue Aug 29 11:17:01 2000 ___END___
   Handle(IGESData_IGESEntity) ent; 
   BRepToIGES_BREntity   B0;  B0.SetTransferProcess(theTP); B0.SetModel(themod);
   BRepToIGESBRep_Entity B1;  B1.SetTransferProcess(theTP); B1.SetModel(themod);
   if (thecr) ent = B1.TransferShape(Shape);
   else       ent = B0.TransferShape(Shape);
+
+  if(ent.IsNull())
+    return Standard_False;
 //  modified by NIZHNY-EAP Tue Aug 29 11:37:18 2000 ___BEGIN___
   XSAlgo::AlgoContainer()->MergeTransferInfo(theTP, info);
 //  modified by NIZHNY-EAP Tue Aug 29 11:37:25 2000 ___END___
@@ -224,9 +246,12 @@ Standard_Boolean IGESControl_Writer::Write
 {
   if (!S) return Standard_False;
   ComputeModel();
+  Standard_Integer nbEnt = themod->NbEntities();
 #ifdef DEBUG
-  cout<<" IGES Write : "<<themod->NbEntities()<<" ent.s"<< flush;
+  cout<<" IGES Write : "<<nbEnt<<" ent.s"<< flush;
 #endif
+  if(!nbEnt)
+    return Standard_False;
   IGESData_IGESWriter IW (themod);
 //  ne pas oublier le mode fnes ... a transmettre a IW
   IW.SendModel (IGESSelect_WorkLibrary::DefineProtocol());

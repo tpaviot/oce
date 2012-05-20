@@ -4,6 +4,9 @@
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
 #ifndef _ShapeFix_Shell_HeaderFile
 #include <ShapeFix_Shell.hxx>
 #endif

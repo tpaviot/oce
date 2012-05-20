@@ -1,8 +1,23 @@
--- File:	PrsMgr_PresentationManager.cdl
--- Created:	Wed Jan 25 08:45:35 1995
--- Author:	Jean-Louis Frenkel
---		<rmi@pernox>
----Copyright:	 Matra Datavision 1995
+-- Created on: 1995-01-25
+-- Created by: Jean-Louis Frenkel
+-- Copyright (c) 1995-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 deferred class PresentationManager from PrsMgr  
 inherits TShared from MMgt
@@ -78,6 +93,19 @@ is
 	-- Returns the display priority of the presentable object
 	-- aPresentableObject in this framework with the
 	-- display mode aMode.
+    
+    SetZLayer ( me                   : mutable;
+                thePresentableObject : PresentableObject from PrsMgr;
+                theLayerId           : Integer from Standard )
+      is static;
+    ---Purpose: Set Z layer ID for all presentations of the object.
+
+    GetZLayer ( me;
+                thePresentableObject : PresentableObject from PrsMgr )
+      returns Integer from Standard is static;
+    ---Purpose: Get Z layer ID assigned to all presentations of the object.
+    -- Method returns -1 value if object has no presentations and is
+    -- impossible to get layer index.
     
     IsDisplayed(me;aPresentableObject: PresentableObject from PrsMgr;
                 aMode: Integer from Standard = 0) 

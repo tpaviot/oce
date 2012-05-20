@@ -76,6 +76,12 @@ class SelectMgr_Selection;
 //! from your reference object. <br>
 //! The relation between the connected interactive object <br>
 //! and its source is generally one of geometric transformation. <br>
+//! AIS_ConnectedInteractive class doesn't support selection <br>
+//! modes different from 0. Descendants should redefine ComputeSelection() <br>
+//! method in order to handle other selection modes and generate connected <br>
+//! sensitive entities properly. Refer to AIS_ConnectedShape class <br>
+//! for exisiting implementation of a connected interactive object <br>
+//! for AIS_Shape that supports all standard sub-shape selection modes. <br>
 //! Warning <br>
 //! An Interactive entity which is view (or projector) <br>
 //! dependent requires recalculation of views in hidden <br>
@@ -164,14 +170,9 @@ private:
 //!          presentation of this last object, with <br>
 //!          a transformation if there's one stored. <br>
   Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  //! Recovers and calculates any sensitive primitive, <br>
-//! aSelection, available in Shape mode, specified by <br>
-//! aMode. As a rule, these are sensitive faces. <br>
-//! This method is defined as virtual. This enables you to <br>
-//! implement it in the creation of a new class of <br>
-//! Interactive Object. You need to do this and in so <br>
-//! doing, redefine this method, if you create a class <br>
-//! which enriches the list of signatures and types. <br>
+  //! Generates sensitive entities by copying <br>
+//! them from myReference selection, creates and sets an entity <br>
+//! owner for this entities and adds them to aSelection <br>
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
 
 

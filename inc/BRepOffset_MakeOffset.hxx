@@ -31,8 +31,8 @@
 #ifndef _TopTools_DataMapOfShapeReal_HeaderFile
 #include <TopTools_DataMapOfShapeReal.hxx>
 #endif
-#ifndef _TopTools_MapOfShape_HeaderFile
-#include <TopTools_MapOfShape.hxx>
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
 #endif
 #ifndef _BRepOffset_Analyse_HeaderFile
 #include <BRepOffset_Analyse.hxx>
@@ -57,6 +57,7 @@ class TopoDS_Shape;
 class TopoDS_Face;
 class BRepOffset_Analyse;
 class BRepAlgo_Image;
+class TopTools_IndexedMapOfShape;
 class TopTools_MapOfShape;
 class BRepOffset_Inter3d;
 class BRepOffset_DataMapOfShapeOffset;
@@ -113,7 +114,7 @@ public:
 //!          shapes and offset edges. <br>
   Standard_EXPORT    const BRepAlgo_Image& OffsetEdgesFromShapes() const;
   //! Returns the list of closing faces stores by AddFace <br>
-  Standard_EXPORT    const TopTools_MapOfShape& ClosingFaces() const;
+  Standard_EXPORT    const TopTools_IndexedMapOfShape& ClosingFaces() const;
 
 
 
@@ -136,13 +137,13 @@ private:
   
   Standard_EXPORT     void Intersection3D(BRepOffset_Inter3d& Inter) ;
   
-  Standard_EXPORT     void Intersection2D(const TopTools_MapOfShape& Modif,const TopTools_MapOfShape& NewEdges) ;
+  Standard_EXPORT     void Intersection2D(const TopTools_IndexedMapOfShape& Modif,const TopTools_IndexedMapOfShape& NewEdges) ;
   
-  Standard_EXPORT     void MakeLoops(TopTools_MapOfShape& Modif) ;
+  Standard_EXPORT     void MakeLoops(TopTools_IndexedMapOfShape& Modif) ;
   
   Standard_EXPORT     void MakeLoopsOnContext(TopTools_MapOfShape& Modif) ;
   
-  Standard_EXPORT     void MakeFaces(TopTools_MapOfShape& Modif) ;
+  Standard_EXPORT     void MakeFaces(TopTools_IndexedMapOfShape& Modif) ;
   
   Standard_EXPORT     void MakeShells() ;
   
@@ -170,7 +171,7 @@ Standard_Boolean mySelfInter;
 GeomAbs_JoinType myJoin;
 Standard_Boolean myThickening;
 TopTools_DataMapOfShapeReal myFaceOffset;
-TopTools_MapOfShape myFaces;
+TopTools_IndexedMapOfShape myFaces;
 BRepOffset_Analyse myAnalyse;
 TopoDS_Shape myOffsetShape;
 BRepAlgo_Image myInitOffsetFace;

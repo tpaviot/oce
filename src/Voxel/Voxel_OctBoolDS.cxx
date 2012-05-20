@@ -1,12 +1,30 @@
-// File:	Voxel_OctBoolDS.cxx
-// Created:	Mon Aug 27 15:33:27 2008
-// Author:	Vladislav ROMASHKO
-//		<vladislav.romashko@opencascade.com>
+// Created on: 2008-08-27
+// Created by: Vladislav ROMASHKO
+// Copyright (c) 2008-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Voxel_OctBoolDS.ixx>
 #include <Voxel_TypeDef.hxx>
 
 #include <stdlib.h>
+
+#include <TColStd_ListOfInteger.hxx>
+#include <TColStd_ListIteratorOfListOfInteger.hxx>
 
 static Standard_Byte gbits[8] = {1, 2, 4, 8, 16, 32, 64, 128};
 static Standard_Byte gnbits[8] = {255-1, 255-2, 255-4, 255-8, 255-16, 255-32, 255-64, 255-128};
@@ -255,6 +273,7 @@ void Voxel_OctBoolDS::OptimizeMemory()
     return;
 
   Standard_Byte value;
+  TColStd_ListOfInteger ixs, iys, izs, values;
   iXYZBool::Iterator itr(*((iXYZBool*)mySubVoxels));
   for (; itr.More(); itr.Next())
   {
@@ -262,9 +281,23 @@ void Voxel_OctBoolDS::OptimizeMemory()
     if (value == 0 || value == 255)
     {
       xyz = itr.Key();
-      Set(xyz.ix, xyz.iy, xyz.iz, value ? Standard_True : Standard_False);
-      UnSplit(xyz.ix, xyz.iy, xyz.iz);
+      ixs.Append(xyz.ix);
+      iys.Append(xyz.iy);
+      izs.Append(xyz.iz);
+      values.Append((Standard_Integer)value);
     }
+  }
+
+  TColStd_ListIteratorOfListOfInteger itrix(ixs), itriy(iys), itriz(izs), itrvalues(values);
+  for (; itrix.More(); itrix.Next(), itriy.Next(), itriz.Next(), itrvalues.Next())
+  {
+      const Standard_Integer ix = itrix.Value();
+      const Standard_Integer iy = itriy.Value();
+      const Standard_Integer iz = itriz.Value();
+      const Standard_Integer value = itrvalues.Value();
+
+      Set(ix, iy, iz, (value ? Standard_True : Standard_False));
+      UnSplit(ix, iy, iz);
   }
 
   // If the map is empty, release it.

@@ -1,3 +1,6 @@
+#ifndef _IntTools_Context_HeaderFile
+#include <IntTools_Context.hxx>
+#endif
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
 #endif
@@ -6,9 +9,6 @@
 #endif
 #ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _IntTools_Context_HeaderFile
-#include <IntTools_Context.hxx>
 #endif
 #ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>

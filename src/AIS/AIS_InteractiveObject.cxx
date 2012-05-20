@@ -1,7 +1,23 @@
-// File:	AIS_InteractiveObject.cxx
-// Created:	Wed Dec 18 14:44:37 1996
-// Author:	Robert COUBLANC
-//		<rob@robox.paris1.matra-dtv.fr>
+// Created on: 1996-12-18
+// Created by: Robert COUBLANC
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // Modified :   22/03/04 ; SAN : OCC4895 High-level interface for controlling polygon offsets 
 
@@ -11,7 +27,6 @@
 #define GER61351	//GG_171199     Enable to set an object RGB color
 //			instead a restricted object NameOfColor. 
 //			Add SetCurrentFacingModel() method
-//			
 
 #define G003		//EUG/GG 260100 DEgenerate mode support
 //			Add SetDegenerateModel() methods
@@ -42,6 +57,9 @@
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
 #include <AIS_GraphicTool.hxx>
 #include <Graphic3d_AspectFillArea3d.hxx>
+#include <Graphic3d_AspectLine3d.hxx>
+#include <Graphic3d_AspectMarker3d.hxx>
+#include <Graphic3d_AspectText3d.hxx>
 #include <Graphic3d_Group.hxx>
 #include <Graphic3d_Structure.hxx>
 
@@ -57,16 +75,20 @@ SelectMgr_SelectableObject(aTypeOfPresentation3d),
 myDrawer(new AIS_Drawer()),
 myTransparency(0.),
 myOwnColor(Quantity_NOC_WHITE),
+myOwnMaterial(Graphic3d_NOM_DEFAULT),
 myHilightMode(-1),
 myOwnWidth(0.0),
 myInfiniteState(Standard_False),
 hasOwnColor(Standard_False),
 hasOwnMaterial(Standard_False),
+myCurrentFacingModel(Aspect_TOFM_BOTH_SIDE),
 myRecomputeEveryPrs(Standard_True),
+myCTXPtr(NULL),
 mySelPriority(-1),
 myDisplayMode (-1),
 mySelectionMode(0),
-mystate(0)
+mystate(0),
+myHasTransformation(Standard_False)
 {
   Handle (AIS_InteractiveContext) Bid;
   myCTXPtr = Bid.operator->();
@@ -743,8 +765,27 @@ void AIS_InteractiveObject::SetPolygonOffsets(const Standard_Integer aMode,
       Handle(PrsMgr_Presentation3d)::DownCast( myPresentations(i).Presentation() );
     if ( !aPrs3d.IsNull() ) {
       aStruct = Handle(Graphic3d_Structure)::DownCast( aPrs3d->Presentation() );
-      if( !aStruct.IsNull() )
+      if( !aStruct.IsNull() ) {
         aStruct->SetPrimitivesAspect( myDrawer->ShadingAspect()->Aspect() );
+        // Workaround for issue 23115: Need to update also groups, because their
+        // face aspect ALWAYS overrides the structure's.
+        const Graphic3d_SequenceOfGroup& aGroups = aStruct->Groups();
+        Standard_Integer aGroupIndex = 1, aGroupNb = aGroups.Length();
+        for ( ; aGroupIndex <= aGroupNb; aGroupIndex++ ) {
+          Handle(Graphic3d_Group) aGrp = aGroups.Value(aGroupIndex);
+          if ( !aGrp.IsNull() && aGrp->IsGroupPrimitivesAspectSet(Graphic3d_ASPECT_FILL_AREA) ) {
+            Handle(Graphic3d_AspectFillArea3d) aFaceAsp = new Graphic3d_AspectFillArea3d();
+            Handle(Graphic3d_AspectLine3d) aLineAsp = new Graphic3d_AspectLine3d();
+            Handle(Graphic3d_AspectMarker3d) aPntAsp = new Graphic3d_AspectMarker3d();
+            Handle(Graphic3d_AspectText3d) aTextAsp = new Graphic3d_AspectText3d();
+            // TODO: Add methods for retrieving individual aspects from Graphic3d_Group
+            aGrp->GroupPrimitivesAspect(aLineAsp, aTextAsp, aPntAsp, aFaceAsp);
+            aFaceAsp->SetPolygonOffsets(aMode, aFactor, aUnits);
+            // TODO: Issue 23118 - This line kills texture data in the group...
+            aGrp->SetGroupPrimitivesAspect(aFaceAsp);
+          }
+        }
+      }
     }
   }
 }
@@ -771,39 +812,5 @@ void AIS_InteractiveObject::PolygonOffsets(Standard_Integer& aMode,
 {
   if( HasPolygonOffsets() )
     myDrawer->ShadingAspect()->Aspect()->PolygonOffsets( aMode, aFactor, aUnits );
-}
-
-void AIS_InteractiveObject::Fill(const Handle(PrsMgr_PresentationManager)& aPresentationManager,
-                                 const Handle(PrsMgr_Presentation)& aPresentation,
-                                 const Standard_Integer aMode)
-{
-  PrsMgr_PresentableObject::Fill(aPresentationManager, aPresentation, aMode);
-
-  // Update polygon offsets for <aPresentation> using <myDrawer> data
-  if ( !myDrawer->ShadingAspect().IsNull() )
-  {
-    Standard_Integer aMode1 = Aspect_POM_Fill;
-    Standard_Real aFactor = 1., aUnits = 0.;
-    myDrawer->ShadingAspect()->Aspect()->PolygonOffsets( aMode1, aFactor, aUnits );
-
-    // Here we force this object to have default polygon offsets , if they are not 
-    // turned on for this object explicitly
-    if ( ( aMode1 & Aspect_POM_None ) == Aspect_POM_None )
-    {
-      aMode1 = Aspect_POM_Fill;
-      aFactor = 1.;
-      aUnits = 0.;
-      myDrawer->ShadingAspect()->Aspect()->SetPolygonOffsets( aMode1, aFactor, aUnits );
-    }
-  }
-
-  Handle(PrsMgr_Presentation3d) aPrs3d =
-    Handle(PrsMgr_Presentation3d)::DownCast( aPresentation );
-  if ( !aPrs3d.IsNull() ) {
-    Handle(Graphic3d_Structure) aStruct = 
-      Handle(Graphic3d_Structure)::DownCast( aPrs3d->Presentation() );
-    if( !aStruct.IsNull() )
-      aStruct->SetPrimitivesAspect( myDrawer->ShadingAspect()->Aspect() );
-  }
 }
 // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 

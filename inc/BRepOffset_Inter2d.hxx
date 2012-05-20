@@ -21,7 +21,7 @@
 #endif
 class BRepAlgo_AsDes;
 class TopoDS_Face;
-class TopTools_MapOfShape;
+class TopTools_IndexedMapOfShape;
 class BRepOffset_Offset;
 class TopTools_DataMapOfShapeShape;
 
@@ -47,7 +47,7 @@ public:
   //! Computes the intersections between the edges stored <br>
 //!          is AsDes as descendants of <F> . Intersections is computed <br>
 //!          between two edges if one of them is bound in NewEdges. <br>
-  Standard_EXPORT   static  void Compute(const Handle(BRepAlgo_AsDes)& AsDes,const TopoDS_Face& F,const TopTools_MapOfShape& NewEdges,const Standard_Real Tol) ;
+  Standard_EXPORT   static  void Compute(const Handle(BRepAlgo_AsDes)& AsDes,const TopoDS_Face& F,const TopTools_IndexedMapOfShape& NewEdges,const Standard_Real Tol) ;
   
   Standard_EXPORT   static  void ConnexIntByInt(const TopoDS_Face& FI,BRepOffset_Offset& OFI,TopTools_DataMapOfShapeShape& MES,const TopTools_DataMapOfShapeShape& Build,const Handle(BRepAlgo_AsDes)& AsDes,const Standard_Real Offset,const Standard_Real Tol) ;
 

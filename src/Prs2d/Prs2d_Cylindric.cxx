@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Prs2d_Cylindric.ixx>
 
 Prs2d_Cylindric::Prs2d_Cylindric( const Handle(Graphic2d_GraphicObject)& aGO,
@@ -38,7 +55,7 @@ void Prs2d_Cylindric::Draw( const Handle(Graphic2d_Drawer)& aDrawer )  {
     gp_Vec2d theVec( thePnt1, gp_Pnt2d( X3, Y3 ) );
     theVec /= 2;
     thePnt1.Translate( theVec );
-    Standard_ShortReal theRad = Standard_ShortReal( myLength/2*Sin(Standard_PI / 3) );
+    Standard_ShortReal theRad = Standard_ShortReal( myLength/2*Sin(M_PI / 3) );
     Standard_ShortReal Xc = Standard_ShortReal(thePnt1.X()), 
                        Yc = Standard_ShortReal(thePnt1.Y());
 
@@ -94,7 +111,7 @@ void Prs2d_Cylindric::Draw( const Handle(Graphic2d_Drawer)& aDrawer )  {
     }
     aDrawer->MapSegmentFromTo( X1, Y1, X2, Y2 );
     aDrawer->MapSegmentFromTo( X4, Y4, X3, Y3 );
-    aDrawer->MapArcFromTo( Xc, Yc, theRad, 0.0, Standard_ShortReal( 2. * Standard_PI ) );
+    aDrawer->MapArcFromTo( Xc, Yc, theRad, 0.0, Standard_ShortReal( 2. * M_PI ) );
   }
 }
 

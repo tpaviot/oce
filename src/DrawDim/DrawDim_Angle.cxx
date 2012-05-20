@@ -1,7 +1,23 @@
-// File:	DrawDim_Angle.cxx
-// Created:	Tue May 28 12:36:20 1996
-// Author:	Denis PASCAL
-//		<dp@zerox>
+// Created on: 1996-05-28
+// Created by: Denis PASCAL
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <DrawDim_Angle.ixx>
@@ -104,7 +120,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
   
 
 
-  // calcul de myAxis
+  // calculation of myAxis
   gp_Pln pln1, pln2;
   if (!DrawDim::Pln(myPlane1,pln1)) return;
   if (!DrawDim::Pln(myPlane2,pln2)) return; 
@@ -124,7 +140,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
 
 // void AIS_AngleDimension::ComputeTwoFacesAngle(const Handle(Prs3d_Presentation)& aPresentation)
 // {
-  // Recuperation des plans
+  // Return planes
  
   gp_Pnt curpos;
   gp_Ax1 AxePos = myAxis;      
@@ -154,7 +170,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
   }
   else {
     curpos = myPosition;
-    //myFAttach  = le point de myFShape le plus proche de curpos (sauf si c'est un point sur l'axe)
+    //myFAttach  = the point of myFShape closest to curpos (except for the case when this is a point on the axis)
     Standard_Real dist = RealLast(); 
     TopExp_Explorer explo1(myFShape,TopAbs_VERTEX);
     gp_Pnt  AxePosition = AxePos.Location();
@@ -165,6 +181,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
       gp_Vec curvec (AxePosition, curpt);
       gp_XYZ curXYZ = curvec.XYZ();
       gp_XYZ Norm (curXYZ.Crossed(AxeXYZ));
+
       if (Norm.Modulus() > gp::Resolution()) {
 	Standard_Real curdist = curpos.Distance (curpt);
 	if (curdist < dist) {
@@ -185,7 +202,7 @@ void DrawDim_Angle::DrawOn(Draw_Display& ) const
   mySDir.SetXYZ (SVec.XYZ());
 
   if (!myAutomaticPosition) {
-    //Projection de la position sur le plan defini par  myFDir mySDir et de normale  theAxisDir
+    //Projection of the position on the plane defined by myFDir mySDir and normal theAxisDir
     gp_Pln aPln (myCenter, theAxisDir);
     Standard_Real U,V;
     ElSLib::Parameters (aPln, curpos, U, V);

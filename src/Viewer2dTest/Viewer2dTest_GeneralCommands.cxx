@@ -1,7 +1,22 @@
-// File:      Viewer2dTest_GeneralCommands.cxx
-// Created:   22.01.02 16:21:20
-// Author:    Julia DOROVSKIKH
-// Copyright: Open Cascade 2001
+// Created on: 2002-01-22
+// Created by: Julia DOROVSKIKH
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Viewer2dTest.hxx>
 
@@ -361,7 +376,7 @@ static int V2dDebug (Draw_Interpretor& di, Standard_Integer , const char** )
   OSD_Timer myTimer;
   TheAIS2DContext()->CloseLocalContext();
   
-  Standard_Real Step = 4*PI/180;
+  Standard_Real Step = 4*M_PI/180;
   Standard_Real Angle = 0;
   
   Handle(AIS2D_InteractiveObject) aIO;
@@ -383,7 +398,7 @@ static int V2dDebug (Draw_Interpretor& di, Standard_Integer , const char** )
   if (atoi(argv[2]) == 1)
   { 
     cout << " Calcul par Transformation" << endl;
-    for (Standard_Real myAngle = 0; Angle < 10*2*PI; myAngle++)
+    for (Standard_Real myAngle = 0; Angle < 10*2*M_PI; myAngle++)
     {
       Angle = Step*myAngle;
       gp_Trsf myTransfo;
@@ -400,7 +415,7 @@ static int V2dDebug (Draw_Interpretor& di, Standard_Integer , const char** )
     TopLoc_Location myDeltaAngle (myAngleTrsf);
     TopLoc_Location myTrueLoc;
     
-    for (Standard_Real myAngle = 0; Angle < 10*2*PI; myAngle++)
+    for (Standard_Real myAngle = 0; Angle < 10*2*M_PI; myAngle++)
     {
       Angle = Step*myAngle;
       myTrueLoc = myTrueLoc*myDeltaAngle;
@@ -480,9 +495,9 @@ static int V2dDebug (Draw_Interpretor& di, Standard_Integer , const char** )
 //  TheAIS2DContext()->Deactivate(myAisPropeller   );
   
   // Boucle de mouvement
-  for (Standard_Real myAngle = 0; angleA < 2*PI*10.175; myAngle++)
+  for (Standard_Real myAngle = 0; angleA < 2*M_PI*10.175; myAngle++)
   {
-    angleA = thread*myAngle*PI/180;
+    angleA = thread*myAngle*M_PI/180;
     X = Sin(angleA)*3/8;
     angleB = atan(X / Sqrt(-X * X + 1));
 //    Standard_Real decal(25*0.6);

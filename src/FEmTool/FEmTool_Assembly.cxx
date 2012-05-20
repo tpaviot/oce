@@ -1,7 +1,23 @@
-// File:	FEmTool_Assembly.cxx
-// Created:	Tue Nov 17 12:07:58 1998
-// Author:	Igor FEOKTISTOV
-//		<ifv@paradox.nnov.matra-dtv.fr>
+// Created on: 1998-11-17
+// Created by: Igor FEOKTISTOV
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <FEmTool_Assembly.ixx>
@@ -81,6 +97,7 @@ FEmTool_Assembly::FEmTool_Assembly(const TColStd_Array2OfInteger& Dependence,
   TColStd_Array1OfInteger FirstIndexes(1, B.Length()); FirstIndexes.Init(B.Length());
 
   Standard_Integer dim, el, nvar, Imin, I0 = 1 - B.Lower(), i;
+
   Standard_Integer diml = Table->LowerRow(), dimu = Table->UpperRow(),
                    ell = Table->LowerCol(), elu = Table->UpperCol(), nvarl, nvaru;
 
@@ -133,7 +150,9 @@ void FEmTool_Assembly::AddMatrix(const Standard_Integer Element,
 
   Standard_Integer nvarl = T1.Lower(), nvaru = Min(T1.Upper(), nvarl + Mat.RowNumber() - 1);
 
+
   Standard_Integer I, J, I0 = 1 - B.Lower(), i, ii, j,
+
                    i0 = Mat.LowerRow() - nvarl, j0 = Mat.LowerCol() - nvarl;
 
   for(i = nvarl; i <= nvaru; i++) {

@@ -155,6 +155,9 @@ public:
 //!          and removes all polygons on triangulations of the <br>
 //!          edges. <br>
   Standard_EXPORT   static  void Clean(const TopoDS_Shape& S) ;
+  //! Removes all the pcurves of the edges of <S> that <br>
+//!          refer to surfaces not belonging to any face of <S> <br>
+  Standard_EXPORT   static  void RemoveUnusedPCurves(const TopoDS_Shape& S) ;
   //! verifies that each face from the shape <S> has got <br>
 //!          a triangulation  with a  deflection <= deflec  and <br>
 //!          the edges a discretisation on  this triangulation. <br>

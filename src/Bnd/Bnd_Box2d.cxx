@@ -1,7 +1,23 @@
-// File:	Bnd_Box2d.cxx
-// Created:	Wed Oct 30 16:21:56 1991
-// Author:	Modelisation
-//		<model@sdsun1>
+// Created on: 1991-10-30
+// Created by: Modelisation
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Bnd_Box2d.ixx>
 #include <Standard_Stream.hxx>
@@ -204,14 +220,16 @@ void Bnd_Box2d::Add (const gp_Dir2d& D)
 {
   Standard_Real DX = D.X();
   Standard_Real DY = D.Y();
-  if (DX < 0) {
-    if (DX < - gp::Resolution()) OpenXmin();
-  } else
-    if (DX >   gp::Resolution()) OpenXmax();
-  if (DY < 0) {
-    if (DY < - gp::Resolution()) OpenYmin();
-  } else
-    if (DY >   gp::Resolution()) OpenYmax();
+
+  if (DX < -RealEpsilon()) 
+    OpenXmin();
+  else if (DX > RealEpsilon()) 
+    OpenXmax();
+
+  if (DY < -RealEpsilon())
+    OpenYmin();
+  else if (DY > RealEpsilon())
+    OpenYmax();
 }
 
 //=======================================================================

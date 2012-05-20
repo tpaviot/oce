@@ -1,10 +1,25 @@
+// Created by: NW,JPB,CAL
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// File		Graphic3d_Vector.cxx
-// Created	Fevrier 1992
-// Author	NW,JPB,CAL
+
 // Modified	27/12/98 : FMN ; PERF: OPTIMISATION LOADER (LOPTIM)
 
-//-Copyright	MatraDatavision 1991,1992
 
 //-Version	
 
@@ -166,14 +181,15 @@ Standard_Boolean Graphic3d_Vector::IsNormalized () const {
 
 Standard_Boolean Graphic3d_Vector::IsParallel (const Graphic3d_Vector& AV1, const Graphic3d_Vector& AV2) {
 
-Standard_Real Result;
+  Standard_Real aDif1 = 0, aDif2 = 0, aDif3 = 0;
 
-	Result	= (AV1.Y () * AV2.Z () - AV1.Z () * AV2.Y ())
-		- (AV1.X () * AV2.Z () - AV1.Z () * AV2.X ())
-		- (AV1.X () * AV2.Y () - AV1.Y () * AV2.X ());
+  aDif1 = AV1.X () * AV2.Y () - AV1.Y () * AV2.X ();
+  aDif2 = AV1.X () * AV2.Z () - AV1.Z () * AV2.X ();
+  aDif3 = AV1.Y () * AV2.Z () - AV1.Z () * AV2.Y ();
 
-	return (Abs (Result) <= Graphic3d_Vector_MyEpsilon);
-
+  return (  (Abs (aDif1) <= Graphic3d_Vector_MyEpsilon) &&
+            (Abs (aDif2) <= Graphic3d_Vector_MyEpsilon) &&
+            (Abs (aDif3) <= Graphic3d_Vector_MyEpsilon)  );
 }
 
 Standard_Real Graphic3d_Vector::NormeOf (const Standard_Real AX, const Standard_Real AY, const Standard_Real AZ) {

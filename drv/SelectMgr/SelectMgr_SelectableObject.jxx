@@ -19,6 +19,9 @@
 #ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
 #endif
+#ifndef _PrsMgr_PresentationManager_HeaderFile
+#include <PrsMgr_PresentationManager.hxx>
+#endif
 #ifndef _SelectMgr_SelectableObject_HeaderFile
 #include <SelectMgr_SelectableObject.hxx>
 #endif

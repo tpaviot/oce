@@ -1,7 +1,22 @@
-// File:	DNaming_ModelingCommands.cxx
-// Created:	Fri Jan 15 14:40:11 2010
-// Author:	Sergey ZARITCHNY
-//		<szy@opencascade.com>
+// Created on: 2010-01-15
+// Created by: Sergey ZARITCHNY
+// Copyright (c) 2010-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Draw_Interpretor.hxx>
 #include <Standard_ErrorHandler.hxx>
@@ -976,7 +991,6 @@ static Standard_Integer DNaming_AddFillet (Draw_Interpretor& theDI,
 
   TDF_Reference::Set(anObject->Label(), aFun->Label().FindChild(FUNCTION_RESULT_LABEL)); //result is here 
 
-
   Standard_Real aRadius = atof(theArg[3]);
   DNaming::GetReal(aFun,FILLET_RADIUS)->Set(aRadius);  
 
@@ -1102,7 +1116,7 @@ static Standard_Integer DNaming_PRotateLine(Draw_Interpretor& di,
 
     Standard_Real anAngle = 0.;
     anAngle =  atof(a[4]);
-    Standard_Real aK = 2*PI/360;
+    Standard_Real aK = 2*M_PI/360;
     anAngle = anAngle * aK;
     DNaming::GetReal(aFun,PTRANSF_ANG)->Set(anAngle);
 
@@ -1264,7 +1278,7 @@ static Standard_Integer DNaming_AddRevol (Draw_Interpretor& theDI,
 
   if(theNb > 4 ) {  
     Standard_Real angle = atof(theArg[4]);
-    Standard_Real aK = 2*PI/360;
+    Standard_Real aK = 2*M_PI/360;
     angle = angle * aK;
     DNaming::GetReal(aFun,REVOL_ANGLE)->Set(angle);
     if( theNb == 6) {
@@ -1372,6 +1386,7 @@ static Standard_Integer DNaming_SphereRadius (Draw_Interpretor& theDI,
       return 0;
     }
   }
+
   cout << "DNaming_SphRadius : Error" << endl;
   return 1;  
 }
@@ -1966,6 +1981,7 @@ static Standard_Integer DNaming_TestSingle (Draw_Interpretor& theDI,
       return 0;
     }
   }
+
   cout << "DNaming_TestSingle : Error" << endl;
   return 1;  
 }
@@ -2095,6 +2111,7 @@ static Standard_Integer DNaming_Multiple (Draw_Interpretor& theDI,
       return 0;
     }
   }
+
   cout << "DNaming_TestMultiple : Error" << endl;
   return 1;  
 }

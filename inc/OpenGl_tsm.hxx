@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
 
 FONCTION :
@@ -25,15 +43,9 @@ et TelBackInteriorShadingMethod
 #ifndef  OPENGL_TSM_H
 #define  OPENGL_TSM_H
 
-#define G003  /* EUG 21-09-99 Degeneration management
-*/
-
 #define OCC1188 /* SAV 23/12/02 Added structure to control background texture
 + enum to control texture fill method
 */
-
-
-#include <OpenGl_cmn_varargs.hxx>
 
 typedef  enum
 {
@@ -97,9 +109,7 @@ typedef  enum
   TelTextStyle,
   TelTextDisplayType, 
   TelTextColourSubTitle, 
-#ifdef G003
   TelDegenerationMode,
-#endif  /* G003 */
   TelTextZoomable,//Text Zoomable attributes
   TelTextAngle,//Text Angle attributes
   TelTextFontAspect,//Text Font Aspect attributes 
@@ -115,111 +125,5 @@ typedef  enum
   /* OCC???? SZV 11/08/05 Implementation of callbacks */
   TelLast
 } TelType;
-
-typedef  union  TSM_ELEM_DATA_UNION
-{
-  void      *pdata;
-  Tint       ldata;
-} TSM_ELEM_DATA, *tsm_elem_data;
-
-typedef  struct  TSM_ELEM_STRUCT
-{
-  TelType        el;
-  TSM_ELEM_DATA  data;
-  IMPLEMENT_MEMORY_OPERATORS
-} TSM_ELEM, *tsm_elem;
-
-/* A node containing an elem when structure is in the form of a list */
-struct  TSM_NODE_STRUCT
-{
-  struct  TSM_NODE_STRUCT  *next;
-  struct  TSM_NODE_STRUCT  *prev;
-  TSM_ELEM   elem;
-  IMPLEMENT_MEMORY_OPERATORS
-};
-typedef TSM_NODE_STRUCT  TSM_NODE;
-typedef TSM_NODE_STRUCT* tsm_node;
-
-#ifdef OCC1188
-/* background texture properties */
-typedef enum
-{
-  TSM_FS_CENTER,
-  TSM_FS_TILE,
-  TSM_FS_STRETCH
-} TSM_FillStyle;
-
-typedef struct 
-{
-  Tuint           texId;
-  Tint            width;
-  Tint            height;
-  TSM_FillStyle   style;
-  IMPLEMENT_MEMORY_OPERATORS
-} TSM_BG_TEXTURE, *tsm_bg_texture;
-#endif /* OCC1188 */
-
-typedef enum
-{
-  TSM_GT_NONE,
-  TSM_GT_HOR,
-  TSM_GT_VER,
-  TSM_GT_DIAG1,
-  TSM_GT_DIAG2,
-  TSM_GT_CORNER1,
-  TSM_GT_CORNER2,
-  TSM_GT_CORNER3,
-  TSM_GT_CORNER4
-} TSM_GradientType;
-
-typedef struct 
-{
-  TEL_COLOUR     color1;
-  TEL_COLOUR     color2;
-  TSM_GradientType   type;
-  IMPLEMENT_MEMORY_OPERATORS
-} TSM_BG_GRADIENT, *tsm_bg_gradient;
-
-
-typedef  enum
-{
-  PickTraverse=0,
-  DisplayTraverse,
-  Add,
-  Delete,
-  Print,
-  Inquire
-} TMsgType;
-
-typedef  enum
-{
-  TEditInsert = 1,
-  TEditReplace
-} TEditMode;
-
-extern  Tint  TglActiveWs;      /* currently defined in tsm/tsm.c */
-
-typedef  TStatus (**MtblPtr)( TSM_ELEM_DATA, Tint, cmn_key* );
-
-extern  void      TsmInitAllClasses( MtblPtr  (**tbl)(TelType*), Tint size );
-
-extern  TEditMode TsmSetEditMode( TEditMode );
-extern  TStatus   TsmSendMessage( TelType, TMsgType, TSM_ELEM_DATA, Tint, ... );
-extern  TStatus   TsmOpenStructure( Tint );
-extern  TStatus   TsmCloseStructure();
-extern  TStatus   TsmDisplayStructure( Tint, Tint );
-extern  TStatus   TsmPrintStructure( Tint );
-extern  TStatus   TsmAddToStructure( TelType, Tint, ... );
-extern  TStatus   TsmDeleteStructure( Tint );
-extern  TStatus   TsmDeleteElement();
-extern  TStatus   TsmDeleteElementsBetweenLabels( Tint, Tint );
-extern  TStatus   TsmDeleteElementRange( Tint, Tint );
-extern  TStatus   TsmSetElementPointer( Tint );
-extern  TStatus   TsmSetElementPointerAtLabel( Tint );
-extern  TStatus   TsmOffsetElementPointer( Tint );
-extern  TStatus   TsmGetStructure( Tint, Tint*, tsm_node * );
-extern  TStatus   TsmGetStructureDepth( Tint, Tint* );
-extern  TStatus   TsmGetCurElem( TSM_ELEM * );
-extern  TStatus   TsmGetCurElemPtr( Tint * );
 
 #endif

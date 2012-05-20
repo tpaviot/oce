@@ -46,6 +46,9 @@
 #ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
 #endif
+#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
+#include <Handle_PrsMgr_PresentationManager.hxx>
+#endif
 class Prs3d_Presentation;
 class Standard_NotImplemented;
 class SelectMgr_SelectionManager;
@@ -53,6 +56,7 @@ class SelectMgr_Selection;
 class PrsMgr_PresentationManager3d;
 class SelectMgr_SequenceOfOwner;
 class SelectMgr_EntityOwner;
+class PrsMgr_PresentationManager;
 
 
 //! A framework to supply the structure of the object to be <br>
@@ -123,6 +127,12 @@ public:
   Standard_EXPORT     Handle_Prs3d_Presentation GetHilightPresentation(const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
   
   Standard_EXPORT     Handle_Prs3d_Presentation GetSelectPresentation(const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
+  //! Set Z layer ID and update all presentations of <br>
+//! the selectable object. The layer can be set only for displayed object. <br>
+//! If all object presentations are removed, the layer ID will be set to <br>
+//! default value when computing presentation. The layers mechanism allows <br>
+//! drawing objects in higher layers in overlay of objects in lower layers. <br>
+  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
 
 
 friend class SelectMgr_SelectionManager;

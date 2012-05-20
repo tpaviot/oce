@@ -1,6 +1,12 @@
 #ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
 #endif
+#ifndef _TColStd_HArray1OfInteger_HeaderFile
+#include <TColStd_HArray1OfInteger.hxx>
+#endif
+#ifndef _TColStd_HArray1OfListOfInteger_HeaderFile
+#include <TColStd_HArray1OfListOfInteger.hxx>
+#endif
 #ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
 #endif
@@ -13,9 +19,6 @@
 #ifndef _Interface_GTool_HeaderFile
 #include <Interface_GTool.hxx>
 #endif
-#ifndef _Interface_IntList_HeaderFile
-#include <Interface_IntList.hxx>
-#endif
 #ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
 #endif
@@ -24,6 +27,9 @@
 #endif
 #ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
+#endif
+#ifndef _TColStd_HSequenceOfTransient_HeaderFile
+#include <TColStd_HSequenceOfTransient.hxx>
 #endif
 #ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>

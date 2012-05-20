@@ -1,7 +1,23 @@
-// File:	GccAna_Circ2d2TanOn_4.cxx
-// Created:	Thu Jan  2 15:54:38 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-01-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2d2TanOn.jxx>
 
@@ -19,21 +35,21 @@
 #include <GccEnt_BadQualifier.hxx>
 #include <Precision.hxx>
 //=========================================================================
-//   Creation d un cercle Tangent a   : 1 droite L1.                      +
-//                        Passant par : 1 point Point2.                   +
-//                        Centre sur  : 1 droite OnLine.                  +
-//   avec une Tolerance de precision  : Tolerance.                        +
+//   Creation of a circle Tangent to : 1 straight line L1.                +
+//                        Passing by : 1 point Point2.                    +
+//                        Centered on  : 1 straight line OnLine.                  +
+//   with a Tolerance of precision  : Tolerance.                        +
 //                                                                        +
-//  Nous commencons par distinguer les differents cas limites que nous    +
-//  allons traiter separement.                                            +
-//  Pour le cas general:                                                  +
+//  We start by making difference with various boundary cases that will be +
+//  processed separately.                                            +
+//  For the general case:                                                  +
 //  ====================                                                  +
-//  Nous calculons les bissectrices a L1 et Point2 qui nous donnent       +
-//  l ensemble des lieux possibles des centres de tous les cercles        +
-//  tangents a L1 et passant par Point2.                                  +
-//  Nous intersectons ces bissectrices avec la droite OnLine ce qui nous  +
-//  donne les points parmis lesquels nous allons choisir les solutions.   +
-//  Les choix s effectuent a partir des Qualifieurs qualifiant L1.        +
+//  We calculate bissectrices to L1 and Point2 that give us       +
+//  all possible locations of centers of all circles        +
+//  tangent to L1 and passing through Point2.                                  +
+//  We intersect these bissectrices with straight line OnLine which gives us +
+//  the points among which we'll choose the solutions.   +
+//  The choices are made basing on Qualifieurs of L1.        +
 //=========================================================================
 
 GccAna_Circ2d2TanOn::
@@ -72,12 +88,12 @@ GccAna_Circ2d2TanOn::
   gp_Dir2d normal(-dirL1.Y(),dirL1.X());
 
 //=========================================================================
-//   Traitement des cas limites.                                          +
+//   Processing of boundary cases.                                          +
 //=========================================================================
 
   if (dirL1.IsEqual(OnLine.Direction(),Precision::Confusion()) &&
       OnLine.Distance(originL1)<Precision::Confusion()) {
-    // POP : l2s 2 droites sont identiques : pas de Sol
+    // POP : l2s 2 straight line are identic : no Sol
     NbrSol = 0;
     return ;
   }
@@ -128,7 +144,7 @@ GccAna_Circ2d2TanOn::
   }
 
 //=========================================================================
-//   cas general.                                                         +
+//   General case.                                                        +
 //=========================================================================
 
   GccAna_LinPnt2dBisec Bis(L1,Point2);

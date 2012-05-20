@@ -1,7 +1,23 @@
-// File:	DBRep_9.cxx
-// Created:	Mon Jun 20 12:32:34 1994
-// Author:	Modeling
-//		<modeling@phylox>
+// Created on: 1994-06-20
+// Created by: Modeling
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -212,13 +228,13 @@ static Standard_Integer CheckHist(Draw_Interpretor& di,
 				  const char** )
 {
   if(Rakk == 0) {
-    //cout<<"Pas de Builder actif"<<endl;
-    di<<"Pas de Builder actif"<<"\n";
+    //cout<<"No active Builder"<<endl;
+    di<<"No active Builder"<<"\n";
     return 1;
   }
   if(!Rakk->IsDone()) {
-    //cout<<"Builder actif Not Done"<<endl;
-    di<<"Builder actif Not Done"<<"\n";
+    //cout<<"Active Builder Not Done"<<endl;
+    di<<"Active Builder Not Done"<<"\n";
     return 1;
   }
   Standard_Integer nbc = Rakk->NbContours();
@@ -274,8 +290,8 @@ static Standard_Integer UPDATEVOL(Draw_Interpretor& di,
 				  const char** a)
 {
   if(Rake == 0){
-    //cout << "MakeFillet non initialise"<<endl;
-    di << "MakeFillet non initialise"<<"\n";
+    //cout << "MakeFillet not initialized"<<endl;
+    di << "MakeFillet not initialized"<<"\n";
     return 1 ;
   }
   if(narg%2 != 0 || narg < 4) return 1;
@@ -298,8 +314,8 @@ static Standard_Integer BUILDEVOL(Draw_Interpretor& di,
 				  const char**)
 {
   if(Rake == 0){
-    //cout << "MakeFillet non initialise"<<endl;
-    di << "MakeFillet non initialise"<<"\n";
+    //cout << "MakeFillet not initialized"<<endl;
+    di << "MakeFillet not initialized"<<"\n";
     return 1 ;
   }
   Rake->Build();
@@ -317,7 +333,7 @@ static Standard_Integer BUILDEVOL(Draw_Interpretor& di,
 
 
 //**********************************************
-// commande  des fusions et coupes avec conges *
+// command fuse and cut with fillets *
 //**********************************************
 
 Standard_Integer topoblend(Draw_Interpretor& di, Standard_Integer narg, const char** a)
@@ -497,7 +513,7 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
      else if (err==FilletSurf_PbFilletCompute) di <<"StatusError=PBFillet"<<"\n";
    }
    else {
-    if (Rakk.IsDone()==FilletSurf_IsPartial) di <<"resultat partiel"<<"\n"; 
+    if (Rakk.IsDone()==FilletSurf_IsPartial) di <<"partial result"<<"\n"; 
  
     nb=Rakk.NbSurface();
     char localname [100];
@@ -514,11 +530,11 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
     //else if (Rakk.StartSectionStatus()==FilletSurf_TwoExtremityOnEdge)
     //  {cout<<" type deb conges = WLBLEND"<<endl;}
     if (Rakk.StartSectionStatus()==FilletSurf_NoExtremityOnEdge) 
-      {di<<" type deb conges = WLBLOUT"<<"\n";}
+      {di<<" type start fillets = WLBLOUT"<<"\n";}
     else if (Rakk.StartSectionStatus()==FilletSurf_OneExtremityOnEdge ) 
-      { di<<" type deb conges = WLBLSTOP"<<"\n";}
+      { di<<" type start fillets = WLBLSTOP"<<"\n";}
     else if (Rakk.StartSectionStatus()==FilletSurf_TwoExtremityOnEdge)
-      {di<<" type deb conges = WLBLEND"<<"\n";}
+      {di<<" type start fillets = WLBLEND"<<"\n";}
     
     //if (Rakk.EndSectionStatus()==FilletSurf_NoExtremityOnEdge) 
     //  {cout<<" type fin  conges = WLBLOUT"<<endl;}
@@ -527,30 +543,30 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
     //else if (Rakk.EndSectionStatus()==FilletSurf_TwoExtremityOnEdge) 
     //  { cout<<" type fin  conges = WLBLEND"<<endl;}
     if (Rakk.EndSectionStatus()==FilletSurf_NoExtremityOnEdge) 
-      {di<<" type fin  conges = WLBLOUT"<<"\n";}
+      {di<<" type end fillets = WLBLOUT"<<"\n";}
     else if (Rakk.EndSectionStatus()==FilletSurf_OneExtremityOnEdge) 
-      {di<<" type fin  conges = WLBLSTOP"<<"\n";}
+      {di<<" type end fillets = WLBLSTOP"<<"\n";}
     else if (Rakk.EndSectionStatus()==FilletSurf_TwoExtremityOnEdge) 
-      { di<<" type fin  conges = WLBLEND"<<"\n";}
+      { di<<" type end fillets = WLBLEND"<<"\n";}
     Standard_Real f,l;
     f = Rakk.FirstParameter();
     l = Rakk.LastParameter();
-    //cout<<"parametre sur edge debut : "<<f<<endl;
-    //cout<<"parametre sur edge fin   : "<<l<<endl;
-    di<<"parametre sur edge debut : "<<f<<"\n";
-    di<<"parametre sur edge fin   : "<<l<<"\n";
+    //cout<<"parameter on edge start : "<<f<<endl;
+    //cout<<"parameter on edge end   : "<<l<<endl;
+    di<<"parametre on edge start : "<<f<<"\n";
+    di<<"parametre on edge end   : "<<l<<"\n";
     for (i=1;i<=nb;i++){
       //precision 
       //cout<<"precision "<< i << "= "<<Rakk.TolApp3d(i)<<endl;
       di<<"precision "<< i << "= "<<Rakk.TolApp3d(i)<<"\n";
       
-      // affichage des surfaces resultats 
+      // display resulting surfaces  
       sprintf(localname, "%s%d" ,ns0,i);
       temp = localname;
       DrawTrSurf::Set(temp,Rakk.SurfaceFillet(i));
       di << localname<< " ";
       
-      //affichage des courbes 3d 
+      // display curves 3d 
       sprintf(localname, "%s%d" ,"courb1",i);
       temp =localname; 
       DrawTrSurf::Set(temp,Rakk.CurveOnFace1(i));
@@ -560,7 +576,7 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
       DrawTrSurf::Set(temp,Rakk.CurveOnFace2(i));
       di << localname<< " ";     
       
-      // affichage des supports 
+      // display supports 
       sprintf(localname, "%s%d" ,"face1",i);
       temp =localname ;
       DBRep::Set(temp,Rakk.SupportFace1(i));
@@ -570,7 +586,7 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
       DBRep::Set(temp,Rakk.SupportFace2(i));
       di << localname<< " ";
       
-      // affichage des Pcurve sur les faces 
+      // display Pcurves on faces 
       sprintf(localname, "%s%d" ,"pcurveonface1",i);
       temp =localname ;
       DrawTrSurf::Set(temp,Rakk.PCurveOnFace1(i));
@@ -580,7 +596,7 @@ static Standard_Integer blend1(Draw_Interpretor& di, Standard_Integer narg, cons
       DrawTrSurf::Set(temp,Rakk.PCurveOnFace2(i));
       di << localname<< " ";
       
-      // affichage des Pcurve sur le conge
+      // display Pcurves on the fillet
       sprintf(localname, "%s%d" ,"pcurveonconge1",i);
       temp =localname;
       DrawTrSurf::Set(temp,Rakk.PCurve1OnFillet(i));
@@ -621,7 +637,7 @@ Standard_Integer rollingball(Draw_Interpretor& di, Standard_Integer n, const cha
   if ( S.IsNull()) return 1;
   Standard_Real Rad = atof(a[3]);
   
-  Standard_Real Tol = t3d; //le meme que blend ! 1.e-7;
+  Standard_Real Tol = t3d; //the same as blend ! 1.e-7;
   
   BiTgte_Blend Roll;
   Roll.Init(S,Rad,Tol,Standard_False);
@@ -633,44 +649,44 @@ Standard_Integer rollingball(Draw_Interpretor& di, Standard_Integer n, const cha
       continue;
     }
 
-    if ( Nb == 0) { // on recupere les faces d'arret.
+    if ( Nb == 0) { // return stop faces.
       TopoDS_Shape aLocalFace(DBRep::Get(a[i],TopAbs_FACE));
       TopoDS_Face F1 = TopoDS::Face(aLocalFace);
 //      TopoDS_Face F1 = TopoDS::Face(DBRep::Get(a[i],TopAbs_FACE));
       if ( F1.IsNull()) {
-	//cout << " Face d'arret non reperee." << endl;
-	di << " Face d'arret non reperee." << "\n";
+	//cout << " Stop face not referenced." << endl;
+	di << " Stop face not referenced." << "\n";
 	return 1;
       }
       Roll.SetStoppingFace(F1);
     }
-    else if (Nb == 1) { // on recupere les faces sur lesquelles la bille roule
+    else if (Nb == 1) { // return faces on which the ball rotates
       TopoDS_Shape aLocalFace(DBRep::Get(a[i],TopAbs_FACE));
       TopoDS_Face F1 = TopoDS::Face(aLocalFace);
 //      TopoDS_Face F1 = TopoDS::Face(DBRep::Get(a[i],TopAbs_FACE));
       i++;
       if ( !strcmp(a[i],"@")) {
-	//cout << " Il faut un nombre pair de faces d'appui de la bille" << endl;
-	di << " Il faut un nombre pair de faces d'appui de la bille" << "\n";
+	//cout << " Even number of ball support faces is required " << endl;
+	di << " Even number of ball support faces is required " << "\n";
 	return 1;
       }
       aLocalFace = DBRep::Get(a[i],TopAbs_FACE);
       TopoDS_Face F2 = TopoDS::Face(aLocalFace);
 //      TopoDS_Face F2 = TopoDS::Face(DBRep::Get(a[i],TopAbs_FACE));
       if ( F1.IsNull() || F2.IsNull()) {
-	//cout << " Face d'appui non reperee." << endl;
-	di << " Face d'appui non reperee." << "\n";
+	//cout << " Support face not referenced." << endl;
+	di << " Support face not referenced." << "\n";
 	return 1;
       }
       Roll.SetFaces(F1,F2);
     }
-    else if (Nb == 2) { // on recupere l'arete sur laquelle la bille roule
+    else if (Nb == 2) { // return the edge on which the ball rotates
       TopoDS_Shape aLocalShape(DBRep::Get(a[i],TopAbs_EDGE));
       TopoDS_Edge E = TopoDS::Edge(aLocalShape);
 //      TopoDS_Edge E = TopoDS::Edge(DBRep::Get(a[i],TopAbs_EDGE));
       if ( E.IsNull()) {
-	//cout << " Edge non repere." << endl;
-	di << " Edge non repere." << "\n";
+	//cout << " Edge not referenced." << endl;
+	di << " Edge not referenced." << "\n";
 	return 1;
       }
       Roll.SetEdge(E);
@@ -688,9 +704,9 @@ Standard_Integer rollingball(Draw_Interpretor& di, Standard_Integer n, const cha
     for (Standard_Integer i = 1; i <= NbBranches; i++) {
       Standard_Integer From,To;
       Roll.IndicesOfBranche(i,From,To);
-      //cout << " Indices de la " << i << "eme Branche : ";
+      //cout << " Indexes of the " << i << "th Branch : ";
       //cout << "   " << From << "     " << To << endl;
-      di << " Indices de la " << i << "eme Branche : ";
+      di << " Indexes of the " << i << "th Branch : ";
       di << "   " << From << "     " << To << "\n";
       for (Standard_Integer j = From; j <= To; j++) {
 	const TopoDS_Shape& CurF = Roll.Face(j);

@@ -159,6 +159,15 @@ public:
   Standard_EXPORT   virtual  void UpdateLocation() ;
   
   Standard_EXPORT   virtual  void UpdateLocation(const Handle(Prs3d_Presentation)& P) ;
+  //! Set Z layer ID and update all presentations of <br>
+//! the presentable object. The layer can be set only for displayed object. <br>
+//! If all object presentations are removed, the layer ID will be set to <br>
+//! default value when computing presentation. The layers mechanism allows <br>
+//! drawing objects in higher layers in overlay of objects in lower layers. <br>
+  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
+  //! Get ID of Z layer. If no presentations of object is displayed, <br>
+//! and layer ID is unavailable, the -1 value is returned. <br>
+  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr) const;
 
 
 friend class PrsMgr_PresentationManager;

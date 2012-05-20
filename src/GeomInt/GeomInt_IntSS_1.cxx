@@ -1,7 +1,23 @@
-// File:	GeomInt_IntSS_1.cxx
-// Created:	Fri Jan 27 10:46:42 1995
-// Author:	Jacques GOUSSARD
-// Copyright: Open CASCADE 1995
+// Created on: 1995-01-27
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GeomInt_IntSS.ixx>
 
@@ -391,10 +407,11 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 	(Handle(IntPatch_GLine)::DownCast(L)->Ellipse());
     }
     //
-    Standard_Real aPeriod, aRealEpsilon;
+    Standard_Real aPeriod, aNul, aRealEpsilon;
     //
     aRealEpsilon=RealEpsilon();
-    aPeriod=PI+PI;
+    aNul=0.;
+    aPeriod=M_PI+M_PI;
     //
     aNbParts=myLConstruct.NbParts();
     //
@@ -434,12 +451,12 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 	  slineS2.Append(H1);  
 	}
 	//==============================================	
-      } //if (Abs(fprm) > RealEpsilon() || Abs(lprm-2.*PI) > RealEpsilon())
+      } //if (Abs(fprm) > RealEpsilon() || Abs(lprm-2.*M_PI) > RealEpsilon())
       //
       else {//  on regarde si on garde
 	//
 	if (aNbParts==1) {
-	  if (Abs(fprm) < RealEpsilon() &&  Abs(lprm-2.*PI) < RealEpsilon()) {
+	  if (Abs(fprm) < RealEpsilon() &&  Abs(lprm-2.*M_PI) < RealEpsilon()) {
 	    Handle(Geom_TrimmedCurve) aTC3D=new Geom_TrimmedCurve(newc,fprm,lprm);
 	    //
 	    sline.Append(aTC3D);
@@ -475,7 +492,7 @@ Standard_Real ProjectPointOnSurf::LowerDistance() const
 	//
 	Standard_Real aTwoPIdiv17, u1, v1, u2, v2, TolX;
 	//
-	aTwoPIdiv17=2.*PI/17.;
+	aTwoPIdiv17=2.*M_PI/17.;
 	//
 	for (j=0; j<=17; j++) {
 	  gp_Pnt ptref (newc->Value (j*aTwoPIdiv17));
@@ -1517,7 +1534,7 @@ Standard_Boolean DecompositionOfWLine(const Handle(IntPatch_WLine)& theWLine,
 		else {
 		  Standard_Real anAngle = aNewVec.Angle(aVecOld);
 
-		  if((fabs(anAngle) < (Standard_PI * 0.25)) && (aNewVec.Dot(aVecOld) > 0.)) {
+		  if((fabs(anAngle) < (M_PI * 0.25)) && (aNewVec.Dot(aVecOld) > 0.)) {
 
 		    if(bCheckAngle1) {
 		      Standard_Real U1, U2, V1, V2;

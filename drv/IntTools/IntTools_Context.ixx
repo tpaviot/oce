@@ -5,6 +5,25 @@
 
 #include <IntTools_Context.jxx>
 
+#ifndef _Standard_Type_HeaderFile
+#include <Standard_Type.hxx>
+#endif
+
+
  
+
+
+IMPLEMENT_STANDARD_TYPE(IntTools_Context)
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
+  STANDARD_TYPE(MMgt_TShared),
+  STANDARD_TYPE(Standard_Transient),
+
+IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
+IMPLEMENT_STANDARD_TYPE_END(IntTools_Context)
+
+
+IMPLEMENT_DOWNCAST(IntTools_Context,Standard_Transient)
+IMPLEMENT_STANDARD_RTTI(IntTools_Context)
+
 
 

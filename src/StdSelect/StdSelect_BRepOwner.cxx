@@ -1,12 +1,26 @@
-// Copyright: 	Matra-Datavision 1995
-// File:	StdSelect_BRepOwner.cxx
-// Created:	Wed Mar  8 16:13:35 1995
-// Author:	Mister rmi
-//		<rmi>
+// Created on: 1995-03-08
+// Created by: Mister rmi
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define BUC60876	//GG_050401 Enable to highlight something
 //			with a specific hilight mode
-//
 
 #include <StdSelect_BRepOwner.ixx>
 #include <SelectBasics_EntityOwner.hxx>
@@ -78,14 +92,38 @@ void StdSelect_BRepOwner::Hilight(const Handle(PrsMgr_PresentationManager)& PM,
 #else
   Standard_Integer M = (myCurMode==-1) ? aMode:myCurMode;
 #endif
-  if(myFromDecomposition)
+  if (myFromDecomposition)
+  {
+    // do the update flag check
+    if (!myPrsSh.IsNull())
+    {
+      TColStd_ListOfInteger aModesList;
+      myPrsSh->ToBeUpdated (aModesList);
+      if (!aModesList.IsEmpty())
+        myPrsSh.Nullify();
+    }
+
+    // generate new presentable shape
     if(myPrsSh.IsNull())
-      myPrsSh = new StdSelect_Shape(myShape);
-  
-  if(myPrsSh.IsNull())
-    PM->Highlight(Selectable(),M);
+      myPrsSh = new StdSelect_Shape (myShape);
+
+    // highlight and set layer
+    PM->Highlight (myPrsSh, M);
+    Handle(SelectMgr_SelectableObject) aSel = Selectable();
+    if (!aSel.IsNull())
+    {
+      Standard_Integer aLayer = aSel->GetZLayer (PM);
+      if (aLayer >= 0)
+        PM->SetZLayer (myPrsSh, aLayer);
+    }
+  }  
   else
-    PM->Highlight(myPrsSh,M);
+  {
+    if(myPrsSh.IsNull())
+      PM->Highlight(Selectable(),M);
+    else
+      PM->Highlight(myPrsSh,M);
+  }
 }
 
 void StdSelect_BRepOwner::Hilight()
@@ -100,21 +138,47 @@ void StdSelect_BRepOwner::HilightWithColor(const Handle(PrsMgr_PresentationManag
 #else
   Standard_Integer M = (myCurMode==-1) ? aMode:myCurMode;
 #endif
-  if(myFromDecomposition){
-    if(myPrsSh.IsNull()){
-      if(HasLocation()){
-	TopLoc_Location lbid = Location() * myShape.Location();
-	TopoDS_Shape ShBis = myShape.Located(lbid);
-	myPrsSh = new StdSelect_Shape(ShBis);
+  if (myFromDecomposition)
+  {
+    // do the update flag check
+    if (!myPrsSh.IsNull())
+    {
+      TColStd_ListOfInteger aModesList;
+      myPrsSh->ToBeUpdated (aModesList);
+      if (!aModesList.IsEmpty())
+        myPrsSh.Nullify();
+    }
+
+    // generate new presentable shape
+    if(myPrsSh.IsNull())
+    {
+      if(HasLocation())
+      {
+        TopLoc_Location lbid = Location() * myShape.Location();
+        TopoDS_Shape ShBis = myShape.Located(lbid);
+        myPrsSh = new StdSelect_Shape(ShBis);
       }
       else
-	myPrsSh = new StdSelect_Shape(myShape);
+        myPrsSh = new StdSelect_Shape(myShape);
+    }
+
+    // highlight with color and set layer
+    PM->Color (myPrsSh, aCol, M);
+    Handle(SelectMgr_SelectableObject) aSel = Selectable();
+    if (!aSel.IsNull())
+    {
+      Standard_Integer aLayer = aSel->GetZLayer (PM);
+      if (aLayer >= 0)
+        PM->SetZLayer (myPrsSh, aLayer);
     }
   }
-  if(myPrsSh.IsNull())
-    PM->Color(Selectable(),aCol,M);
   else
-    PM->Color(myPrsSh,aCol,M);
+  {
+    if(myPrsSh.IsNull())
+      PM->Color(Selectable(),aCol,M);
+    else
+      PM->Color(myPrsSh,aCol,M);
+  }
 }
 
 void StdSelect_BRepOwner::Unhilight(const Handle(PrsMgr_PresentationManager)& PM,
@@ -147,13 +211,31 @@ void StdSelect_BRepOwner::Clear(const Handle(PrsMgr_PresentationManager)& PM,
 void StdSelect_BRepOwner::SetLocation(const TopLoc_Location& aLoc)
 {
   SelectMgr_EntityOwner::SetLocation(aLoc);
-  if(!myPrsSh.IsNull())
-    myPrsSh.Nullify();
-  
+  // we must not nullify the myPrsSh here, because unhilight method
+  // will be working with wrong entity in this case, the best is to
+  // set the update flag and then recompute myPrsSh on hilighting
+  if (!myPrsSh.IsNull())
+    myPrsSh->SetToUpdate();
 }
+
 void StdSelect_BRepOwner::ResetLocation()
 {
   SelectMgr_EntityOwner::ResetLocation();
-  if(!myPrsSh.IsNull())
-    myPrsSh.Nullify(); 
+  // we must not nullify the myPrsSh here, because unhilight method
+  // will be working with wrong entity in this case, the best is to
+  // set the update flag and then recompute myPrsSh on hilighting
+  if (!myPrsSh.IsNull())
+    myPrsSh->SetToUpdate();
+}
+
+//=======================================================================
+//function : SetZLayer
+//purpose  :
+//=======================================================================
+void StdSelect_BRepOwner::SetZLayer 
+  (const Handle(PrsMgr_PresentationManager)& thePrsMgr,
+   const Standard_Integer theLayerId)
+{
+  if (!myPrsSh.IsNull())
+    thePrsMgr->SetZLayer (myPrsSh, theLayerId);
 }

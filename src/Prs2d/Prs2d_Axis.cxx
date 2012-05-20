@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Prs2d_Axis.ixx>
 #include <TCollection_ExtendedString.hxx>
 
@@ -58,7 +75,7 @@ Prs2d_Axis::Prs2d_Axis( const Handle(Graphic2d_GraphicObject)& aGO,
    if ( myX2 > myMaxX ) myMaxX =  myX2;
    if ( myY2 > myMaxY ) myMaxY =  myY2;  
 
-   Standard_Real ArrAngle = PI/180.*anArrAngle, theAngle;
+   Standard_Real ArrAngle = M_PI/180.*anArrAngle, theAngle;
    gp_Pnt2d theOrigine( 0., 0.), P1, P2, P3;
    gp_Vec2d VX( 1., 0. ), VDir;
   
@@ -167,7 +184,7 @@ Prs2d_Axis::Prs2d_Axis( const Handle(Graphic2d_GraphicObject)& aGO,
    if ( myX1 > myMaxX  ) myMaxX = myX1;
    if ( myY1 > myMaxY  ) myMaxY = myY1;
 
-   Standard_Real ArrAngle = PI/180.*anArrAngle, theAngle;
+   Standard_Real ArrAngle = M_PI/180.*anArrAngle, theAngle;
    gp_Pnt2d theOrigine( 0., 0.), P1, P2, P3;
    gp_Vec2d VX( 1., 0. ), VDir;
   
@@ -246,7 +263,7 @@ Prs2d_Axis::Prs2d_Axis( const Handle(Graphic2d_GraphicObject)& aGO,
    if ( myX1 > myMaxX  ) myMaxX = myX1;
    if ( myY1 > myMaxY  ) myMaxY = myY1;
    
-   Standard_Real ArrAngle = PI/180.*anArrAngle, theAngle;
+   Standard_Real ArrAngle = M_PI/180.*anArrAngle, theAngle;
    gp_Pnt2d theOrigine( 0., 0.), P1, P2, P3;
    gp_Vec2d VX( 1., 0. ), VDir;
   

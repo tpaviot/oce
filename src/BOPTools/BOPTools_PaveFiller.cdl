@@ -1,8 +1,22 @@
--- File:	BOPTools_PaveFiller.cdl
--- Created:	Thu Feb  8 14:07:33 2001
--- Author:	Peter KURNEV
---		<pkv@irinox>
----Copyright:	 Matra Datavision 2001
+-- Created on: 2001-02-08
+-- Created by: Peter KURNEV
+-- Copyright (c) 2001-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class PaveFiller from BOPTools 
@@ -115,16 +129,21 @@ is
     --- 
     ---	  Selectors   
     ---   
-    ---   
+    --- 
+    SetContext(me:out; 
+    	    aContext:  Context from IntTools); 
+    	---Purpose:
+    	--- Sets the intersecton context                 
+    	---   
     Context(me) 
     	 returns Context from IntTools; 
     	---C++:return const &	
     	---Purpose:
     	--- Selector                
     	---
-    ChangeContext(me:out) 
-    	 returns Context from IntTools;  
-    	---C++:return &	
+--    ChangeContext(me:out) 
+--    	 returns Context from IntTools;  
+    	--  C++:return &	
     	---Purpose:
     	--- Selector                
     	---
@@ -495,7 +514,19 @@ is
     	is protected;  
     	---Purpose: 	     
     	--- Try to put 3D-point <aP> (parameter aT)  on the curve <aBC> 
-    	---
+    	--- 
+ 
+--modified by NIZNHY-PKV Thu Oct 20 07:17:11 2011f 
+    PutClosingPaveOnCurve (me:out; 
+    	    	    aBC :out Curve from BOPTools;	 
+     	    	    aFF :out SSInterference from BOPTools)  
+	is protected; 
+	---Purpose: 	     
+    	--- Put paves on the curve <aBC> in case when <aBC>   
+        --  is closed 3D-curve  
+    	---      
+--modified by NIZNHY-PKV Thu Oct 20 07:17:11 2011t	 
+
     FindPave            (me:out; 
 		    aP  :Pnt from  gp;  
     	    	    aTpV: Real from Standard;  
@@ -560,13 +591,11 @@ is
     RecomputeCommonBlocks(me: in out; nE: Integer from Standard)
     	is private;
 
---modified by NIZNHY-PKV Tue Oct 19 10:28:42 2004f 
     ExtendedTolerance(me:out; 
     	    nV      : Integer from Standard; 
             aTolExt : out Real from Standard) 
 	returns Boolean from Standard 		     
 	is  protected;		     
---modified by NIZNHY-PKV Tue Oct 19 10:28:44 2004t
 
 fields 
  

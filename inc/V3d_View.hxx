@@ -283,9 +283,7 @@ public:
   Standard_EXPORT     void SetMagnify(const Handle(Aspect_Window)& IdWin,const Handle(V3d_View)& aPreviousView,const Standard_Integer x1,const Standard_Integer y1,const Standard_Integer x2,const Standard_Integer y2) ;
   //! Destroys the view. <br>
   Standard_EXPORT     void Remove() const;
-  //! Updates the display of the view. <br>
-//!          Must be called to update the view <br>
-//!          when the update mode is deferred (WAIT) . <br>
+  //! Deprecated, Redraw() should be used instead. <br>
   Standard_EXPORT     void Update() const;
   //! Redisplays the view even if there has not <br>
 //!          been any modification. <br>
@@ -325,17 +323,22 @@ public:
   Standard_EXPORT     void SetBackgroundColor(const Quantity_NameOfColor Name) ;
   //! Defines the gradient background colours of the view <br>
 //!          by supplying : <br>
-//!          the colour objects. <br>
+//!          two colour objects, <br>
+//!          and fill method (horizontal by default) <br>
   Standard_EXPORT     void SetBgGradientColors(const Quantity_Color& Color1,const Quantity_Color& Color2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR,const Standard_Boolean update = Standard_False) ;
   //! Defines the gradient background colours of the view <br>
 //!          by supplying : <br>
-//!          the colour names in the form Quantity_NOC_xxxx . <br>
+//!          two colour names in the form Quantity_NOC_xxxx, <br>
+//!          and fill method (horizontal by default) <br>
   Standard_EXPORT     void SetBgGradientColors(const Quantity_NameOfColor Color1,const Quantity_NameOfColor Color2,const Aspect_GradientFillMethod FillStyle = Aspect_GFM_HOR,const Standard_Boolean update = Standard_False) ;
   //! Defines the gradient background fill method of the view <br>
-  Standard_EXPORT     void SetBgGradientStyle(const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR,const Standard_Boolean update = Standard_False) const;
-  
+  Standard_EXPORT     void SetBgGradientStyle(const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR,const Standard_Boolean update = Standard_False) ;
+  //! Defines the background texture of the view <br>
+//!         by supplying : <br>
+//!         texture image file name, <br>
+//!         and fill method (centered by default) <br>
   Standard_EXPORT     void SetBackgroundImage(const Standard_CString FileName,const Aspect_FillMethod FillStyle = Aspect_FM_CENTERED,const Standard_Boolean update = Standard_False) ;
-  
+  //! Defines the textured background fill method of the view <br>
   Standard_EXPORT     void SetBgImageStyle(const Aspect_FillMethod FillStyle,const Standard_Boolean update = Standard_False) ;
   //! Definition of an axis from its origin and <br>
 //!          its orientation . <br>

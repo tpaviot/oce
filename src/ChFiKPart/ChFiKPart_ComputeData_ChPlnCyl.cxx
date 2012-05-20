@@ -1,7 +1,23 @@
-// File:	ChFiKPart_ComputeData_ChPlnCyl.cxx
-// Created:	Fri May 19 14:57:07 1995
-// Author:	Flore Lantheaume
-//		<fla@phylox>
+// Created on: 1995-05-19
+// Created by: Flore Lantheaume
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <ChFiKPart_ComputeData.jxx>
@@ -255,10 +271,10 @@ Standard_Boolean ChFiKPart_MakeChamfer(TopOpeBRepDS_DataStructure& DStr,
   ElSLib::Parameters(Cyl,Pt ,u,v);
   Standard_Real tol = Precision::PConfusion();
   Standard_Boolean careaboutsens = 0;
-  if(Abs(lu - fu - 2*PI) < tol) careaboutsens = 1;
+  if(Abs(lu - fu - 2*M_PI) < tol) careaboutsens = 1;
   if(u >= fu - tol && u < fu) u = fu;
   if(u <= lu + tol && u > lu) u = lu;
-  if(u < fu || u > lu) u = ChFiKPart_InPeriod(u,fu,fu + 2*PI,tol);
+  if(u < fu || u > lu) u = ChFiKPart_InPeriod(u,fu,fu + 2*M_PI,tol);
 
   ElSLib::D1(u,v,Cyl,Pt,deru,derv);
   gp_Dir norcyl = deru.Crossed(derv);
@@ -295,13 +311,6 @@ Standard_Boolean ChFiKPart_MakeChamfer(TopOpeBRepDS_DataStructure& DStr,
 
   return Standard_True;
 }
-
-// File:	ChFiKPart_ComputeData_ChPlnCyl.cxx
-// Created:	Fri May 10 09:43:15 1996
-// Author:	Stagiaire Xuan Trang PHAMPHU
-//		<xpu@phylox>
-
-
 
 //=======================================================================
 //function : MakeChamfer

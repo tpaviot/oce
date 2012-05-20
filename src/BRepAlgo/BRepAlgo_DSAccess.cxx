@@ -1,7 +1,23 @@
-// File:	BRepAlgo_DSAccess.cxx
-// Created:	Wed Aug 13 16:05:15 1997
-// Author:	Prestataire Mary FABIEN
-//		<fbi@langdox.paris1.matra-dtv.fr>
+// Created on: 1997-08-13
+// Created by: Prestataire Mary FABIEN
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepAlgo_DSAccess.ixx>
@@ -537,11 +553,11 @@ void BRepAlgo_DSAccess::ChangeEdgeSet
       iC = myHB->GetDSCurveFromSectEdge(Edge);
       if (!iC) {
 #if DEB
-	cout << "Warning DSAccess:Modifs d'une Edge non implemente" << endl;
+	cout << "Warning DSAccess: Modifications of Edge are not implemented" << endl;
 #endif
       }
       else {
-	// Complement on the interferences Curve/Face
+	// Complete the interferences Curve/Face
 	Standard_Integer iF;
 	Handle(TopOpeBRepDS_Interference) interf;
 
@@ -573,7 +589,7 @@ void BRepAlgo_DSAccess::ChangeEdgeSet
   }
 
 
-  // Netoyage
+  // Cleaning
   Suppress(C, New);
 
   // Is it necessary to invert the Interferences "Edge on Fa"
@@ -639,7 +655,7 @@ void BRepAlgo_DSAccess::Suppress(const TopoDS_Shape& C,
   // during the parsing the Edges which come from Edge are found
   // (= MapOfInteger : ESE)
   
-  // En premier, les interferences de support 1d.
+  // First, the interferences of support 1d.
   TopExp_Explorer exp(C, TopAbs_EDGE);
   for(; exp.More(); exp.Next()) {
     const TopoDS_Shape& SectEdge = exp.Current();
@@ -855,7 +871,7 @@ const TopoDS_Shape& BRepAlgo_DSAccess::Propagate
 
 //  myHB->MergeShapes(myS1,t1,myS2,t2);
 
-  //POP pour NT;
+  //POP for NT;
   static TopoDS_Shape bid;
   return bid;
 }
@@ -951,9 +967,9 @@ const TopTools_ListOfShape& BRepAlgo_DSAccess::Modified (const TopoDS_Shape& Sha
 BRepAlgo_CheckStatus BRepAlgo_DSAccess::Check()
 {
 //  TopOpeBRepDS_Check Ck(HDS);
-  // to be precised : in Ck, there is a possibility to know 
-  // exactly the n*n of shapes/points/curves/surfaces, 
-  // which are not correct in the DS.
+// to be precised : in Ck, there is a possibility to know 
+// exactly the n*n of shapes/points/curves/surfaces, 
+// which are not correct in the DS.
 //  Standard_Boolean IsOK = Ck.ChkIntgSamDom() ;
 //  IsOK = IsOK && Ck.OneVertexOnPnt();
 //  IsOK = IsOK && Ck.ChkIntg();
@@ -975,7 +991,7 @@ BRepAlgo_CheckStatus BRepAlgo_DSAccess::Check()
 //       
 //     if iE1 and iE2 are Faces :
 //     for each of faces F1 and F2, explode into Edges
-//	   for each Edge :
+//     for each Edge :
 //	     remove the interferences of a SectEdge vertex
 //	     on geometry. If there is no other interferences attached to 
 //           these Edges, and if these Edges are not SameDomain,
@@ -1063,8 +1079,8 @@ void BRepAlgo_DSAccess::RemoveEdgeInterferences
 //=======================================================================
 //function : RemoveEdgeInterferences
 //purpose  : case of SectEdge coming from Curve
-//       for each of faces F1 and F2, explode into Edges
-//	   for each Edge :
+//           for each of faces F1 and F2, explode into Edges
+//	     for each Edge :
 //	     remove the interferences that have a vertex of SectEdge
 //           as a geometry. If no other interferences are attached to  
 //           these Edges, and if the Edges are not SameDomain,
@@ -1097,8 +1113,8 @@ void BRepAlgo_DSAccess::RemoveEdgeInterferences
 //        DSEdge (= E1 or E2) :
 //		a) if DSEdge is not SameDomain -> the edge is Removed
 //		b) if among other interferences of DSEdge of 
-//                 GeomtryType == VERTEX, il n'en existe pas qui soient 
-//                 avec une Edge de DSFace(= F1 ou F2)
+//                 GeomtryType == VERTEX, there is none 
+//                 with Edge of DSFace(= F1 or F2)
 //	  if DSFace has no more interferences and is not SameDomain,
 //        make unkeep DSFace.
 //=======================================================================
@@ -1408,7 +1424,7 @@ void BRepAlgo_DSAccess::PntVtxOnCurve
   if(iMother) igoodC = iMother;
 //#ifndef DEB
   TopOpeBRepDS_PointIterator PII = myHDS->CurvePoints(igoodC);
-  TopOpeBRepDS_PointIterator& PIt = PII; // skl : I change "PI" to "PIt"
+  TopOpeBRepDS_PointIterator& PIt = PII; // skl : I change "M_PI" to "PIt"
 //#else
 //  TopOpeBRepDS_PointIterator& PIt = myHDS->CurvePoints(igoodC);
 //#endif

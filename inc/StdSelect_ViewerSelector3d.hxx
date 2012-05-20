@@ -22,6 +22,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _StdSelect_SensitivityMode_HeaderFile
+#include <StdSelect_SensitivityMode.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -64,10 +67,18 @@ public:
   //! Processes the projection of the sensitive  primitives <br>
 //!          in the active view ; to be done before the selection action... <br>
   Standard_EXPORT     void Convert(const Handle(SelectMgr_Selection)& aSelection) ;
-  //! Sets the sensitivity aSensitivity. <br>
-  Standard_EXPORT     void Set(const Standard_Integer aSensitivity) ;
   //! Sets the new projector aProj to replace the one used at construction time. <br>
   Standard_EXPORT     void Set(const Handle(Select3D_Projector)& aProj) ;
+  //! Sets the selection sensitivity mode. SM_WINDOW mode <br>
+//! uses the specified pixel tolerance to compute the sensitivity <br>
+//! value, SM_VIEW mode allows to define the sensitivity manually. <br>
+  Standard_EXPORT     void SetSensitivityMode(const StdSelect_SensitivityMode aMode) ;
+  //! Returns the selection sensitivity mode. <br>
+        StdSelect_SensitivityMode SensitivityMode() const;
+  //! Sets the pixel tolerance aTolerance. <br>
+  Standard_EXPORT     void SetPixelTolerance(const Standard_Integer aTolerance) ;
+  //! Returns the pixel tolerance. <br>
+        Standard_Integer PixelTolerance() const;
   //! Picks the sensitive entity at the pixel coordinates of <br>
 //! the mouse Xpix and Ypix.   The selector looks for touched areas and owners. <br>
   Standard_EXPORT     void Pick(const Standard_Integer XPix,const Standard_Integer YPix,const Handle(V3d_View)& aView) ;
@@ -119,6 +130,7 @@ Standard_Real myprevcoeff[14];
 Standard_Real mycenter[2];
 Standard_Real myprevcenter[2];
 Standard_Real mylastzoom;
+StdSelect_SensitivityMode mysensmode;
 Standard_Integer mypixtol;
 Standard_Boolean myupdatetol;
 Handle_Graphic3d_Group myareagroup;

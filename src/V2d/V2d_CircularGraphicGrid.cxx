@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified	23/02/98 : FMN ; Remplacement PI par Standard_PI
 #define PRO10288	//GG 240398/090798 (PRO13334)
 //			Permettre un pas de rayon < 2 MM
@@ -89,7 +106,7 @@ void V2d_CircularGraphicGrid::Draw(const Handle(Graphic2d_Drawer)& aDrawer){
       DrawCircle(aDrawer,xc,yc,s,Standard_False);
       s+=ds;
     }
-    Standard_Real a = Standard_PI / Standard_Real(Division);
+    Standard_Real a = M_PI / Standard_Real(Division);
     for (Standard_Integer j=1; j<= Division; j++) {
      aDrawer->MapInfiniteLineFromTo(OX,OY ,
 	 Standard_ShortReal(Cos(angle+Standard_Real(j)*a)),
@@ -124,16 +141,16 @@ void V2d_CircularGraphicGrid::DrawCircle
     if(myRadius > Def) 
       val = Max( 0.0044 , Min (0.7854 , 2. * ACos(1.-Def/myRadius)));
     else
-      val = 0.7854;  // = Standard_PI/4.
+      val = 0.7854;  // = PI / 4.
     Standard_Integer nbpoints;
     if(DrawPoints) {
       nbpoints = Division *2;
     }
     else {
-      nbpoints = Standard_Integer(Abs(2*Standard_PI)/val) +2;
+      nbpoints = Standard_Integer(Abs (2 * M_PI) / val) + 2;
     }
       
-    Standard_ShortReal teta = Standard_ShortReal(Abs(2*Standard_PI) /nbpoints);
+    Standard_ShortReal teta = Standard_ShortReal(Abs(2 * M_PI) / nbpoints);
     Standard_ShortReal x1 = myRadius;
     Standard_ShortReal y1 = 0;
     Standard_ShortReal x2,y2,x3,y3;

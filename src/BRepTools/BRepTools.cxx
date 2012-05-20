@@ -1,7 +1,23 @@
-// File:        BRepTools.cxx
-// Created:     Thu Jan 21 19:59:19 1993
-// Author:      Remi LEQUETTE
-//              <rle@phylox>
+// Created on: 1993-01-21
+// Created by: Remi LEQUETTE
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_Stream.hxx>
 
@@ -30,6 +46,7 @@
 #include <Poly_Triangulation.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
+#include <TColStd_MapOfTransient.hxx>
 
 #include <gp_Lin2d.hxx>
 #include <ElCLib.hxx>
@@ -143,11 +160,11 @@ void  BRepTools::AddUVBounds(const TopoDS_Face& F,
   Standard_Real pf,pl;
   Bnd_Box2d Baux; 
   const Handle(Geom2d_Curve) C = BRep_Tool::CurveOnSurface(E,F,pf,pl);
+  if (C.IsNull()) return;
   if (pl < pf) { // Petit Blindage
     Standard_Real aux;
     aux = pf; pf = pl; pl = aux;
   }
-  if (C.IsNull()) return;
   Geom2dAdaptor_Curve PC(C,pf,pl);
   if (Precision::IsNegativeInfinite(pf) ||
       Precision::IsPositiveInfinite(pf)) {
@@ -215,7 +232,22 @@ void  BRepTools::AddUVBounds(const TopoDS_Face& F,
     }
     P.SetCoord(u0,v0) ; Baux.Add(P);
     P.SetCoord(u1,v1) ; Baux.Add(P);
-    B.Add(Baux);
+
+    Bnd_Box2d FinalBox;
+    Standard_Real aXmin, aYmin, aXmax, aYmax;
+    Baux.Get(aXmin, aYmin, aXmax, aYmax);
+    Standard_Real Tol2d = Precision::PConfusion();
+    if (Abs(aXmin - Umin) <= Tol2d)
+      aXmin = Umin;
+    if (Abs(aYmin - Vmin) <= Tol2d)
+      aYmin = Vmin;
+    if (Abs(aXmax - Umax) <= Tol2d)
+      aXmax = Umax;
+    if (Abs(aYmax - Vmax) <= Tol2d)
+      aYmax = Vmax;
+    FinalBox.Update(aXmin, aYmin, aXmax, aYmax);
+    
+    B.Add(FinalBox);
   }
 }
 
@@ -747,7 +779,58 @@ void BRepTools::Clean(const TopoDS_Shape& S)
   }
 }
 
+//=======================================================================
+//function : RemoveUnusedPCurves
+//purpose  : 
+//=======================================================================
 
+void BRepTools::RemoveUnusedPCurves(const TopoDS_Shape& S)
+{
+  TColStd_MapOfTransient UsedSurfaces;
+  
+  TopExp_Explorer Explo(S, TopAbs_FACE);
+  for (; Explo.More(); Explo.Next())
+  {
+    TopoDS_Face aFace = TopoDS::Face(Explo.Current());
+    TopLoc_Location aLoc;
+    Handle(Geom_Surface) aSurf = BRep_Tool::Surface(aFace, aLoc);
+    UsedSurfaces.Add(aSurf);
+  }
+
+  TopTools_IndexedMapOfShape Emap;
+  TopExp::MapShapes(S, TopAbs_EDGE, Emap);
+
+  Standard_Integer i;
+  for (i = 1; i <= Emap.Extent(); i++)
+  {
+    const Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*) &Emap(i).TShape());
+    BRep_ListOfCurveRepresentation& lcr = TE -> ChangeCurves();
+    BRep_ListIteratorOfListOfCurveRepresentation itrep(lcr );
+    while (itrep.More())
+    {
+      Standard_Boolean ToRemove = Standard_False;
+      
+      Handle(BRep_CurveRepresentation) CurveRep = itrep.Value();
+      if (CurveRep->IsCurveOnSurface())
+      {
+        Handle(Geom_Surface) aSurface = CurveRep->Surface();
+        if (!UsedSurfaces.Contains(aSurface))
+          ToRemove = Standard_True;
+      }
+      else if (CurveRep->IsRegularity())
+      {
+        Handle(Geom_Surface) Surf1 = CurveRep->Surface();
+        Handle(Geom_Surface) Surf2 = CurveRep->Surface2();
+        ToRemove = (!UsedSurfaces.Contains(Surf1) || !UsedSurfaces.Contains(Surf2));
+      }
+      
+      if (ToRemove)
+        lcr.Remove(itrep);
+      else
+        itrep.Next();
+    }
+  }
+}
 
 //=======================================================================
 //function : Triangulation

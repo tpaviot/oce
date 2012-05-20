@@ -1,8 +1,22 @@
--- File:	IntTools_EdgeFace.cdl
--- Created:	Mon Feb 26 10:12:13 2001
--- Author:	Peter KURNEV
---		<pkv@irinox>
----Copyright:	 Matra Datavision 2001
+-- Created on: 2001-02-26
+-- Created by: Peter KURNEV
+-- Copyright (c) 2001-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class EdgeFace from IntTools 
@@ -24,8 +38,9 @@ uses
     FClass2d             from IntTools, 
     SequenceOfRoots      from IntTools,
     SequenceOfCommonPrts from IntTools, 
-    PContext             from IntTools,
-    Range                from IntTools
+    Context              from IntTools,
+    Range                from IntTools 
+    
 --raises
 
 is
@@ -87,11 +102,19 @@ is
 	--- The algorithm processes edge inside these boundaries.
 	---
      
-    SetContext      (me: in out; theContext: PContext from IntTools);
+    SetContext (me: in out;  
+    	    theContext: Context from IntTools);
     	---Purpose:
-	--- Set container of projection algorithms
+	--- Sets the intersecton context 
 	---
-
+ 
+    Context (me) 
+	returns  Context from IntTools; 
+    ---C++:return const & 	
+    	---Purpose:
+	--- Gets the intersecton context 
+	---
+ 
     Perform         (me:out);
     	---Purpose:
 	--- Launches the process
@@ -241,7 +264,7 @@ fields
     myErrorStatus     :  Integer from Standard;    
     
 ---  internal  members     
-    myContext         : PContext from IntTools;
+    myContext         :  Context from IntTools;
     myProjectableRanges: SequenceOfRanges from IntTools;    
     myFClass2d         : FClass2d from IntTools; 
     myFuncArray       :  CArray1OfReal from IntTools; 

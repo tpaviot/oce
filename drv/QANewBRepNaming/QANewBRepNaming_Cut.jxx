@@ -1,0 +1,9 @@
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
+#include <BRepAlgoAPI_BooleanOperation.hxx>
+#endif
+#ifndef _QANewBRepNaming_Cut_HeaderFile
+#include <QANewBRepNaming_Cut.hxx>
+#endif

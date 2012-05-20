@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // szv 19.08.99: new methods for fixing gaps between edges (3d curves and pcurves)
 #include <ShapeFix_Wire.hxx>
 #include <Standard_ErrorHandler.hxx>
@@ -49,7 +66,7 @@
 #include <Geom2dConvert.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
 #include <ShapeBuild_ReShape.hxx>
-  
+
 //szv
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <Geom2d_Circle.hxx>
@@ -85,7 +102,7 @@
 //purpose  : 
 //=======================================================================
 
- Standard_Boolean ShapeFix_Wire::FixGaps3d ()
+Standard_Boolean ShapeFix_Wire::FixGaps3d ()
 {
   myStatusGaps3d = ShapeExtend::EncodeStatus ( ShapeExtend_OK );
 // if ( !IsReady() ) return Standard_False;
@@ -395,7 +412,7 @@ static Standard_Real AdjustOnPeriodic3d (const Handle(Geom_Curve)& c,
       if (c1->IsKind(STANDARD_TYPE(Geom_Circle)) ||
 	  c1->IsKind(STANDARD_TYPE(Geom_Ellipse))) 
       {
-	Standard_Real diff = PI - Abs(clast1-cfirst2)*0.5;
+	Standard_Real diff = M_PI - Abs(clast1-cfirst2)*0.5;
 	first1 -= diff; last1 += diff;
 	done1 = Standard_True;
       }
@@ -422,7 +439,7 @@ static Standard_Real AdjustOnPeriodic3d (const Handle(Geom_Curve)& c,
       else if (c1->IsKind(STANDARD_TYPE(Geom_Circle)) ||
 	       c1->IsKind(STANDARD_TYPE(Geom_Ellipse))) 
       {
-	domfirst1 = 0.; domlast1 = 2*PI;
+	domfirst1 = 0.; domlast1 = 2*M_PI;
       }
       Standard_Real domfirst2 = first2, domlast2 = last2;
       if (c2->IsKind(STANDARD_TYPE(Geom_BSplineCurve)) ||
@@ -442,7 +459,7 @@ static Standard_Real AdjustOnPeriodic3d (const Handle(Geom_Curve)& c,
       else if (c2->IsKind(STANDARD_TYPE(Geom_Circle)) ||
 	       c2->IsKind(STANDARD_TYPE(Geom_Ellipse))) 
       {
-	domfirst2 = 0.; domlast2 = 2*PI;
+	domfirst2 = 0.; domlast2 = 2*M_PI;
       }
 
       Standard_Real ipar1 = clast1, ipar2 = cfirst2;
@@ -979,7 +996,7 @@ static Standard_Real AdjustOnPeriodic2d (const Handle(Geom2d_Curve)& pc,
       if (pc1->IsKind(STANDARD_TYPE(Geom2d_Circle)) ||
 	  pc1->IsKind(STANDARD_TYPE(Geom2d_Ellipse))) 
       {
-	Standard_Real diff = PI - Abs(clast1-cfirst2)*0.5;
+	Standard_Real diff = M_PI - Abs(clast1-cfirst2)*0.5;
 	first1 -= diff; last1 += diff;
 	done1 = Standard_True;
       }
@@ -1006,7 +1023,7 @@ static Standard_Real AdjustOnPeriodic2d (const Handle(Geom2d_Curve)& pc,
       else if (pc1->IsKind(STANDARD_TYPE(Geom2d_Circle)) ||
 	       pc1->IsKind(STANDARD_TYPE(Geom2d_Ellipse))) 
       {
-	domfirst1 = 0.; domlast1 = 2*PI;
+	domfirst1 = 0.; domlast1 = 2*M_PI;
       }
       Standard_Real domfirst2 = first2, domlast2 = last2;
       if (pc2->IsKind(STANDARD_TYPE(Geom2d_BSplineCurve)) ||
@@ -1026,7 +1043,7 @@ static Standard_Real AdjustOnPeriodic2d (const Handle(Geom2d_Curve)& pc,
       else if (pc2->IsKind(STANDARD_TYPE(Geom2d_Circle)) ||
 	       pc2->IsKind(STANDARD_TYPE(Geom2d_Ellipse))) 
       {
-	domfirst2 = 0.; domlast2 = 2*PI;
+	domfirst2 = 0.; domlast2 = 2*M_PI;
       }
 
       Standard_Real ipar1 = clast1, ipar2 = cfirst2;

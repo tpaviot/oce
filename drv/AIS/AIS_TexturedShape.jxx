@@ -16,9 +16,6 @@
 #ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
 #endif
-#ifndef _gp_Pnt_HeaderFile
-#include <gp_Pnt.hxx>
-#endif
 #ifndef _AIS_TexturedShape_HeaderFile
 #include <AIS_TexturedShape.hxx>
 #endif

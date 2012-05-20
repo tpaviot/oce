@@ -31,8 +31,6 @@
 class HLRBRep_CurveTool;
 class HLRBRep_TheProjPCurOfCInter;
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
-class HLRBRep_ThePolygon2dToolOfTheIntPCurvePCurveOfCInter;
-class HLRBRep_InterferencePoly2dOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 class IntRes2d_Domain;

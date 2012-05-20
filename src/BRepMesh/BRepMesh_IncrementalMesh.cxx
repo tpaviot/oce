@@ -1,7 +1,23 @@
-// File:	BRepMesh_IncrementalMesh.cxx
-// Created:	Tue Jun 20 10:34:51 1995
-// Author:	Stagiaire Alain JOURDAIN
-//		<ajo@phobox>
+// Created on: 1995-06-20
+// Created by: Stagiaire Alain JOURDAIN
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepMesh_IncrementalMesh.ixx>
@@ -70,9 +86,10 @@ BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()
 BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh (const TopoDS_Shape& theShape,
                                                     const Standard_Real theDeflection,
                                                     const Standard_Boolean theRelative,
-                                                    const Standard_Real theAngle)
+                                                    const Standard_Real theAngle,
+													const Standard_Boolean theInParallel)
 : myRelative (theRelative),
-  myInParallel (Standard_False),
+  myInParallel (theInParallel),
   myModified (Standard_False),
   myStatus (0)
 {
@@ -213,22 +230,31 @@ void BRepMesh_IncrementalMesh::Update(const TopoDS_Shape& S)
   }
 
   // get list of faces
-  TopTools_ListOfShape LF;
-  BRepLib::ReverseSortFaces(S,LF);
-
-  // make array of faces suitable for processing (excluding faces without surface)
   std::vector<TopoDS_Face> aFaces;
-  for (TopTools_ListIteratorOfListOfShape it(LF); it.More(); it.Next()) 
   {
-    TopoDS_Face F = TopoDS::Face(it.Value());
+    TopTools_ListOfShape aFaceList;
+    BRepLib::ReverseSortFaces (S, aFaceList);
+    TopTools_MapOfShape aFaceMap;
+    aFaces.reserve (aFaceList.Extent());
 
-    TopLoc_Location L1;
-    const Handle(Geom_Surface)& Surf = BRep_Tool::Surface(F, L1);
-    if(Surf.IsNull())
-      continue;
-    
-    Update (F);
-    aFaces.push_back (F);
+    // make array of faces suitable for processing (excluding faces without surface)
+    TopLoc_Location aDummyLoc;
+    const TopLoc_Location anEmptyLoc;
+    for (TopTools_ListIteratorOfListOfShape aFaceIter (aFaceList); aFaceIter.More(); aFaceIter.Next())
+    {
+      TopoDS_Shape aFaceNoLoc = aFaceIter.Value();
+      aFaceNoLoc.Location (anEmptyLoc);
+      if (!aFaceMap.Add (aFaceNoLoc))
+        continue; // already processed
+
+      TopoDS_Face aFace = TopoDS::Face (aFaceIter.Value());
+      const Handle(Geom_Surface)& aSurf = BRep_Tool::Surface (aFace, aDummyLoc);
+      if (aSurf.IsNull())
+        continue;
+
+      Update (aFace);
+      aFaces.push_back (aFace);
+    }
   }
 
   if (myInParallel)

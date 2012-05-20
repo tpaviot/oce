@@ -73,9 +73,6 @@
 #ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
 #include <Handle_Graphic3d_DataStructureManager.hxx>
 #endif
-#ifndef _Graphic3d_TypeOfPrimitive_HeaderFile
-#include <Graphic3d_TypeOfPrimitive.hxx>
-#endif
 #ifndef _Graphic3d_TypeOfConnection_HeaderFile
 #include <Graphic3d_TypeOfConnection.hxx>
 #endif
@@ -104,12 +101,11 @@ class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
-class Graphic3d_VertexNC;
-class Graphic3d_Vector;
 class Graphic3d_SequenceOfGroup;
 class Graphic3d_MapOfStructure;
 class gp_Pnt;
 class Graphic3d_Plotter;
+class Graphic3d_Vector;
 class Graphic3d_Vertex;
 
 
@@ -211,6 +207,14 @@ public:
 //!	    method erase <me> and display <me> with the <br>
 //!	    previous priority. <br>
   Standard_EXPORT     void ResetDisplayPriority() ;
+  //! Set Z layer ID for the structure. The Z layer mechanism <br>
+//! allows to display structures presented in higher layers in overlay <br>
+//! of structures in lower layers by switching off z buffer depth <br>
+//! test between layers <br>
+  Standard_EXPORT     void SetZLayer(const Standard_Integer theLayerId) ;
+  //! Get Z layer ID of displayed structure. The method <br>
+//! returns -1 if the structure has no ID (deleted from graphic driver). <br>
+  Standard_EXPORT     Standard_Integer GetZLayer() const;
   //! Modifies the detectability indicator to Standard_True <br>
 //!	    or Standard_False for the structure <me>. <br>
 //!	    The default value at the definition of <me> is <br>
@@ -267,24 +271,6 @@ public:
   //! Returns Standard_True if the structure <me> contains <br>
 //!	    Polygons, Triangles or Quadrangles. <br>
   Standard_EXPORT     Standard_Boolean ContainsFacet() const;
-  //! Explores a structure element of <me>. <br>
-//!	    Returns Standard_True if the exploration succeded and <br>
-//!	    Standard_False if the exploration is done or if the <br>
-//!	    specified structure element is not in the structure. <br>
-//!	    <AVertex> contains the coordinates, the normal and <br>
-//!	    the color of the vertex found in the structure element. <br>
-//!	    <AVector> contains the normal of the face. <br>
-//!  Warning: - The structure element number is given by <br>
-//!	    Visual3d_ViewManager::Pick method. <br>
-//!	    - The primitive type is given by <br>
-//!	    Graphic3d_Structure::Type method. <br>
-//!	    - The normal is (0.0, 0.0, 0.0) when the normal is not <br>
-//!	    specified in the structure element. <br>
-//!	    - The color is (0.0, 0.0, 0.0) when the color is not <br>
-//!	    specified in the structure element. <br>
-//!	    - To initialize the exploration, you have to call the <br>
-//!	    Graphic3d_Structure::Type method before this method. <br>
-  Standard_EXPORT     Standard_Boolean Exploration(const Standard_Integer ElementNumber,Graphic3d_VertexNC& AVertex,Graphic3d_Vector& AVector) const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectFillArea3d FillArea3dAspect() const;
   //! Returns the groups sequence included in the structure <me> (internal storage). <br>
@@ -335,14 +321,6 @@ public:
   Standard_EXPORT     void PrimitivesAspect(Handle(Graphic3d_AspectLine3d)& CTXL,Handle(Graphic3d_AspectText3d)& CTXT,Handle(Graphic3d_AspectMarker3d)& CTXM,Handle(Graphic3d_AspectFillArea3d)& CTXF) const;
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectText3d Text3dAspect() const;
-  //! Returns the primitive type stored in the structure <br>
-//!	    element <ElementNumber>. <br>
-//!	    Initialises the exploration of this primitive. <br>
-//!	    If the structure element is not a primitive, returns <br>
-//!	    Graphic3d_TOP_UNDEFINED. <br>
-//!  Warning: The structure element number is given by <br>
-//!	    Visual3d_ViewManager::Pick method. <br>
-  Standard_EXPORT     Graphic3d_TypeOfPrimitive Type(const Standard_Integer ElementNumber) const;
   //! Returns the visualisation mode for the structure <me>. <br>
   Standard_EXPORT     Graphic3d_TypeOfStructure Visual() const;
   //! Returns Standard_True if the connection is possible between <br>
@@ -402,8 +380,6 @@ public:
   Standard_EXPORT     gp_Pnt TransformPersistencePoint() const;
   
   Standard_EXPORT     Graphic3d_TypeOfStructure ComputeVisual() const;
-  //! Prints informations about the structure <me>. <br>
-  Standard_EXPORT     void Exploration() const;
   //! Clears the structure <me>. <br>
   Standard_EXPORT     void GraphicClear(const Standard_Boolean WithDestruction) ;
   

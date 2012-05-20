@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <IntTools_TopolTool.ixx>
 
 #include <Standard_NotImplemented.hxx>
@@ -104,7 +121,7 @@ void IntTools_TopolTool::ComputeSamplePoints()
     break;
   case GeomAbs_Cylinder: {
     Standard_Real aRadius = myS->Cylinder().Radius();
-    Standard_Real aMaxAngle = Standard_PI * 0.5;
+    Standard_Real aMaxAngle = M_PI * 0.5;
     Standard_Real aDeflection = 1.e-02;
 
     if(aRadius > aDeflection) {
@@ -133,7 +150,7 @@ void IntTools_TopolTool::ComputeSamplePoints()
 
     if(aRadius < aCircle.Radius())
       aRadius = aCircle.Radius();
-    Standard_Real aMaxAngle = Standard_PI * 0.5;
+    Standard_Real aMaxAngle = M_PI * 0.5;
     Standard_Real aDeflection = 1.e-02;
 
     if(aRadius > aDeflection) {
@@ -177,7 +194,7 @@ void IntTools_TopolTool::ComputeSamplePoints()
       aRadius1 = aSphere.Radius();
       aRadius2 = aSphere.Radius();
     }
-    Standard_Real aMaxAngle = Standard_PI * 0.5;
+    Standard_Real aMaxAngle = M_PI * 0.5;
     Standard_Real aDeflection = 1.e-02;
     
     if(aRadius1 > aDeflection) {
@@ -187,7 +204,7 @@ void IntTools_TopolTool::ComputeSamplePoints()
     if(aMaxAngle > Precision::Angular()) {
       nbsu = Standard_Integer((usup - uinf) / aMaxAngle);
     }
-    aMaxAngle = Standard_PI * 0.5;
+    aMaxAngle = M_PI * 0.5;
 
     if(aRadius2 > aDeflection) {
       aMaxAngle = ACos(1. - aDeflection / aRadius2) * 2.;

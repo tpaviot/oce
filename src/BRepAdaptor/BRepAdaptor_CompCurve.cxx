@@ -1,7 +1,23 @@
-// File:	BRepAdaptor_CompCurve.cxx
-// Created:	Thu Aug 20 11:16:25 1998
-// Author:	Philippe MANGIN
-//		<pmn@sgi29>
+// Created on: 1998-08-20
+// Created by: Philippe MANGIN
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepAdaptor_CompCurve.ixx>
@@ -73,8 +89,7 @@ BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
     }
   }
 
-  Forward = Standard_True; // Defaut ; Les Edge Reverse seront parcourue
-                           // a rebourt.
+  Forward = Standard_True; // Defaut ; The Reverse Edges are parsed.
   if((NbEdge > 2) || ((NbEdge==2) && (!myWire.Closed())) ) {
     TopAbs_Orientation Or = myCurves->Value(1).Edge().Orientation();
     TopoDS_Vertex VI, VL;
@@ -82,11 +97,11 @@ BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
 			     myCurves->Value(2).Edge(),
 			     VI);
     VL = TopExp::LastVertex(myCurves->Value(1).Edge());
-    if (VI.IsSame(VL)) { // On Garde toujours le sens de parcout
+    if (VI.IsSame(VL)) { // The direction of parsing is always preserved
       if (Or == TopAbs_REVERSED)
 	 Forward = Standard_False;
     }
-    else {// On renverse toujours le sens de parcout
+    else {// The direction of parsing is always reversed
      if (Or != TopAbs_REVERSED)
 	 Forward = Standard_False;
     }
@@ -114,14 +129,14 @@ BRepAdaptor_CompCurve::BRepAdaptor_CompCurve(const TopoDS_Wire& W,
   TLast = Last;
   PTol = Tol;
 
-  // Trim des courbes extremes.
+  // Trim the extremal curves.
   Handle (BRepAdaptor_HCurve) HC;
   Standard_Integer i1, i2;
   Standard_Real f=TFirst, l=TLast, d;
   i1 = i2 = CurIndex;
   Prepare(f, d, i1);
   Prepare(l, d, i2);
-  CurIndex = (i1+i2)/2; // Petite optimisation
+  CurIndex = (i1+i2)/2; // Small optimization
   if (i1==i2) {
     if (l > f)
       HC = Handle(BRepAdaptor_HCurve)::DownCast(myCurves->Value(i1).Trim(f, l, PTol));
@@ -206,14 +221,14 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
   Standard_Integer ii, jj, kk, n;
   Standard_Real f, F, delta;
 
-  // Premiere courbe (sens de parcourt de le edge)
+  // First curve (direction of parsing of the edge)
   n = myCurves->ChangeValue(1).NbIntervals(S);
   Handle(TColStd_HArray1OfReal) Ti = new (TColStd_HArray1OfReal) (1, n+1);
   myCurves->ChangeValue(1).Intervals(Ti->ChangeArray1(), S);
   InvPrepare(1, f, delta);
   F = myKnots->Value(1);
   if (delta < 0) {
-    //sens de parcourt inverser
+    // invert the direction of parsing
     for (kk=1,jj=Ti->Length(); jj>0; kk++, jj--)
       T(kk) = F + (Ti->Value(jj)-f)*delta;
   }
@@ -222,7 +237,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
       T(kk) = F + (Ti->Value(kk)-f)*delta;
   }
 
-  // et les suivante
+  // and the next
   for (ii=2; ii<=myCurves->Length(); ii++) {
     n = myCurves->ChangeValue(ii).NbIntervals(S);
     if (n != Ti->Length()-1) Ti = new (TColStd_HArray1OfReal) (1, n+1);
@@ -230,7 +245,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
     InvPrepare(ii, f, delta);
     F = myKnots->Value(ii);
     if (delta < 0) {
-      //sens de parcourt inverser
+      // invert the direction of parcing
       for (jj=Ti->Length()-1; jj>0; kk++, jj--)
 	T(kk) = F + (Ti->Value(jj)-f)*delta;
     }
@@ -345,7 +360,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
 
  GeomAbs_CurveType BRepAdaptor_CompCurve::GetType() const
 {
-  return GeomAbs_OtherCurve; //temporaire
+  return GeomAbs_OtherCurve; //temporary
 //  if ( myCurves->Length() > 1) return GeomAbs_OtherCurve;
 //  return myCurves->Value(1).GetType();
 }
@@ -408,10 +423,10 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
 //=======================================================================
 //function : Prepare
 //purpose  :
-// Lorsque le parametre est pres de un "noeud" on determine la loi en
-// fonction du signe de tol:
-//   - negatif -> Loi precedente au noeud.
-//   - positif -> Loi consecutive au noeud.
+// When the parameter is close to "node" the rule is determined
+// depending on the sign of tol:
+//   - negative -> Rule preceding to the node.
+//   - positive -> Rule following after the node.
 //=======================================================================
 
  void BRepAdaptor_CompCurve::Prepare(Standard_Real& W,
@@ -424,7 +439,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
   else                    { Eps = -PTol;}
 
 
-  Wtest = W+Eps; //Decalage pour discriminer les noeuds
+  Wtest = W+Eps; //Offset to discriminate the nodes
   if(Periodic){
     Wtest = ElCLib::InPeriod(Wtest,
 			     0,
@@ -432,7 +447,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
     W = Wtest-Eps;
   }
 
-  // Recheche de le index
+  // Find the index
   Standard_Boolean Trouve = Standard_False;
   if (myKnots->Value(CurIndex) > Wtest) {
     for (ii=CurIndex-1; ii>0 && !Trouve; ii--)
@@ -440,7 +455,7 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
 	CurIndex = ii;
 	Trouve = Standard_True;
       }
-    if (!Trouve) CurIndex = 1; // En dehors des bornes ...
+    if (!Trouve) CurIndex = 1; // Out of limits...
   }
 
   else if (myKnots->Value(CurIndex+1) <= Wtest) {
@@ -449,17 +464,17 @@ const TopoDS_Wire& BRepAdaptor_CompCurve::Wire() const
 	CurIndex = ii;
 	Trouve = Standard_True;
       }
-    if (!Trouve) CurIndex = myCurves->Length(); // En dehors des bornes ...
+    if (!Trouve) CurIndex = myCurves->Length(); // Out of limits...
   }
 
-  // Reverse ?
+  // Invert ?
   const TopoDS_Edge& E = myCurves->Value(CurIndex).Edge();
   TopAbs_Orientation Or = E.Orientation();
   Standard_Boolean Reverse;
   Reverse = (Forward && (Or == TopAbs_REVERSED)) ||
             (!Forward && (Or != TopAbs_REVERSED));
 
-  // Calcul du parametre local
+  // Calculate the local parameter
   BRep_Tool::Range(E, f, l);
   Delta = myKnots->Value(CurIndex+1) - myKnots->Value(CurIndex);
   if (Delta > PTol*1.e-9) Delta = (l-f)/Delta;
@@ -477,15 +492,15 @@ void  BRepAdaptor_CompCurve::InvPrepare(const Standard_Integer index,
 					Standard_Real& First,
 					Standard_Real& Delta) const
 {
-  // Reverse ?
+  // Invert?
   const TopoDS_Edge& E = myCurves->Value(index).Edge();
   TopAbs_Orientation Or = E.Orientation();
   Standard_Boolean Reverse;
   Reverse = (Forward && (Or == TopAbs_REVERSED)) ||
             (!Forward && (Or != TopAbs_REVERSED));
 
-  // Calcul des parametres de reparametrisation
-  // tel que : T = Ti + (t-First)*Delta
+  // Calculate the parameters of reparametrisation
+  // such as : T = Ti + (t-First)*Delta
   Standard_Real f, l;
   BRep_Tool::Range(E, f, l);
   Delta = myKnots->Value(index+1) - myKnots->Value(index);

@@ -1,7 +1,23 @@
-// File:	ChFiKPart_CompData_PlnCon.cxx
-// Created:	Thu Feb  3 15:04:25 1994
-// Author:	Isabelle GRIGNON
-//		<isg@zerox>
+// Created on: 1994-02-03
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <ChFiKPart_ComputeData.jxx>
 #include <Precision.hxx>
@@ -149,7 +165,7 @@ Standard_Boolean ChFiKPart_MakeFillet(TopOpeBRepDS_DataStructure& DStr,
   else{
     ElSLib::TorusParameters(FilAx3,Rad,Radius,P,u,v);
     ElSLib::TorusD1(u,v,FilAx3,Rad,Radius,PP,deru,derv);
-    if(!plandab && Ang < PI/2 && dedans) v = v + 2*PI;
+    if(!plandab && Ang < M_PI/2 && dedans) v = v + 2*M_PI;
   }  
   gp_Pnt2d p2dFil(0.,v);
   gp_Dir norFil(deru.Crossed(derv));
@@ -211,7 +227,7 @@ Standard_Boolean ChFiKPart_MakeFillet(TopOpeBRepDS_DataStructure& DStr,
   else{
     ElSLib::TorusParameters(FilAx3,Rad,Radius,P,u,v);
     ElSLib::TorusD1(u,v,FilAx3,Rad,Radius,PP,deru,derv);
-    if(plandab && Ang < PI/2 && dedans) v = v + 2*PI;
+    if(plandab && Ang < M_PI/2 && dedans) v = v + 2*M_PI;
   }  
   norFil = deru.Crossed(derv);
   p2dFil.SetCoord(0.,v);
@@ -220,10 +236,10 @@ Standard_Boolean ChFiKPart_MakeFillet(TopOpeBRepDS_DataStructure& DStr,
   ElSLib::Parameters(Con,P,u,v);
   Standard_Real tol = Precision::PConfusion();
   Standard_Boolean careaboutsens = 0;
-  if(Abs(lu - fu - 2*PI) < tol) careaboutsens = 1;
+  if(Abs(lu - fu - 2*M_PI) < tol) careaboutsens = 1;
   if(u >= fu - tol && u < fu) u = fu;
   if(u <= lu + tol && u > lu) u = lu;
-  if(u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*PI);
+  if(u < fu || u > lu) u = ElCLib::InPeriod(u,fu,fu + 2*M_PI);
   ElSLib::D1(u,v,Con,PP,deru,derv);
   gp_Dir norCon = deru.Crossed(derv);
   gp_Dir2d d2dCon = gp::DX2d();

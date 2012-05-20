@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define GER61351		//GG_171199     Enable to set an object RGB color
 //						  instead a restricted object NameOfColor.
 
@@ -50,59 +68,7 @@ void Prs3d_PointAspect::SetScale(const Standard_Real aScale){
 Handle (Graphic3d_AspectMarker3d) Prs3d_PointAspect::Aspect () const {
   return myAspect;
 }
-void Prs3d_PointAspect::Print (Standard_OStream& s) const {
 
-  Quantity_Color C;
-  Aspect_TypeOfMarker T;
-  Standard_Real S;
-  myAspect->Values(C,T,S);
-  switch (T) {
-  case Aspect_TOM_POINT:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " POINT " << S;
-    break;
-  case Aspect_TOM_PLUS:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " PLUS " << S;
-    break;
-  case Aspect_TOM_STAR:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " STAR " << S;
-    break;
-  case Aspect_TOM_O:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " O " << S;
-    break;
-  case Aspect_TOM_X:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " X " << S;
-    break;
-  case Aspect_TOM_O_POINT:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " O_POINT " << S;
-    break;
-  case Aspect_TOM_O_PLUS:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " O_PLUS " << S;
-    break;
-  case Aspect_TOM_O_STAR:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " O_STAR " << S;
-    break;
-  case Aspect_TOM_O_X:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " O_X " << S;
-    break;
-  case Aspect_TOM_BALL:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " BALL " << S;
-    break;
-  case Aspect_TOM_RING1:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " RING1 " << S;
-    break;
-  case Aspect_TOM_RING2:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " RING2 " << S;
-    break;
-  case Aspect_TOM_RING3:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " RING3 " << S;
-    break;
-  case Aspect_TOM_USERDEFINED:
-    s << "PointAspect: " << Quantity_Color::StringName(C.Name()) << " USERDEFINED " << S;
-    break;
-  default:
-    break;
-  }
-}
 void Prs3d_PointAspect::GetTextureSize(Standard_Integer& AWidth, Standard_Integer& AHeight)
 {
   myAspect->GetTextureSize( AWidth, AHeight);
