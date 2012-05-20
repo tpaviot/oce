@@ -87,7 +87,7 @@ OpenGl_ArbTBO.hxx
 OpenGl_ArbDbg.hxx
 OpenGl_ArbFBO.hxx
 OpenGl_ExtGS.hxx
-glext.h
+OpenGl_glext.h
 OpenGl_GlFunctions.hxx
 OpenGl_GlCore11.hxx
 OpenGl_GlCore11Fwd.hxx
