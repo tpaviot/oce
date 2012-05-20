@@ -32,7 +32,11 @@
 #undef GL_VERSION_2_0
 
 // include glext.h provided by Khronos group
-#include <glext.h>
+#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  #include <OpenGL/glext.h>
+#else
+  #include <GL/glext.h>
+#endif
 
 //! Function list for GL1.2 core functionality.
 struct OpenGl_GlCore12
