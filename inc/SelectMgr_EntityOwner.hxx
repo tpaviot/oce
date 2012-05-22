@@ -112,6 +112,8 @@ public:
 //!          Hilight for SelectableObject when the owner is detected. By default <br>
 //!          it always return FALSE. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsForcedHilight() const;
+  //! Set Z layer ID and update all presentations. <br>
+  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
 
 
 

@@ -1,3 +1,9 @@
+#ifndef _Standard_ConstructionError_HeaderFile
+#include <Standard_ConstructionError.hxx>
+#endif
+#ifndef _Standard_OutOfRange_HeaderFile
+#include <Standard_OutOfRange.hxx>
+#endif
 #ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
 #endif

@@ -73,6 +73,8 @@ public:
   //! Starts (after Create or Reset) or restarts (after Stop) <br>
 //!          the Timer. <br>
   Standard_EXPORT   virtual  void Start() ;
+  //! Returns elapsed time in seconds. <br>
+  Standard_EXPORT     Standard_Real ElapsedTime() ;
 
 
 

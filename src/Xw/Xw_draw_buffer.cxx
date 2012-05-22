@@ -1,5 +1,22 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define CTS50025        /*GG_080997
-                Preinitialiser la police de caracteres du buffer sinon
+Preinitialiser la police de caracteres du buffer sinon
                 plantage au chargement
 */
 
@@ -1639,9 +1656,9 @@ float a,cosa,sina ;
 		pltextlist->upoints[i].y = (short int )( yp + YROTATE(x,y) );
 	        a = pltextlist->rangles[i] + angle ;
         	if( a > 0. ) {
-            	  while( a > 2.*PI ) a -= 2.*PI ;
+            	  while( a > 2.*M_PI ) a -= 2.*M_PI ;
         	} else if( a < 0. ) {
-            	  while( a < -2.*PI ) a += 2.*PI ;
+            	  while( a < -2.*M_PI ) a += 2.*M_PI ;
         	}
 		pltextlist->uangles[i] = a ;
 		pltextlist->uscalex[i] = pltextlist->rscalex[i] ;
@@ -1661,9 +1678,9 @@ float a,cosa,sina ;
 		pptextlist->upoints[i].y = (short int )( yp + YROTATE(x,y) );
 	        a = pptextlist->rangles[i] + angle ;
         	if( a > 0. ) {
-            	  while( a > 2.*PI ) a -= 2.*PI ;
+            	  while( a > 2.*M_PI ) a -= 2.*M_PI ;
         	} else if( a < 0. ) {
-            	  while( a < -2.*PI ) a += 2.*PI ;
+            	  while( a < -2.*M_PI ) a += 2.*M_PI ;
         	}
 		pptextlist->uangles[i] = a ;
 		pptextlist->uscalex[i] = pptextlist->rscalex[i] ;

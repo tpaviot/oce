@@ -25,6 +25,9 @@
 #ifndef _WNT_GraphicDevice_HeaderFile
 #include <WNT_GraphicDevice.hxx>
 #endif
+#ifndef _Standard_CString_HeaderFile
+#include <Standard_CString.hxx>
+#endif
 #ifndef _Handle_Aspect_GraphicDriver_HeaderFile
 #include <Handle_Aspect_GraphicDriver.hxx>
 #endif
@@ -42,6 +45,10 @@ public:
 //!	    of the graphic library. <br>
 //!  Warning: Raises if something wrong. <br>
   Standard_EXPORT   Graphic3d_WNTGraphicDevice();
+  //! Creates a class instance and provide initialization <br>
+//!	    of the graphic library defined by "graphicLib". <br>
+//!  Warning: Raises if something wrong. <br>
+  Standard_EXPORT   Graphic3d_WNTGraphicDevice(const Standard_CString graphicLib);
   //! Destroys all resources attached to the graphic device. <br>
   Standard_EXPORT     void Destroy() ;
 ~Graphic3d_WNTGraphicDevice()
@@ -64,6 +71,8 @@ private:
 
   //! Sets the GraphicDriver. <br>
   Standard_EXPORT     void SetGraphicDriver() ;
+  //! Sets the GraphicDriver defined by "graphicLib". <br>
+  Standard_EXPORT     void SetGraphicDriver(const Standard_CString graphicLib) ;
 
 Handle_Graphic3d_GraphicDriver MyGraphicDriver;
 OSD_SharedLibrary MySharedLibrary;

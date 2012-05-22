@@ -1,4 +1,21 @@
-// file GccAna_Circ2dTanOnRad_2.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2dTanOnRad.jxx>
 
@@ -9,25 +26,23 @@
 #include <gp_Dir2d.hxx>
 
 //=========================================================================
-//    typedef des objets manipules :                                      +
+//    typedef of handled objects :                                      +
 //=========================================================================
 
 typedef math_DirectPolynomialRoots Roots;
 
 //=========================================================================
-//   Cercle tangent a un point    Point1.                                 +
-//          centre sur une droite OnLine.                                 +
-//          de rayon              Radius.                                 +
+//   Circle tangent to a point      Point1.                               +
+//          center on straight line OnLine.                               +
+//          radius                  Radius.                               +
 //                                                                        +
-//  On initialise le tableau de solutions cirsol ainsi que tous les       +
-//  champs.                                                               +
-//  On elimine les cas ne presentant pas de solution.                     +
-//  On resoud l equation du second degre indiquant que le point de centre +
-//  recherche (xc,yc) est a une distance Radius du point Point1 et        +
-//                        sur la droite OnLine.                           +
-//  Les solutions sont representees par les cercles :                     +
-//                   - de centre Pntcen(xc,yc)                            +
-//                   - de rayon Radius.                                   +
+//  Initialize the table of solutions cirsol and all fields.              +
+//  Eliminate cases not being the solution.                     +
+//  Solve the equation of second degree showing that the found center point +
+//  (xc,yc) is at distance Radius from point Point1 and on the straight line OnLine. +
+//  The solutions are represented by circles :                     +
+//                   - of center Pntcen(xc,yc)                            +
+//                   - of radius Radius.                                   +
 //=========================================================================
 
 GccAna_Circ2dTanOnRad::

@@ -1,9 +1,27 @@
-// File:      GeomAdaptor_Surface.lxx
-// Created:   Tue May 18 16:12:12 1993
-// Author:    Bruno DUMORTIER
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-05-18
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Geom_Surface.hxx>
+#include <Standard_NullObject.hxx>
+#include <Standard_ConstructionError.hxx>
 
 //=======================================================================
 //function : GeomAdaptor_Surface
@@ -11,8 +29,15 @@
 //=======================================================================
 
 inline GeomAdaptor_Surface::GeomAdaptor_Surface()
- : myTolU(0.), myTolV(0.)
-{} 
+ : mySurfaceType(GeomAbs_OtherSurface), 
+   myUFirst(0.),
+   myULast(0.),
+   myVFirst(0.),
+   myVLast (0.),
+   myTolU(0.), 
+   myTolV(0.)
+{
+} 
 
 //=======================================================================
 //function : GeomAdaptor_Surface
@@ -48,10 +73,34 @@ inline GeomAdaptor_Surface::GeomAdaptor_Surface(const Handle(Geom_Surface)& S,
 
 inline void GeomAdaptor_Surface::Load(const Handle(Geom_Surface)& S)
 {
+  if ( S.IsNull()) Standard_NullObject::Raise("GeomAdaptor_Surface::Load");
+
   Standard_Real U1,U2,V1,V2;
   S->Bounds(U1,U2,V1,V2);
-  Load(S,U1,U2,V1,V2);
+  load(S,U1,U2,V1,V2);
 }
+
+//=======================================================================
+//function : Load
+//purpose  : 
+//=======================================================================
+
+inline void GeomAdaptor_Surface::Load(const Handle(Geom_Surface)& S,
+                               const Standard_Real UFirst,
+                               const Standard_Real ULast,
+                               const Standard_Real VFirst,
+                               const Standard_Real VLast,
+                               const Standard_Real TolU,
+                               const Standard_Real TolV)
+{
+  if ( S.IsNull()) Standard_NullObject::Raise("GeomAdaptor_Surface::Load");
+
+  if(UFirst>ULast || VFirst>VLast)
+    Standard_ConstructionError::Raise("GeomAdaptor_Surface::Load");
+
+  load(S,UFirst,ULast,VFirst,VLast,TolU,TolV);
+}
+
 
 //=======================================================================
 //function : Surface

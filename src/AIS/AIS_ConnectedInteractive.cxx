@@ -1,7 +1,23 @@
-// File:	AIS_ConnectedInteractive.cxx
-// Created:	Wed Jan  8 15:24:35 1997
-// Author:	Robert COUBLANC
-//		<rob@robox.paris1.matra-dtv.fr>
+// Created on: 1997-01-08
+// Created by: Robert COUBLANC
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Standard_NotImplemented.hxx>
@@ -137,39 +153,39 @@ void AIS_ConnectedInteractive::Compute(const Handle_PrsMgr_PresentationManager2d
 //function : ComputeSelection
 //purpose  : 
 //=======================================================================
-void AIS_ConnectedInteractive::ComputeSelection(const Handle(SelectMgr_Selection)& aSel,
-						const Standard_Integer aMode)
+
+void AIS_ConnectedInteractive::ComputeSelection(const Handle(SelectMgr_Selection)& aSel, 
+                                                const Standard_Integer aMode)
 {
   if(!(HasLocation() ||HasConnection())) return;
   
   aSel->Clear();
   if(!myReference->HasSelection(aMode))
     myReference->UpdateSelection(aMode);
-  
-  
-//  static OSD_Timer KronSel;
-//  cout<<"debut calcul connexion primitives pour le mode "<<aMode<<endl;
-//  KronSel.Reset();
-//  KronSel.Start();
-  
+
   const Handle(SelectMgr_Selection)& TheRefSel = myReference->Selection(aMode);
   Handle(SelectMgr_EntityOwner) OWN = new SelectMgr_EntityOwner(this);
-  Handle(Select3D_SensitiveEntity) SE3D,SNew;
+  Handle(Select3D_SensitiveEntity) SE3D, SNew;
   
   if(TheRefSel->IsEmpty())
     myReference->UpdateSelection(aMode);
-  for(TheRefSel->Init();TheRefSel->More();TheRefSel->Next()){
-    SE3D = *((Handle(Select3D_SensitiveEntity)*) &(TheRefSel->Sensitive()));
-    if(!SE3D.IsNull()){
+  for(TheRefSel->Init();TheRefSel->More();TheRefSel->Next())
+  {
+    SE3D = Handle(Select3D_SensitiveEntity)::DownCast(TheRefSel->Sensitive());
+    if(!SE3D.IsNull())
+    {
+      // Get the copy of SE3D
       SNew = SE3D->GetConnected(myLocation);
       if(aMode==0)
-	SNew->Set(OWN);
+      {
+        SNew->Set(OWN);
+        // In case if SE3D caches some location-dependent data
+        // that must be updated after setting OWN
+        SNew->SetLocation(myLocation);
+      }
       aSel->Add(SNew);
     }
   }
-//  KronSel.Stop();
-//  cout<<"fin calcul connexion primitives pour le mode "<<aMode<<endl;
-//  KronSel.Show();
 }
 
 void AIS_ConnectedInteractive::UpdateLocation()

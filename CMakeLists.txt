@@ -393,8 +393,7 @@ IF(${PROJECT_NAME}_OCAF)
 		src/StdResource/Standard.us
 		src/StdResource/StandardLite
 		src/StdResource/TObj
-		src/StdResource/XCAF
-		src/StdResource/dftree.tcl )
+		src/StdResource/XCAF )
 ENDIF(${PROJECT_NAME}_OCAF)
 
 IF(${PROJECT_NAME}_DATAEXCHANGE)
@@ -442,7 +441,8 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/tdoc
 		src/DrawResources/test2xl
 		src/DrawResources/vmdltest
-		src/DrawResources/wing.brep )
+		src/DrawResources/wing.brep 
+		src/DrawResources/dftree.tcl )
 ENDIF(${PROJECT_NAME}_DRAW)
 
 IF (${PROJECT_NAME}_USE_BUNDLE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
@@ -879,7 +879,6 @@ INSTALL(FILES ${INSTALL_STDRESOURCE_FILES}
 IF(WIN32)
 	SET(ENV_SCRIPTS
 		${${PROJECT_NAME}_SOURCE_DIR}/env.bat
-		${${PROJECT_NAME}_SOURCE_DIR}/env_build.bat
 		${${PROJECT_NAME}_SOURCE_DIR}/msvc.bat
 	)
 	INSTALL(FILES ${ENV_SCRIPTS}

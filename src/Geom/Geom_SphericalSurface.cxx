@@ -1,10 +1,24 @@
-// File:	Geom_SphericalSurface.cxx
-// Created:	Wed Mar 10 10:23:09 1993
-// Author:	JCV
-//		<fid@phylox>
-// Copyright:	Matra Datavision 1993
+// Created on: 1993-03-10
+// Created by: JCV
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-//File Geom_SphericalSurface.cxx, JCV 17/01/91
+
 
 #include <Geom_SphericalSurface.ixx>
 
@@ -80,7 +94,7 @@ Geom_SphericalSurface::Geom_SphericalSurface (const gp_Sphere& S)
 
 Standard_Real Geom_SphericalSurface::UReversedParameter( const Standard_Real U) const
 {
-  return (2.*PI - U);
+  return (2.*M_PI - U);
 }
 
 //=======================================================================
@@ -100,7 +114,7 @@ Standard_Real Geom_SphericalSurface::VReversedParameter( const Standard_Real V) 
 //=======================================================================
 
 Standard_Real Geom_SphericalSurface::Area () const 
-{return 4.0 * PI * radius * radius;}
+{return 4.0 * M_PI * radius * radius;}
 
 //=======================================================================
 //function : Radius
@@ -175,9 +189,9 @@ void Geom_SphericalSurface::Bounds (Standard_Real& U1, Standard_Real& U2,
 				    Standard_Real& V1, Standard_Real& V2) const {
 
   U1 =       0.0;  
-  U2 =  PI * 2.0; 
-  V1 = -PI / 2.0;
-  V2 =  PI / 2.0;
+  U2 =  M_PI * 2.0; 
+  V1 = -M_PI / 2.0;
+  V2 =  M_PI / 2.0;
 }
 
 
@@ -308,7 +322,7 @@ gp_Sphere Geom_SphericalSurface::Sphere () const {
 Handle(Curve) Geom_SphericalSurface::UIso (const Standard_Real U) const 
 {
   Handle(Geom_Circle) GC = new Geom_Circle(ElSLib::SphereUIso(pos,radius,U));
-  Handle(Geom_TrimmedCurve) iso = new Geom_TrimmedCurve(GC,-PI/2.,PI/2);
+  Handle(Geom_TrimmedCurve) iso = new Geom_TrimmedCurve(GC,-M_PI/2.,M_PI/2);
   return iso;
 }
 
@@ -333,7 +347,7 @@ Handle(Curve) Geom_SphericalSurface::VIso (const Standard_Real V) const
 
 Standard_Real Geom_SphericalSurface::Volume () const {
 
-   return (4.0 * PI * radius * radius * radius)/3.0;
+   return (4.0 * M_PI * radius * radius * radius)/3.0;
 }
 
 

@@ -33,8 +33,6 @@ class Geom2dInt_Geom2dCurveTool;
 class Geom2dInt_TheProjPCurOfGInter;
 class Geom2dInt_TheIntPCurvePCurveOfGInter;
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
-class Geom2dInt_ThePolygon2dToolOfTheIntPCurvePCurveOfGInter;
-class Geom2dInt_InterferencePoly2dOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter;
 
 

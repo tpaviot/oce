@@ -1,8 +1,23 @@
-// File:	Convert_PolynomialCosAndSin.cxx
-// Created:	Tue Oct 10 15:56:28 1995
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
-//PMN 4/12/1997 On se ramene toujours sur [0, Delta] pour eviter les cas tordus
+// Created on: 1995-10-10
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Convert_PolynomialCosAndSin.hxx>
@@ -35,7 +50,7 @@ static Standard_Real Locate(const Standard_Real Angfin,
     BSplCLib::D0(ptest,TPoles,BSplCLib::NoWeights(),valP);
     Standard_Real theta = ATan2(valP.Y(),valP.X());
     if (theta < 0.) {
-      theta +=2.*PI;
+      theta +=2.*M_PI;
     }
     if (Abs(theta - Angfin) < Ptol) {
       return ptest;
@@ -70,12 +85,12 @@ void BuildPolynomialCosAndSin
   trim_max,
   middle,
   Angle,
-  PI2 = 2*PI ;
+  PI2 = 2*M_PI ;
   Standard_Integer ii, degree = num_poles -1 ;
   locUFirst = UFirst ;
 
-  // On Rammene le UFirst dans [-2PI; 2PI]
-  // afin de faire des rotation sans risque
+  // Return UFirst in [-2PI; 2PI]
+  // to make rotations without risk
   while (locUFirst > PI2) {
     locUFirst -= PI2;
   }
@@ -83,18 +98,18 @@ void BuildPolynomialCosAndSin
     locUFirst += PI2;
   }
 
-// on se ramene a l'arc [0, Delta]
+// Return to the arc [0, Delta]
   Delta = ULast - UFirst;
   middle =  0.5e0 * Delta ; 
+  
+  // coincide the required bisector of the angular sector with 
+  // axis -Ox definition of the circle in Bezier of degree 7 so that 
+  // parametre 1/2 of Bezier was exactly a point of the bissectrice 
+  // of the required angular sector.
   //
-  // on fait coincider la bisectrice du secteur angulaire que l on desire avec
-  // l axe -Ox de definition du cercle en Bezier de degree 7 de sorte que le 
-  //  parametre 1/2 de la Bezier soit exactement un point de la bissectrice du
-  // secteur angulaire que l on veut.
+  Angle = middle - M_PI ;
   //
-  Angle = middle - PI ;
-  //
-  // Cercle de rayon 1. Voir Euclid
+  // Circle of radius 1. See Euclid
   //
 
   TColgp_Array1OfPnt2d TPoles(1,8),
@@ -114,10 +129,10 @@ void BuildPolynomialCosAndSin
   }
 
 
-  t_min = 1.0e0 - (Delta * 1.3e0 / PI) ;
+  t_min = 1.0e0 - (Delta * 1.3e0 / M_PI) ;
   t_min *= 0.5e0 ;
   t_min = Max(t_min,0.0e0) ;
-  t_max = 1.0e0 + (Delta * 1.3e0 / PI) ;
+  t_max = 1.0e0 + (Delta * 1.3e0 / M_PI) ;
   t_max *= 0.5e0 ;
   t_max = Min(t_max,1.0e0) ;
   trim_max = Locate(Delta,
@@ -125,8 +140,8 @@ void BuildPolynomialCosAndSin
 		    t_min,
 		    t_max);
   //
-  // puisque la Bezier est symetrique par rapport a la bissectrice du 
-  // secteur angulaire ...
+  // as Bezier is symmetric correspondingly to the bissector 
+  // of the angular sector ...
   
   trim_min = 1.0e0 - trim_max ;
   //
@@ -155,7 +170,7 @@ void BuildPolynomialCosAndSin
 		     NewTPoles,
 		     BSplCLib::NoWeights());
 
-  // recalage sans doute superflu
+  // readjustment is obviously redundant
   Standard_Real SinD = Sin(Delta), CosD = Cos(Delta);
   gp_Pnt2d Pdeb(1., 0.);
   gp_Pnt2d Pfin(CosD, SinD);
@@ -166,14 +181,14 @@ void BuildPolynomialCosAndSin
   Pdeb.ChangeCoord() += theXY;
   NewTPoles(2) = Pdeb;
   
-  // Recalages a la Euclid
+  // readjustment to Euclid
   dtg = NewTPoles(num_poles).Distance(NewTPoles(num_poles-1));
   NewTPoles(num_poles) = Pfin;
   theXY.SetCoord(dtg*SinD,-dtg*CosD);
   Pfin.ChangeCoord() += theXY;
   NewTPoles(num_poles-1) = Pfin;
 
-  // Rotation pour se ramener a l'arc [LocUFirst, LocUFirst+Delta]
+  // Rotation to return to the arc [LocUFirst, LocUFirst+Delta]
   T.SetRotation(gp::Origin2d(), locUFirst);
   for (ii=1; ii<=num_poles; ii++) {
     NewTPoles(ii).Transform(T);

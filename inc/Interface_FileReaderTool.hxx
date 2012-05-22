@@ -187,6 +187,8 @@ Standard_EXPORT virtual ~Interface_FileReaderTool() { Destroy(); }
   //! Ends file reading after reading all the entities <br>
 //!           default is doing nothing; redefinable as necessary <br>
   Standard_EXPORT   virtual  void EndRead(const Handle(Interface_InterfaceModel)& amodel) ;
+  //! Clear filelds <br>
+  Standard_EXPORT     void Clear() ;
 
 
 

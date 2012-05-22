@@ -1,7 +1,23 @@
-// File:	Approx_CurvlinFunc.cxx
-// Created:	Tue May 12 14:03:09 1998
-// Author:	Roman BORISOV
-//		<rbv@sgi38>
+// Created on: 1998-05-12
+// Created by: Roman BORISOV
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Approx_CurvlinFunc.ixx>
@@ -9,11 +25,10 @@
 #include <Adaptor3d_HCurveOnSurface.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 #include <GeomLib.hxx>
- #include <GCPnts_AbscissaPoint.hxx>
+#include <GCPnts_AbscissaPoint.hxx>
 #include <Precision.hxx>
 
-static Standard_Real myPrevS, myPrevU;
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
 #include <OSD_Timer.hxx>
 static OSD_Chronometer chr_uparam;
 Standard_EXPORT Standard_Integer uparam_count;
@@ -98,7 +113,9 @@ Approx_CurvlinFunc::Approx_CurvlinFunc(const Handle(Adaptor3d_HCurve)& C, const 
                     myCase(1), 
                     myFirstS(0), 
                     myLastS(1), 
-                    myTolLen(Tol)
+                    myTolLen(Tol),
+                    myPrevS (0.0),
+                    myPrevU (0.0)
 {
   Init();
 }
@@ -109,7 +126,9 @@ Approx_CurvlinFunc::Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D, co
                     myCase(2), 
                     myFirstS(0), 
                     myLastS(1), 
-                    myTolLen(Tol)
+                    myTolLen(Tol),
+                    myPrevS (0.0),
+                    myPrevU (0.0)
 {  
   Init();
 }
@@ -122,7 +141,9 @@ Approx_CurvlinFunc::Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D1, c
                     myCase(3), 
                     myFirstS(0), 
                     myLastS(1), 
-                    myTolLen(Tol)
+                    myTolLen(Tol),
+                    myPrevS (0.0),
+                    myPrevU (0.0)
 {  
   Init();
 }
@@ -206,8 +227,9 @@ void Approx_CurvlinFunc::Init(Adaptor3d_Curve& C, Handle(TColStd_HArray1OfReal)&
   for(i = Si->Lower(); i<= Si->Upper(); i++)
     Si->ChangeValue(i) /= Len;
 
-  myPrevS = myFirstS;
-  myPrevU = FirstU;
+  // TODO - fields should be mutable
+  const_cast<Approx_CurvlinFunc*>(this)->myPrevS = myFirstS;
+  const_cast<Approx_CurvlinFunc*>(this)->myPrevU = FirstU;
 }
 
 void  Approx_CurvlinFunc::SetTol(const Standard_Real Tol)
@@ -431,7 +453,7 @@ Standard_Real Approx_CurvlinFunc::GetUParameter(Adaptor3d_Curve& C,
   Standard_Real deltaS, base, U, Length;
   Standard_Integer NbInt, NInterval, i;
   Handle(TColStd_HArray1OfReal) InitUArray, InitSArray;
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   InitChron(chr_uparam);
 #endif
   if(S < 0 || S > 1) Standard_ConstructionError::Raise("Approx_CurvlinFunc::GetUParameter");
@@ -477,10 +499,11 @@ Standard_Real Approx_CurvlinFunc::GetUParameter(Adaptor3d_Curve& C,
 
   U = GCPnts_AbscissaPoint(C, deltaS, base, UGuess, myTolLen).Parameter();
 
-  myPrevS = S;
-  myPrevU = U;
+  // TODO - fields should be mutable
+  const_cast<Approx_CurvlinFunc*>(this)->myPrevS = S;
+  const_cast<Approx_CurvlinFunc*>(this)->myPrevU = U;
 
-#ifdef DEB
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_uparam, t_uparam);
   uparam_count++;
 #endif

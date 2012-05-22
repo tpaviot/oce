@@ -1,0 +1,62 @@
+-- Created on: 2002-02-07
+-- Created by: Igor FEOKTISTOV
+-- Copyright (c) 2002-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
+class ReShaper from QANewModTopOpe inherits TShared from  MMgt 
+    	---Purpose: to remove  "floating" objects from compound.
+	-- "floating" objects are wires, edges, vertices that do not belong
+	-- solids, shells or faces.
+
+uses 
+    Shape from TopoDS, 
+    HSequenceOfShape  from  TopTools, 
+    MapOfShape  from  TopTools 
+is 
+ 
+    Create(TheInitialShape  :  Shape from TopoDS) 
+     
+    returns  mutable  ReShaper; 
+     
+    Create(TheInitialShape  :  Shape from TopoDS;   
+    	   TheMap  :  MapOfShape  from  TopTools) 
+     
+    returns  mutable  ReShaper; 
+     
+    Create(TheInitialShape  :  Shape from TopoDS;   
+           TheShapeToBeRemoved  : HSequenceOfShape  from  TopTools) 
+     
+    returns  mutable  ReShaper; 
+     
+    Remove(me  :  mutable;  TheS  :  Shape from TopoDS); 
+     
+    Perform(me  :  mutable); 
+     
+    Clear(me  :  mutable);  
+    ---Purpose:  to  clear  all  added  for  removing  shapes  from  inner  map.
+     
+    GetResult(me)  returns  Shape  from  TopoDS; 
+	---C++: return const &
+	---C++: alias "Standard_EXPORT operator TopoDS_Shape() const;"
+     
+fields 
+ 
+    myInitShape  :  Shape  from  TopoDS; 
+    myResult     :  Shape  from  TopoDS;  
+    myMap        :  MapOfShape  from  TopTools;  
+    
+end;    

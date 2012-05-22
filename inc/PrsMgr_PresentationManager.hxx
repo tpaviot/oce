@@ -83,6 +83,12 @@ public:
 //! aPresentableObject in this framework with the <br>
 //! display mode aMode. <br>
   Standard_EXPORT     Standard_Integer DisplayPriority(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Standard_Integer amode) const;
+  //! Set Z layer ID for all presentations of the object. <br>
+  Standard_EXPORT     void SetZLayer(const Handle(PrsMgr_PresentableObject)& thePresentableObject,const Standard_Integer theLayerId) ;
+  //! Get Z layer ID assigned to all presentations of the object. <br>
+//! Method returns -1 value if object has no presentations and is <br>
+//! impossible to get layer index. <br>
+  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentableObject)& thePresentableObject) const;
   //! Returns true if the presentation of the presentable <br>
 //! object aPresentableObject in this framework with the <br>
 //! display mode aMode is displayed. <br>

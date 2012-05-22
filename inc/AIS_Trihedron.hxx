@@ -85,6 +85,7 @@ class Prs3d_Projector;
 class PrsMgr_PresentationManager2d;
 class Graphic2d_GraphicObject;
 class Geom_Transformation;
+class TopLoc_Location;
 class SelectMgr_Selection;
 class Quantity_Color;
 class TColgp_Array1OfPnt;
@@ -106,7 +107,11 @@ class TColgp_Array1OfPnt;
 //! for length are stocked. For trihedra, this is <br>
 //! AIS_Drawer_FirstAxisAspect. You change the <br>
 //! values inside this Aspect and recalculate the presentation. <br>
-//! <br>
+//! If you want to use extended selection modes, different than 0, <br>
+//! you should take care of removing of the shapes from the interactive <br>
+//! context that has been computed for selection; it might be necessary <br>
+//! when you change selection mode. You can use methods Axis, Point, <br>
+//! Plane to retrieve the shapes. <br>
 class AIS_Trihedron : public AIS_InteractiveObject {
 
 public:
@@ -156,6 +161,8 @@ public:
 //!          WARNING :<aTrsf> must be applied <br>
 //!           to the object to display before computation  !!! <br>
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  Standard_EXPORT     void SetLocation(const TopLoc_Location& aLoc) ;
   //! Returns index 3, selection of the planes XOY, YOZ, XOZ. <br>
   Standard_EXPORT   virtual  Standard_Integer Signature() const;
   //! Indicates that the type of Interactive Object is datum. <br>

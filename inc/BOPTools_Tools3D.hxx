@@ -22,6 +22,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
+#endif
 #ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
 #endif
@@ -78,10 +81,10 @@ public:
   Standard_EXPORT   static  Standard_Boolean IsConvexWire(const TopoDS_Wire& aW) ;
   
 //! Remove seam edges from face <aF> <br>
-  Standard_EXPORT   static  void RemoveSims(const TopoDS_Face& aF,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  void RemoveSims(const TopoDS_Face& aF,const Handle(IntTools_Context)& aContext) ;
   
 //! Remove seam edges from all faces of shape <aS> <br>
-  Standard_EXPORT   static  void RemoveSims(const TopoDS_Shape& aS,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  void RemoveSims(const TopoDS_Shape& aS,const Handle(IntTools_Context)& aContext) ;
   
 //! For the draft section edge <aEx> computes orientation <br>
 //! in accordance with vector product between normals to <br>
@@ -91,7 +94,7 @@ public:
 //! Returns TRUE if direction of the edge  <aE1> is not <br>
 //! the same as for the edge <aE2> <br>
 //! (using  projection) <br>
-  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse1(const TopoDS_Edge& aE1,const TopoDS_Edge& aE2,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean IsSplitToReverse1(const TopoDS_Edge& aE1,const TopoDS_Edge& aE2,const Handle(IntTools_Context)& aContext) ;
   
 //! Make the edge <aSp> seam edge for the face <aF> <br>
   Standard_EXPORT   static  void DoSplitSEAMOnFace(const TopoDS_Edge& aSp,const TopoDS_Face& aF) ;
@@ -157,7 +160,7 @@ public:
   Standard_EXPORT   static  Standard_Boolean GetNormalToSurface(const Handle(Geom_Surface)& aS,const Standard_Real U,const Standard_Real V,gp_Dir& aD) ;
   
 //! Internal usage <br>
-  Standard_EXPORT   static  void GetPlanes(const TopoDS_Edge& aSp,const TopoDS_Edge& aE2,const TopTools_IndexedDataMapOfShapeListOfShape& aEFMap2,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,TopAbs_State& aST1,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  void GetPlanes(const TopoDS_Edge& aSp,const TopoDS_Edge& aE2,const TopTools_IndexedDataMapOfShapeListOfShape& aEFMap2,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,TopAbs_State& aST1,const Handle(IntTools_Context)& aContext) ;
   
 //! Get the orientation for the edge <aE> on the face <aF> <br>
 //! Returns  TopAbs_INTERNAL if  the edge <aE> is not found <br>
@@ -197,12 +200,12 @@ public:
 //! If the distance  (<aP1>, <aPx>) > TolF => <br>
 //! For 3D-point <aP2> find projection point <aPx> on the face <aF>. <br>
 //! If the distance  (<aP2>, <aPx>) > TolF => returns <aP1> <br>
-  Standard_EXPORT   static  void PointToCompare(const gp_Pnt& aP1,const gp_Pnt& aP2,const TopoDS_Face& aF,gp_Pnt& aPx,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  void PointToCompare(const gp_Pnt& aP1,const gp_Pnt& aP2,const TopoDS_Face& aF,gp_Pnt& aPx,const Handle(IntTools_Context)& aContext) ;
   
 //! Compute 3D-state for the point on the split edge <aSp> <br>
 //! (with base edge <aE1> and the face <aF1>) comparing with <br>
 //! the face <aF2> <br>
-  Standard_EXPORT   static  void GetPlane(const TopoDS_Edge& aSp,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,const TopoDS_Face& aF2,TopAbs_State& aST,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  void GetPlane(const TopoDS_Edge& aSp,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,const TopoDS_Face& aF2,TopAbs_State& aST,const Handle(IntTools_Context)& aContext) ;
   
 //! Compute 3D-state for the point on the split edge <aSp> <br>
 //! (with base edge <aEF2> and the adjacent face <aF2Adj>) comparing with <br>
@@ -247,15 +250,15 @@ public:
 //! edge <aSp> (with base edge <aEF1> on face <aF1>) <br>
 //! comparing with <aF2>. <br>
 //! Used in touch case  <aF1>/<aF2> <br>
-  Standard_EXPORT   static  TopAbs_State GetStatePartIN2D(const TopoDS_Edge& aSp,const TopoDS_Edge& aEF1,const TopoDS_Face& aF1,const TopoDS_Face& aF2,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  TopAbs_State GetStatePartIN2D(const TopoDS_Edge& aSp,const TopoDS_Edge& aEF1,const TopoDS_Face& aF1,const TopoDS_Face& aF2,const Handle(IntTools_Context)& aContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean CheckSameDomainFaceInside(const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,IntTools_Context& theContext) ;
+  Standard_EXPORT   static  Standard_Boolean CheckSameDomainFaceInside(const TopoDS_Face& theFace1,const TopoDS_Face& theFace2,const Handle(IntTools_Context)& theContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean ComputeFaceState(const TopoDS_Face& theFace,const TopoDS_Solid& theRef,IntTools_Context& theContext,TopAbs_State& theState) ;
+  Standard_EXPORT   static  Standard_Boolean ComputeFaceState(const TopoDS_Face& theFace,const TopoDS_Solid& theRef,const Handle(IntTools_Context)& theContext,TopAbs_State& theState) ;
   
-  Standard_EXPORT   static  Standard_Boolean TreatedAsAnalytic(const Standard_Real aTx,const gp_Pnt& aPx,const TopoDS_Edge& aEx,const TopoDS_Face& aFx,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,const Standard_Real aTolTangent,const Standard_Real aTolRadius,TopAbs_State& aState,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean TreatedAsAnalytic(const Standard_Real aTx,const gp_Pnt& aPx,const TopoDS_Edge& aEx,const TopoDS_Face& aFx,const TopoDS_Edge& aE1,const TopoDS_Face& aF1,const Standard_Real aTolTangent,const Standard_Real aTolRadius,TopAbs_State& aState,const Handle(IntTools_Context)& aContext) ;
   
-  Standard_EXPORT   static  Standard_Boolean TreatedAsAnalytic(const TopoDS_Face& aFx,const TopoDS_Edge& aSpE1,const TopoDS_Face& aF1,const Standard_Real aTolTangent,const Standard_Real aTolRadius,TopAbs_State& aState,IntTools_Context& aContext) ;
+  Standard_EXPORT   static  Standard_Boolean TreatedAsAnalytic(const TopoDS_Face& aFx,const TopoDS_Edge& aSpE1,const TopoDS_Face& aF1,const Standard_Real aTolTangent,const Standard_Real aTolRadius,TopAbs_State& aState,const Handle(IntTools_Context)& aContext) ;
   
   Standard_EXPORT   static  Standard_Boolean HasAnalyticSurfaceType(const TopoDS_Face& aF) ;
 

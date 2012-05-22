@@ -1,7 +1,23 @@
-// File:        Intf_Interference.cxx
-// Created:     Mon Jun 24 11:52:34 1991
-// Author:      Didier PIFFAULT
-//              <dpf@phobox>
+// Created on: 1991-06-24
+// Created by: Didier PIFFAULT
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Intf_Interference.ixx>
 #include <gp_Pnt2d.hxx>
@@ -11,8 +27,6 @@
 //function : Intf_Interference
 //purpose  : Initialize for a deferred interference.
 //=======================================================================
-
-static Standard_Integer debug=0;
 
 Intf_Interference::Intf_Interference (const Standard_Boolean Self)
      : SelfIntf(Self)
@@ -30,69 +44,6 @@ void Intf_Interference::SelfInterference (const Standard_Boolean Self)
   mySPoins.Clear();
   mySLines.Clear();
   myTZones.Clear();
-}
-
-
-//---------------------------------------------------------
-// Return the number of sections points in an interference.
-//---------------------------------------------------------
-Standard_Integer Intf_Interference::NbSectionPoints () const
-{
-  return mySPoins.Length();
-}
-
-//-----------------------------------------------------------
-// Give the section point of range Index in the interference.
-//-----------------------------------------------------------
-const Intf_SectionPoint& Intf_Interference::PntValue 
-  (const Standard_Integer Index) const
-{
-  return mySPoins(Index);
-}
-
-//--------------------------------------------------------
-// Return the number of sections lines in an interference.
-//--------------------------------------------------------
-Standard_Integer Intf_Interference::NbSectionLines () const
-{
-  return mySLines.Length();
-}
-
-//----------------------------------------------------------
-// Give the section line of range Index in the interference.
-//----------------------------------------------------------
-const Intf_SectionLine& Intf_Interference::LineValue 
-  (const Standard_Integer Index) const
-{
-  return mySLines(Index);
-}
-
-
-//---------------------------------------------------------------
-// Return the number of sections TangentZones in an interference.
-//---------------------------------------------------------------
-Standard_Integer Intf_Interference::NbTangentZones () const
-{
-  return myTZones.Length();
-}
-
-//---------------------------------------------------------
-// Give the tangentzone of range Index in the interference.
-//---------------------------------------------------------
-const Intf_TangentZone& Intf_Interference::ZoneValue 
-  (const Standard_Integer Index) const
-{
-  return myTZones(Index);
-}
-
-//=======================================================================
-//function : GetTolerance
-//purpose  : 
-//=======================================================================
-
-Standard_Real Intf_Interference::GetTolerance () const
-{
-  return Tolerance;
 }
 
 
@@ -114,20 +65,8 @@ Standard_Boolean Intf_Interference::Insert(const Intf_TangentZone& LaZone)
   Standard_Integer npcz=-1;  // Number of points in the current zone
   Standard_Integer nplz=LaZone.NumberOfPoints(); // in the new zone
 
-  if (debug>0) {
-    cout << "Zone of insertion : \n";
-    LaZone.Dump(2);
-    cout << endl;
-  }
-
 // Loop on TangentZone :
   for (Standard_Integer Iz=1; Iz<=myTZones.Length(); Iz++) {
-
-  if (debug>0) {
-    cout << "Zone  : "<< Iz << "\n";
-    myTZones(Iz).Dump(2);
-    cout << endl;
-  }
 
 // Loop on edges of the TangentZone :
     npcz=myTZones(Iz).NumberOfPoints();
@@ -201,13 +140,6 @@ Standard_Boolean Intf_Interference::Insert(const Intf_TangentZone& LaZone)
     Inserted =Standard_False;
   }
 
-  if (debug>0) {
-    if (Inserted) {
-      cout << "Zone agrandie : "<< lzin <<" \n";
-      myTZones(lzin).Dump(2);
-      cout << endl;
-    }
-  }
   if (Inserted) {
     Intf_TangentZone theNew=myTZones(lzin);
     myTZones.Remove(lzin);

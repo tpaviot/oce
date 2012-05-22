@@ -1,7 +1,23 @@
-// File:	BRepAlgo_OrthogonalProjection.cxx
-// Created:	Mon Oct 13 16:36:58 1997
-// Author:	Roman BORISOV
-//		<rbv@velox.nnov.matra-dtv.fr>
+// Created on: 1997-10-13
+// Created by: Roman BORISOV
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BRepAlgo_NormalProjection.ixx>
 #include <ProjLib_CompProjectedCurve.hxx>
@@ -39,7 +55,7 @@
 #include <Geom2d_BSplineCurve.hxx>
 #include <TopTools_ListIteratorOfListOfShape.hxx>
 
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
 #include <OSD_Timer.hxx>
 
 OSD_Chronometer chr_total, chr_init, chr_approx, chr_booltool;
@@ -184,7 +200,7 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
 
  void BRepAlgo_NormalProjection::Build() 
 {
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
   Standard_Integer init_count = 0, approx_count = 0, booltool_count = 0;
   t_total = 0;
   t_init = 0;
@@ -255,12 +271,12 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
       TolU = hsur->UResolution(myTol3d)/20;
       TolV = hsur->VResolution(myTol3d)/20;
       // Projection
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
       InitChron(chr_init);
 #endif
       Projector = 
 	ProjLib_CompProjectedCurve(hsur, hcur, TolU, TolV, myMaxDist);
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
       ResultChron(chr_init,t_init);
       init_count++;
 #endif
@@ -348,13 +364,13 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
             BB.UpdateVertex(TopExp::LastVertex(TopoDS::Edge(prj)),myTol3d);
 	  }
 	  else {
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
 	    InitChron(chr_approx);
 #endif
 	    Approx_CurveOnSurface appr(HPCur, hsur, Udeb, Ufin, myTol3d, 
 				       myContinuity, myMaxDegree, myMaxSeg, 
 				       Only3d, Only2d);
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
 	    ResultChron(chr_approx,t_approx);
 	    approx_count++;
 	    
@@ -375,17 +391,17 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
 	      prj = MKed.Edge();
 	    }
 	    else  {
-            // On teste si la solution n'est pas degeneree pour mettre le
-            // flag a l'edge, on prend quelques points, on regarde si le nuage de 
-            // points a un diametre inferieur a la tolerance 3D
+            // It is tested if the solution is not degenerated to set the
+            // flag on edge, one takes several points, checks if the cloud of 
+            // points has less diameter than the tolerance 3D
               Degenerated = Standard_True;
               Standard_Real Dist;
               Handle(Geom_BSplineCurve) BS3d  = Handle(Geom_BSplineCurve)::DownCast( appr.Curve3d());
               gp_Pnt P1(0.,0.,0.),PP; // skl : I change "P" to "PP"
               Standard_Integer NbPoint,ii ; // skl : I change "i" to "ii"
               Standard_Real Par,DPar;
-              // on commence avec 3 points pour rejeter les aretes non degenerees 
-              // tres rapidement
+              // start from 3 points to reject non degenerated edges 
+              // very fast
               NbPoint =3;
               DPar = (BS3d->LastParameter()-BS3d->FirstParameter())/(NbPoint-1);
               for (ii=0;ii<NbPoint;ii++)
@@ -404,8 +420,7 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
                      break;
 		 }
               }             
-              // si le test passe on fait un test plus precis
-              // avec 10 points
+              // if the test passes a more exact test with 10 points
               if (Degenerated) {
                  P1.SetCoord(0.,0.,0.);
                  NbPoint =10;
@@ -460,9 +475,8 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
 	  
 	  if(myFaceBounds) {
 	    // Trimming edges by face bounds 
-            // si la solution est degeneree, on evite d'utiliser le BoolTool 
-            // qui n'aime pas ca.
-#ifdef DEBUG
+            // if the solution is degenerated, use of BoolTool is avoided
+#ifdef __OCC_DEBUG_CHRONO
 	    InitChron(chr_booltool);
 #endif
             if(!Degenerated){
@@ -509,7 +523,7 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
             }
             else {
 #ifdef DEB
-                 cout << " BooleanOperations : pas de solution " << endl;
+                 cout << " BooleanOperations : no solution " << endl;
 #endif
 
 	      BRepTopAdaptor_FClass2d classifier(TopoDS::Face(Faces->Value(j)),
@@ -527,7 +541,7 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
 		 myAncestorMap.Bind(prj, Edges->Value(i));   
 		 myCorresp.Bind(prj, Faces->Value(j));
 	      }
-#ifdef DEBUG
+#ifdef __OCC_DEBUG_CHRONO
 	       ResultChron(chr_booltool,t_booltool);
 	       booltool_count++;
 #endif
@@ -544,15 +558,15 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
     }
     myDescendants.Bind(Edges->Value(i), DescenList);
   }
-// JPI : la creation eventuelle d'un wire est reportee dans une methode specifique 
-//       BuilWire qui pourra etre appelee par l'utilisateur. Sinon, on perdait les 
-//       relations des map myAncestorMap, myCorresp.  
+// JPI : eventual wire creation is reported in a specific method 
+//       BuilWire that can be called by the user. Otherwise, the 
+//       relations of map myAncestorMap, myCorresp will be lost.  
 
   if(YaVertexRes) BB.Add(myRes, VertexRes);
   
   myIsDone = Standard_True; 
   
-#if DEBUG
+#ifdef __OCC_DEBUG_CHRONO
   ResultChron(chr_total,t_total);
   
   cout<<"Build - Total time  : "<<t_total<<" includes:" <<endl;
@@ -675,8 +689,8 @@ void BRepAlgo_NormalProjection::SetDefaultParams()
     if (MW.IsDone()) 
     {
       const TopoDS_Shape& Wire = MW.Shape();
-      // Si le wire resultat contient le meme d'arete qu'au depart OK
-      // sinon le resultat est vraisemblablement constitue de plusieurs wires.
+      // If the resulting wire contains the same edge as at the beginning OK
+      // otherwise the result really consists of several wires.
       TopExp_Explorer exp2(Wire,TopAbs_EDGE);
       Standard_Integer NbEdges = 0;
       for (;exp2.More(); exp2.Next()) NbEdges++;

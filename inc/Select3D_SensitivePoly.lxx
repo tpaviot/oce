@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include<Select3D_Pnt.hxx>
 #include<Select3D_Pnt2d.hxx>
 #include<TColgp_HArray1OfPnt.hxx>
@@ -6,21 +23,20 @@
 inline void Select3D_SensitivePoly
 ::Points3D( Handle(TColgp_HArray1OfPnt)& theHArrayOfPnt )
 { 
-  theHArrayOfPnt = new TColgp_HArray1OfPnt(1,mynbpoints);
-  for(Standard_Integer i = 1; i <= mynbpoints; i++)
+  Standard_Integer aSize = mypolyg.Size();
+  theHArrayOfPnt = new TColgp_HArray1OfPnt(1,aSize);
+  for(Standard_Integer anIndex = 1; anIndex <= aSize; anIndex++)
   {
-    gp_Pnt aPnt(((Select3D_Pnt*)mypolyg3d)[i-1].x, ((Select3D_Pnt*)mypolyg3d)[i-1].y, ((Select3D_Pnt*)mypolyg3d)[i-1].z);
-    theHArrayOfPnt->SetValue(i, aPnt);
+    theHArrayOfPnt->SetValue(anIndex, mypolyg.Pnt(anIndex-1));
   }
 }
 
 inline void Select3D_SensitivePoly
 ::Points2D( TColgp_Array1OfPnt2d& aArrayOf2dPnt)
 {
-  for(Standard_Integer i = 1; i <= mynbpoints; i++)
+  for(Standard_Integer anIndex = 1; anIndex <= mypolyg.Size(); anIndex++)
   {
-    gp_Pnt2d aPnt2d(((Select3D_Pnt2d*)mypolyg2d)[i-1].x, ((Select3D_Pnt2d*)mypolyg2d)[i-1].y);
-    aArrayOf2dPnt.SetValue(i,aPnt2d);
+    aArrayOf2dPnt.SetValue(anIndex, mypolyg.Pnt2d(anIndex-1));
   }
 }
 

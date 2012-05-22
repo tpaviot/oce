@@ -1,7 +1,23 @@
-// File:	BRepFeat_MakePrism.cxx
-// Created:	Tue Feb 13 14:42:59 1996
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1996-02-13
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFeat_MakePrism.ixx>
@@ -172,7 +188,7 @@ void BRepFeat_MakePrism::Init(const TopoDS_Shape& Sbase,
 
 //=======================================================================
 //function : Add
-//purpose  : add elements de glissemant (edge sur face)
+//purpose  : add elements of sliding (edge on face)
 //=======================================================================
 
 void BRepFeat_MakePrism::Add(const TopoDS_Edge& E,
@@ -219,8 +235,8 @@ void BRepFeat_MakePrism::Add(const TopoDS_Edge& E,
 
 //=======================================================================
 //function : Perform
-//purpose  : construction du prism de longueur Length et 
-//           appel de reconstruction topo
+//purpose  : construction of prism of length Length and 
+//           call of reconstruction topo
 //=======================================================================
 
 void BRepFeat_MakePrism::Perform(const Standard_Real Length)
@@ -238,24 +254,24 @@ void BRepFeat_MakePrism::Perform(const Standard_Real Length)
   PerfSelectionValid();
   gp_Vec V(Length*myDir);
   
-  //construction de prism de hauteur Length
+//construction of prism of height Length
 
   LocOpe_Prism thePrism(myPbase,V);
   TopoDS_Shape VraiPrism = thePrism.Shape();
   
-// gestion des descendants
+// management of descendants
   MajMap(myPbase,thePrism,myMap,myFShape,myLShape);
   
 
-  myGShape = VraiPrism;    // la primitive
+  myGShape = VraiPrism;    // the primitive
   GeneratedShapeValid();
   
   TopoDS_Face FFace;
   
   Standard_Boolean found = Standard_False;
 
-// essai de detecter des faces de collage 
-//cas le top du prism est tgt au shape initial
+// try to detect the faces of gluing 
+// in case if the top of the prism is tangent to the initial shape
 
   if(!mySkface.IsNull() || !mySlface.IsEmpty()) {
     if(myLShape.ShapeType() == TopAbs_WIRE) {
@@ -285,20 +301,20 @@ void BRepFeat_MakePrism::Perform(const Standard_Real Length)
     }
   }
 
-// gestion des faces de collage donnees par l'utilisateur
+// management of faces of gluing given by the user
 
 //  SetGluedFaces(mySkface, mySbase, myPbase, mySlface, thePrism, myGluedF);
   GluedFacesValid();
 //  VerifGluedFaces(mySkface, myPbase, myBCurve, myCurves, thePrism, myGluedF);
 
-  if(!myGluedF.IsEmpty()) {   // cas collage
+  if(!myGluedF.IsEmpty()) {   // case gluing
     myJustGluer = Standard_True;
     thePrism.Curves(myCurves);
     myBCurve = thePrism.BarycCurve();    
-    GlobalPerform();  // reconstruction topologique
+    GlobalPerform();  // topological reconstruction 
   }
 
-// si il n'y a pas de collage -> appel des ope topo
+// if there is no gluing  -> call of ope topo
   if(!myJustGluer) {
     if(myFuse == 1 && !myJustFeat) {
       //modified by NIZNHY-PKV Thu Mar 21 17:55:30 2002 f
@@ -332,8 +348,8 @@ void BRepFeat_MakePrism::Perform(const Standard_Real Length)
 
 //=======================================================================
 //function : Perform
-//purpose  : construction de prism oriente vers la face Until, suffisemment
-//           long; appel de reconstruction topo          
+//purpose  : construction of prism oriented at the face Until, sufficiently 
+//           long; call of topological reconstruction          
 //=======================================================================
 
 void BRepFeat_MakePrism::Perform(const TopoDS_Shape& Until)
@@ -362,11 +378,11 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& Until)
   Standard_Real Height = HeightMax(mySbase, mySkface, mySFrom, mySUntil);
   gp_Vec V(2*sens*Height*myDir);
 
-// construction du prism long
+// construction of long prism
   LocOpe_Prism thePrism(myPbase,V);
   TopoDS_Shape VraiPrism = thePrism.Shape();
 
-// dans le cas de support de face Until
+// in case of support of face Until
   if(!Trf) {    
     MajMap(myPbase,thePrism,myMap,myFShape,myLShape);    
     myGShape = VraiPrism;
@@ -380,13 +396,13 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& Until)
     myBCurve = thePrism.BarycCurve();
     GlobalPerform();
   }
-  else {    // until support -> passage en ope topo
+  else {    // until support -> passage to topological operations
     MajMap(myPbase,thePrism,myMap,myFShape,myLShape);    
     TColGeom_SequenceOfCurve scur;
     scur.Clear();    
     scur.Append(C);
 
-// sens du prism en fonction de Until
+// direction of the prism depending on Until
 
     LocOpe_CSIntersector ASI(mySUntil);
     ASI.Perform(scur);
@@ -441,7 +457,7 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& Until)
       }
     }         
   }
-/*   // boucle de controle de descendance
+/*   // loop of control of descendance
 
   TopExp_Explorer expr(mySbase, TopAbs_FACE);
   char nom1[20], nom2[20];
@@ -481,8 +497,8 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& Until)
 
 //=======================================================================
 //function : Perform
-//purpose  : construction d'un prisme suffisemment long et bien oriente
-//           appel de reconstruction topo
+//purpose  : construction of a sufficiently long and properly oriented prism
+//           call of topological reconstruction
 //=======================================================================
 
 void BRepFeat_MakePrism::Perform(const TopoDS_Shape& From,
@@ -533,12 +549,12 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& From,
     return;
   }
 
-// longueur en fonction des boites englobantes
+// length depending on bounding boxes
 
   Standard_Real Height = HeightMax(mySbase, mySkface, mySFrom, mySUntil);
   Handle(Geom_Curve) C = TestCurve(myPbase,myDir);  
-  Standard_Integer sens;  // sens de prism
-  Standard_Integer tran;  // transfert de prism
+  Standard_Integer sens;  // direction of prism
+  Standard_Integer tran;  // transfer of prism
   if(From.IsSame(Until)) {
     sens = 1;
     tran = -1;
@@ -572,7 +588,7 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& From,
     myBCurve = thePrism.BarycCurve();
     GlobalPerform();
   }
-  else {    // cas until support -> ope topo
+  else {    // case until support -> topological operation
     MajMap(myPbase,thePrism,myMap,myFShape,myLShape);    
     TColGeom_SequenceOfCurve scur;
     scur.Clear();    
@@ -662,7 +678,7 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& From,
       Done();	
     }
   }         
-// controle historique
+// control history
 /*
   TopExp_Explorer expr(mySbase, TopAbs_FACE);
   char nom1[20], nom2[20];
@@ -703,7 +719,7 @@ void BRepFeat_MakePrism::Perform(const TopoDS_Shape& From,
 
 //=======================================================================
 //function : PerformUntilEnd
-//purpose  : construction d'un prism et reconstruction
+//purpose  : construction of a prism and reconstruction
 //=======================================================================
 
 void BRepFeat_MakePrism::PerformUntilEnd()
@@ -791,7 +807,7 @@ void BRepFeat_MakePrism::PerformFromEnd(const TopoDS_Shape& Until)
   LocOpe_Prism thePrism(myPbase,Vect,Vtra);
   TopoDS_Shape VraiPrism = thePrism.Shape();
   
-  if(!Trf) {  // cas face until 
+  if(!Trf) {  // case face until 
     MajMap(myPbase,thePrism,myMap,myFShape,myLShape);
     myGShape = VraiPrism;
     GeneratedShapeValid();
@@ -801,7 +817,7 @@ void BRepFeat_MakePrism::PerformFromEnd(const TopoDS_Shape& Until)
     myBCurve = thePrism.BarycCurve();
     GlobalPerform();
   }
-  else {   // cas support
+  else {   // case support
     MajMap(myPbase,thePrism,myMap,myFShape,myLShape);    
     TColGeom_SequenceOfCurve scur;
     scur.Clear();    
@@ -1069,7 +1085,7 @@ void BRepFeat_MakePrism::PerformUntilHeight(const TopoDS_Shape& Until,
 
 //=======================================================================
 //function : Curves
-//purpose  : sequence de courbes paralleles a l'axe de prism 
+//purpose  : sequence of curves parallel to the axis of prism 
 //=======================================================================
 
 void BRepFeat_MakePrism::Curves(TColGeom_SequenceOfCurve& scur)
@@ -1079,8 +1095,8 @@ void BRepFeat_MakePrism::Curves(TColGeom_SequenceOfCurve& scur)
 
 //=======================================================================
 //function : BarycCurve
-//purpose  : courbe parallele a l'axe du prisme passant par le centre des 
-//           masses
+//purpose  : curve parallel to the axis of the prism passing through the center  
+//           of masses
 //=======================================================================
 
 Handle(Geom_Curve) BRepFeat_MakePrism::BarycCurve()
@@ -1091,8 +1107,8 @@ Handle(Geom_Curve) BRepFeat_MakePrism::BarycCurve()
 
 //=======================================================================
 //function : HeightMax
-//purpose  : Calcul de la hauteur du prisme selon les parametres de
-//           boite englobante
+//purpose  : Calculate the height of the prism following the parameters of
+//           bounding box
 //=======================================================================
 
 static Standard_Real HeightMax(const TopoDS_Shape& theSbase,
@@ -1161,7 +1177,7 @@ static Standard_Real HeightMax(const TopoDS_Shape& theSbase,
 
 //=======================================================================
 //function : SensOfPrism
-//purpose  : sens de prism en fonction du shape Until
+//purpose  : Direction of the prism depending on the shape Until
 //=======================================================================
 Standard_Integer SensOfPrism(const Handle(Geom_Curve) C,
 			     const TopoDS_Shape& Until)
@@ -1185,12 +1201,65 @@ Standard_Integer SensOfPrism(const Handle(Geom_Curve) C,
 }
 
 
+//=======================================================================
+//function : SetGluedFaces
+//purpose  : management of gluing faces
+//=======================================================================
+
+static void SetGluedFaces(const TopoDS_Face& theSkface,
+			  const TopoDS_Shape& theSbase,
+			  const TopoDS_Shape& thePbase,
+			  const TopTools_DataMapOfShapeListOfShape& theSlmap,
+			  LocOpe_Prism& thePrism,
+			  TopTools_DataMapOfShapeShape& theMap)
+{
+  TopExp_Explorer exp;
+  if (!theSkface.IsNull() && thePbase.ShapeType() == TopAbs_FACE) {
+    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
+      if (exp.Current().IsSame(theSkface)) {
+	theMap.Bind(thePbase,theSkface);
+	break;
+      }
+    }
+  }
+  else {
+    for (exp.Init(theSbase,TopAbs_FACE); exp.More(); exp.Next()) {
+      if (exp.Current().IsSame(theSkface)) {
+	TopExp_Explorer exp2;
+	for (exp2.Init(thePbase,TopAbs_FACE);exp2.More();exp2.Next()) {
+	  theMap.Bind(exp2.Current(),theSkface);
+	}
+	break;
+      }
+    }
+  }
+
+  // Sliding
+  TopTools_DataMapIteratorOfDataMapOfShapeListOfShape itm(theSlmap);
+  if(!theSlmap.IsEmpty()) {
+    for (; itm.More(); itm.Next()) {
+      const TopoDS_Face& fac = TopoDS::Face(itm.Key());
+      const TopTools_ListOfShape& ledg = itm.Value();
+      TopTools_ListIteratorOfListOfShape it;
+      for (it.Initialize(ledg); it.More(); it.Next()) {
+	const TopTools_ListOfShape& gfac = thePrism.Shapes(it.Value());
+	if (gfac.Extent() != 1) {
+#ifdef DEB
+	  Standard_Boolean trc = BRepFeat_GettraceFEAT();
+	  if (trc)  cout << " BRepFeat_MakePrism : Pb SetGluedFace" << endl;
+#endif
+	}
+	theMap.Bind(gfac.First(),fac);
+      }
+    }
+  }
+}
 
 
 //=======================================================================
 //function : VerifGluedFaces
-//purpose  : Verification  intersection Outil/theSkface = thePbase
-//           Si oui -> OK si non -> cas sans collage
+//purpose  : Verification  intersection Tool/theSkface = thePbase
+//           If yes -> OK otherwise -> case without gluing
 //=======================================================================
 #ifdef DEB
 static void VerifGluedFaces(const TopoDS_Face& theSkface,
@@ -1242,7 +1311,7 @@ static void VerifGluedFaces(const TopoDS_Face& theSkface,
     if (!GluedFaces) {
 #ifdef DEB
       Standard_Boolean trc = BRepFeat_GettraceFEAT();
-      if (trc) cout << " Intersection Prism/skface : pas de collage" << endl;
+      if (trc) cout << " Intersection Prism/skface : no gluing" << endl;
 #endif
       theMap.Clear();
     }
@@ -1252,7 +1321,7 @@ static void VerifGluedFaces(const TopoDS_Face& theSkface,
 
 //=======================================================================
 //function : MajMap
-//purpose  : gestion des descendants
+//purpose  : management of descendants
 //=======================================================================
 
 static void MajMap(const TopoDS_Shape& theB,
@@ -1293,7 +1362,7 @@ static void MajMap(const TopoDS_Shape& theB,
 
 //=======================================================================
 //function : MajMap
-//purpose  : gestion des descendants
+//purpose  : management of descendants
 //=======================================================================
 
 static Handle(Geom_Curve) TestCurve(const TopoDS_Shape& Base,
@@ -1317,7 +1386,7 @@ static Handle(Geom_Curve) TestCurve(const TopoDS_Shape& Base,
 
 //=======================================================================
 //function : ToFuse
-//purpose  : face SameDomaine ou pas
+//purpose  : face SameDomaine or not
 //=======================================================================
 
 Standard_Boolean ToFuse(const TopoDS_Face& F1,
@@ -1356,7 +1425,7 @@ Standard_Boolean ToFuse(const TopoDS_Face& F1,
 
   Standard_Boolean ValRet = Standard_False;
   if (typS1 == STANDARD_TYPE(Geom_Plane)) {
-    S1 = BRep_Tool::Surface(F1);  // pour appliquer la location.
+    S1 = BRep_Tool::Surface(F1);  // to apply the location.
     S2 = BRep_Tool::Surface(F2);
     gp_Pln pl1( (*((Handle(Geom_Plane)*)&S1))->Pln());
     gp_Pln pl2( (*((Handle(Geom_Plane)*)&S2))->Pln());

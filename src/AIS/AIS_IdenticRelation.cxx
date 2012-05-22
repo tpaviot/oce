@@ -1,7 +1,23 @@
-// File:	AIS_IdenticRelation.cxx
-// Created:	Mon Mar  3 17:21:37 1997
-// Author:	Jean-Pierre COMBE
-//		<jpr>
+// Created on: 1997-03-03
+// Created by: Jean-Pierre COMBE
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Standard_NotImplemented.hxx>
@@ -58,8 +74,8 @@
 
 static Standard_Real Modulo2PI(const Standard_Real ANGLE)
 {
-  if ( ANGLE < 0 )          return Modulo2PI(ANGLE + 2*PI);
-  else if ( ANGLE >= 2*PI ) return Modulo2PI(ANGLE - 2*PI);
+  if ( ANGLE < 0 )          return Modulo2PI(ANGLE + 2*M_PI);
+  else if ( ANGLE >= 2*M_PI ) return Modulo2PI(ANGLE - 2*M_PI);
   return ANGLE;
 }
 
@@ -68,7 +84,7 @@ static Standard_Boolean IsEqual2PI(const Standard_Real angle1,
 {
   Standard_Real diff = Abs(angle1-angle2);
   if ( diff < precision )                return Standard_True;
-  else if ( Abs(diff-2*PI) < precision ) return Standard_True;
+  else if ( Abs(diff-2*M_PI) < precision ) return Standard_True;
   return Standard_False;
 }
 // jfa 15/10/2000 end
@@ -187,18 +203,18 @@ static Standard_Boolean ComputeAttach(const gp_Circ& thecirc,
   Standard_Real deltap = pSAttachM - pFAttach;
   if ( deltap < 0 )
     {
-      deltap += 2*Standard_PI;
-      pSAttachM += 2*Standard_PI;
+      deltap += 2 * M_PI;
+      pSAttachM += 2 * M_PI;
     }
   pSAttachM -= pFAttach;
 
-  Standard_Real pmiddleout = pSAttachM/2.0 + Standard_PI;
+  Standard_Real pmiddleout = pSAttachM/2.0 + M_PI;
 
   Standard_Real pcurpos1 = pcurpos;
   // define where curpos lays
   if ( pcurpos1 < pFAttach )
     {
-      pcurpos1 = pcurpos1 + 2*Standard_PI - pFAttach;
+      pcurpos1 = pcurpos1 + 2 * M_PI - pFAttach;
       if ( pcurpos1 > pSAttachM ) // out
 	{
 	  if ( pcurpos1 > pmiddleout ) pcurpos = pFAttach;
@@ -255,18 +271,18 @@ static Standard_Boolean ComputeAttach(const gp_Elips& theEll,
   Standard_Real deltap = pSAttachM - pFAttach;
   if ( deltap < 0 )
     {
-      deltap += 2*Standard_PI;
-      pSAttachM += 2*Standard_PI;
+      deltap += 2 * M_PI;
+      pSAttachM += 2 * M_PI;
     }
   pSAttachM -= pFAttach;
 
-  Standard_Real pmiddleout = pSAttachM/2.0 + Standard_PI;
+  Standard_Real pmiddleout = pSAttachM/2.0 + M_PI;
 
   Standard_Real pcurpos1 = pcurpos;
   // define where curpos lays
   if ( pcurpos1 < pFAttach )
     {
-      pcurpos1 = pcurpos1 + 2*Standard_PI - pFAttach;
+      pcurpos1 = pcurpos1 + 2 * M_PI - pFAttach;
       if ( pcurpos1 > pSAttachM ) // out
 	{
 	  if ( pcurpos1 > pmiddleout ) pcurpos = pFAttach;
@@ -746,7 +762,7 @@ void AIS_IdenticRelation::ComputeTwoCirclesPresentation(const Handle(Prs3d_Prese
     
   myCenter = thecirc->Location();
   Standard_Real aSegSize = thecirc->Radius()/5.0;
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
     
   // I. Case of 2 complete circles
   if ( circ1complete && circ2complete )
@@ -984,7 +1000,7 @@ void AIS_IdenticRelation::ComputeAutoArcPresentation(const Handle(Geom_Circle)& 
 						     const Standard_Boolean isstatic)
 {
   Standard_Real aSegSize = thecirc->Radius()/5.0;
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
 
   Standard_Real pFA = ElCLib::Parameter(thecirc->Circ(),firstp);
   Standard_Real pSA = ElCLib::Parameter(thecirc->Circ(),lastp);
@@ -1027,7 +1043,7 @@ void AIS_IdenticRelation::ComputeNotAutoCircPresentation(const Handle(Geom_Circl
       curpos.Translate(vprec*1e-5);
     }
   
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
   Standard_Real pcurpos = ElCLib::Parameter(cirNotAuto->Circ(),curpos);
   Standard_Real pFAttach = pcurpos - rad;
   Standard_Real pSAttach = pcurpos + rad;
@@ -1055,7 +1071,7 @@ void AIS_IdenticRelation::ComputeNotAutoArcPresentation(const Handle(Geom_Circle
   Standard_Real pSPnt = ElCLib::Parameter(cirNotAuto, pntlast);
   Standard_Real deltap = Modulo2PI(pSPnt - pFPnt)/2.0;
 
-  Standard_Real rad = Standard_PI/5;
+  Standard_Real rad = M_PI / 5;
   if ( deltap < rad )
     {
       myFAttach = pntfirst;
@@ -1101,7 +1117,7 @@ void AIS_IdenticRelation::ComputeTwoEllipsesPresentation(const Handle(Prs3d_Pres
     
   myCenter = theEll->Location();
   Standard_Real aSegSize = theEll->MajorRadius()/5.0;
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
     
   // I. Case of 2 complete ellipses
   if ( circ1complete && circ2complete )
@@ -1338,7 +1354,7 @@ void AIS_IdenticRelation::ComputeAutoArcPresentation(const Handle(Geom_Ellipse)&
 						     const Standard_Boolean isstatic)
 {
   Standard_Real aSegSize = theEll->MajorRadius()/5.0;
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
 
   gp_Elips anEll = theEll->Elips();
   
@@ -1383,7 +1399,7 @@ void AIS_IdenticRelation::ComputeNotAutoElipsPresentation(const Handle(Geom_Elli
       curpos.Translate(vprec*1e-5);
     }
   
-  Standard_Real rad = Standard_PI/5.0;
+  Standard_Real rad = M_PI / 5.0;
 //  Standard_Real pcurpos = ElCLib::Parameter(anEll,curpos);
   GeomAPI_ProjectPointOnCurve aProj (curpos, theEll);
   Standard_Real pcurpos  = aProj.LowerDistanceParameter();
@@ -1414,7 +1430,7 @@ void AIS_IdenticRelation::ComputeNotAutoArcPresentation(const Handle(Geom_Ellips
   Standard_Real pSPnt = ElCLib::Parameter(anEll, pntlast);
   Standard_Real deltap = Modulo2PI(pSPnt - pFPnt)/2.0;
 
-  Standard_Real rad = Standard_PI/5;
+  Standard_Real rad = M_PI / 5;
   if ( deltap < rad )
     {
       myFAttach = pntfirst;

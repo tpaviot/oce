@@ -1,12 +1,23 @@
-// File GccAna_Circ2d2TanRad.cxx, REG 08/07/91
-// Modified:	Thu Dec  5 09:46:23 1996
-//    by:	Joelle CHAUVET
-//		Indice de boucle pour par1sol,par2sol,pararg1,pararg2
-//              (PRO6126)
-// Modified:	Mon May 11 10:42:16 1998
-// Author:	Joelle CHAUVET
-//		Permutation pnttg1sol<->pnttg2sol oubliee dans certains cas
-//              (CTS20080)
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
+
 
 #include <GccAna_Circ2d2TanRad.ixx>
 
@@ -22,19 +33,19 @@
 #include <GccEnt_BadQualifier.hxx>
 #include <Precision.hxx>
 
-// circulaire tangent a deux cercles et de rayon donne
+// circular tangent to two cercles and given radius
 //====================================================
-//========================================================================
-// On initialise WellDone a false.                                       +
-// On recupere le cercle C1 et le cercle C2.                             +
-// On sort en erreur dans les cas ou la construction est impossible.     +
-// On distingue les cas limites pour les triater separement.             +
-// On fait la parallele a C1 dans le bon sens.                           +
-// On fait la parallele a C2 dans le bon sens.                           +
-// On intersecte les paralleles ==> point de centre de la solution.      +
-// On cree la solution qu on ajoute aux solutions deja trouvees.         +
-// On remplit les champs.                                                +
-//========================================================================
+//==================================================================
+// Initialize WellDone to false.                                   +
+// Return circle C1 and circle C2.                                 +
+// Leave with error if the construction is impossible.             +
+// Distinguish boundary cases to process them separately.          +
+// Create parallel to C1 in the proper direction.                  +
+// Create parallel to C2 in the proper direction.                  +
+// Intersect parallels ==> center point of the solution.           +
+// Create the solution to be added to already found solutions.     +
+// Fill the fields.                                                +
+//==================================================================
 
 GccAna_Circ2d2TanRad::
    GccAna_Circ2d2TanRad (const GccEnt_QualifiedCirc& Qualified1 ,
@@ -142,7 +153,7 @@ GccAna_Circ2d2TanRad::
 	 center1 = center2;
 	 center2 = center3;
 	 dir1.Reverse();
-	 // il faudra permuter les points de tangence resultats
+	 // it is necessary to swap the resulting tangency points
 	 invers = Standard_True;
        }
        if ((R2-Radius>Tol) || (Tol<Radius-R1) || (Tol>R1-dist-R2) ||
@@ -210,7 +221,7 @@ GccAna_Circ2d2TanRad::
 	 center1 = center2;
 	 center2 = center3;
 	 dir1.Reverse();
-	 // il faudra permuter les points de tangence resultats
+	 // it is necessary to swap the resulting tangency points
 	 invers = Standard_True;
        }
        if ((Radius-R1>Tol)||(dist-R2-R1>Tol)||
@@ -270,7 +281,7 @@ GccAna_Circ2d2TanRad::
 	 center1 = center2;
 	 center2 = center3;
 	 dir1.Reverse();
-	 // il faudra permuter les points de tangence resultats
+	 // it is necessary to swap the resulting tangency points
 	 invers = Standard_True;
        }
        if ((Radius-R1 > Tol) || (dist-R2-R1 > Tol)) { WellDone = Standard_True; }
@@ -372,7 +383,7 @@ GccAna_Circ2d2TanRad::
 	 center1 = center2;
 	 center2 = center3;
 	 dir1.Reverse();
-	 // il faudra permuter les point de tangence resultats
+	 // it is necessary to swap the resulting tangency points 
 	 invers = Standard_True;
        }
        if ((R1-Radius > Tol) || (Tol < R1+R2-dist) ||
@@ -506,7 +517,7 @@ GccAna_Circ2d2TanRad::
 	 center1 = center2;
 	 center2 = center3;
 	 dir1.Reverse();
-	 // il faudra permuter les points de tangence resultats
+	 // it is necessary to swap the resulting tangency points
 	 invers = Standard_True;
        }
        if (Tol < R1-dist-R2) { WellDone = Standard_True; }
@@ -637,7 +648,7 @@ GccAna_Circ2d2TanRad::
        }
      }
    }
-   // permutation des points de tangence resultats si necessaire
+   // swapping of resulting tangency points if necessary
    if (invers) {
      gp_Pnt2d Psav;
      for (Standard_Integer i = 1 ; i <= NbrSol ; i++) {
@@ -646,7 +657,7 @@ GccAna_Circ2d2TanRad::
        pnttg2sol(i) = Psav;
      }
    }
-   // calcul des parametres des points de tangence
+   // calculation of parameters of tangency points
    for (Standard_Integer i = 1 ; i <= NbrSol ; i++) {
      par1sol(i)=ElCLib::Parameter(cirsol(i),pnttg1sol(i));
      if (TheSame1(i) == 0) {

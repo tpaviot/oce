@@ -28,6 +28,7 @@
 class TopoDS_Edge;
 class TopoDS_Face;
 class TopoDS_Vertex;
+class TopoDS_Shape;
 
 
 
@@ -58,6 +59,8 @@ public:
 //!          edge in <P>. <br>
 //!          Else returns <Standard_False>. <br>
   Standard_EXPORT   virtual  Standard_Boolean OnEdge(const TopoDS_Vertex& V,TopoDS_Edge& E,Standard_Real& P)  = 0;
+  //! tells is the face to be split by section or not <br>
+  Standard_EXPORT   virtual  Standard_Boolean IsFaceWithSection(const TopoDS_Shape& aFace) const = 0;
 
 
 

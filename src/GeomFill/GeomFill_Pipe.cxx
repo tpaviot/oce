@@ -1,12 +1,26 @@
-// File:	GeomFill_Pipe.cxx
-// Created:	Wed Apr 13 14:23:52 1994
-// Author:	Eric BONNARDEL
-//		<ebo@fuegox>
+// Created on: 1994-04-13
+// Created by: Joelle CHAUVET
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified 22/09/1997 by PMN : Refonte du a l'introduction de F(t) dans
 //             le cas des 2 lignes guides
 // Modified:	Mon Jan 18 11:06:46 1999
-// Author:	Joelle CHAUVET
-//		<jct@sgi64>
 //		dans Init(Path, Nsections) : 
 //              les parametres des sections doivent etre strict. croissants
 //		dans Init(Path, FirstSect, LastSect) :
@@ -446,7 +460,7 @@ void GeomFill_Pipe::Init(const Handle(Geom_Curve)& Path,
 // Nouvelle methode
   myAdpPath = new (GeomAdaptor_HCurve) (Path);
   Handle(Geom_Circle) C = new (Geom_Circle) (gp::XOY(), Radius);
-  C->Rotate(gp::OZ(),PI/2.);
+  C->Rotate(gp::OZ(),M_PI/2.);
   
   mySec = new (GeomFill_UniformSection) (C, Path->FirstParameter(), 
 					    Path->LastParameter());
@@ -960,14 +974,14 @@ Standard_Boolean GeomFill_Pipe::KPartT4()
        Axis.YReverse();
 
      // rotate the surface to set the iso U = 0 not in the result.
-     Axis.Rotate(gp_Ax1(P0,ZRef),-PI/2.);
+     Axis.Rotate(gp_Ax1(P0,ZRef),-M_PI/2.);
       
      mySurface = new Geom_CylindricalSurface( Axis, myRadius);
      Standard_Real Alpha = V1.AngleWithRef(V2,ZRef);
      mySurface = 
        new Geom_RectangularTrimmedSurface(mySurface,
-					  PI/2. , 
-					  PI/2. + Alpha,
+					  M_PI/2. , 
+					  M_PI/2. + Alpha,
 					  myAdpPath->FirstParameter(),
 					  myAdpPath->LastParameter());
      Ok = Standard_True; //C'est bien un cylindre
@@ -1026,7 +1040,7 @@ Standard_Boolean GeomFill_Pipe::KPartT4()
    if (deltaV < 0.) {
      T.VReverse();
      VV1 = -VV1;
-     VV2 = 2*PI + VV1 - deltaV;
+     VV2 = 2*M_PI + VV1 - deltaV;
    }
    mySurface = new Geom_RectangularTrimmedSurface
      (new Geom_ToroidalSurface(T),

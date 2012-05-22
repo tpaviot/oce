@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_TOPOLOGY.cxx
-// Created:	Tue Oct  6 11:07:05 1998
-// Author:	Jean Yves LEBEY
-//		<jyl@langdox.paris1.matra-dtv.fr>
+// Created on: 1998-10-06
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Geom_Curve.hxx>
 #include <Geom_TrimmedCurve.hxx>
@@ -129,6 +145,9 @@ Standard_EXPORT Standard_Boolean FUN_tool_isobounds(const TopoDS_Shape& Sh,
   if (S.IsNull()) return Standard_False;
 
   Standard_Boolean uclosed,vclosed; Standard_Real uperiod,vperiod; 
+
+//  Standard_Boolean uvclosed =
+
   FUN_tool_closedS(F,uclosed,uperiod,vclosed,vperiod);
 
 //  Standard_Real uf,ul,vf,vl; S->Bounds(uf,ul,vf,vl);
@@ -873,9 +892,10 @@ Standard_EXPORT Standard_Real FUN_tool_maxtol(const TopoDS_Shape& S)
       Standard_Boolean hasedge = FUN_tool_maxtol(ff,TopAbs_EDGE,maxtol);
       if (hasedge) {	
 	TopExp_Explorer exe(S,TopAbs_FACE);
-	for (; exe.More(); exe.Next()){
+	for (; exe.More(); exe.Next())
+  {
 	  const TopoDS_Shape& ee = exe.Current();
-      FUN_tool_maxtol(ee,TopAbs_VERTEX,maxtol);
+    FUN_tool_maxtol(ee,TopAbs_VERTEX,maxtol);
 	}
       }
     }
@@ -884,9 +904,10 @@ Standard_EXPORT Standard_Real FUN_tool_maxtol(const TopoDS_Shape& S)
     Standard_Boolean hasedge = FUN_tool_maxtol(S,TopAbs_EDGE,maxtol);
     if (hasedge) {	
       TopExp_Explorer exe(S,TopAbs_FACE);
-      for (; exe.More(); exe.Next()){
-	const TopoDS_Shape& ee = exe.Current();
-    FUN_tool_maxtol(ee,TopAbs_VERTEX,maxtol);
+      for (; exe.More(); exe.Next())
+      {
+        const TopoDS_Shape& ee = exe.Current();
+        FUN_tool_maxtol(ee,TopAbs_VERTEX,maxtol);
       }
     }
     if (!hasedge) {

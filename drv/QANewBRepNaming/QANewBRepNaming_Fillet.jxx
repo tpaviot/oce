@@ -1,0 +1,12 @@
+#ifndef _TDF_Label_HeaderFile
+#include <TDF_Label.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BRepFilletAPI_MakeFillet_HeaderFile
+#include <BRepFilletAPI_MakeFillet.hxx>
+#endif
+#ifndef _QANewBRepNaming_Fillet_HeaderFile
+#include <QANewBRepNaming_Fillet.hxx>
+#endif

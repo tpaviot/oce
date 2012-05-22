@@ -52,11 +52,11 @@
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
 #endif
-#ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
-#include <Handle_Graphic3d_DataStructureManager.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
+#include <Handle_Graphic3d_DataStructureManager.hxx>
 #endif
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #include <Aspect_TypeOfHighlightMethod.hxx>
@@ -69,6 +69,7 @@ class Aspect_GraphicDevice;
 class Graphic3d_InitialisationError;
 class Graphic3d_Structure;
 class Graphic3d_MapOfStructure;
+class TColStd_SequenceOfInteger;
 class Graphic3d_DataStructureManager;
 class TColStd_Array2OfReal;
 
@@ -138,6 +139,27 @@ public:
   Standard_EXPORT     Aspect_TypeOfUpdate UpdateMode() const;
   //! Changes the display priority of the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void ChangeDisplayPriority(const Handle(Graphic3d_Structure)& AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority)  = 0;
+  //! Change Z layer for structure. The z layer mechanism allows <br>
+//! to display structures in higher layers in overlay of structures in <br>
+//! lower layers. <br>
+  Standard_EXPORT   virtual  void ChangeZLayer(const Handle(Graphic3d_Structure)& theStructure,const Standard_Integer theLayerId)  = 0;
+  //! Get Z layer ID assigned to structure. If the structure <br>
+//! has no layer ID (deleted from graphic driver), the method returns -1. <br>
+  Standard_EXPORT   virtual  Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const = 0;
+  //! Add a new top-level Z layer and get its ID as <br>
+//! <theLayerId> value. The method returns Standard_False if the layer <br>
+//! can not be created. The z layer mechanism allows to display <br>
+//! structures in higher layers in overlay of structures in lower layers. <br>
+  Standard_EXPORT   virtual  Standard_Boolean AddZLayer(Standard_Integer& theLayerId)  = 0;
+  //! Remove Z layer with ID <theLayerId>. Method returns <br>
+//! Standard_False if the layer can not be removed or doesn't exists. <br>
+//! By default, there is always a default bottom-level layer that can't <br>
+//! be removed. <br>
+  Standard_EXPORT   virtual  Standard_Boolean RemoveZLayer(const Standard_Integer theLayerId)  = 0;
+  //! Return all Z layer ids in sequence ordered by level <br>
+//! from lowest layer to highest. The first layer ID in sequence is <br>
+//! the default layer that can't be removed. <br>
+  Standard_EXPORT   virtual  void GetAllZLayers(TColStd_SequenceOfInteger& theLayerSeq) const = 0;
   //! Returns a current identifier available. <br>
   Standard_EXPORT   static  Standard_Integer CurrentId() ;
   //! Forces a new construction of the structure <AStructure> <br>

@@ -6,86 +6,13 @@
 #ifndef _IntPatch_SearchPnt_HeaderFile
 #define _IntPatch_SearchPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
-#include <Standard.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
+#ifndef _Intf_InterferencePolygon2d_HeaderFile
+#include <Intf_InterferencePolygon2d.hxx>
 #endif
 
-#ifndef _Intf_Interference_HeaderFile
-#include <Intf_Interference.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-class Standard_OutOfRange;
-class IntPatch_Polygo;
-class IntPatch_PolygoTool;
-class gp_Pnt2d;
+typedef Intf_InterferencePolygon2d IntPatch_SearchPnt;
 
 
-
-class IntPatch_SearchPnt  : public Intf_Interference {
-public:
-
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
-
-  
-  Standard_EXPORT   IntPatch_SearchPnt();
-  
-  Standard_EXPORT   IntPatch_SearchPnt(const IntPatch_Polygo& Obje1,const IntPatch_Polygo& Obje2);
-  
-  Standard_EXPORT   IntPatch_SearchPnt(const IntPatch_Polygo& Obje);
-  
-  Standard_EXPORT     void Perform(const IntPatch_Polygo& Obje1,const IntPatch_Polygo& Obje2) ;
-  
-  Standard_EXPORT     void Perform(const IntPatch_Polygo& Obje) ;
-  
-  Standard_EXPORT     gp_Pnt2d Pnt2dValue(const Standard_Integer Index) const;
-
-
-
-
-
-protected:
-
-
-
-
-
-private:
-
-  
-  Standard_EXPORT     void Interference(const IntPatch_Polygo& Obje1,const IntPatch_Polygo& Obje2) ;
-  
-  Standard_EXPORT     void Interference(const IntPatch_Polygo& Obje) ;
-  
-  Standard_EXPORT     void Clean() ;
-  
-  Standard_EXPORT     void Intersect(const gp_Pnt2d& BegO,const gp_Pnt2d& EndO,const gp_Pnt2d& BegT,const gp_Pnt2d& EndT) ;
-
-
-
-
-};
-
-
-
-
-
-// other Inline functions and methods (like "C++: function call" methods)
-
+#define IntPatch_SearchPnt_Type_() Intf_InterferencePolygon2d_Type_()
 
 #endif

@@ -31,9 +31,6 @@
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Graphic3d_AspectLine3d;
 class Prs3d_InvalidAngle;
 class Quantity_Color;
@@ -68,8 +65,6 @@ public:
   Standard_EXPORT     void SetColor(const Quantity_NameOfColor aColor) ;
   
   Standard_EXPORT     Handle_Graphic3d_AspectLine3d Aspect() const;
-  
-  Standard_EXPORT   virtual  void Print(Standard_OStream& s) const;
 
 
 

@@ -1,8 +1,23 @@
-// File GccAna_Lin2dBisec.cxx, REG 08/07/91
-// JCT 06/07/98 on se fie a IntAna2d_AnaIntersection pour savoir si
-//              les droites sont paralleles (PRO14405)
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //=========================================================================
-//   CREATION DE LA BISSECTICE ENTRE DEUX DROITES.                        +
+//   CREATION of the BISSECTICE between two STRAIGHT LINES.                        +
 //=========================================================================
 
 #include <GccAna_Lin2dBisec.ixx>
@@ -19,11 +34,11 @@
 #include <IntAna2d_IntPoint.hxx>
 
 //=========================================================================
-//   La premiere bissectrice calculee est la bisectrice interieure, la    +
-//   seconde est la bissectrice exterieure.                               +
-//   la direction de la premiere bissectrice est telle que son produit    +
-//   scalaire avec la direction de Lin1 est toujours positif.             +
-//   La seconde bissectrice est tournee dans le sens positif.             +
+//   The first calculated bissectrice is the interior bisectrice, the     +
+//   second is the exterior bissectrice.                                  +
+//   the direction of the first bissectrice is such that its scalar product +
+//   with direction of Lin1 is always positive.             +
+//   The second bissectrice is turned in the positive direction.             +
 //=========================================================================
 
 GccAna_Lin2dBisec::
@@ -50,9 +65,9 @@ GccAna_Lin2dBisec::
 	 linsol(NbrSol) = gp_Lin2d(Lin1);
        }
        else {
-	 // Attention : ne pas utiliser dist = Lin1.Distance(Lin2);
-	 // car les droites sont peut-etre concourrentes pour gp_Lin2d
-	 // d'ou dist = 0.0 (test sur l'angle trop severe ?)
+	 // Attention : do not use dist = Lin1.Distance(Lin2);
+	 // as straight lines can be concurrent for gp_Lin2d
+	 // so dist = 0.0 (test of the angle too strict ?)
 	 Standard_Real dist = Lin1.Distance(Lin2.Location())/2.0;
 	 Standard_Real cross = 
 	   gp_Vec2d ( -Lin2.Direction().Y() , Lin2.Direction().X() )

@@ -1,7 +1,22 @@
-// File:	BOPTools_Tools3D_2.cxx
-// Created:	Thu Jun 10 09:11:01 2004
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2004-06-10
+// Created by: Peter KURNEV
+// Copyright (c) 2004-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BOPTools_Tools3D.ixx>
 
@@ -44,7 +59,7 @@ static
 						       const Standard_Real aTolTangent,
 						       const Standard_Real aTolR,
 						       TopAbs_State& aSt,
-						       IntTools_Context& )
+						       const Handle(IntTools_Context)& )
 { 
   Standard_Boolean bFlag, bIsAnalytic, bIsDirsCoinside;
   Standard_Real aT1, aTb, aTe;
@@ -92,7 +107,7 @@ static
 						       const Standard_Real aTolTangent,
 						       const Standard_Real aTolR,
 						       TopAbs_State& aSt,
-						       IntTools_Context& aContext)
+						       const Handle(IntTools_Context)& aContext)
 { 
   Standard_Boolean bFlag, bIsAnalytic, bIsDirsCoinside;
   Standard_Real  aT1;
@@ -110,7 +125,7 @@ static
   }
   //
   BOPTools_Tools3D::GetNormalToFaceOnEdge(anEx, aFx, aTx, aDNSx);
-  aContext.ProjectPointOnEdge(aPx, anE1, aT1);
+  aContext->ProjectPointOnEdge(aPx, anE1, aT1);
   BOPTools_Tools3D::GetNormalToFaceOnEdge(anE1, aF1, aT1, aDNS1);
   //
   bIsDirsCoinside=IntTools_Tools::IsDirsCoinside(aDNSx, aDNS1, aTolTangent);

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /*=====================================================================
 
      FUNCTION :
@@ -61,7 +79,7 @@ Graphic2d_Ellips::Graphic2d_Ellips
       else {
           Standard_ShortReal X1, Y1, X2, Y2;
           Standard_Integer nbpoints = 360; // fobenselitmiter
-          Standard_ShortReal teta = Standard_ShortReal(2 * Standard_PI / nbpoints);
+          Standard_ShortReal teta = Standard_ShortReal(2 * M_PI / nbpoints);
           Standard_ShortReal x1 = Standard_ShortReal(myMajorRadius * Cos (myAngle));
           Standard_ShortReal y1 = Standard_ShortReal(myMajorRadius * Sin (myAngle));
           Standard_ShortReal x2, y2;
@@ -126,10 +144,10 @@ Standard_Boolean IsIn = Standard_False;
       val = Max( 0.0044 , Min (0.7854 , 2. * ACos(1.-Def/myMajorRadius)));
     else
       val = 0.7854;  // = PI/4.
-    Standard_Integer nbpoints = Min(MAXPOINTS,Standard_Integer(2*Standard_PI/val)+2);
+    Standard_Integer nbpoints = Min(MAXPOINTS,Standard_Integer(2 * M_PI / val) + 2);
 
 //    Standard_Integer nbpoints = Max ( 8 ,Standard_Integer ( myMajorRadius / Def));
-    Standard_ShortReal teta = Standard_ShortReal(2*Standard_PI /nbpoints);
+    Standard_ShortReal teta = Standard_ShortReal(2 * M_PI / nbpoints);
     Standard_ShortReal x1 = Standard_ShortReal(myMajorRadius *Cos (myAngle)),
     y1 = Standard_ShortReal(myMajorRadius *Sin (myAngle));
     Standard_ShortReal x2,y2;

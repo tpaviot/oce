@@ -1,8 +1,22 @@
-// File:	IntTools_ShrunkRange.cxx
-// Created:	Sun Mar 11 10:38:43 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-03-11
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntTools_ShrunkRange.ixx>
 
@@ -27,7 +41,7 @@
 //function : IntTools_ShrunkRange
 //purpose  : 
 //=======================================================================
-  IntTools_ShrunkRange::IntTools_ShrunkRange ()
+IntTools_ShrunkRange::IntTools_ShrunkRange ()
 {
 }
 
@@ -35,26 +49,42 @@
 //function : IntTools_ShrunkRange
 //purpose  : 
 //=======================================================================
-  IntTools_ShrunkRange::IntTools_ShrunkRange (const TopoDS_Edge& aE,
+IntTools_ShrunkRange::IntTools_ShrunkRange (const TopoDS_Edge& aE,
 					      const TopoDS_Vertex& aV1,
 					      const TopoDS_Vertex& aV2,
 					      const IntTools_Range& aR,
-					      const IntTools_Context& aCtx)
+					      const Handle(IntTools_Context)& aCtx)
 {
   myEdge=aE;
   myV1=aV1;
   myV2=aV2;
   myRange=aR;
-  myCtx=(IntTools_PContext)&aCtx;
+  myContext=aCtx;
   myIsDone=Standard_False;
   myErrorStatus=1;
   Perform();
 }
 //=======================================================================
+//function : SetContext
+//purpose  : 
+//======================================================================= 
+void IntTools_ShrunkRange::SetContext(const Handle(IntTools_Context)& aContext)
+{
+  myContext=aContext;
+}
+//=======================================================================
+//function : Context
+//purpose  : 
+//======================================================================= 
+const Handle(IntTools_Context)& IntTools_ShrunkRange::Context()const
+{
+  return myContext;
+}
+//=======================================================================
 //function : Edge
 //purpose  : 
 //=======================================================================
-  const TopoDS_Edge& IntTools_ShrunkRange::Edge() const
+const TopoDS_Edge& IntTools_ShrunkRange::Edge() const
 {
   return myEdge;
 }
@@ -62,7 +92,7 @@
 //function : ShrunkRange
 //purpose  : 
 //=======================================================================
-  const IntTools_Range& IntTools_ShrunkRange::ShrunkRange() const
+const IntTools_Range& IntTools_ShrunkRange::ShrunkRange() const
 {
   return myShrunkRange;
 }
@@ -70,7 +100,7 @@
 //function : BndBox
 //purpose  : 
 //=======================================================================
-  const Bnd_Box& IntTools_ShrunkRange::BndBox() const
+const Bnd_Box& IntTools_ShrunkRange::BndBox() const
 {
   return myBndBox;
 }
@@ -78,7 +108,7 @@
 //function : IsDone
 //purpose  : 
 //=======================================================================
-  Standard_Boolean IntTools_ShrunkRange::IsDone() const
+Standard_Boolean IntTools_ShrunkRange::IsDone() const
 {
   return myIsDone;
 }
@@ -86,7 +116,7 @@
 //function : ErrorStatus
 //purpose  : 
 //=======================================================================
-  Standard_Integer IntTools_ShrunkRange::ErrorStatus() const
+Standard_Integer IntTools_ShrunkRange::ErrorStatus() const
 {
   return myErrorStatus;
 }
@@ -94,7 +124,7 @@
 //function : Perform
 //purpose  : 
 //=======================================================================
-  void IntTools_ShrunkRange::Perform()
+void IntTools_ShrunkRange::Perform()
 {
   Standard_Real aCF, aCL, aTolE, aTolV1, aTolV2, t1, t11, t1C, t2, t12, t2C;
   Standard_Real aCoeff, dt1, dt2, aR;
@@ -103,13 +133,14 @@
   GeomAbs_CurveType aCurveType;
   Handle(Geom_Curve) aC;
   //
+  if (myContext.IsNull()) {
+    myContext=new IntTools_Context;
+  }
+  //
   aTolE =BRep_Tool::Tolerance(myEdge);
   aTolV1=BRep_Tool::Tolerance(myV1);
   aTolV2=BRep_Tool::Tolerance(myV2);
-  //xf
-  //dt1=aCoeff*(aTolV1+aTolE);
-  //dt2=aCoeff*(aTolV2+aTolE);
-  //xt
+  //
   myRange.Range (t1, t2);
   //
   BRepAdaptor_Curve aBAC(myEdge);
@@ -272,15 +303,10 @@
         BRepBuilderAPI_MakeVertex aMV1(aP1L);
         const TopoDS_Vertex& aV1L=aMV1.Vertex();
         //
-        pri=myCtx->ComputeVE (aV1L, myEdge, t1C);
+        pri=myContext->ComputeVE (aV1L, myEdge, t1C);
         //
         if (pri==-3) {
-          //modified by NIZNHY-PKV Tue Apr  6 14:06:29 2010
 	  t1C = t1;
-	  //myErrorStatus=4;
-	  //return;
-	  //modified by NIZNHY-PKV Tue Apr  6 14:06:31 2010
-          
         }
       }
     }
@@ -369,14 +395,10 @@
         BRepBuilderAPI_MakeVertex aMV2(aP2L);
         const TopoDS_Vertex& aV2L=aMV2.Vertex();
         //
-        pri=myCtx->ComputeVE (aV2L, myEdge, t2C);
+        pri=myContext->ComputeVE (aV2L, myEdge, t2C);
         //
         if (pri==-3) {
-	  //modified by NIZNHY-PKV Tue Apr  6 14:07:34 2010f
 	  t2C = t2;
-          //myErrorStatus=5;
-          //return;
-	  //modified by NIZNHY-PKV Tue Apr  6 14:07:39 2010t
         }
       }
     }

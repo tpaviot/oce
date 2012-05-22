@@ -25,6 +25,12 @@
 #ifndef _GeomPlate_SequenceOfPointConstraint_HeaderFile
 #include <GeomPlate_SequenceOfPointConstraint.hxx>
 #endif
+#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
+#include <TopTools_DataMapOfShapeListOfShape.hxx>
+#endif
+#ifndef _TopTools_ListOfShape_HeaderFile
+#include <TopTools_ListOfShape.hxx>
+#endif
 #ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
 #endif
@@ -47,8 +53,9 @@ class TopoDS_Face;
 class TopoDS_Edge;
 class gp_Pnt;
 class BRepFill_SequenceOfEdgeFaceAndOrder;
-class TopTools_MapOfShape;
-class TColgp_SequenceOfPnt;
+class TopTools_ListOfShape;
+class TopTools_SequenceOfShape;
+class TopoDS_Shape;
 
 
 //! N-Side Filling <br>
@@ -143,6 +150,9 @@ public:
   Standard_EXPORT     Standard_Boolean IsDone() const;
   
   Standard_EXPORT     TopoDS_Face Face() const;
+  //! Returns the list of shapes generated from the <br>
+//!          shape <S>. <br>
+  Standard_EXPORT    const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
   
   Standard_EXPORT     Standard_Real G0Error() const;
   
@@ -171,10 +181,10 @@ private:
   //! Adds constraints to builder <br>
   Standard_EXPORT     void AddConstraints(const BRepFill_SequenceOfEdgeFaceAndOrder& SeqOfConstraints) ;
   //! Builds wires of maximum length <br>
-  Standard_EXPORT     void BuildWires(TopTools_MapOfShape& EdgeMap,TopTools_MapOfShape& WireList) const;
+  Standard_EXPORT     void BuildWires(TopTools_ListOfShape& EdgeList,TopTools_ListOfShape& WireList) ;
   //! Finds extremities of future edges to fix the holes between wires. <br>
 //!          Can properly operate only with convex contour <br>
-  Standard_EXPORT     void FindExtremitiesOfHoles(TopTools_MapOfShape& WireMap,TColgp_SequenceOfPnt& PntSeq) const;
+  Standard_EXPORT     void FindExtremitiesOfHoles(const TopTools_ListOfShape& WireList,TopTools_SequenceOfShape& VerSeq) const;
 
 
 GeomPlate_BuildPlateSurface myBuilder;
@@ -182,6 +192,8 @@ BRepFill_SequenceOfEdgeFaceAndOrder myBoundary;
 BRepFill_SequenceOfEdgeFaceAndOrder myConstraints;
 BRepFill_SequenceOfFaceAndOrder myFreeConstraints;
 GeomPlate_SequenceOfPointConstraint myPoints;
+TopTools_DataMapOfShapeListOfShape myOldNewMap;
+TopTools_ListOfShape myGenerated;
 TopoDS_Face myFace;
 TopoDS_Face myInitFace;
 Standard_Real myTol2d;

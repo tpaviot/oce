@@ -79,6 +79,8 @@ public:
   Standard_EXPORT     void SetBlockLength(const Standard_Integer aBL) ;
   
   Standard_EXPORT     Standard_Integer BlockLength() const;
+  
+  Standard_EXPORT     void Purge() ;
 
 
 

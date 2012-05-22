@@ -1,7 +1,23 @@
-// File:	GC_MakeTrimmedCone.cxx
-// Created:	Fri Oct  2 16:38:33 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-10-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GC_MakeTrimmedCone.ixx>
 #include <GC_MakeConicalSurface.hxx>
@@ -13,10 +29,10 @@
 #include <Extrema_ExtPElC.hxx>
 
 //=========================================================================
-//   Creation d un cone par quatre points.                                +
-//   les deux premiers donnent l axe.                                     +
-//   le troisieme donne le rayon de la base.                              +
-//   le troisieme et le quatrieme le demi angle.                          +
+//   Creation of a cone by four points.                                +
+//   First two give the axis.                                     +
+//   The third gives the base radius.                              +
+//   the third and the fourth demi-angle.                          +
 //=========================================================================
 
 GC_MakeTrimmedCone::GC_MakeTrimmedCone(const gp_Pnt& P1 ,
@@ -34,7 +50,7 @@ GC_MakeTrimmedCone::GC_MakeTrimmedCone(const gp_Pnt& P1 ,
     gp_Pnt P5 = ext1.Point(1).Value();
     gp_Pnt P6 = ext2.Point(1).Value();
     Standard_Real D = P6.Distance(P5)/cos((Cone.Value())->SemiAngle());
-    TheCone=new Geom_RectangularTrimmedSurface(Cone.Value(),0.,2.*PI,0.,D,Standard_True,Standard_True);
+    TheCone=new Geom_RectangularTrimmedSurface(Cone.Value(),0.,2.*M_PI,0.,D,Standard_True,Standard_True);
   }
 }
 
@@ -50,7 +66,7 @@ GC_MakeTrimmedCone::GC_MakeTrimmedCone(const gp_Pnt&       P1 ,
   TheError = Cone.Status();
   if (TheError == gce_Done) {
     Standard_Real D = (P2.Distance(P1))/cos((Cone.Value())->SemiAngle());
-    TheCone=new Geom_RectangularTrimmedSurface(Cone.Value(),0.,2.*PI,0.,D,Standard_True,Standard_True);
+    TheCone=new Geom_RectangularTrimmedSurface(Cone.Value(),0.,2.*M_PI,0.,D,Standard_True,Standard_True);
   }
 }
 

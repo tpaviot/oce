@@ -1,7 +1,23 @@
-// File:    Select3D_SensitiveTriangle.cxx
-// Created: Wed May 14 16:56:06 1997
-// Author:  Robert COUBLANC
-//      <rob@robox.paris1.matra-dtv.fr>
+// Created on: 1997-05-14
+// Created by: Robert COUBLANC
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Select3D_SensitiveTriangle.ixx>
@@ -17,9 +33,6 @@
 #include <TopLoc_Location.hxx>
 
 #include <CSLib_Class2d.hxx>
-
-#define COORD(a,b) ((Select3D_Pnt*)mypolyg3d)[(a)].b
-#define COORD2d(a,b) ((Select3D_Pnt2d*)mypolyg2d)[(a)].b
 
 static Standard_Boolean S3D_Str_NearSegment (const gp_XY& p0, const gp_XY& p1, const gp_XY& TheP,
                                              const Standard_Real aTol, Standard_Real& aDMin)
@@ -43,40 +56,41 @@ static Standard_Boolean S3D_Str_NearSegment (const gp_XY& p0, const gp_XY& p1, c
 }
 
 //==================================================
-// Function: 
+// Function: Creation
 // Purpose :
 //==================================================
 
 Select3D_SensitiveTriangle::
 Select3D_SensitiveTriangle(const Handle(SelectBasics_EntityOwner)& OwnerId,
-			   const gp_Pnt& P0,
-			   const gp_Pnt& P1,
-			   const gp_Pnt& P2,
-			   const Select3D_TypeOfSensitivity aType):
+                           const gp_Pnt& P0,
+                           const gp_Pnt& P1,
+                           const gp_Pnt& P2,
+                           const Select3D_TypeOfSensitivity aType):
 Select3D_SensitivePoly(OwnerId,3),
 mytype (aType)
-{ 
-  ((Select3D_Pnt*)mypolyg3d)[0] = P0;
-  ((Select3D_Pnt*)mypolyg3d)[1] = P1;
-  ((Select3D_Pnt*)mypolyg3d)[2] = P2;
+{
+  mypolyg.SetPnt(0, P0);
+  mypolyg.SetPnt(1, P1);
+  mypolyg.SetPnt(2, P2);
 }
 
 //==================================================
-// Function: 
+// Function: Matches
 // Purpose :
 //==================================================
 
 Standard_Boolean Select3D_SensitiveTriangle::
-Matches(const Standard_Real X,
-	const Standard_Real Y,
-	const Standard_Real aTol,
-	Standard_Real& DMin)
+Matches(const Standard_Real X, 
+        const Standard_Real Y, 
+        const Standard_Real aTol, 
+        Standard_Real& DMin)
 {
   Select3D_SensitiveEntity::Matches(X,Y,aTol,DMin);
   if(Bnd_Box2d(mybox2d).IsOut(gp_Pnt2d(X,Y))) return Standard_False;
 
   Standard_Integer Res;
-  switch (mytype){
+  switch (mytype)
+  {
   case Select3D_TOS_BOUNDARY:
     Res = Status(X,Y,aTol,DMin);
     return Res== 1;
@@ -87,29 +101,35 @@ Matches(const Standard_Real X,
 #ifndef DEB
   default:
     break;
-#endif    
+#endif
   }
   return Standard_True;
 }
 
+//==================================================
+// Function: Matches
+// Purpose :
+//==================================================
+
 Standard_Boolean Select3D_SensitiveTriangle::
 Matches (const Standard_Real XMin,
-	 const Standard_Real YMin,
-	 const Standard_Real XMax,
-	 const Standard_Real YMax,
-	 const Standard_Real aTol)
+         const Standard_Real YMin,
+         const Standard_Real XMax,
+         const Standard_Real YMax,
+         const Standard_Real aTol)
 {
   Bnd_Box2d B;
   B.Update(Min(XMin,XMax)-aTol,
-       Min(YMin,YMax)-aTol,
-       Max(XMin,XMax)+aTol,
-       Max(YMin,YMax)+aTol);
-  for(Standard_Integer i=0;i<=2;i++){
-    if(B.IsOut(((Select3D_Pnt2d*)mypolyg2d)[i])) 
-      return Standard_False;}
+           Min(YMin,YMax)-aTol,
+           Max(XMin,XMax)+aTol,
+           Max(YMin,YMax)+aTol);
+  for(Standard_Integer anIndex=0;anIndex<=2;++anIndex)
+  {
+    if(B.IsOut(mypolyg.Pnt2d(anIndex)))
+      return Standard_False;
+  }
   return Standard_True;
 }
-
 
 //=======================================================================
 //function : Matches
@@ -118,40 +138,60 @@ Matches (const Standard_Real XMin,
 
 Standard_Boolean Select3D_SensitiveTriangle::
 Matches (const TColgp_Array1OfPnt2d& aPoly,
-	 const Bnd_Box2d& aBox,
-	 const Standard_Real aTol)
-{ 
+         const Bnd_Box2d& aBox,
+         const Standard_Real aTol)
+{
   Standard_Real Umin,Vmin,Umax,Vmax;
   aBox.Get(Umin,Vmin,Umax,Vmax);
   CSLib_Class2d aClassifier2d(aPoly,aTol,aTol,Umin,Vmin,Umax,Vmax);
 
-  for(Standard_Integer i=0;i<=2;i++){
-    Standard_Integer RES = aClassifier2d.SiDans(((Select3D_Pnt2d*)mypolyg2d)[i]);
-    if(RES!=1) return Standard_False;
+  for(Standard_Integer anIndex=0;anIndex<=2;++anIndex)
+  {
+    Standard_Integer RES = aClassifier2d.SiDans(mypolyg.Pnt2d(anIndex));
+    if(RES!=1)
+      return Standard_False;
   }
   return Standard_True;
 }
 
+//==================================================
+// Function: Points3D
+// Purpose :
+//==================================================
 
-
- void Select3D_SensitiveTriangle::Points3D(gp_Pnt& P0,gp_Pnt& P1,gp_Pnt& P2) const
+void Select3D_SensitiveTriangle::Points3D(gp_Pnt& P0,gp_Pnt& P1,gp_Pnt& P2) const
 {
-  P0 = ((Select3D_Pnt*)mypolyg3d)[0];  P1 = ((Select3D_Pnt*)mypolyg3d)[1];  P2 = ((Select3D_Pnt*)mypolyg3d)[2];  
+  P0 = mypolyg.Pnt(0);
+  P1 = mypolyg.Pnt(1);
+  P2 = mypolyg.Pnt(2);
 }
+
+//==================================================
+// Function: Center3D
+// Purpose :
+//==================================================
 
 gp_Pnt Select3D_SensitiveTriangle::Center3D() const
 {
-  gp_XYZ CDG(((Select3D_Pnt*)mypolyg3d)[0]);
-  CDG += ((Select3D_Pnt*)mypolyg3d)[1];
-  CDG += ((Select3D_Pnt*)mypolyg3d)[2];
-  CDG /=3.;
-  return gp_Pnt(CDG);;
-}      
+  gp_XYZ aPnt1, aPnt2, aPnt3;
+  aPnt1 = mypolyg.Pnt(0);
+  aPnt2 = mypolyg.Pnt(1);
+  aPnt3 = mypolyg.Pnt(2);
+  return gp_Pnt((aPnt1+aPnt2+aPnt3)/3.);
+}
+
+//==================================================
+// Function: Center2D
+// Purpose :
+//==================================================
 
 gp_XY Select3D_SensitiveTriangle::Center2D() const
 {
-  return (gp_XY(((Select3D_Pnt2d*)mypolyg2d)[0])+gp_XY(((Select3D_Pnt2d*)mypolyg2d)[1])
-          +gp_XY(((Select3D_Pnt2d*)mypolyg2d)[2]))/3.;
+  gp_XY aPnt1, aPnt2, aPnt3;
+  aPnt1 = mypolyg.Pnt2d(0);
+  aPnt2 = mypolyg.Pnt2d(1);
+  aPnt3 = mypolyg.Pnt2d(2);
+  return (aPnt1+aPnt2+aPnt3)/3.;
 }
 
 //=======================================================================
@@ -160,16 +200,13 @@ gp_XY Select3D_SensitiveTriangle::Center2D() const
 //=======================================================================
 
 Standard_Integer  Select3D_SensitiveTriangle::Status(const Standard_Real X,
-						     const Standard_Real Y,
-						     const Standard_Real aTol,
-						     Standard_Real& DMin) const 
+                                                     const Standard_Real Y,
+                                                     const Standard_Real aTol,
+                                                     Standard_Real& DMin) const
 {
-  
-  return Status(((Select3D_Pnt2d*)mypolyg2d)[0],((Select3D_Pnt2d*)mypolyg2d)[1],
-                ((Select3D_Pnt2d*)mypolyg2d)[2],gp_XY(X,Y),aTol,DMin);
-  
+  return Status(mypolyg.Pnt2d(0), mypolyg.Pnt2d(1), mypolyg.Pnt2d(2),
+                gp_XY(X,Y), aTol, DMin);
 }
-
 
 //=======================================================================
 //function : Status
@@ -177,17 +214,16 @@ Standard_Integer  Select3D_SensitiveTriangle::Status(const Standard_Real X,
 //=======================================================================
 
 Standard_Integer  Select3D_SensitiveTriangle::Status(const gp_XY& p0,
-						     const gp_XY& p1,
-						     const gp_XY& p2,
-						     const gp_XY& TheP,
-						     const Standard_Real aTol,
-						     Standard_Real& DMin)
+                                                     const gp_XY& p1,
+                                                     const gp_XY& p2,
+                                                     const gp_XY& TheP,
+                                                     const Standard_Real aTol,
+                                                     Standard_Real& DMin)
 {
-
   Bnd_Box2d B;
   B.Update(p0.X(),p0.Y());B.Update(p1.X(),p1.Y());B.Update(p2.X(),p2.Y());
   B.Enlarge(aTol);
-  if(B.IsOut(TheP)) return 2; 
+  if(B.IsOut(TheP)) return 2;
   
   // the point is classified corresponding to demi-spaces limited
   // by each side of the triangle (with tolerance)
@@ -195,9 +231,8 @@ Standard_Integer  Select3D_SensitiveTriangle::Status(const gp_XY& p0,
   gp_XY V02(p2);V02-=p0;
   gp_XY V12(p2);V12-=p1;
 
-
   // check these particular cases...
-  // if one of vectors is almost null (2 points are mixed), 
+  // if one of vectors is almost null (2 points are mixed),
   // leave at once (it is already in the bounding box, which is good...)
   
   DMin = aTol;
@@ -273,7 +308,7 @@ Standard_Integer  Select3D_SensitiveTriangle::Status(const gp_XY& p0,
   DMin = ( aD < 0 ? -aD : 0. );
   return 0;
 }
-                             
+
 //=======================================================================
 //function : Dump
 //purpose  : 
@@ -282,47 +317,59 @@ Standard_Integer  Select3D_SensitiveTriangle::Status(const gp_XY& p0,
 void Select3D_SensitiveTriangle::Dump(Standard_OStream& S,const Standard_Boolean FullDump) const 
 {
   // general information....
-  
+
   S<<"\tSensitiveTriangle 3D :\n";
   if(HasLocation())
     S<<"\t\tExisting Location"<<endl;
 
-  S<<"\t\t P0 [ "<<COORD(0,x)<<" , "<<COORD(0,y) <<" , "<<COORD(0,z)<<" ]"<<endl;
-  S<<"\t\t P1 [ "<<COORD(1,x)<<" , "<<COORD(1,y) <<" , "<<COORD(1,z)<<" ]"<<endl;
-  S<<"\t\t P2 [ "<<COORD(2,x)<<" , "<<COORD(2,y) <<" , "<<COORD(2,z)<<" ]"<<endl;
+  gp_Pnt aPnt1, aPnt2, aPnt3;
+  aPnt1 = mypolyg.Pnt(0);
+  aPnt2 = mypolyg.Pnt(1);
+  aPnt3 = mypolyg.Pnt(2);
+  S<<"\t\t P0 [ "<<aPnt1.X()<<" , "<<aPnt1.Y()<<" , "<<aPnt1.Z()<<" ]"<<endl;
+  S<<"\t\t P1 [ "<<aPnt2.X()<<" , "<<aPnt2.Y()<<" , "<<aPnt2.Z()<<" ]"<<endl;
+  S<<"\t\t P2 [ "<<aPnt3.X()<<" , "<<aPnt3.Y()<<" , "<<aPnt3.Z()<<" ]"<<endl;
 
-  if(FullDump){
+  if(FullDump) 
+  {
     S<<"\t\tProjected Points"<<endl;
-    
-    S<<"\t\t  0.[ "<<COORD2d(0,x)<<" , "<<COORD2d(0,y)<<" ]"<<endl;
-    S<<"\t\t  1.[ "<<COORD2d(1,x)<<" , "<<COORD2d(1,y)<<" ]"<<endl;
-    S<<"\t\t  2.[ "<<COORD2d(2,x)<<" , "<<COORD2d(2,y)<<" ]"<<endl;
-//    S<<"\t\t\tOwner:"<<myOwnerId<<endl;
+
+    gp_Pnt2d aPnt1, aPnt2, aPnt3;
+    aPnt1 = mypolyg.Pnt2d(0);
+    aPnt2 = mypolyg.Pnt2d(1);
+    aPnt3 = mypolyg.Pnt2d(2);
+    S<<"\t\t  0.[ "<<aPnt1.X()<<" , "<<aPnt1.Y()<<" ]"<<endl;
+    S<<"\t\t  1.[ "<<aPnt2.X()<<" , "<<aPnt2.Y()<<" ]"<<endl;
+    S<<"\t\t  2.[ "<<aPnt3.X()<<" , "<<aPnt3.Y()<<" ]"<<endl;
     Select3D_SensitiveEntity::DumpBox(S,mybox2d);
-  
   }
 }
+
 //=======================================================================
 //function : ComputeDepth
 //purpose  : 
 //=======================================================================
+
 Standard_Real Select3D_SensitiveTriangle::ComputeDepth(const gp_Lin& EyeLine) const
 {
-  gp_Pnt P1(((Select3D_Pnt*)mypolyg3d)[0].x, ((Select3D_Pnt*)mypolyg3d)[0].y, ((Select3D_Pnt*)mypolyg3d)[0].z);
-  gp_Pnt P2(((Select3D_Pnt*)mypolyg3d)[1].x, ((Select3D_Pnt*)mypolyg3d)[1].y, ((Select3D_Pnt*)mypolyg3d)[1].z);
-  gp_Pnt P3(((Select3D_Pnt*)mypolyg3d)[2].x, ((Select3D_Pnt*)mypolyg3d)[2].y, ((Select3D_Pnt*)mypolyg3d)[2].z);
+  Standard_Real prof(Precision::Infinite());
+
+  gp_Pnt P1, P2, P3;
+  P1 = mypolyg.Pnt(0);
+  P2 = mypolyg.Pnt(1);
+  P3 = mypolyg.Pnt(2);
 
   gp_Trsf TheTrsf ;
   if(HasLocation()) 
     TheTrsf = Location().Transformation();
   
-  if(TheTrsf.Form()!=gp_Identity){
+  if(TheTrsf.Form()!=gp_Identity) 
+  {
     P1.Transform(TheTrsf);
     P2.Transform(TheTrsf);
     P3.Transform(TheTrsf);
   }
   
-  Standard_Real prof(Precision::Infinite());
   // formula calculation of the point parameters on intersection
   // t = (P1P2 ^P1P3)* OP1  / ((P1P2^P1P3)*Dir)
   
@@ -340,12 +387,31 @@ Standard_Real Select3D_SensitiveTriangle::ComputeDepth(const gp_Lin& EyeLine) co
   if(Abs(val2)>Precision::Confusion())
     prof =val1/val2;
   
-  if (prof==Precision::Infinite()){
+  if (prof==Precision::Infinite()) 
+  {
     prof= ElCLib::Parameter(EyeLine,P1);
     prof = Min (prof, ElCLib::Parameter(EyeLine,P2));
     prof = Min (prof, ElCLib::Parameter(EyeLine,P3));
   }
   return prof;
-
 }
 
+//==================================================
+// Function: GetConnected
+// Purpose :
+//==================================================
+
+Handle(Select3D_SensitiveEntity) Select3D_SensitiveTriangle::
+GetConnected(const TopLoc_Location &theLocation) 
+{
+  // Create a copy of this 
+  Handle(Select3D_SensitiveEntity) aNewEntity = 
+    new Select3D_SensitiveTriangle(myOwnerId, mypolyg.Pnt(0), mypolyg.Pnt(1), mypolyg.Pnt(2), mytype);
+
+  if (HasLocation()) 
+    aNewEntity->SetLocation(Location()); 
+
+  aNewEntity->UpdateLocation(theLocation);
+
+  return aNewEntity;
+}

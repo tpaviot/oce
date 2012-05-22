@@ -28,8 +28,15 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Handle_StepRepr_RepresentationContext_HeaderFile
+#include <Handle_StepRepr_RepresentationContext.hxx>
+#endif
 class XSControl_WorkSession;
 class StepData_StepModel;
+class TColStd_SequenceOfAsciiString;
+class StepRepr_RepresentationContext;
+class TColStd_Array1OfAsciiString;
+class TColStd_Array1OfReal;
 
 
 //! Reads STEP files, checks them and translates their contents <br>
@@ -99,6 +106,9 @@ public:
   //! Determines the list of root entities from Model which are candidate for <br>
 //!           a transfer to a Shape (type of entities is PRODUCT) <br>
   Standard_EXPORT   virtual  Standard_Integer NbRootsForTransfer() ;
+  //! Returns sequence of all unit names for shape representations <br>
+//!           found in file <br>
+  Standard_EXPORT     void FileUnits(TColStd_SequenceOfAsciiString& theUnitLengthNames,TColStd_SequenceOfAsciiString& theUnitAngleNames,TColStd_SequenceOfAsciiString& theUnitSolidAngleNames) ;
 
 
 
@@ -112,6 +122,8 @@ protected:
 
 private:
 
+  //! Returns  units for length , angle and solidangle for shape representations <br>
+  Standard_EXPORT     Standard_Boolean findUnits(const Handle(StepRepr_RepresentationContext)& theReprContext,TColStd_Array1OfAsciiString& theNameUnits,TColStd_Array1OfReal& theFactorUnits) ;
 
 
 

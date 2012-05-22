@@ -28,9 +28,6 @@
 #ifndef _Prs3d_CompositeAspect_HeaderFile
 #include <Prs3d_CompositeAspect.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Prs3d_LineAspect;
 class Prs3d_ArrowAspect;
 class Prs3d_TextAspect;
@@ -68,8 +65,6 @@ public:
   Standard_EXPORT     Handle_Prs3d_ArrowAspect ArrowAspect() const;
   //! Sets how an arrow head which points to an angle will be displayed. <br>
   Standard_EXPORT     void SetArrowAspect(const Handle(Prs3d_ArrowAspect)& anAspect) ;
-  
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
 
 
 

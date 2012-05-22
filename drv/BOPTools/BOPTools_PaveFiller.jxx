@@ -1,3 +1,6 @@
+#ifndef _IntTools_Context_HeaderFile
+#include <IntTools_Context.hxx>
+#endif
 #ifndef _BOPTools_InterferencePool_HeaderFile
 #include <BOPTools_InterferencePool.hxx>
 #endif
@@ -6,9 +9,6 @@
 #endif
 #ifndef _TColStd_SetOfInteger_HeaderFile
 #include <TColStd_SetOfInteger.hxx>
-#endif
-#ifndef _IntTools_Context_HeaderFile
-#include <IntTools_Context.hxx>
 #endif
 #ifndef _BOPTools_PavePool_HeaderFile
 #include <BOPTools_PavePool.hxx>

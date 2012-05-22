@@ -1,7 +1,23 @@
-// File:	LocOpe_Spliter.cxx
-// Created:	Tue Jan  9 13:57:18 1996
-// Author:	Jacques GOUSSARD
-//		<jag@bravox>
+// Created on: 1996-01-09
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Mon May 31 12:34:09 2004 OCC5865
 
@@ -132,6 +148,7 @@ void LocOpe_Spliter::Perform(const Handle(LocOpe_ProjectedWires)& PW)
   TopoDS_Edge Ed;
   Standard_Real prm;
 
+  TopTools_MapOfShape theFacesWithSection;
   for (PW->InitEdgeIterator(); PW->MoreEdge(); PW->NextEdge()) {
     const TopoDS_Edge& edg = PW->Edge();
     for (exp.Init(edg,TopAbs_VERTEX); exp.More(); exp.Next()) {
@@ -153,8 +170,11 @@ void LocOpe_Spliter::Perform(const Handle(LocOpe_ProjectedWires)& PW)
     }
     else {
       TopoDS_Face fac = PW->OnFace();
-      if(!myMap.IsBound(fac)) continue; 
+      if(!myMap.IsBound(fac)) continue;
+      Standard_Boolean IsFaceWithSec = PW->IsFaceWithSection(fac);
       fac = TopoDS::Face(myMap(fac).First());
+      if (IsFaceWithSec)
+        theFacesWithSection.Add(fac);
       if (!mapFE.Contains(fac)) {
         TopTools_ListOfShape thelist;
 	mapFE.Add(fac, thelist);
@@ -173,9 +193,11 @@ void LocOpe_Spliter::Perform(const Handle(LocOpe_ProjectedWires)& PW)
 //     RebuildWires(ledges);
     RebuildWires(ledges, PW);
 //  Modified by skv - Mon May 31 12:32:54 2004 OCC5865 End
-    for (itl.Initialize(ledges); itl.More(); itl.Next()) {
-      theCFace.Add(TopoDS::Wire(itl.Value()),fac);
-    }
+    if (theFacesWithSection.Contains(fac))
+      theCFace.Add(ledges, fac);
+    else
+      for (itl.Initialize(ledges); itl.More(); itl.Next())
+        theCFace.Add(TopoDS::Wire(itl.Value()),fac);
   }
 
 

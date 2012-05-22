@@ -16,14 +16,11 @@
 #include <Handle_Select3D_SensitivePoly.hxx>
 #endif
 
-#ifndef _Standard_Address_HeaderFile
-#include <Standard_Address.hxx>
-#endif
 #ifndef _Select3D_Box2d_HeaderFile
 #include <Select3D_Box2d.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Select3D_PointData_HeaderFile
+#include <Select3D_PointData.hxx>
 #endif
 #ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
@@ -34,9 +31,14 @@
 #ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
 #endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
 #ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
 #endif
+class Standard_ConstructionError;
+class Standard_OutOfRange;
 class SelectBasics_EntityOwner;
 class TColgp_Array1OfPnt;
 class TColgp_HArray1OfPnt;
@@ -46,6 +48,9 @@ class TColgp_Array1OfPnt2d;
 
 
 //! Sensitive Entity to make a face selectable. <br>
+//! In some cases this class can raise Standard_ConstructionError and <br>
+//! Standard_OutOfRange exceptions from its member Select3D_PointData <br>
+//! mypolyg. <br>
 class Select3D_SensitivePoly : public Select3D_SensitiveEntity {
 
 public:
@@ -60,12 +65,7 @@ public:
         void Points3D(Handle(TColgp_HArray1OfPnt)& theHArrayOfPnt) ;
   //! Returns the 2D points of the array used at construction time. <br>
         void Points2D(TColgp_Array1OfPnt2d& theArrayOfPnt2d) ;
-  
-  Standard_EXPORT     void Destroy() ;
-~Select3D_SensitivePoly()
-{
-  Destroy();
-}
+
 
 
 
@@ -88,10 +88,8 @@ protected:
 //! FilledCircle and the number of points NbOfPoints. <br>
   Standard_EXPORT   Select3D_SensitivePoly(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_Integer NbOfPoints = 6);
 
-Standard_Address mypolyg3d;
-Standard_Address mypolyg2d;
 Select3D_Box2d mybox2d;
-Standard_Integer mynbpoints;
+Select3D_PointData mypolyg;
 
 
 private: 

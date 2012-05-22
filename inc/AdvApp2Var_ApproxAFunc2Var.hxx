@@ -31,9 +31,6 @@
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
 #endif
-#ifndef _AdvApp2Var_EvaluatorFunc2Var_HeaderFile
-#include <AdvApp2Var_EvaluatorFunc2Var.hxx>
-#endif
 #ifndef _AdvApp2Var_Context_HeaderFile
 #include <AdvApp2Var_Context.hxx>
 #endif
@@ -48,6 +45,9 @@
 #endif
 #ifndef _Handle_TColGeom_HArray1OfSurface_HeaderFile
 #include <Handle_TColGeom_HArray1OfSurface.hxx>
+#endif
+#ifndef _AdvApp2Var_EvaluatorFunc2Var_HeaderFile
+#include <AdvApp2Var_EvaluatorFunc2Var.hxx>
 #endif
 #ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
@@ -99,25 +99,7 @@ class Geom_BSplineSurface;
 //!     and Num3DSS must be equal to 1. <br>
 //!  Warning: <br>
 //!     the Function of type EvaluatorFunc2Var from Approx <br>
-//!     must be an extern "C" function <br>
-//! <br>
-//!     The evaluator Function has the following type : <br>
-//!     typedef  void (* AdvApp2Var_EvaluatorFunc2Var) <br>
-//!                         (Standard_Integer *,     // Total Dimension <br>
-//!				Standard_Real    *,     // StartEndInU[2] <br>
-//!				Standard_Real    *,     // StartEndInV[2] <br>
-//!				Standard_Integer *,     // 1 for U = cte <br>
-//!				                        // 2 for V = cte <br>
-//!				Standard_Real    *,     // Value of cte <br>
-//!				Standard_Integer *,     // Number N  of parameters <br>
-//!			        Standard_Real    *,     // Tab[N] of parameters at <br>
-//!			                                // which evaluation <br>
-//!				                        // should take place <br>
-//!			        Standard_Integer *,     // U-Derivative Request <br>
-//!			        Standard_Integer *,     // V-Derivative Request <br>
-//!				Standard_Real    *,     // Result[Dimension,N] <br>
-//!			        Standard_Integer *      // Error Code <br>
-//!			        ) ; <br>
+//!     must be a subclass of AdvApp2Var_EvaluatorFunc2Var <br>
 //! <br>
 //!	  the result should be formatted in the following way : <br>
 //! <--Num1DSS--> <--2 * Num2DSS--> <--3 * Num3DSS--> <br>
@@ -244,7 +226,6 @@ Standard_Integer myPrecisionCode;
 Standard_Integer myMaxDegInU;
 Standard_Integer myMaxDegInV;
 Standard_Integer myMaxPatches;
-AdvApp2Var_EvaluatorFunc2Var myEvaluator;
 AdvApp2Var_Context myConditions;
 AdvApp2Var_Network myResult;
 AdvApp2Var_Framework myConstraints;

@@ -1,7 +1,23 @@
-// File:	BRepTest_BasicCommands.cxx
-// Created:	Tue Dec 13 09:48:16 1994
-// Author:	Jacques GOUSSARD
-//		<jag@phobox>
+// Created on: 1994-12-13
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_Stream.hxx>
 #include <Standard_Macro.hxx>
@@ -105,7 +121,7 @@ static Standard_Integer transform(Draw_Interpretor& di,Standard_Integer n,const 
     if (n < 9) return 1;
     T.SetRotation(gp_Ax1(gp_Pnt(atof(a[n-7]),atof(a[n-6]),atof(a[n-5])),
 			 gp_Vec(atof(a[n-4]),atof(a[n-3]),atof(a[n-2]))),
-		  atof(a[n-1])* PI180);
+		  atof(a[n-1])* (M_PI / 180.0));
     last = n-7;
   }
   else if (!strcmp(a[0],"tmirror")) {
@@ -727,7 +743,7 @@ static Standard_Integer vecdc(Draw_Interpretor& di,Standard_Integer ,const char*
 
 //==========================================================================
 //function : wexplo
-//           exploration d un wire 
+//           exploration of a wire 
 //==========================================================================
 static Standard_Integer wexplo (Draw_Interpretor&, 
 				Standard_Integer argc, const char** argv)
@@ -758,7 +774,30 @@ static Standard_Integer wexplo (Draw_Interpretor&,
   return 0;
 }
 
+static Standard_Integer scalexyz(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if (n < 6) return 1;
 
+  TopoDS_Shape aShapeBase = DBRep::Get(a[2]);
+  if (aShapeBase.IsNull()) return 1;
+  
+  Standard_Real aFactorX = atof(a[3]);
+  Standard_Real aFactorY = atof(a[4]);
+  Standard_Real aFactorZ = atof(a[5]);
+
+  gp_GTrsf aGTrsf;
+  gp_Mat rot (aFactorX, 0, 0,
+              0, aFactorY, 0,
+              0, 0, aFactorZ);
+  aGTrsf.SetVectorialPart(rot);
+  BRepBuilderAPI_GTransform aBRepGTrsf (aShapeBase, aGTrsf, Standard_False);
+  if (!aBRepGTrsf.IsDone())
+    Standard_ConstructionError::Raise("Scaling not done");
+  TopoDS_Shape Result = aBRepGTrsf.Shape();
+
+  DBRep::Set(a[1], Result);
+  return 0;  
+}
 
 void  BRepTest::BasicCommands(Draw_Interpretor& theCommands)
 {
@@ -820,7 +859,7 @@ void  BRepTest::BasicCommands(Draw_Interpretor& theCommands)
 		  mkedgecurve,g);
 
   theCommands.Add("fsameparameter",
-		  "fsameparameter shapename [tol (default 1.e-7)], \nforce le sameparameter sur toutes les aretes du shape",
+		  "fsameparameter shapename [tol (default 1.e-7)], \nforce sameparameter on all edges of the shape",
 		  __FILE__,
 		  sameparameter,g);
 
@@ -886,4 +925,9 @@ void  BRepTest::BasicCommands(Draw_Interpretor& theCommands)
   theCommands.Add("wexplo","wexplo wire [face] create WEDGE_i",
 		  __FILE__,
 		  wexplo,g);
+
+  theCommands.Add("scalexyz",
+                  "scalexyz res shape factor_x factor_y factor_z",
+		  __FILE__,
+		  scalexyz, g);
 }

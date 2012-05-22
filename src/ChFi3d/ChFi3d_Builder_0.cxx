@@ -1,7 +1,23 @@
-// File:      ChFi3d_Builder_0.cxx
-// Created:   Thu Dec 16 15:54:39 1993
-// Author:    Isabelle GRIGNON
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-12-16
+// Created by: Isabelle GRIGNON
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  modified by ofv - Thu Feb 26 11:18:16 2004 OCC5246
 //  Modified by skv - Fri Oct 24 14:24:47 2003 OCC4077
@@ -752,7 +768,7 @@ Handle(Geom_BezierCurve) ChFi3d_Spine(const gp_Pnt&       pd,
                                       const Standard_Real R)
 {     
   TColgp_Array1OfPnt pol(1,4);
-  const Standard_Real fac = 0.5 * tan((PI-vd.Angle(vf)) * 0.5);
+  const Standard_Real fac = 0.5 * tan((M_PI-vd.Angle(vf)) * 0.5);
   pol(1) = pd;
   vd.Multiply(fac*R);
   pol(2).SetCoord(pd.X()+vd.X(),pd.Y()+vd.Y(),pd.Z()+vd.Z());
@@ -3100,11 +3116,11 @@ Standard_Boolean ChFi3d_ComputeCurves(Handle(Adaptor3d_HSurface)&   S1,
 	  Ufin = -Ufin;
 	}
 	else{
-	  Udeb = 2*PI - Udeb;
-	  Ufin = 2*PI - Ufin;
+	  Udeb = 2*M_PI - Udeb;
+	  Ufin = 2*M_PI - Ufin;
 	}
       }
-      if(!c1line) ElCLib::AdjustPeriodic(0.,2*PI,Precision::Angular(),Udeb,Ufin);
+      if(!c1line) ElCLib::AdjustPeriodic(0.,2*M_PI,Precision::Angular(),Udeb,Ufin);
       Handle(GeomAdaptor_HCurve) HC = new GeomAdaptor_HCurve();
       HC->ChangeCurve().Load(C3d,Udeb,Ufin);
       ChFi3d_ProjectPCurv(HC,S1,Pc1,tol3d,tolr1);
@@ -3630,7 +3646,7 @@ Handle(GeomAdaptor_HSurface) ChFi3d_BoundSurf(TopOpeBRepDS_DataStructure&    DSt
   //In the case of a torus or cone, it is not necessary that the bounds create a surface with period more than 2PI. 
   else if (styp == GeomAbs_Torus ||
 	   styp == GeomAbs_Cone) {
-    Du = Min(PI-0.5*Du,0.1*Du);
+    Du = Min(M_PI-0.5*Du,0.1*Du);
     Dv = 0.;
     S1.Load(DStr.Surface(Fd1->Surf()).Surface(),
 	    mu-Du,Mu+Du,mv,Mv);
@@ -4128,7 +4144,7 @@ Standard_EXPORT
   //
   caredeb = 0;
   carefin = 0;
-  Angle = PI*0.75;
+  Angle = M_PI*0.75;
   LocalWL = WL;
   LocalWF = WF;
   if (!ES.IsPeriodic() && !PDeb.IsEqual(BSpline->Pole(1), tol) ) {
@@ -4750,7 +4766,7 @@ Standard_Boolean ChFi3d_IsSmooth( const Handle(Geom_Curve)& C )
 	    LProp.CentreOfCurvature(P2);
 	    gp_Vec Vec(P1, P2);
 	    Standard_Real Angle = PrevVec.Angle( Vec );
-	    if (Angle > PI/3.)
+	    if (Angle > M_PI/3.)
 	      return Standard_False;
 	    Standard_Real Ratio = Vec.Magnitude() / PrevVec.Magnitude();
 	    if (Ratio < 1.)

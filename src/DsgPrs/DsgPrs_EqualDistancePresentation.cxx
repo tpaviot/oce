@@ -1,7 +1,23 @@
-// File:	DsgPrs_EqualDistancePresentation.cxx
-// Created:	Tue Jan 27 17:05:12 1998
-// Author:	Julia GERASIMOVA
-//		<jgv@velox.nnov.matra-dtv.fr>
+// Created on: 1998-01-27
+// Created by: Julia GERASIMOVA
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <DsgPrs_EqualDistancePresentation.ixx>
@@ -190,16 +206,16 @@ void DsgPrs_EqualDistancePresentation::Add( const Handle( Prs3d_Presentation )& 
     aPar12 = ElCLib::Parameter(aCirc1, aPoint2);
   }
   else {
-    aPar11 = PI;
-    aPar12 = PI;
+    aPar11 = M_PI;
+    aPar12 = M_PI;
   }
   if (aCirc2.Radius() > Precision::Confusion()){
     aPar21 = ElCLib::Parameter(aCirc2, aPoint3 );
     aPar22 = ElCLib::Parameter(aCirc2, aPoint4);
   }
   else {
-    aPar21 = PI;
-    aPar22 = PI;
+    aPar21 = M_PI;
+    aPar22 = M_PI;
   }
 
   Graphic3d_Array1OfVertex V(1,2);
@@ -209,9 +225,9 @@ void DsgPrs_EqualDistancePresentation::Add( const Handle( Prs3d_Presentation )& 
 
   Standard_Integer aNodeNb; 
   Standard_Real aDelta, aCurPar;
-  if(aPar12 < aPar11 ) aPar12 +=2*PI;
+  if(aPar12 < aPar11 ) aPar12 +=2*M_PI;
   if (Abs(aPar12 - aPar11) > Precision::Confusion()) {
-    aNodeNb = Standard_Integer(Max(Abs(aPar12 - aPar11)*50./PI + 0.5, 4.));
+    aNodeNb = Standard_Integer(Max(Abs(aPar12 - aPar11)*50./M_PI + 0.5, 4.));
     Graphic3d_Array1OfVertex ApproxArc1( 1, aNodeNb+1);
     aDelta = (aPar12 - aPar11)/aNodeNb;
     aCurPar= aPar11;
@@ -224,9 +240,9 @@ void DsgPrs_EqualDistancePresentation::Add( const Handle( Prs3d_Presentation )& 
 
     Prs3d_Root::CurrentGroup( aPresentation )->Polyline( ApproxArc1 );
   }
-  if (aPar22 < aPar21) aPar22 += 2*PI;
+  if (aPar22 < aPar21) aPar22 += 2*M_PI;
   if ( Abs(aPar22 - aPar21) > Precision::Confusion()){
-    aNodeNb = Standard_Integer(Max(Abs(aPar22 - aPar21)*50./PI + 0.5, 4.));
+    aNodeNb = Standard_Integer(Max(Abs(aPar22 - aPar21)*50./M_PI + 0.5, 4.));
     Graphic3d_Array1OfVertex ApproxArc2( 1, aNodeNb+1);
     aDelta = (aPar22 - aPar21)/aNodeNb;
     aCurPar= aPar21;

@@ -1,7 +1,23 @@
-// File:	AIS_FixRelation.cdl
-// Created:	Tue Dec  5 15:09:04 1996
-// Author:	Flore Lantheaume/Odile Olivier
-//              <ODL>
+// Created on: 1996-12-05
+// Created by: Flore Lantheaume/Odile Olivier
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define BUC60915        //GG 05/06/01 Enable to compute the requested arrow size
 //                      if any in all dimensions.
@@ -61,7 +77,7 @@ static Standard_Boolean InDomain(const Standard_Real fpar,
   if (fpar >= 0.) {
     return ((para >= fpar) && (para <= lpar));
   }
-  if (para >= (fpar+2*PI)) return Standard_True;
+  if (para >= (fpar+2*M_PI)) return Standard_True;
   if (para <= lpar) return Standard_True;
   return Standard_False;
 }
@@ -270,7 +286,7 @@ void AIS_FixRelation::ComputeSelection(const Handle(SelectMgr_Selection)& aSelec
   dirac.Normalize();
   gp_Vec norac = dirac.Crossed(gp_Vec(norm));
   gp_Ax1 ax(myPosition, norm);
-  norac.Rotate(ax, PI/8);
+  norac.Rotate(ax, M_PI/8);
 
   norac*=(myArrowSize/2);
   gp_Pnt P1 = myPosition.Translated(norac);
@@ -414,7 +430,7 @@ gp_Pnt AIS_FixRelation::ComputePosition(const Handle(Geom_Curve)& curv,
     gp_Vec transvec = vec*myArrowSize;
     curpos = myPntAttach.Translated(transvec);
     gp_Ax1 RotAx( myPntAttach, NormPln);
-    curpos.Rotate(RotAx, PI/10);
+    curpos.Rotate(RotAx, M_PI/10);
   }
 
   return curpos;
@@ -526,10 +542,10 @@ void AIS_FixRelation::ComputeCirclePosition(
 	Standard_Real& plast)
 {
   // readjust parametres on the circle
-  if (plast > 2*PI ) {
-    Standard_Real nbtours = Floor(plast / (2*PI));
-    plast -= nbtours*2*PI;
-    pfirst -= nbtours*2*PI;
+  if (plast > 2*M_PI ) {
+    Standard_Real nbtours = Floor(plast / (2*M_PI));
+    plast -= nbtours*2*M_PI;
+    pfirst -= nbtours*2*M_PI;
   }
 
   if (myAutomaticPosition) {
@@ -539,8 +555,8 @@ void AIS_FixRelation::ComputeCirclePosition(
     Standard_Real circparam = (pfirst + plast)/2.;
 
     if ( !InDomain(pfirst,plast,circparam)) {
-      Standard_Real otherpar = circparam + PI;
-      if (otherpar > 2*PI) otherpar -= 2*PI;
+      Standard_Real otherpar = circparam + M_PI;
+      if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
       circparam = otherpar;
     }
 
@@ -563,8 +579,8 @@ void AIS_FixRelation::ComputeCirclePosition(
     Standard_Real circparam = ElCLib::Parameter(gcirc, pos);
 
     if ( !InDomain(pfirst,plast,circparam)) {
-      Standard_Real otherpar = circparam + PI;
-      if (otherpar > 2*PI) otherpar -= 2*PI;
+      Standard_Real otherpar = circparam + M_PI;
+      if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
       circparam = otherpar;
     }
     

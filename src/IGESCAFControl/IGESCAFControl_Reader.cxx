@@ -1,7 +1,22 @@
-// File:	IGESCAFControl_Reader.cxx
-// Created:	Wed Aug 16 18:01:56 2000
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 2000-08-16
+// Created by: Andrey BETENEV
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TDF_Label.hxx>
 #include <IGESCAFControl_Reader.ixx>
@@ -58,6 +73,11 @@ IGESCAFControl_Reader::IGESCAFControl_Reader (const Handle(XSControl_WorkSession
 //function : Transfer
 //purpose  : basic working method
 //=======================================================================
+static void checkColorRange (Standard_Real& theCol)
+{
+  if ( theCol < 0. ) theCol = 0.;
+  if ( theCol > 100. ) theCol = 100.;
+}
 
 Standard_Boolean IGESCAFControl_Reader::Transfer (Handle(TDocStd_Document) &doc)
 {
@@ -126,6 +146,9 @@ Standard_Boolean IGESCAFControl_Reader::Transfer (Handle(TDocStd_Document) &doc)
           else {
             Standard_Real r, g, b;
             color->RGBIntensity ( r, g, b );
+            checkColorRange ( r );
+            checkColorRange ( g );
+            checkColorRange ( b );
             col.SetValues ( 0.01*r, 0.01*g, 0.01*b, Quantity_TOC_RGB );
           }
         }

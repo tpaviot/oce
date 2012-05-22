@@ -29,8 +29,6 @@ class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
 class Geom2dInt_TheProjPCurOfGInter;
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
-class Geom2dInt_ThePolygon2dToolOfTheIntPCurvePCurveOfGInter;
-class Geom2dInt_InterferencePoly2dOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter;
 class IntRes2d_Domain;

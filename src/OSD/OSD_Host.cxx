@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
 #endif
@@ -165,34 +183,6 @@ TCollection_AsciiString OSD_Host::InternetAddress(){
  return(result);
 }
 
-
-// =========================================================================
-// Adresse ethernet: Disponible uniquement (et de facon fiable) sur ========
-// DIGITAL (DEC OSF1) et SILICON (IRIX) ====================================
-// =========================================================================
-
-#if defined(__osf__) || defined(DECOSF1)
-#include "ethernet.h-dec"
-#elif defined(__sgi) || defined(IRIX)
-#include "ethernet.h-sgi"
-#else
- static TCollection_AsciiString Ethernet(){
- struct utsname info; 
- uname(&info);
- char noaddress[100];
- strcpy(noaddress,"NO-ETHERNET-ADDRESS-AVAILABLE-ON-");
- TCollection_AsciiString result(strcat(noaddress,info.sysname));
- return (result);
-}
-#endif
-
-// =========================================================================
-TCollection_AsciiString OSD_Host::EthernetAddress(){
- TCollection_AsciiString result;
- result = Ethernet();
- return (result);
-}
-
 // =========================================================================
 OSD_OEMType OSD_Host::MachineType(){
 struct utsname info; 
@@ -250,7 +240,6 @@ static BOOL                    fInit = FALSE;
 static TCollection_AsciiString hostName;
 static TCollection_AsciiString version;
 static TCollection_AsciiString interAddr;
-static TCollection_AsciiString etherAddr;
 static Standard_Integer        memSize;
 
 OSD_Host :: OSD_Host () {
@@ -358,12 +347,6 @@ TCollection_AsciiString OSD_Host :: InternetAddress () {
  return interAddr;
 
 }  // end OSD_Host :: InternetAddress
-
-TCollection_AsciiString OSD_Host :: EthernetAddress () {
-
- return etherAddr;
-
-}  // end EthernatAddress
 
 OSD_OEMType OSD_Host :: MachineType () {
 

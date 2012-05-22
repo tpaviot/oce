@@ -1,31 +1,47 @@
--- File:	IntTools_FaceFace.cdl
--- Created:	Thu Nov 23 14:52:53 2000
--- Author:	Michael KLOKOV
---		<mkk@redfox.nnov.matra-dtv.fr>
----Copyright:	 Matra Datavision 2000
+-- Created on: 2000-11-23
+-- Created by: Michael KLOKOV
+-- Copyright (c) 2000-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 class FaceFace from IntTools
 
     	---Purpose: This class provides the intersection of 
     	---	    face's underlying surfaces.
 
-uses
+uses 
 
+    TopolTool from Adaptor3d, 
+    HSurface  from GeomAdaptor, 
+    ListOfPntOn2S from IntSurf ,
+    Intersection from IntPatch,
     Face from TopoDS,
     SequenceOfCurves from IntTools,
-    Intersection    from IntPatch,
     LineConstructor from IntTools,
-    HSurface        from GeomAdaptor,
-    TopolTool       from Adaptor3d,
-    SequenceOfPntOn2Faces from IntTools,
-    --amv
-    ListOfPntOn2S from IntSurf
+    SequenceOfPntOn2Faces from IntTools, 
+    Context from IntTools
+    
+    
 
 raises NotDone from StdFail
 is
 
     Create 
-    	returns FaceFace from IntTools;
+    	returns FaceFace from IntTools; 
     	---Purpose: 
     	--- Empty constructor.
 	---
@@ -102,10 +118,8 @@ is
 	---Purpose:
 	--- Returns True if faces are tangent
 	--- 
-    --modified by NIZNHY-PKV Fri Sep 16 07:44:22 2011	
     PrepareLines3D (me:out; 
     	    bToSplit: Boolean from Standard=Standard_True);
-    --PrepareLines3D (me:out);
     	---Purpose: 
     	--- Provides post-processing the result lines. 
         --- <bToSplit> - the flag.    		     
@@ -113,7 +127,8 @@ is
         --  on parts. 
         --  In case of <bToSplit> is false the closed 3D-curves remain untouched.  
     
-    SetList (me: in out; ListOfPnts: in out ListOfPntOn2S from IntSurf);
+    SetList (me: in out;  
+    	    ListOfPnts: in out ListOfPntOn2S from IntSurf);
     
     ----------------------------------------------------------
     --                  private  block
@@ -125,7 +140,18 @@ is
 	
     ComputeTolReached3d(me:out) 
     	is  protected; 
-
+ 
+    SetContext(me:out; 
+    	  aContext : Context from IntTools); 
+     	---Purpose:
+	--- Sets the intersecton context 
+	
+    Context(me) 
+    	returns Context from IntTools; 
+    ---C++:  return const & 	
+    	---Purpose:
+	--- Gets the intersecton context	
+	---	  
 fields 
  
     myIsDone       : Boolean         from Standard;
@@ -150,8 +176,11 @@ fields
     myFace2       : Face from TopoDS;  
     myPnts        : SequenceOfPntOn2Faces from IntTools;
     
-    --amv    
-    myListOfPnts  : ListOfPntOn2S from IntSurf;
+    myListOfPnts  : ListOfPntOn2S from IntSurf;   
+    
+    --modified by NIZNHY-PKV Tue Jan 31 08:27:18 2012f	
+    myContext     : Context from  IntTools;	 
+    --modified by NIZNHY-PKV Tue Jan 31 08:27:21 2012t
 
 end FaceFace from IntTools;
 

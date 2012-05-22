@@ -1,7 +1,23 @@
-// File:	StepToTopoDS_TranslateCompositeCurve.cxx
-// Created:	Fri Feb 12 13:29:35 1999
-// Author:	Andrey BETENEV
-//		<abv@doomox.nnov.matra-dtv.fr>
+// Created on: 1999-02-12
+// Created by: Andrey BETENEV
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //:o3 abv 17.02.99: r0301_db.stp #57082: apply FixReorder to composite curve
 //:s5 abv 22.04.99  Adding debug printouts in catch {} blocks
 
@@ -87,6 +103,7 @@ Standard_Boolean StepToTopoDS_TranslateCompositeCurve::Init (const Handle(StepGe
 							     const Handle(Geom_Surface) &Surf)
 {
   myWire.Nullify();
+  myInfiniteSegment = Standard_False;
   if ( CC.IsNull() ) return Standard_False;
 
   Standard_Boolean SurfMode = ( ! S.IsNull() && ! Surf.IsNull() );
@@ -167,7 +184,15 @@ Standard_Boolean StepToTopoDS_TranslateCompositeCurve::Init (const Handle(StepGe
         Handle(Geom_Curve) c3d;
         if (StepToGeom_MakeCurve::Convert(crv,c3d)) {
           BRepBuilderAPI_MakeEdge MkEdge ( c3d, c3d->FirstParameter(), c3d->LastParameter() );
-          if ( MkEdge.IsDone() ) edge = MkEdge.Edge();
+          if (MkEdge.IsDone())
+          {
+            if (Precision::IsNegativeInfinite (c3d->FirstParameter()) || Precision::IsPositiveInfinite (c3d->LastParameter()))
+            {
+              myInfiniteSegment = Standard_True;
+              TP->AddWarning (CC, "Segment with infinite parameters");
+            }
+            edge = MkEdge.Edge();
+          }
         }
       }
       catch(Standard_Failure) {
@@ -187,7 +212,15 @@ Standard_Boolean StepToTopoDS_TranslateCompositeCurve::Init (const Handle(StepGe
 	if ( ! c2d.IsNull() ) {
 	  if ( edge.IsNull() ) {
 	    BRepBuilderAPI_MakeEdge MkEdge ( c2d, Surf, c2d->FirstParameter(), c2d->LastParameter() );
-	    if ( MkEdge.IsDone() ) edge = MkEdge.Edge();
+	    if (MkEdge.IsDone())
+	    {
+	      if (Precision::IsNegativeInfinite (c2d->FirstParameter()) || Precision::IsPositiveInfinite (c2d->LastParameter()))
+	      {
+	        myInfiniteSegment = Standard_True;
+	        TP->AddWarning (CC, "Segment with infinite parameters");
+	      }
+	      edge = MkEdge.Edge();
+	    }
 	  }
 	  else {
 	    BRep_Builder B;

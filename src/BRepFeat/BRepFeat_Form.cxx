@@ -1,6 +1,23 @@
-// File:	BRepFeat_Form.cxx
-// Created:	Tue Feb 13 13:58:51 1996
-// Author:	Olga KOULECHOVA
+// Created on: 1996-02-13
+// Created by: Olga KOULECHOVA
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepFeat_Form.ixx>
@@ -66,7 +83,7 @@ static void Descendants(const TopoDS_Shape&,
 
 //=======================================================================
 //function : Perform
-//purpose  : reconstruction topologique du resultat
+//purpose  : topological reconstruction of the result
 //=======================================================================
   void BRepFeat_Form::GlobalPerform () 
 {
@@ -111,7 +128,7 @@ static void Descendants(const TopoDS_Shape&,
   Standard_Boolean ChangeOpe = Standard_False;
 
 
-//--- Ajout Shape From et Until dans la map pour ne pas les mettre dans LShape
+//--- Add Shape From and Until in the map to avoid setting them in LShape
   Standard_Boolean FromInShape = Standard_False;
   Standard_Boolean UntilInShape = Standard_False;
   TopTools_MapOfShape M;
@@ -163,14 +180,14 @@ static void Descendants(const TopoDS_Shape&,
   }
 
 
-//--- Ajout Faces de collage dans la map pour ne pas les mettre dans LShape
+//--- Add Faces of glueing in the map to avoid setting them in LShape
   TopTools_DataMapIteratorOfDataMapOfShapeShape itm;
   for (itm.Initialize(myGluedF);itm.More();itm.Next()) {
     M.Add(itm.Value());
   }
 
 
-//--- Recherche de la liste LShape des faces concernees par la feature
+//--- Find in the list LShape faces concerned by the feature
 
   TopTools_ListOfShape LShape;
   TopTools_ListIteratorOfListOfShape it,it2;
@@ -200,22 +217,22 @@ static void Descendants(const TopoDS_Shape&,
   IntList.Clear();
 
 
-//--- 1) par intersection
+//--- 1) by intersection
 
-// Intersection Outil Shape From
+// Intersection Tool Shape From
   if (!mySFrom.IsNull()) {
     ASI1.Init(mySFrom);
     ASI1.Perform(scur);
   }
 
-// Intersection Outil Shape Until
+// Intersection Tool Shape Until
   if (!mySUntil.IsNull()) {
     ASI2.Init(mySUntil);
     ASI2.Perform(scur);
   }
 
 #ifndef VREF
-// Intersection Outil Shape de base
+// Intersection Tool base Shape 
   if (!ASI3.IsDone()) {
     theOpe = 2;
     LShape.Clear();
@@ -223,7 +240,7 @@ static void Descendants(const TopoDS_Shape&,
   else
 #endif
   {
-//  Determination sens,locmin,locmax,FFrom,FUntil
+//  Find sens, locmin, locmax, FFrom, FUntil
     locmin = RealFirst();
     locmax = RealLast();
     for (Standard_Integer jj=1; jj<=scur.Length(); jj++) {
@@ -245,7 +262,7 @@ static void Descendants(const TopoDS_Shape&,
 	}
 	else {
 	  Standard_Integer ku, kf;
-	  if (! (mu > Mf || mf > Mu)) { //chevauchement des intervales
+	  if (! (mu > Mf || mf > Mu)) { //overlapping intervals
 	    sens = 1;
 	    kf = 1;
 	    ku = ASI2.NbPoints(jj);
@@ -302,8 +319,8 @@ static void Descendants(const TopoDS_Shape&,
 	if (ASI2.NbPoints(jj) <= 0) 
 	  continue;
 
-// pour cas base prism a cheval sur mySUntil -> sens ambigu
-//      -> on privilegie sens = 1
+// for base case prism on mySUntil -> ambivalent direction
+//      ->  preferrable direction = 1
 	if(sens != 1) {
 	  if (ASI2.Point(jj,1).Parameter()*
 	      ASI2.Point(jj,ASI2.NbPoints(jj)).Parameter()<=0) 
@@ -344,9 +361,9 @@ static void Descendants(const TopoDS_Shape&,
       }
 
 
-// Mise a jour LShape par ajout des faces du Shape de base
-//        qui sont OK pour (sens, locmin et locmax)
-//        qui ne sont pas deja dans la map (Shape From Until et faces collage)
+//      Update LShape by adding faces of the base Shape 
+//        that are OK (sens, locmin and locmax)
+//        that are not yet in the map (Shape From Until and glue faces)
 #ifndef VREF
       if (theOpe == 2) {
 	for (Standard_Integer i=1; i<=ASI3.NbPoints(jj); i++) {
@@ -397,7 +414,7 @@ static void Descendants(const TopoDS_Shape&,
 
 #ifndef VREF 
       
-//--- 2) par section avec la boite englobante
+//--- 2) by section with the bounding box
     
   Bnd_Box prbox;
   BRepBndLib::Add(myGShape,prbox);
@@ -419,14 +436,14 @@ static void Descendants(const TopoDS_Shape&,
   Standard_Integer counter = 0;
   
 
-// On ne traite pas : la face de collage
-//                    les faces du Shape From
-//                    les faces du Shape Until
-//                    les faces deja dans LShape
-//                    les faces de myGluedF
-// Si la face n'a pas ete eliminee ... on la garde si boite enblobante
-// est en collision avec celle de myGShape = outil
-//                    ou celle des faces limites (mySFrom mySUntil mySkface)    
+// Are not processed: the face of gluing 
+//                    the faces of Shape From
+//                    the faces of Shape Until
+//                    the faces already in LShape
+//                    the faces of myGluedF
+// If the face was not eliminated ... it is preserved if bounding box 
+// collides with the box of myGShape = outil
+//                    or the box of limit faces (mySFrom mySUntil mySkface)    
   for(; exx1.More(); exx1.Next()) {
     const TopoDS_Face& sh = TopoDS::Face(exx1.Current());
     counter++;    
@@ -477,8 +494,8 @@ static void Descendants(const TopoDS_Shape&,
 #endif
 
 #ifdef VREF
-// test de performance : ajout de toutes les faces du Shape de base dans LShape
-// (pas de phase de tri mais plus de faces) -> pas concluant
+// test of performance : add all faces of the base Shape in LShape
+// (no phase of parsing, but more faces) -> no concluant
   TopExp_Explorer exx1;
   for (exx1.Init(mySbase, TopAbs_FACE);
        exx1.More(); exx1.Next()) {
@@ -492,14 +509,14 @@ static void Descendants(const TopoDS_Shape&,
 
   LocOpe_Gluer theGlue;
   
-//--- cas de collage
+//--- case of gluing
 
   if (theOpe == 1) {
 #ifdef DEB
     if (trc) cout << " Gluer" << endl;
 #endif
     Standard_Boolean Collage = Standard_True;  
-    // on coupe par FFrom && FUntil
+    // cut by FFrom && FUntil
     TopoDS_Shape Comp;
     BRep_Builder B;
     B.MakeCompound(TopoDS::Compound(Comp));
@@ -531,7 +548,7 @@ static void Descendants(const TopoDS_Shape&,
 	Collage = Standard_False;
       }
       else {// else X0
-	// On ne garde que les solides
+	// Only solids are preserved
 	TopoDS_Shape theGShape;
 	BRep_Builder B;
 	B.MakeCompound(TopoDS::Compound(theGShape));
@@ -660,7 +677,7 @@ static void Descendants(const TopoDS_Shape&,
       }
     }
 
-    // On rajoute le collage sur face de depart et fin , si necessaire !!!
+    // Add gluing on start and end face if necessary !!!
     if (FromInShape && Collage) {
       TopExp_Explorer ex(mySFrom,TopAbs_FACE);
       for(; ex.More(); ex.Next()) {
@@ -691,8 +708,8 @@ static void Descendants(const TopoDS_Shape&,
 	    theGlue.Bind(theFE.EdgeFrom(),theFE.EdgeTo());
 	  }
 	}
-	//myMap.UnBind(fac2); // pour ne pas avoir fac2 dans la Map quand
-	// on .appelle UpdateDescendants(theGlue)
+	//myMap.UnBind(fac2); // to avoid fac2 in Map when
+	// UpdateDescendants(theGlue) is called
       }
     }
 
@@ -706,7 +723,7 @@ static void Descendants(const TopoDS_Shape&,
     }
   }
 
-//--- si le collage est toujours applicable
+//--- if the gluing is always applicable
 
   if (theOpe == 1) {
 #ifdef DEB
@@ -840,7 +857,7 @@ static void Descendants(const TopoDS_Shape&,
   }
 
 
-//--- cas sans collage + Outil aux bonnes dimensions
+//--- case without gluing + Tool with proper dimensions
 
   if (theOpe == 2 && ChangeOpe && myJustGluer) {
 #ifdef DEB
@@ -852,7 +869,7 @@ static void Descendants(const TopoDS_Shape&,
 //    return;
   }
 
-//--- cas sans collage
+//--- case without gluing
 
   if (theOpe == 2) {
 #ifdef DEB
@@ -861,7 +878,7 @@ static void Descendants(const TopoDS_Shape&,
     TopoDS_Shape theGShape = myGShape;
     if (ChangeOpe) {
 #ifdef DEB
-      if (trc) cout << " Passage en ope. topologique" << endl;
+      if (trc) cout << " Passage to topological operations" << endl;
 #endif
       for (itm.Initialize(myGluedF); itm.More();itm.Next()) {
 	const TopoDS_Face& fac = TopoDS::Face(itm.Value());
@@ -875,7 +892,7 @@ static void Descendants(const TopoDS_Shape&,
 	  if(found) break;
 	}
 	if(!found) {
-// echec collage -> on remet les faces de collage dans LShape
+// failed gluing -> reset faces of gluing in LShape
 	  LShape.Append(fac);
 	}
       }
@@ -909,7 +926,7 @@ static void Descendants(const TopoDS_Shape&,
       }
     }
 
-// mise a jour type de selection
+// update type of selection
     if(myPerfSelection == BRepFeat_SelectionU && !UntilInShape) {
       myPerfSelection = BRepFeat_NoSelection;
     }
@@ -928,14 +945,14 @@ static void Descendants(const TopoDS_Shape&,
       //BRepAlgo_Cut trP(myGShape,Comp);
       BRepAlgoAPI_Cut trP(myGShape, Comp);
       //modified by NIZNHY-PKV Thu Mar 21 17:24:56 2002 t
-      // le resultat est necessairement un compound.
+      // the result is necessarily a compound.
       exp.Init(trP.Shape(),TopAbs_SOLID);
       if (!exp.More()) {
 	myStatusError = BRepFeat_EmptyCutResult;
 	NotDone();
 	return;
       }
-      // On ne garde que les solides
+      // Only solids are preserved
       theGShape.Nullify();
       BRep_Builder B;
       B.MakeCompound(TopoDS::Compound(theGShape));
@@ -1061,7 +1078,7 @@ static void Descendants(const TopoDS_Shape&,
     }
 
 
-//--- generation de "just feature" pour assemblage = Parties d'outil
+//--- generation of "just feature" for assembly = Parts of tool
     TopTools_ListOfShape lshape; 
     LocOpe_Builder theTOpe;
     Standard_Real pbmin = 0.0, pbmax = RealLast(), prmin = 0.0, prmax = RealLast();
@@ -1080,9 +1097,9 @@ static void Descendants(const TopoDS_Shape&,
       theTOpe.PerformResult();
       if (theTOpe.IsDone()) {
 	myShape = theTOpe.ResultingShape();
-//	UpdateDescendants(theTOpe.Builder(),myShape); // a priori bug de mise a jour
-	UpdateDescendants(theTOpe.History(),myShape); // a priori bug de mise a jour
-	// a faire apres selection des parties a garder
+//	UpdateDescendants(theTOpe.Builder(),myShape); // a priori bug of update
+	UpdateDescendants(theTOpe.History(),myShape); // a priori bug of update
+	// to be done after selection of parts to be preserved
 	myNewEdges = theTOpe.Edges();
 	myTgtEdges = theTOpe.TgtEdges();
 	TopExp_Explorer explo(theTOpe.ResultingShape(), TopAbs_SOLID);
@@ -1097,12 +1114,12 @@ static void Descendants(const TopoDS_Shape&,
       }
     }
 
-//--- Selection des morceaux d'outil a garder
+//--- Selection of pieces of tool to be preserved
     TopoDS_Solid thePartsOfTool;
     if(!lshape.IsEmpty() && myPerfSelection != BRepFeat_NoSelection) {
 
-//Recherche ParametricMinMax en fonction contraintes des Shape From et Until
-//   -> prmin, prmax, pbmin et pbmax
+//      Find ParametricMinMax depending on the constraints of Shape From and Until
+//   -> prmin, prmax, pbmin and pbmax
       C = BarycCurve();
       if (C.IsNull()) {
 	myStatusError = BRepFeat_EmptyBaryCurve; 
@@ -1123,7 +1140,7 @@ static void Descendants(const TopoDS_Shape&,
 	BRepFeat::ParametricMinMax(mySUntil,C, 
 				   prmin2, prmax2, prbmin2, prbmax2, flag1);
 
-// cas des revol
+// case of revolutions
 	if (C->IsPeriodic()) {
 	  Standard_Real period = C->Period();
 	  prmax = prmax2;
@@ -1180,8 +1197,7 @@ static void Descendants(const TopoDS_Shape&,
 	  return;
 	}
 	
-	// On cherche les parties de l`outil contenant les descendants du
-	// Shape Until
+	// Find parts of the tool containing descendants of Shape Until
 	BRepFeat::ParametricMinMax(mySUntil,C, 
 				   prmin1, prmax1, prbmin1, prbmax1, flag1);
 	if (sens == 1) {
@@ -1199,15 +1215,15 @@ static void Descendants(const TopoDS_Shape&,
       }
 
 
-// Choix plus fin des ParametricMinMax dans le cas ou l'outil 
-// intersecte les Shapes From et Until
-//       cas de plusieurs intersections (retenir PartsOfTool en accord avec selection)  
-//       position de la face d`intersection dans PartsOfTool (avant ou arriere)
+// Finer choice of ParametricMinMax in case when the tool 
+// intersects Shapes From and Until
+//       case of several intersections (keep PartsOfTool according to the selection)  
+//       position of the face of intersection in PartsOfTool (before or after)
       Standard_Real delta = Precision::Confusion();
 
       if (myPerfSelection != BRepFeat_NoSelection) {
-// modif du test pour cts21181 : (prbmax2 et prnmin2) -> (prbmin1 et prbmax1)
-// correction prise en compte de flag2 pour pro15323 et de flag3 pour pro16060
+// modif of the test for cts21181 : (prbmax2 and prnmin2) -> (prbmin1 and prbmax1)
+// correction take into account flag2 for pro15323 and flag3 for pro16060
 	if (!mySUntil.IsNull()) {
 	  TopTools_MapOfShape mapFuntil;
 	  Descendants(mySUntil,theTOpe,mapFuntil);
@@ -1333,7 +1349,7 @@ static void Descendants(const TopoDS_Shape&,
       }
 
 
-// Tri des PartsOfTool a garder ou non en fonction des ParametricMinMax
+// Parse PartsOfTool to preserve or not depending on ParametricMinMax
       if (!myJustFeat) {
 	Standard_Boolean KeepParts = Standard_False;
 	BRep_Builder BB;
@@ -1382,7 +1398,7 @@ static void Descendants(const TopoDS_Shape&,
 	  }
 	}
 
-// Cas ou on ne garde aucune partie d`outil
+// Case when no part of the tool is preserved
 	if (!KeepParts) {
 #ifdef DEB
 	  if (trc) cout << " No parts of tool kept" << endl;
@@ -1393,7 +1409,7 @@ static void Descendants(const TopoDS_Shape&,
 	}
       }
       else {
-// cas JustFeature -> on garde tous les PartsOfTool
+// case JustFeature -> all PartsOfTool are preserved
 	Standard_Real prmin1, prmax1, prbmin1, prbmax1;
 	Standard_Real min, max, pmin, pmax;
 	Standard_Boolean flag2;
@@ -1427,11 +1443,11 @@ static void Descendants(const TopoDS_Shape&,
     }
 
  
-//--- Generation du resultat myShape
+//--- Generation of result myShape
 
     if (!myJustFeat) {
-// suppression des edges de section qui n'ont aucun vertex commun
-// avec les PartsOfTool converves
+// removal of edges of section that have no common vertices
+// with PartsOfTool preserved
       theTOpe.PerformResult();
       if (theTOpe.IsDone()) {
 	Done();
@@ -1439,7 +1455,7 @@ static void Descendants(const TopoDS_Shape&,
 //
 	BRepLib::SameParameter(myShape, 1.e-7, Standard_True);
 //
-// mise a jour des new et tangent edges
+// update new and tangent edges
 //	UpdateDescendants(theTOpe.Builder(),myShape);
 	UpdateDescendants(theTOpe.History(),myShape);
 	myNewEdges = theTOpe.Edges();
@@ -1448,7 +1464,7 @@ static void Descendants(const TopoDS_Shape&,
 	}
 	//	else myTgtEdges.Clear();
       }
-      else {// dernier recours (attention new et tangent edges)
+      else {// last recourse (attention new and tangent edges)
 	if (!thePartsOfTool.IsNull()) {
 #ifdef DEB
 	  if (trc) cout << " Parts of Tool : direct Ope. Top." << endl;
@@ -1491,7 +1507,7 @@ static void Descendants(const TopoDS_Shape&,
       }
     }
     else {
-      // tout est deja fait
+      // all is already done
       Done();
     }
   }
@@ -1521,7 +1537,7 @@ const TopTools_ListOfShape& BRepFeat_Form::Modified
 {
   if (myMap.IsBound(F)) {
     static TopTools_ListOfShape list;
-    list.Clear(); // Pour le second passage DPF
+    list.Clear(); // For the second passage DPF
     TopTools_ListIteratorOfListOfShape ite(myMap(F));
     for(; ite.More(); ite.Next()) {
       const TopoDS_Shape& sh = ite.Value();
@@ -1542,9 +1558,9 @@ const TopTools_ListOfShape& BRepFeat_Form::Generated
    (const TopoDS_Shape& S)
 {
   if (myMap.IsBound(S) && 
-      S.ShapeType() != TopAbs_FACE) { // voir si on filtre sur face ou pas
+      S.ShapeType() != TopAbs_FACE) { // check if filter on face or not
     static TopTools_ListOfShape list;
-    list.Clear(); // Pour le second passage DPF
+    list.Clear(); // For the second passage DPF
     TopTools_ListIteratorOfListOfShape ite(myMap(S));
     for(; ite.More(); ite.Next()) {
       const TopoDS_Shape& sh = ite.Value();
@@ -1642,7 +1658,7 @@ const TopTools_ListOfShape& BRepFeat_Form::TgtEdges() const
 
 //=======================================================================
 //function : TransformSUntil
-//purpose  : Limitation du shape until dans le cas des faces infinies
+//purpose  : Limitation of the shape until the case of infinite faces
 //=======================================================================
 
 Standard_Boolean BRepFeat_Form::TransformShapeFU(const Standard_Integer flag)
@@ -1661,7 +1677,7 @@ Standard_Boolean BRepFeat_Form::TransformShapeFU(const Standard_Integer flag)
     return Trf;
 
   TopExp_Explorer exp(shapefu, TopAbs_FACE);
-  if (!exp.More()) { // pas de faces... Il faudrait renvoyer une erreur
+  if (!exp.More()) { // no faces... It is necessary to return an error
 #ifdef DEB
     if (trc) cout << " BRepFeat_Form::TransformShapeFU : invalid Shape" << endl;
 #endif
@@ -1669,7 +1685,7 @@ Standard_Boolean BRepFeat_Form::TransformShapeFU(const Standard_Integer flag)
   }
 
   exp.Next();
-  if (!exp.More()) { // une seule face. Est-elle infinie??
+  if (!exp.More()) { // the only face. Is it infinite?
     exp.ReInit();
     TopoDS_Face fac = TopoDS::Face(exp.Current());
 
@@ -1893,7 +1909,7 @@ static void Descendants(const TopoDS_Shape& S,
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the appartenance to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 //	  const TopoDS_Shape& sh = itm.Key();
@@ -1950,7 +1966,7 @@ static void Descendants(const TopoDS_Shape& S,
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the appartenance to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 //	  const TopoDS_Shape& sh = itm.Key();
@@ -2006,7 +2022,7 @@ static void Descendants(const TopoDS_Shape& S,
     }
     myMap.ChangeFind(orig).Clear();
     for (itm.Initialize(newdsc); itm.More(); itm.Next()) {
-       // on verifie l`appartenance au shape...
+       // check the appartenance to the shape...
       for (exp.Init(S,TopAbs_FACE);exp.More();exp.Next()) {
 	if (exp.Current().IsSame(itm.Key())) {
 //	  const TopoDS_Shape& sh = itm.Key();

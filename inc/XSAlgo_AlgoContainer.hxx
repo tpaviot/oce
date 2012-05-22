@@ -31,6 +31,9 @@
 #ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
 #endif
+#ifndef _Handle_Message_ProgressIndicator_HeaderFile
+#include <Handle_Message_ProgressIndicator.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -46,6 +49,7 @@
 class XSAlgo_ToolContainer;
 class TopoDS_Shape;
 class Standard_Transient;
+class Message_ProgressIndicator;
 class TopoDS_Edge;
 class TopoDS_Face;
 class Transfer_TransientProcess;
@@ -64,9 +68,7 @@ public:
   //! Returns ToolContainer <br>
         Handle_XSAlgo_ToolContainer ToolContainer() const;
   //! Performs actions necessary for preparing environment <br>
-//!          for transfer. Empty in Open version. <br>//! Applies fixes to the shape resulting from transfer, <br>
-//!          and updates map of entity-shape in TP in accordance with <br>
-//!          substitutions made during fixes (if any) <br>
+//!          for transfer. Empty in Open version. <br>
   Standard_EXPORT   virtual  void PrepareForTransfer() const;
   //! Does shape processing with specified tolerances <br>
 //!          and returns resulting shape and associated information <br>
@@ -74,7 +76,7 @@ public:
 //!          This information should be later transmitted to <br>
 //!          MergeTransferInfo in order to be recorded in the <br>
 //!          translation map <br>
-  Standard_EXPORT   virtual  TopoDS_Shape ProcessShape(const TopoDS_Shape& shape,const Standard_Real Prec,const Standard_Real MaxTol,const Standard_CString rscfile,const Standard_CString seq,Handle(Standard_Transient)& info) const;
+  Standard_EXPORT   virtual  TopoDS_Shape ProcessShape(const TopoDS_Shape& shape,const Standard_Real Prec,const Standard_Real MaxTol,const Standard_CString rscfile,const Standard_CString seq,Handle(Standard_Transient)& info,const Handle(Message_ProgressIndicator)& progress = 0) const;
   //! Checks quality of pcurve of the edge on the given face, <br>
 //!          and corrects it if necessary. <br>
   Standard_EXPORT   virtual  Standard_Boolean CheckPCurve(const TopoDS_Edge& edge,const TopoDS_Face& face,const Standard_Real preci,const Standard_Boolean isSeam) const;

@@ -1,4 +1,21 @@
-// file GccAna_Circ2dTanOnRad_4.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2dTanOnRad.jxx>
 
@@ -11,17 +28,16 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Cercle tangent a une droite Qualified1 (L1).                         +
-//          centre sur un cercle OnCirc.                                  +
-//          de rayon             Radius.                                  +
+//   Circle tangent to straight line Qualified1 (L1).                     +
+//          center on  circle OnCirc.                                     +
+//          with radius       Radius.                                     +
 //                                                                        +
-//  On initialise le tableau de solutions cirsol ainsi que tous les       +
-//  champs.                                                               +
-//  On elimine les cas ne presentant pas de solution.                     +
-//  On cree la (les) parallele(s) a L1 dans le (les) sens voulu(s).       +
-//  On intersecte cette (ces) parallele(s) avec OnCirc et on obtient les  +
-//  points de centre des solutions recherchees.                           +
-//  On cree ces solutions cirsol.                                         +
+//  Initialize table of solutions cirsol and all fields.                  +
+//  Eliminate cases not being the solution.                               +
+//  Create parallel line(s) to L1 in the required direction(s).           +
+//  Intersect parallel line(s) with OnCirc and obtain                     +
+//  center points of found solutions.                                     +
+//  Create solutions cirsol.                                              +
 //=========================================================================
 
 GccAna_Circ2dTanOnRad::
@@ -31,7 +47,7 @@ GccAna_Circ2dTanOnRad::
                           const Standard_Real        Tolerance ):
 
 //=========================================================================
-//  Initialisation des champs.                                            +
+//  Initialization of fields.                                            +
 //=========================================================================
 
    cirsol(1,4)   ,
@@ -56,7 +72,7 @@ GccAna_Circ2dTanOnRad::
    }
 
 //=========================================================================
-//  Initialisation de diverses variables.                                 +
+//  Initialisation of various variables.                                 +
 //=========================================================================
 
    Standard_Integer nbsol = 0;
@@ -69,7 +85,7 @@ GccAna_Circ2dTanOnRad::
    Standard_Real dist2 = L1.Distance(OnCirc.Location())+OnCirc.Radius();
 
 //=========================================================================
-//  Traitement.                                                           +
+//  Processing.                                                           +
 //=========================================================================
 
    if (Radius < 0.0) { Standard_NegativeValue::Raise(); }
@@ -78,7 +94,7 @@ GccAna_Circ2dTanOnRad::
      if ((dist1-Radius>Tol) || (Tol<Radius-dist2)) { WellDone=Standard_True; }
      else {
 
-// a modifier ulterieurement.
+// to modify later
 
        if (dist1-Radius > 0.0) { dist1 = Radius; }
        else if (dist2-Radius < 0.0) { dist2 = Radius; }

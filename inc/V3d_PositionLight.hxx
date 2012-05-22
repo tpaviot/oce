@@ -92,13 +92,6 @@ public:
   Standard_EXPORT   virtual  void Display(const Handle(V3d_View)& aView,const V3d_TypeOfRepresentation Representation = V3d_SIMPLE) ;
   //! Erase the graphic structure of light source. <br>
   Standard_EXPORT     void Erase() ;
-  //! Returns the type of pick element. <br>
-//!          "POSITIONLIGHT"  : Representation of position light. <br>
-//!          "SPACELIGHT"     : Representation of lighting space. <br>
-//!          "RADIUSLIGHT"    : Representation of lighting space radius. <br>
-//!          "NOTHING"        : Any component of light. <br>
-//!          Determinate which type of tracking apply. <br>
-  Standard_EXPORT   virtual  V3d_TypeOfPickLight Pick(const Handle(V3d_View)& aView,const Standard_Integer Xpix,const Standard_Integer Ypix) const;
   //! Returns the radius of the picking sphere. <br>
   Standard_EXPORT     Quantity_Parameter Radius() const;
   //! Returns the visibility status <br>

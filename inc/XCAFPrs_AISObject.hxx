@@ -22,6 +22,12 @@
 #ifndef _AIS_Shape_HeaderFile
 #include <AIS_Shape.hxx>
 #endif
+#ifndef _Graphic3d_NameOfMaterial_HeaderFile
+#include <Graphic3d_NameOfMaterial.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
+#endif
 #ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager3d.hxx>
 #endif
@@ -32,6 +38,8 @@
 #include <Standard_Integer.hxx>
 #endif
 class TDF_Label;
+class Quantity_Color;
+class Graphic3d_MaterialAspect;
 class XCAFPrs_Style;
 class TopoDS_Shape;
 class PrsMgr_PresentationManager3d;
@@ -46,6 +54,20 @@ public:
 
   //! Creates an object to visualise the shape label <br>
   Standard_EXPORT   XCAFPrs_AISObject(const TDF_Label& lab);
+  
+  Standard_EXPORT   virtual  void SetColor(const Quantity_Color& aColor) ;
+  
+  Standard_EXPORT   virtual  void UnsetColor() ;
+  
+  Standard_EXPORT   virtual  void SetMaterial(const Graphic3d_NameOfMaterial aName) ;
+  
+  Standard_EXPORT   virtual  void SetMaterial(const Graphic3d_MaterialAspect& aName) ;
+  
+  Standard_EXPORT   virtual  void UnsetMaterial() ;
+  
+  Standard_EXPORT   virtual  void SetTransparency(const Standard_Real aValue = 0.6) ;
+  
+  Standard_EXPORT   virtual  void UnsetTransparency() ;
 
 
 

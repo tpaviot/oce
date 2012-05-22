@@ -1,10 +1,24 @@
-// File:	Geom_ToroidalSurface.cxx
-// Created:	Wed Mar 10 10:57:46 1993
-// Author:	JCV
-//		<fid@phylox>
-// Copyright:	Matra Datavision 1993
+// Created on: 1993-03-10
+// Created by: JCV
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-//File Geom_ToroidalSurface.cxx, JCV 17/01/91
+
 
 
 #include <Geom_ToroidalSurface.ixx>
@@ -112,7 +126,7 @@ Standard_Real Geom_ToroidalSurface::MinorRadius () const {
 
 Standard_Real Geom_ToroidalSurface::UReversedParameter( const Standard_Real U) const {
 
-  return (2.*PI - U);
+  return (2.*M_PI - U);
 }
 
 
@@ -123,7 +137,7 @@ Standard_Real Geom_ToroidalSurface::UReversedParameter( const Standard_Real U) c
 
 Standard_Real Geom_ToroidalSurface::VReversedParameter( const Standard_Real V) const {
 
-  return (2.*PI - V);
+  return (2.*M_PI - V);
 }
 
 
@@ -215,7 +229,7 @@ void Geom_ToroidalSurface::SetTorus (const gp_Torus& T) {
 //=======================================================================
 
 Standard_Real Geom_ToroidalSurface::Area () const {
-  return 4.0 * PI * PI * minorRadius * majorRadius;
+  return 4.0 * M_PI * M_PI * minorRadius * majorRadius;
 }
 
 
@@ -231,8 +245,8 @@ void Geom_ToroidalSurface::Bounds (Standard_Real& U1,
  
   U1 = 0.0;  
   V1 = 0.0;  
-  U2 = 2*PI;  
-  V2 = 2*PI;
+  U2 = 2*M_PI;  
+  V2 = 2*M_PI;
 }
 
 
@@ -366,7 +380,7 @@ Handle(Geom_Curve) Geom_ToroidalSurface::VIso (const Standard_Real V) const
 
 Standard_Real Geom_ToroidalSurface::Volume () const {
 
-  return (PI * minorRadius * minorRadius) * (2.0 * PI * majorRadius);
+  return (M_PI * minorRadius * minorRadius) * (2.0 * M_PI * majorRadius);
 }
 
 

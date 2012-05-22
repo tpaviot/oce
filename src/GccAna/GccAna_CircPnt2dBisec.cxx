@@ -1,10 +1,26 @@
-// File:	GccAna_CircPnt2dBisec.cxx
-// Created:	Fri Oct 11 08:19:14 1991
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1991-10-11
+// Created by: Remi GILET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   CREATION DE LA BISSECTICE ENTRE UN CERCLE ET UN POINT.               +
+//   CREATION of the BISSECTICE between a CIRCLE and a POINT.               +
 //=========================================================================
 
 #include <GccAna_CircPnt2dBisec.ixx>
@@ -31,13 +47,13 @@ GccAna_CircPnt2dBisec::
    point(Point)  {
 
 //=========================================================================
-//  Initialisation des champs :                                           +
-//            - circle   (Cercle : premier argument.)                     +
-//            - line     (Ligne  : deuxieme argument.)                    +
-//            - theposition (Entier indiquant la position de Point par    +
-//                           rapport a Circle.)                           +
-//            - NbrSol   (Entier indiquant le nombre de solutions.)       +
-//            - WellDone (Booleen indiquant le succes ou non de l algo.). +
+//  Initialization of fields :                                            +
+//            - circle   ( first argument.)                               +
+//            - line     ( second argument.)                              +
+//            - theposition (Integer showing the position of Point        +
+//                           correspondingly to Circle.)                  +
+//            - NbrSol   (Integer showing the number of solutions.)       +
+//            - WellDone (Booleen showing the success or failure of the algorithm). +
 //=========================================================================
 
    Standard_Real dist = Circle.Radius()-Point.Distance(Circle.Location());
@@ -60,15 +76,15 @@ GccAna_CircPnt2dBisec::
  }
 
 //=========================================================================
-//  Traitement.                                                           +
-//  On recupere les coordonees des origines de la droite (xloc,yloc) et   +
-//  du cercle (xcencirc, ycencirc).                                       +
-//  On recupere aussi les coordonees dela direction de la droite (xdir,   +
-//  ydir) et le rayon du cercle R1.                                       +
-//  On regarde de quel cote de la droite se trouve le centre du cercle    +
-//  pour orienter la parabole (signe).                                    +
-//  On cree l axe de chacune des paraboles (axeparab1, axeparb2), puis    +
-//  les deux paraboles (biscirPnt1, biscirPnt1).                          +
+//  Processing.                                                           +
+//  Return the coordinates of origins of the straight line (xloc,yloc) and+
+//  of the circle (xcencirc, ycencirc).                                       +
+//  Also return the coordinates of the direction of the straight line (xdir,   +
+//  ydir) and the radius of circle R1.                                       +
+//  Check at which side of the straight line is found the center of circle    +
+//  to orientate the parabola (sign).                                    +
+//  Create axis of each parabola (axeparab1, axeparb2), then    +
+//  two parabolas (biscirPnt1, biscirPnt1).                          +
 //=========================================================================
 
 Handle(GccInt_Bisec) GccAna_CircPnt2dBisec::
@@ -100,7 +116,7 @@ Handle(GccInt_Bisec) GccAna_CircPnt2dBisec::
     gp_Ax2d majax(center,gp_Dir2d(xpoint-xcencir,ypoint-ycencir));
     
     //=========================================================================
-    //   Le point est a l interieur du cercle.                                +
+    //   The point is inside the circle.                                +
     //=========================================================================
     
     if (theposition == -1) {
@@ -110,9 +126,9 @@ Handle(GccInt_Bisec) GccAna_CircPnt2dBisec::
     }
     
     //=========================================================================
-    //   Le point est sur le cercle.                                          +
-    //   Il y a une seule solution : la droite passant par point et le centre +
-    //   du cercle.                                                           +
+    //   The point is on the circle.                                          +
+    //   There is only one solution : straight line passing through point and the center +
+    //   of the circle.                                                           +
     //=========================================================================
     
     else if (theposition == 0) {
@@ -126,8 +142,8 @@ Handle(GccInt_Bisec) GccAna_CircPnt2dBisec::
     }
     
     //=========================================================================
-    //   Le point est a l exterieur du cercle.                                +
-    //   Il y a deux solutions : les deux branches principales de l hyperbole.+
+    //   The point is outside of the circle.                                +
+    //   There are two solutions : two main branches of the hyperbola.+
     //=========================================================================
     
     else {

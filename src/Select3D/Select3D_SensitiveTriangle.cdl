@@ -1,15 +1,32 @@
--- File:    Select3D_SensitiveTriangle.cdl
--- Created: Wed May 14 16:37:59 1997
--- Author:  Robert COUBLANC
---      <rob@robox.paris1.matra-dtv.fr>
----Copyright:    Matra Datavision 1997
+-- Created on: 1997-05-14
+-- Created by: Robert COUBLANC
+-- Copyright (c) 1997-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class SensitiveTriangle from Select3D  
 inherits SensitivePoly from Select3D
 
     ---Purpose: A framework to define selection of triangles in a view.
-        -- This comes into play in the detection of meshing and triangulation in surfaces.
+    -- This comes into play in the detection of meshing and triangulation in surfaces.
+    -- In some cases this class can raise Standard_ConstructionError and 
+    -- Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
 
 uses
     EntityOwner      from SelectBasics,
@@ -21,7 +38,12 @@ uses
     XY               from gp,
     Pnt              from gp,
     TypeOfSensitivity from Select3D,
-    Location          from TopLoc
+    Location          from TopLoc, 
+    SensitiveEntity   from Select3D
+
+raises
+    ConstructionError from Standard,
+    OutOfRange from Standard
 
 is
     Create (OwnerId      : EntityOwner from SelectBasics;
@@ -30,7 +52,7 @@ is
      returns mutable SensitiveTriangle;
     ---Level: Public 
         ---Purpose: Constructs a sensitive triangle object defined by the
-        -- owner OwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.
+        -- owner OwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity. 
 
     Matches(me  :mutable; 
             X,Y : Real from Standard;
@@ -85,7 +107,13 @@ is
              Dmin    : out Real from Standard) returns Integer from  Standard;
     ---Purpose: Dmin gives the distance between the cdg and aPoint return 
 
-    Dump(me; S: in out OStream;FullDump : Boolean from Standard = Standard_True) is redefined virtual;
+    Dump(me; S: in out OStream;FullDump : Boolean from Standard = Standard_True) is redefined virtual; 
+
+    GetConnected(me: mutable; theLocation : Location from TopLoc) 
+    returns SensitiveEntity from Select3D 
+    is redefined virtual; 
+        ---Level: Public 
+        ---Purpose: Returns the copy of this
 
 
 fields

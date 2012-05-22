@@ -1,7 +1,22 @@
-// File:  XSDRAWSTLVRML.cxx
-// Created: Tue May 30 17:29:50 2000
-// Author:  Sergey MOZOKHIN
-//    <smh@russox.nnov.matra-dtv.fr>
+// Created on: 2000-05-30
+// Created by: Sergey MOZOKHIN
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <XSDRAWSTLVRML.ixx>
@@ -74,13 +89,24 @@
 static Standard_Integer writestl
 (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if (argc<3) di << "wrong number of parameters"    << "\n";
-  else {
-    TopoDS_Shape shape = DBRep::Get(argv[1]);
-    //     StlAPI_Writer writer;
-    //     writer.ASCIIMode() = Standard_False;
-    //     writer.Write (shape, "binary.stl");
-    StlAPI::Write(shape, argv[2],Standard_False); //now write in binary mode
+  if (argc < 3 || argc > 5) {
+	di << "Use: " << argv[0] 
+	<< " shape file [ascii/binary (0/1) : 1 by default] [InParallel (0/1) : 0 by default]" << "\n";
+  } else {
+    TopoDS_Shape aShape = DBRep::Get(argv[1]);
+    Standard_Boolean anASCIIMode = Standard_False;
+	Standard_Boolean isInParallel = Standard_False;
+    if (argc==4) {
+      Standard_Integer mode = atoi(argv[3]);
+      if (mode==0) anASCIIMode = Standard_True;
+    }
+	if (argc==5) {
+      isInParallel = atoi(argv[4]) == 1;
+      Standard::SetReentrant(isInParallel);
+    }
+	StlAPI_Writer aWriter;
+    aWriter.ASCIIMode() = anASCIIMode;
+    aWriter.Write (aShape, argv[2], isInParallel);
   }
   return 0;
 }
@@ -947,7 +973,7 @@ void  XSDRAWSTLVRML::InitCommands (Draw_Interpretor& theCommands)
   //XSDRAW::LoadDraw(theCommands);
 
   theCommands.Add ("writevrml", "shape file",__FILE__,writevrml,g);
-  theCommands.Add ("writestl",  "shape file",__FILE__,writestl,g);
+  theCommands.Add ("writestl",  "shape file [ascii/binary (0/1) : 1 by default] [InParallel (0/1) : 0 by default]",__FILE__,writestl,g);
   theCommands.Add ("readstl",   "shape file",__FILE__,readstl,g);
   theCommands.Add ("loadvrml" , "shape file",__FILE__,loadvrml,g);
   theCommands.Add ("storevrml" , "shape file defl [type]",__FILE__,storevrml,g);

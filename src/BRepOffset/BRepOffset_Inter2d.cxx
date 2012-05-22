@@ -1,7 +1,23 @@
-// File:	BRepOffset_Inter2d.cxx
-// Created:	Tue Sep  3 16:37:35 1996
-// Author:	Yves FRICAUD
-//		<yfr@claquox.paris1.matra-dtv.fr>
+// Created on: 1996-09-03
+// Created by: Yves FRICAUD
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Wed Dec 24 18:08:39 2003 OCC4455
 
@@ -121,10 +137,9 @@ static void  Store (const TopoDS_Edge&       E1,
 		    Standard_Real            Tol)
 {
   //-------------------------------------------------------------
-  // Test si les points d intersection correspondent a des vertex
-  // existants.Sinon  ajout dans les descendants des edges.
-  // Remarque a ce stade seulement les vertex d intersection sont
-  // dans les descendants.
+  // Test if the points of intersection correspond to existing 
+  // vertices. Otherwise add edges in the descendants.
+  // Note: at this stage only vertices of intersection are in the descendants.
   //-------------------------------------------------------------
   const TopTools_ListOfShape& VOnE1 = AsDes->Descendant(E1);
   const TopTools_ListOfShape& VOnE2 = AsDes->Descendant(E2);
@@ -144,8 +159,12 @@ static void  Store (const TopoDS_Edge&       E1,
 
     TopoDS_Vertex V    = TopoDS::Vertex(itLV1.Value());
 
-    U1 = BRep_Tool::Parameter(V,E1);
-    U2 = BRep_Tool::Parameter(V,E2);
+    U1 = (BRep_Tool::Degenerated(E1))?
+      BRep_Tool::Parameter(TopoDS::Vertex(V.Oriented(TopAbs_INTERNAL)), E1) :
+      BRep_Tool::Parameter(V, E1);
+    U2 = (BRep_Tool::Degenerated(E2))?
+      BRep_Tool::Parameter(TopoDS::Vertex(V.Oriented(TopAbs_INTERNAL)), E2) :
+      BRep_Tool::Parameter(V, E2);
     O1 = V.Orientation();
     O2 = itLV2.Value().Orientation();
     P  = BRep_Tool::Pnt(V);
@@ -153,7 +172,7 @@ static void  Store (const TopoDS_Edge&       E1,
     
     if (!VOnE1.IsEmpty()) {
       //-----------------------------------------------------------------
-      // Recherche si le point d intersection correspond a un vertex de E1.
+      // Find if the point of intersection corresponds to a vertex of E1.
       //-----------------------------------------------------------------
       for (it.Initialize(VOnE1); it.More(); it.Next()) {
 	P1 = BRep_Tool::Pnt(TopoDS::Vertex(it.Value()));
@@ -168,7 +187,7 @@ static void  Store (const TopoDS_Edge&       E1,
     if (!VOnE2.IsEmpty()) {
       if (OnE1) {
 	//-----------------------------------------------------------------
-	// Recherche si le vertex trouve sur E1 n est pas deja sur E2.
+	// Find if the vertex found on E1 is not already on E2.
 	//-----------------------------------------------------------------
 	for (it.Initialize(VOnE2); it.More(); it.Next()) {
 	  if (it.Value().IsSame(V)) {
@@ -180,7 +199,7 @@ static void  Store (const TopoDS_Edge&       E1,
       }
       for (it.Initialize(VOnE2); it.More(); it.Next()) {
 	//-----------------------------------------------------------------
-	// Recherche si le point d intersection correspond a un vertex de E2.
+	// Find if the point of intersection corresponds to a vertex of E2.
 	//-----------------------------------------------------------------
 	P2 = BRep_Tool::Pnt(TopoDS::Vertex(it.Value()));
 	if (P.IsEqual(P2,Tol)) {
@@ -194,9 +213,9 @@ static void  Store (const TopoDS_Edge&       E1,
     if (OnE1 && OnE2) {
       if (!V1.IsSame(V2)) {
 	//---------------------------------------------------------------
-	// Les deux vertex sont en fait les memes.
-	// on va remplacer V2 par V1. 
-	// mis a jour des parametres des vertex sur les edges.
+	// Two vertices are actually the same.
+	// V2 will be replaced by V1. 
+	// update the parameters of vertex on edges.
 	//---------------------------------------------------------------
 	Standard_Real UV2;
 	TopoDS_Edge   EWE2;
@@ -278,10 +297,8 @@ static void EdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-#ifdef DEB
   Standard_Real MilTol2 = 1000*Tol*Tol;
-#endif
-  Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
+  Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
 
   BRep_Tool::Range(E1, f[1], l[1]);
@@ -359,6 +376,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 	  
 	  gp_Pnt P = ResPoints(i); //ponc1.Value();
 	  TopoDS_Vertex aNewVertex = (TopoDS_Vertex) BRepLib_MakeVertex(P);
+          aNewVertex.Orientation(TopAbs_INTERNAL);
 	  B.UpdateVertex( aNewVertex, aT1, E1, Tol );
 	  B.UpdateVertex( aNewVertex, aT2, E2, Tol );
 	  gp_Pnt P1 = CE1.Value(aT1);
@@ -374,17 +392,17 @@ static void EdgeInter(const TopoDS_Face&              F,
 #ifdef DEB
 	  if (aT1 < f[1]-Tol  || aT1 > l[1]+Tol)
 	    {
-	      cout << "hors borne"<<endl;
+	      cout << "out of limit"<<endl;
 	      cout<<"aT1 = "<<aT1<<", f[1] = "<<f[1]<<", l[1] = "<<l[1]<<endl;
 	    }
 	  if (aT2 < f[2]-Tol  || aT2 > l[2]+Tol)
 	    {
-	      cout << "hors borne"<<endl;
+	      cout << "out of limit"<<endl;
 	      cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	    }
 	  if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	    {
-	      cout << "Inter2d : Solution rejete "<<endl;
+	      cout << "Inter2d : Solution rejected "<<endl;
 	      cout<<"P  = "<<P.X()<<" "<<P.Y()<<" "<<P.Z()<<endl;
 	      cout<<"P1 = "<<P1.X()<<" "<<P1.Y()<<" "<<P1.Z()<<endl;
 	      cout<<"P2 = "<<P2.X()<<" "<<P2.Y()<<" "<<P2.Z()<<endl;
@@ -422,7 +440,7 @@ static void EdgeInter(const TopoDS_Face&              F,
     }
   
   //----------------------------------
-  // Test en bout.
+  // Test at end.
   //---------------------------------
   Standard_Real U1,U2;
   Standard_Real TolConf = Tol;
@@ -471,8 +489,8 @@ static void EdgeInter(const TopoDS_Face&              F,
 
   if ( !LV1.IsEmpty()) {
     //----------------------------------
-    // Purge de l ensemble des vertex.
-    // il peut y avoir des doublons
+    // Remove all vertices.
+    // There can be doubles
     //----------------------------------
     TopTools_ListIteratorOfListOfShape it1LV1,it1LV2,it2LV1;
     gp_Pnt P1,P2;
@@ -498,7 +516,7 @@ static void EdgeInter(const TopoDS_Face&              F,
 //  Modified by skv - Thu Jan 22 18:19:05 2004 OCC4455 End
 	    LV1.Remove(it1LV1);
 	    LV2.Remove(it1LV2);
-	    if (AffichPurge) cout <<"Doublons purges dans EdgeInter."<<endl;
+	    if (AffichPurge) cout <<"Doubles removed in EdgeInter."<<endl;
 	    Purge = Standard_True;
 	    break;
 	  }
@@ -510,7 +528,7 @@ static void EdgeInter(const TopoDS_Face&              F,
       }
     }
     //---------------------------------
-    // Stockage vertex en SD.
+    // Vertex storage in DS.
     //---------------------------------
 //  Modified by skv - Tue Jan 13 15:14:30 2004 Begin
     Standard_Real TolStore = BRep_Tool::Tolerance(E1) + BRep_Tool::Tolerance(E2);
@@ -538,7 +556,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 {
 #ifdef DRAW
   if (AffichInt2d) {
-    //POP pour NT
+    //POP for NT
     char* name = new char[100];
     sprintf(name,"E2d_%d_%d",NbF2d,NbE2d++);
     DBRep::Set(name,E1);
@@ -551,10 +569,8 @@ static void RefEdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-#ifdef DEB
   Standard_Real MilTol2 = 1000*Tol*Tol;
-#endif
-  Standard_Real TolDub = 1.e-7;  // Faire un calcul plus malin !!! NYI
+  Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
 
   //BRep_Tool::Range(E1, f[1], l[1]);
@@ -629,6 +645,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
       
       gp_Pnt P = ResPoints(i); //ponc1.Value();
       TopoDS_Vertex aNewVertex = (TopoDS_Vertex) BRepLib_MakeVertex(P);
+      aNewVertex.Orientation(TopAbs_INTERNAL);
       B.UpdateVertex( aNewVertex, aT1, E1, Tol );
       B.UpdateVertex( aNewVertex, aT2, E2, Tol );
       gp_Pnt P1 = CE1.Value(aT1);
@@ -644,17 +661,17 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 #ifdef DEB
       if (aT1 < f[1]-Tol  || aT1 > l[1]+Tol)
 	{
-	  cout << "hors borne"<<endl;
+	  cout << "out of limit"<<endl;
 	  cout<<"aT1 = "<<aT1<<", f[1] = "<<f[1]<<", l[1] = "<<l[1]<<endl;
 	}
       if (aT2 < f[2]-Tol  || aT2 > l[2]+Tol)
 	{
-	  cout << "hors borne"<<endl;
+	  cout << "out of limit"<<endl;
 	  cout<<"aT2 = "<<aT2<<", f[2] = "<<f[2]<<", l[2] = "<<l[2]<<endl;
 	}
       if (P1.SquareDistance(P) >  MilTol2 || P2.SquareDistance(P) > MilTol2 || P1.Distance(P2) > 2.*Tol)
 	{
-	  cout << "Inter2d : Solution rejete "<<endl;
+	  cout << "Inter2d : Solution rejected"<<endl;
 	  cout<<"P  = "<<P.X()<<" "<<P.Y()<<" "<<P.Z()<<endl;
 	  cout<<"P1 = "<<P1.X()<<" "<<P1.Y()<<" "<<P1.Z()<<endl;
 	  cout<<"P2 = "<<P2.X()<<" "<<P2.Y()<<" "<<P2.Z()<<endl;
@@ -691,7 +708,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
     }
   
   //----------------------------------
-  // Test en bout.
+  // Test at end.
   //---------------------------------
   Standard_Real U1,U2;
   Standard_Real TolConf = Tol;
@@ -728,8 +745,8 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 
   if ( !LV1.IsEmpty()) {
     //----------------------------------
-    // Purge de l ensemble des vertex.
-    // il peut y avoir des doublons
+    // Remove all vertices.
+    // there can be doubles
     //----------------------------------
     TopTools_ListIteratorOfListOfShape it1LV1,it1LV2,it2LV1;
     gp_Pnt P1,P2;
@@ -748,7 +765,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
 	  if (P1.IsEqual(P2,10*Tol)) {
 	    LV1.Remove(it1LV1);
 	    LV2.Remove(it1LV2);
-	    if (AffichPurge) cout <<"Doublons purges dans EdgeInter."<<endl;
+	    if (AffichPurge) cout <<"Doubles removed in EdgeInter."<<endl;
 	    Purge = Standard_True;
 	    break;
 	  }
@@ -760,7 +777,7 @@ static void RefEdgeInter(const TopoDS_Face&              F,
       }
     }
     //---------------------------------
-    // Stockage vertex en SD.
+    // Vertex storage in SD.
     //---------------------------------
 ////-----------------------------------------------------
     if(LV1.Extent() > 1) {
@@ -934,8 +951,8 @@ static void ExtentEdge(const TopoDS_Edge& E,TopoDS_Edge& NE, const Standard_Real
   BRep_Tool::Range(E, anEf, anEl);
   NE = TopoDS::Edge(aLocalShape); 
 //  NE = TopoDS::Edge(E.EmptyCopied()); 
-  // Suffit pour les edges analytiques, pour le cas general reconstruire la
-  // la geometrie de l edge en recalculant l intersection des surfaces.
+  // Enough for analytic edges, for general case reconstruct the
+  // geometry of the edge recalculating the intersection of surfaces.
 
   //BRepLib::BuildCurve3d(E);
 
@@ -1165,7 +1182,7 @@ static void ExtentEdge(const TopoDS_Edge& E,TopoDS_Edge& NE, const Standard_Real
 	  if (!Precision::IsInfinite(f) && !Precision::IsInfinite(l))
 	    BRepLib::SameParameter( NE, Precision::Confusion(), Standard_True );
 	}
-      else //no 3d curve
+      else if (!BRep_Tool::Degenerated(E)) //no 3d curve
 	{
 	  MinSurf = Handle(Geom_Surface)::DownCast
 	    (MinSurf->Transformed(MinLoc.Transformation()));
@@ -1396,10 +1413,10 @@ static Standard_Boolean  UpdateVertex(TopoDS_Vertex V,
 //purpose  : 
 //=======================================================================
 
-void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&   AsDes,
-				  const TopoDS_Face&              F,
-				  const TopTools_MapOfShape&      NewEdges,
-				  const Standard_Real             Tol)
+void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&     AsDes,
+				  const TopoDS_Face&                F,
+				  const TopTools_IndexedMapOfShape& NewEdges,
+				  const Standard_Real               Tol)
 {
 #ifdef DRAW
   NbF2d++;
@@ -1413,14 +1430,14 @@ void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&   AsDes,
     EdgesOfFace.Add( Explo.Current() );
 
   //-----------------------------------------------------------
-  // calcul des intersections2d sur les faces touchees par les 
+  // calculate intersections2d on faces touched by  
   // intersection3d
   //---------------------------------------------------------
   TopTools_ListIteratorOfListOfShape it1LE ;    
   TopTools_ListIteratorOfListOfShape it2LE ;  
 
   //-----------------------------------------------
-  // Intersection des edges 2 a 2.
+  // Intersection of edges 2*2.
   //-----------------------------------------------
   const TopTools_ListOfShape&        LE = AsDes->Descendant(F);
   TopoDS_Vertex                      V1,V2;
@@ -1434,8 +1451,8 @@ void BRepOffset_Inter2d::Compute (const Handle(BRepAlgo_AsDes)&   AsDes,
     while (j < i && it2LE.More()) {
       const TopoDS_Edge& E2 = TopoDS::Edge(it2LE.Value());
       //--------------------------------------------------------------
-      // Intersectionns des Nouvelles edges obtenues par intersection
-      // entre elles et avec les edges de restictions
+      // Intersections of New edges obtained by intersection
+      // between them and with edges of restrictions
       //------------------------------------------------------
       if ( (!EdgesOfFace.Contains(E1) || !EdgesOfFace.Contains(E2)) &&
 	   (NewEdges.Contains(E1) || NewEdges.Contains(E2)) ) {
@@ -1472,7 +1489,7 @@ void BRepOffset_Inter2d::ConnexIntByInt
   BRepOffset_Tool::MapVertexEdges(FI,MVE);
 
   //---------------------
-  // Extension des edges.
+  // Extension of edges.
   //---------------------
   TopoDS_Edge  NE;
   TopTools_DataMapIteratorOfDataMapOfShapeListOfShape it(MVE);
@@ -1539,7 +1556,7 @@ void BRepOffset_Inter2d::ConnexIntByInt
 //      TopoDS_Edge CEO = TopoDS::Edge(OFI.Generated(CurE));
 //      TopoDS_Edge NEO = TopoDS::Edge(OFI.Generated(NextE));
       //------------------------------------------
-      //traitement Inter des images de CurE NextE.
+      // Inter processing of images of CurE NextE.
       //------------------------------------------
       TopTools_ListOfShape LV1,LV2;
       Standard_Boolean     DoInter = 1;

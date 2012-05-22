@@ -1,13 +1,30 @@
-// file GccAna_Circ2dTanOnRad.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // PRO12736 : bug quand OnLine // Ox, JCT 20/03/98
 
 //========================================================================
-//       circulaire tangent a un element de type :  - Cercle.            +
-//                                                  - Ligne.             +
+//       circular tangent to element of type :      - Circle.            +
+//                                                  - Line.             +
 //                                                  - Point.             +
-//                  centre sur un deuxieme element de type :  - Cercle.  +
-//                                                            - Ligne.   +
-//                  de rayon donne : Radius.                             +
+//              center on second element of type :  - Circle.  +
+//                                                  - Line.   +
+//              of given radius : Radius.                             +
 //========================================================================
 
 #include <GccAna_Circ2dTanOnRad.ixx>
@@ -24,20 +41,18 @@
 typedef math_DirectPolynomialRoots Roots;
 
 //=========================================================================
-//  Cercle tangent  :  a un cercle Qualified1 (C1).                       +
-//         centre   :  sur une droite OnLine.                             +
-//         de rayon :  Radius.                                            +
+//  Circle tangent  :  to circle Qualified1 (C1).                         +
+//         center   :  on straight line OnLine.                           +
+//         of radius :  Radius.                                           +
 //                                                                        + 
-//  On initialise le tableau de solutions cirsol ainsi que tous les       +
-//  champs.                                                               +
-//  On elimine en fonction du qualifieur les cas ne presentant pas de     +
-//  solutions.                                                            +
-//  On resoud l equation du second degre indiquant que le point de centre +
-//  recherche (xc,yc) est a une distance Radius du cercle C1 et           +
-//                        sur la droite OnLine.                           +
-//  Les solutions sont representees par les cercles :                     +
-//                   - de centre Pntcen(xc,yc)                            +
-//                   - de rayon Radius.                                   +
+//  Initialise the table of solutions cirsol and all fields.              +
+//  Eliminate depending on the qualifier the cases not being solutions.   +
+//  Solve the equation of the second degree indicating that the found center +
+//  point (xc,yc) is at a distance Radius from circle C1 and              +
+//                     on straight line OnLine.                           +
+//  The solutions aret represented by circles :                           +
+//                   - with center Pntcen(xc,yc)                          +
+//                   - with radius Radius.                                +
 //=========================================================================
 
 GccAna_Circ2dTanOnRad::

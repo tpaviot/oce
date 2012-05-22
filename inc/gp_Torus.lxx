@@ -1,4 +1,21 @@
-//File gp_Torus.lxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 inline gp_Torus::gp_Torus () :
 majorRadius (RealLast()),
@@ -40,7 +57,7 @@ inline void gp_Torus::SetPosition (const gp_Ax3& A3)
 { pos = A3; }
 
 inline Standard_Real gp_Torus::Area () const
-{ return 4.0 * Standard_PI * Standard_PI * minorRadius * majorRadius; }
+{ return 4.0 * M_PI * M_PI * minorRadius * majorRadius; }
 
 inline void gp_Torus::UReverse()
 { pos.YReverse(); }
@@ -67,7 +84,7 @@ inline Standard_Real gp_Torus::MinorRadius () const
 { return minorRadius; }
 
 inline Standard_Real gp_Torus::Volume () const
-{ return (Standard_PI * minorRadius * minorRadius) * (2.0 * Standard_PI * majorRadius); }
+{ return (M_PI * minorRadius * minorRadius) * (2.0 * M_PI * majorRadius); }
 
 inline gp_Ax1 gp_Torus::XAxis () const
 { return gp_Ax1(pos.Location(), pos.XDirection()); }

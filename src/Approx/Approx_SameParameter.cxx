@@ -1,7 +1,23 @@
-// File:	Approx_SameParameter.cxx
-// Created:	Tue Jun  6 09:51:17 1995
-// Author:	Xavier BENVENISTE
-//		<xab@nonox>
+// Created on: 1995-06-06
+// Created by: Xavier BENVENISTE
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //  Modified by skv - Wed Jun  2 11:49:59 2004 OCC5898
 
@@ -35,8 +51,7 @@ static Standard_Boolean AffichFw = Standard_False;
 static Standard_Integer NbCurve = 0;
 #endif
 //
-//   sert a tester si Extrema raconte pas des betises
-//
+//   allows testing if Extrema produces correct results/
 
 
 static void ProjectPointOnCurve(const Standard_Real      InitValue,
@@ -204,9 +219,9 @@ static Standard_Boolean Check(const TColStd_Array1OfReal& FlatKnots,
 #ifdef DEB
   if (Voir) {
     cout<<endl;
-    cout<<"Controle du changement de variable : "<<endl;
-    cout<<"baillement mesure par projection : "<<d<<endl;
-    cout<<"Nombre de points : "<<nbp<<endl;
+    cout<<"Control the change of variable : "<<endl;
+    cout<<"yawn mesured by projection : "<<d<<endl;
+    cout<<"Number of points : "<<nbp<<endl;
   }
 #endif
 #if 0
@@ -226,8 +241,8 @@ static Standard_Boolean Check(const TColStd_Array1OfReal& FlatKnots,
   dglis = sqrt(dglis);
 #ifdef DEB
   if ( Voir) {
-    cout<<"glissement de parametre aux points imposes : "<<glis<<endl;
-    cout<<"distance de glissement aux points imposes : "<<dglis<<endl;
+    cout<<"shift of parameter to the imposed points : "<<glis<<endl;
+    cout<<"shift distance at the imposed points : "<<dglis<<endl;
   }
 #endif
   dglis = 0.;
@@ -281,7 +296,7 @@ static Standard_Boolean Check(const TColStd_Array1OfReal& FlatKnots,
   tol = sqrt(d2);
 #ifdef DEB
   if (Voir)
-    cout<<"distance max sur "<<nn<<" points : "<<tol<<endl<<endl;
+    cout<<"distance max on "<<nn<<" points : "<<tol<<endl<<endl;
 #endif
   return ((tol <= d) || (tol > 0.8 * oldtol));
 }
@@ -359,9 +374,9 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
 
   if(Continuity > GeomAbs_C1) Continuity = GeomAbs_C1;
 
-  //On controle les tangentes aux extremites pour savoir si le
-  //reparametrage est possible et on calcule les tangentes aux
-  //extremites de la fonction de changement de variable.
+  //Control tangents at the extremities to know if the
+  //reparametring is possible and calculate the tangents 
+  //at the extremities of the function of change of variable.
   Standard_Real tangent[2];
   tangent[0]=tangent[1]=0;
   gp_Pnt Pcons,Pc3d;
@@ -400,8 +415,8 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
 
   if(dmax2 > besttol2) besttol2 = dmax2;
 
-  //On prend un multiple de l echantillon du CheckShape,
-  //au moins les points de controle seront bons. No comment!!!
+  //Take a multiple of the sample pof CheckShape,
+  //at least the control points will be correct. No comment!!!
 
   Standard_Integer NCONTROL = 22;
 #ifdef DEB
@@ -410,8 +425,8 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
   
   Standard_Boolean interpolok = 0;
   Standard_Real tolsov = 1.e200;
-  //On prend des parametres a pas constant sur la curve on surface
-  //et sur la courbe 3d.
+  //Take parameters with  constant step on the curve on surface
+  //and on curve 3d.
   Standard_Real deltacons = lcons - fcons;
   deltacons /= (NCONTROL);
   Standard_Real deltac3d = lc3d - fc3d;
@@ -531,10 +546,10 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
     return;
   }
  
-  if(!extrok) { // Si pas deja SameP et tgte aux fraise, on abandonne.
+  if(!extrok) { // If not already SameP and tangent to mill, abandon.
     mySameParameter = Standard_False;
 #ifdef DEB
-    cout<<"SameParameter probleme  : tangente nulle aux extremites"<<endl;
+    cout<<"SameParameter problem  : zero tangent to extremities"<<endl;
 #endif
     return;
   }
@@ -564,7 +579,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
 #endif
     
   while(!interpolok){
-    // Les tableaux et leurs bornes pour l interpolation.
+    // The tables and their limits for the interpolation.
     Standard_Integer num_knots = count + 7;
     Standard_Integer num_poles = count + 3;
     TColStd_Array1OfReal    Paramc3d(*pc3d,1,count+1);
@@ -574,7 +589,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
     TColStd_Array1OfReal    InterpolationParameters(1,num_poles) ;
     TColStd_Array1OfReal    FlatKnots(1,num_knots) ; 
     
-    // On remplit les tableaux en faisant attention aux valeurs des bouts.
+    // Fill tables taking attention to end values.
     ContactOrder.Init(0);
     ContactOrder(2) = ContactOrder(num_poles - 1) = 1;
     
@@ -722,7 +737,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
     if (Precision::IsInfinite(algtol)) {
       mySameParameter = Standard_False;
 #ifdef DEB
-      cout<<"SameParameter probleme  : fonction d'interpolation du parametrage aux fraises !!"<<endl;
+      cout<<"SameParameter problem  : function of interpolation of parametration at mills !!"<<endl;
 #endif
       return;
     }
@@ -736,7 +751,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
 #ifdef DEB
       if (Voir) {
 	if(algtol > besttol){
-	  cout<<"SameParameter : Tol non atteinte avant approx"<<endl;
+	  cout<<"SameParameter : Tol can't be reached before approx"<<endl;
 	}
       }
 #endif
@@ -761,7 +776,7 @@ void Approx_SameParameter::Build(const Standard_Real Tolerance)
     else {
 #ifdef DEB
       if (Voir)
-	cout<<"SameParameter : Pas assez de points, on enrichit"<<endl;
+	cout<<"SameParameter : Not enough points, enrich"<<endl;
 #endif
 
       Standard_Integer newcount = 0;

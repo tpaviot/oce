@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_CORRISO.cxx
-// Created:	Wed Nov 25 17:23:50 1998
-// Author:	Prestataire Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1998-11-25
+// Created by: Prestataire Xuan PHAM PHU
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool.hxx>
 #include <TopOpeBRepTool_TOOL.hxx>
@@ -72,6 +88,7 @@ TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()
 TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO(const TopoDS_Face& Fref)
 {
   myFref = Fref;
+
   FUN_tool_closedS(myFref,myUclosed,myUper,myVclosed,myVper);
 
   const Handle(Geom_Surface)& SU = BRep_Tool::Surface(myFref);
@@ -150,7 +167,6 @@ Standard_Boolean TopOpeBRepTool_CORRISO::Init(const TopoDS_Shape& S)
 //    Standard_Real f,l,tol; Handle(Geom2d_Curve) PC = FC2D_CurveOnSurface(E,myFref,f,l,tol);
     Handle(Geom2d_Curve) PC; Standard_Real f,l,tol;
     Standard_Boolean hasold = FC2D_HasOldCurveOnSurface(E,myFref,PC);
-    FC2D_HasNewCurveOnSurface(E,myFref,PC);
     PC = FC2D_EditableCurveOnSurface(E,myFref,f,l,tol);
     if (!hasold) FC2D_AddNewCurveOnSurface(PC,E,myFref,f,l,tol);
     if (PC.IsNull()) return Standard_False;
@@ -369,6 +385,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
 
   if      (fyceds.Extent() == 1) {// ivf == 3 : cto016G*
     TopTools_DataMapOfOrientedShapeInteger fyeds;
+
     EdgesWithFaultyUV(myEds,3,fyeds);
     Standard_Integer nfy = fyeds.Extent();
 
@@ -518,6 +535,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::PurgeFyClosingE(const TopTools_ListOfSh
       // <vce> (boundary of <cE>):   
       const TopoDS_Vertex& vce = TopoDS::Vertex(vcE(ivce)); 
       TopTools_ListOfShape loe; isb = Connexity(vce,loe);
+
       if (!isb) return Standard_False; // NYIRAISE
 
       Standard_Real parvce = TopOpeBRepTool_TOOL::ParE(ivce,cE); gp_Pnt2d UVvce = TopOpeBRepTool_TOOL::UVF(parvce,cE2d);
@@ -798,6 +816,7 @@ Standard_Boolean TopOpeBRepTool_CORRISO::EdgeWithFaultyUV(const TopoDS_Edge& E, 
     // <vEok> :
     Standard_Boolean vEok = Standard_False;
     const TopTools_ListOfShape& loe = myVEds.Find(vE);
+
     for (TopTools_ListIteratorOfListOfShape ite(loe); ite.More(); ite.Next()) {
       const TopoDS_Edge& e = TopoDS::Edge(ite.Value());
       TopAbs_Orientation oe = e.Orientation();
@@ -808,6 +827,11 @@ Standard_Boolean TopOpeBRepTool_CORRISO::EdgeWithFaultyUV(const TopoDS_Edge& E, 
       if (e.IsSame(E)) continue;      
       if (M_INTERNAL(oe) || M_EXTERNAL(oe)) continue;
 
+#ifdef DEB
+      Standard_Real tttole =
+#endif
+                   BRep_Tool::Tolerance(e);
+      
       Standard_Boolean isb = myERep2d.IsBound(e);
       if (!isb) {FUN_RaiseError(); return Standard_False;}
       const TopOpeBRepTool_C2DF& C2DF = myERep2d.Find(e);
@@ -931,11 +955,11 @@ Standard_Boolean TopOpeBRepTool_CORRISO::TrslUV(const Standard_Boolean onU, cons
 {
   gp_Vec2d tt2d; 
   if (onU) {Standard_Real uper;
-            Refclosed(1,uper);
+                     Refclosed(1,uper);
             if (!uper) return Standard_False;
 	    tt2d = gp_Vec2d(uper,0.);}
   else     {Standard_Real vper;
-            Refclosed(2,vper);
+                     Refclosed(2,vper);
             if (!vper) return Standard_False;
 	    tt2d = gp_Vec2d(0.,vper);}
   TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger itm(FyEds);
@@ -1025,7 +1049,6 @@ Standard_Boolean TopOpeBRepTool_CORRISO::AddNewConnexity(const TopoDS_Vertex& ,
   if (!isb) {
     Handle(Geom2d_Curve) PC; Standard_Real f,l,tol;
     Standard_Boolean hasold = FC2D_HasOldCurveOnSurface(E,myFref,PC);
-    FC2D_HasNewCurveOnSurface(E,myFref,PC);
     PC = FC2D_EditableCurveOnSurface(E,myFref,f,l,tol);
     if (!hasold) FC2D_AddNewCurveOnSurface(PC,E,myFref,f,l,tol);
     if (PC.IsNull()) return Standard_False;

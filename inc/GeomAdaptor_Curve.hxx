@@ -89,7 +89,7 @@ public:
   
         void Load(const Handle(Geom_Curve)& C) ;
   //! ConstructionError is raised if Ufirst>Ulast <br>
-  Standard_EXPORT     void Load(const Handle(Geom_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
+        void Load(const Handle(Geom_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
   
 //! Provides a curve inherited from Hcurve from Adaptor. <br>
 //! This is inherited to provide easy to use constructors. <br>
@@ -223,6 +223,8 @@ private:
 
   
   Standard_EXPORT     GeomAbs_Shape LocalContinuity(const Standard_Real U1,const Standard_Real U2) const;
+  
+  Standard_EXPORT     void load(const Handle(Geom_Curve)& C,const Standard_Real UFirst,const Standard_Real ULast) ;
 
 
 Handle_Geom_Curve myCurve;

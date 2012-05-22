@@ -22,6 +22,9 @@
 #ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
 #endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
 #ifndef _Graphic3d_DataStructureManager_HeaderFile
 #include <Graphic3d_DataStructureManager.hxx>
 #endif

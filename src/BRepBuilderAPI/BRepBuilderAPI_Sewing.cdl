@@ -1,9 +1,24 @@
--- File:	BRepBuilderAPI_Sewing.cdl
--- Created:	Thu Mar 23 17:57:20 1995
+-- Created on: 1995-03-23
+-- Created by: Jing Cheng MEI
+-- Copyright (c) 1995-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
 
--- Author:	Jing Cheng MEI
---		<mei@junon>
----Copyright:	 Matra Datavision 1995
+
 -- Modified     Thu May 7  15:20:25 1998 by David Carbonel (dcl)
 --              Little faces management.
 --              Add of Cutting option.
@@ -81,7 +96,8 @@ uses
     ReShape from BRepTools,
     SequenceOfInteger from TColStd,
     SequenceOfReal from TColStd,
-    SequenceOfPnt from TColgp
+    SequenceOfPnt from TColgp,
+    ProgressIndicator from Message
 
 raises
 
@@ -117,8 +133,10 @@ is
     Add(me : mutable; shape : Shape from TopoDS);
     	---Purpose: Defines the shapes to be sewed or controlled
 
-    Perform(me : mutable); ---is virtual;
+    Perform(me : mutable;
+            thePI : ProgressIndicator from Message = 0);
     	---Purpose: Computing
+    	--          thePI - progress indicator of algorithm
 
     SewedShape(me) returns Shape from TopoDS;
     	---C++: return const &
@@ -285,10 +303,13 @@ is
     	--- INTERNAL FUCTIONS ---
 	-------------------------
     
-    Cutting(me : mutable) is protected;
+    Cutting(me : mutable;
+            thePI : ProgressIndicator from Message = 0) is protected;
     	---Purpose: Performs cutting of sections
+	--          thePI - progress indicator of processing
 
-    Merging(me : mutable; passage : Boolean) is protected;
+    Merging(me : mutable; passage : Boolean;
+            thePI : ProgressIndicator from Message = 0) is protected;
 
     IsMergedClosed(me;
     	    	   Edge1 : Edge from TopoDS;
@@ -318,7 +339,8 @@ is
     returns Boolean is protected;
     	---Purpose: Merged nearest edges.
     
-    EdgeProcessing(me : mutable) is protected;
+    EdgeProcessing(me : mutable;
+                   thePI : ProgressIndicator from Message = 0) is protected;
 
     CreateOutputInformations(me : mutable) is protected;
 
@@ -336,17 +358,21 @@ is
     returns Boolean is virtual protected;
 	---Purpose:Defines if surface is V closed.
 
-    FaceAnalysis(me : mutable) is virtual protected;
-	---Purpose: 
-        --          This method is called from Perform only
+    FaceAnalysis(me : mutable;
+                 thePI : ProgressIndicator from Message = 0) is virtual protected;
+	---Purpose:
+	--          This method is called from Perform only
+	--          thePI - progress indicator of processing
 
     FindFreeBoundaries(me : mutable) is virtual protected;
 	---Purpose: 
         --          This method is called from Perform only
 
-    VerticesAssembling(me : mutable) is virtual protected;
-	---Purpose: 
-        --          This method is called from Perform only
+    VerticesAssembling(me : mutable;
+                       thePI : ProgressIndicator from Message = 0) is virtual protected;
+	---Purpose:
+	--          This method is called from Perform only
+	--          thePI - progress indicator of processing
 
     CreateSewedShape(me : mutable) is virtual protected;
 	---Purpose: 
@@ -419,7 +445,8 @@ is
     	    	    	 last    : Real from Standard;
     	    	    	 arrDist : in out Array1OfReal from TColStd;
     	    	    	 arrPara : in out Array1OfReal from TColStd;
-    	    	    	 arrProj : in out Array1OfPnt from TColgp) is virtual protected;
+    	    	    	 arrProj : in out Array1OfPnt from TColgp;
+    	    	    	 isConsiderEnds : in Boolean from Standard) is protected;
 	---Purpose: Projects points on curve
         --          This method is called from Cutting only
 

@@ -1,12 +1,28 @@
-// File:        NCollection_BaseCollection.hxx
-// Created:     Tue Apr  9 18:53:36 2002
-// Author:      Alexander KARTOMIN (akm)
-//              <a-kartomin@opencascade.com>
+// Created on: 2002-04-09
+// Created by: Alexander KARTOMIN (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_BaseCollection_HeaderFile
 #define NCollection_BaseCollection_HeaderFile
 
 #include <NCollection_IncAllocator.hxx>
+#include <NCollection_DefineAlloc.hxx>
 
 /**
 * Purpose:     NCollection_BaseCollection  is the base  abstract  class for 
@@ -45,6 +61,9 @@ template<class TheItemType> class NCollection_BaseCollection
     virtual const TheItemType& Value(void) const=0;
     //! Value change access
     virtual TheItemType& ChangeValue(void) const=0;
+  public:
+    DEFINE_STANDARD_ALLOC
+    DEFINE_NCOLLECTION_ALLOC
   protected:
     //! Empty constructor
     Iterator (void) {}

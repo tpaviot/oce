@@ -1,6 +1,24 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <IntAna2d_AnaIntersection.jxx>
 #include <ElCLib.hxx>
-  
+
 //=======================================================================
 //function : Perform
 //purpose  : 
@@ -30,7 +48,7 @@ void IntAna2d_AnaIntersection::Perform(const gp_Lin2d& L,
     //modified by NIZNHY-PKV Fri Jun 15 09:55:00 2007f
     //Standard_Real ang;
     //ang = C.XAxis().Direction().Angle(L.Direction());
-    //ang = ang + PI / 2.0;
+    //ang = ang + M_PI / 2.0;
     //modified by NIZNHY-PKV Fri Jun 15 09:55:29 2007t
     if (Abs(Abs(d)-C.Radius())<=Epsilon(C.Radius())) {    // Cas de tangence
       
@@ -47,12 +65,12 @@ void IntAna2d_AnaIntersection::Perform(const gp_Lin2d& L,
       /*
       u=B*(L.Location().X()-C.Location().X()) -
 	A*(L.Location().Y()-C.Location().Y());
-      if (d<0.0) {ang=ang+PI;}
-      if (ang>=2.0*PI) {
-	ang=ang-2.0*PI;
+      if (d<0.0) {ang=ang+M_PI;}
+      if (ang>=2.0*M_PI) {
+	ang=ang-2.0*M_PI;
       }
       else if (ang<0.0) {
-	ang=ang+2.0*PI;
+	ang=ang+2.0*M_PI;
       }
       */
       //modified by NIZNHY-PKV Fri Jun 15 09:55:41 2007t
@@ -85,22 +103,22 @@ void IntAna2d_AnaIntersection::Perform(const gp_Lin2d& L,
       }
       else {
 	angt=ASin(sint);
-	if (cost<0) {angt=PI-angt;}
+	if (cost<0) {angt=M_PI-angt;}
       }
       
       ang1=ang-angt;
       ang2=ang+angt;
       if (ang1<0.0) {
-	ang1=ang1+2.0*PI;
+	ang1=ang1+2.0*M_PI;
       }
-      else if (ang1>=2.0*PI) {
-	ang1=ang1-2.0*PI;
+      else if (ang1>=2.0*M_PI) {
+	ang1=ang1-2.0*M_PI;
       }
       if (ang2<0.0) {
-	ang2=ang2+2.0*PI;
+	ang2=ang2+2.0*M_PI;
       }
-      else if (ang2>=2.0*PI) {
-	ang2=ang2-2.0*PI;
+      else if (ang2>=2.0*M_PI) {
+	ang2=ang2-2.0*M_PI;
       }
 
       u1=B*(L.Location().X()-C.Location().X()) -

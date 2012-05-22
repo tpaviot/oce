@@ -1,9 +1,24 @@
-// Copyright: 	Matra-Datavision 1991
-// File:	Draw_Display.cxx
-// Created:	Mon Jul 15 10:58:59 1991
-// Author:	Arnaud BOUZY
-//		<adn>
- 
+// Created on: 1991-07-15
+// Created by: Arnaud BOUZY
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 
 #include <Draw_Display.ixx>
 #include <ElCLib.hxx>
@@ -89,7 +104,7 @@ void Draw_Display::DrawMarker (const gp_Pnt2d& pt,
 //    gp_Circ2d C;
     C.SetRadius(ISize);
     C.SetLocation(pt);
-    Draw(C, 0, 2*PI, Standard_False);
+    Draw(C, 0, 2*M_PI, Standard_False);
     break;
 #ifndef DEB
   default:
@@ -144,7 +159,7 @@ void Draw_Display::DrawMarker (const gp_Pnt2d& pt,
     // if the circus is too small, a "plus" is drawn to mark the point 
     Standard_Boolean b = (R * Zoom()) > 2;
     if(b)
-      Draw(C, 0, 2*PI);
+      Draw(C, 0, 2*M_PI);
     else
       DrawMarker(pt, Draw_Plus);
   }
@@ -164,7 +179,7 @@ void Draw_Display::Draw(const gp_Circ& C, const Standard_Real A1,const Standard_
 			const Standard_Boolean ModifyWithZoom)
 {
   Standard_Real A2 = A3;
-  while (A2 < A1) A2 += 2*PI;
+  while (A2 < A1) A2 += 2*M_PI;
   
   Standard_Real angle = DEFLECTION / (C.Radius() * Zoom());
   Standard_Integer n = (Standard_Integer )( (A2 - A1) / angle);
@@ -213,7 +228,7 @@ void Draw_Display::Draw(const gp_Circ2d& C, const Standard_Real A1, const Standa
 			const Standard_Boolean ModifyWithZoom)
 {
   Standard_Real A2 = A3;
-  while (A2 < A1) A2 += 2*PI;
+  while (A2 < A1) A2 += 2*M_PI;
   
   Standard_Real angle = DEFLECTION / (C.Radius() * Zoom());
   Standard_Integer n = (Standard_Integer )( (A2 - A1) / angle);

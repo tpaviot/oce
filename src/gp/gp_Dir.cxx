@@ -1,7 +1,25 @@
-// File gp_Dir.cxx  , JCV 01/10/90
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // JCV 07/12/90 Modifs suite a l'introduction des classes XYZ et Mat dans gp
 
 #include <gp_Dir.ixx>
+
 
 Standard_Real gp_Dir::Angle (const gp_Dir& Other) const
 {
@@ -17,7 +35,7 @@ Standard_Real gp_Dir::Angle (const gp_Dir& Other) const
     return acos (Cosinus);
   else {
     Standard_Real Sinus = (coord.Crossed (Other.coord)).Modulus ();
-    if(Cosinus < 0.0)  return Standard_PI - asin (Sinus);
+    if(Cosinus < 0.0)  return M_PI - asin (Sinus);
     else               return      asin (Sinus);
   }
 }
@@ -32,7 +50,7 @@ Standard_Real gp_Dir::AngleWithRef (const gp_Dir& Other,
   if (Cosinus > -0.70710678118655 && Cosinus < 0.70710678118655)
     Ang =  acos (Cosinus);
   else {
-    if(Cosinus < 0.0)  Ang = Standard_PI - asin (Sinus);
+    if(Cosinus < 0.0)  Ang = M_PI - asin (Sinus);
     else               Ang =      asin (Sinus);
   }
   if (XYZ.Dot (Vref.coord) >= 0.0)  return  Ang;
@@ -77,15 +95,9 @@ void gp_Dir::Mirror (const gp_Ax1& A1)
 
 void gp_Dir::Mirror (const gp_Ax2& A2)
 {
-  gp_XYZ Z = A2.Direction().XYZ();
-  gp_XYZ MirXYZ = Z.Crossed (coord);
-  if (MirXYZ.Modulus() <= gp::Resolution())
-    { coord.Reverse(); }
-  else {
-    Z.Cross (MirXYZ);
-    gp_Dir  MirDirection (MirXYZ);
-    Mirror (MirDirection);
-  }
+  const gp_Dir& Vz = A2.Direction();
+  Mirror(Vz);
+  Reverse();
 }
 
 void gp_Dir::Transform (const gp_Trsf& T)

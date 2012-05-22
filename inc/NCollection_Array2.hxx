@@ -1,8 +1,22 @@
-// File:      NCollection_Array2.hxx
-// Created:   15.04.02 17:05:16
-// Author:    Alexander Kartomin (akm)
-//            <a-kartomin@opencascade.com>
-// Copyright: Open Cascade 2002
+// Created on: 2002-04-15
+// Created by: Alexander Kartomin (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_Array2_HeaderFile
 #define NCollection_Array2_HeaderFile
@@ -14,11 +28,6 @@
 #endif
 
 #include <NCollection_BaseCollection.hxx>
-
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (disable:4291)
-#endif
 
 // *********************************************** Template for Array2 class
 /**
@@ -50,7 +59,7 @@ template <class TheItemType> class NCollection_Array2
     Iterator  (const NCollection_Array2& theArray) :
       myCurrent (0),
       mySize    (theArray.Length()),
-      myArray   ((NCollection_Array2 *) &theArray) {}
+      myArray   ((NCollection_Array2<TheItemType> *) &theArray) {}
     //! Initialisation
     void Init (const NCollection_Array2& theArray)
     { 
@@ -70,10 +79,6 @@ template <class TheItemType> class NCollection_Array2
     //! Variable value access
     virtual TheItemType& ChangeValue (void) const
     { return myArray->myStart[myCurrent]; }
-    //! Operator new for allocating iterators
-    void* operator new(size_t theSize,
-                       const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
   private:
     Standard_Integer    myCurrent;  //!< Index of the current item
     Standard_Integer    mySize;     //!< Total amount of items
@@ -315,9 +320,5 @@ template <class TheItemType> class NCollection_Array2
  friend class Iterator;
 
 };
-
-#ifdef WNT
-#pragma warning (default:4291)
-#endif
 
 #endif

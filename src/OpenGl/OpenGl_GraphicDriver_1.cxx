@@ -1,36 +1,30 @@
+// Created on: 2011-10-20
+// Created by: Sergey ZERCHANINOV
+// Copyright (c) 2011-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 
-// File   OpenGl_GraphicDriver_1.cxx
-// Created  Mardi 28 janvier 1997
-// Author CAL
-// Modified GG 27/12/02 IMP120302 Add new method Begin(Aspect_Display)
+#include <OpenGl_GraphicDriver.hxx>
 
-//-Copyright  MatraDatavision 1997
+#include <Standard_ErrorHandler.hxx>
+#include <Standard_Failure.hxx>
 
-//-Version  
-
-//-Design Declaration des variables specifiques aux Drivers
-
-//-Warning  Un driver encapsule les Pex et OpenGl drivers
-
-//-References 
-
-//-Language C++ 2.0
-
-//-Declarations
-
-// for the class
-#include <OpenGl_GraphicDriver.jxx>
-
-#include <Aspect_DriverDefinitionError.hxx>
-
-#include <OpenGl_tgl_funcs.hxx>
-
-//-Aliases
-
-//-Global data definitions
-
-//-Methods, in order
+#include <OpenGl_CView.hxx>
+#include <OpenGl_Display.hxx>
 
 //=======================================================================
 //function : Begin
@@ -39,24 +33,17 @@
 
 Standard_Boolean OpenGl_GraphicDriver::Begin (const Standard_CString ADisplay)
 {
-
-
-  Standard_Boolean Result;
-
-  if (MyTraceLevel) {
-    PrintFunction ("call_togl_begin");
-    PrintString ("Display", ADisplay);
+  try
+  {
+    openglDisplay = new OpenGl_Display(ADisplay);
+    return Standard_True;
   }
-  Result = call_togl_begin ((Standard_PCharacter)ADisplay);
-  if (MyTraceLevel) {
-    PrintIResult ("call_togl_begin", Result);
+  catch (Standard_Failure)
+  {
   }
-
-  return Result;
-
+  return Standard_False;
 }
 
-//RIC120302
 //=======================================================================
 //function : Begin
 //purpose  : 
@@ -64,34 +51,28 @@ Standard_Boolean OpenGl_GraphicDriver::Begin (const Standard_CString ADisplay)
 
 Standard_Boolean OpenGl_GraphicDriver::Begin (const Aspect_Display ADisplay)
 {
-
-  Standard_Boolean Result;
-
-  if (MyTraceLevel) {
-    PrintFunction ("call_togl_begin_display");
+  try
+  {
+    openglDisplay = new OpenGl_Display(ADisplay);
+    return Standard_True;
   }
-  Result = call_togl_begin_display (ADisplay);
-  if (MyTraceLevel) {
-    PrintIResult ("call_togl_begin_display", Result);
+  catch (Standard_Failure)
+  {
   }
-
-  return Result;
-
+  return Standard_False;
 }
-//RIC120302
 
 //=======================================================================
 //function : End
 //purpose  : 
 //=======================================================================
 
-void OpenGl_GraphicDriver::End () {
-
-  if (MyTraceLevel) {
-    PrintFunction ("call_togl_end");
-  }
-  call_togl_end ();
-
+void OpenGl_GraphicDriver::End ()
+{
+  // This is unsafe to realease global object here
+  // because noone guaranteed that only one instance of OpenGl_GraphicDriver is used!
+  // So we disable this destructor here until openglDisplay not moved to  OpenGl_GraphicDriver class definition.
+  ///openglDisplay.Nullify();
 }
 
 //=======================================================================
@@ -99,16 +80,15 @@ void OpenGl_GraphicDriver::End () {
 //purpose  : 
 //=======================================================================
 
-void OpenGl_GraphicDriver::BeginAnimation (const Graphic3d_CView& ACView) {
-
-  Graphic3d_CView MyCView = ACView;
-
-  if (MyTraceLevel) {
-    PrintFunction ("call_togl_begin_animation");
-    PrintCView (MyCView, 1);
+void OpenGl_GraphicDriver::BeginAnimation (const Graphic3d_CView& ACView)
+{
+  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
+  if (aCView)
+  {
+    const Standard_Boolean UpdateAM = (ACView.IsDegenerates && !ACView.IsDegeneratesPrev) || (!ACView.IsDegenerates && ACView.IsDegeneratesPrev);
+    aCView->WS->BeginAnimation(ACView.IsDegenerates != 0,UpdateAM);
+    ((Graphic3d_CView*)(&ACView))->IsDegeneratesPrev = ACView.IsDegenerates; //szvgl: temporary
   }
-  call_togl_begin_animation (&MyCView);
-
 }
 
 //=======================================================================
@@ -116,14 +96,9 @@ void OpenGl_GraphicDriver::BeginAnimation (const Graphic3d_CView& ACView) {
 //purpose  : 
 //=======================================================================
 
-void OpenGl_GraphicDriver::EndAnimation (const Graphic3d_CView& ACView) {
-
-  Graphic3d_CView MyCView = ACView;
-
-  if (MyTraceLevel) {
-    PrintFunction ("call_togl_end_animation");
-    PrintCView (MyCView, 1);
-  }
-  call_togl_end_animation (&MyCView);
-
+void OpenGl_GraphicDriver::EndAnimation (const Graphic3d_CView& ACView)
+{
+  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
+  if (aCView)
+    aCView->WS->EndAnimation();
 }

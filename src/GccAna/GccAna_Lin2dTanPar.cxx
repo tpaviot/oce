@@ -1,8 +1,25 @@
-// File GccAna_Lin2dTanPar.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //========================================================================
-//    CREATION D UNE LIGNE TANGENTE A UN CERCLE OU PASSANT PAR UN POINT  +
-//                     ET PARALLELE A UNE DROITE.                        +
+//    CREATION of a LINE TANGENT to a CIRCLE or PASSING by a POINT  +
+//                     and PARALLEL to a STRAIGHT DROITE.                        +
 //========================================================================
 
 #include <GccAna_Lin2dTanPar.ixx>
@@ -17,9 +34,9 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //========================================================================
-//   Passant par un point :                                              +
-//   On cree la droite d origine ThePoint et                             + 
-//                     de direction Lin1.Direction().                    +
+//   Passing by a point :                                              +
+//   Create the straight line with origin ThePoint and                             + 
+//                          direction Lin1.Direction().                    +
 //========================================================================
 
 GccAna_Lin2dTanPar::
@@ -43,14 +60,14 @@ GccAna_Lin2dTanPar::
 }
 
 //========================================================================
-//   Tangent a un cercle :                                               +
-//   On cree suivant le qualifieur la droite                             +
-//          - d origine P1 (P1 est un point d intersection entre C1 et   +
-//                         une droite passant par le centre de C1 et de  +
-//                         direction la normale a Lin1).                 +
-//                         le choix du point d intersection est fonction +
-//                         du qualifieur.                                +
-//          - de direction la direction de Lin1.                         +
+//   Tangent to a circle :                                               +
+//   Create following the qualifier the straight line                    +
+//          - with origin P1 (P1 is a point of intersection between C1 and +
+//                       a straight line passing by the center of C1 and  +
+//                         direction the normal to Lin1).                 +
+//                         the choice of the point of intersection depends +
+//                         on the qualifier.                            +
+//          - with direction the direction of Lin1.                         +
 //========================================================================
 
 GccAna_Lin2dTanPar::

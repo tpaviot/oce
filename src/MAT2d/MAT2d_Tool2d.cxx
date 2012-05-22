@@ -1,7 +1,23 @@
-// File:	MAT2d_Tool2d.cxx
-// Created:	Mon Jul 12 18:10:23 1993
-// Author:	Yves FRICAUD
-//		<yfr@phylox>
+// Created on: 1993-07-12
+// Created by: Yves FRICAUD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #define Debug(expr)  cout<<" MAT2d_Tool2d.cxx  :  expr :"<<expr<<endl;
@@ -396,7 +412,8 @@ void MAT2d_Tool2d::TrimBisec (      Bisector_Bisec&  B1,
   
   //gp_Vec2d             Tan1,Tan2;
   gp_Pnt2d             Ori; //PEdge;
-  Standard_Integer     INext;
+  Standard_Integer     IPrec,INext;
+  IPrec = (IndexEdge == 1)  ? theCircuit->NumberOfItems() : (IndexEdge - 1);
   INext = (IndexEdge == theCircuit->NumberOfItems()) ? 1  : (IndexEdge + 1);
   
   Handle(Standard_Type) EdgeType = theCircuit->Value(IndexEdge)->DynamicType();
@@ -465,7 +482,7 @@ Standard_Boolean MAT2d_Tool2d::TrimBisector
       ::DownCast(ChangeGeomBis(abisector->BisectorNumber()).ChangeValue());
   
   if(bisector->BasisCurve()->IsPeriodic() && param == Precision::Infinite()) {
-    param = bisector->FirstParameter() + 2*PI;
+    param = bisector->FirstParameter() + 2*M_PI;
   }
   if (param > bisector->BasisCurve()->LastParameter()) {
    param = bisector->BasisCurve()->LastParameter(); 
@@ -496,7 +513,7 @@ Standard_Boolean MAT2d_Tool2d::TrimBisector
   Param = Bis->Parameter(GeomPnt (apoint));
 
   if (Bisector->BasisCurve()->IsPeriodic()) {
-    if (Bisector->FirstParameter() > Param) Param = Param + 2*PI;
+    if (Bisector->FirstParameter() > Param) Param = Param + 2*M_PI;
   }
   if(Bisector->FirstParameter() >= Param)return Standard_False;
   if(Bisector->LastParameter()  <  Param)return Standard_False;
@@ -547,7 +564,7 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
     if (theCircuit->ConnexionOn(INext)) {
       ParamMax = theCircuit->Connexion(INext)->ParameterOnFirst(); 
       if (Curve->BasisCurve()->IsPeriodic()){
-	ElCLib::AdjustPeriodic(0.,2*PI,Eps,ParamMin,ParamMax);
+	ElCLib::AdjustPeriodic(0.,2*M_PI,Eps,ParamMin,ParamMax);
       }
     }
     //---------------------------------------------------------------------
@@ -559,7 +576,7 @@ Standard_Boolean MAT2d_Tool2d::Projection (const Standard_Integer IEdge   ,
       Standard_Real R       = C1.Circle().Radius();
       Standard_Real EpsCirc = Eps;
       if ( R < 1.)  EpsCirc = Eps/R;
-      if (!((ParamMax - ParamMin + 2*EpsCirc) < 2*PI)) {
+      if (!((ParamMax - ParamMin + 2*EpsCirc) < 2*M_PI)) {
 	ParamMax = ParamMax + EpsCirc; ParamMin = ParamMin - EpsCirc;
       }
     }
@@ -1180,7 +1197,7 @@ IntRes2d_Domain  Domain(const Handle(Geom2d_TrimmedCurve)& Bisector1,
   IntRes2d_Domain Domain1(Bisector1->Value(Param1),Param1,Tolerance,
 			  Bisector1->Value(Param2),Param2,Tolerance);
   if(Bisector1->BasisCurve()->IsPeriodic()) {
-    Domain1.SetEquivalentParameters(0.,2.*PI);
+    Domain1.SetEquivalentParameters(0.,2.*M_PI);
   }
   return Domain1;
 }

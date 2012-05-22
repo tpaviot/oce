@@ -1,8 +1,23 @@
--- File:	Interface_BitMap.cdl
--- Created:	Fri Sep  1 10:01:00 1995
--- Author:	Christian CAILLET
---		<cky@fidox>
----Copyright:	 Matra Datavision 1995
+-- Created on: 1995-09-01
+-- Created by: Christian CAILLET
+-- Copyright (c) 1995-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class BitMap  from Interface
@@ -25,16 +40,28 @@ uses CString, HSequenceOfAsciiString from TColStd,
 
 is
 
+	Create returns BitMap;
+	---Purpose : Creates a empty BitMap
+	
     Create (nbitems : Integer; resflags : Integer = 0) returns BitMap;
     ---Purpose : Creates a BitMap for <nbitems> items
     --           One flag is defined, n0 0
     --           <resflags> prepares allocation for <resflags> more flags
     --           Flags values start at false
-
+    
+    Initialize(me : in out; nbitems : Integer; resflags : Integer = 0);
+    ---Purpose : Initialize empty bit by <nbitems> items
+    --           One flag is defined, n0 0
+    --           <resflags> prepares allocation for <resflags> more flags
+    --           Flags values start at false
+    
     Create (other : BitMap; copied : Boolean = Standard_False) returns BitMap;
     ---Purpose : Creates a BitMap from another one
     --           if <copied> is True, copies data
     --           else, data are not copied, only the header object is
+    
+    Initialize(me : in out; other : BitMap; copied : Boolean = Standard_False);
+    ---Purpose : Initialize a BitMap from another one
 
     Internals (me; nbitems , nbwords, nbflags : out Integer;
     	       flags : out mutable HArray1OfInteger;
@@ -108,6 +135,9 @@ is
     Init (me; val : Boolean; flag : Integer = 0);
     ---Purpose : Initialises all the values of Flag Number <flag> to a given
     --           value <val>
+    
+    Clear(me: in out);
+    ---Purpose : Clear all field of bit map
 
 fields
 

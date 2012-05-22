@@ -73,8 +73,7 @@ public:
 
   //! Constructs an empty explorer (which can be initialized using Init) <br>
   Standard_EXPORT   BRepTools_WireExplorer();
-  //! Initializes an exploration  of the wire <W> face F is used to <br>
-//!   involve 2D analysis while exploration). <br>
+  //! IInitializes an exploration  of the wire <W>. <br>
   Standard_EXPORT   BRepTools_WireExplorer(const TopoDS_Wire& W);
   //! Initializes an exploration  of the wire <W>. <br>
 //!          F is used to select the edge connected to the <br>

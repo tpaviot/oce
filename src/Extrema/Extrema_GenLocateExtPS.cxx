@@ -1,7 +1,23 @@
-// File:	Extrema_GenLocateExtPS.cxx
-// Created:	Tue Jul 18 08:23:33 1995
-// Author:	Modelistation
-//		<model@metrox>
+// Created on: 1995-07-18
+// Created by: Modelistation
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Extrema_GenLocateExtPS.ixx>
@@ -24,18 +40,17 @@ Extrema_GenLocateExtPS::Extrema_GenLocateExtPS (const gp_Pnt&          P,
 						const Standard_Real    TolU, 
 						const Standard_Real    TolV)
 /*-----------------------------------------------------------------------------
-Fonction:
-  Recherche de (U,V) proche de (U0,V0) tel que dist(S(U,V),P) soit extremale.
+Function:
+  Find (U,V) close to (U0,V0) so that dist(S(U,V),P) was extreme.
 
-Methode:
-  Si (u,v) est solution, on peut ecrire:
+Method:
+  If (u,v) is a solution, it is possible to write:
    { F1(u,v) = (S(u,v)-P).dS/du(u,v) = 0.
    { F2(u,v) = (S(u,v)-P).dS/dv(u,v) = 0.
-  Le probleme consiste a rechercher, dans l'intervalle de definition de la 
-  surface, la racine du systeme la plus proche de (U0,V0).
-  On utilise la classe math_FunctionSetRoot avec les arguments de construction
-  suivants:
-  - F: Extrema_FuncExtPS cree a partir de P et S,
+  The problem consists in finding, in the interval of surface definition,
+  the root of the system closest to (U0,V0).
+  Use class math_FunctionSetRoot with the following construction arguments:
+  - F: Extrema_FuncExtPS created from P and S,
   - U0V0: math_Vector (U0,V0),
   - Tol: Min(TolU,TolV),            
 				    

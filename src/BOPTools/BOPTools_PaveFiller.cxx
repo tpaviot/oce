@@ -1,7 +1,22 @@
-// File:	BOPTools_PaveFiller.cxx
-// Created:	Thu Mar 7 14:20:31 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-03-07
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BOPTools_PaveFiller.ixx>
@@ -73,7 +88,7 @@
 // function: BOPTools_PavePoolFiller::BOPTools_PavePoolFiller
 // purpose: 
 //=======================================================================
-  BOPTools_PaveFiller::BOPTools_PaveFiller()
+BOPTools_PaveFiller::BOPTools_PaveFiller()
 {
   myIsDone=Standard_False;
   myIntrPool=NULL;
@@ -86,7 +101,7 @@
 // function: BOPTools_PavePoolFiller::BOPTools_PavePoolFiller
 // purpose: 
 //=======================================================================
-  BOPTools_PaveFiller::BOPTools_PaveFiller(const BOPTools_InterferencePool& aPool)
+BOPTools_PaveFiller::BOPTools_PaveFiller(const BOPTools_InterferencePool& aPool)
 {
   myIsDone=Standard_False;
   void* p=(void*) &aPool;
@@ -100,9 +115,9 @@
 // function: Constructor
 // purpose: 
 //=======================================================================
-  BOPTools_PaveFiller::BOPTools_PaveFiller
-      (const BOPTools_InterferencePool&        theIP,
-       const BOPTools_SSIntersectionAttribute& theSectionAttribute)
+BOPTools_PaveFiller::BOPTools_PaveFiller
+  (const BOPTools_InterferencePool&        theIP,
+   const BOPTools_SSIntersectionAttribute& theSectionAttribute)
 {
   myIsDone=Standard_False;
   myIntrPool = (BOPTools_PInterferencePool) &theIP;
@@ -116,7 +131,7 @@
 // function: SetInterferencePool
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::SetInterferencePool(const BOPTools_InterferencePool& aPool)
+void BOPTools_PaveFiller::SetInterferencePool(const BOPTools_InterferencePool& aPool)
 {
   myIsDone=Standard_False;
   void* p=(void*) &aPool;
@@ -130,7 +145,7 @@
 // function: Destroy
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::Destroy()
+void BOPTools_PaveFiller::Destroy()
 {
 }
 
@@ -138,7 +153,7 @@
 // function: SetSectionAttribute
 // purpose: 
 //=======================================================================
-   void BOPTools_PaveFiller::SetSectionAttribute
+void BOPTools_PaveFiller::SetSectionAttribute
     (const BOPTools_SSIntersectionAttribute& anAtt) 
 {
   mySectionAttribute=anAtt;
@@ -147,35 +162,38 @@
 // function: SectionAttribute
 // purpose: 
 //=======================================================================
-  const BOPTools_SSIntersectionAttribute& BOPTools_PaveFiller::SectionAttribute() const
+const BOPTools_SSIntersectionAttribute& 
+  BOPTools_PaveFiller::SectionAttribute() const
 {
   return mySectionAttribute;
 }
-
+//=======================================================================
+// function: SetContext
+// purpose: 
+//=======================================================================
+void BOPTools_PaveFiller::SetContext(const Handle(IntTools_Context)& aContext) 
+{
+  myContext=aContext;
+}
 //=======================================================================
 // function: Context
 // purpose: 
 //=======================================================================
-  const IntTools_Context& BOPTools_PaveFiller::Context() const
+const Handle(IntTools_Context)& BOPTools_PaveFiller::Context() const
 {
   return myContext;
 }
-//=======================================================================
-// function: ChangeContext
-// purpose: 
-//=======================================================================
-  IntTools_Context& BOPTools_PaveFiller::ChangeContext() 
-{
-  return myContext;
-}
-
 //=======================================================================
 // function: Perform
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::Perform()
+void BOPTools_PaveFiller::Perform()
 {
   try {
+    //
+    if (myContext.IsNull()) {
+      myContext=new IntTools_Context;
+    }
     //
     // 0. Prepare the IteratorOfCoupleOfShape
     myDSIt.SetDataStructure(myDS);
@@ -243,10 +261,16 @@
 // function: PartialPerform
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PartialPerform(const TColStd_SetOfInteger& anObjSubSet,
-					   const TColStd_SetOfInteger& aToolSubSet)
+void BOPTools_PaveFiller::PartialPerform
+  (const TColStd_SetOfInteger& anObjSubSet,
+   const TColStd_SetOfInteger& aToolSubSet)
 {
   try {
+    //
+    if (myContext.IsNull()) {
+      myContext=new IntTools_Context;
+    }
+    //
     //
     // 0. Prepare the IteratorOfCoupleOfShape
     myDSIt.SetDataStructure(myDS);
@@ -316,9 +340,14 @@
 // function: ToCompletePerform
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::ToCompletePerform()
+void BOPTools_PaveFiller::ToCompletePerform()
 {
   try {
+    //
+    if (myContext.IsNull()) {
+      myContext=new IntTools_Context;
+    }
+    //
     PutPavesOnCurves();
 
     MakeSplitEdges ();
@@ -340,7 +369,7 @@
 // function: PerformVE
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PerformVE() 
+void BOPTools_PaveFiller::PerformVE() 
 {
   myIsDone=Standard_False;
   
@@ -392,7 +421,7 @@
 	  continue;
 	}
 	//
-	aFlag=myContext.ComputeVE (aV1, aE2, aT);
+	aFlag=myContext->ComputeVE (aV1, aE2, aT);
 	//
 	if (!aFlag) {
 	  //
@@ -424,7 +453,7 @@
 // function: PerformVF
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PerformVF() 
+void BOPTools_PaveFiller::PerformVF() 
 {
   myIsDone=Standard_False;
   
@@ -471,7 +500,7 @@
 	const TopoDS_Vertex& aV1=TopoDS::Vertex(aS1);
 	const TopoDS_Face&   aF2=TopoDS::Face  (aS2);
 	//
-	aFlag=myContext.ComputeVS (aV1, aF2, aU, aV);
+	aFlag=myContext->ComputeVS (aV1, aF2, aU, aV);
 	//
 	if (!aFlag) {
 	  //
@@ -497,7 +526,7 @@
 // function: PerformEE
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PerformEE() 
+void BOPTools_PaveFiller::PerformEE() 
 {
   myIsDone=Standard_False;
   
@@ -542,9 +571,10 @@
     //
     Standard_Real aTolE1, aTolE2, aDeflection=0.01;
     Standard_Integer aDiscretize=30;
-
-    const TopoDS_Edge& aE1=TopoDS::Edge(myDS->GetShape(nE1));
-    const TopoDS_Edge& aE2=TopoDS::Edge(myDS->GetShape(nE2));
+    TopoDS_Edge aE1, aE2;
+    //
+    aE1=TopoDS::Edge(myDS->GetShape(nE1));
+    aE2=TopoDS::Edge(myDS->GetShape(nE2));
     //
     if (BRep_Tool::Degenerated(aE1)){
       continue;
@@ -803,8 +833,6 @@
 		anIndexIn=aEEs.Append(anInterf);
 		myIntrPool->AddInterference (aWhat, aWith, BooleanOperations_EdgeEdge, anIndexIn);
 		//
-		//modified by NIZNHY-PKV Fri May 26 15:48:21 2006f
-		//BOPTools_CommonBlock aCB(aPB1, aPB2);
 		BOPTools_CommonBlock aCB;
 		if (aTolE1>=aTolE2) {
 		  aCB.SetPaveBlock1(aPB1);
@@ -814,7 +842,6 @@
 		  aCB.SetPaveBlock1(aPB2);
 		  aCB.SetPaveBlock2(aPB1);
 		}
-		//modified by NIZNHY-PKV Fri May 26 15:48:24 2006t
 		BOPTools_ListOfCommonBlock& aLCB1=myCommonBlockPool(myDS->RefEdge(aWhat));
 		aLCB1.Append(aCB);
 		BOPTools_ListOfCommonBlock& aLCB2=myCommonBlockPool(myDS->RefEdge(aWith));
@@ -839,7 +866,7 @@
 // function: MakeSplitEdges
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::MakeSplitEdges()
+void BOPTools_PaveFiller::MakeSplitEdges()
 {
   myIsDone=Standard_False;
 
@@ -974,8 +1001,8 @@
 // function: PreparePaveBlocks
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PreparePaveBlocks(const TopAbs_ShapeEnum aType1, 
-					      const TopAbs_ShapeEnum aType2)
+void BOPTools_PaveFiller::PreparePaveBlocks(const TopAbs_ShapeEnum aType1, 
+					    const TopAbs_ShapeEnum aType2)
 {
   myIsDone=Standard_False;
 
@@ -1038,7 +1065,7 @@
 // function: PreparePaveBlocks
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PreparePaveBlocks(const Standard_Integer nE)
+void BOPTools_PaveFiller::PreparePaveBlocks(const Standard_Integer nE)
 {
   myIsDone=Standard_False;
   
@@ -1214,9 +1241,9 @@
 // function: CorrectShrunkRanges
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::CorrectShrunkRanges(const Standard_Integer aSide,
-						const BOPTools_Pave& aPave,
-						IntTools_ShrunkRange& aShrunkRange)
+void BOPTools_PaveFiller::CorrectShrunkRanges(const Standard_Integer aSide,
+					      const BOPTools_Pave& aPave,
+					      IntTools_ShrunkRange& aShrunkRange)
 {
   BooleanOperations_KindOfInterference aType;
   
@@ -1250,16 +1277,17 @@
   }
   
 
-  Standard_Real aCoeff=1.05, tV, tNV;
+  Standard_Real aCoeff=1.05, tV, tNV, t2, t1;
   tV=aPave.Param();
   if (aSide==0) { // Left
     if (aCPRange.Last() > aSR.First()) {
       tNV=aCPRange.Last();
       tNV=tV+aCoeff*(tNV-tV);
       aNewRange.SetFirst(tNV);
-      aNewRange.SetLast (aSR.Last());
-
-      if(aNewRange.First() > aNewRange.Last()) {
+      t2=aSR.Last();
+      aNewRange.SetLast (t2);
+      if(tNV < t2) {
+      //if(aNewRange.First() > aNewRange.Last()) {
 	aShrunkRange.SetShrunkRange(aNewRange);
       }
     }
@@ -1268,10 +1296,11 @@
     if (aCPRange.First() < aSR.Last()) {
       tNV=aCPRange.First();
       tNV=tV-aCoeff*(tV-tNV);
-      aNewRange.SetFirst(aSR.First());
+      t1=aSR.First();
+      aNewRange.SetFirst(t1);
       aNewRange.SetLast (tNV);
-
-      if(aNewRange.First() < aNewRange.Last()) {
+      if(tNV > t1) {
+      //if(aNewRange.First() < aNewRange.Last()) {
 	aShrunkRange.SetShrunkRange(aNewRange);
       }
     }
@@ -1282,7 +1311,7 @@
 // function: RefinePavePool
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::RefinePavePool()
+void BOPTools_PaveFiller::RefinePavePool()
 {
   Standard_Integer  i, aNbNew;
 
@@ -1317,7 +1346,7 @@
 // function: PrepareEdges
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PrepareEdges() 
+void BOPTools_PaveFiller::PrepareEdges() 
 {
   Standard_Integer  i, nV, ii, aNBSuc, ip;
   Standard_Real aT;
@@ -1341,7 +1370,6 @@
       // these vertices formally (to obtain  Shrunk  Ranges for e.g). 
       // In reality this vertex(-es) does not belong to the INF Edge.
       // It just has reference in the DS.
-      //                            PKV Tue Apr 23 10:21:45 2002                 
       {
 	Standard_Real aT1, aT2, aTolE;
 	Standard_Boolean bInf1, bInf2;
@@ -1400,7 +1428,7 @@
 // function: PerformVV
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PerformVV() 
+void BOPTools_PaveFiller::PerformVV() 
 {
   myIsDone=Standard_False;
  
@@ -1462,7 +1490,7 @@
 // function: PerformNewVertices
 // purpose: 
 //=======================================================================
-  void BOPTools_PaveFiller::PerformNewVertices() 
+void BOPTools_PaveFiller::PerformNewVertices() 
 {
   myIsDone=Standard_False;
 
@@ -1499,7 +1527,8 @@
 // function: FindSDVertex
 // purpose: 
 //=======================================================================
-  Standard_Integer BOPTools_PaveFiller::FindSDVertex(const Standard_Integer nV)const
+Standard_Integer BOPTools_PaveFiller::FindSDVertex
+  (const Standard_Integer nV)const
 {
   Standard_Integer i, aNb, anIndex1, anIndex2, aNewShape=0;
 
@@ -1522,8 +1551,9 @@
 // function:IsSuccesstorsComputed
 // purpose: 
 //=======================================================================
-  Standard_Boolean BOPTools_PaveFiller::IsSuccesstorsComputed(const Standard_Integer aN1,
-							      const Standard_Integer aN2)const
+Standard_Boolean BOPTools_PaveFiller::IsSuccesstorsComputed
+  (const Standard_Integer aN1,
+   const Standard_Integer aN2)const
 {
   Standard_Integer nSuc, n1, n2;
 
@@ -1577,8 +1607,8 @@
 //function : SortTypes
 //purpose  : 
 //=======================================================================
-  void BOPTools_PaveFiller::SortTypes(Standard_Integer& theWhat,
-				      Standard_Integer& theWith)const 
+void BOPTools_PaveFiller::SortTypes(Standard_Integer& theWhat,
+				    Standard_Integer& theWith)const 
 { 
   Standard_Boolean aReverseFlag=Standard_True;
 
@@ -1609,7 +1639,7 @@
 // function:IsDone
 // purpose: 
 //=======================================================================
-  Standard_Boolean BOPTools_PaveFiller::IsDone() const
+Standard_Boolean BOPTools_PaveFiller::IsDone() const
 {
   return myIsDone;
 }
@@ -1618,7 +1648,7 @@
 // function: PavePool
 // purpose: 
 //=======================================================================
-  const BOPTools_PavePool& BOPTools_PaveFiller::PavePool() const
+const BOPTools_PavePool& BOPTools_PaveFiller::PavePool() const
 {
   return myPavePool;
 }
@@ -1626,7 +1656,7 @@
 // function: ChangePavePool
 // purpose: 
 //=======================================================================
-  BOPTools_PavePool& BOPTools_PaveFiller::ChangePavePool()
+BOPTools_PavePool& BOPTools_PaveFiller::ChangePavePool()
 {
   return myPavePool;
 }
@@ -1635,7 +1665,7 @@
 // function:  CommonBlockPool
 // purpose: 
 //=======================================================================
-  const BOPTools_CommonBlockPool& BOPTools_PaveFiller::CommonBlockPool() const
+const BOPTools_CommonBlockPool& BOPTools_PaveFiller::CommonBlockPool() const
 {
   return myCommonBlockPool;
 }
@@ -1643,7 +1673,7 @@
 // function:  ChangeCommonBlockPool
 // purpose: 
 //=======================================================================
-  BOPTools_CommonBlockPool& BOPTools_PaveFiller::ChangeCommonBlockPool()
+BOPTools_CommonBlockPool& BOPTools_PaveFiller::ChangeCommonBlockPool()
 {
   return myCommonBlockPool;
 }
@@ -1651,7 +1681,7 @@
 // function:  SplitShapesPool
 // purpose: 
 //=======================================================================
-  const BOPTools_SplitShapesPool& BOPTools_PaveFiller::SplitShapesPool() const
+const BOPTools_SplitShapesPool& BOPTools_PaveFiller::SplitShapesPool() const
 {
   return mySplitShapesPool;
 }
@@ -1660,7 +1690,7 @@
 // function:  ChangeSplitShapesPool
 // purpose: 
 //=======================================================================
-  BOPTools_SplitShapesPool& BOPTools_PaveFiller::ChangeSplitShapesPool()
+BOPTools_SplitShapesPool& BOPTools_PaveFiller::ChangeSplitShapesPool()
 {
   return mySplitShapesPool;
 }
@@ -1668,7 +1698,7 @@
 // function:  DS
 // purpose: 
 //=======================================================================
-  BooleanOperations_PShapesDataStructure BOPTools_PaveFiller::DS()
+BooleanOperations_PShapesDataStructure BOPTools_PaveFiller::DS()
 {
   return myDS;
 }
@@ -1676,7 +1706,7 @@
 // function:  InterfPool
 // purpose: 
 //=======================================================================
-  BOPTools_PInterferencePool BOPTools_PaveFiller::InterfPool()
+BOPTools_PInterferencePool BOPTools_PaveFiller::InterfPool()
 {
   return myIntrPool;
 }
@@ -1686,8 +1716,8 @@
 // function:  IteratorOfCoupleOfShape
 // purpose: 
 //=======================================================================
-  const BOPTools_IteratorOfCoupleOfShape& 
-                     BOPTools_PaveFiller::IteratorOfCoupleOfShape() const
+const BOPTools_IteratorOfCoupleOfShape& 
+  BOPTools_PaveFiller::IteratorOfCoupleOfShape() const
 {
   return myDSIt;
 }
@@ -1696,7 +1726,7 @@
 // function:  ExpectedPoolLength
 // purpose: 
 //=======================================================================
-   Standard_Integer BOPTools_PaveFiller::ExpectedPoolLength()const
+Standard_Integer BOPTools_PaveFiller::ExpectedPoolLength()const
 {
   Standard_Integer aNbIIs;
   Standard_Real aCfPredict=.5;
@@ -1717,9 +1747,9 @@
 // function:  IsBlocksCoinside
 // purpose: 
 //=======================================================================
-  Standard_Boolean 
-    BOPTools_PaveFiller::IsBlocksCoinside(const BOPTools_PaveBlock& aPB1,
-					  const BOPTools_PaveBlock& aPB2) const
+Standard_Boolean 
+  BOPTools_PaveFiller::IsBlocksCoinside(const BOPTools_PaveBlock& aPB1,
+					const BOPTools_PaveBlock& aPB2) const
 {
   Standard_Boolean bRetFlag=Standard_True;
   Standard_Real aTolV11, aTolV12, aTolV21, aTolV22;

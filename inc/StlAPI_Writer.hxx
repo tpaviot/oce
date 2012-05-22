@@ -78,7 +78,7 @@ public:
 //! generated file is a binary file. <br>
   Standard_EXPORT     Standard_Boolean& ASCIIMode() ;
   //! Converts a given shape to STL format and writes it to file with a given filename. <br>
-  Standard_EXPORT     void Write(const TopoDS_Shape& aShape,const Standard_CString aFileName) ;
+  Standard_EXPORT     void Write(const TopoDS_Shape& aShape,const Standard_CString aFileName,const Standard_Boolean InParallel = Standard_False) ;
 
 
 
