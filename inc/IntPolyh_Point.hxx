@@ -19,6 +19,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
 #endif
@@ -116,6 +119,10 @@ public:
   Standard_EXPORT     void Dump() const;
   
   Standard_EXPORT     void Dump(const Standard_Integer i) const;
+  
+  Standard_EXPORT     void SetDegenerated(const Standard_Boolean theFlag) ;
+  
+  Standard_EXPORT     Standard_Boolean Degenerated() const;
 
 
 
@@ -137,6 +144,7 @@ Standard_Real z;
 Standard_Real u;
 Standard_Real v;
 Standard_Integer POC;
+Standard_Boolean myDegenerated;
 
 
 };

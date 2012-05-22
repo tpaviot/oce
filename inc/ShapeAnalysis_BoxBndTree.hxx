@@ -1,7 +1,22 @@
-// File:      ShapeAnalysis_BoxBndTree.hxx
-// Created:   14.02.05 12:38:56
-// Author:    Alexey MORENOV
-// Copyright: Open CASCADE  2005
+// Created on: 2005-02-14
+// Created by: Alexey MORENOV
+// Copyright (c) 2005-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef ShapeAnalysis_BoxBndTree_HeaderFile
 #define ShapeAnalysis_BoxBndTree_HeaderFile
@@ -16,6 +31,7 @@
 #include <ShapeExtend_Status.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TColStd_MapOfInteger.hxx>
+#include <TColStd_Array1OfInteger.hxx>
 
 typedef NCollection_UBTree <Standard_Integer , Bnd_Box> ShapeAnalysis_BoxBndTree;
 
@@ -27,11 +43,17 @@ class ShapeAnalysis_BoxBndTreeSelector
     (Handle (TopTools_HArray1OfShape) theSeq,
      Standard_Boolean theShared)
     :  mySeq(theSeq), myShared(theShared), myStatus(ShapeExtend::EncodeStatus (ShapeExtend_OK)),
-      myNb(0), myTol(1e-7), myMin3d(1e-7){}
+      myNb(0), myTol(1e-7), myMin3d(1e-7),myArrIndices(1,2)
+      {
+        myArrIndices.Init(0);
+      }
   
   void DefineBoxes (const Bnd_Box& theFBox, const Bnd_Box& theLBox)
     { myFBox = theFBox;
-      myLBox = theLBox; }
+      myLBox = theLBox; 
+      myArrIndices.Init(0);
+       
+  }
   
   void DefineVertexes (TopoDS_Vertex theVf, TopoDS_Vertex theVl)
     { myFVertex = theVf;
@@ -87,6 +109,7 @@ class ShapeAnalysis_BoxBndTreeSelector
   TColStd_MapOfInteger                 myList;
   Standard_Real                        myTol;
   Standard_Real                        myMin3d;
+  TColStd_Array1OfInteger              myArrIndices;
 };
 
 #endif

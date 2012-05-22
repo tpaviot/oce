@@ -61,8 +61,6 @@ NCollection_BaseVector.cxx
 NCollection_Vector.hxx
 NCollection_DefineVector.hxx
 NCollection_StdBase.hxx
-templates2macros.sh
-NCollection.mdl.gz
 
 NCollection_EBTree.hxx
 NCollection_UBTree.hxx
@@ -79,3 +77,6 @@ NCollection_Comparator.hxx
 NCollection_QuickSort.hxx
 
 NCollection_Haft.h
+NCollection_DefaultHasher.hxx
+NCollection_DefineAlloc.hxx
+

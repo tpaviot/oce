@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_mkTondgE.cxx
-// Created:	Tue Mar 23 16:26:45 1999
-// Author:      Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1999-03-23
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1999-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <Precision.hxx>
@@ -190,7 +206,7 @@ static Standard_Boolean FUN_MkTonE(const gp_Vec& faxis, const gp_Vec& dirINcle, 
   Standard_Real ang = 1.e7;
   if (isONi) {
     Standard_Real dot = dirINcle.Dot(tgi);
-    ang = (dot > 0) ? 0 : PI;
+    ang = (dot > 0) ? 0 : M_PI;
 //    outin = (ang > 0); -xpu190499
     outin = Standard_True;
   }
@@ -202,7 +218,7 @@ static Standard_Boolean FUN_MkTonE(const gp_Vec& faxis, const gp_Vec& dirINcle, 
     else          outin = (dot < 0);
   }//!isONi
 
-  Standard_Real Cang = (ang > PI) ? ang-PI : ang+PI;
+  Standard_Real Cang = (ang > M_PI) ? ang-M_PI : ang+M_PI;
   par1 = outin ? ang : Cang;
   par2 = outin ? Cang : ang;
   return Standard_True;

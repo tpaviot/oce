@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Prs2d_Length.ixx>
 #include <Geom2d_Line.hxx>
 #include <Geom2dAPI_ProjectPointOnCurve.hxx>
@@ -754,8 +771,8 @@ void Prs2d_Length::GetPntProject( const Standard_Real aLength )
        DirLin2.Normalize();
        DirLin1 *= aLength;
        DirLin2 *= aLength;
-       DirLin1.Rotate( PI/2. );
-       DirLin2.Rotate( -PI/2. );
+       DirLin1.Rotate( M_PI/2. );
+       DirLin2.Rotate( -M_PI/2. );
        aPntProj1 = myPntAttach1.Translated( DirLin1 );
        aPntProj2 = myPntAttach2.Translated( DirLin2 );;
        break;
@@ -771,8 +788,8 @@ void Prs2d_Length::GetPntProject( const Standard_Real aLength )
        DirLin2.Normalize();
        DirLin1 *= aLength;
        DirLin2 *= aLength;
-       DirLin1.Rotate( PI/2. );
-       DirLin2.Rotate( -PI/2. );
+       DirLin1.Rotate( M_PI/2. );
+       DirLin2.Rotate( -M_PI/2. );
        aPntProj1 = myPntAttach1.Translated( DirLin1 );
        aPntProj2 = myPntAttach2.Translated( DirLin2 );;
        break;
@@ -808,7 +825,7 @@ void Prs2d_Length::GetPntProject( const Standard_Real aLength )
 void Prs2d_Length::ComputeArrows( const Standard_Boolean /*isnotPoints*/ ) 
 {
   
-  Standard_Real ArrAngle = PI/180. * ArrowAngle(), theAngle;
+  Standard_Real ArrAngle = M_PI/180. * ArrowAngle(), theAngle;
   gp_Pnt2d aPnt1( myX1, myY1 ), aPnt2( myX2, myY2 );
   gp_Pnt2d theOrigine( 0., 0.), P1, P2, P3;
   gp_Vec2d VX( 1., 0. ), VDir;

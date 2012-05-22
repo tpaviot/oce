@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_EdgesFiller.cxx
-// Created:	Wed Oct 12 16:18:53 1994
-// Author:	Jean Yves LEBEY
-//		<jyl@bravox>
+// Created on: 1994-10-12
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_EdgesFiller.ixx>
 #include <TopOpeBRep_PointGeomTool.hxx>
@@ -69,12 +85,20 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
   }
 #endif
   
+#ifdef DEB
+  Standard_Boolean hs =
+#endif
+           myPEI->HasSegment();
   Standard_Boolean esd = myPEI->SameDomain();
   if (esd) myPDS->FillShapesSameDomain(E1,E2);
   
   // exit if no point.
   myPEI->InitPoint(); if ( !myPEI->MorePoint() ) return;
   
+#ifdef DEB
+  Standard_Boolean reducesegment = (hs && !esd);
+#endif
+
   // --- Add <E1,E2> in BDS
   Standard_Integer E1index = myPDS->AddShape(E1,1);
   Standard_Integer E2index = myPDS->AddShape(E2,2);
@@ -91,10 +115,15 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     const TopOpeBRep_Point2d P2D = myPEI->Point();
     Standard_Real par1 = P2D.Parameter(1);
     Standard_Real par2 = P2D.Parameter(2);
+    Standard_Integer if1 = 0; if ( ! myF1.IsNull() ) if1 = myPDS->AddShape(myF1,1);
+    Standard_Integer if2 = 0; if ( ! myF2.IsNull() ) if2 = myPDS->AddShape(myF2,2);
 
 #ifdef DEB
     Standard_Boolean pointofsegment =
+#endif
                          P2D.IsPointOfSegment();
+
+#ifdef DEB
     if (trc) {
       if      (pointofsegment &&  esd) debposesd();
       else if (pointofsegment && !esd) debposnesd();
@@ -434,9 +463,6 @@ Handle(TopOpeBRepDS_Interference) TopOpeBRep_EdgesFiller::StoreVI(const TopOpeBR
 Standard_Boolean TopOpeBRep_EdgesFiller::ToRecompute(const TopOpeBRep_Point2d& P2D,const Handle(TopOpeBRepDS_Interference)& I,const Standard_Integer IEmother)
 {
   Standard_Boolean b = Standard_True;
-  const TopOpeBRepDS_Transition& T = I->Transition();
-  T.Before();
-  T.After();
   Standard_Boolean pointofsegment = P2D.IsPointOfSegment();
   Standard_Boolean esd = myPEI->SameDomain();
   b = b && (pointofsegment && !esd);

@@ -31,6 +31,12 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _TColStd_MapOfInteger_HeaderFile
+#include <TColStd_MapOfInteger.hxx>
+#endif
+#ifndef _TColStd_SequenceOfInteger_HeaderFile
+#include <TColStd_SequenceOfInteger.hxx>
+#endif
 #ifndef _Graphic3d_StructureManager_HeaderFile
 #include <Graphic3d_StructureManager.hxx>
 #endif
@@ -69,9 +75,9 @@ class Visual3d_HSetOfView;
 class Aspect_Window;
 class Graphic3d_Vertex;
 class Graphic3d_Vector;
-class Visual3d_PickDescriptor;
-class Visual3d_ContextPick;
 class Graphic3d_Structure;
+class TColStd_SequenceOfInteger;
+class Aspect_GenId;
 class TColStd_Array2OfReal;
 class Graphic3d_DataStructureManager;
 
@@ -152,15 +158,32 @@ public:
   Standard_EXPORT     Standard_Integer Identification(const Handle(Visual3d_View)& AView) ;
   //! Release a unique ID of the view reserved for the view on its creation. <br>
   Standard_EXPORT     void UnIdentification(const Standard_Integer aViewId) ;
-  //! Returns a graphic pick with the pick context <CTX> <br>
-//!	    at the coordinates <AX>, <AY> in the window <AWindow>. <br>
-  Standard_EXPORT     Visual3d_PickDescriptor Pick(const Visual3d_ContextPick& CTX,const Handle(Aspect_Window)& AWindow,const Standard_Integer AX,const Standard_Integer AY) ;
   //! Returns the structure with the identification number <AId>. <br>
   Standard_EXPORT     Handle_Graphic3d_Structure Identification(const Standard_Integer AId) const;
   //! Returns the identification number of the visualiser. <br>
   Standard_EXPORT     Standard_Integer Identification() const;
   //! Changes the display priority of the structure <AStructure>. <br>
   Standard_EXPORT     void ChangeDisplayPriority(const Handle(Graphic3d_Structure)& AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority) ;
+  //! Change Z layer for structure. The layer mechanism allows <br>
+//! to display structures in higher layers in overlay of structures in <br>
+//! lower layers. <br>
+  Standard_EXPORT     void ChangeZLayer(const Handle(Graphic3d_Structure)& theStructure,const Standard_Integer theLayerId) ;
+  //! Get Z layer ID assigned for the structure. <br>
+  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(Graphic3d_Structure)& theStructure) const;
+  //! Add a new top-level Z layer and get its ID as <br>
+//! <theLayerId> value. The method returns Standard_False if the layer <br>
+//! can not be created. The layer mechanism allows to display <br>
+//! structures in higher layers in overlay of structures in lower layers. <br>
+  Standard_EXPORT     Standard_Boolean AddZLayer(Standard_Integer& theLayerId) ;
+  //! Remove Z layer with ID <theLayerId>. Method returns <br>
+//! Standard_False if the layer can not be removed or doesn't exists. <br>
+//! By default, there are always default bottom-level layer that can't <br>
+//! be removed. <br>
+  Standard_EXPORT     Standard_Boolean RemoveZLayer(const Standard_Integer theLayerId) ;
+  //! Return all Z layer ids in sequence ordered by overlay level <br>
+//! from lowest layer to highest ( foreground ). The first layer ID <br>
+//! in sequence is the default layer that can't be removed. <br>
+  Standard_EXPORT     void GetAllZLayers(TColStd_SequenceOfInteger& theLayerSeq) const;
   //! Clears the structure <AStructure>. <br>
   Standard_EXPORT     void Clear(const Handle(Graphic3d_Structure)& AStructure,const Standard_Boolean WithDestruction) ;
   //! Connects the structures <AMother> and <ADaughter>. <br>
@@ -219,11 +242,17 @@ friend class Visual3d_Layer;
 
 protected:
 
+  //! Returns global instance of z layer ids generator. <br>
+  Standard_EXPORT   static  Aspect_GenId& getZLayerGenId() ;
 
 
 
 private: 
 
+  //! Install z layers managed by the view manager into the <br>
+//! controlled view. This method used on the view initialization to <br>
+//! make the layer lists consistent. <br>
+  Standard_EXPORT     void InstallZLayers(const Handle(Visual3d_View)& theView) const;
   //! Adds a new layer in all the views of <me>. <br>
   Standard_EXPORT     void SetLayer(const Handle(Visual3d_Layer)& ALayer) ;
 
@@ -234,6 +263,8 @@ Aspect_GenId MyViewGenId;
 Handle_Graphic3d_GraphicDriver MyGraphicDriver;
 Standard_Boolean MyZBufferAuto;
 Standard_Boolean MyTransparency;
+TColStd_MapOfInteger myLayerIds;
+TColStd_SequenceOfInteger myLayerSeq;
 
 
 };

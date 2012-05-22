@@ -37,6 +37,8 @@ class Standard_ConstructionError;
 class TopoDS_Face;
 class TopoDS_Edge;
 class gp_Pnt;
+class TopTools_ListOfShape;
+class TopoDS_Shape;
 
 
 //! N-Side Filling <br>
@@ -160,6 +162,9 @@ public:
   Standard_EXPORT   virtual  void Build() ;
   //! Tests whether computation of the filling plate has been completed. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsDone() const;
+  //! Returns the list of shapes generated from the <br>
+//!          shape <S>. <br>
+  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
   //! Returns the maximum distance between the result and <br>
 //! the constraints. This is set at construction time. <br>
   Standard_EXPORT     Standard_Real G0Error() const;

@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //-- IntWalk_IWalking_2.gxx
 
 #ifndef DEB
@@ -221,8 +239,6 @@ Standard_Boolean IntWalk_IWalking::TestArretPassage
 
       //IFV for OCC20285
 
-
- 
       if ((Abs(Du) < tolu2 && Abs(Dv) < tolv2) ||
 	  (Abs(Dup) < tolu2 && Abs(Dvp) < tolv2)) { 
 	    
@@ -314,7 +330,7 @@ Standard_Boolean IntWalk_IWalking::TestArretPassage
 	  if (Arrive) {
 	    static math_Vector bidF(1,1);
 	    static math_Matrix bidD(1,1,1,2);
-	    sp.Values(UV,bidF,bidD);
+        sp.Values(UV,bidF,bidD);
 	    break;
 	  }
 	}
@@ -556,7 +572,7 @@ Standard_Boolean IntWalk_IWalking::TestArretAjout
 	UV(2) = V1;
 	static math_Vector bidF(1,1);
 	static math_Matrix bidD(1,1,1,2);
-	sp.Values(UV,bidF,bidD);
+    sp.Values(UV,bidF,bidD);
 	break;
       }
     }
@@ -653,7 +669,7 @@ void IntWalk_IWalking::TestArretCadre
 	if (Found) {
 	  static math_Vector bidF(1,1);
 	  static math_Matrix bidD(1,1,1,2);
-	  sp.Values(UV,bidF,bidD);
+      sp.Values(UV,bidF,bidD);
 	  Standard_Integer NBP =  Line->NbPoints();
 	  Standard_Integer Indextg;	  
 	  Line->TangentVector(Indextg);
@@ -728,7 +744,7 @@ void IntWalk_IWalking::TestArretCadre
 	Irang = -Irang; // jag 941017
 	static math_Vector bidF(1,1);
 	static math_Matrix bidD(1,1,1,2);
-	sp.Values(UV,bidF,bidD);
+    sp.Values(UV,bidF,bidD);
 	return;
       }
     }

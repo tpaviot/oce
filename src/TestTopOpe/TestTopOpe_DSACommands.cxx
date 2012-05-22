@@ -1,7 +1,23 @@
-// File:	TestTopOpe_DSACommands.cxx
-// Created:	Mon Dec  1 11:37:25 1997
-// Author:	Prestataire Mary FABIEN
-//		<fbi@langdox.paris1.matra-dtv.fr>
+// Created on: 1997-12-01
+// Created by: Prestataire Mary FABIEN
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <TestTopOpe.ixx>
@@ -99,12 +115,17 @@ Standard_Integer DSACCESSCOMMANDS(Draw_Interpretor& interpretor,Standard_Integer
 	S = DSA.Merge(TopAbs_IN, TopAbs_IN);
       DBRep::Set(a[2], S);
       TopOpeBRepDS_DataStructure& DS = DSA.DS()->ChangeDS();
-      Standard_Integer i,nbsh = DS.NbShapes();
+      Standard_Integer i,j,nbsh = DS.NbShapes();
       for(i = 1;i<=nbsh;i++) {
 	TopTools_ListOfShape& los = DS.ChangeShapeSameDomain(i);
+	j = los.Extent();
+
 	TopTools_ListIteratorOfListOfShape li(los);
 	for(; li.More(); li.Next()) {
-      li.Value();
+#ifdef DEB
+	  const TopoDS_Shape& Shap =
+#endif
+                                     li.Value();
 	}
       }
     }

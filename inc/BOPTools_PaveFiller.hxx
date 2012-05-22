@@ -40,8 +40,8 @@
 #ifndef _BOPTools_IteratorOfCoupleOfShape_HeaderFile
 #include <BOPTools_IteratorOfCoupleOfShape.hxx>
 #endif
-#ifndef _IntTools_Context_HeaderFile
-#include <IntTools_Context.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
@@ -49,10 +49,10 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+class IntTools_Context;
 class BOPTools_InterferencePool;
 class BOPTools_SSIntersectionAttribute;
 class TColStd_SetOfInteger;
-class IntTools_Context;
 class BOPTools_PavePool;
 class BOPTools_CommonBlockPool;
 class BOPTools_SplitShapesPool;
@@ -112,11 +112,13 @@ Standard_EXPORT virtual ~BOPTools_PaveFiller(){Destroy();}
   
   Standard_EXPORT   virtual  void ToCompletePerform() ;
   
-//! Selector <br>
-  Standard_EXPORT    const IntTools_Context& Context() const;
+//! Sets the intersecton context <br>
+//! <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& aContext) ;
   
 //! Selector <br>
-  Standard_EXPORT     IntTools_Context& ChangeContext() ;
+//! Selector <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Selector <br>
   Standard_EXPORT     void SetInterferencePool(const BOPTools_InterferencePool& aPool) ;
@@ -315,7 +317,13 @@ protected:
   Standard_EXPORT     void PutBoundPaveOnCurveSpec(BOPTools_Curve& aBC,BOPTools_SSInterference& aFF) ;
   
 //! Try to put 3D-point <aP> (parameter aT)  on the curve <aBC> <br>
+//! <br>
   Standard_EXPORT     void PutBoundPaveOnCurveSpec(const gp_Pnt& aP,const Standard_Real aT,BOPTools_Curve& aBC,BOPTools_SSInterference& aFF) ;
+  
+//! Put paves on the curve <aBC> in case when <aBC> <br>
+//!  is closed 3D-curve <br>
+//! <br>
+  Standard_EXPORT     void PutClosingPaveOnCurve(BOPTools_Curve& aBC,BOPTools_SSInterference& aFF) ;
   
 //! Returns TRUE if 3D-point <aP> coinsides with some Pave <br>
 //! from <aPS> (with 3D-tolerance value <aTpV>); <br>
@@ -354,7 +362,7 @@ Standard_Integer myNbSources;
 Standard_Integer myNbEdges;
 Standard_Boolean myIsDone;
 BOPTools_IteratorOfCoupleOfShape myDSIt;
-IntTools_Context myContext;
+Handle_IntTools_Context myContext;
 
 
 private:

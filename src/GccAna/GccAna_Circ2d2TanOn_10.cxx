@@ -1,7 +1,23 @@
-// File:	GccAna_Circ2d2TanOn_10.cxx
-// Created:	Thu Jan  2 16:00:00 1992
-// Author:	Remi GILET
-//		<reg@topsn3>
+// Created on: 1992-01-02
+// Created by: Remi GILET
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <GccAna_Circ2d2TanOn.jxx>
 
@@ -18,21 +34,21 @@
 #include <GccEnt_BadQualifier.hxx>
 
 //=========================================================================
-//   Creation d un cercle tangent a une Droite L1 et a un point Point2.   +
-//                        centre sur un cercle.                           +
-//  Nous commencons par distinguer les differents cas limites que nous    +
-//  allons traiter separement.                                            +
-//  Pour le cas general:                                                  +
+//   Creation of a circle tangent to straight line L1 and a point Point2.   +
+//                        centered on a circle.                           +
+//  We start by making difference between boundary cases that will be    +
+//  processed separately.                                            +
+//  In general case:                                                  +
 //  ====================                                                  +
-//  Nous calculons les bissectrices a L1 et Point2 qui nous donnent       +
-//  l ensemble des lieux possibles des centres de tous les cercles        +
-//  tangents a L1 et Point2.                                              +
-//  Nous intersectons ces bissectrices avec le cerclee OnCirc ce qui nous +
-//  donne les points parmis lesquels nous allons choisir les solutions.   +
-//  Les choix s effectuent a partir des Qualifieurs qualifiant L1.        +
+//  We calculate bissectrices to L1 and Point2 that give us all        +
+//  all possible locations of centers of all circles        +
+//  tangent to L1 and Point2.                                              +
+//  We intersect these bissectrices with circle OnCirc which gives us +
+//  points among which we'll choose the solutions.   +
+//  The choice is made using Qualifiers of L1.        +
 //=========================================================================
 
-  GccAna_Circ2d2TanOn::
+GccAna_Circ2d2TanOn::
    GccAna_Circ2d2TanOn (const GccEnt_QualifiedLin&  Qualified1 ,
                         const gp_Pnt2d&             Point2     ,
                         const gp_Circ2d&            OnCirc     ,
@@ -69,7 +85,7 @@
   gp_Dir2d normL1(-dirL1.Y(),dirL1.X());
 
 //=========================================================================
-//   Traitement des cas limites.                                          +
+//   Processing of boundary cases.                                          +
 //=========================================================================
 
   Standard_Real Ron = OnCirc.Radius();
@@ -77,6 +93,7 @@
   gp_Dir2d dir(OnCirc.Location().XY()-Point2.XY());
   gp_Pnt2d pinterm(Point2.XY()+(distpc+Ron)*dir.XY());
   Standard_Real dist1 = L1.Distance(pinterm);
+
   if (Abs(dist1-distpc+Ron) <= Tol) {
     dir = gp_Dir2d(-dirL1.Y(),dirL1.X());
     gp_Dir2d direc(originL1.XY()-pinterm.XY());
@@ -114,7 +131,7 @@
   }
 
 //=========================================================================
-//   Cas general.                                                         +
+//   General case.                                                         +
 //=========================================================================
 
   GccAna_LinPnt2dBisec Bis(L1,Point2);

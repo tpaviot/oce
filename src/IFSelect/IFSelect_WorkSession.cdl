@@ -1,8 +1,23 @@
--- File:	WorkSession.cdl
--- Created:	Tue Dec 15 15:37:42 1992
--- Author:	Christian CAILLET
---		<cky@topsn2>
----Copyright:	 Matra Datavision 1992
+-- Created on: 1992-12-15
+-- Created by: Christian CAILLET
+-- Copyright (c) 1992-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 
 class WorkSession  from IFSelect  inherits TShared
@@ -54,6 +69,14 @@ is
     SetShareOut (me : mutable; shareout : mutable ShareOut);
     ---Purpose : Sets a new ShareOut. Fills Items which its content
     --  Warning : data from the former ShareOut are lost
+    
+    SetModeStat(me : mutable; theMode : Boolean);
+    ---Purpose : Set value of mode responsible for precence of selections after loading
+    -- If mode set to true that different selections will be accessible after loading
+    -- else selections will be not accessible after loading( for economy memory in applicatios) 
+    
+    GetModeStat(me)  returns Boolean from Standard;
+    ---Purpose : Return value of mode defining of filling selection during loading
 
 
     SetLibrary (me : mutable; lib : WorkLibrary);
@@ -819,8 +842,13 @@ is
     --           
     --           The Model and File Modifiers recorded to be applied on sending
     --           files are.
-    --           Returns a status of execution : Done if OK, Void if no def.
-    --             available, Error if errors occured, Fail if no file written
+    --           Returns a status of execution : 
+    --             Done if OK, 
+    --             Void if no data available,
+    --             Error if errors occured (work library is not defined), errors 
+    --             during translation
+    --             Fail if exception during translation is raised
+    --             Stop if no disk space or disk, file is write protected
     --           Fills LastRunCheckList
 
     SendSelected (me : mutable; filename : CString; sel : Selection;
@@ -1141,5 +1169,5 @@ fields
 
     thecopier    : ModelCopier;    -- produces + memorizes transferred data
     theoldel     : InterfaceModel;
-
+	themodelstat : Boolean;
 end WorkSession;

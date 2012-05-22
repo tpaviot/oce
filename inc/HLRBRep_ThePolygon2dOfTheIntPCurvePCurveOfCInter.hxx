@@ -13,9 +13,6 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _Bnd_Box2d_HeaderFile
-#include <Bnd_Box2d.hxx>
-#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -34,6 +31,9 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _Intf_Polygon2d_HeaderFile
+#include <Intf_Polygon2d.hxx>
+#endif
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
 #endif
@@ -45,7 +45,7 @@ class gp_Pnt2d;
 
 
 
-class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter  {
+class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter  : public Intf_Polygon2d {
 public:
 
   void* operator new(size_t,void* anAddress) 
@@ -68,21 +68,15 @@ public:
   
   Standard_EXPORT     void ComputeWithBox(const Standard_Address& Curve,const Bnd_Box2d& OtherBox) ;
   
-       const Bnd_Box2d& Bounding() const;
-  
-        Standard_Real DeflectionOverEstimation() const;
+      virtual  Standard_Real DeflectionOverEstimation() const;
   
         void SetDeflectionOverEstimation(const Standard_Real x) ;
   
         void Closed(const Standard_Boolean clos) ;
   
-        Standard_Boolean Closed() const;
+      virtual  Standard_Integer NbSegments() const;
   
-        Standard_Integer NbSegments() const;
-  
-       const gp_Pnt2d& BeginOfSeg(const Standard_Integer Index) const;
-  
-       const gp_Pnt2d& EndOfSeg(const Standard_Integer Index) const;
+  Standard_EXPORT   virtual  void Segment(const Standard_Integer theIndex,gp_Pnt2d& theBegin,gp_Pnt2d& theEnd) const;
   
         Standard_Real InfParameter() const;
   
@@ -110,7 +104,6 @@ private:
 
 
 
-Bnd_Box2d TheBnd;
 Standard_Real TheDeflection;
 Standard_Integer NbPntIn;
 Standard_Integer TheMaxNbPoints;

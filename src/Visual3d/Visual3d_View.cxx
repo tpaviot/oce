@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 /***********************************************************************
 
      FONCTION :
@@ -278,7 +296,6 @@ Standard_Real um, vm, uM, vM;
         MyCView.Backfacing        = 0;
 #endif  // G003
 
-        MyCView.DefBitmap.bitmap = 0;
         MyCView.ptrUnderLayer = 0;
         MyCView.ptrOverLayer = 0;
         MyCView.GContext = 0;
@@ -421,7 +438,6 @@ Standard_Real um, vm, uM, vM;
         ComputedModeIsActive      = Standard_False;
 #endif  // G003
 
-        MyCView.DefBitmap.bitmap = 0;
         MyCView.ptrUnderLayer = 0;
         MyCView.ptrOverLayer = 0;
         MyCView.GContext = 0;
@@ -510,6 +526,9 @@ const Handle(WNT_Window) theWindow = *(Handle(WNT_Window) *) &AWindow;
         MyGraphicDriver->DepthCueing (MyCView, MyContext.DepthCueingIsOn ());
         MyGraphicDriver->ClipLimit (MyCView, AWait);
         MyGraphicDriver->Environment(MyCView);
+
+        // Make view manager z layer list consistent with the view's list.
+        MyViewManager->InstallZLayers (this);
 
         // Update planses of model clipping
         UpdatePlanes ();
@@ -2955,13 +2974,6 @@ Standard_Integer Visual3d_View::Identification () const {
 
 }
 
-void Visual3d_View::Exploration () const {
-
-        if (IsDeleted ()) return;
-
-        MyGraphicDriver->DumpView (MyCView);
-
-}
 
 Standard_Boolean Visual3d_View::ZBufferIsActivated () const {
 
@@ -4275,28 +4287,61 @@ Standard_Boolean Visual3d_View::IsGLLightEnabled() const
 #endif
 }
 
-void Visual3d_View::Export( const Standard_CString FileName,
-                            const Graphic3d_ExportFormat Format,
-                            const Graphic3d_SortType aSortType,
-                            const Standard_Real Precision,
-                            const Standard_Address ProgressBarFunc,
-                            const Standard_Address ProgressObject ) const
+Standard_Boolean Visual3d_View::Export (const Standard_CString       theFileName,
+                                        const Graphic3d_ExportFormat theFormat,
+                                        const Graphic3d_SortType     theSortType,
+                                        const Standard_Real          thePrecision,
+                                        const Standard_Address       theProgressBarFunc,
+                                        const Standard_Address       theProgressObject) const
 {
-    Handle( Visual3d_Layer ) AnUnderLayer = MyViewManager->UnderLayer(),
-                             AnOverLayer  = MyViewManager->OverLayer();
+  Handle(Visual3d_Layer) anUnderLayer = MyViewManager->UnderLayer();
+  Handle(Visual3d_Layer) anOverLayer  = MyViewManager->OverLayer();
 
-    Aspect_CLayer2d OverCLayer;
-    Aspect_CLayer2d UnderCLayer;
-    OverCLayer.ptrLayer = UnderCLayer.ptrLayer = NULL;
+  Aspect_CLayer2d anOverCLayer;
+  Aspect_CLayer2d anUnderCLayer;
+  anOverCLayer.ptrLayer = anUnderCLayer.ptrLayer = NULL;
 
-    if( !AnOverLayer.IsNull() )
-        OverCLayer = AnOverLayer->CLayer();
-    if( !AnUnderLayer.IsNull() )
-        UnderCLayer = AnUnderLayer->CLayer();
+  if (!anOverLayer.IsNull())
+    anOverCLayer = anOverLayer->CLayer();
+  if (!anUnderLayer.IsNull())
+    anUnderCLayer = anUnderLayer->CLayer();
 
-    Standard_Integer W, H;
-    Window()->Size( W, H );
+  Standard_Integer aWidth, aHeight;
+  Window()->Size (aWidth, aHeight);
 
-    MyGraphicDriver->Export( FileName, Format, aSortType, W, H, MyCView, UnderCLayer, OverCLayer,
-                             Precision, ProgressBarFunc, ProgressObject );
+  return MyGraphicDriver->Export (theFileName, theFormat, theSortType,
+                                  aWidth, aHeight, MyCView, anUnderCLayer, anOverCLayer,
+                                  thePrecision, theProgressBarFunc, theProgressObject);
+}
+
+//=======================================================================
+//function : AddZLayer
+//purpose  :
+//=======================================================================
+
+void Visual3d_View::AddZLayer (const Standard_Integer theLayerId)
+{
+  MyGraphicDriver->AddZLayer (MyCView, theLayerId);
+}
+
+//=======================================================================
+//function : RemoveZLayer
+//purpose  : 
+//=======================================================================
+
+void Visual3d_View::RemoveZLayer (const Standard_Integer theLayerId)
+{
+  MyGraphicDriver->RemoveZLayer (MyCView, theLayerId);
+}
+
+//=======================================================================
+//function : ChangeZLayer
+//purpose  : 
+//=======================================================================
+
+void Visual3d_View::ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure,
+                                  const Standard_Integer theLayerId)
+{
+  MyGraphicDriver->ChangeZLayer (
+    (*(Graphic3d_CStructure*)theStructure->CStructure()), MyCView, theLayerId);
 }

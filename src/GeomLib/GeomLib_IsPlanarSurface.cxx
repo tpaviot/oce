@@ -1,7 +1,23 @@
-// File:	GeomLib_IsPlanarSurface.cxx
-// Created:	Mon Nov 23 11:12:10 1998
-// Author:	Philippe MANGIN
-//		<pmn@sgi29>
+// Created on: 1998-11-23
+// Created by: Philippe MANGIN
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <GeomLib_IsPlanarSurface.ixx>
@@ -74,13 +90,13 @@ static Standard_Boolean Controle(const TColgp_Array1OfPnt& Poles,
       gp_Dir du(DU);
       Standard_Real Angle1 = du.Angle(DX);
       Standard_Real Angle2 = du.Angle(DY);
-      if (Angle1 > PI/2) Angle1 = PI-Angle1;
-      if (Angle2 > PI/2) Angle2 = PI-Angle2;
+      if (Angle1 > M_PI/2) Angle1 = M_PI-Angle1;
+      if (Angle2 > M_PI/2) Angle2 = M_PI-Angle2;
       if (Angle2 < Angle1) {
 	du = DY; DY = DX; DX = du;
       }
-      if (DX.Angle(DU) > PI/2) DX.Reverse();
-      if (DY.Angle(DV) > PI/2) DY.Reverse();      
+      if (DX.Angle(DU) > M_PI/2) DX.Reverse();
+      if (DY.Angle(DV) > M_PI/2) DY.Reverse();      
 
       gp_Ax3 axe(Bary, DX^DY, DX);
       Plan.SetPosition(axe);
@@ -227,8 +243,8 @@ GeomLib_IsPlanarSurface::GeomLib_IsPlanarSurface(const Handle(Geom_Surface)& S,
       Dn = DU^DV;
       if (Dn.Magnitude() > 1.e-7) {
 	Standard_Real angle = Dir.Angle(Dn);
-	if (angle > PI/2) {
-	  angle = PI - angle;
+	if (angle > M_PI/2) {
+	  angle = M_PI - angle;
 	  Dir.Reverse();
 	}
 	Essai = (angle < 0.1);

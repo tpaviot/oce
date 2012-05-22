@@ -1,7 +1,23 @@
-// File:	APIHeaderSection_MakeHeader.cxx
-// Created:	Thu Aug 12 10:53:02 1993
-// Author:	Frederic MAUPAS
-//		<fma@meteox>
+// Created on: 1993-08-12
+// Created by: Frederic MAUPAS
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //#58 rln 28.12.98 STEP header fields (NOTE: more parameterization is necessary)
 //pdn 11.01.99 including <stdio.h> for compilation on NT
 
@@ -22,7 +38,7 @@
 #include <Interface_Version.hxx>
 #include <Interface_Macros.hxx>
 
-// IL S AGIT ICI DU HEADER GENERIQUE pour tout schema STEP ...
+// This is a generic header for any STEP sheme
 
 
 static Handle(TCollection_HAsciiString) nulstr;
@@ -71,7 +87,7 @@ void  APIHeaderSection_MakeHeader::Init (const Standard_CString nameval)
   if (fn.IsNull()) fn = new HeaderSection_FileName;
   Handle(TCollection_HAsciiString) name = new TCollection_HAsciiString(nameval);
   fn->SetName(name);
-  Interface_MSG::TDate (timestamp,0,0,0,0,0,1,"C:%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2d");  // maintenant
+  Interface_MSG::TDate (timestamp,0,0,0,0,0,1,"C:%4.4d-%2.2d-%2.2dT%2.2d:%2.2d:%2.2d");  // actually
   Handle(TCollection_HAsciiString) tst = 
     new TCollection_HAsciiString(timestamp);
   fn->SetTimeStamp(tst);
@@ -142,7 +158,7 @@ void APIHeaderSection_MakeHeader::Apply
     header.AddItem(fn);
   if (HasFs() && !model->HasHeaderEntity (STANDARD_TYPE(HeaderSection_FileSchema))) {
 
-// Schema defini ?  Sinon le prendre depuis le protocole
+// Schema defined? If not take it from the protocole
     Handle(TCollection_HAsciiString) sch;
     Handle(Interface_HArray1OfHAsciiString) schid = fs->SchemaIdentifiers();
     if (!schid.IsNull()) sch = schid->Value(1);
@@ -150,7 +166,7 @@ void APIHeaderSection_MakeHeader::Apply
       schid = new Interface_HArray1OfHAsciiString(1,1);
       fs->SetSchemaIdentifiers(schid);
     }
-    if (!sch.IsNull()) { if (sch->Length() < 2) sch.Nullify(); } // non defini
+    if (!sch.IsNull()) { if (sch->Length() < 2) sch.Nullify(); } // not defined
     if (sch.IsNull()) {
       Handle(StepData_Protocol) stepro = Handle(StepData_Protocol)::DownCast
 	( model->Protocol());

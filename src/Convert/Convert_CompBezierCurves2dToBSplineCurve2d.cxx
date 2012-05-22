@@ -1,10 +1,23 @@
-// File:	Convert_CompBezierCurves2dToBSplineCurve2d.cxx
-// Created:	Wed Oct 20 14:55:08 1993
-// Author:	Bruno DUMORTIER
-//		<dub@topsn3>
-// modified 25/06/1996 PMN : Ajout d'une tolerance Angulaire dans le 
-//  constructeur pour le test de continuite G1 (1 Radians c'etait trop
-//  cf BUG PRO4481)     
+// Created on: 1993-10-20
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Convert_CompBezierCurves2dToBSplineCurve2d.ixx>
 
@@ -161,7 +174,7 @@ void Convert_CompBezierCurves2dToBSplineCurve2d::Perform()
   TColgp_Array1OfPnt2d Points(1, myDegree+1);
 
   for (i = LowerI ; i <= UpperI ; i++) {
-    // 1- Elever la courbe de Bezier au degre maximum.
+    // 1- Rise Bezier curve to the maximum degree.
     Deg = mySequence(i)->Length()-1;
     Inc = myDegree - Deg;
     if ( Inc > 0) {
@@ -173,13 +186,13 @@ void Convert_CompBezierCurves2dToBSplineCurve2d::Perform()
       Points = mySequence(i)->Array1();
     }
 
-    // 2- Traiter le noeud de jonction entre 2 courbes de Bezier.
+    // 2- Process the node of junction between Bezier curves.
     if (i == LowerI) {
-      // Traitement du noeud initial de la BSpline.
+      // Processing of initial node of the BSpline.
       for (Standard_Integer j = 1 ; j <= MaxDegree ; j++) {
 	CurvePoles.Append(Points(j));
       }
-      CurveKnVals(1)         = 1.; // Pour amorcer la serie.
+      CurveKnVals(1)         = 1.; // To begin the series.
       KnotsMultiplicities.Append(MaxDegree+1);
       Det = 1.;
     }
@@ -194,12 +207,11 @@ void Convert_CompBezierCurves2dToBSplineCurve2d::Perform()
       Lambda = Sqrt(D2/D1);
 
 
-      // Traitement de la tangence entre la Bezier et sa precedente.
-      // Ceci permet d''assurer au moins une continuite C1 si 
-      // les tangentes sont coherentes.
+      // Processing of the tangency between the Bezier and the previous.
+      // This allows guaranteeing at least continuity C1 if the tangents are coherent.
       
 
-      // Test de l'angle a myAngular
+      // Test of angle at myAngular
 
       if (V1.Magnitude() > gp::Resolution() &&
 	  V2.Magnitude() > gp::Resolution() &&
@@ -216,7 +228,7 @@ void Convert_CompBezierCurves2dToBSplineCurve2d::Perform()
 	KnotsMultiplicities.Append(MaxDegree);
       }
 
-      // Stocker les poles.
+      // Store poles.
       for (Standard_Integer j = 2 ; j <= MaxDegree ; j++) {
 	CurvePoles.Append(Points(j));
       }
@@ -225,14 +237,14 @@ void Convert_CompBezierCurves2dToBSplineCurve2d::Perform()
 
 
     if (i == UpperI) {
-      // Traitement du noeud terminal de la BSpline.
+      // Process end node of the BSpline.
       CurvePoles.Append(Points(MaxDegree+1));
       KnotsMultiplicities.Append(MaxDegree+1);
     }
     P1 = Points(MaxDegree);
   }
 
-  // Corriger les valeurs nodales pour les faire varier dans [0.,1.].
+  // Correct nodal values to make them variable within [0.,1.].
   CurveKnots.Append(0.0);
   for (i = 2 ; i <= NbrCurv ; i++) {
     CurveKnots.Append(CurveKnots(i-1) + (CurveKnVals(i-1)/Det));

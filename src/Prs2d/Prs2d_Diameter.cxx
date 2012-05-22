@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Prs2d_Diameter.ixx>
 #include <ElCLib.hxx>
 
@@ -138,7 +155,7 @@ Prs2d_Diameter::Prs2d_Diameter( const Handle(Graphic2d_GraphicObject)& aGO,
    if ( myX2 > myMaxX ) myMaxX = myX2;
    if ( myY2 > myMaxY ) myMaxY = myY2;
    
-   Standard_Real ArrAngle = PI/180.* anArrAngle, theAngle;
+   Standard_Real ArrAngle = M_PI/180.* anArrAngle, theAngle;
    gp_Pnt2d theOrigine( 0., 0.), P1, P2, P3;
   
    if ( ( myArrow == Prs2d_AS_FIRSTAR ) || ( myArrow == Prs2d_AS_BOTHAR ) ) {
@@ -247,14 +264,14 @@ void Prs2d_Diameter::Draw( const Handle(Graphic2d_Drawer)& aDrawer )  {
    gp_Vec2d VX( 1., 0. ), theVec(thePnt2, thePnt1);
    Standard_Real theTxtAngle = VX.Angle( theVec );
    gp_Pnt2d pntText;
-   if ( theTxtAngle >= 0 && theTxtAngle <= PI/2 )
+   if ( theTxtAngle >= 0 && theTxtAngle <= M_PI/2 )
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle > PI/2 && theTxtAngle <= PI ) {
+   else if ( theTxtAngle > M_PI/2 && theTxtAngle <= M_PI ) {
        pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
        theTxtAngle = VX.Angle( theVec.Reversed() );
-   } else if ( theTxtAngle >= -PI/2 && theTxtAngle < 0 )  
+   } else if ( theTxtAngle >= -M_PI/2 && theTxtAngle < 0 )  
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle >= -PI && theTxtAngle < -PI/2 ) {
+   else if ( theTxtAngle >= -M_PI && theTxtAngle < -M_PI/2 ) {
         pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
         theTxtAngle = VX.Angle( theVec.Reversed() );
    }
@@ -387,14 +404,14 @@ void Prs2d_Diameter::DrawElement( const Handle(Graphic2d_Drawer)& aDrawer,
    gp_Vec2d VX( 1., 0. ), theVec(thePnt2, thePnt1);
    Standard_Real theTxtAngle = VX.Angle( theVec );
    gp_Pnt2d pntText;
-   if ( theTxtAngle >= 0 && theTxtAngle <= PI/2 )
+   if ( theTxtAngle >= 0 && theTxtAngle <= M_PI/2 )
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle > PI/2 && theTxtAngle <= PI ) {
+   else if ( theTxtAngle > M_PI/2 && theTxtAngle <= M_PI ) {
        pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
        theTxtAngle = VX.Angle( theVec.Reversed() );
-   } else if ( theTxtAngle >= -PI/2 && theTxtAngle < 0 )  
+   } else if ( theTxtAngle >= -M_PI/2 && theTxtAngle < 0 )  
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle >= -PI && theTxtAngle < -PI/2 ) {
+   else if ( theTxtAngle >= -M_PI && theTxtAngle < -M_PI/2 ) {
         pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
         theTxtAngle = VX.Angle( theVec.Reversed() );
    }
@@ -591,14 +608,14 @@ Standard_Boolean Prs2d_Diameter::Pick( const Standard_ShortReal X,
    gp_Vec2d VX( 1., 0. ), theVec(thePnt2, thePnt1);
    Standard_Real theTxtAngle = VX.Angle( theVec );
    gp_Pnt2d pntText;
-   if ( theTxtAngle >= 0 && theTxtAngle <= PI/2 )
+   if ( theTxtAngle >= 0 && theTxtAngle <= M_PI/2 )
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle > PI/2 && theTxtAngle <= PI ) {
+   else if ( theTxtAngle > M_PI/2 && theTxtAngle <= M_PI ) {
        pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
        theTxtAngle = VX.Angle( theVec.Reversed() );
-   } else if ( theTxtAngle >= -PI/2 && theTxtAngle < 0 )  
+   } else if ( theTxtAngle >= -M_PI/2 && theTxtAngle < 0 )  
        pntText = thePnt2.Translated( (myArrowLen+dxx)*theVec/(thePnt1.Distance(thePnt2)) );
-   else if ( theTxtAngle >= -PI && theTxtAngle < -PI/2 ) {
+   else if ( theTxtAngle >= -M_PI && theTxtAngle < -M_PI/2 ) {
         pntText = thePnt1.Translated( (myArrowLen+dxx)*theVec.Reversed()/(thePnt1.Distance(thePnt2)) );
         theTxtAngle = VX.Angle( theVec.Reversed() );
    }

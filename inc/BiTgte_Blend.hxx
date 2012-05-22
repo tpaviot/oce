@@ -31,14 +31,14 @@
 #ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #endif
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
+#endif
 #ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
 #endif
 #ifndef _BRepOffset_Analyse_HeaderFile
 #include <BRepOffset_Analyse.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
-#include <TopTools_IndexedMapOfShape.hxx>
 #endif
 #ifndef _BRepOffset_DataMapOfShapeOffset_HeaderFile
 #include <BRepOffset_DataMapOfShapeOffset.hxx>
@@ -220,8 +220,8 @@ Standard_Boolean myBuildShape;
 TopTools_IndexedDataMapOfShapeListOfShape myAncestors;
 BRepFill_DataMapOfShapeDataMapOfShapeListOfShape myCreated;
 TopTools_DataMapOfShapeListOfShape myCutEdges;
-TopTools_MapOfShape myFaces;
-TopTools_MapOfShape myEdges;
+TopTools_IndexedMapOfShape myFaces;
+TopTools_IndexedMapOfShape myEdges;
 TopTools_MapOfShape myStopFaces;
 BRepOffset_Analyse myAnalyse;
 TopTools_IndexedMapOfShape myCenters;

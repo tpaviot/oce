@@ -162,10 +162,6 @@ public:
 //!          If <PutInCollector> is false, the object is erased but <br>
 //!          not put in the Collector. <br>
   Standard_EXPORT     void Erase(const Handle(AIS2D_InteractiveObject)& anIObj,const Standard_Boolean UpdateVwr = Standard_True,const Standard_Boolean PutInCollector = Standard_True) ;
-  //! Selects an erase mode. Used only if more than one <br>
-//! mode is displayed in the main viewer. If aMode is <br>
-//! the Prs used by default, no erase mode is selected. <br>
-  Standard_EXPORT     void EraseMode(const Handle(AIS2D_InteractiveObject)& anIObj,const Standard_Integer aMode,const Standard_Boolean UpdateVwr = Standard_True) ;
   //! Every erased object goes into the Collector viewer <br>
   Standard_EXPORT     void EraseAll(const Standard_Boolean PutInCollector = Standard_True,const Standard_Boolean updateVwr = Standard_True) ;
   //! Displays all erased objects, in other words, <br>

@@ -1,4 +1,21 @@
-//File GeomConvert_1.cxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //Jean-Claude Vauthier Novembre 1991
 //Passage sur C1 Aout 1992 et ajout transformation Bezier->BSpline
 //Modif JCV correction bug le 02/08/1993
@@ -525,14 +542,14 @@ Handle(BSplineSurface) GeomConvert::SplitBSplineSurface
       if (Strim->IsUPeriodic()) {
 	NbUKnots = 4;
 	nbUSpans = 3;
-	AlfaU    = PI / 3.;
+	AlfaU    = M_PI / 3.;
 	NbUPoles = 6;
 	periodic = Standard_True;
       }
       else {
 	// Nombre de spans : ouverture maximale = 150 degres ( = PI / 1.2 rds)
 	nbUSpans = 
-	  (Standard_Integer)IntegerPart( 1.2 * (ULast - UFirst) / PI) + 1;
+	  (Standard_Integer)IntegerPart( 1.2 * (ULast - UFirst) / M_PI) + 1;
 	AlfaU = (ULast - UFirst) / ( nbUSpans * 2);
 	NbUPoles = 2 * nbUSpans + 1;
 	NbUKnots = nbUSpans + 1;
@@ -752,9 +769,11 @@ Handle(BSplineSurface) GeomConvert::SplitBSplineSurface
       Weights.Init(1.);
       if ( C->IsRational()) C->Weights(Weights);
 
+      Standard_Integer nbUSpans;
       Standard_Real AlfaU;
       NbUKnots = 4;
-      AlfaU    = PI / 3.;
+      nbUSpans = 3;
+      AlfaU    = M_PI / 3.;
       NbUPoles = 6;
 
       // Compute Knots and Mults

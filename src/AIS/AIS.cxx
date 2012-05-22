@@ -1,7 +1,23 @@
-// File:	AIS.cxx
-// Created:	Wed Dec 11 11:16:37 1996
-// Author:	Robert COUBLANC
-//		<rob@robox.paris1.matra-dtv.fr>
+// Created on: 1996-12-11
+// Created by: Robert COUBLANC
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <AIS.ixx>
@@ -461,11 +477,11 @@ Standard_Boolean AIS::ComputeGeometry(const TopoDS_Edge& anEdge1,
 
   if (isOnPlanC1 && isOnPlanC2) return Standard_True;
 
-  if (!isOnPlanC1 && isOnPlanC2) {// courbe 2 seulement dans le plan
+  if (!isOnPlanC1 && isOnPlanC2) {// curve 2 only in the plane
     indexExt = 1;
     extCurve = aSov1;
   }
-  else if (isOnPlanC1 && !isOnPlanC2) {// courbe 1 seulement dans le plan
+  else if (isOnPlanC1 && !isOnPlanC2) {// curve 1 only in the plane
     indexExt = 2;
     extCurve = aSov2;
   }
@@ -742,7 +758,7 @@ void AIS::ComputeLengthBetweenPlanarFaces( const TopoDS_Face &      FirstFace,
                                            gp_Pnt &                 Position )
 {
   TopExp_Explorer aExp( FirstFace, TopAbs_VERTEX );
-  // cas des plans infinis . SMO.
+  // case of infinite planes. SMO.
   if (!aExp.More())
     FirstAttach = Plane1.Location();
   else  
@@ -808,7 +824,7 @@ static gp_Pnt FindFarPoint (const gp_Ax1 &           anAxis,
   TopExp_Explorer Explo (aFace, TopAbs_VERTEX);
 
   if (!Explo.More()) {
-    // Cas des plans infinis (pas de Vertex, pas d'arete)
+    // Case of infinite planes (no Vertex, no edge)
     gp_Pln plane;
     Handle( Geom_Surface ) aSurf;
     AIS_KindOfSurface KOS;
@@ -979,7 +995,7 @@ void AIS::ComputeAngleBetweenCurvilinearFaces( const TopoDS_Face &      FirstFac
       if (! Xdirection.IsEqual( ToFirstAttach, Precision::Angular() ) &&
           ! Xdirection.IsOpposite( ToFirstAttach, Precision::Angular() ) &&
           (Xdirection ^ ToFirstAttach) * Cone2->Cone().Axis().Direction() < 0.0e0)
-        SecondU = 2*PI - SecondU ;
+        SecondU = 2*M_PI - SecondU ;
       
       SecondLine = Handle( Geom_Line )::DownCast( Cone2->UIso( SecondU ) );
       
@@ -1233,18 +1249,18 @@ Standard_Boolean AIS::InDomain(const Standard_Real fpar,
     if(lpar > fpar)
       return ((para >= fpar) && (para <= lpar));
     else { // fpar > lpar
-      Standard_Real delta = 2*PI-fpar;
+      Standard_Real delta = 2*M_PI-fpar;
       Standard_Real lp, par, fp;
       lp = lpar + delta;
       par = para + delta;
-      while(lp > 2*PI) lp-=2*PI;
-      while(par > 2*PI) par-=2*PI;
+      while(lp > 2*M_PI) lp-=2*M_PI;
+      while(par > 2*M_PI) par-=2*M_PI;
       fp = 0.;
       return ((par >= fp) && (par <= lp));
     }
       
   }
-  if (para >= (fpar+2*PI)) return Standard_True;
+  if (para >= (fpar+2*M_PI)) return Standard_True;
   if (para <= lpar) return Standard_True;
   return Standard_False;
 }
@@ -1260,37 +1276,37 @@ Standard_Real AIS::DistanceFromApex(const gp_Elips & elips,
 {
   Standard_Real dist;
   Standard_Real parApex = ElCLib::Parameter ( elips, Apex );
-  if(parApex == 0.0 || parApex == PI) 
+  if(parApex == 0.0 || parApex == M_PI) 
     {//Major case
       if(parApex == 0.0) //pos Apex
-	dist = (par < PI) ? par : (2*PI - par);
+	dist = (par < M_PI) ? par : (2*M_PI - par);
       else //neg Apex
-	dist = (par < PI) ? ( PI - par) : ( par - PI );
+	dist = (par < M_PI) ? ( M_PI - par) : ( par - M_PI );
     }
   else 
     {// Minor case
-      if(parApex == PI / 2) //pos Apex
+      if(parApex == M_PI / 2) //pos Apex
 	{
-	  if(par <= parApex + PI && par > parApex) // 3/2*PI < par < PI/2
+	  if(par <= parApex + M_PI && par > parApex) // 3/2*M_PI < par < M_PI/2
 	    dist = par - parApex;
 	  else 
 	    { 
-	      if(par >  parApex + PI) // 3/2*PI < par < 2*PI
-		dist = 2*PI - par + parApex;
+	      if(par >  parApex + M_PI) // 3/2*M_PI < par < 2*M_PI
+		dist = 2*M_PI - par + parApex;
 	      else
 		dist = parApex - par; 
 	    }
 	  }
-      else //neg Apex == 3/2*PI
+      else //neg Apex == 3/2*M_PI
 	{
-	  if(par <= parApex && par >= PI/2) // PI/2 < par < 3/2*PI
+	  if(par <= parApex && par >= M_PI/2) // M_PI/2 < par < 3/2*M_PI
 	    dist = parApex - par;
 	  else
 	    {
-	      if(par >  parApex) // 3/2*PI < par < 2*PI
+	      if(par >  parApex) // 3/2*M_PI < par < 2*M_PI
 		dist = par - parApex;
 	      else
-		dist = par + PI/2; // 0 < par < PI/2
+		dist = par + M_PI/2; // 0 < par < M_PI/2
 	    }
 	}
     }
@@ -1370,7 +1386,7 @@ void AIS::ComputeProjEdgePresentation( const Handle( Prs3d_Presentation )& aPres
 
   TopoDS_Edge E;
 
-  // Calcul de la presentation de l'edge
+  // Calculate  presentation of the edge
   if (ProjCurve->IsInstance(STANDARD_TYPE(Geom_Line)) ) {
     // CLE
     // const Handle(Geom_Line) & gl = (Handle(Geom_Line)&) ProjCurve;
@@ -1399,7 +1415,7 @@ void AIS::ComputeProjEdgePresentation( const Handle( Prs3d_Presentation )& aPres
   }
   StdPrs_WFDeflectionShape::Add(aPresentation, E, aDrawer);
 
-  //Calcul de la presentation des lignes de raccord
+  //Calculate the presentation of line connections
   aDrawer->WireAspect()->SetTypeOfLine(aCallTOL);
   if (!isInfinite) {
     gp_Pnt ppf(0.0,0.0,0.0), ppl(0.0,0.0,0.0);
@@ -1461,7 +1477,7 @@ void AIS::ComputeProjVertexPresentation( const Handle( Prs3d_Presentation )& aPr
     pa->SetTypeOfMarker(aProjTOM);
   }
   
-  // calcul du projete
+  // calculate the projection
   StdPrs_Point::Add(aPresentation, new Geom_CartesianPoint(ProjPoint), aDrawer);
 
   if (!aDrawer->HasWireAspect()){
@@ -1476,9 +1492,9 @@ void AIS::ComputeProjVertexPresentation( const Handle( Prs3d_Presentation )& aPr
     li->SetWidth(aWidth);
   }
   
-  // Si les points ne sont pas confondus...
+  // If the points are not mixed...
   if (!ProjPoint.IsEqual (BRep_Tool::Pnt(aVertex),Precision::Confusion())) {
-    // calcul des lignes de rappel
+    // calculate the lines of recall
     BRepBuilderAPI_MakeEdge MakEd(ProjPoint,BRep_Tool::Pnt(aVertex));
     StdPrs_WFDeflectionShape::Add(aPresentation, MakEd.Edge(), aDrawer);
   }

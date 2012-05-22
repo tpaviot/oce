@@ -1,7 +1,22 @@
-// File:	BOPTest_LowCommands.cxx
-// Created:	Wed Mar 28 16:46:22 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-03-28
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BOPTest.ixx>
 
@@ -58,6 +73,7 @@
 #include <OSD_Chronometer.hxx>
 
 #include <BRepTools.hxx>
+#include <BOPTColStd_CArray1OfInteger.hxx>
 
 static
   Handle(Geom2d_Curve) CurveOnSurface(const TopoDS_Edge& E, 
@@ -74,6 +90,12 @@ static
   void PrintState (Draw_Interpretor& aDI,
 		   const TopAbs_State& aState);
 
+//modified by NIZNHY-PKV Thu Nov 10 12:11:15 2011f
+static
+  void DumpArray(const BOPTColStd_CArray1OfInteger& aC,
+	       Draw_Interpretor& aDI);
+//modified by NIZNHY-PKV Thu Nov 10 12:11:18 2011t
+
 static  Standard_Integer bhaspc      (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer baddve      (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer bisclosed   (Draw_Interpretor& , Standard_Integer , const char** );
@@ -86,11 +108,8 @@ static  Standard_Integer brefine     (Draw_Interpretor& , Standard_Integer , con
 static  Standard_Integer bclassify   (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer b2dclassify (Draw_Interpretor& , Standard_Integer , const char** );
 
-//modified by NIZNHY-PKV Mon May 29 11:44:24 2006f
 static  Standard_Integer bhole       (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer bxhole      (Draw_Interpretor& , Standard_Integer , const char** );
-//modified by NIZNHY-PKV Mon May 29 11:44:28 2006t
-
 //=======================================================================
 //function : LowCommands
 //purpose  : 
@@ -120,10 +139,8 @@ static  Standard_Integer bxhole      (Draw_Interpretor& , Standard_Integer , con
 		                                                __FILE__, bclassify   , g);
   theCommands.Add("b2dclassify"  , "Use >bclassify Face Point2d [Tol2D=Tol(Face)] ",
 		                                                __FILE__, b2dclassify , g);
-  //modified by NIZNHY-PKV Mon May 29 11:45:33 2006f
   theCommands.Add("bhole"   , "Use bhole"                     , __FILE__, bhole       , g);
   theCommands.Add("bxhole"  , "Use bxhole"                    , __FILE__, bxhole      , g);
-  //modified by NIZNHY-PKV Mon May 29 11:45:37 2006t
 }
 
 //=======================================================================
@@ -292,7 +309,7 @@ Standard_Integer bremovesim (Draw_Interpretor& di, Standard_Integer n, const cha
 
   const TopoDS_Face& aF=TopoDS::Face(S1);
   //
-  IntTools_Context aCtx;
+  Handle(IntTools_Context) aCtx=new IntTools_Context;
   BOPTools_Tools3D::RemoveSims (aF, aCtx);
   //
   di << " Ok\n";
@@ -737,7 +754,6 @@ void PrintState (Draw_Interpretor& aDI,
   
 }
 //
-//modified by NIZNHY-PKV Mon May 29 11:40:29 2006f
 //=======================================================================
 //function : bhole
 //purpose  : 
@@ -901,4 +917,3 @@ Standard_Integer bxhole (Draw_Interpretor& aDI,
   //
   return 0;
 }
-//modified by NIZNHY-PKV Mon May 29 11:40:31 2006t

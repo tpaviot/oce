@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Prs2d_Repere.ixx>
 #define ADDPIX 7
 
@@ -39,7 +56,7 @@ Prs2d_Repere::Prs2d_Repere( const Handle(Graphic2d_GraphicObject)& aGO,
     
     gp_Pnt2d theOrig( 0., 0. ), P1, P2, P3;
     gp_Vec2d VX( 1., 0. ), VDir( aPnt1, aPnt2 );
-    Standard_Real alpha = Standard_PI - anArrAngle;
+    Standard_Real alpha = M_PI - anArrAngle;
     P1 = aPnt1;  
     P2 = gp_Pnt2d( anArrLength,  anArrLength*Tan( alpha/2. ) );
     P3 = gp_Pnt2d( anArrLength, -anArrLength*Tan( alpha/2. ) );
@@ -71,15 +88,15 @@ Prs2d_Repere::Prs2d_Repere( const Handle(Graphic2d_GraphicObject)& aGO,
       
   }
 
-  if ( theAng >= 0. && theAng < PI/2) {
+  if ( theAng >= 0. && theAng < M_PI/2) {
         nX -= aLenBase;
-  } else if ( theAng >= PI/2 && theAng <= PI ) {
+  } else if ( theAng >= M_PI/2 && theAng <= M_PI ) {
         nX += aLenBase;
         myObtuse = Standard_True;  
-  } else if ( theAng >= -PI && theAng < -PI/2) {
+  } else if ( theAng >= -M_PI && theAng < -M_PI/2) {
         nX += aLenBase;
         myObtuse = Standard_True;  
-  } else if ( theAng >= -PI/2 && theAng < 0. ) 
+  } else if ( theAng >= -M_PI/2 && theAng < 0. ) 
         nX -= aLenBase;
 
   myXVert(3) = Standard_ShortReal( nX );

@@ -1,13 +1,27 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
 //
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // AdvApp2Var_MathBase.hxx
-//
 #ifndef AdvApp2Var_MathBase_HeaderFile
 #define AdvApp2Var_MathBase_HeaderFile
 
 
 #include <Standard_Macro.hxx>
 #include <AdvApp2Var_Data_f2c.hxx>
-//
 class AdvApp2Var_MathBase {
  public:
   ///
@@ -110,12 +124,12 @@ class AdvApp2Var_MathBase {
 
   Standard_EXPORT static int mmeps1_(doublereal *epsilo);
 
-  Standard_EXPORT static int mmfmca8_(integer *ndimen,
-				      integer *ncoefu,
-				      integer *ncoefv,
-				      integer *ndimax, 
-				      integer *ncfumx, 
-				      integer *ncfvmx, 
+  Standard_EXPORT static int mmfmca8_(const integer *ndimen,
+				      const integer *ncoefu,
+				      const integer *ncoefv,
+				      const integer *ndimax, 
+				      const integer *ncfumx, 
+				      const integer *ncfvmx, 
 				      doublereal *tabini,
 				      doublereal *tabres);
 
@@ -176,10 +190,10 @@ class AdvApp2Var_MathBase {
 				      doublereal *epseg, 
 				      integer *iercod);
 
-  Standard_EXPORT static int mmjaccv_(integer *ncoef, 
-				      integer *ndim, 
-				      integer *ider, 
-				      doublereal *crvlgd,
+  Standard_EXPORT static int mmjaccv_(const integer *ncoef, 
+				      const integer *ndim, 
+				      const integer *ider, 
+				      const doublereal *crvlgd,
 				      doublereal *polaux,
 				      doublereal *crvcan);
 
@@ -278,7 +292,7 @@ class AdvApp2Var_MathBase {
 				      doublereal *curveo, 
 				      doublereal *curve);
 
-  Standard_EXPORT static int mmjacan_(integer *ideriv, 
+  Standard_EXPORT static int mmjacan_(const integer *ideriv, 
 				      integer *ndeg, 
 				      doublereal *poljac, 
 				      doublereal *polcan);

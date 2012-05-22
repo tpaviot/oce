@@ -1,7 +1,23 @@
--- File:      IntPatch_PolyArc.cdl
--- Created:   Wed Jan 27 09:44:03 1993
--- Author:    Isabelle GRIGNON
----Copyright: Matra Datavision 1993
+-- Created on: 1993-01-27
+-- Created by: Isabelle GRIGNON
+-- Copyright (c) 1993-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 class PolyArc from IntPatch
 
@@ -31,14 +47,7 @@ is
     	--- This exception is raised if Pfirst=RealFirst or Plast=RealLast or
     	--  NbSample<=1.
 
-
-    Bounding(me)                 
-    	---C++: return const&
-    returns Box2d from Bnd;
- 	    	
-    Error(me)                    returns Real from Standard;
-                      	    	          
-    Closed(me)                   returns Boolean from Standard;
+    Closed(me)                   returns Boolean from Standard is redefined virtual;
 
     NbPoints(me)                 returns Integer;
  
@@ -53,8 +62,6 @@ fields
 
     brise  : Array1OfPnt2d from TColgp;
     param  : Array1OfReal  from TColStd;
-    boite  : Box2d         from Bnd;
-    fleche : Real          from Standard;
     offsetx: Real          from Standard;
     offsety: Real          from Standard;
     ferme  : Boolean       from Standard;

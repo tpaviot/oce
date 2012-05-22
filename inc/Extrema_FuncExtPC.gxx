@@ -1,5 +1,23 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Standard_TypeMismatch.hxx>
-  
+#include <Precision.hxx>
 #define delta 1.e-9
 #define Tol   1.e-20
 
@@ -73,16 +91,23 @@ Standard_Boolean Extrema_FuncExtPC::Value (const Standard_Real U, Standard_Real&
   Tool::D1(*((Curve*)myC),myU,myPc,D1c);
   Standard_Real Ndu = D1c.Magnitude();
   if (Ndu <= Tol) { // Cas Singulier (PMN 22/04/1998)
-    Pnt P1, P2;
-    P2 = Tool::Value(*((Curve*)myC),myU+delta);
-    P1 = Tool::Value(*((Curve*)myC),myU-delta);
-    Vec V(P1,P2);
-    D1c = V;
-    Ndu = D1c.Magnitude();
-    if (Ndu <= Tol) {
-      return Standard_False;
+	Pnt P1, P2;
+	P2 = Tool::Value(*((Curve*)myC),myU + delta);
+	P1 = Tool::Value(*((Curve*)myC),myU - delta);
+	Vec V(P1,P2);
+	D1c = V;
+	Ndu = D1c.Magnitude();
+	if (Ndu <= Tol) {
+	  Vec aD2;
+	  Tool::D2(*((Curve*)myC),myU,myPc,D1c,aD2);	
+	  Ndu = aD2.Magnitude();
+	 
+	  if(Ndu  <= Tol)
+	   return Standard_False;
+	  D1c = aD2;	
     }
   }
+  
   Vec PPc (myP,myPc);
   F = PPc.Dot(D1c)/Ndu;
   return Standard_True;

@@ -1,7 +1,22 @@
-// File:	BOPTools_Tools3D_1.cxx
-// Created:	Mon Jun 18 09:51:53 2001
-// Author:	Peter KURNEV
-//		<pkv@irinox>
+// Created on: 2001-06-18
+// Created by: Peter KURNEV
+// Copyright (c) 2001-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BOPTools_Tools3D.ixx>
 #include <math.h>
@@ -40,7 +55,7 @@
 //function : GetApproxNormalToFaceOnEdge
 //purpose  : 
 //=======================================================================
-  void BOPTools_Tools3D::GetApproxNormalToFaceOnEdge (const TopoDS_Edge& aE,
+void BOPTools_Tools3D::GetApproxNormalToFaceOnEdge (const TopoDS_Edge& aE,
 						      const TopoDS_Face& aF,
 						      const Standard_Real aT,
 						      gp_Pnt& aPNear,
@@ -196,7 +211,7 @@
 					 const gp_Pnt& aP2,
 					 const TopoDS_Face& aF,
 					 gp_Pnt& aPF,
-					 IntTools_Context& aContext)
+					 const Handle(IntTools_Context)& aContext)
 {
   Standard_Boolean bFlag;
   Standard_Real aD, aTolF,  U, V;
@@ -205,7 +220,7 @@
 
   aTolF=BRep_Tool::Tolerance(aF);
   //
-  GeomAPI_ProjectPointOnSurf& aProjector=aContext.ProjPS(aF);
+  GeomAPI_ProjectPointOnSurf& aProjector=aContext->ProjPS(aF);
   //
   aProjector.Perform(aP1);
   //
@@ -245,7 +260,7 @@
 				   const TopoDS_Face& aF1,
 				   const TopoDS_Face& aF2,
 				   TopAbs_State& aStPF,
-				   IntTools_Context& aContext)
+				   const Handle(IntTools_Context)& aContext)
 {
   Standard_Real aT1, aT2, aT, aTolF2, aDt2D;
   gp_Pnt2d aPx2DNear;
@@ -284,7 +299,7 @@
   //
 
   //-- EJG
-  Standard_Boolean isIn = aContext.IsPointInFace(aF1,aPx2DNear);
+  Standard_Boolean isIn = aContext->IsPointInFace(aF1,aPx2DNear);
   if( !isIn ) {
     Standard_Real aEF1Tol = BRep_Tool::Tolerance(aEF1);
     Standard_Real aF1Tol = BRep_Tool::Tolerance(aF1);
@@ -311,7 +326,7 @@
   Standard_Boolean bFlag;
   Standard_Real aD, U, V;
   //
-  GeomAPI_ProjectPointOnSurf& aProjector=aContext.ProjPS(aF2);
+  GeomAPI_ProjectPointOnSurf& aProjector=aContext->ProjPS(aF2);
   //
   Handle(Geom_Surface) aS2=BRep_Tool::Surface(aF2);
   //
@@ -784,7 +799,7 @@ void Add(const TopoDS_Shape& aS,
 						   const TopoDS_Edge& aEF1,
 						   const TopoDS_Face& aF1,
 						   const TopoDS_Face& aF2,
-						   IntTools_Context& aContext)
+						   const Handle(IntTools_Context)& aContext)
 {
   gp_Dir aDBF1, aDNF2;
   TopAbs_State aStPF;
@@ -836,7 +851,7 @@ void Add(const TopoDS_Shape& aS,
 // ===========================================================================================
 Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
 						    const TopoDS_Solid& theRef,
-						    IntTools_Context&   theContext,
+						    const Handle(IntTools_Context)& theContext,
 						    TopAbs_State&       theState) 
 {
   TopAbs_State aState = TopAbs_ON;
@@ -852,7 +867,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
   Standard_Real U = umin + adeltau;
   Standard_Boolean bFoundValidPoint = Standard_False;
   Standard_Boolean bFoundInFacePoint = Standard_False;
-  BRepClass3d_SolidClassifier& aSolidClassifier = theContext.SolidClassifier(theRef);
+  BRepClass3d_SolidClassifier& aSolidClassifier = theContext->SolidClassifier(theRef);
   Standard_Integer i = 0, j = 0;
 
   for(i = 1; !bFoundValidPoint && (i <= nbpoints); i++, U+=adeltau) {
@@ -861,7 +876,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
     for(j = 1; !bFoundValidPoint && (j <= nbpoints); j++, V+=adeltav) {
       gp_Pnt2d aPoint(U,V);
 
-      if(theContext.IsPointInFace(theFace, aPoint)) {
+      if(theContext->IsPointInFace(theFace, aPoint)) {
 	bFoundInFacePoint = Standard_True;
 	gp_Pnt aP3d = aSurface->Value(U, V);
 
@@ -896,7 +911,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
       for(j = 1; !bFoundValidPoint && (j <= nbpoints); j++, V+=adeltav) {
 	gp_Pnt2d aPoint(U,V);
 
-	if(theContext.IsPointInOnFace(theFace, aPoint)) {
+	if(theContext->IsPointInOnFace(theFace, aPoint)) {
 	  bFoundInFacePoint = Standard_True;
 	  gp_Pnt aP3d = aSurface->Value(U, V);
     
@@ -909,7 +924,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
 	      TopoDS_Face aFace2 = aSolidClassifier.Face();
 
 	      if(!aFace2.IsNull()) {
-		GeomAPI_ProjectPointOnSurf& aProjector = theContext.ProjPS(aFace2);
+		GeomAPI_ProjectPointOnSurf& aProjector = theContext->ProjPS(aFace2);
 		aProjector.Perform(aP3d);
 
 		if(aProjector.IsDone()) {
@@ -918,7 +933,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
 		  gp_Pnt2d aPoint2(U2, V2);
 
 		  if(aProjector.LowerDistance() < aTolerance) {
-		    if(theContext.IsPointInFace(aFace2, aPoint2)) 
+		    if(theContext->IsPointInFace(aFace2, aPoint2)) 
 		      aState = TopAbs_ON;
 		  }
 		}
@@ -950,7 +965,7 @@ Standard_Boolean BOPTools_Tools3D::ComputeFaceState(const TopoDS_Face&  theFace,
 // ===========================================================================================
 Standard_Boolean BOPTools_Tools3D::CheckSameDomainFaceInside(const TopoDS_Face& theFace1,
 							     const TopoDS_Face& theFace2,
-							     IntTools_Context&  theContext) 
+							     const Handle(IntTools_Context)& theContext) 
 {
   Standard_Boolean bFoundON, bPointInFace; 
   Standard_Integer nbpoints, i, j;
@@ -976,14 +991,14 @@ Standard_Boolean BOPTools_Tools3D::CheckSameDomainFaceInside(const TopoDS_Face& 
   adeltav=(vmax - vmin) / (nbpoints + 1);
   bFoundON = Standard_False;
   //
-  GeomAPI_ProjectPointOnSurf& aProjector = theContext.ProjPS(theFace2);
+  GeomAPI_ProjectPointOnSurf& aProjector = theContext->ProjPS(theFace2);
   //
   for(i=1; i<=nbpoints; ++i){
     U=umin+i*adeltau;
     for(j=1; j<=nbpoints; ++j) {
       V=vmin+j*adeltav;
       aP2D.SetCoord(U,V);
-      bPointInFace=theContext.IsPointInFace(theFace1, aP2D);
+      bPointInFace=theContext->IsPointInFace(theFace1, aP2D);
       if(bPointInFace) {
 	aP3D=aS1->Value(U, V);
 	aProjector.Perform(aP3D);
@@ -996,7 +1011,7 @@ Standard_Boolean BOPTools_Tools3D::CheckSameDomainFaceInside(const TopoDS_Face& 
 	    return Standard_False;
 	  }
 	  //
-	  bPointInFace=theContext.IsPointInFace(theFace2, aP2D);
+	  bPointInFace=theContext->IsPointInFace(theFace2, aP2D);
 	  if (bPointInFace) {
 	    bFoundON = Standard_True;
 	  }

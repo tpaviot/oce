@@ -1,7 +1,23 @@
-// File:	Draw_BasicCommands.cxx
-// Created:	Thu Feb 23 18:21:17 1995
-// Author:	Remi LEQUETTE
-//		<rle@bravox>
+// Created on: 1995-02-23
+// Created by: Remi LEQUETTE
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_Macro.hxx>
 #include <Standard_Stream.hxx>
@@ -13,6 +29,7 @@
 
 #include <Message.hxx>
 #include <Message_Messenger.hxx>
+#include <OSD_MemInfo.hxx>
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -58,6 +75,7 @@ static clock_t MDTV_CPU_CURRENT; // cpu time already used at last
 
 #include <Draw_Chronometer.hxx>
 #include <OSD_MAllocHook.hxx>
+#include <OSD_Chronometer.hxx>
 
 #if defined (__hpux) || defined ( HPUX )
 #define RLIM_INFINITY   0x7fffffff
@@ -208,6 +226,31 @@ static Standard_Integer Draw_wait(Draw_Interpretor& , Standard_Integer n, const 
   return 0;
 }
 
+//=======================================================================
+//function : cpulimit
+//purpose  : 
+//=======================================================================
+#ifdef WNT
+static unsigned int __stdcall CpuFunc (void * param)
+{
+  clock_t aCurrent;
+  while (1)
+  {
+    Sleep (5);
+    Standard_Real anUserSeconds, aSystemSeconds;
+    OSD_Chronometer::GetProcessCPU (anUserSeconds, aSystemSeconds);
+    aCurrent = clock_t(anUserSeconds + aSystemSeconds);
+    
+    if ((aCurrent - MDTV_CPU_CURRENT) >= MDTV_CPU_LIMIT)
+    {
+      printf ("CpuFunc : Fin sur Cpu Limit \n");
+      ExitProcess (2);
+      return 0;
+    }
+  }
+  return 0;
+}
+#endif
 
 static Standard_Integer cpulimit(Draw_Interpretor& di, Standard_Integer n, const char** a)
 {
@@ -226,25 +269,27 @@ static Standard_Integer cpulimit(Draw_Interpretor& di, Standard_Integer n, const
 
 #else
 //WNT
-  static int first=1;
-/*
-  unsigned int __stdcall CpuFunc(void * );
-  unsigned ThreadID;
+  static int aFirst = 1;
 
-  if (n <= 1) MDTV_CPU_LIMIT = RLIM_INFINITY;
-  else {
-  
-          MDTV_CPU_LIMIT = atoi(a[1]);
-          MDTV_CPU_CURRENT = clock()/1000;
+  unsigned int __stdcall CpuFunc (void *);
+  unsigned aThreadID;
 
-          if (first) // Lancer le thread au 1er appel seulement.
-          {
-                  first=0 ;
-                  _beginthreadex(NULL,0,CpuFunc,NULL,0,&ThreadID);
-          }
+  if (n <= 1)
+    MDTV_CPU_LIMIT = RLIM_INFINITY;
+  else
+  {
+    MDTV_CPU_LIMIT = atoi (a[1]);
+    Standard_Real anUserSeconds, aSystemSeconds;
+    OSD_Chronometer::GetProcessCPU (anUserSeconds, aSystemSeconds);
+    MDTV_CPU_CURRENT = clock_t(anUserSeconds + aSystemSeconds);
+
+    if (aFirst) // Launch the thread only at the 1st call.
+    {
+      aFirst = 0;
+      _beginthreadex (NULL, 0, CpuFunc, NULL, 0, &aThreadID);
+    }
   }
 
-*/
 #endif
 
   return 0;
@@ -375,6 +420,58 @@ By default <logfile> is \"mem-log.txt\", <outfile> is \"mem-stat.txt\""
   return 0;
 }
 
+//==============================================================================
+//function : dmeminfo
+//purpose  :
+//==============================================================================
+
+static int dmeminfo (Draw_Interpretor& theDI,
+                     Standard_Integer  theArgNb,
+                     const char**      theArgVec)
+{
+  OSD_MemInfo aMemInfo;
+  if (theArgNb <= 1)
+  {
+    theDI << aMemInfo.ToString();
+    return 0;
+  }
+
+  for (Standard_Integer anIter = 1; anIter < theArgNb; ++anIter)
+  {
+    TCollection_AsciiString anArg (theArgVec[anIter]);
+    anArg.LowerCase();
+    if (anArg == "virt" || anArg == "v")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemVirtual)) << " ";
+    }
+    else if (anArg == "wset" || anArg == "w")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemWorkingSet)) << " ";
+    }
+    else if (anArg == "wsetpeak")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemWorkingSetPeak)) << " ";
+    }
+    else if (anArg == "swap")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemSwapUsage)) << " ";
+    }
+    else if (anArg == "swappeak")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemSwapUsagePeak)) << " ";
+    }
+    else if (anArg == "private")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemPrivate)) << " ";
+    }
+    else
+    {
+      std::cerr << "Unknown argument '" << theArgVec[anIter] << "'!\n";
+    }
+  }
+  theDI << "\n";
+  return 0;
+}
 
 void Draw::BasicCommands(Draw_Interpretor& theCommands)
 {
@@ -399,4 +496,8 @@ void Draw::BasicCommands(Draw_Interpretor& theCommands)
   theCommands.Add("mallochook",
                   "debug memory allocation/deallocation, w/o args for help",
                   __FILE__, mallochook, g);
+  theCommands.Add ("meminfo",
+    "meminfo [virt|v] [wset|w] [wsetpeak] [swap] [swappeak] [private]"
+    " : memory counters for this process",
+	  __FILE__, dmeminfo, g);
 }

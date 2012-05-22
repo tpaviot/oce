@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <DsgPrs_LengthPresentation.ixx>
 #include <gp_Lin.hxx>
 #include <gp_Dir.hxx>
@@ -384,7 +402,7 @@ void DsgPrs_LengthPresentation::Add( const Handle(Prs3d_Presentation)& aPresenta
   Alpha  = Abs( deltaU );
   if (Alpha > Precision::Angular() && Alpha<Precision::Infinite())
     {
-      NodeNumber = Max( 4 , Standard_Integer (50. * Alpha / PI) );
+      NodeNumber = Max( 4 , Standard_Integer (50. * Alpha / M_PI) );
       Graphic3d_Array1OfVertex ApproxCurve( 1, NodeNumber );
       delta = deltaU / (Standard_Real)( NodeNumber - 1 );
       gp_Pnt CurPnt;
@@ -399,7 +417,7 @@ void DsgPrs_LengthPresentation::Add( const Handle(Prs3d_Presentation)& aPresenta
   Alpha  = Abs( deltaV );
   if (Alpha > Precision::Angular() && Alpha<Precision::Infinite())
     {
-      NodeNumber = Max( 4 , Standard_Integer (50. * Alpha / PI) );
+      NodeNumber = Max( 4 , Standard_Integer (50. * Alpha / M_PI) );
       Graphic3d_Array1OfVertex ApproxCurve( 1, NodeNumber );
       delta = deltaV / (Standard_Real)( NodeNumber - 1 );
       gp_Pnt CurPnt;

@@ -125,6 +125,8 @@ public:
   
   Standard_EXPORT   static  void VoxelCommands(Draw_Interpretor& theCommands) ;
   
+  Standard_EXPORT   static  void OpenGlCommands(Draw_Interpretor& theCommands) ;
+  
   Standard_EXPORT   static  void GetMousePosition(Standard_Integer& xpix,Standard_Integer& ypix) ;
   
   Standard_EXPORT   static  Handle_V3d_Viewer GetViewerFromContext() ;

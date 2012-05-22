@@ -1,4 +1,20 @@
-// File:        GeomToIGES_GeomSurface.cxx
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // modif du 22/10/96 mjm
 // ajout du champ TheLength
@@ -87,7 +103,7 @@
 #include <IGESSolid_ToroidalSurface.hxx>
 #include <Geom_TrimmedCurve.hxx>
 
-  
+
 //=============================================================================
 // GeomToIGES_GeomSurface
 //=============================================================================
@@ -582,7 +598,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
   //Surf->Init (Axis, Generatrix, U1, U2);
   Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
-  Surf->Init (Axis, Generatrix, 2 * PI - U2, 2 * PI - U1);
+  Surf->Init (Axis, Generatrix, 2 * M_PI - U2, 2 * M_PI - U1);
 
 
   // creation de la Trsf (#124)
@@ -660,7 +676,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   //Axis->Init(gp_XYZ(0.0, 0.0, 0.0), gp_XYZ(0.0, 0.0, 1.0/GetUnit()));
   //Surf->Init (Axis, Generatrix, U1, U2);
   Axis->Init(gp_XYZ (0, 0, 1. / GetUnit()), gp_XYZ (0, 0, 0));  
-  Surf->Init (Axis, Generatrix, 2 * PI - U2, 2 * PI - U1);
+  Surf->Init (Axis, Generatrix, 2 * M_PI - U2, 2 * M_PI - U1);
 
 
   // creation de la Trsf (#124)
@@ -735,7 +751,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
 
   if ( Gen->IsKind(STANDARD_TYPE(IGESGeom_CircularArc))) {
     //#30 rln 19.10.98 Surf->Init (Axis, Gen, U1, U2);
-    Surf->Init (Axis, Gen, 2 * PI - U2, 2 * PI - U1);
+    Surf->Init (Axis, Gen, 2 * M_PI - U2, 2 * M_PI - U1);
     IGESConvGeom_GeomBuilder Build;
     Standard_Real xloc,yloc,zloc;
     start->Sphere().Location().Coord(xloc,yloc,zloc);
@@ -801,7 +817,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
 
 //:l6 abv: CTS22022: writing full tori:  if ( Gen->IsKind(STANDARD_TYPE(IGESGeom_CircularArc))) {
     //#30 rln 19.10.98 Surf->Init (Axis, Gen, U1, U2);
-    Surf->Init (Axis, Gen, 2 * PI - U2, 2 * PI - U1);
+    Surf->Init (Axis, Gen, 2 * M_PI - U2, 2 * M_PI - U1);
     IGESConvGeom_GeomBuilder Build;
 /* //:l6: useless
     Standard_Real xloc,yloc,zloc;
@@ -988,7 +1004,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferSurface
   Axis->Init(gp_XYZ(X1/GetUnit(),Y1/GetUnit(),Z1/GetUnit()),
 	     gp_XYZ( (X1 - X2) / GetUnit(), (Y1 - Y2) / GetUnit(), (Z1 - Z2) / GetUnit()));
 
-  Surf->Init (Axis, Generatrix, 2 * PI - U2, 2 * PI - U1);
+  Surf->Init (Axis, Generatrix, 2 * M_PI - U2, 2 * M_PI - U1);
   res = Surf;
   return res;
 
@@ -1172,7 +1188,7 @@ Handle(IGESData_IGESEntity) GeomToIGES_GeomSurface::TransferConicalSurface(const
   Handle(Geom_Direction) rdir = new Geom_Direction(XDir);//XAxe.Direction()); 
   Handle(IGESGeom_Direction) refdir = GV.TransferVector(rdir);
 
-  ConSurf->Init (aLocation, Axis, radius, angle*180./PI, refdir);
+  ConSurf->Init (aLocation, Axis, radius, angle*180./M_PI, refdir);
   res = ConSurf;
   return res;
 }

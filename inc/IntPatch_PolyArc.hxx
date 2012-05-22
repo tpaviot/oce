@@ -19,9 +19,6 @@
 #ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
 #endif
-#ifndef _Bnd_Box2d_HeaderFile
-#include <Bnd_Box2d.hxx>
-#endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
@@ -65,11 +62,7 @@ public:
 //!          None of these parameters can be infinite. <br>
   Standard_EXPORT   IntPatch_PolyArc(const Handle(Adaptor2d_HCurve2d)& A,const Standard_Integer NbSample,const Standard_Real Pfirst,const Standard_Real Plast,const Bnd_Box2d& BoxOtherPolygon);
   
-  Standard_EXPORT    const Bnd_Box2d& Bounding() const;
-  
-  Standard_EXPORT     Standard_Real Error() const;
-  
-  Standard_EXPORT     Standard_Boolean Closed() const;
+  Standard_EXPORT   virtual  Standard_Boolean Closed() const;
   
   Standard_EXPORT     Standard_Integer NbPoints() const;
   
@@ -95,8 +88,6 @@ private:
 
 TColgp_Array1OfPnt2d brise;
 TColStd_Array1OfReal param;
-Bnd_Box2d boite;
-Standard_Real fleche;
 Standard_Real offsetx;
 Standard_Real offsety;
 Standard_Boolean ferme;

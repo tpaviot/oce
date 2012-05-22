@@ -1,7 +1,23 @@
-// File:	Plate_Plate.cxx
-// Created:	Thu Oct 19 19:28:16 1995
-// Author:	Andre LIEUTIER
-//		<ds@sgi63>
+// Created on: 1995-10-19
+// Created by: Andre LIEUTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // 26-Mar-96 : xab : inclusion des inlines trop gros 
 // 15-Oct-96 : alr : extraction des inlines (pas tous ceux inclus par xab)
 // 19-Fev-97 : jct : ajout des methodes UVBox et UVConstraints (G1134)
@@ -25,11 +41,15 @@
 //purpose  : 
 //=======================================================================
 
-Plate_Plate::Plate_Plate() : 
-   order(0), n_el(0), n_dim(0),
-   solution(0),points(0),deru(0),derv(0),
-   OK(Standard_False),maxConstraintOrder(0)
-
+Plate_Plate::Plate_Plate()
+: order(0), n_el(0), n_dim(0),
+  solution(0),points(0),deru(0),derv(0),
+  OK(Standard_False),maxConstraintOrder(0),
+  Uold (1.e20),
+  Vold (1.e20),
+  U2 (0.0),
+  R (0.0),
+  L (0.0)
 {
   PolynomialPartOnly = Standard_False;
 }
@@ -39,10 +59,15 @@ Plate_Plate::Plate_Plate() :
 //purpose  : 
 //=======================================================================
 
-Plate_Plate::Plate_Plate(const Plate_Plate& Ref) :
-   order(Ref.order),n_el(Ref.n_el),n_dim(Ref.n_dim),
-   solution(0),points(0),deru(0),derv(0),
-   OK(Ref.OK)
+Plate_Plate::Plate_Plate(const Plate_Plate& Ref)
+: order(Ref.order),n_el(Ref.n_el),n_dim(Ref.n_dim),
+  solution(0),points(0),deru(0),derv(0),
+  OK (Ref.OK),
+  Uold (1.e20),
+  Vold (1.e20),
+  U2 (0.0),
+  R (0.0),
+  L (0.0)
 {
   Standard_Integer i;
   if (Ref.OK) {
@@ -1042,19 +1067,10 @@ gp_XYZ Plate_Plate::EvaluateDerivative(const gp_XY& point2d, const Standard_Inte
 // of Laplcian at the power order
 //=======================================================================
 
-  static Standard_Real Uold = 1.e20;
-  static Standard_Real Vold = 1.e20;
-  static Standard_Real U2=0;
-  static Standard_Real R=0;
-  static Standard_Real L=0;
-
 
 Standard_Real Plate_Plate::SolEm(const gp_XY& point2d, const Standard_Integer iu, const Standard_Integer iv) const 
 {
-//  Standard_Real U2;
-//  Standard_Real R;
-//  Standard_Real L;
-//
+  Plate_Plate* aThis = const_cast<Plate_Plate*>(this);
   Standard_Real U,V;
   Standard_Integer IU,IV;
 
@@ -1081,18 +1097,18 @@ Standard_Real Plate_Plate::SolEm(const gp_XY& point2d, const Standard_Integer iu
      }
   else
     {
-        Uold = U;
- 	Vold = V;
-  	U2 = U*U;
-  	R = U2+V*V;
+        aThis->Uold = U;
+ 	aThis->Vold = V;
+  	aThis->U2 = U*U;
+  	aThis->R = U2+V*V;
   	if (R<1.e-20) return 0;
-   	L = log(R);
+   	aThis->L = log(R);
       }
   Standard_Real DUV = 0;
 
   Standard_Integer m = order;
   Standard_Integer mm1 = m-1;
-  Standard_Real &r = R;
+  Standard_Real &r = aThis->R;
 
 
   //Standard_Real pr = pow(R, mm1 - IU - IV);

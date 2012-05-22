@@ -1,4 +1,21 @@
-// File gp_Vec2d.lxx  , REG 27/10/90
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modif JCV 08/01/91 modifs suite a la deuxieme revue de projet
 // et introduction des classes XY, Mat2d + nouveau operateurs
 
@@ -62,7 +79,7 @@ inline Standard_Boolean gp_Vec2d::IsNormal
 {
   Standard_Real Ang = Angle(Other);
   if (Ang < 0) Ang = - Ang;
-  Ang = Standard_PI / 2.0 - Angle(Other);
+  Ang = M_PI / 2.0 - Angle(Other);
   if (Ang < 0) Ang = - Ang;
   return  Ang <= AngularTolerance;
 }    
@@ -73,7 +90,7 @@ inline Standard_Boolean gp_Vec2d::IsOpposite
 {
   Standard_Real Ang = Angle(Other);
   if (Ang < 0) Ang = - Ang;
-  return Standard_PI - Ang <= AngularTolerance;
+  return M_PI - Ang <= AngularTolerance;
 }    
 
 inline Standard_Boolean gp_Vec2d::IsParallel
@@ -82,7 +99,7 @@ inline Standard_Boolean gp_Vec2d::IsParallel
 {
   Standard_Real Ang = Angle(Other);
   if (Ang < 0) Ang = - Ang;
-  return   Ang <= AngularTolerance || Standard_PI - Ang <= AngularTolerance;
+  return   Ang <= AngularTolerance || M_PI - Ang <= AngularTolerance;
 }    
 
 inline Standard_Real gp_Vec2d::Magnitude() const

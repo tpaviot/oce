@@ -1,19 +1,57 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Interface_BitMap.ixx>
 #include <TCollection_AsciiString.hxx>
 #include <Standard_NotImplemented.hxx>
 
+Interface_BitMap::Interface_BitMap()
+{
+  Initialize(0);
+}
 
-    Interface_BitMap::Interface_BitMap
-  (const Standard_Integer nbitems, const Standard_Integer resflags)
+
+Interface_BitMap::Interface_BitMap
+(const Standard_Integer nbitems, const Standard_Integer resflags)
+{
+  Initialize(nbitems,resflags);
+}
+
+void Interface_BitMap::Initialize(const Standard_Integer nbitems, const Standard_Integer resflags)
 {
   thenbitems = nbitems;
   thenbwords = nbitems/32 + 1;
   thenbflags = 0;
-  theflags   = new TColStd_HArray1OfInteger (0,thenbwords*(resflags+1));  theflags->Init(0);
+  if(nbitems)
+  {
+    theflags   = new TColStd_HArray1OfInteger (0,thenbwords*(resflags+1));  
+    theflags->Init(0);
+  }
 }
 
-    Interface_BitMap::Interface_BitMap
-  (const Interface_BitMap& other, const Standard_Boolean copied)
+Interface_BitMap::Interface_BitMap
+(const Interface_BitMap& other, const Standard_Boolean copied)
+{
+ 
+  Initialize(other,copied);
+}
+
+void Interface_BitMap::Initialize(const Interface_BitMap& other,
+                                  const Standard_Boolean copied)
 {
   other.Internals (thenbitems,thenbwords,thenbflags,theflags,thenames);
   if (!copied) return;
@@ -31,18 +69,18 @@
   thenames = names;
 }
 
-    void  Interface_BitMap::Internals
-  (Standard_Integer& nbitems, Standard_Integer& nbwords,
-   Standard_Integer& nbflags,
-   Handle(TColStd_HArray1OfInteger)& flags,
-   Handle(TColStd_HSequenceOfAsciiString)& names) const
+void  Interface_BitMap::Internals
+(Standard_Integer& nbitems, Standard_Integer& nbwords,
+ Standard_Integer& nbflags,
+ Handle(TColStd_HArray1OfInteger)& flags,
+ Handle(TColStd_HSequenceOfAsciiString)& names) const
 {
   nbitems = thenbitems;  nbwords = thenbwords;  nbflags = thenbflags;
   flags = theflags;  names = thenames;
 }
 
 
-    void  Interface_BitMap::Reservate (const Standard_Integer moreflags)
+void  Interface_BitMap::Reservate (const Standard_Integer moreflags)
 {
   Standard_Integer nb = theflags->Upper ();
   Standard_Integer nbflags = nb / thenbwords - 1;    // flag 0 non compte ...
@@ -57,7 +95,7 @@
 }
 
 
-    void  Interface_BitMap::SetLength (const Standard_Integer nbitems)
+void  Interface_BitMap::SetLength (const Standard_Integer nbitems)
 {
   Standard_Integer nbw = nbitems/32 + 1;
   if (nbw == thenbwords) return;
@@ -77,7 +115,7 @@
 }
 
 
-    Standard_Integer  Interface_BitMap::AddFlag (const Standard_CString name)
+Standard_Integer  Interface_BitMap::AddFlag (const Standard_CString name)
 {
   Reservate(1);
   Standard_Integer deja = 0;
@@ -86,7 +124,7 @@
     Standard_Integer i, nb = thenames->Length();
     for (i = 1; i <= nb; i ++) {
       if (thenames->Value(i).IsEqual("."))
-	{  thenames->ChangeValue(i).AssignCat(name);  deja = i;  }
+      {  thenames->ChangeValue(i).AssignCat(name);  deja = i;  }
     }
   }
   if (!deja) thenames->Append (TCollection_AsciiString(name));
@@ -94,8 +132,8 @@
   return (deja ? deja : thenbflags);
 }
 
-    Standard_Integer  Interface_BitMap::AddSomeFlags
-  (const Standard_Integer more)
+Standard_Integer  Interface_BitMap::AddSomeFlags
+(const Standard_Integer more)
 {
   Reservate(more);
   if (thenames.IsNull()) thenames = new TColStd_HSequenceOfAsciiString();
@@ -105,8 +143,8 @@
   return thenbflags;
 }
 
-    Standard_Boolean  Interface_BitMap::RemoveFlag
-  (const Standard_Integer num)
+Standard_Boolean  Interface_BitMap::RemoveFlag
+(const Standard_Integer num)
 {
   if (num < 1 || num > thenames->Length()) return Standard_False;
   if (num == thenames->Length()) thenames->Remove (thenames->Length());
@@ -115,8 +153,8 @@
   return Standard_True;
 }
 
-    Standard_Boolean  Interface_BitMap::SetFlagName
-  (const Standard_Integer num, const Standard_CString name)
+Standard_Boolean  Interface_BitMap::SetFlagName
+(const Standard_Integer num, const Standard_CString name)
 {
   if (num < 1 || num > thenames->Length()) return Standard_False;
   Standard_Integer deja = (name[0] == '\0' ? 0 : FlagNumber (name) );
@@ -125,22 +163,22 @@
   return Standard_True;
 }
 
-    Standard_Integer  Interface_BitMap::NbFlags () const
-      {  return thenbflags;  }
+Standard_Integer  Interface_BitMap::NbFlags () const
+{  return thenbflags;  }
 
-    Standard_Integer  Interface_BitMap::Length () const
-      {  return thenbitems;  }
+Standard_Integer  Interface_BitMap::Length () const
+{  return thenbitems;  }
 
-    Standard_CString  Interface_BitMap::FlagName
-  (const Standard_Integer num) const
+Standard_CString  Interface_BitMap::FlagName
+(const Standard_Integer num) const
 {
   if (theflags.IsNull()) return "";
   if (num < 1 || num > thenames->Length()) return "";
   return thenames->Value(num).ToCString();
 }
 
-    Standard_Integer  Interface_BitMap::FlagNumber
-  (const Standard_CString name) const
+Standard_Integer  Interface_BitMap::FlagNumber
+(const Standard_CString name) const
 {
   if (name[0] == '\0') return 0;
   if (thenames.IsNull()) return 0;
@@ -153,8 +191,8 @@
 
 //  Les valeurs ...
 
-    Standard_Boolean  Interface_BitMap::Value
-  (const Standard_Integer item, const Standard_Integer flag) const
+Standard_Boolean  Interface_BitMap::Value
+(const Standard_Integer item, const Standard_Integer flag) const
 {
   Standard_Integer numw = (thenbwords * flag) + (item >> 5);
   const Standard_Integer& val  = theflags->Value (numw);
@@ -164,24 +202,24 @@
   return ( ((1 << numb) & val) != 0);
 }
 
-    void  Interface_BitMap::SetValue
-  (const Standard_Integer item, const Standard_Boolean val,
-   const Standard_Integer flag) const
+void  Interface_BitMap::SetValue
+(const Standard_Integer item, const Standard_Boolean val,
+ const Standard_Integer flag) const
 {
   if (val) SetTrue  (item,flag);
   else     SetFalse (item,flag);
 }
 
-    void  Interface_BitMap::SetTrue
-  (const Standard_Integer item, const Standard_Integer flag) const
+void  Interface_BitMap::SetTrue
+(const Standard_Integer item, const Standard_Integer flag) const
 {
   Standard_Integer numw = (thenbwords * flag) + (item >> 5);
   Standard_Integer numb = item & 31;
   theflags->ChangeValue (numw) |=   (1 << numb);
 }
 
-    void  Interface_BitMap::SetFalse
-  (const Standard_Integer item, const Standard_Integer flag) const
+void  Interface_BitMap::SetFalse
+(const Standard_Integer item, const Standard_Integer flag) const
 {
   Standard_Integer numw = (thenbwords * flag) + (item >> 5);
   Standard_Integer& val = theflags->ChangeValue (numw);
@@ -190,8 +228,8 @@
   theflags->ChangeValue (numw) &= ~(1 << numb);
 }
 
-    Standard_Boolean  Interface_BitMap::CTrue
-  (const Standard_Integer item, const Standard_Integer flag) const
+Standard_Boolean  Interface_BitMap::CTrue
+(const Standard_Integer item, const Standard_Integer flag) const
 {
   Standard_Integer numw = (thenbwords * flag) + (item >> 5);
   Standard_Integer numb = item & 31;
@@ -203,8 +241,8 @@
   return (res != 0);
 }
 
-   Standard_Boolean  Interface_BitMap::CFalse
-  (const Standard_Integer item, const Standard_Integer flag) const
+Standard_Boolean  Interface_BitMap::CFalse
+(const Standard_Integer item, const Standard_Integer flag) const
 {
   Standard_Integer numw = (thenbwords * flag) + (item >> 5);
   Standard_Integer numb = item & 31;
@@ -217,11 +255,17 @@
 }
 
 
-    void  Interface_BitMap::Init
-  (const Standard_Boolean val, const Standard_Integer flag) const
+void  Interface_BitMap::Init
+(const Standard_Boolean val, const Standard_Integer flag) const
 {
   Standard_Integer i, ii = thenbwords, i1 = thenbwords *flag;
   if (flag < 0)  {  i1 = 0;  ii = thenbwords*(thenbflags+1);  }
   if (val)  for (i = 0; i < ii; i ++) theflags->SetValue (i1+i,~(0));
   else      for (i = 0; i < ii; i ++) theflags->SetValue (i1+i,  0 );
+}
+
+void Interface_BitMap::Clear()
+{
+  theflags.Nullify();
+  Initialize(0);
 }

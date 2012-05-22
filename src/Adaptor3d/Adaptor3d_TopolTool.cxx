@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_NotImplemented.hxx>
 #include <Adaptor3d_TopolTool.ixx>
@@ -24,13 +41,13 @@ static void GetConeApexParam(const gp_Cone& C, Standard_Real& U, Standard_Real& 
     U = 0.0;
   }
   else if ( -Radius > Ploc.Z()* Tan(SAngle) ) {
-    // le point est du `mauvais` cote de l`apex
+    // the point is at the `wrong` side of the apex
     U = atan2(-Ploc.Y(), -Ploc.X());
   }
   else {
     U = atan2(Ploc.Y(),Ploc.X());
   }
-  if      (U < -1.e-16)  U += (PI+PI);
+  if      (U < -1.e-16)  U += (M_PI+M_PI);
   else if (U < 0)        U = 0;
 
   V =  sin(SAngle) * ( Ploc.X() * cos(U) + Ploc.Y() * sin(U) - Radius)
@@ -60,7 +77,7 @@ void Adaptor3d_TopolTool::Initialize (const Handle(Adaptor3d_HSurface)& S)
   //Adaptor2d_Line2d  * Line2dPtr ;
 
   myNbSamplesU=-1;
-  Uinf = S->FirstUParameter(); // ou UIntervalFirst ??
+  Uinf = S->FirstUParameter(); // where UIntervalFirst ??
   Vinf = S->FirstVParameter();
   Usup = S->LastUParameter();
   Vsup = S->LastVParameter();
@@ -580,7 +597,7 @@ static void Analyse(const TColgp_Array2OfPnt& array2,
 		  C.Y()-B.Y()-B.Y()+A.Y(),
 		  C.Z()-B.Z()-B.Z()+A.Z());
       Standard_Integer locnbch=0;
-      for(j=3; j<nbvp;j++) {  //-- essai
+      for(j=3; j<nbvp;j++) {  //-- try
 	const gp_Pnt& A1=array2.Value(i,j-1);
 	const gp_Pnt& B1=array2.Value(i,j);
 	const gp_Pnt& C1=array2.Value(i,j+1);
@@ -611,7 +628,7 @@ static void Analyse(const TColgp_Array2OfPnt& array2,
 		  C.Y()-B.Y()-B.Y()+A.Y(),
 		  C.Z()-B.Z()-B.Z()+A.Z());
       Standard_Integer locnbch=0;
-      for(i=3; i<nbup;i++) {  //-- essai
+      for(i=3; i<nbup;i++) {  //-- try
 	const gp_Pnt& A1=array2.Value(i-1,j);
 	const gp_Pnt& B1=array2.Value(i,j);
 	const gp_Pnt& C1=array2.Value(i+1,j);
@@ -665,7 +682,7 @@ void Adaptor3d_TopolTool::ComputeSamplePoints() {
   default:                            { nbsu = 10; nbsv=10; }    break;
   }
   
-  //-- Si le nb de points est trop grand   on analyse 
+  //-- If the number of points is too great... analyze 
   //-- 
   //-- 
   
@@ -765,7 +782,6 @@ Standard_Boolean Adaptor3d_TopolTool::DomainIsInfinite() {
   if(Precision::IsPositiveInfinite(Vsup)) return(Standard_True);
   return(Standard_False);
 }
-//modified by NIZNHY-PKV Mon Apr 23 16:00:31 2001 f
 //=======================================================================
 //function : Edge
 //purpose  : 
@@ -774,8 +790,6 @@ Standard_Boolean Adaptor3d_TopolTool::DomainIsInfinite() {
 {
   return NULL;
 } 
-//modified by NIZNHY-PKV Mon Apr 23 16:00:35 2001 t
-
 //=======================================================================
 //function : Has3d
 //purpose  : 
@@ -863,7 +877,7 @@ void Adaptor3d_TopolTool::SamplePnts(const Standard_Real theDefl,
 //     break;
 //   case GeomAbs_BSplineSurface: {
   if(typS == GeomAbs_BSplineSurface) {
-    // Treatment BSpline surface 
+    // Processing BSpline surface 
     BSplSamplePnts(theDefl, theNUmin, theNVmin);
     return;
   }
@@ -1211,8 +1225,52 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
     myNbSamplesV = myMinPnts;
     aVFlg(j) = Standard_True;
   }
-
- 
+  //
+  //modified by NIZNHY-PKV Fri Dec 16 10:05:01 2011f
+  //
+  Standard_Boolean bFlag;
+  //
+  // U 
+  bFlag=(myNbSamplesU < theNUmin);
+  if (bFlag) {
+    myNbSamplesU=nbsu;
+  }
+  //
+  myUPars = new TColStd_HArray1OfReal(1, myNbSamplesU);
+  //
+  for(j = 0, i = 1; i <= nbsu; ++i) {
+    if (bFlag) {
+       myUPars->SetValue(i,anUPars(i));
+    }
+    else {
+      if(anUFlg(i)) {
+	++j;
+	myUPars->SetValue(j,anUPars(i));
+      }
+    }
+  }
+  //
+  // V 
+  bFlag=(myNbSamplesV < theNVmin);
+  if (bFlag) {
+    myNbSamplesV=nbsv;
+  }
+  //
+  myVPars = new TColStd_HArray1OfReal(1, myNbSamplesV);
+  //
+  for(j = 0, i = 1; i <= nbsv; ++i) {
+    if (bFlag) {
+       myVPars->SetValue(i,aVPars(i));
+    }
+    else {
+      if(aVFlg(i)) {
+	++j;
+	myVPars->SetValue(j,aVPars(i));
+      }
+    }
+  }
+  //
+  /*
   myUPars = new TColStd_HArray1OfReal(1, myNbSamplesU);
   myVPars = new TColStd_HArray1OfReal(1, myNbSamplesV);
 
@@ -1231,10 +1289,15 @@ void Adaptor3d_TopolTool::BSplSamplePnts(const Standard_Real theDefl,
       myVPars->SetValue(j,aVPars(i));
     }
   }
- 
+  */
+  //modified by NIZNHY-PKV Mon Dec 26 12:25:35 2011t
 
 }
 
+//=======================================================================
+//function : IsUniformSampling
+//purpose  : 
+//=======================================================================
 Standard_Boolean Adaptor3d_TopolTool::IsUniformSampling() const
 {
   GeomAbs_SurfaceType typS = myS->GetType();

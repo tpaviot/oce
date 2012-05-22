@@ -19,14 +19,17 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
-#include <TColStd_Array1OfInteger.hxx>
+#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
+#include <Handle_TColStd_HArray1OfInteger.hxx>
 #endif
 #ifndef _Interface_BitMap_HeaderFile
 #include <Interface_BitMap.hxx>
 #endif
-#ifndef _Interface_IntList_HeaderFile
-#include <Interface_IntList.hxx>
+#ifndef _Handle_TColStd_HArray1OfListOfInteger_HeaderFile
+#include <Handle_TColStd_HArray1OfListOfInteger.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
@@ -34,14 +37,14 @@
 #ifndef _Handle_Interface_GTool_HeaderFile
 #include <Handle_Interface_GTool.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
 #ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
+#endif
+#ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
+#include <Handle_TColStd_HSequenceOfTransient.hxx>
 #endif
 #ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
@@ -50,14 +53,16 @@
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
 class Interface_InterfaceModel;
+class TColStd_HArray1OfInteger;
+class TColStd_HArray1OfListOfInteger;
 class Standard_DomainError;
 class Interface_GeneralLib;
 class Interface_Protocol;
 class Interface_GTool;
-class Interface_IntList;
 class Standard_Transient;
 class Interface_BitMap;
 class Interface_EntityIterator;
+class TColStd_HSequenceOfTransient;
 class Standard_Type;
 class TCollection_HAsciiString;
 
@@ -102,20 +107,17 @@ public:
 //!           Entities to work with are contained in <amodel> <br>
 //!           Basic Shared and Sharing lists are obtained from a General <br>
 //!           Services Library, given directly as an argument <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib);
+  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib,const Standard_Boolean theModeStats = Standard_True);
   //! Same as above, but the Library is defined through a Protocol <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol);
+  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol,const Standard_Boolean theModeStats = Standard_True);
   //! Same as above, but the Library is defined through a Protocol <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_GTool)& gtool);
+  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_GTool)& gtool,const Standard_Boolean theModeStats = Standard_True);
   //! Same a above but works with the Protocol recorded in the Model <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel);
+  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Standard_Boolean theModeStats = Standard_True);
   //! Creates a Graph from another one, getting all its data <br>
 //!           Remark that status are copied from <agraph>, but the other <br>
 //!           lists (sharing/shared) are copied only if <copied> = True <br>
   Standard_EXPORT   Interface_Graph(const Interface_Graph& agraph,const Standard_Boolean copied = Standard_False);
-  //! Reevaluates the Sharing Lists of the Graph, starting from the <br>
-//!           Shared Lists (priority to the redefined ones) <br>
-  Standard_EXPORT     void EvalSharings() ;
   //! Erases data, making graph ready to rebegin from void <br>
 //!           (also resets Shared lists redefinitions) <br>
   Standard_EXPORT     void Reset() ;
@@ -124,6 +126,8 @@ public:
   Standard_EXPORT     void ResetStatus() ;
   //! Returns size (max nb of entities, i.e. Model's nb of entities) <br>
   Standard_EXPORT     Standard_Integer Size() const;
+  //! Returns size of array of statuses <br>
+  Standard_EXPORT     Standard_Integer NbStatuses() const;
   //! Returns the Number of the entity in the Map, computed at <br>
 //!           creation time (Entities loaded from the Model) <br>
 //!           Returns 0 if <ent> not contained by Model used to create <me> <br>
@@ -141,8 +145,6 @@ public:
   Standard_EXPORT    const Handle_Standard_Transient& Entity(const Standard_Integer num) const;
   //! Returns Status associated to a numero (only to read it) <br>
   Standard_EXPORT     Standard_Integer Status(const Standard_Integer num) const;
-  //! Returns Status associated to a numero, to be read or changed <br>
-  Standard_EXPORT     Standard_Integer& CStatus(const Standard_Integer num) ;
   //! Modifies Status associated to a numero <br>
   Standard_EXPORT     void SetStatus(const Standard_Integer num,const Standard_Integer stat) ;
   //! Clears Entity and sets Status to 0, for a numero <br>
@@ -197,25 +199,17 @@ public:
 //!           Remark : apart from the status HasShareError, these items <br>
 //!           are ignored <br>
   Standard_EXPORT     Standard_Boolean HasShareErrors(const Handle(Standard_Transient)& ent) const;
-  //! Returns True if Shared list of <ent> has been redefined <br>
-//!           (Thus, Shareds from Graph gives a result different from <br>
-//!            general service Shareds) <br>
-  Standard_EXPORT     Standard_Boolean HasRedefinedShareds(const Handle(Standard_Transient)& ent) const;
+  //! Returns the sequence of Entities Shared by an Entity <br>
+  Standard_EXPORT     Handle_TColStd_HSequenceOfTransient GetShareds(const Handle(Standard_Transient)& ent) const;
   //! Returns the list of Entities Shared by an Entity, as recorded <br>
 //!           by the Graph. That is, by default Basic Shared List, else it <br>
 //!           can be redefined by methods SetShare, SetNoShare ... see below <br>
   Standard_EXPORT     Interface_EntityIterator Shareds(const Handle(Standard_Transient)& ent) const;
-  //! Same as Shareds, but under the form of a list of Integers, <br>
-//!           each one beeing the Number of a Shared Entity in the Graph <br>
-//!           Especially intended for fast internal uses <br>
-//!           Returns a Null Handle if <num> is not contained by <themodel> <br>
-  Standard_EXPORT     Interface_IntList SharedNums(const Standard_Integer num) const;
   //! Returns the list of Entities which Share an Entity, computed <br>
 //!           from the Basic or Redefined Shared Lists <br>
   Standard_EXPORT     Interface_EntityIterator Sharings(const Handle(Standard_Transient)& ent) const;
-  //! Same as Sharings, but under the form of a list of Integers <br>
-//!           each one beeing the Number of a Sharing Entity in the Graph <br>
-  Standard_EXPORT     Interface_IntList SharingNums(const Standard_Integer num) const;
+  //! Returns the sequence of Entities Sharings by an Entity <br>
+  Standard_EXPORT     Handle_TColStd_HSequenceOfTransient GetSharings(const Handle(Standard_Transient)& ent) const;
   //! Returns the list of sharings entities, AT ANY LEVEL, which are <br>
 //!           kind of a given type. A sharing entity kind of this type <br>
 //!           ends the exploration of its branch <br>
@@ -223,42 +217,16 @@ public:
   //! Returns the Entities which are not Shared (their Sharing List <br>
 //!           is empty) in the Model <br>
   Standard_EXPORT     Interface_EntityIterator RootEntities() const;
-  //! Sets explicit the shared list of an Entity <ent>, that is, <br>
-//!           available for a further edit (Add/Remove). All SetShare and <br>
-//!           SetNoShare methods allow further edit operations. <br>
-//!           Effect cancelled by ResetShare <br>
-//!           Remark that all Redefinition methods work on Shared Lists, <br>
-//!           but also manage (update) the Sharing Lists <br>
-  Standard_EXPORT     void SetShare(const Handle(Standard_Transient)& ent) ;
-  //! Sets as Shared list of an Entity <ent> considered by <me>, <br>
-//!           the list given as an EntityIterator <iter>. It can be empty. <br>
-//!           This list will now be considered by method Shareds above <br>
-//!           Does nothing if <ent> is not contained by <themodel> <br>
-  Standard_EXPORT     void SetShare(const Handle(Standard_Transient)& ent,const Interface_EntityIterator& list) ;
-  //! Same as above, but the list is given as the list of Numbers <br>
-//!           of the Entities shared by <ent> <br>
-  Standard_EXPORT     void SetShare(const Handle(Standard_Transient)& ent,const Interface_IntList& list) ;
-  //! Sets the Shared list of an Entity considered in <me> as beeing <br>
-//!           Empty (if <ent> is contained by <themodel>) <br>
-  Standard_EXPORT     void SetNoShare(const Handle(Standard_Transient)& ent) ;
-  //! Sets the Shared lists of a list of Entities to be Empty <br>
-  Standard_EXPORT     void SetNoShare(const Interface_EntityIterator& list) ;
-  //! Adds a shared Entity to a redefined Shared List (formerly <br>
-//!           defined by SetShare or SetNoShare). Does nothing if already in <br>
-  Standard_EXPORT     void AddShared(const Handle(Standard_Transient)& ent,const Handle(Standard_Transient)& shared) ;
-  //! Removes a shared Entity from a redefined Shared List (formerly <br>
-//!           defined ...). Does nothing if <shared> no in the list <br>
-  Standard_EXPORT     void RemoveShared(const Handle(Standard_Transient)& ent,const Handle(Standard_Transient)& shared) ;
-  //! Comes back to the standard Shared list for <ent> : Cancels all <br>
-//!           the former redefinitions for it <br>
-  Standard_EXPORT     void ResetShare(const Handle(Standard_Transient)& ent) ;
-  //! Clears all effects of former redefinition of Shared lists <br>
-  Standard_EXPORT     void ResetAllShare() ;
   //! Determines the name attached to an entity, by using the <br>
 //!           general service Name in GeneralModule <br>
 //!           Returns a null handle if no name could be computed or if <br>
 //!           the entity is not in the model <br>
   Standard_EXPORT     Handle_TCollection_HAsciiString Name(const Handle(Standard_Transient)& ent) const;
+  //! Returns the Table of Sharing lists. Used to Create <br>
+//!           another Graph from <me> <br>
+  Standard_EXPORT    const Handle_TColStd_HArray1OfListOfInteger& SharingTable() const;
+  //! Returns mode resposible for computation of statuses; <br>
+  Standard_EXPORT     Standard_Boolean ModeStat() const;
 
 
 
@@ -266,8 +234,14 @@ public:
 
 protected:
 
+  //! Initialize statuses and flags <br>
+  Standard_EXPORT     void InitStats() ;
 
 
+Handle_Interface_InterfaceModel themodel;
+TCollection_AsciiString thepresents;
+Handle_TColStd_HArray1OfInteger thestats;
+Handle_TColStd_HArray1OfListOfInteger thesharings;
 
 
 private:
@@ -279,25 +253,10 @@ private:
 //!           Normally, gtool suffices. But if a Graph is created from a <br>
 //!           GeneralLib directly, it cannot be used <br>
 //!           If <gtool> is defined, it has priority <br>
-  Standard_EXPORT     void Evaluate(const Interface_GeneralLib& lib,const Handle(Interface_GTool)& gtool) ;
-  //! Returns the Table of Basic Shared lists. Used to Create <br>
-//!           another Graph from <me> <br>
-  Standard_EXPORT     Interface_IntList BasicSharedTable() const;
-  //! Returns the Table of redefined Shared lists. Used to Create <br>
-//!           another Graph from <me>. Null Handle is no one redefinition <br>
-  Standard_EXPORT     Interface_IntList RedefinedSharedTable() const;
-  //! Returns the Table of Sharing lists. Used to Create <br>
-//!           another Graph from <me> <br>
-  Standard_EXPORT     Interface_IntList SharingTable() const;
+  Standard_EXPORT     void Evaluate() ;
 
 
-Handle_Interface_InterfaceModel themodel;
-TCollection_AsciiString thepresents;
-TColStd_Array1OfInteger thestats;
 Interface_BitMap theflags;
-Interface_IntList theshareds;
-Interface_IntList thesharnews;
-Interface_IntList thesharings;
 
 
 };

@@ -1,5 +1,21 @@
-// File         Graphic3d_ArrayOfPrimitives.cxx
-// Created      16/06/2000 : ATS/GG : G005
+// Created on: 2000-06-16
+// Copyright (c) 2000-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #define TRACE 0
 
@@ -419,7 +435,7 @@ Standard_Boolean Graphic3d_ArrayOfPrimitives::Orientate(
                   myPrimitiveArray->vertices[i3].xyz[1],
                   myPrimitiveArray->vertices[i3].xyz[2]);
         gp_Vec v21(p1,p2),v31(p1,p3),fn = v21.Crossed(v31);
-        if( aNormal.IsOpposite(fn,Standard_PI/4.) ) {
+        if( aNormal.IsOpposite(fn, M_PI / 4.) ) {
           Standard_Integer e; char v;
           for( i=0,j=k-1 ; i<k/2 ; i++,j-- ) {
             e = myPrimitiveArray->edges[n+i];
@@ -436,7 +452,7 @@ Standard_Boolean Graphic3d_ArrayOfPrimitives::Orientate(
               y = myPrimitiveArray->vnormals[e].xyz[1];
               z = myPrimitiveArray->vnormals[e].xyz[2];
               gp_Vec vn(x,y,z);
-              if( aNormal.IsOpposite(vn,Standard_PI/4.) ) {
+              if( aNormal.IsOpposite(vn, M_PI / 4.) ) {
                 myPrimitiveArray->vnormals[e].xyz[0] = -x;
                 myPrimitiveArray->vnormals[e].xyz[1] = -y;
                 myPrimitiveArray->vnormals[e].xyz[2] = -z;
@@ -462,7 +478,7 @@ Standard_Boolean Graphic3d_ArrayOfPrimitives::Orientate(
                   myPrimitiveArray->vertices[n+2].xyz[1],
                   myPrimitiveArray->vertices[n+2].xyz[2]);
       gp_Vec v21(p1,p2),v31(p1,p3),fn = v21.Crossed(v31);
-      if( aNormal.IsOpposite(fn,Standard_PI/4.) ) {
+      if( aNormal.IsOpposite(fn, M_PI / 4.) ) {
         for( i=0,j=k-1 ; i<k/2 ; i++,j-- ) {
           x = myPrimitiveArray->vertices[n+i].xyz[0];
           y = myPrimitiveArray->vertices[n+i].xyz[1];
@@ -488,7 +504,7 @@ Standard_Boolean Graphic3d_ArrayOfPrimitives::Orientate(
             y = myPrimitiveArray->vnormals[n+i].xyz[1];
             z = myPrimitiveArray->vnormals[n+i].xyz[2];
             gp_Vec vn(x,y,z);
-            if( aNormal.IsOpposite(vn,Standard_PI/4.) ) {
+            if( aNormal.IsOpposite(vn, M_PI / 4.) ) {
               myPrimitiveArray->vnormals[n+i].xyz[0] = -x;
               myPrimitiveArray->vnormals[n+i].xyz[1] = -y;
               myPrimitiveArray->vnormals[n+i].xyz[2] = -z;

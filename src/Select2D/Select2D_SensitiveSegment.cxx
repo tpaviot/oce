@@ -1,8 +1,23 @@
-// Copyright: 	Matra-Datavision 1995
-// File:	Select2D_SensitiveSegment.cxx
-// Created:	Thu Jan 26 11:50:08 1995
-// Author:	Mister rmi
-//		<rmi>
+// Created on: 1995-01-26
+// Created by: Mister rmi
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Select2D_SensitiveSegment.ixx>
 #include <Bnd_Box2d.hxx>
@@ -45,10 +60,10 @@ Areas(SelectBasics_ListOfBox2d& boxes)
   
   Standard_Real theangle = (VAxx.Angle(MyVec));
   theangle = Abs(theangle);
-  if(theangle>=PI/2.) theangle-=PI/2;
+  if(theangle>=M_PI/2.) theangle-=M_PI/2;
 
   
-  if(theangle>=PI/12. && theangle <=5*PI/12.)
+  if(theangle>=M_PI/12. && theangle <=5*M_PI/12.)
     {
       TColgp_Array1OfPnt2d BoxPoint (1,mymaxrect+1);
       BoxPoint (1) = mystart;BoxPoint(mymaxrect+1)=myend;
@@ -112,7 +127,7 @@ Matches (const Standard_Real XMin,
   Bnd_Box2d BoundBox;
   BoundBox.Update(XMin-TheTol,YMin-TheTol,XMax+TheTol,YMax+TheTol);
   
-  if (BoundBox.IsOut(mystart)&&BoundBox.IsOut(myend)) return Standard_False;
+  if (BoundBox.IsOut(mystart)||BoundBox.IsOut(myend)) return Standard_False;
   return Standard_True;
 }
 

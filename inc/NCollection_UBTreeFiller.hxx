@@ -1,7 +1,22 @@
-// File:      NCollection_UBTreeFiller.hxx
-// Created:   18.10.02 10:34:57
-// Author:    Michael SAZONOV
-// Copyright: Open CASCADE 2002
+// Created on: 2002-10-18
+// Created by: Michael SAZONOV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_UBTreeFiller_HeaderFile
 #define NCollection_UBTreeFiller_HeaderFile
@@ -47,6 +62,8 @@ template <class TheObjType, class TheBndType> class NCollection_UBTreeFiller
    * Constructor.
    * @param theTree
    *   Tree instance that is to be filled.
+   * @param theAlloc
+   *   Allocator for the Filler data.
    * @param isFullRandom
    *   Takes effect when the number of items is large (order of 50,000). When
    *   it is True, the code uses the maximal randomization allowing a better
@@ -54,8 +71,10 @@ template <class TheObjType, class TheBndType> class NCollection_UBTreeFiller
    *   the tree filling is faster due to better utilisation of CPU L1/L2 cache.
    */ 
   NCollection_UBTreeFiller (UBTree& theTree,
+                            const Handle_NCollection_BaseAllocator& theAlloc=0L,
                             const Standard_Boolean isFullRandom = Standard_True)
-    : myTree(theTree), mySeed(1), myIsFullRandom (isFullRandom)
+    : myTree(theTree), mySeqPtr(1000, theAlloc),
+      mySeed(1), myIsFullRandom (isFullRandom)
     {
 #ifndef _REENTRANT
       // We use srand/rand for a single threaded application
@@ -77,6 +96,12 @@ template <class TheObjType, class TheBndType> class NCollection_UBTreeFiller
    *   the number of objects added to the tree.
    */
   Standard_EXPORT Standard_Integer Fill ();
+
+  /**
+   * Remove all data from Filler, partculary if the Tree no more needed
+   * so the destructor of this Filler should not populate the useless Tree.
+   */
+  void                             Reset()      { mySeqPtr.Clear(); }
 
   /**
    * Check the filled tree for the total number of items and the balance

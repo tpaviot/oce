@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //-----------------------------
 //--  IntWalk_PWalking_1.gxx
 //-- 
@@ -400,6 +418,7 @@ void IntWalk_PWalking::Perform(const TColStd_Array1OfReal& ParDep,
   //xf
   Standard_Integer i, NbPasOKConseq;
   Standard_Real UFirst1, VFirst1, ULast1, VLast1, UFirst2, VFirst2, ULast2, VLast2;
+  Standard_Real pasMaxSV[4], aTmp;
   TColStd_Array1OfReal Param(1,4);
   IntImp_ConstIsoparametric ChoixIso;
   //xt
@@ -1354,7 +1373,7 @@ Standard_Boolean IntWalk_PWalking::ExtendLineInCommonZone(const IntImp_ConstIsop
 	  anIsoDir = gp_Dir2d(1, 0);
 
 	if(aTangentZoneDir.SquareMagnitude() > gp::Resolution()) {
-	  Standard_Real piquota = PI*0.25;
+	  Standard_Real piquota = M_PI*0.25;
 
 	  if(fabs(aTangentZoneDir.Angle(anIsoDir)) > piquota) {
 	    Standard_Integer ii = 1, nextii = 2;

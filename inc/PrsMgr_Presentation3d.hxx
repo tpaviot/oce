@@ -123,6 +123,10 @@ private:
   Standard_EXPORT     Standard_Integer DisplayPriority() const;
   
   Standard_EXPORT     void SetDisplayPriority(const Standard_Integer aNewPrior) ;
+  //! Set Z layer ID for the presentation <br>
+  Standard_EXPORT     void SetZLayer(const Standard_Integer theLayerId) ;
+  //! Get Z layer ID for the presentation <br>
+  Standard_EXPORT     Standard_Integer GetZLayer() const;
   //! removes the whole content of the presentation. <br>
 //!          Does not remove the other connected presentations. <br>
 //! <br>

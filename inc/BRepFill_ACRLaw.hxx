@@ -30,10 +30,9 @@ class TopoDS_Wire;
 class GeomFill_LocationGuide;
 
 
-//! Build Location Law,  with a Wire.   dans le cas du <br>
-//!          contour guide et triedre par Abscisse Curviligne <br>
-//!          Reduite <br>
-//! <br>
+//! Build Location Law,  with a Wire.   In the case <br>
+//!          of guided contour and trihedron by reduced <br>
+//!          curvilinear abscissa <br>
 class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 
 public:

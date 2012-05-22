@@ -1,4 +1,20 @@
-//static const char* sccsid = "@(#)math_FunctionRoots.cxx	3.2 95/01/10"; // Do not delete this line. Used by sccs.
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 //#ifndef DEB
 #define No_Standard_RangeError
@@ -11,6 +27,7 @@
 #include <math_DirectPolynomialRoots.hxx>
 #include <math_FunctionRoots.ixx>
 #include <math_FunctionWithDerivative.hxx>
+#include <TColStd_Array1OfReal.hxx>
 //#ifdef WNT
 #include <stdio.h>
 //#endif
@@ -238,27 +255,26 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
     Standard_Real X=X0;
     Standard_Boolean Ok;
     double dx = (XN-X0)/N;
-    double *ptrval = new Standard_Real [N+1];
+    TColStd_Array1OfReal ptrval(0, N);
     Standard_Integer Nvalid = -1;
     Standard_Real aux = 0;
     for(i=0; i<=N ; i++,X+=dx) { 
       if( X > XN) X=XN;
       Ok=F.Value(X,aux);
-      if(Ok) ptrval[++Nvalid] = aux - K;
-//      ptrval[i]-=K;
+      if(Ok) ptrval(++Nvalid) = aux - K;
+//      ptrval(i)-=K;
     }
     //-- Toute la fonction est nulle ? 
 
     if( Nvalid < N ) {
       Done = Standard_False;
-      delete [] ptrval;
       return;
     }
 
     AllNull=Standard_True;
 //    for(i=0;AllNull && i<=N;i++) { 
     for(i=0;AllNull && i<=N;i++) { 
-      if(ptrval[i]>EpsNull || ptrval[i]<-EpsNull) { 
+      if(ptrval(i)>EpsNull || ptrval(i)<-EpsNull) { 
 	AllNull=Standard_False;
       }
     }
@@ -276,18 +292,18 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
       for(i=0,ip1=1,X=X0;i<N; i++,ip1++,X+=dx) { 
         X2=X+dx;
         if(X2 > XN) X2 = XN;
-	if(ptrval[i]<0.0) { 
-	  if(ptrval[ip1]>0.0) { 
+	if(ptrval(i)<0.0) { 
+	  if(ptrval(ip1)>0.0) { 
 	    //-- --------------------------------------------------
 	    //-- changement de signe dans Xi Xi+1
-	    Solve(F,K,X,ptrval[i],X2,ptrval[ip1],tol,NEpsX,Sol,NbStateSol);
+	    Solve(F,K,X,ptrval(i),X2,ptrval(ip1),tol,NEpsX,Sol,NbStateSol);
 	  }
 	}
 	else { 
-	  if(ptrval[ip1]<0.0) { 
+	  if(ptrval(ip1)<0.0) { 
 	    //-- --------------------------------------------------
 	    //-- changement de signe dans Xi Xi+1
-	    Solve(F,K,X,ptrval[i],X2,ptrval[ip1],tol,NEpsX,Sol,NbStateSol);
+	    Solve(F,K,X,ptrval(i),X2,ptrval(ip1),tol,NEpsX,Sol,NbStateSol);
 	  }
 	}
       }
@@ -298,7 +314,7 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
       //-- Si (F(u0)-K)*(F(u1)-K) <0   on lance une recherche 
       //-- Sinon si (F(u0)-K)*(F(u1)-K) !=0 on insere le point X
       for(i=0; i<=N; i++) { 
-	if(ptrval[i]==0) { 
+	if(ptrval(i)==0) { 
 //	  Standard_Real Val,Deriv;
 	  X=X0+i*dx;
           if (X>XN) X=XN;
@@ -324,10 +340,10 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
       }
       //-- --------------------------------------------------------------------------------
       //-- Il faut traiter differement le cas des points en bout : 
-      if(ptrval[0]<=EpsF && ptrval[0]>=-EpsF) { 
+      if(ptrval(0)<=EpsF && ptrval(0)>=-EpsF) { 
 	AppendRoot(Sol,NbStateSol,X0,F,K,NEpsX);
       }
-      if(ptrval[N]<=EpsF && ptrval[N]>=-EpsF) { 
+      if(ptrval(N)<=EpsF && ptrval(N)>=-EpsF) { 
 	AppendRoot(Sol,NbStateSol,XN,F,K,NEpsX);      
       }
 
@@ -347,8 +363,8 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
       for(i=1,xm=X0+dx; i<N; xm+=dx,i++,im1++,ip1++) { 
 	Rediscr = Standard_False;
         if (xm > XN) xm=XN;
-	if(ptrval[i]>0.0) { 
-	  if((ptrval[im1]>ptrval[i]) && (ptrval[ip1]>ptrval[i])) { 
+	if(ptrval(i)>0.0) { 
+	  if((ptrval(im1)>ptrval(i)) && (ptrval(ip1)>ptrval(i))) { 
 	    //-- Peut on traverser l axe Ox 
 	    //-- -------------- Estimation a partir de Xim1
             xm1=xm-dx;
@@ -374,8 +390,8 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
 	    }
 	  }
 	}
-	else if(ptrval[i]<0.0) { 
-	  if((ptrval[im1]<ptrval[i]) && (ptrval[ip1]<ptrval[i])) { 
+	else if(ptrval(i)<0.0) { 
+	  if((ptrval(im1)<ptrval(i)) && (ptrval(ip1)<ptrval(i))) { 
 	    //-- Peut on traverser l axe Ox 
 	    //-- -------------- Estimation a partir de Xim1
             xm1=xm-dx;
@@ -412,8 +428,8 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
 	  Standard_Real R=0.61803399;
 	  Standard_Real C=1.0-R;
 	  Standard_Real tolCR=NEpsX*10.0;
-	  f0=ptrval[im1];
-	  f3=ptrval[ip1];
+	  f0=ptrval(im1);
+	  f3=ptrval(ip1);
 	  x0=xm-dx;
 	  x3=xm+dx;
           if(x0 < X0) x0=X0;
@@ -475,8 +491,6 @@ math_FunctionRoots::math_FunctionRoots(math_FunctionWithDerivative& F,
 	} //-- Recherche d un extrema    
       } //-- for     
     }      
-    
-    delete [] ptrval;
     
 #if NEWSEQ
     if(methode==3) { 

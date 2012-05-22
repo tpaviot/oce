@@ -1,7 +1,23 @@
-// File:	TopOpeBRepTool_closing.cxx
-// Created:	Tue Nov 24 14:08:03 1998
-// Author:	Xuan PHAM PHU
-//		<xpu@poulopox.paris1.matra-dtv.fr>
+// Created on: 1998-11-24
+// Created by: Xuan PHAM PHU
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRepTool_define.hxx>
 #include <TopOpeBRepTool_EXPORT.hxx>
@@ -76,8 +92,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_correctCLO(TopoDS_Edge& E, const TopoD
 //  Standard_Real f,l,tolpc; Standard_Boolean trim3d = Standard_True; 
 //  Handle(Geom2d_Curve) PC = FC2D_CurveOnSurface(E,F,f,l,tolpc,trim3d);  
   Standard_Real f,l,tol; Handle(Geom2d_Curve) PC;
-  FC2D_HasOldCurveOnSurface(E,FFOR,PC);
-  FC2D_HasNewCurveOnSurface(E,FFOR,PC);
   PC = FC2D_EditableCurveOnSurface(E,FFOR,f,l,tol);  
 
   Standard_Boolean isoU,isoV; gp_Pnt2d o2d; gp_Dir2d d2d; 
@@ -85,6 +99,7 @@ Standard_EXPORT Standard_Boolean FUN_tool_correctCLO(TopoDS_Edge& E, const TopoD
   Standard_Boolean xiso = (inU && isoU)||((!inU) && isoV);
   if (!xiso) return Standard_False;      
   Standard_Real par = dx*f + (1-dx)*l; gp_Vec2d dxx;
+
   FUN_tool_getdxx(FFOR,E,par,dxx);
 
   TopExp_Explorer ex(FFOR, TopAbs_EDGE);
@@ -95,8 +110,6 @@ Standard_EXPORT Standard_Boolean FUN_tool_correctCLO(TopoDS_Edge& E, const TopoD
 
 //    Standard_Real f1,l1; Handle(Geom2d_Curve) PC1 = BRep_Tool::CurveOnSurface(e1,F,f1,l1);  
     Standard_Real f1,l1,tol1; Handle(Geom2d_Curve) PC1;
-    FC2D_HasOldCurveOnSurface(e1,FFOR,PC1);
-    FC2D_HasNewCurveOnSurface(e1,FFOR,PC1);
     PC1 = FC2D_EditableCurveOnSurface(e1,FFOR,f1,l1,tol1);
 
     Standard_Boolean isoU1,isoV1; gp_Pnt2d o2d1; gp_Dir2d d2d1; 

@@ -1,7 +1,23 @@
-// File:  ViewerTest_ViewerCommands.cxx
-// Created: Tue Sep  1 10:28:35 1998
-// Author:  Robert COUBLANC
-//    <rob@robox.paris1.matra-dtv.fr>
+// Created on: 1998-09-01
+// Created by: Robert COUBLANC
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // Robert Boehne 30 May 2000 : Dec Osf
 
@@ -13,10 +29,14 @@
 #include <windows.h>
 #endif
 
+#include <Graphic3d_AspectMarker3d.hxx>
+#include <Graphic3d_GraphicDriver.hxx>
 #include <Graphic3d_ExportFormat.hxx>
 #include <ViewerTest.hxx>
 #include <ViewerTest_EventManager.hxx>
 #include <Visual3d_View.hxx>
+#include <Visual3d_ViewManager.hxx>
+#include <V3d_LayerMgr.hxx>
 #include <NIS_View.hxx>
 #include <NIS_Triangulated.hxx>
 #include <NIS_InteractiveContext.hxx>
@@ -26,6 +46,18 @@
 #include <Draw_Appli.hxx>
 #include <Aspect_PrintAlgo.hxx>
 #include <Image_PixMap.hxx>
+#include <OSD_Timer.hxx>
+#include <TColStd_SequenceOfInteger.hxx>
+#include <Visual3d_LayerItem.hxx>
+#include <V3d_LayerMgr.hxx>
+#include <V3d_LayerMgrPointer.hxx>
+#include <Aspect_TypeOfLine.hxx>
+
+#ifdef WNT
+#undef DrawText
+#endif
+
+#include <Visual3d_Layer.hxx>
 
 #ifndef WNT
 #include <Graphic3d_GraphicDevice.hxx>
@@ -1366,6 +1398,7 @@ static int VSetBg(Draw_Interpretor& di, Standard_Integer argc, const char** argv
   if (argc < 2 || argc > 3)
   {
     di << "Usage : " << argv[0] << " imagefile [filltype] : Load image as background" << "\n";
+    di << "filltype can be one of CENTERED, TILED, STRETCH, NONE" << "\n";
     return 1;
   }
 
@@ -1394,6 +1427,49 @@ static int VSetBg(Draw_Interpretor& di, Standard_Integer argc, const char** argv
 
   Handle(V3d_View) V3dView = ViewerTest::CurrentView();
   V3dView->SetBackgroundImage(argv[1], aFillType, Standard_True);
+
+  return 0;
+}
+
+//==============================================================================
+//function : VSetBgMode
+//purpose  : Change background image fill type
+//==============================================================================
+
+static int VSetBgMode(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc != 2)
+  {
+    di << "Usage : " << argv[0] << " filltype : Change background image mode" << "\n";
+    di << "filltype must be one of CENTERED, TILED, STRETCH, NONE" << "\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) AISContext = ViewerTest::GetAISContext();
+  if(AISContext.IsNull())
+  {
+    di << "use 'vinit' command before " << argv[0] << "\n";
+    return 1;
+  }
+
+  Aspect_FillMethod aFillType;
+  if (argc == 2)
+  {
+    const char* szType = argv[1];
+    if      (strcmp(szType, "NONE"    ) == 0) aFillType = Aspect_FM_NONE;
+    else if (strcmp(szType, "CENTERED") == 0) aFillType = Aspect_FM_CENTERED;
+    else if (strcmp(szType, "TILED"   ) == 0) aFillType = Aspect_FM_TILED;
+    else if (strcmp(szType, "STRETCH" ) == 0) aFillType = Aspect_FM_STRETCH;
+    else
+    {
+      di << "Wrong fill type : " << szType << "\n";
+      di << "Must be one of CENTERED, TILED, STRETCH, NONE" << "\n";
+      return 1;
+    }
+  }
+
+  Handle(V3d_View) V3dView = ViewerTest::CurrentView();
+  V3dView->SetBgImageStyle(aFillType, Standard_True);
 
   return 0;
 }
@@ -1451,6 +1527,81 @@ static int VSetGradientBg(Draw_Interpretor& di, Standard_Integer argc, const cha
 }
 
 //==============================================================================
+//function : VSetGradientBgMode
+//purpose  : Change gradient background fill style
+//==============================================================================
+static int VSetGradientBgMode(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc != 2 )
+  {
+    di << "Usage : " << argv[0] << " Type : Change gradient background fill type" << "\n";
+    di << "Type must be one of 0 = NONE, 1 = HOR, 2 = VER, 3 = DIAG1, 4 = DIAG2" << "\n";
+    di << "                    5 = CORNER1, 6 = CORNER2, 7 = CORNER3, 8 = CORNER4" << "\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) AISContext = ViewerTest::GetAISContext();
+  if(AISContext.IsNull())
+  {
+    di << "use 'vinit' command before " << argv[0] << "\n";
+    return 1;
+  }
+  if (argc == 2)
+  {
+    int aType = atoi(argv[1]);
+    if( aType < 0 || aType > 8 )
+    {
+      di << "Wrong fill type " << "\n";
+      di << "Must be one of 0 = NONE, 1 = HOR, 2 = VER, 3 = DIAG1, 4 = DIAG2" << "\n";
+      di << "               5 = CORNER1, 6 = CORNER2, 7 = CORNER3, 8 = CORNER4" << "\n";
+      return 1;
+    }
+
+    Aspect_GradientFillMethod aMethod = Aspect_GradientFillMethod(aType);
+
+    Handle(V3d_View) V3dView = ViewerTest::CurrentView();
+    V3dView->SetBgGradientStyle( aMethod, 1 );
+  }
+
+  return 0;
+}
+
+//==============================================================================
+//function : VSetColorBg
+//purpose  : Set color background
+//==============================================================================
+static int VSetColorBg(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc != 4 )
+  {
+    di << "Usage : " << argv[0] << " R G B : Set color background" << "\n";
+    di << "R,G,B = [0..255]" << "\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) AISContext = ViewerTest::GetAISContext();
+  if(AISContext.IsNull())
+  {
+    di << "use 'vinit' command before " << argv[0] << "\n";
+    return 1;
+  }
+  if (argc == 4)
+  {
+
+    Standard_Real R = atof(argv[1])/255.;
+    Standard_Real G = atof(argv[2])/255.;
+    Standard_Real B = atof(argv[3])/255.;
+    Quantity_Color aColor(R,G,B,Quantity_TOC_RGB);
+
+    Handle(V3d_View) V3dView = ViewerTest::CurrentView();
+    V3dView->SetBackgroundColor( aColor );
+    V3dView->Update();
+  }
+
+  return 0;
+}
+
+//==============================================================================
 //function : VScale
 //purpose  : View Scaling
 //==============================================================================
@@ -1469,7 +1620,7 @@ static int VScale(Draw_Interpretor& di, Standard_Integer argc, const char** argv
 }
 //==============================================================================
 //function : VTestZBuffTrihedron
-//purpose  : Displays a V3d_ZBUFFER'ed trihedron at the bottom left corner of the view
+//purpose  : Displays a V3d_ZBUFFER'ed or V3d_WIREFRAME'd trihedron
 //==============================================================================
 
 static int VTestZBuffTrihedron(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
@@ -1477,10 +1628,84 @@ static int VTestZBuffTrihedron(Draw_Interpretor& di, Standard_Integer argc, cons
   Handle(V3d_View) V3dView = ViewerTest::CurrentView();
   if ( V3dView.IsNull() ) return 1;
 
-  // Set up default trihedron parameters
   V3dView->ZBufferTriedronSetup();
-  V3dView->TriedronDisplay( Aspect_TOTP_LEFT_LOWER, Quantity_NOC_WHITE, 0.1, V3d_ZBUFFER );
+
+  if ( argc == 1 ) {
+    // Set up default trihedron parameters
+    V3dView->TriedronDisplay( Aspect_TOTP_LEFT_LOWER, Quantity_NOC_WHITE, 0.1, V3d_ZBUFFER );
+  } else
+  if ( argc == 7 )
+  {
+    Aspect_TypeOfTriedronPosition aPosition = Aspect_TOTP_LEFT_LOWER;
+    const char* aPosType = argv[1];
+
+    if ( strcmp(aPosType, "center") == 0 )
+    {
+      aPosition = Aspect_TOTP_CENTER;
+    } else
+    if (strcmp(aPosType, "left_lower") == 0)
+    {
+      aPosition = Aspect_TOTP_LEFT_LOWER;
+    } else
+    if (strcmp(aPosType, "left_upper") == 0)
+    {
+      aPosition = Aspect_TOTP_LEFT_UPPER;
+    } else
+    if (strcmp(aPosType, "right_lower") == 0)
+    {
+      aPosition = Aspect_TOTP_RIGHT_LOWER;
+    } else
+    if (strcmp(aPosType, "right_upper") == 0)
+    {
+      aPosition = Aspect_TOTP_RIGHT_UPPER;
+    } else
+    {
+      di << argv[1] << " Invalid type of alignment"  << "\n";
+      di << "Must be one of [ center, left_lower,"   << "\n";
+      di << "left_upper, right_lower, right_upper ]" << "\n";
+      return 1;
+    }
+
+    Standard_Real R = atof(argv[2])/255.;
+    Standard_Real G = atof(argv[3])/255.;
+    Standard_Real B = atof(argv[4])/255.;
+    Quantity_Color aColor(R, G, B, Quantity_TOC_RGB);
+
+    Standard_Real aScale = atof(argv[5]);
+
+    if( aScale <= 0.0 )
+    {
+      di << argv[5] << " Invalid value. Must be > 0" << "\n";
+      return 1;
+    }
+
+    V3d_TypeOfVisualization aPresentation = V3d_ZBUFFER;
+    const char* aPresType = argv[6];
+
+    if ( strcmp(aPresType, "wireframe") == 0 )
+    {
+      aPresentation = V3d_WIREFRAME;
+    } else
+    if (strcmp(aPresType, "zbuffer") == 0)
+    {
+      aPresentation = V3d_ZBUFFER;
+    } else
+    {
+      di << argv[6] << " Invalid type of visualization" << "\n";
+      di << "Must be one of [ wireframe, zbuffer ]"     << "\n";
+      return 1;
+    }
+
+    V3dView->TriedronDisplay( aPosition, aColor.Name(), aScale, aPresentation );
+
+  } else
+  {
+    di << argv[0] << " Invalid number of arguments" << "\n";
+    return 1;
+  }
+
   V3dView->ZFitAll();
+
   return 0;
 }
 
@@ -1553,35 +1778,79 @@ static int VPan( Draw_Interpretor& di, Standard_Integer argc, const char** argv 
 
 //==============================================================================
 //function : VExport
-//purpose  : Export teh view to a vector graphic format (PS, EMF, PDF)
+//purpose  : Export the view to a vector graphic format (PS, EMF, PDF)
 //==============================================================================
 
 static int VExport(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
   Handle(V3d_View) V3dView = ViewerTest::CurrentView();
-  if ( V3dView.IsNull() ) return 1;
+  if (V3dView.IsNull())
+    return 1;
 
-  if ( argc != 3 ) {
-    di << argv[0] << "Invalid number of arguments" << "\n";
+  if (argc == 1)
+  {
+    std::cout << "Usage: " << argv[0] << " Filename [Format]\n";
     return 1;
   }
 
-  TCollection_AsciiString aFormat( argv[2] );
-  aFormat.UpperCase();
-  Graphic3d_ExportFormat exFormat = Graphic3d_EF_PostScript;
-  if ( aFormat == "PS" )
-    exFormat = Graphic3d_EF_PostScript;
-  if ( aFormat == "EPS" )
-    exFormat = Graphic3d_EF_EnhPostScript;
-  if ( aFormat == "TEX" )
-    exFormat = Graphic3d_EF_TEX;
-  if ( aFormat == "PDF" )
-    exFormat = Graphic3d_EF_PDF;
-  if ( aFormat == "SVG" )
-    exFormat = Graphic3d_EF_SVG;
-  if ( aFormat == "PGF" )
-    exFormat = Graphic3d_EF_PGF;
-  V3dView->View()->Export( argv[1], exFormat );
+  Graphic3d_ExportFormat anExpFormat = Graphic3d_EF_PDF;
+  TCollection_AsciiString aFormatStr;
+
+  TCollection_AsciiString aFileName (argv[1]);
+  Standard_Integer aLen = aFileName.Length();
+
+  if (argc > 2)
+  {
+    aFormatStr = TCollection_AsciiString (argv[2]);
+  }
+  else if (aLen >= 4)
+  {
+    if (aFileName.Value (aLen - 2) == '.')
+    {
+      aFormatStr = aFileName.SubString (aLen - 1, aLen);
+    }
+    else if (aFileName.Value (aLen - 3) == '.')
+    {
+      aFormatStr = aFileName.SubString (aLen - 2, aLen);
+    }
+    else
+    {
+      std::cout << "Export format couln't be detected from filename '" << argv[1] << "'\n";
+      return 1;
+    }
+  }
+  else
+  {
+    std::cout << "Export format couln't be detected from filename '" << argv[1] << "'\n";
+    return 1;
+  }
+
+  aFormatStr.UpperCase();
+  if (aFormatStr == "PS")
+    anExpFormat = Graphic3d_EF_PostScript;
+  else if (aFormatStr == "EPS")
+    anExpFormat = Graphic3d_EF_EnhPostScript;
+  else if (aFormatStr == "TEX")
+    anExpFormat = Graphic3d_EF_TEX;
+  else if (aFormatStr == "PDF")
+    anExpFormat = Graphic3d_EF_PDF;
+  else if (aFormatStr == "SVG")
+    anExpFormat = Graphic3d_EF_SVG;
+  else if (aFormatStr == "PGF")
+    anExpFormat = Graphic3d_EF_PGF;
+  else if (aFormatStr == "EMF")
+    anExpFormat = Graphic3d_EF_EMF;
+  else
+  {
+    std::cout << "Invalid export format '" << aFormatStr << "'\n";
+    return 1;
+  }
+
+  if (!V3dView->View()->Export (argv[1], anExpFormat))
+  {
+    std::cout << "Export failed!\n";
+    return 1;
+  }
   return 0;
 }
 
@@ -1608,7 +1877,7 @@ static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char 
   Standard_Real minRange = 0. , maxRange = 100. ;
 
   Standard_Integer numIntervals = 10 ;
-  Standard_Real textHeight = 16. ;
+  Standard_Integer textHeight = 16;
   Aspect_TypeOfColorScalePosition position = Aspect_TOCSP_RIGHT;
   Standard_Real X = 0., Y = 0. ;
 
@@ -1621,7 +1890,7 @@ static int VColorScale (Draw_Interpretor& di, Standard_Integer argc, const char 
        numIntervals = atoi( argv[3] );
      }
      if ( argc > 4 )
-       textHeight = atof( argv[4] );
+       textHeight = atoi( argv[4] );
      if ( argc > 5 )
        position = (Aspect_TypeOfColorScalePosition)atoi( argv[5] );
      if ( argc > 7 )
@@ -1887,6 +2156,657 @@ static int VPrintView (Draw_Interpretor& di, Standard_Integer argc,
 #endif
 }
 
+//==============================================================================
+//function : VZLayer
+//purpose  : Test z layer operations for v3d viewer
+//==============================================================================
+static int VZLayer (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext ();
+  if (aContextAIS.IsNull())
+  {
+    di << "Call vinit before!\n";
+    return 1;
+  }
+  else if (argc < 2)
+  {
+    di << "Use: vzlayer " << argv[0];
+    di << " add/del/get [id]\n";
+    di << " add - add new z layer to viewer and print its id\n";
+    di << " del - del z layer by its id\n";
+    di << " get - print sequence of z layers in increasing order of their overlay level\n";
+    di << "id - the layer identificator value defined when removing z layer\n";
+    return 1;
+  }
+
+  const Handle(V3d_Viewer)& aViewer = aContextAIS->CurrentViewer();
+  if (aViewer.IsNull())
+  {
+    di << "No active viewer!\n";
+    return 1;
+  }
+
+  // perform operation
+  TCollection_AsciiString anOp = TCollection_AsciiString (argv[1]);
+  if (anOp == "add")
+  {
+    Standard_Integer aNewId;
+    if (!aViewer->AddZLayer (aNewId))
+    {
+      di << "Impossible to add new z layer!\n";
+      return 1;
+    }
+
+    di << "New z layer added with index: " << aNewId << "\n";
+  }
+  else if (anOp == "del")
+  {
+    if (argc < 3)
+    {
+      di << "Please also provide as argument id of z layer to remove\n";
+      return 1;
+    }
+
+    Standard_Integer aDelId = atoi (argv[2]);
+    if (!aViewer->RemoveZLayer (aDelId))
+    {
+      di << "Impossible to remove the z layer or invalid id!\n";
+      return 1;
+    }
+
+    di << "Z layer " << aDelId << " has been removed\n";
+  }
+  else if (anOp == "get")
+  {
+    TColStd_SequenceOfInteger anIds;
+    aViewer->GetAllZLayers (anIds);
+    for (Standard_Integer aSeqIdx = 1; aSeqIdx <= anIds.Length(); aSeqIdx++)
+    {
+      di << anIds.Value (aSeqIdx) << " ";
+    }
+
+    di << "\n";
+  }
+  else
+  {
+    di << "Invalid operation, please use { add / del / get }\n";
+    return 1;
+  }
+
+  return 0;
+}
+
+DEFINE_STANDARD_HANDLE(V3d_TextItem, Visual3d_LayerItem)
+
+// this class provides a presentation of text item in v3d view under-/overlayer
+class V3d_TextItem : public Visual3d_LayerItem
+{
+public:
+
+  // CASCADE RTTI
+  DEFINE_STANDARD_RTTI(V3d_TextItem)
+
+  // constructor
+  Standard_EXPORT V3d_TextItem(const TCollection_AsciiString& theText,
+                               const Standard_Real theX1,
+                               const Standard_Real theY1,
+                               const Standard_Real theHeight,
+                               const TCollection_AsciiString& theFontName,
+                               const Quantity_Color& theColor,
+                               const Quantity_Color& theSubtitleColor,
+                               const Aspect_TypeOfDisplayText& theTypeOfDisplay,
+                               const Handle(Visual3d_Layer)& theLayer);
+
+  // redraw method
+  Standard_EXPORT void RedrawLayerPrs();
+
+private:
+
+  Standard_Real            myX1;
+  Standard_Real            myY1;
+  Standard_Real            myHeight;
+  TCollection_AsciiString  myText;
+  TCollection_AsciiString  myFontName;
+  Quantity_Color           myColor;
+  Quantity_Color           mySubtitleColor;
+  Aspect_TypeOfDisplayText myType;
+  Handle(Visual3d_Layer)   myLayer;
+
+};
+
+IMPLEMENT_STANDARD_HANDLE(V3d_TextItem, Visual3d_LayerItem)
+IMPLEMENT_STANDARD_RTTIEXT(V3d_TextItem, Visual3d_LayerItem)
+
+// create and add to display the text item
+V3d_TextItem::V3d_TextItem (const TCollection_AsciiString& theText,
+                            const Standard_Real theX1,
+                            const Standard_Real theY1,
+                            const Standard_Real theHeight,
+                            const TCollection_AsciiString& theFontName,
+                            const Quantity_Color& theColor,
+                            const Quantity_Color& theSubtitleColor,
+                            const Aspect_TypeOfDisplayText& theTypeOfDisplay,
+                            const Handle(Visual3d_Layer)& theLayer)
+ : myX1 (theX1), myY1 (theY1),
+   myText (theText),
+   myHeight (theHeight),
+   myLayer (theLayer),
+   myColor (theColor),
+   mySubtitleColor (theSubtitleColor),
+   myType (theTypeOfDisplay),
+   myFontName (theFontName)
+{
+  if (!myLayer.IsNull ())
+    myLayer->AddLayerItem (this);
+}
+
+// render item
+void V3d_TextItem::RedrawLayerPrs ()
+{ 
+  if (myLayer.IsNull ())
+    return;
+
+  myLayer->SetColor (myColor);
+  myLayer->SetTextAttributes (myFontName.ToCString (), myType, mySubtitleColor);
+  myLayer->DrawText (myText.ToCString (), myX1, myY1, myHeight);
+}
+
+DEFINE_STANDARD_HANDLE(V3d_LineItem, Visual3d_LayerItem)
+
+// The Visual3d_LayerItem line item for "vlayerline" command
+// it provides a presentation of line with user-defined 
+// linewidth, linetype and transparency.
+class V3d_LineItem : public Visual3d_LayerItem 
+{
+public:
+  // CASCADE RTTI
+  DEFINE_STANDARD_RTTI(V3d_LineItem) 
+  
+  // constructor
+  Standard_EXPORT V3d_LineItem(Standard_Real X1, Standard_Real Y1,
+                               Standard_Real X2, Standard_Real Y2,
+                               V3d_LayerMgrPointer theLayerMgr,
+                               Aspect_TypeOfLine theType = Aspect_TOL_SOLID,
+                               Standard_Real theWidth    = 0.5,
+                               Standard_Real theTransp   = 1.0);
+
+  // redraw method
+  Standard_EXPORT   void RedrawLayerPrs();
+
+private:
+
+  Standard_Real       myX1, myY1, myX2, myY2;
+  Standard_Real       myWidth;
+  Standard_Real       myTransparency;
+  Aspect_TypeOfLine   myType;
+  V3d_LayerMgrPointer myLayerMgr;
+};
+
+IMPLEMENT_STANDARD_HANDLE(V3d_LineItem, Visual3d_LayerItem)
+IMPLEMENT_STANDARD_RTTIEXT(V3d_LineItem, Visual3d_LayerItem)
+
+// default constructor for line item
+V3d_LineItem::V3d_LineItem(Standard_Real X1, Standard_Real Y1, 
+                           Standard_Real X2, Standard_Real Y2,
+                           V3d_LayerMgrPointer theLayerMgr,
+                           Aspect_TypeOfLine theType,
+                           Standard_Real theWidth,
+                           Standard_Real theTransp) :
+  myX1(X1), myY1(Y1), myX2(X2), myY2(Y2), myLayerMgr(theLayerMgr),
+  myType(theType), myWidth(theWidth), myTransparency(theTransp)
+{
+  if (myLayerMgr && myLayerMgr->Overlay())
+    myLayerMgr->Overlay()->AddLayerItem (this);
+}
+
+// render line
+void V3d_LineItem::RedrawLayerPrs ()
+{
+  Handle (Visual3d_Layer) aOverlay;
+ 
+  if (myLayerMgr)
+    aOverlay = myLayerMgr->Overlay();
+
+  if (!aOverlay.IsNull())
+  {
+    Quantity_Color aColor(1.0, 0, 0, Quantity_TOC_RGB);
+    aOverlay->SetColor(aColor);
+    aOverlay->SetTransparency((Standard_ShortReal)myTransparency);
+    aOverlay->SetLineAttributes((Aspect_TypeOfLine)myType, myWidth);
+    aOverlay->BeginPolyline();
+    aOverlay->AddVertex(myX1, myY1);
+    aOverlay->AddVertex(myX2, myY2);
+    aOverlay->ClosePrimitive();
+  }
+}
+
+//=============================================================================
+//function : VLayerLine
+//purpose  : Draws line in the v3d view layer with given attributes: linetype,
+//         : linewidth, transparency coefficient
+//============================================================================
+static int VLayerLine(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    di << "Call vinit before!\n";
+    return 1;
+  }
+  else if (argc < 5)
+  {
+    di << "Use: " << argv[0];
+    di << " x1 y1 x2 y2 [linewidth = 0.5] [linetype = 0] [transparency = 1]\n";
+    di << " linetype : { 0 | 1 | 2 | 3 } \n";
+    di << "              0 - solid  \n";
+    di << "              1 - dashed \n";
+    di << "              2 - dot    \n";
+    di << "              3 - dashdot\n";
+    di << " transparency : { 0.0 - 1.0 } \n";
+    di << "                  0.0 - transparent\n";
+    di << "                  1.0 - visible    \n";
+    return 1;
+  }
+
+  // get the input params
+  Standard_Real X1 = atof(argv[1]);
+  Standard_Real Y1 = atof(argv[2]);
+  Standard_Real X2 = atof(argv[3]);
+  Standard_Real Y2 = atof(argv[4]);
+
+  Standard_Real    aWidth = 0.5;
+  Standard_Integer aType  = 0;
+  Standard_Real    aTransparency = 1.0;
+
+  // has width
+  if (argc > 5)
+    aWidth = atof(argv[5]);
+
+  // has type
+  if (argc > 6)
+     aType = (Standard_Integer) atoi(argv[6]);
+
+  // has transparency
+  if (argc > 7)
+  {
+    aTransparency = atof(argv[7]);
+    if (aTransparency < 0 || aTransparency > 1.0) 
+      aTransparency = 1.0;
+  }
+
+  // select appropriate line type
+  Aspect_TypeOfLine aLineType;
+  switch (aType)
+  {
+    case 1:
+      aLineType = Aspect_TOL_DASH;
+    break;
+
+    case 2:
+      aLineType = Aspect_TOL_DOT;
+    break;
+
+    case 3:
+      aLineType = Aspect_TOL_DOTDASH;
+    break;
+
+    default:
+      aLineType = Aspect_TOL_SOLID;
+  }
+
+  // replace layer manager
+  Handle(V3d_LayerMgr) aMgr = new V3d_LayerMgr(aView);
+  aView->SetLayerMgr(aMgr);
+
+  // add line item
+  Handle (V3d_LineItem) anItem = new V3d_LineItem(X1, Y1, X2, Y2, 
+                                                  aMgr.operator->(),
+                                                  aLineType, aWidth, 
+                                                  aTransparency);
+
+  // update view
+  aView->MustBeResized();
+  aView->Redraw();
+
+  return 0;
+}
+
+//=======================================================================
+//function : VOverlayText
+//purpose  : Test text displaying in view overlay
+//=======================================================================
+static int VOverlayText (Draw_Interpretor& di, Standard_Integer argc, const char**argv)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    di << "No active view. Please call vinit.\n";
+    return 1;
+  }
+  else if (argc < 4 || argc > 13)
+  {
+    di << "Use: " << argv[0];
+    di << " text x y [height] [font_name] [text_color: R G B] [displayType]\n";
+    di << "[background_color: R G B]\n";
+    di << "  height - pixel height of the text (default=10.0)\n";
+    di << "  font_name - name of font (default=courier)\n";
+    di << "  text_color - R G B values of text color (default=255.0 255.0 255.0)\n";
+    di << "  display_type = {normal/subtitle/decal/blend}, (default=normal)\n";
+    di << "  background_color- R G B values used for subtitle and decal text\n";
+    di << "(default=255.0 255.0 255.0)\n";
+    return 1;
+  }
+  
+  TCollection_AsciiString aText (argv[1]);
+  Standard_Real aPosX = atof(argv[2]);
+  Standard_Real aPosY = atof(argv[3]);
+  Standard_Real aHeight = (argc >= 5) ? atof (argv[4]) : 10.0;
+
+  // font name
+  TCollection_AsciiString aFontName = "Courier";
+  if (argc >= 6)
+    aFontName = TCollection_AsciiString (argv[5]);
+
+  // text colors
+  Quantity_Parameter aColorRed   = 1.0;
+  Quantity_Parameter aColorGreen = 1.0;
+  Quantity_Parameter aColorBlue  = 1.0;
+  if (argc >= 9)
+  {
+    aColorRed   = atof (argv[6])/255.;
+    aColorGreen = atof (argv[7])/255.;
+    aColorBlue  = atof (argv[8])/255.;
+  }
+
+  // display type
+  TCollection_AsciiString aDispStr;
+  if (argc >= 10)
+    aDispStr = TCollection_AsciiString (argv[9]);
+
+  Aspect_TypeOfDisplayText aTextType = Aspect_TODT_NORMAL;
+  if (aDispStr.IsEqual ("subtitle"))
+    aTextType = Aspect_TODT_SUBTITLE;
+  else if (aDispStr.IsEqual ("decal"))
+    aTextType = Aspect_TODT_DEKALE;
+  else if (aDispStr.IsEqual ("blend"))
+    aTextType = Aspect_TODT_BLEND;
+
+  // subtitle color
+  Quantity_Parameter aSubRed   = 1.0;
+  Quantity_Parameter aSubGreen = 1.0;
+  Quantity_Parameter aSubBlue  = 1.0;
+  if (argc == 13)
+  {
+    aSubRed   = atof (argv[10])/255.;
+    aSubGreen = atof (argv[11])/255.;
+    aSubBlue  = atof (argv[12])/255.;
+  }
+
+  // check fo current overlay
+  Handle(Visual3d_Layer) anOverlay = aView->Viewer()->Viewer()->OverLayer ();
+  if (anOverlay.IsNull ())
+  {
+    Handle(V3d_LayerMgr) aMgr = new V3d_LayerMgr (aView);
+    anOverlay = aMgr->Overlay ();
+    aView->SetLayerMgr (aMgr);
+  }
+
+  Quantity_Color aTextColor (aColorRed, aColorGreen, 
+    aColorBlue, Quantity_TOC_RGB);
+  Quantity_Color aSubtColor (aSubRed, aSubGreen, 
+    aSubBlue, Quantity_TOC_RGB);
+
+  // add text item
+  Handle(V3d_TextItem) anItem = new V3d_TextItem (aText, aPosX, aPosY,
+    aHeight, aFontName, aTextColor, aSubtColor, aTextType, anOverlay);
+
+  // update view
+  aView->MustBeResized();
+  aView->Redraw();
+
+  return 0;
+}
+
+//==============================================================================
+//function : VGrid
+//purpose  :
+//==============================================================================
+
+static int VGrid (Draw_Interpretor& theDI,
+                  Standard_Integer  theArgNb,
+                  const char**      theArgVec)
+{
+  // get the active view
+  Handle(V3d_View)   aView   = ViewerTest::CurrentView();
+  Handle(V3d_Viewer) aViewer = ViewerTest::GetViewerFromContext();
+  if (aView.IsNull() || aViewer.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  Aspect_GridType     aType = aViewer->GridType();
+  Aspect_GridDrawMode aMode = aViewer->GridDrawMode();
+
+  Standard_Integer anIter = 1;
+  for (; anIter < theArgNb; ++anIter)
+  {
+    const char* aValue = theArgVec[anIter];
+    if (*aValue == 'r')
+    {
+      aType = Aspect_GT_Rectangular;
+    }
+    else if (*aValue == 'c')
+    {
+      aType = Aspect_GT_Circular;
+    }
+    else if (*aValue == 'l')
+    {
+      aMode = Aspect_GDM_Lines;
+    }
+    else if (*aValue == 'p')
+    {
+      aMode = Aspect_GDM_Points;
+    }
+    else if (strcmp (aValue, "off" ) == 0)
+    {
+      aViewer->DeactivateGrid();
+      return 0;
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  Standard_Integer aTail = (theArgNb - anIter);
+  if (aTail == 0)
+  {
+    aViewer->ActivateGrid (aType, aMode);
+    return 0;
+  }
+  else if (aTail != 2 && aTail != 5)
+  {
+    std::cerr << "Incorrect arguments number! Usage:\n"
+              << "vgrid [off] [Mode={r|c}] [Type={l|p}] [OriginX OriginY [StepX/StepRadius StepY/DivNb RotAngle]]\n";
+    return 1;
+  }
+
+  Quantity_Length anOriginX, anOriginY;
+  Quantity_PlaneAngle aRotAngle;
+  if (aType == Aspect_GT_Rectangular)
+  {
+    Quantity_Length aRStepX, aRStepY;
+    aViewer->RectangularGridValues (anOriginX, anOriginY, aRStepX, aRStepY, aRotAngle);
+
+    anOriginX = atof (theArgVec[anIter++]);
+    anOriginY = atof (theArgVec[anIter++]);
+    if (aTail == 5)
+    {
+      aRStepX   = atof (theArgVec[anIter++]);
+      aRStepY   = atof (theArgVec[anIter++]);
+      aRotAngle = atof (theArgVec[anIter++]);
+    }
+    aViewer->SetRectangularGridValues (anOriginX, anOriginY, aRStepX, aRStepY, aRotAngle);
+    aViewer->ActivateGrid (aType, aMode);
+  }
+  else if (aType == Aspect_GT_Circular)
+  {
+    Quantity_Length aRadiusStep;
+    Standard_Integer aDivisionNumber;
+    aViewer->CircularGridValues (anOriginX, anOriginY, aRadiusStep, aDivisionNumber, aRotAngle);
+
+    anOriginX = atof (theArgVec[anIter++]);
+    anOriginY = atof (theArgVec[anIter++]);
+    if (aTail == 5)
+    {
+      aRadiusStep     = atof (theArgVec[anIter++]);
+      aDivisionNumber = atoi (theArgVec[anIter++]);
+      aRotAngle       = atof (theArgVec[anIter++]);
+    }
+
+    aViewer->SetCircularGridValues (anOriginX, anOriginY, aRadiusStep, aDivisionNumber, aRotAngle);
+    aViewer->ActivateGrid (aType, aMode);
+  }
+
+  return 0;
+}
+
+//==============================================================================
+//function : VFps
+//purpose  :
+//==============================================================================
+
+static int VFps (Draw_Interpretor& theDI,
+                 Standard_Integer  theArgNb,
+                 const char**      theArgVec)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  Standard_Integer aFramesNb = (theArgNb > 1) ? atoi(theArgVec[1]) : 100;
+  if (aFramesNb <= 0)
+  {
+    std::cerr << "Incorrect arguments!\n";
+    return 1;
+  }
+
+  // the time is meaningless for first call
+  // due to async OpenGl rendering
+  aView->Redraw();
+
+  // redraw view in loop to estimate average values
+  OSD_Timer aTimer;
+  aTimer.Start();
+  for (Standard_Integer anInter = 0; anInter < aFramesNb; ++anInter)
+  {
+    aView->Redraw();
+  }
+  aTimer.Stop();
+  Standard_Real aCpu;
+  const Standard_Real aTime = aTimer.ElapsedTime();
+  aTimer.OSD_Chronometer::Show (aCpu);
+
+  const Standard_Real aFpsAver = Standard_Real(aFramesNb) / aTime;
+  const Standard_Real aCpuAver = aCpu / Standard_Real(aFramesNb);
+
+  // return statistics
+  theDI << "FPS: " << aFpsAver << "\n"
+        << "CPU: " << (1000.0 * aCpuAver) << " msec\n";
+
+  return 0;
+}
+
+
+//==============================================================================
+//function : VVbo
+//purpose  :
+//==============================================================================
+
+static int VVbo (Draw_Interpretor& theDI,
+                 Standard_Integer  theArgNb,
+                 const char**      theArgVec)
+{
+  // get the context
+  Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext();
+  if (aContextAIS.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  Handle(Graphic3d_GraphicDriver) aDriver =
+         Handle(Graphic3d_GraphicDriver)::DownCast (aContextAIS->CurrentViewer()->Device()->GraphicDriver());
+  if (aDriver.IsNull())
+  {
+    std::cerr << "Graphic driver not available.\n";
+    return 1;
+  }
+
+  if (theArgNb < 2)
+  {
+    //theDI << "VBO: " << aDriver->ToUseVBO() << "\n";
+    //return 0;
+    std::cerr << "Wrong number of arguments.\n";
+    return 1;
+  }
+
+  aDriver->EnableVBO (atoi(theArgVec[1]) != 0);
+  return 0;
+}
+
+//==============================================================================
+//function : VMemGpu
+//purpose  :
+//==============================================================================
+
+static int VMemGpu (Draw_Interpretor& theDI,
+                    Standard_Integer  theArgNb,
+                    const char**      theArgVec)
+{
+  // get the context
+  Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext();
+  if (aContextAIS.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  Handle(Graphic3d_GraphicDriver) aDriver =
+         Handle(Graphic3d_GraphicDriver)::DownCast (aContextAIS->CurrentViewer()->Device()->GraphicDriver());
+  if (aDriver.IsNull())
+  {
+    std::cerr << "Graphic driver not available.\n";
+    return 1;
+  }
+
+  Standard_Size aFreeBytes = 0;
+  TCollection_AsciiString anInfo;
+  if (!aDriver->MemoryInfo (aFreeBytes, anInfo))
+  {
+    std::cerr << "Information not available.\n";
+    return 1;
+  }
+
+  if (theArgNb > 1 && *theArgVec[1] == 'f')
+  {
+    theDI << Standard_Real (aFreeBytes);
+  }
+  else
+  {
+    theDI << anInfo;
+  }
+
+  return 0;
+}
+
 //=======================================================================
 //function : ViewerCommands
 //purpose  :
@@ -1926,14 +2846,25 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
   theCommands.Add("vsetbg",
     "vsetbg          : vsetbg imagefile [filltype] : Load image as background",
     __FILE__,VSetBg,group);
+  theCommands.Add("vsetbgmode",
+    "vsetbgmode      : vsetbgmode filltype : Change background image fill type",
+    __FILE__,VSetBgMode,group);
   theCommands.Add("vsetgradientbg",
-    "vsetgradientbg          : vsetgradientbg r1 g1 b1 r2 g2 b2 filltype : Mount gradient background",
+    "vsetgradientbg  : vsetgradientbg r1 g1 b1 r2 g2 b2 filltype : Mount gradient background",
     __FILE__,VSetGradientBg,group);
+  theCommands.Add("vsetgrbgmode",
+    "vsetgrbgmode    : vsetgrbgmode filltype : Change gradient background fill type",
+    __FILE__,VSetGradientBgMode,group);
+  theCommands.Add("vsetcolorbg",
+    "vsetcolorbg     : vsetcolorbg r g b : Set background color",
+    __FILE__,VSetColorBg,group);
   theCommands.Add("vscale",
     "vscale          : vscale X Y Z",
     __FILE__,VScale,group);
   theCommands.Add("vzbufftrihedron",
-    "vzbufftrihedron : Displays a V3d_ZBUFFER'ed trihedron at the bottom left corner of the view",
+    "vzbufftrihedron [center|left_lower|left_upper|right_lower|right_upper"
+    " textR=255 textG=255 textB=255 scale=0.1 wireframe|zbuffer]"
+    " : Displays a V3d_ZBUFFER'ed or V3d_WIREFRAME'd trihedron",
     __FILE__,VTestZBuffTrihedron,group);
   theCommands.Add("vrotate",
     "vrotate         : vrotate AX AY AZ [X Y Z]",
@@ -1945,7 +2876,9 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vpan            : vpan dx dy",
     __FILE__,VPan,group);
   theCommands.Add("vexport",
-    "vexport         : vexport full_file_path {PS | EPS | TEX | PDF | SVG | PGV } : exports the view to a vector file of a given format",
+    "vexport         : vexport full_file_path {PS | EPS | TEX | PDF | SVG | PGF | EMF }"
+    " : exports the view to a vector file of a given format"
+    " : notice that EMF format requires patched gl2ps",
     __FILE__,VExport,group);
   theCommands.Add("vcolorscale",
     "vcolorscale     : vcolorscale [RangeMin = 0 RangeMax = 100 Intervals = 10 HeightFont = 16 Position = 2 X = 0 Y = 0]: draw color scale",
@@ -1956,5 +2889,33 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
   theCommands.Add("vprintview" ,
     "vprintview : width height filename [algo=0] : Test print algorithm: algo = 0 - stretch, algo = 1 - tile",
     __FILE__,VPrintView,group);
-
+  theCommands.Add("vzlayer",
+    "vzlayer : add/del/get [id] : Z layer operations in v3d viewer: add new z layer, delete z layer, get z layer ids",
+    __FILE__,VZLayer,group);
+  theCommands.Add("voverlaytext",
+    "voverlaytext : text x y [height] [font_name] [text_color: R G B] [display_type] [background_color: R G B]"
+    " : height - pixel height of the text (default=10.0)"
+    " : font_name - name of font (default=courier)"
+    " : text_color - three values: RedColor GreenColor BlueColor (default = 255.0 255.0 255.0) "
+    " : display_type = {normal/subtitle/decal/blend}, (default=normal) "
+    " : background_color - three values: RedColor GreenColor BlueColor (default = 255.0 255.0 255.0), the parameter is defined for subtitle and decal display types ",
+    __FILE__,VOverlayText,group);
+  theCommands.Add("vlayerline",
+    "vlayerline : vlayerline x1 y1 x2 y2 [linewidth=0.5] [linetype=0] [transparency=1.0]",
+    __FILE__,VLayerLine,group);
+  theCommands.Add ("vgrid",
+    "vgrid [off] [Mode={r|c}] [Type={l|p}] [OriginX OriginY [StepX/StepRadius StepY/DivNb RotAngle]]"
+    " : Mode - rectangular or circular"
+    " : Type - lines or points",
+    __FILE__, VGrid, group);
+  theCommands.Add ("vfps",
+    "vfps [framesNb=100] : estimate average frame rate for active view",
+    __FILE__, VFps, group);
+  theCommands.Add ("vvbo",
+    "vvbo {0|1} : turn VBO usage On/Off; affects only newly displayed objects",
+    __FILE__, VVbo, group);
+  theCommands.Add ("vmemgpu",
+    "vmemgpu [f]: print system-dependent GPU memory information if available;"
+    " with f option returns free memory in bytes",
+    __FILE__, VMemGpu, group);
 }

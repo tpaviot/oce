@@ -1,8 +1,25 @@
-// File GccAna_Lin2dTanPer.cxx, REG 08/07/91
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //=========================================================================
-//   CREATION D UNE DROITE TANGENTE A UN CERCLE OU PASSANT PAR UN POINT   +
-//                      ET ORTHOGONALE A UNE DROITE.                      +
+//   CREATION of a STRAIGHT LINE TANGENT to a CIRCLE or PASSING by a POINT   +
+//                      and ORTHOGONAL to a STRAIGHT LINE.                      +
 //=========================================================================
 
 #include <GccAna_Lin2dTanPer.ixx>
@@ -19,10 +36,10 @@
 #include <IntAna2d_IntPoint.hxx>
 
 //=========================================================================
-//   Droite passant par un point     : ThePoint et                        +
-//          orthogonale a une droite : TheLin.                            +
-//   On cree la droite d origine     : ThePoint                           +
-//                  et de direction  : TheLin.Direction() tournee de 90   +
+//   Straight line passing by point  : ThePoint and                       +
+//       orthogonal to straight line : TheLin.                            +
+//   Create the straight line of origin     : ThePoint                           +
+//                  and direction  : TheLin.Direction() turned by 90   +
 //=========================================================================
 
 GccAna_Lin2dTanPer::
@@ -60,10 +77,10 @@ GccAna_Lin2dTanPer::
  }
 
 //=========================================================================
-//   Droite passant par un point     : ThePnt                             +
-//       et orthogonale a un cercle  : TheCircle.                         +
-//   On cree la droite d origine    : ThePoint                            +
-//                  et de direction : (TheCircle.Location(),ThePnt).      +
+//   Straight line passing by point      : ThePnt                             +
+//       and orthogonal to circle        : TheCircle.                         +
+//   Create the straight line of origin  : ThePoint                           +
+//                  and direction        : (TheCircle.Location(),ThePnt).     +
 //=========================================================================
 
 GccAna_Lin2dTanPer::
@@ -104,10 +121,10 @@ GccAna_Lin2dTanPer::
  }
 
 //=========================================================================
-//   Droite tangente a un cercle     : Qualified1 (C1)                    +
-//       et orthogonale a une droite : TheLin.                            +
-//   On cree la droite d origine    : P1 (sur C1)                         +
-//                  et de direction : TheLin.Direction() tournee de 90`   +
+//   Straight line tangent to circle     : Qualified1 (C1)                    +
+//   and orthogonal to straight line     : TheLin.                            +
+//   Create straight line of origin      : P1 (on C1)                         +
+//                  and direction        : TheLin.Direction() turned by 90`   +
 //=========================================================================
 
 GccAna_Lin2dTanPer::
@@ -175,10 +192,10 @@ GccAna_Lin2dTanPer::
  }
 
 //=========================================================================
-//   Droite tangente a un cercle     : Qualified1 (C1)                    +
-//       et orthogonale a un cercle  : TheCircle.                         +
-//   On cree la droite d origine    : P1 (sur C1)                         +
-//                  et de direction : TheLin.Direction() tournee de 90`   +
+//   Straight line tangent to circle     : Qualified1 (C1)                    +
+//       and orthogonal to circle        : TheCircle.                         +
+//   Create straight line of origin      : P1 (on C1)                         +
+//                  and direction        : TheLin.Direction() turned by 90`   +
 //=========================================================================
 
 GccAna_Lin2dTanPer::

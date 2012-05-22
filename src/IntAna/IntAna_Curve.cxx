@@ -1,7 +1,23 @@
-// File:	IntAna_Curve.cxx
-// Created:	Tue Jun 30 10:40:07 1992
-// Author:	Laurent BUCHARD
-//		<lbr@topsn3>
+// Created on: 1992-06-30
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef DEB
 #define No_Standard_RangeError
@@ -388,8 +404,8 @@
   Standard_Boolean IntAna_Curve::FindParameter (const gp_Pnt& P,
 						Standard_Real& Para) const
 {
-  Standard_Real theta = 0.0 ,z = 0.0, aTolPrecision=0.0001;
-  Standard_Real PIpPI = Standard_PI+Standard_PI;
+  Standard_Real theta,z, aTolPrecision=0.0001;
+  Standard_Real PIpPI = M_PI + M_PI;
   //
   switch (typequadric) {
 

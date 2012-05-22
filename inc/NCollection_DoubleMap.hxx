@@ -1,7 +1,22 @@
-// File:        NCollection_DoubleMap.hxx
-// Created:     Thu Apr 24 15:02:53 2002
-// Author:      Alexander KARTOMIN (akm)
-//              <akm@opencascade.com>
+// Created on: 2002-04-24
+// Created by: Alexander KARTOMIN (akm)
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef NCollection_DoubleMap_HeaderFile
 #define NCollection_DoubleMap_HeaderFile
@@ -15,11 +30,7 @@
 #include <Standard_ImmutableObject.hxx>
 #include <Standard_NoSuchObject.hxx>
 
-#ifdef WNT
-// Disable the warning "operator new unmatched by delete"
-#pragma warning (push)
-#pragma warning (disable:4291)
-#endif
+#include <NCollection_DefaultHasher.hxx>
 
 /**
 * Purpose:     The DoubleMap  is used to  bind  pairs (Key1,Key2)
@@ -28,7 +39,11 @@
 *              See Map from NCollection for a discussion about the number
 *              of buckets
 */              
-template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap 
+
+template < class TheKey1Type, 
+           class TheKey2Type, 
+           class Hasher1 = NCollection_DefaultHasher<TheKey1Type>, 
+           class Hasher2 = NCollection_DefaultHasher<TheKey2Type> > class NCollection_DoubleMap 
   : public NCollection_BaseCollection<TheKey2Type>,
     public NCollection_BaseMap
 {
@@ -122,10 +137,6 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
       Standard_ImmutableObject::Raise("NCollection_DoubleMap::Iterator::ChangeValue");
       return * (TheKey2Type *) NULL; // For compiler
     }
-    //! Operator new for allocating iterators
-    void* operator new(size_t theSize,
-                       const Handle(NCollection_BaseAllocator)& theAllocator) 
-    { return theAllocator->Allocate(theSize); }
   };
 
  public:
@@ -164,8 +175,8 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
     {
       TheKey1Type aKey1 = anIter.Key1();
       TheKey2Type aKey2 = anIter.Key2();
-      Standard_Integer iK1 = HashCode (aKey1, NbBuckets());
-      Standard_Integer iK2 = HashCode (aKey2, NbBuckets());
+      Standard_Integer iK1 = Hasher1::HashCode (aKey1, NbBuckets());
+      Standard_Integer iK2 = Hasher2::HashCode (aKey2, NbBuckets());
       DoubleMapNode * pNode = new (this->myAllocator) DoubleMapNode (aKey1, aKey2, 
                                                                      myData1[iK1], 
                                                                      myData2[iK2]);
@@ -198,8 +209,8 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
             p = (DoubleMapNode *) myData1[i];
             while (p) 
             {
-              iK1 = HashCode (p->Key1(), newBuck);
-              iK2 = HashCode (p->Key2(), newBuck);
+              iK1 = Hasher1::HashCode (p->Key1(), newBuck);
+              iK2 = Hasher2::HashCode (p->Key2(), newBuck);
               q = (DoubleMapNode*) p->Next();
               p->Next()  = ppNewData1[iK1];
               p->Next2() = ppNewData2[iK2];
@@ -222,20 +233,20 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (Resizable()) 
       ReSize(Extent());
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
-    Standard_Integer iK2 = HashCode (theKey2, NbBuckets());
+    Standard_Integer iK1 = Hasher1::HashCode (theKey1, NbBuckets());
+    Standard_Integer iK2 = Hasher2::HashCode (theKey2, NbBuckets());
     DoubleMapNode * pNode;
     pNode = (DoubleMapNode *) myData1[iK1];
     while (pNode) 
     {
-      if (IsEqual (pNode->Key1(), theKey1))
+      if (Hasher1::IsEqual (pNode->Key1(), theKey1))
         Standard_MultiplyDefined::Raise("NCollection_DoubleMap:Bind");
       pNode = (DoubleMapNode *) pNode->Next();
     }
     pNode = (DoubleMapNode *) myData2[iK2];
     while (pNode) 
     {
-      if (IsEqual (pNode->Key2(), theKey2))
+      if (Hasher2::IsEqual (pNode->Key2(), theKey2))
         Standard_MultiplyDefined::Raise("NCollection_DoubleMap:Bind");
       pNode = (DoubleMapNode *) pNode->Next();
     }
@@ -252,13 +263,13 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
-    Standard_Integer iK2 = HashCode (theKey2, NbBuckets());
+    Standard_Integer iK1 = Hasher1::HashCode (theKey1, NbBuckets());
+    Standard_Integer iK2 = Hasher2::HashCode (theKey2, NbBuckets());
     DoubleMapNode * pNode1, * pNode2;
     pNode1 = (DoubleMapNode *) myData1[iK1];
     while (pNode1) 
     {
-      if (IsEqual(pNode1->Key1(), theKey1)) 
+      if (Hasher1::IsEqual(pNode1->Key1(), theKey1)) 
         break;
       pNode1 = (DoubleMapNode *) pNode1->Next();
     }
@@ -267,7 +278,7 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
     pNode2 = (DoubleMapNode *) myData2[iK2];
     while (pNode2) 
     {
-      if (IsEqual(pNode2->Key2(), theKey2)) 
+      if (Hasher2::IsEqual(pNode2->Key2(), theKey2)) 
         break;
       pNode2 = (DoubleMapNode *) pNode2->Next();
     }
@@ -282,12 +293,12 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
+    Standard_Integer iK1 = Hasher1::HashCode (theKey1, NbBuckets());
     DoubleMapNode * pNode1;
     pNode1 = (DoubleMapNode *) myData1[iK1];
     while (pNode1) 
     {
-      if (IsEqual(pNode1->Key1(), theKey1)) 
+      if (Hasher1::IsEqual(pNode1->Key1(), theKey1)) 
         return Standard_True;
       pNode1 = (DoubleMapNode *) pNode1->Next();
     }
@@ -299,12 +310,12 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK2 = HashCode (theKey2, NbBuckets());
+    Standard_Integer iK2 = Hasher2::HashCode (theKey2, NbBuckets());
     DoubleMapNode * pNode2;
     pNode2 = (DoubleMapNode *) myData2[iK2];
     while (pNode2) 
     {
-      if (IsEqual(pNode2->Key2(), theKey2)) 
+      if (Hasher2::IsEqual(pNode2->Key2(), theKey2)) 
         return Standard_True;
       pNode2 = (DoubleMapNode *) pNode2->Next2();
     }
@@ -316,20 +327,20 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK1 = HashCode (theKey1, NbBuckets());
+    Standard_Integer iK1 = Hasher1::HashCode (theKey1, NbBuckets());
     DoubleMapNode * p1, * p2, * q1, *q2;
     q1 = q2 = NULL;
     p1 = (DoubleMapNode *) myData1[iK1];
     while (p1) 
     {
-      if (IsEqual (p1->Key1(), theKey1)) 
+      if (Hasher1::IsEqual (p1->Key1(), theKey1)) 
       {
         // remove from the data1
         if (q1) 
           q1->Next() = p1->Next();
         else
           myData1[iK1] = (DoubleMapNode*) p1->Next();
-        Standard_Integer iK2 = HashCode (p1->Key2(), NbBuckets());
+        Standard_Integer iK2 = Hasher2::HashCode (p1->Key2(), NbBuckets());
         p2 = (DoubleMapNode *) myData2[iK2];
         while (p2)
         {
@@ -361,20 +372,20 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   {
     if (IsEmpty()) 
       return Standard_False;
-    Standard_Integer iK2 = HashCode (theKey2, NbBuckets());
+    Standard_Integer iK2 = Hasher2::HashCode (theKey2, NbBuckets());
     DoubleMapNode * p1, * p2, * q1, *q2;
     q1 = q2 = NULL;
     p2 = (DoubleMapNode *) myData2[iK2];
     while (p2) 
     {
-      if (IsEqual (p2->Key2(), theKey2)) 
+      if (Hasher2::IsEqual (p2->Key2(), theKey2)) 
       {
         // remove from the data2
         if (q2)
           q2->Next() = p2->Next();
         else
           myData2[iK2] = (DoubleMapNode*) p2->Next2();
-        Standard_Integer iK1 = HashCode (p2->Key1(), NbBuckets());
+        Standard_Integer iK1 = Hasher1::HashCode (p2->Key1(), NbBuckets());
         p1 = (DoubleMapNode *) myData1[iK1];
         while (p1)
         {
@@ -409,10 +420,10 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
       Standard_NoSuchObject::Raise ("NCollection_DoubleMap::Find1");
 #endif
     DoubleMapNode * pNode1 = 
-      (DoubleMapNode *) myData1[HashCode(theKey1,NbBuckets())];
+      (DoubleMapNode *) myData1[Hasher1::HashCode(theKey1,NbBuckets())];
     while (pNode1)
     {
-      if (IsEqual (pNode1->Key1(), theKey1)) 
+      if (Hasher1::IsEqual (pNode1->Key1(), theKey1)) 
         return pNode1->Key2();
       pNode1 = (DoubleMapNode*) pNode1->Next();
     }
@@ -428,10 +439,10 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
       Standard_NoSuchObject::Raise ("NCollection_DoubleMap::Find2");
 #endif
     DoubleMapNode * pNode2 = 
-      (DoubleMapNode *) myData2[HashCode(theKey2,NbBuckets())];
+      (DoubleMapNode *) myData2[Hasher2::HashCode(theKey2,NbBuckets())];
     while (pNode2)
     {
-      if (IsEqual (pNode2->Key2(), theKey2)) 
+      if (Hasher2::IsEqual (pNode2->Key2(), theKey2)) 
         return pNode2->Key1();
       pNode2 = (DoubleMapNode*) pNode2->Next2();
     }
@@ -469,9 +480,5 @@ template <class TheKey1Type, class TheKey2Type> class NCollection_DoubleMap
   { return *(new (this->IterAllocator()) Iterator(*this)); }
 
 };
-
-#ifdef WNT
-#pragma warning (pop)
-#endif
 
 #endif

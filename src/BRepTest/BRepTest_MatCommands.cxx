@@ -1,7 +1,23 @@
-// File:	BRepTest_MatCommands.cxx
-// Created:	Tue Oct  4 09:25:21 1994
-// Author:	Yves FRICAUD
-//		<yfr@stylox>
+// Created on: 1994-10-04
+// Created by: Yves FRICAUD
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <BRepTest.hxx>
 #include <Draw_Interpretor.hxx>
@@ -54,7 +70,7 @@ static void DrawCurve(const Handle(Geom2d_Curve)& aCurve,
 
 //==========================================================================
 //function : topoLoad
-//           chargement d une face dans l explorer.
+//           loading of a face in the explorer.
 //==========================================================================
 static Standard_Integer topoload (Draw_Interpretor& , Standard_Integer argc, const char** argv)
 { 
@@ -70,7 +86,7 @@ static Standard_Integer topoload (Draw_Interpretor& , Standard_Integer argc, con
 
 //==========================================================================
 //function : drawcont
-//           visualisation du contour defini par l explorateur.
+//           visualization of the contour defined by the explorer.
 //==========================================================================
 static Standard_Integer drawcont(Draw_Interpretor& , Standard_Integer , const char**)
 {
@@ -86,8 +102,8 @@ static Standard_Integer drawcont(Draw_Interpretor& , Standard_Integer , const ch
 
 //==========================================================================
 //function : mat
-//           calcul de la carte des lieux bisecteur sur le contour defini
-//           par l explorateur.
+//           calculate the map of locations bisector on the contour defined by 
+//           the explorer.
 //==========================================================================
 static Standard_Integer mat(Draw_Interpretor& , Standard_Integer, const char**)
 {
@@ -97,11 +113,11 @@ static Standard_Integer mat(Draw_Interpretor& , Standard_Integer, const char**)
   return 0;
 }
 
-//==========================================================================
+//============================================================================
 //function : zone
-//           construction et affichage de la zone de proximite associee aux
-//           elements de base definis par l edge ou le vertex.
-//==========================================================================
+//           construction and display of the proximity zone associated to the
+//           base elements defined by the edge or the vertex.
+//============================================================================
 static Standard_Integer zone(Draw_Interpretor& , Standard_Integer argc , const char** argv)
 {
   if (argc < 2) return 1;
@@ -132,8 +148,8 @@ static Standard_Integer zone(Draw_Interpretor& , Standard_Integer argc , const c
 
 //==========================================================================
 //function : side
-//           side = left  => calcul a gauche du contour.
-//           side = right => calcul a droite du contour.
+//           side = left  => calculation to the left of the contour.
+//           side = right => calculation to the right of the contour.
 //==========================================================================
 
 static Standard_Integer side(Draw_Interpretor& , Standard_Integer, const char** argv)
@@ -148,7 +164,7 @@ static Standard_Integer side(Draw_Interpretor& , Standard_Integer, const char** 
 
 //==========================================================================
 //function : result
-//           Affichage complet de la carte calculee.
+//           Complete display of the calculated map.
 //==========================================================================
 static Standard_Integer result(Draw_Interpretor& , Standard_Integer, const char**)
 {
@@ -165,12 +181,11 @@ static Standard_Integer result(Draw_Interpretor& , Standard_Integer, const char*
 
 //==========================================================================
 //function : DrawCurve
-//           Affichage d une courbe <aCurve> de Geom2d. dans une couleur
-//           definie par <Indice>.
-//  Indice = 1 jaune,
-//  Indice = 2 bleu,
-//  Indice = 3 rouge,
-//  Indice = 4 vert.
+//           Display of curve <aCurve> of Geom2d in a color defined by <Indice>.
+//  Indice = 1 yellow,
+//  Indice = 2 blue,
+//  Indice = 3 red,
+//  Indice = 4 green.
 //==========================================================================
 void DrawCurve(const Handle(Geom2d_Curve)& aCurve,
 	       const Standard_Integer      Indice)
@@ -187,14 +202,14 @@ void DrawCurve(const Handle(Geom2d_Curve)& aCurve,
       curve =(*(Handle_Bisector_BisecAna*)&curve)->Geom2dCurve(); 
       type = curve->DynamicType(); 
     }
-    // PB de representation des courbes semi_infinies.
+    // PB of representation of semi_infinite curves.
     gp_Parab2d gpParabola;
     gp_Hypr2d  gpHyperbola;
     Standard_Real Focus;
     Standard_Real Limit = 50000.;
     Standard_Real delta = 400;
 
-    // PB de representation des courbes semi_infinies.
+    // PB of representation of semi_infinite curves.
     if (aCurve->LastParameter() == Precision::Infinite()) {
       
       if (type == STANDARD_TYPE(Geom2d_Parabola)) {
@@ -224,7 +239,7 @@ void DrawCurve(const Handle(Geom2d_Curve)& aCurve,
     else {
       CurveDraw = aCurve;
     }
-    // fin PB.
+    // end PB.
   }
   else {
     CurveDraw = aCurve;

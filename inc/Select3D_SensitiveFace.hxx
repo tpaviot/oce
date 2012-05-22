@@ -40,15 +40,24 @@
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
 #endif
+#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
+#include <Handle_Select3D_SensitiveEntity.hxx>
+#endif
+class Standard_ConstructionError;
+class Standard_OutOfRange;
 class SelectBasics_EntityOwner;
 class TColgp_Array1OfPnt;
 class TColgp_HArray1OfPnt;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 class gp_Lin;
+class Select3D_SensitiveEntity;
+class TopLoc_Location;
 
 
 //! Sensitive Entity to make a face selectable. <br>
+//! In some cases this class can raise Standard_ConstructionError and <br>
+//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly. <br>
 class Select3D_SensitiveFace : public Select3D_SensitivePoly {
 
 public:
@@ -77,6 +86,8 @@ public:
   Standard_EXPORT   virtual  Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
   
   Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! Returns the copy of this <br>
+  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& theLocation) ;
 
 
 

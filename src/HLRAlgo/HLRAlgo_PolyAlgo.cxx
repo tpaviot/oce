@@ -1,7 +1,24 @@
-// File:	HLRAlgo_PolyAlgo.cxx
-// Created:	Fri May  5 15:58:19 1995
-// Author:	Christophe MARION
-//		<cma@ecolox>
+// Created on: 1995-05-05
+// Created by: Christophe MARION
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 #ifndef No_Exception
 //#define No_Exception
 #endif
@@ -219,11 +236,7 @@ void HLRAlgo_PolyAlgo::Update ()
 	Standard_Real X1,X2,X3,Y1,Y2,Y3,Z1,Z2,Z3;
 	Standard_Real dn,dnx,dny,dnz,dx1,dy1,dz1,dx2,dy2,dz2,dx3,dy3;
 	Standard_Real adx1,ady1,adx2,ady2,adx3,ady3;
-#ifndef DEB
 	Standard_Real a =0.,b =0.,c =0.,d =0.;
-#else
-	Standard_Real a,b,c,d;
-#endif
 	const Standard_Address PolyTIndices = (*pd)->Indices();
 	TColgp_Array1OfXYZ   & Nodes        = (*pd)->Nodes();
 	HLRAlgo_Array1OfTData& TData        = (*pd)->TData();

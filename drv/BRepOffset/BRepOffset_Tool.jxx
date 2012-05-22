@@ -28,6 +28,9 @@
 #ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
 #endif
+#ifndef _TopTools_IndexedMapOfShape_HeaderFile
+#include <TopTools_IndexedMapOfShape.hxx>
+#endif
 #ifndef _BRepAlgo_AsDes_HeaderFile
 #include <BRepAlgo_AsDes.hxx>
 #endif

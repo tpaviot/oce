@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //:j6 abv 7 Dec 98: ProSTEP TR10 r0601_id.stp #57676 & #58586: 
 //    in FixIntersectingEdges, do not cut edges because of influence on adjacent faces
 // pdn 17.12.98: shifting whole wire in FixShifted
@@ -94,7 +111,7 @@
 #include <ShapeAnalysis_TransferParametersProj.hxx>
 #include <Geom_Plane.hxx>
 #include <Geom_OffsetCurve.hxx>
-  
+
 #include <TColStd_HSequenceOfReal.hxx>
 #include <Handle_Geom2dAdaptor_HCurve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
@@ -110,7 +127,7 @@
 //#######################################################################
 //  Constructors, initializations, modes, querying
 //#######################################################################
-  
+
 //=======================================================================
 //function : ShapeFix_Wire
 //purpose  : 
@@ -442,10 +459,7 @@ Standard_Integer ShapeFix_Wire::FixSmall (const Standard_Boolean lockvtx,
     FixSmall ( i, lockvtx, precsmall );
     myStatusSmall |= myLastFixStatus;
   }
-  
-  if ( StatusSmall ( ShapeExtend_DONE ) && ! myShape.IsNull() ) {
-    SendWarning (Message_Msg ("FixAdvWire.FixSmall.MSG0"));//Small edge(s) removed
-  }
+
   return StatusSmall ( ShapeExtend_DONE );
 
 }
@@ -671,14 +685,15 @@ Standard_Boolean ShapeFix_Wire::FixEdgeCurves()
         Handle(Geom2d_Curve) C;
         Handle(Geom_Surface) S;
         TopLoc_Location L;
-        Standard_Real first, last;
+        Standard_Real first = 0., last = 0.;
         BRep_Tool::CurveOnSurface ( sbwd->Edge(i), C, S, L, first, last );
-        if ( C.IsNull() ) {
+        if ( C.IsNull() || Abs (last - first) < Precision::PConfusion())
+        {
+          SendWarning ( sbwd->Edge ( i ), Message_Msg ( "FixWire.FixCurve3d.Removed" ) );// Incomplete edge (with no pcurves or 3d curve) removed
           sbwd->Remove ( i-- );
           nb--;
           myStatusEdgeCurves |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE5 );
-          if ( ! myShape.IsNull() ) 
-            SendWarning (Message_Msg ("FixWire.FixCurve3d.Removed")); // Incomplete edge (with no pcurves or 3d curve) removed
+          FixConnected (i + 1, Precision());
         }
 	myStatusEdgeCurves |= ShapeExtend::EncodeStatus ( ShapeExtend_FAIL5 );
       }
@@ -775,10 +790,6 @@ Standard_Boolean ShapeFix_Wire::FixDegenerated()
       prevcoded = 0;
     }
     else prevcoded = coded; 
-  }
-  
-  if ( StatusDegenerated ( ShapeExtend_DONE ) && ! myShape.IsNull() ) {
-    SendWarning (Message_Msg ("FixWire.FixDegenerated.MSG0")); //Degenerated edge(s) detected
   }
 
   return StatusDegenerated ( ShapeExtend_DONE );
@@ -935,9 +946,6 @@ Standard_Boolean ShapeFix_Wire::FixSelfIntersection()
 */
   }
 
-  if ( StatusSelfIntersection ( ShapeExtend_DONE ) && ! myShape.IsNull() ) {
-    SendWarning (Message_Msg ("FixAdvWire.FixIntersection.MSG0")); // Self-intersection corrected
-  }
   return StatusSelfIntersection ( ShapeExtend_DONE );
 }
 
@@ -1077,7 +1085,9 @@ Standard_Boolean ShapeFix_Wire::FixSmall (const Standard_Integer num,
   else myLastFixStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE1 );
 
   // action: remove edge
-  if ( ! Context().IsNull() ) Context()->Remove(WireData()->Edge(n));
+  if ( ! Context().IsNull() ) 
+    Context()->Remove(WireData()->Edge(n));
+  SendWarning ( WireData()->Edge ( n ), Message_Msg ( "FixAdvWire.FixSmall.MSG0" ) ); //Small edge(s) removed
   WireData()->Remove ( n );
   
   // call FixConnected in the case if vertices of the small edge were not the same
@@ -1089,12 +1099,7 @@ Standard_Boolean ShapeFix_Wire::FixSmall (const Standard_Integer num,
       savLastFixStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_FAIL3 );
     myLastFixStatus = savLastFixStatus;
   }
-  
-  if ( ! myShape.IsNull() ) {
-    Message_Msg MSG ("FixAdvWire.FixSmall.MSG0"); //Small edge %d removed
-    MSG.Arg (n);
-    SendWarning (MSG);
-  }
+
   return Standard_True;
 }
 
@@ -1634,10 +1639,10 @@ Standard_Boolean ShapeFix_Wire::FixDegenerated (const Standard_Integer num)
     sbwd->Set ( degEdge, n2 );
     myLastFixStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE2 );
   }
-//: abv 28.08.01 - commented to avoid extra messages
-//  Message_Msg MSG ("FixWire.FixDegenerated.MSG5"); //Degenerated edge %d detected
-//  MSG.Arg (n2);
-//  SendWarning (MSG);
+
+//  commented to avoid extra messages
+//  SendWarning ( degEdge, Message_Msg ( "FixWire.FixDegenerated.MSG0" ) );// Degenerated edge(s) detected
+
   return Standard_True;
 }
 
@@ -2215,9 +2220,7 @@ Standard_Boolean ShapeFix_Wire::FixSelfIntersectingEdge (const Standard_Integer 
   }
 
   if ( LastFixStatus ( ShapeExtend_DONE ) && ! myShape.IsNull() ) {
-    Message_Msg MSG ("FixAdvWire.FixIntersection.MSG5"); //Edge %d was self-intersecting, corrected
-    MSG.Arg (num);
-    SendWarning (MSG);
+    SendWarning ( E, Message_Msg ( "FixAdvWire.FixIntersection.MSG5" ) );// Edge was self-intersecting, corrected
   }
 
   return LastFixStatus ( ShapeExtend_DONE );
@@ -2419,10 +2422,7 @@ Standard_Boolean ShapeFix_Wire::FixIntersectingEdges (const Standard_Integer num
     myLastFixStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE7 );
   }
   if ( ! myShape.IsNull() ) {
-    Message_Msg MSG ("FixAdvWire.FixIntersection.MSG10"); //Edges %d and %d were intersecting, corrected
-    MSG.Arg (n1);
-    MSG.Arg (n2);
-    SendWarning (MSG);
+    SendWarning ( Message_Msg ( "FixAdvWire.FixIntersection.MSG10" ) );// Edges were intersecting, corrected
   }
   return Standard_True;
 }
@@ -2601,10 +2601,7 @@ Standard_Boolean ShapeFix_Wire::FixIntersectingEdges (const Standard_Integer num
     if(newTolers(i)>0) B.UpdateVertex(TopoDS::Vertex(vertices(i)),newTolers(i));
   
   if ( ! myShape.IsNull() ) {
-    Message_Msg MSG ("FixAdvWire.FixIntersection.MSG10"); //Edges %d and %d were intersecting, corrected
-    MSG.Arg (n1);
-    MSG.Arg (n2);
-    SendWarning (MSG);
+    SendWarning ( Message_Msg ( "FixAdvWire.FixIntersection.MSG10" ) );// Edges were intersecting, corrected
   }
   return Standard_True;
 }

@@ -1,4 +1,21 @@
-//File Convert_TorusToBSplineSurface.cxx
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //JCV 16/10/91
 
 #include <Convert_TorusToBSplineSurface.ixx>
@@ -27,11 +44,11 @@ static void ComputePoles ( const Standard_Real R,
 
   Standard_Integer i, j;
 
-  // Nombre de spans : ouverture maximale = 150 degres ( = PI / 1.2 rds)
+  // Number of spans : maximum opening = 150 degrees ( = PI / 1.2 rds)
   Standard_Integer 
-    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / PI) + 1;
+    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / M_PI) + 1;
   Standard_Integer  
-    nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / PI) + 1;
+    nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / M_PI) + 1;
   Standard_Real AlfaU = deltaU / ( nbUSpans * 2);
   Standard_Real AlfaV = deltaV / ( nbVSpans * 2);
 
@@ -88,21 +105,21 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
 {
   Standard_Real deltaU = U2 - U1;
   Standard_Real deltaV = V2 - V1;
-  Standard_DomainError_Raise_if( (deltaU>2*PI) || (deltaU<0.) ||
-				 (deltaV>2*PI) || (deltaV<0.),
+  Standard_DomainError_Raise_if( (deltaU>2*M_PI) || (deltaU<0.) ||
+				 (deltaV>2*M_PI) || (deltaV<0.),
 				"Convert_TorusToBSplineSurface");
 
   isuperiodic = Standard_False;
   isvperiodic = Standard_False;
 
   Standard_Integer i,j;
-  // construction du tore dans le repere de reference xOy.
+  // construction of the torus in the reference mark xOy.
 
-  // Nombre de spans : ouverture maximale = 150 degres ( = PI / 1.2 rds)
+  // Number of spans : maximum opening = 150 degrees ( = PI / 1.2 rds)
   Standard_Integer 
-    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / PI) + 1;
+    nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / M_PI) + 1;
   Standard_Integer  
-    nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / PI) + 1;
+    nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / M_PI) + 1;
   Standard_Real AlfaU = deltaU / ( nbUSpans * 2);
   Standard_Real AlfaV = deltaV / ( nbVSpans * 2);
 
@@ -128,8 +145,8 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
   vmults(1)++; vmults(nbVKnots)++;
 
 
-  // On replace la bspline dans le repere du tore.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the reference of the torus.
+  // and calculate the weight of the bspline.
   Standard_Real W1, W2;
   gp_Trsf Trsf;
   Trsf.SetTransformation( T.Position(), gp::XOY());
@@ -166,7 +183,7 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
 #ifndef No_Exception
   Standard_Real delta = Param2 - Param1;
 #endif
-  Standard_DomainError_Raise_if( (delta>2*PI) || (delta<0.),
+  Standard_DomainError_Raise_if( (delta>2*M_PI) || (delta<0.),
 				"Convert_TorusToBSplineSurface");
 
   Standard_Integer i, j;
@@ -181,20 +198,20 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
   Standard_Real W1, W2, CosU, CosV;
   
   if ( isuperiodic) {
-    ComputePoles(R, r, 0, 2.*PI, Param1, Param2, poles);
+    ComputePoles(R, r, 0, 2.*M_PI, Param1, Param2, poles);
     
     nbUPoles = 6;
     nbUKnots = 4;
     
     deltaV = Param2 - Param1;
     Standard_Integer  
-      nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / PI) + 1;
+      nbVSpans = (Standard_Integer)IntegerPart( 1.2 * deltaV / M_PI) + 1;
     Standard_Real AlfaV = deltaV / ( nbVSpans * 2);
     nbVPoles = 2 * nbVSpans + 1;
     nbVKnots = nbVSpans + 1;
     
     for ( i = 1; i <= nbUKnots; i++) {
-      uknots(i) = ( i-1) * 2. * PI /3.;
+      uknots(i) = ( i-1) * 2. * M_PI /3.;
       umults(i) = 2;
     }
     for ( i = 1; i <= nbVKnots; i++) {
@@ -207,20 +224,20 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
     CosV = Cos(AlfaV);
   }
   else {
-    ComputePoles(R, r, Param1, Param2, 0., 2.*PI, poles);
+    ComputePoles(R, r, Param1, Param2, 0., 2.*M_PI, poles);
     
     nbVPoles = 6;
     nbVKnots = 4;
     
     deltaU = Param2 - Param1;
     Standard_Integer  
-      nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / PI) + 1;
+      nbUSpans = (Standard_Integer)IntegerPart( 1.2 * deltaU / M_PI) + 1;
     Standard_Real AlfaU = deltaU / ( nbUSpans * 2);
     nbUPoles = 2 * nbUSpans + 1;
     nbUKnots = nbUSpans + 1;
     
     for ( i = 1; i <= nbVKnots; i++) {
-      vknots(i) = ( i-1) * 2. * PI /3.;
+      vknots(i) = ( i-1) * 2. * M_PI /3.;
       vmults(i) = 2;
     }
     for ( i = 1; i <= nbUKnots; i++) {
@@ -233,8 +250,8 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
     CosU = Cos(AlfaU);
   }
 
-  // On replace la bspline dans le repere du tore.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the reference of the torus.
+  // and calculate the weight of the bspline.
   gp_Trsf Trsf;
   Trsf.SetTransformation( T.Position(), gp::XOY());
 
@@ -276,23 +293,23 @@ Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface
   nbUKnots = 4;
   nbVKnots = 4;
 
-  // Construction du Tore dans le repere reference xOy.
+  // Construction of the Torus in the reference mark xOy.
   
   Standard_Real R = T.MajorRadius();
   Standard_Real r = T.MinorRadius();
 
-  ComputePoles( R, r, 0., 2.*PI, 0., 2.*PI, poles);
+  ComputePoles( R, r, 0., 2.*M_PI, 0., 2.*M_PI, poles);
 
   uknots( 1) = vknots( 1) = 0.;
-  uknots( 2) = vknots( 2) = 2. * PI / 3.;
-  uknots( 3) = vknots( 3) = 4. * PI / 3.;
-  uknots( 4) = vknots( 4) = 2. * PI;
+  uknots( 2) = vknots( 2) = 2. * M_PI / 3.;
+  uknots( 3) = vknots( 3) = 4. * M_PI / 3.;
+  uknots( 4) = vknots( 4) = 2. * M_PI;
   for ( i = 1; i <= 4; i++) {
     umults( i) = vmults( i) = 2;
   }
 
-  // On replace la bspline dans le repere du tore.
-  // et on calcule les poids de la bspline.
+  // Replace the bspline in the mark of the torus.
+  // and calculate the weight of the bspline.
   gp_Trsf Trsf;
   Trsf.SetTransformation( T.Position(), gp::XOY());
 

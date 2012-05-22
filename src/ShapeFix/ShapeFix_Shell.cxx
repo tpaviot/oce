@@ -1,7 +1,23 @@
-// File:	ShapeFix_Shell.cxx
-// Created:	Wed Aug 12 11:07:12 1998
-// Author:	Galina KULIKOVA
-//		<gka@nnov.matra-dtv.fr>
+// Created on: 1998-08-12
+// Created by: Galina KULIKOVA
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // pdn 17.12.98 ie_exhaust-A.stp
 
 #include <ShapeFix_Shell.ixx>
@@ -33,6 +49,7 @@
 #include <ShapeExtend.hxx>
 #include <ShapeBuild_ReShape.hxx> 
 #include <Message_Msg.hxx>
+#include <Message_ProgressSentry.hxx>
 #include <TopTools_DataMapOfShapeInteger.hxx>
 #include <TopTools_DataMapOfShapeInteger.hxx>
 #include <TopTools_DataMapOfShapeInteger.hxx>
@@ -93,26 +110,40 @@ void ShapeFix_Shell::Init(const TopoDS_Shell& shell)
 //purpose  : 
 //=======================================================================
 
-Standard_Boolean ShapeFix_Shell::Perform() 
+Standard_Boolean ShapeFix_Shell::Perform(const Handle(Message_ProgressIndicator)& theProgress) 
 {
   Standard_Boolean status = Standard_False;
-  if(Context().IsNull())
-    SetContext ( new ShapeBuild_ReShape );
+  if ( Context().IsNull() )
+    SetContext(new ShapeBuild_ReShape);
   myFixFace->SetContext(Context());
-  if ( NeedFix ( myFixFaceMode ) ) {
-    TopoDS_Shape S = Context()->Apply ( myShell );
-    for( TopoDS_Iterator iter(S); iter.More(); iter.Next()) { 
+
+  if ( NeedFix(myFixFaceMode) )
+  {
+    TopoDS_Shape S = Context()->Apply(myShell);
+
+    // Get the number of faces for progress indication
+    Standard_Integer aNbFaces = 0;
+    for ( TopExp_Explorer aFaceExp(S, TopAbs_FACE); aFaceExp.More(); aFaceExp.Next() )
+      ++aNbFaces;
+
+    // Start progress scope (no need to check if progress exists -- it is safe)
+    Message_ProgressSentry aPSentry(theProgress, "Fixing face", 0, aNbFaces, 1);
+
+    for( TopoDS_Iterator iter(S); iter.More() && aPSentry.More(); iter.Next(), aPSentry.Next() )
+    { 
       TopoDS_Shape sh = iter.Value();
       TopoDS_Face tmpFace = TopoDS::Face(sh);
       myFixFace->Init(tmpFace);
-//      myFixFace->SetPrecision(Precision());
-      if(myFixFace->Perform()) {
-//	if(!Context().IsNull())
-//	  Context()->Replace(tmpFace,myFixFace->Face());
-	status = Standard_True;
-	myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE1 );
+      if ( myFixFace->Perform() )
+      {
+        status = Standard_True;
+        myStatus |= ShapeExtend::EncodeStatus ( ShapeExtend_DONE1 );
       }
     }
+
+    // Halt algorithm in case of user's abort
+    if ( !aPSentry.More() )
+      return Standard_False;
   }
   TopoDS_Shape newsh = Context()->Apply(myShell);
   if ( NeedFix ( myFixOrientationMode) )
@@ -888,7 +919,7 @@ Standard_Boolean ShapeFix_Shell::FixFaceOrientation(const TopoDS_Shell& shell,co
     
     done = Standard_True;
     myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL);
-    SendWarning (Message_Msg ("FixAdvShell.FixOrientation.MSG20"));//Faces were incorrectly oriented in the shell, a few shells were created;
+    SendWarning ( Message_Msg ( "FixAdvShell.FixOrientation.MSG20" ) );// Impossible to orient faces in shell, several shells created
     return Standard_True;
   }
   if(aNumMultShell >1) {
@@ -943,10 +974,10 @@ Standard_Boolean ShapeFix_Shell::FixFaceOrientation(const TopoDS_Shell& shell,co
     myStatus = ShapeExtend::EncodeStatus (ShapeExtend_DONE2);
     if(!Context().IsNull())
       Context()->Replace(shell, myShape);
-    if( myNbShells == 1)
-    SendWarning (Message_Msg ("FixAdvShell.FixOrientation.MSG0"));//Faces were incorrectly oriented in the shell, corrected
+    if ( myNbShells == 1 )
+      SendWarning ( Message_Msg ( "FixAdvShell.FixOrientation.MSG0" ) );// Faces were incorrectly oriented in the shell, corrected
     else
-      SendWarning (Message_Msg ("FixAdvShell.FixOrientation.MSG30"));//Bad connected shell ,a few shells were created.
+      SendWarning ( Message_Msg ( "FixAdvShell.FixOrientation.MSG30" ) );// Improperly connected shell split into parts
     return Standard_True;
   }
   else return Standard_False;

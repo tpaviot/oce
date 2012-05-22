@@ -1,6 +1,23 @@
-// File:	AIS_RadiusDimension.cxx
-// Created:	Tue Dec  5 15:09:04 1996
-// Author:	Jean-Pierre COMBE/Odile Olivier/Serguei Zaritchny
+// Created on: 1996-12-05
+// Created by: Jean-Pierre COMBE/Odile Olivier/Serguei Zaritchny
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // modified     <SZY> 20-feb-98
 //              <VBU> myFShape could be a wire.
 
@@ -232,10 +249,10 @@ void AIS_RadiusDimension::InitFirstShape()
 
   myCenter = myCircle.Location();
   myCircle.SetRadius(myVal);
-  while (myFirstPar > 2*PI) myFirstPar -= 2*PI;
-  while (myFirstPar < 0.0 ) myFirstPar += 2*PI;
-  while (myLastPar  > 2*PI) myLastPar  -= 2*PI;
-  while (myLastPar  < 0.0 ) myLastPar  += 2*PI;
+  while (myFirstPar > 2*M_PI) myFirstPar -= 2*M_PI;
+  while (myFirstPar < 0.0 ) myFirstPar += 2*M_PI;
+  while (myLastPar  > 2*M_PI) myLastPar  -= 2*M_PI;
+  while (myLastPar  < 0.0 ) myLastPar  += 2*M_PI;
   myPlane = new Geom_Plane(gp_Pln(gp_Ax3(myCircle.Position())));
   myFirstLine = gce_MakeLin( myCenter, ElCLib::Value( myFirstPar, myCircle ) );
   myLastLine  = gce_MakeLin( myCenter, ElCLib::Value( myLastPar, myCircle ) );
@@ -359,18 +376,18 @@ void AIS_RadiusDimension::ComputeRadius( const Handle( Prs3d_Presentation )& aPr
        Standard_Real PosPar = ElCLib::Parameter( myCircle, myPosition );
        if (!AIS::InDomain(myFirstPar, myLastPar, PosPar))
 	 { // not in domain
-	   Standard_Real otherpar = PosPar + PI;
-	   if (otherpar > 2*PI) otherpar -= 2*PI;
+	   Standard_Real otherpar = PosPar + M_PI;
+	   if (otherpar > 2*M_PI) otherpar -= 2*M_PI;
 	   if (AIS::InDomain(myFirstPar, myLastPar, otherpar)){
 	     PosPar = otherpar;// parameter on circle
 	     myEndOfArrow = ElCLib::Value( PosPar, myCircle );
 	   }
 	   else {
 	     Standard_Real Teta1 = Abs( PosPar - myFirstPar ), Teta2 = Abs( PosPar - myLastPar );
-	     if (Teta1 > PI)
-	       Teta1 = 2.0*PI - Teta1; 
-	     if (Teta2 > PI)
-	       Teta2 = 2.0*PI - Teta2; 
+	     if (Teta1 > M_PI)
+	       Teta1 = 2.0*M_PI - Teta1; 
+	     if (Teta2 > M_PI)
+	       Teta2 = 2.0*M_PI - Teta2; 
 	     if (Teta1 < Teta2) 
 	       {
 		 if(myFirstLine.Contains(myPosition,Precision::Confusion()))

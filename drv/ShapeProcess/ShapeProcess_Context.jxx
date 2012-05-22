@@ -7,6 +7,9 @@
 #ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
 #endif
+#ifndef _Message_ProgressIndicator_HeaderFile
+#include <Message_ProgressIndicator.hxx>
+#endif
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif

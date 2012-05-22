@@ -1,3 +1,21 @@
+// Copyright (c) 1998-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #define xTRACE
 
 // S3569	//Gestion des zones cachantes
@@ -146,13 +164,13 @@ void Graphic2d_HidingGraphicObject::Draw (const Handle(Graphic2d_Drawer)& aDrawe
                 if( type == Aspect_TOD_RELATIVE) {
                   precis = radius * coef;
                 }
-                Standard_ShortReal value = Standard_ShortReal(Standard_PI/4.);
+                Standard_ShortReal value = Standard_ShortReal(M_PI / 4.);
                 if( radius > precis )
                   value = Standard_ShortReal(Max( 0.0044 ,
                                 Min (0.7854 , 2. * ACos(1.-precis/radius))));
                 Standard_Integer n = Min(MAX_POINTS,
-                                Standard_Integer(2.*Standard_PI/value)+2);
-                Standard_ShortReal da = Standard_ShortReal(2.*Standard_PI/n);
+                                Standard_Integer(2. * M_PI / value)+2);
+                Standard_ShortReal da = Standard_ShortReal(2. * M_PI / n);
                 Standard_ShortReal cosin = Standard_ShortReal(Cos(da));
                 Standard_ShortReal x1 = radius;
                 Standard_ShortReal y1 = 0.;

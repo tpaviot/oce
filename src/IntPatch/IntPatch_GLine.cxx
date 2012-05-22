@@ -1,7 +1,23 @@
-// File:	IntPatch_GLine.cxx
-// Created:	Mon Apr  6 11:17:45 1992
-// Author:	Jacques GOUSSARD
-// Copyright:	OPEN CASCADE 1992
+// Created on: 1992-04-06
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <IntPatch_GLine.ixx>
 
@@ -9,7 +25,7 @@
 
 //  modified by Edward AGAPOV (eap) Wed Mar 6 2002 (bug occ212)
 //  -- case: points with equal params == PI/2 
-  
+
 //-- Precision::PConfusion()*1000.0  -> 1e-6
 //#define PrecisionPConfusion ( Precision::PConfusion()*1000.0 )
 
@@ -327,8 +343,8 @@ void IntPatch_GLine::AddVertex (const IntPatch_Point& Pnt)
     if(ArcType()==IntPatch_Circle || ArcType()==IntPatch_Ellipse)
     {
       if(fipt && lapt) {
-        while(par<pf) par+=PI+PI;
-        while(par>pl) par-=PI+PI;
+        while(par<pf) par+=M_PI+M_PI;
+        while(par>pl) par-=M_PI+M_PI;
         if(par<pf) { 
           const Standard_Real PrecisionPConfusion ( Precision::PConfusion()*1000.0 );
           if((pf-par)>PrecisionPConfusion) {
@@ -640,7 +656,7 @@ void IntPatch_GLine::ComputeVertexParameters(const Standard_Real /*Tol*/)
 	      Standard_Real ponline = VTX.ParameterOnLine();
 	      // eap, =>>
 	      Standard_Real newParam = ponline;
-	      const Standard_Real PiPi = PI+PI;
+	      const Standard_Real PiPi = M_PI+M_PI;
 	      Standard_Boolean is2PI = ( Abs(ponline-PiPi) <= PrecisionPConfusion );
 
 	      if (nbvtx > 2 && // do this check if seam edge only gives vertices 
@@ -654,7 +670,7 @@ void IntPatch_GLine::ComputeVertexParameters(const Standard_Real /*Tol*/)
 	      else 
 		newParam -= PiPi;
 // 	      if(  (Abs(ponline)<=PrecisionPConfusion)
-// 		   ||(Abs(ponline-PI-PI) <=PrecisionPConfusion)) 
+// 		   ||(Abs(ponline-M_PI-M_PI) <=PrecisionPConfusion)) 
 	      // eap, <<=
 		Standard_Real u1a,v1a,u2a,v2a,u1b,v1b,u2b,v2b; 
 		VTXM1.Parameters(u1a,v1a,u2a,v2a);
@@ -701,7 +717,7 @@ void IntPatch_GLine::ComputeVertexParameters(const Standard_Real /*Tol*/)
 		    ///////////////////////////////////////////////
 		    // eap, =>>
 // 		      if (Abs(ponline) <= PrecisionPConfusion) { 
-// 		      const Standard_Real PiPi = PI+PI;
+// 		      const Standard_Real PiPi = M_PI+M_PI;
 		      if(newParam >= ParamMinOnLine && newParam <= ParamMaxOnLine
 			 /*PiPi >= ParamMinOnLine && PiPi<=ParamMaxOnLine*/) { 
 			SortAgain = Standard_True;
@@ -743,7 +759,7 @@ void IntPatch_GLine::ComputeVertexParameters(const Standard_Real /*Tol*/)
 		    ///////////////////////////////////////////////
 		    // eap, =>>
 // 		    if (Abs(ponline) <= PrecisionPConfusion) { 
-// 		      const Standard_Real PiPi = PI+PI;
+// 		      const Standard_Real PiPi = M_PI+M_PI;
 		      if(newParam >= ParamMinOnLine && newParam <= ParamMaxOnLine
 			 /*PiPi >= ParamMinOnLine && PiPi<=ParamMaxOnLine*/) {
 			SortAgain = Standard_True;

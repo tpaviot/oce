@@ -1,7 +1,22 @@
-// File:      NCollection_BaseVector.hxx
-// Created:   24.04.02 09:41:39
-// Author:    Alexander GRIGORIEV
-// Copyright: Open Cascade 2002
+// Created on: 2002-04-24
+// Created by: Alexander GRIGORIEV
+// Copyright (c) 2002-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #ifndef NCollection_BaseVector_HeaderFile
@@ -43,14 +58,14 @@ class NCollection_BaseVector
               NCollection_BaseAllocator* theAlloc)
       : myFirstInd(theFirstInd), myLength(0), mySize(theLength), myAlloc(theAlloc), myData(0L) {}
     virtual void        Reinit     (const Standard_Integer,
-                                    const size_t) {}
+                                    const Standard_Integer) {}
     Standard_Integer    FirstIndex () const     { return myFirstInd; }
-    size_t              Size       () const     { return mySize; }
+    Standard_Integer    Size       () const     { return mySize; }
   public:
     virtual             ~MemBlock () {}
-    void                SetLength  (const size_t theLen)
+    void                SetLength  (const Standard_Integer theLen)
                                                 { myLength = theLen; }
-    size_t              Length     () const     { return myLength; }
+    Standard_Integer    Length     () const     { return myLength; }
     void *              Find       (const Standard_Integer theInd,
                                     const size_t           theSize) const
                                     { return ((char *) myData)+theInd*theSize;}
@@ -58,8 +73,8 @@ class NCollection_BaseVector
                         GetIndexV  (void * theItem, const size_t theSz) const;
   protected:
     Standard_Integer             myFirstInd;
-    size_t                       myLength;
-    size_t                       mySize;
+    Standard_Integer             myLength;
+    Standard_Integer             mySize;
     NCollection_BaseAllocator    * myAlloc;
     void                         * myData;
     friend class NCollection_BaseVector;
@@ -83,10 +98,10 @@ class NCollection_BaseVector
         { return &myVector -> myData[myICurBlock]; }
 
     const NCollection_BaseVector * myVector;   // the Master vector
-    size_t                       myICurBlock;  // # of the current block
-    size_t                       myIEndBlock;
-    size_t                       myCurIndex;   // Index in the current block
-    size_t                       myEndIndex;
+    Standard_Integer             myICurBlock;  // # of the current block
+    Standard_Integer             myIEndBlock;
+    Standard_Integer             myCurIndex;   // Index in the current block
+    Standard_Integer             myEndIndex;
   };
 
  protected:

@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <Interface_ShareFlags.ixx>
 #include <Interface_GeneralModule.hxx>
 #include <Interface_ReportEntity.hxx>
@@ -6,7 +23,7 @@
 
 
 
-    Interface_ShareFlags::Interface_ShareFlags
+Interface_ShareFlags::Interface_ShareFlags
   (const Handle(Interface_InterfaceModel)& amodel,
    const Interface_GeneralLib& lib)
    : theflags (amodel->NbEntities())
@@ -46,19 +63,21 @@
 }
 
     Interface_ShareFlags::Interface_ShareFlags (const Interface_Graph& agraph)
-   : theflags (agraph.Model()->NbEntities())
-{
-  themodel = agraph.Model();
-  Standard_Integer nb = themodel->NbEntities();
-  if (nb == 0) return;
-  theroots = new TColStd_HSequenceOfTransient();
-  for (Standard_Integer i = 1; i <= nb; i ++) {
-//    Resultat obtenu depuis le Graph
-    Interface_IntList list = agraph.SharingNums(i);
-    if (list.Length() > 0) theflags.SetTrue(i);
-    else theroots->Append (themodel->Value(i));
-  }
-}
+      : theflags (agraph.Model()->NbEntities())
+    {
+      themodel = agraph.Model();
+      Standard_Integer nb = themodel->NbEntities();
+      if (nb == 0) return;
+      theroots = new TColStd_HSequenceOfTransient();
+      for (Standard_Integer i = 1; i <= nb; i ++) {
+        //    Resultat obtenu depuis le Graph
+        Handle(Standard_Transient) ent = themodel->Value(i);
+        Handle(TColStd_HSequenceOfTransient) list = agraph.GetSharings(ent);
+       
+        if (!list.IsNull() && list->Length() > 0) theflags.SetTrue(i);
+        else theroots->Append (ent);
+      }
+    }
 
 
     void  Interface_ShareFlags::Evaluate

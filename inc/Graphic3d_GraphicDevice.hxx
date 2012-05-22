@@ -43,6 +43,7 @@
 class Graphic3d_GraphicDriver;
 class Aspect_GraphicDeviceDefinitionError;
 class Aspect_GraphicDriver;
+class TCollection_AsciiString;
 
 
 //! This class allows the definition of the Advanced <br>
@@ -79,10 +80,11 @@ private:
 
   //! Sets the GraphicDriver. <br>
   Standard_EXPORT     void SetGraphicDriver() ;
-  //! Returns Standard_True if the shared library <br>
-//!	    is defined by the environment. <br>
-//!	    (variables : CSF_GraphicShr, CSF_Graphic3dLib, GRAPHICHOME) <br>
-  Standard_EXPORT     Standard_Boolean ShrIsDefined(Standard_CString& aShr) const;
+  //! Returns the environment string for loading shared graphics library. <br>
+//!	    The string can be defined in environment by corresponding variables, <br>
+//!      or default value will be used for loading from system library path <br>
+//!	    Environment variables : CSF_GraphicShr <br>
+  Standard_EXPORT     TCollection_AsciiString ShrEnvString() const;
 
 Handle_Graphic3d_GraphicDriver MyGraphicDriver;
 

@@ -155,6 +155,7 @@ class Aspect_Grid;
 class Aspect_Background;
 class Aspect_GradientBackground;
 class Graphic3d_Vertex;
+class TColStd_SequenceOfInteger;
 
 
 //! Defines services on Viewer type objects. <br>
@@ -190,9 +191,7 @@ public:
 //!            Must be call if the Window attached to the view <br>
 //!            has been Iconified . <br>
   Standard_EXPORT     void SetViewOff(const Handle(V3d_View)& View) ;
-  //! Updates the display of all the views of a viewer. <br>
-//!            Must be called when the views must be updated <br>
-//!            simultaneously while the Update mode is deferred (WAIT). <br>
+  //! Deprecated, Redraw() should be used instead. <br>
   Standard_EXPORT     void Update() ;
   //! Updates the lights of all the views of a viewer. <br>
   Standard_EXPORT     void UpdateLights() ;
@@ -428,6 +427,22 @@ public:
   Standard_EXPORT     void SetDefaultLights() ;
   
   Standard_EXPORT     void Init() ;
+  //! Add a new top-level Z layer to all managed views and get <br>
+//! its ID as <theLayerId> value. The Z layers are controlled entirely <br>
+//! by viewer, it is not possible to add a layer to a <br>
+//! particular view. The method returns Standard_False if the layer can <br>
+//! not be created. The layer mechanism allows to display structures <br>
+//! in higher layers in overlay of structures in lower layers. <br>
+  Standard_EXPORT     Standard_Boolean AddZLayer(Standard_Integer& theLayerId) ;
+  //! Remove Z layer with ID <theLayerId>. Method returns <br>
+//! Standard_False if the layer can not be removed or doesn't exists. <br>
+//! By default, there are always default bottom-level layer that can't <br>
+//! be removed. <br>
+  Standard_EXPORT     Standard_Boolean RemoveZLayer(const Standard_Integer theLayerId) ;
+  //! Return all Z layer ids in sequence ordered by overlay level <br>
+//! from lowest layer to highest ( foreground ). The first layer ID <br>
+//! in sequence is the default layer that can't be removed. <br>
+  Standard_EXPORT     void GetAllZLayers(TColStd_SequenceOfInteger& theLayerSeq) const;
 
 
 friend class V3d_View;

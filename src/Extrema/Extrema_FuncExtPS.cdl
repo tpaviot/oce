@@ -1,8 +1,23 @@
--- File:	FuncExtPS.cdl
--- Created:	Wed Jul 24 14:31:49 1991
--- Author:	Michel CHAUVAT
---		<mca@topsn3>
----Copyright:	 Matra Datavision 1991
+-- Created on: 1991-07-24
+-- Created by: Michel CHAUVAT
+-- Copyright (c) 1991-1999 Matra Datavision
+-- Copyright (c) 1999-2012 OPEN CASCADE SAS
+--
+-- The content of this file is subject to the Open CASCADE Technology Public
+-- License Version 6.5 (the "License"). You may not use the content of this file
+-- except in compliance with the License. Please obtain a copy of the License
+-- at http://www.opencascade.org and read it completely before using this file.
+--
+-- The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+-- main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+--
+-- The Original Code and all software distributed under the License is
+-- distributed on an "AS IS" basis, without warranty of any kind, and the
+-- Initial Developer hereby disclaims all such warranties, including without
+-- limitation, any warranties of merchantability, fitness for a particular
+-- purpose or non-infringement. Please see the License for the specific terms
+-- and conditions governing the rights and limitations under the License.
+
 
 -- Modified by skv - Thu Sep 30 15:19:59 2004 OCC593
 
@@ -10,8 +25,28 @@
 private class FuncExtPS from Extrema
 
  inherits FunctionSetWithDerivatives from math
-    ---Purpose: Fonction permettant de rechercher les extrema de la 
-    --          distance entre un point et une surface.
+    ---Purpose: 
+    --
+    -- Functional for search of extremum of the distance between point P and 
+    -- surface S, starting from approximate solution (u0, v0).
+    --          
+    -- The class inherits math_FunctionSetWithDerivatives and thus is intended
+    -- for use in math_FunctionSetRoot algorithm .
+    --          
+    -- Denoting derivatives of the surface S(u,v) by u and v, respectively, as 
+    -- Su and Sv, the two functions to be nullified are:
+    --          
+    -- F1(u,v) = (S - P) * Su
+    -- F2(u,v) = (S - P) * Sv
+    --          
+    -- The derivatives of the functional are:
+    --          
+    -- Duf1(u,v) = Su^2    + (S-P) * Suu;
+    -- Dvf1(u,v) = Su * Sv + (S-P) * Suv
+    -- Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1
+    -- Dvf2(u,v) = Sv^2    + (S-P) * Svv
+    --
+    -- Here * denotes scalar product, and ^2 is square power. 
 
 uses    POnSurf           from Extrema,
 	SequenceOfPOnSurf from Extrema,
@@ -47,53 +82,44 @@ is
     NbEquations (me) returns Integer;
 
     Value (me: in out; UV: Vector; F: out Vector) returns Boolean;
-    	---Purpose: Calcul de Fi(U,V).
+    	---Purpose: Calculate Fi(U,V).
 
     Derivatives (me: in out; UV: Vector; DF: out Matrix)
     	returns Boolean;
-    	---Purpose: Calcul de Fi'(U,V).
+    	---Purpose: Calculate Fi'(U,V).
 
     Values (me: in out; UV: Vector; F: out Vector; DF: out Matrix)
     	returns Boolean;
-    	---Purpose: Calcul de Fi(U,V) et Fi'(U,V).
+    	---Purpose: Calculate Fi(U,V) and Fi'(U,V).
 
     GetStateNumber (me: in out) returns Integer
-    	---Purpose: Memorise l'extremum trouve.
+    	---Purpose: Save the found extremum.
     	is redefined;
 
     NbExt (me) returns Integer;
-    	---Purpose: Renvoie le nombre d'extrema trouves.
+    	---Purpose: Return the number of found extrema.
 
     SquareDistance (me; N: Integer) returns Real
-    	---Purpose: Renvoie la valeur de la Nieme distance.
+    	---Purpose: Return the value of the Nth distance.
     	raises  OutOfRange;
-	    	-- si N < 1 ou N > NbExt(me).
+	    	-- if N < 1 or N > NbExt(me).
 
     Point (me; N: Integer) returns POnSurf
-    	---Purpose: Renvoie le Nieme extremum.
+    	---Purpose: Returns the Nth extremum.
     	raises  OutOfRange;
-	    	-- si N < 1 ou N > NbExt(me).
+	    	-- if N < 1 or N > NbExt(me).
 
--- Modified by skv - Thu Sep 30 15:19:59 2004 OCC593 Begin
-    HasDegIso(me) returns Boolean from Standard;
--- Modified by skv - Thu Sep 30 15:19:59 2004 OCC593 End
-
-    Bidon(me) returns SurfacePtr from Adaptor3d
-    is static private;
- 
 fields
     myP    : Pnt from gp;
     myS    : SurfacePtr from Adaptor3d;
 
-    myU    : Real;          -- valeur courante de U
-    myV    : Real;          -- valeur courante de V
-    myPs   : Pnt from gp;   -- point courant
+    myU    : Real;          -- current value of U
+    myV    : Real;          -- current value of V
+    myPs   : Pnt from gp;   -- current point
 
     mySqDist: SequenceOfReal    from TColStd;
     myPoint: SequenceOfPOnSurf from Extrema;
     myPinit: Boolean;
     mySinit: Boolean;
-    myUIsoIsDeg: Boolean;
-    myVIsoIsDeg: Boolean;
 
 end FuncExtPS;

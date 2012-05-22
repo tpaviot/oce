@@ -87,7 +87,12 @@ public:
   Standard_EXPORT     void GetColors(TDF_LabelSequence& Labels) const;
   //! Sets a link with GUID defined by <type> (see <br>
 //!          XCAFDoc::ColorRefGUID()) from label <L> to color <br>
-//!          defined by <colorL> <br>
+//!          defined by <colorL>. Color of shape is defined following way <br>
+//!          in dependance with type of color. <br>
+//!          If type of color is XCAFDoc_ColorGen - then this color <br>
+//!          defines default color for surfaces and curves. <br>
+//!          If for shape color with types XCAFDoc_ColorSurf or XCAFDoc_ColorCurv is specified <br>
+//!          then such color overrides generic color. <br>
   Standard_EXPORT     void SetColor(const TDF_Label& L,const TDF_Label& colorL,const XCAFDoc_ColorType type) const;
   //! Sets a link with GUID defined by <type> (see <br>
 //!          XCAFDoc::ColorRefGUID()) from label <L> to color <Color> <br>

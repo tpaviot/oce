@@ -16,6 +16,9 @@
 #ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _StepToTopoDS_Root_HeaderFile
 #include <StepToTopoDS_Root.hxx>
 #endif
@@ -30,9 +33,6 @@
 #endif
 #ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 class StepGeom_CompositeCurve;
 class Transfer_TransientProcess;
@@ -76,6 +76,8 @@ public:
   Standard_EXPORT     Standard_Boolean Init(const Handle(StepGeom_CompositeCurve)& CC,const Handle(Transfer_TransientProcess)& TP,const Handle(StepGeom_Surface)& S,const Handle(Geom_Surface)& Surf) ;
   //! Returns result of last translation or null wire if failed. <br>
   Standard_EXPORT    const TopoDS_Wire& Value() const;
+  //! Returns True if composite_curve contains a segment with infinite parameters. <br>
+        Standard_Boolean IsInfiniteSegment() const;
 
 
 
@@ -92,11 +94,13 @@ private:
 
 
 TopoDS_Wire myWire;
+Standard_Boolean myInfiniteSegment;
 
 
 };
 
 
+#include <StepToTopoDS_TranslateCompositeCurve.lxx>
 
 
 

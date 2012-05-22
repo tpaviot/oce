@@ -1,7 +1,23 @@
-// File:	Adaptor3d_SurfaceOfRevolution.gxx
-// Created:	Wed Apr 21 15:55:14 1993
-// Author:	Bruno DUMORTIER
-//		<dub@phylox>
+// Created on: 1993-04-21
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Adaptor3d_SurfaceOfRevolution.ixx>
 
@@ -160,7 +176,7 @@ Standard_Real Adaptor3d_SurfaceOfRevolution::FirstUParameter() const
 
 Standard_Real Adaptor3d_SurfaceOfRevolution::LastUParameter() const 
 {
-  return 2*PI;
+  return 2*M_PI;
 }
 
 //=======================================================================
@@ -236,7 +252,7 @@ void Adaptor3d_SurfaceOfRevolution::UIntervals (TColStd_Array1OfReal& T,
 					      const GeomAbs_Shape ) const 
 {
   T(T.Lower()  ) = 0.;
-  T(T.Lower()+1) = 2*PI;
+  T(T.Lower()+1) = 2*M_PI;
 }
 
 
@@ -276,7 +292,7 @@ Handle(Adaptor3d_HSurface) Adaptor3d_SurfaceOfRevolution::UTrim
   Standard_Real Eps = Precision::PConfusion();
 #endif
   Standard_OutOfRange_Raise_if
-    (  Abs(First) > Eps || Abs(Last - 2.*PI) > Eps,
+    (  Abs(First) > Eps || Abs(Last - 2.*M_PI) > Eps,
      "Adaptor3d_SurfaceOfRevolution : UTrim : Parameters out of range");
 
   Handle(Adaptor3d_HSurfaceOfRevolution) HR =
@@ -341,7 +357,7 @@ Standard_Boolean Adaptor3d_SurfaceOfRevolution::IsUPeriodic() const
 
 Standard_Real Adaptor3d_SurfaceOfRevolution::UPeriod() const
 {
-  return 2*PI;
+  return 2*M_PI;
 }
 
 //=======================================================================
@@ -493,7 +509,7 @@ gp_Vec Adaptor3d_SurfaceOfRevolution::DN(const Standard_Real    U,
     }
     else {
       Standard_Real DNR = DNv * myAxeRev.XDirection();
-      gp_Vec DNu = ( myAxeRev.XDirection()).Rotated( myAxis, U + NU*PI/2);
+      gp_Vec DNu = ( myAxeRev.XDirection()).Rotated( myAxis, U + NU*M_PI/2);
       return ( DNR * DNu);
     }
   }   

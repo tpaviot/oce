@@ -34,8 +34,8 @@
 #ifndef _IntTools_MarkedRangeSet_HeaderFile
 #include <IntTools_MarkedRangeSet.hxx>
 #endif
-#ifndef _IntTools_PContext_HeaderFile
-#include <IntTools_PContext.hxx>
+#ifndef _Handle_IntTools_Context_HeaderFile
+#include <Handle_IntTools_Context.hxx>
 #endif
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
@@ -47,6 +47,7 @@
 #include <Standard_Integer.hxx>
 #endif
 class Geom_Surface;
+class IntTools_Context;
 class TopoDS_Edge;
 class TopoDS_Face;
 class BRepAdaptor_Curve;
@@ -109,8 +110,12 @@ public:
 //! optimization purposes <br>
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& theCurve,const BRepAdaptor_Surface& theSurface,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve,const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance) ;
   
-//! Sets the context <br>
-  Standard_EXPORT     void SetContext(const IntTools_PContext& theContext) ;
+//! Sets the intersecton context <br>
+  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
+  
+//! Gets the intersecton context <br>
+//! <br>
+  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
   
 //! Set restrictions for curve <br>
   Standard_EXPORT     void SetBeanParameters(const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve) ;
@@ -182,7 +187,7 @@ Extrema_ExtCS myExtrema;
 GeomAPI_ProjectPointOnSurf myProjector;
 IntTools_MarkedRangeSet myRangeManager;
 Standard_Real myDeflection;
-IntTools_PContext myContext;
+Handle_IntTools_Context myContext;
 IntTools_SequenceOfRanges myResults;
 Standard_Boolean myIsDone;
 

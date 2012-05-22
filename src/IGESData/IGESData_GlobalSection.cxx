@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //#52 rln 06.01.99 writing value 1.e-07
 //gka 19.01.99 changing size of ParamSet
 //#65 rln 12.02.99 S4151 (explicitly force YYMMDD.HHMMSS before Y2000 and YYYYMMDD.HHMMSS after Y2000)
@@ -124,28 +141,6 @@ void IGESData_GlobalSection::Init(const Handle(Interface_ParamSet)& params,
 
   Standard_Integer nbp = params->NbParams();
 
-  // Sending of message : Incorrect number of parameters (following the IGES version)
-  // Version less than 5.3 
-  if  (theIGESVersion < 11) {
-    if ((nbp < 24) || (nbp > 25)) {
-       // 24 or 25 parameters are expected (parameter 25 is not required)
-      Message_Msg Msg39 ("XSTEP_39");
-      Msg39.Arg(24);
-      Msg39.Arg(25);
-      if (nbp < 24) ach->SendFail(Msg39);
-      else          ach->SendWarning(Msg39);
-    }
-  }
-  // Version 5.3 
-  else if ((nbp < 25) || (nbp > 26)) {
-    // 25 or 26 parameters are expected (parameter 25 is not required)
-    Message_Msg Msg39 ("XSTEP_39");
-    Msg39.Arg(25);
-    Msg39.Arg(26);
-    if (nbp < 25) ach->SendFail(Msg39);
-    else          ach->SendWarning(Msg39);
-  }
-
   for (Standard_Integer i = 1; i <= nbp; i ++) {
     Standard_Integer intval = 0;  Standard_Real realval = 0.0;
     Handle(TCollection_HAsciiString) strval;  // doit repartir a null
@@ -226,6 +221,29 @@ void IGESData_GlobalSection::Init(const Handle(Interface_ParamSet)& params,
       case 26 : theAppliProtocol                 = strval;    break;
       default : break;
     }
+  }
+
+  // Sending of message : Incorrect number of parameters (following the IGES version)
+  // Version less than 5.3 
+  if  (theIGESVersion < 11)
+  {
+    if ((nbp < 24) || (nbp > 25)) {
+       // 24 or 25 parameters are expected (parameter 25 is not required)
+      Message_Msg Msg39 ("XSTEP_39");
+      Msg39.Arg(24);
+      Msg39.Arg(25);
+      if (nbp < 24) ach->SendFail(Msg39);
+      else          ach->SendWarning(Msg39);
+    }
+  }
+  // Version 5.3 
+  else if ((nbp < 25) || (nbp > 26)) {
+    // 25 or 26 parameters are expected (parameter 25 is not required)
+    Message_Msg Msg39 ("XSTEP_39");
+    Msg39.Arg(25);
+    Msg39.Arg(26);
+    if (nbp < 25) ach->SendFail(Msg39);
+    else          ach->SendWarning(Msg39);
   }
   
   //:45 by abv 11.12.97: if UnitFlag is not defined in the file, 

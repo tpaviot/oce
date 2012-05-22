@@ -7,6 +7,12 @@
 #define _XCAFDoc_ColorType_HeaderFile
 
 //! Defines types of color assignments <br>
+//!          Color of shape is defined following way <br>
+//!          in dependance with type of color. <br>
+//!          If type of color is XCAFDoc_ColorGen - then this color <br>
+//!          defines default color for surfaces and curves. <br>
+//!          If for shape color with types XCAFDoc_ColorSurf or XCAFDoc_ColorCurv is specified <br>
+//!          then such color overrides generic color. <br>
 //! simple color <br>
 //! color of surfaces <br>
 enum XCAFDoc_ColorType {

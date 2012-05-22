@@ -1,8 +1,23 @@
-// Copyright: Matra-Datavision 1995
-// File:      StdSelect_BRepSelectionTool.cxx
-// Created:   Tue Mar 14 14:09:28 1995
-// Author:    Robert COUBLANC
-//            <rob>
+// Created on: 1995-03-14
+// Created by: Robert COUBLANC
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <StdSelect_BRepSelectionTool.ixx>
 #include <GeomAdaptor_Curve.hxx>
@@ -219,24 +234,6 @@ void StdSelect_BRepSelectionTool
       break;
     }
     case TopAbs_SHELL:
-    {
-      Handle(Select3D_SensitiveGroup) aSensitiveGroup = new Select3D_SensitiveGroup (theOwner);
-      Select3D_ListOfSensitive aSensitiveList;
-      TopTools_IndexedMapOfShape aSubfacesMap;
-      TopExp::MapShapes (theShape, TopAbs_FACE, aSubfacesMap);
-      for (Standard_Integer aShIndex = 1; aShIndex <= aSubfacesMap.Extent(); ++aShIndex)
-      {
-        GetSensitiveForFace (TopoDS::Face (aSubfacesMap (aShIndex)), theOwner,
-                             aSensitiveList,
-                             isAutoTriangulation, theNbPOnEdge, theMaxParam);
-      }
-      if (!aSensitiveList.IsEmpty())
-      {
-        aSensitiveGroup->Add (aSensitiveList);
-        theSelection->Add (aSensitiveGroup);
-      }
-      break;
-    }
     case TopAbs_SOLID:
     case TopAbs_COMPSOLID:
     {
@@ -689,7 +686,7 @@ Standard_Boolean StdSelect_BRepSelectionTool
         }
         case GeomAbs_Circle:
         {
-          if (2 * PI - Abs (wl - wf) <= Precision::Confusion())
+          if (2 * M_PI - Abs (wl - wf) <= Precision::Confusion())
           {
             if (BS.GetType() == GeomAbs_Cylinder ||
                 BS.GetType() == GeomAbs_Torus ||

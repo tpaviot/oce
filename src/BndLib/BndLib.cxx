@@ -1,3 +1,21 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 #include <BndLib.ixx> // BUG BUG BUG pas .hxx
 
 #include <ElCLib.hxx>
@@ -9,7 +27,7 @@
 #include <Precision.hxx>
 #include <Standard_Failure.hxx>
 
-   
+
 static void OpenMin(const gp_Dir& V,Bnd_Box& B) {
   gp_Dir OX(1.,0.,0.);
   gp_Dir OY(0.,1.,0.);
@@ -517,7 +535,7 @@ void BndLib::Add( const gp_Cylinder& S,const Standard_Real UMin,
 void BndLib::Add( const gp_Cylinder& S,const Standard_Real VMin,
 		 const Standard_Real VMax,const Standard_Real Tol, Bnd_Box& B) {
 
-  BndLib::Add(S,0.,2.*PI,VMin,VMax,Tol,B);
+  BndLib::Add(S,0.,2.*M_PI,VMin,VMax,Tol,B);
 }
 
 void BndLib::Add(const gp_Cone& S,const Standard_Real UMin,
@@ -594,18 +612,13 @@ void BndLib::Add(const gp_Cone& S,const Standard_Real UMin,
 void BndLib::Add( const gp_Cone& S,const Standard_Real VMin,
 		 const Standard_Real VMax,const Standard_Real Tol, Bnd_Box& B) {
 
-  BndLib::Add(S,0.,2.*PI,VMin,VMax,Tol,B);
+  BndLib::Add(S,0.,2.*M_PI,VMin,VMax,Tol,B);
 }
 
 void BndLib::Add(const gp_Sphere& S,const Standard_Real UMin,
 		 const Standard_Real UMax,const Standard_Real VMin,
 		 const Standard_Real VMax,const Standard_Real Tol, Bnd_Box& B) {
-//------------------------------------------------------------
-//-- lbr le 26 novembre 97
-//-- je ne comprends pas comment ce code marche
-//-- et en plus il ne marche pas sur certains cas 
-//-- Temporairement on choisit une solution plus simple. 
-//------------------------------------------------------------
+
 #if 0
  Standard_Real Fi1;
  Standard_Real Fi2;
@@ -708,12 +721,12 @@ void BndLib::Add(const gp_Torus& S,const Standard_Real UMin,
   Standard_Integer Fi1;
   Standard_Integer Fi2;
   if (VMax<VMin) {
-    Fi1 = (Standard_Integer )( VMax/(PI/4.));
-    Fi2 = (Standard_Integer )( VMin/(PI/4.));
+    Fi1 = (Standard_Integer )( VMax/(M_PI/4.));
+    Fi2 = (Standard_Integer )( VMin/(M_PI/4.));
   }
   else {
-    Fi1 = (Standard_Integer )( VMin/(PI/4.));
-    Fi2 = (Standard_Integer )( VMax/(PI/4.));
+    Fi1 = (Standard_Integer )( VMin/(M_PI/4.));
+    Fi2 = (Standard_Integer )( VMax/(M_PI/4.));
   }
   Fi2++;
   

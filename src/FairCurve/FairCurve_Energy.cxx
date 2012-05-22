@@ -1,6 +1,23 @@
-// File:	FairCurve_DistributionOfEnergy.cxx
-// Created:	Mon Jan 22 15:11:20 1996
-// Author:	Philippe MANGIN
+// Created on: 1996-01-22
+// Created by: Philippe MANGIN
+// Copyright (c) 1996-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #ifndef DEB
 #define No_Standard_RangeError
@@ -34,7 +51,7 @@ FairCurve_Energy::FairCurve_Energy(const Handle(TColgp_HArray1OfPnt2d)& Poles,
 			   MyGradient( 0, MyNbValues),
                            MyHessian( 0, MyNbValues + MyNbValues*(MyNbValues+1)/2 )
 {
-  // on attend des angles dans le repere (Ox,Oy)
+  // chesk angles in reference (Ox,Oy)
   gp_XY L0 (Cos(Angle1), Sin(Angle1)), L1 (-Cos(Angle2), Sin(Angle2));
   MyLinearForm.SetValue(0, L0);
   MyLinearForm.SetValue(1, L1);
@@ -78,7 +95,7 @@ void FairCurve_Energy::Gradient1(const math_Vector& Vect,
   Standard_Integer Vdeb = 3, 
                    Vfin = 2*MyPoles->Length()-2;
 
-// .... par calcul 
+// .... by calculation 
   if (MyContrOrder1 >= 1) {
      gp_XY DPole (Vect(Vdeb), Vect(Vdeb+1));
      Grad(DebG) = MyLinearForm(0) * DPole;
@@ -111,7 +128,7 @@ void FairCurve_Energy::Gradient1(const math_Vector& Vect,
      Grad(FinG+1) = MyLinearForm(1) * DPole;     
      FinG -= 1;
   }
-// ... par recopie
+// ... by recopy
    for (ii=DebG; ii<=FinG; ii++) {
      Grad(ii) = Vect(Vdeb);
      Vdeb += 1;
@@ -186,7 +203,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
 
   if (MyContrOrder1 >= 1) {
 
-// calcul de la colonne lambda gauche --------------------------------
+// calculate the left lambda column --------------------------------
 
      jj =  Vdeb-2*MyContrOrder1;
      kk=Indice(jj, jj); // X2X2
@@ -220,7 +237,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      }
   
      if (MyContrOrder2 >= 1) {    
-        H(MyNbVar-MyWithAuxValue, 1) = 0; // correct si il y a moins 3 noeuds
+        H(MyNbVar-MyWithAuxValue, 1) = 0; // correct if there are less than 3 nodes
         if (MyContrOrder2 == 2)  {H(MyNbVar-MyWithAuxValue-1, 1) = 0;}
      }
 
@@ -235,7 +252,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      }
    }
 
-// calcul de la ligne mu gauche -----------------------
+// calculate the left line mu ----------------------
   if (MyContrOrder1 >= 2) {
      jj = Vdeb-2*(MyContrOrder1-1);
      kk=Indice(jj, jj); // X3X3
@@ -251,7 +268,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      }
   
      if (MyContrOrder2 >= 1) {    
-        H(MyNbVar-MyWithAuxValue, 2) = 0; // correct si il y a moins 3 noeuds
+        H(MyNbVar-MyWithAuxValue, 2) = 0; // correct if there are less than 3 nodes
         if (MyContrOrder2 == 2)  {H(MyNbVar-MyWithAuxValue-1, 2) = 0;}
      }
      Vk = Vdeb;
@@ -269,7 +286,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      }
    }
      
-// calcul de la ligne lambda droite -----------------------
+// calculate the right lambda line -----------------------
   if (MyContrOrder2 >= 1) {
 
      jj = FinH + 1;
@@ -304,11 +321,11 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
        H(FinH+2, FinH+1) += Laux * MyLinearForm(1).Multiplied(Aux)
                          + (Laux.X()*MyLinearForm(1).Y() + Laux.Y()*MyLinearForm(1).X()) 
 			   * Vect(ll+jj);
-//       H(FinH+2, FinH+1) = 0; // faute de mieux ... Bug dans l'expression precedente
+//       H(FinH+2, FinH+1) = 0; // No better alternative. Bug in the previous expression
      }
    }
 
-// calcule de la ligne mu droite -----------------------
+// calculate the right line mu  -----------------------
   if (MyContrOrder2 >= 2) {
      jj = FinH + 2;
      Vk = Vfin + 2*MyContrOrder2 - 3;
@@ -320,7 +337,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      for (ii=DebH; ii<=FinH; ii++) {
         H(jj, ii) = MyLinearForm(1).X() * Vect(kk)
 	          + MyLinearForm(1).Y() * Vect(kk+Vk);
-        // update de la ligne Lambda droite
+        // update the right line Lambda 
         H(jj-1,ii) += Xaux*Vect(kk) + Yaux*Vect(kk+Vk);
 	kk++;
      }
@@ -329,7 +346,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      H(jj,jj) = Cos1*Vect(kk) + CosSin1*Vect(ii) + Sin1*Vect(ii+1);
    }
 
-// calcule de la ligne Variable Auxiliaire -----------------------
+// calculate the Auxiliary Variable line -----------------------
    if (MyWithAuxValue) {
 
      kk = Indice(Vup, Vdeb);
@@ -353,7 +370,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
        H(H.UpperRow(), H.UpperRow()) =  Vect(kk);
    }      
 
-// recopie du bloc interne ---------------------------------------------
+// recopy the internal block -----------------------------------
 
    kk = Indice(Vdeb, Vdeb);
    for (ii = DebH; ii <=FinH; ii++) {
@@ -363,7 +380,7 @@ void FairCurve_Energy::Hessian1(const math_Vector& Vect,
      }
      kk += Vdeb-1;
   }
-// symetrie
+// symmetry
    for (ii = H.LowerRow(); ii <= H.UpperRow(); ii++) 
      for (jj = ii+1; jj <= H.UpperRow(); jj++) H(ii,jj) = H(jj,ii);        
 }
@@ -376,11 +393,11 @@ Standard_Boolean FairCurve_Energy::Variable(math_Vector& X) const
                    IndexDeb1 = MyPoles->Lower()+1, 
                    IndexDeb2 = X.Lower(),
                    IndexFin1 = MyPoles->Upper()-1,
-                   IndexFin2 = X.Upper() - MyWithAuxValue; // on decremente de 1 si le glissement 
-                                         // est libre car la derniere valeur de X lui est reserve.
+                   IndexFin2 = X.Upper() - MyWithAuxValue; //  decrease by 1 if the sliding is  
+                                                           // free as the last value of X is reserved.
                    
 
-// calculs des variables de contraintes  
+// calculation of variables of constraints  
   if (MyContrOrder1 >= 1) {
      X(IndexDeb2) = MyPoles->Value(MyPoles->Lower())
                    .Distance( MyPoles->Value(MyPoles->Lower()+1) );
@@ -407,9 +424,9 @@ Standard_Boolean FairCurve_Energy::Variable(math_Vector& X) const
      IndexFin1 -= 1;
   }
  
-//  La recopie des variables auxiliaires n'est pas realise dans la classe abstraite
+//  Recopy of auxiliary variables is not done in the abstract class
 
-// recopie des poles vers les variables
+// copy poles to variables
   for (ii=IndexDeb1; ii<=IndexFin1; ii++) {
      X(IndexDeb2)   =  MyPoles->Value(ii).X();
      X(IndexDeb2+1) =  MyPoles->Value(ii).Y();
@@ -426,11 +443,11 @@ void FairCurve_Energy::ComputePoles(const math_Vector& X)
                    IndexDeb1 = MyPoles->Lower()+1, 
                    IndexDeb2 = X.Lower(),
                    IndexFin1 = MyPoles->Upper()-1,
-                   IndexFin2 = X.Upper() - MyWithAuxValue; // on decremente de 1 si le glissement 
-                                         // est libre car la derniere valeur de X lui est reserve.
-// calculs des poles contraints
-//  for (ii=MyPoles->Lower();ii<=MyPoles->Upper();ii++) {
-//  cout << ii << " X = " <<  MyPoles->Value(ii).X() << 
+                   IndexFin2 = X.Upper() - MyWithAuxValue; // decrease by 1 if the sliding is 
+                                                           // is free as the last value of X is reserved.
+// calculation of pole constraints
+// for (ii=MyPoles->Lower();ii<=MyPoles->Upper();ii++) {
+// cout << ii << " X = " <<  MyPoles->Value(ii).X() << 
 //                " Y = " <<  MyPoles->Value(ii).Y() << endl;}
   
   if (MyContrOrder1 >= 1) {
@@ -459,7 +476,7 @@ void FairCurve_Energy::ComputePoles(const math_Vector& X)
   }
 
 //  if (MyWithAuxValue) { MyLengthSliding = X(X.Upper()); }
-// recopie des autres
+// recopy others
   for (ii=IndexDeb1; ii<=IndexFin1; ii++) {
      MyPoles -> ChangeValue(ii).SetX( X(IndexDeb2) );
      MyPoles -> ChangeValue(ii).SetY( X(IndexDeb2+1) );

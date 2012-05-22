@@ -31,9 +31,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Graphic3d_AspectLine3d;
 class Quantity_Color;
 
@@ -73,8 +70,6 @@ public:
   //! Returns the line aspect. This is defined as the set of <br>
 //! color, type and thickness attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectLine3d Aspect() const;
-  
-  Standard_EXPORT   virtual  void Print(Standard_OStream& s) const;
 
 
 

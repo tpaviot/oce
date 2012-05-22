@@ -1,7 +1,23 @@
-// File:      BlendFunc_ConstRad.cxx
-// Created:   Thu Dec  2 10:18:55 1993
-// Author:    Jacques GOUSSARD
-// Copyright: OPEN CASCADE 1993
+// Created on: 1993-12-02
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 // Modified 09/09/1996 PMN Adde Nb(Intervalls), IsRationnal
 //                         Optimisation, use of GetCircle
@@ -902,11 +918,11 @@ Standard_Boolean BlendFunc_ConstRad::IsSolution(const math_Vector& Sol, const St
  // Reframing on  ]-pi/2, 3pi/2]
     if (Sina <0.) {
       if (Cosa > 0.) Angle = -Angle;
-      else           Angle =  2.*PI - Angle;
+      else           Angle =  2.*M_PI - Angle;
     }
 
 //    cout << "Angle : " <<Angle << endl;
-//    if ((Angle < 0) || (Angle > PI)) {
+//    if ((Angle < 0) || (Angle > M_PI)) {
 //      cout << "t = " << param << endl;
 //    }
 
@@ -1175,7 +1191,7 @@ void BlendFunc_ConstRad::Section(const Standard_Real Param,
   Pdeb = 0.;
   Pfin = ElCLib::Parameter(C,pts2);
   // Test negative and almost null angles : Singular Case
-  if (Pfin>1.5*PI) {
+  if (Pfin>1.5*M_PI) {
     np.Reverse();
     C.SetPosition(gp_Ax2(Center,np,ns1));
     Pfin = ElCLib::Parameter(C,pts2);

@@ -1,3 +1,20 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 // Modified	23/02/98 : FMN ; Remplacement PI par Standard_PI
 
 #define PRO9581 //GG_270298
@@ -61,12 +78,12 @@ void V2d_RectangularGrid::UpdateDisplay()
   myGraphicObject->RemovePrimitives();
   myGrid = new V2d_RectangularGraphicGrid
     (myGraphicObject,
-     XStep(),YStep(),FirstAngle()+RotationAngle(),SecondAngle()+RotationAngle()+Standard_PI/2.,XOrigin(),YOrigin(),myColorIndex2);
+     XStep(),YStep(),FirstAngle()+RotationAngle(),SecondAngle()+RotationAngle() + M_PI / 2.,XOrigin(),YOrigin(),myColorIndex2);
   myGrid->SetColorIndex(myColorIndex1);
   myGrid->SetDrawMode(DrawMode());
 #ifndef BUC60639        //See V2d_RectangularGraphicGrid
   Handle(Graphic2d_Marker) MK1 = new Graphic2d_Marker(myGraphicObject,14,XOrigin(),YOrigin(),0.01,0.01,FirstAngle()+RotationAngle());
-  Handle(Graphic2d_Marker) MK2 = new Graphic2d_Marker(myGraphicObject,14,XOrigin(),YOrigin(),0.01,0.01,SecondAngle()+RotationAngle()+Standard_PI/2.);
+  Handle(Graphic2d_Marker) MK2 = new Graphic2d_Marker(myGraphicObject,14,XOrigin(),YOrigin(),0.01,0.01,SecondAngle()+RotationAngle() + M_PI / 2.);
   MK1->SetColorIndex(myColorIndex2);
   MK2->SetColorIndex(myColorIndex2);
 #endif

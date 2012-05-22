@@ -1,7 +1,23 @@
-// File:	TopOpeBRep_ShapeIntersector.cxx
-// Created:	Fri May  7 17:36:28 1993
-// Author:	Jean Yves LEBEY
-//		<jyl@topsn3>
+// Created on: 1993-05-07
+// Created by: Jean Yves LEBEY
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <TopOpeBRep_ShapeIntersector.ixx>
 
@@ -1107,10 +1123,10 @@ static Standard_Integer OneShapeIsHalfSpace(const TopoDS_Shape& S1,const TopoDS_
 	      Standard_Real maxU = FSurf.LastUParameter();
 	      Standard_Real minV = FSurf.FirstVParameter();
 	      Standard_Real maxV = FSurf.LastVParameter();
-	      Standard_Boolean yesU = ( Abs(minU - 0.) < 1.e-9 && Abs(maxU - 2*PI) < 1.e-9 );
+	      Standard_Boolean yesU = ( Abs(minU - 0.) < 1.e-9 && Abs(maxU - 2*M_PI) < 1.e-9 );
 	      Standard_Boolean yesV = ( FSurf.GetType() == GeomAbs_Sphere ) ?
-		( Abs(minV - (-PI/2.)) < 1.e-9 && Abs(maxV - PI/2.) < 1.e-9 ) :
-		( Abs(minV - 0.) < 1.e-9 && Abs(maxV - 2*PI) < 1.e-9 );
+		( Abs(minV - (-M_PI/2.)) < 1.e-9 && Abs(maxV - M_PI/2.) < 1.e-9 ) :
+		( Abs(minV - 0.) < 1.e-9 && Abs(maxV - 2*M_PI) < 1.e-9 );
 	      SolidIsSphereOrTorus = ( yesU && yesV );
 	    }
 
@@ -1119,8 +1135,8 @@ static Standard_Integer OneShapeIsHalfSpace(const TopoDS_Shape& S1,const TopoDS_
 	      Standard_Boolean areBothPeriodic = ( FSurf.IsUPeriodic() && FSurf.IsVPeriodic() );
 	      if( areBothPeriodic )
 		{
-		  Standard_Boolean yesU = ( Abs(FSurf.UPeriod() - PI) < 1.e-9 || Abs(FSurf.UPeriod() - 2*PI) < 1.e-9 );
-		  Standard_Boolean yesV = ( Abs(FSurf.VPeriod() - PI) < 1.e-9 || Abs(FSurf.VPeriod() - 2*PI) < 1.e-9 );
+		  Standard_Boolean yesU = ( Abs(FSurf.UPeriod() - M_PI) < 1.e-9 || Abs(FSurf.UPeriod() - 2*M_PI) < 1.e-9 );
+		  Standard_Boolean yesV = ( Abs(FSurf.VPeriod() - M_PI) < 1.e-9 || Abs(FSurf.VPeriod() - 2*M_PI) < 1.e-9 );
 		  SolidIsSphereOrTorus = ( yesU && yesV );
 		}
 	    }

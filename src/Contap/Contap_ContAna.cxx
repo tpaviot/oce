@@ -1,17 +1,35 @@
+// Created on: 1993-03-04
+// Created by: Jacques GOUSSARD
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
+
 #include <Contap_ContAna.ixx>
 
 #include <gp_XYZ.hxx>
 #include <gp.hxx>
 
-
-
 #define Tolpetit 1.e-8
-
 
 Contap_ContAna::Contap_ContAna (): done(Standard_False) {}
 
 void Contap_ContAna::Perform (const gp_Sphere& S,
-			      const gp_Dir& D)
+                              const gp_Dir& D)
 {
   done  = Standard_False;
   typL  = GeomAbs_Circle;
@@ -29,8 +47,8 @@ void Contap_ContAna::Perform (const gp_Sphere& S,
 }
 
 void Contap_ContAna::Perform (const gp_Sphere& S,
-			      const gp_Dir& D,
-			      const Standard_Real Angle)
+                              const gp_Dir& D,
+                              const Standard_Real Angle)
 {
   done  = Standard_False;
   typL  = GeomAbs_Circle;
@@ -50,7 +68,7 @@ void Contap_ContAna::Perform (const gp_Sphere& S,
 }
 
 void Contap_ContAna::Perform (const gp_Sphere& S,
-			      const gp_Pnt& Eye)
+                              const gp_Pnt& Eye)
 {
   done = Standard_False;
 
@@ -81,10 +99,8 @@ void Contap_ContAna::Perform (const gp_Sphere& S,
   done = Standard_True;
 }
 
-
 void Contap_ContAna::Perform (const gp_Cylinder& C,
-			      const gp_Dir& D)
-
+                              const gp_Dir& D)
 {
   done = Standard_False;
 
@@ -107,15 +123,14 @@ void Contap_ContAna::Perform (const gp_Cylinder& C,
 }
 
 void Contap_ContAna::Perform (const gp_Cylinder& C,
-			      const gp_Dir& D,
-			      const Standard_Real Angle)
-
+                              const gp_Dir& D,
+                              const Standard_Real Angle)
 {
   done = Standard_False;
 
   Standard_Real Coefcos = D.Dot(C.Position().XDirection());
   Standard_Real Coefsin = D.Dot(C.Position().YDirection());
-  Standard_Real Coefcst = cos(PI*0.5 + Angle);
+  Standard_Real Coefcst = cos(M_PI*0.5 + Angle);
 
   Standard_Real norm1 = Coefcos*Coefcos + Coefsin*Coefsin;
   Standard_Real norm2 = sqrt(norm1);
@@ -125,18 +140,18 @@ void Contap_ContAna::Perform (const gp_Cylinder& C,
     nbSol = 2;
     dir1 = dir2 = C.Position().Direction();
 
-    if (!C.Direct()) { // la normale est inversee.
+    if (!C.Direct()) { // The normal is inverted.
       Coefcos = -Coefcos;
       Coefsin = -Coefsin;
     }
 
-    // On doit resoudre Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
-    // et les origines des droites solution sont dans le repere du
-    // cylindre en (R*cost0, R*sint0,0) et (R*cost1,R*sint1,0)
-    // En posant cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) et
+    // Necessary to solve Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
+    // and the origins of solution are in the reference of the 
+    // cylinder in (R*cost0, R*sint0,0) and (R*cost1,R*sint1,0)
+    // By setting cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) and
     //           sin(phi) = Coefsin/Sqrt(Coefcos**2 + Coefsin**2)
-    // et en utilisant les relations trigonometriques, on a sans resolution
-    // les valeurs des cosinus et sinus aux solutions.
+    // and by using trigonometric relations the values of cosinus 
+    // and sinus to the solutions are obtained.
 
     prm = Sqrt(norm1 - Coefcst*Coefcst);
     Standard_Real cost0,sint0,cost1,sint1;
@@ -167,8 +182,7 @@ void Contap_ContAna::Perform (const gp_Cylinder& C,
 }
 
 void Contap_ContAna::Perform (const gp_Cylinder& C,
-			      const gp_Pnt& Eye)
-
+                              const gp_Pnt& Eye)
 {
   done = Standard_False;
 
@@ -183,8 +197,7 @@ void Contap_ContAna::Perform (const gp_Cylinder& C,
     prm = radius*sqrt(1.-radius*radius/(dist*dist));
     dir1 = C.Axis().Direction();
     dir2 = dir1;
-    gp_XYZ axeye(theaxis.Normal(Eye).Direction().XYZ()); // oriente de l axe
-                                                         // vers l exterieur
+    gp_XYZ axeye(theaxis.Normal(Eye).Direction().XYZ()); // orientate the axis to the outside
     gp_XYZ normale((theaxis.Direction().Crossed(axeye)).XYZ());
 //      normale.Normalize();
     pt1.SetXYZ(C.Location().XYZ() + (radius*radius/dist)*axeye);
@@ -195,10 +208,8 @@ void Contap_ContAna::Perform (const gp_Cylinder& C,
   done = Standard_True;
 }
 
-
 void Contap_ContAna::Perform (const gp_Cone& C,
-			      const gp_Dir& D)
-
+                              const gp_Dir& D)
 {
   done = Standard_False;
 
@@ -223,13 +234,13 @@ void Contap_ContAna::Perform (const gp_Cone& C,
     nbSol = 2;
     pt1 = C.Apex();
     pt2 = pt1;
-    // On doit resoudre Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
-    // et les vecteurs directeurs des solutions sont
+    // Necessary to solve Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
+    // and director vectors of solutions are
     // cos(t0) * XDirection + sin(t0) * YDirection + ZDirection/Tgtalpha
-    // En posant cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) et
+    // By setting cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) and
     //           sin(phi) = Coefsin/Sqrt(Coefcos**2 + Coefsin**2)
-    // et en utilisant les relations trigonometriques, on a sans resolution
-    // les valeurs des cosinus et sinus aux solutions.
+    // and by using trigonometric relations the values of cosinus 
+    // and sinus to the solutions are obtained.
 
     prm = Sqrt(norm1 - Coefcst*Coefcst);
     Standard_Real cost0,sint0,cost1,sint1;
@@ -257,11 +268,9 @@ void Contap_ContAna::Perform (const gp_Cone& C,
   done = Standard_True;
 }
 
-
 void Contap_ContAna::Perform (const gp_Cone& C,
-			      const gp_Dir& D,
-			      const Standard_Real Angle)
-
+                              const gp_Dir& D,
+                              const Standard_Real Angle)
 {
   done = Standard_False;
   nbSol = 0;
@@ -273,7 +282,7 @@ void Contap_ContAna::Perform (const gp_Cone& C,
   Standard_Real Coefcos = D.Dot(C.Position().XDirection());
   Standard_Real Coefsin = D.Dot(C.Position().YDirection());
 
-  Standard_Real Coefcst1 = cos(PI*0.5 + Angle);
+  Standard_Real Coefcst1 = cos(M_PI*0.5 + Angle);
 
   Standard_Real norm1 = Coefcos*Coefcos + Coefsin*Coefsin;
   Standard_Real norm2 = Sqrt(norm1);
@@ -287,13 +296,13 @@ void Contap_ContAna::Perform (const gp_Cone& C,
     pt1 = C.Apex();
     pt2 = pt1;
 
-    // On doit resoudre Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
-    // et les vecteurs directeurs des solutions sont
+    // It is requiredto solve Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
+    // and the director vectors of solutions are
     // cos(t0) * XDirection + sin(t0) * YDirection + ZDirection/Tgtalpha
-    // En posant cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) et
+    // By setting cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) and
     //           sin(phi) = Coefsin/Sqrt(Coefcos**2 + Coefsin**2)
-    // et en utilisant les relations trigonometriques, on a sans resolution
-    // les valeurs des cosinus et sinus aux solutions.
+    // and by using trigonometric relations the values of cosinus 
+    // and sinus to the solutions are obtained.
 
     prm = Sqrt(norm1 - Coefcst*Coefcst);
     Standard_Real cost0,sint0,cost1,sint1;
@@ -358,13 +367,10 @@ void Contap_ContAna::Perform (const gp_Cone& C,
   }
 
   done = Standard_True;
-
-
 }
 
 void Contap_ContAna::Perform (const gp_Cone& C,
-			      const gp_Pnt& Eye)
-
+                              const gp_Pnt& Eye)
 {
   done = Standard_False;
 
@@ -392,13 +398,13 @@ void Contap_ContAna::Perform (const gp_Cone& C,
     nbSol = 2;
     pt1 = C.Apex();
     pt2 = pt1;
-    // On doit resoudre Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
-    // et les vecteurs directeurs des solutions sont
+    // It is required to solve Coefcos*cos(t) + Coefsin*sin(t) = Coefcst
+    // and the director vectors of solutions are
     // cos(t0) * XDirection + sin(t0) * YDirection + ZDirection/Tgtalpha
-    // En posant cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) et
+    // By setting cos(phi) = Coefcos/Sqrt(Coefcos**2 + Coefsin**2) and
     //           sin(phi) = Coefsin/Sqrt(Coefcos**2 + Coefsin**2)
-    // et en utilisant les relations trigonometriques, on a sans resolution
-    // les valeurs des cosinus et sinus aux solutions.
+    // and by using trigonometric relations the values of cosinus 
+    // and sinus to the solutions are obtained.
 
     prm = Sqrt(norm1 - Coefcst*Coefcst);
     Standard_Real cost0,sint0,cost1,sint1;
@@ -424,9 +430,7 @@ void Contap_ContAna::Perform (const gp_Cone& C,
     nbSol = 0;
   }
   done = Standard_True;
-
 }
-
 
 gp_Lin Contap_ContAna::Line (const Standard_Integer Index) const
 {
@@ -443,7 +447,6 @@ gp_Lin Contap_ContAna::Line (const Standard_Integer Index) const
   case 4:
     return gp_Lin(pt4,dir4);
   }
-  Standard_OutOfRange::Raise("Erreur de programmation dans Contap_ContAna");
+  Standard_OutOfRange::Raise("Program error in Contap_ContAna");
   return gp_Lin();
 }
-

@@ -1,8 +1,22 @@
-// File:	IntAna_QuadQuadGeo.cxx
-// Created:	Thu Aug  6 12:00:46 1992
-// Author:	Laurent BUCHARD
-//		<lbr@sdsun2>
-
+// Created on: 1992-08-06
+// Created by: Laurent BUCHARD
+// Copyright (c) 1992-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
 //----------------------------------------------------------------------
 //-- Purposse: Geometric Intersection between two Natural Quadric 
@@ -387,9 +401,9 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
   gp_Vec ldv( axec.Direction() );
   gp_Vec npv( normp );
   Standard_Real dA = Abs( ldv.Angle( npv ) );
-  if( dA > (PI/4.) )
+  if( dA > (M_PI/4.) )
     {
-      Standard_Real dang = Abs( ldv.Angle( npv ) ) - PI/2.;
+      Standard_Real dang = Abs( ldv.Angle( npv ) ) - M_PI/2.;
       Standard_Real dangle = Abs( dang );
       if( dangle > Tolang )
 	{
@@ -946,7 +960,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       
       Standard_Real A=DirCyl1.Angle(DirCyl2);
       Standard_Real B;
-      B=Abs(Sin(0.5*(PI-A)));
+      B=Abs(Sin(0.5*(M_PI-A)));
       A=Abs(Sin(0.5*A));
       
       if(A==0.0 || B==0.0) {
@@ -1156,12 +1170,10 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     tg2 = -tg2;
   }
   //
-  //modified by NIZNHY-PKV Thu Dec  1 16:49:47 2005f
   aTol2=Tol*Tol;
   aPApex1=Con1.Apex();
   aPApex2=Con2.Apex();
   aDA1A2=aPApex1.SquareDistance(aPApex2);
-  //modified by NIZNHY-PKV Wed Nov 30 10:17:05 2005t
   //
   AxeOperator A1A2(Con1.Axis(),Con2.Axis());
   //
@@ -1285,11 +1297,8 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       }
     }
   }// else if((Abs(tg1-tg2)<EPSILON_ANGLE_CONE) && (A1A2.Parallel()))
-  //modified by NIZNHY-PKV Wed Nov 30 10:12:39 2005f
   // 3
   else if (aDA1A2<aTol2) {
-    //
-    // by NIZNHY-PKV Thu Dec 1 2005
     //
     // When apices are coinsided there can be 3 possible cases
     // 3.1 - empty solution (iRet=0)
@@ -1307,7 +1316,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     // Preliminary analysis. Determination of iRet
     //
     iRet=0;
-    aHalfPI=0.5*PI;
+    aHalfPI=0.5*M_PI;
     aD1=1.;
     aPA1.SetCoord(aD1, 0.);
     aP0.SetCoord(0., 0.);
@@ -1316,7 +1325,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     aAx2=Con2.Axis();
     aGamma=aAx1.Angle(aAx2);
     if (aGamma>aHalfPI){
-      aGamma=PI-aGamma;
+      aGamma=M_PI-aGamma;
     }
     aCosGamma=Cos(aGamma);
     aSinGamma=Sin(aGamma);
@@ -1350,8 +1359,10 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     //
     if (aRD2>(aR2+Tol)) {
       iRet=0;
-      //printf(" * iRet=0 => IntAna_Empty\n");
       typeres=IntAna_Empty; //nothing
+      //modified by NIZNHY-PKV Fri Mar 23 08:12:23 2012f
+      return;
+      //modified by NIZNHY-PKV Fri Mar 23 08:12:29 2012t
     }
     //
     iRet=1; //touch case => 1 line
@@ -1418,11 +1429,6 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       pt1=aQApex1;
       gp_Vec aVX(aQApex1, aQX);
       dir1=gp_Dir(aVX);
-      /*
-      printf(" line L1 %lf %lf %lf %lf %lf %lf\n", 
-	     pt1.X(), pt1.Y(), pt1.Z(),
-	     dir1.X(), dir1.Y(), dir1.Z());
-	     */
     }
     
     else {//iRet=2 
@@ -1439,18 +1445,8 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       dir1=gp_Dir(aVX1);
       gp_Vec aVX2(aQApex1, aQX2);
       dir2=gp_Dir(aVX2);
-      /*
-      printf(" line L1 %lf %lf %lf %lf %lf %lf\n", 
-	     pt1.X(), pt1.Y(), pt1.Z(),
-	     dir1.X(), dir1.Y(), dir1.Z());
-      printf(" line L2 %lf %lf %lf %lf %lf %lf\n", 
-	     pt2.X(), pt2.Y(), pt2.Z(),
-	     dir2.X(), dir2.Y(), dir2.Z());
-	     */
     }
   } //else if (aDA1A2<aTol2) {
-  //modified by NIZNHY-PKV Wed Nov 30 10:12:41 2005t
-  //modified by NIZNHY-IFV Fry Sep 01 15:46:41 2006f
   //Case when cones have common generatrix
   else if(A1A2.Intersect()) {
     //Check if apex of one cone belongs another one
@@ -1484,8 +1480,8 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
 
 
     //Other generatrixes of cones laying in maximal plane
-    gp_Lin aGen1 = aGen.Rotated(Con1.Axis(), Standard_PI); 
-    gp_Lin aGen2 = aGen.Rotated(Con2.Axis(), Standard_PI); 
+    gp_Lin aGen1 = aGen.Rotated(Con1.Axis(), M_PI); 
+    gp_Lin aGen2 = aGen.Rotated(Con2.Axis(), M_PI); 
     //
     //Intersection point of generatrixes
     gp_Dir aN; //solution plane normal
@@ -1570,8 +1566,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       }
     }
   }
-  //modified by NIZNHY-IFV Fry Sep 01 15:46:41 2006t
-  // else if(A1A2.Intersect() {
+  
   else {
     typeres=IntAna_NoGeometricSolution; 
   }
@@ -1917,22 +1912,18 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
 		   ,param2,param2bis));
   }
 }
-
 //=======================================================================
 //function : HasCommonGen
 //purpose  : 
 //=======================================================================
-
 Standard_Boolean IntAna_QuadQuadGeo::HasCommonGen() const
 {
   return myCommonGen;
 }
-
 //=======================================================================
 //function : PChar
 //purpose  : 
 //=======================================================================
-
 const gp_Pnt& IntAna_QuadQuadGeo::PChar() const
 {
   return myPChar;

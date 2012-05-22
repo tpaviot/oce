@@ -19,6 +19,9 @@
 #ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
 #endif
@@ -30,9 +33,6 @@
 #endif
 #ifndef _Handle_Poly_Polygon2D_HeaderFile
 #include <Handle_Poly_Polygon2D.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
@@ -129,10 +129,14 @@ public:
   Standard_EXPORT   static  void Set(const Standard_CString Name,const gp_Pnt2d& G) ;
   //! Sets <G> in the variable <Name>.  Overwrite the <br>
 //!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom_Geometry)& G) ;
+//!          isSenseMarker indicates whether to render the <br>
+//!          sense glyph (arrow) for curves or not <br>
+  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom_Geometry)& G,const Standard_Boolean isSenseMarker = Standard_True) ;
   //! Sets <C> in the variable <Name>.  Overwrite the <br>
 //!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom2d_Curve)& C) ;
+//!          isSenseMarker indicates whether to render the <br>
+//!          sense glyph (arrow) for curves or not <br>
+  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom2d_Curve)& C,const Standard_Boolean isSenseMarker = Standard_True) ;
   //! Sets <T> in the variable <Name>.  Overwrite the <br>
 //!          variable if already set. <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Poly_Triangulation)& T) ;

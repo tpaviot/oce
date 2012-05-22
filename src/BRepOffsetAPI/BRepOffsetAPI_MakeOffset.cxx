@@ -1,7 +1,23 @@
-// File:	BRepOffsetAPI_MakeOffset.cxx
-// Created:	Mon Sep 18 14:16:15 1995
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1995-09-18
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <BRepOffsetAPI_MakeOffset.ixx>
@@ -143,7 +159,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
 //  Modified by Sergey KHROMOV - Thu Apr 26 16:04:44 2001 End
   FR.Init(myFace,Standard_True);
   //====================================================
-  // Construction des faces limites par les wires fermes.
+  // Construction of faces limited by closed wires.
   //====================================================
   TopTools_ListIteratorOfListOfShape itl(WorkWires);
   for (; itl.More(); itl.Next()) {
@@ -170,7 +186,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
   }
 
   //===========================================
-  // Pas de wire ferme => un seul domaine
+  // No closed wire => only one domain
   //===========================================
   if (Faces.IsEmpty()) {
     TopoDS_Shape aLocalShape = myFace.EmptyCopied();
@@ -186,7 +202,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
   }
   
   //====================================================
-  // Classification des wires ouverts.
+  // Classification of open wires.
   //====================================================  
 //  for (TopTools_ListIteratorOfListOfShape itF(Faces); itF.More(); itF.Next()) {
   TopTools_ListIteratorOfListOfShape itF;
@@ -201,7 +217,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
     while (itW.More()) {
       TopoDS_Wire& W = TopoDS::Wire(itW.Value());
       //=======================================================
-      // Choix d un point sur le wire. + projection sur la face.
+      // Choice of a point on the wire. + projection on the face.
       //=======================================================
       TopExp_Explorer exp(W,TopAbs_VERTEX);
       TopoDS_Vertex   V  = TopoDS::Vertex(exp.Current());
@@ -220,7 +236,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
 	}
       }
       if ( Found && (CL.Perform(PV) == TopAbs_IN)) {
-	// On a trouve la face qui contient le wire  on l enleve de la liste
+	// The face that contains a wire is found and it is removed from the list
 	B.Add(F,W);
 	LOW.Remove(itW);
       }
@@ -230,7 +246,7 @@ static void BuildDomains(TopoDS_Face&               myFace,
     }
   }
   //========================================
-  // Creation des algos sur chaque domaine.
+  // Creation of algorithms on each domain.
   //========================================
   for (itF.Initialize(Faces); itF.More(); itF.Next()) {
     BRepFill_OffsetWire Algo(TopoDS::Face(itF.Value()), myJoin);

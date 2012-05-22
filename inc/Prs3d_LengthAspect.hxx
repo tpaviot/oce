@@ -31,9 +31,6 @@
 #ifndef _Prs3d_CompositeAspect_HeaderFile
 #include <Prs3d_CompositeAspect.hxx>
 #endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class Prs3d_LineAspect;
 class Prs3d_ArrowAspect;
 class Prs3d_TextAspect;
@@ -70,8 +67,6 @@ public:
   Standard_EXPORT     void SetDrawSecondArrow(const Standard_Boolean draw) ;
   //! Returns true if the second arrow can be drawn. <br>
   Standard_EXPORT     Standard_Boolean DrawSecondArrow() const;
-  
-  Standard_EXPORT     void Print(Standard_OStream& s) const;
 
 
 

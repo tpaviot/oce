@@ -1,20 +1,31 @@
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //------------------------------------------------------------------------
-//                Calculer un point a abscisse donne a partir 
-//                d un point donne
-//
-//  cas traites :segment de droite,arc de cercle courbe parametree
-//               la courbe doit etre C1
-//
-//  pour une courbe parametree:
-//
-//   on calcule la longueur totale de la courbe
-//   on calcule un point approche en assimilant la courbe a une droite
-//   on calcule la longueur  de la courbe entre le point de depart et
-//   le point approche
-//   par iteration succsessive on trouve le point et son parametre associe
-//   appel a FunctionRoot
-//
-// 
+//  Calculate a point with given abscissa starting from a given point 
+//  cases processed: straight segment, arc of circle, parameterized curve
+//  curve should be C1
+//  for a parameterized curve:
+//  calculate the total length of the curve
+//  calculate an approached point by assimilating the curve to a staight line
+//  calculate the length of the curve between the start point and the approached point
+//  by succsessive iteration find the point and its associated parameter
+//  call to FunctionRoot
 
 #include <CPnts_AbscissaPoint.ixx>
 
@@ -428,8 +439,8 @@ void CPnts_AbscissaPoint::Perform(const Standard_Real   Abscissa,
 {
   if (myL < Precision::Confusion()) {
     //
-    //  on sort moins violemment : j'espere que l'on espere pas
-    //  un increment notable au niveau de myParam
+    //  leave less violently : it is expected that 
+    //  the increment of the level of myParam will not be great
     //
     myDone = Standard_True ;
     myParam = U0 ;
@@ -454,7 +465,7 @@ void CPnts_AbscissaPoint::Perform(const Standard_Real   Abscissa,
 {
   if (myL < Precision::Confusion()) {
     //
-    //  on sort moins violemment :
+    //  leave less violently :
     //
     myDone = Standard_True ;
     myParam = U0 ;
@@ -465,8 +476,8 @@ void CPnts_AbscissaPoint::Perform(const Standard_Real   Abscissa,
 
     math_FunctionRoot Solution(myF, Ui, Resolution, myUMin, myUMax);
     
-// Temporairement on vire le test de validite de la solution
-// Il faudra des que l on pourra faire du cdl, rendre un tolreached
+// Temporarily suspend the validity test of the solution
+// it is necessary to make a tolreached as soon as one will make a cdl
 // lbo 21/03/97
 //    if (Solution.IsDone()) {
 //      Standard_Real D;
@@ -495,7 +506,7 @@ void CPnts_AbscissaPoint::AdvPerform(const Standard_Real   Abscissa,
 {
   if (myL < Precision::Confusion()) {
     //
-    //  on sort moins violemment :
+    //  leave less violently :
     //
     myDone = Standard_True ;
     myParam = U0 ;
@@ -507,8 +518,8 @@ void CPnts_AbscissaPoint::AdvPerform(const Standard_Real   Abscissa,
 
     math_FunctionRoot Solution(myF, Ui, Resolution, myUMin, myUMax);
     
-// Temporairement on vire le test de validite de la solution
-// Il faudra des que l on pourra faire du cdl, rendre un tolreached
+// Temporarily suspend the validity test of the solution
+// it is necessary to make a tolreached as soon as one will make a cdl
 // lbo 21/03/97
 //    if (Solution.IsDone()) {
 //      Standard_Real D;

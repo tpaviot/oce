@@ -1,5 +1,21 @@
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 //=======================================================================
-//file    : IGESToBRep_BasicCurve
 //modified: 
 // 21.02.2002 skl
 // 21.12.98 rln, gka S4054
@@ -17,9 +33,9 @@
 
 #include <IGESToBRep.hxx>
 #include <IGESToBRep_CurveAndSurface.hxx>
-  
+
 #include <ElCLib.hxx>
-  
+
 #include <Geom_BSplineCurve.hxx>
 #include <Geom_Circle.hxx>
 #include <Geom_Ellipse.hxx>
@@ -36,7 +52,7 @@
 #include <Geom2d_Line.hxx>
 #include <Geom2d_Parabola.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
-  
+
 #include <gp_Ax2.hxx>
 #include <gp_Ax2d.hxx>
 #include <gp_Dir.hxx>
@@ -48,10 +64,10 @@
 #include <gp_XY.hxx>
 #include <gp_XYZ.hxx>
 
-  
+
 #include <IGESData_IGESEntity.hxx>
 #include <IGESData_ToolLocation.hxx>
-  
+
 #include <IGESGeom_BSplineCurve.hxx>
 #include <IGESGeom_CircularArc.hxx>
 #include <IGESGeom_ConicArc.hxx>
@@ -71,7 +87,7 @@
 #include <TColgp_HArray1OfPnt2d.hxx>
 
 #include <TColGeom_SequenceOfCurve.hxx>
-  
+
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
@@ -365,7 +381,7 @@ Handle(Geom_Curve) IGESToBRep_BasicCurve::TransferConicArc
 
         t1 = ElCLib::Parameter(circ, startPoint);
         t2 = ElCLib::Parameter(circ, endPoint);
-	if (t1 > t2 && (t1 - t2) > Precision::Confusion()) t2 += 2.*PI;
+	if (t1 > t2 && (t1 - t2) > Precision::Confusion()) t2 += 2.*M_PI;
 	if (Abs(t1 - t2) <= Precision::Confusion())  { // t1 = t2
 	  Message_Msg msg1160("IGES_1160");
 	  SendWarning(st, msg1160);      
@@ -422,7 +438,7 @@ Handle(Geom_Curve) IGESToBRep_BasicCurve::TransferConicArc
       
       t1 = ElCLib::Parameter(elips, startPoint);
       t2 = ElCLib::Parameter(elips, endPoint);
-      if (t2 < t1 && (t1 -t2) > Precision::Confusion()) t2 += 2.*PI;
+      if (t2 < t1 && (t1 -t2) > Precision::Confusion()) t2 += 2.*M_PI;
       if (Abs(t1 - t2) <= Precision::Confusion()) { // t1 = t2   
 	Message_Msg msg1160("IGES_1160");
 	SendWarning(st, msg1160);  
@@ -538,7 +554,7 @@ Handle(Geom2d_Curve) IGESToBRep_BasicCurve::Transfer2dConicArc
         t1 = ElCLib::Parameter(circ, startPoint);
         t2 = ElCLib::Parameter(circ, endPoint);
 	
-	if (t2 < t1 && (t1 -t2) > Precision::PConfusion()) t2 += 2.*PI;
+	if (t2 < t1 && (t1 -t2) > Precision::PConfusion()) t2 += 2.*M_PI;
 	if (Abs(t1 - t2) <= Precision::PConfusion()) { // t1 = t2
 	  Message_Msg msg1160("IGES_1160");
 	  SendWarning(st, msg1160); 
@@ -600,7 +616,7 @@ Handle(Geom2d_Curve) IGESToBRep_BasicCurve::Transfer2dConicArc
       
       t1  = ElCLib::Parameter(elips, startPoint);
       t2  = ElCLib::Parameter(elips, endPoint);
-      if (t2 < t1 && (t1 - t2) > Precision::PConfusion()) t2 += 2.*PI;
+      if (t2 < t1 && (t1 - t2) > Precision::PConfusion()) t2 += 2.*M_PI;
       if (Abs(t1 - t2) <= Precision::PConfusion())  { // t1 = t2   
 	Message_Msg msg1160("IGES_1160");
 	SendWarning(st, msg1160);  
@@ -690,14 +706,14 @@ Handle(Geom_Curve) IGESToBRep_BasicCurve::TransferCircularArc
   t1 = ElCLib::Parameter(circ, startPoint);
   t2 = ElCLib::Parameter(circ, endPoint);
 
-  if ( st->IsClosed() && t1>=GetEpsGeom()) t2 = t1 + 2.*PI;
+  if ( st->IsClosed() && t1>=GetEpsGeom()) t2 = t1 + 2.*M_PI;
   if (!st->IsClosed() && fabs(t1 - t2) <=Precision::PConfusion()) {    
     // micro-arc
     // cky 27 Aout 1996 : t2-t1 vaut distance(start,end)/rayon
     t2 = t1 + startPoint.Distance(endPoint)/st->Radius();
   }
   if (!st->IsClosed() || t1>=GetEpsGeom()) {
-    if (t2 < t1) t2 += 2.*PI;
+    if (t2 < t1) t2 += 2.*M_PI;
     res = new Geom_TrimmedCurve(res, t1, t2);
   }
 
@@ -763,14 +779,14 @@ Handle(Geom2d_Curve) IGESToBRep_BasicCurve::Transfer2dCircularArc
   t1 = ElCLib::Parameter(circ, startPoint);
   t2 = ElCLib::Parameter(circ, endPoint);
     
-  if ( st->IsClosed() && t1>=GetEpsGeom()) t2 = t1 + 2.*PI;
+  if ( st->IsClosed() && t1>=GetEpsGeom()) t2 = t1 + 2.*M_PI;
   if (!st->IsClosed() && fabs(t1 -t2) <= Precision::PConfusion()) { 
     // micro-arc
     // cky 27 Aout 1996 : t2-t1 vaut distance(start,end)/rayon
     t2 = t1 + startPoint.Distance(endPoint)/st->Radius();
   }
   if (!st->IsClosed() || t1>= GetEpsGeom()) {
-    if (t2 < t1) t2 += 2.*PI;
+    if (t2 < t1) t2 += 2.*M_PI;
     res     = new Geom2d_TrimmedCurve(res, t1, t2);
   }
   return res;

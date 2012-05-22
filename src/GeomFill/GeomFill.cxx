@@ -1,7 +1,23 @@
-// File:	GeomFill.cxx
-// Created:	Fri Feb 25 09:49:20 1994
-// Author:	Bruno DUMORTIER
-//		<dub@fuegox>
+// Created on: 1994-02-25
+// Created by: Bruno DUMORTIER
+// Copyright (c) 1994-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 #include <GeomFill.ixx>
@@ -203,7 +219,7 @@ void GeomFill::GetShape (const Standard_Real MaxAng,
   default:
     {
       Standard_Integer NbSpan =
-	(Standard_Integer)(Ceiling(3.*Abs(MaxAng)/2./PI));
+	(Standard_Integer)(Ceiling(3.*Abs(MaxAng)/2./M_PI));
       NbPoles = 2*NbSpan+1;
       NbKnots = NbSpan+1;
       Degree = 2;
@@ -380,7 +396,7 @@ void GeomFill::GetCircle( const Convert_ParameterisationType  TConv,
   // Recadrage sur ]-pi/2, 3pi/2]
   if (Sina <0.) {
     if (Cosa > 0.) Angle = -Angle;
-    else           Angle =  2.*PI - Angle;
+    else           Angle =  2.*M_PI - Angle;
   }
 
   switch (TConv) {
@@ -466,7 +482,7 @@ Standard_Boolean GeomFill::GetCircle(const Convert_ParameterisationType  TConv,
   // Recadrage sur ]-pi/2, 3pi/2]
   if (Sina <0.) {
     if (Cosa > 0.) Angle = -Angle;
-    else           Angle =  2.*PI - Angle;
+    else           Angle =  2.*M_PI - Angle;
   }
 
   if (Abs(Sina)>Abs(Cosa)) {
@@ -608,7 +624,7 @@ Standard_Boolean GeomFill::GetCircle(const Convert_ParameterisationType  TConv,
   // Recadrage sur ]-pi/2, 3pi/2]
   if (Sina <0.) {
     if (Cosa > 0.) Angle = -Angle;
-    else           Angle =  2.*PI - Angle;
+    else           Angle =  2.*M_PI - Angle;
   }
 
   if (Abs(Sina)>Abs(Cosa)) {

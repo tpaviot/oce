@@ -1,10 +1,26 @@
-// File:	GeomLib.cxx
-// Created:	Wed Jul  7 15:32:09 1993
-// Author:	Jean Claude VAUTHIER
+// Created on: 1993-07-07
+// Created by: Jean Claude VAUTHIER
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
 
-// Copyright:    Matra Datavision	
+
 // Version:	
-// History:	pmn 24/09/96 Ajout du prolongement de courbe.
+//pmn 24/09/96 Ajout du prolongement de courbe.
 //              jct 15/04/97 Ajout du prolongement de surface.
 //              jct 24/04/97 simplification ou suppression de calculs
 //                           inutiles dans ExtendSurfByLength
@@ -1455,8 +1471,10 @@ void GeomLib::ExtendSurfByLength(Handle(Geom_BoundedSurface)& Surface,
   }     
 
 
-  Standard_Boolean rational = ( InU && BS->IsURational() ) 
-                                  || ( !InU && BS->IsVRational() ) ;
+// IFV Fix OCC bug 0022694 - wrong result extrapolating rational surfaces
+//   Standard_Boolean rational = ( InU && BS->IsURational() ) 
+//                                   || ( !InU && BS->IsVRational() ) ;
+  Standard_Boolean rational = (BS->IsURational() ||  BS->IsVRational());
   Standard_Boolean NullWeight;
    Standard_Real EpsW = 10*Precision::PConfusion();
   Standard_Integer gap = 3;
@@ -1963,29 +1981,41 @@ static Standard_Boolean CanBeTreated(Handle(Geom_BSplineSurface)& BSurf)
 }
 
 //=======================================================================
-//function : law_evaluator
-//purpose  : usefull to estimate the value of a function of 2 variables
+//class   : law_evaluator
+//purpose : usefull to estimate the value of a function of 2 variables
 //=======================================================================
 
-static GeomLib_DenominatorMultiplierPtr MyPtr = NULL ;
+class law_evaluator : public BSplSLib_EvaluatorFunction
+{
 
+public:
 
-static void law_evaluator(const Standard_Integer  DerivativeRequest,
-			  const Standard_Real     UParameter,
-			  const Standard_Real     VParameter,
-			  Standard_Real &         Result,
-			  Standard_Integer &      ErrorCode) {
-  
-  ErrorCode = 0 ; 
-  
-  if ((!(MyPtr == NULL)) &&
-      (DerivativeRequest == 0)) {
-    Result=MyPtr->Value(UParameter,VParameter);
+  law_evaluator (const GeomLib_DenominatorMultiplierPtr theDenominatorPtr)
+  : myDenominator (theDenominatorPtr) {}
+
+  virtual void Evaluate (const Standard_Integer theDerivativeRequest,
+                         const Standard_Real    theUParameter,
+                         const Standard_Real    theVParameter,
+                         Standard_Real&         theResult,
+                         Standard_Integer&      theErrorCode) const
+  {
+    if ((myDenominator != NULL) && (theDerivativeRequest == 0))
+    {
+      theResult = myDenominator->Value (theUParameter, theVParameter);
+      theErrorCode = 0;
+    }
+    else
+    {
+      theErrorCode = 1;
+    }
   }
-  else {
-    ErrorCode = 1 ;
-  }
-}
+
+private:
+
+  GeomLib_DenominatorMultiplierPtr myDenominator;
+
+};
+ 
 //=======================================================================
 //function : CheckIfKnotExists
 //purpose  : true if the knot already exists in the knot sequence
@@ -2128,8 +2158,7 @@ static void FunctionMultiply(Handle(Geom_BSplineSurface)&          BSurf,
  TColStd_Array1OfReal       FlatKnots(1,length);
  BSplCLib::KnotSequence(NewKnots->ChangeArray1(),NewMults->ChangeArray1(),FlatKnots);
 
- GeomLib_DenominatorMultiplier          local_denominator(BSurf,FlatKnots) ;
- MyPtr = &local_denominator ;                 //definition of a(u,v)
+ GeomLib_DenominatorMultiplier aDenominator (BSurf, FlatKnots);
 
  BuildFlatKnot(surface_u_knots,
 	       surface_u_mults,
@@ -2164,7 +2193,7 @@ static void FunctionMultiply(Handle(Geom_BSplineSurface)&          BSurf,
  BSplCLib::KnotSequence(newuknots->ChangeArray1(),newumults->ChangeArray1(),newuflatknots);
  BSplCLib::KnotSequence(newvknots->ChangeArray1(),newvmults->ChangeArray1(),newvflatknots);
 //POP pour WNT
- BSplSLib_EvaluatorFunction ev = law_evaluator;
+ law_evaluator ev (&aDenominator);
 // BSplSLib::FunctionMultiply(law_evaluator,               //multiplication
  BSplSLib::FunctionMultiply(ev,               //multiplication
 			    BSurf->UDegree(),
@@ -2401,7 +2430,7 @@ Standard_Integer GeomLib::NormEstim(const Handle(Geom_Surface)& S,
     MagnNV = sqrt(MagnNV);
     N.SetXYZ(NV.XYZ()/MagnNV);
 
-    Standard_Real par = .5*(bid2-bid1);
+    Standard_Real par = .5*(bid2+bid1);
 
     if(AlongV) {
       Iso = S->UIso(par);

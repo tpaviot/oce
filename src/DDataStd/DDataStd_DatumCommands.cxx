@@ -1,6 +1,23 @@
-// File:        DDataStd_DatumCommands.cxx
-// Created:     Wed Jul 30 16:14:31 1997
-// Author:      Denis PASCAL
+// Created on: 1997-07-30
+// Created by: Denis PASCAL
+// Copyright (c) 1997-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <DDataStd.hxx>
 #include <DDF.hxx>
@@ -192,7 +209,7 @@ static Standard_Integer DDataStd_SetPlane (Draw_Interpretor& di,
 //       Standard_Real ang = atof(arg[9]);
 //       T.SetRotation(gp_Ax1(gp_Pnt(x,y,z),
 //                         gp_Vec(dx,dy,dz)),
-//                  ang * PI180);
+//                  ang * (M_PI / 180.0));
 //     }
 //     Loc = T;
 //   }

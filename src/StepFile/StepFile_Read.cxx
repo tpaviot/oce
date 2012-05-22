@@ -1,7 +1,23 @@
-// File:	StepFile_Read.cxx
-// Created:	Fri Aug 30 11:31:31 1991
-// Author:	Christian CAILLET
-//		<cky@phobox>
+// Created on: 1991-08-30
+// Created by: Christian CAILLET
+// Copyright (c) 1991-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 //   StepFile_Read
 
@@ -190,6 +206,7 @@ Standard_Integer StepFile_Read
 
   readtool.PrepareHeader(recoheader);  // Header. reco nul -> pour Protocol
   readtool.Prepare(recodata);          // Data.   reco nul -> pour Protocol
+
 #ifdef CHRONOMESURE
   sout << "      ... Parameters prepared ... "; 
   c.Show(); 
@@ -198,13 +215,16 @@ Standard_Integer StepFile_Read
   readtool.LoadModel(stepmodel);
   if (stepmodel->Protocol().IsNull()) stepmodel->SetProtocol (protocol);
   lir_file_fin(2);
+  
+  readtool.Clear();
+  undirec.Nullify();
 #ifdef CHRONOMESURE
   sout << "      ...   Objets analysed  ... " << endl; 
   c.Show();
   n = stepmodel->NbEntities() ;
   sout << "  STEP Loading done : " << n << " Entities" << endl;
 #endif
-
+  
   stepread_endinput (newin,ficnom);  return 0 ;
 }
 

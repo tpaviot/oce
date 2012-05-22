@@ -1,7 +1,23 @@
-// File:    MeshTest.cxx
-// Created: Wed Sep 22 18:35:55 1993
-// Author:  Didier PIFFAULT
-//          <dpf@zerox>
+// Created on: 1993-09-22
+// Created by: Didier PIFFAULT
+// Copyright (c) 1993-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 #include <Standard_Stream.hxx>
 
@@ -173,13 +189,28 @@ static Standard_Integer planesection(Draw_Interpretor&, Standard_Integer nbarg, 
 
 static Standard_Integer incrementalmesh(Draw_Interpretor& di, Standard_Integer nbarg, const char** argv)
 {
-  if (nbarg < 3) return 1;
+  if (nbarg < 3) {
+    di << " use incmesh shape deflection [inParallel (0/1) : 0 by default]\n";
+    return 0;
+  }
 
-  Standard_Real d = atof(argv[2]);
-  TopoDS_Shape S = DBRep::Get(argv[1]);
-  if (S.IsNull()) return 1;
+  TopoDS_Shape aShape = DBRep::Get(argv[1]);
+  if (aShape.IsNull()) {
+    di << " null shapes is not allowed here\n";
+    return 0;
+  }
+  Standard_Real aDeflection = atof(argv[2]);
 
-  BRepMesh_IncrementalMesh MESH(S,d);
+  Standard_Boolean isInParallel = Standard_False;
+  if (nbarg == 4) {
+	isInParallel = atoi(argv[3]) == 1;
+  }
+  di << "Incremental Mesh, multi-threading "
+    << (isInParallel ? "ON\n" : "OFF\n");
+  
+  Standard::SetReentrant(isInParallel);
+
+  BRepMesh_IncrementalMesh MESH(aShape, aDeflection, Standard_False, 0.5, isInParallel);
   Standard_Integer statusFlags = MESH.GetStatusFlags();  
 
   di << "Meshing statuses: ";
@@ -1545,7 +1576,7 @@ void  MeshTest::Commands(Draw_Interpretor& theCommands)
 
   theCommands.Add("shpsec","shpsec result shape shape",__FILE__, shapesection, g);
   theCommands.Add("plnsec","plnsec result shape plane",__FILE__, planesection, g);
-  theCommands.Add("incmesh","incmesh shape deflection",__FILE__, incrementalmesh, g);
+  theCommands.Add("incmesh","incmesh shape deflection [inParallel (0/1) : 0 by default]",__FILE__, incrementalmesh, g);
   theCommands.Add("MemLeakTest","MemLeakTest",__FILE__, MemLeakTest, g);
   theCommands.Add("fastdiscret","fastdiscret shape deflection [shared [nbiter]]",__FILE__, fastdiscret, g);
   theCommands.Add("mesh","mesh result Shape deflection [save partage]",__FILE__, triangule, g);

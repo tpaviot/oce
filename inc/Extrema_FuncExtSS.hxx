@@ -44,8 +44,8 @@ class math_Matrix;
 class Extrema_POnSurf;
 
 
-//! Fonction permettant de rechercher les extrema de la <br>
-//!          distance entre deux surfaces. <br>
+//! Function to find extrema of the <br>
+//!          distance between two surfaces. <br>
 class Extrema_FuncExtSS  : public math_FunctionSetWithDerivatives {
 public:
 
@@ -72,19 +72,19 @@ public:
   Standard_EXPORT     Standard_Integer NbVariables() const;
   
   Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! Calcul de Fi(U,V). <br>
+  //! Calculate Fi(U,V). <br>
   Standard_EXPORT     Standard_Boolean Value(const math_Vector& UV,math_Vector& F) ;
-  //! Calcul de Fi'(U,V). <br>
+  //! Calculate Fi'(U,V). <br>
   Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& UV,math_Matrix& DF) ;
-  //! Calcul de Fi(U,V) et Fi'(U,V). <br>
+  //! Calculate Fi(U,V) and Fi'(U,V). <br>
   Standard_EXPORT     Standard_Boolean Values(const math_Vector& UV,math_Vector& F,math_Matrix& DF) ;
-  //! Memorise l'extremum trouve. <br>
+  //! Save the found extremum. <br>
   Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
-  //! Renvoie le nombre d'extrema trouves. <br>
+  //! Return the number of found extrema. <br>
   Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Renvoie la valeur de la Nieme distance. <br>
+  //! Return the value of the Nth distance. <br>
   Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Renvoie le Nieme extremum sur S1. <br>
+  //! Return the Nth extremum on S1. <br>
   Standard_EXPORT     Extrema_POnSurf PointOnS1(const Standard_Integer N) const;
   //! Renvoie le Nieme extremum sur S2. <br>
   Standard_EXPORT     Extrema_POnSurf PointOnS2(const Standard_Integer N) const;

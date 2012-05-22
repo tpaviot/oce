@@ -39,6 +39,7 @@ p UnitsAPI
 p gp
 p math
 r OS
+r UnitsAPI
 t TKAdvTools
 t TKMath
 t TKernel
@@ -354,7 +355,6 @@ t TKXml
 t TKXmlL
 t TKXmlTObj
 n IGESFile
-n StepFile
 p APIHeaderSection
 p BRepToIGES
 p BRepToIGESBRep
@@ -410,6 +410,7 @@ p StepData
 p StepDimTol
 p StepElement
 p StepFEA
+p StepFile
 p StepGeom
 p StepRepr
 p StepSelect
@@ -462,6 +463,7 @@ p DDataStd
 p DDocStd
 p DNaming
 p DPrsStd
+p DebugTools
 p Draw
 p DrawDim
 p DrawFairCurve
@@ -470,6 +472,13 @@ p GeometryTest
 p GeomliteTest
 p HLRTest
 p MeshTest
+p QABugs
+p QADNaming
+p QADraw
+p QANCollection
+p QANewBRepNaming
+p QANewDBRepNaming
+p QANewModTopOpe
 p SWDRAW
 p TObjDRAW
 p TestTopOpe
@@ -485,6 +494,7 @@ p XSDRAWSTLVRML
 r DrawResources
 t TKDCAF
 t TKDraw
+t TKQADraw
 t TKTObjDRAW
 t TKTopTest
 t TKViewerTest

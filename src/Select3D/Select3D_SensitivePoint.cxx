@@ -1,8 +1,23 @@
-// Copyright: 	Matra-Datavision 1995
-// File:	Select3D_SensitivePoint.cxx
-// Created:	Fri Mar 10 13:41:23 1995
-// Author:	Mister rmi
-//		<rmi>
+// Created on: 1995-03-10
+// Created by: Mister rmi
+// Copyright (c) 1995-1999 Matra Datavision
+// Copyright (c) 1999-2012 OPEN CASCADE SAS
+//
+// The content of this file is subject to the Open CASCADE Technology Public
+// License Version 6.5 (the "License"). You may not use the content of this file
+// except in compliance with the License. Please obtain a copy of the License
+// at http://www.opencascade.org and read it completely before using this file.
+//
+// The Initial Developer of the Original Code is Open CASCADE S.A.S., having its
+// main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France.
+//
+// The Original Code and all software distributed under the License is
+// distributed on an "AS IS" basis, without warranty of any kind, and the
+// Initial Developer hereby disclaims all such warranties, including without
+// limitation, any warranties of merchantability, fitness for a particular
+// purpose or non-infringement. Please see the License for the specific terms
+// and conditions governing the rights and limitations under the License.
+
 
 
 
@@ -14,13 +29,13 @@
 #include <CSLib_Class2d.hxx>
 
 //==================================================
-// Function: 
+// Function: Creation
 // Purpose :
 //==================================================
 
 Select3D_SensitivePoint
 ::Select3D_SensitivePoint(const Handle(SelectBasics_EntityOwner)& anOwner,
-			  const gp_Pnt& aPoint):
+                          const gp_Pnt& aPoint):
 Select3D_SensitiveEntity(anOwner)
 {
   SetSensitivityFactor(4.);
@@ -28,9 +43,10 @@ Select3D_SensitiveEntity(anOwner)
 }
 
 //==================================================
-// Function: 
+// Function: Project
 // Purpose :
 //==================================================
+
 void Select3D_SensitivePoint
 ::Project (const Handle(Select3D_Projector)& aProj)
 {
@@ -38,7 +54,8 @@ void Select3D_SensitivePoint
   gp_Pnt2d aPoint2d;
   if(!HasLocation())
     aProj->Project(mypoint, aPoint2d);
-  else{
+  else
+  {
     gp_Pnt aP(mypoint.x, mypoint.y, mypoint.z);
     aProj->Project(aP.Transformed(Location().Transformation()), aPoint2d);
   }
@@ -46,9 +63,10 @@ void Select3D_SensitivePoint
 }
 
 //==================================================
-// Function: 
+// Function: Areas
 // Purpose :
 //==================================================
+
 void Select3D_SensitivePoint
 ::Areas(SelectBasics_ListOfBox2d& boxes)
 {
@@ -57,16 +75,16 @@ void Select3D_SensitivePoint
   boxes.Append(abox);
 }
 
-
 //==================================================
-// Function: 
+// Function: Matches
 // Purpose :
 //==================================================
+
 Standard_Boolean Select3D_SensitivePoint
 ::Matches(const Standard_Real X,
-	  const Standard_Real Y,
-	  const Standard_Real aTol,
-	  Standard_Real& DMin)
+          const Standard_Real Y,
+          const Standard_Real aTol,
+          Standard_Real& DMin)
 {
   DMin = gp_Pnt2d(X,Y).Distance(myprojpt);
   if(DMin<=aTol*SensitivityFactor())
@@ -77,19 +95,23 @@ Standard_Boolean Select3D_SensitivePoint
   return Standard_False;
 }
 
+//==================================================
+// Function: Matches
+// Purpose :
+//==================================================
+
 Standard_Boolean Select3D_SensitivePoint::
 Matches (const Standard_Real XMin,
-	 const Standard_Real YMin,
-	 const Standard_Real XMax,
-	 const Standard_Real YMax,
-	 const Standard_Real aTol)
+         const Standard_Real YMin,
+         const Standard_Real XMax,
+         const Standard_Real YMax,
+         const Standard_Real aTol)
 {
   Bnd_Box2d B;
   B.Update(Min(XMin,XMax),Min(YMin,YMax),Max(XMin,XMax),Max(YMin,YMax));
   B.Enlarge(aTol);
   return !B.IsOut(myprojpt);
 }
-
 
 //=======================================================================
 //function : Matches
@@ -98,8 +120,8 @@ Matches (const Standard_Real XMin,
 
 Standard_Boolean Select3D_SensitivePoint::
 Matches (const TColgp_Array1OfPnt2d& aPoly,
-	 const Bnd_Box2d& aBox,
-	 const Standard_Real aTol)
+         const Bnd_Box2d& aBox,
+         const Standard_Real aTol)
 { 
   Standard_Real Umin,Vmin,Umax,Vmax;
   aBox.Get(Umin,Vmin,Umax,Vmax);
@@ -111,12 +133,11 @@ Matches (const TColgp_Array1OfPnt2d& aPoly,
   return Standard_False;
 }
 
-
-
 //=======================================================================
 //function : Point
 //purpose  : 
 //=======================================================================
+
 gp_Pnt Select3D_SensitivePoint::Point() const
 {return mypoint;}
 
@@ -132,7 +153,6 @@ Handle(Select3D_SensitiveEntity) Select3D_SensitivePoint::GetConnected(const Top
   NiouEnt->UpdateLocation(aLoc);
   return NiouEnt;
 }
-
 
 //=======================================================================
 //function : Dump
@@ -158,5 +178,3 @@ Standard_Real Select3D_SensitivePoint::ComputeDepth(const gp_Lin& EyeLine) const
 {
   return ElCLib::Parameter(EyeLine,mypoint);
 }
-
-
