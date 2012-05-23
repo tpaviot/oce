@@ -25,7 +25,7 @@
   #include <windows.h>
   #include <winbase.h>
   #include <process.h>
-  #include <Psapi.h>
+  #include <psapi.h>
   #if defined(_MSC_VER) || defined(__BORLANDC__)
     #pragma comment(lib, "Psapi.lib")
   #endif
