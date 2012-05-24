@@ -161,7 +161,7 @@ void OpenGl_Trihedron::Redraw (const Handle(OpenGl_Workspace) &AWorkspace) const
   /* 
   * Creation du triedre 
   */
-  const OpenGl_AspectLine *AspectLine = AWorkspace->AspectLine( Standard_True );
+  /* const OpenGl_AspectLine *AspectLine = */ AWorkspace->AspectLine( Standard_True );
 
   /* Fotis Sioutis 2007-11-14 15:06 
   I have also seen in previous posts that the view trihedron in V3d_WIREFRAME mode 

@@ -165,9 +165,7 @@ static Standard_Boolean GetOrigin(const Handle(Geom2d_Curve)& PCIN, gp_Pnt2d& o)
     o = Handle(Geom2d_Line)::DownCast(PC)->Location();
     return Standard_True;
   }
-  else  {
-    return Standard_False;
-  }
+ 
   return Standard_False;
 }
 #endif
@@ -196,9 +194,7 @@ static Standard_Boolean GetOrigin(const Handle(Geom_Curve)& CIN, gp_Pnt& o)
     o = Handle(Geom_Line)::DownCast(C)->Position().Location();
     return Standard_True;
   }
-  else  {
-    return Standard_False;
-  }
+ 
   return Standard_False;
 }
 #endif
@@ -1155,11 +1151,8 @@ void  TopOpeBRepDS_BuildTool::Parameter(const TopoDS_Shape& E,
   Handle(Geom_Curve) C = BRep_Tool::Curve(e,loc,f,l);
   if ( !C.IsNull() && C->IsPeriodic()) {
     Standard_Real per = C->Period();
-#ifdef DEB
-    TopAbs_Orientation oV;
-#else
     TopAbs_Orientation oV=TopAbs_FORWARD;
-#endif
+
     TopExp_Explorer exV(e,TopAbs_VERTEX);
     for (; exV.More(); exV.Next()) {
       const TopoDS_Vertex& vofe = TopoDS::Vertex(exV.Current());

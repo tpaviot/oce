@@ -218,11 +218,7 @@ TopOpeBRepDS_Transition TopOpeBRep_FFTransitionTool::ProcessFaceTransition
   }
   else {
     Standard_Boolean Odefined = Standard_True;
-#ifdef DEB
-    TopAbs_Orientation O;
-#else
-    TopAbs_Orientation O = TopAbs_FORWARD;
-#endif
+	TopAbs_Orientation O = TopAbs_FORWARD;
 
     IntSurf_TypeTrans trans;
     trans = (Index == 1) ? L.TransitionOnS1() : L.TransitionOnS2();

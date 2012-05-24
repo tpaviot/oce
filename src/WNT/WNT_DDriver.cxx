@@ -434,12 +434,12 @@ Standard_Boolean WNT_DDriver::DoSpool
                  (const Standard_Boolean anOriginalSize,
                   const Aspect_PlotMode aPlotMode) const
 {
-  Standard_Integer i;
+  Standard_Integer i = 0;
   UINT             n;
   char             buffer[ MAX_DESC_LEN ]; 
   DOCINFO          di;
   PLOGPALETTE      pLogPal;
-  HPALETTE         hPal;
+  HPALETTE         hPal = NULL;
   Standard_Boolean retVal = Standard_True;
 
   if (GetEnhMetaFileDescription ((HENHMETAFILE )myHMetaFile, MAX_DESC_LEN, buffer)

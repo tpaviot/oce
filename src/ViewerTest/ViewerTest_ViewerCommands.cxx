@@ -348,10 +348,6 @@ static void ProcessKeyPress( char *buf_ret )
     ViewerTest::CurrentView()->SetDegenerateModeOff();
 #endif
   }
-  else if ( !strcasecmp(buf_ret, "D") ) {
-    // Reset
-    aView->Reset();
-  }
   else if ( !strcasecmp(buf_ret, "S") ) {
     // SHADING
     cout << "passage en mode 1 (shading pour les shapes)" << endl;
@@ -1452,7 +1448,7 @@ static int VSetBgMode(Draw_Interpretor& di, Standard_Integer argc, const char** 
     return 1;
   }
 
-  Aspect_FillMethod aFillType;
+  Aspect_FillMethod aFillType = Aspect_FM_NONE;
   if (argc == 2)
   {
     const char* szType = argv[1];

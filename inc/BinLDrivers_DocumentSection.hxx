@@ -49,6 +49,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete ( void * , void * )
+  {
+
+  }
 
   //! Empty constructor <br>
   Standard_EXPORT   BinLDrivers_DocumentSection();

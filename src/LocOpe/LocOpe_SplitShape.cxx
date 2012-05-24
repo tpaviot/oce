@@ -1490,7 +1490,8 @@ static TopoDS_Shape ChooseDirection(const TopoDS_Shape& RefDir,
   TopExp_Explorer Explo(RefDir, TopAbs_EDGE);
   TopoDS_Edge RefEdge;
   TopoDS_Vertex V1, V2;
-  TopAbs_Orientation anOr;
+  TopAbs_Orientation anOr = TopAbs_FORWARD;
+
   for (; Explo.More(); Explo.Next())
   {
     RefEdge = TopoDS::Edge(Explo.Current());

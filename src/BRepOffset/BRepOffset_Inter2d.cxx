@@ -297,10 +297,11 @@ static void EdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-  Standard_Real MilTol2 = 1000*Tol*Tol;
   Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
-
+#ifdef DEB
+  Standard_Real MilTol2 = 1000*Tol*Tol;
+#endif
   BRep_Tool::Range(E1, f[1], l[1]);
   BRep_Tool::Range(E2, f[2], l[2]);
 
@@ -569,10 +570,11 @@ static void RefEdgeInter(const TopoDS_Face&              F,
     return;
 
   Standard_Real f[3],l[3];
-  Standard_Real MilTol2 = 1000*Tol*Tol;
   Standard_Real TolDub = 1.e-7;
   Standard_Integer i;
-
+#ifdef DEB
+  Standard_Real MilTol2 = 1000*Tol*Tol;
+#endif
   //BRep_Tool::Range(E1, f[1], l[1]);
   //BRep_Tool::Range(E2, f[2], l[2]);
 

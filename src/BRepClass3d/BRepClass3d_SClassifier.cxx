@@ -95,7 +95,7 @@ void BRepClass3d_SClassifier::PerformInfinitePoint(BRepClass3d_SolidExplorer& aS
   // 1
   Standard_Boolean bFound, bFlag;
   Standard_Integer nump;
-  Standard_Real aParam, aU1, aV1, aU2, aV2;
+  Standard_Real aParam, aU1 = 0.0, aV1 = 0.0, aU2 = 0.0, aV2 = 0.0;
   gp_Pnt A,B;
   gp_Dir aDN1, aDN2;
   TopoDS_Face aF1, aF2;

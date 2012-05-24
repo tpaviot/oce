@@ -81,7 +81,7 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   Standard_Integer IType = 0;
 
   // characteristics of the first edge
-  Standard_Real first1, last1, first2, last2, ff, ll;
+  Standard_Real first1 = 0.0, last1 = 0.0, first2, last2, ff, ll;
   TopLoc_Location loc;
   TopoDS_Vertex V1, V2;
   Handle(Geom_Curve) curv1, curv;
@@ -91,11 +91,8 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   // find the particular case
   gp_Pnt pos1, pos;
   Standard_Real  dist;
-#ifndef DEB
   Standard_Real dist1 =0.;
-#else
-  Standard_Real dist1;
-#endif
+
   gp_Ax1 axe1, axe;
 
   if (degen1) {

@@ -299,7 +299,7 @@ void DDF_IOStream::ReadChar(TCollection_AsciiString& buffer, const Standard_Inte
 
 void DDF_IOStream::ReadString(TCollection_AsciiString& buffer)
 {
-  char c;
+  char c = 0;
   Standard_Boolean IsEnd = Standard_False;
 
   buffer.Clear();
@@ -311,13 +311,6 @@ void DDF_IOStream::ReadString(TCollection_AsciiString& buffer)
 
   IsEnd = Standard_False;
 
-  /* @todo c is used before initialized. Anyway I didn't modify the code because
-   I don't know if ReadString should include \n in the output.
-   If so : Swap buffer += c with the next line
-   If not: rewrite the loop 
-   I don't understand anyway the semantics of this function.
-   QbProg
-  */
   while (!IsEnd && !DDF_IOStream::IsEnd()) {
     buffer += c;
     myIStream->get(c);
@@ -332,7 +325,7 @@ void DDF_IOStream::ReadString(TCollection_AsciiString& buffer)
 
 void DDF_IOStream::ReadWord(TCollection_AsciiString& buffer)
 {
-  char c;
+  char c = 0;
   Standard_Boolean IsEnd = Standard_False;
 
   buffer.Clear();
@@ -344,13 +337,6 @@ void DDF_IOStream::ReadWord(TCollection_AsciiString& buffer)
 
   IsEnd = Standard_False;
   
-  /* @todo c is used before initialized. Anyway I didn't modify the code because
-   I don't know if ReadWord should include \n in the output.
-   If so : Swap buffer += c with the next line
-   If not: rewrite the loop 
-   I don't understand anyway the semantics of this function.
-   QbProg
-  */
   while (!IsEnd && !DDF_IOStream::IsEnd()) {
     buffer += c;
     myIStream->get(c);

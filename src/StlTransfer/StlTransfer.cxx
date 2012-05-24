@@ -121,7 +121,6 @@ void StlTransfer::BuildIncrementalMesh (const TopoDS_Shape&  Shape,
     Standard_ConstructionError::Raise ("StlTransfer::BuildIncrementalMesh");
     }
   
-  Standard_Integer NbVertices, NbTriangles;
   BRepMesh_IncrementalMesh aMesher(Shape, Deflection, Standard_False, 0.5, InParallel);
   for (TopExp_Explorer itf(Shape,TopAbs_FACE); itf.More(); itf.Next()) {
     TopoDS_Face face = TopoDS::Face(itf.Current());

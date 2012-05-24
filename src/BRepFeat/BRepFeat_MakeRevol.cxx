@@ -849,7 +849,7 @@ Handle(Geom_Curve) BRepFeat_MakeRevol::BarycCurve()
   return myBCurve;
 }
 
-
+#ifdef DEB
 //=======================================================================
 //function : SetGluedFaces
 //purpose  : management of gluing faces
@@ -904,6 +904,7 @@ static void SetGluedFaces(const TopoDS_Face& theSkface,
     }
   }
 }
+#endif
 
 //=======================================================================
 //function : VerifGluedFaces

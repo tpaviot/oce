@@ -114,8 +114,6 @@ GccAna_Circ2d3Tan::
 	   Standard_Real dist2 = Center.Distance(Point2);
 
 	   Standard_Real Radius=0;
-	   Standard_Integer nbsol1 = 0;
-//	   Standard_Integer nbsol2 = 0;
 	   Standard_Integer nbsol3 = 0;
 	   Standard_Boolean ok = Standard_False;
 	   if (Qualified1.IsEnclosed()) {

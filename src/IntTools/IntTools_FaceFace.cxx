@@ -125,8 +125,10 @@
 static
   void RefineVector(gp_Vec2d& aV2D);
 
+#ifdef DEB
 static
   void DumpWLine(const Handle(IntPatch_WLine)& aWLine);
+#endif
 //
 static
   void TolR3d(const TopoDS_Face& ,
@@ -4605,6 +4607,8 @@ Standard_Integer IndexType(const GeomAbs_SurfaceType aType)
   } 
   return aIndex;
 }
+
+#ifdef DEB
 //=======================================================================
 //function : DumpWLine
 //purpose  : 
@@ -4627,6 +4631,7 @@ void DumpWLine(const Handle(IntPatch_WLine)& aWLine)
 	//   i, aX, aY, aZ, aU1, aV1, aU2, aV2);
   }
 }
+#endif
 //=======================================================================
 //function : RefineVector
 //purpose  : 

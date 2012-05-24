@@ -57,6 +57,10 @@ public:
   {
     if (anAddress) Standard::Free((Standard_Address&)anAddress); 
   }
+  void operator delete ( void * , void * )
+  {
+
+  }
 
   //! Creates an XYZ object with zero co-ordinates (0,0,0) <br>
       gp_XYZ();

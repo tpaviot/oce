@@ -58,8 +58,8 @@ namespace
 
     int       iPixelFormat = 0;
     int       iGood = 0;
-    const int cBits[] = { 32, 24 };
-    const int dBits[] = { 32, 24, 16 };
+    const BYTE cBits[] = { 32, 24 };
+    const BYTE dBits[] = { 32, 24, 16 };
 
     int i, j;
     for (i = 0; i < sizeof(dBits) / sizeof(int); i++)
@@ -126,9 +126,11 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_Display)& theDisplay,
   myBgColor.rgb[2] = theCWindow.Background.b;
 
   WINDOW aParent = (WINDOW )theCWindow.XWindow;
+  
+#if (!defined(_WIN32) && !defined(__WIN32__))
+
   DISPLAY* aDisp = (DISPLAY* )myDisplay->GetDisplay();
 
-#if (!defined(_WIN32) && !defined(__WIN32__))
   XWindowAttributes wattr;
   XGetWindowAttributes (aDisp, aParent, &wattr);
   const int scr = DefaultScreen (aDisp);

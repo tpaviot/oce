@@ -874,7 +874,7 @@ Standard_Integer bxhole (Draw_Interpretor& aDI,
   }
   //
   Standard_Integer i;
-  Standard_Boolean bIsHole;
+  Standard_Boolean bIsHole = false;
   Standard_Real aTol, aUMin, aUMax, aVMin, aVMax;
   gp_Pnt2d aP2DInf;
   TopAbs_State aState;

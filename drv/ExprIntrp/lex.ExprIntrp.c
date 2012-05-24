@@ -1,3 +1,8 @@
+/* Disable warnings in this auto-generated file */
+#ifdef _MSC_VER
+#pragma warning(push,0)
+#endif
+
 #define yy_create_buffer ExprIntrp_create_buffer
 #define yy_delete_buffer ExprIntrp_delete_buffer
 #define yy_scan_buffer ExprIntrp_scan_buffer
@@ -2044,7 +2049,6 @@ static yyconst yy_state_type yy_NUL_trans[54] =
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #define INITIAL 0
-/* 
 /* Copyright (c) 1997-1999 Matra Datavision
  Copyright (c) 1999-2012 OPEN CASCADE SAS
 
@@ -3221,4 +3225,8 @@ int main()
 	yylex();
 	return 0;
 	}
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(pop)
 #endif

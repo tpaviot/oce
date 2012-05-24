@@ -118,7 +118,7 @@ Standard_Boolean Standard_GUID::CheckGUIDFormat(const Standard_CString aGuid)
   if (strlen(aGuid) == Standard_GUID_SIZE) {
     Standard_Integer i;
 
-    for (i = 0; i < 8 && result; i++) {
+    for (i = 0; i < 8 ; i++) {
       if (!IsXDigit(aGuid[i])) {
 	return Standard_False;
       }
@@ -126,7 +126,7 @@ Standard_Boolean Standard_GUID::CheckGUIDFormat(const Standard_CString aGuid)
 
     if (aGuid[8] != '-') return Standard_False;
 
-    for (i = 9; i < 13 && result; i++) {
+    for (i = 9; i < 13; i++) {
       if (!IsXDigit(aGuid[i])) {
 	return Standard_False;
       }
@@ -134,7 +134,7 @@ Standard_Boolean Standard_GUID::CheckGUIDFormat(const Standard_CString aGuid)
 
     if (aGuid[13] != '-') return Standard_False;
     
-    for (i = 14; i < 18 && result; i++) {
+    for (i = 14; i < 18; i++) {
       if (!IsXDigit(aGuid[i])) {
 	return Standard_False;
       }

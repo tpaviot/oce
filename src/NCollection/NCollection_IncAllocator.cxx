@@ -97,7 +97,7 @@ Standard_EXPORT void IncAllocator_SetDebugFlag(const Standard_Boolean theDebug)
  * numbering of allocators.
  */
 //=======================================================================
-#ifdef _DEBUG
+#if defined(_DEBUG) && defined(DEB)
 static Standard_Size CurrentID = 0;
 static Standard_Size CATCH_ID = 0;
 

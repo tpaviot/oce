@@ -43,7 +43,7 @@ TEST(BRepExtremaTestSuite, testDistSphereSphere)
     Standard_Real expected_result = a-(r1+r2);
     Standard_Real min_dist = distSS.Value();
     // @TODO: should compare with a precision
-    float abs_error = 0.001;
+    float abs_error = 0.001f;
     ASSERT_NEAR(expected_result,min_dist,abs_error);
 }
 
@@ -74,8 +74,7 @@ TEST(BRepExtremaTestSuite, testDistSphereVertex)
     gp_Vec v(a,b,c);
     Standard_Real expected_result = v.Magnitude()-r1;
     Standard_Real min_dist = distSS.Value();
-
-    float abs_error = 0.001;
+    float abs_error = 0.001f;
     ASSERT_NEAR(expected_result,min_dist,abs_error);
 }
 

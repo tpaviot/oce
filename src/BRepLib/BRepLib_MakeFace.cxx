@@ -587,7 +587,7 @@ void  BRepLib_MakeFace::Init(const Handle(Geom_Surface)& SS,
   Handle(Geom_Curve) Cumin,Cumax,Cvmin,Cvmax;
   Standard_Boolean Dumin,Dumax,Dvmin,Dvmax;
   Dumin = Dumax = Dvmin = Dvmax = Standard_False;
-  Standard_Real uminTol, umaxTol, vminTol, vmaxTol;
+  Standard_Real uminTol = 0.0, umaxTol = 0.0, vminTol= 0.0, vmaxTol= 0.0;
 
   if (!umininf) {
     Cumin = S->UIso(UMin);

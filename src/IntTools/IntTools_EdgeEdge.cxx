@@ -1905,7 +1905,7 @@ Standard_Boolean IsSameDir(const gp_Dir& aDir1, const gp_Dir& aDir2)
 //=======================================================================
 Standard_Boolean IsSameXYZ(const gp_XYZ& aXYZ1, const gp_XYZ& aXYZ2)
 {
-  Standard_Boolean bRet;
+  Standard_Boolean bRet = false;
   Standard_Integer i;
   Standard_Real aX1[3], aX2[3];
   
