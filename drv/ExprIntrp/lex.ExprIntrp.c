@@ -2049,7 +2049,6 @@ static yyconst yy_state_type yy_NUL_trans[54] =
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #define INITIAL 0
-/* 
 /* Copyright (c) 1997-1999 Matra Datavision
  Copyright (c) 1999-2012 OPEN CASCADE SAS
 

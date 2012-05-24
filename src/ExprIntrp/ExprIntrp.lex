@@ -1,4 +1,3 @@
-/* 
 /* Copyright (c) 1997-1999 Matra Datavision
  Copyright (c) 1999-2012 OPEN CASCADE SAS
 

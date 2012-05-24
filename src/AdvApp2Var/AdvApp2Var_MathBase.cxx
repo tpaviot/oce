@@ -735,7 +735,7 @@ int mmaper2_(integer *ncofmx,
 /*     KEYWORDS : */
 /*     ----------- */
 /*        JACOBI, POLYGON, APPROXIMATION, ERROR. */
-/*
+
 /*  INPUT ARGUMENTS : */
 /*     ------------------ */
 /*        NCOFMX : Max. degree of the curve. */
@@ -1792,7 +1792,7 @@ int mmatvec_(integer *nligne,
 /*       GNSTOC: Number of coefficients in the profile of matrix GMATRI */
 
 /*       GPOSIT: Table of positioning of terms of storage */
-/*               GPOSIT(1,I) contains the number of terms-1 on the line I 
+/*               GPOSIT(1,I) contains the number of terms-1 on the line I */
 /*               in the profile of the matrix. */
 /*              GPOSIT(2,I) contains the index of storage of diagonal term*/
 /*               of line I */
@@ -1803,7 +1803,7 @@ int mmatvec_(integer *nligne,
 /*       GMATRI : Matrix of constraints in form of profile */
 /*       VECIN  : Input vector */
 /*       DEBLIG : Line indexusing which the vector matrix is calculated */
-/*               
+
 /*     OUTPUT ARGUMENTS */
 /*     --------------------- */
 /*       VECOUT : VECTOR PRODUCT */
@@ -3322,6 +3322,7 @@ int mmdrvcb_(integer *ideriv,
   
 
 /* ***********************************************************************
+*/
 /*     FUNCTION : */
 /*     ---------- */
 
@@ -3730,7 +3731,7 @@ int AdvApp2Var_MathBase::mmeps1_(doublereal *epsilo)
 
 /*     DEMSCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
-/*       INITIALISATION   :  profile , **VIA MPRFTX** at input in stream
+/*       INITIALISATION   :  profile , **VIA MPRFTX** at input in stream */
 /*       loading of default values of the profile in MPRFTX at input */
 /*       in stream. They are preserved in local variables of MPRFTX */
 
@@ -3811,7 +3812,7 @@ int mmexthi_(integer *ndegre,
 /*     DESCRIPTION/NOTES/LIMITATIONS : */
 /*     ----------------------------------- */
 /*     ATTENTION: The condition on NDEGRE ( 2 <= NDEGRE <= 61) is not  */
-/*     tested. The caller should make the test.
+/*     tested. The caller should make the test. */
 
 /*   Name of the routine */
 
@@ -4414,7 +4415,7 @@ int AdvApp2Var_MathBase::mmfmcar_(integer *ndimen,
 
 /* --->    The max number of coeff by u and v of PATOLD is 61 */
 
-/* --->    If NCOEFU < NCOFMX, the data is compressed by MMFMCA9 before
+/* --->    If NCOEFU < NCOFMX, the data is compressed by MMFMCA9 before */
 /*        limitation by v to get time during the execution */
 /*        of MMARC41 that follows (the square is processed as a curve of 
 */
@@ -4781,7 +4782,7 @@ int AdvApp2Var_MathBase::mmfmtb1_(integer *maxsz1,
 
 /*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*     TABLE2: Table of reals by two dimensions, containing the transposition 
+/*     TABLE2: Table of reals by two dimensions, containing the transposition */
 /*             of the rectangular table TABLE1. */
 /*     ISIZE2: Nb of useful elements of TABLE2 on the 1st dimension */
 /*     JSIZE2: Nb of useful elements of TABLE2 on the 2nd dimension */
@@ -4919,7 +4920,7 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 /*      between limits XD and XF . */
 /*      The function should be calculated for any value */
 /*      of the variable in the given interval.. */
-/*      The method GAUSS-LEGENDRE is used. 
+/*      The method GAUSS-LEGENDRE is used. */
 /*      For explications refer to the book : */
 /*          Complements de mathematiques a l'usage des Ingenieurs de */
 /*          l'electrotechnique et des telecommunications. */
@@ -4991,7 +4992,7 @@ int AdvApp2Var_MathBase::mmgaus1_(integer *ndimf,
 /*      If you wish to calculate the integral with a given precision, */
 /*      loop on k varying from 1 to 10 and test the difference of 2
 */
-/*      consecutive iterations. Stop the loop if this difference is less that 
+/*      consecutive iterations. Stop the loop if this difference is less that */
 /*      an epsilon value set to 10E-6 for example. */
 /*      If S1 and S2 are 2 successive iterations, test following this example :
  */
@@ -5163,7 +5164,7 @@ int mmherm0_(doublereal *debfin,
 
 /*     FUNCTION : */
 /*     ---------- */
-/*      Used to STORE  coefficients of Hermit interpolation polynoms
+/*      Used to STORE  coefficients of Hermit interpolation polynoms */
 
 /*     KEYWORDS : */
 /*     ----------- */
@@ -5455,7 +5456,7 @@ int mmherm1_(doublereal *debfin,
 /*              there is no choice : ORDRMX should be equal to the value */
 /*              of PARAMETER IORDMX of INCLUDE MMCMHER, or 2 for the moment */
 
-/*       IORDRE (2) : Orders of constraints in each corresponding parameter DEBFIN(I) 
+/*       IORDRE (2) : Orders of constraints in each corresponding parameter DEBFIN(I) */
 /*              should be between -1 (no constraints) and ORDRMX. */
 
 
@@ -5501,7 +5502,7 @@ int mmherm1_(doublereal *debfin,
 
 /*     FUNCTION : */
 /*     ---------- */
-/*      Serves to STORE the coefficients of Hermit interpolation polynoms
+/*      Serves to STORE the coefficients of Hermit interpolation polynoms */
 
 /*     KEYWORDS : */
 /*     ----------- */
@@ -5937,7 +5938,6 @@ L9999:
 /*        . Level of de debug = 3 */
 
 
-/*
 /*     DECLARATIONS , CONTROL OF INPUT ARGUMENTS , INITIALIZATION */
 /* ***********************************************************************
  */
@@ -6367,7 +6367,7 @@ int mmloncv_(integer *ndimax,
 /*     FUNCTION : Length of an arc of curve on a given interval */
 /*     ---------- for a function the mathematic representation  */
 /*                which of is a multidimensional polynom. */
-/*      The polynom is a set of polynoms the coefficients which of are ranked
+/*      The polynom is a set of polynoms the coefficients which of are ranked */
 	/*  in a table with 2 indices, each line relative to 1 polynom. */
 /*      The polynom is defined by its coefficients ordered by increasing 
 *       power of the variable. */
@@ -7350,9 +7350,9 @@ L9999:
 /*       NISTOC: NUMBER OF COEFFICIENTS IN THE PROFILE */
 /*       DIMMAT: NUMBER OF LINE OF THE SYMMETRIC SQUARE MATRIX */
 /*       APOSIT: TABLE OF POSITIONING OF STORAGE TERMS */
-/*               APOSIT(1,I) CONTAINS THE NUMBER OF TERMES-1 ON LINE 
+/*               APOSIT(1,I) CONTAINS THE NUMBER OF TERMES-1 ON LINE */
 /*               I IN THE PROFILE OF THE MATRIX */
-/*               APOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF DIAGONAL TERM 
+/*               APOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF DIAGONAL TERM */
 /*               OF LINE I */
 
 
@@ -7530,7 +7530,7 @@ L9999:
 /*      GNSTOC: NOMBERS OF TERMS IN THE PROFILE OF THE MATRIX OF CONSTRAINTS */
 /*      MNSTOC: NOMBERS OF TERMS IN THE PROFILE OF THE MATRIX M= G H t(G) */
 /*              where H IS THE HESSIAN MATRIX AND G IS THE MATRIX OF CONSTRAINTS */
-/*      MATSYH: TRIANGULAR INFERIOR PART OF THE HESSIAN MATRIX
+/*      MATSYH: TRIANGULAR INFERIOR PART OF THE HESSIAN MATRIX */
 /*              IN FORM OF PROFILE */
 /*      MATSYG: MATRIX OF CONSTRAINTS IN FORM OF PROFILE */
 /*      VECSYH: VECTOR OF THE SECOND MEMBER ASSOCIATED TO MATSYH */
@@ -7549,11 +7549,11 @@ L9999:
 /*      GPOSIT: TABLE OF POSITIONING OF THE MATRIX OF CONSTRAINTS */
 /*              GPOSIT(1,I) CONTAINS THE NUMBER OF TERMS OF LINE I */
 /*                          WHICH ARE IN THE PROFILE */
-/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE LAST TERM 
+/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE LAST TERM */
 /*                          OF LINE I WHICH IS IN THE PROFILE */
 /*              GPOSIT(3,I) CONTAINS THE NUMBER OF COLUMN CORRESPONDING */
 /*                          TO THE FIRST TERM OF LINE I WHICH IS IN THE PROFILE */
-/*      MMPOSUI, MPOSIT: SAME STRUCTURE AS HPOSUI, BUT FOR MATRIX 
+/*      MMPOSUI, MPOSIT: SAME STRUCTURE AS HPOSUI, BUT FOR MATRIX */
 /*              M=G H t(G) */
 
 
@@ -8200,7 +8200,7 @@ int mmrslw_(integer *normax,
     goto L9999;
 
 /* ------If the absolute value of a pivot is smaller than -------- 
-/* ---------- EPSPIV: return the code of error. ------------ 
+   ---------- EPSPIV: return the code of error. ------------ 
 */
 
 L9900:
@@ -8613,7 +8613,7 @@ L1000:
     goto L1000;
 
 /* -------------- TEST IF TPARAM IS NOT A VALUE --------- 
-/* ------------------------OF TABLEV UP TO EPSIL ---------------------- 
+   ------------------------OF TABLEV UP TO EPSIL ---------------------- 
 */
 
 L2000:
@@ -8683,9 +8683,9 @@ int mmtmave_(integer *nligne,
 /*       GPOSIT: TABLE OF POSITIONING OF TERMS OF STORAGE */
 /*               GPOSIT(1,I) CONTAINS THE NUMBER of TERMS-1 ON LINE 
                I IN THE PROFILE OF THE MATRIX */
-/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE DIAGONAL TERM
+/*              GPOSIT(2,I) CONTAINS THE INDEX OF STORAGE OF THE DIAGONAL TERM */
 /*               OF LINE I */
-/*               GPOSIT(3,I) CONTAINS THE INDEX COLUMN OF THE FIRST TERM OF 
+/*               GPOSIT(3,I) CONTAINS THE INDEX COLUMN OF THE FIRST TERM OF */
 /*                           PROFILE OF LINE I */
 /*       GNSTOC : NOMBER OF TERM IN THE PROFILE OF GMATRI */
 /*       GMATRI : MATRIX OF CONSTRAINTS IN FORM OF PROFILE */
@@ -9425,7 +9425,7 @@ int mmtrpj6_(integer *ncofmx,
 
 /*     OUTPUT ARGUMENTS : */
 /*     ------------------- */
-/*        YCVMAX : Auxiliary table (max error on each dimension). 
+/*        YCVMAX : Auxiliary table (max error on each dimension). */
 /*        EPSTRC : Precision of the approximation. */
 /*        NCFNEW : Degree +1 of the resulting polynom. */
 
@@ -9677,7 +9677,7 @@ L9999:
 /*     ----------------------------------- */
 /*     VECTOR and VECNRM can be identic. */
 
-/*     The norm of vector is calculated and each component is divided by
+/*     The norm of vector is calculated and each component is divided by */
 /*     this norm. After this it is checked if all componentes of the */
 /*     vector except for one cost 0 with machine precision. In */
 /*     this case the quasi-null components are set to 0.D0. */
@@ -10717,7 +10717,7 @@ int mvgaus0_(integer *kindic,
 /*      to 40 directly (ATTENTION to overload - to avoid it, */
 /*      preview UROOTL and HILTAB dimensioned at least to 20). */
 
-/*      The value of coefficients was calculated with quadruple precision 
+/*      The value of coefficients was calculated with quadruple precision */
 /*      by JJM with help of GD. */
 /*      Checking of roots was done by GD. */
 
