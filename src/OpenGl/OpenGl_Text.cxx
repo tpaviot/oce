@@ -42,7 +42,7 @@ OpenGl_Text::OpenGl_Text (const TCollection_ExtendedString& AText,
   wchar_t *wstr = new wchar_t[i];
 
   //szv: instead of memcpy
-  i = 0; while (wstr[i++] = (wchar_t)(*str++));
+  i = 0; while ((wstr[i++] = (wchar_t)(*str++)) != 0);
   if (myString) delete[] myString;
   myString = wstr;
 

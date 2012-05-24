@@ -269,10 +269,10 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
     }
     case 1: // Shading
     {
-      Standard_Real prevangle;
-      Standard_Real newangle;
-      Standard_Real prevcoeff;
-      Standard_Real newcoeff;
+      Standard_Real prevangle = 0.0;
+      Standard_Real newangle = 0.0;
+      Standard_Real prevcoeff = 0.0;
+      Standard_Real newcoeff = 0.0;
 
       if (!OwnDeviationAngle (newangle, prevangle) && !OwnDeviationCoefficient (newcoeff, prevcoeff))
       {

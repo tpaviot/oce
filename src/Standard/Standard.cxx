@@ -82,8 +82,8 @@ Standard_MMgrFactory::Standard_MMgrFactory()
 : myFMMgr (NULL)
 {
   char* aVar;
-  Standard_Integer anAllocId   = (aVar = getenv ("MMGT_OPT"      )) ?  atoi (aVar)       : MMGT_OPT_DEFAULT;
-  Standard_Boolean toClear     = (aVar = getenv ("MMGT_CLEAR"    )) ? (atoi (aVar) != 0) : (MMGT_CLEAR_DEFAULT != 0);
+  Standard_Integer anAllocId   = ((aVar = getenv ("MMGT_OPT"      )) != NULL) ?  atoi (aVar)       : MMGT_OPT_DEFAULT;
+  Standard_Boolean toClear     = ((aVar = getenv ("MMGT_CLEAR"    )) != NULL) ? (atoi (aVar) != 0) : (MMGT_CLEAR_DEFAULT != 0);
 
 
   // on Windows (actual for XP and 2000) activate low fragmentation heap
@@ -109,10 +109,10 @@ Standard_MMgrFactory::Standard_MMgrFactory()
   {
     case 1:  // OCCT optimized memory allocator
     {
-      Standard_Boolean bMMap       = (aVar = getenv ("MMGT_MMAP"     )) ? (atoi (aVar) != 0) : (MMGT_MMAP_DEFAULT != 0);
-      Standard_Integer aCellSize   = (aVar = getenv ("MMGT_CELLSIZE" )) ?  atoi (aVar) : MMGT_CELLSIZE_DEFAULT;
-      Standard_Integer aNbPages    = (aVar = getenv ("MMGT_NBPAGES"  )) ?  atoi (aVar) : MMGT_NBPAGES_DEFAULT;
-      Standard_Integer aThreshold  = (aVar = getenv ("MMGT_THRESHOLD")) ?  atoi (aVar) : MMGT_THRESHOLD_DEFAULT;
+      Standard_Boolean bMMap       = ((aVar = getenv ("MMGT_MMAP"     )) != NULL) ? (atoi (aVar) != 0) : (MMGT_MMAP_DEFAULT != 0);
+      Standard_Integer aCellSize   = ((aVar = getenv ("MMGT_CELLSIZE" )) != NULL) ?  atoi (aVar) : MMGT_CELLSIZE_DEFAULT;
+      Standard_Integer aNbPages    = ((aVar = getenv ("MMGT_NBPAGES"  )) != NULL) ?  atoi (aVar) : MMGT_NBPAGES_DEFAULT;
+      Standard_Integer aThreshold  = ((aVar = getenv ("MMGT_THRESHOLD")) != NULL) ?  atoi (aVar) : MMGT_THRESHOLD_DEFAULT;
       myFMMgr = new Standard_MMgrOpt (toClear, bMMap, aCellSize, aNbPages, aThreshold, Standard_IsReentrant);
       break;
     }

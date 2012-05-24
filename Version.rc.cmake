@@ -5,6 +5,7 @@
 
 /* If patch is not defined at project level, here is defined to 0 */
 #ifndef OCE_VERSION_PATCH
+#undef OCE_VERSION_PATCH_VAL
 #define OCE_VERSION_PATCH_VAL 0
 #endif
 

@@ -635,9 +635,9 @@ static void img_setrowsize( 	AlienImage_SGIRGBFileHeader *image,
 	    iptr -= 2;							\
 	    bblcount = iptr-sptr;					\
 	    while(bblcount) {						\
-		todo = bblcount>126 ? 126:bblcount; 			\
+		todo = (bblcount>126) ? 126:(short)bblcount; 			\
 		bblcount -= todo;					\
-		*optr++ = 0x80|todo;					\
+		*optr++ = (unsigned char)(0x80|todo);					\
 		while(todo--)						\
 		    *optr++ = (unsigned char)*sptr++;			\
 	    }								\
@@ -647,7 +647,7 @@ static void img_setrowsize( 	AlienImage_SGIRGBFileHeader *image,
 		iptr++;							\
 	    bblcount = iptr-sptr;					\
 	    while(bblcount) {						\
-		todo = bblcount>126 ? 126:bblcount; 			\
+		todo = (bblcount>126) ? 126:(short)bblcount; 			\
 		bblcount -= todo;					\
 		*optr++ = (unsigned char)todo;				\
 		*optr++ = (unsigned char)cc;				\

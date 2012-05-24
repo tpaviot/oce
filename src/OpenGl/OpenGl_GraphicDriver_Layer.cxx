@@ -304,7 +304,7 @@ void OpenGl_GraphicDriver::Text (const Standard_CString AText, const Standard_Sh
   {
     Tint i = 0; while (aTChStr[i++]);
     aWChStr = new wchar_t[i];
-    i = 0; while (aWChStr[i++] = (wchar_t)(*aTChStr++));
+    i = 0; while ((aWChStr[i++] = (wchar_t)(*aTChStr++)) != 0);
   }
 
   const Aspect_TypeOfDisplayText aDispType =
@@ -453,7 +453,7 @@ void OpenGl_GraphicDriver::TextSize (const Standard_CString AText, const Standar
   {
     Tint i = 0; while (s[i++]);
     s1 = new wchar_t[i];
-    i = 0; while (s1[i++] = (wchar_t)(*s++));
+    i = 0; while ((s1[i++] = (wchar_t)(*s++)) != 0);
   }
 
   int aWidth = 0, anAscent = 0, aDescent = 0;

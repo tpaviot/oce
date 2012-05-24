@@ -69,7 +69,7 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 
-
+#ifdef DEB
 static void EdgesFromVertex (const TopoDS_Wire&   W,
 			     const TopoDS_Vertex& V, 
 			     TopoDS_Edge& E1, 
@@ -119,7 +119,7 @@ static void EdgesFromVertex (const TopoDS_Wire&   W,
     }
   }
 }
-				      
+#endif				      
 
 static void SeqOfVertices (const TopoDS_Wire&   W,
 			   TopTools_SequenceOfShape& S)

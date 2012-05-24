@@ -105,7 +105,7 @@ Standard_CString LDOM_SBuffer::str () const
 int LDOM_SBuffer::overflow(signed char c)
 {
   char cc = (char)c;
-  return xsputn(&cc,1);
+  return (int)xsputn(&cc,1);
 }
 
 //=======================================================================
@@ -127,7 +127,7 @@ int LDOM_SBuffer::underflow()
 //=======================================================================
 std::streamsize LDOM_SBuffer::xsputn(const char* aStr, std::streamsize n)
 {
-  int aLen = n + 1;
+  int aLen = (int)(n) + 1;
   int freeLen = myMaxBuf - myCurString->len - 1;
   if (freeLen >= n)
   {
@@ -155,7 +155,7 @@ std::streamsize LDOM_SBuffer::xsputn(const char* aStr, std::streamsize n)
   myCurString->len += aLen - 1;
   *(myCurString->buf + myCurString->len) = '\0';
 
-  myLength += n;
+  myLength += (int)n;
   return n;
 }
 

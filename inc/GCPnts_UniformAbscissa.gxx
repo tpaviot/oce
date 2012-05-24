@@ -174,7 +174,7 @@ PerformLengthParametrized( Handle(TColStd_HArray1OfReal)& HParameters,
 {
   Standard_Boolean NotDone = Standard_True;
 //  Standard_Boolean LocalDone = Standard_True;
-  Standard_Boolean Forward = Standard_True  ;
+//  Standard_Boolean Forward = Standard_True  ;
   Standard_Real UU1 = Min(U1, U2);
 //  Standard_Real UCurrent;
   Standard_Real Delta, Ui;

@@ -373,7 +373,7 @@ void OpenGl_Workspace::DrawStructure (const OpenGl_Structure *AStructure)
   if (NamedStatus & (OPENGL_NS_ADD | OPENGL_NS_IMMEDIATE))
   {
     float mat16[16];
-    GLint mode1;
+    GLint mode1 = 0;
 
     //TsmPushAttri();
 

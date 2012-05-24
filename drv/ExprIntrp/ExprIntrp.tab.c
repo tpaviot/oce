@@ -22,6 +22,11 @@
  by  GNU Bison version 1.25
   */
 
+/* Disable warnings in this auto-generated file */
+#ifdef _MSC_VER
+#pragma warning(push,0)
+#endif
+
 #define YYBISON 1  /* Identify Bison output.  */
 
 #define yyparse ExprIntrpparse
@@ -1248,3 +1253,7 @@ yyerrhandle:
   goto yynewstate;
 }
 #line 150 "j:/kas/c40/ros/src/exprintrp/exprintrp.yacc"
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif

@@ -29,7 +29,7 @@
 #define CONVERT(v) (v)*72./(0.0254005 METER)
 
 #define TRANSFORM(X,Y)                 \
-  { Standard_Real x = (X), y = (Y);    \
+  { Standard_ShortReal x = (X), y = (Y);    \
     X = x*theCosAngle - y*theSinAngle; \
     Y = x*theSinAngle + y*theCosAngle; \
   }

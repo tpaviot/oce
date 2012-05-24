@@ -408,8 +408,8 @@ static void MyBindTextureEXT (TextureID ID, int Context)
   GLenum aParamName = texdata(data).status == TEXDATA_1D ? 
   GL_TEXTURE_BINDING_1D : GL_TEXTURE_BINDING_2D;
 
-  GLint aCurrTex = -1;
-  glGetIntegerv (aParamName, &aCurrTex);
+  GLuint aCurrTex(0);
+  glGetIntegerv (aParamName, reinterpret_cast<GLint *>(&aCurrTex));
   if (textab(ID).contextdata(Context).number != aCurrTex)
   {
     glBindTexture (texdata(data).type, textab(ID).contextdata(Context).number);

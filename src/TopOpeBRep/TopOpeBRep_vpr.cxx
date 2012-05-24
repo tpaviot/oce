@@ -229,18 +229,10 @@ static void FUN_VPgeometryfound
   else          hasOOedge = (VP.State(OOShapeIndex) == TopAbs_ON);
   if ( hasOOedge ) {  
     TopoDS_Shape OOedge;
-#ifndef DEB
     if (on2edges) OOedge = ((signed) rkErest == (signed) OOShapeIndex)? Erest : VP.Edge(OOShapeIndex);
-#else
-    if (on2edges) OOedge = (rkErest == OOShapeIndex)? Erest : VP.Edge(OOShapeIndex);
-#endif
     else          OOedge = VP.EdgeON(OOShapeIndex);    
     Standard_Real OOpar = 0.;
-#ifndef DEB
     if (on2edges) OOpar = ((signed) rkErest == (signed) OOShapeIndex)? parErest : VP.EdgeParameter(OOShapeIndex);
-#else
-    if (on2edges) OOpar = (rkErest == OOShapeIndex)? parErest : VP.EdgeParameter(OOShapeIndex);
-#endif
     else          OOpar = VP.EdgeONParameter(OOShapeIndex); 
     Standard_Real tolOOe = FUN_tool_maxtol(OOedge);
     Standard_Real OOtolp = Precision::Parametric(tolOOe);

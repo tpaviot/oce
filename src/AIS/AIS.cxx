@@ -1147,11 +1147,9 @@ void AIS::ComputeLengthBetweenCurvilinearFaces( const TopoDS_Face &      FirstFa
   DirAttach = gp_Dir( D1U ^ D1V );
 
   aProjector.Init( FirstAttach, SecondSurf );
-#ifndef DEB
+
   Standard_Integer Index = 0;
-#else
-  Standard_Integer Index;
-#endif
+
   Quantity_Length MinDist = RealLast();
   gp_Dir LocalDir;
   for (Standard_Integer i = 1; i <= aProjector.NbPoints(); i++)

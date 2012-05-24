@@ -546,7 +546,7 @@ static int __fastcall _createColorRamp ( HPALETTE* pal ) {
  PPALETTEENTRY         sysPal, colorRamp;
  PBYTE                 gRed, gGreen, gBlue;
  BYTE                  inc;
- LONG                  error, min_error, error_index, delta;
+ LONG                  error, min_error, error_index = 0, delta;
  double                dv, gamma;
  char                  buff[ 32 ];
 

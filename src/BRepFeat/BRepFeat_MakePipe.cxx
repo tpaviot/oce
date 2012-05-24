@@ -377,7 +377,7 @@ Handle(Geom_Curve) BRepFeat_MakePipe::BarycCurve()
   return myBCurve;
 }
 
-
+#ifdef DEB
 //=======================================================================
 //function : SetGluedFaces
 //purpose  : management of faces of gluing and sliding  
@@ -432,7 +432,7 @@ static void SetGluedFaces(const TopoDS_Face& theSkface,
     }
   }
 }
-
+#endif
 
 //=======================================================================
 //function : MajMap

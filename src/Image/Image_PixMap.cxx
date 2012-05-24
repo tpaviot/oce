@@ -421,8 +421,8 @@ Quantity_Color Image_PixMap::PixelColor (const Standard_Integer theX,
                                          const Standard_Integer theY) const
 {
   Standard_Integer aScanlineId = myImage->getHeight() - theY - 1;
-  if (theX < 0 || theX >= myImage->getWidth() ||
-      theY < 0 || theY >= myImage->getHeight())
+  if (theX < 0 || theX >= (Standard_Integer)myImage->getWidth() ||
+      theY < 0 || theY >= (Standard_Integer)myImage->getHeight())
   {
     return Quantity_Color (0.0, 0.0, 0.0, Quantity_TOC_RGB);
   }

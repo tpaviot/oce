@@ -410,11 +410,8 @@ void BRepMesh_Delaun::MeshLeftPolygonOf(const Standard_Integer indexEdg,
   // Find the polygon
   usedEdges.Add(indexEdg);
   Standard_Integer debut, prem, pivo;
-#ifndef DEB
   Standard_Integer ders =0, oth =0;
-#else
-  Standard_Integer ders, oth;
-#endif
+
   if (forwdEdg) {
     polyg.Append(indexEdg);
     prem=edg.FirstNode();
@@ -1094,11 +1091,9 @@ Standard_Boolean BRepMesh_Delaun::UseEdge(const Standard_Integer ind)
       vedge.Subtract(vertDeb.Coord());
 
       BRepMesh_ListOfInteger::Iterator itNeig(neigPivo);
-#ifndef DEB
+
       Standard_Real ang =0.;
-#else
-      Standard_Real ang;
-#endif
+
       Standard_Real angMin=RealLast();
       Standard_Real angMax=RealFirst();
       Standard_Boolean InMesh;

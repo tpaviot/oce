@@ -894,7 +894,7 @@ Standard_Boolean IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       aTolang2=1.e-16;
       aLin=myCurve.Line();
       const gp_Dir& aDirL=aLin.Direction();
-      const gp_Pnt& aLocL=aLin.Location();
+      
       //
       aCos=aDirC.Dot(aDirL);
       if(aCos >= 0.) {
@@ -905,7 +905,7 @@ Standard_Boolean IntTools_BeanFaceIntersector::FastComputeExactIntersection()
       }
       //
       if(aAng2<=aTolang2) {// IsParallel = Standard_True;
-	Standard_Boolean bFlag;
+	Standard_Boolean bFlag = false;
 	Standard_Integer i;
 	Standard_Real aD;
 	gp_Pnt aPL[2];

@@ -13,7 +13,7 @@ TEST(gpTestSuite, testgp_PntDistance)
 {
     gp_Pnt P1(0.,0.,0.);
     gp_Pnt P2(0.,3.,4.);
-    float D = P1.Distance(P2);
+    float D = (float)P1.Distance(P2);
     ASSERT_EQ(5.,D);
 }
 

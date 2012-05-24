@@ -1260,7 +1260,7 @@ Standard_Integer SensOfPrism(const Handle(Geom_Curve) C,
   return sens;
 }
 
-
+#ifdef DEB
  //=======================================================================
 //function : SetGluedFaces
 //purpose  : 
@@ -1314,7 +1314,7 @@ static void SetGluedFaces(const TopoDS_Face& theSkface,
     }
   }
 }
-
+#endif
 
 //=======================================================================
 //function : VerifGluedFaces

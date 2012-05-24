@@ -91,8 +91,8 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
   int   nBytes, iDataSize;
   char  bmpSign[2];
   AlienImage_BMPHeader bmfh; // Standard BMP file header
-  BITMAPINFOHEADER bmih; // Windows BMP header
-  BITMAPCOREHEADER bmch; // OS/2 BMP header
+  BITMAPINFOHEADER bmih = {}; // Windows BMP header
+  BITMAPCOREHEADER bmch = {}; // OS/2 BMP header
   Standard_Address lpVoid;
   Quantity_Color color;
   Standard_Real r, g, b;
