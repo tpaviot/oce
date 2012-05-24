@@ -16,6 +16,8 @@
 #ifndef _OpenGl_GlFunctions_Header
 #define _OpenGl_GlFunctions_Header
 
+#include <oce-config.h>
+
 // required for correct APIENTRY definition
 #if defined(_WIN32) && !defined(APIENTRY) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__)
   #define WIN32_LEAN_AND_MEAN
@@ -41,7 +43,7 @@
   #import <TargetConditionals.h>
   #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
     #include <OpenGLES/ES2/gl.h>
-  #else
+  #elif(!defined(MACOSX_USE_GLX))
     #include <OpenGL/gl.h>
     #include <OpenGL/glu.h>
   #endif

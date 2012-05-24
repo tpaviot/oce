@@ -11,6 +11,10 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
 
 #import <Cocoa/Cocoa.h>

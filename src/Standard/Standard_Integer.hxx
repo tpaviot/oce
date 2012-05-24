@@ -18,6 +18,8 @@
 #include <Standard_TypeDef.hxx>
 #include <Standard_values.h>
 
+#include <oce-config.h>
+
 // ===============
 // Inline methods
 // ===============
@@ -49,7 +51,7 @@ inline Standard_Boolean IsEqual (const Standard_Integer theOne,
   return theOne == theTwo;
 }
 
-#if (defined(_LP64) || defined(__LP64__) || defined(_WIN64)) || defined(__APPLE__)
+#ifndef OCE_IS_DUPLICATE_UINT32_T
 // ------------------------------------------------------------------
 // Hascode : Computes a hascoding value for a given unsigned integer
 // ------------------------------------------------------------------
@@ -67,7 +69,7 @@ inline Standard_Boolean IsEqual (const Standard_Utf32Char theOne,
 {
   return theOne == theTwo;
 }
-#endif
+#endif  /* !OCE_IS_DUPLICATE_UINT32_T */
 
 // ------------------------------------------------------------------
 // IsSimilar : Returns Standard_True if two integers are equal

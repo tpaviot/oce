@@ -30,10 +30,10 @@
 
 #if defined(_MSC_VER) || defined(__ANDROID__)
   #include <malloc.h>
-#elif (defined(__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 1)
+#elif defined(HAVE_MM_MALLOC_H)
   #include <mm_malloc.h>
 #else
-  extern "C" int posix_memalign (void** thePtr, size_t theAlign, size_t theSize);
+  #include <stdlib.h>
 #endif
 
 #ifndef OCCT_MMGT_OPT_DEFAULT
@@ -267,15 +267,17 @@ Standard_Address Standard::AllocateAligned (const Standard_Size theSize,
   return _aligned_malloc (theSize, theAlign);
 #elif defined(__ANDROID__)
   return memalign (theAlign, theSize);
-#elif (defined(__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 1)
+#elif defined(HAVE_MM_MALLOC_H)
   return _mm_malloc (theSize, theAlign);
-#else
+#elif defined(HAVE_POSIX_MEMALIGN)
   void* aPtr;
   if (posix_memalign (&aPtr, theAlign, theSize))
   {
     return NULL;
   }
   return aPtr;
+#else
+  return malloc (theSize);
 #endif
 }
 
@@ -290,7 +292,7 @@ void Standard::FreeAligned (Standard_Address thePtrAligned)
   _aligned_free (thePtrAligned);
 #elif defined(__ANDROID__)
   free (thePtrAligned);
-#elif (defined(__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 1)
+#elif defined(HAVE_MM_MALLOC_H)
   _mm_free (thePtrAligned);
 #else
   free (thePtrAligned);
