@@ -158,7 +158,11 @@ static void drawText(const Handle(OpenGl_Workspace) &AWorkspace, const wchar_t* 
 }
 
 #ifdef __BORLANDC__
-# define sqrtf std::sqrtf
+# if (__BORLANDC__ < 0x569)
+#  define sqrtf sqrt
+# else
+#  define sqrtf std::sqrtf
+# endif
 # define fabsf (float)fabs 
 #endif
 
