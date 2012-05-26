@@ -64,7 +64,7 @@
         munmap((caddr_t) mmap_addr,(size_t) mmap_size)
 #endif // sgi
 
-#if defined ( __alpha) || defined ( DECOSF1 )
+#if (defined ( __alpha) || defined ( DECOSF1 )) && !defined(linux)
 #include <sys/mman.h>
 #define MMAP(file_addr,mmap_size,fildes) \
         mmap((caddr_t) 0x1000000000,(size_t) mmap_size,PROT_READ, \
