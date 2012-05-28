@@ -62,11 +62,11 @@ namespace
     const BYTE dBits[] = { 32, 24, 16 };
 
     int i, j;
-    for (i = 0; i < sizeof(dBits) / sizeof(int); i++)
+    for (i = 0; i < sizeof(dBits) / sizeof(BYTE); i++)
     {
       pfd0.cDepthBits = dBits[i];
       iGood = 0;
-      for (j = 0; j < sizeof(cBits) / sizeof(int); j++)
+      for (j = 0; j < sizeof(cBits) / sizeof(BYTE); j++)
       {
         pfd0.cColorBits = cBits[j];
         iPixelFormat = ChoosePixelFormat (hDC, &pfd0);
@@ -81,7 +81,7 @@ namespace
             iGood = iPixelFormat;
         }
       }
-      if (j < sizeof(cBits) / sizeof(int))
+      if (j < sizeof(cBits) / sizeof(BYTE))
         break;
     }
 
