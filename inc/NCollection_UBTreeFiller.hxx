@@ -26,6 +26,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#if defined(__BORLANDC__) && (__BORLANDC__ < 0x0569)
+#define rand_r(x) rand()
+#endif
+
 /**
  * This class is used to fill an UBTree in a random order.
  * The quality of a tree is much better (from the point of view of

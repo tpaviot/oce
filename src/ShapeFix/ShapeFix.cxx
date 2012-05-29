@@ -176,6 +176,9 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
            continue;
       }
 
+#if defined(__BORLANDC__) && (__BORLANDC__ < 0x0569)
+# define continue {} else { //bcc cannot process continue ... ???
+#endif                      //ugly hack just to bypass this stupid issue...
       Handle(GeomAdaptor_HSurface) AS = new GeomAdaptor_HSurface ( plane );
       for ( TopExp_Explorer ed ( face, TopAbs_EDGE ); ed.More(); ed.Next() ) {
         TopoDS_Edge edge = TopoDS::Edge ( ed.Current() );
@@ -212,6 +215,10 @@ Standard_Boolean ShapeFix::SameParameter(const TopoDS_Shape& shape,
             B.UpdateVertex ( TopoDS::Vertex ( S ), tol );
           }
         }
+#if defined(__BORLANDC__) && (__BORLANDC__ < 0x0569)
+# undef continue //restore internal compiler definition
+       }} //close open local scopes from 'continue'
+#endif
       }
 
       // Halt algorithm in case of user's abort
