@@ -1785,7 +1785,7 @@ class FilledCircle : public AIS_InteractiveObject
 {
 public:
     // CASCADE RTTI
-    DEFINE_STANDARD_RTTI(FilledCircle); 
+    DEFINE_STANDARD_RTTI(FilledCircle)
 
     FilledCircle(gp_Pnt theCenter, Standard_Real theRadius);
     FilledCircle(Handle(Geom_Circle) theCircle);
@@ -2285,7 +2285,7 @@ class MyTextClass:public AIS_InteractiveObject
 {
 public:
   // CASCADE RTTI
-  DEFINE_STANDARD_RTTI(MyTextClass );
+  DEFINE_STANDARD_RTTI(MyTextClass )
 
   MyTextClass(){};
 
@@ -3171,7 +3171,7 @@ public:
     myArray = theArray;
   }
 
-  DEFINE_STANDARD_RTTI(MyPArrayObject);
+  DEFINE_STANDARD_RTTI(MyPArrayObject)
 
 private:
 
@@ -3840,7 +3840,7 @@ class Triangle: public AIS_InteractiveObject
 {
 public: 
   // CASCADE RTTI
-  DEFINE_STANDARD_RTTI(FilledCircle); 
+  DEFINE_STANDARD_RTTI(FilledCircle) 
   Triangle (const gp_Pnt& theP1, 
             const gp_Pnt& theP2, 
             const gp_Pnt& theP3);
@@ -4035,7 +4035,7 @@ class SegmentObject: public AIS_InteractiveObject
 {
 public:
   // CASCADE RTTI
-  DEFINE_STANDARD_RTTI(SegmentObject); 
+  DEFINE_STANDARD_RTTI(SegmentObject) 
   SegmentObject (const gp_Pnt& thePnt1, const gp_Pnt& thePnt2);
 protected:
   void Compute (const Handle(PrsMgr_PresentationManager3d)& thePresentationManager,
