@@ -402,7 +402,7 @@ static void MyGenTextureEXT (TextureID ID)
 static void MyBindTextureEXT (TextureID ID, int Context)
 {
   TextureDataID data = textab(ID).data;
-  if (texdata(data).status == TEX_NONE)
+  if (texdata(data).status == TEXDATA_NONE)
     return;
 
   GLenum aParamName = texdata(data).status == TEXDATA_1D ? 
