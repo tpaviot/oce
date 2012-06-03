@@ -90,11 +90,6 @@ static
   void PrintState (Draw_Interpretor& aDI,
 		   const TopAbs_State& aState);
 
-//modified by NIZNHY-PKV Thu Nov 10 12:11:15 2011f
-static
-  void DumpArray(const BOPTColStd_CArray1OfInteger& aC,
-	       Draw_Interpretor& aDI);
-//modified by NIZNHY-PKV Thu Nov 10 12:11:18 2011t
 
 static  Standard_Integer bhaspc      (Draw_Interpretor& , Standard_Integer , const char** );
 static  Standard_Integer baddve      (Draw_Interpretor& , Standard_Integer , const char** );
