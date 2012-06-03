@@ -24,15 +24,7 @@
 
 #include <OpenGl_GlCore11.hxx>
 
-// GL version can be defined by system gl.h header
-#undef GL_VERSION_1_2
-#undef GL_VERSION_1_3
-#undef GL_VERSION_1_4
-#undef GL_VERSION_1_5
-#undef GL_VERSION_2_0
-
-// include glext.h provided by Khronos group
-#include <glext.h>
+#include <OpenGl_glext.h>
 
 //! Function list for GL1.2 core functionality.
 struct OpenGl_GlCore12
