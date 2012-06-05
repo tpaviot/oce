@@ -48,6 +48,7 @@
 //10-05-96 : CAL ; Ajout d'un nouveau delta dans les copies de pixels (voir CALL_DEF_DELTA)
 #define CALL_DEF_DELTA 10
 
+#ifdef WNT
 // ---------------------------------------------------------------
 // Function: getNearestPowOfTwo
 // Purpose:  get the nearest power of two for theNumber
@@ -171,7 +172,6 @@ static void initBufferTiling (Standard_Integer& theFrameWidth,
 // Function: initBitmapBuffer
 // Purpose:  init device independent bitmap to hold printing data
 // ---------------------------------------------------------------
-#ifdef WNT
 #ifndef HAVE_FREEIMAGE
 static void initBitmapBuffer (const HDC theMemoryDC,
                               HBITMAP &theMemoryBmp,
