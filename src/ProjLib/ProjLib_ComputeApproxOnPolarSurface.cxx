@@ -761,11 +761,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;
 	  ElSLib::Parameters( Cylinder, Pts(i), S, T);
-	  if(Abs(Sloc - S) > M_PI)
+	  if(Abs(Sloc - S) > M_PI) {
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
+        }
 	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
 	}
 	myProjIsDone = Standard_True;
@@ -782,11 +783,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;
 	  ElSLib::Parameters( Cone, Pts(i), S, T);
-	  if(Abs(Sloc - S) > M_PI)
+	  if(Abs(Sloc - S) > M_PI) {
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
+        }
 	  Pts2d(i).SetCoord(S+usens*2*M_PI,T);
 	}
 	myProjIsDone = Standard_True;
@@ -803,11 +805,12 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S;Tloc = T;
 	  ElSLib::Parameters( Sphere, Pts(i), S, T);
-	  if(1.6*M_PI < Abs(Sloc - S))
+	  if(1.6*M_PI < Abs(Sloc - S)) {
 	    if(Sloc > S)
 	      usens += 2;
 	    else
 	      usens -= 2;
+        }
 	  if(1.6*M_PI > Abs(Sloc - S) && Abs(Sloc - S) > 0.4*M_PI) {
 	    vparit = !vparit;
 	    if(Sloc > S)
@@ -840,16 +843,18 @@ Handle(Adaptor2d_HCurve2d)
 	for ( i = 2 ; i <= NbOfPnts ; i++) { 
 	  Sloc = S; Tloc = T;
 	  ElSLib::Parameters( Torus, Pts(i), S, T);
-	  if(Abs(Sloc - S) > M_PI)
+	  if(Abs(Sloc - S) > M_PI) {
 	    if(Sloc > S)
 	      usens++;
 	    else
 	      usens--;
-	  if(Abs(Tloc - T) > M_PI)
+        }
+	  if(Abs(Tloc - T) > M_PI) {
 	    if(Tloc > T)
 	      vsens++;
 	    else
 	      vsens--;
+        }
 	  Pts2d(i).SetCoord(S+usens*2*M_PI,T+vsens*2*M_PI);
 	}
 	myProjIsDone = Standard_True;
