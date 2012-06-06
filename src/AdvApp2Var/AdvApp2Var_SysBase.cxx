@@ -2731,7 +2731,7 @@ int AdvApp2Var_SysBase::mcrrqst_(integer *iunit,
   static doublereal dfmt;
   static integer ifmt, iver;
   static char subr[7];
-  static integer ksys , ibyte, irest, isyst, ier;
+  static integer ksys , ibyte, irest, ier;
   static intptr_t iadfd, iadff, iaddr,lofset, loc;
   static integer izu;
 

@@ -301,7 +301,7 @@ template <class TheItemType> class NCollection_Vector
       (MemBlock *) aSelf.myAllocator->Allocate(aCapacity * sizeof(MemBlock));
     Standard_Integer i = 0;
     if (aSource != NULL) {
-      memcpy (aData, aSource, aSize * sizeof(MemBlock));
+      memcpy ((void*)aData, aSource, aSize * sizeof(MemBlock));
       i = aSize;
     }
     while (i < aCapacity)

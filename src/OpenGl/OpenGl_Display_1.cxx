@@ -172,7 +172,7 @@ int OpenGl_Display::FindFont (const char* AFontName, const OSD_FontAspect AFontA
   {
     //try to use font names mapping
     FontMapNode newTempFont = myFontMap[0];
-    for ( int i = 0; i < NUM_FONT_ENTRIES; ++i )
+    for ( unsigned int i = 0; i < NUM_FONT_ENTRIES; ++i )
     {
       if ( TCollection_AsciiString(myFontMap[i].EnumName).IsEqual( family_name->ToCString() ) )
       {
