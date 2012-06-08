@@ -1,3 +1,30 @@
+Version 0.10.0 - June 2012
+
+This version is not binary compatible with OCE 0.9.x, OCE_ABI_SOVERSION 
+was incremented.
+
+* Upgraded to OCCT 6.5.3 
+
+* Improved compiler support for the new OCCT version
+  - Fix build failures on Alpha
+  - bcc v5.6.4 port (builder 6)
+  - mingw64 linux build
+  - OSX OpenGL Support
+  - gcc 4.7
+
+* Many cppcheck, clang and msvc warning fixes  
+
+* Build system and packaging fixes and improvements
+
+* Bugfix: Fix memory leak in OSD_FontMgr.cxx
+
+* Bugfix: Points swapped in BRepExtrema_DistanceSS
+
+Users who contributed to this release:
+  Denis Barbier, Fotios Sioutis, Jerome Robert,
+  QbProg, Thomas Paviot.
+
+
 Version 0.9.1 - January 2012
 
 This is a bugfix release.
