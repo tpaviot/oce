@@ -1,4 +1,4 @@
-Version 0.10.0 - June 2012
+Version 0.10 - June 2012
 
 This version is not binary compatible with OCE 0.9.x, OCE_ABI_SOVERSION 
 was incremented.
