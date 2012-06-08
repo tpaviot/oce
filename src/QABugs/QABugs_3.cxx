@@ -18,10 +18,10 @@
 // and conditions governing the rights and limitations under the License.
 
 
-#include <QABugs.hxx>
 #ifdef HAVE_CONFIG_H
 #include <oce-config.h>
 #endif
+#include <QABugs.hxx>
 #include<Draw_Interpretor.hxx>
 #include<TopLoc_Location.hxx>
 #include<TopoDS_Face.hxx>
@@ -287,15 +287,15 @@ void stringerror(int state)
 //#else
 //#include <strstream.h>
 //#endif
-#ifdef HAVE_IOSTREAM
+#ifdef OCE_HAVE_IOSTREAM
 #include <iostream>
 #include <sstream>
 using namespace std;
-#elif defined (HAVE_IOSTREAM_H)
+#elif defined (OCE_HAVE_IOSTREAM_H)
 #include <iostream.h>
 #include <strstream.h>
 #else
-#error "check oce-config.h file or compilation options: either HAVE_IOSTREAM or HAVE_IOSTREAM_H should be defined"
+#error "check oce-config.h file or compilation options: either OCE_HAVE_IOSTREAM or OCE_HAVE_IOSTREAM_H should be defined"
 #endif
 static int UKI61075(Draw_Interpretor& /*di*/, Standard_Integer /*argc*/, const char ** /*argv*/) {
  double da,db;
@@ -1405,9 +1405,9 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
 
 #if ! defined(WNT)
 //#include <fstream.h>
-#ifdef HAVE_FSTREAM
+#ifdef OCE_HAVE_FSTREAM
 # include <fstream>
-#elif defined (HAVE_FSTREAM_H)
+#elif defined (OCE_HAVE_FSTREAM_H)
 # include <fstream.h> 
 #endif
 //#include <Standard_Stream.hxx>
