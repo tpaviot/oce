@@ -23,9 +23,9 @@ SET(OCE_VERSION_MAJOR 0)
 SET(OCE_VERSION_MINOR 10)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
-# SET(OCE_VERSION_PATCH 0)
+SET(OCE_VERSION_PATCH 1)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-SET(OCE_VERSION_DEVEL )
+SET(OCE_VERSION_DEVEL -dev)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 SET(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
