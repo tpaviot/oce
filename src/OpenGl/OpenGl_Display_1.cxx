@@ -90,7 +90,7 @@ static const FontMapNode myFontMap[] =
 */
 
 #ifdef HAVE_GL2PS
-void OpenGl_Display::getGL2PSFontName (const char *src_font, char *ps_font)
+static void getGL2PSFontName (const char *src_font, char *ps_font)
 {
   /* 
   Convert font name used for rendering to some "good" font names
