@@ -34,8 +34,8 @@
 
 #include <Standard_Macro.hxx>
 
-#if defined(_MSC_VER) || defined(__BORLANDC__)
-#ifdef __BORLANDC__
+#if defined(_MSC_VER) || defined(__BORLANDC__) || defined(__MINGW32__)
+#if defined(__BORLANDC__) || defined(__MINGW32__)
 extern "C" {
   __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
   __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
