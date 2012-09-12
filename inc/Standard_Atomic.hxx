@@ -34,26 +34,23 @@
 
 #include <Standard_Macro.hxx>
 
-#if defined(_MSC_VER) || defined(__BORLANDC__) || defined(__MINGW32__)
-#if defined(__BORLANDC__) || defined(__MINGW32__)
-extern "C" {
-  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
-  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
- }
- #define _InterlockedIncrement InterlockedIncrement
- #define _InterlockedDecrement InterlockedDecrement
-#elif defined(_MSC_VER)
- extern "C" {
-  long _InterlockedIncrement(long volatile* lpAddend);
-  long _InterlockedDecrement(long volatile* lpAddend);
- }
-#endif
-#endif
-
-#if defined(_MSC_VER)
-  // force intrinsic instead of WinAPI calls
-  #pragma intrinsic (_InterlockedIncrement)
-  #pragma intrinsic (_InterlockedDecrement)
+#if (defined(_WIN32) || defined(__WIN32__))
+  #ifdef _MSC_VER
+    extern "C" {
+	  long _InterlockedIncrement(long volatile* lpAddend);
+      long _InterlockedDecrement(long volatile* lpAddend);
+    }
+    // force intrinsic instead of WinAPI calls
+    #pragma intrinsic (_InterlockedIncrement)
+    #pragma intrinsic (_InterlockedDecrement)
+  #else
+    extern "C" {
+      __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+      __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+    }
+    #define _InterlockedIncrement InterlockedIncrement
+    #define _InterlockedDecrement InterlockedDecrement
+  #endif
 #endif
 
 //! Increments atomically integer variable pointed by theValue
