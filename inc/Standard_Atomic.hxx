@@ -37,7 +37,7 @@
 #if (defined(_WIN32) || defined(__WIN32__))
   #ifdef _MSC_VER
     extern "C" {
-	  long _InterlockedIncrement(long volatile* lpAddend);
+      long _InterlockedIncrement(long volatile* lpAddend);
       long _InterlockedDecrement(long volatile* lpAddend);
     }
     // force intrinsic instead of WinAPI calls
