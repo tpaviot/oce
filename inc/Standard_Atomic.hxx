@@ -34,20 +34,20 @@
 
 #include <Standard_Macro.hxx>
 
-#if defined(_MSC_VER) || defined(__BORLANDC__)
-#ifdef __BORLANDC__
-extern "C" {
-  __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
-  __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
- }
- #define _InterlockedIncrement InterlockedIncrement
- #define _InterlockedDecrement InterlockedDecrement
-#elif defined(_MSC_VER)
- extern "C" {
-  long _InterlockedIncrement(long volatile* lpAddend);
-  long _InterlockedDecrement(long volatile* lpAddend);
- }
-#endif
+#if (defined(_WIN32) || defined(__WIN32__))
+  #ifdef _MSC_VER
+    extern "C" {
+      long _InterlockedIncrement(long volatile* lpAddend);
+      long _InterlockedDecrement(long volatile* lpAddend);
+    }
+  #else
+    extern "C" {
+      __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+      __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+    }
+    #define _InterlockedIncrement InterlockedIncrement
+    #define _InterlockedDecrement InterlockedDecrement
+  #endif
 #endif
 
 #if defined(_MSC_VER)
