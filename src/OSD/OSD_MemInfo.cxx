@@ -24,8 +24,8 @@
 #if (defined(_WIN32) || defined(__WIN32__))
   #if defined(__MINGW32__)
     #define WIN32_WINNT 0x0500
-    #define WINVER 0x0500 
-  #endif  
+    #define WINVER 0x0500
+  #endif
   #include <windows.h>
   #include <winbase.h>
   #include <process.h>

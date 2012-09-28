@@ -40,9 +40,6 @@
       long _InterlockedIncrement(long volatile* lpAddend);
       long _InterlockedDecrement(long volatile* lpAddend);
     }
-    // force intrinsic instead of WinAPI calls
-    #pragma intrinsic (_InterlockedIncrement)
-    #pragma intrinsic (_InterlockedDecrement)
   #else
     extern "C" {
       __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
@@ -51,6 +48,12 @@
     #define _InterlockedIncrement InterlockedIncrement
     #define _InterlockedDecrement InterlockedDecrement
   #endif
+#endif
+
+#if defined(_MSC_VER)
+  // force intrinsic instead of WinAPI calls
+  #pragma intrinsic (_InterlockedIncrement)
+  #pragma intrinsic (_InterlockedDecrement)
 #endif
 
 //! Increments atomically integer variable pointed by theValue
