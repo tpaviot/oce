@@ -12,6 +12,11 @@ IF (USE_SOLUTION_FOLDERS)
 	SET_TARGET_PROPERTIES(gtest PROPERTIES FOLDER "Tests" )
 ENDIF(USE_SOLUTION_FOLDERS)
 
+# Fix for MSVC11
+IF(MSVC11)
+  ADD_DEFINITIONS("-D_VARIADIC_MAX=10")
+ENDIF()
+
 # Copied from CMake
 # Thanks to Daniel Blezek <blezek@gmail.com> for the GTEST_ADD_TESTS code
 function(GTEST_ADD_TESTS executable extra_args)
