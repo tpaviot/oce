@@ -1014,7 +1014,7 @@ BOOL MoveDirectory ( LPCTSTR oldDir, LPCTSTR newDir ) {
  DIR_RESPONSE        response;
  DWORD               level;
 
- if (   (  level = ( DWORD )TlsGetValue ( dwLevel )  ) == NULL   ) {
+ if (   (  level = ( intptr_t )TlsGetValue ( dwLevel )  ) == NULL   ) {
 
   ++level;
   TlsSetValue (  dwLevel, ( LPVOID )level  );
