@@ -420,6 +420,9 @@ Standard_Integer OSD_FileNode::Error()const{
 #endif  // _INC_TCHAR
 
 #include <stdio.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 
 #define TEST_RAISE( arg ) _test_raise (  fName, ( arg )  )
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
@@ -845,7 +848,7 @@ Standard_Integer OSD_FileNode::UserId () {
 
   FreeFileSecurity ( pSD );
  
- return ( Standard_Integer )retVal;
+ return ( intptr_t )retVal;
 
 }  // end OSD_FileNode :: UserId
 
@@ -879,7 +882,7 @@ Standard_Integer OSD_FileNode::GroupId () {
 
   _osd_wnt_set_error ( myError, OSD_WFileNode );
 
- return ( Standard_Integer )retVal;
+ return ( intptr_t )retVal;
 
 }  // end OSD_FileNode :: GroupId
 

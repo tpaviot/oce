@@ -826,6 +826,9 @@ Standard_Boolean OSD_File::IsExecutable()
 
 #include <stdio.h>
 #include <io.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 #include <Standard_PCharacter.hxx>
 #include <TCollection_ExtendedString.hxx>
 
@@ -833,7 +836,7 @@ Standard_Boolean OSD_File::IsExecutable()
 # include <tchar.h>
 #endif  // _INC_TCHAR
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
+#if defined(__CYGWIN32__) || defined(__MINGW32__) || defined(__BORLANDC__)
 #define VAC
 #define _int64 int64_t
 #endif

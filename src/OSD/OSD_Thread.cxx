@@ -127,6 +127,9 @@ void OSD_Thread::SetFunction (const OSD_ThreadFunction &func)
 //=============================================
 
 #ifdef WNT
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 #include <malloc.h>
 // On Windows the signature of the thread function differs from that on UNIX/Linux.
 // As we use the same definition of the thread function on all platforms (POSIX-like),
@@ -137,7 +140,7 @@ static DWORD WINAPI WNTthread_func (LPVOID data)
   WNTthread_data *adata = (WNTthread_data*)data;
   void* ret = adata->func ( adata->data );
   free ( adata );
-  return (DWORD)ret;
+  return (intptr_t)ret;
 }
 #endif
 

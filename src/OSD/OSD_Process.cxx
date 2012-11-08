@@ -212,6 +212,9 @@ Standard_Integer OSD_Process::Error()const{
 
 #include <OSD_WNT_1.hxx>
 #include <lmcons.h> /// pour UNLEN  ( see MSDN about GetUserName() )
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 
 #ifdef _MSC_VER
 #pragma warning( disable : 4700 )
@@ -305,7 +308,7 @@ Standard_Integer OSD_Process :: UserId () {
  if ( hProcessToken != INVALID_HANDLE_VALUE ) CloseHandle ( hProcessToken );
  if ( pTKowner      != NULL                 ) FreeTokenInformation ( pTKowner );
 
- return ( Standard_Integer )retVal;
+ return ( intptr_t )retVal;
 
 }  // end OSD_Process :: UserId
 
