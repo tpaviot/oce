@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{50913B66-14F2-14EC-070C-5CA8863C1359}</UniqueIdentifier>
+      <UniqueIdentifier>{36006115-05A2-0866-1176-2ACC56CD3423}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\V2d">
-      <UniqueIdentifier>{1A45006A-0F9A-06B5-14DC-0565B6589A82}</UniqueIdentifier>
+      <UniqueIdentifier>{1A0E4009-0DA1-197E-0400-C9A50E7371EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Graphic2d">
-      <UniqueIdentifier>{07D7C0DE-18DF-0C58-11D3-83EFFF018E36}</UniqueIdentifier>
+      <UniqueIdentifier>{3CD60800-0FA7-009E-0610-1534D43F6609}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Select2D">
-      <UniqueIdentifier>{1F98FA77-079A-1203-1191-488883FA8905}</UniqueIdentifier>
+      <UniqueIdentifier>{43EE8A5E-10A0-1799-094F-E1828840E400}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Prs2d">
-      <UniqueIdentifier>{39D67032-0CCE-0651-0363-AB08D6D11F12}</UniqueIdentifier>
+      <UniqueIdentifier>{38BF3519-176D-0526-06D9-38A79A83B033}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AIS2D">
-      <UniqueIdentifier>{4F096D1F-1129-14CA-0CAD-E4A390AE4B16}</UniqueIdentifier>
+      <UniqueIdentifier>{A501C4E1-17A0-07B6-05E8-B6F8DD8CA09E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GGraphic2d">
-      <UniqueIdentifier>{C3C894FA-0725-0175-1379-3349D534670F}</UniqueIdentifier>
+      <UniqueIdentifier>{85021334-143C-0654-0F46-B9D1D27E3571}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -47,18 +50,8 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(IntRes2d_Transition);
 class IntRes2d_Transition  {
 
 public:
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+
+  DEFINE_STANDARD_ALLOC
 
   //! Empty constructor. <br>
   Standard_EXPORT   IntRes2d_Transition();

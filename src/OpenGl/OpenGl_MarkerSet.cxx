@@ -70,7 +70,6 @@ void OpenGl_MarkerSet::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
     }
     case Aspect_TOM_POINT :
     {
-      glPointSize( aspect_marker->Scale() );
       glBegin( GL_POINTS );
       for( i = 0, ptr = myPoints; i < myNbPoints; i++, ptr++ )
         glVertex3fv( ptr->xyz );
@@ -140,4 +139,7 @@ void OpenGl_MarkerSet::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
   }
 }
 
-/*----------------------------------------------------------------------*/
+void OpenGl_MarkerSet::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}

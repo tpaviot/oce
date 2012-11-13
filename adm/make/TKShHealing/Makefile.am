@@ -178,5 +178,6 @@ libTKShHealing_la_SOURCES = \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_SplitSurfaceArea.cxx \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_SplitSurfaceContinuity.cxx \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_Tool.cxx \
+@top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_UnifySameDomain.cxx \
 @top_srcdir@/src/ShapeUpgrade/ShapeUpgrade_WireDivide.cxx
 

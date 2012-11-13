@@ -1258,7 +1258,7 @@ Standard_Boolean CustomIsModified = Standard_False;
         VUPIsModified =
             MyCView.Orientation.ViewReferencePoint.x != float (X)
          || MyCView.Orientation.ViewReferencePoint.y != float (Y)
-         || MyCView.Orientation.ViewReferencePoint.y != float (Y);
+         || MyCView.Orientation.ViewReferencePoint.z != float (Z);
         MyCView.Orientation.ViewReferencePoint.x        = float (X);
         MyCView.Orientation.ViewReferencePoint.y        = float (Y);
         MyCView.Orientation.ViewReferencePoint.z        = float (Z);
@@ -1267,7 +1267,7 @@ Standard_Boolean CustomIsModified = Standard_False;
         VRPIsModified =
             MyCView.Orientation.ViewReferencePlane.x != float (X)
          || MyCView.Orientation.ViewReferencePlane.y != float (Y)
-         || MyCView.Orientation.ViewReferencePlane.y != float (Y);
+         || MyCView.Orientation.ViewReferencePlane.z != float (Z);
         MyCView.Orientation.ViewReferencePlane.x        = float (X);
         MyCView.Orientation.ViewReferencePlane.y        = float (Y);
         MyCView.Orientation.ViewReferencePlane.z        = float (Z);
@@ -1276,7 +1276,7 @@ Standard_Boolean CustomIsModified = Standard_False;
         VRUIsModified =
             MyCView.Orientation.ViewReferenceUp.x != float (X)
          || MyCView.Orientation.ViewReferenceUp.y != float (Y)
-         || MyCView.Orientation.ViewReferenceUp.y != float (Y);
+         || MyCView.Orientation.ViewReferenceUp.z != float (Z);
         MyCView.Orientation.ViewReferenceUp.x           = float (X);
         MyCView.Orientation.ViewReferenceUp.y           = float (Y);
         MyCView.Orientation.ViewReferenceUp.z           = float (Z);
@@ -3734,13 +3734,13 @@ Standard_Boolean Visual3d_View::GetGraduatedTrihedron
      /* Name of font for names of axes */
      TCollection_AsciiString& fontOfNames,
      /* Style of names of axes */
-     OSD_FontAspect& styleOfNames,
+     Font_FontAspect& styleOfNames,
      /* Size of names of axes */
      Standard_Integer& sizeOfNames,
      /* Name of font for values */
      TCollection_AsciiString& fontOfValues,
      /* Style of values */
-     OSD_FontAspect& styleOfValues,
+     Font_FontAspect& styleOfValues,
      /* Size of values */
      Standard_Integer& sizeOfValues) const
 {
@@ -3859,13 +3859,13 @@ void Visual3d_View::GraduatedTrihedronDisplay
      /* Name of font for names of axes */
      const TCollection_AsciiString &fontOfNames,
      /* Style of names of axes */
-     const OSD_FontAspect styleOfNames,
+     const Font_FontAspect styleOfNames,
      /* Size of names of axes */
      const Standard_Integer sizeOfNames,
      /* Name of font for values */
      const TCollection_AsciiString &fontOfValues,
      /* Style of values */
-     const OSD_FontAspect styleOfValues,
+     const Font_FontAspect styleOfValues,
      /* Size of values */
      const Standard_Integer sizeOfValues)
 {
@@ -4277,9 +4277,10 @@ void Visual3d_View::FBOChangeViewport(Graphic3d_PtrFrameBuffer& theFBOPtr,
                                      theWidth, theHeight );
 }
 
-Standard_Boolean Visual3d_View::BufferDump (Image_CRawBufferData& theBuffer)
+Standard_Boolean Visual3d_View::BufferDump (Image_PixMap&               theImage,
+                                            const Graphic3d_BufferType& theBufferType)
 {
-  return MyGraphicDriver->BufferDump( MyCView, theBuffer);
+  return MyGraphicDriver->BufferDump (MyCView, theImage, theBufferType);
 }
 
 void Visual3d_View::EnableGLLight( const Standard_Boolean enable ) const

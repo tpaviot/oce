@@ -278,7 +278,7 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectFil
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
   Standard_Integer aPolyMode;
-  Standard_Real    aPolyFactor, aPolyUnits;
+  Standard_ShortReal    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCGroup.ContextFillArea.PolygonOffsetMode   = aPolyMode;
   MyCGroup.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
@@ -344,7 +344,7 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectTex
   Quantity_Color AColorSubTitle;
   Standard_Boolean ATextZoomable;
   Standard_Real    ATextAngle;
-  OSD_FontAspect   ATextFontAspect;
+  Font_FontAspect   ATextFontAspect;
 
   CTX->Values (AColor, AFont, AnExpansion, ASpace, AStyle, ADisplayType,AColorSubTitle,ATextZoomable,ATextAngle,ATextFontAspect);
   AColor.Values (R, G, B, Quantity_TOC_RGB);
@@ -362,7 +362,7 @@ void Graphic3d_Group::SetGroupPrimitivesAspect (const Handle(Graphic3d_AspectTex
   MyCGroup.ContextText.ColorSubTitle.g    = float (Gs);
   MyCGroup.ContextText.ColorSubTitle.b    = float (Bs);
   MyCGroup.ContextText.TextZoomable   = ATextZoomable;   
-  MyCGroup.ContextText.TextAngle    = ATextAngle;   
+  MyCGroup.ContextText.TextAngle    = float (ATextAngle);   
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;
 
   MyCGroup.ContextText.IsDef      = 1;
@@ -598,7 +598,7 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectFillArea
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 
   Standard_Integer aPolyMode;
-  Standard_Real    aPolyFactor, aPolyUnits;
+  Standard_ShortReal    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCGroup.ContextFillArea.PolygonOffsetMode   = aPolyMode;
   MyCGroup.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
@@ -664,7 +664,7 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)&
   Quantity_Color AColorSubTitle;  
   Standard_Boolean ATextZoomable;
   Standard_Real ATextAngle;
-  OSD_FontAspect ATextFontAspect;
+  Font_FontAspect ATextFontAspect;
 
   CTX->Values (AColor, AFont, AnExpansion, ASpace, AStyle, ADisplayType,AColorSubTitle,ATextZoomable,ATextAngle,ATextFontAspect);
   AColor.Values (R, G, B, Quantity_TOC_RGB);
@@ -682,7 +682,7 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)&
   MyCGroup.ContextText.ColorSubTitle.g    = float (Gs);
   MyCGroup.ContextText.ColorSubTitle.b    = float (Bs);
   MyCGroup.ContextText.TextZoomable   = ATextZoomable;  
-  MyCGroup.ContextText.TextAngle    = ATextAngle;   
+  MyCGroup.ContextText.TextAngle    = float (ATextAngle);   
   MyCGroup.ContextText.TextFontAspect   = (int)ATextFontAspect;   
   MyCGroup.ContextText.IsDef              = 1;
 

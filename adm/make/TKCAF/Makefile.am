@@ -36,7 +36,8 @@ libTKCAF_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKV2d/libTKV2d.la \
 ../TKCDF/libTKCDF.la \
 ../TKLCAF/libTKLCAF.la \
-../TKV3d/libTKV3d.la
+../TKV3d/libTKV3d.la \
+../TKBO/libTKBO.la
 
 
 libTKCAF_la_SOURCES = \

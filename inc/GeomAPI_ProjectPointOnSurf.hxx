@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -27,6 +30,9 @@
 #endif
 #ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
+#endif
+#ifndef _Extrema_ExtAlgo_HeaderFile
+#include <Extrema_ExtAlgo.hxx>
 #endif
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
@@ -50,51 +56,40 @@ class Extrema_ExtPS;
 class GeomAPI_ProjectPointOnSurf  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates an empty object. Use the <br>
 //! Init function for further initialization. <br>
   Standard_EXPORT   GeomAPI_ProjectPointOnSurf();
   //! Create the projection  of a point <P> on a surface <br>
 //!          <Surface> <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface);
+  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   //! Create the projection  of a point <P> on a surface <br>
 //!          <Surface> <br>//! Create the projection of a point <P>  on a surface <br>
 //!          <Surface>. The solution are computed in the domain <br>
 //!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance);
+  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance);
+  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   //! Init the projection  of a point <P> on a surface <br>
 //!          <Surface> <br>
-  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup);
+  Standard_EXPORT   GeomAPI_ProjectPointOnSurf(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
   
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance) ;
+  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   //! Init the projection of a point <P>  on a surface <br>
 //!          <Surface>. The solution are computed in the domain <br>
 //!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface) ;
+  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance) ;
+  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   //! Init the projection for many points on a surface <br>
 //!          <Surface>. The solutions will be computed in the domain <br>
 //!          [Umin,Usup] [Vmin,Vsup] of the surface. <br>
-  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup) ;
+  Standard_EXPORT     void Init(const gp_Pnt& P,const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance) ;
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Standard_Real Tolerance,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup) ;
+  Standard_EXPORT     void Init(const Handle(Geom_Surface)& Surface,const Quantity_Parameter Umin,const Quantity_Parameter Usup,const Quantity_Parameter Vmin,const Quantity_Parameter Vsup,const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad) ;
   //! Performs the projection of a point on the current surface. <br>
   Standard_EXPORT     void Perform(const gp_Pnt& P) ;
   

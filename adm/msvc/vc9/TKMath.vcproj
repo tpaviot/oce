@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKMath"
-	ProjectGUID="{ECF1B34F-07EE-027A-11D0-08E9F23710EF}"
+	ProjectGUID="{205E5DC1-0611-184D-0EB5-E7EE8FDF251E}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

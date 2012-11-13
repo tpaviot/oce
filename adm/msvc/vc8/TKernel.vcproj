@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKernel"
-	ProjectGUID="{16467126-13A4-10AF-03BE-EE6843FF19A6}"
+	ProjectGUID="{4883F7AC-0F39-1007-176C-CE73B20DC195}"
 	>
 	<Platforms>
 		<Platform
@@ -573,9 +573,6 @@
 					RelativePath="..\..\..\src\OSD\OSD_FileNode.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_FontMgr.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OSD\OSD_Function.cxx">
 				</File>
 				<File
@@ -622,9 +619,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_SharedMemory.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_SystemFont.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Thread.cxx">

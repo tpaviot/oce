@@ -123,7 +123,7 @@
 #include <SelectMgr_Selection.hxx>
 #include <StdFail_NotDone.hxx>
 #include <StdPrs_ShadedShape.hxx>
-#include <TopoDS_Wire.hxx> 
+#include <TopoDS_Wire.hxx>
 
 #include <AIS_ConnectedShape.hxx>
 #include <TopLoc_Location.hxx>
@@ -137,6 +137,8 @@
 
 #include <BRepExtrema_ExtPC.hxx>
 #include <BRepExtrema_ExtPF.hxx>
+
+#include <Prs3d_LineAspect.hxx>
 
 #ifdef HAVE_STRINGS_H
 #include <strings.h>
@@ -2299,7 +2301,7 @@ public:
       Standard_Real Angle ,
       Standard_Boolean Zoom ,
       Standard_Real  Height,
-      OSD_FontAspect FontAspect,
+      Font_FontAspect FontAspect,
       Standard_CString Font
     );
 
@@ -2323,7 +2325,7 @@ protected:
   Standard_Boolean                    aZoomable;
   Quantity_Color                      aColor;
   Standard_CString                    aFont;
-  OSD_FontAspect                      aFontAspect;
+  Font_FontAspect                     aFontAspect;
   Graphic3d_HorizontalTextAlignment   aHJustification;
   Graphic3d_VerticalTextAlignment     aVJustification;
 };
@@ -2341,7 +2343,7 @@ MyTextClass::MyTextClass( const TCollection_ExtendedString& text, const gp_Pnt& 
                           Standard_Real     angle       = 0.0 ,
                           Standard_Boolean  zoomable    = Standard_True,
                           Standard_Real     height      = 12.,
-                          OSD_FontAspect    fontAspect  = OSD_FA_Regular,
+                          Font_FontAspect   fontAspect  = Font_FA_Regular,
                           Standard_CString  font        = "Courier")
 {
   aText           = text;
@@ -2441,7 +2443,7 @@ static int VDrawText (Draw_Interpretor& di, Standard_Integer argc, const char** 
   const Standard_Real height = atof(argv[12]);
 
   // Text aspect
-  const OSD_FontAspect aspect = OSD_FontAspect(atoi(argv[13]));
+  const Font_FontAspect aspect = Font_FontAspect(atoi(argv[13]));
 
   // Text font
   TCollection_AsciiString font;
@@ -3251,10 +3253,10 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
   }
   else if (argc < 3)
   {
-    di << "Use: " << argv[0] << " Name TypeOfArray [EnableVBO={0 | 1}]"
+    di << "Use: " << argv[0] << " Name TypeOfArray"
        << " [vertex] ... [bounds] ... [edges]\n"
        << "  TypeOfArray={ points | segments | polylines | triangles |\n"
-       << "                trianglefan | trianglestrips | quads |\n"
+       << "                trianglefans | trianglestrips | quads |\n"
        << "                quadstrips | polygons }\n"
        << "  vertex={ 'v' x y z [normal={ 'n' nx ny nz }] [color={ 'c' r g b }]"
        << " [texel={ 't' tx ty }] } \n"
@@ -3264,20 +3266,16 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
   }
 
   // read the arguments
-  TCollection_AsciiString aName (argv[1]);
-  TCollection_AsciiString anArrayType (argv[2]);
-  
-  // is argument list has an vbo flag
-  Standard_Boolean hasFlagVbo = Standard_False;
-  if (isdigit (argv[3][0]) && atoi (argv[3]) >= 0 && atoi (argv[3]) <= 1)
-    hasFlagVbo = Standard_True;
+  Standard_Integer aArgIndex = 1;
+  TCollection_AsciiString aName (argv[aArgIndex++]);
+  TCollection_AsciiString anArrayType (argv[aArgIndex++]);
+  const Standard_Integer anArgsFrom = aArgIndex;
 
   // parse number of verticies, bounds, edges
   Standard_Integer aVertexNum = 0, aBoundNum = 0, aEdgeNum = 0;
   Standard_Boolean hasVColors, hasBColors, hasNormals, hasInfos, hasTexels;
   hasVColors = hasNormals = hasBColors = hasInfos = hasTexels = Standard_False;
 
-  Standard_Integer aArgIndex = (hasFlagVbo) ? 4 : 3;
   TCollection_AsciiString aCommand;
   while (aArgIndex < argc)
   {
@@ -3375,7 +3373,7 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
   }
 
   // parse an array of primitives
-  aArgIndex = (hasFlagVbo) ? 4 : 3;
+  aArgIndex = anArgsFrom;
   while (aArgIndex < argc)
   {
     aCommand = argv[aArgIndex];
@@ -3436,17 +3434,6 @@ static int VDrawPArray (Draw_Interpretor& di, Standard_Integer argc, const char*
     // unknown command
     else
       aArgIndex++;
-  }
-
-  if (hasFlagVbo)
-  {
-    // enable / disable vbo
-    Handle(Graphic3d_GraphicDriver) aDriver =
-      Handle(Graphic3d_GraphicDriver)::DownCast (
-                      aContextAIS->CurrentViewer()->Device()->GraphicDriver());
-
-    if (!aDriver.IsNull())
-      aDriver->EnableVBO ((Standard_Boolean) atoi (argv[3]));
   }
 
   // create primitives array object
@@ -4260,12 +4247,12 @@ static Standard_Integer VPolygonOffset(Draw_Interpretor& di,
   }
 
   Standard_Integer aMode;
-  Standard_Real    aFactor, aUnits;
+  Standard_ShortReal    aFactor, aUnits;
   if (argc == 5)
   {
     aMode   = atoi(argv[2]);
-    aFactor = atof(argv[3]);
-    aUnits  = atof(argv[4]);
+    aFactor = (Standard_ShortReal) atof(argv[3]);
+    aUnits  = (Standard_ShortReal) atof(argv[4]);
 
     anInterObj->SetPolygonOffsets(aMode, aFactor, aUnits);
     aContext->UpdateCurrentViewer();
@@ -4294,6 +4281,123 @@ static Standard_Integer VPolygonOffset(Draw_Interpretor& di,
   std::cout << "\tFactor: " << aFactor << std::endl;
   std::cout << "\tUnits: "  << aUnits  << std::endl;
 
+  return 0;
+}
+
+//=======================================================================
+//function : VShowFaceBoundaries
+//purpose  : Set face boundaries drawing on/off for ais object
+//=======================================================================
+static Standard_Integer VShowFaceBoundary (Draw_Interpretor& di,
+                                           Standard_Integer argc,
+                                           const char ** argv)
+{
+  Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext ();
+  if (aContext.IsNull ())
+  {
+    std::cout << argv[0] << " Call 'vinit' before!\n";
+    return 1;
+  }
+
+  if ((argc != 3 && argc < 6) || argc > 8)
+  {
+    std::cout << "Usage :\n " << argv[0]
+              << " ObjectName isOn [R G B [LineWidth [LineStyle]]]\n"
+              << "   ObjectName - name of AIS interactive object. \n"
+              << "                if ObjectName = \"\", then set as default\n"
+              << "                settings for all newly displayed objects\n"
+              << "   isOn       - flag indicating whether the boundaries\n"
+              << "                should be turned on or off (can be set\n"
+              << "                to 0 (off) or 1 (on)).\n"
+              << "   R, G, B    - red, green and blue components of boundary\n"
+              << "                color in range (0 - 255).\n"
+              << "                (default is (0, 0, 0)\n"
+              << "   LineWidth  - line width\n"
+              << "                (default is 1)\n"
+              << "   LineStyle  - line fill style :\n"
+              << "                 0 - solid  \n"
+              << "                 1 - dashed \n"
+              << "                 2 - dot    \n"
+              << "                 3 - dashdot\n"
+              << "                 (default is solid)";
+    return 1;
+  }
+
+  TCollection_AsciiString aName (argv[1]);
+
+  Quantity_Parameter aRed      = 0.0;
+  Quantity_Parameter aGreen    = 0.0;
+  Quantity_Parameter aBlue     = 0.0;
+  Standard_Real      aWidth    = 1.0;
+  Aspect_TypeOfLine  aLineType = Aspect_TOL_SOLID;
+  
+  // find object
+  Handle(AIS_InteractiveObject) anInterObj;
+
+  // if name is empty - apply attributes for default aspect
+  if (!aName.IsEmpty ())
+  {
+    ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS ();
+    if (!aMap.IsBound2 (aName))
+    {
+      std::cout << "Use 'vdisplay' on " << aName << " before" << std::endl;
+      return 1;
+    }
+
+    // find interactive object
+    Handle(Standard_Transient) anObj = GetMapOfAIS ().Find2 (aName);
+    anInterObj = Handle(AIS_InteractiveObject)::DownCast (anObj);
+    if (anInterObj.IsNull ())
+    {
+      std::cout << "Not an AIS interactive object!" << std::endl;
+      return 1;
+    }
+  }
+  
+  const Handle(Prs3d_Drawer)& aDrawer = (aName.IsEmpty ()) ?
+    TheAISContext ()->DefaultDrawer () : anInterObj->Attributes ();
+
+  // turn boundaries on/off
+  Standard_Boolean isBoundaryDraw = (atoi (argv[2]) == 1);
+  aDrawer->SetFaceBoundaryDraw (isBoundaryDraw);
+  
+  // set boundary line color
+  if (argc >= 6)
+  {
+    // Text color
+    aRed   = atof (argv[3])/255.;
+    aGreen = atof (argv[4])/255.;
+    aBlue  = atof (argv[5])/255.;
+  }
+
+  // set line width
+  if (argc >= 7)
+  {
+    aWidth = (Standard_Real)atof (argv[6]);
+  }
+
+  // select appropriate line type
+  if (argc == 8)
+  {
+    switch (atoi (argv[7]))
+    {
+      case 1: aLineType = Aspect_TOL_DASH;    break;
+      case 2: aLineType = Aspect_TOL_DOT;     break;
+      case 3: aLineType = Aspect_TOL_DOTDASH; break;
+      default:
+        aLineType = Aspect_TOL_SOLID;
+    }
+  }
+
+  Quantity_Color aColor (aRed, aGreen, aBlue, Quantity_TOC_RGB);
+
+  Handle(Prs3d_LineAspect) aBoundaryAspect = 
+    new Prs3d_LineAspect (aColor, aLineType, aWidth);
+
+  aDrawer->SetFaceBoundaryAspect (aBoundaryAspect);
+
+  TheAISContext()->Redisplay (anInterObj);
+  
   return 0;
 }
 
@@ -4379,7 +4483,7 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
     __FILE__, VComputeHLR, group);
 
   theCommands.Add("vdrawparray",
-    "vdrawparray : vdrawparray Name TypeOfArray [EnableVbo=1] [vertex = { 'v' x y z [vertex_normal = { 'n' x y z }] [vertex_color = { 'c' r g b }] ] ... [bound = { 'b' vertex_count [bound_color = { 'c' r g b }] ] ... [edge = { 'e' vertex_id [edge_hidden = { 'h' }] ]",
+    "vdrawparray : vdrawparray Name TypeOfArray [vertex = { 'v' x y z [vertex_normal = { 'n' x y z }] [vertex_color = { 'c' r g b }] ] ... [bound = { 'b' vertex_count [bound_color = { 'c' r g b }] ] ... [edge = { 'e' vertex_id [edge_hidden = { 'h' }] ]",
     __FILE__,VDrawPArray,group);
 
   theCommands.Add("vconnect", 
@@ -4409,4 +4513,10 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
   theCommands.Add("vpolygonoffset",
     "vpolygonoffset : [object [mode factor units]] - sets/gets polygon offset parameters for an object, without arguments prints the default values",
     __FILE__, VPolygonOffset, group);
+
+  theCommands.Add ("vshowfaceboundary",
+    "vshowfaceboundary : ObjectName isOn (1/0) [R G B [LineWidth [LineStyle]]]"
+    "- turns on/off drawing of face boundaries for ais object "
+    "and defines boundary line style.",
+    __FILE__, VShowFaceBoundary, group);
 }

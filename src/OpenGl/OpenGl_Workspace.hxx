@@ -33,7 +33,7 @@
 #include <Aspect_Handle.hxx>
 #include <Aspect_PrintAlgo.hxx>
 #include <Graphic3d_PtrFrameBuffer.hxx>
-#include <Image_CRawBufferData.hxx>
+#include <Graphic3d_BufferType.hxx>
 
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
@@ -53,6 +53,7 @@ class OpenGl_AspectMarker;
 class OpenGl_AspectText;
 class OpenGl_FrameBuffer;
 class OpenGl_Structure;
+class Image_PixMap;
 
 //! Reprepsents window with GL context.
 //! Provides methods to render primitives and maintan GL state.
@@ -63,7 +64,8 @@ public:
   //! Main constructor - prepare GL context for specified window.
   OpenGl_Workspace (const Handle(OpenGl_Display)& theDisplay,
                     const CALL_DEF_WINDOW&        theCWindow,
-                    Aspect_RenderingContext       theGContext);
+                    Aspect_RenderingContext       theGContext,
+                    const Handle(OpenGl_Context)& theShareCtx);
 
   //! Destructor
   virtual ~OpenGl_Workspace();
@@ -126,7 +128,9 @@ public:
 
   Graphic3d_PtrFrameBuffer FBOCreate (const Standard_Integer theWidth, const Standard_Integer theHeight);
   void FBORelease (Graphic3d_PtrFrameBuffer theFBOPtr);
-  Standard_Boolean BufferDump (OpenGl_FrameBuffer *theFBOPtr, Image_CRawBufferData& theBuffer);
+  Standard_Boolean BufferDump (OpenGl_FrameBuffer*         theFBOPtr,
+                               Image_PixMap&               theImage,
+                               const Graphic3d_BufferType& theBufferType);
 
   void UseTransparency (const Standard_Boolean theFlag);
   Standard_Boolean& UseZBuffer()   { return myUseZBuffer; }
@@ -163,11 +167,11 @@ public:
 
   //// RELATED TO FONTS ////
 
-  int FindFont (const char*          theFontName,
-                const OSD_FontAspect theFontAspect,
-                const int            theBestSize = -1,
-                const float          theXScale = 1.0f,
-                const float          theYScale = 1.0f)
+  int FindFont (const char*           theFontName,
+                const Font_FontAspect theFontAspect,
+                const int             theBestSize = -1,
+                const float           theXScale = 1.0f,
+                const float           theYScale = 1.0f)
   {
     return myDisplay->FindFont (theFontName, theFontAspect, theBestSize, theXScale, theYScale);
   }

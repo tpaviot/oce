@@ -201,6 +201,7 @@ libTKTopAlgo_la_SOURCES = \
 @top_srcdir@/src/BRepClass/BRepClass_FaceClassifier.cxx \
 @top_srcdir@/src/BRepClass/BRepClass_FaceExplorer.cxx \
 @top_srcdir@/src/BRepClass/BRepClass_Intersector.cxx \
+@top_srcdir@/src/BRepClass3d/BRepClass3d.cxx \
 @top_srcdir@/src/BRepClass3d/BRepClass3d_Intersector3d.cxx \
 @top_srcdir@/src/BRepClass3d/BRepClass3d_SClassifier.cxx \
 @top_srcdir@/src/BRepClass3d/BRepClass3d_SolidClassifier.cxx \

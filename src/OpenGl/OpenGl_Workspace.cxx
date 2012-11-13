@@ -63,8 +63,9 @@ namespace
 // =======================================================================
 OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_Display)& theDisplay,
                                     const CALL_DEF_WINDOW&        theCWindow,
-                                    Aspect_RenderingContext       theGContext)
-: OpenGl_Window (theDisplay, theCWindow, theGContext),
+                                    Aspect_RenderingContext       theGContext,
+                                    const Handle(OpenGl_Context)& theShareCtx)
+: OpenGl_Window (theDisplay, theCWindow, theGContext, theShareCtx),
   myTransientList (0),
   myIsTransientOpen (Standard_False),
   myRetainMode (Standard_False),
@@ -127,24 +128,14 @@ Standard_Boolean OpenGl_Workspace::Activate()
   if (!OpenGl_Window::Activate())
     return Standard_False;
 
-  NamedStatus             = IsTextureEnabled() ? OPENGL_NS_TEXTURE : 0;
   DegenerateModel         = 0;
   SkipRatio               = 0.0f;
-  HighlightColor          = &myDefaultHighlightColor;
-  AspectLine_set          = &myDefaultAspectLine;
-  AspectLine_applied      = NULL;
-  AspectFace_set          = &myDefaultAspectFace;
-  AspectFace_applied      = NULL;
-  AspectMarker_set        = &myDefaultAspectMarker;
-  AspectMarker_applied    = NULL;
-  AspectText_set          = &myDefaultAspectText;
-  AspectText_applied      = NULL;
-  TextParam_set           = &myDefaultTextParam;
-  TextParam_applied       = NULL;
   ViewMatrix_applied      = &myDefaultMatrix;
   StructureMatrix_applied = &myDefaultMatrix;
-  PolygonOffset_applied   = NULL;
-	return Standard_True;
+
+  ResetAppliedAspect();
+
+  return Standard_True;
 }
 
 // =======================================================================
@@ -158,4 +149,30 @@ void OpenGl_Workspace::UseTransparency (const Standard_Boolean theFlag)
     myUseTransparency = theFlag;
     EraseAnimation();
   }
+}
+
+//=======================================================================
+//function : ResetAppliedAspect
+//purpose  : Sets default values of GL parameters in accordance with default aspects
+//=======================================================================
+void OpenGl_Workspace::ResetAppliedAspect()
+{
+  NamedStatus           = IsTextureEnabled() ? OPENGL_NS_TEXTURE : 0;
+  HighlightColor        = &myDefaultHighlightColor;
+  AspectLine_set        = &myDefaultAspectLine;
+  AspectLine_applied    = NULL;
+  AspectFace_set        = &myDefaultAspectFace;
+  AspectFace_applied    = NULL;
+  AspectMarker_set      = &myDefaultAspectMarker;
+  AspectMarker_applied  = NULL;
+  AspectText_set        = &myDefaultAspectText;
+  AspectText_applied    = NULL;
+  TextParam_set         = &myDefaultTextParam;
+  TextParam_applied     = NULL;
+  PolygonOffset_applied = NULL;
+
+  AspectLine(Standard_True);
+  AspectFace(Standard_True);
+  AspectMarker(Standard_True);
+  AspectText(Standard_True);
 }

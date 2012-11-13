@@ -165,6 +165,7 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/src/TopExp/TopExp_Explorer.cxx \
 @top_srcdir@/src/TopTools/TopTools.cxx \
 @top_srcdir@/src/TopTools/TopTools_LocationSet.cxx \
+@top_srcdir@/src/TopTools/TopTools_MutexForShapeProvider.cxx \
 @top_srcdir@/src/TopTools/TopTools_OrientedShapeMapHasher.cxx \
 @top_srcdir@/src/TopTools/TopTools_ShapeMapHasher.cxx \
 @top_srcdir@/src/TopTools/TopTools_ShapeSet.cxx \

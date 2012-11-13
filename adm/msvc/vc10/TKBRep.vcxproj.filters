@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9DC5019F-0537-0BB4-0AD5-7CB7D6096DEF}</UniqueIdentifier>
+      <UniqueIdentifier>{53BEB390-0B90-05EC-085A-B527D349B686}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDS">
-      <UniqueIdentifier>{108ADBC0-0369-1264-0CBB-5B5456FDE591}</UniqueIdentifier>
+      <UniqueIdentifier>{6E583035-0867-0800-1569-CF97ECFF456E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopExp">
-      <UniqueIdentifier>{EAB67D37-196B-00F2-0206-921D08B01121}</UniqueIdentifier>
+      <UniqueIdentifier>{274F530C-172C-023D-134E-C41C4A1D7923}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTools">
-      <UniqueIdentifier>{34B2CF3C-06C9-092B-11C2-D3E4051F2AA4}</UniqueIdentifier>
+      <UniqueIdentifier>{FBFDEB9D-0BB2-02FE-0434-01177FADCA3E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRep">
-      <UniqueIdentifier>{2883EBDE-07D4-0AC5-0575-E158B085AC17}</UniqueIdentifier>
+      <UniqueIdentifier>{B8CB0E11-0F90-051C-0C6B-8402D4D5C52E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLProp">
-      <UniqueIdentifier>{E51F6697-083E-022B-1721-D1D5DD2FAE6F}</UniqueIdentifier>
+      <UniqueIdentifier>{8464FA70-17D1-0C5C-0369-60464EA7C435}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAdaptor">
-      <UniqueIdentifier>{653169A8-0BDB-0E3F-083E-4D13BC4AB98B}</UniqueIdentifier>
+      <UniqueIdentifier>{4287E9EE-169A-09C0-1274-133DF84988B9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTools">
-      <UniqueIdentifier>{DB622930-05ED-077A-04EF-65139FEB4C3D}</UniqueIdentifier>
+      <UniqueIdentifier>{AF36A752-0DEC-1642-187D-BFCB1BAF8598}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +301,9 @@
       <Filter>Source files\TopTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopTools\TopTools_LocationSet.cxx">
+      <Filter>Source files\TopTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\TopTools\TopTools_MutexForShapeProvider.cxx">
       <Filter>Source files\TopTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\TopTools\TopTools_OrientedShapeMapHasher.cxx">

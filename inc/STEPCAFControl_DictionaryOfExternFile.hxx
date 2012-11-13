@@ -37,6 +37,9 @@
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
+#ifndef _Standard_Size_HeaderFile
+#include <Standard_Size.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -117,9 +120,9 @@ private:
   
   Standard_EXPORT     void SetNext(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell) ;
   
-  Standard_EXPORT     void SearchCell(const Standard_CString name,const Standard_Integer lmax,const Standard_Character car,const Standard_Integer level,Handle(STEPCAFControl_DictionaryOfExternFile)& acell,Standard_Integer& reslev,Standard_Integer& stat) const;
+  Standard_EXPORT     void SearchCell(const Standard_CString name,const Standard_Size lmax,const Standard_Character car,const Standard_Size level,Handle(STEPCAFControl_DictionaryOfExternFile)& acell,Standard_Size& reslev,Standard_Integer& stat) const;
   
-  Standard_EXPORT     void NewCell(const Standard_CString name,const Standard_Integer namlen,Handle(STEPCAFControl_DictionaryOfExternFile)& acell,const Standard_Integer reslev,const Standard_Integer stat) ;
+  Standard_EXPORT     void NewCell(const Standard_CString name,const Standard_Size namlen,Handle(STEPCAFControl_DictionaryOfExternFile)& acell,const Standard_Size reslev,const Standard_Integer stat) ;
   
   Standard_EXPORT     Standard_Boolean HasIt() const;
   

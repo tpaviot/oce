@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKCAF"
-	ProjectGUID="{FB98216C-1652-0293-010A-0E14D97AD369}"
+	ProjectGUID="{3D7CB76C-193B-0529-0728-3C1A9EF7846C}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib TKBO.lib  ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -173,7 +173,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib TKBO.lib  ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -267,7 +267,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib TKBO.lib  ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -362,7 +362,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKGeomBase.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKService.lib TKG2d.lib TKG3d.lib TKV2d.lib TKCDF.lib TKLCAF.lib TKV3d.lib TKBO.lib  ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

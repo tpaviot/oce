@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{04F2027A-1781-14D5-104E-55E016EB039C}</UniqueIdentifier>
+      <UniqueIdentifier>{D26ADF16-06E7-0CFC-0FDC-3B0E84360DAA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTColStd">
-      <UniqueIdentifier>{3A1916A4-1244-1241-0B16-FCA80F7D7FA7}</UniqueIdentifier>
+      <UniqueIdentifier>{BB3E9400-0A25-162E-023E-11B8906BF90C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{47B4E2FB-05DC-1333-0513-0E38C0AFE514}</UniqueIdentifier>
+      <UniqueIdentifier>{ABBF0E08-03F4-1297-1240-6CB19D00F30E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOP">
-      <UniqueIdentifier>{E8903235-053D-0F54-0D64-25BE77FBA6EA}</UniqueIdentifier>
+      <UniqueIdentifier>{552D92D2-14A3-011A-009C-7DD6457E5D30}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BooleanOperations">
-      <UniqueIdentifier>{8B8E4AC2-0B2D-0685-0223-3F91DF81FBEA}</UniqueIdentifier>
+      <UniqueIdentifier>{18218BF4-1552-0317-127F-F36A8DD87F2B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{C1EC8828-1539-123F-0CB0-B73195183DFA}</UniqueIdentifier>
+      <UniqueIdentifier>{84EC480B-122D-14EA-13E7-A89A512B554F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{8D16CF2D-12B0-0ABE-1979-857DB5000E72}</UniqueIdentifier>
+      <UniqueIdentifier>{EDD04B10-1802-16C0-170B-C63194E11891}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

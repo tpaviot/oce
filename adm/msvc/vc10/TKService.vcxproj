@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{22247CA8-0D6B-17D2-182F-932657BA3B63}</ProjectGuid>
+    <ProjectGuid>{8E239F3C-0E12-10B7-0CDF-4A5A045BD97B}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,10 +77,10 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -94,7 +94,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -118,10 +118,10 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKService/</AssemblerListingLocation>
@@ -135,7 +135,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -160,10 +160,10 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -177,7 +177,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -201,10 +201,10 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKService/</AssemblerListingLocation>
@@ -218,7 +218,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -641,12 +641,6 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_MarkerStyle.cxx">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect_PixMap.cxx">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
@@ -1144,6 +1138,12 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_AlienPixMap.cxx">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_AveragePixelInterpolation.cxx">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
@@ -1169,6 +1169,12 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_Convertor.cxx">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_Diff.cxx">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
@@ -1486,12 +1492,6 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_PixMap.cxx">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_TextManager.cxx">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
@@ -1553,6 +1553,18 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FontMgr.cxx">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_SystemFont.cxx">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL  %(AdditionalOptions)</AdditionalOptions>

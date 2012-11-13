@@ -40,6 +40,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Mutex_HeaderFile
+#include <Standard_Mutex.hxx>
+#endif
 #ifndef _Geom_BoundedCurve_HeaderFile
 #include <Geom_BoundedCurve.hxx>
 #endif
@@ -728,6 +731,7 @@ Standard_Real spanlenghtcache;
 Standard_Integer spanindexcache;
 Standard_Real maxderivinv;
 Standard_Boolean maxderivinvok;
+Standard_Mutex myMutex;
 
 
 };

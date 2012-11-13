@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXSDRAW"
-	ProjectGUID="{23E624FD-0C8A-08DA-0D6F-4E47B245020B}"
+	ProjectGUID="{EDF120E7-0CB3-0A99-114C-8D5E3423D557}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

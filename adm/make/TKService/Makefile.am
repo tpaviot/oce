@@ -14,7 +14,8 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/Image : @top_srcdir@/src/Image: \
 @top_srcdir@/drv/PlotMgt : @top_srcdir@/src/PlotMgt: \
 @top_srcdir@/drv/ImageUtility : @top_srcdir@/src/ImageUtility: \
-@top_srcdir@/drv/TColQuantity : @top_srcdir@/src/TColQuantity
+@top_srcdir@/drv/TColQuantity : @top_srcdir@/src/TColQuantity: \
+@top_srcdir@/drv/Font : @top_srcdir@/src/Font
 
 
 AM_CXXFLAGS = 
@@ -37,7 +38,8 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_XwLibs_INCLUDES) $(CSF_dpsLibs_INCLUDES) $(
 -I@top_srcdir@/drv/Image -I@top_srcdir@/src/Image \
 -I@top_srcdir@/drv/PlotMgt -I@top_srcdir@/src/PlotMgt \
 -I@top_srcdir@/drv/ImageUtility -I@top_srcdir@/src/ImageUtility \
--I@top_srcdir@/drv/TColQuantity -I@top_srcdir@/src/TColQuantity
+-I@top_srcdir@/drv/TColQuantity -I@top_srcdir@/src/TColQuantity \
+-I@top_srcdir@/drv/Font -I@top_srcdir@/src/Font
 
 
 lib_LTLIBRARIES=libTKService.la
@@ -182,7 +184,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Aspect/Aspect_MarkMap.cxx \
 @top_srcdir@/src/Aspect/Aspect_MarkMapEntry.cxx \
 @top_srcdir@/src/Aspect/Aspect_MarkerStyle.cxx \
-@top_srcdir@/src/Aspect/Aspect_PixMap.cxx \
 @top_srcdir@/src/Aspect/Aspect_Pixel.cxx \
 @top_srcdir@/src/Aspect/Aspect_RGBPixel.cxx \
 @top_srcdir@/src/Aspect/Aspect_RectangularGrid.cxx \
@@ -197,12 +198,16 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/CGM/cgmobin.c \
 @top_srcdir@/src/CGM/cgmochar.c \
 @top_srcdir@/src/CGM/cgmotext.c \
+@top_srcdir@/src/Font/Font_FontMgr.cxx \
+@top_srcdir@/src/Font/Font_SystemFont.cxx \
 @top_srcdir@/src/Image/Image.cxx \
+@top_srcdir@/src/Image/Image_AlienPixMap.cxx \
 @top_srcdir@/src/Image/Image_AveragePixelInterpolation.cxx \
 @top_srcdir@/src/Image/Image_BalancedPixelInterpolation.cxx \
 @top_srcdir@/src/Image/Image_BilinearPixelInterpolation.cxx \
 @top_srcdir@/src/Image/Image_ColorImage.cxx \
 @top_srcdir@/src/Image/Image_Convertor.cxx \
+@top_srcdir@/src/Image/Image_Diff.cxx \
 @top_srcdir@/src/Image/Image_Image.cxx \
 @top_srcdir@/src/Image/Image_PixMap.cxx \
 @top_srcdir@/src/Image/Image_PixelAddress.cxx \
@@ -251,7 +256,6 @@ libTKService_la_SOURCES = \
 @top_srcdir@/src/Xw/Xw_GraphicDevice.cxx \
 @top_srcdir@/src/Xw/Xw_IconBox.cxx \
 @top_srcdir@/src/Xw/Xw_MarkMap.cxx \
-@top_srcdir@/src/Xw/Xw_PixMap.cxx \
 @top_srcdir@/src/Xw/Xw_TextManager.cxx \
 @top_srcdir@/src/Xw/Xw_TypeMap.cxx \
 @top_srcdir@/src/Xw/Xw_WidthMap.cxx \

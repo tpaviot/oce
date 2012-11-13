@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{538016CF-0C31-1685-04D9-B0DFE23A8C05}</UniqueIdentifier>
+      <UniqueIdentifier>{111EAF0F-16C9-079B-1584-4A5A8D7EF52F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Viewer2dTest">
-      <UniqueIdentifier>{BEA20567-1374-15CD-1376-8D0E78B12599}</UniqueIdentifier>
+      <UniqueIdentifier>{12F04D45-1945-0DC5-1912-C0FA6D793824}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ViewerTest">
-      <UniqueIdentifier>{1B87A856-0CAA-1034-0D0A-0292DAF7447A}</UniqueIdentifier>
+      <UniqueIdentifier>{54C9E1D9-101D-11B2-05BB-15B368B58FA9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

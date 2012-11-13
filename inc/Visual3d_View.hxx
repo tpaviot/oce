@@ -106,8 +106,8 @@
 #ifndef _Aspect_TypeOfTriedronEcho_HeaderFile
 #include <Aspect_TypeOfTriedronEcho.hxx>
 #endif
-#ifndef _OSD_FontAspect_HeaderFile
-#include <OSD_FontAspect.hxx>
+#ifndef _Font_FontAspect_HeaderFile
+#include <Font_FontAspect.hxx>
 #endif
 #ifndef _Visual3d_TypeOfAnswer_HeaderFile
 #include <Visual3d_TypeOfAnswer.hxx>
@@ -136,8 +136,11 @@
 #ifndef _Graphic3d_PtrFrameBuffer_HeaderFile
 #include <Graphic3d_PtrFrameBuffer.hxx>
 #endif
-#ifndef _Image_CRawBufferData_HeaderFile
-#include <Image_CRawBufferData.hxx>
+#ifndef _Image_PixMap_HeaderFile
+#include <Image_PixMap.hxx>
+#endif
+#ifndef _Graphic3d_BufferType_HeaderFile
+#include <Graphic3d_BufferType.hxx>
 #endif
 #ifndef _Graphic3d_ExportFormat_HeaderFile
 #include <Graphic3d_ExportFormat.hxx>
@@ -348,9 +351,9 @@ public:
   //! Highlights the echo zone of the Triedron. <br>
   Standard_EXPORT     void TriedronEcho(const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
   //! Returns data of a graduated trihedron if displayed (return value is True) <br>
-  Standard_EXPORT     Standard_Boolean GetGraduatedTrihedron(TCollection_ExtendedString& xname,TCollection_ExtendedString& yname,TCollection_ExtendedString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,TCollection_AsciiString& fontOfNames,OSD_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,TCollection_AsciiString& fontOfValues,OSD_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
+  Standard_EXPORT     Standard_Boolean GetGraduatedTrihedron(TCollection_ExtendedString& xname,TCollection_ExtendedString& yname,TCollection_ExtendedString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,TCollection_AsciiString& fontOfNames,Font_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,TCollection_AsciiString& fontOfValues,Font_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
   //! Displays a graduated trihedron. <br>
-  Standard_EXPORT     void GraduatedTrihedronDisplay(const TCollection_ExtendedString& xname,const TCollection_ExtendedString& yname,const TCollection_ExtendedString& zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color& gridcolor,const Quantity_Color& xnamecolor,const Quantity_Color& ynamecolor,const Quantity_Color& znamecolor,const Quantity_Color& xcolor,const Quantity_Color& ycolor,const Quantity_Color& zcolor,const TCollection_AsciiString& fontOfNames,const OSD_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const TCollection_AsciiString& fontOfValues,const OSD_FontAspect styleOfValues,const Standard_Integer sizeOfValues) ;
+  Standard_EXPORT     void GraduatedTrihedronDisplay(const TCollection_ExtendedString& xname,const TCollection_ExtendedString& yname,const TCollection_ExtendedString& zname,const Standard_Boolean xdrawname,const Standard_Boolean ydrawname,const Standard_Boolean zdrawname,const Standard_Boolean xdrawvalues,const Standard_Boolean ydrawvalues,const Standard_Boolean zdrawvalues,const Standard_Boolean drawgrid,const Standard_Boolean drawaxes,const Standard_Integer nbx,const Standard_Integer nby,const Standard_Integer nbz,const Standard_Integer xoffset,const Standard_Integer yoffset,const Standard_Integer zoffset,const Standard_Integer xaxisoffset,const Standard_Integer yaxisoffset,const Standard_Integer zaxisoffset,const Standard_Boolean xdrawtickmarks,const Standard_Boolean ydrawtickmarks,const Standard_Boolean zdrawtickmarks,const Standard_Integer xtickmarklength,const Standard_Integer ytickmarklength,const Standard_Integer ztickmarklength,const Quantity_Color& gridcolor,const Quantity_Color& xnamecolor,const Quantity_Color& ynamecolor,const Quantity_Color& znamecolor,const Quantity_Color& xcolor,const Quantity_Color& ycolor,const Quantity_Color& zcolor,const TCollection_AsciiString& fontOfNames,const Font_FontAspect styleOfNames,const Standard_Integer sizeOfNames,const TCollection_AsciiString& fontOfValues,const Font_FontAspect styleOfValues,const Standard_Integer sizeOfValues) ;
   //! Erases a graduated trihedron from the view. <br>
   Standard_EXPORT     void GraduatedTrihedronErase() ;
   //! Returns the value of the default window background. <br>
@@ -502,7 +505,7 @@ public:
   //! Change offscreen FBO viewport. <br>
   Standard_EXPORT     void FBOChangeViewport(Graphic3d_PtrFrameBuffer& fboPtr,const Standard_Integer width,const Standard_Integer height) ;
   //! Dump active rendering buffer into specified memory buffer. <br>
-  Standard_EXPORT     Standard_Boolean BufferDump(Image_CRawBufferData& buffer) ;
+  Standard_EXPORT     Standard_Boolean BufferDump(Image_PixMap& theImage,const Graphic3d_BufferType& theBufferType) ;
   //! turns on/off opengl lighting, currently used in triedron displaying <br>
   Standard_EXPORT     void EnableGLLight(const Standard_Boolean enable) const;
   //! returns the current state of the gl lighting <br>

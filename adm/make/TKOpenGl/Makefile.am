@@ -11,7 +11,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(CSF_FREETYPE_INCLUDES) $(CSF_FTGL_INCLUDES) $(CSF_GL2PS_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(CSF_OpenGlLibs_INCLUDES) $(CSF_FREETYPE_INCLUDES) $(CSF_FTGL_INCLUDES) $(CSF_GL2PS_INCLUDES) $(CSF_user32_INCLUDES) $(CSF_gdi32_INCLUDES) $(CSF_AviLibs_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/OpenGl -I@top_srcdir@/src/OpenGl
 
@@ -22,7 +22,7 @@ libTKOpenGl_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKernel/libTKernel.la \
 ../TKService/libTKService.la \
 ../TKV3d/libTKV3d.la \
-$(CSF_OpenGlLibs_LIB) $(CSF_FREETYPE_LIB) $(CSF_FTGL_LIB) $(CSF_GL2PS_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) 
+$(CSF_OpenGlLibs_LIB) $(CSF_FREETYPE_LIB) $(CSF_FTGL_LIB) $(CSF_GL2PS_LIB) $(CSF_user32_LIB) $(CSF_gdi32_LIB) $(CSF_AviLibs_LIB) 
 
 libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_AVIWriter.cxx \
@@ -54,6 +54,7 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_GraphicDriver_print.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Group.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ImageBox.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_IndexBuffer.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_LayerList.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Marker.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_MarkerSet.cxx \
@@ -64,13 +65,13 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_PrinterContext.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PriorityList.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Resource.cxx \
-@top_srcdir@/src/OpenGl/OpenGl_ResourceCleaner.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ResourceTexture.cxx \
-@top_srcdir@/src/OpenGl/OpenGl_ResourceVBO.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Structure.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Text.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_TextureBox.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_TextureBufferArb.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Trihedron.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_VertexBuffer.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_View.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_View_1.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_View_2.cxx \

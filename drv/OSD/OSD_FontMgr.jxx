@@ -1,3 +1,0 @@
-#ifndef _OSD_FontMgr_HeaderFile
-#include <OSD_FontMgr.hxx>
-#endif

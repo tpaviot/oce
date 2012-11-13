@@ -223,7 +223,7 @@ void NIS_Surface::Init (const TopoDS_Shape& theShape,
     myNEdges = 0;
 
     // The second loop: copy all nodes and triangles face-by-face
-    const Standard_Real eps2 = Precision::Confusion()*Precision::Confusion();
+    const Standard_Real eps2 = Precision::SquareConfusion();
     Standard_Integer nNodes (0), nTriangles (0);
     for (fexp.ReInit(); fexp.More(); fexp.Next())
     {
@@ -486,7 +486,7 @@ void  NIS_Surface::SetDisplayMode (const NIS_Surface::DisplayMode theMode)
       isUpdate = Standard_True;
     }
   }
-  if (isUpdate && GetDrawer()) {
+  if (isUpdate && !GetDrawer().IsNull()) {
     const Handle(NIS_SurfaceDrawer) aDrawer =
       static_cast<NIS_SurfaceDrawer *>(DefaultDrawer(0L));
     aDrawer->Assign (GetDrawer());

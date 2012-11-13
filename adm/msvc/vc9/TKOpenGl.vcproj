@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{737B2FD9-10A4-046F-15E3-581243171D9C}"
+	ProjectGUID="{FAFD9DA2-042E-0F1F-012F-135D5F574926}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib ftgl_dynamic_MTD.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -173,7 +173,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib ftgl_dynamic_MTD.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -267,7 +267,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib ftgl_dynamic_MTD.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -362,7 +362,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib ftgl_dynamic_MTD.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKService.lib TKV3d.lib opengl32.lib glu32.lib user32.lib gdi32.lib ws2_32.lib vfw32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKOpenGl.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -493,6 +493,9 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_ImageBox.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
 				</File>
 				<File
@@ -523,13 +526,7 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_ResourceCleaner.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_ResourceTexture.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_ResourceVBO.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
@@ -541,7 +538,13 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_TextureBox.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_TextureBufferArb.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Trihedron.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_VertexBuffer.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_View.cxx">

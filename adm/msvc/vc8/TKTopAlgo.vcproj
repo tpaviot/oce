@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKTopAlgo"
-	ProjectGUID="{D977E424-0C76-038F-190D-F3457B569D99}"
+	ProjectGUID="{DC9441C8-0627-0D71-12AC-C4461CD6FD13}"
 	>
 	<Platforms>
 		<Platform
@@ -830,6 +830,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\BRepClass3d\BRepClass3d_SolidPassiveClassifier_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepClass3d\BRepClass3d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepClass3d\BRepClass3d_Intersector3d.cxx">

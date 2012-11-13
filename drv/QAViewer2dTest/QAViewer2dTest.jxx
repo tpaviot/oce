@@ -1,0 +1,6 @@
+#ifndef _Draw_Interpretor_HeaderFile
+#include <Draw_Interpretor.hxx>
+#endif
+#ifndef _QAViewer2dTest_HeaderFile
+#include <QAViewer2dTest.hxx>
+#endif

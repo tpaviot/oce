@@ -118,8 +118,11 @@
 #ifndef _Graphic3d_PtrFrameBuffer_HeaderFile
 #include <Graphic3d_PtrFrameBuffer.hxx>
 #endif
-#ifndef _Image_CRawBufferData_HeaderFile
-#include <Image_CRawBufferData.hxx>
+#ifndef _Image_PixMap_HeaderFile
+#include <Image_PixMap.hxx>
+#endif
+#ifndef _Graphic3d_BufferType_HeaderFile
+#include <Graphic3d_BufferType.hxx>
 #endif
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
@@ -418,7 +421,7 @@ public:
   //! Change offscreen FBO viewport. <br>
   Standard_EXPORT   virtual  void FBOChangeViewport(const Graphic3d_CView& view,Graphic3d_PtrFrameBuffer& fboPtr,const Standard_Integer width,const Standard_Integer height)  = 0;
   //! Dump active rendering buffer into specified memory buffer. <br>
-  Standard_EXPORT   virtual  Standard_Boolean BufferDump(const Graphic3d_CView& view,Image_CRawBufferData& buffer)  = 0;
+  Standard_EXPORT   virtual  Standard_Boolean BufferDump(const Graphic3d_CView& theCView,Image_PixMap& theImage,const Graphic3d_BufferType& theBufferType)  = 0;
   //! call_togl_gllight <br>
   Standard_EXPORT   virtual  void SetGLLightEnabled(const Graphic3d_CView& view,const Standard_Boolean isEnabled) const = 0;
   //! call_togl_isgllight <br>

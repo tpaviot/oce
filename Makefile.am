@@ -4,7 +4,7 @@ SUBDIRS = adm/make
 
 VPATH = @srcdir@ @top_srcdir@/make: @top_srcdir@/adm/make:
 
-FoundationClasses_PKGS = UnitsAPI OS
+FoundationClasses_PKGS = OS UnitsAPI
 
 if ENABLE_FOC
   FoundationClasses_DIRS = $(FoundationClasses_PKGS)

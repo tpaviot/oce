@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B0B90F14-0CDC-0B70-0267-A982C6C8B02C}</UniqueIdentifier>
+      <UniqueIdentifier>{EABB47FA-0182-04B8-083F-AEB00FA8C13D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SWDRAW">
-      <UniqueIdentifier>{A64C656E-0232-0D35-1899-E86695A6D5B1}</UniqueIdentifier>
+      <UniqueIdentifier>{26C82431-09E4-1563-04E5-9620F14CE66C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAW">
-      <UniqueIdentifier>{1784EF61-0CE7-04EB-0EF8-DEEA5FED26CF}</UniqueIdentifier>
+      <UniqueIdentifier>{ABCA74A7-1537-079C-1919-CE450C171D65}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWIGES">
-      <UniqueIdentifier>{8EF79752-13B8-03BD-06A1-3AEDD2D3ACFD}</UniqueIdentifier>
+      <UniqueIdentifier>{8AEFAE87-0B1D-05B4-00CB-2D23B5836E53}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTEP">
-      <UniqueIdentifier>{024C529E-0C17-0677-1875-C8904D79CFF2}</UniqueIdentifier>
+      <UniqueIdentifier>{C030D9AC-0A81-0371-10D3-AB8ECA2B7A60}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSDRAWSTLVRML">
-      <UniqueIdentifier>{431D36E3-0950-126A-08BC-C5A2BF3FC426}</UniqueIdentifier>
+      <UniqueIdentifier>{6F3A5AA6-0393-1625-168F-DF76E6F706E6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -25,6 +25,9 @@
 #ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
 #endif
+#ifndef _Geom2dHatch_Hatcher_HeaderFile
+#include <Geom2dHatch_Hatcher.hxx>
+#endif
 #ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
 #endif

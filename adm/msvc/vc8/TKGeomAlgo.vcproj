@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomAlgo"
-	ProjectGUID="{CB5EC32B-0A4C-10A3-079F-59DB294394BA}"
+	ProjectGUID="{41E8198E-1906-05E6-1571-66B459CA7939}"
 	>
 	<Platforms>
 		<Platform

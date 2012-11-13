@@ -90,6 +90,8 @@
 #include <IGESData_IGESModel.hxx>
 #include <IGESData_IGESEntity.hxx>
 #include <V3d_View.hxx>
+#include <BRepFeat_SplitShape.hxx>
+#include <BRepAlgoAPI_Section.hxx>
 
 #include <tcl.h>
 
@@ -724,7 +726,7 @@ static Standard_Integer OCC297 (Draw_Interpretor& di,Standard_Integer /*argc*/, 
 static Standard_Integer OCC305 (Draw_Interpretor& di,Standard_Integer argc, const char ** argv )
 
 {
-  if (argc =! 2)
+  if (argc != 2)
   {
     di <<"Usage : " << argv[0] << " file"<<"\n";
     return 1;
@@ -1895,7 +1897,7 @@ static Standard_Integer OCC909 (Draw_Interpretor& di, Standard_Integer argc, con
 //=======================================================================
 static Standard_Integer OCC921 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
-  if (argc =! 2)
+  if (argc != 2)
   {
     di <<"Usage : " << argv[0] << " face"<<"\n";
     return 1;
@@ -1918,7 +1920,7 @@ static Standard_Integer OCC921 (Draw_Interpretor& di, Standard_Integer argc, con
 //=======================================================================
 static Standard_Integer OCC902(Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
 {
-  if (argc =! 2)
+  if (argc != 2)
   {
     di <<"Usage : " << argv[0] << " expression"<<"\n";
     return 1;
@@ -2211,8 +2213,8 @@ static Standard_Integer OCC1487 (Draw_Interpretor& di, Standard_Integer argc, co
     }
   } else {
     //BRepPrimAPI_MakeCylinder o_mc2 (gp_Ax2 (gp_Pnt(978.34936, -50.0, 127.5),gp_Dir(sin(M_PI/3), 0.0, 0.5)), 5, 150);
-    gp_Dir myDir_mc2(-sin(M_PI/3), 0.0, 0.5);
-    gp_Pnt myPnt_mc2(21.65064, -50.0, 127.5);
+    gp_Dir myDir_mc2(sin(M_PI/3), 0.0, 0.5);
+    gp_Pnt myPnt_mc2(978.34936, -50.0, 127.5);
     gp_Ax2 myAx2_mc2(myPnt_mc2, myDir_mc2);
     BRepPrimAPI_MakeCylinder o_mc2 (myAx2_mc2, 5, 150);
 
@@ -5280,6 +5282,54 @@ Standard_Integer OCC22736 (Draw_Interpretor& di, Standard_Integer argc, const ch
   return 0;
 }
 
+Standard_Integer OCC23429(Draw_Interpretor& di,
+                          Standard_Integer narg, const char** a)
+{
+  if (narg < 4) return 1;
+  
+  TopoDS_Shape aShape = DBRep::Get(a[2]);
+  if (aShape.IsNull()) return 1;
+  
+  BRepFeat_SplitShape Spls(aShape);
+  Spls.SetCheckInterior(Standard_False);
+
+  TopoDS_Shape aTool = DBRep::Get(a[3]);
+
+  BRepAlgoAPI_Section Builder(aShape, aTool, Standard_False);
+  Builder.ComputePCurveOn1(Standard_True);
+  if (narg == 5)
+    Builder.Approximation(Standard_True); 
+  Builder.Build();
+  TopoDS_Shape aSection = Builder.Shape();
+
+  TopExp_Explorer ExpSec(aSection, TopAbs_EDGE);
+  for (; ExpSec.More(); ExpSec.Next())
+  {
+    TopoDS_Edge anEdge = TopoDS::Edge(ExpSec.Current());
+    Handle(Geom2d_Curve) thePCurve;
+    Handle(Geom_Surface) theSurface;
+    TopLoc_Location theLoc;
+    Standard_Real fpar, lpar;
+    BRep_Tool::CurveOnSurface(anEdge, thePCurve, theSurface, theLoc, fpar, lpar);
+    TopoDS_Face aFace;
+    TopExp_Explorer ExpShape(aShape, TopAbs_FACE);
+    for (; ExpShape.More(); ExpShape.Next())
+    {
+      aFace = TopoDS::Face(ExpShape.Current());
+      TopLoc_Location aLoc;
+      Handle(Geom_Surface) aSurface = BRep_Tool::Surface(aFace, aLoc);
+      if (aSurface == theSurface && aLoc == theLoc)
+        break;
+    }
+    Spls.Add(anEdge, aFace);
+  }
+
+  TopoDS_Shape Result = Spls.Shape();
+  DBRep::Set(a[1], Result);
+
+  return 0;
+}
+
 #include <BOPTColStd_CArray1OfInteger.hxx>
 //=======================================================================
 //function : DumpArray
@@ -5310,7 +5360,7 @@ Standard_Integer bcarray (Draw_Interpretor& di, Standard_Integer argc, const cha
     return 1;
   }
 
-  Standard_Integer i, aNb, aBL;
+  Standard_Integer i, aBL;
   BOPTColStd_CArray1OfInteger aC;
   //
   aBL=100000;
@@ -5328,6 +5378,82 @@ Standard_Integer bcarray (Draw_Interpretor& di, Standard_Integer argc, const cha
   DumpArray(aC, di);
   //
   return 0;
+}
+
+#include <ExprIntrp_GenExp.hxx>
+Standard_Integer CR23403 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
+{
+	
+  if (argc != 2) {
+    di << "Usage : " << argv[0] << " string\n";
+    return 1;
+  }
+
+  Standard_CString aString = argv[1];
+  Handle(ExprIntrp_GenExp) myExpr = ExprIntrp_GenExp::Create();
+  try {
+    OCC_CATCH_SIGNALS
+    myExpr->Process( aString );
+  }
+  catch(Standard_Failure) {
+    Handle(Standard_Failure) aFail = Standard_Failure::Caught();
+    di << "Exception : " << aFail->GetMessageString() << "\n";
+  }
+
+  return 0;
+}
+
+#include <Quantity_NameOfColor.hxx>
+#include <TopAbs_ShapeEnum.hxx>
+Standard_Integer CR23234 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
+{
+  // Check the command arguments
+  if (argc != 2)
+  {
+    di <<"Error: "<<argv[0]<<" - invalid number of arguments"<< "\n";
+    di << "Usage : " << argv[0] << " mode(0/1)\n";
+    return 1; //TCL_ERROR
+  }
+
+  const Standard_Integer aMode = atoi(argv[1]);
+
+  //===================================================================
+
+  Handle(AIS_InteractiveContext) aisContext = ViewerTest::GetAISContext();
+  if (aisContext.IsNull())
+  {
+    di <<"Error: call 'vinit' first"<< "\n";
+    return 1; //TCL_ERROR
+  }
+
+  if (aisContext->HasOpenedContext())
+  {
+    aisContext->CloseAllContexts();
+    aisContext->RemoveAll(false);
+    aisContext->EraseSelected(false, false);
+  }
+  aisContext->EraseAll(false,false);
+  Handle(Geom_Axis2Placement) trihedronAxis = new Geom_Axis2Placement(gp::XOY());
+  Handle(AIS_Trihedron) trihedron = new AIS_Trihedron(trihedronAxis);
+  if (aMode)
+    trihedron->UnsetSelectionMode(); // this line causes an exception on OpenLocalContext
+  trihedron->SetSize(20);
+  trihedron->SetColor(Quantity_NOC_GRAY30);
+  trihedron->SetArrowColor(Quantity_NOC_GRAY30);
+  trihedron->SetTextColor(Quantity_NOC_DARKSLATEBLUE);
+
+  //trihedron->SetColor(Quantity_NameOfColor::Quantity_NOC_GRAY30);
+  //trihedron->SetArrowColor(Quantity_NameOfColor::Quantity_NOC_GRAY30);
+  //trihedron->SetTextColor(Quantity_NameOfColor::Quantity_NOC_DARKSLATEBLUE);
+
+
+  aisContext->Display(trihedron, true);
+  aisContext->OpenLocalContext();
+  //aisContext->ActivateStandardMode(TopAbs_ShapeEnum::TopAbs_EDGE);
+  aisContext->ActivateStandardMode(TopAbs_EDGE);
+  aisContext->SetSensitivity(8);
+
+  return 0; //TCL_OK
 }
 
 void QABugs::Commands_11(Draw_Interpretor& theCommands) {
@@ -5439,5 +5565,8 @@ void QABugs::Commands_11(Draw_Interpretor& theCommands) {
   theCommands.Add("bcarray", "bcarray", __FILE__, bcarray, group);
   theCommands.Add("OCC22762", "OCC22762 x1 y1 z1 x2 y2 z3", __FILE__, OCC22762, group);
   theCommands.Add("OCC22558", "OCC22558 x_vec y_vec z_vec x_dir y_dir z_dit x_pnt y_pnt z_pnt", __FILE__, OCC22558, group);
+  theCommands.Add("CR23403", "CR23403 string", __FILE__, CR23403, group);
+  theCommands.Add("OCC23429", "OCC23429 res shape tool [appr]", __FILE__, OCC23429, group);
+  theCommands.Add("CR23234", "CR23234 mode(0/1)", __FILE__, CR23234, group);
   return;
 }

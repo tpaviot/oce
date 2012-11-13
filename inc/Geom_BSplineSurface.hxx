@@ -43,6 +43,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Mutex_HeaderFile
+#include <Standard_Mutex.hxx>
+#endif
 #ifndef _Geom_BoundedSurface_HeaderFile
 #include <Geom_BoundedSurface.hxx>
 #endif
@@ -1010,6 +1013,7 @@ Standard_Integer validcache;
 Standard_Real umaxderivinv;
 Standard_Real vmaxderivinv;
 Standard_Boolean maxderivinvok;
+Standard_Mutex myMutex;
 
 
 };

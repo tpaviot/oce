@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -53,18 +56,7 @@ class TopTools_ListOfShape;
 class BRepFeat_SplitShape  : public BRepBuilderAPI_MakeShape {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Empty constructor <br>
       BRepFeat_SplitShape();
@@ -72,6 +64,9 @@ public:
       BRepFeat_SplitShape(const TopoDS_Shape& S);
   //! Initializes the process on the shape <S>. <br>
         void Init(const TopoDS_Shape& S) ;
+  //! Set the flag of check internal intersections <br>
+//!          default value is True (to check) <br>
+        void SetCheckInterior(const Standard_Boolean ToCheckInterior) ;
   //! Adds the wire <W> on the face <F>. <br>
 //! Raises NoSuchObject  if <F> does not belong to the original shape. <br>
         void Add(const TopoDS_Wire& W,const TopoDS_Face& F) ;

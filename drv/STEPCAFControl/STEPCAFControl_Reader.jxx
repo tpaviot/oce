@@ -43,6 +43,15 @@
 #ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
 #endif
+#ifndef _StepRepr_RepresentationItem_HeaderFile
+#include <StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _Transfer_TransientProcess_HeaderFile
+#include <Transfer_TransientProcess.hxx>
+#endif
+#ifndef _StepShape_ConnectedFaceSet_HeaderFile
+#include <StepShape_ConnectedFaceSet.hxx>
+#endif
 #ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <StepRepr_NextAssemblyUsageOccurrence.hxx>
 #endif

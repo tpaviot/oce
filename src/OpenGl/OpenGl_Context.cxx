@@ -25,7 +25,10 @@
 #include <OpenGl_Context.hxx>
 
 #include <OpenGl_ArbVBO.hxx>
+#include <OpenGl_ArbTBO.hxx>
+#include <OpenGl_ArbIns.hxx>
 #include <OpenGl_ExtFBO.hxx>
+#include <OpenGl_ExtGS.hxx>
 #include <OpenGl_GlCore20.hxx>
 
 #include <Standard_ProgramError.hxx>
@@ -56,6 +59,11 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_Context, Standard_Transient)
 //! Make record shorter to retrieve function pointer using variable with same name
 #define FindProcShort(theStruct, theFunc) FindProc(#theFunc, theStruct->theFunc)
 
+namespace
+{
+  static const Handle(OpenGl_Resource) NULL_GL_RESOURCE;
+};
+
 // =======================================================================
 // function : OpenGl_Context
 // purpose  :
@@ -67,9 +75,14 @@ OpenGl_Context::OpenGl_Context()
   core15 (NULL),
   core20 (NULL),
   arbVBO (NULL),
+  arbTBO (NULL),
+  arbIns (NULL),
   extFBO (NULL),
+  extGS  (NULL),
   atiMem (Standard_False),
   nvxMem (Standard_False),
+  mySharedResources (new OpenGl_ResourcesMap()),
+  myReleaseQueue (new OpenGl_ResourcesQueue()),
   myGlLibHandle (NULL),
   myGlCore20 (NULL),
   myGlVerMajor (0),
@@ -97,9 +110,62 @@ OpenGl_Context::OpenGl_Context()
 // =======================================================================
 OpenGl_Context::~OpenGl_Context()
 {
+  // release clean up queue
+  ReleaseDelayed();
+
+  // release shared resources if any
+  if (((const Handle(Standard_Transient)& )mySharedResources)->GetRefCount() <= 1)
+  {
+    for (NCollection_DataMap<TCollection_AsciiString, Handle(OpenGl_Resource)>::Iterator anIter (*mySharedResources);
+         anIter.More(); anIter.Next())
+    {
+      anIter.Value()->Release (this);
+    }
+  }
+  mySharedResources.Nullify();
+
   delete myGlCore20;
   delete arbVBO;
   delete extFBO;
+  delete extGS;
+}
+
+// =======================================================================
+// function : Share
+// purpose  :
+// =======================================================================
+void OpenGl_Context::Share (const Handle(OpenGl_Context)& theShareCtx)
+{
+  if (!theShareCtx.IsNull())
+  {
+    mySharedResources = theShareCtx->mySharedResources;
+    myReleaseQueue    = theShareCtx->myReleaseQueue;
+  }
+}
+
+// =======================================================================
+// function : IsCurrent
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_Context::IsCurrent() const
+{
+#if (defined(_WIN32) || defined(__WIN32__))
+  if (myWindowDC == NULL || myGContext == NULL)
+  {
+    return Standard_False;
+  }
+  return (( (HDC )myWindowDC == wglGetCurrentDC())
+      && ((HGLRC )myGContext == wglGetCurrentContext()));
+#else
+  if (myDisplay == NULL || myWindow == 0 || myGContext == 0)
+  {
+    return Standard_False;
+  }
+
+  return (   ((Display* )myDisplay  == glXGetCurrentDisplay())
+       &&  ((GLXContext )myGContext == glXGetCurrentContext())
+       && ((GLXDrawable )myWindow   == glXGetCurrentDrawable()));
+#endif
 }
 
 // =======================================================================
@@ -109,17 +175,44 @@ OpenGl_Context::~OpenGl_Context()
 Standard_Boolean OpenGl_Context::MakeCurrent()
 {
 #if (defined(_WIN32) || defined(__WIN32__))
-  if (myWindowDC == NULL || myGContext == NULL ||
-      !wglMakeCurrent ((HDC )myWindowDC, (HGLRC )myGContext))
+  if (myWindowDC == NULL || myGContext == NULL)
   {
-    //GLenum anErrCode = glGetError();
-    //const GLubyte* anErrorString = gluErrorString (anErrCode);
-    //std::cerr << "wglMakeCurrent() failed: " << anErrCode << " " << anErrorString << "\n";
+    Standard_ProgramError_Raise_if (myIsInitialized, "OpenGl_Context::Init() should be called before!");
+    return Standard_False;
+  }
+
+  // technically it should be safe to activate already bound GL context
+  // however some drivers (Intel etc.) may FAIL doing this for unknown reason
+  if (IsCurrent())
+  {
+    return Standard_True;
+  }
+  else if (wglMakeCurrent ((HDC )myWindowDC, (HGLRC )myGContext) != TRUE)
+  {
+    // notice that glGetError() couldn't be used here!
+    wchar_t* aMsgBuff = NULL;
+    DWORD anErrorCode = GetLastError();
+    FormatMessageW (FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+                    NULL, anErrorCode, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (wchar_t* )&aMsgBuff, 0, NULL);
+    if (aMsgBuff != NULL)
+    {
+      std::wcerr << L"OpenGL interface: wglMakeCurrent() failed. " << aMsgBuff << L" (" << int(anErrorCode) << L")\n";
+      LocalFree (aMsgBuff);
+    }
+    else
+    {
+      std::wcerr << L"OpenGL interface: wglMakeCurrent() failed with #" << int(anErrorCode) << L" error code\n";
+    }
     return Standard_False;
   }
 #else
-  if (myDisplay == NULL || myWindow == 0 || myGContext == 0 ||
-      !glXMakeCurrent ((Display* )myDisplay, (GLXDrawable )myWindow, (GLXContext )myGContext))
+  if (myDisplay == NULL || myWindow == 0 || myGContext == 0)
+  {
+    Standard_ProgramError_Raise_if (myIsInitialized, "OpenGl_Context::Init() should be called before!");
+    return Standard_False;
+  }
+
+  if (!glXMakeCurrent ((Display* )myDisplay, (GLXDrawable )myWindow, (GLXContext )myGContext))
   {
     // if there is no current context it might be impossible to use glGetError() correctly
     //std::cerr << "glXMakeCurrent() failed!\n";
@@ -127,6 +220,26 @@ Standard_Boolean OpenGl_Context::MakeCurrent()
   }
 #endif
   return Standard_True;
+}
+
+// =======================================================================
+// function : SwapBuffers
+// purpose  :
+// =======================================================================
+void OpenGl_Context::SwapBuffers()
+{
+#if (defined(_WIN32) || defined(__WIN32__))
+  if ((HDC )myWindowDC != NULL)
+  {
+    ::SwapBuffers ((HDC )myWindowDC);
+    glFlush();
+  }
+#else
+  if ((Display* )myDisplay != NULL)
+  {
+    glXSwapBuffers ((Display* )myDisplay, (GLXDrawable )myWindow);
+  }
+#endif
 }
 
 // =======================================================================
@@ -251,7 +364,7 @@ Standard_Boolean OpenGl_Context::Init (const Aspect_Drawable         theWindow,
 #else
   myDisplay  = theDisplay;
 #endif
-  if (myGContext == NULL)
+  if (myGContext == NULL || !MakeCurrent())
   {
     return Standard_False;
   }
@@ -374,6 +487,31 @@ void OpenGl_Context::init()
     }
   }
 
+  // initialize TBO extension (ARB)
+  if (CheckExtension ("GL_ARB_texture_buffer_object"))
+  {
+    arbTBO = new OpenGl_ArbTBO();
+    memset (arbTBO, 0, sizeof(OpenGl_ArbTBO)); // nullify whole structure
+    if (!FindProcShort (arbTBO, glTexBufferARB))
+    {
+      delete arbTBO;
+      arbTBO = NULL;
+    }
+  }
+
+  // initialize hardware instancing extension (ARB)
+  if (CheckExtension ("GL_ARB_draw_instanced"))
+  {
+    arbIns = new OpenGl_ArbIns();
+    memset (arbIns, 0, sizeof(OpenGl_ArbIns)); // nullify whole structure
+    if (!FindProcShort (arbIns, glDrawArraysInstancedARB)
+     || !FindProcShort (arbIns, glDrawElementsInstancedARB))
+    {
+      delete arbIns;
+      arbIns = NULL;
+    }
+  }
+
   // initialize FBO extension (EXT)
   if (CheckExtension ("GL_EXT_framebuffer_object"))
   {
@@ -392,6 +530,18 @@ void OpenGl_Context::init()
     {
       delete extFBO;
       extFBO = NULL;
+    }
+  }
+
+  // initialize GS extension (EXT)
+  if (CheckExtension ("GL_EXT_geometry_shader4"))
+  {
+    extGS = new OpenGl_ExtGS();
+    memset (extGS, 0, sizeof(OpenGl_ExtGS)); // nullify whole structure
+    if (!FindProcShort (extGS, glProgramParameteriEXT))
+    {
+      delete extGS;
+      extGS = NULL;
     }
   }
 
@@ -724,4 +874,71 @@ TCollection_AsciiString OpenGl_Context::MemoryInfo() const
     }
   }
   return anInfo;
+}
+
+
+// =======================================================================
+// function : GetResource
+// purpose  :
+// =======================================================================
+const Handle(OpenGl_Resource)& OpenGl_Context::GetResource (const TCollection_AsciiString& theKey) const
+{
+  return mySharedResources->IsBound (theKey) ? mySharedResources->Find (theKey) : NULL_GL_RESOURCE;
+}
+
+// =======================================================================
+// function : ShareResource
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_Context::ShareResource (const TCollection_AsciiString& theKey,
+                                                const Handle(OpenGl_Resource)& theResource)
+{
+  if (theKey.IsEmpty() || theResource.IsNull())
+  {
+    return Standard_False;
+  }
+  return mySharedResources->Bind (theKey, theResource);
+}
+
+// =======================================================================
+// function : ReleaseResource
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ReleaseResource (const TCollection_AsciiString& theKey)
+{
+  if (!mySharedResources->IsBound (theKey))
+  {
+    return;
+  }
+  const Handle(OpenGl_Resource)& aRes = mySharedResources->Find (theKey);
+  if (aRes->GetRefCount() > 1)
+  {
+    return;
+  }
+
+  aRes->Release (this);
+  mySharedResources->UnBind (theKey);
+}
+
+// =======================================================================
+// function : DelayedRelease
+// purpose  :
+// =======================================================================
+void OpenGl_Context::DelayedRelease (Handle(OpenGl_Resource)& theResource)
+{
+  myReleaseQueue->Push (theResource);
+  theResource.Nullify();
+}
+
+// =======================================================================
+// function : ReleaseDelayed
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ReleaseDelayed()
+{
+  while (!myReleaseQueue->IsEmpty())
+  {
+    myReleaseQueue->Front()->Release (this);
+    myReleaseQueue->Pop();
+  }
 }

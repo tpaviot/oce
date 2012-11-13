@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBool"
-	ProjectGUID="{C1A91BE4-14DF-14A8-068E-AA2EF1EFD425}"
+	ProjectGUID="{B289F677-187C-1312-0D74-B5559405927B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

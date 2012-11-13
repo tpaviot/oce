@@ -34,10 +34,10 @@
 #include <Draw_Interpretor.hxx>
 #include <Draw_Appli.hxx>
 #include <TCollection_AsciiString.hxx>
-#include <Image_PixMap.hxx>
+#include <Image_AlienPixMap.hxx>
 
 extern Draw_Interpretor theCommands;
-Standard_IMPORT Standard_Boolean Draw_VirtualWindows;
+extern Standard_Boolean Draw_VirtualWindows;
 static Tcl_Interp *interp;        /* Interpreter for this application. */
 
 /*
@@ -180,7 +180,6 @@ Display*         Draw_WindowDisplay = NULL;
 Standard_Integer Draw_WindowScreen = 0;
 Colormap         Draw_WindowColorMap;
 Standard_Boolean Draw_BlackBackGround = Standard_True;
-Standard_Boolean Draw_LowWindows = Standard_False;
 
 
 // Initialization of static variables of Draw_Window
@@ -572,13 +571,6 @@ void Draw_Window::DisplayWindow()
   {
     return;
   }
-  else if (Draw_LowWindows)
-  {
-    // the window <win> will be displayed so that not to be hidden
-    // by any other window (on top)
-    XMapWindow(Draw_WindowDisplay, win);
-    XLowerWindow(Draw_WindowDisplay, win);
-  }
   else
   {
     XMapRaised(Draw_WindowDisplay, win);
@@ -725,38 +717,43 @@ Standard_Boolean Draw_Window::Save (const char* theFileName) const
     }
   }
 
-  // find the image
-  XImage* pximage = XGetImage (Draw_WindowDisplay, GetDrawable(),
-                               0, 0, winAttr.width, winAttr.height,
-                               AllPlanes, ZPixmap);
-  if (pximage == NULL)
+  XVisualInfo aVInfo;
+  if (XMatchVisualInfo (Draw_WindowDisplay, Draw_WindowScreen, 32, TrueColor, &aVInfo) == 0
+   && XMatchVisualInfo (Draw_WindowDisplay, Draw_WindowScreen, 24, TrueColor, &aVInfo) == 0)
   {
+    std::cerr << "24-bit TrueColor visual is not supported by server!\n";
     return Standard_False;
   }
 
-  if (winAttr.visual->c_class == TrueColor)
+  Image_AlienPixMap anImage;
+  bool isBigEndian = Image_PixMap::IsBigEndianHost();
+  const Standard_Size aSizeRowBytes = Standard_Size(winAttr.width) * 4;
+  if (!anImage.InitTrash (isBigEndian ? Image_PixMap::ImgRGB32 : Image_PixMap::ImgBGR32,
+                          Standard_Size(winAttr.width), Standard_Size(winAttr.height), aSizeRowBytes))
   {
-    Standard_Byte* aDataPtr = (Standard_Byte* )pximage->data;
-    Handle(Image_PixMap) anImagePixMap = new Image_PixMap (aDataPtr,
-                                                           pximage->width, pximage->height,
-                                                           pximage->bytes_per_line,
-                                                           pximage->bits_per_pixel,
-                                                           Standard_True);
-    // destroy the image
-    XDestroyImage (pximage);
-
-    // save the image
-    return anImagePixMap->Dump (theFileName);
-  }
-  else
-  {
-    std::cerr << "Visual Type not supported!";
-    // destroy the image
-    XDestroyImage (pximage);
     return Standard_False;
   }
+  anImage.SetTopDown (true);
+
+  XImage* anXImage = XCreateImage (Draw_WindowDisplay, aVInfo.visual,
+                                   32, ZPixmap, 0, (char* )anImage.ChangeData(), winAttr.width, winAttr.height, 32, int(aSizeRowBytes));
+  anXImage->bitmap_bit_order = anXImage->byte_order = (isBigEndian ? MSBFirst : LSBFirst);
+  if (XGetSubImage (Draw_WindowDisplay, GetDrawable(),
+                    0, 0, winAttr.width, winAttr.height,
+                    AllPlanes, ZPixmap, anXImage, 0, 0) == NULL)
+  {
+    anXImage->data = NULL;
+    XDestroyImage (anXImage);
+    return Standard_False;
+  }
+
+  // destroy the image
+  anXImage->data = NULL;
+  XDestroyImage (anXImage);
+
+  // save the image
+  return anImage.Save (theFileName);
 }
-
 
 //=======================================================================
 //function : ProcessEvent
@@ -954,9 +951,9 @@ static void ProcessEvents(ClientData,int)
 //======================================================
 
 
-static Standard_Boolean(*Interprete) (char*);
+static Standard_Boolean(*Interprete) (const char*);
 
-void Run_Appli(Standard_Boolean (*interprete) (char*))
+void Run_Appli(Standard_Boolean (*interprete) (const char*))
 {
   Tcl_Channel outChannel, inChannel ;
   Interprete = interprete;
@@ -1708,63 +1705,44 @@ void DrawWindow::Clear()
 /*--------------------------------------------------------*\
 |  SaveBitmap
 \*--------------------------------------------------------*/
-static Standard_Boolean SaveBitmap (HBITMAP theHBitmap,
+static Standard_Boolean SaveBitmap (HBITMAP     theHBitmap,
                                     const char* theFileName)
 {
-  // Copy data from HBITMAP
-  BITMAP aBitmap;
-
   // Get informations about the bitmap
-  GetObject (theHBitmap, sizeof(BITMAP), (LPSTR )&aBitmap);
-  Standard_Integer aWidth  = aBitmap.bmWidth;
-  Standard_Integer aHeight = aBitmap.bmHeight;
+  BITMAP aBitmap;
+  if (GetObject (theHBitmap, sizeof(BITMAP), (LPSTR )&aBitmap) == 0)
+  {
+    return Standard_False;
+  }
+
+  Image_AlienPixMap anImage;
+  const Standard_Size aSizeRowBytes = Standard_Size(aBitmap.bmWidth) * 4;
+  if (!anImage.InitTrash (Image_PixMap::ImgBGR32, Standard_Size(aBitmap.bmWidth), Standard_Size(aBitmap.bmHeight), aSizeRowBytes))
+  {
+    return Standard_False;
+  }
+  anImage.SetTopDown (false);
 
   // Setup image data
   BITMAPINFOHEADER aBitmapInfo;
   memset (&aBitmapInfo, 0, sizeof(BITMAPINFOHEADER));
-  aBitmapInfo.biSize = sizeof(BITMAPINFOHEADER);
-  aBitmapInfo.biWidth = aWidth;
-  aBitmapInfo.biHeight = aHeight; // positive means bottom-up!
-  aBitmapInfo.biPlanes = 1;
-  aBitmapInfo.biBitCount = 32;
+  aBitmapInfo.biSize        = sizeof(BITMAPINFOHEADER);
+  aBitmapInfo.biWidth       = aBitmap.bmWidth;
+  aBitmapInfo.biHeight      = aBitmap.bmHeight; // positive means bottom-up!
+  aBitmapInfo.biPlanes      = 1;
+  aBitmapInfo.biBitCount    = 32; // use 32bit for automatic word-alignment per row
   aBitmapInfo.biCompression = BI_RGB;
-
-  Standard_Integer aBytesPerLine = aWidth * 4;
-  Standard_Byte* aDataPtr = new Standard_Byte[aBytesPerLine * aHeight];
 
   // Copy the pixels
   HDC aDC = GetDC (NULL);
-  Standard_Boolean isSuccess
-    = GetDIBits (aDC,             // handle to DC
-                 theHBitmap,      // handle to bitmap
-                 0,               // first scan line to set
-                 aHeight,         // number of scan lines to copy
-                 aDataPtr,        // array for bitmap bits
-                 (LPBITMAPINFO )&aBitmapInfo, // bitmap data info
-                 DIB_RGB_COLORS   // RGB
-                 ) != 0;
-
-  if (isSuccess)
-  {
-    Handle(Image_PixMap) anImagePixMap = new Image_PixMap (aDataPtr,
-                                                           aWidth, aHeight,
-                                                           aBytesPerLine,
-                                                           aBitmapInfo.biBitCount,
-                                                           Standard_False); // bottom-up!
-
-    // Release dump memory here
-    delete[] aDataPtr;
-
-    // save the image
-    anImagePixMap->Dump (theFileName);
-  }
-  else
-  {
-    // Release dump memory
-    delete[] aDataPtr;
-  }
+  Standard_Boolean isSuccess = GetDIBits (aDC, theHBitmap,
+                                          0,                           // first scan line to set
+                                          aBitmap.bmHeight,            // number of scan lines to copy
+                                          anImage.ChangeData(),        // array for bitmap bits
+                                          (LPBITMAPINFO )&aBitmapInfo, // bitmap data info
+                                          DIB_RGB_COLORS) != 0;
   ReleaseDC (NULL, aDC);
-  return isSuccess;
+  return isSuccess && anImage.Save (theFileName);
 }
 
 /*--------------------------------------------------------*\
@@ -2028,7 +2006,7 @@ Standard_Boolean Init_Appli(HINSTANCE hInst,
   return Standard_True;
 }
 
-Standard_Boolean Draw_Interprete (char*);
+Standard_Boolean Draw_Interprete (const char*);
 
 /*--------------------------------------------------------*\
 |  readStdinThreadFunc

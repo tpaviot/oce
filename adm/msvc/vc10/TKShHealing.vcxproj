@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{838D52EB-034C-09C7-197F-31B06B35696B}</ProjectGuid>
+    <ProjectGuid>{AF8DF7B9-0EA8-13AB-13A2-285E324065D6}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -463,6 +463,8 @@
     <ClCompile Include="..\..\..\src\ShapeUpgrade\ShapeUpgrade_SplitSurfaceContinuity.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeUpgrade\ShapeUpgrade_Tool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ShapeUpgrade\ShapeUpgrade_UnifySameDomain.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\ShapeUpgrade\ShapeUpgrade_WireDivide.cxx">
     </ClCompile>

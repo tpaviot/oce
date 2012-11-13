@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,18 +47,7 @@ class AdvApp2Var_Context;
 class GeomPlate_PlateG0Criterion  : public AdvApp2Var_Criterion {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   GeomPlate_PlateG0Criterion(const TColgp_SequenceOfXY& Data,const TColgp_SequenceOfXYZ& G0Data,const Standard_Real Maximum,const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute,const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);

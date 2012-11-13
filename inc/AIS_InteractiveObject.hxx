@@ -64,12 +64,6 @@
 #ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
-#include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _Handle_PrsMgr_Presentation_HeaderFile
-#include <Handle_PrsMgr_Presentation.hxx>
-#endif
 #ifndef _Aspect_TypeOfDegenerateModel_HeaderFile
 #include <Aspect_TypeOfDegenerateModel.hxx>
 #endif
@@ -85,6 +79,9 @@
 #ifndef _Handle_Prs3d_BasicAspect_HeaderFile
 #include <Handle_Prs3d_BasicAspect.hxx>
 #endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
+#endif
 class Standard_Transient;
 class AIS_Drawer;
 class AIS_InteractiveContext;
@@ -92,8 +89,6 @@ class Quantity_Color;
 class TColStd_ListOfTransient;
 class Graphic3d_MaterialAspect;
 class TColStd_ListOfInteger;
-class PrsMgr_PresentationManager;
-class PrsMgr_Presentation;
 class Geom_Transformation;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
@@ -486,11 +481,11 @@ public:
 //!          so it is reasonable to call this method after <anObj> has been displayed. <br>
 //!          Otherwise, Compute() method should pass Graphic3d_AspectFillArea3d <br>
 //!          aspect from <myDrawer> to Graphic3d_Group to make polygon offsets work. <br>
-  Standard_EXPORT   virtual  void SetPolygonOffsets(const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0) ;
+  Standard_EXPORT   virtual  void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
   //! Returns Standard_True if <myDrawer> has non-null shading aspect <br>
   Standard_EXPORT   virtual  Standard_Boolean HasPolygonOffsets() const;
   //! Retrieves current polygon offsets settings from <myDrawer>. <br>
-  Standard_EXPORT   virtual  void PolygonOffsets(Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT   virtual  void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
 
 
 friend class AIS_InteractiveContext;

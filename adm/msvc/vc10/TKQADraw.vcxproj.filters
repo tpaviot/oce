@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4FE3465D-07CF-0B79-0C97-1AE143BB1F4E}</UniqueIdentifier>
+      <UniqueIdentifier>{948DACEE-04F4-171D-0E0E-467C0B79F14D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DebugTools">
-      <UniqueIdentifier>{045884F4-0DC3-1228-03EA-C102A6950B3F}</UniqueIdentifier>
+      <UniqueIdentifier>{D102C8D0-00AE-1923-04F9-EA127E64165B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QABugs">
-      <UniqueIdentifier>{1567DC65-0E93-07AF-06FE-80FF31F20254}</UniqueIdentifier>
+      <UniqueIdentifier>{F7D998BE-10B4-115A-0160-F72815688573}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADNaming">
-      <UniqueIdentifier>{76F891BB-0E3E-0FB7-1057-959B5B0A9791}</UniqueIdentifier>
+      <UniqueIdentifier>{1179A624-16C2-08F4-07D1-2AF6A6A71494}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADraw">
-      <UniqueIdentifier>{64B4B6D9-0DCD-0147-137C-80A2AD3828D6}</UniqueIdentifier>
+      <UniqueIdentifier>{383C6100-0A08-0D44-00D4-10E758C45A8B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANCollection">
-      <UniqueIdentifier>{00FC475B-1888-1519-0B86-CEB3AC76047E}</UniqueIdentifier>
+      <UniqueIdentifier>{149CB213-0ACD-1667-0EBF-84D8479334A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewBRepNaming">
-      <UniqueIdentifier>{211CA52D-0CD1-191A-0EEF-A9AE68F9508C}</UniqueIdentifier>
+      <UniqueIdentifier>{667AEF61-003D-171F-0F0D-951207D2C9FA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewDBRepNaming">
-      <UniqueIdentifier>{17348CF7-0EC4-1447-0888-1FBC1073C738}</UniqueIdentifier>
+      <UniqueIdentifier>{CA5FE625-15B0-1541-0C1A-D288B80E008F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewModTopOpe">
-      <UniqueIdentifier>{1C4B830A-04CE-12CB-01A2-35C8AA091E57}</UniqueIdentifier>
+      <UniqueIdentifier>{46C0511F-18F1-08B6-1190-515D40C124D0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

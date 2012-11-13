@@ -158,7 +158,7 @@ To solve the problem (for lack of a better solution) I make 2 passes.
 #include <Graphic3d_MapIteratorOfMapOfStructure.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_TextureEnv.hxx>
-#include <Image_PixMap.hxx>
+#include <Image_AlienPixMap.hxx>
 #include <V3d.hxx>
 #include <V3d_View.ixx>
 #include <Viewer_BadValue.hxx>
@@ -560,14 +560,12 @@ void V3d_View::SetWindow(const Handle(Aspect_Window)&      aWindow,
 
 /*----------------------------------------------------------------------*/
 
-void V3d_View::Remove() const  {
-
-  MyViewer->DelView(this) ;
-  MyView->Remove() ;
-#ifdef IMP260303
-  MyWindow.Nullify();
-#endif
-
+void V3d_View::Remove() const
+{
+  MyViewer->DelView (this);
+  MyView->Remove();
+  Handle(Aspect_Window)& aWin = const_cast<Handle(Aspect_Window)&> (MyWindow);
+  aWin.Nullify();
 }
 
 /*----------------------------------------------------------------------*/
@@ -3484,22 +3482,20 @@ void V3d_View::ScreenCopy (const Handle(PlotMgt_PlotterDriver)& aPlotterDriver,
 #include <Visual3d_Layer.hxx>
 
 ////////////////////////////////////////////////////////////////
-Standard_Boolean V3d_View::Dump (const Standard_CString theFile,
-                                 const Image_TypeOfImage theBufferType)
+Standard_Boolean V3d_View::Dump (const Standard_CString      theFile,
+                                 const Graphic3d_BufferType& theBufferType)
 {
   Standard_Integer aWinWidth, aWinHeight;
   MyWindow->Size (aWinWidth, aWinHeight);
-
-  Handle(Aspect_PixMap) aPixMap = ToPixMap (aWinWidth, aWinHeight, theBufferType);
-  return !aPixMap.IsNull() && aPixMap->Dump (theFile);
+  Image_AlienPixMap anImage;
+  return ToPixMap (anImage, aWinWidth, aWinHeight, theBufferType) && anImage.Save (theFile);
 }
 
 ////////////////////////////////////////////////////////////////
-Standard_Boolean V3d_View::Dump (const Standard_CString theFile,
+Standard_Boolean V3d_View::Dump (const Standard_CString          theFile,
                                  const Aspect_FormatOfSheetPaper theFormat,
-                                 const Image_TypeOfImage theBufferType)
+                                 const Graphic3d_BufferType&     theBufferType)
 {
-  Standard_Boolean isDone = Standard_False;
   // convert Aspect_FormatOfSheetPaper size to pixel ...
   Quantity_Length anSPWidth, anSPHeight;
   Aspect::ValuesOfFOSP (theFormat, anSPWidth, anSPHeight);
@@ -3513,36 +3509,40 @@ Standard_Boolean V3d_View::Dump (const Standard_CString theFile,
   Quantity_Factor aScale = Min (anSPWidth / aWinWidth, anSPHeight / aWinHeight);
   aPixelWidth  = Standard_Integer (aPixelWidth  * aScale);
   aPixelHeight = Standard_Integer (aPixelHeight * aScale);
+
+  Image_AlienPixMap anImage;
+  ToPixMap (anImage, aPixelWidth, aPixelHeight, theBufferType);
+  OSD_Environment anEnvGamma ("CSF_GAMMA_CORRECTION");
+  TCollection_AsciiString strGamma (anEnvGamma.Value());
+  if (!anImage.IsEmpty() && !strGamma.IsEmpty())
   {
-    Handle(Aspect_PixMap) aBitmap = ToPixMap (aPixelWidth, aPixelHeight, theBufferType);
-    Standard_Real aGammaValue = 1.0;
-    OSD_Environment anEnvGamma ("CSF_GAMMA_CORRECTION");
-    TCollection_AsciiString strGamma (anEnvGamma.Value());
-    if (!strGamma.IsEmpty()) aGammaValue = strGamma.RealValue();
-    isDone = !aBitmap.IsNull() && aBitmap->Dump (theFile, aGammaValue);
+    Standard_Real aGammaValue = strGamma.RealValue();
+    anImage.AdjustGamma (aGammaValue);
   }
-  return isDone;
+  return anImage.Save (theFile);
 }
 
 ////////////////////////////////////////////////////////////////
-Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
-                                         const Standard_Integer  theHeight,
-                                         const Image_TypeOfImage theBufferType,
-                                         const Standard_Boolean  theIsForceCentred)
+Standard_Boolean V3d_View::ToPixMap (Image_PixMap&               theImage,
+                                     const Standard_Integer      theWidth,
+                                     const Standard_Integer      theHeight,
+                                     const Graphic3d_BufferType& theBufferType,
+                                     const Standard_Boolean      theIsForceCentred)
 {
   // always prefer hardware accelerated offscreen buffer
   Graphic3d_CView* cView = (Graphic3d_CView* )MyView->CView();
   Graphic3d_PtrFrameBuffer aFBOPtr = NULL;
   Graphic3d_PtrFrameBuffer aPrevFBOPtr = (Graphic3d_PtrFrameBuffer )cView->ptrFBO;
+  Standard_Integer aFBOVPSizeX (theWidth), aFBOVPSizeY (theHeight), aFBOSizeXMax (0), aFBOSizeYMax (0);
   Standard_Integer aPrevFBOVPSizeX (0), aPrevFBOVPSizeY (0), aPrevFBOSizeXMax (0), aPrevFBOSizeYMax (0);
   if (aPrevFBOPtr != NULL)
   {
     MyView->FBOGetDimensions (aPrevFBOPtr,
                               aPrevFBOVPSizeX, aPrevFBOVPSizeY,
                               aPrevFBOSizeXMax, aPrevFBOSizeYMax);
-    if (theWidth <= aPrevFBOSizeXMax && theHeight <= aPrevFBOSizeYMax)
+    if (aFBOVPSizeX <= aPrevFBOSizeXMax && aFBOVPSizeY <= aPrevFBOSizeYMax)
     {
-      MyView->FBOChangeViewport (aPrevFBOPtr, theWidth, theHeight);
+      MyView->FBOChangeViewport (aPrevFBOPtr, aFBOVPSizeX, aFBOVPSizeY);
       aFBOPtr = aPrevFBOPtr;
     }
   }
@@ -3550,7 +3550,17 @@ Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
   if (aFBOPtr == NULL)
   {
     // Try to create hardware accelerated buffer
-    aFBOPtr = MyView->FBOCreate (theWidth, theHeight);
+    aFBOPtr = MyView->FBOCreate (aFBOVPSizeX, aFBOVPSizeY);
+    if (aFBOPtr != NULL)
+    {
+      MyView->FBOGetDimensions (aFBOPtr,
+                                aFBOVPSizeX,  aFBOVPSizeY,
+                                aFBOSizeXMax, aFBOSizeYMax);
+      // reduce viewport in case of hardware limits
+      if (aFBOVPSizeX > aFBOSizeXMax) aFBOVPSizeX = aFBOSizeXMax;
+      if (aFBOVPSizeY > aFBOSizeYMax) aFBOVPSizeY = aFBOSizeYMax;
+      MyView->FBOChangeViewport (aFBOPtr, aFBOVPSizeX, aFBOVPSizeY);
+    }
   }
   cView->ptrFBO = aFBOPtr;
 
@@ -3564,9 +3574,9 @@ Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
 
     // technically we can reduce existing viewport...
     // but currently allow only dumping the window itself
-    if (theWidth != aWinWidth || theHeight != aWinHeight)
+    if (aFBOVPSizeX != aWinWidth || aFBOVPSizeY != aWinHeight)
     {
-      return Handle(Image_PixMap)();
+      return Standard_False;
     }
   }
 
@@ -3583,10 +3593,10 @@ Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
     //szv: calculate expansion
     Umin = PUmin; Vmin = PVmin; Umax = PUmax; Vmax = PVmax;
     Standard_Real oldWidth = (PUmax - PUmin), oldHeight = (PVmax - PVmin);
-    Standard_Real newWidth = (oldHeight * theWidth) / theHeight;
+    Standard_Real newWidth = (oldHeight * aFBOVPSizeX) / aFBOVPSizeY;
     if (newWidth < oldWidth)
     {
-      Standard_Real newHeight = (oldWidth * theHeight) / theWidth;
+      Standard_Real newHeight = (oldWidth * aFBOVPSizeY) / aFBOVPSizeX;
       // Expand height
       Standard_Real delta = 0.5 * (newHeight - oldHeight);
       Vmin = PVmin - delta;
@@ -3616,15 +3626,25 @@ Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
   MyViewMapping = prevMapping;
   MyView->SetViewMapping (prevMapping);
 
+  Standard_Boolean isSuccess = Standard_True;
+
   // allocate image buffer for dumping
-  Image_CRawBufferData aRawBuffer;
-  Handle(Image_PixMap) anImageBitmap = new Image_PixMap (theWidth, theHeight, theBufferType);
-  anImageBitmap->AccessBuffer (aRawBuffer);
-  if (!MyView->BufferDump (aRawBuffer))
+  if (theImage.IsEmpty()
+   || (Standard_Size )aFBOVPSizeX != theImage.SizeX()
+   || (Standard_Size )aFBOVPSizeY != theImage.SizeY())
   {
-    // dump is failed!
-    anImageBitmap = Handle(Image_PixMap)();
+    bool isBigEndian = Image_PixMap::IsBigEndianHost();
+    Image_PixMap::ImgFormat aFormat = Image_PixMap::ImgUNKNOWN;
+    switch (theBufferType)
+    {
+      case Graphic3d_BT_RGB:   aFormat = isBigEndian ? Image_PixMap::ImgRGB  : Image_PixMap::ImgBGR;  break;
+      case Graphic3d_BT_RGBA:  aFormat = isBigEndian ? Image_PixMap::ImgRGBA : Image_PixMap::ImgBGRA; break;
+      case Graphic3d_BT_Depth: aFormat = Image_PixMap::ImgGrayF; break;
+    }
+
+    isSuccess = isSuccess && theImage.InitZero (aFormat, aFBOVPSizeX, aFBOVPSizeY);
   }
+  isSuccess = isSuccess && MyView->BufferDump (theImage, theBufferType);
 
   // FBO now useless, free resources
   if (aFBOPtr != aPrevFBOPtr)
@@ -3636,5 +3656,5 @@ Handle(Image_PixMap) V3d_View::ToPixMap (const Standard_Integer  theWidth,
     MyView->FBOChangeViewport (aPrevFBOPtr, aPrevFBOVPSizeX, aPrevFBOVPSizeY);
   }
   cView->ptrFBO = aPrevFBOPtr;
-  return anImageBitmap;
+  return isSuccess;
 }

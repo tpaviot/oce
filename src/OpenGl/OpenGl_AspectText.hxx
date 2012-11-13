@@ -22,7 +22,7 @@
 #define OpenGl_AspectText_Header
 
 #include <InterfaceGraphic_telem.hxx>
-#include <OSD_FontAspect.hxx>
+#include <Font_FontAspect.hxx>
 #include <Aspect_TypeOfStyleText.hxx>
 #include <Aspect_TypeOfDisplayText.hxx>
 
@@ -30,31 +30,35 @@
 
 class OpenGl_AspectText : public OpenGl_Element
 {
- public:
 
-  OpenGl_AspectText ();
-  virtual ~OpenGl_AspectText ();
+public:
+
+  OpenGl_AspectText();
+  virtual ~OpenGl_AspectText();
 
   void SetContext (const CALL_DEF_CONTEXTTEXT &AContext);
 
   int                      IsZoomable() const { return myZoomable; }
   float                    Angle() const { return myAngle; }
-  OSD_FontAspect           FontAspect() const { return myFontAspect; }
+  Font_FontAspect          FontAspect() const { return myFontAspect; }
   const char *             Font() const { return myFont; }
   const TEL_COLOUR &       Color() const { return myColor; }
   Aspect_TypeOfStyleText   StyleType() const { return myStyleType; }
   Aspect_TypeOfDisplayText DisplayType() const { return myDisplayType; }
   const TEL_COLOUR &       SubtitleColor() const { return mySubtitleColor; }
 
-  virtual void Render (const Handle(OpenGl_Workspace) &AWorkspace) const;
+  virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
+  virtual void Release (const Handle(OpenGl_Context)&   theContext);
 
- protected:
+protected:
 
   void SetFontName (const char *AFont);
 
+protected:
+
   int                      myZoomable;
   float                    myAngle;
-  OSD_FontAspect           myFontAspect;
+  Font_FontAspect          myFontAspect;
   const char              *myFont;
   //float                  mySpace;
   //float                  myExpan;
@@ -63,8 +67,10 @@ class OpenGl_AspectText : public OpenGl_Element
   Aspect_TypeOfDisplayText myDisplayType;
   TEL_COLOUR               mySubtitleColor;
 
- public:
+public:
+
   DEFINE_STANDARD_ALLOC
+
 };
 
 #endif //OpenGl_AspectText_Header

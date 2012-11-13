@@ -389,7 +389,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/OSD/OSD_File.cxx \
 @top_srcdir@/src/OSD/OSD_FileIterator.cxx \
 @top_srcdir@/src/OSD/OSD_FileNode.cxx \
-@top_srcdir@/src/OSD/OSD_FontMgr.cxx \
 @top_srcdir@/src/OSD/OSD_Function.cxx \
 @top_srcdir@/src/OSD/OSD_Getkey.c \
 @top_srcdir@/src/OSD/OSD_Host.cxx \
@@ -406,7 +405,6 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/OSD/OSD_Semaphore.cxx \
 @top_srcdir@/src/OSD/OSD_SharedLibrary.cxx \
 @top_srcdir@/src/OSD/OSD_SharedMemory.cxx \
-@top_srcdir@/src/OSD/OSD_SystemFont.cxx \
 @top_srcdir@/src/OSD/OSD_Thread.cxx \
 @top_srcdir@/src/OSD/OSD_Timer.cxx \
 @top_srcdir@/src/OSD/OSD_WNT.cxx \

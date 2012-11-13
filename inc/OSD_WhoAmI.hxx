@@ -6,7 +6,7 @@
 #ifndef _OSD_WhoAmI_HeaderFile
 #define _OSD_WhoAmI_HeaderFile
 
-//! Specifies aspect of system font. <br>
+//! Specifies the type of files. <br>
 enum OSD_WhoAmI {
 OSD_WDirectory,
 OSD_WDirectoryIterator,

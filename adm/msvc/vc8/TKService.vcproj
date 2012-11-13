@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKService"
-	ProjectGUID="{22247CA8-0D6B-17D2-182F-932657BA3B63}"
+	ProjectGUID="{8E239F3C-0E12-10B7-0CDF-4A5A045BD97B}"
 	>
 	<Platforms>
 		<Platform
@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -69,7 +69,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -144,10 +144,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKService\TKService.pch"
@@ -167,7 +167,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -242,10 +242,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -264,7 +264,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -340,10 +340,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKService\TKService.pch"
@@ -363,7 +363,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -2527,37 +2527,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Aspect\Aspect_MarkerStyle.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Aspect\Aspect_PixMap.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -5162,6 +5131,37 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\..\src\Image\Image_AlienPixMap.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\..\src\Image\Image_AveragePixelInterpolation.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -5287,6 +5287,37 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Image\Image_Convertor.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\Image\Image_Diff.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -6937,37 +6968,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="..\..\..\src\WNT\WNT_PixMap.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="..\..\..\src\WNT\WNT_TextManager.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -7283,6 +7283,72 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="Font"
+				>
+				<File
+					RelativePath="..\..\..\src\Font\Font_FontMgr.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\Font\Font_SystemFont.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKShHealing"
-	ProjectGUID="{838D52EB-034C-09C7-197F-31B06B35696B}"
+	ProjectGUID="{AF8DF7B9-0EA8-13AB-13A2-285E324065D6}"
 	>
 	<Platforms>
 		<Platform
@@ -788,6 +788,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\ShapeUpgrade\ShapeUpgrade_Tool.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\ShapeUpgrade\ShapeUpgrade_UnifySameDomain.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\ShapeUpgrade\ShapeUpgrade_WireDivide.cxx">

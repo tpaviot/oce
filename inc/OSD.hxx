@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,8 +58,6 @@ class OSD_Semaphore;
 class OSD_MailBox;
 class OSD_SharedLibrary;
 class OSD_Thread;
-class OSD_SystemFont;
-class OSD_FontMgr;
 class OSD_Real2String;
 class OSD_Localizer;
 
@@ -66,18 +67,7 @@ class OSD_Localizer;
 class OSD  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //!   1) Arms some floating point signals, and sets a "Handler" for them. <br>
@@ -180,8 +170,6 @@ friend class OSD_Semaphore;
 friend class OSD_MailBox;
 friend class OSD_SharedLibrary;
 friend class OSD_Thread;
-friend class OSD_SystemFont;
-friend class OSD_FontMgr;
 friend class OSD_Real2String;
 friend class OSD_Localizer;
 

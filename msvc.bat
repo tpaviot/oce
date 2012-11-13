@@ -10,11 +10,11 @@ if not "%4" == "" (
   set "PRJFILE=%4"
 )
 
-if "%VCVER%" == "vc8" (
+if /i ["%VCVER%"] == ["vc8"] (
   set "DevEnvDir=%VS80COMNTOOLS%..\IDE"
-) else if "%VCVER%" == "vc9" (
+) else if /i ["%VCVER%"] == ["vc9"] (
   set "DevEnvDir=%VS90COMNTOOLS%..\IDE"
-) else if "%VCVER%" == "vc10" (
+) else if /i ["%VCVER%"] == ["vc10"] (
   set "DevEnvDir=%VS100COMNTOOLS%..\IDE"
 ) else (
   echo Error: wrong VS identifier

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKOffset"
-	ProjectGUID="{552A47B4-0D1B-1008-0AB3-511B5BDB2BF2}"
+	ProjectGUID="{88A7693A-029D-17D3-0F20-5DC07A079FD4}"
 	>
 	<Platforms>
 		<Platform
@@ -458,6 +458,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeThickSolid.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MiddlePath.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_NormalProjection.cxx">

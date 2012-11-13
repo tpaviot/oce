@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{16467126-13A4-10AF-03BE-EE6843FF19A6}</ProjectGuid>
+    <ProjectGuid>{4883F7AC-0F39-1007-176C-CE73B20DC195}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -330,8 +330,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_FileNode.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_FontMgr.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Function.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Getkey.c">
@@ -363,8 +361,6 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_SharedLibrary.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_SharedMemory.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_SystemFont.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Thread.cxx">
     </ClCompile>

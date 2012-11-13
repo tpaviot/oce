@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="DRAWEXE"
-	ProjectGUID="{8C9D469A-127A-0CAC-0CD0-8BBA1B67643B}"
+	ProjectGUID="{BB039C2E-0A41-0A17-00D1-0CEABF07D7FD}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

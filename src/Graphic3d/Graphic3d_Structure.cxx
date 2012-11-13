@@ -232,13 +232,6 @@ void Graphic3d_Structure::Clear (const Standard_Boolean WithDestruction)
   MyCStructure.ContainsFacet = 0;
 
   // clean groups in graphics driver at first
-  if (WithDestruction)
-  {
-    // clean and empty each group
-    Standard_Integer Length = MyGroups.Length();
-    for (Standard_Integer aGrId = 1; aGrId <= Length; ++aGrId)
-      MyGroups.ChangeValue (aGrId)->Clear();
-  }
   GraphicClear (WithDestruction);
 
   // only then remove group references
@@ -722,31 +715,31 @@ Standard_Boolean Graphic3d_Structure::IsInfinite () const {
 
 }
 
-void Graphic3d_Structure::GraphicClear (const Standard_Boolean WithDestruction) {
+void Graphic3d_Structure::GraphicClear (const Standard_Boolean WithDestruction)
+{
+  // clean and empty each group
+  Standard_Integer Length = MyGroups.Length();
+  for (Standard_Integer aGrId = 1; aGrId <= Length; ++aGrId)
+  {
+    MyGroups.ChangeValue (aGrId)->Clear();
+  }
 
   if (WithDestruction)
+  {
     /*
-    * Dans ce cas l'appelant dans faire :
     * void Prs3d_Presentation::Clear () {
     *   Graphic3d_Structure::Clear ();
     *   myCurrentGroup = new Graphic3d_Group (this);
     * }
     */
+    while (!MyGroups.IsEmpty())
+    {
+      Handle(Graphic3d_Group) aGroup = MyGroups.First();
+      aGroup->Remove();
+    }
+
     MyGraphicDriver->ClearStructure (MyCStructure);
-  else {
-    /*
-    * Dans ce cas l'appelant dans faire :
-    * void Prs3d_Presentation::Clear () {
-    *   Graphic3d_Structure::Clear ();
-    *   // myCurrentGroup = new Graphic3d_Group (this);
-    * }
-    */
-    Standard_Integer Length = MyGroups.Length ();
-
-    for (Standard_Integer i=1; i<=Length; i++)
-      (MyGroups.Value (i))->Clear ();
   }
-
 }
 
 void Graphic3d_Structure::GraphicConnect (const Handle(Graphic3d_Structure)& ADaughter) {
@@ -1262,7 +1255,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectFill
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   Standard_Integer aPolyMode;
-  Standard_Real    aPolyFactor, aPolyUnits;
+  Standard_ShortReal    aPolyFactor, aPolyUnits;
   CTX->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCStructure.ContextFillArea.PolygonOffsetMode   = aPolyMode;
   MyCStructure.ContextFillArea.PolygonOffsetFactor = aPolyFactor;
@@ -1301,7 +1294,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectText
   Quantity_Color            AColorSubTitle;
   Standard_Boolean          ATextZoomable;
   Standard_Real             ATextAngle;
-  OSD_FontAspect            ATextFontAspect;
+  Font_FontAspect            ATextFontAspect;
 
   CTX->Values (AColor, AFont, AnExpansion, ASpace, AStyle, ADisplayType,AColorSubTitle,ATextZoomable,ATextAngle,ATextFontAspect);
   AColor.Values (R, G, B, Quantity_TOC_RGB);
@@ -1319,7 +1312,7 @@ void Graphic3d_Structure::SetPrimitivesAspect (const Handle(Graphic3d_AspectText
   MyCStructure.ContextText.ColorSubTitle.g  = float (Gs);
   MyCStructure.ContextText.ColorSubTitle.b  = float (Bs);
   MyCStructure.ContextText.TextZoomable     = ATextZoomable;
-  MyCStructure.ContextText.TextAngle        = ATextAngle;
+  MyCStructure.ContextText.TextAngle        = float (ATextAngle);
   MyCStructure.ContextText.TextFontAspect   = (int)ATextFontAspect;
 
   MyCStructure.ContextText.IsDef          = 1;
@@ -1783,9 +1776,9 @@ void Graphic3d_Structure::SetTransformPersistence( const Graphic3d_TransModeFlag
   if (IsDeleted ()) return;
 
   MyCStructure.TransformPersistence.Flag = AFlag;
-  MyCStructure.TransformPersistence.Point.x = APoint.X();
-  MyCStructure.TransformPersistence.Point.y = APoint.Y();
-  MyCStructure.TransformPersistence.Point.z = APoint.Z();
+  MyCStructure.TransformPersistence.Point.x = float (APoint.X());
+  MyCStructure.TransformPersistence.Point.y = float (APoint.Y());
+  MyCStructure.TransformPersistence.Point.z = float (APoint.Z());
   //MyStructureManager->Update ();
   //Update();
   MyGraphicDriver->ContextStructure( MyCStructure );
@@ -2120,7 +2113,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
   Quantity_Color            AColorSubTitle;
   Standard_Boolean          ATextZoomable;
   Standard_Real             ATextAngle;
-  OSD_FontAspect            ATextFontAspect;
+  Font_FontAspect            ATextFontAspect;
 
 
   CTXL->Values (AColor, ALType, AWidth);
@@ -2157,7 +2150,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
   MyCStructure.ContextText.ColorSubTitle.g  = float (Gs);
   MyCStructure.ContextText.ColorSubTitle.b  = float (Bs);
   MyCStructure.ContextText.TextZoomable     = ATextZoomable;
-  MyCStructure.ContextText.TextAngle        = ATextAngle;
+  MyCStructure.ContextText.TextAngle        = float (ATextAngle);
   MyCStructure.ContextText.TextFontAspect   = (int)ATextFontAspect;
 
 
@@ -2339,7 +2332,7 @@ void Graphic3d_Structure::UpdateStructure (const Handle(Graphic3d_AspectLine3d)&
 
   // OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
   Standard_Integer aPolyMode;
-  Standard_Real    aPolyFactor, aPolyUnits;
+  Standard_ShortReal    aPolyFactor, aPolyUnits;
   CTXF->PolygonOffsets(aPolyMode, aPolyFactor, aPolyUnits);
   MyCStructure.ContextFillArea.PolygonOffsetMode   = aPolyMode;
   MyCStructure.ContextFillArea.PolygonOffsetFactor = aPolyFactor;

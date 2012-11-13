@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKBRep"
-	ProjectGUID="{0C149A51-153A-188A-1841-DED9C9AC5817}"
+	ProjectGUID="{DB5BD526-0983-046A-098D-FC4EB19255D8}"
 	>
 	<Platforms>
 		<Platform
@@ -700,6 +700,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\TopTools\TopTools_LocationSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\TopTools\TopTools_MutexForShapeProvider.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\TopTools\TopTools_OrientedShapeMapHasher.cxx">

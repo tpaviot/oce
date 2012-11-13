@@ -2,37 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{025F169B-1701-0DE6-08D0-D104B28B8099}</UniqueIdentifier>
+      <UniqueIdentifier>{E4729F62-00DD-00F6-193B-1729599BCE1D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeDraw">
-      <UniqueIdentifier>{A7C1B449-05FF-0BF7-038A-2BC884795339}</UniqueIdentifier>
+      <UniqueIdentifier>{F8F49858-0961-12CA-00BD-B96C9B893BAA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpeTools">
-      <UniqueIdentifier>{46C787AD-1723-195C-0D70-D88CE80AE430}</UniqueIdentifier>
+      <UniqueIdentifier>{AC2E47B1-15D5-07E5-0534-69F18C7122A4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TestTopOpe">
-      <UniqueIdentifier>{0B41309E-05D7-0F47-146C-F32778A43AD8}</UniqueIdentifier>
+      <UniqueIdentifier>{996FFD38-0DF8-1313-0EEA-80CAF98DD164}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTest">
-      <UniqueIdentifier>{135EA04A-13C1-093E-1732-B9905AB42F24}</UniqueIdentifier>
+      <UniqueIdentifier>{AE1629F3-0ED1-18D0-13B9-8478FC22FC25}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeometryTest">
-      <UniqueIdentifier>{82EF1A81-140B-1262-0309-4A0245DB16BA}</UniqueIdentifier>
+      <UniqueIdentifier>{D803925D-0633-0D0E-15F4-9DBE7442D353}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTest">
-      <UniqueIdentifier>{B1255E60-08DA-0032-01B4-2294A44CA6D9}</UniqueIdentifier>
+      <UniqueIdentifier>{401CF402-176F-0A76-0CEC-174830847064}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MeshTest">
-      <UniqueIdentifier>{5E21704E-053B-0D92-0CD2-EB0282F1E042}</UniqueIdentifier>
+      <UniqueIdentifier>{EECA0411-1655-0739-083E-641A2CF24408}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomliteTest">
-      <UniqueIdentifier>{BA32FB46-133E-13C1-0437-AC46583E602A}</UniqueIdentifier>
+      <UniqueIdentifier>{5082D63B-0D67-0CC2-1461-53A1DBA75D24}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DrawFairCurve">
-      <UniqueIdentifier>{1BA6A9B5-10AA-1458-0653-775A42C6E261}</UniqueIdentifier>
+      <UniqueIdentifier>{D3ECF976-12EE-0210-052C-AEB5F92CF366}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTest">
-      <UniqueIdentifier>{387BCFD4-02A7-0DCC-117F-DDB85D72FD4B}</UniqueIdentifier>
+      <UniqueIdentifier>{1FC4B5CA-117D-0FDA-0A77-AB44400E03A4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

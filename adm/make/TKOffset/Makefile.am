@@ -90,6 +90,7 @@ libTKOffset_la_SOURCES = \
 @top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_MakePipe.cxx \
 @top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_MakePipeShell.cxx \
 @top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_MakeThickSolid.cxx \
+@top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_MiddlePath.cxx \
 @top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_NormalProjection.cxx \
 @top_srcdir@/src/BRepOffsetAPI/BRepOffsetAPI_ThruSections.cxx \
 @top_srcdir@/src/BiTgte/BiTgte_Blend.cxx \

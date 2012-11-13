@@ -34,8 +34,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
 #endif
 #ifndef _Aspect_AspectFillArea_HeaderFile
 #include <Aspect_AspectFillArea.hxx>
@@ -45,6 +45,9 @@
 #endif
 #ifndef _Aspect_TypeOfLine_HeaderFile
 #include <Aspect_TypeOfLine.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 class Graphic3d_TextureMap;
 class Quantity_Color;
@@ -125,7 +128,7 @@ public:
 //!          offset = <aFactor> * m + <aUnits> * r, where <br>
 //!          m - maximum depth slope for the polygon currently being displayed, <br>
 //!          r - minimum window coordinates depth resolution (implementation-specific) <br>
-  Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0) ;
+  Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
   //! Returns the Back Face Removal status. <br>
 //!          Standard_True if SuppressBackFace is activated. <br>
   Standard_EXPORT     Standard_Boolean BackFace() const;
@@ -149,7 +152,7 @@ public:
 //!  for the polygons <br>
   Standard_EXPORT   static  Aspect_TypeOfDegenerateModel DefaultDegenerateModel(Quantity_Ratio& aRatio) ;
   //! Returns current polygon offsets settings. <br>
-  Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
 
 
 
@@ -174,8 +177,8 @@ Graphic3d_MaterialAspect MyBackMaterial;
 Aspect_TypeOfDegenerateModel MyDegenerateModel;
 Quantity_Ratio MyDegenerateRatio;
 Standard_Integer MyPolygonOffsetMode;
-Standard_Real MyPolygonOffsetFactor;
-Standard_Real MyPolygonOffsetUnits;
+Standard_ShortReal MyPolygonOffsetFactor;
+Standard_ShortReal MyPolygonOffsetUnits;
 
 
 };

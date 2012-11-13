@@ -25,6 +25,11 @@
 #include <Aspect_Drawable.hxx>
 #include <Aspect_Display.hxx>
 #include <Aspect_RenderingContext.hxx>
+#include <Handle_OpenGl_Context.hxx>
+#include <NCollection_DataMap.hxx>
+#include <NCollection_Handle.hxx>
+#include <NCollection_Queue.hxx>
+#include <OpenGl_Resource.hxx>
 #include <Standard_Transient.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Handle_OpenGl_Context.hxx>
@@ -36,7 +41,10 @@ struct OpenGl_GlCore14;
 struct OpenGl_GlCore15;
 struct OpenGl_GlCore20;
 struct OpenGl_ArbVBO;
+struct OpenGl_ArbTBO;
+struct OpenGl_ArbIns;
 struct OpenGl_ExtFBO;
+struct OpenGl_ExtGS;
 
 //! This class generalize access to the GL context and available extensions.
 //!
@@ -81,6 +89,10 @@ public:
   //! Destructor.
   Standard_EXPORT virtual ~OpenGl_Context();
 
+  //! Share GL context resources.
+  //! theShareCtx - handle to context to retrieve handles to shared resources.
+  Standard_EXPORT void Share (const Handle(OpenGl_Context)& theShareCtx);
+
   //! Initialize available extensions.
   //! GL context should be active!
   Standard_EXPORT Standard_Boolean Init();
@@ -121,9 +133,17 @@ public:
   //! Clean up errors stack for this GL context (glGetError() in loop).
   Standard_EXPORT void ResetErrors();
 
+  //! This method uses system-dependent API to retrieve information
+  //! about GL context bound to the current thread.
+  //! @return true if current thread is bound to this GL context
+  Standard_EXPORT Standard_Boolean IsCurrent() const;
+
   //! Activates current context.
   //! Class should be initialized with appropriate info.
   Standard_EXPORT Standard_Boolean MakeCurrent();
+
+  //! Swap front/back buffers for this GL context (should be activated before!).
+  Standard_EXPORT void SwapBuffers();
 
   //! Return true if active mode is GL_FEEDBACK (cached state)
   Standard_EXPORT Standard_Boolean IsFeedback() const;
@@ -142,6 +162,53 @@ public:
   //! This function retrieves information from GL about GPU memory
   //! and contains more vendor-specific values than AvailableMemory().
   Standard_EXPORT TCollection_AsciiString MemoryInfo() const;
+
+  //! Access shared resource by its name.
+  //! @param  theKey - unique identifier;
+  //! @return handle to shared resource or NULL.
+  Standard_EXPORT const Handle(OpenGl_Resource)& GetResource (const TCollection_AsciiString& theKey) const;
+
+  //! Access shared resource by its name.
+  //! @param  theKey   - unique identifier;
+  //! @param  theValue - handle to fill;
+  //! @return true if resource was shared.
+  template<typename TheHandleType>
+  Standard_Boolean GetResource (const TCollection_AsciiString& theKey,
+                                TheHandleType&                 theValue) const
+  {
+    const Handle(OpenGl_Resource)& aResource = GetResource (theKey);
+    if (aResource.IsNull())
+    {
+      return Standard_False;
+    }
+
+    theValue = TheHandleType::DownCast (aResource);
+    return !theValue.IsNull();
+  }
+
+  //! Register shared resource.
+  //! Notice that after registration caller shouldn't release it by himself -
+  //! it will be automatically released on context destruction.
+  //! @param theKey      - unique identifier, shouldn't be empty;
+  //! @param theResource - new resource to register, shouldn't be NULL.
+  Standard_EXPORT Standard_Boolean ShareResource (const TCollection_AsciiString& theKey,
+                                                  const Handle(OpenGl_Resource)& theResource);
+
+  //! Release shared resource.
+  //! If there are more than one reference to this resource
+  //! (also used by some other existing object) then call will be ignored.
+  //! This means that current object itself should nullify handle before this call.
+  //! Notice that this is unrecommended operation at all and should be used
+  //! only in case of fat resources to release memory for other needs.
+  //! @param  theKey - unique identifier.
+  Standard_EXPORT void ReleaseResource (const TCollection_AsciiString& theKey);
+
+  //! Append resource to queue for delayed clean up.
+  //! Resources in this queue will be released at next redraw call.
+  Standard_EXPORT void DelayedRelease (Handle(OpenGl_Resource)& theResource);
+
+  //! Clean up the delayed release queue.
+  Standard_EXPORT void ReleaseDelayed();
 
 private:
 
@@ -165,11 +232,14 @@ public: // core profiles
 public: // extensions
 
   OpenGl_ArbVBO*   arbVBO; //!< GL_ARB_vertex_buffer_object
+  OpenGl_ArbTBO*   arbTBO; //!< GL_ARB_texture_buffer_object
+  OpenGl_ArbIns*   arbIns; //!< GL_ARB_draw_instanced
   OpenGl_ExtFBO*   extFBO; //!< GL_EXT_framebuffer_object
+  OpenGl_ExtGS*    extGS;  //!< GL_EXT_geometry_shader4
   Standard_Boolean atiMem; //!< GL_ATI_meminfo
   Standard_Boolean nvxMem; //!< GL_NVX_gpu_memory_info
 
-private:
+private: // system-dependent fields
 
 #if (defined(_WIN32) || defined(__WIN32__))
   Aspect_Handle           myWindow;   //!< window handle (owner of GL context) : HWND
@@ -181,6 +251,16 @@ private:
   Aspect_RenderingContext myGContext; //!< X-GLX rendering context : GLXContext
 #endif
 
+private: // context info
+
+  typedef NCollection_DataMap<TCollection_AsciiString, Handle(OpenGl_Resource)> OpenGl_ResourcesMap;
+  typedef NCollection_Handle<OpenGl_ResourcesMap> Handle(OpenGl_ResourcesMap);
+  typedef NCollection_Queue<Handle(OpenGl_Resource)> OpenGl_ResourcesQueue;
+  typedef NCollection_Handle<OpenGl_ResourcesQueue> Handle(OpenGl_ResourcesQueue);
+
+  Handle(OpenGl_ResourcesMap)   mySharedResources; //!< shared resourced with unique identification key
+  Handle(OpenGl_ResourcesQueue) myReleaseQueue;    //!< queue of resources for delayed clean up
+
   void*            myGlLibHandle;   //!< optional handle to GL library
   OpenGl_GlCore20* myGlCore20;      //!< common structure for GL core functions upto 2.0
   Standard_Integer myGlVerMajor;    //!< cached GL version major number
@@ -188,9 +268,17 @@ private:
   Standard_Boolean myIsFeedback;    //!< flag indicates GL_FEEDBACK mode
   Standard_Boolean myIsInitialized; //!< flag indicates initialization state
 
+private:
+
+  //! Copying allowed only within Handles
+  OpenGl_Context            (const OpenGl_Context& );
+  OpenGl_Context& operator= (const OpenGl_Context& );
+
 public:
 
   DEFINE_STANDARD_RTTI(OpenGl_Context) // Type definition
+
+  friend class OpenGl_Window;
 
 };
 

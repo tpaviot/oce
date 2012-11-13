@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -50,18 +53,7 @@ class TopoDS_Shape;
 class TopOpeBRepBuild_ShellFaceClassifier  : public TopOpeBRepBuild_CompositeClassifier {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a classifier in 3D space, to compare : <br>
 //! a face with a set of faces <br>
@@ -81,8 +73,9 @@ public:
 //! define 3D point (later used in Compare()) on first vertex of face <F>. <br>
   Standard_EXPORT     void ResetElement(const TopoDS_Shape& F) ;
   //! Add the face <F> in the set of faces used in 3D point <br>
-//! classification. <br>
-  Standard_EXPORT     void CompareElement(const TopoDS_Shape& F) ;
+//! classification. Returns FALSE if the face <F> has been already <br>
+//! added to the set of faces, otherwise returns TRUE. <br>
+  Standard_EXPORT     Standard_Boolean CompareElement(const TopoDS_Shape& F) ;
   //! Returns state of classification of 3D point, defined by <br>
 //! ResetElement, with the current set of faces, defined by Compare. <br>
   Standard_EXPORT     TopAbs_State State() ;

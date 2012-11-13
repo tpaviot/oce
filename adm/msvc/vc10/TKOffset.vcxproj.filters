@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{C51F7C69-0E77-06EC-0F88-859FADB63E9D}</UniqueIdentifier>
+      <UniqueIdentifier>{D796762D-16FD-174E-0EBB-97D4870217FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffsetAPI">
-      <UniqueIdentifier>{C8F6EC2C-0721-0A8E-0A1E-57512F93010B}</UniqueIdentifier>
+      <UniqueIdentifier>{753DD502-0CA7-0D93-1806-C01F8C575C35}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Draft">
-      <UniqueIdentifier>{299CDC6F-12FC-15CF-0E83-3A10A119E4B7}</UniqueIdentifier>
+      <UniqueIdentifier>{66D5B535-0D8E-02D7-148F-D459653936F0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepOffset">
-      <UniqueIdentifier>{F6AF0C05-07E8-0D88-0D4A-46ABC5B7184B}</UniqueIdentifier>
+      <UniqueIdentifier>{45DAAE31-0F8F-1052-0419-B1E93D47DD15}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BiTgte">
-      <UniqueIdentifier>{9C0B461A-02A1-09F8-0E8F-49019D09032F}</UniqueIdentifier>
+      <UniqueIdentifier>{03927598-0C3D-0693-0CAC-EED1FF1CF53F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,9 @@
       <Filter>Source files\BRepOffsetAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MakeThickSolid.cxx">
+      <Filter>Source files\BRepOffsetAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_MiddlePath.cxx">
       <Filter>Source files\BRepOffsetAPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepOffsetAPI\BRepOffsetAPI_NormalProjection.cxx">

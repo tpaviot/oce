@@ -453,9 +453,6 @@ static
     
     decalu = mincond || maxcond;
     if (decalu) {
-      //modified by NIZNHY-PKV Mon Mar 25 16:44:46 2008f
-      //du = ( mincond ) ? UPeriod : -UPeriod;
-      //
       iCnt=1;
       aUP2=aUPeriod+aUPeriod+aDelta;
       aUP1=aUPeriod+aDelta;
@@ -473,14 +470,16 @@ static
 	for(k=1; 1; ++k) {
 	  aUx=u2+k*aUPeriod;
 	  if (aUx > -aUP1) {
-	    iCnt=k;
+	    //modified by NIZNHY-PKV Thu Apr 12 08:12:09 2012f
+	    iCnt=k+1;
+	    //iCnt=k;
+	    //modified by NIZNHY-PKV Thu Apr 12 08:12:11 2012t
 	    break;
 	  }
 	}
       }
       du = ( mincond ) ? aUPeriod : -aUPeriod;
       du=iCnt*du;
-      //modified by NIZNHY-PKV Mon Mar 25 16:44:49 2008t
     }
     //
     aUNew=u2+du;
@@ -705,6 +704,9 @@ static
   Standard_Real aT, aT1, aT2;
 
   Handle(Geom_Curve)aC1=BRep_Tool::Curve(aE, aT1, aT2);
+  if (aC1.IsNull())
+    BRep_Tool::Range(aE, aT1, aT2);
+  
   aT=BOPTools_Tools2D::IntermediatePoint(aT1, aT2);
   return aT;
 }

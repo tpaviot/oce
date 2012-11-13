@@ -2,43 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{DD6E4B07-13E9-0249-1354-3C256BBCBB6A}</UniqueIdentifier>
+      <UniqueIdentifier>{DD1C6547-06AD-150A-07AD-26912B04B19E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{B44087AF-11D1-177B-06F2-3A1893237FF0}</UniqueIdentifier>
+      <UniqueIdentifier>{2913AC6C-00D3-1750-02D7-B2CD2ABBB92D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\InterfaceGraphic">
-      <UniqueIdentifier>{A495D8D6-12FD-1180-0EA7-EB220E08D2F0}</UniqueIdentifier>
+      <UniqueIdentifier>{7A4817D1-0AB1-0C16-0FDD-B1979356400C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{50ACF1F8-0AA8-139D-177A-D2B0A24A6D8A}</UniqueIdentifier>
+      <UniqueIdentifier>{86DA27E5-0112-078A-0B8A-E7C8831D4643}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Viewer">
-      <UniqueIdentifier>{5D9ADEA6-091A-14D6-0B28-8C480FCED110}</UniqueIdentifier>
+      <UniqueIdentifier>{EFFE3541-0422-0008-1631-48440E6BFE8F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MFT">
-      <UniqueIdentifier>{FFAFE9F7-065E-173E-0AF2-A6B82082414F}</UniqueIdentifier>
+      <UniqueIdentifier>{1590C44D-0432-16E6-0FC4-0B8AB1BE70A4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PS">
-      <UniqueIdentifier>{8DE7DBA7-0EB5-006D-118E-D54BCC634E67}</UniqueIdentifier>
+      <UniqueIdentifier>{D544CEE9-01A0-07A7-1729-B143BCD62363}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CGM">
-      <UniqueIdentifier>{B083C8D9-09BD-0CDD-17DD-7E7D8863A56B}</UniqueIdentifier>
+      <UniqueIdentifier>{AD6EDDD4-00CB-0865-0989-EC76053867AA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AlienImage">
-      <UniqueIdentifier>{0114001C-09E9-17D2-0DB8-4E2B1DF09C5C}</UniqueIdentifier>
+      <UniqueIdentifier>{1DD85F76-07DE-066D-082F-819A5EBDA1FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{A9889B94-0BEC-128B-169D-51C9F5A20360}</UniqueIdentifier>
+      <UniqueIdentifier>{D6396FC5-162F-0C12-00AC-57DFE32BB563}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PlotMgt">
-      <UniqueIdentifier>{8B999771-005A-183A-0693-3E7337FE3277}</UniqueIdentifier>
+      <UniqueIdentifier>{917E5CFF-03DF-1005-16BC-40630023AAAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{A3644710-03FE-173E-033C-6138B1D10F89}</UniqueIdentifier>
+      <UniqueIdentifier>{99F67A40-0EE0-18EC-15E8-3A624E0C1701}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{5311BECB-02ED-053D-08F8-268A1B3525FB}</UniqueIdentifier>
+      <UniqueIdentifier>{BA7159E6-0579-0D78-0732-FE5800437C00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Font">
+      <UniqueIdentifier>{81E62FD2-12D5-1570-04A2-3FDD93EBF934}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,9 +250,6 @@
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_MarkerStyle.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect_PixMap.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_Pixel.cxx">
@@ -498,6 +498,9 @@
     <ClCompile Include="..\..\..\src\Image\Image.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_AlienPixMap.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_AveragePixelInterpolation.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
@@ -511,6 +514,9 @@
       <Filter>Source files\Image</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_Convertor.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_Diff.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Image\Image_Image.cxx">
@@ -669,9 +675,6 @@
     <ClCompile Include="..\..\..\src\WNT\WNT_MFTDraw.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_PixMap.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_TextManager.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
@@ -704,6 +707,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
       <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FontMgr.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_SystemFont.cxx">
+      <Filter>Source files\Font</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

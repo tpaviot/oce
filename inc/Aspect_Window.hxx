@@ -55,9 +55,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Handle_Aspect_PixMap_HeaderFile
-#include <Handle_Aspect_PixMap.hxx>
-#endif
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
 #endif
@@ -70,7 +67,6 @@ class Aspect_WindowError;
 class Aspect_Background;
 class Quantity_Color;
 class Aspect_GradientBackground;
-class Aspect_PixMap;
 
 
 //! This class allows the definition of a window <br>
@@ -132,8 +128,6 @@ public:
 //! to an image file with <br>
 //! an optional gamma correction value according to the graphic system <br>
   Standard_EXPORT   virtual  Standard_Boolean DumpArea(const Standard_CString aFilename,const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height,const Standard_Real aGammaValue = 1.0) const = 0;
-  //! dump the full contents of the window to a pixmap. <br>
-  Standard_EXPORT   virtual  Handle_Aspect_PixMap ToPixMap() const = 0;
   //! Loads the XWD file to this Window. <br>
 //! Returns TRUE if the loading occurs normaly. <br>
 //!  Warning: Note that the Window is enlarged automatically <br>

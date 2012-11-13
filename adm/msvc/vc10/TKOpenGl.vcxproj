@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{737B2FD9-10A4-046F-15E3-581243171D9C}</ProjectGuid>
+    <ProjectGuid>{FAFD9DA2-042E-0F1F-012F-135D5F574926}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,7 +97,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;ftgl_dynamic_MTD.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -138,7 +138,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;ftgl_dynamic_MTD.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -180,7 +180,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;ftgl_dynamic_MTD.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -221,7 +221,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;ftgl_dynamic_MTD.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKService.lib;TKV3d.lib;opengl32.lib;glu32.lib;user32.lib;gdi32.lib;ws2_32.lib;vfw32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKOpenGl.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -290,6 +290,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ImageBox.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_LayerList.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Marker.cxx">
@@ -310,11 +312,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceCleaner.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceTexture.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceVBO.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
     </ClCompile>
@@ -322,7 +320,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBox.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBufferArb.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Trihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_VertexBuffer.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_View.cxx">
     </ClCompile>

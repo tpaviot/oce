@@ -420,7 +420,7 @@ AC_LANG([C])
     AC_MSG_NOTICE("Specify LDFLAGS=-L<opengl_lib_dir> to enable OpenGL support")
   fi
 fi
-AM_CONDITIONAL( HAVE_GL, [test "xyes" = "x$HAVE_GL"] )
+#AM_CONDITIONAL( HAVE_GL, [test "xyes" = "x$HAVE_GL"] )
 
 #---------------------------------------------------------------------
 #
@@ -430,42 +430,66 @@ AM_CONDITIONAL( HAVE_GL, [test "xyes" = "x$HAVE_GL"] )
 #---------------------------------------------------------------------
 AC_ARG_WITH([freetype],
   [AC_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
-  [freetype="${withval}"],[freetype=])
+  [freetype="${withval}"],[freetype=yes])
 
 CSF_FREETYPE_INCLUDES=""
 CSF_FREETYPE_LIB=""
+HAVE_FREETYPE=no
 
 if test "xyes" = "x${HAVE_GL}"; then
   AC_LANG([C++])
-  HAVE_FREETYPE=no
-  HAVE_FREETYPE_INC=yes
-  CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
-  AC_CHECK_HEADER( [ft2build.h], [], [HAVE_FREETYPE=no] )
-  if test ! -d $freetype; then
-	DISABLE_FREETYPE_REASON="($freetype directory is not exists)"
-	AC_MSG_ERROR([$freetype directory is not exists])
-  elif test "x$HAVE_FREETYPE_INC" = "xyes"; then
-    CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
-    LDFLAGS="-L$freetype/lib"
-    AC_CHECK_LIB(freetype, FT_Init_FreeType,
-    [
-	HAVE_FREETYPE=yes
-	CSF_FREETYPE_LIB="$LDFLAGS `$freetype/bin/freetype-config --libs`"
-	LIBS="$CSF_FREETYPE_LIB $LIBS"
-	CSF_OPT_INC="$freetype/include:$freetype/include/freetype2:${CSF_OPT_INC}"
-	CSF_OPT_LIB="$freetype/lib:${CSF_OPT_LIB}"
-    ],
-    [
-	DISABLE_FREETYPE_REASON="(freetype was not found)"
-	AC_MSG_ERROR([Unable to locate the required FreeType library])
-    ])
+  if test "xno" = "x${freetype}"; then
+    dnl freetype check is explicitly disabled by --without-freetype or --with-freetype=no
+    AC_MSG_NOTICE([freetype check is explicitly disabled])
+    DISABLE_FREETYPE_REASON="(freetype check was explicitly disabled)"
   else
-	DISABLE_FREETYPE_REASON="(freetype was not found)"
+    if test "xyes" = "x${freetype}" -o "x/usr" = "x${freetype}"; then
+      dnl try native freetype (default)
+      AC_MSG_NOTICE(try system freetype)
+      FREETYPE_INCLUDES="-I/usr/include/freetype2"
+      FREETYPE_LIBS="-lfreetype"
+      FREETYPE_OPT_INC="/usr/include/freetype2"
+      FREETYPE_OPT_LIB=
+    else
+      AC_MSG_NOTICE(try freetype in $freetype)
+      if test ! -d ${freetype}; then
+    DISABLE_FREETYPE_REASON="(${freetype} directory does not exists)"
+    AC_MSG_ERROR([${freetype} directory does not exists])
+      fi
+      FREETYPE_INCLUDES="-I${freetype}/include -I${freetype}/include/freetype2"
+      FREETYPE_LIBS="-L${freetype}/lib -lfreetype"
+      FREETYPE_OPT_INC="${freetype}/include:${freetype}/include/freetype2"
+      FREETYPE_OPT_LIB="${freetype}/lib"
+    fi
+    CPPFLAGS_old=${CPPFLAGS}
+    LDFLAGS_old=${LDFLAGS}
+    CPPFLAGS="${FREETYPE_INCLUDES} $CPPFLAGS"
+    LDFLAGS="${FREETYPE_LIBS} $LDFLAGS"
+    AC_CHECK_HEADER( [ft2build.h], [HAVE_FREETYPE_INC=yes], [HAVE_FREETYPE_INC=no] )
+    if test "x${HAVE_FREETYPE_INC}" = "xyes"; then
+      AC_CHECK_LIB(freetype, FT_Init_FreeType,
+      [
+    HAVE_FREETYPE=yes
+        CSF_FREETYPE_INCLUDES="${FREETYPE_INCLUDES}"
+    CSF_FREETYPE_LIB="${FREETYPE_LIBS}"
+        LIBS="$CSF_FREETYPE_LIB $LIBS"
+        CSF_OPT_INC="${FREETYPE_OPT_INC}:${CSF_OPT_INC}"
+        CSF_OPT_LIB="${FREETYPE_OPT_LIB}:${CSF_OPT_LIB}"
+      ],
+      [
+    DISABLE_FREETYPE_REASON="(freetype was not found)"
+    AC_MSG_ERROR([Unable to locate the required FreeType library])
+      ])
+    else
+      DISABLE_FREETYPE_REASON="(freetype was not found)"
+    fi
+    CPPFLAGS=${CPPFLAGS_old}
+    LDFLAGS=${LDFLAGS_old}
   fi
 else
-  DISABLE_FREETYPE_REASON="(--with-freetype=DIR option was not defined)"
+  DISABLE_FREETYPE_REASON="(freetype requires OpenGL support)"
 fi
-AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] )
+#AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] ) 
 
 #---------------------------------------------------------------------
 #
@@ -475,52 +499,99 @@ AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] )
 #---------------------------------------------------------------------
 AC_ARG_WITH([ftgl],
   [AC_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
-  [ftgl="${withval}"],[ftgl=])
+  [ftgl="${withval}"],[ftgl=yes])
 
 CSF_FTGL_INCLUDES=""
 CSF_FTGL_LIB=""
+HAVE_FTGL=no
 
 if test "xno" = "x${HAVE_FREETYPE}"; then
-  HAVE_FTGL=no
   DISABLE_FTGL_REASON=$DISABLE_FREETYPE_REASON
 else
   AC_LANG([C++])
-  HAVE_FTGL=no
-  HAVE_FTGL_INC=yes
-  CPPFLAGS="-I$ftgl/include $CPPFLAGS";
-  AC_CHECK_HEADER( [FTGL/FTGL.h], [], [HAVE_FTGL_INC=no] )
-  if test ! -d $ftgl; then
-	DISABLE_FTGL_REASON="($ftgl directory is not exists)"
-	AC_MSG_ERROR([$ftgl directory is not exists])
-  elif test "x$HAVE_FTGL_INC" = "xyes"; then
-    CSF_FTGL_INCLUDES="-I$ftgl/include/FTGL"
-    HAVE_FTGL_LIB=yes
-    AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
-    LDFLAGS="-L$ftgl/lib"
-    LIBS_sv=$LIBS
-    LIBS="-lftgl $CSF_OpenGlLibs_LIB $LIBS"
-    #we have problem with unresolved symbols on 64 stations
-    CSF_FTGL_LIB="-L$ftgl/lib -lftgl"
-    AC_TRY_LINK([
-#include <FTGL/FTGL.h>
-#include <FTGL/FTGLTextureFont.h>
-], [
-FTGLTextureFont font("");], [
-CSF_OPT_INC="$ftgl/include:${CSF_OPT_INC}"
-CSF_OPT_LIB="$ftgl/lib:${CSF_OPT_LIB}"
-AC_MSG_RESULT(yes)
-], [
-AC_MSG_RESULT(no)
-]) 
-    LIBS=$LIBS_sv
-  fi
-  if test "xyes" = "x$HAVE_FTGL_LIB"; then
-    HAVE_FTGL=yes
+  if test "xno" = "x${ftgl}"; then
+    dnl ftgl check is explicitly disabled by --without-ftgl or --with-ftgl=no
+    AC_MSG_NOTICE([ftgl check is explicitly disabled])
+    DISABLE_FTGL_REASON="(ftgl check was explicitly disabled)"
   else
-    DISABLE_FTGL_REASON="(ftgl was not found)"
+    if test "xyes" = "x${ftgl}" -o "x/usr" = "x${ftgl}"; then
+      dnl try native ftgl (default)
+      ftgl=/usr
+      AC_MSG_NOTICE(try system ftgl)
+      FTGL_INCLUDES="-I/usr/include/FTGL"
+      FTGL_LIBS="-lftgl"
+      FTGL_OPT_INC="/usr/include/FTGL"
+      FTGL_OPT_LIB=
+    else
+      AC_MSG_NOTICE(try ftgl in ${ftgl})
+      if test ! -d ${ftgl}; then
+    DISABLE_FTGL_REASON="(${ftgl} directory does not exists)"
+    AC_MSG_ERROR([${ftgl} directory does not exists])
+      fi
+      FTGL_INCLUDES="-I${ftgl}/include -I${ftgl}/include/FTGL"
+      FTGL_LIBS="-L${ftgl}/lib -lftgl"
+      FTGL_OPT_INC="${ftgl}/include:${ftgl}/include/FTGL"
+      FTGL_OPT_LIB="${ftgl}/lib"
+    fi
+    for hf in ftgl.h FTGL.h; do
+      dnl check presence of ftgl header file in the specified directory
+      test -f ${ftgl}/include/FTGL/${hf} -o -f ${ftgl}/include/${hf} && HAVE_FTGL_INC=yes
+      test "xyes" = "x${HAVE_FTGL_INC}" -a "${hf}" = "FTGL.h" && HAVE_FTGL_UPPERCASE=-DHAVE_FTGL_UPPERCASE
+      test "xyes" = "x${HAVE_FTGL_INC}" && break
+    done
+    if test "xyes" = "x${HAVE_FTGL_INC}" ; then
+      CPPFLAGS_old=${CPPFLAGS}
+      LDFLAGS_old=${LDFLAGS}
+      CPPFLAGS="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE} ${CSF_FREETYPE_INCLUDES} $CPPFLAGS"
+      LDFLAGS="${FTGL_LIBS} ${CSF_FREETYPE_LIB} $LDFLAGS"
+      AC_CHECK_HEADERS([${hf}],
+      [
+        HAVE_FTGL_INC=yes
+        break
+      ],
+      [
+        HAVE_FTGL_INC=no
+      ])
+      if test "x${HAVE_FTGL_INC}" = "xyes"; then
+        AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
+        CPPFLAGS="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE} ${CSF_FREETYPE_INCLUDES} ${CPPFLAGS_old}"
+        AC_TRY_LINK(
+        [
+          #ifdef HAVE_FTGL_UPPERCASE
+          #include <FTGL/FTGL.h>
+          #include <FTGL/FTGLTextureFont.h>
+          #else
+          #include <FTGL/ftgl.h>
+          #endif
+        ],
+        [
+          FTGLTextureFont font("");
+        ],
+        [
+          AC_MSG_RESULT(yes)
+          HAVE_FTGL=yes
+          CSF_FTGL_INCLUDES="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE}"
+          CSF_FTGL_LIB="${FTGL_LIBS}"
+          CSF_OPT_INC="${FTGL_OPT_INC}:${CSF_OPT_INC}"
+          CSF_OPT_LIB="${FTGL_OPT_LIB}:${CSF_OPT_LIB}"
+        ],
+        [
+          AC_MSG_RESULT(no)
+          DISABLE_FTGL_REASON="(ftgl was not found)"
+      AC_MSG_ERROR([Unable to locate the required ftgl library])
+        ])
+      else
+        DISABLE_FTGL_REASON="(ftgl was not found)"
+      fi
+      CPPFLAGS=${CPPFLAGS_old}
+      LDFLAGS=${LDFLAGS_old}
+    else
+      AC_MSG_RESULT([ftgl was not found])
+      DISABLE_FTGL_REASON="(ftgl was not found)"
+    fi
   fi
 fi
-AM_CONDITIONAL( HAVE_FTGL, [test "xyes" = "x$HAVE_FTGL"] )
+#AM_CONDITIONAL( HAVE_FTGL, [test "xyes" = "x$HAVE_FTGL"] )
 
 #---------------------------------------------------------------------
 #
@@ -577,7 +648,7 @@ else
 	fi
   fi
 fi
-AM_CONDITIONAL( HAVE_GL2PS, [test "xyes" = "x$HAVE_GL2PS"] )
+#AM_CONDITIONAL( HAVE_GL2PS, [test "xyes" = "x$HAVE_GL2PS"] )
 
 #---------------------------------------------------------------------
 #
@@ -626,7 +697,7 @@ else
     DISABLE_FREEIMAGE_REASON="(freeimage was not found)"
   fi
 fi
-AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
+#AM_CONDITIONAL( HAVE_FREEIMAGE, [test "xyes" = "x$HAVE_FREEIMAGE"] )
 
 #---------------------------------------------------------------------
 #
@@ -715,7 +786,7 @@ else
   fi
 fi
 
-AM_CONDITIONAL( HAVE_TBB, [test "xyes" = "x$HAVE_TBB"] )
+#AM_CONDITIONAL( HAVE_TBB, [test "xyes" = "x$HAVE_TBB"] )
 
 #---------------------------------------------------------------------
 #
@@ -727,35 +798,52 @@ AC_ARG_WITH([qt],
   [AC_HELP_STRING([--with-qt=QTDIR],[Location of QT])],
   [qt="${withval}"],[qt=])
 
-CSF_QT_INCLUDES=""
-CSF_QT_LIB=""
-
-if test "xno" = "x$HAVE_GL"; then
+if test "xno" = "xno$qt"; then
+# user specified --without-qt
   HAVE_QT=no
+  DISABLE_QT_REASON="(--with-qt=DIR option was not defined)"
 else
-  AC_LANG([C++])
-  HAVE_QT=yes
-  HAVE_QT_INC=yes
-  if test "x$qt" != "x"; then
-    CPPFLAGS="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include $CPPFLAGS";
+  CSF_QT_INCLUDES=""
+  CSF_QT_LIB=""
+
+  if test "xno" = "x$HAVE_GL"; then
+  	HAVE_QT=no
+  	DISABLE_QT_REASON="(OpenGL  was not found)"
   else
-    AC_MSG_NOTICE("--with-qt key is not defined")
-  fi
-  AC_CHECK_HEADER( [Qt/qpixmap.h], [], [HAVE_QT_INC=no] )
-  if test "x$HAVE_QT_INC" = "xyes"; then
-    CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
-    HAVE_QT_LIB=yes
-    AC_MSG_CHECKING([for connect in -lQtGui])
-    LDFLAGS="-L$qt/lib $LDFLAGS"
-    LIBS="$CSF_OpenGlLibs_LIB $LIBS"
-    AC_CHECK_LIB( [QtGui], [connect], [CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"], [HAVE_QT_LIB=no] )
-  fi
-  if test "xno" = "x$HAVE_QT_LIB"; then
-    HAVE_QT=no
-    AC_MSG_NOTICE("Specify --with-qt to enable QT support")
+  	AC_LANG([C++])
+  	HAVE_QT=no
+  	HAVE_QT_INC=no
+	CPPFLAGS="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include $CPPFLAGS"
+  	AC_CHECK_HEADER( [Qt/qpixmap.h], [HAVE_QT_INC=yes], [HAVE_QT_INC=no] )
+	if test ! -d $qt; then
+	   DISABLE_QT_REASON="($qt directory is not exists)"
+	   AC_MSG_ERROR([$qt directory is not exists])
+  	elif test "x$HAVE_QT_INC" = "xyes"; then
+    	   CSF_QT_INCLUDES="-I$qt/include/QtGui -I$qt/include/QtCore -I$qt/include/Qt -I$qt/include"
+    	   HAVE_QT_LIB=yes
+    	   AC_MSG_CHECKING([for connect in -lQtGui])
+    	   LDFLAGS="-L$qt/lib $LDFLAGS"
+   	   LIBS="$CSF_OpenGlLibs_LIB $LIBS"
+    	   AC_CHECK_LIB( [QtGui], [connect],
+           [
+		CSF_QT_LIB="-L$qt/lib -lQtGui -lQtCore"
+		CSF_OPT_INC="$qt/include/QtGui:$qt/include/QtCore:$qt/include/Qt:$qt/include:${CSF_OPT_INC}"
+		CSF_OPT_LIB="$qt/lib:${CSF_OPT_LIB}"
+		HAVE_QT_LIB=yes
+	   ],
+	   [
+		HAVE_QT_LIB=no
+	   ])
+  	fi
+	if test "xyes" = "x$HAVE_QT_LIB"; then
+	    HAVE_QT=yes
+	else
+	    HAVE_QT=no
+            DISABLE_QT_REASON="(qt was not found)"
+	fi
   fi
 fi
-AM_CONDITIONAL( HAVE_QT, [test "xyes" = "x$HAVE_QT"] )
+#AM_CONDITIONAL( HAVE_QT, [test "xyes" = "x$HAVE_QT"] )
 
 AC_LANG([C])
 
@@ -1072,6 +1160,7 @@ echo "gl2ps         : $HAVE_GL2PS $DISABLE_GL2PS_REASON"
 echo "freeimage     : $HAVE_FREEIMAGE $DISABLE_FREEIMAGE_REASON"
 echo "tbb includes  : $HAVE_TBB_INC $DISABLE_TBB_REASON_INC"
 echo "tbb libraries : $HAVE_TBB $DISABLE_TBB_REASON_LIB"
+echo "qt            : $HAVE_QT $DISABLE_QT_REASON"
 echo
 echo "Component                   Build"
 echo "--------------------------  -----"

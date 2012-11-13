@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -96,18 +99,7 @@
 class Precision  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //!  Returns the recommended precision value <br>
 //!  when checking the equality of two angles (given in radians). <br>
@@ -171,6 +163,10 @@ public:
 //!   becomes easily measurable, but only within a restricted <br>
 //! space which contains some small objects of the complete scene. <br>
   Standard_EXPORT   static  Standard_Real Confusion() ;
+  
+//! Returns square of Confusion. <br>
+//! Created for speed and convenience. <br>
+  Standard_EXPORT   static  Standard_Real SquareConfusion() ;
   //!Returns the precision value in real space, frequently <br>
 //! used by intersection algorithms to decide that a solution is reached. <br>
 //! This function provides an acceptable level of precision <br>
