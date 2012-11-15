@@ -336,7 +336,7 @@ void DDF_IOStream::ReadWord(TCollection_AsciiString& buffer)
   }
 
   IsEnd = Standard_False;
-  
+
   while (!IsEnd && !DDF_IOStream::IsEnd()) {
     buffer += c;
     myIStream->get(c);

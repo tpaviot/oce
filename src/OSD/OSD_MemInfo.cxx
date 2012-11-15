@@ -17,10 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #if (defined(_WIN32) || defined(__WIN32__))
   #if defined(__MINGW32__)
     #define WIN32_WINNT 0x0500
@@ -41,6 +37,10 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
