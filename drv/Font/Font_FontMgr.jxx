@@ -1,0 +1,3 @@
+#ifndef _Font_FontMgr_HeaderFile
+#include <Font_FontMgr.hxx>
+#endif

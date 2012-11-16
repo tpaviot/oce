@@ -19,7 +19,8 @@ TNaming_SUBSTRACTION,
 TNaming_CONSTSHAPE,
 TNaming_FILTERBYNEIGHBOURGS,
 TNaming_ORIENTATION,
-TNaming_WIREIN
+TNaming_WIREIN,
+TNaming_SHELLIN
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

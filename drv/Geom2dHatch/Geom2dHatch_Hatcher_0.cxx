@@ -20,15 +20,6 @@
 #ifndef _Geom2dHatch_Intersector_HeaderFile
 #include <Geom2dHatch_Intersector.hxx>
 #endif
-#ifndef _Geom2dHatch_ElementOfHatcher_HeaderFile
-#include <Geom2dHatch_ElementOfHatcher.hxx>
-#endif
-#ifndef _Geom2dHatch_ElementsOfHatcher_HeaderFile
-#include <Geom2dHatch_ElementsOfHatcher.hxx>
-#endif
-#ifndef _Geom2dHatch_MapOfElementsOfElementsOfHatcher_HeaderFile
-#include <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
-#endif
 #ifndef _Geom2dHatch_HatchingOfHatcher_HeaderFile
 #include <Geom2dHatch_HatchingOfHatcher.hxx>
 #endif
@@ -40,6 +31,15 @@
 #endif
 #ifndef _Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher_HeaderFile
 #include <Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher.hxx>
+#endif
+#ifndef _Geom2dHatch_ElementOfHatcher_HeaderFile
+#include <Geom2dHatch_ElementOfHatcher.hxx>
+#endif
+#ifndef _Geom2dHatch_ElementsOfHatcher_HeaderFile
+#include <Geom2dHatch_ElementsOfHatcher.hxx>
+#endif
+#ifndef _Geom2dHatch_MapOfElementsOfElementsOfHatcher_HeaderFile
+#include <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
 #endif
 #ifndef _Geom2dHatch_ClassifierOfHatcher_HeaderFile
 #include <Geom2dHatch_ClassifierOfHatcher.hxx>
@@ -61,14 +61,6 @@
 #define TheCurveH_hxx <Geom2dAdaptor_Curve.hxx>
 #define TheIntersector Geom2dHatch_Intersector
 #define TheIntersector_hxx <Geom2dHatch_Intersector.hxx>
-#define HatchGen_Element Geom2dHatch_ElementOfHatcher
-#define HatchGen_Element_hxx <Geom2dHatch_ElementOfHatcher.hxx>
-#define HatchGen_Elements Geom2dHatch_ElementsOfHatcher
-#define HatchGen_Elements_hxx <Geom2dHatch_ElementsOfHatcher.hxx>
-#define HatchGen_MapOfElementsOfElements Geom2dHatch_MapOfElementsOfElementsOfHatcher
-#define HatchGen_MapOfElementsOfElements_hxx <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
-#define HatchGen_MapOfElementsOfElements Geom2dHatch_MapOfElementsOfElementsOfHatcher
-#define HatchGen_MapOfElementsOfElements_hxx <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
 #define HatchGen_Hatching Geom2dHatch_HatchingOfHatcher
 #define HatchGen_Hatching_hxx <Geom2dHatch_HatchingOfHatcher.hxx>
 #define HatchGen_Hatchings Geom2dHatch_HatchingsOfHatcher
@@ -81,6 +73,14 @@
 #define HatchGen_DataMapNodeOfHatchings_hxx <Geom2dHatch_DataMapNodeOfHatchingsOfHatcher.hxx>
 #define HatchGen_DataMapIteratorOfHatchings Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher
 #define HatchGen_DataMapIteratorOfHatchings_hxx <Geom2dHatch_DataMapIteratorOfHatchingsOfHatcher.hxx>
+#define HatchGen_Element Geom2dHatch_ElementOfHatcher
+#define HatchGen_Element_hxx <Geom2dHatch_ElementOfHatcher.hxx>
+#define HatchGen_Elements Geom2dHatch_ElementsOfHatcher
+#define HatchGen_Elements_hxx <Geom2dHatch_ElementsOfHatcher.hxx>
+#define HatchGen_MapOfElementsOfElements Geom2dHatch_MapOfElementsOfElementsOfHatcher
+#define HatchGen_MapOfElementsOfElements_hxx <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
+#define HatchGen_MapOfElementsOfElements Geom2dHatch_MapOfElementsOfElementsOfHatcher
+#define HatchGen_MapOfElementsOfElements_hxx <Geom2dHatch_MapOfElementsOfElementsOfHatcher.hxx>
 #define HatchGen_Classifier Geom2dHatch_ClassifierOfHatcher
 #define HatchGen_Classifier_hxx <Geom2dHatch_ClassifierOfHatcher.hxx>
 #define HatchGen_FClass2dOfClassifier Geom2dHatch_FClass2dOfClassifierOfHatcher

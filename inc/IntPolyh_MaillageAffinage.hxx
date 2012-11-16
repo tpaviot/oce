@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -63,18 +66,7 @@ class IntPolyh_ArrayOfCouples;
 class IntPolyh_MaillageAffinage  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   IntPolyh_MaillageAffinage(const Handle(Adaptor3d_HSurface)& S1,const Standard_Integer NbSU1,const Standard_Integer NbSV1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Integer NbSU2,const Standard_Integer NbSV2,const Standard_Integer PRINT);

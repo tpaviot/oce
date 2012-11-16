@@ -150,9 +150,8 @@ static Standard_Integer QANewDBRepNaming_CheckNaming(Draw_Interpretor& di,Standa
   TopExp::MapShapes(aSelectedShape, allSubShapes);
 //  cout<<"SELECTION ..."<<endl;
 //  cout << "i = " << allSubShapes.Extent() << endl;
-  Standard_Integer count = 0, j, i;
+  Standard_Integer count = 0, i;
   char aDrawName[80] = "Select";
-  char aDrawNumber[10];
 
   for (i = 1; i <= allSubShapes.Extent(); i++) {
     const TDF_Label& aSubLabel = L.FindChild(i);
@@ -231,8 +230,7 @@ static Standard_Integer QANewDBRepNaming_CheckNaming(Draw_Interpretor& di,Standa
   TDF_LabelMap scope;
   TDF_ChildIterator itr(L.Root(), Standard_True);
   i = 1;
-  char aNotSolved[1000];
-  aNotSolved[0]=0;
+  TCollection_AsciiString aNotSolved;
   for (itr.Initialize(L, Standard_False); itr.More(); itr.Next(), i++) {
     Handle(TNaming_NamedShape) aNS;
     if (!itr.Value().FindAttribute(TNaming_NamedShape::GetID(), aNS)) {
@@ -245,7 +243,8 @@ static Standard_Integer QANewDBRepNaming_CheckNaming(Draw_Interpretor& di,Standa
     TNaming_Selector SLSolving(itr.Value());
     if (!SLSolving.Solve(scope)) {
       isFailured = Standard_True;
-      sprintf(aNotSolved,"%s %d",aNotSolved,i);
+      aNotSolved += " ";
+      aNotSolved += i;
       continue;
     }
     const Handle(TNaming_NamedShape)& aResultOfSolving = SLSolving.NamedShape();
@@ -253,8 +252,8 @@ static Standard_Integer QANewDBRepNaming_CheckNaming(Draw_Interpretor& di,Standa
 //       cout<<"Failure of Solving: it didn't produced a shape!"<<endl;
 //       return 1;
       isFailured = Standard_True;
-      sprintf(aNotSolved,"%s %d",aNotSolved,i);
-//	break;
+      aNotSolved += " ";
+      aNotSolved += i;
       continue;
     }      
     TopoDS_Shape aRes;
@@ -309,10 +308,10 @@ static Standard_Integer QANewDBRepNaming_CheckNaming(Draw_Interpretor& di,Standa
 	}
       }
       if (!aCoord1.IsEqual(aCoord2,Precision::Confusion()) || aRes.ShapeType() != allTranslatedSubShapes(i).ShapeType()) {
-	sprintf(aNotSolved,"%s %d",aNotSolved,i);
-	isFailured = Standard_True;
-	//    break;
-	continue;
+	    aNotSolved += " ";
+        aNotSolved += i;
+	    isFailured = Standard_True;
+	    continue;
       }
     }    
 //    cout<<endl;

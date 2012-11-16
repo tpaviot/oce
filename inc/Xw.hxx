@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -18,7 +21,6 @@
 #endif
 class Xw_Driver;
 class Xw_Window;
-class Xw_PixMap;
 class Xw_ColorMap;
 class Xw_TypeMap;
 class Xw_WidthMap;
@@ -38,18 +40,7 @@ class Xw_HListOfMFTFonts;
 class Xw  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Global Trace Level for Maintenance Only <br>
   Standard_EXPORT   static  void SetTrace(const Standard_Integer TraceLevel,const Standard_Integer ErrorLevel) ;
@@ -75,7 +66,6 @@ private:
 
 friend class Xw_Driver;
 friend class Xw_Window;
-friend class Xw_PixMap;
 friend class Xw_ColorMap;
 friend class Xw_TypeMap;
 friend class Xw_WidthMap;

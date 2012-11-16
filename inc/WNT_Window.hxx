@@ -73,8 +73,8 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Handle_Aspect_PixMap_HeaderFile
-#include <Handle_Aspect_PixMap.hxx>
+#ifndef _Image_PixMap_HeaderFile
+#include <Image_PixMap.hxx>
 #endif
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
@@ -86,12 +86,10 @@ class Aspect_WindowDefinitionError;
 class Aspect_WindowError;
 class WNT_WDriver;
 class WNT_IconBox;
-class WNT_PixMap;
 class WNT_GraphicDevice;
 class Aspect_Background;
 class Quantity_Color;
 class Aspect_GradientBackground;
-class Aspect_PixMap;
 
 
 //! This class defines Windows NT window <br>
@@ -211,7 +209,7 @@ public:
 //!	    or the area is out of the Window. <br>
   Standard_EXPORT   virtual  Standard_Boolean DumpArea(const Standard_CString aFilename,const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height,const Standard_Real aGammaValue = 1.0) const;
   //! dump the full contents of the window to a pixmap. <br>
-  Standard_EXPORT   virtual  Handle_Aspect_PixMap ToPixMap() const;
+  Standard_EXPORT   virtual  Standard_Boolean ToPixMap(Image_PixMap& theImage) const;
   //! Loads the XWD file to this Window. <br>
 //!          Returns TRUE if the loading occurs normaly. <br>
 //!  Warning: Note that the Window is enlarged automatically <br>
@@ -286,7 +284,6 @@ public:
 
 friend class WNT_WDriver;
 friend class WNT_IconBox;
-friend class WNT_PixMap;
 
 
   DEFINE_STANDARD_RTTI(WNT_Window)

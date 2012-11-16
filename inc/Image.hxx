@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -45,7 +48,6 @@ class Image_ColorPixelMapHasher;
 class Image_ColorPixelDataMap;
 class Image_IndexPixelMapHasher;
 class Image_LookupTable;
-class Image_PixMap;
 class Image_PixelRowOfDColorImage;
 class Image_PixelFieldOfDColorImage;
 class Image_PixelRowOfDIndexedImage;
@@ -62,18 +64,7 @@ class Image_DataMapIteratorOfLookupTable;
 class Image  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Zoom an Image with a specific PixelInterpolation method. <br>
   Standard_EXPORT   static  void Zoom(const Handle(Image_Image)& aImage,const Image_PixelInterpolation& aInterpolation,const Standard_Real aCoefX,const Standard_Real aCoefY) ;
@@ -148,7 +139,6 @@ friend class Image_ColorPixelMapHasher;
 friend class Image_ColorPixelDataMap;
 friend class Image_IndexPixelMapHasher;
 friend class Image_LookupTable;
-friend class Image_PixMap;
 friend class Image_PixelRowOfDColorImage;
 friend class Image_PixelFieldOfDColorImage;
 friend class Image_PixelRowOfDIndexedImage;

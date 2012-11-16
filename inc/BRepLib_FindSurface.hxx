@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -54,18 +57,7 @@ class TopLoc_Location;
 class BRepLib_FindSurface  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   BRepLib_FindSurface();
@@ -74,13 +66,19 @@ public:
 //!          if <OnlyPlane> is true, the computed surface will be <br>
 //!          a plane. If it is not possible to find a plane, the <br>
 //!          flag NotDone will be set. <br>
-  Standard_EXPORT   BRepLib_FindSurface(const TopoDS_Shape& S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False);
+//!          If <OnlyClosed> is true,  then  S  sould be a wire <br>
+//!          and the existing surface,  on  which wire S is not <br>
+//!          closed in 2D, will be ignored. <br>
+  Standard_EXPORT   BRepLib_FindSurface(const TopoDS_Shape& S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False);
   //! Computes the Surface from the edges of  <S> with the <br>
 //!          given tolerance. <br>
 //!          if <OnlyPlane> is true, the computed surface will be <br>
 //!          a plane. If it is not possible to find a plane, the <br>
 //!          flag NotDone will be set. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False) ;
+//!          If <OnlyClosed> is true,  then  S  sould be a wire <br>
+//!          and the existing surface,  on  which wire S is not <br>
+//!          closed in 2D, will be ignored. <br>
+  Standard_EXPORT     void Init(const TopoDS_Shape& S,const Standard_Real Tol = -1,const Standard_Boolean OnlyPlane = Standard_False,const Standard_Boolean OnlyClosed = Standard_False) ;
   
   Standard_EXPORT     Standard_Boolean Found() const;
   

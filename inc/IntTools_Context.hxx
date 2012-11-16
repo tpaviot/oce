@@ -49,6 +49,7 @@ class Geom_Curve;
 class IntTools_SurfaceRangeLocalizeData;
 class BRepClass3d_SolidClassifier;
 class TopoDS_Solid;
+class Geom2dHatch_Hatcher;
 class TopoDS_Vertex;
 class gp_Pnt2d;
 class gp_Pnt;
@@ -95,6 +96,11 @@ Standard_EXPORT virtual ~IntTools_Context();
 //! Returns a reference to solid classifier <br>
 //! for given solid <br>
   Standard_EXPORT     BRepClass3d_SolidClassifier& SolidClassifier(const TopoDS_Solid& aSolid) ;
+  
+//! Returns a reference to 2D hatcher <br>
+//! for given face <br>
+//! <br>
+  Standard_EXPORT     Geom2dHatch_Hatcher& Hatcher(const TopoDS_Face& aF) ;
   
 //! Computes parameter of the vertex aV on <br>
 //! the edge aE. <br>
@@ -200,17 +206,18 @@ Standard_EXPORT virtual ~IntTools_Context();
 protected:
 
 
-
-
-private: 
-
-
 TopTools_IndexedDataMapOfShapeAddress myFClass2dMap;
 TopTools_IndexedDataMapOfShapeAddress myProjPSMap;
 TopTools_IndexedDataMapOfShapeAddress myProjPCMap;
 IntTools_IndexedDataMapOfTransientAddress myProjPTMap;
 TopTools_IndexedDataMapOfShapeAddress mySClassMap;
 TopTools_IndexedDataMapOfShapeAddress myProjSDataMap;
+TopTools_IndexedDataMapOfShapeAddress myHatcherMap;
+
+
+private: 
+
+
 
 
 };

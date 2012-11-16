@@ -87,8 +87,7 @@ uses
     ColorScale              from Aspect,
     PrintAlgo               from Aspect,
 
-    CRawBufferData          from Image,
-
+    BufferType              from Graphic3d,
     CBitFields8             from Graphic3d,
     CView                   from Graphic3d,
     GraphicDriver           from Graphic3d,
@@ -118,10 +117,12 @@ uses
     ExportFormat            from Graphic3d,
     SortType                from Graphic3d,
     Color                   from Quantity,
-    FontAspect              from OSD,
+    FontAspect              from Font,
     AsciiString             from TCollection,
     ExtendedString          from TCollection,
-    CGraduatedTrihedron     from Graphic3d
+    CGraduatedTrihedron     from Graphic3d,
+
+    PixMap                  from Image
 
 raises
     TransformError          from Visual3d,
@@ -634,13 +635,13 @@ is
                           -- Name of font for names of axes --
                           fontOfNames : out AsciiString from TCollection;
                           -- Style of names of axes --
-                          styleOfNames : out FontAspect from OSD;
+                          styleOfNames : out FontAspect from Font;
                           -- Size of names of axes --
                           sizeOfNames : out Integer from Standard;
                           -- Name of font for values --
                           fontOfValues : out AsciiString from TCollection;
                           -- Style of values --
-                          styleOfValues : out FontAspect from OSD;
+                          styleOfValues : out FontAspect from Font;
                           -- Size of values --
                           sizeOfValues : out Integer from Standard)
     returns Boolean from Standard
@@ -677,13 +678,13 @@ is
                               -- Name of font for names of axes --
                               fontOfNames : AsciiString from TCollection;
                               -- Style of names of axes --
-                              styleOfNames : FontAspect from OSD;
+                              styleOfNames : FontAspect from Font;
                               -- Size of names of axes --
                               sizeOfNames : Integer from Standard;
                               -- Name of font for values --
                               fontOfValues : AsciiString from TCollection;
                               -- Style of values --
-                              styleOfValues : FontAspect from OSD;
+                              styleOfValues : FontAspect from Font;
                               -- Size of values --
                               sizeOfValues : Integer from Standard)
     ---Purpose: Displays a graduated trihedron.
@@ -1238,7 +1239,8 @@ is
         ---Purpose: Change offscreen FBO viewport.
 
         BufferDump( me            : mutable;
-                    buffer        : in out CRawBufferData from Image )
+                    theImage      : in out PixMap from Image;
+                    theBufferType : BufferType from Graphic3d )
                    returns Boolean from Standard
         is static;
         ---Level: Public

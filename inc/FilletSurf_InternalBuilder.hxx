@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -82,18 +85,7 @@ class Geom_TrimmedCurve;
 class FilletSurf_InternalBuilder  : public ChFi3d_FilBuilder {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   FilletSurf_InternalBuilder(const TopoDS_Shape& S,const ChFi3d_FilletShape FShape = ChFi3d_Polynomial,const Standard_Real Ta = 1.0e-2,const Standard_Real Tapp3d = 1.0e-4,const Standard_Real Tapp2d = 1.0e-5);

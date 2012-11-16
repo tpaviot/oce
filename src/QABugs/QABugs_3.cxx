@@ -135,31 +135,24 @@ static int BUC60614(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 #endif
 
 static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** argv) {
-//  char file1[100];
   gp_Pnt2d uvSurf;
-  double U,V;
   TopAbs_State state;
   
-  if(argc < 2){
-    printf("Usage: %s  draw_format_face\n [name] [interactive (0|1)]",argv[0]);
+  if (argc == 3) {
+    // BUC60609 shape name
+  } else if ( argc == 5 ) {
+    // BUC60609 shape name U V
+  } else {
+    di << "Usage : "<< argv[0] << " shape name [U V]" << "\n";
     return(-1);
   }
   
-  // MKV 30.03.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-  const Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#else
-  Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#endif
-  
-  Standard_Character  *file1 = new Standard_Character [strlen(DD)+strlen(argv[1])+2];
-  sprintf(file1,"%s/%s",DD,argv[1]);
+  TCollection_AsciiString  aFilePath(argv[1]); 
   
   filebuf fic;
   istream in(&fic);
-  if (!fic.open(file1,ios::in)) {
-    di << "Cannot open file for reading : " << file1 << "\n";
-    delete file1;
+  if (!fic.open(aFilePath.ToCString(),ios::in)) {
+    di << "Cannot open file for reading : " << aFilePath << "\n";
     return(-1);
   }
 
@@ -173,8 +166,7 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       S.Read(in);
       S.Read(theShape,in);
     }else{
-      di << "Wrong entity type in " << file1 << "\n";
-      delete file1;
+      di << "Wrong entity type in " << aFilePath << "\n";
       return(-1);
     }
   }
@@ -183,12 +175,6 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 
   if(argc > 2){
     DBRep::Set(argv[2],face);
-  }
-
-  Standard_Boolean inter=Standard_False ;
-  
-  if(argc > 3){
-    inter= (atof(argv[3]) == 0) ? Standard_False : Standard_True ;
   }
 
   Standard_Real faceUMin,faceUMax,faceVMin,faceVMax;
@@ -215,62 +201,35 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   // Hence IT WOULD BE USEFUL IF TopOpeBRep_PointClassifier COULD
   // COPE WITH PERIODIC SURFACES, i.e. U,V +-Period giving same result.
   // *************************************************
-  if(inter && (argc != 6)) {
-//    while(cin){
-      di << "Input U:   " << "\n";
-//      cin >> U;
-//      if(!cin) {
-	delete file1;
-	return(0);
-//      }
-      di << "Input V:   " << "\n";
-//      cin >> V;
-//      if(!cin) {
-	delete file1;
-	return(0);
-//      }
-      
-      uvSurf = gp_Pnt2d(U, V);
-      
-      //gp_Pnt2d uvSurf(0.14,5.1);  // outside!!!
-      //gp_Pnt2d uvSurf2(1.28,5.1); // inside
-    
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << U << " V=" << V << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << U << " V=" << V << "  classified OUTSIDE" << "\n";
-      }
-//    }
-  } else {
-    if(argc != 6) {
-      uvSurf = gp_Pnt2d(0.14,5.1);
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << 0.14 << " V=" << 5.1 << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << 0.14 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
-      }
 
-      uvSurf = gp_Pnt2d(1.28,5.1);
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << 1.28 << " V=" << 5.1 << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << 1.28 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
-      }
-    } else {
-      uvSurf = gp_Pnt2d(atof(argv[4]),atof(argv[5]));
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << atof(argv[4]) << " V=" << atof(argv[5]) << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << atof(argv[4]) << " V=" << atof(argv[5]) << "  classified OUTSIDE" << "\n";
-      }
+  if (argc == 3) {
+    uvSurf = gp_Pnt2d(0.14,5.1);
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << 0.14 << " V=" << 5.1 << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << 0.14 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
+    }
+
+    uvSurf = gp_Pnt2d(1.28,5.1);
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << 1.28 << " V=" << 5.1 << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << 1.28 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
+    }
+  } else {
+    uvSurf = gp_Pnt2d(atof(argv[3]),atof(argv[4]));
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << atof(argv[3]) << " V=" << atof(argv[4]) << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << atof(argv[3]) << " V=" << atof(argv[4]) << "  classified OUTSIDE" << "\n";
     }
   }
   return 0;
 }
+
 
 #if ! defined(WNT)
 void stringerror(int state)
@@ -422,7 +381,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   istream in(&fic);
   if (!fic.open(filename,ios::in)) {
     di << "Cannot open file for reading : " << filename << "\n";
-    delete filename;
+    delete [] filename;
     return -1;
   }
   
@@ -470,7 +429,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       Sec.Build();
       if(!Sec.IsDone()){
 	di << "Error performing intersection: not done." << "\n";
-	delete filename;
+	delete [] filename;
 	return -1;
       }
       res = Sec.Shape();
@@ -480,7 +439,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       Sec.Build();
       if(!Sec.IsDone()){
 	di << "Error performing intersection: not done." << "\n";
-	delete filename;
+	delete [] filename;
 	return -1;
       }
       res = Sec.Shape();
@@ -489,7 +448,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   }catch(Standard_Failure){
     Handle(Standard_Failure) error = Standard_Failure::Caught();
     di << "Error performing intersection: not done." << "\n";
-    delete filename;
+    delete [] filename;
     return -1;
   }
   
@@ -506,7 +465,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   
   di << "Done" << "\n";
 
-  delete filename;
+  delete [] filename;
   
   return 0;
 }
@@ -592,8 +551,8 @@ static int BUC60547(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 
   BRepTools::Write(Com,FileName); 
 
-  delete Ch;
-  delete FileName;
+  delete [] Ch;
+  delete [] FileName;
   
   return 0;
 }
@@ -625,7 +584,7 @@ static Standard_Integer BUC60632(Draw_Interpretor& di, Standard_Integer /*n*/, c
   TCollection_ExtendedString Ext1("Dim1"); 
   Handle(AIS_LengthDimension) Dim1 = new AIS_LengthDimension(V1,V2,Plane1,atof(a[2]),Ext1); 
   
-  myAIScontext->SetDisplayMode(Dim1, atof(a[1]));
+  myAIScontext->SetDisplayMode(Dim1, atoi(a[1]));
   myAIScontext->Display(Dim1);
   return 0;
 }
@@ -1237,11 +1196,13 @@ static Standard_Integer BUC60811(Draw_Interpretor& di, Standard_Integer argc, co
   Ex.Init(FP, TopAbs_VERTEX); 
   TopoDS_Vertex v1 = TopoDS::Vertex(Ex.Current()); 
   fillet.AddFillet(v1, 20); 
-  printf("\nError is %d ", fillet.Status()); 
+  di << "\n" << "Error is " << fillet.Status() << "\n";
+//  printf("\nError is %d ", fillet.Status()); 
   Ex.Next(); 
   TopoDS_Vertex V2 = TopoDS::Vertex(Ex.Current()); 
   fillet.AddFillet(V2, 20); 
-  printf("\nError is %d ", fillet.Status());
+  di << "\n" << "Error is " << fillet.Status() << "\n";
+//  printf("\nError is %d ", fillet.Status());
   fillet.Build(); 
   FP1 = fillet.Shape(); 
   ais2 = new AIS_Shape( FP1 ); 
@@ -2259,7 +2220,7 @@ void QABugs::Commands_3(Draw_Interpretor& theCommands) {
   theCommands.Add("BUC60623","BUC60623 result Shape1 Shape2",__FILE__,BUC60623,group);
   theCommands.Add("BUC60569","BUC60569 shape",__FILE__,BUC60569,group);
   theCommands.Add("BUC60614","BUC60614 shape",__FILE__,BUC60614,group);
-  theCommands.Add("BUC60609","BUC60609 shape [name] [interactive (0|1)]",__FILE__,BUC60609,group);
+  theCommands.Add("BUC60609","BUC60609 shape name [U V]",__FILE__,BUC60609,group);
 #if ! defined(WNT)
   theCommands.Add("UKI61075","UKI61075",__FILE__,UKI61075,group);
 #endif

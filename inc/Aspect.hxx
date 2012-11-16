@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,7 +58,6 @@ class Aspect_MarkerStyle;
 class Aspect_MarkMap;
 class Aspect_MarkMapEntry;
 class Aspect_Window;
-class Aspect_PixMap;
 class Aspect_GraphicDevice;
 class Aspect_Driver;
 class Aspect_WindowDriver;
@@ -86,18 +88,7 @@ class Aspect_SequenceNodeOfSequenceOfColor;
 class Aspect  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Returns the format size according to the default <br>
 //!      LENGTH unit of the required format <aFOSP>. <br>
@@ -152,7 +143,6 @@ friend class Aspect_MarkerStyle;
 friend class Aspect_MarkMap;
 friend class Aspect_MarkMapEntry;
 friend class Aspect_Window;
-friend class Aspect_PixMap;
 friend class Aspect_GraphicDevice;
 friend class Aspect_Driver;
 friend class Aspect_WindowDriver;

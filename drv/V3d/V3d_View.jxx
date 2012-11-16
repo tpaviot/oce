@@ -82,9 +82,6 @@
 #ifndef _PlotMgt_PlotterDriver_HeaderFile
 #include <PlotMgt_PlotterDriver.hxx>
 #endif
-#ifndef _Image_PixMap_HeaderFile
-#include <Image_PixMap.hxx>
-#endif
 #ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>
 #endif

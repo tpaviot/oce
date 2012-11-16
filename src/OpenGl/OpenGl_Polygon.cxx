@@ -624,4 +624,7 @@ void OpenGl_Polygon::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
   glPopAttrib(); /* skt: GL_ENABLE_BIT*/
 }
 
-/*----------------------------------------------------------------------*/
+void OpenGl_Polygon::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}
