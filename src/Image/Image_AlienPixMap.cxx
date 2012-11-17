@@ -18,7 +18,7 @@
 // and conditions governing the rights and limitations under the License.
 
 #ifdef HAVE_CONFIG_H
-  #include <config.h>
+# include <oce-config.h>
 #endif
 
 #ifdef HAVE_FREEIMAGE
