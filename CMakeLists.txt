@@ -315,21 +315,6 @@ IF(${PROJECT_NAME}_VISUALISATION)
 	IF (NOT WIN32)
 		FIND_PACKAGE(X11 REQUIRED)
 		FIND_LIBRARY( X11_Xmu_LIB Xmu PATHS /usr/openwin/lib )
-		IF( NOT DEFINED X11_FONT_PATH )
-			IF(NOT APPLE)
-				SET(X11_FONT_PATH
-					"/usr/share/X11/fonts"
-					"/usr/share/fonts/X11")
-			ELSE(NOT APPLE)
-				SET(X11_FONT_PATH
-					"/usr/X11/lib/X11/fonts"
-					"/Library/Fonts"
-					"/System/Library/Fonts")
-			ENDIF(NOT APPLE)
-		ENDIF( NOT DEFINED X11_FONT_PATH )
-		SET(X11_FONT_PATH ${X11_FONT_PATH} CACHE PATH
-			"Font directories containing fonts.dir listing files")
-		MARK_AS_ADVANCED(X11_FONT_PATH)
 	ENDIF(NOT WIN32)
 
 	IF (NOT APPLE)
