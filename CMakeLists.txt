@@ -416,8 +416,6 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/DRAW.info
 		src/DrawResources/DrawDefault
 		src/DrawResources/DrawPlugin
-		src/DrawResources/demo
-		src/DrawResources/demo.bat
 		src/DrawResources/idoc
 		src/DrawResources/lamp.ico
 		src/DrawResources/mdltest
@@ -425,7 +423,6 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/tdoc
 		src/DrawResources/test2xl
 		src/DrawResources/vmdltest
-		src/DrawResources/wing.brep 
 		src/DrawResources/dftree.tcl )
 ENDIF(${PROJECT_NAME}_DRAW)
 
