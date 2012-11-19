@@ -1766,7 +1766,7 @@ static void pntsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.setf(ios::scientific,ios::floatfield);
   OS.precision(15);
 #else
-  long form = OS.setf(ios::scientific);
+  std::ios_base::fmtflags form = OS.setf(ios::scientific);
   std::streamsize prec = OS.precision(15);
 #endif
   gp_Pnt P = N->Point();
@@ -1828,7 +1828,7 @@ static void triasave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.setf(ios::scientific,ios::floatfield);
   OS.precision(15);
 #else
-  long form = OS.setf(ios::scientific);
+  std::ios_base::fmtflags form = OS.setf(ios::scientific);
   std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Triangulation(),OS);
@@ -1869,7 +1869,7 @@ static void poly3dsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.setf(ios::scientific,ios::floatfield);
   OS.precision(15);
 #else
-  long form = OS.setf(ios::scientific);
+  std::ios_base::fmtflags form = OS.setf(ios::scientific);
   std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Polygon3D(),OS);
@@ -1909,7 +1909,7 @@ static void poly2dsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.setf(ios::scientific, ios::floatfield);
   OS.precision(15);
 #else
-  long form = OS.setf(ios::scientific);
+  std::ios_base::fmtflags form = OS.setf(ios::scientific);
   std::streamsize prec = OS.precision(15);
 #endif
   Poly::Write(T->Polygon2D(),OS);
