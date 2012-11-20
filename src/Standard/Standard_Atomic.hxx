@@ -63,8 +63,8 @@ int Standard_Atomic_Decrement (volatile int* theValue)
     }
   #else
     extern "C" {
-      __declspec(dllimport) long __stdcall InterlockedIncrement ( long volatile *lpAddend);
-      __declspec(dllimport) long __stdcall InterlockedDecrement ( long volatile *lpAddend);
+      Standard_IMPORT long __stdcall InterlockedIncrement ( long volatile *lpAddend);
+      Standard_IMPORT long __stdcall InterlockedDecrement ( long volatile *lpAddend);
     }
     #define _InterlockedIncrement InterlockedIncrement
     #define _InterlockedDecrement InterlockedDecrement
