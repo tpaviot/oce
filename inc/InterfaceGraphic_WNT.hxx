@@ -43,6 +43,8 @@
 #define WDF_NOERASEBKGRND 0x00000001
 #define WDF_FOREIGN       0x00000002
 
+# include <Standard_Macro.hxx>
+
 typedef struct window_data {
 
   void*    WNT_Window_Ptr;   // pointer to WNT_Window
@@ -76,15 +78,8 @@ typedef struct font_data {
 
 } FONT_DATA;
 
-#ifdef __cplusplus
-extern "C" {
-#endif  /* __cplusplus */
+Standard_IMPORTC long InterfaceGraphic_RealizePalette ( HDC, HPALETTE, BOOL, BOOL );
 
-  __declspec( dllimport ) long InterfaceGraphic_RealizePalette ( HDC, HPALETTE, BOOL, BOOL );
-
-#ifdef __cplusplus
-}
-#endif  /* __cplusplus */
 #endif //WNT
 
 #endif  /* __INTERFACE_GRAPHIC_WNT_HXX */

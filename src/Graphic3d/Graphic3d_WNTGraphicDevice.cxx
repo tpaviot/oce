@@ -135,6 +135,12 @@ void Graphic3d_WNTGraphicDevice::SetGraphicDriver ()
 {
      MyGraphicDriver = MetaGraphicDriverFactory("");
 }
+
+void Graphic3d_WNTGraphicDevice::SetGraphicDriver (const Standard_CString theGraphicLib)
+{
+     MyGraphicDriver = MetaGraphicDriverFactory("");
+}
+
 #endif
 
 #endif  // WNT
