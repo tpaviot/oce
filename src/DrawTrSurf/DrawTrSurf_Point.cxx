@@ -196,7 +196,7 @@ void DrawTrSurf_Point::Dump(Standard_OStream& S) const
   S.setf(ios::scientific,ios::floatfield);
   S.precision(15);
 #else
-  long form = S.setf(ios::scientific);
+  std::ios_base::fmtflags form = S.setf(ios::scientific);
   std::streamsize prec = S.precision(15);
 #endif
   if (is3D)

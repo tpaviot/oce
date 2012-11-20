@@ -134,7 +134,7 @@ static void numsave(const Handle(Draw_Drawable3D)&d, ostream& OS)
   OS.precision(15);
   OS.width(30);
 #else
-  long form = OS.setf(ios::scientific);
+  std::ios_base::fmtflags form = OS.setf(ios::scientific);
   int  prec = OS.precision(15);
   int w = OS.width(30);
 #endif
