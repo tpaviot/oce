@@ -187,7 +187,7 @@ int perf_stop_meter (const char * const MeterName)
   t_TimeCounter* ptc = find_meter (MeterName);
 
   if (ptc && ptc->start_time) {
-    PERF_TIME utime;
+    PERF_TIME utime = 0;
     PICK_TIME (utime)
     ptc->cumul_time += utime - ptc->start_time;
     ptc->start_time = 0;
@@ -210,7 +210,7 @@ int perf_stop_imeter (const int iMeter)
     t_TimeCounter * const ptc = &MeterTable[iMeter-1];
 
     if (ptc->start_time) {
-      PERF_TIME utime;
+      PERF_TIME utime = 0;
       PICK_TIME (utime)
       ptc->cumul_time += utime - ptc->start_time;
       ptc->start_time = 0;

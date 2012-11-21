@@ -439,6 +439,7 @@ Path.SystemName (aFileName);
 cout << "Graphic2d_Image_File::Values('" << aFileName << "'," << 
                 aWidth << "," << aHeight << "," << aDepth << ")" << endl;
 #endif
+        free(pheader);
         return Result;
 
 }
