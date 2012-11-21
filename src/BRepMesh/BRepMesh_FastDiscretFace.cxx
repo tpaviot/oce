@@ -57,6 +57,8 @@
 
 #define UVDEFLECTION 1.e-05
 
+static Standard_Mutex DummyMutex;
+
 static Standard_Real FUN_CalcAverageDUV(TColStd_Array1OfReal& P, const Standard_Integer PLen)
 {
   Standard_Integer i, j, n = 0;
@@ -108,7 +110,8 @@ BRepMesh_FastDiscretFace::BRepMesh_FastDiscretFace
 
 void BRepMesh_FastDiscretFace::Add(const TopoDS_Face&                    theFace,
                                    const Handle(BRepMesh_FaceAttribute)& theAttrib,
-                                   const TopTools_DataMapOfShapeReal&    theMapDefle)
+                                   const TopTools_DataMapOfShapeReal&    theMapDefle,
+                                   const TopTools_MutexForShapeProvider& theMutexProvider)
 {
 #ifndef DEB_MESH
   try
@@ -172,8 +175,7 @@ void BRepMesh_FastDiscretFace::Add(const TopoDS_Face&                    theFace
         const TopoDS_Edge& edge = TopoDS::Edge(ex.Value());
         if(edge.IsNull())
           continue;
-
-        RestoreStructureFromTriangulation(edge, face, gFace, aFaceTrigu, theMapDefle(edge), loc);
+        RestoreStructureFromTriangulation(edge, face, gFace, aFaceTrigu, theMapDefle(edge), loc, theMutexProvider);
       }
     }
     
@@ -324,7 +326,7 @@ void BRepMesh_FastDiscretFace::Add(const TopoDS_Face&                    theFace
     }
     myStructure->ReplaceNodes(aMoveNodes);
   
-    AddInShape(face, (aDef < 0.0)? theAttrib->GetDefFace() : aDef);
+    AddInShape(face, (aDef < 0.0)? theAttrib->GetDefFace() : aDef, theMutexProvider);
 #ifndef DEB_MESH
   }
   catch(Standard_Failure)
@@ -348,22 +350,28 @@ Standard_Boolean BRepMesh_FastDiscretFace::RestoreStructureFromTriangulation
                                 const Handle(BRepAdaptor_HSurface)& theSurf,
                                 const Handle(Poly_Triangulation)&   theTrigu,
                                 const Standard_Real                 theDefEdge,
-                                const TopLoc_Location&              theLoc)
+                                const TopLoc_Location&              theLoc,
+                                const TopTools_MutexForShapeProvider& theMutexProvider)
 {
-  // oan: changes for right restoring of triangulation data from face & edges
-  Handle(Poly_PolygonOnTriangulation) Poly;
-  Poly = BRep_Tool::PolygonOnTriangulation(theEdge, theTrigu, theLoc);
-
-  if (Poly.IsNull() || !Poly->HasParameters())
-  {
-    return Standard_False;
-  }
-  
   // 2d vertex indices
   TopAbs_Orientation orEdge = theEdge.Orientation();
   // Get end points on 2d curve
   gp_Pnt2d uvFirst, uvLast;
-  BRep_Tool::UVPoints(theEdge, theFace, uvFirst, uvLast);
+  // oan: changes for right restoring of triangulation data from face & edges
+  Handle(Poly_PolygonOnTriangulation) Poly;
+
+  {
+    // lock mutex during querying data from edge curves to prevent parallel change of the same data
+    Standard_Mutex* aMutex = theMutexProvider.GetMutex(theEdge);
+    Standard_Mutex::SentryNested aSentry(aMutex == NULL ? DummyMutex : *aMutex,
+                                  aMutex != NULL);
+
+    Poly = BRep_Tool::PolygonOnTriangulation(theEdge, theTrigu, theLoc);
+    if (Poly.IsNull() || !Poly->HasParameters())
+      return Standard_False;
+
+    BRep_Tool::UVPoints(theEdge, theFace, uvFirst, uvLast);
+  }
 
   // Get vertices
   TopoDS_Vertex pBegin, pEnd;
@@ -939,7 +947,7 @@ void BRepMesh_FastDiscretFace::InternalVertices(const Handle(BRepAdaptor_HSurfac
     Standard_Real u, v, dist;
 
     // precision for compare square distances
-    double dPreci = Precision::Confusion()*Precision::Confusion();
+    double dPreci = Precision::SquareConfusion();
 
     // Insert V parameters by deflection criterion
     Standard_Integer i,j;
@@ -1529,7 +1537,8 @@ Standard_Real BRepMesh_FastDiscretFace::Control(const Handle(BRepAdaptor_HSurfac
 //purpose  : 
 //=======================================================================
 void BRepMesh_FastDiscretFace::AddInShape(const TopoDS_Face&  theFace,
-                                          const Standard_Real theDefFace)
+                                          const Standard_Real theDefFace,
+                                          const TopTools_MutexForShapeProvider& theMutexProvider)
 {
 //  gp_Pnt Pt;
   BRep_Builder B;
@@ -1626,6 +1635,12 @@ void BRepMesh_FastDiscretFace::AddInShape(const TopoDS_Face&  theFace,
       const BRepMesh_PairOfPolygon& pair = It.Value();
       const Handle(Poly_PolygonOnTriangulation)& NOD1 = pair.First();
       const Handle(Poly_PolygonOnTriangulation)& NOD2 = pair.Last();
+
+      // lock mutex to prevent parallel change of the same data
+      Standard_Mutex* aMutex = theMutexProvider.GetMutex(It.Key());
+      Standard_Mutex::SentryNested aSentry(aMutex == NULL ? DummyMutex : *aMutex,
+                                    aMutex != NULL);
+
       if ( NOD1 == NOD2 ) {
         B.UpdateEdge(TopoDS::Edge(It.Key()), NullPoly, TOld,loc);
         B.UpdateEdge(TopoDS::Edge(It.Key()), NOD1, T, loc);

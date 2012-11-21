@@ -22,6 +22,9 @@
 #ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
 #endif
+#ifndef _TColStd_MapOfInteger_HeaderFile
+#include <TColStd_MapOfInteger.hxx>
+#endif
 #ifndef _BRepMesh_Delaun_HeaderFile
 #include <BRepMesh_Delaun.hxx>
 #endif

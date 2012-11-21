@@ -96,6 +96,10 @@ public:
         void SetVersion(const Standard_Integer version) ;
   
   Standard_EXPORT     void Clear() ;
+~TNaming_NamedShape()
+{
+  Clear();
+}
   //! Returns the ID of the attribute. <br>
        const Standard_GUID& ID() const;
   //! Copies  the attribute  contents into  a  new other <br>
@@ -124,8 +128,6 @@ public:
 //!          attribute may be a brand new one or a new version <br>
 //!          of the previous one. <br>
   Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& intoAttribute,const Handle(TDF_RelocationTable)& aRelocTationable) const;
-  
-  Standard_EXPORT     void OldPaste(const Handle(TDF_Attribute)& intoAttribute,const Handle(TDF_RelocationTable)& aRelocTationable) const;
   //! Adds the directly referenced attributes and labels <br>
 //!          to <aDataSet>. "Directly" means we have only to <br>
 //!          look at the first level of references. <br>
@@ -138,7 +140,6 @@ public:
   Standard_EXPORT   virtual  Standard_Boolean AfterUndo(const Handle(TDF_AttributeDelta)& anAttDelta,const Standard_Boolean forceIt = Standard_False) ;
   //! Dumps the attribute on <aStream>. <br>
   Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
-
 
 friend class TNaming_Builder;
 friend class TNaming_Iterator;

@@ -45,12 +45,8 @@
 #define GL_GLEXT_LEGACY
 
 // include main OpenGL header provided with system
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #include <OpenGL/OpenGL.h>
-#else
-  #include <GL/gl.h>
-  #include <GL/glu.h>
-#endif
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 #include <InterfaceGraphic.hxx>
 #include <InterfaceGraphic_tgl_all.hxx>

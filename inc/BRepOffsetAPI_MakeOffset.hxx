@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -34,7 +37,7 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-class Standard_ConstructionError;
+class StdFail_NotDone;
 class TopoDS_Face;
 class TopoDS_Wire;
 class TopTools_ListOfShape;
@@ -50,18 +53,7 @@ class TopoDS_Shape;
 class BRepOffsetAPI_MakeOffset  : public BRepBuilderAPI_MakeShape {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Constructs an algorithm for creating an empty offset <br>
   Standard_EXPORT   BRepOffsetAPI_MakeOffset();
@@ -83,7 +75,7 @@ public:
   //!  Computes a parallel to the spine at distance Offset and <br>
 //! at an altitude Alt from the plane of the spine in relation <br>
 //! to the normal to the spine. <br>
-//! Exceptions: Standard_ConstructionError if the offset is not built. <br>
+//! Exceptions: StdFail_NotDone if the offset is not built. <br>
   Standard_EXPORT     void Perform(const Standard_Real Offset,const Standard_Real Alt = 0.0) ;
   //! Builds the resulting shape (redefined from MakeShape). <br>
   Standard_EXPORT   virtual  void Build() ;

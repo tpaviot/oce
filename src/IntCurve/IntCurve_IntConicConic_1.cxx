@@ -240,24 +240,6 @@ void CircleCircleGeometricIntersection(const gp_Circ2d& C1
       }
     }
     //--------------------------------------------------------------
-    //--    1 seul segment donne par Inter C2 avec C1- ou C1+
-    else if(dO1O2 > AbsR1mR2-Tol) {
-      
-      Standard_Real dx=(R1mTolR1mTol+dO1O2dO1O2-R2R2)/(dO1O2+dO1O2);
-      Standard_Real dy=(R1mTolR1mTol-dx*dx);
-      dy=(dy>=0.0)? Sqrt(dy) : 0.0;
-      dAlpha1=ATan2(dy,dx);
-      
-      dx=(R1pTolR1pTol+dO1O2dO1O2-R2R2)/(dO1O2+dO1O2);
-      dy=(R1pTolR1pTol-dx*dx);
-      dy=(dy>=0.0)? Sqrt(dy) : 0.0;
-      Standard_Real dAlpha2=ATan2(dy,dx);
-      
-      if(dAlpha2>dAlpha1) dAlpha1 = dAlpha2;
-      C1_binf1=-dAlpha1;  C1_bsup1=dAlpha1;
-      nbsol=1;
-    }
-    //--------------------------------------------------------------
     else {
       if((dO1O2 > AbsR1mR2-TolTang) && (AbsR1mR2-TolTang)>0.0) { 
 	C1_binf1=0.0;  
@@ -436,7 +418,6 @@ void LineCircleGeometricIntersection(const gp_Lin2d& Line,
     Standard_Real dAlpha1;
     //---------------------------------------------------------------
     //-- Line coupe le cercle Circle+ (=C(x1,y1,R1+Tol))
-    //modified by NIZNHY-PKV Thu May 12 12:25:17 2011f
     b2Sol=Standard_False;
     if (R>dO1O2+TolTang) {
       Standard_Real aX2, aTol2;
@@ -449,7 +430,6 @@ void LineCircleGeometricIntersection(const gp_Lin2d& Line,
     }
     if(dO1O2 > RmTol && !b2Sol) { 
     //if(dO1O2 > RmTol) { 
-    //modified by NIZNHY-PKV Thu May 12 12:25:20 2011t
       Standard_Real dx=dO1O2;
       Standard_Real dy=0.0;     //(RpTol*RpTol-dx*dx); //Patch !!!
       dy=(dy>=0.0)? Sqrt(dy) : 0.0;
@@ -1023,26 +1003,33 @@ static inline void getDomainParametrs(const IntRes2d_Domain& theDomain,
 }
 
 
+//=======================================================================
+//function : computeIntPoint
+//purpose  : 
+//=======================================================================
 static Standard_Boolean computeIntPoint(const IntRes2d_Domain& theCurDomain,
-                                                         const IntRes2d_Domain& theDomainOther,
-                                                         const gp_Lin2d& theCurLin,
-                                                         const gp_Lin2d& theOtherLin,   
-                                                         Standard_Real theCosT1T2,
-                                                         Standard_Real theParCur, Standard_Real theParOther,
-                                                         Standard_Real& theResInf, Standard_Real& theResSup,
-                                                         Standard_Integer theNum,
-                                                         IntRes2d_TypeTrans theCurTrans,    
-                                                         IntRes2d_IntersectionPoint& theNewPoint)
+					const IntRes2d_Domain& theDomainOther,
+					const gp_Lin2d& theCurLin,
+					const gp_Lin2d& theOtherLin,   
+					Standard_Real theCosT1T2,
+					Standard_Real theParCur, Standard_Real theParOther,
+					Standard_Real& theResInf, Standard_Real& theResSup,
+					Standard_Integer theNum,
+					IntRes2d_TypeTrans theCurTrans,    
+					IntRes2d_IntersectionPoint& theNewPoint)
 {
   if(fabs(theResSup-theParCur) > fabs(theResInf-theParCur))
     theResSup = theResInf;
 
   Standard_Real aRes2 = theParOther + (theResSup - theParCur) * theCosT1T2;
 
-  Standard_Real aFirst2, aLast2, aTol1, aTol2;
-  getDomainParametrs(theDomainOther,aFirst2, aLast2, aTol1, aTol2);
-  if( aRes2  < aFirst2 - aTol1 || aRes2  > aLast2 + aTol2 ) 
-	  return Standard_False;
+  Standard_Real aFirst2, aLast2, aTol21, aTol22, aTol11, aTol12 ;
+  
+  getDomainParametrs(theDomainOther,aFirst2, aLast2, aTol21, aTol22);
+  
+  if( aRes2  < aFirst2 - aTol21 || aRes2  > aLast2 + aTol22 ) {
+    return Standard_False;
+  }
 	
   //------ compute parameters of intersection point --
   IntRes2d_Transition aT1,aT2;
@@ -1069,7 +1056,7 @@ static Standard_Boolean computeIntPoint(const IntRes2d_Domain& theCurDomain,
   Standard_Real aResU2 = theParOther;
 
   Standard_Real aFirst1, aLast1;
-  getDomainParametrs(theCurDomain,aFirst1, aLast1, aTol1, aTol2);
+  getDomainParametrs(theCurDomain,aFirst1, aLast1, aTol11, aTol12);
   
   Standard_Boolean isInside1 = (theParCur >= aFirst1 && theParCur <= aLast1);
   Standard_Boolean isInside2 = (theParOther >= aFirst2 && theParOther <= aLast2);
@@ -1093,6 +1080,13 @@ static Standard_Boolean computeIntPoint(const IntRes2d_Domain& theCurDomain,
     }
     else 
     {
+      //PKVf
+      // check that parameters are within range on both curves
+      if ( theParCur < aFirst1-aTol11 || theParCur > aLast1+aTol12 ||
+           theParOther < aFirst2-aTol21 || theParOther > aLast2+aTol22) {
+        return Standard_False;
+      }
+      //PKVt
       aResU1 = theResSup;
       aResU2= aRes2;
     }

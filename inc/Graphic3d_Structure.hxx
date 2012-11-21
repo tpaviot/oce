@@ -190,9 +190,11 @@ public:
 //!	    By default, <me> is not infinite but empty. <br>
   Standard_EXPORT     void SetInfiniteState(const Standard_Boolean AFlag) ;
   //! Modifies the order of displaying the structure. <br>
-//!	    Values are between 0 et 10. <br>
-//!	    The priority 10 being displayed first. <br>
-//!	    The default value is 5 <br>
+//!	    Values are between 0 and 10. <br>
+//!      Structures are drawn according to their display priorities <br>
+//!      in ascending order. <br>
+//!	    A structure of priority 10 is displayed the last and appears over the others. <br>
+//!	    The default value is 5. <br>
 //!  Category: Methods to modify the class definition <br>
 //!  Warning: If <me> is displayed then the SetDisplayPriority <br>
 //!	    method erase <me> and display <me> with the <br>

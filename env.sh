@@ -94,7 +94,7 @@ fi
 export PATH="${CASROOT}/${CASBIN}/bin${CASDEB}:${PATH}"
 export LD_LIBRARY_PATH="${CASROOT}/${CASBIN}/lib${CASDEB}:${LD_LIBRARY_PATH}"
 
-# Set environment variables used by OCCT
+# Set envoronment variables used by OCCT
 export CSF_MDTVFontDirectory="${CASROOT}/src/FontMFT"
 export CSF_LANGUAGE="us"
 export MMGT_CLEAR="1"
@@ -128,4 +128,3 @@ fi
 if [ -e "${aScriptPath}/src/DrawResourcesProducts" ]; then
   export CSF_DrawPluginProductsDefaults="${aScriptPath}/src/DrawResourcesProducts"
 fi
-

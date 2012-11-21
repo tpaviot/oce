@@ -19,9 +19,6 @@
 #ifndef _WNT_IconBox_HeaderFile
 #include <WNT_IconBox.hxx>
 #endif
-#ifndef _WNT_PixMap_HeaderFile
-#include <WNT_PixMap.hxx>
-#endif
 #ifndef _WNT_GraphicDevice_HeaderFile
 #include <WNT_GraphicDevice.hxx>
 #endif
@@ -33,9 +30,6 @@
 #endif
 #ifndef _Aspect_GradientBackground_HeaderFile
 #include <Aspect_GradientBackground.hxx>
-#endif
-#ifndef _Aspect_PixMap_HeaderFile
-#include <Aspect_PixMap.hxx>
 #endif
 #ifndef _WNT_Window_HeaderFile
 #include <WNT_Window.hxx>

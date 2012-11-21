@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -52,6 +55,9 @@
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
+#ifndef _Standard_Size_HeaderFile
+#include <Standard_Size.hxx>
+#endif
 class Storage_StreamTypeMismatchError;
 class Storage_StreamFormatError;
 class Storage_StreamWriteError;
@@ -67,18 +73,7 @@ class Storage_BaseDriver;
 class FSD_BinaryFile  : public Storage_BaseDriver {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   FSD_BinaryFile();
@@ -284,7 +279,7 @@ public:
 protected:
 
   //! read <rsize> character from the current position. <br>
-  Standard_EXPORT     void ReadChar(TCollection_AsciiString& buffer,const Standard_Integer rsize) ;
+  Standard_EXPORT     void ReadChar(TCollection_AsciiString& buffer,const Standard_Size rsize) ;
   //! read string from the current position. <br>
   Standard_EXPORT     void ReadString(TCollection_AsciiString& buffer) ;
   //! write string at the current position. <br>

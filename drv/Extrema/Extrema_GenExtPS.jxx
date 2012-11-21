@@ -4,6 +4,9 @@
 #ifndef _Bnd_HArray1OfSphere_HeaderFile
 #include <Bnd_HArray1OfSphere.hxx>
 #endif
+#ifndef _TColStd_HArray1OfReal_HeaderFile
+#include <TColStd_HArray1OfReal.hxx>
+#endif
 #ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
 #endif

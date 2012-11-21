@@ -198,9 +198,11 @@ public:
 //!          in assmebly by located components to avoid some problems. <br>
   Standard_EXPORT     TDF_Label AddShape(const TopoDS_Shape& S,const Standard_Boolean makeAssembly = Standard_True,const Standard_Boolean makePrepare = Standard_True) ;
   //! Removes shape (whole label and all its sublabels) <br>
+//!          If removeCompletely is true, removes complete shape <br>
+//!          If removeCompletely is false, removes instance(location) only <br>
 //!          Returns False (and does nothing) if shape is not free <br>
 //!          or is not top-level shape <br>
-  Standard_EXPORT     Standard_Boolean RemoveShape(const TDF_Label& L) const;
+  Standard_EXPORT     Standard_Boolean RemoveShape(const TDF_Label& L,const Standard_Boolean removeCompletely = Standard_True) const;
   //! set hasComponents into false <br>
   Standard_EXPORT     void Init() ;
   //! recursive <br>

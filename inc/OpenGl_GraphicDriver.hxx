@@ -23,6 +23,7 @@
 
 #include <Graphic3d_GraphicDriver.hxx>
 #include <Handle_OpenGl_GraphicDriver.hxx>
+#include <OpenGl_Context.hxx>
 
 #include <Standard_CString.hxx>
 
@@ -31,7 +32,6 @@
 #include <Quantity_PlaneAngle.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Handle_AlienImage_AlienImage.hxx>
-#include <Image_CRawBufferData.hxx>
 
 #include <Aspect_Display.hxx>
 #include <Aspect_GradientFillMethod.hxx>
@@ -68,6 +68,7 @@
 #include <Graphic3d_Array2OfVertex.hxx>
 #include <Graphic3d_Array2OfVertexN.hxx>
 #include <Graphic3d_Array2OfVertexNT.hxx>
+#include <Graphic3d_BufferType.hxx>
 #include <NCollection_DataMap.hxx>
 
 class TColStd_Array1OfInteger;
@@ -81,9 +82,11 @@ class Graphic3d_Vertex;
 class Aspect_Array1OfEdge;
 class TCollection_ExtendedString;
 class AlienImage_AlienImage;
+class Image_PixMap;
 class TColStd_HArray1OfReal;
 class Handle(OpenGl_View);
 class Handle(OpenGl_Workspace);
+class OpenGl_Element;
 class OpenGl_Structure;
 
 //! This class defines an OpenGl graphic driver <br>
@@ -260,7 +263,9 @@ public:
   //! Remove offscreen FBO <br>
   Standard_EXPORT void FBORelease (const Graphic3d_CView& view, Graphic3d_PtrFrameBuffer& fboPtr);
   //! Dump active rendering buffer into specified memory buffer. <br>
-  Standard_EXPORT Standard_Boolean BufferDump (const Graphic3d_CView& view, Image_CRawBufferData& buffer);
+  Standard_EXPORT Standard_Boolean BufferDump (const Graphic3d_CView&      theCView,
+                                               Image_PixMap&               theImage,
+                                               const Graphic3d_BufferType& theBufferType);
   Standard_EXPORT void SetGLLightEnabled (const Graphic3d_CView& view,const Standard_Boolean isEnabled) const;
   Standard_EXPORT Standard_Boolean IsGLLightEnabled (const Graphic3d_CView& view) const;
   //! Clear visualization data in graphical driver and stop <br>
@@ -332,23 +337,32 @@ public:
   Standard_EXPORT Standard_Boolean MemoryInfo (Standard_Size&           theFreeBytes,
                                                TCollection_AsciiString& theInfo) const;
 
+  //! UserDraw function prototype
+  typedef OpenGl_Element* (*OpenGl_UserDrawCallback_t )(const CALL_DEF_USERDRAW* );
+
+  //! Method to setup UserDraw callback
+  Standard_EXPORT OpenGl_UserDrawCallback_t& UserDrawCallback();
+
 private:
 
-  //! Access the global map of views.
-  static NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>& GetMapOfViews();
-
-  //! Access the global map of workspaces.
-  static NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)>& GetMapOfWorkspaces();
-
-  //! Access the global map of structures.
-  static NCollection_DataMap<Standard_Integer, OpenGl_Structure*>& GetMapOfStructures();
+  //! Method to retrieve valid GL context.
+  //! Could return NULL-handle if no window created by this driver.
+  Standard_EXPORT const Handle(OpenGl_Context)& GetSharedContext() const;
 
   //! Deprecated.
-  static void InvalidateAllWorkspaces();
+  void InvalidateAllWorkspaces();
 
 public:
 
   DEFINE_STANDARD_RTTI(OpenGl_GraphicDriver)
+
+private:
+
+  NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>      myMapOfView;
+  NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)> myMapOfWS;
+  NCollection_DataMap<Standard_Integer, OpenGl_Structure*>        myMapOfStructure;
+  OpenGl_UserDrawCallback_t                                       myUserDrawCallback;
+
 };
 
 #endif //_OpenGl_GraphicDriver_HeaderFile

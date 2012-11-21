@@ -40,8 +40,6 @@
 
 
 
-Standard_Boolean Draw_Interprete(char*); // Implement in draw.cxx
-
 #define CLIENTWND 0
 
 #define PROMPT "Command >> "
