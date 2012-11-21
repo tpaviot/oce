@@ -21,7 +21,7 @@
 #ifndef OpenGl_PrimitiveArray_Header
 #define OpenGl_PrimitiveArray_Header
 
-#include <OpenGl_GlCore11.hxx>
+#include <OpenGl_VertexBuffer.hxx>
 
 #include <InterfaceGraphic_telem.hxx>
 #include <Aspect_InteriorStyle.hxx>
@@ -29,30 +29,39 @@
 #include <OpenGl_Element.hxx>
 
 struct OPENGL_SURF_PROP;
-class Handle(OpenGl_Context);
 
 class OpenGl_PrimitiveArray : public OpenGl_Element
 {
 public:
+  // OpenGL does not provie a constant for "none" draw mode.
+  // So we define our own one that does not conflict with GL constants
+  // and untilizes common GL invalid value
+  enum
+  {
+    DRAW_MODE_NONE = -1
+  };
 
   //! Default constructor
   OpenGl_PrimitiveArray (CALL_DEF_PARRAY* thePArray);
 
-  //! Destructor
-  virtual ~OpenGl_PrimitiveArray();
-
   //! Render primitives to the window
-  virtual void Render (const Handle(OpenGl_Workspace)& theWorkspace) const;
+  virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
+
+  virtual void Release (const Handle(OpenGl_Context)&   theContext);
 
   CALL_DEF_PARRAY* PArray() const { return myPArray; }
 
 private:
 
+  Standard_Boolean toDrawVbo() const
+  {
+    return !myVbos[VBOVertices].IsNull();
+  }
+
   //! VBO initialization procedures
   Standard_Boolean BuildVBO (const Handle(OpenGl_Workspace)& theWorkspace) const;
   void clearMemoryOwn() const;
-  void clearMemoryGL (const Handle(OpenGl_Context)& theGlContext) const;
-  Standard_Boolean checkSizeForGraphicMemory (const Handle(OpenGl_Context)& theGlContext) const;
+  void clearMemoryGL (const Handle(OpenGl_Context)& theGlCtx) const;
 
   //! Main procedure to draw array
   void DrawArray (Tint theLightingModel,
@@ -90,8 +99,25 @@ private:
 
 protected:
 
-  mutable CALL_DEF_PARRAY* myPArray;
-  GLenum                   myDrawMode;
+  //! Destructor
+  virtual ~OpenGl_PrimitiveArray();
+
+protected:
+
+  typedef enum
+  {
+    VBOEdges,
+    VBOVertices,
+    VBOVcolours,
+    VBOVnormals,
+    VBOVtexels,
+    VBOMaxType
+  } VBODataType;
+
+  mutable CALL_DEF_PARRAY*            myPArray;
+  mutable Handle(OpenGl_VertexBuffer) myVbos[VBOMaxType];
+  GLint                               myDrawMode;
+  mutable Standard_Boolean            myIsVboInit;
 
 public:
 

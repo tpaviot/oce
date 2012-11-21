@@ -94,9 +94,9 @@ Prs2d_Diameter::Prs2d_Diameter( const Handle(Graphic2d_GraphicObject)& aGO,
    myAppX2 = Standard_ShortReal(X1);
    myAppY2 = Standard_ShortReal(Y1);
    if (myX1>=myX2) 
-     myAppX2=Standard_ShortReal(myAppX2+(theDist+theRad)/APPENDIXLEN);
+     myAppX2=Standard_ShortReal( myAppX2+(theDist+theRad)/APPENDIXLEN );
    else 
-     myAppX2=Standard_ShortReal(myAppX2-(theDist+theRad)/APPENDIXLEN);
+     myAppX2=Standard_ShortReal( myAppX2-(theDist+theRad)/APPENDIXLEN );
    
    if ( myAppX2 < myMinX ) myMinX = myAppX2;
    if ( myAppY2 < myMinY ) myMinY = myAppY2;

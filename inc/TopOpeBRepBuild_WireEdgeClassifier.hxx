@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -48,18 +51,7 @@ class TopOpeBRepBuild_Loop;
 class TopOpeBRepBuild_WireEdgeClassifier  : public TopOpeBRepBuild_CompositeClassifier {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a classifier on edge <F>. <br>
 //! Used to compare edges and wires on the edge <F>. <br>
@@ -80,7 +72,7 @@ public:
   Standard_EXPORT     void ResetElement(const TopoDS_Shape& E) ;
   //! Add the edge <E> in the set of edges used in 2D point <br>
 //! classification. <br>
-  Standard_EXPORT     void CompareElement(const TopoDS_Shape& E) ;
+  Standard_EXPORT     Standard_Boolean CompareElement(const TopoDS_Shape& E) ;
   //! Returns state of classification of 2D point, defined by <br>
 //! ResetElement, with the current set of edges, defined by Compare. <br>
   Standard_EXPORT     TopAbs_State State() ;

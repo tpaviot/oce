@@ -45,19 +45,21 @@
 #include <Draw.hxx>
 #include <Draw_Appli.hxx>
 #include <Aspect_PrintAlgo.hxx>
-#include <Image_PixMap.hxx>
+#include <Image_AlienPixMap.hxx>
 #include <OSD_Timer.hxx>
 #include <TColStd_SequenceOfInteger.hxx>
 #include <Visual3d_LayerItem.hxx>
 #include <V3d_LayerMgr.hxx>
 #include <V3d_LayerMgrPointer.hxx>
 #include <Aspect_TypeOfLine.hxx>
+#include <Image_Diff.hxx>
 
 #ifdef WNT
 #undef DrawText
 #endif
 
 #include <Visual3d_Layer.hxx>
+#include <cstdlib>
 
 #ifndef WNT
 #include <Graphic3d_GraphicDevice.hxx>
@@ -187,8 +189,13 @@ void ViewerTest::ViewerInit (const Standard_Integer thePxLeft,  const Standard_I
 {
   static Standard_Boolean isFirst = Standard_True;
 
-  Standard_Integer aPxLeft   = 0;
-  Standard_Integer aPxTop    = 460;
+  // Default position and dimension of the viewer window.
+  // Note that left top corner is set to be sufficiently small to have 
+  // window fit in the small screens (actual for remote desktops, see #23003).
+  // The position corresponds to the window's client area, thus some 
+  // gap is added for window frame to be visible.
+  Standard_Integer aPxLeft   = 20;
+  Standard_Integer aPxTop    = 40;
   Standard_Integer aPxWidth  = 409;
   Standard_Integer aPxHeight = 409;
   if (thePxWidth != 0 && thePxHeight != 0)
@@ -242,16 +249,14 @@ void ViewerTest::ViewerInit (const Standard_Integer thePxLeft,  const Standard_I
     a3DCollector = new V3d_Viewer(GetG3dDevice(), NameOfWindow.ToExtString());
     a3DViewer->SetDefaultBackgroundColor(Quantity_NOC_BLACK);
     a3DCollector->SetDefaultBackgroundColor(Quantity_NOC_STEELBLUE);
-    Handle(NIS_View) aView =
-      Handle(NIS_View)::DownCast(ViewerTest::CurrentView());
-    if ( aView.IsNull() ) {
-      //       Handle (V3d_View) V = a3DViewer->CreateView();
+    Handle(NIS_View) aView = Handle(NIS_View)::DownCast(ViewerTest::CurrentView());
+    if (aView.IsNull())
+    {
+      //Handle(V3d_View) a3DViewCol = a3DViewer->CreateView();
       aView = new NIS_View (a3DViewer, VT_GetWindow());
       ViewerTest::CurrentView(aView);
       TheNISContext()->AttachView (aView);
     }
-    Handle(V3d_View) a3DViewCol;
-    if ( a3DViewCol.IsNull() ) a3DViewCol    = a3DViewer->CreateView();
 
     // AIS setup
     if ( ViewerTest::GetAISContext().IsNull() ) {
@@ -371,7 +376,7 @@ static void ProcessKeyPress( char *buf_ret )
     }
   }
   else if ( !strcasecmp(buf_ret, "U") ) {
-    // SHADING
+    // Unset display mode
     cout<<"passage au mode par defaut"<<endl;
 #ifndef OCC120
     ViewerTest::CurrentView()->SetDegenerateModeOn();
@@ -398,15 +403,15 @@ static void ProcessKeyPress( char *buf_ret )
     aView->SetProj(V3d_Zpos);
   }
   else if ( !strcasecmp(buf_ret, "B") ) {
-    // Top
+    // Bottom
     aView->SetProj(V3d_Zneg);
   }
   else if ( !strcasecmp(buf_ret, "L") ) {
-    // Top
+    // Left
     aView->SetProj(V3d_Xneg);
   }
   else if ( !strcasecmp(buf_ret, "R") ) {
-    // Top
+    // Right
     aView->SetProj(V3d_Xpos);
   }
 
@@ -655,20 +660,31 @@ void ViewerTest::GetMousePosition(Standard_Integer& Xpix,Standard_Integer& Ypix)
 }
 
 //==============================================================================
+//function : ViewProject: implements VAxo, VTop, VLeft, ...
+//purpose  : Switches to an axonometric, top, left and other views
+//==============================================================================
+
+static int ViewProject(Draw_Interpretor& di, const V3d_TypeOfOrientation ori)
+{
+  if ( ViewerTest::CurrentView().IsNull() ) 
+  {
+    di<<"Call vinit before this command, please"<<"\n";
+    return 1;
+  }
+
+  ViewerTest::CurrentView()->SetProj(ori);
+  return 0;
+}
+
+//==============================================================================
 //function : VAxo
 //purpose  : Switch to an Axonometric view
 //Draw arg : No args
 //==============================================================================
 
 static int VAxo(Draw_Interpretor& di, Standard_Integer , const char** )
-{ if ( ViewerTest::CurrentView().IsNull() ) {
-  di<<"La commande vinit n'a pas ete appele avant"<<"\n";
-  //  VInit(di, argc, argv);
-}
-
-ViewerTest::CurrentView()->SetProj(V3d_XposYnegZpos);
-
-return 0;
+{
+  return ViewProject(di, V3d_XposYnegZpos);
 }
 
 //==============================================================================
@@ -679,16 +695,62 @@ return 0;
 
 static int VTop(Draw_Interpretor& di, Standard_Integer , const char** )
 {
+  return ViewProject(di, V3d_Zpos);
+}
 
-  if ( ViewerTest::CurrentView().IsNull() ) {
-    di<<"La commande vinit n'a pas ete appele avant"<<"\n";
+//==============================================================================
+//function : VBottom
+//purpose  : Switch to a Bottom View
+//Draw arg : No args
+//==============================================================================
 
-    //  VInit(di, , argv);
-  }
+static int VBottom(Draw_Interpretor& di, Standard_Integer , const char** )
+{
+  return ViewProject(di, V3d_Zneg);
+}
 
-  ViewerTest::CurrentView()->SetProj(V3d_Zpos);
-  return 0;
+//==============================================================================
+//function : VLeft
+//purpose  : Switch to a Left View
+//Draw arg : No args
+//==============================================================================
 
+static int VLeft(Draw_Interpretor& di, Standard_Integer , const char** )
+{
+  return ViewProject(di, V3d_Ypos);
+}
+
+//==============================================================================
+//function : VRight
+//purpose  : Switch to a Right View
+//Draw arg : No args
+//==============================================================================
+
+static int VRight(Draw_Interpretor& di, Standard_Integer , const char** )
+{
+  return ViewProject(di, V3d_Yneg);
+}
+
+//==============================================================================
+//function : VFront
+//purpose  : Switch to a Front View
+//Draw arg : No args
+//==============================================================================
+
+static int VFront(Draw_Interpretor& di, Standard_Integer , const char** )
+{
+  return ViewProject(di, V3d_Xpos);
+}
+
+//==============================================================================
+//function : VBack
+//purpose  : Switch to a Back View
+//Draw arg : No args
+//==============================================================================
+
+static int VBack(Draw_Interpretor& di, Standard_Integer , const char** )
+{
+  return ViewProject(di, V3d_Xneg);
 }
 
 //==============================================================================
@@ -705,13 +767,17 @@ static int VHelp(Draw_Interpretor& di, Standard_Integer , const char** )
   di << "========================="<<"\n";
   di << "F : FitAll" << "\n";
   di << "T : TopView" << "\n";
+  di << "B : BottomView" << "\n";
+  di << "R : RightView" << "\n";
+  di << "L : LeftView" << "\n";
   di << "A : AxonometricView" << "\n";
-  di << "R : ResetView" << "\n";
+  di << "D : ResetView" << "\n";
 
   di << "========================="<<"\n";
   di << "S : Shading" << "\n";
   di << "W : Wireframe" << "\n";
   di << "H : HidelLineRemoval" << "\n";
+  di << "U : Unset display mode" << "\n";
 
   di << "========================="<<"\n";
   di << "Selection mode "<<"\n";
@@ -724,9 +790,10 @@ static int VHelp(Draw_Interpretor& di, Standard_Integer , const char** )
   di << "6 : Solid" <<"\n";
   di << "7 : Compound" <<"\n";
 
-  di << "=========================="<<"\n";
-  di << "D : Remove Selected Object"<<"\n";
-  di << "=========================="<<"\n";
+  di << "========================="<<"\n";
+  di << "Z : Switch Z clipping On/Off" << "\n";
+  di << ", : Hilight next detected" << "\n";
+  di << ". : Hilight previous detected" << "\n";
 
   return 0;
 }
@@ -2077,10 +2144,8 @@ static int VPrintView (Draw_Interpretor& di, Standard_Integer argc,
   if (aMode != 0 && aMode != 1)
     aMode = 0;
 
-  Image_CRawBufferData aRawBuffer;
-  HDC anDC = CreateCompatibleDC(0);
-
   // define compatible bitmap
+  HDC anDC = CreateCompatibleDC(0);
   BITMAPINFO aBitmapData;
   memset (&aBitmapData, 0, sizeof (BITMAPINFOHEADER));
   aBitmapData.bmiHeader.biSize          = sizeof (BITMAPINFOHEADER);
@@ -2096,12 +2161,13 @@ static int VPrintView (Draw_Interpretor& di, Standard_Integer argc,
   aBitmapData.bmiHeader.biSizeImage     = 0;
 
   // Create Device Independent Bitmap
+  void* aBitsOut = NULL;
   HBITMAP aMemoryBitmap = CreateDIBSection (anDC, &aBitmapData, DIB_RGB_COLORS,
-                                            &aRawBuffer.dataPtr, NULL, 0);
+                                            &aBitsOut, NULL, 0);
   HGDIOBJ anOldBitmap   = SelectObject(anDC, aMemoryBitmap);
 
   Standard_Boolean isSaved = Standard_False, isPrinted = Standard_False;
-  if (aRawBuffer.dataPtr != 0)
+  if (aBitsOut != NULL)
   {    
     if (aMode == 0)
       isPrinted = aView->Print(anDC,1,1,0,Aspect_PA_STRETCH);
@@ -2111,11 +2177,13 @@ static int VPrintView (Draw_Interpretor& di, Standard_Integer argc,
     // succesfully printed into an intermediate buffer
     if (isPrinted)
     {
-      Handle(Image_PixMap) anImageBitmap =
-                         new Image_PixMap ((Standard_PByte)aRawBuffer.dataPtr,
-                                           aWidth, aHeight,
-                                           aWidth*3 + aWidth%4, 24, 0);
-      isSaved = anImageBitmap->Dump(aFileName.ToCString());
+      Image_PixMap aWrapper;
+      aWrapper.InitWrapper (Image_PixMap::ImgBGR, (Standard_Byte* )aBitsOut, aWidth, aHeight, aWidth * 3 + aWidth % 4);
+      aWrapper.SetTopDown (false);
+
+      Image_AlienPixMap anImageBitmap;
+      anImageBitmap.InitCopy (aWrapper);
+      isSaved = anImageBitmap.Save (aFileName);
     }
     else
     {
@@ -2803,6 +2871,191 @@ static int VMemGpu (Draw_Interpretor& theDI,
   return 0;
 }
 
+// ==============================================================================
+// function : VReadPixel
+// purpose  :
+// ==============================================================================
+static int VReadPixel (Draw_Interpretor& theDI,
+                       Standard_Integer  theArgNb,
+                       const char**      theArgVec)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+  else if (theArgNb < 3)
+  {
+    std::cerr << "Usage : " << theArgVec[0] << " xPixel yPixel [{rgb|rgba|depth|hls|rgbf|rgbaf}=rgba] [name]\n";
+    return 1;
+  }
+
+  Image_PixMap::ImgFormat aFormat     = Image_PixMap::IsBigEndianHost() ? Image_PixMap::ImgRGBA : Image_PixMap::ImgBGRA;
+  Graphic3d_BufferType    aBufferType = Graphic3d_BT_RGBA;
+
+  Standard_Integer aWidth, aHeight;
+  aView->Window()->Size (aWidth, aHeight);
+  const Standard_Integer anX = atoi (theArgVec[1]);
+  const Standard_Integer anY = atoi (theArgVec[2]);
+  if (anX < 0 || anX >= aWidth || anY < 0 || anY > aHeight)
+  {
+    std::cerr << "Pixel coordinates (" << anX << "; " << anY << ") are out of view (" << aWidth << " x " << aHeight << ")\n";
+    return 1;
+  }
+
+  Standard_Boolean toShowName = Standard_False;
+  Standard_Boolean toShowHls  = Standard_False;
+  for (Standard_Integer anIter = 3; anIter < theArgNb; ++anIter)
+  {
+    TCollection_AsciiString aParam (theArgVec[anIter]);
+    if (TCollection_AsciiString::ISSIMILAR      (aParam, TCollection_AsciiString ("rgb")))
+    {
+      aFormat     = Image_PixMap::IsBigEndianHost() ? Image_PixMap::ImgRGB : Image_PixMap::ImgBGR;
+      aBufferType = Graphic3d_BT_RGB;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("hls")))
+    {
+      aFormat     = Image_PixMap::IsBigEndianHost() ? Image_PixMap::ImgRGB : Image_PixMap::ImgBGR;
+      aBufferType = Graphic3d_BT_RGB;
+      toShowHls   = Standard_True;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("rgbf")))
+    {
+      aFormat     = Image_PixMap::ImgRGBF;
+      aBufferType = Graphic3d_BT_RGB;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("rgba")))
+    {
+      aFormat     = Image_PixMap::IsBigEndianHost() ? Image_PixMap::ImgRGBA : Image_PixMap::ImgBGRA;
+      aBufferType = Graphic3d_BT_RGBA;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("rgbaf")))
+    {
+      aFormat     = Image_PixMap::ImgRGBAF;
+      aBufferType = Graphic3d_BT_RGBA;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("depth")))
+    {
+      aFormat     = Image_PixMap::ImgGrayF;
+      aBufferType = Graphic3d_BT_Depth;
+    }
+    else if (TCollection_AsciiString::ISSIMILAR (aParam, TCollection_AsciiString ("name")))
+    {
+      toShowName = Standard_True;
+    }
+  }
+
+  Image_PixMap anImage;
+  if (!anImage.InitTrash (aFormat, aWidth, aHeight))
+  {
+    std::cerr << "Image allocation failed\n";
+    return 1;
+  }
+  else if (!aView->ToPixMap (anImage, aWidth, aHeight, aBufferType))
+  {
+    std::cerr << "Image dump failed\n";
+    return 1;
+  }
+
+  Quantity_Parameter anAlpha;
+  Quantity_Color aColor = anImage.PixelColor (anX, anY, anAlpha);
+  if (toShowName)
+  {
+    if (aBufferType == Graphic3d_BT_RGBA)
+    {
+      theDI << Quantity_Color::StringName (aColor.Name()) << " " << anAlpha << "\n";
+    }
+    else
+    {
+      theDI << Quantity_Color::StringName (aColor.Name()) << "\n";
+    }
+  }
+  else
+  {
+    switch (aBufferType)
+    {
+      default:
+      case Graphic3d_BT_RGB:
+      {
+        if (toShowHls)
+        {
+          theDI << aColor.Hue() << " " << aColor.Light() << " " << aColor.Saturation() << "\n";
+        }
+        else
+        {
+          theDI << aColor.Red() << " " << aColor.Green() << " " << aColor.Blue() << "\n";
+        }
+        break;
+      }
+      case Graphic3d_BT_RGBA:
+      {
+        theDI << aColor.Red() << " " << aColor.Green() << " " << aColor.Blue() << " " << anAlpha << "\n";
+        break;
+      }
+      case Graphic3d_BT_Depth:
+      {
+        theDI << aColor.Red() << "\n";
+        break;
+      }
+    }
+  }
+
+  return 0;
+}
+
+//==============================================================================
+//function : VDiffImage
+//purpose  : The draw-command compares two images.
+//==============================================================================
+
+static int VDiffImage (Draw_Interpretor& theDI, Standard_Integer theArgNb, const char** theArgVec)
+{
+  if (theArgNb < 6)
+  {
+    theDI << "Not enough arguments.\n";
+    return 1;
+  }
+
+  // image file names
+  const char* anImgPathRef = theArgVec[1];
+  const char* anImgPathNew = theArgVec[2];
+
+  // get string tolerance and check its validity
+  Standard_Real aTolColor = atof (theArgVec[3]);
+  if (aTolColor < 0.0)
+    aTolColor = 0.0;
+  if (aTolColor > 1.0)
+    aTolColor = 1.0;
+
+  Standard_Boolean toBlackWhite     = (atoi (theArgVec[4]) == 1);
+  Standard_Boolean isBorderFilterOn = (atoi (theArgVec[5]) == 1);
+
+  // image file of difference
+  const char* aDiffImagePath = (theArgNb >= 7) ? theArgVec[6] : NULL;
+
+  // compare the images
+  Image_Diff aComparer;
+  if (!aComparer.Init (anImgPathRef, anImgPathNew, toBlackWhite))
+  {
+    return 1;
+  }
+
+  aComparer.SetColorTolerance (aTolColor);
+  aComparer.SetBorderFilterOn (isBorderFilterOn);
+  Standard_Integer aDiffColorsNb = aComparer.Compare();
+  theDI << aDiffColorsNb << "\n";
+
+  // save image of difference
+  if (aDiffImagePath != NULL)
+  {
+    aComparer.SaveDiffImage (aDiffImagePath);
+  }
+
+  return 0;
+}
+
 //=======================================================================
 //function : ViewerCommands
 //purpose  :
@@ -2819,11 +3072,26 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vhelp            : display help on the viewer commands",
     __FILE__,VHelp,group);
   theCommands.Add("vtop" ,
-    "vtop or <T>         : Top view" ,
+    "vtop or <T>      : Top view" ,
     __FILE__,VTop,group);
+  theCommands.Add("vbottom" ,
+    "vbottom          : Bottom view" ,
+    __FILE__,VBottom,group);
+  theCommands.Add("vleft" ,
+    "vleft            : Left view" ,
+    __FILE__,VLeft,group);
+  theCommands.Add("vright" ,
+    "vright           : Right view" ,
+    __FILE__,VRight,group);
   theCommands.Add("vaxo" ,
     " vaxo or <A>     : Axonometric view ",
     __FILE__,VAxo,group);
+  theCommands.Add("vfront" ,
+    "vfront           : Front view" ,
+    __FILE__,VFront,group);
+  theCommands.Add("vback" ,
+    "vback            : Back view" ,
+    __FILE__,VBack,group);
   theCommands.Add("vpick" ,
     "vpick           : vpick X Y Z [shape subshape] ( all variables as string )",
     VPick,group);
@@ -2914,4 +3182,11 @@ void ViewerTest::ViewerCommands(Draw_Interpretor& theCommands)
     "vmemgpu [f]: print system-dependent GPU memory information if available;"
     " with f option returns free memory in bytes",
     __FILE__, VMemGpu, group);
+  theCommands.Add ("vreadpixel",
+    "vreadpixel xPixel yPixel [{rgb|rgba|depth|hls|rgbf|rgbaf}=rgba] [name]"
+    " : Read pixel value for active view",
+    __FILE__, VReadPixel, group);
+  theCommands.Add("diffimage",
+    "diffimage     : diffimage imageFile1 imageFile2 toleranceOfColor(0..1) blackWhite(1|0) borderFilter(1|0) [diffImageFile]",
+    __FILE__, VDiffImage, group);
 }

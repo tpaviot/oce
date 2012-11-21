@@ -356,6 +356,17 @@ public:
   Standard_EXPORT   virtual  Handle_Prs3d_LineAspect SectionAspect() ;
   //! Sets the parameter anAspect for display attributes of sections. <br>
   Standard_EXPORT   virtual  void SetSectionAspect(const Handle(Prs3d_LineAspect)& anAspect) ;
+  //! Enables or disables face boundary drawing for shading presentations. <br>
+//! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
+//! drawn or not. <br>
+  Standard_EXPORT   virtual  void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled) ;
+  //! Checks whether the face boundary drawing is enabled or not. <br>
+  Standard_EXPORT   virtual  Standard_Boolean IsFaceBoundaryDraw() const;
+  //! Sets line aspect for face boundaries. <br>
+//! theAspect is the line aspect that determines the look of the face boundaries. <br>
+  Standard_EXPORT   virtual  void SetFaceBoundaryAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
+  //! Returns line aspect of face boundaries. <br>
+  Standard_EXPORT   virtual  Handle_Prs3d_LineAspect FaceBoundaryAspect() ;
 
 
 
@@ -400,6 +411,8 @@ Handle_Prs3d_LengthAspect myLengthAspect;
 Handle_Prs3d_AngleAspect myAngleAspect;
 Handle_Prs3d_RadiusAspect myRadiusAspect;
 Handle_Prs3d_LineAspect mySectionAspect;
+Standard_Boolean myFaceBoundaryDraw;
+Handle_Prs3d_LineAspect myFaceBoundaryAspect;
 
 
 private: 

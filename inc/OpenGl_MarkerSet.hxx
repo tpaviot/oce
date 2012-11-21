@@ -29,20 +29,27 @@
 
 class OpenGl_MarkerSet : public OpenGl_Element
 {
- public:
+
+public:
 
   OpenGl_MarkerSet (const Standard_Integer ANbPoints, const Graphic3d_Vertex *APoints);
-  virtual ~OpenGl_MarkerSet ();
 
-  virtual void Render (const Handle(OpenGl_Workspace) &AWorkspace) const;
+  virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
+  virtual void Release (const Handle(OpenGl_Context)&   theContext);
 
- protected:
+protected:
 
-  Tint myNbPoints;
-  TEL_POINT *myPoints;
+  virtual ~OpenGl_MarkerSet();
 
- public:
+protected:
+
+  Tint       myNbPoints;
+  TEL_POINT* myPoints;
+
+public:
+
   DEFINE_STANDARD_ALLOC
+
 };
 
 #endif //OpenGl_MarkerSet_Header

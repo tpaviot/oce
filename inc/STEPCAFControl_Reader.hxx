@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -46,6 +49,15 @@
 #ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_HSequenceOfTransient.hxx>
 #endif
+#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
+#include <Handle_StepRepr_RepresentationItem.hxx>
+#endif
+#ifndef _Handle_Transfer_TransientProcess_HeaderFile
+#include <Handle_Transfer_TransientProcess.hxx>
+#endif
+#ifndef _Handle_StepShape_ConnectedFaceSet_HeaderFile
+#include <Handle_StepShape_ConnectedFaceSet.hxx>
+#endif
 #ifndef _Handle_StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <Handle_StepRepr_NextAssemblyUsageOccurrence.hxx>
 #endif
@@ -64,6 +76,9 @@ class STEPCAFControl_DataMapOfShapePD;
 class STEPCAFControl_DataMapOfPDExternFile;
 class XCAFDoc_DataMapOfShapeLabel;
 class TColStd_HSequenceOfTransient;
+class StepRepr_RepresentationItem;
+class Transfer_TransientProcess;
+class StepShape_ConnectedFaceSet;
 class StepRepr_NextAssemblyUsageOccurrence;
 class STEPConstruct_Tool;
 
@@ -75,18 +90,7 @@ class STEPConstruct_Tool;
 class STEPCAFControl_Reader  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a reader with an empty <br>
 //! STEP model and sets ColorMode, LayerMode, NameMode and <br>
@@ -202,6 +206,27 @@ protected:
   //! Reads materials for instances defined in the STEP model and <br>
 //!          set reference between shape instances from different assemblyes <br>
   Standard_EXPORT     Standard_Boolean ReadMaterials(const Handle(XSControl_WorkSession)& WS,Handle(TDocStd_Document)& doc,const Handle(TColStd_HSequenceOfTransient)& SeqPDS) const;
+  //! Populates the sub-Label of the passed TDF Label with shape <br>
+//!          data associated with the given STEP Representation Item, <br>
+//!          including naming and topological information. <br>
+  Standard_EXPORT     TDF_Label SettleShapeData(const Handle(StepRepr_RepresentationItem)& theItem,TDF_Label& theLab,const Handle(XCAFDoc_ShapeTool)& theShapeTool,const Handle(Transfer_TransientProcess)& theTP) const;
+  //! Given the maps of already translated shapes, this method <br>
+//!          expands their correspondent Labels in XDE Document so that <br>
+//!          to have a dedicated sub-Label for each sub-shape coming <br>
+//!          with associated name in its STEP Representation Item. <br>
+  Standard_EXPORT     void ExpandSubShapes(const Handle(XCAFDoc_ShapeTool)& theShapeTool,const XCAFDoc_DataMapOfShapeLabel& theShapeLabelMap,const STEPCAFControl_DataMapOfShapePD& theShapePDMap) const;
+  //! Expands the topological structure of Manifold Solid BRep <br>
+//!           STEP entity to OCAF sub-tree. Entities having no names <br>
+//!           associated via their Representation Items are skipped. <br>
+  Standard_EXPORT     void ExpandManifoldSolidBrep(TDF_Label& theLab,const Handle(StepRepr_RepresentationItem)& theItem,const Handle(Transfer_TransientProcess)& theTP,const Handle(XCAFDoc_ShapeTool)& theShapeTool) const;
+  //! Expands the topological structure of Shell-Based Surface <br>
+//!           Model STEP entity to OCAF sub-tree. Entities having no names <br>
+//!           associated via their Representation Items are skipped. <br>
+  Standard_EXPORT     void ExpandSBSM(TDF_Label& theLab,const Handle(StepRepr_RepresentationItem)& theItem,const Handle(Transfer_TransientProcess)& theTP,const Handle(XCAFDoc_ShapeTool)& theShapeTool) const;
+  //! Expands STEP Shell structure to OCAF sub-tree. Entities <br>
+//!           having no names associated via their Representation Items <br>
+//!           are skipped. <br>
+  Standard_EXPORT     void ExpandShell(const Handle(StepShape_ConnectedFaceSet)& theShell,TDF_Label& theLab,const Handle(Transfer_TransientProcess)& theTP,const Handle(XCAFDoc_ShapeTool)& theShapeTool) const;
 
 
 

@@ -132,7 +132,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
     file.getline(line,255);
     if (!file)
       break;
-    fr = strlen(line);
+    fr = (Standard_Integer) strlen(line);
     if(fr <= 1)
       continue;
     //if( !file || line[0] == '.') { //skl
@@ -178,7 +178,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
       //if(!file) break; //skl
       file.getline(line,255);
       file.getline(line,255);
-      fr = strlen(line);
+      fr = (Standard_Integer) strlen(line);
 	  
 #if 0 // skl for OCC13438
       //for(i=0; i<80; i++)name[i] = 0;
@@ -263,7 +263,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
            << "Convert" << Convert << endl 
            << "Unit2" << Unit2 << endl ;
 #else
-      int len = strlen( line ) ;
+      Standard_Integer len = (Standard_Integer) strlen( line ) ;
       for ( i=0 ; i<51 ; i++ ) {
         if ( i<len )
           fr = sscanf(&line[i],"%c",&unite[i]);
@@ -328,7 +328,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
 	  
       if(convert[0] == '[') {
         coeff = 1.;
-        i = strlen(convert);
+        i = (Standard_Integer) strlen(convert);
         convert[i-1] = 0;
         ismove = Standard_True;
         charnumber = 1;
@@ -357,7 +357,7 @@ void Units_UnitsDictionary::Creates(const Standard_CString afilename)
       }
 	  
       if(convert[charnumber] == '(') {
-        i = strlen(convert);
+        i = (Standard_Integer) strlen(convert);
         convert[i-1] = 0;
         Units_MathSentence mathsentence(&convert[charnumber+1]);
         if(ismove)

@@ -96,17 +96,16 @@ proc getsourcefile {{command ""}} {
 
     global Draw_Helps Draw_Groups Draw_Files
 
+    set out {}
     if {$command == ""} {
 
 	# help general
 	foreach h [lsort [array names Draw_Groups]] {
-	    puts ""
-	    puts ""
-	    puts $h
+	    lappend out "" "" "$h"
 	    set i 0
 	    foreach f [lsort $Draw_Groups($h)] {
 		if {$i == 0} {
-		    puts "  "
+		    lappend out ""
 		}
 		incr i
 #
@@ -114,18 +113,7 @@ proc getsourcefile {{command ""}} {
 #
 		foreach command_that_has_file [array names Draw_Files] {
 		    if {($command_that_has_file == $f)} {
-#
-#  compute the length of the string to have the right spacing
-#  with tabs
-#
-			set ll [string length $f] 
-			if {($ll >= 1) && ($ll < 8)} {
-			    puts "$f\t\t:  $Draw_Files($f) "
-			}
-			if {($ll >= 8)} {
-			    puts "$f\t:  $Draw_Files($f) "
-			}
-			 
+			lappend out [format {%-20s %s} $f $Draw_Files($f)]
 		    }
 		}
 	    }
@@ -136,17 +124,12 @@ proc getsourcefile {{command ""}} {
 	append command "*"
 	foreach f [lsort [array names Draw_Files]] {
 	    if {[string match $command $f]} {
-		puts -nonewline $f
-		for {set j [string length $f]} {$j < 15} {incr j} {
-		    puts -nonewline " "
-		}
-
-		puts "     $Draw_Files($f)"
+                lappend out [format {%-20s %s} $f $Draw_Files($f)]
 	    }
 	}
 	
     } 
-    flush stdout
+    return [join $out "\n"]
 }
 
 help getsourcefile {getsourcefile, or getsourcefile command } {DRAW General Commands}
@@ -298,7 +281,10 @@ proc save {name {file ""}} {
 help save {save variable [filename]} "DRAW Variables management"
 
 proc restore {file {name ""}} {
-    if {$name == ""} {set name $file}
+    if {$name == ""} {
+        # if name is not given explicitly, use name of the file w/o extension
+        set name [file rootname [file tail $file]]
+    }
     global Draw_DataDir
     uplevel #0 "brestore [file join $Draw_DataDir $file ] $name"
     return $name

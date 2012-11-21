@@ -34,8 +34,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _OSD_FontAspect_HeaderFile
-#include <OSD_FontAspect.hxx>
+#ifndef _Font_FontAspect_HeaderFile
+#include <Font_FontAspect.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -95,9 +95,9 @@ public:
   //! Returns Angle of degree <br>
   Standard_EXPORT     Standard_Real GetTextAngle() const;
   //! Turns usage of Aspect text <br>
-  Standard_EXPORT     void SetTextFontAspect(const OSD_FontAspect AFontAspect) ;
+  Standard_EXPORT     void SetTextFontAspect(const Font_FontAspect AFontAspect) ;
   //! Returns text FontAspect <br>
-  Standard_EXPORT     OSD_FontAspect GetTextFontAspect() const;
+  Standard_EXPORT     Font_FontAspect GetTextFontAspect() const;
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace) const;
   //! Returns the current values of the group <me>. <br>
@@ -105,7 +105,7 @@ public:
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle) const;
   //! Returns the current values of the group <me>. <br>
-  Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle,OSD_FontAspect& ATextFontAspect) const;
+  Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle,Font_FontAspect& ATextFontAspect) const;
 
 
 
@@ -129,7 +129,7 @@ Aspect_TypeOfDisplayText MyDisplayType;
 Quantity_Color MyColorSubTitle;
 Standard_Boolean MyTextZoomable;
 Standard_Real MyTextAngle;
-OSD_FontAspect MyTextFontAspect;
+Font_FontAspect MyTextFontAspect;
 
 
 };

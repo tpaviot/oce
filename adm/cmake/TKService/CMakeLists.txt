@@ -4,6 +4,7 @@ SET(TOOLKIT_MODULES
 	AlienImage
 	Aspect
 	CGM
+	Font
 	Image
 	MFT
 	PS

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -48,18 +51,7 @@ class Intf_SequenceNodeOfSeqOfSectionLine;
 class Intf  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Give the plane equation of the triangle <P1> <P2> <P3>. <br>
   Standard_EXPORT   static  void PlaneEquation(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,gp_XYZ& NormalVector,Standard_Real& PolarDistance) ;

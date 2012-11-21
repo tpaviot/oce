@@ -88,6 +88,9 @@
 #ifndef _Handle_AIS_Drawer_HeaderFile
 #include <Handle_AIS_Drawer.hxx>
 #endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
+#endif
 #ifndef _AIS_DisplayStatus_HeaderFile
 #include <AIS_DisplayStatus.hxx>
 #endif
@@ -609,11 +612,11 @@ public:
   Standard_EXPORT     void UnsetLocalAttributes(const Handle(AIS_InteractiveObject)& anObj,const Standard_Boolean updateviewer = Standard_True) ;
   //! Sets up polygon offsets for the given AIS_InteractiveObject. <br>
 //!          It simply calls anObj->SetPolygonOffsets() <br>
-  Standard_EXPORT     void SetPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0,const Standard_Boolean updateviewer = Standard_True) ;
+  Standard_EXPORT     void SetPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0,const Standard_Boolean updateviewer = Standard_True) ;
   //! simply calls anObj->HasPolygonOffsets() <br>
   Standard_EXPORT     Standard_Boolean HasPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj) const;
   //! Retrieves current polygon offsets settings for <anObj>. <br>
-  Standard_EXPORT     void PolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT     void PolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
   //! Sets the size aSize of the trihedron. <br>
 //! Is used to change the default value 100 mm for <br>
 //! display of trihedra. <br>

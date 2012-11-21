@@ -80,6 +80,7 @@ is
 	---C++: inline         
 
     Clear (me : mutable);
+    ---C++: alias ~
 
     ID(me) returns GUID from Standard
     	is redefined static;
@@ -138,13 +139,6 @@ is
 	--          corresponding to the insertor. The pasted
 	--          attribute may be a brand new one or a new version
 	--          of the previous one.   
-
-    
-    OldPaste(me;
-    	  intoAttribute    : mutable Attribute from TDF;
-	  aRelocTationable : mutable RelocationTable from TDF);
-
-
 
     References(me; aDataSet : DataSet from TDF)
     	is redefined;

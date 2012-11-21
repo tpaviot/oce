@@ -6,7 +6,7 @@
 #ifndef _Image_FlipType_HeaderFile
 #define _Image_FlipType_HeaderFile
 
-//! Aspect_PixMap implementation. <br>
+
 enum Image_FlipType {
 Image_FT_HORIZONTAL,
 Image_FT_VERTICAL,

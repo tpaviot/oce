@@ -30,7 +30,7 @@ SET(OCE_VERSION_DEVEL -dev)
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 SET(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
 
-SET(OCE_ABI_SOVERSION 4)
+SET(OCE_ABI_SOVERSION 5)
 SET(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
 
 # Set the minimum version of cmake required to 2.6
@@ -315,21 +315,6 @@ IF(${PROJECT_NAME}_VISUALISATION)
 	IF (NOT WIN32)
 		FIND_PACKAGE(X11 REQUIRED)
 		FIND_LIBRARY( X11_Xmu_LIB Xmu PATHS /usr/openwin/lib )
-		IF( NOT DEFINED X11_FONT_PATH )
-			IF(NOT APPLE)
-				SET(X11_FONT_PATH
-					"/usr/share/X11/fonts"
-					"/usr/share/fonts/X11")
-			ELSE(NOT APPLE)
-				SET(X11_FONT_PATH
-					"/usr/X11/lib/X11/fonts"
-					"/Library/Fonts"
-					"/System/Library/Fonts")
-			ENDIF(NOT APPLE)
-		ENDIF( NOT DEFINED X11_FONT_PATH )
-		SET(X11_FONT_PATH ${X11_FONT_PATH} CACHE PATH
-			"Font directories containing fonts.dir listing files")
-		MARK_AS_ADVANCED(X11_FONT_PATH)
 	ENDIF(NOT WIN32)
 
 	IF (NOT APPLE)
@@ -351,17 +336,13 @@ IF(${PROJECT_NAME}_VISUALISATION)
 		FIND_LIBRARY(FREETYPE_LIBRARY freetype)
 	ENDIF(NOT ${PROJECT_NAME}_USE_BUNDLE)
 
-	FIND_PATH(FTGL_V212_INCLUDE_DIR FTGL/FTFace.h DOC "Location of header files for FTGL 2.1.2" ${CMAKE_SYSTEM_INCLUDE_PATH})
-	FIND_PATH(FTGL_INCLUDE_DIR FTGL/ftgl.h "Location of header files for FTGL > 2.1.2" ${CMAKE_SYSTEM_INCLUDE_PATH})
-	IF(NOT FTGL_V212_INCLUDE_DIR AND FTGL_INCLUDE_DIR)
-		ADD_DEFINITIONS(-DHAVE_FTGL_NEWER212)
-	ENDIF(NOT FTGL_V212_INCLUDE_DIR AND FTGL_INCLUDE_DIR)
-	FIND_LIBRARY(FTGL_LIBRARY ftgl "Location of ftgl library (any version)")
+	FIND_PATH(FTGL_INCLUDE_DIR FTGL/ftgl.h "Location of header files for FTGL" ${CMAKE_SYSTEM_INCLUDE_PATH})
+	FIND_LIBRARY(FTGL_LIBRARY ftgl "Location of ftgl library")
 	IF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-		FIND_LIBRARY(FTGL_LIBRARY_DEBUG ftgld "Location of ftgl debug library (any version)")
+		FIND_LIBRARY(FTGL_LIBRARY_DEBUG ftgld "Location of ftgl debug library")
 		FIND_LIBRARY(FREETYPE_LIBRARY_DEBUG freetyped "Location of freetype debug library")
 	ENDIF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-	MARK_AS_ADVANCED(X11_Xmu_LIB FTGL_V212_INCLUDE_DIR FTGL_INCLUDE_DIR FTGL_LIBRARY)
+	MARK_AS_ADVANCED(X11_Xmu_LIB FTGL_INCLUDE_DIR FTGL_LIBRARY)
 
 	## GL2PS
 	IF(${PROJECT_NAME}_WITH_GL2PS)
@@ -435,8 +416,6 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/DRAW.info
 		src/DrawResources/DrawDefault
 		src/DrawResources/DrawPlugin
-		src/DrawResources/demo
-		src/DrawResources/demo.bat
 		src/DrawResources/idoc
 		src/DrawResources/lamp.ico
 		src/DrawResources/mdltest
@@ -444,7 +423,6 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/tdoc
 		src/DrawResources/test2xl
 		src/DrawResources/vmdltest
-		src/DrawResources/wing.brep 
 		src/DrawResources/dftree.tcl )
 ENDIF(${PROJECT_NAME}_DRAW)
 
@@ -460,7 +438,6 @@ IF (${PROJECT_NAME}_USE_BUNDLE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 		SET(FREETYPE_LIBRARY_DEBUG ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/libd/freetyped.lib CACHE FILEPATH "" FORCE)
 		SET(FTGL_LIBRARY ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/ftgl.lib CACHE FILEPATH "" FORCE)
 		SET(FTGL_LIBRARY_DEBUG ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/libd/ftgld.lib CACHE FILEPATH "" FORCE)
-		ADD_DEFINITIONS(-DHAVE_FTGL_NEWER212)
 
 		IF(${PROJECT_NAME}_WITH_GL2PS)
 			SET(GL2PS_LIBRARY ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib CACHE FILEPATH "" FORCE)

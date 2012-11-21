@@ -17,15 +17,12 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <OpenGl_AVIWriter.hxx>
 
-#ifdef WNT
-
-#ifdef _MSC_VER
-// The AVI writer requires Video For Windows library 
-#pragma comment(lib,"Vfw32.lib")
-#endif
+#if (defined(_WIN32) || defined(__WIN32__)) && defined(HAVE_VIDEOCAPTURE)
+  #ifdef _MSC_VER
+    #pragma comment (lib, "vfw32.lib")
+  #endif
 
 OpenGl_AVIWriter* OpenGl_AVIWriter::MyAVIWriterInstance = 0L;
 
@@ -485,4 +482,4 @@ Standard_Boolean OpenGl_AVIWriter_AllowWriting(void * hWin)
   return aResult;
 }
 
-#endif //WNT
+#endif

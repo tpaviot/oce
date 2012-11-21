@@ -9,27 +9,27 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _TNaming_PtrDataMapOfShapePtrRefShape_HeaderFile
-#include <TNaming_PtrDataMapOfShapePtrRefShape.hxx>
-#endif
-#ifndef _TNaming_PtrAttribute_HeaderFile
-#include <TNaming_PtrAttribute.hxx>
+#ifndef _Handle_TNaming_UsedShapes_HeaderFile
+#include <Handle_TNaming_UsedShapes.hxx>
 #endif
 #ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
 #endif
+class TNaming_UsedShapes;
+class TNaming_NamedShape;
 class Standard_ConstructionError;
 class TDF_Label;
 class TopoDS_Shape;
-class TNaming_NamedShape;
 
 
-//! A tool to create and maintain topological <br>
-//! attributes. <br>
+//! A tool to create and maintain topological attributes. <br>
 //! Constructor creates an empty <br>
 //! TNaming_NamedShape attribute at the given <br>
 //! label. It allows adding "old shape" and "new <br>
@@ -39,18 +39,7 @@ class TNaming_NamedShape;
 class TNaming_Builder  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //!  Create an   Builder. <br>
 //!  Warning:  Before Addition copies the current Value, and clear <br>
@@ -74,17 +63,11 @@ public:
 //!  or merged in a Boolean operation. <br>
 //! <br>
   Standard_EXPORT     void Modify(const TopoDS_Shape& oldShape,const TopoDS_Shape& newShape) ;
-  //! Records the shape newShape which is a <br>
-//! modification of the shape oldShape but has a <br>
-//! different geometry as a result of the construction operation. <br>
-//! As an example, consider the case of a face <br>
-//! resulting from construction of a draft in a box or prism. <br>
-  Standard_EXPORT     void Replace(const TopoDS_Shape& oldShape,const TopoDS_Shape& newShape) ;
   //!   Add a  Shape to the current label ,  This Shape is <br>
 //!          unmodified.  Used for example  to define a set <br>
 //!          of shapes under a label. <br>
   Standard_EXPORT     void Select(const TopoDS_Shape& aShape,const TopoDS_Shape& inShape) ;
-  //! Returns the NamedShape which has been build or is under construction. <br>
+  //! Returns the NamedShape which has been built or is under construction. <br>
   Standard_EXPORT     Handle_TNaming_NamedShape NamedShape() const;
 
 
@@ -101,8 +84,8 @@ private:
 
 
 
-TNaming_PtrDataMapOfShapePtrRefShape myMap;
-TNaming_PtrAttribute myAtt;
+Handle_TNaming_UsedShapes myShapes;
+Handle_TNaming_NamedShape myAtt;
 
 
 };

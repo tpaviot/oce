@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -18,6 +21,9 @@
 #endif
 #ifndef _Draw_PInterp_HeaderFile
 #include <Draw_PInterp.hxx>
+#endif
+#ifndef _Standard_SStream_HeaderFile
+#include <Standard_SStream.hxx>
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
@@ -31,9 +37,6 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Standard_SStream_HeaderFile
-#include <Standard_SStream.hxx>
-#endif
 class TCollection_AsciiString;
 class TCollection_ExtendedString;
 
@@ -43,18 +46,7 @@ class TCollection_ExtendedString;
 class Draw_Interpretor  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Draw_Interpretor();
@@ -137,6 +129,18 @@ public:
   Standard_EXPORT     void Set(const Draw_PInterp& anInterp) ;
   
   Standard_EXPORT     Draw_PInterp Interp() const;
+  //! Enables or disables logging of all commands and their <br>
+//! results <br>
+  Standard_EXPORT     void SetDoLog(const Standard_Boolean doLog) ;
+  //! Enables or disables eachoing of all commands and their <br>
+//! results to cout <br>
+  Standard_EXPORT     void SetDoEcho(const Standard_Boolean doEcho) ;
+  //! Returns true if logging of commands is enabled <br>
+  Standard_EXPORT     Standard_Boolean GetDoLog() const;
+  //! Returns true if echoing of commands is enabled <br>
+  Standard_EXPORT     Standard_Boolean GetDoEcho() const;
+  //! Returns log stream <br>
+  Standard_EXPORT     Standard_SStream& Log() ;
 
 
 
@@ -154,6 +158,9 @@ private:
 
 Standard_Boolean isAllocated;
 Draw_PInterp myInterp;
+Standard_Boolean myDoLog;
+Standard_Boolean myDoEcho;
+Standard_SStream myLog;
 
 
 };

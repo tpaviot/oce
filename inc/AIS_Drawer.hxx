@@ -371,6 +371,27 @@ public:
 //!          Color: Quantity_NOC_SKYBLUE <br>
 //!          Type of line: Aspect_TOL_SOLID Width: 1. <br>
   Standard_EXPORT     Handle_Prs3d_LineAspect VectorAspect() ;
+  //! Enables or disables drawing of face boundaries for shading presentations. <br>
+//! The method sets drawing flag owned by the drawer that will be used during <br>
+//! visualization instead of the one set in link. <br>
+//! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
+//! drawn or not. <br>
+  Standard_EXPORT     void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled) ;
+  //! Checks whether the drawing of face boundaries is enabled or not. <br>
+  Standard_EXPORT     Standard_Boolean IsFaceBoundaryDraw() const;
+  //! Sets line aspect for face boundaries. <br>
+//! The method sets line aspect owned by the drawer that will be used during <br>
+//! visualization instead of the one set in link. <br>
+//! theAspect is the line aspect that determines the look of the face boundaries. <br>
+  Standard_EXPORT     void SetFaceBoundaryAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
+  //! Returns line aspect of face boundaries. <br>
+  Standard_EXPORT     Handle_Prs3d_LineAspect FaceBoundaryAspect() ;
+  //! Returns true if the drawer has its own attribute for <br>
+//! "draw face boundaries" flag that overrides the one in the link. <br>
+        Standard_Boolean IsOwnFaceBoundaryDraw() const;
+  //! Returns true if the drawer has its own attribute for <br>
+//! face boundaries aspect that overrides the one in the link. <br>
+        Standard_Boolean IsOwnFaceBoundaryAspect() const;
   
         Standard_Boolean HasDatumAspect() const;
   //! Returns a link with Prs3d_Drawer_DatumAspect, <br>
@@ -446,6 +467,7 @@ Standard_Real myPreviousDeviationAngle;
 Standard_Boolean myhasOwnHLRDeviationAngle;
 Standard_Real myOwnHLRDeviationAngle;
 Standard_Real myPreviousHLRDeviationAngle;
+Standard_Boolean myHasOwnFaceBoundaryDraw;
 
 
 };
