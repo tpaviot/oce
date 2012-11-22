@@ -35,7 +35,7 @@
 inline         Standard_Integer TDF_LabelMapHasher::HashCode
 //#endif
 (const TDF_Label& aLab, const Standard_Integer Upper) 
-{ return 1 + ( (int) (labs((long int) aLab.myLabelNode) % Upper) ); }
+{ return 1 + ( (int) (labs((intptr_t) aLab.myLabelNode) % Upper) ); }
 
  
 //=======================================================================

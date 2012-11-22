@@ -324,7 +324,7 @@ Standard_Integer OSD_Process :: UserId () {
  if ( hProcessToken != INVALID_HANDLE_VALUE ) CloseHandle ( hProcessToken );
  if ( pTKowner      != NULL                 ) FreeTokenInformation ( pTKowner );
 
- return ( Standard_Integer )retVal;
+ return ( intptr_t )retVal;
 
 }  // end OSD_Process :: UserId
 

@@ -142,7 +142,7 @@ static DWORD WINAPI WNTthread_func (LPVOID data)
   WNTthread_data *adata = (WNTthread_data*)data;
   void* ret = adata->func ( adata->data );
   free ( adata );
-  return (DWORD)ret;
+  return (intptr_t)ret;
 }
 #endif
 

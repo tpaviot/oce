@@ -102,7 +102,7 @@ Standard_Integer OSD_EnvironmentIterator::Error()const{
 OSD_EnvironmentIterator :: OSD_EnvironmentIterator () {
 
  myEnv   = GetEnvironmentStrings ();
- myCount = ( Standard_Integer )myEnv;
+ myCount = ( intptr_t )myEnv;
 
 }  // end constructor
 
