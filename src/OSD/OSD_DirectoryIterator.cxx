@@ -208,7 +208,7 @@ OSD_DirectoryIterator :: OSD_DirectoryIterator (
                          ) {
 
  myFlag   = Standard_False;
- myHandle = ( intptr_t )INVALID_HANDLE_VALUE;
+ myHandle = INVALID_HANDLE_VALUE;
 
  where.SystemName ( myPlace );
 
@@ -223,15 +223,15 @@ void OSD_DirectoryIterator :: Destroy () {
 
  if ( myData != NULL ) HeapFree (  GetProcessHeap (), 0, myData  );
 
- if (  myHandle != ( intptr_t )INVALID_HANDLE_VALUE  )
+ if (  myHandle != INVALID_HANDLE_VALUE  )
 
-  FindClose (  ( HANDLE )myHandle  );
+  FindClose (  myHandle  );
 
 }  // end  OSD_DirectoryIterator :: Destroy
 
 Standard_Boolean OSD_DirectoryIterator :: More () {
 
- if (  myHandle == ( intptr_t )INVALID_HANDLE_VALUE  ) {
+ if (  myHandle == INVALID_HANDLE_VALUE  ) {
  
   TCollection_AsciiString wc = myPlace + TEXT( "/" ) + myMask;
 
@@ -239,11 +239,11 @@ Standard_Boolean OSD_DirectoryIterator :: More () {
             GetProcessHeap (), HEAP_GENERATE_EXCEPTIONS, sizeof ( WIN32_FIND_DATA )
            );
 
-  myHandle = ( intptr_t )FindFirstFile (
+  myHandle = FindFirstFile (
                                   wc.ToCString (), ( PWIN32_FIND_DATA )myData
                                  );
 
-  if (  myHandle == ( intptr_t )INVALID_HANDLE_VALUE  )
+  if (  myHandle == INVALID_HANDLE_VALUE  )
   
    _osd_wnt_set_error ( myError, OSD_WDirectoryIterator );
   
@@ -258,8 +258,8 @@ Standard_Boolean OSD_DirectoryIterator :: More () {
   
  } else if ( !myFlag ) {
  
-  FindClose (  ( HANDLE )myHandle  );
-  myHandle = ( intptr_t )INVALID_HANDLE_VALUE;
+  FindClose ( myHandle );
+  myHandle = INVALID_HANDLE_VALUE;
  
  }  // end if
 
@@ -275,7 +275,7 @@ void OSD_DirectoryIterator :: Next () {
  
   do {
   
-   if (   !FindNextFile (  ( HANDLE )myHandle, _FD  )   ) {
+   if (   !FindNextFile (  myHandle, _FD  )   ) {
    
     myFlag = Standard_False;
 

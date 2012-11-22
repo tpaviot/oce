@@ -79,7 +79,11 @@ private:
 
 
 Standard_Address myEnv;
+#ifdef WNT
+Standard_Address myCount;
+#else
 Standard_Integer myCount;
+#endif
 OSD_Error myError;
 
 

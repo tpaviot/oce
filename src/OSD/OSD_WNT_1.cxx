@@ -240,13 +240,7 @@ static void __fastcall QuadWordToFileTime ( __int64 qw, PFILETIME pFt ) {
 ////////////////////////////////////////////////////////////////
 LPWORD lpwAlign (LPWORD lpIn)
 {
-  ULONG ul;
-
-  ul = (intptr_t) lpIn;
-  ul +=3;
-  ul >>=2;
-  ul <<=2;
-  return (LPWORD) ul;
+  return (LPWORD) (((char*)lpIn+3) & ~0x3);
 }
 
 int CopyAnsiToWideChar (LPWORD lpWCStr, LPSTR lpAnsiIn)

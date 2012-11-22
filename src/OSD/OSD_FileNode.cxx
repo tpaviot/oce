@@ -468,7 +468,7 @@ PSECURITY_DESCRIPTOR __fastcall _osd_wnt_protection_to_sd ( const OSD_Protection
 BOOL                 __fastcall _osd_wnt_sd_to_protection (
                                  PSECURITY_DESCRIPTOR pSD, OSD_Protection& prot, BOOL
                                 );
-Standard_Integer     __fastcall _get_file_type ( Standard_CString, Standard_Integer );
+Standard_Integer     __fastcall _get_file_type ( Standard_CString, HANDLE );
 
 void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 
@@ -482,7 +482,7 @@ static void __fastcall _test_raise ( TCollection_AsciiString, Standard_CString )
 
 OSD_FileNode::OSD_FileNode () {
 
- myFileChannel = ( intptr_t )INVALID_HANDLE_VALUE;
+ myFileChannel = INVALID_HANDLE_VALUE;
 
 }  // end constructor ( 1 )
 
@@ -493,7 +493,7 @@ OSD_FileNode::OSD_FileNode () {
 
 OSD_FileNode::OSD_FileNode ( const OSD_Path& Name ) {
 
- myFileChannel = ( intptr_t )INVALID_HANDLE_VALUE;
+ myFileChannel = INVALID_HANDLE_VALUE;
  myPath        = Name;
 
 }  // end constructor ( 2 )
@@ -563,7 +563,7 @@ void OSD_FileNode::Remove () {
  TEST_RAISE(  TEXT( "Remove" )  );
 
  switch (  _get_file_type (  fName.ToCString (),
-                             ( intptr_t )INVALID_HANDLE_VALUE )  ) {
+                             INVALID_HANDLE_VALUE )  ) {
 
   case FLAG_FILE:
 
@@ -611,7 +611,7 @@ void OSD_FileNode::Move ( const OSD_Path& NewPath ) {
  NewPath.SystemName ( fNameDst );
 
  switch (  _get_file_type ( fName.ToCString (),
-                            ( intptr_t )INVALID_HANDLE_VALUE )  ) {
+                            INVALID_HANDLE_VALUE )  ) {
 
   case FLAG_FILE:
 
@@ -662,7 +662,7 @@ void OSD_FileNode::Copy ( const OSD_Path& ToPath ) {
  ToPath.SystemName ( fNameDst );
 
  switch (  _get_file_type ( fName.ToCString (),
-                            ( intptr_t )INVALID_HANDLE_VALUE )  ) {
+                            INVALID_HANDLE_VALUE )  ) {
 
   case FLAG_FILE:
 
@@ -715,7 +715,7 @@ OSD_Protection OSD_FileNode::Protection () {
         ) == NULL ||
         !_osd_wnt_sd_to_protection (
           pSD, retVal,
-          _get_file_type (  fName.ToCString (), ( intptr_t )INVALID_HANDLE_VALUE  ) ==
+          _get_file_type (  fName.ToCString (), INVALID_HANDLE_VALUE  ) ==
           FLAG_DIRECTORY
          )
  )
@@ -747,7 +747,7 @@ void OSD_FileNode::SetProtection ( const OSD_Protection& Prot ) {
  pSD = _osd_wnt_protection_to_sd (
         Prot,
         _get_file_type ( fName.ToCString (),
-                         ( intptr_t )INVALID_HANDLE_VALUE  ) ==
+                         INVALID_HANDLE_VALUE  ) ==
         FLAG_DIRECTORY,
         (char *)fName.ToCString ()
        );

@@ -95,7 +95,11 @@ private:
 
 
 
+#ifdef WNT
+HANDLE myId;
+#else
 Standard_Integer myId;
+#endif
 Standard_Address myAddress;
 TCollection_AsciiString myName;
 Standard_Integer mySize;

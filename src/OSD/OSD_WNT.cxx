@@ -1012,12 +1012,12 @@ BOOL MoveDirectory ( LPCTSTR oldDir, LPCTSTR newDir ) {
  BOOL                fFind;
  BOOL                retVal = FALSE;
  DIR_RESPONSE        response;
- DWORD               level;
+ LPVOID              level;
 
- if (   (  level = ( intptr_t )TlsGetValue ( dwLevel )  ) == NULL   ) {
+ if (   (  level = TlsGetValue ( dwLevel )  ) == NULL   ) {
 
-  ++level;
-  TlsSetValue (  dwLevel, ( LPVOID )level  );
+  level = ( LPVOID )(  ( char* )level + 1  );
+  TlsSetValue (  dwLevel, level  );
 
   fFind = FALSE;
   driveSrc = driveDst = pathSrc = pathDst = NULL;
@@ -1071,16 +1071,16 @@ retry:
 
   if ( fFind ) {
     
-   --level;
-   TlsSetValue (  dwLevel, ( LPVOID )level  );
+   level = ( LPVOID )(  ( char* )level - 1  );
+   TlsSetValue (  dwLevel, level  );
    return retVal;
 
   }  // end if
  
  } else {
  
-  ++level;
-  TlsSetValue (  dwLevel, ( LPVOID )level  );
+  level = ( LPVOID )(  ( char* )level + 1  );
+  TlsSetValue (  dwLevel, level  );
  
  }  // end else
 
@@ -1226,8 +1226,8 @@ retry_2:
   
  }  /* end if */
 
- --level;
- TlsSetValue (  dwLevel, ( LPVOID )level  );
+ level = ( LPVOID )(  ( char* )level - 1  );
+ TlsSetValue (  dwLevel, level  );
 
  return retVal;
 
