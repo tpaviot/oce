@@ -97,6 +97,7 @@ char *cdata ;
     if( !(cdata = (char*) Xw_calloc(width*height,pad)) ) {
 	/*ERROR*XImage Allocation failed*/
 	Xw_set_error(60,"Xw_open_image",0) ;
+    Xw_free(cdata);
         return (NULL) ;
     }
 

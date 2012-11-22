@@ -346,11 +346,11 @@ read_texture(char *name, int *width, int *height, int *components) {
   abuf = new unsigned char[image->xsize];
   if(!base || !rbuf || !gbuf || !bbuf)
   {  
-    free(base);
-    free(rbuf);
-    free(gbuf);
-    free(bbuf);
-    free(abuf);
+    delete [] base;
+    delete [] rbuf;
+    delete [] gbuf;
+    delete [] bbuf;
+    delete [] abuf;
     return NULL;
   }
   lptr = base;

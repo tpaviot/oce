@@ -307,7 +307,7 @@ int MaxColor,BasePixel,MaxUserColor,MaxDefineColor,FirstFreeColorIndex,visualid 
 Standard_Integer Xw_ColorMap::MaxOverlayColors( ) const {
 Aspect_Handle *VisualInfo ;
 Xw_TypeOfVisual VisualClass ;
-int MaxColor,BasePixel,MaxUserColor,MaxDefineColor,FirstFreeColorIndex,visualid ;
+int MaxColor,BasePixel,MaxUserColor = 0,MaxDefineColor,FirstFreeColorIndex,visualid ;
 
 	status = XW_ERROR;
 	if( MyExtendedOverlayColorMap ) {
