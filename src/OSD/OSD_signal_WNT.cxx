@@ -218,7 +218,7 @@ extern "C" Standard_EXPORT void _debug_break ( Standard_PCharacter );
 
 MB_DESC fatalErrorDesc[] = {
 									  
-                 { MBT_ICON,   ( int )IDI_HAND              },
+                 { MBT_ICON,   ( intptr_t )IDI_HAND              },
                  { MBT_BUTTON, IDYES,    TEXT( "Continue" ) },
                  { MBT_BUTTON, IDNO,     TEXT( "Debugger" ) },
                  { MBT_BUTTON, IDCANCEL, TEXT( "Stop"     ) }

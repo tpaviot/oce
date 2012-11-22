@@ -939,7 +939,7 @@ void OSD_File :: Build (
 
   RAISE(  TEXT( "OSD_File :: Build (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_NEW );
+ myFileChannel = ( intptr_t )_open_file ( fName.ToCString (), Mode, OPEN_NEW );
 
  if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  )
 
@@ -978,7 +978,7 @@ void OSD_File :: Open (
 
   RAISE(  TEXT( "OSD_File :: Open (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_OLD );
+ myFileChannel = ( intptr_t )_open_file ( fName.ToCString (), Mode, OPEN_OLD );
 
  if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  ) {
 
@@ -1012,7 +1012,7 @@ void OSD_File :: Append (
 
   RAISE(  TEXT( "OSD_File :: Append (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_APPEND, &fNew );
+ myFileChannel = ( intptr_t )_open_file ( fName.ToCString (), Mode, OPEN_APPEND, &fNew );
 
  if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  )
 
@@ -1571,7 +1571,7 @@ void OSD_File :: Close () {
 
  CloseHandle (  ( HANDLE )myFileChannel  );
 
- myFileChannel = ( Standard_Integer )INVALID_HANDLE_VALUE;
+ myFileChannel = ( intptr_t )INVALID_HANDLE_VALUE;
  myIO          = 0;
 
 }  // end OSD_File :: Close
@@ -1606,7 +1606,7 @@ OSD_KindFile OSD_File :: KindOfFile () const {
    RAISE(  TEXT( "OSD_File :: KindOfFile (): incorrent call - no filename given" )  );
 
   flags = _get_file_type (
-            fName.ToCString (), ( Standard_Integer )INVALID_HANDLE_VALUE
+            fName.ToCString (), ( intptr_t )INVALID_HANDLE_VALUE
            );
 
  } else
@@ -2241,7 +2241,7 @@ static DWORDLONG __fastcall _get_line ( Standard_PCharacter& buffer, DWORD dwBuf
  }  // end while
 
 #ifdef VAC
- retVal  = (DWORDLONG) ( ( (unsigned __int64) ((DWORD) buffer + dwBuffSize) ) << 32 );
+ retVal  = (DWORDLONG) ( ( (unsigned __int64) ((DWORD)(intptr_t) buffer + dwBuffSize) ) << 32 );
  retVal = (DWORDLONG) ( (unsigned __int64) retVal & (((unsigned __int64) 0xFFFFFFFF) << 32) );
 #else
  retVal  = (   (  ( DWORDLONG )( ( DWORD )buffer + dwBuffSize )  ) << 32   );
@@ -2674,7 +2674,7 @@ Standard_Integer __fastcall _get_file_type (
  DWORD            dwType;
  int              fileType;
 
- fileType = fileHandle == ( Standard_Integer )INVALID_HANDLE_VALUE ?
+ fileType = fileHandle == ( intptr_t )INVALID_HANDLE_VALUE ?
                           FILE_TYPE_DISK :
                           GetFileType (  ( HANDLE )fileHandle  );
 

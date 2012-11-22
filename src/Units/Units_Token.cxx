@@ -394,7 +394,7 @@ void Units_Token::Dump(const Standard_Integer ashift,
   TCollection_AsciiString mean = Mean();
 
   for(i=0; i<ashift; i++)cout<<"  ";
-  cout << "Units_Token::Dump of " << hex << (long ) this << dec << endl;
+  cout << "Units_Token::Dump of " << hex << (Standard_Address) this << dec << endl;
   for(i=0; i<ashift; i++)cout<<"  ";
   cout<<word.ToCString()<<endl;
   for(i=0; i<ashift; i++)cout<<"  ";
