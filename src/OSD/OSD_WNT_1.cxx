@@ -242,7 +242,7 @@ LPWORD lpwAlign (LPWORD lpIn)
 {
   ULONG ul;
 
-  ul = (ULONG) lpIn;
+  ul = (intptr_t) lpIn;
   ul +=3;
   ul >>=2;
   ul <<=2;

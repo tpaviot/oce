@@ -227,7 +227,7 @@ void OSD_SharedMemory :: Build () {
 
   else
 
-   myId = ( Standard_Integer )hFileMapping;
+   myId = ( intptr_t )hFileMapping;
 
  }  // end else
 
@@ -264,7 +264,7 @@ void OSD_SharedMemory :: Open (
 
   else
 
-   myId = ( Standard_Integer )hFileMapping;
+   myId = ( intptr_t )hFileMapping;
 
   CloseHandle ( hFileMapping );
 
