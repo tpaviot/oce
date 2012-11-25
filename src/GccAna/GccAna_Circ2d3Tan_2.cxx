@@ -205,7 +205,7 @@ pararg3(1,8)
 		 }
 	       }
 	       if (ok) {
-		 for (k = 1 ; k <= nbsol3 ; k++) {
+		 for (Standard_Integer k = 1 ; k <= nbsol3 ; k++) {
 		   NbrSol++;
 		   cirsol(NbrSol) = gp_Circ2d(gp_Ax2d(Center,dirx),Radius(k));
 //                 ==========================================================
