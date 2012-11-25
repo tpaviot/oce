@@ -100,7 +100,7 @@ protected:
 
 OSD_Path myPath;
 #ifdef WNT
-HANDLE myFileChannel;
+Standard_Address myFileChannel;
 #else
 Standard_Integer myFileChannel;
 #endif

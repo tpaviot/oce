@@ -240,7 +240,7 @@ static void __fastcall QuadWordToFileTime ( __int64 qw, PFILETIME pFt ) {
 ////////////////////////////////////////////////////////////////
 LPWORD lpwAlign (LPWORD lpIn)
 {
-  return (LPWORD) (((char*)lpIn+3) & ~0x3);
+  return (LPWORD) ((uintptr_t(lpIn)+3) & ~0x3);
 }
 
 int CopyAnsiToWideChar (LPWORD lpWCStr, LPSTR lpAnsiIn)
@@ -305,7 +305,7 @@ LONG GetTextParams ( HDC hdc, LPCTSTR lpText ) {
     _TCHAR* tok = _tcstok ( dummy, TEXT( "\n" ) );
 
     while ( tok ) {
-      if ( !GetTextExtentPoint32 (hdc, tok, _tcslen(tok), (LPSIZE)&size) ) { Ret = false; break; }
+      if ( !GetTextExtentPoint32 (hdc, tok, (int)_tcslen(tok), (LPSIZE)&size) ) { Ret = false; break; }
       txtH += (short)size.cy;
       if ( txtW < size.cx )
         txtW = (short)size.cx;
@@ -366,7 +366,7 @@ _TINT MsgBox ( HWND hParent,
   int             nchar;
   DWORD           lStyle;
   _TINT           scrW = 0, scrH = 0;
-  UINT            bufSize = 0;
+  size_t          bufSize = 0;
   HDC             hDisp = NULL;
 
   short           iconWidth = 0, iconHeight = 0;
@@ -448,10 +448,10 @@ _TINT MsgBox ( HWND hParent,
         iconHeight  =  MapY (  GetSystemMetrics ( SM_CYICON )  );
       }
       if ( lpChildren[i].itemType == MBT_BUTTON ) {
-        _TINT len = _tcslen (lpChildren[i].buttonLabel);
+        size_t len = _tcslen (lpChildren[i].buttonLabel);
         SIZE aTxtSize;
         GetTextExtentPoint32 ( hDisp, lpChildren[i].buttonLabel,
-                               len, (LPSIZE)&aTxtSize );
+                               (int)len, (LPSIZE)&aTxtSize );
         if ( butMaxWidth < aTxtSize.cx )
           butMaxWidth = (short)aTxtSize.cx;
         if ( butMaxHeight < aTxtSize.cy )
@@ -529,7 +529,7 @@ _TINT MsgBox ( HWND hParent,
   /*----------------------------------------------------------------------*/
   
   {
-    int res = -1;
+    INT_PTR res = -1;
     if ( pDlgTemplate )
       res = DialogBoxIndirect (
               GetModuleHandle(NULL),

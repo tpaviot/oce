@@ -887,7 +887,7 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD );
 
 typedef OSD_SingleProtection ( __fastcall *GET_PROT_FUNC ) ( DWORD );
 
-Standard_Integer __fastcall _get_file_type ( Standard_CString, Standard_Integer );
+Standard_Integer __fastcall _get_file_type ( Standard_CString, HANDLE );
 
 // ---------------------------------------------------------------------
 // Create an empty file object

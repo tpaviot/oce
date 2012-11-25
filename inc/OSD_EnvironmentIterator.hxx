@@ -80,7 +80,7 @@ private:
 
 Standard_Address myEnv;
 #ifdef WNT
-Standard_Address myCount;
+Standard_Character * myCount;
 #else
 Standard_Integer myCount;
 #endif

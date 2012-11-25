@@ -96,7 +96,7 @@ private:
 
 
 #ifdef WNT
-HANDLE myId;
+Standard_Address myId;
 #else
 Standard_Integer myId;
 #endif
