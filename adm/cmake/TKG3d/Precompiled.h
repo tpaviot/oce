@@ -9,7 +9,7 @@
 #include "Geom_Curve.hxx"
 #include "Geom_Surface.hxx"
 #include "Geom_Conic.hxx"
-#include "ELcLib.hxx"
+#include "ElCLib.hxx"
 #include "GeomLProp.hxx"
 #include "Adaptor3d_Curve.hxx"
 #include "Adaptor3d_Surface.hxx"

@@ -4,9 +4,9 @@
 
 #include "HLRAlgo.hxx"
 #include "HLRAlgo_PolyAlgo.hxx"
-#include "HLRBrep.hxx"
+#include "HLRBRep.hxx"
 #undef TRACE
-#include "HLRBrep_Algo.hxx"
-#include "HLRBrep_Intersector.hxx"
-#include "HLRBrep_Surface.hxx"
-#include "HLRBrep_SurfaceTool.hxx"
+#include "HLRBRep_Algo.hxx"
+#include "HLRBRep_Intersector.hxx"
+#include "HLRBRep_Surface.hxx"
+#include "HLRBRep_SurfaceTool.hxx"
