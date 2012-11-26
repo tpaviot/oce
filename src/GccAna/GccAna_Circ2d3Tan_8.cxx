@@ -135,7 +135,7 @@ GccAna_Circ2d3Tan::
 	     Radius = dist1;
 	   }
 	   if (ok) {
-	     if (Abs(dist2-Radius)<=Tol && Abs(dist2-Radius)<=Tol) { 
+	     if (Abs(dist1-Radius)<=Tol && Abs(dist2-Radius)<=Tol) { 
 	       nbsol3 = 1;
 	     }
 	     else { ok = Standard_False; }

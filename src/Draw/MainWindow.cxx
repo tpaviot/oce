@@ -104,8 +104,10 @@ BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
 	{
 	  case IDM_WINDOW_NEXT :
 					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
-					  hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
+					{
+						hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
 						SendMessage(hWndClient, WM_MDINEXT, (WPARAM)hWndActive, 0l);  
+					}
 					break;
 
 		case IDM_WINDOW_CASCADE :
