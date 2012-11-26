@@ -1,44 +1,124 @@
 
 # Instructs the MSVC toolset to use the precompiled header PRECOMPILED_HEADER
 # for each source file given in the collection named by SOURCE_VARIABLE_NAME.
-FUNCTION(ENABLE_PRECOMPILED_HEADERS PRECOMPILED_HEADER SOURCE_VARIABLE_NAME)
-	IF(MSVC)
+FUNCTION(ENABLE_PRECOMPILED_HEADERS PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_VARIABLE_NAME)
+	IF(MSVC OR CMAKE_COMPILER_IS_GNUCXX)
 		set(files ${${SOURCE_VARIABLE_NAME}})
 
 		# Generate precompiled header translation unit
 		get_filename_component(pch_basename ${PRECOMPILED_HEADER} NAME_WE)
 		set(pch_abs ${CMAKE_CURRENT_SOURCE_DIR}/${PRECOMPILED_HEADER})
 		set(pch_unity ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.cpp)
-		#set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${pch_abs}\"") #this may be useful for nmake
-		set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${PRECOMPILED_HEADER}\"")
+		
+		IF (PHASE EQUAL 2)
+			# A list of exclusions patterns. For the moment is global to the entire project
+			SET (excludes "OSD*" "WNT*" "AlienImage_BMPAlienData.cxx"
+				      "Image_PixMap.cxx" "PlotMgt.cxx" "Visual3d_View.cxx" "V3d_View_Print.cxx" "OpenGl*"
+				      "Viewer2dTest_ViewerCommands.cxx" "ViewerTest_*" )
 
-		# A list of exclusions patterns. For the moment is global to the entire project
-		SET (excludes "OSD*" "WNT*" "AlienImage_BMPAlienData.cxx"
-		              "Image_PixMap.cxx" "PlotMgt.cxx" "Visual3d_View.cxx" "V3d_View_Print.cxx" "OpenGl*"
-		              "Viewer2dTest_ViewerCommands.cxx" "ViewerTest_*" )
+			# GCC requires an additional target to build the PCH file.
+			IF(CMAKE_COMPILER_IS_GNUCXX)
+				
+				# PCH output file
+				#SET(pch_output "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}.gch")
+				SET(pch_output "${pch_abs}.gch")
+				
+				# Detects compiler flags
+				STRING(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" _flags_var_name)
+				SET(_compiler_FLAGS ${${_flags_var_name}})
+				
+				# Directory properties
+				GET_DIRECTORY_PROPERTY(_directory_flags INCLUDE_DIRECTORIES)
+				FOREACH(item ${_directory_flags})
+				    LIST(APPEND _compiler_FLAGS "-I${item}")
+				ENDFOREACH(item)
 
-		# Update properties of source files to use the precompiled header.
-		# Additionally, force the inclusion of the precompiled header at beginning of each source file.
-		foreach(source_file ${files} )
-			# Find if the file is on the exclusion list
-			SET(IsExclude FALSE)
-			foreach (exc ${excludes})
-				IF(${source_file} MATCHES ${exc})
-					SET(IsExclude TRUE)
+				GET_TARGET_PROPERTY(target_compiler_FLAGS ${TARGET_NAME} COMPILE_FLAGS)
+				IF(target_compiler_FLAGS)
+				    LIST(APPEND _compiler_FLAGS ${target_compiler_FLAGS})
 				ENDIF()
-			endforeach ()
-			IF (NOT IsExclude)
-				GET_FILENAME_COMPONENT(thisext ${source_file} EXT)
-				IF (${thisext} MATCHES ".cxx")
-					set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "/Yu\"${PRECOMPILED_HEADER}\" /FI\"${PRECOMPILED_HEADER}\""     )
-				ENDIF()
+							
+				STRING(TOUPPER "COMPILE_DEFINITIONS_${CMAKE_BUILD_TYPE}" _defs_prop_name)
+				
+				GET_DIRECTORY_PROPERTY(_directory_flags COMPILE_DEFINITIONS)
+				IF(_directory_flags)
+				      FOREACH(flag ${_directory_flags})
+					  LIST(APPEND _compiler_FLAGS -D${flag})
+				      ENDFOREACH(flag)
+				ENDIF(_directory_flags)
+				
+				GET_DIRECTORY_PROPERTY(_directory_flags ${_defs_prop_name})
+				IF(_directory_flags)
+				      FOREACH(flag ${_directory_flags})
+					  LIST(APPEND _compiler_FLAGS -D${flag})
+				      ENDFOREACH(flag)
+				ENDIF(_directory_flags)
+
+				GET_TARGET_PROPERTY(_target_flags ${TARGET_NAME} COMPILE_DEFINITIONS)
+				IF(_target_flags)
+					FOREACH(flag ${_target_flags})
+						LIST(APPEND _compiler_FLAGS -D${flag})
+					ENDFOREACH(flag)
+				ENDIF(_target_flags)
+
+				GET_TARGET_PROPERTY(_target_flags ${TARGET_NAME} ${_defs_prop_name})
+				IF(_target_flags)
+					FOREACH(flag ${_target_flags})
+						LIST(APPEND _compiler_FLAGS -D${flag})
+					ENDFOREACH(flag)
+				ENDIF(_target_flags)
+				
+				#MESSAGE("compiler flags :" ${_compiler_FLAGS})
+
+				SEPARATE_ARGUMENTS(_compiler_FLAGS)
+				
+				IF(NOT WIN32)
+					SET(additionalCompilerFlags -fPIC)
+				ELSE()
+					SET(additionalCompilerFlags -mthreads)
+				ENDIF()	      
+					      
+				ADD_CUSTOM_COMMAND(OUTPUT ${pch_output} 
+				    COMMAND ${CMAKE_CXX_COMPILER} ${_compiler_FLAGS} -x c++-header -o ${pch_output} ${pch_unity} ${additionalCompilerFlags}
+				    DEPENDS ${pch_unity} )
+				ADD_CUSTOM_TARGET(${TARGET_NAME}_gch DEPENDS ${pch_output})
+				ADD_DEPENDENCIES(${TARGET_NAME} ${TARGET_NAME}_gch)
 			ENDIF()
-		endforeach(source_file)
+	    
+			# Update properties of source files to use the precompiled header.
+			# Additionally, force the inclusion of the precompiled header at beginning of each source file.
+			foreach(source_file ${files} )
+				# Find if the file is on the exclusion list
+				SET(IsExclude FALSE)
+				foreach (exc ${excludes})
+					IF(${source_file} MATCHES ${exc})
+						SET(IsExclude TRUE)
+					ENDIF()
+				endforeach ()
+				IF (NOT IsExclude)
+					GET_FILENAME_COMPONENT(thisext ${source_file} EXT)
+					IF (${thisext} MATCHES ".cxx")
+						IF (MSVC)
+						  set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "/Yu\"${PRECOMPILED_HEADER}\" /FI\"${PRECOMPILED_HEADER}\""     )
+						ENDIF()
+						IF (CMAKE_COMPILER_IS_GNUCXX)
+						  SET_SOURCE_FILES_PROPERTIES( ${source_file} PROPERTIES COMPILE_FLAGS "-include ${pch_abs} -Winvalid-pch")
+						ENDIF()
+						
+					ENDIF()
+				ENDIF()
+			endforeach(source_file)
+		ELSE(PHASE EQUAL 2)
+		    # Finally, update the source file collection to contain the precompiled header translation unit
+		    set(${SOURCE_VARIABLE_NAME} ${pch_unity} ${PRECOMPILED_HEADER} ${${SOURCE_VARIABLE_NAME}} PARENT_SCOPE)
+		    
+		    #set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${pch_abs}\"") #this may be useful for nmake
+		    IF(MSVC)
+			set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${PRECOMPILED_HEADER}\"")
+		    ENDIF()
+		ENDIF(PHASE EQUAL 2)
 
-		# Finally, update the source file collection to contain the precompiled header translation unit
-		set(${SOURCE_VARIABLE_NAME} ${pch_unity} ${PRECOMPILED_HEADER} ${${SOURCE_VARIABLE_NAME}} PARENT_SCOPE)
-
-	ENDIF(MSVC)
+	ENDIF()
 ENDFUNCTION(ENABLE_PRECOMPILED_HEADERS)
 
 MESSAGE(STATUS "Processing ToolKit: ${TOOLKIT} (${TOOLKIT_MODULES})")
@@ -83,15 +163,21 @@ ENDIF(NOT ${PROJECT_NAME}_NO_LIBRARY_VERSION)
 
 # Precompiled Headers
 IF(${PROJECT_NAME}_COMPILER_SUPPORTS_PCH AND ${PROJECT_NAME}_USE_PCH)
-
 	IF (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h)
 		#MESSAGE("Using Precompiled.h")
-		ENABLE_PRECOMPILED_HEADERS (Precompiled.h TOOLKIT_SOURCE_FILES)
+		ENABLE_PRECOMPILED_HEADERS (1 ${TOOLKIT} Precompiled.h TOOLKIT_SOURCE_FILES)
 		SOURCE_GROUP (Precompiled FILES Precompiled.h Precompiled.cpp)
 	ENDIF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h)
 ENDIF(${PROJECT_NAME}_COMPILER_SUPPORTS_PCH AND ${PROJECT_NAME}_USE_PCH)
 
+# Add the toolkit target
 ADD_LIBRARY(${TOOLKIT} ${${PROJECT_NAME}_LIBRARY_TYPE} ${TOOLKIT_SOURCE_FILES} ${TOOLKIT_RESOURCES} )
+
+IF(${PROJECT_NAME}_COMPILER_SUPPORTS_PCH AND ${PROJECT_NAME}_USE_PCH)
+	IF (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h)
+	    ENABLE_PRECOMPILED_HEADERS (2 ${TOOLKIT} Precompiled.h TOOLKIT_SOURCE_FILES)
+	ENDIF()
+ENDIF()
 
 # TODO Add current toolkit header files into a source group?
 # Add target specific locations of *.lxx and *.ixx files
