@@ -7,8 +7,14 @@ FUNCTION(ENABLE_PRECOMPILED_HEADERS PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_
 
 		# Generate precompiled header translation unit
 		get_filename_component(pch_basename ${PRECOMPILED_HEADER} NAME_WE)
-		set(pch_abs ${CMAKE_CURRENT_SOURCE_DIR}/${PRECOMPILED_HEADER})
 		set(pch_unity ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.cpp)
+		
+		IF(MSVC)
+		    SET(pch_abs ${CMAKE_CURRENT_SOURCE_DIR}/${PRECOMPILED_HEADER})
+		ELSE()
+		    CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h ${CMAKE_CURRENT_BINARY_DIR}/Precompiled.h)
+		    SET(pch_abs ${CMAKE_CURRENT_BINARY_DIR}/${PRECOMPILED_HEADER})
+		ENDIF()
 		
 		IF (PHASE EQUAL 2)
 			# A list of exclusions patterns. For the moment is global to the entire project
