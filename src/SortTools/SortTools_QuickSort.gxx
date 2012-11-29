@@ -46,19 +46,17 @@ static void SortRecursive(Array& TheArray,
     Exchange(TheArray(Middle), TheArray(Right - 1));
     Front = Left + 1;
     Back = Right - 1;
-    if(Back != TheArray.Lower()) {
+    if(Back > Left) {
       Back = Back - 1;
     }
     for(;;) {
-      while (Comp.IsLower(TheArray(Front), Pivot)) {
+      while (Front < Right && Comp.IsLower(TheArray(Front), Pivot)) {
 	Front = Front + 1;
       }
-      while (Comp.IsLower(Pivot, TheArray(Back))) {
+      while (Back > Left && Comp.IsLower(Pivot, TheArray(Back))) {
 	Back = Back - 1;
       }
       if(Front <= Back) {
-	if(Front == TheArray.Upper()) return;
-	if(Back == TheArray.Lower()) return;  
 	Exchange(TheArray(Front), TheArray(Back));
 	Front = Front + 1;
 	Back = Back - 1;
