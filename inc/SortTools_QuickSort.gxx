@@ -54,10 +54,10 @@ static void SortRecursive(Array& TheArray,
       Back = Back - 1;
     }
     for(;;) {
-      while (Comp.IsLower(TheArray(Front), Pivot)) {
+      while (Front < TheArray.Upper() && Comp.IsLower(TheArray(Front), Pivot)) {
 	Front = Front + 1;
       }
-      while (Comp.IsLower(Pivot, TheArray(Back))) {
+      while (Back > TheArray.Lower() && Comp.IsLower(Pivot, TheArray(Back))) {
 	Back = Back - 1;
       }
       if(Front <= Back) {
