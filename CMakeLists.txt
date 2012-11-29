@@ -301,9 +301,9 @@ ENDIF(${PROJECT_NAME}_USE_BUNDLE)
 
 IF(${PROJECT_NAME}_VISUALISATION)
 	IF(${PROJECT_NAME}_WITH_FREEIMAGE)
-		FIND_PATH(FREEIMAGE_INCLUDE_DIR FreeImagePlus.h DOC "Location of header files for FreeImage" ${CMAKE_SYSTEM_INCLUDE_PATH})
+		FIND_PATH(FREEIMAGE_INCLUDE_DIR FreeImage.h DOC "Location of header files for FreeImage" ${CMAKE_SYSTEM_INCLUDE_PATH})
 		IF(FREEIMAGE_INCLUDE_DIR)
-			FIND_LIBRARY( FREEIMAGE_LIBRARY freeimageplus "Path to the freeimage library" )
+			FIND_LIBRARY( FREEIMAGE_LIBRARY freeimage "Path to the freeimage library" )
 	
 			IF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 				FIND_LIBRARY( FREEIMAGE_LIBRARY_DEBUG freeimageplusd "Path to the freeimage debug library" )
