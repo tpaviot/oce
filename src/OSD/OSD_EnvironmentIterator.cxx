@@ -102,7 +102,7 @@ Standard_Integer OSD_EnvironmentIterator::Error()const{
 OSD_EnvironmentIterator :: OSD_EnvironmentIterator () {
 
  myEnv   = GetEnvironmentStrings ();
- myCount = reinterpret_cast<Standard_Character*>(myEnv);
+ myCount = reinterpret_cast<Standard_CString>(myEnv);
 
 }  // end constructor
 
@@ -114,7 +114,7 @@ void OSD_EnvironmentIterator :: Destroy () {
 
 Standard_Boolean OSD_EnvironmentIterator :: More () {
 
- return *(  ( Standard_CString )myCount  ) ? Standard_True : Standard_False;
+ return *myCount ? Standard_True : Standard_False;
 
 }  // end OSD_EnvironmentIterator :: More
 
@@ -122,7 +122,7 @@ void OSD_EnvironmentIterator :: Next () {
 
  if (  More ()  ) {
  
-  while (   *( Standard_CString )myCount  ) ++myCount;
+  while (   *myCount  ) ++myCount;
 
   ++myCount;
  
@@ -134,7 +134,7 @@ OSD_Environment OSD_EnvironmentIterator :: Values () {
 
  TCollection_AsciiString env, name, value;
 
- env = ( Standard_CString )myCount;
+ env = myCount;
 
  name  = env.Token (  TEXT( "=" ), 1  );
  value = env.Token (  TEXT( "=" ), 2  );
