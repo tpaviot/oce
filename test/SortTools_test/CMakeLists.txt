@@ -1,3 +1,1 @@
-IF (${PROJECT_NAME}_MODEL)
-    ADD_OCE_TEST(sorttools_test "TKernel")
-ENDIF (${PROJECT_NAME}_MODEL)
+ADD_OCE_TEST(sorttools_test "TKernel")
