@@ -14,7 +14,7 @@
 #include "BRepFill_Filling.hxx"
 #include "BRepFill_Generator.hxx"
 #include "BRepFill_Draft.hxx"
-#include "TopOpeBrep.hxx"
+#include "TopOpeBRep.hxx"
 #include "TopOpeBRepBuild_Builder.hxx"
 #include "TopOpeBRepDS.hxx"
 #include "TopOpeBRepTool.hxx"
