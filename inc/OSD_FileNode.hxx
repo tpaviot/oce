@@ -99,7 +99,11 @@ protected:
 
 
 OSD_Path myPath;
+#ifdef WNT
+Standard_Address myFileChannel;
+#else
 Standard_Integer myFileChannel;
+#endif
 OSD_Error myError;
 
 

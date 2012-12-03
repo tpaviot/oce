@@ -249,7 +249,7 @@ void OpenGl_Context::SwapBuffers()
 void* OpenGl_Context::findProc (const char* theFuncName)
 {
 #if (defined(_WIN32) || defined(__WIN32__))
-  return wglGetProcAddress (theFuncName);
+  return (void*)wglGetProcAddress (theFuncName);
 #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   return (myGlLibHandle != NULL) ? dlsym (myGlLibHandle, theFuncName) : NULL;
 #else

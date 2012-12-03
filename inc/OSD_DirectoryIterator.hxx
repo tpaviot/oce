@@ -102,7 +102,7 @@ Standard_Address myDescr;
 Standard_Address myEntry;
 Standard_Integer myInit;
 OSD_Error myError;
-Standard_Integer myHandle;
+Standard_Address myHandle;
 Standard_Address myData;
 Standard_Boolean myFirstCall;
 
