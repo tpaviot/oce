@@ -34,7 +34,7 @@
 #endif
 
 // for capturing of cout and cerr (dup(), dup2())
-#ifdef _MSC_VER
+#if defined (_MSC_VER) || defined(__BORLANDC__)
 #include <io.h>
 #endif
 

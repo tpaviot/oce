@@ -64,7 +64,7 @@ is
 
  fields
       myEnv        : Address;         -- Windows NT specific
-      myCount      : Integer;         -- Count in list of variables
+      myCount      : CString;         -- Count in list of variables
       myError      : Error;
 end EnvironmentIterator from OSD;
 

@@ -26,6 +26,7 @@
 #include <OSD_OpenFile.hxx>
 #include <fstream>
 #include <algorithm>
+#include <stdio.h>
 
 #ifdef HAVE_FREEIMAGE
 namespace
