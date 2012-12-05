@@ -1,3 +1,24 @@
+Version 0.11.0 - December 2012 
+
+This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION 
+was incremented.
+
+* Upgraded to OCCT 6.5.4
+
+* Build system improvements and additions
+  - added support for Visual C++ 2012
+  - mingw32 compatibility fixes
+  - mingw64 support for Kernel and Modeling
+  - fixes for static build configuration
+  - support for GCC precompiled headers
+  - wrapped new module TKQADraw
+  - various RPATH fixes for unix systems
+
+* Many bug and warning fixes detected by static analisys and compilers
+
+Users who contributed to this release: Denis Barbier, Johannes Obermayr, Massimo Del Fedele, 
+QbProg, Thomas Paviot,salajkav-dlubalcz
+
 Version 0.10 - June 2012
 
 This version is not binary compatible with OCE 0.9.x, OCE_ABI_SOVERSION 
