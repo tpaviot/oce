@@ -100,7 +100,7 @@ is
     ---Level: Advanced
 
 fields
-   myId : Integer;     -- Shared memory ID
+   myId : Address;     -- Shared memory ID
    myAddress    : Address;
    myName : AsciiString;   
    mySize : Integer;
