@@ -35,6 +35,8 @@ inline TypePtr MemAllocAligned (const Standard_Size& theBytesCount,
   return (TypePtr )_aligned_malloc (theBytesCount, theAlign);
 #elif (defined(__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 1)
   return (TypePtr )     _mm_malloc (theBytesCount, theAlign);
+#elif defined(__BORLANDC__)
+  return (TypePtr ) malloc (theBytesCount);
 #else
   void* aPtr;
   if (posix_memalign (&aPtr, theAlign, theBytesCount))
