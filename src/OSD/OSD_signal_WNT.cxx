@@ -204,6 +204,7 @@ _CRTIMP _se_translator_function __cdecl _set_se_translator(_se_translator_functi
 #include <process.h>
 #include <signal.h>
 #include <float.h>
+#include <stdint.h>
 
 static Standard_Boolean fMsgBox;
 static Standard_Boolean fFltExceptions;

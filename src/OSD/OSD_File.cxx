@@ -845,13 +845,14 @@ Standard_Boolean OSD_File::IsExecutable()
 
 #include <stdio.h>
 #include <io.h>
+#include <stdint.h>
 #include <Standard_PCharacter.hxx>
 
 #ifndef _INC_TCHAR
 # include <tchar.h>
 #endif  // _INC_TCHAR
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
+#if defined(__CYGWIN32__) || defined(__MINGW32__) || defined(__BORLANDC__)
 #define VAC
 #define _int64 int
 #endif
