@@ -11,7 +11,6 @@ was incremented.
   - mingw64 support for Kernel and Modeling
   - fixes for static build configuration
   - support for GCC precompiled headers
-  - build fix for ubuntu 12.10
   - wrapped new module TKQADraw
   - various RPATH fixes for unix systems
 
