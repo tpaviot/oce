@@ -52,6 +52,10 @@
 #undef STRINGIZE1
 #endif
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 extern Standard_Boolean Draw_ParseFailed;
 
 Standard_EXPORT Draw_Viewer dout;

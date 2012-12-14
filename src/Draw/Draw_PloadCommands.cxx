@@ -23,6 +23,10 @@
 #include <Draw_MapOfAsciiString.hxx>
 #include <Draw.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 static Handle(Resource_Manager) myResources;
 
 //=======================================================================

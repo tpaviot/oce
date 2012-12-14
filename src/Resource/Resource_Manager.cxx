@@ -30,6 +30,10 @@
 
 #include <errno.h>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 //! Auxiliary enumeration for function WhatKindOfLine().
 enum Resource_KindOfLine
 {

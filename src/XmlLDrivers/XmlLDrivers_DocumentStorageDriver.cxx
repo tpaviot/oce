@@ -45,6 +45,10 @@
 #include <OSD_Environment.hxx>
 #include <OSD_OpenFile.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 #define STORAGE_VERSION      "STORAGE_VERSION: "
 #define REFERENCE_COUNTER    "REFERENCE_COUNTER: "
 #define MODIFICATION_COUNTER "MODIFICATION_COUNTER: "
