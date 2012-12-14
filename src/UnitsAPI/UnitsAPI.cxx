@@ -26,6 +26,8 @@
 #include <Standard_NoSuchObject.hxx>
 #include <OSD_Environment.hxx>
 
+#include "oce-paths.h"
+
 static Handle(Resource_Manager) CurrentUnits,SICurrentUnits,MDTVCurrentUnits;
 static Units_UnitsSystem LocalSystemUnits,SILocalSystemUnits,MDTVLocalSystemUnits;
 static TCollection_AsciiString rstring;

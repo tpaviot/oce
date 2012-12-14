@@ -26,6 +26,8 @@
 #include <OSD_Environment.hxx>
 #include <TCollection_AsciiString.hxx>
 
+#include "oce-paths.h"
+
 // =======================================================================
 // function : Graphic3d_WNTGraphicDevice
 // purpose  :

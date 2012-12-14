@@ -33,6 +33,8 @@
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 
+#include "oce-paths.h"
+
 static TCollection_AsciiString GetEnvir ( ) {
 
   static Standard_Boolean IsDefined=Standard_False ;

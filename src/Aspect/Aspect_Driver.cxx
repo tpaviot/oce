@@ -43,6 +43,8 @@
 #include <Aspect_Driver.ixx>
 #include <OSD_Environment.hxx>
 
+#include "oce-paths.h"
+
 static Standard_Boolean dirMFTisDefined = Standard_False;
 
 Aspect_Driver::Aspect_Driver () {

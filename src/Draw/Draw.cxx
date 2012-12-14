@@ -70,6 +70,8 @@
 
 #include <stdio.h>
 
+#include "oce-paths.h"
+
 extern Standard_Boolean Draw_ParseFailed;
 
 Standard_EXPORT Draw_Viewer dout;

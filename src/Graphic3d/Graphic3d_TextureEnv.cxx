@@ -34,6 +34,8 @@
 
 #include <stdlib.h>
 
+#include "oce-paths.h"
+
 static TCollection_AsciiString GetEnvir ( ) {
 
   static Standard_Boolean IsDefined=Standard_False ;

@@ -50,6 +50,8 @@
 
 #include <Xw_Cextern.hxx>
 
+#include "oce-paths.h"
+
 //-Static data definitions
 
 static char LocalMessag[80] ;

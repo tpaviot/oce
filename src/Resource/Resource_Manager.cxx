@@ -34,6 +34,8 @@
 
 #include <errno.h>
 
+#include "oce-paths.h"
+
 #define END      0
 #define EMPTY    1
 #define COMMENT  2

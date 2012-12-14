@@ -28,6 +28,8 @@
 #include <Draw_MapOfAsciiString.hxx>
 #include <Draw.hxx>
 
+#include "oce-paths.h"
+
 static Handle(Resource_Manager) myResources;
 
 //=======================================================================
