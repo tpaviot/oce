@@ -37,7 +37,9 @@
 #include <OSD_Directory.hxx>
 #include <OSD_File.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 // avoid warnings on 'extern "C"' functions returning C++ classes
 #ifdef _MSC_VER

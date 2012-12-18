@@ -80,7 +80,9 @@
 #include <NIS_InteractiveContext.hxx>
 #include <NIS_Triangulated.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 extern int ViewerMainLoop(Standard_Integer argc, const char** argv);
 

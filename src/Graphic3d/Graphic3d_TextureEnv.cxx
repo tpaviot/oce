@@ -34,7 +34,9 @@
 
 #include <stdlib.h>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 static TCollection_AsciiString GetEnvir ( ) {
 

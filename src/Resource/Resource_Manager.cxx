@@ -34,7 +34,9 @@
 
 #include <errno.h>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 #define END      0
 #define EMPTY    1

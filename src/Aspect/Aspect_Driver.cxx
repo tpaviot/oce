@@ -43,7 +43,9 @@
 #include <Aspect_Driver.ixx>
 #include <OSD_Environment.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 static Standard_Boolean dirMFTisDefined = Standard_False;
 

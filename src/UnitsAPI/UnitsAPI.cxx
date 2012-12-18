@@ -26,7 +26,9 @@
 #include <Standard_NoSuchObject.hxx>
 #include <OSD_Environment.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 static Handle(Resource_Manager) CurrentUnits,SICurrentUnits,MDTVCurrentUnits;
 static Units_UnitsSystem LocalSystemUnits,SILocalSystemUnits,MDTVLocalSystemUnits;

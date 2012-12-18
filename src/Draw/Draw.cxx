@@ -70,7 +70,9 @@
 
 #include <stdio.h>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 extern Standard_Boolean Draw_ParseFailed;
 

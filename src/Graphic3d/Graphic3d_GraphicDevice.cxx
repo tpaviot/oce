@@ -50,7 +50,9 @@
 
 #include <Xw_Cextern.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 //-Static data definitions
 

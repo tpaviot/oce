@@ -31,7 +31,9 @@
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 
-#include "oce-paths.h"
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
 
 static const char *NameOfTexture_to_FileName[] = 
 {
