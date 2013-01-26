@@ -924,6 +924,12 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h
 	RENAME oce_build_config.defs
 	DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDE_DIR} COMPONENT Development )
 
+#installation paths are written into a separate file (which is not installed)
+#so that only few files have to be recompiled when installation paths are modified
+ADD_DEFINITIONS(-DHAVE_OCE_PATHS_H)
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_build_paths.h.cmake
+	${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-paths.h )
+
 #this is the header that is installed on the system
 CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_install_config.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h )

@@ -31,6 +31,10 @@
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 static const char *NameOfTexture_to_FileName[] = 
 {
   "1d_elevation.rgb"
