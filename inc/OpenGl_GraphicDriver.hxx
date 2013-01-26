@@ -23,6 +23,8 @@
 
 #include <Graphic3d_GraphicDriver.hxx>
 #include <Handle_OpenGl_GraphicDriver.hxx>
+#include <Handle_OpenGl_View.hxx>
+#include <Handle_OpenGl_Workspace.hxx>
 #include <OpenGl_Context.hxx>
 
 #include <Standard_CString.hxx>
