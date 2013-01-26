@@ -132,6 +132,7 @@ void OSD_Thread::SetFunction (const OSD_ThreadFunction &func)
 //=============================================
 
 #ifdef WNT
+#include <stdint.h>
 #include <malloc.h>
 // On Windows the signature of the thread function differs from that on UNIX/Linux.
 // As we use the same definition of the thread function on all platforms (POSIX-like),

@@ -29,6 +29,7 @@
 #include <gp.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <fstream>
+#include <stdio.h>
 
 #ifdef HAVE_FREEIMAGE
 namespace

@@ -20,6 +20,7 @@
 #include <OSD_WNT_1.hxx>
 
 #include <windowsx.h>
+#include <stdint.h>
 
 #ifndef min
 # define min(a, b)  (((a) < (b)) ? (a) : (b))
