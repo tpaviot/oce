@@ -3211,24 +3211,26 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
   const Standard_Integer FinTT2 = TTriangles2.NbItems();
 
   for(Standard_Integer i_S1=0; i_S1<FinTT1; i_S1++) {
+    IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
+    if (!((Triangle1.IndiceIntersectionPossible() != 0) && (Triangle1.GetFleche() >= 0.0)))
+      continue;
     for(Standard_Integer i_S2=0; i_S2<FinTT2; i_S2++){
-      if ( (TTriangles1[i_S1].IndiceIntersectionPossible() != 0)
-	  &&(TTriangles1[i_S1].GetFleche() >= 0.0)
-	  && (TTriangles2[i_S2].IndiceIntersectionPossible() != 0)
-	  && (TTriangles2[i_S2].GetFleche() >= 0.0) ) {
+      IntPolyh_Triangle &Triangle2 =  TTriangles2[i_S2];
+      if ((Triangle2.IndiceIntersectionPossible() != 0)
+       && (Triangle2.GetFleche() >= 0.0) ) {
 	IntPolyh_StartPoint SP1, SP2;
 	//If a triangle is dead or not in BSB, comparison is not possible
-    	if (TriContact(TPoints1[TTriangles1[i_S1].FirstPoint()],
-		       TPoints1[TTriangles1[i_S1].SecondPoint()],
-		       TPoints1[TTriangles1[i_S1].ThirdPoint()],
-		       TPoints2[TTriangles2[i_S2].FirstPoint()],
-		       TPoints2[TTriangles2[i_S2].SecondPoint()],
-		       TPoints2[TTriangles2[i_S2].ThirdPoint()],
+	if (TriContact(TPoints1[Triangle1.FirstPoint()],
+		       TPoints1[Triangle1.SecondPoint()],
+		       TPoints1[Triangle1.ThirdPoint()],
+		       TPoints2[Triangle2.FirstPoint()],
+		       TPoints2[Triangle2.SecondPoint()],
+		       TPoints2[Triangle2.ThirdPoint()],
 		       CoupleAngle)){
 
 
-	  TTriangles1[i_S1].SetIndiceIntersection(1);//The triangle is cut by another
-	  TTriangles2[i_S2].SetIndiceIntersection(1);
+	  Triangle1.SetIndiceIntersection(1);//The triangle is cut by another
+	  Triangle2.SetIndiceIntersection(1);
 	  
 	  Standard_Integer NbPoints;
 	  NbPoints=StartingPointsResearch(i_S1,i_S2,SP1, SP2);
@@ -3285,16 +3287,16 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
 
   Standard_Real CoupleAngle=-2.0;
   for(Standard_Integer i_S1=0; i_S1<FinTT1; i_S1++) {
+    IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
+    if (!((Triangle1.IndiceIntersectionPossible() != 0) && (Triangle1.GetFleche() >= 0.0)))
+      continue;
     for(Standard_Integer i_S2=0; i_S2<FinTT2; i_S2++){
-      if ( (TTriangles1[i_S1].IndiceIntersectionPossible() != 0)
-	  &&(TTriangles1[i_S1].GetFleche() >= 0.0)
-	  && (TTriangles2[i_S2].IndiceIntersectionPossible() != 0)
-	  && (TTriangles2[i_S2].GetFleche() >= 0.0) ) {
+      IntPolyh_Triangle &Triangle2 = TTriangles2[i_S2];
+      if ( (Triangle2.IndiceIntersectionPossible() != 0)
+        && (Triangle2.GetFleche() >= 0.0) ) {
 	//If a triangle is dead or not in BSB, comparison is not possible
-	IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
-	IntPolyh_Triangle &Triangle2 =  TTriangles2[i_S2];
 
-    	if (TriContact(TPoints1[Triangle1.FirstPoint()],
+	if (TriContact(TPoints1[Triangle1.FirstPoint()],
 		       TPoints1[Triangle1.SecondPoint()],
 		       TPoints1[Triangle1.ThirdPoint()],
 		       TPoints2[Triangle2.FirstPoint()],
