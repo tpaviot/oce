@@ -166,13 +166,6 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
   FlecheMoy2(0.0), 
   myEnlargeZone(Standard_False) 
 { 
-   TPoints1.Init(10000);
-   TEdges1.Init(30000);
-   TTriangles1.Init(20000);
-   
-   TPoints2.Init(10000);
-   TEdges2.Init(30000);
-   TTriangles2.Init(20000);
 }
 //=======================================================================
 //function : IntPolyh_MaillageAffinage
@@ -201,13 +194,6 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
   FlecheMoy2(0.0), 
   myEnlargeZone(Standard_False)
 { 
-   TPoints1.Init(10000);
-   TEdges1.Init(30000);
-   TTriangles1.Init(20000);
-
-   TPoints2.Init(10000);
-   TEdges2.Init(30000);
-   TTriangles2.Init(20000);
 }
 //=======================================================================
 //function : FillArrayOfPnt
@@ -258,6 +244,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   itV=(v1-v0)/Standard_Real(NbSamplesV-1);
   PtrBox = (SurfID==1) ? (&MyBox1) : (&MyBox2);
 
+  TPoints.Init(NbSamplesU * NbSamplesV);
   for(BoucleU=0; BoucleU<NbSamplesU; BoucleU++){
      U = (BoucleU == (NbSamplesU - 1)) ? u1 : u0+BoucleU*itU;
     for(BoucleV=0; BoucleV<NbSamplesV; BoucleV++){
@@ -269,7 +256,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       PtrBox->Add(PtXYZ);
     }
   }
-  TPoints.SetNbItems(iCnt);
   //
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(MaSurface,
 						   NbSamplesU,
@@ -337,6 +323,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   Bnd_Box *PtrBox = (SurfID==1) ? (&MyBox1) : (&MyBox2);
   Standard_Real resol = gp::Resolution();
 
+  TPoints.Init(NbSamplesU * NbSamplesV);
   for(Standard_Integer BoucleU=0; BoucleU<NbSamplesU; BoucleU++){
     Standard_Real U = (BoucleU == (NbSamplesU - 1)) ? u1 : u0+BoucleU*itU;
     for(Standard_Integer BoucleV=0; BoucleV<NbSamplesV; BoucleV++){
@@ -366,7 +353,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       PtrBox->Add(PtXYZ);
     }
   }
-  TPoints.SetNbItems(CpteurTabPnt);
 
   Tol*=1.2;
 
@@ -407,6 +393,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   }
   //modified by NIZNHY-PKV Fri Jan 20 09:49:00 2012t
   //
+  TPoints.Init(aNbU * aNbV);
   iCnt=0;
   for(i=1; i<=aNbU; ++i){
     //modified by NIZNHY-PKV Fri Jan 20 13:59:15 2012f
@@ -430,8 +417,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       aBox.Add(aP);
     }
   }
-  //
-  TPoints.SetNbItems(iCnt);
   //
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(aS, Upars, Vpars);
   //
@@ -485,6 +470,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   }
   //modified by NIZNHY-PKV Fri Jan 20 09:49:00 2012t
   //
+  TPoints.Init(aNbU * aNbV);
   iCnt=0;
   for(i=1; i<=aNbU; ++i){
     //modified by NIZNHY-PKV Fri Jan 20 13:59:15 2012f
@@ -523,8 +509,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       aBox.Add(aP);
     }
   }
-  //
-  TPoints.SetNbItems(iCnt);
   //
   Tol*=1.2;
   //
@@ -686,6 +670,17 @@ void IntPolyh_MaillageAffinage::FillArrayOfEdges
   Standard_Integer NbSamplesU=(SurfID==1)? NbSamplesU1:NbSamplesU2;
   Standard_Integer NbSamplesV=(SurfID==1)? NbSamplesV1:NbSamplesV2;
 
+  // number of edges: 3 + 3* (NbSamplesV-2) + 3 * (NbSamplesU-2) +
+  //    3 * (NbSamplesU-2) * (NbSamplesV-2) + (NbSamplesV-1) + (NbSamplesU-1)
+  //  = 3 * NbSamplesU * NbSamplesV - 2 * NbSamplesU - 2 * NbSamplesV + 1
+  //  = 3 * (NbSamplesU-1) * (NbSamplesV-1) + NbSamplesU + NbSamplesV - 2
+  Standard_Integer numberOfEdges = 3*(NbSamplesU-1)*(NbSamplesV-1) + (NbSamplesU-1) + (NbSamplesV-1);
+  // Corner cases
+  if (NbSamplesU <= 1 && NbSamplesV <= 1) numberOfEdges = 3;
+  else if (NbSamplesU <= 1) numberOfEdges = 4 * (NbSamplesV-1);
+  else if (NbSamplesV <= 1) numberOfEdges = 4 * (NbSamplesU-1);
+  TEdges.Init(numberOfEdges);
+
   Standard_Integer CpteurTabEdges=0;
 
   //maillage u0 v0
@@ -800,7 +795,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfEdges
     TEdges[CpteurTabEdges].SetSecondTriangle(BoucleMeshV*2*(NbSamplesV-1)+(NbSamplesV-2)*2);
     CpteurTabEdges++;
   }
-  TEdges.SetNbItems(CpteurTabEdges);
 
 }
 
@@ -822,6 +816,8 @@ void IntPolyh_MaillageAffinage::FillArrayOfTriangles
   Standard_Integer NbSamplesU=(SurfID==1)? NbSamplesU1:NbSamplesU2;
   Standard_Integer NbSamplesV=(SurfID==1)? NbSamplesV1:NbSamplesV2;
 
+  // number of triangles: 2 * (NbSamplesU-1) * (NbSamplesV-1)
+  TTriangles.Init(2 * (NbSamplesU-1) * (NbSamplesV-1));
   
   //To provide recursion, I associate a point with two triangles  
   for(Standard_Integer BoucleMeshU=0; BoucleMeshU<NbSamplesU-1; BoucleMeshU++){
@@ -859,7 +855,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfTriangles
     }
     PntInit++;//Pass the last point of the column
   }
-  TTriangles.SetNbItems(CpteurTabTriangles);
   const Standard_Integer FinTT = TTriangles.NbItems();
   if (FinTT==0) {
   }
