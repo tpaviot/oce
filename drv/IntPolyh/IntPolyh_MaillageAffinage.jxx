@@ -34,9 +34,6 @@
 #ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
 #include <IntPolyh_ArrayOfTriangles.hxx>
 #endif
-#ifndef _IntPolyh_ArrayOfStartPoints_HeaderFile
-#include <IntPolyh_ArrayOfStartPoints.hxx>
-#endif
 #ifndef _IntPolyh_ArrayOfCouples_HeaderFile
 #include <IntPolyh_ArrayOfCouples.hxx>
 #endif

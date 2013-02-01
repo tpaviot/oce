@@ -173,8 +173,6 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
    TPoints2.Init(10000);
    TEdges2.Init(30000);
    TTriangles2.Init(20000);
-  
-   TStartPoints.Init(10000);
 }
 //=======================================================================
 //function : IntPolyh_MaillageAffinage
@@ -210,9 +208,7 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
    TPoints2.Init(10000);
    TEdges2.Init(30000);
    TTriangles2.Init(20000);
-   
-   TStartPoints.Init(10000);
- }
+}
 //=======================================================================
 //function : FillArrayOfPnt
 //purpose  : Compute points on one surface and fill an array of points
@@ -3248,7 +3244,6 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
 
 	  if ( (NbPoints>0)&&(NbPoints<3) ) {
 	    SP1.SetCoupleValue(i_S1,i_S2);
-	    TStartPoints[CpteurTabSP]=SP1;
 	    CpteurTabSP++;
 
 
@@ -3256,7 +3251,6 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
 
 	  if(NbPoints==2) { 	  
 	    SP2.SetCoupleValue(i_S1,i_S2);
-	    TStartPoints[CpteurTabSP]=SP2;
 	    CpteurTabSP++;
 
 
