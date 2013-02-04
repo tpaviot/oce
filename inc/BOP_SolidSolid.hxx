@@ -37,7 +37,7 @@ class TopTools_ListOfShape;
 class BOP_ShellFaceSet;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeInteger;
-class BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger;
+class TColStd_IndexedMapOfInteger;
 
 
 
@@ -87,7 +87,7 @@ private:
   
   Standard_EXPORT     Standard_Boolean PropagateFaceStateByEdges(const TopoDS_Shape& theFace,const TopTools_DataMapOfShapeInteger& theMapOfEdgeIndex,TopAbs_State& theState) ;
   
-  Standard_EXPORT     Standard_Boolean ComputeStateByInsidePoints(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex,const Standard_Integer theFaceRank,const BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger& theFFMap,TopAbs_State& theState) ;
+  Standard_EXPORT     Standard_Boolean ComputeStateByInsidePoints(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex,const Standard_Integer theFaceRank,const TColStd_IndexedMapOfInteger& theFFMap,TopAbs_State& theState) ;
   
   Standard_EXPORT     Standard_Boolean TakeOnSplit(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex) const;
 

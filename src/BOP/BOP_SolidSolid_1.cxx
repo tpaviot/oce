@@ -119,6 +119,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
     // 
 
     nF1 = aFFMap.FindKey(i);
+    const TColStd_IndexedMapOfInteger& aFFIndicesMap=aFFMap.FindFromIndex(i);
     TopoDS_Face aF1 = TopoDS::Face(aDS.Shape(nF1));
     
     iRank   = aDS.Rank(nF1);
@@ -163,7 +164,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
 
 	if(!bFoundFaceState) {
 	  // 
-	  if(ComputeStateByInsidePoints(aNewFaceIndex, nF1, iRank, aFFMap, aState)) {
+	  if(ComputeStateByInsidePoints(aNewFaceIndex, nF1, iRank, aFFIndicesMap, aState)) {
 
 	    if(aState != TopAbs_ON) {
 	      BooleanOperations_StateOfShape aConvertedState = BOPTools_StateFiller::ConvertState(aState);
@@ -268,7 +269,7 @@ Standard_Boolean BOP_SolidSolid::PropagateFaceStateByEdges(const TopoDS_Shape& t
 Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integer theFaceIndex,
 							    const Standard_Integer theBaseFaceIndex,
 							    const Standard_Integer theFaceRank,
-							    const BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger& theFFMap,
+							    const TColStd_IndexedMapOfInteger& aFFIndicesMap,
 							    TopAbs_State& theState) 
 
 {
@@ -289,17 +290,8 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
   TopoDS_Face aFace = TopoDS::Face(aS);
   //
   //
-  Standard_Integer i = 0, j = 0, aNb = 0;
-  aNb = theFFMap.Extent();
+  Standard_Integer j = 0;
 
-  for (i=1; i<=aNb; i++) {
-    // 
-    Standard_Integer nF1 = theFFMap.FindKey(i);
-
-    if(nF1 != theBaseFaceIndex)
-      continue;
-
-    const TColStd_IndexedMapOfInteger& aFFIndicesMap=theFFMap.FindFromIndex(i);
     Standard_Integer aNbj = aFFIndicesMap.Extent();
 
     for (j=1; j<=aNbj; j++) {
@@ -308,7 +300,7 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
       Standard_Boolean bIsTouchCase = aFF.IsTangentFaces();
 
       if (bIsTouchCase) {
-	Standard_Integer nF2 = aFF.OppositeIndex(nF1);
+	Standard_Integer nF2 = aFF.OppositeIndex(theBaseFaceIndex);
 	const TopoDS_Face& aF2 = TopoDS::Face(aDS.Shape(nF2));
 
 	if(BOPTools_Tools3D::CheckSameDomainFaceInside(aFace, aF2, pPaveFiller->Context())) {
@@ -317,7 +309,6 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
 	}
       }
     }
-  }
   const TopoDS_Shape& aTool = (theFaceRank == 1) ? aDS.Tool() : aDS.Object();
   TopoDS_Solid aRefSolid;
 
