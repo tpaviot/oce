@@ -166,6 +166,7 @@ TopoDS_Shape myObject;
 TopoDS_Shape myTool;
 BooleanOperations_IndexedDataMapOfShapeInteger myShapeIndexMapObj;
 BooleanOperations_IndexedDataMapOfShapeInteger myShapeIndexMapTool;
+BooleanOperations_IndexedDataMapOfShapeInteger myShapeIndexMapInserted;
 BOPTColStd_CArray1OfInteger myRefEdges;
 Standard_Integer myNbEdges;
 

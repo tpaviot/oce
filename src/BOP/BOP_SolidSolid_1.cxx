@@ -405,16 +405,7 @@ Standard_Integer GetIndex(const TopoDS_Shape& theShape,
 
   anIndex = theDS.ShapeIndex(theShape, 1);
   anIndex = (anIndex == 0) ? theDS.ShapeIndex(theShape, 2) : anIndex;
-
-  if(anIndex == 0) {
-
-    for (i = theDS.NumberOfSourceShapes() + 1; i <= theDS.NumberOfInsertedShapes(); i++) {
-      if(theShape.IsSame(theDS.Shape(i))) {
-	anIndex = i;
-	break;
-      }
-    }
-  }
+  anIndex = (anIndex == 0) ? theDS.ShapeIndex(theShape, 3) : anIndex;
 
   return anIndex;
 }
