@@ -89,8 +89,9 @@ private:
   
   Standard_EXPORT     Standard_Boolean ComputeStateByInsidePoints(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex,const Standard_Integer theFaceRank,const TColStd_IndexedMapOfInteger& theFFMap,TopAbs_State& theState) ;
   
-  Standard_EXPORT     Standard_Boolean TakeOnSplit(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex) const;
+  Standard_EXPORT     Standard_Boolean TakeOnSplit(const Standard_Integer theFaceIndex,const Standard_Integer theBaseFaceIndex, const TColStd_DataMapOfIntegerListOfInteger &aMapOfEdgeFaces) const;
 
+  Standard_EXPORT     void DoEdgesAdjacentFaces(TColStd_DataMapOfIntegerListOfInteger &aMapOfEdgeFaces) const;
 
 
 

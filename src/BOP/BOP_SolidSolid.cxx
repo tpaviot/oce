@@ -305,6 +305,9 @@ static Standard_Boolean LocalIsKeepTwice(const TopoDS_Face&          aF1,
   BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger aFFMap;
   BOP_BuilderTools::DoMap(aFFs, aFFMap);
   //
+  TColStd_DataMapOfIntegerListOfInteger aMapOfEdgeFaces;
+  DoEdgesAdjacentFaces(aMapOfEdgeFaces);
+  //
   aNb=aFFMap.Extent();
   for (i=1; i<=aNb; i++) {
     // 
@@ -337,7 +340,7 @@ static Standard_Boolean LocalIsKeepTwice(const TopoDS_Face&          aF1,
 	}
 	else {
 	   if(iRank == 1) {
-	     bAddFace = TakeOnSplit(nFSpl, nF1);
+	     bAddFace = TakeOnSplit(nFSpl, nF1, aMapOfEdgeFaces);
 	  }
 	}
 
