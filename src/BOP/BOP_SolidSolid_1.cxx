@@ -157,10 +157,11 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	  }
 	}
 
-	if(!bFoundFaceState) {
-	  // 
+	// If there are more than 100 shapes, call ComputeStateForAnalyticalSurfaces first
+	Standard_Boolean bInsidePointsFirst = aNb < 100;
+	for (int step = 0; !bFoundFaceState && step < 2; ++step) {
+	  if((step==0) == bInsidePointsFirst) {
 	  if(ComputeStateByInsidePoints(aNewFaceIndex, nF1, iRank, aFFIndicesMap, aState)) {
-
 	    if(aState != TopAbs_ON) {
 	      BooleanOperations_StateOfShape aConvertedState = BOPTools_StateFiller::ConvertState(aState);
 
@@ -168,10 +169,8 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	    }
 	    bFoundFaceState = Standard_True;
 	  }
-	}
-
-	if(!bFoundFaceState) {
-
+	  } else {
+	  //
 	  if(ComputeStateForAnalyticalSurfaces(aNewFaceIndex, nF1, aFFMap, *myDSFiller, aState)) {
 	    if(aState != TopAbs_ON) {
 	      BooleanOperations_StateOfShape aConvertedState = BOPTools_StateFiller::ConvertState(aState);
@@ -179,6 +178,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	      pDS->SetState(aNewFaceIndex, aConvertedState);
 	      bFoundFaceState = Standard_True;
 	    }
+	  }
 	  }
 	}
       }
