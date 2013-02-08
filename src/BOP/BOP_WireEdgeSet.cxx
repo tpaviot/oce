@@ -380,13 +380,8 @@ static void GetOrientationVOnE(const TopoDS_Shape& V,
   Standard_Integer BOP_WireEdgeSet::NbClosingShapes(const TopTools_ListOfShape & L) const
 {
   Standard_Integer n = 0;
-  TopTools_ListIteratorOfListOfShape it(L);
-  for ( ; it.More(); it.Next()) {
-    const TopoDS_Shape& S = it.Value();
-    if ( IsClosed(S) ) {
-      n++;
-    }
-  }
+  // OCCT implementation is buggy, IsClosed always return Standard_False, so
+  // do not compute anything
   return n;
 }
 
@@ -429,21 +424,9 @@ static void GetOrientationVOnE(const TopoDS_Shape& V,
 //=======================================================================
   Standard_Boolean BOP_WireEdgeSet::IsClosed(const TopoDS_Shape& E) const
 {
-  const TopoDS_Edge& EE = TopoDS::Edge(E);
-  Standard_Boolean closed = BRep_Tool::IsClosed(EE,myFace);
-
-  // modified by NIZHNY-MKK  Wed May 12 15:44:10 2004.BEGIN
-  if(closed) {
-    TopoDS_Edge aE1, aE2;
-    BOPTools_Tools3D::GetSeam (myFace, aE1, aE2);
-
-    if(aE1.IsNull() || aE2.IsNull()) {
-      closed = Standard_False;
-    }
-  }
-  // modified by NIZHNY-MKK  Wed May 12 15:44:14 2004.END
-
-  return closed;
+  // OCCT implementation is buggy, it always return Standard_False, so
+  // do not compute anything
+  return Standard_False;
 }
 
 //=======================================================================
