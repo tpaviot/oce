@@ -122,7 +122,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
     TopTools_DataMapOfShapeInteger aMapOfEdgeIndex;
     TopTools_ListOfShape aListOfSplits;
 
-    if(SplitFace(nF1, aMapOfEdgeIndex, aListOfSplits)) {
+    if(SplitFace(nF1, aFFIndicesMap, aMapOfEdgeIndex, aListOfSplits)) {
 
       DoInternalVertices(nF1, aListOfSplits);
 

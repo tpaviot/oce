@@ -77,6 +77,7 @@
 //  purpose:
 // =====================================================================================================================
 Standard_Boolean BOP_ShellSolid::SplitFace(const Standard_Integer theFaceIndex,
+					   const TColStd_IndexedMapOfInteger& aFFIndicesMap,
 					   TopTools_DataMapOfShapeInteger& theMapOfEdgeIndex,
 					   TopTools_ListOfShape& theListOfFace) const
 {
@@ -100,12 +101,11 @@ Standard_Boolean BOP_ShellSolid::SplitFace(const Standard_Integer theFaceIndex,
 
 
   Standard_Integer i = 0;
+  Standard_Integer aNbj = aFFIndicesMap.Extent();
 
-  for(i = 1; i <= aFFs.Length(); i++) {
-    BOPTools_SSInterference& aFF = aFFs(i);
-
-    if((aFF.Index1() != theFaceIndex) && (aFF.Index2() != theFaceIndex))
-      continue;
+  for(i = 1; i <= aNbj; i++) {
+    Standard_Integer iFF = aFFIndicesMap(i);
+    BOPTools_SSInterference& aFF = aFFs(iFF);
 
     BOPTools_SequenceOfCurves& aSC = aFF.Curves();
     Standard_Integer aNbCurves = aSC.Length();
@@ -234,26 +234,12 @@ Standard_Boolean BOP_ShellSolid::SplitFace(const Standard_Integer theFaceIndex,
     }
   }
 
-  BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger aFFMap;
-  BOP_BuilderTools::DoMap(aFFs, aFFMap);
-
-  Standard_Integer aNb = aFFMap.Extent();
-
-  for (i = 1; i <= aNb; i++) {
-    Standard_Integer nF1 = aFFMap.FindKey(i);
-
-    if(nF1 != theFaceIndex)
-      continue;
-
-    const TColStd_IndexedMapOfInteger& aFFIndicesMap=aFFMap.FindFromIndex(i);
-    Standard_Integer aNbj = aFFIndicesMap.Extent();
     Standard_Integer j = 0;
-
     for (j = 1; j <= aNbj; j++) {
       Standard_Integer iFF = aFFIndicesMap(j);
       BOPTools_SSInterference& aFF = aFFs(iFF);
       //
-      Standard_Integer nF2 = aFF.OppositeIndex(nF1);
+      Standard_Integer nF2 = aFF.OppositeIndex(theFaceIndex);
 
       if(nF2 <= 0)
 	continue;
@@ -301,7 +287,6 @@ Standard_Boolean BOP_ShellSolid::SplitFace(const Standard_Integer theFaceIndex,
 	}
       }
     }
-  }
 
   // process internal edges
   BOP_WireEdgeSet aFilteredWES (aFace);
