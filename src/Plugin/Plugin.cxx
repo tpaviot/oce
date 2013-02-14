@@ -28,6 +28,10 @@
 
 #include <TCollection_AsciiString.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 static Standard_Character tc[1000];
 static Standard_PCharacter thePluginId = tc;
 
