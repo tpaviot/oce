@@ -6,6 +6,8 @@ This project aims at gathering patches/changes/improvements from the OCC communi
 We use the following online resources:
   * Sources
        https://github.com/tpaviot/oce
+  * Binaries
+       http://code.google.com/p/oce-binaries/downloads/
   * Bug tracker
        https://github.com/tpaviot/oce/issues
   * Mailing list
