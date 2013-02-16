@@ -815,6 +815,9 @@ IF (${PROJECT_NAME}_USE_BUNDLE_SOURCE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 	MESSAGE("Using OCE Bundle in same CMake project")
 	ADD_SUBDIRECTORY( ${${PROJECT_NAME}_BUNDLE_ROOT_PATH} ${CMAKE_BINARY_DIR}/oce-win-bundle )
 
+  # The installation directory of the bundle must match the one of OCE
+  SET(OCE_WIN_BUNDLE_INSTALL_DIR ${${PROJECT_NAME}_INSTALL_PREFIX} CACHE PATH "" FORCE)
+  
 	# Look for includes in bundle source directory.
 	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
 	# and set variables to point OCE to them.
