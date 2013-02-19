@@ -3661,7 +3661,7 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
     return Standard_False;
   }
   TopTools_ListIteratorOfListOfShape It,Jt;
-  Standard_Boolean Found = Standard_False, ContainsV = Standard_False;
+  Standard_Boolean Found = Standard_False;
   for(It.Initialize(myEFMap(P1.Arc()));It.More() && !Found;It.Next()) {
     Fv = TopoDS::Face(It.Value());
     if(!Fv.IsSame(Favoid)){
@@ -3670,6 +3670,8 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
       }
     }
   }
+#ifdef DEB
+  Standard_Boolean ContainsV = Standard_False;
   if (Found) {
     for(It.Initialize(myVFMap(V));It.More();It.Next()) {
       if (TopoDS::Face(It.Value()).IsSame(Fv)) {
@@ -3678,7 +3680,6 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
       }
     }
   }
-#ifdef DEB
   if(!ContainsV){
     cout<<"FindFace : the extremity of the spine is not in the end face"<<endl;
   }

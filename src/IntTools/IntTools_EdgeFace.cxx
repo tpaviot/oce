@@ -410,13 +410,7 @@ void IntTools_EdgeFace::CheckData()
   Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real t) const
 {
   Standard_Boolean bFlag;
-  Standard_Real Umin, Usup, Vmin, Vsup;
 
-  Umin=myS.FirstUParameter();
-  Usup=myS.LastUParameter();
-  Vmin=myS.FirstVParameter();
-  Vsup=myS.LastVParameter ();
-  
   gp_Pnt P;
   myC.D0(t, P);
   GeomAPI_ProjectPointOnSurf aProjector;
@@ -455,7 +449,8 @@ void IntTools_EdgeFace::CheckData()
 //=======================================================================
   Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 {
-  Standard_Real Umin, Usup, Vmin, Vsup, aD;
+  Standard_Real aD;
+
   //
   gp_Pnt P;
   myC.D0(t, P);
@@ -467,11 +462,6 @@ void IntTools_EdgeFace::CheckData()
     aD=aD-myCriteria;
     return aD; 
   }
-  
-  Umin=myS.FirstUParameter();
-  Usup=myS.LastUParameter();
-  Vmin=myS.FirstVParameter();
-  Vsup=myS.LastVParameter ();
   
   //
   Standard_Boolean bFlag = Standard_False;

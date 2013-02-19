@@ -430,7 +430,7 @@ void OpenGl_Polygon::draw_edges (const TEL_COLOUR *edge_colour, const Aspect_Int
 
 void OpenGl_Polygon::draw_tmesh ( Tint v ) const
 {
-  Tint      i, j, k;
+  Tint      i, j;
   SEQ_     *s;
   extra_vertex b;
 
@@ -444,7 +444,7 @@ void OpenGl_Polygon::draw_tmesh ( Tint v ) const
     {
     case 1:
       {
-        for( j = 0, k = 0; j < s->tmesh_sequence.Length(); j++ )
+        for( j = 0; j < s->tmesh_sequence.Length(); j++ )
         {
           if ( s->tmesh_sequence(j) < (void *)0xffff )
             glVertex3fv( myData.vertices[ (long)s->tmesh_sequence.Value(j) ].xyz );
@@ -458,7 +458,7 @@ void OpenGl_Polygon::draw_tmesh ( Tint v ) const
       }
     case 2:
       {
-        for( j = 0, k = 0; j < s->tmesh_sequence.Length(); j++ )
+        for( j = 0; j < s->tmesh_sequence.Length(); j++ )
         {
           if ( s->tmesh_sequence(j) < (void *)0xffff ) {
             glColor3fv( myData.vcolours[ (long) s->tmesh_sequence(j) ].rgb );
@@ -473,7 +473,7 @@ void OpenGl_Polygon::draw_tmesh ( Tint v ) const
       }
     case 3:
       {
-        for( j = 0, k = 0; j < s->tmesh_sequence.Length(); j++ )
+        for( j = 0; j < s->tmesh_sequence.Length(); j++ )
         {
           if ( s->tmesh_sequence(j) < (void *)0xffff ) {
             glNormal3fv( myData.vnormals[ (long) s->tmesh_sequence(j) ].xyz);

@@ -327,9 +327,6 @@ Matches (const TColgp_Array1OfPnt2d& aPoly,
   myDetectedIndex = -1;
   Standard_Real Umin,Vmin,Umax,Vmax;
   aBox.Get(Umin,Vmin,Umax,Vmax);
-  Standard_Real Tolu,Tolv;
-  Tolu = Precision::Confusion();
-  Tolv = Precision::Confusion();
   CSLib_Class2d aClassifier2d(aPoly,aTol,aTol,Umin,Vmin,Umax,Vmax);
 
   for(Standard_Integer anIndex=0;anIndex<mypolyg.Size();++anIndex)

@@ -59,7 +59,6 @@ void Units_Lexicon::Creates(const Standard_CString afilename)
   char *Oper = oper ;
   char *Coeff = coeff ;
 #endif
-  Standard_Integer fr;
   int i;  // Warning : don't use unsigned type here (or Standard_Size or size_t), else the while's below will cause an unsigned 0-wrap!
   Standard_Real value;
   Handle(Units_Token) token;

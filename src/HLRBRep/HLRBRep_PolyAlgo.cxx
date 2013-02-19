@@ -2525,10 +2525,12 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
       TTMa[2][0] = ttma.Value(3,1);
       TTMa[2][1] = ttma.Value(3,2);
       TTMa[2][2] = ttma.Value(3,3);
-      Standard_Integer iseg,nbT,nbS,nbN;
+      Standard_Integer iseg,nbS;
 
-      nbT = (*pid)->NbTData();
-      nbN = (*pid)->NbPINod();
+#ifdef DEB
+      Standard_Integer nbT = (*pid)->NbTData();
+      Standard_Integer nbN = (*pid)->NbPINod();
+#endif
       nbS = (*pid)->NbPISeg();
 
 #ifdef DEB
@@ -2614,8 +2616,10 @@ HLRBRep_PolyAlgo::InsertOnOutLine (TColStd_Array1OfTransient& PID)
       if (IntOutL)
 	(*pid)->IntOutL(Standard_True);
 
+#ifdef DEB
       nbT = (*pid)->NbTData();
       nbN = (*pid)->NbPINod();
+#endif
       nbS = (*pid)->NbPISeg();
 
 #ifdef DEB

@@ -144,14 +144,12 @@ void BRepFeat_RibSlot::LFPerform()
 
   Standard_Boolean ChangeOpe = Standard_False;
       // Hope that there is just a solid in the result
-  Standard_Boolean UntilInShape = Standard_False;
 
   TopTools_MapOfShape M;
   TopTools_ListOfShape LShape;
   TopTools_ListOfShape LTool;
 
   if (!mySUntil.IsNull()) {
-    UntilInShape = Standard_True;
     for (exp2.Init(mySUntil,TopAbs_FACE); exp2.More(); exp2.Next()) {
       const TopoDS_Shape& funtil = exp2.Current();
       for (exp.Init(mySbase,TopAbs_FACE); exp.More(); exp.Next()) {

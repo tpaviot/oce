@@ -739,7 +739,7 @@ int macrgfl_(intptr_t *iadfld,
   static integer ibid, ienr;
   static doublereal t[1];
   static integer novfl;
-  static intptr_t ioff,iadrfl, iadt;
+  static intptr_t ioff,iadt;
   
   
   /* ***********************************************************************
@@ -850,7 +850,6 @@ int macrgfl_(intptr_t *iadfld,
   t[ioff] = -134744073.;
   
   /*  FAKE CALL TO STOP THE DEBUGGER : */
-  iadrfl = *iadfld;
   macrbrk_();
   
   /*  UPDATE THE START FLAG */
@@ -858,7 +857,6 @@ int macrgfl_(intptr_t *iadfld,
   t[ioff] = -134744073.;
     
   /*  FAKE CALL TO STOP THE DEBUGGER : */
-  iadrfl = *iadflf;
   macrbrk_();
   
   return 0 ;

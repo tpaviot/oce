@@ -1346,10 +1346,9 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
   }
 
   gp_Ax2  Cone_Ax;                                                                
-  double R1=8, R2=16, H1=20, H2=40, angle;                                       
+  double R1=8, R2=16;                                       
   gp_Pnt P0(0,0,0),                                                              
   P1(0,0,20), P2(0,0,45);                                                        
-  angle = 2*M_PI;                                                                  
   Handle(Geom_RectangularTrimmedSurface) S = GC_MakeTrimmedCone (P1, P2, R1, R2).Value();
   TopoDS_Shape myshape = BRepBuilderAPI_MakeFace(S, Precision::Confusion()).Shape();
   Handle(AIS_Shape) ais1 = new AIS_Shape(myshape);
@@ -1380,7 +1379,6 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
 { 
   char line[256];
   char X[30], Y[30];
-  int fr;
   TopoDS_Vertex V1,V2;
   TopoDS_Edge Edge;
   TopoDS_Wire Wire;
@@ -1398,7 +1396,7 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
 
   file.getline(line,80);
   for(int i=0;i<30;i++) X[i]=Y[i]=0;
-  fr = sscanf(line,"%20c%20c",&X,&Y);
+  sscanf(line,"%20c%20c",&X,&Y);
   V1 = BRepBuilderAPI_MakeVertex(gp_Pnt(atof(X),atof(Y),0.0));
 
   for(;;)
@@ -1406,7 +1404,7 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
       file.getline(line,80);
       if (!file) break;
 	  for(int i=0;i<30;i++) X[i]=Y[i]=0;
-	  fr = sscanf(line,"%20c%20c",&X,&Y);
+	  sscanf(line,"%20c%20c",&X,&Y);
 	  V2 = BRepBuilderAPI_MakeVertex(gp_Pnt(atof(X),atof(Y),0.0));
 	  Edge = BRepBuilderAPI_MakeEdge(V1,V2);
 	  WB.Add(Edge);
@@ -1578,7 +1576,7 @@ static Standard_Integer statface (Draw_Interpretor& di,Standard_Integer /*argc*/
   Handle(Dico_DictionaryOfInteger) aDico = new Dico_DictionaryOfInteger();
   Handle(TColStd_HSequenceOfAsciiString) aSequence = new TColStd_HSequenceOfAsciiString;
   Standard_CString aString;
-  Standard_Integer i=1,j=1,k=1,l=1,aa=1;
+  Standard_Integer i=1,j=1,l=1,aa=1;
   TopExp_Explorer expl;
   Standard_Real f3d,l3d;
   for(expl.Init(aShape,TopAbs_FACE);expl.More();expl.Next())

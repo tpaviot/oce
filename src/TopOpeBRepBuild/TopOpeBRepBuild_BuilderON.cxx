@@ -260,25 +260,31 @@ Standard_Boolean FUN_keepEON(const TopOpeBRepBuild_Builder&,
   Standard_Boolean tFSEG=DEBTEFOR(B,iFS,iEG);if (tFSEG) debfillonfemess(iFS,iEG);
 #endif
   
+#ifdef DEB
   Standard_Boolean keep1=Standard_True;
   Standard_Boolean keep2=Standard_True;
+#endif
   Standard_Boolean keep3=Standard_True;
   Standard_Boolean isclosedFF=BRep_Tool::IsClosed(EG,FF);
   if (isclosedFF) {
+#ifdef DEB
     keep1=Standard_True;
     keep2=Standard_True;
+#endif
     keep3=Standard_True;
   }
   else {
     TopAbs_Orientation oEGFF=TopAbs_FORWARD;
     FUN_tool_orientEinF(EG,FF,oEGFF);
 
+#ifdef DEB
     TopAbs_Orientation omatFS1=TFE.Orientation(TB1);
     if (oEGFF == TopAbs_REVERSED) omatFS1=TopAbs::Complement(omatFS1);
     keep1=(omatFS1 == TopAbs_FORWARD);
 
     TopAbs_Orientation omatFS2=TFE.Orientation(TB1);
     keep2=(omatFS2 == oEGFF);
+#endif
 
     TopAbs_State tfeb=TFE.Before();
     TopAbs_State tfea=TFE.After();

@@ -622,13 +622,19 @@ static Standard_Integer classifBnd2d(Draw_Interpretor& di, Standard_Integer n, c
 
   if (w1.IsNull() || w2.IsNull() || Fref.IsNull()) return 1;
 
-  Standard_Integer sta = classi.ClassiBnd2d(w1,w2,toluv,Standard_True);
+#ifdef DEB
+  Standard_Integer sta =
+#endif
+    classi.ClassiBnd2d(w1,w2,toluv,Standard_True);
   di <<"wires classification : checklarge=true ";
 #ifdef DEB
   FUN_tool_coutsta(sta,1,2);
 #endif
 
-  sta = classi.ClassiBnd2d(w1,w2,toluv,Standard_False);
+#ifdef DEB
+  sta =
+#endif
+    classi.ClassiBnd2d(w1,w2,toluv,Standard_False);
   di <<"wires classification : checklarge=false ";
 #ifdef DEB
   FUN_tool_coutsta(sta,1,2);
