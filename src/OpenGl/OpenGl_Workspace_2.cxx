@@ -31,10 +31,6 @@
 #ifdef HAVE_FREEIMAGE
   #include <NCollection_Handle.hxx>
   #include <FreeImagePlus.h>
-  #ifdef _MSC_VER
-  #pragma comment( lib, "FreeImage.lib" )
-  #pragma comment( lib, "FreeImagePlus.lib" )
-  #endif
   typedef NCollection_Handle<fipImage> FipHandle;
 #endif
 
