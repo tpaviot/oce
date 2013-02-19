@@ -71,7 +71,7 @@ static Standard_Integer OCC142 (Draw_Interpretor& di, Standard_Integer /*argc*/,
 }
 
 void QABugs::Commands_19(Draw_Interpretor& theCommands) {
-  char *group = "QABugs";
+  const char *group = "QABugs";
 
   theCommands.Add ("OCC230", "OCC230 TrimmedCurve Pnt2d Pnt2d", __FILE__, OCC230, group);
   theCommands.Add ("OCC142", "OCC142", __FILE__, OCC142, group);
