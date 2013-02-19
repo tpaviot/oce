@@ -1051,104 +1051,6 @@ static int V2dPan (Draw_Interpretor& di, int argc, const char ** argv)
   return 0;
 }
 
-//==============================================================================
-//function : V2dGetViewCharac
-//purpose  : v2dGetViewCharac
-//==============================================================================
-static int V2dGetViewCharac (Draw_Interpretor& di, int si, const char ** /*sc*/)
-{
-  if (si != 1)
-  {
-    di << "Use - v2dGetViewCharac" << "\n";
-    return 1;
-  }
-
-  Handle(V2d_View) V = Viewer2dTest::CurrentView();
-  if (V.IsNull())
-  {
-    di << "You must initialize AIS 2D Viewer before this command." << "\n";
-    return 1;
-  }
-
-//  Quantity_Factor aViewScale = V->Scale();
-
-  Standard_Real aCenterCoordX = 0.0;
-  Standard_Real aCenterCoordY = 0.0;
-  V->Center(aCenterCoordX, aCenterCoordY);
-
-  Standard_Real aViewProjX = 0.0;
-  Standard_Real aViewProjY = 0.0;
-  Standard_Real aViewProjZ = 0.0;
-//  V->Proj(aViewProjX, aViewProjY, aViewProjZ);
-
-  Standard_Real aViewUpX = 0.0;
-  Standard_Real aViewUpY = 0.0;
-  Standard_Real aViewUpZ = 0.0;
-//  V->Up(aViewUpX, aViewUpY, aViewUpZ);
-
-  Standard_Real aViewAtX = 0.0;
-  Standard_Real aViewAtY = 0.0;
-  Standard_Real aViewAtZ = 0.0;
-//  V->At(aViewAtX, aViewAtY, aViewAtZ);
-
-//  cout << "Scale of current view: " << aViewScale << endl;
-//  cout << "Center on X : "<< aViewCenterCoordX << "; on Y: " << aViewCenterCoordY << endl;
-//  cout << "Proj on X : " << aViewProjX << "; on Y: " << aViewProjY << "; on Z: " << aViewProjZ << endl;
-//  cout << "Up on X : " << aViewUpX << "; on Y: " << aViewUpY << "; on Z: " << aViewUpZ << endl;
-//  cout << "At on X : " << aViewAtX << "; on Y: " << aViewAtY << "; on Z: " << aViewAtZ << endl;
-
-//  cout << aViewScale << " " << aViewCenterCoordX << " " << aViewCenterCoordY << " ";
-  di << aViewProjX << " " << aViewProjY << " " << aViewProjZ << " ";
-  di << aViewUpX << " " << aViewUpY << " " << aViewUpZ << " ";
-  di << aViewAtX << " " << aViewAtY << " " << aViewAtZ << "\n";
-  return 0;
-}
-
-//==============================================================================
-//function : V2dSetViewCharac
-//purpose  : v2dSetViewCharac
-//==============================================================================
-static int V2dSetViewCharac (Draw_Interpretor& di, int si, const char ** sc)
-{
-  if (si != 13)
-  {
-    di << "Use - v2dSetViewCharac scale center(X Y) proj(X Y Z) up(X Y Z) at(X Y Z)" << "\n";
-    return 1;
-  }
-
-  Handle(V2d_View) V = Viewer2dTest::CurrentView();
-  if (V.IsNull())
-  {
-    di << "You must initialize AIS 2D Viewer before this command." << "\n";
-    return 1;
-  }
-
-  Quantity_Factor aViewScale = atof(sc[1]);
-
-  Standard_Real aViewCenterCoordX = atof(sc[2]);
-  Standard_Real aViewCenterCoordY = atof(sc[3]);
-
-  Standard_Real aViewProjX = atof(sc[4]);
-  Standard_Real aViewProjY = atof(sc[5]);
-  Standard_Real aViewProjZ = atof(sc[6]);
-
-  Standard_Real aViewUpX = atof(sc[7]);
-  Standard_Real aViewUpY = atof(sc[8]);
-  Standard_Real aViewUpZ = atof(sc[9]);
-
-  Standard_Real aViewAtX = atof(sc[10]);
-  Standard_Real aViewAtY = atof(sc[11]);
-  Standard_Real aViewAtZ = atof(sc[12]);
-
-//  V->SetScale(aViewScale);
-//  V->SetCenter(aViewCenterCoordX, aViewCenterCoordY);
-//  V->SetAt(aViewAtX, aViewAtY, aViewAtZ);
-//  V->SetProj(aViewProjX, aViewProjY, aViewProjZ);
-//  V->SetUp(aViewUpX, aViewUpY, aViewUpZ);
-//  V->SetProj(aViewProjX, aViewProjY, aViewProjZ);
-  return 0;
-}
-
 //=======================================================================
 //function : QAxwd_2d
 //purpose  :
@@ -1673,32 +1575,6 @@ static Standard_Integer QAGetCoordinatesWzoom(Draw_Interpretor& di, Standard_Int
   char title[255];
   sprintf(title,"%d : %s - Zoom %f",id1,dout.GetType(id1),dout.Zoom(id1));
   dout.SetTitle(id1,title);
-  return 0;
-}
-
-//=======================================================================
-// QArename
-//=======================================================================
-
-static Standard_Integer QArename(Draw_Interpretor& di, Standard_Integer n, const char** a)
-{
-  if (n < 3) return 1;
-  Standard_Boolean cop = !strcasecmp(a[0],"copy");
-
-  Handle(Draw_Drawable3D) D;
-  for (Standard_Integer i = 1; i < n; i += 2) {
-    if (i+1 >= n) return 0;
-    D = Draw::Get(a[i]);
-    if (!D.IsNull()) {
-      if (cop)
-	D = D->Copy();
-      else
-	// clear old name
-	Draw::Set(a[i],Handle(Draw_Drawable3D()));
-
-      Draw::Set(a[i+1],D);
-    }
-  }
   return 0;
 }
 
