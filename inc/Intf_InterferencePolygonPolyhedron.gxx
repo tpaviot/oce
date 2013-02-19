@@ -813,6 +813,7 @@ void Intf_InterferencePolygonPolyhedron::Intersect
     Standard_Integer sEdge=-1;
     Standard_Integer sVertex=-1;
     Standard_Integer tbreak=0;
+    dPiE[0] = dPiE[1] = dPiE[2] = 0.;
     { //-- is = 0
       gp_XYZ segT(ToolPolyh::Point(thePolyh, pTri[1]).XYZ()-
 		  ToolPolyh::Point(thePolyh, pTri[0]).XYZ());
@@ -1088,6 +1089,7 @@ void Intf_InterferencePolygonPolyhedron::Intersect
     Standard_Integer sEdge=-1;
     Standard_Integer sVertex=-1;
     Standard_Integer tbreak=0;
+    dPiE[0] = dPiE[1] = dPiE[2] = 0.;
     { //-- is = 0
       gp_XYZ segT(ToolPolyh::Point(thePolyh, pTri[1]).XYZ()-
 		  ToolPolyh::Point(thePolyh, pTri[0]).XYZ());
