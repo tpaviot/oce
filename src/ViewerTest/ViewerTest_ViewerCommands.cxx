@@ -2352,13 +2352,13 @@ V3d_TextItem::V3d_TextItem (const TCollection_AsciiString& theText,
                             const Aspect_TypeOfDisplayText& theTypeOfDisplay,
                             const Handle(Visual3d_Layer)& theLayer)
  : myX1 (theX1), myY1 (theY1),
-   myText (theText),
    myHeight (theHeight),
-   myLayer (theLayer),
+   myText (theText),
+   myFontName (theFontName),
    myColor (theColor),
    mySubtitleColor (theSubtitleColor),
    myType (theTypeOfDisplay),
-   myFontName (theFontName)
+   myLayer (theLayer)
 {
   if (!myLayer.IsNull ())
     myLayer->AddLayerItem (this);
@@ -2416,8 +2416,9 @@ V3d_LineItem::V3d_LineItem(Standard_Real X1, Standard_Real Y1,
                            Aspect_TypeOfLine theType,
                            Standard_Real theWidth,
                            Standard_Real theTransp) :
-  myX1(X1), myY1(Y1), myX2(X2), myY2(Y2), myLayerMgr(theLayerMgr),
-  myType(theType), myWidth(theWidth), myTransparency(theTransp)
+  myX1(X1), myY1(Y1), myX2(X2), myY2(Y2),
+  myWidth(theWidth), myTransparency(theTransp),
+  myType(theType), myLayerMgr(theLayerMgr)
 {
   if (myLayerMgr && !myLayerMgr->Overlay().IsNull())
     myLayerMgr->Overlay()->AddLayerItem (this);
