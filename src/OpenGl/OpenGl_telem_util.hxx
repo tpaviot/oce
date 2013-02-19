@@ -83,7 +83,7 @@ xx-xx-xx : xxx ; Creation.
 /* normalize */
 #define  vecnrmd(a,d)    ( d = (Tfloat)vecmag(a), \
   ( d > 1e-10 ? (a[0] /= d, a[1] /= d, a[2] /= d, d) : (Tfloat)0. ) )
-#define  vecnrm(a)       { Tfloat d; vecnrmd(a,d); }
+#define  vecnrm(a)       { Tfloat d; (void) vecnrmd(a,d); }
 
 /* angle between two vectors */
 #define  vecang(a,b,d)   { d = (Tfloat)(vecmag(a)*vecmag(b)); \
