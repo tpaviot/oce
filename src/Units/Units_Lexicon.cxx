@@ -60,7 +60,7 @@ void Units_Lexicon::Creates(const Standard_CString afilename)
   char *Coeff = coeff ;
 #endif
   Standard_Integer fr;
-  Standard_Size i;
+  int i;  // Warning : don't use unsigned type here (or Standard_Size or size_t), else the while's below will cause an unsigned 0-wrap!
   Standard_Real value;
   Handle(Units_Token) token;
   struct stat buf;
@@ -86,7 +86,7 @@ void Units_Lexicon::Creates(const Standard_CString afilename)
   //for(i=0; i<=255; i++)line[i]=0;
 
   while(file.getline(line,255)) {
-    Standard_Size len = strlen( line ) ;
+    int len = (int) strlen( line ) ;
     if(len == 1) continue; //skl - ???
     for ( i = 0 ; i < 30 ; i++ ) {
       if ( i < len )
