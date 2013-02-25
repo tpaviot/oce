@@ -1694,7 +1694,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
   LastShape  = Last; 
 
   // It is necessary to check the SameRange on its (PRO13551)
+#ifdef DEB
   Standard_Boolean issame = Standard_True;
+#endif
   BRep_Builder B;
   BRepTools_WireExplorer wexp;
   if (!FirstShape.IsNull()) {
@@ -1702,7 +1704,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False);
 	B.SameParameter(wexp.Current(), Standard_False);
+#ifdef DEB
 	issame = Standard_False;
+#endif
       }
     }
   }
@@ -1712,7 +1716,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False); 
 	B.SameParameter(wexp.Current(), Standard_False);
+#ifdef DEB
 	issame = Standard_False;
+#endif
       }
     }
   }

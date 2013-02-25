@@ -725,7 +725,7 @@ Standard_Boolean QANewModTopOpe_Tools::BoolOpe(const TopoDS_Shape& theFace1,
   const BooleanOperations_ShapesDataStructure& aDS = aDSFiller.DS();
   BOPTools_InterferencePool* anIntrPool = (BOPTools_InterferencePool*)&aDSFiller.InterfPool();
   Standard_Integer aNb = 0;
-  Standard_Integer i = 0, j = 0;
+  Standard_Integer i = 0;
   TopTools_IndexedMapOfShape aMapV;
   {
     BRepAlgoAPI_Common aCommon(theFace1, theFace2, aDSFiller);

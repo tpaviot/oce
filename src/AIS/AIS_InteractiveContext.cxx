@@ -284,15 +284,14 @@ void AIS_InteractiveContext::DisplayedObjects(AIS_ListOfInteractive& aListOfIO,
 #endif
 
     //parse all local contexts...
+#ifdef DEBUG
     Standard_Integer NbDisp;
     for(AIS_DataMapIteratorOfDataMapOfILC it1(myLocalContexts);it1.More();it1.Next()){
       const Handle(AIS_LocalContext)& LC = it1.Value();
       NbDisp =  LC->DisplayedObjects(theMap);
-#ifdef DEBUG
       cout<<"\tIn Local Context "<<it1.Key()<<" : "<<NbDisp<<endl;
-#endif
-      
     }
+#endif
     Handle(AIS_InteractiveObject) curIO;
     Handle(Standard_Transient) Tr;
       for(TColStd_MapIteratorOfMapOfTransient it2(theMap);it2.More();it2.Next()){

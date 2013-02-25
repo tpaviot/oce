@@ -495,13 +495,8 @@ void GeometryTest::APICommands(Draw_Interpretor& theCommands)
   if (done) return;
 
   done = Standard_True;
-  const char* g;
-
-  g = "GEOMETRY curves and surfaces analysis";
 
   theCommands.Add("proj", "proj curve/surf x y z [extrema algo: g(grad)/t(tree)]",__FILE__, proj);
-
-  g = "GEOMETRY approximations";
 
   theCommands.Add("appro", "appro result nbpoint [curve]",__FILE__, appro);
   theCommands.Add("surfapp","surfapp result nbupoint nbvpoint x y z ....",

@@ -29,8 +29,10 @@ GLCONTEXT             OpenGl_PrinterContext::g_ContextId      = NULL;
 //=======================================================================
 
 OpenGl_PrinterContext::OpenGl_PrinterContext (GLCONTEXT theCtx) :
-  myCtx (theCtx), myProjTransform (0, 3, 0, 3), myLayerViewportX (0),
-  myLayerViewportY (0), myScaleX (1.0f), myScaleY (1.0f)
+  myProjTransform (0, 3, 0, 3),
+  myScaleX (1.0f), myScaleY (1.0f),
+  myLayerViewportX (0), myLayerViewportY (0),
+  myCtx (theCtx)
 {
   // assign global instance to the current object
   if (myCtx != NULL)

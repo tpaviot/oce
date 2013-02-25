@@ -755,15 +755,24 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       TopoDS_Face OOFace = (*this).Face(OOShapeIndex);
       Standard_Integer iOOFace = myDS->Shape(OOFace);
 
-      TopoDS_Edge edge,OOedge; Standard_Integer SIedgeIndex,OOedgeIndex;
+      TopoDS_Edge edge,OOedge; Standard_Integer OOedgeIndex;
+#ifdef DEB
+      Standard_Integer SIedgeIndex;
+#endif
       Standard_Real paredge;
       Standard_Integer onbound;
       if (SIErest) 
-	{edge = Erest;  SIedgeIndex = iErest; paredge = parRest; onbound = obRest; 
+	{edge = Erest;  paredge = parRest; onbound = obRest;
+#ifdef DEB
+	 SIedgeIndex = iErest;
+#endif
 	 OOedge = OOE;  OOedgeIndex = iOO;    } 
       else         
 	{OOedge = Erest;OOedgeIndex = iErest; onbound = obOO;
-	 edge = OOE;    SIedgeIndex = iOO;    paredge = OOpar;}
+#ifdef DEB
+	 SIedgeIndex = iOO;
+#endif
+	 edge = OOE;    paredge = OOpar;}
       
       // PVIndex :
       // --------

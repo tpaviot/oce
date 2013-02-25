@@ -358,14 +358,14 @@ void BOPTools_PaveFiller::PerformEF()
 	      //
 	      BooleanOperations_AncestorsSeqAndSuccessorsSeq anASSeq; 
 	      //
-	      Standard_Integer nVF, iFlag;
+	      Standard_Integer nVF;
 	      nVF=CheckFacePaves(aNewVertex, nF);
 	      if (nVF) {
 		const TopoDS_Vertex& aVF=TopoDS::Vertex(myDS->Shape(nVF));
 		
 		Standard_Real aTNew;
 		//
-		iFlag=myContext->ComputeVE(aVF, aE, aTNew);
+		myContext->ComputeVE(aVF, aE, aTNew);
 		//
 		aT=aTNew;
 		aNewShape=nVF;

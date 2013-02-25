@@ -115,10 +115,9 @@ Standard_Integer DSACCESSCOMMANDS(Draw_Interpretor& interpretor,Standard_Integer
 	S = DSA.Merge(TopAbs_IN, TopAbs_IN);
       DBRep::Set(a[2], S);
       TopOpeBRepDS_DataStructure& DS = DSA.DS()->ChangeDS();
-      Standard_Integer i,j,nbsh = DS.NbShapes();
+      Standard_Integer i,nbsh = DS.NbShapes();
       for(i = 1;i<=nbsh;i++) {
 	TopTools_ListOfShape& los = DS.ChangeShapeSameDomain(i);
-	j = los.Extent();
 
 	TopTools_ListIteratorOfListOfShape li(los);
 	for(; li.More(); li.Next()) {

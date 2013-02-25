@@ -64,7 +64,7 @@ char svalue[4] ;
         }
     }
 
-    if( (SetDoubleBuffer == 'Y') ) { 
+    if( SetDoubleBuffer == 'Y' ) { 
 	state = XW_ENABLE ;
     } else if( SetDoubleBuffer == 'N' ) {
 	state = XW_DISABLE ;
