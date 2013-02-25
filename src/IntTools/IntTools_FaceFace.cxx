@@ -987,7 +987,7 @@ void IntTools_FaceFace::SetList(IntSurf_ListOfPntOn2S& aListOfPnts)
   else if ((aType1==GeomAbs_Plane && aType2==GeomAbs_Sphere) ||
 	   (aType2==GeomAbs_Plane && aType1==GeomAbs_Sphere)) {
     Standard_Integer i, j, aNbP;
-    Standard_Real aT, aT1, aT2, dT, aD2max, aD2, aEps, aT11, aT12;
+    Standard_Real aT1, aT2, dT, aD2max, aD2, aEps, aT11, aT12;
     //
     aNbLin=mySeqOfCurve.Length();
     aD2max=0.;
@@ -1020,7 +1020,6 @@ void IntTools_FaceFace::SetList(IntSurf_ListOfPntOn2S& aListOfPnts)
       aEps=0.01*(aT2-aT1);
       dT=(aT2-aT1)/(aNbP-1);
       for (j=0; j<aNbP; ++j) {
-	aT=aT1+j*dT;
 	aT11=aT1+j*dT;
 	aT12=aT11+dT;
 	if (j==aNbP-1) {

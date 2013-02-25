@@ -64,7 +64,6 @@ static Standard_Integer OCC332bug (Draw_Interpretor& di, Standard_Integer argc, 
 {
   // Used to Display Geometry or Topolgy
   char name[255];
-  char *pname = name;
   Standard_Boolean check = Standard_True;
 
   // Set default arguments
@@ -428,7 +427,6 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
 
   // Used to Display Geometry or Topolgy
   char name[255];
-  char *pname = name;
   //bool check = true;
   Standard_Boolean check = Standard_True;
 
@@ -1062,7 +1060,7 @@ static Standard_Integer OCC817 (Draw_Interpretor& di, Standard_Integer argc, con
 }
 
 void QABugs::Commands_13(Draw_Interpretor& theCommands) {
-  char *group = "QABugs";
+  const char *group = "QABugs";
 
   theCommands.Add ("OCC332", "OCC332 [wall_thickness [dia1 [dia2 [length [major_radius]]]]]", __FILE__, OCC332bug, group);
   //////theCommands.Add("OCC544", "OCC544 [[[[[wT [[[[d1 [[[d2 [[R [length]]]]]", __FILE__, OCC544, group);

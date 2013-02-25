@@ -413,8 +413,11 @@ void TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS(const TopoDS_Shape&,
                                                       TopOpeBRepBuild_ShellFaceSet& /*SFS*/)
 {
   TopAbs_State TB1,TB2; G1.StatesON(TB1,TB2);
-  TopAbs_ShapeEnum t1,t2,ShapeInterf;
-  G1.Type(t1,t2); ShapeInterf = t1;
+  TopAbs_ShapeEnum t1,t2;
+  G1.Type(t1,t2);
+#ifdef DEB
+  TopAbs_ShapeEnum ShapeInterf = t1;
+#endif
   
 #ifdef DEB
   Standard_Integer iSO; Standard_Boolean tSPS = GtraceSPS(SO1,iSO);

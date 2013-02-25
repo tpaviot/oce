@@ -3381,7 +3381,7 @@ void BOPTools_PaveFiller::PutClosingPaveOnCurve(BOPTools_Curve& aBC,
 {
   Standard_Boolean bIsClosed, bHasBounds, bAdded;
   Standard_Integer nVC, j;
-  Standard_Real aT[2], aTolR3D, aTC, dT, aTx;
+  Standard_Real aT[2], aTC, dT, aTx;
   gp_Pnt aP[2] ; 
   BOPTools_Pave aPVx;
   BOPTools_ListIteratorOfListOfPave aItLP;
@@ -3404,7 +3404,6 @@ void BOPTools_PaveFiller::PutClosingPaveOnCurve(BOPTools_Curve& aBC,
   // 
   bAdded=Standard_False;
   dT=Precision::PConfusion();
-  aTolR3D=aFFi.TolR3D();
   aIC.Bounds (aT[0], aT[1], aP[0], aP[1]);
   //
   BOPTools_PaveSet& aFFiPS=aFFi.NewPaveSet();

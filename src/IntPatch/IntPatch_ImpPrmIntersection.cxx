@@ -375,6 +375,7 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U1<(U1p-1.5*M_PI)) U1+=M_PI+M_PI;
       while(U1>(U1p+1.5*M_PI)) U1-=M_PI+M_PI;
+	default: /* Do nothing */ break;
   }
   switch(typeS2)
   { 
@@ -386,6 +387,7 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U2<(U2p-1.5*M_PI)) U2+=M_PI+M_PI;
       while(U2>(U2p+1.5*M_PI)) U2-=M_PI+M_PI;
+	default: /* Do nothing */ break;
   }
   pt.SetParameters(U1,V1,U2,V2);
 }

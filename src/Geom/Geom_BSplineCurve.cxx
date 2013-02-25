@@ -73,7 +73,7 @@ static void CheckCurveData
   }
   
   if (CPoles.Length() != BSplCLib::NbPoles(Degree,Periodic,CMults))
-    Standard_ConstructionError::Raise("Wrong number of poles in a BSpline curve: "+CPoles.Length());
+    Standard_ConstructionError::Raise("Wrong number of poles in a BSpline curve");
 }
 
 //=======================================================================

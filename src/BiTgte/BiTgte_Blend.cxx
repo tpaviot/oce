@@ -1898,8 +1898,6 @@ void BiTgte_Blend::ComputeSurfaces()
   // Iteration on the edges lines of center
   // and their valid valid part is taken after cut and tube construction.
   // --------------------------------------------------------------------
-  BRepOffset_Type    OT = BRepOffset_Concave;
-  if (myRadius < 0.) OT = BRepOffset_Convex; 
 
   //TopTools_MapIteratorOfMapOfShape ic(myEdges);
   Standard_Integer i;

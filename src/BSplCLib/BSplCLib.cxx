@@ -3061,7 +3061,6 @@ void  BSplCLib::Eval
   NewRequest,
   ExtrapolatingFlag[2],
   ErrorCode,
-  ReturnCode,
   Order = Degree + 1,
   FirstNonZeroBsplineIndex,
   LocalRequest = DerivativeRequest ;
@@ -3131,7 +3130,6 @@ void  BSplCLib::Eval
 			       FirstNonZeroBsplineIndex,
 			       BsplineBasis) ;
   if (ErrorCode != 0) {
-    ReturnCode = 1 ;
     goto FINISH ;
   }
   if (ExtrapolatingFlag[0] == 0 && ExtrapolatingFlag[1] == 0) {
@@ -3262,7 +3260,6 @@ void  BSplCLib::Eval
   NewRequest,
   ExtrapolatingFlag[2],
   ErrorCode,
-  ReturnCode,
   Order = Degree + 1,
   FirstNonZeroBsplineIndex,
   LocalRequest = DerivativeRequest ;
@@ -3332,7 +3329,6 @@ void  BSplCLib::Eval
 			       FirstNonZeroBsplineIndex,
 			       BsplineBasis);
   if (ErrorCode != 0) {
-    ReturnCode = 1 ;
     goto FINISH ;
   }
   if (ExtrapolatingFlag[0] == 0 && ExtrapolatingFlag[1] == 0) {

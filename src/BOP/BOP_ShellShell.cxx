@@ -231,7 +231,7 @@ void BOP_ShellShell::BuildResult()
   //
   // vars
   Standard_Boolean bIsTouchCase, bIsTouch;
-  Standard_Integer i, aNb, j, aNbj, iFF, nF1, iRank, nF2;
+  Standard_Integer i, aNb, j, aNbj, iFF, nF1, iRank;
   TopTools_ListOfShape aListOfNewFaces;
   TopTools_IndexedMapOfShape anEMap;
   TopAbs_Orientation anOriF1;
@@ -291,7 +291,6 @@ void BOP_ShellShell::BuildResult()
 	BOPTools_SSInterference& aFF=aFFs(iFF);
 	bIsTouch=aFF.IsTangentFaces();
 	if (bIsTouch) {
-	  nF2=aFF.OppositeIndex(nF1);
 	  AddINON2DPartsSh(nF1, iFF, aWES1);
 	}
       }

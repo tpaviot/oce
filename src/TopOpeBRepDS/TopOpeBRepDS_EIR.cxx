@@ -420,7 +420,9 @@ static void FUN_reclSE2(const Standard_Integer SIX,const TopOpeBRepDS_DataStruct
 //  I2 = (IN/OU(SE),VG,SE))} -> Ir = (IN/IN(SE),VG,SE)
 {
   reducedLI.Clear();
+#ifdef DEB
   Standard_Integer nI = LI.Extent(); // DEB
+#endif
 
   const TopoDS_Edge& E = TopoDS::Edge(BDS.Shape(SIX));
 
@@ -461,14 +463,18 @@ static void FUN_reclSE2(const Standard_Integer SIX,const TopOpeBRepDS_DataStruct
 	if (O2 != cO1) {it2.Next(); continue;}
 	
 	LI.Remove(it2);
+#ifdef DEB
 	nI = LI.Extent(); // DEB
+#endif
 	hascO = Standard_True; break;
       } //it2
       
       if (hascO) {
 	I1->ChangeTransition().Set(TopAbs_INTERNAL);
 	reducedLI.Append(I1); LI.Remove(it1);
+#ifdef DEB
 	nI = LI.Extent(); // DEB
+#endif
       }
       else it1.Next();
     } //it1

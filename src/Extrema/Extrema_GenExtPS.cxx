@@ -391,7 +391,6 @@ void Extrema_GenExtPS::GetGridPoints( const Adaptor3d_Surface& theSurf)
   {
     Handle(TColStd_HArray1OfReal) anArrKnots;
     Standard_Integer aDegree = 0;
-    GeomAbs_CurveType aType = theSurf.BasisCurve()->Curve().GetType();
     if(theSurf.BasisCurve()->Curve().GetType() == GeomAbs_BSplineCurve)
     {
       Handle(Geom_BSplineCurve) aBspl = theSurf.BasisCurve()->Curve().BSpline();
