@@ -5,6 +5,7 @@ SET(TOOLKIT_MODULES
 	SelectBasics
 	AlienImage
 	Image
+	InterfaceGraphic
 	TColQuantity
 	Font
 )
