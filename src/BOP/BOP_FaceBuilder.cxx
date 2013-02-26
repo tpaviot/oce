@@ -45,6 +45,8 @@
 #include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_DataMapIteratorOfDataMapOfShapeListOfShape.hxx>
+#include <TopTools_MapOfShape.hxx>
+#include <TopTools_DataMapOfShapeMapOfShape.hxx>
 
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
@@ -81,6 +83,7 @@ static
 static
   Standard_Boolean IsInside(const TopoDS_Shape& theHole,
 			    const TopoDS_Shape& theF2,
+			    const TopTools_MapOfShape& aME2,
 			    const Handle(IntTools_Context)& theContext);
 static 
   void DoTopologicalVerification(TopoDS_Face& F);
@@ -528,6 +531,19 @@ void BOP_FaceBuilder::PerformAreas(BOP_WireEdgeSet& aWES)
   }
   //
   // 2. Find outer growth shell that is most close to each hole shell
+  Standard_Integer numberOfNewFaces = aNewFaces.Extent();
+  TopTools_DataMapOfShapeMapOfShape aMFFx(numberOfNewFaces);
+  aIt1.Initialize(aNewFaces);
+  for (Standard_Integer i = 0; aIt1.More(); aIt1.Next(), ++i) {
+    const TopoDS_Shape& aF=aIt1.Value();
+    TopTools_MapOfShape aMFE;
+    TopExp_Explorer Ex(aF, TopAbs_EDGE);
+    while (Ex.More()) {
+      aMFE.Add(Ex.Current());
+      Ex.Next();
+    }
+    aMFFx.Bind(aF, aMFE);
+  }
   aIt2.Initialize(aHoleWires);
   for (; aIt2.More(); aIt2.Next()) {
     const TopoDS_Shape& aHole = aIt2.Value();
@@ -536,13 +552,13 @@ void BOP_FaceBuilder::PerformAreas(BOP_WireEdgeSet& aWES)
     for ( ; aIt1.More(); aIt1.Next()) {
       const TopoDS_Shape& aF=aIt1.Value();
       //
-      if (!IsInside(aHole, aF, myContext)){
+      if (!IsInside(aHole, aF, aMFFx.Find(aF), myContext)){
         continue;
       }
       //
       if ( aInOutMap.IsBound (aHole)){
         const TopoDS_Shape& aF2=aInOutMap(aHole);
-        if (IsInside(aF, aF2, myContext)) {
+        if (IsInside(aF, aF2, aMFFx.Find(aF2), myContext)) {
           aInOutMap.UnBind(aHole);
           aInOutMap.Bind (aHole, aF);
         }
@@ -566,6 +582,8 @@ void BOP_FaceBuilder::PerformAreas(BOP_WireEdgeSet& aWES)
       }
     }
   }// for (; aIt2.More(); aIt2.Next())
+  aIt1.Initialize(aNewFaces);
+  aMFFx.Clear();
   //
   // 3. Add aHoles to Faces
   aItMSH.Initialize(aMSH);
@@ -668,6 +686,7 @@ Standard_Boolean IsHole(const TopoDS_Shape& aW,
 //=======================================================================
 Standard_Boolean IsInside(const TopoDS_Shape& theHole,
                           const TopoDS_Shape& theF2,
+                          const TopTools_MapOfShape& aME2,
                           const Handle(IntTools_Context)& theContext)
 {
   Standard_Boolean bRet;
@@ -675,14 +694,11 @@ Standard_Boolean IsInside(const TopoDS_Shape& theHole,
   
   TopAbs_State aState;
   TopExp_Explorer aExp;
-  TopTools_IndexedMapOfShape aME2;
   gp_Pnt2d aP2D;
   //
   bRet=Standard_False;
   aState=TopAbs_UNKNOWN;
   const TopoDS_Face& aF2=TopoDS::Face(theF2);
-  //
-  TopExp::MapShapes(aF2, TopAbs_EDGE, aME2);
   //
   aExp.Init(theHole, TopAbs_EDGE);
   if (aExp.More()) {

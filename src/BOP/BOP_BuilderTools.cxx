@@ -298,6 +298,7 @@ BooleanOperations_StateOfShape
   TColStd_IndexedMapOfInteger aFFIndices;
 
   aNb=aFFs.Extent();
+  aFFMap.ReSize(aNb);
   for (i=1; i<=aNb; i++) {
     BOPTools_SSInterference& aFF=aFFs(i);
     // Faces

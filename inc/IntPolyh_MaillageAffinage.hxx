@@ -40,8 +40,11 @@
 #ifndef _IntPolyh_ArrayOfCouples_HeaderFile
 #include <IntPolyh_ArrayOfCouples.hxx>
 #endif
-#ifndef _IntPolyh_ArrayOfStartPoints_HeaderFile
-#include <IntPolyh_ArrayOfStartPoints.hxx>
+#ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
+#include <IntPolyh_ArrayOfSectionLines.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfTangentZones_HeaderFile
+#include <IntPolyh_ArrayOfTangentZones.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
@@ -52,14 +55,7 @@ class Bnd_Box;
 class IntPolyh_Point;
 class IntPolyh_StartPoint;
 class IntPolyh_Triangle;
-class IntPolyh_ArrayOfSectionLines;
-class IntPolyh_ArrayOfTangentZones;
 class IntPolyh_SectionLine;
-class IntPolyh_ArrayOfPoints;
-class IntPolyh_ArrayOfEdges;
-class IntPolyh_ArrayOfTriangles;
-class IntPolyh_ArrayOfStartPoints;
-class IntPolyh_ArrayOfCouples;
 
 
 
@@ -172,7 +168,6 @@ public:
   
   Standard_EXPORT     void GetBoxDraw(const Standard_Integer SurfID) const;
   
-  Standard_EXPORT    const IntPolyh_ArrayOfStartPoints& GetArrayOfSP() const;
   //! This method returns array of couples of contact triangles. <br>
   Standard_EXPORT     IntPolyh_ArrayOfCouples& GetArrayOfCouples() ;
   
@@ -215,7 +210,6 @@ IntPolyh_ArrayOfEdges TEdges2;
 IntPolyh_ArrayOfTriangles TTriangles1;
 IntPolyh_ArrayOfTriangles TTriangles2;
 IntPolyh_ArrayOfCouples TTrianglesContacts;
-IntPolyh_ArrayOfStartPoints TStartPoints;
 Standard_Boolean myEnlargeZone;
 
 

@@ -105,7 +105,7 @@ Standard_EXPORT virtual ~BOP_ShellSolid(){Destroy();}
 //! agorithm <br>
   Standard_EXPORT     Standard_Boolean CheckArgTypes() const;
   
-  Standard_EXPORT     Standard_Boolean SplitFace(const Standard_Integer theFaceIndex,TopTools_DataMapOfShapeInteger& theMapOfEdgeIndex,TopTools_ListOfShape& theListOfFace) const;
+  Standard_EXPORT     Standard_Boolean SplitFace(const Standard_Integer theFaceIndex,const TColStd_IndexedMapOfInteger& aFFIndicesMap,TopTools_DataMapOfShapeInteger& theMapOfEdgeIndex,TopTools_ListOfShape& theListOfFace) const;
   
   Standard_EXPORT   virtual  void SetHistoryCollector(const Handle(BOP_HistoryCollector)& theHistory) ;
 
