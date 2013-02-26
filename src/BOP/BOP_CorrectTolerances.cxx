@@ -534,7 +534,8 @@ void CheckEdge (const TopoDS_Edge& Ed, const Standard_Real aMaxTol)
     dd=0.1*Tol;
     Tol*=Tol;
 
-    const TopLoc_Location& Eloc = E.Location();
+    const TopLoc_Location& Vinvloc = aVertex.Location().Inverted();
+    const TopLoc_Location& VinvEloc = Vinvloc * E.Location();
     BRep_ListIteratorOfListOfPointRepresentation itpr;
     
     Handle(BRep_TEdge)& TE = *((Handle(BRep_TEdge)*)&E.TShape());
@@ -542,7 +543,7 @@ void CheckEdge (const TopoDS_Edge& Ed, const Standard_Real aMaxTol)
     while (itcr.More()) {
       const Handle(BRep_CurveRepresentation)& cr = itcr.Value();
       const TopLoc_Location& loc = cr->Location();
-      TopLoc_Location L = (Eloc * loc).Predivided(aVertex.Location());
+      TopLoc_Location L = VinvEloc * loc;
       
       if (cr->IsCurve3D()) {
 	const Handle(Geom_Curve)& C = cr->Curve3D();

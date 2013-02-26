@@ -69,14 +69,9 @@ Standard_Integer GetIndex(const TopoDS_Shape& theShape,
 			  const BooleanOperations_ShapesDataStructure& theDS);
 
 static
-void GetAttachedFaces(const Standard_Integer   theEdgeIndex,
-		      const Standard_Integer   theFaceIndex,
-		      const BOPTools_DSFiller&        theDSFiller,
-		      TColStd_ListOfInteger&   theListOfFaces);
-
-static
 void GetStatesOfAdjacentFaces(const TColStd_ListOfInteger& theListOfFacesToCheck,
 			      const BOPTools_DSFiller&     theDSFiller,
+			      const TColStd_DataMapOfIntegerListOfInteger& theMapOfEdgeFaces,
 			      TColStd_MapOfInteger&        theMapOfUsedIndices,
 			      Standard_Boolean&            bFoundINOUT,
 			      Standard_Boolean&            bFoundININ,
@@ -119,6 +114,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
     // 
 
     nF1 = aFFMap.FindKey(i);
+    const TColStd_IndexedMapOfInteger& aFFIndicesMap=aFFMap.FindFromIndex(i);
     TopoDS_Face aF1 = TopoDS::Face(aDS.Shape(nF1));
     
     iRank   = aDS.Rank(nF1);
@@ -126,7 +122,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
     TopTools_DataMapOfShapeInteger aMapOfEdgeIndex;
     TopTools_ListOfShape aListOfSplits;
 
-    if(SplitFace(nF1, aMapOfEdgeIndex, aListOfSplits)) {
+    if(SplitFace(nF1, aFFIndicesMap, aMapOfEdgeIndex, aListOfSplits)) {
 
       DoInternalVertices(nF1, aListOfSplits);
 
@@ -161,10 +157,11 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	  }
 	}
 
-	if(!bFoundFaceState) {
-	  // 
-	  if(ComputeStateByInsidePoints(aNewFaceIndex, nF1, iRank, aFFMap, aState)) {
-
+	// If there are more than 100 shapes, call ComputeStateForAnalyticalSurfaces first
+	Standard_Boolean bInsidePointsFirst = aNb < 100;
+	for (int step = 0; !bFoundFaceState && step < 2; ++step) {
+	  if((step==0) == bInsidePointsFirst) {
+	  if(ComputeStateByInsidePoints(aNewFaceIndex, nF1, iRank, aFFIndicesMap, aState)) {
 	    if(aState != TopAbs_ON) {
 	      BooleanOperations_StateOfShape aConvertedState = BOPTools_StateFiller::ConvertState(aState);
 
@@ -172,10 +169,8 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	    }
 	    bFoundFaceState = Standard_True;
 	  }
-	}
-
-	if(!bFoundFaceState) {
-
+	  } else {
+	  //
 	  if(ComputeStateForAnalyticalSurfaces(aNewFaceIndex, nF1, aFFMap, *myDSFiller, aState)) {
 	    if(aState != TopAbs_ON) {
 	      BooleanOperations_StateOfShape aConvertedState = BOPTools_StateFiller::ConvertState(aState);
@@ -183,6 +178,7 @@ void BOP_SolidSolid::PrepareFaceSplits()
 	      pDS->SetState(aNewFaceIndex, aConvertedState);
 	      bFoundFaceState = Standard_True;
 	    }
+	  }
 	  }
 	}
       }
@@ -268,7 +264,7 @@ Standard_Boolean BOP_SolidSolid::PropagateFaceStateByEdges(const TopoDS_Shape& t
 Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integer theFaceIndex,
 							    const Standard_Integer theBaseFaceIndex,
 							    const Standard_Integer theFaceRank,
-							    const BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger& theFFMap,
+							    const TColStd_IndexedMapOfInteger& aFFIndicesMap,
 							    TopAbs_State& theState) 
 
 {
@@ -289,17 +285,8 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
   TopoDS_Face aFace = TopoDS::Face(aS);
   //
   //
-  Standard_Integer i = 0, j = 0, aNb = 0;
-  aNb = theFFMap.Extent();
+  Standard_Integer j = 0;
 
-  for (i=1; i<=aNb; i++) {
-    // 
-    Standard_Integer nF1 = theFFMap.FindKey(i);
-
-    if(nF1 != theBaseFaceIndex)
-      continue;
-
-    const TColStd_IndexedMapOfInteger& aFFIndicesMap=theFFMap.FindFromIndex(i);
     Standard_Integer aNbj = aFFIndicesMap.Extent();
 
     for (j=1; j<=aNbj; j++) {
@@ -308,7 +295,7 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
       Standard_Boolean bIsTouchCase = aFF.IsTangentFaces();
 
       if (bIsTouchCase) {
-	Standard_Integer nF2 = aFF.OppositeIndex(nF1);
+	Standard_Integer nF2 = aFF.OppositeIndex(theBaseFaceIndex);
 	const TopoDS_Face& aF2 = TopoDS::Face(aDS.Shape(nF2));
 
 	if(BOPTools_Tools3D::CheckSameDomainFaceInside(aFace, aF2, pPaveFiller->Context())) {
@@ -317,7 +304,6 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
 	}
       }
     }
-  }
   const TopoDS_Shape& aTool = (theFaceRank == 1) ? aDS.Tool() : aDS.Object();
   TopoDS_Solid aRefSolid;
 
@@ -348,7 +334,8 @@ Standard_Boolean BOP_SolidSolid::ComputeStateByInsidePoints(const Standard_Integ
 //  purpose:
 // =====================================================================================================================
 Standard_Boolean BOP_SolidSolid::TakeOnSplit(const Standard_Integer theFaceIndex,
-					     const Standard_Integer theBaseFaceIndex) const
+					     const Standard_Integer theBaseFaceIndex,
+                         const TColStd_DataMapOfIntegerListOfInteger &aMapOfEdgeFaces) const
 {
   Standard_Boolean bTake = Standard_False;
 
@@ -360,7 +347,7 @@ Standard_Boolean BOP_SolidSolid::TakeOnSplit(const Standard_Integer theFaceIndex
   TColStd_ListOfInteger aListOfFacesToCheck;
   aListOfFacesToCheck.Append(theFaceIndex);
 
-  GetStatesOfAdjacentFaces(aListOfFacesToCheck, *myDSFiller, aMapOfUsedIndices, binout, binin, boutout);
+  GetStatesOfAdjacentFaces(aListOfFacesToCheck, *myDSFiller, aMapOfEdgeFaces, aMapOfUsedIndices, binout, binin, boutout);
   
   switch(myOperation) {
   case BOP_FUSE: {
@@ -394,6 +381,49 @@ Standard_Boolean BOP_SolidSolid::TakeOnSplit(const Standard_Integer theFaceIndex
   return bTake;
 }
 
+void BOP_SolidSolid::DoEdgesAdjacentFaces(TColStd_DataMapOfIntegerListOfInteger &aMapOfEdgeFaces) const
+{
+  const BooleanOperations_ShapesDataStructure& aDS = myDSFiller->DS();
+  const TColStd_DataMapOfIntegerListOfInteger& aMap = myDSFiller->SplitFacePool();
+  Standard_Integer i;
+
+  for(i = 1; i <= aDS.NumberOfInsertedShapes(); i++) {
+    if(aDS.GetShapeType(i) != TopAbs_FACE)
+      continue;
+
+    TColStd_ListOfInteger aListOfFaceIndex;
+
+    if(!aMap.IsBound(i)) {
+      aListOfFaceIndex.Append(i);
+    }
+    else {
+      TColStd_ListIteratorOfListOfInteger anIttmp(aMap.Find(i));
+      for(; anIttmp.More(); anIttmp.Next()) {
+        aListOfFaceIndex.Append(anIttmp.Value());
+      }
+    }
+    TColStd_ListIteratorOfListOfInteger anIt(aListOfFaceIndex);
+    
+    for(; anIt.More(); anIt.Next()) {
+      const Standard_Integer nF = anIt.Value();
+      if(nF <= 0)
+        continue;
+      const TopoDS_Shape& aFace = aDS.Shape(nF);
+      TopExp_Explorer anExpE(aFace, TopAbs_EDGE);
+
+      for(; anExpE.More(); anExpE.Next()) {
+        const TopoDS_Shape& anEdge = anExpE.Current();
+        Standard_Integer nE = GetIndex(anEdge, aDS);
+        if(!aMapOfEdgeFaces.IsBound(nE)) {
+          TColStd_ListOfInteger thelist;
+          aMapOfEdgeFaces.Bind(nE, thelist);
+        }
+        aMapOfEdgeFaces.ChangeFind(nE).Append(nF);
+      }
+    }
+  }
+}
+
 // ------------------------------------------------------------------------------------
 // static function: GetIndex
 // purpose:
@@ -405,75 +435,9 @@ Standard_Integer GetIndex(const TopoDS_Shape& theShape,
 
   anIndex = theDS.ShapeIndex(theShape, 1);
   anIndex = (anIndex == 0) ? theDS.ShapeIndex(theShape, 2) : anIndex;
-
-  if(anIndex == 0) {
-
-    for (i = theDS.NumberOfSourceShapes() + 1; i <= theDS.NumberOfInsertedShapes(); i++) {
-      if(theShape.IsSame(theDS.Shape(i))) {
-	anIndex = i;
-	break;
-      }
-    }
-  }
+  anIndex = (anIndex == 0) ? theDS.ShapeIndex(theShape, 3) : anIndex;
 
   return anIndex;
-}
-
-// ------------------------------------------------------------------------------------
-// static function: GetAttachedFaces
-// purpose:
-// ------------------------------------------------------------------------------------
-void GetAttachedFaces(const Standard_Integer   theEdgeIndex,
-		      const Standard_Integer   theFaceIndex,
-		      const BOPTools_DSFiller&        theDSFiller,
-		      TColStd_ListOfInteger&   theListOfFaces)
-{
-  theListOfFaces.Clear();
-  const BooleanOperations_ShapesDataStructure& aDS = theDSFiller.DS();
-  const TColStd_DataMapOfIntegerListOfInteger& aMap = theDSFiller.SplitFacePool();
-
-  Standard_Integer i = 0;
-
-  for(i = 1; i <= aDS.NumberOfInsertedShapes(); i++) {
-
-    if(aDS.GetShapeType(i) == TopAbs_FACE) {
-      TColStd_ListOfInteger aListOfFaceIndex;
-
-      if(!aMap.IsBound(i)) {
-	if(theFaceIndex == i)
-	  continue;
-	aListOfFaceIndex.Append(i);
-      }
-      else {
-	TColStd_ListIteratorOfListOfInteger anIttmp(aMap.Find(i));
-
-	for(; anIttmp.More(); anIttmp.Next()) {
-	  if(theFaceIndex == anIttmp.Value())
-	    continue;
-	  aListOfFaceIndex.Append(anIttmp.Value());
-	}
-      }
-
-      TColStd_ListIteratorOfListOfInteger anIt(aListOfFaceIndex);
-      
-      for(; anIt.More(); anIt.Next()) {
-	if(anIt.Value() <= 0)
-	  continue;
-	const TopoDS_Shape& aFace = aDS.Shape(anIt.Value());
-	TopExp_Explorer anExpE(aFace, TopAbs_EDGE);
-
-	for(; anExpE.More(); anExpE.Next()) {
-	  const TopoDS_Shape& anEdge = anExpE.Current();
-	  Standard_Integer nE = GetIndex(anEdge, aDS);
-
-	  if(theEdgeIndex == nE) {
-	    theListOfFaces.Append(anIt.Value());
-	    break;
-	  }
-	}
-      }
-    }
-  }  
 }
 
 // ------------------------------------------------------------------------------------
@@ -482,6 +446,7 @@ void GetAttachedFaces(const Standard_Integer   theEdgeIndex,
 // ------------------------------------------------------------------------------------
 void GetStatesOfAdjacentFaces(const TColStd_ListOfInteger& theListOfFacesToCheck,
 			      const BOPTools_DSFiller&     theDSFiller,
+			      const TColStd_DataMapOfIntegerListOfInteger& aMapOfEdgeFaces,
 			      TColStd_MapOfInteger&        theMapOfUsedIndices,
 			      Standard_Boolean&            bFoundINOUT,
 			      Standard_Boolean&            bFoundININ,
@@ -515,10 +480,8 @@ void GetStatesOfAdjacentFaces(const TColStd_ListOfInteger& theListOfFacesToCheck
       if(theMapOfUsedIndices.Contains(nE))
 	continue;
       theMapOfUsedIndices.Add(nE);
-      TColStd_ListOfInteger aListOfFaces, aListOfIN, aListOfOUT;
-      GetAttachedFaces(nE, nF, theDSFiller, aListOfFaces);
-    
-      TColStd_ListIteratorOfListOfInteger anIt(aListOfFaces);
+      TColStd_ListOfInteger aListOfIN, aListOfOUT;
+      TColStd_ListIteratorOfListOfInteger anIt(aMapOfEdgeFaces.Find(nE));
 
       for(; anIt.More(); anIt.Next()) {
 	if(theMapOfUsedIndices.Contains(anIt.Value()))
@@ -541,7 +504,7 @@ void GetStatesOfAdjacentFaces(const TColStd_ListOfInteger& theListOfFacesToCheck
   }
 
   if(!aLisOfON.IsEmpty() && (theMapOfUsedIndices.Extent() <= aDS.NumberOfInsertedShapes())) {
-    GetStatesOfAdjacentFaces(aLisOfON, theDSFiller, theMapOfUsedIndices, bFoundINOUT, bFoundININ, bFoundOUTOUT);
+    GetStatesOfAdjacentFaces(aLisOfON, theDSFiller, aMapOfEdgeFaces, theMapOfUsedIndices, bFoundINOUT, bFoundININ, bFoundOUTOUT);
   }
 }
 

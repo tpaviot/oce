@@ -194,8 +194,10 @@ const static Standard_Integer AddedValue=20;
 {
   if (iRank == 1)
     return myShapeIndexMapObj;
-  else 
+  else if (iRank == 2)
     return myShapeIndexMapTool;
+  else
+    return myShapeIndexMapInserted;
 }
 //===========================================================================
 //function : ShapeIndex
@@ -338,6 +340,11 @@ void BooleanOperations_ShapesDataStructure::InsertShapeAndAncestorsSuccessors
 
   myListOfShapeAndInterferences[myNumberOfInsertedShapes].myState = BooleanOperations_UNKNOWN;
   myNumberOfInsertedShapes++;
+
+  // Insert new shapes into myShapeIndexMapInserted
+  if (myNumberOfInsertedShapes > myNumberOfShapesOfTheObject+myNumberOfShapesOfTheTool) {
+    myShapeIndexMapInserted.Add(S, myNumberOfInsertedShapes);
+  }
 }
 
 //===========================================================================

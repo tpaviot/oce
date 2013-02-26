@@ -166,15 +166,6 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
   FlecheMoy2(0.0), 
   myEnlargeZone(Standard_False) 
 { 
-   TPoints1.Init(10000);
-   TEdges1.Init(30000);
-   TTriangles1.Init(20000);
-   
-   TPoints2.Init(10000);
-   TEdges2.Init(30000);
-   TTriangles2.Init(20000);
-  
-   TStartPoints.Init(10000);
 }
 //=======================================================================
 //function : IntPolyh_MaillageAffinage
@@ -203,16 +194,7 @@ IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage
   FlecheMoy2(0.0), 
   myEnlargeZone(Standard_False)
 { 
-   TPoints1.Init(10000);
-   TEdges1.Init(30000);
-   TTriangles1.Init(20000);
-
-   TPoints2.Init(10000);
-   TEdges2.Init(30000);
-   TTriangles2.Init(20000);
-   
-   TStartPoints.Init(10000);
- }
+}
 //=======================================================================
 //function : FillArrayOfPnt
 //purpose  : Compute points on one surface and fill an array of points
@@ -262,6 +244,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   itV=(v1-v0)/Standard_Real(NbSamplesV-1);
   PtrBox = (SurfID==1) ? (&MyBox1) : (&MyBox2);
 
+  TPoints.Init(NbSamplesU * NbSamplesV);
   for(BoucleU=0; BoucleU<NbSamplesU; BoucleU++){
      U = (BoucleU == (NbSamplesU - 1)) ? u1 : u0+BoucleU*itU;
     for(BoucleV=0; BoucleV<NbSamplesV; BoucleV++){
@@ -273,7 +256,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       PtrBox->Add(PtXYZ);
     }
   }
-  TPoints.SetNbPoints(iCnt);
   //
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(MaSurface,
 						   NbSamplesU,
@@ -341,6 +323,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   Bnd_Box *PtrBox = (SurfID==1) ? (&MyBox1) : (&MyBox2);
   Standard_Real resol = gp::Resolution();
 
+  TPoints.Init(NbSamplesU * NbSamplesV);
   for(Standard_Integer BoucleU=0; BoucleU<NbSamplesU; BoucleU++){
     Standard_Real U = (BoucleU == (NbSamplesU - 1)) ? u1 : u0+BoucleU*itU;
     for(Standard_Integer BoucleV=0; BoucleV<NbSamplesV; BoucleV++){
@@ -370,7 +353,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       PtrBox->Add(PtXYZ);
     }
   }
-  TPoints.SetNbPoints(CpteurTabPnt);
 
   Tol*=1.2;
 
@@ -411,6 +393,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   }
   //modified by NIZNHY-PKV Fri Jan 20 09:49:00 2012t
   //
+  TPoints.Init(aNbU * aNbV);
   iCnt=0;
   for(i=1; i<=aNbU; ++i){
     //modified by NIZNHY-PKV Fri Jan 20 13:59:15 2012f
@@ -434,8 +417,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       aBox.Add(aP);
     }
   }
-  //
-  TPoints.SetNbPoints(iCnt);
   //
   IntCurveSurface_ThePolyhedronOfHInter polyhedron(aS, Upars, Vpars);
   //
@@ -489,6 +470,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
   }
   //modified by NIZNHY-PKV Fri Jan 20 09:49:00 2012t
   //
+  TPoints.Init(aNbU * aNbV);
   iCnt=0;
   for(i=1; i<=aNbU; ++i){
     //modified by NIZNHY-PKV Fri Jan 20 13:59:15 2012f
@@ -527,8 +509,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfPnt
       aBox.Add(aP);
     }
   }
-  //
-  TPoints.SetNbPoints(iCnt);
   //
   Tol*=1.2;
   //
@@ -610,7 +590,7 @@ void IntPolyh_MaillageAffinage::CommonBox (const Bnd_Box &,
   ZMin-=Z; ZMax+=Z;
 
   //Marking of points included in the common
-  const Standard_Integer FinTP1 = TPoints1.NbPoints();
+  const Standard_Integer FinTP1 = TPoints1.NbItems();
 //  for(Standard_Integer i=0; i<FinTP1; i++) {
   Standard_Integer i ;
   for( i=0; i<FinTP1; i++) {
@@ -644,7 +624,7 @@ void IntPolyh_MaillageAffinage::CommonBox (const Bnd_Box &,
     Pt1.SetPartOfCommon(r);
   }
 
-  const Standard_Integer FinTP2 = TPoints2.NbPoints();
+  const Standard_Integer FinTP2 = TPoints2.NbItems();
   for(Standard_Integer ii=0; ii<FinTP2; ii++) {
     IntPolyh_Point & Pt2 = TPoints2[ii];
     Standard_Integer rr;
@@ -689,6 +669,17 @@ void IntPolyh_MaillageAffinage::FillArrayOfEdges
   IntPolyh_ArrayOfEdges &TEdges=(SurfID==1)? TEdges1:TEdges2;
   Standard_Integer NbSamplesU=(SurfID==1)? NbSamplesU1:NbSamplesU2;
   Standard_Integer NbSamplesV=(SurfID==1)? NbSamplesV1:NbSamplesV2;
+
+  // number of edges: 3 + 3* (NbSamplesV-2) + 3 * (NbSamplesU-2) +
+  //    3 * (NbSamplesU-2) * (NbSamplesV-2) + (NbSamplesV-1) + (NbSamplesU-1)
+  //  = 3 * NbSamplesU * NbSamplesV - 2 * NbSamplesU - 2 * NbSamplesV + 1
+  //  = 3 * (NbSamplesU-1) * (NbSamplesV-1) + NbSamplesU + NbSamplesV - 2
+  Standard_Integer numberOfEdges = 3*(NbSamplesU-1)*(NbSamplesV-1) + (NbSamplesU-1) + (NbSamplesV-1);
+  // Corner cases
+  if (NbSamplesU <= 1 && NbSamplesV <= 1) numberOfEdges = 3;
+  else if (NbSamplesU <= 1) numberOfEdges = 4 * (NbSamplesV-1);
+  else if (NbSamplesV <= 1) numberOfEdges = 4 * (NbSamplesU-1);
+  TEdges.Init(numberOfEdges);
 
   Standard_Integer CpteurTabEdges=0;
 
@@ -804,7 +795,6 @@ void IntPolyh_MaillageAffinage::FillArrayOfEdges
     TEdges[CpteurTabEdges].SetSecondTriangle(BoucleMeshV*2*(NbSamplesV-1)+(NbSamplesV-2)*2);
     CpteurTabEdges++;
   }
-  TEdges.SetNbEdges(CpteurTabEdges);
 
 }
 
@@ -826,6 +816,8 @@ void IntPolyh_MaillageAffinage::FillArrayOfTriangles
   Standard_Integer NbSamplesU=(SurfID==1)? NbSamplesU1:NbSamplesU2;
   Standard_Integer NbSamplesV=(SurfID==1)? NbSamplesV1:NbSamplesV2;
 
+  // number of triangles: 2 * (NbSamplesU-1) * (NbSamplesV-1)
+  TTriangles.Init(2 * (NbSamplesU-1) * (NbSamplesV-1));
   
   //To provide recursion, I associate a point with two triangles  
   for(Standard_Integer BoucleMeshU=0; BoucleMeshU<NbSamplesU-1; BoucleMeshU++){
@@ -863,8 +855,7 @@ void IntPolyh_MaillageAffinage::FillArrayOfTriangles
     }
     PntInit++;//Pass the last point of the column
   }
-  TTriangles.SetNbTriangles(CpteurTabTriangles);
-  const Standard_Integer FinTT = TTriangles.NbTriangles();
+  const Standard_Integer FinTT = TTriangles.NbItems();
   if (FinTT==0) {
   }
 }
@@ -875,8 +866,8 @@ void IntPolyh_MaillageAffinage::FillArrayOfTriangles
 //=======================================================================
 void IntPolyh_MaillageAffinage::LinkEdges2Triangles() 
 {
-  const Standard_Integer FinTT1 = TTriangles1.NbTriangles();
-  const Standard_Integer FinTT2 = TTriangles2.NbTriangles();
+  const Standard_Integer FinTT1 = TTriangles1.NbItems();
+  const Standard_Integer FinTT2 = TTriangles2.NbItems();
 
   for(Standard_Integer uiui1=0; uiui1<FinTT1; uiui1++) {
     IntPolyh_Triangle & MyTriangle1=TTriangles1[uiui1];
@@ -902,13 +893,13 @@ void IntPolyh_MaillageAffinage::LinkEdges2Triangles()
 //=======================================================================
 void IntPolyh_MaillageAffinage::CommonPartRefinement() 
 {
-  Standard_Integer FinInit1 = TTriangles1.NbTriangles();
+  Standard_Integer FinInit1 = TTriangles1.NbItems();
   for(Standard_Integer i=0; i<FinInit1; i++) {
     if(TTriangles1[i].IndiceIntersectionPossible()!=0) 
       TTriangles1[i].MiddleRefinement(i,MaSurface1,TPoints1,TTriangles1,TEdges1);
   }
 
-  Standard_Integer FinInit2=TTriangles2.NbTriangles();
+  Standard_Integer FinInit2=TTriangles2.NbItems();
   for(Standard_Integer ii=0; ii<FinInit2; ii++) {
     if(TTriangles2[ii].IndiceIntersectionPossible()!=0) 
       TTriangles2[ii].MiddleRefinement(ii,MaSurface2,TPoints2,TTriangles2,TEdges2); 
@@ -922,7 +913,7 @@ void IntPolyh_MaillageAffinage::CommonPartRefinement()
 void IntPolyh_MaillageAffinage::LocalSurfaceRefinement(const Standard_Integer SurfID) {
 //refine locally, but systematically the chosen surface
   if (SurfID==1) {
-    const Standard_Integer FinInit1 = TTriangles1.NbTriangles();
+    const Standard_Integer FinInit1 = TTriangles1.NbItems();
     for(Standard_Integer i=0; i<FinInit1; i++) {
       if(TTriangles1[i].IndiceIntersectionPossible()!=0)
 	TTriangles1[i].MiddleRefinement(i,MaSurface1,TPoints1,TTriangles1,TEdges1);
@@ -930,7 +921,7 @@ void IntPolyh_MaillageAffinage::LocalSurfaceRefinement(const Standard_Integer Su
   }
   //
   if (SurfID==2) {
-    const Standard_Integer FinInit2 = TTriangles2.NbTriangles();
+    const Standard_Integer FinInit2 = TTriangles2.NbItems();
     for(Standard_Integer ii=0; ii<FinInit2; ii++) {
       if(TTriangles2[ii].IndiceIntersectionPossible()!=0) 
 	TTriangles2[ii].MiddleRefinement(ii,MaSurface2,TPoints2,TTriangles2,TEdges2); 
@@ -960,7 +951,7 @@ void IntPolyh_MaillageAffinage::ComputeDeflections
   FlecheMax=-RealLast();
   FlecheMin=RealLast();
   FlecheMoy=0.0;
-  const Standard_Integer FinTT = TTriangles.NbTriangles();
+  const Standard_Integer FinTT = TTriangles.NbItems();
   
   for(CpteurTabFleche=0; CpteurTabFleche<FinTT; CpteurTabFleche++) {
     IntPolyh_Triangle &Triangle = TTriangles[CpteurTabFleche];
@@ -988,8 +979,8 @@ void IntPolyh_MaillageAffinage::ComputeDeflections
 //=======================================================================
 void IntPolyh_MaillageAffinage::TrianglesDeflectionsRefinementBSB() 
 {
-  const Standard_Integer FinTT1 = TTriangles1.NbTriangles();
-  const Standard_Integer FinTT2 = TTriangles2.NbTriangles();
+  const Standard_Integer FinTT1 = TTriangles1.NbItems();
+  const Standard_Integer FinTT2 = TTriangles2.NbItems();
   
   ComputeDeflections(1);
   // To estimate a surface in general it can be interesting 
@@ -3216,28 +3207,30 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
   Standard_Integer CpteurTab=0;
   Standard_Integer CpteurTabSP=0;
   Standard_Real CoupleAngle=-2.0;
-  const Standard_Integer FinTT1 = TTriangles1.NbTriangles();
-  const Standard_Integer FinTT2 = TTriangles2.NbTriangles();
+  const Standard_Integer FinTT1 = TTriangles1.NbItems();
+  const Standard_Integer FinTT2 = TTriangles2.NbItems();
 
   for(Standard_Integer i_S1=0; i_S1<FinTT1; i_S1++) {
+    IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
+    if (!((Triangle1.IndiceIntersectionPossible() != 0) && (Triangle1.GetFleche() >= 0.0)))
+      continue;
     for(Standard_Integer i_S2=0; i_S2<FinTT2; i_S2++){
-      if ( (TTriangles1[i_S1].IndiceIntersectionPossible() != 0)
-	  &&(TTriangles1[i_S1].GetFleche() >= 0.0)
-	  && (TTriangles2[i_S2].IndiceIntersectionPossible() != 0)
-	  && (TTriangles2[i_S2].GetFleche() >= 0.0) ) {
+      IntPolyh_Triangle &Triangle2 =  TTriangles2[i_S2];
+      if ((Triangle2.IndiceIntersectionPossible() != 0)
+       && (Triangle2.GetFleche() >= 0.0) ) {
 	IntPolyh_StartPoint SP1, SP2;
 	//If a triangle is dead or not in BSB, comparison is not possible
-    	if (TriContact(TPoints1[TTriangles1[i_S1].FirstPoint()],
-		       TPoints1[TTriangles1[i_S1].SecondPoint()],
-		       TPoints1[TTriangles1[i_S1].ThirdPoint()],
-		       TPoints2[TTriangles2[i_S2].FirstPoint()],
-		       TPoints2[TTriangles2[i_S2].SecondPoint()],
-		       TPoints2[TTriangles2[i_S2].ThirdPoint()],
+	if (TriContact(TPoints1[Triangle1.FirstPoint()],
+		       TPoints1[Triangle1.SecondPoint()],
+		       TPoints1[Triangle1.ThirdPoint()],
+		       TPoints2[Triangle2.FirstPoint()],
+		       TPoints2[Triangle2.SecondPoint()],
+		       TPoints2[Triangle2.ThirdPoint()],
 		       CoupleAngle)){
 
 
-	  TTriangles1[i_S1].SetIndiceIntersection(1);//The triangle is cut by another
-	  TTriangles2[i_S2].SetIndiceIntersection(1);
+	  Triangle1.SetIndiceIntersection(1);//The triangle is cut by another
+	  Triangle2.SetIndiceIntersection(1);
 	  
 	  Standard_Integer NbPoints;
 	  NbPoints=StartingPointsResearch(i_S1,i_S2,SP1, SP2);
@@ -3248,7 +3241,6 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
 
 	  if ( (NbPoints>0)&&(NbPoints<3) ) {
 	    SP1.SetCoupleValue(i_S1,i_S2);
-	    TStartPoints[CpteurTabSP]=SP1;
 	    CpteurTabSP++;
 
 
@@ -3256,7 +3248,6 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleComparePSP ()
 
 	  if(NbPoints==2) { 	  
 	    SP2.SetCoupleValue(i_S1,i_S2);
-	    TStartPoints[CpteurTabSP]=SP2;
 	    CpteurTabSP++;
 
 
@@ -3283,8 +3274,8 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
 {
   Standard_Integer CpteurTab=0;
 
-  const Standard_Integer FinTT1 = TTriangles1.NbTriangles();
-  const Standard_Integer FinTT2 = TTriangles2.NbTriangles();
+  const Standard_Integer FinTT1 = TTriangles1.NbItems();
+  const Standard_Integer FinTT2 = TTriangles2.NbItems();
 
   Standard_Integer TTClimit = 200;
   Standard_Integer NbTTC = FinTT1 * FinTT2 / 10;
@@ -3296,16 +3287,16 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
 
   Standard_Real CoupleAngle=-2.0;
   for(Standard_Integer i_S1=0; i_S1<FinTT1; i_S1++) {
+    IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
+    if (!((Triangle1.IndiceIntersectionPossible() != 0) && (Triangle1.GetFleche() >= 0.0)))
+      continue;
     for(Standard_Integer i_S2=0; i_S2<FinTT2; i_S2++){
-      if ( (TTriangles1[i_S1].IndiceIntersectionPossible() != 0)
-	  &&(TTriangles1[i_S1].GetFleche() >= 0.0)
-	  && (TTriangles2[i_S2].IndiceIntersectionPossible() != 0)
-	  && (TTriangles2[i_S2].GetFleche() >= 0.0) ) {
+      IntPolyh_Triangle &Triangle2 = TTriangles2[i_S2];
+      if ( (Triangle2.IndiceIntersectionPossible() != 0)
+        && (Triangle2.GetFleche() >= 0.0) ) {
 	//If a triangle is dead or not in BSB, comparison is not possible
-	IntPolyh_Triangle &Triangle1 =  TTriangles1[i_S1];
-	IntPolyh_Triangle &Triangle2 =  TTriangles2[i_S2];
 
-    	if (TriContact(TPoints1[Triangle1.FirstPoint()],
+	if (TriContact(TPoints1[Triangle1.FirstPoint()],
 		       TPoints1[Triangle1.SecondPoint()],
 		       TPoints1[Triangle1.ThirdPoint()],
 		       TPoints2[Triangle2.FirstPoint()],
@@ -3315,7 +3306,7 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
 
 	  if (CpteurTab >= NbTTC)
 	    {
-	      TTrianglesContacts.SetNbCouples(CpteurTab);
+	      TTrianglesContacts.SetNbItems(CpteurTab);
 
 	      return(CpteurTab);
 	    }
@@ -3330,7 +3321,7 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
       }
     }
   }
-  TTrianglesContacts.SetNbCouples(CpteurTab);
+  TTrianglesContacts.SetNbItems(CpteurTab);
 
   return(CpteurTab);
 }
@@ -3342,7 +3333,7 @@ Standard_Integer IntPolyh_MaillageAffinage::TriangleCompare ()
 //=======================================================================
 void IntPolyh_MaillageAffinage::StartPointsCalcul() const
 {
-  const Standard_Integer FinTTC = TTrianglesContacts.NbCouples();
+  const Standard_Integer FinTTC = TTrianglesContacts.NbItems();
 //   printf("StartPointsCalcul() from IntPolyh_MaillageAffinage.cxx : StartPoints:\n");
   for(Standard_Integer ii=0; ii<FinTTC; ii++) {
     IntPolyh_StartPoint SP1,SP2;
@@ -3364,7 +3355,7 @@ Standard_Integer CheckCoupleAndGetAngle(const Standard_Integer T1,
 					IntPolyh_ArrayOfCouples &TTrianglesContacts) 
 {
   Standard_Integer Test=0;
-  const Standard_Integer FinTTC = TTrianglesContacts.NbCouples();
+  const Standard_Integer FinTTC = TTrianglesContacts.NbItems();
   for (Standard_Integer oioi=0; oioi<FinTTC; oioi++) {
     IntPolyh_Couple TestCouple = TTrianglesContacts[oioi];
     if ( (TestCouple.FirstValue()==T1)&&(TestCouple.AnalyseFlagValue()!=1) ) {
@@ -3398,7 +3389,7 @@ Standard_Integer CheckCoupleAndGetAngle2(const Standard_Integer T1,
   Standard_Integer Test1=0;
   Standard_Integer Test2=0;
   Standard_Integer Test3=0;
-  const Standard_Integer FinTTC = TTrianglesContacts.NbCouples();
+  const Standard_Integer FinTTC = TTrianglesContacts.NbItems();
   for (Standard_Integer oioi=0; oioi<FinTTC; oioi++) {
     IntPolyh_Couple TestCouple = TTrianglesContacts[oioi];
     if( (Test1==0)||(Test2==0)||(Test3==0) ) {
@@ -3442,7 +3433,7 @@ Standard_Integer CheckNextStartPoint(IntPolyh_SectionLine & SectionLine,
   if( (SP.E1()==-1)||(SP.E2()==-1) ) {
     //The tops of triangle are analyzed
     //It is checked if they are not in the array TTangentZones
-    Standard_Integer FinTTZ=TTangentZones.NbTangentZones();
+    Standard_Integer FinTTZ=TTangentZones.NbItems();
     for(Standard_Integer uiui=0; uiui<FinTTZ; uiui++) {
       IntPolyh_StartPoint TestSP=TTangentZones[uiui];
       if ( (Abs(SP.U1()-TestSP.U1())<MyConfusionPrecision)
@@ -3457,7 +3448,7 @@ Standard_Integer CheckNextStartPoint(IntPolyh_SectionLine & SectionLine,
     if (Test) {//the top does not belong to the list of TangentZones
       SP.SetChainList(-1);
       TTangentZones[FinTTZ]=SP;
-      TTangentZones.IncrementNbTangentZones();
+      TTangentZones.IncrementNbItems();
       Test=0;//the examined point is a top
     }
   }
@@ -3486,7 +3477,7 @@ Standard_Integer IntPolyh_MaillageAffinage::StartPointsChain
    IntPolyh_ArrayOfTangentZones& TTangentZones) 
 {
 //Loop on the array of couples filled in the function COMPARE()
-  const Standard_Integer FinTTC = TTrianglesContacts.NbCouples();
+  const Standard_Integer FinTTC = TTrianglesContacts.NbItems();
 
 //Array of tops of triangles
   for(Standard_Integer IndexA=0; IndexA<FinTTC; IndexA++) {
@@ -3494,14 +3485,14 @@ Standard_Integer IntPolyh_MaillageAffinage::StartPointsChain
     //It is checked if the couple of triangles has not been already examined.
     if(TTrianglesContacts[IndexA].AnalyseFlagValue()!=1) {
 
-      Standard_Integer SectionLineIndex=TSectionLines.NbSectionLines();
+      Standard_Integer SectionLineIndex=TSectionLines.NbItems();
       // fill last section line if still empty (eap)
       if (SectionLineIndex > 0
 	  &&
 	  TSectionLines[SectionLineIndex-1].NbStartPoints() == 0)
 	SectionLineIndex -= 1;
       else
-	TSectionLines.IncrementNbSectionLines();
+	TSectionLines.IncrementNbItems();
 
       IntPolyh_SectionLine &  MySectionLine=TSectionLines[SectionLineIndex];
       if (MySectionLine.GetN() == 0) // eap
@@ -3559,8 +3550,8 @@ Standard_Integer IntPolyh_MaillageAffinage::StartPointsChain
 	      }
 	      else {
 		if(NbPoints11>1) {//The point is input in the array TTangentZones
-		  TTangentZones[TTangentZones.NbTangentZones()]=SP11;//default list number = -1
-		  TTangentZones.IncrementNbTangentZones();
+		  TTangentZones[TTangentZones.NbItems()]=SP11;//default list number = -1
+		  TTangentZones.IncrementNbItems();
 		}
 		else {
 
@@ -3606,8 +3597,8 @@ Standard_Integer IntPolyh_MaillageAffinage::StartPointsChain
 		
 		else {
 		  if(NbPoints12>1) {//The points are input in the array TTangentZones
-		    TTangentZones[TTangentZones.NbTangentZones()]=SP12;//default list number = -1
-		    TTangentZones.IncrementNbTangentZones();
+		    TTangentZones[TTangentZones.NbItems()]=SP12;//default list number = -1
+		    TTangentZones.IncrementNbItems();
 		  }
 		  else {
 
@@ -4018,19 +4009,19 @@ static TopoDS_Shape TriangleShape(const IntPolyh_ArrayOfTriangles & TTriangles,
 				  const IntPolyh_ArrayOfPoints &    TPoints)
 {
   TopoDS_Face aFace;
-  if (TPoints.NbPoints() < 1 || TTriangles.NbTriangles() < 1) return aFace;
+  if (TPoints.NbItems() < 1 || TTriangles.NbItems() < 1) return aFace;
   
   Handle(Poly_Triangulation) aPTriangulation =
-    new Poly_Triangulation(TPoints.NbPoints(),TTriangles.NbTriangles(),Standard_False);
+    new Poly_Triangulation(TPoints.NbItems(),TTriangles.NbItems(),Standard_False);
   TColgp_Array1OfPnt &       aPNodes         = aPTriangulation->ChangeNodes();
   Poly_Array1OfTriangle &    aPTrialgles     = aPTriangulation->ChangeTriangles();
  
   Standard_Integer i;
-  for (i=0; i<TPoints.NbPoints(); i++) {
+  for (i=0; i<TPoints.NbItems(); i++) {
     const IntPolyh_Point& P = TPoints[i];
     aPNodes(i+1).SetCoord(P.X(), P.Y(), P.Z());
   }
-  for (i=0; i<TTriangles.NbTriangles(); i++) {
+  for (i=0; i<TTriangles.NbItems(); i++) {
     const IntPolyh_Triangle& T = TTriangles[i];
     aPTrialgles(i+1).Set(T.FirstPoint()+1, T.SecondPoint()+1, T.ThirdPoint()+1);
   }
