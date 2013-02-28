@@ -26,7 +26,8 @@
 #ifdef WNT
 #include <windows.h>
 #endif
-#include <GL/gl.h>
+
+#include <OpenGl_GlCore11.hxx>
 
 static void setColor(GLenum               theFace,
                      Quantity_Parameter * theAmbient,

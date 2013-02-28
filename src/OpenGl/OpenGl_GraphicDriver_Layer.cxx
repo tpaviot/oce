@@ -28,7 +28,6 @@
 #include <OpenGl_AspectText.hxx>
 #include <OpenGl_TextParam.hxx>
 
-#include <GL/glu.h>
 
 /*----------------------------------------------------------------------*/
 

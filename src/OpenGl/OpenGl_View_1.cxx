@@ -28,7 +28,6 @@
 #include <OpenGl_PrinterContext.hxx>
 #include <OpenGl_Workspace.hxx>
 
-#include <GL/glu.h> // gluProject(), gluUnProject()
 
 /*----------------------------------------------------------------------*/
 

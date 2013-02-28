@@ -23,7 +23,6 @@
 #include <OpenGl_AspectText.hxx>
 #include <OpenGl_Structure.hxx>
 
-#include <GL/glu.h> // gluUnProject()
 
 /*----------------------------------------------------------------------*/
 

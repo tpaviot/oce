@@ -28,7 +28,8 @@
 #ifdef WNT
 #include <windows.h>
 #endif
-#include <GL/gl.h>
+
+#include <OpenGl_GlCore11.hxx>
 
 IMPLEMENT_STANDARD_HANDLE  (NIS_View, V3d_OrthographicView)
 IMPLEMENT_STANDARD_RTTIEXT (NIS_View, V3d_OrthographicView)

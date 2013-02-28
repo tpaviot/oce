@@ -15,6 +15,10 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
 
 #import <Cocoa/Cocoa.h>

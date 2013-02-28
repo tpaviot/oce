@@ -22,7 +22,7 @@
 
 #include <ft2build.h>
 
-#include <GL/gl.h>
+#include <OpenGl_GlCore11.hxx>
 
 #undef TRACE
 

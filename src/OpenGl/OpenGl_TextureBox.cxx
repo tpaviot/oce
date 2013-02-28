@@ -77,7 +77,6 @@
 #include <OpenGl_ResourceTexture.hxx>
 #include <OpenGl_Context.hxx>
 
-#include <GL/glu.h> // gluBuild2DMipmaps()
 
 #include <NCollection_Vector.hxx>
 
