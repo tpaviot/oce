@@ -24,7 +24,8 @@
 #ifdef WNT
 #include <windows.h>
 #endif
-#include <GL/gl.h>
+
+#include <OpenGl_GlCore11.hxx>
 
 //=======================================================================
 //function : NIS_DrawList()

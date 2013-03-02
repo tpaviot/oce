@@ -17,6 +17,7 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
+#include <OpenGl_GlCore11.hxx>
 
 #include <InterfaceGraphic.hxx>
 #include <OpenGl_Display.hxx>
@@ -92,9 +93,9 @@ static const FontMapNode myFontMap[] =
 #ifdef HAVE_GL2PS
 static void getGL2PSFontName (const char *src_font, char *ps_font)
 {
-  /* 
+  /*
   Convert font name used for rendering to some "good" font names
-  that produce good vector text 
+  that produce good vector text
   */
   static char const *family[] = {"Helvetica", "Courier", "Times"};
   static char const *italic[] = {"Oblique", "Oblique", "Italic"};
@@ -149,7 +150,7 @@ static void getGL2PSFontName (const char *src_font, char *ps_font)
 /*-----------------------------------------------------------------------------*/
 
 /*
-* Fonctions publiques 
+* Fonctions publiques
 */
 
 /*-----------------------------------------------------------------------------*/
@@ -230,9 +231,9 @@ class MultilineTextRenderer
 {
   private:
 
-  Standard_Integer        myLFNum;        // Number of '\n' (Line Feed) '\x00\x0A' 
+  Standard_Integer        myLFNum;        // Number of '\n' (Line Feed) '\x00\x0A'
   Standard_Integer        myCurrPos;      // Position of the current substring
-  Standard_Integer        myNewStrLen;    // Length of the new string 
+  Standard_Integer        myNewStrLen;    // Length of the new string
   Standard_Integer        mySubstrNum;    // Number of substrings
   wchar_t                 *myNewStr;      // New string
   const wchar_t           *myStrPtr;      // Pointer to the original string
@@ -394,7 +395,7 @@ class MultilineTextRenderer
         anIndex2 += aHelpIndex - 1;
         aTimeVar = 0;
       }
-      else 
+      else
       {
         myNewStr[anIndex2] = *(myStrPtr + anIndex1);
       }
@@ -446,7 +447,7 @@ class MultilineTextRenderer
     case Graphic3d_VTA_CENTER:
       if ( (myLFNum%2) == 0 )   // An odd number of strings
       {
-        theYdis = (GLdouble)((myLFNum/2.0) * theFnt->FaceSize()) + theDescentFont; 
+        theYdis = (GLdouble)((myLFNum/2.0) * theFnt->FaceSize()) + theDescentFont;
       }
       else                      // An even number of strings
       {
@@ -500,7 +501,7 @@ void OpenGl_Display::RenderText (const wchar_t* str, const int is2d, const float
   OpenGl_FontMgr* mgr = OpenGl_FontMgr::instance();
   const FTFont* fnt = mgr->fontById( myFont );
   if ( !fnt )
-    return; 
+    return;
 
   // FTFont changes texture state when it renders and computes size for the text
   glPushAttrib(GL_TEXTURE_BIT);
@@ -556,9 +557,9 @@ void OpenGl_Display::RenderText (const wchar_t* str, const int is2d, const float
       (GLint*)viewport,
       &wx, &wy, &wz );
     glLoadIdentity();
-    gluUnProject( wx, wy, wz, 
+    gluUnProject( wx, wy, wz,
       (GLdouble*)identityMatrix, (GLdouble*)projMatrix, (GLint*)viewport,
-      &x1, &y1 , &z1 );    
+      &x1, &y1 , &z1 );
 
     GLdouble h = (GLdouble)fnt->FaceSize();
 
@@ -568,22 +569,22 @@ void OpenGl_Display::RenderText (const wchar_t* str, const int is2d, const float
 
     h = (y2-y1)/h;
 
-    glTranslated( x1, y1 , z1 );   
+    glTranslated( x1, y1 , z1 );
     glRotated(aspect->Angle(), 0, 0, 1);
-    glTranslated(xdis, ydis, 0);  
+    glTranslated(xdis, ydis, 0);
 
     if( !aspect->IsZoomable() )
     {
 #ifdef WNT
       // if the context has assigned printer context, use it's parameters
-      OpenGl_PrinterContext* aPrinterContext = 
+      OpenGl_PrinterContext* aPrinterContext =
         OpenGl_PrinterContext::GetPrinterContext( GET_GL_CONTEXT() );
       if( aPrinterContext )
       {
         // get printing scaling in x and y dimensions
         GLfloat aTextScalex = 1, aTextScaley = 1;
         aPrinterContext->GetScale( aTextScalex, aTextScaley );
-        
+
         // text should be scaled in all directions with same
         // factor to save its proportions, so use height (y) scaling
         // as it is better for keeping text/3d graphics proportions
@@ -598,9 +599,9 @@ void OpenGl_Display::RenderText (const wchar_t* str, const int is2d, const float
     }
   }
 
-  GLint renderMode;  
+  GLint renderMode;
   glGetIntegerv(GL_RENDER_MODE, &renderMode);
-  if ( renderMode == GL_FEEDBACK ) 
+  if ( renderMode == GL_FEEDBACK )
   {
 #ifdef HAVE_GL2PS
     export_h = (float)fnt->FaceSize() / export_h;

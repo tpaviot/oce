@@ -31,7 +31,6 @@
 
 #include <OpenGl_transform_persistence.hxx>
 
-#include <GL/glu.h> // gluUnProject()
 
 IMPLEMENT_STANDARD_HANDLE(OpenGl_View,MMgt_TShared)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_View,MMgt_TShared)

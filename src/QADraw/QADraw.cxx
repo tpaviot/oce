@@ -18,6 +18,9 @@
 // and conditions governing the rights and limitations under the License.
 
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
 
 #if defined(WNT)
 #include <windows.h>
@@ -1115,6 +1118,7 @@ static int QAxwd (Draw_Interpretor& di, int argc, const char ** argv)
     GetClientRect((HWND)dout.GetWindow(id), &rc);
     SaveWindowToFile(aGd,(HWND)dout.GetWindow(id),(char*)file,rc.left, rc.top,rc.right-rc.left, rc.bottom-rc.top);
 #else
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
     XSync(Draw_WindowDisplay,True);
 
     XWindowAttributes winAttr;
@@ -1125,6 +1129,7 @@ static int QAxwd (Draw_Interpretor& di, int argc, const char ** argv)
 				AllPlanes,ZPixmap);
 
     Xw_save_image_adv(Draw_WindowDisplay,dout.GetWindow(id),winAttr,pximage,Draw_WindowColorMap,256,(char*)file);
+#endif
 #endif
   }
 

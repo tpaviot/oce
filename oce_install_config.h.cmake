@@ -23,3 +23,6 @@
 #cmakedefine OCE_HAVE_LIMITS 1
 #cmakedefine OCE_HAVE_CLIMITS 1
 #cmakedefine OCE_HAVE_LIMITS_H 1
+
+#cmakedefine MACOSX_USE_GLX
+
