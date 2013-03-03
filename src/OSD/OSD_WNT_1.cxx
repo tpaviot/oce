@@ -20,7 +20,9 @@
 #include <OSD_WNT_1.hxx>
 
 #include <windowsx.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
 #include <stdint.h>
+#endif
 
 #ifndef min
 # define min(a, b)  (((a) < (b)) ? (a) : (b))

@@ -845,7 +845,9 @@ Standard_Boolean OSD_File::IsExecutable()
 
 #include <stdio.h>
 #include <io.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
 #include <stdint.h>
+#endif
 #include <Standard_PCharacter.hxx>
 
 #ifndef _INC_TCHAR
