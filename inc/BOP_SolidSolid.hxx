@@ -37,6 +37,7 @@ class TopTools_ListOfShape;
 class BOP_ShellFaceSet;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeInteger;
+class TColStd_DataMapOfIntegerListOfInteger;
 class TColStd_IndexedMapOfInteger;
 
 
