@@ -28,7 +28,6 @@
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_Structure.hxx>
 
-#include <GL/glu.h>
 
 #include <stdio.h>
 

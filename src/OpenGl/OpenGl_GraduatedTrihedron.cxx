@@ -29,7 +29,6 @@
 #include <InterfaceGraphic_Aspect.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
-#include <GL/glu.h> // gluUnProject()
 
 #ifdef HAVE_CONFIG_H
 #include <oce-config.h>

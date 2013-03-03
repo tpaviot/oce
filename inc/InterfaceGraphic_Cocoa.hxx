@@ -1,7 +1,4 @@
-// Created on: 2012-03-06
-// Created by: Kirill GAVRILOV
-// Copyright (c) -1999 Matra Datavision
-// Copyright (c) 2012-2012 OPEN CASCADE SAS
+// Copyright (c) 2012 OPEN CASCADE SAS
 //
 // The content of this file is subject to the Open CASCADE Technology Public
 // License Version 6.5 (the "License"). You may not use the content of this file
@@ -18,37 +15,26 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
+#ifdef __APPLE__
 
-#ifndef _OpenGl_GlCore12_H__
-#define _OpenGl_GlCore12_H__
+#ifndef InterfaceGraphic_CocoaHeader
+#define InterfaceGraphic_CocoaHeader
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
+#include <stdio.h>
+
+#define WINDOW     void*
+#define DISPLAY    void*
+#define GLCONTEXT  void*
+#define GLDRAWABLE void*
+
+#define GET_GL_CONTEXT()       NULL
+#define GET_GLDEV_CONTEXT()    NULL
+#define GL_MAKE_CURRENT(a,b,c) {}
+
+#ifndef EXPORT
+  #define EXPORT
 #endif
 
-#include <OpenGl_GlCore11.hxx>
+#endif // InterfaceGraphic_CocoaHeader
 
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #undef GL_VERSION_1_2
-  #undef GL_VERSION_1_3
-  #undef GL_VERSION_1_4
-  #undef GL_VERSION_1_5
-  #undef GL_VERSION_2_0
-#endif
-
-#include <OpenGl_glext.h>
-
-//! Function list for GL1.2 core functionality.
-struct OpenGl_GlCore12
-{
-
-  PFNGLBLENDCOLORPROC        glBlendColor;
-  PFNGLBLENDEQUATIONPROC     glBlendEquation;
-  PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
-  PFNGLTEXIMAGE3DPROC        glTexImage3D;
-  PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D;
-  PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
-
-};
-
-#endif // _OpenGl_GlCore12_H__
+#endif // __APPLE__

@@ -99,7 +99,7 @@ defaultPrompt:
     }
 }
 
-#ifndef WNT
+#if !defined(_WIN32) && !defined(__WIN32__)
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
@@ -187,7 +187,7 @@ Standard_Boolean Draw_BlackBackGround = Standard_True;
 //======================================================
 Draw_Window* Draw_Window::firstWindow = NULL;
 
-
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
 //=======================================================================
 //function : Draw_Window
 //purpose  :
@@ -757,6 +757,25 @@ Standard_Boolean Draw_Window::Save (const char* theFileName) const
 }
 
 //=======================================================================
+//function : Wait
+//purpose  :
+//=======================================================================
+
+void Draw_Window::Wait (Standard_Boolean wait)
+{
+  Flush();
+  if (!wait) {
+    XSelectInput(Draw_WindowDisplay,win,
+                 ButtonPressMask|ExposureMask | StructureNotifyMask |
+                 PointerMotionMask);
+  }
+  else {
+    XSelectInput(Draw_WindowDisplay,win,
+                 ButtonPressMask|ExposureMask | StructureNotifyMask);
+  }
+}
+
+//=======================================================================
 //function : ProcessEvent
 //purpose  :
 //=======================================================================
@@ -878,25 +897,6 @@ void Draw_Window::WConfigureNotify(const Standard_Integer,
 }
 
 //=======================================================================
-//function : Wait
-//purpose  :
-//=======================================================================
-
-void Draw_Window::Wait (Standard_Boolean wait)
-{
-  Flush();
-  if (!wait) {
-        XSelectInput(Draw_WindowDisplay,win,
-                     ButtonPressMask|ExposureMask | StructureNotifyMask |
-                     PointerMotionMask);
-  }
-  else {
-        XSelectInput(Draw_WindowDisplay,win,
-                     ButtonPressMask|ExposureMask | StructureNotifyMask);
-  }
-}
-
-//=======================================================================
 //function : WUnmapNotify
 //purpose  :
 //=======================================================================
@@ -940,6 +940,35 @@ static void ProcessEvents(ClientData,int)
 }
 
 //======================================================
+// funtion : GetNextEvent()
+// purpose :
+//======================================================
+void GetNextEvent(Event& ev)
+{
+  XEvent xev;
+  XNextEvent(Draw_WindowDisplay, &xev);
+  switch(xev.type)
+  {
+    case ButtonPress :
+      ev.type = 4;
+      ev.window = xev.xbutton.window;
+      ev.button = xev.xbutton.button;
+      ev.x = xev.xbutton.x;
+      ev.y = xev.xbutton.y;
+      break;
+
+    case MotionNotify :
+      ev.type = 6;
+      ev.window = xev.xmotion.window;
+      ev.button = 0;
+      ev.x = xev.xmotion.x;
+      ev.y = xev.xmotion.y;
+      break;
+  }
+}
+#endif //__APPLE__
+
+//======================================================
 // funtion :Run_Appli
 // purpose :
 //======================================================
@@ -973,6 +1002,7 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
   // ConnectionNumber(Draw_WindowDisplay) is an int 32 bits
   //                    (void*) is a pointer      64 bits ???????
 
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
 #if TCL_MAJOR_VERSION  < 8
     Tk_CreateFileHandler((void*) ConnectionNumber(Draw_WindowDisplay),
                          TK_READABLE, ProcessEvents,(ClientData) 0 );
@@ -980,6 +1010,7 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
     Tk_CreateFileHandler(ConnectionNumber(Draw_WindowDisplay),
                          TK_READABLE, ProcessEvents,(ClientData) 0 );
 #endif
+#endif // __APPLE__
 
 #endif
 
@@ -1058,6 +1089,7 @@ Standard_Boolean Init_Appli()
 
   Tk_GeometryRequest(mainWindow, 200, 200);
 
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
   if (Draw_WindowDisplay == NULL) {
     Draw_WindowDisplay = Tk_Display(mainWindow);
   }
@@ -1078,6 +1110,8 @@ Standard_Boolean Init_Appli()
   Draw_WindowScreen   = DefaultScreen(Draw_WindowDisplay);
   Draw_WindowColorMap = DefaultColormap(Draw_WindowDisplay,
                                         Draw_WindowScreen);
+#endif // __APPLE__
+
   tty = isatty(0);
   Tcl_SetVar(interp,"tcl_interactive",(char*)(tty ? "1" : "0"), TCL_GLOBAL_ONLY);
 //  Tcl_SetVar(interp,"tcl_interactive",tty ? "1" : "0", TCL_GLOBAL_ONLY);
@@ -1091,34 +1125,6 @@ Standard_Boolean Init_Appli()
 void Destroy_Appli()
 {
   //XCloseDisplay(Draw_WindowDisplay);
-}
-
-//======================================================
-// funtion : GetNextEvent()
-// purpose :
-//======================================================
-void GetNextEvent(Event& ev)
-{
-  XEvent xev;
-  XNextEvent(Draw_WindowDisplay, &xev);
-  switch(xev.type)
-  {
-      case ButtonPress :
-           ev.type = 4;
-           ev.window = xev.xbutton.window;
-           ev.button = xev.xbutton.button;
-           ev.x = xev.xbutton.x;
-           ev.y = xev.xbutton.y;
-           break;
-
-      case MotionNotify :
-           ev.type = 6;
-           ev.window = xev.xmotion.window;
-           ev.button = 0;
-           ev.x = xev.xmotion.x;
-           ev.y = xev.xmotion.y;
-           break;
-   }
 }
 
 /*
@@ -2016,7 +2022,7 @@ static DWORD WINAPI readStdinThreadFunc(VOID)
     while (console_semaphore != WAIT_CONSOLE_COMMAND)
       Sleep(100);
     //if (gets(console_command))
-	if (fgets(console_command,COMMAND_SIZE,stdin)) 
+	if (fgets(console_command,COMMAND_SIZE,stdin))
       {
         console_semaphore = HAS_CONSOLE_COMMAND;
       }

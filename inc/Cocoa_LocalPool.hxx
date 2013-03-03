@@ -1,7 +1,4 @@
-// Created on: 2012-03-06
-// Created by: Kirill GAVRILOV
-// Copyright (c) -1999 Matra Datavision
-// Copyright (c) 2012-2012 OPEN CASCADE SAS
+// Copyright (c) 2012 OPEN CASCADE SAS
 //
 // The content of this file is subject to the Open CASCADE Technology Public
 // License Version 6.5 (the "License"). You may not use the content of this file
@@ -18,37 +15,22 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
+#ifndef __Cocoa_LocalPool_h_
+#define __Cocoa_LocalPool_h_
 
-#ifndef _OpenGl_GlCore12_H__
-#define _OpenGl_GlCore12_H__
-
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
-#include <OpenGl_GlCore11.hxx>
-
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #undef GL_VERSION_1_2
-  #undef GL_VERSION_1_3
-  #undef GL_VERSION_1_4
-  #undef GL_VERSION_1_5
-  #undef GL_VERSION_2_0
-#endif
-
-#include <OpenGl_glext.h>
-
-//! Function list for GL1.2 core functionality.
-struct OpenGl_GlCore12
+//! Auxiliary class to create
+class Cocoa_LocalPool
 {
 
-  PFNGLBLENDCOLORPROC        glBlendColor;
-  PFNGLBLENDEQUATIONPROC     glBlendEquation;
-  PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
-  PFNGLTEXIMAGE3DPROC        glTexImage3D;
-  PFNGLTEXSUBIMAGE3DPROC     glTexSubImage3D;
-  PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
+public:
+
+  Cocoa_LocalPool();
+  ~Cocoa_LocalPool();
+
+private:
+
+  void* myPoolObj;
 
 };
 
-#endif // _OpenGl_GlCore12_H__
+#endif // __Cocoa_LocalPool_h_

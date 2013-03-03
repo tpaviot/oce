@@ -38,7 +38,6 @@
 #include <OpenGl_PrinterContext.hxx>
 #include <OpenGl_Structure.hxx>
 
-#include <GL/glu.h> // gluBuild2DMipmaps()
 
 #define EPSI 0.0001
 

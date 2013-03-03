@@ -23,6 +23,10 @@
 #include <windows.h>
 #endif
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 #include <Viewer2dTest.hxx>
 #include <Viewer2dTest_EventManager.hxx>
 #include <Viewer2dTest_DataMapOfText.hxx>
@@ -883,6 +887,7 @@ int ViewerMainLoop2d (Standard_Integer argc, const char** argv)
 {
   Standard_Boolean pick = argc > 0;
 
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
   // X11 Event loop
   static XEvent report;
 
@@ -993,6 +998,7 @@ int ViewerMainLoop2d (Standard_Integer argc, const char** argv)
     }
     break;
   }
+#endif
 
   return pick;
 }
@@ -1004,11 +1010,13 @@ int ViewerMainLoop2d (Standard_Integer argc, const char** argv)
 //==============================================================================
 static void VProcessEvents2d (ClientData, int)
 {
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
   // test for X Event
   while (XPending(display2d))
   {
     ViewerMainLoop2d(0, NULL);
   }
+#endif
 }
 #endif
 
@@ -1019,6 +1027,7 @@ static void VProcessEvents2d (ClientData, int)
 static void OSWindowSetup2d()
 {
 #ifndef WNT
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
   // X11
   Window  window = VT_GetWindow2d()->XWindow();
 
@@ -1042,6 +1051,7 @@ static void OSWindowSetup2d()
                Button1MotionMask | Button2MotionMask | Button3MotionMask);
 
   XSynchronize(display2d, 0);
+#endif
 
 #else
   // WNT

@@ -27,7 +27,8 @@
 #ifdef WNT
 #include <windows.h>
 #endif
-#include <GL/gl.h>
+
+#include <OpenGl_GlCore11.hxx>
 
 // Comment this line if you see no hilighting of triangulations due to negative
 // polygon offsets. Disabling this macro means that all offsets will be created
