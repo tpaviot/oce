@@ -25,12 +25,12 @@ SET(OCE_VERSION_MINOR 12)
 # (uncomment following line)
 #SET(OCE_VERSION_PATCH 0)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-SET(OCE_VERSION_DEVEL -dev)
+SET(OCE_VERSION_DEVEL)
 
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 SET(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
 
-SET(OCE_ABI_SOVERSION 5)
+SET(OCE_ABI_SOVERSION 6)
 SET(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
 
 # Set the minimum version of cmake required to 2.6
