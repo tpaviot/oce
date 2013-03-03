@@ -460,7 +460,9 @@ Standard_Integer OSD_FileNode::Error()const{
 #endif  // _INC_TCHAR
 
 #include <stdio.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
 #include <stdint.h>
+#endif
 
 #define TEST_RAISE( arg ) _test_raise (  fName, ( arg )  )
 #define RAISE( arg ) Standard_ProgramError :: Raise (  ( arg )  )
