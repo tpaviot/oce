@@ -1,4 +1,32 @@
-Version 0.11.0 - December 2012 
+Version 0.12 - March 2013
+
+This version is not binary compatible with OCE 0.11.x, OCE_ABI_SOVERSION
+was incremented.
+
+* Build system improvements and additions
+  - oce-win-bundle is improved to allow integration into superprojects.
+    Structure of the bundle has also been modified, all libraries are now
+    put into the bin directory.
+  - installation paths are written into a separate file so that only few
+    files have to be recompiled when changing installation path.
+
+* Backport upstream changes to provide a native Cocoa interface on OSX.
+
+* Backport geometry bugfixes from upstream.
+
+* When face normal cannot be computed during meshing, a loop was performed
+  until machine precision is reached.  Limit the number of iterations to
+  avoid very slow meshing on such surfaces.
+
+* Make boolean operations faster.
+
+* On non-Windows, FreeImagePlus library is unused, only FreeImage functions
+  are called.  Link against this library to avoid errors on Fedora.
+
+Users who contributed to this release: Fotis Sioutis, QbProg, Denis Barbier,
+Jerome Robert, Conrad Poelman, Thomas Paviot, rainman110, Richard Shaw
+
+Version 0.11 - December 2012
 
 This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION 
 was incremented.
