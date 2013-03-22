@@ -817,12 +817,11 @@ ELSE(WIN32)
 ENDIF(WIN32)
 STRING(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWERCASE)
 
-# Places all of target's output files (dll, lib) in ${target_output_path}
+# Places all of target's lib output files in ${target_output_path}
 MACRO( SET_TARGET_OUTPUT_DIRECTORIES target target_output_path )
 	SET_TARGET_PROPERTIES( ${target} PROPERTIES
 		ARCHIVE_OUTPUT_DIRECTORY ${target_output_path}
 		LIBRARY_OUTPUT_DIRECTORY ${target_output_path}
-		RUNTIME_OUTPUT_DIRECTORY ${target_output_path}
 	)
 ENDMACRO()
 
