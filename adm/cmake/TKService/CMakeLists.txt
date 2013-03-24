@@ -6,6 +6,7 @@ SET(TOOLKIT_MODULES
 	CGM
 	Font
 	Image
+	InterfaceGraphic
 	MFT
 	PS
 	PlotMgt
@@ -15,7 +16,6 @@ SET(TOOLKIT_MODULES
 )
 IF (WIN32)
 	SET(TOOLKIT_MODULES ${TOOLKIT_MODULES}
-		InterfaceGraphic
 		WNT
 	)
 ELSE(WIN32)
