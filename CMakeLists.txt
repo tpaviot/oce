@@ -1099,10 +1099,9 @@ ENDIF(${PROJECT_NAME}_USE_BUNDLE_SOURCE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 ############
 # PostBuild Step
 ############
-# In win32, dependent libraries are required to run tests. For bundled source,
-# they are already placed into the correct locations.
+# In win32, dependent libraries are required to run tests.
 
-IF(MSVC AND ${PROJECT_NAME}_TESTING AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
+IF(MSVC AND ${PROJECT_NAME}_TESTING)
 			
 		# Try to find TCL .dll filename
 		IF (${PROJECT_NAME}_DRAW)
@@ -1122,22 +1121,26 @@ IF(MSVC AND ${PROJECT_NAME}_TESTING AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
 				IF (${PROJECT_NAME}_DRAW)
 				    ADD_CUSTOM_COMMAND(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
 				ENDIF()
-				
-				SET(TMP_SRCDIR ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/)
-				SET(TMP_DESTDIR ${LIBRARY_OUTPUT_PATH}/${config})
-				STRING(REGEX REPLACE "/" "\\\\" TMP_SRCDIR ${TMP_SRCDIR}) 
-				STRING(REGEX REPLACE "/" "\\\\" TMP_DESTDIR ${TMP_DESTDIR}) 
-				SET (TMP_FILELIST FreeImage FTGL gl2ps freetype FreeImagePlus)
 
-				IF (${config} MATCHES "Debug")
-				   SET(TMP_SUFFIX "d")
-				ELSE ()
-				   SET(TMP_SUFFIX)
+				# With USE_BUNDLE_SOURCE, the dll's referenced below are already in the
+				# correct locations.
+				IF(NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
+					SET(TMP_SRCDIR ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/)
+					SET(TMP_DESTDIR ${LIBRARY_OUTPUT_PATH}/${config})
+					STRING(REGEX REPLACE "/" "\\\\" TMP_SRCDIR ${TMP_SRCDIR})
+					STRING(REGEX REPLACE "/" "\\\\" TMP_DESTDIR ${TMP_DESTDIR})
+					SET (TMP_FILELIST FreeImage FTGL gl2ps freetype FreeImagePlus)
+
+					IF (${config} MATCHES "Debug")
+						 SET(TMP_SUFFIX "d")
+					ELSE ()
+						 SET(TMP_SUFFIX)
+					ENDIF()
+
+					FOREACH (TMP_FILE ${TMP_FILELIST} )
+							 ADD_CUSTOM_COMMAND(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
+					ENDFOREACH()
 				ENDIF()
-
-				FOREACH (TMP_FILE ${TMP_FILELIST} )
-				     ADD_CUSTOM_COMMAND(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
-				ENDFOREACH()
 
 				# Switch between bin and bind dirs
 				IF (${config} MATCHES "Debug")
@@ -1195,7 +1198,7 @@ IF(MSVC AND ${PROJECT_NAME}_TESTING AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
 				ENDIF()
 		ENDIF (CMAKE_CONFIGURATION_TYPES) 
 		
-ENDIF(MSVC AND ${PROJECT_NAME}_TESTING AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
+ENDIF(MSVC AND ${PROJECT_NAME}_TESTING)
 
 ##############
 # Bundle AUTOINSTALL
