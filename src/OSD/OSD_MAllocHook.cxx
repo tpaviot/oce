@@ -367,7 +367,7 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
     Standard_Size aSizeAlloc = aInfo.nbAlloc * aInfo.size;
     Standard_Size aSizeLeft = nbLeft * aInfo.size;
     Standard_Size aSizePeak = aInfo.nbLeftPeak * aInfo.size;
-    fprintf(aRepFile, "%10"FMT_SZ_Q"u %10d %10d %10d %10"FMT_SZ_Q"u %10"FMT_SZ_Q"u %10"FMT_SZ_Q"u\n", aInfo.size,
+    fprintf(aRepFile, "%10" FMT_SZ_Q "u %10d %10d %10d %10" FMT_SZ_Q "u %10" FMT_SZ_Q "u %10" FMT_SZ_Q "u\n", aInfo.size,
             aInfo.nbAlloc, nbLeft, aInfo.nbLeftPeak,
             aSizeAlloc, aSizeLeft, aSizePeak);
     if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
@@ -381,7 +381,7 @@ Standard_Boolean OSD_MAllocHook::LogFileHandler::MakeReport
         fprintf(aRepFile, "%10lu\n", *it1);
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c %10"FMT_SZ_Q"u %10"FMT_SZ_Q"u %10"FMT_SZ_Q"u\n", "Total:",
+  fprintf(aRepFile, "%10s %10s %10s %10s%c %10" FMT_SZ_Q "u %10" FMT_SZ_Q "u %10" FMT_SZ_Q "u\n", "Total:",
           "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
           aTotalLeftSize, aTotalPeakSize);
   fclose(aRepFile);
@@ -400,7 +400,7 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "alloc %10lu %10"FMT_SZ_Q"u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "alloc %10lu %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
     myMutex.Unlock();
 #ifdef DEBUG
     if (myBreakSize == theSize)
@@ -424,7 +424,7 @@ void OSD_MAllocHook::LogFileHandler::FreeEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "free  %10lu %10"FMT_SZ_Q"u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "free  %10lu %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
     myMutex.Unlock();
   }
 }
@@ -505,7 +505,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
       Standard_Size aSizeAlloc = myArray[i].nbAlloc * aSize;
       ptrdiff_t     aSizeLeft = nbLeft * aSize;
       Standard_Size aSizePeak = myArray[i].nbLeftPeak * aSize;
-      fprintf(aRepFile, "%10d %10d %10d %10d %10"FMT_SZ_Q"u %10"FMT_SZ_Q"d %10"FMT_SZ_Q"u\n", aSize,
+      fprintf(aRepFile, "%10d %10d %10d %10d %10" FMT_SZ_Q "u %10" FMT_SZ_Q "d %10" FMT_SZ_Q "u\n", aSize,
               myArray[i].nbAlloc, nbLeft, myArray[i].nbLeftPeak,
               aSizeAlloc, aSizeLeft, aSizePeak);
       if (aTotAlloc + aSizeAlloc < aTotAlloc) // overflow ?
@@ -514,7 +514,7 @@ Standard_Boolean OSD_MAllocHook::CollectBySize::MakeReport(const char* theOutFil
         aTotAlloc += aSizeAlloc;
     }
   }
-  fprintf(aRepFile, "%10s %10s %10s %10s%c%10"FMT_SZ_Q"u %10"FMT_SZ_Q"d %10"FMT_SZ_Q"u\n", "Total:",
+  fprintf(aRepFile, "%10s %10s %10s %10s%c%10" FMT_SZ_Q "u %10" FMT_SZ_Q "d %10" FMT_SZ_Q "u\n", "Total:",
           "", "", "", (aTotAlloc == SIZE_MAX ? '>' : ' '), aTotAlloc,
           myTotalLeftSize, myTotalPeakSize);
   fclose(aRepFile);
