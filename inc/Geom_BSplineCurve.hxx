@@ -684,6 +684,8 @@ public:
   Standard_EXPORT     void Resolution(const Standard_Real Tolerance3D,Standard_Real& UTolerance) ;
   //! Creates a new object which is a copy of this BSpline curve. <br>
   Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+  //! Comapare two Bspline curve on identity; <br>
+  Standard_EXPORT     Standard_Boolean IsEqual(const Handle(Geom_BSplineCurve)& theOther,const Standard_Real thePreci) const;
 
 
 

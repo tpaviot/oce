@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKG3d"
-	ProjectGUID="{B7AF2754-0E58-00AF-0F32-A4388B7C68FD}"
+	ProjectGUID="{65145171-16B0-1594-111F-66D27883FADB}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

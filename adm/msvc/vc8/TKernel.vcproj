@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKernel"
-	ProjectGUID="{4883F7AC-0F39-1007-176C-CE73B20DC195}"
+	ProjectGUID="{5908C0F4-06AD-0769-0AD0-DE2034144F7F}"
 	>
 	<Platforms>
 		<Platform

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomBase"
-	ProjectGUID="{D0CBBB2E-1736-00B8-00A9-148766C53FBC}"
+	ProjectGUID="{CA422DEB-09B2-083D-1108-D995DFFE84BC}"
 	>
 	<Platforms>
 		<Platform

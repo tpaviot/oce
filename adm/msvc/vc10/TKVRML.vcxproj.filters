@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{90796E51-12A3-0FE6-191D-9085DD44B092}</UniqueIdentifier>
+      <UniqueIdentifier>{97D4EC21-0439-008B-04FA-737C9AF9A144}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\VrmlConverter">
-      <UniqueIdentifier>{A44F3A74-152F-0721-0EAC-6AC283085E93}</UniqueIdentifier>
+      <UniqueIdentifier>{CA920493-1543-0AFF-132D-5348F0D9BEB0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\VrmlAPI">
-      <UniqueIdentifier>{79448318-0B30-1005-01DE-AD89EC3A1D35}</UniqueIdentifier>
+      <UniqueIdentifier>{761E7B2C-1312-1308-0FB8-BF7DA3D18AFB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Vrml">
-      <UniqueIdentifier>{53910D55-0289-083B-0E9D-B22CC498FDDB}</UniqueIdentifier>
+      <UniqueIdentifier>{FB69C63D-1582-15FB-00CF-16AF1941BD70}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\VrmlData">
-      <UniqueIdentifier>{42656210-06F6-05C9-0C1D-8B597C9FF239}</UniqueIdentifier>
+      <UniqueIdentifier>{FC131184-0466-06EE-1519-B552071C5098}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

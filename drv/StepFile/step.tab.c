@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc
+/*  A Bison parser, made from /misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc
  by  GNU Bison version 1.25
   */
 
@@ -30,7 +30,7 @@
 #define	HEXA	273
 #define	QUID	274
 
-#line 23 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 23 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
@@ -690,75 +690,75 @@ yyreduce:
   switch (yyn) {
 
 case 10:
-#line 69 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 69 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_finfile();  return(0);  /*  fini pour celui-la  */  ;
     break;}
 case 15:
-#line 78 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 78 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_finhead();  ;
     break;}
 case 16:
-#line 80 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 80 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);     rec_newarg();  ;
     break;}
 case 17:
-#line 81 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 81 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  /* deja fait par lex*/ 	 rec_newarg();  ;
     break;}
 case 18:
-#line 82 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 82 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 19:
-#line 83 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 83 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 20:
-#line 84 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 84 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argMisc);      rec_newarg();
 			   yyerrstatus = 1; yyclearin;  ;
     break;}
 case 21:
-#line 89 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 89 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_listype();  ;
     break;}
 case 22:
-#line 92 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 92 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 23:
-#line 95 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 95 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  if (modeprint > 0)
 		{  printf("Record no : %d -- ",nbrec+1);  rec_print(currec);  }
 	   rec_newent ();  yyerrstatus = 0; ;
     break;}
 case 40:
-#line 122 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 122 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  scope_debut();  ;
     break;}
 case 41:
-#line 125 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 125 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);    rec_newarg();  ;
     break;}
 case 44:
-#line 131 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 131 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 45:
-#line 134 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 134 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  scope_fin();  ;
     break;}
 case 46:
-#line 136 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 136 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  printf("***  Warning : Export List not yet processed\n");
 	   rec_newent();  scope_fin() ; ;
     break;}
 case 47:
-#line 141 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 141 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_ident();  ;
     break;}
 case 48:
-#line 144 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 144 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"
 {  rec_type ();  ;
     break;}
 }
@@ -956,4 +956,4 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 146 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2012-11-09-IR-2012-11-09-OCCT/src/StepFile/step.yacc"
+#line 146 "/misc/dn60/WOKLOC/wok_entities/LOC/dev/CR000655-CR655-products-occt/src/StepFile/step.yacc"

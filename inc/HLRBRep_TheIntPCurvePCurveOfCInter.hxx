@@ -31,6 +31,9 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class HLRBRep_CurveTool;
 class HLRBRep_TheProjPCurOfCInter;
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
@@ -68,6 +71,8 @@ protected:
 
 private:
 
+  
+  Standard_EXPORT     Standard_Boolean findIntersect(const Standard_Address& Curve1,const IntRes2d_Domain& Domain1,const Standard_Address& Curve2,const IntRes2d_Domain& Domain2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Integer NbIter,const Standard_Real DeltaU,const Standard_Real DeltaV,const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter& thePoly1,const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter& thePoly2,const Standard_Boolean isFullRepresentation) ;
 
 
 IntRes2d_Domain DomainOnCurve1;

@@ -486,13 +486,6 @@ libTKGeomAlgo_la_SOURCES = \
 @top_srcdir@/src/IntPatch/IntPatch_RLine.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_RstInt.cxx \
 @top_srcdir@/src/IntPatch/IntPatch_WLine.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfCouples.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfEdges.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfPoints.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfSectionLines.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfStartPoints.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfTangentZones.cxx \
-@top_srcdir@/src/IntPolyh/IntPolyh_ArrayOfTriangles.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_Couple.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_Edge.cxx \
 @top_srcdir@/src/IntPolyh/IntPolyh_Intersection.cxx \

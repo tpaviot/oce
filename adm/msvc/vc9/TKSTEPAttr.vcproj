@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKSTEPAttr"
-	ProjectGUID="{9F6CFAAA-0948-1931-1984-AA0F76DD386D}"
+	ProjectGUID="{C0013048-0F01-0958-18D9-8506E4879C72}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

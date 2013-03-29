@@ -2,46 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{DD1C6547-06AD-150A-07AD-26912B04B19E}</UniqueIdentifier>
+      <UniqueIdentifier>{32D9A476-04E6-0150-02C0-DD26AC160902}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{2913AC6C-00D3-1750-02D7-B2CD2ABBB92D}</UniqueIdentifier>
+      <UniqueIdentifier>{A999BE3A-1534-00A4-0F3A-99594FB66F97}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\InterfaceGraphic">
-      <UniqueIdentifier>{7A4817D1-0AB1-0C16-0FDD-B1979356400C}</UniqueIdentifier>
+      <UniqueIdentifier>{5837E61B-01F7-0166-0DBC-39E83ABD4650}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{86DA27E5-0112-078A-0B8A-E7C8831D4643}</UniqueIdentifier>
+      <UniqueIdentifier>{533D70EE-08AC-0E12-0DA9-220D95A9DD60}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Viewer">
-      <UniqueIdentifier>{EFFE3541-0422-0008-1631-48440E6BFE8F}</UniqueIdentifier>
+      <UniqueIdentifier>{04F59009-01F1-0A77-0D51-3A71CE05B79C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MFT">
-      <UniqueIdentifier>{1590C44D-0432-16E6-0FC4-0B8AB1BE70A4}</UniqueIdentifier>
+      <UniqueIdentifier>{596E92F6-0311-0A3B-0727-84C5A8CCB825}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PS">
-      <UniqueIdentifier>{D544CEE9-01A0-07A7-1729-B143BCD62363}</UniqueIdentifier>
+      <UniqueIdentifier>{4DB22B8E-0125-108B-0B8D-D6DADABA4DD4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CGM">
-      <UniqueIdentifier>{AD6EDDD4-00CB-0865-0989-EC76053867AA}</UniqueIdentifier>
+      <UniqueIdentifier>{4BA88B62-05AA-12DD-10D0-4DAE31E748F9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AlienImage">
-      <UniqueIdentifier>{1DD85F76-07DE-066D-082F-819A5EBDA1FE}</UniqueIdentifier>
+      <UniqueIdentifier>{680A43E7-15BE-0B6F-05D4-135E0F842BD9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{D6396FC5-162F-0C12-00AC-57DFE32BB563}</UniqueIdentifier>
+      <UniqueIdentifier>{5AD736DE-03AC-0141-00DB-E7AE235993E3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PlotMgt">
-      <UniqueIdentifier>{917E5CFF-03DF-1005-16BC-40630023AAAB}</UniqueIdentifier>
+      <UniqueIdentifier>{FC53A7DD-0B06-14EB-09AD-F63D162498E0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{99F67A40-0EE0-18EC-15E8-3A624E0C1701}</UniqueIdentifier>
+      <UniqueIdentifier>{B0C64EFA-183F-0165-1038-E2CD651AB1BA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{BA7159E6-0579-0D78-0732-FE5800437C00}</UniqueIdentifier>
+      <UniqueIdentifier>{8A4929FC-0A8F-140B-05C2-B84C2C90FD62}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Font">
-      <UniqueIdentifier>{81E62FD2-12D5-1570-04A2-3FDD93EBF934}</UniqueIdentifier>
+      <UniqueIdentifier>{EB5C686F-039C-0A73-1536-9C150126F787}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

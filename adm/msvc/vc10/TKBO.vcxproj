@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{91B58BE2-0266-0B3D-01E5-8B03CCA66BCC}</ProjectGuid>
+    <ProjectGuid>{95BC3DA7-0BDD-0A4E-0A1C-45D1B2CA2F02}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -743,6 +743,8 @@
     <ClCompile Include="..\..\..\src\IntTools\IntTools_CurveRangeSampleMapHasher.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">
     </ClCompile>

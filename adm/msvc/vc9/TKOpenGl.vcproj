@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{FAFD9DA2-042E-0F1F-012F-135D5F574926}"
+	ProjectGUID="{5ED0178A-0276-069D-026A-987BCFE857F4}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

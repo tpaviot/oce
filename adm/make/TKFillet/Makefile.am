@@ -43,7 +43,8 @@ libTKFillet_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKG2d/libTKG2d.la \
 ../TKTopAlgo/libTKTopAlgo.la \
 ../TKG3d/libTKG3d.la \
-../TKBool/libTKBool.la
+../TKBool/libTKBool.la \
+../TKShHealing/libTKShHealing.la
 
 
 libTKFillet_la_SOURCES = \

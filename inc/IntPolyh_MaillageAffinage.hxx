@@ -46,20 +46,19 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
+#include <IntPolyh_ArrayOfSectionLines.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfTangentZones_HeaderFile
+#include <IntPolyh_ArrayOfTangentZones.hxx>
+#endif
 class Adaptor3d_HSurface;
 class TColStd_Array1OfReal;
 class Bnd_Box;
 class IntPolyh_Point;
 class IntPolyh_StartPoint;
 class IntPolyh_Triangle;
-class IntPolyh_ArrayOfSectionLines;
-class IntPolyh_ArrayOfTangentZones;
 class IntPolyh_SectionLine;
-class IntPolyh_ArrayOfPoints;
-class IntPolyh_ArrayOfEdges;
-class IntPolyh_ArrayOfTriangles;
-class IntPolyh_ArrayOfStartPoints;
-class IntPolyh_ArrayOfCouples;
 
 
 

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKService"
-	ProjectGUID="{8E239F3C-0E12-10B7-0CDF-4A5A045BD97B}"
+	ProjectGUID="{E1A36C6B-01E6-0C84-1111-D8C42735FE36}"
 	>
 	<Platforms>
 		<Platform

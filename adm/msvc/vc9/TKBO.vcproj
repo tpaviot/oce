@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBO"
-	ProjectGUID="{91B58BE2-0266-0B3D-01E5-8B03CCA66BCC}"
+	ProjectGUID="{95BC3DA7-0BDD-0A4E-0A1C-45D1B2CA2F02}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -1188,6 +1188,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">

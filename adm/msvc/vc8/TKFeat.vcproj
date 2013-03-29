@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKFeat"
-	ProjectGUID="{847064BE-07AA-0B0E-0CFD-A004206F0C2E}"
+	ProjectGUID="{1ECD54D3-0B03-140B-1507-F81ECDAE41F3}"
 	>
 	<Platforms>
 		<Platform

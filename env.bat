@@ -5,7 +5,7 @@ rem - first argument specifies version of Visual Studio (vc8, vc9, or vc10),
 rem - second argument specifies architecture (win32 or win64),
 rem - third argument specifies build mode (Debug or Release)
 rem Default options are:
-rem   vc9 win32 Release
+rem   vc8 win32 Release
 
 set "SCRIPTROOT=%~dp0"
 set "SCRIPTROOT=%SCRIPTROOT:~0,-1%"
@@ -13,7 +13,7 @@ set "SCRIPTROOT=%SCRIPTROOT:~0,-1%"
 rem ----- Reset values to defaults -----
 set "CASROOT="
 set "CASDEB="
-set "VCVER=vc9"
+set "VCVER=vc8"
 set "ARCH=32"
 set "VCVARS="
 set "HAVE_TBB=false"
@@ -105,7 +105,6 @@ if     ["%CASDEB%"] == [""] if ["%ARCH%"] == ["32"] set "PATH=%CSF_OPT_BIN32%;%P
 if     ["%CASDEB%"] == [""] if ["%ARCH%"] == ["64"] set "PATH=%CSF_OPT_BIN64%;%PATH%"
 if not ["%CASDEB%"] == [""] if ["%ARCH%"] == ["32"] set "PATH=%CSF_OPT_BIN32D%;%PATH%"
 if not ["%CASDEB%"] == [""] if ["%ARCH%"] == ["64"] set "PATH=%CSF_OPT_BIN64D%;%PATH%"
-
 
 rem ----- Set envoronment variables used by OCCT -----
 set "CSF_MDTVFontDirectory=%CASROOT%\src\FontMFT"

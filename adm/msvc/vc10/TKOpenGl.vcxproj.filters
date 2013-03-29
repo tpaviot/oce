@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{9DE025DE-0C97-04C1-17A9-D0F196A4EB47}</UniqueIdentifier>
+      <UniqueIdentifier>{96EB1202-0BB0-0486-13CF-6FA4A3A20590}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OpenGl">
-      <UniqueIdentifier>{52B7FD4A-11C0-0725-0707-C5F387F72C28}</UniqueIdentifier>
+      <UniqueIdentifier>{1B6CC278-039F-03CB-1859-3AA8AA173A3F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

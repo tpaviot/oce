@@ -110,6 +110,11 @@ private:
   Standard_EXPORT     Standard_Integer FindVertex(const TopoDS_Shape& S,const TopoDS_Vertex& V,Standard_Integer& Init) const;
   
   Standard_EXPORT     void DefineRealSegmax() ;
+  //! Performs sharing coincident faces in theShape. Also modifies <br>
+//!          myFaces, mySections and myEdges to contain shared shapes. <br>
+//!          Returns the shared shape. If theShape is not modified this <br>
+//!          method returns it. <br>
+  Standard_EXPORT     TopoDS_Shape ShareFaces(const TopoDS_Shape& theShape,const Standard_Integer theInitialFacesLen,const Standard_Integer theInitialEdgesLen,const Standard_Integer theInitialSectionsLen) ;
 
 
 TopoDS_Wire mySpine;

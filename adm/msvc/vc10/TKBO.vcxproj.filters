@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D26ADF16-06E7-0CFC-0FDC-3B0E84360DAA}</UniqueIdentifier>
+      <UniqueIdentifier>{2683E5C9-12FF-1048-08D3-0809AFB3D6BE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTColStd">
-      <UniqueIdentifier>{BB3E9400-0A25-162E-023E-11B8906BF90C}</UniqueIdentifier>
+      <UniqueIdentifier>{D776ABAA-11D2-1879-06DA-A4878FBFF2F5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{ABBF0E08-03F4-1297-1240-6CB19D00F30E}</UniqueIdentifier>
+      <UniqueIdentifier>{E7B7D33D-0B6B-0EAB-061C-BAF437F7507C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOP">
-      <UniqueIdentifier>{552D92D2-14A3-011A-009C-7DD6457E5D30}</UniqueIdentifier>
+      <UniqueIdentifier>{C5157E20-0F3E-007D-0A86-29240FFE5D96}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BooleanOperations">
-      <UniqueIdentifier>{18218BF4-1552-0317-127F-F36A8DD87F2B}</UniqueIdentifier>
+      <UniqueIdentifier>{B235502C-1763-1168-186B-D06B1A27A70D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{84EC480B-122D-14EA-13E7-A89A512B554F}</UniqueIdentifier>
+      <UniqueIdentifier>{486F97B9-120F-076A-12FB-168B8F247FCC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{EDD04B10-1802-16C0-170B-C63194E11891}</UniqueIdentifier>
+      <UniqueIdentifier>{424555DD-140C-0EFB-065B-C263DF2B00D8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -790,6 +790,9 @@
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge.cxx">
+      <Filter>Source files\IntTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeEdge_1.cxx">
       <Filter>Source files\IntTools</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntTools\IntTools_EdgeFace.cxx">

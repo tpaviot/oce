@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXSBase"
-	ProjectGUID="{58BA0CE1-0715-0566-0110-662891F15083}"
+	ProjectGUID="{92580A8D-11DE-16DB-072D-1911E1E4D202}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

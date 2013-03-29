@@ -77,14 +77,14 @@ public:
 
 protected:
 
+  
+  Standard_EXPORT     void TreatCircle(const Handle(IntPatch_Line)& aLine,const Standard_Real aTol) ;
 
 
 
 
 private:
 
-  
-  Standard_EXPORT     void PeriodicLine(const Handle(IntPatch_Line)& L) const;
 
 
 Standard_Boolean done;

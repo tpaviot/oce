@@ -51,6 +51,8 @@
 
 static
   gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D);
+static
+  void RefineDir(gp_Dir& aDir);
 
 //=======================================================================
 //class :  
@@ -129,7 +131,9 @@ class AxeOperator {
   gp_Dir V2=Axe2.Direction();
   gp_Pnt P1=Axe1.Location();
   gp_Pnt P2=Axe2.Location();
-  
+  //
+  RefineDir(V1);
+  RefineDir(V2);
   thecoplanar= Standard_False;
   thenormal  = Standard_False;
 
@@ -1163,6 +1167,9 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
   //
   Standard_Real tg1, tg2, aDA1A2, aTol2;
   gp_Pnt aPApex1, aPApex2;
+
+  Standard_Real TOL_APEX_CONF = 1.e-10;
+  
   //
   tg1=Tan(Con1.SemiAngle());
   tg2=Tan(Con2.SemiAngle());
@@ -1187,6 +1194,12 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     Standard_Real d=gp_Vec(D).Dot(gp_Vec(P,Con2.Apex()));
     
     if(Abs(tg1-tg2)>myEPSILON_ANGLE_CONE) { 
+      if (fabs(d) < TOL_APEX_CONF) {
+	typeres = IntAna_Point;
+	nbint = 1;
+	pt1 = P;
+	return;
+      }
       x=(d*tg2)/(tg1+tg2);
       pt1.SetCoord( P.X() + x*D.X()
 		   ,P.Y() + x*D.Y()
@@ -1203,7 +1216,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
       typeres=IntAna_Circle;
     }
     else {
-      if (fabs(d)<1.e-10) { 
+      if (fabs(d) < TOL_APEX_CONF) { 
 	typeres=IntAna_Same;
       }
       else {
@@ -1361,9 +1374,7 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
     if (aRD2>(aR2+Tol)) {
       iRet=0;
       typeres=IntAna_Empty; //nothing
-      //modified by NIZNHY-PKV Fri Mar 23 08:12:23 2012f
       return;
-      //modified by NIZNHY-PKV Fri Mar 23 08:12:29 2012t
     }
     //
     iRet=1; //touch case => 1 line
@@ -1602,9 +1613,13 @@ gp_Ax2 DirToAx2(const gp_Pnt& P,const gp_Dir& D)
 				   const gp_Cone& Con,
 				   const Standard_Real)
 {
+  
+  //
   done=Standard_True;
+  //
   AxeOperator A1A2(Con.Axis(),Sph.Position().Axis());
   gp_Pnt Pt=Sph.Location();
+  //
   if((A1A2.Intersect() && (Pt.Distance(A1A2.PtIntersect())==0.0))
      || A1A2.Same()) {
     gp_Pnt ConApex= Con.Apex();
@@ -1929,7 +1944,54 @@ const gp_Pnt& IntAna_QuadQuadGeo::PChar() const
 {
   return myPChar;
 }
-
+//=======================================================================
+//function : RefineDir
+//purpose  : 
+//=======================================================================
+void RefineDir(gp_Dir& aDir)
+{
+  Standard_Integer k, m, n;
+  Standard_Real aC[3];
+  //
+  aDir.Coord(aC[0], aC[1], aC[2]);
+  //
+  m=0;
+  n=0;
+  for (k=0; k<3; ++k) {
+    if (aC[k]==1. || aC[k]==-1.) {
+      ++m;
+    }
+    else if (aC[k]!=0.) {
+      ++n;
+    }
+  }
+  //
+  if (m && n) {
+    Standard_Real aEps, aR1, aR2, aNum;
+    //
+    aEps=RealEpsilon();
+    aR1=1.-aEps;
+    aR2=1.+aEps;
+    //
+    for (k=0; k<3; ++k) {
+      m=(aC[k]>0.);
+      aNum=(m)? aC[k] : -aC[k];
+      if (aNum>aR1 && aNum<aR2) {
+	if (m) {
+	  aC[k]=1.;
+	}	  
+	else {
+	  aC[k]=-1.;
+	}
+	//
+	aC[(k+1)%3]=0.;
+	aC[(k+2)%3]=0.;
+	break;
+      }
+    }
+    aDir.SetCoord(aC[0], aC[1], aC[2]);
+  }
+}
 
 
 

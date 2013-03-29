@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{86EA18A7-0C84-0494-1373-8B503F41782D}</UniqueIdentifier>
+      <UniqueIdentifier>{B76D9DE7-02CB-0E1B-139A-BCAC82E1B4BA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinXCAFDrivers">
-      <UniqueIdentifier>{38E90DF4-159C-0C79-08CA-3AE628DC598C}</UniqueIdentifier>
+      <UniqueIdentifier>{203D0628-0B51-0E36-064B-440E5C0AC0D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMXCAFDoc">
-      <UniqueIdentifier>{7AFEF9EF-137D-01B0-1191-60481C1E45BE}</UniqueIdentifier>
+      <UniqueIdentifier>{F9124B52-18C2-0CCD-0BAF-CEE9C254F1B8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKAdvTools"
-	ProjectGUID="{FDE56E3E-097D-1044-02A7-D71E33FFD873}"
+	ProjectGUID="{47F55A03-0F57-09F4-01BE-4E43FE5213D6}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

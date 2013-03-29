@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKPrim"
-	ProjectGUID="{80FE50DB-051C-09C0-0A82-6B00AAF8D5A2}"
+	ProjectGUID="{7EF463AD-1353-0AE2-00E0-2222D71D872D}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

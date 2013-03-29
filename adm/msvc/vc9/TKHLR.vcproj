@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKHLR"
-	ProjectGUID="{EF41CD6C-1841-0DAE-1274-D811CE78EF67}"
+	ProjectGUID="{D4444DBD-1325-0657-0EF2-47294CE84801}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{41E8198E-1906-05E6-1571-66B459CA7939}</ProjectGuid>
+    <ProjectGuid>{30901384-0566-01CF-0AF7-9E078A010330}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -1137,20 +1137,6 @@
     <ClCompile Include="..\..\..\drv\IntPolyh\IntPolyh_SeqOfStartPoints_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\IntPolyh\IntPolyh_SequenceNodeOfSeqOfStartPoints_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfCouples.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfEdges.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfPoints.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfSectionLines.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfStartPoints.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfTangentZones.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_ArrayOfTriangles.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\IntPolyh\IntPolyh_Couple.cxx">
     </ClCompile>

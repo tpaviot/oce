@@ -301,6 +301,7 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeSample.cxx \
 @top_srcdir@/src/IntTools/IntTools_CurveRangeSampleMapHasher.cxx \
 @top_srcdir@/src/IntTools/IntTools_EdgeEdge.cxx \
+@top_srcdir@/src/IntTools/IntTools_EdgeEdge_1.cxx \
 @top_srcdir@/src/IntTools/IntTools_EdgeFace.cxx \
 @top_srcdir@/src/IntTools/IntTools_FClass2d.cxx \
 @top_srcdir@/src/IntTools/IntTools_FaceFace.cxx \
