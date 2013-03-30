@@ -1162,23 +1162,6 @@ static void StdinProc(ClientData clientData, int )
   Tcl_DStringFree(&line);
   count = Tcl_Gets(chan, &line);
 
-  // MKV 26.05.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4)))
-  Tcl_DString linetmp;
-  Tcl_DStringInit(&linetmp);
-  Tcl_UniChar * UniCharString;
-  UniCharString = Tcl_UtfToUniCharDString(Tcl_DStringValue(&line),-1,&linetmp);
-  Standard_Integer l = Tcl_UniCharLen(UniCharString);
-  TCollection_AsciiString AsciiString("");
-  Standard_Character Character;
-  Standard_Integer i;
-  for (i=0; i<l; i++) {
-    Character = UniCharString[i];
-    AsciiString.AssignCat(Character);
-  }
-  Tcl_DStringInit(&line);
-  Tcl_DStringAppend(&line, AsciiString.ToCString(), -1);
-#endif
   if (count < 0) {
     if (!gotPartial) {
       if (tty) {
