@@ -130,7 +130,9 @@ public:
   Standard_EXPORT   static  TopoDS_Shape CurrentShape(const Standard_CString ShapeEntry,const Handle(TDF_Data)& Data) ;
   
   Standard_EXPORT   static  void GetShape(const Standard_CString ShapeEntry,const Handle(TDF_Data)& Data,TopTools_ListOfShape& Shapes) ;
-  
+  //! Status = 0  Not  found, <br>
+//!          Status = 1  One  shape, <br>
+//!          Status = 2  More than one shape. <br>
   Standard_EXPORT   static  TCollection_AsciiString GetEntry(const TopoDS_Shape& Shape,const Handle(TDF_Data)& Data,Standard_Integer& Status) ;
   //! Loads the Shape to DF <br>
   Standard_EXPORT   static  void LoadImportedShape(const TDF_Label& theResultLabel,const TopoDS_Shape& theShape) ;

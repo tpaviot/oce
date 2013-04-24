@@ -89,7 +89,7 @@ static int BUC60606(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 //   Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
 
 //   Standard_Character  *filename = new Standard_Character [strlen(DD)+strlen(argv[2])+1];
-//   sprintf(filename,"%s/%s",DD,argv[2]);
+//   Sprintf(filename,"%s/%s",DD,argv[2]);
 
 //   satModel->ReadSaveFile(filename);
   
@@ -102,7 +102,7 @@ static int BUC60606(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 //     for(Standard_Integer i=1;i<=nbs;i++) {
 //       TopoDS_Shape xShape = satShapes->Value(i);
 //       if(!xShape.IsNull()) {
-// 	sprintf(Ch,"%s_%i",argv[1],i);
+// 	Sprintf(Ch,"%s_%i",argv[1],i);
 // 	DBRep::Set(Ch,xShape);
 //       } else cout << "The shape " << argv[1] << "_" << i << " is NULL !" << endl;
 //     }
@@ -145,7 +145,7 @@ static int BUC60627(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 }
 
 void QABugs::Commands_4(Draw_Interpretor& theCommands) {
-  char *group = "QABugs";
+  const char *group = "QABugs";
 
   theCommands.Add("BUC60738","BUC60738",__FILE__,BUC60738,group);
   theCommands.Add("BUC60606","BUC60606 name",__FILE__,BUC60606,group);

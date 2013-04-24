@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKXCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKXCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/XCAFApp" />
+			<Add directory="../../../src/XCAFApp" />
+			<Add directory="../../../drv/XCAFDoc" />
+			<Add directory="../../../src/XCAFDoc" />
+			<Add directory="../../../drv/XCAFPrs" />
+			<Add directory="../../../src/XCAFPrs" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework AppKit" />
+			<Add option="-framework IOKit" />
+			<Add library="TKBRep" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKG2d" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKV3d" />
+			<Add library="TKCDF" />
+			<Add library="TKLCAF" />
+			<Add library="TKG3d" />
+			<Add library="TKCAF" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+		</Linker>
+		<Unit filename="../../../src/XCAFApp/XCAFApp_Application.cxx" />
+		<Unit filename="../../../drv/XCAFDoc/XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel_0.cxx" />
+		<Unit filename="../../../drv/XCAFDoc/XCAFDoc_DataMapNodeOfDataMapOfShapeLabel_0.cxx" />
+		<Unit filename="../../../drv/XCAFDoc/XCAFDoc_DataMapOfShapeLabel_0.cxx" />
+		<Unit filename="../../../drv/XCAFDoc/XCAFDoc_GraphNodeSequence_0.cxx" />
+		<Unit filename="../../../drv/XCAFDoc/XCAFDoc_SequenceNodeOfGraphNodeSequence_0.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Area.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Centroid.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Color.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_ColorTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Datum.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_DimTol.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_DimTolTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_DocumentTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_GraphNode.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_LayerTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Location.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Material.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_MaterialTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_ShapeMapTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_ShapeTool.cxx" />
+		<Unit filename="../../../src/XCAFDoc/XCAFDoc_Volume.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapIteratorOfDataMapOfShapeStyle_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapNodeOfDataMapOfShapeStyle_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapNodeOfDataMapOfStyleShape_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapOfShapeStyle_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapOfStyleShape_0.cxx" />
+		<Unit filename="../../../drv/XCAFPrs/XCAFPrs_DataMapOfStyleTransient_0.cxx" />
+		<Unit filename="../../../src/XCAFPrs/XCAFPrs.cxx" />
+		<Unit filename="../../../src/XCAFPrs/XCAFPrs_AISObject.cxx" />
+		<Unit filename="../../../src/XCAFPrs/XCAFPrs_Driver.cxx" />
+		<Unit filename="../../../src/XCAFPrs/XCAFPrs_Style.cxx" />
+	</Project>
+</CodeBlocks_project_file>

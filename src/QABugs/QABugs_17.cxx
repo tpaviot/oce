@@ -18,15 +18,11 @@
 // and conditions governing the rights and limitations under the License.
 
 
-#if defined(WOKC40)
-#define V2D
-#define Viewer2dTest QAViewer2dTest
-#endif
-
 #include <stdio.h>
 
 #include <QABugs.hxx>
 
+#include <Draw.hxx>
 #include <Draw_Interpretor.hxx>
 #include <DBRep.hxx>
 #include <DrawTrSurf.hxx>
@@ -78,37 +74,11 @@
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_CompSolid.hxx>
 #include <StdSelect_ShapeTypeFilter.hxx>
-
 #include <QABugs_MyText.hxx>
-
-#if defined(WOKC40)
-#include <QAViewer2dTest.hxx>
-#include <QAViewer2dTest_DoubleMapOfInteractiveAndName.hxx>
-#else
-#include <Viewer2dTest.hxx>
-#include <Viewer2dTest_DoubleMapOfInteractiveAndName.hxx>
-#endif
-
 #include <Prs3d_Projector.hxx>
 #include <HLRAlgo_Projector.hxx>
-#include <AIS2D_ProjShape.hxx>
-#include <AIS2D_InteractiveContext.hxx>
 #include <Standard_ErrorHandler.hxx>
-
-#if ! defined(WNT)
-#if defined(WOKC40)
-extern QAViewer2dTest_DoubleMapOfInteractiveAndName& GetMapOfAIS2D();
-#else
-extern Viewer2dTest_DoubleMapOfInteractiveAndName& GetMapOfAIS2D();
-#endif
-#else
-Standard_EXPORT Viewer2dTest_DoubleMapOfInteractiveAndName& GetMapOfAIS2D();
-#endif
-
-#include <GGraphic2d_SetOfCurves.hxx>
-#include <Graphic2d_SetOfSegments.hxx>
-
-#include <Graphic3d_NameOfFont.hxx>
+#include <Font_NameOfFont.hxx>
 
 static Standard_Integer BUC60842 (Draw_Interpretor& di, Standard_Integer /*argc*/,const char ** /*argv*/)
 {
@@ -125,7 +95,7 @@ static Standard_Integer BUC60842 (Draw_Interpretor& di, Standard_Integer /*argc*
 
   gp_Pln pln = plne->Pln();
   Handle(Geom2d_Curve) curve2d = GeomAPI::To2d (ell, pln);
-  sprintf(abuf,"ell");
+  Sprintf(abuf,"ell");
   DrawTrSurf::Set(st,curve2d);
   if(!aContext.IsNull()) {
     Handle(AIS_Shape) aisp = 
@@ -134,7 +104,7 @@ static Standard_Integer BUC60842 (Draw_Interpretor& di, Standard_Integer /*argc*
   }
 
   Handle(Geom2d_Curve) fromcurve2d = GeomAPI::To2d (cir, pln);
-  sprintf(abuf,"cil");
+  Sprintf(abuf,"cil");
   DrawTrSurf::Set(st,fromcurve2d);
   if(!aContext.IsNull()) {
     Handle(AIS_Shape) aisp = 
@@ -148,7 +118,7 @@ static Standard_Integer BUC60842 (Draw_Interpretor& di, Standard_Integer /*argc*
   Geom2dGcc_Lin2d2Tan lintan (qcur, qfromcur, 0.1, 0.0, 0.0);
   Standard_Integer i=0;
   for(i=0;i<lintan.NbSolutions();i++) {
-    sprintf(abuf,"lintan_%d",i);
+    Sprintf(abuf,"lintan_%d",i);
     Handle(Geom2d_Line) glin = new Geom2d_Line(lintan.ThisSolution(i));
     DrawTrSurf::Set(st,glin);
     if(!aContext.IsNull()) {
@@ -170,11 +140,11 @@ static Standard_Integer BUC60843 (Draw_Interpretor& di, Standard_Integer argc,co
   Standard_Real par1 = 0.0, par2 = 0.0;
   Standard_Real tol  = Precision::Angular();
   if (argc >= 5)
-    par1 = atof(argv[4]);
+    par1 = Draw::Atof(argv[4]);
   if (argc == 6)
-    par2 = atof(argv[5]);
+    par2 = Draw::Atof(argv[5]);
   if (argc == 7)
-    tol = atof(argv[6]);
+    tol = Draw::Atof(argv[6]);
   Handle(Geom2d_Curve)  aCur2d1 = DrawTrSurf::GetCurve2d(argv[2]);
   Handle(Geom2d_Curve)  aCur2d2 = DrawTrSurf::GetCurve2d(argv[3]);
   if (aCur2d1.IsNull() || aCur2d2.IsNull()) {
@@ -185,7 +155,7 @@ static Standard_Integer BUC60843 (Draw_Interpretor& di, Standard_Integer argc,co
   Handle(Geom2d_Circle) aCir2d = Handle(Geom2d_Circle)::DownCast(aCur2d1);
   if (!aCir2d.IsNull()) {
     c1IsCircle = Standard_True;
-    if (argc == 6) tol = atof(argv[5]);
+    if (argc == 6) tol = Draw::Atof(argv[5]);
   }
   if(c1IsCircle) {
     Geom2dAdaptor_Curve acur(aCur2d2);
@@ -462,13 +432,13 @@ static Standard_Integer BUC60821(Draw_Interpretor& di, Standard_Integer argc,con
     return -1;
   }
 
-  Handle(QABugs_MyText) txt1 = new QABugs_MyText("Gosha1",gp_Pnt(0,0,0),Graphic3d_NOF_ASCII_SIMPLEX,Quantity_NOC_RED,atoi(argv[1]));
+  Handle(QABugs_MyText) txt1 = new QABugs_MyText("Gosha1",gp_Pnt(0,0,0),Font_NOF_ASCII_SIMPLEX,Quantity_NOC_RED,Draw::Atoi(argv[1]));
   aContext->Display(txt1);
 
-  Handle(QABugs_MyText) txt2 = new QABugs_MyText("Gosha2",gp_Pnt(0,0,100),Graphic3d_NOF_ASCII_SIMPLEX,Quantity_NOC_YELLOW,atoi(argv[2]));
+  Handle(QABugs_MyText) txt2 = new QABugs_MyText("Gosha2",gp_Pnt(0,0,100),Font_NOF_ASCII_SIMPLEX,Quantity_NOC_YELLOW,Draw::Atoi(argv[2]));
   aContext->Display(txt2);
 
-  Handle(QABugs_MyText) txt3 = new QABugs_MyText("Gosha3",gp_Pnt(0,100,100),Graphic3d_NOF_ASCII_SIMPLEX,Quantity_NOC_SKYBLUE,atoi(argv[3]));
+  Handle(QABugs_MyText) txt3 = new QABugs_MyText("Gosha3",gp_Pnt(0,100,100),Font_NOF_ASCII_SIMPLEX,Quantity_NOC_SKYBLUE,Draw::Atoi(argv[3]));
   aContext->Display(txt3);
 
   return 0;
@@ -538,7 +508,7 @@ static Standard_Integer OCC353 (Draw_Interpretor& di, Standard_Integer , const c
     res = sol.NbSolutions();
     for(Standard_Integer i=1;i<=res;i++) {
       Handle(Geom2d_Circle) aC = new Geom2d_Circle(sol.ThisSolution(i));
-      sprintf(buf,"Result_%d",i);
+      Sprintf(buf,"Result_%d",i);
       st = buf;
       DrawTrSurf::Set(st,aC);
     }
@@ -566,14 +536,14 @@ static Standard_Integer OCC280 (Draw_Interpretor& di, Standard_Integer argc, con
     return 1;
   }
 
-  Standard_Integer HLR = atoi(argv[1]);
+  Standard_Integer HLR = Draw::Atoi(argv[1]);
   if (HLR != 0) {
     HLR = 1;
   }
 
   Handle(V3d_View) anOldView = ViewerTest::CurrentView();
   Handle(V3d_Viewer) aViewer = ViewerTest::GetViewerFromContext();
-  if (atoi (argv[2]))
+  if (Draw::Atoi (argv[2]))
   {
     aViewer->SetDefaultSurfaceDetail (V3d_TEX_ALL);
   }
@@ -597,9 +567,10 @@ static Standard_Integer OCC280 (Draw_Interpretor& di, Standard_Integer argc, con
   ViewerTest::UnsetEventManager();
   ViewerTest::SetEventManager (new ViewerTest_EventManager (aNewView, ViewerTest::GetAISContext()));
 
-  if (HLR == 1) {
-    di << "HLR" << "\n";
-    aNewView->SetDegenerateModeOff();
+  if (HLR == 1)
+  {
+    di << "HLR\n";
+    aNewView->SetComputedMode (Standard_True);
   }
 
   return 0;
@@ -777,82 +748,6 @@ static Standard_Integer  OCC189 (Draw_Interpretor& di, Standard_Integer /*argc*/
   return 0; 
 }
 
-static Standard_Integer  OCC389 (Draw_Interpretor& di, Standard_Integer argc, const char ** argv)
-{
-  if (argc < 3)
-  {
-    di<<"Usage: " << argv[0] << " name shape1 [shape2] ..."<<"\n";
-    return 1;
-  }
-
-  //if (Viewer2dTest::CurrentView().IsNull())
-  //{ 
-  //  cout << "2D AIS Viewer Initialization ..." << endl;
-  //  Viewer2dTest::ViewerInit(); 
-  //  cout << "Done" << endl;
-  //}
-
-  di<<"Begin!"<<"\n";
-  Handle(AIS2D_InteractiveContext) aContext = Viewer2dTest::GetAIS2DContext();
-  di<<"Check InteractiveContext"<<"\n";
-
-  if(aContext.IsNull()) {
-    di << "use 'v2dinit' command before " << argv[0] << "\n";
-    return 1;
-  }
-
-  di<<"CloseLocalContext"<<"\n";
-  aContext->CloseLocalContext();
-
-  di<<"OpenLocalContext"<<"\n";
-  aContext->OpenLocalContext();
-
-  TCollection_AsciiString name(argv[1]);
-
-  di<<"Found name"<<"\n";
-  Standard_Boolean IsBound = GetMapOfAIS2D().IsBound2(name);
-  if (IsBound)
-  {
-    di<<"Already displayed"<<"\n";
-  }
-  else // Create the AIS2D_ProjShape from a name
-  {
-    di<<"Create the AIS2D_ProjShape from a name; (1)"<<"\n";
-    Prs3d_Projector aPrs3dProjector(Standard_False, 1, -1.0,0.2,0.3, 0.0, 0.0, 0.0, -0.0,0.0,1.0);
-    di<<"Create the AIS2D_ProjShape from a name; (2)"<<"\n";
-    HLRAlgo_Projector aProjector = aPrs3dProjector.Projector();
-    di<<"Create the AIS2D_ProjShape from a name; (3)"<<"\n";
-    Handle(AIS2D_ProjShape) shp_2d =
-      new AIS2D_ProjShape(aProjector, 0, Standard_False, Standard_True);
-    di<<"Create the AIS2D_ProjShape from a name; (4)"<<"\n";
-
-    Standard_Integer i;
-    Standard_Boolean isValid = Standard_False;
-    for (i = 2; i < argc; i++)
-    {
-      di<<"i="<< i-1 <<"\n";
-      TopoDS_Shape aShape = DBRep::Get(argv[i]);
-      if (!aShape.IsNull())
-      {
-        shp_2d->Add( aShape );
-        di<<"Added shape: "<<argv[i]<<"\n";
-        isValid = Standard_True;
-      }
-    }
-
-    if (isValid)
-    {
-      di<<"Now start displaying..."<<"\n";
-      aContext->Display(shp_2d, 1, 1, Standard_True);
-
-      GetMapOfAIS2D().Bind(shp_2d, name);
-    }
-  }
-
-  aContext->UpdateCurrentViewer();
-  return 0; 
-}
-
 #include <BRepBndLib.hxx>
 #include <Draw.hxx>
 //=======================================================================
@@ -1008,8 +903,8 @@ static Standard_Integer UPDATEVOL(Draw_Interpretor& di,
   TopoDS_Shape aLocalEdge(DBRep::Get(a[1],TopAbs_EDGE));
   TopoDS_Edge E = TopoDS::Edge(aLocalEdge);
   for (Standard_Integer ii = 1; ii <= (narg/2)-1; ii++){
-    Par = atof(a[2*ii]);
-    Rad = atof(a[2*ii + 1]);
+    Par = Draw::Atof(a[2*ii]);
+    Rad = Draw::Atof(a[2*ii + 1]);
     uandr.ChangeValue(ii).SetCoord(Par,Rad);
   }
   //HELPDESK: Add law creation
@@ -1125,8 +1020,8 @@ static Standard_Integer OCC813 (Draw_Interpretor& di, Standard_Integer argc,cons
   }
 
   Standard_CString str;
-  Standard_Real U = atof(argv[1]);
-  Standard_Real V = atof(argv[2]);
+  Standard_Real U = Draw::Atof(argv[1]);
+  Standard_Real V = Draw::Atof(argv[2]);
 
   //Between ellipse and point:
 
@@ -1164,7 +1059,7 @@ static Standard_Integer OCC813 (Draw_Interpretor& di, Standard_Integer argc,cons
 
   Standard_Integer i;
   for(i=1;i<=lintan.NbSolutions();i++) {
-    sprintf(abuf,"lintan_%d",i);
+    Sprintf(abuf,"lintan_%d",i);
     Handle(Geom2d_Line) glin = new Geom2d_Line(lintan.ThisSolution(i));
     DrawTrSurf::Set(st,glin);
     if(!aContext.IsNull()) {
@@ -1235,7 +1130,7 @@ static Standard_Integer OCC814 (Draw_Interpretor& di, Standard_Integer argc,cons
 
   Standard_Integer i;
   for(i=1;i<=lintan.NbSolutions();i++) {
-    sprintf(abuf,"lintan_%d",i);
+    Sprintf(abuf,"lintan_%d",i);
     Handle(Geom2d_Line) glin = new Geom2d_Line(lintan.ThisSolution(i));
     DrawTrSurf::Set(st,glin);
     if(!aContext.IsNull()) {
@@ -1311,7 +1206,7 @@ static Standard_Integer OCC884 (Draw_Interpretor& di, Standard_Integer argc, con
   { 
     gp_Pnt pt = points3d(i); 
     di << "Info: Intersecting pt : (" << pt.X() << ", " << pt.Y() << ", " << pt.Z() << ")\n";
-    sprintf(str,"p_%d",i);
+    Sprintf(str,"p_%d",i);
     DrawTrSurf::Set(name,pt);
   }
 
@@ -1319,8 +1214,8 @@ static Standard_Integer OCC884 (Draw_Interpretor& di, Standard_Integer argc, con
   sfw->Load(wire);
   sfw->SetFace(face);
 
-  if (argc > 3) sfw->SetPrecision(atof(argv[3])/*0.1*/);
-  if (argc > 4) sfw->SetMaxTolerance(atof(argv[4]));
+  if (argc > 3) sfw->SetPrecision(Draw::Atof(argv[3])/*0.1*/);
+  if (argc > 4) sfw->SetMaxTolerance(Draw::Atof(argv[4]));
   di << "Info: Precision is set to " << sfw->Precision() << "\n";
   di << "Info: MaxTolerance is set to " << sfw->MaxTolerance() << "\n";
 
@@ -1530,297 +1425,6 @@ static Standard_Integer OCC1174_2 (Draw_Interpretor& di, Standard_Integer argc, 
   return 0;
 }
 
-#include <Graphic2d_Segment.hxx>
-#include <Prs2d_Length.hxx>
-#include <Prs2d_AspectLine.hxx>
-#include <AIS2D_InteractiveObject.hxx>
-//=======================================================================
-//  OCC672:
-//         OCC672_Length
-//         OCC672_Angle
-//         OCC672_Diameter
-//         OCC672_ShortLength 
-//=======================================================================
-
-static Standard_Integer OCC672_Length (Draw_Interpretor& di, Standard_Integer n,const char ** argv)
-{
-  if (n != 17) {
-    di << " wrong parameters !\n";
-    di << "must be : OCC672_Length x1 y1 x2 y2 str scale_text length_dist angle_arrow length_arrow x3 y3 x4 y4 TxtAngle TxtPosH TxtPosV\n";
-    return 1;
-  }
-
-  Standard_Real x1=atof(argv[1]);
-  Standard_Real y1=atof(argv[2]);
-  Standard_Real x2=atof(argv[3]);
-  Standard_Real y2=atof(argv[4]);
-  Standard_Real x3=atof(argv[10]);
-  Standard_Real y3=atof(argv[11]);
-  Standard_Real x4=atof(argv[12]);
-  Standard_Real y4=atof(argv[13]);
-  Standard_Real txtAngle=atof(argv[14]);
-  Standard_Real txtPosH=atof(argv[15]);
-  Standard_Real txtPosV=atof(argv[16]);
-
-  di<<"Begin!\n";
-  Handle(AIS2D_InteractiveContext) aContext = Viewer2dTest::GetAIS2DContext();
-  di<<"Check InteractiveContext\n";
-
-  if(aContext.IsNull()) {
-    di << "use 'v2dinit' command before " << argv[0] << "\n";
-    return 1;
-  }
-
-  di<<"CloseLocalContext\n";
-  aContext->CloseLocalContext();
-
-  di<<"OpenLocalContext\n";
-  aContext->OpenLocalContext();
-  //step0 end  
-  Handle(AIS2D_InteractiveObject) aIO10 = new AIS2D_InteractiveObject();
-  Handle(Graphic2d_Segment) theSegmA, theSegmB, theSegmC, theSegmD;
-
-  theSegmA = new Graphic2d_Segment( aIO10, x1, y1, x2, y2 );
-  theSegmB = new Graphic2d_Segment( aIO10, x2, y2, x3, y3 );
-  theSegmC = new Graphic2d_Segment( aIO10, x3, y3, x4, y4 );
-  theSegmD = new Graphic2d_Segment( aIO10, x4, y4, x1, y1 );
-
-  aContext->Display( aIO10, Standard_True ); 
-
-  Handle(Prs2d_Length) length = new Prs2d_Length(aIO10, gp_Pnt2d(x1, y1), gp_Pnt2d(x2, y2), argv[5],
-    atof(argv[6]), atof(argv[7]), Prs2d_TOD_AUTOMATIC, 
-    atof(argv[8]), atof(argv[9]), Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR);
-
-  length->SetTextRelPos(txtPosH,txtPosV);
-  length->SetTextRelAngle(txtAngle);
-
-  Handle(Prs2d_AspectLine) theAspect = new Prs2d_AspectLine(Quantity_NOC_WHITE,
-    Aspect_TOL_SOLID, Aspect_WOL_THIN);
-  aIO10->SetAspect( theAspect,  length);
-  aContext->Display( aIO10, Standard_True );
-
-  Handle(Prs2d_Length) lengthB = new Prs2d_Length(aIO10, gp_Pnt2d(x2, y2), gp_Pnt2d(x3, y3), argv[5],
-    atof(argv[6]), atof(argv[7]), Prs2d_TOD_AUTOMATIC, 
-    atof(argv[8]), atof(argv[9]), Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR);
-
-  lengthB->SetTextRelPos(txtPosH,txtPosV);
-  lengthB->SetTextRelAngle(txtAngle);
-
-  aIO10->SetAspect( theAspect,  lengthB);
-  aContext->Display( aIO10, Standard_True );
-
-  Handle(Prs2d_Length) lengthC = new Prs2d_Length(aIO10, gp_Pnt2d(x3, y3), gp_Pnt2d(x4, y4), argv[5],
-    atof(argv[6]), atof(argv[7]), Prs2d_TOD_AUTOMATIC, 
-    atof(argv[8]), atof(argv[9]), Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR);
-
-  lengthC->SetTextRelPos(txtPosH,txtPosV);
-  lengthC->SetTextRelAngle(txtAngle);
-
-  aIO10->SetAspect( theAspect,  lengthC);
-  aContext->Display( aIO10, Standard_True );
-
-  Handle(Prs2d_Length) lengthD = new Prs2d_Length(aIO10, gp_Pnt2d(x4, y4), gp_Pnt2d(x1, y1), argv[5],
-    atof(argv[6]), atof(argv[7]), Prs2d_TOD_AUTOMATIC, 
-    atof(argv[8]), atof(argv[9]), Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR);
-
-  lengthD->SetTextRelPos(txtPosH,txtPosV);
-  lengthD->SetTextRelAngle(txtAngle);
-
-  aIO10->SetAspect( theAspect,  lengthD);
-  aContext->Display( aIO10, Standard_True );
-  return 0;
-}
-
-#include <Prs2d_Angle.hxx>
-static Standard_Integer OCC672_Angle (Draw_Interpretor& di, Standard_Integer n,const char ** argv)
-{
-  if (n != 15) {
-    di << "Wrong parameters !\n";
-    di << "must be : OCC672_Angle x1 y1 x2 y2 x3 y3 aRadius aText aTxtScale anArrAngle anArrLength txtAngle txtPosH txtPosV  \n";
-    return 1;
-  }
-
-  Standard_Real x1=atof(argv[1]);
-  Standard_Real y1=atof(argv[2]);
-  Standard_Real x2=atof(argv[3]);
-  Standard_Real y2=atof(argv[4]);
-  Standard_Real x3=atof(argv[5]);
-  Standard_Real y3=atof(argv[6]);
-  Standard_Real aRadius=atof(argv[7]);
-  Standard_Real aTxtScale=atof(argv[9]);
-  Standard_Real anArrAngle=atof(argv[10]);
-  Standard_Real anArrLength=atof(argv[11]);
-  Standard_Real txtAngle=atof(argv[12]);
-  Standard_Real txtPosH=atof(argv[13]);
-  Standard_Real txtPosV=atof(argv[14]);
-
-  di<<"Begin!\n";
-  Handle(AIS2D_InteractiveContext) aContext = Viewer2dTest::GetAIS2DContext();
-  di<<"Check InteractiveContext\n";
-
-  if(aContext.IsNull()) {
-    di << "use 'v2dinit' command before " << argv[0] << "\n";
-    return 1;
-  }
-
-  di<<"CloseLocalContext\n";
-  aContext->CloseLocalContext();
-
-  di<<"OpenLocalContext\n";
-  aContext->OpenLocalContext();
-
-  Handle(AIS2D_InteractiveObject) aIO10 = new AIS2D_InteractiveObject();
-  Handle(Graphic2d_Segment) theSegmA, theSegmB;
-  theSegmA = new Graphic2d_Segment( aIO10, x1, y1, x2, y2 );
-  theSegmB = new Graphic2d_Segment( aIO10, x1, y1, x3, y3 );
-  aContext->Display( aIO10, Standard_True ); 
-
-  Handle(Prs2d_Angle) angle = new Prs2d_Angle(aIO10, gp_Pnt2d(x1, y1), gp_Pnt2d(x2, y2),gp_Pnt2d(x3,y3),
-    aRadius,argv[8],aTxtScale,anArrAngle,anArrLength,Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR);
-
-  angle->SetTextRelPos(txtPosH,txtPosV);
-  angle->SetTextAbsAngle(txtAngle);
-
-  aContext->Display( aIO10, Standard_True );
-  return 0; 
-}
-
-#include <Prs2d_Diameter.hxx>
-#include <gp_Circ2d.hxx>
-#include <Graphic2d_Circle.hxx>
-#include <Prs2d_AspectText.hxx>
-static Standard_Integer OCC672_Diameter (Draw_Interpretor& di, Standard_Integer n,const char ** argv)
-{
-  if (n != 13) {
-    di << "Wrong parameters !\n";
-    di << "must be : OCC672_Diameter x1 y1 cx cy radius aText aTxtScale anArrAngle anArrLength txtAngle txtPosH txtPosV\n";
-    return 1;
-  }
-
-  Standard_Real x1=atof(argv[1]);
-  Standard_Real y1=atof(argv[2]);
-  Standard_Real cx=atof(argv[3]);    //coordinats for circle 
-  Standard_Real cy=atof(argv[4]);    //
-  Standard_Real radius=atof(argv[5]);//radius for circle 
-  Standard_Real aTxtScale=atof(argv[7]);
-  Standard_Real anArrAngle=atof(argv[8]);
-  Standard_Real anArrLength=atof(argv[9]);
-
-  Standard_Real txtAngle=atof(argv[10]);
-  Standard_Real txtPosH=atof(argv[11]);
-  Standard_Real txtPosV=atof(argv[12]);
-
-
-  di<<"Begin!\n";
-  Handle(AIS2D_InteractiveContext) aContext = Viewer2dTest::GetAIS2DContext();
-  di<<"Check InteractiveContext\n";
-
-  if(aContext.IsNull()) {
-    di << "use 'v2dinit' command before " << argv[0] << "\n";
-    return 1;
-  }
-
-  di<<"CloseLocalContext\n";
-  aContext->CloseLocalContext();
-
-  di<<"OpenLocalContext\n";
-  aContext->OpenLocalContext();
-  Handle(AIS2D_InteractiveObject) aIO10 = new AIS2D_InteractiveObject(); 
-
-  Handle (Graphic2d_Circle) HCirc;
-  HCirc= new Graphic2d_Circle(aIO10,cx,cy,radius);
-
-  gp_Dir2d myDir2d(1,0);
-  gp_Pnt2d myPnt2d(cx,cy);
-  gp_Ax2d myAx2d(myPnt2d,myDir2d);
-  gp_Circ2d myCirc(myAx2d,radius);
-
-  Handle(Prs2d_Diameter) diameter = new Prs2d_Diameter(aIO10, gp_Pnt2d(x1, y1),myCirc,
-    argv[6],aTxtScale,anArrAngle,anArrLength,
-    Prs2d_TOA_FILLED,
-    Prs2d_AS_BOTHAR,Standard_True);
-
-  diameter->SetTextRelPos(txtPosH,txtPosV);
-
-  diameter->SetTextAbsAngle(txtAngle);
-
-  aContext->Display( aIO10, Standard_True );
-
-  return 0;
-}
-
-#include <gp_Lin2d.hxx>
-static Standard_Integer OCC672_ShortLength (Draw_Interpretor& di, Standard_Integer n,const char ** argv)
-{
-  if (n != 17) {
-    di << " wrong parameters !\n";
-    di << "must be : OCC672_ShortLength x1 y1 x2 y2 str scale_text length_dist angle_arrow length_arrow x3 y3 x4 y4 TxtAngle TxtPosH TxtPosV\n";
-    return 1;
-  }
-
-  Standard_Real x1=atof(argv[1]);
-  Standard_Real y1=atof(argv[2]);
-  Standard_Real x2=atof(argv[3]);
-  Standard_Real y2=atof(argv[4]);
-  Standard_Real x3=atof(argv[10]);
-  Standard_Real y3=atof(argv[11]);
-  Standard_Real x4=atof(argv[12]);
-  Standard_Real y4=atof(argv[13]);
-  Standard_Real txtAngle=atof(argv[14]);
-  Standard_Real txtPosH=atof(argv[15]);
-  Standard_Real txtPosV=atof(argv[16]);
-
-
-  di<<"Begin!\n";
-  Handle(AIS2D_InteractiveContext) aContext = Viewer2dTest::GetAIS2DContext();
-  di<<"Check InteractiveContext\n";
-
-  if(aContext.IsNull()) {
-    di << "use 'v2dinit' command before " << argv[0] << "\n";
-    return 1;
-  }
-
-  di<<"CloseLocalContext\n";
-  aContext->CloseLocalContext();
-
-  di<<"OpenLocalContext\n";
-  aContext->OpenLocalContext();
-
-  Handle(AIS2D_InteractiveObject) aIO10 = new AIS2D_InteractiveObject();
-  Handle(Graphic2d_Segment) theSegmA, theSegmB, theSegmC, theSegmD;
-  theSegmB = new Graphic2d_Segment( aIO10, x2, y2, x3, y3 );
-  theSegmD = new Graphic2d_Segment( aIO10, x4, y4, x1, y1 );
-
-  aContext->Display( aIO10, Standard_True ); 
-
-  gp_Pnt2d p3(x3,y3),p2(x2,y2),p1(x1,y1);
-  gp_Vec2d theVec(p3,p2);
-  gp_Dir2d theDir(theVec);
-  gp_Lin2d theLin1(p1,theDir);
-  gp_Lin2d theLin2(p3,theDir);
-
-  Handle(Prs2d_Length) length = new Prs2d_Length(aIO10, p1, theLin2, argv[5],
-    atof(argv[6]), 5.0, 20.0, 5.,
-    Prs2d_TOA_CLOSED,Prs2d_AS_BOTHAR,
-    Standard_True);
-
-
-  Handle(Prs2d_AspectLine) theAspect = new Prs2d_AspectLine(Quantity_NOC_WHITE,
-    Aspect_TOL_SOLID, Aspect_WOL_THIN);
-  length->SetTextRelPos(txtPosH,txtPosV);
-  length->SetTextRelAngle(txtAngle);
-
-  aIO10->SetAspect( theAspect,  length);
-  aContext->Display( aIO10, Standard_True );
-
-  return 0;
-}
-
 #include <TopoDS_Solid.hxx>
 #include <BRepFeat_MakeDPrism.hxx>
 //=======================================================================
@@ -1841,9 +1445,9 @@ static Standard_Integer OCCN1 (Draw_Interpretor& di, Standard_Integer argc, cons
     di << "use 'vinit' command before " << argv[0] << "\n";
     return 1;
   }
-  Standard_Real    angle  = atof(argv[1]);
-  Standard_Integer fuse   = atoi(argv[2]);
-  Standard_Real    length = atof(argv[3]);
+  Standard_Real    angle  = Draw::Atof(argv[1]);
+  Standard_Integer fuse   = Draw::Atoi(argv[2]);
+  Standard_Real    length = Draw::Atof(argv[3]);
 
   BRepBuilderAPI_MakeEdge edge1(gp_Pnt(0, 0, 0), gp_Pnt(50, 0, 0));
   BRepBuilderAPI_MakeEdge edge2(gp_Pnt(50, 0, 0), gp_Pnt(50, 50, 0));
@@ -1897,7 +1501,7 @@ static Standard_Integer OCCN2 (Draw_Interpretor& di, Standard_Integer argc, cons
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 2) {
-    Standard_Integer IsB = atoi(argv[1]);
+    Standard_Integer IsB = Draw::Atoi(argv[1]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def04)
@@ -1963,7 +1567,7 @@ static Standard_Integer OCC2569 (Draw_Interpretor& di, Standard_Integer argc, co
     return 1;
   }
 
-  int poles=atoi(argv[1]); 
+  int poles=Draw::Atoi(argv[1]); 
 
   TColgp_Array1OfPnt arr(1, poles); 
   for(int i=1; i<=poles; i++) 
@@ -2173,86 +1777,8 @@ static Standard_Integer OCC1642 (Draw_Interpretor& di, Standard_Integer argc, co
   return 0;
 }
 
-Standard_Integer OCC17480(Draw_Interpretor& di,   Standard_Integer n,   const char ** a)
-{
-  if ( n < 2 ) {
-    cout << "Usage: OCC17480 basic_shape <mode[0:1]>" <<endl;
-    return 0;    
-  }
-
-  TopoDS_Shape brep_pipe =  DBRep::Get(a[1]);
-
-  Standard_Boolean mode = Standard_False;
-  if(n == 3 && atoi(a[2]) == 1)
-    mode = Standard_True;
-
-  Handle_AIS_Shape ais_pipe = new AIS_Shape( brep_pipe );
-  Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
-  Handle(AIS2D_InteractiveContext) aContext_2d = Viewer2dTest::GetAIS2DContext();
-
-  if(!aContext.IsNull())
-    aContext->Display(ais_pipe);      
-
-  if(!aContext_2d.IsNull())
-    aContext_2d->EraseAll(Standard_True);
-
-  gp_Ax3 ax3(gp_Pnt(0, 0, 0), gp_Dir(0, 0, 1), gp_Dir(0, 1, 0));
-  gp_Pln plane(ax3);
-  gp_Ax2 ax2 = ax3.Ax2();
-
-  HLRAlgo_Projector aProjector = HLRAlgo_Projector(ax2);
-  Handle_AIS2D_ProjShape myDisplayableShape = 
-    new AIS2D_ProjShape(aProjector, 0, mode, Standard_True);
-
-  myDisplayableShape->Add( brep_pipe );
-
-  di << "\n Total number of primitives : " << myDisplayableShape->Length();
-
-  Handle(Graphic2d_Line) mySectProjLines = myDisplayableShape->GetPrimitives();
-  Handle(Graphic2d_Line) mySectProjLinesHLR = myDisplayableShape->GetHLPrimitives();
-
-  Handle_Standard_Type sty = mySectProjLines->DynamicType();
-  Handle_Standard_Type sty1 = mySectProjLinesHLR->DynamicType();
-
-  di << "\n Class Name = " << (char*)sty->Name();
-  di << "\n HLR Class Name = " << (char*)sty1->Name();
-  di << "\n mySectProjLines.IsNull = " << (Standard_Integer) mySectProjLines.IsNull();
-  di << "\n mySectProjLinesHLR.IsNull = " << (Standard_Integer) mySectProjLinesHLR.IsNull();
-
-  Handle(GGraphic2d_SetOfCurves) setCurves;
-  Handle(Graphic2d_SetOfSegments) setSegments;
-
-  if(mySectProjLines->IsKind(STANDARD_TYPE(GGraphic2d_SetOfCurves)))
-  {
-    setCurves = Handle(GGraphic2d_SetOfCurves)::DownCast(mySectProjLines);
-    di << "\n Number of Curves in set = " << setCurves->Length();
-  }
-  if(mySectProjLines->IsKind(STANDARD_TYPE(Graphic2d_SetOfSegments)))    
-  {
-    setSegments = Handle(Graphic2d_SetOfSegments)::DownCast(mySectProjLines);
-    di << "\n Number of Curves in set = " << setSegments->Length();
-  }
-
-  Handle(GGraphic2d_SetOfCurves) setCurvesHLR;
-  Handle(Graphic2d_SetOfSegments) setSegmentsHLR;
-
-  if(mySectProjLinesHLR->IsKind(STANDARD_TYPE(GGraphic2d_SetOfCurves)))
-  {
-    setCurvesHLR = Handle(GGraphic2d_SetOfCurves)::DownCast(mySectProjLinesHLR);
-    di << "\n HLR Number of Curves in set = " << setCurvesHLR->Length();
-  }
-  if(mySectProjLinesHLR->IsKind(STANDARD_TYPE(Graphic2d_SetOfSegments)))
-  {
-    setSegmentsHLR = Handle(Graphic2d_SetOfSegments)::DownCast(mySectProjLinesHLR);
-    di << "\n HLR Number of Curves in set = " << setSegmentsHLR->Length();
-  }
-
-  aContext_2d->Display( myDisplayableShape,Standard_True );
-  return 0;
-}
-
 void QABugs::Commands_17(Draw_Interpretor& theCommands) {
-  char *group = "QABugs";
+  const char *group = "QABugs";
 
   theCommands.Add ("BUC60842", "BUC60842", __FILE__, BUC60842, group);
   theCommands.Add ("BUC60843", "BUC60843 result_shape name_of_circle name_of_curve [ par1 [ tol ] ]", __FILE__, BUC60843, group);
@@ -2266,8 +1792,6 @@ void QABugs::Commands_17(Draw_Interpretor& theCommands) {
   theCommands.Add ("OCC232", "OCC232", __FILE__, OCC232 , group);
   theCommands.Add ("OCC138LC", "OCC138LC", __FILE__, OCC138LC, group);
   theCommands.Add ("OCC189", "OCC189", __FILE__, OCC189, group);
-  theCommands.Add ("OCC389", "OCC389 name shape1 [shape2] ...", __FILE__, OCC389, group);
-
   theCommands.Add ("OCC566", "OCC566 shape [ xmin ymin zmin xmax ymax zmax] ; print bounding box", __FILE__, OCC566, group);
   theCommands.Add ("OCC570", "OCC570 result", __FILE__, OCC570, group);
 
@@ -2294,19 +1818,12 @@ void QABugs::Commands_17(Draw_Interpretor& theCommands) {
   theCommands.Add ("OCC1174_1", "OCC1174_1 shape", __FILE__, OCC1174_1, group);
   theCommands.Add ("OCC1174_2", "OCC1174_2 shape", __FILE__, OCC1174_2, group);
 
-  theCommands.Add("OCC672_Length"," OCC672_Length x1 y1 x2 y2 str scale_text length_dist angle_arrow length_arrow x3 y3 x4 y4 textAngle textPosH textPosV",__FILE__,OCC672_Length,group);
-  theCommands.Add("OCC672_Angle","OCC672_Angle x1 y1 x2 y2 x3 y3 aRadius aText aTxtScale anArrAngle anArrLength txtAngle txtPosH txtPosV",__FILE__,OCC672_Angle,group);
-  theCommands.Add("OCC672_Diameter","OCC672_Diameter x1 y1 cx cy radius aText aTxtScale anArrAngle anArrLength txtAngle txtPosH txtPosV",__FILE__,OCC672_Diameter,group);
-  theCommands.Add("OCC672_ShortLength","",__FILE__,OCC672_ShortLength,group);
-
   theCommands.Add ("OCCN1", "OCCN1 angle fuse(1 for boss / 0 for slot) length", __FILE__, OCCN1, group);
   theCommands.Add ("OCCN2", "OCCN2", __FILE__, OCCN2, group);
 
   theCommands.Add ("OCC2569", "OCC2569 nbpoles result", __FILE__, OCC2569, group);
 
   theCommands.Add ("OCC1642", "OCC1642 FinalWare FinalFace InitWare InitFace shape FixReorder FixDegenerated FixConnected FixSelfIntersection", __FILE__, OCC1642, group);
-
-  theCommands.Add ("OCC17480", "OCC17480 Shape", __FILE__, OCC17480, group);
 
   return;
 }

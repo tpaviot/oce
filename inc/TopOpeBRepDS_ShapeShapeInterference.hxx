@@ -51,6 +51,20 @@ public:
 //! create a ShapeShapeInterference describing <br>
 //! vertex V of edge E found on face F : <br>
 //! ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V <br>
+//! <br>
+//! <GBound> indicates if shape <G> is a bound of shape <S>. <br>
+//! <br>
+//! <SCC> : <br>
+//! UNSH_GEOMETRY : <br>
+//! 	 <S> and <Ancestor> have any types, <br>
+//! 	 <S> and <Ancestor> don't share the same geometry <br>
+//! SAME_ORIENTED : <br>
+//! 	 <S> and <Ancestor> have identical types, <br>
+//! 	 <S> and <Ancestor> orientations are IDENTICAL. <br>
+//! DIFF_ORIENTED : <br>
+//! 	 <S> and <Ancestor> have identical types, <br>
+//! 	 <S> and <Ancestor> orientations are DIFFERENT. <br>
+//! <br>
   Standard_EXPORT   TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition& T,const TopOpeBRepDS_Kind ST,const Standard_Integer S,const TopOpeBRepDS_Kind GT,const Standard_Integer G,const Standard_Boolean GBound,const TopOpeBRepDS_Config C);
   
   Standard_EXPORT     TopOpeBRepDS_Config Config() const;

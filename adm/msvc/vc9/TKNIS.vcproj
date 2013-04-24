@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKNIS"
-	ProjectGUID="{A5166226-0D36-16E4-06D5-304EC082519C}"
+	ProjectGUID="{3110A843-103B-0515-099C-211F18808837}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\NIS;..\..\..\src\NIS;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\NIS;..\..\..\src\NIS;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\NIS;..\..\..\src\NIS;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\NIS;..\..\..\src\NIS;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"

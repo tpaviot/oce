@@ -300,6 +300,7 @@ public:
 //!  continuously differentiable. <br>
   Standard_EXPORT     GeomAbs_Shape Continuity() const;
   //! Computation of value and derivatives <br>
+//! <br>
   Standard_EXPORT     Standard_Integer Degree() const;
   
   Standard_EXPORT     Standard_Real Value(const Standard_Real U) const;
@@ -323,6 +324,7 @@ public:
 //!  (FromK1), Knot (ToK2)  the evaluations are the  same as if  we <br>
 //!  consider  the whole  definition of the  curve.   Of course the <br>
 //!  evaluations are different outside this parametric domain. <br>
+//! <br>
   Standard_EXPORT     Standard_Real DN(const Standard_Real U,const Standard_Integer N) const;
   
   Standard_EXPORT     Standard_Real LocalValue(const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2) const;

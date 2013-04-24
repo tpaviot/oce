@@ -52,6 +52,28 @@ class TopoDS_Shape;
 //!    the support surface has to satisfy <br>
 //!  * an initial surface to deform for satisfying the constraints <br>
 //!  * a set of parameters to control the constraints. <br>
+//! <br>
+//!  The support surface of the face is computed by deformation <br>
+//!  of the initial surface in order to satisfy the given constraints. <br>
+//!  The set of bounding edges defines the wire of the face. <br>
+//! <br>
+//!  If no initial surface is given, the algorithm computes it <br>
+//!  automatically. <br>
+//!  If the set of edges is not connected (Free constraint) <br>
+//!  missing edges are automatically computed. <br>
+//! <br>
+//!  Limitations: <br>
+//!  * If some constraints are not compatible <br>
+//!    The algorithm does not take them into account. <br>
+//!    So the constraints will not be satisfyed in an area containing <br>
+//!    the incompatibilitries. <br>
+//!  * The constraints defining the bound of the face have to be <br>
+//!    entered in order to have a continuous wire. <br>
+//! <br>
+//!  Other Applications: <br>
+//!  * Deformation of a face to satisfy internal constraints <br>
+//!  * Deformation of a face to improve Gi continuity with <br>
+//!    connected faces <br>
 class BRepOffsetAPI_MakeFilling  : public BRepBuilderAPI_MakeShape {
 public:
 

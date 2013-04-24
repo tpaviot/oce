@@ -19,9 +19,6 @@
 #ifndef _FSD_FStream_HeaderFile
 #include <FSD_FStream.hxx>
 #endif
-#ifndef _OSD_Real2String_HeaderFile
-#include <OSD_Real2String.hxx>
-#endif
 #ifndef _Storage_BaseDriver_HeaderFile
 #include <Storage_BaseDriver.hxx>
 #endif
@@ -311,7 +308,6 @@ private:
 
 
 FSD_FStream myStream;
-OSD_Real2String myRealConv;
 
 
 };

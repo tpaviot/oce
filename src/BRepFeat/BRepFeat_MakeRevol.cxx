@@ -25,7 +25,6 @@
 #include <BRepFeat.hxx>
 #include <LocOpe.hxx>
 #include <LocOpe_Revol.hxx>
-#include <LocOpe_Builder.hxx>
 #include <LocOpe_Gluer.hxx>
 #include <LocOpe_FindEdges.hxx>
 #include <LocOpe_SequenceOfCirc.hxx>
@@ -81,7 +80,7 @@
 #include <ElCLib.hxx>
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEAT();
+extern Standard_Boolean BRepFeat_GettraceFEAT();
 #endif
 
 static void MajMap(const TopoDS_Shape&, // base

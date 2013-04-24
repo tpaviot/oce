@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{32A2F516-0C10-12E5-17B6-76F91FDD7570}</ProjectGuid>
+    <ProjectGuid>{DC3610F6-0913-13A3-062F-0E6027CAB810}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepBasic;..\..\..\src\StepBasic;..\..\..\drv\RWStepBasic;..\..\..\src\RWStepBasic;..\..\..\drv\StepRepr;..\..\..\src\StepRepr;..\..\..\drv\RWStepRepr;..\..\..\src\RWStepRepr;..\..\..\drv\StepGeom;..\..\..\src\StepGeom;..\..\..\drv\RWStepGeom;..\..\..\src\RWStepGeom;..\..\..\drv\StepShape;..\..\..\src\StepShape;..\..\..\drv\RWStepShape;..\..\..\src\RWStepShape;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepBasic_DLL;__RWStepBasic_DLL;__StepRepr_DLL;__RWStepRepr_DLL;__StepGeom_DLL;__RWStepGeom_DLL;__StepShape_DLL;__RWStepShape_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepBasic;..\..\..\src\StepBasic;..\..\..\drv\RWStepBasic;..\..\..\src\RWStepBasic;..\..\..\drv\StepRepr;..\..\..\src\StepRepr;..\..\..\drv\RWStepRepr;..\..\..\src\RWStepRepr;..\..\..\drv\StepGeom;..\..\..\src\StepGeom;..\..\..\drv\RWStepGeom;..\..\..\src\RWStepGeom;..\..\..\drv\StepShape;..\..\..\src\StepShape;..\..\..\drv\RWStepShape;..\..\..\src\RWStepShape;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepBasic_DLL;__RWStepBasic_DLL;__StepRepr_DLL;__RWStepRepr_DLL;__StepGeom_DLL;__RWStepGeom_DLL;__StepShape_DLL;__RWStepShape_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepBasic;..\..\..\src\StepBasic;..\..\..\drv\RWStepBasic;..\..\..\src\RWStepBasic;..\..\..\drv\StepRepr;..\..\..\src\StepRepr;..\..\..\drv\RWStepRepr;..\..\..\src\RWStepRepr;..\..\..\drv\StepGeom;..\..\..\src\StepGeom;..\..\..\drv\RWStepGeom;..\..\..\src\RWStepGeom;..\..\..\drv\StepShape;..\..\..\src\StepShape;..\..\..\drv\RWStepShape;..\..\..\src\RWStepShape;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepBasic_DLL;__RWStepBasic_DLL;__StepRepr_DLL;__RWStepRepr_DLL;__StepGeom_DLL;__RWStepGeom_DLL;__StepShape_DLL;__RWStepShape_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepBasic;..\..\..\src\StepBasic;..\..\..\drv\RWStepBasic;..\..\..\src\RWStepBasic;..\..\..\drv\StepRepr;..\..\..\src\StepRepr;..\..\..\drv\RWStepRepr;..\..\..\src\RWStepRepr;..\..\..\drv\StepGeom;..\..\..\src\StepGeom;..\..\..\drv\RWStepGeom;..\..\..\src\RWStepGeom;..\..\..\drv\StepShape;..\..\..\src\StepShape;..\..\..\drv\RWStepShape;..\..\..\src\RWStepShape;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepBasic_DLL;__RWStepBasic_DLL;__StepRepr_DLL;__RWStepRepr_DLL;__StepGeom_DLL;__RWStepGeom_DLL;__StepShape_DLL;__RWStepShape_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ECC493E5-0E5B-0B66-0420-A6B6EA32C115}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\obj\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\objd\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\obj\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\objd\TKV3d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bin\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\obj\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bin\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc11\bin\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\lib\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bind\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\objd\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bind\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc11\bind\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\libd\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bin\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\obj\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bin\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc11\bin\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\lib\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bind\TKV3d.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKV3d/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\objd\TKV3d/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKV3d/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bind\TKV3d.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc11\bind\TKV3d.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\libd\TKV3d.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\V3d\V3d_BadValue_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\V3d\V3d_UnMapped_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_AmbientLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_CircularGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ColorScale.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ColorScaleLayerItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_DirectionalLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_LayerMgr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Light.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_ListOfTransient.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_OrthographicView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PerspectiveView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_PositionalLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_RectangularGrid.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_SpotLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_5.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_View_Print.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\V3d\V3d_Viewer_4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVector_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertex_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertex_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_AspectTextDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_CycleError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_GroupDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSequenceOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_HSetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_InitialisationError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfPArray_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfListOfShortReal_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListIteratorOfSetListOfSetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfPArray_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfListOfShortReal_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListNodeOfSetListOfSetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfPArray_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_ListOfShortReal_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapIteratorOfMapOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MapOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_MaterialDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PickIdDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PlotterDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_PriorityDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfAddress_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceNodeOfSequenceOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfAddress_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SequenceOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetIteratorOfSetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetListOfSetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_SetOfGroup_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StdMapNodeOfMapOfStructure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_StructureDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_TransformError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolygons.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolylines.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPrimitives.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangleStrips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfQuadrangles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfSegments.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleFans.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangleStrips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfTriangles.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectFillArea3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectLine3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectMarker3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_AspectText3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields16.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields20.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields4.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBitFields8.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CBounds.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGraduatedTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CStructure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTexture.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CTransPersStruct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CUserDraw.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDriver.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_10.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_13.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_MaterialAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Plotter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Strips.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Structure.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_StructureManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dmanual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture1Dsegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2D.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dmanual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Texture2Dplane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureEnv.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureMap.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureParams.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ClipDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ContextPickDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_DepthCueingDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSequenceOfPickPath_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_HSetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LayerDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_LightDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListIteratorOfSetListOfSetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ListNodeOfSetListOfSetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_PickError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceNodeOfSequenceOfPickPath_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SequenceOfPickPath_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetIteratorOfSetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetListOfSetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfClipPlane_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfLight_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_SetOfView_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransformError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_TransientDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewManagerDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewMappingDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ViewOrientationDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ZClippingDefinitionError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ClipPlane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ContextPick.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ContextView.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_Layer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_LayerItem.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_Light.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickDescriptor.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_PickPath.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_TransientManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewMapping.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_ViewOrientation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Visual3d\Visual3d_View_Print.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitiveTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListIteratorOfListOfSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitiveTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListNodeOfListOfSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitiveTriangle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_ListOfSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SensitiveEntitySequence_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Select3D\Select3D_SequenceNodeOfSensitiveEntitySequence_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_Projector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveBox.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCircle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveEntity.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitivePoly.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveSegment.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveTriangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Select3D\Select3D_SensitiveWire.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Prs3d\Prs3d_InvalidAngle_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_AngleAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_AnglePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Arrow.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ArrowAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_BasicAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_CompositeAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_DatumAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Drawer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_IsoAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LengthAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LengthPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_LineAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PlaneAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PlaneSet.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_PointAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Presentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Projector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_RadiusAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Root.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShadingAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_ShapeTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_Text.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Prs3d\Prs3d_TextAspect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_HLRShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_Point_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_Vertex_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFDeflectionShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFRestrictedFace_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdPrs\StdPrs_WFShape_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Curve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_DeflectionCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRPolyShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_HLRToolShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_PoleCurve.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ShadedSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolPoint.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolRFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolShadedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_ToolVertex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionRestrictedFace.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFDeflectionSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFPoleSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdPrs\StdPrs_WFSurface.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapNodeOfDataMapOfSelectionActivation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfIntegerSensitive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfObjectSelectors_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_DataMapOfSelectionActivation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedDataMapOfOwnerCriterion_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_IndexedMapOfOwner_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListIteratorOfListOfFilter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListNodeOfListOfFilter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_ListOfFilter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfFilter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfOwner_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelection_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceNodeOfSequenceOfSelector_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfFilter_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfOwner_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelection_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectMgr\SelectMgr_SequenceOfSelector_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_AndFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_CompositionFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_EntityOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Filter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_OrFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectableObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_Selection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SelectionManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_SortCriterion.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectMgr\SelectMgr_ViewerSelector.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PrsMgr\PrsMgr_Presentations_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\PrsMgr\PrsMgr_SequenceNodeOfPresentations_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_ModedPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentableObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Prs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfILC_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfIOStatus_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapOfSelStat_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfILC_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfIOStatus_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapOfSelStat_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfILC_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfIOStatus_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapOfSelStat_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_DataMapofIntegerListOfinteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_IndexedDataMapOfOwnerPrs_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListIteratorOfListOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListNodeOfListOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_ListOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_MapIteratorOfMapOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_MapOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceNodeOfSequenceOfDimension_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceNodeOfSequenceOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceOfDimension_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_SequenceOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\AIS\AIS_StdMapNodeOfMapOfInteractive_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AngleDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_AttributeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Axis.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_BadEdgeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_C0RegularityFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf2dDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Chamf3dDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Circle.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConcentricRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedInteractive.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ConnectedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DiameterDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_DimensionOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Drawer.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EllipseRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualDistanceRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_EqualRadiusRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ExclusionFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_FixRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GlobalStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_GraphicTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_IdenticRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_2.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveContext_3.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_InteractiveObject.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LengthDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Line.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalContext_1.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_LocalStatus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MaxRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MidPointRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MinRadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedInteractive.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_MultipleConnectedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_OffsetDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_ParallelRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PerpendicularRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Plane.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_PlaneTrihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Point.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_RadiusDimension.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Relation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Selection.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Shape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SignatureFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_SymmetricRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TangentRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TexturedShape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Triangulation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_Trihedron.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AIS\AIS_TypeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\DsgPrs\DsgPrs_DatumPrs_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_AnglePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_Chamf2dPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ConcentricPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DatumTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_DiameterPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EllipseRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualDistancePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_EqualRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FilletRadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_FixPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_IdenticPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_LengthPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_MidPointPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_OffsetPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ParalPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_PerpenPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_RadiusPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShadedPlanePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_ShapeDirPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymbPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_SymmetricPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_TangentPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZAxisPresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DsgPrs\DsgPrs_XYZPlanePresentation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSelect\StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\StdSelect\StdSelect_IndexedDataMapOfOwnerPrs_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepHilighter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepOwner.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_BRepSelectionTool.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_EdgeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_FaceFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Prs.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Shape.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ShapeTypeFilter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector3d.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKV3d.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

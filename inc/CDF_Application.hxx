@@ -96,6 +96,15 @@ public:
 //!           the OS, {aFolder} is a directory and {aName} is the name of a <br>
 //!           file. In this case the use of the syntax with {aVersion} <br>
 //!           has no sense. For example: <br>
+//! <br>
+//! Handle(CDM_Document) theDocument=myApplication->Retrieve("/home/cascade","box.dsg"); <br>
+//!              If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} <br>
+//!              have the form they have in EUCLID/Design Manager. For example: <br>
+//! <br>
+//! Handle(CDM_Document) theDocument=myApplication->Retrieve("|user|cascade","box"); <br>
+//! <br>
+//! Since  the version is not specified in  this syntax, the  latest wil be used. <br>
+//!  A link is kept with the database through an instance of CDM_MetaData <br>
   Standard_EXPORT     Handle_CDM_Document Retrieve(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const Standard_Boolean UseStorageConfiguration = Standard_True) ;
   //!  This method retrieves  a  document from the database. <br>
 //!          If the  Document references other documents which have <br>

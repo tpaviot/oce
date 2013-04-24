@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_VerticalTextAlignment_HeaderFile
 #define _Graphic3d_VerticalTextAlignment_HeaderFile
 
-//! Defines the horizontal position of the text <br>
+//! Defines the vertical position of the text <br>
 //!      relative to its anchor. <br>
 enum Graphic3d_VerticalTextAlignment {
 Graphic3d_VTA_BOTTOM,

@@ -37,6 +37,9 @@ public:
   //! Creates (physically) a directory. <br>
 //!          When a directory of the same name already exists, no error is <br>
 //!          returned, and only <Protect> is applied to the existing directory. <br>
+//! <br>
+//!          If Build is used and <me> is instantiated without a name, <br>
+//!          OSDError is raised. <br>
   Standard_EXPORT     void Build(const OSD_Protection& Protect) ;
   //! Creates a temporary Directory in current directory. <br>
 //!          This directory is automatically removed when object dies. <br>

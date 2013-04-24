@@ -23,13 +23,6 @@
 #define BUC60577        //GG_101099     Enable to compute correctly
 //                      transparency with more than one object in the view.
 
-#define GER61351        //GG_171199     Enable to set an object RGB color
-//                              instead a restricted object NameOfColor. 
-
-#define G003            //EUG_26/01/00 Degenerate support (G003)
-
-#define IMP140200       //GG Add SetSelectedAspect() method.
-
 #define BUC60632        //GG 15/03/00 Add protection on SetDisplayMode()
 //                      method, compute only authorized presentation.
 
@@ -1914,15 +1907,13 @@ UnsetDisplayMode(const Handle(AIS_InteractiveObject)& anIObj,
 //purpose  : 
 //=======================================================================
 
-#ifdef GER61351
 void AIS_InteractiveContext::SetCurrentFacingModel(
                         const Handle(AIS_InteractiveObject)& anIObj,
-                        const Aspect_TypeOfFacingModel aModel) { 
- if (  !anIObj.IsNull ()  ) {
-   anIObj->SetCurrentFacingModel(aModel);
- }
+                        const Aspect_TypeOfFacingModel aModel)
+{
+  if (  !anIObj.IsNull ()  )
+    anIObj->SetCurrentFacingModel(aModel);
 }
-#endif
 
 //=======================================================================
 //function : SetColor
@@ -1932,7 +1923,6 @@ void AIS_InteractiveContext::SetCurrentFacingModel(
 void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIObj, 
                                      const Quantity_NameOfColor aColor,
                                      const Standard_Boolean updateviewer)
-#ifdef GER61351
 {
   SetColor(anIObj,Quantity_Color(aColor),updateviewer);
 }
@@ -1940,7 +1930,6 @@ void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIOb
 void AIS_InteractiveContext::SetColor(const Handle(AIS_InteractiveObject)& anIObj, 
                                      const Quantity_Color &aColor,
                                      const Standard_Boolean updateviewer)
-#endif
 {
   if(anIObj.IsNull()) return ;
  
@@ -2292,13 +2281,11 @@ Quantity_NameOfColor AIS_InteractiveContext::Color(const Handle(AIS_InteractiveO
   return anIObj->Color();
 }
 
-#ifdef GER61351
 void AIS_InteractiveContext::Color(const Handle(AIS_InteractiveObject)& anIObj,
-                                             Quantity_Color &aColor) const 
+                                   Quantity_Color &aColor) const
 {
   anIObj->Color(aColor);
 }
-#endif
 
 //=======================================================================
 //function : Width
@@ -2503,53 +2490,14 @@ void AIS_InteractiveContext::UnsetTransparency(const Handle(AIS_InteractiveObjec
 }
 
 //=======================================================================
-//function : SetDegenerateModel
-//purpose  : 
-//=======================================================================
-
-#ifdef G003
-void AIS_InteractiveContext :: SetDegenerateModel (
-                          const Handle( AIS_InteractiveObject )& anObject,
-                          const Aspect_TypeOfDegenerateModel   aModel,
-                          const Quantity_Ratio                 aRatio
-                               ) {
- if (  !anObject.IsNull ()  ) {
-  if (  !anObject -> HasInteractiveContext ()  ) 
-                                anObject -> SetContext ( this );
-  anObject->SetDegenerateModel(aModel,aRatio);
-
- }  // end if
-}  // end AIS_InteractiveContext :: SetDegenerateModel
-
-void AIS_InteractiveContext :: SetDegenerateModel (
-                           const Aspect_TypeOfDegenerateModel aModel,
-                           const Quantity_Ratio            aRatio
-                               ) {
-
- AIS_DataMapIteratorOfDataMapOfIOStatus it ( myObjects );
-
- while (  it.More ()  ) {
-
-  Handle( AIS_InteractiveObject ) obj = it.Key ();
-
-  obj->SetDegenerateModel(aModel,aRatio);
-
-  it.Next ();
-
- }  // end while
-
-}  // end AIS_InteractiveContext :: SetDegenerateModel
-#endif
-
-#ifdef IMP140200
-//=======================================================================
 //function : SetSelectedAspect
 //purpose  : 
 //=======================================================================
 void AIS_InteractiveContext::SetSelectedAspect(
                                 const Handle(Prs3d_BasicAspect)& anAspect,
                                 const Standard_Boolean globalChange,
-                                const Standard_Boolean updateViewer) {
+                                const Standard_Boolean updateViewer)
+{
   if( !HasOpenedContext() ) {
     Standard_Boolean found = Standard_False;
     Handle(AIS_Selection) sel = 
@@ -2563,11 +2511,10 @@ void AIS_InteractiveContext::SetSelectedAspect(
     if( found && updateViewer) {
       myMainVwr->Update();
       if( !(myIsCollClosed && myCollectorVwr.IsNull()) ) 
-                                        myCollectorVwr->Update();
+        myCollectorVwr->Update();
     }
   }
 }
-#endif
 
 //=======================================================================
 //function : SetLocalAttributes

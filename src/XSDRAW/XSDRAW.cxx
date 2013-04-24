@@ -39,6 +39,8 @@
 
 #include <Message.hxx>
 #include <Message_Messenger.hxx>
+#include <Message_PrinterOStream.hxx>
+#include <Draw_Printer.hxx>
 
 static int deja = 0, dejald = 0;
 //unused variable 
@@ -109,6 +111,11 @@ void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
   //     performed not in IFSelect_SessionPilot but in standard Tcl interpretor
   XSDRAW::RemoveCommand("x");
   XSDRAW::RemoveCommand("exit");
+  const Handle(Message_Messenger) &sout = Message::DefaultMessenger();
+  if (!sout.IsNull()){
+    sout->RemovePrinters(STANDARD_TYPE(Message_PrinterOStream));
+    sout->AddPrinter(new Draw_Printer(theCommands));
+  }
 //  if (!getenv("WBHOSTTOP")) XSDRAW::RemoveCommand("xsnew");
   Handle(TColStd_HSequenceOfAsciiString) list =
     IFSelect_Activator::Commands(0);
@@ -123,7 +130,7 @@ void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
       if (theolds->HasItem(com.ToCString())) num = theolds->Item(com.ToCString());
     if (num == 0) continue;
     if (!IFSelect_Activator::Select(com.ToCString(),nact,act))
-      sprintf (help,"type :  xhelp %s for help",com.ToCString());
+      Sprintf (help,"type :  xhelp %s for help",com.ToCString());
     else if (!act.IsNull()) strcpy(help,act->Help(nact));
     if (num < 0) theCommands.Add (com.ToCString(),help,XSTEPDRAWRUN,act->Group());
     else theCommands.Add (thenews->Value(num).ToCString(),help,XSTEPDRAWRUN,act->Group());
@@ -134,7 +141,7 @@ void XSDRAW::LoadDraw (Draw_Interpretor& theCommands)
     (const Standard_CString command, const Standard_CString varname)
 {
   char mess[100];
-  sprintf (mess,command,varname);
+  Sprintf (mess,command,varname);
 #ifdef DEB
   IFSelect_ReturnStatus stat = 
 #endif

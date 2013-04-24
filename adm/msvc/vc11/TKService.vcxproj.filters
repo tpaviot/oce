@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{877F101A-0963-034B-0641-5FCF752D340F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Aspect">
+      <UniqueIdentifier>{B4FABB2B-0C78-11E6-01E5-06F6FF41EE3C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\InterfaceGraphic">
+      <UniqueIdentifier>{7FBFF1A1-0858-098B-02B6-3A6F6667A6AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\SelectBasics">
+      <UniqueIdentifier>{F049A127-1553-144C-17D2-0719932025CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\AlienImage">
+      <UniqueIdentifier>{9278B343-0A9B-087B-02A3-577DA7FA9E34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Image">
+      <UniqueIdentifier>{A87EFDF2-16B1-17B1-06FE-951BDB580746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\WNT">
+      <UniqueIdentifier>{45A9C518-0549-0BA3-1580-726C0E143B93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\TColQuantity">
+      <UniqueIdentifier>{53457A2F-0160-08CF-0A9D-3266BFF79492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Font">
+      <UniqueIdentifier>{3B2A5C75-0D42-03F8-12E6-9F44864BC3FD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_Array1OfEdge_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_AspectFillAreaDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_AspectLineDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_AspectMarkerDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_BadAccess_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_ColorMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_DisplayConnectionDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_DriverDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_DriverError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_EdgeDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_FontMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_FontStyleDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_GraphicDeviceDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_IdentDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_LineStyleDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_LineWidthDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_MarkMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_MarkerStyleDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_PixmapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_PixmapError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_PolyStyleDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfColorMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfColor_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfFontMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfMarkMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfTypeMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceNodeOfSequenceOfWidthMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfColorMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfColor_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfFontMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfMarkMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfTypeMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_SequenceOfWidthMapEntry_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_TypeMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_UndefinedMap_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_WidthMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_WindowDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_WindowError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_AspectFillArea.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_AspectLine.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_AspectMarker.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Background.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_CLayer2d.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_CircularGrid.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorCubeColorMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorMapEntry.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorPixel.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorRampColorMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorScale.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_DisplayConnection.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Driver.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Edge.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_FStream.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_FontMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_FontMapEntry.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_FontStyle.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_GenId.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_GenericColorMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_GradientBackground.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Grid.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Handle.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_IFStream.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_IndexPixel.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_LineStyle.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_MarkMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_MarkMapEntry.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_MarkerStyle.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Pixel.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_RGBPixel.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_RectangularGrid.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_TypeMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_TypeMapEntry.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_WidthMap.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_WidthMapEntry.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_Window.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_WindowDriver.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\InterfaceGraphic\InterfaceGraphic_Palette.c">
+      <Filter>Source files\InterfaceGraphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\InterfaceGraphic\InterfaceGraphic_cPrintf.cxx">
+      <Filter>Source files\InterfaceGraphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfBox2d_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListIteratorOfListOfSensitive_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfBox2d_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListNodeOfListOfSensitive_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListOfBox2d_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_ListOfSensitive_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_SequenceNodeOfSequenceOfOwner_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\SelectBasics\SelectBasics_SequenceOfOwner_0.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_BasicTool.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_EntityOwner.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SensitiveEntity.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SortAlgo.cxx">
+      <Filter>Source files\SelectBasics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AidaAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AidaAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienImageData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_AlienUserImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_BMPHeader.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_EuclidAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_EuclidAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_GIFLZWDict.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_MemoryOperations.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SGIRGBFileHeader.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SUNRFFileHeader.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SunRFAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_SunRFAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XColor.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XWDAlienData.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_X11XWDFileHeader.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\AlienImage\AlienImage_XAlienImage.cxx">
+      <Filter>Source files\AlienImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_ColorPixelDataMap_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_ColorPixelMapHasher_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DColorImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DIndexedImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DataMapIteratorOfColorPixelDataMap_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DataMapIteratorOfLookupTable_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DataMapNodeOfColorPixelDataMap_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_DataMapNodeOfLookupTable_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_IndexPixelMapHasher_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_LookupTable_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_PixelFieldOfDColorImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_PixelFieldOfDIndexedImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_PixelRowOfDColorImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Image\Image_PixelRowOfDIndexedImage_0.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_AlienPixMap.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_AveragePixelInterpolation.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_BalancedPixelInterpolation.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_BilinearPixelInterpolation.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_ColorImage.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_Convertor.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_Diff.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_Image.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_PixMap.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_PixelAddress.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_PixelInterpolation.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_PlanarPixelInterpolation.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Image\Image_PseudoColorImage.cxx">
+      <Filter>Source files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\WNT\WNT_ClassDefinitionError_0.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\WNT\WNT_ColorTable_0.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\WNT\WNT_HColorTable_0.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\WNT\WNT_SequenceNodeOfSequenceOfImage_0.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\WNT\WNT_SequenceOfImage_0.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\EHDC.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\W32_Allocator.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\W95_Allocator.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Allocator.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_ColorRef.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Dword.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Image.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_LogFont.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Long.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Uint.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_WClass.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_Window.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\WNT\WNT_WindowData.cxx">
+      <Filter>Source files\WNT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_Array1OfLength_0.cxx">
+      <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_Array2OfLength_0.cxx">
+      <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray1OfLength_0.cxx">
+      <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
+      <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FTFont.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FTLibrary.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FontMgr.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_SystemFont.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKService.rc" />  </ItemGroup>
+</Project>

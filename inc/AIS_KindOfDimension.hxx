@@ -6,7 +6,8 @@
 #ifndef _AIS_KindOfDimension_HeaderFile
 #define _AIS_KindOfDimension_HeaderFile
 
-
+//! Declares the kinds of dimensions needed in the <br>
+//! display of Interactive Objects. <br>
 enum AIS_KindOfDimension {
 AIS_KOD_NONE,
 AIS_KOD_LENGTH,

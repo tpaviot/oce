@@ -61,6 +61,9 @@ class Geom2dAdaptor_Curve;
 //! -   defining the construction of 2D line(s), <br>
 //! -   implementing the construction algorithm, and <br>
 //! -   consulting the result(s). <br>
+//! <br>
+//! Note: Some constructors may check the type of the qualified argument <br>
+//!         and raise BadQualifier Error in case of incorrect couple (qualifier, curv). <br>
 class Geom2dGcc_Lin2d2Tan  {
 public:
 

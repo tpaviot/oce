@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBinXCAF"
-	ProjectGUID="{70060009-145A-0F89-01D2-2372BC419746}"
+	ProjectGUID="{60C88C30-07FD-07B7-0720-6C5B5EE29649}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinXCAFDrivers;..\..\..\src\BinXCAFDrivers;..\..\..\drv\BinMXCAFDoc;..\..\..\src\BinMXCAFDoc;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKBinXCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinXCAFDrivers;..\..\..\src\BinXCAFDrivers;..\..\..\drv\BinMXCAFDoc;..\..\..\src\BinMXCAFDoc;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKBinXCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinXCAFDrivers;..\..\..\src\BinXCAFDrivers;..\..\..\drv\BinMXCAFDoc;..\..\..\src\BinMXCAFDoc;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKBinXCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinXCAFDrivers;..\..\..\src\BinXCAFDrivers;..\..\..\drv\BinMXCAFDoc;..\..\..\src\BinMXCAFDoc;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKXCAF.lib TKMath.lib TKernel.lib TKBinL.lib TKG2d.lib TKCAF.lib TKCDF.lib TKG3d.lib TKLCAF.lib TKBin.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKBinXCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

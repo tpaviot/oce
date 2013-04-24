@@ -16,7 +16,8 @@ GeomFill_IsDarboux,
 GeomFill_IsGuideAC,
 GeomFill_IsGuidePlan,
 GeomFill_IsGuideACWithContact,
-GeomFill_IsGuidePlanWithContact
+GeomFill_IsGuidePlanWithContact,
+GeomFill_IsDiscreteTrihedron
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

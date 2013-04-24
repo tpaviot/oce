@@ -67,6 +67,20 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_GTrsf2d);
 //!    | a11  a12  a14 |   | x |      | x'| <br>
 //!    | a21  a22  a24 |   | y |      | y'| <br>
 //!    |  0    0    1  |   | 1 |      | 1 | <br>
+//! <br>
+//!    where {V1, V2} defines the vectorial part of the <br>
+//!    transformation and T defines the translation part of <br>
+//!    the transformation. <br>
+//! Warning <br>
+//! A GTrsf2d transformation is only applicable on <br>
+//! coordinates. Be careful if you apply such a <br>
+//! transformation to all the points of a geometric object, <br>
+//! as this can change the nature of the object and thus <br>
+//! render it incoherent! <br>
+//! Typically, a circle is transformed into an ellipse by an <br>
+//! affinity transformation. To avoid modifying the nature of <br>
+//! an object, use a gp_Trsf2d transformation instead, as <br>
+//! objects of this class respect the nature of geometric objects. <br>
 class gp_GTrsf2d  {
 
 public:
@@ -182,6 +196,9 @@ public:
 //!  <me> * <me> * .......* <me>, N time. <br>
 //!  if N = 0 <me> = Identity <br>
 //!  if N < 0 <me> = <me>.Inverse() *...........* <me>.Inverse(). <br>
+//! <br>
+//!  Raises an exception if N < 0 and if the matrix of the <br>
+//!  transformation is not inversible. <br>
         gp_GTrsf2d Powered(const Standard_Integer N) const;
   
         void Transforms(gp_XY& Coord) const;

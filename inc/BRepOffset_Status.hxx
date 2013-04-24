@@ -6,14 +6,7 @@
 #ifndef _BRepOffset_Status_HeaderFile
 #define _BRepOffset_Status_HeaderFile
 
-
-//! Lists the offset modes. These are the following: <br>
-//! - BRepOffset_Skin which describes the offset along <br>
-//!   the surface of a solid, used to obtain a manifold topological space, <br>
-//! - BRepOffset_Pipe which describes the offset of a <br>
-//!   curve, used to obtain a pre-surface, <br>
-//! - BRepOffset_RectoVerso which describes the offset <br>
-//!   of a given surface shell along both sides of the surface. <br>//! status of an offset face <br>
+//! status of an offset face <br>
 //!          Good : <br>
 //!          Reversed : e.g. Offset > Radius of a cylinder <br>
 //!          Degenerated : e.g. Offset = Radius of a cylinder <br>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKOffset" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKOffset" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKOffset" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/BRepOffsetAPI" />
+			<Add directory="../../../src/BRepOffsetAPI" />
+			<Add directory="../../../drv/Draft" />
+			<Add directory="../../../src/Draft" />
+			<Add directory="../../../drv/BRepOffset" />
+			<Add directory="../../../src/BRepOffset" />
+			<Add directory="../../../drv/BiTgte" />
+			<Add directory="../../../src/BiTgte" />
+		</Compiler>
+		<Linker>
+			<Add library="TKFillet" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKGeomBase" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKShHealing" />
+			<Add library="TKBO" />
+			<Add library="TKPrim" />
+			<Add library="TKBool" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/BRepOffsetAPI/BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_0.cxx" />
+		<Unit filename="../../../drv/BRepOffsetAPI/BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/BRepOffsetAPI/BRepOffsetAPI_SequenceOfSequenceOfReal_0.cxx" />
+		<Unit filename="../../../drv/BRepOffsetAPI/BRepOffsetAPI_SequenceOfSequenceOfShape_0.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_DraftAngle.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_FindContigousEdges.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeDraft.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeEvolved.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeFilling.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeOffset.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeOffsetShape.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakePipe.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakePipeShell.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MakeThickSolid.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_MiddlePath.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_NormalProjection.cxx" />
+		<Unit filename="../../../src/BRepOffsetAPI/BRepOffsetAPI_ThruSections.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapIteratorOfDataMapOfEdgeEdgeInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapIteratorOfDataMapOfFaceFaceInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapIteratorOfDataMapOfVertexVertexInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapNodeOfDataMapOfEdgeEdgeInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapNodeOfDataMapOfFaceFaceInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapNodeOfDataMapOfVertexVertexInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapOfEdgeEdgeInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapOfFaceFaceInfo_0.cxx" />
+		<Unit filename="../../../drv/Draft/Draft_DataMapOfVertexVertexInfo_0.cxx" />
+		<Unit filename="../../../src/Draft/Draft.cxx" />
+		<Unit filename="../../../src/Draft/Draft_EdgeInfo.cxx" />
+		<Unit filename="../../../src/Draft/Draft_FaceInfo.cxx" />
+		<Unit filename="../../../src/Draft/Draft_Modification.cxx" />
+		<Unit filename="../../../src/Draft/Draft_Modification_1.cxx" />
+		<Unit filename="../../../src/Draft/Draft_VertexInfo.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapIteratorOfDataMapOfShapeOffset_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapNodeOfDataMapOfShapeListOfInterval_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapNodeOfDataMapOfShapeOffset_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapOfShapeListOfInterval_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapOfShapeMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_DataMapOfShapeOffset_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_ListIteratorOfListOfInterval_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_ListNodeOfListOfInterval_0.cxx" />
+		<Unit filename="../../../drv/BRepOffset/BRepOffset_ListOfInterval_0.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Analyse.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Inter2d.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Inter3d.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Interval.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_MakeLoops.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_MakeOffset.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Offset.cxx" />
+		<Unit filename="../../../src/BRepOffset/BRepOffset_Tool.cxx" />
+		<Unit filename="../../../drv/BiTgte/BiTgte_DataMapIteratorOfDataMapOfShapeBox_0.cxx" />
+		<Unit filename="../../../drv/BiTgte/BiTgte_DataMapNodeOfDataMapOfShapeBox_0.cxx" />
+		<Unit filename="../../../drv/BiTgte/BiTgte_DataMapOfShapeBox_0.cxx" />
+		<Unit filename="../../../drv/BiTgte/BiTgte_HCurveOnEdge_0.cxx" />
+		<Unit filename="../../../drv/BiTgte/BiTgte_HCurveOnVertex_0.cxx" />
+		<Unit filename="../../../src/BiTgte/BiTgte_Blend.cxx" />
+		<Unit filename="../../../src/BiTgte/BiTgte_CurveOnEdge.cxx" />
+		<Unit filename="../../../src/BiTgte/BiTgte_CurveOnVertex.cxx" />
+	</Project>
+</CodeBlocks_project_file>

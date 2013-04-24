@@ -41,6 +41,8 @@ class Standard_OutOfRange;
 //! <br>
 //!            Two flags indicating if the edge is full visible <br>
 //!            or full hidden. <br>
+//! <br>
+//!            The Sequence  of visible Intervals  on the Edge. <br>
 class HLRAlgo_EdgeStatus  {
 public:
 

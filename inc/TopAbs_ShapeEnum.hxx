@@ -6,22 +6,7 @@
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #define _TopAbs_ShapeEnum_HeaderFile
 
-//! This package gives resources for Topology oriented <br>
-//!          applications such as : Topological Data Structure, <br>
-//!          Topological Algorithms. <br>
-//! <br>
-//!          It contains : <br>
-//! <br>
-//!            * The ShapeEnum   enumeration  to  describe  the <br>
-//!            differents topological shapes. <br>
-//! <br>
-//!            * The  Orientation  enumeration to  describe the <br>
-//!            orientation of a topological shape. <br>
-//! <br>
-//!            * The  State    enumeration  to  describes  the <br>
-//!            position of a point relative to a Shape. <br>
-//! <br>
-//!            * Methods to manage the enumerations. <br>//! Identifies various topological shapes. This <br>
+//! Identifies various topological shapes. This <br>
 //! enumeration allows you to use dynamic typing of shapes. <br>
 //! The values are listed in order of complexity, from the <br>
 //! most complex to the most simple i.e. <br>

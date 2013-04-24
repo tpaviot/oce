@@ -1,10 +1,10 @@
 srcdir = @srcdir@
 
-SUBDIRS = adm/make
+SUBDIRS = adm/lin/amk
 
-VPATH = @srcdir@ @top_srcdir@/make: @top_srcdir@/adm/make:
+VPATH = @srcdir@ @top_srcdir@/adm/lin/amk: @top_srcdir@/adm/lin/amk:
 
-FoundationClasses_PKGS = OS UnitsAPI
+FoundationClasses_PKGS = OS
 
 if ENABLE_FOC
   FoundationClasses_DIRS = $(FoundationClasses_PKGS)
@@ -13,7 +13,7 @@ else
 endif
 
 FoundationClasses:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) FoundationClasses
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) FoundationClasses
 
 ModelingData_PKGS =
 
@@ -24,7 +24,7 @@ else
 endif
 
 ModelingData:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) ModelingData
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) ModelingData
 
 ModelingAlgorithms_PKGS =
 
@@ -35,9 +35,9 @@ else
 endif
 
 ModelingAlgorithms:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) ModelingAlgorithms
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) ModelingAlgorithms
 
-Visualization_PKGS = FontMFT Textures
+Visualization_PKGS = Textures
 
 if ENABLE_VIS
   Visualization_DIRS = $(Visualization_PKGS)
@@ -46,7 +46,7 @@ else
 endif
 
 Visualization:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) Visualization
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) Visualization
 
 ApplicationFramework_PKGS = StdResource XmlOcafResource
 
@@ -57,7 +57,7 @@ else
 endif
 
 ApplicationFramework:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) ApplicationFramework
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) ApplicationFramework
 
 DataExchange_PKGS = XSMessage SHMessage XSTEPResource
 
@@ -68,7 +68,7 @@ else
 endif
 
 DataExchange:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) DataExchange
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) DataExchange
 
 Draw_PKGS = DrawResources
 
@@ -79,7 +79,7 @@ else
 endif
 
 Draw:
-	cd $(top_builddir)/adm/make && $(MAKE) $(AM_MAKEFLAGS) Draw
+	cd $(top_builddir)/adm/lin/amk && $(MAKE) $(AM_MAKEFLAGS) Draw
 
 install-exec-local:
 	$(INSTALL) -d $(prefix)/$(platform)
@@ -100,9 +100,9 @@ install-exec-local:
 		done; \
 	fi
 	if [ -e $(prefix)/inc/config.h ]; then \
-		unlink $(prefix)/inc/config.h; \
+		rm -f $(prefix)/inc/config.h; \
 	fi
 	cd $(prefix)/inc && ln -s ../config.h config.h
-	cd $(top_srcdir) && cp *.sh $(prefix)
+	cd $(top_srcdir) && cp *amk.sh $(prefix)
 
 .PHONY: FoundationClasses ModelingData ModelingAlgorithms Visualization ApplicationFramework DataExchange Draw

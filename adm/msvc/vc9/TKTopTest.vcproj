@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKTopTest"
-	ProjectGUID="{28663114-0034-1012-0E33-7CE1EFD528BA}"
+	ProjectGUID="{7D5D0CC6-12F7-0E35-1670-9B9FE21DE07E}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -586,9 +588,6 @@
 					RelativePath="..\..\..\src\BRepTest\BRepTest_ProjectionCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepTest\BRepTest_ShellCommands.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepTest\BRepTest_SurfaceCommands.cxx">
 				</File>
 				<File
@@ -715,28 +714,22 @@
 					RelativePath="..\..\..\src\BOPTest\BOPTest_CheckCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_CurveCommands.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_DrawableShape.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_EFCommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_LowCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_MTestCommands.cxx">
+					RelativePath="..\..\..\src\BOPTest\BOPTest_ObjCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_TSTCommands.cxx">
+					RelativePath="..\..\..\src\BOPTest\BOPTest_Objects.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTest\BOPTest_PartitionCommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_TolerCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_WSplitCommands.cxx">
 				</File>
 			</Filter>
 

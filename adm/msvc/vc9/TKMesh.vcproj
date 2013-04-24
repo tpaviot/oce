@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKMesh"
-	ProjectGUID="{CF46F0C3-0E5E-01DE-0ABE-7B4DB32A5234}"
+	ProjectGUID="{366F4C3C-0485-0DDC-1934-A62B4562DFA8}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepMesh;..\..\..\src\BRepMesh;..\..\..\drv\IntPoly;..\..\..\src\IntPoly;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepMesh;..\..\..\src\BRepMesh;..\..\..\drv\IntPoly;..\..\..\src\IntPoly;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepMesh;..\..\..\src\BRepMesh;..\..\..\drv\IntPoly;..\..\..\src\IntPoly;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepMesh;..\..\..\src\BRepMesh;..\..\..\drv\IntPoly;..\..\..\src\IntPoly;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"

@@ -43,7 +43,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in SWDRAW <br>
+  //! A utility which writes a Shape to VRML format <br>//! Loads commands defined in SWDRAW <br>
   Standard_EXPORT   static  void Init(Draw_Interpretor& theCommands) ;
 
 

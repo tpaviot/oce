@@ -30,6 +30,7 @@
 #endif
 class AIS_InteractiveContext;
 class V3d_View;
+class TColgp_Array1OfPnt2d;
 
 
 
@@ -49,6 +50,10 @@ public:
   Standard_EXPORT   virtual  void Select(const Standard_Integer xmin,const Standard_Integer ymin,const Standard_Integer xmax,const Standard_Integer ymax) ;
   
   Standard_EXPORT   virtual  void ShiftSelect(const Standard_Integer xmin,const Standard_Integer ymin,const Standard_Integer xmax,const Standard_Integer ymax) ;
+  
+  Standard_EXPORT   virtual  void Select(const TColgp_Array1OfPnt2d& thePolyline) ;
+  
+  Standard_EXPORT   virtual  void ShiftSelect(const TColgp_Array1OfPnt2d& thePolyline) ;
   
        const Handle_AIS_InteractiveContext& Context() const;
 

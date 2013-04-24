@@ -29,6 +29,10 @@
 
 //! defines IGESPick, Type <406> Form <21> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Attaches information that an entity may be picked <br>
+//!          by whatever pick device is used in the receiving <br>
+//!          system <br>
 class IGESGraph_Pick : public IGESData_IGESEntity {
 
 public:

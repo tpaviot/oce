@@ -41,6 +41,11 @@ class Standard_OutOfRange;
 
 //! defines IGESLineFontDefPattern, Type <304> Form <2> <br>
 //!           in package IGESGraph <br>
+//! <br>
+//!           Line Font may be defined by repetition of a basic pattern <br>
+//!           of visible-blank(or, on-off) segments superimposed on <br>
+//!           a line or a curve. The line or curve is then displayed <br>
+//!           according to the basic pattern. <br>
 class IGESGraph_LineFontDefPattern : public IGESData_LineFontEntity {
 
 public:

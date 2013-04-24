@@ -35,6 +35,9 @@ class gp_Vec2d;
 
 //! defines IGESUniformRectGrid, Type <406> Form <22> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Stores sufficient information for the creation of <br>
+//!          a uniform rectangular grid within a drawing <br>
 class IGESGraph_UniformRectGrid : public IGESData_IGESEntity {
 
 public:

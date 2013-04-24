@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{65145171-16B0-1594-111F-66D27883FADB}</ProjectGuid>
+    <ProjectGuid>{FFFE6AD9-04C7-1457-0C6E-A022F356B3A4}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

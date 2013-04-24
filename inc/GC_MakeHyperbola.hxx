@@ -43,6 +43,25 @@ class gp_Pnt;
 //!  The parameterization range is ]-infinite,+infinite[ <br>
 //!  It is possible to get the other branch and the two conjugate <br>
 //!  branches of the main branch. <br>
+//! <br>
+//!                         ^YAxis <br>
+//!                         | <br>
+//!                  FirstConjugateBranch <br>
+//!                         | <br>
+//!        Other            |                Main <br>
+//!   --------------------- C ------------------------------>XAxis <br>
+//!        Branch           |                Branch <br>
+//!                         | <br>
+//!                   SecondConjugateBranch <br>
+//!                         | <br>
+//! <br>
+//!  The major radius is the distance between the Location point <br>
+//!  of the hyperbola C and the apex of the Main Branch (or the <br>
+//!  Other branch). The major axis is the XAxis. <br>
+//!  The minor radius is the distance between the Location point <br>
+//!  of the hyperbola C and the apex of the First (or Second) <br>
+//!  Conjugate branch. The minor axis is the YAxis. <br>
+//!  The major radius can be lower than the minor radius. <br>
 class GC_MakeHyperbola  : public GC_Root {
 public:
 

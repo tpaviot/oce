@@ -13,12 +13,6 @@
 #ifndef _Geom_Transformation_HeaderFile
 #include <Geom_Transformation.hxx>
 #endif
-#ifndef _PrsMgr_PresentationManager2d_HeaderFile
-#include <PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Graphic2d_GraphicObject_HeaderFile
-#include <Graphic2d_GraphicObject.hxx>
-#endif
 #ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
 #endif

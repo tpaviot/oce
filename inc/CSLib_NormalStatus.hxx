@@ -8,27 +8,21 @@
 
 
 //! <br>
-//!  D1uIsNull : ||D1U|| <= Resolution <br>
+//!  if N is the normal <br>
 //! <br>
-//!  D1vIsNull : ||D1V|| <= Resolution <br>
+//!  InfinityOfSolutions : ||DN/du||>Resolution, ||DN/dv||>Resolution <br>
 //! <br>
-//!  D1IsNull  : the first derivatives in the U and V parametric <br>
-//!              directions have null length  : <br>
-//!              ||D1U|| <= Resolution and ||D1V|| <= Resolution <br>
+//!  D1NuIsNull          : ||DN/du|| <= Resolution <br>
 //! <br>
-//!  D1uD1vRatioIsNull : the first derivative in the U direction has <br>
-//!                      null length by comparison with the derivative <br>
-//!                      in the V direction <br>
-//!                      ||D1U|| / ||D1V|| <= RealEpsilon <br>
+//!  D1NvIsNull          : ||DN/dv|| <= Resolution <br>
 //! <br>
-//!  D1vD1uRatioIsNull : the first derivative in the V direction has <br>
-//!                      null length by comparison with the derivative <br>
-//!                      in the U direction <br>
-//!                      ||D1V|| / ||D1U|| <= RealEpsilon <br>
+//!  D1NIsNull           : ||DN/du||<=Resolution, ||DN/dv||<=Resolution <br>
 //! <br>
-//!  D1uIsParallelD1v : the angle between the derivatives in the U and <br>
-//!                     V direction is null (tolerance criterion given <br>
-//!                     as input data) <br>
+//!  D1NuNvRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon <br>
+//! <br>
+//!  D1NvNuRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon <br>
+//! <br>
+//!  D1NuIsParallelD1Nv  : The angle between D1Nu and D1Nv is Null. <br>
 enum CSLib_NormalStatus {
 CSLib_Singular,
 CSLib_Defined,

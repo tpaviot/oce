@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfConnection_HeaderFile
 #define _Graphic3d_TypeOfConnection_HeaderFile
 
-//! To manage the transformation matrices of structures. <br>
+//! To manage the connections between the structures. <br>
 enum Graphic3d_TypeOfConnection {
 Graphic3d_TOC_ANCESTOR,
 Graphic3d_TOC_DESCENDANT

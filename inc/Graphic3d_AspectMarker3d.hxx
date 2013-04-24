@@ -44,6 +44,10 @@ public:
 
   //! Creates a context table for marker primitives <br>
 //!	    defined with the following default values: <br>
+//! <br>
+//!	    Marker type		: TOM_X <br>
+//!	    Colour		: YELLOW <br>
+//!	    Scale factor	: 1.0 <br>
   Standard_EXPORT   Graphic3d_AspectMarker3d();
   
   Standard_EXPORT   Graphic3d_AspectMarker3d(const Aspect_TypeOfMarker AType,const Quantity_Color& AColor,const Standard_Real AScaleOrId);

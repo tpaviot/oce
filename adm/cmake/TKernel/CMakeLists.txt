@@ -1,0 +1,1454 @@
+project(TKernel)
+
+if (WIN32)
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__FSD_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__MMgt_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__OSD_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Plugin_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Quantity_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Resource_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__SortTools_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Standard_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__StdFail_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Storage_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__TColStd_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__TCollection_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__TShort_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Units_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__UnitsAPI_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__IncludeLibrary_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Dico_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__NCollection_DLL" )
+  list( APPEND TKernel_PRECOMPILED_DEFS "-D__Message_DLL" )
+  string( REGEX REPLACE ";" " " TKernel_PRECOMPILED_DEFS "${TKernel_PRECOMPILED_DEFS}")
+endif()
+
+  list( APPEND TKernel_COMPILER_DIRECTORIES "${WOK_LIB_PATH}" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../inc" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/FSD" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/FSD" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/MMgt" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/MMgt" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/OSD" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/OSD" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Plugin" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Plugin" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Quantity" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Quantity" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Resource" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Resource" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/SortTools" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/SortTools" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Standard" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Standard" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/StdFail" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/StdFail" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Storage" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Storage" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/TColStd" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/TColStd" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/TCollection" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/TCollection" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/TShort" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/TShort" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Units" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Units" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/UnitsAPI" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/UnitsAPI" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/IncludeLibrary" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/IncludeLibrary" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Dico" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Dico" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/NCollection" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/NCollection" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../drv/Message" )
+  list( APPEND TKernel_COMPILER_DIRECTORIES "../../../src/Message" )
+
+if (WIN32)
+else()
+endif()
+
+
+if (WIN32)
+  list( APPEND TKernel_USED_LIBS advapi32.lib )
+  list( APPEND TKernel_USED_LIBS gdi32.lib )
+  list( APPEND TKernel_USED_LIBS user32.lib )
+  list( APPEND TKernel_USED_LIBS kernel32.lib )
+elseif(APPLE)
+  if(3RDPARTY_USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbb )
+  endif()
+  if(3RDPARTY_USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbbmalloc )
+  endif()
+else()
+  list( APPEND TKernel_USED_LIBS pthread )
+  list( APPEND TKernel_USED_LIBS rt )
+  if(3RDPARTY_USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbb )
+  endif()
+  if(3RDPARTY_USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbbmalloc )
+  endif()
+endif()
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/FSD/FSD_BinaryFile.cxx" )
+  SOURCE_GROUP (FSD FILES "../../../src/FSD/FSD_BinaryFile.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/FSD/FSD_CmpFile.cxx" )
+  SOURCE_GROUP (FSD FILES "../../../src/FSD/FSD_CmpFile.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/FSD/FSD_File.cxx" )
+  SOURCE_GROUP (FSD FILES "../../../src/FSD/FSD_File.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/MMgt/MMgt_StackManager.cxx" )
+  SOURCE_GROUP (MMgt FILES "../../../src/MMgt/MMgt_StackManager.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/MMgt/MMgt_TShared.cxx" )
+  SOURCE_GROUP (MMgt FILES "../../../src/MMgt/MMgt_TShared.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_ACCESS_VIOLATION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_ACCESS_VIOLATION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_ARRAY_BOUNDS_EXCEEDED_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_ARRAY_BOUNDS_EXCEEDED_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_CTRL_BREAK_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_CTRL_BREAK_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_DENORMAL_OPERAND_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_DENORMAL_OPERAND_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_DIVIDE_BY_ZERO_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_DIVIDE_BY_ZERO_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_INEXACT_RESULT_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_INEXACT_RESULT_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_INVALID_OPERATION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_INVALID_OPERATION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_OVERFLOW_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_OVERFLOW_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_STACK_CHECK_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_STACK_CHECK_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_FLT_UNDERFLOW_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_FLT_UNDERFLOW_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_ILLEGAL_INSTRUCTION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_ILLEGAL_INSTRUCTION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_INT_DIVIDE_BY_ZERO_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_INT_DIVIDE_BY_ZERO_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_INT_OVERFLOW_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_INT_OVERFLOW_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_INVALID_DISPOSITION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_INVALID_DISPOSITION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_IN_PAGE_ERROR_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_IN_PAGE_ERROR_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_NONCONTINUABLE_EXCEPTION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_NONCONTINUABLE_EXCEPTION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_PRIV_INSTRUCTION_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_PRIV_INSTRUCTION_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_STACK_OVERFLOW_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_STACK_OVERFLOW_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Exception_STATUS_NO_MEMORY_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Exception_STATUS_NO_MEMORY_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_OSDError_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_OSDError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGBUS_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGBUS_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGHUP_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGHUP_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGILL_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGILL_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGINT_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGINT_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGKILL_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGKILL_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGQUIT_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGQUIT_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGSEGV_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGSEGV_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_SIGSYS_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_SIGSYS_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/OSD/OSD_Signal_0.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../drv/OSD/OSD_Signal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Chronometer.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Chronometer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Cmailbox.c" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Cmailbox.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Csemaphore.c" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Csemaphore.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Csharedmemory.c" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Csharedmemory.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Directory.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Directory.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_DirectoryIterator.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_DirectoryIterator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Disk.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Disk.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Environment.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Environment.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_EnvironmentIterator.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_EnvironmentIterator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Error.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Error.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_File.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_File.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_FileIterator.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_FileIterator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_FileNode.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_FileNode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Function.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Function.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Getkey.c" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Getkey.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Host.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Host.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_MAllocHook.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_MAllocHook.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_MailBox.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_MailBox.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_MemInfo.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_MemInfo.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Path.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Path.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_PerfMeter.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_PerfMeter.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Printer.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Printer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Process.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Process.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Protection.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Protection.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Semaphore.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Semaphore.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_SharedLibrary.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_SharedLibrary.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_SharedMemory.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_SharedMemory.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Thread.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Thread.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_Timer.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_Timer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_WNT.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_WNT.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_signal.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_signal.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/OSD/OSD_signal_WNT.cxx" )
+  SOURCE_GROUP (OSD FILES "../../../src/OSD/OSD_signal_WNT.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Plugin/Plugin_DataMapIteratorOfMapOfFunctions_0.cxx" )
+  SOURCE_GROUP (Plugin FILES "../../../drv/Plugin/Plugin_DataMapIteratorOfMapOfFunctions_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Plugin/Plugin_DataMapNodeOfMapOfFunctions_0.cxx" )
+  SOURCE_GROUP (Plugin FILES "../../../drv/Plugin/Plugin_DataMapNodeOfMapOfFunctions_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Plugin/Plugin_Failure_0.cxx" )
+  SOURCE_GROUP (Plugin FILES "../../../drv/Plugin/Plugin_Failure_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Plugin/Plugin_MapOfFunctions_0.cxx" )
+  SOURCE_GROUP (Plugin FILES "../../../drv/Plugin/Plugin_MapOfFunctions_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Plugin/Plugin.cxx" )
+  SOURCE_GROUP (Plugin FILES "../../../src/Plugin/Plugin.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_Array1OfCoefficient_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_Array1OfCoefficient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_Array1OfColor_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_Array1OfColor_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_Array2OfColor_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_Array2OfColor_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_ColorDefinitionError_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_ColorDefinitionError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_DateDefinitionError_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_DateDefinitionError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_HArray1OfColor_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_HArray1OfColor_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Quantity/Quantity_PeriodDefinitionError_0.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../drv/Quantity/Quantity_PeriodDefinitionError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Quantity/Quantity_Color.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../src/Quantity/Quantity_Color.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Quantity/Quantity_Convert.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../src/Quantity/Quantity_Convert.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Quantity/Quantity_Date.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../src/Quantity/Quantity_Date.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Quantity/Quantity_Period.cxx" )
+  SOURCE_GROUP (Quantity FILES "../../../src/Quantity/Quantity_Period.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapOfAsciiStringAsciiString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapOfAsciiStringAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_DataMapOfAsciiStringExtendedString_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_DataMapOfAsciiStringExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_NoSuchResource_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_NoSuchResource_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Resource/Resource_QuickSortOfArray1_0.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../drv/Resource/Resource_QuickSortOfArray1_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Resource/Resource_ConvertUnicode.c" )
+  SOURCE_GROUP (Resource FILES "../../../src/Resource/Resource_ConvertUnicode.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Resource/Resource_LexicalCompare.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../src/Resource/Resource_LexicalCompare.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Resource/Resource_Manager.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../src/Resource/Resource_Manager.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Resource/Resource_Unicode.cxx" )
+  SOURCE_GROUP (Resource FILES "../../../src/Resource/Resource_Unicode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_HeapSortOfInteger_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_HeapSortOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_HeapSortOfReal_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_HeapSortOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_QuickSortOfInteger_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_QuickSortOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_QuickSortOfReal_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_QuickSortOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_ShellSortOfInteger_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_ShellSortOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_ShellSortOfReal_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_ShellSortOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_StraightInsertionSortOfInteger_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_StraightInsertionSortOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/SortTools/SortTools_StraightInsertionSortOfReal_0.cxx" )
+  SOURCE_GROUP (SortTools FILES "../../../drv/SortTools/SortTools_StraightInsertionSortOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_AbortiveTransaction_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_AbortiveTransaction_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_ConstructionError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_ConstructionError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_DimensionError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_DimensionError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_DimensionMismatch_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_DimensionMismatch_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_DivideByZero_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_DivideByZero_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_DomainError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_DomainError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_ImmutableObject_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_ImmutableObject_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_LicenseError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_LicenseError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_LicenseNotFound_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_LicenseNotFound_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_MultiplyDefined_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_MultiplyDefined_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NegativeValue_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NegativeValue_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NoMoreObject_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NoMoreObject_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NoSuchObject_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NoSuchObject_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NotImplemented_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NotImplemented_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NullObject_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NullObject_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NullValue_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NullValue_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_NumericError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_NumericError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_OutOfMemory_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_OutOfMemory_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_OutOfRange_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_OutOfRange_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_Overflow_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_Overflow_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_ProgramError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_ProgramError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_RangeError_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_RangeError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_TooManyUsers_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_TooManyUsers_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_TypeMismatch_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_TypeMismatch_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Standard/Standard_Underflow_0.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../drv/Standard/Standard_Underflow_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Handle_Standard_Persistent.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Handle_Standard_Persistent.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Handle_Standard_Transient.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Handle_Standard_Transient.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Address.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Address.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_AncestorIterator.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_AncestorIterator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Boolean.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Boolean.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_CLocaleSentry.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_CLocaleSentry.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_CString.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_CString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Character.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Character.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ErrorHandler.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ErrorHandler.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ErrorHandlerCallback.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ErrorHandlerCallback.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ExtCharacter.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ExtCharacter.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ExtString.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ExtString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Failure.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Failure.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_GUID.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_GUID.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_HashCode.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_HashCode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_IStream.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_IStream.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Integer.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Integer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_MMgrOpt.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_MMgrOpt.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_MMgrRaw.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_MMgrRaw.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_MMgrRoot.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_MMgrRoot.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_MMgrTBBalloc.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_MMgrTBBalloc.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Mutex.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Mutex.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_OStream.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_OStream.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Persistent.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Persistent.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Real.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Real.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_SStream.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_SStream.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ShallowDump.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ShallowDump.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_ShortReal.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_ShortReal.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Storable.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Storable.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Time.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Time.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Transient.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Transient.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_Type.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_Type.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_UUID.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_UUID.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_math.cxx" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_math.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_osd_ffi.c" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_osd_ffi.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Standard/Standard_symlink.c" )
+  SOURCE_GROUP (Standard FILES "../../../src/Standard/Standard_symlink.c")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/StdFail/StdFail_InfiniteSolutions_0.cxx" )
+  SOURCE_GROUP (StdFail FILES "../../../drv/StdFail/StdFail_InfiniteSolutions_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/StdFail/StdFail_NotDone_0.cxx" )
+  SOURCE_GROUP (StdFail FILES "../../../drv/StdFail/StdFail_NotDone_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/StdFail/StdFail_UndefinedDerivative_0.cxx" )
+  SOURCE_GROUP (StdFail FILES "../../../drv/StdFail/StdFail_UndefinedDerivative_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/StdFail/StdFail_UndefinedValue_0.cxx" )
+  SOURCE_GROUP (StdFail FILES "../../../drv/StdFail/StdFail_UndefinedValue_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/StdFail/StdFail_Undefined_0.cxx" )
+  SOURCE_GROUP (StdFail FILES "../../../drv/StdFail/StdFail_Undefined_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_ArrayOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_ArrayOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_ArrayOfSchema_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_ArrayOfSchema_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_DataMapIteratorOfMapOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_DataMapIteratorOfMapOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_DataMapIteratorOfMapOfPers_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_DataMapIteratorOfMapOfPers_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_DataMapNodeOfMapOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_DataMapNodeOfMapOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_DataMapNodeOfMapOfPers_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_DataMapNodeOfMapOfPers_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HArrayOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HArrayOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HArrayOfSchema_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HArrayOfSchema_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HPArray_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HPArray_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HSeqOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HSeqOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HSeqOfPersistent_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HSeqOfPersistent_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_HSeqOfRoot_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_HSeqOfRoot_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_IndexedDataMapNodeOfPType_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_IndexedDataMapNodeOfPType_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_MapOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_MapOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_MapOfPers_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_MapOfPers_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_MapPSDHasher_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_MapPSDHasher_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_PArray_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_PArray_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_PType_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_PType_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SeqOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SeqOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SeqOfPersistent_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SeqOfPersistent_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SeqOfRoot_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SeqOfRoot_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfCallBack_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfCallBack_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfPersistent_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfPersistent_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfRoot_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_SequenceNodeOfSeqOfRoot_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamExtCharParityError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamExtCharParityError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamFormatError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamFormatError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamModeError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamModeError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamReadError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamReadError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamTypeMismatchError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamTypeMismatchError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamUnknownTypeError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamUnknownTypeError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Storage/Storage_StreamWriteError_0.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../drv/Storage/Storage_StreamWriteError_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_BaseDriver.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_BaseDriver.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_CallBack.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_CallBack.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_Container.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_Container.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_Data.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_Data.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_DefaultCallBack.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_DefaultCallBack.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_HeaderData.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_HeaderData.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_InternalData.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_InternalData.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_Root.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_Root.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_RootData.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_RootData.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_Schema.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_Schema.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_TypeData.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_TypeData.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_TypedCallBack.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_TypedCallBack.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Storage/Storage_stCONSTclCOM.cxx" )
+  SOURCE_GROUP (Storage FILES "../../../src/Storage/Storage_stCONSTclCOM.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfByte_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfByte_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfCharacter_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfCharacter_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array1OfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array1OfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array2OfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array2OfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array2OfCharacter_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array2OfCharacter_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array2OfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array2OfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array2OfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array2OfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_Array2OfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_Array2OfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfIntegerTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfTransientTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapIteratorOfDataMapOfTransientTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfAsciiStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfAsciiStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfIntegerTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfTransientTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapNodeOfDataMapOfTransientTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfAsciiStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfAsciiStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfIntegerInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfIntegerInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfIntegerListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfIntegerListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfIntegerReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfIntegerReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfIntegerTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfIntegerTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfStringInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfStringInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_DataMapOfTransientTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_DataMapOfTransientTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfByte_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfByte_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfCharacter_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfCharacter_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray1OfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray1OfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray2OfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray2OfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray2OfCharacter_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray2OfCharacter_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray2OfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray2OfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray2OfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray2OfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HArray2OfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HArray2OfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfHAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfHAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfHExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfHExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSequenceOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSequenceOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_HSetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_HSetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedDataMapOfTransientTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedDataMapOfTransientTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapNodeOfIndexedMapOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_IndexedMapOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_IndexedMapOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfListOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListIteratorOfSetListOfSetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfListOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfListOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfListOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfListOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfListOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfListOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListNodeOfSetListOfSetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_ListOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_ListOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapIntegerHasher_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapIntegerHasher_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapIteratorOfMapOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapRealHasher_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapRealHasher_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_MapTransientHasher_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_MapTransientHasher_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueNodeOfQueueOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_QueueOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_QueueOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfAddress_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfAddress_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfHAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfHAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfHExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfHExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceNodeOfSequenceOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfAddress_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfAddress_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfBoolean_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfBoolean_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfHAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfHAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfHExtendedString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfHExtendedString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SequenceOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SequenceOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetIteratorOfSetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetListOfSetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetListOfSetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetListOfSetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetListOfSetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetListOfSetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetListOfSetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_SetOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_SetOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackIteratorOfStackOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackNodeOfStackOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StackOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StackOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfAsciiString_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfAsciiString_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfInteger_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfReal_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfTransient_0.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../drv/TColStd/TColStd_StdMapNodeOfMapOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TColStd/TColStd_HPackedMapOfInteger.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../src/TColStd/TColStd_HPackedMapOfInteger.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TColStd/TColStd_MapIteratorOfPackedMapOfInteger.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../src/TColStd/TColStd_MapIteratorOfPackedMapOfInteger.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TColStd/TColStd_PackedMapOfInteger.cxx" )
+  SOURCE_GROUP (TColStd FILES "../../../src/TColStd/TColStd_PackedMapOfInteger.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TCollection/TCollection_PrivCompareOfInteger_0.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../drv/TCollection/TCollection_PrivCompareOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TCollection/TCollection_PrivCompareOfReal_0.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../drv/TCollection/TCollection_PrivCompareOfReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_AVLBaseNode.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_AVLBaseNode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_Array1Descriptor.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_Array1Descriptor.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_Array2Descriptor.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_Array2Descriptor.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_AsciiString.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_AsciiString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_BaseSequence.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_BaseSequence.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_BasicMap.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_BasicMap.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_BasicMapIterator.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_BasicMapIterator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_CompareOfInteger.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_CompareOfInteger.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_CompareOfReal.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_CompareOfReal.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_ExtendedString.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_ExtendedString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_HAsciiString.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_HAsciiString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_HExtendedString.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_HExtendedString.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_MapNode.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_MapNode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/TCollection/TCollection_SeqNode.cxx" )
+  SOURCE_GROUP (TCollection FILES "../../../src/TCollection/TCollection_SeqNode.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_Array1OfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_Array1OfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_Array2OfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_Array2OfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_HArray1OfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_HArray1OfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_HArray2OfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_HArray2OfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_HSequenceOfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_HSequenceOfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_SequenceNodeOfSequenceOfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_SequenceNodeOfSequenceOfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/TShort/TShort_SequenceOfShortReal_0.cxx" )
+  SOURCE_GROUP (TShort FILES "../../../drv/TShort/TShort_SequenceOfShortReal_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_NoSuchType_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_NoSuchType_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_NoSuchUnit_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_NoSuchUnit_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_QtsSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_QtsSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_QuantitiesSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_QuantitiesSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_SequenceNodeOfQtsSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_SequenceNodeOfQtsSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_SequenceNodeOfTksSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_SequenceNodeOfTksSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_SequenceNodeOfUtsSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_SequenceNodeOfUtsSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_TksSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_TksSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_TokensSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_TokensSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_UnitsSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_UnitsSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Units/Units_UtsSequence_0.cxx" )
+  SOURCE_GROUP (Units FILES "../../../drv/Units/Units_UtsSequence_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Dimensions.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Dimensions.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Explorer.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Explorer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Lexicon.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Lexicon.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_MathSentence.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_MathSentence.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Measurement.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Measurement.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Quantity.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Quantity.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Sentence.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Sentence.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_ShiftedToken.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_ShiftedToken.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_ShiftedUnit.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_ShiftedUnit.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Token.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Token.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_Unit.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_Unit.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_UnitSentence.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_UnitSentence.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_UnitsDictionary.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_UnitsDictionary.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_UnitsLexicon.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_UnitsLexicon.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Units/Units_UnitsSystem.cxx" )
+  SOURCE_GROUP (Units FILES "../../../src/Units/Units_UnitsSystem.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/UnitsAPI/UnitsAPI.cxx" )
+  SOURCE_GROUP (UnitsAPI FILES "../../../src/UnitsAPI/UnitsAPI.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_DictionaryOfInteger_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_DictionaryOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_DictionaryOfTransient_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_DictionaryOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_IteratorOfDictionaryOfInteger_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_IteratorOfDictionaryOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_IteratorOfDictionaryOfTransient_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_IteratorOfDictionaryOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_StackItemOfDictionaryOfInteger_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_StackItemOfDictionaryOfInteger_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Dico/Dico_StackItemOfDictionaryOfTransient_0.cxx" )
+  SOURCE_GROUP (Dico FILES "../../../drv/Dico/Dico_StackItemOfDictionaryOfTransient_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_BaseAllocator.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_BaseAllocator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_BaseList.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_BaseList.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_BaseMap.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_BaseMap.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_BaseSequence.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_BaseSequence.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_BaseVector.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_BaseVector.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_Handle.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_Handle.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_HeapAllocator.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_HeapAllocator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_IncAllocator.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_IncAllocator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/NCollection/NCollection_SparseArrayBase.cxx" )
+  SOURCE_GROUP (NCollection FILES "../../../src/NCollection/NCollection_SparseArrayBase.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_ListIteratorOfListOfMsg_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_ListIteratorOfListOfMsg_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_ListNodeOfListOfMsg_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_ListNodeOfListOfMsg_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_ListOfMsg_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_ListOfMsg_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_SequenceNodeOfSequenceOfPrinters_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_SequenceNodeOfSequenceOfPrinters_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_SequenceNodeOfSequenceOfProgressScale_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_SequenceNodeOfSequenceOfProgressScale_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_SequenceOfPrinters_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_SequenceOfPrinters_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../drv/Message/Message_SequenceOfProgressScale_0.cxx" )
+  SOURCE_GROUP (Message FILES "../../../drv/Message/Message_SequenceOfProgressScale_0.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_Algorithm.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_Algorithm.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_Messenger.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_Messenger.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_Msg.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_Msg.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_MsgFile.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_MsgFile.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_Printer.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_Printer.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_PrinterOStream.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_PrinterOStream.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_ProgressIndicator.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_ProgressIndicator.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_ProgressScale.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_ProgressScale.cxx")
+
+  list( APPEND TKernel_USED_SRCFILES "../../../src/Message/Message_ProgressSentry.cxx" )
+  SOURCE_GROUP (Message FILES "../../../src/Message/Message_ProgressSentry.cxx")
+
+if (WIN32)
+else()
+
+endif()
+
+if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKernel)
+ add_library( TKernel SHARED ${TKernel_USED_SRCFILES} )
+
+ set_property(TARGET TKernel PROPERTY FOLDER FoundationClasses)
+
+ install( TARGETS TKernel
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/bin"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/lib"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/lib")
+
+ if (MSVC)
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKernel.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/bin")
+ endif()
+
+
+ set_target_properties( TKernel PROPERTIES COMPILE_FLAGS "${TKernel_PRECOMPILED_DEFS}" )
+ include_directories( ${TKernel_COMPILER_DIRECTORIES} )
+ target_link_libraries( TKernel ${TKernel_USED_LIBS} )
+endif()

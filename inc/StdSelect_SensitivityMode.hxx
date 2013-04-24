@@ -6,9 +6,9 @@
 #ifndef _StdSelect_SensitivityMode_HeaderFile
 #define _StdSelect_SensitivityMode_HeaderFile
 
-//! Provides values for different types of edges. These <br>
-//! values are used to filter edges in frameworks <br>
-//! inheriting StdSelect_EdgeFilter. <br>
+//! Selection sensitivity mode. SM_WINDOW mode uses the <br>
+//! specified pixel tolerance to compute the sensitivity value, <br>
+//! SM_VIEW mode allows to define the sensitivity manually. <br>
 enum StdSelect_SensitivityMode {
 StdSelect_SM_WINDOW,
 StdSelect_SM_VIEW

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKGeomBase"
-	ProjectGUID="{CA422DEB-09B2-083D-1108-D995DFFE84BC}"
+	ProjectGUID="{A5843848-0A63-15E2-1343-CF56943D2711}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -738,6 +740,9 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnCurv_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurfParams_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
 				</File>
 				<File
@@ -820,6 +825,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnCurv_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurfParams_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
@@ -1039,6 +1047,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_POnSurfParams.cxx">
 				</File>
 			</Filter>
 			<Filter

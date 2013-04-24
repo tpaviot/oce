@@ -17,12 +17,14 @@
 // and conditions governing the rights and limitations under the License.
 
 #ifndef __INTERFACE_GRAPHIC_HXX
-# define __INTERFACE_GRAPHIC_HXX
+#define __INTERFACE_GRAPHIC_HXX
 
 #ifdef WNT
-# include <InterfaceGraphic_WNT.hxx>
+  #include <InterfaceGraphic_WNT.hxx>
+#elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+  #include <InterfaceGraphic_Cocoa.hxx>
 #else
-# include <InterfaceGraphic_X11.hxx>
-#endif //WNT
+  #include <InterfaceGraphic_X11.hxx>
+#endif
 
-#endif  /* __INTERFACE_GRAPHIC_HXX */
+#endif // __INTERFACE_GRAPHIC_HXX

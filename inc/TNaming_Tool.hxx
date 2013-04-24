@@ -84,6 +84,31 @@ public:
 //! Handle(OCafTest_Line)& , const <br>
 //! Handle(CafTest_Line)& ); <br>
 //! }; <br>
+//! <br>
+//! Standard_Boolean <br>
+//! MyPkg_MyClass::SameEdge <br>
+//! (const Handle(OCafTest_Line)& L1 <br>
+//! const Handle(OCafTest_Line)& L2) <br>
+//! { Handle(TNaming_NamedShape) <br>
+//! NS1 = L1->NamedShape(); <br>
+//!     Handle(TNaming_NamedShape) <br>
+//! NS2 = L2->NamedShape(); <br>
+//! <br>
+//!     return <br>
+//! BRepTools::Compare(NS1->Get(),NS2->Get()); <br>
+//! } <br>
+//! In the example above, the function SameEdge is <br>
+//! created to compare the edges having two lines <br>
+//! for geometric supports. If these edges are found <br>
+//! by BRepTools::Compare to be within the same <br>
+//! tolerance, they are considered to be the same. <br>
+//! Warning <br>
+//! To avoid sharing of names, a SELECTED <br>
+//! attribute will not be returned. Sharing of names <br>
+//! makes it harder to manage the data structure. <br>
+//! When the user of the name is removed, for <br>
+//! example, it is difficult to know whether the name <br>
+//! should be destroyed. <br>
   Standard_EXPORT   static  Handle_TNaming_NamedShape NamedShape(const TopoDS_Shape& aShape,const TDF_Label& anAcces) ;
   //! Returns the entities stored in the named shape attribute NS. <br>
 //! If there is only one old-new pair, the new shape <br>

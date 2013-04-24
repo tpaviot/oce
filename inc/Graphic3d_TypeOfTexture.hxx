@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #define _Graphic3d_TypeOfTexture_HeaderFile
 
-//! Types of standard textures. <br>
+//! Type of the texture file format. <br>
 enum Graphic3d_TypeOfTexture {
 Graphic3d_TOT_1D,
 Graphic3d_TOT_2D,

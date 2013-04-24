@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{13CC3E4C-187B-0E6D-0973-03038EDE68DF}</ProjectGuid>
+    <ProjectGuid>{D204ACF3-156D-1139-01E8-E0FDBD32B0E1}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DBC;..\..\..\src\DBC;..\..\..\drv\PCollection;..\..\..\src\PCollection;..\..\..\drv\PColStd;..\..\..\src\PColStd;..\..\..\drv\PMMgt;..\..\..\src\PMMgt;..\..\..\drv\PShort;..\..\..\src\PShort;..\..\..\drv\PStandard;..\..\..\src\PStandard;..\..\..\drv\PTColStd;..\..\..\src\PTColStd;..\..\..\drv\ObjMgt;..\..\..\src\ObjMgt;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DBC_DLL;__PCollection_DLL;__PColStd_DLL;__PMMgt_DLL;__PShort_DLL;__PStandard_DLL;__PTColStd_DLL;__ObjMgt_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DBC;..\..\..\src\DBC;..\..\..\drv\PCollection;..\..\..\src\PCollection;..\..\..\drv\PColStd;..\..\..\src\PColStd;..\..\..\drv\PMMgt;..\..\..\src\PMMgt;..\..\..\drv\PShort;..\..\..\src\PShort;..\..\..\drv\PStandard;..\..\..\src\PStandard;..\..\..\drv\PTColStd;..\..\..\src\PTColStd;..\..\..\drv\ObjMgt;..\..\..\src\ObjMgt;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DBC_DLL;__PCollection_DLL;__PColStd_DLL;__PMMgt_DLL;__PShort_DLL;__PStandard_DLL;__PTColStd_DLL;__ObjMgt_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DBC;..\..\..\src\DBC;..\..\..\drv\PCollection;..\..\..\src\PCollection;..\..\..\drv\PColStd;..\..\..\src\PColStd;..\..\..\drv\PMMgt;..\..\..\src\PMMgt;..\..\..\drv\PShort;..\..\..\src\PShort;..\..\..\drv\PStandard;..\..\..\src\PStandard;..\..\..\drv\PTColStd;..\..\..\src\PTColStd;..\..\..\drv\ObjMgt;..\..\..\src\ObjMgt;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DBC_DLL;__PCollection_DLL;__PColStd_DLL;__PMMgt_DLL;__PShort_DLL;__PStandard_DLL;__PTColStd_DLL;__ObjMgt_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DBC;..\..\..\src\DBC;..\..\..\drv\PCollection;..\..\..\src\PCollection;..\..\..\drv\PColStd;..\..\..\src\PColStd;..\..\..\drv\PMMgt;..\..\..\src\PMMgt;..\..\..\drv\PShort;..\..\..\src\PShort;..\..\..\drv\PStandard;..\..\..\src\PStandard;..\..\..\drv\PTColStd;..\..\..\src\PTColStd;..\..\..\drv\ObjMgt;..\..\..\src\ObjMgt;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DBC_DLL;__PCollection_DLL;__PColStd_DLL;__PMMgt_DLL;__PShort_DLL;__PStandard_DLL;__PTColStd_DLL;__ObjMgt_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{64E98301-0BD8-097E-07C0-73FCC5D814D4}</ProjectGuid>
+    <ProjectGuid>{FEF9936B-07B1-04B4-07F8-B978638EB843}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,10 +77,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -94,10 +95,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV2d.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -118,10 +119,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKViewerTest/</AssemblerListingLocation>
@@ -135,10 +137,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV2d.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -160,10 +162,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -177,10 +180,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV2d.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -201,10 +204,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKViewerTest/</AssemblerListingLocation>
@@ -218,10 +222,10 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV2d.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKGeomBase.lib;TKFillet.lib;TKBRep.lib;TKTopAlgo.lib;TKHLR.lib;TKernel.lib;TKMath.lib;TKNIS.lib;TKService.lib;TKBool.lib;TKPrim.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopTest.lib;TKG3d.lib;TKOffset.lib;TKVoxel.lib;TKMesh.lib;TKV3d.lib;TKDraw.lib;TKOpenGl.lib;tcl85.lib;tk85.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKViewerTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -232,30 +236,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapIteratorOfDataMapOfText_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapNodeOfDataMapOfText_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapOfText_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapOfInteractiveAndName_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_DisplayCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_EventManager.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_GeneralCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_ObjectCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_ViewerCommands.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\ViewerTest\ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\ViewerTest\ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx">

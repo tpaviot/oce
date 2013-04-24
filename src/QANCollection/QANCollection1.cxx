@@ -22,7 +22,7 @@
 #include <QANCollection.hxx>
 #include <Draw_Interpretor.hxx>
 
-#include <DebugTools.h>
+#include <OSD_PerfMeter.hxx>
 
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
@@ -141,7 +141,7 @@ static Standard_Integer QANColCheckSequence(Draw_Interpretor& di, Standard_Integ
 }
 
 void QANCollection::Commands1(Draw_Interpretor& theCommands) {
-  char *group = "QANCollection";
+  const char *group = "QANCollection";
 
   // from agvCollTest/src/AgvColEXE/TestEXE.cxx
   theCommands.Add("QANColCheckArray1",   "QANColCheckArray1 [-n]",               __FILE__, QANColCheckArray1,   group);  

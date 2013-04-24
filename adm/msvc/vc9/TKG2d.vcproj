@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKG2d"
-	ProjectGUID="{9452901B-0CBA-0A1E-0641-22EF3C884CB9}"
+	ProjectGUID="{8FE8BC0F-0264-182F-1956-65302C3DB209}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

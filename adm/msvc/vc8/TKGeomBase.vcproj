@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomBase"
-	ProjectGUID="{CA422DEB-09B2-083D-1108-D995DFFE84BC}"
+	ProjectGUID="{FFECF771-0F1A-1400-1658-00000100803A}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKGeomBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -750,6 +750,9 @@
 					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnCurv_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurfParams_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
 				</File>
 				<File
@@ -832,6 +835,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnCurv_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurfParams_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
@@ -1051,6 +1057,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Extrema\Extrema_POnSurfParams.cxx">
 				</File>
 			</Filter>
 			<Filter

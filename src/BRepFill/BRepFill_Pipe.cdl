@@ -41,8 +41,9 @@ uses
     Edge   from TopoDS,
     Vertex from TopoDS,  
     Pnt    from  gp,
-    Trsf  from  gp 
-    
+    Trsf   from  gp,
+    Shape  from GeomAbs,
+    Trihedron from GeomFill
 
 raises
     DomainError from Standard, 
@@ -54,6 +55,8 @@ is
     
     Create ( Spine   : Wire from TopoDS; 
     	     Profile : Shape from TopoDS;
+	     aMode   : Trihedron from GeomFill = GeomFill_IsCorrectedFrenet;
+	     ForceApproxC1 : Boolean from Standard = Standard_False;
              GeneratePartCase : Boolean from Standard = Standard_False) 
     returns Pipe from BRepFill;
     
@@ -175,4 +178,8 @@ fields
      
     myDegmax  : Integer from Standard;
     mySegmax  : Integer from Standard;
+    myContinuity : Shape from GeomAbs;
+    myMode    : Trihedron from GeomFill;
+    myForceApproxC1 : Boolean from Standard;
+    
 end Pipe;

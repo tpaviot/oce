@@ -6,7 +6,11 @@
 #ifndef _Aspect_TypeOfEdge_HeaderFile
 #define _Aspect_TypeOfEdge_HeaderFile
 
-//! Definition of the draw modes <br>
+//! Definition of edge visibility <br>
+//! <br>
+//!          TOE_VISIBLE         Edge is displayed <br>
+//!          TOE_INVISIBLE       Edge is not displayed <br>
+//! <br>
 enum Aspect_TypeOfEdge {
 Aspect_TOE_VISIBLE,
 Aspect_TOE_INVISIBLE

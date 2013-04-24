@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{28663114-0034-1012-0E33-7CE1EFD528BA}</ProjectGuid>
+    <ProjectGuid>{FAAD0097-012A-0999-0FF5-E9255D9401C0}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,7 +98,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKV2d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKTopTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -138,7 +140,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKV2d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKTopTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -180,7 +183,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKV2d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKTopTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TestTopOpeDraw;..\..\..\src\TestTopOpeDraw;..\..\..\drv\TestTopOpeTools;..\..\..\src\TestTopOpeTools;..\..\..\drv\TestTopOpe;..\..\..\src\TestTopOpe;..\..\..\drv\BRepTest;..\..\..\src\BRepTest;..\..\..\drv\GeometryTest;..\..\..\src\GeometryTest;..\..\..\drv\HLRTest;..\..\..\src\HLRTest;..\..\..\drv\MeshTest;..\..\..\src\MeshTest;..\..\..\drv\GeomliteTest;..\..\..\src\GeomliteTest;..\..\..\drv\DrawFairCurve;..\..\..\src\DrawFairCurve;..\..\..\drv\BOPTest;..\..\..\src\BOPTest;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -221,7 +225,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TestTopOpeDraw_DLL;__TestTopOpeTools_DLL;__TestTopOpe_DLL;__BRepTest_DLL;__GeometryTest_DLL;__HLRTest_DLL;__MeshTest_DLL;__GeomliteTest_DLL;__DrawFairCurve_DLL;__BOPTest_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKV2d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKernel.lib;TKMath.lib;TKBO.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKHLR.lib;TKGeomBase.lib;TKMesh.lib;TKService.lib;TKV3d.lib;TKFillet.lib;TKPrim.lib;TKBool.lib;TKOffset.lib;TKFeat.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKTopTest.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -344,8 +348,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTest\BRepTest_ProjectionCommands.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepTest\BRepTest_ShellCommands.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTest\BRepTest_SurfaceCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTest\BRepTest_SweepCommands.cxx">
@@ -414,21 +416,17 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_CheckCommands.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_CurveCommands.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_DrawableShape.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_EFCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_LowCommands.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_MTestCommands.cxx">
+    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_ObjCommands.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_TSTCommands.cxx">
+    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_Objects.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_PartitionCommands.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPTest\BOPTest_TolerCommands.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPTest\BOPTest_WSplitCommands.cxx">
     </ClCompile>
 
   </ItemGroup>

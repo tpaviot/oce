@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBinL"
-	ProjectGUID="{6461F8D5-06D1-0271-030A-3975CF657D27}"
+	ProjectGUID="{AA74A91D-18C3-0016-04D9-94E9A47712E6}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinMDF;..\..\..\src\BinMDF;..\..\..\drv\BinMDataStd;..\..\..\src\BinMDataStd;..\..\..\drv\BinMFunction;..\..\..\src\BinMFunction;..\..\..\drv\BinMDocStd;..\..\..\src\BinMDocStd;..\..\..\drv\BinObjMgt;..\..\..\src\BinObjMgt;..\..\..\drv\BinLDrivers;..\..\..\src\BinLDrivers;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKBinL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinMDF;..\..\..\src\BinMDF;..\..\..\drv\BinMDataStd;..\..\..\src\BinMDataStd;..\..\..\drv\BinMFunction;..\..\..\src\BinMFunction;..\..\..\drv\BinMDocStd;..\..\..\src\BinMDocStd;..\..\..\drv\BinObjMgt;..\..\..\src\BinObjMgt;..\..\..\drv\BinLDrivers;..\..\..\src\BinLDrivers;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKBinL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinMDF;..\..\..\src\BinMDF;..\..\..\drv\BinMDataStd;..\..\..\src\BinMDataStd;..\..\..\drv\BinMFunction;..\..\..\src\BinMFunction;..\..\..\drv\BinMDocStd;..\..\..\src\BinMDocStd;..\..\..\drv\BinObjMgt;..\..\..\src\BinObjMgt;..\..\..\drv\BinLDrivers;..\..\..\src\BinLDrivers;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKBinL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinMDF;..\..\..\src\BinMDF;..\..\..\drv\BinMDataStd;..\..\..\src\BinMDataStd;..\..\..\drv\BinMFunction;..\..\..\src\BinMFunction;..\..\..\drv\BinMDocStd;..\..\..\src\BinMDocStd;..\..\..\drv\BinObjMgt;..\..\..\src\BinObjMgt;..\..\..\drv\BinLDrivers;..\..\..\src\BinLDrivers;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKBinL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

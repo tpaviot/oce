@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{96EB1202-0BB0-0486-13CF-6FA4A3A20590}</UniqueIdentifier>
+      <UniqueIdentifier>{B00C1C0E-02A6-10B5-008B-505876DFE7A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OpenGl">
-      <UniqueIdentifier>{1B6CC278-039F-03CB-1859-3AA8AA173A3F}</UniqueIdentifier>
+      <UniqueIdentifier>{E212F3E4-0094-10BE-13B2-BAFEE1B39B7E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -30,13 +30,13 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_1.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_FontMgr.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Font.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_FrameBuffer.cxx">
@@ -66,19 +66,7 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_703.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_705.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_710.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_713.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_8.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_9.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Export.cxx">
@@ -87,13 +75,7 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Layer.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_print.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Group.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ImageBox.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
@@ -111,12 +93,6 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Polygon.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Polyline.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
@@ -129,16 +105,16 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceTexture.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Text.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBox.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextFormatter.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Texture.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBufferArb.cxx">
@@ -165,16 +141,10 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_1.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-      <Filter>Source files\OpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_4.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">

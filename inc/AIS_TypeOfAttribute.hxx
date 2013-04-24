@@ -6,7 +6,7 @@
 #ifndef _AIS_TypeOfAttribute_HeaderFile
 #define _AIS_TypeOfAttribute_HeaderFile
 
-//! To declare the type of distance. <br>
+
 enum AIS_TypeOfAttribute {
 AIS_TOA_Line,
 AIS_TOA_Angle,

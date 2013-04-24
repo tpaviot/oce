@@ -30,7 +30,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes all the functions <br>
+  //! Provides common commands for work XDE <br>//! Initializes all the functions <br>
   Standard_EXPORT   static  void Init(Draw_Interpretor& di) ;
   //! Loads all Draw commands of  TKXDEDRAW. Used for plugin. <br>
   Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;

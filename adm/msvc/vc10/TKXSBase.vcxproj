@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{92580A8D-11DE-16DB-072D-1911E1E4D202}</ProjectGuid>
+    <ProjectGuid>{09B9F188-0B02-08EF-1964-2B84900C2849}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Interface_DLL;__Transfer_DLL;__IFGraph_DLL;__IFSelect_DLL;__TransferBRep_DLL;__XSControl_DLL;__StepData_DLL;__StepFile_DLL;__HeaderSection_DLL;__RWHeaderSection_DLL;__APIHeaderSection_DLL;__StepSelect_DLL;__UnitsMethods_DLL;__XSAlgo_DLL;__LibCtl_DLL;__MoniTool_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

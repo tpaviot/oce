@@ -67,6 +67,11 @@ class IGESData_IGESEntity;
 
 //! defines IGESViewsVisibleWithAttr, Type <402>, Form <4> <br>
 //!           in package IGESDraw <br>
+//! <br>
+//!           This class is extension of Class ViewsVisible.  It is used <br>
+//!           for those entities that are visible in multiple views, but <br>
+//!           must have a different line font, color number, or <br>
+//!           line weight in each view. <br>
 class IGESDraw_ViewsVisibleWithAttr : public IGESData_ViewKindEntity {
 
 public:

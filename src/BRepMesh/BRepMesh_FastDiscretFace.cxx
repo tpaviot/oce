@@ -57,8 +57,6 @@
 
 #define UVDEFLECTION 1.e-05
 
-static Standard_Mutex DummyMutex;
-
 static Standard_Real FUN_CalcAverageDUV(TColStd_Array1OfReal& P, const Standard_Integer PLen)
 {
   Standard_Integer i, j, n = 0;
@@ -363,8 +361,7 @@ Standard_Boolean BRepMesh_FastDiscretFace::RestoreStructureFromTriangulation
   {
     // lock mutex during querying data from edge curves to prevent parallel change of the same data
     Standard_Mutex* aMutex = theMutexProvider.GetMutex(theEdge);
-    Standard_Mutex::SentryNested aSentry(aMutex == NULL ? DummyMutex : *aMutex,
-                                  aMutex != NULL);
+    Standard_Mutex::Sentry aSentry (aMutex);
 
     Poly = BRep_Tool::PolygonOnTriangulation(theEdge, theTrigu, theLoc);
     if (Poly.IsNull() || !Poly->HasParameters())
@@ -424,7 +421,7 @@ Standard_Boolean BRepMesh_FastDiscretFace::RestoreStructureFromTriangulation
   if (mindist < BRep_Tool::Tolerance(pBegin) ||
       mindist < BRep_Tool::Tolerance(pEnd) ) mindist = theDefEdge;
   
-  anUV = FindUV(pBegin, uvFirst, ipf, theSurf, mindist, myLocation2d);
+  anUV = FindUV(pBegin, uvFirst, ipf, theSurf, mindist, myAttrib, myLocation2d);
   Standard_Integer iv1, isv1;
   BRepMesh_Vertex vf(anUV, ipf, BRepMesh_Frontier);
   iv1 = myStructure->AddNode(vf);
@@ -465,7 +462,7 @@ Standard_Boolean BRepMesh_FastDiscretFace::RestoreStructureFromTriangulation
     }
   }
 
-  anUV = FindUV(pEnd, uvLast, ipl, theSurf, mindist, myLocation2d);
+  anUV = FindUV(pEnd, uvLast, ipl, theSurf, mindist, myAttrib, myLocation2d);
   BRepMesh_Vertex vl(anUV, ipl, BRepMesh_Frontier);
   
   Standard_Integer isvl;
@@ -1636,8 +1633,7 @@ void BRepMesh_FastDiscretFace::AddInShape(const TopoDS_Face&  theFace,
 
       // lock mutex to prevent parallel change of the same data
       Standard_Mutex* aMutex = theMutexProvider.GetMutex(It.Key());
-      Standard_Mutex::SentryNested aSentry(aMutex == NULL ? DummyMutex : *aMutex,
-                                    aMutex != NULL);
+      Standard_Mutex::Sentry aSentry (aMutex);
 
       if ( NOD1 == NOD2 ) {
         B.UpdateEdge(TopoDS::Edge(It.Key()), NullPoly, TOld,loc);
@@ -1714,12 +1710,13 @@ const gp_Pnt& BRepMesh_FastDiscretFace::Pnt(const Standard_Integer Index) const
 //purpose  : 
 //=======================================================================
 
-gp_XY BRepMesh_FastDiscretFace::FindUV(const TopoDS_Vertex&                 theV,
-                                       const gp_Pnt2d&                      theXY,
-                                       const Standard_Integer               theIp,
-                                       const Handle(BRepAdaptor_HSurface)&  theSFace,
-                                       const Standard_Real                  theMinDist,
-                                       BRepMesh_DataMapOfIntegerListOfXY&   theLocation2dMap)
+gp_XY BRepMesh_FastDiscretFace::FindUV(const TopoDS_Vertex&                  theV,
+                                       const gp_Pnt2d&                       theXY,
+                                       const Standard_Integer                theIp,
+                                       const Handle(BRepAdaptor_HSurface)&   theSFace,
+                                       const Standard_Real                   theMinDist,
+                                       const Handle(BRepMesh_FaceAttribute)& theFaceAttribute,
+                                       BRepMesh_DataMapOfIntegerListOfXY&    theLocation2dMap)
 {
   gp_XY anUV;
   if (theLocation2dMap.IsBound(theIp))
@@ -1744,8 +1741,21 @@ gp_XY BRepMesh_FastDiscretFace::FindUV(const TopoDS_Vertex&                 theV
 
     const Standard_Real tol = Min(2. * BRep_Tool::Tolerance(theV), theMinDist);
 
-    const Standard_Real Utol2d = .5 * (theSFace->LastUParameter() - theSFace->FirstUParameter());
-    const Standard_Real Vtol2d = .5 * (theSFace->LastVParameter() - theSFace->FirstVParameter());
+    Standard_Real aDiffU, aDiffV;
+    
+    if ( theFaceAttribute.IsNull() )
+    {
+      aDiffU = theSFace->LastUParameter() - theSFace->FirstUParameter();
+      aDiffV = theSFace->LastVParameter() - theSFace->FirstVParameter();
+    }
+    else
+    {
+      aDiffU = theFaceAttribute->GetUMax() - theFaceAttribute->GetUMin();
+      aDiffV = theFaceAttribute->GetVMax() - theFaceAttribute->GetVMin();
+    }
+
+    const Standard_Real Utol2d = .5 * aDiffU;
+    const Standard_Real Vtol2d = .5 * aDiffV;
 
     const gp_Pnt p1 = theSFace->Value(anUV.X(), anUV.Y());
     const gp_Pnt p2 = theSFace->Value(theXY.X(), theXY.Y());
@@ -1815,7 +1825,7 @@ void BRepMesh_FastDiscretFace::Add(const TopoDS_Vertex&                theVert,
   }
   Standard_Real mindist = BRep_Tool::Tolerance(theVert);
   // gp_Pnt2d uvXY = BRep_Tool::Parameters(theVert,theFace);
-  gp_XY anUV = FindUV(theVert, uvXY, indVert, thegFace, mindist, myLocation2d);
+  gp_XY anUV = FindUV(theVert, uvXY, indVert, thegFace, mindist, myAttrib, myLocation2d);
   BRepMesh_Vertex vf(anUV, indVert, BRepMesh_Fixed);
   Standard_Integer ivff = myStructure->AddNode(vf);
   Standard_Integer isvf = myVemap.FindIndex(ivff);

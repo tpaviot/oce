@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{229B81E0-1435-00A9-190A-C4496EB11336}</ProjectGuid>
+    <ProjectGuid>{A9533149-0AF7-0AB4-0D24-F6A1C2F5E235}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDataXtd;..\..\..\src\TDataXtd;..\..\..\drv\TNaming;..\..\..\src\TNaming;..\..\..\drv\TPrsStd;..\..\..\src\TPrsStd;..\..\..\drv\AppStd;..\..\..\src\AppStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,7 +98,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKV2d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDataXtd;..\..\..\src\TDataXtd;..\..\..\drv\TNaming;..\..\..\src\TNaming;..\..\..\drv\TPrsStd;..\..\..\src\TPrsStd;..\..\..\drv\AppStd;..\..\..\src\AppStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -138,7 +140,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKV2d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDataXtd;..\..\..\src\TDataXtd;..\..\..\drv\TNaming;..\..\..\src\TNaming;..\..\..\drv\TPrsStd;..\..\..\src\TPrsStd;..\..\..\drv\AppStd;..\..\..\src\AppStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -180,7 +183,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKV2d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDataXtd;..\..\..\src\TDataXtd;..\..\..\drv\TNaming;..\..\..\src\TNaming;..\..\..\drv\TPrsStd;..\..\..\src\TPrsStd;..\..\..\drv\AppStd;..\..\..\src\AppStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -221,7 +225,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDataXtd_DLL;__TNaming_DLL;__TPrsStd_DLL;__AppStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKV2d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKGeomBase.lib;TKBRep.lib;TKTopAlgo.lib;TKMath.lib;TKService.lib;TKG2d.lib;TKG3d.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBO.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

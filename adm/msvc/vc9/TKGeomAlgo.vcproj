@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKGeomAlgo"
-	ProjectGUID="{30901384-0566-01CF-0AF7-9E078A010330}"
+	ProjectGUID="{1EF82D33-0E78-10BA-18C1-322E6E866F40}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -1541,7 +1543,16 @@
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_HArray1OfSectionLaw_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_HSequenceOfAx2_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfAx2_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfTrsf_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceOfAx2_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceOfTrsf_0.cxx">
@@ -1593,6 +1604,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\GeomFill\GeomFill_DegeneratedBound.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\GeomFill\GeomFill_DiscreteTrihedron.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\GeomFill\GeomFill_DraftTrihedron.cxx">

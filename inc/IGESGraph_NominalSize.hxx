@@ -36,6 +36,9 @@ class TCollection_HAsciiString;
 
 //! defines IGESNominalSize, Type <406> Form <13> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Specifies a value, a name, and optionally a <br>
+//!          reference to an engineering standard <br>
 class IGESGraph_NominalSize : public IGESData_IGESEntity {
 
 public:

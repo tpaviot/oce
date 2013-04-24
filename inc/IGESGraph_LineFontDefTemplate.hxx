@@ -33,6 +33,11 @@ class IGESBasic_SubfigureDef;
 
 //! defines IGESLineFontDefTemplate, Type <304> Form <1> <br>
 //!           in package IGESGraph <br>
+//! <br>
+//!           Line Font can be defined as a repetition od Template figure <br>
+//!           that is displayed at regularly spaced locations along a <br>
+//!           planer anchoring curve. The anchoring curve itself has <br>
+//!           no visual purpose. <br>
 class IGESGraph_LineFontDefTemplate : public IGESData_LineFontEntity {
 
 public:

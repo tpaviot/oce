@@ -34,6 +34,12 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
+#ifndef _GeomAbs_Shape_HeaderFile
+#include <GeomAbs_Shape.hxx>
+#endif
+#ifndef _GeomFill_Trihedron_HeaderFile
+#include <GeomFill_Trihedron.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
@@ -63,7 +69,7 @@ public:
   
   Standard_EXPORT   BRepFill_Pipe();
   
-  Standard_EXPORT   BRepFill_Pipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile,const Standard_Boolean GeneratePartCase = Standard_False);
+  Standard_EXPORT   BRepFill_Pipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile,const GeomFill_Trihedron aMode = GeomFill_IsCorrectedFrenet,const Standard_Boolean ForceApproxC1 = Standard_False,const Standard_Boolean GeneratePartCase = Standard_False);
   
   Standard_EXPORT     void Perform(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile,const Standard_Boolean GeneratePartCase = Standard_False) ;
   
@@ -129,6 +135,9 @@ TopoDS_Shape myFirst;
 TopoDS_Shape myLast;
 Standard_Integer myDegmax;
 Standard_Integer mySegmax;
+GeomAbs_Shape myContinuity;
+GeomFill_Trihedron myMode;
+Standard_Boolean myForceApproxC1;
 
 
 };

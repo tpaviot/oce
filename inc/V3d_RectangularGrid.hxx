@@ -85,8 +85,7 @@ private:
   Standard_EXPORT     void DefinePoints() ;
 
 Handle_Graphic3d_Structure myStructure;
-Handle_Graphic3d_Group myGroup1;
-Handle_Graphic3d_Group myGroup2;
+Handle_Graphic3d_Group myGroup;
 gp_Ax3 myCurViewPlane;
 V3d_ViewerPointer myViewer;
 Standard_Boolean myCurAreDefined;

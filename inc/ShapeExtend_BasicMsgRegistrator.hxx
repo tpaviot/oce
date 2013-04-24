@@ -35,6 +35,10 @@ class TopoDS_Shape;
 //!          It is used by ShapeHealing algorithms to attach a message <br>
 //!          describing encountered case (e.g. removing small edge from <br>
 //!          a wire). <br>
+//! <br>
+//!          The methods of this class are empty and redefined, for instance, <br>
+//!          in the classes for Data Exchange processors for attaching <br>
+//!          messages to interface file entities or CAS.CADE shapes. <br>
 class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
 
 public:

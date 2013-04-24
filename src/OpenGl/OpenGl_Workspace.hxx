@@ -1,6 +1,6 @@
 // Created on: 2011-09-20
 // Created by: Sergey ZERCHANINOV
-// Copyright (c) 2011-2012 OPEN CASCADE SAS
+// Copyright (c) 2011-2013 OPEN CASCADE SAS
 //
 // The content of this file is subject to the Open CASCADE Technology Public
 // License Version 6.5 (the "License"). You may not use the content of this file
@@ -17,7 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #ifndef _OpenGl_Workspace_Header
 #define _OpenGl_Workspace_Header
 
@@ -26,29 +25,35 @@
 
 #include <TColStd_Array2OfReal.hxx>
 #include <Quantity_Color.hxx>
-#include <Graphic3d_TypeOfComposition.hxx>
-
 #include <Graphic3d_CView.hxx>
+#include <Graphic3d_TypeOfComposition.hxx>
+#include <Graphic3d_TypeOfTexture.hxx>
+#include <Graphic3d_PtrFrameBuffer.hxx>
+#include <Graphic3d_BufferType.hxx>
+#include <Handle_Graphic3d_TextureParams.hxx>
+
 #include <Aspect_CLayer2d.hxx>
 #include <Aspect_Handle.hxx>
 #include <Aspect_PrintAlgo.hxx>
-#include <Graphic3d_PtrFrameBuffer.hxx>
-#include <Graphic3d_BufferType.hxx>
 
 #include <InterfaceGraphic_Graphic3d.hxx>
 #include <InterfaceGraphic_Visual3d.hxx>
 
+#include <NCollection_Sequence.hxx>
+
 #include <OpenGl_tsm.hxx>
 
+#include <OpenGl_AspectFace.hxx>
 #include <OpenGl_Display.hxx>
 #include <OpenGl_Matrix.hxx>
 #include <OpenGl_NamedStatus.hxx>
+#include <OpenGl_PrinterContext.hxx>
 #include <OpenGl_TextParam.hxx>
 
 #include <Handle_OpenGl_View.hxx>
+#include <Handle_OpenGl_Texture.hxx>
 
 class OpenGl_AspectLine;
-class OpenGl_AspectFace;
 class OpenGl_AspectMarker;
 class OpenGl_AspectText;
 class OpenGl_FrameBuffer;
@@ -88,8 +93,9 @@ public:
 
   //! Special method to perform printing.
   //! System-specific and currently only Win platform implemented.
-  Standard_Boolean Print (const Graphic3d_CView& theCView, 
-                          const Aspect_CLayer2d& theCUnderLayer, 
+  Standard_Boolean Print (const Handle(OpenGl_PrinterContext)& thePrintContext,
+                          const Graphic3d_CView& theCView,
+                          const Aspect_CLayer2d& theCUnderLayer,
                           const Aspect_CLayer2d& theCOverLayer,
                           const Aspect_Handle    theHPrintDC,
                           const Standard_Boolean theToShowBackground,
@@ -97,14 +103,14 @@ public:
                           const Aspect_PrintAlgo thePrintAlgorithm,
                           const Standard_Real    theScaleFactor);
 
+  const Handle(OpenGl_PrinterContext)& PrinterContext() const
+  {
+    return myPrintContext;
+  }
+
   void DisplayCallback (const Graphic3d_CView& theCView, int theReason);
 
-  // szvgl: defined in OpenGl_Workspace_1.cxx
-  void BeginAnimation (const Standard_Boolean theUseDegeneration,
-                       const Standard_Boolean theUpdateAM); 
-  void EndAnimation();
-  void EraseAnimation();
-
+  Standard_Boolean SetImmediateModeDrawToFront (const Standard_Boolean theDrawToFrontBuffer);
   Standard_Boolean BeginAddMode();
   void EndAddMode();
   void ClearImmediatMode (const Graphic3d_CView& theCView,
@@ -114,17 +120,7 @@ public:
                                       const Standard_Boolean theUseDepthTest,
                                       const Standard_Boolean theRetainMode);
   void EndImmediatMode();
-  void Transform (const TColStd_Array2OfReal& theMatrix, const Graphic3d_TypeOfComposition theType);
   void DrawStructure (const OpenGl_Structure* theStructure);
-  void BeginPolyline();
-  void EndPolyline();
-  void Draw (const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
-  void Move (const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
-  void SetLineColor (const Standard_ShortReal theR, const Standard_ShortReal theG, const Standard_ShortReal theB);
-  void SetLineType (const Standard_Integer theType);
-  void SetLineWidth (const Standard_ShortReal theWidth);
-  void SetMinMax (const Standard_ShortReal X1, const Standard_ShortReal Y1, const Standard_ShortReal Z1,
-                  const Standard_ShortReal X2, const Standard_ShortReal Y2, const Standard_ShortReal Z2);
 
   Graphic3d_PtrFrameBuffer FBOCreate (const Standard_Integer theWidth, const Standard_Integer theHeight);
   void FBORelease (Graphic3d_PtrFrameBuffer theFBOPtr);
@@ -140,9 +136,6 @@ public:
   //// RELATED TO STATUS ////
 
   Standard_Integer   NamedStatus;
-
-  Standard_Integer   DegenerateModel;
-  Standard_ShortReal SkipRatio;
 
   const TEL_COLOUR* HighlightColor;
 
@@ -161,65 +154,54 @@ public:
   Standard_EXPORT const OpenGl_AspectFace*   AspectFace   (const Standard_Boolean theWithApply);
   Standard_EXPORT const OpenGl_AspectMarker* AspectMarker (const Standard_Boolean theWithApply);
   Standard_EXPORT const OpenGl_AspectText*   AspectText   (const Standard_Boolean theWithApply);
+  inline const OpenGl_TextParam* AspectTextParams() const
+  {
+    return TextParam_applied;
+  }
 
   //! Clear the applied aspect state.
   void ResetAppliedAspect();
 
-  //// RELATED TO FONTS ////
-
-  int FindFont (const char*           theFontName,
-                const Font_FontAspect theFontAspect,
-                const int             theBestSize = -1,
-                const float           theXScale = 1.0f,
-                const float           theYScale = 1.0f)
-  {
-    return myDisplay->FindFont (theFontName, theFontAspect, theBestSize, theXScale, theYScale);
-  }
-
-  void StringSize (const wchar_t* theText, int& theWidth, int& theAscent, int& theDescent)
-  {
-    myDisplay->StringSize (theText, theWidth, theAscent, theDescent);
-  }
-
-  void RenderText (const wchar_t* theText, const int theIs2d,
-                   const float theX, const float theY, const float theZ)
-  {
-    const OpenGl_AspectText* anAspect = AspectText (Standard_True);
-    myDisplay->RenderText (theText, theIs2d, theX, theY, theZ, anAspect, TextParam_applied);
-  }
+  Standard_EXPORT Handle(OpenGl_Texture) DisableTexture();
+  Standard_EXPORT Handle(OpenGl_Texture) EnableTexture (const Handle(OpenGl_Texture)&          theTexture,
+                                                        const Handle(Graphic3d_TextureParams)& theParams = NULL);
 
 protected:
 
-  void CopyBuffers (Tint vid, int FrontToBack,
-                    Tfloat xm, Tfloat ym, Tfloat zm,
-                    Tfloat XM, Tfloat YM, Tfloat ZM,
-                    Tint flag);
+  void CopyBuffers (const Standard_Boolean theFrontToBack);
 
   virtual Standard_Boolean Activate();
 
   // TEMPORARY!!!
-  void Redraw1 (const Graphic3d_CView& theCView, 
-                const Aspect_CLayer2d& theCUnderLayer, 
+  void Redraw1 (const Graphic3d_CView& theCView,
+                const Aspect_CLayer2d& theCUnderLayer,
                 const Aspect_CLayer2d& theCOverLayer,
                 const int theToSwap);
 
-protected:
-
-  Handle(OpenGl_View) myView;            // WSViews - now just one view is supported
-  Tint                myTransientList;   // WSTransient
-  Standard_Boolean    myIsTransientOpen; // transientOpen
-  Tint                myRetainMode;      // WSRetainMode
-
-  Standard_Boolean    myUseTransparency;
-  Standard_Boolean    myUseZBuffer;
-  Standard_Boolean    myUseDepthTest;
-  Standard_Boolean    myUseGLLight;
-  Standard_Boolean    myBackBufferRestored;
-
-  //// RELATED TO STATUS ////
-
   void UpdateMaterial (const int flag);
 
+  void setTextureParams (Handle(OpenGl_Texture)&                theTexture,
+                         const Handle(Graphic3d_TextureParams)& theParams);
+
+protected: //! @name protected fields
+
+  Handle(OpenGl_PrinterContext) myPrintContext;
+  Handle(OpenGl_View)    myView;            // WSViews - now just one view is supported
+  Standard_Boolean       myIsTransientOpen; // transientOpen
+  Standard_Boolean       myRetainMode;
+  Standard_Boolean       myTransientDrawToFront; //!< optimization flag for immediate mode (to render directly to the front buffer)
+
+  NCollection_Sequence<const OpenGl_Structure*> myTransientList;
+
+  Standard_Boolean       myUseTransparency;
+  Standard_Boolean       myUseZBuffer;
+  Standard_Boolean       myUseDepthTest;
+  Standard_Boolean       myUseGLLight;
+  Standard_Boolean       myBackBufferRestored;
+
+protected: //! @name fields related to status
+
+  Handle(OpenGl_Texture) myTextureBound;    //!< currently bound texture (managed by OpenGl_AspectFace and OpenGl_View environment texture)
   const OpenGl_AspectLine *AspectLine_set, *AspectLine_applied;
   const OpenGl_AspectFace *AspectFace_set, *AspectFace_applied;
   const OpenGl_AspectMarker *AspectMarker_set, *AspectMarker_applied;
@@ -232,11 +214,13 @@ protected:
 
   const TEL_POFFSET_PARAM* PolygonOffset_applied;
 
-public:
+  OpenGl_AspectFace myAspectFaceHl; // Hiddenline aspect
 
-  DEFINE_STANDARD_RTTI(OpenGl_Workspace) // Type definition
+public: //! @name type definition
+
+  DEFINE_STANDARD_RTTI(OpenGl_Workspace)
   DEFINE_STANDARD_ALLOC
 
 };
 
-#endif //_OpenGl_Workspace_Header
+#endif // _OpenGl_Workspace_Header

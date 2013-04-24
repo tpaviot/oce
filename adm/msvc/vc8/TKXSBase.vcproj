@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXSBase"
-	ProjectGUID="{92580A8D-11DE-16DB-072D-1911E1E4D202}"
+	ProjectGUID="{D43D0F5F-14A7-0058-17C8-1D1DB489323A}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

@@ -18,11 +18,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-// Updated by DPF Fri Mar 21 18:40:58 1997
-//              Added casting in void to compile
-//              on AO1 int 32 bits -> pointer 64 bits ????
-// Robert Boehne 30 May 2000 : Dec Osf
-
 // include windows.h first to have all definitions available
 #ifdef WNT
 #include <windows.h>
@@ -84,7 +79,11 @@ defaultPrompt:
       errChannel = Tcl_GetStdChannel(TCL_STDERR);
       if (code != TCL_OK) {
         if (errChannel) {
+#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 5)))
+          Tcl_Write(errChannel, Tcl_GetStringResult(Interp), -1);
+#else
           Tcl_Write(errChannel, Interp->result, -1);
+#endif
           Tcl_Write(errChannel, "\n", 1);
         }
         Tcl_AddErrorInfo(Interp,
@@ -97,7 +96,7 @@ defaultPrompt:
     }
 }
 
-#ifndef WNT
+#if !defined(_WIN32) && !defined(__WIN32__)
 
 #ifdef HAVE_CONFIG_H
 # include <config.h>
@@ -135,10 +134,6 @@ defaultPrompt:
 # include <strings.h>
 #endif
 
-
-#include <Draw_WindowBase.hxx>
-#include <X11/XWDFile.h>
-
 #include <stdio.h>
 #include <tk.h>
 
@@ -175,10 +170,7 @@ static Standard_Boolean tty;        /* Non-zero means standard input is a
 
 static unsigned long thePixels[MAXCOLOR];
 
-
-Display*         Draw_WindowDisplay = NULL;
 Standard_Integer Draw_WindowScreen = 0;
-Colormap         Draw_WindowColorMap;
 Standard_Boolean Draw_BlackBackGround = Standard_True;
 
 
@@ -186,6 +178,22 @@ Standard_Boolean Draw_BlackBackGround = Standard_True;
 //======================================================
 Draw_Window* Draw_Window::firstWindow = NULL;
 
+// X11 specific part
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
+#include <X11/Xutil.h>
+#include <Aspect_DisplayConnection.hxx>
+
+Display* Draw_WindowDisplay = NULL;
+Colormap Draw_WindowColorMap;
+static Handle(Aspect_DisplayConnection) Draw_DisplayConnection;
+
+// Base_Window struct definition
+//===================================
+struct Base_Window
+{
+  GC gc;
+  XSetWindowAttributes xswa;
+};
 
 //=======================================================================
 //function : Draw_Window
@@ -593,6 +601,7 @@ void Draw_Window::Hide()
 //=======================================================================
 void Draw_Window::Destroy()
 {
+  XFreeGC (Draw_WindowDisplay, base.gc);
   XDestroyWindow(Draw_WindowDisplay, win);
   win = 0;
   if (myBuffer != 0)
@@ -756,6 +765,25 @@ Standard_Boolean Draw_Window::Save (const char* theFileName) const
 }
 
 //=======================================================================
+//function : Wait
+//purpose  :
+//=======================================================================
+
+void Draw_Window::Wait (Standard_Boolean wait)
+{
+  Flush();
+  if (!wait) {
+    XSelectInput(Draw_WindowDisplay,win,
+                 ButtonPressMask|ExposureMask | StructureNotifyMask |
+                 PointerMotionMask);
+  }
+  else {
+    XSelectInput(Draw_WindowDisplay,win,
+                 ButtonPressMask|ExposureMask | StructureNotifyMask);
+  }
+}
+
+//=======================================================================
 //function : ProcessEvent
 //purpose  :
 //=======================================================================
@@ -884,25 +912,6 @@ void Draw_Window::WConfigureNotify(const Standard_Integer,
 }
 
 //=======================================================================
-//function : Wait
-//purpose  :
-//=======================================================================
-
-void Draw_Window::Wait (Standard_Boolean wait)
-{
-  Flush();
-  if (!wait) {
-        XSelectInput(Draw_WindowDisplay,win,
-                     ButtonPressMask|ExposureMask | StructureNotifyMask |
-                     PointerMotionMask);
-  }
-  else {
-        XSelectInput(Draw_WindowDisplay,win,
-                     ButtonPressMask|ExposureMask | StructureNotifyMask);
-  }
-}
-
-//=======================================================================
 //function : WUnmapNotify
 //purpose  :
 //=======================================================================
@@ -946,6 +955,35 @@ static void ProcessEvents(ClientData,int)
 }
 
 //======================================================
+// funtion : GetNextEvent()
+// purpose :
+//======================================================
+void GetNextEvent(Event& ev)
+{
+  XEvent xev;
+  XNextEvent(Draw_WindowDisplay, &xev);
+  switch(xev.type)
+  {
+    case ButtonPress :
+      ev.type = 4;
+      ev.window = xev.xbutton.window;
+      ev.button = xev.xbutton.button;
+      ev.x = xev.xbutton.x;
+      ev.y = xev.xbutton.y;
+      break;
+
+    case MotionNotify :
+      ev.type = 6;
+      ev.window = xev.xmotion.window;
+      ev.button = 0;
+      ev.x = xev.xmotion.x;
+      ev.y = xev.xmotion.y;
+      break;
+  }
+}
+#endif //__APPLE__
+
+//======================================================
 // funtion :Run_Appli
 // purpose :
 //======================================================
@@ -979,6 +1017,7 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
   // ConnectionNumber(Draw_WindowDisplay) is an int 32 bits
   //                    (void*) is a pointer      64 bits ???????
 
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
 #if TCL_MAJOR_VERSION  < 8
     Tk_CreateFileHandler((void*) ConnectionNumber(Draw_WindowDisplay),
                          TK_READABLE, ProcessEvents,(ClientData) 0 );
@@ -986,6 +1025,7 @@ void Run_Appli(Standard_Boolean (*interprete) (const char*))
     Tk_CreateFileHandler(ConnectionNumber(Draw_WindowDisplay),
                          TK_READABLE, ProcessEvents,(ClientData) 0 );
 #endif
+#endif // __APPLE__
 
 #endif
 
@@ -1055,7 +1095,11 @@ Standard_Boolean Init_Appli()
   mainWindow =
   Tk_MainWindow(interp) ;
   if (mainWindow == NULL) {
+#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 5)))
+    fprintf(stderr, "%s\n", Tcl_GetStringResult(interp));
+#else
     fprintf(stderr, "%s\n", interp->result);
+#endif
     exit(1);
   }
   Tk_Name(mainWindow) =
@@ -1064,13 +1108,22 @@ Standard_Boolean Init_Appli()
 
   Tk_GeometryRequest(mainWindow, 200, 200);
 
-  if (Draw_WindowDisplay == NULL) {
-    Draw_WindowDisplay = Tk_Display(mainWindow);
+#if !defined(__APPLE__) || defined(MACOSX_USE_GLX)
+  if (Draw_DisplayConnection.IsNull())
+  {
+    try
+    {
+      Draw_DisplayConnection = new Aspect_DisplayConnection();
+    }
+    catch (Standard_Failure)
+    {
+      std::cout << "Cannot open display. Interpret commands in batch mode." << std::endl;
+      return Standard_False;      
+    }
   }
-  if (Draw_WindowDisplay == NULL) {
-    cout << "Cannot open display : "<<XDisplayName(NULL)<<endl;
-    cout << "Interpret commands in batch mode."<<endl;
-    return Standard_False;
+  if (Draw_WindowDisplay == NULL)
+  {
+    Draw_WindowDisplay = Draw_DisplayConnection->GetDisplay();
   }
   //
   // synchronize the display server : could be done within Tk_Init
@@ -1084,6 +1137,8 @@ Standard_Boolean Init_Appli()
   Draw_WindowScreen   = DefaultScreen(Draw_WindowDisplay);
   Draw_WindowColorMap = DefaultColormap(Draw_WindowDisplay,
                                         Draw_WindowScreen);
+#endif // __APPLE__
+
   tty = isatty(0);
   Tcl_SetVar(interp,"tcl_interactive",(char*)(tty ? "1" : "0"), TCL_GLOBAL_ONLY);
 //  Tcl_SetVar(interp,"tcl_interactive",tty ? "1" : "0", TCL_GLOBAL_ONLY);
@@ -1097,34 +1152,6 @@ Standard_Boolean Init_Appli()
 void Destroy_Appli()
 {
   //XCloseDisplay(Draw_WindowDisplay);
-}
-
-//======================================================
-// funtion : GetNextEvent()
-// purpose :
-//======================================================
-void GetNextEvent(Event& ev)
-{
-  XEvent xev;
-  XNextEvent(Draw_WindowDisplay, &xev);
-  switch(xev.type)
-  {
-      case ButtonPress :
-           ev.type = 4;
-           ev.window = xev.xbutton.window;
-           ev.button = xev.xbutton.button;
-           ev.x = xev.xbutton.x;
-           ev.y = xev.xbutton.y;
-           break;
-
-      case MotionNotify :
-           ev.type = 6;
-           ev.window = xev.xmotion.window;
-           ev.button = 0;
-           ev.x = xev.xmotion.x;
-           ev.y = xev.xmotion.y;
-           break;
-   }
 }
 
 /*
@@ -1470,13 +1497,19 @@ void DrawWindow::Init(Standard_Integer theXLeft, Standard_Integer theYTop,
 
   // include decorations in the window dimensions
   // to reproduce same behaviour of Xlib window.
-  theXLeft   -= GetSystemMetrics(SM_CXSIZEFRAME);
-  theYTop    -= GetSystemMetrics(SM_CYSIZEFRAME) + GetSystemMetrics(SM_CYCAPTION);
-  theWidth   += 2 * GetSystemMetrics(SM_CXSIZEFRAME);
-  theHeight  += 2 * GetSystemMetrics(SM_CYSIZEFRAME) + GetSystemMetrics(SM_CYCAPTION);
+  DWORD aWinStyle   = GetWindowLongPtr (win, GWL_STYLE);
+  DWORD aWinStyleEx = GetWindowLongPtr (win, GWL_EXSTYLE);
+  HMENU aMenu       = GetMenu (win);
 
-  SetPosition (theXLeft, theYTop);
-  SetDimension (theWidth, theHeight);
+  RECT aRect;
+  aRect.top    = theYTop;
+  aRect.bottom = theYTop + theHeight;
+  aRect.left   = theXLeft;
+  aRect.right  = theXLeft + theWidth;
+  AdjustWindowRectEx (&aRect, aWinStyle, aMenu != NULL ? TRUE : FALSE, aWinStyleEx);
+
+  SetPosition  (aRect.left, aRect.top);
+  SetDimension (aRect.right - aRect.left, aRect.bottom - aRect.top);
   // Save the pointer at the instance associated to the window
   SetWindowLong(win, CLIENTWND, (LONG)this);
   HDC hDC = GetDC(win);
@@ -2019,7 +2052,7 @@ static DWORD WINAPI readStdinThreadFunc(VOID)
     while (console_semaphore != WAIT_CONSOLE_COMMAND)
       Sleep(100);
     //if (gets(console_command))
-	if (fgets(console_command,COMMAND_SIZE,stdin)) 
+	if (fgets(console_command,COMMAND_SIZE,stdin))
       {
         console_semaphore = HAS_CONSOLE_COMMAND;
       }
@@ -2061,7 +2094,11 @@ static DWORD WINAPI tkLoop(VOID)
       Standard_Integer res = Tk_Init (interp);
       if (res != TCL_OK)
       {
+#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 5)))
+        cout << "tkLoop: error in Tk initialization. Tcl reported: " << Tcl_GetStringResult(interp) << endl;
+#else
         cout << "tkLoop: error in Tk initialization. Tcl reported: " << interp->result << endl;
+#endif
       }
     }
     catch (Standard_Failure)
@@ -2072,7 +2109,11 @@ static DWORD WINAPI tkLoop(VOID)
     mainWindow = Tk_MainWindow (interp);
     if (mainWindow == NULL)
     {
+#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 5)))
+      fprintf (stderr, "%s\n", Tcl_GetStringResult(interp));
+#else
       fprintf (stderr, "%s\n", interp->result);
+#endif
       cout << "tkLoop: Tk_MainWindow() returned NULL. Exiting...\n";
       Tcl_Exit (0);
     }

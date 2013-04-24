@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKStdSchema"
-	ProjectGUID="{F6FA473A-18EF-1679-092D-C023C96D682C}"
+	ProjectGUID="{C528172C-030E-0453-048F-1D0D7E60EEA4}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StdSchema;..\..\..\src\StdSchema;..\..\..\drv\StdDrivers;..\..\..\src\StdDrivers;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKStdSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StdSchema;..\..\..\src\StdSchema;..\..\..\drv\StdDrivers;..\..\..\src\StdDrivers;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKStdSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StdSchema;..\..\..\src\StdSchema;..\..\..\drv\StdDrivers;..\..\..\src\StdDrivers;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKStdSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StdSchema;..\..\..\src\StdSchema;..\..\..\drv\StdDrivers;..\..\..\src\StdDrivers;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKPLCAF.lib TKernel.lib TKCAF.lib TKShapeSchema.lib TKLCAF.lib TKStdLSchema.lib TKG3d.lib TKPShape.lib TKMath.lib TKG2d.lib TKPCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKStdSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

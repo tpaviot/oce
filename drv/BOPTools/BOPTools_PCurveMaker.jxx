@@ -1,6 +1,0 @@
-#ifndef _BOPTools_PaveFiller_HeaderFile
-#include <BOPTools_PaveFiller.hxx>
-#endif
-#ifndef _BOPTools_PCurveMaker_HeaderFile
-#include <BOPTools_PCurveMaker.hxx>
-#endif

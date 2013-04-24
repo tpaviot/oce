@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXSBase"
-	ProjectGUID="{92580A8D-11DE-16DB-072D-1911E1E4D202}"
+	ProjectGUID="{71FE9CE0-192F-120F-069B-DB5FEE77095D}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Interface;..\..\..\src\Interface;..\..\..\drv\Transfer;..\..\..\src\Transfer;..\..\..\drv\IFGraph;..\..\..\src\IFGraph;..\..\..\drv\IFSelect;..\..\..\src\IFSelect;..\..\..\drv\TransferBRep;..\..\..\src\TransferBRep;..\..\..\drv\XSControl;..\..\..\src\XSControl;..\..\..\drv\StepData;..\..\..\src\StepData;..\..\..\drv\StepFile;..\..\..\src\StepFile;..\..\..\drv\HeaderSection;..\..\..\src\HeaderSection;..\..\..\drv\RWHeaderSection;..\..\..\src\RWHeaderSection;..\..\..\drv\APIHeaderSection;..\..\..\src\APIHeaderSection;..\..\..\drv\StepSelect;..\..\..\src\StepSelect;..\..\..\drv\UnitsMethods;..\..\..\src\UnitsMethods;..\..\..\drv\XSAlgo;..\..\..\src\XSAlgo;..\..\..\drv\LibCtl;..\..\..\src\LibCtl;..\..\..\drv\MoniTool;..\..\..\src\MoniTool;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKTopAlgo.lib TKGeomBase.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKXSBase.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

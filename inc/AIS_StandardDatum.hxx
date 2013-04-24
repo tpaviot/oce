@@ -6,7 +6,7 @@
 #ifndef _AIS_StandardDatum_HeaderFile
 #define _AIS_StandardDatum_HeaderFile
 
-
+//! Declares the type of standard datum of an Interactive Object. <br>
 enum AIS_StandardDatum {
 AIS_SD_None,
 AIS_SD_Point,

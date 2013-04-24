@@ -121,9 +121,6 @@
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #include <Aspect_TypeOfHighlightMethod.hxx>
 #endif
-#ifndef _Handle_Aspect_GraphicDriver_HeaderFile
-#include <Handle_Aspect_GraphicDriver.hxx>
-#endif
 #ifndef _Handle_Graphic3d_Plotter_HeaderFile
 #include <Handle_Graphic3d_Plotter.hxx>
 #endif
@@ -165,7 +162,6 @@ class Quantity_Color;
 class TCollection_AsciiString;
 class Graphic3d_MapOfStructure;
 class Graphic3d_Structure;
-class Aspect_GraphicDriver;
 class Graphic3d_Plotter;
 
 
@@ -265,6 +261,18 @@ public:
   Standard_EXPORT     void SetContext(const Visual3d_ContextView& CTX) ;
   //! Sets the transformation matrix that is applied <br>
 //!          to <MyViewOrientation> field of the view <me>. <br>
+//! <br>
+//!	    <AMatrix> is defined as a 4*4 real matrix. <br>
+//! <br>
+//!		------------------- <br>
+//!		| a11 a12 a13  t1 | <br>
+//!		| a21 a22 a23  t2 | <br>
+//!		| a31 a32 a33  t3 | <br>
+//!		|  0   0   0   1  | <br>
+//!		------------------- <br>
+//! <br>
+//!  Category: Methods to modify the class definition <br>
+//!  Warning: Raises TransformError if the matrix isn't a 4x4 matrix. <br>
   Standard_EXPORT     void SetTransform(const TColStd_Array2OfReal& AMatrix) ;
   //! Modifies the mapping of the view <me>. <br>
   Standard_EXPORT     void SetViewMapping(const Visual3d_ViewMapping& VM) ;
@@ -287,6 +295,41 @@ public:
 //!	    Modifies the viewmapping of the associated view <br>
 //!	    when it calls the SetRatio method. <br>
 //!	    After this call, each view is mapped in an unique window. <br>
+//! <br>
+//! Programming example : <br>
+//! <br>
+//! An example when we have 1 view and 1 window <br>
+//! ------------------------------------------- <br>
+//! <br>
+//! Handle(Aspect_DisplayConnection) aDisplayConnection; <br>
+//! <br>
+//! // Display connection initialization only needed on Linux platform <br>
+//! // and on Mac OS X, in cases when you use Xlib for windows drawing. <br>
+//! aDisplayConnection = new Aspect_DisplayConnection(); <br>
+//! <br>
+//! // Graphic driver initialization <br>
+//! Handle(Graphic3d_GraphicDriver) aGraphicDriver = <br>
+//!   Graphic3d::InitGraphicDriver (aDisplayConnection); <br>
+//! <br>
+//! // Define a view manager <br>
+//! Handle(Visual3d_ViewManager) aVisualManager = new Visual3d_ViewManager (aGraphicDriver); <br>
+//! <br>
+//! // Define a view <br>
+//! Handle(Visual3d_View) aView = new Visual3d_View (aVisaulManager); <br>
+//! <br>
+//! // Define a window <br>
+//! Handle(Xw_Window) aWindow = new Xw_Window <br>
+//!	(aDisplayConnection, "Graphic View 1", 0.695, 0.695, 0.600, 0.600, Quantity_NOC_MATRAGRAY); <br>
+//! <br>
+//! // Associate the view and the window <br>
+//! aView->SetWindow (aWindow); <br>
+//! <br>
+//! // Map the window <br>
+//! aWindow->Map (); <br>
+//! <br>
+//! // Activate the view <br>
+//! aView->Activate (); <br>
+//! <br>
   Standard_EXPORT     void SetWindow(const Handle(Aspect_Window)& AWindow) ;
   //! Associates the window <AWindow> and context <AContext> <br>
 //!	    to the view <me>. <br>
@@ -318,19 +361,6 @@ public:
   //! Sets the value of the orientation to be the same as the <br>
 //!	    orientation saved by the SetViewOrientationDefaut method. <br>
   Standard_EXPORT     void ViewOrientationReset() ;
-  //! Activates animation mode with an optional degeneration <br>
-//!	according to the TypeOfDegenerateModel of each graphic structure <br>
-//!	When the animation mode is activated in the view, <br>
-//!	all Graphic3d_Structure are stored in a graphic object. <br>
-//!  Warning: only ONE view may have animation mode turned on <br>
-//!	at same time. <br>
-  Standard_EXPORT     void SetAnimationModeOn(const Standard_Boolean degenerate = Standard_False) ;
-  //! Deactivates the animation mode. <br>
-  Standard_EXPORT     void SetAnimationModeOff() ;
-  //! Returns the activity of the animation mode. <br>
-  Standard_EXPORT     Standard_Boolean AnimationModeIsOn() const;
-  //! Returns the activity of the degenerate mode. <br>
-  Standard_EXPORT     Standard_Boolean DegenerateModeIsOn() const;
   //! Switches computed HLR mode in the view <br>
   Standard_EXPORT     void SetComputedMode(const Standard_Boolean aMode) ;
   //! Returns the computed HLR mode state <br>
@@ -435,7 +465,7 @@ public:
   //! Returns the c structure associated to <me>. <br>
   Standard_EXPORT     Standard_Address CView() const;
   //! Returns the associated GraphicDriver. <br>
-  Standard_EXPORT     Handle_Aspect_GraphicDriver GraphicDriver() const;
+  Standard_EXPORT    const Handle_Graphic3d_GraphicDriver& GraphicDriver() const;
   //! Calls the method Plot for each Structure <br>
 //!	    displayed in <me>. <br>
   Standard_EXPORT     void Plot(const Handle(Graphic3d_Plotter)& APlotter) const;
@@ -529,13 +559,6 @@ protected:
 
 private: 
 
-  //! Activates degenerate mode. <br>
-//!	When the degenerate mode is activated in the view, <br>
-//!	all Graphic3d_Structure with the type TOS_COMPUTED <br>
-//!	displayed in this view are not computed. <br>
-  Standard_EXPORT     void SetDegenerateModeOn() ;
-  //! Deactivates the degenerate mode. <br>
-  Standard_EXPORT     void SetDegenerateModeOff() ;
   //! Is it possible to display the structure <br>
 //!	    <AStructure> in the view <me> ? <br>
   Standard_EXPORT     Visual3d_TypeOfAnswer AcceptDisplay(const Handle(Graphic3d_Structure)& AStructure) const;

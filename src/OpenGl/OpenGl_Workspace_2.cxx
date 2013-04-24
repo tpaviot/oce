@@ -28,12 +28,12 @@
 # include <config.h>
 #endif
 
-#ifdef HAVE_FREEIMAGE
+#if (defined(_WIN32) || defined(__WIN32__)) && defined(HAVE_FREEIMAGE)
   #include <NCollection_Handle.hxx>
   #include <FreeImagePlus.h>
   #ifdef _MSC_VER
-  #pragma comment( lib, "FreeImage.lib" )
-  #pragma comment( lib, "FreeImagePlus.lib" )
+    #pragma comment( lib, "FreeImage.lib" )
+    #pragma comment( lib, "FreeImagePlus.lib" )
   #endif
   typedef NCollection_Handle<fipImage> FipHandle;
 #endif
@@ -42,8 +42,6 @@
 #include <OpenGl_Workspace.hxx>
 #include <OpenGl_View.hxx>
 #include <OpenGl_Display.hxx>
-
-#include <GL/glu.h> // gluOrtho2D()
 
 //10-05-96 : CAL ; Ajout d'un nouveau delta dans les copies de pixels (voir CALL_DEF_DELTA)
 #define CALL_DEF_DELTA 10
@@ -71,7 +69,7 @@ static void getMaxFrameSize(Standard_Integer& theWidth,
   GLint aTexDim = 2048;
   glGetIntegerv (GL_MAX_VIEWPORT_DIMS, (GLint*) &aVpDim);
   glGetIntegerv (GL_MAX_TEXTURE_SIZE, &aTexDim);
-  (aVpDim[0] >= aTexDim) ? aMaxX = (GLsizei) aTexDim : 
+  (aVpDim[0] >= aTexDim) ? aMaxX = (GLsizei) aTexDim :
                            aMaxX = getNearestPowOfTwo((GLsizei)aVpDim[0]);
   (aVpDim[1] >= aTexDim) ? aMaxY = (GLsizei) aTexDim :
                            aMaxY = getNearestPowOfTwo((GLsizei)aVpDim[1]);
@@ -99,7 +97,7 @@ static void fitDimensionsRatio (Standard_Integer& theWidth,
 
 // ---------------------------------------------------------------
 // Function: getDimensionsTiling
-// Purpose:  calculate maximum possible dimensions for framebuffer 
+// Purpose:  calculate maximum possible dimensions for framebuffer
 //           in tiling mode according to the view size
 // ---------------------------------------------------------------
 static void getDimensionsTiling (Standard_Integer& theFrameWidth,
@@ -134,7 +132,7 @@ static void initBufferStretch (Standard_Integer& theFrameWidth,
   Standard_Real aWidthRate  = (Standard_Real)theFrameWidth /theViewWidth;
   Standard_Real aHeightRate = (Standard_Real)theFrameHeight/theViewHeight;
 
-  if ((aWidthRate > 1 && aHeightRate > 1 && aWidthRate >= aHeightRate) || 
+  if ((aWidthRate > 1 && aHeightRate > 1 && aWidthRate >= aHeightRate) ||
       (aWidthRate > 1 && aHeightRate <= 1))
   {
     theFrameWidth  = (Standard_Integer)(theFrameWidth /aWidthRate);
@@ -204,13 +202,13 @@ static void initBitmapBuffer (const HDC theMemoryDC,
 // Purpose:  copy the data from image buffer to the device context
 // ---------------------------------------------------------------
 static bool imagePasteDC(HDC theDstDC,    FipHandle theImage, int theOffsetX,
-                         int theOffsetY,  int theWidth, int theHeight, 
+                         int theOffsetY,  int theWidth, int theHeight,
                          int theLeft = 0, int theTop = 0)
 {
   // get image parameters
   BITMAPINFO* aBitmapData = theImage->getInfo ();
   SetStretchBltMode (theDstDC, STRETCH_HALFTONE);
- 
+
   // organize blocks data passing if memory isn't enough to pass all the data
   // at once
   int aLinesComplete = 0, aMaxBlockWidth = theHeight, aBlockWidth = 0,
@@ -279,7 +277,7 @@ static bool imageStretchDC(HDC theDstDC,   FipHandle theImage, int theOffsetX,
   unsigned int heightPx   = theImage->getHeight ();
   BITMAPINFO* aBitmapData = theImage->getInfo ();
   SetStretchBltMode (theDstDC, STRETCH_HALFTONE);
-  
+
   // pass lines and check if operation is succesfull
   int aPassed = 0;
   aPassed = StretchDIBits (theDstDC, theOffsetX, theOffsetY, theWidth,
@@ -288,7 +286,7 @@ static bool imageStretchDC(HDC theDstDC,   FipHandle theImage, int theOffsetX,
 
   if (aPassed != heightPx)
     return false;
- 
+
   return true;
 }
 #endif
@@ -299,8 +297,9 @@ static bool imageStretchDC(HDC theDstDC,   FipHandle theImage, int theOffsetX,
 
 //call_togl_print
 Standard_Boolean OpenGl_Workspace::Print
-  (const Graphic3d_CView& ACView, 
-   const Aspect_CLayer2d& ACUnderLayer, 
+  (const Handle(OpenGl_PrinterContext)& thePrintContext,
+   const Graphic3d_CView& ACView,
+   const Aspect_CLayer2d& ACUnderLayer,
    const Aspect_CLayer2d& ACOverLayer,
    const Aspect_Handle    hPrintDC,// const Aspect_Drawable hPrintDC,
    const Standard_Boolean showBackground,
@@ -308,6 +307,11 @@ Standard_Boolean OpenGl_Workspace::Print
    const Aspect_PrintAlgo printAlgorithm,
    const Standard_Real theScaleFactor)
 {
+  if (thePrintContext.IsNull())
+  {
+    return Standard_False;
+  }
+
 #ifdef WNT
 
   if (!Activate())
@@ -423,7 +427,7 @@ Standard_Boolean OpenGl_Workspace::Print
       }
 #else
       // try to allocate compatible bitmap and necessary resources
-      initBitmapBuffer (hMemDC, hViewBitmap, 
+      initBitmapBuffer (hMemDC, hViewBitmap,
                         aFrameWidth, aFrameHeight, aViewBuffer);
       if (!aViewBuffer)
       {
@@ -493,7 +497,7 @@ Standard_Boolean OpenGl_Workspace::Print
           break;
 #else
         // try to allocate compatible bitmap and necessary resources
-        initBitmapBuffer (hMemDC, hViewBitmap, 
+        initBitmapBuffer (hMemDC, hViewBitmap,
                           aFrameWidth, aFrameHeight, aViewBuffer);
         if (!aViewBuffer)
         {
@@ -515,7 +519,7 @@ Standard_Boolean OpenGl_Workspace::Print
       aMaxHeight = aMaxHeight >> 1;
     }
 
-    // check if there are proper dimensions 
+    // check if there are proper dimensions
     if (aMaxWidth <= 1 || aMaxHeight <= 1)
     {
       MessageBox (NULL, "Print failed: can't allocate buffer for printing.",
@@ -533,12 +537,11 @@ Standard_Boolean OpenGl_Workspace::Print
   }
 
   // setup printing context and viewport
-  GLint aViewPortBack[4]; 
+  myPrintContext = thePrintContext;
+  GLint aViewPortBack[4];
   GLint anAlignBack = 1;
-
-  OpenGl_PrinterContext aPrinterContext (GetGContext());
-  aPrinterContext.SetLayerViewport ((GLsizei)aFrameWidth,
-                                    (GLsizei)aFrameHeight);
+  myPrintContext->SetLayerViewport ((GLsizei )aFrameWidth,
+                                    (GLsizei )aFrameHeight);
   glGetIntegerv (GL_VIEWPORT, aViewPortBack);
   glGetIntegerv (GL_PACK_ALIGNMENT, &anAlignBack);
   glPixelStorei (GL_PACK_ALIGNMENT, 4);
@@ -567,6 +570,7 @@ Standard_Boolean OpenGl_Workspace::Print
       DeleteDC (hMemDC);
 #endif
 
+      myPrintContext.Nullify();
       return Standard_False;
     }
   }
@@ -587,11 +591,15 @@ Standard_Boolean OpenGl_Workspace::Print
 
   if (!IsTiling)
   {
-    aPrinterContext.SetScale ((GLfloat)aFrameWidth /viewWidth,
-                              (GLfloat)aFrameHeight/viewHeight);
+    myPrintContext->SetScale ((GLfloat )aFrameWidth /viewWidth,
+                              (GLfloat )aFrameHeight/viewHeight);
     aFrameBuffer->SetupViewport ();
     Redraw1(ACView, ACUnderLayer, ACOverLayer, 0);
-    RedrawImmediatMode();
+    if (!myTransientDrawToFront)
+    {
+      // render to FBO only if allowed to render to back buffer
+      RedrawImmediatMode();
+    }
     glReadPixels (0, 0, aFrameWidth, aFrameHeight,
                   GL_BGR_EXT, GL_UNSIGNED_BYTE, (GLvoid* )aViewBuffer);
 
@@ -620,9 +628,9 @@ Standard_Boolean OpenGl_Workspace::Print
     // calculate total count of frames and cropping size
     Standard_Integer aPxCropx = 0;
     Standard_Integer aPxCropy = 0;
-    Standard_Integer aTotalx = 
+    Standard_Integer aTotalx =
                      (Standard_Integer)floor ((float)width /aFrameWidth);
-    Standard_Integer aTotaly = 
+    Standard_Integer aTotaly =
                      (Standard_Integer)floor ((float)height/aFrameHeight);
     if (width %aFrameWidth != 0)
     {
@@ -645,8 +653,8 @@ Standard_Boolean OpenGl_Workspace::Print
     // calculate and set the text scaling factor for printing context
     GLfloat aScaleRatex = (GLfloat)aFrameWidth /viewWidth;
     GLfloat aScaleRatey = (GLfloat)aFrameHeight/viewHeight;
-    aPrinterContext.SetScale (aScaleRatex*(GLfloat)aScalex,
-                              aScaleRatey*(GLfloat)aScaley);
+    myPrintContext->SetScale (aScaleRatex * (GLfloat )aScalex,
+                              aScaleRatey * (GLfloat )aScaley);
 
     // initialize projection matrix for printer context
     TColStd_Array2OfReal aProj (0, 3, 0, 3);
@@ -688,7 +696,7 @@ Standard_Boolean OpenGl_Workspace::Print
         // set projection matrix
         aProj(0,0) = aScalex;
         aProj(1,1) = aScaley;
-        aPrinterContext.SetProjTransformation (aProj);
+        myPrintContext->SetProjTransformation (aProj);
 
         // calculate cropped frame rect
         aTop    = (j == 0)         ? aPxCropy : 0;
@@ -698,7 +706,11 @@ Standard_Boolean OpenGl_Workspace::Print
         // draw to the offscreen buffer and capture the result
         aFrameBuffer->SetupViewport ();
         Redraw1(ACView, ACUnderLayer, ACOverLayer, 0);
-        RedrawImmediatMode();
+        if (!myTransientDrawToFront)
+        {
+          // render to FBO only if forces to render to back buffer
+          RedrawImmediatMode();
+        }
         glReadPixels (0, 0, aFrameWidth, aFrameHeight,
                       GL_BGR_EXT, GL_UNSIGNED_BYTE, (GLvoid* )aViewBuffer);
 #ifdef HAVE_FREEIMAGE
@@ -722,7 +734,7 @@ Standard_Boolean OpenGl_Workspace::Print
       // stop operation if errors
       if (!isDone)
         break;
- 
+
       // calculate new view offset for x-coordinate
       aOffsetx += 2.0;
       aSubLeft += aRight-aLeft;
@@ -742,12 +754,11 @@ Standard_Boolean OpenGl_Workspace::Print
     if (GetObjectType (hPrnDC) == OBJ_DC)
       AbortDoc (hPrnDC);
   }
-  
+
   // return OpenGl to the previous state
-  aPrinterContext.Deactivate ();
   glPixelStorei (GL_PACK_ALIGNMENT, anAlignBack);
   aFrameBuffer->UnbindBuffer (GetGlContext());
-  glViewport (aViewPortBack[0], aViewPortBack[1], 
+  glViewport (aViewPortBack[0], aViewPortBack[1],
               aViewPortBack[2], aViewPortBack[3]);
   if (aPrevBuffer)
   {
@@ -772,20 +783,22 @@ Standard_Boolean OpenGl_Workspace::Print
   // Reset status after printing
   NamedStatus &= ~OPENGL_NS_WHITEBACK;
 
+  myPrintContext.Nullify();
   return (Standard_Boolean) isDone;
 
 #else // not WNT
+  myPrintContext.Nullify();
   return Standard_False;
-#endif 
+#endif
 }
 
 /*----------------------------------------------------------------------*/
 
 //redrawView
-void OpenGl_Workspace::Redraw1 (const Graphic3d_CView& ACView, 
-                               const Aspect_CLayer2d& ACUnderLayer, 
-                               const Aspect_CLayer2d& ACOverLayer,
-                               const int aswap)
+void OpenGl_Workspace::Redraw1 (const Graphic3d_CView& ACView,
+                                const Aspect_CLayer2d& ACUnderLayer,
+                                const Aspect_CLayer2d& ACOverLayer,
+                                const int aswap)
 {
   if (myDisplay.IsNull() || myView.IsNull())
     return;
@@ -834,7 +847,7 @@ void OpenGl_Workspace::Redraw1 (const Graphic3d_CView& ACView,
   glClear (toClear);
 
   Handle(OpenGl_Workspace) aWS(this);
-  myView->Render(aWS,ACView,ACUnderLayer,ACOverLayer);
+  myView->Render (myPrintContext, aWS, ACView, ACUnderLayer, ACOverLayer);
 
   // Swap the buffers
   if ( aswap )
@@ -849,9 +862,12 @@ void OpenGl_Workspace::Redraw1 (const Graphic3d_CView& ACView,
 /*----------------------------------------------------------------------*/
 
 //TelCopyBuffers
-void OpenGl_Workspace::CopyBuffers (Tint vid, int FrontToBack, Tfloat xm, Tfloat ym, Tfloat zm, Tfloat XM, Tfloat YM, Tfloat ZM, Tint flag)
+void OpenGl_Workspace::CopyBuffers (const Standard_Boolean theFrontToBack)
 {
-  if (FrontToBack) myBackBufferRestored = Standard_False;
+  if (theFrontToBack)
+  {
+    myBackBufferRestored = Standard_False;
+  }
 
   glMatrixMode (GL_PROJECTION);
   glPushMatrix ();
@@ -863,84 +879,11 @@ void OpenGl_Workspace::CopyBuffers (Tint vid, int FrontToBack, Tfloat xm, Tfloat
 
   DisableFeatures();
 
-  GLsizei width = myWidth+1, height = myHeight+1;
-  Tfloat xmr = 0, ymr = 0;
+  glDrawBuffer (theFrontToBack ? GL_BACK  : GL_FRONT);
+  glReadBuffer (theFrontToBack ? GL_FRONT : GL_BACK);
 
-  if (flag) 
-  {
-    if (!myView.IsNull()) //szvgl: use vid here!
-	{
-    // Calculate bounding box and store the projected rectangle
-    Tfloat xr[8], yr[8];
-    // Project bounding box
-    if (myView->ProjectObjectToRaster (myWidth, myHeight, xm, ym, zm, xr[0], yr[0]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, xm, YM, zm, xr[1], yr[1]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, XM, YM, zm, xr[2], yr[2]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, XM, ym, zm, xr[3], yr[3]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, xm, ym, ZM, xr[4], yr[4]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, xm, YM, ZM, xr[5], yr[5]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, XM, YM, ZM, xr[6], yr[6]) &&
-        myView->ProjectObjectToRaster (myWidth, myHeight, XM, ym, ZM, xr[7], yr[7]))
-    {
-      Tfloat XMR, YMR;
-      xmr = ymr = (float ) shortreallast ();
-      XMR = YMR = (float ) shortrealfirst ();
-      /*
-      * Recherche du rectangle projete
-      */
-      Tint i;
-      for (i=0; i<8; i++) {
-        if (xmr > xr[i]) xmr = xr[i];
-        if (ymr > yr[i]) ymr = yr[i];
-        if (XMR < xr[i]) XMR = xr[i];
-        if (YMR < yr[i]) YMR = yr[i];
-      }
-      /* pour eviter les bavures de pixels ! */
-      xmr--;ymr--;
-      XMR++;YMR++;
-
-      /*
-      * Ajout CAL : 10/05/96
-      * Si les MinMax viennent d'un ensemble de markers
-      * on ne tient pas compte du scale factor de ceux-ci
-      * dans les valeurs de MinMax. En effet, ce facteur
-      * est dans l'espace pixel et les MinMax dans l'espace
-      * du modele. Donc ajout d'un delta de pixels
-      * en esperant que les applis n'utilisent pas des
-      * markers tres gros !
-      */
-      xmr -= CALL_DEF_DELTA; ymr -= CALL_DEF_DELTA;
-      XMR += CALL_DEF_DELTA; YMR += CALL_DEF_DELTA;
-
-      /*
-      * Le rectangle projete peut-etre clippe
-      */
-      width = (GLsizei) (XMR-xmr+1);
-      height = (GLsizei) (YMR-ymr+1);
-      /*
-      * (xmr,ymr) coin inferieur gauche
-      * (XMR,YMR) coin superieur droit
-      */
-      /* cas ou 1 coin est en dehors de la fenetre */
-      if (xmr < 0) { width  = (GLsizei) (XMR+1); xmr = 0; }
-      if (ymr < 0) { height = (GLsizei) (YMR+1); ymr = 0; }
-      if (XMR > myWidth)  { width  = (GLsizei) (myWidth-xmr+1); }
-      if (YMR > myHeight) { height = (GLsizei) (myHeight-ymr+1); }
-
-      /* cas ou les 2 coins sont en dehors de la fenetre */
-      if (XMR < 0) { xmr = 0; width = height = 1; }
-      if (YMR < 0) { ymr = 0; width = height = 1; }
-      if (xmr > myWidth)  { xmr = 0; width = height = 1; }
-      if (ymr > myHeight) { ymr = 0; width = height = 1; }
-    }
-	}
-  }
-
-  glDrawBuffer (FrontToBack? GL_BACK : GL_FRONT);
-  glReadBuffer (FrontToBack? GL_FRONT : GL_BACK);
-  /* copie complete */
-  glRasterPos2i ((GLint) xmr, (GLint) ymr);
-  glCopyPixels ((GLint) xmr, (GLint) ymr, width, height, GL_COLOR);
+  glRasterPos2i (0, 0);
+  glCopyPixels  (0, 0, myWidth  + 1, myHeight + 1, GL_COLOR);
 
   EnableFeatures();
 

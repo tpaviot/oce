@@ -52,6 +52,9 @@
 #ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
 #endif
+#ifndef _GeomFill_Trihedron_HeaderFile
+#include <GeomFill_Trihedron.hxx>
+#endif
 class GeomFill_Frenet;
 class Law_Function;
 class TColStd_HArray1OfReal;
@@ -74,6 +77,8 @@ public:
 
   
   Standard_EXPORT   GeomFill_CorrectedFrenet();
+  
+  Standard_EXPORT   GeomFill_CorrectedFrenet(const Standard_Boolean ForEvaluation);
   
   Standard_EXPORT   virtual  Handle_GeomFill_TrihedronLaw Copy() const;
   
@@ -100,6 +105,15 @@ public:
 //!          The array must provide  enough room to  accomodate <br>
 //!          for the parameters. i.e. T.Length() > NbIntervals() <br>
   Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
+  //! Tries to define the best trihedron mode <br>
+//!          for the curve. It can be: <br>
+//!          - Frenet <br>
+//!          - CorrectedFrenet <br>
+//!          - DiscreteTrihedron <br>
+//!          Warning: the CorrectedFrenet must be constructed <br>
+//!          with option ForEvaluation = True, <br>
+//!          the curve must be set by method SetCurve. <br>
+  Standard_EXPORT     GeomFill_Trihedron EvaluateBestMode() ;
   //! Get average value of Tangent(t) and Normal(t) it is usfull to <br>
 //!          make fast approximation of rational  surfaces. <br>
   Standard_EXPORT   virtual  void GetAverageLaw(gp_Vec& ATangent,gp_Vec& ANormal,gp_Vec& ABiNormal) ;
@@ -136,6 +150,7 @@ Handle_Law_Function TLaw;
 gp_Vec AT;
 gp_Vec AN;
 Standard_Boolean isFrenet;
+Standard_Boolean myForEvaluation;
 Handle_TColStd_HArray1OfReal HArrPoles;
 Handle_TColStd_HArray1OfReal HArrAngle;
 Handle_TColgp_HArray1OfVec HArrTangent;

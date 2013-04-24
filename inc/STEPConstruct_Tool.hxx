@@ -44,6 +44,14 @@ class Interface_Graph;
 
 //! Provides basic functionalities for tools which are intended <br>
 //!          for encoding/decoding specific STEP constructs <br>
+//! <br>
+//!          It is initialized by WorkSession and allows easy access to <br>
+//!          its fields and internal data such as Model, TP and FP <br>
+//! <br>
+//!          NOTE: Call to method Graph() with True (or for a first time, <br>
+//!          if you have updated the model since last computation of model) <br>
+//!          can take a time, so it is recommended to avoid creation of <br>
+//!          this (and derived) tool multiple times <br>
 class STEPConstruct_Tool  {
 public:
 

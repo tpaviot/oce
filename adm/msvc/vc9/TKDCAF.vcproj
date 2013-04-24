@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKDCAF"
-	ProjectGUID="{20B3C47F-06D1-0115-1830-A91FC163B8C1}"
+	ProjectGUID="{30D8C3CE-03D3-09D8-0DC6-ECF215096597}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DDF;..\..\..\src\DDF;..\..\..\drv\DDocStd;..\..\..\src\DDocStd;..\..\..\drv\DNaming;..\..\..\src\DNaming;..\..\..\drv\DDataStd;..\..\..\src\DDataStd;..\..\..\drv\DPrsStd;..\..\..\src\DPrsStd;..\..\..\drv\DrawDim;..\..\..\src\DrawDim;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKV2d.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKDCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DDF;..\..\..\src\DDF;..\..\..\drv\DDocStd;..\..\..\src\DDocStd;..\..\..\drv\DNaming;..\..\..\src\DNaming;..\..\..\drv\DDataStd;..\..\..\src\DDataStd;..\..\..\drv\DPrsStd;..\..\..\src\DPrsStd;..\..\..\drv\DrawDim;..\..\..\src\DrawDim;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKV2d.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKDCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DDF;..\..\..\src\DDF;..\..\..\drv\DDocStd;..\..\..\src\DDocStd;..\..\..\drv\DNaming;..\..\..\src\DNaming;..\..\..\drv\DDataStd;..\..\..\src\DDataStd;..\..\..\drv\DPrsStd;..\..\..\src\DPrsStd;..\..\..\drv\DrawDim;..\..\..\src\DrawDim;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKV2d.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKDCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DDF;..\..\..\src\DDF;..\..\..\drv\DDocStd;..\..\..\src\DDocStd;..\..\..\drv\DNaming;..\..\..\src\DNaming;..\..\..\drv\DDataStd;..\..\..\src\DDataStd;..\..\..\drv\DPrsStd;..\..\..\src\DPrsStd;..\..\..\drv\DrawDim;..\..\..\src\DrawDim;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKV2d.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKBRep.lib TKGeomAlgo.lib TKernel.lib TKMath.lib TKG2d.lib TKG3d.lib TKDraw.lib TKCDF.lib TKV3d.lib TKNIS.lib TKService.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKPrim.lib TKBool.lib TKBO.lib TKCAF.lib TKViewerTest.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKDCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

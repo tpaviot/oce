@@ -31,17 +31,8 @@
 #ifndef _Graphic3d_AspectMarker3d_HeaderFile
 #include <Graphic3d_AspectMarker3d.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
 #ifndef _Graphic3d_Array1OfVertex_HeaderFile
 #include <Graphic3d_Array1OfVertex.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
-#include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Graphic3d_Array1OfVertexC_HeaderFile
-#include <Graphic3d_Array1OfVertexC.hxx>
 #endif
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKBRep"
-	ProjectGUID="{BC594E38-036D-15F8-0100-202A0DA8C54A}"
+	ProjectGUID="{E26B1EFE-10EA-04E5-12E3-C2DAFDB75785}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKBRep.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKBRep.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKBRep.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomBase.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKBRep.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

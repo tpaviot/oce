@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_NameOfTexturePlane_HeaderFile
 #define _Graphic3d_NameOfTexturePlane_HeaderFile
 
-//! Type of the texture projection. <br>
+//! Type of the texture projection plane for both S and T texture coordinate. <br>
 enum Graphic3d_NameOfTexturePlane {
 Graphic3d_NOTP_XY,
 Graphic3d_NOTP_YZ,

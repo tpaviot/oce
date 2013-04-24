@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBRep" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKBRep" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKBRep" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/TopoDS" />
+			<Add directory="../../../src/TopoDS" />
+			<Add directory="../../../drv/TopExp" />
+			<Add directory="../../../src/TopExp" />
+			<Add directory="../../../drv/TopTools" />
+			<Add directory="../../../src/TopTools" />
+			<Add directory="../../../drv/BRep" />
+			<Add directory="../../../src/BRep" />
+			<Add directory="../../../drv/BRepLProp" />
+			<Add directory="../../../src/BRepLProp" />
+			<Add directory="../../../drv/BRepAdaptor" />
+			<Add directory="../../../src/BRepAdaptor" />
+			<Add directory="../../../drv/BRepTools" />
+			<Add directory="../../../src/BRepTools" />
+		</Compiler>
+		<Linker>
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/TopoDS/TopoDS_FrozenShape_0.cxx" />
+		<Unit filename="../../../drv/TopoDS/TopoDS_ListIteratorOfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopoDS/TopoDS_ListNodeOfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopoDS/TopoDS_ListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopoDS/TopoDS_UnCompatibleShapes_0.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Builder.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_CompSolid.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Compound.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Edge.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Face.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_HShape.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Iterator.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Shape.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Shell.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Solid.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TCompSolid.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TCompound.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TEdge.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TFace.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TShape.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TShell.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TSolid.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TVertex.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_TWire.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Vertex.cxx" />
+		<Unit filename="../../../src/TopoDS/TopoDS_Wire.cxx" />
+		<Unit filename="../../../drv/TopExp/TopExp_StackIteratorOfStackOfIterator_0.cxx" />
+		<Unit filename="../../../drv/TopExp/TopExp_StackNodeOfStackOfIterator_0.cxx" />
+		<Unit filename="../../../drv/TopExp/TopExp_StackOfIterator_0.cxx" />
+		<Unit filename="../../../src/TopExp/TopExp.cxx" />
+		<Unit filename="../../../src/TopExp/TopExp_Explorer.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_Array1OfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_Array1OfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_Array2OfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfIntegerShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapIteratorOfDataMapOfShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfIntegerShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfOrientedShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapNodeOfDataMapOfShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfIntegerListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfIntegerShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfOrientedShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfOrientedShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_DataMapOfShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_HArray1OfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_HArray1OfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_HArray2OfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_HSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeAddress_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapNodeOfIndexedDataMapOfShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapOfShapeAddress_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapOfShapeListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedDataMapOfShapeShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedMapNodeOfIndexedMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedMapOfOrientedShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_IndexedMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_ListIteratorOfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_ListNodeOfListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_ListOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_MapIteratorOfMapOfOrientedShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_MapIteratorOfMapOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_MapOfOrientedShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_MapOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_SequenceNodeOfSequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_SequenceOfShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_StdMapNodeOfMapOfOrientedShape_0.cxx" />
+		<Unit filename="../../../drv/TopTools/TopTools_StdMapNodeOfMapOfShape_0.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools_LocationSet.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools_MutexForShapeProvider.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools_OrientedShapeMapHasher.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools_ShapeMapHasher.cxx" />
+		<Unit filename="../../../src/TopTools/TopTools_ShapeSet.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListIteratorOfListOfCurveRepresentation_0.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListIteratorOfListOfPointRepresentation_0.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListNodeOfListOfCurveRepresentation_0.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListNodeOfListOfPointRepresentation_0.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListOfCurveRepresentation_0.cxx" />
+		<Unit filename="../../../drv/BRep/BRep_ListOfPointRepresentation_0.cxx" />
+		<Unit filename="../../../src/BRep/BRep_Builder.cxx" />
+		<Unit filename="../../../src/BRep/BRep_Curve3D.cxx" />
+		<Unit filename="../../../src/BRep/BRep_CurveOn2Surfaces.cxx" />
+		<Unit filename="../../../src/BRep/BRep_CurveOnClosedSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_CurveOnSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_CurveRepresentation.cxx" />
+		<Unit filename="../../../src/BRep/BRep_GCurve.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PointOnCurve.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PointOnCurveOnSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PointOnSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PointRepresentation.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PointsOnSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_Polygon3D.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PolygonOnClosedSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PolygonOnClosedTriangulation.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PolygonOnSurface.cxx" />
+		<Unit filename="../../../src/BRep/BRep_PolygonOnTriangulation.cxx" />
+		<Unit filename="../../../src/BRep/BRep_TEdge.cxx" />
+		<Unit filename="../../../src/BRep/BRep_TFace.cxx" />
+		<Unit filename="../../../src/BRep/BRep_TVertex.cxx" />
+		<Unit filename="../../../src/BRep/BRep_Tool.cxx" />
+		<Unit filename="../../../drv/BRepLProp/BRepLProp_CLProps_0.cxx" />
+		<Unit filename="../../../drv/BRepLProp/BRepLProp_SLProps_0.cxx" />
+		<Unit filename="../../../src/BRepLProp/BRepLProp.cxx" />
+		<Unit filename="../../../src/BRepLProp/BRepLProp_CurveTool.cxx" />
+		<Unit filename="../../../src/BRepLProp/BRepLProp_SurfaceTool.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_Array1OfCurve_0.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_HArray1OfCurve_0.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_HCompCurve_0.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_HCurve2d_0.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_HCurve_0.cxx" />
+		<Unit filename="../../../drv/BRepAdaptor/BRepAdaptor_HSurface_0.cxx" />
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_CompCurve.cxx" />
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Curve.cxx" />
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Curve2d.cxx" />
+		<Unit filename="../../../src/BRepAdaptor/BRepAdaptor_Surface.cxx" />
+		<Unit filename="../../../drv/BRepTools/BRepTools_DataMapIteratorOfMapOfVertexPnt2d_0.cxx" />
+		<Unit filename="../../../drv/BRepTools/BRepTools_DataMapNodeOfMapOfVertexPnt2d_0.cxx" />
+		<Unit filename="../../../drv/BRepTools/BRepTools_MapOfVertexPnt2d_0.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_GTrsfModification.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_Modification.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_Modifier.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_NurbsConvertModification.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_Quilt.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_ReShape.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_ShapeSet.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_Substitution.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_TrsfModification.cxx" />
+		<Unit filename="../../../src/BRepTools/BRepTools_WireExplorer.cxx" />
+	</Project>
+</CodeBlocks_project_file>

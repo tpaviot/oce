@@ -49,7 +49,7 @@
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
 #endif
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class V3d_View;
 class Graphic3d_Group;
@@ -73,7 +73,7 @@ public:
   Standard_EXPORT     void SetDirection(const V3d_TypeOfOrientation Direction) ;
   //! Defines the direction of the light source by the predefined <br>
 //! vector Xm,Ym,Zm. <br>
-//!  Warning: raises  BadValue from Viewer if the vector is null. <br>
+//!  Warning: raises  BadValue from V3d if the vector is null. <br>
   Standard_EXPORT     void SetDirection(const Quantity_Parameter Xm,const Quantity_Parameter Ym,const Quantity_Parameter Zm) ;
   //! Defines the point of light source representation. <br>
   Standard_EXPORT     void SetDisplayPosition(const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z) ;

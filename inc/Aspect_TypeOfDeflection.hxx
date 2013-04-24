@@ -6,7 +6,9 @@
 #ifndef _Aspect_TypeOfDeflection_HeaderFile
 #define _Aspect_TypeOfDeflection_HeaderFile
 
-//! Definition of screen refresh mode <br>
+//! Defines if the maximal chordial deflection used when <br>
+//!          drawing an object is absolute  or relative to the size <br>
+//!          of the object. <br>
 enum Aspect_TypeOfDeflection {
 Aspect_TOD_RELATIVE,
 Aspect_TOD_ABSOLUTE

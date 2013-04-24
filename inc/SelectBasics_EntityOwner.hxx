@@ -31,6 +31,19 @@ class TopLoc_Location;
 //! defines an abstract owner of sensitive primitives. <br>
 //!           Owners are typically used to establish a connection <br>
 //!           between sensitive entities and high-level objects (e.g. presentations). <br>
+//! <br>
+//!          Priority : It's possible to give a priority: <br>
+//!           the scale : [0-9] ; the default priority is 0 <br>
+//!           it allows the predominance of one selected object upon <br>
+//!           another one if many objects are selected at the same time <br>
+//! <br>
+//! <br>
+//!          example : Selection of shapes : the owners are <br>
+//!           selectable objects (presentations) <br>
+//! <br>
+//!           a user can give vertex priority [3], edges [2] faces [1] shape [0], <br>
+//!           so that if during selection one vertex one edge and one face are <br>
+//!           simultaneously detected, the vertex will only be hilighted. <br>
 class SelectBasics_EntityOwner : public MMgt_TShared {
 
 public:

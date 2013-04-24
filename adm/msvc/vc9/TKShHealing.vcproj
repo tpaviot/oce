@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKShHealing"
-	ProjectGUID="{7AE5F558-159F-11A2-180A-FBA4B2F9B69F}"
+	ProjectGUID="{49AA7D25-06D8-0B00-059D-8C55C452E4CA}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"

@@ -19,8 +19,8 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Time_HeaderFile
+#include <Standard_Time.hxx>
 #endif
 #ifndef _Handle_Materials_MaterialsSequence_HeaderFile
 #include <Handle_Materials_MaterialsSequence.hxx>
@@ -36,6 +36,9 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
@@ -89,7 +92,7 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
-Standard_Integer thetime;
+Standard_Time thetime;
 Handle_Materials_MaterialsSequence thematerialssequence;
 
 

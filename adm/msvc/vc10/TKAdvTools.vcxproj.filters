@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{81838ABE-15F3-0B3F-00EE-E603DC0767A4}</UniqueIdentifier>
+      <UniqueIdentifier>{CD47368F-1206-04F6-0561-ABEDE89042B1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Dynamic">
-      <UniqueIdentifier>{257D8C55-156C-01FA-04BA-2AAC4D95F978}</UniqueIdentifier>
+      <UniqueIdentifier>{0AB0D0DD-0C13-11B5-0EAF-42E569E37DC4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Materials">
-      <UniqueIdentifier>{2D58F8F2-0289-017D-0D94-A79E4A891A75}</UniqueIdentifier>
+      <UniqueIdentifier>{55D70249-0B70-0221-0A5F-E5C675482FE3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Expr">
-      <UniqueIdentifier>{28046BF3-1796-044B-0DA5-F9A944D7C1CF}</UniqueIdentifier>
+      <UniqueIdentifier>{3FF33447-1484-1172-0520-A880EDA85233}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ExprIntrp">
-      <UniqueIdentifier>{F52C2462-0C10-188D-10D2-8FCD35E972A9}</UniqueIdentifier>
+      <UniqueIdentifier>{ACB47577-12A2-0289-0D04-4A09A5BF6DD8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GraphDS">
-      <UniqueIdentifier>{66DFC5BE-09A7-04DD-00D2-22FFC5C6079D}</UniqueIdentifier>
+      <UniqueIdentifier>{C4B72BCD-16AE-11AE-0C3D-BF65EABC251E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GraphTools">
-      <UniqueIdentifier>{1DE9D81E-13AF-003D-07EE-053301579B2D}</UniqueIdentifier>
+      <UniqueIdentifier>{28FF0177-09B7-1386-16E0-6A21CAD05EBB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

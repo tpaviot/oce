@@ -49,7 +49,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Define the name of XMLattribute 'ID' (to be used everywhere) <br>
+  //! translation of gp objects <br>//! Define the name of XMLattribute 'ID' (to be used everywhere) <br>
   Standard_EXPORT   static const XmlObjMgt_DOMString& IdString() ;
   //! Add attribute <theElement extstring="theString" ...> <br>
   Standard_EXPORT   static  Standard_Boolean SetExtendedString(XmlObjMgt_Element& theElement,const TCollection_ExtendedString& theString) ;

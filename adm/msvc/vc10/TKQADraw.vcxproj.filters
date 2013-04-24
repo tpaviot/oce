@@ -2,37 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{D472734A-0D0F-1310-0120-BB540789A0A9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\DebugTools">
-      <UniqueIdentifier>{92C872AA-1341-190A-1849-A354F31E34ED}</UniqueIdentifier>
+      <UniqueIdentifier>{D51DEE4A-08AE-0C35-1958-543E95D8B323}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QABugs">
-      <UniqueIdentifier>{24D3776B-0D40-0C99-101A-D31A52653AF3}</UniqueIdentifier>
+      <UniqueIdentifier>{D8E6C291-1699-0A34-06EA-B553BE8D1944}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADNaming">
-      <UniqueIdentifier>{014A99AC-1479-0E07-0CAA-F4CA63133E13}</UniqueIdentifier>
+      <UniqueIdentifier>{75DBDA2B-0427-16B9-0846-817C37021010}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QADraw">
-      <UniqueIdentifier>{506E27E6-18C2-0598-10C3-9DE32BAD4045}</UniqueIdentifier>
+      <UniqueIdentifier>{6CA9375D-082E-17A7-0E5C-CDD6ADC9214C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANCollection">
-      <UniqueIdentifier>{56865CB8-08BF-0AB6-06D2-62FDE70B5846}</UniqueIdentifier>
+      <UniqueIdentifier>{A9430B07-055F-03D4-0969-EF403F62F773}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewBRepNaming">
-      <UniqueIdentifier>{D097B279-0A4D-046F-0FCA-4D529568EC42}</UniqueIdentifier>
+      <UniqueIdentifier>{63C31F19-0DB0-0AE8-10BB-24AAEB51450B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewDBRepNaming">
-      <UniqueIdentifier>{6F1A32A2-00EA-014B-0401-19B2961BB530}</UniqueIdentifier>
+      <UniqueIdentifier>{8BFFE8F4-026F-0E50-0309-C98BEA00C8AC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\QANewModTopOpe">
-      <UniqueIdentifier>{1494A212-10FE-18DC-0136-8BBE1F6F0F8F}</UniqueIdentifier>
+      <UniqueIdentifier>{7694346F-0B65-03B9-13AC-876A5054C290}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\DebugTools\Perf.cxx">
-      <Filter>Source files\DebugTools</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\QABugs\QABugs.cxx">
       <Filter>Source files\QABugs</Filter>
     </ClCompile>
@@ -129,15 +123,6 @@
     <ClCompile Include="..\..\..\src\QADNaming\QADNaming_ToolsCommands.cxx">
       <Filter>Source files\QADNaming</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADraw\QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress_0.cxx">
-      <Filter>Source files\QADraw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADraw\QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress_0.cxx">
-      <Filter>Source files\QADraw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\QADraw\QADraw_DataMapOfAsciiStringOfAddress_0.cxx">
-      <Filter>Source files\QADraw</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\QADraw\QADraw.cxx">
       <Filter>Source files\QADraw</Filter>
     </ClCompile>
@@ -208,6 +193,9 @@
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QANCollection\QANCollection3.cxx">
+      <Filter>Source files\QANCollection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\QANCollection\QANCollection4.cxx">
       <Filter>Source files\QANCollection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\QANCollection\QANCollectionTest.cxx">

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B70A74F0-082F-15A1-10AF-22B0325DC613}</ProjectGuid>
+    <ProjectGuid>{FA91BA37-0519-0430-12DD-7455568E9A77}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

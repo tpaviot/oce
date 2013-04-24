@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C8BEA185-0DD7-1442-0880-9B7A9F8F850A}</ProjectGuid>
+    <ProjectGuid>{D76A0BF7-152A-07CE-127C-68CEAAD82E66}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,7 +98,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKV2d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKPCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -138,7 +140,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKV2d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKPCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -180,7 +183,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKV2d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKPCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -221,7 +225,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKV2d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKPCAF.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

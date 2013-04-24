@@ -6,9 +6,7 @@
 #ifndef _StdSelect_DisplayMode_HeaderFile
 #define _StdSelect_DisplayMode_HeaderFile
 
-//! Provides values for type of result. <br>
-//! These are used to specify whether the result is to <br>
-//! be simple or whether it may be multiple. <br>
+
 enum StdSelect_DisplayMode {
 StdSelect_DM_Wireframe,
 StdSelect_DM_Shading,

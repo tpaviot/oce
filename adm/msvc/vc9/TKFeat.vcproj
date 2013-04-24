@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKFeat"
-	ProjectGUID="{1ECD54D3-0B03-140B-1507-F81ECDAE41F3}"
+	ProjectGUID="{75D14F80-0657-181A-17EB-838E21E82E55}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -442,9 +444,6 @@
 					RelativePath="..\..\..\src\LocOpe\LocOpe_BuildWires.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\LocOpe\LocOpe_Builder.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\LocOpe\LocOpe_CSIntersector.cxx">
 				</File>
 				<File
@@ -522,9 +521,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFeat\BRepFeat_Gluer.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepFeat\BRepFeat_LocalOperation.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFeat\BRepFeat_MakeCylindricalHole.cxx">

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKPCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKPCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKPCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/PDataXtd" />
+			<Add directory="../../../src/PDataXtd" />
+			<Add directory="../../../drv/PNaming" />
+			<Add directory="../../../src/PNaming" />
+			<Add directory="../../../drv/PPrsStd" />
+			<Add directory="../../../src/PPrsStd" />
+			<Add directory="../../../drv/MDataXtd" />
+			<Add directory="../../../src/MDataXtd" />
+			<Add directory="../../../drv/MPrsStd" />
+			<Add directory="../../../src/MPrsStd" />
+			<Add directory="../../../drv/MNaming" />
+			<Add directory="../../../src/MNaming" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework AppKit" />
+			<Add option="-framework IOKit" />
+			<Add library="PTKernel" />
+			<Add library="TKBRep" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKCDF" />
+			<Add library="TKG2d" />
+			<Add library="TKV3d" />
+			<Add library="TKService" />
+			<Add library="TKG3d" />
+			<Add library="TKPShape" />
+			<Add library="TKCAF" />
+			<Add library="TKLCAF" />
+			<Add library="TKPLCAF" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+		</Linker>
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Axis.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Constraint.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Geometry.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_PatternStd.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Placement.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Plane.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Point.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Position.cxx" />
+		<Unit filename="../../../src/PDataXtd/PDataXtd_Shape.cxx" />
+		<Unit filename="../../../drv/PNaming/PNaming_FieldOfHArray1OfNamedShape_0.cxx" />
+		<Unit filename="../../../drv/PNaming/PNaming_HArray1OfNamedShape_0.cxx" />
+		<Unit filename="../../../drv/PNaming/PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_0.cxx" />
+		<Unit filename="../../../drv/PNaming/PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_0.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Name.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Name_1.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_NamedShape.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Naming.cxx" />
+		<Unit filename="../../../src/PNaming/PNaming_Naming_1.cxx" />
+		<Unit filename="../../../src/PPrsStd/PPrsStd_AISPresentation.cxx" />
+		<Unit filename="../../../src/PPrsStd/PPrsStd_AISPresentation_1.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_AxisRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_AxisStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_ConstraintRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_ConstraintStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_GeometryRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_GeometryStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PatternStdRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PatternStdStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PlacementRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PlacementStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PlaneRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PlaneStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PointRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_PointStorageDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_ShapeRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MDataXtd/MDataXtd_ShapeStorageDriver.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd_AISPresentationRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd_AISPresentationRetrievalDriver_1.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd_AISPresentationStorageDriver.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd_PositionRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MPrsStd/MPrsStd_PositionStorageDriver.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamedShapeRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamedShapeStorageDriver.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamingRetrievalDriver.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamingRetrievalDriver_1.cxx" />
+		<Unit filename="../../../src/MNaming/MNaming_NamingStorageDriver.cxx" />
+	</Project>
+</CodeBlocks_project_file>

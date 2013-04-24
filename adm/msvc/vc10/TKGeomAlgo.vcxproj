@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{30901384-0566-01CF-0AF7-9E078A010330}</ProjectGuid>
+    <ProjectGuid>{5B541C4E-151E-03BC-0090-A233AFEF5191}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__GccIter_DLL;__GccGeo_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__GccIter_DLL;__GccGeo_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__GccIter_DLL;__GccGeo_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\GccIter;..\..\..\src\GccIter;..\..\..\drv\GccGeo;..\..\..\src\GccGeo;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__GccIter_DLL;__GccGeo_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -914,7 +918,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_HArray1OfSectionLaw_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_HSequenceOfAx2_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfAx2_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfTrsf_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_SequenceOfAx2_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\GeomFill\GeomFill_SequenceOfTrsf_0.cxx">
     </ClCompile>
@@ -949,6 +959,8 @@
     <ClCompile Include="..\..\..\src\GeomFill\GeomFill_Darboux.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DegeneratedBound.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DiscreteTrihedron.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\GeomFill\GeomFill_DraftTrihedron.cxx">
     </ClCompile>

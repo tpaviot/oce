@@ -37,6 +37,9 @@ class TCollection_AsciiString;
 //! Management of system environment variables <br>
 //!          An environment variable is composed of a variable name <br>
 //!          and its value. <br>
+//! <br>
+//!          To be portable among various systems, environment variables <br>
+//!          are local to a process. <br>
 class OSD_Environment  {
 public:
 

@@ -6,7 +6,7 @@
 #ifndef _Font_FontAspect_HeaderFile
 #define _Font_FontAspect_HeaderFile
 
-
+//! Specifies aspect of system font. <br>
 enum Font_FontAspect {
 Font_FA_Undefined,
 Font_FA_Regular,

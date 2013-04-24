@@ -52,23 +52,29 @@ public:
 
   
 //! Empty constructor <br>
+//! <br>
       IntTools_LineConstructor();
   
 //! Initializes me by two surfaces and corresponding <br>
 //! tools which represent boundaries of surfaces <br>
+//! <br>
         void Load(const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_TopolTool)& D2,const Handle(GeomAdaptor_HSurface)& S1,const Handle(GeomAdaptor_HSurface)& S2) ;
   
 //! Splits line <br>
+//! <br>
   Standard_EXPORT     void Perform(const Handle(IntPatch_Line)& L) ;
   
 //! Returns True if splitting was successful <br>
+//! <br>
         Standard_Boolean IsDone() const;
   
 //! Returns number of splits <br>
+//! <br>
         Standard_Integer NbParts() const;
   
 //! Return first and last parameters <br>
 //! for given index of split <br>
+//! <br>
         void Part(const Standard_Integer I,Standard_Real& WFirst,Standard_Real& WLast) const;
 
 

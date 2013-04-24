@@ -360,7 +360,7 @@ protected:
   
   Standard_EXPORT   CDM_Document();
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   virtual  void Destroy() ;
 ~CDM_Document()
 {
   Destroy();

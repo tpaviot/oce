@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKLCAF"
-	ProjectGUID="{B70A74F0-082F-15A1-10AF-22B0325DC613}"
+	ProjectGUID="{BFF18C68-034B-0AA1-01E3-F96BA70AA1F4}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKLCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKLCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKLCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKLCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKernel"
-	ProjectGUID="{5908C0F4-06AD-0769-0AD0-DE2034144F7F}"
+	ProjectGUID="{6B8FD14A-14E3-11E7-00B2-B42B307F9932}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -570,9 +572,6 @@
 					RelativePath="..\..\..\src\OSD\OSD_Host.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_Localizer.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OSD\OSD_MAllocHook.cxx">
 				</File>
 				<File
@@ -585,7 +584,7 @@
 					RelativePath="..\..\..\src\OSD\OSD_Path.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OSD\OSD_PerfMeter.c">
+					RelativePath="..\..\..\src\OSD\OSD_PerfMeter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Printer.cxx">
@@ -595,9 +594,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Protection.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_Real2String.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Semaphore.cxx">
@@ -616,9 +612,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_WNT.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OSD\OSD_WNT_1.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_signal.cxx">
@@ -848,6 +841,9 @@
 					RelativePath="..\..\..\src\Standard\Standard_Boolean.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\Standard\Standard_CString.cxx">
 				</File>
 				<File
@@ -915,6 +911,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_Storable.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\Standard\Standard_Time.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Standard\Standard_Transient.cxx">

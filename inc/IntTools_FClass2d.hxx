@@ -47,26 +47,32 @@ public:
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_FClass2d();
   
 //! Initializes algorithm by the face F <br>
 //! and tolerance Tol <br>
+//! <br>
   Standard_EXPORT   IntTools_FClass2d(const TopoDS_Face& F,const Standard_Real Tol);
   
 //! Initializes algorithm by the face F <br>
 //! and tolerance Tol <br>
+//! <br>
   Standard_EXPORT     void Init(const TopoDS_Face& F,const Standard_Real Tol) ;
   
 //! Returns state of infinite 2d point relatively to (0, 0) <br>
+//! <br>
   Standard_EXPORT     TopAbs_State PerformInfinitePoint() const;
   
 //! Returns state of the 2d point Puv. <br>
 //! If RecadreOnPeriodic is true (defalut value), <br>
 //! for the periodic surface 2d point, adjusted to period, is <br>
 //! classified. <br>
+//! <br>
   Standard_EXPORT     TopAbs_State Perform(const gp_Pnt2d& Puv,const Standard_Boolean RecadreOnPeriodic = Standard_True) const;
   
 //! Destructor <br>
+//! <br>
   Standard_EXPORT     void Destroy() ;
 ~IntTools_FClass2d()
 {
@@ -76,6 +82,7 @@ public:
 //! Test a point with +- an offset (Tol) and returns <br>
 //! On if some points are OUT an some are IN <br>
 //!  (Caution: Internal use . see the code for more details) <br>
+//! <br>
   Standard_EXPORT     TopAbs_State TestOnRestriction(const gp_Pnt2d& Puv,const Standard_Real Tol,const Standard_Boolean RecadreOnPeriodic = Standard_True) const;
   
   Standard_EXPORT     Standard_Boolean IsHole() const;

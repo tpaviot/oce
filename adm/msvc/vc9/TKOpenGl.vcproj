@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{5ED0178A-0276-069D-026A-987BCFE857F4}"
+	ProjectGUID="{347AB596-038D-100F-173B-030324C365D5}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -427,13 +429,13 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Display.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Display_1.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_FontMgr.cxx">
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Element.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Font.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_FrameBuffer.cxx">
@@ -463,19 +465,7 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_703.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_705.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_710.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_713.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_8.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_9.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Export.cxx">
@@ -484,13 +474,7 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Layer.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_GraphicDriver_print.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Group.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_ImageBox.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
@@ -508,12 +492,6 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Polygon.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Polyline.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
 				</File>
 				<File
@@ -526,16 +504,16 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_ResourceTexture.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Text.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_TextureBox.cxx">
+					RelativePath="..\..\..\src\OpenGl\OpenGl_TextFormatter.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Texture.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_TextureBufferArb.cxx">
@@ -562,16 +540,10 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_1.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_4.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{37BA23C9-14B1-0D91-10E3-624BCD5EAC8C}</ProjectGuid>
+    <ProjectGuid>{0846AC65-0E4A-0D57-0F66-E5D6164A54DD}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StlMesh;..\..\..\src\StlMesh;..\..\..\drv\StlAPI;..\..\..\src\StlAPI;..\..\..\drv\StlTransfer;..\..\..\src\StlTransfer;..\..\..\drv\RWStl;..\..\..\src\RWStl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StlMesh_DLL;__StlAPI_DLL;__StlTransfer_DLL;__RWStl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StlMesh;..\..\..\src\StlMesh;..\..\..\drv\StlAPI;..\..\..\src\StlAPI;..\..\..\drv\StlTransfer;..\..\..\src\StlTransfer;..\..\..\drv\RWStl;..\..\..\src\RWStl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StlMesh_DLL;__StlAPI_DLL;__StlTransfer_DLL;__RWStl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StlMesh;..\..\..\src\StlMesh;..\..\..\drv\StlAPI;..\..\..\src\StlAPI;..\..\..\drv\StlTransfer;..\..\..\src\StlTransfer;..\..\..\drv\RWStl;..\..\..\src\RWStl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StlMesh_DLL;__StlAPI_DLL;__StlTransfer_DLL;__RWStl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StlMesh;..\..\..\src\StlMesh;..\..\..\drv\StlAPI;..\..\..\src\StlAPI;..\..\..\drv\StlTransfer;..\..\..\src\StlTransfer;..\..\..\drv\RWStl;..\..\..\src\RWStl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StlMesh_DLL;__StlAPI_DLL;__StlTransfer_DLL;__RWStl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

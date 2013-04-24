@@ -6,7 +6,12 @@
 #ifndef _Aspect_TypeOfLayer_HeaderFile
 #define _Aspect_TypeOfLayer_HeaderFile
 
-//! Definition of the Triedron position in the views <br>
+//! Modes of drawing for the objects in a layer <br>
+//! <br>
+//!          TOL_OVERLAY, the graphic of the layer is draw <br>
+//!                       after the 3d graphic. <br>
+//!          TOL_UNDERLAY, the graphic of the layer is draw <br>
+//!                       before the 3d graphic. <br>
 enum Aspect_TypeOfLayer {
 Aspect_TOL_OVERLAY,
 Aspect_TOL_UNDERLAY

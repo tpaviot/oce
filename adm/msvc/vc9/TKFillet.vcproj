@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKFillet"
-	ProjectGUID="{E4BDDD66-0163-0A5C-1808-5C757D256551}"
+	ProjectGUID="{BBEBAE46-1271-0DA3-0551-4F8D99D96CCC}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKFillet.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKFillet.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKFillet.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKGeomBase.lib TKGeomAlgo.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKBool.lib TKShHealing.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKFillet.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

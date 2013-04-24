@@ -67,6 +67,42 @@ class BRepBuilderAPI_Collect;
 //!             - Boolean operations. <br>
 //! <br>
 //!             - Global properties computation. <br>
+//! <br>
+//! <br>
+//! 	    The API provides  classes to  build  objects: <br>
+//! <br>
+//! 	    * The  constructors  of the classes  provides  the <br>
+//! 	    different constructions methods. <br>
+//! <br>
+//! 	    * The  class keeps as fields the   different tools <br>
+//! 	    used to build the object. <br>
+//! <br>
+//! 	    *   The class  provides  a  casting  method to get <br>
+//! 	    automatically the  result  with  a   function-like <br>
+//! 	    call. <br>
+//! <br>
+//! 	    For example to make a  vertex <V> from a point <P> <br>
+//! 	    one can writes : <br>
+//! <br>
+//! 	    V = BRepBuilderAPI_MakeVertex(P); <br>
+//! <br>
+//! 	    or <br>
+//! <br>
+//! 	    BRepBuilderAPI_MakeVertex MV(P); <br>
+//! 	    V = MV.Vertex(); <br>
+//! <br>
+//! <br>
+//! 	    For tolerances  a default precision is  used which <br>
+//! 	    can    be   changed    by    the   packahe  method <br>
+//! 	    BRepBuilderAPI::Precision. <br>
+//! <br>
+//! 	    For error handling the BRepBuilderAPI commands raise only <br>
+//! 	    the NotDone error. When Done is false on a command <br>
+//! 	    the error description can be asked to the command. <br>
+//! <br>
+//! 	    In  theory  the  comands can be    called with any <br>
+//! 	    arguments, argument  checking  is performed by the <br>
+//! 	    command. <br>
 class BRepBuilderAPI  {
 public:
 

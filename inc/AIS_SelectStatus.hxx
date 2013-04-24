@@ -7,15 +7,6 @@
 #define _AIS_SelectStatus_HeaderFile
 
 
-//! To give the display status of an Interactive Object. <br>
-//! This will be one of the following: <br>
-//! -   DS_Displayed: the Interactive Object is <br>
-//!   displayed in the main viewer; <br>
-//! -   DS_Erased: the Interactive Object is erased in the collector; <br>
-//! -   DS_FullErased: the Interactive Object is erased <br>
-//!   but not in the collector; <br>
-//! -   DS_Temporary: the Interactive Object is temporarily displayed; <br>
-//! -   DS_None: the Interactive Object is nowhere displayed. <br>
 enum AIS_SelectStatus {
 AIS_SS_Added,
 AIS_SS_Removed,

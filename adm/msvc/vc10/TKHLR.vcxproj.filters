@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{BC91EC91-0AFC-0DF7-1976-FE3BD50A1D75}</UniqueIdentifier>
+      <UniqueIdentifier>{EF851BF0-13DC-1778-09D9-0B0DAAAE1EB1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRTopoBRep">
-      <UniqueIdentifier>{140680BB-0E80-0465-13EC-E797908F7174}</UniqueIdentifier>
+      <UniqueIdentifier>{60FAEABF-07AD-0357-160A-3741FECD9D45}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRBRep">
-      <UniqueIdentifier>{6176F59C-0423-032C-0B5D-84D31F40D16B}</UniqueIdentifier>
+      <UniqueIdentifier>{10316D51-0913-03BD-065E-E4BBFAF1560A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HLRAlgo">
-      <UniqueIdentifier>{7505FE1D-133F-1246-11C9-0765B1A559F1}</UniqueIdentifier>
+      <UniqueIdentifier>{47D61763-121A-10C3-05C9-A513228B24B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Intrv">
-      <UniqueIdentifier>{B40F4C55-1095-0D5F-0A8B-CCE49BB48EFD}</UniqueIdentifier>
+      <UniqueIdentifier>{15DC20A2-12C6-14C8-06A9-3F6060D04B0F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopBas">
-      <UniqueIdentifier>{1787FEBE-1469-12DA-0B1B-711091F6C7D2}</UniqueIdentifier>
+      <UniqueIdentifier>{EFFB8B86-1745-0970-039C-F2970D9AF747}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopCnx">
-      <UniqueIdentifier>{B8DDB9DE-1503-1481-0055-1C1D13B8DC67}</UniqueIdentifier>
+      <UniqueIdentifier>{E07F258B-0A3F-1285-0BB9-BBCEE30BBE63}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Contap">
-      <UniqueIdentifier>{8DF3B0D7-0D12-0A43-15D5-DEE9ACBF3A6C}</UniqueIdentifier>
+      <UniqueIdentifier>{00670B66-0954-0BCD-03C7-136FBB0C94E8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

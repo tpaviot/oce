@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBinXCAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKBinXCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKBinXCAF" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/BinXCAFDrivers" />
+			<Add directory="../../../src/BinXCAFDrivers" />
+			<Add directory="../../../drv/BinMXCAFDoc" />
+			<Add directory="../../../src/BinMXCAFDoc" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKXCAF" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKBinL" />
+			<Add library="TKG2d" />
+			<Add library="TKCAF" />
+			<Add library="TKCDF" />
+			<Add library="TKG3d" />
+			<Add library="TKLCAF" />
+			<Add library="TKBin" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../src/BinXCAFDrivers/BinXCAFDrivers.cxx" />
+		<Unit filename="../../../src/BinXCAFDrivers/BinXCAFDrivers_DocumentRetrievalDriver.cxx" />
+		<Unit filename="../../../src/BinXCAFDrivers/BinXCAFDrivers_DocumentStorageDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_AreaDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_CentroidDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_ColorDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_ColorToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_DatumDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_DimTolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_DimTolToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_DocumentToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_GraphNodeDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_LayerToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_LocationDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_MaterialDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_MaterialToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_ShapeToolDriver.cxx" />
+		<Unit filename="../../../src/BinMXCAFDoc/BinMXCAFDoc_VolumeDriver.cxx" />
+	</Project>
+</CodeBlocks_project_file>

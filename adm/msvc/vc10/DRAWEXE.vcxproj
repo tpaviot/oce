@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F30E4962-07B6-0868-093C-E2E77BCB6F78}</ProjectGuid>
+    <ProjectGuid>{1CEE5336-140F-0518-10E0-CA1767C67D8C}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,7 +98,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\..\..\..\win32\vc10\bin\DRAWEXE.pdb</ProgramDatabaseFile>
@@ -118,6 +119,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -137,7 +139,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -159,6 +161,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -178,7 +181,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\..\..\..\win64\vc10\bin\DRAWEXE.pdb</ProgramDatabaseFile>
@@ -199,6 +202,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -218,7 +222,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;tcl85.lib;tk85.lib;gdi32.lib;advapi32.lib;user32.lib;kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKDraw.lib;TKMesh.lib;TKTopAlgo.lib;TKHLR.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKG2d.lib;TKBRep.lib;TKMath.lib;TKG3d.lib;TKernel.lib;TKService.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>

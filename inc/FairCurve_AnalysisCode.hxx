@@ -7,6 +7,19 @@
 #define _FairCurve_AnalysisCode_HeaderFile
 
 
+//! To deal with different results in the computation of curvatures. <br>
+//! -   FairCurve_OK describes the case where computation is successfully <br>
+//!   completed <br>
+//! -   FairCurve_NotConverged describes <br>
+//!   the case where the algorithm does not <br>
+//!   converge. In this case, you can not be <br>
+//!   certain of the result quality and should <br>
+//!   resume computation if you want to make use of the curve. <br>
+//! -   FairCurve_InfiniteSliding describes the case where sliding is infinite, and, <br>
+//!   consequently, computation stops. The solution is to use an imposed sliding value. <br>
+//! -   FairCurve_NullHeight describes the case where no matter is left at one of the <br>
+//!   ends of the curve, and as a result, computation stops. The solution is to <br>
+//!   change (increase or reduce) the slope value by increasing or decreasing it. <br>
 enum FairCurve_AnalysisCode {
 FairCurve_OK,
 FairCurve_NotConverged,

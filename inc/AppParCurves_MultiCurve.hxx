@@ -48,6 +48,23 @@ class gp_Vec2d;
 //!          A MultiCurve is composed of m MultiPoint. <br>
 //!          The approximating degree of these n curves is the same for <br>
 //!          each one. <br>
+//! <br>
+//! <br>
+//!   Example of a MultiCurve composed of MultiPoints: <br>
+//! <br>
+//!      P1______P2_____P3______P4________........_____PNbMPoints <br>
+//! <br>
+//!      Q1______Q2_____Q3______Q4________........_____QNbMPoints <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      R1______R2_____R3______R4________........_____RNbMPoints <br>
+//! <br>
+//! <br>
+//!      Pi, Qi, ..., Ri are points of dimension 2 or 3. <br>
+//! <br>
+//!      (Pi, Qi, ...Ri), i= 1,...NbPoles are MultiPoints. <br>
+//!      each MultiPoint has got NbPol Poles. <br>
 class AppParCurves_MultiCurve  {
 public:
 

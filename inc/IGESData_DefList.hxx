@@ -6,22 +6,22 @@
 #ifndef _IGESData_DefList_HeaderFile
 #define _IGESData_DefList_HeaderFile
 
-//!  Some fields of an IGES entity may be <br>
+//! Some fields of an IGES entity may be <br>
 //! - Undefined <br>
-//! - Defined as a positive integer <br>
-//! - Defined as a reference to a specialized entity. <br>
-//!  A typical example of this kind of variation is color. <br>
+//! - Defined as a single item <br>
+//! - Defined as a list of items. <br>
+//!   A typical example, which presents this kind of variation, <br>
+//! is a level number. <br>
 //! This enumeration allows you to identify which of the above is the case. <br>
-//! The semantics of the terms are as follows: <br>
-//! - DefVoid indicates that the item contained in the field is undefined <br>
-//! - DefValue indicates that the item is defined as an immediate <br>
-//!   positive integer value (i.e. not a pointer) <br>
-//! - DefReference indicates that the item is defined as an entity <br>
-//! - DefAny indicates the item could not be determined <br>
-//! - ErrorVal indicates that the item is defined as an integer <br>
-//!   but its value is incorrect (it could be out of range, for example) <br>
-//! - ErrorRef indicates that the item is defined as an entity but <br>
-//!    is not of the required type. <br>
+//! The semantics of the terms is as follows: <br>
+//! - DefNone indicates that the list is empty (there is not <br>
+//!   even a single item). <br>
+//! - DefOne indicates that the list contains a single item. <br>
+//! - DefSeveral indicates that the list contains several items. <br>
+//! - ErrorOne indicates that the list contains one item, but <br>
+//!   that this item is incorrect <br>
+//! - ErrorSeveral indicates that the list contains several <br>
+//!   items, but that at least one of them is incorrect. <br>
 enum IGESData_DefList {
 IGESData_DefNone,
 IGESData_DefOne,

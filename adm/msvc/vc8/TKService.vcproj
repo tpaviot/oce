@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKService"
-	ProjectGUID="{E1A36C6B-01E6-0C84-1111-D8C42735FE36}"
+	ProjectGUID="{C0F9D2E5-13DF-0CA5-0083-60AE51544E30}"
 	>
 	<Platforms>
 		<Platform
@@ -47,10 +47,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -69,7 +69,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKService.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -144,10 +144,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc8\objd\TKService\TKService.pch"
@@ -167,7 +167,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKService.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -242,10 +242,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -264,7 +264,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKService.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -340,10 +340,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Viewer;..\..\..\src\Viewer;..\..\..\drv\MFT;..\..\..\src\MFT;..\..\..\drv\PS;..\..\..\src\PS;..\..\..\drv\CGM;..\..\..\src\CGM;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\PlotMgt;..\..\..\src\PlotMgt;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\AlienImage;..\..\..\src\AlienImage;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc8\objd\TKService\TKService.pch"
@@ -363,7 +363,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Viewer_DLL;__MFT_DLL;__PS_DLL;__CGM_DLL;__AlienImage_DLL;__Image_DLL;__PlotMgt_DLL;__WNT_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__AlienImage_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
 				Culture="1036"
 			/>
 			<Tool
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKService.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -574,6 +574,37 @@
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Aspect\Aspect_ColorMapDefinitionError_0.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\drv\Aspect\Aspect_DisplayConnectionDefinitionError_0.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -1968,6 +1999,37 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\..\src\Aspect\Aspect_DisplayConnection.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="..\..\..\src\Aspect\Aspect_Driver.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
@@ -2217,68 +2279,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Aspect\Aspect_GradientBackground.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Aspect\Aspect_GraphicDevice.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Aspect\Aspect_GraphicDriver.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
@@ -3310,580 +3310,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Viewer"
-				>
-				<File
-					RelativePath="..\..\..\drv\Viewer\Viewer_BadValue_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer\Viewer_View.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer\Viewer_Viewer.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="MFT"
-				>
-				<File
-					RelativePath="..\..\..\drv\MFT\MFT_FontManagerDefinitionError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\MFT\MFT_FontManagerError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\MFT\MFT_ListOfFontHandle_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\MFT\MFT_SequenceNodeOfListOfFontHandle_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\MFT\MFT.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\MFT\MFT_CommandDescriptor.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\MFT\MFT_FileRecord.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\MFT\MFT_FontManager.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\MFT\MFT_TextManager.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="PS"
-				>
-				<File
-					RelativePath="..\..\..\src\PS\PS_Driver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="CGM"
-				>
-				<File
-					RelativePath="..\..\..\src\CGM\CGM_Driver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\CGM\Gestfic.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\CGM\cgmobin.c">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\CGM\cgmochar.c">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\CGM\cgmotext.c">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
 				Name="AlienImage"
 				>
 				<File
@@ -3892,28 +3318,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -3923,28 +3349,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -3954,28 +3380,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -3985,28 +3411,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4016,28 +3442,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4047,28 +3473,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4078,28 +3504,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4109,28 +3535,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4140,28 +3566,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4171,28 +3597,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4202,28 +3628,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4233,28 +3659,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4264,28 +3690,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4295,28 +3721,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4326,28 +3752,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4357,28 +3783,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4388,28 +3814,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4419,28 +3845,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4450,28 +3876,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4481,28 +3907,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4512,28 +3938,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4543,28 +3969,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4574,28 +4000,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4605,28 +4031,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4636,28 +4062,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4671,28 +4097,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4702,28 +4128,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4733,28 +4159,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4764,28 +4190,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4795,28 +4221,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4826,28 +4252,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4857,28 +4283,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4888,28 +4314,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4919,28 +4345,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4950,28 +4376,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -4981,28 +4407,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5012,28 +4438,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5043,28 +4469,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5074,28 +4500,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5105,28 +4531,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5136,28 +4562,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5167,28 +4593,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5198,28 +4624,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5229,28 +4655,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5260,28 +4686,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5291,28 +4717,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5322,28 +4748,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5353,28 +4779,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5384,28 +4810,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5415,28 +4841,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5446,28 +4872,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5477,28 +4903,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -5508,590 +4934,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="PlotMgt"
-				>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_HListOfMFTFonts_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_HListOfPlotterParameter_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_ListOfMFTFonts_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_ListOfPlotterParameter_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_PlotterAccessError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_PlotterDefinitionError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\PlotMgt\PlotMgt_SequenceNodeOfListOfPlotterParameter_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_ImageDriver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_Plotter.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_PlotterDriver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_PlotterParameter.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_PlotterTools.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_Plotter_1.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_Plotter_2.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_TextManager.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_fillpolyarc.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\PlotMgt\PlotMgt_fillpolygon.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6105,28 +4969,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6136,90 +5000,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\WNT\WNT_FontMapEntryDefinitionError_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\WNT\WNT_FontTable_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6229,121 +5031,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\WNT\WNT_HFontTable_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\WNT\WNT_HListOfMFTFonts_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\drv\WNT\WNT_ListOfMFTFonts_0.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6353,28 +5062,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6384,28 +5093,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6415,28 +5124,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6446,28 +5155,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6477,28 +5186,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6508,28 +5217,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6539,59 +5248,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_DDriver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6601,183 +5279,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_FontMapEntry.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_GraphicDevice.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_Icon.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_IconBox.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_IconBox_1.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6787,90 +5310,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_ImageManager.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_ImageProcessor.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6880,28 +5341,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -6911,90 +5372,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_MFTDraw.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_TextManager.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7004,28 +5403,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7035,59 +5434,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_WDriver.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7097,28 +5465,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7128,62 +5496,35 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
-				<File
-					RelativePath="..\..\..\src\WNT\WNT_WndProc.cxx">
-					<FileConfiguration
-						Name="Release|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|Win32">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64">
-						<Tool
-							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
-						/>
-					</FileConfiguration>
-				</File>
+			</Filter>
+			<Filter
+				Name="Cocoa"
+				>
 			</Filter>
 			<Filter
 				Name="TColQuantity"
@@ -7194,28 +5535,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7225,28 +5566,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7256,28 +5597,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7287,28 +5628,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7317,33 +5658,95 @@
 				Name="Font"
 				>
 				<File
-					RelativePath="..\..\..\src\Font\Font_FontMgr.cxx">
+					RelativePath="..\..\..\src\Font\Font_FTFont.cxx">
 					<FileConfiguration
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\Font\Font_FTLibrary.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\src\Font\Font_FontMgr.cxx">
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug|x64">
+						<Tool
+							Name="VCCLCompilerTool"
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>
@@ -7353,28 +5756,28 @@
 						Name="Release|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|Win32">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Debug|x64">
 						<Tool
 							Name="VCCLCompilerTool"
-							AdditionalOptions="-D_AFXDLL -DITYPE_REF -D_AFXDLL -D_AFXDLL "
+							AdditionalOptions="-D_AFXDLL -D_AFXDLL "
 						/>
 					</FileConfiguration>
 				</File>

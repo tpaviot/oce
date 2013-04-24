@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5908C0F4-06AD-0769-0AD0-DE2034144F7F}</ProjectGuid>
+    <ProjectGuid>{E96AEEF6-0C51-18DC-086E-9B578990037B}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\IncludeLibrary;..\..\..\src\IncludeLibrary;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__IncludeLibrary_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -336,8 +340,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Localizer.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MailBox.cxx">
@@ -346,15 +348,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Path.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_PerfMeter.c">
+    <ClCompile Include="..\..\..\src\OSD\OSD_PerfMeter.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Printer.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Process.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Protection.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Real2String.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Semaphore.cxx">
     </ClCompile>
@@ -367,8 +367,6 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Timer.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_WNT.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_WNT_1.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_signal.cxx">
     </ClCompile>
@@ -508,6 +506,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Boolean.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_CString.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Character.cxx">
@@ -553,6 +553,8 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_ShortReal.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Storable.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Time.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Transient.cxx">
     </ClCompile>

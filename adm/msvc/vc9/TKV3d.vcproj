@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKV3d"
-	ProjectGUID="{7E3CD3FC-13C4-00FE-05A0-E54D9147A3FB}"
+	ProjectGUID="{F7879A2E-1037-0322-157E-E0C15CB6828B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKV2d.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKV2d.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKV2d.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKV2d.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKMath.lib TKernel.lib TKService.lib TKTopAlgo.lib TKG2d.lib TKG3d.lib TKGeomBase.lib TKMesh.lib TKGeomAlgo.lib TKHLR.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKV3d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -405,6 +407,9 @@
 			<Filter
 				Name="V3d"
 				>
+				<File
+					RelativePath="..\..\..\drv\V3d\V3d_BadValue_0.cxx">
+				</File>
 				<File
 					RelativePath="..\..\..\drv\V3d\V3d_UnMapped_0.cxx">
 				</File>
@@ -500,31 +505,7 @@
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVector_0.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNT_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexN_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertex_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNC_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNT_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexN_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertex_0.cxx">
@@ -632,6 +613,9 @@
 					RelativePath="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
 				</File>
 				<File
@@ -695,9 +679,6 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CInitTexture.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
 				</File>
 				<File
@@ -725,9 +706,6 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_GraphicDevice.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_GraphicDriver.cxx">
 				</File>
 				<File
@@ -747,12 +725,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_3.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_5.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_7.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
@@ -797,6 +769,9 @@
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_TextureMap.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\Graphic3d\Graphic3d_TextureParams.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_TextureRoot.cxx">
 				</File>
 				<File
@@ -804,21 +779,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_VertexC.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_VertexN.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_VertexNC.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_VertexNT.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Graphic3d\Graphic3d_WNTGraphicDevice.cxx">
 				</File>
 			</Filter>
 			<Filter
@@ -1310,16 +1270,10 @@
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Presentation2d.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\PrsMgr\PrsMgr_PresentationManager2d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
@@ -1682,19 +1636,10 @@
 					RelativePath="..\..\..\src\StdSelect\StdSelect_Prs.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\StdSelect\StdSelect_SensitiveText2d.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\StdSelect\StdSelect_Shape.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdSelect\StdSelect_ShapeTypeFilter.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\StdSelect\StdSelect_TextProjector2d.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\StdSelect\StdSelect_ViewerSelector2d.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\StdSelect\StdSelect_ViewerSelector3d.cxx">

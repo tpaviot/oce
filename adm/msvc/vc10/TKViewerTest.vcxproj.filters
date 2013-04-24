@@ -2,52 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{B9E7F832-1433-049F-08F8-8862F418AC04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Viewer2dTest">
-      <UniqueIdentifier>{C54A8F1A-1581-0524-1515-A8DB0FC5DD1A}</UniqueIdentifier>
+      <UniqueIdentifier>{65410AB9-07D2-18FB-04DF-FC13FD84514B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ViewerTest">
-      <UniqueIdentifier>{37081C0F-12CE-0157-0F41-E16511B27F24}</UniqueIdentifier>
+      <UniqueIdentifier>{F51851E0-08A3-0971-06B5-A8E28EB1D9FF}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapIteratorOfDataMapOfText_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapNodeOfDataMapOfText_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapOfText_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapOfInteractiveAndName_0.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_DisplayCommands.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_EventManager.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_GeneralCommands.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_ObjectCommands.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer2dTest\Viewer2dTest_ViewerCommands.cxx">
-      <Filter>Source files\Viewer2dTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\ViewerTest\ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx">
       <Filter>Source files\ViewerTest</Filter>
     </ClCompile>

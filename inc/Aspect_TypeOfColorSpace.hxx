@@ -6,7 +6,7 @@
 #ifndef _Aspect_TypeOfColorSpace_HeaderFile
 #define _Aspect_TypeOfColorSpace_HeaderFile
 
-//! Definition of the rendering modes <br>
+
 enum Aspect_TypeOfColorSpace {
 Aspect_TOCS_BlackAndWhite,
 Aspect_TOCS_GreyScale,

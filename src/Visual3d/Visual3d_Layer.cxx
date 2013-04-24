@@ -31,7 +31,6 @@ Novembre 1998 : CAL : Creation.
 // for the class
 #include <Visual3d_Layer.ixx>
 
-#include <Graphic3d_GraphicDevice.hxx>
 #include <Graphic3d_TypeOfPrimitive.hxx>
 #include <Visual3d_ViewManager.hxx>
 
@@ -55,13 +54,10 @@ Visual3d_Layer::Visual3d_Layer (const Handle(Visual3d_ViewManager)& AManager, co
 #endif
   MyPtrViewManager  = (void *) AManager.operator->();
 
-  Handle(Aspect_GraphicDriver) agd =
-    (MyViewManager->GraphicDevice ())->GraphicDriver ();
-
-  MyGraphicDriver = *(Handle(Graphic3d_GraphicDriver) *) &agd;
+  MyGraphicDriver = MyViewManager->GraphicDriver();
 
   MyCLayer.layerType  = int (ALayerType);
-  MyCLayer.ptrLayer = NULL;  
+  MyCLayer.ptrLayer = NULL;
   MyCLayer.ortho[0] = -1.0;
   MyCLayer.ortho[1] =  1.0;
   MyCLayer.ortho[2] = -1.0;
@@ -325,7 +321,7 @@ void Visual3d_Layer::TextSize (const Standard_CString AText,  const Standard_Rea
     Visual3d_LayerDefinitionError::Raise
     ("One primitive is already open !");
 
-  MyGraphicDriver->TextSize (AText, AHeight, aWidth, anAscent, aDescent);
+  MyGraphicDriver->TextSize (AText, (Standard_ShortReal)AHeight, aWidth, anAscent, aDescent);
   AWidth = aWidth;
   AnAscent = anAscent;
   ADescent = aDescent;

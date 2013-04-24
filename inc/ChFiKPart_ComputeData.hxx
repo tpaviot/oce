@@ -50,6 +50,8 @@ class gp_Pnt2d;
 //!          - cylindre entre 2 surfaces planes, <br>
 //!          - tore/sphere entre un plan et un cylindre othogonal, <br>
 //!          - tore/sphere entre un plan et un cone othogonal, <br>
+//! <br>
+//!          - tore entre un plan et une droite orthogonale (rotule). <br>
 class ChFiKPart_ComputeData  {
 public:
 

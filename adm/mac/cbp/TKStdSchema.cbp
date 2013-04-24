@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKStdSchema" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKStdSchema" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKStdSchema" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/StdSchema" />
+			<Add directory="../../../src/StdSchema" />
+			<Add directory="../../../drv/StdDrivers" />
+			<Add directory="../../../src/StdDrivers" />
+		</Compiler>
+		<Linker>
+			<Add library="TKCDF" />
+			<Add library="PTKernel" />
+			<Add library="TKPLCAF" />
+			<Add library="TKernel" />
+			<Add library="TKCAF" />
+			<Add library="TKShapeSchema" />
+			<Add library="TKLCAF" />
+			<Add library="TKStdLSchema" />
+			<Add library="TKG3d" />
+			<Add library="TKPShape" />
+			<Add library="TKMath" />
+			<Add library="TKG2d" />
+			<Add library="TKPCAF" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/StdSchema/StdSchema.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_DBC_VArrayOfCharacter.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_DBC_VArrayOfExtCharacter.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PColStd_FieldOfHArray1OfInteger.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PColStd_HArray1OfInteger.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PCollection_HAsciiString.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PCollection_HExtendedString.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDF_Attribute.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDF_FieldOfHAttributeArray1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDF_HAttributeArray1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataStd_Integer.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataStd_Real.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Axis.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Constraint.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Geometry.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_PatternStd.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Placement.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Plane.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Point.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Position.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PDataXtd_Shape.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_FieldOfHArray1OfNamedShape.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_HArray1OfNamedShape.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Name.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Name_1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_NamedShape.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Naming.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PNaming_Naming_1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PPrsStd_AISPresentation_1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopLoc_Datum3D.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopLoc_ItemLocation.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopLoc_Location.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopoDS_FieldOfHArray1OfShape1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopoDS_HArray1OfShape1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopoDS_Shape1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_PTopoDS_TShape1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_Standard_Persistent.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_Standard_Storable.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Ax1.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Ax2.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Ax2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Ax3.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Dir.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Dir2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Mat.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Mat2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Pnt.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Pnt2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Trsf.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Trsf2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Vec.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_Vec2d.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_XY.cxx" />
+		<Unit filename="../../../drv/StdSchema/StdSchema_gp_XYZ.cxx" />
+		<Unit filename="../../../src/StdDrivers/StdDrivers.cxx" />
+		<Unit filename="../../../src/StdDrivers/StdDrivers_DocumentRetrievalDriver.cxx" />
+		<Unit filename="../../../src/StdDrivers/StdDrivers_DocumentStorageDriver.cxx" />
+	</Project>
+</CodeBlocks_project_file>

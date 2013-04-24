@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{4495B80C-088A-0BCD-0C6E-37199D72AC2C}</UniqueIdentifier>
+      <UniqueIdentifier>{0C4ED050-124E-0243-0F63-45310E97967A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRep">
-      <UniqueIdentifier>{859D3F01-0709-0265-0D9B-2075DC19CE7B}</UniqueIdentifier>
+      <UniqueIdentifier>{183B7BCE-004E-0E0F-1260-A11AF8F1C3E8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepDS">
-      <UniqueIdentifier>{42F371E7-1131-0AEA-11C5-865927472DF8}</UniqueIdentifier>
+      <UniqueIdentifier>{74CEFC8C-10A2-11F4-16D5-844838A19258}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepBuild">
-      <UniqueIdentifier>{1B2EE1FA-0272-035A-1516-5EBCC2BA9A99}</UniqueIdentifier>
+      <UniqueIdentifier>{8EEA66BB-186C-1287-0DE9-6F6E4BB22627}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopOpeBRepTool">
-      <UniqueIdentifier>{FBD92346-168A-07F5-097A-61E3D3B44D06}</UniqueIdentifier>
+      <UniqueIdentifier>{E706CF07-0B92-0E96-1732-5A4A55C648FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgo">
-      <UniqueIdentifier>{2CDC5B33-0A62-0A19-02FC-992C1B1EC0B8}</UniqueIdentifier>
+      <UniqueIdentifier>{E2853D29-0470-176A-02FB-13B76A6EB51E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFill">
-      <UniqueIdentifier>{FE8DD771-1979-152E-0E64-2D16B02CA258}</UniqueIdentifier>
+      <UniqueIdentifier>{34C7DE92-1556-14C8-15E9-D59B3DC2ED4E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepProj">
-      <UniqueIdentifier>{56579A39-0BC2-141D-11B0-820EFCA5EE3F}</UniqueIdentifier>
+      <UniqueIdentifier>{69A604C1-092F-0810-020B-8583C38D7C9A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1021,9 +1021,6 @@
       <Filter>Source files\BRepAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_Tool.cxx">
-      <Filter>Source files\BRepAlgo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepAlgo\BRepAlgo_TopOpe.cxx">
       <Filter>Source files\BRepAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\BRepFill\BRepFill_ComputeCLine_0.cxx">

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKViewerTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKViewerTest" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKViewerTest" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/ViewerTest" />
+			<Add directory="../../../src/ViewerTest" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework AppKit" />
+			<Add option="-framework IOKit" />
+			<Add library="TKGeomBase" />
+			<Add library="TKFillet" />
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKHLR" />
+			<Add library="TKernel" />
+			<Add library="TKMath" />
+			<Add library="TKNIS" />
+			<Add library="TKService" />
+			<Add library="TKBool" />
+			<Add library="TKPrim" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKG2d" />
+			<Add library="TKTopTest" />
+			<Add library="TKG3d" />
+			<Add library="TKOffset" />
+			<Add library="TKVoxel" />
+			<Add library="TKMesh" />
+			<Add library="TKV3d" />
+			<Add library="TKDraw" />
+			<Add library="TKOpenGl" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="tcl8.5" />
+			<Add library="tk8.5" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="objc" />
+			<Add library="freetype" />
+			<Add library="gl2ps" />
+			<Add library="tcl8.5" />
+			<Add library="tk8.5" />
+			<Add library="objc" />
+		</Linker>
+		<Unit filename="../../../drv/ViewerTest/ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx" />
+		<Unit filename="../../../drv/ViewerTest/ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx" />
+		<Unit filename="../../../drv/ViewerTest/ViewerTest_DoubleMapOfInteractiveAndName_0.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_AviCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_EventManager.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_FilletCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_ObjectCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_OpenGlCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_RelationCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_Tool.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_ViewerCommands.cxx" />
+		<Unit filename="../../../src/ViewerTest/ViewerTest_ViewerCommands_1.mm">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/ViewerTest/ViewerTest_VoxelCommands.cxx" />
+	</Project>
+</CodeBlocks_project_file>

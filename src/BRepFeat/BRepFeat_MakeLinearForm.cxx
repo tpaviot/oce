@@ -25,7 +25,6 @@
 #include <BRepFeat.hxx>
 
 #include <LocOpe.hxx>
-#include <LocOpe_Builder.hxx>
 #include <LocOpe_LinearForm.hxx>
 #include <LocOpe_Gluer.hxx>
 #include <LocOpe_FindEdges.hxx>
@@ -120,8 +119,8 @@
 //#include <DbgTools.hxx>
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEAT();
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEATRIB();
+extern Standard_Boolean BRepFeat_GettraceFEAT();
+extern Standard_Boolean BRepFeat_GettraceFEATRIB();
 #endif
 
 static void MajMap(const TopoDS_Shape&, // base
@@ -984,11 +983,7 @@ void BRepFeat_MakeLinearForm::Perform()
   TopExp_Explorer Ex;
   TopoDS_Edge eb, ec;
   gp_Pnt p1, p2;
-#ifndef DEB
   Standard_Real t1 = 0., t2 = 0.;
-#else
-  Standard_Real t1, t2;
-#endif
   Standard_Boolean c1f, c2f, c1l, c2l;
 
   for (Ex.Init(sect.Shape(), TopAbs_EDGE); Ex.More(); Ex.Next()) {

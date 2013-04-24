@@ -33,6 +33,9 @@ class TCollection_HAsciiString;
 
 //! defines IGESDrawingUnits, Type <406> Form <17> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Specifies the drawing space units as outlined <br>
+//!          in the Drawing entity <br>
 class IGESGraph_DrawingUnits : public IGESData_IGESEntity {
 
 public:

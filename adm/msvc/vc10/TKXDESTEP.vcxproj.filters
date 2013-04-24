@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{0508CFB8-0FB4-0489-1683-6F15C8FF13BF}</UniqueIdentifier>
+      <UniqueIdentifier>{791EA38C-05D5-0D05-1879-16049586E6C2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\STEPCAFControl">
-      <UniqueIdentifier>{6965B999-0EA1-0A43-0D8F-C268945FFF33}</UniqueIdentifier>
+      <UniqueIdentifier>{97EA1CC8-0E4D-087C-0984-EA4987814E6F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

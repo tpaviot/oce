@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="DRAWEXE"
-	ProjectGUID="{F30E4962-07B6-0868-093C-E2E77BCB6F78}"
+	ProjectGUID="{2BD9761D-10D1-01BF-1805-416A40A690E8}"
 	>
 	<Platforms>
 		<Platform
@@ -75,7 +75,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\win32\vc8\libd;$(CSF_OPT_LIB32D)"
@@ -170,7 +170,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\win32\vc8\lib;$(CSF_OPT_LIB32)"
@@ -264,7 +264,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\DRAWEXE.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -361,7 +361,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\DRAWEXE.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

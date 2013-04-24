@@ -40,7 +40,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a merge of two Mesh and returns a new Mesh. <br>
+  //! Sequence of meshes <br>//! Make a merge of two Mesh and returns a new Mesh. <br>
 //!          Very useful if you want to merge partMesh and CheckSurfaceMesh <br>
 //!          for example <br>
   Standard_EXPORT   static  Handle_StlMesh_Mesh Merge(const Handle(StlMesh_Mesh)& mesh1,const Handle(StlMesh_Mesh)& mesh2) ;

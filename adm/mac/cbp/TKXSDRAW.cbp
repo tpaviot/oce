@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKXSDRAW" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKXSDRAW" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKXSDRAW" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/SWDRAW" />
+			<Add directory="../../../src/SWDRAW" />
+			<Add directory="../../../drv/XSDRAW" />
+			<Add directory="../../../src/XSDRAW" />
+			<Add directory="../../../drv/XSDRAWIGES" />
+			<Add directory="../../../src/XSDRAWIGES" />
+			<Add directory="../../../drv/XSDRAWSTEP" />
+			<Add directory="../../../src/XSDRAWSTEP" />
+			<Add directory="../../../drv/XSDRAWSTLVRML" />
+			<Add directory="../../../src/XSDRAWSTLVRML" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework AppKit" />
+			<Add option="-framework IOKit" />
+			<Add library="TKBRep" />
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKNIS" />
+			<Add library="TKernel" />
+			<Add library="TKService" />
+			<Add library="TKXSBase" />
+			<Add library="TKMeshVS" />
+			<Add library="TKG3d" />
+			<Add library="TKViewerTest" />
+			<Add library="TKG2d" />
+			<Add library="TKSTEPBase" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKShHealing" />
+			<Add library="TKGeomBase" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKMesh" />
+			<Add library="TKDraw" />
+			<Add library="TKSTEP" />
+			<Add library="TKIGES" />
+			<Add library="TKSTL" />
+			<Add library="TKVRML" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+			<Add library="tcl8.5" />
+			<Add library="tk8.5" />
+			<Add library="objc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="tcl8.5" />
+			<Add library="tk8.5" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="objc" />
+		</Linker>
+		<Unit filename="../../../src/SWDRAW/SWDRAW.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeAnalysis.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeBuild.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeConstruct.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeCustom.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeExtend.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeFix.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcess.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeProcessAPI.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeTool.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ShapeUpgrade.cxx" />
+		<Unit filename="../../../src/SWDRAW/SWDRAW_ToVRML.cxx" />
+		<Unit filename="../../../src/XSDRAW/XSDRAW.cxx" />
+		<Unit filename="../../../src/XSDRAW/XSDRAW_Functions.cxx" />
+		<Unit filename="../../../src/XSDRAW/XSDRAW_Shape.cxx" />
+		<Unit filename="../../../src/XSDRAW/XSDRAW_Vars.cxx" />
+		<Unit filename="../../../src/XSDRAWIGES/XSDRAWIGES.cxx" />
+		<Unit filename="../../../src/XSDRAWSTEP/XSDRAWSTEP.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_CoordsMap_0.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_DataMapIteratorOfCoordsMap_0.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap_0.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_DataMapNodeOfCoordsMap_0.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_0.cxx" />
+		<Unit filename="../../../drv/XSDRAWSTLVRML/XSDRAWSTLVRML_ElemNodesMap_0.cxx" />
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML.cxx" />
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DataSource.cxx" />
+		<Unit filename="../../../src/XSDRAWSTLVRML/XSDRAWSTLVRML_DrawableMesh.cxx" />
+	</Project>
+</CodeBlocks_project_file>

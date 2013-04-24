@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5ED0178A-0276-069D-026A-987BCFE857F4}</ProjectGuid>
+    <ProjectGuid>{CB60BC73-10E7-0C04-0436-558F4E337730}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -246,11 +250,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_1.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Display_2.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_FontMgr.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Font.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_FrameBuffer.cxx">
     </ClCompile>
@@ -270,25 +274,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_703.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_705.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_710.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_713.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_8.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_9.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Export.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_Layer.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_GraphicDriver_print.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Group.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ImageBox.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_IndexBuffer.cxx">
     </ClCompile>
@@ -300,10 +292,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Matrix.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Polygon.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Polyline.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrimitiveArray.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PrinterContext.cxx">
@@ -312,13 +300,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ResourceTexture.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Structure.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Text.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBox.cxx">
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextFormatter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Texture.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_TextureBufferArb.cxx">
     </ClCompile>
@@ -336,13 +324,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_1.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_3.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_4.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Workspace_5.cxx">
     </ClCompile>

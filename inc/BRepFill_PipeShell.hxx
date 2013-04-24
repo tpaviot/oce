@@ -31,6 +31,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
 #endif
@@ -54,9 +57,6 @@
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -89,6 +89,9 @@ public:
   //! Set an Frenet or an CorrectedFrenet trihedron <br>
 //!          to  perform  the  sweeping <br>
   Standard_EXPORT     void Set(const Standard_Boolean Frenet = Standard_False) ;
+  //! Set a Discrete trihedron <br>
+//!          to  perform  the  sweeping <br>
+  Standard_EXPORT     void SetDiscrete() ;
   //! Set  an  fixed  trihedron  to  perform  the  sweeping <br>
 //!         all sections will be parallel. <br>
   Standard_EXPORT     void Set(const gp_Ax2& Axe) ;
@@ -110,7 +113,11 @@ public:
 //!       intersect <AuxiliarySpine> in Q. <br>
 //! If <KeepContact> the  Normal  is  defined to  assume like  the  sweeped <br>
 //!                  section is  in  contact to  the  <AuxiliarySpine> <br>
-//! Else  the  Normal  is  defined  by the vector  PQ. <br>//! Give section to sweep. <br>
+//! Else  the  Normal  is  defined  by the vector  PQ. <br>
+  Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const Standard_Boolean KeepContact = Standard_False) ;
+  //! Set the flag that indicates attempt to approximate <br>
+//!          a C1-continuous surface if a swept surface proved <br>
+//!          to be C0. <br>//! Give section to sweep. <br>
 //! Possibilities are : <br>
 //!	- Give one or sevral profile <br>
 //!     - Give one profile and an homotetic law. <br>
@@ -118,7 +125,7 @@ public:
 //!                 on the sweeped shape <br>
 //!     - correspondance beetween profile, and section on the sweeped shape <br>
 //!       defined by a vertex of the spine <br>
-  Standard_EXPORT     void Set(const TopoDS_Wire& AuxiliarySpine,const Standard_Boolean CurvilinearEquivalence = Standard_True,const Standard_Boolean KeepContact = Standard_False) ;
+  Standard_EXPORT     void SetForceApproxC1(const Standard_Boolean ForceApproxC1) ;
   //! Set an section. The corespondance with the spine, will <br>
 //!          be automaticaly performed. <br>
   Standard_EXPORT     void Add(const TopoDS_Shape& Profile,const Standard_Boolean WithContact = Standard_False,const Standard_Boolean WithCorrection = Standard_False) ;
@@ -193,6 +200,7 @@ Standard_Real myBoundTol;
 Standard_Real myTolAngular;
 Standard_Real angmin;
 Standard_Real angmax;
+Standard_Boolean myForceApproxC1;
 Handle_Law_Function myLaw;
 Handle_BRepFill_LocationLaw myLocation;
 Handle_BRepFill_SectionLaw mySection;

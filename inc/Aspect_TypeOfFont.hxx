@@ -7,6 +7,11 @@
 #define _Aspect_TypeOfFont_HeaderFile
 
 //! Definition of line types <br>
+//! <br>
+//!          TOF_DEFAULT         Default system font <br>
+//!          TOF_COURIER <br>
+//!          TOF_HELVETICA <br>
+//!          TOF_USERDEFINED     defined by Users <br>
 enum Aspect_TypeOfFont {
 Aspect_TOF_DEFAULT,
 Aspect_TOF_COURIER,

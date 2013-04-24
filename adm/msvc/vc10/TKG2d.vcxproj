@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9452901B-0CBA-0A1E-0641-22EF3C884CB9}</ProjectGuid>
+    <ProjectGuid>{7BC3C807-0670-0DCA-0E87-DFB7136C6B6A}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

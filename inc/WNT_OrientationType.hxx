@@ -6,7 +6,7 @@
 #ifndef _WNT_OrientationType_HeaderFile
 #define _WNT_OrientationType_HeaderFile
 
-//!  Defines the class for text drawing with MFT <br>
+//! Portrait/landscape orientation. <br>
 enum WNT_OrientationType {
 WNT_OT_PORTRAIT,
 WNT_OT_LANDSCAPE

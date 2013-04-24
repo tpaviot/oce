@@ -78,7 +78,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This function builds (in the <br>
+  //! To intersect a curve and a surface. <br>//! This function builds (in the <br>
 //! parametric space of the plane P) a 2D curve equivalent to the 3D curve <br>
 //! C. The 3D curve C is considered to be located in the plane P. <br>
 //! Warning <br>

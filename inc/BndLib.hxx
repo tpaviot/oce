@@ -63,7 +63,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the segment of the line L limited by the two <br>
+  //! Bounding box for a surface trimmed or not <br>//! Adds the segment of the line L limited by the two <br>
 //! parameter values P1 and P2, to the bounding box B, and <br>
 //! then enlarges B by the tolerance value Tol. <br>
 //! Tol is the tolerance value to enlarge the minimun and maximum dimension <br>

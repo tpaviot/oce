@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1ECD54D3-0B03-140B-1507-F81ECDAE41F3}</ProjectGuid>
+    <ProjectGuid>{74BACC59-15C8-09BC-0B73-9ABE1E37AD1C}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__LocOpe_DLL;__BRepFeat_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__LocOpe_DLL;__BRepFeat_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__LocOpe_DLL;__BRepFeat_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\LocOpe;..\..\..\src\LocOpe;..\..\..\drv\BRepFeat;..\..\..\src\BRepFeat;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__LocOpe_DLL;__BRepFeat_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -256,8 +260,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_BuildWires.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Builder.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_CSIntersector.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_CurveShapeIntersector.cxx">
@@ -307,8 +309,6 @@
     <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_Form.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_Gluer.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_LocalOperation.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_MakeCylindricalHole.cxx">
     </ClCompile>

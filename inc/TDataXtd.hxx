@@ -52,9 +52,11 @@ public:
 //!          cleared before use. <br>//! Print of TDataExt enumeration <br>
 //!          ============================= <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  
+  //! Prints the name of the geometry dimension <GEO> as a String on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TDataXtd_GeometryEnum GEO,Standard_OStream& S) ;
-  
+  //! Prints the name of the constraint <CTR> as a String on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TDataXtd_ConstraintEnum CTR,Standard_OStream& S) ;
 
 

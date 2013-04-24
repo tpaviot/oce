@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXml"
-	ProjectGUID="{7AE4ED34-14DE-04C0-16ED-302F25673CCD}"
+	ProjectGUID="{6DD1448C-0CF6-064D-1535-4C686A5B074D}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

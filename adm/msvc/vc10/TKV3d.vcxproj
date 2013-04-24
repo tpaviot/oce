@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7E3CD3FC-13C4-00FE-05A0-E54D9147A3FB}</ProjectGuid>
+    <ProjectGuid>{0CC27DCB-1298-0B44-0C2C-BCC21F6C89CE}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -97,7 +98,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKV2d.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bin\TKV3d.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -138,7 +140,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKV2d.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win32\vc10\bind\TKV3d.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win32\vc10\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -180,7 +183,7 @@
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKV2d.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bin\TKV3d.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -221,7 +225,7 @@
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKV2d.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKService.lib;TKTopAlgo.lib;TKG2d.lib;TKG3d.lib;TKGeomBase.lib;TKMesh.lib;TKGeomAlgo.lib;TKHLR.lib;user32.lib;gdi32.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\..\..\..\win64\vc10\bind\TKV3d.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\..\win64\vc10\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -232,6 +236,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\drv\V3d\V3d_BadValue_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\V3d\V3d_UnMapped_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\V3d\V3d.cxx">
@@ -292,23 +298,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVector_0.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexNT_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertexN_0.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array1OfVertex_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNC_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexNT_0.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertexN_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_Array2OfVertex_0.cxx">
     </ClCompile>
@@ -380,6 +370,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Graphic3d\Graphic3d_VectorError_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPoints.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_ArrayOfPolygons.cxx">
@@ -422,8 +414,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CGroup.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CInitTexture.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CLight.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_CPick.cxx">
@@ -442,8 +432,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_DataStructureManager.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDevice.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_GraphicDriver.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group.cxx">
@@ -457,10 +445,6 @@
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_2.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_3.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_5.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_7.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Group_8.cxx">
     </ClCompile>
@@ -490,21 +474,13 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureMap.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureParams.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_TextureRoot.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vector.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_Vertex.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexC.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexN.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexNC.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_VertexNT.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Graphic3d\Graphic3d_WNTGraphicDevice.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Visual3d\Visual3d_ClipDefinitionError_0.cxx">
     </ClCompile>
@@ -816,13 +792,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation2d.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_Presentation3d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager2d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\PrsMgr\PrsMgr_PresentationManager3d.cxx">
     </ClCompile>
@@ -1056,15 +1028,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Prs.cxx">
     </ClCompile>
-    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_SensitiveText2d.cxx">
-    </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_Shape.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ShapeTypeFilter.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_TextProjector2d.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector2d.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\StdSelect\StdSelect_ViewerSelector3d.cxx">
     </ClCompile>

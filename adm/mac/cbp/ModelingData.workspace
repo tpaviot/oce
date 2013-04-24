@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="ModelingData">
+		<Project filename="TKG2d.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+		</Project>
+		<Project filename="TKG3d.cbp" >
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+		</Project>
+		<Project filename="TKGeomBase.cbp" >
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+		</Project>
+		<Project filename="TKBRep.cbp" >
+			<Depends filename="TKMath.cbp" />
+			<Depends filename="TKernel.cbp" />
+			<Depends filename="TKG2d.cbp" />
+			<Depends filename="TKG3d.cbp" />
+			<Depends filename="TKGeomBase.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

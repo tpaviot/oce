@@ -45,6 +45,18 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
 
 //! Definition of general structure of DECAF document <br>
 //!          and tools to work with it <br>
+//! <br>
+//!          The document is composed of sections, each section <br>
+//!          storing its own kind of data and managing by corresponding <br>
+//!          tool <br>
+//!          Some properties can be attached directly to shapes. These properties are: <br>
+//!          * Name (the standard definition from OCAF) - class TDataStd_Name <br>
+//!          * Centroid (for the validation of transfer) - class XCAFDoc_Centroid <br>
+//!          * Volume (for the validation of transfer) - class XCAFDoc_Volume <br>
+//!          * Area (for the validation of transfer) - class XCafDoc_Area <br>
+//!          Management of these attributes is realized by OCAF. For getting <br>
+//!          the attributes attached to a label the method class <br>
+//!          TDF_Label::FindAttribute() should be used. <br>
 class XCAFDoc  {
 public:
 

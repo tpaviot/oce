@@ -6,7 +6,7 @@
 #ifndef _Vrml_FontStyleFamily_HeaderFile
 #define _Vrml_FontStyleFamily_HeaderFile
 
-//! qualifies properties of geometry and its appearance. <br>
+
 enum Vrml_FontStyleFamily {
 Vrml_SERIF,
 Vrml_SANS,

@@ -160,6 +160,7 @@ public:
   //! Returns sequence of non-manifold edges <br>
 //!          This sequence can be not empty if wire data set in manifold mode but <br>
 //!          initial wire has INTERNAL orientation or contains INTERNAL edges <br>
+//! <br>
   Standard_EXPORT     Handle_TopTools_HSequenceOfShape NonmanifoldEdges() const;
   //! Returns mode defining manifold wire data or not. <br>
 //!          If manifold that nonmanifold edges will not be not <br>

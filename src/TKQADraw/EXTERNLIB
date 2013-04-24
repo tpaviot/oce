@@ -10,7 +10,6 @@ TKV3d
 TKGeomBase
 TKG3d
 TKViewerTest
-TKV2d
 TKCDF
 TKDCAF
 TKLCAF
@@ -39,3 +38,4 @@ CSF_TclTkLibs
 CSF_gdi32
 CSF_advapi32
 CSF_user32
+CSF_TBB

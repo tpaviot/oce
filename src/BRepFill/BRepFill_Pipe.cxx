@@ -30,6 +30,8 @@
 #include <BRepTools_Substitution.hxx>
 
 #include <GeomFill_CorrectedFrenet.hxx>
+#include <GeomFill_Frenet.hxx>
+#include <GeomFill_DiscreteTrihedron.hxx>
 #include <GeomFill_CurveAndTrihedron.hxx>
 
 #include <BRepFill_SectionPlacement.hxx>
@@ -68,8 +70,11 @@ static Standard_Boolean Affich = 0;
 
 BRepFill_Pipe::BRepFill_Pipe()
 {
-  myDegmax = 10;
+  myDegmax = 11;
   mySegmax = 100;
+  myContinuity = GeomAbs_C2;
+  myMode = GeomFill_IsCorrectedFrenet;
+  myForceApproxC1 = Standard_False;
 }
 
 
@@ -80,13 +85,27 @@ BRepFill_Pipe::BRepFill_Pipe()
 
 BRepFill_Pipe::BRepFill_Pipe(const TopoDS_Wire&  Spine,
 			     const TopoDS_Shape& Profile,
+                             const GeomFill_Trihedron aMode,
+                             const Standard_Boolean ForceApproxC1,
 			     const Standard_Boolean KPart)
+                             
 {
-  myDegmax = 10;
+  myDegmax = 11;
   mySegmax = 100;
+  
+  myMode = GeomFill_IsCorrectedFrenet;
+  if (aMode == GeomFill_IsFrenet ||
+      aMode == GeomFill_IsCorrectedFrenet ||
+      aMode == GeomFill_IsDiscreteTrihedron)
+    myMode = aMode;
+
+  myContinuity = GeomAbs_C2;
+  if (myMode == GeomFill_IsDiscreteTrihedron)
+    myContinuity = GeomAbs_C0;
+  
+  myForceApproxC1 = ForceApproxC1;
   Perform(Spine, Profile, KPart);
 }
-
 
 
 //=======================================================================
@@ -111,9 +130,19 @@ void BRepFill_Pipe::Perform(const TopoDS_Wire&  Spine,
   BRepTools_WireExplorer wexp;
   TopoDS_Shape TheProf; 
 
-
- Handle(GeomFill_CorrectedFrenet) TLaw = 
-   new (GeomFill_CorrectedFrenet) ();
+  Handle(GeomFill_TrihedronLaw) TLaw;
+  switch (myMode)
+  {
+  case GeomFill_IsFrenet:
+    TLaw = new GeomFill_Frenet();
+    break;
+  case GeomFill_IsCorrectedFrenet:
+    TLaw = new GeomFill_CorrectedFrenet();
+    break;
+  case GeomFill_IsDiscreteTrihedron:
+    TLaw = new GeomFill_DiscreteTrihedron();
+    break;
+  }
   Handle(GeomFill_CurveAndTrihedron) Loc = 
     new (GeomFill_CurveAndTrihedron) (TLaw);
   myLoc = new (BRepFill_Edge3DLaw) (mySpine, Loc);
@@ -366,7 +395,8 @@ TopoDS_Wire BRepFill_Pipe::PipeLine(const gp_Pnt& Point) const
 
  // Sweeping
  BRepFill_Sweep MkSw(Section, myLoc, Standard_True);
- MkSw.Build( BRepFill_Modified, GeomFill_Location, GeomAbs_C2, myDegmax, mySegmax );
+ MkSw.SetForceApproxC1(myForceApproxC1);
+ MkSw.Build( BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
  TopoDS_Shape aLocalShape = MkSw.Shape();
  return TopoDS::Wire(aLocalShape);
 // return TopoDS::Wire(MkSw.Shape());
@@ -462,10 +492,8 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
       explode = Standard_True;
       break;
     }
-#ifndef DEB
   default:
     break;
-#endif    
   }
 
   if (explode) {
@@ -493,7 +521,8 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
      Handle(BRepFill_ShapeLaw) Section = 
 	new (BRepFill_ShapeLaw) (TopoDS::Vertex(TheS));
       BRepFill_Sweep MkSw(Section, myLoc, Standard_True);
-      MkSw.Build( BRepFill_Modified, GeomFill_Location, GeomAbs_C2, myDegmax, mySegmax );
+      MkSw.SetForceApproxC1(myForceApproxC1);
+      MkSw.Build( BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
       result = MkSw.Shape();
     }
 
@@ -503,7 +532,8 @@ TopoDS_Shape BRepFill_Pipe::MakeShape(const TopoDS_Shape& S,
       BRepFill_Sweep MkSw(Section, myLoc, Standard_True);
       MkSw.SetBounds(TopoDS::Wire(TheFirst), 
 		     TopoDS::Wire(TheLast));
-      MkSw.Build( BRepFill_Modified, GeomFill_Location, GeomAbs_C2, myDegmax, mySegmax );
+      MkSw.SetForceApproxC1(myForceApproxC1);
+      MkSw.Build( BRepFill_Modified, myContinuity, GeomFill_Location, myDegmax, mySegmax );
       result = MkSw.Shape();
 
       // Labeling of elements
@@ -654,10 +684,8 @@ Standard_Integer BRepFill_Pipe::FindEdge(const TopoDS_Shape& S,
   case TopAbs_COMPSOLID :
     Standard_DomainError::Raise("BRepFill_Pipe::SOLID or COMPSOLID");
     break;
-#ifndef DEB
   default:
     break;
-#endif
   }
 
   return result; 
@@ -722,10 +750,8 @@ Standard_Integer BRepFill_Pipe::FindVertex(const TopoDS_Shape& S,
   case TopAbs_COMPSOLID :
     Standard_DomainError::Raise("BRepFill_Pipe::SOLID or COMPSOLID");
     break;
-#ifndef DEB
   default:
     break;
-#endif
   }
 
   return result; 
@@ -811,7 +837,7 @@ TopoDS_Shape BRepFill_Pipe::ShareFaces
     if (i == 1) {
       jj = 1;
     } else {
-      jj == myFaces->RowLength();
+      jj = myFaces->RowLength();
 
       if (jj == 1) {
         break;
@@ -848,19 +874,11 @@ TopoDS_Shape BRepFill_Pipe::ShareFaces
           TopoDS_Vertex aV[2];
           TopExp::Vertices(TopoDS::Edge(anExp.Current()), aV[0], aV[1]);
           Standard_Integer ie;
-          Standard_Integer je;
-          Standard_Integer indV;
 
           // Compute jj index of edges.
-          if (i == 1) {
-            je = 1;
-          } else {
-            je == myEdges->RowLength();
-          }
+          Standard_Integer je = (i == 1 ? 1 : myEdges->RowLength());
 
-          Standard_Integer j;
-
-          for (j = 0; j < 2; j++) {
+          for (Standard_Integer j = 0; j < 2; j++) {
             if (aMapUsedVtx.Contains(aV[j])) {
               // This vertex is treated.
               continue;

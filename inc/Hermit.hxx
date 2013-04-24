@@ -51,9 +51,11 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //!returns the correct spline a(u) which will <br>
+//!                 be multiplicated with BS later. <br>
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve Solution(const Handle(Geom_BSplineCurve)& BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001) ;
-  
+  //!returns the correct spline a(u) which will <br>
+//!                 be multiplicated with BS later. <br>
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve Solution(const Handle(Geom2d_BSplineCurve)& BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001) ;
   //!returns the knots to insert to a(u) to <br>
 //!         stay with a constant sign and in the <br>

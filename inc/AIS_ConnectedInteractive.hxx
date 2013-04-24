@@ -46,12 +46,6 @@
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
 #ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
 #endif
@@ -62,8 +56,6 @@ class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class SelectMgr_Selection;
 
 
@@ -133,10 +125,6 @@ public:
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
-  //! this method should fill the presentation according to the <br>
-//!          enumerated mode of the application and to the display parameter <br>
-//!          of the application. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   
       virtual  Standard_Boolean AcceptShapeDecomposition() const;
   

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomAlgo"
-	ProjectGUID="{30901384-0566-01CF-0AF7-9E078A010330}"
+	ProjectGUID="{D2F8502A-165A-15CE-12ED-A49D755D8B6D}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -1553,7 +1553,16 @@
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_HArray1OfSectionLaw_0.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_HSequenceOfAx2_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfAx2_0.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceNodeOfSequenceOfTrsf_0.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceOfAx2_0.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\drv\GeomFill\GeomFill_SequenceOfTrsf_0.cxx">
@@ -1605,6 +1614,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\GeomFill\GeomFill_DegeneratedBound.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\GeomFill\GeomFill_DiscreteTrihedron.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\GeomFill\GeomFill_DraftTrihedron.cxx">

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBO"
-	ProjectGUID="{95BC3DA7-0BDD-0A4E-0A1C-45D1B2CA2F02}"
+	ProjectGUID="{4A3DE7F2-0601-14AB-1855-D9E45E1FEA38}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,10 +48,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,14 +71,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKBO.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,10 +144,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKBO\TKBO.pch"
@@ -166,14 +168,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKBO.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,11 +239,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -260,14 +262,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKBO.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,11 +333,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BOPTColStd;..\..\..\src\BOPTColStd;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;..\..\..\drv\BOP;..\..\..\src\BOP;..\..\..\drv\BooleanOperations;..\..\..\src\BooleanOperations;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPInt;..\..\..\src\BOPInt;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKBO\TKBO.pch"
@@ -355,14 +357,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BOPTColStd_DLL;__BOPTools_DLL;__BOP_DLL;__BooleanOperations_DLL;__IntTools_DLL;__BRepAlgoAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPInt_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKGeomBase.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKBO.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -402,634 +404,6 @@
 		<Filter
 			Name="Source files"
 			>
-			<Filter
-				Name="BOPTColStd"
-				>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfPnt2d_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_CArray1OfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfIntegerIndexedMapOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfIntegerInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapNodeOfIndexedDataMapOfSWRInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfIntegerIndexedMapOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfIntegerInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_IndexedDataMapOfSWRInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_ListIteratorOfListOfListOfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_ListNodeOfListOfListOfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTColStd\BOPTColStd_ListOfListOfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTColStd\BOPTColStd_Dump.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTColStd\BOPTColStd_Failure.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTColStd\BOPTColStd_ShapeWithRank.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTColStd\BOPTColStd_ShapeWithRankHasher.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="BOPTools"
-				>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_Array1OfPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_Array2OfIntersectionStatus_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfEEInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfESInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfInterferenceLine_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfSSInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfVEInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfVSInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CArray1OfVVInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_CommonBlockPool_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_HArray2OfIntersectionStatus_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IDMapOfPaveBlockIMapOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IDMapOfPaveBlockIMapOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IMapOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIDMapOfPaveBlockIMapOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIDMapOfPaveBlockIMapOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerDEInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerPaveSet_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfIntegerState_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapNodeOfIndexedDataMapOfShapeWithState_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerDEInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerPaveSet_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfIntegerState_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedDataMapOfShapeWithState_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedMapNodeOfIMapOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedMapNodeOfIndexedMapOfCoupleOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_IndexedMapOfCoupleOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCheckResults_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCommonBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfCoupleOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListIteratorOfListOfShapeEnum_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCheckResults_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCommonBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfCoupleOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListNodeOfListOfShapeEnum_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfCheckResults_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfCommonBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfCoupleOfInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfInterference_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_ListOfShapeEnum_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_PavePool_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_QuickSortPave_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_SequenceNodeOfSequenceOfCurves_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_SequenceNodeOfSequenceOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_SequenceOfCurves_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_SequenceOfPaveBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOPTools\BOPTools_SplitShapesPool_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_CheckResult.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Checker.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_CommonBlock.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_CommonBlockAPI.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_ComparePave.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_CoupleOfInteger.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_CoupleOfIntegerMapHasher.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Curve.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_DEInfo.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_DEProcessor.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_DSFiller.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_EEInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_ESInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Interference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_InterferenceLine.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_InterferencePool.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_IteratorOfCoupleOfShape.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PCurveMaker.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Pave.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveBlock.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveBlockIterator.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveBlockMapHasher.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveFiller.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveFiller_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveFiller_2.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveFiller_3.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveFiller_4.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PaveSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_PointBetween.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_RoughShapeIntersector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_SSInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_SSIntersectionAttribute.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_ShapeShapeInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_SolidStateFiller.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_StateFiller.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Tools.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Tools2D.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Tools3D.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Tools3D_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_Tools3D_2.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_VEInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_VSInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_VVInterference.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTools\BOPTools_WireStateFiller.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="BOP"
-				>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfEdgeListFaceInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapNodeOfIndexedDataMapOfVertexListEdgeInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapOfEdgeListFaceInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapOfSolidClassifier_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_IndexedDataMapOfVertexListEdgeInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfCheckResult_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfConnexityBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfEdgeInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfFaceInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListIteratorOfListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfCheckResult_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfConnexityBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfEdgeInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfFaceInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListNodeOfListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfCheckResult_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfConnexityBlock_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfEdgeInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfFaceInfo_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_ListOfLoop_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_SeqOfSeqOfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BOP\BOP_SequenceNodeOfSeqOfSeqOfShape_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Area2dBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Area3dBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_AreaBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ArgumentAnalyzer.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_BlockBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_BlockIterator.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Builder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_BuilderTools.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_CheckResult.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_CompositeClassifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ConnexityBlock.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_CorrectTolerances.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Draw.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_EdgeInfo.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_EmptyBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_FaceAreaBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_FaceBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_FaceInfo.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_HistoryCollector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Loop.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_LoopClassifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_LoopSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Refiner.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SDFWESFiller.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SFSCorrector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_Section.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SectionHistoryCollector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShapeSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellFaceClassifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellFaceSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellShell.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSolid.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSolidHistoryCollector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSolid_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSolid_2.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSolid_3.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_ShellSplitter.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidAreaBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidBuilder.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidClassifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidSolid.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidSolidHistoryCollector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_SolidSolid_1.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WESCorrector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireEdgeClassifier.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireEdgeSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireShape.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireShell.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireSolid.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireSolidHistoryCollector.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireSplitter.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOP\BOP_WireWire.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="BooleanOperations"
-				>
-				<File
-					RelativePath="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeAncestorsSuccessors_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapNodeOfIndexedDataMapOfShapeInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapOfShapeAncestorsSuccessors_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\BooleanOperations\BooleanOperations_IndexedDataMapOfShapeInteger_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_AncestorsAndSuccessors.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_AncestorsSeqAndSuccessorsSeq.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_Explorer.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_OnceExplorer.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_ShapeAndInterferences.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BooleanOperations\BooleanOperations_ShapesDataStructure.cxx">
-				</File>
-			</Filter>
 			<Filter
 				Name="IntTools"
 				>
@@ -1172,9 +546,6 @@
 					RelativePath="..\..\..\src\IntTools\IntTools_CompareRange.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\IntTools\IntTools_Context.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_Curve.cxx">
 				</File>
 				<File
@@ -1220,9 +591,6 @@
 					RelativePath="..\..\..\src\IntTools\IntTools_Root.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\IntTools\IntTools_ShrunkRange.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\IntTools\IntTools_SurfaceRangeLocalizeData.cxx">
 				</File>
 				<File
@@ -1242,7 +610,13 @@
 				Name="BRepAlgoAPI"
 				>
 				<File
+					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_BooleanOperation.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Check.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Common.cxx">
@@ -1255,6 +629,206 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepAlgoAPI\BRepAlgoAPI_Section.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="BOPCol"
+				>
+			</Filter>
+			<Filter
+				Name="BOPInt"
+				>
+				<File
+					RelativePath="..\..\..\src\BOPInt\BOPInt_Context.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPInt\BOPInt_ShrunkRange.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPInt\BOPInt_Tools.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="BOPDS"
+				>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_BoxBndTree.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_CommonBlock.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_Curve.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_DS.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_FaceInfo.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_IndexRange.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_Iterator.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_IteratorSI.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_PassKey.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_PassKeyBoolean.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_PassKeyMapHasher.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_Pave.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_PaveBlock.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_PaveMapHasher.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_Point.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_ShapeInfo.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_SubIterator.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPDS\BOPDS_Tools.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="BOPAlgo"
+				>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Algo.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_ArgumentAnalyzer.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BOP.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BOP_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BuilderArea.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BuilderFace.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BuilderShape.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BuilderSolid.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder_2.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder_3.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder_4.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_CheckResult.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_CheckerSI.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_2.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_3.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_4.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_5.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_6.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_7.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_8.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Tools.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_WireEdgeSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_WireSplitter.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_WireSplitter_1.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="BOPTools"
+				>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools2D.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools3D.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools_1.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_AlgoTools_2.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_EdgeSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_Set.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_SetMapHasher.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTools\BOPTools_ShapeSet.cxx">
 				</File>
 			</Filter>
 

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8DEC7C6A-16A6-0795-0F6C-62EDB5E442CB}</ProjectGuid>
+    <ProjectGuid>{E7D8FCB5-11BC-1782-0962-2CBF7ECFF722}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

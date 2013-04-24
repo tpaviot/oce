@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E4BDDD66-0163-0A5C-1808-5C757D256551}</ProjectGuid>
+    <ProjectGuid>{D6DE719A-02DF-1119-091E-2857898B12A3}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

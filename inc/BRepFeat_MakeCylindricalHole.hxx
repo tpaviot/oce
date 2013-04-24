@@ -36,8 +36,8 @@
 #endif
 class StdFail_NotDone;
 class Standard_ConstructionError;
-class TopoDS_Shape;
 class gp_Ax1;
+class TopoDS_Shape;
 
 
 //! Provides a tool to make cylindrical holes on a shape. <br>
@@ -48,11 +48,6 @@ public:
 
   //! Empty constructor. <br>
       BRepFeat_MakeCylindricalHole();
-  //! Creates the tool to perform hole(s) on the shape <S>. <br>
-      BRepFeat_MakeCylindricalHole(const TopoDS_Shape& S);
-  //! Creates the tool to perform hole(s) on the shape <S>, <br>
-//!          with the axis <Axis>. <br>
-      BRepFeat_MakeCylindricalHole(const TopoDS_Shape& S,const gp_Ax1& Axis);
   //! Sets the axis of the hole(s). <br>
         void Init(const gp_Ax1& Axis) ;
   //! Sets the shape and  axis on which hole(s)  will be <br>
@@ -94,7 +89,7 @@ public:
 //!          MakeShape). Invalidates the  given parts  of tools <br>
 //!          if  any,   and performs the  result   of the local <br>
 //!          operation. <br>
-  Standard_EXPORT   virtual  void Build() ;
+  Standard_EXPORT     void Build() ;
 
 
 

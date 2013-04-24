@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{1347528A-0A93-013C-0868-235A34F73FCB}</UniqueIdentifier>
+      <UniqueIdentifier>{C81A3883-0B41-1319-02F6-C9247277BBD8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\LocOpe">
-      <UniqueIdentifier>{7D63E7D2-049E-06E2-1455-A300596C0D58}</UniqueIdentifier>
+      <UniqueIdentifier>{CDA34919-0AC6-101B-0891-79B5536F73FB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepFeat">
-      <UniqueIdentifier>{E00EACAE-1486-0F4F-0F89-CF3C4A7F5407}</UniqueIdentifier>
+      <UniqueIdentifier>{2780AF37-0BEB-01CE-0FB3-13C126EDC28D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,9 +46,6 @@
       <Filter>Source files\LocOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_BuildWires.cxx">
-      <Filter>Source files\LocOpe</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\LocOpe\LocOpe_Builder.cxx">
       <Filter>Source files\LocOpe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\LocOpe\LocOpe_CSIntersector.cxx">
@@ -124,9 +121,6 @@
       <Filter>Source files\BRepFeat</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_Gluer.cxx">
-      <Filter>Source files\BRepFeat</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_LocalOperation.cxx">
       <Filter>Source files\BRepFeat</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepFeat\BRepFeat_MakeCylindricalHole.cxx">

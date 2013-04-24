@@ -6,12 +6,12 @@
 #ifndef _Visual3d_TypeOfLightSource_HeaderFile
 #define _Visual3d_TypeOfLightSource_HeaderFile
 
-//! The answer of the method AcceptDisplay <br>
-//!      AcceptDisplay  means is it possible to display the <br>
-//!             specified structure in the specified view ? <br>
-//!      TOA_YES yes <br>
-//!      TOA_NO  no <br>
-//!      TOA_COMPUTE yes but we have to compute the representation <br>
+//! Definition of all the type of light sources <br>
+//! <br>
+//!      TOLS_AMBIENT    ambient light <br>
+//!      TOLS_DIRECTIONAL    directional light <br>
+//!      TOLS_POSITIONAL positional light <br>
+//!      TOLS_SPOT       spot light <br>
 enum Visual3d_TypeOfLightSource {
 Visual3d_TOLS_AMBIENT,
 Visual3d_TOLS_DIRECTIONAL,

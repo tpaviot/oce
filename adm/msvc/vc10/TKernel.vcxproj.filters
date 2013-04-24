@@ -2,61 +2,61 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{50C79295-184F-0848-0BC1-B01A3287D6D1}</UniqueIdentifier>
+      <UniqueIdentifier>{8637D23B-00ED-0B15-071D-6311B31F37E6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\FSD">
-      <UniqueIdentifier>{28578408-0459-0C1A-0318-654B312B9C6D}</UniqueIdentifier>
+      <UniqueIdentifier>{8F06A5BF-129F-0E71-0162-24B408A7BA6E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MMgt">
-      <UniqueIdentifier>{2AF53AA4-00C0-0565-0828-ECF31B4CA9FE}</UniqueIdentifier>
+      <UniqueIdentifier>{C0ADF22D-0B02-0F5C-003A-F7948237127D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OSD">
-      <UniqueIdentifier>{2C939348-13D8-1579-1567-78FA1B6C0DA0}</UniqueIdentifier>
+      <UniqueIdentifier>{9ECDADDD-0367-0793-075D-2F0E11449CF5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Plugin">
-      <UniqueIdentifier>{F2A0D3C1-0D03-1522-1524-579B318DCDF0}</UniqueIdentifier>
+      <UniqueIdentifier>{9CB4255F-000E-06D9-0813-AB1E013EDC33}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Quantity">
-      <UniqueIdentifier>{CB7DB3BA-169A-0075-0A1E-E3EF9C881D7C}</UniqueIdentifier>
+      <UniqueIdentifier>{EAC27438-1540-0A9A-1732-D39D890B9997}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Resource">
-      <UniqueIdentifier>{47EA6DA6-0728-0EBA-0AE3-EDAE1E425148}</UniqueIdentifier>
+      <UniqueIdentifier>{90AC6E42-16D3-194A-1711-BADDD539EF3A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SortTools">
-      <UniqueIdentifier>{E6600DAA-17E5-139C-08D7-6F35671B287F}</UniqueIdentifier>
+      <UniqueIdentifier>{88D43C62-0267-1780-0982-342659C1B337}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Standard">
-      <UniqueIdentifier>{FFD37299-079E-08D6-069C-7011FAAC68A0}</UniqueIdentifier>
+      <UniqueIdentifier>{DD17A943-0269-1831-1815-0B0B240885BE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdFail">
-      <UniqueIdentifier>{09052313-18C4-04CD-03E2-3B8A7900389F}</UniqueIdentifier>
+      <UniqueIdentifier>{847F039A-1841-15C8-0B73-E25CFC46CF6A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Storage">
-      <UniqueIdentifier>{8585176E-1924-1287-0CA2-535BCBAF951C}</UniqueIdentifier>
+      <UniqueIdentifier>{DB51EF8E-039E-08CB-07B4-707D703B4E08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColStd">
-      <UniqueIdentifier>{66977906-16B1-01AD-0AAD-F2675D60296A}</UniqueIdentifier>
+      <UniqueIdentifier>{800F2346-0B33-0EF7-0EDC-98147767C22C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TCollection">
-      <UniqueIdentifier>{3F02583B-1609-1274-11F8-7FC3AE07F513}</UniqueIdentifier>
+      <UniqueIdentifier>{FCE752FB-08EC-0278-0490-89991AA28271}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TShort">
-      <UniqueIdentifier>{6AE21C62-072D-16DE-0B02-BA5DD666BBA6}</UniqueIdentifier>
+      <UniqueIdentifier>{21E646B9-125B-02AD-02AA-4EC4F163DC1F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Units">
-      <UniqueIdentifier>{A9A402E4-08F0-0DFD-0F7B-CA989BE8F9F5}</UniqueIdentifier>
+      <UniqueIdentifier>{08B5FF6E-0494-133D-0523-FCC43EB7EAF5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsAPI">
-      <UniqueIdentifier>{7255BAD5-17F7-046E-0C4E-40BEACA63C7E}</UniqueIdentifier>
+      <UniqueIdentifier>{A295DD21-12AF-0F0D-088A-0D3F88C60DBF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Dico">
-      <UniqueIdentifier>{CD9D8FA2-0E65-04B5-12FD-FF3D4F1239A4}</UniqueIdentifier>
+      <UniqueIdentifier>{B0A31ACA-0596-1900-04D4-E95BD38B985F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\NCollection">
-      <UniqueIdentifier>{86735D0F-0133-09A2-078A-F43F7872F9ED}</UniqueIdentifier>
+      <UniqueIdentifier>{C0B0D979-066D-0B70-0E87-C50E4F2E8437}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Message">
-      <UniqueIdentifier>{766C2DAB-125E-014A-0165-13D1BE2F42BC}</UniqueIdentifier>
+      <UniqueIdentifier>{EA620E7C-04C2-0851-0D0D-A6CFF59EE65D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,9 +216,6 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Host.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Localizer.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
@@ -231,7 +228,7 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_Path.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_PerfMeter.c">
+    <ClCompile Include="..\..\..\src\OSD\OSD_PerfMeter.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Printer.cxx">
@@ -241,9 +238,6 @@
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Protection.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_Real2String.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Semaphore.cxx">
@@ -262,9 +256,6 @@
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_WNT.cxx">
-      <Filter>Source files\OSD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\OSD\OSD_WNT_1.cxx">
       <Filter>Source files\OSD</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_signal.cxx">
@@ -474,6 +465,9 @@
     <ClCompile Include="..\..\..\src\Standard\Standard_Boolean.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_CLocaleSentry.cxx">
+      <Filter>Source files\Standard</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_CString.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
@@ -541,6 +535,9 @@
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Storable.cxx">
+      <Filter>Source files\Standard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Standard\Standard_Time.cxx">
       <Filter>Source files\Standard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Standard\Standard_Transient.cxx">

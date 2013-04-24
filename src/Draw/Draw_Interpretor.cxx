@@ -30,6 +30,7 @@
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <OSD_Path.hxx>
+#include <OSD.hxx>
 
 #include <string.h>
 #include <tcl.h>
@@ -206,6 +207,9 @@ static Standard_Integer CommandCmd
   try {
     OCC_CATCH_SIGNALS
 
+    // get exception if control-break has been pressed 
+    OSD::ControlBreak();
+
     // OCC63: Convert strings from UTF-8 to local encoding, normally expected by OCC commands
     TclUTFToLocalStringSentry anArgs ( argc, (const char**)argv );
       
@@ -229,7 +233,7 @@ static Standard_Integer CommandCmd
 
     cout << "An exception was caught " << E << endl;
 
-    if (cc && atoi(cc)) {
+    if (cc && Draw::Atoi(cc)) {
 #ifdef WNT
       Tcl_Exit(0);
 #else      
@@ -493,7 +497,7 @@ Draw_Interpretor& Draw_Interpretor::Append(const TCollection_ExtendedString& the
 Draw_Interpretor& Draw_Interpretor::Append(const Standard_Integer i)
 {
   char c[100];
-  sprintf(c,"%d",i);
+  Sprintf(c,"%d",i);
   Tcl_AppendResult(myInterp,c,(Standard_CString)0);
   return *this;
 }
@@ -506,7 +510,7 @@ Draw_Interpretor& Draw_Interpretor::Append(const Standard_Integer i)
 Draw_Interpretor& Draw_Interpretor::Append(const Standard_Real r)
 {
   char s[100];
-  sprintf(s,"%.17g",r);
+  Sprintf(s,"%.17g",r);
   Tcl_AppendResult(myInterp,s,(Standard_CString)0);
   return *this;
 }

@@ -6,7 +6,13 @@
 #ifndef _IFSelect_ReturnStatus_HeaderFile
 #define _IFSelect_ReturnStatus_HeaderFile
 
-
+//! Qualifies an execution status : <br>
+//!           RetVoid  : normal execution which created nothing, or <br>
+//!               no data to process <br>
+//!           RetDone  : normal execution with a result <br>
+//!           RetError : error in command or input data, no execution <br>
+//!           RetFail  : execution was run and has failed <br>
+//!           RetStop  : indicates end or stop (such as Raise) <br>
 enum IFSelect_ReturnStatus {
 IFSelect_RetVoid,
 IFSelect_RetDone,

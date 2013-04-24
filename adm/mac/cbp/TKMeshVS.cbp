@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKMeshVS" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKMeshVS" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKMeshVS" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/MeshVS" />
+			<Add directory="../../../src/MeshVS" />
+		</Compiler>
+		<Linker>
+			<Add option="-framework OpenGL" />
+			<Add option="-framework AppKit" />
+			<Add option="-framework IOKit" />
+			<Add library="TKV3d" />
+			<Add library="TKMath" />
+			<Add library="TKService" />
+			<Add library="TKernel" />
+			<Add library="TKG3d" />
+			<Add library="TKG2d" />
+			<Add library="objc" />
+			<Add library="freeimage" />
+			<Add library="freetype" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/MeshVS/MeshVS_Array1OfSequenceOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerColor_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfIntegerVector_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerColor_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfIntegerVector_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfColorMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfHArray1OfSequenceOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerAsciiString_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerBoolean_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerColor_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerMaterial_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerMeshEntityOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerOwner_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerTwoColors_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfIntegerVector_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_DataMapOfTwoColorsMapOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_HArray1OfSequenceOfInteger_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_MapIteratorOfMapOfTwoNodes_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_MapOfTwoNodes_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_SequenceNodeOfSequenceOfPrsBuilder_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_SequenceOfPrsBuilder_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_StdMapNodeOfMapOfTwoNodes_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_TwoColorsHasher_0.cxx" />
+		<Unit filename="../../../drv/MeshVS/MeshVS_TwoNodesHasher_0.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_ColorHasher.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DataSource3D.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DeformedDataSource.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Drawer.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_DummySensitiveEntity.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_ElementalColorPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Mesh.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshEntityOwner.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshOwner.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_MeshPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_NodalColorPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_PrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveFace.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveMesh.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitivePolyhedron.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_SensitiveSegment.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_TextPrsBuilder.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_Tool.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_TwoColors.cxx" />
+		<Unit filename="../../../src/MeshVS/MeshVS_VectorPrsBuilder.cxx" />
+	</Project>
+</CodeBlocks_project_file>

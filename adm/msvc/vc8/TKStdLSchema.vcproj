@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKStdLSchema"
-	ProjectGUID="{6D943D51-0ECD-10CF-0B09-F55A5F001B28}"
+	ProjectGUID="{C7774286-0FE1-023C-03CC-38418856876E}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKStdLSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKStdLSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKStdLSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKCDF.lib PTKernel.lib TKernel.lib TKShapeSchema.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKStdLSchema.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

@@ -93,6 +93,7 @@ public:
   //! Use this method to change the origin of the <br>
 //!         texture. The texel (0,0) will be mapped to the <br>
 //!         surfel (UOrigin,VOrigin) <br>
+//! <br>
   Standard_EXPORT   virtual  void SetTextureOrigin(const Standard_Boolean SetTextureOriginYN,const Standard_Real UOrigin = 0.0,const Standard_Real VOrigin = 0.0) ;
   //! Use this method to scale the texture (percent of <br>
 //!         the face). <br>
@@ -101,18 +102,24 @@ public:
 //!         example : if you set ScaleU and ScaleV to 0.5 and <br>
 //!         you enable texture repeat, the texture will appear <br>
 //!         twice on the face in each direction. <br>
+//! <br>
   Standard_EXPORT   virtual  void SetTextureScale(const Standard_Boolean SetTextureScaleYN,const Standard_Real ScaleU = 1.0,const Standard_Real ScaleV = 1.0) ;
   //! Use this method to show the triangulation of <br>
 //!         the shape. This is not very esthetic but can be <br>
 //!         usefull for debug ... <br>
+//! <br>
   Standard_EXPORT   virtual  void ShowTriangles(const Standard_Boolean ShowTrianglesYN = Standard_False) ;
   //! Enables texture mapping <br>
+//! <br>
   Standard_EXPORT     void SetTextureMapOn() ;
   //! Disables texture mapping <br>
+//! <br>
   Standard_EXPORT     void SetTextureMapOff() ;
   //! Enables texture modulation <br>
+//! <br>
   Standard_EXPORT     void EnableTextureModulate() ;
   //! Disables texture modulation <br>
+//! <br>
   Standard_EXPORT     void DisableTextureModulate() ;
   //! Use this method to display the textured shape <br>
 //!         without recomputing the whole presentation. <br>
@@ -129,6 +136,7 @@ public:
 //!	    	         myAISContext->SetDisplayMode(myShape,3,Standard_False); <br>
 //!	                 myAISContext->Display(myShape, Standard_True); <br>
 //!	               } <br>
+//! <br>
   Standard_EXPORT     void UpdateAttributes() ;
   
   Standard_EXPORT     Standard_Boolean TextureMapState() const;

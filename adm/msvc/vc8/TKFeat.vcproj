@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKFeat"
-	ProjectGUID="{1ECD54D3-0B03-140B-1507-F81ECDAE41F3}"
+	ProjectGUID="{60E9ABF8-185D-08B7-18AF-1D23A70FD101}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKGeomAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKPrim.lib TKG2d.lib TKBO.lib TKG3d.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKFeat.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -454,9 +454,6 @@
 					RelativePath="..\..\..\src\LocOpe\LocOpe_BuildWires.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\LocOpe\LocOpe_Builder.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\LocOpe\LocOpe_CSIntersector.cxx">
 				</File>
 				<File
@@ -534,9 +531,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFeat\BRepFeat_Gluer.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepFeat\BRepFeat_LocalOperation.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepFeat\BRepFeat_MakeCylindricalHole.cxx">

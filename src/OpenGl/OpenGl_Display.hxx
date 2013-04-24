@@ -17,7 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #ifndef _OpenGl_Display_Header
 #define _OpenGl_Display_Header
 
@@ -29,6 +28,7 @@
 #include <NCollection_DataMap.hxx>
 
 #include <Aspect_Display.hxx>
+#include <Aspect_DisplayConnection.hxx>
 #include <Aspect_Drawable.hxx>
 #include <Aspect_TypeOfLine.hxx>
 #include <Aspect_TypeOfMarker.hxx>
@@ -66,8 +66,7 @@ struct OpenGl_TextParam;
 class OpenGl_Display : public MMgt_TShared
 {
  public:
-  OpenGl_Display (const Standard_CString ADisplay);
-  OpenGl_Display (const Aspect_Display ADisplay);
+  OpenGl_Display (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
   virtual ~OpenGl_Display ();
 
   Aspect_Display GetDisplay () const { return myDisplay; }
@@ -113,14 +112,6 @@ class OpenGl_Display : public MMgt_TShared
 
   Standard_Integer GetUserMarkerListIndex (const Standard_Integer AIndex) const;
 
-  // Fonts
-
-  int FindFont (const char* AFontName, const Font_FontAspect AFontAspect, const int ABestSize = -1, const float AXScale = 1.F, const float AYScale = 1.F);
-
-  void StringSize (const wchar_t *text, int &width, int &ascent, int &descent);
-
-  void RenderText (const wchar_t *text, const int is2d, const float x, const float y, const float z, const OpenGl_AspectText *aspect, const OpenGl_TextParam *param);
-
   friend class OpenGl_Window;
 
   // Type definition
@@ -160,9 +151,6 @@ class OpenGl_Display : public MMgt_TShared
   unsigned int myMarkerBase;
 
   OpenGl_MapOfUserMarker myMapOfUM;
-
-  Standard_Integer myFont;
-  Standard_Integer myFontSize;
 
  public:
   DEFINE_STANDARD_ALLOC

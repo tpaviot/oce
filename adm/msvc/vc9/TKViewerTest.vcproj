@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKViewerTest"
-	ProjectGUID="{64E98301-0BD8-097E-07C0-73FCC5D814D4}"
+	ProjectGUID="{7D88DFFA-0EE6-0ECB-0A3C-FFCB3074CBB3}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,10 +48,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,14 +71,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV2d.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,10 +144,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKViewerTest\TKViewerTest.pch"
@@ -166,14 +168,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV2d.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,11 +239,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -260,14 +262,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV2d.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,11 +333,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Viewer2dTest;..\..\..\src\Viewer2dTest;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ViewerTest;..\..\..\src\ViewerTest;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKViewerTest\TKViewerTest.pch"
@@ -355,14 +357,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Viewer2dTest_DLL;__ViewerTest_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ViewerTest_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV2d.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKGeomBase.lib TKFillet.lib TKBRep.lib TKTopAlgo.lib TKHLR.lib TKernel.lib TKMath.lib TKNIS.lib TKService.lib TKBool.lib TKPrim.lib TKGeomAlgo.lib TKG2d.lib TKTopTest.lib TKG3d.lib TKOffset.lib TKVoxel.lib TKMesh.lib TKV3d.lib TKDraw.lib TKOpenGl.lib tcl85.lib tk85.lib user32.lib gdi32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKViewerTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -402,46 +404,6 @@
 		<Filter
 			Name="Source files"
 			>
-			<Filter
-				Name="Viewer2dTest"
-				>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapIteratorOfDataMapOfText_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapNodeOfDataMapOfText_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DataMapOfText_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\Viewer2dTest\Viewer2dTest_DoubleMapOfInteractiveAndName_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest_DisplayCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest_EventManager.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest_GeneralCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest_ObjectCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\Viewer2dTest\Viewer2dTest_ViewerCommands.cxx">
-				</File>
-			</Filter>
 			<Filter
 				Name="ViewerTest"
 				>

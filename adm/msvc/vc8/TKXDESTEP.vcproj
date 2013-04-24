@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXDESTEP"
-	ProjectGUID="{DD4B04E6-106E-1667-1652-6DBDD7CA8487}"
+	ProjectGUID="{56C07537-0A77-0FF9-0F47-864C31F452E1}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKXDESTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKXDESTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKXDESTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKSTEPAttr.lib TKernel.lib TKMath.lib TKXSBase.lib TKG2d.lib TKCAF.lib TKSTEPBase.lib TKCDF.lib TKLCAF.lib TKG3d.lib TKXCAF.lib TKSTEP.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKXDESTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

@@ -1,6 +1,0 @@
-#ifndef _gp_Pnt2d_HeaderFile
-#include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Select2D_Projector_HeaderFile
-#include <Select2D_Projector.hxx>
-#endif

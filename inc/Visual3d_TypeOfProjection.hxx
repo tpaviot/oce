@@ -6,10 +6,13 @@
 #ifndef _Visual3d_TypeOfProjection_HeaderFile
 #define _Visual3d_TypeOfProjection_HeaderFile
 
-//! Definition of the order of selection <br>
-//!      TOO_TOPFIRST    the root structure first <br>
-//!      TOO_BOTTOMFIRST the leaf structure first <br>
-//!      Allows exploration of a PickPath in a PickDescriptor. <br>
+//! Definition of the type of 3D projection <br>
+//! <br>
+//!      TOP_PERSPECTIVE perspective projection (centre of <br>
+//!              projection at a  distance finite from <br>
+//!              plane of projection) <br>
+//!      TOP_PARALLEL    parallel projection (point of <br>
+//!              projection at infinity) <br>
 enum Visual3d_TypeOfProjection {
 Visual3d_TOP_PERSPECTIVE,
 Visual3d_TOP_PARALLEL

@@ -6,7 +6,7 @@
 #ifndef _SelectMgr_StateOfSelection_HeaderFile
 #define _SelectMgr_StateOfSelection_HeaderFile
 
-
+//! different state of a Selection in a ViewerSelector... <br>
 enum SelectMgr_StateOfSelection {
 SelectMgr_SOS_Activated,
 SelectMgr_SOS_Deactivated,

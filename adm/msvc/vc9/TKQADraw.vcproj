@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKQADraw"
-	ProjectGUID="{2875BA74-076B-0E72-123C-E2FE2A9C7D7E}"
+	ProjectGUID="{A3FE15B7-0AE2-05A3-0600-375D5FD31C99}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,10 +48,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DebugTools;..\..\..\src\DebugTools;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -70,14 +71,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKV2d.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,10 +144,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DebugTools;..\..\..\src\DebugTools;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win32\vc9\objd\TKQADraw\TKQADraw.pch"
@@ -166,14 +168,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKV2d.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,11 +239,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DebugTools;..\..\..\src\DebugTools;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -260,14 +262,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKV2d.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,11 +333,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DebugTools;..\..\..\src\DebugTools;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
+				AdditionalOptions="-MP -favor:blend"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
 				ExceptionHandling="2"
 				RuntimeLibrary="3"
 				PrecompiledHeaderFile=".\..\..\..\win64\vc9\objd\TKQADraw\TKQADraw.pch"
@@ -355,14 +357,14 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DebugTools_DLL;__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKV2d.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKBRep.lib TKNIS.lib TKMath.lib TKernel.lib TKService.lib TKG2d.lib TKDraw.lib PTKernel.lib TKV3d.lib TKGeomBase.lib TKG3d.lib TKViewerTest.lib TKCDF.lib TKDCAF.lib TKLCAF.lib TKFillet.lib TKTopAlgo.lib TKHLR.lib TKBool.lib TKGeomAlgo.lib TKPrim.lib TKBO.lib TKShHealing.lib TKOffset.lib TKFeat.lib TKCAF.lib TKIGES.lib TKXSBase.lib TKMesh.lib TKXCAF.lib TKSTEP.lib TKXDESTEP.lib TKXSDRAW.lib TKSTL.lib TKAdvTools.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKQADraw.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -402,13 +404,6 @@
 		<Filter
 			Name="Source files"
 			>
-			<Filter
-				Name="DebugTools"
-				>
-				<File
-					RelativePath="..\..\..\src\DebugTools\Perf.cxx">
-				</File>
-			</Filter>
 			<Filter
 				Name="QABugs"
 				>
@@ -517,15 +512,6 @@
 				Name="QADraw"
 				>
 				<File
-					RelativePath="..\..\..\drv\QADraw\QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\QADraw\QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress_0.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\drv\QADraw\QADraw_DataMapOfAsciiStringOfAddress_0.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\QADraw\QADraw.cxx">
 				</File>
 				<File
@@ -600,6 +586,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\QANCollection\QANCollection3.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\QANCollection\QANCollection4.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\QANCollection\QANCollectionTest.cxx">

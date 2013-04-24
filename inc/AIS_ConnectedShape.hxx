@@ -49,12 +49,6 @@
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
 #ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
 #endif
@@ -65,8 +59,6 @@ class TopLoc_Location;
 class Prs3d_Projector;
 class Prs3d_Presentation;
 class Geom_Transformation;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class SelectMgr_Selection;
 class TopoDS_Shape;
 
@@ -105,10 +97,6 @@ public:
 //! an Interactive Object, this connection is removed. <br>
 //! This syntax also initiates the location of the Connected Interactive Object. <br>
   Standard_EXPORT   virtual  void Connect(const Handle(AIS_InteractiveObject)& anotherIobj,const TopLoc_Location& aLocation) ;
-  //! this method should fill the presentation according to the <br>
-//!          enumerated mode of the application and to the display parameter <br>
-//!          of the application. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   //! Returns the topological shape which is the reference <br>
 //! for the connected shape. Sets hilight mode to index <br>
 //! 0. This returns a wireframe presentation. <br>

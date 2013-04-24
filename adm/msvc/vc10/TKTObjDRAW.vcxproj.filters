@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{87369481-0690-02B1-090B-FB92B95DDD52}</UniqueIdentifier>
+      <UniqueIdentifier>{3D3271EB-10D0-0FC0-03EB-28A9D2A53127}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TObjDRAW">
-      <UniqueIdentifier>{6D6A1304-1381-0B90-07C6-731219A95429}</UniqueIdentifier>
+      <UniqueIdentifier>{3E1CB3AC-14F1-07A1-04DE-BBA321D300BB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

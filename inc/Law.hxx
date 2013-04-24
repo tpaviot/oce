@@ -66,10 +66,24 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+//!  This algorithm searches the knot values corresponding to the <br>
+//!  splitting of a given B-spline law into  several arcs with <br>
+//!  the same continuity. The continuity order is given at the <br>
+//!  construction time. <br>//! Builds a 1d bspline that   is near from Lin with  null <br>
+//!          derivatives at the extremities. <br>
   Standard_EXPORT   static  Handle_Law_BSpFunc MixBnd(const Handle(Law_Linear)& Lin) ;
-  
+  //! Builds  the poles of the 1d  bspline that is near from <br>
+//!          Lin with null derivatives at the extremities. <br>
   Standard_EXPORT   static  Handle_TColStd_HArray1OfReal MixBnd(const Standard_Integer Degree,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Handle(Law_Linear)& Lin) ;
-  
+  //! Builds the poles of the 1d bspline that is null on the <br>
+//!          rigth    side   of   Knots(Index)  (on  the    left if <br>
+//!          NulOnTheRight  is  false)    and   that is     like  a <br>
+//!          t*(1-t)(1-t) curve  on the  left side of  Knots(Index) <br>
+//!          (on the rigth  if NulOnTheRight is false).  The result <br>
+//!          curve is  C1 with  a derivative  equal  to 1. at first <br>
+//!          parameter (-1 at last  parameter  if  NulOnTheRight is <br>
+//!          false). <br>
+//!  Warning: Mults(Index) must greater or equal to degree-1. <br>
   Standard_EXPORT   static  Handle_TColStd_HArray1OfReal MixTgt(const Standard_Integer Degree,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Standard_Boolean NulOnTheRight,const Standard_Integer Index) ;
   //! Computes a 1 d curve to  reparametrize a curve. Its an <br>
 //!          interpolation of NbPoints  points calculated  at quasi <br>
@@ -79,6 +93,14 @@ public:
 //!          Value is 1. for t = (First+Last)/2 . <br>
 //!          If HasFirst value for t = First is VFirst (null derivative). <br>
 //!          If HasLast value for t = Last is VLast (null derivative). <br>
+//! <br>
+//!          1.                   _ <br>
+//!                             _/ \_ <br>
+//!                          __/     \__ <br>
+//!                         /           \ <br>
+//!          VFirst    ____/             \ <br>
+//!          VLast                        \____ <br>
+//!                  First                    Last <br>
   Standard_EXPORT   static  Handle_Law_BSpline Scale(const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasF,const Standard_Boolean HasL,const Standard_Real VFirst,const Standard_Real VLast) ;
   
   Standard_EXPORT   static  Handle_Law_BSpline ScaleCub(const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasF,const Standard_Boolean HasL,const Standard_Real VFirst,const Standard_Real VLast) ;

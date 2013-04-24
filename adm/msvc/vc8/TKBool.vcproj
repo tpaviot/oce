@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKBool"
-	ProjectGUID="{37D1BBCA-153A-0396-0232-85894BF8C74D}"
+	ProjectGUID="{A9185D07-0DB0-1171-1806-6FF0D92D410A}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKBool.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKBool.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKBool.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKPrim.lib TKG2d.lib TKG3d.lib TKShHealing.lib TKGeomBase.lib TKGeomAlgo.lib TKBO.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKBool.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -1428,9 +1428,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepAlgo\BRepAlgo_Tool.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BRepAlgo\BRepAlgo_TopOpe.cxx">
 				</File>
 			</Filter>
 			<Filter

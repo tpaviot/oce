@@ -212,6 +212,9 @@ Standard_EXPORT virtual ~FairCurve_Batten(){Delete();}
   Standard_EXPORT     Handle_Geom2d_BSplineCurve Curve() const;
   //! Prints on the stream o information on the current state <br>
 //!          of the object. <br>
+//! <br>
+//!   Private methodes  -------------------------------------- <br>
+//! <br>
   Standard_EXPORT   virtual  void Dump(Standard_OStream& o) const;
 
 

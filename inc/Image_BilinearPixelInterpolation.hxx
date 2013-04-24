@@ -58,6 +58,10 @@ class Aspect_IndexPixel;
 //!		V2 = a*X2 + b*Y2 + c*X2*Y2 + d <br>
 //!		V3 = a*X3 + b*Y3 + c*X3*Y3 + d <br>
 //!		V1 = a*X4 + b*Y4 + c*X4*Y4 + d <br>
+//! <br>
+//!	      and V = a*FX + b*XY + c*FX*FY + d <br>
+//!	      is the Image SubPixel value on non integer <br>
+//!	      coordinate (FX,FY). <br>
 class Image_BilinearPixelInterpolation  : public Image_PixelInterpolation {
 public:
 

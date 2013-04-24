@@ -102,11 +102,8 @@
 #include <OSD_Chronometer.hxx>
 // variables for performance 
 Standard_Real t_mkcurve;
-//Standard_IMPORT extern void ChFi3d_InitChron(OSD_Chronometer& ch);
-Standard_EXPORT void ChFi3d_InitChron(OSD_Chronometer& ch);
-//Standard_IMPORT extern void ChFi3d_ResultChron(OSD_Chronometer & ch,
-Standard_IMPORT void ChFi3d_ResultChron(OSD_Chronometer & ch,
-					Standard_Real&    time);
+extern void ChFi3d_InitChron(OSD_Chronometer& ch);
+extern void ChFi3d_ResultChron(OSD_Chronometer & ch, Standard_Real&    time);
 #ifdef DRAW
 static Standard_Boolean Affich = Standard_False;
 static char name[100];
@@ -595,11 +592,7 @@ static TopAbs_Orientation Orientation(const TopoDS_Edge& E,
 				      const TopoDS_Face& F,
 				      const TopTools_ListOfShape& L)
 {
-#ifndef DEB
   TopAbs_Orientation Orien = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation Orien;
-#endif
   TopTools_ListIteratorOfListOfShape itld;
   for ( itld.Initialize(L); itld.More(); itld.Next()) {
     if ( itld.Value().IsSame(E)) {
@@ -2325,7 +2318,6 @@ void BiTgte_Blend::ComputeShape()
   // modify the tubes on edge for partition of edges.
   //
   Standard_Integer NbS = NbSurfaces();
-  NbS = 0;
   for (Standard_Integer i = 1; i <= NbS; i++) {
     const TopoDS_Shape& S1 = SupportShape1(i);
 

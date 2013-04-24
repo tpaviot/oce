@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKMesh" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKMesh" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKMesh" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/BRepMesh" />
+			<Add directory="../../../src/BRepMesh" />
+			<Add directory="../../../drv/IntPoly" />
+			<Add directory="../../../src/IntPoly" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomBase" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKGeomAlgo" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_Array1OfBiPoint_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_Array1OfVertexOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfFaceAttribute_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfIntegerListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfIntegerPnt_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfShapePairOfPolygon_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapIteratorOfDataMapOfVertexInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfFaceAttribute_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfIntegerListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfIntegerListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfIntegerPnt_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfShapePairOfPolygon_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapNodeOfDataMapOfVertexInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfFaceAttribute_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfIntegerListOfInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfIntegerListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfIntegerPnt_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfShapePairOfPolygon_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfShapeReal_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_DataMapOfVertexInteger_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ElemHasherOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_HArray1OfVertexOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_HeapSortIndexedVertexOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_HeapSortVertexOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IDMapOfLinkOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IDMapOfNodeOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IMapOfElementOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IndexedDataMapNodeOfIDMapOfLinkOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IndexedDataMapNodeOfIDMapOfNodeOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IndexedMapNodeOfIMapOfElementOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IndexedMapNodeOfIndexedMapOfVertex_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_IndexedMapOfVertex_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_LinkHasherOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListIteratorOfListOfVertex_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListIteratorOfListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListNodeOfListOfVertex_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListNodeOfListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListOfVertex_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_ListOfXY_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_NodeHasherOfDataStructureOfDelaun_0.cxx" />
+		<Unit filename="../../../drv/BRepMesh/BRepMesh_VertexHasher_0.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_BiPoint.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Circ.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_CircleTool.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Classifier.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_ComparatorOfIndexedVertexOfDelaun.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_ComparatorOfVertexOfDelaun.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_DataStructureOfDelaun.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Delaun.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_DiscretFactory.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_DiscretRoot.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Edge.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_FaceAttribute.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_FastDiscret.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_FastDiscretFace.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_GeomTool.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_IncrementalMesh.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_PairOfPolygon.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_SelectorOfDataStructureOfDelaun.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_ShapeTool.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Triangle.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_Vertex.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_VertexInspector.cxx" />
+		<Unit filename="../../../src/BRepMesh/BRepMesh_VertexTool.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt2d_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapNodeOfIndexedMapOfPnt_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapOfPnt2d_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_IndexedMapOfPnt_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt2d_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceNodeOfSequenceOfSequenceOfPnt_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt2d_0.cxx" />
+		<Unit filename="../../../drv/IntPoly/IntPoly_SequenceOfSequenceOfPnt_0.cxx" />
+		<Unit filename="../../../src/IntPoly/IntPoly_PlaneSection.cxx" />
+		<Unit filename="../../../src/IntPoly/IntPoly_Pnt2dHasher.cxx" />
+		<Unit filename="../../../src/IntPoly/IntPoly_PntHasher.cxx" />
+		<Unit filename="../../../src/IntPoly/IntPoly_ShapeSection.cxx" />
+	</Project>
+</CodeBlocks_project_file>

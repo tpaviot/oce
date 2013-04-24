@@ -34,6 +34,10 @@ class Standard_NoMoreObject;
 //! information about inheritance. <br>
 //! An AncestorIterator object is used to scan sequentially the <br>
 //! hierarchy of a type object from its direct super-type to the root. <br>
+//! <br>
+//! Warning: <br>
+//!   The near parents are first. <br>
+//! <br>
 class Standard_AncestorIterator  {
 public:
 
@@ -50,6 +54,7 @@ public:
   Standard_EXPORT   Standard_AncestorIterator(const Handle(Standard_Type)& aType);
   
 //!   Assigns an  AncestorIterator from another AncestorIterator. <br>
+//! <br>
   Standard_EXPORT     void Assign(const Standard_AncestorIterator& anOther) ;
     void operator =(const Standard_AncestorIterator& anOther) 
 {
@@ -57,10 +62,22 @@ public:
 }
   
 //! Returns True if there are other ancestors. <br>
+//! <br>
+//! Example: <br>
+//! <br>
+//! Handle(Standard_Type) type; <br>
+//! Standard_AncestorIterator super(TYPE(Geom_Circle)); <br>
+//! while(super.More()) { type = super.Value(); <br>
+//!      super.Next(); <br>
+//! } <br>
   Standard_EXPORT     Standard_Boolean More() const;
   
 //! Moves the position of the iterator to the next super-type. <br>
 //! If the current position corresponds to a root class, it becomes undefined. <br>
+//! <br>
+//! Exceptions: <br>
+//! Standard_NoMoreObject if the position of the iterator is undefined <br>
+//! If there are no more ancestors. <br>
   Standard_EXPORT     void Next() ;
   
 //!   Returns an <AncestorIterator> corresponding to the current position <br>
@@ -70,6 +87,15 @@ public:
   
 //! Returns the type corresponding to the current position of <br>
 //! the iterator. <br>
+//! <br>
+//! Example: <br>
+//! <br>
+//! Standard_AncestorIterator super(TYPE(Geom_Circle)); <br>
+//! assert (super.Value() == TYPE(Geom_Conic)); <br>
+//! <br>
+//! Exceptions: <br>
+//! Standard_NoSuchObject if the position of the iterator is undefined. <br>
+//! If there are no more ancestors. <br>
   Standard_EXPORT     Handle_Standard_Type Value() const;
 
 

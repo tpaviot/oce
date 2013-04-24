@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="DRAWEXE"
-	ProjectGUID="{F30E4962-07B6-0868-093C-E2E77BCB6F78}"
+	ProjectGUID="{FAA72FDF-01DE-0C00-145B-40D1937F242E}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -76,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\win32\vc9\lib;$(CSF_OPT_LIB32)"
@@ -138,6 +139,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="0"
 				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL"
@@ -165,7 +167,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\..\win32\vc9\libd;$(CSF_OPT_LIB32D)"
@@ -228,7 +230,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -257,7 +259,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\DRAWEXE.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -320,7 +322,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="0"
 				PreprocessorDefinitions="WIN64;DEB;_DEBUG;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64"
@@ -348,7 +350,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib tcl85.lib tk85.lib gdi32.lib advapi32.lib user32.lib kernel32.lib"
+				AdditionalDependencies="TKDraw.lib TKMesh.lib TKTopAlgo.lib TKHLR.lib TKGeomAlgo.lib TKGeomBase.lib TKG2d.lib TKBRep.lib TKMath.lib TKG3d.lib TKernel.lib TKService.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\DRAWEXE.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

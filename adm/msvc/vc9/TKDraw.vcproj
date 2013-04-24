@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKDraw"
-	ProjectGUID="{C2D49AC1-1547-1279-181B-23770E5D5B98}"
+	ProjectGUID="{DF501CA0-0564-13BB-00D9-4F12CF5BEE5A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"

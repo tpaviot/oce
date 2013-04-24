@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CA422DEB-09B2-083D-1108-D995DFFE84BC}</ProjectGuid>
+    <ProjectGuid>{2C0FA7DB-086B-186F-14D0-07325579A803}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -432,6 +436,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array2OfPOnCurv_0.cxx">
     </ClCompile>
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurfParams_0.cxx">
+    </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_Array2OfPOnSurf_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_CCFOfECC2dOfExtCC2d_0.cxx">
@@ -487,6 +493,8 @@
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnCurv2d_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnCurv_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurfParams_0.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Extrema\Extrema_HArray2OfPOnSurf_0.cxx">
     </ClCompile>
@@ -633,6 +641,8 @@
     <ClCompile Include="..\..\..\src\Extrema\Extrema_GenLocateExtSS.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\Extrema\Extrema_POnSurf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Extrema\Extrema_POnSurfParams.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\drv\IntAna\IntAna_ListIteratorOfListOfCurve_0.cxx">
     </ClCompile>

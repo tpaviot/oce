@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXmlL"
-	ProjectGUID="{FBA2B9C7-0788-174B-10A7-B79E32F2F565}"
+	ProjectGUID="{79C1F8AA-12A7-035C-061C-E57FD62BC6DB}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -48,6 +48,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -77,7 +78,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bin\TKXmlL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -143,6 +144,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="-MP"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -173,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win32\vc9\bind\TKXmlL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -237,7 +239,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
@@ -267,7 +269,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bin\TKXmlL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -331,7 +333,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/favor:blend"
+				AdditionalOptions="-MP -favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
@@ -362,7 +364,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib  ws2_32.lib vfw32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib ws2_32.lib vfw32.lib"
 				OutputFile=".\..\..\..\win64\vc9\bind\TKXmlL.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"

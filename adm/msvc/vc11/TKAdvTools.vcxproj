@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4B837AAA-020E-0024-17C0-2038FE7DB166}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\..\win32\vc11\obj\TKAdvTools\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\..\win32\vc11\objd\TKAdvTools\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\..\win64\vc11\obj\TKAdvTools\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\bind\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\..\win64\vc11\objd\TKAdvTools\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bin\TKAdvTools.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Dynamic;..\..\..\src\Dynamic;..\..\..\drv\Materials;..\..\..\src\Materials;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;..\..\..\drv\GraphDS;..\..\..\src\GraphDS;..\..\..\drv\GraphTools;..\..\..\src\GraphTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\obj\TKAdvTools/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\obj\TKAdvTools/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\obj\TKAdvTools/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bin\TKAdvTools.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\lib;$(CSF_OPT_LIB32);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win32\vc11\bin\TKAdvTools.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\lib\TKAdvTools.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win32\vc11\bind\TKAdvTools.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Dynamic;..\..\..\src\Dynamic;..\..\..\drv\Materials;..\..\..\src\Materials;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;..\..\..\drv\GraphDS;..\..\..\src\GraphDS;..\..\..\drv\GraphTools;..\..\..\src\GraphTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win32\vc11\objd\TKAdvTools/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win32\vc11\objd\TKAdvTools/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win32\vc11\objd\TKAdvTools/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win32\vc11\bind\TKAdvTools.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win32\vc11\libd;$(CSF_OPT_LIB32D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win32\vc11\bind\TKAdvTools.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win32\vc11\libd\TKAdvTools.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bin\TKAdvTools.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Dynamic;..\..\..\src\Dynamic;..\..\..\drv\Materials;..\..\..\src\Materials;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;..\..\..\drv\GraphDS;..\..\..\src\GraphDS;..\..\..\drv\GraphTools;..\..\..\src\GraphTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\obj\TKAdvTools/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\obj\TKAdvTools/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\obj\TKAdvTools/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bin\TKAdvTools.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\lib;$(CSF_OPT_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>.\..\..\..\win64\vc11\bin\TKAdvTools.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\lib\TKAdvTools.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>x64</TargetEnvironment>
+      <TypeLibraryName>.\..\..\..\win64\vc11\bind\TKAdvTools.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\Dynamic;..\..\..\src\Dynamic;..\..\..\drv\Materials;..\..\..\src\Materials;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;..\..\..\drv\GraphDS;..\..\..\src\GraphDS;..\..\..\drv\GraphTools;..\..\..\src\GraphTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKAdvTools/</AssemblerListingLocation>
+      <ObjectFileName>.\..\..\..\win64\vc11\objd\TKAdvTools/</ObjectFileName>
+      <ProgramDataBaseFileName>.\..\..\..\win64\vc11\objd\TKAdvTools/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Dynamic_DLL;__Materials_DLL;__Expr_DLL;__ExprIntrp_DLL;__GraphDS_DLL;__GraphTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\..\win64\vc11\bind\TKAdvTools.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>..\..\..\win64\vc11\libd;$(CSF_OPT_LIB64D);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\..\win64\vc11\bind\TKAdvTools.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <ImportLibrary>..\..\..\win64\vc11\libd\TKAdvTools.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_ParameterNode_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SeqOfClasses_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SeqOfFuzzyDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SeqOfMethodDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SeqOfMethods_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfClasses_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfFuzzyDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethodDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceNodeOfSeqOfMethods_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceOfClasses_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceOfFuzzyDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethodDefinitions_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_SequenceOfMethods_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Dynamic\Dynamic_VariableNode_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_AbstractVariableInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_BooleanParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_CompiledMethod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_CompositMethod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_CompositVariableInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_DynamicClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_DynamicDerivedClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_DynamicInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_FuzzyClass.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_FuzzyDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_FuzzyDefinitionsDictionary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_InstanceParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_IntegerParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_InterpretedMethod.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_Method.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_MethodDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_MethodDefinitionsDictionary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_ObjectParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_Parameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_RealParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_StringParameter.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_Variable.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_VariableGroup.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Dynamic\Dynamic_VariableInstance.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Materials\Materials_FuzzyInstance_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Materials\Materials_MaterialsSequence_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Materials\Materials_MtsSequence_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Materials\Materials_SequenceNodeOfMtsSequence_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Materials\Materials.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Materials\Materials_Color.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Materials\Materials_Material.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Materials\Materials_MaterialDefinition.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Materials\Materials_MaterialsDictionary.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfNamedUnknown_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_Array1OfSingleRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_ExprFailure_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_IndexedMapNodeOfMapOfNamedUnknown_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidAssignment_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_InvalidOperand_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_MapOfNamedUnknown_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_NotAssigned_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_NotEvaluable_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceNodeOfSequenceOfGeneralRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceOfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Expr\Expr_SequenceOfGeneralRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Absolute.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcCosine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcSine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArcTangent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgCosh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgSinh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_ArgTanh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_BinaryFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Cosine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Difference.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Different.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Division.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Equal.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponential.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Exponentiate.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_FunctionDerivative.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GeneralRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_GreaterThanOrEqual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThan.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LessThanOrEqual.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOf10.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_LogOfe.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedConstant.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NamedUnknown.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_NumericValue.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Operators.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_PolyFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Product.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RUIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_RelationIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sign.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sine.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SingleRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sinh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Square.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SquareRoot.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Sum.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_SystemRelation.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tangent.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_Tanh.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryExpression.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryFunction.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnaryMinus.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Expr\Expr_UnknownIterator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp.tab.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SequenceOfNamedFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfGeneralRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackIteratorOfStackOfNames_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfGeneralRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackNodeOfStackOfNames_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralExpression_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralFunction_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfGeneralRelation_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_StackOfNames_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\ExprIntrp_SyntaxError_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\ExprIntrp\lex.ExprIntrp.c">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Analysis.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenExp.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenFct.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_GenRel.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_Generator.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yaccintrf.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ExprIntrp\ExprIntrp_yacclex.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphDS\GraphDS_DataMapIteratorOfEntityRoleMap_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphDS\GraphDS_DataMapNodeOfEntityRoleMap_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphDS\GraphDS_EntityRoleMap_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfListOfSequenceOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_ListIteratorOfSCList_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_ListNodeOfListOfSequenceOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_ListNodeOfSCList_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_ListOfSequenceOfInteger_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\GraphTools\GraphTools_SCList_0.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GraphTools\GraphTools_RGNode.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GraphTools\GraphTools_SC.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GraphTools\GraphTools_TSNode.cxx">
+    </ClCompile>
+
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TKAdvTools.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
+

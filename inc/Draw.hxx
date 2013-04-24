@@ -101,11 +101,12 @@ public:
   Standard_EXPORT   static  Standard_Boolean Get(const Standard_CString Name,Standard_Real& val) ;
   //! Sets a TCL sting variable <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const Standard_CString val) ;
-  //! Search a  numeric  variable.  If none found converts <br>
-//!          the string to a real. <br>
+  //! Converts numeric expression, that can involve DRAW <br>
+//!          variables, to real value. <br>
   Standard_EXPORT   static  Standard_Real Atof(const Standard_CString Name) ;
-  //! Search a  numeric  variable.  If none found converts <br>
-//!          the string to an integer. <br>
+  //! Converts numeric expression, that can involve DRAW <br>
+//!          variables, to integer value. <br>
+//!          Implemented as cast of Atof() to integer. <br>
   Standard_EXPORT   static  Standard_Integer Atoi(const Standard_CString Name) ;
   //! Returns last graphic selection description. <br>
   Standard_EXPORT   static  void LastPick(Standard_Integer& view,Standard_Integer& X,Standard_Integer& Y,Standard_Integer& button) ;

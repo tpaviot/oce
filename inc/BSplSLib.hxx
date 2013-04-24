@@ -63,12 +63,49 @@ class TColgp_Array1OfPnt;
 //!   Warnings : The  bounds of UKnots  and UMults should be the <br>
 //!  same, the bounds of VKnots and VMults should be  the same, <br>
 //!  the bounds of Poles and Weights shoud be the same. <br>
+//! <br>
+//!  The Control points representation is : <br>
+//!     Poles(Uorigin,Vorigin) ...................Poles(Uorigin,Vend) <br>
+//!           .                                     . <br>
+//!           .                                     . <br>
+//!     Poles(Uend, Vorigin) .....................Poles(Uend, Vend) <br>
+//! <br>
+//!  For  the double array  the row indice   corresponds to the <br>
+//!  parametric U direction  and the columns indice corresponds <br>
+//!  to the parametric V direction. <br>
+//! <br>
+//!   KeyWords : <br>
+//!  B-spline surface, Functions, Library <br>
+//! <br>
+//!   References : <br>
+//!  . A survey of curve and surface methods in CADG Wolfgang BOHM <br>
+//!    CAGD 1 (1984) <br>
+//!  . On de Boor-like algorithms and blossoming Wolfgang BOEHM <br>
+//!    cagd 5 (1988) <br>
+//!  . Blossoming and knot insertion algorithms for B-spline curves <br>
+//!    Ronald N. GOLDMAN <br>
+//!  . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA <br>
+//!  . Curves and Surfaces for Computer Aided Geometric Design, <br>
+//!    a practical guide Gerald Farin <br>
 class BSplSLib  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes  the     derivatives   of  a    ratio  of <br>
+  
+//!              this is a one dimensional function <br>
+//!  typedef  void (*EvaluatorFunction)  ( <br>
+//!  Standard_Integer     // Derivative Request <br>
+//!  Standard_Real    *   // StartEnd[2][2] <br>
+//!                       //  [0] = U <br>
+//!                       //  [1] = V <br>
+//!                       //        [0] = start <br>
+//!                       //        [1] = end <br>
+//!  Standard_Real        // UParameter <br>
+//!  Standard_Real        // VParamerer <br>
+//!  Standard_Real    &   // Result <br>
+//!  Standard_Integer &) ;// Error Code <br>
+//!  serves to multiply a given vectorial BSpline by a function <br>//! Computes  the     derivatives   of  a    ratio  of <br>
 //!          two-variables functions  x(u,v) / w(u,v) at orders <br>
 //!          <N,M>,    x(u,v)    is   a  vector in    dimension <br>
 //!          <3>. <br>
@@ -131,6 +168,15 @@ public:
 //!          x(1)/w , x(2)/w ,  ... derivated <0,2> times <br>
 //!          ... <br>
 //!          x(1)/w , x(2)/w ,  ... derivated <0,N> times <br>
+//! <br>
+//!          x(1)/w , x(2)/w ,  ... derivated <1,0> times <br>
+//!          x(1)/w , x(2)/w ,  ... derivated <1,1> times <br>
+//!          ... <br>
+//!          x(1)/w , x(2)/w ,  ... derivated <1,N> times <br>
+//! <br>
+//!          x(1)/w , x(2)/w ,  ... derivated <N,0> times <br>
+//!          .... <br>
+//!  Warning: <RDers> must be dimensionned properly. <br>
   Standard_EXPORT   static  void RationalDerivative(const Standard_Integer UDeg,const Standard_Integer VDeg,const Standard_Integer N,const Standard_Integer M,Standard_Real& Ders,Standard_Real& RDers,const Standard_Boolean All = Standard_True) ;
   
   Standard_EXPORT   static  void D0(const Standard_Real U,const Standard_Real V,const Standard_Integer UIndex,const Standard_Integer VIndex,const TColgp_Array2OfPnt& Poles,const TColStd_Array2OfReal& Weights,const TColStd_Array1OfReal& UKnots,const TColStd_Array1OfReal& VKnots,const TColStd_Array1OfInteger& UMults,const TColStd_Array1OfInteger& VMults,const Standard_Integer UDegree,const Standard_Integer VDegree,const Standard_Boolean URat,const Standard_Boolean VRat,const Standard_Boolean UPer,const Standard_Boolean VPer,gp_Pnt& P) ;

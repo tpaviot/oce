@@ -52,6 +52,11 @@ public:
 //!    myArray->AddVertex(x5,y5,z5) <br>
 //!      .... <br>
 //!    myArray->AddVertex(x8,y8,z8) <br>
+//! <br>
+//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
+//! <maxFans> defined the maximun allowed fan number in the array. <br>
+//! The number of triangle really drawn is : <br>
+//! VertexNumber()-2*Min(1,BoundNumber()) <br>
   Standard_EXPORT   Graphic3d_ArrayOfTriangleFans(const Standard_Integer maxVertexs,const Standard_Integer maxFans = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasFColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 
 

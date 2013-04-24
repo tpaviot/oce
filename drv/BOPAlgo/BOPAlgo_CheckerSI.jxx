@@ -1,0 +1,3 @@
+#ifndef _BOPAlgo_CheckerSI_HeaderFile
+#include <BOPAlgo_CheckerSI.hxx>
+#endif

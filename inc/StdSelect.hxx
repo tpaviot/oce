@@ -33,12 +33,9 @@ class V3d_View;
 class SelectMgr_Selection;
 class Prs3d_Drawer;
 class StdSelect_ViewerSelector3d;
-class StdSelect_ViewerSelector2d;
 class StdSelect_BRepSelectionTool;
 class StdSelect_BRepOwner;
 class StdSelect_BRepHilighter;
-class StdSelect_SensitiveText2d;
-class StdSelect_TextProjector2d;
 class StdSelect_EdgeFilter;
 class StdSelect_FaceFilter;
 class StdSelect_ShapeTypeFilter;
@@ -95,12 +92,9 @@ private:
 
 
 friend class StdSelect_ViewerSelector3d;
-friend class StdSelect_ViewerSelector2d;
 friend class StdSelect_BRepSelectionTool;
 friend class StdSelect_BRepOwner;
 friend class StdSelect_BRepHilighter;
-friend class StdSelect_SensitiveText2d;
-friend class StdSelect_TextProjector2d;
 friend class StdSelect_EdgeFilter;
 friend class StdSelect_FaceFilter;
 friend class StdSelect_ShapeTypeFilter;

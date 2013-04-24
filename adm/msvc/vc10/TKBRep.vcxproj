@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BC594E38-036D-15F8-0100-202A0DA8C54A}</ProjectGuid>
+    <ProjectGuid>{056D9D25-1194-15B7-1351-4C2A4E6D8966}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

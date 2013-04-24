@@ -1,0 +1,3 @@
+#ifndef _BOPDS_Tools_HeaderFile
+#include <BOPDS_Tools.hxx>
+#endif

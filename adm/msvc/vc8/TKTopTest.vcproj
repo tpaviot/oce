@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKTopTest"
-	ProjectGUID="{28663114-0034-1012-0E33-7CE1EFD528BA}"
+	ProjectGUID="{7641073A-0D51-1171-195F-8183BDF01A2C}"
 	>
 	<Platforms>
 		<Platform
@@ -77,7 +77,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bin\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -175,7 +175,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win32\vc8\bind\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -272,7 +272,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKV2d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib  opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="/DLL TKBRep.lib TKGeomAlgo.lib TKTopAlgo.lib TKernel.lib TKMath.lib TKBO.lib TKG2d.lib TKG3d.lib TKDraw.lib TKHLR.lib TKGeomBase.lib TKMesh.lib TKService.lib TKV3d.lib TKFillet.lib TKPrim.lib TKBool.lib TKOffset.lib TKFeat.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKTopTest.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -598,9 +598,6 @@
 					RelativePath="..\..\..\src\BRepTest\BRepTest_ProjectionCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BRepTest\BRepTest_ShellCommands.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BRepTest\BRepTest_SurfaceCommands.cxx">
 				</File>
 				<File
@@ -727,28 +724,22 @@
 					RelativePath="..\..\..\src\BOPTest\BOPTest_CheckCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_CurveCommands.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_DrawableShape.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_EFCommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_LowCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_MTestCommands.cxx">
+					RelativePath="..\..\..\src\BOPTest\BOPTest_ObjCommands.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_TSTCommands.cxx">
+					RelativePath="..\..\..\src\BOPTest\BOPTest_Objects.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPTest\BOPTest_PartitionCommands.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPTest\BOPTest_TolerCommands.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BOPTest\BOPTest_WSplitCommands.cxx">
 				</File>
 			</Filter>
 

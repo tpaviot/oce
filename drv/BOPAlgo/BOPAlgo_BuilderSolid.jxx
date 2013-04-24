@@ -1,0 +1,3 @@
+#ifndef _BOPAlgo_BuilderSolid_HeaderFile
+#include <BOPAlgo_BuilderSolid.hxx>
+#endif

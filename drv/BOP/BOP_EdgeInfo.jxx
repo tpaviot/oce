@@ -1,6 +1,0 @@
-#ifndef _TopoDS_Edge_HeaderFile
-#include <TopoDS_Edge.hxx>
-#endif
-#ifndef _BOP_EdgeInfo_HeaderFile
-#include <BOP_EdgeInfo.hxx>
-#endif

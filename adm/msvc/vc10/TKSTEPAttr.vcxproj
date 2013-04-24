@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C0013048-0F01-0958-18D9-8506E4879C72}</ProjectGuid>
+    <ProjectGuid>{B87C1B5D-1058-031C-0191-FDDDAEE4DC74}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepVisual;..\..\..\src\StepVisual;..\..\..\drv\RWStepVisual;..\..\..\src\RWStepVisual;..\..\..\drv\StepDimTol;..\..\..\src\StepDimTol;..\..\..\drv\RWStepDimTol;..\..\..\src\RWStepDimTol;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepVisual;..\..\..\src\StepVisual;..\..\..\drv\RWStepVisual;..\..\..\src\RWStepVisual;..\..\..\drv\StepDimTol;..\..\..\src\StepDimTol;..\..\..\drv\RWStepDimTol;..\..\..\src\RWStepDimTol;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepVisual;..\..\..\src\StepVisual;..\..\..\drv\RWStepVisual;..\..\..\src\RWStepVisual;..\..\..\drv\StepDimTol;..\..\..\src\StepDimTol;..\..\..\drv\RWStepDimTol;..\..\..\src\RWStepDimTol;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\StepVisual;..\..\..\src\StepVisual;..\..\..\drv\RWStepVisual;..\..\..\src\RWStepVisual;..\..\..\drv\StepDimTol;..\..\..\src\StepDimTol;..\..\..\drv\RWStepDimTol;..\..\..\src\RWStepDimTol;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepVisual_DLL;__RWStepVisual_DLL;__StepDimTol_DLL;__RWStepDimTol_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

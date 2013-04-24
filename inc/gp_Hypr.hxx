@@ -70,6 +70,26 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Hypr);
 //! and in it, the respective positions of the three branches of <br>
 //! hyperbolas constructed with the functions OtherBranch, <br>
 //! ConjugateBranch1, and ConjugateBranch2: <br>
+//! <br>
+//!                         ^YAxis <br>
+//!                         | <br>
+//!                  FirstConjugateBranch <br>
+//!                         | <br>
+//!        Other            |                Main <br>
+//!   --------------------- C ------------------------------>XAxis <br>
+//!        Branch           |                Branch <br>
+//!                         | <br>
+//!                         | <br>
+//!                   SecondConjugateBranch <br>
+//!                         |                  ^YAxis <br>
+//! Warning <br>
+//! The major radius can be less than the minor radius. <br>
+//! See Also <br>
+//! gce_MakeHypr which provides functions for more <br>
+//! complex hyperbola constructions <br>
+//! Geom_Hyperbola which provides additional functions for <br>
+//! constructing hyperbolas and works, in particular, with the <br>
+//! parametric equations of hyperbolas <br>
 class gp_Hypr  {
 
 public:

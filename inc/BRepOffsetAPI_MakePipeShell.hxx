@@ -85,6 +85,9 @@ public:
 //!          to  perform  the  sweeping <br>
 //!	 If IsFrenet is false, a corrected Frenet trihedron is used. <br>
   Standard_EXPORT     void SetMode(const Standard_Boolean IsFrenet = Standard_False) ;
+  //! Sets a Discrete trihedron <br>
+//!          to  perform  the  sweeping <br>
+  Standard_EXPORT     void SetDiscreteMode() ;
   //! Sets  a  fixed  trihedron  to  perform  the  sweeping <br>
 //!         all sections will be parallel. <br>
   Standard_EXPORT     void SetMode(const gp_Ax2& Axe) ;
@@ -162,6 +165,10 @@ public:
 //! - boundary tolerance BoundTol <br>
 //! - angular tolerance TolAngular. <br>
   Standard_EXPORT     void SetTolerance(const Standard_Real Tol3d = 1.0e-4,const Standard_Real BoundTol = 1.0e-4,const Standard_Real TolAngular = 1.0e-2) ;
+  //! Set the flag that indicates attempt to approximate <br>
+//!          a C1-continuous surface if a swept surface proved <br>
+//!          to be C0. <br>
+  Standard_EXPORT     void SetForceApproxC1(const Standard_Boolean ForceApproxC1) ;
   //! Sets the transition mode to manage discontinuities on <br>
 //! the swept shape caused by fractures on the spine. The <br>
 //! transition mode can be BRepBuilderAPI_Transformed <br>

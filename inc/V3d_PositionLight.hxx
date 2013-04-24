@@ -49,7 +49,7 @@
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
 #endif
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class V3d_View;
 class Graphic3d_Group;

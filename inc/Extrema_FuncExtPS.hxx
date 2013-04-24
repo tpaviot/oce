@@ -49,6 +49,27 @@ class Extrema_POnSurf;
 
 
 
+//! <br>
+//! Functional for search of extremum of the distance between point P and <br>
+//! surface S, starting from approximate solution (u0, v0). <br>
+//! <br>
+//! The class inherits math_FunctionSetWithDerivatives and thus is intended <br>
+//! for use in math_FunctionSetRoot algorithm . <br>
+//! <br>
+//! Denoting derivatives of the surface S(u,v) by u and v, respectively, as <br>
+//! Su and Sv, the two functions to be nullified are: <br>
+//! <br>
+//! F1(u,v) = (S - P) * Su <br>
+//! F2(u,v) = (S - P) * Sv <br>
+//! <br>
+//! The derivatives of the functional are: <br>
+//! <br>
+//! Duf1(u,v) = Su^2    + (S-P) * Suu; <br>
+//! Dvf1(u,v) = Su * Sv + (S-P) * Suv <br>
+//! Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1 <br>
+//! Dvf2(u,v) = Sv^2    + (S-P) * Svv <br>
+//! <br>
+//! Here * denotes scalar product, and ^2 is square power. <br>
 class Extrema_FuncExtPS  : public math_FunctionSetWithDerivatives {
 public:
 

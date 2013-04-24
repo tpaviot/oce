@@ -2,46 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{32D9A476-04E6-0150-02C0-DD26AC160902}</UniqueIdentifier>
+      <UniqueIdentifier>{7713A06A-0862-16DA-029F-9B5DE9327E42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Aspect">
-      <UniqueIdentifier>{A999BE3A-1534-00A4-0F3A-99594FB66F97}</UniqueIdentifier>
+      <UniqueIdentifier>{FF363C94-188B-0F38-0F86-684ECD0D7804}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\InterfaceGraphic">
-      <UniqueIdentifier>{5837E61B-01F7-0166-0DBC-39E83ABD4650}</UniqueIdentifier>
+      <UniqueIdentifier>{42642DBB-118A-1847-1479-065DE3FDF074}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectBasics">
-      <UniqueIdentifier>{533D70EE-08AC-0E12-0DA9-220D95A9DD60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\Viewer">
-      <UniqueIdentifier>{04F59009-01F1-0A77-0D51-3A71CE05B79C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\MFT">
-      <UniqueIdentifier>{596E92F6-0311-0A3B-0727-84C5A8CCB825}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\PS">
-      <UniqueIdentifier>{4DB22B8E-0125-108B-0B8D-D6DADABA4DD4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\CGM">
-      <UniqueIdentifier>{4BA88B62-05AA-12DD-10D0-4DAE31E748F9}</UniqueIdentifier>
+      <UniqueIdentifier>{B583FC0E-144D-1292-09BA-33A574B38EE2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AlienImage">
-      <UniqueIdentifier>{680A43E7-15BE-0B6F-05D4-135E0F842BD9}</UniqueIdentifier>
+      <UniqueIdentifier>{69C4ECEF-13EF-100A-1556-AC1BD8582F63}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Image">
-      <UniqueIdentifier>{5AD736DE-03AC-0141-00DB-E7AE235993E3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\PlotMgt">
-      <UniqueIdentifier>{FC53A7DD-0B06-14EB-09AD-F63D162498E0}</UniqueIdentifier>
+      <UniqueIdentifier>{8F126690-17BF-16AE-1090-0D393B2885DB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\WNT">
-      <UniqueIdentifier>{B0C64EFA-183F-0165-1038-E2CD651AB1BA}</UniqueIdentifier>
+      <UniqueIdentifier>{6C0BB817-0769-090B-05ED-F327198BEDC5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColQuantity">
-      <UniqueIdentifier>{8A4929FC-0A8F-140B-05C2-B84C2C90FD62}</UniqueIdentifier>
+      <UniqueIdentifier>{A7616B2E-1496-0AEF-03E5-1EE6C6C0F20D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Font">
-      <UniqueIdentifier>{EB5C686F-039C-0A73-1536-9C150126F787}</UniqueIdentifier>
+      <UniqueIdentifier>{534A6F53-075D-125B-08AF-F6C6A46B6DCB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +46,9 @@
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_ColorMapDefinitionError_0.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\drv\Aspect\Aspect_DisplayConnectionDefinitionError_0.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\Aspect\Aspect_DriverDefinitionError_0.cxx">
@@ -195,6 +183,9 @@
     <ClCompile Include="..\..\..\src\Aspect\Aspect_ColorScale.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Aspect\Aspect_DisplayConnection.cxx">
+      <Filter>Source files\Aspect</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_Driver.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
@@ -220,12 +211,6 @@
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_GradientBackground.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect_GraphicDevice.cxx">
-      <Filter>Source files\Aspect</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Aspect\Aspect_GraphicDriver.cxx">
       <Filter>Source files\Aspect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Aspect\Aspect_Grid.cxx">
@@ -323,60 +308,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\SelectBasics\SelectBasics_SortAlgo.cxx">
       <Filter>Source files\SelectBasics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\Viewer\Viewer_BadValue_0.cxx">
-      <Filter>Source files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer\Viewer_View.cxx">
-      <Filter>Source files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\Viewer\Viewer_Viewer.cxx">
-      <Filter>Source files\Viewer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\MFT\MFT_FontManagerDefinitionError_0.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\MFT\MFT_FontManagerError_0.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\MFT\MFT_ListOfFontHandle_0.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\MFT\MFT_SequenceNodeOfListOfFontHandle_0.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MFT\MFT.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MFT\MFT_CommandDescriptor.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MFT\MFT_FileRecord.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MFT\MFT_FontManager.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\MFT\MFT_TextManager.cxx">
-      <Filter>Source files\MFT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PS\PS_Driver.cxx">
-      <Filter>Source files\PS</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\CGM\CGM_Driver.cxx">
-      <Filter>Source files\CGM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\CGM\Gestfic.cxx">
-      <Filter>Source files\CGM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\CGM\cgmobin.c">
-      <Filter>Source files\CGM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\CGM\cgmochar.c">
-      <Filter>Source files\CGM</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\CGM\cgmotext.c">
-      <Filter>Source files\CGM</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\AlienImage\AlienImage.cxx">
       <Filter>Source files\AlienImage</Filter>
@@ -537,82 +468,13 @@
     <ClCompile Include="..\..\..\src\Image\Image_PseudoColorImage.cxx">
       <Filter>Source files\Image</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_HListOfMFTFonts_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_HListOfPlotterParameter_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_ListOfMFTFonts_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_ListOfPlotterParameter_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_PlotterAccessError_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_PlotterDefinitionError_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\PlotMgt\PlotMgt_SequenceNodeOfListOfPlotterParameter_0.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_ImageDriver.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_Plotter.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_PlotterDriver.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_PlotterParameter.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_PlotterTools.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_Plotter_1.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_Plotter_2.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_TextManager.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_fillpolyarc.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\PlotMgt\PlotMgt_fillpolygon.cxx">
-      <Filter>Source files\PlotMgt</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\WNT\WNT_ClassDefinitionError_0.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\WNT\WNT_ColorTable_0.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_FontMapEntryDefinitionError_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_FontTable_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\drv\WNT\WNT_HColorTable_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_HFontTable_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_HListOfMFTFonts_0.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\drv\WNT\WNT_ListOfMFTFonts_0.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\WNT\WNT_SequenceNodeOfSequenceOfImage_0.cxx">
@@ -636,34 +498,10 @@
     <ClCompile Include="..\..\..\src\WNT\WNT_ColorRef.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_DDriver.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Dword.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_FontMapEntry.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_GraphicDevice.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_Icon.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_IconBox.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_IconBox_1.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Image.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_ImageManager.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_ImageProcessor.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_LogFont.cxx">
@@ -672,28 +510,16 @@
     <ClCompile Include="..\..\..\src\WNT\WNT_Long.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_MFTDraw.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_TextManager.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Uint.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_WClass.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_WDriver.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_Window.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\WNT\WNT_WindowData.cxx">
-      <Filter>Source files\WNT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\WNT\WNT_WndProc.cxx">
       <Filter>Source files\WNT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_Array1OfLength_0.cxx">
@@ -707,6 +533,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\drv\TColQuantity\TColQuantity_HArray2OfLength_0.cxx">
       <Filter>Source files\TColQuantity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FTFont.cxx">
+      <Filter>Source files\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Font\Font_FTLibrary.cxx">
+      <Filter>Source files\Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\Font\Font_FontMgr.cxx">
       <Filter>Source files\Font</Filter>

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7AE4ED34-14DE-04C0-16ED-302F25673CCD}</ProjectGuid>
+    <ProjectGuid>{DE6916BC-0172-0DD7-0C4A-D118268890C0}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,6 +120,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -161,6 +163,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -202,6 +205,7 @@
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>

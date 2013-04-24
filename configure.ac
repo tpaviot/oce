@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT([OpenCASCADE], [6.5.3])
+AC_INIT([OpenCASCADE], [6.6.0])
 AC_CONFIG_AUX_DIR(make)
 AM_INIT_AUTOMAKE([foreign])
 AC_CANONICAL_HOST
@@ -24,7 +24,6 @@ dnl Checks for programs.
 AM_PROG_LIBTOOL
 AC_PROG_CXX
 AC_PROG_CC_C_O
-AM_C_PROTOTYPES
 
 AC_PROG_AWK
 AC_PROG_INSTALL
@@ -54,9 +53,7 @@ AC_CHECK_HEADERS(stream.h strstream.h istream.h ostream.h fstream.h stdlib.h ios
 AC_CHECK_HEADERS(iomanip.h limits.h values.h float.h)
 AC_CHECK_HEADERS(siginfo.h bits/sigset.h bstring.h sys/types.h sys/select.h)
 AC_CHECK_HEADERS(X11/extensions/transovl.h X11/extensions/readdisplay.h)
-AC_CHECK_HEADERS(X11/extensions/multibuf.h)
-AC_CHECK_HEADERS(sys/filio.h sys/mman.h libc.h)
-AC_CHECK_HEADERS(X11/extensions/multibuf.h)
+AC_CHECK_HEADERS(X11/extensions/multibuf.h,[],[],[#include <X11/Xlib.h>])
 AC_CHECK_HEADERS(sys/filio.h sys/mman.h libc.h)
 
 #-----------------------------------------------------------------------------
@@ -425,105 +422,170 @@ AM_CONDITIONAL( HAVE_GL, [test "xyes" = "x$HAVE_GL"] )
 #---------------------------------------------------------------------
 #
 # Check for FREETYPE Libraries
-#  
-#  
+# 
+# 
 #---------------------------------------------------------------------
 AC_ARG_WITH([freetype],
   [AC_HELP_STRING([--with-freetype=DIR],[Location of FREETYPE])],
-  [freetype="${withval}"],[freetype=])
+  [freetype="${withval}"],[freetype=yes])
 
 CSF_FREETYPE_INCLUDES=""
 CSF_FREETYPE_LIB=""
+HAVE_FREETYPE=no
 
 if test "xyes" = "x${HAVE_GL}"; then
   AC_LANG([C++])
-  HAVE_FREETYPE=no
-  HAVE_FREETYPE_INC=yes
-  CPPFLAGS="-I$freetype/include -I$freetype/include/freetype2 $CPPFLAGS"
-  AC_CHECK_HEADER( [ft2build.h], [], [HAVE_FREETYPE=no] )
-  if test ! -d $freetype; then
-	DISABLE_FREETYPE_REASON="($freetype directory is not exists)"
-	AC_MSG_ERROR([$freetype directory is not exists])
-  elif test "x$HAVE_FREETYPE_INC" = "xyes"; then
-    CSF_FREETYPE_INCLUDES="-I$freetype/include -I$freetype/include/freetype2"
-    LDFLAGS="-L$freetype/lib"
-    AC_CHECK_LIB(freetype, FT_Init_FreeType,
-    [
-	HAVE_FREETYPE=yes
-	CSF_FREETYPE_LIB="$LDFLAGS `$freetype/bin/freetype-config --libs`"
-	LIBS="$CSF_FREETYPE_LIB $LIBS"
-	CSF_OPT_INC="$freetype/include:$freetype/include/freetype2:${CSF_OPT_INC}"
-	CSF_OPT_LIB="$freetype/lib:${CSF_OPT_LIB}"
-    ],
-    [
-	DISABLE_FREETYPE_REASON="(freetype was not found)"
-	AC_MSG_ERROR([Unable to locate the required FreeType library])
-    ])
+  if test "xno" = "x${freetype}"; then
+    dnl freetype check is explicitly disabled by --without-freetype or --with-freetype=no
+    AC_MSG_NOTICE([freetype check is explicitly disabled])
+    DISABLE_FREETYPE_REASON="(freetype check was explicitly disabled)"
   else
-	DISABLE_FREETYPE_REASON="(freetype was not found)"
+    if test "xyes" = "x${freetype}" -o "x/usr" = "x${freetype}"; then
+      dnl try native freetype (default)
+      AC_MSG_NOTICE(try system freetype)
+      FREETYPE_INCLUDES="-I/usr/include/freetype2"
+      FREETYPE_LIBS="-lfreetype"
+      FREETYPE_OPT_INC="/usr/include/freetype2"
+      FREETYPE_OPT_LIB=
+    else
+      AC_MSG_NOTICE(try freetype in $freetype)
+      if test ! -d ${freetype}; then
+    DISABLE_FREETYPE_REASON="(${freetype} directory does not exists)"
+    AC_MSG_ERROR([${freetype} directory does not exists])
+      fi
+      FREETYPE_INCLUDES="-I${freetype}/include -I${freetype}/include/freetype2"
+      FREETYPE_LIBS="-L${freetype}/lib -lfreetype"
+      FREETYPE_OPT_INC="${freetype}/include:${freetype}/include/freetype2"
+      FREETYPE_OPT_LIB="${freetype}/lib"
+    fi
+    CPPFLAGS_old=${CPPFLAGS}
+    LDFLAGS_old=${LDFLAGS}
+    CPPFLAGS="${FREETYPE_INCLUDES} $CPPFLAGS"
+    LDFLAGS="${FREETYPE_LIBS} $LDFLAGS"
+    AC_CHECK_HEADER( [ft2build.h], [HAVE_FREETYPE_INC=yes], [HAVE_FREETYPE_INC=no] )
+    if test "x${HAVE_FREETYPE_INC}" = "xyes"; then
+      AC_CHECK_LIB(freetype, FT_Init_FreeType,
+      [
+    HAVE_FREETYPE=yes
+        CSF_FREETYPE_INCLUDES="${FREETYPE_INCLUDES}"
+    CSF_FREETYPE_LIB="${FREETYPE_LIBS}"
+        LIBS="$CSF_FREETYPE_LIB $LIBS"
+        CSF_OPT_INC="${FREETYPE_OPT_INC}:${CSF_OPT_INC}"
+        CSF_OPT_LIB="${FREETYPE_OPT_LIB}:${CSF_OPT_LIB}"
+      ],
+      [
+    DISABLE_FREETYPE_REASON="(freetype was not found)"
+    AC_MSG_ERROR([Unable to locate the required FreeType library])
+      ])
+    else
+      DISABLE_FREETYPE_REASON="(freetype was not found)"
+    fi
+    CPPFLAGS=${CPPFLAGS_old}
+    LDFLAGS=${LDFLAGS_old}
   fi
 else
-  DISABLE_FREETYPE_REASON="(--with-freetype=DIR option was not defined)"
+  DISABLE_FREETYPE_REASON="(freetype requires OpenGL support)"
 fi
 AM_CONDITIONAL( HAVE_FREETYPE, [test "xyes" = "x$HAVE_FREETYPE"] )
 
 #---------------------------------------------------------------------
 #
 # Check for FTGL Libraries
-#  
-#  
+# 
+# 
 #---------------------------------------------------------------------
 AC_ARG_WITH([ftgl],
   [AC_HELP_STRING([--with-ftgl=DIR],[Location of FTGL])],
-  [ftgl="${withval}"],[ftgl=])
+  [ftgl="${withval}"],[ftgl=yes])
 
 CSF_FTGL_INCLUDES=""
 CSF_FTGL_LIB=""
+HAVE_FTGL=no
 
 if test "xno" = "x${HAVE_FREETYPE}"; then
-  HAVE_FTGL=no
   DISABLE_FTGL_REASON=$DISABLE_FREETYPE_REASON
 else
   AC_LANG([C++])
-  HAVE_FTGL=no
-  HAVE_FTGL_INC=yes
-  CPPFLAGS="-I$ftgl/include -I$ftgl/include/FTGL $CPPFLAGS";
-  AC_CHECK_HEADERS([FTGL/ftgl.h ftgl.h], [], [
-  AC_CHECK_HEADERS([FTGL/FTGL.h FTGL.h], [HAVE_FTGL_UPPERCASE=-DHAVE_FTGL_UPPERCASE], 
-                                         [HAVE_FTGL_INC=no])])
-  if test ! -d $ftgl; then
-	DISABLE_FTGL_REASON="($ftgl directory is not exists)"
-	AC_MSG_ERROR([$ftgl directory is not exists])
-  elif test "x$HAVE_FTGL_INC" = "xyes"; then
-    CSF_FTGL_INCLUDES="-I$ftgl/include -I$ftgl/include/FTGL $HAVE_FTGL_UPPERCASE"
-    CPPFLAGS="$CSF_FTGL_INCLUDES $CPPFLAGS";
-    HAVE_FTGL_LIB=yes
-    AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
-    LDFLAGS="-L$ftgl/lib"
-    LIBS_sv=$LIBS
-    LIBS="-lftgl $CSF_OpenGlLibs_LIB $LIBS"
-    CSF_FTGL_LIB="-L$ftgl/lib -lftgl"
-    AC_TRY_LINK([
-#ifdef HAVE_FTGL_UPPERCASE
-#include <FTGL/FTGL.h>
-#else
-#include <FTGL/ftgl.h>
-#endif
-#include <FTGL/FTGLTextureFont.h>
-], [
-FTGLTextureFont font("");], [
-CSF_OPT_INC="$ftgl/include:${CSF_OPT_INC}"
-CSF_OPT_LIB="$ftgl/lib:${CSF_OPT_LIB}"
-AC_MSG_RESULT(yes)
-], [
-AC_MSG_RESULT(no)
-]) 
-    LIBS=$LIBS_sv
-  fi
-  if test "xyes" = "x$HAVE_FTGL_LIB"; then
-    HAVE_FTGL=yes
+  if test "xno" = "x${ftgl}"; then
+    dnl ftgl check is explicitly disabled by --without-ftgl or --with-ftgl=no
+    AC_MSG_NOTICE([ftgl check is explicitly disabled])
+    DISABLE_FTGL_REASON="(ftgl check was explicitly disabled)"
   else
-    DISABLE_FTGL_REASON="(ftgl was not found)"
+    if test "xyes" = "x${ftgl}" -o "x/usr" = "x${ftgl}"; then
+      dnl try native ftgl (default)
+      ftgl=/usr
+      AC_MSG_NOTICE(try system ftgl)
+      FTGL_INCLUDES="-I/usr/include/FTGL"
+      FTGL_LIBS="-lftgl"
+      FTGL_OPT_INC="/usr/include/FTGL"
+      FTGL_OPT_LIB=
+    else
+      AC_MSG_NOTICE(try ftgl in ${ftgl})
+      if test ! -d ${ftgl}; then
+    DISABLE_FTGL_REASON="(${ftgl} directory does not exists)"
+    AC_MSG_ERROR([${ftgl} directory does not exists])
+      fi
+      FTGL_INCLUDES="-I${ftgl}/include -I${ftgl}/include/FTGL"
+      FTGL_LIBS="-L${ftgl}/lib -lftgl"
+      FTGL_OPT_INC="${ftgl}/include:${ftgl}/include/FTGL"
+      FTGL_OPT_LIB="${ftgl}/lib"
+    fi
+    for hf in ftgl.h FTGL.h; do
+      dnl check presence of ftgl header file in the specified directory
+      test -f ${ftgl}/include/FTGL/${hf} -o -f ${ftgl}/include/${hf} && HAVE_FTGL_INC=yes
+      test "xyes" = "x${HAVE_FTGL_INC}" -a "${hf}" = "FTGL.h" && HAVE_FTGL_UPPERCASE=-DHAVE_FTGL_UPPERCASE
+      test "xyes" = "x${HAVE_FTGL_INC}" && break
+    done
+    if test "xyes" = "x${HAVE_FTGL_INC}" ; then
+      CPPFLAGS_old=${CPPFLAGS}
+      LDFLAGS_old=${LDFLAGS}
+      CPPFLAGS="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE} ${CSF_FREETYPE_INCLUDES} $CPPFLAGS"
+      LDFLAGS="${FTGL_LIBS} ${CSF_FREETYPE_LIB} $LDFLAGS"
+      AC_CHECK_HEADERS([${hf}], 
+      [
+        HAVE_FTGL_INC=yes
+        break
+      ],
+      [
+        HAVE_FTGL_INC=no
+      ])
+      if test "x${HAVE_FTGL_INC}" = "xyes"; then
+        AC_MSG_CHECKING([for FTGLTextureFont in -lftgl])
+        CPPFLAGS="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE} ${CSF_FREETYPE_INCLUDES} ${CPPFLAGS_old}"
+        AC_TRY_LINK(
+        [
+          #ifdef HAVE_FTGL_UPPERCASE
+          #include <FTGL/FTGL.h>
+          #include <FTGL/FTGLTextureFont.h>
+          #else
+          #include <FTGL/ftgl.h>
+          #endif
+        ],
+        [
+          FTGLTextureFont font("");
+        ],
+        [
+          AC_MSG_RESULT(yes)
+          HAVE_FTGL=yes
+          CSF_FTGL_INCLUDES="${FTGL_INCLUDES} ${HAVE_FTGL_UPPERCASE}"
+          CSF_FTGL_LIB="${FTGL_LIBS}"
+          CSF_OPT_INC="${FTGL_OPT_INC}:${CSF_OPT_INC}"
+          CSF_OPT_LIB="${FTGL_OPT_LIB}:${CSF_OPT_LIB}"
+        ],
+        [
+          AC_MSG_RESULT(no)
+          DISABLE_FTGL_REASON="(ftgl was not found)"
+      AC_MSG_ERROR([Unable to locate the required ftgl library])
+        ]) 
+      else
+        DISABLE_FTGL_REASON="(ftgl was not found)"
+      fi
+      CPPFLAGS=${CPPFLAGS_old}
+      LDFLAGS=${LDFLAGS_old}
+    else
+      AC_MSG_RESULT([ftgl was not found])
+      DISABLE_FTGL_REASON="(ftgl was not found)"
+    fi
   fi
 fi
 AM_CONDITIONAL( HAVE_FTGL, [test "xyes" = "x$HAVE_FTGL"] )
@@ -705,7 +767,11 @@ else
 	HAVE_TBB=no
      fi
      if test "x$tbb_lib" != "x"; then
-     	CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
+       if test "x$enable_debug" = "xyes"; then
+        CSF_TBB_LIB="-L$tbb_lib -ltbb_debug -ltbbmalloc_debug"
+       else
+        CSF_TBB_LIB="-L$tbb_lib -ltbb -ltbbmalloc"
+       fi
      else
 	HAVE_TBB=no
      fi
@@ -911,11 +977,6 @@ if test "xyes" = "x$ENABLE_VIS"; then
     DISABLE_VIS_REASON="(FREETYPE not found)"
     ENABLE_VIS=no
   fi
-  if test "xyes" = "x$ENABLE_VIS" -a "xyes" != "x$HAVE_FTGL"; then
-    AC_MSG_NOTICE([Disabling Visualization: FTGL not found])
-    DISABLE_VIS_REASON="(FTGL not found)"
-    ENABLE_VIS=no
-  fi
 else
   DISABLE_VIS_REASON="(Disabled)"
 fi
@@ -1086,7 +1147,6 @@ echo
 echo "3rdparty mandatory products       "
 echo "---------------------------------"
 echo "freetype      : $HAVE_FREETYPE $DISABLE_FREETYPE_REASON"
-echo "ftgl          : $HAVE_FTGL $DISABLE_FTGL_REASON"
 echo "tcltk         : $HAVE_TCLTK $DISABLE_TCLTK_REASON"
 echo
 echo "3rdparty optional products       "
@@ -1109,72 +1169,71 @@ echo "Draw                        $ENABLE_DRAW $DISABLE_DRAW_REASON"
 
 echo
 
-AC_OUTPUT([Makefile adm/make/Makefile custom.sh \
-adm/make/TKernel/Makefile \
-adm/make/TKMath/Makefile \
-adm/make/TKAdvTools/Makefile \
-adm/make/TKG2d/Makefile \
-adm/make/TKG3d/Makefile \
-adm/make/TKGeomBase/Makefile \
-adm/make/TKBRep/Makefile \
-adm/make/TKGeomAlgo/Makefile \
-adm/make/TKTopAlgo/Makefile \
-adm/make/TKPrim/Makefile \
-adm/make/TKBO/Makefile \
-adm/make/TKBool/Makefile \
-adm/make/TKHLR/Makefile \
-adm/make/TKFillet/Makefile \
-adm/make/TKOffset/Makefile \
-adm/make/TKFeat/Makefile \
-adm/make/TKMesh/Makefile \
-adm/make/TKXMesh/Makefile \
-adm/make/TKShHealing/Makefile \
-adm/make/TKService/Makefile \
-adm/make/TKV2d/Makefile \
-adm/make/TKV3d/Makefile \
-adm/make/TKOpenGl/Makefile \
-adm/make/TKMeshVS/Makefile \
-adm/make/TKNIS/Makefile \
-adm/make/TKVoxel/Makefile \
-adm/make/PTKernel/Makefile \
-adm/make/TKPShape/Makefile \
-adm/make/TKCDF/Makefile \
-adm/make/TKLCAF/Makefile \
-adm/make/TKCAF/Makefile \
-adm/make/TKBinL/Makefile \
-adm/make/TKXmlL/Makefile \
-adm/make/TKShapeSchema/Makefile \
-adm/make/TKPLCAF/Makefile \
-adm/make/TKBin/Makefile \
-adm/make/TKXml/Makefile \
-adm/make/TKPCAF/Makefile \
-adm/make/FWOSPlugin/Makefile \
-adm/make/TKStdLSchema/Makefile \
-adm/make/TKStdSchema/Makefile \
-adm/make/TKTObj/Makefile \
-adm/make/TKBinTObj/Makefile \
-adm/make/TKXmlTObj/Makefile \
-adm/make/TKXSBase/Makefile \
-adm/make/TKSTEPBase/Makefile \
-adm/make/TKSTEPAttr/Makefile \
-adm/make/TKSTEP209/Makefile \
-adm/make/TKSTEP/Makefile \
-adm/make/TKIGES/Makefile \
-adm/make/TKXCAF/Makefile \
-adm/make/TKXCAFSchema/Makefile \
-adm/make/TKXDEIGES/Makefile \
-adm/make/TKXDESTEP/Makefile \
-adm/make/TKSTL/Makefile \
-adm/make/TKVRML/Makefile \
-adm/make/TKXmlXCAF/Makefile \
-adm/make/TKBinXCAF/Makefile \
-adm/make/TKDraw/Makefile \
-adm/make/TKTopTest/Makefile \
-adm/make/TKViewerTest/Makefile \
-adm/make/TKXSDRAW/Makefile \
-adm/make/TKDCAF/Makefile \
-adm/make/TKXDEDRAW/Makefile \
-adm/make/TKTObjDRAW/Makefile \
-adm/make/TKQADraw/Makefile \
-adm/make/DRAWEXE/Makefile \
+AC_OUTPUT([Makefile adm/lin/amk/Makefile custom_amk.sh \
+adm/lin/amk/TKernel/Makefile \
+adm/lin/amk/TKMath/Makefile \
+adm/lin/amk/TKAdvTools/Makefile \
+adm/lin/amk/TKG2d/Makefile \
+adm/lin/amk/TKG3d/Makefile \
+adm/lin/amk/TKGeomBase/Makefile \
+adm/lin/amk/TKBRep/Makefile \
+adm/lin/amk/TKGeomAlgo/Makefile \
+adm/lin/amk/TKTopAlgo/Makefile \
+adm/lin/amk/TKPrim/Makefile \
+adm/lin/amk/TKBO/Makefile \
+adm/lin/amk/TKBool/Makefile \
+adm/lin/amk/TKHLR/Makefile \
+adm/lin/amk/TKFillet/Makefile \
+adm/lin/amk/TKOffset/Makefile \
+adm/lin/amk/TKFeat/Makefile \
+adm/lin/amk/TKMesh/Makefile \
+adm/lin/amk/TKXMesh/Makefile \
+adm/lin/amk/TKShHealing/Makefile \
+adm/lin/amk/TKService/Makefile \
+adm/lin/amk/TKV3d/Makefile \
+adm/lin/amk/TKOpenGl/Makefile \
+adm/lin/amk/TKMeshVS/Makefile \
+adm/lin/amk/TKNIS/Makefile \
+adm/lin/amk/TKVoxel/Makefile \
+adm/lin/amk/PTKernel/Makefile \
+adm/lin/amk/TKPShape/Makefile \
+adm/lin/amk/TKCDF/Makefile \
+adm/lin/amk/TKLCAF/Makefile \
+adm/lin/amk/TKCAF/Makefile \
+adm/lin/amk/TKBinL/Makefile \
+adm/lin/amk/TKXmlL/Makefile \
+adm/lin/amk/TKShapeSchema/Makefile \
+adm/lin/amk/TKPLCAF/Makefile \
+adm/lin/amk/TKBin/Makefile \
+adm/lin/amk/TKXml/Makefile \
+adm/lin/amk/TKPCAF/Makefile \
+adm/lin/amk/FWOSPlugin/Makefile \
+adm/lin/amk/TKStdLSchema/Makefile \
+adm/lin/amk/TKStdSchema/Makefile \
+adm/lin/amk/TKTObj/Makefile \
+adm/lin/amk/TKBinTObj/Makefile \
+adm/lin/amk/TKXmlTObj/Makefile \
+adm/lin/amk/TKXSBase/Makefile \
+adm/lin/amk/TKSTEPBase/Makefile \
+adm/lin/amk/TKSTEPAttr/Makefile \
+adm/lin/amk/TKSTEP209/Makefile \
+adm/lin/amk/TKSTEP/Makefile \
+adm/lin/amk/TKIGES/Makefile \
+adm/lin/amk/TKXCAF/Makefile \
+adm/lin/amk/TKXCAFSchema/Makefile \
+adm/lin/amk/TKXDEIGES/Makefile \
+adm/lin/amk/TKXDESTEP/Makefile \
+adm/lin/amk/TKSTL/Makefile \
+adm/lin/amk/TKVRML/Makefile \
+adm/lin/amk/TKXmlXCAF/Makefile \
+adm/lin/amk/TKBinXCAF/Makefile \
+adm/lin/amk/TKDraw/Makefile \
+adm/lin/amk/TKTopTest/Makefile \
+adm/lin/amk/TKViewerTest/Makefile \
+adm/lin/amk/TKXSDRAW/Makefile \
+adm/lin/amk/TKDCAF/Makefile \
+adm/lin/amk/TKXDEDRAW/Makefile \
+adm/lin/amk/TKTObjDRAW/Makefile \
+adm/lin/amk/TKQADraw/Makefile \
+adm/lin/amk/DRAWEXE/Makefile \
 ])

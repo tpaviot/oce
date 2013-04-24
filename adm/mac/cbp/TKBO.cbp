@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TKBO" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../../../mac/cbp/lib/libTKBO" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/obj" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DNo_Exception" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/lib" />
+					<Add option="$(CSF_OPT_LNK64)" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="../../../mac/cbp/libd/libTKBO" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option object_output="../../../mac/cbp/objd" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O0" />
+					<Add option="-g" />
+					<Add option="-DCSFDB" />
+					<Add option="-DHAVE_WOK_CONFIG_H" />
+					<Add option="-DHAVE_CONFIG_H" />
+					<Add option="-DOCC_CONVERT_SIGNALS" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DDEB" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../../mac/cbp/libd" />
+					<Add option="$(CSF_OPT_LNK64D)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-fPIC" />
+			<Add option="$(CSF_OPT_CMPL)" />
+			<Add directory="../../../inc" />
+			<Add directory="../../../drv/IntTools" />
+			<Add directory="../../../src/IntTools" />
+			<Add directory="../../../drv/BRepAlgoAPI" />
+			<Add directory="../../../src/BRepAlgoAPI" />
+			<Add directory="../../../drv/BOPCol" />
+			<Add directory="../../../src/BOPCol" />
+			<Add directory="../../../drv/BOPInt" />
+			<Add directory="../../../src/BOPInt" />
+			<Add directory="../../../drv/BOPDS" />
+			<Add directory="../../../src/BOPDS" />
+			<Add directory="../../../drv/BOPAlgo" />
+			<Add directory="../../../src/BOPAlgo" />
+			<Add directory="../../../drv/BOPTools" />
+			<Add directory="../../../src/BOPTools" />
+		</Compiler>
+		<Linker>
+			<Add library="TKBRep" />
+			<Add library="TKTopAlgo" />
+			<Add library="TKMath" />
+			<Add library="TKernel" />
+			<Add library="TKG2d" />
+			<Add library="TKG3d" />
+			<Add library="TKGeomAlgo" />
+			<Add library="TKGeomBase" />
+			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+		</Linker>
+		<Unit filename="../../../drv/IntTools/IntTools_Array1OfRange_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_Array1OfRoots_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_CArray1OfInteger_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_CArray1OfReal_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapNodeOfDataMapOfCurveSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapOfCurveSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_DataMapOfSurfaceSampleBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_IndexedDataMapOfTransientAddress_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListIteratorOfListOfBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListIteratorOfListOfCurveRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListIteratorOfListOfSurfaceRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListNodeOfListOfBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListNodeOfListOfCurveRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListNodeOfListOfSurfaceRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListOfBox_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListOfCurveRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_ListOfSurfaceRangeSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_MapIteratorOfMapOfCurveSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_MapIteratorOfMapOfSurfaceSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_MapOfCurveSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_MapOfSurfaceSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_QuickSortRange_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_QuickSort_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceNodeOfSequenceOfCommonPrts_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceNodeOfSequenceOfCurves_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceNodeOfSequenceOfPntOn2Faces_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceNodeOfSequenceOfRanges_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceNodeOfSequenceOfRoots_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceOfCommonPrts_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceOfCurves_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceOfPntOn2Faces_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceOfRanges_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_SequenceOfRoots_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_StdMapNodeOfMapOfCurveSample_0.cxx" />
+		<Unit filename="../../../drv/IntTools/IntTools_StdMapNodeOfMapOfSurfaceSample_0.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_BaseRangeSample.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_BeanBeanIntersector.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_BeanFaceIntersector.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_CommonPrt.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Compare.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_CompareRange.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Curve.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_CurveRangeLocalizeData.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_CurveRangeSample.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_CurveRangeSampleMapHasher.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_EdgeEdge.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_EdgeEdge_1.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_EdgeFace.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_FClass2d.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_FaceFace.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_LineConstructor.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_MarkedRangeSet.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_PntOn2Faces.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_PntOnFace.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Range.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Root.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeLocalizeData.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSample.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_SurfaceRangeSampleMapHasher.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_Tools.cxx" />
+		<Unit filename="../../../src/IntTools/IntTools_TopolTool.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_BooleanOperation.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Check.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Common.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Cut.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Fuse.cxx" />
+		<Unit filename="../../../src/BRepAlgoAPI/BRepAlgoAPI_Section.cxx" />
+		<Unit filename="../../../src/BOPInt/BOPInt_Context.cxx" />
+		<Unit filename="../../../src/BOPInt/BOPInt_ShrunkRange.cxx" />
+		<Unit filename="../../../src/BOPInt/BOPInt_Tools.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_BoxBndTree.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_CommonBlock.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_Curve.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_DS.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_FaceInfo.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_IndexRange.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_Iterator.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_IteratorSI.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_PassKey.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_PassKeyBoolean.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_PassKeyMapHasher.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_Pave.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_PaveBlock.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_PaveMapHasher.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_Point.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_ShapeInfo.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_SubIterator.cxx" />
+		<Unit filename="../../../src/BOPDS/BOPDS_Tools.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Algo.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_ArgumentAnalyzer.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BOP.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BOP_1.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderArea.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderFace.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderShape.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderSolid.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_1.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_2.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_3.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder_4.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckResult.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_CheckerSI.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_1.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_2.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_3.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_4.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_5.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_6.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_7.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_8.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_SectionAttribute.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Tools.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_WireEdgeSet.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_WireSplitter.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_WireSplitter_1.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools2D.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools3D.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_1.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_AlgoTools_2.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_EdgeSet.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_Set.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_SetMapHasher.cxx" />
+		<Unit filename="../../../src/BOPTools/BOPTools_ShapeSet.cxx" />
+	</Project>
+</CodeBlocks_project_file>

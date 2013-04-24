@@ -26,7 +26,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines meshing commands <br>
+  //! Provides a  mesh  object inherited from Drawable3d <br>
+//!          to draw a triangulation. <br>//! Defines meshing commands <br>
   Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
   //! Defines plugin commands <br>
   Standard_EXPORT   static  void PluginCommands(Draw_Interpretor& DI) ;

@@ -66,6 +66,9 @@ class IGESData_LineFontEntity;
 
 //! defines IGESSegmentedViewsVisible, Type <402> Form <19> <br>
 //!          in package IGESDraw <br>
+//! <br>
+//!          Permits the association of display parameters with the <br>
+//!          segments of curves in a given view <br>
 class IGESDraw_SegmentedViewsVisible : public IGESData_ViewKindEntity {
 
 public:

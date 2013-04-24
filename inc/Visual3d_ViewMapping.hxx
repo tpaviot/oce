@@ -34,7 +34,6 @@
 class TColStd_HArray2OfReal;
 class Visual3d_ViewMappingDefinitionError;
 class Visual3d_View;
-class Graphic3d_Vertex;
 
 
 //! This class allows the definition of a projection and <br>
@@ -70,8 +69,42 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //! Creates a projection. <br>
+//! <br>
+//!	TypeOfProjection		= TOP_PARALLEL <br>
+//!	PRP : Projection Reference Point= (0.5, 0.5, 2.0) <br>
+//!	BPD : Distance from Back Plane	= 0.0 <br>
+//!	FPD : Distance from Front Plane	= 1.0 <br>
+//!	VPD : Distance from View Plane	= 1.0 <br>
+//!	WUmin	= 0.0 <br>
+//!	WUmax	= 1.0 <br>
+//!	WVmin	= 0.0 <br>
+//!	WVmax	= 1.0 <br>
   Standard_EXPORT   Visual3d_ViewMapping();
   //! Creates a projection. <br>
+//! <br>
+//!	TypeOfProjection : TOP_PERSPECTIVE <br>
+//!			   TOP_PARALLEL <br>
+//!	PRP : Projection Reference Point with respect to <br>
+//!	      coordinate system VRC, defined by the <br>
+//!	      class ViewOrientation. <br>
+//!	BPD : Distance from Back Plane. <br>
+//!	FPD : Distance from Front Plane. <br>
+//!	VPD : Distance from View Plane. <br>
+//!	These three values are with respect to VRP, according to <br>
+//!	the N axis of the VRC coordinate system, defined by the class <br>
+//!	ViewOrientation. <br>
+//!	WUmin,WUmax,WVmin,WVmax : Visible part of the plane of <br>
+//!	projection defined with respect to the UV axes of coordinate <br>
+//!	system VRC. <br>
+//!	   That's what allows modification of the zoom/panning. <br>
+//!	The mapping of the visible part of the plane of projection <br>
+//!	on the screen is done in the window. <br>
+//!	   That's why multiple views on the same window is not allowed. <br>
+//!  Warning: Raises ViewMappingDefinitionError <br>
+//!	    if the specified window is invalid. <br>
+//!	    if <PRP> is between the front and back planes. <br>
+//!	    if <PRP> is positioned on the view plane. <br>
+//!	    if the back plane is in front of the front plane. <br>
   Standard_EXPORT   Visual3d_ViewMapping(const Visual3d_TypeOfProjection AType,const Graphic3d_Vertex& PRP,const Standard_Real BPD,const Standard_Real FPD,const Standard_Real VPD,const Standard_Real WUmin,const Standard_Real WVmin,const Standard_Real WUmax,const Standard_Real WVmax);
   //! Modifies the back clipping plane. <br>
 //!  Category: Methods to modify the class definition <br>
@@ -88,6 +121,10 @@ public:
 //!	    if the back plane is in front of the front plane. <br>
   Standard_EXPORT     void SetFrontPlaneDistance(const Standard_Real FPD) ;
   //! Modifies the type of projection. <br>
+//! <br>
+//!	    TypeOfProjection : TOP_PERSPECTIVE <br>
+//!			       TOP_PARALLEL <br>
+//! <br>
   Standard_EXPORT     void SetProjection(const Visual3d_TypeOfProjection AType) ;
   //! Modifies the PRP. <br>
 //!  Category: Methods to modify the class definition <br>
