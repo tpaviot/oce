@@ -293,6 +293,7 @@ void OpenGl_PrimitiveArray::DrawArray (Tint theLightingModel,
       {
         for (i = n = 0; i < myPArray->num_bounds; ++i)
         {
+          if (pfc != NULL) glColor3fv (pfc[i].rgb);
           glDrawArrays (myDrawMode, n, myPArray->bounds[i]);
           n += myPArray->bounds[i];
         }
