@@ -19,11 +19,11 @@ SET(TOOLKIT_MODULES
 )
 SET(TOOLKIT_DEPENDS
 	TKMath
-	TKG2d
 	TKernel
+	TKG2d
+	TKG3d
 	PTKernel
 	TKBRep
-	TKG3d
 )
 
 INCLUDE(../BuildToolkit.cmake)

@@ -4,8 +4,8 @@ SET(TOOLKIT_MODULES
 	OpenGl
 )
 SET(TOOLKIT_DEPENDS
-	TKService
 	TKernel
+	TKService
 	TKV3d
 )
 

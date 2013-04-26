@@ -7,19 +7,19 @@ SET(TOOLKIT_MODULES
 	BiTgte
 )
 SET(TOOLKIT_DEPENDS
-	TKBool
-	TKGeomAlgo
-	TKernel
-	TKGeomBase
+	TKFillet
+	TKBRep
 	TKTopAlgo
 	TKMath
-	TKBO
+	TKernel
+	TKGeomBase
 	TKG2d
 	TKG3d
-	TKBRep
+	TKGeomAlgo
 	TKShHealing
-	TKFillet
+	TKBO
 	TKPrim
+	TKBool
 )
 
 INCLUDE(../BuildToolkit.cmake)

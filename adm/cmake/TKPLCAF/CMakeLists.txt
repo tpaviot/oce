@@ -11,10 +11,10 @@ SET(TOOLKIT_MODULES
 	MDocStd
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKLCAF
 	TKCDF
 	PTKernel
+	TKernel
+	TKLCAF
 )
 
 INCLUDE(../BuildToolkit.cmake)

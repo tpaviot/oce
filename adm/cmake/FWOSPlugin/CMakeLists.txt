@@ -4,8 +4,8 @@ SET(TOOLKIT_MODULES
 	FWOSDriver
 )
 SET(TOOLKIT_DEPENDS
-	TKCDF
 	TKernel
+	TKCDF
 )
 
 INCLUDE(../BuildToolkit.cmake)

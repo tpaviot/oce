@@ -1,22 +1,23 @@
 SET(TOOLKIT TKBO)
 
 SET(TOOLKIT_MODULES
-	BOPTColStd
-	BOPTools
-	BOP
-	BooleanOperations
 	IntTools
 	BRepAlgoAPI
+	BOPCol
+	BOPInt
+	BOPDS
+	BOPAlgo
+	BOPTools
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKGeomBase
-	TKG3d
+	TKBRep
 	TKTopAlgo
 	TKMath
-	TKBRep
+	TKernel
 	TKG2d
+	TKG3d
 	TKGeomAlgo
+	TKGeomBase
 )
 
 INCLUDE(../BuildToolkit.cmake)

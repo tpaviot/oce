@@ -1,32 +1,30 @@
 SET(TOOLKIT TKViewerTest)
 
 SET(TOOLKIT_MODULES
-	Viewer2dTest
 	ViewerTest
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKBool
-	TKG2d
-	TKOffset
-	TKG3d
 	TKGeomBase
+	TKFillet
+	TKBRep
 	TKTopAlgo
-	TKV2d
+	TKHLR
+	TKernel
+	TKMath
+	TKNIS
+	TKService
+	TKBool
+	TKPrim
+	TKGeomAlgo
+	TKG2d
+	TKTopTest
+	TKG3d
+	TKOffset
+	TKVoxel
+	TKMesh
 	TKV3d
 	TKDraw
 	TKOpenGl
-	TKService
-	TKMath
-	TKBRep
-	TKMesh
-	TKGeomAlgo
-	TKFillet
-	TKTopTest
-	TKHLR
-	TKVoxel
-	TKNIS
-	TKPrim
 )
 
 IF(WIN32)

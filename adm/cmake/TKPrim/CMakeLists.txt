@@ -8,10 +8,10 @@ SET(TOOLKIT_MODULES
 	BRepPrimAPI
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKernel
-	TKG2d
 	TKBRep
+	TKernel
+	TKMath
+	TKG2d
 	TKGeomBase
 	TKG3d
 	TKTopAlgo

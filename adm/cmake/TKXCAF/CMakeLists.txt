@@ -6,18 +6,17 @@ SET(TOOLKIT_MODULES
 	XCAFPrs
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
 	TKernel
 	TKMath
 	TKService
-	TKV3d
-	TKLCAF
 	TKG2d
-	TKCDF
-	TKCAF
-	TKBRep
-	TKV2d
-	TKG3d
 	TKTopAlgo
+	TKV3d
+	TKCDF
+	TKLCAF
+	TKG3d
+	TKCAF
 )
 
 INCLUDE(../BuildToolkit.cmake)

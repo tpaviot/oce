@@ -1,7 +1,6 @@
 SET(TOOLKIT TKQADraw)
 
 SET(TOOLKIT_MODULES
-	DebugTools
 	QABugs
 	QADNaming
 	QADraw
@@ -11,34 +10,41 @@ SET(TOOLKIT_MODULES
 	QANewModTopOpe
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKMath
-	TKAdvTools
-	TKG2d
-	TKG3d
-	TKGeomBase
 	TKBRep
-	TKGeomAlgo
-	TKTopAlgo
-	TKPrim
-	TKShHealing
-	TKBool
-	TKFeat
-	TKOffset
-	TKSTL
-	TKXSBase
-	TKIGES
-	TKXDESTEP
-	TKCDF
-	PTKernel
-	TKLCAF
-	TKCAF
+	TKNIS
+	TKMath
+	TKernel
 	TKService
-	TKV3d
+	TKG2d
 	TKDraw
+	PTKernel
+	TKV3d
+	TKGeomBase
+	TKG3d
 	TKViewerTest
-	TKXSDRAW
+	TKCDF
 	TKDCAF
+	TKLCAF
+	TKFillet
+	TKTopAlgo
+	TKHLR
+	TKBool
+	TKGeomAlgo
+	TKPrim
+	TKBO
+	TKShHealing
+	TKOffset
+	TKFeat
+	TKCAF
+	TKIGES
+	TKXSBase
+	TKMesh
+	TKXCAF
+	TKSTEP
+	TKXDESTEP
+	TKXSDRAW
+	TKSTL
+	TKAdvTools
 )
 SET(TOOLKIT_INCLUDE_DIRECTORIES ${TCL_INCLUDE_PATH})
 SET(TOOLKIT_LIBS ${TCL_LIBRARY} ${CSF_gdi32_LIB} ${CSF_advapi32_LIB} ${CSF_user32_LIB})

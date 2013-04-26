@@ -17,18 +17,18 @@ SET(TOOLKIT_MODULES
 )
 SET(TOOLKIT_DEPENDS
 	TKernel
-	TKXSBase
-	TKSTEPBase
 	TKSTEPAttr
+	TKSTEP209
+	TKSTEPBase
+	TKBRep
 	TKMath
-	TKG3d
 	TKG2d
 	TKShHealing
-	TKSTEP209
-	TKGeomBase
-	TKBRep
 	TKTopAlgo
+	TKG3d
+	TKGeomBase
 	TKGeomAlgo
+	TKXSBase
 )
 SET(TOOLKIT_LIBS ${CSF_wsock32_LIB})
 

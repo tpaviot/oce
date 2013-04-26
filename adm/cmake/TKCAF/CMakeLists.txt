@@ -8,18 +8,17 @@ SET(TOOLKIT_MODULES
 )
 SET(TOOLKIT_DEPENDS
 	TKernel
-	TKBO
-	TKLCAF
-	TKG3d
 	TKGeomBase
-	TKV3d
-	TKService
-	TKMath
-	TKCDF
 	TKBRep
-	TKG2d
 	TKTopAlgo
-	TKV2d
+	TKMath
+	TKService
+	TKG2d
+	TKG3d
+	TKCDF
+	TKLCAF
+	TKV3d
+	TKBO
 )
 
 INCLUDE(../BuildToolkit.cmake)

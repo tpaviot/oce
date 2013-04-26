@@ -1058,7 +1058,7 @@ ENDIF (${PROJECT_NAME}_MODEL)
 
 # Visualisation
 IF(${PROJECT_NAME}_VISU_DEP)
-	PROCESS_MODULE( "Visualization" "" "TKService;TKV2d;TKV3d" )
+	PROCESS_MODULE( "Visualization" "" "TKService;TKV3d" )
 ENDIF(${PROJECT_NAME}_VISU_DEP)
 IF(${PROJECT_NAME}_VISUALISATION)
 	PROCESS_MODULE( "Visualization" "" "TKOpenGl;TKMeshVS;TKNIS;TKVoxel" )

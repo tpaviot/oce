@@ -13,13 +13,13 @@ SET(TOOLKIT_MODULES
 	ShapeProcessAPI
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
 	TKernel
-	TKGeomBase
 	TKMath
 	TKG2d
-	TKG3d
 	TKTopAlgo
-	TKBRep
+	TKG3d
+	TKGeomBase
 	TKGeomAlgo
 )
 SET(TOOLKIT_LIBS ${CSF_wsock32_LIB})

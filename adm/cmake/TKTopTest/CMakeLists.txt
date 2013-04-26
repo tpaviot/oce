@@ -13,26 +13,25 @@ SET(TOOLKIT_MODULES
 	BOPTest
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKBool
+	TKBRep
 	TKGeomAlgo
-	TKMesh
-	TKG3d
-	TKGeomBase
-	TKFeat
 	TKTopAlgo
-	TKBO
+	TKernel
 	TKMath
+	TKBO
 	TKG2d
-	TKOffset
+	TKG3d
+	TKDraw
+	TKHLR
+	TKGeomBase
+	TKMesh
 	TKService
 	TKV3d
-	TKHLR
-	TKBRep
 	TKFillet
-	TKDraw
 	TKPrim
-	TKV2d
+	TKBool
+	TKOffset
+	TKFeat
 )
 
 SET(TOOLKIT_IS_PRIVATE TRUE)

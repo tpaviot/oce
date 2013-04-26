@@ -7,18 +7,18 @@ SET(TOOLKIT_MODULES
 	VrmlData
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKG3d
+	TKBRep
 	TKTopAlgo
 	TKMath
-	TKBRep
-	TKMesh
-	TKG2d
-	TKHLR
 	TKGeomBase
+	TKernel
 	TKPrim
-	TKGeomAlgo
+	TKG2d
+	TKG3d
+	TKMesh
+	TKHLR
 	TKService
+	TKGeomAlgo
 	TKV3d
 )
 

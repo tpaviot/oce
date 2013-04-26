@@ -5,12 +5,12 @@ SET(TOOLKIT_MODULES
 	PCDMShape
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKPShape
 	TKernel
-	PTKernel
 	TKG2d
+	PTKernel
+	TKMath
 	TKCDF
+	TKPShape
 )
 
 INCLUDE(../BuildToolkit.cmake)

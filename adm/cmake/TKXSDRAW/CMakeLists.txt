@@ -8,29 +8,28 @@ SET(TOOLKIT_MODULES
 	XSDRAWSTLVRML
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
+	TKV3d
+	TKMath
+	TKNIS
 	TKernel
+	TKService
 	TKXSBase
-	TKIGES
-	TKVRML
+	TKMeshVS
+	TKG3d
 	TKViewerTest
 	TKG2d
-	TKG3d
+	TKSTEPBase
 	TKTopAlgo
 	TKShHealing
-	TKService
-	TKSTL
-	TKV3d
-	TKMesh
-	TKMath
-	TKBRep
 	TKGeomBase
-	TKDraw
-	TKSTEPBase
 	TKGeomAlgo
+	TKMesh
+	TKDraw
 	TKSTEP
-	TKMeshVS
-	TKNIS
-	TKV2d
+	TKIGES
+	TKSTL
+	TKVRML
 )
 
 SET(TOOLKIT_IS_PRIVATE TRUE)

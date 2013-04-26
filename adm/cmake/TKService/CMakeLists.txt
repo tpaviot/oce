@@ -1,17 +1,12 @@
 SET(TOOLKIT TKService)
 
 SET(TOOLKIT_MODULES
-	AlienImage
 	Aspect
-	CGM
-	Font
-	Image
-	MFT
-	PS
-	PlotMgt
 	SelectBasics
+	AlienImage
+	Image
 	TColQuantity
-	Viewer
+	Font
 )
 IF (WIN32)
 	SET(TOOLKIT_MODULES ${TOOLKIT_MODULES}
@@ -21,14 +16,12 @@ IF (WIN32)
 ELSE(WIN32)
 	IF (APPLE AND ${PROJECT_NAME}_OSX_USE_COCOA)
 		SET(TOOLKIT_MODULES ${TOOLKIT_MODULES}
-			ImageUtility
 			Xw
 			Cocoa
 		)
 		SET(TOOLKIT_LIBS ${X11_Xmu_LIB} ${X11_LIBRARIES} /System/Library/Frameworks/Cocoa.framework)
 	ELSE(APPLE AND ${PROJECT_NAME}_OSX_USE_COCOA)
 		SET(TOOLKIT_MODULES ${TOOLKIT_MODULES}
-			ImageUtility
 			Xw
 		)
 		SET(TOOLKIT_LIBS ${X11_Xmu_LIB} ${X11_LIBRARIES})
