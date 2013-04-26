@@ -82,7 +82,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! draws an arrow at a given location, with respect <br>
+//!          to a given direction. <br>
   Standard_EXPORT   static  Standard_Boolean MatchSegment(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const gp_Pnt& p1,const gp_Pnt& p2,Quantity_Length& dist) ;
 
 

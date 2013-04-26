@@ -29,7 +29,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Converts the shape aShape to VRML format and writes it <br>
+  //! With help of this class user can change parameters of writing. <br>//! Converts the shape aShape to VRML format and writes it <br>
 //! to the file identified by aFileName using default parameters. <br>
   Standard_EXPORT   static  void Write(const TopoDS_Shape& aShape,const Standard_CString aFileName) ;
 

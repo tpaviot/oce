@@ -7,9 +7,11 @@
 #define _GeomAbs_UVSense_HeaderFile
 
 
-//!  This enumeration is used in the classes BSplineCurve and <br>
-//!  BSplineSurface to describe the repartition of set of knots. <br>
-//!  (comments in classes BSplineCurve and BSplineSurface) <br>
+//!  This enumeration is used in the class RectangularTrimmedSurface <br>
+//!  to compare the orientation of the basic surface and the orientation <br>
+//!  of the trimmed surface and in the class ElementarySurface to know <br>
+//!  the direction of parametrization by comparison with the default <br>
+//!  construction mode. <br>
 enum GeomAbs_UVSense {
 GeomAbs_SameUV,
 GeomAbs_SameU,

@@ -61,6 +61,13 @@ public:
 //!          and a function to read mail boxes asynchronously. <br>
 //!          Each process working with the same MailBox must use <br>
 //!          a common known access : the mail-box's name. <br>
+//! <br>
+//!          This is for a server process. <br>
+//!          Raises ConstructionError when the name is not composed by <br>
+//!          characters in range of ' ' .. '~'. <br>
+//!          Raises NullObject when Async_function is a null function <br>
+//!          pointer <br>
+//!          Raises ProgramError when Size has a negative or null value. <br>
   Standard_EXPORT   OSD_MailBox(const TCollection_AsciiString& name,const Standard_Integer Size,const OSD_Function& Async_function);
   //! Builds (physically) <me> into system. <br>
 //!          <me> is created and ready to run. <br>

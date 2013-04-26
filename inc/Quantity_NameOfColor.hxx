@@ -6,15 +6,7 @@
 #ifndef _Quantity_NameOfColor_HeaderFile
 #define _Quantity_NameOfColor_HeaderFile
 
-//!  Identifies color definition systems <br>
-//! -   Quantity_TOC_RGB: with this system a <br>
-//!   color is defined by its quantities of red, green and blue (R-G-B values). <br>
-//! -   Quantity_TOC_HLS: with this system a <br>
-//!   color is defined by its hue angle and its <br>
-//!   lightness and saturation values (H-L-S values). <br>
-//!   A Quantity_Color object may define a color <br>
-//! from three values R-G-B or H-L-S according <br>
-//! to a given color definition system. <br>
+//! Definition of names of known colours. <br>
 enum Quantity_NameOfColor {
 Quantity_NOC_BLACK,
 Quantity_NOC_MATRABLUE,

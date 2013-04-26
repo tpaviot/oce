@@ -179,7 +179,7 @@ bool Image_AlienPixMap::InitTrash (ImgFormat           thePixelFormat,
 }
 
 // =======================================================================
-// function : Clear
+// function : InitCopy
 // purpose  :
 // =======================================================================
 bool Image_AlienPixMap::InitCopy (const Image_PixMap& theCopy)

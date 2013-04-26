@@ -105,7 +105,7 @@ public:
   
   Standard_EXPORT     Standard_Real Control(const Handle(BRepAdaptor_HSurface)& theCaro,const Standard_Real theDefFace,BRepMesh_ListOfVertex& theInternalV,TColStd_ListOfInteger& theBadTriangles,TColStd_ListOfInteger& theNulTriangles,BRepMesh_Delaun& theTrigu,const Standard_Boolean theIsFirst) ;
   
-  Standard_EXPORT   static  gp_XY FindUV(const TopoDS_Vertex& theV,const gp_Pnt2d& theXY,const Standard_Integer theIp,const Handle(BRepAdaptor_HSurface)& theSFace,const Standard_Real theMinDist,BRepMesh_DataMapOfIntegerListOfXY& theLocation2dMap) ;
+  Standard_EXPORT   static  gp_XY FindUV(const TopoDS_Vertex& theV,const gp_Pnt2d& theXY,const Standard_Integer theIp,const Handle(BRepAdaptor_HSurface)& theSFace,const Standard_Real theMinDist,const Handle(BRepMesh_FaceAttribute)& theFaceAttribute,BRepMesh_DataMapOfIntegerListOfXY& theLocation2dMap) ;
   //! Gives the triangle of <Index>. <br>
   Standard_EXPORT    const BRepMesh_Triangle& Triangle(const Standard_Integer theIndex) const;
   //! Gives the edge of index <Index>. <br>

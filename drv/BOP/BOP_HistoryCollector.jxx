@@ -1,9 +1,0 @@
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
-#include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BOP_HistoryCollector_HeaderFile
-#include <BOP_HistoryCollector.hxx>
-#endif

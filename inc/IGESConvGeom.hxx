@@ -55,7 +55,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Converts a SplineCurve from IGES to a BSplineCurve from CasCade <br>
+  //! basic tool to build curves from IGESGeom (arrays of points, <br>
+//!           Transformations, evaluation of points in a datum) <br>//! Converts a SplineCurve from IGES to a BSplineCurve from CasCade <br>
 //!           <epscoef> gives tolerance to consider coefficient to be nul <br>
 //!           <epsgeom> gives tolerance to consider poles to be equal <br>
 //!           The returned value is a status with these possible values : <br>

@@ -55,6 +55,12 @@
 #ifndef _Handle_ViewerTest_EventManager_HeaderFile
 #include <Handle_ViewerTest_EventManager.hxx>
 #endif
+#ifndef _Quantity_NameOfColor_HeaderFile
+#include <Quantity_NameOfColor.hxx>
+#endif
+#ifndef _Standard_CString_HeaderFile
+#include <Standard_CString.hxx>
+#endif
 class Draw_Interpretor;
 class MMgt_TShared;
 class TopoDS_Shape;
@@ -125,7 +131,7 @@ public:
   
   Standard_EXPORT   static  Handle_V3d_Viewer GetCollectorFromContext() ;
   
-  Standard_EXPORT   static  Handle_AIS_InteractiveContext GetAISContext() ;
+  Standard_EXPORT   static const Handle_AIS_InteractiveContext& GetAISContext() ;
   
   Standard_EXPORT   static  NIS_InteractiveContext& GetNISContext() ;
   
@@ -133,7 +139,7 @@ public:
   
   Standard_EXPORT   static  void SetNISContext(const NIS_InteractiveContext& aContext) ;
   
-  Standard_EXPORT   static  Handle_V3d_View CurrentView() ;
+  Standard_EXPORT   static const Handle_V3d_View& CurrentView() ;
   
   Standard_EXPORT   static  void CurrentView(const Handle(V3d_View)& aViou) ;
   
@@ -152,6 +158,8 @@ public:
   Standard_EXPORT   static  void RemoveSelected() ;
   
   Standard_EXPORT   static  void StandardModeActivation(const Standard_Integer Mode) ;
+  
+  Standard_EXPORT   static  Quantity_NameOfColor GetColorFromName(const Standard_CString name) ;
 
 
 

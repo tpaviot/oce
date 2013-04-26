@@ -54,7 +54,14 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! returns   the  Offset  surface  computed from  the <br>
+//!          surface <Surface> at an OffsetDistance <Offset>. <br>
+//! <br>
+//!          If possible, this method returns  the real type of <br>
+//!          the surface ( e.g. An Offset of a plane is a plane). <br>
+//! <br>
+//!          If  no particular  case  is detected, the returned <br>
+//!          surface will have the Type Geom_OffsetSurface. <br>
   Standard_EXPORT   static  Handle_Geom_Surface Surface(const Handle(Geom_Surface)& Surface,const Standard_Real Offset,BRepOffset_Status& Status) ;
 
 

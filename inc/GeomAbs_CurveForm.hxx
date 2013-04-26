@@ -7,7 +7,7 @@
 #define _GeomAbs_CurveForm_HeaderFile
 
 
-//!  This enumeration is used to note specific surface form. <br>
+//!  This enumeration is used to note specific curve form. <br>
 enum GeomAbs_CurveForm {
 GeomAbs_PolylineForm,
 GeomAbs_CircularForm,

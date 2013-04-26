@@ -25,6 +25,9 @@
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
 #endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
+#endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
 #endif
@@ -113,6 +116,8 @@ Standard_Real myU;
 Standard_Real myV;
 gp_Pnt myP1;
 gp_Pnt myP2;
+gp_Vec myDu;
+gp_Vec myDv;
 TColStd_SequenceOfReal mySqDist;
 Extrema_SeqPOnCOfCCFOfECCOfExtCC myPoints;
 

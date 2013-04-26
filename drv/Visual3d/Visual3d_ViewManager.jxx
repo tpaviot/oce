@@ -7,17 +7,11 @@
 #ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
 #endif
-#ifndef _Aspect_GraphicDevice_HeaderFile
-#include <Aspect_GraphicDevice.hxx>
-#endif
 #ifndef _Visual3d_HSetOfView_HeaderFile
 #include <Visual3d_HSetOfView.hxx>
 #endif
 #ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
-#endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>

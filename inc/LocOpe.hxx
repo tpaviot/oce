@@ -24,7 +24,6 @@ class TopoDS_Face;
 class TopoDS_Edge;
 class TopoDS_Shape;
 class TColgp_SequenceOfPnt;
-class LocOpe_Builder;
 class LocOpe_SplitShape;
 class LocOpe_ProjectedWires;
 class LocOpe_WiresOnShape;
@@ -66,11 +65,13 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Returns Standard_True  when the wire <W> is closed <br>
+//!          on the face <OnF>. <br>
   Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Wire& W,const TopoDS_Face& OnF) ;
-  
+  //! Returns Standard_True  when the edge <E> is closed <br>
+//!          on the face <OnF>. <br>
   Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Edge& E,const TopoDS_Face& OnF) ;
-  
+  //! Returns Standard_True  when the faces are tangent <br>
   Standard_EXPORT   static  Standard_Boolean TgtFaces(const TopoDS_Edge& E,const TopoDS_Face& F1,const TopoDS_Face& F2) ;
   
   Standard_EXPORT   static  void SampleEdges(const TopoDS_Shape& S,TColgp_SequenceOfPnt& Pt) ;
@@ -90,7 +91,6 @@ private:
 
 
 
-friend class LocOpe_Builder;
 friend class LocOpe_SplitShape;
 friend class LocOpe_ProjectedWires;
 friend class LocOpe_WiresOnShape;

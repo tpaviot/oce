@@ -6,12 +6,13 @@
 #ifndef _IFSelect_EditValue_HeaderFile
 #define _IFSelect_EditValue_HeaderFile
 
-//! Indicates whether there will <br>
-//! be information on warnings as well as on failures. The <br>
-//! terms of this enumeration have the following semantics: <br>
-//! - IFSelect_FailOnly gives information on failures only <br>
-//! - IFSelect_FailAndWarn gives information on both <br>
-//!   failures and warnings. used to pilot PrintCheckList <br>
+//! Controls access on Values by an Editor <br>
+//!           EditOptional  : normal access, in addition may be removed <br>
+//!           Editable      : normal access, must be present <br>
+//!           EditProtected : access must be validated <br>
+//!           EditComputed  : why write it ?  it will be recomputed <br>
+//!           EditRead      : no way to write it, only for read <br>
+//!           EditDynamic   : not a field, only to be displayed <br>
 enum IFSelect_EditValue {
 IFSelect_Optional,
 IFSelect_Editable,

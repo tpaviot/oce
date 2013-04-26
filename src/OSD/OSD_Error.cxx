@@ -137,10 +137,8 @@ void OSD_Error::Perror() {
      buffer += "Lock is already blocked by another process";
      extCode = ERR_FDEADLK;
      break;
-#ifndef DEB
     default:
       break;
-#endif
    }
    break;
 #endif
@@ -262,10 +260,8 @@ void OSD_Error::Perror() {
      buffer += "File is locked";
      extCode = ERR_FLOCKED;
      break;
-#ifndef DEB
     default:
      break;
-#endif
    }
    break;
 #endif
@@ -277,10 +273,8 @@ void OSD_Error::Perror() {
      buffer += "File is locked";
      extCode = ERR_FLOCKED;
      break;
-#ifndef DEB
     default:
      break;
-#endif
    }
    break;
 #endif
@@ -640,6 +634,9 @@ OSD_Error :: OSD_Error () {
 
 void OSD_Error :: Perror () {
 
+  if (errorStream == NULL)
+    return;
+
  Standard_Character buff[ 32 ];
  Standard_CString   ptr;
 
@@ -813,9 +810,12 @@ Standard_Boolean OSD_Error :: Failed () const {
 void OSD_Error :: Reset () {
 
  myErrno = ERROR_SUCCESS; 
- ( *errorStream ).clear ();
- ( *errorStream ).seekp ( 0 );
- ( *errorStream ).clear ();
+ if (errorStream != NULL)
+ {
+   ( *errorStream ).clear ();
+   ( *errorStream ).seekp ( 0 );
+   ( *errorStream ).clear ();
+ }
 
 }  // end OSD_Error :: Reset
 

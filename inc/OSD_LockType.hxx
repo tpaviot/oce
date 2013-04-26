@@ -6,7 +6,18 @@
 #ifndef _OSD_LockType_HeaderFile
 #define _OSD_LockType_HeaderFile
 
-//! Used by OSD_File in the method Seek. <br>
+//! locks for files. <br>
+//!          NoLock is the default value when opening a file. <br>
+//! <br>
+//!          ReadLock allows only one reading of the file at a time. <br>
+//! <br>
+//!          WriteLock prevents others writing into a file(excepted the user <br>
+//!          who puts the lock)but allows everybody to read. <br>
+//! <br>
+//!          ExclusiveLock prevents reading and writing except for the <br>
+//!          current user of the file. <br>
+//!          So ExclusiveLock means only one user on the file and this <br>
+//!          user is the one who puts the lock. <br>
 enum OSD_LockType {
 OSD_NoLock,
 OSD_ReadLock,

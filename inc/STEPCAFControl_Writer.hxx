@@ -67,6 +67,8 @@ class TopoDS_Shape;
 //!          STEP file. Besides transfer of shapes (including <br>
 //!          assemblies) provided by STEPControl, supports also <br>
 //!          colors and part names <br>
+//! <br>
+//!          Also supports multifile writing <br>
 class STEPCAFControl_Writer  {
 public:
 

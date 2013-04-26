@@ -58,6 +58,7 @@ public:
   //! True is returned if a point has been found. <br>
   Standard_EXPORT   virtual  Standard_Boolean HasAPoint() const = 0;
   //! Returns the Intersection Point. <br>
+//! <br>
   Standard_EXPORT   virtual const IntCurveSurface_IntersectionPoint& Point() const = 0;
   //! Returns the state of the point on the face. <br>
 //!          The values can be either TopAbs_IN <br>

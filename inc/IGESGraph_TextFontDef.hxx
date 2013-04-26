@@ -46,6 +46,10 @@ class Standard_OutOfRange;
 
 //! defines IGES Text Font Definition Entity, Type <310> <br>
 //!           in package IGESGraph <br>
+//! <br>
+//!           Used to define the appearance of characters in a text font. <br>
+//!           It may be used to describe a complete font or a <br>
+//!           modification to a subset of characters in another font. <br>
 class IGESGraph_TextFontDef : public IGESData_IGESEntity {
 
 public:

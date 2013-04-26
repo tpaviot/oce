@@ -23,7 +23,6 @@
 
 #include <ViewerTest.hxx>
 
-#include <Aspect_GraphicDevice.hxx>
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_InteractiveObject.hxx>
 #include <Draw.hxx>
@@ -48,6 +47,7 @@
 #include <V3d_Viewer.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <V3d_View.hxx>
+#include <Visual3d_View.hxx>
 
 extern Standard_Boolean VDisplayAISObject (const TCollection_AsciiString& theName,
                                            const Handle(AIS_InteractiveObject)& theAISObj,
@@ -171,11 +171,10 @@ void VUserDrawObj::Render(const Handle(OpenGl_Workspace)& theWorkspace) const
   // To test linking against OpenGl_Workspace and all aspect classes
   const OpenGl_AspectLine* aLA = theWorkspace->AspectLine(0);
   const OpenGl_AspectFace* aFA = theWorkspace->AspectFace(0);
-  aFA->Context();
   const OpenGl_AspectMarker* aMA = theWorkspace->AspectMarker(0);
   aMA->Type();
   const OpenGl_AspectText* aTA = theWorkspace->AspectText(0);
-  aTA->Font();
+  aTA->FontName();
   TEL_COLOUR aColor = theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT ?
     *(theWorkspace->HighlightColor) : aLA->Color();
 
@@ -194,8 +193,6 @@ void VUserDrawObj::Render(const Handle(OpenGl_Workspace)& theWorkspace) const
   glEnd();
   glPopAttrib();
 }
-
-
 
 OpenGl_Element* VUserDrawCallback(const CALL_DEF_USERDRAW * theUserDraw)
 {
@@ -219,7 +216,7 @@ static Standard_Integer VUserDraw (Draw_Interpretor& di,
     return 1;
   }
 
-  Handle(OpenGl_GraphicDriver) aDriver = Handle(OpenGl_GraphicDriver)::DownCast (aContext->CurrentViewer()->Device()->GraphicDriver());
+  Handle(OpenGl_GraphicDriver) aDriver = Handle(OpenGl_GraphicDriver)::DownCast (aContext->CurrentViewer()->Driver());
   if (aDriver.IsNull())
   {
     std::cerr << "Graphic driver not available.\n";
@@ -396,6 +393,117 @@ static int VFeedback (Draw_Interpretor& theDI,
   }
 }
 
+//==============================================================================
+//function : VImmediateFront
+//purpose  :
+//==============================================================================
+
+static int VImmediateFront (Draw_Interpretor& theDI,
+                            Standard_Integer  theArgNb,
+                            const char**      theArgVec)
+{
+  // get the context
+  Handle(AIS_InteractiveContext) aContextAIS = ViewerTest::GetAISContext();
+  if (aContextAIS.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  Handle(Graphic3d_GraphicDriver) aDriver = aContextAIS->CurrentViewer()->Driver();
+
+  if (aDriver.IsNull())
+  {
+    std::cerr << "Graphic driver not available.\n";
+    return 1;
+  }
+
+  if (theArgNb < 2)
+  {
+    //theDI << "VBO: " << aDriver->ToUseVBO() << "\n";
+    //return 0;
+    std::cerr << "Wrong number of arguments.\n";
+    return 1;
+  }
+
+  Graphic3d_CView* aCView = (Graphic3d_CView* )(ViewerTest::CurrentView()->View()->CView());
+  aDriver->SetImmediateModeDrawToFront (*aCView, atoi(theArgVec[1]) != 0);
+  return 0;
+}
+
+//==============================================================================
+//function : VGlInfo
+//purpose  :
+//==============================================================================
+
+static int VGlInfo (Draw_Interpretor& theDI,
+                    Standard_Integer  theArgNb,
+                    const char**      theArgVec)
+{
+  // get the active view
+  Handle(V3d_View) aView = ViewerTest::CurrentView();
+  if (aView.IsNull())
+  {
+    std::cerr << "No active view. Please call vinit.\n";
+    return 1;
+  }
+
+  if (theArgNb <= 1)
+  {
+    theDI << "OpenGL info:\n"
+          << "  GLvendor    = '" << (const char* )glGetString(GL_VENDOR)   << "'\n"
+          << "  GLdevice    = '" << (const char* )glGetString(GL_RENDERER) << "'\n"
+          << "  GLversion   = '" << (const char* )glGetString(GL_VERSION)  << "'\n"
+          << "  GLSLversion = '" << (const char* )glGetString(GL_SHADING_LANGUAGE_VERSION) << "'\n";
+    return 0;
+  }
+
+  const Standard_Boolean isList = theArgNb >= 3;
+  for (Standard_Integer anIter = 1; anIter < theArgNb; ++anIter)
+  {
+    TCollection_AsciiString aName (theArgVec[anIter]);
+    aName.UpperCase();
+    const char* aValue = NULL;
+    if (aName.Search ("VENDOR") != -1)
+    {
+      aValue = (const char* )glGetString (GL_VENDOR);
+    }
+    else if (aName.Search ("RENDERER") != -1)
+    {
+      aValue = (const char* )glGetString (GL_RENDERER);
+    }
+    else if (aName.Search ("SHADING_LANGUAGE_VERSION") != -1
+          || aName.Search ("GLSL") != -1)
+    {
+      aValue = (const char* )glGetString (GL_SHADING_LANGUAGE_VERSION);
+    }
+    else if (aName.Search ("VERSION") != -1)
+    {
+      aValue = (const char* )glGetString (GL_VERSION);
+    }
+    else if (aName.Search ("EXTENSIONS") != -1)
+    {
+      aValue = (const char* )glGetString (GL_EXTENSIONS);
+    }
+    else
+    {
+      std::cerr << "Unknown key '" << aName.ToCString() << "'\n";
+      return 1;
+    }
+
+    if (isList)
+    {
+      theDI << "{" << aValue << "} ";
+    }
+    else
+    {
+      theDI << aValue;
+    }
+  }
+
+  return 0;
+}
+
 //=======================================================================
 //function : OpenGlCommands
 //purpose  :
@@ -411,4 +519,12 @@ void ViewerTest::OpenGlCommands(Draw_Interpretor& theCommands)
   theCommands.Add("vfeedback",
     "vfeedback       : perform test GL feedback rendering",
     __FILE__, VFeedback, aGroup);
+  theCommands.Add("vimmediatefront",
+    "vimmediatefront : render immediate mode to front buffer or to back buffer",
+    __FILE__, VImmediateFront, aGroup);
+
+  theCommands.Add("vglinfo",
+    "vglinfo [GL_VENDOR] [GL_RENDERER] [GL_VERSION] [GL_SHADING_LANGUAGE_VERSION] [GL_EXTENSIONS]"
+    " : prints GL info",
+    __FILE__, VGlInfo, aGroup);
 }

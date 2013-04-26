@@ -123,11 +123,33 @@ public:
   //! Modifies the emissive colour of the surface. <br>
   Standard_EXPORT     void SetEmissiveColor(const Quantity_Color& AColor) ;
   //! Activates the reflective properties of the surface <AType>. <br>
+//! <br>
+//!	    TypeOfReflection : TOR_AMBIENT <br>
+//!			       TOR_DIFFUSE <br>
+//!			       TOR_SPECULAR <br>
+//!                             TOR_EMISSION <br>
+//! 1, 2, 3 or 4 types of reflection can be set for a given surface. <br>
   Standard_EXPORT     void SetReflectionModeOn(const Graphic3d_TypeOfReflection AType) ;
   //! Deactivates the reflective properties of <br>
 //!	    the surface <AType>. <br>
+//! <br>
+//!	    TypeOfReflection : TOR_AMBIENT <br>
+//!			       TOR_DIFFUSE <br>
+//!			       TOR_SPECULAR <br>
+//!                             TOR_EMISSION <br>
+//!  1, 2, 3 or 4 types of reflection can be set off for a given surface. <br>
+//!  Disabling diffuse and specular reflectance is useful for efficient visualization <br>
+//!  of large amounts of data as definition of normals for graphic primitives is not needed <br>
+//!  when only "all-directional" reflectance is active. <br>
+//! <br>
+//!  NOTE: Disabling all four reflection modes also turns off the following effects: <br>
+//!  1. Lighting. Colors of primitives are not affected by the material properties when lighting is off. <br>
+//!  2. Transparency. <br>
   Standard_EXPORT     void SetReflectionModeOff(const Graphic3d_TypeOfReflection AType) ;
   //! Set MyMaterialType to the value of parameter <AType> <br>
+//! <br>
+//!	    TypeOfMaterial :   MATERIAL_ASPECT <br>
+//!			       MATERIAL_PHYSIC <br>
   Standard_EXPORT     void SetMaterialType(const Graphic3d_TypeOfMaterial AType) ;
   //! The current matarial become a "UserDefined" material. <br>
 //!	    Set the name of the "UserDefined" material. <br>

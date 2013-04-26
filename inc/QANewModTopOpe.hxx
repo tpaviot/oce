@@ -38,7 +38,9 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! to check if TheS is valid or not. <br>
+  //! to remove  "floating" objects from compound. <br>
+//! "floating" objects are wires, edges, vertices that do not belong <br>
+//! solids, shells or faces. <br>//! to check if TheS is valid or not. <br>
 //! in difference with BRepCheck_Analizer, this method allows <br>
 //! some  kind of  non-manifold shapes <br>
   Standard_EXPORT   static  Standard_Boolean IsValid(const TopoDS_Shape& TheS,const Standard_Boolean GeomControls = Standard_True) ;

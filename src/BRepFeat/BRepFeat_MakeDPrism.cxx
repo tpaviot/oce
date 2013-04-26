@@ -85,7 +85,7 @@
 #include <TopAbs.hxx>
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEAT();
+extern Standard_Boolean BRepFeat_GettraceFEAT();
 #endif
 
 static void MajMap(const TopoDS_Shape&,
@@ -780,11 +780,7 @@ void BRepFeat_MakeDPrism::PerformFromEnd(const TopoDS_Shape& Until)
     LocOpe_CSIntersector ASI2(mySbase);
     ASI1.Perform(scur);
     ASI2.Perform(scur);
-#ifndef DEB
     TopAbs_Orientation OrU = TopAbs_FORWARD, OrF = TopAbs_FORWARD;
-#else
-    TopAbs_Orientation OrU, OrF;
-#endif
     TopoDS_Face FUntil, FFrom;
     if (ASI1.IsDone() && ASI1.NbPoints(1) >=1) {
       OrU = ASI1.Point(1,1).Orientation();

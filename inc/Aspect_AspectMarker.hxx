@@ -66,6 +66,12 @@ public:
 protected:
 
   //! Initialise the constructor for Graphic3d_AspectMarker3d. <br>
+//! <br>
+//! defaults values : <br>
+//! <br>
+//!	Color	= Quantity_NOC_YELLOW; <br>
+//!	Type	= Aspect_TOM_X; <br>
+//!	Scale	= 1.0; <br>
   Standard_EXPORT   Aspect_AspectMarker();
   //! Initialise the values for the <br>
 //!	    constructor of Graphic3d_AspectMarker3d. <br>

@@ -107,7 +107,7 @@ public:
   Standard_EXPORT     Standard_Boolean IsSet(const TDF_Label& L,const XCAFDoc_ColorType type) const;
   //! Returns label with color assigned to <L> as <type> <br>
 //!          Returns False if no such color is assigned <br>
-  Standard_EXPORT     Standard_Boolean GetColor(const TDF_Label& L,const XCAFDoc_ColorType type,TDF_Label& colorL) ;
+  Standard_EXPORT   static  Standard_Boolean GetColor(const TDF_Label& L,const XCAFDoc_ColorType type,TDF_Label& colorL) ;
   //! Returns color assigned to <L> as <type> <br>
 //!          Returns False if no such color is assigned <br>
   Standard_EXPORT     Standard_Boolean GetColor(const TDF_Label& L,const XCAFDoc_ColorType type,Quantity_Color& color) ;

@@ -44,6 +44,12 @@ class TDF_RelocationTable;
 
 //! Expression attribute. <br>
 //!          ==================== <br>
+//! <br>
+//!            * Data Structure  of the Expression   is stored in a <br>
+//!           string and references to variables used by the string <br>
+//! <br>
+//!  Warning:  To be consistent,  each  Variable  referenced by  the <br>
+//!          expression must have its equivalent in the string <br>
 class TDataStd_Expression : public TDF_Attribute {
 
 public:

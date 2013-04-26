@@ -66,6 +66,16 @@ class TCollection_AsciiString;
 //! <SubShapeType> is : <br>
 //!  - TopAbs_VERTEX to connect edges <br>
 //!  - TopAbs_EDGE to connect faces <br>
+//! <br>
+//! Signature needed by the BlockBuilder : <br>
+//!    InitStartElements(me : in out) <br>
+//!    MoreStartElements(me) returns Boolean; <br>
+//!    NextStartElement(me : in out); <br>
+//!    StartElement(me) returns Shape; ---C++: return const & <br>
+//!    InitNeighbours(me : in out; S : Shape); <br>
+//!    MoreNeighbours(me) returns Boolean; <br>
+//!    NextNeighbour(me : in out); <br>
+//!    Neighbour(me) returns Shape; ---C++: return const & <br>
 class TopOpeBRepBuild_ShapeSet  {
 public:
 

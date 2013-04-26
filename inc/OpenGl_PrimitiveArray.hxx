@@ -17,13 +17,12 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #ifndef OpenGl_PrimitiveArray_Header
 #define OpenGl_PrimitiveArray_Header
 
 #include <OpenGl_VertexBuffer.hxx>
 
-#include <InterfaceGraphic_telem.hxx>
+#include <InterfaceGraphic_Graphic3d.hxx>
 #include <Aspect_InteriorStyle.hxx>
 
 #include <OpenGl_Element.hxx>
@@ -76,26 +75,6 @@ private:
   //! Auxiliary procedures
   void DrawEdges (const TEL_COLOUR*               theEdgeColour,
                   const Handle(OpenGl_Workspace)& theWorkspace) const;
-
-  void DrawDegeneratesAsPoints (const TEL_COLOUR* theEdgeColour,
-                                const float       theSkipRatio) const;
-  void DrawDegeneratesAsLines (const TEL_COLOUR*               theEdgeColour,
-                               const Handle(OpenGl_Workspace)& theWorkspace) const;
-  void DrawDegeneratesAsBBoxs (const TEL_COLOUR* theEdgeColour) const;
-
-  void DrawDegeneratesPointsAsPoints() const;
-  void DrawDegeneratesLinesAsPoints() const;
-  void DrawDegeneratesLinesAsLines (const float theSkipRatio) const;
-  void DrawDegeneratesTrianglesAsPoints() const;
-  void DrawDegeneratesTrianglesAsLines (const float theSkipRatio) const;
-  void DrawDegeneratesTrianglestripsAsPoints() const;
-  void DrawDegeneratesTrianglestripsAsLines (const float theSkipRatio) const;
-  void DrawDegeneratesQuadranglesAsPoints() const;
-  void DrawDegeneratesQuadranglesAsLines (const float theSkipRatio) const;
-  void DrawDegeneratesQuadranglestripsAsPoints() const;
-  void DrawDegeneratesQuadranglestripsAsLines (const float theSkipRatio) const;
-  void DrawDegeneratesPolygonsAsPoints() const;
-  void DrawDegeneratesPolygonsAsLines (const float theSkipRatio) const;
 
 protected:
 

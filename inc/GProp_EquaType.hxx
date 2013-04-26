@@ -7,8 +7,6 @@
 #define _GProp_EquaType_HeaderFile
 
 
-//!  This exception is raised when a method makes reference to <br>
-//!  an undefined inertia axis of symmetry. <br>
 enum GProp_EquaType {
 GProp_Plane,
 GProp_Line,

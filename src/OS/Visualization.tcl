@@ -20,7 +20,6 @@
 ;# 
 proc Visualization:toolkits { } {
     return [list TKService \
-		 TKV2d \
 		 TKV3d \
 		 TKOpenGl \
                  TKMeshVS \
@@ -33,7 +32,6 @@ proc Visualization:toolkits { } {
 ;#
 proc Visualization:ressources { } {
     return [list \
-	   [list both r FontMFT {}] \
 	   [list both r Textures {}] \
 	    ]
 }
@@ -51,7 +49,7 @@ proc Visualization:depends { } {
 }
 
 proc Visualization:acdepends { } {
-    return [list X11 GL FREETYPE FTGL]
+    return [list X11 GL FREETYPE]
 }
 
 ;#

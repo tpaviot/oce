@@ -133,7 +133,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Dumps the topological structure  of <Sh>  on the <br>
+  //! A set of Shapes. Can be dump, wrote or read. <br>//! Dumps the topological structure  of <Sh>  on the <br>
 //!          stream <S>. <br>
   Standard_EXPORT   static  void Dump(const TopoDS_Shape& Sh,Standard_OStream& S) ;
   //! This is to bypass an extraction bug. It will force <br>

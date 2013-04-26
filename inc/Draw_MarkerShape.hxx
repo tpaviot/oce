@@ -6,7 +6,8 @@
 #ifndef _Draw_MarkerShape_HeaderFile
 #define _Draw_MarkerShape_HeaderFile
 
-
+//! Circle is not sensible to zoom, like <br>
+//!          other MarkerShape, contrarily to CircleZoom <br>
 enum Draw_MarkerShape {
 Draw_Square,
 Draw_Losange,

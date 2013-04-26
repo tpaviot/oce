@@ -6,7 +6,7 @@
 #ifndef _Vrml_SeparatorRenderCulling_HeaderFile
 #define _Vrml_SeparatorRenderCulling_HeaderFile
 
-//! qualifies group properties. <br>
+
 enum Vrml_SeparatorRenderCulling {
 Vrml_OFF,
 Vrml_ON,

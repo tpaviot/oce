@@ -42,6 +42,10 @@ class ShapeExtend_DataMapOfShapeListOfMsg;
 //!          The objects of this class are transmitted to the Shape Healing <br>
 //!          algorithms so that they could collect messages occurred during <br>
 //!          processing. <br>
+//! <br>
+//!          Messages are added to the Maps (stored as a field) that can be <br>
+//!          used, for instance, by Data Exchange processors to attach those <br>
+//!          messages to initial file entities. <br>
 class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 
 public:

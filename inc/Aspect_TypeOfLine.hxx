@@ -6,7 +6,13 @@
 #ifndef _Aspect_TypeOfLine_HeaderFile
 #define _Aspect_TypeOfLine_HeaderFile
 
-//! Definition of a highlight method <br>
+//! Definition of line types <br>
+//! <br>
+//!          TOL_SOLID           continuous <br>
+//!          TOL_DASH            dashed 2.0,1.0 (MM) <br>
+//!          TOL_DOT             dotted 0.2,0.5 (MM) <br>
+//!          TOL_DOTDASH         mixed  10.0,1.0,2.0,1.0 (MM) <br>
+//!          TOL_USERDEFINED     defined by Users <br>
 enum Aspect_TypeOfLine {
 Aspect_TOL_SOLID,
 Aspect_TOL_DASH,

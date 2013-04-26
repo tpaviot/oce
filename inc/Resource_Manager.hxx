@@ -60,6 +60,13 @@ public:
 //!          $CSF_`aName`Defaults/aName <br>
 //!          $CSF_`aName`UserDefaults/aName <br>
 //!          and load them respectively into a reference and a user resource structure. <br>
+//! <br>
+//!          If CSF_ResourceVerbose defined, seeked files will be printed. <br>
+//! <br>
+//!         FILE SYNTAX <br>
+//!              The syntax of a resource file is a sequence of resource <br>
+//!              lines terminated by newline characters or end of file.  The <br>
+//!              syntax of an individual resource line is: <br>
   Standard_EXPORT   Resource_Manager(const Standard_CString aName,const Standard_Boolean Verbose = Standard_False);
   
   Standard_EXPORT   Resource_Manager(const Standard_CString aName,TCollection_AsciiString& aDefaultsDirectory,TCollection_AsciiString& anUserDefaultsDirectory,const Standard_Boolean Verbose = Standard_False);

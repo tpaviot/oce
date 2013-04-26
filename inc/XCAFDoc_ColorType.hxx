@@ -15,6 +15,7 @@
 //!          then such color overrides generic color. <br>
 //! simple color <br>
 //! color of surfaces <br>
+//! color of curves <br>
 enum XCAFDoc_ColorType {
 XCAFDoc_ColorGen,
 XCAFDoc_ColorSurf,

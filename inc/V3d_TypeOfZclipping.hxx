@@ -6,8 +6,12 @@
 #ifndef _V3d_TypeOfZclipping_HeaderFile
 #define _V3d_TypeOfZclipping_HeaderFile
 
-//! Determines the type of visualization in the view, either <br>
-//! WIREFRAME or ZBUFFER (shading). <br>
+//! The available options are <br>
+//! -   V3d_OFF: Zclipping (clipping executed in the <br>
+//!   depth of the view) is deactivated, <br>
+//! -   V3d_BACK: back Zclipping is activated, <br>
+//! -   V3d_FRONT: front Zclipping is activated, <br>
+//! -   V3d_SLICE: both front and back Zclippings are activated. <br>
 enum V3d_TypeOfZclipping {
 V3d_OFF,
 V3d_BACK,

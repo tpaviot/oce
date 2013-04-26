@@ -52,6 +52,18 @@ class IGESData_TransfEntity;
 
 //! defines IGESPerspectiveView, Type <410> Form <1> <br>
 //!          in package IGESDraw <br>
+//! <br>
+//!          Supports a perspective view. <br>
+//!          Any geometric projection is defined by a view plane <br>
+//!          and the projectors that pass through the view plane. <br>
+//!          Projectors can be visualized as rays of light that <br>
+//!          form an image by passing through the viewed object <br>
+//!          and striking the view plane. <br>
+//!          The projectors are defined via a point called the <br>
+//!          Centre-of-Projection or the eye-point. <br>
+//!          A perspective view is formed by all projectors that <br>
+//!          emanate from the Centre-of-Projection and pass <br>
+//!          through the view plane. <br>
 class IGESDraw_PerspectiveView : public IGESData_ViewKindEntity {
 
 public:

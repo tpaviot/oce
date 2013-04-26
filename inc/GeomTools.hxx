@@ -55,7 +55,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Dumps the surface on the stream. <br>
+  //! A set of Curves from Geom2d. <br>//! Dumps the surface on the stream. <br>
   Standard_EXPORT   static  void Dump(const Handle(Geom_Surface)& S,Standard_OStream& OS) ;
   //! Writes the surface on the stream. <br>
   Standard_EXPORT   static  void Write(const Handle(Geom_Surface)& S,Standard_OStream& OS) ;

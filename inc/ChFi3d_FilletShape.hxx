@@ -6,7 +6,16 @@
 #ifndef _ChFi3d_FilletShape_HeaderFile
 #define _ChFi3d_FilletShape_HeaderFile
 
-//! Searches   singularities on fillet <br>
+
+//! Lists the types of fillet shapes. These include the following: <br>
+//! -   ChFi3d_Rational (default value), which is the <br>
+//!   standard NURBS representation of circles, <br>
+//! -   ChFi3d_QuasiAngular, which is a NURBS <br>
+//!   representation of circles where the parameters <br>
+//!   match those of the circle, <br>
+//! -   ChFi3d_Polynomial, which corresponds to a <br>
+//!   polynomial approximation of circles. This type <br>
+//!   facilitates the implementation of the construction algorithm. <br>
 enum ChFi3d_FilletShape {
 ChFi3d_Rational,
 ChFi3d_QuasiAngular,

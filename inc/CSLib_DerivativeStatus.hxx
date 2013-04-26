@@ -7,6 +7,28 @@
 #define _CSLib_DerivativeStatus_HeaderFile
 
 
+//! <br>
+//!  D1uIsNull : ||D1U|| <= Resolution <br>
+//! <br>
+//!  D1vIsNull : ||D1V|| <= Resolution <br>
+//! <br>
+//!  D1IsNull  : the first derivatives in the U and V parametric <br>
+//!              directions have null length  : <br>
+//!              ||D1U|| <= Resolution and ||D1V|| <= Resolution <br>
+//! <br>
+//!  D1uD1vRatioIsNull : the first derivative in the U direction has <br>
+//!                      null length by comparison with the derivative <br>
+//!                      in the V direction <br>
+//!                      ||D1U|| / ||D1V|| <= RealEpsilon <br>
+//! <br>
+//!  D1vD1uRatioIsNull : the first derivative in the V direction has <br>
+//!                      null length by comparison with the derivative <br>
+//!                      in the U direction <br>
+//!                      ||D1V|| / ||D1U|| <= RealEpsilon <br>
+//! <br>
+//!  D1uIsParallelD1v : the angle between the derivatives in the U and <br>
+//!                     V direction is null (tolerance criterion given <br>
+//!                     as input data) <br>
 enum CSLib_DerivativeStatus {
 CSLib_Done,
 CSLib_D1uIsNull,

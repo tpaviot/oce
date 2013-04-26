@@ -162,6 +162,18 @@ public:
 //!          of real number and it will not check for that : Unpredictable <br>
 //!          result can happen if this is not satisfied. It is the caller <br>
 //!          responsability to check for that property. <br>
+//! <br>
+//!  This  method makes uniform NumPoints segments S1,...SNumPoints out <br>
+//!          of the segment defined by the first parameter and the <br>
+//!          last  parameter ofthe  InParameter ; keeps   only one <br>
+//!          point of the InParameters set of parameter in each of <br>
+//!          the uniform segments taking care of the first and the <br>
+//!          last   parameters. For the ith segment the element of <br>
+//!          the InParameter is the one that is the first to exceed <br>
+//!          the midpoint of the segment and to fall before the <br>
+//!          midpoint of the next segment <br>
+//!            There  will be  at  the  end at   most NumPoints + 1  if <br>
+//!          NumPoints > 2 in the OutParameters Array <br>
   Standard_EXPORT   static  void RemovePointsFromArray(const Standard_Integer NumPoints,const TColStd_Array1OfReal& InParameters,Handle(TColStd_HArray1OfReal)& OutParameters) ;
   //! this  makes sure that there  is at least MinNumPoints <br>
 //!          in OutParameters taking into account the parameters in <br>

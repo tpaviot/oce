@@ -16,14 +16,11 @@
 #include <Handle_Graphic3d_TextureRoot.hxx>
 #endif
 
-#ifndef _Handle_Graphic3d_GraphicDriver_HeaderFile
-#include <Handle_Graphic3d_GraphicDriver.hxx>
+#ifndef _Handle_Graphic3d_TextureParams_HeaderFile
+#include <Handle_Graphic3d_TextureParams.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-#ifndef _Graphic3d_CInitTexture_HeaderFile
-#include <Graphic3d_CInitTexture.hxx>
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
 #endif
 #ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
@@ -31,34 +28,21 @@
 #ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #include <Graphic3d_TypeOfTexture.hxx>
 #endif
-#ifndef _Handle_AlienImage_AlienImage_HeaderFile
-#include <Handle_AlienImage_AlienImage.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
-#include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Graphic3d_GraphicDriver;
-class AlienImage_AlienImage;
-class TColStd_HArray1OfReal;
-class Graphic3d_StructureManager;
+#ifndef _Image_PixMap_Handle_HeaderFile
+#include <Image_PixMap_Handle.hxx>
+#endif
+class Graphic3d_TextureParams;
+class TCollection_AsciiString;
 class OSD_Path;
 
 
-//! This is the texture root class enable the dialog with the GraphicDriver <br>
-//! allows the loading of texture too supported formats: <br>
-//! X, SunRaster, Aida, Euclid, SGI rgb <br>
+//! This is the texture root class enable the dialog with the GraphicDriver allows the loading of texture. <br>
 class Graphic3d_TextureRoot : public MMgt_TShared {
 
 public:
@@ -69,28 +53,44 @@ public:
 {
   Destroy();
 }
-  //! Checks if a texture class is valide or not <br>
-//! returns true if the construction of the class is correct <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  //! Checks if a texture class is valid or not. <br>
+//! @return true if the construction of the class is correct <br>
+  Standard_EXPORT   virtual  Standard_Boolean IsDone() const;
   
 //! Returns the full path of the defined texture. <br>
+//! It could be empty path if GetImage() is overridden to load image not from file. <br>
   Standard_EXPORT    const OSD_Path& Path() const;
-  
-//! Returns the texture type. <br>
+  //! @return the texture type. <br>
   Standard_EXPORT     Graphic3d_TypeOfTexture Type() const;
   
-//! Updates the current texture from a requested alien image. <br>
-  Standard_EXPORT     void LoadTexture(const Handle(AlienImage_AlienImage)& anImage) ;
+//! This ID will be used to manage resource in graphic driver. <br>
+//! . <br>
+//! Default implementation generates unique ID although inheritors may re-initialize it. <br>
+//! . <br>
+//! Multiple Graphic3d_TextureRoot instancies with same ID <br>
+//! will be treated as single texture with different parameters <br>
+//! to optimize memory usage though this will be more natural <br>
+//! to use same instance of Graphic3d_TextureRoot when possible. <br>
+//! . <br>
+//! Notice that inheritor may set this ID to empty string. <br>
+//! In this case independent graphical resource will be created <br>
+//! for each instance of Graphic3d_AspectFillArea3d where texture will be used. <br>
+//! . <br>
+//! @return texture identifier. <br>
+  Standard_EXPORT     TCollection_AsciiString GetId() const;
   
-//! returns the Texture ID which references the <br>
-//! texture to use for drawing. Used by the <br>
-//! graphic driver. <br>
-  Standard_EXPORT     Standard_Integer TextureId() const;
+//! This method will be called by graphic driver each time when texture resource should be created. <br>
+//! Default implementation will dynamically load image from specified path within this method <br>
+//! (and no copy will be preserved in this class instance). <br>
+//! Inheritors may dynamically generate the image or return cached instance. <br>
+//! @return the image for texture. <br>
+  Standard_EXPORT   virtual  Image_PixMap_Handle GetImage() const;
+  //! @return low-level texture parameters <br>
+  Standard_EXPORT    const Handle_Graphic3d_TextureParams& GetParams() const;
   
-//! Returns the created image texture. <br>
-  Standard_EXPORT     Handle_AlienImage_AlienImage Image() const;
-  
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal GetTexUpperBounds() const;
+//! The path to textures determined from CSF_MDTVTexturesDirectory or CASROOT environment variables. <br>
+//! @return the root folder with default textures. <br>
+  Standard_EXPORT   static  TCollection_AsciiString TexturesFolder() ;
 
 
 
@@ -101,24 +101,17 @@ protected:
   //! Creates a texture from a file <br>
 //!  Warning: Note that if <FileName> is NULL the texture must be realized <br>
 //! using LoadTexture(image) method. <br>
-  Standard_EXPORT   Graphic3d_TextureRoot(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString Path,const Standard_CString FileName,const Graphic3d_TypeOfTexture Type);
-  
-  Standard_EXPORT     void Update() const;
+  Standard_EXPORT   Graphic3d_TextureRoot(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
 
-Graphic3d_CInitTexture MyCInitTexture;
+Handle_Graphic3d_TextureParams myParams;
+TCollection_AsciiString myTexId;
+OSD_Path myPath;
 
 
 private: 
 
-  
-  Standard_EXPORT     Handle_AlienImage_AlienImage LoadTexture() const;
 
-Handle_Graphic3d_GraphicDriver MyGraphicDriver;
-Standard_Integer MyTexId;
-OSD_Path MyPath;
-Graphic3d_TypeOfTexture MyType;
-Handle_AlienImage_AlienImage MyImage;
-Handle_TColStd_HArray1OfReal MyTexUpperBounds;
+Graphic3d_TypeOfTexture myType;
 
 
 };

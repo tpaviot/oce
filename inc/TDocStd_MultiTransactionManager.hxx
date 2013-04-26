@@ -45,6 +45,19 @@ class TDocStd_SequenceOfDocument;
 
 //! Class for synchronization of transactions within multiple documents. <br>
 //!          Each transaction of this class involvess one transaction in each modified document. <br>
+//! <br>
+//!          The documents to be synchronized should be added explicitly to <br>
+//!          the manager; then its interface is uesd to ensure that all transactions <br>
+//!          (Open/Commit, Undo/Redo) are performed synchronously in all managed documents. <br>
+//! <br>
+//!          The current implementation does not support nested transactions <br>
+//!          on multitransaction manager level. It only sets the flag enabling <br>
+//!          or disabling nested transactions in all its documents, so that <br>
+//!          a nested transaction can be opened for each particular document <br>
+//!          with TDocStd_Document class interface. <br>
+//! <br>
+//!          NOTE: When you invoke CommitTransaction of multi transaction <br>
+//!          manager, all nested transaction of its documents will be closed (commited). <br>
 class TDocStd_MultiTransactionManager : public MMgt_TShared {
 
 public:

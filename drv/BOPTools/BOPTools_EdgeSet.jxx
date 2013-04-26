@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _BOPTools_EdgeSet_HeaderFile
+#include <BOPTools_EdgeSet.hxx>
+#endif

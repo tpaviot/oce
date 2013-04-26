@@ -1,9 +1,0 @@
-#ifndef _Graphic2d_GraphicObject_HeaderFile
-#include <Graphic2d_GraphicObject.hxx>
-#endif
-#ifndef _V2d_RectangularGraphicGrid_HeaderFile
-#include <V2d_RectangularGraphicGrid.hxx>
-#endif
-#ifndef _V2d_RectangularGrid_HeaderFile
-#include <V2d_RectangularGrid.hxx>
-#endif

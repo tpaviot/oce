@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfComposition_HeaderFile
 #define _Graphic3d_TypeOfComposition_HeaderFile
 
-//! Type of the texture projection plane for both S and T texture coordinate. <br>
+//! To manage the transformation matrices of structures. <br>
 enum Graphic3d_TypeOfComposition {
 Graphic3d_TOC_REPLACE,
 Graphic3d_TOC_POSTCONCATENATE

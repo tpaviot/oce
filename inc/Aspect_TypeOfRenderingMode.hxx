@@ -6,7 +6,7 @@
 #ifndef _Aspect_TypeOfRenderingMode_HeaderFile
 #define _Aspect_TypeOfRenderingMode_HeaderFile
 
-
+//! Definition of the rendering modes <br>
 enum Aspect_TypeOfRenderingMode {
 Aspect_TORM_IMMEDIAT,
 Aspect_TORM_RETAIN,

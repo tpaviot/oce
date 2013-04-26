@@ -16,6 +16,18 @@
 #include <Handle_V3d_Viewer.hxx>
 #endif
 
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
+#ifndef _Handle_Graphic3d_GraphicDriver_HeaderFile
+#include <Handle_Graphic3d_GraphicDriver.hxx>
+#endif
+#ifndef _TCollection_ExtendedString_HeaderFile
+#include <TCollection_ExtendedString.hxx>
+#endif
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
+#endif
 #ifndef _Handle_Visual3d_ViewManager_HeaderFile
 #include <Handle_Visual3d_ViewManager.hxx>
 #endif
@@ -88,17 +100,14 @@
 #ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
 #endif
-#ifndef _Viewer_Viewer_HeaderFile
-#include <Viewer_Viewer.hxx>
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
 #endif
 #ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
 #endif
 #ifndef _V3d_HeaderFile
 #include <V3d.hxx>
-#endif
-#ifndef _Handle_Aspect_GraphicDevice_HeaderFile
-#include <Handle_Aspect_GraphicDevice.hxx>
 #endif
 #ifndef _Standard_ExtString_HeaderFile
 #include <Standard_ExtString.hxx>
@@ -133,9 +142,10 @@
 #ifndef _Handle_Aspect_Grid_HeaderFile
 #include <Handle_Aspect_Grid.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
 #endif
+class Graphic3d_GraphicDriver;
 class Visual3d_ViewManager;
 class V3d_OrthographicView;
 class V3d_PerspectiveView;
@@ -145,16 +155,14 @@ class V3d_RectangularGrid;
 class V3d_CircularGrid;
 class Graphic3d_Group;
 class Graphic3d_AspectMarker3d;
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_View;
 class V3d_Plane;
-class Aspect_GraphicDevice;
 class Quantity_Color;
 class gp_Ax3;
 class Aspect_Grid;
 class Aspect_Background;
 class Aspect_GradientBackground;
-class Graphic3d_Vertex;
 class TColStd_SequenceOfInteger;
 
 
@@ -162,14 +170,17 @@ class TColStd_SequenceOfInteger;
 //!            The methods of this class allow editing and <br>
 //!            interrogation of the parameters linked to the viewer <br>
 //!            its friend classes (View,light,plane). <br>
-class V3d_Viewer : public Viewer_Viewer {
+class V3d_Viewer : public MMgt_TShared {
 
 public:
 
-  //! Create a Viewer on the given device with the given parameters  or <br>
-//!          with their default values. <br>//!        If the size of the view is <= 0 <br>
-//!      if ComputedMode is false, only the degenerate mode will be used. <br>
-  Standard_EXPORT   V3d_Viewer(const Handle(Aspect_GraphicDevice)& Device,const Standard_ExtString aName,const Standard_CString aDomain = "",const Quantity_Length ViewSize = 1000.0,const V3d_TypeOfOrientation ViewProj = V3d_XposYnegZpos,const Quantity_NameOfColor ViewBackground = Quantity_NOC_GRAY30,const V3d_TypeOfVisualization Visualization = V3d_ZBUFFER,const V3d_TypeOfShadingModel ShadingModel = V3d_GOURAUD,const V3d_TypeOfUpdate UpdateMode = V3d_WAIT,const Standard_Boolean ComputedMode = Standard_True,const Standard_Boolean DefaultComputedMode = Standard_True,const V3d_TypeOfSurfaceDetail SurfaceDetail = V3d_TEX_NONE);
+  //! Create a Viewer with the given graphic driver and the given parameters  or <br>
+//!          with their default values. <br>
+//!          Currently creating of more than 100 viewer instances <br>
+//!          is not supported and leads to an exception. <br>
+//!          This limitation might be addressed in some future OCCT releases. <br>//!        If the size of the view is <= 0 <br>
+//!  Warning: Client must creates a graphic driver <br>
+  Standard_EXPORT   V3d_Viewer(const Handle(Graphic3d_GraphicDriver)& theDriver,const Standard_ExtString theName,const Standard_CString theDomain = "",const Quantity_Length theViewSize = 1000.0,const V3d_TypeOfOrientation theViewProj = V3d_XposYnegZpos,const Quantity_NameOfColor theViewBackground = Quantity_NOC_GRAY30,const V3d_TypeOfVisualization theVisualization = V3d_ZBUFFER,const V3d_TypeOfShadingModel theShadingModel = V3d_GOURAUD,const V3d_TypeOfUpdate theUpdateMode = V3d_WAIT,const Standard_Boolean theComputedMode = Standard_True,const Standard_Boolean theDefaultComputedMode = Standard_True,const V3d_TypeOfSurfaceDetail theSurfaceDetail = V3d_TEX_NONE);
   //! creates a view in the viewer according to its <br>
 //!          default parameters. <br>
   Standard_EXPORT     Handle_V3d_View CreateView() ;
@@ -299,6 +310,7 @@ public:
   Standard_EXPORT     V3d_TypeOfUpdate UpdateMode() const;
   //! Returns True if One View more can be <br>
 //!          activated in this Viewer. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IfMoreViews() const;
   //! initializes an iteration on the active views. <br>
   Standard_EXPORT     void InitActiveViews() ;
@@ -443,6 +455,12 @@ public:
 //! from lowest layer to highest ( foreground ). The first layer ID <br>
 //! in sequence is the default layer that can't be removed. <br>
   Standard_EXPORT     void GetAllZLayers(TColStd_SequenceOfInteger& theLayerSeq) const;
+  
+  Standard_EXPORT    const Handle_Graphic3d_GraphicDriver& Driver() const;
+  
+  Standard_EXPORT     Standard_ExtString NextName() const;
+  
+  Standard_EXPORT     Standard_CString Domain() const;
 
 
 friend class V3d_View;
@@ -456,6 +474,8 @@ friend   //! test. <br>
 
 protected:
 
+  
+  Standard_EXPORT     void IncrCount() ;
 
 
 
@@ -475,6 +495,10 @@ private:
 //! Display grid echo at requested point in the view. <br>
   Standard_EXPORT     void ShowGridEcho(const Handle(V3d_View)& aView,const Graphic3d_Vertex& aPoint) ;
 
+Standard_Integer myNextCount;
+Handle_Graphic3d_GraphicDriver myDriver;
+TCollection_ExtendedString myName;
+TCollection_AsciiString myDomain;
 Handle_Visual3d_ViewManager MyViewer;
 V3d_ListOfTransient MyDefinedViews;
 V3d_ListOfTransient MyActiveViews;

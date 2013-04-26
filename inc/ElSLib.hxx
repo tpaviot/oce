@@ -261,25 +261,27 @@ public:
 //!  (Cos(V) * XDirection - Sin(V) * YDirection) + <br>
 //!  MinorRadius * Sin(U) * ZDirection <br>
   Standard_EXPORT   static  void TorusParameters(const gp_Ax3& Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const gp_Pnt& P,Standard_Real& U,Standard_Real& V) ;
-  
+  //! compute the U Isoparametric gp_Lin of the plane. <br>
   Standard_EXPORT   static  gp_Lin PlaneUIso(const gp_Ax3& Pos,const Standard_Real U) ;
-  
+  //! compute the U Isoparametric gp_Lin of the cylinder. <br>
   Standard_EXPORT   static  gp_Lin CylinderUIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real U) ;
-  
+  //! compute the U Isoparametric gp_Lin of the cone. <br>
   Standard_EXPORT   static  gp_Lin ConeUIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real SAngle,const Standard_Real U) ;
-  
+  //! compute the U Isoparametric gp_Circ of the sphere, <br>
+//!  (the meridian is not trimmed). <br>
   Standard_EXPORT   static  gp_Circ SphereUIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real U) ;
-  
+  //! compute the U Isoparametric gp_Circ of the torus. <br>
   Standard_EXPORT   static  gp_Circ TorusUIso(const gp_Ax3& Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Real U) ;
-  
+  //! compute the V Isoparametric gp_Lin of the plane. <br>
   Standard_EXPORT   static  gp_Lin PlaneVIso(const gp_Ax3& Pos,const Standard_Real V) ;
-  
+  //! compute the V Isoparametric gp_Circ of the cylinder. <br>
   Standard_EXPORT   static  gp_Circ CylinderVIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real V) ;
-  
+  //! compute the V Isoparametric gp_Circ of the cone. <br>
   Standard_EXPORT   static  gp_Circ ConeVIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real SAngle,const Standard_Real V) ;
-  
+  //! compute the V Isoparametric gp_Circ of the sphere, <br>
+//!  (the meridian is not trimmed). <br>
   Standard_EXPORT   static  gp_Circ SphereVIso(const gp_Ax3& Pos,const Standard_Real Radius,const Standard_Real V) ;
-  
+  //! compute the V Isoparametric gp_Circ of the torus. <br>
   Standard_EXPORT   static  gp_Circ TorusVIso(const gp_Ax3& Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Real V) ;
 
 

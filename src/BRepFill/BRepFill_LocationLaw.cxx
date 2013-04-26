@@ -469,7 +469,6 @@ void BRepFill_LocationLaw::CurvilinearBounds(const Standard_Integer Index,
   Standard_Real First, Last, EpsNul = 1.e-12;
   Standard_Real TolEps = SpatialTolerance;
   Standard_Boolean Ok_D1 = Standard_False;
-
   TopoDS_Vertex V;
   TopoDS_Edge E;
   TColgp_Array1OfPnt2d Bid1 (1,1);

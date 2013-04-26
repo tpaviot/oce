@@ -51,10 +51,6 @@
 #endif
 #define Mtcas TCollection_AsciiString
 
-#ifdef DEB
-Standard_IMPORT Standard_Boolean TopOpeBRepBuild_GettraceSPS();
-#endif
-
 //=======================================================================
 //function : TopOpeBRepBuild_ShapeListOfShape
 //purpose  : 

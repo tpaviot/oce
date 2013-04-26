@@ -6,13 +6,7 @@
 #ifndef _OSD_FromWhere_HeaderFile
 #define _OSD_FromWhere_HeaderFile
 
-//! Thisd is a set of possible system types. <br>
-//!          'Default' means SysType of machine operating this process. <br>
-//!          This can be used with the Path class. <br>
-//!          All UNIX-like are grouped under "UnixBSD" or "UnixSystemV". <br>
-//!          Such systems are Solaris, NexTOS ... <br>
-//!          A category of systems accept MSDOS-like path such as <br>
-//!          WindowsNT and OS2. <br>
+//! Used by OSD_File in the method Seek. <br>
 enum OSD_FromWhere {
 OSD_FromBeginning,
 OSD_FromHere,

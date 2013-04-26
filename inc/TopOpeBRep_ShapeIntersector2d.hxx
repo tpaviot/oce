@@ -57,6 +57,10 @@ class TopOpeBRep_EdgesIntersector;
 //! <br>
 //!            - ShapeExplorer from TopOpeBRepTool. <br>
 //!            - ShapeScanner from TopOpeBRep which implements bounding boxes. <br>
+//! <br>
+//!      Let S1,S2 the shapes sent to InitIntersection(S1,S2) method : <br>
+//!          - S1 is always SCANNED by a ShapeScanner from TopOpeBRep. <br>
+//!          - S2 is always EXPLORED by a ShapeExplorer from TopOpeBRepTool. <br>
 class TopOpeBRep_ShapeIntersector2d  {
 public:
 

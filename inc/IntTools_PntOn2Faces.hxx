@@ -33,27 +33,35 @@ public:
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_PntOn2Faces();
   
 //! Initializes me by two points aP1 and aP2 <br>
+//! <br>
   Standard_EXPORT   IntTools_PntOn2Faces(const IntTools_PntOnFace& aP1,const IntTools_PntOnFace& aP2);
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetP1(const IntTools_PntOnFace& aP1) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetP2(const IntTools_PntOnFace& aP2) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetValid(const Standard_Boolean bF) ;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const IntTools_PntOnFace& P1() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const IntTools_PntOnFace& P2() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsValid() const;
 
 

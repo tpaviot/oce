@@ -93,7 +93,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Projection on a torus. <br>
   Standard_EXPORT   static  gp_Pnt2d Project(const gp_Pln& Pl,const gp_Pnt& P) ;
   
   Standard_EXPORT   static  gp_Lin2d Project(const gp_Pln& Pl,const gp_Lin& L) ;

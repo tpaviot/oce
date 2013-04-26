@@ -1,0 +1,3 @@
+#ifndef _BOPDS_PassKey_HeaderFile
+#include <BOPDS_PassKey.hxx>
+#endif

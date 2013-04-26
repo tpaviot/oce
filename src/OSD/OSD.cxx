@@ -28,17 +28,6 @@
 # define finite isfinite
 #endif
 
-static char DecimalPoint = 0 ;
-
-static void GetDecimalPoint() {
-  float F1 = (float ) 1.1 ;
-  char str[5] ;
-
-  sprintf(str,"%.1f",F1) ;
-                             //  printf("%s\n",str) ;
-  DecimalPoint = str[1] ;
-}
-
 // Convert Real to CString in format e with 16 significant digits.
 // The decimal point character is always a period.
 // The conversion is independant from current locale database
@@ -48,19 +37,8 @@ Standard_Boolean OSD::RealToCString(const Standard_Real aReal,
 {
   char *p, *q ;
   
-  // Get the local decimal point character 
-
-  if (!DecimalPoint)
-    GetDecimalPoint() ;
-
-  // Substitute it
-
-//  if (sprintf(aString,"%.15le",aReal)  <= 0)
-  if (sprintf(aString,"%.17e",aReal)  <= 0) //BUC60808
+  if (Sprintf(aString,"%.17e",aReal)  <= 0) //BUC60808
     return Standard_False ;
-
-  if ((p = strchr(aString,DecimalPoint)) != 0)
-    *p = '.' ;
 
   // Suppress "e+00" and unsignificant 0's 
 
@@ -83,25 +61,8 @@ Standard_Boolean OSD::RealToCString(const Standard_Real aReal,
 Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 				    Standard_Real& aReal)
 {
-  const char *p;
   char *endptr ;
- 
-
-  // Get the local decimal point character 
-
-  if (!DecimalPoint)
-    GetDecimalPoint() ;
-
-  const char *str = aString;
-  char buff[1024];  
-  //if((p = strchr(aString,'.')))
-  if(DecimalPoint != '.' && ((p = strchr(aString,'.')) != NULL) && ((p-aString) < 1000) )
-  {
-    strncpy(buff, aString, 1000);
-    buff[p-aString] = DecimalPoint ;
-    str = buff;
-  }
-  aReal = strtod(str,&endptr) ;
+  aReal = Strtod(aString, &endptr);
   if (*endptr)
     return Standard_False ;
   return Standard_True;
@@ -114,9 +75,9 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 
 #ifdef WNT
 # include <windows.h>
-# ifdef _MSVC_VER
-#  include <Mapiwin.h>
-# endif
+#if !defined(__CYGWIN32__) && !defined(__MINGW32__)
+//# include <Mapiwin.h>
+#endif
 # define _DEXPLEN	             11
 # define _IEEE		              1
 # define DMAXEXP	             ((1 << _DEXPLEN - 1) - 1 + _IEEE)

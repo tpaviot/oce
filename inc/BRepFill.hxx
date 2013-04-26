@@ -99,9 +99,10 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Computes a ruled surface between two edges. <br>
   Standard_EXPORT   static  TopoDS_Face Face(const TopoDS_Edge& Edge1,const TopoDS_Edge& Edge2) ;
-  
+  //! Computes a ruled surface between two wires. <br>
+//!          The wires must have the same number of edges. <br>
   Standard_EXPORT   static  TopoDS_Shell Shell(const TopoDS_Wire& Wire1,const TopoDS_Wire& Wire2) ;
   //! Computes  <AxeProf>  as Follow. <Location> is <br>
 //!          the Position of the nearest vertex V  of <Profile> <br>
@@ -112,7 +113,7 @@ public:
   Standard_EXPORT   static  void Axe(const TopoDS_Shape& Spine,const TopoDS_Wire& Profile,gp_Ax3& AxeProf,Standard_Boolean& ProfOnSpine,const Standard_Real Tol) ;
   //!  Compute ACR on a  wire <br>
   Standard_EXPORT   static  void ComputeACR(const TopoDS_Wire& wire,TColStd_Array1OfReal& ACR) ;
-  
+  //!  Insert ACR on a  wire <br>
   Standard_EXPORT   static  TopoDS_Wire InsertACR(const TopoDS_Wire& wire,const TColStd_Array1OfReal& ACRcuts,const Standard_Real prec) ;
 
 

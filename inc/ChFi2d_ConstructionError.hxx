@@ -10,7 +10,10 @@
 //!          fillet  construction on planar wire <br>//! the face is not planar <br>//! the face is null <br>//! the two  faces used for the initialisation are <br>
 //!          uncompatible. <br>//! the  parameters  as  distances   or  angle for <br>
 //!          chamfer are less or equal to zero. <br>//! the initialization has been succesfull. <br>//! the algorithm could not find a solution. <br>//! the vertex given  to locate the fillet  or the <br>
-//!          chamfer  is not connected to 2 edges. <br>//! the two edges connected to the vertex are tangent. <br>//! the first edge is degenerated. <br>//! the last edge is degenerated. <br>//! the two edges are degenerated. <br>
+//!          chamfer  is not connected to 2 edges. <br>//! the two edges connected to the vertex are tangent. <br>//! the first edge is degenerated. <br>//! the last edge is degenerated. <br>//! the two edges are degenerated. <br>//! One or the two  edges connected to the  vertex <br>
+//!          is a fillet or a chamfer <br>
+//!          One or the two  edges connected to the  vertex <br>
+//!          is not a line or a circle <br>
 enum ChFi2d_ConstructionError {
 ChFi2d_NotPlanar,
 ChFi2d_NoFace,

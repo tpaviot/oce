@@ -6,7 +6,7 @@
 #ifndef _OSD_LoadMode_HeaderFile
 #define _OSD_LoadMode_HeaderFile
 
-//! Specifies the file open mode. <br>
+//! This enumeration is used to load shareable libraries. <br>
 enum OSD_LoadMode {
 OSD_RTLD_LAZY,
 OSD_RTLD_NOW

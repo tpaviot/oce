@@ -26,6 +26,9 @@
 struct Image_ColorRGB
 {
 
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
+
   //! Returns the number of components.
   static Standard_Integer Length()
   {
@@ -54,7 +57,6 @@ public: // access methods
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[3];
 
 };
@@ -63,6 +65,9 @@ public:
 struct Image_ColorRGB32
 {
 
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
+
   //! Returns the number of components.
   static Standard_Integer Length()
   {
@@ -95,7 +100,6 @@ struct Image_ColorRGB32
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[4];
 
 };
@@ -104,6 +108,9 @@ public:
 struct Image_ColorRGBA
 {
 
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
+
   //! Returns the number of components.
   static Standard_Integer Length()
   {
@@ -136,7 +143,6 @@ struct Image_ColorRGBA
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[4];
 
 };
@@ -144,6 +150,9 @@ public:
 //! POD structure for packed BGR color value (3 bytes)
 struct Image_ColorBGR
 {
+
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
 
   //! Returns the number of components.
   static Standard_Integer Length()
@@ -171,7 +180,6 @@ struct Image_ColorBGR
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[3];
 
 };
@@ -179,6 +187,9 @@ public:
 //! POD structure for packed BGR color value (4 bytes with extra byte for alignment)
 struct Image_ColorBGR32
 {
+
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
 
   //! Returns the number of components.
   static Standard_Integer Length()
@@ -212,7 +223,6 @@ struct Image_ColorBGR32
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[4];
 
 };
@@ -220,6 +230,9 @@ public:
 //! POD structure for packed BGRA color value (4 bytes)
 struct Image_ColorBGRA
 {
+
+  //! Component type.
+  typedef Standard_Byte ComponentType_t;
 
   //! Returns the number of components.
   static Standard_Integer Length()
@@ -253,7 +266,6 @@ struct Image_ColorBGRA
 
 public:
 
-  typedef Standard_Byte ComponentType_t;
   Standard_Byte v[4];
 
 };
@@ -261,6 +273,10 @@ public:
 //! POD structure for packed float RGB color value (3 floats)
 struct Image_ColorRGBF
 {
+
+  //! Component type.
+  typedef Standard_ShortReal ComponentType_t;
+
   //! Returns the number of components.
   static Standard_Integer Length()
   {
@@ -287,7 +303,6 @@ struct Image_ColorRGBF
 
 public:
 
-  typedef Standard_ShortReal ComponentType_t;
   Standard_ShortReal v[3];
 
 };
@@ -296,6 +311,9 @@ public:
 struct Image_ColorBGRF
 {
 
+  //! Component type.
+  typedef Standard_ShortReal ComponentType_t;
+
   //! Returns the number of components.
   static Standard_Integer Length()
   {
@@ -322,7 +340,6 @@ struct Image_ColorBGRF
 
 public:
 
-  typedef Standard_ShortReal ComponentType_t;
   Standard_ShortReal v[3];
 
 };
@@ -330,6 +347,9 @@ public:
 //! POD structure for packed RGBA color value (4 floats)
 struct Image_ColorRGBAF
 {
+
+  //! Component type.
+  typedef Standard_ShortReal ComponentType_t;
 
   //! Returns the number of components.
   static Standard_Integer Length()
@@ -363,7 +383,6 @@ struct Image_ColorRGBAF
 
 public:
 
-  typedef Standard_ShortReal ComponentType_t;
   Standard_ShortReal v[4];
 
 };
@@ -371,6 +390,9 @@ public:
 //! POD structure for packed float BGRA color value (4 floats)
 struct Image_ColorBGRAF
 {
+
+  //! Component type.
+  typedef Standard_ShortReal ComponentType_t;
 
   //! Returns the number of components.
   static Standard_Integer Length()
@@ -404,7 +426,6 @@ struct Image_ColorBGRAF
 
 public:
 
-  typedef Standard_ShortReal ComponentType_t;
   Standard_ShortReal v[4];
 
 };
@@ -413,9 +434,9 @@ public:
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSumm3 (const ColorType_t& theA, const ColorType_t& theB)
 {
-  ColorType_t aRes = { { (typename ColorType_t::ComponentType_t) (theA.v[0] + theB.v[0]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[1] + theB.v[1]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[2] + theB.v[2])} };
+  ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
+                       typename ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
+                       typename ColorType_t::ComponentType_t (theA.v[2] + theB.v[2])}};
   return aRes;
 }
 
@@ -442,10 +463,10 @@ inline Image_ColorBGRF operator+ (const Image_ColorBGRF& theA, const Image_Color
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSumm4 (const ColorType_t& theA, const ColorType_t& theB)
 {
-  ColorType_t aRes = { { (typename ColorType_t::ComponentType_t) (theA.v[0] + theB.v[0]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[1] + theB.v[1]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[2] + theB.v[2]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[3] + theB.v[3])} };
+  ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
+                       typename ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
+                       typename ColorType_t::ComponentType_t (theA.v[2] + theB.v[2]),
+                       typename ColorType_t::ComponentType_t (theA.v[3] + theB.v[3])}};
   return aRes;
 }
 
@@ -483,9 +504,9 @@ inline Image_ColorBGRAF operator+ (const Image_ColorBGRAF& theA, const Image_Col
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSub3 (const ColorType_t& theA, const ColorType_t& theB)
 {
-  ColorType_t aRes = { { (typename ColorType_t::ComponentType_t) (theA.v[0] - theB.v[0]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[1] - theB.v[1]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[2] - theB.v[2]) } };
+  ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
+                       typename ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
+                       typename ColorType_t::ComponentType_t (theA.v[2] - theB.v[2])}};
   return aRes;
 }
 
@@ -512,10 +533,10 @@ inline Image_ColorBGRF operator- (const Image_ColorBGRF& theA, const Image_Color
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSub4 (const ColorType_t& theA, const ColorType_t& theB)
 {
-  ColorType_t aRes = { { (typename ColorType_t::ComponentType_t) (theA.v[0] - theB.v[0]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[1] - theB.v[1]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[2] - theB.v[2]),
-                         (typename ColorType_t::ComponentType_t) (theA.v[3] - theB.v[3]) } };
+  ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
+                       typename ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
+                       typename ColorType_t::ComponentType_t (theA.v[2] - theB.v[2]),
+                       typename ColorType_t::ComponentType_t (theA.v[3] - theB.v[3])}};
   return aRes;
 }
 

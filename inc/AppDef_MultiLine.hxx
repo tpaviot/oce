@@ -43,6 +43,24 @@ class AppDef_MultiPointConstraint;
 //!          MultiPointConstraints. <br>
 //!          The approximation of the MultiLine will be done in the order <br>
 //!          of the given n MultiPointConstraints. <br>
+//! <br>
+//! <br>
+//!      Example of a MultiLine composed of MultiPointConstraints: <br>
+//! <br>
+//!      P1______P2_____P3______P4________........_____PNbMult <br>
+//! <br>
+//!      Q1______Q2_____Q3______Q4________........_____QNbMult <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      R1______R2_____R3______R4________........_____RNbMult <br>
+//! <br>
+//! <br>
+//!      Pi, Qi, ..., Ri are points of dimension 2 or 3. <br>
+//! <br>
+//!      (P1, Q1, ...R1), ...(Pn, Qn, ...Rn) n= 1,...NbMult are <br>
+//!      MultiPointConstraints. <br>
+//!      There are NbPoints points in each MultiPointConstraint. <br>
 class AppDef_MultiLine  {
 public:
 

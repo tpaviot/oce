@@ -34,6 +34,9 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+//! This  class  compute <br>
+//! s  and gives  tools to check  the  local <br>
+//! continuity  between two points situated  on 2  curves) <br>
 //! This fonction gives informations  about a  variable CurveContinuity <br>
   Standard_EXPORT   static  void Dump(const LocalAnalysis_SurfaceContinuity& surfconti,Standard_OStream& o) ;
   

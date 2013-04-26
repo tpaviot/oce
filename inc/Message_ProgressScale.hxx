@@ -32,6 +32,16 @@ class TCollection_HAsciiString;
 
 
 //! Internal data structure for scale in ProgressIndicator <br>
+//! <br>
+//!          Basically it defines three things: <br>
+//!          - name that can be used for generating user messages <br>
+//!          - limits and characteristics of the current scale, <br>
+//!            along with derived coefficients to map it into basic scale [0-1] <br>
+//!          - methods for conversion of values from current scale <br>
+//!            to basic one and back <br>
+//! <br>
+//!          NOTE: There is no special protection against bad input data <br>
+//!          like min > max etc. except cases when it can cause exception <br>
 class Message_ProgressScale  {
 public:
 

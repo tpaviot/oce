@@ -22,19 +22,7 @@
 #ifndef _OpenGl_GlCore12_H__
 #define _OpenGl_GlCore12_H__
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #include <OpenGl_GlCore11.hxx>
-
-#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-  #undef GL_VERSION_1_2
-  #undef GL_VERSION_1_3
-  #undef GL_VERSION_1_4
-  #undef GL_VERSION_1_5
-  #undef GL_VERSION_2_0
-#endif
 
 #include <OpenGl_glext.h>
 

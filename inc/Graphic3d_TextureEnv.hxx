@@ -22,17 +22,11 @@
 #ifndef _Graphic3d_TextureRoot_HeaderFile
 #include <Graphic3d_TextureRoot.hxx>
 #endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
 class Standard_OutOfRange;
-class Graphic3d_StructureManager;
+class TCollection_AsciiString;
 
 
 //! This class provides environment texture usable only in Visual3d_ContextView <br>
@@ -40,10 +34,10 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 
 public:
 
-  //! Creates an environment texture from a file <br>
-  Standard_EXPORT   Graphic3d_TextureEnv(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString aFileName);
+  //! Creates an environment texture from a file. <br>
+  Standard_EXPORT   Graphic3d_TextureEnv(const TCollection_AsciiString& theFileName);
   //! Creates an environment texture from a predefined texture name set. <br>
-  Standard_EXPORT   Graphic3d_TextureEnv(const Handle(Graphic3d_StructureManager)& SM,const Graphic3d_NameOfTextureEnv aName);
+  Standard_EXPORT   Graphic3d_TextureEnv(const Graphic3d_NameOfTextureEnv theName);
   
 //! Returns the name of the predefined textures or NOT_ENV_UNKNOWN <br>
 //! when the name is given as a filename. <br>
@@ -53,7 +47,7 @@ public:
   Standard_EXPORT   static  Standard_Integer NumberOfTextures() ;
   
 //! Returns the name of the predefined texture of rank <aRank> <br>
-  Standard_EXPORT   static  Standard_CString TextureName(const Standard_Integer aRank) ;
+  Standard_EXPORT   static  TCollection_AsciiString TextureName(const Standard_Integer theRank) ;
 
 
 

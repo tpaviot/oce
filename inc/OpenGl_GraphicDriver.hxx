@@ -17,7 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #ifndef _OpenGl_GraphicDriver_HeaderFile
 #define _OpenGl_GraphicDriver_HeaderFile
 
@@ -26,6 +25,7 @@
 #include <Handle_OpenGl_View.hxx>
 #include <Handle_OpenGl_Workspace.hxx>
 #include <OpenGl_Context.hxx>
+#include <OpenGl_PrinterContext.hxx>
 
 #include <Standard_CString.hxx>
 
@@ -34,8 +34,11 @@
 #include <Quantity_PlaneAngle.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Handle_AlienImage_AlienImage.hxx>
+#include <Handle_OpenGl_View.hxx>
+#include <Handle_OpenGl_Workspace.hxx>
 
 #include <Aspect_Display.hxx>
+#include <Aspect_DisplayConnection.hxx>
 #include <Aspect_GradientFillMethod.hxx>
 #include <Aspect_FillMethod.hxx>
 #include <Aspect_CLayer2d.hxx>
@@ -49,7 +52,6 @@
 #include <Graphic3d_CGroup.hxx>
 #include <Graphic3d_TypeOfPrimitive.hxx>
 #include <Graphic3d_CPick.hxx>
-#include <Graphic3d_TypeOfPolygon.hxx>
 #include <Graphic3d_TextPath.hxx>
 #include <Graphic3d_HorizontalTextAlignment.hxx>
 #include <Graphic3d_VerticalTextAlignment.hxx>
@@ -57,19 +59,11 @@
 #include <Graphic3d_CUserDraw.hxx>
 #include <Graphic3d_CGraduatedTrihedron.hxx>
 #include <Graphic3d_TypeOfComposition.hxx>
-#include <Graphic3d_TypeOfTexture.hxx>
-#include <Graphic3d_CInitTexture.hxx>
 #include <Graphic3d_ExportFormat.hxx>
 #include <Graphic3d_SortType.hxx>
 #include <Graphic3d_PtrFrameBuffer.hxx>
 #include <Graphic3d_Array1OfVertex.hxx>
-#include <Graphic3d_Array1OfVertexN.hxx>
-#include <Graphic3d_Array1OfVertexNT.hxx>
-#include <Graphic3d_Array1OfVertexC.hxx>
-#include <Graphic3d_Array1OfVertexNC.hxx>
 #include <Graphic3d_Array2OfVertex.hxx>
-#include <Graphic3d_Array2OfVertexN.hxx>
-#include <Graphic3d_Array2OfVertexNT.hxx>
 #include <Graphic3d_BufferType.hxx>
 #include <NCollection_DataMap.hxx>
 
@@ -77,7 +71,6 @@ class TColStd_Array1OfInteger;
 class TColStd_Array1OfReal;
 class TColStd_Array2OfReal;
 class TColStd_HArray1OfByte;
-class Graphic3d_VertexNC;
 class Graphic3d_Vector;
 class Quantity_Color;
 class Graphic3d_Vertex;
@@ -86,26 +79,24 @@ class TCollection_ExtendedString;
 class AlienImage_AlienImage;
 class Image_PixMap;
 class TColStd_HArray1OfReal;
-class Handle(OpenGl_View);
 class Handle(OpenGl_Workspace);
 class OpenGl_Element;
 class OpenGl_Structure;
+class OpenGl_Text;
 
 //! This class defines an OpenGl graphic driver <br>
 class OpenGl_GraphicDriver : public Graphic3d_GraphicDriver
 {
- public:
+public:
 
   //! Constructor
   Standard_EXPORT OpenGl_GraphicDriver (const Standard_CString theShrName);
 
-  Standard_EXPORT Standard_Boolean Begin (const Standard_CString ADisplay);
-  Standard_EXPORT Standard_Boolean Begin (const Aspect_Display ADisplay);
+  Standard_EXPORT Standard_Boolean Begin (const Handle(Aspect_DisplayConnection)& theDisplayConnection);
   Standard_EXPORT void End ();
   Standard_EXPORT Standard_Integer InquireLightLimit ();
   Standard_EXPORT void InquireMat (const Graphic3d_CView& ACView, TColStd_Array2OfReal& AMatO, TColStd_Array2OfReal& AMatM);
   Standard_EXPORT Standard_Integer InquireViewLimit ();
-  Standard_EXPORT Standard_Boolean InquireTextureAvailable ();
   Standard_EXPORT void Blink (const Graphic3d_CStructure& ACStructure,const Standard_Boolean Create);
   Standard_EXPORT void BoundaryBox (const Graphic3d_CStructure& ACStructure, const Standard_Boolean Create);
   Standard_EXPORT void HighlightColor (const Graphic3d_CStructure& ACStructure, const Standard_ShortReal R, const Standard_ShortReal G, const Standard_ShortReal B, const Standard_Boolean Create);
@@ -114,7 +105,6 @@ class OpenGl_GraphicDriver : public Graphic3d_GraphicDriver
 public: // Methods for graphical groups
 
   Standard_EXPORT void ClearGroup (const Graphic3d_CGroup& ACGroup);
-  Standard_EXPORT void CloseGroup (const Graphic3d_CGroup& ACGroup);
   Standard_EXPORT void FaceContextGroup (const Graphic3d_CGroup& theCGroup,
                                          const Standard_Integer  theNoInsert);
   Standard_EXPORT void Group (Graphic3d_CGroup& theCGroup);
@@ -127,7 +117,6 @@ public: // Methods for graphical groups
                                            const Standard_Integer  theMarkWidth,
                                            const Standard_Integer  theMarkHeight,
                                            const Handle(TColStd_HArray1OfByte)& theTexture);
-  Standard_EXPORT void OpenGroup (const Graphic3d_CGroup& theCGroup);
   Standard_EXPORT void RemoveGroup (const Graphic3d_CGroup& theCGroup);
   Standard_EXPORT void TextContextGroup (const Graphic3d_CGroup& theCGroup,
                                          const Standard_Integer  theNoInsert);
@@ -170,16 +159,14 @@ public:
   Standard_EXPORT void SetPlane (const Graphic3d_CView& ACView);
   Standard_EXPORT void SetVisualisation (const Graphic3d_CView& ACView);
   Standard_EXPORT void TransformStructure (const Graphic3d_CStructure& ACStructure);
-  Standard_EXPORT void DegenerateStructure (const Graphic3d_CStructure& ACStructure);
   Standard_EXPORT void Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag);
   Standard_EXPORT void Update (const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer);
   Standard_EXPORT Standard_Boolean View (Graphic3d_CView& ACView);
   Standard_EXPORT void ViewMapping (const Graphic3d_CView& ACView, const Standard_Boolean AWait);
   Standard_EXPORT void ViewOrientation (const Graphic3d_CView& ACView,const Standard_Boolean AWait);
   Standard_EXPORT void Environment (const Graphic3d_CView& ACView);
-  Standard_EXPORT void Marker (const Graphic3d_CGroup& ACGroup, const Graphic3d_Vertex& APoint, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void MarkerSet (const Graphic3d_CGroup& ACGroup, const Graphic3d_Array1OfVertex& ListVertex, const Standard_Boolean EvalMinMax = Standard_True);
-  Standard_EXPORT void Polygon (const Graphic3d_CGroup& ACGroup, const Graphic3d_Array1OfVertex& ListVertex, const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX, const Standard_Boolean EvalMinMax = Standard_True);
+  Standard_EXPORT void Marker (const Graphic3d_CGroup& ACGroup, const Graphic3d_Vertex& APoint);
+  Standard_EXPORT void MarkerSet (const Graphic3d_CGroup& ACGroup, const Graphic3d_Array1OfVertex& ListVertex);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const Standard_CString AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
   Standard_EXPORT void Text (const Graphic3d_CGroup& ACGroup, const TCollection_ExtendedString& AText, const Graphic3d_Vertex& APoint, const Standard_Real AHeight, const Quantity_PlaneAngle AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
@@ -193,23 +180,14 @@ public:
   Standard_EXPORT void GraduatedTrihedronDisplay (const Graphic3d_CView& view, const Graphic3d_CGraduatedTrihedron& cubic);
   Standard_EXPORT void GraduatedTrihedronErase (const Graphic3d_CView& view);
   Standard_EXPORT void GraduatedTrihedronMinMaxValues (const Standard_ShortReal xmin, const Standard_ShortReal ymin, const Standard_ShortReal zmin, const Standard_ShortReal xmax, const Standard_ShortReal ymax, const Standard_ShortReal zmax);
-  Standard_EXPORT void BeginAnimation (const Graphic3d_CView& ACView);
-  Standard_EXPORT void EndAnimation (const Graphic3d_CView& ACView);
+  Standard_EXPORT Standard_Boolean SetImmediateModeDrawToFront (const Graphic3d_CView& theCView,
+                                                                const Standard_Boolean theDrawToFrontBuffer);
   Standard_EXPORT Standard_Boolean BeginAddMode (const Graphic3d_CView& ACView);
   Standard_EXPORT void EndAddMode ();
   Standard_EXPORT Standard_Boolean BeginImmediatMode(const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACUnderLayer, const Aspect_CLayer2d& ACOverLayer, const Standard_Boolean DoubleBuffer, const Standard_Boolean RetainMode);
-  Standard_EXPORT void BeginPolyline ();
   Standard_EXPORT void ClearImmediatMode (const Graphic3d_CView& ACView,const Standard_Boolean aFlush = Standard_True);
-  Standard_EXPORT void Draw (const Standard_ShortReal X, const Standard_ShortReal Y, const Standard_ShortReal Z);
   Standard_EXPORT void DrawStructure (const Graphic3d_CStructure& ACStructure);
   Standard_EXPORT void EndImmediatMode (const Standard_Integer Synchronize);
-  Standard_EXPORT void EndPolyline ();
-  Standard_EXPORT void Move (const Standard_ShortReal X, const Standard_ShortReal Y, const Standard_ShortReal Z);
-  Standard_EXPORT void SetLineColor (const Standard_ShortReal R, const Standard_ShortReal G, const Standard_ShortReal B);
-  Standard_EXPORT void SetLineType (const Standard_Integer Type);
-  Standard_EXPORT void SetLineWidth (const Standard_ShortReal Width);
-  Standard_EXPORT void SetMinMax (const Standard_ShortReal X1, const Standard_ShortReal Y1, const Standard_ShortReal Z1, const Standard_ShortReal X2, const Standard_ShortReal Y2, const Standard_ShortReal Z2);
-  Standard_EXPORT void Transform (const TColStd_Array2OfReal& AMatrix, const Graphic3d_TypeOfComposition AType);
   Standard_EXPORT void Layer (Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void RemoveLayer (const Aspect_CLayer2d& ACLayer);
   Standard_EXPORT void BeginLayer (const Aspect_CLayer2d& ACLayer);
@@ -273,16 +251,12 @@ public:
   //! Clear visualization data in graphical driver and stop <br>
   //! displaying the primitives array of the graphical group <theCGroup>. <br>
   //! This method is internal and should be used by Graphic3d_Group only. <br>
-  Standard_EXPORT void RemovePrimitiveArray(const Graphic3d_CGroup& theCGroup,const Graphic3d_PrimitiveArray& thePArray);
   Standard_EXPORT Standard_Integer InquirePlaneLimit();
-  Standard_EXPORT Standard_Integer CreateTexture(const Graphic3d_TypeOfTexture Type,const Handle(AlienImage_AlienImage)& Image,const Standard_CString FileName,const Handle(TColStd_HArray1OfReal)& TexUpperBounds) const;
-  Standard_EXPORT void DestroyTexture(const Standard_Integer TexId) const;
-  Standard_EXPORT void ModifyTexture(const Standard_Integer TexId,const Graphic3d_CInitTexture& AValue) const;
   Standard_EXPORT Standard_ShortReal DefaultTextHeight() const;
   Standard_EXPORT void FBOGetDimensions(const Graphic3d_CView& view,const Graphic3d_PtrFrameBuffer fboPtr,Standard_Integer& width,Standard_Integer& height,Standard_Integer& widthMax,Standard_Integer& heightMax);
   Standard_EXPORT void FBOChangeViewport(const Graphic3d_CView& view,Graphic3d_PtrFrameBuffer& fboPtr,const Standard_Integer width,const Standard_Integer height);
   Standard_EXPORT Standard_Boolean Export(const Standard_CString theFileName,const Graphic3d_ExportFormat theFormat,const Graphic3d_SortType theSortType,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_CView& theView,const Aspect_CLayer2d& theLayerUnder,const Aspect_CLayer2d& theLayerOver,const Standard_Real thePrecision = 0.005,const Standard_Address theProgressBarFunc = NULL,const Standard_Address theProgressObject = NULL);
-  
+
   //! Add a new top-level z layer with ID <theLayerId> for <br>
   //! the view. Z layers allow drawing structures in higher layers <br>
   //! in foreground of structures in lower layers. To add a structure <br>
@@ -351,9 +325,6 @@ private:
   //! Could return NULL-handle if no window created by this driver.
   Standard_EXPORT const Handle(OpenGl_Context)& GetSharedContext() const;
 
-  //! Deprecated.
-  void InvalidateAllWorkspaces();
-
 public:
 
   DEFINE_STANDARD_RTTI(OpenGl_GraphicDriver)
@@ -363,7 +334,10 @@ private:
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_View)>      myMapOfView;
   NCollection_DataMap<Standard_Integer, Handle(OpenGl_Workspace)> myMapOfWS;
   NCollection_DataMap<Standard_Integer, OpenGl_Structure*>        myMapOfStructure;
+  Handle(OpenGl_Workspace)                                        myImmediateWS;
+  mutable Handle(OpenGl_PrinterContext)                           myPrintContext;
   OpenGl_UserDrawCallback_t                                       myUserDrawCallback;
+  OpenGl_Text*                                                    myTempText;         //!< variable for compatibility (drawing text in layers)
 
 };
 

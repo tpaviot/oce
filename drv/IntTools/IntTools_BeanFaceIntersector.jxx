@@ -1,8 +1,8 @@
 #ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
 #endif
-#ifndef _IntTools_Context_HeaderFile
-#include <IntTools_Context.hxx>
+#ifndef _BOPInt_Context_HeaderFile
+#include <BOPInt_Context.hxx>
 #endif
 #ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>

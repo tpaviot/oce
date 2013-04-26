@@ -6,7 +6,12 @@
 #ifndef _Visual3d_TypeOfAnswer_HeaderFile
 #define _Visual3d_TypeOfAnswer_HeaderFile
 
-
+//! The answer of the method AcceptDisplay <br>
+//!      AcceptDisplay  means is it possible to display the <br>
+//!             specified structure in the specified view ? <br>
+//!      TOA_YES yes <br>
+//!      TOA_NO  no <br>
+//!      TOA_COMPUTE yes but we have to compute the representation <br>
 enum Visual3d_TypeOfAnswer {
 Visual3d_TOA_YES,
 Visual3d_TOA_NO,

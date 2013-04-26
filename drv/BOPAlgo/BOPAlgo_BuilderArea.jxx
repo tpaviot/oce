@@ -1,0 +1,6 @@
+#ifndef _BOPInt_Context_HeaderFile
+#include <BOPInt_Context.hxx>
+#endif
+#ifndef _BOPAlgo_BuilderArea_HeaderFile
+#include <BOPAlgo_BuilderArea.hxx>
+#endif

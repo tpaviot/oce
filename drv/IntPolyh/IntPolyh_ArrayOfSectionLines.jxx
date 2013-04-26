@@ -1,6 +1,0 @@
-#ifndef _IntPolyh_SectionLine_HeaderFile
-#include <IntPolyh_SectionLine.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
-#include <IntPolyh_ArrayOfSectionLines.hxx>
-#endif

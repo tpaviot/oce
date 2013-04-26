@@ -88,8 +88,7 @@ Matches(const Standard_Real X,
         Standard_Real& DMin)
 {
   Standard_Real DMin2 = 0.;
-
-  Standard_Real Xmin = 0.0,Ymin = 0.0,Xmax = RealLast(),Ymax = RealLast();
+  Standard_Real Xmin,Ymin,Xmax,Ymax;
   if(!Bnd_Box2d(mybox2d).IsVoid())
   {
     Bnd_Box2d(mybox2d).Get(Xmin,Ymin,Xmax,Ymax);
@@ -123,8 +122,8 @@ Matches(const Standard_Real X,
     V-=mypolyg.Pnt2d(anIndex-1);
     Standard_Real Vector = V1^V;
     Standard_Real V1V1 = V1.SquareModulus();
-    DMin2 = 
-      (V1V1 <=aTol2) ? 
+    DMin2 =
+      (V1V1 <=aTol2) ?
     Min(DMin2,V.SquareModulus()): // if the segment is too small...
       Min(DMin2,Vector*Vector/V1V1);
     //cdg ...
@@ -164,7 +163,7 @@ Matches(const Standard_Real X,
 
 //=======================================================================
 //function : Matches
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 Standard_Boolean Select3D_SensitiveFace::
@@ -187,7 +186,7 @@ Matches (const Standard_Real XMin,
 
 //=======================================================================
 //function : Matches
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 Standard_Boolean Select3D_SensitiveFace::
@@ -211,7 +210,7 @@ Matches (const TColgp_Array1OfPnt2d& aPoly,
 
 //=======================================================================
 //function : Dump
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean FullDump) const
@@ -219,10 +218,10 @@ void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean Ful
   S<<"\tSensitiveFace 3D :"<<endl;;
   if(HasLocation())
     S<<"\t\tExisting Location"<<endl;
-  
-  if(mytype==Select3D_TOS_BOUNDARY) 
+
+  if(mytype==Select3D_TOS_BOUNDARY)
     S<<"\t\tSelection Of Bounding Polyline Only"<<endl;
-  
+
   if(FullDump)
   {
     S<<"\t\tNumber Of Points :"<<mypolyg.Size()<<endl;
@@ -232,7 +231,7 @@ void Select3D_SensitiveFace::Dump(Standard_OStream& S,const Standard_Boolean Ful
 
 //=======================================================================
 //function : ComputeDepth
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 Standard_Real Select3D_SensitiveFace::ComputeDepth(const gp_Lin& EyeLine) const
@@ -256,10 +255,10 @@ Standard_Real Select3D_SensitiveFace::ComputeDepth(const gp_Lin& EyeLine) const
 
 //=======================================================================
 //function : GetConnected
-//purpose  : 
+//purpose  :
 //=======================================================================
 
-Handle(Select3D_SensitiveEntity) Select3D_SensitiveFace::GetConnected(const TopLoc_Location &theLocation) 
+Handle(Select3D_SensitiveEntity) Select3D_SensitiveFace::GetConnected(const TopLoc_Location &theLocation)
 {
   // Create a copy of this
   Standard_Integer aSize = mypolyg.Size();

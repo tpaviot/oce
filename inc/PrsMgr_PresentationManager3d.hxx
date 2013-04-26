@@ -40,8 +40,8 @@
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
 #endif
-#ifndef _Handle_Viewer_View_HeaderFile
-#include <Handle_Viewer_View.hxx>
+#ifndef _Handle_V3d_View_HeaderFile
+#include <Handle_V3d_View.hxx>
 #endif
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
@@ -64,7 +64,7 @@
 class Graphic3d_StructureManager;
 class PrsMgr_PresentableObject;
 class Prs3d_Presentation;
-class Viewer_View;
+class V3d_View;
 class Geom_Transformation;
 class Prs3d_ShadingAspect;
 class PrsMgr_Presentation3d;
@@ -102,7 +102,7 @@ public:
 //!          in immediate mode. will be taken in account in EndDraw Method. <br>
   Standard_EXPORT     void AddToImmediateList(const Handle(Prs3d_Presentation)& aPrs) ;
   
-  Standard_EXPORT     void EndDraw(const Handle(Viewer_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False) ;
+  Standard_EXPORT     void EndDraw(const Handle(V3d_View)& theView,const Standard_Boolean DoubleBuffer = Standard_False) ;
   
   Standard_EXPORT     void Connect(const Handle(PrsMgr_PresentableObject)& aPresentableObject,const Handle(PrsMgr_PresentableObject)& anOtherObject,const Standard_Integer aMode = 0,const Standard_Integer anOtherMode = 0) ;
   

@@ -139,6 +139,13 @@ public:
   //! Takes tool which describes standard data around part <br>
 //!          (common for AP203 and AP214) and creates all the additional <br>
 //!          entities required for AP203 <br>
+//! <br>
+//!          The created entities can be obtained by calls to methods <br>
+//!          GetCreator(), GetDesignOwner(), GetDesignSupplier(), <br>
+//!          GetClassificationOfficer(), GetSecurity(), GetCreationDate(), <br>
+//!          GetClassificationDate(), GetApproval(), <br>
+//!          GetApprover(), GetApprovalDateTime(), <br>
+//!          GetProductCategoryRelationship() <br>
   Standard_EXPORT     void Init(const STEPConstruct_Part& SDRTool) ;
   //! Takes NAUO which describes assembly link to component <br>
 //!          and creates the security_classification entity associated to <br>

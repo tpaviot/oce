@@ -64,9 +64,6 @@
 #ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
 #endif
-#ifndef _Handle_BOP_HistoryCollector_HeaderFile
-#include <Handle_BOP_HistoryCollector.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 class gp_Pnt;
@@ -79,7 +76,6 @@ class TopoDS_Vertex;
 class LocOpe_Gluer;
 class TopOpeBRepBuild_HBuilder;
 class BRepAlgoAPI_BooleanOperation;
-class BOP_HistoryCollector;
 
 
 //!  Provides functions to build mechanical features. <br>
@@ -173,13 +169,6 @@ protected:
   Standard_EXPORT     void UpdateDescendants(const Handle(TopOpeBRepBuild_HBuilder)& B,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
   
   Standard_EXPORT     void UpdateDescendants(const BRepAlgoAPI_BooleanOperation& aBOP,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
-  //! Updates the data structures of descendant <br>
-//! shapes during the glueing operation. <br>
-//!   Returns the modified, generated and deleted faces during the course of the <br>
-//!   glueing operation; furnishes the arguments of the resulting shape SResult using the <br>
-//!   builder B to determine the type of modification such as orientation and splitting; <br>
-//!   checks to see that the SResult belongs to the data structure of the original shape. <br>
-  Standard_EXPORT     void UpdateDescendants(const Handle(BOP_HistoryCollector)& aBOP,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
 
 
 gp_Pnt myFirstPnt;

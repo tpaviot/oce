@@ -1,0 +1,9 @@
+#ifndef _BOPAlgo_WireEdgeSet_HeaderFile
+#include <BOPAlgo_WireEdgeSet.hxx>
+#endif
+#ifndef _TopoDS_Wire_HeaderFile
+#include <TopoDS_Wire.hxx>
+#endif
+#ifndef _BOPAlgo_WireSplitter_HeaderFile
+#include <BOPAlgo_WireSplitter.hxx>
+#endif

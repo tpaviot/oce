@@ -68,6 +68,12 @@ public:
   
   Standard_EXPORT   AdvApprox_SimpleApprox(const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const GeomAbs_Shape Continuity,const Standard_Integer WorkDegree,const Standard_Integer NbGaussPoints,const Handle(PLib_JacobiPolynomial)& JacobiBase,const AdvApprox_EvaluatorFunction& Func);
   //! Constructs approximator tool. <br>
+//! <br>
+//!  Warning: <br>
+//!     the Func should be valid reference to object of type <br>
+//!     inherited from class EvaluatorFunction from Approx <br>
+//!     with life time longer than that of the approximator tool; <br>
+//! <br>
   Standard_EXPORT     void Perform(const TColStd_Array1OfInteger& LocalDimension,const TColStd_Array1OfReal& LocalTolerancesArray,const Standard_Real First,const Standard_Real Last,const Standard_Integer MaxDegree) ;
   
   Standard_EXPORT     Standard_Boolean IsDone() const;

@@ -6,8 +6,8 @@
 #ifndef _Aspect_FillMethod_HeaderFile
 #define _Aspect_FillMethod_HeaderFile
 
-//! Defines type of degeneration model of the <br>
-//!          graphic structure. <br>
+//! Defines the fill methods to <br>
+//!      write bitmaps in a window. <br>
 enum Aspect_FillMethod {
 Aspect_FM_NONE,
 Aspect_FM_CENTERED,

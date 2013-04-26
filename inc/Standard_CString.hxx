@@ -19,7 +19,7 @@
 //============================================================================
 //==== Titre: Standard_CString.hxx
 //==== Role : The headr file of primitve type "CString" from package "Standard"
-//==== 
+//====
 //==== Implementation:  This is a primitive type implementadef with typedef
 //====        typedef char* Standard_CString;
 //============================================================================
@@ -31,15 +31,14 @@
 #  include <Standard_TypeDef.hxx>
 # endif
 
-# ifdef WNT
-#  ifdef _MSC_VER
-#    define strcasecmp _stricmp
+# ifdef _MSC_VER
+#  define strcasecmp _stricmp
 #  elif defined(__BORLANDC__)
 #    define strcasecmp stricmp
-#  endif
 # endif
 
 # include <string.h>
+# include <stdio.h>
 
 # ifndef _Standard_Integer_HeaderFile
 #  include <Standard_Integer.hxx>
@@ -83,6 +82,13 @@ inline Standard_Integer HASHCODE (const Standard_CString,
 __Standard_API Standard_Integer HASHCODES (const Standard_CString,
                                            const Standard_Integer);
 
+//! Equivalents of functions from standard C library that use always C locale
+__Standard_API double Atof    (const char* theStr);
+__Standard_API double Strtod  (const char* theStr, char** theNextPtr);
+__Standard_API int    Printf  (const char* theFormat, ...);
+__Standard_API int    Fprintf (FILE* theFile, const char* theFormat, ...);
+__Standard_API int    Sprintf (char* theBuffer, const char* theFormat, ...);
+
 //============================================================================
 //==== ShallowCopy: Returns a CString
 //============================================================================
@@ -96,7 +102,7 @@ inline Standard_CString ShallowCopy (const Standard_CString Value)
 //============================================================================
 inline Standard_Boolean IsSimilar(const Standard_CString One
 				 ,const Standard_CString Two)
-{ 
+{
   return (strcmp(One,Two) == 0);
 }
 
@@ -105,7 +111,7 @@ inline Standard_Boolean IsSimilar(const Standard_CString One
 //====                              the HashCode % Upper
 //============================================================================
 inline Standard_Integer HashCode (const Standard_CString Value,
-                                  const Standard_Integer Len , 
+                                  const Standard_Integer Len ,
 			          const Standard_Integer Upper ,
                                   Standard_Integer& aHashCode )
 {
@@ -131,7 +137,7 @@ inline Standard_Integer HashCode (const Standard_CString Value,
 //====                               and the HashCode % Upper
 //============================================================================
 inline Standard_Integer HASHCODE (const Standard_CString Value,
-                                  const Standard_Integer Len , 
+                                  const Standard_Integer Len ,
 			          const Standard_Integer Upper ,
                                   Standard_Integer& aHashCode )
 {
@@ -144,7 +150,7 @@ inline Standard_Integer HASHCODE (const Standard_CString Value,
 //==== HashCode of a CString converted to uppercase
 //============================================================================
 inline Standard_Integer HASHCODE (const Standard_CString Value,
-                                  const Standard_Integer Len , 
+                                  const Standard_Integer Len ,
                                   const Standard_Integer Upper)
 {
 //  return (Abs( HASHCODES( Value , Len ) ) % Upper ) + 1 ;
@@ -163,7 +169,7 @@ inline Standard_Boolean ISEQUAL(const Standard_CString One ,
                                 const Standard_Integer LenOne ,
                                 const Standard_CString Two,
                                 const Standard_Integer LenTwo )
-{ 
+{
 
  if ( One == Two )
    return Standard_True ;

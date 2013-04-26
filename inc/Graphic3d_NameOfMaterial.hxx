@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_NameOfMaterial_HeaderFile
 #define _Graphic3d_NameOfMaterial_HeaderFile
 
-
+//! Types of aspect materials. <br>
 enum Graphic3d_NameOfMaterial {
 Graphic3d_NOM_BRASS,
 Graphic3d_NOM_BRONZE,

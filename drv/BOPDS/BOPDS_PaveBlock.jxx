@@ -1,0 +1,12 @@
+#ifndef _BOPDS_CommonBlock_HeaderFile
+#include <BOPDS_CommonBlock.hxx>
+#endif
+#ifndef _BOPDS_Pave_HeaderFile
+#include <BOPDS_Pave.hxx>
+#endif
+#ifndef _Bnd_Box_HeaderFile
+#include <Bnd_Box.hxx>
+#endif
+#ifndef _BOPDS_PaveBlock_HeaderFile
+#include <BOPDS_PaveBlock.hxx>
+#endif

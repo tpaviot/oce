@@ -7,6 +7,9 @@
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
 #endif
+#ifndef _TDF_LabelSequence_HeaderFile
+#include <TDF_LabelSequence.hxx>
+#endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif

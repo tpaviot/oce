@@ -1,0 +1,3 @@
+#ifndef _Graphic3d_TextureParams_HeaderFile
+#include <Graphic3d_TextureParams.hxx>
+#endif

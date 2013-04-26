@@ -40,14 +40,14 @@
 #ifndef _Graphic3d_StructureManager_HeaderFile
 #include <Graphic3d_StructureManager.hxx>
 #endif
-#ifndef _Handle_Aspect_GraphicDevice_HeaderFile
-#include <Handle_Aspect_GraphicDevice.hxx>
-#endif
 #ifndef _Handle_Visual3d_HSetOfView_HeaderFile
 #include <Handle_Visual3d_HSetOfView.hxx>
 #endif
 #ifndef _Handle_Aspect_Window_HeaderFile
 #include <Handle_Aspect_Window.hxx>
+#endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -70,10 +70,8 @@
 class Visual3d_Layer;
 class Graphic3d_GraphicDriver;
 class Visual3d_View;
-class Aspect_GraphicDevice;
 class Visual3d_HSetOfView;
 class Aspect_Window;
-class Graphic3d_Vertex;
 class Graphic3d_Vector;
 class Graphic3d_Structure;
 class TColStd_SequenceOfInteger;
@@ -91,7 +89,14 @@ class Visual3d_ViewManager : public Graphic3d_StructureManager {
 public:
 
   //! Creates a 3D visualizer. <br>
-  Standard_EXPORT   Visual3d_ViewManager(const Handle(Aspect_GraphicDevice)& aDevice);
+//!  Currently creating of more than 100 viewer instances <br>
+//!  is not supported and leads to InitializationError and <br>
+//!  initialisation failure. <br>
+//!  This limitation might be addressed in some future OCCT releases. <br>
+//! <br>
+//! Category: Methods to modify the class definition <br>
+//! <br>
+  Standard_EXPORT   Visual3d_ViewManager(const Handle(Graphic3d_GraphicDriver)& theDriver);
   //! Activates all the views of the manager <me>. <br>
   Standard_EXPORT     void Activate() ;
   //! Deactivates all the views of the manager <me>. <br>

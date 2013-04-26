@@ -22,11 +22,13 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
 class Graphic3d_VectorError;
-class Graphic3d_Vertex;
 
 
 //! This class allows the creation and update <br>

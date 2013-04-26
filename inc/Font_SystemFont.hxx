@@ -43,9 +43,10 @@ public:
   Standard_EXPORT   Font_SystemFont();
   //! Creates Font object initialized with <FontName> as name <br>
 //!         <FontAspect>.... TODO <br>
-  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& FontName,const Font_FontAspect Aspect,const Handle(TCollection_HAsciiString)& FilePath);
-  //! TODO <br>
-  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& XLFD,const Handle(TCollection_HAsciiString)& FilePath);
+  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& theFontName,const Font_FontAspect theFontAspect,const Handle(TCollection_HAsciiString)& theFilePath);
+  //! Creates Font object and initialize class fields with <br>
+//!         values taken from XLFD (X Logical Font Description) <br>
+  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& theXLFD,const Handle(TCollection_HAsciiString)& theFilePath);
   //! Returns font family name <br>
   Standard_EXPORT     Handle_TCollection_HAsciiString FontName() const;
   //! Returns font file path <br>
@@ -60,6 +61,9 @@ public:
   Standard_EXPORT     Standard_Integer FontHeight() const;
   
   Standard_EXPORT     Standard_Boolean IsValid() const;
+  //! Return true if the FontName, FontAspect and FontSize are the same. <br>
+//! Level: Public <br>
+  Standard_EXPORT     Standard_Boolean IsEqual(const Handle(Font_SystemFont)& theOtherFont) const;
 
 
 

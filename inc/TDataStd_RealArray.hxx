@@ -70,6 +70,7 @@ public:
   //! Sets  the   <Index>th  element  of   the  array to <Value> <br>
   Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Real Value) ;
   //! Return the value of  the  <Index>th element of the array <br>
+//! <br>
   Standard_EXPORT     Standard_Real Value(const Standard_Integer Index) const;
     Standard_Real operator ()(const Standard_Integer Index) const
 {

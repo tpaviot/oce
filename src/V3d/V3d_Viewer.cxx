@@ -31,8 +31,7 @@
 
 ************************************************************************/
 
-#define GER61351	//GG_15/12/99 Adds SetDefaultBackgroundColor()
-//				      and DefaultBackgroundColor() methods
+//GER61351	//GG_15/12/99 Adds SetDefaultBackgroundColor() and DefaultBackgroundColor() methods
 
 #define IMP240100	//GG 
 //			Initalize grid echo fields
@@ -47,18 +46,29 @@
 #include <Visual3d_Light.hxx>
 #include <V3d_Viewer.ixx>
 #include <V3d_View.hxx>
-#include <Viewer_BadValue.hxx>
+#include <V3d_BadValue.hxx>
 #include <V3d_OrthographicView.hxx>
 #include <V3d_PerspectiveView.hxx>
-#ifdef WNT
-#include <WNT_GraphicDevice.hxx>
-#endif
 
 /*----------------------------------------------------------------------*/
 
 //-Constructor:
-V3d_Viewer::V3d_Viewer(const Handle(Aspect_GraphicDevice)& Device , const Standard_ExtString aName, const Standard_CString aDomain,const Standard_Real ViewSize , const V3d_TypeOfOrientation ViewProj , const Quantity_NameOfColor ViewBackground , const V3d_TypeOfVisualization Visualization , const V3d_TypeOfShadingModel ShadingModel , const V3d_TypeOfUpdate UpdateMode, const Standard_Boolean ComputedMode , const Standard_Boolean DefaultComputedMode , const V3d_TypeOfSurfaceDetail SurfaceDetail )  
-:Viewer_Viewer(Device,aName,aDomain,-1),
+V3d_Viewer::V3d_Viewer (const Handle(Graphic3d_GraphicDriver)& theDriver,
+                        const Standard_ExtString      theName,
+                        const Standard_CString        theDomain,
+                        const Standard_Real           theViewSize,
+                        const V3d_TypeOfOrientation   theViewProj,
+                        const Quantity_NameOfColor    theViewBackground,
+                        const V3d_TypeOfVisualization theVisualization,
+                        const V3d_TypeOfShadingModel  theShadingModel,
+                        const V3d_TypeOfUpdate        theUpdateMode,
+                        const Standard_Boolean        theComputedMode,
+                        const Standard_Boolean        theDefaultComputedMode,
+                        const V3d_TypeOfSurfaceDetail theSurfaceDetail)  
+:myNextCount (-1),
+myDriver (theDriver),
+myName (TCollection_ExtendedString (theName)),
+myDomain (TCollection_AsciiString (theDomain)),
 MyDefinedViews(),
 MyActiveViews(),
 MyDefinedLights(),
@@ -69,36 +79,35 @@ myDefinedViewsIterator(),
 myActiveLightsIterator(),
 myDefinedLightsIterator(),
 myDefinedPlanesIterator(),
-myComputedMode(ComputedMode),
-myDefaultComputedMode(DefaultComputedMode),
-myPrivilegedPlane(gp_Ax3(gp_Pnt(0.,0.,0),gp_Dir(0.,0.,1.),gp_Dir(1.,0.,0.))),
-myDisplayPlane(Standard_False),
-myDisplayPlaneLength(ViewSize)
+myComputedMode (theComputedMode),
+myDefaultComputedMode (theDefaultComputedMode),
+myPrivilegedPlane (gp_Ax3 (gp_Pnt (0.,0.,0), gp_Dir (0.,0.,1.), gp_Dir (1.,0.,0.))),
+myDisplayPlane (Standard_False),
+myDisplayPlaneLength (theViewSize)
 #ifdef IMP240100
-,myGridEcho(Standard_True),myGridEchoStructure(),myGridEchoGroup()
+,myGridEcho (Standard_True), myGridEchoStructure(), myGridEchoGroup()
 #endif 
 {
-
-  MyViewer = new Visual3d_ViewManager(Device) ;
+  MyViewer = new Visual3d_ViewManager (theDriver);
   // san (16/09/2010): It has been decided to turn depth test ON
   // by default, as this is important for new font rendering
   // (without it, there are numerous texture rendering artefacts)
   MyViewer->SetZBufferAuto (Standard_False);
-  SetUpdateMode( UpdateMode ) ;
-  SetDefaultViewSize(ViewSize) ;
-  SetDefaultViewProj(ViewProj) ;
-  SetDefaultBackgroundColor(ViewBackground) ;
-  SetDefaultVisualization(Visualization) ;
-  SetDefaultShadingModel(ShadingModel) ;
-  SetDefaultSurfaceDetail(SurfaceDetail) ; 
-  SetDefaultAngle(M_PI / 2.);
-  SetDefaultTypeOfView(V3d_ORTHOGRAPHIC);
+  SetUpdateMode (theUpdateMode);
+  SetDefaultViewSize (theViewSize);
+  SetDefaultViewProj (theViewProj);
+  SetDefaultBackgroundColor (theViewBackground);
+  SetDefaultVisualization (theVisualization);
+  SetDefaultShadingModel (theShadingModel);
+  SetDefaultSurfaceDetail (theSurfaceDetail); 
+  SetDefaultAngle (M_PI / 2.);
+  SetDefaultTypeOfView (V3d_ORTHOGRAPHIC);
 
   Quantity_Color Color1 (Quantity_NOC_GRAY50);
   Quantity_Color Color2 (Quantity_NOC_GRAY70);
 //  Quantity_Color White (Quantity_NOC_WHITE);
-  myRGrid = new V3d_RectangularGrid(this,Color1,Color2);
-  myCGrid = new V3d_CircularGrid(this,Color1,Color2);
+  myRGrid = new V3d_RectangularGrid (this, Color1, Color2);
+  myCGrid = new V3d_CircularGrid (this, Color1, Color2);
   myGridType = Aspect_GT_Rectangular;
 }
 
@@ -202,29 +211,19 @@ void V3d_Viewer::SetDefaultBackgroundColor(const Quantity_TypeOfColor Type, cons
   if( V3 < 0. ) V3 = 0. ; else if( V3 > 1. ) V3 = 1. ;
 
   Quantity_Color C(V1,V2,V3,Type) ;
-#ifdef GER61351
   SetDefaultBackgroundColor(C);
-#else
-  MyBackground.SetColor(C) ;
-#endif
 }
 
-void V3d_Viewer::SetDefaultBackgroundColor(const Quantity_NameOfColor Name) {
-
+void V3d_Viewer::SetDefaultBackgroundColor(const Quantity_NameOfColor Name)
+{
   Quantity_Color C(Name) ;
-#ifdef GER61351
   SetDefaultBackgroundColor(C);
-#else
-  MyBackground.SetColor(C) ;
-#endif
 }
 
-#ifdef GER61351
-void V3d_Viewer::SetDefaultBackgroundColor(const Quantity_Color &Color) {
-
+void V3d_Viewer::SetDefaultBackgroundColor(const Quantity_Color &Color)
+{
   MyBackground.SetColor(Color) ;
 }
-#endif
 
 void V3d_Viewer::SetDefaultBgGradientColors( const Quantity_NameOfColor Name1,
                                              const Quantity_NameOfColor Name2,
@@ -247,7 +246,7 @@ void V3d_Viewer::SetDefaultBgGradientColors( const Quantity_Color& Color1,
 
 void V3d_Viewer::SetDefaultViewSize(const Standard_Real Size) {
 
-  Viewer_BadValue_Raise_if( Size <= 0. ,"V3d_Viewer::SetDefaultViewSize, bad size");
+  V3d_BadValue_Raise_if( Size <= 0. ,"V3d_Viewer::SetDefaultViewSize, bad size");
   MyViewSize = Size ;
 }
 
@@ -290,23 +289,19 @@ void V3d_Viewer::SetUpdateMode(const V3d_TypeOfUpdate Mode) {
   MyViewer->SetUpdateMode((Aspect_TypeOfUpdate)Mode) ;
 }
 
-void V3d_Viewer::DefaultBackgroundColor(const Quantity_TypeOfColor Type,Standard_Real &V1,Standard_Real &V2,Standard_Real &V3) const {
-
-#ifdef GER61351
+void V3d_Viewer::DefaultBackgroundColor(const Quantity_TypeOfColor Type,Standard_Real &V1,Standard_Real &V2,Standard_Real &V3) const
+{
   Quantity_Color C = DefaultBackgroundColor();
-#else
-  Quantity_Color C = MyBackground.Color() ;
-#endif
   C.Values(V1,V2,V3,Type) ;
 }
 
-#ifdef GER61351
-Quantity_Color V3d_Viewer::DefaultBackgroundColor() const {
+Quantity_Color V3d_Viewer::DefaultBackgroundColor() const
+{
   return MyBackground.Color() ;
 }
-#endif
 
-void V3d_Viewer::DefaultBgGradientColors(Quantity_Color& Color1,Quantity_Color& Color2) const{   
+void V3d_Viewer::DefaultBgGradientColors(Quantity_Color& Color1,Quantity_Color& Color2) const
+{
   MyGradientBackground.Colors(Color1,Color2);     
 }
 
@@ -412,4 +407,47 @@ Standard_Boolean V3d_Viewer::RemoveZLayer (const Standard_Integer theLayerId)
 void V3d_Viewer::GetAllZLayers (TColStd_SequenceOfInteger& theLayerSeq) const
 {
   MyViewer->GetAllZLayers (theLayerSeq);
+}
+
+//=======================================================================
+//function : Domain
+//purpose  :
+//=======================================================================
+
+Standard_CString V3d_Viewer::Domain() const
+{
+  return myDomain.ToCString();
+}
+
+//=======================================================================
+//function : Driver
+//purpose  :
+//=======================================================================
+
+const Handle(Graphic3d_GraphicDriver)& V3d_Viewer::Driver() const
+{
+  return myDriver;
+}
+
+//=======================================================================
+//function : NextName
+//purpose  :
+//=======================================================================
+
+Standard_ExtString V3d_Viewer::NextName() const
+{
+  TCollection_ExtendedString aNextName = TCollection_ExtendedString (myName.ToExtString());
+  aNextName.AssignCat (TCollection_ExtendedString (myNextCount));
+  
+  return aNextName.ToExtString();
+}
+
+//=======================================================================
+//function : IncrCount
+//purpose  :
+//=======================================================================
+
+void V3d_Viewer::IncrCount()
+{
+  myNextCount++;
 }

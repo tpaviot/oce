@@ -62,6 +62,19 @@ class gp_Vec2d;
 //!    | a11  a12    a14 |   | x |      | x'| <br>
 //!    | a21  a22    a24 |   | y |      | y'| <br>
 //!    |  0    0      1  |   | 1 |      | 1 | <br>
+//! <br>
+//!  where {V1, V2} defines the vectorial part of the <br>
+//!  transformation and T defines the translation part of <br>
+//!  the transformation. <br>
+//! - Geom2d_Transformation transformations provide <br>
+//!   the same kind of "geometric" services as <br>
+//!   gp_Trsf2d ones but have more complex data <br>
+//!   structures. The geometric objects provided by the <br>
+//!   Geom2d package use gp_Trsf2d transformations <br>
+//!   in the syntaxes Transform and Transformed. <br>
+//! - Geom2d_Transformation transformations are <br>
+//!   used in a context where they can be shared by <br>
+//!   several objects contained inside a common data structure. <br>
 class Geom2d_Transformation : public MMgt_TShared {
 
 public:

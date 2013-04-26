@@ -19,6 +19,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 #ifndef _Handle_GeomFill_LocationLaw_HeaderFile
 #include <Handle_GeomFill_LocationLaw.hxx>
 #endif
@@ -33,9 +36,6 @@
 #endif
 #ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
 #endif
 #ifndef _GeomFill_ApproxStyle_HeaderFile
 #include <GeomFill_ApproxStyle.hxx>
@@ -78,6 +78,9 @@ public:
 //!           Location(v) and Section(w) where <br>
 //!           w = SectionFirst + (v - First) / (Last-First) <br>
 //!             * (SectionLast - SectionFirst) <br>
+//! <br>
+//!           By default w = v, and First and Last are given by <br>
+//!           First and Last parameter stored in LocationLaw. <br>
   Standard_EXPORT     void SetDomain(const Standard_Real First,const Standard_Real Last,const Standard_Real SectionFirst,const Standard_Real SectionLast) ;
   //! Set Approximation Tolerance <br>
 //!    Tol3d : Tolerance to surface approximation <br>
@@ -90,6 +93,10 @@ public:
 //!                 beetween tangents on the section law and <br>
 //!                 tangent of iso-v on approximed surface <br>
   Standard_EXPORT     void SetTolerance(const Standard_Real Tol3d,const Standard_Real BoundTol = 1.0,const Standard_Real Tol2d = 1.0e-5,const Standard_Real TolAngular = 1.0) ;
+  //! Set the flag that indicates attempt to approximate <br>
+//!          a C1-continuous surface if a swept surface proved <br>
+//!          to be C0. <br>
+  Standard_EXPORT     void SetForceApproxC1(const Standard_Boolean ForceApproxC1) ;
   //! returns true if sections are U-Iso <br>
 //! This can be produce in some cases when <WithKpart> is True. <br>
   Standard_EXPORT     Standard_Boolean ExchangeUV() const;
@@ -163,6 +170,7 @@ Standard_Real BoundTol;
 Standard_Real Tol2d;
 Standard_Real TolAngular;
 Standard_Real SError;
+Standard_Boolean myForceApproxC1;
 Handle_GeomFill_LocationLaw myLoc;
 Handle_GeomFill_SectionLaw mySec;
 Handle_Geom_Surface mySurface;

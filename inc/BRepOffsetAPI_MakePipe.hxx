@@ -22,6 +22,12 @@
 #ifndef _BRepPrimAPI_MakeSweep_HeaderFile
 #include <BRepPrimAPI_MakeSweep.hxx>
 #endif
+#ifndef _GeomFill_Trihedron_HeaderFile
+#include <GeomFill_Trihedron.hxx>
+#endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class TopoDS_Wire;
 class TopoDS_Shape;
 class BRepFill_Pipe;
@@ -55,6 +61,11 @@ public:
 //! Standard_DomainError if the profile is a solid or a <br>
 //! composite solid. <br>
   Standard_EXPORT   BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile);
+  //! the same as previous but with setting of <br>
+//!          mode of sweep and the flag that indicates attempt <br>
+//!          to approximate a C1-continuous surface if a swept <br>
+//!          surface proved to be C0. <br>
+  Standard_EXPORT   BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile,const GeomFill_Trihedron aMode,const Standard_Boolean ForceApproxC1 = Standard_False);
   
   Standard_EXPORT    const BRepFill_Pipe& Pipe() const;
   //! Builds the resulting shape (redefined from MakeShape). <br>

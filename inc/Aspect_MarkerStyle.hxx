@@ -52,6 +52,7 @@ public:
 
   //! Creates a marker style with the default value of <br>
 //!	    MarkerStyle type : POINT <br>
+//! <br>
   Standard_EXPORT   Aspect_MarkerStyle();
   //! Creates the marker style <aType>. <br>
   Standard_EXPORT   Aspect_MarkerStyle(const Aspect_TypeOfMarker aType);

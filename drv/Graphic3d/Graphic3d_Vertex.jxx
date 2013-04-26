@@ -1,3 +1,0 @@
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif

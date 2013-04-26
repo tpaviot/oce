@@ -6,7 +6,7 @@
 #ifndef _OSD_KindFile_HeaderFile
 #define _OSD_KindFile_HeaderFile
 
-//! This enumeration is used to load shareable libraries. <br>
+//! Specifies the type of files. <br>
 enum OSD_KindFile {
 OSD_FILE,
 OSD_DIRECTORY,

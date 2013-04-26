@@ -10,8 +10,8 @@
 #ifndef _Graphic3d_AspectFillArea3d_HeaderFile
 #include <Graphic3d_AspectFillArea3d.hxx>
 #endif
-#ifndef _Aspect_GraphicDevice_HeaderFile
-#include <Aspect_GraphicDevice.hxx>
+#ifndef _Graphic3d_GraphicDriver_HeaderFile
+#include <Graphic3d_GraphicDriver.hxx>
 #endif
 #ifndef _Graphic3d_InitialisationError_HeaderFile
 #include <Graphic3d_InitialisationError.hxx>

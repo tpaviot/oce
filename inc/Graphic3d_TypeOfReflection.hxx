@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfReflection_HeaderFile
 #define _Graphic3d_TypeOfReflection_HeaderFile
 
-//! The type of primitive array in a group in a structure. <br>
+//! Nature of the reflection of a material. <br>
 enum Graphic3d_TypeOfReflection {
 Graphic3d_TOR_AMBIENT,
 Graphic3d_TOR_DIFFUSE,

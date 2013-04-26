@@ -50,6 +50,15 @@ class TopoDS_Wire;
 //!          - estimates average width of contour, <br>
 //!          - finds the notches (narrow 'V'-like sub-contour) on the <br>
 //!            contour. <br>
+//! <br>
+//!          For getting free bounds this class uses <br>
+//!          ShapeAnalysis_FreeBounds class. <br>
+//! <br>
+//!          For description of parameters used for initializing this <br>
+//!          class refer to CDL of ShapeAnalysis_FreeBounds. <br>
+//! <br>
+//!          Properties of each contour are stored in the data structure <br>
+//!          ShapeAnalysis_FreeBoundData. <br>
 class ShapeAnalysis_FreeBoundsProperties  {
 public:
 

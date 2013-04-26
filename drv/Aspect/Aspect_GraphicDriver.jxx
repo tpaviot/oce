@@ -1,3 +1,0 @@
-#ifndef _Aspect_GraphicDriver_HeaderFile
-#include <Aspect_GraphicDriver.hxx>
-#endif

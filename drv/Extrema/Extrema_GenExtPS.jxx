@@ -1,5 +1,5 @@
-#ifndef _TColgp_HArray2OfPnt_HeaderFile
-#include <TColgp_HArray2OfPnt.hxx>
+#ifndef _Extrema_HArray2OfPOnSurfParams_HeaderFile
+#include <Extrema_HArray2OfPOnSurfParams.hxx>
 #endif
 #ifndef _Bnd_HArray1OfSphere_HeaderFile
 #include <Bnd_HArray1OfSphere.hxx>
@@ -25,8 +25,8 @@
 #ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
 #endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
+#ifndef _Extrema_POnSurfParams_HeaderFile
+#include <Extrema_POnSurfParams.hxx>
 #endif
 #ifndef _Extrema_GenExtPS_HeaderFile
 #include <Extrema_GenExtPS.hxx>

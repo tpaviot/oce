@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPAlgo_CheckResult_HeaderFile
+#include <BOPAlgo_CheckResult.hxx>
+#endif

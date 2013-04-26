@@ -46,9 +46,6 @@
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
 #endif
-#ifndef _Handle_BOP_HistoryCollector_HeaderFile
-#include <Handle_BOP_HistoryCollector.hxx>
-#endif
 #ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
 #endif
@@ -61,7 +58,6 @@ class TColGeom_SequenceOfCurve;
 class Geom_Curve;
 class LocOpe_Gluer;
 class BRepAlgoAPI_BooleanOperation;
-class BOP_HistoryCollector;
 class TopOpeBRepBuild_HBuilder;
 
 
@@ -168,8 +164,6 @@ protected:
   Standard_EXPORT     void UpdateDescendants(const LocOpe_Gluer& G) ;
   
   Standard_EXPORT     void UpdateDescendants(const BRepAlgoAPI_BooleanOperation& aBOP,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
-  
-  Standard_EXPORT     void UpdateDescendants(const Handle(BOP_HistoryCollector)& aHistory,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
   
   Standard_EXPORT     void UpdateDescendants(const Handle(TopOpeBRepBuild_HBuilder)& B,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
   

@@ -7,7 +7,7 @@
 #define _Aspect_GradientFillMethod_HeaderFile
 
 //! Defines the fill methods to <br>
-//!      write bitmaps in a window. <br>
+//!      write gradient background in a window. <br>
 enum Aspect_GradientFillMethod {
 Aspect_GFM_NONE,
 Aspect_GFM_HOR,

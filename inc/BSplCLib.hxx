@@ -31,6 +31,9 @@
 #ifndef _BSplCLib_MultDistribution_HeaderFile
 #include <BSplCLib_MultDistribution.hxx>
 #endif
+#ifndef _GeomAbs_BSplKnotDistribution_HeaderFile
+#include <GeomAbs_BSplKnotDistribution.hxx>
+#endif
 #ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
 #endif
@@ -103,6 +106,30 @@ class TColStd_HArray1OfInteger;
 //!  . its multiplicities : TColStd_Array1OfInteger       Mults <br>
 //!  . its degree         : Standard_Integer              Degree <br>
 //!  . its periodicity    : Standard_Boolean              Periodic <br>
+//! <br>
+//! Warnings : <br>
+//!  The bounds of Poles and Weights should be the same. <br>
+//!  The bounds of Knots and Mults   should be the same. <br>
+//! <br>
+//!  Weights can be a null reference (BSplCLib::NoWeights()) <br>
+//!  the curve is non rational. <br>
+//! <br>
+//!  Mults can be a null reference   (BSplCLib::NoMults()) <br>
+//!  the knots are "flat" knots. <br>
+//! <br>
+//! KeyWords : <br>
+//!  B-spline curve, Functions, Library <br>
+//! <br>
+//! References : <br>
+//!  . A survey of curves and surfaces methods in CADG Wolfgang <br>
+//!    BOHM CAGD 1 (1984) <br>
+//!  . On de Boor-like algorithms and blossoming Wolfgang BOEHM <br>
+//!    cagd 5 (1988) <br>
+//!  . Blossoming and knot insertion algorithms for B-spline curves <br>
+//!    Ronald N. GOLDMAN <br>
+//!  . Modelisation des surfaces en CAO, Henri GIAUME Peugeot SA <br>
+//!  . Curves and Surfaces for Computer Aided Geometric Design, <br>
+//!    a practical guide Gerald Farin <br>
 class BSplCLib  {
 public:
 
@@ -228,6 +255,9 @@ public:
 //!  Analyses the distribution of multiplicities between <br>
 //!  the knot FromK1 and the Knot ToK2. <br>
   Standard_EXPORT   static  BSplCLib_MultDistribution MultForm(const TColStd_Array1OfInteger& Mults,const Standard_Integer FromK1,const Standard_Integer ToK2) ;
+  //! Analyzes the array of knots. <br>
+//!          Returns the form and the maximum knot multiplicity. <br>
+  Standard_EXPORT   static  void KnotAnalysis(const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal& CKnots,const TColStd_Array1OfInteger& CMults,GeomAbs_BSplKnotDistribution& KnotForm,Standard_Integer& MaxKnotMult) ;
   
 //!  Reparametrizes a B-spline curve to [U1, U2]. <br>
 //!  The knot values are recomputed such that Knots (Lower) = U1 <br>
@@ -528,6 +558,7 @@ public:
 //! <br>
 //!          The method IncreaseDegreeCountKnots can be used to <br>
 //!          compute the new number of knots.\ <br>
+//! <br>
   Standard_EXPORT   static  void IncreaseDegree(const Standard_Integer NewDegree,const TColgp_Array1OfPnt2d& Poles,const TColStd_Array1OfReal& Weights,TColgp_Array1OfPnt2d& NewPoles,TColStd_Array1OfReal& NewWeights) ;
   //! Set in <NbKnots> and <NbPolesToAdd> the number of Knots and <br>
 //!          Poles   of  the NotPeriodic  Curve   identical  at the <br>
@@ -739,6 +770,25 @@ public:
 //!          of  the  form  [1..NumPoles][1..PolesDimension] with  a <br>
 //!          function     a(t) which is   assumed to   satisfy the <br>
 //!          following: <br>
+//! <br>
+//!       1. F(a(t))  is a polynomial BSpline <br>
+//!          that can be expressed  exactly as a BSpline of degree <br>
+//!          NewDegree on the knots FlatKnots <br>
+//! <br>
+//!       2. a(t) defines a differentiable <br>
+//!          isomorphism between the range of FlatKnots to the range <br>
+//!          of BSplineFlatKnots which is the <br>
+//!          same as the  range of F(t) <br>
+//! <br>
+//!  Warning: it is <br>
+//!          the caller's responsability to insure that conditions <br>
+//!          1. and  2. above are  satisfied : no check whatsoever <br>
+//!          is made in this method <br>
+//! <br>
+//! Status will return 0 if OK else it will return the pivot index <br>
+//!        of the matrix that was inverted to compute the multiplied <br>
+//!        BSpline : the method used is interpolation at Schoenenberg <br>
+//!        points of F(a(t)) <br>
   Standard_EXPORT   static  void FunctionReparameterise(const BSplCLib_EvaluatorFunction& Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal& BSplineFlatKnots,const Standard_Integer PolesDimension,Standard_Real& Poles,const TColStd_Array1OfReal& FlatKnots,const Standard_Integer NewDegree,Standard_Real& NewPoles,Standard_Integer& Status) ;
   //! This function will compose  a given Vectorial BSpline F(t) <br>
 //!          defined  by its  BSplineDegree and BSplineFlatKnotsl, <br>
@@ -746,6 +796,25 @@ public:
 //!          of  the  form  [1..NumPoles][1..PolesDimension] with  a <br>
 //!          function     a(t) which is   assumed to   satisfy the <br>
 //!          following: <br>
+//! <br>
+//!       1. F(a(t))  is a polynomial BSpline <br>
+//!          that can be expressed  exactly as a BSpline of degree <br>
+//!          NewDegree on the knots FlatKnots <br>
+//! <br>
+//!       2. a(t) defines a differentiable <br>
+//!          isomorphism between the range of FlatKnots to the range <br>
+//!          of BSplineFlatKnots which is the <br>
+//!          same as the  range of F(t) <br>
+//! <br>
+//!  Warning: it is <br>
+//!          the caller's responsability to insure that conditions <br>
+//!          1. and  2. above are  satisfied : no check whatsoever <br>
+//!          is made in this method <br>
+//! <br>
+//! Status will return 0 if OK else it will return the pivot index <br>
+//!        of the matrix that was inverted to compute the multiplied <br>
+//!        BSpline : the method used is interpolation at Schoenenberg <br>
+//!        points of F(a(t)) <br>
   Standard_EXPORT   static  void FunctionReparameterise(const BSplCLib_EvaluatorFunction& Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal& BSplineFlatKnots,const TColStd_Array1OfReal& Poles,const TColStd_Array1OfReal& FlatKnots,const Standard_Integer NewDegree,TColStd_Array1OfReal& NewPoles,Standard_Integer& Status) ;
   //! this will compose  a given Vectorial BSpline F(t) <br>
 //!          defined  by its  BSplineDegree and BSplineFlatKnotsl, <br>
