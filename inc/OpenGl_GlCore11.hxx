@@ -22,6 +22,10 @@
 #ifndef _OpenGl_GlCore11_H__
 #define _OpenGl_GlCore11_H__
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 // required for correct APIENTRY definition
 #if defined(_WIN32) && !defined(APIENTRY) && !defined(__CYGWIN__) && !defined(__SCITECH_SNAP__)
 #define WIN32_LEAN_AND_MEAN
@@ -42,7 +46,7 @@
 #define GL_GLEXT_LEGACY
 
 // include main OpenGL header provided with system
-#if defined(__APPLE__)
+#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   #include <OpenGL/gl.h>
   #include <OpenGL/glu.h>
   #define __X_GL_H // prevent chaotic gl.h inclusions to avoid compile errors
