@@ -440,12 +440,8 @@ IF(${PROJECT_NAME}_DRAW)
 		src/DrawResources/DrawPlugin
 		src/DrawResources/idoc
 		src/DrawResources/lamp.ico
-		src/DrawResources/mdltest
 		src/DrawResources/mkdoc
-		src/DrawResources/tdoc
-		src/DrawResources/test2xl
-		src/DrawResources/vmdltest
-		src/DrawResources/dftree.tcl )
+		src/DrawResources/tdoc )
 ENDIF(${PROJECT_NAME}_DRAW)
 
 IF (${PROJECT_NAME}_USE_BUNDLE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
