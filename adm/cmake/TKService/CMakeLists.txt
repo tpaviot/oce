@@ -56,13 +56,3 @@ ENDIF(FREEIMAGE_LIBRARY AND ${PROJECT_NAME}_WITH_FREEIMAGE)
 
 INCLUDE(../BuildToolkit.cmake)
 
-IF(BORLAND)
-	# cgmobin.c, cgmochar.c and cgmotext.c need __STDC__=1 define in order to build for bcc32.
-	foreach(source_file ${TOOLKIT_SOURCE_FILES} )
-		if ((source_file MATCHES "cgmobin.c") OR
-			(source_file MATCHES "cgmochar.c") OR
-			(source_file MATCHES "cgmotext.c"))
-			set_source_files_properties("${source_file}" PROPERTIES COMPILE_DEFINITIONS "__STDC__=1")
-		endif()
-	endforeach(source_file)
-ENDIF(BORLAND)
