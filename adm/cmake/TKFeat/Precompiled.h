@@ -8,4 +8,3 @@
 #include "BRepFeat.hxx"
 #include "BRepFeat_Builder.hxx"
 #include "LocOpe.hxx"
-#include "LocOpe_Builder.hxx"
