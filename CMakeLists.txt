@@ -351,20 +351,17 @@ IF(${PROJECT_NAME}_VISUALISATION)
 		SET(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
 	ENDIF (NOT APPLE OR ${PROJECT_NAME}_OSX_USE_COCOA)
 	
-	## FreeType / FTGL
+	## FreeType
 	IF(NOT ${PROJECT_NAME}_USE_BUNDLE AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
 		FIND_PACKAGE(Freetype REQUIRED)
 	ELSE (NOT ${PROJECT_NAME}_USE_BUNDLE AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
 		FIND_LIBRARY(FREETYPE_LIBRARY freetype)
 	ENDIF(NOT ${PROJECT_NAME}_USE_BUNDLE AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE)
 
-	FIND_PATH(FTGL_INCLUDE_DIR FTGL/ftgl.h "Location of header files for FTGL" ${CMAKE_SYSTEM_INCLUDE_PATH})
-	FIND_LIBRARY(FTGL_LIBRARY ftgl "Location of ftgl library")
 	IF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-		FIND_LIBRARY(FTGL_LIBRARY_DEBUG ftgld "Location of ftgl debug library")
 		FIND_LIBRARY(FREETYPE_LIBRARY_DEBUG freetyped "Location of freetype debug library")
 	ENDIF(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-	MARK_AS_ADVANCED(X11_Xmu_LIB FTGL_INCLUDE_DIR FTGL_LIBRARY)
+	MARK_AS_ADVANCED(X11_Xmu_LIB)
 
 	## GL2PS
 	IF(${PROJECT_NAME}_WITH_GL2PS)
@@ -449,16 +446,13 @@ ENDIF(${PROJECT_NAME}_DRAW)
 IF (${PROJECT_NAME}_USE_BUNDLE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 	MESSAGE("Using previously built and installed OCE Bundle")
 	IF (${PROJECT_NAME}_VISUALISATION)
-		SET(FTGL_INCLUDE_DIR ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/include/FTGL CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_freetype2 ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_ft2build ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/include/freetype CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
 		SET(FREETYPE_LIBRARY ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		SET(FREETYPE_LIBRARIES ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		SET(FREETYPE_LIBRARY_DEBUG ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib CACHE FILEPATH "" FORCE)
-		SET(FTGL_LIBRARY ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/ftgl.lib CACHE FILEPATH "" FORCE)
-		SET(FTGL_LIBRARY_DEBUG ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/ftgld.lib CACHE FILEPATH "" FORCE)
-
+		
 		IF(${PROJECT_NAME}_WITH_GL2PS)
 			SET(GL2PS_LIBRARY ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib CACHE FILEPATH "" FORCE)
 			SET(GL2PS_LIBRARY_DEBUG ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.lib CACHE FILEPATH "" FORCE)
@@ -845,10 +839,6 @@ IF (${PROJECT_NAME}_USE_BUNDLE_SOURCE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 		SET( BUNDLE_LIBRARY_RESULT_DIRECTORY "${BUNDLE_LIBRARY_OUTPUT_DIRECTORY}" )
 	ENDIF( CMAKE_CONFIGURATION_TYPES )
 	IF (${PROJECT_NAME}_VISUALISATION)
-		SET(FTGL_INCLUDE_DIR ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/libs/ftgl/src CACHE PATH "" FORCE)
-		SET_TARGET_OUTPUT_DIRECTORIES( FTGL ${BUNDLE_LIBRARY_OUTPUT_DIRECTORY} )
-		SET(FTGL_LIBRARY ${BUNDLE_LIBRARY_RESULT_DIRECTORY}/ftgl.lib CACHE FILEPATH "" FORCE)
-		SET(FTGL_LIBRARY_DEBUG ${BUNDLE_LIBRARY_RESULT_DIRECTORY}/ftgld.lib CACHE FILEPATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_freetype2 ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/libs/freetype CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIR_ft2build ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/libs/freetype/include CACHE PATH "" FORCE)
 		SET(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR_freetype2} ${FREETYPE_INCLUDE_DIR_ft2build})
@@ -1089,7 +1079,7 @@ INSTALL(EXPORT ${PROJECT_NAME}-libraries DESTINATION ${${PROJECT_NAME}_INSTALL_C
 IF(${PROJECT_NAME}_USE_BUNDLE_SOURCE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 	# Add dependencies between OCE and oce-win-bundle
 	add_dependencies( TKService FreeImage )
-	add_dependencies( TKOpenGl freetype FTGL gl2ps )
+	add_dependencies( TKOpenGl freetype gl2ps )
 ENDIF(${PROJECT_NAME}_USE_BUNDLE_SOURCE AND ${PROJECT_NAME}_BUNDLE_ROOT_PATH)
 
 ############
@@ -1121,7 +1111,7 @@ IF(MSVC AND ${PROJECT_NAME}_TESTING)
 				SET(TMP_DESTDIR ${LIBRARY_OUTPUT_PATH}/${config})
 				STRING(REGEX REPLACE "/" "\\\\" TMP_SRCDIR ${TMP_SRCDIR}) 
 				STRING(REGEX REPLACE "/" "\\\\" TMP_DESTDIR ${TMP_DESTDIR}) 
-				SET (TMP_FILELIST FreeImage FTGL gl2ps freetype FreeImagePlus)
+				SET (TMP_FILELIST FreeImage gl2ps freetype FreeImagePlus)
 
 				IF (${config} MATCHES "Debug")
 				   SET(TMP_SUFFIX "d")
@@ -1199,8 +1189,6 @@ IF (${PROJECT_NAME}_BUNDLE_AUTOINSTALL AND NOT ${PROJECT_NAME}_USE_BUNDLE_SOURCE
 	IF (${PROJECT_NAME}_VISUALISATION)
 		INSTALL(FILES ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetyped.dll DESTINATION ${${PROJECT_NAME}_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
 		INSTALL(FILES ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/bin/freetype.dll DESTINATION ${${PROJECT_NAME}_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
-		INSTALL(FILES ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FTGLd.dll DESTINATION ${${PROJECT_NAME}_INSTALL_BIN_DIR} CONFIGURATIONS Debug)
-		INSTALL(FILES ${${PROJECT_NAME}_BUNDLE_ROOT_PATH}/Win${BIT}/bin/FTGL.dll DESTINATION ${${PROJECT_NAME}_INSTALL_BIN_DIR} CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
 	ENDIF(${PROJECT_NAME}_VISUALISATION)
 
 	IF (${PROJECT_NAME}_VISU_DEP AND ${PROJECT_NAME}_WITH_GL2PS )
@@ -1289,8 +1277,8 @@ if( CPACK_GENERATOR MATCHES ".*DEB.*" )
 	set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.8), libtool,
 		libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
 		libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
-		libftgl-dev, libgl2ps-dev")
-	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1), libftgl2 (>= 2.1.3~rc5),
+		libgl2ps-dev")
+	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1),
 		libgcc1 (>= 1:4.1.1), libgl1-mesa-glx, libgl2ps0, libglu1-mesa,
 		libgomp1 (>= 4.2.1), libstdc++6 (>= 4.4.0), libx11-6, libxext6,
 		libxmu6, libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
@@ -1318,7 +1306,7 @@ endif()
 # correct directory, and packages specified after RPM won't be built.         #
 ###############################################################################
 if( CPACK_GENERATOR MATCHES ".*RPM.*" )
-	set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libftgl2 >= 2.1.3, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
+	set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
 	set( CPACK_RPM_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0, libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0, libopencascade-ocaf-6.5.0, opencascade-draw" )
 	set( CPACK_PACKAGE_RELOCATABLE "FALSE" )
 	if( BIT EQUAL 64 )
