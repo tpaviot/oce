@@ -121,7 +121,7 @@ static Standard_Integer OCC23237 (Draw_Interpretor& di, Standard_Integer /*argc*
     // do some operation that will take considerable time compared with time or starting / stopping timers
     BRepPrimAPI_MakeBox aBox (10., 10., 10.);
     BRepPrimAPI_MakeSphere aSphere (10.);
-    BRepAlgo_Cut (aBox.Shape(), aSphere.Shape());
+    BRepAlgo_Cut aCut(aBox.Shape(), aSphere.Shape());
 
     aTM.Stop();
     aPM.Stop();

@@ -308,7 +308,7 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
         UV(1) = aMaxCU;
         UV(2) = aMaxSU;
         UV(3) = aMaxSV;
-        math_FunctionSetRoot(myF, UV, Tol, UVinf, UVsup);
+        math_FunctionSetRoot aFunctionSetRoot(myF, UV, Tol, UVinf, UVsup);
         break;
       }
       //
