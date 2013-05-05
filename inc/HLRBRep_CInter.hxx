@@ -106,6 +106,8 @@ private:
   
   Standard_EXPORT     void InternalPerform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
   
+  Standard_EXPORT     void InternalCompositePerform_noRecurs(const Standard_Integer NbInterC1,const Standard_Address& C1,const Standard_Integer NumInterC1,const TColStd_Array1OfReal& Tab1,const IntRes2d_Domain& D1,const Standard_Integer NbInterC2,const Standard_Address& C2,const Standard_Integer NumInterC2,const TColStd_Array1OfReal& Tab2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  
   Standard_EXPORT     void InternalCompositePerform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Integer N1,const Standard_Integer NB1,const TColStd_Array1OfReal& Tab1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Integer N2,const Standard_Integer NB2,const TColStd_Array1OfReal& Tab2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
 
 

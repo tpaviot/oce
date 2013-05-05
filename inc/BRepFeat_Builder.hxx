@@ -16,40 +16,101 @@
 #include <Standard_Macro.hxx>
 #endif
 
-#ifndef _LocOpe_Builder_HeaderFile
-#include <LocOpe_Builder.hxx>
+#ifndef _BOPCol_MapOfShape_HeaderFile
+#include <BOPCol_MapOfShape.hxx>
 #endif
-#ifndef _TopTools_MapOfShape_HeaderFile
-#include <TopTools_MapOfShape.hxx>
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
-#ifndef _TopTools_ListOfShape_HeaderFile
-#include <TopTools_ListOfShape.hxx>
+#ifndef _BOPAlgo_BOP_HeaderFile
+#include <BOPAlgo_BOP.hxx>
 #endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
-#include <BRepBuilderAPI_MakeShape.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
-class StdFail_NotDone;
-class Standard_ConstructionError;
+#ifndef _BOPCol_ListOfShape_HeaderFile
+#include <BOPCol_ListOfShape.hxx>
+#endif
+#ifndef _BOPCol_DataMapOfShapeListOfShape_HeaderFile
+#include <BOPCol_DataMapOfShapeListOfShape.hxx>
+#endif
+#ifndef _BOPCol_DataMapOfShapeShape_HeaderFile
+#include <BOPCol_DataMapOfShapeShape.hxx>
+#endif
+#ifndef _BOPCol_BaseAllocator_HeaderFile
+#include <BOPCol_BaseAllocator.hxx>
+#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
+class TopoDS_Face;
 
 
-//! Provides  the   implementation  of  all    methods <br>
-//!          required by BRepCtx for class using a Builder from <br>
-//!          LocOpe.  All  features have  to inherit  from this <br>
-//!          class. <br>
-class BRepFeat_Builder  : public BRepBuilderAPI_MakeShape {
+//! Provides a basic tool to implement features topological <br>
+//!          operations. The main goal of the algorithm is to perform <br>
+//!          the result of the operation according to the <br>
+//!          kept parts of the tool. <br>
+//!          Input data: a) DS; <br>
+//!                      b) The kept parts of the tool; <br>
+//!                         If the map of the kept parts of the tool <br>
+//!                         is not filled boolean operation of the <br>
+//!                         given type will be performed; <br>
+//!                      c) Operation required. <br>
+//!          Steps: a) Fill myShapes, myRemoved maps; <br>
+//!                 b) Rebuild edges and faces; <br>
+//!                 c) Build images of the object; <br>
+//!                 d) Build the result of the operation. <br>
+//!          Result: Result shape of the operation required. <br>
+class BRepFeat_Builder  : public BOPAlgo_BOP {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes a local operation on <S>. <br>
-        void Init(const TopoDS_Shape& S) ;
-  //! Initializes a local operation between <S> and <T>. <br>
-//! Raises ConstructionError if <S> is a null shape. <br>
-        void Init(const TopoDS_Shape& S,const TopoDS_Shape& T) ;
-  //! Returns the list of generated Faces. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& Modified(const TopoDS_Shape& F) ;
+  
+  Standard_EXPORT   BRepFeat_Builder();
+Standard_EXPORT virtual ~BRepFeat_Builder();
+  //!  Clears internal fields and arguments. <br>
+  Standard_EXPORT   virtual  void Clear() ;
+  //! Initialyzes the object of local boolean operation. <br>
+//! <br>
+  Standard_EXPORT     void Init(const TopoDS_Shape& theShape) ;
+  //! Initialyzes the arguments of local boolean operation. <br>
+//! <br>
+  Standard_EXPORT     void Init(const TopoDS_Shape& theShape,const TopoDS_Shape& theTool) ;
+  //! Sets the operation of local boolean operation. <br>
+//!          If theFuse = 0 than the operation is CUT, otherwise FUSE. <br>
+  Standard_EXPORT     void SetOperation(const Standard_Integer theFuse) ;
+  //! Sets the operation of local boolean operation. <br>
+//!          If theFlag = TRUE it means that no selection of parts <br>
+//!          of the tool is needed, t.e. no second part. In that case <br>
+//!          if theFuse = 0 than operation is COMMON, otherwise CUT21. <br>
+//!          If theFlag = FALSE SetOperation(theFuse) function  is called. <br>
+  Standard_EXPORT     void SetOperation(const Standard_Integer theFuse,const Standard_Boolean theFlag) ;
+  //! Collects parts of the tool. <br>
+  Standard_EXPORT     void PartsOfTool(TopTools_ListOfShape& theLT) ;
+  //! Initialyzes parts of the tool for second step of algorithm. <br>
+//!          Collects shapes and all sub-shapes into myShapes map. <br>
+  Standard_EXPORT     void KeepParts(const TopTools_ListOfShape& theIm) ;
+  //! Adds shape theS and all its sub-shapes into myShapes map. <br>
+//! <br>
+  Standard_EXPORT     void KeepPart(const TopoDS_Shape& theS) ;
+  //! Main function to build the result of the <br>
+//!          local operation required. <br>
+  Standard_EXPORT     void PerformResult() ;
+  //! Rebuilds faces in accordance with the kept parts of the tool. <br>
+//! <br>
+  Standard_EXPORT     void RebuildFaces() ;
+  //! Rebuilds edges in accordance with the kept parts of the tool. <br>
+//! <br>
+  Standard_EXPORT     void RebuildEdge(const TopoDS_Shape& theE,const TopoDS_Face& theF,const BOPCol_MapOfShape& theME,BOPCol_ListOfShape& aLEIm) ;
+  //! Collects the images of the object, that contains in <br>
+//!          the images of the tool. <br>
+  Standard_EXPORT     void CheckSolidImages() ;
+  //! Collects the removed parts of the tool into myRemoved map. <br>
+//! <br>
+  Standard_EXPORT     void FillRemoved() ;
+  //! Adds the shape S and its sub-shapes into myRemoved map. <br>
+//! <br>
+  Standard_EXPORT     void FillRemoved(const TopoDS_Shape& theS,BOPCol_MapOfShape& theM) ;
 
 
 
@@ -57,17 +118,17 @@ public:
 
 protected:
 
-  //! Empty constructor. <br>
-      BRepFeat_Builder();
-  //! Creates a local operation on <S>. <br>
-      BRepFeat_Builder(const TopoDS_Shape& S);
-  //! Creates a local operation between <S> and <T>. <br>
-      BRepFeat_Builder(const TopoDS_Shape& S,const TopoDS_Shape& T);
+  //! Prepares builder of local operation. <br>
+//! <br>
+  Standard_EXPORT   virtual  void Prepare() ;
+  //! Function is redefined to avoid the usage of removed faces. <br>
+//! <br>
+  Standard_EXPORT   virtual  void FillIn3DParts(BOPCol_DataMapOfShapeListOfShape& theInParts,BOPCol_DataMapOfShapeShape& theDraftSolids,const BOPCol_BaseAllocator& theAllocator) ;
 
 
-LocOpe_Builder myBuilder;
-TopTools_MapOfShape myMap;
-TopTools_ListOfShape myGenFaces;
+BOPCol_MapOfShape myShapes;
+BOPCol_MapOfShape myRemoved;
+Standard_Integer myFuse;
 
 
 private:
@@ -79,7 +140,6 @@ private:
 };
 
 
-#include <BRepFeat_Builder.lxx>
 
 
 

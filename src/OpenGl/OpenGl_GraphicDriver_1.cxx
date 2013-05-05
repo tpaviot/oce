@@ -28,32 +28,15 @@
 
 //=======================================================================
 //function : Begin
-//purpose  : 
+//purpose  :
 //=======================================================================
 
-Standard_Boolean OpenGl_GraphicDriver::Begin (const Standard_CString ADisplay)
+Standard_Boolean OpenGl_GraphicDriver::Begin (const Handle(Aspect_DisplayConnection)& theDisplayConnection)
 {
+  myDisplayConnection = theDisplayConnection;
   try
   {
-    openglDisplay = new OpenGl_Display(ADisplay);
-    return Standard_True;
-  }
-  catch (Standard_Failure)
-  {
-  }
-  return Standard_False;
-}
-
-//=======================================================================
-//function : Begin
-//purpose  : 
-//=======================================================================
-
-Standard_Boolean OpenGl_GraphicDriver::Begin (const Aspect_Display ADisplay)
-{
-  try
-  {
-    openglDisplay = new OpenGl_Display(ADisplay);
+    openglDisplay = new OpenGl_Display (myDisplayConnection);
     return Standard_True;
   }
   catch (Standard_Failure)
@@ -73,32 +56,4 @@ void OpenGl_GraphicDriver::End ()
   // because noone guaranteed that only one instance of OpenGl_GraphicDriver is used!
   // So we disable this destructor here until openglDisplay not moved to  OpenGl_GraphicDriver class definition.
   ///openglDisplay.Nullify();
-}
-
-//=======================================================================
-//function : BeginAnimation
-//purpose  : 
-//=======================================================================
-
-void OpenGl_GraphicDriver::BeginAnimation (const Graphic3d_CView& ACView)
-{
-  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
-  if (aCView)
-  {
-    const Standard_Boolean UpdateAM = (ACView.IsDegenerates && !ACView.IsDegeneratesPrev) || (!ACView.IsDegenerates && ACView.IsDegeneratesPrev);
-    aCView->WS->BeginAnimation(ACView.IsDegenerates != 0,UpdateAM);
-    ((Graphic3d_CView*)(&ACView))->IsDegeneratesPrev = ACView.IsDegenerates; //szvgl: temporary
-  }
-}
-
-//=======================================================================
-//function : EndAnimation
-//purpose  : 
-//=======================================================================
-
-void OpenGl_GraphicDriver::EndAnimation (const Graphic3d_CView& ACView)
-{
-  const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
-  if (aCView)
-    aCView->WS->EndAnimation();
 }

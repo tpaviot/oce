@@ -6,7 +6,8 @@
 #ifndef _Aspect_GridDrawMode_HeaderFile
 #define _Aspect_GridDrawMode_HeaderFile
 
-
+//! Defines the grid draw mode. The grid may be drawn <br>
+//!          by using lines or points. <br>
 enum Aspect_GridDrawMode {
 Aspect_GDM_Lines,
 Aspect_GDM_Points,

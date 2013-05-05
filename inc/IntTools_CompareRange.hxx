@@ -34,18 +34,23 @@ public:
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_CompareRange();
   
 //! Initializes me by tolerance <br>
+//! <br>
   Standard_EXPORT   IntTools_CompareRange(const Standard_Real aTol);
   
 //! Returns True if <Left> is lower than <Right>. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsLower(const IntTools_Range& Left,const IntTools_Range& Right) const;
   
 //! Returns True if <Left> is greater than <Right>. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsGreater(const IntTools_Range& Left,const IntTools_Range& Right) const;
   
 //! Returns True when <Right> and <Left> are equal. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsEqual(const IntTools_Range& Left,const IntTools_Range& Right) const;
 
 

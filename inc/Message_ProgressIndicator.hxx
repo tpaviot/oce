@@ -43,6 +43,49 @@ class Message_ProgressScale;
 
 //! Defines abstract interface from program to the "user". <br>
 //!          That includes progress indication and user break mechanisms <br>
+//! <br>
+//!          The interface to progress indicator represents it as a scale <br>
+//!          for each range and step can be defined by the program that uses it. <br>
+//!          The scale can be made "infinite", which means it will grow <br>
+//!          non-linearly, end of scale will be approached asymptotically at <br>
+//!          infinite number of steps. In that case value of scale range <br>
+//!          gives a number of steps corresponding to position at 1/2 of scale. <br>
+//!          The current position can be either set directly (in a range from <br>
+//!          current position to maximum scale value), or incremented step <br>
+//!          by step. <br>
+//! <br>
+//!          Progress indication mechanism is adapted for convenient <br>
+//!          usage in hiererchical processes that require indication of <br>
+//!          progress at several (sub)levels of the process. <br>
+//!          For that purpose, it is possible to create restricted sub-scope of <br>
+//!          indication by specifying part of a current scale that is to be <br>
+//!          used by the subprocess. <br>
+//!          When subprocess works with progress indicator in the restricted <br>
+//!          scope, it has the same interface to a scale, while actually it <br>
+//!          deals only with part of the whole scale. <br>
+//! <br>
+//!          NOTE: <br>
+//!             Currently there is no support for concurrent progress <br>
+//!             indicator that could be useful in multithreaded applications. <br>
+//!             The main reason for this is that such implementation would be <br>
+//!             too complex regarding forecasted lack of real need for such <br>
+//!             support. <br>
+//!             To support this it would require that ProgressScale keep its <br>
+//!             own position and take care of incrementing main ProgressIndicator <br>
+//!             in destructor. This would also require having cross-references <br>
+//!             between nested instances of ProgressScale, ie. potential <br>
+//!             problems with memory management. <br>
+//!             In case of need of concurrent progress indicator two things can <br>
+//!             be suggested: either creation of single spane with summary number <br>
+//!             of steps, or usage of infinite scale. <br>
+//! <br>
+//!          The user break is implemented as virtual function that might <br>
+//!          return True in case if break signal from the user is obtained. <br>
+//! <br>
+//!          The derived classes should take care of visualisation of the <br>
+//!          progress indicator (e.g. show total position at the graphical bar, <br>
+//!          and/or print all scopes in text mode), and for implementation <br>
+//!          of user break mechanism (if defined). <br>
 class Message_ProgressIndicator : public MMgt_TShared {
 
 public:

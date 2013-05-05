@@ -29,6 +29,23 @@ class TopTools_DataMapOfShapeShape;
 
 
 //! Provides a set of following operators <br>
+//! <br>
+//!          DirectFaces <br>
+//!          FixShape <br>
+//!          SameParameter <br>
+//!          SetTolerance <br>
+//!          SplitAngle <br>
+//!          BSplineRestriction <br>
+//!          ElementaryToRevolution <br>
+//!          SurfaceToBSpline <br>
+//!          ToBezier <br>
+//!          SplitContinuity <br>
+//!          SplitClosedFaces <br>
+//!          FixWireGaps <br>
+//!          FixFaceSize <br>
+//!          DropSmallEdges <br>
+//!          FixShape <br>
+//!          SplitClosedEdges <br>
 class ShapeProcess_OperLibrary  {
 public:
 

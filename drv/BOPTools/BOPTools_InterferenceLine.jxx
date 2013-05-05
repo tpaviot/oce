@@ -1,9 +1,0 @@
-#ifndef _BOPTools_ListOfInterference_HeaderFile
-#include <BOPTools_ListOfInterference.hxx>
-#endif
-#ifndef _BOPTools_Interference_HeaderFile
-#include <BOPTools_Interference.hxx>
-#endif
-#ifndef _BOPTools_InterferenceLine_HeaderFile
-#include <BOPTools_InterferenceLine.hxx>
-#endif

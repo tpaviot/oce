@@ -25,17 +25,17 @@
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
 #endif
-#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
-#include <IntPolyh_ArrayOfCouples.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfEdges_HeaderFile
-#include <IntPolyh_ArrayOfEdges.hxx>
-#endif
 #ifndef _IntPolyh_ArrayOfPoints_HeaderFile
 #include <IntPolyh_ArrayOfPoints.hxx>
 #endif
 #ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
 #include <IntPolyh_ArrayOfTriangles.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfEdges_HeaderFile
+#include <IntPolyh_ArrayOfEdges.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
+#include <IntPolyh_ArrayOfCouples.hxx>
 #endif
 class Adaptor3d_HSurface;
 class Bnd_Box;

@@ -46,12 +46,6 @@
 #ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager3d.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
 class Standard_NotImplemented;
 class TopoDS_Shape;
 class Prs3d_Projector;
@@ -59,8 +53,6 @@ class Prs3d_Presentation;
 class Geom_Transformation;
 class SelectMgr_Selection;
 class PrsMgr_PresentationManager3d;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 
 
 //! Constructs an Interactive Object connected to a list of <br>
@@ -88,10 +80,6 @@ public:
         void Set(const TopoDS_Shape& ashap) ;
   //! Returns the shape which is constructed in Set. <br>
        const TopoDS_Shape& Shape() const;
-  //! this method should fill the presentation according to the <br>
-//!          enumerated mode of the application and to the display parameter <br>
-//!          of the application. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
 
 
 

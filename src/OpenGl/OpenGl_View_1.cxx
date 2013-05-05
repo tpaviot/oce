@@ -28,7 +28,6 @@
 #include <OpenGl_PrinterContext.hxx>
 #include <OpenGl_Workspace.hxx>
 
-
 /*----------------------------------------------------------------------*/
 
 //TelProjectionRaster in OpenGl_telem_util.cxx

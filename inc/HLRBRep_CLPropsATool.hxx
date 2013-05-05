@@ -37,29 +37,35 @@ public:
 
   //! Computes the  point <P> of  parameter <U>   on the <br>
 //!          Curve from HLRBRep <C>. <br>
+//! <br>
       static  void Value(const Standard_Address A,const Standard_Real U,gp_Pnt2d& P) ;
   //! Computes the point <P>  and  first derivative <V1> <br>
 //!          of parameter <U> on the curve <C>. <br>
+//! <br>
       static  void D1(const Standard_Address A,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1) ;
   //! Computes the point <P>,  the first derivative <V1> <br>
 //!          and second derivative <V2> of parameter <U> on the <br>
 //!          curve <C>. <br>
+//! <br>
       static  void D2(const Standard_Address A,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2) ;
   //! Computes the point <P>, the first derivative <V1>, <br>
 //!          the second derivative  <V2>   and third derivative <br>
 //!          <V3> of parameter <U> on the curve <C>. <br>
+//! <br>
       static  void D3(const Standard_Address A,const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2,gp_Vec2d& V3) ;
   //! returns the order  of continuity of the curve <C>. <br>
 //!          returns 1 :  first  derivative only is  computable <br>
 //!          returns 2  : first and  second derivative only are <br>
 //!          computable.  returns  3 : first,  second and third <br>
 //!          are computable. <br>
+//! <br>
       static  Standard_Integer Continuity(const Standard_Address A) ;
   //! returns the first parameter bound of the curve. <br>
 //! <br>
       static  Standard_Real FirstParameter(const Standard_Address A) ;
   //! returns the  last  parameter bound  of  the curve. <br>
 //!          FirstParameter must be less than LastParamenter. <br>
+//! <br>
       static  Standard_Real LastParameter(const Standard_Address A) ;
 
 

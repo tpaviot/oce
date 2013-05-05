@@ -1,6 +1,3 @@
-#ifndef _Aspect_GraphicDevice_HeaderFile
-#include <Aspect_GraphicDevice.hxx>
-#endif
 #ifndef _Aspect_WindowDefinitionError_HeaderFile
 #include <Aspect_WindowDefinitionError.hxx>
 #endif

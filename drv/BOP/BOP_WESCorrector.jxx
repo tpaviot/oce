@@ -1,6 +1,0 @@
-#ifndef _BOP_WireEdgeSet_HeaderFile
-#include <BOP_WireEdgeSet.hxx>
-#endif
-#ifndef _BOP_WESCorrector_HeaderFile
-#include <BOP_WESCorrector.hxx>
-#endif

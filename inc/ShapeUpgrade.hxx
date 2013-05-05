@@ -83,7 +83,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Unifies same domain faces and edges of specified shape <br>
   Standard_EXPORT   static  Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const Handle(Geom_BSplineCurve)& BS,Handle(TColGeom_HSequenceOfBoundedCurve)& seqBS) ;
   //! Converts C0 B-Spline curve into sequence of C1 B-Spline curves. <br>
 //!           This method splits B-Spline at the knots with multiplicities <br>

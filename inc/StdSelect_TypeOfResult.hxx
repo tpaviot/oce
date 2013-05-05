@@ -6,7 +6,9 @@
 #ifndef _StdSelect_TypeOfResult_HeaderFile
 #define _StdSelect_TypeOfResult_HeaderFile
 
-
+//! Provides values for type of result. <br>
+//! These are used to specify whether the result is to <br>
+//! be simple or whether it may be multiple. <br>
 enum StdSelect_TypeOfResult {
 StdSelect_TOR_SIMPLE,
 StdSelect_TOR_MULTIPLE

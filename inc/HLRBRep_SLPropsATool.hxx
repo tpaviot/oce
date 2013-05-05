@@ -37,6 +37,7 @@ public:
 
   //! Computes the point  <P> of 	parameter <U> and <V> <br>
 //!          on the Surface <A>. <br>
+//! <br>
       static  void Value(const Standard_Address A,const Standard_Real U,const Standard_Real V,gp_Pnt& P) ;
   //! Computes the point <P>  and first derivative <D1*> <br>
 //!          of parameter <U> and <V> on the Surface <A>. <br>

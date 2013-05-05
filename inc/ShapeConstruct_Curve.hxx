@@ -66,6 +66,9 @@ public:
   //! Modifies a curve in order to make its bounds confused with <br>
 //!           given points. <br>
 //!           Works only on lines and B-Splines. <br>
+//! <br>
+//!           For lines works as previous method, B-Splines are segmented <br>
+//!           at the given values and then are adjusted to the points. <br>
   Standard_EXPORT     Standard_Boolean AdjustCurveSegment(const Handle(Geom_Curve)& C3D,const gp_Pnt& P1,const gp_Pnt& P2,const Standard_Real U1,const Standard_Real U2) const;
   //! Modifies a curve in order to make its bounds confused with <br>
 //!           given points. <br>

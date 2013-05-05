@@ -52,7 +52,7 @@ public:
   
   Standard_EXPORT     void Set(const TopLoc_Location& Loc) ;
   //! Returns True if there is a reference on the same label <br>
-  Standard_EXPORT     TopLoc_Location Get() const;
+  Standard_EXPORT    const TopLoc_Location& Get() const;
   
   Standard_EXPORT    const Standard_GUID& ID() const;
   

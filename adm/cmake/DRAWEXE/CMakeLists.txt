@@ -6,9 +6,9 @@ SET(TOOLKIT_APP_MODULES
 SET(TOOLKIT_APP_LIBS
 	TKDraw
 	TKMesh
-	TKGeomAlgo
 	TKTopAlgo
 	TKHLR
+	TKGeomAlgo
 	TKGeomBase
 	TKG2d
 	TKBRep

@@ -16,9 +16,6 @@
 #ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
 #include <BRepAlgoAPI_BooleanOperation.hxx>
 #endif
-#ifndef _BOP_HistoryCollector_HeaderFile
-#include <BOP_HistoryCollector.hxx>
-#endif
 #ifndef _TopOpeBRepBuild_HBuilder_HeaderFile
 #include <TopOpeBRepBuild_HBuilder.hxx>
 #endif

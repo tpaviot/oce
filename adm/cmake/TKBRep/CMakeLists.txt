@@ -10,11 +10,11 @@ SET(TOOLKIT_MODULES
 	BRepTools
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKGeomBase
 	TKMath
+	TKernel
 	TKG2d
 	TKG3d
+	TKGeomBase
 )
 
 INCLUDE(../BuildToolkit.cmake)

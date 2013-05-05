@@ -26,7 +26,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! to load all sketch commands <br>
+  //! Presentation commands <br>
+//!          ===================== <br>//! to load all sketch commands <br>
   Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
   //! to display....etc... ais presentation <br>
   Standard_EXPORT   static  void AISPresentationCommands(Draw_Interpretor& I) ;

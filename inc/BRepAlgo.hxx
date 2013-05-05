@@ -26,6 +26,7 @@
 #include <Standard_Boolean.hxx>
 #endif
 class TopoDS_Wire;
+class TopoDS_Edge;
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 class BRepAlgo_BooleanOperation;
@@ -40,7 +41,6 @@ class BRepAlgo_AsDes;
 class BRepAlgo_FaceRestrictor;
 class BRepAlgo_BooleanOperations;
 class BRepAlgo_DSAccess;
-class BRepAlgo_TopOpe;
 class BRepAlgo_EdgeConnector;
 class BRepAlgo_NormalProjection;
 class BRepAlgo_DataMapOfShapeBoolean;
@@ -65,8 +65,15 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! this method makes a wire whose edges are C1 from <br>
+//!          a Wire whose edges could be G1. It removes a vertex <br>
+//!          between G1 edges. <br>
+//!          Option can be G1 or C1. <br>
   Standard_EXPORT   static  TopoDS_Wire ConcatenateWire(const TopoDS_Wire& Wire,const GeomAbs_Shape Option,const Standard_Real AngularTolerance = 1.0e-4) ;
+  //! this method makes an edge from a wire. <br>
+//!          Junction points between edges of wire may be sharp, <br>
+//!          resulting curve of the resulting edge may be C0. <br>
+  Standard_EXPORT   static  TopoDS_Edge ConcatenateWireC0(const TopoDS_Wire& Wire) ;
   //! Checks if the  shape is "correct". If not, returns <br>
 //!          <Standard_False>, else returns <Standard_True>. <br>
   Standard_EXPORT   static  Standard_Boolean IsValid(const TopoDS_Shape& S) ;
@@ -113,7 +120,6 @@ friend class BRepAlgo_AsDes;
 friend class BRepAlgo_FaceRestrictor;
 friend class BRepAlgo_BooleanOperations;
 friend class BRepAlgo_DSAccess;
-friend class BRepAlgo_TopOpe;
 friend class BRepAlgo_EdgeConnector;
 friend class BRepAlgo_NormalProjection;
 friend class BRepAlgo_DataMapOfShapeBoolean;

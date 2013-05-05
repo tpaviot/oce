@@ -366,7 +366,7 @@ OSD_Path::OSD_Path(const TCollection_AsciiString& aDependentName,
      break;
   default:
 #ifdef DEB
-     cout << " WARNING WARNING : OSD Path for an Unknown SYSTEM : " << (Standard_Integer)todo << endl;
+       cout << " WARNING WARNING : OSD Path for an Unknown SYSTEM : " << (Standard_Integer)todo << endl;
 #endif 
      UnixExtract(aDependentName,myNode,myUserName,myPassword,myTrek,myName,myExtension);
      break ;
@@ -1572,10 +1572,14 @@ static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
 
 static Standard_Integer RemoveExtraSeparator(TCollection_AsciiString& aString) {
 
-  Standard_Integer i, j, len ;
+  Standard_Integer i, j, len,start = 1 ;
 
   len = aString.Length() ;
-  for (i = j = 1 ; j <= len ; i++,j++) {
+#ifdef _WIN32
+  if (len > 1 && aString.Value(1) == '/' && aString.Value(2) == '/')
+    start = 2;
+#endif 
+  for (i = j = start ; j <= len ; i++,j++) {
       Standard_Character c = aString.Value(j) ;
       aString.SetValue(i,c) ;
       if (c == '/')

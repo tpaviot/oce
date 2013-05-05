@@ -41,6 +41,19 @@ class TColStd_HSequenceOfReal;
 
 //! This tool is used for transferring parameters <br>
 //!          from 3d curve of the edge to pcurve and vice versa. <br>
+//! <br>
+//!          Default behaviour is to trsnafer parameters with help <br>
+//!          of linear transformation: <br>
+//! <br>
+//!            T2d = myShift + myScale * T3d <br>
+//!          where <br>
+//!            myScale = ( Last2d - First2d ) / ( Last3d - First3d ) <br>
+//!            myShift = First2d - First3d * myScale <br>
+//!            [First3d, Last3d] and [First2d, Last2d] are ranges of <br>
+//!            edge on curve and pcurve <br>
+//! <br>
+//!          This behaviour can be redefined in derived classes, for example, <br>
+//!          using projection. <br>
 class ShapeAnalysis_TransferParameters : public MMgt_TShared {
 
 public:

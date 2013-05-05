@@ -220,6 +220,9 @@ public:
 //!    points will be computed from the parameters on the curve. <br>
 //! The vertices or points and the parameter values can be omitted. The first and last <br>
 //!   parameters of the curve will then be used. <br>
+//! <br>
+//!  Auxiliary methods <br>
+//! <br>
   Standard_EXPORT   BRepBuilderAPI_MakeEdge(const Handle(Geom2d_Curve)& L,const Handle(Geom_Surface)& S,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2,const Standard_Real p1,const Standard_Real p2);
   
   Standard_EXPORT     void Init(const Handle(Geom_Curve)& C) ;

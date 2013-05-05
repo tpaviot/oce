@@ -44,7 +44,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Set a Projector Variable <br>
+  //! Draw Variable Outliner to test <br>//! Set a Projector Variable <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const HLRAlgo_Projector& P) ;
   //! Get a projector variable <br>
 //!          Returns false if the variable is not a projector <br>

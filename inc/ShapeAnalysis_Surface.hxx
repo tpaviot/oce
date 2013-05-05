@@ -66,6 +66,27 @@ class Bnd_Box;
 //!          functionality for detection surface singularities, checking <br>
 //!          spatial surface closure and computing projections of 3D points <br>
 //!          onto a surface. <br>
+//! <br>
+//!          * The singularities <br>
+//!          Each singularity stores the precision with which corresponding <br>
+//!          surface iso-line is considered as degenerated. <br>
+//!          The number of singularities is determined by specifying precision <br>
+//!          and always not greater than 4. <br>
+//! <br>
+//!          * The spatial closure <br>
+//!          The check for spatial closure is performed with given precision <br>
+//!          (default value is Precision::Confusion). <br>
+//!          If Geom_Surface says that the surface is closed, this class <br>
+//!          also says this. Otherwise additional analysis is performed. <br>
+//! <br>
+//!	        * The parameters of 3D point on the surface <br>
+//!          The projection of the point is performed with given precision. <br>
+//!          This class tries to find a solution taking into account possible <br>
+//!          singularities. <br>
+//!          Additional method for searching the solution from already built <br>
+//!          one is also provided. <br>
+//! <br>
+//!          This tool is optimised: computes most information only once <br>
 class ShapeAnalysis_Surface : public MMgt_TShared {
 
 public:
@@ -139,6 +160,16 @@ public:
   Standard_EXPORT     Standard_Boolean DegeneratedValues(const gp_Pnt& P3d,const Standard_Real preci,gp_Pnt2d& firstP2d,gp_Pnt2d& lastP2d,Standard_Real& firstpar,Standard_Real& lastpar,const Standard_Boolean forward = Standard_True) ;
   //! Projects a point <P3d> on a singularity by computing <br>
 //!          one of the coordinates of preliminary computed <result>. <br>
+//! <br>
+//!          Finds the iso-line which is considered as degenerated with <br>
+//!          <preci> and <br>
+//!          a. distance between P3d and corresponding singular point is <br>
+//!             less than <preci> (like IsDegenerated) or <br>
+//!          b. difference between already computed <result>'s coordinate <br>
+//!             and iso-coordinate of the boundary is less than 2D <br>
+//!             resolution (computed from <preci> by Geom_Adaptor). <br>
+//!          Then sets not yet computed <result>'s coordinate taking it <br>
+//!          from <neighbour> and returns True. <br>
   Standard_EXPORT     Standard_Boolean ProjectDegenerated(const gp_Pnt& P3d,const Standard_Real preci,const gp_Pnt2d& neighbour,gp_Pnt2d& result) ;
   //! Checks points at the beginning (direct is True) or end <br>
 //!          (direct is False) of array <points> to lie in singularity of <br>
@@ -292,6 +323,19 @@ private:
 //!          Computes the sizes of boundaries or singular ares of the <br>
 //!          surface. Then each boundary or area is considered as <br>
 //!          degenerated with precision not less than its size. <br>
+//! <br>
+//!          The singularities and corresponding precisions are the <br>
+//!          following: <br>
+//!          - ConicalSurface -  one degenerated point (apex of the cone), <br>
+//!              precision is 0., <br>
+//!          - ToroidalSurface - two degenerated points, precision is <br>
+//!              Max (0, majorR-minorR), <br>
+//!          - SphericalSurface - two degenerated points (poles), <br>
+//!              precision is 0. <br>
+//!          - Bounded, Surface Of Revolution, Offset - four degenerated <br>
+//!              points, precisions are maximum distance between corners <br>
+//!              and middle point on the boundary <br>
+//! <br>
   Standard_EXPORT     void ComputeSingularities() ;
   
   Standard_EXPORT     void ComputeBoxes() ;

@@ -6,7 +6,7 @@
 #ifndef _Aspect_PlotterOrigin_HeaderFile
 #define _Aspect_PlotterOrigin_HeaderFile
 
-//! Defines where to search plotter files (PLO) <br>
+
 enum Aspect_PlotterOrigin {
 Aspect_PO_CENTER,
 Aspect_PO_BOTTOMLEFT,

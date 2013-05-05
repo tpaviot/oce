@@ -1,6 +1,0 @@
-#ifndef _Standard_Transient_HeaderFile
-#include <Standard_Transient.hxx>
-#endif
-#ifndef _AIS2D_LocalStatus_HeaderFile
-#include <AIS2D_LocalStatus.hxx>
-#endif

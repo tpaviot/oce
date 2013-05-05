@@ -747,8 +747,13 @@ static void InGoodPeriod(const Standard_Real Prec,
 
   if (rotation) {  
     return Standard_False;
-    
-#if 0 // @todo Should be really dead code?
+ /*   
+#ifdef DEB
+    Standard_Real U = myFirstS + ratio*(Param-myCurve->FirstParameter());
+#else
+    myCurve->FirstParameter() ;
+#endif
+      
     // initialisation du germe 
     InitX(Param);      
     
@@ -861,8 +866,7 @@ static void InGoodPeriod(const Standard_Real Prec,
 	myStatus = GeomFill_ImpossibleContact;
 	return Standard_False;
       }
-
-#endif // Dead code?
+*/
     }//if_rotation
   
 

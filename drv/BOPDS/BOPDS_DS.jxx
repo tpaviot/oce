@@ -1,0 +1,21 @@
+#ifndef _BOPDS_IndexRange_HeaderFile
+#include <BOPDS_IndexRange.hxx>
+#endif
+#ifndef _BOPDS_ShapeInfo_HeaderFile
+#include <BOPDS_ShapeInfo.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPDS_PaveBlock_HeaderFile
+#include <BOPDS_PaveBlock.hxx>
+#endif
+#ifndef _BOPDS_CommonBlock_HeaderFile
+#include <BOPDS_CommonBlock.hxx>
+#endif
+#ifndef _BOPDS_FaceInfo_HeaderFile
+#include <BOPDS_FaceInfo.hxx>
+#endif
+#ifndef _BOPDS_DS_HeaderFile
+#include <BOPDS_DS.hxx>
+#endif

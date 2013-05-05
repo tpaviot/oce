@@ -30,13 +30,6 @@
 --		13-09-99: GG; GER61454 Adds LightLimit() and PlaneLimit() methods
 --		10-11-99: GG; Add PRO19603 Redraw( area ) method
 --		14-01-00: GG; Add IMP140100 ViewManager() method
---		25-01-00: EUG: G003
---			  -> Add backfacing management methods
---			       SetBackfacingModel() & BackfacingModel().
---			  -> Change SetAnimationModeIsOn() adding degenerate flag
---			  -> SetDegenerateModeOn() and Off() become private.
---			       Use instead SetComputedMode() for managing
---				HLR in the view.
 --		THA  - 17/08/00 Thomas HARTL <t-hartl@muenchen.matra-dtv.fr>
 --				-> Add Print methods (works only under Windows).-
 --		GG - RIC120302 Add NEW SetWindow method.
@@ -75,7 +68,6 @@ uses
 
     Background              from Aspect,
     GradientBackground      from Aspect,
-    GraphicDriver           from Aspect,
     Window                  from Aspect,
     TypeOfUpdate            from Aspect,
     TypeOfHighlightMethod   from Aspect,
@@ -372,29 +364,34 @@ is
 	-- An example when we have 1 view and 1 window
 	-- -------------------------------------------
 	--
-	-- // Define a graphic device
-	-- Handle(Graphic3d_GraphicDevice) GD =
-	--			new Graphic3d_GraphicDevice ("dummy:0.0");
+  -- Handle(Aspect_DisplayConnection) aDisplayConnection;
+  -- 
+  -- // Display connection initialization only needed on Linux platform
+  -- // and on Mac OS X, in cases when you use Xlib for windows drawing.
+  -- aDisplayConnection = new Aspect_DisplayConnection();
+  --
+  -- // Graphic driver initialization
+  -- Handle(Graphic3d_GraphicDriver) aGraphicDriver = 
+  --   Graphic3d::InitGraphicDriver (aDisplayConnection);
 	--
 	-- // Define a view manager
-	-- Handle(Visual3d_ViewManager) VM = new Visual3d_ViewManager (GD);
+	-- Handle(Visual3d_ViewManager) aVisualManager = new Visual3d_ViewManager (aGraphicDriver);
 	--
 	-- // Define a view
-	-- Handle(Visual3d_View) V = new Visual3d_View (VM);
+	-- Handle(Visual3d_View) aView = new Visual3d_View (aVisaulManager);
 	--
 	-- // Define a window
-	-- Handle(Xw_Window) W = new Xw_Window
-	--	(GD, "Graphic View 1", 0.695, 0.695, 0.600, 0.600,
-	--		Xw_WQ_3DQUALITY, Quantity_NOC_MATRAGRAY);
+	-- Handle(Xw_Window) aWindow = new Xw_Window
+	--	(aDisplayConnection, "Graphic View 1", 0.695, 0.695, 0.600, 0.600, Quantity_NOC_MATRAGRAY);
 	--
 	-- // Associate the view and the window
-	-- V->SetWindow (W);
+	-- aView->SetWindow (aWindow);
 	--
 	-- // Map the window
-	-- W->Map ();
+	-- aWindow->Map ();
 	--
 	-- // Activate the view
-	-- V->Activate ();
+	-- aView->Activate ();
 	--
 
 	SetWindow ( me		: mutable;
@@ -423,40 +420,6 @@ is
 	raises ViewDefinitionError from Visual3d is static;
 	---Purpose:
 	--	    After this call, each view is mapped in an unique window.
-	--
-	-- Programming example :
-	--
-	-- An example when we have 1 view and 1 widget
-	-- -------------------------------------------
-	--
-	-- // Define a graphic device
-	-- Handle(Graphic3d_GraphicDevice) GD =
-	--			new Graphic3d_GraphicDevice ("dummy:0.0");
-	--
-	-- // Define a view manager
-	-- Handle(Visual3d_ViewManager) VM = new Visual3d_ViewManager (GD);
-	--
-	-- // Define a view
-	-- Handle(Visual3d_View) V = new Visual3d_View (VM);
-	--
-	-- // Define a widget
-	-- Widget DA = GLwCreateMDrawingArea (Widget parent, char *name,
-        --                             ArgList arglist, Cardinal argcount);
-	-- Handle(Xw_Window) W = new Xw_Window(DA);
-	--
-	-- // Define the graphic context
-	-- GLXContext CTX = glXCreateContext(...)
-	-- // Define the graphic call back and client data
-	-- Handle(Object_View) myObject = new Object_View(...);
-	-- static void DisplayCallback( Window w, XtPointer client_data,
-	--			XtPointer call_data)
-	-- { .... }
-	-- // Associate the view and the widget
-	-- V->SetWindow (W, CTX, DisplayCallback, myObject);
-	--
-	-- // Activate the view
-	-- V->Activate ();
-	--
 
 	Update ( me	: mutable )
 		is static;
@@ -487,63 +450,6 @@ is
 	---Purpose: Sets the value of the orientation to be the same as the
 	--	    orientation saved by the SetViewOrientationDefaut method.
 	---Category: Methods to modify the class definition
-
-	---------------------------------------------------
-	-- Category: Methods to modify the class definition
-	--	     Animation Mode
-	---------------------------------------------------
-
-	SetAnimationModeOn ( me	: mutable;
-		degenerate : Boolean from Standard = Standard_False )
-		is static;
-	---Level: Advanced
-	---Purpose: Activates animation mode with an optional degeneration
-	--	according to the TypeOfDegenerateModel of each graphic structure
-	--	When the animation mode is activated in the view,
-	--	all Graphic3d_Structure are stored in a graphic object.
-	--  Warning: only ONE view may have animation mode turned on
-	--	at same time.
-	---Category: Methods to modify the class definition
-
-	SetAnimationModeOff ( me	: mutable )
-		is static;
-	---Level: Advanced
-	---Purpose: Deactivates the animation mode.
-	---Category: Methods to modify the class definition
-
-	AnimationModeIsOn ( me )
-		returns Boolean from Standard
-		is static;
-	---Level: Advanced
-	---Purpose: Returns the activity of the animation mode.
-	---Category: Inquire methods
-
-	---------------------------------------------------
-	-- Category: Methods to modify the class definition
-	--	     Degenerate Mode
-	---------------------------------------------------
-
-	SetDegenerateModeOn ( me	: mutable )
-		is static private;
-	---Level: Advanced
-	---Purpose: Activates degenerate mode.
-	--	When the degenerate mode is activated in the view,
-	--	all Graphic3d_Structure with the type TOS_COMPUTED
-	--	displayed in this view are not computed.
-	---Category: Methods to modify the class definition
-
-	SetDegenerateModeOff ( me	: mutable )
-		is static private;
-	---Level: Advanced
-	---Purpose: Deactivates the degenerate mode.
-	---Category: Methods to modify the class definition
-
-	DegenerateModeIsOn ( me )
-		returns Boolean from Standard
-		is static;
-	---Level: Advanced
-	---Purpose: Returns the activity of the degenerate mode.
-	---Category: Inquire methods
 
     	SetComputedMode ( me : mutable; aMode : Boolean from Standard ) is static;
     	---Level: Advanced
@@ -1079,11 +985,12 @@ is
 	---Category: Private methods
 
 	GraphicDriver ( me )
-		returns GraphicDriver from Aspect
+		returns GraphicDriver from Graphic3d
 		is static;
 	---Level: Internal
 	---Purpose: Returns the associated GraphicDriver.
 	---Category: Internal methods
+  ---C++: return const &
 
 	HaveTheSameOwner ( me;
 			   AStructure	: Structure from Graphic3d )

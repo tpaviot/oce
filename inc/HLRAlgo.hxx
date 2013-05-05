@@ -82,7 +82,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Iterator  on the  visible or  hidden  parts of  an <br>
+//!          EdgeStatus. <br>
   Standard_EXPORT   static  void UpdateMinMax(const Standard_Real x,const Standard_Real y,const Standard_Real z,const Standard_Address Min,const Standard_Address Max) ;
   
   Standard_EXPORT   static  void EnlargeMinMax(const Standard_Real tol,const Standard_Address Min,const Standard_Address Max) ;

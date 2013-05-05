@@ -46,6 +46,12 @@ class gp_XYZ;
 
 //! defines IGES View Entity, Type <410> Form <0> <br>
 //!           in package IGESDraw <br>
+//! <br>
+//!           Used to define a framework for specifying a viewing <br>
+//!           orientation of an object in three dimensional model <br>
+//!           space (X,Y,Z). The framework is also used to support <br>
+//!           the projection of all or part of model space onto a <br>
+//!           view volume. <br>
 class IGESDraw_View : public IGESData_ViewKindEntity {
 
 public:

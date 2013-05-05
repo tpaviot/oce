@@ -6,7 +6,17 @@
 #ifndef _Aspect_TypeOfTriedronEcho_HeaderFile
 #define _Aspect_TypeOfTriedronEcho_HeaderFile
 
-
+//! Definition of the Triedron echo zone to highlight <br>
+//! <br>
+//!          TOTE_NONE           no echo zone <br>
+//!          TOTE_ORIGIN         a box on origin of the Triedron <br>
+//!          TOTE_AXIS_X         highlights the X axis <br>
+//!          TOTE_AXIS_Y         highlights the Y axis <br>
+//!          TOTE_AXIS_Z         highlights the Z axis <br>
+//!          TOTE_TEXT_X         highlights the X character <br>
+//!          TOTE_TEXT_Y         highlights the Y character <br>
+//!          TOTE_TEXT_Z         highlights the Z character <br>
+//!          TOTE_01 to TOTE_10  not yet implemented. <br>
 enum Aspect_TypeOfTriedronEcho {
 Aspect_TOTE_NONE,
 Aspect_TOTE_ORIGIN,

@@ -64,9 +64,16 @@ public:
 protected:
 
   //! Initialise the constructor for Graphic3d_AspectLine3d. <br>
+//! <br>
+//! Default values : <br>
+//!		Color = Quantity_NOC_YELLOW; <br>
+//!		Type  = Aspect_TOL_SOLID; <br>
+//!		Width = 1.0; <br>
+//! <br>
   Standard_EXPORT   Aspect_AspectLine();
   //! Initialise the values for the <br>
 //!	    constructor of Graphic3d_AspectLine3d. <br>
+//! <br>
   Standard_EXPORT   Aspect_AspectLine(const Quantity_Color& AColor,const Aspect_TypeOfLine AType,const Standard_Real AWidth);
 
 

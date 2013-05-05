@@ -19,7 +19,6 @@
 #ifndef _NCollection_Vec4_H__
 #define _NCollection_Vec4_H__
 
-#include <cstring>
 #include <NCollection_Vec3.hxx>
 
 //! Generic 4-components vector.

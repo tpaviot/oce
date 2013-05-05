@@ -6,10 +6,8 @@
 #ifndef _V3d_TypeOfVisualization_HeaderFile
 #define _V3d_TypeOfVisualization_HeaderFile
 
-//! Modes of visualization for objects in a view <br>
-//! -   V3d_TEX_NONE: no texture mapping, <br>
-//! -   V3d_TEX_ENVIRONMENT: environment mapping only, <br>
-//! -   V3d_TEX_ALL: environment and texture mapping. <br>
+//! Determines the type of visualization in the view, either <br>
+//! WIREFRAME or ZBUFFER (shading). <br>
 enum V3d_TypeOfVisualization {
 V3d_WIREFRAME,
 V3d_ZBUFFER

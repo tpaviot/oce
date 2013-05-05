@@ -98,6 +98,47 @@ public:
 //!             dCurv1(u1)           dCurv2(u2) <br>
 //!             --------     and     --------- <br>
 //!             du                   du <br>
+//! <br>
+//!           - the ratio   between  the magnitudes  of the first <br>
+//!             derivatives <br>
+//! <br>
+//!            the angle value is between 0 and PI/2 <br>
+//! <br>
+//!           case  C2 <br>
+//!           ------- <br>
+//!           - the angle  between the second derivatives <br>
+//!             2                   2 <br>
+//!            d  Curv1(u1)       d Curv2(u2) <br>
+//!            ----------        ---------- <br>
+//!             2                   2 <br>
+//!            du                  du <br>
+//! <br>
+//!            the angle value is between 0 and PI/2 <br>
+//! <br>
+//!           - the ratio between the magnitudes of  the second <br>
+//!             derivatives <br>
+//! <br>
+//!           case G1 <br>
+//!           ------- <br>
+//!           the angle between  the tangents at each point <br>
+//! <br>
+//!           the angle value is between 0 and PI/2 <br>
+//! <br>
+//!           case G2 <br>
+//!           ------- <br>
+//!           -the angle between the normals at each point <br>
+//! <br>
+//!            the angle value is between 0 and PI/2 <br>
+//! <br>
+//!           - the relative variation of curvature: <br>
+//!            |curvat1-curvat2| <br>
+//!            ------------------ <br>
+//!                              1/2 <br>
+//!            (curvat1*curvat2) <br>
+//! <br>
+//!             where curvat1 is the curvature at the first point <br>
+//!              and curvat2 the curvature at the second point <br>
+//! <br>
   Standard_EXPORT   LocalAnalysis_CurveContinuity(const Handle(Geom_Curve)& Curv1,const Standard_Real u1,const Handle(Geom_Curve)& Curv2,const Standard_Real u2,const GeomAbs_Shape Order,const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real EpsG2 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
   
   Standard_EXPORT     Standard_Boolean IsDone() const;

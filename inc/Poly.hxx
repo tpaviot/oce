@@ -56,12 +56,23 @@ class Poly_Connect;
 
 //! This  package  provides  classes  and services  to <br>
 //!          handle : <br>
+//! <br>
+//!          * 3D triangular polyhedrons. <br>
+//! <br>
+//!          * 3D polygons. <br>
+//! <br>
+//!          * 2D polygon. <br>
+//! <br>
+//!          * Tools to dump, save and restore those objects. <br>
 class Poly  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Join several triangulations to one new triangulation object. <br>
+  //! Computes and  stores  the    link from   nodes  to <br>
+//!          triangles     and from triangles to   neighbouring <br>
+//!          triangles. <br>
+//! This tool is obsolete, replaced by Poly_CoherentTriangulation <br>//! Algorithm to make minimal loops in a graph <br>//! Join several triangulations to one new triangulation object. <br>
 //!          The new triangulation is just a mechanical sum of input <br>
 //!          triangulations, without node sharing. UV coordinates are <br>
 //!          dropped in the result. <br>

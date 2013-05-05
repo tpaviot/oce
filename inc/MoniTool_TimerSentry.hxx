@@ -27,6 +27,10 @@ class MoniTool_Timer;
 
 //! A tool to facilitate using MoniTool_Timer functionality <br>
 //!          by automatically ensuring consistency of start/stop actions <br>
+//! <br>
+//!          When instance of TimerSentry is created, a timer <br>
+//!          with corresponding name is started <br>
+//!          When instance is deleted, timer stops <br>
 class MoniTool_TimerSentry  {
 public:
 

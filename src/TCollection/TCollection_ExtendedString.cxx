@@ -166,12 +166,13 @@ TCollection_ExtendedString::TCollection_ExtendedString
       mylength = nbSymbols(astring);
       mystring = Allocate(ROUNDMEM((mylength+1)*2));
       if(!ConvertToUnicode (astring))
+      {
 #ifdef DEB
 	cout <<"UTF8 decoding failure..." <<endl;
 #else
 	  {}
 #endif
-      ;
+      }
     }
   }
   else {
@@ -259,7 +260,7 @@ TCollection_ExtendedString::TCollection_ExtendedString
 {
   union {int bid ;
          char t [13];} CHN ;
-  sprintf(&CHN.t[0],"%d",aValue);
+  Sprintf(&CHN.t[0],"%d",aValue);
 #if OptJr
   STRINGLEN( CHN.t , mylength ) ;
 #else
@@ -278,7 +279,7 @@ TCollection_ExtendedString::TCollection_ExtendedString
 {
   union {int bid ;
          char t [50];} CHN ;
-  sprintf(&CHN.t[0],"%g",aValue);
+  Sprintf(&CHN.t[0],"%g",aValue);
 #if OptJr
   STRINGLEN( CHN.t , mylength ) ;
 #else

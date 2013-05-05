@@ -96,12 +96,15 @@ void TDF_CopyLabel::ExternalReferences(const TDF_Label& aRefLabel, const TDF_Lab
 
 //       TDF_Tool::Entry(att->Label(), entr1);  
 //       cout<<"\t\tReferences attribute dynamic type = "<<att->DynamicType()<<" Label = "<<entr1 <<endl;
-      if (aFilter.IsKept(att) && att->Label().IsDifferent(aRefLabel) &&
-	  !att->Label().IsDescendant(aRefLabel)) {
-	aExternals.Add(att);
+      if (!att.IsNull() && !att->Label().IsNull())
+      {
+        if (aFilter.IsKept(att) && att->Label().IsDifferent(aRefLabel) &&
+	    !att->Label().IsDescendant(aRefLabel)) {
+          aExternals.Add(att);
+        }
       }
     }
-
+    
 //     const TDF_LabelMap& labMap = ds->Labels();
 //     for (TDF_MapIteratorOfLabelMap labMItr(labMap);labMItr.More(); labMItr.Next()) {
 //       TDF_Tool::Entry(labMItr.Key(), entr1);  

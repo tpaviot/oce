@@ -6,7 +6,20 @@
 #ifndef _gp_TrsfForm_HeaderFile
 #define _gp_TrsfForm_HeaderFile
 
-//! Identifies the type of a geometric transformation. <br>
+//! Enumerates all 24 possible variants of generalized <br>
+//!          Euler angles, defining general 3d rotation by three <br>
+//!          rotations around main axes of coordinate system, <br>
+//!          in different possible orders. <br>
+//!          The name of the enumeration <br>
+//! 	      corresponds to order of rotations, prefixed by type <br>
+//!          of co-ordinate system used: <br>
+//!          - Intrinsic: rotations are made around axes of rotating <br>
+//!            co-ordinate system associated with the object <br>
+//!          - Extrinsic: rotations are made around axes of fixed <br>
+//!            (reference) co-ordinate system <br>
+//!          Two specific values provided for most frequently used <br>
+//!          conventions: proper Euler angles (intrinsic ZXZ) and <br>
+//!          yaw-pitch-roll (intrinsic ZYX). <br>
 enum gp_TrsfForm {
 gp_Identity,
 gp_Rotation,

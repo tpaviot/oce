@@ -1,6 +1,0 @@
-#ifndef _IntPolyh_Couple_HeaderFile
-#include <IntPolyh_Couple.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
-#include <IntPolyh_ArrayOfCouples.hxx>
-#endif

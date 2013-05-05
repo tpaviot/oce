@@ -77,7 +77,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Writes one line of commentary in  anOStream (VRML file). <br>
+  //! Writes a header in anOStream (VRML file). <br>//! Writes one line of commentary in  anOStream (VRML file). <br>
   Standard_EXPORT   static  Standard_OStream& VrmlHeaderWriter(Standard_OStream& anOStream) ;
   
   Standard_EXPORT   static  Standard_OStream& CommentWriter(const Standard_CString aComment,Standard_OStream& anOStream) ;

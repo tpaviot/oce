@@ -31,6 +31,7 @@
 #include <gp.hxx>
 #include <gp_Ax2d.hxx>
 #include <gp_Dir2d.hxx>
+#include <gp_Pln.hxx>
 #include <gp_Pnt2d.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Trsf2d.hxx>
@@ -42,6 +43,7 @@
 #include <Geom_Plane.hxx>
 #include <Geom_RectangularTrimmedSurface.hxx>
 #include <Geom_SphericalSurface.hxx>
+#include <Geom_Surface.hxx>
 #include <Geom_SurfaceOfLinearExtrusion.hxx>
 #include <Geom_SurfaceOfRevolution.hxx>
 #include <Geom_ToroidalSurface.hxx>
@@ -332,9 +334,7 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferEdge (const TopoDS_Edge&
   
   // returns the 2d curve associated to myedge in the parametric space of myface
   Standard_Real First, Last;
-
-  Handle(Geom2d_Curve) Curve2d = BRep_Tool::CurveOnSurface
-    (myedge, myface, First, Last);
+  Handle(Geom2d_Curve) Curve2d = BRep_Tool::CurveOnSurface(myedge, myface, First, Last);
   Handle(IGESData_IGESEntity) ICurve2d;
   //#29 rln 19.10.98
 
@@ -347,6 +347,9 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferEdge (const TopoDS_Edge&
     
     TopLoc_Location L;
     Handle(Geom_Surface) st = BRep_Tool::Surface(myface, L);
+    if (st->IsKind(STANDARD_TYPE(Geom_Plane))){
+      return res;
+    }
     Standard_Real Ufirst, Ulast, Vfirst, Vlast;
     BRepTools::UVBounds(myface, Ufirst, Ulast, Vfirst, Vlast);
     Handle(Geom_Surface) Surf;
@@ -445,17 +448,10 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferEdge (const TopoDS_Edge&
 //      trans.SetScale(gp_Pnt2d(0,0),1./Vlast);
 
       Standard_Real du = 1.;
-      Handle(Geom_SurfaceOfLinearExtrusion) LE =
-        Handle(Geom_SurfaceOfLinearExtrusion)::DownCast(Surf);
-      if(LE->BasisCurve()->IsKind(STANDARD_TYPE(Geom_TrimmedCurve))) {
-        Handle(Geom_TrimmedCurve) tc =
-          Handle(Geom_TrimmedCurve)::DownCast(LE->BasisCurve());
-        if(tc->BasisCurve()->IsKind(STANDARD_TYPE(Geom_Line))) {
-          Standard_Real us1,us2,vs1,vs2;
-          Surf->Bounds(us1,us2,vs1,vs2);
-          du = us2-us1;
-        }
-      }
+      Standard_Real us1,us2,vs1,vs2;
+      //scaling parameterization to [0,1]
+      Surf->Bounds(us1,us2,vs1,vs2);
+      du = us2-us1;
       //emv: changed for bug OCC22126 17.12.2010
       uFact = (Vlast - Vfirst)/du;
       //uFact = aDiv/du;
@@ -475,7 +471,11 @@ Handle(IGESData_IGESEntity) BRepToIGES_BRWire ::TransferEdge (const TopoDS_Edge&
     if(Surf->IsKind(STANDARD_TYPE(Geom_SurfaceOfLinearExtrusion))) {
       //emv: changed for bug OCC22126 17.12.2010
       gp_Trsf2d trans1;
-      trans1.SetTranslation(gp_Vec2d(0.,-Vfirst/(Vlast-Vfirst)));
+      Standard_Real us1,us2,vs1,vs2,du;
+      //computing shift of pcurves
+      Surf->Bounds(us1,us2,vs1,vs2);
+      du = us2-us1;
+      trans1.SetTranslation(gp_Vec2d(-us1/du,-Vfirst/(Vlast-Vfirst)));
       Curve2d = sbe.TransformPCurve(Curve2d,trans1,1.,First,Last);
     }
 

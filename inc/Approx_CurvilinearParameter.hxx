@@ -68,8 +68,10 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //! case of a free 3D curve <br>
+//! <br>
   Standard_EXPORT   Approx_CurvilinearParameter(const Handle(Adaptor3d_HCurve)& C3D,const Standard_Real Tol,const GeomAbs_Shape Order,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
   //! case of a curve on one surface <br>
+//! <br>
   Standard_EXPORT   Approx_CurvilinearParameter(const Handle(Adaptor2d_HCurve2d)& C2D,const Handle(Adaptor3d_HSurface)& Surf,const Standard_Real Tol,const GeomAbs_Shape Order,const Standard_Integer MaxDegree,const Standard_Integer MaxSegments);
   //! case of a curve on two surfaces <br>
 //! <br>

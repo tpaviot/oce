@@ -76,9 +76,13 @@ public:
   Standard_EXPORT   static  void AddStorageDrivers(const Handle(MDF_ASDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
   //! Adds the attribute retrieval drivers to <aDriverSeq>. <br>
   Standard_EXPORT   static  void AddRetrievalDrivers(const Handle(MDF_ARDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  
+  //! Method to launch in MgtGeom <br>
+//!           Delete MDataStd_1.cxx <br>
+//!           Modify MDataStd_GeometryStorageDriver::Paste <br>
   Standard_EXPORT   static  Handle_PGeom_Geometry Translate(const Handle(Geom_Geometry)& Geometry) ;
-  //! Translation of TDataXtd enumerations to integer <br>
+  //! Method to lasunch in MgtGeom <br>
+//!           Delete MDataStd_1.cxx <br>
+//!           Modify MDataStd_GeometryRetrievalDriver::Paste <br>//! Translation of TDataXtd enumerations to integer <br>
 //!          =============================================== <br>
   Standard_EXPORT   static  Handle_Geom_Geometry Translate(const Handle(PGeom_Geometry)& Geometry) ;
   

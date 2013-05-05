@@ -366,9 +366,7 @@ Standard_Boolean TopOpeBRepTool_mkTondgE::MkTonE(const TopoDS_Edge& ei, Standard
     else         mkT = outin ? MKI2 : MKI1;
     return Standard_True;
     ////////////////////////////////////////////////
-	
-	// @todo Must this be really dead code? (warning-fix removal)
-#if 0
+/*
     // xxri : 
     Standard_Real ddot = tgin1di.Dot(faxis);
     Standard_Boolean tgaxis = Abs(1-(Abs(ddot))) < FUN_tola(); //=true : edge is tangent to sphere's axis
@@ -380,8 +378,7 @@ Standard_Boolean TopOpeBRepTool_mkTondgE::MkTonE(const TopoDS_Edge& ei, Standard
       if ((!onfi) && (!onli)) {mkT = MKI12; return Standard_True;} // @190499
       if (closedi)            {mkT = MKI12; return Standard_True;}// onfi || onli @190499
       xxri = tgin1di;
-    }
-#endif
+    }*/
   }//!isT2d
 
   mkT = MKI12;  // without restrictions.
@@ -390,5 +387,7 @@ Standard_Boolean TopOpeBRepTool_mkTondgE::MkTonE(const TopoDS_Edge& ei, Standard
   Standard_Boolean keepang = (dot > 0);  
   if (keepang) mkT = outin ? MKI1 : MKI2;
   else         mkT = outin ? MKI2 : MKI1;
+
   return Standard_True;
+
 }

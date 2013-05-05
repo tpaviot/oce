@@ -49,7 +49,7 @@ proc test {group grid casename {echo 0}} {
     if { "$echo" == "-echo" } { set echo t }
 
     # run test
-    uplevel _run_test $dir $group $gridname $casefile $echo
+    uplevel _run_test $dir $group $gridname $casefile $echo 
 
     # check log
     if { ! $echo } {
@@ -65,7 +65,7 @@ help testgrid {
   Use: testgrid [group [grid]] [options...]
   Allowed options are:
   -parallel N: run N parallel processes (default is number of CPUs, 0 to disable)
-  -refresh N: save summary logs every N seconds (default 60, minimal 1, 0 to disable)
+  -refresh N: save summary logs every N seconds (default 600, minimal 1, 0 to disable)
   -outdir dirname: set log directory (should be empty or non-existing)
   -overwrite: force writing logs in existing non-empty directory
   -xml filename: write XML report for Jenkins (in JUnit-like format)
@@ -295,12 +295,15 @@ proc testgrid {args} {
     ######################################################
     
     # log command arguments and environment
-    set log "Command: testgrid $args\nHost: [info hostname]\nStarted on: [clock format [clock seconds] -format {%Y-%m-%d %H:%M:%S}]\n"
-    set log "$log\nEnvironment:\n"
-    foreach envar [array names env] {
-	set log "$log$envar=\"$env($envar)\"\n"
+    lappend log "Command: testgrid $args"
+    lappend log "Host: [info hostname]"
+    lappend log "Started on: [clock format [clock seconds] -format {%Y-%m-%d %H:%M:%S}]"
+    catch {lappend log "DRAW build:\n[dversion]" }
+    lappend log "Environment:"
+    foreach envar [lsort [array names env]] {
+	lappend log "$envar=\"$env($envar)\""
     }
-    set log "$log\n"
+    lappend log ""
 
     set refresh_timer [clock seconds]
     uplevel dchrono _timer reset
@@ -317,11 +320,23 @@ proc testgrid {args} {
 	    # of starting / processing jobs by running threads
 	    catch {tpool::suspend $worker}
 	    if { $_tests_verbose > 0 } { _log_and_puts log "Executing tests in (up to) $parallel threads" }
+            # limit number of jobs in the queue by reasonable value
+            # to prevent slowdown due to unnecessary queue processing
+            set nbpooled 0
+            set nbpooled_max [expr 10 * $parallel]
+            set nbpooled_ok  [expr  5 * $parallel]
 	}
     }
 
     # start test cases
+    set userbreak 0
     foreach test_def $tests_list {
+        # check for user break
+        if { $userbreak || "[info commands dbreak]" == "dbreak" && [catch dbreak] } {
+            set userbreak 1
+            break
+        }
+
 	set dir       [lindex $test_def 0]
 	set group     [lindex $test_def 1]
 	set grid      [lindex $test_def 2]
@@ -370,6 +385,10 @@ proc testgrid {args} {
 	    # parallel execution
 	    set job [tpool::post -nowait $worker "catch \"$command\" output; return \$output"]
 	    set job_def($job) [list $logdir $dir $group $grid $casename]
+            incr nbpooled
+            if { $nbpooled > $nbpooled_max } {
+                _testgrid_process_jobs $worker $nbpooled_ok
+            }
 	} else {
 	    # sequential execution
 	    catch {eval $command} output
@@ -386,25 +405,22 @@ proc testgrid {args} {
 
     # get results of started threads
     if { $parallel > 0 } {
-	catch {tpool::resume $worker}
-	while { [llength [array names job_def]] > 0 } {
-	    foreach job [tpool::wait $worker [array names job_def]] {
-		eval _log_test_case \[tpool::get $worker $job\] $job_def($job) log
-		unset job_def($job)
-	    }
-
-	    # update summary log with requested period
-	    if { $logdir != "" && $refresh > 0 && [clock seconds] > $refresh_timer + $refresh } {
-		_log_summarize $logdir $log
-		set refresh_timer [clock seconds]
-	    }
-	}
+        _testgrid_process_jobs $worker
 	# release thread pool
+        if { $nbpooled > 0 } {
+	    tpool::cancel $worker [array names job_def]
+        }
+        catch {tpool::resume $worker}
 	tpool::release $worker
     }
 
     uplevel dchrono _timer stop
     set time [lindex [split [uplevel dchrono _timer show] "\n"] 0]
+
+    if { $userbreak } {
+        _log_and_puts log "*********** Stopped by user break ***********"
+        set time "${time} \nNote: the process is not finished, stopped by user break!"
+    }
 
     ######################################################
     # output summary logs and exit
@@ -441,7 +457,7 @@ proc testsummarize {dir} {
     }
 
     # get summary statements from all test cases in one log
-    set log ""
+    set log {}
 
     # to avoid huge listing of logs, first find all subdirectories and iterate
     # by them, parsing log files in each subdirectory independently 
@@ -455,7 +471,7 @@ proc testsummarize {dir} {
                     if { "[file join $grid $caselog]" != "[file join $grp $grd ${cas}.log]" } { 
                         puts "Error: $file contains status line for another test case ($line)"
                     }
-	            set log "$log$line\n"
+	            lappend log $line
 	            incr nbfound
 	        }
 	    }
@@ -478,7 +494,7 @@ help testdiff {
   Where dir1 and dir2 are directories containing logs of two test runs.
   Allowed options are:
   -save filename: save resulting log in specified file (default name is
-                  \$dir1/diff-\$dir2.log); HTML log is saved with same name
+                  <dir1>/diff-<dir2>.log); HTML log is saved with same name
                   and extension .html
   -status {same|ok|all}: filter cases for comparing by their status:
           same - only cases with same status are compared (default)
@@ -553,7 +569,7 @@ proc testdiff {dir1 dir2 args} {
 
     # save result to log file
     if { "$logfile" != "" } {
-        _log_save $logfile $log
+        _log_save $logfile [join $log "\n"]
         _log_html_diff "[file rootname $logfile].html" $log $dir1 $dir2
         puts "Log is saved to $logfile (and .html)"
     }
@@ -574,7 +590,7 @@ help testfile {
 
   Unless the file is already in the repository, tries to load it, reports
   the recognized file format, file size, number of faces and edges in the 
-  loaded shape (if any), and makes snapshot (in the subdirectory tmp).
+  loaded shape (if any), and makes snapshot (in the temporary directory).
   Finally it advises whether the file should be put to public section of the 
   repository.
 }
@@ -702,18 +718,19 @@ proc testfile {filelist} {
         # add stats
         puts "$file: $format size=[expr $size / 1024] KiB, nbfaces=$faces, nbedges=$edges -> $dir"
 
-        file mkdir tmp/$dir
+        set tmpdir [_get_temp_dir]
+        file mkdir $tmpdir/$dir
 
         # make snapshot
         pload AISV
         uplevel vdisplay a
         uplevel vfit
         uplevel vzfit
-        uplevel vdump tmp/$dir/[file rootname [file tail $file]].png
+        uplevel vdump $tmpdir/$dir/[file rootname [file tail $file]].png
         set has_images t
     }
     if { $has_images } {
-        puts "Snapshots are saved in subdirectory tmp"
+        puts "Snapshots are saved in subdirectory [_get_temp_dir]"
     }
 }
 
@@ -756,7 +773,7 @@ proc locate_data_file {filename} {
     }
 
     # raise error
-    error [join [list "Error: file $filename could not be found" \
+    error [join [list "File $filename could not be found" \
 		      "(should be in paths indicated by CSF_TestDataPath environment variable, " \
                       "or in subfolder data in the script directory)"] "\n"]
 }
@@ -865,24 +882,30 @@ proc _run_test {scriptsdir group gridname casefile echo} {
 		set optarg [lindex $args end-1]
 		if { $optarg == "stdout" || $optarg == "stderr" || $optarg == "-newline" } {
 		    dlog add [lindex $args end]
+		} else {
+		    eval puts-saved $args
 		}
 	    } else {
 		dlog add [lindex $args end]
-	    }
-
-	    # reproduce original puts
-	    if { $_tests_verbose } {
-		eval puts-saved $args
 	    }
 	}
     }
 
     # evaluate test case 
     if [catch {
+        # set variables identifying test case
 	uplevel set casename [file tail $casefile]
 	uplevel set groupname $group
 	uplevel set gridname $gridname
+	uplevel set dirname  $scriptsdir
 
+	# set variables for saving of images if not yet set
+	if { ! [uplevel info exists imagedir] } {
+	    uplevel set imagedir [_get_temp_dir]
+	    uplevel set test_image \$casename
+	}
+
+	# execute test scripts 
         if { [file exists $scriptsdir/$group/begin] } {
 	    puts "Executing $scriptsdir/$group/begin..."; flush stdout
 	    uplevel source $scriptsdir/$group/begin
@@ -943,8 +966,8 @@ proc _check_log {dir group gridname casename log {_summary {}} {_html_log {}}} {
     global env
     if { $_summary != "" } { upvar $_summary summary }
     if { $_html_log != "" } { upvar $_html_log html_log }
-    set summary ""
-    set html_log ""
+    set summary {}
+    set html_log {}
 
 if [catch {
 
@@ -982,7 +1005,7 @@ if [catch {
 	if [regexp -nocase {^[ \t]*TODO ([^:]*):(.*)$} $line res platforms pattern] {
 	    if { ! [regexp -nocase {\mAll\M} $platforms] && 
                  ! [regexp -nocase "\\m$env(os_type)\\M" $platforms] } {
-		set html_log "$html_log\n$line"
+		lappend html_log $line
 		continue ;# TODO statement is for another platform
 	    }
 
@@ -992,7 +1015,7 @@ if [catch {
             }
 
 	    lappend todos [regsub -all {\\b} [string trim $pattern] {\\y}] ;# convert regexp from Perl to Tcl style
-	    set html_log "$html_log\n[_html_highlight BAD $line]"
+	    lappend html_log [_html_highlight BAD $line]
 	    continue
 	}
 
@@ -1006,7 +1029,7 @@ if [catch {
 		    if { [regexp [lindex $todos $i] $line] } {
 			set is_known 1
 			incr todo_count($i)
-			set html_log "$html_log\n[_html_highlight BAD $line]"
+			lappend html_log [_html_highlight BAD $line]
 			break
 		    }
 		}
@@ -1014,7 +1037,7 @@ if [catch {
 		# if it is not in todo, define status
 		if { ! $is_known } {
 		    set stat [lindex $bw 0 0]
-		    set html_log "$html_log\n[_html_highlight $stat $line]"
+		    lappend html_log [_html_highlight $stat $line]
 		    if { $status == "" && $stat != "OK" && ! [regexp -nocase {^IGNOR} $stat] } {
 			set status [lindex $bw 0]
 		    }
@@ -1024,7 +1047,7 @@ if [catch {
 	    }
 	}
 	if { ! $ismarked } { 
-	    set html_log "$html_log\n$line"
+	    lappend html_log $line
 	}
     }
 
@@ -1067,18 +1090,15 @@ if [catch {
 
     # put final message
     _log_and_puts summary "CASE $group $gridname $casename: $status"
-    set html_log "[_html_highlight [lindex $status 0] $summary]\n$html_log"
+    set summary [join $summary "\n"]
+    set html_log "[_html_highlight [lindex $status 0] $summary]\n[join $html_log \n]"
 }
 
 # Auxiliary procedure putting message to both cout and log variable (list)
 proc _log_and_puts {logvar message} {
     if { $logvar != "" } { 
 	upvar $logvar log
-	if [info exists log] { 
-	    set log "$log$message\n"
-	} else {
-	    set log "$message\n"
-	}
+	lappend log $message
     }
     puts $message
 }
@@ -1089,7 +1109,7 @@ proc _log_test_case {output logdir dir group grid casename logvar} {
 
     # check result and make HTML log
     _check_log $dir $group $grid $casename $output summary html_log
-    set log "$log$summary"
+    lappend log $summary
 
     # save log to file
     if { $logdir != "" } {
@@ -1147,7 +1167,7 @@ proc _log_html {file log {title {}}} {
     # add images if present
     set imgbasename [file rootname [file tail $file]]
     foreach img [lsort [glob -nocomplain -directory [file dirname $file] -tails ${imgbasename}*.gif ${imgbasename}*.png ${imgbasename}*.jpg]] {
-	puts $fd "<p><img src=\"$img\"/><p>"
+	puts $fd "<p>[file tail $img]<br><img src=\"$img\"/><p>"
     }
 
     # print log body, trying to add HTML links to script files on lines like
@@ -1197,8 +1217,8 @@ proc _html_highlight {status line} {
 proc _log_html_summary {logdir log totals regressions improvements total_time} {
     global _test_case_regexp
 
-     # create missing directories as needed
-    catch {file mkdir $logdir}
+    # create missing directories as needed
+    file mkdir $logdir
 
     # try to open a file and start HTML
     if [catch {set fd [open $logdir/summary.html w]} res] {
@@ -1234,7 +1254,8 @@ proc _log_html_summary {logdir log totals regressions improvements total_time} {
 
     # time stamp and elapsed time info
     if { $total_time != "" } { 
-	puts $fd "<p>Generated on [clock format [clock seconds] -format {%Y-%m-%d %H:%M:%S}] on [info hostname] <p> $total_time" 
+	puts $fd "<p>Generated on [clock format [clock seconds] -format {%Y-%m-%d %H:%M:%S}] on [info hostname]\n<p>"
+        puts $fd [join [split $total_time "\n"] "<p>"]
     } else {
 	puts $fd "<p>NOTE: This is intermediate summary; the tests are still running! This page will refresh automatically until tests are finished."
     }
@@ -1262,13 +1283,15 @@ proc _log_html_summary {logdir log totals regressions improvements total_time} {
 	puts $fd "</table>"
     }
 
-    # put detailed log
-    puts $fd "<h1>Details</h1>"
+    # put detailed log with TOC
+    puts $fd "<hr><h1>Details</h1>"
+    puts $fd "<div style=\"float:right; padding: 10px; border-style: solid; border-color: blue; border-width: 2px;\">"
 
     # process log line-by-line
     set group {}
     set letter {}
-    foreach line [lsort -dictionary [split $log "\n"]] {
+    set body {}
+    foreach line [lsort -dictionary $log] {
 	# check that the line is case report in the form "CASE group grid name: result (explanation)"
 	if { ! [regexp $_test_case_regexp $line res grp grd casename result message] } {
 	    continue
@@ -1276,44 +1299,47 @@ proc _log_html_summary {logdir log totals regressions improvements total_time} {
 
 	# start new group
 	if { $grp != $group } {
-	    if { $letter != "" } { puts $fd "</tr></table>" }
+	    if { $letter != "" } { lappend body "</tr></table>" }
 	    set letter {}
 	    set group $grp
 	    set grid {}
-	    puts $fd "<h2>Group $group</h2>"
+	    puts $fd "<a href=\"#$group\">$group</a><br>"
+	    lappend body "<h2><a name=\"$group\">Group $group</a></h2>"
 	}
 
 	# start new grid
 	if { $grd != $grid } {
-	    if { $letter != "" } { puts $fd "</tr></table>" }
+	    if { $letter != "" } { lappend body "</tr></table>" }
 	    set letter {}
 	    set grid $grd
-	    puts $fd "<h3>Grid $grid</h3>"
+	    puts $fd "&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"#$group-$grid\">$grid</a><br>"
+	    lappend body "<h2><a name=\"$group-$grid\">Grid $group $grid</a></h2>"
 	}
 
 	# check if test case name is <letter><digit>; 
 	# if not, set alnum to period "." to recognize non-standard test name
-	if { ! [regexp {([A-Za-z]+)([0-9]+)} $casename res alnum number] } {
-	    set alnum .
+	if { ! [regexp {\A([A-Za-z]{1,2})([0-9]{1,2})\Z} $casename res alnum number] &&
+             ! [regexp {\A([A-Za-z0-9]+)_([0-9]+)\Z} $casename res alnum number] } {
+	    set alnum $casename
 	}
 
 	# start new row when letter changes or for non-standard names
 	if { $alnum != $letter || $alnum == "." } {
 	    if { $letter != "" } { 
-		puts $fd "</tr><tr>" 
+		lappend body "</tr><tr>" 
 	    } else {
-		puts $fd "<table><tr>"
+		lappend body "<table><tr>"
 	    }
 	    set letter $alnum
 	}	    
 
-	puts $fd "<td bgcolor=\"[_html_color $result]\"><a href=\"$group/$grid/${casename}.html\">$casename</a></td>"
+	lappend body "<td bgcolor=\"[_html_color $result]\"><a href=\"$group/$grid/${casename}.html\">$casename</a></td>"
     }
-    puts $fd "</tr></table>"
+    puts $fd "</div>\n[join $body "\n"]</tr></table>"
 
     # add remaining lines of log as plain text
     puts $fd "<h2>Plain text messages</h2>\n<pre>"
-    foreach line [split $log "\n"] {
+    foreach line $log {
 	if { ! [regexp $_test_case_regexp $line] } {
 	    puts $fd "$line"
 	}
@@ -1331,7 +1357,7 @@ proc _log_summarize {logdir log {total_time {}}} {
 
     # sort log records alphabetically to have the same behavior on Linux and Windows 
     # (also needed if tests are run in parallel)
-    set loglist [lsort -dictionary [split $log "\n"]]
+    set loglist [lsort -dictionary $log]
 
     # classify test cases by status
     foreach line $loglist {
@@ -1373,7 +1399,7 @@ proc _log_summarize {logdir log {total_time {}}} {
     # save log to files
     if { $logdir != "" } {
 	_log_html_summary $logdir $log $totals $regressions $improvements $total_time
-	_log_save $logdir/tests.log $log "Tests summary"
+	_log_save $logdir/tests.log [join $log "\n"] "Tests summary"
     }
 
     return
@@ -1405,7 +1431,7 @@ proc _log_xml_summary {logdir filename log include_cout} {
 
     # sort log and process it line-by-line
     set group {}
-    foreach line [lsort -dictionary [split $log "\n"]] {
+    foreach line [lsort -dictionary $log] {
 	# check that the line is case report in the form "CASE group grid name: result (explanation)"
 	if { ! [regexp $_test_case_regexp $line res grp grd casename result message] } {
 	    continue
@@ -1490,7 +1516,7 @@ proc _tests_platform_def {} {
 
     # use detailed mapping for various versions of Lunix
     # (note that mapping is rather non-uniform, for historical reasons)
-    if { $env(os_type) == "unix" && ! [catch {exec cat /etc/issue} issue] } {
+    if { $tcl_platform(os) == "Linux" && ! [catch {exec cat /etc/issue} issue] } {
 	if { [regexp {Mandriva[ \tA-Za-z]+([0-9]+)} $issue res num] } {
 	    set env(os_type) Mandriva$num
 	} elseif { [regexp {Red Hat[ \tA-Za-z]+([0-9]+)} $issue res num] } {
@@ -1507,6 +1533,8 @@ proc _tests_platform_def {} {
 	if { [exec uname -m] == "x86_64" } {
 	    set env(os_type) "$env(os_type)-64"
 	}
+    } elseif { $tcl_platform(os) == "Darwin" } {
+        set env(os_type) MacOS
     }
 }
 _tests_platform_def
@@ -1718,7 +1746,7 @@ proc _log_html_diff {file log dir1 dir2} {
     # "Executing <filename>..."
     puts $fd "<pre>"
     set logpath [file split [file normalize $file]]
-    foreach line [split $log "\n"] {
+    foreach line $log {
         puts $fd $line
 
         if { [regexp {IMAGE[ \t]+([^:]+):[ \t]+([A-Za-z0-9_.-]+)} $line res case img] } {
@@ -1872,9 +1900,85 @@ proc _check_file_format {file} {
 proc load_data_file {file format shape} {
     switch $format {
     BREP { uplevel restore $file $shape }
+    DRAW { uplevel restore $file $shape }
     IGES { pload XSDRAW; uplevel igesbrep $file $shape * }
     STEP { pload XSDRAW; uplevel stepread $file __a *; uplevel renamevar __a_1 $shape }
     STL  { pload XSDRAW; uplevel readstl $shape $file }
     default { error "Cannot read $format file $file" }
     }
+}
+
+# procedure to get name of temporary directory,
+# ensuring it is existing and writeable 
+proc _get_temp_dir {} {
+    global env tcl_platform
+
+    # check typical environment variables 
+    foreach var {TempDir Temp Tmp} {
+        # check different case
+        foreach name [list [string toupper $var] $var [string tolower $var]] {
+            if { [info exists env($name)] && [file isdirectory $env($name)] &&
+                 [file writable $env($name)] } {
+                return [regsub -all {\\} $env($name) /]
+            }
+        }
+    }
+
+    # check platform-specific locations
+    set fallback tmp
+    if { "$tcl_platform(platform)" == "windows" } {
+        set paths "c:/TEMP c:/TMP /TEMP /TMP"
+        if { [info exists env(HOMEDRIVE)] && [info exists env(HOMEPATH)] } {
+            set fallback [regsub -all {\\} "$env(HOMEDRIVE)$(HOMEPATH)/tmp" /]
+        }
+    } else {
+        set paths "/tmp /var/tmp /usr/tmp"
+        if { [info exists env(HOME)] } {
+            set fallback "$env(HOME)/tmp"
+        }
+    }
+    foreach dir $paths {
+        if { [file isdirectory $dir] && [file writable $dir] } {
+            return $dir
+        }
+    }
+
+    # fallback case: use subdir /tmp of home or current dir
+    file mkdir $fallback
+    return $fallback
+}
+
+# extract of code from testgrid command used to process jobs running in 
+# parallel until number of jobs in the queue becomes equal or less than 
+# specified value
+proc _testgrid_process_jobs {worker {nb_ok 0}} {
+    # bind local vars to variables of the caller procedure
+    upvar log log
+    upvar logdir logdir
+    upvar job_def job_def
+    upvar nbpooled nbpooled
+    upvar userbreak userbreak
+    upvar refresh refresh
+    upvar refresh_timer refresh_timer
+
+    catch {tpool::resume $worker}
+    while { ! $userbreak && $nbpooled > $nb_ok } {
+        foreach job [tpool::wait $worker [array names job_def]] {
+            eval _log_test_case \[tpool::get $worker $job\] $job_def($job) log
+            unset job_def($job)
+            incr nbpooled -1
+        }
+
+        # check for user break
+        if { "[info commands dbreak]" == "dbreak" && [catch dbreak] } {
+            set userbreak 1
+        }
+
+        # update summary log with requested period
+        if { $logdir != "" && $refresh > 0 && [clock seconds] > $refresh_timer + $refresh } {
+    	    _log_summarize $logdir $log
+    	    set refresh_timer [clock seconds]
+        }
+    }
+    catch {tpool::suspend $worker}
 }

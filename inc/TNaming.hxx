@@ -202,11 +202,14 @@ public:
 //!          IDs of this package. CAUTION: <anIDList> is NOT <br>
 //!          cleared before use. <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  
+  //! Prints the  evolution  <EVOL> as  a String on  the <br>
+//!          Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TNaming_Evolution EVOL,Standard_OStream& S) ;
-  
+  //! Prints the name of name type <NAME> as a String on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TNaming_NameType NAME,Standard_OStream& S) ;
-  
+  //! Prints the content of UsedShapes private  attribute as a String Table on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TDF_Label& ACCESS,Standard_OStream& S) ;
 
 

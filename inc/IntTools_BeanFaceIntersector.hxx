@@ -37,8 +37,8 @@
 #ifndef _IntTools_MarkedRangeSet_HeaderFile
 #include <IntTools_MarkedRangeSet.hxx>
 #endif
-#ifndef _Handle_IntTools_Context_HeaderFile
-#include <Handle_IntTools_Context.hxx>
+#ifndef _Handle_BOPInt_Context_HeaderFile
+#include <Handle_BOPInt_Context.hxx>
 #endif
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
@@ -50,7 +50,7 @@
 #include <Standard_Integer.hxx>
 #endif
 class Geom_Surface;
-class IntTools_Context;
+class BOPInt_Context;
 class TopoDS_Edge;
 class TopoDS_Face;
 class BRepAdaptor_Curve;
@@ -81,41 +81,63 @@ public:
   Standard_EXPORT   IntTools_BeanFaceIntersector();
   
 //! Initializes the algorithm <br>
+//! <br>
+//!  Warning: <br>
+//! The parts of the edge which are on <br>
+//! the surface of the face and belong to <br>
+//! the whole in the face (if there is) <br>
+//! is considered as result <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanFaceIntersector(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace);
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanFaceIntersector(const BRepAdaptor_Curve& theCurve,const BRepAdaptor_Surface& theSurface,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
   
 //! Initializes the algorithm <br>
 //! theUMinParameter, ... are used for <br>
 //! optimization purposes <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanFaceIntersector(const BRepAdaptor_Curve& theCurve,const BRepAdaptor_Surface& theSurface,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve,const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance);
   
 //! Initializes the algorithm <br>
+//! <br>
+//!  Warning: <br>
+//! The parts of the edge which are on <br>
+//! the surface of the face and belong to <br>
+//! the whole in the face (if there is) <br>
+//! is considered as result <br>
+//! <br>
   Standard_EXPORT     void Init(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace) ;
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& theCurve,const BRepAdaptor_Surface& theSurface,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance) ;
   
 //! Initializes the algorithm <br>
 //! theUMinParameter, ... are used for <br>
 //! optimization purposes <br>
+//! <br>
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& theCurve,const BRepAdaptor_Surface& theSurface,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve,const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter,const Standard_Real theBeanTolerance,const Standard_Real theFaceTolerance) ;
   
 //! Sets the intersecton context <br>
-  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
+//! <br>
+  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& theContext) ;
   
 //! Gets the intersecton context <br>
 //! <br>
-  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
+  Standard_EXPORT    const Handle_BOPInt_Context& Context() const;
   
 //! Set restrictions for curve <br>
+//! <br>
   Standard_EXPORT     void SetBeanParameters(const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve) ;
   
 //! Set restrictions for surface <br>
+//! <br>
   Standard_EXPORT     void SetSurfaceParameters(const Standard_Real theUMinParameter,const Standard_Real theUMaxParameter,const Standard_Real theVMinParameter,const Standard_Real theVMaxParameter) ;
   
 //! Launches the algorithm <br>
+//! <br>
   Standard_EXPORT     void Perform() ;
   
         Standard_Boolean IsDone() const;
@@ -141,7 +163,7 @@ private:
   
   Standard_EXPORT     void ComputeLinePlane() ;
   
-  Standard_EXPORT     Standard_Boolean FastComputeExactIntersection() ;
+  Standard_EXPORT     Standard_Integer FastComputeExactIntersection() ;
   
   Standard_EXPORT     void ComputeUsingExtremum() ;
   
@@ -179,7 +201,7 @@ Extrema_ExtCS myExtrema;
 GeomAPI_ProjectPointOnSurf myProjector;
 IntTools_MarkedRangeSet myRangeManager;
 Standard_Real myDeflection;
-Handle_IntTools_Context myContext;
+Handle_BOPInt_Context myContext;
 IntTools_SequenceOfRanges myResults;
 Standard_Boolean myIsDone;
 

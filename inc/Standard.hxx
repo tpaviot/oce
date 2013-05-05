@@ -63,6 +63,13 @@ public:
 //!          operating in reentrant mode. This flag affects OCCT <br>
 //!          memory manager, exception and signal handling, <br>
 //!          operations with handles etc., making them thread-safe. <br>
+//! <br>
+//!          By default, this flag is set to False, in order <br>
+//!          to avoid performance reduction due to locking. <br>
+//! <br>
+//!          In multithreaded applications this flag must be set to <br>
+//!          True, either by calling method SetReentrant(), <br>
+//!          or by defining environment variable MMGT_REENTRANT. <br>
   Standard_EXPORT   static  Standard_Boolean IsReentrant() ;
   //! Sets boolean flag indicating whether OCCT is <br>
 //!          operating in reentrant mode. <br>

@@ -6,7 +6,10 @@
 #ifndef _Visual3d_TypeOfVisualization_HeaderFile
 #define _Visual3d_TypeOfVisualization_HeaderFile
 
-//! Definition of the type of 3D projection <br>
+//! Modes of visualisation of objects in a view <br>
+//! <br>
+//!      TOV_WIREFRAME   wireframe visualisation <br>
+//!      TOV_SHADING     shaded visualisation <br>
 enum Visual3d_TypeOfVisualization {
 Visual3d_TOV_WIREFRAME,
 Visual3d_TOV_SHADING

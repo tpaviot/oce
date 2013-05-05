@@ -22,19 +22,13 @@
 #ifndef _Graphic3d_Texture2D_HeaderFile
 #include <Graphic3d_Texture2D.hxx>
 #endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Graphic3d_NameOfTexture2D_HeaderFile
 #include <Graphic3d_NameOfTexture2D.hxx>
 #endif
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
 #endif
-class Graphic3d_StructureManager;
+class TCollection_AsciiString;
 
 
 //! This class allows the management of a 2D texture defined from a plane equation <br>
@@ -43,10 +37,10 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 
 public:
 
-  //!  Creates a texture from a file <br>
-  Standard_EXPORT   Graphic3d_Texture2Dplane(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString FileName);
-  //!  Creates a texture from a predefined texture name set. <br>
-  Standard_EXPORT   Graphic3d_Texture2Dplane(const Handle(Graphic3d_StructureManager)& SM,const Graphic3d_NameOfTexture2D NOT);
+  //! Creates a texture from a file <br>
+  Standard_EXPORT   Graphic3d_Texture2Dplane(const TCollection_AsciiString& theFileName);
+  //! Creates a texture from a predefined texture name set. <br>
+  Standard_EXPORT   Graphic3d_Texture2Dplane(const Graphic3d_NameOfTexture2D theNOT);
   //!  Defines the texture projection plane for texture coordinate S <br>
 //! default is <1.0, 0.0, 0.0, 0.0> <br>
   Standard_EXPORT     void SetPlaneS(const Standard_ShortReal A,const Standard_ShortReal B,const Standard_ShortReal C,const Standard_ShortReal D) ;
@@ -57,33 +51,33 @@ public:
 //! default is NOTP_XY meaning: <br>
 //!      <1.0, 0.0, 0.0, 0.0> for S <br>
 //! and  <0.0, 1.0, 0.0, 0.0> for T <br>
-  Standard_EXPORT     void SetPlane(const Graphic3d_NameOfTexturePlane APlane) ;
+  Standard_EXPORT     void SetPlane(const Graphic3d_NameOfTexturePlane thePlane) ;
   //! Defines the texture scale for the S texture coordinate <br>
 //! much easier than recomputing the S plane equation <br>
 //! but the result is the same <br>
 //! default to 1.0 <br>
-  Standard_EXPORT     void SetScaleS(const Standard_ShortReal val) ;
+  Standard_EXPORT     void SetScaleS(const Standard_ShortReal theVal) ;
   //! Defines the texture scale for the T texture coordinate <br>
 //! much easier than recompution the T plane equation <br>
 //! but the result is the same <br>
 //! default to 1.0 <br>
-  Standard_EXPORT     void SetScaleT(const Standard_ShortReal val) ;
+  Standard_EXPORT     void SetScaleT(const Standard_ShortReal theVal) ;
   //! Defines the texture translation for the S texture coordinate <br>
 //! you can obtain the same effect by modifying the S plane <br>
 //! equation but its not easier. <br>
 //! default to 0.0 <br>
-  Standard_EXPORT     void SetTranslateS(const Standard_ShortReal val) ;
+  Standard_EXPORT     void SetTranslateS(const Standard_ShortReal theVal) ;
   //!  Defines the texture translation for the T texture coordinate <br>
 //! you can obtain the same effect by modifying the T plane <br>
 //! equation but its not easier. <br>
 //! default to 0.0 <br>
-  Standard_EXPORT     void SetTranslateT(const Standard_ShortReal val) ;
+  Standard_EXPORT     void SetTranslateT(const Standard_ShortReal theVal) ;
   //! Sets the rotation angle of the whole texture. <br>
 //! the same result might be achieved by recomputing the <br>
 //! S and T plane equation but it's not the easiest way... <br>
-//! the angle is expressed in degres <br>
+//! the angle is expressed in degrees <br>
 //! default is 0.0 <br>
-  Standard_EXPORT     void SetRotation(const Standard_ShortReal val) ;
+  Standard_EXPORT     void SetRotation(const Standard_ShortReal theVal) ;
   //! Returns the current texture plane name or NOTP_UNKNOWN <br>
 //! when the plane is user defined. <br>
   Standard_EXPORT     Graphic3d_NameOfTexturePlane Plane() const;
@@ -92,15 +86,15 @@ public:
   //! Returns   the current texture plane T equation <br>
   Standard_EXPORT     void PlaneT(Standard_ShortReal& A,Standard_ShortReal& B,Standard_ShortReal& C,Standard_ShortReal& D) const;
   //! Returns  the current texture S translation value <br>
-  Standard_EXPORT     void TranslateS(Standard_ShortReal& val) const;
+  Standard_EXPORT     void TranslateS(Standard_ShortReal& theVal) const;
   //! Returns the current texture T translation value <br>
-  Standard_EXPORT     void TranslateT(Standard_ShortReal& val) const;
+  Standard_EXPORT     void TranslateT(Standard_ShortReal& theVal) const;
   //! Returns the current texture S scale value <br>
-  Standard_EXPORT     void ScaleS(Standard_ShortReal& val) const;
+  Standard_EXPORT     void ScaleS(Standard_ShortReal& theVal) const;
   //! Returns the current texture T scale value <br>
-  Standard_EXPORT     void ScaleT(Standard_ShortReal& val) const;
+  Standard_EXPORT     void ScaleT(Standard_ShortReal& theVal) const;
   //! Returns the current texture rotation angle <br>
-  Standard_EXPORT     void Rotation(Standard_ShortReal& val) const;
+  Standard_EXPORT     void Rotation(Standard_ShortReal& theVal) const;
 
 
 

@@ -10,17 +10,17 @@ SET(TOOLKIT_MODULES
 	BRepProj
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKGeomAlgo
-	TKG3d
-	TKGeomBase
+	TKBRep
 	TKTopAlgo
 	TKMath
-	TKBO
-	TKG2d
-	TKShHealing
-	TKBRep
+	TKernel
 	TKPrim
+	TKG2d
+	TKG3d
+	TKShHealing
+	TKGeomBase
+	TKGeomAlgo
+	TKBO
 )
 
 INCLUDE(../BuildToolkit.cmake)

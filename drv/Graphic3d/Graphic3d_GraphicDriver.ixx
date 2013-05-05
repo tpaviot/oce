@@ -15,7 +15,6 @@
 
 IMPLEMENT_STANDARD_TYPE(Graphic3d_GraphicDriver)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
-  STANDARD_TYPE(Aspect_GraphicDriver),
   STANDARD_TYPE(MMgt_TShared),
   STANDARD_TYPE(Standard_Transient),
 

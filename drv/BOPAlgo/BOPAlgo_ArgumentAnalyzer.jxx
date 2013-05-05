@@ -1,0 +1,6 @@
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPAlgo_ArgumentAnalyzer_HeaderFile
+#include <BOPAlgo_ArgumentAnalyzer.hxx>
+#endif

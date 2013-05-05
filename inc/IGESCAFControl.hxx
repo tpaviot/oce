@@ -31,7 +31,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Converts IGES color index to CASCADE color <br>
+  //! Provides a tool for writing IGES file <br>//! Converts IGES color index to CASCADE color <br>
   Standard_EXPORT   static  Quantity_Color DecodeColor(const Standard_Integer col) ;
   //! Tries to Convert CASCADE color to IGES color index <br>
 //!          If no corresponding color defined in IGES, returns 0 <br>

@@ -5,7 +5,6 @@
 #include "../TKHLR/Precompiled.h"
 
 #include "AIS.hxx"
-#include "Graphic2d_View.hxx"
 #include "V3d.hxx"
 #include "DsgPrs.hxx"
 #include "PrsMgr_Prs.hxx"

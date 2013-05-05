@@ -4,15 +4,15 @@ SET(TOOLKIT_MODULES
 	IGESCAFControl
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKXCAF
-	TKLCAF
-	TKXSBase
 	TKBRep
-	TKIGES
-	TKG2d
+	TKernel
 	TKMath
+	TKXSBase
 	TKCDF
+	TKLCAF
+	TKG2d
+	TKXCAF
+	TKIGES
 )
 
 INCLUDE(../BuildToolkit.cmake)

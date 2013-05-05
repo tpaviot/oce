@@ -34,7 +34,6 @@
 class TColStd_HArray2OfReal;
 class Visual3d_ViewOrientationDefinitionError;
 class Visual3d_View;
-class Graphic3d_Vertex;
 class Graphic3d_Vector;
 
 

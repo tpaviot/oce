@@ -1,3 +1,0 @@
-#ifndef _BOP_WireShape_HeaderFile
-#include <BOP_WireShape.hxx>
-#endif

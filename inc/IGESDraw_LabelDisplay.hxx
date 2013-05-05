@@ -61,6 +61,9 @@ class IGESData_IGESEntity;
 
 //! defines IGESLabelDisplay, Type <402> Form <5> <br>
 //!          in package IGESDraw <br>
+//! <br>
+//!          Permits one or more displays for the <br>
+//!          entity labels of an entity <br>
 class IGESDraw_LabelDisplay : public IGESData_LabelDisplayEntity {
 
 public:

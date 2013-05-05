@@ -52,7 +52,6 @@
       ??-11-97  : CAL ; Retrait de la dependance avec math. Calcul developpe.
       ??-11-97  : CAL ; Ajout de NumberOfDisplayedStructures
       07-08-97  : PCT ; ajout support texture mapping
-      05-01-98  : CAL ; Ajout de AnimationMode
       15-01-98  : FMN ; FRA60019 calcul Ratio pour MyViewMappingReset
       15-01-98  : CAL ; Ajout de la transformation d'une TOS_COMPUTED
       26-01-98  : CAL ; Ajout de la methode HaveTheSameOwner
@@ -89,20 +88,13 @@
 
 #define GER61454        //GG 14-09-99 Activates model clipping planes
 
-#define IMP140100       //GG14-01-00 Add ViewManager( ) method
-
-#define G003            //EUG 30-09-00 Degeneration management
-//                                     Backfacing management
-
 #define RIC120302       //GG Add a NEW SetWindow method which enable
 //                      to connect a graphic widget and context to OGL.
 
-#define  BUC61044    /* 25/10/01 SAV ; added functionality to control gl depth testing
-                        from higher API */
-#define  BUC61045    /* 25/10/01 SAV ; added functionality to control gl lighting
-                        from higher API */
+//BUC61044 25/10/01 SAV ; added functionality to control gl depth testing from higher API
+//BUC61045 25/10/01 SAV ; added functionality to control gl lighting from higher API
 
-#define OCC1188         //SAV Added methods to set background image
+//OCC1188 SAV Added methods to set background image
 
 /*----------------------------------------------------------------------*/
 /*
@@ -150,7 +142,6 @@
 #include <Graphic3d_DataStructureManager.hxx>
 
 #include <Graphic3d_GraphicDriver.hxx>
-#include <Graphic3d_GraphicDevice.hxx>
 
 #include <Graphic3d_Vector.hxx>
 #include <Graphic3d_Vertex.hxx>
@@ -202,24 +193,18 @@ MyDisplayedStructure ()
 {
 Standard_Integer i, j;
 
-#ifdef IMP140100
         MyPtrViewManager        = AManager.operator->();
-#else
-        MyPtrViewManager        = (void *) AManager.operator->();
-#endif
-
-        memset (&MyCView, 0, sizeof(MyCView));
         MyCView.ViewId          = int (AManager->Identification (this));
         MyCView.Active          = 0;
         MyCView.IsDeleted       = 0;
 
-        MyCView.WsId    = -1;
-        MyCView.DefWindow.IsDefined     = 0;
+        MyCView.WsId                  = -1;
+        MyCView.DefWindow.IsDefined   = 0;
 
-        MyCView.Context.NbActiveLight   = 0;
-        MyCView.Context.NbActivePlane   = 0;
+        MyCView.Context.NbActiveLight = 0;
+        MyCView.Context.NbActivePlane = 0;
 #ifdef GER61454
-        MyCView.Context.ActivePlane = NULL;
+        MyCView.Context.ActivePlane   = NULL;
 #endif
 
         for (i=0; i<=3; i++)
@@ -288,19 +273,12 @@ Standard_Real um, vm, uM, vM;
 
         MyCView.Context.ZBufferActivity = -1;
 
-        MyMatOfMapIsModified    = Standard_True;
-        MyMatOfOriIsModified    = Standard_True;
         MyMatOfMapIsEvaluated   = Standard_False;
         MyMatOfOriIsEvaluated   = Standard_False;
 
-        DegenerateModeIsActive  = Standard_False;
-        AnimationModeIsActive   = Standard_False;
-#ifdef G003
-        MyCView.IsDegenerates     = 0;
-        MyCView.IsDegeneratesPrev = 0;
+        IsInitialized = Standard_False;
         ComputedModeIsActive      = Standard_False;
         MyCView.Backfacing        = 0;
-#endif  // G003
 
         MyCView.ptrUnderLayer = 0;
         MyCView.ptrOverLayer = 0;
@@ -308,10 +286,7 @@ Standard_Real um, vm, uM, vM;
         MyCView.GDisplayCB = 0;
         MyCView.GClientData = 0;
 
-Handle(Aspect_GraphicDriver) agd =
-        (MyViewManager->GraphicDevice ())->GraphicDriver ();
-
-        MyGraphicDriver = *(Handle(Graphic3d_GraphicDriver) *) &agd;
+        MyGraphicDriver = MyViewManager->GraphicDriver();
 
 }
 
@@ -325,28 +300,22 @@ MyDisplayedStructure ()
 {
 Standard_Integer i, j;
 
-#ifdef IMP140100
         MyPtrViewManager        = AManager.operator->();
-#else
-        MyPtrViewManager        = (void *) AManager.operator->();
-#endif
-
         MyViewOrientation       = VO;
         MyViewMapping           = VM;
         MyContext               = CTX;
         MyViewOrientationReset  = VO;
         MyViewMappingReset      = VM;
 
-        memset (&MyCView, 0, sizeof(MyCView));
         MyCView.ViewId          = int (AManager->Identification (this));
         MyCView.Active          = 0;
         MyCView.IsDeleted       = 0;
 
-        MyCView.WsId    = -1;
-        MyCView.DefWindow.IsDefined     = 0;
+        MyCView.WsId                  = -1;
+        MyCView.DefWindow.IsDefined   = 0;
 
-        MyCView.Context.NbActiveLight   = 0;
-        MyCView.Context.NbActivePlane   = 0;
+        MyCView.Context.NbActiveLight = 0;
+        MyCView.Context.NbActivePlane = 0;
 #ifdef GER61454
         MyCView.Context.ActivePlane = NULL;
 #endif
@@ -383,7 +352,8 @@ Standard_Real Sx, Sy, Sz;
           MyCView.Orientation.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
+              MyCView.Orientation.ModelViewMatrix[i][j] =
+                (Standard_ShortReal)MyViewOrientation.MyModelViewMatrix->Value(i,j);
         }
         else {
           MyCView.Orientation.IsCustomMatrix = 0;
@@ -419,7 +389,8 @@ Standard_Real um, vm, uM, vM;
           MyCView.Mapping.IsCustomMatrix = 1;
           for ( i = 0; i < 4; i++)
             for ( j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] = (float) MyViewMapping.MyProjectionMatrix->Value(i,j);
+              MyCView.Mapping.ProjectionMatrix[i][j] =
+                (Standard_ShortReal)MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
         else {
           MyCView.Mapping.IsCustomMatrix = 0;
@@ -433,16 +404,11 @@ Standard_Real um, vm, uM, vM;
 
         MyCView.Context.ZBufferActivity = -1;
 
-        MyMatOfMapIsModified    = Standard_True;
-        MyMatOfOriIsModified    = Standard_True;
         MyMatOfMapIsEvaluated   = Standard_False;
         MyMatOfOriIsEvaluated   = Standard_False;
-#ifdef G003
-        AnimationModeIsActive     = Standard_False;
-        MyCView.IsDegenerates     = 0;
-        MyCView.IsDegeneratesPrev = 0;
+
+        IsInitialized = Standard_False;
         ComputedModeIsActive      = Standard_False;
-#endif  // G003
 
         MyCView.ptrUnderLayer = 0;
         MyCView.ptrOverLayer = 0;
@@ -450,10 +416,7 @@ Standard_Real um, vm, uM, vM;
         MyCView.GDisplayCB = 0;
         MyCView.GClientData = 0;
 
-Handle(Aspect_GraphicDriver) agd =
-        (MyViewManager->GraphicDevice ())->GraphicDriver ();
-
-        MyGraphicDriver = *(Handle(Graphic3d_GraphicDriver) *) &agd;
+        MyGraphicDriver = MyViewManager->GraphicDriver();
 
 }
 
@@ -505,7 +468,7 @@ void Visual3d_View::SetWindow (const Handle(Aspect_Window)& theWindow)
 #else
   const Handle(Xw_Window) aWin    = Handle(Xw_Window)::DownCast (theWindow);
   MyCView.DefWindow.XWindow       = aWin->XWindow();
-  MyCView.DefWindow.XParentWindow = aWin->XParentWindow();
+  //MyCView.DefWindow.XParentWindow = aWin->XParentWindow();
 #endif
 
         Standard_Integer Width, Height;
@@ -541,7 +504,7 @@ void Visual3d_View::SetWindow (const Handle(Aspect_Window)& theWindow)
         // Update planses of model clipping
         UpdatePlanes ();
 
-        // Update light sources 
+        // Update light sources
         UpdateLights ();
 
         /*
@@ -624,10 +587,10 @@ void Visual3d_View::Remove () {
         MyCView.IsDeleted       = 1;
         MyCView.DefWindow.IsDefined     = 0;
 
-        MyMatOfMapIsModified    = Standard_True;
-        MyMatOfOriIsModified    = Standard_True;
         MyMatOfMapIsEvaluated   = Standard_False;
         MyMatOfOriIsEvaluated   = Standard_False;
+
+        IsInitialized = Standard_False;
 
         MyWindow.Nullify ();
 
@@ -915,7 +878,7 @@ CALL_DEF_PLANE *planes=NULL;
 
         if (MyCView.Context.NbActivePlane > 0) {
 
-                // Dynamic Allocation 
+                // Dynamic Allocation
 #ifdef GER61454 //Keep the plane address for the next Update !
                 if( !MyCView.Context.ActivePlane )
                    MyCView.Context.ActivePlane = new CALL_DEF_PLANE [j];
@@ -1013,7 +976,6 @@ void Visual3d_View::SetBackgroundImage( const Standard_CString FileName,
                                         const Aspect_FillMethod FillStyle,
                                         const Standard_Boolean update )
 {
-#ifdef OCC1188
   if ( IsDeleted() )
     return;
   if ( !IsDefined() )
@@ -1025,13 +987,11 @@ void Visual3d_View::SetBackgroundImage( const Standard_CString FileName,
     Update();
   else if ( MyViewManager->UpdateMode() == Aspect_TOU_ASAP )
     Update();
-#endif
 }
 
 void Visual3d_View::SetBgImageStyle( const Aspect_FillMethod FillStyle,
                                      const Standard_Boolean update )
 {
-#ifdef OCC1188
   if ( IsDeleted() )
     return;
   if ( !IsDefined() )
@@ -1043,7 +1003,6 @@ void Visual3d_View::SetBgImageStyle( const Aspect_FillMethod FillStyle,
     Update();
   else if ( MyViewManager->UpdateMode() == Aspect_TOU_ASAP )
     Update();
-#endif
 }
 
 Aspect_Background Visual3d_View::Background () const {
@@ -1121,7 +1080,6 @@ Visual3d_ViewOrientation NewViewOrientation;
 
         SetViewOrientation (NewViewOrientation);
 
-        MyMatOfOriIsModified    = Standard_True;
         MyMatOfOriIsEvaluated   = Standard_False;
 
 }
@@ -1138,52 +1096,49 @@ void Visual3d_View::SetViewOrientation (const Visual3d_ViewOrientation& VO) {
 
         MyViewOrientation       = VO;
 
-Standard_Real X, Y, Z;
-
+        Standard_Real X, Y, Z;
         // Tests on modification of parameters.
-Standard_Boolean VUPIsModified  = Standard_False;
-Standard_Boolean VRPIsModified  = Standard_False;
-Standard_Boolean VRUIsModified  = Standard_False;
-Standard_Boolean ScaleIsModified  = Standard_False;
-Standard_Boolean CustomIsModified = Standard_False;
+        Standard_Boolean VUPIsModified  = Standard_False;
+        Standard_Boolean VRPIsModified  = Standard_False;
+        Standard_Boolean VRUIsModified  = Standard_False;
+        Standard_Boolean ScaleIsModified  = Standard_False;
+        Standard_Boolean CustomIsModified = Standard_False;
 
         (MyViewOrientation.ViewReferencePoint ()).Coord (X, Y, Z);
         VUPIsModified =
-            MyCView.Orientation.ViewReferencePoint.x != float (X)
-         || MyCView.Orientation.ViewReferencePoint.y != float (Y)
-         || MyCView.Orientation.ViewReferencePoint.z != float (Z);
+           MyCView.Orientation.ViewReferencePoint.x != float (X)
+        || MyCView.Orientation.ViewReferencePoint.y != float (Y)
+        || MyCView.Orientation.ViewReferencePoint.z != float (Z);
         MyCView.Orientation.ViewReferencePoint.x        = float (X);
         MyCView.Orientation.ViewReferencePoint.y        = float (Y);
         MyCView.Orientation.ViewReferencePoint.z        = float (Z);
 
         (MyViewOrientation.ViewReferencePlane ()).Coord (X, Y, Z);
         VRPIsModified =
-            MyCView.Orientation.ViewReferencePlane.x != float (X)
-         || MyCView.Orientation.ViewReferencePlane.y != float (Y)
-         || MyCView.Orientation.ViewReferencePlane.z != float (Z);
+           MyCView.Orientation.ViewReferencePlane.x != float (X)
+        || MyCView.Orientation.ViewReferencePlane.y != float (Y)
+        || MyCView.Orientation.ViewReferencePlane.z != float (Z);
         MyCView.Orientation.ViewReferencePlane.x        = float (X);
         MyCView.Orientation.ViewReferencePlane.y        = float (Y);
         MyCView.Orientation.ViewReferencePlane.z        = float (Z);
 
         (MyViewOrientation.ViewReferenceUp ()).Coord (X, Y, Z);
         VRUIsModified =
-            MyCView.Orientation.ViewReferenceUp.x != float (X)
-         || MyCView.Orientation.ViewReferenceUp.y != float (Y)
-         || MyCView.Orientation.ViewReferenceUp.z != float (Z);
+           MyCView.Orientation.ViewReferenceUp.x != float (X)
+        || MyCView.Orientation.ViewReferenceUp.y != float (Y)
+        || MyCView.Orientation.ViewReferenceUp.z != float (Z);
         MyCView.Orientation.ViewReferenceUp.x           = float (X);
         MyCView.Orientation.ViewReferenceUp.y           = float (Y);
         MyCView.Orientation.ViewReferenceUp.z           = float (Z);
 
-Standard_Real Sx, Sy, Sz;
-
-        MyViewOrientation.AxialScale(Sx, Sy, Sz);
-	ScaleIsModified =
-            MyCView.Orientation.ViewScaleX != float (X)
-         || MyCView.Orientation.ViewScaleY != float (Y)
-         || MyCView.Orientation.ViewScaleZ != float (Z);
-        MyCView.Orientation.ViewScaleX                  = float (Sx);
-        MyCView.Orientation.ViewScaleY                  = float (Sy);
-        MyCView.Orientation.ViewScaleZ                  = float (Sz);
+        MyViewOrientation.AxialScale(X, Y, Z);
+        ScaleIsModified =
+           MyCView.Orientation.ViewScaleX != float (X)
+        || MyCView.Orientation.ViewScaleY != float (Y)
+        || MyCView.Orientation.ViewScaleZ != float (Z);
+        MyCView.Orientation.ViewScaleX                  = float (X);
+        MyCView.Orientation.ViewScaleY                  = float (Y);
+        MyCView.Orientation.ViewScaleZ                  = float (Z);
 
         CustomIsModified =
           Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix();  // note: warning should be removed by changing .IsCustomMatrix type
@@ -1192,39 +1147,38 @@ Standard_Real Sx, Sy, Sz;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++) {
-              if (!CustomIsModified) CustomIsModified =
-                MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = (float) MyViewOrientation.MyModelViewMatrix->Value(i,j);
+             if (!CustomIsModified) CustomIsModified =
+               MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
 #ifdef TRACE_TRSF
-cout << "Visual3d_View::SetViewOrientation\n";
-        if (VUPIsModified || VRPIsModified || VRUIsModified || CustomIsModified)
-                cout <<   "VUPIsModified : " << VUPIsModified
-                     << ", VRPIsModified : " << VRPIsModified
-                     << ", VRUIsModified : " << VRUIsModified
-                     << ", CustomIsModified : " << CustomIsModified << "\n" << flush;
+        cout << "Visual3d_View::SetViewOrientation\n";
+        if (VUPIsModified || VRPIsModified || VRUIsModified || ScaleIsModified || CustomIsModified)
+          cout <<   "VUPIsModified : " << VUPIsModified
+          << ", VRPIsModified : " << VRPIsModified
+          << ", VRUIsModified : " << VRUIsModified
+          << ", CustomIsModified : " << CustomIsModified
+          << ", ScaleIsModified : " << ScaleIsModified << "\n" << flush;
         else
-                cout << "no modification\n" << flush;
+          cout << "no modification\n" << flush;
 #endif
 
         // restart if one of parameters is modified
-        if (VUPIsModified || VRPIsModified || VRUIsModified || ScaleIsModified || CustomIsModified) {
+        if (!IsInitialized || VUPIsModified || VRPIsModified
+            || VRUIsModified || ScaleIsModified || CustomIsModified) {
 
-	  if (VUPIsModified || VRPIsModified || VRUIsModified || CustomIsModified) {
-                MyMatOfOriIsModified    = Standard_True;
-                MyMatOfOriIsEvaluated   = Standard_False;
-	      }
+        MyMatOfOriIsEvaluated = !VUPIsModified && !VRPIsModified
+                              && !VRUIsModified && !ScaleIsModified;
 
-                if (! IsDefined ()) return;
+        if (! IsDefined ()) return;
 
-Standard_Boolean AWait = Standard_False;        // => immediate update
-                MyGraphicDriver->ViewOrientation (MyCView, AWait);
+        Standard_Boolean AWait = Standard_False;        // => immediate update
+        MyGraphicDriver->ViewOrientation (MyCView, AWait);
+        IsInitialized = Standard_True;
+        Compute ();
 
-                Compute ();
-
-                if (MyViewManager->UpdateMode () == Aspect_TOU_ASAP) Update ();
+        if (MyViewManager->UpdateMode () == Aspect_TOU_ASAP) Update ();
         }
 
 }
@@ -1253,47 +1207,50 @@ void Visual3d_View::ViewOrientationReset () {
 
         MyViewOrientation       = MyViewOrientationReset;
 
-Standard_Real X, Y, Z;
+        Standard_Real X, Y, Z;
 
         // Tests on modification of parameters.
-Standard_Boolean VUPIsModified  = Standard_False;
-Standard_Boolean VRPIsModified  = Standard_False;
-Standard_Boolean VRUIsModified  = Standard_False;
-Standard_Boolean CustomIsModified = Standard_False;
+        Standard_Boolean VUPIsModified  = Standard_False;
+        Standard_Boolean VRPIsModified  = Standard_False;
+        Standard_Boolean VRUIsModified  = Standard_False;
+        Standard_Boolean ScaleIsModified  = Standard_False;
+        Standard_Boolean CustomIsModified = Standard_False;
 
         (MyViewOrientation.ViewReferencePoint ()).Coord (X, Y, Z);
         VUPIsModified =
-            MyCView.Orientation.ViewReferencePoint.x != float (X)
-         || MyCView.Orientation.ViewReferencePoint.y != float (Y)
-         || MyCView.Orientation.ViewReferencePoint.z != float (Z);
+           MyCView.Orientation.ViewReferencePoint.x != float (X)
+        || MyCView.Orientation.ViewReferencePoint.y != float (Y)
+        || MyCView.Orientation.ViewReferencePoint.z != float (Z);
         MyCView.Orientation.ViewReferencePoint.x        = float (X);
         MyCView.Orientation.ViewReferencePoint.y        = float (Y);
         MyCView.Orientation.ViewReferencePoint.z        = float (Z);
 
         (MyViewOrientation.ViewReferencePlane ()).Coord (X, Y, Z);
         VRPIsModified =
-            MyCView.Orientation.ViewReferencePlane.x != float (X)
-         || MyCView.Orientation.ViewReferencePlane.y != float (Y)
-         || MyCView.Orientation.ViewReferencePlane.z != float (Z);
+           MyCView.Orientation.ViewReferencePlane.x != float (X)
+        || MyCView.Orientation.ViewReferencePlane.y != float (Y)
+        || MyCView.Orientation.ViewReferencePlane.z != float (Z);
         MyCView.Orientation.ViewReferencePlane.x        = float (X);
         MyCView.Orientation.ViewReferencePlane.y        = float (Y);
         MyCView.Orientation.ViewReferencePlane.z        = float (Z);
 
         (MyViewOrientation.ViewReferenceUp ()).Coord (X, Y, Z);
         VRUIsModified =
-            MyCView.Orientation.ViewReferenceUp.x != float (X)
-         || MyCView.Orientation.ViewReferenceUp.y != float (Y)
-         || MyCView.Orientation.ViewReferenceUp.z != float (Z);
+           MyCView.Orientation.ViewReferenceUp.x != float (X)
+        || MyCView.Orientation.ViewReferenceUp.y != float (Y)
+        || MyCView.Orientation.ViewReferenceUp.z != float (Z);
         MyCView.Orientation.ViewReferenceUp.x           = float (X);
         MyCView.Orientation.ViewReferenceUp.y           = float (Y);
         MyCView.Orientation.ViewReferenceUp.z           = float (Z);
 
-Standard_Real Sx, Sy, Sz;
-
-        MyViewOrientation.AxialScale(Sx, Sy, Sz);
-        MyCView.Orientation.ViewScaleX                  = float (Sx);
-        MyCView.Orientation.ViewScaleY                  = float (Sy);
-        MyCView.Orientation.ViewScaleZ                  = float (Sz);
+        MyViewOrientation.AxialScale(X, Y, Z);
+        ScaleIsModified =
+           MyCView.Orientation.ViewScaleX != float (X)
+        || MyCView.Orientation.ViewScaleY != float (Y)
+        || MyCView.Orientation.ViewScaleZ != float (Z);
+        MyCView.Orientation.ViewScaleX                  = float (X);
+        MyCView.Orientation.ViewScaleY                  = float (Y);
+        MyCView.Orientation.ViewScaleZ                  = float (Z);
 
         CustomIsModified =
           Standard_Boolean(MyCView.Orientation.IsCustomMatrix != 0) != MyViewOrientation.IsCustomMatrix(); // note: warning should be removed by changing .IsCustomMatrix type
@@ -1302,41 +1259,40 @@ Standard_Real Sx, Sy, Sz;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++) {
-              if (!CustomIsModified) CustomIsModified =
-                MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
-              MyCView.Orientation.ModelViewMatrix[i][j] = (float)MyViewOrientation.MyModelViewMatrix->Value(i,j);
+             if (!CustomIsModified) CustomIsModified =
+               MyCView.Orientation.ModelViewMatrix[i][j] != MyViewOrientation.MyModelViewMatrix->Value(i,j);
             }
         }
 
+
 #ifdef TRACE_TRSF
-cout << "Visual3d_View::ViewOrientationReset\n";
-if (VUPIsModified || VRPIsModified || VRUIsModified || CustomIsModified)
-cout <<   "VUPIsModified : " << VUPIsModified
-     << ", VRPIsModified : " << VRPIsModified
-     << ", VRUIsModified : " << VRUIsModified
-     << ", CustomIsModified : " << CustomIsModified << "\n" << flush;
-else
-cout << "no modification\n" << flush;
+        cout << "Visual3d_View::ViewOrientationReset\n";
+        if (VUPIsModified || VRPIsModified || VRUIsModified || ScaleIsModified || CustomIsModified)
+          cout <<   "VUPIsModified : " << VUPIsModified
+          << ", VRPIsModified : " << VRPIsModified
+          << ", VRUIsModified : " << VRUIsModified
+          << ", CustomIsModified : " << CustomIsModified
+          << ", ScaleIsModified : " << ScaleIsModified << "\n" << flush;
+        else
+          cout << "no modification\n" << flush;
 #endif
 
         // Restart if one of parameters is modified
-        if (VUPIsModified || VRPIsModified || VRUIsModified || CustomIsModified) {
+        if (!IsInitialized || VUPIsModified || VRPIsModified
+            || VRUIsModified || ScaleIsModified || CustomIsModified) {
 
-	  if (VUPIsModified || VRPIsModified || VRUIsModified || CustomIsModified) {
-                MyMatOfOriIsModified    = Standard_True;
-                MyMatOfOriIsEvaluated   = Standard_False;
-	      }
+        MyMatOfOriIsEvaluated = !VUPIsModified && !VRPIsModified
+                              && !VRUIsModified && !ScaleIsModified;
 
-                if (! IsDefined ()) return;
+        if (! IsDefined ()) return;
 
-Standard_Boolean AWait = Standard_False;        // => immediate update
-                MyGraphicDriver->ViewOrientation (MyCView, AWait);
+        Standard_Boolean AWait = Standard_False;        // => immediate update
+        MyGraphicDriver->ViewOrientation (MyCView, AWait);
+        IsInitialized = Standard_True;
+        Compute ();
 
-                Compute ();
-
-                if (MyViewManager->UpdateMode () == Aspect_TOU_ASAP) Update ();
+        if (MyViewManager->UpdateMode () == Aspect_TOU_ASAP) Update ();
         }
-
 }
 
 void Visual3d_View::SetViewMapping (const Visual3d_ViewMapping& VM) {
@@ -1373,11 +1329,10 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
-                MyViewMapping.MyProjectionMatrix->Value(i,j);
+              MyCView.Mapping.ProjectionMatrix[i][j] =
+                (Standard_ShortReal)MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 
-        MyMatOfMapIsModified    = Standard_True;
         MyMatOfMapIsEvaluated   = Standard_False;
 
         if (! IsDefined ()) return;
@@ -1442,11 +1397,10 @@ Standard_Real um, vm, uM, vM;
           Standard_Integer i, j;
           for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-              MyCView.Mapping.ProjectionMatrix[i][j] = (float)
-                MyViewMapping.MyProjectionMatrix->Value(i,j);
+              MyCView.Mapping.ProjectionMatrix[i][j] =
+                (Standard_ShortReal)MyViewMapping.MyProjectionMatrix->Value(i,j);
         }
 
-        MyMatOfMapIsModified    = Standard_True;
         MyMatOfMapIsEvaluated   = Standard_False;
 
         if (! IsDefined ()) return;
@@ -1465,7 +1419,7 @@ void Visual3d_View::SetContext (const Visual3d_ContextView& CTX) {
 Visual3d_TypeOfVisualization OldVisualMode;
 Visual3d_TypeOfVisualization NewVisualMode;
 
-        // To manage display only in case of 
+        // To manage display only in case of
         // change of visualisation mode.
         OldVisualMode   = MyContext.Visualization ();
         NewVisualMode   = CTX.Visualization ();
@@ -1473,7 +1427,7 @@ Visual3d_TypeOfVisualization NewVisualMode;
 Visual3d_TypeOfModel OldModel;
 Visual3d_TypeOfModel NewModel;
 
-        // To manage change of visualisation only in case 
+        // To manage change of visualisation only in case
         // of change of mode of visualisation or of type of shading.
         OldModel        = MyContext.Model ();
         NewModel        = CTX.Model ();
@@ -1523,22 +1477,11 @@ Standard_Real NewZClippingBackPlane;
         OldZClippingBackPlane   = MyContext.ZClippingBackPlane ();
         NewZClippingBackPlane   = CTX.ZClippingBackPlane ();
 
-Standard_Integer OldTexEnvId;
-Standard_Integer NewTexEnvId;
-Visual3d_TypeOfSurfaceDetail OldSurfaceDetail;
-Visual3d_TypeOfSurfaceDetail NewSurfaceDetail;
+        Handle(Graphic3d_TextureEnv) aTexEnvOld = MyContext.TextureEnv();
+        Handle(Graphic3d_TextureEnv) aTexEnvNew = CTX.TextureEnv();
 
-        Handle(Graphic3d_TextureEnv)    TempTextureEnv1 = MyContext.TextureEnv();
-        if (! TempTextureEnv1.IsNull()) OldTexEnvId = TempTextureEnv1->TextureId();
-        else                            OldTexEnvId = -1;
-
-        Handle(Graphic3d_TextureEnv)    TempTextureEnv2 = CTX.TextureEnv();
-
-        if (! TempTextureEnv2.IsNull()) NewTexEnvId = TempTextureEnv2->TextureId();
-        else                            NewTexEnvId = -1;
-
-        OldSurfaceDetail = MyContext.SurfaceDetail();
-        NewSurfaceDetail = CTX.SurfaceDetail();
+        Visual3d_TypeOfSurfaceDetail OldSurfaceDetail = MyContext.SurfaceDetail();
+        Visual3d_TypeOfSurfaceDetail NewSurfaceDetail = CTX.SurfaceDetail();
 
         MyContext       = CTX;
 
@@ -1583,14 +1526,15 @@ Standard_Boolean AWait = Standard_False;        // => immediate update
                 }
 
                 // management of textures
-                if ( (OldTexEnvId != NewTexEnvId) ||
-                     (OldSurfaceDetail != NewSurfaceDetail) )
+                if ((aTexEnvOld != aTexEnvNew) || (OldSurfaceDetail != NewSurfaceDetail))
+                {
                   MyGraphicDriver->Environment(MyCView);
+                }
 
                 // Update of planes of model clipping
                 UpdatePlanes ();
 
-                // Update of light sources 
+                // Update of light sources
                 UpdateLights ();
         }
 
@@ -1613,7 +1557,7 @@ Graphic3d_SequenceOfStructure FooSequence;
 
                 while (S1Iterator.More ()) {
                         Answer  = AcceptDisplay (S1Iterator.Key ());
-                        // If the structure can't be displayed in the 
+                        // If the structure can't be displayed in the
                         // new context of the view, it is removed.
                         if ((Answer == Visual3d_TOA_NO) ||
                             (Answer == Visual3d_TOA_COMPUTE))
@@ -1632,10 +1576,10 @@ Standard_Integer Length = FooSequence.Length ();
 
                 /*
                  * Change of context =>
-                 * Display structures that can be displayed 
+                 * Display structures that can be displayed
                  * with the new visualisation mode.
-                 * All structures with status Displayed are removed from the ViewManager 
-                 * and displayed in the view directly, if the structure is not already 
+                 * All structures with status Displayed are removed from the ViewManager
+                 * and displayed in the view directly, if the structure is not already
                  * displayed and if the view accepts it in its context.
                  */
 
@@ -1648,7 +1592,7 @@ Standard_Integer Length = FooSequence.Length ();
                   Handle(Graphic3d_Structure) SG = it.Key();
                     if (! IsDisplayed (SG)) {
                       Answer = AcceptDisplay(SG);
-                        // If the structure can be displayed in the 
+                        // If the structure can be displayed in the
                         // new context of the view, it is displayed.
                         if ((Answer == Visual3d_TOA_YES) ||
                             (Answer == Visual3d_TOA_COMPUTE))
@@ -1711,8 +1655,8 @@ void Visual3d_View::Activate () {
                  * Activation of a new view =>
                  * Display structures that can be displayed in this new view.
                  * All structures with status
-                 * Displayed in ViewManager are returned and displayed in 
-                 * the view directly, if the structure is not already 
+                 * Displayed in ViewManager are returned and displayed in
+                 * the view directly, if the structure is not already
                  * displayed and if the view accepts it in its context.
                  */
 
@@ -1780,8 +1724,8 @@ void Visual3d_View::Deactivate () {
                  * Deactivation of a view =>
                  * Removal of structures displayed in this view.
                  * All structures with status
-                 * Displayed in ViewManager are returned and removed from 
-                 * the view directly, if the structure is not already 
+                 * Displayed in ViewManager are returned and removed from
+                 * the view directly, if the structure is not already
                  * displayed and if the view accepts it in its context.
                 */
 
@@ -1924,9 +1868,6 @@ Aspect_CLayer2d UnderCLayer;
         MyGraphicDriver->Update (MyCView, UnderCLayer, OverCLayer);
         //OSD::SetSignal (Standard_True);
 
-        MyMatOfMapIsModified    = Standard_False;
-        MyMatOfOriIsModified    = Standard_False;
-
 }
 
 Visual3d_TypeOfAnswer Visual3d_View::AcceptDisplay (const Handle(Graphic3d_Structure)& AStructure) const {
@@ -1982,11 +1923,7 @@ void Visual3d_View::ChangeDisplayPriority (const Handle(Graphic3d_Structure)& AS
         if (! IsDisplayed (AStructure)) return;
 
 Standard_Integer Index = IsComputed (AStructure);
-#ifdef G003
-        if (  Index != 0 && ComputedMode () && !DegenerateModeIsOn ()  )
-#else
-        if ((Index != 0) && (! DegenerateModeIsOn ()))
-#endif  // G003
+        if (Index != 0 && ComputedMode())
         {
 #ifdef TRACE
 	Standard_Integer StructId = MyCOMPUTEDSequence.Value (Index)->Identification ();
@@ -2121,7 +2058,7 @@ void Visual3d_View::Display (const Handle(Graphic3d_Structure)& AStructure, cons
         if (! IsActive ()) return;
 
         // If Display on a structure present in the list
-        // of calculated structures while it is not 
+        // of calculated structures while it is not
         // or more, of calculated type =>
         // - removes it as well as the associated old computed
         // THis happens when hlhsr becomes again of type e
@@ -2167,14 +2104,10 @@ Standard_Integer Index = IsComputed (AStructure);
                 return;
         }
 
-        // Mode degenerated active
-#ifdef G003
-        if (  !ComputedMode () || DegenerateModeIsOn ()  )
-                                        Answer = Visual3d_TOA_YES;
-#else
-        if (DegenerateModeIsOn ()) Answer = Visual3d_TOA_YES;
-;
-#endif  // G003
+        if (!ComputedMode())
+        {
+          Answer = Visual3d_TOA_YES;
+        }
 
         if (Answer == Visual3d_TOA_YES ) {
 #ifdef TRACE_DISPLAY
@@ -2262,7 +2195,7 @@ Standard_Integer Index = IsComputed (AStructure);
 
                     // Cas COMPUTED invalid, WITHOUT a valid of replacement
                     else {
-                        // COMPUTED is removed if displayed 
+                        // COMPUTED is removed if displayed
                         if (IsDisplayed (AStructure))
                             MyGraphicDriver->EraseStructure (
                                 MyCView,
@@ -2373,7 +2306,7 @@ Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
             cout << flush;
 #endif
 
-            // It is displayed only if the calculated structure 
+            // It is displayed only if the calculated structure
             // has a proper type corresponding to the one of the view.
             if (Answer != Visual3d_TOA_NO) {
                 if (! IsDisplayed (AStructure))
@@ -2400,18 +2333,15 @@ void Visual3d_View::Erase (const Handle(Graphic3d_Structure)& AStructure, const 
 
         if (IsDeleted ()) return;
 
-        // No test on window as the structure is displayed only if 
+        // No test on window as the structure is displayed only if
         // the window exists, so only one test is enough.
         if (IsDisplayed (AStructure)) {
 Visual3d_TypeOfAnswer Answer = AcceptDisplay (AStructure);
 
-                // Degenerated mode is active
-#ifdef G003
-                if (  !ComputedMode () || DegenerateModeIsOn ()  )
-                                        Answer = Visual3d_TOA_YES;
-#else
-                if (DegenerateModeIsOn ()) Answer = Visual3d_TOA_YES;
-#endif  // G003
+                if (!ComputedMode())
+                {
+                  Answer = Visual3d_TOA_YES;
+                }
 
                 if (Answer != Visual3d_TOA_COMPUTE) {
                         MyGraphicDriver->EraseStructure (
@@ -2428,12 +2358,8 @@ Standard_Integer Index = IsComputed (AStructure);
         cout << "Index : " << Index << "\n";
         cout << flush;
 #endif
-#ifdef G003
-                    if (  Index != 0 && ComputedMode () &&
-                                                !DegenerateModeIsOn ()  )
-#else
-                    if ((Index != 0) && (! DegenerateModeIsOn ()))
-#endif  // G003
+
+                    if (Index != 0 && ComputedMode())
                     {
 #ifdef TRACE_COMP
                         Standard_Integer StructId =
@@ -2599,7 +2525,7 @@ Graphic3d_MapIteratorOfMapOfStructure Iterator (MyDisplayedStructure);
                 Result  =
                 (((Iterator.Key ())->Visual ()) == Graphic3d_TOS_COMPUTED);
 
-                // Iterator.Next () is located on the 
+                // Iterator.Next () is located on the
                 // next structure
                 Iterator.Next ();
         }
@@ -2684,7 +2610,7 @@ void Visual3d_View::MinMaxValues (const Graphic3d_MapOfStructure& ASet, Standard
         if ( ZM != RealLast()  && ZM > ZMax )
           ZMax = ZM ;
       }
-      // Only non-empty and non-infinite structures 
+      // Only non-empty and non-infinite structures
       // are taken into account for calculation of MinMax
       if (! (Iterator.Key ())->IsInfinite () &&
           ! (Iterator.Key ())->IsEmpty ()) {
@@ -3050,9 +2976,7 @@ void Visual3d_View::UpdateView () {
         MyCView.Context.Model           = int (MyContext.Model ());
         MyCView.Context.Visualization   = int (MyContext.Visualization ());
 
-        Handle(Graphic3d_TextureEnv)   TempTextureEnv = MyContext.TextureEnv();
-        if (! TempTextureEnv.IsNull()) MyCView.Context.TexEnvId = TempTextureEnv->TextureId();
-        else                           MyCView.Context.TexEnvId = -1;
+        MyCView.Context.TextureEnv    = MyContext.TextureEnv();
         MyCView.Context.SurfaceDetail = MyContext.SurfaceDetail();
 
 }
@@ -3064,12 +2988,10 @@ Standard_Integer Length = MyCOMPUTEDSequence.Length ();
         for (i=1; i<=Length; i++)
             (MyCOMPUTEDSequence.Value (i))->SetHLRValidation (Standard_False);
 
-        // if the degenerated node is active, nothing is recomputed
-#ifdef G003
-        if (  DegenerateModeIsOn () || !ComputedMode ()  ) return;
-#else
-        if (DegenerateModeIsOn ()) return;
-#endif  // G003
+        if (!ComputedMode())
+        {
+          return;
+        }
 
         /*
          * Force HLRValidation to False on all structures
@@ -3089,10 +3011,6 @@ Standard_Integer Length = MyCOMPUTEDSequence.Length ();
          * Remove structures that were calculated for the
          * previous orientation.
          * Recalculation of new structures.
-         * Passage of the degenerated mode ON to OFF =>
-         * Remove structures that were calculated before 
-         * the degenerated mode passed to ON.
-         * Recalculate new structures.
          */
 Graphic3d_MapIteratorOfMapOfStructure S1Iterator (MyDisplayedStructure);
 Visual3d_TypeOfAnswer Answer;
@@ -3128,11 +3046,7 @@ Graphic3d_SequenceOfStructure FooSequence;
 }
 
 void Visual3d_View::ReCompute (const Handle(Graphic3d_Structure)& AStructure) {
-#ifdef G003
-        if ( DegenerateModeIsOn () || !ComputedMode () ) return;
-#else
-        if (DegenerateModeIsOn()) return;
-#endif  // G003
+        if (!ComputedMode()) return;
 
         if (IsDeleted ()) return;
 
@@ -3257,7 +3171,7 @@ Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
                      << "\n" << flush;
 #endif
 
-                          // hlhsr and the new associated compute are removed 
+                          // hlhsr and the new associated compute are removed
 
                           MyTOCOMPUTESequence.Remove (Index);
                           MyCOMPUTEDSequence.Remove (Index);
@@ -3273,330 +3187,23 @@ Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
 
 }
 
-void
-#ifdef G003
-Visual3d_View::SetAnimationModeOn ( const Standard_Boolean degenerate ) {
-#else
-Visual3d_View::SetAnimationModeOn () {
-#endif
-
-        if (AnimationModeIsOn ()) return;
-
-        AnimationModeIsActive   = Standard_True;
-#ifdef G003
-        if ( degenerate )
-          SetDegenerateModeOn ();
-        else
-          SetDegenerateModeOff ();
-#endif  // G003
-        MyGraphicDriver->BeginAnimation (MyCView);
-
-}
-
-void Visual3d_View::SetAnimationModeOff () {
-
-        if (! AnimationModeIsOn ()) return;
-
-        AnimationModeIsActive   = Standard_False;
-#ifdef G003
-        SetDegenerateModeOff ();
-#endif  // G003
-        MyGraphicDriver->EndAnimation (MyCView);
-
-}
-
-Standard_Boolean Visual3d_View::AnimationModeIsOn () const {
-
-        return AnimationModeIsActive;
-
-}
-
-void Visual3d_View::SetDegenerateModeOn () {
-
-#ifdef TRACE
-        cout << "Visual3d_View" << MyCView.ViewId
-             << "::SetDegenerateModeOn ();\n";
-        cout << flush;
-#endif
-
-        // If the degenerated mode is already active, nothing is recalculated
-        if (DegenerateModeIsOn ()) return;
-        DegenerateModeIsActive = Standard_True;
-
-#ifdef G003
-        MyCView.IsDegenerates  = 1;
-#else
-        /*
-         * Change of activity of the degenerated mode
-         * Remove structures that were calculated
-         * and displayed when the mode was off.
-         * Display of non-calculated structures.
-         */
-Graphic3d_MapIteratorOfMapOfStructure S1Iterator (MyDisplayedStructure);
-Visual3d_TypeOfAnswer Answer;
-Standard_Integer StructId;
-
-        while (S1Iterator.More ()) {
-
-                Answer  = AcceptDisplay (S1Iterator.Key ());
-                // If the structure was calculated, the previous one is 
-                // removed and the new one is displayed
-                // (This is the role of passage into degenerated mode)
-
-                if (Answer == Visual3d_TOA_COMPUTE) {
-Standard_Integer Index = IsComputed (S1Iterator.Key ());
-                    if (Index != 0) {
-                        StructId =
-                        MyCOMPUTEDSequence.Value (Index)->Identification ();
-#ifdef TRACE_COMP
-        cout << "Structure " << S1Iterator.Key ()->Identification ()
-             << " calculated, in the view "
-             << Identification () << ", by structure "
-             << StructId << " passes in degenerated mode.\n";
-        cout << "Remove" << StructId << " then display "
-             << S1Iterator.Key ()->Identification () << "\n";
-        cout << flush;
-#endif
-                        MyGraphicDriver->EraseStructure
-                                (MyCView, *(Graphic3d_CStructure *)MyCOMPUTEDSequence.Value (Index)->CStructure ());
-                        MyGraphicDriver->DisplayStructure (
-                                MyCView,
-                                *(Graphic3d_CStructure *)S1Iterator.Key ()->CStructure (),
-                                int (S1Iterator.Key ()->DisplayPriority ())
-                        );
-                    }
-                    else {
-                        // Else is impossible)
-                        // If the mode was not degenerated previously, the
-                        // calculated structure associated to S1Iterator.Key ()
-                        // really exists and Index != 0
-                    }
-                }
-
-                // S1Iterator.Next () is located on the next structure
-                S1Iterator.Next ();
-        }
-#endif  //G003
-}
-
-void Visual3d_View::SetDegenerateModeOff () {
-
-#ifdef TRACE
-        cout << "Visual3d_View" << MyCView.ViewId
-             << "::SetDegenerateModeOff ();\n";
-        cout << flush;
-#endif
-
-        // If the degenerated mode is already inactive, nothing is recalculated
-        if (! DegenerateModeIsOn ()) return;
-
-        DegenerateModeIsActive  = Standard_False;
-
-#ifdef G003
-        MyCView.IsDegenerates  = 0;
-#else
-        /*
-         * Change of activity of degenerated mode
-         * Remove structures that were displayed
-         * when the mode was on.
-         * Calculation of structures.
-         */
-Graphic3d_MapIteratorOfMapOfStructure S1Iterator (MyDisplayedStructure);
-Visual3d_TypeOfAnswer Answer;
-Standard_Integer StructId;
-
-        Standard_Integer i      = MyDisplayedStructure.Extent ();
-
-        while (S1Iterator.More ()) {
-
-                Answer  = AcceptDisplay (S1Iterator.Key ());
-                // If the structure was calculated, the previous one is 
-                // removed and the new one is displayed
-                // (This is the role of passage into degenerated mode)
-           
-                if (Answer == Visual3d_TOA_COMPUTE) {
-Standard_Integer Index = IsComputed (S1Iterator.Key ());
-                    if (Index != 0) {
-                        StructId =
-                        MyCOMPUTEDSequence.Value (Index)->Identification ();
-#ifdef TRACE_COMP
-        cout << "Structure " << S1Iterator.Key ()->Identification ()
-             << " calculated, in the view "
-             << Identification () << ", by the structure "
-             << StructId << " passes into normal mode.\n";
-        cout << "Remove " << S1Iterator.Key ()->Identification ()
-             << " then display " << StructId << "\n";
-        cout << flush;
-#endif
-                        MyGraphicDriver->EraseStructure
-                                (MyCView,
-                                *(Graphic3d_CStructure *)S1Iterator.Key ()->CStructure ());
-                        MyGraphicDriver->DisplayStructure (
-                                MyCView,
-                                *(Graphic3d_CStructure *)MyCOMPUTEDSequence.Value (Index)->CStructure (),
-                                int (S1Iterator.Key ()->DisplayPriority ())
-                        );
-
-                        Display (S1Iterator.Key (), Aspect_TOU_WAIT);
-
-                        if ((S1Iterator.Key ())->IsHighlighted()) {
-                           if (! (MyCOMPUTEDSequence.Value (Index))->IsHighlighted()) {
-                                (MyCOMPUTEDSequence.Value (Index))->SetHighlightColor
-                                        ((S1Iterator.Key ())->HighlightColor ());
-                                (MyCOMPUTEDSequence.Value (Index))->GraphicHighlight (Aspect_TOHM_COLOR);
-                            }
-                        }
-                    }
-                    else {
-                        // Else is impossible 
-                        // Degenerated mode was activated before display of the
-                        // structure. So the structure was displayed in the
-                        // degenerated mode, but the calculated structure didn't exist.
-                        // It is calculated.
-
-        // Compute + Validation
-Handle(Graphic3d_Structure) AStructure = (S1Iterator.Key ());
-#ifdef OLD
-Handle(Graphic3d_Structure) TheStructure = AStructure->Compute (this);
-#else
-Handle(Graphic3d_Structure) TheStructure;
-TColStd_Array2OfReal ATrsf (0, 3, 0, 3);
-        AStructure->Transform (ATrsf);
-        if (Index != 0) {
-TColStd_Array2OfReal Ident (0, 3, 0, 3);
-Standard_Integer ii, jj;
-        for (ii=0; ii<=3; ii++)
-            for (jj=0; jj<=3; jj++)
-                Ident (ii, jj) = (ii == jj ? 1.0 : 0.0);
-            TheStructure = MyCOMPUTEDSequence.Value (Index);
-            TheStructure->SetTransform (Ident, Graphic3d_TOC_REPLACE);
-            if (AStructure->IsTransformed ()) {
-                AStructure->Compute (this, ATrsf, TheStructure);
-            }
-            else {
-                AStructure->Compute (this, TheStructure);
-            }
-        }
-        else {
-            if (AStructure->IsTransformed ()) {
-                TheStructure = AStructure->Compute (this, ATrsf);
-            }
-            else {
-                TheStructure = AStructure->Compute (this);
-            }
-        }
-#endif
-        TheStructure->SetHLRValidation (Standard_True);
-
-// Return type of visualisation of the view
-Visual3d_TypeOfVisualization ViewType = MyContext.Visualization ();
-
-// Of which type will be the computed ?
-Standard_Boolean ComputeWireframe = ((ViewType == Visual3d_TOV_WIREFRAME) &&
-        ((S1Iterator.Key ())->ComputeVisual () != Graphic3d_TOS_SHADING));
-
-Standard_Boolean ComputeShading = ((ViewType == Visual3d_TOV_SHADING) &&
-        ((S1Iterator.Key ())->ComputeVisual () != Graphic3d_TOS_WIREFRAME));
-
-                        if (ComputeWireframe)
-                            TheStructure->SetVisual (Graphic3d_TOS_WIREFRAME);
-                        if (ComputeShading)
-                            TheStructure->SetVisual (Graphic3d_TOS_SHADING);
-
-                        if ((S1Iterator.Key ())->IsHighlighted()) {
-                            TheStructure->SetHighlightColor
-                                ((S1Iterator.Key ())->HighlightColor ());
-                            TheStructure->GraphicHighlight (Aspect_TOHM_COLOR);
-                        }
-
-                        // Make range
-Standard_Integer Result = 0;
-Standard_Integer Length = MyTOCOMPUTESequence.Length ();
-                        // Find structure <S1Iterator.Key ()>
-                        // in the sequence of structures to be calculated
-                        StructId = (S1Iterator.Key ())->Identification ();
-                        for (i=1; i<=Length && Result==0; i++)
-                          if ((MyTOCOMPUTESequence.Value (i))->Identification () ==
-                            StructId) Result    = i;
-                        if (Result != 0)
-                          MyCOMPUTEDSequence.ChangeValue (Result) = TheStructure;
-                        else {
-                          // hlhsr and the associated new compute are added
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ()) {
-                cout << "In Visual3d_View::SetDegenerateModeOff, ";
-                cout << "TOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-        }
-#endif
-                          MyTOCOMPUTESequence.Append (S1Iterator.Key ());
-                          MyCOMPUTEDSequence.Append (TheStructure);
-#ifdef TRACE_LENGTH
-        if (MyTOCOMPUTESequence.Length () != MyCOMPUTEDSequence.Length ())
-                cout << "\tTOCOMPUTE " << MyTOCOMPUTESequence.Length ()
-                     << " != COMPUTED " << MyCOMPUTEDSequence.Length ()
-                     << "\n" << flush;
-#endif
-                        }
-
-                        // The degenerated is removed and the calculated is displayed
-                        MyGraphicDriver->EraseStructure
-                                (MyCView,
-                                *(Graphic3d_CStructure *)(S1Iterator.Key ()->CStructure ()));
-                        MyGraphicDriver->DisplayStructure (
-                                MyCView,
-                                *(Graphic3d_CStructure *)TheStructure->CStructure (),
-                                int (S1Iterator.Key ()->DisplayPriority ())
-                        );
-                    }
-                }
-
-                // S1Iterator.Next () is located on the next structure
-                S1Iterator.Next ();
-        }
-
-        if (MyViewManager->UpdateMode () == Aspect_TOU_ASAP) Update ();
-#endif  //G003
-}
-
-Standard_Boolean Visual3d_View::DegenerateModeIsOn () const {
-
-        return DegenerateModeIsActive;
-
-}
-
-Handle(Aspect_GraphicDriver) Visual3d_View::GraphicDriver () const {
+const Handle(Graphic3d_GraphicDriver)& Visual3d_View::GraphicDriver () const {
 
         return MyGraphicDriver;
 
 }
 
-void Visual3d_View::Plot (const Handle(Graphic3d_Plotter)& APlotter) const {
-
-Graphic3d_MapIteratorOfMapOfStructure S1Iterator (MyDisplayedStructure);
-
-        while (S1Iterator.More ()) {
-
-                if (DegenerateModeIsOn ())
-                        // As the  mode is degenerated the displayed structure
-                        // is plotted without taking into account if it is calculated or not
-                        (S1Iterator.Key ())->Plot (APlotter);
-                else {
-Standard_Integer Index = IsComputed (S1Iterator.Key ());
-                        // As the  mode is not degenerated the displayed structure
-                        // is plotted as if it was not calculated, otherwise the 
-                        // associated calculated structure is plotted.
-                        if (Index == 0)
-                            (S1Iterator.Key ())->Plot (APlotter);
-                        else
-                            (MyCOMPUTEDSequence.Value (Index))->Plot (APlotter);
-                }
-
-                // S1Iterator.Next () is located on the next structure
-                S1Iterator.Next ();
-        }
-
+void Visual3d_View::Plot (const Handle(Graphic3d_Plotter)& thePlotter) const
+{
+  for (Graphic3d_MapIteratorOfMapOfStructure S1Iterator (MyDisplayedStructure); S1Iterator.More(); S1Iterator.Next())
+  {
+    Standard_Integer Index = IsComputed (S1Iterator.Key ());
+    // displayed structure is plotted as if it was not calculated
+    if (Index == 0)
+      (S1Iterator.Key ())->Plot (thePlotter);
+    else
+      (MyCOMPUTEDSequence.Value (Index))->Plot (thePlotter);
+  }
 }
 
 Standard_Integer Visual3d_View::HaveTheSameOwner (const Handle(Graphic3d_Structure)& AStructure) const {
@@ -3604,7 +3211,7 @@ Standard_Integer Visual3d_View::HaveTheSameOwner (const Handle(Graphic3d_Structu
 Standard_Integer Result = 0;
 Standard_Integer Length = MyTOCOMPUTESequence.Length ();
 
-        // Find in the sequence of already calculated structures 
+        // Find in the sequence of already calculated structures
         // 1/ Structure with the same Owner as <AStructure>
         // 2/ Which is not <AStructure>
         // 3/ COMPUTED which of is valid
@@ -3745,15 +3352,15 @@ Standard_Boolean Visual3d_View::GetGraduatedTrihedron
 
     /* Names of axes */
     xname = MyGTrihedron.xname;
-    yname = MyGTrihedron.yname; 
+    yname = MyGTrihedron.yname;
     zname = MyGTrihedron.zname;
     /* Draw names */
-    xdrawname = MyGTrihedron.xdrawname; 
-    ydrawname = MyGTrihedron.ydrawname; 
+    xdrawname = MyGTrihedron.xdrawname;
+    ydrawname = MyGTrihedron.ydrawname;
     zdrawname = MyGTrihedron.zdrawname;
     /* Draw values */
-    xdrawvalues = MyGTrihedron.xdrawvalues; 
-    ydrawvalues = MyGTrihedron.ydrawvalues; 
+    xdrawvalues = MyGTrihedron.xdrawvalues;
+    ydrawvalues = MyGTrihedron.ydrawvalues;
     zdrawvalues = MyGTrihedron.zdrawvalues;
     /* Draw grid */
     drawgrid = MyGTrihedron.drawgrid;
@@ -3961,20 +3568,18 @@ Standard_Integer Visual3d_View::PlaneLimit() const {
         return maxplane;
 }
 
-#ifdef IMP140100
-Handle(Visual3d_ViewManager) Visual3d_View::ViewManager() const {
-
-        return MyPtrViewManager;
+Handle(Visual3d_ViewManager) Visual3d_View::ViewManager() const
+{
+  return MyPtrViewManager;
 }
-#endif
 
-#ifdef G003
-void Visual3d_View :: SetComputedMode ( const Standard_Boolean aMode ) {
-
- if (  (  (aMode &&  ComputedModeIsActive) ||
-         (!aMode && !ComputedModeIsActive)
-       ) || DegenerateModeIsOn ()
- ) return;
+void Visual3d_View :: SetComputedMode ( const Standard_Boolean aMode )
+{
+  if ((aMode &&  ComputedModeIsActive) ||
+     (!aMode && !ComputedModeIsActive))
+  {
+    return;
+  }
 
  Graphic3d_MapIteratorOfMapOfStructure S1Iterator ( MyDisplayedStructure );
  Visual3d_TypeOfAnswer                 Answer;
@@ -4219,22 +3824,15 @@ Visual3d_TypeOfBackfacingModel Visual3d_View :: BackFacingModel () const {
  return Visual3d_TOBM_DISABLE;
 
 }  // end Visual3d_View :: BackFacingModel
-#endif  // G003
 
 void Visual3d_View::EnableDepthTest( const Standard_Boolean enable ) const
 {
-#ifdef BUC61044
   MyGraphicDriver->SetDepthTestEnabled( MyCView, enable );
-#endif
 }
 
 Standard_Boolean Visual3d_View::IsDepthTestEnabled() const
 {
-#ifdef BUC61044
   return MyGraphicDriver->IsDepthTestEnabled( MyCView );
-#else
-  return Standard_True;
-#endif
 }
 
 void Visual3d_View::ReadDepths(const Standard_Integer x,
@@ -4281,19 +3879,13 @@ Standard_Boolean Visual3d_View::BufferDump (Image_PixMap&               theImage
 
 void Visual3d_View::EnableGLLight( const Standard_Boolean enable ) const
 {
-#ifdef BUC61045
   MyGraphicDriver->SetGLLightEnabled( MyCView, enable );
-#endif
 }
 
 
 Standard_Boolean Visual3d_View::IsGLLightEnabled() const
 {
-#ifdef BUC61045
   return MyGraphicDriver->IsGLLightEnabled( MyCView );
-#else
-  return Standard_True;
-#endif
 }
 
 Standard_Boolean Visual3d_View::Export (const Standard_CString       theFileName,
@@ -4335,7 +3927,7 @@ void Visual3d_View::AddZLayer (const Standard_Integer theLayerId)
 
 //=======================================================================
 //function : RemoveZLayer
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void Visual3d_View::RemoveZLayer (const Standard_Integer theLayerId)
@@ -4345,7 +3937,7 @@ void Visual3d_View::RemoveZLayer (const Standard_Integer theLayerId)
 
 //=======================================================================
 //function : ChangeZLayer
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void Visual3d_View::ChangeZLayer (const Handle(Graphic3d_Structure)& theStructure,

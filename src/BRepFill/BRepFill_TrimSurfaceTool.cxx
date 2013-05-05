@@ -165,7 +165,6 @@ static Standard_Real EvalPhase(const TopoDS_Edge& Edge,
   gp_Pnt2d PE1,PE2,PF1,PF2;
   Standard_Real VDeg;
   Standard_Real V = 0.;
-
   BRep_Tool::UVPoints(Edge,Face,PE1,PE2);
   VDeg = PE1.Y();
   TopExp_Explorer Exp(Face,TopAbs_EDGE);

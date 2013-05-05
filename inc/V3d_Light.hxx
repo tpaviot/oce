@@ -52,16 +52,18 @@
 #ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
 #endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
 #ifndef _V3d_Coordinate_HeaderFile
 #include <V3d_Coordinate.hxx>
 #endif
 class Visual3d_Light;
 class Graphic3d_Structure;
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class Quantity_Color;
 class V3d_View;
-class Graphic3d_Vertex;
 
 
 //! Defines services on Light type objects.. <br>

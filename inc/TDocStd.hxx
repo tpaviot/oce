@@ -74,7 +74,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Appends to <anIDList> the list of the attributes <br>
+  //! specific GUID of this package <br>
+//!          ============================= <br>//! Appends to <anIDList> the list of the attributes <br>
 //!          IDs of this package. CAUTION: <anIDList> is NOT <br>
 //!          cleared before use. <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;

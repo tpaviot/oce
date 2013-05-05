@@ -6,7 +6,7 @@
 #ifndef _Image_TypeOfImage_HeaderFile
 #define _Image_TypeOfImage_HeaderFile
 
-//! Type of dithering method. <br>
+
 enum Image_TypeOfImage {
 Image_TOI_ColorImage,
 Image_TOI_PseudoColorImage

@@ -33,6 +33,11 @@ class TCollection_HAsciiString;
 
 //! defines IGESColor, Type <314> Form <0> <br>
 //!           in package IGESGraph <br>
+//! <br>
+//!           The Color Definition Entity is used to communicate the <br>
+//!           relationship of primary colors to the intensity level of <br>
+//!           the respective graphics devices as a percent of full <br>
+//!           intensity range. <br>
 class IGESGraph_Color : public IGESData_ColorEntity {
 
 public:

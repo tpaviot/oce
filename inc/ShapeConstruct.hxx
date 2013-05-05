@@ -81,7 +81,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Tool for wire triangulation <br>
   Standard_EXPORT   static  Handle_Geom_BSplineCurve ConvertCurveToBSpline(const Handle(Geom_Curve)& C3D,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol3d,const GeomAbs_Shape Continuity,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree) ;
   
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve ConvertCurveToBSpline(const Handle(Geom2d_Curve)& C2D,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol2d,const GeomAbs_Shape Continuity,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree) ;

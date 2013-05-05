@@ -746,10 +746,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  if(ps<0.0) {
 	    ps=-ps;
 	  }
-	  //modified by NIZNHY-PKV Thu Jul 01 12:14:29 2010f
-	  //if(ps<0.1) {
 	  if(ps<0.015) {
-	  //modified by NIZNHY-PKV Thu Jul 01 12:14:35 2010t  
 	    TreatAsBiParametric = Standard_True;
 	  }
 	}
@@ -770,10 +767,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  if(ps<0.0) {
 	    ps=-ps;
 	  }
-	  //modified by NIZNHY-PKV Thu Jul 01 12:15:04 2010f
-	  //if(ps<0.1){
 	  if(ps<0.015){
-	  //modified by NIZNHY-PKV Thu Jul 01 12:15:08 2010t  
 	    TreatAsBiParametric = Standard_True;
 	  }
 	}
@@ -794,7 +788,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  }
 	}
       }
-      else if (a1 > 1.55 && a2 > 1.55) {//quasi-planes: if same domain, treat as canonic
+      else if (a1 > 1.55 && a2 > 1.55) { //quasi-planes: if same domain, treat as canonic
 	gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
 	if (A1.IsParallel(A2,Precision::Angular()))	    {
 	  gp_Pnt Apex1 = Con1.Apex(), Apex2 = Con2.Apex();
@@ -804,11 +798,18 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  }
 	}
       }
-    }
-    //////////////////////////////////////////////
-  }
+      else if ((a1 > 1.55 && a2 < 1.55) || (a2 > 1.55 && a1 < 1.55) ) {
+	gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
+	if (A1.IsCoaxial(A2,Precision::Angular(),Precision::Confusion()))  {
+	  TreatAsBiParametric = Standard_False;
+	}
+      }
+    }// if (typs1 == GeomAbs_Cone)    {
+  }// if(typs2 == GeomAbs_Cone)  {
   //
-  if(D1->DomainIsInfinite() || D2->DomainIsInfinite()) TreatAsBiParametric= Standard_False;
+  if(D1->DomainIsInfinite() || D2->DomainIsInfinite()) {
+    TreatAsBiParametric= Standard_False;
+  }
 
 //  Modified by skv - Mon Sep 26 14:58:30 2005 Begin
 //   if(TreatAsBiParametric) { typs1 = typs2 = GeomAbs_BezierSurface; }
@@ -1080,10 +1081,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  if(ps<0.0) {
 	    ps=-ps;
 	  }
-	  //modified by NIZNHY-PKV Thu Jul 01 12:17:56 2010f
-	  //if(ps<0.1) {
 	  if(ps<0.015) {
-	  //modified by NIZNHY-PKV Thu Jul 01 12:18:09 2010t  
 	    TreatAsBiParametric = Standard_True;
 	  }
 	}
@@ -1105,10 +1103,7 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 	  if(ps<0.0){
 	    ps=-ps;
 	  }
-	  //modified by NIZNHY-PKV Thu Jul 01 12:17:44 2010f
-	  //if(ps<0.1){
 	  if(ps<0.015){
-	  //modified by NIZNHY-PKV Thu Jul 01 12:17:48 2010t  
 	    TreatAsBiParametric = Standard_True;
 	  }
 	}
@@ -1148,12 +1143,22 @@ void IntPatch_Intersection::Perform(const Handle(Adaptor3d_HSurface)&  S1,
 		  TreatAsBiParametric = Standard_False;
 	  }
 	}
+    else if ((a1 > 1.55 && a2 < 1.55) || (a2 > 1.55 && a1 < 1.55) ) {
+      gp_Ax1 A1 = Con1.Axis(), A2 = Con2.Axis();
+      if (A1.IsCoaxial(A2,Precision::Angular(),Precision::Confusion()))  {
+	TreatAsBiParametric = Standard_False;
+      }
+    }
   }
   //////////////////////////////////////////////
 
-  if(D1->DomainIsInfinite() || D2->DomainIsInfinite()) TreatAsBiParametric= Standard_False;
-
-  if(TreatAsBiParametric) { typs1 = typs2 = GeomAbs_BezierSurface; }
+  if(D1->DomainIsInfinite() || D2->DomainIsInfinite()) {
+    TreatAsBiParametric= Standard_False;
+  }
+  if(TreatAsBiParametric) { 
+    typs1 = GeomAbs_BezierSurface; 
+    typs2 = GeomAbs_BezierSurface; 
+  }
 
   // Surface type definition
   Standard_Integer ts1 = 0;

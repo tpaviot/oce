@@ -40,12 +40,14 @@ class IntImpParGen_MyImpParTool;
 //!          and Bounded Parametric Curves. <br>
 //! <br>
 //!  Level: Internal <br>
+//! <br>
+//! All the methods of all the classes are Internal. <br>
 class IntImpParGen  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Template class for an implicit  curve. <br>//! Template class for a tool on a parameterised curve. <br>//! Math function, instantiated inside the Intersector. <br>//! Tool used by the package IntCurve and IntImpParGen <br>
   Standard_EXPORT   static  void DetermineTransition(const IntRes2d_Position Pos1,gp_Vec2d& Tan1,const gp_Vec2d& Norm1,IntRes2d_Transition& Trans1,const IntRes2d_Position Pos2,gp_Vec2d& Tan2,const gp_Vec2d& Norm2,IntRes2d_Transition& Trans2,const Standard_Real Tol) ;
   
   Standard_EXPORT   static  Standard_Boolean DetermineTransition(const IntRes2d_Position Pos1,gp_Vec2d& Tan1,IntRes2d_Transition& Trans1,const IntRes2d_Position Pos2,gp_Vec2d& Tan2,IntRes2d_Transition& Trans2,const Standard_Real Tol) ;

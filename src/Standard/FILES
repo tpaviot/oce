@@ -21,6 +21,8 @@ Standard_Boolean.cxx
 Standard_Boolean.hxx
 Standard_Byte.hxx
 Standard_PByte.hxx
+Standard_CLocaleSentry.hxx
+Standard_CLocaleSentry.cxx
 Standard_CString.cxx
 Standard_CString.hxx
 Standard_Character.cxx
@@ -49,6 +51,8 @@ Standard_ShortReal.cxx
 Standard_ShortReal.hxx
 Standard_Stream.hxx
 Standard_String.hxx
+Standard_Time.cxx
+Standard_Time.hxx
 Standard_Transient.hxx
 Standard_Transient_proto.hxx
 Standard_TypeDef.hxx
@@ -73,5 +77,4 @@ Standard_MMgrTBBalloc.cxx
 Standard_MMgrTBBalloc.hxx
 Standard_Assert.hxx
 Standard_DefineAlloc.hxx
-Standard_Time.hxx
 Standard_StdAllocator.hxx

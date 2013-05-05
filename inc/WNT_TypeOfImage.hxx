@@ -6,7 +6,7 @@
 #ifndef _WNT_TypeOfImage_HeaderFile
 #define _WNT_TypeOfImage_HeaderFile
 
-//! Portrait/landscape orientation. <br>
+
 enum WNT_TypeOfImage {
 WNT_TOI_BMP,
 WNT_TOI_XWD,

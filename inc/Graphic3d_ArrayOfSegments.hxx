@@ -55,6 +55,12 @@ public:
 //!    myArray->AddEdge(4) <br>
 //!    myArray->AddEdge(1) <br>
 //!    myArray->AddEdge(3) <br>
+//! <br>
+//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
+//! <maxEdges> defined the maximun allowed edge number in the array. <br>
+//!  Warning: <br>
+//! When <hasVColors> is TRUE , you must use only <br>
+//!	AddVertex(Point,Color) method <br>
   Standard_EXPORT   Graphic3d_ArrayOfSegments(const Standard_Integer maxVertexs,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False);
 
 

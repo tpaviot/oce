@@ -43,6 +43,9 @@
 #ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
 #endif
+#ifndef _Handle_Geom_BSplineCurve_HeaderFile
+#include <Handle_Geom_BSplineCurve.hxx>
+#endif
 class Standard_NoSuchObject;
 class Standard_DomainError;
 class Standard_OutOfRange;
@@ -61,6 +64,7 @@ class gp_Elips2d;
 class gp_Hypr2d;
 class gp_Parab2d;
 class TColgp_Array1OfPnt2d;
+class Geom_BSplineCurve;
 class TColStd_Array1OfInteger;
 
 
@@ -80,6 +84,8 @@ public:
         BRepAdaptor_Curve& Curve() ;
   //! Sets the 3D curve to be projected. <br>
   Standard_EXPORT     void Curve(const TopoDS_Edge& E) ;
+  //! Returns the 3D curve. <br>
+       const BRepAdaptor_Curve& GetCurve() const;
   //! Returns the parameter   on the 2d  curve  from the <br>
 //!          parameter on the 3d curve. <br>
   Standard_EXPORT     Standard_Real Parameter2d(const Standard_Real P3d) const;
@@ -109,6 +115,7 @@ public:
 //!  tangent on the curve  at sart (or at  end).  If the  first <br>
 //!  derivative is null look after  at start (or before at end) <br>
 //!  with the second derivative. <br>
+//! <br>
   Standard_EXPORT     void Tangent(const Standard_Boolean AtStart,gp_Pnt2d& P,gp_Dir2d& D) const;
   
         Standard_Real FirstParameter() const;
@@ -180,7 +187,11 @@ public:
   
   Standard_EXPORT     void Poles(TColgp_Array1OfPnt2d& TP) const;
   
+  Standard_EXPORT     void Poles(const Handle(Geom_BSplineCurve)& aCurve,TColgp_Array1OfPnt2d& TP) const;
+  
   Standard_EXPORT     void PolesAndWeights(TColgp_Array1OfPnt2d& TP,TColStd_Array1OfReal& TW) const;
+  
+  Standard_EXPORT     void PolesAndWeights(const Handle(Geom_BSplineCurve)& aCurve,TColgp_Array1OfPnt2d& TP,TColStd_Array1OfReal& TW) const;
   
         Standard_Integer NbKnots() const;
   

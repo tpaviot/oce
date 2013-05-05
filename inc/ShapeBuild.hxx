@@ -32,7 +32,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a Geom_Surface which is the Plane XOY (Z positive) <br>
+  //! Rebuilds a shape with substitution of some components <br>//! Returns a Geom_Surface which is the Plane XOY (Z positive) <br>
 //!          This allows to consider an UV space homologous to a 3D space, <br>
 //!          with this support surface <br>
   Standard_EXPORT   static  Handle_Geom_Plane PlaneXOY() ;

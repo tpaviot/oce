@@ -59,25 +59,32 @@ public:
   Standard_EXPORT   IntTools_BeanBeanIntersector();
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanBeanIntersector(const TopoDS_Edge& theEdge1,const TopoDS_Edge& theEdge2);
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanBeanIntersector(const BRepAdaptor_Curve& theCurve1,const BRepAdaptor_Curve& theCurve2,const Standard_Real theBeanTolerance1,const Standard_Real theBeanTolerance2);
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT   IntTools_BeanBeanIntersector(const BRepAdaptor_Curve& theCurve1,const BRepAdaptor_Curve& theCurve2,const Standard_Real theFirstParOnCurve1,const Standard_Real theLastParOnCurve1,const Standard_Real theFirstParOnCurve2,const Standard_Real theLastParOnCurve2,const Standard_Real theBeanTolerance1,const Standard_Real theBeanTolerance2);
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT     void Init(const TopoDS_Edge& theEdge1,const TopoDS_Edge& theEdge2) ;
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& theCurve1,const BRepAdaptor_Curve& theCurve2,const Standard_Real theBeanTolerance1,const Standard_Real theBeanTolerance2) ;
   
 //! Initializes the algorithm <br>
+//! <br>
   Standard_EXPORT     void Init(const BRepAdaptor_Curve& theCurve1,const BRepAdaptor_Curve& theCurve2,const Standard_Real theFirstParOnCurve1,const Standard_Real theLastParOnCurve1,const Standard_Real theFirstParOnCurve2,const Standard_Real theLastParOnCurve2,const Standard_Real theBeanTolerance1,const Standard_Real theBeanTolerance2) ;
   
 //! Sets bounding parameters for first bean if IsFirstBean is true <br>
 //! and for second bean if IsFirstBean is false <br>
+//! <br>
   Standard_EXPORT     void SetBeanParameters(const Standard_Boolean IsFirstBean,const Standard_Real theFirstParOnCurve,const Standard_Real theLastParOnCurve) ;
   
 //! Launches the algorithm <br>

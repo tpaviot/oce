@@ -6,8 +6,9 @@
 #ifndef _GeomAbs_JoinType_HeaderFile
 #define _GeomAbs_JoinType_HeaderFile
 
-//! this enumeration describes if a curve is an U isoparaetric <br>
-//!          or V isoparametric <br>
+//! Characterizes the type of a join, built by an algorithm for <br>
+//! constructing parallel curves, between two consecutive <br>
+//! arcs of a contour parallel to a given contour. <br>
 enum GeomAbs_JoinType {
 GeomAbs_Arc,
 GeomAbs_Tangent,

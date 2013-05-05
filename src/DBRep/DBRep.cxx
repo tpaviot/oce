@@ -139,7 +139,7 @@ static Standard_Integer isos (Draw_Interpretor& di,
   Standard_Boolean Change = Standard_False ;
   if (!Characters (NbArg) && Float (NbArg)) return 1 ;
   if (!Characters (NbArg)) {
-    NbIsos = atoi (Arg[NbArg]) ;
+    NbIsos = Draw::Atoi (Arg[NbArg]) ;
     NbArg-- ;
     Change = Standard_True ;
   }
@@ -233,7 +233,7 @@ static Standard_Integer hlr (Draw_Interpretor& di,
   if (n >= 3 && !strcasecmp(a[1],"ang"  )) {
     nFirst = 3;
     if (n == 3) {
-      Standard_Real ang = atof(a[2]);
+      Standard_Real ang = Draw::Atof(a[2]);
       anglHLR = ang * M_PI / 180;
       if (anglHLR < HAngMin) anglHLR = HAngMin;
       if (anglHLR > HAngMax) anglHLR = HAngMax;
@@ -279,7 +279,7 @@ static Standard_Integer hlr (Draw_Interpretor& di,
 	    localRgN = Standard_True;
 	  }
 	  else if (!strcasecmp(a[1],"ang"  )) {
-	    Standard_Real ang = atof(a[2]);
+	    Standard_Real ang = Draw::Atof(a[2]);
 	    localAng = ang * M_PI / 180;
 	  }
 	  else return 1;
@@ -332,7 +332,7 @@ static Standard_Integer discretisation(Draw_Interpretor& di,
   if (n <= 1)
     di << "Current number of points : "<<discret<<"\n";
   else {
-    discret = atoi(a[1]);
+    discret = Draw::Atoi(a[1]);
   }
   return 0;
 }
@@ -496,7 +496,7 @@ static Standard_Integer explode(Draw_Interpretor& di,
     TopoDS_Iterator itr(S);
     while (itr.More()) {
       i++;
-      sprintf(p,"%d",i);
+      Sprintf(p,"%d",i);
       DBRep::Set(newname,itr.Value());
       di.AppendElement(newname);
       itr.Next();
@@ -557,7 +557,7 @@ static Standard_Integer explode(Draw_Interpretor& di,
       Standard_Boolean added = M.Add(Sx);
       if (added) {
 	i++;
-	sprintf(p,"%d",i);
+	Sprintf(p,"%d",i);
 	DBRep::Set(newname,Sx);
 	di.AppendElement(newname);
       }
@@ -651,7 +651,7 @@ static Standard_Integer nexplode(Draw_Interpretor& di,
   }
   
   for (Index=1 ;Index <= MaxShapes; Index++) {
-    sprintf(p,"%d",Index);
+    Sprintf(p,"%d",Index);
     DBRep::Set(newname,aShapes(OrderInd(Index)));
     di.AppendElement(newname);    
   }
@@ -680,7 +680,7 @@ static Standard_Integer exwire(Draw_Interpretor& ,
   BRepTools_WireExplorer ex(TopoDS::Wire(S));
   while (ex.More()) {
     i++;
-    sprintf(p,"%d",i);
+    Sprintf(p,"%d",i);
     DBRep::Set(newname,ex.Current());
     ex.Next();
   }
@@ -799,24 +799,68 @@ static Standard_Integer numshapes(Draw_Interpretor& di,
 }
 
 //=======================================================================
+// function : DumpExtent
+// purpose  : Dumps the number of sub-shapes in <aStr>.
+//=======================================================================
+static void DumpExtent(const TopoDS_Shape& aS,
+                       TCollection_AsciiString& aStr)
+{
+  const int aNbTypes=8;
+  const char *pNames[aNbTypes+1]={
+    " SHAPE     : ",
+    " COMPOUND  : ",
+    " COMPSOLID : ",
+    " SOLID     : ",
+    " SHELL     : ",
+    " FACE      : ",
+    " WIRE      : ",
+    " EDGE      : ",
+    " VERTEX    : "
+  };
+  Standard_Integer i, aNb, aNbSh;
+  TopAbs_ShapeEnum aType;
+  TopTools_IndexedMapOfShape aM;
+  //
+  aNbSh=0;
+  //
+  for (i=aNbTypes-1; i>=0; --i) {
+    aM.Clear();
+    aType=(TopAbs_ShapeEnum)i;
+    TopExp::MapShapes(aS, aType, aM);
+    aNb=aM.Extent();
+    aStr=aStr+pNames[i+1]+TCollection_AsciiString(aNb)+"\n";
+    aNbSh+=aNb;
+  }
+  aStr=aStr+pNames[0]+TCollection_AsciiString(aNbSh)+"\n";
+}
+
+//=======================================================================
 // nbshapes
 //=======================================================================
 
 static Standard_Integer nbshapes(Draw_Interpretor& di,
-				 Standard_Integer n, const char** a)
+                                 Standard_Integer n, const char** a)
 {
   if (n < 2) return 1;
 
   Standard_Integer i;
+  Standard_Boolean aTotal;
   TopExp_Explorer ex;
+  //
+  aTotal = !strcmp(a[n-1], "-t") ? Standard_True : Standard_False;
+  //
   for (i = 1; i < n; i++) {
     TopoDS_Shape S = DBRep::Get(a[i]);
     if (!S.IsNull()) {
-      BRepTools_ShapeSet BS;
-      BS.Add(S);
       di<<"Number of shapes in "<<a[i]<<"\n";
       TCollection_AsciiString Astr; 
-      BS.DumpExtent(Astr);
+      if (aTotal) {
+        DumpExtent(S, Astr);
+      } else {
+        BRepTools_ShapeSet BS;
+        BS.Add(S);
+        BS.DumpExtent(Astr);
+      }
       di<<Astr.ToCString();
     }
   }
@@ -974,7 +1018,7 @@ static Standard_Integer normals(Draw_Interpretor& di,
   if (n <= 1) return 1;
   Standard_Real l = 1.;
   if (n > 2) 
-    l = atof(a[2]);
+    l = Draw::Atof(a[2]);
 
   TopoDS_Shape S = DBRep::Get(a[1]);
   if (S.IsNull()) return 1;
@@ -1157,7 +1201,9 @@ void  DBRep::BasicCommands(Draw_Interpretor& theCommands)
   theCommands.Add("complement","complement name1 name2 ...",__FILE__,orientation,g);
   theCommands.Add("invert","invert name, reverse subshapes",__FILE__,invert,g);
   theCommands.Add("normals","normals s (length = 10), disp normals",__FILE__,normals,g);
-  theCommands.Add("nbshapes","nbshapes s; size of shape",__FILE__,nbshapes,g);
+  theCommands.Add("nbshapes",
+                  "\n nbshapes s - shows the number of sub-shapes in <s>;\n nbshapes s -t - shows the number of sub-shapes in <s> counting the same sub-shapes with different location as different sub-shapes.",
+                  __FILE__,nbshapes,g);
   theCommands.Add("numshapes","numshapes s; size of shape",__FILE__,numshapes,g);
   theCommands.Add("countshapes","countshapes s; count of shape",__FILE__,countshapes,g);
 

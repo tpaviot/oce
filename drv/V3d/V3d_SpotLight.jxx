@@ -1,5 +1,5 @@
-#ifndef _Viewer_BadValue_HeaderFile
-#include <Viewer_BadValue.hxx>
+#ifndef _V3d_BadValue_HeaderFile
+#include <V3d_BadValue.hxx>
 #endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>

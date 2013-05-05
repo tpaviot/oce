@@ -65,6 +65,19 @@ class gp_Vec;
 //!    | a21  a22  a23   a24 |   | y |      | y'| <br>
 //!    | a31  a32  a33   a34 |   | z |   =  | z'| <br>
 //!    |  0    0    0     1  |   | 1 |      | 1 | <br>
+//! <br>
+//!  where {V1, V2, V3} defines the vectorial part of the <br>
+//!  transformation and T defines the translation part of <br>
+//!  the transformation. <br>
+//! Note: Geom_Transformation transformations <br>
+//! provide the same kind of "geometric" services as <br>
+//! gp_Trsf ones but have more complex data structures. <br>
+//! The geometric objects provided by the Geom <br>
+//! package use gp_Trsf transformations in the syntaxes <br>
+//! Transform and Transformed. <br>
+//! Geom_Transformation transformations are used in <br>
+//! a context where they can be shared by several <br>
+//! objects contained inside a common data structure. <br>
 class Geom_Transformation : public MMgt_TShared {
 
 public:

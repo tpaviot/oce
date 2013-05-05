@@ -66,6 +66,9 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Trsf2d);
 //!    | a11  a12  a13 |   | x |     | x'| <br>
 //!    | a21  a22  a23 |   | y |     | y'| <br>
 //!    |  0    0    1  |   | 1 |     | 1 | <br>
+//! <br>
+//!   where {V1, V2} defines the vectorial part of the transformation <br>
+//!   and T defines the translation part of the transformation. <br>
 class gp_Trsf2d  {
 
 public:
@@ -191,6 +194,9 @@ public:
 //!  <me> * <me> * .......* <me>,  N time. <br>
 //!  if N = 0 <me> = Identity <br>
 //!  if N < 0 <me> = <me>.Inverse() *...........* <me>.Inverse(). <br>
+//! <br>
+//!  Raises if N < 0 and if the matrix of the transformation not <br>
+//!  inversible. <br>
         gp_Trsf2d Powered(const Standard_Integer N) ;
   
         void Transforms(Standard_Real& X,Standard_Real& Y) const;

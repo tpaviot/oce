@@ -42,6 +42,12 @@ class TopLoc_Location;
 //!          and geometry).   So two  ways of construction  are <br>
 //!          proposed : <br>
 //! <br>
+//! <br>
+//!          - sharing  basis elements  (the generatrice can be <br>
+//!          modified , for  exemples  PCurves can be added  on <br>
+//!          faces); <br>
+//! <br>
+//!          - copying everything. <br>
 class BRepSweep_Trsf  : public BRepSweep_NumLinearRegularSweep {
 public:
 

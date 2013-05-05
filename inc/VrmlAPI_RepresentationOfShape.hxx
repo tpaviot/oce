@@ -6,15 +6,7 @@
 #ifndef _VrmlAPI_RepresentationOfShape_HeaderFile
 #define _VrmlAPI_RepresentationOfShape_HeaderFile
 
-//! Identifies the representation of the shape written <br>
-//! to a VRML file. The available options are : <br>
-//! -      VrmlAPI_ShadedRepresentation : <br>
-//!    the shape is translated with a shaded representation. <br>
-//! -      VrmlAPI_WireFrameRepresentation : <br>
-//!   the shape is translated with a wireframe representation. <br>
-//! -      VrmlAPI_BothRepresentation : the shape is translated <br>
-//!   to VRML format with both representations : shaded and <br>
-//!    wireframe. This is the default option. <br>
+
 enum VrmlAPI_RepresentationOfShape {
 VrmlAPI_ShadedRepresentation,
 VrmlAPI_WireFrameRepresentation,

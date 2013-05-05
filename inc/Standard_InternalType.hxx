@@ -7,12 +7,6 @@
 #define _Standard_InternalType_HeaderFile
 
 
-//!   The package Standard provides the minimum services necessary <br>
-//!   for other toolkits to handle persistent and transient objects. <br>
-//!   It is the Standard run-time encapsulation of the CAS.CADE <br>
-//!   database, that is, it defines a single programming interface <br>
-//!   for creating and accessing persistent objects manipulated by <br>
-//!   handles. <br>
 enum Standard_InternalType {
 Standard_Void,
 Standard_Char,

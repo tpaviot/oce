@@ -76,6 +76,37 @@ class Geom_Surface;
 //!          face, or creating a shape corresponding to face on composite <br>
 //!          surface which is missing in CAS.CADE but exists in some other <br>
 //!          systems. <br>
+//! <br>
+//!          It splits (if necessary) original face to several ones by <br>
+//!          splitting lines which are joint lines on a supplied grid of <br>
+//!          surfaces (U- and V- isolines of the  composite surface). <br>
+//!          There are two modes of work, which differ in the way of <br>
+//!          handling faces on periodic surfaces: <br>
+//! <br>
+//!        - if ClosedMode is False (default), when splitting itself is <br>
+//!          done as if surface were not periodic. The periodicity of the <br>
+//!          underlying surface is taken into account by duplicating splitting <br>
+//!          lines in the periodic direction, as necessary to split all <br>
+//!          the wires (whole parametrical range of a face) <br>
+//!          In this mode, some regularization procedures are performed <br>
+//!          (indexation of splitted segments by patch numbers), and it is <br>
+//!          expected to be more reliable and robust in case of bad shapes <br>
+//! <br>
+//!        - if ClosedMode is True, when everything on a periodic surfaces <br>
+//!          is considered as modulo period. This allows to deal with wires <br>
+//!          which are closed in 3d but not in 2d, with wires which may be <br>
+//!          shifted on several periods in 2d etc. However, this mode is <br>
+//!          less reliable since some regularizations do not work for it. <br>
+//! <br>
+//!          The work is made basing on pcurves of the edges. These pcurves <br>
+//!          should already exist (for example, in the case of division of <br>
+//!          existing face), then they are taken as is. The existing pcurves <br>
+//!          should be assigned to one surface (face) for all edges, <br>
+//!          this surface (face) will be used only for accessing pcurves, <br>
+//!          and it may have any geometry. <br>
+//! <br>
+//!          All the modifications are recorded in the context tool <br>
+//!          (ShapeBuild_ReShape). <br>
 class ShapeFix_ComposeShell : public ShapeFix_Root {
 
 public:
@@ -100,6 +131,10 @@ public:
 //!          This is a part of Perform() which does not produce any <br>
 //!          resulting shape; the only result is filled context <br>
 //!          where splittings are recorded. <br>
+//! <br>
+//!          NOTE: If edge is splitted, it is replaced by wire, and <br>
+//!          order of edges in the wire corresponds to FORWARD orientation <br>
+//!          of the edge. <br>
   Standard_EXPORT     void SplitEdges() ;
   //! Returns resulting shell or face (or Null shape if not done) <br>
   Standard_EXPORT    const TopoDS_Shape& Result() const;
@@ -147,14 +182,36 @@ protected:
 //!          of edge), edge is divided in single point. In the same way, <br>
 //!          splitting which is too near to end of edge, is not applied <br>
 //!          (end vertex is returned instead). <br>
+//! <br>
+//!          NOTE: If edge is splitted, it is replaced by wire, and <br>
+//!          order of edges in the wire corresponds to FORWARD orientation <br>
+//!          of the edge. <br>
   Standard_EXPORT     ShapeFix_WireSegment SplitWire(ShapeFix_WireSegment& wire,TColStd_SequenceOfInteger& indexes,const TColStd_SequenceOfReal& values,TopTools_SequenceOfShape& vertices,const TColStd_SequenceOfInteger& segcodes,const Standard_Boolean cutbyu,const Standard_Integer cutindex) ;
   //! Split edges in the wire by cutting line. <br>
 //!          Wires with FORWARD or REVERSED orientation are considered <br>
 //!          as closed. <br>
+//! <br>
+//!          All modifications (splitting) are recorded in context, <br>
+//!          except splitting of wires marked as EXTERNAL <br>
+//!          (they are supposed to be former cutting lines). <br>
+//! <br>
+//!          Method fills sequences of parameters of intersection points <br>
+//!          of cutting line with all edges, their types, and corresponding <br>
+//!          vertices (including ones created during splitting edges). <br>
   Standard_EXPORT     Standard_Boolean SplitByLine(ShapeFix_WireSegment& wire,const gp_Lin2d& line,const Standard_Boolean cutbyu,const Standard_Integer cutindex,TColStd_SequenceOfReal& SplitLinePar,TColStd_SequenceOfInteger& SplitLineCode,TopTools_SequenceOfShape& SplitLineVertex) ;
   //! Split edges in the sequence of wires by cutting line. <br>
 //!          Wires with FORWARD or REVERSED orientation are considered <br>
 //!          as closed. <br>
+//! <br>
+//!          Parts of cutting line which get inside the face (defined by <br>
+//!          parity check of intersections with all wires) are added <br>
+//!          into that sequence (with orientation EXTERNAL). Each part <br>
+//!          is represented by one-edge wire segment with no 3d curve. <br>
+//!          They share common vertices with all wires they intersect. <br>
+//! <br>
+//!          All modifications (splitting) are recorded in context, <br>
+//!          except splitting of wires marked as EXTERNAL <br>
+//!          (they are supposed to be former cutting lines). <br>
   Standard_EXPORT     void SplitByLine(ShapeFix_SequenceOfWireSegment& seqw,const gp_Lin2d& line,const Standard_Boolean cutbyu,const Standard_Integer cutindex) ;
   //! Split initial set of (closed) wires by grid of lines corresponding <br>
 //!          to joints between patches on the composite surface. <br>

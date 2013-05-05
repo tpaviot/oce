@@ -23,10 +23,6 @@
 #include <NIS_InteractiveObject.hxx>
 #include <Standard_ProgramError.hxx>
 
-#ifdef WNT
-#include <windows.h>
-#endif
-
 #include <OpenGl_GlCore11.hxx>
 
 static void setColor(GLenum               theFace,
@@ -59,7 +55,7 @@ NIS_SurfaceDrawer::NIS_SurfaceDrawer
 
 //=======================================================================
 //function : SetColor
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::SetColor(const Quantity_Color &theColor)
@@ -71,7 +67,7 @@ void NIS_SurfaceDrawer::SetColor(const Quantity_Color &theColor)
 
 //=======================================================================
 //function : Assign
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::Assign (const Handle_NIS_Drawer& theOther)
@@ -129,7 +125,7 @@ Standard_Boolean NIS_SurfaceDrawer::IsEqual
 
 //=======================================================================
 //function : redraw
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::redraw  (const DrawType         theType,
@@ -154,7 +150,7 @@ void NIS_SurfaceDrawer::redraw  (const DrawType         theType,
 
 //=======================================================================
 //function : BeforeDraw
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::BeforeDraw (const DrawType      theType,
@@ -222,7 +218,7 @@ void NIS_SurfaceDrawer::BeforeDraw (const DrawType      theType,
 
 //=======================================================================
 //function : AfterDraw
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::AfterDraw (const DrawType      theType,
@@ -247,7 +243,7 @@ void NIS_SurfaceDrawer::AfterDraw (const DrawType      theType,
 
 //=======================================================================
 //function : Draw
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void NIS_SurfaceDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
@@ -264,7 +260,7 @@ void NIS_SurfaceDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
     static_cast <const NIS_Surface *> (theObj.operator->());
   glVertexPointer (3, GL_FLOAT, 0, pObject->Node(0));
 
-  // In Highlited mode the shape must be shown as wireframe 
+  // In Highlited mode the shape must be shown as wireframe
   Standard_Boolean isWireframe(myIsWireframe);
   if (isWireframe == Standard_False && theType == Draw_DynHilighted)
     if (pObject->NEdges() > 0)
@@ -288,7 +284,7 @@ void NIS_SurfaceDrawer::Draw (const Handle_NIS_InteractiveObject& theObj,
 
 //=======================================================================
 //function : setColor
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void setColor(GLenum               theFace,

@@ -52,17 +52,20 @@ public:
         Standard_Integer NbSectionPoints() const;
   //! Gives the point of  intersection of address  Index in <br>
 //!          the interference. <br>
+//! <br>
        const Intf_SectionPoint& PntValue(const Standard_Integer Index) const;
   //! Gives the number  of polylines of  intersection in the <br>
 //!          interference. <br>
         Standard_Integer NbSectionLines() const;
   //! Gives the polyline of intersection at address <Index> in <br>
 //!          the interference. <br>
+//! <br>
        const Intf_SectionLine& LineValue(const Standard_Integer Index) const;
   //! Gives the number of zones of tangence in the interference. <br>
         Standard_Integer NbTangentZones() const;
   //! Gives  the zone of  tangence at address   Index in the <br>
 //!          interference. <br>
+//! <br>
        const Intf_TangentZone& ZoneValue(const Standard_Integer Index) const;
   //! Gives the tolerance used for the calculation. <br>
         Standard_Real GetTolerance() const;

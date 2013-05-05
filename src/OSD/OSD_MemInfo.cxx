@@ -25,6 +25,7 @@
   #include <windows.h>
   #include <winbase.h>
   #include <process.h>
+  #include <malloc.h>
   #include <psapi.h>
   #if defined(_MSC_VER) || defined(__BORLANDC__)
     #pragma comment(lib, "Psapi.lib")
@@ -32,8 +33,10 @@
 #elif (defined(__APPLE__))
   #include <mach/task.h>
   #include <mach/mach.h>
+  #include <malloc/malloc.h>
 #else
   #include <unistd.h>
+  #include <malloc.h>
 #endif
 
 #include <string>
@@ -99,6 +102,17 @@ void OSD_MemInfo::Update()
     myCounters[MemSwapUsagePeak]  = aProcMemCnts.PeakPagefileUsage;
   }
 
+  _HEAPINFO hinfo;
+  int heapstatus;
+  hinfo._pentry = NULL;
+
+  myCounters[MemHeapUsage] = 0;
+  while((heapstatus = _heapwalk(&hinfo)) == _HEAPOK)
+  {
+    if(hinfo._useflag == _USEDENTRY)
+      myCounters[MemHeapUsage] += hinfo._size;
+  }
+
 #elif (defined(__linux__) || defined(__linux))
   // use procfs on Linux
   char aBuff[4096];
@@ -145,6 +159,10 @@ void OSD_MemInfo::Update()
     }
   }
   aFile.close();
+
+  struct mallinfo aMI = mallinfo();
+  myCounters[MemHeapUsage] = aMI.uordblks;
+
 #elif (defined(__APPLE__))
   struct task_basic_info aTaskInfo;
   mach_msg_type_number_t aTaskInfoCount = TASK_BASIC_INFO_COUNT;
@@ -154,6 +172,12 @@ void OSD_MemInfo::Update()
     // On Mac OS X, these values in bytes, not pages!
     myCounters[MemVirtual]    = aTaskInfo.virtual_size;
     myCounters[MemWorkingSet] = aTaskInfo.resident_size;
+
+    //Getting malloc statistics
+    malloc_statistics_t aStats;
+    malloc_zone_statistics (NULL, &aStats);
+
+    myCounters[MemHeapUsage] = aStats.size_in_use;
   }
 #endif
 }
@@ -190,6 +214,10 @@ TCollection_AsciiString OSD_MemInfo::ToString() const
   if (myCounters[MemVirtual] != Standard_Size(-1))
   {
     anInfo += TCollection_AsciiString("  Virtual memory:     ") +  Standard_Integer (ValueMiB (MemVirtual)) + " MiB\n";
+  }
+  if (myCounters[MemHeapUsage] != Standard_Size(-1))
+  {
+    anInfo += TCollection_AsciiString("  Heap memory:     ") +  Standard_Integer (ValueMiB (MemHeapUsage)) + " MiB\n";
   }
   return anInfo;
 }

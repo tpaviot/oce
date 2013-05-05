@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfPolygon_HeaderFile
 #define _Graphic3d_TypeOfPolygon_HeaderFile
 
-//! To manage the connections between the structures. <br>
+//! The type of polygon in a group in a structure. <br>
 enum Graphic3d_TypeOfPolygon {
 Graphic3d_TOP_UNKNOWN,
 Graphic3d_TOP_COMPLEX,

@@ -19,22 +19,19 @@
 #ifndef _Graphic3d_TextureRoot_HeaderFile
 #include <Graphic3d_TextureRoot.hxx>
 #endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #include <Graphic3d_TypeOfTexture.hxx>
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-class Graphic3d_StructureManager;
+#ifndef _Graphic3d_LevelOfTextureAnisotropy_HeaderFile
+#include <Graphic3d_LevelOfTextureAnisotropy.hxx>
+#endif
+class TCollection_AsciiString;
 
 
-//!  This is an abstract class for managing texture applyable on polygons. <br>
+//! This is an abstract class for managing texture applyable on polygons. <br>
 class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 
 public:
@@ -70,6 +67,11 @@ public:
   
 //! Returns TRUE if the texture repeat is enable. <br>
   Standard_EXPORT     Standard_Boolean IsRepeat() const;
+  //! @return level of anisontropy texture filter. <br>
+//! Default value is Graphic3d_LOTA_OFF. <br>
+  Standard_EXPORT     Graphic3d_LevelOfTextureAnisotropy AnisoFilter() const;
+  //! @param theLevel level of anisontropy texture filter. <br>
+  Standard_EXPORT     void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel) ;
 
 
 
@@ -79,7 +81,7 @@ public:
 protected:
 
   
-  Standard_EXPORT   Graphic3d_TextureMap(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString Path,const Standard_CString FileName,const Graphic3d_TypeOfTexture Type);
+  Standard_EXPORT   Graphic3d_TextureMap(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
 
 
 

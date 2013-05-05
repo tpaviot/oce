@@ -87,6 +87,14 @@ public:
   
   Standard_EXPORT     Standard_Integer IndexAfter() const;
   //! set the transition corresponding to orientation <O> <br>
+//! <br>
+//!       O       Before  After <br>
+//! <br>
+//!   FORWARD       OUT    IN <br>
+//!   REVERSED      IN     OUT <br>
+//!   INTERNAL      IN     IN <br>
+//!   EXTERNAL      OUT    OUT <br>
+//! <br>
   Standard_EXPORT     void Set(const TopAbs_Orientation O) ;
   //! returns the orientation corresponding to state <S> <br>
 //! <br>

@@ -114,7 +114,8 @@ public:
 //!          IDs of this package. CAUTION: <anIDList> is NOT <br>
 //!          cleared before use. <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  
+  //! Prints the name of the real dimension <DIM> as a String on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TDataStd_RealEnum DIM,Standard_OStream& S) ;
 
 

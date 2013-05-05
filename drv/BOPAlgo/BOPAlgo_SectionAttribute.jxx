@@ -1,0 +1,3 @@
+#ifndef _BOPAlgo_SectionAttribute_HeaderFile
+#include <BOPAlgo_SectionAttribute.hxx>
+#endif

@@ -64,6 +64,9 @@
 #ifndef _Handle_Prs3d_RadiusAspect_HeaderFile
 #include <Handle_Prs3d_RadiusAspect.hxx>
 #endif
+#ifndef _Prs3d_TypeOfHLR_HeaderFile
+#include <Prs3d_TypeOfHLR.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -151,6 +154,11 @@ public:
   Standard_EXPORT   virtual  void SetIsoOnPlane(const Standard_Boolean OnOff) ;
   //! Returns True if the drawing of isos on planes is enabled. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsoOnPlane() const;
+  //! Sets the type of HLR algorithm <br>
+//!          used by drawer's interactive objects <br>
+  Standard_EXPORT   virtual  void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR) ;
+  //! Gets the myTypeOfHLR value <br>
+  Standard_EXPORT   virtual  Prs3d_TypeOfHLR TypeOfHLR() const;
   //! Defines the attributes which are used when drawing an <br>
 //!          U isoparametric curve of a face. Defines the number <br>
 //!          of U isoparametric curves to be drawn for a single face. <br>
@@ -413,6 +421,7 @@ Handle_Prs3d_RadiusAspect myRadiusAspect;
 Handle_Prs3d_LineAspect mySectionAspect;
 Standard_Boolean myFaceBoundaryDraw;
 Handle_Prs3d_LineAspect myFaceBoundaryAspect;
+Prs3d_TypeOfHLR myTypeOfHLR;
 
 
 private: 

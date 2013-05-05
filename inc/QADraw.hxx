@@ -17,9 +17,6 @@
 #endif
 
 class Draw_Interpretor;
-class QADraw_DataMapOfAsciiStringOfAddress;
-class QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress;
-class QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress;
 
 
 
@@ -50,9 +47,6 @@ private:
 
 
 
-friend class QADraw_DataMapOfAsciiStringOfAddress;
-friend class QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress;
-friend class QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress;
 
 };
 

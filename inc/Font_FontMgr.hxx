@@ -22,9 +22,24 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
+#ifndef _Handle_Font_SystemFont_HeaderFile
+#include <Handle_Font_SystemFont.hxx>
+#endif
+#ifndef _Handle_TCollection_HAsciiString_HeaderFile
+#include <Handle_TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Font_FontAspect_HeaderFile
+#include <Font_FontAspect.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
+#endif
+class TColStd_SequenceOfHAsciiString;
+class Font_SystemFont;
+class TCollection_HAsciiString;
 
 
-//! Structure for store of Font System Information <br>
+//! Collects and provides information about available fonts in system. <br>
 class Font_FontMgr : public MMgt_TShared {
 
 public:
@@ -32,7 +47,21 @@ public:
   
   Standard_EXPORT   static  Handle_Font_FontMgr GetInstance() ;
   
-  Standard_EXPORT     Font_NListOfSystemFont GetAvalableFonts() const;
+  Standard_EXPORT    const Font_NListOfSystemFont& GetAvailableFonts() const;
+  //! Returns sequence of available fonts names <br>
+  Standard_EXPORT     void GetAvailableFontsNames(TColStd_SequenceOfHAsciiString& theFontsNames) const;
+  //! Returns font that match given parameters. <br>
+//!         If theFontName is empty string returned font can have any FontName. <br>
+//!         If theFontAspect is Font_FA_Undefined returned font can have any FontAspect. <br>
+//!         If theFontSize is "-1" returned font can have any FontSize. <br>
+  Standard_EXPORT     Handle_Font_SystemFont GetFont(const Handle(TCollection_HAsciiString)& theFontName,const Font_FontAspect theFontAspect,const Standard_Integer theFontSize) const;
+  //! Tries to find font by given parameters. <br>
+//!         If the specified font is not found tries to use font names mapping. <br>
+//!         If the requested family name not found -> search for any font family <br>
+//!         with given aspect and height. If the font is still not found, returns <br>
+//!         any font available in the system. Returns NULL in case when the fonts <br>
+//!         are not found in the system. <br>
+  Standard_EXPORT     Handle_Font_SystemFont FindFont(const Handle(TCollection_HAsciiString)& theFontName,const Font_FontAspect theFontAspect,const Standard_Integer theFontSize) const;
 
 
 
@@ -48,10 +77,10 @@ private:
 
   //! Creates empty font object <br>
   Standard_EXPORT   Font_FontMgr();
-  
+  //! Collects available fonts paths. <br>
   Standard_EXPORT     void InitFontDataBase() ;
 
-Font_NListOfSystemFont MyListOfFonts;
+Font_NListOfSystemFont myListOfFonts;
 
 
 };

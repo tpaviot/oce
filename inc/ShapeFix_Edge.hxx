@@ -141,6 +141,36 @@ public:
   //! Tries to make edge SameParameter and sets corresponding <br>
 //!          tolerance and SameParameter flag. <br>
 //!          First, it makes edge same range if SameRange flag is not set. <br>
+//! <br>
+//!          If flag SameParameter is set, this method calls the <br>
+//!          function ShapeAnalysis_Edge::CheckSameParameter() that <br>
+//!          calculates the maximal deviation of pcurves of the edge from <br>
+//!          its 3d curve. If deviation > tolerance, the tolerance of edge <br>
+//!          is increased to a value of deviation. If deviation < tolerance <br>
+//!          nothing happens. <br>
+//! <br>
+//!          If flag SameParameter is not set, this method chooses the best <br>
+//!          variant (one that has minimal tolerance), either <br>
+//!          a. only after computing deviation (as above) or <br>
+//!          b. after calling standard procedure BRepLib::SameParameter <br>
+//!          and computing deviation (as above). If <tolerance> > 0, it is <br>
+//!          used as parameter for BRepLib::SameParameter, otherwise, <br>
+//!          tolerance of the edge is used. <br>
+//! <br>
+//!  Use    : Is to be called after all pcurves and 3d curve of the edge are <br>
+//!          correctly computed <br>
+//!  Remark : SameParameter flag is always set to True after this method <br>
+//!  Returns: True, if something done, else False <br>
+//!  Status : OK    - edge was initially SameParameter, nothing is done <br>
+//!          FAIL1 - computation of deviation of pcurves from 3d curve has failed <br>
+//!          FAIL2 - BRepLib::SameParameter() has failed <br>
+//!          DONE1 - tolerance of the edge was increased <br>
+//!          DONE2 - flag SameParameter was set to True (only if <br>
+//!                  BRepLib::SameParameter() did not set it) <br>
+//!          DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter <br>
+//!          DONE4 - not used anymore <br>
+//!          DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above <br>
+//!                  (only for edges with not set SameParameter) <br>
   Standard_EXPORT     Standard_Boolean FixSameParameter(const TopoDS_Edge& edge,const Standard_Real tolerance = 0.0) ;
   //! Returns the status (in the form of True/False) of last Fix <br>
   Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status status) const;

@@ -57,6 +57,51 @@ class ShapeAnalysis_WireOrder;
 
 
 //! This class provides a set of tools for repairing a wire. <br>
+//! <br>
+//!          These are methods Fix...(), organised in two levels: <br>
+//! <br>
+//! Level 1: Advanced - each method in this level fixes one separate problem, <br>
+//!          usually dealing with either single edge or connection of the <br>
+//!          two adjacent edges. These methods should be used carefully and <br>
+//!          called in right sequence, because some of them depend on others. <br>
+//! <br>
+//! Level 2: Public (API) - methods which group several methods of level 1 <br>
+//!          and call them in a proper sequence in order to make some <br>
+//!          consistent set of fixes for a whole wire. It is possible to <br>
+//!          control calls to methods of the advanced level from methods of <br>
+//!          the public level by use of flags Fix..Mode() (see below). <br>
+//! <br>
+//!          Fixes can be made in three ways: <br>
+//!       1. Increasing tolerance of an edge or a vertex <br>
+//!       2. Changing topology (adding/removing/replacing edge in the wire <br>
+//!          and/or replacing the vertex in the edge) <br>
+//!       3. Changing geometry (shifting vertex or adjusting ends of edge <br>
+//!          curve to vertices, or recomputing curves of the edge) <br>
+//! <br>
+//!          When fix can be made in more than one way (e.g., either <br>
+//!          by increasing tolerance or shifting a vertex), it is choosen <br>
+//!          according to the flags: <br>
+//!          ModifyTopologyMode - allows modification of the topology. <br>
+//!                               This flag can be set when fixing a wire on <br>
+//!                               the separate (free) face, and should be <br>
+//!                               unset for face which is part of shell. <br>
+//!          ModifyGeometryMode - allows modification of the geometry. <br>
+//! <br>
+//!          The order of descriptions of Fix() methods in this CDL <br>
+//!          approximately corresponds to the optimal order of calls. <br>
+//! <br>
+//!          NOTE: most of fixing methods expect edges in the <br>
+//!          ShapeExtend_WireData to be ordered, so it is necessary to make <br>
+//!          call to FixReorder() before any other fixes <br>
+//! <br>
+//!          ShapeFix_Wire should be initialized prior to any fix by the <br>
+//!          following data: <br>
+//!          a) Wire (ether TopoDS_Wire or ShapeExtend_Wire) <br>
+//!          b) Face or surface <br>
+//!          c) Precision <br>
+//!          This can be done either by calling corresponding methods <br>
+//!          (LoadWire, SetFace or SetSurface, and SetPrecision), or <br>
+//!          by loading already filled ShapeAnalisis_Wire with method Load <br>
 class ShapeFix_Wire : public ShapeFix_Root {
 
 public:
@@ -188,6 +233,16 @@ public:
 //!          Else (i.e. if flag is default) fix is called depending on the <br>
 //!          situation: some fixes are not called or are limited if order of <br>
 //!          edges in the wire is not OK, or depending on modes <br>
+//! <br>
+//!          The order of the fixes and default behaviour of Perform() are: <br>
+//!          FixReorder <br>
+//!          FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) <br>
+//!          FixConnected (if wire is ordered) <br>
+//!          FixEdgeCurves (without FixShifted if wire is not ordered) <br>
+//!          FixDegenerated (if wire is ordered) <br>
+//!          FixSelfIntersection (if wire is ordered and ClosedMode is True) <br>
+//!          FixLacking (if wire is ordered) <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean Perform() ;
   //! Performs an analysis and reorders edges in the wire using <br>
 //!          class WireOrder <br>
@@ -257,10 +312,23 @@ public:
 //!          the same one <br>
 //!          Tests with starting preci or, if given greater, <prec> <br>
 //!          If <prec> is -1 then MaxTolerance() is taken. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean FixConnected(const Standard_Integer num,const Standard_Real prec) ;
   //! Fixes a seam edge <br>
 //!          A Seam edge has two pcurves, one for forward. one for reversed <br>
 //!          The forward pcurve must be set as first <br>
+//! <br>
+//!          NOTE that correct order of pcurves in the seam edge depends on <br>
+//!          its orientation (i.e., on orientation of the wire, method of <br>
+//!          exploration of edges etc.). <br>
+//!          Since wire represented by the ShapeExtend_WireData is always forward <br>
+//!          (orientation is accounted by edges), it will work correct if: <br>
+//!       1. Wire created from ShapeExtend_WireData with methods <br>
+//!          ShapeExtend_WireData::Wire..() is added into the FORWARD face <br>
+//!          (orientation can be applied later) <br>
+//!       2. Wire is extracted from the face with orientation not composed <br>
+//!          with orientation of the face <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean FixSeam(const Standard_Integer num) ;
   //! Fixes edges which have pcurves shifted by whole parameter <br>
 //!          range on the closed surface (the case may occur if pcurve <br>
@@ -413,10 +481,12 @@ private:
 //!          cutting edges to the intersection point. <br>
 //!          It also can give signal to remove edge if it whole is cut by <br>
 //!          intersection (if flag ModifyTopologyMode is set). <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean FixIntersectingEdges(const Standard_Integer num) ;
   //! Tests if two edges <num1> and <num2> are intersecting and <br>
 //!          fix intersection by increasing of tolerance of vertex <br>
 //!          nearest to the point of intersection. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean FixIntersectingEdges(const Standard_Integer num1,const Standard_Integer num2) ;
   
   Standard_EXPORT     void FixDummySeam(const Standard_Integer num) ;

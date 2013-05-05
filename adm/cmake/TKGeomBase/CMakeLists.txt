@@ -26,9 +26,9 @@ SET(TOOLKIT_MODULES
 )
 SET(TOOLKIT_DEPENDS
 	TKernel
-	TKG3d
 	TKMath
 	TKG2d
+	TKG3d
 )
 
 INCLUDE(../BuildToolkit.cmake)

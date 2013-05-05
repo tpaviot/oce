@@ -93,9 +93,28 @@ public:
 //!          are stored in the table. If the number is greater then <br>
 //!          KronrodPointsMax, the points will be computed. <br>
   Standard_EXPORT   static  Standard_Integer KronrodPointsMax() ;
-  
+  //! Returns a vector of Gauss points and a vector of their weights. <br>
+//!          The difference with the <br>
+//!          method GaussPoints is the following: <br>
+//!            - the points are returned in increasing order. <br>
+//!            - if Index is greater then GaussPointsMax, the points are <br>
+//!              computed. <br>
+//!          Returns Standard_True if Index is positive, Points' and Weights' <br>
+//!          length is equal to Index, Points and Weights are successfully computed. <br>
   Standard_EXPORT   static  Standard_Boolean OrderedGaussPointsAndWeights(const Standard_Integer Index,math_Vector& Points,math_Vector& Weights) ;
-  
+  //! Returns a vector of Kronrod points and a vector of their <br>
+//!          weights for Gauss-Kronrod computation method. <br>
+//!          Index should be odd and greater then or equal to 3, <br>
+//!          as the number of Kronrod points is equal to 2*N + 1, <br>
+//!          where N is a number of Gauss points. Points and Weights should <br>
+//!          have the size equal to Index. Each even element of Points <br>
+//!          represents a Gauss point value of N-th Gauss quadrature. <br>
+//!          The values from Index equal to 3 to 123 are stored in a <br>
+//!          table (see the file math_Kronrod.cxx). If Index is greater, <br>
+//!          then points and weights will be computed. Returns Standard_True <br>
+//!          if Index is odd, it is equal to the size of Points and Weights <br>
+//!          and the computation of Points and Weights is performed successfully. <br>
+//!          Otherwise this method returns Standard_False. <br>
   Standard_EXPORT   static  Standard_Boolean KronrodPointsAndWeights(const Standard_Integer Index,math_Vector& Points,math_Vector& Weights) ;
 
 

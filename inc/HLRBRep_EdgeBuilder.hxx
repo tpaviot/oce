@@ -85,8 +85,10 @@ public:
   Standard_EXPORT     void NextEdge() ;
   //! True if there are more vertices in the current new <br>
 //!          edge. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean MoreVertices() const;
   //! Proceeds to the next vertex of the current edge. <br>
+//! <br>
   Standard_EXPORT     void NextVertex() ;
   //! Returns the current vertex of the current edge. <br>
   Standard_EXPORT    const HLRAlgo_Intersection& Current() const;

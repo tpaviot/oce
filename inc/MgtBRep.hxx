@@ -62,7 +62,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translate a transient Shape to a persistent Shape. <br>
+  //! Auxiliary class used to call the MgtTopoDS methods. <br>//! Translate a transient Shape to a persistent Shape. <br>
 //!         he translation is performed according <br>
 //!  to the map aMap and the triangulation <br>
 //!  specified by aTriMode <br>

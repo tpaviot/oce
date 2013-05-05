@@ -500,9 +500,7 @@ Handle(Law_Composite) ChFiDS_FilSpine::ComputeLaw
 
   Handle(Law_Composite) loi = new Law_Composite();
   Law_Laws& list = loi->ChangeLaws();
-
   Standard_Real Rdeb = 0., Rfin = 0., Rcur;
-
   Standard_Integer icur = 1;
   Handle(Law_S) sl;
   Handle(Law_Constant) lastloi;

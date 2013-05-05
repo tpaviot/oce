@@ -110,7 +110,13 @@ public:
   Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
   
   Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
-
+  //! Unregisters the document holding this attribute from an <br>
+//!          internal global map of XDE documents. <br>
+  Standard_EXPORT   virtual  void Destroy() ;
+~XCAFDoc_DocumentTool()
+{
+  Destroy();
+}
 
 
 

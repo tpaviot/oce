@@ -105,30 +105,39 @@ void AIS_ConnectedInteractive::Disconnect()
 }
 //=======================================================================
 //function : Compute
-//purpose  : 
+//purpose  :
 //=======================================================================
-
-void AIS_ConnectedInteractive::
-Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,
-	const Handle(Prs3d_Presentation)& aPresentation, 
-	const Standard_Integer aMode)
+void AIS_ConnectedInteractive::Compute (const Handle(PrsMgr_PresentationManager3d)& thePrsMgr,
+                                        const Handle(Prs3d_Presentation)&           thePrs,
+                                        const Standard_Integer                      theMode)
 {
-  static Handle(Geom_Transformation) myPrsTrans ;
-
-  if(!(HasLocation() ||HasConnection())) return;
-  
-  if(HasConnection()){
-    aPresentation->Clear(Standard_False);
-    aPresentation->RemoveAll();
-    aPresentationManager->Connect( this,myReference, aMode, aMode);
-    if(aPresentationManager->Presentation(myReference,aMode)->MustBeUpdated())
-      aPresentationManager->Update(myReference,aMode);
-    
+  if (!(HasLocation() || HasConnection()))
+  {
+    return;
   }
-  if(HasLocation()){
-    myPrsTrans = new Geom_Transformation(myLocation.Transformation());
-    aPresentationManager->Transform(this, myPrsTrans, aMode);  }
-  aPresentation->ReCompute();
+
+  if (HasConnection())
+  {
+    thePrs->Clear (Standard_False);
+    thePrs->RemoveAll();
+
+    if (!myReference->HasInteractiveContext())
+    {
+      myReference->SetContext (GetContext());
+    }
+    thePrsMgr->Connect (this, myReference, theMode, theMode);
+    if (thePrsMgr->Presentation (myReference, theMode)->MustBeUpdated())
+    {
+      thePrsMgr->Update (myReference, theMode);
+    }
+  }
+
+  if (HasLocation())
+  {
+    Handle(Geom_Transformation) aPrsTrans = new Geom_Transformation (myLocation.Transformation());
+    thePrsMgr->Transform (this, aPrsTrans, theMode);
+  }
+  thePrs->ReCompute();
 }
 
 void AIS_ConnectedInteractive::Compute(const Handle_Prs3d_Projector& aProjector, const Handle_Geom_Transformation& aTransformation, const Handle_Prs3d_Presentation& aPresentation)
@@ -141,12 +150,6 @@ void AIS_ConnectedInteractive::Compute(const Handle_Prs3d_Projector& aProjector,
 {
 // Standard_NotImplemented::Raise("AIS_ConnectedInteractive::Compute(const Handle_Prs3d_Projector&, const Handle_Prs3d_Presentation&)");
  PrsMgr_PresentableObject::Compute( aProjector , aPresentation ) ;
-}
-
-void AIS_ConnectedInteractive::Compute(const Handle_PrsMgr_PresentationManager2d& aPresentationManager2d, const Handle_Graphic2d_GraphicObject& aGraphicObject, const int anInteger)
-{
-// Standard_NotImplemented::Raise("AIS_ConnectedInteractive::Compute(const Handle_PrsMgr_PresentationManager2d&, const Handle_Graphic2d_GraphicObject&, const int)");
- PrsMgr_PresentableObject::Compute( aPresentationManager2d ,aGraphicObject,anInteger) ;
 }
 
 //=======================================================================

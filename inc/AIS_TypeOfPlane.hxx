@@ -6,7 +6,7 @@
 #ifndef _AIS_TypeOfPlane_HeaderFile
 #define _AIS_TypeOfPlane_HeaderFile
 
-//! Declares the type of axis. <br>
+//! Declares the type of plane. <br>
 enum AIS_TypeOfPlane {
 AIS_TOPL_Unknown,
 AIS_TOPL_XYPlane,

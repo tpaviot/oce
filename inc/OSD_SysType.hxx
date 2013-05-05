@@ -6,8 +6,13 @@
 #ifndef _OSD_SysType_HeaderFile
 #define _OSD_SysType_HeaderFile
 
-//! This is set of possible machine types <br>
-//!          used in OSD_Host::MachineType <br>
+//! Thisd is a set of possible system types. <br>
+//!          'Default' means SysType of machine operating this process. <br>
+//!          This can be used with the Path class. <br>
+//!          All UNIX-like are grouped under "UnixBSD" or "UnixSystemV". <br>
+//!          Such systems are Solaris, NexTOS ... <br>
+//!          A category of systems accept MSDOS-like path such as <br>
+//!          WindowsNT and OS2. <br>
 enum OSD_SysType {
 OSD_Unknown,
 OSD_Default,

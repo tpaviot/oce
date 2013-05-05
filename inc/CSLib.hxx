@@ -49,6 +49,9 @@ public:
   DEFINE_STANDARD_ALLOC
 
   
+//!  The following functions computes the normal to a surface <br>
+//! inherits FunctionWithDerivative from math <br>
+//! <br>
 //!  Computes the normal direction of a surface as the cross product <br>
 //!  between D1U and D1V. <br>
 //!  If D1U has null length or D1V has null length or D1U and D1V are <br>

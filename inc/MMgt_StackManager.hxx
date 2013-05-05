@@ -40,6 +40,7 @@ public:
 
   
 //!   Constructs a StackManager with an empty free stack. <br>
+//! <br>
   Standard_EXPORT   MMgt_StackManager();
   
 //!   Returns the address of a storage of the given size located on <br>

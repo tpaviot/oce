@@ -7,17 +7,18 @@ SET(TOOLKIT_MODULES
 	XCAFSchema
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKernel
-	TKLCAF
-	TKStdSchema
 	TKPLCAF
-	TKPShape
+	TKernel
 	PTKernel
-	TKXCAF
+	TKMath
+	TKPShape
 	TKCDF
 	TKShapeSchema
+	TKLCAF
+	TKPCAF
+	TKXCAF
 	TKStdLSchema
+	TKStdSchema
 )
 
 INCLUDE(../BuildToolkit.cmake)

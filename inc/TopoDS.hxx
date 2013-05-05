@@ -61,28 +61,44 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Basic tool to access the data structure. <br>//! Casts shape S to the more specialized return type, Vertex. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Vertex& Vertex(const TopoDS_Shape& S) ;
 inline static TopoDS_Vertex& Vertex(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Edge <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Edge& Edge(const TopoDS_Shape& S) ;
 inline static TopoDS_Edge& Edge(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Wire. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Wire& Wire(const TopoDS_Shape& S) ;
 inline static TopoDS_Wire& Wire(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Face. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Face& Face(const TopoDS_Shape& S) ;
 inline static TopoDS_Face& Face(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Shell. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Shell& Shell(const TopoDS_Shape& S) ;
 inline static TopoDS_Shell& Shell(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Solid. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Solid& Solid(const TopoDS_Shape& S) ;
 inline static TopoDS_Solid& Solid(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, CompSolid. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_CompSolid& CompSolid(const TopoDS_Shape& S) ;
 inline static TopoDS_CompSolid& CompSolid(TopoDS_Shape&);
-  
+  //! Casts shape S to the more specialized return type, Compound. <br>
+//! Exceptions <br>
+//! Standard_TypeMismatch if S cannot be cast to this return type. <br>
       static const TopoDS_Compound& Compound(const TopoDS_Shape& S) ;
 inline static TopoDS_Compound& Compound(TopoDS_Shape&);
 

@@ -34,7 +34,9 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  
+  //! Inherited  from    GHCurve.   Provides a  curve <br>
+//!          handled by reference. <br>//! Creates  a 2d  curve  from  a  HCurve2d.  This <br>
+//!          cannot process the OtherCurves. <br>
   Standard_EXPORT   static  Handle_Geom2d_Curve MakeCurve(const Adaptor2d_Curve2d& HC) ;
 
 

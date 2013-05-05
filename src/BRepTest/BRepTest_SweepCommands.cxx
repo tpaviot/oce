@@ -76,7 +76,7 @@ static Standard_Integer prism(Draw_Interpretor& , Standard_Integer n, const char
   TopoDS_Shape base = DBRep::Get(a[2]);
   if (base.IsNull()) return 1;
 
-  gp_Vec V(atof(a[3]),atof(a[4]),atof(a[5]));
+  gp_Vec V(Draw::Atof(a[3]),Draw::Atof(a[4]),Draw::Atof(a[5]));
   
   Standard_Boolean copy = Standard_False;
   Standard_Boolean inf  = Standard_False;
@@ -113,11 +113,11 @@ static Standard_Integer revol(Draw_Interpretor& ,
   TopoDS_Shape base = DBRep::Get(a[2]);
   if (base.IsNull()) return 1;
 
-  gp_Pnt P(atof(a[3]),atof(a[4]),atof(a[5]));
-  gp_Dir D(atof(a[6]),atof(a[7]),atof(a[8]));
+  gp_Pnt P(Draw::Atof(a[3]),Draw::Atof(a[4]),Draw::Atof(a[5]));
+  gp_Dir D(Draw::Atof(a[6]),Draw::Atof(a[7]),Draw::Atof(a[8]));
   gp_Ax1 A(P,D);
 
-  Standard_Real angle = atof(a[9]) * (M_PI / 180.0);
+  Standard_Real angle = Draw::Atof(a[9]) * (M_PI / 180.0);
   
   Standard_Boolean copy = n > 10;
 
@@ -133,23 +133,51 @@ static Standard_Integer revol(Draw_Interpretor& ,
 // pipe
 //=======================================================================
 
-static Standard_Integer pipe(Draw_Interpretor& ,
+static Standard_Integer pipe(Draw_Interpretor& di,
 			     Standard_Integer n, const char** a)
 {
-  if ( n < 4) return 1;
+  if (n == 1)
+  {
+    di << "pipe result Wire_spine Profile [Mode [Approx]]" << "\n";
+    di << "Mode = 0 - CorrectedFrenet," << "\n";
+    di << "     = 1 - Frenet," << "\n";
+    di << "     = 2 - DiscreteTrihedron" << "\n";
+    di << "Approx - force C1-approximation if result is C0" << "\n";
+    return 0;
+  }
+  
+  if (n > 1 && n < 4) return 1;
 
   TopoDS_Shape Spine = DBRep::Get(a[2],TopAbs_WIRE);
   if ( Spine.IsNull()) return 1;
 
   TopoDS_Shape Profile = DBRep::Get(a[3]);
   if ( Profile.IsNull()) return 1;
+
+  GeomFill_Trihedron Mode = GeomFill_IsCorrectedFrenet;
+  if (n >= 5)
+  {
+    Standard_Integer iMode = atoi(a[4]);
+    if (iMode == 1)
+      Mode = GeomFill_IsFrenet;
+    else if (iMode == 2)
+      Mode = GeomFill_IsDiscreteTrihedron;
+  }
+
+  Standard_Boolean ForceApproxC1 = Standard_False;
+  if (n >= 6)
+    ForceApproxC1 = Standard_True;
   
-  TopoDS_Shape S = BRepOffsetAPI_MakePipe(TopoDS::Wire(Spine),Profile);
+  TopoDS_Shape S = BRepOffsetAPI_MakePipe(TopoDS::Wire(Spine),
+                                          Profile,
+                                          Mode,
+                                          ForceApproxC1);
 
   DBRep::Set(a[1],S);
   
   return 0;
 }
+
 //=======================================================================
 
 static Standard_Integer geompipe(Draw_Interpretor& ,
@@ -166,7 +194,7 @@ static Standard_Integer geompipe(Draw_Interpretor& ,
   Handle(GeomAdaptor_HCurve) aAdaptCurve = new GeomAdaptor_HCurve(SpineCurve,aSpFirst,aSpLast);
   Standard_Boolean ByACR = Standard_False;
   Standard_Boolean rotate = Standard_False;
-  Standard_Real Radius = atof(a[4]);
+  Standard_Real Radius = Draw::Atof(a[4]);
   gp_Pnt ctr;
   gp_Vec norm;
   ProfileCurve->D1(aSpFirst,ctr,norm);
@@ -175,9 +203,9 @@ static Standard_Integer geompipe(Draw_Interpretor& ,
   Handle(Geom_Circle) cStart=new Geom_Circle(aAx2Start,Radius);                       
   Standard_Integer k =5;
   if(n > k)
-    ByACR = (atoi(a[k++]) ==1);
+    ByACR = (Draw::Atoi(a[k++]) ==1);
   if(n > k)
-    rotate = (atoi(a[k++])==1);
+    rotate = (Draw::Atoi(a[k++])==1);
   GeomFill_Pipe aPipe(ProfileCurve,aAdaptCurve,cStart,ByACR,rotate);
   aPipe.Perform(Standard_True);
   Handle(Geom_Surface) Sur=aPipe.Surface();
@@ -340,8 +368,8 @@ Standard_Integer thrusections(Draw_Interpretor&, Standard_Integer n, const char*
 
   TopoDS_Shape Shape; 
 
-  Standard_Boolean issolid = ( atoi(a[index]) == 1 );
-  Standard_Boolean isruled = ( atoi(a[index+1]) == 1 );
+  Standard_Boolean issolid = ( Draw::Atoi(a[index]) == 1 );
+  Standard_Boolean isruled = ( Draw::Atoi(a[index+1]) == 1 );
 
   BRepOffsetAPI_ThruSections Generator(issolid,isruled);
   
@@ -431,6 +459,7 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
     di << "   -FR : Tangent and Normal are given by Frenet trihedron" <<"\n";
     di << "   -CF : Tangente is given by Frenet," << "\n";
     di << "         the Normal is computed to minimize the torsion " << "\n";
+    di << "   -DT : discrete trihedron" << "\n";
     di << "   -DX Surf : Tangent and Normal are given by Darboux trihedron," <<"\n";     
     di << "       Surf have to be a shell or a face" <<"\n";
     di << "   -CN dx dy dz : BiNormal is given by dx dy dz" << "\n";
@@ -449,6 +478,9 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
   }
   else if (!strcmp(a[1],"-CF")) {
     Sweep->SetMode(Standard_False);
+  }
+  else if (!strcmp(a[1],"-DT")) {
+    Sweep->SetDiscreteMode();
   }
   else if (!strcmp(a[1],"-DX")) {
     if (n!=3) {
@@ -471,7 +503,7 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
       di << "bad arguments !" << "\n";
       return 1;
     }
-    gp_Dir D(atof(a[2]), atof(a[3]), atof(a[4]));
+    gp_Dir D(Draw::Atof(a[2]), Draw::Atof(a[3]), Draw::Atof(a[4]));
     Sweep->SetMode(D);;
   }
   else if (!strcmp(a[1],"-FX")) {
@@ -480,9 +512,9 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
       di << "bad arguments !" << "\n";
       return 1;
     }
-    gp_Dir D(atof(a[2]), atof(a[3]), atof(a[4]));
+    gp_Dir D(Draw::Atof(a[2]), Draw::Atof(a[3]), Draw::Atof(a[4]));
     if (n==8) {
-      gp_Dir DN(atof(a[5]), atof(a[6]), atof(a[7]));
+      gp_Dir DN(Draw::Atof(a[5]), Draw::Atof(a[6]), Draw::Atof(a[7]));
       gp_Ax2 Axe(gp_Pnt(0., 0., 0.), D, DN);
       Sweep->SetMode(Axe);
     }
@@ -502,7 +534,7 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
      else
 	{  
 	  TopoDS_Shape Guide = DBRep::Get(a[2],TopAbs_WIRE);
-	  Sweep->SetMode(TopoDS::Wire(Guide), atoi(a[3]), atoi(a[4]));
+	  Sweep->SetMode(TopoDS::Wire(Guide), Draw::Atoi(a[3]), Draw::Atoi(a[4]));
 	}
     }
  
@@ -591,8 +623,8 @@ static Standard_Integer addsweep(Draw_Interpretor& di,
 	Standard_Integer ii, L= nbreal/2;
 	TColgp_Array1OfPnt2d ParAndRad(1, L);
 	for (ii=1; ii<=L; ii++, cur+=2) {
-	   ParAndRad(ii).SetX(atof(a[cur]));
-	   ParAndRad(ii).SetY(atof(a[cur+1]));
+	   ParAndRad(ii).SetX(Draw::Atof(a[cur]));
+	   ParAndRad(ii).SetY(Draw::Atof(a[cur+1]));
 	 }
 	thelaw = new (Law_Interpol) ();
 	thelaw->Set(ParAndRad, 
@@ -749,7 +781,7 @@ static Standard_Integer simulsweep(Draw_Interpretor& di,
   TopTools_ListOfShape List;
   TopTools_ListIteratorOfListOfShape it;
   Standard_Integer N, ii;
-  N = atoi(a[2]);
+  N = Draw::Atoi(a[2]);
 
   if (n>3) {
     BRepBuilderAPI_TransitionMode Transition = BRepBuilderAPI_Transformed;
@@ -766,7 +798,7 @@ static Standard_Integer simulsweep(Draw_Interpretor& di,
   // Calculate the result
   Sweep->Simulate(N, List);
   for (ii=1, it.Initialize(List); it.More(); it.Next(), ii++) {
-    sprintf(name,"%s_%d",a[1],ii);
+    Sprintf(name,"%s_%d",a[1],ii);
     DBRep::Set(name, it.Value());
   }
 
@@ -823,7 +855,7 @@ void  BRepTest::SweepCommands(Draw_Interpretor& theCommands)
 		  __FILE__,revol,g);
   
   theCommands.Add("pipe",
-		  "pipe result Wire_spine Profile",
+		  "pipe result Wire_spine Profile [Mode [Approx]], no args to get help",
 		  __FILE__,pipe,g);
   
   theCommands.Add("evolved",

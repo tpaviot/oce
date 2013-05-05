@@ -7,6 +7,30 @@
 #define _IntCurveSurface_TransitionOnCurve_HeaderFile
 
 
+//! <br>
+//! <br>
+//! <br>
+//!         \ Uo     ^        \ U1     ^ <br>
+//!          \       | n       \       | n <br>
+//! Surf  ====\======|===   ====\======|=== <br>
+//!            \                 \ <br>
+//!             \                 \ <br>
+//!          U1  \              Uo \ <br>
+//! <br>
+//! <br>
+//!           ( In )            ( Out ) <br>
+//! <br>
+//! <br>
+//! <br>
+//!       \           / <br>
+//!        \         / <br>
+//!         \       / <br>
+//!          \     / <br>
+//! Surf =====-----===== <br>
+//! <br>
+//!       ( Tangent ) <br>
+//!    Crb and Surf are  C1 <br>
+//! <br>
 enum IntCurveSurface_TransitionOnCurve {
 IntCurveSurface_Tangent,
 IntCurveSurface_In,

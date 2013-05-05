@@ -175,7 +175,7 @@ public:
 //!   aString.Value(2) returns 'e' <br>
   Standard_EXPORT     Standard_ExtCharacter Value(const Standard_Integer where) const;
   //! Returns the field myString <br>
-  Standard_EXPORT     TCollection_ExtendedString String() const;
+  Standard_EXPORT    const TCollection_ExtendedString& String() const;
   //! Displays <me> . <br>
   Standard_EXPORT     void Print(Standard_OStream& astream) const;
   

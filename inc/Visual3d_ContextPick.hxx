@@ -32,12 +32,22 @@ class Visual3d_ContextPickDefinitionError;
 //!	    a pick context for one view of the viewer. <br>
 //!	    A context allows the control of different parameters <br>
 //!	    before the activation of a pick. <br>
+//! <br>
+//!	    * the pick aperture. <br>
+//!	    * the depth of pick, the number of sub-structures selected. <br>
+//!	    * the order of picking, the possibility to traverse <br>
+//!	      the pick structures starting from the root <br>
+//!	      or the leaves. <br>
 class Visual3d_ContextPick  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
   //! Creates a context from default values <br>
+//! <br>
+//!	    Aperture	: 4.0 <br>
+//!	    Depth	: 10 <br>
+//!	    Order	: TOO_TOPFIRST <br>
   Standard_EXPORT   Visual3d_ContextPick();
   //! Creates a context with the values defined <br>
 //!  Warning: Raises ContextPickDefinitionError if <Depth> or <br>
@@ -54,12 +64,20 @@ public:
 //!	    a negative value. <br>
   Standard_EXPORT     void SetDepth(const Standard_Integer Depth) ;
   //! Modifies the order of picking. <br>
+//! <br>
+//!	    TypeOfOrder : TOO_TOPFIRST <br>
+//!			  TOO_BOTTOMFIRST <br>
+//! <br>
   Standard_EXPORT     void SetOrder(const Visual3d_TypeOfOrder Order) ;
   //! Returns the size of the pick window <me>. <br>
   Standard_EXPORT     Standard_Real Aperture() const;
   //! Returns the effective pick depth of <me>. <br>
   Standard_EXPORT     Standard_Integer Depth() const;
   //! Returns the order of picking of <me>. <br>
+//! <br>
+//!	    TypeOfOrder	: TOO_TOPFIRST <br>
+//!			  TOO_BOTTOMFIRST <br>
+//! <br>
   Standard_EXPORT     Visual3d_TypeOfOrder Order() const;
 
 

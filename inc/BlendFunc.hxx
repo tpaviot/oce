@@ -74,7 +74,7 @@ public:
   Standard_EXPORT   static  void Mults(const BlendFunc_SectionShape SectShape,TColStd_Array1OfInteger& TMults) ;
   
   Standard_EXPORT   static  void GetMinimalWeights(const BlendFunc_SectionShape SectShape,const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real AngleMax,TColStd_Array1OfReal& Weigths) ;
-  
+  //! Used  to obtain the next level of continuity. <br>
   Standard_EXPORT   static  GeomAbs_Shape NextShape(const GeomAbs_Shape S) ;
   
   Standard_EXPORT   static  Standard_Boolean ComputeNormal(const Handle(Adaptor3d_HSurface)& Surf,const gp_Pnt2d& p2d,gp_Vec& Normal) ;

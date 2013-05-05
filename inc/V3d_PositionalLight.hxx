@@ -40,7 +40,7 @@
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
 #endif
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class V3d_View;
 class Graphic3d_Group;
@@ -61,7 +61,7 @@ public:
 //!	    F = 1/(A1 + A2*Length) <br>
 //!		A1,A2 being the two factors of attenuation <br>
 //!	 	Length is the distance of the isolated source <br>
-//!	    from the surface. <br>//!  Warning!  raises BadValue from Viewer <br>
+//!	    from the surface. <br>//!  Warning!  raises BadValue from V3d <br>
 //!          if one of the attenuation coefficients is not between 0 et 1. <br>
   Standard_EXPORT   V3d_PositionalLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0);
   //! Creates a light source of the Positional type <br>
@@ -74,13 +74,13 @@ public:
 //!          surface using the following formula : <br>
 //!          F = 1/(A1 + A2*Length) where: <br>
 //!          -   A1,A2 are the two attenuation factors, and <br>
-//!          -   Length is the distance from the isolated source. <br>//!  Warning! raises BadValue from Viewer <br>
+//!          -   Length is the distance from the isolated source. <br>//!  Warning! raises BadValue from V3d <br>
 //!          if one of the attenuation coefficients is not between 0 et 1. <br>
   Standard_EXPORT   V3d_PositionalLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate Xt,const V3d_Coordinate Yt,const V3d_Coordinate Zt,const V3d_Coordinate Xp,const V3d_Coordinate Yp,const V3d_Coordinate Zp,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0);
   //! Defines the position of the light source. <br>
   Standard_EXPORT   virtual  void SetPosition(const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z) ;
   //! Defines the attenuation factors. <br>
-//!  Warning: raises BadValue from Viewer <br>
+//!  Warning: raises BadValue from V3d <br>
 //!          if one of the attenuation coefficients is not between 0 et 1. <br>
   Standard_EXPORT     void SetAttenuation(const Quantity_Coefficient A1,const Quantity_Coefficient A2) ;
   //! Display the graphic structure of light source <br>

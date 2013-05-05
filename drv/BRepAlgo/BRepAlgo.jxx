@@ -1,6 +1,9 @@
 #ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
 #endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
 #ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
 #endif

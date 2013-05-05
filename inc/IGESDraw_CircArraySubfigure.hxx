@@ -46,6 +46,10 @@ class gp_Pnt;
 
 //! Defines IGES Circular Array Subfigure Instance Entity, <br>
 //!            Type <414> Form Number <0> in package IGESDraw <br>
+//! <br>
+//!            Used to produce copies of object called the base entity, <br>
+//!            arranging them around the edge of an imaginary circle <br>
+//!            whose center and radius are specified <br>
 class IGESDraw_CircArraySubfigure : public IGESData_IGESEntity {
 
 public:

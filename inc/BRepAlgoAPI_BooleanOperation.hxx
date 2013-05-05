@@ -22,20 +22,17 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _BOP_Operation_HeaderFile
-#include <BOP_Operation.hxx>
+#ifndef _BOPAlgo_Operation_HeaderFile
+#include <BOPAlgo_Operation.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _BOPTools_PDSFiller_HeaderFile
-#include <BOPTools_PDSFiller.hxx>
+#ifndef _BOPAlgo_PPaveFiller_HeaderFile
+#include <BOPAlgo_PPaveFiller.hxx>
 #endif
-#ifndef _BOP_PBuilder_HeaderFile
-#include <BOP_PBuilder.hxx>
-#endif
-#ifndef _Handle_BOP_HistoryCollector_HeaderFile
-#include <Handle_BOP_HistoryCollector.hxx>
+#ifndef _BOPAlgo_PBOP_HeaderFile
+#include <BOPAlgo_PBOP.hxx>
 #endif
 #ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
@@ -43,9 +40,8 @@
 #ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
 #endif
-class BOP_HistoryCollector;
 class TopoDS_Shape;
-class BOPTools_DSFiller;
+class BOPAlgo_PaveFiller;
 class TopTools_ListOfShape;
 
 
@@ -64,13 +60,13 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //!  Sets the type of Boolean operation to perform <br>
-//!          It can be BOP_SECTION <br>
-//!                    BOP_COMMON <br>
-//!                    BOP_FUSE <br>
-//!                    BOP_CUT <br>
-//!                    BOP_CUT21 <br>
+//!          It can be BOPAlgo_SECTION <br>
+//!                    BOPAlgo_COMMON <br>
+//!                    BOPAlgo_FUSE <br>
+//!                    BOPAlgo_CUT <br>
+//!                    BOPAlgo_CUT21 <br>
 //! <br>
-  Standard_EXPORT     void SetOperation(const BOP_Operation anOp) ;
+  Standard_EXPORT     void SetOperation(const BOPAlgo_Operation anOp) ;
   //! Provides the algorithm of Boolean Operations <br>
 //! -      Filling interference Data Structure (if it is necessary) <br>
 //! -      Building the result of the operation. <br>
@@ -80,7 +76,7 @@ public:
   //! Returns the second shape involved in this Boolean operation. <br>
   Standard_EXPORT    const TopoDS_Shape& Shape2() const;
   //! Returns the type of Boolean Operation that has been performed. <br>
-  Standard_EXPORT     BOP_Operation Operation() const;
+  Standard_EXPORT     BOPAlgo_Operation Operation() const;
   //! Returns the flag of edge refining <br>
   Standard_EXPORT     Standard_Boolean FuseEdges() const;
   //! Fuse C1 edges <br>
@@ -133,9 +129,9 @@ Standard_EXPORT virtual ~BRepAlgoAPI_BooleanOperation(){Destroy();}
 protected:
 
   //! Prepares the operations for S1 and S2. <br>
-  Standard_EXPORT   BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOP_Operation anOperation);
+  Standard_EXPORT   BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_Operation anOperation);
   //! Prepares the operations for S1 and S2. <br>
-  Standard_EXPORT   BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPTools_DSFiller& aDSF,const BOP_Operation anOperation);
+  Standard_EXPORT   BRepAlgoAPI_BooleanOperation(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_PaveFiller& aDSF,const BOPAlgo_Operation anOperation);
   
   Standard_EXPORT     Standard_Boolean PrepareFiller() ;
 
@@ -143,11 +139,10 @@ protected:
 TopoDS_Shape myS1;
 TopoDS_Shape myS2;
 Standard_Boolean myBuilderCanWork;
-BOP_Operation myOperation;
+BOPAlgo_Operation myOperation;
 Standard_Integer myErrorStatus;
-BOPTools_PDSFiller myDSFiller;
-BOP_PBuilder myBuilder;
-Handle_BOP_HistoryCollector myHistory;
+BOPAlgo_PPaveFiller myDSFiller;
+BOPAlgo_PBOP myBuilder;
 
 
 private:

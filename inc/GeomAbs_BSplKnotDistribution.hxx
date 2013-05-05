@@ -7,7 +7,9 @@
 #define _GeomAbs_BSplKnotDistribution_HeaderFile
 
 
-//!  This enumeration is used to note specific curve form. <br>
+//!  This enumeration is used in the classes BSplineCurve and <br>
+//!  BSplineSurface to describe the repartition of set of knots. <br>
+//!  (comments in classes BSplineCurve and BSplineSurface) <br>
 enum GeomAbs_BSplKnotDistribution {
 GeomAbs_NonUniform,
 GeomAbs_Uniform,

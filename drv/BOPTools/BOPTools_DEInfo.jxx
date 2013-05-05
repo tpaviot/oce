@@ -1,6 +1,0 @@
-#ifndef _TColStd_ListOfInteger_HeaderFile
-#include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _BOPTools_DEInfo_HeaderFile
-#include <BOPTools_DEInfo.hxx>
-#endif

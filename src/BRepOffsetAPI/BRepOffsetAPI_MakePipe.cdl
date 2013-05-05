@@ -35,6 +35,7 @@ class MakePipe from BRepOffsetAPI inherits MakeSweep from BRepPrimAPI
     	-- with G1 continuous spines only.
 uses
     Pipe        from BRepFill,
+    Trihedron   from GeomFill,
     Wire        from TopoDS,
     Shape       from TopoDS,
     Edge        from TopoDS,
@@ -58,6 +59,15 @@ is
     	-- composite solid.
     returns MakePipe from BRepOffsetAPI;
     
+    Create( Spine   : Wire  from TopoDS;
+    	    Profile : Shape from TopoDS;
+	    aMode   : Trihedron from GeomFill;
+	    ForceApproxC1 : Boolean from Standard = Standard_False)
+	---Purpose: the same as previous but with setting of
+	--          mode of sweep and the flag that indicates attempt
+	--          to approximate a C1-continuous surface if a swept
+	--          surface proved to be C0.
+    returns MakePipe from BRepOffsetAPI;
 
     Pipe(me) returns Pipe from BRepFill
 	---C++: return const &

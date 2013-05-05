@@ -74,7 +74,7 @@ class TDocStd_Document : public CDM_Document {
 
 public:
 
-  //! Will Abort any execution, and commit the Undo transaction <br>//! returns the    document which contains <L>.  raises  an <br>
+  //! returns the    document which contains <L>.  raises  an <br>
 //!          exception if the document is not found. <br>
   Standard_EXPORT   static  Handle_TDocStd_Document Get(const TDF_Label& L) ;
   //! Constructs a document object defined by the <br>
@@ -213,11 +213,16 @@ public:
 
 
 
-
   DEFINE_STANDARD_RTTI(TDocStd_Document)
 
 protected:
 
+  //! Will Abort any execution, clear fields <br>
+  Standard_EXPORT   virtual  void Destroy() ;
+~TDocStd_Document()
+{
+  Destroy();
+}
   //! Returns Standard_True done <br>
   Standard_EXPORT   virtual  Standard_Boolean CommitTransaction() ;
   

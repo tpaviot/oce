@@ -12,15 +12,16 @@ SET(TOOLKIT_MODULES
 	FilletSurf
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
 	TKernel
-	TKGeomAlgo
-	TKBool
-	TKG3d
-	TKGeomBase
 	TKMath
+	TKGeomBase
+	TKGeomAlgo
 	TKG2d
 	TKTopAlgo
-	TKBRep
+	TKG3d
+	TKBool
+	TKShHealing
 )
 
 INCLUDE(../BuildToolkit.cmake)

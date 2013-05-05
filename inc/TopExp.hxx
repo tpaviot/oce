@@ -49,7 +49,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Stores in the map <M> all  the sub-shapes of <S> <br>
+  //! Tool to explore a topological data structure. <br>//! Stores in the map <M> all  the sub-shapes of <S> <br>
 //!          of type <T>. <br>
 //! <br>
 //!  Warning: The map is not cleared at first. <br>

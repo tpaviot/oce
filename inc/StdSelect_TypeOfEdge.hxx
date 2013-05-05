@@ -6,9 +6,9 @@
 #ifndef _StdSelect_TypeOfEdge_HeaderFile
 #define _StdSelect_TypeOfEdge_HeaderFile
 
-//! Provides values for different types of faces. These <br>
-//! values are used to filter faces in frameworks inheriting <br>
-//! StdSelect_FaceFilter. <br>
+//! Provides values for different types of edges. These <br>
+//! values are used to filter edges in frameworks <br>
+//! inheriting StdSelect_EdgeFilter. <br>
 enum StdSelect_TypeOfEdge {
 StdSelect_AnyEdge,
 StdSelect_Line,

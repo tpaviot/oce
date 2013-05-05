@@ -6,7 +6,24 @@
 #ifndef _Aspect_PrintAlgo_HeaderFile
 #define _Aspect_PrintAlgo_HeaderFile
 
-//! Defines the type of color scale orientation <br>
+//! Defines print algorithm <br>
+//!          Aspect_PrintAlgo: <br>
+//!          1) PA_STRETCH - Stretch offscreen printing frame <br>
+//!                          if its dimensions are smaller than <br>
+//!                          the printer's printing area dimensions; <br>
+//!                          This algorithm is more reliable as it <br>
+//!                          works on any hardware and is recommended <br>
+//!                          to be used with average printing resolutions, <br>
+//!                          as it more RAM memory dependent than PA_TILE; <br>
+//!                          Stretching is performend using bicubic interpolation <br>
+//!                          algorithm from FreeImage library if OCCT is built <br>
+//!                          with FreeImage support, otherwise Windows API <br>
+//!                          StretchBlt() function in STRETCH_HALFTONE mode <br>
+//!                          is used; <br>
+//!          2) PA_TILE    - If the offscreen printing frame dimensions <br>
+//!                          are smaller than the printer's printing <br>
+//!                          area dimensions - use multiple printing <br>
+//!                          frames to cover the whole printing area <br>
 enum Aspect_PrintAlgo {
 Aspect_PA_STRETCH,
 Aspect_PA_TILE

@@ -109,6 +109,11 @@ class Geom_BSplineSurface;
 //! R[0,0] ....   R[Num1DSS,0].....  R[Dimension-1,0] for the 1st parameter <br>
 //! R[0,i] ....   R[Num1DSS,i].....  R[Dimension-1,i] for the ith parameter <br>
 //! R[0,N-1] .... R[Num1DSS,N-1].... R[Dimension-1,N-1] for the Nth parameter <br>
+//! <br>
+//!  the order in which each Subspace appears should be consistent <br>
+//!  with the tolerances given in the create function and the <br>
+//!  results will be given in that order as well that is : <br>
+//!  Surface(n) will correspond to the nth entry described by Num3DSS <br>
 class AdvApp2Var_ApproxAFunc2Var  {
 public:
 

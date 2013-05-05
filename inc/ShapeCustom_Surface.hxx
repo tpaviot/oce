@@ -50,6 +50,13 @@ public:
 //!          Returns the result <br>
 //!          Works only if the Surface is BSpline or Bezier. <br>
 //!          Else, or in case of failure, returns a Null Handle <br>
+//! <br>
+//!          If <substitute> is True, the new surface replaces the actual <br>
+//!          one in <me> <br>
+//! <br>
+//!          It works by analysing the case which can apply, creating the <br>
+//!          corresponding analytic surface, then checking coincidence <br>
+//!  Warning: Parameter laws are not kept, hence PCurves should be redone <br>
   Standard_EXPORT     Handle_Geom_Surface ConvertToAnalytical(const Standard_Real tol,const Standard_Boolean substitute) ;
   //! Tries to convert the Surface to the Periodic form <br>
 //!          Returns the resulting surface <br>

@@ -28,7 +28,6 @@
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
 #endif
-class WNT_ImageManager;
 
 
 //! Internal class for image management <br>
@@ -49,7 +48,6 @@ public:
   //! Returns pointer to internal structure <br>
         Standard_Address Image() const;
 
-friend class WNT_ImageManager;
 
 
   DEFINE_STANDARD_RTTI(WNT_Image)

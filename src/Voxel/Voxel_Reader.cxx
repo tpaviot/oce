@@ -163,13 +163,13 @@ Standard_Boolean Voxel_Reader::ReadBoolAsciiVoxels(const TCollection_ExtendedStr
     fclose(f);
     return Standard_False;
   }
-  x = atof(sx); y = atof(sy); z = atof(sz);
+  x = Atof(sx); y = Atof(sy); z = Atof(sz);
   if (fscanf(f, "%s %s %s\n", sx, sy, sz) != 3)
   {
     fclose(f);
     return Standard_False;
   }
-  xlen = atof(sx); ylen = atof(sy); zlen = atof(sz);
+  xlen = Atof(sx); ylen = Atof(sy); zlen = Atof(sz);
   if (fscanf(f, "%d %d %d\n", &nbx, &nby, &nbz) != 3)
   {
     fclose(f);
@@ -240,13 +240,13 @@ Standard_Boolean Voxel_Reader::ReadColorAsciiVoxels(const TCollection_ExtendedSt
     fclose(f);
     return Standard_False;
   }
-  x = atof(sx); y = atof(sy); z = atof(sz);
+  x = Atof(sx); y = Atof(sy); z = Atof(sz);
   if (fscanf(f, "%s %s %s\n", sx, sy, sz) != 3)
   {
     fclose(f);
     return Standard_False;
   }
-  xlen = atof(sx); ylen = atof(sy); zlen = atof(sz);
+  xlen = Atof(sx); ylen = Atof(sy); zlen = Atof(sz);
   if (fscanf(f, "%d %d %d\n", &nbx, &nby, &nbz) != 3)
   {
     fclose(f);
@@ -317,13 +317,13 @@ Standard_Boolean Voxel_Reader::ReadFloatAsciiVoxels(const TCollection_ExtendedSt
     fclose(f);
     return Standard_False;
   }
-  x = atof(sx); y = atof(sy); z = atof(sz);
+  x = Atof(sx); y = Atof(sy); z = Atof(sz);
   if (fscanf(f, "%s %s %s\n", sx, sy, sz) != 3)
   {
     fclose(f);
     return Standard_False;
   }
-  xlen = atof(sx); ylen = atof(sy); zlen = atof(sz);
+  xlen = Atof(sx); ylen = Atof(sy); zlen = Atof(sz);
   if (fscanf(f, "%d %d %d\n", &nbx, &nby, &nbz) != 3)
   {
     fclose(f);
@@ -361,7 +361,7 @@ Standard_Boolean Voxel_Reader::ReadFloatAsciiVoxels(const TCollection_ExtendedSt
 	  return Standard_False;
 	}
       }
-      value = (Standard_ShortReal)atof(line);
+      value = (Standard_ShortReal)Atof(line);
 
       // Set value
       if (!((Standard_ShortReal**)((Voxel_DS*)myFloatVoxels)->myData)[i1])
