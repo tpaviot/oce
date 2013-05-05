@@ -53,6 +53,7 @@ public:
 
   //! Creates a font style with the default values of <br>
 //!	    FontStyle type : DEFAULT <br>
+//! <br>
   Standard_EXPORT   Aspect_FontStyle();
   //! Creates the font style <Type> depending of <br>
 //!	    Size given in the basic LENGTH unit and Slant in <br>

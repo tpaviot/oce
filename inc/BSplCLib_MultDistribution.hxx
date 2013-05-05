@@ -6,11 +6,17 @@
 #ifndef _BSplCLib_MultDistribution_HeaderFile
 #define _BSplCLib_MultDistribution_HeaderFile
 
-//! This enumeration describes the repartition of the <br>
-//!         knots  sequence.   If all the knots  differ  by the <br>
-//!         same positive constant from the  preceding knot the <br>
-//!         "KnotDistribution" is    <Uniform>    else   it  is <br>
-//!         <NonUniform> <br>
+//!  This   enumeration describes the   form  of  the <br>
+//!         sequence of mutiplicities.  MultDistribution is : <br>
+//! <br>
+//!            Constant if all the multiplicities have the same <br>
+//!            value. <br>
+//! <br>
+//!            QuasiConstant if all the internal knots have the <br>
+//!            same multiplicity and if the first and last knot <br>
+//!            have  a different  multiplicity. <br>
+//! <br>
+//!            NonConstant in other cases. <br>
 enum BSplCLib_MultDistribution {
 BSplCLib_NonConstant,
 BSplCLib_Constant,

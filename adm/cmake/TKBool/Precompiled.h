@@ -9,7 +9,6 @@
 #include "BRepAlgo_Fuse.hxx"
 #include "BRepAlgo_Cut.hxx"
 #include "BRepAlgo_Common.hxx"
-#include "BRepAlgo_TopOpe.hxx"
 #include "BRepAlgo_Loop.hxx"
 #include "BRepFill_Filling.hxx"
 #include "BRepFill_Generator.hxx"

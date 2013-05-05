@@ -19,7 +19,7 @@
 #ifndef _NCollection_Vec2_H__
 #define _NCollection_Vec2_H__
 
-#include <cmath>
+#include <cmath> // std::sqrt()
 
 //! Auxiliary macros to define couple of similar access components as vector methods.
 //! @return 2 components by their names in specified order

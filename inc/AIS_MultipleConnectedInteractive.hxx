@@ -43,12 +43,6 @@
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
 #ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
 #endif
@@ -62,8 +56,6 @@ class AIS_InteractiveObject;
 class AIS_SequenceOfInteractive;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class Prs3d_Projector;
 class Geom_Transformation;
 class SelectMgr_Selection;
@@ -99,8 +91,6 @@ public:
   Standard_EXPORT     void Disconnect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
   //! Clears all the connections to objects. <br>
   Standard_EXPORT     void DisconnectAll() ;
-  
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   //! computes the presentation according to a point of view <br>
 //!          given by <aProjector>. <br>
 //!          To be Used when the associated degenerated Presentations <br>
@@ -119,11 +109,6 @@ public:
 
 protected:
 
-
-
-
-private: 
-
   //! this method is redefined virtual; <br>
 //!          when the instance is connected to another <br>
 //!          InteractiveObject,this method doesn't <br>
@@ -131,6 +116,11 @@ private:
 //!          presentation of this last object, with <br>
 //!          a transformation if there's one stored. <br>
   Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+
+
+
+private: 
+
   
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
 

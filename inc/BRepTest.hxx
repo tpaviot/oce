@@ -74,8 +74,6 @@ public:
   //! Defines the commands to project a wire on a shape. <br>
 //! <br>
   Standard_EXPORT   static  void ProjectionCommands(Draw_Interpretor& DI) ;
-  //! Defines the commands to prepare shell commands. <br>
-  Standard_EXPORT   static  void ShellCommands(Draw_Interpretor& DI) ;
 
 
 

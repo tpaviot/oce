@@ -29,6 +29,10 @@
 
 //! defines IGESDrawingSize, Type <406> Form <16> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Specifies the drawing size in drawing units. The <br>
+//!          origin of the drawing is defined to be (0,0) in <br>
+//!          drawing space <br>
 class IGESGraph_DrawingSize : public IGESData_IGESEntity {
 
 public:

@@ -17,17 +17,97 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <OpenGl_GlCore11.hxx>
 
 #include <OpenGl_Structure.hxx>
 
-#include <OpenGl_Polyline.hxx>
 #include <OpenGl_Workspace.hxx>
+#include <OpenGl_Vec.hxx>
 #include <OpenGl_View.hxx>
 
 #include <OpenGl_telem_util.hxx>
 
+//! Auxiliary class for bounding box presentation
+class OpenGl_BndBoxPrs : public OpenGl_Element
+{
+
+public:
+
+  //! Main constructor
+  OpenGl_BndBoxPrs (const CALL_DEF_BOUNDBOX& theBndBox)
+  {
+    const float Xm = theBndBox.Pmin.x;
+    const float Ym = theBndBox.Pmin.y;
+    const float Zm = theBndBox.Pmin.z;
+    const float XM = theBndBox.Pmax.x;
+    const float YM = theBndBox.Pmax.y;
+    const float ZM = theBndBox.Pmax.z;
+    myVerts[0]  = OpenGl_Vec3 (Xm, Ym, Zm);
+    myVerts[1]  = OpenGl_Vec3 (Xm, Ym, ZM);
+    myVerts[2]  = OpenGl_Vec3 (Xm, YM, ZM);
+    myVerts[3]  = OpenGl_Vec3 (Xm, YM, Zm);
+    myVerts[4]  = OpenGl_Vec3 (Xm, Ym, Zm);
+    myVerts[5]  = OpenGl_Vec3 (XM, Ym, Zm);
+    myVerts[6]  = OpenGl_Vec3 (XM, Ym, ZM);
+    myVerts[7]  = OpenGl_Vec3 (XM, YM, ZM);
+    myVerts[8]  = OpenGl_Vec3 (XM, YM, Zm);
+    myVerts[9]  = OpenGl_Vec3 (XM, Ym, Zm);
+    myVerts[10] = OpenGl_Vec3 (XM, YM, Zm);
+    myVerts[11] = OpenGl_Vec3 (Xm, YM, Zm);
+    myVerts[12] = OpenGl_Vec3 (Xm, YM, ZM);
+    myVerts[13] = OpenGl_Vec3 (XM, YM, ZM);
+    myVerts[14] = OpenGl_Vec3 (XM, Ym, ZM);
+    myVerts[15] = OpenGl_Vec3 (Xm, Ym, ZM);
+  }
+
+  //! Render presentation
+  virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const
+  {
+    // Apply line aspect
+    const OpenGl_AspectLine*     anAspectLine = theWorkspace->AspectLine (Standard_True);
+    const Handle(OpenGl_Texture) aPrevTexture = theWorkspace->DisableTexture();
+
+    glDisable (GL_LIGHTING);
+    if ((theWorkspace->NamedStatus & (OPENGL_NS_ADD | OPENGL_NS_IMMEDIATE)) != 0)
+    {
+      glDepthMask (GL_FALSE);
+    }
+
+    // Use highlight colors
+    glColor3fv ((theWorkspace->NamedStatus & OPENGL_NS_HIGHLIGHT) ? theWorkspace->HighlightColor->rgb : anAspectLine->Color().rgb);
+
+    glEnableClientState (GL_VERTEX_ARRAY);
+    glVertexPointer (3, GL_FLOAT, 0, (GLfloat* )&myVerts);
+    glDrawArrays (GL_LINE_STRIP, 0, 16);
+    glDisableClientState (GL_VERTEX_ARRAY);
+
+    // restore aspects
+    if (!aPrevTexture.IsNull())
+    {
+      theWorkspace->EnableTexture (aPrevTexture);
+    }
+  }
+
+  //! Release graphical resources
+  virtual void Release (const Handle(OpenGl_Context)& )
+  {
+    //
+  }
+
+protected:
+
+  //! Protected destructor
+  virtual ~OpenGl_BndBoxPrs() {}
+
+private:
+
+  OpenGl_Vec3 myVerts[16]; //!< vertices array
+
+public:
+
+  DEFINE_STANDARD_ALLOC
+
+};
 
 /*----------------------------------------------------------------------*/
 
@@ -45,7 +125,6 @@ static void call_util_transpose_mat (float tmat[16], float mat[4][4])
 OpenGl_Structure::OpenGl_Structure ()
 : myTransformation(NULL),
   myTransPers(NULL),
-  myDegenerateModel(NULL),
   myAspectLine(NULL),
   myAspectFace(NULL),
   myAspectMarker(NULL),
@@ -64,7 +143,6 @@ OpenGl_Structure::~OpenGl_Structure()
   Release (Handle(OpenGl_Context)());
   delete myTransformation;  myTransformation  = NULL;
   delete myTransPers;       myTransPers       = NULL;
-  delete myDegenerateModel; myDegenerateModel = NULL;
 }
 
 /*----------------------------------------------------------------------*/
@@ -92,17 +170,6 @@ void OpenGl_Structure::SetTransformPersistence(const CALL_DEF_TRANSFORM_PERSISTE
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_Structure::SetDegenerateModel (const Standard_Integer AMode, const float ASkipRatio)
-{
-  if (!myDegenerateModel)
-    myDegenerateModel = new DEGENERATION;
-
-  myDegenerateModel->mode = AMode;
-  myDegenerateModel->skipRatio = ASkipRatio;
-}
-
-/*----------------------------------------------------------------------*/
-
 void OpenGl_Structure::SetAspectLine (const CALL_DEF_CONTEXTLINE &AContext)
 {
   if (!myAspectLine)
@@ -112,11 +179,14 @@ void OpenGl_Structure::SetAspectLine (const CALL_DEF_CONTEXTLINE &AContext)
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_Structure::SetAspectFace (const CALL_DEF_CONTEXTFILLAREA &AContext)
+void OpenGl_Structure::SetAspectFace (const Handle(OpenGl_Context)&   theCtx,
+                                      const CALL_DEF_CONTEXTFILLAREA& theAspect)
 {
   if (!myAspectFace)
+  {
     myAspectFace = new OpenGl_AspectFace();
-  myAspectFace->SetContext( AContext );
+  }
+  myAspectFace->Init (theCtx, theAspect);
 }
 
 /*----------------------------------------------------------------------*/
@@ -157,34 +227,8 @@ void OpenGl_Structure::SetHighlightBox (const Handle(OpenGl_Context)& theGlCtx,
   aContextLine.Width    = 1.0f;
   myHighlightBox->SetAspectLine (aContextLine);
 
-#define CALL_MAX_BOUNDBOXSIZE 16
-
-  Graphic3d_Array1OfVertex aPoints (1, CALL_MAX_BOUNDBOXSIZE);
-  const float Xm = theBoundBox.Pmin.x;
-  const float Ym = theBoundBox.Pmin.y;
-  const float Zm = theBoundBox.Pmin.z;
-  const float XM = theBoundBox.Pmax.x;
-  const float YM = theBoundBox.Pmax.y;
-  const float ZM = theBoundBox.Pmax.z;
-  aPoints( 1).SetCoord (Xm, Ym, Zm);
-  aPoints( 2).SetCoord (Xm, Ym, ZM);
-  aPoints( 3).SetCoord (Xm, YM, ZM);
-  aPoints( 4).SetCoord (Xm, YM, Zm);
-  aPoints( 5).SetCoord (Xm, Ym, Zm);
-  aPoints( 6).SetCoord (XM, Ym, Zm);
-  aPoints( 7).SetCoord (XM, Ym, ZM);
-  aPoints( 8).SetCoord (XM, YM, ZM);
-  aPoints( 9).SetCoord (XM, YM, Zm);
-  aPoints(10).SetCoord (XM, Ym, Zm);
-  aPoints(11).SetCoord (XM, YM, Zm);
-  aPoints(12).SetCoord (Xm, YM, Zm);
-  aPoints(13).SetCoord (Xm, YM, ZM);
-  aPoints(14).SetCoord (XM, YM, ZM);
-  aPoints(15).SetCoord (XM, Ym, ZM);
-  aPoints(16).SetCoord (Xm, Ym, ZM);
-
-  OpenGl_Polyline* aPolyline = new OpenGl_Polyline (aPoints);
-  myHighlightBox->AddElement (TelPolyline, aPolyline);
+  OpenGl_BndBoxPrs* aBndBoxPrs = new OpenGl_BndBoxPrs (theBoundBox);
+  myHighlightBox->AddElement (TelParray, aBndBoxPrs);
 }
 
 /*----------------------------------------------------------------------*/
@@ -337,26 +381,6 @@ void OpenGl_Structure::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
     trans_pers = AWorkspace->ActiveView()->BeginTransformPersistence( myTransPers );
   }
 
-  // Apply degeneration
-  if (myDegenerateModel)
-  {
-    if ( AWorkspace->NamedStatus & OPENGL_NS_DEGENERATION )
-    {
-      AWorkspace->DegenerateModel = myDegenerateModel->mode;
-      switch ( AWorkspace->DegenerateModel )
-      {
-        case 0: break;
-
-        default:
-          glLineWidth ( 1.0 );
-          glDisable   ( GL_LINE_STIPPLE );
-
-        case 1:
-          AWorkspace->SkipRatio = myDegenerateModel->skipRatio;
-      }
-    }
-  }
-
   // Apply aspects
   const OpenGl_AspectLine *aspect_line = AWorkspace->AspectLine(Standard_False);
   const OpenGl_AspectFace *aspect_face = AWorkspace->AspectFace(Standard_False);
@@ -485,7 +509,7 @@ void OpenGl_Structure::ReleaseGlResources (const Handle(OpenGl_Context)& theGlCt
 
 //=======================================================================
 //function : SetZLayer
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void OpenGl_Structure::SetZLayer (const Standard_Integer theLayerIndex)
@@ -495,7 +519,7 @@ void OpenGl_Structure::SetZLayer (const Standard_Integer theLayerIndex)
 
 //=======================================================================
 //function : GetZLayer
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 Standard_Integer OpenGl_Structure::GetZLayer () const

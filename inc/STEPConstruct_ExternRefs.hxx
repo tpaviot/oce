@@ -78,6 +78,11 @@ class StepBasic_DocumentFile;
 
 //! Provides a tool for analyzing (reading) and creating (writing) <br>
 //!          references to external files in STEP <br>
+//! <br>
+//!          It maintains a data structure in the form of sequences <br>
+//!          of relevant STEP entities (roots), allowing either to create <br>
+//!          them by convenient API, or load from existing model and <br>
+//!          investigate <br>
 class STEPConstruct_ExternRefs  : public STEPConstruct_Tool {
 public:
 

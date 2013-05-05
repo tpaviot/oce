@@ -36,7 +36,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! command to set and get modeling attributes <br>
+  //! Used to browse tree nodes. <br>//! commands <br>
+//!          ======== <br>//! command to set and get modeling attributes <br>
   Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
   //! to set and get NamedShape <br>
   Standard_EXPORT   static  void NamedShapeCommands(Draw_Interpretor& I) ;

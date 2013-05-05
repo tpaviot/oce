@@ -6,7 +6,7 @@
 #ifndef _V3d_TypeOfRepresentation_HeaderFile
 #define _V3d_TypeOfRepresentation_HeaderFile
 
-//! Determines the type of orientation. <br>
+
 enum V3d_TypeOfRepresentation {
 V3d_SIMPLE,
 V3d_COMPLETE,

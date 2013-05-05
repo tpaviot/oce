@@ -70,6 +70,10 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Trsf);
 //!    | a21  a22  a23   a24 |   | y |      | y'| <br>
 //!    | a31  a32  a33   a34 |   | z |   =  | z'| <br>
 //!    |  0    0    0     1  |   | 1 |      | 1 | <br>
+//! <br>
+//!    where {V1, V2, V3} defines the vectorial part of the <br>
+//!    transformation and T defines the translation part of the <br>
+//!    transformation. <br>
 class gp_Trsf  {
 
 public:
@@ -94,7 +98,7 @@ public:
 //! plane of the 3D space, (i.e. in the plane defined by the <br>
 //! origin (0., 0., 0.) and the vectors DX (1., 0., 0.), and DY <br>
 //! (0., 1., 0.)). The scale factor is applied to the entire space. <br>
-      gp_Trsf(const gp_Trsf2d& T);
+  Standard_EXPORT   gp_Trsf(const gp_Trsf2d& T);
   
 //!  Makes the transformation into a symmetrical transformation. <br>
 //!  P is the center of the symmetry. <br>
@@ -305,6 +309,9 @@ public:
 //!  <me> * <me> * .......* <me>, N time. <br>
 //!  if N = 0 <me> = Identity <br>
 //!  if N < 0 <me> = <me>.Inverse() *...........* <me>.Inverse(). <br>
+//! <br>
+//!  Raises if N < 0 and if the matrix of the transformation not <br>
+//!  inversible. <br>
         gp_Trsf Powered(const Standard_Integer N) ;
   
         void Transforms(Standard_Real& X,Standard_Real& Y,Standard_Real& Z) const;

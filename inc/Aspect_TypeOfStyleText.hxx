@@ -6,7 +6,13 @@
 #ifndef _Aspect_TypeOfStyleText_HeaderFile
 #define _Aspect_TypeOfStyleText_HeaderFile
 
-//! Definition of Text types <br>
+//! Define the style of the text. <br>
+//! <br>
+//!          TOST_NORMAL         Default text. The text is displayed like any other graphic object. <br>
+//!                              This text can be hidden by another object that is nearest from the <br>
+//!                              point of view. <br>
+//!          TOST_ANNOTATION     The text is always visible. The texte is displayed <br>
+//!                              over the other object according to the priority. <br>
 enum Aspect_TypeOfStyleText {
 Aspect_TOST_NORMAL,
 Aspect_TOST_ANNOTATION

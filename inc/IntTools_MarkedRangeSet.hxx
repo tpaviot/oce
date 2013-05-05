@@ -44,20 +44,33 @@ public:
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_MarkedRangeSet();
   
 //! build set of ranges which consists of one range with <br>
 //! boundary values theFirstBoundary and theLastBoundary <br>
+//! <br>
   Standard_EXPORT   IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag);
   
 //! Build set of ranges based on the array of progressive sorted values <br>
+//! <br>
+//!  Warning: <br>
+//! The constructor do not check if the values of array are not sorted <br>
+//! It should be checked before function invocation <br>
+//! <br>
   Standard_EXPORT   IntTools_MarkedRangeSet(const IntTools_CArray1OfReal& theSortedArray,const Standard_Integer theInitFlag);
   
 //! build set of ranges which consists of one range with <br>
 //! boundary values theFirstBoundary and theLastBoundary <br>
+//! <br>
   Standard_EXPORT     void SetBoundaries(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag) ;
   
 //! Build set of ranges based on the array of progressive sorted values <br>
+//! <br>
+//!  Warning: <br>
+//! The function do not check if the values of array are not sorted <br>
+//! It should be checked before function invocation <br>
+//! <br>
   Standard_EXPORT     void SetRanges(const IntTools_CArray1OfReal& theSortedArray,const Standard_Integer theInitFlag) ;
   
 //! Inserts a new range marked with flag theFlag <br>
@@ -65,6 +78,7 @@ public:
 //! and their flags. <br>
 //! Returns True if the range is inside the initial boundaries, <br>
 //! otherwise or in case of some error returns False <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean InsertRange(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag) ;
   
 //! Inserts a new range marked with flag theFlag <br>
@@ -72,6 +86,7 @@ public:
 //! and their flags. <br>
 //! Returns True if the range is inside the initial boundaries, <br>
 //! otherwise or in case of some error returns False <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean InsertRange(const IntTools_Range& theRange,const Standard_Integer theFlag) ;
   
 //! Inserts a new range marked with flag theFlag <br>
@@ -80,6 +95,7 @@ public:
 //! The index theIndex is a position where the range will be inserted. <br>
 //! Returns True if the range is inside the initial boundaries, <br>
 //! otherwise or in case of some error returns False <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean InsertRange(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag,const Standard_Integer theIndex) ;
   
 //! Inserts a new range marked with flag theFlag <br>
@@ -88,16 +104,20 @@ public:
 //! The index theIndex is a position where the range will be inserted. <br>
 //! Returns True if the range is inside the initial boundaries, <br>
 //! otherwise or in case of some error returns False <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean InsertRange(const IntTools_Range& theRange,const Standard_Integer theFlag,const Standard_Integer theIndex) ;
   
 //! Set flag theFlag for range with index theIndex <br>
+//! <br>
   Standard_EXPORT     void SetFlag(const Standard_Integer theIndex,const Standard_Integer theFlag) ;
   
 //! Returns flag of the range with index theIndex <br>
+//! <br>
   Standard_EXPORT     Standard_Integer Flag(const Standard_Integer theIndex) const;
   
 //! Returns index of range which contains theValue. <br>
 //! If theValue do not belong any range returns 0. <br>
+//! <br>
   Standard_EXPORT     Standard_Integer GetIndex(const Standard_Real theValue) const;
   
   Standard_EXPORT    const TColStd_SequenceOfInteger& GetIndices(const Standard_Real theValue) ;
@@ -107,13 +127,16 @@ public:
 //! If UseLower is Standard_True then lower boundary of the range <br>
 //! can be equal to theValue, otherwise upper boundary of the range <br>
 //! can be equal to theValue. <br>
+//! <br>
   Standard_EXPORT     Standard_Integer GetIndex(const Standard_Real theValue,const Standard_Boolean UseLower) const;
   
 //! Returns number of ranges <br>
+//! <br>
         Standard_Integer Length() const;
   
 //! Returns the range with index theIndex. <br>
 //! the Index can be from 1 to Length() <br>
+//! <br>
   Standard_EXPORT     IntTools_Range Range(const Standard_Integer theIndex) const;
 
 

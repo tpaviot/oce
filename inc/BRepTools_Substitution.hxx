@@ -34,6 +34,11 @@ class TopTools_ListOfShape;
 //!          modifications. <br>
 //!          A set of shapes is designated to replace a initial <br>
 //!          shape. <br>
+//! <br>
+//!          The method Build reconstructs a new Shape with the <br>
+//!          modifications.The Shape and the new shape are <br>
+//!          registered. <br>
+//! <br>
 class BRepTools_Substitution  {
 public:
 

@@ -196,6 +196,7 @@ public:
 //!          as assemblies (creates assembly structure). <br>
 //!          NOTE: <makePrepare> replace components without location <br>
 //!          in assmebly by located components to avoid some problems. <br>
+//!          If AutoNaming() is True then automatically attaches names. <br>
   Standard_EXPORT     TDF_Label AddShape(const TopoDS_Shape& S,const Standard_Boolean makeAssembly = Standard_True,const Standard_Boolean makePrepare = Standard_True) ;
   //! Removes shape (whole label and all its sublabels) <br>
 //!          If removeCompletely is true, removes complete shape <br>
@@ -205,6 +206,21 @@ public:
   Standard_EXPORT     Standard_Boolean RemoveShape(const TDF_Label& L,const Standard_Boolean removeCompletely = Standard_True) const;
   //! set hasComponents into false <br>
   Standard_EXPORT     void Init() ;
+  //! Sets auto-naming mode to <V>. If True then for added <br>
+//!          shapes, links, assemblies and SHUO's, the TDataStd_Name attribute <br>
+//!          is automatically added. For shapes it contains a shape type <br>
+//!          (e.g. "SOLID", "SHELL", etc); for links it has a form <br>
+//!          "=>[0:1:1:2]" (where a tag is a label containing a shape <br>
+//!          without a location); for assemblies it is "ASSEMBLY", and <br>
+//!          "SHUO" for SHUO's. <br>
+//!          This setting is global; it cannot be made a member function <br>
+//!          as it is used by static methods as well. <br>
+//!          By default, auto-naming is enabled. <br>
+//!          See also AutoNaming(). <br>
+  Standard_EXPORT   static  void SetAutoNaming(const Standard_Boolean V) ;
+  //! Returns current auto-naming mode. See SetAutoNaming() for <br>
+//!          description. <br>
+  Standard_EXPORT   static  Standard_Boolean AutoNaming() ;
   //! recursive <br>
   Standard_EXPORT     void ComputeShapes(const TDF_Label& L) ;
   //! Compute a sequence of simple shapes <br>

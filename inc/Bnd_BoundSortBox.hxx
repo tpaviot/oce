@@ -76,6 +76,18 @@ public:
 //! the array of boxes to be sorted by this comparison algorithm. <br>
 //! This function is used only in conjunction with the third <br>
 //! syntax described in the synopsis of Initialize. <br>
+//! <br>
+//! Exceptions: <br>
+//! <br>
+//! - Standard_OutOfRange if boxIndex is not in the <br>
+//!   range [ 1,nbComponents ] where <br>
+//!   nbComponents is the maximum number of bounding <br>
+//!   boxes declared for this comparison algorithm at <br>
+//!   initialization. <br>
+//! <br>
+//! - Standard_MultiplyDefined if a box already exists at <br>
+//!   position boxIndex in the array of boxes to be sorted by <br>
+//!   this comparison algorithm. <br>
   Standard_EXPORT     void Add(const Bnd_Box& theBox,const Standard_Integer boxIndex) ;
   //! Compares the bounding box theBox, <br>
 //! with the set of bounding boxes to be sorted by this <br>

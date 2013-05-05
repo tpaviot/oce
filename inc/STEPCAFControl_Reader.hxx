@@ -87,6 +87,13 @@ class STEPConstruct_Tool;
 //!          DECAF document. Besides transfer of shapes (including <br>
 //!          assemblies) provided by STEPControl, supports also <br>
 //!          colors and part names <br>
+//! <br>
+//!          This reader supports reading files with external references <br>
+//!          i.e. multifile reading <br>
+//!          It behaves as usual Reader (from STEPControl) for the main <br>
+//!          file (e.g. if it is single file) <br>
+//!          Results of reading other files can be accessed by name of the <br>
+//!          file or by iterating on a readers <br>
 class STEPCAFControl_Reader  {
 public:
 

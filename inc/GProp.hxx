@@ -60,7 +60,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes the matrix Operator, referred to as the <br>
+  //! methods of package <br>//! Computes the matrix Operator, referred to as the <br>
 //! "Huyghens Operator" of a geometric system at the <br>
 //! point Q of the space, using the following data : <br>
 //! - Mass, i.e. the mass of the system, <br>

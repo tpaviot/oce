@@ -31,15 +31,15 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_Viewer_View_HeaderFile
-#include <Handle_Viewer_View.hxx>
+#ifndef _Handle_V3d_View_HeaderFile
+#include <Handle_V3d_View.hxx>
 #endif
 #ifndef _Handle_PrsMgr_Presentation_HeaderFile
 #include <Handle_PrsMgr_Presentation.hxx>
 #endif
 class Standard_NoSuchObject;
 class PrsMgr_PresentableObject;
-class Viewer_View;
+class V3d_View;
 class PrsMgr_Presentation;
 
 
@@ -117,7 +117,7 @@ public:
   //!  Allows rapid drawing of the view aView by avoiding <br>
 //! an update of the whole background. If DoubleBuffer <br>
 //! is true, the background is drawn. <br>
-  Standard_EXPORT   virtual  void EndDraw(const Handle(Viewer_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False)  = 0;
+  Standard_EXPORT   virtual  void EndDraw(const Handle(V3d_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False)  = 0;
   //! Returns true if immediate (transient) mode is on. <br>
         Standard_Boolean IsImmediateModeOn() const;
   //! Returns true if there is a presentation of the <br>

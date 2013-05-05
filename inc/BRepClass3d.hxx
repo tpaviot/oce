@@ -36,6 +36,7 @@ public:
 
   //! Returns the outer most shell of <S>. Returns a Null <br>
 //!          shell if <S> has no outer shell. <br>
+//!          If <S> has only one shell, then it will return, without checking orientation. <br>
   Standard_EXPORT   static  TopoDS_Shell OuterShell(const TopoDS_Solid& S) ;
 
 

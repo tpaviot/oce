@@ -7,7 +7,6 @@
 #define _GeomAbs_SurfaceType_HeaderFile
 
 
-//! Identifies the type of a curve. <br>
 enum GeomAbs_SurfaceType {
 GeomAbs_Plane,
 GeomAbs_Cylinder,

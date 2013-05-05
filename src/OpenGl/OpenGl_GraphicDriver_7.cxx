@@ -168,7 +168,7 @@ Standard_Boolean OpenGl_GraphicDriver::UnProjectRaster (const Graphic3d_CView& A
   const Standard_Integer aHeight = aCView->WS->Height();
 
   /*
-  Patched by P.Dolbey: the window pixel height decreased by one 
+  Patched by P.Dolbey: the window pixel height decreased by one
   in order for yr to remain within valid coordinate range [0; Ym -1]
   where Ym means window pixel height.
   */
@@ -430,7 +430,8 @@ void OpenGl_GraphicDriver::RemoveView (const Graphic3d_CView& theCView)
     }
   }
 
-  OpenGl_CView *aCView = (OpenGl_CView *)theCView.ptrView;
+  OpenGl_CView* aCView = (OpenGl_CView* )theCView.ptrView;
+  aCView->View->ReleaseGlResources (aShareCtx);
   delete aCView;
   ((Graphic3d_CView *)&theCView)->ptrView = NULL;
 }
@@ -464,13 +465,6 @@ void OpenGl_GraphicDriver::TransformStructure (const Graphic3d_CStructure& ACStr
   OpenGl_Structure *astructure = (OpenGl_Structure *)ACStructure.ptrStructure;
   if (astructure)
     astructure->SetTransformation(&(ACStructure.Transformation[0][0]));
-}
-
-void OpenGl_GraphicDriver::DegenerateStructure (const Graphic3d_CStructure& ACStructure)
-{
-  OpenGl_Structure *astructure = (OpenGl_Structure *)ACStructure.ptrStructure;
-  if (astructure)
-    astructure->SetDegenerateModel( ACStructure.ContextFillArea.DegenerationMode, ACStructure.ContextFillArea.SkipRatio );
 }
 
 void OpenGl_GraphicDriver::Transparency (const Graphic3d_CView& ACView, const Standard_Boolean AFlag)
@@ -554,7 +548,7 @@ void OpenGl_GraphicDriver::SetBackFacingModel (const Graphic3d_CView& ACView)
 
 //=======================================================================
 //function : AddZLayer
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void OpenGl_GraphicDriver::AddZLayer (const Graphic3d_CView& theCView,

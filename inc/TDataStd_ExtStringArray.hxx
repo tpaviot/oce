@@ -74,6 +74,7 @@ public:
   //! Sets  the   <Index>th  element  of   the  array to <Value> <br>
   Standard_EXPORT     void SetValue(const Standard_Integer Index,const TCollection_ExtendedString& Value) ;
   //! Returns the value of  the  <Index>th element of the array <br>
+//! <br>
   Standard_EXPORT     TCollection_ExtendedString Value(const Standard_Integer Index) const;
     TCollection_ExtendedString operator ()(const Standard_Integer Index) const
 {

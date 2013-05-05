@@ -93,6 +93,20 @@ public:
 //!    myArray->AddEdge(3) <br>
 //!    myArray->AddEdge(5) <br>
 //!    myArray->AddEdge(4) <br>
+//! <br>
+//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
+//! <maxBounds> defined the maximun allowed bound number in the array. <br>
+//! <maxEdges> defined the maximun allowed edge number in the array. <br>
+//!  Warning: <br>
+//! When <hasVColors> is TRUE , you must use one of <br>
+//!      AddVertex(Point,Color) <br>
+//!  or  AddVertex(Point,Normal,Color) methods. <br>
+//! When <hasBColors> is TRUE , <maxBounds> must be > 0 and <br>
+//!      you must use the <br>
+//!      AddBound(number,Color) method. <br>
+//! When <hasEdgeInfos> is TRUE , <maxEdges> must be > 0 and <br>
+//!      you must use the <br>
+//!      AddEdge(number,visibillity) method. <br>
   Standard_EXPORT   Graphic3d_ArrayOfPolylines(const Standard_Integer maxVertexs,const Standard_Integer maxBounds = 0,const Standard_Integer maxEdges = 0,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasBColors = Standard_False,const Standard_Boolean hasEdgeInfos = Standard_False);
 
 

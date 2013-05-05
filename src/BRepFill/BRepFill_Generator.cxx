@@ -92,7 +92,6 @@ Standard_Integer DetectKPart(const TopoDS_Edge& Edge1,
   gp_Pnt pos1, pos;
   Standard_Real  dist;
   Standard_Real dist1 =0.;
-
   gp_Ax1 axe1, axe;
 
   if (degen1) {

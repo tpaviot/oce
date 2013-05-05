@@ -4,12 +4,12 @@ SET(TOOLKIT_MODULES
 	XmlTObjDrivers
 )
 SET(TOOLKIT_DEPENDS
+	TKCDF
 	TKernel
 	TKTObj
 	TKMath
 	TKLCAF
 	TKXmlL
-	TKCDF
 )
 
 INCLUDE(../BuildToolkit.cmake)

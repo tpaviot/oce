@@ -6,7 +6,8 @@
 #ifndef _Graphic3d_HorizontalTextAlignment_HeaderFile
 #define _Graphic3d_HorizontalTextAlignment_HeaderFile
 
-//! Direction in which text is displayed. <br>
+//! Defines the horizontal position of the text <br>
+//!      relative to its anchor. <br>
 enum Graphic3d_HorizontalTextAlignment {
 Graphic3d_HTA_LEFT,
 Graphic3d_HTA_CENTER,

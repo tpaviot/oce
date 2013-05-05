@@ -102,11 +102,19 @@ public:
   //! Remove link from label <L> and Layer <aLayer>. <br>
 //!          returns FALSE if no such layer. <br>
   Standard_EXPORT     Standard_Boolean UnSetOneLayer(const TDF_Label& L,const TCollection_ExtendedString& aLayer) const;
+  //! Remove link from label <L> and Layer <aLayerL>. <br>
+//!          returns FALSE if <aLayerL> is not a layer label. <br>
+  Standard_EXPORT     Standard_Boolean UnSetOneLayer(const TDF_Label& L,const TDF_Label& aLayerL) const;
   //! Returns True if label <L> has a Layer assosiated <br>
 //!          with the <aLayer>. <br>
   Standard_EXPORT     Standard_Boolean IsSet(const TDF_Label& L,const TCollection_ExtendedString& aLayer) const;
+  //! Returns True if label <L> has a Layer assosiated <br>
+//!          with the <aLayerL> label. <br>
+  Standard_EXPORT     Standard_Boolean IsSet(const TDF_Label& L,const TDF_Label& aLayerL) const;
   //! Return sequence of strings <aLayerS> that assosiated with label <L>. <br>
   Standard_EXPORT     Standard_Boolean GetLayers(const TDF_Label& L,Handle(TColStd_HSequenceOfExtendedString)& aLayerS) ;
+  //! Return sequence of labels <aLayerSL> that assosiated with label <L>. <br>
+  Standard_EXPORT     Standard_Boolean GetLayers(const TDF_Label& L,TDF_LabelSequence& aLayerLS) ;
   //! Return sequence of strings that assosiated with label <L>. <br>
   Standard_EXPORT     Handle_TColStd_HSequenceOfExtendedString GetLayers(const TDF_Label& L) ;
   //! Return sequanese of shape labels that assigned with layers to <ShLabels>. <br>
@@ -134,11 +142,19 @@ public:
   //! Remove link between shape <Sh> and layer <aLayer>. <br>
 //!          returns FALSE if no such layer <aLayer> or shape <Sh>. <br>
   Standard_EXPORT     Standard_Boolean UnSetOneLayer(const TopoDS_Shape& Sh,const TCollection_ExtendedString& aLayer) ;
+  //! Remove link between shape <Sh> and layer <aLayerL>. <br>
+//!          returns FALSE if no such layer <aLayerL> or shape <Sh>. <br>
+  Standard_EXPORT     Standard_Boolean UnSetOneLayer(const TopoDS_Shape& Sh,const TDF_Label& aLayerL) ;
   //! Returns True if shape <Sh> has a Layer assosiated <br>
 //!          with the <aLayer>. <br>
   Standard_EXPORT     Standard_Boolean IsSet(const TopoDS_Shape& Sh,const TCollection_ExtendedString& aLayer) ;
+  //! Returns True if shape <Sh> has a Layer assosiated <br>
+//!          with the <aLayerL>. <br>
+  Standard_EXPORT     Standard_Boolean IsSet(const TopoDS_Shape& Sh,const TDF_Label& aLayerL) ;
   //! Return sequence of strings <aLayerS> that assosiated with shape <Sh>. <br>
   Standard_EXPORT     Standard_Boolean GetLayers(const TopoDS_Shape& Sh,Handle(TColStd_HSequenceOfExtendedString)& aLayerS) ;
+  //! Return sequence of labels <aLayerLS> that assosiated with shape <Sh>. <br>
+  Standard_EXPORT     Standard_Boolean GetLayers(const TopoDS_Shape& Sh,TDF_LabelSequence& aLayerLS) ;
   //! Return sequence of strings that assosiated with shape <Sh>. <br>
   Standard_EXPORT     Handle_TColStd_HSequenceOfExtendedString GetLayers(const TopoDS_Shape& Sh) ;
   

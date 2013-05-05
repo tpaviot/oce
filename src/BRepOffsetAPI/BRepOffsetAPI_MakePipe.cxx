@@ -30,12 +30,34 @@
 
 //=======================================================================
 //function : BRepOffsetAPI_MakePipe
-//purpose  : 
+//purpose  : constructor
 //=======================================================================
 
 BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe(const TopoDS_Wire&  Spine ,
-				   const TopoDS_Shape& Profile)
+                                               const TopoDS_Shape& Profile)
      : myPipe(Spine, Profile)
+{
+  Build();
+}
+
+//=======================================================================
+//function : BRepOffsetAPI_MakePipe
+//purpose  : constructor
+//           Set the mode of sweeping
+//           It can be:
+//           - Frenet
+//           - Corrected Frenet
+//           - Discrete Trihedron
+//           Also set the flag that indicates attempt to approximate
+//           a C1-continuous surface if a swept surface proved
+//           to be C0.
+//=======================================================================
+
+BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe(const TopoDS_Wire&  Spine ,
+                                               const TopoDS_Shape& Profile,
+                                               const GeomFill_Trihedron aMode,
+                                               const Standard_Boolean ForceApproxC1)
+  : myPipe(Spine, Profile, aMode, ForceApproxC1)
 {
   Build();
 }

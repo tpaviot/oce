@@ -9,10 +9,10 @@ SET(TOOLKIT_MODULES
 	XmlObjMgt
 )
 SET(TOOLKIT_DEPENDS
+	TKCDF
 	TKernel
 	TKMath
 	TKLCAF
-	TKCDF
 )
 
 INCLUDE(../BuildToolkit.cmake)

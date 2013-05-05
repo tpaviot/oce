@@ -19,14 +19,14 @@ SET(TOOLKIT_MODULES
 	MoniTool
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
 	TKernel
 	TKMath
 	TKG2d
 	TKG3d
-	TKShHealing
-	TKBRep
-	TKGeomBase
 	TKTopAlgo
+	TKGeomBase
+	TKShHealing
 )
 
 INCLUDE(../BuildToolkit.cmake)

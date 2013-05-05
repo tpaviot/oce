@@ -9,20 +9,19 @@ SET(TOOLKIT_MODULES
 	MNaming
 )
 SET(TOOLKIT_DEPENDS
+	PTKernel
+	TKBRep
+	TKMath
 	TKernel
+	TKCDF
+	TKG2d
+	TKV3d
+	TKService
+	TKG3d
+	TKPShape
 	TKCAF
 	TKLCAF
 	TKPLCAF
-	TKG3d
-	TKV3d
-	TKService
-	PTKernel
-	TKMath
-	TKG2d
-	TKPShape
-	TKCDF
-	TKV2d
-	TKBRep
 )
 
 INCLUDE(../BuildToolkit.cmake)

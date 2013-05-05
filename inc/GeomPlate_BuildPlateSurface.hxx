@@ -220,6 +220,7 @@ public:
   //! Returns the max angle between the result and the constraint Index <br>
   Standard_EXPORT     Standard_Real G1Error(const Standard_Integer Index) ;
   //! Returns the max difference of curvature between the result and the constraint Index <br>
+//! <br>
   Standard_EXPORT     Standard_Real G2Error(const Standard_Integer Index) ;
 
 

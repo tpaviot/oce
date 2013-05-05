@@ -7,8 +7,8 @@
 #ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
 #endif
-#ifndef _Viewer_View_HeaderFile
-#include <Viewer_View.hxx>
+#ifndef _V3d_View_HeaderFile
+#include <V3d_View.hxx>
 #endif
 #ifndef _Geom_Transformation_HeaderFile
 #include <Geom_Transformation.hxx>

@@ -35,6 +35,10 @@ class gp_Mat;
 //! Represents operation of rotation in 3d space as queternion <br>
 //!          and implements operations with rotations basing on <br>
 //!          quaternion mathematics. <br>
+//! <br>
+//!          In addition, provides methods for conversion to and from other <br>
+//!          representatons of rotation (3*3 matrix, vector and <br>
+//!          angle, Euler angles) <br>
 class gp_Quaternion  {
 public:
 

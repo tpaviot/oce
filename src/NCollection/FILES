@@ -6,6 +6,8 @@ NCollection_IncAllocator.hxx
 NCollection_IncAllocator.cxx
 NCollection_HeapAllocator.hxx
 NCollection_HeapAllocator.cxx
+NCollection_StdAllocator.hxx
+
 NCollection_ListNode.hxx
 NCollection_BaseList.hxx
 NCollection_BaseList.cxx
@@ -65,6 +67,12 @@ NCollection_StdBase.hxx
 NCollection_EBTree.hxx
 NCollection_UBTree.hxx
 NCollection_UBTreeFiller.hxx
+
+NCollection_UtfIterator.hxx
+NCollection_UtfIterator.lxx
+NCollection_UtfString.hxx
+NCollection_UtfString.lxx
+NCollection_String.hxx
 
 NCollection_SparseArray.hxx
 NCollection_SparseArrayBase.hxx

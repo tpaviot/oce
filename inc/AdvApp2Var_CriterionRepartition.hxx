@@ -9,7 +9,8 @@
 //! way of cutting process <br>//! all new cutting points at each step of cutting <br>
 //!          process : (a+i(b-a)/N)i at step N, <br>
 //!                    (a+i(b-a)/(N+1))i at step N+1,... <br>
-//!                    where (a,b) is the global interval <br>
+//!                    where (a,b) is the global interval <br>//! add one new cutting point at each step <br>
+//!          of cutting process <br>
 enum AdvApp2Var_CriterionRepartition {
 AdvApp2Var_Regular,
 AdvApp2Var_Incremental

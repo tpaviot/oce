@@ -48,6 +48,20 @@ class TColStd_SequenceOfExtendedString;
 
 
 //! persistent implemention of storage. <br>
+//! <br>
+//!          The  application  must redefine one the two Make() <br>
+//!           methods.  The first one, if  the application wants to <br>
+//!          put only one document in the storage file. <br>
+//! <br>
+//!            The  second  method  should  be   redefined  to  put <br>
+//!            additional document  that   could  be  used by   the <br>
+//!          retrieval instead of the principal document, depending <br>
+//!          on the schema used during the retrieval.  For example, <br>
+//!          a    second     document   could   be     a   standard <br>
+//!             CDMShape_Document.    This  means   that a   client <br>
+//!          application will already be able to extract a CDMShape_Document <br>
+//!          of the file, if the Shape Schema remains unchanged. <br>
+//! <br>
 class PCDM_StorageDriver : public PCDM_Writer {
 
 public:

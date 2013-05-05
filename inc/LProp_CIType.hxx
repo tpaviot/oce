@@ -7,6 +7,10 @@
 #define _LProp_CIType_HeaderFile
 
 
+//! Identifies the type of a particular point on a curve: <br>
+//! - LProp_Inflection: a point of inflection <br>
+//! - LProp_MinCur: a minimum of curvature <br>
+//! - LProp_MaxCur: a maximum of curvature. <br>
 enum LProp_CIType {
 LProp_Inflection,
 LProp_MinCur,

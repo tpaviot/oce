@@ -4,11 +4,11 @@ SET(TOOLKIT_MODULES
 	XBRepMesh
 )
 SET(TOOLKIT_DEPENDS
-	TKMesh
-	TKG2d
-	TKernel
-	TKMath
 	TKBRep
+	TKMath
+	TKernel
+	TKG2d
+	TKMesh
 )
 
 INCLUDE(../BuildToolkit.cmake)

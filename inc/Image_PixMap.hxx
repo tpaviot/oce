@@ -21,6 +21,7 @@
 #define _Image_PixMap_H__
 
 #include <Image_PixMapData.hxx>
+#include <Image_PixMap_Handle.hxx>
 #include <Standard_Transient.hxx>
 #include <Quantity_Color.hxx>
 
@@ -214,7 +215,7 @@ public: // low-level API for batch-processing (pixels reading / comparison / mod
   }
 
   //! @return bytes reserved for one pixel (may include extra bytes for alignment).
-  static Standard_Size SizePixelBytes (const Image_PixMap::ImgFormat thePixelFormat);
+  Standard_EXPORT static Standard_Size SizePixelBytes (const Image_PixMap::ImgFormat thePixelFormat);
 
   //! @return bytes reserved per row.
   //! Could be larger than needed to store packed row (extra bytes for alignment etc.).
@@ -288,7 +289,5 @@ public:
   DEFINE_STANDARD_RTTI(Image_PixMap) // Type definition
 
 };
-
-DEFINE_STANDARD_HANDLE(Image_PixMap, Standard_Transient)
 
 #endif // _Image_PixMap_H__

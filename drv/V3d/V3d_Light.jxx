@@ -4,8 +4,8 @@
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
 #endif
-#ifndef _Viewer_BadValue_HeaderFile
-#include <Viewer_BadValue.hxx>
+#ifndef _V3d_BadValue_HeaderFile
+#include <V3d_BadValue.hxx>
 #endif
 #ifndef _V3d_Light_HeaderFile
 #include <V3d_Light.hxx>
@@ -18,9 +18,6 @@
 #endif
 #ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>
-#endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _V3d_Light_HeaderFile
 #include <V3d_Light.hxx>

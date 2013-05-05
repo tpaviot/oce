@@ -60,7 +60,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sets  <S> in the  variable  <Name>.  Overwrite the <br>
+  //! Creation of isoparametric curves. <br>//! Implements ProgressIndicator for DRAW <br>//! Sets  <S> in the  variable  <Name>.  Overwrite the <br>
 //!          variable if already set. <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const TopoDS_Shape& S) ;
   //! Returns the shape in the variable  <Name>. Returns <br>

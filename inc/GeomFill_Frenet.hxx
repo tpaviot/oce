@@ -108,17 +108,17 @@ private:
   
   Standard_EXPORT     Standard_Boolean IsSingular(const Standard_Real U,Standard_Integer& Index) const;
   
-  Standard_EXPORT     Standard_Boolean DoSingular(const Standard_Real U,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& BiNormal,Standard_Integer& n,Standard_Integer& k,Standard_Integer& TFlag,Standard_Integer& BNFlag) ;
+  Standard_EXPORT     Standard_Boolean DoSingular(const Standard_Real U,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& BiNormal,Standard_Integer& n,Standard_Integer& k,Standard_Integer& TFlag,Standard_Integer& BNFlag,Standard_Real& Delta) ;
   //! computes Triedrhon on curve at parameter <Param> <br>
-  Standard_EXPORT     Standard_Boolean SingularD0(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& Normal,gp_Vec& BiNormal) ;
+  Standard_EXPORT     Standard_Boolean SingularD0(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& Normal,gp_Vec& BiNormal,Standard_Real& Delta) ;
   //! computes Triedrhon and  derivative Trihedron  on curve <br>
 //!          at parameter <Param> <br>
 //!  Warning : It used only for C1 or C2 aproximation <br>
-  Standard_EXPORT     Standard_Boolean SingularD1(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& BiNormal,gp_Vec& DBiNormal) ;
+  Standard_EXPORT     Standard_Boolean SingularD1(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& BiNormal,gp_Vec& DBiNormal,Standard_Real& Delta) ;
   //! computes  Trihedron on curve <br>
 //!          first and seconde  derivatives. <br>
 //!  Warning : It used only for C2 aproximation <br>
-  Standard_EXPORT     Standard_Boolean SingularD2(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& D2Tangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& D2Normal,gp_Vec& BiNormal,gp_Vec& DBiNormal,gp_Vec& D2BiNormal) ;
+  Standard_EXPORT     Standard_Boolean SingularD2(const Standard_Real Param,const Standard_Integer Index,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& D2Tangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& D2Normal,gp_Vec& BiNormal,gp_Vec& DBiNormal,gp_Vec& D2BiNormal,Standard_Real& Delta) ;
 
 gp_Pnt P;
 Handle_TColStd_HArray1OfReal mySngl;

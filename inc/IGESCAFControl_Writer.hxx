@@ -34,6 +34,7 @@
 class XSControl_WorkSession;
 class TDocStd_Document;
 class TCollection_AsciiString;
+class TDF_LabelSequence;
 class TopoDS_Shape;
 class XCAFPrs_DataMapOfShapeStyle;
 class XCAFPrs_DataMapOfStyleTransient;
@@ -98,15 +99,18 @@ public:
 
 protected:
 
+  //! Transfers labels to a IGES model <br>
+//!          Returns True if translation is OK <br>
+  Standard_EXPORT     Standard_Boolean Transfer(const TDF_LabelSequence& labels) ;
   //! Reads colors from DECAF document and assigns them <br>
 //!          to corresponding IGES entities <br>
-  Standard_EXPORT     Standard_Boolean WriteAttributes(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteAttributes(const TDF_LabelSequence& labels) ;
   //! Reads layers from DECAF document and assigns them <br>
 //!          to corresponding IGES entities <br>
-  Standard_EXPORT     Standard_Boolean WriteLayers(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteLayers(const TDF_LabelSequence& labels) ;
   //! Recursivile iterates on subshapes and assign names <br>
 //!          to IGES entity <br>
-  Standard_EXPORT     Standard_Boolean WriteNames(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteNames(const TDF_LabelSequence& labels) ;
 
 
 

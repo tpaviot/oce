@@ -29,7 +29,7 @@ inherits
     Transient
     
 uses
-    OStream           from  Standard,
+    OStream           from Standard,
     HAsciiString      from TCollection,
     MaterialsSequence from Materials,
     Material          from Materials

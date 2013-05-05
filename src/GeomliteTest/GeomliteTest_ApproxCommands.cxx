@@ -97,10 +97,8 @@ static Standard_Integer  NbConstraint(const AppParCurves_Constraint C1,
        N = 3;
        break;
      }     
-#ifndef DEB
    default:
        break;
-#endif
    }
 
    switch (C2) {
@@ -119,10 +117,8 @@ static Standard_Integer  NbConstraint(const AppParCurves_Constraint C1,
        N += 3;
        break;
      }     
-#ifndef DEB
    default:
        break;
-#endif
    }
    return N;
 }
@@ -360,7 +356,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
     return 0;
   }
   if (n == 3) {
-    Tolerance = atof(a[2]);
+    Tolerance = Draw::Atof(a[2]);
     if (Abs(Tolerance) < Precision::Confusion()*1.e-7)  {
       Constraint = AppParCurves_PassPoint;
     }
@@ -372,7 +368,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
   }
   else if (n >= 4) {
     Standard_Integer ific = 3;
-    Tolerance = atof(a[2]);
+    Tolerance = Draw::Atof(a[2]);
     if (Abs(Tolerance) < Precision::Confusion()*1.e-7)  {
       Constraint = AppParCurves_PassPoint;
     }
@@ -381,7 +377,7 @@ static Standard_Integer smoothing (Draw_Interpretor& di,Standard_Integer n, cons
     }
 
     if (! strcmp(a[3],"-D")) {
-       DegMax = atoi(a[4]);
+       DegMax = Draw::Atoi(a[4]);
        ific = 5;
     }
     
@@ -540,8 +536,8 @@ static Standard_Integer smoothingbybezier (Draw_Interpretor& di,
     return 0;
   }
   if (n >= 5) {
-    Tolerance = atof(a[2]);
-    Degree = atoi(a[3]);
+    Tolerance = Draw::Atof(a[2]);
+    Degree = Draw::Atoi(a[3]);
     if (! strcmp(a[4],"-GR")) {
       methode = 1;
     }

@@ -17,38 +17,32 @@
 #endif
 
 class Draw_Interpretor;
+class BOPTest_Objects;
 class BOPTest_DrawableShape;
 
 
 
-//! <br>
 class BOPTest  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines all commands. <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void MTestCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void TSTCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void BOPCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void EFCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void CheckCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void LowCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void TolerCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void BOPCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void LowCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void WSplitCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void ObjCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void CurveCommands(Draw_Interpretor& DI) ;
+  Standard_EXPORT   static  void PartitionCommands(Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void TolerCommands(Draw_Interpretor& DI) ;
-  
-  Standard_EXPORT   static  void CheckCommands(Draw_Interpretor& DI) ;
-  //! Loads all Draw commands for Geometry & Topology. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
+  Standard_EXPORT   static  void Factory(Draw_Interpretor& aDI) ;
 
 
 
@@ -65,6 +59,7 @@ private:
 
 
 
+friend class BOPTest_Objects;
 friend class BOPTest_DrawableShape;
 
 };

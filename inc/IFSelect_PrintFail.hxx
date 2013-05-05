@@ -6,34 +6,12 @@
 #ifndef _IFSelect_PrintFail_HeaderFile
 #define _IFSelect_PrintFail_HeaderFile
 
-
-//! Lets you choose the manner in which you want to analyze an <br>
-//! IGES or STEP file. Your analysis can be either message-oriented or <br>
-//! entity-oriented. The specific values are as follows: <br>
-//! - ItemsByEntity is a sequential list of all <br>
-//! messages per entity of the defined type <br>
-//! - CountByItem is the number of entities of the defined <br>
-//! type, with their rank number per message <br>
-//! - ShortByItem is the number of entities of the defined <br>
-//! type, with their types per message; displays the rank <br>
-//! numbers of the first five entities of the defined type <br>
-//! per message <br>
-//! - ListByItem is the number of entities of the defined type <br>
-//! per message and the numbers of the entities <br>
-//! - EntitiesByItem is the number of entities of the <br>
-//! defined type, with their types, rank numbers and <br>
-//! Directory Entry numbers per message <br>
-//! - GeneralInfo is general information on transfer such as: <br>
-//!    -      number of entities <br>
-//!    -      number of roots <br>
-//!    -      number of resulting Open CASCADE shapes <br>
-//!    -      number of warnings and failures <br>
-//!    -      CountSummary summary statistics for counters and signatures <br>
-//!    -      ResultCount information that contains the number of <br>
-//!       roots in the IGES file and the number of resulting Open CASCADE shapes. <br>
-//!  -       Mapping of the IGES root entities to the resulting Open <br>
-//!   CASCADE shape (including type and form of the IGES entity <br>
-//! and type of the resulting shape). <br>
+//! Indicates whether there will <br>
+//! be information on warnings as well as on failures. The <br>
+//! terms of this enumeration have the following semantics: <br>
+//! - IFSelect_FailOnly gives information on failures only <br>
+//! - IFSelect_FailAndWarn gives information on both <br>
+//!   failures and warnings. used to pilot PrintCheckList <br>
 enum IFSelect_PrintFail {
 IFSelect_FailOnly,
 IFSelect_FailAndWarn

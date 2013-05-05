@@ -33,6 +33,7 @@ public:
 
   //! Returns a HasCode value  for  the  Key <K>  in the <br>
 //!          range 0..Upper. <br>
+//! <br>
       static  Standard_Integer HashCode(const IntTools_SurfaceRangeSample& K,const Standard_Integer Upper) ;
   //! Returns True  when the two  keys are the same. Two <br>
 //!          same  keys  must   have  the  same  hashcode,  the <br>

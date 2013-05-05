@@ -6,7 +6,16 @@
 #ifndef _AIS_DisplayStatus_HeaderFile
 #define _AIS_DisplayStatus_HeaderFile
 
-//! Declares the type of isoparameter displayed. <br>
+
+//! To give the display status of an Interactive Object. <br>
+//! This will be one of the following: <br>
+//! -   DS_Displayed: the Interactive Object is <br>
+//!   displayed in the main viewer; <br>
+//! -   DS_Erased: the Interactive Object is erased in the collector; <br>
+//! -   DS_FullErased: the Interactive Object is erased <br>
+//!   but not in the collector; <br>
+//! -   DS_Temporary: the Interactive Object is temporarily displayed; <br>
+//! -   DS_None: the Interactive Object is nowhere displayed. <br>
 enum AIS_DisplayStatus {
 AIS_DS_Displayed,
 AIS_DS_Erased,

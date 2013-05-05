@@ -6,8 +6,7 @@
 #ifndef _MeshVS_MeshSelectionMethod_HeaderFile
 #define _MeshVS_MeshSelectionMethod_HeaderFile
 
-//! this enumeration describe what type of sensitive entity will be built <br>
-//!          in 0-th selection mode (it means that whole mesh is selected ) <br>
+
 enum MeshVS_MeshSelectionMethod {
 MeshVS_MSM_PRECISE,
 MeshVS_MSM_NODES,

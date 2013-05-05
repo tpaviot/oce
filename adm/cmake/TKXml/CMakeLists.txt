@@ -7,17 +7,17 @@ SET(TOOLKIT_MODULES
 	XmlMPrsStd
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKernel
-	TKLCAF
-	TKG2d
-	TKCAF
-	TKV3d
-	TKBRep
-	TKXmlL
-	TKG3d
 	TKCDF
+	TKernel
+	TKV3d
+	TKMath
+	TKBRep
+	TKG2d
 	TKGeomBase
+	TKG3d
+	TKLCAF
+	TKCAF
+	TKXmlL
 )
 
 INCLUDE(../BuildToolkit.cmake)

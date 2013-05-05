@@ -1,6 +1,0 @@
-#ifndef _BooleanOperations_ShapesDataStructure_HeaderFile
-#include <BooleanOperations_ShapesDataStructure.hxx>
-#endif
-#ifndef _BooleanOperations_Explorer_HeaderFile
-#include <BooleanOperations_Explorer.hxx>
-#endif

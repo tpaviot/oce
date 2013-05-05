@@ -302,6 +302,7 @@ fields
     TTriangles1        : ArrayOfTriangles   from IntPolyh;
     TTriangles2        : ArrayOfTriangles   from IntPolyh;
     TTrianglesContacts : ArrayOfCouples     from IntPolyh;
+    TStartPoints       : ArrayOfStartPoints from IntPolyh;
     
     myEnlargeZone    : Boolean from Standard;
 

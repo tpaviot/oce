@@ -83,7 +83,8 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! In case face <FF> is built on UV-non-connexed  wires <br>
+  //!  Fuse  edges (in a   wire) of a  shape   where we have <br>
+//!          useless vertex. <br>//! In case face <FF> is built on UV-non-connexed  wires <br>
 //!          (with the two closing edges  FORWARD and REVERSED, in <br>
 //!          spite of one only), we find out the faulty edge, add <br>
 //!          the faulty shapes (edge,wire,face) to <MshNOK>. <br>

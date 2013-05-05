@@ -6,7 +6,7 @@
 #ifndef _Interface_DataState_HeaderFile
 #define _Interface_DataState_HeaderFile
 
-
+//! validity state of anentity's content (see InterfaceModel) <br>
 enum Interface_DataState {
 Interface_StateOK,
 Interface_LoadWarning,

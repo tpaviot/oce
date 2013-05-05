@@ -7,6 +7,12 @@
 #define _Aspect_WidthOfLine_HeaderFile
 
 //! Definition of line types <br>
+//! <br>
+//!          WOL_THIN            thin line (1 pixel width) <br>
+//!          WOL_MEDIUM          medium width of 0.5 MM <br>
+//!          WOL_THICK           thick width of 0.7 MM <br>
+//!          WOL_VERYTHICK       very thick width of 1.5 MM <br>
+//!          WOL_USERDEFINED     defined by Users <br>
 enum Aspect_WidthOfLine {
 Aspect_WOL_THIN,
 Aspect_WOL_MEDIUM,

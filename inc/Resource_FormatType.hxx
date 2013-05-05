@@ -7,6 +7,11 @@
 #define _Resource_FormatType_HeaderFile
 
 
+//! List of non ASCII format types which may be <br>
+//! converted into the Unicode 16 bits format type. <br>
+//! Use the functions provided by the <br>
+//! Resource_Unicode class to convert a string <br>
+//! from one of these non ASCII format to Unicode, and vice versa. <br>
 enum Resource_FormatType {
 Resource_SJIS,
 Resource_EUC,

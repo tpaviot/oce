@@ -20,7 +20,7 @@
 #include <BRepAlgoAPI_BooleanOperation.hxx>
 #endif
 class TopoDS_Shape;
-class BOPTools_DSFiller;
+class BOPAlgo_PaveFiller;
 
 
 //!  The class Fuse provides a <br>
@@ -37,7 +37,7 @@ public:
   //! Constructs a fuse of shapes aS1 and aS2. <br>
   Standard_EXPORT   BRepAlgoAPI_Fuse(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
   //! Constructs a new shape that is a fuse of shapes aS1 and aS2 using aDSFiller. <br>
-  Standard_EXPORT   BRepAlgoAPI_Fuse(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPTools_DSFiller& aDSF);
+  Standard_EXPORT   BRepAlgoAPI_Fuse(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_PaveFiller& aDSF);
 
 
 

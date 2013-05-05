@@ -19,16 +19,10 @@
 #ifndef _Graphic3d_Texture2D_HeaderFile
 #include <Graphic3d_Texture2D.hxx>
 #endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Graphic3d_NameOfTexture2D_HeaderFile
 #include <Graphic3d_NameOfTexture2D.hxx>
 #endif
-class Graphic3d_StructureManager;
+class TCollection_AsciiString;
 
 
 //! This class defined a manual texture 2D <br>
@@ -39,9 +33,9 @@ class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 public:
 
   //! Creates a texture from a file <br>
-  Standard_EXPORT   Graphic3d_Texture2Dmanual(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString FileName);
+  Standard_EXPORT   Graphic3d_Texture2Dmanual(const TCollection_AsciiString& theFileName);
   //! Creates a texture from a predefined texture name set. <br>
-  Standard_EXPORT   Graphic3d_Texture2Dmanual(const Handle(Graphic3d_StructureManager)& SM,const Graphic3d_NameOfTexture2D NOT);
+  Standard_EXPORT   Graphic3d_Texture2Dmanual(const Graphic3d_NameOfTexture2D theNOT);
 
 
 

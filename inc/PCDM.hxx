@@ -70,7 +70,10 @@ public:
 //!          identifier of the driver plugs the driver. <br>
 //! <br>
   Standard_EXPORT   static  Handle_PCDM_StorageDriver StorageDriver(const Handle(CDM_Document)& aDocument) ;
-  
+  //! returns a schema to be used during a Store or Retrieve <br>
+//!          operation. <br>
+//!          Schema will plug the schema defined by <br>
+//!          the SchemaName method. <br>
   Standard_EXPORT   static  Handle_Storage_Schema Schema(const TCollection_ExtendedString& aSchemaName,const Handle(CDM_Application)& anApplication) ;
 
 

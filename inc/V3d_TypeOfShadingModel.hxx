@@ -6,7 +6,13 @@
 #ifndef _V3d_TypeOfShadingModel_HeaderFile
 #define _V3d_TypeOfShadingModel_HeaderFile
 
-//! Defines the type of projection of the view. <br>
+
+//! Defines the type of shading for the graphic object: <br>
+//! -   V3d_COLOR: simple surface color, <br>
+//! -   V3d_MULTICOLOR: interpolated colors, <br>
+//! -   V3d_FLAT: flat shading, <br>
+//! -   V3d_GOURAUD: Gouraud shading, <br>
+//! -   V3d_HIDDEN: hidden line removal. <br>
 enum V3d_TypeOfShadingModel {
 V3d_COLOR,
 V3d_MULTICOLOR,

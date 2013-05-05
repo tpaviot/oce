@@ -88,8 +88,8 @@
 #ifndef _V3d_TypeOfProjectionModel_HeaderFile
 #include <V3d_TypeOfProjectionModel.hxx>
 #endif
-#ifndef _Viewer_View_HeaderFile
-#include <Viewer_View.hxx>
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
 #endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>
@@ -193,14 +193,8 @@
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
 #endif
-#ifndef _Handle_PlotMgt_PlotterDriver_HeaderFile
-#include <Handle_PlotMgt_PlotterDriver.hxx>
-#endif
 #ifndef _Graphic3d_BufferType_HeaderFile
 #include <Graphic3d_BufferType.hxx>
-#endif
-#ifndef _Aspect_FormatOfSheetPaper_HeaderFile
-#include <Aspect_FormatOfSheetPaper.hxx>
 #endif
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
@@ -221,7 +215,7 @@ class Aspect_Grid;
 class V3d_LayerMgr;
 class Graphic3d_Structure;
 class Graphic3d_Group;
-class Viewer_BadValue;
+class V3d_BadValue;
 class Standard_TypeMismatch;
 class Standard_MultiplyDefined;
 class V3d_UnMapped;
@@ -238,9 +232,7 @@ class Visual3d_ViewMapping;
 class Aspect_GradientBackground;
 class Graphic3d_Vector;
 class TColStd_Array2OfReal;
-class Graphic3d_Vertex;
 class gp_Ax3;
-class PlotMgt_PlotterDriver;
 
 
 //! Defines the application object VIEW for the <br>
@@ -256,10 +248,17 @@ class PlotMgt_PlotterDriver;
 //!          the continuation of this gesture in putting the method <br>
 //!          into operation. <br>
 //!          Example : Shifting the eye-view along the screen axes. <br>
-class V3d_View : public Viewer_View {
+//! <br>
+//!              View->Move(10.,20.,0.,True)     (Starting motion) <br>
+//!              View->Move(15.,-5.,0.,False)    (Next motion) <br>
+class V3d_View : public MMgt_TShared {
 
 public:
 
+  //! Initialises the view. <br>
+  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+  //! Initialises the view by copying. <br>
+  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
   //! Activates the view in the window specified and Map the <br>
 //!          Window to the screen. <br>//!  Warning! raises MultiplyDefined from Standard <br>
 //!      if the view is already activated in a window. <br>
@@ -341,7 +340,7 @@ public:
   Standard_EXPORT     void SetBgImageStyle(const Aspect_FillMethod FillStyle,const Standard_Boolean update = Standard_False) ;
   //! Definition of an axis from its origin and <br>
 //!          its orientation . <br>
-//!          This will be the current axis for rotations and movements. <br>//!  Warning! raises BadValue from Viewer if the vector normal is NULL. . <br>
+//!          This will be the current axis for rotations and movements. <br>//!  Warning! raises BadValue from V3d if the vector normal is NULL. . <br>
   Standard_EXPORT     void SetAxis(const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const Quantity_Parameter Vx,const Quantity_Parameter Vy,const Quantity_Parameter Vz) ;
   //! Defines the shading model for the <br>
 //!          visualisation ZBUFFER mode. <br>
@@ -398,6 +397,8 @@ public:
   Standard_EXPORT     void SetPlaneOff() ;
   //! Returns TRUE when the plane is active in this view. <br>
   Standard_EXPORT     Standard_Boolean IsActivePlane(const Handle(V3d_Plane)& aPlane) const;
+  //! sets the immediate update mode and returns the previous one. <br>
+  Standard_EXPORT     Standard_Boolean SetImmediateUpdate(const Standard_Boolean theImmediateUpdate) ;
   //! Customization of the ZBUFFER Triedron. <br>
 //!         XColor,YColor,ZColor - colors of axis <br>
 //!         SizeRatio - ratio of decreasing of the trihedron size when its phisical <br>
@@ -436,7 +437,7 @@ public:
 //!          reference of the screen <br>
 //!          for which the origin is the view point of the projection, <br>
 //!          with a relative angular value in RADIANS with respect to <br>
-//!          the initial position expressed by Start = Standard_True <br>//!  Warning! raises BadValue from Viewer <br>
+//!          the initial position expressed by Start = Standard_True <br>//!  Warning! raises BadValue from V3d <br>
 //!      If the eye, the view point, or the high point are <br>
 //!          aligned or confused. <br>
   Standard_EXPORT     void Rotate(const Quantity_PlaneAngle Ax,const Quantity_PlaneAngle Ay,const Quantity_PlaneAngle Az,const Standard_Boolean Start = Standard_True) ;
@@ -617,6 +618,7 @@ public:
   Standard_EXPORT     void ResetViewMapping() ;
   //! Resets the centring and the orientation of the view <br>
 //!          Updates the view <br>
+//! <br>
   Standard_EXPORT     void Reset(const Standard_Boolean update = Standard_True) ;
   //! Converts the PIXEL value <br>
 //!           to a value in the projection plane. <br>
@@ -816,6 +818,7 @@ public:
 //!          the graphic managed itself exposure,resizing ... <br>
 //!          if <RetainMode> is FALSE. <br>
 //!          the application must managed itself exposure,resizing ... <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean TransientManagerBeginDraw(const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False) const;
   //! Clear all transient graphics in the view <aView> <br>
   Standard_EXPORT     void TransientManagerClearDraw() const;
@@ -826,33 +829,8 @@ public:
 //!         the associated view. <br>
 //!          Returns FALSE ,if nothing works because something <br>
 //!         is wrong for the transient principle : <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean TransientManagerBeginAddDraw() const;
-  //! Activates animation mode. <br>
-//!      When the animation mode is activated in the view, <br>
-//!      all Graphic3d_Structure are stored in a graphic object. <br>
-  Standard_EXPORT     void SetAnimationModeOn() ;
-  //! Deactivates the animation mode. <br>
-  Standard_EXPORT     void SetAnimationModeOff() ;
-  //! Returns the activity of the animation mode. <br>
-  Standard_EXPORT     Standard_Boolean AnimationModeIsOn() const;
-  //! Enable/Disable animation/degeneration mode <br>
-  Standard_EXPORT     void SetAnimationMode(const Standard_Boolean anAnimationFlag = Standard_True,const Standard_Boolean aDegenerationFlag = Standard_False) ;
-  //! Returns the animation and degenerate status. <br>
-  Standard_EXPORT     Standard_Boolean AnimationMode(Standard_Boolean& isDegenerate) const;
-  //! Activates degenerate mode. <br>
-//!      When the degenerate mode is activated in the view, <br>
-//!      all Graphic3d_Structure with the type TOS_COMPUTED <br>
-//!      displayed in this view are not computed. <br>
-//!  Warning: Obsolete method , use SetComputedMode() <br>
-  Standard_EXPORT     void SetDegenerateModeOn() ;
-  //! Deactivates the degenerate mode. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: if the computed mode has been disabled in the <br>
-//!          viewer the mode will remain degenerated. <br>
-//!  Warning: Obsolete method , use SetComputedMode() <br>
-  Standard_EXPORT     void SetDegenerateModeOff() ;
-  //! Returns the activity of the degenerate mode. <br>
-  Standard_EXPORT     Standard_Boolean DegenerateModeIsOn() const;
   //! Switches computed HLR mode in the view <br>
   Standard_EXPORT     void SetComputedMode(const Standard_Boolean aMode) ;
   //! Returns the computed HLR mode state <br>
@@ -873,32 +851,11 @@ public:
   //! Defines or Updates the activity of the <br>
 //!          grid in <me> <br>
   Standard_EXPORT     void SetGridActivity(const Standard_Boolean aFlag) ;
-  //! Animates the view <me> <br>
-//!          Returns the number of images per second <br>
-//!          if <AnimationMode> is Standard_True, the animation mode <br>
-//!          is activated. <br>
-  Standard_EXPORT     Standard_Real Tumble(const Standard_Integer NbImages = 314,const Standard_Boolean AnimationMode = Standard_False) ;
-  //! dump the view <br>
-  Standard_EXPORT     void ScreenCopy(const Handle(PlotMgt_PlotterDriver)& aPlotterDriver,const Standard_Boolean fWhiteBackground = Standard_True,const Quantity_Factor aScale = 1.0) ;
   //! dump the full contents of the view at the same <br>
 //!          scale in the file <theFile>. The file name <br>
 //!          extension must be one of ".png",".bmp",".jpg",".gif". <br>
 //!          Returns FALSE when the dump has failed <br>
   Standard_EXPORT     Standard_Boolean Dump(const Standard_CString theFile,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB) ;
-  //! dump the full contents of the view with a <br>
-//!          different scale according  to the required sheet <br>
-//!          paper size (format) and the ratio <br>
-//!          width/height of the view. <br>
-//!          and returns FALSE when the dump has failed <br>
-//!  Warning : the file name extension must be one of <br>
-//!      ".png",".bmp",".jpg",".gif" <br>
-//!       but make becarefull about the time to dump and <br>
-//!       resulting file size especially for the A0 format. <br>
-//!       NOTE that you can use after any standard system utility <br>
-//!       for editing or sending the image file to a laser printer. <br>
-//!       (i.e: Microsoft Photo Editor on Windows system <br>
-//!        or Image Viewer on SUN system) <br>
-  Standard_EXPORT     Standard_Boolean Dump(const Standard_CString theFile,const Aspect_FormatOfSheetPaper theFormat,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB) ;
   //! print the contents of the view to printer with preview. <br>
 //! <hPrnDC> : If you have already an PrinterDeviceContext (HDC), <br>
 //! then you can pass it to the print routines. <br>
@@ -977,15 +934,14 @@ friend   //! Deactivates a particular view in the Viewer. <br>
 
 protected:
 
-  //! Initialises the view. <br>
-  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
-  //! Initialises the view by copying. <br>
-  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+  
+  Standard_EXPORT     void ImmediateUpdate() const;
 
 V3d_TypeOfView MyType;
 Handle_Visual3d_View MyView;
 Visual3d_ViewMapping MyViewMapping;
 V3d_TypeOfProjectionModel MyProjModel;
+Standard_Boolean myImmediateUpdate;
 
 
 private: 
@@ -1052,7 +1008,6 @@ Handle_V3d_LayerMgr MyLayerMgr;
 TColStd_Array2OfReal MyTrsf;
 Handle_Graphic3d_Structure MyGridEchoStructure;
 Handle_Graphic3d_Group MyGridEchoGroup;
-Standard_Integer MyAnimationFlags;
 Standard_Boolean MyTransparencyFlag;
 
 

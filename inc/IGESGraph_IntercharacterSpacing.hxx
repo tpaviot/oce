@@ -29,6 +29,9 @@
 
 //! defines IGESIntercharacterSpacing, Type <406> Form <18> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Specifies the gap between letters when fixed-pitch <br>
+//!          spacing is used <br>
 class IGESGraph_IntercharacterSpacing : public IGESData_IGESEntity {
 
 public:

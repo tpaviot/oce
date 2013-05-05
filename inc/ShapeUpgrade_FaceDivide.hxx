@@ -51,6 +51,15 @@ class TopoDS_Shape;
 //!            supporting surface) according to splitting criteria. <br>
 //!  * The domain of the face to divide is defined by the PCurves <br>
 //!    of the wires on the Face. <br>
+//! <br>
+//!  * all the PCurves are supposed to be defined (in the parametric <br>
+//!     space of the supporting surface). <br>
+//! <br>
+//!  The result is available after the call to the Build method. <br>
+//!  It is a Shell containing all the resulting Faces. <br>
+//! <br>
+//!  All the modifications made during splitting are recorded in the <br>
+//!  external context (ShapeBuild_ReShape). <br>
 class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 
 public:

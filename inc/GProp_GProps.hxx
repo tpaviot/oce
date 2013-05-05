@@ -68,6 +68,45 @@ class GProp_PrincipalProps;
 //!    . the principal moments, <br>
 //!    . the principal axis of inertia, <br>
 //!    . the principal radius of gyration, <br>
+//! <br>
+//! <br>
+//! <br>
+//!  Example of utilisation in a simplified C++ implementation : <br>
+//! <br>
+//!    //declares the GProps, the point (0.0, 0.0, 0.0) of the <br>
+//!    //absolute cartesian coordinate system is used as <br>
+//!    //default reference point to compute the centre of mass <br>
+//!    GProp_GProps System (); <br>
+//! <br>
+//!    //computes the inertia of a 3d curve <br>
+//!    Your_CGProps Component1 (curve, ....); <br>
+//! <br>
+//!    //computes the inertia of surfaces <br>
+//!    Your_SGprops Component2 (surface1, ....); <br>
+//!    Your_SGprops Component3 (surface2,....); <br>
+//! <br>
+//!    //composes the global properties of components 1, 2, 3 <br>
+//!    //a density can be associated with the components, the <br>
+//!    //density can be defaulted to 1. <br>
+//!    Real Density1 = 2.0; <br>
+//!    Real Density2 = 3.0; <br>
+//!    System.Add (Component1, Density1); <br>
+//!    System.Add (Component2, Density2); <br>
+//!    System.Add (Component3); <br>
+//! <br>
+//!    //returns the centre of mass of the system in the <br>
+//!    //absolute cartesian coordinate system <br>
+//!    gp_Pnt G = System.CentreOfMass (); <br>
+//! <br>
+//!    //computes the principales inertia of the system <br>
+//!    GProp_PrincipalProps Pp  = System.PrincipalProperties(); <br>
+//! <br>
+//!    //returns the principal moments and radius of gyration <br>
+//!    Real Ixx, Iyy, Izz, Rxx, Ryy, Rzz; <br>
+//!    Pp.Moments (Ixx, Iyy, Izz); <br>
+//!    Pp.RadiusOfGyration (Ixx, Iyy, Izz); <br>
+//! <br>
+//! <br>
 class GProp_GProps  {
 public:
 

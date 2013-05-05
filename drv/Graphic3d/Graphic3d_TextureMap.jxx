@@ -1,5 +1,5 @@
-#ifndef _Graphic3d_StructureManager_HeaderFile
-#include <Graphic3d_StructureManager.hxx>
+#ifndef _TCollection_AsciiString_HeaderFile
+#include <TCollection_AsciiString.hxx>
 #endif
 #ifndef _Graphic3d_TextureMap_HeaderFile
 #include <Graphic3d_TextureMap.hxx>

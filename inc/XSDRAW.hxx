@@ -87,7 +87,7 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Changes the name under which a command of xstep is known by <br>
+  //! Takes variables to/from the DRAW session <br>//! Implements ProgressIndicator for DRAW <br>//! Changes the name under which a command of xstep is known by <br>
 //!           Draw. This allows to avoid collisions <br>
 //!           To be called before LoadDraw or any other xstep initialisation <br>
   Standard_EXPORT   static  void ChangeCommand(const Standard_CString oldname,const Standard_CString newname) ;

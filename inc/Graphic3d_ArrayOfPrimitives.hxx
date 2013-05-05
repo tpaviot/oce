@@ -34,6 +34,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
+#endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
@@ -55,6 +58,14 @@ class gp_Pnt2d;
 //!      So the array datas exist only one time and the use <br>
 //!      of SetXxxxxx() methods enable to change dynamically <br>
 //!      the aspect of this primitive. <br>
+//! <br>
+//!      Advantages are : <br>
+//!      1) Decrease strongly the loading time. <br>
+//!      2) Decrease strongly the display time using optimized Opengl <br>
+//!         primitives. <br>
+//!      3) Enable to change dynamically the components of the primitive <br>
+//!         (vertice,normal,color,texture coordinates). <br>
+//!      4) Add true triangle and quadrangle strips or fans capabilities. <br>
 class Graphic3d_ArrayOfPrimitives : public MMgt_TShared {
 
 public:
@@ -67,10 +78,13 @@ public:
 }
   //! Adds a vertice in the array. <br>
 //! returns the actual vertex number. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const gp_Pnt& aVertice) ;
+        Standard_Integer AddVertex(const gp_Pnt& aVertice) ;
   //! Adds a vertice in the array. <br>
 //! returns the actual vertex number. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
+        Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
+  //! Adds a vertice in the array. <br>
+//! returns the actual vertex number. <br>
+  Standard_EXPORT     Standard_Integer AddVertex(const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z) ;
   //! Adds a vertice and vertex color in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //!  Warning: <aColor> is ignored when the <hasVColors> <br>
@@ -88,12 +102,17 @@ public:
 //! returns the actual vertex number. <br>
 //!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Dir& aNormal) ;
+        Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Dir& aNormal) ;
   //! Adds a vertice and vertex normal in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ) ;
+        Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ) ;
+  //! Adds a vertice and vertex normal in the vertex array. <br>
+//! returns the actual vertex number. <br>
+//!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
+//! constructor parameter is FALSE. <br>
+  Standard_EXPORT     Standard_Integer AddVertex(const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal NX,const Standard_ShortReal NY,const Standard_ShortReal NZ) ;
   //! Adds a vertice,vertex normal and color in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
@@ -115,26 +134,38 @@ public:
 //! returns the actual vertex number. <br>
 //! <aTexel> is ignored when the <hasVTexels> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Pnt2d& aTexel) ;
+        Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Pnt2d& aTexel) ;
   //! Adds a vertice and vertex texture coordinates in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //! <aTexel> is ignored when the <hasVTexels> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real TX,const Standard_Real TY) ;
+        Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real TX,const Standard_Real TY) ;
+  //! Adds a vertice and vertex texture coordinates in the vertex array. <br>
+//! returns the actual vertex number. <br>
+//! <aTexel> is ignored when the <hasVTexels> <br>
+//! constructor parameter is FALSE. <br>
+  Standard_EXPORT     Standard_Integer AddVertex(const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal TX,const Standard_ShortReal TY) ;
   //! Adds a vertice,vertex normal and texture in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
 //! constructor parameter is FALSE. <br>
 //! <aTexel> is ignored when the <hasVTexels> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Dir& aNormal,const gp_Pnt2d& aTexel) ;
+        Standard_Integer AddVertex(const gp_Pnt& aVertice,const gp_Dir& aNormal,const gp_Pnt2d& aTexel) ;
   //! Adds a vertice,vertex normal and texture in the vertex array. <br>
 //! returns the actual vertex number. <br>
 //!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
 //! constructor parameter is FALSE. <br>
 //! <aTexel> is ignored when the <hasVTexels> <br>
 //! constructor parameter is FALSE. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ,const Standard_Real TX,const Standard_Real TY) ;
+        Standard_Integer AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ,const Standard_Real TX,const Standard_Real TY) ;
+  //! Adds a vertice,vertex normal and texture in the vertex array. <br>
+//! returns the actual vertex number. <br>
+//!  Warning: <aNormal> is ignored when the <hasVNormals> <br>
+//! constructor parameter is FALSE. <br>
+//! <aTexel> is ignored when the <hasVTexels> <br>
+//! constructor parameter is FALSE. <br>
+  Standard_EXPORT     Standard_Integer AddVertex(const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z,const Standard_ShortReal NX,const Standard_ShortReal NY,const Standard_ShortReal NZ,const Standard_ShortReal TX,const Standard_ShortReal TY) ;
   //! Adds a bound of length <edgeNumber> in the bound array <br>
 //! returns the actual bounds number. <br>
   Standard_EXPORT     Standard_Integer AddBound(const Standard_Integer edgeNumber) ;
@@ -174,7 +205,7 @@ public:
   //! Change the vertice of rank <anIndex> in the array. <br>
   Standard_EXPORT     void SetVertice(const Standard_Integer anIndex,const gp_Pnt& aVertice) ;
   //! Change the vertice of rank <anIndex> in the array. <br>
-        void SetVertice(const Standard_Integer anIndex,const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
+        void SetVertice(const Standard_Integer anIndex,const Standard_ShortReal X,const Standard_ShortReal Y,const Standard_ShortReal Z) ;
   //! Change the vertex color of rank <anIndex> in the array. <br>
   Standard_EXPORT     void SetVertexColor(const Standard_Integer anIndex,const Quantity_Color& aColor) ;
   //! Change the vertex color of rank <anIndex> in the array. <br>
@@ -262,18 +293,6 @@ public:
   //! Returns the number of total items according to <br>
 //!  the array type. <br>
   Standard_EXPORT     Standard_Integer ItemNumber() const;
-  //! Enable to use the arrays of primitives <br>
-//!  Warning: Updates the current value of the environment symbol <br>
-//!  CSF_USE_ARRAY_OF_PRIMITIVES <br>
-  Standard_EXPORT   static  void Enable() ;
-  //! Disable to use the arrays of primitives <br>
-//!  Warning: Updates the current value of the environment symbol <br>
-//!  CSF_USE_ARRAY_OF_PRIMITIVES <br>
-  Standard_EXPORT   static  void Disable() ;
-  //! Returns TRUE when the arrays are enable to use. <br>
-//!  Warning: The initial value can be defined seting the symbol <br>
-//!  CSF_USE_ARRAY_OF_PRIMITIVES to "Yes" or "No" <br>
-  Standard_EXPORT   static  Standard_Boolean IsEnable() ;
   //! Returns TRUE only when the contains of this array is <br>
 //! available. <br>
   Standard_EXPORT     Standard_Boolean IsValid() ;

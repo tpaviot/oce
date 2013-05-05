@@ -34,9 +34,6 @@
 #ifndef _Graphic3d_ListOfPArray_HeaderFile
 #include <Graphic3d_ListOfPArray.hxx>
 #endif
-#ifndef _Graphic3d_ListIteratorOfListOfPArray_HeaderFile
-#include <Graphic3d_ListIteratorOfListOfPArray.hxx>
-#endif
 #ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
 #endif
@@ -73,8 +70,8 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-#ifndef _Graphic3d_TypeOfPolygon_HeaderFile
-#include <Graphic3d_TypeOfPolygon.hxx>
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
 #endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
@@ -107,10 +104,7 @@ class Graphic3d_AspectLine3d;
 class Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
-class Graphic3d_Vertex;
 class Graphic3d_Array1OfVertex;
-class TColStd_Array1OfInteger;
-class Graphic3d_Array1OfVertexC;
 class TCollection_ExtendedString;
 class Graphic3d_ArrayOfPrimitives;
 
@@ -120,6 +114,29 @@ class Graphic3d_ArrayOfPrimitives;
 //!     A group contains the primitives and attributes <br>
 //!     for which the range is limited to this group. <br>
 //!     The primitives of a group can be globally suppressed. <br>
+//! <br>
+//!      There are two main group usage models: <br>
+//! <br>
+//!        1) Non-modifiable, or unbounded, group ('black box'). <br>
+//!           Developers can repeat a sequence of <br>
+//!           SetPrimitivesAspect() with AddPrimitiveArray() methods arbitrary number of times <br>
+//!           to define arbitrary number of primitive "blocks" each having individual apect values. <br>
+//!           Any modification of such a group is forbidden, as aspects and primitives are mixed <br>
+//!           in memory without any high-level logical structure, and any modification is very likely to result <br>
+//!           in corruption of the group internal data. <br>
+//!           It is necessary to recreate such a group as a whole when some attribute should be changed. <br>
+//!           (for example, in terms of AIS it is necessary to re-Compute() the whole presentation each time). <br>
+//!        2) Bounded group. Developers should specify the necessary group aspects with help of <br>
+//!           SetGroupPrimitivesAspect() and then add primitives to the group. <br>
+//!           Such a group have simplified organization in memory (a single block of attributes <br>
+//!           followed by a block of primitives) and therefore it can be modified, if it is necessary to <br>
+//!           change parameters of some aspect that has already been set, using methods: <br>
+//!           IsGroupPrimitivesAspectSet() to detect which aspect was set for primitives; <br>
+//!           GroupPrimitivesAspect() to read current aspect values <br>
+//!           and SetGroupPrimitivesAspect() to set new values. <br>
+//! <br>
+//!        Developers are strongly recommended to take all the above into account when filling Graphic3d_Group <br>
+//!        with aspects and primitives and choose the group usage model beforehand out of application needs. <br>
 class Graphic3d_Group : public MMgt_TShared {
 
 public:
@@ -183,25 +200,6 @@ public:
   //! Creates a group of markers defined by a table of <br>
 //!     vertices. <br>
   Standard_EXPORT     void MarkerSet(const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-  Standard_EXPORT     void Polygon(const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a set of face drawn <br>
-//!      using the current fill attributes (AspectFillArea3d)) <br>
-//!      The first and last points are not duplicates. <br>
-  Standard_EXPORT     void PolygonSet(const TColStd_Array1OfInteger& Bounds,const Graphic3d_Array1OfVertex& ListVertex,const Graphic3d_TypeOfPolygon AType = Graphic3d_TOP_CONVEX,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a line drawn <br>
-//!      using the current line attributes (AspectLine) <br>
-  Standard_EXPORT     void Polyline(const Graphic3d_Vertex& APT1,const Graphic3d_Vertex& APT2,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a line drawn <br>
-//!      using the current line attributes (AspectLine) <br>
-  Standard_EXPORT     void Polyline(const Graphic3d_Array1OfVertex& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Links up points to create a line drawn <br>
-//!      using the current line attributes (AspectLine) <br>
-//!      except for the colour which is defined <br>
-//!      for each vertex. <br>
-  Standard_EXPORT     void Polyline(const Graphic3d_Array1OfVertexC& ListVertex,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Creates the string <AText> at position <APoint>. <br>
 //!      The 3D point of attachment is projected. The text is <br>
 //!      written in the plane of projection. <br>
@@ -254,25 +252,10 @@ public:
   Standard_EXPORT     void Text(const TCollection_ExtendedString& AText,const Graphic3d_Vertex& APoint,const Standard_Real AHeight,const Standard_Boolean EvalMinMax = Standard_True) ;
   //! Adds an array of primitives for display <br>
   Standard_EXPORT     void AddPrimitiveArray(const Handle(Graphic3d_ArrayOfPrimitives)& elem,const Standard_Boolean EvalMinMax = Standard_True) ;
-  //! Remove the array of primitives of rank <aRank> <br>
-  Standard_EXPORT     void RemovePrimitiveArray(const Standard_Integer aRank) ;
-  //! Remove all array of primitives <br>
-  Standard_EXPORT     void RemovePrimitiveArrays() ;
   //! Creates an UserDraw primitive <br>
 //!  Category: Methods to create UserDraw <br>
 //!  Warning: Raises GroupDefinitionError if ... <br>
   Standard_EXPORT     void UserDraw(const Standard_Address AnObject,const Standard_Boolean EvalMinMax = Standard_True,const Standard_Boolean ContainsFacet = Standard_False) ;
-  //! Returns the number of primitive array added in this group <br>
-  Standard_EXPORT     Standard_Integer ArrayNumber() const;
-  //! Initialize the array list iterator. <br>
-  Standard_EXPORT     void InitDefinedArray() ;
-  //! Increments the array list iterator. <br>
-  Standard_EXPORT     void NextDefinedArray() ;
-  //! Returns TRUE if more array exists in the list. <br>
-  Standard_EXPORT     Standard_Boolean MoreDefinedArray() ;
-  //! Returns the current array of primitives according <br>
-//! to the array list iterator value. <br>
-  Standard_EXPORT     Handle_Graphic3d_ArrayOfPrimitives DefinedArray() const;
   //! Returns TRUE if aspect is set for the group. <br>
   Standard_EXPORT     Standard_Boolean IsGroupPrimitivesAspectSet(const Graphic3d_GroupAspect theAspect) const;
   //! Returns the context of all the primitives of the group. <br>
@@ -294,10 +277,6 @@ public:
   Standard_EXPORT     void MinMaxValues(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
   //! Returns the structure containing the group <me>. <br>
   Standard_EXPORT     Handle_Graphic3d_Structure Structure() const;
-  
-  Standard_EXPORT     void BeginPrimitives() ;
-  
-  Standard_EXPORT     void EndPrimitives() ;
 
 friend   //! Suppress in the structure <me>, the group <AGroup>. <br>
 //!	    It will be erased at the next screen update. <br>
@@ -313,8 +292,6 @@ protected:
 
 private: 
 
-  //! Returns the position of the group in the structure. <br>
-  Standard_EXPORT     void Labels(Standard_Integer& LB,Standard_Integer& LE) const;
   //! Returns the extreme coordinates found in the group. <br>
   Standard_EXPORT     void MinMaxCoord(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) const;
   //! Calls the Update method of the StructureManager which <br>
@@ -327,7 +304,6 @@ Graphic3d_CBitFields4 MyCBitFields;
 Standard_Address MyPtrStructure;
 Graphic3d_CBounds MyBounds;
 Graphic3d_ListOfPArray MyListOfPArray;
-Graphic3d_ListIteratorOfListOfPArray MyListOfPArrayIterator;
 Handle_TColStd_HArray1OfByte MyMarkArray;
 Standard_Integer MyMarkWidth;
 Standard_Integer MyMarkHeight;

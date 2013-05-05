@@ -1,6 +1,0 @@
-#ifndef _gp_Pnt_HeaderFile
-#include <gp_Pnt.hxx>
-#endif
-#ifndef _BOPTools_PointBetween_HeaderFile
-#include <BOPTools_PointBetween.hxx>
-#endif

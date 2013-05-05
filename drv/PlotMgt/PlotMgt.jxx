@@ -1,9 +1,0 @@
-#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
-#include <TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
-#include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _PlotMgt_HeaderFile
-#include <PlotMgt.hxx>
-#endif

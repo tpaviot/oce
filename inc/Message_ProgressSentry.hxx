@@ -37,6 +37,14 @@ class TCollection_HAsciiString;
 
 //! This class is a tool allowing to manage opening/closing <br>
 //!          scopes in the ProgressIndicator in convenient and safe way. <br>
+//! <br>
+//!          Its main features are: <br>
+//!          - Set all parameters for the current scale on the given <br>
+//!            ProgressIndicator and open a new scope at one line <br>
+//!          - Iterator-like interface to opening next scopes and <br>
+//!            check for user break <br>
+//!          - Automatic scope closing in destructor <br>
+//!          - Safe for NULL ProgressIndicator (just does nothing) <br>
 class Message_ProgressSentry  {
 public:
 

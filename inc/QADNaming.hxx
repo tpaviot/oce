@@ -52,7 +52,9 @@ public:
   Standard_EXPORT   static  TopoDS_Shape CurrentShape(const Standard_CString ShapeEntry,const Handle(TDF_Data)& Data) ;
   
   Standard_EXPORT   static  void GetShape(const Standard_CString ShapeEntry,const Handle(TDF_Data)& Data,TopTools_ListOfShape& Shapes) ;
-  
+  //! Status = 0  Not  found, <br>
+//!          Status = 1  One  shape, <br>
+//!          Status = 2  More than one shape. <br>
   Standard_EXPORT   static  TCollection_AsciiString GetEntry(const TopoDS_Shape& Shape,const Handle(TDF_Data)& Data,Standard_Integer& Status) ;
   //! returns label by first two arguments (df and entry string) <br>
   Standard_EXPORT   static  Standard_Boolean Entry(const Standard_Address theArguments,TDF_Label& theLabel) ;

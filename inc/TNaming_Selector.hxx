@@ -57,6 +57,14 @@ class TDF_AttributeMap;
 //!           (method IsIdentified)   , this   Naming attribute <br>
 //!            contains  the reference (Identity  code)  to the <br>
 //!          argument shape. <br>
+//! <br>
+//!           * The <Solve> method  update the current value of <br>
+//!          the NamedShape, according to the <Naming> attribute. <br>
+//!            A boolean status  is    returned to say  if  the <br>
+//!          algorithm succeed   or not.  To read   the current <br>
+//!           value    of the selected    Named  Shape  use the <br>
+//!           TNaming_Tool::GetShape    method,    as  for  any <br>
+//!          NamedShape attribute. <br>
 class TNaming_Selector  {
 public:
 

@@ -55,6 +55,12 @@ public:
   //! Instantiates SharedMemory object with parameters. <br>
 //!          A name to make sure shared memory is unique and a size in <br>
 //!          bytes for the size of shared memory. <br>
+//! <br>
+//!          Raises ConstructionError when the name contains characters <br>
+//!          not in range of ' '...'~'. <br>
+//!          Raises ProgramError when the size given is negative or null. <br>
+//!          This is for a server process. <br>
+//! <br>
   Standard_EXPORT   OSD_SharedMemory(const TCollection_AsciiString& Name,const Standard_Integer size);
   //! Creates a shared memory in the system <br>
 //!          This is for a server process. <br>

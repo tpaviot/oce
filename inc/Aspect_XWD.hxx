@@ -18,7 +18,7 @@
 #ifndef __Aspect_WNTXWD_HXX
 # define __Aspect_WNTXWD_HXX
 
-# ifndef WNT
+#if !defined(_WIN32) && !defined(__WIN32__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
 #  include <X11/XWDFile.h>
 #  include <X11/X.h>
 # else

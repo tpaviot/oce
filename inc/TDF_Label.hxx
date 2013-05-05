@@ -74,7 +74,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //! Constructs an empty label object. <br>
-  Standard_EXPORT   TDF_Label();
+      TDF_Label();
   //! Nullifies the label. <br>
 //! <br>
         void Nullify() ;
@@ -254,7 +254,7 @@ protected:
 private:
 
   //! Reserved to the friends. <br>
-  Standard_EXPORT   TDF_Label(const TDF_LabelNodePtr& aNode);
+      TDF_Label(const TDF_LabelNodePtr& aNode);
   //! Adds an Attribute to <toNode>. Raises if there is <br>
 //!          already one. <br>
   Standard_EXPORT     void AddToNode(const TDF_LabelNodePtr& toNode,const Handle(TDF_Attribute)& anAttribute) const;

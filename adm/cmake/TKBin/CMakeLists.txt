@@ -8,16 +8,16 @@ SET(TOOLKIT_MODULES
 	BinTools
 )
 SET(TOOLKIT_DEPENDS
+	TKBRep
 	TKMath
 	TKernel
-	TKBinL
-	TKLCAF
 	TKG2d
-	TKCAF
-	TKV3d
-	TKBRep
 	TKG3d
+	TKCAF
 	TKCDF
+	TKLCAF
+	TKV3d
+	TKBinL
 )
 
 INCLUDE(../BuildToolkit.cmake)

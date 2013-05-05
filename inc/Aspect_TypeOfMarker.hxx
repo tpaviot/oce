@@ -6,7 +6,23 @@
 #ifndef _Aspect_TypeOfMarker_HeaderFile
 #define _Aspect_TypeOfMarker_HeaderFile
 
-//! Define the display type of the text. <br>
+//! Definition of types of markers <br>
+//! <br>
+//!          TOM_POINT   point   . <br>
+//!          TOM_PLUS    plus    + <br>
+//!          TOM_STAR    star    * <br>
+//!          TOM_O       circle  O <br>
+//!          TOM_X       cross   x <br>
+//!          TOM_O_POINT a point in a circle <br>
+//!          TOM_O_PLUS  a plus in a circle <br>
+//!          TOM_O_STAR  a star in a circle <br>
+//!          TOM_O_X     a cross in a circle <br>
+//!          TOM_BALL    a ball with 1 color and different saturations <br>
+//!          TOM_RING1   a large ring <br>
+//!          TOM_RING2   a medium ring <br>
+//!          TOM_RING3   a small ring <br>
+//!          TOM_USERDEFINED     defined by Users <br>
+//! <br>
 enum Aspect_TypeOfMarker {
 Aspect_TOM_POINT,
 Aspect_TOM_PLUS,

@@ -22,9 +22,6 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
-#include <IntPolyh_ArrayOfCouples.hxx>
-#endif
 #ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
 #include <IntPolyh_ArrayOfSectionLines.hxx>
 #endif
@@ -39,6 +36,9 @@
 #endif
 #ifndef _IntPolyh_PMaillageAffinage_HeaderFile
 #include <IntPolyh_PMaillageAffinage.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
+#include <IntPolyh_ArrayOfCouples.hxx>
 #endif
 class Adaptor3d_HSurface;
 class TColStd_Array1OfReal;

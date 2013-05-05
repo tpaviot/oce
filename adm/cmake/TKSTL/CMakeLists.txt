@@ -7,12 +7,12 @@ SET(TOOLKIT_MODULES
 	RWStl
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
 	TKernel
-	TKG2d
-	TKMesh
+	TKMath
 	TKBRep
+	TKG2d
 	TKG3d
+	TKMesh
 	TKTopAlgo
 )
 

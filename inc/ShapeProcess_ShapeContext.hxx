@@ -106,6 +106,13 @@ public:
   //! Records modifications and resets result accordingly <br>
 //!          NOTE: modification of resulting shape should be explicitly <br>
 //!          defined in the maps along with modifications of subshapes <br>
+//! <br>
+//!          In the last function, sh is the shape on which Modifier <br>
+//!          was run. It can be different from the whole shape, <br>
+//!          but in that case result as a whole should be reset later <br>
+//!          either by call to SetResult(), or by another call to <br>
+//!          RecordModification() which contains mapping of current <br>
+//!          result to a new one explicitly <br>
   Standard_EXPORT     void RecordModification(const TopoDS_Shape& sh,const BRepTools_Modifier& repl) ;
   //! Record a message for shape S <br>
 //!          Shape S should be one of subshapes of original shape <br>

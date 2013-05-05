@@ -46,14 +46,14 @@
 #ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #include <IntSurf_ListOfPntOn2S.hxx>
 #endif
-#ifndef _Handle_IntTools_Context_HeaderFile
-#include <Handle_IntTools_Context.hxx>
+#ifndef _Handle_BOPInt_Context_HeaderFile
+#include <Handle_BOPInt_Context.hxx>
 #endif
 #ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
 #endif
 class GeomAdaptor_HSurface;
-class IntTools_Context;
+class BOPInt_Context;
 class StdFail_NotDone;
 class TopoDS_Face;
 class IntTools_SequenceOfCurves;
@@ -71,37 +71,47 @@ public:
 
   
 //! Empty constructor. <br>
+//! <br>
   Standard_EXPORT   IntTools_FaceFace();
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetParameters(const Standard_Boolean ApproxCurves,const Standard_Boolean ComputeCurveOnS1,const Standard_Boolean ComputeCurveOnS2,const Standard_Real ApproximationTolerance) ;
   
 //! Intersects underliing surfaces of F1 and F2 <br>
 //! Use sum of tolerance of F1 and F2 as intersection <br>
 //! criteria <br>
+//! <br>
   Standard_EXPORT     void Perform(const TopoDS_Face& F1,const TopoDS_Face& F2) ;
   
 //! Returns True if the intersection was successful <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   
 //! Returns sequence of 3d curves as result of intersection <br>
+//! <br>
   Standard_EXPORT    const IntTools_SequenceOfCurves& Lines() const;
   
 //! Returns sequence of 3d curves as result of intersection <br>
+//! <br>
   Standard_EXPORT    const IntTools_SequenceOfPntOn2Faces& Points() const;
   
 //! Returns tolerance reached during approximation. <br>
 //! If approximation was not done, returns zero. <br>
+//! <br>
   Standard_EXPORT     Standard_Real TolReached3d() const;
   
 //! Returns tolerance reached during approximation. <br>
 //! If approximation was not done, returns zero. <br>
+//! <br>
   Standard_EXPORT     Standard_Real TolReached2d() const;
   
 //! Returns first of processed faces <br>
+//! <br>
   Standard_EXPORT    const TopoDS_Face& Face1() const;
   
 //! Returns second of processed faces <br>
+//! <br>
   Standard_EXPORT    const TopoDS_Face& Face2() const;
   
 //! Returns True if faces are tangent <br>
@@ -118,11 +128,11 @@ public:
   Standard_EXPORT     void SetList(IntSurf_ListOfPntOn2S& ListOfPnts) ;
   
 //! Sets the intersecton context <br>
-  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& aContext) ;
+  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& aContext) ;
   
 //! Gets the intersecton context <br>
 //! <br>
-  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
+  Standard_EXPORT    const Handle_BOPInt_Context& Context() const;
 
 
 
@@ -160,7 +170,7 @@ TopoDS_Face myFace1;
 TopoDS_Face myFace2;
 IntTools_SequenceOfPntOn2Faces myPnts;
 IntSurf_ListOfPntOn2S myListOfPnts;
-Handle_IntTools_Context myContext;
+Handle_BOPInt_Context myContext;
 
 
 };

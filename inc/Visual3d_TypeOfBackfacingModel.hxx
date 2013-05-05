@@ -6,7 +6,11 @@
 #ifndef _Visual3d_TypeOfBackfacingModel_HeaderFile
 #define _Visual3d_TypeOfBackfacingModel_HeaderFile
 
-//! Modes of visualisation of objects in a view <br>
+//! Modes of display of back faces in the view <br>
+//! <br>
+//!            TOBM_AUTOMATIC graphic's structure setting is in use <br>
+//!            TOBM_FORCE     force display of back faces <br>
+//!            TOBM_DISABLE   disable display of back faces <br>
 enum Visual3d_TypeOfBackfacingModel {
 Visual3d_TOBM_AUTOMATIC,
 Visual3d_TOBM_FORCE,

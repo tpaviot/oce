@@ -7,7 +7,8 @@
 #define _AdvApp2Var_CriterionType_HeaderFile
 
 //! influency of the criterion on cutting process <br>//! cutting when criterion is not satisfied <br>
-//!          desactivation of the compute of the error max <br>
+//!          desactivation of the compute of the error max <br>//! cutting when error max is not good or if error <br>
+//!          max is good and criterion is not satisfied <br>
 enum AdvApp2Var_CriterionType {
 AdvApp2Var_Absolute,
 AdvApp2Var_Relative

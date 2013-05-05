@@ -7,7 +7,6 @@ SET(TOOLKIT_MODULES
 	Adaptor2d
 	Geom2dLProp
 	Geom2dAdaptor
-	TopAbs
 	GProp
 )
 SET(TOOLKIT_DEPENDS

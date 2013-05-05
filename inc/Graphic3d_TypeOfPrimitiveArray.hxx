@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfPrimitiveArray_HeaderFile
 #define _Graphic3d_TypeOfPrimitiveArray_HeaderFile
 
-//! The type of primitive in a group in a structure. <br>
+//! The type of primitive array in a group in a structure. <br>
 enum Graphic3d_TypeOfPrimitiveArray {
 Graphic3d_TOPA_UNDEFINED,
 Graphic3d_TOPA_POINTS,

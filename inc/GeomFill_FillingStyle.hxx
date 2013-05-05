@@ -6,7 +6,11 @@
 #ifndef _GeomFill_FillingStyle_HeaderFile
 #define _GeomFill_FillingStyle_HeaderFile
 
-
+//! Defines the three filling styles used in this package <br>
+//! -   GeomFill_Stretch - the style with the flattest patches <br>
+//! -   GeomFill_Coons - a rounded style of patch with <br>
+//!   less depth than those of Curved <br>
+//! -   GeomFill_Curved - the style with the most rounded patches. <br>
 enum GeomFill_FillingStyle {
 GeomFill_StretchStyle,
 GeomFill_CoonsStyle,

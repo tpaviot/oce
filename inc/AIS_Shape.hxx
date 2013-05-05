@@ -37,17 +37,14 @@
 #ifndef _AIS_KindOfInteractive_HeaderFile
 #include <AIS_KindOfInteractive.hxx>
 #endif
+#ifndef _Prs3d_TypeOfHLR_HeaderFile
+#include <Prs3d_TypeOfHLR.hxx>
+#endif
 #ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
 #endif
 #ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
@@ -73,8 +70,6 @@
 class TopoDS_Shape;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class Prs3d_Projector;
 class Geom_Transformation;
 class SelectMgr_Selection;
@@ -167,6 +162,10 @@ public:
 //! angle aPreviousAngle. If these values are not <br>
 //! already set, false is returned. <br>
   Standard_EXPORT     Standard_Boolean OwnHLRDeviationAngle(Standard_Real& anAngle,Standard_Real& aPreviousAngle) const;
+  //! Sets the type of HLR algorithm used by the shape <br>
+        void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR) ;
+  //! Gets the type of HLR algorithm <br>
+        Prs3d_TypeOfHLR TypeOfHLR() const;
   //! Sets the color aColor in the reconstructed <br>
 //! compound shape. Acts via the Drawer methods below on the appearance of: <br>
 //! -   free boundaries: <br>
@@ -242,8 +241,6 @@ protected:
 
   
   Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   
   Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
   

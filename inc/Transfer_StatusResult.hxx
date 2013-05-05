@@ -6,7 +6,7 @@
 #ifndef _Transfer_StatusResult_HeaderFile
 #define _Transfer_StatusResult_HeaderFile
 
-
+//! result status of transferring an entity (see Transcriptor) <br>
 enum Transfer_StatusResult {
 Transfer_StatusVoid,
 Transfer_StatusDefined,

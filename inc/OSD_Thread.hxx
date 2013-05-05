@@ -46,6 +46,9 @@ public:
   //! Empty constructor <br>
   Standard_EXPORT   OSD_Thread();
   //! Initialize the tool by the thread function <br>
+//! <br>
+//! Note: On Windows, you might have to take an address of the thread <br>
+//! function explicitly to pass it to this constructor without compiler error <br>
   Standard_EXPORT   OSD_Thread(const OSD_ThreadFunction& func);
   //! Copy constructor <br>
   Standard_EXPORT   OSD_Thread(const OSD_Thread& other);
@@ -66,6 +69,9 @@ public:
   Standard_EXPORT     void SetPriority(const Standard_Integer thePriority) ;
   //! Initialize the tool by the thread function. <br>
 //!          If the current thread handle is not null, nullifies it. <br>
+//! <br>
+//! Note: On Windows, you might have to take an address of the thread <br>
+//! function explicitly to pass it to this method without compiler error <br>
   Standard_EXPORT     void SetFunction(const OSD_ThreadFunction& func) ;
   //! Starts a thread with thread function given in constructor, <br>
 //!          passing the specified input data (as void *) to it. <br>
@@ -86,6 +92,13 @@ public:
   Standard_EXPORT     Standard_Boolean Wait() const;
   //! Wait till the thread finishes execution. <br>
 //!          Returns True if wait was successful, False in case of error. <br>
+//! <br>
+//!          If successful and \a result argument is provided, saves the pointer <br>
+//!          (void*) returned by the thread function in \a result. <br>
+//! <br>
+//!          Note however that it is advisable not to rely upon returned result <br>
+//!          value, as it is not always the value actually returned by the thread <br>
+//!          function. In addition, on Windows it is converted via DWORD. <br>
   Standard_EXPORT     Standard_Boolean Wait(Standard_Address& result) const;
   //! Waits for some time and if the thread is finished, <br>
 //!          it returns the result. <br>

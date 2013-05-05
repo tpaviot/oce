@@ -78,7 +78,7 @@ public:
 //!          by NbIterations. <br>
 //!          In this case, the solution is found when: <br>
 //!          abs(Xi - Xi-1) <= Tolerance for all unknowns. <br>
-  Standard_EXPORT   math_FunctionSetRoot(math_FunctionSetWithDerivatives& F,const math_Vector& StartingPoint,const math_Vector& Tolerance,const math_Vector& infBound,const math_Vector& supBound,const Standard_Integer NbIterations = 100);
+  Standard_EXPORT   math_FunctionSetRoot(math_FunctionSetWithDerivatives& F,const math_Vector& StartingPoint,const math_Vector& Tolerance,const math_Vector& infBound,const math_Vector& supBound,const Standard_Integer NbIterations = 100,const Standard_Boolean theStopOnDivergent = Standard_False);
   
   Standard_EXPORT   virtual  void Delete() ;
 Standard_EXPORT virtual ~math_FunctionSetRoot(){Delete();}
@@ -89,7 +89,7 @@ Standard_EXPORT virtual ~math_FunctionSetRoot(){Delete();}
 //! Warning <br>
 //! This method is called when computation of the solution is <br>
 //! not performed by the constructors. <br>
-  Standard_EXPORT     void Perform(math_FunctionSetWithDerivatives& F,const math_Vector& StartingPoint,const math_Vector& infBound,const math_Vector& supBound) ;
+  Standard_EXPORT     void Perform(math_FunctionSetWithDerivatives& F,const math_Vector& StartingPoint,const math_Vector& infBound,const math_Vector& supBound,const Standard_Boolean theStopOnDivergent = Standard_False) ;
   //! This routine is called at the end of each iteration <br>
 //!          to check if the solution was found. It can be redefined <br>
 //!          in a sub-class to implement a specific test to stop the <br>
@@ -138,6 +138,8 @@ Standard_EXPORT virtual ~math_FunctionSetRoot(){Delete();}
 //!          of the object. <br>
 //!          Is used to redefine the operator <<. <br>
   Standard_EXPORT     void Dump(Standard_OStream& o) const;
+  
+  Standard_EXPORT     Standard_Boolean IsDivergent() const;
 
 
 
@@ -175,6 +177,7 @@ math_Vector Temp1;
 math_Vector Temp2;
 math_Vector Temp3;
 math_Vector Temp4;
+Standard_Boolean myIsDivergent;
 
 
 };

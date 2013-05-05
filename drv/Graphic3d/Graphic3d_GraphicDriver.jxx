@@ -10,9 +10,6 @@
 #ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
 #ifndef _Graphic3d_Array1OfVertex_HeaderFile
 #include <Graphic3d_Array1OfVertex.hxx>
 #endif
@@ -21,12 +18,6 @@
 #endif
 #ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _AlienImage_AlienImage_HeaderFile
-#include <AlienImage_AlienImage.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
-#include <TColStd_HArray1OfReal.hxx>
 #endif
 #ifndef _Graphic3d_GraphicDriver_HeaderFile
 #include <Graphic3d_GraphicDriver.hxx>

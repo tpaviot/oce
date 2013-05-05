@@ -261,15 +261,38 @@ public:
   Standard_EXPORT   static  gp_Pnt Nearest(const TopoDS_Shape& aShape,const gp_Pnt& aPoint) ;
   
   Standard_EXPORT   static  gp_Pnt Farest(const TopoDS_Shape& aShape,const gp_Pnt& aPoint) ;
-  
+  //! Used by 2d Relation only <br>
+//!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
+//!          and the extremities if any <br>
+//!          Return TRUE if ok <br>
   Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge,Handle(Geom_Curve)& aCurve,gp_Pnt& FirstPnt,gp_Pnt& LastPnt) ;
-  
+  //! Used by 2d Relation only <br>
+//!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
+//!          and the extremities if any. <br>
+//!          If <aCurve> is not in the current plane, <extCurve> contains <br>
+//!          the not projected curve associated to <anEdge>. <br>
+//!          If <anEdge> is infinite, <isinfinite> = true and the 2 <br>
+//!          parameters <FirstPnt> and <LastPnt> have no signification. <br>
+//!          Return TRUE if ok <br>
   Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge,Handle(Geom_Curve)& aCurve,gp_Pnt& FirstPnt,gp_Pnt& LastPnt,Handle(Geom_Curve)& extCurve,Standard_Boolean& isinfinite,Standard_Boolean& isOnPlane,const Handle(Geom_Plane)& aPlane) ;
-  
+  //! Used by 2d Relation only <br>
+//!          Computes the 3d geometry of <anEdge> in the current WorkingPlane <br>
+//!          and the extremities if any <br>
+//!          Return TRUE if ok <br>
   Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge1,const TopoDS_Edge& anEdge2,Handle(Geom_Curve)& aCurve1,Handle(Geom_Curve)& aCurve2,gp_Pnt& FirstPnt1,gp_Pnt& LastPnt1,gp_Pnt& FirstPnt2,gp_Pnt& LastPnt2,const Handle(Geom_Plane)& aPlane) ;
-  
+  //! Used  by  2d Relation  only Computes  the  3d geometry <br>
+//!          of<anEdge1> and <anEdge2> in the current Plane and the <br>
+//!          extremities if any.   Return in ExtCurve  the 3d curve <br>
+//!          (not projected  in the  plane)  of the  first edge  if <br>
+//!          <indexExt> =1 or of the 2nd edge if <indexExt> = 2. If <br>
+//!          <indexExt> = 0, ExtCurve is Null.  if there is an edge <br>
+//!          external to the  plane,  <isinfinite> is true if  this <br>
+//!          edge is infinite.  So, the extremities of it are not <br>
+//!          significant.  Return TRUE if ok <br>
   Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Edge& anEdge1,const TopoDS_Edge& anEdge2,Standard_Integer& indexExt,Handle(Geom_Curve)& aCurve1,Handle(Geom_Curve)& aCurve2,gp_Pnt& FirstPnt1,gp_Pnt& LastPnt1,gp_Pnt& FirstPnt2,gp_Pnt& LastPnt2,Handle(Geom_Curve)& ExtCurve,Standard_Boolean& isinfinite1,Standard_Boolean& isinfinite2,const Handle(Geom_Plane)& aPlane) ;
-  
+  //! Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane <br>
+//!          and returns aCurve; <br>
+//!          Return TRUE if ok <br>
   Standard_EXPORT   static  Standard_Boolean ComputeGeomCurve(Handle(Geom_Curve)& aCurve,const Standard_Real first1,const Standard_Real last1,gp_Pnt& FirstPnt1,gp_Pnt& LastPnt1,const Handle(Geom_Plane)& aPlane,Standard_Boolean& isOnPlane) ;
   
   Standard_EXPORT   static  Standard_Boolean ComputeGeometry(const TopoDS_Vertex& aVertex,gp_Pnt& point,const Handle(Geom_Plane)& aPlane,Standard_Boolean& isOnPlane) ;

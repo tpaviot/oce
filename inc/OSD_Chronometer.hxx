@@ -30,12 +30,22 @@
 //! This class measures CPU time (both user and system) consumed <br>
 //!          by current process or thread. The chronometer can be started <br>
 //!          and stopped multiple times, and measures cumulative time. <br>
+//! <br>
+//!          If only the thread is measured, calls to Stop() and Show() <br>
+//!          must occur from the same thread where Start() was called <br>
+//!          (unless chronometer is stopped); otherwise measurement will <br>
+//!          yield false values. <br>
 class OSD_Chronometer  {
 public:
 
   DEFINE_STANDARD_ALLOC
 
   //! Initializes a stopped Chronometer. <br>
+//! <br>
+//!          If ThisThreadOnly is True, measured CPU time will account <br>
+//!          time of the current thread only; otherwise CPU of the <br>
+//!          process (all threads, and completed children) is measured. <br>
+//! <br>
   Standard_EXPORT   OSD_Chronometer(const Standard_Boolean ThisThreadOnly = Standard_False);
   
   Standard_EXPORT   virtual  void Destroy() ;

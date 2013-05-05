@@ -94,29 +94,78 @@ public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Raised if FromK1 = ToK2 <br>
+  //! Convert a curve from Geom by an approximation method <br>
+//! <br>
+//!  This method computes the arc of B-spline curve between the two <br>
+//!  knots FromK1 and ToK2.  If C is periodic the arc has the same <br>
+//!  orientation as C if SameOrientation = Standard_True. <br>
+//!  If C is not periodic  SameOrientation is not used for the <br>
+//!  computation and C is oriented from the knot fromK1 to the knot toK2. <br>
+//!  We just keep the local definition of C between the knots <br>
+//!  FromK1 and ToK2.  The returned B-spline curve has its first <br>
+//!  and last knots with a multiplicity equal to degree + 1, where <br>
+//!  degree is the polynomial degree of C. <br>
+//!  The indexes of the knots FromK1 and ToK2 doesn't include the <br>
+//!  repetition of multiple knots in their definition. <br>//!  Raised if FromK1 = ToK2 <br>
 //!             Raised if FromK1 or ToK2 are out of the bounds <br>
 //!             [FirstUKnotIndex, LastUKnotIndex] <br>
   Standard_EXPORT   static  Handle_Geom_BSplineCurve SplitBSplineCurve(const Handle(Geom_BSplineCurve)& C,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Boolean SameOrientation = Standard_True) ;
   
+//!  This function computes the segment of B-spline curve between the <br>
+//!  parametric values FromU1, ToU2. <br>
+//!  If C is periodic the arc has the same orientation as C if <br>
+//!  SameOrientation = True. <br>
+//!  If C is not periodic SameOrientation is not used for the <br>
+//!  computation and C is oriented fromU1 toU2. <br>
+//!  If U1 and U2 and two parametric values we consider that <br>
+//!  U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and <br>
+//!  ParametricTolerance must  be greater or equal to Resolution <br>
+//!  from package gp. <br>
 //!  Raised if FromU1 or ToU2 are out of the parametric bounds of the <br>
 //!  curve (The tolerance criterion is ParametricTolerance). <br>
 //!  Raised if Abs (FromU1 - ToU2) <= ParametricTolerance <br>
 //!  Raised if ParametricTolerance < Resolution from gp. <br>
   Standard_EXPORT   static  Handle_Geom_BSplineCurve SplitBSplineCurve(const Handle(Geom_BSplineCurve)& C,const Standard_Real FromU1,const Standard_Real ToU2,const Standard_Real ParametricTolerance,const Standard_Boolean SameOrientation = Standard_True) ;
-  //!  Raised if <br>
+  
+//!  Computes the B-spline surface patche between the knots values <br>
+//!  FromUK1, ToUK2, FromVK1, ToVK2. <br>
+//!  If S is periodic in one direction the patche has the same <br>
+//!  orientation as S in this direction if the flag is true in this <br>
+//!  direction (SameUOrientation, SameVOrientation). <br>
+//!  If S is not periodic SameUOrientation and SameVOrientation are not <br>
+//!  used for the computation and S is oriented FromUK1 ToUK2 and <br>
+//!  FromVK1 ToVK2. <br>//!  Raised if <br>
 //!             FromUK1 = ToUK2 or FromVK1 = ToVK2 <br>
 //!             FromUK1 or ToUK2 are out of the bounds <br>
 //!             [FirstUKnotIndex, LastUKnotIndex] <br>
 //!             FromVK1 or ToVK2 are out of the bounds <br>
 //!             [FirstVKnotIndex, LastVKnotIndex] <br>
   Standard_EXPORT   static  Handle_Geom_BSplineSurface SplitBSplineSurface(const Handle(Geom_BSplineSurface)& S,const Standard_Integer FromUK1,const Standard_Integer ToUK2,const Standard_Integer FromVK1,const Standard_Integer ToVK2,const Standard_Boolean SameUOrientation = Standard_True,const Standard_Boolean SameVOrientation = Standard_True) ;
-  //! Raised if FromK1 = ToK2 or if <br>
+  
+//!  This method splits a B-spline surface patche between the <br>
+//!  knots values FromK1, ToK2 in one direction. <br>
+//!  If USplit = True then the splitting direction is the U parametric <br>
+//!  direction else it is the V parametric direction. <br>
+//!  If S is periodic in the considered direction the patche has the <br>
+//!  same orientation as S in this direction if SameOrientation is True <br>
+//!  If S is not periodic in this direction SameOrientation is not used <br>
+//!  for the computation and S is oriented FromK1 ToK2. <br>//! Raised if FromK1 = ToK2 or if <br>
 //!            FromK1 or ToK2 are out of the bounds <br>
 //!            [FirstUKnotIndex, LastUKnotIndex] in the <br>
 //!            considered parametric direction. <br>
   Standard_EXPORT   static  Handle_Geom_BSplineSurface SplitBSplineSurface(const Handle(Geom_BSplineSurface)& S,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Boolean USplit,const Standard_Boolean SameOrientation = Standard_True) ;
   
+//!  This method computes the B-spline surface patche between the <br>
+//!  parametric values FromU1, ToU2, FromV1, ToV2. <br>
+//!  If S is periodic in one direction the patche has the same <br>
+//!  orientation as S in this direction if the flag is True in this <br>
+//!  direction (SameUOrientation, SameVOrientation). <br>
+//!  If S is not periodic SameUOrientation and SameVOrientation are not <br>
+//!  used for the computation and S is oriented FromU1 ToU2 and <br>
+//!  FromV1 ToV2. <br>
+//!  If U1 and U2 and two parametric values we consider that U1 = U2 if <br>
+//!  Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must <br>
+//!  be greater or equal to Resolution from package gp. <br>
 //!  Raised if FromU1 or ToU2 or FromV1 or ToU2 are out of the <br>
 //!  parametric bounds of the surface (the tolerance criterion is <br>
 //!  ParametricTolerance). <br>
@@ -125,13 +174,98 @@ public:
 //!  Raised if ParametricTolerance < Resolution. <br>
   Standard_EXPORT   static  Handle_Geom_BSplineSurface SplitBSplineSurface(const Handle(Geom_BSplineSurface)& S,const Standard_Real FromU1,const Standard_Real ToU2,const Standard_Real FromV1,const Standard_Real ToV2,const Standard_Real ParametricTolerance,const Standard_Boolean SameUOrientation = Standard_True,const Standard_Boolean SameVOrientation = Standard_True) ;
   
+//!  This method splits the B-spline surface S in one direction <br>
+//!  between the parametric values FromParam1, ToParam2. <br>
+//!  If USplit = True then the Splitting direction is the U parametric <br>
+//!  direction else it is the V parametric direction. <br>
+//!  If S is periodic in the considered direction the patche has <br>
+//!  the same orientation as S in this direction if SameOrientation <br>
+//!  is true. <br>
+//!  If S is not periodic in the considered direction SameOrientation <br>
+//!  is not used for the computation and S is oriented FromParam1 <br>
+//!  ToParam2. <br>
+//!  If U1 and U2 and two parametric values we consider that U1 = U2 <br>
+//!  if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance <br>
+//!  must be greater or equal to Resolution from package gp. <br>
 //!  Raises if FromParam1 or ToParam2 are out of the parametric bounds <br>
 //!  of the surface in the considered direction. <br>
 //!  Raises if Abs (FromParam1 - ToParam2) <= ParametricTolerance. <br>
   Standard_EXPORT   static  Handle_Geom_BSplineSurface SplitBSplineSurface(const Handle(Geom_BSplineSurface)& S,const Standard_Real FromParam1,const Standard_Real ToParam2,const Standard_Boolean USplit,const Standard_Real ParametricTolerance,const Standard_Boolean SameOrientation = Standard_True) ;
-  
+  //! This function converts a non infinite curve from <br>
+//!  Geom into a  B-spline curve.  C must be   an ellipse or  a <br>
+//!  circle  or a trimmed conic  or a trimmed  line or a Bezier <br>
+//!  curve or a trimmed  Bezier curve or a  BSpline curve or  a <br>
+//!  trimmed  BSpline curve or  an  OffsetCurve.  The returned  B-spline is <br>
+//!  not periodic except  if C is a Circle  or an  Ellipse.  If <br>
+//!   the  Parameterisation is  QuasiAngular than  the returned <br>
+//!   curve is NOT periodic  in case a  periodic Geom_Circle or <br>
+//!  Geom_Ellipse.  For TgtThetaOver2_1 and TgtThetaOver2_2 the <br>
+//!   method   raises  an exception  in    case  of a  periodic <br>
+//!  Geom_Circle or a Geom_Ellipse ParameterisationType applies <br>
+//!   only    if  the curve  is   a  Circle  or  an   ellipse : <br>
+//!  TgtThetaOver2,  -- TgtThetaOver2_1, -- TgtThetaOver2_2, -- <br>
+//!  TgtThetaOver2_3, -- TgtThetaOver2_4, <br>
+//! <br>
+//! Purpose: this is the classical rational parameterisation <br>
+//!                    2 <br>
+//!               1 - t <br>
+//!  cos(theta) = ------ <br>
+//!                    2 <br>
+//!               1 + t <br>
+//! <br>
+//!                 2t <br>
+//!  sin(theta) = ------ <br>
+//!                     2 <br>
+//!                1 + t <br>
+//! <br>
+//!  t = tan (theta/2) <br>
+//! <br>
+//!  with TgtThetaOver2  the routine will compute the number of spans <br>
+//!  using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 <br>
+//!  with TgtThetaOver2_N, N  spans will be forced: an error will <br>
+//!  be raized if (ULast - UFirst) >= PI and N = 1, <br>
+//!  ULast - UFirst >= 2 PI and N = 2 <br>
+//! <br>
+//! QuasiAngular, <br>
+//!  here t is a rational function that approximates <br>
+//!  theta ----> tan(theta/2). <br>
+//!  Neverthless the composing with above function yields exact <br>
+//!  functions whose square sum up to 1 <br>
+//! RationalC1 ; <br>
+//!  t is replaced by a polynomial function of u so as to grant <br>
+//!  C1 contiuity across knots. <br>
+//! Exceptions <br>
+//!        Standard_DomainError: <br>
+//! -   if the curve C is infinite, or <br>
+//! -   if C is a (complete) circle or ellipse, and Parameterisation is equal to <br>
+//!   Convert_TgtThetaOver2_1 or Convert_TgtThetaOver2_2. <br>
+//!   Standard_ConstructionError: <br>
+//! -   if C is a (complete) circle or ellipse, and if Parameterisation is not equal to <br>
+//!   Convert_TgtThetaOver2, Convert_RationalC1, <br>
+//!   Convert_QuasiAngular (the curve is converted <br>
+//!   in these three cases) or to Convert_TgtThetaOver2_1 or <br>
+//!   Convert_TgtThetaOver2_2 (another exception is raised in these two cases). <br>
+//! -   if C is a trimmed circle or ellipse, if Parameterisation is equal to <br>
+//!   Convert_TgtThetaOver2_1 and if U2 - U1 > 0.9999 * Pi, where U1 and U2 are <br>
+//!   respectively the first and the last parameters of the <br>
+//!   trimmed curve (this method of parameterization <br>
+//!   cannot be used to convert a half-circle or a half-ellipse, for example), or <br>
+//! -   if C is a trimmed circle or ellipse, if <br>
+//!   Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 > <br>
+//!   1.9999 * Pi where U1 and U2 are <br>
+//!   respectively the first and the last parameters of the <br>
+//!   trimmed curve (this method of parameterization <br>
+//!   cannot be used to convert a quasi-complete circle or ellipse). <br>
   Standard_EXPORT   static  Handle_Geom_BSplineCurve CurveToBSplineCurve(const Handle(Geom_Curve)& C,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2) ;
   
+//!  This algorithm converts a non infinite surface from Geom <br>
+//!  into a B-spline surface. <br>
+//!  S must be a trimmed plane or a trimmed cylinder or a trimmed cone <br>
+//!  or a trimmed sphere or a trimmed torus or a sphere or a torus or <br>
+//!  a Bezier surface of a trimmed Bezier surface or a trimmed swept <br>
+//!  surface with a corresponding basis curve which can be turned into <br>
+//!  a B-spline curve   (see the method CurveToBSplineCurve). <br>
+//!  Raises DomainError if the type of the surface is not previously defined. <br>
   Standard_EXPORT   static  Handle_Geom_BSplineSurface SurfaceToBSplineSurface(const Handle(Geom_Surface)& S) ;
   //! This Method concatenates G1 the ArrayOfCurves as far <br>
 //!  as it  is possible. <br>

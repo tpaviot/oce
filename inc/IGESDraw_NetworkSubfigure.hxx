@@ -54,6 +54,9 @@ class IGESDraw_ConnectPoint;
 
 //! defines IGES Network Subfigure Instance Entity, <br>
 //!           Type <420> Form Number <0> in package IGESDraw <br>
+//! <br>
+//!           Used to specify each instance of Network Subfigure <br>
+//!           Definition Entity (Type 320, Form 0). <br>
 class IGESDraw_NetworkSubfigure : public IGESData_IGESEntity {
 
 public:

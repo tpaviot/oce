@@ -42,6 +42,26 @@ class Adaptor2d_Curve2d;
 //!  positions of constant deflection of a given curve or a trimmed <br>
 //!  circle. <br>
 //!  The continuity of the curve must be at least C2. <br>
+//! <br>
+//!  the usage of the is the following. <br>
+//! <br>
+//!  class myUniformDFeflection instantiates <br>
+//!                     UniformDeflection(Curve, Tool); <br>
+//! <br>
+//! <br>
+//! Curve C; // Curve inherits from Curve or Curve2d from Adaptor2d <br>
+//! myUniformDeflection Iter1; <br>
+//! DefPntOfmyUniformDeflection P; <br>
+//! <br>
+//! for(Iter1.Initialize(C, Deflection, EPSILON, True); <br>
+//!     Iter1.More(); <br>
+//!     Iter1.Next()) { <br>
+//!   P = Iter1.Value(); <br>
+//!   ... make something with P <br>
+//! } <br>
+//! if(!Iter1.IsAllDone()) { <br>
+//!    ... something wrong happened <br>
+//! } <br>
 class CPnts_UniformDeflection  {
 public:
 

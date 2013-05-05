@@ -25,59 +25,19 @@
 #ifndef _Handle_Visual3d_View_HeaderFile
 #include <Handle_Visual3d_View.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
-#include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Graphic3d_TextPath_HeaderFile
-#include <Graphic3d_TextPath.hxx>
-#endif
-#ifndef _Graphic3d_HorizontalTextAlignment_HeaderFile
-#include <Graphic3d_HorizontalTextAlignment.hxx>
-#endif
-#ifndef _Graphic3d_VerticalTextAlignment_HeaderFile
-#include <Graphic3d_VerticalTextAlignment.hxx>
-#endif
 #ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
-#include <Handle_Graphic3d_AspectLine3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectFillArea3d_HeaderFile
-#include <Handle_Graphic3d_AspectFillArea3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectText3d_HeaderFile
-#include <Handle_Graphic3d_AspectText3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
-#include <Handle_Graphic3d_AspectMarker3d.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfComposition_HeaderFile
-#include <Graphic3d_TypeOfComposition.hxx>
 #endif
 class Visual3d_TransientDefinitionError;
 class Graphic3d_TransformError;
 class Visual3d_View;
-class TCollection_ExtendedString;
 class Graphic3d_Structure;
-class Graphic3d_AspectLine3d;
-class Graphic3d_AspectFillArea3d;
-class Graphic3d_AspectText3d;
-class Graphic3d_AspectMarker3d;
-class TColStd_Array2OfReal;
 
 
 //! This class allows to manage transient graphics <br>
 //!      above one View. <br>
 //!      A simple way to drawn something very quicly above <br>
 //!      a complex scene (Hilighting,Sketching,...) <br>
-//!      All transient graphics will be drawn with <br>
-//!      the projection defined by the view with the current <br>
-//!      attributes depending of the primitive type : <br>
-//!      Lines,Markers,Polygons,Texts <br>
 //!      All transient graphics will be erased at the next <br>
 //!      View::BeginDraw(). <br>
 //!      If RetainMode is active, <br>
@@ -173,123 +133,10 @@ public:
 //! Raises TransientDefinitionError from Visual3d; <br>
 //! if   Drawing is not opened. <br>
   Standard_EXPORT   static  void EndAddDraw() ;
-  //! After this call, <me> is ready to receive <br>
-//!      a definition of a polyline with AddVertex(). <br>
-//!  Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is already opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void BeginPolyline() ;
-  //! After this call, <me> is ready to receive <br>
-//!      a definition of a polygon with AddVertex(). <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is already opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void BeginPolygon() ;
-  //! After this call, <me> is ready to receive <br>
-//!      a definition of a triangle mesh with AddVertex(). <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is already opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void BeginTriangleMesh() ;
-  //! After this call, <me> is ready to receive <br>
-//!      a definition of a marker with AddVertex(). <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is already opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void BeginMarker() ;
-  //! After this call, <me> is ready to receive <br>
-//!      a definition of a curve with AddVertex(). <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is already opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void BeginBezier() ;
-  //! Puts <X, Y, Z> as a new point in the current primitive. <br>
-//!      If <AFlag> then it is a draw between last point and <br>
-//!      this point else it is a move between last point and <br>
-//!      this point. <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is not opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Boolean AFlag = Standard_True) ;
-  //! Puts <X, Y, Z, W> as a new point coordinates and <br>
-//!      weight in the current primitive. <br>
-//!      If <AFlag> then it is a draw between last point and <br>
-//!      this point else it is a move between last point and <br>
-//!      this point. <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is not opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real W,const Standard_Boolean AFlag = Standard_True) ;
-  //! Puts <X, Y, Z> as a new point in the current primitive. <br>
-//!          Puts <NX, NY, NZ> as a new normal in the current <br>
-//!      primitive. <br>
-//!      If <AFlag> then it is a draw between last point and <br>
-//!      this point else it is a move between last point and <br>
-//!      this point. <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is not opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void AddVertex(const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real NX,const Standard_Real NY,const Standard_Real NZ,const Standard_Boolean AFlag = Standard_True) ;
-  //! After this call, <me> stops the reception of <br>
-//!      a definition of a Begin... primitive. <br>
-//!  Raises TransientDefinitionError from Visual3d; <br>
-//! if a Begin... primitive is not opened, <br>
-//! or   Drawing is not opened. <br>
-  Standard_EXPORT   static  void ClosePrimitive() ;
-  //! Drawn the string <AText> at position <X,Y,Z>. <br>
-//!     The 3D point of attachment is projected. The text is <br>
-//!          written in the plane of projection. <br>
-//!  The attributes are given with respect to the plane of <br>
-//!          projection. <br>
-//!          AHeight     : Height of text. <br>
-//!             (Relative to the Normalized Projection <br>
-//!                          Coordinates (NPC) Space). <br>
-//!          AAngle      : Orientation of the text <br>
-//!                  (with respect to the horizontal). <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if   Drawing is not opened. <br>
-  Standard_EXPORT   static  void DrawText(const TCollection_ExtendedString& AText,const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real AHeight,const Quantity_PlaneAngle AAngle = 0.0,const Graphic3d_TextPath ATp = Graphic3d_TP_RIGHT,const Graphic3d_HorizontalTextAlignment AHta = Graphic3d_HTA_LEFT,const Graphic3d_VerticalTextAlignment AVta = Graphic3d_VTA_BOTTOM) ;
   //! Drawn the structure <AStructure>. <br>
 //! Raises TransientDefinitionError from Visual3d; <br>
 //! if   Drawing is not opened. <br>
   Standard_EXPORT   static  void DrawStructure(const Handle(Graphic3d_Structure)& AStructure) ;
-  //! Modifies the current lines attributes. <br>
-//!  Warning: No default attributes <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if   Drawing is not opened. <br>
-  Standard_EXPORT   static  void SetPrimitivesAspect(const Handle(Graphic3d_AspectLine3d)& CTX) ;
-  //! Modifies the current faces attributes <br>
-//!  Warning: No default attributes <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if   Drawing is not opened. <br>
-  Standard_EXPORT   static  void SetPrimitivesAspect(const Handle(Graphic3d_AspectFillArea3d)& CTX) ;
-  //! Modifies the current texts attributes <br>
-//!  Warning: No default attributes <br>
-//!    Raises TransientDefinitionError from Visual3d; <br>
-//! if   Drawing is not opened. <br>
-  Standard_EXPORT   static  void SetPrimitivesAspect(const Handle(Graphic3d_AspectText3d)& CTX) ;
-  //! Modifies the current markers attributes <br>
-//!  Warning: No default attributes <br>
-//! Raises TransientDefinitionError from Visual3d; <br>
-//! if   Drawing is not opened. <br>
-  Standard_EXPORT   static  void SetPrimitivesAspect(const Handle(Graphic3d_AspectMarker3d)& CTX) ;
-  //! Returns the coordinates of the boundary box <br>
-//!      of the Transient graphics actually drawn <br>
-//!      since BeginDraw() has been call. <br>
-//!  Warning: If nothing has been drawn then : <br>
-//!      XMin = YMin = ZMin = RealFirst (). <br>
-//!      XMax = YMax = ZMax = RealLast (). <br>
-  Standard_EXPORT   static  void MinMaxValues(Standard_Real& XMin,Standard_Real& YMin,Standard_Real& ZMin,Standard_Real& XMax,Standard_Real& YMax,Standard_Real& ZMax) ;
-  //! Returns the coordinates of the boundary box projection <br>
-//!      of the Transient graphics actually drawn <br>
-//!      since BeginDraw() has been call. <br>
-//!  Warning: If nothing has been drawn then : <br>
-//!      XMin = YMin = ZMin = RealFirst (). <br>
-//!      XMax = YMax = ZMax = RealLast (). <br>
-  Standard_EXPORT   static  void MinMaxValues(Standard_Real& UMin,Standard_Real& VMin,Standard_Real& UMax,Standard_Real& VMax) ;
-  //! Modifies the current local modelling transformation <br>
-//!      of the transient graphics. <br>
-  Standard_EXPORT   static  void SetTransform(const TColStd_Array2OfReal& AMatrix,const Graphic3d_TypeOfComposition AType = Graphic3d_TOC_REPLACE) ;
 
 
 

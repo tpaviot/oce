@@ -69,6 +69,7 @@ public:
   //!  Updates the data referenced in this external link attribute. <br>
   Standard_EXPORT     Handle_TDF_Reference Update() ;
   //! Returns the ID of the attribute. <br>
+//! <br>
   Standard_EXPORT    const Standard_GUID& ID() const;
   //! Returns the GUID for external links. <br>
 //! <br>

@@ -778,10 +778,8 @@ static chash_table __fastcall ppm_computechash (
         
     chl = ( chist_list )MALLOC(  sizeof( struct chist_list_item )  );
 
-    if ( chl == NULL ) {
-      ppm_freechash ( cht );
-      return ( chash_table )NULL;
-    }    
+    if ( chl == NULL ) return ( chash_table )NULL;
+        
     chl -> ch.color = *pP;
     chl -> ch.value = 1;
     chl -> next     = cht[ hash ];

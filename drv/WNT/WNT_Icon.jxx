@@ -1,9 +1,0 @@
-#ifndef _WNT_ImageManager_HeaderFile
-#include <WNT_ImageManager.hxx>
-#endif
-#ifndef _WNT_IconBox_HeaderFile
-#include <WNT_IconBox.hxx>
-#endif
-#ifndef _WNT_Icon_HeaderFile
-#include <WNT_Icon.hxx>
-#endif

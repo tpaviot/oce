@@ -49,11 +49,12 @@
 #if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   #include <OpenGL/gl.h>
   #include <OpenGL/glu.h>
-  #define _X_GL_H // prevent chaotic gl.h inclusions to avoid compile errors
+  #define __X_GL_H // prevent chaotic gl.h inclusions to avoid compile errors
 #else
   #include <GL/gl.h>
   #include <GL/glu.h>
 #endif
+
 #include <InterfaceGraphic.hxx>
 #include <InterfaceGraphic_tgl_all.hxx>
 #include <InterfaceGraphic_telem.hxx>

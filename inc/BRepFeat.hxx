@@ -43,7 +43,6 @@ class BRepTopAdaptor_FClass2d;
 class Geom2dAdaptor_Curve;
 class TopoDS_Solid;
 class BRepFeat_Builder;
-class BRepFeat_LocalOperation;
 class BRepFeat_MakeCylindricalHole;
 class BRepFeat_SplitShape;
 class BRepFeat_Form;
@@ -142,7 +141,6 @@ private:
 
 
 friend class BRepFeat_Builder;
-friend class BRepFeat_LocalOperation;
 friend class BRepFeat_MakeCylindricalHole;
 friend class BRepFeat_SplitShape;
 friend class BRepFeat_Form;

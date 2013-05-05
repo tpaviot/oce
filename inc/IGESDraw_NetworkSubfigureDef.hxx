@@ -54,6 +54,17 @@ class IGESDraw_ConnectPoint;
 
 //! defines IGESNetworkSubfigureDef, <br>
 //!           Type <320> Form Number <0> in package IGESDraw <br>
+//! <br>
+//!           This class differs from the ordinary subfigure definition <br>
+//!           in that it defines a specialized subfigure, one whose <br>
+//!           instances may participate in networks. <br>
+//! <br>
+//!           The Number of associated(child) Connect Point Entities <br>
+//!           in the Network Subfigure Instance must match the number <br>
+//!           in the Network Subfigure Definition, their order must <br>
+//!           be identical, and any unused points of connection in <br>
+//!           the instance must be indicated by a null(zero) pointer. <br>
+//! <br>
 class IGESDraw_NetworkSubfigureDef : public IGESData_IGESEntity {
 
 public:

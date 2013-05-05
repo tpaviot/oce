@@ -6,7 +6,7 @@
 #ifndef _BRepFill_TransitionStyle_HeaderFile
 #define _BRepFill_TransitionStyle_HeaderFile
 
-
+//! A pair of bound shapes with the result. <br>
 enum BRepFill_TransitionStyle {
 BRepFill_Modified,
 BRepFill_Right,

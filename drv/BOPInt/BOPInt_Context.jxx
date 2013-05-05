@@ -1,0 +1,45 @@
+#ifndef _IntTools_FClass2d_HeaderFile
+#include <IntTools_FClass2d.hxx>
+#endif
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _GeomAPI_ProjectPointOnSurf_HeaderFile
+#include <GeomAPI_ProjectPointOnSurf.hxx>
+#endif
+#ifndef _GeomAPI_ProjectPointOnCurve_HeaderFile
+#include <GeomAPI_ProjectPointOnCurve.hxx>
+#endif
+#ifndef _TopoDS_Edge_HeaderFile
+#include <TopoDS_Edge.hxx>
+#endif
+#ifndef _Geom_Curve_HeaderFile
+#include <Geom_Curve.hxx>
+#endif
+#ifndef _IntTools_SurfaceRangeLocalizeData_HeaderFile
+#include <IntTools_SurfaceRangeLocalizeData.hxx>
+#endif
+#ifndef _BRepClass3d_SolidClassifier_HeaderFile
+#include <BRepClass3d_SolidClassifier.hxx>
+#endif
+#ifndef _TopoDS_Solid_HeaderFile
+#include <TopoDS_Solid.hxx>
+#endif
+#ifndef _Geom2dHatch_Hatcher_HeaderFile
+#include <Geom2dHatch_Hatcher.hxx>
+#endif
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _TopoDS_Vertex_HeaderFile
+#include <TopoDS_Vertex.hxx>
+#endif
+#ifndef _gp_Pnt2d_HeaderFile
+#include <gp_Pnt2d.hxx>
+#endif
+#ifndef _IntTools_Curve_HeaderFile
+#include <IntTools_Curve.hxx>
+#endif
+#ifndef _BOPInt_Context_HeaderFile
+#include <BOPInt_Context.hxx>
+#endif

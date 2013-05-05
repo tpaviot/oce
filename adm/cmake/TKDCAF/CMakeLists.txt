@@ -9,27 +9,26 @@ SET(TOOLKIT_MODULES
 	DrawDim
 )
 SET(TOOLKIT_DEPENDS TKCAF
-	TKernel
-	TKBool
-	TKLCAF
-	TKCAF
-	TKViewerTest
-	TKBO
-	TKG3d
-	TKTopAlgo
 	TKGeomBase
-	TKV3d
-	TKService
-	TKMath
-	TKCDF
 	TKBRep
 	TKGeomAlgo
-	TKFillet
+	TKernel
+	TKMath
 	TKG2d
+	TKG3d
 	TKDraw
-	TKPrim
+	TKCDF
+	TKV3d
 	TKNIS
-	TKV2d
+	TKService
+	TKLCAF
+	TKFillet
+	TKTopAlgo
+	TKPrim
+	TKBool
+	TKBO
+	TKCAF
+	TKViewerTest
 )
 
 SET(TOOLKIT_IS_PRIVATE TRUE)

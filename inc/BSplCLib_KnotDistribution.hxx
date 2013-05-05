@@ -6,14 +6,11 @@
 #ifndef _BSplCLib_KnotDistribution_HeaderFile
 #define _BSplCLib_KnotDistribution_HeaderFile
 
-//! this is a one dimensional function <br>
-//!  typedef  void (*EvaluatorFunction)  ( <br>
-//!  Standard_Integer     // Derivative Request <br>
-//!  Standard_Real    *   // StartEnd[2] <br>
-//!  Standard_Real        // Parameter <br>
-//!  Standard_Real    &   // Result <br>
-//!  Standard_Integer &) ;// Error Code <br>
-//!  serves to multiply a given vectorial BSpline by a function <br>
+//! This enumeration describes the repartition of the <br>
+//!         knots  sequence.   If all the knots  differ  by the <br>
+//!         same positive constant from the  preceding knot the <br>
+//!         "KnotDistribution" is    <Uniform>    else   it  is <br>
+//!         <NonUniform> <br>
 enum BSplCLib_KnotDistribution {
 BSplCLib_NonUniform,
 BSplCLib_Uniform

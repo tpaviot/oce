@@ -29,6 +29,9 @@
 
 //! defines IGESHighLight, Type <406> Form <20> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Attaches information that an entity is to be <br>
+//!          displayed in some system dependent manner <br>
 class IGESGraph_HighLight : public IGESData_IGESEntity {
 
 public:

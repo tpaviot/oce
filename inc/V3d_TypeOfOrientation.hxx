@@ -6,7 +6,7 @@
 #ifndef _V3d_TypeOfOrientation_HeaderFile
 #define _V3d_TypeOfOrientation_HeaderFile
 
-//! Determines the axis type through the coordinates X, Y, Z. <br>
+//! Determines the type of orientation. <br>
 enum V3d_TypeOfOrientation {
 V3d_Xpos,
 V3d_Ypos,

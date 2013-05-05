@@ -6,17 +6,10 @@
 #ifndef _Visual3d_TypeOfOrder_HeaderFile
 #define _Visual3d_TypeOfOrder_HeaderFile
 
-//! Definition of the rendering (colour shading) model <br>
-//!  TOM_NONE        No interpolation, constant shading <br>
-//!              (FLAT Shading) <br>
-//!  TOM_INTERP_COLOR    Linear interpolation of color <br>
-//!              (Gouraud Shading) <br>
-//!  TOM_FACET       Interpolation of color based on <br>
-//!              dot products <br>
-//!              (Quick Phong Shading) <br>
-//!  TOM_VERTEX      Interpolation of color based on <br>
-//!              normals <br>
-//!              (Phong Shading) <br>
+//! Definition of the order of selection <br>
+//!      TOO_TOPFIRST    the root structure first <br>
+//!      TOO_BOTTOMFIRST the leaf structure first <br>
+//!      Allows exploration of a PickPath in a PickDescriptor. <br>
 enum Visual3d_TypeOfOrder {
 Visual3d_TOO_TOPFIRST,
 Visual3d_TOO_BOTTOMFIRST

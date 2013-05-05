@@ -25,6 +25,20 @@ class Standard_ErrorHandler;
 //! Defines a base class for callback objects that can be registered <br>
 //!          in the OCC error handler (the class simulating C++ exceptions) <br>
 //!          so as to be correctly destroyed when error handler is activated. <br>
+//! <br>
+//!          Note that this is needed only when Open CASCADE is compiled with <br>
+//!          NO_CXX_EXCEPTION or OCC_CONVERT_SIGNALS options (i.e. on UNIX/Linux). <br>
+//!          In that case, raising OCC exception and/or signal will not cause <br>
+//!          C++ stack unwinding and destruction of objects created in the stack. <br>
+//! <br>
+//!          This class is intended to protect critical objects and operations in <br>
+//!          the try {} catch {} block from being bypassed by OCC signal or exception. <br>
+//! <br>
+//!          Inherit your object from that class, implement DestroyCallback() function, <br>
+//!          and call Register/Unregister in critical points. <br>
+//! <br>
+//!          Note that you must ensure that your object has life span longer than <br>
+//!          that of the try {} block in which it calls Register(). <br>
 class Standard_ErrorHandlerCallback  {
 public:
 

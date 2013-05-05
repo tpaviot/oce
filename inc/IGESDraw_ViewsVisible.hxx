@@ -46,6 +46,10 @@ class IGESData_IGESEntity;
 
 //! Defines IGESViewsVisible, Type <402>, Form <3> <br>
 //!           in package IGESDraw <br>
+//! <br>
+//!           If an entity is to be displayed in more than one views, <br>
+//!           this class instance is used, which contains the Visible <br>
+//!           views and the associated entity Displays. <br>
 class IGESDraw_ViewsVisible : public IGESData_ViewKindEntity {
 
 public:

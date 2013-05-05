@@ -6,7 +6,8 @@
 #ifndef _Intf_PIType_HeaderFile
 #define _Intf_PIType_HeaderFile
 
-
+//! Describes the different intersection  point types for this <br>
+//!          application. <br>
 enum Intf_PIType {
 Intf_EXTERNAL,
 Intf_FACE,

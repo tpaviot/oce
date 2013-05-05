@@ -26,6 +26,10 @@
 
 //! defines IGESLineFontPredefined, Type <406> Form <19> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Provides the ability to specify a line font pattern <br>
+//!          from a predefined list rather than from <br>
+//!          Directory Entry Field 4 <br>
 class IGESGraph_LineFontPredefined : public IGESData_IGESEntity {
 
 public:

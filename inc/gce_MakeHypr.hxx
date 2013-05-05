@@ -52,6 +52,23 @@ class gp_Hypr;
 //!                         | <br>
 //!                   SecondConjugateBranch <br>
 //!                         | <br>
+//! <br>
+//!  The local cartesian coordinate system of the ellipse is an <br>
+//!  axis placement (two axis). <br>
+//! <br>
+//!  The "XDirection" and the "YDirection" of the axis placement <br>
+//!  define the plane of the hyperbola. <br>
+//! <br>
+//!  The "Direction" of the axis placement defines the normal axis <br>
+//!  to the hyperbola's plane. <br>
+//! <br>
+//!  The "XAxis" of the hyperbola ("Location", "XDirection") is the <br>
+//!  major axis  and the  "YAxis" of the hyperbola ("Location", <br>
+//!  "YDirection") is the minor axis. <br>
+//! <br>
+//! Warnings : <br>
+//!  The major radius (on the major axis) can be lower than the <br>
+//!  minor radius (on the minor axis). <br>
 class gce_MakeHypr  : public gce_Root {
 public:
 

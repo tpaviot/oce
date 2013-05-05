@@ -13,15 +13,15 @@
 #include <Standard_DefineHandle.hxx>
 #endif
 
-#ifndef _Handle_Viewer_View_HeaderFile
-#include <Handle_Viewer_View.hxx>
+#ifndef _Handle_MMgt_TShared_HeaderFile
+#include <Handle_MMgt_TShared.hxx>
 #endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(Viewer_View);
+class Handle(MMgt_TShared);
 class V3d_View;
 
-DEFINE_STANDARD_HANDLE(V3d_View,Viewer_View)
+DEFINE_STANDARD_HANDLE(V3d_View,MMgt_TShared)
 
 #endif

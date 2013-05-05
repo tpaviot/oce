@@ -1,0 +1,4 @@
+inline Standard_Boolean math_FunctionSetRoot::IsDivergent() const
+{
+  return myIsDivergent;
+}

@@ -37,8 +37,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _Handle_IntTools_Context_HeaderFile
-#include <Handle_IntTools_Context.hxx>
+#ifndef _Handle_BOPInt_Context_HeaderFile
+#include <Handle_BOPInt_Context.hxx>
 #endif
 #ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
@@ -58,7 +58,7 @@
 #ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
 #endif
-class IntTools_Context;
+class BOPInt_Context;
 class TopoDS_Edge;
 class TopoDS_Face;
 class IntTools_Range;
@@ -80,51 +80,66 @@ public:
 
   
 //! Empty Constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_EdgeFace();
   
 //! Initializes algorithm by the edge anEdge <br>
+//! <br>
   Standard_EXPORT     void SetEdge(const TopoDS_Edge& anEdge) ;
   
 //! Initializes algorithm by edge tolerance <br>
+//! <br>
   Standard_EXPORT     void SetTolE(const Standard_Real aTolEdge1) ;
   
 //! Initializes algorithm by the face aFace <br>
+//! <br>
   Standard_EXPORT     void SetFace(const TopoDS_Face& aFace) ;
   
 //! Initializes algorithm by face tolerance <br>
+//! <br>
   Standard_EXPORT     void SetTolF(const Standard_Real aTolFace) ;
   
 //! Initializes algorithm by discretization value <br>
+//! <br>
   Standard_EXPORT     void SetDiscretize(const Standard_Integer aDiscret) ;
   
 //! Initializes algorithm by deflection value <br>
+//! <br>
   Standard_EXPORT     void SetDeflection(const Standard_Real aDeflection) ;
   
 //! Initializes algorithm by parameter tolerance <br>
+//! <br>
   Standard_EXPORT     void SetEpsilonT(const Standard_Real anEpsT) ;
   
 //! Initializes algorithm by distance tolerance <br>
+//! <br>
   Standard_EXPORT     void SetEpsilonNull(const Standard_Real anEpsNull) ;
   
 //! Sets boundaries for edge. <br>
 //! The algorithm processes edge inside these boundaries. <br>
+//! <br>
   Standard_EXPORT     void SetRange(const IntTools_Range& aRange) ;
   
 //! Sets boundaries for edge. <br>
 //! The algorithm processes edge inside these boundaries. <br>
+//! <br>
   Standard_EXPORT     void SetRange(const Standard_Real aFirst,const Standard_Real aLast) ;
   
 //! Sets the intersecton context <br>
-  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
+//! <br>
+  Standard_EXPORT     void SetContext(const Handle(BOPInt_Context)& theContext) ;
   
 //! Gets the intersecton context <br>
-  Standard_EXPORT    const Handle_IntTools_Context& Context() const;
+//! <br>
+  Standard_EXPORT    const Handle_BOPInt_Context& Context() const;
   
 //! Launches the process <br>
+//! <br>
   Standard_EXPORT     void Perform() ;
   
 //! Returns true if computation was done <br>
 //! successfully, otherwise returns false <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   
 //! Returns code of completion <br>
@@ -134,14 +149,19 @@ public:
 //! 6 - discretization failed <br>
 //! 7 - no projectable ranges found <br>
 //! 11 - distance computing error <br>
+//! <br>
   Standard_EXPORT     Standard_Integer ErrorStatus() const;
   
 //! Returns results <br>
+//! <br>
   Standard_EXPORT    const IntTools_SequenceOfCommonPrts& CommonParts() const;
   
 //! Returns boundaries for edge <br>
+//! <br>
   Standard_EXPORT    const IntTools_Range& Range() const;
   
+//! <br>
+//! <br>
 //! <br>
   Standard_EXPORT   static  Standard_Boolean IsEqDistance(const gp_Pnt& aP,const BRepAdaptor_Surface& aS,const Standard_Real aT,Standard_Real& aD) ;
 
@@ -206,7 +226,7 @@ BRepAdaptor_Surface myS;
 Standard_Real myCriteria;
 Standard_Boolean myIsDone;
 Standard_Integer myErrorStatus;
-Handle_IntTools_Context myContext;
+Handle_BOPInt_Context myContext;
 IntTools_SequenceOfRanges myProjectableRanges;
 IntTools_FClass2d myFClass2d;
 IntTools_CArray1OfReal myFuncArray;

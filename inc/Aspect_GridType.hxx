@@ -6,8 +6,7 @@
 #ifndef _Aspect_GridType_HeaderFile
 #define _Aspect_GridType_HeaderFile
 
-//! Defines the grid draw mode. The grid may be drawn <br>
-//!          by using lines or points. <br>
+//! Defines the grid type : Rectangular or Circular. <br>
 enum Aspect_GridType {
 Aspect_GT_Rectangular,
 Aspect_GT_Circular

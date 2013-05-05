@@ -42,6 +42,7 @@ public:
 
   //! Creates a line style with the default value of <br>
 //!	    LineStyle type : SOLID <br>
+//! <br>
   Standard_EXPORT   Aspect_LineStyle();
   //! Creates the line style <Type>. <br>
   Standard_EXPORT   Aspect_LineStyle(const Aspect_TypeOfLine Type);

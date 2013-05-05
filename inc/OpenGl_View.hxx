@@ -17,7 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #ifndef _OpenGl_View_Header
 #define _OpenGl_View_Header
 
@@ -44,10 +43,10 @@
 #include <OpenGl_LayerList.hxx>
 #include <OpenGl_Light.hxx>
 
-#include <Handle_OpenGl_Trihedron.hxx>
-#include <Handle_OpenGl_GraduatedTrihedron.hxx>
+#include <Handle_OpenGl_Context.hxx>
 #include <Handle_OpenGl_Workspace.hxx>
 #include <Handle_OpenGl_View.hxx>
+#include <Handle_OpenGl_Texture.hxx>
 
 struct OPENGL_BG_TEXTURE
 {
@@ -99,7 +98,10 @@ struct OPENGL_FOG
   TEL_COLOUR         Color;
 };
 
+class OpenGl_GraduatedTrihedron;
 class OpenGl_Structure;
+class OpenGl_Trihedron;
+class Handle(OpenGl_PrinterContext);
 
 class OpenGl_View : public MMgt_TShared
 {
@@ -107,7 +109,10 @@ class OpenGl_View : public MMgt_TShared
   OpenGl_View (const CALL_DEF_VIEWCONTEXT &AContext);
   virtual ~OpenGl_View ();
 
-  void SetTextureEnv (const Standard_Integer AId) { myTextureEnv = AId; }
+  void ReleaseGlResources (const Handle(OpenGl_Context)& theCtx);
+
+  void SetTextureEnv (const Handle(OpenGl_Context)&       theCtx,
+                      const Handle(Graphic3d_TextureEnv)& theTexture);
   void SetSurfaceDetail (const Visual3d_TypeOfSurfaceDetail AMode) { mySurfaceDetail = AMode; }
   void SetBackfacing (const Standard_Integer AMode);
   void SetLights (const CALL_DEF_VIEWCONTEXT &AContext);
@@ -115,17 +120,22 @@ class OpenGl_View : public MMgt_TShared
   void SetClippingPlanes (const CALL_DEF_VIEWCONTEXT &AContext);
   void SetVisualisation (const CALL_DEF_VIEWCONTEXT &AContext);
 
-  void SetClipLimit (const CALL_DEF_VIEW &ACView);
-  void SetMapping (const CALL_DEF_VIEW &ACView);
-  void SetOrientation (const CALL_DEF_VIEW &ACView);
+  void SetClipLimit (const Graphic3d_CView& theCView);
+  void SetMapping (const Graphic3d_CView& theCView);
+  void SetOrientation (const Graphic3d_CView& theCView);
 
-  void SetFog (const CALL_DEF_VIEW &ACView, const Standard_Boolean AFlag);
+  void SetFog (const Graphic3d_CView& theCView, const Standard_Boolean theFlag);
 
-  void TriedronDisplay (const Aspect_TypeOfTriedronPosition APosition, const Quantity_NameOfColor AColor, const Standard_Real AScale, const Standard_Boolean AsWireframe);
-  void TriedronErase ();
+  void TriedronDisplay (const Handle(OpenGl_Context)&       theCtx,
+                        const Aspect_TypeOfTriedronPosition thePosition,
+                        const Quantity_NameOfColor          theColor,
+                        const Standard_Real                 theScale,
+                        const Standard_Boolean              theAsWireframe);
+  void TriedronErase (const Handle(OpenGl_Context)& theCtx);
 
-  void GraduatedTrihedronDisplay (const Graphic3d_CGraduatedTrihedron &ACubic);
-  void GraduatedTrihedronErase ();
+  void GraduatedTrihedronDisplay (const Handle(OpenGl_Context)&        theCtx,
+                                  const Graphic3d_CGraduatedTrihedron& theCubic);
+  void GraduatedTrihedronErase (const Handle(OpenGl_Context)& theCtx);
 
   Standard_Boolean ProjectObjectToRaster (const Standard_Integer w, const Standard_Integer h,
                                           const Standard_ShortReal x, const Standard_ShortReal y, const Standard_ShortReal z,
@@ -176,21 +186,25 @@ class OpenGl_View : public MMgt_TShared
   void SetBackgroundGradient (const Quantity_Color& AColor1, const Quantity_Color& AColor2, const Aspect_GradientFillMethod AType);
   void SetBackgroundGradientType (const Aspect_GradientFillMethod AType);
 
-  void Render (const Handle(OpenGl_Workspace) &AWorkspace,
-               const Graphic3d_CView& ACView,
-               const Aspect_CLayer2d& ACUnderLayer,
-               const Aspect_CLayer2d& ACOverLayer);
+  void Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
+               const Handle(OpenGl_Workspace)&      theWorkspace,
+               const Graphic3d_CView&               theCView,
+               const Aspect_CLayer2d&               theCUnderLayer,
+               const Aspect_CLayer2d&               theCOverLayer);
 
-  // Type definition
-  //
-  DEFINE_STANDARD_RTTI(OpenGl_View)
+public:
+
+  DEFINE_STANDARD_RTTI(OpenGl_View) // Type definition
 
  protected:
 
   void RenderStructs (const Handle(OpenGl_Workspace) &AWorkspace);
-  void RedrawLayer2d (const Handle(OpenGl_Workspace) &AWorkspace, const Graphic3d_CView& ACView, const Aspect_CLayer2d& ACLayer);
+  void RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintContext,
+                      const Handle(OpenGl_Workspace)&      theWorkspace,
+                      const Graphic3d_CView&               theCView,
+                      const Aspect_CLayer2d&               theCLayer);
 
-  Standard_Integer myTextureEnv; //WSTextureEnv
+  Handle(OpenGl_Texture) myTextureEnv;
   Visual3d_TypeOfSurfaceDetail mySurfaceDetail; //WSSurfaceDetail
   Standard_Integer myBackfacing; //WSBackfacing
 
@@ -214,8 +228,8 @@ class OpenGl_View : public MMgt_TShared
   //}
 
   OPENGL_FOG myFog;
-  Handle(OpenGl_Trihedron) myTrihedron;
-  Handle(OpenGl_GraduatedTrihedron) myGraduatedTrihedron;
+  OpenGl_Trihedron*          myTrihedron;
+  OpenGl_GraduatedTrihedron* myGraduatedTrihedron;
 
   //View_LABViewContext
   int myVisualization;
@@ -232,13 +246,8 @@ class OpenGl_View : public MMgt_TShared
 
   OpenGl_LayerList myZLayers;
 
-  int myAnimationListIndex;
-  Standard_Boolean myAnimationListReady;
-
   const TEL_TRANSFORM_PERSISTENCE *myTransPers;
   Standard_Boolean myIsTransPers;
-
-  Standard_Boolean myResetFLIST;
 
  public:
   DEFINE_STANDARD_ALLOC

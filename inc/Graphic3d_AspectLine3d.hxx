@@ -37,6 +37,10 @@ public:
 
   //! Creates a context table for line primitives <br>
 //!	    defined with the following default values: <br>
+//! <br>
+//!	    Colour	: NOC_YELLOW <br>
+//!	    Line type	: TOL_SOLID <br>
+//!	    Width	: 1.0 <br>
   Standard_EXPORT   Graphic3d_AspectLine3d();
   //! Creates a context table for line primitives <br>
 //!	    defined with the specified values. <br>

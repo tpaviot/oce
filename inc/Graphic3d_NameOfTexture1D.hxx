@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_NameOfTexture1D_HeaderFile
 #define _Graphic3d_NameOfTexture1D_HeaderFile
 
-//! Types of materials specifies if a material can change color. <br>
+//! Types of standard textures. <br>
 enum Graphic3d_NameOfTexture1D {
 Graphic3d_NOT_1D_ELEVATION,
 Graphic3d_NOT_1D_UNKNOWN

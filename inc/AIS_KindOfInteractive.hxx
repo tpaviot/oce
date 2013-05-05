@@ -6,8 +6,17 @@
 #ifndef _AIS_KindOfInteractive_HeaderFile
 #define _AIS_KindOfInteractive_HeaderFile
 
-//! Declares the kinds of dimensions needed in the <br>
-//! display of Interactive Objects. <br>
+//! Declares the type of Interactive Object. <br>
+//! This is one of the following: <br>
+//! -   the Datum <br>
+//! -   the Object <br>
+//! -   the Relation <br>
+//! -   the None type. <br>
+//!  The Datum is the construction element. These include <br>
+//! points, lines, axes and planes. The object brings <br>
+//! together topological shapes. The Relation includes <br>
+//! dimensions and constraints. When the object is of an <br>
+//! unknown type, the None type is declared. <br>
 enum AIS_KindOfInteractive {
 AIS_KOI_None,
 AIS_KOI_Datum,

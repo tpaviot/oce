@@ -4,13 +4,12 @@ SET(TOOLKIT_MODULES
 	MeshVS
 )
 SET(TOOLKIT_DEPENDS
-	TKService
-	TKMath
-	TKernel
 	TKV3d
-	TKV2d
-	TKG2d
+	TKMath
+	TKService
+	TKernel
 	TKG3d
+	TKG2d
 )
 
 INCLUDE(../BuildToolkit.cmake)
