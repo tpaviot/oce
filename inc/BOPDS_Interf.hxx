@@ -531,6 +531,7 @@ class BOPDS_InterfFF  : public BOPDS_Interf {
       myCurves(myAllocator),
       myPoints(myAllocator) {
   };
+  */
   //
   /**
    *  Destructor
