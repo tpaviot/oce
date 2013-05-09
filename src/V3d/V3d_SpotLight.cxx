@@ -60,8 +60,6 @@
 
 #ifdef WNT
 # include <WNT_Window.hxx>
-#else
-# include <Xw_Window.hxx>
 #endif
 
 
