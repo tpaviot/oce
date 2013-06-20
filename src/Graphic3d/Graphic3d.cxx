@@ -21,6 +21,10 @@
 #include <Aspect_DriverDefinitionError.hxx>
 #include <OSD_Environment.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include <oce-paths.h>
+#endif
+
 //=======================================================================
 //function : InitGraphicDriver
 //purpose  :
@@ -36,6 +40,9 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
 
   TCollection_AsciiString aGraphicLibName;
 
+#ifdef OCE_DEFAULT_CSF_GraphicShr
+  aGraphicLibName = OCE_DEFAULT_CSF_GraphicShr;
+#else
   // Setting the library name. Depends on the platform.
 #if defined(_WIN32) || defined(__WIN32__)
   aGraphicLibName = "TKOpenGl.dll";
@@ -45,6 +52,7 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
   aGraphicLibName = "libTKOpenGl.dylib";
 #else
   aGraphicLibName = "libTKOpenGl.so";
+#endif
 #endif
 
   // Loading the library.
