@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -37,61 +40,68 @@ class gp_Pnt;
 class IntTools_Curve  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_Curve();
   
 //! Initializes me by a 3d curve <br>
 //! and two 2d curves <br>
+//! <br>
   Standard_EXPORT   IntTools_Curve(const Handle(Geom_Curve)& Curve3d,const Handle(Geom2d_Curve)& FirstCurve2d,const Handle(Geom2d_Curve)& SecondCurve2d);
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetCurves(const Handle(Geom_Curve)& Curve3d,const Handle(Geom2d_Curve)& FirstCurve2d,const Handle(Geom2d_Curve)& SecondCurve2d) ;
   
 //! Modifier <br>
+//! <br>
         void SetCurve(const Handle(Geom_Curve)& Curve3d) ;
   
 //! Modifier <br>
+//! <br>
         void SetFirstCurve2d(const Handle(Geom2d_Curve)& FirstCurve2d) ;
   
 //! Modifier <br>
+//! <br>
         void SetSecondCurve2d(const Handle(Geom2d_Curve)& SecondCurve2d) ;
   
 //! Selector <br>
+//! <br>
        const Handle_Geom_Curve& Curve() const;
   
 //! Selector <br>
+//! <br>
        const Handle_Geom2d_Curve& FirstCurve2d() const;
   
 //! Selector <br>
+//! <br>
        const Handle_Geom2d_Curve& SecondCurve2d() const;
   
 //! Returns true if 3d curve is BoundedCurve from Geom <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean HasBounds() const;
   
 //! Returns boundary parameters <br>
 //! and corresponded 3d point. <br>
+//! <br>
+//!  Warning: <br>
+//! If HasBounds returns false <br>
+//! the returned parameters are equal <br>
+//! to zero. <br>
+//! <br>
   Standard_EXPORT     void Bounds(Standard_Real& aT1,Standard_Real& aT2,gp_Pnt& aP1,gp_Pnt& aP2) const;
   
 //! Computes 3d point corresponded to parameter aT1 <br>
 //! Returns true if given parameter aT1 <br>
 //! is inside the boundaries of the curve <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean D0(Standard_Real& aT1,gp_Pnt& aP1) const;
   
 //! Returns the type of 3d curve <br>
+//! <br>
   Standard_EXPORT     GeomAbs_CurveType Type() const;
 
 

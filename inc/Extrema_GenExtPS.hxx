@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -22,8 +25,8 @@
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
-#include <Handle_TColgp_HArray2OfPnt.hxx>
+#ifndef _Handle_Extrema_HArray2OfPOnSurfParams_HeaderFile
+#include <Handle_Extrema_HArray2OfPOnSurfParams.hxx>
 #endif
 #ifndef _Extrema_HUBTreeOfSphere_HeaderFile
 #include <Extrema_HUBTreeOfSphere.hxx>
@@ -43,15 +46,19 @@
 #ifndef _Extrema_ExtAlgo_HeaderFile
 #include <Extrema_ExtAlgo.hxx>
 #endif
-class TColgp_HArray2OfPnt;
+#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
+#include <Handle_TColStd_HArray1OfReal.hxx>
+#endif
+class Extrema_HArray2OfPOnSurfParams;
 class Bnd_HArray1OfSphere;
+class TColStd_HArray1OfReal;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
 class gp_Pnt;
 class Adaptor3d_Surface;
 class Extrema_POnSurf;
-class math_Vector;
+class Extrema_POnSurfParams;
 
 
 //! It calculates all the extremum distances <br>
@@ -60,18 +67,7 @@ class math_Vector;
 class Extrema_GenExtPS  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Extrema_GenExtPS();
@@ -139,7 +135,11 @@ private:
   
   Standard_EXPORT     void BuildTree() ;
   
-  Standard_EXPORT     void FindSolution(const gp_Pnt& P,const math_Vector& UV,const Standard_Real PasU,const Standard_Real PasV,const Extrema_ExtFlag f) ;
+  Standard_EXPORT     void FindSolution(const gp_Pnt& P,const Extrema_POnSurfParams& theParams) ;
+  //! Selection of points to build grid, depending on the type of surface <br>
+  Standard_EXPORT     void GetGridPoints(const Adaptor3d_Surface& theSurf) ;
+  //! Creation of grid of parametric points <br>
+  Standard_EXPORT     void BuildGrid(const gp_Pnt& thePoint) ;
 
 
 Standard_Boolean myDone;
@@ -152,13 +152,16 @@ Standard_Integer myusample;
 Standard_Integer myvsample;
 Standard_Real mytolu;
 Standard_Real mytolv;
-Handle_TColgp_HArray2OfPnt mypoints;
+Handle_Extrema_HArray2OfPOnSurfParams myPoints;
 Extrema_HUBTreeOfSphere mySphereUBTree;
 Handle_Bnd_HArray1OfSphere mySphereArray;
 Extrema_FuncExtPS myF;
 Adaptor3d_SurfacePtr myS;
 Extrema_ExtFlag myFlag;
 Extrema_ExtAlgo myAlgo;
+Handle_TColStd_HArray1OfReal myUParams;
+Handle_TColStd_HArray1OfReal myVParams;
+Handle_Extrema_HArray2OfPOnSurfParams myFacePntParams;
 
 
 };

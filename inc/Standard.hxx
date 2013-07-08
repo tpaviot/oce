@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,18 +43,7 @@ class Standard_Failure;
 class Standard  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //!  Allocates memory blocks <br>
 //!           aSize - bytes to  allocate <br>
@@ -71,6 +63,13 @@ public:
 //!          operating in reentrant mode. This flag affects OCCT <br>
 //!          memory manager, exception and signal handling, <br>
 //!          operations with handles etc., making them thread-safe. <br>
+//! <br>
+//!          By default, this flag is set to False, in order <br>
+//!          to avoid performance reduction due to locking. <br>
+//! <br>
+//!          In multithreaded applications this flag must be set to <br>
+//!          True, either by calling method SetReentrant(), <br>
+//!          or by defining environment variable MMGT_REENTRANT. <br>
   Standard_EXPORT   static  Standard_Boolean IsReentrant() ;
   //! Sets boolean flag indicating whether OCCT is <br>
 //!          operating in reentrant mode. <br>

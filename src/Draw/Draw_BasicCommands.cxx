@@ -18,24 +18,53 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <Standard_Macro.hxx>
 #include <Standard_Stream.hxx>
 #include <Standard_SStream.hxx>
+#include <Standard_Version.hxx>
 
 #include <Draw.ixx>
 #include <Draw_Appli.hxx>
+#include <Draw_Chronometer.hxx>
 #include <Draw_Printer.hxx>
 
 #include <Message.hxx>
 #include <Message_Messenger.hxx>
+
 #include <OSD_MemInfo.hxx>
+#include <OSD_MAllocHook.hxx>
+#include <OSD_Chronometer.hxx>
+#include <OSD.hxx>
+#include <OSD_Exception_CTRL_BREAK.hxx>
+
+#ifdef _WIN32
+
+#include <windows.h>
+#include <winbase.h>
+#include <process.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <limits>
+
+#define RLIM_INFINITY   0x7fffffff
+
+static clock_t CPU_CURRENT; // cpu time already used at last
+                            // cpulimit call. (sec.) 
+
+#else /* _WIN32 */
+
+#include <sys/resource.h>
 
 #ifdef HAVE_CONFIG_H
 # include <oce-config.h>
 #endif
 
-#if defined(HAVE_TIME_H) || defined(WNT)
+#ifdef HAVE_STRINGS_H
+# include <strings.h>
+#endif
+
+#if defined(HAVE_TIME_H)
 # include <time.h>
 #endif
 
@@ -43,46 +72,20 @@
 # include <signal.h>
 #endif
 
-#ifndef WNT
-# include <sys/resource.h>
-# ifdef HAVE_STRINGS_H
-#  include <strings.h>
-# endif
-#else
-//WNT
-extern Standard_Boolean Draw_Batch;
-#include <windows.h>
-#include <winbase.h>
-#include <process.h>
-#include <stdio.h>
-#include <stdlib.h>
-#ifdef OCE_HAVE_LIMITS
-# include <limits>
-#elif defined (OCE_HAVE_LIMITS_H)
-# include <limits.h>
+#ifdef HAVE_SYS_SIGNAL_H
+# include <sys/signal.h>
 #endif
-
-#ifdef WNT
-# include <limits>
-#endif
-
-static clock_t MDTV_CPU_LIMIT;   // Cpu_limit in Sec.
-static clock_t MDTV_CPU_CURRENT; // cpu time already used at last
-                                 // cpulimit call. (sec.) 
-//#define strcasecmp strcmp Already defined
-#define RLIM_INFINITY   0x7fffffff
-#endif
-
-#include <Draw_Chronometer.hxx>
-#include <OSD_MAllocHook.hxx>
-#include <OSD_Chronometer.hxx>
 
 #if defined (__hpux) || defined ( HPUX )
 #define RLIM_INFINITY   0x7fffffff
 #define	RLIMIT_CPU	0
 #endif
 
+#endif /* _WIN32 */
 
+extern Standard_Boolean Draw_Batch;
+
+static clock_t CPU_LIMIT;   // Cpu_limit in Sec.
 
 //=======================================================================
 // chronom
@@ -211,6 +214,174 @@ static Standard_Integer spy(Draw_Interpretor& di, Standard_Integer n, const char
   return 0;
 }
 
+static Standard_Integer dlog(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if (n != 2 && n != 3)
+  {
+    cout << "Enable or disable logging: " << a[0] << " {on|off}" << endl;
+    cout << "Reset log: " << a[0] << " reset" << endl;
+    cout << "Get log content: " << a[0] << " get" << endl;
+    return 1;
+  }
+
+  if (! strcmp (a[1], "on") && n == 2)
+  {
+    di.SetDoLog (Standard_True);
+//    di.Log() << "dlog on" << endl; // for symmetry
+  }
+  else if (! strcmp (a[1], "off") && n == 2)
+  {
+    di.SetDoLog (Standard_False);
+  }
+  else if (! strcmp (a[1], "reset") && n == 2)
+  {
+    di.Log().str("");
+  }
+  else if (! strcmp (a[1], "get") && n == 2)
+  {
+    di << di.Log().str().c_str();
+  }
+  else if (! strcmp (a[1], "add") && n == 3)
+  {
+    di.Log() << a[2] << "\n";
+  }
+  else {
+    cout << "Unrecognized option(s): " << a[1] << endl;
+    return 1;
+  }
+  return 0;
+}
+
+static Standard_Integer decho(Draw_Interpretor& di, Standard_Integer n, const char** a)
+{
+  if (n != 2)
+  {
+    cout << "Enable or disable echoing: " << a[0] << " {on|off}" << endl;
+    return 1;
+  }
+
+  if (! strcmp (a[1], "on"))
+  {
+    di.SetDoEcho (Standard_True);
+  }
+  else if (! strcmp (a[1], "off"))
+  {
+    di.SetDoEcho (Standard_False);
+  }
+  else {
+    cout << "Unrecognized option: " << a[1] << endl;
+    return 1;
+  }
+  return 0;
+}
+
+static Standard_Integer dbreak(Draw_Interpretor& di, Standard_Integer, const char**)
+{
+  try {
+    OSD::ControlBreak();
+  }
+  catch (OSD_Exception_CTRL_BREAK) {
+    di << "User pressed Control-Break";
+    return 1; // Tcl exception
+  }
+
+  return 0;
+}
+
+static Standard_Integer dversion(Draw_Interpretor& di, Standard_Integer, const char**)
+{
+  // print OCCT version and OCCTY-specific macros used
+  di << "Open CASCADE Technology " << OCC_VERSION_STRING_EXT << "\n";
+#if defined(DEB) || defined(_DEBUG)
+  di << "Debug mode\n";
+#endif
+#ifdef HAVE_TBB
+  di << "TBB enabled (HAVE_TBB)\n";
+#else 
+  di << "TBB disabled\n";
+#endif
+#ifdef HAVE_GL2PS
+  di << "GL2PS enabled (HAVE_GL2PS)\n";
+#else
+  di << "GL2PS disabled\n";
+#endif
+#ifdef HAVE_FREEIMAGE
+  di << "FreeImage enabled (HAVE_FREEIMAGE)\n";
+#else
+  di << "FreeImage disabled\n";
+#endif
+#ifdef No_Exception
+  di << "Exceptions disabled (No_Exception)\n";
+#else
+  di << "Exceptions enabled\n";
+#endif
+
+  // check compiler, OS, etc. using pre-processor macros provided by compiler
+  // see "Pre-defined C/C++ Compiler Macros" http://sourceforge.net/p/predef/wiki/
+  // note that only modern compilers that are known to be used for OCCT are recognized
+
+  // compiler; note that GCC and MSVC are last as other compilers (e.g. Intel) can also define __GNUC__ and _MSC_VER
+#if defined(__INTEL_COMPILER)
+  di << "Compiler: Intel " << __INTEL_COMPILER << "\n";
+#elif defined(__BORLANDC__)
+  di << "Compiler: Borland C++ (__BORLANDC__ = " << __BORLANDC__ << ")\n";
+#elif defined(__clang__)
+  di << "Compiler: Clang " << __clang_major__ << "." << __clang_minor__ << "." << __clang_patchlevel__ << "\n";
+#elif defined(__SUNPRO_C)
+  di << "Compiler: Sun Studio (__SUNPRO_C = " << __SUNPROC_C << ")\n";
+#elif defined(_MSC_VER)
+  di << "Compiler: MS Visual C++ " << (int)(_MSC_VER/100-6) << "." << (int)((_MSC_VER/10)-60-10*(int)(_MSC_VER/100-6)) << " (_MSC_FULL_VER = " << _MSC_FULL_VER << ")\n";
+#elif defined(__GNUC__)
+  di << "Compiler: GCC " << __GNUC__ << "." << __GNUC_MINOR__ << "." << __GNUC_PATCHLEVEL__ << "\n";
+#else
+  di << "Compiler: unrecognized\n";
+#endif
+
+  // Cygwin and MinGW specifics
+#if defined(__CYGWIN__)
+  di << "Cygwin\n";
+#endif
+#if defined(__MINGW64__)
+  di << "MinGW 64 " << __MINGW64_MAJOR_VERSION << "." << __MINGW64_MINOR_VERSION << "\n";
+#elif defined(__MINGW32__)
+  di << "MinGW 32 " << __MINGW32_MAJOR_VERSION << "." << __MINGW32_MINOR_VERSION << "\n";
+#endif 
+
+  // architecture
+#if defined(__amd64) || defined(__x86_64) || defined(_M_AMD64)
+  di << "Architecture: AMD64\n";
+#elif defined(__i386) || defined(_M_IX86) || defined(__X86__)|| defined(_X86_)
+  di << "Architecture: Intel x86\n";
+#elif defined(_M_IA64) || defined(__ia64__)
+  di << "Architecture: Intel Itanium (IA 64)\n";
+#elif defined(__sparc__) || defined(__sparc)
+  di << "Architecture: SPARC\n";
+#else
+  di << "Architecture: unrecognized\n";
+#endif
+
+  // OS
+#if defined(_WIN32) || defined(__WINDOWS__) || defined(__WIN32__)
+  di << "OS: Windows\n";
+#elif defined(__APPLE__) || defined(__MACH__)
+  di << "OS: Mac OS X\n";
+#elif defined(__sun) 
+  di << "OS: SUN Solaris\n";
+#elif defined(__ANDROID__) /* must be before Linux */
+  #include <android/api-level.h>
+  di << "OS: Android (__ANDROID_API__ = " << __ANDROID_API__ << ")\n";
+#elif defined(__linux__)
+  di << "OS: Linux\n";
+#elif defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+  #include <sys/param.h>
+  di << "OS: BSD (BSD = " << BSD << ")\n";
+#else
+  di << "OS: unrecognized\n";
+#endif
+
+  return 0;
+}
+
 //=======================================================================
 //function : wait
 //purpose  : 
@@ -220,7 +391,7 @@ static Standard_Integer Draw_wait(Draw_Interpretor& , Standard_Integer n, const 
 {
   Standard_Integer w = 10;
   if (n > 1)
-    w = atoi(a[1]);
+    w = Draw::Atoi(a[1]);
   time_t ct = time(NULL) + w;
   while (time(NULL) < ct) {};
   return 0;
@@ -230,7 +401,7 @@ static Standard_Integer Draw_wait(Draw_Interpretor& , Standard_Integer n, const 
 //function : cpulimit
 //purpose  : 
 //=======================================================================
-#ifdef WNT
+#ifdef _WIN32
 static unsigned int __stdcall CpuFunc (void * param)
 {
   clock_t aCurrent;
@@ -241,47 +412,41 @@ static unsigned int __stdcall CpuFunc (void * param)
     OSD_Chronometer::GetProcessCPU (anUserSeconds, aSystemSeconds);
     aCurrent = clock_t(anUserSeconds + aSystemSeconds);
     
-    if ((aCurrent - MDTV_CPU_CURRENT) >= MDTV_CPU_LIMIT)
+    if ((aCurrent - CPU_CURRENT) >= CPU_LIMIT)
     {
-      printf ("CpuFunc : Fin sur Cpu Limit \n");
+      cout << "Process killed by CPU limit (" << CPU_LIMIT << " sec)" << endl;
       ExitProcess (2);
       return 0;
     }
   }
   return 0;
 }
+#else
+static void CpuFunc (int)
+{
+  cout << "Process killed by CPU limit (" << CPU_LIMIT << " sec)" << endl;
+  exit(2);
+}
 #endif
 
 static Standard_Integer cpulimit(Draw_Interpretor& di, Standard_Integer n, const char** a)
 {
-#ifndef WNT
-  rlimit rlp;
-  rlp.rlim_max = RLIM_INFINITY;
-  if (n <= 1)
-    rlp.rlim_cur = RLIM_INFINITY;
-  else
-    rlp.rlim_cur = atoi(a[1]);
+#ifdef _WIN32
+  // Windows specific code
 
-  int status;
-  status=setrlimit(RLIMIT_CPU,&rlp);
-  if (status !=0)
-    di << "status cpulimit setrlimit : " << status << "\n";
-
-#else
-//WNT
   static int aFirst = 1;
 
   unsigned int __stdcall CpuFunc (void *);
   unsigned aThreadID;
 
   if (n <= 1)
-    MDTV_CPU_LIMIT = RLIM_INFINITY;
+    CPU_LIMIT = RLIM_INFINITY;
   else
   {
-    MDTV_CPU_LIMIT = atoi (a[1]);
+    CPU_LIMIT = Draw::Atoi (a[1]);
     Standard_Real anUserSeconds, aSystemSeconds;
     OSD_Chronometer::GetProcessCPU (anUserSeconds, aSystemSeconds);
-    MDTV_CPU_CURRENT = clock_t(anUserSeconds + aSystemSeconds);
+    CPU_CURRENT = clock_t(anUserSeconds + aSystemSeconds);
 
     if (aFirst) // Launch the thread only at the 1st call.
     {
@@ -289,6 +454,29 @@ static Standard_Integer cpulimit(Draw_Interpretor& di, Standard_Integer n, const
       _beginthreadex (NULL, 0, CpuFunc, NULL, 0, &aThreadID);
     }
   }
+
+#else 
+
+  // Unix & Linux
+
+  rlimit rlp;
+  rlp.rlim_max = RLIM_INFINITY;
+  if (n <= 1)
+    rlp.rlim_cur = RLIM_INFINITY;
+  else
+    rlp.rlim_cur = Draw::Atoi(a[1]);
+  CPU_LIMIT = rlp.rlim_cur;
+
+  int status;
+  status=setrlimit(RLIMIT_CPU,&rlp);
+  if (status !=0)
+    di << "status cpulimit setrlimit : " << status << "\n";
+
+  // set signal handler to print a message before death
+  struct sigaction act, oact;
+  memset (&act, 0, sizeof(act));
+  act.sa_handler = CpuFunc;
+  sigaction (SIGXCPU, &act, &oact);
 
 #endif
 
@@ -329,7 +517,7 @@ By default <logfile> is \"mem-log.txt\", <outfile> is \"mem-stat.txt\""
   }
   if (strcmp(a[1], "set") == 0)
   {
-    int aType = (n > 2 ? atoi(a[2]) : 1);
+    int aType = (n > 2 ? Draw::Atoi(a[2]) : 1);
     if (aType < 0 || aType > 2)
     {
       di << "unknown op of the command set" << "\n";
@@ -393,7 +581,7 @@ By default <logfile> is \"mem-log.txt\", <outfile> is \"mem-stat.txt\""
     const char* aOutFile = "mem-stat.txt";
     if (n > 2)
     {
-      includeAlive = (atoi(a[2]) != 0);
+      includeAlive = (Draw::Atoi(a[2]) != 0);
       if (n > 3)
       {
         aLogFile = a[3];
@@ -421,6 +609,38 @@ By default <logfile> is \"mem-log.txt\", <outfile> is \"mem-stat.txt\""
 }
 
 //==============================================================================
+//function : dlocale
+//purpose  :
+//==============================================================================
+
+static int dlocale (Draw_Interpretor& di, Standard_Integer n, const char** argv)
+{
+  int category = LC_ALL;
+  if (n > 1)
+  {
+    const char *cat = argv[1];
+    if ( ! strcmp (cat, "LC_ALL") ) category = LC_ALL;
+    else if ( ! strcmp (cat, "LC_COLLATE") ) category = LC_COLLATE;
+    else if ( ! strcmp (cat, "LC_CTYPE") ) category = LC_CTYPE;
+    else if ( ! strcmp (cat, "LC_MONETARY") ) category = LC_MONETARY;
+    else if ( ! strcmp (cat, "LC_NUMERIC") ) category = LC_NUMERIC;
+    else if ( ! strcmp (cat, "LC_TIME") ) category = LC_TIME;
+    else 
+    {
+      cout << "Error: cannot recognize argument " << cat << " as one of LC_ macros" << endl;
+      return 1;
+    }
+  }
+  const char* locale = (n > 2 ? argv[2] : NULL);
+  const char* result = setlocale (category, locale);
+  if (result)
+    di << result;
+  else 
+    cout << "Error: unsupported locale specification: " << locale << endl;
+  return 0;
+}
+
+//==============================================================================
 //function : dmeminfo
 //purpose  :
 //==============================================================================
@@ -443,6 +663,10 @@ static int dmeminfo (Draw_Interpretor& theDI,
     if (anArg == "virt" || anArg == "v")
     {
       theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemVirtual)) << " ";
+    }
+    else if (anArg == "heap" || anArg == "h")
+    {
+      theDI << Standard_Real (aMemInfo.Value (OSD_MemInfo::MemHeapUsage)) << " ";
     }
     else if (anArg == "wset" || anArg == "w")
     {
@@ -479,6 +703,8 @@ void Draw::BasicCommands(Draw_Interpretor& theCommands)
   if (Done) return;
   Done = Standard_True;
 
+  ios::sync_with_stdio();
+
   const char* g = "DRAW General Commands";
   
   theCommands.Add("batch", "returns 1 in batch mode",
@@ -497,7 +723,21 @@ void Draw::BasicCommands(Draw_Interpretor& theCommands)
                   "debug memory allocation/deallocation, w/o args for help",
                   __FILE__, mallochook, g);
   theCommands.Add ("meminfo",
-    "meminfo [virt|v] [wset|w] [wsetpeak] [swap] [swappeak] [private]"
+    "meminfo [virt|v] [heap|h] [wset|w] [wsetpeak] [swap] [swappeak] [private]"
     " : memory counters for this process",
 	  __FILE__, dmeminfo, g);
+
+  // Logging commands; note that their names are hard-coded in the code 
+  // of Draw_Interpretor, thus should not be changed without update of that code!
+  theCommands.Add("dlog", "manage logging of commands and output; run without args to get help",
+		  __FILE__,dlog,g);
+  theCommands.Add("decho", "switch on / off echo of commands to cout; run without args to get help",
+		  __FILE__,decho,g);
+  
+  theCommands.Add("dbreak", "raises Tcl exception if user has pressed Control-Break key",
+		  __FILE__,dbreak,g);
+  theCommands.Add("dversion", "provides information on OCCT build configuration (version, compiler, OS, C library, etc.)",
+		  __FILE__,dversion,g);
+  theCommands.Add("dlocale", "set and / or query locate of C subsystem (function setlocale())",
+		  __FILE__,dlocale,g);
 }

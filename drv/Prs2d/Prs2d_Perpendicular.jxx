@@ -1,9 +1,0 @@
-#ifndef _Graphic2d_GraphicObject_HeaderFile
-#include <Graphic2d_GraphicObject.hxx>
-#endif
-#ifndef _Graphic2d_Drawer_HeaderFile
-#include <Graphic2d_Drawer.hxx>
-#endif
-#ifndef _Prs2d_Perpendicular_HeaderFile
-#include <Prs2d_Perpendicular.hxx>
-#endif

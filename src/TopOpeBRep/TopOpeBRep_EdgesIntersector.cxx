@@ -54,16 +54,16 @@
 #include <TopOpeBRep_define.hxx>
 
 #ifdef DEB
-Standard_EXPORT Standard_Boolean TopOpeBRepTool_GettraceNYI();
-Standard_EXPORT Standard_Boolean TopOpeBRepTool_GettraceKRO();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceEDSF();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSF();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GettracePROEDG();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GetcontextTOL0();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GetcontextNOFEI();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GettraceFITOL();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GettraceEEFF();
-Standard_EXPORT void debeeff();
+extern Standard_Boolean TopOpeBRepTool_GettraceNYI();
+extern Standard_Boolean TopOpeBRepTool_GettraceKRO();
+extern Standard_Boolean TopOpeBRepDS_GettraceEDSF();
+extern Standard_Boolean TopOpeBRepDS_GettraceDSF();
+extern Standard_Boolean TopOpeBRep_GettracePROEDG();
+extern Standard_Boolean TopOpeBRep_GetcontextTOL0();
+extern Standard_Boolean TopOpeBRep_GetcontextNOFEI();
+extern Standard_Boolean TopOpeBRep_GettraceFITOL();
+extern Standard_Boolean TopOpeBRep_GettraceEEFF();
+extern void debeeff();
 #include <TopOpeBRepTool_KRO.hxx>
 Standard_EXPORT TOPKRO KRO_DSFILLER_INTEE("intersection edge/edge");
 #endif
@@ -551,7 +551,9 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       TopOpeBRepDS_Transition& T1 = P2D.ChangeTransition(1);
       TopOpeBRepDS_Transition& T2 = P2D.ChangeTransition(2);
       
+#ifdef DEB
       Standard_Boolean newT1=Standard_False, newT2=Standard_False;
+#endif
       Standard_Boolean isvertex12 = isvertex1 && isvertex2;
       Standard_Boolean isvertex22 = isvertex2 && !isvertex12;
       Standard_Boolean isvertex11 = isvertex1 && !isvertex12;
@@ -563,8 +565,10 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       if (T1INT && isvertex2 && !isvertex1) {
 	const TopoDS_Vertex& V2 = P2D.Vertex(2);	
 	TopOpeBRepDS_Transition newT; Standard_Boolean computed = ::EdgesIntersector_checkT1D(myEdge1,myEdge2,V2,newT);
-	if (!computed) newT1 = Standard_False;
-	else           T1.Set(newT.Orientation(TopAbs_IN));
+	if (computed) T1.Set(newT.Orientation(TopAbs_IN));
+#ifdef DEB
+	else          newT1 = Standard_False;
+#endif
       }
 
       Standard_Boolean T2INT = (T2.Orientation(TopAbs_IN) == TopAbs_INTERNAL);
@@ -573,8 +577,10 @@ Standard_Boolean EdgesIntersector_checkT1D(const TopoDS_Edge& E1,const TopoDS_Ed
       if (INTEXT2 && isvertex1 && !isvertex2) {
 	const TopoDS_Vertex& V1 = P2D.Vertex(1);
 	TopOpeBRepDS_Transition newT; Standard_Boolean computed = ::EdgesIntersector_checkT1D(myEdge2,myEdge1,V1,newT);
-	if (!computed) newT2 = Standard_False;
-	else           T2.Set(newT.Orientation(TopAbs_IN));
+	if (computed) T2.Set(newT.Orientation(TopAbs_IN));
+#ifdef DEB
+	else          newT2 = Standard_False;
+#endif
       }      
       
       // xpu121098 : cto900I7 (e12on,vG14)

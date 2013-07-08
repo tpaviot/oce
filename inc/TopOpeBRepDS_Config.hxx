@@ -6,7 +6,7 @@
 #ifndef _TopOpeBRepDS_Config_HeaderFile
 #define _TopOpeBRepDS_Config_HeaderFile
 
-//! different types of objects in DataStructure <br>
+
 enum TopOpeBRepDS_Config {
 TopOpeBRepDS_UNSHGEOMETRY,
 TopOpeBRepDS_SAMEORIENTED,

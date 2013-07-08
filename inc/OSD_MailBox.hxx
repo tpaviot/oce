@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -48,18 +51,7 @@ class TCollection_AsciiString;
 class OSD_MailBox  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! To be used with 'Open'. <br>
 //!          It just allocates room for 'myName'. <br>
@@ -69,6 +61,13 @@ public:
 //!          and a function to read mail boxes asynchronously. <br>
 //!          Each process working with the same MailBox must use <br>
 //!          a common known access : the mail-box's name. <br>
+//! <br>
+//!          This is for a server process. <br>
+//!          Raises ConstructionError when the name is not composed by <br>
+//!          characters in range of ' ' .. '~'. <br>
+//!          Raises NullObject when Async_function is a null function <br>
+//!          pointer <br>
+//!          Raises ProgramError when Size has a negative or null value. <br>
   Standard_EXPORT   OSD_MailBox(const TCollection_AsciiString& name,const Standard_Integer Size,const OSD_Function& Async_function);
   //! Builds (physically) <me> into system. <br>
 //!          <me> is created and ready to run. <br>

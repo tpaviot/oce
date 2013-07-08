@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,20 +58,9 @@ class GProp_PEquation;
 class GProp  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Computes the matrix Operator, referred to as the <br>
+  //! methods of package <br>//! Computes the matrix Operator, referred to as the <br>
 //! "Huyghens Operator" of a geometric system at the <br>
 //! point Q of the space, using the following data : <br>
 //! - Mass, i.e. the mass of the system, <br>

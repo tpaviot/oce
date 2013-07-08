@@ -277,7 +277,7 @@ static Standard_Integer OCC862 (Draw_Interpretor& di, Standard_Integer argc, con
   for (i = 0; i < Glob_NbKnots; i++)
     aMults.SetValue(i+1,Glob_Mults[i]);
   // Create B-Spline curve
-  const Standard_Real aDegree = 14;
+  const Standard_Integer aDegree = 14;
   Handle(Geom_BSplineCurve) C1 = new Geom_BSplineCurve(aPoles,aKnots,aMults,aDegree);
 
   // Create trimmed line
@@ -323,7 +323,7 @@ static Standard_Integer OCC862 (Draw_Interpretor& di, Standard_Integer argc, con
 }
 
 void QABugs::Commands_7(Draw_Interpretor& theCommands) {
-  char *group = "QABugs";
+  const char *group = "QABugs";
 
   theCommands.Add("OCC862", "OCC862 curve1 curve2", __FILE__, OCC862, group);  
   return;

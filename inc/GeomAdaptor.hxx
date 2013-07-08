@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -36,22 +39,14 @@ class GeomAdaptor_HCurve;
 class GeomAdaptor  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  
+  //! Inherited  from    GHCurve.   Provides a  curve <br>
+//!          handled by reference. <br>//! Build a Geom_Curve using the informations from the <br>
+//!          Curve from Adaptor3d <br>
   Standard_EXPORT   static  Handle_Geom_Curve MakeCurve(const Adaptor3d_Curve& C) ;
-  
+  //! Build a Geom_Surface using the informations from the <br>
+//!          Surface from Adaptor3d <br>
   Standard_EXPORT   static  Handle_Geom_Surface MakeSurface(const Adaptor3d_Surface& S) ;
 
 

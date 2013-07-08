@@ -6,7 +6,9 @@
 #ifndef _StdSelect_TypeOfFace_HeaderFile
 #define _StdSelect_TypeOfFace_HeaderFile
 
-
+//! Provides values for different types of faces. These <br>
+//! values are used to filter faces in frameworks inheriting <br>
+//! StdSelect_FaceFilter. <br>
 enum StdSelect_TypeOfFace {
 StdSelect_AnyFace,
 StdSelect_Plane,

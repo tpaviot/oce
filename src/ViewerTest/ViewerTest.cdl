@@ -29,13 +29,15 @@ uses
     Draw,
     TCollection,
     TColStd,
+    TColgp,
     TopAbs,
     TopTools,
     TopoDS,
     V3d,
     AIS,
     NIS,
-    MMgt
+    MMgt,
+    Quantity
 
 is
 
@@ -134,7 +136,7 @@ is
     GetCollectorFromContext returns Viewer from V3d;
 
     GetAISContext returns InteractiveContext from AIS;
-
+	---C++: return const &
     GetNISContext returns InteractiveContext from NIS;
     ---C++: return &
 
@@ -143,7 +145,8 @@ is
     SetNISContext (aContext: InteractiveContext from NIS);
 
     CurrentView returns View from V3d;
-
+	---C++: return const &
+	
     CurrentView (aViou:View from V3d);
 
     Clear ;
@@ -170,6 +173,9 @@ is
     RemoveSelected;
 
     StandardModeActivation(Mode  : Integer from Standard);
+
+    GetColorFromName(name: CString from Standard)
+    returns NameOfColor from Quantity;
 
 
 

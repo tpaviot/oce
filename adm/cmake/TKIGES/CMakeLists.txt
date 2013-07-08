@@ -21,19 +21,19 @@ SET(TOOLKIT_MODULES
 	IGESControl
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKXSBase
-	TKG3d
-	TKMath
-	TKOffset
-	TKG2d
-	TKGeomBase
-	TKShHealing
-	TKTopAlgo
 	TKBRep
+	TKernel
+	TKMath
+	TKTopAlgo
+	TKShHealing
+	TKG2d
+	TKG3d
+	TKGeomBase
 	TKGeomAlgo
-	TKBool
 	TKPrim
+	TKBool
+	TKOffset
+	TKXSBase
 )
 
 INCLUDE(../BuildToolkit.cmake)

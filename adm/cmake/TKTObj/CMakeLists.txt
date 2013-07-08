@@ -4,10 +4,10 @@ SET(TOOLKIT_MODULES
 	TObj
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKernel
-	TKLCAF
 	TKCDF
+	TKernel
+	TKMath
+	TKLCAF
 )
 
 INCLUDE(../BuildToolkit.cmake)

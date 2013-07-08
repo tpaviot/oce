@@ -6,7 +6,7 @@
 #ifndef _AIS_TypeOfAxis_HeaderFile
 #define _AIS_TypeOfAxis_HeaderFile
 
-//! Declares the type of Interactive Object unit. <br>
+//! Declares the type of axis. <br>
 enum AIS_TypeOfAxis {
 AIS_TOAX_Unknown,
 AIS_TOAX_XAxis,

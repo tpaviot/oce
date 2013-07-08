@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -77,20 +80,10 @@ class HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  
+  //! Iterator  on the  visible or  hidden  parts of  an <br>
+//!          EdgeStatus. <br>
   Standard_EXPORT   static  void UpdateMinMax(const Standard_Real x,const Standard_Real y,const Standard_Real z,const Standard_Address Min,const Standard_Address Max) ;
   
   Standard_EXPORT   static  void EnlargeMinMax(const Standard_Real tol,const Standard_Address Min,const Standard_Address Max) ;

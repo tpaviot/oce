@@ -104,7 +104,7 @@ const Handle(TopoDS_TShape)& VrmlData_IndexedFaceSet::TShape ()
           arrNodes[arrIndice[2]] - arrNodes[arrIndice[0]]
         };
         if ((aVec[0] ^ aVec[1]).SquareModulus() >
-            Precision::Confusion()*Precision::Confusion())
+            Precision::SquareConfusion())
           ++nTri;
         else {
           const_cast<Standard_Integer&> (arrIndice[0]) = -1;
@@ -373,7 +373,7 @@ VrmlData_ErrorStatus VrmlData_IndexedFaceSet::Write
       aStatus = aScene.WriteLine ("convex      FALSE");
     if (OK(aStatus) && CreaseAngle() > Precision::Confusion()) {
       char buf[64];
-      sprintf (buf, "%.9g", CreaseAngle());
+      Sprintf (buf, "%.9g", CreaseAngle());
       aStatus = aScene.WriteLine ("creaseAngle", buf);
     }
 

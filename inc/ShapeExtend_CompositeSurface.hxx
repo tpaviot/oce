@@ -68,6 +68,31 @@ class gp_Vec;
 //!          the same manner so that parameter of each patch (u,v) can be converted <br>
 //!          to global parameter on the whole surface (U,V) with help of linear <br>
 //!          transformation: <br>
+//! <br>
+//!          for any i,j-th patch <br>
+//!          U = Ui + ( u - uijmin ) * ( Ui+1 - Ui ) / ( uijmax - uijmin ) <br>
+//!          V = Vj + ( v - vijmin ) * ( Vj+1 - Vj ) / ( vijmax - vijmin ) <br>
+//! <br>
+//!          where <br>
+//! <br>
+//!          [uijmin, uijmax] * [ vijmin, vijmax] - parametric range of i,j-th patch, <br>
+//! <br>
+//!          Ui (i=1,..,Nu+1), Vi (j=1,..,Nv+1) - values defining global <br>
+//!          parametrisation by U and V (correspond to points between patches and <br>
+//!          bounds, (Ui,Uj) corresponds to (uijmin,vijmin) on i,j-th patch) and to <br>
+//!          (u(i-1)(j-1)max,v(i-1)(j-1)max) on (i-1),(j-1)-th patch. <br>
+//! <br>
+//!          Geometrical connectivity is expressed via global parameters: <br>
+//!          S[i,j](Ui+1,V) = S[i+1,j](Ui+1,V) for any i, j, V <br>
+//!          S[i,j](U,Vj+1) = S[i,j+1](U,Vj+1) for any i, j, U <br>
+//!          It is checked with Precision::Confusion() by default. <br>
+//! <br>
+//!  NOTE 1: This class is inherited from Geom_Surface in order to <br>
+//!          make it more easy to store and deal with it. However, it should <br>
+//!          not be passed to standard methods dealing with geometry since <br>
+//!          this type is not known to them. <br>
+//!  NOTE 2: Not all the inherited methods are implemented, and some are <br>
+//!          implemented not in the full form. <br>
 class ShapeExtend_CompositeSurface : public Geom_Surface {
 
 public:
@@ -84,6 +109,12 @@ public:
 //!          If geometrical connectivity is not satisfied, method <br>
 //!          returns False. <br>
 //!          However, class is initialized even in that case. <br>
+//! <br>
+//!          Last parameter defines how global parametrisation <br>
+//!          (joint values) will be computed: <br>
+//!          ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. <br>
+//!          ShapeExtend_Uniform: Ui = i-1, Vj = j-1 <br>
+//!          ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv <br>
   Standard_EXPORT     Standard_Boolean Init(const Handle(TColGeom_HArray2OfSurface)& GridSurf,const ShapeExtend_Parametrisation param = ShapeExtend_Natural) ;
   //! Initializes by a grid of surfaces with given global <br>
 //!          parametrisation defined by UJoints and VJoints arrays, <br>

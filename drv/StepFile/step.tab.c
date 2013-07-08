@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc
+/*  A Bison parser, made from /misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc
  by  GNU Bison version 1.25
   */
 
@@ -30,7 +30,7 @@
 #define	HEXA	273
 #define	QUID	274
 
-#line 23 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 23 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
@@ -254,14 +254,14 @@ static const short yycheck[] = {    11,
     79,    58
 };
 /* -*-C-*-  Note some compilers choke on comments on `#line' lines.  */
-#line 3 "/dn29/PRODUCTS/maintenance/Mandriva2008/bison-1.25/share/bison.simple"
+#line 3 "bison.simple"
 
 /* Skeleton output parser for bison,
-   Copyright (C) 1984, 1989, 1990 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989, 1990 Bob Corbett and Richard Stallman
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   the Free Software Foundation; either version 1, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -273,34 +273,20 @@ static const short yycheck[] = {    11,
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.  */
 
-/* As a special exception, when this file is copied by Bison into a
-   Bison output file, you may use that output file without restriction.
-   This special exception was added by the Free Software Foundation
-   in version 1.24 of Bison.  */
 
 #ifndef alloca
 #ifdef __GNUC__
 #define alloca __builtin_alloca
 #else /* not GNU C.  */
-#if (!defined (__STDC__) && defined (sparc)) || defined (__sparc__) || defined (__sparc) || defined (__sgi)
+#if (!defined (__STDC__) && defined (sparc)) || defined (__sparc__) || defined (__sparc)
 #include <alloca.h>
 #else /* not sparc */
-#if defined (MSDOS) && !defined (__TURBOC__)
+#if (  defined( MSDOS ) || defined( WNT )  ) && !defined (__TURBOC__)
 #include <malloc.h>
 #else /* not MSDOS, or __TURBOC__ */
 #if defined(_AIX)
 #include <malloc.h>
  #pragma alloca
-#else /* not MSDOS, __TURBOC__, or _AIX */
-#ifdef __hpux
-#ifdef __cplusplus
-extern "C" {
-void *alloca (unsigned int);
-};
-#else /* not __cplusplus */
-void *alloca ();
-#endif /* not __cplusplus */
-#endif /* __hpux */
 #endif /* not _AIX */
 #endif /* not MSDOS, or __TURBOC__ */
 #endif /* not sparc.  */
@@ -350,18 +336,10 @@ while (0)
 
 #ifdef YYPURE
 #ifdef YYLSP_NEEDED
-#ifdef YYLEX_PARAM
-#define YYLEX		yylex(&yylval, &yylloc, YYLEX_PARAM)
-#else
 #define YYLEX		yylex(&yylval, &yylloc)
-#endif
-#else /* not YYLSP_NEEDED */
-#ifdef YYLEX_PARAM
-#define YYLEX		yylex(&yylval, YYLEX_PARAM)
 #else
 #define YYLEX		yylex(&yylval)
 #endif
-#endif /* not YYLSP_NEEDED */
 #endif
 
 /* If nonreentrant, generate the variables here */
@@ -402,28 +380,23 @@ int yydebug;			/*  nonzero means print parse trace	*/
 #ifndef YYMAXDEPTH
 #define YYMAXDEPTH 10000
 #endif
-
-/* Prevent warning if -Wstrict-prototypes.  */
-#ifdef __GNUC__
-int yyparse (void);
-#endif
 
 #if __GNUC__ > 1		/* GNU C and GNU C++ define this.  */
-#define __yy_memcpy(TO,FROM,COUNT)	__builtin_memcpy(TO,FROM,COUNT)
+#define __yy_bcopy(FROM,TO,COUNT)	__builtin_memcpy(TO,FROM,COUNT)
 #else				/* not GNU C or C++ */
 #ifndef __cplusplus
 
 /* This is the most reliable way to avoid incompatibilities
    in available built-in functions on various systems.  */
 static void
-__yy_memcpy (to, from, count)
-     char *to;
-     char *from;
-     int count;
+__yy_bcopy (__from, __to, __count)
+     char *__from;
+     char *__to;
+     int __count;
 {
-  register char *f = from;
-  register char *t = to;
-  register int i = count;
+  register char *f = __from;
+  register char *t = __to;
+  register int i = __count;
 
   while (i-- > 0)
     *t++ = *f++;
@@ -434,11 +407,11 @@ __yy_memcpy (to, from, count)
 /* This is the most reliable way to avoid incompatibilities
    in available built-in functions on various systems.  */
 static void
-__yy_memcpy (char *to, char *from, int count)
+__yy_bcopy (char *__from, char *__to, int __count)
 {
-  register char *f = from;
-  register char *t = to;
-  register int i = count;
+  register char *f = __from;
+  register char *t = __to;
+  register int i = __count;
 
   while (i-- > 0)
     *t++ = *f++;
@@ -447,37 +420,16 @@ __yy_memcpy (char *to, char *from, int count)
 #endif
 #endif
 
-#line 196 "/dn29/PRODUCTS/maintenance/Mandriva2008/bison-1.25/share/bison.simple"
-
-/* The user can define YYPARSE_PARAM as the name of an argument to be passed
-   into yyparse.  The argument should have type void *.
-   It should actually point to an object.
-   Grammar actions can access the variable by casting it
-   to the proper pointer type.  */
-
-#ifdef YYPARSE_PARAM
-#ifdef __cplusplus
-#define YYPARSE_PARAM_ARG void *YYPARSE_PARAM
-#define YYPARSE_PARAM_DECL
-#else /* not __cplusplus */
-#define YYPARSE_PARAM_ARG YYPARSE_PARAM
-#define YYPARSE_PARAM_DECL void *YYPARSE_PARAM;
-#endif /* not __cplusplus */
-#else /* not YYPARSE_PARAM */
-#define YYPARSE_PARAM_ARG
-#define YYPARSE_PARAM_DECL
-#endif /* not YYPARSE_PARAM */
-
+#line 169 "bison.simple"
 int
-yyparse(YYPARSE_PARAM_ARG)
-     YYPARSE_PARAM_DECL
+yyparse()
 {
   register int yystate;
   register int yyn;
   register short *yyssp;
   register YYSTYPE *yyvsp;
   int yyerrstatus;	/*  number of tokens to shift before error messages enabled */
-  int yychar1 = 0;		/*  lookahead token as an internal (translated) token number */
+  int yychar1;		/*  lookahead token as an internal (translated) token number */
 
   short	yyssa[YYINITDEPTH];	/*  the state stack			*/
   YYSTYPE yyvsa[YYINITDEPTH];	/*  the semantic value stack		*/
@@ -556,20 +508,13 @@ yynewstate:
 #ifdef yyoverflow
       /* Each stack pointer address is followed by the size of
 	 the data in use in that stack, in bytes.  */
+      yyoverflow("parser stack overflow",
+		 &yyss1, size * sizeof (*yyssp),
+		 &yyvs1, size * sizeof (*yyvsp),
 #ifdef YYLSP_NEEDED
-      /* This used to be a conditional around just the two extra args,
-	 but that might be undefined if yyoverflow is a macro.  */
-      yyoverflow("parser stack overflow",
-		 &yyss1, size * sizeof (*yyssp),
-		 &yyvs1, size * sizeof (*yyvsp),
 		 &yyls1, size * sizeof (*yylsp),
-		 &yystacksize);
-#else
-      yyoverflow("parser stack overflow",
-		 &yyss1, size * sizeof (*yyssp),
-		 &yyvs1, size * sizeof (*yyvsp),
-		 &yystacksize);
 #endif
+		 &yystacksize);
 
       yyss = yyss1; yyvs = yyvs1;
 #ifdef YYLSP_NEEDED
@@ -586,12 +531,12 @@ yynewstate:
       if (yystacksize > YYMAXDEPTH)
 	yystacksize = YYMAXDEPTH;
       yyss = (short *) alloca (yystacksize * sizeof (*yyssp));
-      __yy_memcpy ((char *)yyss, (char *)yyss1, size * sizeof (*yyssp));
+      __yy_bcopy ((char *)yyss1, (char *)yyss, size * sizeof (*yyssp));
       yyvs = (YYSTYPE *) alloca (yystacksize * sizeof (*yyvsp));
-      __yy_memcpy ((char *)yyvs, (char *)yyvs1, size * sizeof (*yyvsp));
+      __yy_bcopy ((char *)yyvs1, (char *)yyvs, size * sizeof (*yyvsp));
 #ifdef YYLSP_NEEDED
       yyls = (YYLTYPE *) alloca (yystacksize * sizeof (*yylsp));
-      __yy_memcpy ((char *)yyls, (char *)yyls1, size * sizeof (*yylsp));
+      __yy_bcopy ((char *)yyls1, (char *)yyls, size * sizeof (*yylsp));
 #endif
 #endif /* no yyoverflow */
 
@@ -730,8 +675,7 @@ yydefault:
 /* Do a reduction.  yyn is the number of a rule to reduce with.  */
 yyreduce:
   yylen = yyr2[yyn];
-  if (yylen > 0)
-    yyval = yyvsp[1-yylen]; /* implement default value of the action */
+  yyval = yyvsp[1-yylen]; /* implement default value of the action */
 
 #if YYDEBUG != 0
   if (yydebug)
@@ -752,80 +696,80 @@ yyreduce:
   switch (yyn) {
 
 case 10:
-#line 69 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 69 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_finfile();  return(0);  /*  fini pour celui-la  */  ;
     break;}
 case 15:
-#line 78 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 78 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_finhead();  ;
     break;}
 case 16:
-#line 80 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 80 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);     rec_newarg();  ;
     break;}
 case 17:
-#line 81 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 81 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  /* deja fait par lex*/ 	 rec_newarg();  ;
     break;}
 case 18:
-#line 82 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 82 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 19:
-#line 83 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 83 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_newarg();  ;
     break;}
 case 20:
-#line 84 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 84 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_typarg(rec_argMisc);      rec_newarg();
 			   yyerrstatus = 1; yyclearin;  ;
     break;}
 case 21:
-#line 89 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 89 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_listype();  ;
     break;}
 case 22:
-#line 92 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 92 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 23:
-#line 95 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 95 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  if (modeprint > 0)
 		{  printf("Record no : %d -- ",nbrec+1);  rec_print(currec);  }
 	   rec_newent ();  yyerrstatus = 0; ;
     break;}
 case 40:
-#line 122 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 122 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  scope_debut();  ;
     break;}
 case 41:
-#line 125 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 125 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_typarg(rec_argIdent);    rec_newarg();  ;
     break;}
 case 44:
-#line 131 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 131 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_deblist();  ;
     break;}
 case 45:
-#line 134 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 134 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  scope_fin();  ;
     break;}
 case 46:
-#line 136 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 136 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  printf("***  Warning : Export List not yet processed\n");
 	   rec_newent();  scope_fin() ; ;
     break;}
 case 47:
-#line 141 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 141 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_ident();  ;
     break;}
 case 48:
-#line 144 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 144 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 {  rec_type ();  ;
     break;}
 }
    /* the action file gets copied in in place of this dollarsign */
-#line 498 "/dn29/PRODUCTS/maintenance/Mandriva2008/bison-1.25/share/bison.simple"
+#line 442 "bison.simple"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -895,9 +839,7 @@ yyerrlab:   /* here on detecting error */
 	  int x, count;
 
 	  count = 0;
-	  /* Start X at -yyn if nec to avoid negative indexes in yycheck.  */
-	  for (x = (yyn < 0 ? -yyn : 0);
-	       x < (sizeof(yytname) / sizeof(char *)); x++)
+	  for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
 	    if (yycheck[x + yyn] == x)
 	      size += strlen(yytname[x]) + 15, count++;
 	  msg = (char *) malloc(size + 15);
@@ -908,8 +850,7 @@ yyerrlab:   /* here on detecting error */
 	      if (count < 5)
 		{
 		  count = 0;
-		  for (x = (yyn < 0 ? -yyn : 0);
-		       x < (sizeof(yytname) / sizeof(char *)); x++)
+		  for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
 		    if (yycheck[x + yyn] == x)
 		      {
 			strcat(msg, count == 0 ? ", expecting `" : " or `");
@@ -1021,7 +962,7 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 146 "/dn43/OCCT/tmp/results_15.04.2012/occt/release-sources-20120415/src/StepFile/step.yacc"
+#line 146 "/misc/dn47/KAS/builds/inv/LocalWOK/wok_entities/LOC/dev/inv-IR-2013-04-18-master-OCCT/src/StepFile/step.yacc"
 
 
 #ifdef _MSC_VER

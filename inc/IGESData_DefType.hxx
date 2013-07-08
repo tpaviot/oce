@@ -6,7 +6,22 @@
 #ifndef _IGESData_DefType_HeaderFile
 #define _IGESData_DefType_HeaderFile
 
-
+//!  Some fields of an IGES entity may be <br>
+//! - Undefined <br>
+//! - Defined as a positive integer <br>
+//! - Defined as a reference to a specialized entity. <br>
+//!  A typical example of this kind of variation is color. <br>
+//! This enumeration allows you to identify which of the above is the case. <br>
+//! The semantics of the terms are as follows: <br>
+//! - DefVoid indicates that the item contained in the field is undefined <br>
+//! - DefValue indicates that the item is defined as an immediate <br>
+//!   positive integer value (i.e. not a pointer) <br>
+//! - DefReference indicates that the item is defined as an entity <br>
+//! - DefAny indicates the item could not be determined <br>
+//! - ErrorVal indicates that the item is defined as an integer <br>
+//!   but its value is incorrect (it could be out of range, for example) <br>
+//! - ErrorRef indicates that the item is defined as an entity but <br>
+//!    is not of the required type. <br>
 enum IGESData_DefType {
 IGESData_DefVoid,
 IGESData_DefValue,

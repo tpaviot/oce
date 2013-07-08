@@ -39,10 +39,10 @@ SET(TOOLKIT_MODULES
 )
 SET(TOOLKIT_DEPENDS
 	TKernel
-	TKG3d
-	TKGeomBase
 	TKMath
+	TKG3d
 	TKG2d
+	TKGeomBase
 	TKBRep
 )
 

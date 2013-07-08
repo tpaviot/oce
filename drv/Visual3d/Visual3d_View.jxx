@@ -49,9 +49,6 @@
 #ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
 #endif
-#ifndef _Aspect_GraphicDriver_HeaderFile
-#include <Aspect_GraphicDriver.hxx>
-#endif
 #ifndef _Graphic3d_Plotter_HeaderFile
 #include <Graphic3d_Plotter.hxx>
 #endif

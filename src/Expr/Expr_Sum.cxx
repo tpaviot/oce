@@ -167,9 +167,7 @@ Handle(Expr_GeneralExpression) Expr_Sum::ShallowSimplified () const
     sumop = new Expr_Sum(newops);
     return sumop->ShallowSimplified();
   }
-
   Standard_Real vals = 0.;
-
   Standard_Boolean noone = Standard_True;
   for (i = 1; i <= max ; i++) {
     op = Operand(i);

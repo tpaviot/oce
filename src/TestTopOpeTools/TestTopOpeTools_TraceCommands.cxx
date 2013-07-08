@@ -255,7 +255,7 @@ Standard_EXPORT Standard_Integer TestTopOpeTools_SetFlags
   const char* flag = a[1];
   t_value value; // new value of flag
   if (n == 2) value = Standard_True;
-  else value = (atoi(a[2]) ? Standard_True : Standard_False);
+  else value = (Draw::Atoi(a[2]) ? Standard_True : Standard_False);
 
   if (mute == 0) {
     if ( n == 2 ) {
@@ -319,7 +319,7 @@ Standard_Integer dstrace(Draw_Interpretor& di, Standard_Integer n , const char**
   pa[1] = (char *)a1.ToCString();
   for (Standard_Integer i=1;i<n;i++) pa[i+1] = a[i];
   TestTopOpeTools_SetTrace(di,npa,pa);
-  if (pa) delete [] pa;
+  if (pa) free(pa);
   return 0;
 }
 

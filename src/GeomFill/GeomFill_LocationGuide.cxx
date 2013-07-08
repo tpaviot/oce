@@ -226,7 +226,10 @@ static void InGoodPeriod(const Standard_Real Prec,
   gp_Vec T,N,B;
   Standard_Integer ii, Deg;
   Standard_Boolean isconst, israt=Standard_False;
-  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, DeltaU, Diff;
+  Standard_Real t, v,w, OldAngle=0, Angle, DeltaG, Diff;
+#if DEB
+  Standard_Real DeltaU;
+#endif
   Standard_Real CurAngle =  PrecAngle, a1, a2;
   gp_Pnt2d p1,p2;
   Handle(Geom_SurfaceOfRevolution) Revol; // surface de revolution
@@ -287,7 +290,9 @@ static void InGoodPeriod(const Standard_Real Prec,
   Sup(3) = Ul + Delta/10;
 
   // JALONNEMENT
+#if DEB
   DeltaU = (Ul-Uf)/(2+NbKnots);
+#endif
   if (uperiodic) UPeriod = Ul-Uf;
 
   for (ii=1; ii<=myNbPts; ii++) {
@@ -742,8 +747,13 @@ static void InGoodPeriod(const Standard_Real Prec,
 
   if (rotation) {  
     return Standard_False;
-    
-#if 0 // @todo Should be really dead code?
+ /*   
+#ifdef DEB
+    Standard_Real U = myFirstS + ratio*(Param-myCurve->FirstParameter());
+#else
+    myCurve->FirstParameter() ;
+#endif
+      
     // initialisation du germe 
     InitX(Param);      
     
@@ -856,8 +866,7 @@ static void InGoodPeriod(const Standard_Real Prec,
 	myStatus = GeomFill_ImpossibleContact;
 	return Standard_False;
       }
-
-#endif // Dead code?
+*/
     }//if_rotation
   
 

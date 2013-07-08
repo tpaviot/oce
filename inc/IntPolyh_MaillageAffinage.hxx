@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,38 +46,26 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
+#ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
+#include <IntPolyh_ArrayOfSectionLines.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfTangentZones_HeaderFile
+#include <IntPolyh_ArrayOfTangentZones.hxx>
+#endif
 class Adaptor3d_HSurface;
 class TColStd_Array1OfReal;
 class Bnd_Box;
 class IntPolyh_Point;
 class IntPolyh_StartPoint;
 class IntPolyh_Triangle;
-class IntPolyh_ArrayOfSectionLines;
-class IntPolyh_ArrayOfTangentZones;
 class IntPolyh_SectionLine;
-class IntPolyh_ArrayOfPoints;
-class IntPolyh_ArrayOfEdges;
-class IntPolyh_ArrayOfTriangles;
-class IntPolyh_ArrayOfStartPoints;
-class IntPolyh_ArrayOfCouples;
 
 
 
 class IntPolyh_MaillageAffinage  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   IntPolyh_MaillageAffinage(const Handle(Adaptor3d_HSurface)& S1,const Standard_Integer NbSU1,const Standard_Integer NbSV1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Integer NbSU2,const Standard_Integer NbSV2,const Standard_Integer PRINT);

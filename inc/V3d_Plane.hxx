@@ -45,7 +45,7 @@
 #endif
 class Visual3d_ClipPlane;
 class Graphic3d_Structure;
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_View;
 
 
@@ -61,10 +61,10 @@ class V3d_Plane : public MMgt_TShared {
 public:
 
   //! Creates a clipping plane using the equation : <br>
-//!          <A>*X + <B>*Y + <C>*Z + <D> = 0.0 <br>//!  Warning! raises BadValue from Viewer <br>
+//!          <A>*X + <B>*Y + <C>*Z + <D> = 0.0 <br>//!  Warning! raises BadValue from V3d <br>
 //!          if the norm of the plane is NULL. <br>
   Standard_EXPORT   V3d_Plane(const Quantity_Parameter A = 0.0,const Quantity_Parameter B = 0.0,const Quantity_Parameter C = 1.0,const Quantity_Parameter D = 0.0);
-  //! Modifies the plane equation. <br>//!  Warning! raises BadValue from Viewer <br>
+  //! Modifies the plane equation. <br>//!  Warning! raises BadValue from V3d <br>
 //!          if the norm of the plane is NULL. <br>
 //!	If the norm of the plane is NULL. <br>
   Standard_EXPORT     void SetPlane(const Quantity_Parameter A,const Quantity_Parameter B,const Quantity_Parameter C,const Quantity_Parameter D) ;

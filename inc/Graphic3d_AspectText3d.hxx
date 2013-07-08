@@ -34,8 +34,8 @@
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
-#ifndef _OSD_FontAspect_HeaderFile
-#include <OSD_FontAspect.hxx>
+#ifndef _Font_FontAspect_HeaderFile
+#include <Font_FontAspect.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -51,18 +51,32 @@ class Quantity_Color;
 //!      text primitives. This group contains the colour, <br>
 //!      font, expansion factor (height/width ratio), and <br>
 //!      inter-character space. <br>
+//! <br>
+//!          NOTE: The font name is stored in the aspect instance <br>
+//!          so it is safe to pass it as const char* to OpenGl package <br>
+//!          without copying the string. However, the aspect should not <br>
+//!          be deleted until the text drawn using this aspect is no longer <br>
+//!          visible. The best practice is to keep the aspect in the object's drawer. <br>
 class Graphic3d_AspectText3d : public MMgt_TShared {
 
 public:
 
   //! Creates a context table for text primitives <br>
 //!      defined with the following default values: <br>
+//! <br>
+//!      Colour                    : NOC_YELLOW <br>
+//!      Font                      : NOF_ASCII_MONO <br>
+//!      Expansion factor          : 1. <br>
+//!      Space between characters  : 0. <br>
+//!      The style                 : TOST_NORMAL <br>
+//!      The display type          : TODT_NORMAL <br>
   Standard_EXPORT   Graphic3d_AspectText3d();
   //! Creates a context table for text primitives <br>
 //!      defined with the specified values. <br>
 //!          AFont may be to take means from User(example "Courier New") <br>
-//!      or Font described in OpenGl_FontName(example Graphic3d_NOF_ASCII_MONO) <br>
+//!      or Font name defined in Font_NameOfFont(example Font_NOF_ASCII_MONO) <br>
 //!      or use default font("Courier") <br>
+//! <br>
   Standard_EXPORT   Graphic3d_AspectText3d(const Quantity_Color& AColor,const Standard_CString AFont,const Standard_Real AExpansionFactor,const Standard_Real ASpace,const Aspect_TypeOfStyleText AStyle = Aspect_TOST_NORMAL,const Aspect_TypeOfDisplayText ADisplayType = Aspect_TODT_NORMAL);
   //! Modifies the colour of <me>. <br>
   Standard_EXPORT     void SetColor(const Quantity_Color& AColor) ;
@@ -82,6 +96,11 @@ public:
 //!              over the other object according to the priority. <br>
   Standard_EXPORT     void SetStyle(const Aspect_TypeOfStyleText AStyle) ;
   //! Define the display type of the text. <br>
+//! <br>
+//!      TODT_NORMAL     Default display. Text only. <br>
+//!      TODT_SUBTITLE   There is a subtitle under the text. <br>
+//!      TODT_DEKALE     The text is displayed with a 3D style. <br>
+//!      TODT_BLEND      The text is displayed in XOR. <br>
   Standard_EXPORT     void SetDisplayType(const Aspect_TypeOfDisplayText ADisplayType) ;
   //! Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType <br>
 //!         and the colour of backgroubd for the TODT_DEKALE TextDisplayType. <br>
@@ -95,9 +114,9 @@ public:
   //! Returns Angle of degree <br>
   Standard_EXPORT     Standard_Real GetTextAngle() const;
   //! Turns usage of Aspect text <br>
-  Standard_EXPORT     void SetTextFontAspect(const OSD_FontAspect AFontAspect) ;
+  Standard_EXPORT     void SetTextFontAspect(const Font_FontAspect AFontAspect) ;
   //! Returns text FontAspect <br>
-  Standard_EXPORT     OSD_FontAspect GetTextFontAspect() const;
+  Standard_EXPORT     Font_FontAspect GetTextFontAspect() const;
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace) const;
   //! Returns the current values of the group <me>. <br>
@@ -105,7 +124,7 @@ public:
   //! Returns the current values of the group <me>. <br>
   Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle) const;
   //! Returns the current values of the group <me>. <br>
-  Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle,OSD_FontAspect& ATextFontAspect) const;
+  Standard_EXPORT     void Values(Quantity_Color& AColor,Standard_CString& AFont,Standard_Real& AnExpansionFactor,Standard_Real& ASpace,Aspect_TypeOfStyleText& AStyle,Aspect_TypeOfDisplayText& ADisplayType,Quantity_Color& AColorSubTitle,Standard_Boolean& ATextZoomable,Standard_Real& ATextAngle,Font_FontAspect& ATextFontAspect) const;
 
 
 
@@ -129,7 +148,7 @@ Aspect_TypeOfDisplayText MyDisplayType;
 Quantity_Color MyColorSubTitle;
 Standard_Boolean MyTextZoomable;
 Standard_Real MyTextAngle;
-OSD_FontAspect MyTextFontAspect;
+Font_FontAspect MyTextFontAspect;
 
 
 };

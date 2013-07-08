@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -21,6 +24,9 @@
 #endif
 #ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
+#endif
+#ifndef _gp_Vec_HeaderFile
+#include <gp_Vec.hxx>
 #endif
 #ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
@@ -56,18 +62,7 @@ class math_Matrix;
 class Extrema_CCFOfECCOfExtCC  : public math_FunctionSetWithDerivatives {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Extrema_CCFOfECCOfExtCC(const Standard_Real thetol = 1.0e-10);
@@ -121,6 +116,8 @@ Standard_Real myU;
 Standard_Real myV;
 gp_Pnt myP1;
 gp_Pnt myP2;
+gp_Vec myDu;
+gp_Vec myDv;
 TColStd_SequenceOfReal mySqDist;
 Extrema_SeqPOnCOfCCFOfECCOfExtCC myPoints;
 

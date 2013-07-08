@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -45,21 +48,11 @@ class TShort_Array1OfShortReal;
 class Aspect_MarkerStyle  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a marker style with the default value of <br>
 //!	    MarkerStyle type : POINT <br>
+//! <br>
   Standard_EXPORT   Aspect_MarkerStyle();
   //! Creates the marker style <aType>. <br>
   Standard_EXPORT   Aspect_MarkerStyle(const Aspect_TypeOfMarker aType);

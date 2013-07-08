@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -37,18 +40,7 @@ class IntCurveSurface_IntersectionPoint;
 class TopClass_Intersection3d  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Perform the intersection between the <br>
 //!          segment L(0) ... L(Prm) and the Face <Face>. <br>
@@ -66,6 +58,7 @@ public:
   //! True is returned if a point has been found. <br>
   Standard_EXPORT   virtual  Standard_Boolean HasAPoint() const = 0;
   //! Returns the Intersection Point. <br>
+//! <br>
   Standard_EXPORT   virtual const IntCurveSurface_IntersectionPoint& Point() const = 0;
   //! Returns the state of the point on the face. <br>
 //!          The values can be either TopAbs_IN <br>

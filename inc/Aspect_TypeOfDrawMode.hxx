@@ -6,7 +6,8 @@
 #ifndef _Aspect_TypeOfDrawMode_HeaderFile
 #define _Aspect_TypeOfDrawMode_HeaderFile
 
-//! Definition of the attachment for the layers <br>
+//! Definition of the draw modes <br>
+//! <br>
 enum Aspect_TypeOfDrawMode {
 Aspect_TODM_REPLACE,
 Aspect_TODM_ERASE,

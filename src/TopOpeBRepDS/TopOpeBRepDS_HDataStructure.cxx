@@ -43,16 +43,16 @@
 #include <TopOpeBRepDS_define.hxx>
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceISTO();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceEDSF(); 
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceDSFD(); 
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceDEGEN(); 
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettracePCI();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettracePI();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettracePEI();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettracePI();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
+extern Standard_Boolean TopOpeBRepDS_GettraceISTO();
+extern Standard_Boolean TopOpeBRepDS_GettraceEDSF(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSFD(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDEGEN(); 
+extern Standard_Boolean TopOpeBRepDS_GettracePCI();
+extern Standard_Boolean TopOpeBRepDS_GettracePI();
+extern Standard_Boolean TopOpeBRepDS_GettracePEI();
+extern Standard_Boolean TopOpeBRepDS_GettracePI();
+extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
 
 static Standard_Boolean traceSTORE()
 {
@@ -700,8 +700,8 @@ Standard_Boolean TopOpeBRepDS_HDataStructure::GetGeometry
 }
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
+extern Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
+extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
 static Standard_Boolean TRC(const Standard_Integer SIX) {
   Standard_Boolean b1 = TopOpeBRepDS_GettraceSTRANGE();
   Standard_Boolean b2 = TopOpeBRepDS_GettraceSPSX(SIX);
@@ -768,7 +768,9 @@ void TopOpeBRepDS_HDataStructure::StoreInterference
   // append I to list LI
   LI.Append(I);
 
+#ifdef DEB
   Standard_Boolean appendtoG = Standard_False;
+#endif
   Standard_Integer G = I->Geometry();
 
   // append I to list of interference connected to G = I->Geometry()
@@ -781,12 +783,16 @@ void TopOpeBRepDS_HDataStructure::StoreInterference
     break;
     
   case TopOpeBRepDS_SURFACE :
+#ifdef DEB
     appendtoG = Standard_True;
+#endif
     myDS.ChangeSurfaceInterferences(G).Append(I);
     break;
     
   case TopOpeBRepDS_CURVE :
+#ifdef DEB
     appendtoG = Standard_True;
+#endif
     myDS.ChangeCurveInterferences(G).Append(I);
     break;
     

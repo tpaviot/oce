@@ -55,6 +55,7 @@ extern Draw_Viewer dout;
 #include <tcl.h>
 #include <errno.h>
 
+#include <OSD_Environment.hxx>
 
 Standard_Boolean Draw_ParseFailed;
 
@@ -399,12 +400,12 @@ static Standard_Integer erase(Draw_Interpretor& di, Standard_Integer n, const ch
 static Standard_Integer draw(Draw_Interpretor& , Standard_Integer n, const char** a)
 {
   if (n < 3) return 1;
-  Standard_Integer id = atoi(a[1]);
+  Standard_Integer id = Draw::Atoi(a[1]);
   if (!dout.HasView(id)) {
     cout << "bad view number in draw"<<endl;
     return 1;
   }
-  Standard_Integer mo = atoi(a[2]);
+  Standard_Integer mo = Draw::Atoi(a[2]);
   Draw_Display d = dout.MakeDisplay(id);
   d.SetMode(mo);
   Standard_Integer i;
@@ -478,7 +479,7 @@ static Standard_Integer whatis(Draw_Interpretor& di, Standard_Integer n, const c
 static Standard_Integer value(Draw_Interpretor& di, Standard_Integer n, const char** a)
 {
   if (n != 2) return 1;
-  di << atof(a[1]);
+  di << Draw::Atof(a[1]);
 
   return 0;
 }
@@ -585,10 +586,50 @@ static Standard_Integer set(Draw_Interpretor& di, Standard_Integer n, const char
   Standard_Real val=0;
   for (i = 1; i < n; i += 2) {
     val = 0;
-    if (i+1 < n) val = atof(a[i+1]);
+    if (i+1 < n) val = Draw::Atof(a[i+1]);
     Draw::Set(a[i],val);
   }
   di << val;
+  return 0;
+}
+
+//=======================================================================
+//function : dsetenv
+//purpose  : 
+//=======================================================================
+
+static Standard_Integer dsetenv(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc < 2) {
+    cout << "Use: " << argv[0] << " {varname} [value]" << endl;
+    return 1;
+  }
+
+  OSD_Environment env (argv[1]);
+  if (argc > 2 && argv[2][0] != '\0')
+  {
+    env.SetValue (argv[2]);
+    env.Build();
+  }
+  else
+    env.Remove();
+  return env.Failed();
+}
+
+//=======================================================================
+//function : dgetenv
+//purpose  : 
+//=======================================================================
+
+static Standard_Integer dgetenv(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
+{
+  if (argc < 2) {
+    cout << "Use: " << argv[0] << " {varname}" << endl;
+    return 1;
+  }
+
+  const char* val = getenv (argv[1]);
+  di << ( val ? val : "" );
   return 0;
 }
 
@@ -640,7 +681,7 @@ static Standard_Integer pick(Draw_Interpretor& , Standard_Integer n, const char*
   Standard_Integer id;
   Standard_Integer X,Y,b;
   Standard_Boolean wait = (n == 6);
-  if (!wait) id = atoi(a[1]);
+  if (!wait) id = Draw::Atoi(a[1]);
   dout.Select(id,X,Y,b,wait);
   Standard_Real z = dout.Zoom(id);
   gp_Pnt P((Standard_Real)X /z,(Standard_Real)Y /z,0);
@@ -905,7 +946,7 @@ void  Draw::Repaint()
 static Standard_Integer trigo (Draw_Interpretor& di, Standard_Integer , const char** a)
 {
 
-  Standard_Real x = atof(a[1]);
+  Standard_Real x = Draw::Atof(a[1]);
 
   if (!strcasecmp(a[0],"cos"))
     di << Cos(x);
@@ -920,7 +961,7 @@ static Standard_Integer trigo (Draw_Interpretor& di, Standard_Integer , const ch
   else if (!strcasecmp(a[0],"asin"))
     di << ASin(x);
   else if (!strcasecmp(a[0],"atan2"))
-    di << ATan2(x,atof(a[2]));
+    di << ATan2(x,Draw::Atof(a[2]));
 
   return 0;
 }
@@ -929,9 +970,6 @@ static Standard_Integer trigo (Draw_Interpretor& di, Standard_Integer , const ch
 //=======================================================================
 // Atof and Atoi
 //=======================================================================
-
-#undef atof
-#undef atoi
 
 static Standard_Boolean Numeric(char c)
 {
@@ -988,7 +1026,7 @@ static Standard_Real ParseValue(char*& name)
 	*p = '\0';
 	
 	if (Numeric(*name))   // numeric litteral
-	  x = atof(name);
+	  x = Atof(name);
 	else if (!Draw::Get((Standard_CString) name,x)) {  // variable
 	  
 	  // search for a function ...
@@ -996,7 +1034,7 @@ static Standard_Real ParseValue(char*& name)
 	  // count arguments
 	  Standard_Integer argc = 1;
 	  char* q = p;
-	  while ((*q == ' ') && (*q == '\t')) q++;
+	  while ((*q == ' ') || (*q == '\t')) q++;
 	  if (*q == '(') {
 	    Standard_Integer pc = 1;
 	    argc = 2;
@@ -1046,7 +1084,7 @@ static Standard_Real ParseValue(char*& name)
 		  x = 0;
 		}
 		else
-		  x = atof(theCommands.Result());
+		  x = Atof(theCommands.Result());
 		theCommands.Reset();
 		if (sv) {
 		  theCommands << sv;
@@ -1269,6 +1307,10 @@ void  Draw::VariableCommands(Draw_Interpretor& theCommands)
   //theCommands.Add("rename","rename name1 toname1 name2 toname2 ...",__FILE__,copy,g);
   theCommands.Add("renamevar","renamevar name1 toname1 name2 toname2 ...",__FILE__,copy,g);
   theCommands.Add("dset","var1 value1 vr2 value2 ...",__FILE__,set,g);
+
+  // commands to access C environment variables; see Mantis issue #23197
+  theCommands.Add("dgetenv","var : get value of environment variable in C subsystem",__FILE__,dgetenv,g);
+  theCommands.Add("dsetenv","var [value] : set (unset if value is empty) environment variable in C subsystem",__FILE__,dsetenv,g);
 
   theCommands.Add("pick","pick id X Y Z b [nowait]",__FILE__,pick,g);
   theCommands.Add("lastrep","lastrep id X Y [Z] b, return name",__FILE__,lastrep,g);

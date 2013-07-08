@@ -29,6 +29,7 @@
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <Bnd_Box.hxx>
 #include <BRepMesh_PDiscretRoot.hxx>
+#include <Draw.hxx>
 #include <DBRep.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopExp.hxx>
@@ -44,6 +45,12 @@
 #include <Poly_Polygon3D.hxx>
 #include <Poly_Polygon2D.hxx>
 #include <Standard.hxx>
+#include <TopExp_Explorer.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+#include <Poly_PolygonOnTriangulation.hxx>
+#include <TopoDS_Face.hxx>
+#include <BRepMesh_Edge.hxx>
+#include <NCollection_Map.hxx>
 
 #include <stdio.h>
 
@@ -231,10 +238,10 @@ static Standard_Integer mpincmesh (Draw_Interpretor& , Standard_Integer n, const
     return 0;
   }
   //
-  aDeflection=atof(a[2]);
+  aDeflection=Draw::Atof(a[2]);
   aAngle=0.5;
   if (n>3) {
-    aAngle=atof(a[3]);
+    aAngle=Draw::Atof(a[3]);
   }
   //
   Handle(BRepMesh_DiscretRoot) aMeshAlgo = BRepMesh_DiscretFactory::Get().Discret (aS,
@@ -272,7 +279,7 @@ static Standard_Integer triarea (Draw_Interpretor& di, int n, const char ** a)
   if (shape.IsNull()) return 1;
   Standard_Real anEps = -1.;
   if (n > 2)
-    anEps = atof(a[2]);
+    anEps = Draw::Atof(a[2]);
 
   TopTools_IndexedMapOfShape aMapF;
   TopExp::MapShapes (shape, TopAbs_FACE, aMapF);
@@ -332,6 +339,11 @@ static Standard_Integer triarea (Draw_Interpretor& di, int n, const char ** a)
 }
 
 //#######################################################################
+Standard_Boolean IsEqual(const BRepMesh_Edge& theFirst, const BRepMesh_Edge& theSecond) 
+{
+  return theFirst.IsEqual(theSecond);
+}
+
 static Standard_Integer tricheck (Draw_Interpretor& di, int n, const char ** a)
 {
   if (n < 2) return 1;
@@ -356,12 +368,15 @@ static Standard_Integer tricheck (Draw_Interpretor& di, int n, const char ** a)
       Standard_Integer iF = aCheck.GetFaceNumWithFL(k);
       nbFree += nbEdge;
       di << "free links of face " << iF << "\n";
-      const TopoDS_Face& aFace = TopoDS::Face(aMapF.FindKey(iF));
+
+      const TopoDS_Shape& aShape = aMapF.FindKey(iF);
+      const TopoDS_Face& aFace = TopoDS::Face(aShape);
       TopLoc_Location aLoc;
       Handle(Poly_Triangulation) aT = BRep_Tool::Triangulation(aFace, aLoc);
       const TColgp_Array1OfPnt& aPoints = aT->Nodes();
       const TColgp_Array1OfPnt2d& aPoints2d = aT->UVNodes();
       const gp_Trsf& trsf = aLoc.Transformation();
+
       TColgp_Array1OfPnt pnts(1,2);
       TColgp_Array1OfPnt2d pnts2d(1,2);
       for (i=1; i <= nbEdge; i++) {
@@ -422,11 +437,87 @@ static Standard_Integer tricheck (Draw_Interpretor& di, int n, const char ** a)
   }
 
   // output errors summary to DRAW
-  if ( nbFree > 0 || nbErr > 0 || nbAsync > 0 || nbFreeNodes > 0 )
+  if ( nbFree > 0 || nbErr > 0 || nbAsync > 0 || nbFreeNodes > 0)
     di << "Free_links " << nbFree
        << " Cross_face_errors " << nbErr
        << " Async_edges " << nbAsync 
        << " Free_nodes " << nbFreeNodes << "\n";
+
+
+  Standard_Integer aFaceId = 1;
+  TopExp_Explorer aFaceExp(shape, TopAbs_FACE);
+  for ( ; aFaceExp.More(); aFaceExp.Next(), ++aFaceId)
+  {
+    const TopoDS_Shape& aShape = aFaceExp.Current();
+    const TopoDS_Face& aFace = TopoDS::Face(aShape);
+
+    TopLoc_Location aLoc;
+    Handle(Poly_Triangulation) aT = BRep_Tool::Triangulation(aFace, aLoc);
+
+    // Iterate boundary edges
+    NCollection_Map<BRepMesh_Edge> aBoundaryEdgeMap;
+    TopExp_Explorer anExp(aShape, TopAbs_EDGE);
+    for ( ; anExp.More(); anExp.Next() )
+    {
+      TopLoc_Location anEdgeLoc;
+      const TopoDS_Edge& anEdge = TopoDS::Edge(anExp.Current());
+      Handle(Poly_PolygonOnTriangulation) aPoly = BRep_Tool::PolygonOnTriangulation(anEdge, aT, aLoc);
+      if (aPoly.IsNull())
+      {
+        continue;
+      }
+
+      const TColStd_Array1OfInteger& anIndices = aPoly->Nodes();
+      Standard_Integer aLower  = anIndices.Lower(); 
+      Standard_Integer anUpper = anIndices.Upper();
+
+      Standard_Integer aPrevNode = -1;
+      for (Standard_Integer i = aLower; i <= anUpper; ++i)
+      {
+        Standard_Integer aNodeIdx = anIndices.Value(i);
+        if (i != aLower)
+        {
+          BRepMesh_Edge aLink(aPrevNode, aNodeIdx, BRepMesh_Frontier);
+          aBoundaryEdgeMap.Add(aLink);
+        }
+        aPrevNode = aNodeIdx;
+      }
+    }
+
+    if (aBoundaryEdgeMap.Size() == 0)
+    {
+      break;
+    }
+
+    const Poly_Array1OfTriangle& aTris = aT->Triangles();
+    NCollection_Map<BRepMesh_Edge> aFreeEdgeMap;
+    Standard_Integer aTriNum = aTris.Length();
+    for ( Standard_Integer aTriIndx = 1; aTriIndx <= aTriNum; aTriIndx++ )
+    {
+      const Poly_Triangle& aTri = aTris(aTriIndx);
+      Standard_Integer aTriNodes[3] = { aTri.Value(1), aTri.Value(2), aTri.Value(3)};
+
+      for (Standard_Integer i = 1; i <= 3; ++i)
+      {
+        Standard_Integer aLastId  = aTriNodes[i % 3];
+        Standard_Integer aFirstId = aTriNodes[i - 1];
+
+        BRepMesh_Edge aLink(aFirstId, aLastId, BRepMesh_Free);
+        if (!aBoundaryEdgeMap.Contains(aLink))
+        {
+          if (!aFreeEdgeMap.Add(aLink))
+          {
+            aFreeEdgeMap.Remove(aLink);
+          }
+        }
+      }
+    }
+
+    if (aFreeEdgeMap.Size() != 0)
+    {
+      di << "Not connected mesh inside face " << aFaceId << "\n";
+    }
+  }
   return 0;
 }
 
@@ -438,7 +529,7 @@ static int mpparallel (Draw_Interpretor& di, Standard_Integer argc, const char**
 {
   if (argc == 2)
   {
-    Standard_Boolean isParallelOn = atoi (argv[1]) == 1;
+    Standard_Boolean isParallelOn = Draw::Atoi (argv[1]) == 1;
     BRepMesh_IncrementalMesh::SetParallelDefault (isParallelOn);
     if (isParallelOn)
       Standard::SetReentrant(Standard_True);

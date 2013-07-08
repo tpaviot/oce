@@ -20,7 +20,6 @@
 
 #include <OpenGl_GraphicDriver.hxx>
 
-#include <OpenGl_Callback.hxx>
 #include <OpenGl_Group.hxx>
 #include <OpenGl_PrimitiveArray.hxx>
 
@@ -79,38 +78,16 @@ void OpenGl_GraphicDriver::PrimitiveArray( const Graphic3d_CGroup& ACGroup,
   }
 }
 
-//=======================================================================
-//function : RemovePrimitiveArray
-//purpose  : Purpose: Clear visualization data in graphical driver and
-//           stop displaying the primitives array of the graphical group
-//           <theCGroup>. This method is internal and should be used by
-//           Graphic3d_Group only.
-//=======================================================================
-
-void OpenGl_GraphicDriver::RemovePrimitiveArray (const Graphic3d_CGroup&         ACGroup,
-                                                const Graphic3d_PrimitiveArray& thePArray)
+void OpenGl_GraphicDriver::UserDraw (const Graphic3d_CGroup&    theCGroup,
+                                     const Graphic3d_CUserDraw& theUserDraw)
 {
-  if ( ACGroup.ptrGroup && thePArray )
+  if (theCGroup.ptrGroup != NULL
+   && myUserDrawCallback != NULL)
   {
-    ((OpenGl_Group *)ACGroup.ptrGroup)->RemovePrimitiveArray( (CALL_DEF_PARRAY *) thePArray );
-  }
-}
-
-static OpenGl_UserDrawCallback MyUserDrawCallback = NULL;
-
-OpenGl_UserDrawCallback& UserDrawCallback ()
-{
-  return MyUserDrawCallback;
-}
-
-void OpenGl_GraphicDriver::UserDraw ( const Graphic3d_CGroup& ACGroup,
-                                     const Graphic3d_CUserDraw& AUserDraw )
-{
-  if (ACGroup.ptrGroup && MyUserDrawCallback)
-  {
-    OpenGl_Element *auserdraw = (*MyUserDrawCallback)(&AUserDraw);
-
-    if (auserdraw != 0)
-      ((OpenGl_Group *)ACGroup.ptrGroup)->AddElement( TelUserdraw, auserdraw );
+    OpenGl_Element* aUserDraw = myUserDrawCallback(&theUserDraw);
+    if (aUserDraw != NULL)
+    {
+      ((OpenGl_Group* )theCGroup.ptrGroup)->AddElement (TelUserdraw, aUserDraw);
+    }
   }
 }

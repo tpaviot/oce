@@ -6,7 +6,7 @@
 #ifndef _Aspect_TypeOfColorScaleOrientation_HeaderFile
 #define _Aspect_TypeOfColorScaleOrientation_HeaderFile
 
-//! Defines the type of position for color scale labels <br>
+//! Defines the type of color scale orientation <br>
 enum Aspect_TypeOfColorScaleOrientation {
 Aspect_TOCSO_NONE,
 Aspect_TOCSO_LEFT,

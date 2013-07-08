@@ -25,11 +25,11 @@
 #ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
 #endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
-#include <TopTools_DataMapOfShapeShape.hxx>
-#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
+#include <TopTools_DataMapOfShapeShape.hxx>
 #endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
@@ -57,6 +57,9 @@ public:
   Standard_EXPORT   LocOpe_WiresOnShape(const TopoDS_Shape& S);
   
   Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
+  //! Set the flag of check internal intersections <br>
+//!          default value is True (to check) <br>
+        void SetCheckInterior(const Standard_Boolean ToCheckInterior) ;
   
   Standard_EXPORT     void Bind(const TopoDS_Wire& W,const TopoDS_Face& F) ;
   
@@ -111,6 +114,7 @@ private:
 TopoDS_Shape myShape;
 TopTools_IndexedDataMapOfShapeShape myMapEF;
 TopTools_MapOfShape myFacesWithSection;
+Standard_Boolean myCheckInterior;
 TopTools_DataMapOfShapeShape myMap;
 Standard_Boolean myDone;
 Standard_Integer myIndex;

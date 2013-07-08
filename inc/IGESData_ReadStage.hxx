@@ -6,22 +6,7 @@
 #ifndef _IGESData_ReadStage_HeaderFile
 #define _IGESData_ReadStage_HeaderFile
 
-//! Some fields of an IGES entity may be <br>
-//! - Undefined <br>
-//! - Defined as a single item <br>
-//! - Defined as a list of items. <br>
-//!   A typical example, which presents this kind of variation, <br>
-//! is a level number. <br>
-//! This enumeration allows you to identify which of the above is the case. <br>
-//! The semantics of the terms is as follows: <br>
-//! - DefNone indicates that the list is empty (there is not <br>
-//!   even a single item). <br>
-//! - DefOne indicates that the list contains a single item. <br>
-//! - DefSeveral indicates that the list contains several items. <br>
-//! - ErrorOne indicates that the list contains one item, but <br>
-//!   that this item is incorrect <br>
-//! - ErrorSeveral indicates that the list contains several <br>
-//!   items, but that at least one of them is incorrect. <br>
+//! gives successive stages of reading an entity (see ParamReader) <br>
 enum IGESData_ReadStage {
 IGESData_ReadDir,
 IGESData_ReadOwn,

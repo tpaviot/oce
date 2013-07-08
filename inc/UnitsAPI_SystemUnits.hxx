@@ -6,7 +6,16 @@
 #ifndef _UnitsAPI_SystemUnits_HeaderFile
 #define _UnitsAPI_SystemUnits_HeaderFile
 
-
+//! Identifies unit systems which may be defined as a <br>
+//! basis system in the user's session: <br>
+//! -   UnitsAPI_DEFAULT : default system (this is the SI system) <br>
+//! -   UnitsAPI_SI : the SI unit system <br>
+//! -   UnitsAPI_MDTV : the MDTV unit system; it <br>
+//!   is equivalent to the SI unit system but the <br>
+//!   length unit and all its derivatives use <br>
+//!   millimeters instead of meters. <br>
+//! Use the function SetLocalSystem to set up one <br>
+//! of these unit systems as working environment. <br>
 enum UnitsAPI_SystemUnits {
 UnitsAPI_DEFAULT,
 UnitsAPI_SI,

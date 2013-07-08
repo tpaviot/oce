@@ -19,9 +19,6 @@
 #ifndef _Graphic3d_CStructure_HeaderFile
 #include <Graphic3d_CStructure.hxx>
 #endif
-#ifndef _Aspect_GenId_HeaderFile
-#include <Aspect_GenId.hxx>
-#endif
 #ifndef _TColStd_SequenceOfAddress_HeaderFile
 #include <TColStd_SequenceOfAddress.hxx>
 #endif
@@ -88,6 +85,9 @@
 #ifndef _Handle_Graphic3d_Plotter_HeaderFile
 #include <Handle_Graphic3d_Plotter.hxx>
 #endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
 class Graphic3d_GraphicDriver;
 class Graphic3d_PriorityDefinitionError;
 class Graphic3d_StructureDefinitionError;
@@ -106,7 +106,6 @@ class Graphic3d_MapOfStructure;
 class gp_Pnt;
 class Graphic3d_Plotter;
 class Graphic3d_Vector;
-class Graphic3d_Vertex;
 
 
 //! This class allows the definition a graphic object. <br>
@@ -172,6 +171,13 @@ public:
   Standard_EXPORT   virtual  void Erase() ;
   //! Highlights the structure <me> in all the <br>
 //!	    views of the visualiser, using the following methods: <br>
+//! <br>
+//!   TOHM_COLOR		= drawn in the highlight color <br>
+//!				  (default white) <br>
+//!	    TOHM_BLINK		= blinking <br>
+//!   TOHM_BOUNDBOX	= enclosed by the boundary box <br>
+//!				  (default white) <br>
+//! <br>
   Standard_EXPORT     void Highlight(const Aspect_TypeOfHighlightMethod Method) ;
   //! Suppress the structure <me>. <br>
 //!	    It will be erased at the next screen update. <br>
@@ -190,9 +196,11 @@ public:
 //!	    By default, <me> is not infinite but empty. <br>
   Standard_EXPORT     void SetInfiniteState(const Standard_Boolean AFlag) ;
   //! Modifies the order of displaying the structure. <br>
-//!	    Values are between 0 et 10. <br>
-//!	    The priority 10 being displayed first. <br>
-//!	    The default value is 5 <br>
+//!	    Values are between 0 and 10. <br>
+//!          Structures are drawn according to their display priorities <br>
+//!          in ascending order. <br>
+//!	    A structure of priority 10 is displayed the last and appears over the others. <br>
+//!	    The default value is 5. <br>
 //!  Category: Methods to modify the class definition <br>
 //!  Warning: If <me> is displayed then the SetDisplayPriority <br>
 //!	    method erase <me> and display <me> with the <br>
@@ -326,6 +334,16 @@ public:
   //! Returns Standard_True if the connection is possible between <br>
 //!	    <AStructure1> and <AStructure2> without a creation <br>
 //!	    of a cycle. <br>
+//! <br>
+//!	    It's not possible to call the method <br>
+//!	       AStructure1->Connect (AStructure2, TypeOfConnection) <br>
+//!	    if <br>
+//!	    - the set of all ancestors of <AStructure1> contains <br>
+//!	      <AStructure1> and if the <br>
+//!	      TypeOfConnection == TOC_DESCENDANT <br>
+//!	    - the set of all descendants of <AStructure1> contains <br>
+//!	      <AStructure2> and if the <br>
+//!	      TypeOfConnection == TOC_ANCESTOR <br>
   Standard_EXPORT   static  Standard_Boolean AcceptConnection(const Handle(Graphic3d_Structure)& AStructure1,const Handle(Graphic3d_Structure)& AStructure2,const Graphic3d_TypeOfConnection AType) ;
   //! Returns the group of structures to which <me> is connected. <br>
   Standard_EXPORT     void Ancestors(Graphic3d_MapOfStructure& SG) const;
@@ -366,6 +384,46 @@ public:
   Standard_EXPORT     Graphic3d_TypeOfComposition Composition() const;
   //! Modifies the current local modelling transformation <br>
 //!	    in the structure <me>. <br>
+//! <br>
+//!	    It is defined as a 4*4 real matrix. <br>
+//! <br>
+//!	    ------------------- <br>
+//!	    | a11 a12 a13  t1 | <br>
+//!	    | a21 a22 a23  t2 | <br>
+//!	    | a31 a32 a33  t3 | <br>
+//!	    |  0   0   0   1  | <br>
+//!	    ------------------- <br>
+//! <br>
+//!	    TypeOfComposition : TOC_REPLACE <br>
+//!				TOC_POSTCONCATENATE <br>
+//! <br>
+//! Then the modified Local Modelling Transformation is composed <br>
+//! with the current Global Modelling Transformation to create a <br>
+//! new Composite Modelling Transformation. <br>
+//! <br>
+//! The compose type specifies the role of the current local <br>
+//! modelling transformation (L) in composing the new value for <br>
+//! the current local modelling transformation (L'), which is <br>
+//! then combined with the current global modelling transforma- <br>
+//! tion (G) to calculate the new composite modelling transfor- <br>
+//! mation (C). <br>
+//! <br>
+//! TOC_REPLACE <br>
+//! The transformation matrix (T) replaces the value of <br>
+//! current local modelling transformation (L). <br>
+//! <br>
+//!	L' <- T <br>
+//!	C <- G x L' <br>
+//! <br>
+//! TOC_POSTCONCATENATE <br>
+//! The current local modelling transformation (L) is multiplied <br>
+//! by the transformation matrix (T): <br>
+//! <br>
+//!	L' <- T x L <br>
+//!	C <- G x L' <br>
+//! <br>
+//!  Category: Methods to manage the structure transformation <br>
+//!  Warning: Raises TransformError if the matrix is not a 4x4 matrix. <br>
   Standard_EXPORT     void SetTransform(const TColStd_Array2OfReal& AMatrix,const Graphic3d_TypeOfComposition AType) ;
   //! Returns the transformation associated with <br>
 //!	    the structure <me>. <br>
@@ -411,7 +469,7 @@ public:
   //! Transforms <Coord> with the transformation <ATrsf>. <br>
   Standard_EXPORT   static  Graphic3d_Vertex Transforms(const TColStd_Array2OfReal& ATrsf,const Graphic3d_Vertex& Coord) ;
   //! Returns the c structure associated to <me>. <br>
-  Standard_EXPORT     Standard_Address CStructure() const;
+  Standard_EXPORT     Graphic3d_CStructure* CStructure() ;
 
 friend class Graphic3d_Group;
 
@@ -436,8 +494,6 @@ private:
 //!	    Polygons, Triangles or Quadrangles. <br>
 //!	    <ADelta> = +1 or -1 <br>
   Standard_EXPORT     void GroupsWithFacet(const Standard_Integer ADelta) ;
-  //! Returns the labels for a new group in the structure <me>. <br>
-  Standard_EXPORT     void GroupLabels(Standard_Integer& LB,Standard_Integer& LE) ;
   //! Returns the extreme coordinates found in the <br>
 //!	    structure <me>. <br>
 //!  Warning: If the structure <me> is empty or infinite then : <br>
@@ -456,7 +512,6 @@ private:
   Standard_EXPORT     void UpdateStructure(const Handle(Graphic3d_AspectLine3d)& CTXL,const Handle(Graphic3d_AspectText3d)& CTXT,const Handle(Graphic3d_AspectMarker3d)& CTXM,const Handle(Graphic3d_AspectFillArea3d)& CTXF) ;
 
 Graphic3d_CStructure MyCStructure;
-Aspect_GenId MyGroupGenId;
 TColStd_SequenceOfAddress MyAncestors;
 TColStd_SequenceOfAddress MyDescendants;
 Graphic3d_SequenceOfGroup MyGroups;

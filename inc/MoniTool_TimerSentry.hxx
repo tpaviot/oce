@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -24,21 +27,14 @@ class MoniTool_Timer;
 
 //! A tool to facilitate using MoniTool_Timer functionality <br>
 //!          by automatically ensuring consistency of start/stop actions <br>
+//! <br>
+//!          When instance of TimerSentry is created, a timer <br>
+//!          with corresponding name is started <br>
+//!          When instance is deleted, timer stops <br>
 class MoniTool_TimerSentry  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Constructor creates an instance and runs the corresponding timer <br>
       MoniTool_TimerSentry(const Standard_CString cname);

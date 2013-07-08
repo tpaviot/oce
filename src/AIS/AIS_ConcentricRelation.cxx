@@ -110,8 +110,8 @@ void AIS_ConcentricRelation::ComputeEdgeVertexConcentric(const Handle(Prs3d_Pres
     V = TopoDS::Vertex(mySShape);
   }
   else {
-    E = TopoDS::Edge(myFShape);
-    V = TopoDS::Vertex(mySShape);
+    E = TopoDS::Edge(mySShape);
+    V = TopoDS::Vertex(myFShape);
   }
   gp_Pnt p1,p2;
   Handle(Geom_Curve) C;
@@ -153,7 +153,7 @@ void AIS_ConcentricRelation::ComputeTwoVerticesConcentric(const Handle(Prs3d_Pre
   myPnt = myCenter.Translated(vectrans.Multiplied(myRad));
   DsgPrs_ConcentricPresentation::Add(aPresentation,myDrawer,myCenter,myRad,myDir,myPnt);
   if (!isOnPlanVertex1) AIS::ComputeProjVertexPresentation(aPresentation,myDrawer,V1,P1);
-  if (!isOnPlanVertex1) AIS::ComputeProjVertexPresentation(aPresentation,myDrawer,V2,P2);
+  if (!isOnPlanVertex2) AIS::ComputeProjVertexPresentation(aPresentation,myDrawer,V2,P2);
 }
 
 //=======================================================================
@@ -235,17 +235,6 @@ void AIS_ConcentricRelation::ComputeTwoEdgesConcentric(const Handle(Prs3d_Presen
 
 void AIS_ConcentricRelation::Compute(const Handle(Prs3d_Projector)&, 
 				     const Handle(Prs3d_Presentation)&)
-{
-}
-
-//=======================================================================
-//function : Compute
-//purpose  : to avoid warning
-//=======================================================================
-
-void AIS_ConcentricRelation::Compute(const Handle(PrsMgr_PresentationManager2d)&, 
-				     const Handle(Graphic2d_GraphicObject)&,
-				     const Standard_Integer)
 {
 }
 

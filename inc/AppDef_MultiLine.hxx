@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,21 +43,28 @@ class AppDef_MultiPointConstraint;
 //!          MultiPointConstraints. <br>
 //!          The approximation of the MultiLine will be done in the order <br>
 //!          of the given n MultiPointConstraints. <br>
+//! <br>
+//! <br>
+//!      Example of a MultiLine composed of MultiPointConstraints: <br>
+//! <br>
+//!      P1______P2_____P3______P4________........_____PNbMult <br>
+//! <br>
+//!      Q1______Q2_____Q3______Q4________........_____QNbMult <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      .                                               . <br>
+//!      R1______R2_____R3______R4________........_____RNbMult <br>
+//! <br>
+//! <br>
+//!      Pi, Qi, ..., Ri are points of dimension 2 or 3. <br>
+//! <br>
+//!      (P1, Q1, ...R1), ...(Pn, Qn, ...Rn) n= 1,...NbMult are <br>
+//!      MultiPointConstraints. <br>
+//!      There are NbPoints points in each MultiPointConstraint. <br>
 class AppDef_MultiLine  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! creates an undefined MultiLine. <br>
   Standard_EXPORT   AppDef_MultiLine();

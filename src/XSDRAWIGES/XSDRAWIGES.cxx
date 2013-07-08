@@ -152,7 +152,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
 // amv 26.09.2003 : this is used to avoid error of enter's simbol        
       char str[80];                                                             
       cin>>str;                                                                 
-      modepri = atoi(str);   
+      modepri = Draw::Atoi(str);   
     }
 
     if (modepri == 0) {  //fin
@@ -187,7 +187,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
         //amv 26.09.2003                                                        
         char str_a[80];                                                         
         cin >> str_a;                                                           
-        answer = atoi(str_a);    
+        answer = Draw::Atoi(str_a);    
       }
       if ( answer == 0) continue;
       if ( answer == 1 || answer == 3) {
@@ -195,7 +195,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
 	// save the shape
 	if (shape.IsNull()) { di<<"No Shape produced"<<"\n"; continue; }
 	char fname[110];
-	sprintf(fname, "%s", rnom.ToCString());
+	Sprintf(fname, "%s", rnom.ToCString());
 	di << "Saving shape in variable Draw : " << fname << "\n";
 	if (answer == 3) IGESToBRep::WriteShape (shape,1);
 	try {
@@ -218,7 +218,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
 	  TopoDS_Shape shape = Reader.Shape(inum);
 	  if (shape.IsNull()) { di<<"No Shape produced"<<"\n"; continue; }
 	  char fname[110];
-	  sprintf(fname, "%s_%d", rnom.ToCString(),inum);
+	  Sprintf(fname, "%s_%d", rnom.ToCString(),inum);
 	  di << "Saving shape in variable Draw : " << fname << "\n";
 	  if (answer == 4) IGESToBRep::WriteShape (shape,inum);
 	  try {
@@ -245,7 +245,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
       if (!Reader.TransferOne (nent)) di<<"Transfer entity n0 "<<nent<<" : no result"<<"\n";
       else {
 	nbs = Reader.NbShapes();
-	char shname[30];  sprintf (shname,"%s_%d",rnom.ToCString(),nent);
+	char shname[30];  Sprintf (shname,"%s_%d",rnom.ToCString(),nent);
 	di<<"Transfer entity n0 "<<nent<<" OK  -> DRAW Shape: "<<shname<<"\n";
 	di<<"Now, "<<nbs<<" Shapes produced"<<"\n";
 	TopoDS_Shape sh = Reader.Shape(nbs);
@@ -283,7 +283,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
         TopoDS_Shape shape = Reader.OneShape();
         // save the shape
         char fname[110];
-        sprintf(fname, "%s", rnom.ToCString());
+        Sprintf(fname, "%s", rnom.ToCString());
         di << "Saving shape in variable Draw : " << fname << "\n";
         try {
           OCC_CATCH_SIGNALS
@@ -331,7 +331,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
           // anv 26.09.2003                                                     
           char str_answer[80];                                                  
           cin>>str_answer;                                                      
-          answer = atoi(str_answer);    
+          answer = Draw::Atoi(str_answer);    
 	}
 	if (answer <= 0 || answer > 3) continue;
 	if (answer == 3) {
@@ -358,7 +358,7 @@ static Standard_Integer igesbrep (Draw_Interpretor& di, Standard_Integer argc, c
 	    if (!Reader.TransferOne(nent)) di<<"Transfer entity n0 "<<nent<<" : no result"<<"\n";
 	    else {
 	      nbs = Reader.NbShapes();
-	      char shname[30];  sprintf (shname,"%s_%d",rnom.ToCString(),nbs);
+	      char shname[30];  Sprintf (shname,"%s_%d",rnom.ToCString(),nbs);
 	      di<<"Transfer entity n0 "<<nent<<" OK  -> DRAW Shape: "<<shname<<"\n";
 	      di<<"Now, "<<nbs<<" Shapes produced"<<"\n";
 	      TopoDS_Shape sh = Reader.Shape(nbs);
@@ -431,7 +431,7 @@ static Standard_Integer brepiges (Draw_Interpretor& di, Standard_Integer n, cons
 
 //  Mode d emploi (K4B ->) : brepiges shape [+shape][ +shape] nomfic
 //   c a d tant qu il y a des + on ajoute ce qui suit
-  const char* ficnom = NULL;
+  const char* nomfic;
   Standard_Integer npris = 0;
 
   Handle(Draw_ProgressIndicator) progress = new Draw_ProgressIndicator ( di, 1 );
@@ -442,7 +442,7 @@ static Standard_Integer brepiges (Draw_Interpretor& di, Standard_Integer n, cons
   for ( Standard_Integer i = 1; i < n; i++) {
     const char* nomvar = a[i];
     if (a[i][0] == '+') nomvar = &(a[i])[1];
-    else if (i > 1)  {  ficnom = a[i];  break;  }
+    else if (i > 1)  {  nomfic = a[i];  break;  }
     TopoDS_Shape Shape = DBRep::Get(nomvar);
     if      (ICW.AddShape (Shape)) npris ++;
     else if (ICW.AddGeom (DrawTrSurf::GetCurve   (nomvar)) ) npris ++;
@@ -459,40 +459,16 @@ static Standard_Integer brepiges (Draw_Interpretor& di, Standard_Integer n, cons
   progress->Show();
 
   di<<npris<<" Shapes written, giving "<<XSDRAW::Model()->NbEntities()<<" Entities"<<"\n";
-  di<<" Now, to write a file, command : writeall filename"<<"\n";
 
-  // creation du fichier de sortie
-
-  char nomfic[100] ;
-  Standard_Integer modepri = 0;
-  if (ficnom) {
-    modepri = 2;
-    strcpy (nomfic,ficnom);
+  if ( ! nomfic ) // delayed write
+  {
+    di<<" Now, to write a file, command : writeall filename"<<"\n";
+    return 0;
   }
 
-  if (!modepri) {
-    cout<<" Mode (0 End, 1 ->screen, 2 file) :"<<flush;
-    modepri = -1;
-    cin >> modepri; di << "Output mode " << modepri << "\n";
-  }
-
-  if (modepri == 0) return 0;
-  // Ecran
-  else if (modepri == 1) {
-    di << " Screen Output" << "\n";
-    //ICW.Write (cout);
-    Standard_SStream aSStream;
-    ICW.Write (aSStream);
-    di << aSStream;
-  }
-
-  //  ....                      WRITE (Fichier)                        ....
-  else if (modepri == 2) {
-    if (!ficnom)  { cout << " Output file name :" << flush;  cin  >> nomfic; }
-    di << " Output on file : " << nomfic << "\n";
-    if (ICW.Write(nomfic)) di<<" Write OK"<<"\n";
-    else                   di<<" Write KO"<<"\n";
-  }
+  // write file
+  if (! ICW.Write(nomfic)) di<<" Error: could not write file " << nomfic;
+  else                     di<<" File " << nomfic << " written";
 
   progress->EndScope();
   progress->Show();

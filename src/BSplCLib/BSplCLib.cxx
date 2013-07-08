@@ -650,6 +650,62 @@ BSplCLib_MultDistribution BSplCLib::MultForm
 }
 
 //=======================================================================
+//function : KnotAnalysis
+//purpose  : 
+//=======================================================================
+
+void BSplCLib::KnotAnalysis (const Standard_Integer         Degree,
+                             const Standard_Boolean         Periodic,
+                             const TColStd_Array1OfReal&    CKnots,
+                             const TColStd_Array1OfInteger& CMults,
+                             GeomAbs_BSplKnotDistribution&  KnotForm,
+                             Standard_Integer&              MaxKnotMult)
+{
+  KnotForm = GeomAbs_NonUniform;
+
+  BSplCLib_KnotDistribution KSet = 
+    BSplCLib::KnotForm (CKnots, 1, CKnots.Length());
+  
+
+  if (KSet == BSplCLib_Uniform) {
+    BSplCLib_MultDistribution MSet =
+      BSplCLib::MultForm (CMults, 1, CMults.Length());
+    switch (MSet) {
+    case BSplCLib_NonConstant   :       
+      break;
+    case BSplCLib_Constant      : 
+      if (CKnots.Length() == 2) {
+        KnotForm = GeomAbs_PiecewiseBezier;
+      }
+      else {
+        if (CMults (1) == 1)  KnotForm = GeomAbs_Uniform;   
+      }
+      break;
+    case BSplCLib_QuasiConstant :   
+      if (CMults (1) == Degree + 1) {
+        Standard_Real M = CMults (2);
+        if (M == Degree )   KnotForm = GeomAbs_PiecewiseBezier;
+        else if  (M == 1)   KnotForm = GeomAbs_QuasiUniform;
+      }
+      break;
+    }
+  }
+
+  Standard_Integer FirstKM = 
+    Periodic ? CKnots.Lower() :  BSplCLib::FirstUKnotIndex (Degree,CMults);
+  Standard_Integer LastKM =
+    Periodic ? CKnots.Upper() :  BSplCLib::LastUKnotIndex (Degree,CMults);
+  MaxKnotMult = 0;
+  if (LastKM - FirstKM != 1) {
+    Standard_Integer Multi;
+    for (Standard_Integer i = FirstKM + 1; i < LastKM; i++) {
+      Multi = CMults (i);
+      MaxKnotMult = Max (MaxKnotMult, Multi);
+    }
+  }
+}
+
+//=======================================================================
 //function : Reparametrize
 //purpose  : 
 //=======================================================================
@@ -1639,7 +1695,7 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
   if (adeltaK1 > Tolerance) return Standard_False;
   if (adeltaK2  > Tolerance) return Standard_False;
   
-  Standard_Integer sigma = 0, mult, amult, lastmult = 0;
+  Standard_Integer sigma = 0, mult, amult;
   NbKnots = 0;
   Standard_Integer  k  = Knots.Lower() - 1;
   Standard_Integer  ak = AddKnots.Lower();
@@ -1684,18 +1740,15 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
     if (Abs(au - Knots(k)) <= Eps) {
       // identic to existing knot
       mult = Mults(k);
-      lastmult = mult;//gka 
       if (Add) {
 	if (mult + amult > Degree)
 	  amult = Max(0,Degree - mult);
 	sigma += amult;
-        //lastmult = mult + amult;
 	
       }
       else if (amult > mult) {
 	if (amult > Degree) amult = Degree;
 	sigma += amult - mult;
-	//lastmult = amult;//gka modified
       }
       /*
       // on periodic curves if this is the last knot
@@ -1713,7 +1766,6 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
       if (amult > 0) {
 	if (amult > Degree) amult = Degree;
 	NbKnots++;
-	//lastmult = amult;
 	sigma += amult;
       }
     }
@@ -1722,9 +1774,6 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
   }
   
   // count the last knots
-  if (lastmult == 0)// || k < Knots.Upper())
-    lastmult = Mults(Knots.Upper());
-
   while (k < Knots.Upper()) {
     k++;
     NbKnots++;
@@ -1732,7 +1781,12 @@ Standard_Boolean  BSplCLib::PrepareInsertKnots
   }
 
   if (Periodic) {
-    NbPoles = sigma - lastmult;
+    //for periodic B-Spline the requirement is that multiplicites of the first
+    //and last knots must be equal (see Geom_BSplineCurve constructor for
+    //instance);
+    //respectively AddMults() must meet this requirement if AddKnots() contains
+    //knot(s) coincident with first or last
+    NbPoles = sigma - Mults(Knots.Upper());
   }
   else {
     NbPoles = sigma - Degree - 1;
@@ -3063,7 +3117,6 @@ void  BSplCLib::Eval
   NewRequest,
   ExtrapolatingFlag[2],
   ErrorCode,
-  ReturnCode,
   Order = Degree + 1,
   FirstNonZeroBsplineIndex,
   LocalRequest = DerivativeRequest ;
@@ -3133,7 +3186,6 @@ void  BSplCLib::Eval
 			       FirstNonZeroBsplineIndex,
 			       BsplineBasis) ;
   if (ErrorCode != 0) {
-    ReturnCode = 1 ;
     goto FINISH ;
   }
   if (ExtrapolatingFlag[0] == 0 && ExtrapolatingFlag[1] == 0) {
@@ -3264,7 +3316,6 @@ void  BSplCLib::Eval
   NewRequest,
   ExtrapolatingFlag[2],
   ErrorCode,
-  ReturnCode,
   Order = Degree + 1,
   FirstNonZeroBsplineIndex,
   LocalRequest = DerivativeRequest ;
@@ -3334,7 +3385,6 @@ void  BSplCLib::Eval
 			       FirstNonZeroBsplineIndex,
 			       BsplineBasis);
   if (ErrorCode != 0) {
-    ReturnCode = 1 ;
     goto FINISH ;
   }
   if (ExtrapolatingFlag[0] == 0 && ExtrapolatingFlag[1] == 0) {

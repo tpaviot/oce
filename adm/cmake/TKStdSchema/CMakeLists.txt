@@ -5,19 +5,19 @@ SET(TOOLKIT_MODULES
 	StdDrivers
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKPCAF
-	TKernel
-	TKLCAF
-	TKCAF
-	TKPLCAF
-	TKPShape
-	PTKernel
-	TKG2d
-	TKG3d
 	TKCDF
+	PTKernel
+	TKPLCAF
+	TKernel
+	TKCAF
 	TKShapeSchema
+	TKLCAF
 	TKStdLSchema
+	TKG3d
+	TKPShape
+	TKMath
+	TKG2d
+	TKPCAF
 )
 
 INCLUDE(../BuildToolkit.cmake)

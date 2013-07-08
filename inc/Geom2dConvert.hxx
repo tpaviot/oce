@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -73,28 +76,105 @@ class Geom2dConvert_ApproxCurve;
 class Geom2dConvert  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //!  Raised if FromK1 = ToK2 <br>
+  //! -- Convert a curve to BSpline  by Approximation <br>
+//! <br>
+//!  This method computes the arc of B-spline curve between the two <br>
+//!  knots FromK1 and ToK2.  If C is periodic the arc has the same <br>
+//!  orientation as C if SameOrientation = Standard_True. <br>
+//!  If C is not periodic  SameOrientation is not used for the <br>
+//!  computation and C is oriented from the knot fromK1 to the <br>
+//!  knot toK2. <br>
+//!  We just keep the local definition of C between the knots <br>
+//!  FromK1 and ToK2.  The returned B-spline curve has its first <br>
+//!  and last knots with a multiplicity equal to degree + 1, where <br>
+//!  degree is the polynomial degree of C. <br>
+//!  The indexes of the knots FromK1 and ToK2 doesn't include the <br>
+//!  repetition of multiple knots in their definition. <br>
+//!  Raised if FromK1 or ToK2 are out of the bounds <br>
+//!  [FirstUKnotIndex, LastUKnotIndex] <br>//!  Raised if FromK1 = ToK2 <br>
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve SplitBSplineCurve(const Handle(Geom2d_BSplineCurve)& C,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Boolean SameOrientation = Standard_True) ;
   
+//!  This function computes the segment of B-spline curve between the <br>
+//!  parametric values FromU1, ToU2. <br>
+//!  If C is periodic the arc has the same orientation as C if <br>
+//!  SameOrientation = True. <br>
+//!  If C is not periodic SameOrientation is not used for the <br>
+//!  computation and C is oriented fromU1 toU2. <br>
+//!  If U1 and U2 and two parametric values we consider that <br>
+//!  U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and <br>
+//!  ParametricTolerance must  be greater or equal to Resolution <br>
+//!  from package gp. <br>
 //!  Raised if FromU1 or ToU2 are out of the parametric bounds of the <br>
 //!  curve (The tolerance criterion is ParametricTolerance). <br>
 //!  Raised if Abs (FromU1 - ToU2) <= ParametricTolerance <br>
 //!  Raised if ParametricTolerance < Resolution from gp. <br>
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve SplitBSplineCurve(const Handle(Geom2d_BSplineCurve)& C,const Standard_Real FromU1,const Standard_Real ToU2,const Standard_Real ParametricTolerance,const Standard_Boolean SameOrientation = Standard_True) ;
-  
+  //! This function converts a non infinite curve from <br>
+//!   Geom into a  B-spline curve.  C must  be  an ellipse or a <br>
+//!   circle or a trimmed conic  or a trimmed  line or a Bezier <br>
+//!  curve or a trimmed  Bezier curve or a  BSpline curve or  a <br>
+//!  trimmed BSpline   curve  or an  Offset  curve or a  trimmed <br>
+//!  Offset curve. <br>
+//!  The returned B-spline is not periodic except if C is a <br>
+//!  Circle or an Ellipse. <br>
+//!  ParameterisationType applies only if the curve is a Circle <br>
+//!  or an ellipse : <br>
+//!      TgtThetaOver2, <br>
+//!    TgtThetaOver2_1, <br>
+//!    TgtThetaOver2_2, <br>
+//!    TgtThetaOver2_3, <br>
+//!    TgtThetaOver2_4, <br>
+//! Purpose: this is the classical rational parameterisation <br>
+//!                    2 <br>
+//!               1 - t <br>
+//!  cos(theta) = ------ <br>
+//!                    2 <br>
+//!               1 + t <br>
+//! <br>
+//!                 2t <br>
+//!  sin(theta) = ------ <br>
+//!                     2 <br>
+//!                1 + t <br>
+//! <br>
+//!  t = tan (theta/2) <br>
+//! <br>
+//!  with TgtThetaOver2  the routine will compute the number of spans <br>
+//!  using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 <br>
+//!  with TgtThetaOver2_N, N  spans will be forced: an error will <br>
+//!  be raized if (ULast - UFirst) >= PI and N = 1, <br>
+//!  ULast - UFirst >= 2 PI and N = 2 <br>
+//! <br>
+//! QuasiAngular, <br>
+//!  here t is a rational function that approximates <br>
+//!  theta ----> tan(theta/2). <br>
+//!  Neverthless the composing with above function yields exact <br>
+//!  functions whose square sum up to 1 <br>
+//! RationalC1 ; <br>
+//!  t is replaced by a polynomial function of u so as to grant <br>
+//!  C1 contiuity across knots. <br>
+//!  Exceptions <br>
+//! Standard_DomainError if the curve C is infinite. <br>
+//! Standard_ConstructionError: <br>
+//! -   if C is a complete circle or ellipse, and if <br>
+//!   Parameterisation is not equal to <br>
+//!   Convert_TgtThetaOver2 or to Convert_RationalC1, or <br>
+//! -   if C is a trimmed circle or ellipse and if <br>
+//!   Parameterisation is equal to <br>
+//!   Convert_TgtThetaOver2_1 and if U2 - U1 > <br>
+//!   0.9999 * Pi where U1 and U2 are <br>
+//!   respectively the first and the last parameters of the <br>
+//!   trimmed curve (this method of parameterization <br>
+//!   cannot be used to convert a half-circle or a <br>
+//!   half-ellipse, for example), or <br>
+//! -   if C is a trimmed circle or ellipse and <br>
+//!   Parameterisation is equal to <br>
+//!   Convert_TgtThetaOver2_2 and U2 - U1 > <br>
+//!   1.9999 * Pi where U1 and U2 are <br>
+//!   respectively the first and the last parameters of the <br>
+//!   trimmed curve (this method of parameterization <br>
+//!   cannot be used to convert a quasi-complete circle or ellipse). <br>
   Standard_EXPORT   static  Handle_Geom2d_BSplineCurve CurveToBSplineCurve(const Handle(Geom2d_Curve)& C,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2) ;
   //! This Method concatenates G1 the ArrayOfCurves as far <br>
 //!  as it is possible. <br>

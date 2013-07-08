@@ -60,18 +60,19 @@
 Standard_EXPORT void debrest(const Standard_Integer i)   {cout<<"+ debrest "<<i<<endl;}
 Standard_EXPORT void debrline()   {cout<<"+ debrline"<<endl;}
 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceCX(const Standard_Integer i);
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer i);
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSTRANGE(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceISTO(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSP(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSFK(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSNC(); 
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceDSLT();
-Standard_EXPORT Standard_Boolean TopOpeBRep_GettraceNVP(Standard_Integer a,Standard_Integer b,Standard_Integer c,Standard_Integer d,Standard_Integer e);
-Standard_IMPORT Standard_Boolean GLOBAL_bvpr;Standard_EXPORT void debvprmess(Standard_Integer f1,Standard_Integer f2,Standard_Integer il,Standard_Integer vp,Standard_Integer si);
-Standard_EXPORT Standard_Boolean TopOpeBRep_GetcontextNOPUNK();
+extern Standard_Boolean TopOpeBRepDS_GettraceCX(const Standard_Integer i);
+extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer i);
+extern Standard_Boolean TopOpeBRepDS_GettraceSTRANGE(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceISTO(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSP(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSFK(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSNC(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSLT();
+extern Standard_Boolean TopOpeBRep_GettraceNVP(Standard_Integer a,Standard_Integer b,Standard_Integer c,Standard_Integer d,Standard_Integer e);
+extern Standard_Boolean GLOBAL_bvpr;
+extern void debvprmess(Standard_Integer f1,Standard_Integer f2,Standard_Integer il,Standard_Integer vp,Standard_Integer si);
+extern Standard_Boolean TopOpeBRep_GetcontextNOPUNK();
 
 static void FUN_traceRLine(const TopOpeBRep_LineInter& L)
 {
@@ -755,15 +756,24 @@ void TopOpeBRep_FacesFiller::ProcessRLine()
       TopoDS_Face OOFace = (*this).Face(OOShapeIndex);
       Standard_Integer iOOFace = myDS->Shape(OOFace);
 
-      TopoDS_Edge edge,OOedge; Standard_Integer SIedgeIndex,OOedgeIndex;
+      TopoDS_Edge edge,OOedge; Standard_Integer OOedgeIndex;
+#ifdef DEB
+      Standard_Integer SIedgeIndex;
+#endif
       Standard_Real paredge;
       Standard_Integer onbound;
       if (SIErest) 
-	{edge = Erest;  SIedgeIndex = iErest; paredge = parRest; onbound = obRest; 
+	{edge = Erest;  paredge = parRest; onbound = obRest;
+#ifdef DEB
+	 SIedgeIndex = iErest;
+#endif
 	 OOedge = OOE;  OOedgeIndex = iOO;    } 
       else         
 	{OOedge = Erest;OOedgeIndex = iErest; onbound = obOO;
-	 edge = OOE;    SIedgeIndex = iOO;    paredge = OOpar;}
+#ifdef DEB
+	 SIedgeIndex = iOO;
+#endif
+	 edge = OOE;    paredge = OOpar;}
       
       // PVIndex :
       // --------

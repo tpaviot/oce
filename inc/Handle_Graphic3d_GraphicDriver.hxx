@@ -13,15 +13,15 @@
 #include <Standard_DefineHandle.hxx>
 #endif
 
-#ifndef _Handle_Aspect_GraphicDriver_HeaderFile
-#include <Handle_Aspect_GraphicDriver.hxx>
+#ifndef _Handle_MMgt_TShared_HeaderFile
+#include <Handle_MMgt_TShared.hxx>
 #endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
-class Handle(Aspect_GraphicDriver);
+class Handle(MMgt_TShared);
 class Graphic3d_GraphicDriver;
 
-DEFINE_STANDARD_HANDLE(Graphic3d_GraphicDriver,Aspect_GraphicDriver)
+DEFINE_STANDARD_HANDLE(Graphic3d_GraphicDriver,MMgt_TShared)
 
 #endif

@@ -31,10 +31,10 @@
 #include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
 
 #ifdef DEB
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GetcontextNOPFI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePFI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
+extern Standard_Boolean TopOpeBRepDS_GetcontextNOPFI();
+extern Standard_Boolean TopOpeBRepDS_GettracePFI();
+extern Standard_Boolean TopOpeBRepDS_GettracePI();
+extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
 static Standard_Boolean TRCF(const Standard_Integer F) {
   Standard_Boolean b1 = TopOpeBRepDS_GettracePFI();
   Standard_Boolean b2 = TopOpeBRepDS_GettracePI();
@@ -117,13 +117,20 @@ void TopOpeBRepDS_Filter::ProcessFaceInterferences
   lw.Append(lall);
   lw.Append(lUU);
 
-  Standard_Integer nF = ::FUN_selectTRASHAinterference(lw,TopAbs_FACE,lF);
-  Standard_Integer nFE = ::FUN_selectGKinterference(lF,TopOpeBRepDS_EDGE,lFE);
-  Standard_Integer nFEF = ::FUN_selectSKinterference(lFE,TopOpeBRepDS_FACE,lFEF);
-  Standard_Integer nE = ::FUN_selectTRASHAinterference(lw,TopAbs_EDGE,lE);
+#ifdef DEB
+  Standard_Integer nF, nFE, nFEF, nE;
+#endif
 
+  ::FUN_selectTRASHAinterference(lw,TopAbs_FACE,lF);
+  ::FUN_selectGKinterference(lF,TopOpeBRepDS_EDGE,lFE);
+  ::FUN_selectSKinterference(lFE,TopOpeBRepDS_FACE,lFEF);
+  ::FUN_selectTRASHAinterference(lw,TopAbs_EDGE,lE);
 
 #ifdef DEB
+  nF = lF.Extent();
+  nFE = lFE.Extent();
+  nFEF = lFEF.Extent();
+  nE = lE.Extent();
   if(TRC){
     if(nF||nFE||nFEF||nE){cout<<endl;cout<<"-----------------------"<<endl;}
     if(nUU) {cout<<"FACE "<<SIX<<" UNKNOWN : "<<nUU<<endl;FDS_dumpLI(lUU,"  ");}
@@ -136,11 +143,11 @@ void TopOpeBRepDS_Filter::ProcessFaceInterferences
 
   ::FUN_FilterFace(lFEF,BDS,SIX);
 
+#ifdef DEB
   nF = lF.Extent();
   nFE = lFE.Extent();
   nFEF = lFEF.Extent();
   nE = lE.Extent();
-#ifdef DEB
   if(TRC){
     if(nF||nFE||nFEF||nE)cout<<endl;
     if(nF) {cout<<"FACE "<<SIX<<" (FACE) : "<<nF<<endl;FDS_dumpLI(lF,"  ");}

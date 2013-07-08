@@ -1,6 +1,0 @@
-#ifndef _IntPolyh_Triangle_HeaderFile
-#include <IntPolyh_Triangle.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
-#include <IntPolyh_ArrayOfTriangles.hxx>
-#endif

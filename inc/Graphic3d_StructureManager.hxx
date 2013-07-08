@@ -40,8 +40,8 @@
 #ifndef _Aspect_GenId_HeaderFile
 #include <Aspect_GenId.hxx>
 #endif
-#ifndef _Handle_Aspect_GraphicDevice_HeaderFile
-#include <Handle_Aspect_GraphicDevice.hxx>
+#ifndef _Handle_Graphic3d_GraphicDriver_HeaderFile
+#include <Handle_Graphic3d_GraphicDriver.hxx>
 #endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
@@ -65,7 +65,7 @@ class Graphic3d_AspectLine3d;
 class Graphic3d_AspectText3d;
 class Graphic3d_AspectMarker3d;
 class Graphic3d_AspectFillArea3d;
-class Aspect_GraphicDevice;
+class Graphic3d_GraphicDriver;
 class Graphic3d_InitialisationError;
 class Graphic3d_Structure;
 class Graphic3d_MapOfStructure;
@@ -103,6 +103,18 @@ public:
 //!	    in the visualiser. <br>
   Standard_EXPORT     void SetPrimitivesAspect(const Handle(Graphic3d_AspectMarker3d)& CTX) ;
   //! Modifies the screen update mode. <br>
+//! <br>
+//!	    TOU_ASAP	as soon as possible <br>
+//!	    TOU_WAIT	on demand (with the Update function) <br>
+//!  Note : Dynamic Operations and Update Mode <br>
+//! Use SetUpdateMode to control when changes to <br>
+//! the display are made.   Use one of the   following <br>
+//! functions to update one or more views: <br>
+//! -   Update all views of the viewer:   Visual3d_ViewManager::Update () <br>
+//! -   Update one view of the viewer:   Visual3d_View::Update () Use one of <br>
+//!   the   following functions to update the entire display: <br>
+//! -   Redraw all structures in all views:   Visual3d_ViewManager::Redraw () <br>
+//! -   Redraw all structures in one view:   Visual3d_View::Redraw ()  Update) <br>
   Standard_EXPORT     void SetUpdateMode(const Aspect_TypeOfUpdate AType) ;
   //! Updates screen in function of modifications of <br>
 //!	    the structures. <br>
@@ -136,6 +148,10 @@ public:
   //! Returns the values of the current default attributes. <br>
   Standard_EXPORT     Handle_Graphic3d_AspectText3d Text3dAspect() const;
   //! Returns the screen update mode. <br>
+//! <br>
+//!	    TOU_ASAP	as soon as possible <br>
+//!	    TOU_WAIT	on demand (Update) <br>
+//! <br>
   Standard_EXPORT     Aspect_TypeOfUpdate UpdateMode() const;
   //! Changes the display priority of the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void ChangeDisplayPriority(const Handle(Graphic3d_Structure)& AStructure,const Standard_Integer OldPriority,const Standard_Integer NewPriority)  = 0;
@@ -182,8 +198,8 @@ public:
   Standard_EXPORT   virtual  void Highlight(const Handle(Graphic3d_Structure)& AStructure,const Aspect_TypeOfHighlightMethod AMethod)  = 0;
   //! Transforms the structure <AStructure>. <br>
   Standard_EXPORT   virtual  void SetTransform(const Handle(Graphic3d_Structure)& AStructure,const TColStd_Array2OfReal& ATrsf)  = 0;
-  //! Returns the graphic device of <me>. <br>
-  Standard_EXPORT     Handle_Aspect_GraphicDevice GraphicDevice() const;
+  //! Returns the graphic driver of <me>. <br>
+  Standard_EXPORT    const Handle_Graphic3d_GraphicDriver& GraphicDriver() const;
   //! Returns the identification number of the manager. <br>
   Standard_EXPORT   virtual  Standard_Integer Identification() const;
   //! Returns the structure with the identification number <AId>. <br>
@@ -200,10 +216,14 @@ friend class Graphic3d_Structure;
 
 protected:
 
-  //! Initialise the constructor of the ViewManager. <br>
+  //! Initialises the ViewManager. <br>
+//!  Currently creating of more than 100 viewer instances <br>
+//!  is not supported and leads to InitializationError and <br>
+//!  initialisation failure. <br>
+//!  This limitation might be addressed in some future OCCT releases. <br>
 //!  Warning: Raises InitialisationError if the initialisation <br>
 //!	    of the ViewManager failed. <br>
-  Standard_EXPORT   Graphic3d_StructureManager(const Handle(Aspect_GraphicDevice)& aDevice);
+  Standard_EXPORT   Graphic3d_StructureManager(const Handle(Graphic3d_GraphicDriver)& theDriver);
   //! Returns the number of structures displayed in <br>
 //!	    visualiser <me>. <br>//! Returns the structure displayed in visualiser <me>. <br>
   Standard_EXPORT     Standard_Integer NumberOfDisplayedStructures() const;
@@ -219,7 +239,7 @@ Graphic3d_MapOfStructure MyHighlightedStructure;
 Graphic3d_MapOfStructure MyVisibleStructure;
 Graphic3d_MapOfStructure MyPickStructure;
 Aspect_GenId MyStructGenId;
-Handle_Aspect_GraphicDevice MyGraphicDevice;
+Handle_Graphic3d_GraphicDriver MyGraphicDriver;
 
 
 private: 

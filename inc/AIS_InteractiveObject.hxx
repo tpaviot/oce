@@ -64,18 +64,6 @@
 #ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
-#include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _Handle_PrsMgr_Presentation_HeaderFile
-#include <Handle_PrsMgr_Presentation.hxx>
-#endif
-#ifndef _Aspect_TypeOfDegenerateModel_HeaderFile
-#include <Aspect_TypeOfDegenerateModel.hxx>
-#endif
-#ifndef _Quantity_Ratio_HeaderFile
-#include <Quantity_Ratio.hxx>
-#endif
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
@@ -85,6 +73,9 @@
 #ifndef _Handle_Prs3d_BasicAspect_HeaderFile
 #include <Handle_Prs3d_BasicAspect.hxx>
 #endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
+#endif
 class Standard_Transient;
 class AIS_Drawer;
 class AIS_InteractiveContext;
@@ -92,8 +83,6 @@ class Quantity_Color;
 class TColStd_ListOfTransient;
 class Graphic3d_MaterialAspect;
 class TColStd_ListOfInteger;
-class PrsMgr_PresentationManager;
-class PrsMgr_Presentation;
 class Geom_Transformation;
 class Prs3d_Presentation;
 class Prs3d_BasicAspect;
@@ -276,8 +265,6 @@ public:
 //! The range of possibilities currently proposed is the following: <br>
 //! -   AIS_WireFrame <br>
 //! -   AIS_Shaded <br>
-//! -   AIS_QuickHLR <br>
-//! -   AIS_ExactHLR <br>
 //!   This range can, however, be extended through the creation of new display modes. <br>
   Standard_EXPORT     void SetDisplayMode(const Standard_Integer aMode) ;
   //! Removes display mode settings from the interactive object. <br>
@@ -286,8 +273,6 @@ public:
 //! The range of possibilities is the following: <br>
 //! -   AIS_WireFrame <br>
 //! -   AIS_Shaded <br>
-//! -   AIS_QuickHLR <br>
-//! -   AIS_ExactHLR <br>
 //!   This range can, however, be extended through the <br>
 //! creation of new display modes. <br>
         Standard_Integer DisplayMode() const;
@@ -442,21 +427,6 @@ public:
         void State(const Standard_Integer theState) ;
   
         Standard_Integer State() const;
-  //! Sets the model of degeneration for the shaded representation <br>
-//!   according to the degenerate ratio >= 0. & <= 1. where : <br>
-//!   <aRatio> = 0. indicate that all polygons of the object <br>
-//!      will be displayed. <br>
-//!   <aRatio> = 1. indicate that no polygons will be displayed !! <br>
-//!   When <ARatio> is > 0 & < 1. the corresponding amount <br>
-//!   of object polygons will be displayed with a random method. <br>
-//!  Warning: the degenerate structure is shown only when <br>
-//!  the animation and degenerate flags are set to TRUE <br>
-//!  in V3d_View::SetAnimationMode(..) <br>
-//!  Category: Methods to manage the object degeneration <br>
-  Standard_EXPORT   virtual  void SetDegenerateModel(const Aspect_TypeOfDegenerateModel aModel = Aspect_TDM_WIREFRAME,const Quantity_Ratio aRatio = 0.0) ;
-  //! returns the current degeneration model and ratio <br>
-//!  for the polygons <br>
-  Standard_EXPORT   virtual  Aspect_TypeOfDegenerateModel DegenerateModel(Quantity_Ratio& aRatio) const;
   //! Transforms all presentations of the object <br>
 //!  and replace the actual transformation matrix if <postConcatenate> is FALSE. <br>
 //! Note that the selection  must be updated only at the end of <br>
@@ -486,11 +456,31 @@ public:
 //!          so it is reasonable to call this method after <anObj> has been displayed. <br>
 //!          Otherwise, Compute() method should pass Graphic3d_AspectFillArea3d <br>
 //!          aspect from <myDrawer> to Graphic3d_Group to make polygon offsets work. <br>
-  Standard_EXPORT   virtual  void SetPolygonOffsets(const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0) ;
+//! <br>
+//!          <aMode> parameter can contain various combinations of <br>
+//!          Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means <br>
+//!          that polygon offsets are not changed). <br>
+//!          If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits> <br>
+//!          arguments are used by graphic renderer to calculate a depth offset value: <br>
+//! <br>
+//!          offset = <aFactor> * m + <aUnits> * r, where <br>
+//!          m - maximum depth slope for the polygon currently being displayed, <br>
+//!          r - minimum window coordinates depth resolution (implementation-specific). <br>
+//! <br>
+//!          Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0. <br>
+//! <br>
+//!          Negative offset values move polygons closer to the viewport, <br>
+//!          while positive values shift polygons away. <br>
+//!          Consult OpenGL reference for details (glPolygonOffset function description). <br>
+//! <br>
+//!          NOTE: This method has a side effect - it creates own shading aspect <br>
+//!          if not yet created, so it is better to set up object material, <br>
+//!          color, etc. first. <br>
+  Standard_EXPORT   virtual  void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
   //! Returns Standard_True if <myDrawer> has non-null shading aspect <br>
   Standard_EXPORT   virtual  Standard_Boolean HasPolygonOffsets() const;
   //! Retrieves current polygon offsets settings from <myDrawer>. <br>
-  Standard_EXPORT   virtual  void PolygonOffsets(Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT   virtual  void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
 
 
 friend class AIS_InteractiveContext;

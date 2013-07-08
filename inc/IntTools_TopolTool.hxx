@@ -36,39 +36,52 @@ class gp_Pnt;
 
 //! Class redefine methods of TopolTool from Adaptor3d <br>
 //!         concerning sample points <br>
+//! <br>
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 
 public:
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_TopolTool();
   
 //! Initializes me by surface <br>
+//! <br>
   Standard_EXPORT   IntTools_TopolTool(const Handle(Adaptor3d_HSurface)& theSurface);
   
 //! Redefined empty initializer <br>
+//! <br>
+//!  Warning: <br>
+//! Raises the exception NotImplemented <br>
+//! <br>
   Standard_EXPORT   virtual  void Initialize() ;
   
 //! Initializes me by surface <br>
+//! <br>
   Standard_EXPORT   virtual  void Initialize(const Handle(Adaptor3d_HSurface)& theSurface) ;
   
+//! <br>
 //! <br>
   Standard_EXPORT   virtual  void ComputeSamplePoints() ;
   
 //! Computes the sample-points for the intersections algorithms <br>
+//! <br>
   Standard_EXPORT   virtual  Standard_Integer NbSamplesU() ;
   
 //! Computes the sample-points for the intersections algorithms <br>
+//! <br>
   Standard_EXPORT   virtual  Standard_Integer NbSamplesV() ;
   
 //! Computes the sample-points for the intersections algorithms <br>
+//! <br>
   Standard_EXPORT   virtual  Standard_Integer NbSamples() ;
   
 //! Returns a 2d point from surface myS <br>
 //! and a corresponded 3d point <br>
 //! for given index. <br>
 //! The index should be from 1 to NbSamples() <br>
+//! <br>
   Standard_EXPORT   virtual  void SamplePoint(const Standard_Integer Index,gp_Pnt2d& P2d,gp_Pnt& P3d) ;
   //! compute the sample-points for the intersections algorithms <br>
 //! by adaptive algorithm for BSpline surfaces. For other surfaces algorithm <br>

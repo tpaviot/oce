@@ -5,7 +5,7 @@
 #include "../TKGeomBase/Precompiled.h"
 #include "../TKG2d/Precompiled.h"
 #include "../TKG3d/Precompiled.h"
-#include "../TKBrep/Precompiled.h"
+#include "../TKBRep/Precompiled.h"
 #include "../TKGeomAlgo/Precompiled.h"
 
 #include "Geom2dGcc.hxx"

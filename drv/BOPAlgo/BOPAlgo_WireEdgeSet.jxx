@@ -1,0 +1,9 @@
+#ifndef _TopoDS_Face_HeaderFile
+#include <TopoDS_Face.hxx>
+#endif
+#ifndef _TopoDS_Shape_HeaderFile
+#include <TopoDS_Shape.hxx>
+#endif
+#ifndef _BOPAlgo_WireEdgeSet_HeaderFile
+#include <BOPAlgo_WireEdgeSet.hxx>
+#endif

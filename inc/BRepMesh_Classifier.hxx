@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -46,23 +49,12 @@ class TColgp_SequenceOfPnt2d;
 class BRepMesh_Classifier  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepMesh_Classifier(const TopoDS_Face& F,const Standard_Real Tol,const BRepMesh_DataMapOfShapePairOfPolygon& edges,const TColStd_IndexedMapOfInteger& themap,const Handle(BRepMesh_DataStructureOfDelaun)& Str,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax);
+  Standard_EXPORT   BRepMesh_Classifier(const TopoDS_Face& theFace,const Standard_Real theTolUV,const BRepMesh_DataMapOfShapePairOfPolygon& theEdges,const TColStd_IndexedMapOfInteger& theMap,const Handle(BRepMesh_DataStructureOfDelaun)& theStructure,const Standard_Real theUmin,const Standard_Real theUmax,const Standard_Real theVmin,const Standard_Real theVmax);
   
-  Standard_EXPORT     TopAbs_State Perform(const gp_Pnt2d& Puv) const;
+  Standard_EXPORT     TopAbs_State Perform(const gp_Pnt2d& thePoint) const;
   
         BRepMesh_Status State() const;
   
@@ -85,17 +77,13 @@ protected:
 private:
 
   
-  Standard_EXPORT     void AnalizeWire(const TColgp_SequenceOfPnt2d& theSeqPnt2d,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax) ;
+  Standard_EXPORT     void AnalizeWire(const TColgp_SequenceOfPnt2d& theSeqPnt2d,const Standard_Real theUmin,const Standard_Real theUmax,const Standard_Real theVmin,const Standard_Real theVmax) ;
 
 
-BRepTopAdaptor_SeqOfPtr TabClass;
-TColStd_SequenceOfInteger TabOrien;
-Standard_Real Toluv;
-TopoDS_Face Face;
-Standard_Real U1;
-Standard_Real V1;
-Standard_Real U2;
-Standard_Real V2;
+BRepTopAdaptor_SeqOfPtr myTabClass;
+TColStd_SequenceOfInteger myTabOrient;
+Standard_Real myTolUV;
+TopoDS_Face myFace;
 BRepMesh_Status myState;
 
 

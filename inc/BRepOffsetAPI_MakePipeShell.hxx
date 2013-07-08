@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -73,18 +76,7 @@ class TopTools_ListOfShape;
 class BRepOffsetAPI_MakePipeShell  : public BRepPrimAPI_MakeSweep {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Constructs the shell-generating framework defined by the wire Spine. <br>//! Sets an sweep's mode <br>
 //!         If no mode are setted, the mode use in MakePipe is used <br>
@@ -93,6 +85,9 @@ public:
 //!          to  perform  the  sweeping <br>
 //!	 If IsFrenet is false, a corrected Frenet trihedron is used. <br>
   Standard_EXPORT     void SetMode(const Standard_Boolean IsFrenet = Standard_False) ;
+  //! Sets a Discrete trihedron <br>
+//!          to  perform  the  sweeping <br>
+  Standard_EXPORT     void SetDiscreteMode() ;
   //! Sets  a  fixed  trihedron  to  perform  the  sweeping <br>
 //!         all sections will be parallel. <br>
   Standard_EXPORT     void SetMode(const gp_Ax2& Axe) ;
@@ -170,6 +165,10 @@ public:
 //! - boundary tolerance BoundTol <br>
 //! - angular tolerance TolAngular. <br>
   Standard_EXPORT     void SetTolerance(const Standard_Real Tol3d = 1.0e-4,const Standard_Real BoundTol = 1.0e-4,const Standard_Real TolAngular = 1.0e-2) ;
+  //! Set the flag that indicates attempt to approximate <br>
+//!          a C1-continuous surface if a swept surface proved <br>
+//!          to be C0. <br>
+  Standard_EXPORT     void SetForceApproxC1(const Standard_Boolean ForceApproxC1) ;
   //! Sets the transition mode to manage discontinuities on <br>
 //! the swept shape caused by fractures on the spine. The <br>
 //! transition mode can be BRepBuilderAPI_Transformed <br>

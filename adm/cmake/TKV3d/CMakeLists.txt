@@ -14,18 +14,17 @@ SET(TOOLKIT_MODULES
 	StdSelect
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKG3d
-	TKTopAlgo
-	TKGeomBase
-	TKService
+	TKBRep
 	TKMath
+	TKernel
+	TKService
+	TKTopAlgo
+	TKG2d
+	TKG3d
+	TKGeomBase
 	TKMesh
 	TKGeomAlgo
 	TKHLR
-	TKBRep
-	TKG2d
-	TKV2d
 )
 SET(TOOLKIT_LIBS ${CSF_user32_LIB} ${CSF_gdi32_LIB})
 

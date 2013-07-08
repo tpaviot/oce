@@ -45,6 +45,9 @@ class MoniTool_DataMapOfTimer;
 //!          accessed by string name, mostly aimed for debugging purposes <br>
 //! <br>
 //!          As an instance, envelopes the OSD_Timer to have it as Handle <br>
+//! <br>
+//!          As a tool, supports static dictionary of timers <br>
+//!          and provides static methods to easily access them <br>
 class MoniTool_Timer : public MMgt_TShared {
 
 public:

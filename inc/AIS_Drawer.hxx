@@ -34,6 +34,9 @@
 #ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
 #endif
+#ifndef _Prs3d_TypeOfHLR_HeaderFile
+#include <Prs3d_TypeOfHLR.hxx>
+#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
@@ -149,6 +152,11 @@ public:
   //! Sets the hasOwnHLRDeviationAngle flag to Standard_True, <br>
 //!          sets myOwnHLRDeviationAngle and  myPreviousHLRDeviationAngle <br>
   Standard_EXPORT     void SetHLRAngle(const Standard_Real anAngle) ;
+  //! Sets the type of HLR algorithm <br>
+//!          used by drawer's interactive objects <br>
+      virtual  void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR) ;
+  //! Returns the type of HLR algorithm currently in use. <br>
+      virtual  Prs3d_TypeOfHLR TypeOfHLR() const;
   //! Drawings of curves or patches are made with respect <br>
 //! to a maximal chordal deviation. A Deviation coefficient <br>
 //! is used in the shading display mode. The shape is <br>
@@ -371,6 +379,27 @@ public:
 //!          Color: Quantity_NOC_SKYBLUE <br>
 //!          Type of line: Aspect_TOL_SOLID Width: 1. <br>
   Standard_EXPORT     Handle_Prs3d_LineAspect VectorAspect() ;
+  //! Enables or disables drawing of face boundaries for shading presentations. <br>
+//! The method sets drawing flag owned by the drawer that will be used during <br>
+//! visualization instead of the one set in link. <br>
+//! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
+//! drawn or not. <br>
+  Standard_EXPORT     void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled) ;
+  //! Checks whether the drawing of face boundaries is enabled or not. <br>
+  Standard_EXPORT     Standard_Boolean IsFaceBoundaryDraw() const;
+  //! Sets line aspect for face boundaries. <br>
+//! The method sets line aspect owned by the drawer that will be used during <br>
+//! visualization instead of the one set in link. <br>
+//! theAspect is the line aspect that determines the look of the face boundaries. <br>
+  Standard_EXPORT     void SetFaceBoundaryAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
+  //! Returns line aspect of face boundaries. <br>
+  Standard_EXPORT     Handle_Prs3d_LineAspect FaceBoundaryAspect() ;
+  //! Returns true if the drawer has its own attribute for <br>
+//! "draw face boundaries" flag that overrides the one in the link. <br>
+        Standard_Boolean IsOwnFaceBoundaryDraw() const;
+  //! Returns true if the drawer has its own attribute for <br>
+//! face boundaries aspect that overrides the one in the link. <br>
+        Standard_Boolean IsOwnFaceBoundaryAspect() const;
   
         Standard_Boolean HasDatumAspect() const;
   //! Returns a link with Prs3d_Drawer_DatumAspect, <br>
@@ -446,6 +475,7 @@ Standard_Real myPreviousDeviationAngle;
 Standard_Boolean myhasOwnHLRDeviationAngle;
 Standard_Real myOwnHLRDeviationAngle;
 Standard_Real myPreviousHLRDeviationAngle;
+Standard_Boolean myHasOwnFaceBoundaryDraw;
 
 
 };

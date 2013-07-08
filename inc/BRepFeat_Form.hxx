@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,9 +46,6 @@
 #ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
 #endif
-#ifndef _Handle_BOP_HistoryCollector_HeaderFile
-#include <Handle_BOP_HistoryCollector.hxx>
-#endif
 #ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
 #endif
@@ -58,7 +58,6 @@ class TColGeom_SequenceOfCurve;
 class Geom_Curve;
 class LocOpe_Gluer;
 class BRepAlgoAPI_BooleanOperation;
-class BOP_HistoryCollector;
 class TopOpeBRepBuild_HBuilder;
 
 
@@ -92,18 +91,7 @@ class TopOpeBRepBuild_HBuilder;
 class BRepFeat_Form  : public BRepBuilderAPI_MakeShape {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! returns the list of generated Faces. <br>
   Standard_EXPORT   virtual const TopTools_ListOfShape& Modified(const TopoDS_Shape& F) ;
@@ -176,8 +164,6 @@ protected:
   Standard_EXPORT     void UpdateDescendants(const LocOpe_Gluer& G) ;
   
   Standard_EXPORT     void UpdateDescendants(const BRepAlgoAPI_BooleanOperation& aBOP,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
-  
-  Standard_EXPORT     void UpdateDescendants(const Handle(BOP_HistoryCollector)& aHistory,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
   
   Standard_EXPORT     void UpdateDescendants(const Handle(TopOpeBRepBuild_HBuilder)& B,const TopoDS_Shape& SResult,const Standard_Boolean SkipFace = Standard_False) ;
   

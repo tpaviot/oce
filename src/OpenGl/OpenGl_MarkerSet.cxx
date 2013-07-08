@@ -17,7 +17,6 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <OpenGl_GlCore11.hxx>
 #include <OpenGl_Context.hxx>
 
@@ -26,6 +25,7 @@
 #include <OpenGl_AspectMarker.hxx>
 #include <OpenGl_Structure.hxx>
 #include <OpenGl_Display.hxx>
+#include <OpenGl_Workspace.hxx>
 
 /*----------------------------------------------------------------------*/
 
@@ -70,7 +70,6 @@ void OpenGl_MarkerSet::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
     }
     case Aspect_TOM_POINT :
     {
-      glPointSize( aspect_marker->Scale() );
       glBegin( GL_POINTS );
       for( i = 0, ptr = myPoints; i < myNbPoints; i++, ptr++ )
         glVertex3fv( ptr->xyz );
@@ -140,4 +139,7 @@ void OpenGl_MarkerSet::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
   }
 }
 
-/*----------------------------------------------------------------------*/
+void OpenGl_MarkerSet::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}

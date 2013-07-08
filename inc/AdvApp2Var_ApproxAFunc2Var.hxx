@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -106,21 +109,15 @@ class Geom_BSplineSurface;
 //! R[0,0] ....   R[Num1DSS,0].....  R[Dimension-1,0] for the 1st parameter <br>
 //! R[0,i] ....   R[Num1DSS,i].....  R[Dimension-1,i] for the ith parameter <br>
 //! R[0,N-1] .... R[Num1DSS,N-1].... R[Dimension-1,N-1] for the Nth parameter <br>
+//! <br>
+//!  the order in which each Subspace appears should be consistent <br>
+//!  with the tolerances given in the create function and the <br>
+//!  results will be given in that order as well that is : <br>
+//!  Surface(n) will correspond to the nth entry described by Num3DSS <br>
 class AdvApp2Var_ApproxAFunc2Var  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   AdvApp2Var_ApproxAFunc2Var(const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle(TColStd_HArray1OfReal)& OneDTol,const Handle(TColStd_HArray1OfReal)& TwoDTol,const Handle(TColStd_HArray1OfReal)& ThreeDTol,const Handle(TColStd_HArray2OfReal)& OneDTolFr,const Handle(TColStd_HArray2OfReal)& TwoDTolFr,const Handle(TColStd_HArray2OfReal)& ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var& Func,AdvApprox_Cutting& UChoice,AdvApprox_Cutting& VChoice);

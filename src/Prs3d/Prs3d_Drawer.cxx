@@ -36,7 +36,9 @@ Prs3d_Drawer::Prs3d_Drawer(): myNbPoints(30),myIsoOnPlane(Standard_False),
  myDeviationAngle(12*M_PI/180),
  myHLRAngle(20*M_PI/180),
  myLineDrawArrow(Standard_False),
- myDrawHiddenLine(Standard_False)
+ myDrawHiddenLine(Standard_False),
+ myFaceBoundaryDraw(Standard_False),
+ myTypeOfHLR(Prs3d_TOH_PolyAlgo)
 {
 } 
 
@@ -437,4 +439,66 @@ Handle (Prs3d_LineAspect) Prs3d_Drawer::SectionAspect ()  {
 
 void Prs3d_Drawer::SetSectionAspect ( const Handle(Prs3d_LineAspect)& anAspect) {
  mySectionAspect = anAspect;
+}
+
+// =======================================================================
+// function : SetFaceBoundaryDraw
+// purpose  :
+// =======================================================================
+void Prs3d_Drawer::SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled)
+{
+  myFaceBoundaryDraw = theIsEnabled;
+}
+
+// =======================================================================
+// function : IsFaceBoundaryDraw
+// purpose  :
+// =======================================================================
+Standard_Boolean Prs3d_Drawer::IsFaceBoundaryDraw () const
+{
+  return myFaceBoundaryDraw;
+}
+
+// =======================================================================
+// function : SetFaceBoundaryAspect
+// purpose  :
+// =======================================================================
+void Prs3d_Drawer::SetFaceBoundaryAspect (const Handle(Prs3d_LineAspect)& theAspect)
+{
+  myFaceBoundaryAspect = theAspect;
+}
+
+// =======================================================================
+// function : FaceBoundaryAspect
+// purpose  :
+// =======================================================================
+Handle_Prs3d_LineAspect Prs3d_Drawer::FaceBoundaryAspect ()
+{
+  if (myFaceBoundaryAspect.IsNull ())
+  {
+    myFaceBoundaryAspect = 
+      new Prs3d_LineAspect (Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.0);
+  }
+
+  return myFaceBoundaryAspect;
+}
+
+// =======================================================================
+// function : SetTypeOfHLR
+// purpose  : set type of HLR algorithm
+// =======================================================================
+
+void Prs3d_Drawer::SetTypeOfHLR ( const Prs3d_TypeOfHLR theTypeOfHLR) 
+{
+  myTypeOfHLR = theTypeOfHLR;
+}
+
+// =======================================================================
+// function : TypeOfHLR
+// purpose  : gets type of HLR algorithm
+// =======================================================================
+
+Prs3d_TypeOfHLR Prs3d_Drawer::TypeOfHLR ( ) const
+{
+  return myTypeOfHLR;
 }

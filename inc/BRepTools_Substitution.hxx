@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -31,21 +34,15 @@ class TopTools_ListOfShape;
 //!          modifications. <br>
 //!          A set of shapes is designated to replace a initial <br>
 //!          shape. <br>
+//! <br>
+//!          The method Build reconstructs a new Shape with the <br>
+//!          modifications.The Shape and the new shape are <br>
+//!          registered. <br>
+//! <br>
 class BRepTools_Substitution  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   BRepTools_Substitution();

@@ -1,6 +1,0 @@
-#ifndef _IntTools_CommonPrt_HeaderFile
-#include <IntTools_CommonPrt.hxx>
-#endif
-#ifndef _BOPTools_EEInterference_HeaderFile
-#include <BOPTools_EEInterference.hxx>
-#endif

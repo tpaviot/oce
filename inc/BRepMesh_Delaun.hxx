@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -42,6 +45,7 @@ class BRepMesh_Edge;
 class BRepMesh_Triangle;
 class Bnd_Box2d;
 class TColStd_SequenceOfInteger;
+class TColStd_MapOfInteger;
 
 
 //! Compute the  Delaunay's triangulation    with  the <br>
@@ -49,18 +53,7 @@ class TColStd_SequenceOfInteger;
 class BRepMesh_Delaun  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates the  triangulation with an  empty Mesh <br>
 //!          data structure. <br>
@@ -135,16 +128,26 @@ private:
   Standard_EXPORT     void Perform(Bnd_Box2d& theBndBox,TColStd_Array1OfInteger& theVertexIndices) ;
   //! Creates the triangles on new nodes <br>
   Standard_EXPORT     void CreateTrianglesOnNewVertices(TColStd_Array1OfInteger& theVertexIndices) ;
+  //! Check intersection between the two segments. <br>
+  Standard_EXPORT     Standard_Boolean IntSegSeg(const BRepMesh_Edge& theEdge1,const BRepMesh_Edge& theEdge2) ;
+  //! Removes triangles within polygon <br>
+  Standard_EXPORT     void KillInternalTriangles(const Standard_Integer theEdgeId,const TColStd_MapOfInteger& theIgnoredEdges,BRepMesh_MapOfIntegerInteger& theLoopEdges) ;
+  //! Cleanup mesh from the free triangles <br>
+  Standard_EXPORT     void CleanupMesh() ;
+  //! Removes triangles around the given pivot node <br>
+  Standard_EXPORT     void RemovePivotTriangles(const Standard_Integer theEdgeInfo,const Standard_Integer thePivotNode,TColStd_MapOfInteger& theInfectedEdges,BRepMesh_MapOfIntegerInteger& theLoopEdges,const Standard_Boolean isFirstPass) ;
+  //! Remove internal triangles from the given polygon <br>
+  Standard_EXPORT     void CleanupPolygon(const TColStd_SequenceOfInteger& thePolygon,TColStd_MapOfInteger& theInfectedEdges,BRepMesh_MapOfIntegerInteger& theLoopEdges) ;
 
 
-Handle_BRepMesh_DataStructureOfDelaun MeshData;
-Standard_Boolean PositiveOrientation;
-BRepMesh_CircleTool tCircles;
-Standard_Integer supVert1;
-Standard_Integer supVert2;
-Standard_Integer supVert3;
-BRepMesh_Triangle supTrian;
-BRepMesh_MapOfInteger mapEdges;
+Handle_BRepMesh_DataStructureOfDelaun myMeshData;
+Standard_Boolean myPositiveOrientation;
+BRepMesh_CircleTool myCircles;
+Standard_Integer mySupVert1;
+Standard_Integer mySupVert2;
+Standard_Integer mySupVert3;
+BRepMesh_Triangle mySupTrian;
+BRepMesh_MapOfInteger myMapEdges;
 
 
 };

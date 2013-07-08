@@ -26,8 +26,14 @@
 #include <OpenGl_AspectMarker.hxx>
 #include <OpenGl_Structure.hxx>
 #include <OpenGl_Display.hxx>
+#include <OpenGl_Workspace.hxx>
 
 /*----------------------------------------------------------------------*/
+
+void OpenGl_Marker::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}
 
 void OpenGl_Marker::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
 {
@@ -47,7 +53,6 @@ void OpenGl_Marker::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
     }
     case Aspect_TOM_POINT :
     {
-      glPointSize( aspect_marker->Scale() );
       glBegin( GL_POINTS );
       glVertex3fv( myPoint.xyz );
       glEnd();
@@ -81,7 +86,7 @@ void OpenGl_Marker::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
           break;
         }
         case Aspect_TOM_USERDEFINED :
-        {       
+        {
           glCallList( openglDisplay->GetUserMarkerListIndex( (int)aspect_marker->Scale() ) );
           break;
         }

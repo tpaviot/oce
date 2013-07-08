@@ -1,0 +1,6 @@
+#ifndef _BOPDS_DS_HeaderFile
+#include <BOPDS_DS.hxx>
+#endif
+#ifndef _BOPDS_Iterator_HeaderFile
+#include <BOPDS_Iterator.hxx>
+#endif

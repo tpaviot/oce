@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -38,18 +41,8 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(IntAna2d_IntPoint);
 class IntAna2d_IntPoint  {
 
 public:
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+
+  DEFINE_STANDARD_ALLOC
 
   //! Create an intersection point between 2 parametric 2d lines. <br>
 //!          X,Y are the coordinate of the point. U1 is the parameter <br>

@@ -20,6 +20,7 @@
 
 #include <XDEDRAW_Shapes.ixx>
 
+#include <Draw.hxx>
 #include <DBRep.hxx>
 #include <DDocStd.hxx>
 
@@ -63,7 +64,7 @@ static Standard_Integer addShape (Draw_Interpretor& di, Standard_Integer argc, c
   aShape = DBRep::Get(argv[2]);
   Handle(XCAFDoc_ShapeTool) myAssembly = XCAFDoc_DocumentTool::ShapeTool(Doc->Main());
   Standard_Boolean makeAssembly = Standard_True;
-  if ( argc==4 && atoi(argv[3]) == 0 ) makeAssembly = Standard_False;
+  if ( argc==4 && Draw::Atoi(argv[3]) == 0 ) makeAssembly = Standard_False;
   TDF_Label aLabel;
   aLabel = myAssembly->AddShape(aShape, makeAssembly);
   if (aLabel.IsNull()) di<<"Null Label"<<"\n";
@@ -143,8 +144,9 @@ static Standard_Integer getShape (Draw_Interpretor& di, Standard_Integer argc, c
 
 static Standard_Integer removeShape (Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  if (argc!=3) {
-    di<<"Use: "<<argv[0]<<" DocName Label"<<"\n";
+  if (argc != 3 && argc != 4)
+  {
+    di<<"Use: "<<argv[0]<<" DocName Label [int removeCompletely (1/0)]"<<"\n";
     return 1;
   }
   Handle(TDocStd_Document) Doc;   
@@ -158,7 +160,10 @@ static Standard_Integer removeShape (Draw_Interpretor& di, Standard_Integer argc
 //  XCAFDoc_ShapeTool myAssembly;
 //  myAssembly.Init(Doc);
   Handle(XCAFDoc_ShapeTool) myAssembly = XCAFDoc_DocumentTool::ShapeTool(Doc->Main());
-  myAssembly->RemoveShape(aLabel);
+  Standard_Boolean removeCompletely = Standard_True;
+  if ( argc == 4 && Draw::Atoi(argv[3]) == 0 ) 
+    removeCompletely = Standard_False;
+  myAssembly->RemoveShape(aLabel, removeCompletely);
   
   return 0;
 }
@@ -234,7 +239,7 @@ static Standard_Integer getUsers (Draw_Interpretor& di, Standard_Integer argc, c
     return 1;
   }
   Standard_Boolean getsubchilds = Standard_False;
-  if ( (argc==4) && ( atoi(argv[3])==1 ) ) getsubchilds = Standard_True;
+  if ( (argc==4) && ( Draw::Atoi(argv[3])==1 ) ) getsubchilds = Standard_True;
   
   Handle(TDocStd_Document) Doc;   
   DDocStd::GetDocument(argv[1], Doc);
@@ -258,7 +263,7 @@ static Standard_Integer nbComponents (Draw_Interpretor& di, Standard_Integer arg
     return 1;
   }
   Standard_Boolean getsubchilds = Standard_False;
-  if ( (argc==4) && ( atoi(argv[3])==1 ) ) getsubchilds = Standard_True;
+  if ( (argc==4) && ( Draw::Atoi(argv[3])==1 ) ) getsubchilds = Standard_True;
   Handle(TDocStd_Document) Doc;   
   DDocStd::GetDocument(argv[1], Doc);
   if ( Doc.IsNull() ) { di << argv[1] << " is not a document" << "\n"; return 1; }
@@ -409,7 +414,7 @@ static Standard_Integer getFreeShapes (Draw_Interpretor& di, Standard_Integer ar
     for ( Standard_Integer i = 1; i<= Labels.Length(); i++) {
       TopoDS_Shape S = STool->GetShape ( Labels.Value(i) );
       char string[260];
-      sprintf ( string, "%s_%d", argv[2], i );
+      Sprintf ( string, "%s_%d", argv[2], i );
       DBRep::Set ( string, S );
       di << string << " ";
     }

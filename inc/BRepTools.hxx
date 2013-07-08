@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -87,9 +90,6 @@ class BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
 //!          * OuterWire : A method to find the outer wire of a <br>
 //!          face. <br>
 //! <br>
-//!          * OuterShell : A method to find the outer shell of <br>
-//!          a solid. <br>
-//! <br>
 //!          * Map3DEdges : A method to map all the 3D Edges of <br>
 //!          a Shape. <br>
 //! <br>
@@ -98,18 +98,7 @@ class BRepTools_DataMapIteratorOfMapOfVertexPnt2d;
 class BRepTools  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Returns in UMin,  UMax, VMin,  VMax  the  bounding <br>
 //!          values in the parametric space of F. <br>
@@ -171,13 +160,11 @@ public:
   //! Returns the outer most wire of <F>. Returns a Null <br>
 //!          wire if <F> has no wires. <br>
   Standard_EXPORT   static  TopoDS_Wire OuterWire(const TopoDS_Face& F) ;
-  //! Returns the outer most shell of <S>. Returns a Null <br>
-//!          wire if <S> has no shells. <br>
-  Standard_EXPORT   static  TopoDS_Shell OuterShell(const TopoDS_Solid& S) ;
   //! Stores in the map  <M> all the 3D topology edges <br>
 //!          of <S>. <br>
   Standard_EXPORT   static  void Map3DEdges(const TopoDS_Shape& S,TopTools_IndexedMapOfShape& M) ;
-  
+  //! Verifies that the edge  <E> is found two  times on <br>
+//!          the face <F> before calling BRep_Tool::IsClosed. <br>
   Standard_EXPORT   static  Standard_Boolean IsReallyClosed(const TopoDS_Edge& E,const TopoDS_Face& F) ;
   //! Dumps the topological structure and the geometry <br>
 //!          of <Sh> on the stream <S>. <br>

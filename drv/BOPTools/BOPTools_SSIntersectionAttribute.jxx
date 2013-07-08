@@ -1,3 +1,0 @@
-#ifndef _BOPTools_SSIntersectionAttribute_HeaderFile
-#include <BOPTools_SSIntersectionAttribute.hxx>
-#endif

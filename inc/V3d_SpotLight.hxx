@@ -49,7 +49,7 @@
 #ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
 #endif
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class V3d_View;
 class Graphic3d_Group;
@@ -70,14 +70,14 @@ public:
 //!	    of attenuation . <br>
 //!	    The concentration factor determines the dispersion <br>
 //!	    of the light on the surface, the default value <br>
-//!	    (1.0) corresponds to a minimum of dispersion . <br>//!  Warning! raises BadValue from Viewer  - <br>
+//!	    (1.0) corresponds to a minimum of dispersion . <br>//!  Warning! raises BadValue from V3d  - <br>
 //!	If one of the coefficients is not between 0 and 1 . <br>
 //!	If the lighting angle is <= 0 ou > PI . <br>
   Standard_EXPORT   V3d_SpotLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const V3d_TypeOfOrientation Direction = V3d_XnegYnegZpos,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0,const Quantity_Coefficient Concentration = 1.0,const Quantity_PlaneAngle Angle = 0.523599);
   //! Creates a light source of the Spot type in the viewer. <br>
 //!          Xt,Yt,Zt : Coordinate of light source Target. <br>
 //!          Xp,Yp,Zp : Coordinate of light source Position. <br>
-//!          The others parameters describe before. <br>//!  Warning! raises BadValue from Viewer  - <br>
+//!          The others parameters describe before. <br>//!  Warning! raises BadValue from V3d  - <br>
 //!	If one of the coefficients is not between 0 and 1 . <br>
 //!	If the lighting angle is <= 0 ou > PI . <br>
   Standard_EXPORT   V3d_SpotLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate Xt,const V3d_Coordinate Yt,const V3d_Coordinate Zt,const V3d_Coordinate Xp,const V3d_Coordinate Yp,const V3d_Coordinate Zp,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0,const Quantity_Coefficient Concentration = 1.0,const Quantity_PlaneAngle Angle = 0.523599);
@@ -90,14 +90,14 @@ public:
 //!	     according to a predefined directional vector. <br>
   Standard_EXPORT     void SetDirection(const V3d_TypeOfOrientation Orientation) ;
   //! Defines the coefficients of attenuation. <br>
-//!  Warning! raises BadValue from Viewer <br>
+//!  Warning! raises BadValue from V3d <br>
 //!	    if one of the coefficient is <0 ou >1 . <br>
   Standard_EXPORT     void SetAttenuation(const Quantity_Coefficient A1,const Quantity_Coefficient A2) ;
   //! Defines the coefficient of concentration. <br>
 //!	if the coefficient is <0 ou >1 . <br>
   Standard_EXPORT     void SetConcentration(const Quantity_Coefficient C) ;
   //! Defines the spot angle in RADIANS. <br>
-//!  Warning: raises BadValue from from Viewer <br>
+//!  Warning: raises BadValue from from V3d <br>
 //!	If the angle is <= 0 ou > PI . <br>
   Standard_EXPORT     void SetAngle(const Quantity_PlaneAngle Angle) ;
   //! Display the graphic structure of light source <br>

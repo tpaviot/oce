@@ -1,0 +1,12 @@
+#ifndef _TColStd_SequenceOfHAsciiString_HeaderFile
+#include <TColStd_SequenceOfHAsciiString.hxx>
+#endif
+#ifndef _Font_SystemFont_HeaderFile
+#include <Font_SystemFont.hxx>
+#endif
+#ifndef _TCollection_HAsciiString_HeaderFile
+#include <TCollection_HAsciiString.hxx>
+#endif
+#ifndef _Font_FontMgr_HeaderFile
+#include <Font_FontMgr.hxx>
+#endif

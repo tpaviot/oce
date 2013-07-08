@@ -52,6 +52,30 @@ public:
 //!    myArray->AddVertex(x5,y5,z5) <br>
 //!      .... <br>
 //!    myArray->AddVertex(x8,y8,z8) <br>
+//! <br>
+//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
+//! <maxStrips> defined the maximun allowed strip number in the array. <br>
+//! The number of triangle really drawn is : <br>
+//! VertexNumber()-2*Min(1,BoundNumber()) <br>
+//!  Warning: <br>
+//! When <hasVNormals> is TRUE , you must use one of <br>
+//!      AddVertex(Point,Normal) <br>
+//!  or  AddVertex(Point,Normal,Color) <br>
+//!  or  AddVertex(Point,Normal,Texel) methods. <br>
+//! When <hasVColors> is TRUE , you must use one of <br>
+//!      AddVertex(Point,Color) <br>
+//!  or  AddVertex(Point,Normal,Color) methods. <br>
+//! When <hasTexels> is TRUE , you must use one of <br>
+//!      AddVertex(Point,Texel) <br>
+//!  or  AddVertex(Point,Normal,Texel) methods. <br>
+//! When <hasBColors> is TRUE , <maxBounds> must be > 0 and <br>
+//!      you must use the <br>
+//!      AddBound(number,Color) method. <br>
+//!  Warning: <br>
+//! the user is responsible about the orientation of the strip <br>
+//! depending of the order of the created vertex and this <br>
+//! orientation must be coherent with the vertex normal optionnaly <br>
+//! given at each vertex (See the Orientate() methods). <br>
   Standard_EXPORT   Graphic3d_ArrayOfTriangleStrips(const Standard_Integer maxVertexs,const Standard_Integer maxStrips = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasSColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
 
 

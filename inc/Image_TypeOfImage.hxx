@@ -6,15 +6,10 @@
 #ifndef _Image_TypeOfImage_HeaderFile
 #define _Image_TypeOfImage_HeaderFile
 
-//! Type of dithering method. <br>
+
 enum Image_TypeOfImage {
 Image_TOI_ColorImage,
-Image_TOI_PseudoColorImage,
-Image_TOI_RGB,
-Image_TOI_RGBA,
-Image_TOI_RGBF,
-Image_TOI_RGBAF,
-Image_TOI_FLOAT
+Image_TOI_PseudoColorImage
 };
 
 #ifndef _Standard_PrimitiveTypes_HeaderFile

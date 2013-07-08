@@ -38,9 +38,9 @@
 
 #ifdef DEB
 #include <TopOpeBRepDS_reDEB.hxx>
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceEDSF();
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceDSF();
-Standard_IMPORT Standard_Boolean TopOpeBRep_GettraceEEFF();
+extern Standard_Boolean TopOpeBRepDS_GettraceEDSF();
+extern Standard_Boolean TopOpeBRepDS_GettraceDSF();
+extern Standard_Boolean TopOpeBRep_GettraceEEFF();
 Standard_EXPORT void debefre(const Standard_Integer IE) {cout<<"+++ debefre E"<<IE<<endl;}
 Standard_EXPORT void debposesd(void) {/*cout<<"+++ debposesd"<<endl;*/}
 Standard_EXPORT void debposnesd(void) {cout<<"+++ debposnesd"<<endl;}
@@ -115,8 +115,8 @@ void TopOpeBRep_EdgesFiller::Insert(const TopoDS_Shape& E1,const TopoDS_Shape& E
     const TopOpeBRep_Point2d P2D = myPEI->Point();
     Standard_Real par1 = P2D.Parameter(1);
     Standard_Real par2 = P2D.Parameter(2);
-    Standard_Integer if1 = 0; if ( ! myF1.IsNull() ) if1 = myPDS->AddShape(myF1,1);
-    Standard_Integer if2 = 0; if ( ! myF2.IsNull() ) if2 = myPDS->AddShape(myF2,2);
+    if ( ! myF1.IsNull() ) myPDS->AddShape(myF1,1);
+    if ( ! myF2.IsNull() ) myPDS->AddShape(myF2,2);
 
 #ifdef DEB
     Standard_Boolean pointofsegment =
@@ -333,14 +333,6 @@ void TopOpeBRep_EdgesFiller::SetShapeTransition(const TopOpeBRep_Point2d& P2D,
     if ( ! myE2.IsNull() ) ie2 = myPDS->AddShape(myE2,2);
     if ( ! myE2.IsNull() ) T1.Index(ie2);
     if ( ! myE1.IsNull() ) T2.Index(ie1);
-  }
-  else if (pointofsegment && !esd) {
-    T1.ShapeBefore(TopAbs_FACE);T1.ShapeAfter(TopAbs_FACE);
-    T2.ShapeBefore(TopAbs_FACE);T2.ShapeAfter(TopAbs_FACE);
-    if ( ! myF1.IsNull() ) if1 = myPDS->AddShape(myF1,1);
-    if ( ! myF2.IsNull() ) if2 = myPDS->AddShape(myF2,2);
-    if ( ! myF1.IsNull() ) T2.Index(if1);
-    if ( ! myF2.IsNull() ) T1.Index(if2);
   }
   else {
     T1.ShapeBefore(TopAbs_FACE);T1.ShapeAfter(TopAbs_FACE);

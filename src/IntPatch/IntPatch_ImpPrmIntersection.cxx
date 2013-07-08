@@ -375,6 +375,7 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U1<(U1p-1.5*M_PI)) U1+=M_PI+M_PI;
       while(U1>(U1p+1.5*M_PI)) U1-=M_PI+M_PI;
+	default: /* Do nothing */ break;
   }
   switch(typeS2)
   { 
@@ -386,6 +387,7 @@ void Recadre(const Standard_Boolean ,
     case GeomAbs_Sphere:
       while(U2<(U2p-1.5*M_PI)) U2+=M_PI+M_PI;
       while(U2>(U2p+1.5*M_PI)) U2-=M_PI+M_PI;
+	default: /* Do nothing */ break;
   }
   pt.SetParameters(U1,V1,U2,V2);
 }
@@ -1491,19 +1493,20 @@ static void ForcedPurgePoints(Handle(IntSurf_LineOn2S)& Result,
   if(Result->NbPoints() <= 30) return;
   Standard_Integer Index = 0, IndexLimF = 8, IndexLimL = 8;
 
-  if(Quad.TypeQuadric() == GeomAbs_Cone) {
-    Standard_Real Uapx = 0., Vapx = 0.;
-    Quad.Parameters(Quad.Cone().Apex(),Uapx,Vapx);
-    Standard_Real U1 = 0., V1 = 0., U2 = 0., V2 = 0.;
+  Standard_Real U1 = 0., V1 = 0., U2 = 0., V2 = 0.;
     if(IsReversed) {
       Result->Value(1).ParametersOnS2(U1,V1);
       Result->Value(Result->NbPoints()).ParametersOnS2(U2,V2);
     }
     else {
-      Result->Value(1).ParametersOnS2(U1,V1);
-      Result->Value(Result->NbPoints()).ParametersOnS2(U2,V2);
+      Result->Value(1).ParametersOnS1(U1,V1);   
+      Result->Value(Result->NbPoints()).ParametersOnS1(U2,V2);
     }
 
+  if(Quad.TypeQuadric() == GeomAbs_Cone) {
+    Standard_Real Uapx = 0., Vapx = 0.;
+    Quad.Parameters(Quad.Cone().Apex(),Uapx,Vapx);
+    
     if(fabs(V1-Vapx) <= 1.e-3)
       IndexLimF = 12;
     if(fabs(V2-Vapx) <= 1.e-3)
@@ -1512,16 +1515,7 @@ static void ForcedPurgePoints(Handle(IntSurf_LineOn2S)& Result,
 
   if(Quad.TypeQuadric() == GeomAbs_Sphere) {
     Standard_Real Vapx1 = M_PI/2., Vapx2 = -M_PI/2.;
-    Standard_Real U1 = 0., V1 = 0., U2 = 0., V2 = 0.;
-    if(IsReversed) {
-      Result->Value(1).ParametersOnS2(U1,V1);
-      Result->Value(Result->NbPoints()).ParametersOnS2(U2,V2);
-    }
-    else {
-      Result->Value(1).ParametersOnS2(U1,V1);
-      Result->Value(Result->NbPoints()).ParametersOnS2(U2,V2);
-    }
-
+    
     if(fabs(V1-Vapx1) <= 1.e-3 || fabs(V1-Vapx2) <= 1.e-3)
       IndexLimF = 12;
     if(fabs(V2-Vapx1) <= 1.e-3 || fabs(V2-Vapx2) <= 1.e-3)

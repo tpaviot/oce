@@ -25,17 +25,11 @@
 #ifndef _Graphic3d_MaterialAspect_HeaderFile
 #include <Graphic3d_MaterialAspect.hxx>
 #endif
-#ifndef _Aspect_TypeOfDegenerateModel_HeaderFile
-#include <Aspect_TypeOfDegenerateModel.hxx>
-#endif
-#ifndef _Quantity_Ratio_HeaderFile
-#include <Quantity_Ratio.hxx>
-#endif
 #ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
 #endif
 #ifndef _Aspect_AspectFillArea_HeaderFile
 #include <Aspect_AspectFillArea.hxx>
@@ -45,6 +39,9 @@
 #endif
 #ifndef _Aspect_TypeOfLine_HeaderFile
 #include <Aspect_TypeOfLine.hxx>
+#endif
+#ifndef _Standard_Real_HeaderFile
+#include <Standard_Real.hxx>
 #endif
 class Graphic3d_TextureMap;
 class Quantity_Color;
@@ -64,9 +61,35 @@ public:
 
   //! Creates a context table for fill area primitives <br>
 //!          defined with the following default values: <br>
+//! <br>
+//!          InteriorStyle       : IS_EMPTY <br>
+//!          InteriorColor       : NOC_CYAN1 <br>
+//!          EdgeColor           : NOC_WHITE <br>
+//!          EdgeLineType        : TOL_SOLID <br>
+//!          EdgeWidth           : 1.0 <br>
+//!          FrontMaterial       : NOM_BRASS <br>
+//!          BackMaterial        : NOM_BRASS <br>
+//! <br>
+//!          Display of back-facing filled polygons. <br>
+//!          No distinction between external and internal <br>
+//!          faces of FillAreas. <br>
+//!          The edges are not drawn. <br>
+//!          Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0. <br>
   Standard_EXPORT   Graphic3d_AspectFillArea3d();
   //! Creates a context table for fill area primitives <br>
 //!          defined with the specified values. <br>
+//! <br>
+//!          Display of back-facing filled polygons. <br>
+//!          No distinction between external and internal <br>
+//!          faces of FillAreas. <br>
+//!          The edges are not drawn. <br>
+//!          Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0. <br>
+//! Warning <br>
+//! EdgeWidth is the "line width scale factor".   The <br>
+//! nominal line width is 1 pixel.   The width of the line is <br>
+//! determined by applying the line width scale factor to <br>
+//! this nominal line width.   The supported line widths <br>
+//! vary by 1-pixel units. <br>
   Standard_EXPORT   Graphic3d_AspectFillArea3d(const Aspect_InteriorStyle Interior,const Quantity_Color& InteriorColor,const Quantity_Color& EdgeColor,const Aspect_TypeOfLine EdgeLineType,const Standard_Real EdgeWidth,const Graphic3d_MaterialAspect& FrontMaterial,const Graphic3d_MaterialAspect& BackMaterial);
   //! Allows the display of back-facing filled <br>
 //!          polygons. <br>
@@ -97,24 +120,6 @@ public:
   Standard_EXPORT     void SetTextureMapOn() ;
   
   Standard_EXPORT     void SetTextureMapOff() ;
-  //! Sets the default model of degeneration for the polygons <br>
-//!      which is taking in account at creation time of any <br>
-//!      graphic structure until the model is change using <br>
-//!      SetDegenerateModel() method. <br>
-  Standard_EXPORT   static  void SetDefaultDegenerateModel(const Aspect_TypeOfDegenerateModel aModel = Aspect_TDM_WIREFRAME,const Quantity_Ratio aRatio = 0.0) ;
-  //! Sets the model of degeneration for the polygons <br>
-//!   according to the degenerate ratio >= 0. & <= 1. where : <br>
-//!   <aRatio> = 0. indicate that all polygons of the graphic structure <br>
-//!      are displayed. <br>
-//!   <aRatio> = 1. indicate that nothing is displayed in the graphic <br>
-//!      structure. <br>
-//!   When <ARatio> is > 0 & < 1. the corresponding amount <br>
-//!   of polygons are displayed in the graphic structure with a <br>
-//!   random method. <br>
-//!  Warning: the degenerate structure is shown only when <br>
-//! the animation and degenerate flags are set to TRUE <br>
-//! in V3d_View::SetAnimationMode(..) <br>
-  Standard_EXPORT     void SetDegenerateModel(const Aspect_TypeOfDegenerateModel aModel = Aspect_TDM_WIREFRAME,const Quantity_Ratio aRatio = 0.0) ;
   //! Sets up OpenGL polygon offsets mechanism. <br>
 //!          <aMode> parameter can contain various combinations of <br>
 //!          Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means <br>
@@ -125,7 +130,13 @@ public:
 //!          offset = <aFactor> * m + <aUnits> * r, where <br>
 //!          m - maximum depth slope for the polygon currently being displayed, <br>
 //!          r - minimum window coordinates depth resolution (implementation-specific) <br>
-  Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0) ;
+//! <br>
+//!          Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0. <br>
+//! <br>
+//!          Negative offset values move polygons closer to the viewport, <br>
+//!          while positive values shift polygons away. <br>
+//!          Consult OpenGL reference for details (glPolygonOffset function description). <br>
+  Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
   //! Returns the Back Face Removal status. <br>
 //!          Standard_True if SuppressBackFace is activated. <br>
   Standard_EXPORT     Standard_Boolean BackFace() const;
@@ -142,14 +153,8 @@ public:
   Standard_EXPORT     Handle_Graphic3d_TextureMap TextureMap() const;
   
   Standard_EXPORT     Standard_Boolean TextureMapState() const;
-  //! returns the current degeneration model and ratio <br>
-//!  for the polygons <br>
-  Standard_EXPORT     Aspect_TypeOfDegenerateModel DegenerateModel(Quantity_Ratio& aRatio) const;
-  //! returns the default degeneration model and ratio <br>
-//!  for the polygons <br>
-  Standard_EXPORT   static  Aspect_TypeOfDegenerateModel DefaultDegenerateModel(Quantity_Ratio& aRatio) ;
   //! Returns current polygon offsets settings. <br>
-  Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
 
 
 
@@ -171,11 +176,9 @@ Handle_Graphic3d_TextureMap MyTextureMap;
 Standard_Boolean MyTextureMapState;
 Graphic3d_MaterialAspect MyFrontMaterial;
 Graphic3d_MaterialAspect MyBackMaterial;
-Aspect_TypeOfDegenerateModel MyDegenerateModel;
-Quantity_Ratio MyDegenerateRatio;
 Standard_Integer MyPolygonOffsetMode;
-Standard_Real MyPolygonOffsetFactor;
-Standard_Real MyPolygonOffsetUnits;
+Standard_ShortReal MyPolygonOffsetFactor;
+Standard_ShortReal MyPolygonOffsetUnits;
 
 
 };

@@ -58,6 +58,9 @@
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
+#ifndef _TopTools_MutexForShapeProvider_HeaderFile
+#include <TopTools_MutexForShapeProvider.hxx>
+#endif
 #ifndef _Handle_BRepAdaptor_HSurface_HeaderFile
 #include <Handle_BRepAdaptor_HSurface.hxx>
 #endif
@@ -98,11 +101,11 @@ public:
   
   Standard_EXPORT   BRepMesh_FastDiscretFace(const Standard_Real theAngle,const Standard_Boolean theWithShare = Standard_True);
   
-  Standard_EXPORT     void Add(const TopoDS_Face& theFace,const Handle(BRepMesh_FaceAttribute)& theAttrib,const TopTools_DataMapOfShapeReal& theMapDefle) ;
+  Standard_EXPORT     void Add(const TopoDS_Face& theFace,const Handle(BRepMesh_FaceAttribute)& theAttrib,const TopTools_DataMapOfShapeReal& theMapDefle,const TopTools_MutexForShapeProvider& theMutexProvider) ;
   
   Standard_EXPORT     Standard_Real Control(const Handle(BRepAdaptor_HSurface)& theCaro,const Standard_Real theDefFace,BRepMesh_ListOfVertex& theInternalV,TColStd_ListOfInteger& theBadTriangles,TColStd_ListOfInteger& theNulTriangles,BRepMesh_Delaun& theTrigu,const Standard_Boolean theIsFirst) ;
   
-  Standard_EXPORT   static  gp_XY FindUV(const TopoDS_Vertex& theV,const gp_Pnt2d& theXY,const Standard_Integer theIp,const Handle(BRepAdaptor_HSurface)& theSFace,const Standard_Real theMinDist,BRepMesh_DataMapOfIntegerListOfXY& theLocation2dMap) ;
+  Standard_EXPORT   static  gp_XY FindUV(const TopoDS_Vertex& theV,const gp_Pnt2d& theXY,const Standard_Integer theIp,const Handle(BRepAdaptor_HSurface)& theSFace,const Standard_Real theMinDist,const Handle(BRepMesh_FaceAttribute)& theFaceAttribute,BRepMesh_DataMapOfIntegerListOfXY& theLocation2dMap) ;
   //! Gives the triangle of <Index>. <br>
   Standard_EXPORT    const BRepMesh_Triangle& Triangle(const Standard_Integer theIndex) const;
   //! Gives the edge of index <Index>. <br>
@@ -120,7 +123,7 @@ public:
 protected:
 
   
-  Standard_EXPORT     Standard_Boolean RestoreStructureFromTriangulation(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,const Handle(BRepAdaptor_HSurface)& theSurf,const Handle(Poly_Triangulation)& theTrigu,const Standard_Real theDefEdge,const TopLoc_Location& theLoc) ;
+  Standard_EXPORT     Standard_Boolean RestoreStructureFromTriangulation(const TopoDS_Edge& theEdge,const TopoDS_Face& theFace,const Handle(BRepAdaptor_HSurface)& theSurf,const Handle(Poly_Triangulation)& theTrigu,const Standard_Real theDefEdge,const TopLoc_Location& theLoc,const TopTools_MutexForShapeProvider& theMutexProvider) ;
 
 
 
@@ -131,7 +134,7 @@ private:
   
   Standard_EXPORT     void InternalVertices(const Handle(BRepAdaptor_HSurface)& theCaro,BRepMesh_ListOfVertex& theInternalV,const Standard_Real theDefFace,const BRepMesh_ClassifierPtr& theClassifier) ;
   
-  Standard_EXPORT     void AddInShape(const TopoDS_Face& theFace,const Standard_Real theDefFace) ;
+  Standard_EXPORT     void AddInShape(const TopoDS_Face& theFace,const Standard_Real theDefFace,const TopTools_MutexForShapeProvider& theMutexProvider) ;
 
 Standard_Real myAngle;
 Standard_Boolean myWithShare;

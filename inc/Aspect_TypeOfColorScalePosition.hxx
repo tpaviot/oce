@@ -6,7 +6,7 @@
 #ifndef _Aspect_TypeOfColorScalePosition_HeaderFile
 #define _Aspect_TypeOfColorScalePosition_HeaderFile
 
-//! Defines the using type of colors and labels <br>
+//! Defines the type of position for color scale labels <br>
 enum Aspect_TypeOfColorScalePosition {
 Aspect_TOCSP_NONE,
 Aspect_TOCSP_LEFT,

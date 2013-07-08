@@ -6,7 +6,7 @@
 #ifndef _Graphic3d_TypeOfPrimitive_HeaderFile
 #define _Graphic3d_TypeOfPrimitive_HeaderFile
 
-//! The type of polygon in a group in a structure. <br>
+//! The type of primitive in a group in a structure. <br>
 enum Graphic3d_TypeOfPrimitive {
 Graphic3d_TOP_UNDEFINED,
 Graphic3d_TOP_POLYLINE,

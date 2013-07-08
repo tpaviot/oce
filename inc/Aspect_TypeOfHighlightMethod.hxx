@@ -6,7 +6,14 @@
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #define _Aspect_TypeOfHighlightMethod_HeaderFile
 
-//! Definition of edge visibility <br>
+//! Definition of a highlight method <br>
+//! <br>
+//!          TOHM_COLOR          drawn in the highlight color <br>
+//!                              (default white) <br>
+//!          TOHM_BLINK          blinking <br>
+//!          TOHM_BOUNDBOX       enclosed by the boundary box <br>
+//!                              (default white) <br>
+//! <br>
 enum Aspect_TypeOfHighlightMethod {
 Aspect_TOHM_COLOR,
 Aspect_TOHM_BLINK,

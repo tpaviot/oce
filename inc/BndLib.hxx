@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -58,20 +61,9 @@ class BndLib_AddSurface;
 class BndLib  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Adds the segment of the line L limited by the two <br>
+  //! Bounding box for a surface trimmed or not <br>//! Adds the segment of the line L limited by the two <br>
 //! parameter values P1 and P2, to the bounding box B, and <br>
 //! then enlarges B by the tolerance value Tol. <br>
 //! Tol is the tolerance value to enlarge the minimun and maximum dimension <br>

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -67,29 +70,26 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(Quantity_Color);
 class Quantity_Color  {
 
 public:
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a colour with the default value of <br>
 //!	    Colour name : YELLOW <br>
+//! <br>
   Standard_EXPORT   Quantity_Color();
   //! Creates the colour <AName>. <br>
+//! <br>
   Standard_EXPORT   Quantity_Color(const Quantity_NameOfColor AName);
   //! Creates a colour according to the definition system <br>
 //!	    TypeOfColor. <br>
 //!	    TOC_RGB : <R1> the value of red between 0. and 1. <br>
 //!		      <R2> the value of green between 0. and 1. <br>
 //!		      <R3> the value of blue between 0. and 1. <br>
+//! <br>
+//!	    TOC_HLS : <R1> is the hue angle in degrees, 0. being red <br>
+//!	  	      <R2> is the lightness between 0. and 1. <br>
+//!		      <R3> is the saturation between 0. and 1. <br>
+//! <br>
   Standard_EXPORT   Quantity_Color(const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType);
   //! Updates the colour <me> from the definition of the <br>
 //!	    colour <Other>. <br>
@@ -120,6 +120,11 @@ public:
 //!	    TOC_RGB : <R1> the value of red between 0. and 1. <br>
 //!		      <R2> the value of green between 0. and 1. <br>
 //!		      <R3> the value of blue between 0. and 1. <br>
+//! <br>
+//!	    TOC_HLS : <R1> is the hue angle in degrees, 0. being red <br>
+//!	  	      <R2> is the lightness between 0. and 1. <br>
+//!		      <R3> is the saturation between 0. and 1. <br>
+//! <br>
   Standard_EXPORT     void SetValues(const Quantity_Parameter R1,const Quantity_Parameter R2,const Quantity_Parameter R3,const Quantity_TypeOfColor AType) ;
   //! Returns the percentage change of contrast and intensity <br>
 //!	    between <me> and <AColor>. <br>
@@ -241,6 +246,10 @@ private:
 //!	    TOC_RGB : <R1> the value of red between 0. and 1. <br>
 //!		      <R2> the value of green between 0. and 1. <br>
 //!		      <R3> the value of blue between 0. and 1. <br>
+//! <br>
+//!	    TOC_HLS : <R1> is the hue angle in degrees, 0. being red <br>
+//!	  	      <R2> is the lightness between 0. and 1. <br>
+//!		      <R3> is the saturation between 0. and 1. <br>
   Standard_EXPORT   static  void ValuesOf(const Quantity_NameOfColor AName,const Quantity_TypeOfColor AType,Standard_ShortReal& R1,Standard_ShortReal& R2,Standard_ShortReal& R3) ;
 
 Standard_ShortReal MyRed;

@@ -31,7 +31,7 @@
 #include <Draw_Window.hxx>
 #include <CommandWindow.h>
 
-Standard_Boolean Draw_Interprete(char* command); // Implemented in Draw.cxx
+Standard_Boolean Draw_Interprete(const char* command); // Implemented in Draw.cxx
 extern Standard_Boolean Draw_IsConsoleSubsystem;
 
 //extern "C" int  compat_unlink(const char *fname); // Implemente dans TCL
@@ -104,8 +104,10 @@ BOOL CommandProc(HWND hWndFrame, WPARAM wParam, LPARAM lParam)
 	{
 	  case IDM_WINDOW_NEXT :
 					if((hWndClient = (HWND)GetWindowLong(hWndFrame, CLIENTWND)) != NULL)
-					  hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
+					{
+						hWndActive = (HWND)SendMessage(hWndClient, WM_MDIGETACTIVE, 0, 0l);
 						SendMessage(hWndClient, WM_MDINEXT, (WPARAM)hWndActive, 0l);  
+					}
 					break;
 
 		case IDM_WINDOW_CASCADE :

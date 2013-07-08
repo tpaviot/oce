@@ -46,6 +46,11 @@ class gp_Pnt;
 
 //! defines IGESConnectPoint, Type <132> Form Number <0> <br>
 //!           in package IGESDraw <br>
+//! <br>
+//!           Connect Point Entity describes a point of connection for <br>
+//!           zero, one or more entities. Its referenced from Composite <br>
+//!           curve, or Network Subfigure Definition/Instance, or Flow <br>
+//!           Associative Instance, or it may stand alone. <br>
 class IGESDraw_ConnectPoint : public IGESData_IGESEntity {
 
 public:

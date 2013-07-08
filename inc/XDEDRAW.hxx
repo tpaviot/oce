@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -25,20 +28,9 @@ class XDEDRAW_Common;
 class XDEDRAW  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Initializes all the functions <br>
+  //! Provides common commands for work XDE <br>//! Initializes all the functions <br>
   Standard_EXPORT   static  void Init(Draw_Interpretor& di) ;
   //! Loads all Draw commands of  TKXDEDRAW. Used for plugin. <br>
   Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;

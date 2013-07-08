@@ -6,7 +6,7 @@
 #ifndef _TopOpeBRepDS_Kind_HeaderFile
 #define _TopOpeBRepDS_Kind_HeaderFile
 
-
+//! different types of objects in DataStructure <br>
 enum TopOpeBRepDS_Kind {
 TopOpeBRepDS_POINT,
 TopOpeBRepDS_CURVE,

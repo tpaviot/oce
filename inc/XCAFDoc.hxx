@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -42,21 +45,22 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
 
 //! Definition of general structure of DECAF document <br>
 //!          and tools to work with it <br>
+//! <br>
+//!          The document is composed of sections, each section <br>
+//!          storing its own kind of data and managing by corresponding <br>
+//!          tool <br>
+//!          Some properties can be attached directly to shapes. These properties are: <br>
+//!          * Name (the standard definition from OCAF) - class TDataStd_Name <br>
+//!          * Centroid (for the validation of transfer) - class XCAFDoc_Centroid <br>
+//!          * Volume (for the validation of transfer) - class XCAFDoc_Volume <br>
+//!          * Area (for the validation of transfer) - class XCafDoc_Area <br>
+//!          Management of these attributes is realized by OCAF. For getting <br>
+//!          the attributes attached to a label the method class <br>
+//!          TDF_Label::FindAttribute() should be used. <br>
 class XCAFDoc  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Returns GUID for UAttribute identifying assembly <br>
   Standard_EXPORT   static  Standard_GUID AssemblyGUID() ;

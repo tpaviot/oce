@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -42,35 +45,27 @@ class Intf_TangentZone;
 class Intf_Interference  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Gives the number   of  points of  intersection  in the <br>
 //!          interference. <br>
         Standard_Integer NbSectionPoints() const;
   //! Gives the point of  intersection of address  Index in <br>
 //!          the interference. <br>
+//! <br>
        const Intf_SectionPoint& PntValue(const Standard_Integer Index) const;
   //! Gives the number  of polylines of  intersection in the <br>
 //!          interference. <br>
         Standard_Integer NbSectionLines() const;
   //! Gives the polyline of intersection at address <Index> in <br>
 //!          the interference. <br>
+//! <br>
        const Intf_SectionLine& LineValue(const Standard_Integer Index) const;
   //! Gives the number of zones of tangence in the interference. <br>
         Standard_Integer NbTangentZones() const;
   //! Gives  the zone of  tangence at address   Index in the <br>
 //!          interference. <br>
+//! <br>
        const Intf_TangentZone& ZoneValue(const Standard_Integer Index) const;
   //! Gives the tolerance used for the calculation. <br>
         Standard_Real GetTolerance() const;

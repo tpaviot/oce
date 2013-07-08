@@ -6,9 +6,7 @@
 #ifndef _V3d_TypeOfAxe_HeaderFile
 #define _V3d_TypeOfAxe_HeaderFile
 
-//! Determines the type of update of the view <br>
-//! -   V3d_ASAP: as soon as possible. The view is updated immediately after a modification. <br>
-//! -   V3d_WAIT: deferred. The view is updated when the Update function is called. <br>
+//! Determines the axis type through the coordinates X, Y, Z. <br>
 enum V3d_TypeOfAxe {
 V3d_X,
 V3d_Y,

@@ -258,6 +258,7 @@ void BRepMesh_FastDiscret::Perform(const TopoDS_Shape& theShape)
   if (myInParallel)
   {
   #ifdef HAVE_TBB
+    CreateMutexesForSubShapes(theShape, TopAbs_EDGE);
     // mesh faces in parallel threads using TBB
     tbb::parallel_for_each (aFaces.begin(), aFaces.end(), *this);
   #else
@@ -267,6 +268,7 @@ void BRepMesh_FastDiscret::Perform(const TopoDS_Shape& theShape)
     for (i = 0; i < n; ++i)
       Process (aFaces[i]);
   #endif
+    RemoveAllMutexes();
   }
   else
   {
@@ -288,7 +290,7 @@ void BRepMesh_FastDiscret::Process(const TopoDS_Face& theFace) const
   if ( GetFaceAttribute (theFace, fattribute) ) 
   {
     BRepMesh_FastDiscretFace aTool (GetAngle(), WithShare());
-    aTool.Add (theFace, fattribute, GetMapOfDefEdge());
+    aTool.Add (theFace, fattribute, GetMapOfDefEdge(), myMutexProvider);
   }
   //cout << "END   face " << theFace.TShape().operator->() << endl << flush;
 }
@@ -905,7 +907,12 @@ void BRepMesh_FastDiscret::Add( const TopoDS_Edge&                  theEdge,
     }
     myVertices.Bind(pBegin, ipf);
   }
-  theUV = BRepMesh_FastDiscretFace::FindUV(pBegin, uvFirst, ipf, theGFace, mindist, myLocation2d);
+
+  Handle(BRepMesh_FaceAttribute) aFaceAttribute;
+  GetFaceAttribute ( theFace, aFaceAttribute );
+  theUV = BRepMesh_FastDiscretFace::FindUV(pBegin, uvFirst, 
+    ipf, theGFace, mindist, aFaceAttribute, myLocation2d);
+
   BRepMesh_Vertex vf(theUV, ipf, BRepMesh_Frontier);
   Standard_Integer ivf = myStructure->AddNode(vf);
 
@@ -936,7 +943,10 @@ void BRepMesh_FastDiscret::Add( const TopoDS_Edge&                  theEdge,
       myVertices.Bind(pEnd,ipl);
     }
   }
-  theUV = BRepMesh_FastDiscretFace::FindUV(pEnd, uvLast, ipl, theGFace, mindist, myLocation2d);
+
+  theUV = BRepMesh_FastDiscretFace::FindUV(pEnd, uvLast, ipl, 
+    theGFace, mindist, aFaceAttribute, myLocation2d);
+
   BRepMesh_Vertex vl(theUV, ipl, BRepMesh_Frontier);
   Standard_Integer ivl= myStructure->AddNode(vl);
 
@@ -990,8 +1000,39 @@ void BRepMesh_FastDiscret::Add( const TopoDS_Edge&                  theEdge,
 
       TopLoc_Location L;
       Standard_Integer nbpmin = 2;
-      if (cons.GetType() == GeomAbs_Circle) nbpmin = 4; //OCC287
-      BRepMesh_GeomTool GT(cons, wFirst, wLast, 0.5*myAngle, otherdefedge, nbpmin);
+      const GeomAbs_CurveType aCurveType = cons.GetType();
+      if ( aCurveType == GeomAbs_Circle )
+        nbpmin = 4; //OCC287
+
+      BRepMesh_GeomTool GT(cons, wFirst, wLast, 0.5 * myAngle, otherdefedge, nbpmin);
+
+      if ( aCurveType == GeomAbs_BSplineCurve )
+      {
+        const Standard_Integer aNbInt = cons.NbIntervals( GeomAbs_C1 );
+        if ( aNbInt > 0 )
+        {
+          TColStd_Array1OfReal anIntervals( 1, aNbInt + 1 );
+          cons.Intervals( anIntervals, GeomAbs_C1 );
+          for ( Standard_Integer aIntIt = 1; aIntIt <= aNbInt; ++aIntIt )
+          {
+            const Standard_Real& aStartInt = anIntervals.Value( aIntIt );
+            const Standard_Real& anEndInt  = anIntervals.Value( aIntIt + 1 );
+
+            BRepMesh_GeomTool aDetalizator( cons, aStartInt, anEndInt,
+              0.5 * myAngle, otherdefedge, nbpmin );
+
+            Standard_Integer aNbAddNodes = aDetalizator.NbPoints();
+            for ( Standard_Integer aNodeIt = 1; aNodeIt <= aNbAddNodes; ++aNodeIt )
+            {
+              Standard_Real aParam;
+              gp_Pnt        aPoint3d;
+              gp_Pnt2d      aPoint2d;
+              aDetalizator.Value( cons, theGFace, aNodeIt, aParam, aPoint3d, aPoint2d );
+              GT.AddPoint( aPoint3d, aParam, Standard_False );
+            }
+          }
+        }
+      }
 
       // PTv, chl/922/G9, Take into account internal vertices
       // it is necessary for internal edges, which do not split other edges, by their vertex
@@ -1364,7 +1405,12 @@ Standard_Boolean BRepMesh_FastDiscret::Update(const TopoDS_Edge&          theEdg
           myVertices.Bind(pBegin,ipf);
         }
         NewNodInStruct(1) = ipf;
-        theUV = BRepMesh_FastDiscretFace::FindUV(pBegin, uvFirst, ipf, gFace, mindist, myLocation2d);
+
+        Handle(BRepMesh_FaceAttribute) aFaceAttribute;
+        GetFaceAttribute ( theFace, aFaceAttribute );
+        theUV = BRepMesh_FastDiscretFace::FindUV(pBegin, uvFirst, ipf, 
+          gFace, mindist, aFaceAttribute, myLocation2d);
+
         BRepMesh_Vertex vf(theUV,ipf,BRepMesh_Frontier);
         iv1 = myStructure->AddNode(vf);
         isv1 = myVemap.FindIndex(iv1);
@@ -1401,7 +1447,9 @@ Standard_Boolean BRepMesh_FastDiscret::Update(const TopoDS_Edge&          theEdg
           }
         }
         NewNodInStruct(nbnodes) = ipl;
-        theUV = BRepMesh_FastDiscretFace::FindUV(pEnd, uvLast, ipl, gFace, mindist, myLocation2d);
+        theUV = BRepMesh_FastDiscretFace::FindUV(pEnd, uvLast, ipl, 
+          gFace, mindist, aFaceAttribute, myLocation2d);
+
         BRepMesh_Vertex vl(theUV,ipl,BRepMesh_Frontier);
         
         ivl = myStructure->AddNode(vl);
@@ -1688,4 +1736,23 @@ void BRepMesh_FastDiscret::RemoveFaceAttribute(const TopoDS_Face& theFace)
 {
   if(myMapattrib.IsBound(theFace))
     myMapattrib.UnBind(theFace);
+}
+
+//=======================================================================
+//function : CreateMutexesForSubShapes
+//purpose  : 
+//=======================================================================
+void BRepMesh_FastDiscret::CreateMutexesForSubShapes(const TopoDS_Shape& theShape,
+                                                     const TopAbs_ShapeEnum theType)
+{
+  myMutexProvider.CreateMutexesForSubShapes(theShape, theType);
+}
+
+//=======================================================================
+//function : RemoveAllMutexes
+//purpose  : 
+//=======================================================================
+void BRepMesh_FastDiscret::RemoveAllMutexes()
+{
+  myMutexProvider.RemoveAllMutexes();
 }

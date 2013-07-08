@@ -88,11 +88,11 @@ static Standard_Boolean HasSingularity(const Adaptor3d_SurfaceOfRevolution& S)
 
   P = C->Value(C->FirstParameter());
 
-  if(L.SquareDistance(P) < Precision::Confusion() * Precision::Confusion()) return Standard_True;
+  if(L.SquareDistance(P) < Precision::SquareConfusion()) return Standard_True;
 
   P = C->Value(C->LastParameter());
 
-  if(L.SquareDistance(P) < Precision::Confusion() * Precision::Confusion()) return Standard_True;
+  if(L.SquareDistance(P) < Precision::SquareConfusion()) return Standard_True;
   
   return Standard_False;
 }
@@ -120,10 +120,8 @@ static void PerformExtPElC (Extrema_ExtPElC& E,
   case GeomAbs_Parabola:
     E.Perform(P, C->Parabola(), Tol, -Precision::Infinite(),Precision::Infinite());
     return;
-#ifndef DEB
   default:
     return ;
-#endif
   }
 }
 
@@ -365,7 +363,13 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * M_PI);
 
 	  if (newV > myvsup) {
-	    newV = myvsup;
+            newV -= 2. * M_PI;
+
+            if (newV + mytolv < myvinf) {
+              newV = myvsup;
+            } else if (newV < myvinf) {
+              newV = myvinf;
+            }
 	  }
 	}
 	V = newV;
@@ -384,8 +388,15 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
 	  newV = ElCLib::InPeriod(V, myvsup - 2. * M_PI, myvsup);
 	  
-	  if(newV < myvinf)
-	    newV = myvinf;
+          if(newV < myvinf) {
+            newV += 2. * M_PI;
+ 
+            if (newV - mytolv > myvsup) {
+              newV = myvinf;
+            } else if (newV > myvsup) {
+              newV = myvsup;
+            }
+          }
 	}
 	V = newV;
 
@@ -424,7 +435,13 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	  newV = ElCLib::InPeriod(V, myvinf, myvinf + 2. * M_PI);
 
 	  if (newV > myvsup) {
-	    newV = myvsup;
+            newV -= 2. * M_PI;
+
+            if (newV + mytolv < myvinf) {
+              newV = myvsup;
+            } else if (newV < myvinf) {
+              newV = myvinf;
+            }
 	  }
 	}
 	V = newV;
@@ -440,8 +457,15 @@ void Extrema_ExtPRevS::Perform(const gp_Pnt& P)
 	   (anACurve->GetType() == GeomAbs_Ellipse)) {
 	  newV = ElCLib::InPeriod(V, myvsup - 2. * M_PI, myvsup);
 	  
-	  if(newV < myvinf)
-	    newV = myvinf;
+          if(newV < myvinf) {
+            newV += 2. * M_PI;
+ 
+            if (newV - mytolv > myvsup) {
+              newV = myvinf;
+            } else if (newV > myvsup) {
+              newV = myvsup;
+            }
+          }
 	}
 	V = newV;
 

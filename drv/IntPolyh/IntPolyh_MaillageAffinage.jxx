@@ -16,29 +16,8 @@
 #ifndef _IntPolyh_Triangle_HeaderFile
 #include <IntPolyh_Triangle.hxx>
 #endif
-#ifndef _IntPolyh_ArrayOfSectionLines_HeaderFile
-#include <IntPolyh_ArrayOfSectionLines.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfTangentZones_HeaderFile
-#include <IntPolyh_ArrayOfTangentZones.hxx>
-#endif
 #ifndef _IntPolyh_SectionLine_HeaderFile
 #include <IntPolyh_SectionLine.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfPoints_HeaderFile
-#include <IntPolyh_ArrayOfPoints.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfEdges_HeaderFile
-#include <IntPolyh_ArrayOfEdges.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
-#include <IntPolyh_ArrayOfTriangles.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfStartPoints_HeaderFile
-#include <IntPolyh_ArrayOfStartPoints.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
-#include <IntPolyh_ArrayOfCouples.hxx>
 #endif
 #ifndef _IntPolyh_MaillageAffinage_HeaderFile
 #include <IntPolyh_MaillageAffinage.hxx>

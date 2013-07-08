@@ -17,8 +17,8 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <OpenGl_AspectLine.hxx>
+#include <OpenGl_Workspace.hxx>
 
 static const TEL_COLOUR myDefaultColor = {{ 1.0F, 1.0F, 1.0F, 1.0F }};
 
@@ -52,9 +52,12 @@ void OpenGl_AspectLine::SetContext (const CALL_DEF_CONTEXTLINE &AContext)
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_AspectLine::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
+void OpenGl_AspectLine::Render (const Handle(OpenGl_Workspace) &theWorkspace) const
 {
-  AWorkspace->SetAspectLine(this);
+  theWorkspace->SetAspectLine (this);
 }
 
-/*----------------------------------------------------------------------*/
+void OpenGl_AspectLine::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}

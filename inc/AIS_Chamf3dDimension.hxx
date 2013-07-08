@@ -49,12 +49,6 @@
 #ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
@@ -67,8 +61,6 @@ class gp_Pnt;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class Geom_Transformation;
 class SelectMgr_Selection;
 
@@ -120,8 +112,6 @@ private:
   Standard_EXPORT     void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
   
   Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
-  
-  Standard_EXPORT     void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   
   Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
 

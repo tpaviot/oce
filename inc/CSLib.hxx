@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,20 +46,12 @@ class CSLib_NormalPolyDef;
 class CSLib  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
+//!  The following functions computes the normal to a surface <br>
+//! inherits FunctionWithDerivative from math <br>
+//! <br>
 //!  Computes the normal direction of a surface as the cross product <br>
 //!  between D1U and D1V. <br>
 //!  If D1U has null length or D1V has null length or D1U and D1V are <br>

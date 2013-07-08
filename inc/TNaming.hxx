@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -39,6 +42,10 @@ class TNaming_NamedShape;
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 class TopTools_HArray1OfShape;
+class TopoDS_Face;
+class TopoDS_Wire;
+class TopoDS_Solid;
+class TopoDS_Shell;
 class TDF_IDList;
 class TNaming_CopyShape;
 class TNaming_TranslateTool;
@@ -143,18 +150,7 @@ class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 class TNaming  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Subtituter les  shapes  sur les structures de   source <br>
 //!          vers cible <br>
@@ -195,18 +191,25 @@ public:
 //!          of atomic shapes (Compound). The result is concatenation of <br>
 //!          single contexts <br>
   Standard_EXPORT   static  TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape& S,const TopoDS_Shape& Context,Handle(TopTools_HArray1OfShape)& Arr) ;
-  //! Subtitutes shape in source structure <br>//! Print of TNaming enumeration <br>
-//!          ============================= <br>
+  //! Subtitutes shape in source structure <br>
   Standard_EXPORT   static  Standard_Boolean SubstituteSShape(const TDF_Label& accesslabel,const TopoDS_Shape& From,TopoDS_Shape& To) ;
+  //! Returns True if outer wire is found and the found wire in <theWire>. <br>
+  Standard_EXPORT   static  Standard_Boolean OuterWire(const TopoDS_Face& theFace,TopoDS_Wire& theWire) ;
+  //! Returns True if outer Shell is found and the found shell in <theShell>. <br>//! Print of TNaming enumeration <br>
+//!          ============================= <br>
+  Standard_EXPORT   static  Standard_Boolean OuterShell(const TopoDS_Solid& theSolid,TopoDS_Shell& theShell) ;
   //! Appends to <anIDList> the list of the attributes <br>
 //!          IDs of this package. CAUTION: <anIDList> is NOT <br>
 //!          cleared before use. <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  
+  //! Prints the  evolution  <EVOL> as  a String on  the <br>
+//!          Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TNaming_Evolution EVOL,Standard_OStream& S) ;
-  
+  //! Prints the name of name type <NAME> as a String on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TNaming_NameType NAME,Standard_OStream& S) ;
-  
+  //! Prints the content of UsedShapes private  attribute as a String Table on <br>
+//!          the Stream <S> and returns <S>. <br>
   Standard_EXPORT   static  Standard_OStream& Print(const TDF_Label& ACCESS,Standard_OStream& S) ;
 
 

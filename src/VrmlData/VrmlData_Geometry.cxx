@@ -70,14 +70,10 @@ IMPLEMENT_STANDARD_RTTIEXT (VrmlData_TextureCoordinate, VrmlData_Node)
 //purpose  : 
 //=======================================================================
 
-const gp_XYZ& VrmlData_ArrayVec3d::Value (const Standard_Integer i) const
+const gp_XYZ& VrmlData_ArrayVec3d::Value (const Standard_Size i) const
 {
-  size_t anIndex = (size_t)i;
-  if  (anIndex >= myLength) {
-    static gp_XYZ anOrigin (0., 0., 0.);
-    return anOrigin;
-  }
-  return myArray[i];
+  static gp_XYZ anOrigin (0., 0., 0.);
+  return i < myLength ? myArray[i] : anOrigin;
 }
 
 //=======================================================================
@@ -162,7 +158,7 @@ VrmlData_ErrorStatus VrmlData_Box::Write (const char * thePrefix) const
   if (OK (aStatus, Scene().WriteLine (thePrefix, header, GlobalIndent())))
   {
     char buf[128];
-    sprintf (buf, "size %.12g %.12g %.12g", mySize.X(), mySize.Y(), mySize.Z());
+    Sprintf (buf, "size %.12g %.12g %.12g", mySize.X(), mySize.Y(), mySize.Z());
     Scene().WriteLine (buf);
     aStatus = WriteClosing();
   }
@@ -264,12 +260,12 @@ VrmlData_ErrorStatus VrmlData_Cone::Write (const char * thePrefix) const
   {
     char buf[128];
     if ((myBottomRadius - 1.)*(myBottomRadius - 1.) > Precision::Confusion()) {
-      sprintf (buf, "bottomRadius %.12g", myBottomRadius);
+      Sprintf (buf, "bottomRadius %.12g", myBottomRadius);
       aStatus = Scene().WriteLine (buf);
     }
     if (OK(aStatus) &&
         (myHeight - 2.)*(myHeight - 2.) > Precision::Confusion()) {
-      sprintf (buf, "height       %.12g", myHeight);
+      Sprintf (buf, "height       %.12g", myHeight);
       aStatus = Scene().WriteLine (buf);
     }
     if (OK(aStatus) && myHasBottom == Standard_False)
@@ -398,12 +394,12 @@ VrmlData_ErrorStatus VrmlData_Cylinder::Write (const char * thePrefix) const
   {
     char buf[128];
     if ((myRadius - 1.)*(myRadius - 1.) > Precision::Confusion()) {
-      sprintf (buf, "radius   %.12g", myRadius);
+      Sprintf (buf, "radius   %.12g", myRadius);
       aStatus = Scene().WriteLine (buf);
     }
     if (OK(aStatus) &&
         (myHeight - 2.)*(myHeight - 2.) > Precision::Confusion()) {
-      sprintf (buf, "height   %.12g", myHeight);
+      Sprintf (buf, "height   %.12g", myHeight);
       aStatus = Scene().WriteLine (buf);
     }
     if (OK(aStatus) && myHasBottom == Standard_False)
@@ -499,7 +495,7 @@ VrmlData_ErrorStatus VrmlData_Sphere::Write (const char * thePrefix) const
   if (OK (aStatus, Scene().WriteLine (thePrefix, header, GlobalIndent())))
   {
     char buf[128];
-    sprintf (buf, "radius   %.12g", myRadius);
+    Sprintf (buf, "radius   %.12g", myRadius);
     Scene().WriteLine (buf);
     aStatus = WriteClosing();
   }
@@ -642,7 +638,7 @@ VrmlData_ErrorStatus VrmlData_ArrayVec3d::ReadArray
   if (OK(aStatus, VrmlData_Scene::ReadLine(theBuffer))) {
     // Match the name with the current word in the stream
     if (theName) {
-      const Standard_Integer aNameLen = strlen(theName);
+      const Standard_Size aNameLen = strlen(theName);
       if (strncmp (theBuffer.LinePtr, theName, aNameLen))
         aStatus = VrmlData_VrmlFormatError;
       else

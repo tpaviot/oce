@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -22,14 +25,10 @@
 #ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
 #endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
-#include <Handle_Geom2d_Curve.hxx>
-#endif
 class TopoDS_Shape;
-class BOPTools_DSFiller;
+class BOPAlgo_PaveFiller;
 class gp_Pln;
 class Geom_Surface;
-class Geom2d_Curve;
 
 
 //! Computes the intersection of two shapes or geometries. <br>
@@ -58,21 +57,11 @@ class Geom2d_Curve;
 class BRepAlgoAPI_Section  : public BRepAlgoAPI_BooleanOperation {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepAlgoAPI_Section(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPTools_DSFiller& aDSF,const Standard_Boolean PerformNow = Standard_True);
+  Standard_EXPORT   BRepAlgoAPI_Section(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_PaveFiller& aDSF,const Standard_Boolean PerformNow = Standard_True);
+Standard_EXPORT virtual ~BRepAlgoAPI_Section(){}
   //! see upper <br>
   Standard_EXPORT   BRepAlgoAPI_Section(const TopoDS_Shape& Sh1,const TopoDS_Shape& Sh2,const Standard_Boolean PerformNow = Standard_True);
   //! see upper <br>
@@ -275,25 +264,6 @@ public:
 //! Boolean value before using the ancestor face: F is significant <br>
 //! only if the returned Boolean value equals true. <br>
   Standard_EXPORT     Standard_Boolean HasAncestorFaceOn2(const TopoDS_Shape& E,TopoDS_Shape& F) const;
-  //! returns the PCurve connected to section edge <E> <br>
-//! and lying on first part of Section. <br>
-//! N.B : PCurve on first part is computed only if Section is performed <br>
-//! after setting ComputePCurveOn1(Standard_True). <br>
-  Standard_EXPORT     Handle_Geom2d_Curve PCurveOn1(const TopoDS_Shape& E) const;
-  //! returns the PCurve connected to section edge <E> <br>
-//! and lying on second part of Section. <br>
-//! N.B : PCurve on second part is computed only if Section is performed <br>
-//! after setting ComputePCurveOn2(Standard_True). <br>
-//! Warning No pcurve is attached to an elementary edge of the <br>
-//!    resulting section, and the function returns a null <br>
-//!    handle, unless the function ComputePCurveOn1 or <br>
-//!    ComputePCurveOn2 was previously used to define <br>
-//!    this sort of option of computation. <br>
-//! -      A null handle is also returned if the edge E does <br>
-//!    not belong to the last computed intersection, that <br>
-//!    is, if it is not one of the elementary edges of the <br>
-//!    compound object returned by the function Shape. <br>
-  Standard_EXPORT     Handle_Geom2d_Curve PCurveOn2(const TopoDS_Shape& E) const;
 
 
 

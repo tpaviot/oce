@@ -57,8 +57,8 @@ extern Standard_Integer TOPOPE_SeeShape(char *name);
 
 #ifdef DEB
 #include <TopOpeBRepTool_KRO.hxx>
-Standard_IMPORT Standard_Boolean TopOpeBRepTool_GettraceKRO();
-Standard_IMPORT void PrintKRO_PREPA();
+extern Standard_Boolean TopOpeBRepTool_GettraceKRO();
+extern void PrintKRO_PREPA();
 #endif
 
 Standard_Integer TestTopOpe_BOOP::Prepare(const char* ns1,const char* ns2)
@@ -169,7 +169,7 @@ Standard_Integer TestTopOpe_BOOP::FindShape(const TCollection_AsciiString& name)
   Standard_Integer ix = 0;
   if (ISINTEGER(name.ToCString())) {
     if (myHDS.IsNull()) return 0;
-    Standard_Integer is = atoi(name.ToCString());
+    Standard_Integer is = Draw::Atoi(name.ToCString());
     Standard_Integer ns = myHDS->NbShapes();
     Standard_Integer i1 = 0, i2 = 0;
     if (is != 0) { 
@@ -243,11 +243,7 @@ void TestTopOpe_BOOP::Booope(const char* key,const char *namres)
 
   else if (o == BOOP_C12 || o == BOOP_C21 || o == BOOP_COM || o == BOOP_FUS) {
 
-#ifndef DEB
     TopAbs_State t1=TopAbs_UNKNOWN,t2=TopAbs_UNKNOWN;
-#else    
-    TopAbs_State t1,t2;
-#endif
     if      (o == BOOP_C12) { t1 = TopAbs_OUT; t2 = TopAbs_IN;  }
     else if (o == BOOP_C21) { t1 = TopAbs_IN;  t2 = TopAbs_OUT; }
     else if (o == BOOP_COM) { t1 = TopAbs_IN;  t2 = TopAbs_IN;  }

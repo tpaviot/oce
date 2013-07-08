@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -128,20 +131,9 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 class TopTools  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Dumps the topological structure  of <Sh>  on the <br>
+  //! A set of Shapes. Can be dump, wrote or read. <br>//! Dumps the topological structure  of <Sh>  on the <br>
 //!          stream <S>. <br>
   Standard_EXPORT   static  void Dump(const TopoDS_Shape& Sh,Standard_OStream& S) ;
   //! This is to bypass an extraction bug. It will force <br>

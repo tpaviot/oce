@@ -1,6 +1,0 @@
-#ifndef _V2d_Viewer_HeaderFile
-#include <V2d_Viewer.hxx>
-#endif
-#ifndef _V2d_HeaderFile
-#include <V2d.hxx>
-#endif

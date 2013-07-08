@@ -6,7 +6,7 @@
 #ifndef _Quantity_PhysicalQuantity_HeaderFile
 #define _Quantity_PhysicalQuantity_HeaderFile
 
-
+//! List of all physical quantities(Afnor) <br>
 enum Quantity_PhysicalQuantity {
 Quantity_MASS,
 Quantity_PLANEANGLE,

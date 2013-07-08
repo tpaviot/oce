@@ -4,17 +4,16 @@ SET(TOOLKIT_MODULES
 	Voxel
 )
 SET(TOOLKIT_DEPENDS
-	TKMath
-	TKernel
-	TKService
-	TKMesh
-	TKV3d
-	TKG2d
-	TKV2d
 	TKBRep
+	TKernel
+	TKV3d
+	TKMath
+	TKService
 	TKGeomBase
-	TKG3d
+	TKG2d
 	TKTopAlgo
+	TKG3d
+	TKMesh
 )
 
 SET(TOOLKIT_LIBS ${OPENGL_LIBRARIES})

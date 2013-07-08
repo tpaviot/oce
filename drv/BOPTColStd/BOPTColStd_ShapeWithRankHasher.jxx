@@ -1,6 +1,0 @@
-#ifndef _BOPTColStd_ShapeWithRank_HeaderFile
-#include <BOPTColStd_ShapeWithRank.hxx>
-#endif
-#ifndef _BOPTColStd_ShapeWithRankHasher_HeaderFile
-#include <BOPTColStd_ShapeWithRankHasher.hxx>
-#endif

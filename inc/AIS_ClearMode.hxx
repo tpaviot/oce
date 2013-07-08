@@ -6,17 +6,12 @@
 #ifndef _AIS_ClearMode_HeaderFile
 #define _AIS_ClearMode_HeaderFile
 
-//! Declares the type of Interactive Object. <br>
-//! This is one of the following: <br>
-//! -   the Datum <br>
-//! -   the Object <br>
-//! -   the Relation <br>
-//! -   the None type. <br>
-//!  The Datum is the construction element. These include <br>
-//! points, lines, axes and planes. The object brings <br>
-//! together topological shapes. The Relation includes <br>
-//! dimensions and constraints. When the object is of an <br>
-//! unknown type, the None type is declared. <br>
+//! Declares which entities in an opened local context <br>
+//! are to be cleared of mode settings. Temporary <br>
+//! graphic presentations such as those for sub-shapes, <br>
+//! for example, are only created for the selection <br>
+//! process. By means of these enumerations, they can <br>
+//! be cleared from local context. <br>
 enum AIS_ClearMode {
 AIS_CM_All,
 AIS_CM_Interactive,

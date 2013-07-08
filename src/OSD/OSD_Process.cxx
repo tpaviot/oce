@@ -41,7 +41,7 @@ const OSD_WhoAmI Iam = OSD_WProcess;
 # include <sys/param.h>
 #endif
 
-#if defined(HAVE_TIME_H) || defined(WNT)
+#if defined(HAVE_TIME_H)
 # include <time.h>
 #endif
 
@@ -235,6 +235,9 @@ Standard_Integer OSD_Process::Error()const{
 
 #include <OSD_WNT_1.hxx>
 #include <lmcons.h> /// pour UNLEN  ( see MSDN about GetUserName() )
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 
 void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 
@@ -324,7 +327,7 @@ Standard_Integer OSD_Process :: UserId () {
  if ( hProcessToken != INVALID_HANDLE_VALUE ) CloseHandle ( hProcessToken );
  if ( pTKowner      != NULL                 ) FreeTokenInformation ( pTKowner );
 
- return ( Standard_Integer )retVal;
+ return ( intptr_t )retVal;
 
 }  // end OSD_Process :: UserId
 

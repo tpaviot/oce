@@ -74,7 +74,7 @@ static char Draw_fontsizedefault[FONTLENGTH]="150";
 
 static Standard_Integer ViewId(const Standard_CString a)
 {
-  Standard_Integer id = atoi(a);
+  Standard_Integer id = Draw::Atoi(a);
   if ((id < 0) || (id >= MAXVIEW)) {
     cout << "Incorrect view-id, must be in 0.."<<MAXVIEW-1<<endl;
     return -1;
@@ -90,7 +90,7 @@ static void SetTitle(const Standard_Integer id)
 {
   if (dout.HasView(id)) {
     char title[255];
-    sprintf(title,"%d : %s - Zoom %f",id,dout.GetType(id),dout.Zoom(id));
+    Sprintf(title,"%d : %s - Zoom %f",id,dout.GetType(id),dout.Zoom(id));
     dout.SetTitle(id,title);
   }
 }
@@ -106,7 +106,7 @@ static Standard_Integer zoom(Draw_Interpretor& , Standard_Integer n, const char*
   // two argument -> First is the view
   Standard_Boolean z2d = !strcasecmp(a[0],"2dzoom");
   if (n == 2) {
-    Standard_Real z = atof(a[1]);
+    Standard_Real z = Draw::Atof(a[1]);
     for (Standard_Integer id = 0; id < MAXVIEW; id++) {
       if (dout.HasView(id)) {
 	if ((z2d && !dout.Is3D(id)) || (!z2d && dout.Is3D(id))) {
@@ -121,7 +121,7 @@ static Standard_Integer zoom(Draw_Interpretor& , Standard_Integer n, const char*
   else if (n >= 3) {
     Standard_Integer id = ViewId(a[1]);
     if (id < 0) return 1;
-    Standard_Real z = atof(a[2]);
+    Standard_Real z = Draw::Atof(a[2]);
     dout.SetZoom(id,z);
     dout.RepaintView(id);
     SetTitle(id);
@@ -136,69 +136,94 @@ static Standard_Integer zoom(Draw_Interpretor& , Standard_Integer n, const char*
 //purpose  :
 //=======================================================================
 
-static Standard_Integer wzoom(Draw_Interpretor& di, Standard_Integer, const char**)
+static Standard_Integer wzoom(Draw_Interpretor& di, Standard_Integer argc, const char** argv)
 {
-  Standard_Integer id1,X1,Y1,b;
-  Standard_Integer X2 = 0,Y2 = 0;
-  Standard_Real dX1,dY1,dX2,dY2;
-  di << "Pick first corner"<<"\n";
-  dout.Select(id1,X1,Y1,b);
+  Standard_Integer id,X,Y,W,H,X1,Y1,X2,Y2,b;
+  Standard_Real dX1,dY1,dX2,dY2,zx,zy;
+  if(argc != 1 && argc != 6)
+  {
+    di<<"Usage : " << argv[0] << " [view-id X1 Y1 X2 Y2]\n";
+    return 1;
+  }
+  if(argc == 1)
+  {
+    di << "Pick first corner"<<"\n";
+    dout.Select(id,X1,Y1,b);
 
-  gp_Trsf T;
-  gp_Pnt P0(0,0,0);
-  dout.GetTrsf(id1,T);
-  T.Invert();
-  P0.Transform(T);
-  Standard_Real z = dout.Zoom(id1);
+    gp_Trsf T;
+    gp_Pnt P0(0,0,0);
+    dout.GetTrsf(id,T);
+    T.Invert();
+    P0.Transform(T);
+    Standard_Real z = dout.Zoom(id);
 
-  dX1=X1;       dY1=Y1;
-  dX1-=P0.X();  dY1-=P0.Y();
-  dX1/=z;       dY1/=z;
+    dX1=X1;       dY1=Y1;
+    dX1-=P0.X();  dY1-=P0.Y();
+    dX1/=z;       dY1/=z;
 
-  if (b != 1) return 0;
-  if (id1 < 0) return 0;
-  Draw_Display d = dout.MakeDisplay(id1);
-  d.SetColor(Draw_blanc);
-  d.SetMode(10);
-  Standard_Real dOX2 = dX1;
-  Standard_Real dOY2 = dY1;
-  d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dOY2));
-  d.Draw(gp_Pnt2d(dX1,dOY2),gp_Pnt2d(dOX2,dOY2));
-  d.Draw(gp_Pnt2d(dOX2,dOY2),gp_Pnt2d(dOX2,dY1));
-  d.Draw(gp_Pnt2d(dOX2,dY1),gp_Pnt2d(dX1,dY1));
-  d.Flush();
-  Standard_Real zx,zy;
-  Standard_Integer X,Y,W,H;
-  dout.GetPosSize(id1,X,Y,W,H);
-  di << "Pick second corner"<<"\n";
-  b = 0;
-  while (b == 0) {
-    dout.Select(id1,X2,Y2,b,Standard_False);
-    dX2=X2;          dY2=Y2;
-    dX2-=P0.X();     dY2-=P0.Y();
-    dX2/=z;          dY2/=z;
-
+    if (b != 1) return 0;
+    if (id < 0) return 0;
+    Draw_Display d = dout.MakeDisplay(id);
+    d.SetColor(Draw_blanc);
+    d.SetMode(10);
+    Standard_Real dOX2 = dX1;
+    Standard_Real dOY2 = dY1;
     d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dOY2));
     d.Draw(gp_Pnt2d(dX1,dOY2),gp_Pnt2d(dOX2,dOY2));
     d.Draw(gp_Pnt2d(dOX2,dOY2),gp_Pnt2d(dOX2,dY1));
     d.Draw(gp_Pnt2d(dOX2,dY1),gp_Pnt2d(dX1,dY1));
-    d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dY2));
-    d.Draw(gp_Pnt2d(dX1,dY2),gp_Pnt2d(dX2,dY2));
-    d.Draw(gp_Pnt2d(dX2,dY2),gp_Pnt2d(dX2,dY1));
-    d.Draw(gp_Pnt2d(dX2,dY1),gp_Pnt2d(dX1,dY1));
     d.Flush();
-    dOX2 = dX2;
-    dOY2 = dY2;
+    dout.GetPosSize(id,X,Y,W,H);
+    di << "Pick second corner"<<"\n";
+    b = 0;
+    while (b == 0) {
+      dout.Select(id,X2,Y2,b,Standard_False);
+      dX2=X2;          dY2=Y2;
+      dX2-=P0.X();     dY2-=P0.Y();
+      dX2/=z;          dY2/=z;
+
+      d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dOY2));
+      d.Draw(gp_Pnt2d(dX1,dOY2),gp_Pnt2d(dOX2,dOY2));
+      d.Draw(gp_Pnt2d(dOX2,dOY2),gp_Pnt2d(dOX2,dY1));
+      d.Draw(gp_Pnt2d(dOX2,dY1),gp_Pnt2d(dX1,dY1));
+      d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dY2));
+      d.Draw(gp_Pnt2d(dX1,dY2),gp_Pnt2d(dX2,dY2));
+      d.Draw(gp_Pnt2d(dX2,dY2),gp_Pnt2d(dX2,dY1));
+      d.Draw(gp_Pnt2d(dX2,dY1),gp_Pnt2d(dX1,dY1));
+      d.Flush();
+      dOX2 = dX2;
+      dOY2 = dY2;
+    }
+    d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dOY2));
+    d.Draw(gp_Pnt2d(dX1,dOY2),gp_Pnt2d(dOX2,dOY2));
+    d.Draw(gp_Pnt2d(dOX2,dOY2),gp_Pnt2d(dOX2,dY1));
+    d.Draw(gp_Pnt2d(dOX2,dY1),gp_Pnt2d(dX1,dY1));
+    d.Flush();
+    if (b != 1) return 0;
+    d.SetMode(0);
   }
-  d.Draw(gp_Pnt2d(dX1,dY1),gp_Pnt2d(dX1,dOY2));
-  d.Draw(gp_Pnt2d(dX1,dOY2),gp_Pnt2d(dOX2,dOY2));
-  d.Draw(gp_Pnt2d(dOX2,dOY2),gp_Pnt2d(dOX2,dY1));
-  d.Draw(gp_Pnt2d(dOX2,dY1),gp_Pnt2d(dX1,dY1));
-  d.Flush();
-  if (b != 1) return 0;
+  else
+  {
+    id = atoi(argv[1]); 
+    if ((id < 0) || (id >= MAXVIEW)) 
+    {
+      cout << "Incorrect view-id, must be in 0.."<<MAXVIEW-1<<endl;
+      return 1;
+    }
+    if (!dout.HasView(id))
+    {
+      cout <<"View "<<id<<" does not exist."<<endl;
+      return 1;
+    }
+    X1 = atoi (argv [2]);
+    Y1 = atoi (argv [3]);
+    X2 = atoi (argv [4]);
+    Y2 = atoi (argv [5]);
+
+    dout.GetPosSize(id,X,Y,W,H);
+  }
 
   if ((X1 == X2) || (Y1 == Y2)) return 0;
-
   zx = (Standard_Real) Abs(X2-X1) / (Standard_Real) W;
   zy = (Standard_Real) Abs(Y2-Y1) / (Standard_Real) H;
   if (zy > zx) zx = zy;
@@ -207,11 +232,10 @@ static Standard_Integer wzoom(Draw_Interpretor& di, Standard_Integer, const char
   if (Y2 > Y1) Y1 = Y2;
   X1 = (Standard_Integer ) (X1*zx);
   Y1 = (Standard_Integer ) (Y1*zx);
-  d.SetMode(0);
-  dout.SetZoom(id1,zx*dout.Zoom(id1));
-  dout.SetPan(id1,-X1,-Y1);
-  dout.RepaintView(id1);
-  SetTitle(id1);
+  dout.SetZoom(id,zx*dout.Zoom(id));
+  dout.SetPan(id,-X1,-Y1);
+  dout.RepaintView(id);
+  SetTitle(id);
   return 0;
 }
 
@@ -239,7 +263,7 @@ static Standard_Integer view(Draw_Interpretor& di, Standard_Integer n, const cha
   if (Draw_Batch) return 1;
 
   if ((n >= 3) && (n != 4)) {
-    Standard_Integer id = atoi(a[1]);
+    Standard_Integer id = Draw::Atoi(a[1]);
     if ((id < 0) || (id >= MAXVIEW)) {
       di <<"View-id must be in 0.."<<MAXVIEW-1<<"\n";
       return 1;
@@ -252,13 +276,13 @@ static Standard_Integer view(Draw_Interpretor& di, Standard_Integer n, const cha
     if (dout.HasView(id))
       dout.GetPosSize(id,X,Y,W,H);
     if (n >= 4)
-      X = atoi(a[3]);
+      X = Draw::Atoi(a[3]);
     if (n >= 5)
-      Y = atoi(a[4]);
+      Y = Draw::Atoi(a[4]);
     if (n >= 6)
-      W = atoi(a[5]);
+      W = Draw::Atoi(a[5]);
     if (n >= 7)
-      H = atoi(a[6]);
+      H = Draw::Atoi(a[6]);
     dout.MakeView(id,a[2],X,Y,W,H);
     if (!dout.HasView(id)) {
       di << "View creation failed"<<"\n";
@@ -270,7 +294,7 @@ static Standard_Integer view(Draw_Interpretor& di, Standard_Integer n, const cha
   }
   else if (n == 4) {
     // create a view on a given window
-    Standard_Integer id = atoi(a[1]);
+    Standard_Integer id = Draw::Atoi(a[1]);
     if ((id < 0) || (id >= MAXVIEW)) {
       di <<"View-id must be in 0.."<<MAXVIEW-1<<"\n";
       return 1;
@@ -397,7 +421,7 @@ static Standard_Integer setfocal(Draw_Interpretor& di, Standard_Integer n, const
     }
   }
   else {
-    Standard_Real f = atof(a[1]);
+    Standard_Real f = Draw::Atof(a[1]);
     for (Standard_Integer id = 0; id < MAXVIEW; id++) {
       if (!strcasecmp(dout.GetType(id),"PERS"))
 	dout.SetFocal(id,f);
@@ -551,14 +575,14 @@ static Standard_Integer ptv(Draw_Interpretor& , Standard_Integer n, const char**
     Standard_Integer anid = ViewId(a[1]);
     if (anid < 0) return 1;
     start = end = anid;
-    X = atof(a[2]);
-    Y = atof(a[3]);
-    Z = atof(a[4]);
+    X = Draw::Atof(a[2]);
+    Y = Draw::Atof(a[3]);
+    Z = Draw::Atof(a[4]);
   }
   else {
-    X = atof(a[1]);
-    Y = atof(a[2]);
-    Z = atof(a[3]);
+    X = Draw::Atof(a[1]);
+    Y = Draw::Atof(a[2]);
+    Z = Draw::Atof(a[3]);
   }
 
   for (Standard_Integer id = start; id <= end; id++) {
@@ -590,14 +614,14 @@ static Standard_Integer dptv(Draw_Interpretor& , Standard_Integer n, const char*
     Standard_Integer anid = ViewId(a[1]);
     if (anid < 0) return 1;
     start = end = anid;
-    DX = atof(a[2]);
-    DY = atof(a[3]);
-    DZ = atof(a[4]);
+    DX = Draw::Atof(a[2]);
+    DY = Draw::Atof(a[3]);
+    DZ = Draw::Atof(a[4]);
   }
   else {
-    DX = atof(a[1]);
-    DY = atof(a[2]);
-    DZ = atof(a[3]);
+    DX = Draw::Atof(a[1]);
+    DY = Draw::Atof(a[2]);
+    DZ = Draw::Atof(a[3]);
   }
 
   for (Standard_Integer id = start; id <= end; id++) {
@@ -623,7 +647,7 @@ static Standard_Integer color(Draw_Interpretor& di, Standard_Integer n, const ch
   if (n < 3) {
     Draw_BlackBackGround = !Draw_BlackBackGround;
   }
-  else if (!dout.DefineColor(atoi(a[1]),a[2])) {
+  else if (!dout.DefineColor(Draw::Atoi(a[1]),a[2])) {
     di << "Could not allocate color "<<a[2]<<"\n";
     return 1;
   }
@@ -802,7 +826,7 @@ static Standard_Integer hcolor(Draw_Interpretor& di, Standard_Integer n, const c
     di << "12 = Yellow,\t 13 = Khaki,\t 14 = Coral" << "\n" ;
     di << "1 <= width <= 11,  0 (noir)  <= gray <= 1 (blanc)" << "\n" ;
   } else {
-    dout.PostColor(atoi(a[1]),atoi(a[2]),atof(a[3]));
+    dout.PostColor(Draw::Atoi(a[1]),Draw::Atoi(a[2]),Draw::Atof(a[3]));
   }
   return 0;
 }
@@ -824,7 +848,7 @@ static Standard_Integer xwd(Draw_Interpretor& , Standard_Integer n, const char**
   Standard_Integer id = 1;
   const char* file = a[1];
   if (n > 2) {
-    id  = atoi(a[1]);
+    id  = Draw::Atoi(a[1]);
     file = a[2];
   }
   if (!dout.SaveView(id,file))
@@ -849,19 +873,19 @@ static Standard_Integer grid (Draw_Interpretor& , Standard_Integer NbArg, const 
       StepZ = DefaultGridStep ;
       break ;
     case 2 :
-      StepX = Abs (atof (Arg[1])) ;
-      StepY = Abs (atof (Arg[1])) ;
-      StepZ = Abs (atof (Arg[1])) ;
+      StepX = Abs (Draw::Atof (Arg[1])) ;
+      StepY = Abs (Draw::Atof (Arg[1])) ;
+      StepZ = Abs (Draw::Atof (Arg[1])) ;
       break ;
     case 3 :
-      StepX = Abs (atof (Arg[1])) ;
-      StepY = Abs (atof (Arg[2])) ;
-      StepZ = Abs (atof (Arg[2])) ;
+      StepX = Abs (Draw::Atof (Arg[1])) ;
+      StepY = Abs (Draw::Atof (Arg[2])) ;
+      StepZ = Abs (Draw::Atof (Arg[2])) ;
       break ;
     case 4 :
-      StepX = Abs (atof (Arg[1])) ;
-      StepY = Abs (atof (Arg[2])) ;
-      StepZ = Abs (atof (Arg[3])) ;
+      StepX = Abs (Draw::Atof (Arg[1])) ;
+      StepY = Abs (Draw::Atof (Arg[2])) ;
+      StepZ = Abs (Draw::Atof (Arg[3])) ;
       break ;
     default :
       return 1 ;
@@ -917,7 +941,7 @@ static Standard_Integer dtext(Draw_Interpretor& di, Standard_Integer n, const ch
   }
   else if (n >= 4) {
     is3d = n > 4;
-    P.SetCoord(atof(a[1]),atof(a[2]),is3d ? atof(a[3]) : 0);
+    P.SetCoord(Draw::Atof(a[1]),Draw::Atof(a[2]),is3d ? Draw::Atof(a[3]) : 0);
   }
   else
     return 0;
@@ -947,8 +971,11 @@ void Draw::GraphicCommands(Draw_Interpretor& theCommands)
 		  __FILE__,zoom,g);
   theCommands.Add("2dzoom","2dzoom [view-id] z, or zoom2d z for all 2d views",
 		  __FILE__,zoom,g);
-  theCommands.Add("wzoom","zoom on a window",
-		  __FILE__,wzoom,g);
+  theCommands.Add("wzoom","wzoom [view-id X1 Y1 X2 Y2]\n"
+      "- fits the contents of a given rectangle into a view window.\n"
+      "- The view window and rectangle corners are specified through the arguments\n"
+      "- or selected interactively by the user if no arguments are given",
+      __FILE__,wzoom,g);
   theCommands.Add("view","view view-id type X(0) Y(0) W(500) H(500)",
 		  __FILE__,view,g);
   theCommands.Add("delete","delete [view-id]",

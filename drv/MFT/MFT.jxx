@@ -1,3 +1,0 @@
-#ifndef _MFT_HeaderFile
-#include <MFT.hxx>
-#endif

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -38,22 +41,17 @@ class GeomLProp_SLProps;
 class GeomLProp  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  
+  //! Computes the regularity at the junction between C1 and <br>
+//!          C2. The booleans r1 and r2 are true if the curves must <br>
+//!          be taken reversed.  The point u1 on C1 and the point <br>
+//!          u2 on C2 must be confused. <br>
+//!          tl and ta are the linear and angular tolerance used two <br>
+//!          compare the derivative. <br>
   Standard_EXPORT   static  GeomAbs_Shape Continuity(const Handle(Geom_Curve)& C1,const Handle(Geom_Curve)& C2,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean r1,const Standard_Boolean r2,const Standard_Real tl,const Standard_Real ta) ;
-  
+  //! The  same  as  preciding   but   using  the   standard <br>
+//!          tolerances from package Precision. <br>
   Standard_EXPORT   static  GeomAbs_Shape Continuity(const Handle(Geom_Curve)& C1,const Handle(Geom_Curve)& C2,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean r1,const Standard_Boolean r2) ;
 
 

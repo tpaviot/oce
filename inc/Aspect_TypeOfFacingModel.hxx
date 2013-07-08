@@ -6,7 +6,7 @@
 #ifndef _Aspect_TypeOfFacingModel_HeaderFile
 #define _Aspect_TypeOfFacingModel_HeaderFile
 
-//! Modes of drawing for the objects in a layer <br>
+
 enum Aspect_TypeOfFacingModel {
 Aspect_TOFM_BOTH_SIDE,
 Aspect_TOFM_BACK_SIDE,

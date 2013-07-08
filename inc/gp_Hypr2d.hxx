@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -76,21 +79,20 @@ Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Hypr2d);
 //!                         | <br>
 //!                   SecondConjugateBranch <br>
 //!                         | <br>
+//! <br>
+//! Warning <br>
+//! The major radius can be less than the minor radius. <br>
+//! See Also <br>
+//! gce_MakeHypr2d which provides functions for more <br>
+//! complex hyperbola constructions <br>
+//! Geom2d_Hyperbola which provides additional functions <br>
+//! for constructing hyperbolas and works, in particular, with <br>
+//! the parametric equations of hyperbolas <br>
 class gp_Hypr2d  {
 
 public:
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+
+  DEFINE_STANDARD_ALLOC
 
   //! Creates of an indefinite hyperbola. <br>
       gp_Hypr2d();

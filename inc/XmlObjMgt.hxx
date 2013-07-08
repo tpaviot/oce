@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,20 +47,9 @@ class XmlObjMgt_Array1;
 class XmlObjMgt  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Define the name of XMLattribute 'ID' (to be used everywhere) <br>
+  //! translation of gp objects <br>//! Define the name of XMLattribute 'ID' (to be used everywhere) <br>
   Standard_EXPORT   static const XmlObjMgt_DOMString& IdString() ;
   //! Add attribute <theElement extstring="theString" ...> <br>
   Standard_EXPORT   static  Standard_Boolean SetExtendedString(XmlObjMgt_Element& theElement,const TCollection_ExtendedString& theString) ;

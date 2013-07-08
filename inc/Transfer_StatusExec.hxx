@@ -6,7 +6,7 @@
 #ifndef _Transfer_StatusExec_HeaderFile
 #define _Transfer_StatusExec_HeaderFile
 
-//! result status of transferring an entity (see Transcriptor) <br>
+//! execution status of an individual transfer (see Transcriptor) <br>
 enum Transfer_StatusExec {
 Transfer_StatusInitial,
 Transfer_StatusRun,

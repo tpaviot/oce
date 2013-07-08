@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -22,31 +25,28 @@
 #ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
 #endif
+#ifndef _IntPolyh_ArrayOfPoints_HeaderFile
+#include <IntPolyh_ArrayOfPoints.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
+#include <IntPolyh_ArrayOfTriangles.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfEdges_HeaderFile
+#include <IntPolyh_ArrayOfEdges.hxx>
+#endif
+#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
+#include <IntPolyh_ArrayOfCouples.hxx>
+#endif
 class Adaptor3d_HSurface;
-class IntPolyh_ArrayOfPoints;
-class IntPolyh_ArrayOfTriangles;
-class IntPolyh_ArrayOfEdges;
 class Bnd_Box;
 class IntPolyh_StartPoint;
-class IntPolyh_ArrayOfCouples;
 
 
 
 class IntPolyh_Triangle  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   IntPolyh_Triangle();

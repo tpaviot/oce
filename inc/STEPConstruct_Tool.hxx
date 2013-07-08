@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -41,21 +44,18 @@ class Interface_Graph;
 
 //! Provides basic functionalities for tools which are intended <br>
 //!          for encoding/decoding specific STEP constructs <br>
+//! <br>
+//!          It is initialized by WorkSession and allows easy access to <br>
+//!          its fields and internal data such as Model, TP and FP <br>
+//! <br>
+//!          NOTE: Call to method Graph() with True (or for a first time, <br>
+//!          if you have updated the model since last computation of model) <br>
+//!          can take a time, so it is recommended to avoid creation of <br>
+//!          this (and derived) tool multiple times <br>
 class STEPConstruct_Tool  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates an empty tool <br>
   Standard_EXPORT   STEPConstruct_Tool();

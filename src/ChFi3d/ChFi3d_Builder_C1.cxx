@@ -235,11 +235,9 @@ static Standard_Boolean Update(Handle(Adaptor3d_HSurface)& fb,
   //are already in place at this stage.
   //Modif lvt : the periodic cases are reframed, espercially if nothing was found.
   Standard_Real w,uf = ct->FirstParameter(),ul = ct->LastParameter();
-#ifndef DEB
+
   Standard_Real  wbis = 0.;
-#else
-  Standard_Real  wbis;
-#endif
+
   Standard_Boolean isperiodic = ct->IsPeriodic(),recadrebis = Standard_False;
   Intersection.Perform(ct,fb);
   if (Intersection.IsDone()) {
@@ -378,6 +376,29 @@ static Standard_Boolean Update(Handle(Adaptor3d_HSurface)& face,
     pared = ponc1.Parameter();
     parltg = ponc2.Parameter();
     if ((parltg > f) && (parltg < l)) {
+#ifdef OCC23139
+      ////modified by jgv, 10.05.2012 for the bug 23139////
+      Handle(Geom2d_Curve) PConF = fi.PCurveOnFace();
+      if (!PConF.IsNull())
+      {
+        Handle(Geom2d_TrimmedCurve) aTrCurve = Handle(Geom2d_TrimmedCurve)::DownCast(PConF);
+        if (!aTrCurve.IsNull())
+          PConF = aTrCurve->BasisCurve();
+        if (isfirst)
+        {
+          Standard_Real fpar = PConF->FirstParameter();
+          if (parltg < fpar)
+            parltg = fpar;
+        }
+        else
+        {
+          Standard_Real lpar = PConF->LastParameter();
+          if (parltg > lpar)
+            parltg = lpar;
+        }
+      }
+      /////////////////////////////////////////////////////
+#endif
       fi.SetParameter(parltg,isfirst);
       cp.SetArc(cp.Tolerance(),cp.Arc(),pared,cp.TransitionOnArc());
       return Standard_True;
@@ -605,11 +626,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
   TopoDS_Edge Arcpiv,Arcprol,Arcspine;
   if (isfirst) Arcspine = spine->Edges(1);
   else         Arcspine = spine->Edges(spine->NbEdges());
-#ifndef DEB
   TopAbs_Orientation OArcprolv = TopAbs_FORWARD, OArcprolop = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation OArcprolv,OArcprolop;
-#endif
   Standard_Integer ICurve;
   Handle(BRepAdaptor_HSurface) HBs  = new BRepAdaptor_HSurface();
   Handle(BRepAdaptor_HSurface) HBad = new BRepAdaptor_HSurface();
@@ -620,11 +637,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
   Handle(Geom_Curve) Cc;
   Handle(Geom2d_Curve) Pc,Ps;
   Standard_Real Ubid,Vbid;//,mu,Mu,mv,Mv;
-#ifndef DEB
   Standard_Real Udeb = 0.,Ufin = 0.;
-#else
-  Standard_Real Udeb,Ufin;
-#endif
 //  gp_Pnt2d UVf1,UVl1,UVf2,UVl2;
 //  Standard_Real Du,Dv,Step;
   Standard_Boolean inters = Standard_True;
@@ -806,14 +819,9 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached = 0.0;
-#ifndef DEB
+  Standard_Real tolreached;
   Standard_Real  par1 =0.,par2 =0.;
   Standard_Integer indpt = 0,Icurv1 = 0,Icurv2 = 0;
-#else
-  Standard_Real  par1,par2;
-  Standard_Integer indpt,Icurv1,Icurv2;
-#endif
   Handle(Geom_TrimmedCurve) curv1,curv2;
   Handle(Geom2d_Curve) c2d1,c2d2;
 
@@ -889,7 +897,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
             distmin2 = extCC.SquareDistance(i);
             imin = i;
           }
-        if (distmin2 <= Precision::Confusion() * Precision::Confusion())
+        if (distmin2 <= Precision::SquareConfusion())
         {
           Extrema_POnCurv ponc1,ponc2;
           extCC.Points( imin, ponc1, ponc2 );
@@ -917,11 +925,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
     Standard_NotImplemented::Raise("OneCorner : bouchon non ecrit");
   }
   Standard_Integer IShape = DStr.AddShape(Fv);
-#ifndef DEB
   TopAbs_Orientation Et = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation Et;
-#endif
   if (IFadArc == 1) {
     TopExp_Explorer Exp;
     for (Exp.Init(Fv.Oriented(TopAbs_FORWARD),
@@ -1222,11 +1226,7 @@ void ChFi3d_Builder::PerformOneCorner(const Standard_Integer Index,
     // First of all the ponts are cut with the edge of the spine.
     Standard_Integer IArcspine = DStr.AddShape(Arcspine);
     Standard_Integer IVtx = DStr.AddShape(Vtx);
-#ifndef DEB
     TopAbs_Orientation OVtx = TopAbs_FORWARD;
-#else
-    TopAbs_Orientation OVtx;
-#endif
     for(ex.Init(Arcspine.Oriented(TopAbs_FORWARD),TopAbs_VERTEX);
 	ex.More(); ex.Next()) {
       if (Vtx.IsSame(ex.Current())) {
@@ -1731,11 +1731,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
 //  gp_Pnt2d p2d;
   Standard_Real dist;
   Standard_Integer Ishape1=Fd->IndexOfS1();
-#ifndef DEB
   TopAbs_Orientation trafil1 = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation trafil1;
-#endif
   if (Ishape1 != 0) {
     if (Ishape1 > 0) {
       trafil1 = DStr.Shape(Ishape1).Orientation();
@@ -2565,11 +2561,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
     // storage for the face
     //////////////////////////////////////////////////////////////////////
 
-#ifndef DEB
     TopAbs_Orientation ori = TopAbs_FORWARD;
-#else
-    TopAbs_Orientation ori;
-#endif
     orface=Face[nb-1].Orientation();
     if (orface==orsurfdata ) orien = TopAbs::Reverse(orcourbe);
     else                     orien = orcourbe ;
@@ -3638,7 +3630,7 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
     return Standard_False;
   }
   TopTools_ListIteratorOfListOfShape It,Jt;
-  Standard_Boolean Found = Standard_False, ContainsV = Standard_False;
+  Standard_Boolean Found = Standard_False;
   for(It.Initialize(myEFMap(P1.Arc()));It.More() && !Found;It.Next()) {
     Fv = TopoDS::Face(It.Value());
     if(!Fv.IsSame(Favoid)){
@@ -3647,6 +3639,8 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
       }
     }
   }
+#ifdef DEB
+  Standard_Boolean ContainsV = Standard_False;
   if (Found) {
     for(It.Initialize(myVFMap(V));It.More();It.Next()) {
       if (TopoDS::Face(It.Value()).IsSame(Fv)) {
@@ -3655,7 +3649,6 @@ Standard_Boolean ChFi3d_Builder::FindFace(const TopoDS_Vertex& V,
       }
     }
   }
-#ifdef DEB
   if(!ContainsV){
     cout<<"FindFace : the extremity of the spine is not in the end face"<<endl;
   }
@@ -3803,12 +3796,8 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
   TopoDS_Edge Arcpiv,Arcprol,Arcspine,Arcprolbis;
   if(isfirst) Arcspine = spine->Edges(1);
   else Arcspine = spine->Edges(spine->NbEdges());
-  TopAbs_Orientation OArcprolbis = TopAbs_FORWARD;
-#ifndef DEB
+  TopAbs_Orientation OArcprolbis;
   TopAbs_Orientation OArcprolv = TopAbs_FORWARD, OArcprolop = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation OArcprolv, OArcprolop;
-#endif
   Standard_Integer ICurve;
   Handle(BRepAdaptor_HSurface) HBs  = new BRepAdaptor_HSurface();
   Handle(BRepAdaptor_HSurface) HBad = new BRepAdaptor_HSurface();
@@ -3819,11 +3808,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
   Handle(Geom_Curve) Cc;
   Handle(Geom2d_Curve) Pc,Ps;
   Standard_Real Ubid,Vbid;//,mu,Mu,mv,Mv;
-#ifndef DEB
   Standard_Real Udeb = 0.,Ufin = 0.;
-#else
-  Standard_Real Udeb,Ufin;
-#endif
   //gp_Pnt2d UVf1,UVl1,UVf2,UVl2;
   //Standard_Real Du,Dv,Step;
   Standard_Boolean inters = Standard_True;
@@ -3998,14 +3983,9 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
 
   TopoDS_Edge edgecouture;
   Standard_Boolean couture,intcouture=Standard_False;;
-  Standard_Real tolreached = 0.0;
-#ifndef DEB
+  Standard_Real tolreached;
   Standard_Real par1 = 0.,par2 = 0.;
   Standard_Integer indpt =0,Icurv1 =0,Icurv2 =0;
-#else
-  Standard_Real par1,par2;
-  Standard_Integer indpt,Icurv1,Icurv2;
-#endif
   Handle(Geom_TrimmedCurve) curv1,curv2;
   Handle(Geom2d_Curve) c2d1,c2d2;
 
@@ -4079,7 +4059,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
 		dist2min = extCC.SquareDistance(i);
 		imin = i;
 	      }
-	  if (dist2min <= Precision::Confusion() * Precision::Confusion())
+      if (dist2min <= Precision::SquareConfusion())
 	    {
 	      Extrema_POnCurv ponc1,ponc2;
 	      extCC.Points( imin, ponc1, ponc2 );
@@ -4108,11 +4088,7 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
     Standard_NotImplemented::Raise("OneCorner : cap not written");
   }
   Standard_Integer IShape = DStr.AddShape(Fv);
-#ifndef DEB
   TopAbs_Orientation Et = TopAbs_FORWARD;
-#else
-  TopAbs_Orientation Et;
-#endif
   if(IFadArc == 1){
     TopExp_Explorer Exp;
     for (Exp.Init(Fv.Oriented(TopAbs_FORWARD),
@@ -4227,12 +4203,8 @@ void ChFi3d_Builder::IntersectMoreCorner(const Standard_Integer Index)
     // Above all the points cut the points with the edge of the spine.
     Standard_Integer IArcspine = DStr.AddShape(Arcspine);
     Standard_Integer IVtx = DStr.AddShape(Vtx);
-    TopAbs_Orientation OVtx2 = TopAbs_FORWARD;
-#ifndef DEB
+    TopAbs_Orientation OVtx2;
     TopAbs_Orientation OVtx = TopAbs_FORWARD;
-#else
-    TopAbs_Orientation OVtx;
-#endif
     for(ex.Init(Arcspine.Oriented(TopAbs_FORWARD),TopAbs_VERTEX);
 	ex.More(); ex.Next()){
       if(Vtx.IsSame(ex.Current())) {

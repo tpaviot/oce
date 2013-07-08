@@ -80,7 +80,7 @@
 #include <gp_Vec.hxx>
 #include <gp_XYZ.hxx>
 
-const Standard_Real SquareTolerance = Precision::Confusion()*Precision::Confusion();
+const Standard_Real SquareTolerance = Precision::SquareConfusion();
 
 //=======================================================================
 //function : Nearest
@@ -1102,11 +1102,7 @@ void AIS::ComputeLengthBetweenCurvilinearFaces( const TopoDS_Face &      FirstFa
 {
   GeomAPI_ProjectPointOnSurf aProjector;
   Quantity_Parameter U, V;
-#ifndef DEB
   TopAbs_State State = TopAbs_UNKNOWN;
-#else
-  TopAbs_State State;
-#endif
   if (AutomaticPos)
     {
       TopExp_Explorer Explo( FirstFace, TopAbs_VERTEX );
@@ -1147,9 +1143,7 @@ void AIS::ComputeLengthBetweenCurvilinearFaces( const TopoDS_Face &      FirstFa
   DirAttach = gp_Dir( D1U ^ D1V );
 
   aProjector.Init( FirstAttach, SecondSurf );
-
   Standard_Integer Index = 0;
-
   Quantity_Length MinDist = RealLast();
   gp_Dir LocalDir;
   for (Standard_Integer i = 1; i <= aProjector.NbPoints(); i++)

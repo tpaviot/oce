@@ -1,6 +1,0 @@
-#ifndef _Graphic2d_Primitive_HeaderFile
-#include <Graphic2d_Primitive.hxx>
-#endif
-#ifndef _AIS2D_PrimitiveArchit_HeaderFile
-#include <AIS2D_PrimitiveArchit.hxx>
-#endif

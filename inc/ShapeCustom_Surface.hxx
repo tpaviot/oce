@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -32,18 +35,7 @@ class Geom_Surface;
 class ShapeCustom_Surface  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   ShapeCustom_Surface();
@@ -58,6 +50,13 @@ public:
 //!          Returns the result <br>
 //!          Works only if the Surface is BSpline or Bezier. <br>
 //!          Else, or in case of failure, returns a Null Handle <br>
+//! <br>
+//!          If <substitute> is True, the new surface replaces the actual <br>
+//!          one in <me> <br>
+//! <br>
+//!          It works by analysing the case which can apply, creating the <br>
+//!          corresponding analytic surface, then checking coincidence <br>
+//!  Warning: Parameter laws are not kept, hence PCurves should be redone <br>
   Standard_EXPORT     Handle_Geom_Surface ConvertToAnalytical(const Standard_Real tol,const Standard_Boolean substitute) ;
   //! Tries to convert the Surface to the Periodic form <br>
 //!          Returns the resulting surface <br>

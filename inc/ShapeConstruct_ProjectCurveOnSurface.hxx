@@ -112,6 +112,11 @@ public:
 //!           to be projected goes partly along the seam on the closed <br>
 //!           surface with singularity (e.g. sphere), goes through the <br>
 //!           degenerated point and paerly lies on internal area of surface. <br>
+//! <br>
+//!           If this flag is True, the seam part of such curve will be <br>
+//!           adjusted to the left side of parametric space (on sphere U=0), <br>
+//!           else to the right side (on sphere U=2*PI) <br>
+//!           Default value is True <br>
   Standard_EXPORT     Standard_Integer& AdjustOverDegenMode() ;
   //! Returns the status of last Peform <br>
   Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status Status) const;

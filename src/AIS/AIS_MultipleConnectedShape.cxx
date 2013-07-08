@@ -164,25 +164,11 @@ void AIS_MultipleConnectedShape::Compute(const Handle(Prs3d_Projector)& aProject
 //purpose  : 
 //=======================================================================
 
-void AIS_MultipleConnectedShape::Compute(const Handle_PrsMgr_PresentationManager3d& /*aPresentationManager3d*/,
-                                         const Handle_Prs3d_Presentation& /*aPresentation*/,
-                                         const int /*anint*/)
+void AIS_MultipleConnectedShape::Compute(const Handle_PrsMgr_PresentationManager3d& aPresentationManager3d,
+                                         const Handle_Prs3d_Presentation& aPresentation,
+                                         const int anint)
 {
- Standard_NotImplemented::Raise("AIS_MultipleConnectedShape::Compute(const Handle_PrsMgr_PresentationManager3d&, const Handle_Prs3d_Presentation&, const int)");
-// AIS_MultipleConnectedInteractive::Compute( aPresentationManager3d , aPresentation , anint ) ; Not accessible
-}
-
-//=======================================================================
-//function : Compute
-//purpose  : 
-//=======================================================================
-
-void AIS_MultipleConnectedShape::Compute(const Handle_PrsMgr_PresentationManager2d& aPresentationManager2d,
-                                         const Handle_Graphic2d_GraphicObject& aGraphicObject,
-                                         const int anInteger)
-{
-// Standard_NotImplemented::Raise("AIS_MultipleConnectedShape::Compute(const Handle_PrsMgr_PresentationManager2d&, const Handle_Graphic2d_GraphicObject&, const int)");
- PrsMgr_PresentableObject::Compute( aPresentationManager2d ,aGraphicObject,anInteger) ;
+  AIS_MultipleConnectedInteractive::Compute( aPresentationManager3d , aPresentation , anint ) ;
 }
 
 //=======================================================================

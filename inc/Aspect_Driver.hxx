@@ -85,6 +85,12 @@ class TCollection_ExtendedString;
 //!	    with the SINGLE primitives DrawPolyline(),DrawPolygon(),.... <br>
 //!	    or the INCREMENTAL primitives BeginPolyline(),BeginPolygon(),... <br>
 //!	    or the SET of primitives BeginArcs(),BeginMarkers(),... <br>
+//! <br>
+//!	    NOTE that : <br>
+//!	    The incremental primitives are interesting to used because <br>
+//!	    no more arrays are necessary to fill it. <br>
+//!	    The set of primitives are interesting to used because this <br>
+//!	    increase the drawing performances. <br>
 class Aspect_Driver : public MMgt_TShared {
 
 public:
@@ -100,7 +106,7 @@ public:
   
 //! Sets the current font map to this driver and Enable/Disable <br>
 //! this driver to use MDTV fonts instead system fonts. <br>
-  Standard_EXPORT     void SetFontMap(const Handle(Aspect_FontMap)& aFontMap,const Standard_Boolean useMFT = Standard_True) ;
+  Standard_EXPORT     void SetFontMap(const Handle(Aspect_FontMap)& aFontMap) ;
   
   Standard_EXPORT     void SetMarkMap(const Handle(Aspect_MarkMap)& aMarkMap) ;
   
@@ -199,11 +205,9 @@ public:
 //!          the PIXEL position . <br>
   Standard_EXPORT   virtual  void Convert(const Standard_Integer PX,const Standard_Integer PY,Quantity_Length& DX,Quantity_Length& DY) const = 0;
   //! Returns the PIXEL position depending of <br>
-//!          the DWU position . <br>
-  Standard_EXPORT   virtual  void Convert(const Quantity_Length DX,const Quantity_Length DY,Standard_Integer& PX,Standard_Integer& PY) const = 0;
-  //! Returns TRUE when the driver must use MDTV fonts <br>
+//!          the DWU position . <br>//! Returns TRUE when the driver must use MDTV fonts <br>
 //!	instead system fonts. <br>
-  Standard_EXPORT     Standard_Boolean UseMFT() const;
+  Standard_EXPORT   virtual  void Convert(const Quantity_Length DX,const Quantity_Length DY,Standard_Integer& PX,Standard_Integer& PY) const = 0;
 
 
 
@@ -240,7 +244,6 @@ Standard_Boolean myWidthMapIsDefined;
 Standard_Boolean myTypeMapIsDefined;
 Standard_Boolean myFontMapIsDefined;
 Standard_Boolean myMarkMapIsDefined;
-Standard_Boolean myUseMFT;
 
 
 };

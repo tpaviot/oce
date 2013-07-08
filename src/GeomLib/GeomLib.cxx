@@ -2399,7 +2399,14 @@ Standard_Integer GeomLib::NormEstim(const Handle(Geom_Surface)& S,
 
   gp_Vec NAux = DU^DV;
   Standard_Real h1 = h;
-  while(NAux.SquareMagnitude() < aTol2) {
+
+  //Ensure that the following loop won't last for
+  //ever. If after 50 iterations the normal is still
+  //bad we just give up
+  int nbiter = 0;
+  int maxIter = 50;
+
+  while(NAux.SquareMagnitude() < aTol2 && nbiter <= maxIter) {
     h1 += h;
     if(AlongV) {
       Standard_Real v = UV.Y() + sign*h1;
@@ -2417,8 +2424,11 @@ Standard_Integer GeomLib::NormEstim(const Handle(Geom_Surface)& S,
 
     }
     NAux = DU^DV;
+    nbiter++;
   }
 
+  if(nbiter == maxIter)
+    return 3;
 
   Iso->D2(t, DummyPnt, Tang, DD);
 

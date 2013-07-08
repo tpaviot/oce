@@ -61,6 +61,10 @@
 #include <TColStd_HArray1OfBoolean.hxx>
 #include <BSplCLib.hxx>
 #include <GeomAbs_IsoType.hxx>
+#include <Geom2d_Line.hxx>
+#include <Geom2d_TrimmedCurve.hxx>
+#include <ElCLib.hxx>
+#include <GeomLib.hxx>
 
 //=======================================================================
 //function : IsoIsDeg
@@ -114,247 +118,6 @@ static Standard_Boolean IsoIsDeg  (const Adaptor3d_Surface& S,
 }
 
 //=======================================================================
-//function : Interpolate
-//purpose  : 
-//=======================================================================
-
-static Handle(Geom2d_BSplineCurve) Interpolate(const Handle(TColgp_HArray1OfPnt2d)& myPoints,
-					       const Handle(TColStd_HArray1OfReal)& myParameters,
-					       const gp_Vec2d& InitialTangent, 
-					       const gp_Vec2d& FinalTangent)
-{
-  Handle(Geom2d_BSplineCurve) myCurve = NULL;
-
-// This code is extraction from Geom2dAPI_Interpolate with small correction
-// This is done to avoid of cyclic dependency if Geom2dAPI is used in ProjLib 
-
-  Standard_Integer degree,
-  ii,
-  jj,
-  index,
-  index1,
-  index2,
-  index3,
-  mult_index,
-  inversion_problem,
-  num_points,
-  num_distinct_knots,
-  num_poles  ;
-  
-  gp_Pnt2d a_point ;
-
-  Standard_Boolean myTangentRequest = Standard_True;
-
-  Handle(TColgp_HArray1OfVec2d) myTangents = 
-     new TColgp_HArray1OfVec2d(myPoints->Lower(),
-			      myPoints->Upper()) ;
-  Handle(TColStd_HArray1OfBoolean) myTangentFlags =
-      new TColStd_HArray1OfBoolean(myPoints->Lower(),
-				   myPoints->Upper()) ;
-  myTangentFlags->Init(Standard_False);
-  
-  myTangentFlags->SetValue(1,Standard_True) ;
-  myTangentFlags->SetValue(myPoints->Length(),Standard_True) ;
-  myTangents->SetValue(1,InitialTangent) ;
-  myTangents->SetValue(myPoints->Length(),FinalTangent);
-
-  num_points =
-  num_distinct_knots =
-  num_poles = myPoints->Length() ;
-  if (num_poles == 2 &&   !myTangentRequest)  {
-    degree = 1 ;
-  } 
-  else if (num_poles == 3 && !myTangentRequest) {
-    degree = 2 ;
-    num_distinct_knots = 2 ;
-  }
-  else {
-    degree = 3 ;
-    num_poles += 2 ;
-    //if (myTangentRequest) 
-      //for (ii = myTangentFlags->Lower() + 1 ; 
-	//   ii < myTangentFlags->Upper() ; ii++) {
-	//if (myTangentFlags->Value(ii)) {
-	  //num_poles += 1 ;
-	//}
-      //}
-    }
-  
-  
-  TColStd_Array1OfReal     parameters(1,num_poles) ;  
-  TColStd_Array1OfReal     flatknots(1,num_poles + degree + 1) ;
-  TColStd_Array1OfInteger  mults(1,num_distinct_knots) ;
-  TColStd_Array1OfReal     knots(1,num_distinct_knots) ;
-  TColStd_Array1OfInteger  contact_order_array(1, num_poles) ;
-  TColgp_Array1OfPnt2d       poles(1,num_poles) ;
-
-  for (ii = 1 ; ii <= degree + 1 ; ii++) {
-    flatknots.SetValue(ii,myParameters->Value(1)) ;
-    flatknots.SetValue(ii + num_poles,
-		       myParameters->Value(num_points)) ;
-  }
-  for (ii = 1 ; ii <= num_poles ; ii++) {
-    contact_order_array.SetValue(ii,0)  ;
-  }
-  for (ii = 2 ; ii < num_distinct_knots ; ii++) {
-    mults.SetValue(ii,1) ; 
-  }
-  mults.SetValue(1,degree + 1) ;
-  mults.SetValue(num_distinct_knots ,degree + 1) ;
-  
-  switch (degree) {
-  case 1:
-    for (ii = 1 ; ii <= num_poles ; ii++) {
-      poles.SetValue(ii ,myPoints->Value(ii)) ;
-    }
-    myCurve =
-      new Geom2d_BSplineCurve(poles,
-			    myParameters->Array1(),
-			    mults,
-			    degree) ;
-    //myIsDone = Standard_True ;
-    break ;
-  case 2:
-    knots.SetValue(1,myParameters->Value(1)) ;
-    knots.SetValue(2,myParameters->Value(3)) ;
-    for (ii = 1 ; ii <= num_poles ; ii++) {
-      poles.SetValue(ii,myPoints->Value(ii)) ;
-      
-    }
-    BSplCLib::Interpolate(degree,
-			  flatknots,
-			  myParameters->Array1(),
-			  contact_order_array,
-			  poles,
-			  inversion_problem) ;
-    if (!inversion_problem) {
-      myCurve =
-	new Geom2d_BSplineCurve(poles,
-			      knots,
-			      mults,
-			      degree) ;
-      //myIsDone = Standard_True ;
-    }
-    break ;
-  case 3:
-//
-// check if the boundary conditions are set
-//
-    //if (num_points >= 3) {
-//
-// cannot build the tangents with degree 3 with only 2 points
-// if those where not given in advance 
-//
-      //BuildTangents(myPoints->Array1(),
-		    //myTangents->ChangeArray1(),
-		    //myTangentFlags->ChangeArray1(),
-		    //myParameters->Array1()) ;
-    //}
-    contact_order_array.SetValue(2,1)  ;
-    parameters.SetValue(1,myParameters->Value(1)) ;
-    parameters.SetValue(2,myParameters->Value(1)) ;
-    poles.SetValue(1,myPoints->Value(1)) ;
-    for (jj = 1 ; jj <= 2 ; jj++) {
-      a_point.SetCoord(jj,myTangents->Value(1).Coord(jj)) ;
-
-    }
-    poles.SetValue(2,a_point) ;
-    mult_index = 2 ;
-    index = 3 ;
-    index1 = 2 ;
-    index2 = myPoints->Lower() + 1 ;
-    index3 = degree + 2 ;
-    if (myTangentRequest) {
-      for (ii = myParameters->Lower() + 1 ; 
-	   ii < myParameters->Upper() ; ii++) {
-	parameters.SetValue(index,myParameters->Value(ii)) ;
-	poles.SetValue(index,myPoints->Value(index2)) ;
-        flatknots.SetValue(index3,myParameters->Value(ii)) ; 
-	index += 1 ;
-        index3 += 1 ;
-	if (myTangentFlags->Value(index1)) {
-//
-// set the multiplicities, the order of the contact, the 
-// the flatknots,
-//
-	  mults.SetValue(mult_index,mults.Value(mult_index) + 1) ;
-	  contact_order_array(index) = 1 ;
-          flatknots.SetValue(index3, myParameters->Value(ii)) ;
-	  parameters.SetValue(index,
-			      myParameters->Value(ii)) ;
-	  for (jj = 1 ; jj <= 2 ; jj++) {
-            a_point.SetCoord(jj,myTangents->Value(ii).Coord(jj)) ;
-	  }
-	  poles.SetValue(index,a_point) ;
-	  index += 1  ;
-	  index3 += 1 ;
-	}
-	mult_index += 1 ;
-	index1 += 1 ;
-	index2 += 1 ;
-
-      }
-    }
-    else {
-      index1 = 2 ;
-      for(ii = myParameters->Lower()  ; ii <= myParameters->Upper()  ; ii++) {
-	parameters.SetValue(index1, 
-			    myParameters->Value(ii)) ;
-	index1 += 1 ;
-      }
-      index = 3 ;
-      for (ii = myPoints->Lower() + 1 ; ii <= myPoints->Upper() - 1 ; ii++) {
-	poles.SetValue(index,
-		       myPoints->Value(ii)) ;
-	index += 1 ;
-      }
-   
-   
-      index = degree + 1 ;
-      for(ii = myParameters->Lower()  ; ii <= myParameters->Upper()  ; ii++) {
-	flatknots.SetValue(index,
-			   myParameters->Value(ii)) ;
-	index += 1 ;
-      }
-    }
-    for (jj = 1 ; jj <= 2 ; jj++) {
-      a_point.SetCoord(jj,
-		       myTangents->Value(num_points).Coord(jj)) ;
-    }
-    poles.SetValue(num_poles-1 ,a_point) ;
-
-    contact_order_array.SetValue(num_poles - 1,1) ;
-    parameters.SetValue(num_poles,
-			myParameters->Value(myParameters->Upper())) ;
-    parameters.SetValue(num_poles -1,
-			myParameters->Value(myParameters->Upper())) ;
-
-    poles.SetValue(num_poles,
-		   myPoints->Value(num_points)) ;
-
-    BSplCLib::Interpolate(degree,
-			  flatknots,
-			  parameters,
-			  contact_order_array,
-			  poles,
-			  inversion_problem) ;
-    if (!inversion_problem) {
-      myCurve =
-	new Geom2d_BSplineCurve(poles,
-			      myParameters->Array1(),
-			      mults,
-			      degree) ;
-      //myIsDone = Standard_True ;
-    }
-    break ;
- 
-  }
-
-
-  return myCurve;
-}
-
-//=======================================================================
 //function : TrimC3d
 //purpose  : 
 //=======================================================================
@@ -362,7 +125,9 @@ static Handle(Geom2d_BSplineCurve) Interpolate(const Handle(TColgp_HArray1OfPnt2
 static void TrimC3d(Handle(Adaptor3d_HCurve)& myCurve,
 		    Standard_Boolean* IsTrimmed,
 		    const Standard_Real dt,
-		    const gp_Pnt& Pole)
+		    const gp_Pnt& Pole,
+                    Standard_Integer* SingularCase,
+                    const Standard_Integer NumberOfSingularCase)
 {
   Standard_Real f = myCurve->FirstParameter();
   Standard_Real l = myCurve->LastParameter();
@@ -373,6 +138,7 @@ static void TrimC3d(Handle(Adaptor3d_HCurve)& myCurve,
     IsTrimmed[0] = Standard_True;
     f = f+dt;
     myCurve = myCurve->Trim(f, l, Precision::Confusion());
+    SingularCase[0] = NumberOfSingularCase;
   }
   
   P = myCurve->Value(l);
@@ -380,6 +146,7 @@ static void TrimC3d(Handle(Adaptor3d_HCurve)& myCurve,
     IsTrimmed[1] = Standard_True;
     l = l-dt;
     myCurve = myCurve->Trim(f, l, Precision::Confusion());
+    SingularCase[1] = NumberOfSingularCase;
   }
 }
 
@@ -394,8 +161,75 @@ static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
 		      const Standard_Real u1,
 		      const Standard_Real u2,
 		      const Standard_Real v1,
-		      const Standard_Real v2)
+		      const Standard_Real v2,
+                      const Standard_Integer FirstOrLast,
+                      const Standard_Integer NumberOfSingularCase)
 {
+  Standard_Real theParam = (FirstOrLast == 0)? aRes->FirstParameter()
+    : aRes->LastParameter();
+
+  gp_Pnt2d                              aPBnd;
+  gp_Vec2d                              aVBnd;
+  gp_Dir2d                              aDBnd;
+  Handle(Geom2d_TrimmedCurve)           aSegment;
+  Geom2dConvert_CompCurveToBSplineCurve aCompCurve(aRes, Convert_RationalC1);
+  Standard_Real                         aTol = Precision::Confusion();
+
+  aRes->D1(theParam, aPBnd, aVBnd);
+  aDBnd.SetXY(aVBnd.XY());
+  gp_Lin2d aLin(aPBnd, aDBnd); //line in direction of derivative
+
+  gp_Pnt2d thePole;
+  gp_Dir2d theBoundDir;
+  switch (NumberOfSingularCase)
+  {
+  case 1:
+    {
+      thePole.SetCoord(u1, v1);
+      theBoundDir.SetCoord(0., 1.);
+      break;
+    }
+  case 2:
+    {
+      thePole.SetCoord(u2, v1);
+      theBoundDir.SetCoord(0., 1.);
+      break;
+    }
+  case 3:
+    {
+      thePole.SetCoord(u1, v1);
+      theBoundDir.SetCoord(1., 0.);
+      break;
+    }
+  case 4:
+    {
+      thePole.SetCoord(u1, v2);
+      theBoundDir.SetCoord(1., 0.);
+      break;
+    }
+  }
+  gp_Lin2d BoundLin(thePole, theBoundDir); //one of the bounds of rectangle
+
+  Standard_Real U1x = BoundLin.Direction().X();
+  Standard_Real U1y = BoundLin.Direction().Y();
+  Standard_Real U2x = aLin.Direction().X();
+  Standard_Real U2y = aLin.Direction().Y();
+  Standard_Real Uo21x = aLin.Location().X() - BoundLin.Location().X();
+  Standard_Real Uo21y = aLin.Location().Y() - BoundLin.Location().Y();
+  
+  Standard_Real D = U1y*U2x-U1x*U2y;
+  
+  Standard_Real ParOnLin = (Uo21y * U1x - Uo21x * U1y)/D; //parameter of intersection point
+  
+  Handle(Geom2d_Line) aSegLine = new Geom2d_Line(aLin);
+  aSegment = (FirstOrLast == 0)?
+    new Geom2d_TrimmedCurve(aSegLine, ParOnLin, 0.) :
+    new Geom2d_TrimmedCurve(aSegLine, 0., ParOnLin);
+
+  aCompCurve.Add(aSegment, aTol);
+  aRes = aCompCurve.BSplineCurve();
+  
+  /*  
   gp_Pnt2d P0;
   gp_Vec2d V01, V02;
   aRes->D2(t, P0, V01, V02);
@@ -439,7 +273,7 @@ static void ExtendC2d(Handle(Geom2d_BSplineCurve)& aRes,
   aConcat.Add(aC, Precision::PConfusion());
   
   aRes = aConcat.BSplineCurve();
-  
+  */
 }  
 
 //=======================================================================
@@ -483,7 +317,7 @@ static void Project(ProjLib_Projector& P, Handle(Adaptor3d_HCurve)& C)
 ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()
 
 {
-  myTolerance = Precision::PApproximation();
+  myTolerance = Precision::Confusion();
 }
 
 
@@ -495,7 +329,7 @@ ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()
 ProjLib_ProjectedCurve::ProjLib_ProjectedCurve
 (const Handle(Adaptor3d_HSurface)& S)
 {
-  myTolerance = Precision::PApproximation();
+  myTolerance = Precision::Confusion();
   Load(S);
 }
 
@@ -509,7 +343,7 @@ ProjLib_ProjectedCurve::ProjLib_ProjectedCurve
 (const Handle(Adaptor3d_HSurface)& S,
  const Handle(Adaptor3d_HCurve)& C)
 {
-  myTolerance = Precision::PApproximation();
+  myTolerance = Precision::Confusion();
   Load(S);
   Load(C);
 }
@@ -525,7 +359,7 @@ ProjLib_ProjectedCurve::ProjLib_ProjectedCurve
  const Handle(Adaptor3d_HCurve)&   C,
  const Standard_Real             Tol)
 {
-  myTolerance = Max(Tol, Precision::PApproximation());
+  myTolerance = Max(Tol, Precision::Confusion());
   Load(S);
   Load(C);
 }
@@ -549,8 +383,10 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HSurface)& S)
 
 void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 {
-  myTolerance = Max(myTolerance,Precision::PApproximation());
+  myTolerance = Max(myTolerance, Precision::Confusion());
   myCurve = C;
+  Standard_Real FirstPar = C->FirstParameter();
+  Standard_Real LastPar  = C->LastParameter();
   GeomAbs_SurfaceType SType = mySurface->GetType();    
   GeomAbs_CurveType   CType = myCurve->GetType();
 
@@ -606,6 +442,7 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
       {
 	
 	Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
+        Standard_Integer SingularCase[2];
 	Standard_Real f, l, dt;
 	const Standard_Real eps = 0.01;
 	f = myCurve->FirstParameter();
@@ -619,28 +456,28 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	V1 = S.FirstVParameter();
 	V2 = S.LastVParameter();
 
-	if(IsoIsDeg(S, U1, GeomAbs_IsoU, 0., 1.e-9) ) {
+	if(IsoIsDeg(S, U1, GeomAbs_IsoU, 0., myTolerance) ) {
 	  //Surface has pole at U = Umin
 	  gp_Pnt Pole = mySurface->Value(U1, V1);
-	  TrimC3d(myCurve, IsTrimmed, dt, Pole);
+	  TrimC3d(myCurve, IsTrimmed, dt, Pole, SingularCase, 1);
 	}
 
-	if(IsoIsDeg(S, U2, GeomAbs_IsoU, 0., 1.e-9) ) {
+	if(IsoIsDeg(S, U2, GeomAbs_IsoU, 0., myTolerance) ) {
 	  //Surface has pole at U = Umax
 	  gp_Pnt Pole = mySurface->Value(U2, V1);
-	  TrimC3d(myCurve, IsTrimmed, dt, Pole);
+	  TrimC3d(myCurve, IsTrimmed, dt, Pole, SingularCase, 2);
 	}
 	  
-	if(IsoIsDeg(S, V1, GeomAbs_IsoV, 0., 1.e-9) ) {
+	if(IsoIsDeg(S, V1, GeomAbs_IsoV, 0., myTolerance) ) {
 	  //Surface has pole at V = Vmin
 	  gp_Pnt Pole = mySurface->Value(U1, V1);
-	  TrimC3d(myCurve, IsTrimmed, dt, Pole);
+	  TrimC3d(myCurve, IsTrimmed, dt, Pole, SingularCase, 3);
 	}
 
-	if(IsoIsDeg(S, V2, GeomAbs_IsoV, 0., 1.e-9) ) {
+	if(IsoIsDeg(S, V2, GeomAbs_IsoV, 0., myTolerance) ) {
 	  //Surface has pole at V = Vmax
 	  gp_Pnt Pole = mySurface->Value(U1, V2);
-	  TrimC3d(myCurve, IsTrimmed, dt, Pole);
+	  TrimC3d(myCurve, IsTrimmed, dt, Pole, SingularCase, 4);
 	}
 
 	ProjLib_ComputeApproxOnPolarSurface polar(myCurve, 
@@ -653,15 +490,20 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	  if(IsTrimmed[0]) {
 	    //Add segment before start of curve
 	    f = myCurve->FirstParameter();
-	    ExtendC2d(aRes, f, -dt, U1, U2, V1, V2);
+	    ExtendC2d(aRes, f, -dt, U1, U2, V1, V2, 0, SingularCase[0]);
 	  }
 	  if(IsTrimmed[1]) {
 	    //Add segment after end of curve
 	    l = myCurve->LastParameter();
-	    ExtendC2d(aRes, l, dt, U1, U2, V1, V2);
+	    ExtendC2d(aRes, l, dt, U1, U2, V1, V2, 1, SingularCase[1]);
 	  }
-	}
-	  
+          Handle(Geom2d_Curve) NewCurve2d;
+          GeomLib::SameRange(Precision::PConfusion(), aRes,
+                             aRes->FirstParameter(), aRes->LastParameter(),
+                             FirstPar, LastPar,
+                             NewCurve2d);
+          aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
+        }
 	myResult.SetBSpline(aRes);
 	myResult.Done();
 	myResult.SetType(GeomAbs_BSplineCurve);
@@ -671,7 +513,8 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
     default:
       {
 	Standard_Boolean IsTrimmed[2] = {Standard_False, Standard_False};
-	Standard_Real f = 0, l = 0, dt = 0;
+        Standard_Real Vsingular[2]; //for surfaces of revolution
+	Standard_Real f, l, dt;
 	const Standard_Real eps = 0.01;
 	
 	if(mySurface->GetType() == GeomAbs_SurfaceOfRevolution) {
@@ -691,6 +534,8 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	    IsTrimmed[0] = Standard_True;
 	    f = f+dt;
 	    myCurve = myCurve->Trim(f, l, Precision::Confusion());
+            Vsingular[0] = ElCLib::Parameter(L, P);
+            //SingularCase[0] = 3;
 	  }
 
 	  P = myCurve->Value(l);
@@ -698,6 +543,8 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 	    IsTrimmed[1] = Standard_True;
 	    l = l-dt;
 	    myCurve = myCurve->Trim(f, l, Precision::Confusion());
+            Vsingular[1] = ElCLib::Parameter(L, P);
+            //SingularCase[1] = 3;
 	  }
 	}
 
@@ -734,20 +581,25 @@ void ProjLib_ProjectedCurve::Load(const Handle(Adaptor3d_HCurve)& C)
 
 	if(IsTrimmed[0] || IsTrimmed[1]) {
 	  // Treatment only for surface of revolution
-	  Standard_Real u1, u2, v1, v2;
+	  Standard_Real u1, u2, v2;
 	  u1 = mySurface->FirstUParameter();
 	  u2 = mySurface->LastUParameter();
-	  v1 = mySurface->FirstVParameter();
 	  v2 = mySurface->LastVParameter();
 	  
 	  if(IsTrimmed[0]) {
 	    //Add segment before start of curve
-	    ExtendC2d(aRes, f, -dt, u1, u2, v1, v2);
+	    ExtendC2d(aRes, f, -dt, u1, u2, Vsingular[0], v2, 0, 3);
 	  }
 	  if(IsTrimmed[1]) {
 	    //Add segment after end of curve
-	    ExtendC2d(aRes, l, dt, u1, u2, v1, v2);
+	    ExtendC2d(aRes, l, dt, u1, u2, Vsingular[1], v2, 1, 3);
 	  }
+          Handle(Geom2d_Curve) NewCurve2d;
+          GeomLib::SameRange(Precision::PConfusion(), aRes,
+                             aRes->FirstParameter(), aRes->LastParameter(),
+                             FirstPar, LastPar,
+                             NewCurve2d);
+          aRes = Handle(Geom2d_BSplineCurve)::DownCast(NewCurve2d);
 	}
 	  
 	myResult.SetBSpline(aRes);

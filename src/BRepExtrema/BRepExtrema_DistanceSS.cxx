@@ -735,7 +735,7 @@ void BRepExtrema_DistanceSS::Perform(const TopoDS_Edge& S1,const TopoDS_Vertex& 
         Standard_Real Udeb,Ufin;
         BRep_Tool::Range(S1,Udeb,Ufin);
 
-        gp_Pnt Pt,P2=BRep_Tool::Pnt(S2);
+        gp_Pnt Pt, P2 = BRep_Tool::Pnt(S2);
         const Standard_Real epsP=Precision::PConfusion();
 
         for (i = 1; i <= NbExtrema; i++)

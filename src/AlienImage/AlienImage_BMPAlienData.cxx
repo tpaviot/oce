@@ -89,7 +89,7 @@ Standard_Boolean AlienImage_BMPAlienData::Read (OSD_File& file)
   int   isInsideOut, hasMask, nBitCount;
   int   iCompression, isOS2Format, hasColormap;
   int   nBytes, iDataSize;
-  char  bmpSign[2];
+  char  bmpSign[2] = {'\0' , '\0'};
   AlienImage_BMPHeader bmfh; // Standard BMP file header
   BITMAPINFOHEADER bmih = {}; // Windows BMP header
   BITMAPCOREHEADER bmch = {}; // OS/2 BMP header

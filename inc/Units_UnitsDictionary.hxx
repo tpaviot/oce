@@ -19,8 +19,8 @@
 #ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
 #endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
+#ifndef _Standard_Time_HeaderFile
+#include <Standard_Time.hxx>
 #endif
 #ifndef _Handle_Units_QuantitiesSequence_HeaderFile
 #include <Handle_Units_QuantitiesSequence.hxx>
@@ -33,6 +33,9 @@
 #endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Handle_Units_Dimensions_HeaderFile
 #include <Handle_Units_Dimensions.hxx>
@@ -87,7 +90,7 @@ private:
 
 
 Handle_TCollection_HAsciiString thefilename;
-Standard_Integer thetime;
+Standard_Time thetime;
 Handle_Units_QuantitiesSequence thequantitiessequence;
 
 

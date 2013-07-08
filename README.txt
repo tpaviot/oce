@@ -1,11 +1,13 @@
 oce stands for *o*pencascade *c*ommunity *e*dition.
 
 This project aims at gathering patches/changes/improvements from the OCC community over the latest release
-(currently OCCT 6.5.3).
+(currently OCCT 6.6.0).
 
 We use the following online resources:
   * Sources
        https://github.com/tpaviot/oce
+  * Binaries
+       http://code.google.com/p/oce-binaries/downloads/
   * Bug tracker
        https://github.com/tpaviot/oce/issues
   * Mailing list

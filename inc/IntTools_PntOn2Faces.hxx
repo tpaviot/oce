@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -26,42 +29,39 @@ class IntTools_PntOnFace;
 class IntTools_PntOn2Faces  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_PntOn2Faces();
   
 //! Initializes me by two points aP1 and aP2 <br>
+//! <br>
   Standard_EXPORT   IntTools_PntOn2Faces(const IntTools_PntOnFace& aP1,const IntTools_PntOnFace& aP2);
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetP1(const IntTools_PntOnFace& aP1) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetP2(const IntTools_PntOnFace& aP2) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetValid(const Standard_Boolean bF) ;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const IntTools_PntOnFace& P1() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const IntTools_PntOnFace& P2() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean IsValid() const;
 
 

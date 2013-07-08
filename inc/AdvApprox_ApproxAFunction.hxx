@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -67,20 +70,27 @@ class TColgp_Array1OfPnt;
 class AdvApprox_ApproxAFunction  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Constructs approximator tool. <br>
+//! <br>
+//!  Warning: <br>
+//!     the Func should be valid reference to object of type <br>
+//!     inherited from class EvaluatorFunction from Approx <br>
+//!     with life time longer than that of the approximator tool; <br>
+//! <br>
+//!	  the result should be formatted in the following way : <br>
+//! <--Num1DSS--> <--2 * Num2DSS--> <--3 * Num3DSS--> <br>
+//! R[0] ....     R[Num1DSS].....                   R[Dimension-1] <br>
+//! <br>
+//!  the order in which each Subspace appears should be consistent <br>
+//!  with the tolerances given in the create function and the <br>
+//!  results will be given in that order as well that is : <br>
+//!  Curve2d(n)  will correspond to the nth entry <br>
+//!  described by Num2DSS, Curve(n) will correspond to <br>
+//!  the nth entry described by Num3DSS <br>
+//!  The same type of schema applies to the Poles1d, Poles2d and <br>
+//!  Poles. <br>
   Standard_EXPORT   AdvApprox_ApproxAFunction(const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle(TColStd_HArray1OfReal)& OneDTol,const Handle(TColStd_HArray1OfReal)& TwoDTol,const Handle(TColStd_HArray1OfReal)& ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction& Func);
   //! Approximation with user methode of cutting <br>
   Standard_EXPORT   AdvApprox_ApproxAFunction(const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const Handle(TColStd_HArray1OfReal)& OneDTol,const Handle(TColStd_HArray1OfReal)& TwoDTol,const Handle(TColStd_HArray1OfReal)& ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction& Func,const AdvApprox_Cutting& CutTool);

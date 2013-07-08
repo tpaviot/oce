@@ -174,15 +174,11 @@ static void EvalParameters(const Geom2dAdaptor_Curve& Bis,
 			         TColgp_SequenceOfPnt& Params)
 {
   Geom2dInt_GInter Intersector;
-  Standard_Real Tol = Precision::Intersection();
+  Standard_Real Tol = Precision::Confusion();
 //  Standard_Real TolC = 1.e-9;
 
   Geom2dAdaptor_Curve CBis(Bis);
   Geom2dAdaptor_Curve CAC (AC);
-
-  if(AC.GetType() != GeomAbs_Circle || AC.GetType() != GeomAbs_Line) {
-    Tol *= 100.;
-  } 
 
   //Intersector = Geom2dInt_GInter(CBis, CAC, TolC, Tol);
   Intersector = Geom2dInt_GInter(CAC, CBis, Tol, Tol);
@@ -361,10 +357,10 @@ void BRepFill_TrimEdgeTool::IntersectWith(const TopoDS_Edge& Edge1,
   Standard_Real TolInit= 1.e-9;
   Standard_Integer nn = 7;
 
-  if(AC1.GetType() != GeomAbs_Circle ||
-     AC1.GetType() != GeomAbs_Line   ||
-     AC2.GetType() != GeomAbs_Circle ||
-     AC2.GetType() != GeomAbs_Line     ) {
+  if((AC1.GetType() != GeomAbs_Circle &&
+     AC1.GetType() != GeomAbs_Line)   ||
+     (AC2.GetType() != GeomAbs_Circle &&
+     AC2.GetType() != GeomAbs_Line)     ) {
 
     TolInit = 1.e-8;
     nn = 6;

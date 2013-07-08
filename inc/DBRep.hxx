@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,20 +58,9 @@ class DBRep_ListIteratorOfListOfHideData;
 class DBRep  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Sets  <S> in the  variable  <Name>.  Overwrite the <br>
+  //! Creation of isoparametric curves. <br>//! Implements ProgressIndicator for DRAW <br>//! Sets  <S> in the  variable  <Name>.  Overwrite the <br>
 //!          variable if already set. <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const TopoDS_Shape& S) ;
   //! Returns the shape in the variable  <Name>. Returns <br>

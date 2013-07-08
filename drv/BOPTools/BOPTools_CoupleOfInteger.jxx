@@ -1,3 +1,0 @@
-#ifndef _BOPTools_CoupleOfInteger_HeaderFile
-#include <BOPTools_CoupleOfInteger.hxx>
-#endif

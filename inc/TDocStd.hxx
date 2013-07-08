@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -69,20 +72,10 @@ class TDocStd_SequenceNodeOfSequenceOfDocument;
 class TDocStd  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! Appends to <anIDList> the list of the attributes <br>
+  //! specific GUID of this package <br>
+//!          ============================= <br>//! Appends to <anIDList> the list of the attributes <br>
 //!          IDs of this package. CAUTION: <anIDList> is NOT <br>
 //!          cleared before use. <br>
   Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;

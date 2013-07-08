@@ -17,9 +17,6 @@
 #ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
  
 
 #define Array1Item Graphic3d_Vertex

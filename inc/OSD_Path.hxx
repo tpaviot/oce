@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -37,18 +40,7 @@ class TCollection_AsciiString;
 class OSD_Path  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a Path object initialized to an empty string. <br>
 //!          i.e. current directory. <br>
@@ -76,6 +68,14 @@ public:
 //!                     - On VMS  -> "[usr.bin]" <br>
 //!                     - On MSDOS-> "\usr\bin" <br>
 //!                     - On MacOs-> ": usr : bin" <br>
+//! <br>
+//!          "^|rep"    - On UNIX -> "../rep" <br>
+//!                     - On VMS  -> "[-.rep]" <br>
+//!                     - On MSDOS -> "..\rep" <br>
+//!                     - On MacOS->  ":: rep" <br>
+//! <br>
+//!          "subdir|" - On UNIX -> "subdir/" <br>
+//!                    - On VMS  -> "[.subdir.]" <br>
   Standard_EXPORT   OSD_Path(const TCollection_AsciiString& aNode,const TCollection_AsciiString& aUsername,const TCollection_AsciiString& aPassword,const TCollection_AsciiString& aDisk,const TCollection_AsciiString& aTrek,const TCollection_AsciiString& aName,const TCollection_AsciiString& anExtension);
   //! Gets each component of a path. <br>
   Standard_EXPORT     void Values(TCollection_AsciiString& aNode,TCollection_AsciiString& aUsername,TCollection_AsciiString& aPassword,TCollection_AsciiString& aDisk,TCollection_AsciiString& aTrek,TCollection_AsciiString& aName,TCollection_AsciiString& anExtension) const;

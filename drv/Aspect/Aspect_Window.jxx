@@ -1,6 +1,3 @@
-#ifndef _Aspect_GraphicDevice_HeaderFile
-#include <Aspect_GraphicDevice.hxx>
-#endif
 #ifndef _Aspect_WindowDefinitionError_HeaderFile
 #include <Aspect_WindowDefinitionError.hxx>
 #endif
@@ -15,9 +12,6 @@
 #endif
 #ifndef _Aspect_GradientBackground_HeaderFile
 #include <Aspect_GradientBackground.hxx>
-#endif
-#ifndef _Aspect_PixMap_HeaderFile
-#include <Aspect_PixMap.hxx>
 #endif
 #ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>

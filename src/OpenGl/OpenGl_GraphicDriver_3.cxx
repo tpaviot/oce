@@ -30,13 +30,7 @@ void OpenGl_GraphicDriver::ClearGroup (const Graphic3d_CGroup& theCGroup)
   if (theCGroup.ptrGroup == NULL)
     return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->Clear();
-  InvalidateAllWorkspaces();
-}
-
-void OpenGl_GraphicDriver::CloseGroup (const Graphic3d_CGroup& )
-{
-  // Do nothing
+  ((OpenGl_Group* )theCGroup.ptrGroup)->Release (GetSharedContext());
 }
 
 void OpenGl_GraphicDriver::FaceContextGroup (const Graphic3d_CGroup& theCGroup,
@@ -45,8 +39,7 @@ void OpenGl_GraphicDriver::FaceContextGroup (const Graphic3d_CGroup& theCGroup,
   if (!theCGroup.ContextFillArea.IsDef || theCGroup.ptrGroup == NULL)
     return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectFace (theCGroup.ContextFillArea, theNoInsert);
-  InvalidateAllWorkspaces();
+  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectFace (GetSharedContext(), theCGroup.ContextFillArea, theNoInsert);
 }
 
 void OpenGl_GraphicDriver::Group (Graphic3d_CGroup& theCGroup)
@@ -55,7 +48,6 @@ void OpenGl_GraphicDriver::Group (Graphic3d_CGroup& theCGroup)
   if (aStructure)
   {
     theCGroup.ptrGroup = aStructure->AddGroup();
-    InvalidateAllWorkspaces();
   }
 }
 
@@ -65,7 +57,6 @@ void OpenGl_GraphicDriver::LineContextGroup (const Graphic3d_CGroup& theCGroup,
   if (!theCGroup.ContextLine.IsDef || theCGroup.ptrGroup == NULL) return;
 
   ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectLine (theCGroup.ContextLine, theNoInsert);
-  InvalidateAllWorkspaces();
 }
 
 void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
@@ -74,10 +65,9 @@ void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup
   if (!theCGroup.ContextMarker.IsDef || theCGroup.ptrGroup == NULL) return;
 
   ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, theNoInsert);
-  InvalidateAllWorkspaces();
 }
 
-void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup, 
+void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
                                                const Standard_Integer  theNoInsert,
                                                const Standard_Integer  theMarkWidth,
                                                const Standard_Integer  theMarkHeight,
@@ -92,13 +82,7 @@ void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup
   if (theCGroup.ptrGroup != NULL)
   {
     ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, theNoInsert);
-    InvalidateAllWorkspaces();
   }
-}
-
-void OpenGl_GraphicDriver::OpenGroup (const Graphic3d_CGroup& )
-{
-  // Do nothing
 }
 
 void OpenGl_GraphicDriver::RemoveGroup (const Graphic3d_CGroup& theCGroup)
@@ -107,8 +91,7 @@ void OpenGl_GraphicDriver::RemoveGroup (const Graphic3d_CGroup& theCGroup)
   if (aStructure == NULL)
     return;
 
-  aStructure->RemoveGroup ((const OpenGl_Group* )theCGroup.ptrGroup);
-  InvalidateAllWorkspaces();
+  aStructure->RemoveGroup (GetSharedContext(), (const OpenGl_Group* )theCGroup.ptrGroup);
 }
 
 void OpenGl_GraphicDriver::TextContextGroup (const Graphic3d_CGroup& theCGroup,
@@ -118,5 +101,4 @@ void OpenGl_GraphicDriver::TextContextGroup (const Graphic3d_CGroup& theCGroup,
     return;
 
   ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectText (theCGroup.ContextText, theNoInsert);
-  InvalidateAllWorkspaces();
 }

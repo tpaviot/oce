@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -20,14 +23,29 @@
 #include <Standard_Boolean.hxx>
 #endif
 class TopoDS_Shape;
-class BOPTools_DSFiller;
+class BOPAlgo_PaveFiller;
 
 
 
 //! Created on: 1993-10-14 <br>
 //! Created by: Remi LEQUETTE <br>
 //! Copyright (c) 1993-1999 Matra Datavision <br>
-//! Copyright (c) 1999-2012 OPEN CASCADE SAS <br>//!  The class Cut provides a Boolean <br>
+//! Copyright (c) 1999-2012 OPEN CASCADE SAS <br>
+//! <br>
+//! The content of this file is subject to the Open CASCADE Technology Public <br>
+//! License Version 6.5 (the "License"). You may not use the content of this file <br>
+//! except in compliance with the License. Please obtain a copy of the License <br>
+//! at http://www.opencascade.org and read it completely before using this file. <br>
+//! <br>
+//! The Initial Developer of the Original Code is Open CASCADE S.A.S., having its <br>
+//! main offices at: 1, place des Freres Montgolfier, 78280 Guyancourt, France. <br>
+//! <br>
+//! The Original Code and all software distributed under the License is <br>
+//! distributed on an "AS IS" basis, without warranty of any kind, and the <br>
+//! Initial Developer hereby disclaims all such warranties, including without <br>
+//! limitation, any warranties of merchantability, fitness for a particular <br>
+//! purpose or non-infringement. Please see the License for the specific terms <br>
+//! and conditions governing the rights and limitations under the License. <br>//!  The class Cut provides a Boolean <br>
 //! cut operation on a pair of arguments (Boolean Subtraction). <br>
 //! The class Cut provides a framework for: <br>
 //!   -      Defining the construction of a cut shape <br>
@@ -36,18 +54,7 @@ class BOPTools_DSFiller;
 class BRepAlgoAPI_Cut  : public BRepAlgoAPI_BooleanOperation {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Shape aS2 cuts shape aS1. The <br>
 //! resulting shape is a new shape produced by the cut operation. <br>
@@ -55,7 +62,7 @@ public:
   //! Constructs a new shape cut from <br>
 //! shape aS1 by shape aS2 using aDSFiller (see <br>
 //! BRepAlgoAPI_BooleanOperation Constructor). <br>
-  Standard_EXPORT   BRepAlgoAPI_Cut(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPTools_DSFiller& aDSF,const Standard_Boolean bFWD = Standard_True);
+  Standard_EXPORT   BRepAlgoAPI_Cut(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_PaveFiller& aDSF,const Standard_Boolean bFWD = Standard_True);
 
 
 

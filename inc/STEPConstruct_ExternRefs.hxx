@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -75,21 +78,15 @@ class StepBasic_DocumentFile;
 
 //! Provides a tool for analyzing (reading) and creating (writing) <br>
 //!          references to external files in STEP <br>
+//! <br>
+//!          It maintains a data structure in the form of sequences <br>
+//!          of relevant STEP entities (roots), allowing either to create <br>
+//!          them by convenient API, or load from existing model and <br>
+//!          investigate <br>
 class STEPConstruct_ExternRefs  : public STEPConstruct_Tool {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates an empty tool <br>
   Standard_EXPORT   STEPConstruct_ExternRefs();

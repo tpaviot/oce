@@ -17,8 +17,8 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
 #include <OpenGl_AspectMarker.hxx>
+#include <OpenGl_Workspace.hxx>
 
 static const TEL_COLOUR myDefaultColor = {{ 1.0F, 1.0F, 1.0F, 1.0F }};
 
@@ -44,9 +44,12 @@ void OpenGl_AspectMarker::SetContext (const CALL_DEF_CONTEXTMARKER &AContext)
 
 /*----------------------------------------------------------------------*/
 
-void OpenGl_AspectMarker::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
+void OpenGl_AspectMarker::Render (const Handle(OpenGl_Workspace)& theWorkspace) const
 {
-  AWorkspace->SetAspectMarker(this);
+  theWorkspace->SetAspectMarker(this);
 }
 
-/*----------------------------------------------------------------------*/
+void OpenGl_AspectMarker::Release (const Handle(OpenGl_Context)& theContext)
+{
+  //
+}

@@ -97,9 +97,9 @@ QANewModTopOpe_Glue::QANewModTopOpe_Glue(const TopoDS_Shape& theS1,
 			       const TopoDS_Shape& theS2,
 			       const Standard_Boolean theAllowCutting,
 			       const Standard_Boolean thePerformNow)
-: BRepAlgoAPI_BooleanOperation (theS1,theS2, BOP_FUSE),
-  myAllowCutting (theAllowCutting),
-  myCompleted (Standard_False)
+: BRepAlgoAPI_BooleanOperation (theS1,theS2, BOPAlgo_FUSE),
+  myCompleted (Standard_False),
+  myAllowCutting (theAllowCutting)
 {
   NotDone();
   myGenerated.Clear();

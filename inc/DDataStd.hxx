@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -31,20 +34,10 @@ class DDataStd_TreeBrowser;
 class DDataStd  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! command to set and get modeling attributes <br>
+  //! Used to browse tree nodes. <br>//! commands <br>
+//!          ======== <br>//! command to set and get modeling attributes <br>
   Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
   //! to set and get NamedShape <br>
   Standard_EXPORT   static  void NamedShapeCommands(Draw_Interpretor& I) ;

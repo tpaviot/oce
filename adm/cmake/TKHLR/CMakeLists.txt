@@ -10,14 +10,14 @@ SET(TOOLKIT_MODULES
 	Contap
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKGeomBase
-	TKG3d
-	TKTopAlgo
-	TKMath
-	TKGeomAlgo
 	TKBRep
+	TKernel
+	TKMath
+	TKGeomBase
 	TKG2d
+	TKG3d
+	TKGeomAlgo
+	TKTopAlgo
 )
 
 INCLUDE(../BuildToolkit.cmake)

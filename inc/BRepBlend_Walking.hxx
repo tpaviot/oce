@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -81,18 +84,7 @@ class IntSurf_Transition;
 class BRepBlend_Walking  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   BRepBlend_Walking(const Handle(Adaptor3d_HSurface)& Surf1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(Adaptor3d_TopolTool)& Domain1,const Handle(Adaptor3d_TopolTool)& Domain2);

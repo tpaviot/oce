@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_GroupAspect_HeaderFile
 #define _Graphic3d_GroupAspect_HeaderFile
 
-//! Defines the vertical position of the text <br>
-//!      relative to its anchor. <br>
+//! Identifies primitives aspects defined per group. <br>
+//! - ASPECT_LINE: aspect for line primitives; <br>
+//! - ASPECT_TEXT: aspect for text primitives; <br>
+//! - ASPECT_MARKER: aspect for marker primitives; <br>
+//! - ASPECT_FILL_AREA: aspect for face primitives. <br>
 enum Graphic3d_GroupAspect {
 Graphic3d_ASPECT_LINE,
 Graphic3d_ASPECT_TEXT,

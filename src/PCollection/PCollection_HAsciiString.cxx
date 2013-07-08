@@ -69,7 +69,7 @@ static int realstr(Standard_Real V, Standard_CString F)
 // Create : from a CString
 //-----------------------------------------------------------------------
 PCollection_HAsciiString::PCollection_HAsciiString(const Standard_CString S)
-                                               : Data(strlen(S))
+                                               : Data((Standard_Integer) strlen(S))
 {
    for( Standard_Integer i = 0 ; i < Data.Length() ; i++) 
                             Data.SetValue(i, S[i]) ;
@@ -402,7 +402,7 @@ Standard_Boolean PCollection_HAsciiString::IsRealValue () const
    for(i = 0; i < astring->Length(); i++)
                             cnvbuf[i] = astring->Value(i+1);
    cnvbuf[i] = 0;
-   cnvreal = strtod(cnvbuf,&ptr);
+   cnvreal = Strtod(cnvbuf,&ptr);
    if (ptr < cnvbuf+astring->Length()) return Standard_False;
    else                                return Standard_True;
 }

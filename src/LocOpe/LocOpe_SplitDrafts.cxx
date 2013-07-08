@@ -1614,10 +1614,9 @@ static TopoDS_Edge  NewEdge(const TopoDS_Edge& edg,
   Standard_Real prmf=0,prml=0;
   GeomAdaptor_Curve TheCurve;
 	
-  Standard_Integer i,imin,k;
+  Standard_Integer i,k;
   gp_Pnt pvf = BRep_Tool::Pnt(V1);
   gp_Pnt pvl = BRep_Tool::Pnt(V2);
-  imin = 0;
   for (i=1; i<= i2s.NbLines(); i++) {
     TheCurve.Load(i2s.Line(i));
     Extrema_ExtPC myExtPC(pvf,TheCurve);
@@ -1638,7 +1637,7 @@ static TopoDS_Edge  NewEdge(const TopoDS_Edge& edg,
 	}
       }
       
-      if (Dist2Min  <= Precision::Confusion() * Precision::Confusion()) {
+      if (Dist2Min  <= Precision::SquareConfusion()) {
 	prmf = thepmin;
 	myExtPC.Perform(pvl);
 	if (myExtPC.IsDone()) {
@@ -1656,7 +1655,7 @@ static TopoDS_Edge  NewEdge(const TopoDS_Edge& edg,
 	    }
 	  }
 	  
-	  if (Dist2Min  <= Precision::Confusion() * Precision::Confusion()) {
+      if (Dist2Min  <= Precision::SquareConfusion()) {
 	    prml = thepmin;
 	    break;
 	  }

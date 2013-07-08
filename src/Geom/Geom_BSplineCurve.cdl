@@ -124,7 +124,8 @@ uses  Array1OfInteger      from TColStd,
       Vec                  from gp,
       BSplKnotDistribution from GeomAbs,
       Geometry             from Geom,
-      Shape                from GeomAbs
+      Shape                from GeomAbs,
+      Mutex                from Standard
 
 
 raises ConstructionError   from Standard,
@@ -991,6 +992,9 @@ is
     is static private;
 	---Purpose : updates the cache and validates it
 
+  IsEqual(me; theOther : BSplineCurve from Geom; 
+  thePreci : Real from Standard  ) returns Boolean;
+    ---Purpose : Comapare two Bspline curve on identity;
   
 	
 
@@ -1035,4 +1039,6 @@ fields
   maxderivinv   : Real from Standard;
   maxderivinvok : Boolean from Standard;
 
+  myMutex       : Mutex from Standard;
+  -- protected bspline-cache
 end;

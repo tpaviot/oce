@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,18 +46,7 @@ class TColgp_Array1OfVec2d;
 class GeomInt_TheMultiLineOfWLApprox  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   GeomInt_TheMultiLineOfWLApprox(const Handle(IntPatch_WLine)& line,const Standard_Address PtrSvSurfaces,const Standard_Integer NbP3d,const Standard_Integer NbP2d,const Standard_Real xo,const Standard_Real ax,const Standard_Real yo,const Standard_Real ay,const Standard_Real zo,const Standard_Real az,const Standard_Real u1o,const Standard_Real a1u,const Standard_Real v1o,const Standard_Real a1v,const Standard_Real u2o,const Standard_Real a2u,const Standard_Real v2o,const Standard_Real a2v,const Standard_Boolean P2DOnFirst,const Standard_Integer IndMin = 0,const Standard_Integer IndMax = 0);

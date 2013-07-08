@@ -49,6 +49,10 @@
 #include <OSD_File.hxx>
 #include <OSD_Environment.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 #define STORAGE_VERSION      "STORAGE_VERSION: "
 #define REFERENCE_COUNTER    "REFERENCE_COUNTER: "
 #define MODIFICATION_COUNTER "MODIFICATION_COUNTER: "
@@ -108,10 +112,6 @@ void XmlLDrivers_DocumentStorageDriver::Write
                           (const Handle(CDM_Document)&       theDocument,
                            const TCollection_ExtendedString& theFileName)
 {
-  const TCollection_AsciiString anOldNumLocale =
-    (Standard_CString) setlocale (LC_NUMERIC, NULL);
-  setlocale(LC_NUMERIC, "C");
-
   Handle(CDM_MessageDriver) aMessageDriver =
     theDocument -> Application() -> MessageDriver();
   ::take_time (~0, " +++++ Start STORAGE procedures ++++++", aMessageDriver);
@@ -143,7 +143,6 @@ void XmlLDrivers_DocumentStorageDriver::Write
         Standard_Failure::Raise("File cannot be opened for writing");
     }
   }
-  setlocale(LC_NUMERIC, (char *) anOldNumLocale.ToCString()) ;
 }
 
 //=======================================================================
@@ -407,7 +406,7 @@ static void take_time (const Standard_Integer isReset, const char * aHeader,
   if (isReset) tmbuf0 = tmbuf;
   else {
     char take_tm_buf [64];
-    sprintf (take_tm_buf, "%9.2f s ++++",
+    Sprintf (take_tm_buf, "%9.2f s ++++",
              double(tmbuf.time - tmbuf0.time) +
              double(tmbuf.millitm - tmbuf0.millitm)/1000.);
     aMessage += take_tm_buf;

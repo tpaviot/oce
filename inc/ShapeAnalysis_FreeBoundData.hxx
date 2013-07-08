@@ -40,6 +40,20 @@ class TopoDS_Wire;
 
 //! This class is intended to represent free bound and to store <br>
 //!          its properties. <br>
+//! <br>
+//!          This class is used by ShapeAnalysis_FreeBoundsProperties <br>
+//!          class when storing each free bound and its properties. <br>
+//! <br>
+//!          The properties stored in this class are the following: <br>
+//!          - area of the contour, <br>
+//!          - perimeter of the contour, <br>
+//!          - ratio of average length to average width of the contour, <br>
+//!          - average width of contour, <br>
+//!          - notches (narrow 'V'-like sub-contours) on the contour and <br>
+//!            their maximum width. <br>
+//! <br>
+//!          This class provides methods for setting and getting fields <br>
+//!          only. <br>
 class ShapeAnalysis_FreeBoundData : public MMgt_TShared {
 
 public:

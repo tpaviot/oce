@@ -1,6 +1,0 @@
-#ifndef _TopoDS_Solid_HeaderFile
-#include <TopoDS_Solid.hxx>
-#endif
-#ifndef _BOP_ShellFaceSet_HeaderFile
-#include <BOP_ShellFaceSet.hxx>
-#endif

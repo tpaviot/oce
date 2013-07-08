@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,23 +43,20 @@ class OSD_Directory;
 //!          Other rights and System rights are inclusively "ORed". <br>
 //!          So Other with only READ access and System with WRITE access <br>
 //!          will produce on UNIX Other with READ and WRITE access. <br>
+//! <br>
+//!          This choice comes from the fact that ROOT can't be considered <br>
+//!          as member of the group nor as user. So it is considered as Other. <br>
 class OSD_Protection  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Initializes global access rights as follows <br>
+//! <br>
+//!          User   : Read Write <br>
+//!          System : Read Write <br>
+//!          Group  : Read <br>
+//!          World  : Read <br>
   Standard_EXPORT   OSD_Protection();
   //! Sets values of fields <br>
   Standard_EXPORT   OSD_Protection(const OSD_SingleProtection System,const OSD_SingleProtection User,const OSD_SingleProtection Group,const OSD_SingleProtection World);

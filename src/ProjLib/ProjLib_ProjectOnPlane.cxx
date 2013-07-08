@@ -486,7 +486,6 @@ void ProjLib_ProjectOnPlane::Load(const Handle(Adaptor3d_HCurve)&    C,
   GeomAbs_CurveType Type = C->GetType();
 
   gp_Ax2 Axis;
-
   Standard_Real R1 =0., R2 =0.;
 
   if ( Type != GeomAbs_Line)  // on garde le parametrage

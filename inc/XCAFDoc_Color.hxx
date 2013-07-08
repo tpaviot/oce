@@ -64,7 +64,7 @@ public:
   
   Standard_EXPORT     void Set(const Standard_Real R,const Standard_Real G,const Standard_Real B) ;
   
-  Standard_EXPORT     Quantity_Color GetColor() const;
+  Standard_EXPORT    const Quantity_Color& GetColor() const;
   
   Standard_EXPORT     Quantity_NameOfColor GetNOC() const;
   //! Returns True if there is a reference on the same label <br>

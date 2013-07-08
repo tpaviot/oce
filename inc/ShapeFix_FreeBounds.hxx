@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,21 +43,22 @@ class TopoDS_Compound;
 //!          1. making an open wire with greater length out of several <br>
 //!             open wires <br>
 //!          2. making closed wire out of several open wires <br>
+//! <br>
+//!          The connecting open wires is performed with a user-given <br>
+//!          tolerance. <br>
+//! <br>
+//!          When connecting several open wires into one wire their previous <br>
+//!          end vertices are replaced with new connecting vertices. After <br>
+//!          that all the edges in the shape sharing previous vertices inside <br>
+//!          the shape are updated with new vertices. Thus source shape can <br>
+//!          be modified. <br>
+//! <br>
+//!          Since interface of this class is the same as one of <br>
+//!          ShapeAnalysis_FreeBounds refer to its CDL for details. <br>
 class ShapeFix_FreeBounds  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Empty constructor <br>
   Standard_EXPORT   ShapeFix_FreeBounds();

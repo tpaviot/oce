@@ -6,7 +6,7 @@
 #ifndef _Vrml_SFImageNumber_HeaderFile
 #define _Vrml_SFImageNumber_HeaderFile
 
-
+//! qualifies VRML geometry shapes. <br>
 enum Vrml_SFImageNumber {
 Vrml_NULL,
 Vrml_ONE,

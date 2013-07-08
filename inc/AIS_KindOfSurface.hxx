@@ -6,7 +6,7 @@
 #ifndef _AIS_KindOfSurface_HeaderFile
 #define _AIS_KindOfSurface_HeaderFile
 
-//! Declares the type of standard datum of an Interactive Object. <br>
+
 enum AIS_KindOfSurface {
 AIS_KOS_Plane,
 AIS_KOS_Cylinder,

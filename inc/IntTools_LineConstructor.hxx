@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -45,38 +48,33 @@ class IntPatch_Line;
 class IntTools_LineConstructor  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Empty constructor <br>
+//! <br>
       IntTools_LineConstructor();
   
 //! Initializes me by two surfaces and corresponding <br>
 //! tools which represent boundaries of surfaces <br>
+//! <br>
         void Load(const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_TopolTool)& D2,const Handle(GeomAdaptor_HSurface)& S1,const Handle(GeomAdaptor_HSurface)& S2) ;
   
 //! Splits line <br>
+//! <br>
   Standard_EXPORT     void Perform(const Handle(IntPatch_Line)& L) ;
   
 //! Returns True if splitting was successful <br>
+//! <br>
         Standard_Boolean IsDone() const;
   
 //! Returns number of splits <br>
+//! <br>
         Standard_Integer NbParts() const;
   
 //! Return first and last parameters <br>
 //! for given index of split <br>
+//! <br>
         void Part(const Standard_Integer I,Standard_Real& WFirst,Standard_Real& WLast) const;
 
 
@@ -85,14 +83,14 @@ public:
 
 protected:
 
+  
+  Standard_EXPORT     void TreatCircle(const Handle(IntPatch_Line)& aLine,const Standard_Real aTol) ;
 
 
 
 
 private:
 
-  
-  Standard_EXPORT     void PeriodicLine(const Handle(IntPatch_Line)& L) const;
 
 
 Standard_Boolean done;

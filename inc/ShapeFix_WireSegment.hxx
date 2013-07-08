@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,21 +46,28 @@ class TopoDS_Edge;
 //!          (or whole wire). The segment itself is represented by <br>
 //!          ShapeExtend_WireData. In addition, some associated data <br>
 //!          necessary for computations are stored: <br>
+//! <br>
+//!        * Orientation flag - determines current use of the segment <br>
+//!          and used for parity checking: <br>
+//! <br>
+//!          TopAbs_FORWARD and TopAbs_REVERSED - says that segment was <br>
+//!          traversed once in the corresponding direction, and hence <br>
+//!          it should be traversed once more in opposite direction; <br>
+//! <br>
+//!          TopAbs_EXTERNAL - the segment was not yet traversed in any <br>
+//!          direction (i.e. not yet used as boundary) <br>
+//! <br>
+//!          TopAbs_INTERNAL - the segment was traversed in both <br>
+//!          directions and hence is out of further work. <br>
+//! <br>
+//!          Segments of initial bounding wires are created with <br>
+//!          orientation REVERSED (for outer wire) or FORWARD (for inner <br>
+//!          wires), and segments of splitting seams - with orientation <br>
+//!          EXTERNAL. <br>
 class ShapeFix_WireSegment  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates empty segment. <br>
   Standard_EXPORT   ShapeFix_WireSegment();

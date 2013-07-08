@@ -7,6 +7,10 @@
 #define _Visual3d_TypeOfSurfaceDetail_HeaderFile
 
 //! Modes of visualisation of objects in a view <br>
+//! <br>
+//!      TOD_NONE        no texture mapping <br>
+//!      TOD_ENVIRONMENT only environnement mapping <br>
+//!      TOD_ALL     environnement + texture mapping <br>
 enum Visual3d_TypeOfSurfaceDetail {
 Visual3d_TOD_NONE,
 Visual3d_TOD_ENVIRONMENT,

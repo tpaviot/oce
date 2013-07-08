@@ -845,13 +845,16 @@ Standard_Boolean OSD_File::IsExecutable()
 
 #include <stdio.h>
 #include <io.h>
+#if !defined (_MSC_VER) || (_MSC_VER >= 1600)
+#include <stdint.h>
+#endif
 #include <Standard_PCharacter.hxx>
 
 #ifndef _INC_TCHAR
 # include <tchar.h>
 #endif  // _INC_TCHAR
 
-#if defined(__CYGWIN32__) || defined(__MINGW32__)
+#if defined(__CYGWIN32__) || defined(__MINGW32__) || defined(__BORLANDC__)
 #define VAC
 #define _int64 int
 #endif
@@ -875,7 +878,7 @@ BOOL                 __fastcall _osd_wnt_sd_to_protection (
                                 );
 BOOL                 __fastcall _osd_print (const Standard_PCharacter, Standard_CString );
 
-static void      __fastcall _test_raise ( Standard_Integer, Standard_CString );
+static void      __fastcall _test_raise ( HANDLE, Standard_CString );
 static DWORDLONG __fastcall _get_line   ( Standard_PCharacter&, DWORD );
 static int       __fastcall _get_buffer ( HANDLE, Standard_PCharacter&, DWORD, BOOL, BOOL );
 static DWORD     __fastcall _get_access_mask ( OSD_SingleProtection );
@@ -887,7 +890,7 @@ static OSD_SingleProtection __fastcall _get_protection_dir ( DWORD );
 
 typedef OSD_SingleProtection ( __fastcall *GET_PROT_FUNC ) ( DWORD );
 
-Standard_Integer __fastcall _get_file_type ( Standard_CString, Standard_Integer );
+Standard_Integer __fastcall _get_file_type ( Standard_CString, HANDLE );
 
 // ---------------------------------------------------------------------
 // Create an empty file object
@@ -928,7 +931,7 @@ void OSD_File :: Build (
    Standard_ProgramError::Raise("OSD_File::Read : it is a directory");
  }
                                         
- if (  ( HANDLE )myFileChannel != INVALID_HANDLE_VALUE  )
+ if (  myFileChannel != INVALID_HANDLE_VALUE  )
 
   RAISE(  TEXT( "OSD_File :: Build (): incorrect call - file already opened" )  );
 
@@ -939,9 +942,9 @@ void OSD_File :: Build (
 
   RAISE(  TEXT( "OSD_File :: Build (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_NEW );
+ myFileChannel = _open_file ( fName.ToCString (), Mode, OPEN_NEW );
 
- if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  )
+ if (  myFileChannel == INVALID_HANDLE_VALUE  )
 
   _osd_wnt_set_error ( myError, OSD_WFile );
 
@@ -967,7 +970,7 @@ void OSD_File :: Open (
  TCollection_AsciiString fName;
 
 
- if (  ( HANDLE )myFileChannel != INVALID_HANDLE_VALUE  )
+ if (  myFileChannel != INVALID_HANDLE_VALUE  )
 
   RAISE(  TEXT( "OSD_File :: Open (): incorrect call - file already opened" )  );
 
@@ -978,9 +981,9 @@ void OSD_File :: Open (
 
   RAISE(  TEXT( "OSD_File :: Open (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_OLD );
+ myFileChannel = _open_file ( fName.ToCString (), Mode, OPEN_OLD );
 
- if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  ) {
+ if (  myFileChannel == INVALID_HANDLE_VALUE  ) {
 
    _osd_wnt_set_error ( myError, OSD_WFile );
  }
@@ -1001,7 +1004,7 @@ void OSD_File :: Append (
  BOOL                    fNew = FALSE;
  TCollection_AsciiString fName;
 
- if (  ( HANDLE )myFileChannel != INVALID_HANDLE_VALUE  )
+ if (  myFileChannel != INVALID_HANDLE_VALUE  )
 
   RAISE(  TEXT( "OSD_File :: Append (): incorrect call - file already opened" )  );
 
@@ -1012,9 +1015,9 @@ void OSD_File :: Append (
 
   RAISE(  TEXT( "OSD_File :: Append (): incorrent call - no filename given" )  );
 
- myFileChannel = ( Standard_Integer )_open_file ( fName.ToCString (), Mode, OPEN_APPEND, &fNew );
+ myFileChannel = _open_file ( fName.ToCString (), Mode, OPEN_APPEND, &fNew );
 
- if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  )
+ if (  myFileChannel == INVALID_HANDLE_VALUE  )
 
   _osd_wnt_set_error ( myError, OSD_WFile );
 
@@ -1119,7 +1122,7 @@ void OSD_File :: ReadLine (
  if ( myIO & FLAG_FILE ) {
  
   if (  !ReadFile (
-          ( HANDLE )myFileChannel, cBuffer, ( DWORD )NByte, &dwBytesRead, NULL
+          myFileChannel, cBuffer, ( DWORD )NByte, &dwBytesRead, NULL
          )
   ) {  // an error occured
 
@@ -1146,7 +1149,7 @@ void OSD_File :: ReadLine (
                                           // peek next character to see if it is a <LF>
 #endif
     if (  !ReadFile (
-            ( HANDLE )myFileChannel, ppeekChar, 1, &dwDummy, NULL
+            myFileChannel, ppeekChar, 1, &dwDummy, NULL
            )
     ) {
     
@@ -1158,7 +1161,7 @@ void OSD_File :: ReadLine (
     
      // adjust file position
 
-      SetFilePointer (  ( HANDLE )myFileChannel, -1, NULL, FILE_CURRENT  );
+      SetFilePointer (  myFileChannel, -1, NULL, FILE_CURRENT  );
 
     } else
      myIO |= FLAG_EOF;
@@ -1168,7 +1171,7 @@ void OSD_File :: ReadLine (
    } else {
 
     if ( dwSeekPos != 0 )
-     SetFilePointer (  ( HANDLE )myFileChannel, ( LONG )dwSeekPos, NULL, FILE_CURRENT  );
+     SetFilePointer (  myFileChannel, ( LONG )dwSeekPos, NULL, FILE_CURRENT  );
 
     NbyteRead = ( Standard_Integer )( eos - cBuffer );
 
@@ -1179,7 +1182,7 @@ void OSD_File :: ReadLine (
  } else if ( myIO & FLAG_SOCKET || myIO & FLAG_PIPE || myIO & FLAG_NAMED_PIPE ) {
 
   dwBytesRead = ( DWORD )_get_buffer (
-                          ( HANDLE )myFileChannel, cBuffer, ( DWORD )NByte,
+                          myFileChannel, cBuffer, ( DWORD )NByte,
                           TRUE, myIO & FLAG_SOCKET
                          );
 
@@ -1212,7 +1215,7 @@ void OSD_File :: ReadLine (
     NbyteRead = dwBytesRead; // (LD) always fits this case.
 
     dwDummy = _get_buffer (
-               ( HANDLE )myFileChannel, ppeekChar, 1, TRUE, myIO & FLAG_SOCKET
+               myFileChannel, ppeekChar, 1, TRUE, myIO & FLAG_SOCKET
               );
     if (  ( int )dwDummy == -1  ) {  // an error occured
    
@@ -1241,7 +1244,7 @@ void OSD_File :: ReadLine (
    Standard_PCharacter cDummyBuffer = new Standard_Character[ NByte + 3 ];
 
    _get_buffer (  // remove pending input
-    ( HANDLE )myFileChannel, cDummyBuffer, dwBytesRead, FALSE, myIO & FLAG_SOCKET
+    myFileChannel, cDummyBuffer, dwBytesRead, FALSE, myIO & FLAG_SOCKET
    );
    delete [] cDummyBuffer ;
 
@@ -1293,7 +1296,7 @@ void OSD_File :: ReadLine (
  if ( myIO & FLAG_FILE ) {
  
   if (  !ReadFile (
-          ( HANDLE )myFileChannel, cBuffer, ( DWORD )NByte, &dwBytesRead, NULL
+          myFileChannel, cBuffer, ( DWORD )NByte, &dwBytesRead, NULL
          )
   ) {  // an error occured
 
@@ -1320,7 +1323,7 @@ void OSD_File :: ReadLine (
                                           // peek next character to see if it is a <LF>
 #endif
     if (  !ReadFile (
-            ( HANDLE )myFileChannel, &peekChar, 1, &dwDummy, NULL
+            myFileChannel, &peekChar, 1, &dwDummy, NULL
            )
     ) {
     
@@ -1335,7 +1338,7 @@ void OSD_File :: ReadLine (
     
      else  // adjust file position
 
-      SetFilePointer (  ( HANDLE )myFileChannel, -1, NULL, FILE_CURRENT  );
+      SetFilePointer (  myFileChannel, -1, NULL, FILE_CURRENT  );
 
     } else
          
@@ -1345,7 +1348,7 @@ void OSD_File :: ReadLine (
 
    } else if ( dwSeekPos != 0 ) {
    
-    SetFilePointer (  ( HANDLE )myFileChannel, ( LONG )dwSeekPos, NULL, FILE_CURRENT  );
+    SetFilePointer (  myFileChannel, ( LONG )dwSeekPos, NULL, FILE_CURRENT  );
     NbyteRead = ( Standard_Integer )( eos - cBuffer );
 
    } else
@@ -1357,7 +1360,7 @@ void OSD_File :: ReadLine (
  } else if ( myIO & FLAG_SOCKET || myIO & FLAG_PIPE || myIO & FLAG_NAMED_PIPE ) {
 
   dwBytesRead = ( DWORD )_get_buffer (
-                          ( HANDLE )myFileChannel, cBuffer, ( DWORD )NByte,
+                          myFileChannel, cBuffer, ( DWORD )NByte,
                           TRUE, myIO & FLAG_SOCKET
                          );
 
@@ -1385,7 +1388,7 @@ void OSD_File :: ReadLine (
                                           // peek next character to see if it is a <LF>
 #endif
     dwDummy = _get_buffer (
-               ( HANDLE )myFileChannel, &peekChar, 1, TRUE, myIO & FLAG_SOCKET
+               myFileChannel, &peekChar, 1, TRUE, myIO & FLAG_SOCKET
               );
     eos     = cBuffer + dwBytesRead;
 
@@ -1416,7 +1419,7 @@ void OSD_File :: ReadLine (
     NbyteRead = ( Standard_Integer )( eos - cBuffer );
 
    _get_buffer (  // remove pending input
-    ( HANDLE )myFileChannel, cBuffer, dwBytesRead, FALSE, myIO & FLAG_SOCKET
+    myFileChannel, cBuffer, dwBytesRead, FALSE, myIO & FLAG_SOCKET
    );
    *eos = 0;
 
@@ -1458,7 +1461,7 @@ void OSD_File :: Read (
   RAISE(  TEXT( "OSD_File :: Read (): attempt to read from write only pipe" )  );
 
  if (  !ReadFile (
-         ( HANDLE )myFileChannel, Buffer, ( DWORD )Nbyte, &dwBytesRead, NULL
+         myFileChannel, Buffer, ( DWORD )Nbyte, &dwBytesRead, NULL
         )
  ) {
  
@@ -1504,7 +1507,7 @@ void OSD_File :: Write (
   RAISE(  TEXT( "OSD_File :: Write (): attempt to write to read only pipe" )  );
 
  if (  !WriteFile (
-         ( HANDLE )myFileChannel, Buffer, ( DWORD )Nbyte, &dwBytesWritten, NULL
+         myFileChannel, Buffer, ( DWORD )Nbyte, &dwBytesWritten, NULL
         ) || dwBytesWritten != ( DWORD )Nbyte
  )
 
@@ -1549,7 +1552,7 @@ void OSD_File :: Seek (
   }  // end switch
 
   if (  SetFilePointer (
-         ( HANDLE )myFileChannel, ( LONG )Offset, NULL, dwMoveMethod
+         myFileChannel, ( LONG )Offset, NULL, dwMoveMethod
         ) == 0xFFFFFFFF
   )
 
@@ -1569,9 +1572,9 @@ void OSD_File :: Close () {
 
  TEST_RAISE(  TEXT( "Close" )  );
 
- CloseHandle (  ( HANDLE )myFileChannel  );
+ CloseHandle (  myFileChannel  );
 
- myFileChannel = ( Standard_Integer )INVALID_HANDLE_VALUE;
+ myFileChannel = INVALID_HANDLE_VALUE;
  myIO          = 0;
 
 }  // end OSD_File :: Close
@@ -1595,7 +1598,7 @@ OSD_KindFile OSD_File :: KindOfFile () const {
  OSD_KindFile     retVal;
  Standard_Integer flags;
 
- if (  ( HANDLE )myFileChannel == INVALID_HANDLE_VALUE  ) {
+ if (  myFileChannel == INVALID_HANDLE_VALUE  ) {
 
   TCollection_AsciiString fName;
 
@@ -1606,7 +1609,7 @@ OSD_KindFile OSD_File :: KindOfFile () const {
    RAISE(  TEXT( "OSD_File :: KindOfFile (): incorrent call - no filename given" )  );
 
   flags = _get_file_type (
-            fName.ToCString (), ( Standard_Integer )INVALID_HANDLE_VALUE
+            fName.ToCString (), INVALID_HANDLE_VALUE
            );
 
  } else
@@ -1795,7 +1798,7 @@ void OSD_File :: SetLock ( const OSD_LockType Lock ) {
  if (Ret)
  {
   if (  !LockFileEx (
-          ( HANDLE )myFileChannel, dwFlags, 0, Size (), 0, &ovlp
+          myFileChannel, dwFlags, 0, Size (), 0, &ovlp
          )
   ) {
 
@@ -1819,7 +1822,7 @@ void OSD_File :: UnLock () {
  if ( ImperativeFlag ) {
  
   if (  !UnlockFile (
-          ( HANDLE )myFileChannel, 0, 0, Size (), 0
+          myFileChannel, 0, 0, Size (), 0
          )
   )
    
@@ -1857,7 +1860,7 @@ Standard_Integer OSD_File :: Size () {
  TEST_RAISE(  TEXT( "Size" )  );
 
  retVal = ( Standard_Integer )GetFileSize (
-                               ( HANDLE )myFileChannel, NULL
+                               myFileChannel, NULL
                               );
 
  if (  retVal == ( Standard_Integer )0xFFFFFFFF  )
@@ -1874,7 +1877,7 @@ Standard_Integer OSD_File :: Size () {
 
 void OSD_File :: Print ( const OSD_Printer& WhichPrinter ) {
 
- if (  ( HANDLE )myFileChannel != INVALID_HANDLE_VALUE  )
+ if (  myFileChannel != INVALID_HANDLE_VALUE  )
 
   RAISE(  TEXT( "OSD_File :: Print (): incorrect call - file opened" )  );
 
@@ -1895,7 +1898,7 @@ void OSD_File :: Print ( const OSD_Printer& WhichPrinter ) {
 
 Standard_Boolean OSD_File :: IsOpen () const {
 
- return ( HANDLE )myFileChannel != INVALID_HANDLE_VALUE;
+ return myFileChannel != INVALID_HANDLE_VALUE;
 
 }  // end OSD_File :: IsOpen
 
@@ -2170,11 +2173,11 @@ retry:
 }  // end _osd_wnt_protection_to_sd */
 
 
-static void __fastcall _test_raise ( Standard_Integer hFile, Standard_CString str ) {
+static void __fastcall _test_raise ( HANDLE hFile, Standard_CString str ) {
 
  Standard_Character buff[ 64 ];
 
- if (  ( HANDLE )hFile == INVALID_HANDLE_VALUE  ) {
+ if (  hFile == INVALID_HANDLE_VALUE  ) {
  
   _tcscpy (  buff, TEXT( "OSD_File :: " )  );
   _tcscat (  buff, str );
@@ -2241,7 +2244,7 @@ static DWORDLONG __fastcall _get_line ( Standard_PCharacter& buffer, DWORD dwBuf
  }  // end while
 
 #ifdef VAC
- retVal  = (DWORDLONG) ( ( (unsigned __int64) ((DWORD) buffer + dwBuffSize) ) << 32 );
+ retVal  = (DWORDLONG) ( ( (unsigned __int64) ((DWORD)(intptr_t) buffer + dwBuffSize) ) << 32 );
  retVal = (DWORDLONG) ( (unsigned __int64) retVal & (((unsigned __int64) 0xFFFFFFFF) << 32) );
 #else
  retVal  = (   (  ( DWORDLONG )( ( DWORD )buffer + dwBuffSize )  ) << 32   );
@@ -2667,16 +2670,16 @@ static HANDLE __fastcall _open_file (
 }  // end _open_file
 
 Standard_Integer __fastcall _get_file_type (
-                             Standard_CString fName, Standard_Integer fileHandle
+                             Standard_CString fName, HANDLE fileHandle
                             ) {
 
  Standard_Integer retVal = 0;
  DWORD            dwType;
  int              fileType;
 
- fileType = fileHandle == ( Standard_Integer )INVALID_HANDLE_VALUE ?
+ fileType = fileHandle == INVALID_HANDLE_VALUE ?
                           FILE_TYPE_DISK :
-                          GetFileType (  ( HANDLE )fileHandle  );
+                          GetFileType ( fileHandle );
 
  switch ( fileType ) {
  

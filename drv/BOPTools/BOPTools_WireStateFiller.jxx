@@ -1,6 +1,0 @@
-#ifndef _BOPTools_PaveFiller_HeaderFile
-#include <BOPTools_PaveFiller.hxx>
-#endif
-#ifndef _BOPTools_WireStateFiller_HeaderFile
-#include <BOPTools_WireStateFiller.hxx>
-#endif

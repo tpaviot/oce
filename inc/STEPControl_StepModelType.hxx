@@ -6,7 +6,18 @@
 #ifndef _STEPControl_StepModelType_HeaderFile
 #define _STEPControl_StepModelType_HeaderFile
 
-
+//!  Gives you the choice of translation mode for an Open <br>
+//!   CASCADE shape that is being translated to STEP. <br>
+//!   - STEPControl_AsIs translates an Open CASCADE shape to its <br>
+//!   highest possible STEP representation. <br>
+//!   - STEPControl_ManifoldSolidBrep translates an Open CASCADE shape <br>
+//!   to a STEP manifold_solid_brep or brep_with_voids entity. <br>
+//!   - STEPControl_FacetedBrep translates an Open CASCADE shape <br>
+//!   into a STEP faceted_brep entity. <br>
+//! -  STEPControl_ShellBasedSurfaceModel translates an Open CASCADE shape <br>
+//!   into a STEP shell_based_surface_model entity. <br>
+//!   - STEPControl_GeometricCurveSet <br>
+//!   translates an Open CASCADE shape into a STEP geometric_curve_set entity. <br>
 enum STEPControl_StepModelType {
 STEPControl_AsIs,
 STEPControl_ManifoldSolidBrep,

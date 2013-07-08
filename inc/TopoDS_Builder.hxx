@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -42,21 +45,35 @@ class TopoDS_Compound;
 //! <br>
 //!          The methods in Builder are not static. They can be <br>
 //!          redefined in inherited builders. <br>
+//! <br>
+//!          This   Builder does not  provide   methods to Make <br>
+//!          Vertices,  Edges, Faces,  Shells  or Solids. These <br>
+//!          methods are  provided  in  the inherited  Builders <br>
+//!          as they must provide the geometry. <br>
+//! <br>
+//!          The Add method check for the following rules : <br>
+//! <br>
+//!          - Any SHAPE can be added in a COMPOUND. <br>
+//! <br>
+//!          - Only SOLID can be added in a COMPSOLID. <br>
+//! <br>
+//!          - Only SHELL, EDGE and VERTEX can be added in a SOLID. <br>
+//!                   EDGE and VERTEX as to be INTERNAL or EXTERNAL. <br>
+//! <br>
+//!          - Only FACE can be added in a SHELL. <br>
+//! <br>
+//!          - Only WIRE and VERTEX can be added in a FACE. <br>
+//!                   VERTEX as to be INTERNAL or EXTERNAL. <br>
+//! <br>
+//!          - Only EDGE can be added in a WIRE. <br>
+//! <br>
+//!          - Only VERTEX can be added in an EDGE. <br>
+//! <br>
+//!          - Nothing can be added in a VERTEX. <br>
 class TopoDS_Builder  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Make an empty Wire. <br>
         void MakeWire(TopoDS_Wire& W) const;

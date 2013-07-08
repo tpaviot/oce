@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -43,21 +46,23 @@ class TopTools_DataMapOfShapeShape;
 //!          2. compound of shells. <br>
 //!            Actual free bounds (edges shared by the only face in the shell) <br>
 //!            are output in this case. ShapeAnalysis_Shell is used for that. <br>
+//! <br>
+//!          When connecting edges into the wires algorithm tries to build <br>
+//!          wires of maximum length. Two options are provided for a user <br>
+//!          to extract closed sub-contours out of closed and/or open contours. <br>
+//! <br>
+//!          Free bounds are returned as two compounds, one for closed and one <br>
+//!          for open wires. <br>
+//! <br>
+//!          This class also provides some static methods for advanced use: <br>
+//!          connecting edges/wires to wires, extracting closed sub-wires out <br>
+//!          of wires, dispatching wires into compounds for closed and open <br>
+//!          wires. <br>
+//!          NOTE. Ends of the edge or wire mean hereafter their end vertices. <br>
 class ShapeAnalysis_FreeBounds  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Empty constructor <br>
   Standard_EXPORT   ShapeAnalysis_FreeBounds();
@@ -94,6 +99,12 @@ public:
 //!          Tries to build wires of maximum length. Building a wire is <br>
 //!          stopped when no edges can be connected to it at its head or <br>
 //!          at its tail. <br>
+//! <br>
+//!          Orientation of the edge can change when connecting. <br>
+//!          If <shared> is True connection is performed only when <br>
+//!          adjacent edges share the same vertex. <br>
+//!          If <shared> is False connection is performed only when <br>
+//!          ends of adjacent edges are at distance less than <toler>. <br>
   Standard_EXPORT   static  void ConnectEdgesToWires(Handle(TopTools_HSequenceOfShape)& edges,const Standard_Real toler,const Standard_Boolean shared,Handle(TopTools_HSequenceOfShape)& wires) ;
   
   Standard_EXPORT   static  void ConnectWiresToWires(Handle(TopTools_HSequenceOfShape)& iwires,const Standard_Real toler,const Standard_Boolean shared,Handle(TopTools_HSequenceOfShape)& owires) ;
@@ -102,6 +113,14 @@ public:
 //!          Tries to build wires of maximum length. Building a wire is <br>
 //!          stopped when no wires can be connected to it at its head or <br>
 //!          at its tail. <br>
+//! <br>
+//!          Orientation of the wire can change when connecting. <br>
+//!          If <shared> is True connection is performed only when <br>
+//!          adjacent wires share the same vertex. <br>
+//!          If <shared> is False connection is performed only when <br>
+//!          ends of adjacent wires are at distance less than <toler>. <br>
+//!          Map <vertices> stores the correspondence between original <br>
+//!          end vertices of the wires and new connecting vertices. <br>
   Standard_EXPORT   static  void ConnectWiresToWires(Handle(TopTools_HSequenceOfShape)& iwires,const Standard_Real toler,const Standard_Boolean shared,Handle(TopTools_HSequenceOfShape)& owires,TopTools_DataMapOfShapeShape& vertices) ;
   //! Extracts closed sub-wires out of <wires> and adds them <br>
 //!          to <closed>, open wires remained after extraction are put <br>

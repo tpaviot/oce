@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -59,18 +62,7 @@ class PCDM_SequenceNodeOfSequenceOfReference;
 class PCDM  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   static  Standard_Boolean FindStorageDriver(const Handle(CDM_Document)& aDocument) ;
@@ -78,7 +70,10 @@ public:
 //!          identifier of the driver plugs the driver. <br>
 //! <br>
   Standard_EXPORT   static  Handle_PCDM_StorageDriver StorageDriver(const Handle(CDM_Document)& aDocument) ;
-  
+  //! returns a schema to be used during a Store or Retrieve <br>
+//!          operation. <br>
+//!          Schema will plug the schema defined by <br>
+//!          the SchemaName method. <br>
   Standard_EXPORT   static  Handle_Storage_Schema Schema(const TCollection_ExtendedString& aSchemaName,const Handle(CDM_Application)& anApplication) ;
 
 

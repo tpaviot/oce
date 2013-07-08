@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,18 +58,7 @@ class TColStd_Array1OfReal;
 class Geom2dInt_GInter  : public IntRes2d_Intersection {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
       Geom2dInt_GInter();
@@ -111,6 +103,8 @@ private:
 
   
   Standard_EXPORT     void InternalPerform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  
+  Standard_EXPORT     void InternalCompositePerform_noRecurs(const Standard_Integer NbInterC1,const Adaptor2d_Curve2d& C1,const Standard_Integer NumInterC1,const TColStd_Array1OfReal& Tab1,const IntRes2d_Domain& D1,const Standard_Integer NbInterC2,const Adaptor2d_Curve2d& C2,const Standard_Integer NumInterC2,const TColStd_Array1OfReal& Tab2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
   
   Standard_EXPORT     void InternalCompositePerform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Standard_Integer N1,const Standard_Integer NB1,const TColStd_Array1OfReal& Tab1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Integer N2,const Standard_Integer NB2,const TColStd_Array1OfReal& Tab2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
 

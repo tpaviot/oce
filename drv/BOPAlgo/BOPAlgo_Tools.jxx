@@ -1,0 +1,6 @@
+#ifndef _BOPDS_PaveBlock_HeaderFile
+#include <BOPDS_PaveBlock.hxx>
+#endif
+#ifndef _BOPAlgo_Tools_HeaderFile
+#include <BOPAlgo_Tools.hxx>
+#endif

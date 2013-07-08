@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -78,20 +81,10 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
 class TopOpeBRepTool  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! In case face <FF> is built on UV-non-connexed  wires <br>
+  //!  Fuse  edges (in a   wire) of a  shape   where we have <br>
+//!          useless vertex. <br>//! In case face <FF> is built on UV-non-connexed  wires <br>
 //!          (with the two closing edges  FORWARD and REVERSED, in <br>
 //!          spite of one only), we find out the faulty edge, add <br>
 //!          the faulty shapes (edge,wire,face) to <MshNOK>. <br>

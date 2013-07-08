@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -64,6 +67,8 @@ class GeomFill_TgtField;
 class GeomFill_TgtOnCoons;
 class GeomFill_CornerState;
 class GeomFill_SequenceOfTrsf;
+class GeomFill_SequenceOfAx2;
+class GeomFill_HSequenceOfAx2;
 class GeomFill_CircularBlendFunc;
 class GeomFill_SweepFunction;
 class GeomFill_LocFunction;
@@ -85,6 +90,7 @@ class GeomFill_TrihedronLaw;
 class GeomFill_Fixed;
 class GeomFill_Frenet;
 class GeomFill_CorrectedFrenet;
+class GeomFill_DiscreteTrihedron;
 class GeomFill_ConstantBiNormal;
 class GeomFill_Darboux;
 class GeomFill_DraftTrihedron;
@@ -98,24 +104,14 @@ class GeomFill_HArray1OfSectionLaw;
 class GeomFill_Array1OfLocationLaw;
 class GeomFill_HArray1OfLocationLaw;
 class GeomFill_SequenceNodeOfSequenceOfTrsf;
+class GeomFill_SequenceNodeOfSequenceOfAx2;
 
 
 //! Tools and Data to filling Surface and Sweep Surfaces <br>
 class GeomFill  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Builds a ruled surface between the two curves, Curve1 and Curve2. <br>
@@ -134,7 +130,8 @@ public:
   Standard_EXPORT   static  void Mults(const Convert_ParameterisationType TypeConv,TColStd_Array1OfInteger& TMults) ;
   
   Standard_EXPORT   static  void GetMinimalWeights(const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real AngleMax,TColStd_Array1OfReal& Weigths) ;
-  
+  //! Used  by  the  generical classes to determine <br>
+//!          Tolerance for approximation <br>
   Standard_EXPORT   static  Standard_Real GetTolerance(const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real Radius,const Standard_Real AngularTol,const Standard_Real SpatialTol) ;
 
 
@@ -177,6 +174,8 @@ friend class GeomFill_TgtField;
 friend class GeomFill_TgtOnCoons;
 friend class GeomFill_CornerState;
 friend class GeomFill_SequenceOfTrsf;
+friend class GeomFill_SequenceOfAx2;
+friend class GeomFill_HSequenceOfAx2;
 friend class GeomFill_CircularBlendFunc;
 friend class GeomFill_SweepFunction;
 friend class GeomFill_LocFunction;
@@ -198,6 +197,7 @@ friend class GeomFill_TrihedronLaw;
 friend class GeomFill_Fixed;
 friend class GeomFill_Frenet;
 friend class GeomFill_CorrectedFrenet;
+friend class GeomFill_DiscreteTrihedron;
 friend class GeomFill_ConstantBiNormal;
 friend class GeomFill_Darboux;
 friend class GeomFill_DraftTrihedron;
@@ -211,6 +211,7 @@ friend class GeomFill_HArray1OfSectionLaw;
 friend class GeomFill_Array1OfLocationLaw;
 friend class GeomFill_HArray1OfLocationLaw;
 friend class GeomFill_SequenceNodeOfSequenceOfTrsf;
+friend class GeomFill_SequenceNodeOfSequenceOfAx2;
 
 };
 

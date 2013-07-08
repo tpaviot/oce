@@ -40,7 +40,7 @@
 #include <MeshVS_DrawerAttribute.hxx>
 #include <MeshVS_Buffer.hxx>
 
-#include <Graphic3d_NameOfFont.hxx>
+#include <Font_NameOfFont.hxx>
 
 //================================================================
 // Function : Constructor MeshVS_TextPrsBuilder
@@ -178,7 +178,7 @@ void MeshVS_TextPrsBuilder::Build ( const Handle(Prs3d_Presentation)& Prs,
   TCollection_AsciiString  AFontString;
   Standard_Integer         ADispInt;
   // Bold font is used by default for better text readability
-  OSD_FontAspect           AFontAspectType  = OSD_FA_Bold;
+  Font_FontAspect           AFontAspectType  = Font_FA_Bold;
   Standard_Integer         AAspect; 
   
 
@@ -193,7 +193,7 @@ void MeshVS_TextPrsBuilder::Build ( const Handle(Prs3d_Presentation)& Prs,
   if ( aDrawer->GetInteger ( MeshVS_DA_TextDisplayType, ADispInt ) )
     ADisplayType = (Aspect_TypeOfDisplayText) ADispInt;
   if ( aDrawer->GetInteger ( MeshVS_DA_TextFontAspect, AAspect ) )
-    AFontAspectType = (OSD_FontAspect)AAspect;         
+    AFontAspectType = (Font_FontAspect)AAspect;         
 
   Handle (Graphic3d_AspectText3d) aTextAspect = new Graphic3d_AspectText3d ( AColor, AFont, AExpansionFactor, ASpace,
     ATextStyle, ADisplayType );
@@ -202,8 +202,6 @@ void MeshVS_TextPrsBuilder::Build ( const Handle(Prs3d_Presentation)& Prs,
     new Graphic3d_AspectMarker3d( Aspect_TOM_POINT, Quantity_NOC_GRAY, 1. );
   aTextGroup->SetPrimitivesAspect( aTextAspect );
   aTextGroup->SetPrimitivesAspect( anAspectMarker3d );
-
-  aTextGroup->BeginPrimitives();
 
   MeshVS_Buffer aCoordsBuf (3*aMaxFaceNodes*sizeof(Standard_Real));
   TColStd_Array1OfReal aCoords (aCoordsBuf, 1, 3*aMaxFaceNodes);
@@ -269,8 +267,6 @@ void MeshVS_TextPrsBuilder::Build ( const Handle(Prs3d_Presentation)& Prs,
       }
     }
   }
-
-  aTextGroup->EndPrimitives();
 
   if (!aCustomElements.IsEmpty())
     CustomBuild ( Prs, aCustomElements, IDsToExclude, theDisplayMode );

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,21 +43,29 @@ class gp_Pnt2d;
 //!  The parameterization range is ]-infinite,+infinite[ <br>
 //!  It is possible to get the other branch and the two conjugate <br>
 //!  branches of the main branch. <br>
+//! <br>
+//!                         ^YAxis <br>
+//!                         | <br>
+//!                  FirstConjugateBranch <br>
+//!                         | <br>
+//!        Other            |                Main <br>
+//!   --------------------- C ------------------------------>XAxis <br>
+//!        Branch           |                Branch <br>
+//!                         | <br>
+//!                   SecondConjugateBranch <br>
+//!                         | <br>
+//! <br>
+//!  The major radius is the distance between the Location point <br>
+//!  of the hyperbola C and the apex of the main Branch (or the <br>
+//!  Other branch). The major axis is the "XAxis". <br>
+//!  The minor radius is the distance between the Location point <br>
+//!  of the hyperbola C and the apex of the First (or Second) <br>
+//!  Conjugate branch. The minor axis is the "YAxis". <br>
+//!  The major radius can be lower than the minor radius. <br>
 class GCE2d_MakeHyperbola  : public GCE2d_Root {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //!  Creates  an Hyperbola from a non persistent one from package gp <br>

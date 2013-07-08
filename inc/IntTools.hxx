@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -50,8 +53,6 @@ class IntTools_PntOnFace;
 class IntTools_PntOn2Faces;
 class IntTools_TopolTool;
 class IntTools_FaceFace;
-class IntTools_ShrunkRange;
-class IntTools_Context;
 class IntTools_Tools;
 class IntTools_CArray1;
 class IntTools_SequenceOfPntOn2Faces;
@@ -102,18 +103,7 @@ class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 class IntTools  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //!  returns the length of the edge; <br>
   Standard_EXPORT   static  Standard_Real Length(const TopoDS_Edge& E) ;
@@ -170,8 +160,6 @@ friend class IntTools_PntOnFace;
 friend class IntTools_PntOn2Faces;
 friend class IntTools_TopolTool;
 friend class IntTools_FaceFace;
-friend class IntTools_ShrunkRange;
-friend class IntTools_Context;
 friend class IntTools_Tools;
 friend class IntTools_CArray1;
 friend class IntTools_SequenceOfPntOn2Faces;

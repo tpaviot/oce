@@ -58,6 +58,7 @@ public:
 }
   //! return the value  of the <Index>th element  of the <br>
 //!          array. <br>
+//! <br>
   Standard_EXPORT     Interface_FileParameter& ChangeValue(const Standard_Integer Index) ;
     Interface_FileParameter& operator ()(const Standard_Integer Index) 
 {

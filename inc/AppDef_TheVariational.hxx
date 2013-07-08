@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -84,18 +87,7 @@ class PLib_Base;
 class AppDef_TheVariational  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   AppDef_TheVariational(const AppDef_MultiLine& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,const Standard_Integer MaxDegree = 14,const Standard_Integer MaxSegment = 100,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Boolean WithMinMax = Standard_False,const Standard_Boolean WithCutting = Standard_True,const Standard_Real Tolerance = 1.0,const Standard_Integer NbIterations = 2);

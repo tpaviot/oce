@@ -50,7 +50,7 @@ void * NCollection_HeapAllocator::Allocate (const Standard_Size theSize)
   void * pResult = malloc(aRoundSize);
   if (!pResult) {
     char buf[128];
-    sprintf (buf, "Failed to allocate %"FMT_SZ_Q"u bytes in global dynamic heap",theSize);
+    sprintf (buf, "Failed to allocate %" FMT_SZ_Q "u bytes in global dynamic heap",theSize);
     Standard_OutOfMemory::Raise(&buf[0]);
   }
   return pResult;

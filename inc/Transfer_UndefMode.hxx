@@ -6,7 +6,7 @@
 #ifndef _Transfer_UndefMode_HeaderFile
 #define _Transfer_UndefMode_HeaderFile
 
-//! execution status of an individual transfer (see Transcriptor) <br>
+//! used on processing Undefined Entities (see TransferOutput) <br>
 enum Transfer_UndefMode {
 Transfer_UndefIgnore,
 Transfer_UndefFailure,

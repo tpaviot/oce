@@ -169,8 +169,8 @@ Message_Msg& Message_Msg::Arg (const Standard_CString theString)
     return *this;
 
   // print string according to format
-  char * sStringBuffer = new char [Max (strlen(theString)+1, 1024)];
-  sprintf (sStringBuffer, aFormat.ToCString(), theString);
+  char * sStringBuffer = new char [Max ((Standard_Integer)strlen(theString)+1, 1024)];
+  Sprintf (sStringBuffer, aFormat.ToCString(), theString);
   TCollection_ExtendedString aStr ( sStringBuffer );
   delete [] sStringBuffer;
   sStringBuffer = 0;
@@ -216,7 +216,7 @@ Message_Msg& Message_Msg::Arg (const Standard_Integer theValue)
 
   // print string according to format
   char sStringBuffer [64];
-  sprintf (sStringBuffer, aFormat.ToCString(), theValue);
+  Sprintf (sStringBuffer, aFormat.ToCString(), theValue);
   TCollection_ExtendedString aStr ( sStringBuffer );
 
   // replace the format placeholder by the actual string
@@ -240,7 +240,7 @@ Message_Msg& Message_Msg::Arg (const Standard_Real theValue)
 
   // print string according to format
   char sStringBuffer [64];
-  sprintf (sStringBuffer, aFormat.ToCString(), theValue);
+  Sprintf (sStringBuffer, aFormat.ToCString(), theValue);
   TCollection_ExtendedString aStr ( sStringBuffer );
 
   // replace the format placeholder by the actual string

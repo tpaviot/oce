@@ -6,7 +6,17 @@
 #ifndef _Image_FlipType_HeaderFile
 #define _Image_FlipType_HeaderFile
 
-//! Aspect_PixMap implementation. <br>
+//! Type of orientation in a symmetry. <br>
+//! - FT_HORIZONTAL : symmetry with respect to an horizontal axis. <br>
+//! - FT_VERTICAL : symmetry with respect to a vertical axis. <br>
+//! - FT_MAINDIAGONAL : symmetry with respect to a <br>
+//!   diagonal oriented at 45 degrees. <br>
+//! - FT_ANTIDIAGONAL : symmetry with respect to a <br>
+//!   diagonal oriented at -45 degrees. <br>
+//! - FT_CENTER : <br>
+//! - FT_90 : rotation of 90 degrees. <br>
+//! - FT_180 : rotation of 180 degrees. <br>
+//! - FT_270 : rotation of -90 degrees. <br>
 enum Image_FlipType {
 Image_FT_HORIZONTAL,
 Image_FT_VERTICAL,

@@ -7,6 +7,7 @@
 #define _GeomAbs_CurveType_HeaderFile
 
 
+//! Identifies the type of a curve. <br>
 enum GeomAbs_CurveType {
 GeomAbs_Line,
 GeomAbs_Circle,

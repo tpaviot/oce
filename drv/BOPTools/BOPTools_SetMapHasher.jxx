@@ -1,0 +1,6 @@
+#ifndef _BOPTools_Set_HeaderFile
+#include <BOPTools_Set.hxx>
+#endif
+#ifndef _BOPTools_SetMapHasher_HeaderFile
+#include <BOPTools_SetMapHasher.hxx>
+#endif

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -55,10 +58,6 @@ class OSD_Semaphore;
 class OSD_MailBox;
 class OSD_SharedLibrary;
 class OSD_Thread;
-class OSD_SystemFont;
-class OSD_FontMgr;
-class OSD_Real2String;
-class OSD_Localizer;
 
 
 //! Set of Operating Sytem Dependent Tools <br>
@@ -66,26 +65,58 @@ class OSD_Localizer;
 class OSD  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
-//!   1) Arms some floating point signals, and sets a "Handler" for them. <br>
-//!   2) Sets a "Handler" for the "Hardware" signals. <br>
-//!   For Win32 users: under VC++ you can control which method of handling <br>
-//!   exceptions is used by means of UseSETranslator method before calling <br>
-//!   SetSignal <br>
-  Standard_EXPORT   static  void SetSignal(const Standard_Boolean aFloatingSignal = Standard_True) ;
+//! Sets signal and exception handlers. <br>
+//! <b>Windows-specific notes<\b> <br>
+//! Compiled with MS VC++ sets 3 main handlers: <br>
+//! @li Signal handlers (via ::signal() functions) that translate system signals <br>
+//!     (SIGSEGV, SIGFPE, SIGILL) into C++ exceptions (classes inheriting <br>
+//!     Standard_Failure). They only be called if user calls ::raise() function <br>
+//!     with one of supported signal type set. <br>
+//! @li Exception handler OSD::WntHandler() (via ::SetUnhandledExceptionFilter()) <br>
+//!     that will be used when user's code is compiled with /EHs option. <br>
+//! @li Structured exception (SE) translator (via _set_se_translator()) that <br>
+//!     translates SE exceptions (aka asynchronous exceptions) into the <br>
+//!     C++ exceptions inheriting Standard_Failure. This translator will be <br>
+//!     used when user's code is compiled with /EHa option. <br>
+//! . <br>
+//! This approach ensures that regardless of the option the user chooses to <br>
+//! compile his code with (/EHs or /EHa), signals (or SE exceptions) will be <br>
+//! translated into Open CASCADE C++ exceptions. <br>
+//! . <br>
+//! If @a theFloatingSignal is TRUE then floating point exceptions will be <br>
+//! generated in accordance with the mask <br>
+//! <tt>_EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW<\tt> that is <br>
+//! used to call ::_controlfp() system function. If @a theFloatingSignal is FALSE <br>
+//! corresponding operations (e.g. division by zero) will gracefully complete <br>
+//! without an exception. <br>
+//! . <br>
+//! <b>Unix-specific notes<\b> <br>
+//! OSD::SetSignal() sets handlers (via ::sigaction()) for multiple signals <br>
+//! (SIGFPE, SIGSEGV, etc). Currently the number of handled signals is much <br>
+//! greater than for Windows, in the future this may change to provide better <br>
+//! consistency with Windows. <br>
+//! . <br>
+//! @a theFloatingSignal is recognized on Sun Solaris, Linux, and SGI Irix to <br>
+//! generate floating-point exception according to the mask <br>
+//! <tt>FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW</tt> (in Linux conventions).<br> <br>
+//! When compiled with OBJS macro defined, already set signal handlers (e.g. <br>
+//! by Data Base Managers) are not redefined. <br>
+//! . <br>
+//! <b>Common notes<\b> <br>
+//! If OSD::SetSignal() method is used in at least one thread, it must also be <br>
+//! called in any other thread where Open CASCADE will be used, to ensure <br>
+//! consistency of behavior. Its @a aFloatingSignal argument must be consistent <br>
+//! across threads. <br>
+//! . <br>
+//! Keep in mind that whether the C++ exception will really be thrown (i.e. <br>
+//! ::throw() will be called) is regulated by the NO_CXX_EXCEPTIONS and <br>
+//! OCC_CONVERT_SIGNALS macros used during compilation of Open CASCADE and <br>
+//! user's code. Refer to Foundation Classes User's Guide for further details. <br>
+//! <br>
+  Standard_EXPORT   static  void SetSignal(const Standard_Boolean theFloatingSignal = Standard_True) ;
   //! Returns available memory in Kilobytes. <br>
   Standard_EXPORT   static  Standard_Integer AvailableMemory() ;
   //! Commands the process to sleep for a number of seconds. <br>
@@ -114,17 +145,6 @@ public:
 //!          then this method checks whether Ctrl-Break keystroke was or <br>
 //!          not. If yes then raises Exception_CTRL_BREAK. <br>
   Standard_EXPORT   static  void ControlBreak() ;
-  //! Defines whether SetSignal must use _se_translator_function or <br>
-//!          SetUnhandledExceptionFilter and signal to catch system <br>
-//!          exceptions. The default behaviour is to use SE translator. <br>
-//!  Warning: Using SE translator method SetSignal should be called for each <br>
-//!          new created thread, while using the alternative method <br>
-//!          the exception handler is established once for the whole <br>
-//!          process and all its threads. <br>
-//!          This function takes effect only under VC++ compiler. <br>
-  Standard_EXPORT   static  void UseSETranslator(const Standard_Boolean useSE) ;
-  //! Returns the current value of the flag set by above method. <br>
-  Standard_EXPORT   static  Standard_Boolean UseSETranslator() ;
 
 
 
@@ -139,8 +159,31 @@ protected:
 private:
 
   
+//!   1) Raise a exception when aSignal is a floating point signal. <br>
+//!    aSignal is SIGFPE. <br>
+//!    aCode is <br>
+//!        (FPE:  Floating Point Exception) <br>
+//!        (FLT:  FLoaTing operation.) <br>
+//!        (INT:  INTeger  operation.) <br>
+//!        (DIV:  DIVided by zero.) <br>
+//!        (OVF:  OVerFlow.) <br>
+//!        (INEX: INEXact operation.) <br>
+//! <br>
+//!        FPE_FLTDIV_TRAP  (the exception "DivideByZero" is raised.) <br>
+//!        FPE_INTDIV_TRAP  (the exception "DivideByZero" is raised.) <br>
+//! <br>
+//!        FPE_FLTOVF_TRAP  (the exception "Overflow" is raised.) <br>
+//!        FPE_INTOVF_TRAP  (the exception "Overflow" is raised.) <br>
+//! <br>
+//!        FPE_FLTINEX_TRAP (the exception "NumericError" is raised.) <br>
+//! <br>
+//!   2) Display the signal name, and call "exit" with signal number for <br>
+//!   a "Hardware" signal. <br>
+//! <br>
   Standard_EXPORT   static  void Handler(const OSD_Signals aSignal,const Standard_Address aSigInfo,const Standard_Address aContext) ;
   
+//! Handle access to null object and segmentation violation <br>
+//! <br>
   Standard_EXPORT   static  void SegvHandler(const OSD_Signals aSignal,const Standard_Address aSigInfo,const Standard_Address aContext) ;
   
 //!  1) Raises an exception if the exception due to floating point errors. <br>
@@ -180,10 +223,6 @@ friend class OSD_Semaphore;
 friend class OSD_MailBox;
 friend class OSD_SharedLibrary;
 friend class OSD_Thread;
-friend class OSD_SystemFont;
-friend class OSD_FontMgr;
-friend class OSD_Real2String;
-friend class OSD_Localizer;
 
 };
 

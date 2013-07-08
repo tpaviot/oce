@@ -31,7 +31,7 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
-class Viewer_BadValue;
+class V3d_BadValue;
 class V3d_Viewer;
 class V3d_OrthographicView;
 
@@ -66,7 +66,7 @@ public:
 //!	    formula : <br>
 //!	    TAN(Angle/2) = Size/Length <br>
 //!	    	Size expresses the smallest dimension of the window. <br>
-//!	        Length expresses the focal length. <br>//!  Warning! raises BadValue from Viewer <br>
+//!	        Length expresses the focal length. <br>//!  Warning! raises BadValue from V3d <br>
 //!	    if the opening angle is <= 0 or >= PI <br>
   Standard_EXPORT     void SetAngle(const Quantity_PlaneAngle Angle) ;
   //! Returns the value of the angle of opening. <br>

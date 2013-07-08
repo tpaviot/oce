@@ -42,8 +42,8 @@
 #define MDSkf TopOpeBRepDS_FACE
 
 #ifdef DEB
-Standard_EXPORT void debrededg(const Standard_Integer I) {cout<<"+++ debrededg f"<<I<<endl;}
-Standard_EXPORT void debredfac(const Standard_Integer I) {cout<<"+++ debredfac f"<<I<<endl;}
+void debrededg(const Standard_Integer I) {cout<<"+++ debrededg f"<<I<<endl;}
+void debredfac(const Standard_Integer I) {cout<<"+++ debredfac f"<<I<<endl;}
 void FUN_dumploiS(const TopoDS_Shape& SG,const TopOpeBRepDS_ListOfInterference& loi,const TopOpeBRepDS_DataStructure& BDS,TCollection_AsciiString str) 
 {
   cout<<str<<"   G : "<<BDS.Shape(SG)<<"   S : ";
@@ -61,11 +61,11 @@ void FUN_dumpmosd(TopOpeBRepDS_MapOfShapeData& mosd,const TopOpeBRepDS_DataStruc
 #endif
 
 #ifdef DEB
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePEI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePFI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettracePI();
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
+extern Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
+extern Standard_Boolean TopOpeBRepDS_GettracePEI();
+extern Standard_Boolean TopOpeBRepDS_GettracePFI();
+extern Standard_Boolean TopOpeBRepDS_GettracePI();
+extern Standard_Boolean TopOpeBRepDS_GettraceSPSX(const Standard_Integer);
 static Standard_Boolean FTRCF(const Standard_Integer F) {
   Standard_Boolean b1 = TopOpeBRepDS_GettracePFI();
   Standard_Boolean b2 = TopOpeBRepDS_GettracePI();
@@ -539,16 +539,20 @@ void TopOpeBRepDS_FIR::ProcessFaceInterferences
   TopOpeBRepDS_ListOfInterference& LI = BDS.ChangeShapeInterferences(SIX);
   TopOpeBRepDS_ListOfInterference lw, lE, lFE, lFEF, lF; lw.Assign(LI);
 
-  Standard_Integer nF = ::FUN_selectTRASHAinterference(lw,TopAbs_FACE,lF);
-  Standard_Integer nFE = ::FUN_selectGKinterference(lF,MDSke,lFE);
-  Standard_Integer nFEF = ::FUN_selectSKinterference(lFE,MDSkf,lFEF);
-  Standard_Integer nE = ::FUN_selectTRASHAinterference(lw,TopAbs_EDGE,lE);
+#ifdef DEB
+  Standard_Integer nF, nFE, nFEF, nE;
+#endif
 
+  ::FUN_selectTRASHAinterference(lw,TopAbs_FACE,lF);
+  ::FUN_selectGKinterference(lF,MDSke,lFE);
+  ::FUN_selectSKinterference(lFE,MDSkf,lFEF);
+  ::FUN_selectTRASHAinterference(lw,TopAbs_EDGE,lE);
+
+#ifdef DEB
   nF = lF.Extent();
   nFE = lFE.Extent();
   nFEF = lFEF.Extent();
   nE = lE.Extent();
-#ifdef DEB
   if(TRC){
     if(nF||nFE||nFEF||nE){cout<<endl;cout<<"-----------------------"<<endl;}
     if(nF) {cout<<"FACE "<<SIX<<" (FACE) : "<<nF<<endl;FDS_dumpLI(lF,"  ");}
@@ -560,11 +564,11 @@ void TopOpeBRepDS_FIR::ProcessFaceInterferences
 
   FUN_reduceEDGEgeometry(lFEF,BDS,SIX,MEsp);
 
+#ifdef DEB
   nF = lF.Extent();
   nFE = lFE.Extent();
   nFEF = lFEF.Extent();
   nE = lE.Extent();
-#ifdef DEB
   if(TRC){
     if(nF||nFE||nFEF||nE)cout<<endl;
     if(nF) {cout<<"FACE "<<SIX<<" (FACE) : "<<nF<<endl;FDS_dumpLI(lF,"  ");}

@@ -6,7 +6,8 @@
 #ifndef _OSD_WhoAmI_HeaderFile
 #define _OSD_WhoAmI_HeaderFile
 
-//! Specifies aspect of system font. <br>
+//! Allows great accuracy for error management. <br>
+//!          This is private. <br>
 enum OSD_WhoAmI {
 OSD_WDirectory,
 OSD_WDirectoryIterator,

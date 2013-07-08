@@ -73,64 +73,7 @@ static void CheckCurveData
   }
   
   if (CPoles.Length() != BSplCLib::NbPoles(Degree,Periodic,CMults))
-    Standard_ConstructionError::Raise("Wrong number of poles in a BSpline curve: "+CPoles.Length());
-}
-
-//=======================================================================
-//function : KnotAnalysis
-//purpose  : Internal use only
-//=======================================================================
-
-static void KnotAnalysis
-(const Standard_Integer           Degree,
- const Standard_Boolean           Periodic,
- const TColStd_Array1OfReal&      CKnots,
- const TColStd_Array1OfInteger&   CMults,
- GeomAbs_BSplKnotDistribution&    KnotForm,
- Standard_Integer&                MaxKnotMult)
-{
-  KnotForm = GeomAbs_NonUniform;
-
-  BSplCLib_KnotDistribution KSet = 
-    BSplCLib::KnotForm (CKnots, 1, CKnots.Length());
-  
-
-  if (KSet == BSplCLib_Uniform) {
-    BSplCLib_MultDistribution MSet =
-      BSplCLib::MultForm (CMults, 1, CMults.Length());
-    switch (MSet) {
-    case BSplCLib_NonConstant   :       
-      break;
-    case BSplCLib_Constant      : 
-      if (CKnots.Length() == 2) {
-	KnotForm = GeomAbs_PiecewiseBezier;
-      }
-      else {
-	if (CMults (1) == 1)  KnotForm = GeomAbs_Uniform;   
-      }
-      break;
-    case BSplCLib_QuasiConstant :   
-      if (CMults (1) == Degree + 1) {
-	Standard_Real M = CMults (2);
-	if (M == Degree )   KnotForm = GeomAbs_PiecewiseBezier;
-	else if  (M == 1)   KnotForm = GeomAbs_QuasiUniform;
-      }
-      break;
-    }
-  }
-
-  Standard_Integer FirstKM = 
-    Periodic ? CKnots.Lower() :  BSplCLib::FirstUKnotIndex (Degree,CMults);
-  Standard_Integer LastKM = 
-    Periodic ? CKnots.Upper() :  BSplCLib::LastUKnotIndex (Degree,CMults);
-  MaxKnotMult = 0;
-  if (LastKM - FirstKM != 1) {
-    Standard_Integer Multi;
-    for (Standard_Integer i = FirstKM + 1; i < LastKM; i++) {
-      Multi = CMults (i);
-      MaxKnotMult = Max (MaxKnotMult, Multi);
-    }
-  }
+    Standard_ConstructionError::Raise("Wrong number of poles in a BSpline curve");
 }
 
 //=======================================================================
@@ -1183,7 +1126,7 @@ void Geom_BSplineCurve::UpdateKnots()
   rational = !weights.IsNull();
 
   Standard_Integer MaxKnotMult = 0;
-  KnotAnalysis (deg, 
+  BSplCLib::KnotAnalysis (deg, 
 		periodic,
 		knots->Array1(), 
 		mults->Array1(), 

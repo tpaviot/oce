@@ -141,7 +141,8 @@ is
 
    DoSingular(me: mutable; U: Real; Index: Integer;  
               Tangent, BiNormal: out Vec from gp; 
-              n, k, TFlag, BNFlag: out Integer) 
+              n, k, TFlag, BNFlag: out Integer;
+	      Delta: out Real)
     returns Boolean
     is private; 
 
@@ -149,7 +150,8 @@ is
       Param: Real; Index:  Integer;
       Tangent    : out  Vec  from  gp; 
       Normal     : out  Vec  from  gp; 
-      BiNormal   : out  Vec  from  gp)
+      BiNormal   : out  Vec  from  gp;
+      Delta      : out  Real)
       ---Purpose: computes Triedrhon on curve at parameter <Param>         
    returns Boolean   
    is private;
@@ -161,7 +163,8 @@ is
       Normal     : out  Vec  from  gp; 
       DNormal    : out  Vec  from  gp;                 
       BiNormal   : out  Vec  from  gp; 
-      DBiNormal  : out  Vec  from  gp) 
+      DBiNormal  : out  Vec  from  gp;
+      Delta      : out  Real)
     ---Purpose: computes Triedrhon and  derivative Trihedron  on curve
       --          at parameter <Param>                
       --  Warning : It used only for C1 or C2 aproximation     
@@ -178,7 +181,8 @@ is
       D2Normal   : out  Vec  from  gp; 
       BiNormal   : out  Vec  from  gp; 
       DBiNormal  : out  Vec  from  gp; 
-      D2BiNormal : out  Vec  from  gp)    
+      D2BiNormal : out  Vec  from  gp;
+      Delta      : out  Real)
       ---Purpose: computes  Trihedron on curve          
       --          first and seconde  derivatives.
       --  Warning : It used only for C2 aproximation

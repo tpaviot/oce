@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -74,20 +77,19 @@ class Visual3d_HSetOfLight;
 class Visual3d_ContextView  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a context from default values <br>
+//! <br>
+//!	    Aliasing		  : OFF <br>
+//!	    BackZClipping	  : OFF <br>
+//!	    FrontZClipping	  : OFF <br>
+//!	    Depth-cueing	  : OFF <br>
+//!	    Light source	  : 0 <br>
+//!	    Clipping plane	  : 0 <br>
+//!	    Type Of Visualization : TOV_WIREFRAME <br>
+//!	    Type Of Model	  : TOM_NONE <br>
+//!          Type Of SurfaceDetail : TOSD_NONE <br>
   Standard_EXPORT   Visual3d_ContextView();
   //! Selects the kind of rendering <br>
 //!          default to: TOSD_NONE <br>
@@ -130,8 +132,18 @@ public:
   Standard_EXPORT     void SetLightOff(const Handle(Visual3d_Light)& ALight) ;
   //! Modifies the shading model when the type of <br>
 //!	    visualization is TOV_SHADING <br>
+//! <br>
+//!	    TypeOfModel	: TOM_NONE <br>
+//!			  TOM_INTERP_COLOR <br>
+//!			  TOM_FACET <br>
+//!			  TOM_VERTEX <br>
+//! <br>
   Standard_EXPORT     void SetModel(const Visual3d_TypeOfModel AModel) ;
   //! Modifies the mode of visualization. <br>
+//! <br>
+//!	    TypeOfVisualization	: TOV_WIREFRAME <br>
+//!				  TOV_SHADING <br>
+//! <br>
   Standard_EXPORT     void SetVisualization(const Visual3d_TypeOfVisualization AVisual) ;
   //! Modifies the back Z-clipping plane. <br>
 //!  Category: Methods to modify the class definition <br>

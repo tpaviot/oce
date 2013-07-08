@@ -28,7 +28,8 @@ uses
     StdFail,
     gp, 
     GeomAbs,
-    Geom, 
+    Geom,
+    GeomFill,
     Approx,
     TopoDS,
     TopTools, 
@@ -98,6 +99,9 @@ is
     class ThruSections;	      ---  inherits  MakeShape  from  BRepBuilderAPI
 
     class NormalProjection ;  ---  inherits  MakeShape  from  BRepBuilderAPI
+
+    class MiddlePath;	      ---  inherits  MakeShape  from  BRepBuilderAPI
+    
     -- 
     --   Plate
     --     

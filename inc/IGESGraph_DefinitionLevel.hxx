@@ -31,6 +31,9 @@ class Standard_OutOfRange;
 
 //! defines IGESDefinitionLevel, Type <406> Form <1> <br>
 //!          in package IGESGraph <br>
+//! <br>
+//!          Indicates the no. of levels on which an entity is <br>
+//!          defined <br>
 class IGESGraph_DefinitionLevel : public IGESData_LevelListEntity {
 
 public:

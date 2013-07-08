@@ -6,8 +6,7 @@
 #ifndef _Aspect_CardinalPoints_HeaderFile
 #define _Aspect_CardinalPoints_HeaderFile
 
-//! Defines the type of Resize Window method applied <br>
-//!          by the user. <br>
+
 enum Aspect_CardinalPoints {
 Aspect_CP_North,
 Aspect_CP_NorthEast,

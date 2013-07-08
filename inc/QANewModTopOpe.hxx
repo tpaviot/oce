@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -33,20 +36,11 @@ class QANewModTopOpe_ReShaper;
 class QANewModTopOpe  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  //! to check if TheS is valid or not. <br>
+  //! to remove  "floating" objects from compound. <br>
+//! "floating" objects are wires, edges, vertices that do not belong <br>
+//! solids, shells or faces. <br>//! to check if TheS is valid or not. <br>
 //! in difference with BRepCheck_Analizer, this method allows <br>
 //! some  kind of  non-manifold shapes <br>
   Standard_EXPORT   static  Standard_Boolean IsValid(const TopoDS_Shape& TheS,const Standard_Boolean GeomControls = Standard_True) ;

@@ -17,7 +17,9 @@ SET(TOOLKIT_MODULES
 	TColgp
 	TopLoc
 )
-SET(TOOLKIT_DEPENDS TKernel)
+SET(TOOLKIT_DEPENDS
+	TKernel
+)
 
 INCLUDE(../BuildToolkit.cmake)
 

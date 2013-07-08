@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -46,6 +49,9 @@
 #ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
 #endif
+#ifndef _Standard_Size_HeaderFile
+#include <Standard_Size.hxx>
+#endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
@@ -66,18 +72,7 @@ class Storage_BaseDriver;
 class FSD_File  : public Storage_BaseDriver {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Constructs a driver defining as a file, the physical <br>
@@ -305,7 +300,7 @@ protected:
   //! write from the current position to the end of line. <br>
   Standard_EXPORT     void WriteExtendedLine(const TCollection_ExtendedString& buffer) ;
   //! read <rsize> character from the current position. <br>
-  Standard_EXPORT     void ReadChar(TCollection_AsciiString& buffer,const Standard_Integer rsize) ;
+  Standard_EXPORT     void ReadChar(TCollection_AsciiString& buffer,const Standard_Size rsize) ;
   //! read from the first none space character position to the end of line. <br>
   Standard_EXPORT     void ReadString(TCollection_AsciiString& buffer) ;
   

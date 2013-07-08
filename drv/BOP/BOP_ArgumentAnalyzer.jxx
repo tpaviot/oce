@@ -1,9 +1,0 @@
-#ifndef _TopoDS_Shape_HeaderFile
-#include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOP_ListOfCheckResult_HeaderFile
-#include <BOP_ListOfCheckResult.hxx>
-#endif
-#ifndef _BOP_ArgumentAnalyzer_HeaderFile
-#include <BOP_ArgumentAnalyzer.hxx>
-#endif

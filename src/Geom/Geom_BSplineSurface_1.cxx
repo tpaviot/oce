@@ -48,6 +48,7 @@
 #include <Standard_DimensionError.hxx>
 #include <Standard_ConstructionError.hxx>
 #include <Standard_NotImplemented.hxx>
+#include <Standard_Mutex.hxx>
 
 #define  POLES    (poles->Array2())
 #define  WEIGHTS  (weights->Array2())
@@ -111,21 +112,19 @@ Standard_Boolean Geom_BSplineSurface::IsCNv
 //purpose  : 
 //=======================================================================
 
-void Geom_BSplineSurface::D0 (const Standard_Real U, 
-			      const Standard_Real V, 
-			            gp_Pnt&       P ) const 
+void Geom_BSplineSurface::D0(const Standard_Real U,
+                             const Standard_Real V,
+                             gp_Pnt& P) const 
 {
-  Standard_Real  new_u = U,
-                 new_v = V ;
-  PeriodicNormalization(new_u,
-			new_v) ;
-  if (!IsCacheValid(new_u,
-                    new_v))
-    {
-     Geom_BSplineSurface * my_surface = (Geom_BSplineSurface *) this ;
-     my_surface->ValidateCache(new_u,
-			       new_v) ;
-   }
+  Standard_Real  new_u(U), new_v(V);
+  PeriodicNormalization(new_u, new_v);
+
+  Geom_BSplineSurface* MySurface = (Geom_BSplineSurface *) this;
+  Standard_Mutex::Sentry aSentry(MySurface->myMutex);
+
+  if(!IsCacheValid(new_u, new_v))
+     MySurface->ValidateCache(new_u, new_v);
+
  Standard_Real uparameter_11 = (2*ucacheparameter + ucachespanlenght)/2,
                uspanlenght_11 = ucachespanlenght/2,
                vparameter_11 = (2*vcacheparameter + vcachespanlenght)/2,
@@ -164,23 +163,20 @@ void Geom_BSplineSurface::D0 (const Standard_Real U,
 //purpose  : 
 //=======================================================================
 
-void Geom_BSplineSurface::D1 (const Standard_Real U, 
-			      const Standard_Real V, 
-			            gp_Pnt&       P,
-			            gp_Vec&       D1U,
-			            gp_Vec&       D1V) const
+void Geom_BSplineSurface::D1(const Standard_Real U,
+                             const Standard_Real V,
+                             gp_Pnt& P,
+                             gp_Vec& D1U,
+                             gp_Vec& D1V) const
 {
-  Standard_Real  new_u = U,
-                 new_v = V ;
-  PeriodicNormalization(new_u,
-			new_v) ;
-  if (!IsCacheValid(new_u,
-                    new_v))
-    {
-     Geom_BSplineSurface * my_surface = (Geom_BSplineSurface *) this ;
-     my_surface->ValidateCache(new_u,
-			       new_v) ;
-   }
+  Standard_Real  new_u(U), new_v(V);
+  PeriodicNormalization(new_u, new_v);
+
+  Geom_BSplineSurface* MySurface = (Geom_BSplineSurface *) this;
+  Standard_Mutex::Sentry aSentry(MySurface->myMutex);
+
+  if(!IsCacheValid(new_u, new_v))
+     MySurface->ValidateCache(new_u, new_v);
 
   Standard_Real uparameter_11 = (2*ucacheparameter + ucachespanlenght)/2,
                 uspanlenght_11 = ucachespanlenght/2,
@@ -235,18 +231,14 @@ void Geom_BSplineSurface::D2 (const Standard_Real U,
 			            gp_Vec&       D2V,
 			            gp_Vec&       D2UV) const
 {
+  Standard_Real  new_u(U), new_v(V);
+  PeriodicNormalization(new_u, new_v);
 
-    Standard_Real  new_u = U,
-                   new_v = V ;
-  PeriodicNormalization(new_u,
-			new_v) ;
-  if (!IsCacheValid(new_u,
-                    new_v))
-    {
-     Geom_BSplineSurface * my_surface = (Geom_BSplineSurface *) this ;
-     my_surface->ValidateCache(new_u,
-			       new_v) ;
-   }
+  Geom_BSplineSurface* MySurface = (Geom_BSplineSurface *) this;
+  Standard_Mutex::Sentry aSentry(MySurface->myMutex);
+
+  if(!IsCacheValid(new_u, new_v))
+     MySurface->ValidateCache(new_u, new_v);
 
   Standard_Real uparameter_11 = (2*ucacheparameter + ucachespanlenght)/2,
                 uspanlenght_11 = ucachespanlenght/2,
@@ -1291,38 +1283,15 @@ Standard_Boolean Geom_BSplineSurface::IsUClosed () const
   if (uperiodic)
     return Standard_True;
 
-  Standard_Boolean Closed     = Standard_True;
-  TColgp_Array2OfPnt & VPoles = poles->ChangeArray2();
-  Standard_Integer PLower     = VPoles.LowerRow();
-  Standard_Integer PUpper     = VPoles.UpperRow();
-  Standard_Integer PLength    = VPoles.RowLength();
-  Standard_Integer j = VPoles.LowerCol();
-  if ( urational || vrational) {
-    TColStd_Array2OfReal & VWeights = weights->ChangeArray2();
-    Standard_Integer WLower = VWeights.LowerRow();
-    Standard_Integer WUpper = VWeights.UpperRow();
-    Standard_Real    Alfa = VWeights(WLower,VWeights.LowerCol());
-    Alfa /= VWeights(WUpper,VWeights.LowerCol());
-
-    Standard_Integer k = VWeights.LowerCol();
-    while (Closed && j <= PLength) {
-      Closed = 
-	(VPoles (PLower, j).Distance (VPoles (PUpper, j)) <= Precision::Confusion());
-      j++;
-      Closed = (Closed &&
-	       ((VWeights(WLower,k) / VWeights(WUpper,k)) - Alfa) 
-		 < Epsilon(Alfa));
-      k++;
-    }
-  }
-  else {
-    while (Closed && j <= PLength) {
-      Closed = 
-	(VPoles (PLower, j).Distance (VPoles (PUpper, j)) <= Precision::Confusion());
-      j++;
-    }
-  }
-  return Closed; 
+  Standard_Real aU1, aU2, aV1, aV2;
+  Bounds( aU1, aU2, aV1, aV2 );
+  Handle(Geom_Curve) aCUF = UIso( aU1 );
+  Handle(Geom_Curve) aCUL = UIso( aU2 );
+  if(aCUF.IsNull() || aCUL.IsNull())
+    return Standard_False;
+  Handle(Geom_BSplineCurve) aBsF = Handle(Geom_BSplineCurve)::DownCast(aCUF);
+  Handle(Geom_BSplineCurve) aBsL = Handle(Geom_BSplineCurve)::DownCast(aCUL);
+  return (!aBsF.IsNull() && !aBsL.IsNull() && aBsF->IsEqual( aBsL, Precision::Confusion()) ); 
 }
 
 //=======================================================================
@@ -1334,39 +1303,16 @@ Standard_Boolean Geom_BSplineSurface::IsVClosed () const
 {
   if (vperiodic)
     return Standard_True;
-
-  Standard_Boolean Closed     = Standard_True;
-  TColgp_Array2OfPnt & VPoles = poles->ChangeArray2();
-  Standard_Integer PLower     = VPoles.LowerCol();
-  Standard_Integer PUpper     = VPoles.UpperCol();
-  Standard_Integer PLength    = VPoles.ColLength();
-  Standard_Integer i = VPoles.LowerRow();
-  if ( urational || vrational) {
-    TColStd_Array2OfReal & VWeights = weights->ChangeArray2();
-    Standard_Integer WLower = VWeights.LowerCol();
-    Standard_Integer WUpper = VWeights.UpperCol();
-    Standard_Real    Alfa = VWeights(VWeights.LowerRow(),WLower);
-    Alfa /= VWeights(VWeights.LowerRow(),WUpper);
-
-    Standard_Integer k = VWeights.LowerRow();
-    while (Closed && i <= PLength) {
-      Closed = 
-	(VPoles (i, PLower).Distance (VPoles (i, PUpper)) <= Precision::Confusion());
-      i++;
-      Closed = (Closed &&
-	       ((VWeights(k,WLower) / VWeights(k,WUpper)) - Alfa) 
-		 < Epsilon(Alfa));
-      k++;
-    }
-  }
-  else {
-    while (Closed && i <= PLength) {
-      Closed = 
-	(VPoles (i, PLower).Distance (VPoles (i, PUpper)) <= Precision::Confusion());
-      i++;
-    }
-  }
-  return Closed; 
+  
+  Standard_Real aU1, aU2, aV1, aV2;
+  Bounds( aU1, aU2, aV1, aV2 );
+  Handle(Geom_Curve) aCVF = VIso( aV1 );
+  Handle(Geom_Curve) aCVL = VIso( aV2 );
+  if(aCVF.IsNull() || aCVL.IsNull())
+    return Standard_False;
+  Handle(Geom_BSplineCurve) aBsF = Handle(Geom_BSplineCurve)::DownCast(aCVF);
+  Handle(Geom_BSplineCurve) aBsL = Handle(Geom_BSplineCurve)::DownCast(aCVL);
+  return (!aBsF.IsNull() && !aBsL.IsNull() && aBsF->IsEqual(aBsL, Precision::Confusion())); 
 }
 
 //=======================================================================

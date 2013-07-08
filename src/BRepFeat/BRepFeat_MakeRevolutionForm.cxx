@@ -25,7 +25,6 @@
 #include <BRepFeat.hxx>
 
 #include <LocOpe.hxx>
-#include <LocOpe_Builder.hxx>
 #include <LocOpe_RevolutionForm.hxx>
 #include <LocOpe_CSIntersector.hxx>
 #include <LocOpe_PntFace.hxx>
@@ -140,8 +139,8 @@
 #include <GeomLProp_CLProps.hxx>
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEAT();
-Standard_IMPORT Standard_Boolean BRepFeat_GettraceFEATRIB();
+extern Standard_Boolean BRepFeat_GettraceFEAT();
+extern Standard_Boolean BRepFeat_GettraceFEATRIB();
 #endif
 
 static void MajMap(const TopoDS_Shape&, // base
@@ -453,12 +452,12 @@ void BRepFeat_MakeRevolutionForm::Init(const TopoDS_Shape& Sbase,
     
     if(Sliding && !PtOnFirstEdge) {
       BRepExtrema_ExtCF ext1(TopoDS::Edge(ee1.Shape()), FirstFace);
-      if(ext1.NbExt() < 1 || ext1.SquareDistance(1) > Precision::Confusion() * Precision::Confusion()) 
+      if(ext1.NbExt() < 1 || ext1.SquareDistance(1) > Precision::SquareConfusion())
 	Sliding = Standard_False;
     }
     if(Sliding && !PtOnLastEdge) {
       BRepExtrema_ExtCF ext2(ee2, LastFace); // ExtCF : curves and surfaces
-      if(ext2.NbExt() < 1 || ext2.SquareDistance(1) > Precision::Confusion() * Precision::Confusion()) 
+      if(ext2.NbExt() < 1 || ext2.SquareDistance(1) > Precision::SquareConfusion())
 	Sliding = Standard_False;
     }
     if(Sliding && PtOnFirstEdge) {
@@ -1458,12 +1457,11 @@ Standard_Boolean BRepFeat_MakeRevolutionForm::Propagate(TopTools_ListOfShape& Sl
       }
     }
     else {
+      e = e1;
       e1.Nullify();
     }
   }
   if(e1.IsNull()) {
-    //Standard_Real f, l;
-    
     myListOfEdges.Clear();
     TopTools_ListOfShape thelist2;    
     mySlface.Bind(CurrentFace, thelist2);

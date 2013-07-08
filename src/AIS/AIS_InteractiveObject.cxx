@@ -28,9 +28,6 @@
 //			instead a restricted object NameOfColor. 
 //			Add SetCurrentFacingModel() method
 
-#define G003		//EUG/GG 260100 DEgenerate mode support
-//			Add SetDegenerateModel() methods
-
 #define IMP020200	//GG Add SetTransformation() method
 
 #define IMP140200	//GG Add HasPresentation() and Presentation() methods
@@ -556,43 +553,6 @@ void AIS_InteractiveObject::SetInfiniteState(const Standard_Boolean aFlag)
       P->SetInfiniteState(myInfiniteState);}
 }
 
-#ifdef G003
-//=======================================================================
-//function : SetDegenerateModel
-//purpose  : 
-//=======================================================================
-void AIS_InteractiveObject::SetDegenerateModel(
-		const Aspect_TypeOfDegenerateModel aModel,
-		const Quantity_Ratio aRatio ) {
-  if( !HasColor() && !IsTransparent() && !HasMaterial() ) {
-    myDrawer->SetShadingAspect(new Prs3d_ShadingAspect());
-  }
-
-  myDrawer->ShadingAspect()->Aspect()->SetDegenerateModel(aModel,aRatio);
-
-  if(!GetContext().IsNull()){
-    if( GetContext()->MainPrsMgr()->HasPresentation(this,1)){
-      Handle(Prs3d_Presentation) P = 
-	GetContext()->MainPrsMgr()->CastPresentation(this,1)->Presentation();
-      Handle(Graphic3d_AspectFillArea3d) a4bis = 
-				myDrawer->ShadingAspect()->Aspect();
-      P->SetPrimitivesAspect(a4bis);
-    }
-  }
-}
-
-//=======================================================================
-//function : DegenerateModel
-//purpose  : 
-//=======================================================================
-
-Aspect_TypeOfDegenerateModel AIS_InteractiveObject::DegenerateModel( 
-			Quantity_Ratio& aRatio) const
-{
-  return myDrawer->ShadingAspect()->Aspect()->DegenerateModel(aRatio);
-}
-#endif
-
 #ifdef IMP020200
 //=======================================================================
 //function : SetTransformation
@@ -749,9 +709,9 @@ void AIS_InteractiveObject::SetAspect(const Handle(Prs3d_BasicAspect)& anAspect,
 //function : SetPolygonOffsets 
 //purpose  : 
 //======================================================================= 
-void AIS_InteractiveObject::SetPolygonOffsets(const Standard_Integer aMode,
-                                              const Standard_Real    aFactor,
-                                              const Standard_Real    aUnits) 
+void AIS_InteractiveObject::SetPolygonOffsets(const Standard_Integer    aMode,
+                                              const Standard_ShortReal  aFactor,
+                                              const Standard_ShortReal  aUnits) 
 {
   if ( !HasPolygonOffsets() )
     myDrawer->SetShadingAspect(new Prs3d_ShadingAspect());
@@ -806,9 +766,9 @@ Standard_Boolean AIS_InteractiveObject::HasPolygonOffsets() const
 //function : PolygonOffsets 
 //purpose  : 
 //=======================================================================
-void AIS_InteractiveObject::PolygonOffsets(Standard_Integer& aMode,
-                                           Standard_Real&    aFactor,
-                                           Standard_Real&    aUnits) const 
+void AIS_InteractiveObject::PolygonOffsets(Standard_Integer&    aMode,
+                                           Standard_ShortReal&  aFactor,
+                                           Standard_ShortReal&  aUnits) const 
 {
   if( HasPolygonOffsets() )
     myDrawer->ShadingAspect()->Aspect()->PolygonOffsets( aMode, aFactor, aUnits );

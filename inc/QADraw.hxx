@@ -9,32 +9,21 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
 
 class Draw_Interpretor;
-class QADraw_DataMapOfAsciiStringOfAddress;
-class QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress;
-class QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress;
 
 
 
 class QADraw  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Define specicial commands for AIS. <br>
   Standard_EXPORT   static  void CommonCommands(Draw_Interpretor& DI) ;
@@ -58,9 +47,6 @@ private:
 
 
 
-friend class QADraw_DataMapOfAsciiStringOfAddress;
-friend class QADraw_DataMapNodeOfDataMapOfAsciiStringOfAddress;
-friend class QADraw_DataMapIteratorOfDataMapOfAsciiStringOfAddress;
 
 };
 

@@ -282,7 +282,7 @@ static Handle(Geom2d_Curve) Couture(const TopoDS_Edge& E,
 
 static Standard_Boolean CheckSameParameter 
 (const Handle(Adaptor3d_HCurve)&   C3d,
- Handle(Geom2d_Curve)&           Pcurv,
+ const Handle(Geom2d_Curve)&           Pcurv,
  const Handle(Adaptor3d_HSurface)& S,
  const Standard_Real             tol3d,
  Standard_Real&                  tolreached)
@@ -1454,6 +1454,15 @@ static TopoDS_Edge BuildEdge(const Handle(Geom_Surface)& S,
 		    Iso->FirstParameter(), 
 		    Iso->LastParameter());
 
+  Standard_Real MaxTol = 1.e-4;
+  Standard_Real theTol;
+  GeomAdaptor_Curve GAiso(Iso);
+  Handle(GeomAdaptor_HCurve) GAHiso = new GeomAdaptor_HCurve(GAiso);
+  GeomAdaptor_Surface GAsurf(S);
+  Handle(GeomAdaptor_HSurface) GAHsurf = new GeomAdaptor_HSurface(GAsurf);
+  CheckSameParameter( GAHiso, L, GAHsurf, MaxTol, theTol);
+  B.UpdateEdge(E, theTol);
+
   return E;
 }
 
@@ -1681,6 +1690,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
  myContinuity  = GeomAbs_C2;
  myDegmax      = 11;
  mySegmax      = 30;
+ myForceApproxC1 = Standard_False;
 }
 
 //=======================================================================
@@ -1694,7 +1704,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
   LastShape  = Last; 
 
   // It is necessary to check the SameRange on its (PRO13551)
+#ifdef DEB
   Standard_Boolean issame = Standard_True;
+#endif
   BRep_Builder B;
   BRepTools_WireExplorer wexp;
   if (!FirstShape.IsNull()) {
@@ -1702,7 +1714,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False);
 	B.SameParameter(wexp.Current(), Standard_False);
+#ifdef DEB
 	issame = Standard_False;
+#endif
       }
     }
   }
@@ -1712,7 +1726,9 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False); 
 	B.SameParameter(wexp.Current(), Standard_False);
+#ifdef DEB
 	issame = Standard_False;
+#endif
       }
     }
   }
@@ -1746,6 +1762,17 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 {
   myAngMin = Max (MinAngle, Precision::Angular());
   myAngMax = Min (MaxAngle, 6.28);
+}
+
+//=======================================================================
+//function : SetForceApproxC1
+//purpose  : Set the flag that indicates attempt to approximate
+//           a C1-continuous surface if a swept surface proved
+//           to be C0.
+//=======================================================================
+ void BRepFill_Sweep::SetForceApproxC1(const Standard_Boolean ForceApproxC1)
+{
+  myForceApproxC1 = ForceApproxC1;
 }
 
 ///=======================================================================
@@ -1816,6 +1843,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
     // Curve by iso value
     GeomFill_Sweep Sweep(myLoc->Law(ipath), KPart);
     Sweep.SetTolerance(myTol3d, myBoundTol, myTol2d, myTolAngular);
+    Sweep.SetForceApproxC1(myForceApproxC1);
     Sweep.Build(mySec->Law(isec), myApproxStyle, myContinuity, myDegmax, mySegmax);
     if (!Sweep.IsDone())  
       return Standard_False;
@@ -1981,6 +2009,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 
     GeomFill_Sweep Sweep(myLoc->Law(IPath), KPart);
     Sweep.SetTolerance(myTol3d, myBoundTol, myTol2d, myTolAngular);
+    Sweep.SetForceApproxC1(myForceApproxC1);
 
     // Case of evolutionary section, definition of parametric correspondence
     if (!constSection) {
@@ -2488,13 +2517,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 //purpose  : Construt the result of sweeping
 //======================================================================
  void BRepFill_Sweep::Build(const BRepFill_TransitionStyle Transition,
-			    const GeomFill_ApproxStyle Approx,
 			    const GeomAbs_Shape Continuity,
+			    const GeomFill_ApproxStyle Approx,
 			    const Standard_Integer Degmax,
 			    const Standard_Integer Segmax) 
 {
-  myApproxStyle = Approx;
   myContinuity  = Continuity;
+  myApproxStyle = Approx;
   myDegmax = Degmax;
   mySegmax = Segmax;
 

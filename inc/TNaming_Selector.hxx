@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -54,21 +57,18 @@ class TDF_AttributeMap;
 //!           (method IsIdentified)   , this   Naming attribute <br>
 //!            contains  the reference (Identity  code)  to the <br>
 //!          argument shape. <br>
+//! <br>
+//!           * The <Solve> method  update the current value of <br>
+//!          the NamedShape, according to the <Naming> attribute. <br>
+//!            A boolean status  is    returned to say  if  the <br>
+//!          algorithm succeed   or not.  To read   the current <br>
+//!           value    of the selected    Named  Shape  use the <br>
+//!           TNaming_Tool::GetShape    method,    as  for  any <br>
+//!          NamedShape attribute. <br>
 class TNaming_Selector  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! To know if a shape is already identified (not selected) <br>
 //!          ======================================================= <br>

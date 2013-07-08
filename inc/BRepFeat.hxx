@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,7 +43,6 @@ class BRepTopAdaptor_FClass2d;
 class Geom2dAdaptor_Curve;
 class TopoDS_Solid;
 class BRepFeat_Builder;
-class BRepFeat_LocalOperation;
 class BRepFeat_MakeCylindricalHole;
 class BRepFeat_SplitShape;
 class BRepFeat_Form;
@@ -100,18 +102,7 @@ class BRepFeat_MakeRevolutionForm;
 class BRepFeat  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   static  void SampleEdges(const TopoDS_Shape& S,TColgp_SequenceOfPnt& Pt) ;
@@ -150,7 +141,6 @@ private:
 
 
 friend class BRepFeat_Builder;
-friend class BRepFeat_LocalOperation;
 friend class BRepFeat_MakeCylindricalHole;
 friend class BRepFeat_SplitShape;
 friend class BRepFeat_Form;

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -19,11 +22,13 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Graphic3d_Vertex_HeaderFile
+#include <Graphic3d_Vertex.hxx>
+#endif
 #ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
 #endif
 class Graphic3d_VectorError;
-class Graphic3d_Vertex;
 
 
 //! This class allows the creation and update <br>
@@ -31,18 +36,7 @@ class Graphic3d_Vertex;
 class Graphic3d_Vector  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a vector with 1.0, 0.0, 0.0 coordinates. <br>
   Standard_EXPORT   Graphic3d_Vector();

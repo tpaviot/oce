@@ -88,8 +88,8 @@
 #ifndef _V3d_TypeOfProjectionModel_HeaderFile
 #include <V3d_TypeOfProjectionModel.hxx>
 #endif
-#ifndef _Viewer_View_HeaderFile
-#include <Viewer_View.hxx>
+#ifndef _MMgt_TShared_HeaderFile
+#include <MMgt_TShared.hxx>
 #endif
 #ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>
@@ -160,8 +160,8 @@
 #ifndef _Aspect_TypeOfTriedronEcho_HeaderFile
 #include <Aspect_TypeOfTriedronEcho.hxx>
 #endif
-#ifndef _OSD_FontAspect_HeaderFile
-#include <OSD_FontAspect.hxx>
+#ifndef _Font_FontAspect_HeaderFile
+#include <Font_FontAspect.hxx>
 #endif
 #ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
@@ -193,14 +193,8 @@
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
 #endif
-#ifndef _Handle_PlotMgt_PlotterDriver_HeaderFile
-#include <Handle_PlotMgt_PlotterDriver.hxx>
-#endif
-#ifndef _Image_TypeOfImage_HeaderFile
-#include <Image_TypeOfImage.hxx>
-#endif
-#ifndef _Aspect_FormatOfSheetPaper_HeaderFile
-#include <Aspect_FormatOfSheetPaper.hxx>
+#ifndef _Graphic3d_BufferType_HeaderFile
+#include <Graphic3d_BufferType.hxx>
 #endif
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
@@ -208,8 +202,8 @@
 #ifndef _Aspect_PrintAlgo_HeaderFile
 #include <Aspect_PrintAlgo.hxx>
 #endif
-#ifndef _Handle_Image_PixMap_HeaderFile
-#include <Handle_Image_PixMap.hxx>
+#ifndef _Image_PixMap_HeaderFile
+#include <Image_PixMap.hxx>
 #endif
 #ifndef _V3d_TypeOfBackfacingModel_HeaderFile
 #include <V3d_TypeOfBackfacingModel.hxx>
@@ -221,7 +215,7 @@ class Aspect_Grid;
 class V3d_LayerMgr;
 class Graphic3d_Structure;
 class Graphic3d_Group;
-class Viewer_BadValue;
+class V3d_BadValue;
 class Standard_TypeMismatch;
 class Standard_MultiplyDefined;
 class V3d_UnMapped;
@@ -238,10 +232,7 @@ class Visual3d_ViewMapping;
 class Aspect_GradientBackground;
 class Graphic3d_Vector;
 class TColStd_Array2OfReal;
-class Graphic3d_Vertex;
 class gp_Ax3;
-class PlotMgt_PlotterDriver;
-class Image_PixMap;
 
 
 //! Defines the application object VIEW for the <br>
@@ -257,10 +248,17 @@ class Image_PixMap;
 //!          the continuation of this gesture in putting the method <br>
 //!          into operation. <br>
 //!          Example : Shifting the eye-view along the screen axes. <br>
-class V3d_View : public Viewer_View {
+//! <br>
+//!              View->Move(10.,20.,0.,True)     (Starting motion) <br>
+//!              View->Move(15.,-5.,0.,False)    (Next motion) <br>
+class V3d_View : public MMgt_TShared {
 
 public:
 
+  //! Initialises the view. <br>
+  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+  //! Initialises the view by copying. <br>
+  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
   //! Activates the view in the window specified and Map the <br>
 //!          Window to the screen. <br>//!  Warning! raises MultiplyDefined from Standard <br>
 //!      if the view is already activated in a window. <br>
@@ -342,7 +340,7 @@ public:
   Standard_EXPORT     void SetBgImageStyle(const Aspect_FillMethod FillStyle,const Standard_Boolean update = Standard_False) ;
   //! Definition of an axis from its origin and <br>
 //!          its orientation . <br>
-//!          This will be the current axis for rotations and movements. <br>//!  Warning! raises BadValue from Viewer if the vector normal is NULL. . <br>
+//!          This will be the current axis for rotations and movements. <br>//!  Warning! raises BadValue from V3d if the vector normal is NULL. . <br>
   Standard_EXPORT     void SetAxis(const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const Quantity_Parameter Vx,const Quantity_Parameter Vy,const Quantity_Parameter Vz) ;
   //! Defines the shading model for the <br>
 //!          visualisation ZBUFFER mode. <br>
@@ -399,6 +397,8 @@ public:
   Standard_EXPORT     void SetPlaneOff() ;
   //! Returns TRUE when the plane is active in this view. <br>
   Standard_EXPORT     Standard_Boolean IsActivePlane(const Handle(V3d_Plane)& aPlane) const;
+  //! sets the immediate update mode and returns the previous one. <br>
+  Standard_EXPORT     Standard_Boolean SetImmediateUpdate(const Standard_Boolean theImmediateUpdate) ;
   //! Customization of the ZBUFFER Triedron. <br>
 //!         XColor,YColor,ZColor - colors of axis <br>
 //!         SizeRatio - ratio of decreasing of the trihedron size when its phisical <br>
@@ -415,9 +415,9 @@ public:
   //! Highlights the echo zone of the Triedron. <br>
   Standard_EXPORT     void TriedronEcho(const Aspect_TypeOfTriedronEcho AType = Aspect_TOTE_NONE) ;
   //! Returns data of a graduated trihedron. <br>
-  Standard_EXPORT     void GetGraduatedTrihedron(TCollection_ExtendedString& xname,TCollection_ExtendedString& yname,TCollection_ExtendedString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,TCollection_AsciiString& fontOfNames,OSD_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,TCollection_AsciiString& fontOfValues,OSD_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
+  Standard_EXPORT     void GetGraduatedTrihedron(TCollection_ExtendedString& xname,TCollection_ExtendedString& yname,TCollection_ExtendedString& zname,Standard_Boolean& xdrawname,Standard_Boolean& ydrawname,Standard_Boolean& zdrawname,Standard_Boolean& xdrawvalues,Standard_Boolean& ydrawvalues,Standard_Boolean& zdrawvalues,Standard_Boolean& drawgrid,Standard_Boolean& drawaxes,Standard_Integer& nbx,Standard_Integer& nby,Standard_Integer& nbz,Standard_Integer& xoffset,Standard_Integer& yoffset,Standard_Integer& zoffset,Standard_Integer& xaxisoffset,Standard_Integer& yaxisoffset,Standard_Integer& zaxisoffset,Standard_Boolean& xdrawtickmarks,Standard_Boolean& ydrawtickmarks,Standard_Boolean& zdrawtickmarks,Standard_Integer& xtickmarklength,Standard_Integer& ytickmarklength,Standard_Integer& ztickmarklength,Quantity_Color& gridcolor,Quantity_Color& xnamecolor,Quantity_Color& ynamecolor,Quantity_Color& znamecolor,Quantity_Color& xcolor,Quantity_Color& ycolor,Quantity_Color& zcolor,TCollection_AsciiString& fontOfNames,Font_FontAspect& styleOfNames,Standard_Integer& sizeOfNames,TCollection_AsciiString& fontOfValues,Font_FontAspect& styleOfValues,Standard_Integer& sizeOfValues) const;
   //! Displays a graduated trihedron. <br>
-  Standard_EXPORT     void GraduatedTrihedronDisplay(const TCollection_ExtendedString& xname = "X",const TCollection_ExtendedString& yname = "Y",const TCollection_ExtendedString& zname = "Z",const Standard_Boolean xdrawname = Standard_True,const Standard_Boolean ydrawname = Standard_True,const Standard_Boolean zdrawname = Standard_True,const Standard_Boolean xdrawvalues = Standard_True,const Standard_Boolean ydrawvalues = Standard_True,const Standard_Boolean zdrawvalues = Standard_True,const Standard_Boolean drawgrid = Standard_True,const Standard_Boolean drawaxes = Standard_True,const Standard_Integer nbx = 3,const Standard_Integer nby = 3,const Standard_Integer nbz = 3,const Standard_Integer xoffset = 10,const Standard_Integer yoffset = 10,const Standard_Integer zoffset = 10,const Standard_Integer xaxisoffset = 30,const Standard_Integer yaxisoffset = 30,const Standard_Integer zaxisoffset = 30,const Standard_Boolean xdrawtickmarks = Standard_True,const Standard_Boolean ydrawtickmarks = Standard_True,const Standard_Boolean zdrawtickmarks = Standard_True,const Standard_Integer xtickmarklength = 10,const Standard_Integer ytickmarklength = 10,const Standard_Integer ztickmarklength = 10,const Quantity_Color& gridcolor = Quantity_NOC_WHITE,const Quantity_Color& xnamecolor = Quantity_NOC_RED,const Quantity_Color& ynamecolor = Quantity_NOC_GREEN,const Quantity_Color& znamecolor = Quantity_NOC_BLUE1,const Quantity_Color& xcolor = Quantity_NOC_RED,const Quantity_Color& ycolor = Quantity_NOC_GREEN,const Quantity_Color& zcolor = Quantity_NOC_BLUE1,const TCollection_AsciiString& fontOfNames = "Arial",const OSD_FontAspect styleOfNames = OSD_FA_Bold,const Standard_Integer sizeOfNames = 12,const TCollection_AsciiString& fontOfValues = "Arial",const OSD_FontAspect styleOfValues = OSD_FA_Regular,const Standard_Integer sizeOfValues = 12) ;
+  Standard_EXPORT     void GraduatedTrihedronDisplay(const TCollection_ExtendedString& xname = "X",const TCollection_ExtendedString& yname = "Y",const TCollection_ExtendedString& zname = "Z",const Standard_Boolean xdrawname = Standard_True,const Standard_Boolean ydrawname = Standard_True,const Standard_Boolean zdrawname = Standard_True,const Standard_Boolean xdrawvalues = Standard_True,const Standard_Boolean ydrawvalues = Standard_True,const Standard_Boolean zdrawvalues = Standard_True,const Standard_Boolean drawgrid = Standard_True,const Standard_Boolean drawaxes = Standard_True,const Standard_Integer nbx = 3,const Standard_Integer nby = 3,const Standard_Integer nbz = 3,const Standard_Integer xoffset = 10,const Standard_Integer yoffset = 10,const Standard_Integer zoffset = 10,const Standard_Integer xaxisoffset = 30,const Standard_Integer yaxisoffset = 30,const Standard_Integer zaxisoffset = 30,const Standard_Boolean xdrawtickmarks = Standard_True,const Standard_Boolean ydrawtickmarks = Standard_True,const Standard_Boolean zdrawtickmarks = Standard_True,const Standard_Integer xtickmarklength = 10,const Standard_Integer ytickmarklength = 10,const Standard_Integer ztickmarklength = 10,const Quantity_Color& gridcolor = Quantity_NOC_WHITE,const Quantity_Color& xnamecolor = Quantity_NOC_RED,const Quantity_Color& ynamecolor = Quantity_NOC_GREEN,const Quantity_Color& znamecolor = Quantity_NOC_BLUE1,const Quantity_Color& xcolor = Quantity_NOC_RED,const Quantity_Color& ycolor = Quantity_NOC_GREEN,const Quantity_Color& zcolor = Quantity_NOC_BLUE1,const TCollection_AsciiString& fontOfNames = "Arial",const Font_FontAspect styleOfNames = Font_FA_Bold,const Standard_Integer sizeOfNames = 12,const TCollection_AsciiString& fontOfValues = "Arial",const Font_FontAspect styleOfValues = Font_FA_Regular,const Standard_Integer sizeOfValues = 12) ;
   //! Erases a graduated trihedron from the view. <br>
   Standard_EXPORT     void GraduatedTrihedronErase() ;
   
@@ -437,7 +437,7 @@ public:
 //!          reference of the screen <br>
 //!          for which the origin is the view point of the projection, <br>
 //!          with a relative angular value in RADIANS with respect to <br>
-//!          the initial position expressed by Start = Standard_True <br>//!  Warning! raises BadValue from Viewer <br>
+//!          the initial position expressed by Start = Standard_True <br>//!  Warning! raises BadValue from V3d <br>
 //!      If the eye, the view point, or the high point are <br>
 //!          aligned or confused. <br>
   Standard_EXPORT     void Rotate(const Quantity_PlaneAngle Ax,const Quantity_PlaneAngle Ay,const Quantity_PlaneAngle Az,const Standard_Boolean Start = Standard_True) ;
@@ -603,7 +603,10 @@ public:
 //!          NOTE than the original Z size of the view is NOT modified . <br>
   Standard_EXPORT     void WindowFit(const Standard_Integer Xmin,const Standard_Integer Ymin,const Standard_Integer Xmax,const Standard_Integer Ymax) ;
   //! Sets Z and XY size of the view according to given values <br>
-//!          with respecting the initial view depth (eye position) <br>
+//!          with respecting the initial view depth (eye position). <br>
+//!          Width/heigth aspect ratio should be preserved by the caller <br>
+//!          of this method similarly to SetSize() to avoid unexpected <br>
+//!          visual results like non-uniform scaling of objects in the view. <br>
   Standard_EXPORT     void SetViewingVolume(const Standard_Real Left,const Standard_Real Right,const Standard_Real Bottom,const Standard_Real Top,const Standard_Real ZNear,const Standard_Real ZFar) ;
   //! Modifies the mapping of the view. <br>
   Standard_EXPORT     void SetViewMapping(const Visual3d_ViewMapping& VM) ;
@@ -615,6 +618,7 @@ public:
   Standard_EXPORT     void ResetViewMapping() ;
   //! Resets the centring and the orientation of the view <br>
 //!          Updates the view <br>
+//! <br>
   Standard_EXPORT     void Reset(const Standard_Boolean update = Standard_True) ;
   //! Converts the PIXEL value <br>
 //!           to a value in the projection plane. <br>
@@ -814,6 +818,7 @@ public:
 //!          the graphic managed itself exposure,resizing ... <br>
 //!          if <RetainMode> is FALSE. <br>
 //!          the application must managed itself exposure,resizing ... <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean TransientManagerBeginDraw(const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False) const;
   //! Clear all transient graphics in the view <aView> <br>
   Standard_EXPORT     void TransientManagerClearDraw() const;
@@ -824,33 +829,8 @@ public:
 //!         the associated view. <br>
 //!          Returns FALSE ,if nothing works because something <br>
 //!         is wrong for the transient principle : <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean TransientManagerBeginAddDraw() const;
-  //! Activates animation mode. <br>
-//!      When the animation mode is activated in the view, <br>
-//!      all Graphic3d_Structure are stored in a graphic object. <br>
-  Standard_EXPORT     void SetAnimationModeOn() ;
-  //! Deactivates the animation mode. <br>
-  Standard_EXPORT     void SetAnimationModeOff() ;
-  //! Returns the activity of the animation mode. <br>
-  Standard_EXPORT     Standard_Boolean AnimationModeIsOn() const;
-  //! Enable/Disable animation/degeneration mode <br>
-  Standard_EXPORT     void SetAnimationMode(const Standard_Boolean anAnimationFlag = Standard_True,const Standard_Boolean aDegenerationFlag = Standard_False) ;
-  //! Returns the animation and degenerate status. <br>
-  Standard_EXPORT     Standard_Boolean AnimationMode(Standard_Boolean& isDegenerate) const;
-  //! Activates degenerate mode. <br>
-//!      When the degenerate mode is activated in the view, <br>
-//!      all Graphic3d_Structure with the type TOS_COMPUTED <br>
-//!      displayed in this view are not computed. <br>
-//!  Warning: Obsolete method , use SetComputedMode() <br>
-  Standard_EXPORT     void SetDegenerateModeOn() ;
-  //! Deactivates the degenerate mode. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: if the computed mode has been disabled in the <br>
-//!          viewer the mode will remain degenerated. <br>
-//!  Warning: Obsolete method , use SetComputedMode() <br>
-  Standard_EXPORT     void SetDegenerateModeOff() ;
-  //! Returns the activity of the degenerate mode. <br>
-  Standard_EXPORT     Standard_Boolean DegenerateModeIsOn() const;
   //! Switches computed HLR mode in the view <br>
   Standard_EXPORT     void SetComputedMode(const Standard_Boolean aMode) ;
   //! Returns the computed HLR mode state <br>
@@ -871,32 +851,11 @@ public:
   //! Defines or Updates the activity of the <br>
 //!          grid in <me> <br>
   Standard_EXPORT     void SetGridActivity(const Standard_Boolean aFlag) ;
-  //! Animates the view <me> <br>
-//!          Returns the number of images per second <br>
-//!          if <AnimationMode> is Standard_True, the animation mode <br>
-//!          is activated. <br>
-  Standard_EXPORT     Standard_Real Tumble(const Standard_Integer NbImages = 314,const Standard_Boolean AnimationMode = Standard_False) ;
-  //! dump the view <br>
-  Standard_EXPORT     void ScreenCopy(const Handle(PlotMgt_PlotterDriver)& aPlotterDriver,const Standard_Boolean fWhiteBackground = Standard_True,const Quantity_Factor aScale = 1.0) ;
   //! dump the full contents of the view at the same <br>
 //!          scale in the file <theFile>. The file name <br>
 //!          extension must be one of ".png",".bmp",".jpg",".gif". <br>
 //!          Returns FALSE when the dump has failed <br>
-  Standard_EXPORT     Standard_Boolean Dump(const Standard_CString theFile,const Image_TypeOfImage theBufferType = Image_TOI_RGB) ;
-  //! dump the full contents of the view with a <br>
-//!          different scale according  to the required sheet <br>
-//!          paper size (format) and the ratio <br>
-//!          width/height of the view. <br>
-//!          and returns FALSE when the dump has failed <br>
-//!  Warning : the file name extension must be one of <br>
-//!      ".png",".bmp",".jpg",".gif" <br>
-//!       but make becarefull about the time to dump and <br>
-//!       resulting file size especially for the A0 format. <br>
-//!       NOTE that you can use after any standard system utility <br>
-//!       for editing or sending the image file to a laser printer. <br>
-//!       (i.e: Microsoft Photo Editor on Windows system <br>
-//!        or Image Viewer on SUN system) <br>
-  Standard_EXPORT     Standard_Boolean Dump(const Standard_CString theFile,const Aspect_FormatOfSheetPaper theFormat,const Image_TypeOfImage theBufferType = Image_TOI_RGB) ;
+  Standard_EXPORT     Standard_Boolean Dump(const Standard_CString theFile,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB) ;
   //! print the contents of the view to printer with preview. <br>
 //! <hPrnDC> : If you have already an PrinterDeviceContext (HDC), <br>
 //! then you can pass it to the print routines. <br>
@@ -926,7 +885,8 @@ public:
 //!        to a pixmap of pixel size <theWidth>*<theHeight> and <br>
 //!        buffer type <theBufferType>. If <theForceCentered> is true <br>
 //!        view scene will be centered. <br>
-  Standard_EXPORT     Handle_Image_PixMap ToPixMap(const Standard_Integer theWidth,const Standard_Integer theHeight,const Image_TypeOfImage theBufferType = Image_TOI_RGB,const Standard_Boolean theForceCentered = Standard_True) ;
+//!       Pixmap will be automatically (re)allocated when needed. <br>
+  Standard_EXPORT     Standard_Boolean ToPixMap(Image_PixMap& theImage,const Standard_Integer theWidth,const Standard_Integer theHeight,const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB,const Standard_Boolean theForceCentered = Standard_True) ;
   //! Manages projection model <br>
   Standard_EXPORT     void SetProjModel(const V3d_TypeOfProjectionModel amOdel = V3d_TPM_SCREEN) ;
   //! Returns the current projection model <br>
@@ -974,15 +934,14 @@ friend   //! Deactivates a particular view in the Viewer. <br>
 
 protected:
 
-  //! Initialises the view. <br>
-  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
-  //! Initialises the view by copying. <br>
-  Standard_EXPORT   V3d_View(const Handle(V3d_Viewer)& VM,const Handle(V3d_View)& V,const V3d_TypeOfView Type = V3d_ORTHOGRAPHIC);
+  
+  Standard_EXPORT     void ImmediateUpdate() const;
 
 V3d_TypeOfView MyType;
 Handle_Visual3d_View MyView;
 Visual3d_ViewMapping MyViewMapping;
 V3d_TypeOfProjectionModel MyProjModel;
+Standard_Boolean myImmediateUpdate;
 
 
 private: 
@@ -1049,7 +1008,6 @@ Handle_V3d_LayerMgr MyLayerMgr;
 TColStd_Array2OfReal MyTrsf;
 Handle_Graphic3d_Structure MyGridEchoStructure;
 Handle_Graphic3d_Group MyGridEchoGroup;
-Standard_Integer MyAnimationFlags;
 Standard_Boolean MyTransparencyFlag;
 
 

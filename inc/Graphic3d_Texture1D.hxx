@@ -22,12 +22,6 @@
 #ifndef _Graphic3d_TextureMap_HeaderFile
 #include <Graphic3d_TextureMap.hxx>
 #endif
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
-#include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
-#include <Standard_CString.hxx>
-#endif
 #ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #include <Graphic3d_TypeOfTexture.hxx>
 #endif
@@ -35,10 +29,10 @@
 #include <Standard_Integer.hxx>
 #endif
 class Standard_OutOfRange;
-class Graphic3d_StructureManager;
+class TCollection_AsciiString;
 
 
-//!  This is an abstract class for managing 1D textures. <br>
+//! This is an abstract class for managing 1D textures. <br>
 class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 
 public:
@@ -52,7 +46,7 @@ public:
   Standard_EXPORT   static  Standard_Integer NumberOfTextures() ;
   
 //! Returns the name of the predefined texture of rank <aRank> <br>
-  Standard_EXPORT   static  Standard_CString TextureName(const Standard_Integer aRank) ;
+  Standard_EXPORT   static  TCollection_AsciiString TextureName(const Standard_Integer aRank) ;
 
 
 
@@ -62,9 +56,9 @@ public:
 protected:
 
   
-  Standard_EXPORT   Graphic3d_Texture1D(const Handle(Graphic3d_StructureManager)& SM,const Standard_CString aFileName,const Graphic3d_TypeOfTexture aType);
+  Standard_EXPORT   Graphic3d_Texture1D(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
   
-  Standard_EXPORT   Graphic3d_Texture1D(const Handle(Graphic3d_StructureManager)& SM,const Graphic3d_NameOfTexture1D aName,const Graphic3d_TypeOfTexture aType);
+  Standard_EXPORT   Graphic3d_Texture1D(const Graphic3d_NameOfTexture1D theName,const Graphic3d_TypeOfTexture theType);
 
 
 

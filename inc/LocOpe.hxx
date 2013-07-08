@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -21,7 +24,6 @@ class TopoDS_Face;
 class TopoDS_Edge;
 class TopoDS_Shape;
 class TColgp_SequenceOfPnt;
-class LocOpe_Builder;
 class LocOpe_SplitShape;
 class LocOpe_ProjectedWires;
 class LocOpe_WiresOnShape;
@@ -61,24 +63,15 @@ class LocOpe_SequenceNodeOfSequenceOfCirc;
 class LocOpe  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  
+  //! Returns Standard_True  when the wire <W> is closed <br>
+//!          on the face <OnF>. <br>
   Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Wire& W,const TopoDS_Face& OnF) ;
-  
+  //! Returns Standard_True  when the edge <E> is closed <br>
+//!          on the face <OnF>. <br>
   Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Edge& E,const TopoDS_Face& OnF) ;
-  
+  //! Returns Standard_True  when the faces are tangent <br>
   Standard_EXPORT   static  Standard_Boolean TgtFaces(const TopoDS_Edge& E,const TopoDS_Face& F1,const TopoDS_Face& F2) ;
   
   Standard_EXPORT   static  void SampleEdges(const TopoDS_Shape& S,TColgp_SequenceOfPnt& Pt) ;
@@ -98,7 +91,6 @@ private:
 
 
 
-friend class LocOpe_Builder;
 friend class LocOpe_SplitShape;
 friend class LocOpe_ProjectedWires;
 friend class LocOpe_WiresOnShape;

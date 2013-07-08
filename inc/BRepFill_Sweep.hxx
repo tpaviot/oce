@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -66,18 +69,7 @@ class TopoDS_Shape;
 class BRepFill_Sweep  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,const Handle(BRepFill_LocationLaw)& Location,const Standard_Boolean WithKPart);
@@ -99,6 +91,10 @@ public:
 //!   Transition Performed will be alway "Modified" <br>
 //! <br>
   Standard_EXPORT     void SetAngularControl(const Standard_Real AngleMin = 0.01,const Standard_Real AngleMax = 6.0) ;
+  //! Set the flag that indicates attempt to approximate <br>
+//!          a C1-continuous surface if a swept surface proved <br>
+//!          to be C0. <br>
+  Standard_EXPORT     void SetForceApproxC1(const Standard_Boolean ForceApproxC1) ;
   //! Build the Sweeep  Surface <br>
 //!    Transition define Transition strategy <br>
 //!    Approx define Approximation Strategy <br>
@@ -113,7 +109,7 @@ public:
 //!    Degmax     : The maximum degree in v requiered on the surface <br>
 //!    Segmax     : The maximum number of span in v requiered on <br>
 //!                 the surface. <br>
-  Standard_EXPORT     void Build(const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomFill_ApproxStyle Approx = GeomFill_Location,const GeomAbs_Shape Continuity = GeomAbs_C2,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
+  Standard_EXPORT     void Build(const BRepFill_TransitionStyle Transition = BRepFill_Modified,const GeomAbs_Shape Continuity = GeomAbs_C2,const GeomFill_ApproxStyle Approx = GeomFill_Location,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 30) ;
   //! Say if the Shape is Build. <br>
   Standard_EXPORT     Standard_Boolean IsDone() const;
   //! returns the Sweeping Shape <br>
@@ -167,6 +163,7 @@ GeomFill_ApproxStyle myApproxStyle;
 GeomAbs_Shape myContinuity;
 Standard_Integer myDegmax;
 Standard_Integer mySegmax;
+Standard_Boolean myForceApproxC1;
 TopoDS_Shape myShape;
 Handle_BRepFill_LocationLaw myLoc;
 Handle_BRepFill_SectionLaw mySec;

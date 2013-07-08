@@ -1,0 +1,3 @@
+#ifndef _BOPDS_IndexRange_HeaderFile
+#include <BOPDS_IndexRange.hxx>
+#endif

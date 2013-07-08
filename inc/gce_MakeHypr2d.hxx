@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,21 +43,35 @@ class gp_Hypr2d;
 //!          * Create a 2d Hyperbola from its major axis and its major <br>
 //!            radius and its minor radius. <br>
 //! <br>
+//! <br>
+//!                         ^YAxis <br>
+//!                         | <br>
+//!                  FirstConjugateBranch <br>
+//!                         | <br>
+//!        Other            |                Main <br>
+//!   --------------------- C ------------------------------>XAxis <br>
+//!        Branch           |                Branch <br>
+//!                         | <br>
+//!                         | <br>
+//!                   SecondConjugateBranch <br>
+//!                         | <br>
+//! <br>
+//!  An axis placement (one axis) is associated with the hyperbola. <br>
+//!  This axis is the "XAxis" or major axis of the hyperbola. It is <br>
+//!  the symmetry axis of the main branch of hyperbola. <br>
+//!  The "YAxis" is normal to this axis and pass throught its location <br>
+//!  point. It is the minor axis. <br>
+//! <br>
+//!  The major radius is the distance between the Location point <br>
+//!  of the hyperbola C and the vertex of the Main Branch (or the <br>
+//!  Other branch). The minor radius is the distance between the <br>
+//!  Location point of the hyperbola C and the vertex of the First <br>
+//!  (or Second) Conjugate branch. <br>
+//!  The major radius can be lower than the minor radius. <br>
 class gce_MakeHypr2d  : public gce_Root {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Constructs a hyperbola <br>
 //!   centered on the point Center, where: <br>

@@ -5,17 +5,17 @@ SET(TOOLKIT_MODULES
 	BinMXCAFDoc
 )
 SET(TOOLKIT_DEPENDS
-	TKernel
-	TKMath
-	TKLCAF
-	TKG2d
-	TKBinL
 	TKBRep
-	TKBin
-	TKG3d
 	TKXCAF
+	TKMath
+	TKernel
+	TKBinL
+	TKG2d
 	TKCAF
 	TKCDF
+	TKG3d
+	TKLCAF
+	TKBin
 )
 
 INCLUDE(../BuildToolkit.cmake)

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -34,21 +37,18 @@ class TCollection_HAsciiString;
 
 //! This class is a tool allowing to manage opening/closing <br>
 //!          scopes in the ProgressIndicator in convenient and safe way. <br>
+//! <br>
+//!          Its main features are: <br>
+//!          - Set all parameters for the current scale on the given <br>
+//!            ProgressIndicator and open a new scope at one line <br>
+//!          - Iterator-like interface to opening next scopes and <br>
+//!            check for user break <br>
+//!          - Automatic scope closing in destructor <br>
+//!          - Safe for NULL ProgressIndicator (just does nothing) <br>
 class Message_ProgressSentry  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Message_ProgressSentry(const Handle(Message_ProgressIndicator)& PI,const Standard_CString name,const Standard_Real min,const Standard_Real max,const Standard_Real step,const Standard_Boolean isInf = Standard_False,const Standard_Real newScopeSpan = 0.0);

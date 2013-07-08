@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -25,6 +28,9 @@
 #ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
 #endif
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
+#endif
 class TopOpeBRepBuild_BlockBuilder;
 class TopOpeBRepBuild_Loop;
 class TopoDS_Shape;
@@ -36,18 +42,7 @@ class TopoDS_Shape;
 class TopOpeBRepBuild_CompositeClassifier  : public TopOpeBRepBuild_LoopClassifier {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   virtual  TopAbs_State Compare(const Handle(TopOpeBRepBuild_Loop)& L1,const Handle(TopOpeBRepBuild_Loop)& L2) ;
@@ -61,7 +56,9 @@ public:
   //! prepare classification involving element <E>. <br>
   Standard_EXPORT   virtual  void ResetElement(const TopoDS_Shape& E)  = 0;
   //! Add element <E> in the set of elements used in classification. <br>
-  Standard_EXPORT   virtual  void CompareElement(const TopoDS_Shape& E)  = 0;
+//!  Returns FALSE if the element <E> has been already added to the set of elements, <br>
+//!  otherwise returns TRUE. <br>
+  Standard_EXPORT   virtual  Standard_Boolean CompareElement(const TopoDS_Shape& E)  = 0;
   //! Returns state of classification of 2D point, defined by <br>
 //! ResetElement, with the current set of elements, defined by Compare. <br>
   Standard_EXPORT   virtual  TopAbs_State State()  = 0;

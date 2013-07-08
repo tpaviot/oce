@@ -80,6 +80,7 @@ Storage_Error DDF_IOStream::Open(const TCollection_AsciiString& aName,const Stor
       }
       else {
 	myIStream->precision(17);
+        myIStream->imbue (std::locale::classic()); // always use C locale
 	SetOpenMode(aMode);
       }
     }
@@ -91,6 +92,7 @@ Storage_Error DDF_IOStream::Open(const TCollection_AsciiString& aName,const Stor
       }
       else {
 	myOStream->precision(17);
+        myOStream->imbue (std::locale::classic()); // make sure to always use C locale
 	SetOpenMode(aMode);
       }
     }
@@ -113,6 +115,7 @@ Storage_Error DDF_IOStream::Open(istream* anIStream)
   SetOpenMode(Storage_VSRead);
   myIStream = anIStream;
   myIStream->precision(17);
+  myIStream->imbue (std::locale::classic()); // use always C locale
   SetName("DDF_IOStream");
   return Storage_VSOk; // ou Storage_VSAlreadyOpen ?
 }
@@ -128,6 +131,7 @@ Storage_Error DDF_IOStream::Open(ostream* anOStream)
   SetOpenMode(Storage_VSWrite);
   myOStream = anOStream;
   myOStream->precision(17);
+  myOStream->imbue (std::locale::classic()); // use always C locale
   SetName("DDF_IOStream");
   return Storage_VSOk; // ou Storage_VSAlreadyOpen ?
 }
@@ -336,7 +340,7 @@ void DDF_IOStream::ReadWord(TCollection_AsciiString& buffer)
   }
 
   IsEnd = Standard_False;
-  
+
   while (!IsEnd && !DDF_IOStream::IsEnd()) {
     buffer += c;
     myIStream->get(c);
@@ -635,7 +639,7 @@ Storage_Error DDF_IOStream::BeginReadInfoSection()
 {
   Storage_Error s;
   TCollection_AsciiString l;
-  Standard_Integer        len = strlen(DDF_IOStream::MagicNumber());
+  Standard_Integer        len = (Standard_Integer) strlen(DDF_IOStream::MagicNumber());
 
   // Added because of Draw:
   // It don't go to next line after reading its own header line information!
@@ -1336,7 +1340,7 @@ Storage_Error DDF_IOStream::IsGoodFileType(istream* anIStream)
 
   if (s == Storage_VSOk) {
     TCollection_AsciiString l;
-    Standard_Integer        len = strlen(DDF_IOStream::MagicNumber());
+    Standard_Integer        len = (Standard_Integer) strlen(DDF_IOStream::MagicNumber());
 
     f.ReadChar(l,len);
 

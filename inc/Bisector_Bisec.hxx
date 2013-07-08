@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,21 +47,21 @@ class Geom2d_Point;
 //!  defined by <-V1> and <-V2> in the sense indirect. <br>
 //!  if <Sense>  is  false the bisecting line is contained in the sector <br>
 //!  defined by <-V1> and <-V2> in the sense direct. <br>
+//! <br>
+//!  <Tolerance> is used to define degenerate bisector. <br>
+//!  if the bisector is an hyperbola and one of this radius is smaller <br>
+//!     than <Tolerance>, the bisector is replaced by a line or semi_line <br>
+//!     corresponding to one of hyperbola's axes. <br>
+//!  if the bisector is a parabola on the focal length is smaller than <br>
+//!     <Tolerance>, the bisector is replaced by a semi_line corresponding <br>
+//!     to the axe of symetrie of the parabola. <br>
+//!  if the bisector is an ellipse  and the minor radius is smaller than <br>
+//!     <Tolerance>, the bisector is replaced by a segment corresponding <br>
+//!     to the great axe of the ellipse. <br>
 class Bisector_Bisec  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Bisector_Bisec();

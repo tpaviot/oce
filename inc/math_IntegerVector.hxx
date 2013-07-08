@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -40,21 +43,26 @@ class math_Matrix;
 //! the declaration and cannot be changed after this declaration. <br>
 //! Example: math_IntegerVector V1(-3, 5); // an IntegerVector with <br>
 //!  range [-3..5] <br>
+//! <br>
+//! IntegerVector is copied through assignement : <br>
+//!    math_IntegerVector V2( 1, 9); <br>
+//!    .... <br>
+//!    V2 = V1; <br>
+//!    V1(1) = 2.0; // the IntegerVector V2 will not be modified. <br>
+//! <br>
+//! The Exception RangeError is raised when trying to access outside <br>
+//! the range of an IntegerVector : <br>
+//!    V1(11) = 0 // --> will raise RangeError; <br>
+//! <br>
+//! The Exception DimensionError is raised when the dimensions of two <br>
+//! IntegerVectors are not compatible : <br>
+//!    math_IntegerVector V3(1, 2); <br>
+//!    V3 = V1;    // --> will raise DimensionError; <br>
+//!    V1.Add(V3)  // --> will raise DimensionError; <br>
 class math_IntegerVector  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! contructs an IntegerVector in the range [Lower..Upper] <br>
   Standard_EXPORT   math_IntegerVector(const Standard_Integer First,const Standard_Integer Last);

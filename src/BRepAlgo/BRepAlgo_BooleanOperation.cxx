@@ -53,7 +53,7 @@
 
 
 #ifdef DEB
-Standard_IMPORT Standard_Boolean TopOpeBRepTool_GetcontextNOSEW();
+extern Standard_Boolean TopOpeBRepTool_GetcontextNOSEW();
 #endif
 
 #define Opecom(st1,st2) (((st1)==TopAbs_IN) && ((st2)==TopAbs_IN))

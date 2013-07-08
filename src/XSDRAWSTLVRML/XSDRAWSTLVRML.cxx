@@ -94,18 +94,17 @@ static Standard_Integer writestl
 	<< " shape file [ascii/binary (0/1) : 1 by default] [InParallel (0/1) : 0 by default]" << "\n";
   } else {
     TopoDS_Shape aShape = DBRep::Get(argv[1]);
-    Standard_Boolean anASCIIMode = Standard_False;
+    Standard_Boolean isASCIIMode = Standard_False;
 	Standard_Boolean isInParallel = Standard_False;
-    if (argc==4) {
-      Standard_Integer mode = atoi(argv[3]);
-      if (mode==0) anASCIIMode = Standard_True;
+    if (argc > 3) {
+      isASCIIMode = (Draw::Atoi(argv[3]) == 0);
+      if (argc > 4) {
+        isInParallel = (Draw::Atoi(argv[4]) == 1);
+        Standard::SetReentrant(isInParallel);
+      }
     }
-	if (argc==5) {
-      isInParallel = atoi(argv[4]) == 1;
-      Standard::SetReentrant(isInParallel);
-    }
-	StlAPI_Writer aWriter;
-    aWriter.ASCIIMode() = anASCIIMode;
+    StlAPI_Writer aWriter;
+    aWriter.ASCIIMode() = isASCIIMode;
     aWriter.Write (aShape, argv[2], isInParallel);
   }
   return 0;
@@ -224,9 +223,9 @@ static Standard_Integer storevrml
   }
   else {
     TopoDS_Shape shape = DBRep::Get(argv[1]);
-    Standard_Real defl = atof(argv[3]);
+    Standard_Real defl = Draw::Atof(argv[3]);
     Standard_Integer type = 1;
-    if(argc > 4) type = atoi(argv[4]);
+    if(argc > 4) type = Draw::Atoi(argv[4]);
     type = Max(0, type);
     type = Min(2, type);
 
@@ -349,8 +348,7 @@ static Standard_Integer meshdm
     Handle( MeshVS_Mesh ) aMesh = getMesh( argv[1], di );
     if( !aMesh.IsNull() )
     {
-      Standard_Integer DisplayMode = 0;
-      sscanf( argv[2], "%i", &DisplayMode );
+      Standard_Integer DisplayMode = Draw::Atoi (argv[2]);
 
       Handle( AIS_InteractiveContext ) aContext = ViewerTest::GetAISContext();
 
@@ -383,8 +381,7 @@ static Standard_Integer meshsm
     Handle( MeshVS_Mesh ) aMesh = getMesh( argv[1], di );
     if( !aMesh.IsNull() )
     {
-      Standard_Integer SelMode = 0;
-      sscanf( argv[2], "%i", &SelMode );
+      Standard_Integer SelMode = Draw::Atoi (argv[2]);
 
       Handle( AIS_InteractiveContext ) aContext = ViewerTest::GetAISContext();
 
@@ -440,10 +437,9 @@ static Standard_Integer setcolor
     Handle( MeshVS_Mesh ) aMesh = getMesh( argv[1], di );
     if( !aMesh.IsNull() )
     {
-      Standard_Real r, g, b;
-      sscanf( argv[2], "%lf", &r );
-      sscanf( argv[3], "%lf", &g );
-      sscanf( argv[4], "%lf", &b );
+      Standard_Real r = Draw::Atof (argv[2]);
+      Standard_Real g = Draw::Atof (argv[3]);
+      Standard_Real b = Draw::Atof (argv[4]);
       aMesh->GetDrawer()->SetColor( (MeshVS_DrawerAttribute)Param, Quantity_Color( r, g, b, Quantity_TOC_RGB ) );
 
       Handle( AIS_InteractiveContext ) aContext = ViewerTest::GetAISContext();
@@ -479,8 +475,7 @@ static Standard_Integer meshmat
     Handle( MeshVS_Mesh ) aMesh = getMesh( argv[1], di );
     if( !aMesh.IsNull() )
     {
-      Standard_Integer mat;
-      sscanf( argv[2], "%i", &mat );
+      Standard_Integer mat = Draw::Atoi (argv[2]);
 
       Graphic3d_MaterialAspect aMatAsp =
         (Graphic3d_MaterialAspect)(Graphic3d_NameOfMaterial)mat;
@@ -509,8 +504,7 @@ static Standard_Integer shrink
     Handle( MeshVS_Mesh ) aMesh = getMesh( argv[1], di );
     if( !aMesh.IsNull() )
     {
-      Standard_Real sh;
-      sscanf( argv[2], "%lf", &sh );
+      Standard_Real sh = Draw::Atof (argv[2]);
       aMesh->GetDrawer()->SetDouble( MeshVS_DA_ShrinkCoeff, sh );
 
       Handle( AIS_InteractiveContext ) aContext = ViewerTest::GetAISContext();
@@ -777,7 +771,7 @@ static Standard_Integer meshcolors( Draw_Interpretor& di,
         if( aMode.IsEqual("elem1") || aMode.IsEqual("elem2") || aMode.IsEqual("nodal") || aMode.IsEqual("nodaltex") || aMode.IsEqual("none") )
         {
           Handle(MeshVS_PrsBuilder) aTempBuilder;
-          Standard_Integer reflection = atoi(argv[3]);
+          Standard_Integer reflection = Draw::Atoi(argv[3]);
 
           for (int count = 0 ; count < aMesh->GetBuildersCount(); count++ ){
             aTempBuilder = Handle(MeshVS_PrsBuilder)::DownCast(aMesh->FindBuilder("MeshVS_ElementalColorPrsBuilder"));
@@ -932,13 +926,13 @@ static Standard_Integer mesh_edge_width( Draw_Interpretor& di,
       }
 
       const char* aWidthStr = argv[ 2 ];
-      if ( aWidthStr == 0 || atof( aWidthStr ) <= 0 )
+      if ( aWidthStr == 0 || Draw::Atof( aWidthStr ) <= 0 )
       {
         di << "Width must be real value more than zero" << "\n";
         return 0;
       }
 
-      double aWidth = atof( aWidthStr );
+      double aWidth = Draw::Atof( aWidthStr );
 
       Handle(AIS_InteractiveContext) anIC = ViewerTest::GetAISContext();
       if ( anIC.IsNull() )

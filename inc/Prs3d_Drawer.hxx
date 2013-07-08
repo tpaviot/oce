@@ -64,6 +64,9 @@
 #ifndef _Handle_Prs3d_RadiusAspect_HeaderFile
 #include <Handle_Prs3d_RadiusAspect.hxx>
 #endif
+#ifndef _Prs3d_TypeOfHLR_HeaderFile
+#include <Prs3d_TypeOfHLR.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -151,6 +154,11 @@ public:
   Standard_EXPORT   virtual  void SetIsoOnPlane(const Standard_Boolean OnOff) ;
   //! Returns True if the drawing of isos on planes is enabled. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsoOnPlane() const;
+  //! Sets the type of HLR algorithm <br>
+//!          used by drawer's interactive objects <br>
+  Standard_EXPORT   virtual  void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR) ;
+  //! Gets the myTypeOfHLR value <br>
+  Standard_EXPORT   virtual  Prs3d_TypeOfHLR TypeOfHLR() const;
   //! Defines the attributes which are used when drawing an <br>
 //!          U isoparametric curve of a face. Defines the number <br>
 //!          of U isoparametric curves to be drawn for a single face. <br>
@@ -356,6 +364,17 @@ public:
   Standard_EXPORT   virtual  Handle_Prs3d_LineAspect SectionAspect() ;
   //! Sets the parameter anAspect for display attributes of sections. <br>
   Standard_EXPORT   virtual  void SetSectionAspect(const Handle(Prs3d_LineAspect)& anAspect) ;
+  //! Enables or disables face boundary drawing for shading presentations. <br>
+//! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
+//! drawn or not. <br>
+  Standard_EXPORT   virtual  void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled) ;
+  //! Checks whether the face boundary drawing is enabled or not. <br>
+  Standard_EXPORT   virtual  Standard_Boolean IsFaceBoundaryDraw() const;
+  //! Sets line aspect for face boundaries. <br>
+//! theAspect is the line aspect that determines the look of the face boundaries. <br>
+  Standard_EXPORT   virtual  void SetFaceBoundaryAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
+  //! Returns line aspect of face boundaries. <br>
+  Standard_EXPORT   virtual  Handle_Prs3d_LineAspect FaceBoundaryAspect() ;
 
 
 
@@ -400,6 +419,9 @@ Handle_Prs3d_LengthAspect myLengthAspect;
 Handle_Prs3d_AngleAspect myAngleAspect;
 Handle_Prs3d_RadiusAspect myRadiusAspect;
 Handle_Prs3d_LineAspect mySectionAspect;
+Standard_Boolean myFaceBoundaryDraw;
+Handle_Prs3d_LineAspect myFaceBoundaryAspect;
+Prs3d_TypeOfHLR myTypeOfHLR;
 
 
 private: 

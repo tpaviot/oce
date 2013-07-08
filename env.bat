@@ -5,17 +5,17 @@ rem - first argument specifies version of Visual Studio (vc8, vc9, or vc10),
 rem - second argument specifies architecture (win32 or win64),
 rem - third argument specifies build mode (Debug or Release)
 rem Default options are:
-rem   vc9 win32 Release
+rem   vc8 win32 Release
 
 set "SCRIPTROOT=%~dp0"
 set "SCRIPTROOT=%SCRIPTROOT:~0,-1%"
-set "CASROOT="
+set "CASROOT=%~dp0"
 if not ["%CASROOT%"] == [""] if exist "%SCRIPTROOT%\%CASROOT%" set "CASROOT=%SCRIPTROOT%\%CASROOT%"
 if     ["%CASROOT%"] == [""] set "CASROOT=%SCRIPTROOT%"
 
 rem ----- Reset values to defaults -----
 set "CASDEB="
-set "VCVER=vc9"
+set "VCVER=vc8"
 set "ARCH=32"
 set "VCVARS="
 set "HAVE_TBB=false"
@@ -28,8 +28,8 @@ set "CSF_OPT_BIN32="
 set "CSF_OPT_BIN64="
 
 rem ----- Load local settings -----
-if exist %~dp0custom.bat (
-  call %~dp0custom.bat %1 %2 %3 %4 %5
+if exist "%~dp0custom.bat" (
+  call "%~dp0custom.bat" %1 %2 %3 %4 %5
 )
 
 rem ----- Read script arguments (override local settings) -----
@@ -53,7 +53,6 @@ set "CSF_OPT_BIN64=%CSF_OPT_BIN64%;%CASROOT%\win64\%VCVER%\bin"
 rem ----- Optional 3rd-parties should be enabled by HAVE macros -----
 set "CSF_OPT_CMPL="
 set "PRODUCTS_DEFINES="
-set "CSF_DEFINES="
 if ["%HAVE_TBB%"]       == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_TBB"
 if ["%HAVE_GL2PS%"]     == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_GL2PS"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_FREEIMAGE"
@@ -106,7 +105,6 @@ if not ["%CASDEB%"] == [""] if ["%ARCH%"] == ["32"] set "PATH=%CSF_OPT_BIN32D%;%
 if not ["%CASDEB%"] == [""] if ["%ARCH%"] == ["64"] set "PATH=%CSF_OPT_BIN64D%;%PATH%"
 
 rem ----- Set envoronment variables used by OCCT -----
-set "CSF_MDTVFontDirectory=%CASROOT%\src\FontMFT"
 set CSF_LANGUAGE=us
 set MMGT_CLEAR=1
 set CSF_EXCEPTION_PROMPT=1

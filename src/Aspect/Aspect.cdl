@@ -52,8 +52,6 @@
 --   Add GDM_None in enum GridDrawMode.
 -- Modified: 25-JAN-00 : VKH
 --   Add class PixMap
--- Modified: 26-JAN-00 : EUG/GG G003
---   Add enum TypeOfDegenerateModel
 -- Modified: 23-FEB-00 : GG
 --   Returns format name in ValuesOfFOSP() internal method.
 -- Modified: 27-03-02 RIC120302 GG Add imported class 
@@ -86,7 +84,6 @@ uses
         Quantity,
         TColQuantity,
         Resource,
-        Viewer,
         MMgt
 
 is
@@ -195,6 +192,9 @@ is
         exception GraphicDeviceDefinitionError inherits OutOfRange;
         ---Category: The exceptions
 
+        exception DisplayConnectionDefinitionError inherits OutOfRange;
+        ---Category: The exceptions
+
         exception LineStyleDefinitionError inherits OutOfRange;
         ---Category: Exceptions
 
@@ -294,9 +294,6 @@ is
         ---Purpose: Creates and controles all identifiers.
         ---Category: Classes
 
-        deferred class GraphicDriver;
-        ---Purpose: Defines a graphic driver (3d library)
-
         class FontStyle;
         ---Purpose: Defines a Font Style
         ---Category: The classes
@@ -349,15 +346,6 @@ is
         ---Purpose: Defines a window.
         ---Category: Classes
 
-        deferred class PixMap;
-        ---Purpose: Defines a pixmap(bitmap)
-        ---Category: Classes
-        
-        deferred class GraphicDevice;
-        ---Purpose: Defines a physical graphic device allowing to
-        --          shares graphical ressources.
-        ---Category: Classes
-
         deferred class Driver;
         ---Purpose: Defines a virtual driver.
         ---Category: Classes
@@ -372,6 +360,12 @@ is
 
         deferred class ColorScale;
         ---Purpose: Defines a color scale for viewer.
+
+        imported DisplayConnection;
+        ---Purpose: Creates and provides connection with X server.
+
+        imported DisplayConnection_Handle;
+        ---Purpose: Handle for DisplayConnection;
 
         -------------------------
         -- Category: Enumerations
@@ -794,18 +788,6 @@ is
                                          TOFM_BACK_SIDE,
                                          TOFM_FRONT_SIDE
         end TypeOfFacingModel;
-
-        enumeration TypeOfDegenerateModel is
-         TDM_NONE,
-         TDM_TINY,
-         TDM_WIREFRAME,
-         TDM_MARKER,
-         TDM_BBOX,
-         TDM_AUTO
-        end TypeOfDegenerateModel;
-        ---Purpose: Defines type of degeneration model of the
-        --          graphic structure.
-        ---Category: The enumerations
 
         enumeration FillMethod is
           FM_NONE,

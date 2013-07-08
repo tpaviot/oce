@@ -58,6 +58,9 @@
 #ifndef _BRepMesh_BaseAllocator_HeaderFile
 #include <BRepMesh_BaseAllocator.hxx>
 #endif
+#ifndef _TopTools_MutexForShapeProvider_HeaderFile
+#include <TopTools_MutexForShapeProvider.hxx>
+#endif
 #ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
 #endif
@@ -69,6 +72,9 @@
 #endif
 #ifndef _BRepMesh_ClassifierPtr_HeaderFile
 #include <BRepMesh_ClassifierPtr.hxx>
+#endif
+#ifndef _TopAbs_ShapeEnum_HeaderFile
+#include <TopAbs_ShapeEnum.hxx>
 #endif
 #ifndef _BRepMesh_MapOfInteger_HeaderFile
 #include <BRepMesh_MapOfInteger.hxx>
@@ -143,6 +149,13 @@ public:
   
 //! Returns the multi-threading usage flag. <br>
   Standard_EXPORT     Standard_Boolean IsParallel() const;
+  
+//! Creates mutexes for each sub-shape of type theType in theShape. <br>
+//! Used to avoid data races. <br>
+  Standard_EXPORT     void CreateMutexesForSubShapes(const TopoDS_Shape& theShape,const TopAbs_ShapeEnum theType) ;
+  
+//! Removes all created mutexes <br>
+  Standard_EXPORT     void RemoveAllMutexes() ;
   //! Gives the number of built triangles. <br>
   Standard_EXPORT     Standard_Integer NbTriangles() const;
   //! Gives the triangle of <Index>. <br>
@@ -234,6 +247,7 @@ BRepMesh_Status myFacestate;
 TopTools_DataMapOfShapeReal myMapdefle;
 TopTools_ListOfShape myNottriangulated;
 BRepMesh_BaseAllocator myAllocator;
+TopTools_MutexForShapeProvider myMutexProvider;
 
 
 };

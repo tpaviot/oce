@@ -22,17 +22,18 @@
 #include <oce-config.h>
 #endif
 #include <QABugs.hxx>
-#include<Draw_Interpretor.hxx>
-#include<TopLoc_Location.hxx>
-#include<TopoDS_Face.hxx>
-#include<TopoDS.hxx>
-#include<DBRep.hxx>
-#include<Geom_Surface.hxx>
-#include<BRep_Tool.hxx>
-#include<GeomInt_IntSS.hxx>
-#include<BRepBuilderAPI_MakeEdge.hxx>
+#include <Draw.hxx>
+#include <Draw_Interpretor.hxx>
+#include <TopLoc_Location.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS.hxx>
+#include <DBRep.hxx>
+#include <Geom_Surface.hxx>
+#include <BRep_Tool.hxx>
+#include <GeomInt_IntSS.hxx>
+#include <BRepBuilderAPI_MakeEdge.hxx>
 #include <Standard_ErrorHandler.hxx>
-#include<tcl.h>
+#include <tcl.h>
 
 static int BUC60623(Draw_Interpretor& di, Standard_Integer argc, const char ** a)
 {
@@ -135,31 +136,24 @@ static int BUC60614(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 #endif
 
 static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** argv) {
-//  char file1[100];
   gp_Pnt2d uvSurf;
-  double U,V;
   TopAbs_State state;
   
-  if(argc < 2){
-    printf("Usage: %s  draw_format_face\n [name] [interactive (0|1)]",argv[0]);
+  if (argc == 3) {
+    // BUC60609 shape name
+  } else if ( argc == 5 ) {
+    // BUC60609 shape name U V
+  } else {
+    di << "Usage : "<< argv[0] << " shape name [U V]" << "\n";
     return(-1);
   }
   
-  // MKV 30.03.05
-#if ((TCL_MAJOR_VERSION > 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION >= 4))) && !defined(USE_NON_CONST)
-  const Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#else
-  Standard_Character *DD = Tcl_GetVar(di.Interp(),"Draw_DataDir",TCL_GLOBAL_ONLY);
-#endif
-  
-  Standard_Character  *file1 = new Standard_Character [strlen(DD)+strlen(argv[1])+2];
-  sprintf(file1,"%s/%s",DD,argv[1]);
+  TCollection_AsciiString  aFilePath(argv[1]); 
   
   filebuf fic;
   istream in(&fic);
-  if (!fic.open(file1,ios::in)) {
-    di << "Cannot open file for reading : " << file1 << "\n";
-    delete file1;
+  if (!fic.open(aFilePath.ToCString(),ios::in)) {
+    di << "Cannot open file for reading : " << aFilePath << "\n";
     return(-1);
   }
 
@@ -173,8 +167,7 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       S.Read(in);
       S.Read(theShape,in);
     }else{
-      di << "Wrong entity type in " << file1 << "\n";
-      delete file1;
+      di << "Wrong entity type in " << aFilePath << "\n";
       return(-1);
     }
   }
@@ -183,12 +176,6 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 
   if(argc > 2){
     DBRep::Set(argv[2],face);
-  }
-
-  Standard_Boolean inter=Standard_False ;
-  
-  if(argc > 3){
-    inter= (atof(argv[3]) == 0) ? Standard_False : Standard_True ;
   }
 
   Standard_Real faceUMin,faceUMax,faceVMin,faceVMax;
@@ -215,62 +202,35 @@ static int BUC60609(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   // Hence IT WOULD BE USEFUL IF TopOpeBRep_PointClassifier COULD
   // COPE WITH PERIODIC SURFACES, i.e. U,V +-Period giving same result.
   // *************************************************
-  if(inter && (argc != 6)) {
-//    while(cin){
-      di << "Input U:   " << "\n";
-//      cin >> U;
-//      if(!cin) {
-	delete file1;
-	return(0);
-//      }
-      di << "Input V:   " << "\n";
-//      cin >> V;
-//      if(!cin) {
-	delete file1;
-	return(0);
-//      }
-      
-      uvSurf = gp_Pnt2d(U, V);
-      
-      //gp_Pnt2d uvSurf(0.14,5.1);  // outside!!!
-      //gp_Pnt2d uvSurf2(1.28,5.1); // inside
-    
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << U << " V=" << V << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << U << " V=" << V << "  classified OUTSIDE" << "\n";
-      }
-//    }
-  } else {
-    if(argc != 6) {
-      uvSurf = gp_Pnt2d(0.14,5.1);
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << 0.14 << " V=" << 5.1 << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << 0.14 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
-      }
 
-      uvSurf = gp_Pnt2d(1.28,5.1);
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << 1.28 << " V=" << 5.1 << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << 1.28 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
-      }
-    } else {
-      uvSurf = gp_Pnt2d(atof(argv[4]),atof(argv[5]));
-      state = PClass.Classify(face,uvSurf,Precision::PConfusion());
-      if(state == TopAbs_IN || state == TopAbs_ON){
-	di << "U=" << atof(argv[4]) << " V=" << atof(argv[5]) << "  classified INSIDE" << "\n";
-      }else{
-	di << "U=" << atof(argv[4]) << " V=" << atof(argv[5]) << "  classified OUTSIDE" << "\n";
-      }
+  if (argc == 3) {
+    uvSurf = gp_Pnt2d(0.14,5.1);
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << 0.14 << " V=" << 5.1 << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << 0.14 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
+    }
+
+    uvSurf = gp_Pnt2d(1.28,5.1);
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << 1.28 << " V=" << 5.1 << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << 1.28 << " V=" << 5.1 << "  classified OUTSIDE" << "\n";
+    }
+  } else {
+    uvSurf = gp_Pnt2d(Draw::Atof(argv[3]),Draw::Atof(argv[4]));
+    state = PClass.Classify(face,uvSurf,Precision::PConfusion());
+    if(state == TopAbs_IN || state == TopAbs_ON){
+      di << "U=" << Draw::Atof(argv[3]) << " V=" << Draw::Atof(argv[4]) << "  classified INSIDE" << "\n";
+    }else{
+      di << "U=" << Draw::Atof(argv[3]) << " V=" << Draw::Atof(argv[4]) << "  classified OUTSIDE" << "\n";
     }
   }
   return 0;
 }
+
 
 #if ! defined(WNT)
 void stringerror(int state)
@@ -376,7 +336,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 6) {
-    Standard_Integer IsB = atoi(argv[5]);
+    Standard_Integer IsB = Draw::Atoi(argv[5]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def04)
@@ -416,13 +376,13 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
 #endif
 
   Standard_Character  *filename = new Standard_Character [strlen(DD)+17];
-  sprintf(filename,"%s/%s.topo",DD,argv[1]);
+  Sprintf(filename,"%s/%s.topo",DD,argv[1]);
 
   filebuf fic;
   istream in(&fic);
   if (!fic.open(filename,ios::in)) {
     di << "Cannot open file for reading : " << filename << "\n";
-    delete filename;
+    delete [] filename;
     return -1;
   }
   
@@ -470,7 +430,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       Sec.Build();
       if(!Sec.IsDone()){
 	di << "Error performing intersection: not done." << "\n";
-	delete filename;
+	delete [] filename;
 	return -1;
       }
       res = Sec.Shape();
@@ -480,7 +440,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
       Sec.Build();
       if(!Sec.IsDone()){
 	di << "Error performing intersection: not done." << "\n";
-	delete filename;
+	delete [] filename;
 	return -1;
       }
       res = Sec.Shape();
@@ -489,7 +449,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   }catch(Standard_Failure){
     Handle(Standard_Failure) error = Standard_Failure::Caught();
     di << "Error performing intersection: not done." << "\n";
-    delete filename;
+    delete [] filename;
     return -1;
   }
   
@@ -506,7 +466,7 @@ static int BUC60585(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   
   di << "Done" << "\n";
 
-  delete filename;
+  delete [] filename;
   
   return 0;
 }
@@ -538,24 +498,24 @@ static int BUC60547(Draw_Interpretor& di, Standard_Integer argc, const char ** a
  
   TopoDS_Shape free_1,free_2,free_3,free_4;
   BRep_Builder B;
-  sprintf(FileName,"%s/%s",DD,"buc60547a.brep");
+  Sprintf(FileName,"%s/%s",DD,"buc60547a.brep");
   BRepTools::Read(free_1,FileName,B);
-  sprintf(FileName,"%s/%s",DD,"buc60547b.brep");
+  Sprintf(FileName,"%s/%s",DD,"buc60547b.brep");
   BRepTools::Read(free_2,FileName,B);
-  sprintf(FileName,"%s/%s",DD,"buc60547c.brep");
+  Sprintf(FileName,"%s/%s",DD,"buc60547c.brep");
   BRepTools::Read(free_3,FileName,B);
-  sprintf(FileName,"%s/%s",DD,"buc60547d.brep");
+  Sprintf(FileName,"%s/%s",DD,"buc60547d.brep");
   BRepTools::Read(free_4,FileName,B);
-  sprintf(Ch,"%s_%i",argv[1],1);
+  Sprintf(Ch,"%s_%i",argv[1],1);
   DBRep::Set(Ch,free_1);
   di << Ch << " ";
-  sprintf(Ch,"%s_%i",argv[1],2);
+  Sprintf(Ch,"%s_%i",argv[1],2);
   DBRep::Set(Ch,free_2);
   di << Ch << " ";
-  sprintf(Ch,"%s_%i",argv[1],3);
+  Sprintf(Ch,"%s_%i",argv[1],3);
   DBRep::Set(Ch,free_3);
   di << Ch << " ";
-  sprintf(Ch,"%s_%i",argv[1],4);
+  Sprintf(Ch,"%s_%i",argv[1],4);
   DBRep::Set(Ch,free_4);
   di << Ch << " ";
   
@@ -581,19 +541,19 @@ static int BUC60547(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   bui.Add(Com,free_3); 
   bui.Add(Com,free_4); 
 
-  sprintf(Ch,"%s_%c",argv[1],'c');
+  Sprintf(Ch,"%s_%c",argv[1],'c');
   DBRep::Set(Ch,Com);
   di << Ch << " ";
 
   Handle(AIS_Shape) SC = new AIS_Shape(Com);
   myAISContext->Display(SC); // nothing on the screen If I save the compound :
 
-  sprintf(FileName,"%s/%s",DD,"free.brep");
+  Sprintf(FileName,"%s/%s",DD,"free.brep");
 
   BRepTools::Write(Com,FileName); 
 
-  delete Ch;
-  delete FileName;
+  delete [] Ch;
+  delete [] FileName;
   
   return 0;
 }
@@ -623,9 +583,9 @@ static Standard_Integer BUC60632(Draw_Interpretor& di, Standard_Integer /*n*/, c
   
   Handle(Geom_Plane) Plane1 = new Geom_Plane(gp_Pnt(0,0,0),gp_Dir(0,0,1)); 
   TCollection_ExtendedString Ext1("Dim1"); 
-  Handle(AIS_LengthDimension) Dim1 = new AIS_LengthDimension(V1,V2,Plane1,atof(a[2]),Ext1); 
+  Handle(AIS_LengthDimension) Dim1 = new AIS_LengthDimension(V1,V2,Plane1,Draw::Atof(a[2]),Ext1); 
   
-  myAIScontext->SetDisplayMode(Dim1, atof(a[1]));
+  myAIScontext->SetDisplayMode(Dim1, Draw::Atoi(a[1]));
   myAIScontext->Display(Dim1);
   return 0;
 }
@@ -673,10 +633,10 @@ Standard_Integer ksection(Draw_Interpretor& di, Standard_Integer n, const char *
   TopoDS_Shape s1 = DBRep::Get(a[2],TopAbs_SHELL);
   TopoDS_Shape s2 = DBRep::Get(a[3],TopAbs_SHELL);
   if (s1.IsNull() || s2.IsNull()) return 1;
-  NbPntMax=atoi(a[4]);
-  Toler3d=atof(a[5]);
-  Toler2d=atof(a[6]);
-  RelativeTol=atoi(a[7]);
+  NbPntMax=Draw::Atoi(a[4]);
+  Toler3d=Draw::Atof(a[5]);
+  Toler2d=Draw::Atof(a[6]);
+  RelativeTol=Draw::Atoi(a[7]);
 
   di << "BRepAlgo_BooleanOperations myalgo" << "\n";
   BRepAlgo_BooleanOperations myalgo;
@@ -734,7 +694,7 @@ static Standard_Integer BUC60698(Draw_Interpretor& di, Standard_Integer argc, co
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 2) {
-    Standard_Integer IsB = atoi(a[1]);
+    Standard_Integer IsB = Draw::Atoi(a[1]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def01)
@@ -860,7 +820,7 @@ static Standard_Integer GER61394(Draw_Interpretor& di, Standard_Integer argc, co
   }
   Handle(V3d_View) myV3dView = ViewerTest::CurrentView();
   
-  if((argc == 2) && (atof(argv[1]) == 0))
+  if((argc == 2) && (Draw::Atof(argv[1]) == 0))
     myV3dView->SetAntialiasingOff();
   else
     myV3dView->SetAntialiasingOn();
@@ -940,9 +900,9 @@ switch (argc){
 //   Change the background color of the view with the color values <r>,<g>,<b> 
 //   A color value must be defined in the space [0.,1.] 
 
-     Standard_Real QuantityOfRed   = atoi(argv[1]);
-     Standard_Real QuantityOfGreen = atoi(argv[2]);
-     Standard_Real QuantityOfBlue  = atoi(argv[3]);
+     Standard_Real QuantityOfRed   = Draw::Atoi(argv[1]);
+     Standard_Real QuantityOfGreen = Draw::Atoi(argv[2]);
+     Standard_Real QuantityOfBlue  = Draw::Atoi(argv[3]);
      myV3dView->SetBackgroundColor(Quantity_TOC_RGB,QuantityOfRed,QuantityOfGreen,QuantityOfBlue);
      myV3dView->Redraw();
    break;
@@ -956,9 +916,9 @@ switch (argc){
 //  change the object color with RGB values. 
 
 
-    Standard_Real QuantityOfRed   = atof(argv[2]);
-    Standard_Real QuantityOfGreen = atof(argv[3]);
-    Standard_Real QuantityOfBlue  = atof(argv[4]);
+    Standard_Real QuantityOfRed   = Draw::Atof(argv[2]);
+    Standard_Real QuantityOfGreen = Draw::Atof(argv[3]);
+    Standard_Real QuantityOfBlue  = Draw::Atof(argv[4]);
 
     TopoDS_Shape aShape = DBRep::Get(argv[1]);
     Handle(AIS_InteractiveObject) myShape =  new AIS_Shape (aShape);
@@ -985,16 +945,16 @@ static Standard_Integer BUC60726 (Draw_Interpretor& di,Standard_Integer argc, co
     di << "Usage : " << argv[0] << " 0/1" << "\n";
   }
 
-  if(atoi(argv[1]) == 0) {
+  if(Draw::Atoi(argv[1]) == 0) {
     myAISContext->CloseAllContexts();
     BRepPrimAPI_MakeBox B(gp_Pnt(-400.,-400.,-100.),200.,150.,100.);
     Handle(AIS_Shape) aBox = new AIS_Shape(B.Shape());
     myAISContext->Display(aBox);
-  } else if(atoi(argv[1]) == 1) {
+  } else if(Draw::Atoi(argv[1]) == 1) {
     myAISContext->CloseAllContexts();
     myAISContext->OpenLocalContext();
     myAISContext->ActivateStandardMode(TopAbs_EDGE);
-  } else if(atoi(argv[1]) == 2) {
+  } else if(Draw::Atoi(argv[1]) == 2) {
     myAISContext->CloseAllContexts();
     myAISContext->OpenLocalContext();
     myAISContext->ActivateStandardMode(TopAbs_FACE);
@@ -1043,11 +1003,11 @@ static Standard_Integer BUC60724(Draw_Interpretor& di, Standard_Integer /*argc*/
 {
   TCollection_AsciiString as1("");
   TCollection_AsciiString as2('\0');
-  if((as1.ToCString()!=NULL) || (as1.ToCString() != ""))
-    di << "Faulty : the first string is not zero string : " << as1.ToCString() << "\n";
+  if(as1.ToCString() == NULL || as1.Length() != 0 || as1.ToCString()[0] != '\0')
+    di << "Error : the first string is not zero string : " << as1.ToCString() << "\n";
 
-  if((as2.ToCString()!=NULL) || (as2.ToCString() != ""))
-    di << "Faulty : the second string is not zero string : " << as2.ToCString() << "\n";
+  if(as2.ToCString() == NULL || as2.Length() != 0 || as2.ToCString()[0] != '\0')
+    di << "Error : the second string is not zero string : " << as2.ToCString() << "\n";
   
   return 0;
 }
@@ -1106,7 +1066,7 @@ static Standard_Integer BUC60792(Draw_Interpretor& di, Standard_Integer /*argc*/
       gccc = new Geom2d_Circle(ccc); 
       TopoDS_Shape sh = BRepBuilderAPI_MakeEdge(gccc, pln).Shape();
       Standard_Character aStr[5];
-      sprintf(aStr,"sh%d",i);
+      Sprintf(aStr,"sh%d",i);
       DBRep::Set(aStr,sh);
       Handle_AIS_Shape ais = new AIS_Shape(sh); 
       if( i ==1 ) 
@@ -1237,11 +1197,13 @@ static Standard_Integer BUC60811(Draw_Interpretor& di, Standard_Integer argc, co
   Ex.Init(FP, TopAbs_VERTEX); 
   TopoDS_Vertex v1 = TopoDS::Vertex(Ex.Current()); 
   fillet.AddFillet(v1, 20); 
-  printf("\nError is %d ", fillet.Status()); 
+  di << "\n" << "Error is " << fillet.Status() << "\n";
+//  printf("\nError is %d ", fillet.Status()); 
   Ex.Next(); 
   TopoDS_Vertex V2 = TopoDS::Vertex(Ex.Current()); 
   fillet.AddFillet(V2, 20); 
-  printf("\nError is %d ", fillet.Status());
+  di << "\n" << "Error is " << fillet.Status() << "\n";
+//  printf("\nError is %d ", fillet.Status());
   fillet.Build(); 
   FP1 = fillet.Shape(); 
   ais2 = new AIS_Shape( FP1 ); 
@@ -1307,7 +1269,7 @@ static int OCC10006(Draw_Interpretor& di, Standard_Integer argc, const char ** a
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 2) {
-    Standard_Integer IsB = atoi(argv[1]);
+    Standard_Integer IsB = Draw::Atoi(argv[1]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def01)
@@ -1385,10 +1347,9 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
   }
 
   gp_Ax2  Cone_Ax;                                                                
-  double R1=8, R2=16, H1=20, H2=40, angle;                                       
+  double R1=8, R2=16;                                       
   gp_Pnt P0(0,0,0),                                                              
   P1(0,0,20), P2(0,0,45);                                                        
-  angle = 2*M_PI;                                                                  
   Handle(Geom_RectangularTrimmedSurface) S = GC_MakeTrimmedCone (P1, P2, R1, R2).Value();
   TopoDS_Shape myshape = BRepBuilderAPI_MakeFace(S, Precision::Confusion()).Shape();
   Handle(AIS_Shape) ais1 = new AIS_Shape(myshape);
@@ -1403,7 +1364,6 @@ static Standard_Integer BUC60856(Draw_Interpretor& di, Standard_Integer /*argc*/
   return 0;
 }
 
-#if ! defined(WNT)
 //#include <fstream.h>
 #ifdef OCE_HAVE_FSTREAM
 # include <fstream>
@@ -1419,7 +1379,6 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
 { 
   char line[256];
   char X[30], Y[30];
-  int fr;
   TopoDS_Vertex V1,V2;
   TopoDS_Edge Edge;
   TopoDS_Wire Wire;
@@ -1437,16 +1396,16 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
 
   file.getline(line,80);
   for(int i=0;i<30;i++) X[i]=Y[i]=0;
-  fr = sscanf(line,"%20c%20c",&X,&Y);
-  V1 = BRepBuilderAPI_MakeVertex(gp_Pnt(atof(X),atof(Y),0.0));
+  sscanf(line,"%20c%20c",&X,&Y);
+  V1 = BRepBuilderAPI_MakeVertex(gp_Pnt(Draw::Atof(X),Draw::Atof(Y),0.0));
 
   for(;;)
     {
       file.getline(line,80);
       if (!file) break;
 	  for(int i=0;i<30;i++) X[i]=Y[i]=0;
-	  fr = sscanf(line,"%20c%20c",&X,&Y);
-	  V2 = BRepBuilderAPI_MakeVertex(gp_Pnt(atof(X),atof(Y),0.0));
+	  sscanf(line,"%20c%20c",&X,&Y);
+	  V2 = BRepBuilderAPI_MakeVertex(gp_Pnt(Draw::Atof(X),Draw::Atof(Y),0.0));
 	  Edge = BRepBuilderAPI_MakeEdge(V1,V2);
 	  WB.Add(Edge);
 	  V1=V2;
@@ -1459,7 +1418,6 @@ static Standard_Integer coordload (Draw_Interpretor& di, Standard_Integer argc, 
   DBRep::Set (argv[1],Face);
   return 0;
 }
-#endif
 
 static Standard_Integer TestMem (Draw_Interpretor& /*di*/,
 				 Standard_Integer /*nb*/, 
@@ -1485,7 +1443,7 @@ static Standard_Integer BUC60876_ (Draw_Interpretor& di,
   TopoDS_Shape aShape = DBRep::Get(argv[1]);
   Handle(AIS_InteractiveObject) anIO = new AIS_Shape(aShape);
 //  Handle(AIS_InteractiveObject) anIOa = ViewerTest::GetAISShapeFromName(argv[1]);
-  anIO->SetHilightMode((argc == 3) ? atoi(argv[2]) : 1);
+  anIO->SetHilightMode((argc == 3) ? Draw::Atoi(argv[2]) : 1);
   aContext->Display(anIO);
   return 0;
 }
@@ -1518,7 +1476,7 @@ static int TestCMD(Draw_Interpretor& di, Standard_Integer argc, const char ** ar
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 2) {
-    Standard_Integer IsB = atoi(argv[1]);
+    Standard_Integer IsB = Draw::Atoi(argv[1]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def01)
@@ -1617,7 +1575,7 @@ static Standard_Integer statface (Draw_Interpretor& di,Standard_Integer /*argc*/
   Handle(Dico_DictionaryOfInteger) aDico = new Dico_DictionaryOfInteger();
   Handle(TColStd_HSequenceOfAsciiString) aSequence = new TColStd_HSequenceOfAsciiString;
   Standard_CString aString;
-  Standard_Integer i=1,j=1,k=1,l=1,aa=1;
+  Standard_Integer i=1,j=1,l=1,aa=1;
   TopExp_Explorer expl;
   Standard_Real f3d,l3d;
   for(expl.Init(aShape,TopAbs_FACE);expl.More();expl.Next())
@@ -1711,7 +1669,7 @@ static Standard_Integer BUC60841(Draw_Interpretor& di, Standard_Integer argc, co
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 2) {
-    Standard_Integer IsB = atoi(argv[1]);
+    Standard_Integer IsB = Draw::Atoi(argv[1]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def01)
@@ -2122,7 +2080,7 @@ static int AISWidth(Draw_Interpretor& di, Standard_Integer argc, const char ** a
     Handle(TPrsStd_AISPresentation) prs;
     if(L.FindAttribute( TPrsStd_AISPresentation::GetID(), prs) ) {   
       if( argc == 4 ) {
-        prs->SetWidth(atof(argv[3]));
+        prs->SetWidth(Draw::Atof(argv[3]));
         TPrsStd_AISViewer::Update(L);
       }
       else {
@@ -2189,7 +2147,7 @@ static Standard_Integer BUC60951_(Draw_Interpretor& di, Standard_Integer argc, c
   }
   Standard_Boolean IsBRepAlgoAPI = Standard_True;
   if (argc == 3) {
-    Standard_Integer IsB = atoi(a[2]);
+    Standard_Integer IsB = Draw::Atoi(a[2]);
     if (IsB != 1) {
       IsBRepAlgoAPI = Standard_False;
 #if ! defined(BRepAlgo_def01)
@@ -2259,7 +2217,7 @@ void QABugs::Commands_3(Draw_Interpretor& theCommands) {
   theCommands.Add("BUC60623","BUC60623 result Shape1 Shape2",__FILE__,BUC60623,group);
   theCommands.Add("BUC60569","BUC60569 shape",__FILE__,BUC60569,group);
   theCommands.Add("BUC60614","BUC60614 shape",__FILE__,BUC60614,group);
-  theCommands.Add("BUC60609","BUC60609 shape [name] [interactive (0|1)]",__FILE__,BUC60609,group);
+  theCommands.Add("BUC60609","BUC60609 shape name [U V]",__FILE__,BUC60609,group);
 #if ! defined(WNT)
   theCommands.Add("UKI61075","UKI61075",__FILE__,UKI61075,group);
 #endif
@@ -2293,9 +2251,7 @@ void QABugs::Commands_3(Draw_Interpretor& theCommands) {
 
   theCommands.Add("BUC60856","BUC60856",__FILE__,BUC60856,group);
 
-#if ! defined(WNT)
   theCommands.Add("coordload","load coord from file",__FILE__,coordload);
-#endif
 
   theCommands.Add("TestMem","TestMem",__FILE__,TestMem,group);
   theCommands.Add("BUC60945","BUC60945",__FILE__,TestMem,group);

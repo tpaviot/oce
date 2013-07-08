@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -31,6 +34,7 @@
 class XSControl_WorkSession;
 class TDocStd_Document;
 class TCollection_AsciiString;
+class TDF_LabelSequence;
 class TopoDS_Shape;
 class XCAFPrs_DataMapOfShapeStyle;
 class XCAFPrs_DataMapOfStyleTransient;
@@ -60,18 +64,7 @@ class XCAFPrs_Style;
 class IGESCAFControl_Writer  : public IGESControl_Writer {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Creates a writer with an empty <br>
 //! IGES model and sets ColorMode, LayerMode and NameMode to Standard_True. <br>
@@ -106,15 +99,18 @@ public:
 
 protected:
 
+  //! Transfers labels to a IGES model <br>
+//!          Returns True if translation is OK <br>
+  Standard_EXPORT     Standard_Boolean Transfer(const TDF_LabelSequence& labels) ;
   //! Reads colors from DECAF document and assigns them <br>
 //!          to corresponding IGES entities <br>
-  Standard_EXPORT     Standard_Boolean WriteAttributes(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteAttributes(const TDF_LabelSequence& labels) ;
   //! Reads layers from DECAF document and assigns them <br>
 //!          to corresponding IGES entities <br>
-  Standard_EXPORT     Standard_Boolean WriteLayers(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteLayers(const TDF_LabelSequence& labels) ;
   //! Recursivile iterates on subshapes and assign names <br>
 //!          to IGES entity <br>
-  Standard_EXPORT     Standard_Boolean WriteNames(const Handle(TDocStd_Document)& doc) ;
+  Standard_EXPORT     Standard_Boolean WriteNames(const TDF_LabelSequence& labels) ;
 
 
 

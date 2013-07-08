@@ -43,20 +43,14 @@
 #ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
 #endif
-#ifndef _Handle_PrsMgr_PresentationManager2d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager2d.hxx>
-#endif
-#ifndef _Handle_Graphic2d_GraphicObject_HeaderFile
-#include <Handle_Graphic2d_GraphicObject.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
 #ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
 #include <Handle_PrsMgr_PresentationManager3d.hxx>
 #endif
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
+#endif
+#ifndef _Standard_Integer_HeaderFile
+#include <Standard_Integer.hxx>
 #endif
 #ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
@@ -78,8 +72,6 @@ class PrsMgr_PresentationManager;
 class Graphic3d_Structure;
 class Graphic3d_DataStructureManager;
 class Geom_Transformation;
-class PrsMgr_PresentationManager2d;
-class Graphic2d_GraphicObject;
 class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
@@ -90,7 +82,7 @@ class TColStd_ListOfInteger;
 class TopLoc_Location;
 
 
-//! A framework to supply the Graphic2d or Graphic3d <br>
+//! A framework to supply the Graphic3d <br>
 //! structure of the object to be presented. On the first <br>
 //! display request, this structure is created by calling the <br>
 //! appropriate algorithm and retaining this frameworkfor <br>
@@ -187,13 +179,6 @@ protected:
 
   
   Standard_EXPORT   PrsMgr_PresentableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-  //! Calculates the 2D view aPresentation and its <br>
-//! updates. The latter are managed by aPresentationManager. <br>
-//! aPresentableObject has the display mode aMode; <br>
-//! this has the default value of 0, that is, the wireframe display mode. <br>
-//! Note that this syntax is not used in AIS as that <br>
-//! package only concerns 3D display. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager2d)& aPresentationManager,const Handle(Graphic2d_GraphicObject)& aPresentation,const Standard_Integer aMode = 0) ;
   //! Calculates the 3D view aPresentation and its <br>
 //! updates. The latter are managed by aPresentationManager. <br>
 //! aPresentableObject has the display mode aMode; <br>

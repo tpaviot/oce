@@ -9,9 +9,9 @@ SET(TOOLKIT_MODULES
 	BinLDrivers
 )
 SET(TOOLKIT_DEPENDS
-	TKLCAF
 	TKCDF
 	TKernel
+	TKLCAF
 )
 
 INCLUDE(../BuildToolkit.cmake)

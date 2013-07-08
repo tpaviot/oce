@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -30,12 +33,9 @@ class V3d_View;
 class SelectMgr_Selection;
 class Prs3d_Drawer;
 class StdSelect_ViewerSelector3d;
-class StdSelect_ViewerSelector2d;
 class StdSelect_BRepSelectionTool;
 class StdSelect_BRepOwner;
 class StdSelect_BRepHilighter;
-class StdSelect_SensitiveText2d;
-class StdSelect_TextProjector2d;
 class StdSelect_EdgeFilter;
 class StdSelect_FaceFilter;
 class StdSelect_ShapeTypeFilter;
@@ -68,18 +68,7 @@ class StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 class StdSelect  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Returns the 3D projector for the view aView. <br>
   Standard_EXPORT   static  Handle_Select3D_Projector GetProjector(const Handle(V3d_View)& aView) ;
@@ -103,12 +92,9 @@ private:
 
 
 friend class StdSelect_ViewerSelector3d;
-friend class StdSelect_ViewerSelector2d;
 friend class StdSelect_BRepSelectionTool;
 friend class StdSelect_BRepOwner;
 friend class StdSelect_BRepHilighter;
-friend class StdSelect_SensitiveText2d;
-friend class StdSelect_TextProjector2d;
 friend class StdSelect_EdgeFilter;
 friend class StdSelect_FaceFilter;
 friend class StdSelect_ShapeTypeFilter;

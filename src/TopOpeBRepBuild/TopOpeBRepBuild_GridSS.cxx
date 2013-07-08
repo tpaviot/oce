@@ -72,10 +72,10 @@
 
 #ifdef DEB
 #define DEBSHASET(sarg,meth,shaset,str) TCollection_AsciiString sarg((meth));(sarg)=(sarg)+(shaset).DEBNumber()+(str);
-Standard_EXPORT Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
+extern Standard_Boolean TopOpeBRepDS_GettraceSTRANGE();
 Standard_EXPORT void debsplitf(const Standard_Integer i){cout<<"++ debsplitf "<<i<<endl;}
 Standard_EXPORT void debspanc(const Standard_Integer i){cout<<"++ debspanc "<<i<<endl;}
-Standard_EXPORT Standard_Integer GLOBAL_iexF = 0;
+Standard_Integer GLOBAL_iexF = 0;
 #endif
 
 Standard_EXPORT Handle(Geom2d_Curve) BASISCURVE2D(const Handle(Geom2d_Curve)& C);
@@ -413,8 +413,11 @@ void TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS(const TopoDS_Shape&,
                                                       TopOpeBRepBuild_ShellFaceSet& /*SFS*/)
 {
   TopAbs_State TB1,TB2; G1.StatesON(TB1,TB2);
-  TopAbs_ShapeEnum t1,t2,ShapeInterf;
-  G1.Type(t1,t2); ShapeInterf = t1;
+  TopAbs_ShapeEnum t1,t2;
+  G1.Type(t1,t2);
+#ifdef DEB
+  TopAbs_ShapeEnum ShapeInterf = t1;
+#endif
   
 #ifdef DEB
   Standard_Integer iSO; Standard_Boolean tSPS = GtraceSPS(SO1,iSO);

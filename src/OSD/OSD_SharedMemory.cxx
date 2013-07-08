@@ -185,7 +185,7 @@ void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 
 OSD_SharedMemory :: OSD_SharedMemory () {
 
- myId = 0;
+ myId = INVALID_HANDLE_VALUE;
 
 }  // end constructor ( 1 )
 
@@ -227,7 +227,7 @@ void OSD_SharedMemory :: Build () {
 
   else
 
-   myId = ( Standard_Integer )hFileMapping;
+   myId = hFileMapping;
 
  }  // end else
 
@@ -264,7 +264,7 @@ void OSD_SharedMemory :: Open (
 
   else
 
-   myId = ( Standard_Integer )hFileMapping;
+   myId = hFileMapping;
 
   CloseHandle ( hFileMapping );
 
@@ -276,14 +276,14 @@ void OSD_SharedMemory :: Delete () {
 
  if (  Failed ()  ) Perror ();
 
- if ( myId == 0 )
+ if ( myId == INVALID_HANDLE_VALUE )
 
   Standard_ProgramError :: Raise (
                             "OSD_SharedMemory :: Delete : shared memory not opened/created"
                            );
 
  UnmapViewOfFile ( myAddress );
- CloseHandle (  ( HANDLE )myId  );
+ CloseHandle (  myId  );
 
 }  // end OSD_SharedMemory :: Delete
 

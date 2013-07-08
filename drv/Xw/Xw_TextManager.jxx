@@ -1,6 +1,0 @@
-#ifndef _Xw_Driver_HeaderFile
-#include <Xw_Driver.hxx>
-#endif
-#ifndef _Xw_TextManager_HeaderFile
-#include <Xw_TextManager.hxx>
-#endif

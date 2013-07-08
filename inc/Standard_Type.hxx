@@ -46,6 +46,17 @@ class Standard_AncestorIterator;
 
 //!   The class <Type> provides services to find out information <br>
 //!   about a type defined in CDL. <br>
+//! <br>
+//!   Note that multiple inheritance is not supported by the moment; <br>
+//!   the array of ancestors accepted by constructors is assumed to <br>
+//!   represent hierarchy of ancestors up to the root. <br>
+//!   However, only first element is actually used by SubType method, <br>
+//!   higher level ancestors are requested recursively. <br>
+//! <br>
+//!  Warning: <br>
+//!   The information given by <Type> is about the type from which <br>
+//!   it is created and not about the <Type> itself. <br>
+//! <br>
 class Standard_Type : public Standard_Transient {
 
 public:

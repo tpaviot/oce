@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -72,18 +75,7 @@ class Draw_IndexedMapNodeOfMapOfAsciiString;
 class Draw  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   static  void Load(Draw_Interpretor& theDI,const TCollection_AsciiString& theKey,const TCollection_AsciiString& theResourceFileName) ;
@@ -109,11 +101,12 @@ public:
   Standard_EXPORT   static  Standard_Boolean Get(const Standard_CString Name,Standard_Real& val) ;
   //! Sets a TCL sting variable <br>
   Standard_EXPORT   static  void Set(const Standard_CString Name,const Standard_CString val) ;
-  //! Search a  numeric  variable.  If none found converts <br>
-//!          the string to a real. <br>
+  //! Converts numeric expression, that can involve DRAW <br>
+//!          variables, to real value. <br>
   Standard_EXPORT   static  Standard_Real Atof(const Standard_CString Name) ;
-  //! Search a  numeric  variable.  If none found converts <br>
-//!          the string to an integer. <br>
+  //! Converts numeric expression, that can involve DRAW <br>
+//!          variables, to integer value. <br>
+//!          Implemented as cast of Atof() to integer. <br>
   Standard_EXPORT   static  Standard_Integer Atoi(const Standard_CString Name) ;
   //! Returns last graphic selection description. <br>
   Standard_EXPORT   static  void LastPick(Standard_Integer& view,Standard_Integer& X,Standard_Integer& Y,Standard_Integer& button) ;

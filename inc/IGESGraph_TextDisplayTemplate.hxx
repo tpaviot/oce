@@ -41,6 +41,10 @@ class gp_Pnt;
 
 //! defines IGES TextDisplayTemplate Entity, <br>
 //!          Type <312>, form <0, 1> in package IGESGraph <br>
+//! <br>
+//!          Used to set parameters for display of information <br>
+//!          which has been logically included in another entity <br>
+//!          as a parameter value <br>
 class IGESGraph_TextDisplayTemplate : public IGESData_IGESEntity {
 
 public:

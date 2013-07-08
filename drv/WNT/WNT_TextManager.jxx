@@ -1,6 +1,0 @@
-#ifndef _WNT_WDriver_HeaderFile
-#include <WNT_WDriver.hxx>
-#endif
-#ifndef _WNT_TextManager_HeaderFile
-#include <WNT_TextManager.hxx>
-#endif

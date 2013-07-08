@@ -6,13 +6,10 @@
 #ifndef _V3d_TypeOfSurfaceDetail_HeaderFile
 #define _V3d_TypeOfSurfaceDetail_HeaderFile
 
-
-//! Defines the type of shading for the graphic object: <br>
-//! -   V3d_COLOR: simple surface color, <br>
-//! -   V3d_MULTICOLOR: interpolated colors, <br>
-//! -   V3d_FLAT: flat shading, <br>
-//! -   V3d_GOURAUD: Gouraud shading, <br>
-//! -   V3d_HIDDEN: hidden line removal. <br>
+//! Modes of visualization for objects in a view <br>
+//! -   V3d_TEX_NONE: no texture mapping, <br>
+//! -   V3d_TEX_ENVIRONMENT: environment mapping only, <br>
+//! -   V3d_TEX_ALL: environment and texture mapping. <br>
 enum V3d_TypeOfSurfaceDetail {
 V3d_TEX_NONE,
 V3d_TEX_ENVIRONMENT,

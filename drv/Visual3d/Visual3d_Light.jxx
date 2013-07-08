@@ -10,9 +10,6 @@
 #ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>
 #endif
-#ifndef _Graphic3d_Vertex_HeaderFile
-#include <Graphic3d_Vertex.hxx>
-#endif
 #ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
 #endif

@@ -40,6 +40,9 @@
 #ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
 #endif
+#ifndef _Standard_Mutex_HeaderFile
+#include <Standard_Mutex.hxx>
+#endif
 #ifndef _Geom_BoundedCurve_HeaderFile
 #include <Geom_BoundedCurve.hxx>
 #endif
@@ -681,6 +684,8 @@ public:
   Standard_EXPORT     void Resolution(const Standard_Real Tolerance3D,Standard_Real& UTolerance) ;
   //! Creates a new object which is a copy of this BSpline curve. <br>
   Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+  //! Comapare two Bspline curve on identity; <br>
+  Standard_EXPORT     Standard_Boolean IsEqual(const Handle(Geom_BSplineCurve)& theOther,const Standard_Real thePreci) const;
 
 
 
@@ -728,6 +733,7 @@ Standard_Real spanlenghtcache;
 Standard_Integer spanindexcache;
 Standard_Real maxderivinv;
 Standard_Boolean maxderivinvok;
+Standard_Mutex myMutex;
 
 
 };

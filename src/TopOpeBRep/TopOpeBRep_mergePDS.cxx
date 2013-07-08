@@ -51,7 +51,7 @@ void BREP_makeIDMOVP(const TopoDS_Shape& S,TopOpeBRepDS_IndexedDataMapOfVertexPo
   }
 }
 
-Standard_EXPORT void BREP_mergePDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS)
+void BREP_mergePDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS)
 {
   TopOpeBRepDS_DataStructure& BDS = HDS->ChangeDS();
   TopOpeBRepDS_CurveExplorer cex(BDS);if (!cex.More()) return;
@@ -88,22 +88,32 @@ Standard_EXPORT void BREP_mergePDS(const Handle(TopOpeBRepDS_HDataStructure)& HD
       //**!
       const TopOpeBRepDS_Point& PDS = BDS.Point(GI);
 
-      Standard_Integer ivp1; TopoDS_Shape v1; Standard_Boolean newv1 = Standard_False; TopOpeBRepDS_Kind k1=TopOpeBRepDS_UNKNOWN; Standard_Integer iv1 = 0;
+      Standard_Integer ivp1; TopoDS_Shape v1; TopOpeBRepDS_Kind k1=TopOpeBRepDS_UNKNOWN; Standard_Integer iv1 = 0;
+#ifdef DEB
+      Standard_Boolean newv1 = Standard_False;
+#endif
 
       ivp1 = BREP_findPDSamongIDMOVP(PDS,Mvp1);
       if (ivp1) {
 	v1 = Mvp1.FindKey(ivp1);
+#ifdef DEB
 	newv1 = !BDS.HasShape(v1);
+#endif
 	iv1 = BDS.AddShape(v1);
 	k1 = TopOpeBRepDS_VERTEX;
       }
       
-      Standard_Integer ivp2; TopoDS_Shape v2; Standard_Boolean newv2 = Standard_False; TopOpeBRepDS_Kind k2=TopOpeBRepDS_UNKNOWN; Standard_Integer iv2 = 0;
+      Standard_Integer ivp2; TopoDS_Shape v2; TopOpeBRepDS_Kind k2=TopOpeBRepDS_UNKNOWN; Standard_Integer iv2 = 0;
+#ifdef DEB
+      Standard_Boolean newv2 = Standard_False;
+#endif
 
       ivp2 = BREP_findPDSamongIDMOVP(PDS,Mvp2);
       if (ivp2) {
 	v2 = Mvp2.FindKey(ivp2);
+#ifdef DEB
 	newv2 = !BDS.HasShape(v2);
+#endif
 	iv2 = BDS.AddShape(v2);
 	k2 = TopOpeBRepDS_VERTEX;
       }

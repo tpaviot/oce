@@ -64,6 +64,9 @@ class TCollection_AsciiString;
 //!           external control of them, these values are not directly <br>
 //!           defined as fields, but accessed through IntParams, that is, <br>
 //!           referenced as Transient (Handle) objects <br>
+//! <br>
+//!           Warning : the Input can be any kind of Selection, BUT its <br>
+//!           RootResult must have zero (empty) or one Entity maximum <br>
 class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 
 public:

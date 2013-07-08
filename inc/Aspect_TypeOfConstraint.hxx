@@ -6,7 +6,8 @@
 #ifndef _Aspect_TypeOfConstraint_HeaderFile
 #define _Aspect_TypeOfConstraint_HeaderFile
 
-//! Definition of the color map types <br>
+//! Definition of the attachment for the layers <br>
+//! <br>
 enum Aspect_TypeOfConstraint {
 Aspect_TOC_BOTTOM_LEFT,
 Aspect_TOC_BOTTOM_RIGHT,

@@ -1,0 +1,3 @@
+#ifndef _BOPDS_FaceInfo_HeaderFile
+#include <BOPDS_FaceInfo.hxx>
+#endif

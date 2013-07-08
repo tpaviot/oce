@@ -7,12 +7,6 @@
 #define _Storage_SolveMode_HeaderFile
 
 
-//! Specifies opening modes for a file: <br>
-//! -   Storage_VSNone : no mode is specified <br>
-//! -   Storage_VSRead : the file is open for  reading operations <br>
-//! -   Storage_VSWrite : the file is open for writing operations <br>
-//! -   Storage_VSReadWrite : the file is open <br>
-//!   for both reading and writing operations. <br>
 enum Storage_SolveMode {
 Storage_AddSolve,
 Storage_WriteSolve,

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -35,21 +38,48 @@ class Aspect_ColorMap;
 //!		a ColorImage to a PseudoColorImage <br>
 //!		a PseudoColorImage to a PseudoColorImage with a <br>
 //!			different ColorMap. <br>
+//! <br>
+//!	    To convert a PseudoColoImage to a ColorImage we use <br>
+//!	    the PseudoColoImage ColorMap to compute the Color of each <br>
+//!	    Image Pixel ( Lookup operation ) , the resulting image <br>
+//!	    look similar as the original image. <br>
+//! <br>
+//!	    To convert a ColorImage to a PseudoColorImage or <br>
+//!          a PseudoColorImage to another PseudoColorImage we use <br>
+//!	    Dithering. <br>
+//! <br>
+//!	    A dither operation is an inverse lookup operation.For <br>
+//!	    example if we want to dither a ColorImage to a <br>
+//!	    PseudoColorImage, for each Pixel in the ColorImage we search <br>
+//!	    in the PseudoColorImage ColorMap the Entry with the nearest <br>
+//!	    Color, then we write the ColorMap Entry Index in to the <br>
+//!	    PseudoColorImage. The result is a PseudoColorImage that when <br>
+//!	    it is displayed using its own ColorMap it will look as much <br>
+//!          like the original ColorImage as possible. <br>
+//! <br>
+//!	    This class provides 2 Dithering method. <br>
+//! <br>
+//!	    DM_NearestColor : this dithering method is the simplest <br>
+//!	    one ,it just finds the nearest entry in the ColorMap. <br>
+//!	    This algorithm provide no provision for eliminating unwanted <br>
+//!	    contours in the dithered image.This algorithm is much <br>
+//!	    faster on ColorRamp and ColorCube than on Generic <br>
+//!	    ColorMap.Indeed on ColorRamp and ColorCube ColorMap the <br>
+//!	    ColorMap Entry Index can be computed by using the ColorMap <br>
+//!	    BasePixel and ColorDimension. <br>
+//! <br>
+//!	    DM_ErrorDiffusion: In this method the difference ( error ) <br>
+//!	    between the original and the dithered image is distribued <br>
+//!	    to the oginal image pixels immediatly to the right of and <br>
+//!	    below the last pixel processed. The ErrorDiffusion method <br>
+//!	    uses a "floyd-steinberg" error-distribution kernel.This <br>
+//!	    algorithm is fairly time-consuming, but can greatly reduce <br>
+//!	    contouring in the dithered image. <br>
+//! <br>
 class Image_Convertor  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Create a Convertor object with the default DitheringMethod <br>
 //!	( DM_NearestColor ). <br>

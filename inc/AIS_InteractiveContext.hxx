@@ -79,14 +79,11 @@
 #ifndef _Graphic3d_NameOfMaterial_HeaderFile
 #include <Graphic3d_NameOfMaterial.hxx>
 #endif
-#ifndef _Aspect_TypeOfDegenerateModel_HeaderFile
-#include <Aspect_TypeOfDegenerateModel.hxx>
-#endif
-#ifndef _Quantity_Ratio_HeaderFile
-#include <Quantity_Ratio.hxx>
-#endif
 #ifndef _Handle_AIS_Drawer_HeaderFile
 #include <Handle_AIS_Drawer.hxx>
+#endif
+#ifndef _Standard_ShortReal_HeaderFile
+#include <Standard_ShortReal.hxx>
 #endif
 #ifndef _AIS_DisplayStatus_HeaderFile
 #include <AIS_DisplayStatus.hxx>
@@ -293,6 +290,21 @@ public:
   Standard_EXPORT     void Load(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Integer SelectionMode = -1,const Standard_Boolean AllowDecomp = Standard_False) ;
   //! To erase presentations in current local context, or <br>
 //! failing that, in other local contexts which allow erasing. <br>
+//! <br>
+//! If putinCollector is True, the object is erased with graphical status Erased, <br>
+//! and put into the Collector. These objects can be retrieved <br>
+//! from Interactive Context by ObjectsInCollector method. <br>
+//! If putinCollector is False, the objects erased with graphical status FullErased, <br>
+//! and not put into the Collector. These objects can be retrieved <br>
+//! from Interactive Context by ErasedObjects method. <br>
+//! <br>
+//! Note: objects that are put into the Collector recomute their presentation <br>
+//! for Collector Presentation Manager. <br>
+//! <br>
+//! If a local context is open and if updateviewer is <br>
+//! False, the presentation of the Interactive <br>
+//! Object activates the selection mode; the object is <br>
+//! displayed but no viewer will be updated. <br>
   Standard_EXPORT     void Erase(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Boolean updateviewer = Standard_True,const Standard_Boolean PutInCollector = Standard_False) ;
   //! Updates viewer contents and returns the display <br>
 //! mode of each aniobj object. Use only if more than <br>
@@ -572,21 +584,6 @@ public:
 //! Object activates the selection mode; the object is <br>
 //! displayed but no viewer will be updated. <br>
   Standard_EXPORT     void UnsetTransparency(const Handle(AIS_InteractiveObject)& aniobj,const Standard_Boolean updateviewer = Standard_True) ;
-  //! Sets the model of degeneration for the shaded representation <br>
-//!   of the object <aniobj> <br>
-//!   according to the degenerate ratio >= 0. & <= 1. where : <br>
-//!   <aRatio> = 0. indicate that all polygons of the object <br>
-//!      will be displayed. <br>
-//!   <aRatio> = 1. indicate that no polygons will be displayed !! <br>
-//!   When <ARatio> is > 0 & < 1. the corresponding amount <br>
-//!   of object polygons will be displayed with a random method. <br>
-//!  Warning: the degenerate structure is shown only when <br>
-//! the animation and degenerate flags are set to TRUE <br>
-//! in V3d_View::SetAnimationMode(..) <br>
-  Standard_EXPORT     void SetDegenerateModel(const Handle(AIS_InteractiveObject)& aniobj,const Aspect_TypeOfDegenerateModel aModel = Aspect_TDM_WIREFRAME,const Quantity_Ratio aRatio = 0.0) ;
-  //! Defines the degenerate method to apply on the shaded <br>
-//!  representation of all objects. <br>
-  Standard_EXPORT     void SetDegenerateModel(const Aspect_TypeOfDegenerateModel aModel,const Quantity_Ratio aSkipRatio = 0.0) ;
   
 //! Sets the attributes of the interactive object aniobj by <br>
 //! plugging the attribute manager aDrawer into the local <br>
@@ -609,11 +606,11 @@ public:
   Standard_EXPORT     void UnsetLocalAttributes(const Handle(AIS_InteractiveObject)& anObj,const Standard_Boolean updateviewer = Standard_True) ;
   //! Sets up polygon offsets for the given AIS_InteractiveObject. <br>
 //!          It simply calls anObj->SetPolygonOffsets() <br>
-  Standard_EXPORT     void SetPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,const Standard_Integer aMode,const Standard_Real aFactor = 1.0,const Standard_Real aUnits = 0.0,const Standard_Boolean updateviewer = Standard_True) ;
+  Standard_EXPORT     void SetPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0,const Standard_Boolean updateviewer = Standard_True) ;
   //! simply calls anObj->HasPolygonOffsets() <br>
   Standard_EXPORT     Standard_Boolean HasPolygonOffsets(const Handle(AIS_InteractiveObject)& anObj) const;
   //! Retrieves current polygon offsets settings for <anObj>. <br>
-  Standard_EXPORT     void PolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,Standard_Integer& aMode,Standard_Real& aFactor,Standard_Real& aUnits) const;
+  Standard_EXPORT     void PolygonOffsets(const Handle(AIS_InteractiveObject)& anObj,Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
   //! Sets the size aSize of the trihedron. <br>
 //! Is used to change the default value 100 mm for <br>
 //! display of trihedra. <br>

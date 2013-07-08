@@ -1,0 +1,6 @@
+#ifndef _gp_Pnt_HeaderFile
+#include <gp_Pnt.hxx>
+#endif
+#ifndef _Extrema_POnSurfParams_HeaderFile
+#include <Extrema_POnSurfParams.hxx>
+#endif

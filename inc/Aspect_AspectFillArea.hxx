@@ -57,6 +57,11 @@ public:
   //! Modifies the edge line type <br>
   Standard_EXPORT     void SetEdgeLineType(const Aspect_TypeOfLine AType) ;
   //! Modifies the edge thickness <br>
+//! <br>
+//!  Category: Methods to modify the class definition <br>
+//! <br>
+//!  Warning: Raises AspectFillAreaDefinitionError if the <br>
+//!	    width is a negative value. <br>
   Standard_EXPORT     void SetEdgeWidth(const Standard_Real AWidth) ;
   //! Modifies the hatch type used when InteriorStyle <br>
 //!	    is IS_HATCH <br>
@@ -66,6 +71,12 @@ public:
   //! Modifies the colour of the interior of the back face <br>
   Standard_EXPORT     void SetBackInteriorColor(const Quantity_Color& color) ;
   //! Modifies the interior type used for rendering <br>
+//! <br>
+//! InteriorStyle : IS_EMPTY	no interior <br>
+//!		   IS_HOLLOW	display the boundaries of the surface <br>
+//!		   IS_HATCH	display hatching <br>
+//!		   IS_SOLID	display interior entirely filled <br>
+//! <br>
   Standard_EXPORT     void SetInteriorStyle(const Aspect_InteriorStyle AStyle) ;
   //! Returns the hatch type used when InteriorStyle <br>
 //!	    is IS_HATCH <br>
@@ -84,9 +95,36 @@ protected:
 
   //! Initialise the constructor <br>
 //!	    of Graphic3d_AspectFillArea3d. <br>
+//! <br>
+//! default values : <br>
+//! <br>
+//!	InteriorStyle	= Aspect_IS_EMPTY; <br>
+//!	InteriorColor	= Quantity_NOC_CYAN1; <br>
+//!	EdgeColor	= Quantity_NOC_WHITE; <br>
+//!	EdgeType	= Aspect_TOL_SOLID; <br>
+//!	EdgeWidth	= 1.0; <br>
+//!	HatchStyle	= Aspect_HS_VERTICAL; <br>
   Standard_EXPORT   Aspect_AspectFillArea();
   //! Initialise the values for the constructor of <br>
 //!	    Graphic3d_AspectFillArea3d. <br>
+//! <br>
+//! InteriorStyle : <br>
+//!	    IS_EMPTY	no interior. <br>
+//!	    IS_HOLLOW	display the boundaries of the surface. <br>
+//!	    IS_HATCH	display hatched with a hatch style. <br>
+//!	    IS_SOLID	display the interior entirely filled. <br>
+//! <br>
+//! EdgeLineType : <br>
+//!	    TOL_SOLID	continuous <br>
+//!	    TOL_DASH	dashed <br>
+//!	    TOL_DOT	dotted <br>
+//!	    TOL_DOTDASH	mixed <br>
+//! <br>
+//! default values : <br>
+//!	HatchStyle	= Aspect_HS_VERTICAL; <br>
+//! <br>
+//!  Warning: Raises AspectFillAreaDefinitionError if the <br>
+//!	    width is a negative value. <br>
   Standard_EXPORT   Aspect_AspectFillArea(const Aspect_InteriorStyle InteriorStyle,const Quantity_Color& InteriorColor,const Quantity_Color& EdgeColor,const Aspect_TypeOfLine EdgeLineType,const Standard_Real EdgeLineWidth);
 
 

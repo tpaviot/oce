@@ -54,6 +54,7 @@ class TCollection_ExtendedString;
 //! defines the WINDOW oriented output driver. <br>
 //!  Warning: A limited number of mono attribute and translatable BUFFERS can be defined <br>
 //!          for retaining a lot of primitives for DRAGGING . <br>
+//! <br>
 class Aspect_WindowDriver : public Aspect_Driver {
 
 public:

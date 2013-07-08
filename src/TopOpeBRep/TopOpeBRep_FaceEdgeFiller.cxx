@@ -33,9 +33,9 @@
 #include <gp_Pnt2d.hxx>
 
 #ifdef DEB
-Standard_IMPORT void FEINT_DUMPPOINTS(TopOpeBRep_FaceEdgeIntersector& FEINT,
+extern void FEINT_DUMPPOINTS(TopOpeBRep_FaceEdgeIntersector& FEINT,
 			     const TopOpeBRepDS_DataStructure& BDS);
-Standard_IMPORT Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
+extern Standard_Boolean TopOpeBRepDS_GettraceDSF(); 
 #endif
 
 //=======================================================================
@@ -261,7 +261,9 @@ void TopOpeBRep_FaceEdgeFiller::StoreInterference
   // append I to list LI
   LI.Append(I);
 
+#ifdef DEB
   Standard_Boolean appendtoG = Standard_False;
+#endif
   Standard_Integer G = I->Geometry();
 
   // append I to list of interference connected to G = I->Geometry()
@@ -274,12 +276,16 @@ void TopOpeBRep_FaceEdgeFiller::StoreInterference
     break;
     
   case TopOpeBRepDS_SURFACE :
+#ifdef DEB
     appendtoG = Standard_True;
+#endif
     BDS.ChangeSurfaceInterferences(G).Append(I);
     break;
     
   case TopOpeBRepDS_CURVE :
+#ifdef DEB
     appendtoG = Standard_True;
+#endif
     BDS.ChangeCurveInterferences(G).Append(I);
     break;
     
@@ -287,11 +293,8 @@ void TopOpeBRep_FaceEdgeFiller::StoreInterference
 //    appendtoG = Standard_True;
 //    BDS.ChangePointInterferences(G).Append(I);
     break;
-#ifndef DEB
   default:
     break;
-#endif
-
   }
 
 #ifdef DEB

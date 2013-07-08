@@ -30,6 +30,7 @@
 #define STRICT
 #include <windows.h>
 #include <tchar.h>
+#include "Standard_Macro.hxx"
 
 #ifdef __cplusplus
 extern "C" int symlink ( const _TCHAR*, const _TCHAR* );
@@ -37,7 +38,7 @@ extern "C" int symlink ( const _TCHAR*, const _TCHAR* );
 /***/
 /******************************* symlink **************************************/
 /***/
-__declspec( dllexport ) int symlink ( const _TCHAR* name1, const _TCHAR* name2 ) {
+Standard_EXPORT int symlink ( const _TCHAR* name1, const _TCHAR* name2 ) {
 
  return CopyFile ( name1, name2, FALSE ) == TRUE ? 0 : -1;
 

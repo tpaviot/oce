@@ -177,7 +177,7 @@ void AIS_TexturedShape::EnableTextureModulate()
 
 //=======================================================================
 //function : DisableTextureModulate
-//purpose  : 
+//purpose  :
 //=======================================================================
 
 void AIS_TexturedShape::DisableTextureModulate()
@@ -192,7 +192,6 @@ void AIS_TexturedShape::DisableTextureModulate()
 
 void AIS_TexturedShape::UpdateAttributes()
 {
-  Handle(Graphic3d_StructureManager) aStrucMana = GetContext()->MainPrsMgr()->StructureManager();
   Prs3d_ShadingAspect aDummy;
   myAspect = aDummy.Aspect();
   Handle(Prs3d_Presentation) aPrs = Presentation();
@@ -203,9 +202,9 @@ void AIS_TexturedShape::UpdateAttributes()
   }
 
   if (myPredefTexture != -1)
-    mytexture = new Graphic3d_Texture2Dmanual (aStrucMana, myPredefTexture);
+    mytexture = new Graphic3d_Texture2Dmanual (myPredefTexture);
   else
-    mytexture = new Graphic3d_Texture2Dmanual (aStrucMana, myTextureFile.ToCString());
+    mytexture = new Graphic3d_Texture2Dmanual (myTextureFile.ToCString());
 
   myAspect->SetTextureMapOn();
 
@@ -274,13 +273,12 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       Standard_Real prevcoeff = 0.0;
       Standard_Real newcoeff = 0.0;
 
-      if (!OwnDeviationAngle (newangle, prevangle) && !OwnDeviationCoefficient (newcoeff, prevcoeff))
+      if (OwnDeviationAngle (newangle, prevangle) || OwnDeviationCoefficient (newcoeff, prevcoeff))
       {
-        break;
-      }
-      if (Abs (newangle - prevangle) > Precision::Angular() || Abs (newcoeff - prevcoeff) > Precision::Confusion())
-      {
-        BRepTools::Clean (myshape);
+        if (Abs (newangle - prevangle) > Precision::Angular() || Abs (newcoeff - prevcoeff) > Precision::Confusion())
+        {
+          BRepTools::Clean (myshape);
+        }
       }
       if (myshape.ShapeType() > TopAbs_FACE)
       {
@@ -324,7 +322,6 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       BRepTools::Clean (myshape);
       BRepTools::Update (myshape);
 
-      Handle(Graphic3d_StructureManager) aStrucMana = GetContext()->MainPrsMgr()->StructureManager();
       {
         Handle(Prs3d_ShadingAspect) aPrs3d_ShadingAspect = new Prs3d_ShadingAspect();
         myAspect = aPrs3d_ShadingAspect->Aspect();
@@ -333,7 +330,7 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
         if (HasPolygonOffsets())
         {
           Standard_Integer aMode;
-          Standard_Real aFactor, aUnits;
+          Standard_ShortReal aFactor, aUnits;
           PolygonOffsets(aMode, aFactor, aUnits);
           myAspect->SetPolygonOffsets(aMode, aFactor, aUnits);
         }
@@ -346,9 +343,9 @@ void AIS_TexturedShape::Compute (const Handle(PrsMgr_PresentationManager3d)& /*t
       myAspect->SetTextureMapOn();
 
       if (myPredefTexture != -1)
-        mytexture = new Graphic3d_Texture2Dmanual (aStrucMana, myPredefTexture);
+        mytexture = new Graphic3d_Texture2Dmanual (myPredefTexture);
       else
-        mytexture = new Graphic3d_Texture2Dmanual (aStrucMana, myTextureFile.ToCString());
+        mytexture = new Graphic3d_Texture2Dmanual (myTextureFile.ToCString());
 
       if (!mytexture->IsDone())
       {

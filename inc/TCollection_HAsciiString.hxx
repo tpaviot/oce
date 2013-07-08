@@ -325,6 +325,7 @@ public:
 //!  Example: <br>
 //!   aString contains "Sample single test" <br>
 //!   aString.Search("le") returns 5 <br>
+//! <br>
   Standard_EXPORT     Standard_Integer Search(const Standard_CString what) const;
   //! Searches a String in <me> from the beginning <br>
 //! and returns position of first item <what> matching. <br>

@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,18 +47,7 @@ class PLib_DoubleJacobiPolynomial;
 class PLib  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Used as argument for a non rational functions <br>
 //! <br>
@@ -254,7 +246,24 @@ public:
 //! <br>
 //! [d *Dimension],  [d*Dimension + Dimension-1]: dth   derivative <br>
   Standard_EXPORT   static  Standard_Integer EvalCubicHermite(const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Dimension,Standard_Real& ValueArray,Standard_Real& DerivativeArray,Standard_Real& ParameterArray,Standard_Real& Results) ;
-  
+  //! This build the coefficient of Hermite's polynomes on <br>
+//!          [FirstParameter, LastParameter] <br>
+//! <br>
+//!          if j <= FirstOrder+1 then <br>
+//! <br>
+//!          MatrixCoefs[i, j] = ith coefficient of the polynome H0,j-1 <br>
+//! <br>
+//!          else <br>
+//! <br>
+//!          MatrixCoefs[i, j] = ith coefficient of the polynome H1,k <br>
+//!            with k = j - FirstOrder - 2 <br>
+//! <br>
+//!          return false if <br>
+//!          - |FirstParameter| > 100 <br>
+//!          - |LastParameter| > 100 <br>
+//!          - |FirstParameter| +|LastParameter| < 1/100 <br>
+//!          -   |LastParameter - FirstParameter| <br>
+//!            / (|FirstParameter| +|LastParameter|)  < 1/100 <br>
   Standard_EXPORT   static  Standard_Boolean HermiteCoefficients(const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Integer FirstOrder,const Standard_Integer LastOrder,math_Matrix& MatrixCoefs) ;
   
   Standard_EXPORT   static  void CoefficientsPoles(const TColgp_Array1OfPnt& Coefs,const TColStd_Array1OfReal& WCoefs,TColgp_Array1OfPnt& Poles,TColStd_Array1OfReal& WPoles) ;
@@ -285,11 +294,24 @@ public:
 //!         contains the values of the constraint at parameter FirstParameter <br>
 //!         idem for LastConstr <br>
   Standard_EXPORT   static  Standard_Boolean HermiteInterpolate(const Standard_Integer Dimension,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Integer FirstOrder,const Standard_Integer LastOrder,const TColStd_Array2OfReal& FirstConstr,const TColStd_Array2OfReal& LastConstr,TColStd_Array1OfReal& Coefficients) ;
-  
+  //! Compute the number of points used for integral <br>
+//!         computations (NbGaussPoints) and the degree of Jacobi <br>
+//!         Polynomial (WorkDegree). <br>
+//!         ConstraintOrder has to be GeomAbs_C0, GeomAbs_C1 or GeomAbs_C2 <br>
+//!         Code: Code d' init. des parametres de discretisation. <br>
+//!            = -5 <br>
+//!            = -4 <br>
+//!            = -3 <br>
+//!            = -2 <br>
+//!            = -1 <br>
+//!            =  1 calcul rapide avec precision moyenne. <br>
+//!            =  2 calcul rapide avec meilleure precision. <br>
+//!            =  3 calcul un peu plus lent avec bonne precision. <br>
+//!            =  4 calcul lent avec la meilleure precision possible. <br>
   Standard_EXPORT   static  void JacobiParameters(const GeomAbs_Shape ConstraintOrder,const Standard_Integer MaxDegree,const Standard_Integer Code,Standard_Integer& NbGaussPoints,Standard_Integer& WorkDegree) ;
-  
+  //! translates from GeomAbs_Shape to Integer <br>
   Standard_EXPORT   static  Standard_Integer NivConstr(const GeomAbs_Shape ConstraintOrder) ;
-  
+  //! translates from Integer to GeomAbs_Shape <br>
   Standard_EXPORT   static  GeomAbs_Shape ConstraintOrder(const Standard_Integer NivConstr) ;
   
   Standard_EXPORT   static  void EvalLength(const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real& PolynomialCoeff,const Standard_Real U1,const Standard_Real U2,Standard_Real& Length) ;

@@ -76,6 +76,12 @@ public:
 
 protected:
 
+  //! Redefined method to compute presentation <br>
+  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  //! Fills out a default style object which is used when styles are <br>
+//!          not explicitly defined in the document. <br>
+//!          By default, the style uses white color for curves and surfaces. <br>
+  Standard_EXPORT   virtual  void DefaultStyle(XCAFPrs_Style& aStyle) const;
 
 
 
@@ -83,8 +89,6 @@ private:
 
   
   Standard_EXPORT     void AddStyledItem(const XCAFPrs_Style& style,const TopoDS_Shape& shape,const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  //! Redefined method to compute presentation <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
 
 TDF_Label myLabel;
 

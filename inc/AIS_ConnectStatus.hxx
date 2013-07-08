@@ -6,11 +6,16 @@
 #ifndef _AIS_ConnectStatus_HeaderFile
 #define _AIS_ConnectStatus_HeaderFile
 
-
-//! Sets display modes other than neutral point ones, <br>
-//! for interactive objects. The possibilities include: <br>
-//! -   wireframe, <br>
-//! -   shaded, <br>
+//! Gives the status of connection of an Interactive <br>
+//! Object. This will be one of the following: <br>
+//! -   No connection <br>
+//! -   Connection <br>
+//! -   Transformation <br>
+//! -   Both connection and transformation <br>
+//!   This enumeration is used in <br>
+//! AIS_ConnectedInteractive. Transform indicates <br>
+//! that the Interactive Object reference geometry has <br>
+//! changed location relative to the reference geometry. <br>
 enum AIS_ConnectStatus {
 AIS_CS_None,
 AIS_CS_Connection,

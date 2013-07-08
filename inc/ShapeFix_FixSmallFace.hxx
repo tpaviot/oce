@@ -57,20 +57,25 @@ public:
   //! Compute average vertex and replacing vertices by new one. <br>
   Standard_EXPORT     Standard_Boolean ReplaceVerticesInCaseOfSpot(TopoDS_Face& F,const Standard_Real tol) const;
   //! Remove spot face from compound <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean RemoveFacesInCaseOfSpot(const TopoDS_Face& F) const;
   //! Fixing case of strip face, if tol = -1 used local tolerance <br>
   Standard_EXPORT     TopoDS_Shape FixStripFace(const Standard_Boolean wasdone = Standard_False) ;
   //! Replace veretces and edges. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean ReplaceInCaseOfStrip(TopoDS_Face& F,TopoDS_Edge& E1,TopoDS_Edge& E2,const Standard_Real tol) const;
   //! Remove strip face from compound. <br>
   Standard_EXPORT     Standard_Boolean RemoveFacesInCaseOfStrip(const TopoDS_Face& F) const;
   //! Compute average edge for strip face <br>
   Standard_EXPORT     TopoDS_Edge ComputeSharedEdgeForStripFace(const TopoDS_Face& F,const TopoDS_Edge& E1,const TopoDS_Edge& E2,const TopoDS_Face& F1,const Standard_Real tol) const;
   
+//! <br>
   Standard_EXPORT     TopoDS_Shape FixSplitFace(const TopoDS_Shape& S) ;
   //! Split faces by splitting vertices <br>
+//! <br>
   Standard_EXPORT     TopoDS_Shape SplitFaces() ;
   //! Compute data for face splitting. <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean SplitOneFace(TopoDS_Face& F,TopoDS_Compound& theSplittedFaces) ;
   //! Remove small faces from compound. <br>
   Standard_EXPORT     TopoDS_Shape RemoveSmallFaces() ;

@@ -1,3 +1,0 @@
-#ifndef _Prs2d_AspectHidingPoly_HeaderFile
-#include <Prs2d_AspectHidingPoly.hxx>
-#endif

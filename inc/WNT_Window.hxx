@@ -25,20 +25,8 @@
 #ifndef _Aspect_Handle_HeaderFile
 #include <Aspect_Handle.hxx>
 #endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
 #ifndef _WNT_WindowData_HeaderFile
 #include <WNT_WindowData.hxx>
-#endif
-#ifndef _WNT_TypeOfImage_HeaderFile
-#include <WNT_TypeOfImage.hxx>
-#endif
-#ifndef _Handle_WNT_ImageManager_HeaderFile
-#include <Handle_WNT_ImageManager.hxx>
-#endif
-#ifndef _Handle_WNT_Icon_HeaderFile
-#include <Handle_WNT_Icon.hxx>
 #endif
 #ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
@@ -46,132 +34,53 @@
 #ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
 #endif
-#ifndef _Handle_WNT_GraphicDevice_HeaderFile
-#include <Handle_WNT_GraphicDevice.hxx>
-#endif
 #ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
 #endif
 #ifndef _WNT_Dword_HeaderFile
 #include <WNT_Dword.hxx>
 #endif
-#ifndef _Quantity_Parameter_HeaderFile
-#include <Quantity_Parameter.hxx>
-#endif
 #ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Aspect_FillMethod_HeaderFile
-#include <Aspect_FillMethod.hxx>
-#endif
-#ifndef _Aspect_GradientFillMethod_HeaderFile
-#include <Aspect_GradientFillMethod.hxx>
 #endif
 #ifndef _Aspect_TypeOfResize_HeaderFile
 #include <Aspect_TypeOfResize.hxx>
 #endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Aspect_PixMap_HeaderFile
-#include <Handle_Aspect_PixMap.hxx>
+#ifndef _Standard_Boolean_HeaderFile
+#include <Standard_Boolean.hxx>
 #endif
 #ifndef _Quantity_Ratio_HeaderFile
 #include <Quantity_Ratio.hxx>
 #endif
 class WNT_WClass;
-class WNT_ImageManager;
-class WNT_Icon;
 class Aspect_WindowDefinitionError;
 class Aspect_WindowError;
-class WNT_WDriver;
-class WNT_IconBox;
-class WNT_PixMap;
-class WNT_GraphicDevice;
-class Aspect_Background;
-class Quantity_Color;
-class Aspect_GradientBackground;
-class Aspect_PixMap;
 
 
 //! This class defines Windows NT window <br>
-//!  Warning: The position and size for the creation of the window <br>
-//!	    are defined in Device Screen Unit (DSU) <br>
-//!	    floating [0,1] space. <br>
 class WNT_Window : public Aspect_Window {
 
 public:
 
-  //! Creates a Window defined by his Center and his Size <br>
-//!	    in DSU from the Parent Window. If <aParent> is 0 then <br>
-//!	    creates a window without parent. <br>
-//!	    Creation of an WNT_Window automatically determines the <br>
-//!	    smaller dimension of the screen (usually the height) <br>
-//!	    and parametrises it as 1.0. <br>
-//!	    The smaller dimension of the window is limited to 1.0 <br>
-//!	    We can give a value greater than 1.0 to the larger <br>
-//!	    dimension. <br>
-//!	    No matter how large the values passed in argument, the <br>
-//!	    window is automatically limited to the maximum size of <br>
-//!	    the screen. <br>
-//!	    The ratio of width to height of a conventional screen is <br>
-//!	    of the order of 1.3. <br>
-//!  Trigger: Raises WindowDefinitionError if the Position out of the <br>
-//!          Screen Space or the window creation failed. <br>
-  Standard_EXPORT   WNT_Window(const Handle(WNT_GraphicDevice)& aDevice,const Standard_CString aTitle,const Handle(WNT_WClass)& aClass,const WNT_Dword& aStyle = 0,const Quantity_Parameter Xc = 0.5,const Quantity_Parameter Yc = 0.5,const Quantity_Parameter aWidth = 0.5,const Quantity_Parameter aHeight = 0.5,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY,const Aspect_Handle aParent = 0,const Aspect_Handle aMenu = 0,const Standard_Address aClientStruct = 0);
   //! Creates a Window defined by his position and size <br>
 //!	    in pixles from the Parent Window. <br>
 //!  Trigger: Raises WindowDefinitionError if the Position out of the <br>
 //!          Screen Space or the window creation failed. <br>
-  Standard_EXPORT   WNT_Window(const Handle(WNT_GraphicDevice)& theDevice,const Standard_CString theTitle,const Handle(WNT_WClass)& theClass,const WNT_Dword& theStyle,const Standard_Integer thePxLeft,const Standard_Integer thePxTop,const Standard_Integer thePxWidth,const Standard_Integer thePxHeight,const Quantity_NameOfColor theBackColor = Quantity_NOC_MATRAGRAY,const Aspect_Handle theParent = 0,const Aspect_Handle theMenu = 0,const Standard_Address theClientStruct = 0);
+  Standard_EXPORT   WNT_Window(const Standard_CString theTitle,const Handle(WNT_WClass)& theClass,const WNT_Dword& theStyle,const Standard_Integer thePxLeft,const Standard_Integer thePxTop,const Standard_Integer thePxWidth,const Standard_Integer thePxHeight,const Quantity_NameOfColor theBackColor = Quantity_NOC_MATRAGRAY,const Aspect_Handle theParent = 0,const Aspect_Handle theMenu = 0,const Standard_Address theClientStruct = 0);
   //! Creates a Window based on the existing window handle. <br>
 //!          This handle equals ( aPart1 << 16 ) + aPart2. <br>
-  Standard_EXPORT   WNT_Window(const Handle(WNT_GraphicDevice)& aDevice,const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
+  Standard_EXPORT   WNT_Window(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
   //! Creates a Window based on the existing window <aHandle>. <br>
-  Standard_EXPORT   WNT_Window(const Handle(WNT_GraphicDevice)& aDevice,const Standard_Integer aPart1,const Standard_Integer aPart2,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
+  Standard_EXPORT   WNT_Window(const Standard_Integer aPart1,const Standard_Integer aPart2,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY);
   //! Destroies the Window and all resourses attached to it. <br>
   Standard_EXPORT   virtual  void Destroy() ;
 ~WNT_Window()
 {
   Destroy();
 }
-  //! Modifies the window background. <br>
-  Standard_EXPORT   virtual  void SetBackground(const Aspect_Background& Background) ;
-  //! Modifies the window background. <br>
-  Standard_EXPORT   virtual  void SetBackground(const Quantity_NameOfColor BackColor) ;
-  //! Modifies the window background. <br>
-  Standard_EXPORT   virtual  void SetBackground(const Quantity_Color& color) ;
-  //! Modifies the window background. <br>
-  Standard_EXPORT     void SetBackground(const Aspect_Handle aBackPixmap) ;
-  //! Loads the window background from an image file <aName> <br>
-//! defined with a supported format XWD,GIF or BMP <br>
-//! and returns TRUE if the operation is successfull. <br>
-//!  Category: Methods to modify the class definition <br>
-  Standard_EXPORT     Standard_Boolean SetBackground(const Standard_CString aName,const Aspect_FillMethod aMethod = Aspect_FM_CENTERED) ;
-  //! Modifies the window gradient background. <br>
-//!  Warning: the gradient background colours is ignored when the quality <br>
-//!	   of this window is TRANSPARENT. <br>
-  Standard_EXPORT   virtual  void SetBackground(const Aspect_GradientBackground& Background) ;
-  //! Modifies the window gradient background. <br>
-//!  Warning: the gradient background colours are ignored when the quality <br>
-//!	   of this window is TRANSPARENT. <br>
-  Standard_EXPORT     void SetBackground(const Quantity_Color& aCol1,const Quantity_Color& aCol2,const Aspect_GradientFillMethod aMethod = Aspect_GFM_HOR) ;
   //! Sets cursor <aCursor> for ENTIRE WINDOW CLASS to which <br>
 //!          the Window belongs. <br>
   Standard_EXPORT     void SetCursor(const Aspect_Handle aCursor) const;
-  //! Sets icon <anIcon> for window <br>
-  Standard_EXPORT     void SetIcon(const Aspect_Handle anIcon,const Standard_CString aName = 0) ;
-  //! Sets name for window's icon <br>
-  Standard_EXPORT     void SetIconName(const Standard_CString aName) ;
-  //! Activates/Deactivates the Double Buffering capability <br>
-//!	    for this window. <br>
-//!  Warning: Double Buffering is always DISABLE by default. <br>
-//!  Trigger: Raises if BackingStore () isn't allowed for this Window <br>
-  Standard_EXPORT   virtual  void SetDoubleBuffer(const Standard_Boolean DBmode) ;
-  //!  Flushes all graphics to the screen and Swap the Double <br>
-//!	     buffer if Enable <br>
-//!  Trigger: Raises if Something is WRONG at Drawing Time. <br>
-  Standard_EXPORT   virtual  void Flush() const;
   //!  Opens the window <me>. <br>
   Standard_EXPORT   virtual  void Map() const;
   //! Opens a window <me> according to <aMapMode>. <br>
@@ -186,49 +95,6 @@ public:
   //! Apply the mapping change to the window <me> <br>
 //! and returns TRUE if the window is mapped at screen. <br>
   Standard_EXPORT   virtual  Standard_Boolean DoMapping() const;
-  //! Clears the Window in the Background color. <br>
-  Standard_EXPORT   virtual  void Clear() const;
-  //!  Clears the Window Area defined by his center and PIXEL <br>
-//!           size in the Background color <br>
-//!  Trigger:  Raises if Window is not defined properly <br>
-  Standard_EXPORT   virtual  void ClearArea(const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height) const;
-  //! Restores The Window from the BackingStored Window <br>
-//!	    See BackingStore () method. <br>
-  Standard_EXPORT   virtual  void Restore() const;
-  //! Restores The Window Area defined by his center <br>
-//!	    and PIXEL size from the BackingStored Window <br>
-//!	    See BackingStore () method. <br>
-  Standard_EXPORT   virtual  void RestoreArea(const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height) const;
-  //! Dumps the Window to an XWD,GIF or BMP filei with <br>
-//! an optional gamma correction value according to the graphic system. <br>
-//! and returns TRUE if the dump occurs normaly. <br>
-//!  Trigger: Raises if Window is not defined properly <br>
-  Standard_EXPORT   virtual  Standard_Boolean Dump(const Standard_CString aFilename,const Standard_Real aGammaValue = 1.0) const;
-  //! Dumps the Window Area defined by his center and PIXEL size <br>
-//!	to an image file with an optional gamma correction value <br>
-//!  and returns TRUE if the dump occurs normaly. <br>
-//!  Trigger: Raises if Window is not defined properly <br>
-//!	    or the area is out of the Window. <br>
-  Standard_EXPORT   virtual  Standard_Boolean DumpArea(const Standard_CString aFilename,const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height,const Standard_Real aGammaValue = 1.0) const;
-  //! dump the full contents of the window to a pixmap. <br>
-  Standard_EXPORT   virtual  Handle_Aspect_PixMap ToPixMap() const;
-  //! Loads the XWD file to this Window. <br>
-//!          Returns TRUE if the loading occurs normaly. <br>
-//!  Warning: Note that the Window is enlarged automatically <br>
-//!          when the image size is too large for this window. <br>
-//!  Trigger: Raises if Window is not defined properly <br>
-  Standard_EXPORT   virtual  Standard_Boolean Load(const Standard_CString aFilename) const;
-  //! Loads the XWD file to Window Area defined by his center <br>
-//!          and PIXEL size. <br>
-//!          Returns TRUE if the loading occurs normaly. <br>
-//!  Warning: Note that the Image is zoomed automatically <br>
-//!          when the image size is too large for this window area. <br>
-//!  Trigger: Raises if Window is not defined properly <br>
-//!          or the area is out of the Window. <br>
-  Standard_EXPORT   virtual  Standard_Boolean LoadArea(const Standard_CString aFilename,const Standard_Integer Xc,const Standard_Integer Yc,const Standard_Integer Width,const Standard_Integer Height) const;
-  //! Sets format of the image file created by Dump or <br>
-//!          DumpArea methods. <br>
-  Standard_EXPORT     void SetOutputFormat(const WNT_TypeOfImage aFormat) ;
   //! Changes variables due to window position. <br>
   Standard_EXPORT     void SetPos(const Standard_Integer X,const Standard_Integer Y,const Standard_Integer X1,const Standard_Integer Y1) ;
   //! Sets user defined flags in the extra window data area. <br>
@@ -239,54 +105,21 @@ public:
 //!          Supported flags WDF_* are listed in InterfaceGraphic_WNT.hxx <br>
 //!          In particular, the window backround can be turned on using this method. <br>
   Standard_EXPORT     void ResetFlags(const Standard_Integer aFlags) ;
-  //! Returns the BackingStore capability for this Window. <br>
-//!	    If Answer is True Exposure can be recovered by <br>
-//!		Restore RestoreArea methods. <br>
-//!	    If Answer is False, Application must Redraw the <br>
-//!	        exposed area. <br>
-  Standard_EXPORT   virtual  Standard_Boolean BackingStore() const;
-  //! Returns the DoubleBuffer state. <br>
-      virtual  Standard_Boolean DoubleBuffer() const;
   //! Returns True if the window <me> is opened <br>
 //!	        and False if the window is closed. <br>
   Standard_EXPORT   virtual  Standard_Boolean IsMapped() const;
   //! Returns The Window RATIO equal to the physical <br>
 //!	    WIDTH/HEIGHT dimensions. <br>
   Standard_EXPORT   virtual  Quantity_Ratio Ratio() const;
-  //! Returns The Window POSITION in DSU <br>
-  Standard_EXPORT   virtual  void Position(Quantity_Parameter& X1,Quantity_Parameter& Y1,Quantity_Parameter& X2,Quantity_Parameter& Y2) const;
   //! Returns The Window POSITION in PIXEL <br>
   Standard_EXPORT   virtual  void Position(Standard_Integer& X1,Standard_Integer& Y1,Standard_Integer& X2,Standard_Integer& Y2) const;
-  //! Returns The Window SIZE in DSU <br>
-  Standard_EXPORT   virtual  void Size(Quantity_Parameter& Width,Quantity_Parameter& Height) const;
   //! Returns The Window SIZE in PIXEL <br>
   Standard_EXPORT   virtual  void Size(Standard_Integer& Width,Standard_Integer& Height) const;
-  //! Returns The Window SIZE in MM <br>
-  Standard_EXPORT   virtual  void MMSize(Standard_Real& Width,Standard_Real& Height) const;
-  //! Returns the DSU value depending of the PIXEL value. <br>
-  Standard_EXPORT   virtual  Quantity_Parameter Convert(const Standard_Integer PV) const;
-  //! Returns the PIXEL value depending of the DSU value. <br>
-  Standard_EXPORT   virtual  Standard_Integer Convert(const Quantity_Parameter DV) const;
-  //! Returns the DSU position depending of the PIXEL position. <br>
-  Standard_EXPORT   virtual  void Convert(const Standard_Integer PX,const Standard_Integer PY,Quantity_Parameter& DX,Quantity_Parameter& DY) const;
-  //! Returns the PIXEL position depending of the DSU position. <br>
-  Standard_EXPORT   virtual  void Convert(const Quantity_Parameter DX,const Quantity_Parameter DY,Standard_Integer& PX,Standard_Integer& PY) const;
   //! Returns the Windows NT handle of the created window <me>. <br>
         Aspect_Handle HWindow() const;
   //! Returns the Windows NT handle parent of the created window <me>. <br>
         Aspect_Handle HParentWindow() const;
-  //! Returns the Windows NT double buffer pixmap handle <br>
-//!          of the created window <me>. <br>
-//!	    If BackingStore () is permitted. <br>
-        Aspect_Handle HPixmap() const;
-  //! Returns address of the window procedure. <br>
-        Standard_Address WndProc() const;
-  //! Returns ImageManager of the Window. <br>
-        Handle_WNT_ImageManager ImageManager() const;
 
-friend class WNT_WDriver;
-friend class WNT_IconBox;
-friend class WNT_PixMap;
 
 
   DEFINE_STANDARD_RTTI(WNT_Window)
@@ -301,20 +134,14 @@ Standard_Integer aYBottom;
 Handle_WNT_WClass myWClass;
 Aspect_Handle myHWindow;
 Aspect_Handle myHParentWindow;
-Aspect_Handle myHPixmap;
-Standard_Boolean myDoubleBuffer;
 WNT_WindowData myExtraData;
-WNT_TypeOfImage myFormat;
-Handle_WNT_ImageManager myImages;
-Handle_WNT_Icon myIcon;
-Standard_Address myWndProc;
 Standard_Address myUsrData;
 
 
 private: 
 
   //! private method <br>
-  Standard_EXPORT     void doCreate(const Handle(WNT_GraphicDevice)& aDevice,const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY) ;
+  Standard_EXPORT     void doCreate(const Aspect_Handle aHandle,const Quantity_NameOfColor aBackColor = Quantity_NOC_MATRAGRAY) ;
 
 
 

@@ -365,9 +365,10 @@ OSD_Path::OSD_Path(const TCollection_AsciiString& aDependentName,
      MacExtract(aDependentName,myDisk,myTrek,myName,myExtension);
      break;
   default:
-#ifndef DEB
+#ifdef DEB
        cout << " WARNING WARNING : OSD Path for an Unknown SYSTEM : " << (Standard_Integer)todo << endl;
 #endif 
+     UnixExtract(aDependentName,myNode,myUserName,myPassword,myTrek,myName,myExtension);
      break ;
  } 
 }
@@ -415,19 +416,6 @@ void OSD_Path::SetValues(const TCollection_AsciiString& Nod,
                          const TCollection_AsciiString& Trk,
                          const TCollection_AsciiString& Nam,
                          const TCollection_AsciiString& ext){
-
- if (!Nod.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : Node");
- if (!UsrNm.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : User Name");
- if (!Dsk.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : Disk");
- if (!Trk.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : Trek");
- if (!Nam.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : Name");
- if (!ext.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetValues argument : Extension");
 
  myNode = Nod;
  myUserName = UsrNm;
@@ -521,25 +509,7 @@ static Standard_Boolean Analyse_UNIX(const TCollection_AsciiString& /*name*/)
 
 Standard_Boolean OSD_Path::IsValid(const TCollection_AsciiString& aDependentName,
                                    const OSD_SysType aSysType)const{
- if (aDependentName.Length()==0) return(Standard_True);
- if (!aDependentName.IsAscii()) return(Standard_False);
-
- OSD_SysType provSys;
- if (aSysType == OSD_Default) provSys = SysDep;
-                      else provSys = aSysType; 
-
- switch (provSys){
-  case OSD_VMS:
-            return(Analyse_VMS(aDependentName));
-  case OSD_OS2:
-  case OSD_WindowsNT:
-            return(Analyse_DOS(aDependentName));
-  case OSD_MacOs:
-            return(Analyse_MACOS(aDependentName));
-  default:
-            return(Analyse_UNIX(aDependentName));
-
- }
+ return Standard_True;
 }
 
 
@@ -947,8 +917,6 @@ TCollection_AsciiString OSD_Path::Name()const{
 
 
 void OSD_Path::SetNode(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetNode bad name");
  myNode = aName;
 }
 
@@ -956,8 +924,6 @@ void OSD_Path::SetNode(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetUserName(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetUserName bad name");
  myUserName = aName;
 }
 
@@ -965,8 +931,6 @@ void OSD_Path::SetUserName(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetPassword(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetPassword bad name");
   myPassword = aName;
 }
 
@@ -974,8 +938,6 @@ void OSD_Path::SetPassword(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetDisk(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetDisk bad name");
   myDisk = aName;
 }
 
@@ -983,8 +945,6 @@ void OSD_Path::SetDisk(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetTrek(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetTrek bad name");
   myTrek = aName;
 }
 
@@ -992,8 +952,6 @@ void OSD_Path::SetTrek(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetName(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetName bad name");
   myName = aName;
 }
 
@@ -1001,8 +959,6 @@ void OSD_Path::SetName(const TCollection_AsciiString& aName){
 
 
 void OSD_Path::SetExtension(const TCollection_AsciiString& aName){
- if (!aName.IsAscii())
-  Standard_ConstructionError::Raise("OSD_Path::SetExtension bad name");
   myExtension = aName;
 }
 
@@ -1041,10 +997,10 @@ OSD_Path ::  OSD_Path (
  static char __ext [ _MAX_EXT ];
 
  memset(__drive, 0,_MAX_DRIVE);
- memset(__dir, 0,_MAX_DRIVE);
- memset(__trek, 0,_MAX_DRIVE);
- memset(__fname, 0,_MAX_DRIVE);
- memset(__ext, 0,_MAX_DRIVE);
+ memset(__dir, 0,_MAX_DIR);
+ memset(__trek, 0,_MAX_DIR);
+ memset(__fname, 0,_MAX_FNAME);
+ memset(__ext, 0,_MAX_EXT);
  Standard_Character      chr;
 
  TEST_RAISE(  aSysType, TEXT( "OSD_Path" )  );
@@ -1571,10 +1527,14 @@ static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
 
 static Standard_Integer RemoveExtraSeparator(TCollection_AsciiString& aString) {
 
-  Standard_Integer i, j, len ;
+  Standard_Integer i, j, len,start = 1 ;
 
   len = aString.Length() ;
-  for (i = j = 1 ; j <= len ; i++,j++) {
+#ifdef _WIN32
+  if (len > 1 && aString.Value(1) == '/' && aString.Value(2) == '/')
+    start = 2;
+#endif 
+  for (i = j = start ; j <= len ; i++,j++) {
       Standard_Character c = aString.Value(j) ;
       aString.SetValue(i,c) ;
       if (c == '/')

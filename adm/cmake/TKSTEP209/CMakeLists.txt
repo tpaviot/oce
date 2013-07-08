@@ -7,9 +7,9 @@ SET(TOOLKIT_MODULES
 	RWStepFEA
 )
 SET(TOOLKIT_DEPENDS
-	TKSTEPBase
 	TKernel
 	TKXSBase
+	TKSTEPBase
 )
 
 INCLUDE(../BuildToolkit.cmake)

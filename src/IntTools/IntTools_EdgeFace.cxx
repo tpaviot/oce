@@ -33,7 +33,7 @@
 #include <IntTools_CommonPrt.hxx>
 #include <IntTools_Root.hxx>
 #include <IntTools_BeanFaceIntersector.hxx>
-#include <IntTools_Context.hxx>
+#include <BOPInt_Context.hxx>
 
 #include <BRep_Tool.hxx>
 
@@ -101,7 +101,7 @@ static
 //function : SetContext
 //purpose  : 
 //=======================================================================
-void IntTools_EdgeFace::SetContext(const Handle(IntTools_Context)& theContext) 
+void IntTools_EdgeFace::SetContext(const Handle(BOPInt_Context)& theContext) 
 {
   myContext = theContext;
 }
@@ -110,7 +110,7 @@ void IntTools_EdgeFace::SetContext(const Handle(IntTools_Context)& theContext)
 //function : Context
 //purpose  : 
 //=======================================================================
-const Handle(IntTools_Context)& IntTools_EdgeFace::Context()const 
+const Handle(BOPInt_Context)& IntTools_EdgeFace::Context()const 
 {
   return myContext;
 }
@@ -410,13 +410,7 @@ void IntTools_EdgeFace::CheckData()
   Standard_Boolean IntTools_EdgeFace::IsProjectable(const Standard_Real t) const
 {
   Standard_Boolean bFlag;
-  Standard_Real Umin, Usup, Vmin, Vsup;
 
-  Umin=myS.FirstUParameter();
-  Usup=myS.LastUParameter();
-  Vmin=myS.FirstVParameter();
-  Vsup=myS.LastVParameter ();
-  
   gp_Pnt P;
   myC.D0(t, P);
   GeomAPI_ProjectPointOnSurf aProjector;
@@ -455,7 +449,8 @@ void IntTools_EdgeFace::CheckData()
 //=======================================================================
   Standard_Real IntTools_EdgeFace::DistanceFunction(const Standard_Real t)
 {
-  Standard_Real Umin, Usup, Vmin, Vsup, aD;
+  Standard_Real aD;
+
   //
   gp_Pnt P;
   myC.D0(t, P);
@@ -467,11 +462,6 @@ void IntTools_EdgeFace::CheckData()
     aD=aD-myCriteria;
     return aD; 
   }
-  
-  Umin=myS.FirstUParameter();
-  Usup=myS.LastUParameter();
-  Vmin=myS.FirstVParameter();
-  Vsup=myS.LastVParameter ();
   
   //
   Standard_Boolean bFlag = Standard_False;
@@ -888,11 +878,10 @@ void IntTools_EdgeFace::CheckData()
       aCommonPrt.SetVertexParameter1(tm);
       aCommonPrt.SetRange1 (af1, al1);
     }
-    return 0;
+	 return 0;
   }
-
-#if 0 // @todo Should this code really be removed? (a test will be appropriate)
   //
+  /*
   dt=al1-af1;
   if (dt<1.e-5) {
     gp_Pnt aPF, aPL;
@@ -931,8 +920,8 @@ void IntTools_EdgeFace::CheckData()
       aCommonPrt.SetType(TopAbs_EDGE);
     }
   }
+  */
   return 0;
-#endif
 }
 
 
@@ -1260,7 +1249,7 @@ void IntTools_EdgeFace::CheckData()
   }
   //
   if (myContext.IsNull()) {
-    myContext=new IntTools_Context;
+    myContext=new BOPInt_Context;
   }
   //
   myIsDone = Standard_False;
@@ -1404,11 +1393,12 @@ void IntTools_EdgeFace::CheckData()
 							Standard_Real& aTx) 
 {
   Standard_Real aTF, aTL, Tol, U1f,U1l,V1f,V1l, af, al,aDist2, aMinDist2, aTm, aDist2New;
+  Standard_Real aEpsT;
   Standard_Boolean theflag=Standard_False;
   Standard_Integer aNbExt, i, iLower ;
 
   aCP.Range1(aTF, aTL);
-
+  aEpsT=8.e-5;
   aTm=0.5*(aTF+aTL);
   aDist2=DistanceFunction(aTm);
   aDist2 *= aDist2;
@@ -1462,15 +1452,15 @@ void IntTools_EdgeFace::CheckData()
   Extrema_POnSurf aPOnS;
   anExtrema.Points(iLower, aPOnC, aPOnS);
 
-  
+ 
   aTx=aPOnC.Parameter();
-  
-  if (fabs (aTx-aTF) < myEpsT) {
-    return !theflag;
+  ///
+  if (fabs (aTx-aTF) < aEpsT) {
+    return theflag;
   }
 
-  if (fabs (aTx-aTL) < myEpsT) {
-    return !theflag;
+  if (fabs (aTx-aTL) < aEpsT) {
+    return theflag;
   }
 
   if (aTx>aTF && aTx<aTL) {

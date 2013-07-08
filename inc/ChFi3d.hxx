@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -34,27 +37,30 @@ class ChFi3d_SearchSing;
 class ChFi3d  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
-  
+  //! Returns  Reversed  in  Or1  and(or)  Or2  if <br>
+//!          the  concave edge  defined by the  interior of faces F1 and F2, <br>
+//!          in  the  neighbourhood of  their boundary E is of the edge opposite to  the <br>
+//!          normal  of their surface  support.  The  orientation of <br>
+//!          faces is  not  taken  into  consideration in  the calculation. The <br>
+//!          function  returns  0 if  the calculation fails (tangence), <br>
+//!          if  not, it  returns the  number of  choice of  the fillet <br>
+//!          or chamfer corresponding to  the orientations  calculated <br>
+//!          and  to  the tangent to  the  guide line read in  E. <br>
+//! <br>
   Standard_EXPORT   static  Standard_Integer ConcaveSide(const BRepAdaptor_Surface& S1,const BRepAdaptor_Surface& S2,const TopoDS_Edge& E,TopAbs_Orientation& Or1,TopAbs_Orientation& Or2) ;
-  
+  //! Same  as ConcaveSide, but the orientations are <br>
+//!          logically  deduced from  the result of  the call of <br>
+//!          ConcaveSide on  the  first pair of faces of  the fillet or <br>
+//!          chamnfer. <br>
   Standard_EXPORT   static  Standard_Integer NextSide(TopAbs_Orientation& Or1,TopAbs_Orientation& Or2,const TopAbs_Orientation OrSave1,const TopAbs_Orientation OrSave2,const Standard_Integer ChoixSauv) ;
   //! Same  as  the  other NextSide, but the calculation is  done <br>
 //!          on an edge  only. <br>
   Standard_EXPORT   static  void NextSide(TopAbs_Orientation& Or,const TopAbs_Orientation OrSave,const TopAbs_Orientation OrFace) ;
-  
+  //! Enables  to  determine while  processing  an  angle, if <br>
+//!          two fillets or chamfers constituting a face have <br>
+//!          identic or opposed  concave  edges. <br>
   Standard_EXPORT   static  Standard_Boolean SameSide(const TopAbs_Orientation Or,const TopAbs_Orientation OrSave1,const TopAbs_Orientation OrSave2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2) ;
 
 

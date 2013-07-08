@@ -228,8 +228,9 @@ Method:
     Us = Sol.Value(NoSol);
     Cu = ElCLib::Value(Us,C);
     mySqDist[myNbExt] = Cu.SquareDistance(P);
-    myIsMin[myNbExt] = (NoSol == 1);
     myPoint[myNbExt] = Extrema_POnCurv(Us,Cu);
+    Cu = ElCLib::Value(Us + 0.1, C);
+    myIsMin[myNbExt] = mySqDist[myNbExt] < Cu.SquareDistance(P);
     myNbExt++;
   }
   myDone = Standard_True;
@@ -401,7 +402,7 @@ Method:
       Cu = ElCLib::Value(Us,C);
       DejaEnr = Standard_False;
       for (NoExt = 0; NoExt < myNbExt; NoExt++) {
-	if (TbExt[NoExt].SquareDistance(Cu) < Precision::Confusion() * Precision::Confusion()) {
+    if (TbExt[NoExt].SquareDistance(Cu) < Precision::SquareConfusion()) {
 	  DejaEnr = Standard_True;
 	  break;
 	}

@@ -90,8 +90,7 @@ void Graphic3d_GraphicDriver::PrintCGroup (const Graphic3d_CGroup& ACGroup, cons
 
   if (AField) {
     cout << "\tstruct id " << ACGroup.Struct->Id << "\n";
-    cout << "\tgroup labels " << ACGroup.LabelBegin << ", "
-      << ACGroup.LabelEnd << "\n";
+    cout << "\tgroup\n";
     cout << flush;
   }
 
@@ -237,4 +236,9 @@ Standard_Integer Graphic3d_GraphicDriver::Trace () const {
 
   return MyTraceLevel;
 
+}
+
+const Handle(Aspect_DisplayConnection)& Graphic3d_GraphicDriver::GetDisplayConnection() const
+{
+  return myDisplayConnection;
 }

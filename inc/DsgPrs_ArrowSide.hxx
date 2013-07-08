@@ -6,7 +6,8 @@
 #ifndef _DsgPrs_ArrowSide_HeaderFile
 #define _DsgPrs_ArrowSide_HeaderFile
 
-
+//!  Designates how many arrows will be displayed and <br>
+//! where they will be displayed in presenting a length. <br>
 enum DsgPrs_ArrowSide {
 DsgPrs_AS_NONE,
 DsgPrs_AS_FIRSTAR,

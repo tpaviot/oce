@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -50,21 +53,29 @@ class TestTopOpeTools_HArray1OfMesure;
 //! <br>
 //!  In a Test.cxx program using  the Draw command interpretor, dealing <br>
 //!  a set of commands theCommands (Draw_CommandManager theCommands)  : <br>
+//! <br>
+//!  TestTopOpeTools::TraceCommands(); <br>
+//! <br>
+//!  Compile your Test.cxx, run and then, under the command manager prompt : <br>
+//! <br>
+//!  Trace : prints the list of the Trace flags available on top.ope. kernel <br>
+//!  Trace <flag> : activates Trace code of <flag> <br>
+//!  Trace <flag> <1 | 0> : activates/desactivates Trace code of <flag> <br>
+//!  Trace <1 | 0> : activates/desactivates all Trace code of top.ope. kernel <br>
+//! <br>
+//!  How to add Traces : <br>
+//!  ------------------- <br>
+//! <br>
+//!  It it possible to add your own "Traced" portions of code in your code. <br>
+//!  In your test program, simply add : <br>
+//! <br>
+//!  #include <TestTopOpeTools_AddTrace.hxx> <br>
+//! <br>
+//!  and see the file TestTopOpeTools_Trace.hxx for explanations. <br>
 class TestTopOpeTools  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! Defines all topological operation test commands <br>
   Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;

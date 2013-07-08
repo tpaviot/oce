@@ -57,6 +57,10 @@ class gp_XYZ;
 
 //! defines IGESDrawing, Type <404> Form <0> <br>
 //!          in package IGESDraw <br>
+//! <br>
+//!          Specifies a drawing as a collection of annotation entities <br>
+//!          defined in drawing space, and views which together <br>
+//!          constitute a single representation of a part <br>
 class IGESDraw_Drawing : public IGESData_IGESEntity {
 
 public:

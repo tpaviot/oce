@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,18 +47,7 @@ class gp_Circ2d;
 class Geom2dGcc_MyC2d2TanOn  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   Geom2dGcc_MyC2d2TanOn(const GccEnt_QualifiedCirc& Qualified1,const Geom2dGcc_MyQCurve& Qualified2,const gp_Lin2d& OnLine,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Param3,const Standard_Real Tolerance);

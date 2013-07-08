@@ -18,31 +18,7 @@
 -- purpose or non-infringement. Please see the License for the specific terms
 -- and conditions governing the rights and limitations under the License.
 
--- Modified:    01/08/97 ; PCT : ajout texture mapping
---              07/08/97 ; PCT : ajout texture environnante
---              27/08/97 ; PCT : ajout coordonnee texture
---              00/11/97 ; CAL : retrait de la dependance avec math
---              00/11/97 ; CAL : ajout polyline par 2 points
---      16-09-98 ; BGN : Points d'entree du Triedre (S3819, Phase 1)
---              22-09-98 ; BGN : S3989 (anciennement S3819)
---                               TypeOfTriedron* from Aspect(et pas Graphic3d)
---              03-11-98 ; CAL : Introduction de Visual3d_LayerManager.
---              07-10-99 : EUG : Degeneration support (G003)
---               Add DegenerateStructure() and
---                   SetBackFacingModel() methods.
---      10-11-99 ; GG  : PRO19603 Change Redraw( ) method
---      16-06-2000 : ATS,GG : G005 - method PrimitiveArray, which are interface of OpenGl
---                            package, and used to initialize internal fields
---                            of primitives (Convert high level data to internal presentation).
---      17/08/00 ; THA ; Thomas HARTL <t-hartl@muenchen.matra-dtv.fr>
---              -> Add Print methods (works only under Windows).
---      27/03/02 ; GG  ; RIC120302 Add new method Begin(Aspect_Display)
---              28/05/02 ; VSV : New trihedron
---      23/12/02 ; SAV : Added methods to set background image and its
---                       appearence style
---              20/01/09 ; ABD : Integration support of system fonts (using FTGL and FreeType)
-
-deferred class GraphicDriver from Graphic3d inherits GraphicDriver from Aspect
+deferred class GraphicDriver from Graphic3d inherits TShared
 
     ---Version:
 
@@ -71,15 +47,16 @@ uses
     PlaneAngle          from Quantity,
 
     AlienImage          from AlienImage,
+    PixMap              from Image,
 
     Array1OfEdge        from Aspect,
     CLayer2d            from Aspect,
-    GraphicDriver       from Aspect,
     TypeOfTriedronEcho  from Aspect,
     TypeOfTriedronPosition  from Aspect,
     Handle              from Aspect,
     Display             from Aspect,
     PrintAlgo           from Aspect,
+    DisplayConnection_Handle from Aspect,
 
     AspectLine3d        from Graphic3d,
     AspectMarker3d      from Graphic3d,
@@ -93,31 +70,16 @@ uses
     CPlane              from Graphic3d,
     CStructure          from Graphic3d,
     CView               from Graphic3d,
-    CRawBufferData      from Image,
+    BufferType          from Graphic3d,
     Structure           from Graphic3d,
     TextPath            from Graphic3d,
     TypeOfComposition   from Graphic3d,
-    TypeOfPolygon       from Graphic3d,
     TypeOfPrimitive     from Graphic3d,
     Vector              from Graphic3d,
     Array1OfVertex      from Graphic3d,
     Array2OfVertex      from Graphic3d,
     Vertex              from Graphic3d,
-    Array1OfVertexC     from Graphic3d,
-    Array2OfVertexC     from Graphic3d,
-    VertexC             from Graphic3d,
-    Array1OfVertexN     from Graphic3d,
-    Array2OfVertexN     from Graphic3d,
-    VertexN             from Graphic3d,
-    Array1OfVertexNC    from Graphic3d,
-    Array2OfVertexNC    from Graphic3d,
-    VertexNC            from Graphic3d,
     VerticalTextAlignment   from Graphic3d,
-    CInitTexture        from Graphic3d,
-    TypeOfTexture       from Graphic3d,
-    VertexNT            from Graphic3d,
-    Array1OfVertexNT    from Graphic3d,
-    Array2OfVertexNT    from Graphic3d,
     PrimitiveArray      from Graphic3d,
     PtrFrameBuffer      from Graphic3d,
     HArray1OfByte       from TColStd,
@@ -128,7 +90,7 @@ uses
     HArray1OfReal       from TColStd,
     CUserDraw           from Graphic3d,
     NListOfHAsciiString from Graphic3d,
-    FontAspect          from OSD,
+    FontAspect          from Font,
     CGraduatedTrihedron from Graphic3d
 
 raises
@@ -145,17 +107,11 @@ is
     -- Category: Init methods
     -------------------------
 
-    Begin ( me          : mutable;
-            ADisplay    : CString from Standard )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_begin
-
-        Begin ( me              : mutable;
-                ADisplay        : Display from Aspect )
-                returns Boolean from Standard
-                is deferred;
-        ---Purpose: call_togl_begin_display
+    Begin (me: mutable;
+           theDisplayConnection: DisplayConnection_Handle from Aspect)
+       returns Boolean from Standard
+       is deferred;
+    ---Purpose: Starts graphic driver with given connection
 
     End ( me    : mutable )
         is deferred;
@@ -186,12 +142,6 @@ is
         returns Integer from Standard
         is deferred;
     ---Purpose: call_togl_inquireview
-
-    InquireTextureAvailable ( me    : mutable )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: Returns Standard_True if texture is
-    --      supported by the graphic driver
 
     ------------------------------
     -- Category: Highlight methods
@@ -232,11 +182,6 @@ is
         is deferred;
     ---Purpose: call_togl_cleargroup
 
-    CloseGroup ( me     : mutable;
-             ACGroup    : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_closegroup
-
     FaceContextGroup ( me       : mutable;
                        ACGroup  : CGroup from Graphic3d;
                        NoInsert : Integer from Standard )
@@ -268,11 +213,6 @@ is
                          ATexture   : HArray1OfByte from TColStd )
                 is deferred;
     ---Purpose: call_togl_markercontextgroup
-
-    OpenGroup ( me      : mutable;
-                ACGroup : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_opengroup
 
     RemoveGroup ( me        : mutable;
                   ACGroup   : CGroup from Graphic3d )
@@ -483,11 +423,6 @@ is
         is deferred;
     ---Purpose: call_togl_transformstructure
 
-        DegenerateStructure ( me                        : mutable;
-                              ACStructure       : CStructure from Graphic3d )
-                is deferred;
-        ---Purpose: call_togl_degeneratestructure
-
     Transparency ( me       : mutable;
                    ACView   : CView from Graphic3d;
                    AFlag    : Boolean from Standard )
@@ -531,28 +466,13 @@ is
 
     Marker ( me         : mutable;
              ACGroup    : CGroup from Graphic3d;
-             APoint     : Vertex from Graphic3d;
-             EvalMinMax : Boolean from Standard = Standard_True )
+             APoint     : Vertex from Graphic3d )
         is deferred;
 
     MarkerSet ( me          : mutable;
                 ACGroup     : CGroup from Graphic3d;
-                ListVertex  : Array1OfVertex from Graphic3d;
-                EvalMinMax  : Boolean from Standard = Standard_True )
+                ListVertex  : Array1OfVertex from Graphic3d )
         is deferred;
-
-    ----------------------------------------
-    -- Category: Methods to create Polygon
-    -- for Purpose : see Graphic3d_Group.cdl
-    ----------------------------------------
-
-    Polygon ( me            : mutable;
-              ACGroup       : CGroup from Graphic3d;
-              ListVertex    : Array1OfVertex from Graphic3d;
-              AType         : TypeOfPolygon from Graphic3d = Graphic3d_TOP_CONVEX;
-              EvalMinMax    : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_polygon
 
     ----------------------------------------
     -- Category: Methods to create Text
@@ -693,20 +613,6 @@ is
     ---Purpose: call_togl_graduatedtrihedron_minmaxvalues
     is deferred;
 
-    ---------------------------
-    -- Category: Animation mode
-    ---------------------------
-
-    BeginAnimation ( me : mutable;
-             ACView : CView from Graphic3d)
-        is deferred;
-    ---Purpose: call_togl_begin_animation
-
-    EndAnimation ( me   : mutable;
-               ACView   : CView from Graphic3d)
-        is deferred;
-    ---Purpose: call_togl_end_animation
-
     ----------------------------------
     -- Category: Ajout mode methods
     ----------------------------------
@@ -725,6 +631,23 @@ is
     -- Category: Immediat mode methods
     ----------------------------------
 
+    SetImmediateModeDrawToFront (me                   : mutable;
+                                 theCView             : CView from Graphic3d;
+                                 theDrawToFrontBuffer : Boolean from Standard)
+    returns Boolean from Standard
+    is deferred;
+    ---Purpose: @param theDrawToFrontBuffer Advanced option to modify rendering mode:
+    -- 1. TRUE.  Drawing immediate mode structures directly to the front buffer over the scene image.
+    --    Fast, so preferred for interactive work (used by default).
+    --    However these extra drawings will be missed in image dump since it is performed from back buffer.
+    --    Notice that since no pre-buffering used the V-Sync will be ignored and rendering could be seen
+    --    in run-time (in case of slow hardware) and/or tearing may appear.
+    --    So this is strongly recommended to draw only simple (fast) structures.
+    -- 2. FALSE. Drawing immediate mode structures to the back buffer.
+    --    The complete scene is redrawn first, so this mode is slower if scene contains complex data and/or V-Sync is turned on.
+    --    But it works in any case and is especially useful for view dump because the dump image is read from the back buffer.
+    -- @return previous mode.
+
     BeginImmediatMode ( me              : mutable;
                         ACView          : CView from Graphic3d;
                         ACUnderLayer    : CLayer2d from Aspect;
@@ -735,21 +658,10 @@ is
         is deferred;
     ---Purpose: call_togl_begin_immediat_mode
 
-    BeginPolyline ( me  : mutable )
-        is deferred;
-    ---Purpose: call_togl_begin_polyline
-
     ClearImmediatMode ( me  : mutable; ACView       : CView from Graphic3d;
                   aFlush        : Boolean from Standard = Standard_True)
         is deferred;
     ---Purpose: call_togl_clear_immediat_mode
-
-    Draw ( me   : mutable;
-           X    : ShortReal from Standard;
-           Y    : ShortReal from Standard;
-           Z    : ShortReal from Standard )
-        is deferred;
-    ---Purpose: call_togl_draw
 
     DrawStructure ( me          : mutable;
                     ACStructure : CStructure from Graphic3d )
@@ -760,74 +672,6 @@ is
                       Synchronize   : Integer from Standard )
         is deferred;
     ---Purpose: call_togl_end_immediat_mode
-
-    EndPolyline ( me    : mutable )
-        is deferred;
-    ---Purpose: call_togl_end_polyline
-
-    Move ( me   : mutable;
-           X    : ShortReal from Standard;
-           Y    : ShortReal from Standard;
-           Z    : ShortReal from Standard )
-        is deferred;
-    ---Purpose: call_togl_move
-
-    SetLineColor ( me   : mutable;
-                   R    : ShortReal from Standard;
-                   G    : ShortReal from Standard;
-                   B    : ShortReal from Standard )
-        is deferred;
-    ---Purpose: call_togl_set_linecolor
-
-    SetLineType ( me    : mutable;
-                  Type  : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_set_linetype
-
-    SetLineWidth ( me   : mutable;
-               Width    : ShortReal from Standard )
-        is deferred;
-    ---Purpose: call_togl_set_linewidth
-
-    SetMinMax ( me  : mutable;
-                X1  : ShortReal from Standard;
-                Y1  : ShortReal from Standard;
-                Z1  : ShortReal from Standard;
-                X2  : ShortReal from Standard;
-                Y2  : ShortReal from Standard;
-                Z2  : ShortReal from Standard )
-        is deferred;
-    ---Purpose: call_togl_set_minmax
-
-    Transform ( me      : mutable;
-                AMatrix : Array2OfReal from TColStd;
-                AType   : TypeOfComposition from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_transform
-
-    -----------------------------
-    -- Category: Textures methods
-    -----------------------------
-
-        CreateTexture ( me;
-                        Type            : TypeOfTexture from Graphic3d;
-                        Image           : AlienImage from AlienImage;
-                        FileName        : CString from Standard;
-                        TexUpperBounds  : HArray1OfReal from TColStd )
-        returns Integer from Standard
-        is deferred;
-    ---Purpose:
-
-    DestroyTexture ( me;
-                     TexId  : Integer from Standard )
-        is deferred;
-    ---Purpose:
-
-    ModifyTexture ( me;
-                    TexId   : Integer from Standard;
-                    AValue  : CInitTexture from Graphic3d )
-        is deferred;
-    ---Purpose:
 
     -------------------------------
     -- Category: Layer mode methods
@@ -1008,8 +852,9 @@ is
     ---Purpose: Change offscreen FBO viewport.
 
         BufferDump( me            : mutable;
-                    view          : CView from Graphic3d;
-                    buffer        : in out CRawBufferData from Image )
+                    theCView      : CView from Graphic3d;
+                    theImage      : in out PixMap from Image;
+                    theBufferType : BufferType from Graphic3d )
                    returns Boolean from Standard
     is deferred;
     ---Purpose: Dump active rendering buffer into specified memory buffer.
@@ -1066,15 +911,6 @@ is
     -- Export scene into the one of the Vector graphics formats (SVG, PS, PDF...).
     -- In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
     -- Notice however that results may differ a lot and do not contain some elements.
-
-    RemovePrimitiveArray( me        : mutable;
-                          theCGroup : CGroup from Graphic3d;
-                          thePArray : PrimitiveArray from Graphic3d )
-        is deferred;
-        ---Purpose: Clear visualization data in graphical driver and
-        -- stop displaying the primitives array of the graphical group
-        -- <theCGroup>. This method is internal and should be used
-        -- by Graphic3d_Group only.
 
     AddZLayer( me         : mutable;
                theCView   : CView from Graphic3d;
@@ -1210,9 +1046,16 @@ is
     --            returns Standard_False if fails
     --  ABD Integration support of system fonts (using FTGL and FreeType)
 
+    GetDisplayConnection (me)
+       returns DisplayConnection_Handle from Aspect;
+    ---C++: return const &
+
+    ---Purpose: returns Handle to display connection
+
 fields
 
-    MyTraceLevel    : Integer from Standard is protected;
-    MySharedLibrary : SharedLibrary from OSD is protected;
+    MyTraceLevel       : Integer from Standard is protected;
+    MySharedLibrary    : SharedLibrary from OSD is protected;
+    myDisplayConnection: DisplayConnection_Handle from Aspect is protected;
 
 end GraphicDriver from Graphic3d;

@@ -36,6 +36,16 @@ class TopoDS_Shape;
 
 //! Rebuilds a Shape by making pre-defined substitutions on some <br>
 //!          of its components <br>
+//! <br>
+//!          In a first phase, it records requests to replace or remove <br>
+//!          some individual shapes <br>
+//!          For each shape, the last given request is recorded <br>
+//!          Requests may be applied "Oriented" (i.e. only to an item with <br>
+//!          the SAME orientation) or not (the orientation of replacing <br>
+//!          shape is respectful of that of the original one) <br>
+//! <br>
+//!          Then, these requests may be applied to any shape which may <br>
+//!          contain one or more of these individual shapes <br>
 class ShapeBuild_ReShape : public BRepTools_ReShape {
 
 public:
@@ -62,6 +72,13 @@ public:
 //!          <until> gives the level of type until which requests are taken <br>
 //!          into account. For subshapes of the type <until> no rebuild <br>
 //!          and futher exploring are done. <br>
+//! <br>
+//!          NOTE: each subshape can be replaced by shape of the same type <br>
+//!          or by shape containing only shapes of that type (for <br>
+//!          example, TopoDS_Edge can be replaced by TopoDS_Edge, <br>
+//!          TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). <br>
+//!          If incompatible shape type is encountered, it is ignored <br>
+//!          and flag FAIL1 is set in Status. <br>
   Standard_EXPORT   virtual  TopoDS_Shape Apply(const TopoDS_Shape& shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
   //! Returns a complete substitution status for a shape <br>
 //!          0  : not recorded,   <newsh> = original <shape> <br>

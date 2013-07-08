@@ -17,9 +17,9 @@
 // purpose or non-infringement. Please see the License for the specific terms
 // and conditions governing the rights and limitations under the License.
 
-
-
 #include <QANCollection.hxx>
+
+#include <Draw.hxx>
 #include <Draw_Interpretor.hxx>
 
 #define ItemType gp_Pnt
@@ -45,8 +45,8 @@ Standard_Integer CheckArguments(Draw_Interpretor& di, Standard_Integer argc, con
     di << "Usage : " << argv[0] << " Repeat Size" << "\n";
     return 1;
   }
-  Repeat = atoi(argv[1]);
-  Size   = atoi(argv[2]);
+  Repeat = Draw::Atoi(argv[1]);
+  Size   = Draw::Atoi(argv[2]);
   if ( Repeat < 1 ) {
     di << "Repeat > 0" << "\n";
     return 1;
@@ -256,7 +256,7 @@ static Standard_Integer QANColCheckSparseArray(Draw_Interpretor& di, Standard_In
 }
 
 void QANCollection::Commands3(Draw_Interpretor& theCommands) {
-  char *group = "QANCollection";
+  const char *group = "QANCollection";
 
   // from agvCollTest/src/CollectionEXE/PerfTestEXE.cxx
   theCommands.Add("QANColPerfArray1",         "QANColPerfArray1 Repeat Size",         __FILE__, QANColPerfArray1,         group);  

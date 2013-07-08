@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -28,20 +31,12 @@ class LocalAnalysis_CurveContinuity;
 class LocalAnalysis  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
+//! This  class  compute <br>
+//! s  and gives  tools to check  the  local <br>
+//! continuity  between two points situated  on 2  curves) <br>
 //! This fonction gives informations  about a  variable CurveContinuity <br>
   Standard_EXPORT   static  void Dump(const LocalAnalysis_SurfaceContinuity& surfconti,Standard_OStream& o) ;
   

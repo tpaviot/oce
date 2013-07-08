@@ -58,7 +58,7 @@ Standard_EXPORT Standard_Boolean TopOpeBRepBuild_GetcontextNOSG();
 #define M_INTERNAL(st) (st == TopAbs_INTERNAL)
 #define M_EXTERNAL(st) (st == TopAbs_EXTERNAL)
 
-Standard_EXPORT Standard_Boolean TopOpeBRepBuild_FUN_aresamegeom(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
+Standard_Boolean TopOpeBRepBuild_FUN_aresamegeom(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
 
 
 //=======================================================================

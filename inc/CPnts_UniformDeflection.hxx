@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -39,21 +42,30 @@ class Adaptor2d_Curve2d;
 //!  positions of constant deflection of a given curve or a trimmed <br>
 //!  circle. <br>
 //!  The continuity of the curve must be at least C2. <br>
+//! <br>
+//!  the usage of the is the following. <br>
+//! <br>
+//!  class myUniformDFeflection instantiates <br>
+//!                     UniformDeflection(Curve, Tool); <br>
+//! <br>
+//! <br>
+//! Curve C; // Curve inherits from Curve or Curve2d from Adaptor2d <br>
+//! myUniformDeflection Iter1; <br>
+//! DefPntOfmyUniformDeflection P; <br>
+//! <br>
+//! for(Iter1.Initialize(C, Deflection, EPSILON, True); <br>
+//!     Iter1.More(); <br>
+//!     Iter1.Next()) { <br>
+//!   P = Iter1.Value(); <br>
+//!   ... make something with P <br>
+//! } <br>
+//! if(!Iter1.IsAllDone()) { <br>
+//!    ... something wrong happened <br>
+//! } <br>
 class CPnts_UniformDeflection  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   //! creation of a indefinite UniformDeflection <br>
   Standard_EXPORT   CPnts_UniformDeflection();

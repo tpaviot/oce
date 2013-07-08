@@ -8,6 +8,7 @@ SET(TOOLKIT_MODULES
 	GeomLProp
 	Adaptor3d
 	LProp3d
+	TopAbs
 )
 SET(TOOLKIT_DEPENDS
 	TKMath

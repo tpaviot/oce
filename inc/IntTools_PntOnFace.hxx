@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -33,49 +36,48 @@ class gp_Pnt;
 class IntTools_PntOnFace  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
 //! Empty constructor <br>
+//! <br>
   Standard_EXPORT   IntTools_PntOnFace();
   
 //! Initializes me by aFace, a 3d point <br>
 //! and it's UV parameters on face <br>
+//! <br>
   Standard_EXPORT     void Init(const TopoDS_Face& aF,const gp_Pnt& aP,const Standard_Real U,const Standard_Real V) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetFace(const TopoDS_Face& aF) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetPnt(const gp_Pnt& aP) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetParameters(const Standard_Real U,const Standard_Real V) ;
   
 //! Modifier <br>
+//! <br>
   Standard_EXPORT     void SetValid(const Standard_Boolean bF) ;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT     Standard_Boolean Valid() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const TopoDS_Face& Face() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT    const gp_Pnt& Pnt() const;
   
 //! Selector <br>
+//! <br>
   Standard_EXPORT     void Parameters(Standard_Real& U,Standard_Real& V) const;
   
 //! Selector <br>

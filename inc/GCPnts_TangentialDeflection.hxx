@@ -9,6 +9,9 @@
 #ifndef _Standard_HeaderFile
 #include <Standard.hxx>
 #endif
+#ifndef _Standard_DefineAlloc_HeaderFile
+#include <Standard_DefineAlloc.hxx>
+#endif
 #ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
 #endif
@@ -44,21 +47,40 @@ class gp_Pnt;
 //! <br>
 //!         . ||P1P3^P3P2||/||P1P3||*||P3P2||<AngularDeflection <br>
 //!         . ||P1P2^P1P3||/||P1P2||*||P1P3||<CurvatureDeflection <br>
+//! <br>
+//!         where P3 is the point of abscissa ((u1+u2)/2), with <br>
+//!         u1 the abscissa of the point P1 and u2 the abscissa <br>
+//!         of the point P2. <br>
+//! <br>
+//!         ^ is the cross product of two vectors, and ||P1P2|| <br>
+//!         the magnitude of the vector P1P2. <br>
+//! <br>
+//!         The conditions AngularDeflection > gp::Resolution() <br>
+//!         and CurvatureDeflection > gp::Resolution() must be <br>
+//!         satisfied at the construction time. <br>
+//! <br>
+//!         A  minimum  number of points  can  be fixed   for a <br>
+//!         linear or circular element. <br>
+//!  Example: <br>
+//!          Handle(Geom_BezierCurve) C = new Geom_BezierCurve (Poles); <br>
+//!          GeomAdaptor_Curve Curve (C); <br>
+//!          Real CDeflect = 0.01;  //Curvature deflection <br>
+//!          Real ADeflect = 0.09; //Angular deflection <br>
+//! <br>
+//!          GCPnts_TangentialDeflection PointsOnCurve; <br>
+//!          PointsOnCurve.Initialize (Curve, ADeflect, CDeflect); <br>
+//! <br>
+//!          Real U; <br>
+//!          gp_Pnt P; <br>
+//!          for (Integer i=1; i<=PointsOnCurve.NbPoints();i++) { <br>
+//!            U = PointsOnCurve.Parameter (i); <br>
+//!            P = PointsOnCurve.Value (i); <br>
+//!          } <br>
+//! <br>
 class GCPnts_TangentialDeflection  {
 public:
 
-  void* operator new(size_t,void* anAddress) 
-  {
-    return anAddress;
-  }
-  void* operator new(size_t size) 
-  {
-    return Standard::Allocate(size); 
-  }
-  void  operator delete(void *anAddress) 
-  {
-    if (anAddress) Standard::Free((Standard_Address&)anAddress); 
-  }
+  DEFINE_STANDARD_ALLOC
 
   
   Standard_EXPORT   GCPnts_TangentialDeflection();
