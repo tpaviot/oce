@@ -956,8 +956,8 @@ INSTALL(FILES ${INSTALL_STDRESOURCE_FILES}
 
 IF(WIN32)
 	SET(ENV_SCRIPTS
-		${${PROJECT_NAME}_SOURCE_DIR}/env.bat
-		${${PROJECT_NAME}_SOURCE_DIR}/msvc.bat
+		${${PROJECT_NAME}_SOURCE_DIR}/scripts/env.bat
+		${${PROJECT_NAME}_SOURCE_DIR}/scripts/msvc.bat
 	)
 	INSTALL(FILES ${ENV_SCRIPTS}
 		DESTINATION ${${PROJECT_NAME}_INSTALL_SCRIPT_DIR})
@@ -979,7 +979,7 @@ ELSE(NOT MSVC)
 ENDIF(NOT MSVC)
 
 #this is the header used to build OCE
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_build_config.h.cmake
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_build_config.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h )
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h
 	RENAME oce_build_config.defs
@@ -988,18 +988,18 @@ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-config.h
 #installation paths are written into a separate file (which is not installed)
 #so that only few files have to be recompiled when installation paths are modified
 ADD_DEFINITIONS(-DHAVE_OCE_PATHS_H)
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_build_paths.h.cmake
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_build_paths.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/build_inc/oce-paths.h )
 
 #this is the header that is installed on the system
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/oce_install_config.h.cmake
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_install_config.h.cmake
 	${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h )
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/install_inc/oce-config.h
 		DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDE_DIR} COMPONENT Development )
 
 # Version information
 IF(NOT ${PROJECT_NAME}_NO_LIBRARY_VERSION)
-CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/Version.rc.cmake
+CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/Version.rc.cmake
 				${CMAKE_CURRENT_BINARY_DIR}/Version.rc)
 SET ( ${PROJECT_NAME}_WIN32_RES_FILE ${CMAKE_CURRENT_BINARY_DIR}/Version.rc )
 ENDIF(NOT ${PROJECT_NAME}_NO_LIBRARY_VERSION)
@@ -1066,9 +1066,9 @@ IF(${PROJECT_NAME}_DRAW)
 	ENDIF(${PROJECT_NAME}_TESTING)
 ENDIF(${PROJECT_NAME}_DRAW)
 
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfig.cmake.in
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/ProjectConfig.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake @ONLY )
-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/ProjectConfigVersion.cmake.in
+CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/ProjectConfigVersion.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake @ONLY )
 INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
 	DESTINATION ${${PROJECT_NAME}_INSTALL_CMAKE_DATA_DIR} COMPONENT Development )
@@ -1335,7 +1335,7 @@ INCLUDE(CPack)
 # From http://www.cmake.org/Wiki/CMake_FAQ#Can_I_do_.22make_uninstall.22_with_CMake.3F #
 # ######################################################################################
 configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/cmake_uninstall.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
     IMMEDIATE @ONLY)
 
