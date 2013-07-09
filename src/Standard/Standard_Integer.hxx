@@ -79,7 +79,6 @@ inline Standard_Boolean IsEqual (const Standard_Integer theOne,
   return theOne == theTwo;
 }
 
-#if (defined(_LP64) || defined(__LP64__) || defined(_WIN64))
 // ------------------------------------------------------------------
 // Hascode : Computes a hascoding value for a given unsigned integer
 // ------------------------------------------------------------------
@@ -97,7 +96,6 @@ inline Standard_Boolean IsEqual (const Standard_Utf32Char theOne,
 {
   return theOne == theTwo;
 }
-#endif
 
 // ------------------------------------------------------------------
 // IsSimilar : Returns Standard_True if two integers are equal
