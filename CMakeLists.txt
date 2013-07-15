@@ -649,6 +649,15 @@ IF (NOT WIN32)
 # TODO: check all headers/functions/libraries that are checked in configure.ac original OCC script
 ENDIF(NOT WIN32)
 
+INCLUDE(CheckTypeSize)
+CHECK_TYPE_SIZE(int    SIZEOF_INT)
+CHECK_TYPE_SIZE(size_t SIZEOF_SIZE_T)
+if (APPLE OR (NOT SIZEOF_INT STREQUAL SIZEOF_SIZE_T))
+    SET(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T TRUE)
+else ()
+    SET(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T FALSE)
+endif ()
+
 #######################################################
 # Check compiler version - Determine Borland compiler #
 #######################################################

@@ -27,6 +27,10 @@
 # include <Standard_values.h>
 #endif
 
+#ifdef HAVE_CONFIG_H
+# include <oce-config.h>
+#endif
+
 class Handle_Standard_Type;
 
 __Standard_API const Handle_Standard_Type& Standard_Integer_Type_();
@@ -79,6 +83,7 @@ inline Standard_Boolean IsEqual (const Standard_Integer theOne,
   return theOne == theTwo;
 }
 
+#ifdef OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T
 // ------------------------------------------------------------------
 // Hascode : Computes a hascoding value for a given unsigned integer
 // ------------------------------------------------------------------
@@ -96,6 +101,7 @@ inline Standard_Boolean IsEqual (const Standard_Utf32Char theOne,
 {
   return theOne == theTwo;
 }
+#endif  /* OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T */
 
 // ------------------------------------------------------------------
 // IsSimilar : Returns Standard_True if two integers are equal
