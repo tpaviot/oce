@@ -278,9 +278,7 @@ static Standard_Boolean MatchCurve (
       }
     }
   }
-#ifndef _MSC_VER
   return Standard_False;
-#endif
 }
 
 
