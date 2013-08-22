@@ -39,7 +39,7 @@
 
 typedef int Standard_Integer;
 typedef double Standard_Real;
-typedef unsigned int Standard_Boolean;
+typedef bool Standard_Boolean;
 typedef float Standard_ShortReal;
 typedef char  Standard_Character;
 typedef short Standard_ExtCharacter;
