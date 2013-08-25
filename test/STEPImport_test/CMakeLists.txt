@@ -1,4 +1,4 @@
-IF (${PROJECT_NAME}_DATAEXCHANGE)
+IF (OCE_DATAEXCHANGE)
     SET(step_file_ap203_1 ${CMAKE_SOURCE_DIR}/test/data/STEP/as1-tu-203.stp)
     SET(step_file_ap203_2 ${CMAKE_SOURCE_DIR}/test/data/STEP/as1_pe_203.stp)
     SET(step_file_ap214_1 ${CMAKE_SOURCE_DIR}/test/data/STEP/as1-oc-214.stp)
@@ -9,4 +9,4 @@ IF (${PROJECT_NAME}_DATAEXCHANGE)
     INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR}/test_inc)
 
     ADD_OCE_TEST(STEPImport_test "TKernel;TKSTEP")
-ENDIF (${PROJECT_NAME}_DATAEXCHANGE)
+ENDIF (OCE_DATAEXCHANGE)

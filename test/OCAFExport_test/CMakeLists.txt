@@ -1,4 +1,4 @@
-IF (${PROJECT_NAME}_OCAF)
+IF (OCE_OCAF)
     # This test will dlopen FWOSPlugin and TKBin, we link against them to ensure that
     # libraries from the build tree are used.
     ADD_OCE_TEST(OCAFExport_test "TKCAF;FWOSPlugin;TKBin")
@@ -7,4 +7,4 @@ IF (${PROJECT_NAME}_OCAF)
     STRING(REPLACE ";" "\\;" BuildPluginDir "${BuildPluginDir}")
     SET_TESTS_PROPERTIES(OCAFExportTestSuite.testExportAscii PROPERTIES ENVIRONMENT "CSF_PluginDefaults=${BuildPluginDir};CSF_StandardDefaults=${BuildPluginDir}")
     SET_TESTS_PROPERTIES(OCAFExportTestSuite.testExportNonAscii PROPERTIES ENVIRONMENT "CSF_PluginDefaults=${BuildPluginDir};CSF_StandardDefaults=${BuildPluginDir}")
-ENDIF (${PROJECT_NAME}_OCAF)
+ENDIF (OCE_OCAF)

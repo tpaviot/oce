@@ -1,3 +1,3 @@
-IF (${PROJECT_NAME}_MODEL)
+IF (OCE_MODEL)
     ADD_OCE_TEST(Standard_StdAllocator_test "TKernel;TKPrim")
-ENDIF (${PROJECT_NAME}_MODEL)
+ENDIF (OCE_MODEL)
