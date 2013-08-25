@@ -13,7 +13,7 @@
 # For convenience, OCE_ALL_FOUND is set to TRUE if all
 # toolkits are found, otherwise FALSE.  In the latter case,
 # OCE_MISSING_TOOLKITS contains the list of missing toolkits.
- 
+
 # Tell the user project where to find our headers and libraries
 get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 

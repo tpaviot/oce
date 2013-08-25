@@ -8,56 +8,56 @@ function(enable_precompiled_headers PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_
 		# Generate precompiled header translation unit
 		get_filename_component(pch_basename ${PRECOMPILED_HEADER} NAME_WE)
 		set(pch_unity ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.cpp)
-		
+
 		if(MSVC)
-		    set(pch_abs ${CMAKE_CURRENT_SOURCE_DIR}/${PRECOMPILED_HEADER})
+			set(pch_abs ${CMAKE_CURRENT_SOURCE_DIR}/${PRECOMPILED_HEADER})
 		else()
-		    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h ${CMAKE_CURRENT_BINARY_DIR}/Precompiled.h)
-		    set(pch_abs ${CMAKE_CURRENT_BINARY_DIR}/${PRECOMPILED_HEADER})
+			configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h ${CMAKE_CURRENT_BINARY_DIR}/Precompiled.h)
+			set(pch_abs ${CMAKE_CURRENT_BINARY_DIR}/${PRECOMPILED_HEADER})
 		endif()
-		
+
 		if (PHASE EQUAL 2)
 			# A list of exclusions patterns. For the moment is global to the entire project
 			set (excludes "OSD*" "WNT*" "AlienImage_BMPAlienData.cxx"
-				      "Image_PixMap.cxx" "PlotMgt.cxx" "Visual3d_View.cxx" "V3d_View_Print.cxx" "OpenGl*"
-				      "Viewer2dTest_ViewerCommands.cxx" "ViewerTest_*" )
+			              "Image_PixMap.cxx" "PlotMgt.cxx" "Visual3d_View.cxx" "V3d_View_Print.cxx" "OpenGl*"
+			              "Viewer2dTest_ViewerCommands.cxx" "ViewerTest_*" )
 
 			# GCC requires an additional target to build the PCH file.
 			if(CMAKE_COMPILER_IS_GNUCXX)
-				
+
 				# PCH output file
 				#set(pch_output "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}.gch")
 				set(pch_output "${pch_abs}.gch")
-				
+
 				# Detects compiler flags
 				string(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" _flags_var_name)
 				set(_compiler_FLAGS ${${_flags_var_name}})
-				
+
 				# Directory properties
 				get_directory_property(_directory_flags INCLUDE_DIRECTORIES)
 				foreach(item ${_directory_flags})
-				    list(APPEND _compiler_FLAGS "-I${item}")
+					list(APPEND _compiler_FLAGS "-I${item}")
 				endforeach(item)
 
 				get_target_property(target_compiler_FLAGS ${TARGET_NAME} COMPILE_FLAGS)
 				if(target_compiler_FLAGS)
-				    list(APPEND _compiler_FLAGS ${target_compiler_FLAGS})
+					list(APPEND _compiler_FLAGS ${target_compiler_FLAGS})
 				endif()
-							
+
 				string(TOUPPER "COMPILE_DEFINITIONS_${CMAKE_BUILD_TYPE}" _defs_prop_name)
-				
+
 				get_directory_property(_directory_flags COMPILE_DEFINITIONS)
 				if(_directory_flags)
-				      foreach(flag ${_directory_flags})
-					  list(APPEND _compiler_FLAGS -D${flag})
-				      endforeach(flag)
+					foreach(flag ${_directory_flags})
+						list(APPEND _compiler_FLAGS -D${flag})
+					endforeach(flag)
 				endif(_directory_flags)
-				
+
 				get_directory_property(_directory_flags ${_defs_prop_name})
 				if(_directory_flags)
-				      foreach(flag ${_directory_flags})
-					  list(APPEND _compiler_FLAGS -D${flag})
-				      endforeach(flag)
+					foreach(flag ${_directory_flags})
+						list(APPEND _compiler_FLAGS -D${flag})
+					endforeach(flag)
 				endif(_directory_flags)
 
 				get_target_property(_target_flags ${TARGET_NAME} COMPILE_DEFINITIONS)
@@ -73,24 +73,24 @@ function(enable_precompiled_headers PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_
 						list(APPEND _compiler_FLAGS -D${flag})
 					endforeach(flag)
 				endif(_target_flags)
-				
+
 				#message("compiler flags :" ${_compiler_FLAGS})
 
 				separate_arguments(_compiler_FLAGS)
-				
+
 				if(NOT WIN32)
 					set(additionalCompilerFlags -fPIC)
 				else()
 					set(additionalCompilerFlags -mthreads)
-				endif()	      
-					      
-				add_custom_command(OUTPUT ${pch_output} 
-				    COMMAND ${CMAKE_CXX_COMPILER} ${_compiler_FLAGS} -x c++-header -o ${pch_output} ${pch_unity} ${additionalCompilerFlags}
-				    DEPENDS ${pch_unity} )
+				endif()
+
+				add_custom_command(OUTPUT ${pch_output}
+				                   COMMAND ${CMAKE_CXX_COMPILER} ${_compiler_FLAGS} -x c++-header -o ${pch_output} ${pch_unity} ${additionalCompilerFlags}
+				                   DEPENDS ${pch_unity} )
 				add_custom_target(${TARGET_NAME}_gch DEPENDS ${pch_output})
 				add_dependencies(${TARGET_NAME} ${TARGET_NAME}_gch)
 			endif()
-	    
+
 			# Update properties of source files to use the precompiled header.
 			# Additionally, force the inclusion of the precompiled header at beginning of each source file.
 			foreach(source_file ${files} )
@@ -105,25 +105,23 @@ function(enable_precompiled_headers PHASE TARGET_NAME PRECOMPILED_HEADER SOURCE_
 					get_filename_component(thisext ${source_file} EXT)
 					if (${thisext} MATCHES ".cxx")
 						if (MSVC)
-						  set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "/Yu\"${PRECOMPILED_HEADER}\" /FI\"${PRECOMPILED_HEADER}\""     )
+							set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "/Yu\"${PRECOMPILED_HEADER}\" /FI\"${PRECOMPILED_HEADER}\""     )
 						endif()
 						if (CMAKE_COMPILER_IS_GNUCXX)
-						  set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "-include ${pch_abs} -Winvalid-pch")
+							set_source_files_properties( ${source_file} PROPERTIES COMPILE_FLAGS "-include ${pch_abs} -Winvalid-pch")
 						endif()
-						
 					endif()
 				endif()
 			endforeach(source_file)
 		else(PHASE EQUAL 2)
-		    # Finally, update the source file collection to contain the precompiled header translation unit
-		    set(${SOURCE_VARIABLE_NAME} ${pch_unity} ${PRECOMPILED_HEADER} ${${SOURCE_VARIABLE_NAME}} PARENT_SCOPE)
-		    
-		    #set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${pch_abs}\"") #this may be useful for nmake
-		    if(MSVC)
-			set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${PRECOMPILED_HEADER}\"")
-		    endif()
-		endif(PHASE EQUAL 2)
+			# Finally, update the source file collection to contain the precompiled header translation unit
+			set(${SOURCE_VARIABLE_NAME} ${pch_unity} ${PRECOMPILED_HEADER} ${${SOURCE_VARIABLE_NAME}} PARENT_SCOPE)
 
+			#set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${pch_abs}\"") #this may be useful for nmake
+			if(MSVC)
+				set_source_files_properties(${pch_unity} PROPERTIES COMPILE_FLAGS "/Yc\"${PRECOMPILED_HEADER}\"")
+			endif()
+		endif(PHASE EQUAL 2)
 	endif()
 endfunction(enable_precompiled_headers)
 
@@ -134,24 +132,24 @@ set(TOOLKIT_SOURCE_FILES)
 set(TOOLKIT_HEADER_FILES)
 set(OCE_${TOOLKIT}_INCLUDE_DIRECTORIES ${TOOLKIT_INCLUDE_DIRECTORIES})
 foreach(MODULE ${TOOLKIT_MODULES})
-	
+
 	if(APPLE AND OCE_OSX_USE_COCOA)
-	  file(GLOB source_files
-		${OCE_SOURCE_DIR}/src/${MODULE}/*.cxx
-		${OCE_SOURCE_DIR}/src/${MODULE}/*.mm
-		${OCE_SOURCE_DIR}/src/${MODULE}/*.c
-		${OCE_SOURCE_DIR}/drv/${MODULE}/*.cxx
-		${OCE_SOURCE_DIR}/drv/${MODULE}/*.c)
+		file(GLOB source_files
+			${OCE_SOURCE_DIR}/src/${MODULE}/*.cxx
+			${OCE_SOURCE_DIR}/src/${MODULE}/*.mm
+			${OCE_SOURCE_DIR}/src/${MODULE}/*.c
+			${OCE_SOURCE_DIR}/drv/${MODULE}/*.cxx
+			${OCE_SOURCE_DIR}/drv/${MODULE}/*.c)
 	# add all .cxx/*.c files or each module
 	else(APPLE AND OCE_OSX_USE_COCOA)
-	  file(GLOB source_files
-		${OCE_SOURCE_DIR}/src/${MODULE}/*.cxx
-		${OCE_SOURCE_DIR}/src/${MODULE}/*.c
-		${OCE_SOURCE_DIR}/drv/${MODULE}/*.cxx
-		${OCE_SOURCE_DIR}/drv/${MODULE}/*.c)
+		file(GLOB source_files
+			${OCE_SOURCE_DIR}/src/${MODULE}/*.cxx
+			${OCE_SOURCE_DIR}/src/${MODULE}/*.c
+			${OCE_SOURCE_DIR}/drv/${MODULE}/*.cxx
+			${OCE_SOURCE_DIR}/drv/${MODULE}/*.c)
 	endif(APPLE AND OCE_OSX_USE_COCOA)
 	set (header_files "")
-	
+
 	file(GLOB header_files
 		${OCE_SOURCE_DIR}/src/${MODULE}/*.h
 		${OCE_SOURCE_DIR}/src/${MODULE}/*.hxx
@@ -206,23 +204,23 @@ add_library(${TOOLKIT} ${OCE_LIBRARY_TYPE} ${TOOLKIT_SOURCE_FILES} ${TOOLKIT_RES
 
 if(OCE_COMPILER_SUPPORTS_PCH AND OCE_USE_PCH)
 	if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/Precompiled.h)
-	    enable_precompiled_headers (2 ${TOOLKIT} Precompiled.h TOOLKIT_SOURCE_FILES)
+		enable_precompiled_headers (2 ${TOOLKIT} Precompiled.h TOOLKIT_SOURCE_FILES)
 	endif()
 endif()
 
 # TODO Add current toolkit header files into a source group?
 # Add target specific locations of *.lxx and *.ixx files
 if(NOT OCE_NO_LIBRARY_VERSION)
-    set_target_properties(${TOOLKIT} PROPERTIES
-	    SOVERSION ${OCE_ABI_SOVERSION}
-	    VERSION ${OCE_ABI_VERSION}
-    )
+	set_target_properties(${TOOLKIT} PROPERTIES
+	                      SOVERSION ${OCE_ABI_SOVERSION}
+	                      VERSION ${OCE_ABI_VERSION}
+	)
 endif(NOT OCE_NO_LIBRARY_VERSION)
 
 # Workaround for Cmake bug #0011240 (see http://public.kitware.com/Bug/view.php?id=11240)
 # Win64+MSVC+static libs = linker error
 if(MSVC AND NOT OCE_BUILD_SHARED_LIB AND BIT EQUAL 64)
-  set_target_properties(${TOOLKIT} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
+	set_target_properties(${TOOLKIT} PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
 endif()
 
 # Set dependencies for thit ToolKit

@@ -123,29 +123,29 @@ mark_as_advanced(OCE_ADD_HEADERS)
 option_with_default( OCE_DISABLE_BSPLINE_MESHER "Disable BSpline Mesher" OFF )
 mark_as_advanced(OCE_DISABLE_BSPLINE_MESHER)
 if(APPLE)
-  option_with_default( OCE_OSX_USE_COCOA "Use native OSX Cocoa backend" ON )
+	option_with_default( OCE_OSX_USE_COCOA "Use native OSX Cocoa backend" ON )
 endif(APPLE)
 if (NOT WIN32)
-  option_with_default( OCE_RPATH_FILTER_SYSTEM_PATHS "Filter out system paths from RPATH" ON )
-  mark_as_advanced(OCE_RPATH_FILTER_SYSTEM_PATHS)
+	option_with_default( OCE_RPATH_FILTER_SYSTEM_PATHS "Filter out system paths from RPATH" ON )
+	mark_as_advanced(OCE_RPATH_FILTER_SYSTEM_PATHS)
 endif (NOT WIN32)
 
 #
 # By default, OSX uses X11 OpenGl implementation
 #
 if (APPLE)
-  if (NOT OCE_OSX_USE_COCOA)
-    set(MACOSX_USE_GLX TRUE)
-  endif(NOT OCE_OSX_USE_COCOA)
+	if (NOT OCE_OSX_USE_COCOA)
+		set(MACOSX_USE_GLX TRUE)
+	endif(NOT OCE_OSX_USE_COCOA)
 endif(APPLE)
 # The default for the DEB define is ON for all the platforms , in debug mode.
-# In MSVC it is not desirable to have it ON by default, since users must 
+# In MSVC it is not desirable to have it ON by default, since users must
 # compile/use the OCE debug libraries to build it's own programs in DEBUG mode.
 # DEB should be enabled by developers only, in this case
 if ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
-  set (DEB_DEFAULT "OFF")
+	set (DEB_DEFAULT "OFF")
 else ()
-   set (DEB_DEFAULT "ON")
+	set (DEB_DEFAULT "ON")
 endif ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
 
 option_with_default( OCE_ENABLE_DEB_FLAG "Enables DEB define in debug configuration" ${DEB_DEFAULT} )
@@ -211,9 +211,9 @@ set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_MINSIZEREL NDEBUG)
 set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_RELWITHDEBINFO  NDEBUG)
 
 if(OCE_ENABLE_DEB_FLAG)
-  set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEB=1;_DEBUG")
+	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEB=1;_DEBUG")
 else ()
-  set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "_DEBUG")
+	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "_DEBUG")
 endif (OCE_ENABLE_DEB_FLAG)
 
 #
@@ -221,9 +221,9 @@ endif (OCE_ENABLE_DEB_FLAG)
 #
 set(OCE_FOUNDATION TRUE)
 if(OCE_OCAF OR OCE_DATAEXCHANGE OR OCE_VISUALISATION OR OCE_DRAW)
-  set(OCE_VISU_DEP TRUE)
+	set(OCE_VISU_DEP TRUE)
 else(OCE_OCAF OR OCE_DATAEXCHANGE OR OCE_VISUALISATION OR OCE_DRAW)
-  set(OCE_VISU_DEP FALSE)
+	set(OCE_VISU_DEP FALSE)
 endif(OCE_OCAF OR OCE_DATAEXCHANGE OR OCE_VISUALISATION OR OCE_DRAW)
 if(OCE_DISABLE_X11)
 	set(OCE_VISU_DEP FALSE)
@@ -317,7 +317,7 @@ if (OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
 endif(OCE_USE_BUNDLE OR OCE_USE_BUNDLE_SOURCE)
 
 if(OCE_VISU_DEP AND NOT OCE_DISABLE_TKSERVICE_FONT)
-   set(OCE_REQUIRES_FREETYPE TRUE)
+	set(OCE_REQUIRES_FREETYPE TRUE)
 endif()
 
 if(OCE_REQUIRES_FREETYPE)
@@ -338,7 +338,7 @@ if(OCE_VISUALISATION)
 		find_path(FREEIMAGE_INCLUDE_DIR FreeImagePlus.h DOC "Location of header files for FreeImage" ${CMAKE_SYSTEM_INCLUDE_PATH})
 		if(FREEIMAGE_INCLUDE_DIR)
 			find_library( FREEIMAGE_LIBRARY freeimage "Path to the freeimage library" )
-	
+
 			if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
 				find_library( FREEIMAGE_LIBRARY_DEBUG freeimaged "Path to the freeimage debug library" )
 			endif(CMAKE_CONFIGURATION_TYPES OR NMAKE)
@@ -360,7 +360,7 @@ if(OCE_VISUALISATION)
 		find_library( X11_Xmu_LIB Xmu PATHS /usr/openwin/lib )
 	endif(NOT WIN32 AND NOT OCE_OSX_USE_COCOA)
 	mark_as_advanced(X11_Xmu_LIB)
-	
+
 	if (NOT APPLE OR OCE_OSX_USE_COCOA)
 		find_package(OpenGL REQUIRED)
 		if(NOT ${OPENGL_GLU_FOUND} STREQUAL "YES")
@@ -370,7 +370,7 @@ if(OCE_VISUALISATION)
 		set(OPENGL_INCLUDE_DIR /usr/X11R6/include/)
 		set(OPENGL_LIBRARIES /usr/X11R6/lib/libGL.dylib /usr/X11R6/lib/libGLU.dylib)
 	endif (NOT APPLE OR OCE_OSX_USE_COCOA)
-	
+
 	## GL2PS
 	if(OCE_WITH_GL2PS)
 		find_path(GL2PS_INCLUDE_DIR gl2ps.h DOC "Location of header files for GL2PS (containing gl2ps.h)" ${CMAKE_SYSTEM_INCLUDE_PATH})
@@ -422,8 +422,8 @@ if(OCE_DATAEXCHANGE)
 endif(OCE_DATAEXCHANGE)
 
 if(OCE_DRAW)
-    if (APPLE AND NOT OCE_OSX_USE_COCOA)
-    	# under OSX-X11, should use a X11 based TCL/TK, for instance fink's implementation
+	if (APPLE AND NOT OCE_OSX_USE_COCOA)
+		# under OSX-X11, should use a X11 based TCL/TK, for instance fink's implementation
 		set(FINK_INSTALL_PATH /sw)
 		mark_as_advanced(FINK_INSTALL_PATH)
 		set(TCL_LIBRARY ${FINK_INSTALL_PATH}/lib/libtcl.dylib)
@@ -460,7 +460,7 @@ if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 		set(FREETYPE_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		set(FREETYPE_LIBRARIES ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetype.lib CACHE FILEPATH "" FORCE)
 		set(FREETYPE_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/freetyped.lib CACHE FILEPATH "" FORCE)
-		
+
 		if(OCE_WITH_GL2PS)
 			set(GL2PS_LIBRARY ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2ps.lib CACHE FILEPATH "" FORCE)
 			set(GL2PS_LIBRARY_DEBUG ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/lib/gl2psd.lib CACHE FILEPATH "" FORCE)
@@ -653,9 +653,9 @@ include(CheckTypeSize)
 check_type_size(int    SIZEOF_INT)
 check_type_size(size_t SIZEOF_SIZE_T)
 if (APPLE OR (NOT SIZEOF_INT STREQUAL SIZEOF_SIZE_T))
-    set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T TRUE)
+	set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T TRUE)
 else ()
-    set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T FALSE)
+	set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T FALSE)
 endif ()
 
 #######################################################
@@ -668,10 +668,10 @@ if(BORLAND AND NOT BORLAND_VERSION)
 			OUTPUT_VARIABLE _output
 			ERROR_QUIET
 		)
-		
+
 		string(REGEX MATCH "Embarcadero C[+][+] [0-9]+.[0-9]+"
 			_borland_version "${_output}")
-			
+
 		if(_borland_version)
 			string(REGEX MATCHALL "[0-9]+" _borland_version_list "${_borland_version}")
 			list(GET _borland_version_list 0 _borland_major)
@@ -679,14 +679,14 @@ if(BORLAND AND NOT BORLAND_VERSION)
 		else()
 			string(REGEX MATCH "Borland C[+][+] [0-9]+].[0-9]+"
 				_borland_version "${_output}")
-			
+
 			if(_borland_version)
 				string(REGEX MATCHALL "[0-9]+" _borland_version_list "${_borland_version}")
 				list(GET _borland_version_list 0 _borland_major)
 				list(GET _borland_version_list 1 _borland_minor)
 			endif()
 		endif()
-			
+
 		# XE2 compiler?
 		if("v${_borland_major}.${_borland_minor}" STREQUAL "v6.41")
 			set(BORLAND_VERSION "bcc32 v6.41 (RS XE2)")
@@ -709,7 +709,7 @@ if(BORLAND AND NOT BORLAND_VERSION)
 		else()
 			set(BORLAND_VERSION "Unknown")
 		endif()
-		
+
 		unset(_output)
 		unset(_borland_version)
 		unset(_borland_major)
@@ -836,9 +836,9 @@ if (OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 	message("Using OCE Bundle in same CMake project")
 	add_subdirectory( ${OCE_BUNDLE_ROOT_PATH} ${CMAKE_BINARY_DIR}/oce-win-bundle )
 
-  # The installation directory of the bundle must match the one of OCE
-  set(OCE_WIN_BUNDLE_INSTALL_DIR ${OCE_INSTALL_PREFIX} CACHE PATH "" FORCE)
-  
+	# The installation directory of the bundle must match the one of OCE
+	set(OCE_WIN_BUNDLE_INSTALL_DIR ${OCE_INSTALL_PREFIX} CACHE PATH "" FORCE)
+
 	# Look for includes in bundle source directory.
 	# Put oce-win-bundle libraries and dlls in same place OCE libraries and dlls are going,
 	# and set variables to point OCE to them.
@@ -983,7 +983,7 @@ install(FILES ${header_files}
 )
 
 set(OCE_INSTALL_DATA_DIR ${OCE_INSTALL_DATA_DIR})
-if (NOT MSVC) 
+if (NOT MSVC)
 	set(OCE_DEFAULT_CSF_GraphicShr ${OCE_INSTALL_PREFIX}/${OCE_INSTALL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_SHARED_LIBRARY_SUFFIX})
 	if (NOT OCE_NO_LIBRARY_VERSION)
 		set(OCE_DEFAULT_CSF_GraphicShr ${OCE_DEFAULT_CSF_GraphicShr}.${OCE_ABI_SOVERSION})
@@ -1101,14 +1101,14 @@ endif(OCE_USE_BUNDLE_SOURCE AND OCE_BUNDLE_ROOT_PATH)
 # In win32, dependent libraries are required to run tests.
 
 if(MSVC AND OCE_TESTING)
-			
+
 		# Try to find TCL .dll filename
 		if (OCE_DRAW)
 			get_filename_component(TCL_BIN_DIR ${TCL_TCLSH} PATH)
 			get_filename_component(TCL_LIB_NAME_DIR ${TCL_LIBRARY} NAME_WE)
 		endif()
 
-	    # Post-build target. In reality it is not a post-build step	, but it doesn't matter
+		# Post-build target. In reality it is not a post-build step	, but it doesn't matter
 		add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files DEPENDS ALL)
 
 		if ( CMAKE_CONFIGURATION_TYPES )
@@ -1118,7 +1118,7 @@ if(MSVC AND OCE_TESTING)
 				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM )
 
 				if (OCE_DRAW)
-				    add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
+					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
 				endif()
 
 				# With USE_BUNDLE_SOURCE, the dll's referenced below are already in the
@@ -1131,19 +1131,19 @@ if(MSVC AND OCE_TESTING)
 					set (TMP_FILELIST FreeImage gl2ps freetype FreeImagePlus)
 
 					if (${config} MATCHES "Debug")
-						 set(TMP_SUFFIX "d")
+						set(TMP_SUFFIX "d")
 					else ()
-						 set(TMP_SUFFIX)
+						set(TMP_SUFFIX)
 					endif()
 
 					foreach (TMP_FILE ${TMP_FILELIST} )
-							 add_custom_command(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
+						add_custom_command(TARGET PostBuild POST_BUILD COMMAND xcopy /Y ${TMP_SRCDIR}${TMP_FILE}${TMP_SUFFIX}.dll ${TMP_DESTDIR} VERBATIM )
 					endforeach()
 				endif()
 
 				# Switch between bin and bind dirs
 				if (${config} MATCHES "Debug")
-					
+
 					# Install TBB libraries
 					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
 						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
@@ -1153,7 +1153,7 @@ if(MSVC AND OCE_TESTING)
 						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
 					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
 				else ()
-					
+
 					# Install TBB libraries
 					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
 						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
@@ -1166,37 +1166,37 @@ if(MSVC AND OCE_TESTING)
 			endforeach()
 		else (CMAKE_CONFIGURATION_TYPES )
 			# Nmake support : just one configuration
-				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
-				
-				if (OCE_DRAW)
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/ VERBATIM)
-				endif()
+			add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
 
-				if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH} VERBATIM )
+			if (OCE_DRAW)
+				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${TCL_BIN_DIR}/${TCL_LIB_NAME_DIR}.dll ${LIBRARY_OUTPUT_PATH}/ VERBATIM)
+			endif()
 
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+			if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH} VERBATIM )
 
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				else ()
-					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
+				# Install TBB libraries
+				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
+				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
 
-					# Install TBB libraries
-					if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
+					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc_debug.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
+				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
+			else ()
+				add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${OCE_BUNDLE_ROOT_PATH}/Win${BIT}/bin/ ${LIBRARY_OUTPUT_PATH}/ VERBATIM )
 
-					if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-						add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
-					endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
-				endif()
-		endif (CMAKE_CONFIGURATION_TYPES) 
-		
+				# Install TBB libraries
+				if(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbb.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
+				endif(OCE_MULTITHREAD_LIBRARY STREQUAL "TBB" AND TBB_BIN_DIR)
+
+				if(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
+					add_custom_command(TARGET PostBuild POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy "${TBB_BIN_DIR}/tbbmalloc.dll" ${LIBRARY_OUTPUT_PATH}/${config}/ VERBATIM)
+				endif(OCE_TBB_MALLOC_SUPPORT AND TBB_BIN_DIR)
+			endif()
+		endif (CMAKE_CONFIGURATION_TYPES)
+
 endif(MSVC AND OCE_TESTING)
 
 ##############
