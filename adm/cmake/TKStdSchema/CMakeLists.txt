@@ -1,10 +1,10 @@
-SET(TOOLKIT TKStdSchema)
+set(TOOLKIT TKStdSchema)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	StdSchema
 	StdDrivers
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	PTKernel
 	TKPLCAF
@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKPCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

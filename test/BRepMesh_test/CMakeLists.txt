@@ -1,3 +1,3 @@
-IF (OCE_MODEL)
-    ADD_OCE_TEST(BRepMesh_test "TKernel;TKBRep;TKMath;TKTopAlgo;TKPrim;TKMesh")
-ENDIF (OCE_MODEL)
+if (OCE_MODEL)
+    add_oce_test(BRepMesh_test "TKernel;TKBRep;TKMath;TKTopAlgo;TKPrim;TKMesh")
+endif (OCE_MODEL)

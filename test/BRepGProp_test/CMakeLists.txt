@@ -1,3 +1,3 @@
-IF (OCE_MODEL)
-    ADD_OCE_TEST(BRepGProp_test "TKG2d;TKPrim;TKTopAlgo")
-ENDIF (OCE_MODEL)
+if (OCE_MODEL)
+    add_oce_test(BRepGProp_test "TKG2d;TKPrim;TKTopAlgo")
+endif (OCE_MODEL)

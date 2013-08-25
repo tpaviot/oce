@@ -1,6 +1,6 @@
-SET(TOOLKIT TKAdvTools)
+set(TOOLKIT TKAdvTools)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	Dynamic
 	Materials
 	Expr
@@ -8,9 +8,9 @@ SET(TOOLKIT_MODULES
 	GraphDS
 	GraphTools
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

@@ -1,9 +1,9 @@
-SET(TOOLKIT TKXDEIGES)
+set(TOOLKIT TKXDEIGES)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	IGESCAFControl
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -15,5 +15,5 @@ SET(TOOLKIT_DEPENDS
 	TKIGES
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

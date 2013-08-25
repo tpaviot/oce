@@ -1,6 +1,6 @@
-SET(TOOLKIT PTKernel)
+set(TOOLKIT PTKernel)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	DBC
 	PCollection
 	PColStd
@@ -10,9 +10,9 @@ SET(TOOLKIT_MODULES
 	PTColStd
 	ObjMgt
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

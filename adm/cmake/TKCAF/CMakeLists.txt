@@ -1,12 +1,12 @@
-SET(TOOLKIT TKCAF)
+set(TOOLKIT TKCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TDataXtd
 	TNaming
 	TPrsStd
 	AppStd
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKGeomBase
 	TKBRep
@@ -21,5 +21,5 @@ SET(TOOLKIT_DEPENDS
 	TKBO
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

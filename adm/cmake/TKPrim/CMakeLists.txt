@@ -1,13 +1,13 @@
-SET(TOOLKIT TKPrim)
+set(TOOLKIT TKPrim)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BRepPrim
 	Primitives
 	BRepSweep
 	Sweep
 	BRepPrimAPI
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -17,5 +17,5 @@ SET(TOOLKIT_DEPENDS
 	TKTopAlgo
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

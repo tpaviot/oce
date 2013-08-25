@@ -1,1 +1,1 @@
-ADD_OCE_TEST(sorttools_test "TKernel")
+add_oce_test(sorttools_test "TKernel")

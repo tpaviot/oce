@@ -1,6 +1,6 @@
-SET(TOOLKIT TKSTEPBase)
+set(TOOLKIT TKSTEPBase)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	StepBasic
 	RWStepBasic
 	StepRepr
@@ -10,11 +10,11 @@ SET(TOOLKIT_MODULES
 	StepShape
 	RWStepShape
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKXSBase
 	TKMath
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

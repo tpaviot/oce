@@ -1,3 +1,3 @@
-IF (OCE_MODEL)
-    ADD_OCE_TEST(gp_test "TKG2d")
-ENDIF (OCE_MODEL)
+if (OCE_MODEL)
+    add_oce_test(gp_test "TKG2d")
+endif (OCE_MODEL)

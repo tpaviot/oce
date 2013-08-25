@@ -1,12 +1,12 @@
-SET(TOOLKIT FWOSPlugin)
+set(TOOLKIT FWOSPlugin)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	FWOSDriver
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKCDF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

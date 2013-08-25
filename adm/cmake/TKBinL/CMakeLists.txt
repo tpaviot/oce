@@ -1,6 +1,6 @@
-SET(TOOLKIT TKBinL)
+set(TOOLKIT TKBinL)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BinMDF
 	BinMDataStd
 	BinMFunction
@@ -8,11 +8,11 @@ SET(TOOLKIT_MODULES
 	BinObjMgt
 	BinLDrivers
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKLCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

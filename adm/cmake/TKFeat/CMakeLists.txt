@@ -1,10 +1,10 @@
-SET(TOOLKIT TKFeat)
+set(TOOLKIT TKFeat)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	LocOpe
 	BRepFeat
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKTopAlgo
 	TKGeomAlgo
@@ -18,5 +18,5 @@ SET(TOOLKIT_DEPENDS
 	TKBool
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

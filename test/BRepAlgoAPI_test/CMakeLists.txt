@@ -1,3 +1,3 @@
-IF (OCE_MODEL)
-    ADD_OCE_TEST(boolean_ops_test "TKPrim;TKBO")
-ENDIF (OCE_MODEL)
+if (OCE_MODEL)
+    add_oce_test(boolean_ops_test "TKPrim;TKBO")
+endif (OCE_MODEL)

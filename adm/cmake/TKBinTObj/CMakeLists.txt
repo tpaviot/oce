@@ -1,9 +1,9 @@
-SET(TOOLKIT TKBinTObj)
+set(TOOLKIT TKBinTObj)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BinTObjDrivers
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKTObj
@@ -12,5 +12,5 @@ SET(TOOLKIT_DEPENDS
 	TKBinL
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

@@ -1,14 +1,14 @@
-SET(TOOLKIT TKTObj)
+set(TOOLKIT TKTObj)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TObj
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKMath
 	TKLCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

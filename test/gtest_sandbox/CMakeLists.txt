@@ -1,1 +1,1 @@
-ADD_OCE_TEST(sandbox "")
+add_oce_test(sandbox "")

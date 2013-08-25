@@ -1,6 +1,6 @@
-SET(TOOLKIT TKGeomAlgo)
+set(TOOLKIT TKGeomAlgo)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	Hatch
 	GeomInt
 	IntStart
@@ -37,7 +37,7 @@ SET(TOOLKIT_MODULES
 	IntPolyh
 	TopClass
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKMath
 	TKG3d
@@ -46,5 +46,5 @@ SET(TOOLKIT_DEPENDS
 	TKBRep
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

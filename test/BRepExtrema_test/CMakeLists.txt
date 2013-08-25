@@ -1,3 +1,3 @@
-IF (OCE_MODEL)
-    ADD_OCE_TEST(BRepExtrema_test "TKPrim")
-ENDIF (OCE_MODEL)
+if (OCE_MODEL)
+    add_oce_test(BRepExtrema_test "TKPrim")
+endif (OCE_MODEL)

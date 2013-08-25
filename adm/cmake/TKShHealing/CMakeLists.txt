@@ -1,6 +1,6 @@
-SET(TOOLKIT TKShHealing)
+set(TOOLKIT TKShHealing)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	ShapeBuild
 	ShapeExtend
 	ShapeConstruct
@@ -12,7 +12,7 @@ SET(TOOLKIT_MODULES
 	ShapeProcess
 	ShapeProcessAPI
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -22,7 +22,7 @@ SET(TOOLKIT_DEPENDS
 	TKGeomBase
 	TKGeomAlgo
 )
-SET(TOOLKIT_LIBS ${CSF_wsock32_LIB})
+set(TOOLKIT_LIBS ${CSF_wsock32_LIB})
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

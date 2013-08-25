@@ -1,6 +1,6 @@
-SET(TOOLKIT TKG3d)
+set(TOOLKIT TKG3d)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	Geom
 	TColGeom
 	GeomAdaptor
@@ -10,11 +10,11 @@ SET(TOOLKIT_MODULES
 	LProp3d
 	TopAbs
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKMath
 	TKernel
 	TKG2d
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

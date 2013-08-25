@@ -1,10 +1,10 @@
-SET(TOOLKIT TKBinXCAF)
+set(TOOLKIT TKBinXCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BinXCAFDrivers
 	BinMXCAFDoc
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKXCAF
 	TKMath
@@ -18,5 +18,5 @@ SET(TOOLKIT_DEPENDS
 	TKBin
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

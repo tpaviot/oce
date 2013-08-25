@@ -1,16 +1,16 @@
-SET(TOOLKIT TKLCAF)
+set(TOOLKIT TKLCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TDF
 	TDataStd
 	TFunction
 	TDocStd
 	AppStdL
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 
