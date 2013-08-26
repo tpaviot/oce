@@ -418,7 +418,7 @@ static Standard_Integer ApplyContext (ShapeFix_WireSegment &wire,
 //purpose  : auxilary
 //=======================================================================
 // check points coincidence
-static inline Standard_Integer IsCoincided (const gp_Pnt2d &p1, const gp_Pnt2d &p2,
+static inline Standard_Boolean IsCoincided (const gp_Pnt2d &p1, const gp_Pnt2d &p2,
 					    const Standard_Real UResolution,
 					    const Standard_Real VResolution,
 					    const Standard_Real tol)
@@ -2015,7 +2015,8 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
   while ( 1 ) {
     Standard_Integer index = 0;
     Standard_Boolean misoriented = Standard_True, samepatch = Standard_False;
-    Standard_Boolean reverse = Standard_False, connected = Standard_False;
+    Standard_Integer reverse = Standard_False;
+    Standard_Boolean connected = Standard_False;
     Standard_Real angle = -M_PI, mindist = RealLast();
     Standard_Integer weigth = 0;
     Standard_Real shiftu=0., shiftv=0.;
@@ -2041,7 +2042,7 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
       }
 
       // check whether current segment is on the same patch with previous
-      Standard_Integer sp = ( myClosedMode || // no indexation in closed mode
+      Standard_Boolean sp = ( myClosedMode || // no indexation in closed mode
 			      IsSamePatch ( seg, myGrid->NbUPatches(), myGrid->NbVPatches(), 
 					    iumin, iumax, ivmin, ivmax ) );
 
@@ -2063,7 +2064,7 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
         if ( ! endV.IsSame ( j ? seg.LastVertex() : seg.FirstVertex() ) ) continue;
 
 	// check for misorientation only if nothing better is found
-        Standard_Integer misor = ( anOr == ( j ? TopAbs_REVERSED : TopAbs_FORWARD ) );
+        Standard_Boolean misor = ( anOr == ( j ? TopAbs_REVERSED : TopAbs_FORWARD ) );
 //	if ( misor ) continue; // temporarily, to be improved
 
 	// returning back by the same edge is lowest priority
@@ -2239,7 +2240,7 @@ void ShapeFix_ComposeShell::CollectWires (ShapeFix_SequenceOfWireSegment &wires,
       for ( Standard_Integer k=1; k <= sbwd->NbEdges(); k++ ) {
 	if ( !V.IsSame ( sae.FirstVertex ( sbwd->Edge(k) ) ) ) continue; //pdn I suppose that short segment should be inserted into the SAME vertex.
 	
-	Standard_Integer sp = IsSamePatch ( wires(j), myGrid->NbUPatches(), myGrid->NbVPatches(), 
+	Standard_Boolean sp = IsSamePatch ( wires(j), myGrid->NbUPatches(), myGrid->NbVPatches(), 
 					   iumin, iumax, ivmin, ivmax );
 	if ( samepatch && !sp) continue;
 	gp_Pnt2d pp;

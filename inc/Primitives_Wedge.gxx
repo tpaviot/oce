@@ -29,11 +29,7 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_OutOfRange.hxx>
 
-#undef Standard_True
-#undef Standard_False
-
-#define Standard_True ((Standard_Boolean) 1)
-#define Standard_False ((Standard_Boolean) 0)
+#include <Standard_TypeDef.hxx>
 
 #define NBFACES 6
 #define NBWIRES 6

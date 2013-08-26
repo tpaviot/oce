@@ -444,7 +444,7 @@ static Standard_Integer BSplRes(Draw_Interpretor& di, Standard_Integer argc, con
     di<< "Invalid argument Cont3e" << "\n"; return 1; }
 
   Handle(ShapeCustom_RestrictionParameters) aParameters = new ShapeCustom_RestrictionParameters;
-  TopoDS_Shape result = ShapeCustom::BSplineRestriction (Shape, Draw::Atof(argv[3]), Draw::Atof(argv[4]), Draw::Atoi(argv[5]),Draw::Atoi(argv[6]),aCont3,aCont2,(Standard_Boolean) Draw::Atoi(argv[9]),(Standard_Boolean) Draw::Atoi(argv[10]),aParameters);
+  TopoDS_Shape result = ShapeCustom::BSplineRestriction (Shape, Draw::Atof(argv[3]), Draw::Atof(argv[4]), Draw::Atoi(argv[5]),Draw::Atoi(argv[6]),aCont3,aCont2,0 != Draw::Atoi(argv[9]), 0 != Draw::Atoi(argv[10]),aParameters);
   if (result.IsNull()) { di << "NO RESULT" << "\n"; return 1; }
   else if (result == Shape) { 
     di << "NO MODIFICATIONS" << "\n";

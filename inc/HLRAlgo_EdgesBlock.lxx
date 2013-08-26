@@ -19,11 +19,11 @@
 // and conditions governing the rights and limitations under the License.
 
 
-#define EMaskOrient   ((Standard_Boolean)15)
-#define EMaskOutLine  ((Standard_Boolean)16)
-#define EMaskInternal ((Standard_Boolean)32)
-#define EMaskDouble   ((Standard_Boolean)64)
-#define EMaskIsoLine  ((Standard_Boolean)128)
+#define EMaskOrient    0x0fu
+#define EMaskOutLine   0x10u
+#define EMaskInternal  0x20u
+#define EMaskDouble    0x40u
+#define EMaskIsoLine   0x80u
 
 //=======================================================================
 //function : NbEdges
@@ -78,7 +78,7 @@ HLRAlgo_EdgesBlock::Orientation (const Standard_Integer I,
 				 const TopAbs_Orientation Or)
 {
   myFlags(I) &= ~EMaskOrient;
-  myFlags(I) |= (((Standard_Boolean)Or) & EMaskOrient);
+  myFlags(I) |= (0 != (Or & EMaskOrient));
 }
 
 //=======================================================================

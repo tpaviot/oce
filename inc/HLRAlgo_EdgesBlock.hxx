@@ -102,7 +102,7 @@ private:
 
 
 TColStd_Array1OfInteger myEdges;
-TColStd_Array1OfBoolean myFlags;
+TColStd_Array1OfInteger myFlags;
 Standard_Integer myMinMax[16];
 
 

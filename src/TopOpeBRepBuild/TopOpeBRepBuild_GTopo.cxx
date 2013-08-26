@@ -49,9 +49,9 @@ TopOpeBRepBuild_GTopo::TopOpeBRepBuild_GTopo
  const TopOpeBRepDS_Config C1, const TopOpeBRepDS_Config C2)
 {
   Reset();
-  Set((Standard_Boolean)ii,(Standard_Boolean)in,(Standard_Boolean)io,
-      (Standard_Boolean)ni,(Standard_Boolean)nn,(Standard_Boolean)no,  
-      (Standard_Boolean)oi,(Standard_Boolean)on,(Standard_Boolean)oo);
+  Set(0 != ii, 0 != in, 0 != io,
+      0 != ni, 0 != nn, 0 != no,
+      0 != oi, 0 != on, 0 != oo);
   myt1 = t1; 
   myt2 = t2;
   myConfig1 = C1;

@@ -636,7 +636,7 @@ Standard_Integer ksection(Draw_Interpretor& di, Standard_Integer n, const char *
   NbPntMax=Draw::Atoi(a[4]);
   Toler3d=Draw::Atof(a[5]);
   Toler2d=Draw::Atof(a[6]);
-  RelativeTol=Draw::Atoi(a[7]);
+  RelativeTol=(0 != Draw::Atoi(a[7]));
 
   di << "BRepAlgo_BooleanOperations myalgo" << "\n";
   BRepAlgo_BooleanOperations myalgo;

@@ -301,7 +301,7 @@ void Extrema_GenExtCS::Perform(const Adaptor3d_Curve& C,
       UV(1) = aMinCU;
       UV(2) = aMinSU;
       UV(3) = aMinSV;
-      math_FunctionSetRoot anA(myF, UV, Tol, UVinf, UVsup, 100, aRestIterCount);
+      math_FunctionSetRoot anA(myF, UV, Tol, UVinf, UVsup, 100, 0 != aRestIterCount);
       // Find max approximation.
       if (!anA.IsDivergent() || !aRestIterCount)
       {

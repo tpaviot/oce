@@ -2096,13 +2096,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 	// Return data
 	if (isec >NbLaw) {
 	  S = TabS(NbLaw, 1);
-	  ureverse = UReverse(NbLaw, 1);
-	  exuv = ExchUV(NbLaw, 1);
+	  ureverse = (0 != UReverse(NbLaw, 1));
+	  exuv = (0 != ExchUV(NbLaw, 1));
 	}
 	else  {
 	  S = TabS(isec, 1);
-	  ureverse = UReverse(isec, 1);
-	  exuv = ExchUV(isec, 1);
+	  ureverse = (0 != UReverse(isec, 1));
+	  exuv = (0 != ExchUV(isec, 1));
 	}
 	S->Bounds(UFirst, ULast, VFirst, VLast);
 
@@ -2165,13 +2165,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 	// Return data
 	if (isec >NbLaw) {
 	  S = TabS(NbLaw, NbPath);
-	  ureverse = UReverse(NbLaw, NbPath);
-	  exuv = ExchUV(NbLaw, NbPath);
+	  ureverse = (0 != UReverse(NbLaw, NbPath));
+	  exuv = (0 != ExchUV(NbLaw, NbPath));
 	}
 	else  {
 	  S = TabS(isec, NbPath);
-	  ureverse = UReverse(isec, NbPath);
-	  exuv = ExchUV(isec, NbPath);
+	  ureverse = (0 != UReverse(isec, NbPath));
+	  exuv = (0 != ExchUV(isec, NbPath));
 	}
 	S->Bounds(UFirst, ULast, VFirst, VLast);
 
@@ -2213,7 +2213,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
        ipath++, IPath++) {
     for (isec=1; isec <=NbLaw; isec++) {
       S = TabS(isec, ipath);
-      exuv = ExchUV(isec, ipath);
+      exuv = (0 != ExchUV(isec, ipath));
       S->Bounds(UFirst, ULast, VFirst, VLast);
       if (UReverse(isec, ipath)) {
 	Standard_Real aux;
@@ -2443,8 +2443,8 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 		  TopoDS::Edge(UEdge(isec+1, ipath)),
 		  TopoDS::Edge(VEdge(isec, ipath+1)),
 		  myVEdgesModified,
-		  ExchUV(isec, ipath),
-		  UReverse(isec, ipath),
+		  0 != ExchUV(isec, ipath),
+		  0 != UReverse(isec, ipath),
 		  face);
 	myFaces->SetValue(isec, IPath, face);
       }

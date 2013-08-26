@@ -115,32 +115,32 @@ class Handle(Standard_Persistent)
 
      Standard_EXPORT void  ShallowDump(Standard_OStream&) const;
      
-    int operator==(const Handle(Standard_Persistent)& right) const
+    Standard_Boolean operator==(const Handle(Standard_Persistent)& right) const
       {
        return entity == right.entity;
       }
 
-    int operator==(const Standard_Persistent *right) const
+    Standard_Boolean operator==(const Standard_Persistent *right) const
       {
        return entity == right;
       }
 
-    friend int operator==(const Standard_Persistent *left, const Handle(Standard_Persistent)& right)
+    friend Standard_Boolean operator==(const Standard_Persistent *left, const Handle(Standard_Persistent)& right)
       {
        return left == right.entity;
       }
 
-    int operator!=(const Handle(Standard_Persistent)& right) const
+    Standard_Boolean operator!=(const Handle(Standard_Persistent)& right) const
       {
        return entity != right.entity;
       }
 
-    int operator!=(const Standard_Persistent *right) const
+    Standard_Boolean operator!=(const Standard_Persistent *right) const
       {
        return entity != right;
       }
 
-    friend int operator!=(const Standard_Persistent *left, const Handle(Standard_Persistent)& right)
+    friend Standard_Boolean operator!=(const Standard_Persistent *left, const Handle(Standard_Persistent)& right)
       {
        return left != right.entity;
       }

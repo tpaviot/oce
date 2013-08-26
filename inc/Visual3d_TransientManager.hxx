@@ -99,7 +99,7 @@ public:
 //! Raises TransientDefinitionError from Visual3d; <br>
 //! if   Drawing is already opened. <br>
 //! or   the associated view is not mapped on a window. <br>
-  Standard_EXPORT   static  Standard_Boolean BeginDraw(const Handle(Visual3d_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False) ;
+  Standard_EXPORT   static  Standard_Integer BeginDraw(const Handle(Visual3d_View)& aView,const Standard_Boolean DoubleBuffer = Standard_False,const Standard_Boolean RetainMode = Standard_False) ;
   //! Flush all graphics to the front buffer. <br>
 //!  Synchronize graphics to the screen if <Synchronize> is <br>
 //!  TRUE (make becarefull to the performances!). <br>
@@ -128,7 +128,7 @@ public:
 //! Raises TransientDefinitionError from Visual3d; <br>
 //! if   Drawing is already opened. <br>
 //! or   the associated view is not mapped on a window. <br>
-  Standard_EXPORT   static  Standard_Boolean BeginAddDraw(const Handle(Visual3d_View)& aView) ;
+  Standard_EXPORT   static  Standard_Integer BeginAddDraw(const Handle(Visual3d_View)& aView) ;
   //! Flush all add graphics to the front buffer. <br>
 //! Raises TransientDefinitionError from Visual3d; <br>
 //! if   Drawing is not opened. <br>

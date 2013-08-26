@@ -103,7 +103,7 @@ Standard_Real myStart;
 Standard_Real myEnd;
 Standard_ShortReal myTolStart;
 Standard_ShortReal myTolEnd;
-Standard_Boolean myFlags;
+Standard_Integer myFlags;
 Intrv_Intervals myVisibles;
 
 

@@ -39,7 +39,7 @@ void OpenGl_GraphicDriver::FaceContextGroup (const Graphic3d_CGroup& theCGroup,
   if (!theCGroup.ContextFillArea.IsDef || theCGroup.ptrGroup == NULL)
     return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectFace (GetSharedContext(), theCGroup.ContextFillArea, theNoInsert);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectFace (GetSharedContext(), theCGroup.ContextFillArea, 0 != theNoInsert);
 }
 
 void OpenGl_GraphicDriver::Group (Graphic3d_CGroup& theCGroup)
@@ -56,7 +56,7 @@ void OpenGl_GraphicDriver::LineContextGroup (const Graphic3d_CGroup& theCGroup,
 {
   if (!theCGroup.ContextLine.IsDef || theCGroup.ptrGroup == NULL) return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectLine (theCGroup.ContextLine, theNoInsert);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectLine (theCGroup.ContextLine, 0 != theNoInsert);
 }
 
 void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
@@ -64,7 +64,7 @@ void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup
 {
   if (!theCGroup.ContextMarker.IsDef || theCGroup.ptrGroup == NULL) return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, theNoInsert);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, 0 != theNoInsert);
 }
 
 void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup,
@@ -81,7 +81,7 @@ void OpenGl_GraphicDriver::MarkerContextGroup (const Graphic3d_CGroup& theCGroup
 
   if (theCGroup.ptrGroup != NULL)
   {
-    ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, theNoInsert);
+    ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectMarker (theCGroup.ContextMarker, 0 != theNoInsert);
   }
 }
 
@@ -100,5 +100,5 @@ void OpenGl_GraphicDriver::TextContextGroup (const Graphic3d_CGroup& theCGroup,
   if (!theCGroup.ContextText.IsDef || theCGroup.ptrGroup == NULL)
     return;
 
-  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectText (theCGroup.ContextText, theNoInsert);
+  ((OpenGl_Group* )theCGroup.ptrGroup)->SetAspectText (theCGroup.ContextText, 0 != theNoInsert);
 }

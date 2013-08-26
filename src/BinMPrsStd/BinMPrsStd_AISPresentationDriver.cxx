@@ -60,7 +60,7 @@ Standard_Boolean BinMPrsStd_AISPresentationDriver::Paste
 //Display status
   Standard_Boolean ok = theSource >> aValue;
   if (!ok) return ok;
-  anAtt->SetDisplayed((Standard_Boolean)aValue);
+  anAtt->SetDisplayed(0 != aValue);
 
 //GUID
   Standard_GUID aGUID;

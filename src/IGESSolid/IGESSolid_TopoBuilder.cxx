@@ -252,7 +252,7 @@ IGESSolid_TopoBuilder::IGESSolid_TopoBuilder ()    {  Clear();  }
     for (i = 1; i <= nb; i ++) loops->SetValue
       (i, GetCasted(IGESSolid_Loop,theinner->Value(i)));
   }
-  theface->Init (thesurf,theouter,loops);
+  theface->Init (thesurf,0 != theouter,loops);
   thefaces->Append(theface);
   thefflag->Append(orientation);
 }
@@ -317,7 +317,7 @@ IGESSolid_TopoBuilder::IGESSolid_TopoBuilder ()    {  Clear();  }
       flags->SetValue  (i,thevflag->Value(i));
     }
   }
-  thesolid->Init (themains,themflag, shells,flags);
+  thesolid->Init (themains,0 != themflag, shells,flags);
 }
 
     Handle(IGESSolid_Shell)  IGESSolid_TopoBuilder::Shell () const

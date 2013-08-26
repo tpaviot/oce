@@ -31,7 +31,7 @@ IFSelect_DispGlobal::IFSelect_DispGlobal ()    {  }
   (const Standard_Integer /* nbent */, Standard_Integer& pcount) const 
       {  pcount = 1;  return Standard_True;  }
 
-    Standard_Boolean  IFSelect_DispGlobal::PacketsCount
+    Standard_Integer  IFSelect_DispGlobal::PacketsCount
   (const Interface_Graph& /* G */, Standard_Integer& pcount) const 
       {  pcount = 1;  return Standard_True;  }
 

@@ -96,7 +96,7 @@ Standard_Boolean BinMDataStd_IntPackedMapDriver::Paste
     if (! (Source >> aDeltaValue))
       return Standard_False;
     else
-      aDelta = (Standard_Boolean)aDeltaValue;
+      aDelta = (0 != aDeltaValue);
   }
   aTagAtt->SetDelta(aDelta);
   return Standard_True;

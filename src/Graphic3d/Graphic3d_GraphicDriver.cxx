@@ -59,7 +59,7 @@ Graphic3d_GraphicDriver::Graphic3d_GraphicDriver (const Standard_CString AShrNam
 Standard_Integer Graphic3d_GraphicDriver::Light (const Graphic3d_CLight& ACLight, const Standard_Boolean Update) {
 
   static Standard_Integer NbLights = 1;
-  Standard_Boolean Result;
+  Standard_Integer Result;
 
   Result = Update ? ACLight.LightId : NbLights++;
   return Result;
@@ -69,7 +69,7 @@ Standard_Integer Graphic3d_GraphicDriver::Light (const Graphic3d_CLight& ACLight
 Standard_Integer Graphic3d_GraphicDriver::Plane (const Graphic3d_CPlane& ACPlane, const Standard_Boolean Update) {
 
   static Standard_Integer NbPlanes = 1;
-  Standard_Boolean Result;
+  Standard_Integer Result;
 
   Result = Update ? ACPlane.PlaneId : NbPlanes++;
   return Result;

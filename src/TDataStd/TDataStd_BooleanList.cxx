@@ -175,7 +175,7 @@ void TDataStd_BooleanList::Paste (const Handle(TDF_Attribute)& Into,
   TDataStd_ListIteratorOfListOfByte itr(myList);
   for (; itr.More(); itr.Next())
   {
-    aList->Append(itr.Value());
+    aList->Append(0 != itr.Value());
   }
 }
 

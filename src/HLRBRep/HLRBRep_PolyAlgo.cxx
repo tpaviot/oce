@@ -51,26 +51,26 @@
 #include <Precision.hxx>
 #include <gp.hxx>
 
-#define EMskOutLin1  ((Standard_Boolean)   1)
-#define EMskOutLin2  ((Standard_Boolean)   2)
-#define EMskOutLin3  ((Standard_Boolean)   4)
-#define EMskGrALin1  ((Standard_Boolean)   8)
-#define EMskGrALin2  ((Standard_Boolean)  16)
-#define EMskGrALin3  ((Standard_Boolean)  32)
-#define FMskBack     ((Standard_Boolean)  64)
-#define FMskSide     ((Standard_Boolean) 128)
-#define FMskHiding   ((Standard_Boolean) 256)
-#define FMskFlat     ((Standard_Boolean) 512)
-#define FMskOnOutL   ((Standard_Boolean)1024)
-#define FMskOrBack   ((Standard_Boolean)2048)
-#define FMskFrBack   ((Standard_Boolean)4096)
+#define EMskOutLin1  0x0001u
+#define EMskOutLin2  0x0002u
+#define EMskOutLin3  0x0004u
+#define EMskGrALin1  0x0008u
+#define EMskGrALin2  0x0010u
+#define EMskGrALin3  0x0020u
+#define FMskBack     0x0040u
+#define FMskSide     0x0080u
+#define FMskHiding   0x0100u
+#define FMskFlat     0x0200u
+#define FMskOnOutL   0x0400u
+#define FMskOrBack   0x0800u
+#define FMskFrBack   0x1000u
 
-#define NMskVert ((Standard_Boolean) 1)
-#define NMskOutL ((Standard_Boolean) 2)
-#define NMskNorm ((Standard_Boolean) 4)
-#define NMskFuck ((Standard_Boolean) 8)
-#define NMskEdge ((Standard_Boolean)16)
-#define NMskMove ((Standard_Boolean)32)
+#define NMskVert  0x01u
+#define NMskOutL  0x02u
+#define NMskNorm  0x04u
+#define NMskFuck  0x08u
+#define NMskEdge  0x10u
+#define NMskMove  0x20u
 
 #define PntXTI1 ((Standard_Real*)Coordinates)[ 0]
 #define PntYTI1 ((Standard_Real*)Coordinates)[ 1]
@@ -101,17 +101,17 @@
 #define Tri1Node1 ((Standard_Integer*)Tri1Indices)[0]
 #define Tri1Node2 ((Standard_Integer*)Tri1Indices)[1]
 #define Tri1Node3 ((Standard_Integer*)Tri1Indices)[2]
-#define Tri1Flags ((Standard_Boolean*)Tri1Indices)[3]
+#define Tri1Flags ((Standard_Integer*)Tri1Indices)[3]
 
 #define Tri2Node1 ((Standard_Integer*)Tri2Indices)[0]
 #define Tri2Node2 ((Standard_Integer*)Tri2Indices)[1]
 #define Tri2Node3 ((Standard_Integer*)Tri2Indices)[2]
-#define Tri2Flags ((Standard_Boolean*)Tri2Indices)[3]
+#define Tri2Flags ((Standard_Integer*)Tri2Indices)[3]
 
 #define Tri3Node1 ((Standard_Integer*)Tri3Indices)[0]
 #define Tri3Node2 ((Standard_Integer*)Tri3Indices)[1]
 #define Tri3Node3 ((Standard_Integer*)Tri3Indices)[2]
-#define Tri3Flags ((Standard_Boolean*)Tri3Indices)[3]
+#define Tri3Flags ((Standard_Integer*)Tri3Indices)[3]
 
 #define Seg1LstSg1 ((Standard_Integer*)Seg1Indices)[0]
 #define Seg1LstSg2 ((Standard_Integer*)Seg1Indices)[1]
@@ -128,9 +128,9 @@
 #define Seg2Conex2 ((Standard_Integer*)Seg2Indices)[5]
 
 #define Nod1NdSg ((Standard_Integer*)Nod1Indices)[0]
-#define Nod1Flag ((Standard_Boolean*)Nod1Indices)[1]
-#define Nod1Edg1 ((Standard_Boolean*)Nod1Indices)[2]
-#define Nod1Edg2 ((Standard_Boolean*)Nod1Indices)[3]
+#define Nod1Flag ((Standard_Integer*)Nod1Indices)[1]
+#define Nod1Edg1 ((Standard_Integer*)Nod1Indices)[2]
+#define Nod1Edg2 ((Standard_Integer*)Nod1Indices)[3]
 
 #define Nod1PntX ((Standard_Real*)Nod1RValues)[ 0]
 #define Nod1PntY ((Standard_Real*)Nod1RValues)[ 1]
@@ -145,9 +145,9 @@
 #define Nod1Scal ((Standard_Real*)Nod1RValues)[10]
 
 #define NodANdSg ((Standard_Integer*)NodAIndices)[0]
-#define NodAFlag ((Standard_Boolean*)NodAIndices)[1]
-#define NodAEdg1 ((Standard_Boolean*)NodAIndices)[2]
-#define NodAEdg2 ((Standard_Boolean*)NodAIndices)[3]
+#define NodAFlag ((Standard_Integer*)NodAIndices)[1]
+#define NodAEdg1 ((Standard_Integer*)NodAIndices)[2]
+#define NodAEdg2 ((Standard_Integer*)NodAIndices)[3]
 
 #define NodAPntX ((Standard_Real*)NodARValues)[ 0]
 #define NodAPntY ((Standard_Real*)NodARValues)[ 1]
@@ -162,9 +162,9 @@
 #define NodAScal ((Standard_Real*)NodARValues)[10]
 
 #define NodBNdSg ((Standard_Integer*)NodBIndices)[0]
-#define NodBFlag ((Standard_Boolean*)NodBIndices)[1]
-#define NodBEdg1 ((Standard_Boolean*)NodBIndices)[2]
-#define NodBEdg2 ((Standard_Boolean*)NodBIndices)[3]
+#define NodBFlag ((Standard_Integer*)NodBIndices)[1]
+#define NodBEdg1 ((Standard_Integer*)NodBIndices)[2]
+#define NodBEdg2 ((Standard_Integer*)NodBIndices)[3]
 
 #define NodBPntX ((Standard_Real*)NodBRValues)[ 0]
 #define NodBPntY ((Standard_Real*)NodBRValues)[ 1]
@@ -179,9 +179,9 @@
 #define NodBScal ((Standard_Real*)NodBRValues)[10]
 
 #define Nod2NdSg ((Standard_Integer*)Nod2Indices)[0]
-#define Nod2Flag ((Standard_Boolean*)Nod2Indices)[1]
-#define Nod2Edg1 ((Standard_Boolean*)Nod2Indices)[2]
-#define Nod2Edg2 ((Standard_Boolean*)Nod2Indices)[3]
+#define Nod2Flag ((Standard_Integer*)Nod2Indices)[1]
+#define Nod2Edg1 ((Standard_Integer*)Nod2Indices)[2]
+#define Nod2Edg2 ((Standard_Integer*)Nod2Indices)[3]
 
 #define Nod2PntX ((Standard_Real*)Nod2RValues)[ 0]
 #define Nod2PntY ((Standard_Real*)Nod2RValues)[ 1]
@@ -196,9 +196,9 @@
 #define Nod2Scal ((Standard_Real*)Nod2RValues)[10]
 
 #define Nod3NdSg ((Standard_Integer*)Nod3Indices)[0]
-#define Nod3Flag ((Standard_Boolean*)Nod3Indices)[1]
-#define Nod3Edg1 ((Standard_Boolean*)Nod3Indices)[2]
-#define Nod3Edg2 ((Standard_Boolean*)Nod3Indices)[3]
+#define Nod3Flag ((Standard_Integer*)Nod3Indices)[1]
+#define Nod3Edg1 ((Standard_Integer*)Nod3Indices)[2]
+#define Nod3Edg2 ((Standard_Integer*)Nod3Indices)[3]
 
 #define Nod3PntX ((Standard_Real*)Nod3RValues)[ 0]
 #define Nod3PntY ((Standard_Real*)Nod3RValues)[ 1]
@@ -213,9 +213,9 @@
 #define Nod3Scal ((Standard_Real*)Nod3RValues)[10]
 
 #define Nod4NdSg ((Standard_Integer*)Nod4Indices)[0]
-#define Nod4Flag ((Standard_Boolean*)Nod4Indices)[1]
-#define Nod4Edg1 ((Standard_Boolean*)Nod4Indices)[2]
-#define Nod4Edg2 ((Standard_Boolean*)Nod4Indices)[3]
+#define Nod4Flag ((Standard_Integer*)Nod4Indices)[1]
+#define Nod4Edg1 ((Standard_Integer*)Nod4Indices)[2]
+#define Nod4Edg2 ((Standard_Integer*)Nod4Indices)[3]
 
 #define Nod4PntX ((Standard_Real*)Nod4RValues)[ 0]
 #define Nod4PntY ((Standard_Real*)Nod4RValues)[ 1]
@@ -230,9 +230,9 @@
 #define Nod4Scal ((Standard_Real*)Nod4RValues)[10]
 
 #define Nod11NdSg ((Standard_Integer*)Nod11Indices)[0]
-#define Nod11Flag ((Standard_Boolean*)Nod11Indices)[1]
-#define Nod11Edg1 ((Standard_Boolean*)Nod11Indices)[2]
-#define Nod11Edg2 ((Standard_Boolean*)Nod11Indices)[3]
+#define Nod11Flag ((Standard_Integer*)Nod11Indices)[1]
+#define Nod11Edg1 ((Standard_Integer*)Nod11Indices)[2]
+#define Nod11Edg2 ((Standard_Integer*)Nod11Indices)[3]
 
 #define Nod11PntX ((Standard_Real*)Nod11RValues)[ 0]
 #define Nod11PntY ((Standard_Real*)Nod11RValues)[ 1]
@@ -247,9 +247,9 @@
 #define Nod11Scal ((Standard_Real*)Nod11RValues)[10]
 
 #define Nod1ANdSg ((Standard_Integer*)Nod1AIndices)[0]
-#define Nod1AFlag ((Standard_Boolean*)Nod1AIndices)[1]
-#define Nod1AEdg1 ((Standard_Boolean*)Nod1AIndices)[2]
-#define Nod1AEdg2 ((Standard_Boolean*)Nod1AIndices)[3]
+#define Nod1AFlag ((Standard_Integer*)Nod1AIndices)[1]
+#define Nod1AEdg1 ((Standard_Integer*)Nod1AIndices)[2]
+#define Nod1AEdg2 ((Standard_Integer*)Nod1AIndices)[3]
 
 #define Nod1APntX ((Standard_Real*)Nod1ARValues)[ 0]
 #define Nod1APntY ((Standard_Real*)Nod1ARValues)[ 1]
@@ -264,9 +264,9 @@
 #define Nod1AScal ((Standard_Real*)Nod1ARValues)[10]
 
 #define Nod1BNdSg ((Standard_Integer*)Nod1BIndices)[0]
-#define Nod1BFlag ((Standard_Boolean*)Nod1BIndices)[1]
-#define Nod1BEdg1 ((Standard_Boolean*)Nod1BIndices)[2]
-#define Nod1BEdg2 ((Standard_Boolean*)Nod1BIndices)[3]
+#define Nod1BFlag ((Standard_Integer*)Nod1BIndices)[1]
+#define Nod1BEdg1 ((Standard_Integer*)Nod1BIndices)[2]
+#define Nod1BEdg2 ((Standard_Integer*)Nod1BIndices)[3]
 
 #define Nod1BPntX ((Standard_Real*)Nod1BRValues)[ 0]
 #define Nod1BPntY ((Standard_Real*)Nod1BRValues)[ 1]
@@ -281,9 +281,9 @@
 #define Nod1BScal ((Standard_Real*)Nod1BRValues)[10]
 
 #define Nod12NdSg ((Standard_Integer*)Nod12Indices)[0]
-#define Nod12Flag ((Standard_Boolean*)Nod12Indices)[1]
-#define Nod12Edg1 ((Standard_Boolean*)Nod12Indices)[2]
-#define Nod12Edg2 ((Standard_Boolean*)Nod12Indices)[3]
+#define Nod12Flag ((Standard_Integer*)Nod12Indices)[1]
+#define Nod12Edg1 ((Standard_Integer*)Nod12Indices)[2]
+#define Nod12Edg2 ((Standard_Integer*)Nod12Indices)[3]
 
 #define Nod12PntX ((Standard_Real*)Nod12RValues)[ 0]
 #define Nod12PntY ((Standard_Real*)Nod12RValues)[ 1]
@@ -298,9 +298,9 @@
 #define Nod12Scal ((Standard_Real*)Nod12RValues)[10]
 
 #define Nod13NdSg ((Standard_Integer*)Nod13Indices)[0]
-#define Nod13Flag ((Standard_Boolean*)Nod13Indices)[1]
-#define Nod13Edg1 ((Standard_Boolean*)Nod13Indices)[2]
-#define Nod13Edg2 ((Standard_Boolean*)Nod13Indices)[3]
+#define Nod13Flag ((Standard_Integer*)Nod13Indices)[1]
+#define Nod13Edg1 ((Standard_Integer*)Nod13Indices)[2]
+#define Nod13Edg2 ((Standard_Integer*)Nod13Indices)[3]
 
 #define Nod13PntX ((Standard_Real*)Nod13RValues)[ 0]
 #define Nod13PntY ((Standard_Real*)Nod13RValues)[ 1]
@@ -315,9 +315,9 @@
 #define Nod13Scal ((Standard_Real*)Nod13RValues)[10]
 
 #define Nod14NdSg ((Standard_Integer*)Nod14Indices)[0]
-#define Nod14Flag ((Standard_Boolean*)Nod14Indices)[1]
-#define Nod14Edg1 ((Standard_Boolean*)Nod14Indices)[2]
-#define Nod14Edg2 ((Standard_Boolean*)Nod14Indices)[3]
+#define Nod14Flag ((Standard_Integer*)Nod14Indices)[1]
+#define Nod14Edg1 ((Standard_Integer*)Nod14Indices)[2]
+#define Nod14Edg2 ((Standard_Integer*)Nod14Indices)[3]
 
 #define Nod14PntX ((Standard_Real*)Nod14RValues)[ 0]
 #define Nod14PntY ((Standard_Real*)Nod14RValues)[ 1]
@@ -332,9 +332,9 @@
 #define Nod14Scal ((Standard_Real*)Nod14RValues)[10]
 
 #define Nod21NdSg ((Standard_Integer*)Nod21Indices)[0]
-#define Nod21Flag ((Standard_Boolean*)Nod21Indices)[1]
-#define Nod21Edg1 ((Standard_Boolean*)Nod21Indices)[2]
-#define Nod21Edg2 ((Standard_Boolean*)Nod21Indices)[3]
+#define Nod21Flag ((Standard_Integer*)Nod21Indices)[1]
+#define Nod21Edg1 ((Standard_Integer*)Nod21Indices)[2]
+#define Nod21Edg2 ((Standard_Integer*)Nod21Indices)[3]
 
 #define Nod21PntX ((Standard_Real*)Nod21RValues)[ 0]
 #define Nod21PntY ((Standard_Real*)Nod21RValues)[ 1]
@@ -349,9 +349,9 @@
 #define Nod21Scal ((Standard_Real*)Nod21RValues)[10]
 
 #define Nod2ANdSg ((Standard_Integer*)Nod2AIndices)[0]
-#define Nod2AFlag ((Standard_Boolean*)Nod2AIndices)[1]
-#define Nod2AEdg1 ((Standard_Boolean*)Nod2AIndices)[2]
-#define Nod2AEdg2 ((Standard_Boolean*)Nod2AIndices)[3]
+#define Nod2AFlag ((Standard_Integer*)Nod2AIndices)[1]
+#define Nod2AEdg1 ((Standard_Integer*)Nod2AIndices)[2]
+#define Nod2AEdg2 ((Standard_Integer*)Nod2AIndices)[3]
 
 #define Nod2APntX ((Standard_Real*)Nod2ARValues)[ 0]
 #define Nod2APntY ((Standard_Real*)Nod2ARValues)[ 1]
@@ -366,9 +366,9 @@
 #define Nod2AScal ((Standard_Real*)Nod2ARValues)[10]
 
 #define Nod2BNdSg ((Standard_Integer*)Nod2BIndices)[0]
-#define Nod2BFlag ((Standard_Boolean*)Nod2BIndices)[1]
-#define Nod2BEdg1 ((Standard_Boolean*)Nod2BIndices)[2]
-#define Nod2BEdg2 ((Standard_Boolean*)Nod2BIndices)[3]
+#define Nod2BFlag ((Standard_Integer*)Nod2BIndices)[1]
+#define Nod2BEdg1 ((Standard_Integer*)Nod2BIndices)[2]
+#define Nod2BEdg2 ((Standard_Integer*)Nod2BIndices)[3]
 
 #define Nod2BPntX ((Standard_Real*)Nod2BRValues)[ 0]
 #define Nod2BPntY ((Standard_Real*)Nod2BRValues)[ 1]
@@ -383,9 +383,9 @@
 #define Nod2BScal ((Standard_Real*)Nod2BRValues)[10]
 
 #define Nod22NdSg ((Standard_Integer*)Nod22Indices)[0]
-#define Nod22Flag ((Standard_Boolean*)Nod22Indices)[1]
-#define Nod22Edg1 ((Standard_Boolean*)Nod22Indices)[2]
-#define Nod22Edg2 ((Standard_Boolean*)Nod22Indices)[3]
+#define Nod22Flag ((Standard_Integer*)Nod22Indices)[1]
+#define Nod22Edg1 ((Standard_Integer*)Nod22Indices)[2]
+#define Nod22Edg2 ((Standard_Integer*)Nod22Indices)[3]
 
 #define Nod22PntX ((Standard_Real*)Nod22RValues)[ 0]
 #define Nod22PntY ((Standard_Real*)Nod22RValues)[ 1]
@@ -400,9 +400,9 @@
 #define Nod22Scal ((Standard_Real*)Nod22RValues)[10]
 
 #define Nod23NdSg ((Standard_Integer*)Nod23Indices)[0]
-#define Nod23Flag ((Standard_Boolean*)Nod23Indices)[1]
-#define Nod23Edg1 ((Standard_Boolean*)Nod23Indices)[2]
-#define Nod23Edg2 ((Standard_Boolean*)Nod23Indices)[3]
+#define Nod23Flag ((Standard_Integer*)Nod23Indices)[1]
+#define Nod23Edg1 ((Standard_Integer*)Nod23Indices)[2]
+#define Nod23Edg2 ((Standard_Integer*)Nod23Indices)[3]
 
 #define Nod23PntX ((Standard_Real*)Nod23RValues)[ 0]
 #define Nod23PntY ((Standard_Real*)Nod23RValues)[ 1]
@@ -417,9 +417,9 @@
 #define Nod23Scal ((Standard_Real*)Nod23RValues)[10]
 
 #define Nod24NdSg ((Standard_Integer*)Nod24Indices)[0]
-#define Nod24Flag ((Standard_Boolean*)Nod24Indices)[1]
-#define Nod24Edg1 ((Standard_Boolean*)Nod24Indices)[2]
-#define Nod24Edg2 ((Standard_Boolean*)Nod24Indices)[3]
+#define Nod24Flag ((Standard_Integer*)Nod24Indices)[1]
+#define Nod24Edg1 ((Standard_Integer*)Nod24Indices)[2]
+#define Nod24Edg2 ((Standard_Integer*)Nod24Indices)[3]
 
 #define Nod24PntX ((Standard_Real*)Nod24RValues)[ 0]
 #define Nod24PntY ((Standard_Real*)Nod24RValues)[ 1]
@@ -1267,7 +1267,7 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	    &(((HLRAlgo_Array1OfPINod*)PINod1)->ChangeValue(Pol1(iPol)));
 	  Standard_Address Nod1AIndices = (*pi1pA)->Indices();
 	  Standard_Address Nod1ARValues = (*pi1pA)->RValues();
-	  if (Nod1AEdg1 == 0 || Nod1AEdg1 == (Standard_Boolean) e) {
+	  if (Nod1AEdg1 == 0 || Nod1AEdg1 == e) {
 	    Nod1AEdg1 = e;
 	    Nod1APCu1 = par->Value(iPol);
 	  }
@@ -1283,8 +1283,8 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	XTI2 = X2 = Nod12PntX;
 	YTI2 = Y2 = Nod12PntY;
 	ZTI2 = Z2 = Nod12PntZ;
-	if      (Nod12Edg1 ==  (Standard_Boolean) e) U2 = Nod12PCu1;
-	else if (Nod12Edg2 ==  (Standard_Boolean) e) U2 = Nod12PCu2;
+	if      (Nod12Edg1 ==  e) U2 = Nod12PCu1;
+	else if (Nod12Edg2 ==  e) U2 = Nod12PCu2;
 #ifdef DEB
 	else {
 	  cout << " HLRBRep_PolyAlgo::InitBiPointsWithConnexity : ";
@@ -1335,8 +1335,8 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	    XTI2 = X2 = Nod12PntX;
 	    YTI2 = Y2 = Nod12PntY;
 	    ZTI2 = Z2 = Nod12PntZ;
-	    if      (Nod12Edg1 ==  (Standard_Boolean) e) U2 = Nod12PCu1;
-	    else if (Nod12Edg2 ==  (Standard_Boolean) e) U2 = Nod12PCu2;
+	    if      (Nod12Edg1 ==  e) U2 = Nod12PCu1;
+	    else if (Nod12Edg2 ==  e) U2 = Nod12PCu2;
 #ifdef DEB
 	    else {
 	      cout << " HLRBRep_PolyAlgo::InitBiPointsWithConnexity : ";
@@ -1426,7 +1426,7 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	  Standard_Address Nod2AIndices = (*pi2pA)->Indices();
 	  Standard_Address Nod2ARValues = (*pi2pA)->RValues();
 	  Standard_Real PCu = par->Value(iPol);
-	  if (Nod1AEdg1 == 0 || Nod1AEdg1 ==  (Standard_Boolean) e) {
+	  if (Nod1AEdg1 == 0 || Nod1AEdg1 ==  e) {
 	    Nod1AEdg1 = e;
 	    Nod1APCu1 = PCu;
 	  }
@@ -1434,7 +1434,7 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	    Nod1AEdg2 = e;
 	    Nod1APCu2 = PCu;
 	  }
-	  if (Nod2AEdg1 == 0 || Nod2AEdg1 == (Standard_Boolean) e) {
+	  if (Nod2AEdg1 == 0 || Nod2AEdg1 == e) {
 	    Nod2AEdg1 = e;
 	    Nod2APCu1 = PCu;
 	  }
@@ -1453,8 +1453,8 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	XTI2 = X2 = Nod12PntX;
 	YTI2 = Y2 = Nod12PntY;
 	ZTI2 = Z2 = Nod12PntZ;
-	if      (Nod12Edg1 == (Standard_Boolean) e) U2 = Nod12PCu1;
-	else if (Nod12Edg2 == (Standard_Boolean) e) U2 = Nod12PCu2;
+	if      (Nod12Edg1 == e) U2 = Nod12PCu1;
+	else if (Nod12Edg2 == e) U2 = Nod12PCu2;
 #ifdef DEB
 	else {
 	  cout << " HLRBRep_PolyAlgo::InitBiPointsWithConnexity : ";
@@ -1526,8 +1526,8 @@ InitBiPointsWithConnexity (const Standard_Integer e,
 	    XTI2 = X2 = Nod12PntX;
 	    YTI2 = Y2 = Nod12PntY;
 	    ZTI2 = Z2 = Nod12PntZ;
-	    if      (Nod12Edg1 == (Standard_Boolean) e) U2 = Nod12PCu1;
-	    else if (Nod12Edg2 == (Standard_Boolean) e) U2 = Nod12PCu2;
+	    if      (Nod12Edg1 == e) U2 = Nod12PCu1;
+	    else if (Nod12Edg2 == e) U2 = Nod12PCu2;
 #ifdef DEB
 	    else {
 	      cout << " HLRBRep_PolyAlgo::InitBiPointsWithConnexity : ";
@@ -1722,7 +1722,7 @@ Interpolation (HLRAlgo_ListOfBPoint& List,
   Standard_Real X3,Y3,Z3,XTI3,YTI3,ZTI3,coef3,U3;
   Standard_Real X4,Y4,Z4,XTI4,YTI4,ZTI4,coef4,U4;
 //  gp_Pnt P3,PT3,P4,PT4;
-  Standard_Boolean flag = 0;
+  Standard_Integer flag = 0;
   if (rg >= GeomAbs_G1) flag += 1;
   if (rg >= GeomAbs_G2) flag += 2;
   insP3 = Interpolation(U1,U2,Nod11RValues,Nod12RValues,
@@ -1798,7 +1798,7 @@ Interpolation (HLRAlgo_ListOfBPoint& List,
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI2,YTI2,ZTI2,
 		  X1  ,Y1  ,Z1  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2,flag));
+		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2, flag));
 }
 
 //=======================================================================
@@ -1878,7 +1878,7 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
 		   const Standard_Real U3,
 		   const Standard_Boolean insP3,
 		   const Standard_Boolean mP3P1,
-		   const Standard_Boolean flag) const
+		   const Standard_Integer flag) const
 {
   Standard_Address TData2 = 0;
   Standard_Address PISeg2 = 0;
@@ -1902,8 +1902,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod11PntX = X3;
       Nod11PntY = Y3;
       Nod11PntZ = Z3;
-      if      (Nod11Edg1 == (Standard_Boolean) e) Nod11PCu1 = U3;
-      else if (Nod11Edg2 == (Standard_Boolean) e) Nod11PCu2 = U3;
+      if      (Nod11Edg1 == e) Nod11PCu1 = U3;
+      else if (Nod11Edg2 == e) Nod11PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -1940,8 +1940,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod12PntX = X3;
       Nod12PntY = Y3;
       Nod12PntZ = Z3;
-      if      (Nod12Edg1 == (Standard_Boolean) e) Nod12PCu1 = U3;
-      else if (Nod12Edg2 == (Standard_Boolean) e) Nod12PCu2 = U3;
+      if      (Nod12Edg1 == e) Nod12PCu1 = U3;
+      else if (Nod12Edg2 == e) Nod12PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -1971,17 +1971,17 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI3,YTI3,ZTI3,
 		  X1  ,Y1  ,Z1  ,X3  ,Y3  ,Z3  ,   e,
-		  i1  ,i1p1,i1p3,flag));
+		  i1  ,i1p1,i1p3, flag));
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI3,YTI3,ZTI3,XTI2,YTI2,ZTI2,
 		  X3  ,Y3  ,Z3  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p3,i1p2,flag));
+		  i1  ,i1p3,i1p2, flag));
   }
   else                                             // p1 p2
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI2,YTI2,ZTI2,
 		  X1  ,Y1  ,Z1  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p1,i1p2,flag));
+		  i1  ,i1p1,i1p2, flag));
 }
 
 //=======================================================================
@@ -2039,7 +2039,7 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
 		   const Standard_Real U3,
 		   const Standard_Boolean insP3,
 		   const Standard_Boolean mP3P1,
-		   const Standard_Boolean flag) const
+		   const Standard_Integer flag) const
 {
   Standard_Boolean ins3 = insP3;
   if (ins3 && mP3P1) {                             // P1 ---> P3
@@ -2065,8 +2065,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod11PntX = X3;
       Nod11PntY = Y3;
       Nod11PntZ = Z3;
-      if      (Nod11Edg1 == (Standard_Boolean) e) Nod11PCu1 = U3;
-      else if (Nod11Edg2 == (Standard_Boolean) e) Nod11PCu2 = U3;
+      if      (Nod11Edg1 == e) Nod11PCu1 = U3;
+      else if (Nod11Edg2 == e) Nod11PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2079,8 +2079,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod21PntX  = X3;
       Nod21PntY  = Y3;
       Nod21PntZ  = Z3;
-      if      (Nod21Edg1 == (Standard_Boolean) e) Nod21PCu1 = U3;
-      else if (Nod21Edg2 == (Standard_Boolean) e) Nod21PCu2 = U3;
+      if      (Nod21Edg1 == e) Nod21PCu1 = U3;
+      else if (Nod21Edg2 == e) Nod21PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2122,8 +2122,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod12PntX = X3;
       Nod12PntY = Y3;
       Nod12PntZ = Z3;
-      if      (Nod12Edg1 == (Standard_Boolean) e) Nod12PCu1 = U3;
-      else if (Nod12Edg2 == (Standard_Boolean) e) Nod12PCu2 = U3;
+      if      (Nod12Edg1 == e) Nod12PCu1 = U3;
+      else if (Nod12Edg2 == e) Nod12PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2136,8 +2136,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod22PntX  = X3;
       Nod22PntY  = Y3;
       Nod22PntZ  = Z3;
-      if      (Nod22Edg1 == (Standard_Boolean) e) Nod22PCu1 = U3;
-      else if (Nod22Edg2 == (Standard_Boolean) e) Nod22PCu2 = U3;
+      if      (Nod22Edg1 == e) Nod22PCu1 = U3;
+      else if (Nod22Edg2 == e) Nod22PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2181,17 +2181,17 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI3,YTI3,ZTI3,
 		  X1  ,Y1  ,Z1  ,X3  ,Y3  ,Z3  ,   e,
-		  i1  ,i1p1,i1p3,i2  ,i2p1,i2p3,flag));
+		  i1  ,i1p1,i1p3,i2  ,i2p1,i2p3, flag));
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI3,YTI3,ZTI3,XTI2,YTI2,ZTI2,
 		  X3  ,Y3  ,Z3  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p3,i1p2,i2  ,i2p3,i2p2,flag));
+		  i1  ,i1p3,i1p2,i2  ,i2p3,i2p2, flag));
   }
   else                                             // p1 p2
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI2,YTI2,ZTI2,
 		  X1  ,Y1  ,Z1  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2,flag));
+		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2, flag));
 }
 
 //=======================================================================
@@ -2259,7 +2259,7 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
 		   const Standard_Real U4,
 		   const Standard_Boolean insP4,
 		   const Standard_Boolean mP4P1,
-		   const Standard_Boolean flag) const
+		   const Standard_Integer flag) const
 {
   Standard_Boolean ins3 = insP3;
   Standard_Boolean ins4 = insP4;
@@ -2286,8 +2286,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod11PntX = X3;
       Nod11PntY = Y3;
       Nod11PntZ = Z3;
-      if      (Nod11Edg1 == (Standard_Boolean) e) Nod11PCu1 = U3;
-      else if (Nod11Edg2 == (Standard_Boolean) e) Nod11PCu2 = U3;
+      if      (Nod11Edg1 == e) Nod11PCu1 = U3;
+      else if (Nod11Edg2 == e) Nod11PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2300,8 +2300,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod21PntX  = X3;
       Nod21PntY  = Y3;
       Nod21PntZ  = Z3;
-      if      (Nod21Edg1 == (Standard_Boolean) e) Nod21PCu1 = U3;
-      else if (Nod21Edg2 == (Standard_Boolean) e) Nod21PCu2 = U3;
+      if      (Nod21Edg1 == e) Nod21PCu1 = U3;
+      else if (Nod21Edg2 == e) Nod21PCu2 = U3;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2343,8 +2343,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod12PntX = X4;
       Nod12PntY = Y4;
       Nod12PntZ = Z4;
-      if      (Nod12Edg1 == (Standard_Boolean) e) Nod12PCu1 = U4;
-      else if (Nod12Edg2 == (Standard_Boolean) e) Nod12PCu2 = U4;
+      if      (Nod12Edg1 == e) Nod12PCu1 = U4;
+      else if (Nod12Edg2 == e) Nod12PCu2 = U4;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2357,8 +2357,8 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       Nod22PntX  = X4;
       Nod22PntY  = Y4;
       Nod22PntZ  = Z4;
-      if      (Nod22Edg1 == (Standard_Boolean) e) Nod22PCu1 = U4;
-      else if (Nod22Edg2 == (Standard_Boolean) e) Nod22PCu2 = U4;
+      if      (Nod22Edg1 == e) Nod22PCu1 = U4;
+      else if (Nod22Edg2 == e) Nod22PCu2 = U4;
 #ifdef DEB
       else {
 	cout << " HLRBRep_PolyAlgo::MoveOrInsertPoint : ";
@@ -2455,22 +2455,22 @@ MoveOrInsertPoint (HLRAlgo_ListOfBPoint& List,
       List.Prepend(HLRAlgo_BiPoint
 		   (XTI1,YTI1,ZTI1,XTI3,YTI3,ZTI3,
 		    X1  ,Y1  ,Z1  ,X3  ,Y3  ,Z3  ,   e,
-		    i1  ,i1p1,i1p3,i2  ,i2p1,i2p3,flag));
+		    i1  ,i1p1,i1p3,i2  ,i2p1,i2p3, flag));
       List.Prepend(HLRAlgo_BiPoint
 		   (XTI3,YTI3,ZTI3,XTI4,YTI4,ZTI4,
 		    X3  ,Y3  ,Z3  ,X4  ,Y4  ,Z4  ,   e,
-		    i1  ,i1p3,i1p4,i2  ,i2p3,i2p4,flag));
+		    i1  ,i1p3,i1p4,i2  ,i2p3,i2p4, flag));
       List.Prepend(HLRAlgo_BiPoint
 		   (XTI4,YTI4,ZTI4,XTI2,YTI2,ZTI2,
 		    X4  ,Y4  ,Z4  ,X2  ,Y2  ,Z2  ,   e,
-		    i1  ,i1p4,i1p2,i2  ,i2p4,i2p2,flag));
+		    i1  ,i1p4,i1p2,i2  ,i2p4,i2p2, flag));
     }
   }
   else                                             // p1 p2
     List.Prepend(HLRAlgo_BiPoint
 		 (XTI1,YTI1,ZTI1,XTI2,YTI2,ZTI2,
 		  X1  ,Y1  ,Z1  ,X2  ,Y2  ,Z2  ,   e,
-		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2,flag));
+		  i1  ,i1p1,i1p2,i2  ,i2p1,i2p2, flag));
 }
 
 //=======================================================================
@@ -3162,9 +3162,9 @@ HLRBRep_PolyAlgo::OrientTriangle(const Standard_Integer iTri,
 				 const Standard_Address Nod3Indices,
 				 const Standard_Address Nod3RValues) const
 {
-  Standard_Boolean o1 = Nod1Flag & NMskOutL;
-  Standard_Boolean o2 = Nod2Flag & NMskOutL;
-  Standard_Boolean o3 = Nod3Flag & NMskOutL;
+  Standard_Boolean o1 = (0 != (Nod1Flag & NMskOutL));
+  Standard_Boolean o2 = (0 != (Nod2Flag & NMskOutL));
+  Standard_Boolean o3 = (0 != (Nod3Flag & NMskOutL));
   Tri1Flags &= ~FMskFlat;
   Tri1Flags &= ~FMskOnOutL;
   if (o1 && o2 && o3) {

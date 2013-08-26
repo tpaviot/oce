@@ -95,7 +95,7 @@
 //           points PntA, PntB, PntC
 //=======================================================================
 
-static int CoPlanar(const gp_Pnt  PntA,
+static Standard_Boolean CoPlanar(const gp_Pnt  PntA,
 	            const gp_Pnt  PntB,
 		    const gp_Pnt  PntC,
 		    const gp_Pnt  PntD)

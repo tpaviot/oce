@@ -307,7 +307,7 @@ void BRepMesh_Delaun::CreateTriangles ( const Standard_Integer theVertexIndex,
     const BRepMesh_Edge& anEdge = GetEdge( anEdges.Key() );
     Standard_Integer aFirstNode = anEdge.FirstNode();
     Standard_Integer aLastNode  = anEdge.LastNode();
-    Standard_Boolean isPositive = (Standard_Boolean)thePoly( anEdges.Key() );
+    Standard_Boolean isPositive = (0 != thePoly( anEdges.Key() ));
     if ( !isPositive )
     {
       Standard_Integer aTmp;
@@ -1381,7 +1381,7 @@ void  BRepMesh_Delaun::RemoveVertex( const BRepMesh_Vertex& theVertex )
     Standard_Integer aPivotNode = anEdge.LastNode();
     Standard_Integer anEdgeId   = aLoopEdgesIt.Key();
     
-    Standard_Boolean isPositive = (Standard_Boolean)aLoopEdges( anEdgeId );
+    Standard_Boolean isPositive = (0 != aLoopEdges( anEdgeId ));
     if ( !isPositive )
     {
       Standard_Integer aTmp;

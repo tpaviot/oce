@@ -897,7 +897,7 @@ void Geom2d_BezierCurve::Init
 //Standard_Boolean Geom2d_BezierCurve::CoefficientsOK(const Standard_Real U)const
 Standard_Boolean Geom2d_BezierCurve::CoefficientsOK(const Standard_Real )const
 {
-  return (validcache) ;
+  return (0 != validcache) ;
 			
 }
 

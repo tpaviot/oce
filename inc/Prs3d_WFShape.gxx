@@ -195,7 +195,7 @@ void Prs3d_WFShape::Add(const Handle (Prs3d_Presentation)& aPresentation,
 	      OCC_CATCH_SIGNALS
 	      Prs3d_NListOfSequenceOfPnt CurUIsoCurves;
 	      FacePresentation::Add(aPresentation, HS,
-				    isoU, isoV,
+				    0 != isoU,0 !=  isoV,
 				    aDeflection,
 				    isoU, isoV,
 				    aDrawer,
@@ -232,7 +232,7 @@ void Prs3d_WFShape::Add(const Handle (Prs3d_Presentation)& aPresentation,
 	      OCC_CATCH_SIGNALS
 	      Prs3d_NListOfSequenceOfPnt CurUIsoCurves;
 	      FacePresentation::Add(aPresentation, HS,
-				    isoU, Standard_False,
+				    0 != isoU, Standard_False,
 				    aDeflection,
 				    isoU, 0,
 				    aDrawer,
@@ -265,7 +265,7 @@ void Prs3d_WFShape::Add(const Handle (Prs3d_Presentation)& aPresentation,
 	      OCC_CATCH_SIGNALS
 	      Prs3d_NListOfSequenceOfPnt CurUIsoCurves;
 	      FacePresentation::Add(aPresentation, HS,
-				    Standard_False, isoV,
+				    Standard_False, 0 != isoV,
 				    aDeflection,
 				    0, isoV,
 				    aDrawer,
