@@ -58,7 +58,7 @@ macro(add_oce_test test_name libs)
 		target_link_libraries(${test_name} gtest)
 	endif (OCE_COVERAGE)
 	gtest_add_tests(${test_name} "" ${SOURCE_FILES})
-endmacro(ADD_OCE_TEST test_name libs)
+endmacro(add_oce_test test_name libs)
 
 file(GLOB TEST_DIRECTORIES ./*_test gtest_sandbox)
 subdirs(${TEST_DIRECTORIES})
