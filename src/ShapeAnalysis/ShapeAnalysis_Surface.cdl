@@ -362,7 +362,7 @@ is
     	    	                P3D    : Pnt from gp;
                                 preci  : Real;
                                 sol    :in out Pnt2d from gp)
-    returns Boolean is private;
+    returns Integer is private;
     
     SortSingularities (me: mutable) is private;
     

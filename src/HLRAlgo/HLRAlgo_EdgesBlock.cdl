@@ -120,7 +120,7 @@ is
 
 fields
     myEdges  : Array1OfInteger from TColStd;
-    myFlags  : Array1OfBoolean from TColStd;
+    myFlags  : Array1OfInteger from TColStd;
     myMinMax : Integer         from Standard[16];
 
 end EdgesBlock;

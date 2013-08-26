@@ -93,6 +93,6 @@ fields
     myP1    : Pnt2d   from gp;
     myP2    : Pnt2d   from gp;
     myShape : Shape   from TopoDS;
-    myFlags : Boolean from Standard;
+    myFlags : Integer from Standard;
 
 end BiPnt2D;

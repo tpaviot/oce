@@ -42,7 +42,7 @@ is
     	is redefined;
     ---Purpose : Returns True, maximum limit is given as <nbent>
 
-    PacketsCount (me; G : Graph; count : out Integer) returns Boolean
+    PacketsCount (me; G : Graph; count : out Integer) returns Integer
     	is redefined;
     ---Purpose : Returns True (count is easy to know) and count is the length
     --           of the input list (RootResult from FinalSelection)
