@@ -166,7 +166,7 @@ static void expcurv2d(const Handle(Geom2d_Curve)& aCurve, TColStd_Array2OfIntege
   if (aCurve->IsKind(STANDARD_TYPE(Geom2d_BezierCurve))) {
     Handle(Geom2d_BezierCurve) Bs = Handle(Geom2d_BezierCurve)::DownCast(aCurve); 
     if(Bs->Degree() > Degree) Nb.ChangeValue(2,1)++;
-    if(Bs->IsRational() > ((unsigned int)MaxSeg) )  Nb.ChangeValue(2,3)++;
+    if(Bs->IsRational() && 0 == MaxSeg )  Nb.ChangeValue(2,3)++;
     if(aCont < theCont)
     {
 
@@ -218,7 +218,7 @@ static void expcurv(const Handle(Geom_Curve)& aCurve, TColStd_Array2OfInteger& N
   if (aCurve->IsKind(STANDARD_TYPE(Geom_BezierCurve))) {
     Handle(Geom_BezierCurve) Bs = Handle(Geom_BezierCurve)::DownCast(aCurve); 
     if(Bs->Degree() > Degree) Nb.ChangeValue(2,1)++;
-    if(Bs->IsRational() > ((unsigned int)MaxSeg) )  Nb.ChangeValue(2,3)++;
+    if(Bs->IsRational() && 0 == MaxSeg )  Nb.ChangeValue(2,3)++;
     if(aCont < theCont) 
       Nb.ChangeValue(2,4)++;
     return;
