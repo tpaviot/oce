@@ -1,6 +1,6 @@
-SET(TOOLKIT TKPCAF)
+set(TOOLKIT TKPCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	PDataXtd
 	PNaming
 	PPrsStd
@@ -8,7 +8,7 @@ SET(TOOLKIT_MODULES
 	MPrsStd
 	MNaming
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	PTKernel
 	TKBRep
 	TKMath
@@ -24,5 +24,5 @@ SET(TOOLKIT_DEPENDS
 	TKPLCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

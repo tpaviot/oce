@@ -1,12 +1,12 @@
-SET(TOOLKIT TKXCAFSchema)
+set(TOOLKIT TKXCAFSchema)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	MXCAFDoc
 	PXCAFDoc
 	XCAFDrivers
 	XCAFSchema
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKPLCAF
 	TKernel
 	PTKernel
@@ -21,5 +21,5 @@ SET(TOOLKIT_DEPENDS
 	TKStdSchema
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

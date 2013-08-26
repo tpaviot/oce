@@ -1,6 +1,6 @@
-SET(TOOLKIT TKPLCAF)
+set(TOOLKIT TKPLCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	PDF
 	PDataStd
 	PFunction
@@ -10,12 +10,12 @@ SET(TOOLKIT_MODULES
 	MFunction
 	MDocStd
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	PTKernel
 	TKernel
 	TKLCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

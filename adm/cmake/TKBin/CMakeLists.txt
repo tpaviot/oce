@@ -1,13 +1,13 @@
-SET(TOOLKIT TKBin)
+set(TOOLKIT TKBin)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BinDrivers
 	BinMDataXtd
 	BinMPrsStd
 	BinMNaming
 	BinTools
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKMath
 	TKernel
@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKBinL
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

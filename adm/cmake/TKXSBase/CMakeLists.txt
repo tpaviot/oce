@@ -1,6 +1,6 @@
-SET(TOOLKIT TKXSBase)
+set(TOOLKIT TKXSBase)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	Interface
 	Transfer
 	IFGraph
@@ -18,7 +18,7 @@ SET(TOOLKIT_MODULES
 	LibCtl
 	MoniTool
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -29,5 +29,5 @@ SET(TOOLKIT_DEPENDS
 	TKShHealing
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

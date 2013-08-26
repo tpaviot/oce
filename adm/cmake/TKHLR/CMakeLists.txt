@@ -1,6 +1,6 @@
-SET(TOOLKIT TKHLR)
+set(TOOLKIT TKHLR)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	HLRTopoBRep
 	HLRBRep
 	HLRAlgo
@@ -9,7 +9,7 @@ SET(TOOLKIT_MODULES
 	TopCnx
 	Contap
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKTopAlgo
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

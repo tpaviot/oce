@@ -1,6 +1,6 @@
-SET(TOOLKIT TKG2d)
+set(TOOLKIT TKG2d)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	Geom2d
 	LProp
 	TColGeom2d
@@ -9,10 +9,10 @@ SET(TOOLKIT_MODULES
 	Geom2dAdaptor
 	GProp
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKMath
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

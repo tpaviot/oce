@@ -1,9 +1,9 @@
-SET(TOOLKIT TKXMesh)
+set(TOOLKIT TKXMesh)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XBRepMesh
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKMath
 	TKernel
@@ -11,5 +11,5 @@ SET(TOOLKIT_DEPENDS
 	TKMesh
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

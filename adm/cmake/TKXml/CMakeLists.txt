@@ -1,12 +1,12 @@
-SET(TOOLKIT TKXml)
+set(TOOLKIT TKXml)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XmlDrivers
 	XmlMDataXtd
 	XmlMNaming
 	XmlMPrsStd
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKV3d
@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKXmlL
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

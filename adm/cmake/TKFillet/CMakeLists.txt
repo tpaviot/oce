@@ -1,6 +1,6 @@
-SET(TOOLKIT TKFillet)
+set(TOOLKIT TKFillet)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	ChFiDS
 	ChFi2d
 	ChFi3d
@@ -11,7 +11,7 @@ SET(TOOLKIT_MODULES
 	BRepFilletAPI
 	FilletSurf
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -24,5 +24,5 @@ SET(TOOLKIT_DEPENDS
 	TKShHealing
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

@@ -1,9 +1,9 @@
-SET(TOOLKIT TKXmlTObj)
+set(TOOLKIT TKXmlTObj)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XmlTObjDrivers
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKTObj
@@ -12,5 +12,5 @@ SET(TOOLKIT_DEPENDS
 	TKXmlL
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

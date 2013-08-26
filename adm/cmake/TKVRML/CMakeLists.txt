@@ -1,12 +1,12 @@
-SET(TOOLKIT TKVRML)
+set(TOOLKIT TKVRML)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	VrmlConverter
 	VrmlAPI
 	Vrml
 	VrmlData
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKTopAlgo
 	TKMath
@@ -22,5 +22,5 @@ SET(TOOLKIT_DEPENDS
 	TKV3d
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

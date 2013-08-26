@@ -1,11 +1,11 @@
-SET(TOOLKIT TKXCAF)
+set(TOOLKIT TKXCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XCAFApp
 	XCAFDoc
 	XCAFPrs
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -19,5 +19,5 @@ SET(TOOLKIT_DEPENDS
 	TKCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

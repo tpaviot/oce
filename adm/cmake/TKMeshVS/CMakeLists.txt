@@ -1,9 +1,9 @@
-SET(TOOLKIT TKMeshVS)
+set(TOOLKIT TKMeshVS)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	MeshVS
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKV3d
 	TKMath
 	TKService
@@ -12,5 +12,5 @@ SET(TOOLKIT_DEPENDS
 	TKG2d
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

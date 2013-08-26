@@ -1,6 +1,6 @@
-SET(TOOLKIT TKV3d)
+set(TOOLKIT TKV3d)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	V3d
 	Graphic3d
 	Visual3d
@@ -13,7 +13,7 @@ SET(TOOLKIT_MODULES
 	DsgPrs
 	StdSelect
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKMath
 	TKernel
@@ -26,7 +26,7 @@ SET(TOOLKIT_DEPENDS
 	TKGeomAlgo
 	TKHLR
 )
-SET(TOOLKIT_LIBS ${CSF_user32_LIB} ${CSF_gdi32_LIB})
+set(TOOLKIT_LIBS ${CSF_user32_LIB} ${CSF_gdi32_LIB})
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

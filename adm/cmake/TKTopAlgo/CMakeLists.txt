@@ -1,6 +1,6 @@
-SET(TOOLKIT TKTopAlgo)
+set(TOOLKIT TKTopAlgo)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	IntCurvesFace
 	MAT
 	MAT2d
@@ -18,7 +18,7 @@ SET(TOOLKIT_MODULES
 	BRepBuilderAPI
 	BRepApprox
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKMath
 	TKernel
 	TKG2d
@@ -28,5 +28,5 @@ SET(TOOLKIT_DEPENDS
 	TKGeomAlgo
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

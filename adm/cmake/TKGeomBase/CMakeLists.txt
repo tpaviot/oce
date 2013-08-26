@@ -1,6 +1,6 @@
-SET(TOOLKIT TKGeomBase)
+set(TOOLKIT TKGeomBase)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	ProjLib
 	GeomProjLib
 	GCPnts
@@ -24,12 +24,12 @@ SET(TOOLKIT_MODULES
 	GCE2d
 	gce
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKMath
 	TKG2d
 	TKG3d
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

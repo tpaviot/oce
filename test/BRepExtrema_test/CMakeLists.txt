@@ -1,3 +1,3 @@
-IF (${PROJECT_NAME}_MODEL)
-    ADD_OCE_TEST(BRepExtrema_test "TKPrim")
-ENDIF (${PROJECT_NAME}_MODEL)
+if (OCE_MODEL)
+	add_oce_test(BRepExtrema_test "TKPrim")
+endif (OCE_MODEL)

@@ -1,6 +1,6 @@
-SET(TOOLKIT TKXmlL)
+set(TOOLKIT TKXmlL)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XmlLDrivers
 	XmlMDF
 	XmlMDataStd
@@ -8,12 +8,12 @@ SET(TOOLKIT_MODULES
 	XmlMFunction
 	XmlObjMgt
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKCDF
 	TKernel
 	TKMath
 	TKLCAF
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 
