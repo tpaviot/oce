@@ -286,7 +286,7 @@ inline void Extrema_Curve2dTool::D2(const Adaptor2d_Curve2d& C,
 
  inline Standard_Boolean Extrema_Curve2dTool::IsRational(const Adaptor2d_Curve2d& C)
 {
-  return C.IsRational();
+  return 0 != C.Degree();
 }
 
 
