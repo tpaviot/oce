@@ -43,7 +43,7 @@ public:
   //! Returns True : maximum equates 1 <br>
   Standard_EXPORT   virtual  Standard_Boolean LimitedMax(const Standard_Integer nbent,Standard_Integer& max) const;
   //! Returns True (count of packets is well known) and count is 1 <br>
-  Standard_EXPORT   virtual  Standard_Boolean PacketsCount(const Interface_Graph& G,Standard_Integer& count) const;
+  Standard_EXPORT   virtual  Standard_Integer PacketsCount(const Interface_Graph& G,Standard_Integer& count) const;
   //! Computes the list of produced Packets. It is made of only ONE <br>
 //!           Packet, which gets the RootResult from the Final Selection. <br>
 //!           Remark : the inherited exception raising is never activated. <br>

@@ -59,7 +59,7 @@ PTopoDS_TShape1::PTopoDS_TShape1()
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Modified() const 
-{ return myFlags & PTopoDS_ModifiedMask; }
+{ return 0 != (myFlags & PTopoDS_ModifiedMask); }
 
 //=======================================================================
 //function : Modified
@@ -78,7 +78,7 @@ void  PTopoDS_TShape1::Modified(const Standard_Boolean M)
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Checked() const 
-{ return myFlags & PTopoDS_CheckedMask; }
+{ return 0 != (myFlags & PTopoDS_CheckedMask); }
 
 //=======================================================================
 //function : Checked
@@ -97,7 +97,7 @@ void  PTopoDS_TShape1::Checked(const Standard_Boolean M)
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Orientable() const 
-{ return myFlags & PTopoDS_OrientableMask; }
+{ return 0 != (myFlags & PTopoDS_OrientableMask); }
 
 //=======================================================================
 //function : Orientable
@@ -116,7 +116,7 @@ void  PTopoDS_TShape1::Orientable(const Standard_Boolean M)
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Closed() const 
-{ return myFlags & PTopoDS_ClosedMask; }
+{ return 0 != (myFlags & PTopoDS_ClosedMask); }
 
 //=======================================================================
 //function : Closed
@@ -135,7 +135,7 @@ void  PTopoDS_TShape1::Closed(const Standard_Boolean M)
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Infinite() const 
-{ return myFlags & PTopoDS_InfiniteMask; }
+{ return 0 != (myFlags & PTopoDS_InfiniteMask); }
 
 //=======================================================================
 //function : Infinite
@@ -154,7 +154,7 @@ void  PTopoDS_TShape1::Infinite(const Standard_Boolean M)
 //=======================================================================
 
 Standard_Boolean  PTopoDS_TShape1::Convex() const 
-{ return myFlags & PTopoDS_ConvexMask; }
+{ return 0 != (myFlags & PTopoDS_ConvexMask); }
 
 //=======================================================================
 //function : Convex

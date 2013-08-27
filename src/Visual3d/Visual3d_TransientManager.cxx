@@ -98,7 +98,7 @@ void Visual3d_TransientManager::Destroy () {
 
 //-Methods, in order
 
-Standard_Boolean Visual3d_TransientManager::BeginDraw (const Handle(Visual3d_View)& AView, const Standard_Boolean DoubleBuffer, const Standard_Boolean RetainMode) {
+Standard_Integer Visual3d_TransientManager::BeginDraw (const Handle(Visual3d_View)& AView, const Standard_Boolean DoubleBuffer, const Standard_Boolean RetainMode) {
 
 	if (theDrawingState > 0) {
 	  Graphic3d_CView* pview = (Graphic3d_CView*) AView->CView();
@@ -177,7 +177,7 @@ void Visual3d_TransientManager::ClearDraw (const Handle(Visual3d_View)& AView,
 //-Mode Ajout
 //
 
-Standard_Boolean Visual3d_TransientManager::BeginAddDraw (const Handle(Visual3d_View)& AView)
+Standard_Integer Visual3d_TransientManager::BeginAddDraw (const Handle(Visual3d_View)& AView)
 {
 	if (theDrawingState > 0)
   {

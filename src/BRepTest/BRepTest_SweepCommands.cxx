@@ -534,7 +534,7 @@ static Standard_Integer setsweep(Draw_Interpretor& di,
      else
 	{  
 	  TopoDS_Shape Guide = DBRep::Get(a[2],TopAbs_WIRE);
-	  Sweep->SetMode(TopoDS::Wire(Guide), Draw::Atoi(a[3]), Draw::Atoi(a[4]));
+	  Sweep->SetMode(TopoDS::Wire(Guide), 0 != Draw::Atoi(a[3]), 0 != Draw::Atoi(a[4]));
 	}
     }
  

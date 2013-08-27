@@ -612,8 +612,8 @@ ChFi3d_FilBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
 			     const Standard_Boolean              RecOnS1,
 			     const Standard_Boolean              RecOnS2,
 			     const math_Vector&                  Soldep,
-			     Standard_Boolean&                   intf,
-			     Standard_Boolean&                   intl)
+			     Standard_Integer&                   intf,
+			     Standard_Integer&                   intl)
 {
   Handle(ChFiDS_FilSpine) fsp = Handle(ChFiDS_FilSpine)::DownCast(Spine);
   if(fsp.IsNull()) Standard_ConstructionError::Raise
@@ -1241,8 +1241,8 @@ ChFi3d_FilBuilder::PerformSurf(ChFiDS_SequenceOfSurfData&          SeqData,
 			       const Standard_Boolean              RecOnS1,
 			       const Standard_Boolean              RecOnS2,
 			       const math_Vector&                  Soldep,
-			       Standard_Boolean&                   intf,
-			       Standard_Boolean&                   intl)
+			       Standard_Integer&                   intf,
+			       Standard_Integer&                   intl)
 {
 #ifdef DEB
   OSD_Chronometer ch;

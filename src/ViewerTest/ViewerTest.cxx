@@ -912,7 +912,7 @@ static int VwrTst_DispErase(const Handle(AIS_InteractiveObject)& IO,
     Ctx->Display(IO,Mode,Upd);
     break;
   case 2:{
-    Ctx->Erase(IO,Mode,Upd);
+    Ctx->Erase(IO,0 != Mode,Upd);
     break;
   }
   case 3:{
@@ -993,7 +993,7 @@ static int VDispMode (Draw_Interpretor& , Standard_Integer argc, const char** ar
     }
     else{
       for(Ctx->InitSelected();Ctx->MoreSelected();Ctx->NextSelected())
-	Ctx->Display(Ctx->Interactive(),Dmode);
+	Ctx->Display(Ctx->Interactive(),0!=Dmode);
     }
   }
   else{
@@ -2716,7 +2716,7 @@ Standard_Boolean  ViewerTest::PickObjects(Handle(TColStd_HArray1OfTransient)& ar
   // step 2 : wait for the selection...
 //  Standard_Boolean IsGood (Standard_False);
 //  Standard_Integer NbPick(0);
-  Standard_Boolean NbPickGood (0),NbToReach(arr->Length());
+  Standard_Integer NbPickGood (0),NbToReach(arr->Length());
   Standard_Integer NbPickFail(0);
   Standard_Integer argccc = 5;
   const char *bufff[] = { "A", "B", "C","D", "E" };
@@ -2889,7 +2889,7 @@ Standard_Boolean ViewerTest::PickShapes (const TopAbs_ShapeEnum TheType,
 
   // step 2 : wait for the selection...
 
-  Standard_Boolean NbPickGood (0),NbToReach(thearr->Length());
+  Standard_Integer NbPickGood (0),NbToReach(thearr->Length());
   Standard_Integer NbPickFail(0);
   Standard_Integer argccc = 5;
   const char *bufff[] = { "A", "B", "C","D", "E" };

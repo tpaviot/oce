@@ -1115,11 +1115,11 @@ static LRESULT WINAPI ViewerWindowProc( HWND hwnd,
         {
           if (fwKeys & MK_CONTROL)
           {
-            Ppick = VT_ProcessButton1Press (Pargc, Pargv, Ppick, (fwKeys & MK_SHIFT));
+            Ppick = VT_ProcessButton1Press (Pargc, Pargv, Ppick, 0 != (fwKeys & MK_SHIFT));
           }
           else
           {
-            VT_ProcessButton1Press (Pargc, Pargv, Ppick, (fwKeys & MK_SHIFT));
+            VT_ProcessButton1Press (Pargc, Pargv, Ppick, 0 != (fwKeys & MK_SHIFT));
           }
         }
         else if (Msg == WM_RBUTTONDOWN)

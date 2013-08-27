@@ -402,8 +402,8 @@ TopoDS_Edge BRepBuilderAPI_Sewing::SameParameterEdge(const TopoDS_Shape& edge,
       if (locReShape != myReShape) Edge2 = TopoDS::Edge(aTmpShape);
 
       // Calculate relative orientation
-      Standard_Integer Orientation = seqForward(i);
-      if (!isForward) Orientation = (Orientation? 0 : 1);
+      Standard_Boolean Orientation = (0 != seqForward(i));
+      if (!isForward) Orientation = !Orientation;
 
       // Retrieve faces information for the second edge
       TopoDS_Shape bnd2 = oedge2;
@@ -3220,7 +3220,7 @@ void BRepBuilderAPI_Sewing::Merging(const Standard_Boolean /* firstTime */,
         if (!nbMerged) MergedWithBound.UnBind(bound);
       }
     }
-    Standard_Boolean isMerged = MergedWithBound.Extent();
+    Standard_Boolean isMerged = !MergedWithBound.IsEmpty();
 
     // Merge with cutting sections
     Handle(BRepTools_ReShape) SectionsReShape = new BRepTools_ReShape;
@@ -3321,7 +3321,7 @@ void BRepBuilderAPI_Sewing::Merging(const Standard_Boolean /* firstTime */,
         }
       }
     }
-    Standard_Boolean isMergedSplit = MergedWithSections.Extent();
+    Standard_Boolean isMergedSplit = !MergedWithSections.IsEmpty();
 
     if (!isMerged && !isMergedSplit) {
       // Nothing was merged in this iteration
@@ -3572,7 +3572,7 @@ Standard_Boolean BRepBuilderAPI_Sewing::MergedNearestEdges(const TopoDS_Shape& e
         SeqMergedOri.Append(ori);
         if (!myNonmanifold) break;
       }
-      success = nbCandidates;
+      success = (0 != nbCandidates);
     }
   }
 

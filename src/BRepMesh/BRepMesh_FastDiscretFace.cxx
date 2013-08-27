@@ -974,8 +974,8 @@ void BRepMesh_FastDiscretFace::InternalVertices(const Handle(BRepAdaptor_HSurfac
         else {
           //put regular grig for normals
           gp_Dir N1(0,0,1),N2(0,0,1);
-          Standard_Boolean aSt1 = GeomLib::NormEstim(B, gp_Pnt2d(ParamU.Value(i),V1), Precision::Confusion(), N1);
-          Standard_Boolean aSt2 = GeomLib::NormEstim(B, gp_Pnt2d(ParamU.Value(i),v), Precision::Confusion(), N2);
+          Standard_Integer aSt1 = GeomLib::NormEstim(B, gp_Pnt2d(ParamU.Value(i),V1), Precision::Confusion(), N1);
+          Standard_Integer aSt2 = GeomLib::NormEstim(B, gp_Pnt2d(ParamU.Value(i),v), Precision::Confusion(), N2);
 
           Standard_Real anAngle1 = N2.Angle(N1);
 	  if(aSt1 < 1 && aSt2 < 1 && anAngle1 > myAngle ) {
@@ -1019,8 +1019,8 @@ void BRepMesh_FastDiscretFace::InternalVertices(const Handle(BRepAdaptor_HSurfac
           //check normal
           //put regular grig for normals
           gp_Dir N1(0,0,1),N2(0,0,1);
-          Standard_Boolean aSt1 = GeomLib::NormEstim(B, gp_Pnt2d(U1,v), Precision::Confusion(), N1);
-          Standard_Boolean aSt2 = GeomLib::NormEstim(B, gp_Pnt2d(u,v), Precision::Confusion(), N2);
+          Standard_Integer aSt1 = GeomLib::NormEstim(B, gp_Pnt2d(U1,v), Precision::Confusion(), N1);
+          Standard_Integer aSt2 = GeomLib::NormEstim(B, gp_Pnt2d(u,v), Precision::Confusion(), N2);
           
           Standard_Real anAngle1 = N2.Angle(N1);
 	        if(aSt1 < 1 && aSt2 < 1 && anAngle1 > myAngle) {

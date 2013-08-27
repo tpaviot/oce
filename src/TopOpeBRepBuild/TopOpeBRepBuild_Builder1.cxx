@@ -553,7 +553,7 @@ void TopOpeBRepBuild_Builder1::GFillFaceSameDomSFS(const TopoDS_Shape& FOR,
     for(Standard_Integer i = 1; i <= aEM.Extent(); i++) {
       const TopoDS_Shape& anEdge = aEM(i);
       if(myMapOfEdgeWithFaceState.IsBound(anEdge)) {
-	rev = (Standard_Boolean)myMapOfEdgeWithFaceState.Find(anEdge);
+	rev = (0 != myMapOfEdgeWithFaceState.Find(anEdge));
 	break;
       }
     }

@@ -1926,7 +1926,7 @@ static int VCircleBuilder(Draw_Interpretor& di, Standard_Integer argc, const cha
   {
     // Get arguments
     TCollection_AsciiString aName(argv[1]);
-    Standard_Boolean isFilled = (Standard_Boolean)Draw::Atoi(argv[5]);
+    Standard_Boolean isFilled = (0 != Draw::Atoi(argv[5]));
 
     Handle(AIS_InteractiveObject) theShapeA;
     Handle(AIS_InteractiveObject) theShapeB;
@@ -2434,7 +2434,7 @@ static int VDrawText (Draw_Interpretor& di, Standard_Integer argc, const char** 
   const Standard_Real angle = Draw::Atof(argv[10]);
 
   // Text zooming
-  const Standard_Boolean zoom = Draw::Atoi(argv[11]);
+  const Standard_Boolean zoom = (0 != Draw::Atoi(argv[11]));
 
   // Text height
   const Standard_Real height = Draw::Atof(argv[12]);
@@ -2768,7 +2768,7 @@ static int VDrawSphere (Draw_Interpretor& di, Standard_Integer argc, const char*
   Standard_Real aCenterY = (argc > 5) ? Draw::Atof (argv[4]) : 0.0;
   Standard_Real aCenterZ = (argc > 5) ? Draw::Atof (argv[5]) : 0.0;
   Standard_Real aRadius =  (argc > 6) ? Draw::Atof (argv[6]) : 100.0;
-  Standard_Boolean toShowEdges =  (argc > 7) ? Draw::Atoi (argv[7]) : Standard_False;
+  Standard_Boolean toShowEdges =  (argc > 7) ? 0 != Draw::Atoi (argv[7]) : Standard_False;
 
   // remove AIS object with given name from map
   VDisplayAISObject (aShapeName, Handle(AIS_InteractiveObject)());
@@ -3903,7 +3903,7 @@ static Standard_Integer VSetSelectionMode(Draw_Interpretor& di,
   {
     // Get arguments 
     Standard_Integer aMode = Draw::Atoi(argv[1]);
-    Standard_Boolean isTurnOn = Draw::Atoi(argv[2]); 
+    Standard_Boolean isTurnOn = (0 != Draw::Atoi(argv[2]));
 
     // Get all displayed objects
     AIS_ListOfInteractive anObjList;
@@ -3958,7 +3958,7 @@ static Standard_Integer VSetSelectionMode(Draw_Interpretor& di,
   {
     // Get argumnets 
     Standard_Integer aMode = Draw::Atoi(argv[2]);
-    Standard_Boolean isTurnOn = Draw::Atoi(argv[3]);
+    Standard_Boolean isTurnOn = (0 != Draw::Atoi(argv[3]));
     TCollection_AsciiString aName(argv[1]); 
 
     // Check if there is an object with given name in context

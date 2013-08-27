@@ -123,7 +123,7 @@ Standard_Integer DNaming_Line3DDriver::Execute(TFunction_Logbook& theLog) const
   }
 
   const Standard_Integer aType = DNaming::GetInteger(aFunction, LINE3D_TYPE)->Get();
-  Standard_Boolean isClosed(aType);
+  Standard_Boolean isClosed(0 != aType);
   Standard_Integer aCounter(0), aLength  = DNaming::GetInteger(aFunction, LINE3D_PNTNB)->Get();
   if(aLength < 2) {
     aFunction->SetFailure(WRONG_ARGUMENT);

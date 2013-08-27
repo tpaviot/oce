@@ -105,7 +105,7 @@ is
            aView : View from Visual3d;
            DoubleBuffer: Boolean = Standard_False;
            RetainMode: Boolean = Standard_False)
-    returns Boolean from Standard
+    returns Integer from Standard
     ---Level: Public
     ---Purpose: Begins any graphics in the view <aView>
     --      Redraw any structured graphics in the back buffer before
@@ -158,7 +158,7 @@ is
 
     BeginAddDraw (myclass;
            aView : View from Visual3d)
-    returns Boolean from Standard
+    returns Integer from Standard
     ---Level: Public
     ---Purpose: Begins any add graphics in the view <aView>
     --          the application must managed itself exposure,resizing ...

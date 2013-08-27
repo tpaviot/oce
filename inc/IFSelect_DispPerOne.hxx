@@ -45,7 +45,7 @@ public:
   Standard_EXPORT   virtual  Standard_Boolean LimitedMax(const Standard_Integer nbent,Standard_Integer& max) const;
   //! Returns True (count is easy to know) and count is the length <br>
 //!           of the input list (RootResult from FinalSelection) <br>
-  Standard_EXPORT   virtual  Standard_Boolean PacketsCount(const Interface_Graph& G,Standard_Integer& count) const;
+  Standard_EXPORT   virtual  Standard_Integer PacketsCount(const Interface_Graph& G,Standard_Integer& count) const;
   //! Returns the list of produced Packets. It defines one Packet <br>
 //!           per Entity given by RootResult from the Final Selection. <br>
   Standard_EXPORT     void Packets(const Interface_Graph& G,IFGraph_SubPartsIterator& packs) const;

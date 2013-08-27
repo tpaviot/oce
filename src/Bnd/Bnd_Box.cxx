@@ -295,7 +295,7 @@ void Bnd_Box::OpenZmax ()
 
 Standard_Boolean Bnd_Box::IsOpenXmin () const
 {
-  return XminFlag();
+  return 0 != XminFlag();
 }
 
 //=======================================================================
@@ -305,7 +305,7 @@ Standard_Boolean Bnd_Box::IsOpenXmin () const
 
 Standard_Boolean Bnd_Box::IsOpenXmax () const
 {
-  return XmaxFlag();
+  return 0 != XmaxFlag();
 }
 
 //=======================================================================
@@ -315,7 +315,7 @@ Standard_Boolean Bnd_Box::IsOpenXmax () const
 
 Standard_Boolean Bnd_Box::IsOpenYmin () const
 {
-  return YminFlag();
+  return 0 != YminFlag();
 }
 
 //=======================================================================
@@ -325,7 +325,7 @@ Standard_Boolean Bnd_Box::IsOpenYmin () const
 
 Standard_Boolean Bnd_Box::IsOpenYmax () const
 {
-  return YmaxFlag();
+  return 0 != YmaxFlag();
 }
 
 //=======================================================================
@@ -335,7 +335,7 @@ Standard_Boolean Bnd_Box::IsOpenYmax () const
 
 Standard_Boolean Bnd_Box::IsOpenZmin () const
 {
-  return ZminFlag();
+  return 0 != ZminFlag();
 }
 
 //=======================================================================
@@ -345,7 +345,7 @@ Standard_Boolean Bnd_Box::IsOpenZmin () const
 
 Standard_Boolean Bnd_Box::IsOpenZmax () const
 {
-  return ZmaxFlag();
+  return 0 != ZmaxFlag();
 }
 
 //=======================================================================

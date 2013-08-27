@@ -608,8 +608,8 @@ CallPerformSurf(Handle(ChFiDS_Stripe)&              Stripe,
 		const Standard_Boolean              RecOnS1,
 		const Standard_Boolean              RecOnS2,
 		math_Vector&                        Soldep,
-		Standard_Boolean&                   intf,
-		Standard_Boolean&                   intl,
+		Standard_Integer&                   intf,
+		Standard_Integer&                   intl,
                 Handle(BRepAdaptor_HSurface)&       Surf1,
 		Handle(BRepAdaptor_HSurface)&       Surf2) 
 {
@@ -1741,8 +1741,8 @@ static void ChFi3d_Purge (Handle(ChFiDS_Stripe)&    Stripe,
 			  const ChFiDS_CommonPoint& VRef,
 			  const Standard_Boolean    isfirst,
 			  const Standard_Integer    ons,
-			  Standard_Boolean&         intf,
-			  Standard_Boolean&         intl)
+			  Standard_Integer&         intf,
+			  Standard_Integer&         intl)
 {
   if (isfirst) intf = 1; else intl = 1; // End.
   Standard_Integer opp = 3-ons;
@@ -1989,7 +1989,7 @@ void ChFi3d_Builder::PerformSetOfSurfOnElSpine
   }
   Standard_Real         MaxStep  = (bidl-bidf)*0.05/nbed;
   Standard_Real         Firstsov = 0.;
-  Standard_Boolean      intf = 0, intl = 0;
+  Standard_Integer      intf = 0, intl = 0;
   while(!fini){
     // are these the ends (no extension on periodic).
     Ok1 = 1,Ok2 = 1;

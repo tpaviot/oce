@@ -19,8 +19,8 @@
 // and conditions governing the rights and limitations under the License.
 
 
-#define EMaskAllHidden  ((Standard_Boolean)1)
-#define EMaskAllVisible ((Standard_Boolean)2)
+#define EMaskAllHidden    0x01u
+#define EMaskAllVisible   0x02u
 
 //=======================================================================
 //function : Bounds
