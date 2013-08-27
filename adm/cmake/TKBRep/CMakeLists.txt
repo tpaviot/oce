@@ -1,6 +1,6 @@
-SET(TOOLKIT TKBRep)
+set(TOOLKIT TKBRep)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TopoDS
 	TopExp
 	TopTools
@@ -9,7 +9,7 @@ SET(TOOLKIT_MODULES
 	BRepAdaptor
 	BRepTools
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKMath
 	TKernel
 	TKG2d
@@ -17,5 +17,5 @@ SET(TOOLKIT_DEPENDS
 	TKGeomBase
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

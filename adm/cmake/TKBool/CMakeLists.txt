@@ -1,6 +1,6 @@
-SET(TOOLKIT TKBool)
+set(TOOLKIT TKBool)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TopOpeBRep
 	TopOpeBRepDS
 	TopOpeBRepBuild
@@ -9,7 +9,7 @@ SET(TOOLKIT_MODULES
 	BRepFill
 	BRepProj
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKTopAlgo
 	TKMath
@@ -23,5 +23,5 @@ SET(TOOLKIT_DEPENDS
 	TKBO
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

@@ -1,6 +1,6 @@
-SET(TOOLKIT TKTopTest)
+set(TOOLKIT TKTopTest)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	TestTopOpeDraw
 	TestTopOpeTools
 	TestTopOpe
@@ -12,7 +12,7 @@ SET(TOOLKIT_MODULES
 	DrawFairCurve
 	BOPTest
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKGeomAlgo
 	TKTopAlgo
@@ -34,7 +34,7 @@ SET(TOOLKIT_DEPENDS
 	TKFeat
 )
 
-SET(TOOLKIT_IS_PRIVATE TRUE)
+set(TOOLKIT_IS_PRIVATE TRUE)
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

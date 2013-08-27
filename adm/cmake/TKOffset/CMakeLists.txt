@@ -1,12 +1,12 @@
-SET(TOOLKIT TKOffset)
+set(TOOLKIT TKOffset)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	BRepOffsetAPI
 	Draft
 	BRepOffset
 	BiTgte
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKFillet
 	TKBRep
 	TKTopAlgo
@@ -22,5 +22,5 @@ SET(TOOLKIT_DEPENDS
 	TKBool
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

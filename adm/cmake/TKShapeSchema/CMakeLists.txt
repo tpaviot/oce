@@ -1,10 +1,10 @@
-SET(TOOLKIT TKShapeSchema)
+set(TOOLKIT TKShapeSchema)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	ShapeSchema
 	PCDMShape
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKG2d
 	PTKernel
@@ -13,5 +13,5 @@ SET(TOOLKIT_DEPENDS
 	TKPShape
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

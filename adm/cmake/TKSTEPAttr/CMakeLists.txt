@@ -1,16 +1,16 @@
-SET(TOOLKIT TKSTEPAttr)
+set(TOOLKIT TKSTEPAttr)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	StepVisual
 	RWStepVisual
 	StepDimTol
 	RWStepDimTol
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKXSBase
 	TKSTEPBase
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

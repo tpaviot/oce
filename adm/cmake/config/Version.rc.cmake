@@ -45,10 +45,10 @@ VS_VERSION_INFO VERSIONINFO
       BEGIN
         VALUE "FileDescription", "OpenCascade Community Edition"
         VALUE "FileVersion", "@OCE_VERSION_MAJOR@.@OCE_VERSION_MINOR@." OCE_VERSION_PATCH_STR
-        VALUE "InternalName", "@PROJECT_NAME@"
+        VALUE "InternalName", "OCE"
         VALUE "LegalCopyright", ""
         VALUE "OriginalFilename", ""
-        VALUE "ProductName", "@PROJECT_NAME@"
+        VALUE "ProductName", "OCE"
         VALUE "ProductVersion", "@OCE_VERSION_MAJOR@.@OCE_VERSION_MINOR@." OCE_VERSION_PATCH_STR
       END
     END

@@ -1,6 +1,6 @@
-SET(TOOLKIT TKIGES)
+set(TOOLKIT TKIGES)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	IGESData
 	IGESFile
 	IGESBasic
@@ -20,7 +20,7 @@ SET(TOOLKIT_MODULES
 	BRepToIGESBRep
 	IGESControl
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKernel
 	TKMath
@@ -36,5 +36,5 @@ SET(TOOLKIT_DEPENDS
 	TKXSBase
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

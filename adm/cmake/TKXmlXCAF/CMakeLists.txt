@@ -1,10 +1,10 @@
-SET(TOOLKIT TKXmlXCAF)
+set(TOOLKIT TKXmlXCAF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	XmlXCAFDrivers
 	XmlMXCAFDoc
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKXmlL
 	TKBRep
 	TKCDF
@@ -19,5 +19,5 @@ SET(TOOLKIT_DEPENDS
 	TKXml
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

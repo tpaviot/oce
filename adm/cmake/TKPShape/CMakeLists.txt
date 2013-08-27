@@ -1,6 +1,6 @@
-SET(TOOLKIT TKPShape)
+set(TOOLKIT TKPShape)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	PBRep
 	PTopoDS
 	PGeom
@@ -17,7 +17,7 @@ SET(TOOLKIT_MODULES
 	MgtTopLoc
 	MgtTopoDS
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKMath
 	TKernel
 	TKG2d
@@ -26,5 +26,5 @@ SET(TOOLKIT_DEPENDS
 	TKBRep
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

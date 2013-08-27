@@ -1,6 +1,6 @@
-SET(TOOLKIT TKMath)
+set(TOOLKIT TKMath)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	math
 	ElCLib
 	ElSLib
@@ -17,9 +17,9 @@ SET(TOOLKIT_MODULES
 	TColgp
 	TopLoc
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

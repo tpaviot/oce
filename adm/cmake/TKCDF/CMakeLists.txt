@@ -1,15 +1,15 @@
-SET(TOOLKIT TKCDF)
+set(TOOLKIT TKCDF)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	CDM
 	PCDM
 	CDF
 	UTL
 	LDOM
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

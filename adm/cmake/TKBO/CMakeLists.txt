@@ -1,6 +1,6 @@
-SET(TOOLKIT TKBO)
+set(TOOLKIT TKBO)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	IntTools
 	BRepAlgoAPI
 	BOPCol
@@ -9,7 +9,7 @@ SET(TOOLKIT_MODULES
 	BOPAlgo
 	BOPTools
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKBRep
 	TKTopAlgo
 	TKMath
@@ -20,5 +20,5 @@ SET(TOOLKIT_DEPENDS
 	TKGeomBase
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

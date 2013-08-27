@@ -1,16 +1,16 @@
-SET(TOOLKIT TKSTEP209)
+set(TOOLKIT TKSTEP209)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	StepElement
 	StepFEA
 	RWStepElement
 	RWStepFEA
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKXSBase
 	TKSTEPBase
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 

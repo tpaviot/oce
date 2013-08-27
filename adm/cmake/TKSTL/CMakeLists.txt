@@ -1,12 +1,12 @@
-SET(TOOLKIT TKSTL)
+set(TOOLKIT TKSTL)
 
-SET(TOOLKIT_MODULES
+set(TOOLKIT_MODULES
 	StlMesh
 	StlAPI
 	StlTransfer
 	RWStl
 )
-SET(TOOLKIT_DEPENDS
+set(TOOLKIT_DEPENDS
 	TKernel
 	TKMath
 	TKBRep
@@ -16,5 +16,5 @@ SET(TOOLKIT_DEPENDS
 	TKTopAlgo
 )
 
-INCLUDE(../BuildToolkit.cmake)
+include(../BuildToolkit.cmake)
 
