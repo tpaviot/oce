@@ -426,7 +426,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
 	if (m[l]) {
 	  OutSideP = Standard_True;
 
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -445,7 +445,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -571,7 +571,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -590,7 +590,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -716,7 +716,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];
@@ -735,7 +735,7 @@ HideByOneTriangle (const Standard_Address Coordinates,
       for (l = 0; l <= npi; l++) {
 	if (m[l]) {
 	  OutSideP = Standard_True;
-	  if (o[l] != (Standard_Boolean)(n1 == -1)) {
+	  if (o[l] != (n1 == -1)) {
 	    if (l == 0 && npi == 1) {
 	      p[0] = p[1];
 	      o[0] = o[1];

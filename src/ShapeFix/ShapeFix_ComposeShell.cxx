@@ -738,7 +738,7 @@ static void DistributeSplitPoints (const Handle(ShapeExtend_WireData) &sbwd,
   
   for ( i=1; i <= indexes.Length() && indexes(i) < index; i++ ) {}
   for ( Standard_Integer shift = 1; i <= indexes.Length() && indexes(i) == index; i++ ) {
-    while (  shift < nsplit  && isreversed != (Standard_Boolean) ( values(i) > params(shift) ) ) shift++;
+    while (  shift < nsplit  && isreversed != ( values(i) > params(shift) ) ) shift++;
     indexes.SetValue ( i, index + shift - 1 );
   }
   for ( ; i <= indexes.Length(); i++ ) 
@@ -1148,7 +1148,7 @@ ShapeFix_WireSegment ShapeFix_ComposeShell::SplitWire (ShapeFix_WireSegment &wir
         B.SameRange(newEdge, Standard_False);
       //pdn take into account 0 codes (if ext)
       if(code == 0 && wire.Orientation()==TopAbs_EXTERNAL){
-        code  = ( ( isCutByU == (Standard_Boolean)( j == 1 ) ) ? 1 : 2 );
+        code  = ( ( isCutByU == ( j == 1 ) ) ? 1 : 2 );
       }
       
       result.AddEdge ( 0, newEdge, iumin, iumax, ivmin, ivmax );
@@ -1191,7 +1191,7 @@ ShapeFix_WireSegment ShapeFix_ComposeShell::SplitWire (ShapeFix_WireSegment &wir
         result.AddEdge ( 0, edge, iumin, iumax, ivmin, ivmax );
       if(code == 0 && wire.Orientation()==TopAbs_EXTERNAL){
 	//pdn defining code for intersection of two isos
-        code = ( ( isCutByU == (Standard_Boolean)( Abs(firstPar-currPar) < Abs(lastPar-currPar) ) ) ? 2 : 1 );
+        code = ( ( isCutByU == ( Abs(firstPar-currPar) < Abs(lastPar-currPar) ) ) ? 2 : 1 );
       }
       DefinePatch ( result, code, isCutByU, cutIndex );
     }
@@ -1403,7 +1403,7 @@ Standard_Boolean ShapeFix_ComposeShell::SplitByLine (ShapeFix_WireSegment &wire,
     // Sort by parameter on edge
     for ( i = IntEdgePar.Length(); i > start; i-- ) 
       for ( Standard_Integer j = start; j < i; j++ ) {
-        if ( isreversed == (Standard_Boolean) ( IntEdgePar(j+1) < IntEdgePar(j) ) ) continue;
+        if ( isreversed == ( IntEdgePar(j+1) < IntEdgePar(j) ) ) continue;
         IntLinePar.Exchange ( j, j+1 );
         IntEdgePar.Exchange ( j, j+1 );
       }
@@ -2490,7 +2490,7 @@ void ShapeFix_ComposeShell::MakeFacesOnPatch (TopTools_SequenceOfShape &faces,
       else
         continue;
       TopAbs_State state = clas.Perform (unp,Standard_False);
-      if ( (Standard_Boolean) ( state == TopAbs_OUT ) == reverse ) {
+      if ( ( state == TopAbs_OUT ) == reverse ) {
         holes.Append ( loops(j) );
         loops.Remove ( j-- );
       }
