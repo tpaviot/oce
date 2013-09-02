@@ -111,7 +111,7 @@ template < class TheKeyType,
     //! Constructor
     Iterator (const NCollection_IndexedDataMap& theMap) :
 #ifdef __BORLANDC__
-      myMap((NCollection_IndexedDataMap <TheKeyType, TheItemType> *) &theMap),
+      myMap((NCollection_IndexedDataMap <TheKeyType, TheItemType, Hasher> *) &theMap),
 #else
       myMap((NCollection_IndexedDataMap *) &theMap),
 #endif
