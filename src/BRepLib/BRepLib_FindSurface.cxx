@@ -125,7 +125,7 @@ static Standard_Boolean Is2DClosed(const TopoDS_Shape&         theShape,
     }
     TopoDS_Wire aWire = TopoDS::Wire( aWireExp.Current() );
     // a tmp face
-    TopoDS_Face aTmpFace = BRepLib_MakeFace( theSurface, Precision::PConfusion() );
+    TopoDS_Face aTmpFace = (TopoDS_Face) BRepLib_MakeFace( theSurface, Precision::PConfusion() );
 
     // check topological closeness using wire explorer, if the wire is not closed
     // the 1st and the last vertices of wire are different

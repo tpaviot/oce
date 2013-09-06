@@ -92,8 +92,8 @@ static Standard_Integer OCC5696 (Draw_Interpretor& di, Standard_Integer argc, co
     di << "Usage : " << argv[0] << "\n";
     return 1;
   }
-  TopoDS_Edge edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0,0,0),gp_Pnt(2,0,0));
-  TopoDS_Wire wire = BRepBuilderAPI_MakeWire(edge);
+  TopoDS_Edge edge = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(gp_Pnt(0,0,0),gp_Pnt(2,0,0));
+  TopoDS_Wire wire = (TopoDS_Wire) BRepBuilderAPI_MakeWire(edge);
   BRepAdaptor_CompCurve curve(wire);
   Standard_Real first = curve.FirstParameter();
   Standard_Real last = curve.LastParameter();

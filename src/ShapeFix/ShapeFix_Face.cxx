@@ -2632,7 +2632,7 @@ Standard_Boolean ShapeFix_Face::FixPeriodicDegenerated()
   Standard_Real anApexV = -aConeBaseH;
 
   // Get apex vertex
-  TopoDS_Vertex anApex = BRepBuilderAPI_MakeVertex( aConeSurf->Apex() );
+  TopoDS_Vertex anApex = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex( aConeSurf->Apex() );
 
   // ====================================
   //  Build degenerated edge in the apex
@@ -2673,7 +2673,7 @@ Standard_Boolean ShapeFix_Face::FixPeriodicDegenerated()
   aBuilder.Add( anApexEdge, anApex.Reversed() );
   aBuilder.Degenerated(anApexEdge, Standard_True);
   aBuilder.Range( anApexEdge, 0, fabs(aMaxLoopU - aMinLoopU) );
-  TopoDS_Wire anApexWire = BRepBuilderAPI_MakeWire(anApexEdge);
+  TopoDS_Wire anApexWire = (TopoDS_Wire) BRepBuilderAPI_MakeWire(anApexEdge);
 
   // ===============================================================
   //  Finalize the fix building new face and setting up the results

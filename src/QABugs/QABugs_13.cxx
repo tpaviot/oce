@@ -134,11 +134,11 @@ static Standard_Integer OCC332bug (Draw_Interpretor& di, Standard_Integer argc, 
   //gp_Circ faceCircle2(circ2axis,radius_r);
   //gp_Circ outFaceCircle2(circ2axis,radius_r+wall_thickness);
 
-  TopoDS_Edge E1 = BRepBuilderAPI_MakeEdge(faceCircle);
+  TopoDS_Edge E1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(faceCircle);
   TopoDS_Wire Wire1_ = BRepBuilderAPI_MakeWire(E1).Wire();
   
   // Create the face at the near end for the wall solid, an annular ring.
-  TopoDS_Edge Eout1 = BRepBuilderAPI_MakeEdge(outFaceCircle);
+  TopoDS_Edge Eout1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(outFaceCircle);
   TopoDS_Wire outerWire1_ = BRepBuilderAPI_MakeWire(Eout1).Wire();
 
   // SUPPORT:
@@ -481,23 +481,23 @@ static Standard_Integer OCC544 (Draw_Interpretor& di, Standard_Integer argc, con
   gp_Circ faceCircle2(circ2axis,radius_r);
   gp_Circ outFaceCircle2(circ2axis,radius_r+wall_thickness);
 
-  TopoDS_Edge E1_1 = BRepBuilderAPI_MakeEdge(faceCircle, 0, M_PI);
-  TopoDS_Edge E1_2 = BRepBuilderAPI_MakeEdge(faceCircle, M_PI, 2.*M_PI);
-  TopoDS_Wire Wire1_ = BRepBuilderAPI_MakeWire(E1_1, E1_2);
+  TopoDS_Edge E1_1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(faceCircle, 0, M_PI);
+  TopoDS_Edge E1_2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(faceCircle, M_PI, 2.*M_PI);
+  TopoDS_Wire Wire1_ = (TopoDS_Wire) BRepBuilderAPI_MakeWire(E1_1, E1_2);
   
   // Create the face at the near end for the wall solid, an annular ring.
-  TopoDS_Edge Eout1_1 = BRepBuilderAPI_MakeEdge(outFaceCircle, 0, M_PI);
-  TopoDS_Edge Eout1_2 = BRepBuilderAPI_MakeEdge(outFaceCircle, M_PI, 2.*M_PI);
-  TopoDS_Wire outerWire1_ = BRepBuilderAPI_MakeWire(Eout1_1, Eout1_2);
+  TopoDS_Edge Eout1_1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(outFaceCircle, 0, M_PI);
+  TopoDS_Edge Eout1_2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(outFaceCircle, M_PI, 2.*M_PI);
+  TopoDS_Wire outerWire1_ = (TopoDS_Wire) BRepBuilderAPI_MakeWire(Eout1_1, Eout1_2);
  
-  TopoDS_Edge E2_1 = BRepBuilderAPI_MakeEdge(faceCircle2, 0, M_PI);
-  TopoDS_Edge E2_2 = BRepBuilderAPI_MakeEdge(faceCircle2, M_PI, 2.*M_PI);
-  TopoDS_Wire Wire2_ = BRepBuilderAPI_MakeWire(E2_1, E2_2);
+  TopoDS_Edge E2_1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(faceCircle2, 0, M_PI);
+  TopoDS_Edge E2_2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(faceCircle2, M_PI, 2.*M_PI);
+  TopoDS_Wire Wire2_ = (TopoDS_Wire) BRepBuilderAPI_MakeWire(E2_1, E2_2);
   
   // Create the face at the far end for the wall solid, an annular ring.
-  TopoDS_Edge Eout2_1 = BRepBuilderAPI_MakeEdge(outFaceCircle2, 0, M_PI);
-  TopoDS_Edge Eout2_2 = BRepBuilderAPI_MakeEdge(outFaceCircle2, M_PI, 2.*M_PI);
-  TopoDS_Wire outerWire2_ = BRepBuilderAPI_MakeWire(Eout2_1, Eout2_2);
+  TopoDS_Edge Eout2_1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(outFaceCircle2, 0, M_PI);
+  TopoDS_Edge Eout2_2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(outFaceCircle2, M_PI, 2.*M_PI);
+  TopoDS_Wire outerWire2_ = (TopoDS_Wire) BRepBuilderAPI_MakeWire(Eout2_1, Eout2_2);
 
   BRepBuilderAPI_MakeFace mkFace;
 

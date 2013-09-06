@@ -630,7 +630,7 @@ void BRepOffsetAPI_MiddlePath::Build()
           Handle(Geom_Surface) theSurf = BRep_Tool::Surface(theFace);
           Handle(Geom2d_Line) theLine = GCE2d_MakeLine(FirstPnt2d, LastPnt2d);
           Standard_Real len_ne = FirstPnt2d.Distance(LastPnt2d);
-          TopoDS_Edge NewEdge = BRepLib_MakeEdge(theLine, theSurf,
+          TopoDS_Edge NewEdge = (TopoDS_Edge) BRepLib_MakeEdge(theLine, theSurf,
                                                  PrevVertex, CurVertex,
                                                  0., len_ne);
           BRepLib::BuildCurve3d(NewEdge);
@@ -657,7 +657,7 @@ void BRepOffsetAPI_MiddlePath::Build()
           Handle(Geom_Surface) theSurf = BRep_Tool::Surface(theFace);
           Handle(Geom2d_Line) theLine = GCE2d_MakeLine(FirstPnt2d, LastPnt2d);
           Standard_Real len_ne = FirstPnt2d.Distance(LastPnt2d);
-          TopoDS_Edge NewEdge = BRepLib_MakeEdge(theLine, theSurf,
+          TopoDS_Edge NewEdge = (TopoDS_Edge) BRepLib_MakeEdge(theLine, theSurf,
                                                  PrevVertex, CurVertex,
                                                  0., len_ne);
           BRepLib::BuildCurve3d(NewEdge);
@@ -666,12 +666,12 @@ void BRepOffsetAPI_MiddlePath::Build()
           Handle(Geom2d_Line) Line1 = GCE2d_MakeLine(PrevFirstPnt2d, LastPnt2d);
           Handle(Geom2d_Line) Line2 = GCE2d_MakeLine(FirstPnt2d, PrevLastPnt2d);
           Standard_Real len_ne1 = PrevFirstPnt2d.Distance(LastPnt2d);
-          TopoDS_Edge NewEdge1 = BRepLib_MakeEdge(Line1, theSurf,
+          TopoDS_Edge NewEdge1 = (TopoDS_Edge) BRepLib_MakeEdge(Line1, theSurf,
                                                   PrevPrevVer, CurVertex,
                                                   0., len_ne1);
           BRepLib::BuildCurve3d(NewEdge1);
           Standard_Real len_ne2 = FirstPnt2d.Distance(PrevLastPnt2d);
-          TopoDS_Edge NewEdge2 = BRepLib_MakeEdge(Line2, theSurf,
+          TopoDS_Edge NewEdge2 = (TopoDS_Edge) BRepLib_MakeEdge(Line2, theSurf,
                                                   PrevVertex, PrevCurVer,
                                                   0., len_ne2);
           BRepLib::BuildCurve3d(NewEdge2);
