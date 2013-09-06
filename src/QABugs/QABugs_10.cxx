@@ -77,7 +77,7 @@ static Standard_Integer OCC426 (Draw_Interpretor& di, Standard_Integer argc, con
   W1.Add(gp_Pnt(10, 0, 0));
 
   Standard_Boolean OnlyPlane1 = Standard_False;
-  TopoDS_Face F1 = BRepBuilderAPI_MakeFace(W1.Wire(), OnlyPlane1);
+  TopoDS_Face F1 = (TopoDS_Face) BRepBuilderAPI_MakeFace(W1.Wire(), OnlyPlane1);
 
   gp_Pnt P1(0, 0, 0);
   gp_Dir D1(0, 0, 30);
@@ -95,7 +95,7 @@ static Standard_Integer OCC426 (Draw_Interpretor& di, Standard_Integer argc, con
   W2.Add(gp_Pnt(f1, f1, 10));
 
   Standard_Boolean OnlyPlane2 = Standard_False;
-  TopoDS_Face F2 = BRepBuilderAPI_MakeFace(W2.Wire(), OnlyPlane2);
+  TopoDS_Face F2 = (TopoDS_Face) BRepBuilderAPI_MakeFace(W2.Wire(), OnlyPlane2);
 
   gp_Pnt P2(0, 0, 0);
   gp_Dir D2(0, 0, 30);
@@ -111,7 +111,7 @@ static Standard_Integer OCC426 (Draw_Interpretor& di, Standard_Integer argc, con
   W3.Add(gp_Pnt(10, 0, 20));
 
   Standard_Boolean OnlyPlane3 = Standard_False;
-  TopoDS_Face F3 = BRepBuilderAPI_MakeFace(W3.Wire(), OnlyPlane3);
+  TopoDS_Face F3 = (TopoDS_Face) BRepBuilderAPI_MakeFace(W3.Wire(), OnlyPlane3);
 
   gp_Pnt P3(0, 0, 0);
   gp_Dir D3(0, 0, 30);
@@ -325,10 +325,10 @@ static Standard_Integer OCC712 (Draw_Interpretor& di, Standard_Integer argc, con
   GC_MakeArcOfCircle arc3(p5, p6, p7);
   GC_MakeArcOfCircle arc4(p7, p8, p1);
 
-  TopoDS_Edge e1 = BRepBuilderAPI_MakeEdge(arc1.Value());
-  TopoDS_Edge e2 = BRepBuilderAPI_MakeEdge(arc2.Value());
-  TopoDS_Edge e3 = BRepBuilderAPI_MakeEdge(arc3.Value());
-  TopoDS_Edge e4 = BRepBuilderAPI_MakeEdge(arc4.Value());
+  TopoDS_Edge e1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc1.Value());
+  TopoDS_Edge e2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc2.Value());
+  TopoDS_Edge e3 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc3.Value());
+  TopoDS_Edge e4 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc4.Value());
 
   BRepBuilderAPI_MakeWire MW;
   MW.Add(e1);
@@ -343,7 +343,7 @@ static Standard_Integer OCC712 (Draw_Interpretor& di, Standard_Integer argc, con
     }
   TopoDS_Wire W = MW.Wire();
 
-  TopoDS_Face F = BRepBuilderAPI_MakeFace(W);
+  TopoDS_Face F = (TopoDS_Face) BRepBuilderAPI_MakeFace(W);
   if ( F.IsNull())
     {
       di << " Error in Face creation " << "\n";
@@ -889,7 +889,7 @@ static Standard_Integer OCC826 (Draw_Interpretor& di,Standard_Integer argc, cons
   W1.Add(gp_Pnt(x1, y1, 0));
 
   Standard_Boolean myFalse = Standard_False;
-  TopoDS_Face F1 = BRepBuilderAPI_MakeFace(W1.Wire(), myFalse);
+  TopoDS_Face F1 = (TopoDS_Face) BRepBuilderAPI_MakeFace(W1.Wire(), myFalse);
 
   gp_Pnt P1(0, 0, 0);
   gp_Dir D1(0, 30, 0);
@@ -963,7 +963,7 @@ static Standard_Integer OCC827 (Draw_Interpretor& di,Standard_Integer argc, cons
   W1.Add(gp_Pnt(10, 0, 0));
 
   Standard_Boolean myFalse = Standard_False;
-  TopoDS_Face F1 = BRepBuilderAPI_MakeFace(W1.Wire(), myFalse);
+  TopoDS_Face F1 = (TopoDS_Face) BRepBuilderAPI_MakeFace(W1.Wire(), myFalse);
 
   gp_Pnt P1(0, 0, 0);
   gp_Dir D1(0, 0, 30);
@@ -1105,13 +1105,13 @@ static Standard_Integer OCC828 (Draw_Interpretor& di,Standard_Integer argc, cons
   GC_MakeSegment ln2(p23, p31);
   GC_MakeSegment ln3(p33, p11);
 
-  TopoDS_Edge e1 = BRepBuilderAPI_MakeEdge(arc1.Value());
-  TopoDS_Edge e2 = BRepBuilderAPI_MakeEdge(arc2.Value());
-  TopoDS_Edge e3 = BRepBuilderAPI_MakeEdge(arc3.Value());
+  TopoDS_Edge e1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc1.Value());
+  TopoDS_Edge e2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc2.Value());
+  TopoDS_Edge e3 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(arc3.Value());
 
-  TopoDS_Edge e4 = BRepBuilderAPI_MakeEdge(ln1.Value());
-  TopoDS_Edge e5 = BRepBuilderAPI_MakeEdge(ln2.Value());
-  TopoDS_Edge e6 = BRepBuilderAPI_MakeEdge(ln3.Value());
+  TopoDS_Edge e4 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(ln1.Value());
+  TopoDS_Edge e5 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(ln2.Value());
+  TopoDS_Edge e6 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(ln3.Value());
 
   BRepBuilderAPI_MakeWire MW;
   MW.Add(e1);
@@ -1128,7 +1128,7 @@ static Standard_Integer OCC828 (Draw_Interpretor& di,Standard_Integer argc, cons
     }
 
   TopoDS_Wire W = MW.Wire();
-  TopoDS_Face F = BRepBuilderAPI_MakeFace(W);
+  TopoDS_Face F = (TopoDS_Face) BRepBuilderAPI_MakeFace(W);
   if ( F.IsNull())
     {
       di << " Error in Face creation " << "\n";

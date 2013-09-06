@@ -175,14 +175,14 @@ static void TrimEdge (const TopoDS_Edge&              CurrentEdge,
     for (j=1; j<=ndec; j++) {
       // piece of edge  
       m1 = (CutValues.Value(j)-t0)*(last-first)/(t1-t0)+first;
-      TopoDS_Edge CutE = BRepLib_MakeEdge(C,V0,Vbid,m0,m1);
+      TopoDS_Edge CutE = (TopoDS_Edge) BRepLib_MakeEdge(C,V0,Vbid,m0,m1);
       CutE.Orientation(CurrentOrient);
       S.Append(CutE);
       m0 = m1;
       V0 = TopExp::LastVertex(CutE);
       if (j==ndec) {
 	// last piece
-	TopoDS_Edge LastE = BRepLib_MakeEdge(C,V0,Vl,m0,last);
+	TopoDS_Edge LastE = (TopoDS_Edge) BRepLib_MakeEdge(C,V0,Vl,m0,last);
 	LastE.Orientation(CurrentOrient);
 	S.Append(LastE);
       }
@@ -195,14 +195,14 @@ static void TrimEdge (const TopoDS_Edge&              CurrentEdge,
     for (j=ndec; j>=1; j--) {
       // piece of edge  
       m0 = (CutValues.Value(j)-t0)*(last-first)/(t1-t0)+first;
-      TopoDS_Edge CutE = BRepLib_MakeEdge(C,Vbid,V1,m0,m1);
+      TopoDS_Edge CutE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vbid,V1,m0,m1);
       CutE.Orientation(CurrentOrient);
       S.Append(CutE);
       m1 = m0;
       V1 = TopExp::FirstVertex(CutE);
       if (j==1) {
 	// last piece
-	TopoDS_Edge LastE = BRepLib_MakeEdge(C,Vf,V1,first,m1);
+	TopoDS_Edge LastE = (TopoDS_Edge) BRepLib_MakeEdge(C,Vf,V1,first,m1);
 	LastE.Orientation(CurrentOrient);
 	S.Append(LastE);
       }

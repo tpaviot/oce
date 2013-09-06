@@ -116,7 +116,7 @@ static Standard_Integer BUC60848 (Draw_Interpretor& di, Standard_Integer argc, c
 
 static Standard_Integer BUC60828 (Draw_Interpretor& di, Standard_Integer /*argc*/, const char ** /*argv*/)
 {
-  TopoDS_Edge anEdge = BRepBuilderAPI_MakeEdge(gp_Pnt(0.,0.,0.), gp_Pnt(0.,0.,1.)); 
+  TopoDS_Edge anEdge = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(gp_Pnt(0.,0.,0.), gp_Pnt(0.,0.,1.)); 
   Standard_Boolean aValue; 
   aValue=anEdge.Infinite(); 
   di << "Initial flag : " << (Standard_Integer) aValue << "\n";
@@ -697,8 +697,8 @@ static Standard_Integer OCC301 (Draw_Interpretor& di, Standard_Integer argc, con
   gp_Pnt p2 = gp_Pnt(50.,10.,0.);
   gp_Pnt p3 = gp_Pnt(50.,50.,0.);
 
-  TopoDS_Edge E1 = BRepBuilderAPI_MakeEdge(p1, p2);
-  TopoDS_Edge E2 = BRepBuilderAPI_MakeEdge(p2, p3);
+  TopoDS_Edge E1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(p1, p2);
+  TopoDS_Edge E2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(p2, p3);
 
   context->Display(new AIS_Shape(E1)); 
   context->Display(new AIS_Shape(E2)); 
