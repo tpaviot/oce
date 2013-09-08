@@ -70,12 +70,15 @@ static Standard_Boolean Standard_IsReentrant = Standard_True;
 //           to environment settings, and to ensure destruction upon exit
 //=======================================================================
 
+static Standard_MMgrRoot* GetMMgr();
+
 class Standard_MMgrFactory {
  public:
   Standard_MMgrFactory();
   ~Standard_MMgrFactory();
- public:
+ private:
   Standard_MMgrRoot* myFMMgr;
+  friend Standard_MMgrRoot* GetMMgr();
 };
 
 //=======================================================================
