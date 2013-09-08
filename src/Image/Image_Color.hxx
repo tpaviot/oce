@@ -434,9 +434,15 @@ public:
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSumm3 (const ColorType_t& theA, const ColorType_t& theB)
 {
+#ifdef __BORLANDC__
+  ColorType_t aRes = {{ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
+                       ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
+                       ColorType_t::ComponentType_t (theA.v[2] + theB.v[2])}};
+#else
   ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
                        typename ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
                        typename ColorType_t::ComponentType_t (theA.v[2] + theB.v[2])}};
+#endif
   return aRes;
 }
 
@@ -463,10 +469,17 @@ inline Image_ColorBGRF operator+ (const Image_ColorBGRF& theA, const Image_Color
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSumm4 (const ColorType_t& theA, const ColorType_t& theB)
 {
+#ifdef __BORLANDC__
+  ColorType_t aRes = {{ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
+                       ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
+                       ColorType_t::ComponentType_t (theA.v[2] + theB.v[2]),
+                       ColorType_t::ComponentType_t (theA.v[3] + theB.v[3])}};
+#else
   ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] + theB.v[0]),
                        typename ColorType_t::ComponentType_t (theA.v[1] + theB.v[1]),
                        typename ColorType_t::ComponentType_t (theA.v[2] + theB.v[2]),
                        typename ColorType_t::ComponentType_t (theA.v[3] + theB.v[3])}};
+#endif
   return aRes;
 }
 
@@ -504,9 +517,15 @@ inline Image_ColorBGRAF operator+ (const Image_ColorBGRAF& theA, const Image_Col
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSub3 (const ColorType_t& theA, const ColorType_t& theB)
 {
+#ifdef __BORLANDC__
+  ColorType_t aRes = {{ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
+                       ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
+                       ColorType_t::ComponentType_t (theA.v[2] - theB.v[2])}};
+#else
   ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
                        typename ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
                        typename ColorType_t::ComponentType_t (theA.v[2] - theB.v[2])}};
+#endif
   return aRes;
 }
 
@@ -533,10 +552,17 @@ inline Image_ColorBGRF operator- (const Image_ColorBGRF& theA, const Image_Color
 template<typename ColorType_t>
 inline ColorType_t Image_ColorSub4 (const ColorType_t& theA, const ColorType_t& theB)
 {
+#ifdef __BORLANDC__
+  ColorType_t aRes = {{ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
+                       ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
+                       ColorType_t::ComponentType_t (theA.v[2] - theB.v[2]),
+                       ColorType_t::ComponentType_t (theA.v[3] - theB.v[3])}};
+#else
   ColorType_t aRes = {{typename ColorType_t::ComponentType_t (theA.v[0] - theB.v[0]),
                        typename ColorType_t::ComponentType_t (theA.v[1] - theB.v[1]),
                        typename ColorType_t::ComponentType_t (theA.v[2] - theB.v[2]),
                        typename ColorType_t::ComponentType_t (theA.v[3] - theB.v[3])}};
+#endif
   return aRes;
 }
 

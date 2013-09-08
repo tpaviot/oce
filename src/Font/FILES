@@ -1,4 +1,5 @@
 EXTERNLIB
+Font_CMPLRS.edl
 Font_FTFont.hxx
 Font_FTFont.cxx
 Font_FTLibrary.hxx

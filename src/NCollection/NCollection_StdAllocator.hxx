@@ -102,8 +102,12 @@ public:
 
   //! Destroys the object.
   /*! Uses object destructor.*/
+#if defined(__BORLANDC__)
+  void destroy( pointer p ) { p->~T(); }
+#else
   void destroy( pointer p ) { p->~value_type(); }
-
+#endif
+  
   //! Returns an underlying NCollection_BaseAllocator instance.
   /*! Returns an object specified in the constructor.*/
   const Handle(NCollection_BaseAllocator)& Allocator() const { return myAlloc; }
