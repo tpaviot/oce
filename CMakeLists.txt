@@ -56,13 +56,17 @@ endif(${CMAKE_SIZEOF_VOID_P} MATCHES "8")
 
 message(STATUS "Build ${BIT}bit")
 
-if (NOT MSVC)
+if(NOT CMAKE_CONFIGURATION_TYPES)
 	if( NOT DEFINED OCE_BUILD_TYPE )
-		set( OCE_BUILD_TYPE "Release" CACHE STRING "Build type" ) # By default set release build
+		set( OCE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Release Debug RelWithDebInfo MinSizeRel None" )
 	endif( NOT DEFINED OCE_BUILD_TYPE )
-	set( CMAKE_BUILD_TYPE ${OCE_BUILD_TYPE} CACHE INTERNAL "Build type,
-		immutable" FORCE )
-endif(NOT MSVC)
+	#  The "set_property(CACHE" capability first appeared in CMake version 2.8.0
+	#  We test against > 2.8 though, otherwise test is much less readable
+	if (${CMAKE_VERSION} VERSION_GREATER 2.8)
+		set_property(CACHE OCE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinSizeRel" "None")
+	endif (${CMAKE_VERSION} VERSION_GREATER 2.8)
+	set( CMAKE_BUILD_TYPE ${OCE_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
+endif(NOT CMAKE_CONFIGURATION_TYPES)
 
 if(CMAKE_BUILD_TOOL STREQUAL "nmake")
 	set(NMAKE TRUE)
@@ -160,9 +164,9 @@ if( NOT DEFINED OCE_MULTITHREAD_LIBRARY)
 	set( OCE_MULTITHREAD_LIBRARY "NONE" CACHE STRING "(values are: NONE TBB OPENMP)" )
 endif( NOT DEFINED OCE_MULTITHREAD_LIBRARY)
 
-if( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
+if (${CMAKE_VERSION} VERSION_GREATER 2.8)
 	set_property(CACHE OCE_MULTITHREAD_LIBRARY PROPERTY STRINGS NONE TBB OPENMP)
-endif( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
+endif (${CMAKE_VERSION} VERSION_GREATER 2.8)
 
 option( OCE_MULTITHREAD_LIBRARY "Multithread library" ${OCE_MULTITHREAD_LIBRARY} )
 
