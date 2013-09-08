@@ -784,7 +784,7 @@ Standard_Boolean ShapeAnalysis_Surface::IsVClosed(const Standard_Real preci)
 //function : SurfaceNewton
 //purpose  : Newton algo (S4030)
 //=======================================================================
-Standard_Boolean ShapeAnalysis_Surface::SurfaceNewton(const gp_Pnt2d &p2dPrev,
+Standard_Integer ShapeAnalysis_Surface::SurfaceNewton(const gp_Pnt2d &p2dPrev,
                                                       const gp_Pnt& P3D,
                                                       const Standard_Real preci,
                                                       gp_Pnt2d &sol)
@@ -882,7 +882,7 @@ gp_Pnt2d ShapeAnalysis_Surface::NextValueOfUV(const gp_Pnt2d &p2dPrev,
 //    if ( ! mySurf->Continuity() == GeomAbs_C0 ) //: S4030: fix on BUC40132 8355 & PRO7978 1987: SI because of bad data
     {
       gp_Pnt2d sol;
-      Standard_Boolean res = SurfaceNewton(p2dPrev,P3D,preci,sol);
+      Standard_Integer res = SurfaceNewton(p2dPrev,P3D,preci,sol);
       if ( res ) {
 	Standard_Real gap = P3D.Distance ( Value(sol) );
 	if ( res ==2 || //:q6 abv 19 Mar 99: protect against strange attractors

@@ -88,8 +88,9 @@ is
     HideByOneTriangle(me          : mutable;
 		      Coordinates :     Address    from Standard;
                       RealPtr     :     Address    from Standard;
-                      BooleanPtr  :     Address    from Standard;
-                      PlanPtr     :     Address    from Standard;
+                      Crossing    :     Boolean    from Standard;
+                      HideBefore  :     Boolean    from Standard;
+                      TrFlags     :     Integer    from Standard;
 		      status      : out EdgeStatus from HLRAlgo)
 	---Purpose: evident.
     is static private;

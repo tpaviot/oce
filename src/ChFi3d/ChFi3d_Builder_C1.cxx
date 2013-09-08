@@ -2636,7 +2636,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
               Pl=C1->Value(C1->LastParameter());
               //Standard_Boolean sens;
               sens=Pl.Distance(pext)<tolpt;
-              GeomLib::ExtendCurveToPoint(C1,CV1.Point(),1,sens);
+              GeomLib::ExtendCurveToPoint(C1,CV1.Point(),1,0!=sens);
               csau=C1;
             }
           }
@@ -2646,7 +2646,7 @@ void ChFi3d_Builder::PerformIntersectionAtEnd(const Standard_Integer Index)
               Pl=C1->Value(C1->LastParameter());
               //Standard_Boolean sens;
               sens=Pl.Distance(pext)<tolpt;
-              GeomLib::ExtendCurveToPoint(C1,CV2.Point(),1,sens);
+              GeomLib::ExtendCurveToPoint(C1,CV2.Point(),1,0!=sens);
               csau=C1;
             }
           }

@@ -185,7 +185,7 @@ TopoDS_Shape QANewModTopOpe_Tools::NewVertex(const BOPAlgo_PPaveFiller& theDSFil
 Standard_Boolean QANewModTopOpe_Tools::HasSameDomain(const BOPAlgo_PBOP& theBuilder, 
                                                      const TopoDS_Shape& theFace) 
 {
-  Standard_Integer bRet;
+  Standard_Boolean bRet;
   bRet = Standard_False;
   //
   if(theFace.IsNull() || (theFace.ShapeType() != TopAbs_FACE))

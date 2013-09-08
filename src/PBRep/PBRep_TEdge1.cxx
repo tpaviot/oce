@@ -90,7 +90,7 @@ void  PBRep_TEdge1::SameParameter(const Standard_Boolean S)
 
  Standard_Boolean  PBRep_TEdge1::SameRange()const 
 {
-  return myFlags & PBRep_RangeMask;
+  return 0 != (myFlags & PBRep_RangeMask);
 }
 
 
@@ -112,7 +112,7 @@ void  PBRep_TEdge1::SameParameter(const Standard_Boolean S)
 
 Standard_Boolean  PBRep_TEdge1::Degenerated()const 
 {
-  return myFlags & PBRep_DegeneratedMask;
+  return 0 != (myFlags & PBRep_DegeneratedMask);
 }
 
 

@@ -683,10 +683,10 @@ void Graphic3d_Group::SetPrimitivesAspect (const Handle(Graphic3d_AspectText3d)&
 
 Standard_Boolean Graphic3d_Group::IsGroupPrimitivesAspectSet (const Graphic3d_GroupAspect theAspect) const {
     switch (theAspect) {
-        case Graphic3d_ASPECT_LINE:      return MyCGroup.ContextLine.IsSet;
-        case Graphic3d_ASPECT_TEXT:      return MyCGroup.ContextText.IsSet;
-        case Graphic3d_ASPECT_MARKER:    return MyCGroup.ContextMarker.IsSet;
-        case Graphic3d_ASPECT_FILL_AREA: return MyCGroup.ContextFillArea.IsSet;
+        case Graphic3d_ASPECT_LINE:      return 0 != MyCGroup.ContextLine.IsSet;
+        case Graphic3d_ASPECT_TEXT:      return 0 != MyCGroup.ContextText.IsSet;
+        case Graphic3d_ASPECT_MARKER:    return 0 != MyCGroup.ContextMarker.IsSet;
+        case Graphic3d_ASPECT_FILL_AREA: return 0 != MyCGroup.ContextFillArea.IsSet;
         default: return Standard_False;
     }
 }

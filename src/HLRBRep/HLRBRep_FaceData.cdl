@@ -189,7 +189,7 @@ is
     is static;
 
 fields
-    myFlags       : Boolean    from Standard;
+    myFlags       : Integer    from Standard;
     myWires       : WiresBlock from HLRAlgo;
     myGeometry    : Surface    from HLRBRep;
     mySize        : Real       from Standard;

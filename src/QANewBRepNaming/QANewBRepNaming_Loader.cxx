@@ -263,7 +263,7 @@ Standard_Boolean QANewBRepNaming_Loader::GetDangleShapes(const TopoDS_Shape& Sha
     const TopTools_ListOfShape& ancestors = subShapeAndAncestors.FindFromIndex(i);
     if (ancestors.Extent() == 1) Dangles.Bind(ancestors.First(), mayBeDangle);
   }
-  return Dangles.Extent();
+  return !Dangles.IsEmpty();
 }
 
 //=======================================================================
@@ -286,7 +286,7 @@ Standard_Boolean QANewBRepNaming_Loader::GetDangleShapes(const TopoDS_Shape& Sha
     const TopTools_ListOfShape& ancestors = subShapeAndAncestors.FindFromIndex(i);
     if (ancestors.Extent() == 1) Dangles.Add(mayBeDangle);
   }
-  return Dangles.Extent();
+  return !Dangles.IsEmpty();
 }
 
 //=======================================================================

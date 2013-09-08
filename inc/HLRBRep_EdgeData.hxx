@@ -145,7 +145,7 @@ private:
 
 
 
-Standard_Boolean myFlags;
+Standard_Integer myFlags;
 Standard_Integer myHideCount;
 Standard_Integer myVSta;
 Standard_Integer myVEnd;

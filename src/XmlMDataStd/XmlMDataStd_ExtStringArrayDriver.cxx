@@ -129,7 +129,7 @@ Standard_Boolean XmlMDataStd_ExtStringArrayDriver::Paste
 	return Standard_False;
       } 
     else
-      aDelta = (Standard_Boolean)aDeltaValue;
+      aDelta = (0 != aDeltaValue);
   }
 #ifdef DEB
   else if(XmlMDataStd::DocumentVersion() == -1)

@@ -282,7 +282,7 @@ static Standard_Boolean FUN_changev(const Handle(TopOpeBRepDS_HDataStructure)& H
   if (!changev) return Standard_False;
   changev = HDS->HasSameDomain(v);
   if (!changev) return Standard_False;
-  Standard_Boolean rankv = HDS->DS().AncestorRank(v);
+  Standard_Integer rankv = HDS->DS().AncestorRank(v);
   changev = (rankv == 2);
   return changev;
 }
@@ -1099,11 +1099,9 @@ Standard_Integer TopOpeBRepBuild_Builder::KPisfafa()
   Standard_Boolean TKPB = TopOpeBRepBuild_GettraceKPB();
 #endif*/
   
-  Standard_Boolean iskp1 = KPisfafash(myShape1);
-  if ( !iskp1 ) return 0;
+  if ( !KPisfafash(myShape1) ) return 0;
   
-  Standard_Boolean iskp2 = KPisfafash(myShape2);
-  if ( !iskp2 ) return 0;
+  if ( !KPisfafash(myShape2) ) return 0;
   
   return 1;
 }
@@ -1119,11 +1117,9 @@ Standard_Integer TopOpeBRepBuild_Builder::KPissoso()
   Standard_Boolean TKPB = TopOpeBRepBuild_GettraceKPB();
 #endif*/
   
-  Standard_Boolean iskp1 = KPissososh(myShape1);
-  if ( !iskp1 ) return 0;
+  if ( !KPissososh(myShape1) ) return 0;
   
-  Standard_Boolean iskp2 = KPissososh(myShape2);
-  if ( !iskp2 ) return 0;
+  if ( !KPissososh(myShape2) ) return 0;
   
   return 1;
 }

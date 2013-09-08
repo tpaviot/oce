@@ -911,46 +911,46 @@ Standard_Real NIS_Triangulated::Intersect (const gp_Ax1&       theAxis,
         const unsigned char * pTri =
           reinterpret_cast<unsigned char *>(mypTriangles) + (3 * i);
         if (myNodeCoord > 2)
-          isIntersect = tri_line_intersect (start, dir,
+          isIntersect = (0 != tri_line_intersect (start, dir,
                                             &mypNodes[myNodeCoord * pTri[0]],
                                             &mypNodes[myNodeCoord * pTri[1]],
                                             &mypNodes[myNodeCoord * pTri[2]],
-                                            &anInter);
+                                            &anInter));
         else
-          isIntersect = tri2d_line_intersect (start, dir,
+          isIntersect = (0 != tri2d_line_intersect (start, dir,
                                               &mypNodes[myNodeCoord * pTri[0]],
                                               &mypNodes[myNodeCoord * pTri[1]],
                                               &mypNodes[myNodeCoord * pTri[2]],
-                                              &anInter);
+                                              &anInter));
       } else if (myIndexType == 1) {
         const unsigned short * pTri =
           reinterpret_cast<unsigned short *>(mypTriangles) + (3 * i);
         if (myNodeCoord > 2)
-          isIntersect = tri_line_intersect (start, dir,
+          isIntersect = (0 != tri_line_intersect (start, dir,
                                             &mypNodes[myNodeCoord * pTri[0]],
                                             &mypNodes[myNodeCoord * pTri[1]],
                                             &mypNodes[myNodeCoord * pTri[2]],
-                                            &anInter);
+                                            &anInter));
         else
-          isIntersect = tri2d_line_intersect (start, dir,
+          isIntersect = (0 != tri2d_line_intersect (start, dir,
                                               &mypNodes[myNodeCoord * pTri[0]],
                                               &mypNodes[myNodeCoord * pTri[1]],
                                               &mypNodes[myNodeCoord * pTri[2]],
-                                              &anInter);
+                                              &anInter));
       } else {
         const Standard_Integer * pTri = &mypTriangles[3 * i];
         if (myNodeCoord > 2)
-          isIntersect = tri_line_intersect (start, dir,
+          isIntersect = (0 != tri_line_intersect (start, dir,
                                             &mypNodes[myNodeCoord * pTri[0]],
                                             &mypNodes[myNodeCoord * pTri[1]],
                                             &mypNodes[myNodeCoord * pTri[2]],
-                                            &anInter);
+                                            &anInter));
         else
-          isIntersect = tri2d_line_intersect (start, dir,
+          isIntersect = (0 != tri2d_line_intersect (start, dir,
                                               &mypNodes[myNodeCoord * pTri[0]],
                                               &mypNodes[myNodeCoord * pTri[1]],
                                               &mypNodes[myNodeCoord * pTri[2]],
-                                              &anInter);
+                                              &anInter));
       }
       if (isIntersect && anInter < aResult)
         aResult = anInter;

@@ -84,7 +84,7 @@ private:
 gp_Pnt myP1;
 gp_Pnt myP2;
 TopoDS_Shape myShape;
-Standard_Boolean myFlags;
+Standard_Integer myFlags;
 
 
 };

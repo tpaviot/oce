@@ -34,7 +34,7 @@ void OpenGl_GraphicDriver::InquireMat (const Graphic3d_CView& ACView, TColStd_Ar
 {
   const OpenGl_CView *aCView = (const OpenGl_CView *)ACView.ptrView;
   if (aCView)
-    aCView->View->GetMatrices(AMatO,AMatM,ACView.Orientation.IsCustomMatrix);
+    aCView->View->GetMatrices(AMatO,AMatM, 0 != ACView.Orientation.IsCustomMatrix);
 }
 
 Standard_Integer OpenGl_GraphicDriver::InquireViewLimit ()

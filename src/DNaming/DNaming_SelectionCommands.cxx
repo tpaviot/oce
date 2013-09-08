@@ -129,7 +129,7 @@ static Standard_Integer DNaming_Select (Draw_Interpretor& di, Standard_Integer n
     }
     if (n > 4) {  
       Standard_Boolean Orient(Standard_False);
-      if(n == 6) Orient = (Standard_Boolean)Draw::Atoi(a[5]);
+      if(n == 6) Orient = (0 != Draw::Atoi(a[5]));
       TopoDS_Shape S = DBRep::Get(a[3], TopAbs_SHAPE);
       TopoDS_Shape C = DBRep::Get(a[4], TopAbs_SHAPE);
       SL.Select (S, C, geometry, Orient);       

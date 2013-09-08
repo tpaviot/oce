@@ -3092,7 +3092,7 @@ V3d_TypeOfBackfacingModel V3d_View :: BackFacingModel () const
 
 Standard_Boolean V3d_View::TransientManagerBeginDraw(const Standard_Boolean DoubleBuffer,const Standard_Boolean RetainMode) const
 {
-  return Visual3d_TransientManager::BeginDraw(MyView,DoubleBuffer,RetainMode);
+  return 0 != Visual3d_TransientManager::BeginDraw(MyView,DoubleBuffer,RetainMode);
 }
 
 void V3d_View::TransientManagerClearDraw() const
@@ -3102,7 +3102,7 @@ void V3d_View::TransientManagerClearDraw() const
 
 Standard_Boolean V3d_View::TransientManagerBeginAddDraw() const
 {
-  return Visual3d_TransientManager::BeginAddDraw(MyView);
+  return 0 != Visual3d_TransientManager::BeginAddDraw(MyView);
 }
 
 void V3d_View::Init()

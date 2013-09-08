@@ -325,7 +325,7 @@ is
 	              coef3          :     Real             from Standard;
 	              U3             :     Real             from Standard;
                       insP3,mP3P1    :     Boolean          from Standard; 
-		      flag           :     Boolean          from Standard)
+		      flag           :     Integer          from Standard)
     is static private;
 
     MoveOrInsertPoint(me;
@@ -359,7 +359,7 @@ is
 	              coef3          :     Real             from Standard;
 	              U3             :     Real             from Standard;
                       insP3,mP3P1    :     Boolean          from Standard; 
-		      flag           :     Boolean          from Standard)
+		      flag           :     Integer          from Standard)
     is static private;
 
     MoveOrInsertPoint(me;
@@ -398,7 +398,7 @@ is
 	              coef4          :     Real             from Standard;
 	              U4             :     Real             from Standard;
                       insP4,mP4P1    :     Boolean          from Standard; 
-		      flag           :     Boolean          from Standard)
+		      flag           :     Integer          from Standard)
     is static private;
 
     InsertOnOutLine(me  : mutable;

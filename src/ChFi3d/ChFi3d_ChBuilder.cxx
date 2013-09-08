@@ -801,8 +801,8 @@ ChFi3d_ChBuilder::SimulSurf(Handle(ChFiDS_SurfData)&            Data,
 			    const Standard_Boolean              RecOnS1,
 			    const Standard_Boolean              RecOnS2,
 			    const math_Vector&                  Soldep,
-			    Standard_Boolean&                   intf,
-			    Standard_Boolean&                   intl)
+			    Standard_Integer&                   intf,
+			    Standard_Integer&                   intl)
      
 {
   Handle(ChFiDS_ChamfSpine) 
@@ -1575,8 +1575,8 @@ ChFi3d_ChBuilder::PerformSurf(ChFiDS_SequenceOfSurfData&          SeqData,
 			      const Standard_Boolean              RecOnS1,
 			      const Standard_Boolean              RecOnS2,
 			      const math_Vector&                  Soldep,
-			      Standard_Boolean&                   intf,
-			      Standard_Boolean&                   intl)
+			      Standard_Integer&                   intf,
+			      Standard_Integer&                   intl)
      
 {
   Handle(ChFiDS_SurfData) Data = SeqData(1);

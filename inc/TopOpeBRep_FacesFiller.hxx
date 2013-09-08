@@ -279,7 +279,7 @@ Standard_Boolean myLineIsonEdge;
 TopTools_ListOfShape myERL;
 TopTools_DataMapOfShapeListOfShape myDataforDegenEd;
 Standard_Boolean myLastVPison0;
-Standard_Boolean mykeptVPnbr;
+Standard_Integer mykeptVPnbr;
 Standard_Integer myDSCIndex;
 TopOpeBRepDS_ListOfInterference myDSCIL;
 TopOpeBRep_PointClassifier myPointClassifier;

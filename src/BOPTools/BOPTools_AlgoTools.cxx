@@ -662,7 +662,7 @@ static
                                                       Handle(BOPInt_Context)& theContext)
 {
   Standard_Boolean bRet;
-  Standard_Boolean aNbF;
+  Standard_Integer aNbF;
   //
   bRet=Standard_False;
   //

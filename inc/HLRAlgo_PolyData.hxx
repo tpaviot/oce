@@ -91,7 +91,7 @@ protected:
 private: 
 
   //! evident. <br>
-  Standard_EXPORT     void HideByOneTriangle(const Standard_Address Coordinates,const Standard_Address RealPtr,const Standard_Address BooleanPtr,const Standard_Address PlanPtr,HLRAlgo_EdgeStatus& status) ;
+  Standard_EXPORT     void HideByOneTriangle(const Standard_Address Coordinates,const Standard_Address RealPtr,const Standard_Boolean Crossing,const Standard_Boolean HideBefore,const Standard_Integer TrFlags,HLRAlgo_EdgeStatus& status) ;
 
 Standard_Integer myIndices[3];
 Handle_TColgp_HArray1OfXYZ myHNodes;

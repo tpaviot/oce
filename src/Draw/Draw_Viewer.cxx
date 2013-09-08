@@ -954,7 +954,7 @@ void Draw_Viewer::PostScriptView (const Standard_Integer id,
     if (n == 0) return;
     CurrentMode = POSTSCRIPT;
     Draw_Display DF = MakeDisplay(id);
-    Standard_Boolean view2d = myViews[id]->Flag2d;
+    Standard_Boolean view2d = (0 != myViews[id]->Flag2d);
     for (Standard_Integer i = 1; i <= n; i++)
       if (myDrawables(i)->Is3D()) {
 	if (!view2d) myDrawables(i)->DrawOn(DF);
@@ -1163,7 +1163,7 @@ void Draw_Viewer::DrawOnView(const Standard_Integer id,
     xmin = ymin = DRAWINFINITE;
     xmax = ymax = -DRAWINFINITE;
 
-    Standard_Boolean view2d = myViews[id]->Flag2d;
+    Standard_Boolean view2d = (0 != myViews[id]->Flag2d);
     myViews[id]->ResetFrame();
     if ((D->Is3D() && !view2d) ||
 	(!D->Is3D() && view2d)) {

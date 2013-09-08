@@ -136,7 +136,7 @@ IGESDraw_ConnectPoint::IGESDraw_ConnectPoint ()    {  }
 
     Standard_Boolean IGESDraw_ConnectPoint::SwapFlag () const
 {
-  return theSwapFlag;
+  return 0 != theSwapFlag;
 }
 
     Standard_Boolean IGESDraw_ConnectPoint::HasOwnerSubfigure () const

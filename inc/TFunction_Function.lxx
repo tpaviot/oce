@@ -26,7 +26,7 @@ inline const Standard_GUID& TFunction_Function::GetDriverGUID() const
 
 inline Standard_Boolean TFunction_Function::Failed() const
 {
-  return myFailure;
+  return 0 != myFailure;
 }
 
 inline Standard_Integer TFunction_Function::GetFailure() const
