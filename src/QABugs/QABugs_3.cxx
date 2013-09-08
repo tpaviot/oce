@@ -572,8 +572,8 @@ static Standard_Integer BUC60632(Draw_Interpretor& di, Standard_Integer /*n*/, c
   }
   myAIScontext->EraseAll();
   
-  TopoDS_Vertex V1 = BRepBuilderAPI_MakeVertex(gp_Pnt(0,0,0)); 
-  TopoDS_Vertex V2 = BRepBuilderAPI_MakeVertex(gp_Pnt(10,10,0)); 
+  TopoDS_Vertex V1 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(gp_Pnt(0,0,0)); 
+  TopoDS_Vertex V2 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(gp_Pnt(10,10,0)); 
   
   Handle(AIS_Shape) Ve1 = new AIS_Shape(V1);
   Handle(AIS_Shape) Ve2 = new AIS_Shape(V2);

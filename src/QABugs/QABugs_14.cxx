@@ -291,7 +291,7 @@ static Standard_Integer BUC60870 (Draw_Interpretor& di, Standard_Integer argc, c
       P1 = (dst.PointOnShape1(i1));
       P2 = (dst.PointOnShape2(i1));
       if (dst.Value()<=1.e-9) {
-	TopoDS_Vertex V =BRepLib_MakeVertex(P1);
+	TopoDS_Vertex V = (TopoDS_Vertex) BRepLib_MakeVertex(P1);
 	char namev[100];
 	if (i1==1) {
 	  Sprintf(namev, "%s" ,ns0);
@@ -303,7 +303,7 @@ static Standard_Integer BUC60870 (Draw_Interpretor& di, Standard_Integer argc, c
 	di << namev << " ";
       } else {
 	char name[100];
-	TopoDS_Edge E = BRepLib_MakeEdge (P1, P2);
+	TopoDS_Edge E = (TopoDS_Edge) BRepLib_MakeEdge (P1, P2);
 	if (i1==1) {
 	  Sprintf(name,"%s",ns0);
 	} else {
