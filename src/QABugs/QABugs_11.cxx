@@ -203,7 +203,7 @@ static Standard_Integer OCC136 (Draw_Interpretor& di, Standard_Integer argc, con
   Standard_Real Size=100;
   gp_Pnt P0(0,0,0), P1(Size,Size,Size);
   //box
-  TopoDS_Solid aBox = BRepPrimAPI_MakeBox(P0,P1);
+  TopoDS_Solid aBox = (TopoDS_Solid) BRepPrimAPI_MakeBox(P0,P1);
   //sphere
   TopoDS_Solid aSphere = BRepPrimAPI_MakeSphere (Size*0.5);
   //cone
@@ -3146,7 +3146,7 @@ static Standard_Integer OCC8797 (Draw_Interpretor& di, Standard_Integer argc, co
   cout<<"Length Spline(abcissa_Pnt): "<<l_abcissa<<endl;
 
   //length!! 2.
-  TopoDS_Edge edge = BRepBuilderAPI_MakeEdge (spline);
+  TopoDS_Edge edge = (TopoDS_Edge) BRepBuilderAPI_MakeEdge (spline);
   GProp_GProps prop;
   BRepGProp::LinearProperties(edge,prop);
   l_gprop=prop.Mass();

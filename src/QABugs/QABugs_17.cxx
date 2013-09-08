@@ -314,14 +314,14 @@ static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, 
   gp_Pnt p6 = gp_Pnt(502.51,80.,0.);
   gp_Pnt p7 = gp_Pnt(102.51,80.,0.);
   gp_Pnt p8 = gp_Pnt(102.51,50.,0.);
-  TopoDS_Vertex V1 = BRepBuilderAPI_MakeVertex(p1);
-  TopoDS_Vertex V2 = BRepBuilderAPI_MakeVertex(p2);
-  TopoDS_Vertex V3 = BRepBuilderAPI_MakeVertex(p3);
-  TopoDS_Vertex V4 = BRepBuilderAPI_MakeVertex(p4);
-  TopoDS_Vertex V5 = BRepBuilderAPI_MakeVertex(p5);
-  TopoDS_Vertex V6 = BRepBuilderAPI_MakeVertex(p6);
-  TopoDS_Vertex V7 = BRepBuilderAPI_MakeVertex(p7);
-  TopoDS_Vertex V8 = BRepBuilderAPI_MakeVertex(p8);
+  TopoDS_Vertex V1 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p1);
+  TopoDS_Vertex V2 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p2);
+  TopoDS_Vertex V3 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p3);
+  TopoDS_Vertex V4 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p4);
+  TopoDS_Vertex V5 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p5);
+  TopoDS_Vertex V6 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p6);
+  TopoDS_Vertex V7 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p7);
+  TopoDS_Vertex V8 = (TopoDS_Vertex) BRepBuilderAPI_MakeVertex(p8);
   gp_Pnt plnpt(0, 0, 0);
   gp_Dir plndir(0, 0, 1);
   Handle(Geom_Plane) pln = new Geom_Plane(plnpt,plndir);
@@ -354,7 +354,7 @@ static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, 
   //dimension "R 88.58"
   /***************************************/
   gp_Circ cir = gp_Circ(gp_Ax2(gp_Pnt(191.09, -88.58, 0), gp_Dir(0, 0, 1)), 88.58);
-  TopoDS_Edge E1 = BRepBuilderAPI_MakeEdge(cir,gp_Pnt(191.09,0,0.),gp_Pnt(191.09,-177.16,0.) );
+  TopoDS_Edge E1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(cir,gp_Pnt(191.09,0,0.),gp_Pnt(191.09,-177.16,0.) );
   Handle(AIS_RadiusDimension) dim1 = new AIS_RadiusDimension(E1,88.58, "R 88.58",gp_Pnt(-30.0, -80.0, 0.0),DsgPrs_AS_BOTHAR,
     100.0 );
   context->Display(dim1);
@@ -362,14 +362,14 @@ static Standard_Integer BUC60915_1(Draw_Interpretor& di, Standard_Integer argc, 
   //dimension "R 43.80"
   /***************************************/
   gp_Circ cir1 = gp_Circ(gp_Ax2(gp_Pnt(191.09, -88.58, 0), gp_Dir(0, 0, 1)), 43.80);
-  TopoDS_Edge E_cir1 = BRepBuilderAPI_MakeEdge(cir1);
+  TopoDS_Edge E_cir1 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(cir1);
   dim1 = new AIS_RadiusDimension(E_cir1,43.80, "R 43.80",gp_Pnt(0.0, -50.0, 0.0),DsgPrs_AS_LASTAR, 60.0 );
   context->Display(dim1);
   /***************************************/
   //dimension "R 17.86"
   /***************************************/
   gp_Circ cir2 = gp_Circ(gp_Ax2(gp_Pnt(566.11, -88.58, 0), gp_Dir(0, 0, -1)), 17.86);
-  TopoDS_Edge E_cir2 = BRepBuilderAPI_MakeEdge(cir2);
+  TopoDS_Edge E_cir2 = (TopoDS_Edge) BRepBuilderAPI_MakeEdge(cir2);
   dim1 = new AIS_RadiusDimension(E_cir2,17.86, "R 17.86",gp_Pnt(600.0, -50.0, 0.0),DsgPrs_AS_LASTAR, 40.0 );
   context->Display(dim1);
 
@@ -1172,7 +1172,7 @@ static Standard_Integer OCC884 (Draw_Interpretor& di, Standard_Integer argc, con
   builder.Add(wire, TopoDS::Edge(exp.Current()));
 
   // HelpDesk: Create planar face if possible
-  TopoDS_Face face = BRepBuilderAPI_MakeFace(wire,Standard_True);
+  TopoDS_Face face = (TopoDS_Face) BRepBuilderAPI_MakeFace(wire,Standard_True);
 
   Handle(ShapeAnalysis_Wire) advWA = new ShapeAnalysis_Wire;
   advWA->Load(wire);
@@ -1605,8 +1605,8 @@ static Standard_Integer OCC1642 (Draw_Interpretor& di, Standard_Integer argc, co
 
   DBRep::Set(argv[3],wire);
 
-  TopoDS_Face face =
-    BRepBuilderAPI_MakeFace(TopoDS::Wire(wire),Standard_True);
+  TopoDS_Face face = 
+    (TopoDS_Face) BRepBuilderAPI_MakeFace(TopoDS::Wire(wire),Standard_True);
 
   DBRep::Set(argv[4],face);
 
@@ -1732,7 +1732,7 @@ static Standard_Integer OCC1642 (Draw_Interpretor& di, Standard_Integer argc, co
   advWA->Load(TopoDS::Wire(finalwire));
 
   TopoDS_Face fface =
-    BRepBuilderAPI_MakeFace(TopoDS::Wire(finalwire),Standard_True);
+    (TopoDS_Face) BRepBuilderAPI_MakeFace(TopoDS::Wire(finalwire),Standard_True);
 
   DBRep::Set(argv[2],fface);
 
