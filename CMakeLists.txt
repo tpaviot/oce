@@ -320,6 +320,13 @@ if(OCE_VISU_DEP AND NOT OCE_DISABLE_TKSERVICE_FONT)
 	set(OCE_REQUIRES_FREETYPE TRUE)
 endif()
 
+if(OCE_VISU_DEP)
+	## TKService requires OpenGL on Unix, see src/Xw/Xw_Window.cxx
+	if (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
+		find_package(OpenGL REQUIRED)
+	endif (NOT (WIN32 OR (APPLE AND OCE_OSX_USE_COCOA)))
+endif(OCE_VISU_DEP)
+
 if(OCE_REQUIRES_FREETYPE)
 	## TKService requires FreeType
 	if(NOT OCE_USE_BUNDLE AND NOT OCE_USE_BUNDLE_SOURCE)
