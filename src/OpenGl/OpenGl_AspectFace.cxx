@@ -205,7 +205,12 @@ void OpenGl_AspectFace::Init (const Handle(OpenGl_Context)&   theContext,
   doTextureMap = theAspect.Texture.doTextureMap;
   const Handle(Graphic3d_TextureMap)& aNewTexture = theAspect.Texture.TextureMap;
   TCollection_AsciiString aNewKey = aNewTexture.IsNull() ? TCollection_AsciiString() : aNewTexture->GetId();
-  TextureParams = aNewTexture.IsNull() ? NULL : aNewTexture->GetParams();
+  if (aNewTexture.IsNull()) {
+    TextureParams.Nullify();
+  }
+  else {
+    TextureParams = aNewTexture->GetParams(); 
+  }  
   if (aNewKey.IsEmpty()
    || myTextureId != aNewKey)
   {

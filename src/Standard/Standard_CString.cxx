@@ -260,7 +260,7 @@ Standard_Boolean ISSIMILAR(const Standard_CString One ,
 #ifdef __APPLE__
   // There are a lot of *_l functions availalbe on Mac OS X - we use them
   #define SAVE_TL()
-#elif defined(_WIN32)
+#elif defined(_WIN32) && !defined(__BORLANDC__)
   // MSVCRT has equivalents with slightly different syntax
   #define SAVE_TL()
   #define strtod_l(thePtr, theNextPtr, theLocale)                _strtod_l(thePtr, theNextPtr, theLocale)
@@ -274,7 +274,7 @@ Standard_Boolean ISSIMILAR(const Standard_CString One ,
   // So we switch to C locale temporarily
   #define SAVE_TL() Standard_CLocaleSentry aLocaleSentry;
   #ifndef HAVE_XLOCALE_H
-    #error System does not support xlocale. Import/export could be broken if C locale did not specified by application.
+    #warning System does not support xlocale. Import/export could be broken if C locale did not specified by application.
     #define strtod_l(thePtr, theNextPtr, theLocale)              strtod(thePtr, theNextPtr)
   #endif
   #define vprintf_l(theLocale, theFormat, theArgPtr)             vprintf(theFormat, theArgPtr)
