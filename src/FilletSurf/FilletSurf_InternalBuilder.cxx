@@ -328,8 +328,8 @@ Standard_Boolean
 					 const Standard_Boolean RecOnS1, 
 					 const Standard_Boolean RecOnS2, 
 					 const math_Vector& Soldep, 
-					 Standard_Boolean& Intf, 
-					 Standard_Boolean& Intl)
+					 Standard_Integer& Intf, 
+					 Standard_Integer& Intl)
 {
   Handle(ChFiDS_SurfData) Data = SeqData(1);
   Handle(ChFiDS_FilSpine) fsp = Handle(ChFiDS_FilSpine)::DownCast(Spine);
