@@ -387,7 +387,7 @@ Standard_Boolean
     if(cpf1.IsOnArc()){
       TopoDS_Face F1 = S1->ChangeSurface().Face();
       TopoDS_Face bid;
-      ok = Intf = !SearchFace(Spine,cpf1,F1,bid);
+      Intf = ok = !SearchFace(Spine,cpf1,F1,bid);
     }
     const ChFiDS_CommonPoint& cpf2 = Data->VertexFirstOnS2();
     if(cpf2.IsOnArc() && !ok){
@@ -402,7 +402,7 @@ Standard_Boolean
   if(cpl1.IsOnArc()){
     TopoDS_Face F1 = S1->ChangeSurface().Face();
     TopoDS_Face bid;
-    ok = Intl = !SearchFace(Spine,cpl1,F1,bid);
+    Intl = ok = !SearchFace(Spine,cpl1,F1,bid);
   }
   const ChFiDS_CommonPoint& cpl2 = Data->VertexLastOnS2();
   if(cpl2.IsOnArc() && !ok){
