@@ -39,7 +39,7 @@ is
     
     Create(X1,Y1,Z1,X2,Y2,Z2       : Real    from Standard;
            XT1,YT1,ZT1,XT2,YT2,ZT2 : Real    from Standard;
-           Index,flag              : Integer from Standard
+           Index,flag              : Integer from Standard)
     returns BiPoint from HLRAlgo; 
     
     Create(X1,Y1,Z1,X2,Y2,Z2       : Real    from Standard;
@@ -50,7 +50,7 @@ is
     
     Create(X1,Y1,Z1,X2,Y2,Z2       : Real    from Standard;
            XT1,YT1,ZT1,XT2,YT2,ZT2 : Real    from Standard;
-           Index,i1,i1p1,i1p2,flag : Integer from Standard
+           Index,i1,i1p1,i1p2,flag : Integer from Standard)
     returns BiPoint from HLRAlgo; 
     
     Create(X1,Y1,Z1,X2,Y2,Z2               : Real    from Standard;
