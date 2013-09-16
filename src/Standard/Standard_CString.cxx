@@ -260,7 +260,7 @@ Standard_Boolean ISSIMILAR(const Standard_CString One ,
 #ifdef __APPLE__
   // There are a lot of *_l functions availalbe on Mac OS X - we use them
   #define SAVE_TL()
-#elif defined(_WIN32) && !defined(__BORLANDC__)
+#elif defined(_WIN32) && !defined(__BORLANDC__) && !defined(__MINGW32__)
   // MSVCRT has equivalents with slightly different syntax
   #define SAVE_TL()
   #define strtod_l(thePtr, theNextPtr, theLocale)                _strtod_l(thePtr, theNextPtr, theLocale)
