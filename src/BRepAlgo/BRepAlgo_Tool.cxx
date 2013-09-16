@@ -87,7 +87,7 @@ TopoDS_Shape BRepAlgo_Tool::Deboucle3D(const TopoDS_Shape& S,
 	SubShape = Deboucle3D(CurS,Boundary);
 	if ( !SubShape.IsNull()) {
 	  B.Add(SS, SubShape);
-	  NbSub++;
+	  NbSub = 1;
 	}
       }
       if (NbSub == 0) SS = TopoDS_Shape();
