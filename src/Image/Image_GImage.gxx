@@ -901,11 +901,11 @@ void Image_GImage::DrawLine(const anyPixel& aPixel ,
 		  cout << "DrawLine( X and Y Axis Symetrie )\n" << flush ;
 #endif
 
-		  YAxisMirror++ ;
+		  YAxisMirror = 1 ;
 
 		  x1 = x0 - dx ;
 
-		  XAxisMirror++ ;
+		  XAxisMirror = 1 ;
 
 		  y1 = y0 - dy ;
 
@@ -924,7 +924,7 @@ void Image_GImage::DrawLine(const anyPixel& aPixel ,
 		  cout << "DrawLine( X Axis Symetrie )\n" << flush ;
 #endif
 
-		  XAxisMirror++ ;
+		  XAxisMirror = 1 ;
 
 		  y1 = y0 - dy ;
 
