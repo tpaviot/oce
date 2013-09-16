@@ -42,7 +42,7 @@ namespace
     CLocalePtr()
     #ifdef HAVE_XLOCALE_H
     : myLocale (newlocale (LC_ALL_MASK, "C", NULL))
-    #elif defined(_WIN32) && !defined(__BORLANDC__)
+    #elif defined(_WIN32) && !defined(__BORLANDC__) && !defined(__MINGW32__)
     : myLocale (_create_locale (LC_ALL, "C"))
     #else
     : myLocale (NULL)
@@ -53,7 +53,7 @@ namespace
     {
     #ifdef HAVE_XLOCALE_H
       freelocale (myLocale);
-    #elif defined(_WIN32) && !defined(__BORLANDC__)
+    #elif defined(_WIN32) && !defined(__BORLANDC__) && !defined(__MINGW32__)
       _free_locale (myLocale);
     #endif
     }
