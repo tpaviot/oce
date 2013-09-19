@@ -837,7 +837,7 @@ Standard_Boolean OSD_File::IsExecutable()
 
 #if defined(__CYGWIN32__) || defined(__MINGW32__)
 #define VAC
-#define _int64 int
+#define _int64 int64_t
 #endif
 
 #pragma comment( lib, "WSOCK32.LIB"  )
@@ -1455,7 +1455,7 @@ OSD_KindFile OSD_File :: KindOfFile () const {
 typedef struct _osd_wnt_key {
 
                 HKEY   hKey;
-                LPTSTR keyPath;
+                LPCTSTR keyPath;
 
                } OSD_WNT_KEY;
 
