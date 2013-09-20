@@ -1,3 +1,37 @@
+Version 0.13 - September 2013
+
+This version is not binary compatible with OCE 0.12, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.6.0
+
+* Fix handling of paths containing non-ASCII characters in DRAWEXE.
+
+* Define Standard_Boolean as a bool, and no more as a Standard_Integer
+  as is done in OCCT.
+
+* Make myFMMgr member of Standard_MMgrFactory class private, it does not
+  have to be public.
+
+* Build system improvements and additions
+  - Fix build failures on Hurd, mingw-w64 and Mac OSX 10.5.
+  - Fix build with gcc when using -std=c++11 flag.
+  - Fix build failures with Borland compiler.
+  - Move duplicate header files from inc/ into src/.
+  - Build QADraw module only if OCE_TESTING is set.
+  - Improve bundle usage to allow running tests.
+  - Reorganize top-level source directory: move *.bat and *.sh scripts
+    into a scripts/ directory, and move CMake files into adm/cmake/config/.
+  - Add a CMake option to allow building TKService without font support,
+    if visualization is not needed.
+  - Let CMake GUI display OCE_BUILD_TYPE as a combo box.
+
+* Several warning fixes detected by static analysis and compilers
+
+Users who contributed to this release:
+  Thomas Paviot, QbProg, Jake, Fotios Sioutis, Denis Barbier, David Sankel
+
+
 Version 0.12 - March 2013
 
 This version is not binary compatible with OCE 0.11.x, OCE_ABI_SOVERSION
