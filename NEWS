@@ -23,12 +23,14 @@ was incremented.
 * On non-Windows, FreeImagePlus library is unused, only FreeImage functions
   are called.  Link against this library to avoid errors on Fedora.
 
-Users who contributed to this release: Fotis Sioutis, QbProg, Denis Barbier,
-Jerome Robert, Conrad Poelman, Thomas Paviot, rainman110, Richard Shaw
+Users who contributed to this release:
+  Fotis Sioutis, QbProg, Denis Barbier, Jerome Robert, Conrad Poelman,
+  Thomas Paviot, rainman110, Richard Shaw
+
 
 Version 0.11 - December 2012
 
-This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION 
+This version is not binary compatible with OCE 0.10.x, OCE_ABI_SOVERSION
 was incremented.
 
 * Upgraded to OCCT 6.5.4
@@ -42,10 +44,11 @@ was incremented.
   - wrapped new module TKQADraw
   - various RPATH fixes for unix systems
 
-* Many bug and warning fixes detected by static analisys and compilers
+* Many bug and warning fixes detected by static analysis and compilers
 
-Users who contributed to this release: Denis Barbier, Johannes Obermayr, Massimo Del Fedele, 
-QbProg, Thomas Paviot,salajkav-dlubalcz
+Users who contributed to this release: Denis Barbier, Johannes Obermayr,
+Massimo Del Fedele, QbProg, Thomas Paviot,salajkav-dlubalcz
+
 
 Version 0.10 - June 2012
 
@@ -79,6 +82,7 @@ Version 0.9.1 - January 2012
 This is a bugfix release.
 
 * Fixed regressions in the TKOpenGl toolkit.
+
 
 Version 0.9.0 - January 2012
 
@@ -149,7 +153,7 @@ Version 0.8.0 - December 2011
 * Add few missing resource files (UnitsAPI support)
 
 Users who contributed to this release:
-     Denis Barbier,Fotios Sioutis,Thomas Paviot,QbProg,Richard,Roman Lygin
+  Denis Barbier,Fotios Sioutis,Thomas Paviot,QbProg
 
 
 Version 0.7.0 - October 2011
@@ -193,7 +197,7 @@ Version 0.7.0 - October 2011
 * Other minor fixes
 
 Users who contributed to this release:
-     Denis Barbier,He Yuqi,Jerome Robert,QbProg,Thomas Paviot
+  Denis Barbier,He Yuqi,Jerome Robert,QbProg,Thomas Paviot
 
 Version 0.6.0 - September 2011
 
@@ -240,8 +244,8 @@ Version 0.6.0 - September 2011
      + Fix HashCode, it could segault when MMGT_OPT is not set to 1.
 
 Users who contributed to this release:
-     Denis Barbier, Thomas Paviot, Hugues Delorme, QbProg,
-     Matthew Dempsky, Massimo Del Fedele,
+  Denis Barbier, Thomas Paviot, Hugues Delorme, QbProg,
+  Matthew Dempsky, Massimo Del Fedele
 
 Version 0.5.0 - August 2011
 
