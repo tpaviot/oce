@@ -88,7 +88,7 @@ typedef struct _MB_DESC {
 
                 MB_ITEMTYPE   itemType;
                 _TINT         itemId;
-                _TCHAR*       buttonLabel;
+                const _TCHAR* buttonLabel;
 
                } MB_DESC, *LPMB_DESC;
 

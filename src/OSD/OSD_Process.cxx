@@ -405,7 +405,7 @@ OSD_Path OSD_Process :: CurrentDirectory () {
  dwSize = GetCurrentDirectory ( dwSize, pBuff );
  pBuff  = new Standard_Character[ dwSize ];
 
- if (   (  dwSize = GetCurrentDirectory ( dwSize, pBuff )  ) == NULL   )
+ if (   (  dwSize = GetCurrentDirectory ( dwSize, pBuff )  ) == 0   )
 
   _osd_wnt_set_error ( myError, OSD_WProcess );
 

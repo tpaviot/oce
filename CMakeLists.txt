@@ -522,6 +522,8 @@ endif(WIN32)
 ###################################################
 # Check required headers, functions and libraries #
 ###################################################
+include(CheckFunctionExists)
+check_function_exists(finite HAVE_FINITE)
 if (NOT WIN32)
 	# Check headers
 	# I think these should all be check cxx headers, as I think there is no c
@@ -587,13 +589,11 @@ if (NOT WIN32)
 	check_include_file_cxx(libc.h HAVE_LIBC_H)
 	check_include_file_cxx(mm_malloc.h HAVE_MM_MALLOC_H)
 	# Check library functions
-	include(CheckFunctionExists)
 	check_function_exists(alloca HAVE_ALLOCA)
 	check_function_exists(memcmp HAVE_MEMCMP)
 	check_function_exists(signal HAVE_SIGNAL)
 	check_function_exists(statfs HAVE_STATFS)
 	check_function_exists(statvfs HAVE_STATVFS)
-	check_function_exists(finite HAVE_FINITE)
 	check_function_exists(localtime_r HAVE_LOCALTIME_R)
 	check_function_exists(posix_memalign HAVE_POSIX_MEMALIGN)
 	set(CMAKE_REQUIRED_LIBRARIES sunmath)

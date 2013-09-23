@@ -39,7 +39,7 @@
 
 // for null derivatives
 static Standard_Real BSplSLib_zero[3] = {0.0, 0.0, 0.0};
-#ifdef WNT
+#if defined(WNT) && !defined(M_SQRT2)
 #define M_SQRT2 1.4142135623730950488016887 
 #endif
 
