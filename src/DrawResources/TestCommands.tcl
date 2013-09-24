@@ -367,7 +367,10 @@ proc testgrid {args} {
         # commant to run DRAW with a command file;
         # note that empty string is passed as standard input to avoid possible 
         # hang-ups due to waiting for stdin of the launching process
-	set command "exec <<{} DRAWEXE -f $logdir/$group/$grid/${casename}.tcl"
+	if { [catch {set nameofexecutable [info nameofexecutable]}] } {
+		set nameofexecutable "DRAWEXE"
+	}
+	set command "exec <<{} $nameofexecutable -f $logdir/$group/$grid/${casename}.tcl"
 
 	# alternative method to run without temporary file; disabled as it needs too many backslashes
 #	else {
