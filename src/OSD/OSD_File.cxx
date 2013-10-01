@@ -767,7 +767,8 @@ TCollection_AsciiString PrinterName;
  else
    sprintf(buffer,"lpr -P%s %s",PrinterName.ToCString(),aBuffer.ToCString());
 
- system(buffer);
+ if (0 != system(buffer))
+   Standard_ProgramError::Raise("OSD_File::Print : lp/lpr failed");;
 }
 
 
