@@ -60,7 +60,8 @@ OSD_Process::OSD_Process(){
 void OSD_Process::Spawn (const TCollection_AsciiString& cmd,
 			 const Standard_Boolean /*ShowWindow*/)
 {
- system(cmd.ToCString());
+ if (0 != system(cmd.ToCString()))
+  myError.SetValue(errno, Iam, "Spawn");
 }
 
 
