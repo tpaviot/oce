@@ -123,7 +123,7 @@
 // /usr/include/memory.h file from being #included
 // with an incompatible extern "C" definition of memchr
 // October 18, 2000  <rboehne@ricardo-us.com>
-#if __SUNPRO_CC_COMPAT == 5
+#if defined(__SUNPRO_CC_COMPAT) && (__SUNPRO_CC_COMPAT == 5)
 #define	_MEMORY_H
 #endif
 
