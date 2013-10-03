@@ -1041,13 +1041,13 @@ void OSD_File :: Read (
  }
                                         
  Standard_Integer NbyteRead;
- Standard_Address buff;
+ Standard_Character* buff;
 
  TEST_RAISE(  "Read"  );
      
- buff = ( Standard_Address )new Standard_Character[ Nbyte + 1 ];
+ buff = new Standard_Character[ Nbyte + 1 ];
 
- Read ( buff, Nbyte, NbyteRead );
+ Read ( ( Standard_Address& )buff, Nbyte, NbyteRead );
 
  (  ( Standard_PCharacter )buff  )[ NbyteRead ] = 0;
 
