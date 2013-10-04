@@ -34,6 +34,10 @@
 
 #define MAX_STR 80
 
+#ifdef __MINGW32__
+# define fprintf __mingw_fprintf
+#endif
+
 static OSD_MAllocHook::Callback* MypCurrentCallback = NULL;
 
 namespace {
