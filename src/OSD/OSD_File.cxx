@@ -860,8 +860,10 @@ Standard_Boolean OSD_File::IsExecutable()
 #define _int64 int64_t
 #endif
 
+#ifdef _MSC_VER
 #pragma comment( lib, "WSOCK32.LIB"  )
 #pragma comment( lib, "WINSPOOL.LIB" )
+#endif
 
 #define ACE_HEADER_SIZE (  sizeof ( ACCESS_ALLOWED_ACE ) - sizeof ( DWORD )  )
 
