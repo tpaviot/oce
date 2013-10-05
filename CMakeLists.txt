@@ -739,7 +739,12 @@ if(UNIX)
 		message(STATUS "Unix/Linux platform detected")
 		set(PLATFORM Unix)
 		if(INTEL)
-			add_definitions("-wd858")
+			# Disable meaningless remarks
+			# remark #383 given when initializing from a literal, e.g. abc("123")
+			# remark #522 given when a function is defined inline but prototype is not
+			# remark #858 given when a type qualifier is applied to a function return type
+			# remark #981 "operands are evaluated in unspecified order", e.g. a = b() + c()
+			add_definitions("-diag-disable 383,522,858,981")
 		endif(INTEL)
 	endif(APPLE)
 	add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
