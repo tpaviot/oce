@@ -83,7 +83,7 @@ inline Standard_Boolean IsEqual (const Standard_Integer theOne,
   return theOne == theTwo;
 }
 
-#ifdef OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T
+#ifndef OCE_IS_DUPLICATE_UINT32_T
 // ------------------------------------------------------------------
 // Hascode : Computes a hascoding value for a given unsigned integer
 // ------------------------------------------------------------------

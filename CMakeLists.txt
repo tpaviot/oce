@@ -660,15 +660,6 @@ if (NOT WIN32)
 # TODO: check all headers/functions/libraries that are checked in configure.ac original OCC script
 endif(NOT WIN32)
 
-include(CheckTypeSize)
-check_type_size(int    SIZEOF_INT)
-check_type_size(size_t SIZEOF_SIZE_T)
-if (APPLE OR (NOT SIZEOF_INT STREQUAL SIZEOF_SIZE_T))
-	set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T TRUE)
-else ()
-	set(OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T FALSE)
-endif ()
-
 #######################################################
 # Check compiler version - Determine Borland compiler #
 #######################################################
@@ -775,6 +766,15 @@ if( OCE_EXTRA_WARNINGS)
 		#TODO
 	endif(BORLAND)
 endif(OCE_EXTRA_WARNINGS)
+
+#  Detect build problems with duplicate types
+try_compile(CHECK_BODY_TEMPLATE ${CMAKE_BINARY_DIR}/CMakeTmpDup
+	${OCE_SOURCE_DIR}/adm/cmake/config/TestDuplicateBodyTemplate.cxx
+)
+if (NOT CHECK_BODY_TEMPLATE)
+	message(STATUS "Duplicate types found, do not define HashCode(Standard_Utf32Char)")
+	set (OCE_IS_DUPLICATE_UINT32_T TRUE)
+endif ()
 
 ################################################
 # Define output path for generated libraries:  #

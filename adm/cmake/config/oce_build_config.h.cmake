@@ -259,5 +259,5 @@
 /* Define MACOSX_USE_GLX to use X11 OpenGL on OSX */
 #cmakedefine MACOSX_USE_GLX
 
-/* Define if sizeof(int) and sizeof(size_t) are different */
-#cmakedefine OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T 1
+/* Define if uint32_t and int are the same type */
+#cmakedefine OCE_IS_DUPLICATE_UINT32_T
