@@ -231,7 +231,11 @@ void OpenGl_AspectFace::Init (const Handle(OpenGl_Context)&   theContext,
 
     if (!aNewTexture.IsNull())
     {
+#ifdef __hpux
+      if (aNewKey.IsEmpty() || !theContext->GetResource(aNewKey, TextureRes))
+#else
       if (aNewKey.IsEmpty() || !theContext->GetResource<Handle(OpenGl_Texture)> (aNewKey, TextureRes))
+#endif
       {
         TextureRes = new OpenGl_Texture (TextureParams);
         Handle(Image_PixMap) anImage = aNewTexture->GetImage();
