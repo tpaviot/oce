@@ -27,7 +27,11 @@
   typedef unsigned __int16  uint16_t;
   typedef unsigned __int32  uint32_t;
 #else
+#if defined(__hpux) && !defined(__GNUC__)
+  #include <inttypes.h>
+#else
   #include <stdint.h>
+#endif
 #endif
 
 #if defined(__BORLANDC__)
