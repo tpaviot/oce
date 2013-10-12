@@ -723,7 +723,11 @@ Handle(Graphic3d_Texture2D) MeshVS_NodalColorPrsBuilder::CreateTexture() const
   }
 
   anImage->SetTopDown (false);
+#ifdef __hpux
+  Image_PixMapData<Image_ColorRGBA>& aData = *(Image_PixMapData<Image_ColorRGBA>* )anImage->Data();
+#else
   Image_PixMapData<Image_ColorRGBA>& aData = anImage->EditData<Image_ColorRGBA>();
+#endif
   for (Standard_Size aCol = 0; aCol < Standard_Size(aColorsNb); ++aCol)
   {
     const Quantity_Color& aSrcColor = myTextureColorMap.Value (Standard_Integer(aCol) + 1);
