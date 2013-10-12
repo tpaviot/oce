@@ -2728,10 +2728,18 @@ extern "C" {
 #endif
 
 #ifndef GL_EXT_blend_minmax
+#ifndef GL_FUNC_ADD_EXT
 #define GL_FUNC_ADD_EXT                   0x8006
+#endif
+#ifndef GL_MIN_EXT
 #define GL_MIN_EXT                        0x8007
+#endif
+#ifndef GL_MAX_EXT
 #define GL_MAX_EXT                        0x8008
+#endif
+#ifndef GL_BLEND_EQUATION_EXT
 #define GL_BLEND_EQUATION_EXT             0x8009
+#endif
 #endif
 
 #ifndef GL_EXT_blend_subtract
