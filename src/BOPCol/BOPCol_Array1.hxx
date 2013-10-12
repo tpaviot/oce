@@ -182,7 +182,7 @@ template <class Type> class BOPCol_Array1 {
       pNext=pBlock->Next();
       //
       //pBlock->~BOPCol_MemBlock<Type> ();
-#if defined(__BORLANDC__)
+#if defined(__BORLANDC__) || defined(__hpux)
       pBlock->~BOPCol_MemBlock<Type>();
 #else
       pBlock->~BOPCol_XMemBlock();

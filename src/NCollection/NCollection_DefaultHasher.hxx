@@ -58,12 +58,20 @@ public:
   //
   static Standard_Integer HashCode(const TheKeyType& theKey, 
                                    const Standard_Integer Upper) {
+#ifdef __hpux
+    return HashCode_Proxy<TheKeyType>(theKey, Upper);
+#else
     return HashCode_Proxy(theKey, Upper);
+#endif
   }
   //
   static Standard_Boolean IsEqual(const TheKeyType& theKey1, 
                                   const TheKeyType& theKey2) {
+#ifdef __hpux
+    return IsEqual_Proxy<TheKeyType>(theKey1, theKey2);
+#else
     return IsEqual_Proxy(theKey1, theKey2);
+#endif
   }
 };
 

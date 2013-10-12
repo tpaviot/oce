@@ -110,7 +110,7 @@ template < class TheKeyType,
       myIndex(0) {}
     //! Constructor
     Iterator (const NCollection_IndexedDataMap& theMap) :
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || defined(__hpux)
       myMap((NCollection_IndexedDataMap <TheKeyType, TheItemType, Hasher> *) &theMap),
 #else
       myMap((NCollection_IndexedDataMap *) &theMap),
