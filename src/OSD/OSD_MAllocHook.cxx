@@ -47,6 +47,10 @@
 # define FMT_SZ_Q ""
 #endif
 
+#ifdef __MINGW32__
+# define fprintf __mingw_fprintf
+#endif
+
 static OSD_MAllocHook::Callback* MypCurrentCallback = NULL;
 
 //=======================================================================

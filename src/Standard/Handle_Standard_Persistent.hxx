@@ -37,7 +37,7 @@
 #include <Standard_Persistent_proto.hxx>
 #endif
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 // Disable the warning "conversion from 'unsigned int' to Standard_Persistent *"
 #pragma warning (push)
 #pragma warning (disable:4312)
@@ -216,7 +216,7 @@ class Handle(Standard_Persistent)
 
 class Standard_Type;
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 #pragma warning (pop)
 #endif
 

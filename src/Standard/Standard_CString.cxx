@@ -166,10 +166,10 @@ Standard_Integer HashCodes (const Standard_CString Value ,
 
 # if defined(WORDS_BIGENDIAN)
  static Standard_Integer Standard_Mask_Upper_Lower[5] =
-                 { 0 , 0xdf000000 , 0xdfdf0000 , 0xdfdfdf00 , 0xdfdfdfdf } ;
+                 { 0 , (Standard_Integer) 0xdf000000 , (Standard_Integer) 0xdfdf0000 , (Standard_Integer) 0xdfdfdf00 , (Standard_Integer) 0xdfdfdfdf } ;
 #else
  static Standard_Integer Standard_Mask_Upper_Lower[5] =
-                 { 0 , 0xdf , 0xdfdf , 0xdfdfdf , 0xdfdfdfdf } ;
+                 { 0 , (Standard_Integer) 0x000000df , (Standard_Integer) 0x0000dfdf , (Standard_Integer) 0x00dfdfdf , (Standard_Integer) 0xdfdfdfdf } ;
 #endif
 
 //============================================================================
