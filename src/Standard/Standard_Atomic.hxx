@@ -147,10 +147,25 @@ int Standard_Atomic_Decrement (volatile int* theValue)
   return Standard_Atomic_Add (theValue, -1);
 }
 
+#elif defined(__hpux) && defined(OCE_HAVE_ATOMIC_H)
+//on hpux please install 'HP-UX Atomic APIs' bundle
+
+#include <atomic.h>
+
+int Standard_Atomic_Increment (volatile int* theValue)
+{
+  return atomic_inc_32(theValue);
+}
+
+int Standard_Atomic_Decrement (volatile int* theValue)
+{
+  return atomic_dec_32 (theValue);
+}
+
 #else
 
 #ifndef IGNORE_NO_ATOMICS
-  #warning "Atomic operation isn't implemented for current platform!"
+  #error "Atomic operation isn't implemented for current platform!"
 #endif
 int Standard_Atomic_Increment (volatile int* theValue)
 {
