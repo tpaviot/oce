@@ -880,7 +880,7 @@ public:
 //!  view on level of OpenGl_GraphicDriver; Please take it into account if <br>
 //!  you use it for your purposes; <br>
 //!  Warning: Works only under Windows. <br>
-  Standard_EXPORT     Standard_Boolean Print(const Aspect_Handle hPrnDC = NULL,const Standard_Boolean showDialog = Standard_True,const Standard_Boolean showBackground = Standard_True,const Standard_CString filename = NULL,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH) const;
+  Standard_EXPORT     Standard_Boolean Print(const Aspect_Handle hPrnDC = OCE_NULL_Aspect_Handle,const Standard_Boolean showDialog = Standard_True,const Standard_Boolean showBackground = Standard_True,const Standard_CString filename = NULL,const Aspect_PrintAlgo printAlgorithm = Aspect_PA_STRETCH) const;
   //! dump the full contents of the view <br>
 //!        to a pixmap of pixel size <theWidth>*<theHeight> and <br>
 //!        buffer type <theBufferType>. If <theForceCentered> is true <br>
