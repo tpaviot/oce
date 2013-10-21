@@ -65,7 +65,7 @@ template <class TheItemType> class NCollection_Array2
     { 
       myCurrent = 0;
       mySize    = theArray.Length();
-      myArray   = (NCollection_Array2 *) &theArray; 
+      myArray   = (NCollection_Array2<TheItemType> *) &theArray; 
     }
     //! Check end
     virtual Standard_Boolean More (void) const
