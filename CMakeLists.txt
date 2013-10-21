@@ -368,9 +368,7 @@ if(OCE_VISUALISATION)
 
 	if (NOT WIN32 AND NOT OCE_OSX_USE_COCOA)
 		find_package(X11 REQUIRED)
-		find_library( X11_Xmu_LIB Xmu PATHS /usr/openwin/lib )
 	endif(NOT WIN32 AND NOT OCE_OSX_USE_COCOA)
-	mark_as_advanced(X11_Xmu_LIB)
 
 	if (NOT APPLE OR OCE_OSX_USE_COCOA)
 		find_package(OpenGL REQUIRED)
@@ -1311,13 +1309,13 @@ if( CPACK_GENERATOR MATCHES ".*DEB.*" )
 	set(CPACK_DEBIAN_PACKAGE_SECTION "science")
 	# debian source packages aren't yet supported by cmake, but the following list will help anyone who is trying to figure out what to apt-get install before building.
 	set(CPACK_DEBIAN_PACKAGE_BUILDS_DEPENDS "debhelper (>= 6.0.7~), quilt, cmake (>= 2.8), libtool,
-		libx11-dev, libxmu-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
+		libx11-dev, libxext-dev, tcl8.5-dev, tk8.5-dev,
 		libgl1-mesa-dev | libgl-dev, libglu1-mesa-dev | libglu-dev,
 		libgl2ps-dev")
 	set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.3), libfreetype6 (>= 2.2.1),
 		libgcc1 (>= 1:4.1.1), libgl1-mesa-glx, libgl2ps0, libglu1-mesa,
 		libgomp1 (>= 4.2.1), libstdc++6 (>= 4.4.0), libx11-6, libxext6,
-		libxmu6, libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
+		libxt6, tcl8.5 (>= 8.5.0), tk8.5 (>= 8.5.0)")
 	set(CPACK_DEBIAN_PACKAGE_SUGGESTS "opencascade-doc")
 	set(CPACK_DEBIAN_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0,
 		libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0,
@@ -1342,7 +1340,7 @@ endif()
 # correct directory, and packages specified after RPM won't be built.         #
 ###############################################################################
 if( CPACK_GENERATOR MATCHES ".*RPM.*" )
-	set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxmu6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
+	set( CPACK_RPM_PACKAGE_REQUIRES "libc6 >= 2.3, libfreetype6 >= 2.2.1, libgcc1 >= 4.1.1, libgl1-mesa-glx, libgl2ps0, libglu1-mesa, libgomp1 >= 4.2.1, libstdc++6 >= 4.4.0, libx11-6, libxext6, libxt6, tcl8.5 >= 8.5.0, tk8.5 >= 8.5.0")
 	set( CPACK_RPM_PACKAGE_PROVIDES "libopencascade-foundation-6.5.0, libopencascade-modeling-6.5.0, libopencascade-visualization-6.5.0, libopencascade-ocaf-lite-6.5.0, libopencascade-ocaf-6.5.0, opencascade-draw" )
 	set( CPACK_PACKAGE_RELOCATABLE "FALSE" )
 	if( BIT EQUAL 64 )
