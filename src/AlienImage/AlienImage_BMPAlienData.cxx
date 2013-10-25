@@ -37,13 +37,13 @@
 
 static unsigned long __swaptest = 1;
 
-WORD static _TestSwapWORD (WORD __w)
+static WORD _TestSwapWORD (WORD __w)
 {
   return LOW_VAL_AT_LOW_ADDR ? __w:
   ((__w&0xFF) << 8) | ((__w&0xFF00) >> 8);
 }
 
-DWORD static _TestSwapDWORD (DWORD __dw)
+static DWORD _TestSwapDWORD (DWORD __dw)
 {
   return LOW_VAL_AT_LOW_ADDR ? __dw:
   ((__dw&0x000000FF) << 24) | ((__dw&0x0000FF00) << 8)
