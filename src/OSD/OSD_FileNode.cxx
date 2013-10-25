@@ -200,7 +200,7 @@ TCollection_AsciiString thisPath;
 
 #ifndef WNT
 
-int static copy_file( const char* src, const char* trg )
+static int copy_file( const char* src, const char* trg )
 {
   int err=0;
   errno=0;
