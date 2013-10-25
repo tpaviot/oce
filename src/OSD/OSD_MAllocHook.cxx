@@ -408,7 +408,7 @@ void OSD_MAllocHook::LogFileHandler::AllocEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "alloc %10lu %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "alloc %10ld %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
     myMutex.Unlock();
 #ifdef DEBUG
     if (myBreakSize == theSize)
@@ -432,7 +432,7 @@ void OSD_MAllocHook::LogFileHandler::FreeEvent
   if (myLogFile != NULL)
   {
     myMutex.Lock();
-    fprintf(myLogFile, "free  %10lu %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
+    fprintf(myLogFile, "free  %10ld %10" FMT_SZ_Q "u\n", theRequestNum, theSize);
     myMutex.Unlock();
   }
 }
