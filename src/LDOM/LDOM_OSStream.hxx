@@ -67,7 +67,7 @@ class LDOM_SBuffer : public streambuf
 
     // Methods of streambuf
 
-    Standard_EXPORT virtual int overflow(signed char c = EOF);
+    Standard_EXPORT virtual int overflow(int c = EOF);
     Standard_EXPORT virtual int underflow();
     //virtual int uflow();
 
