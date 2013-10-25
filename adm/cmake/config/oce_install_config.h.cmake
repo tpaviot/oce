@@ -26,5 +26,4 @@
 
 #cmakedefine MACOSX_USE_GLX
 
-#cmakedefine OCE_HAVE_DIFFERENT_SIZEOF_INT_SIZE_T 1
-
+#cmakedefine OCE_IS_DUPLICATE_UINT32_T
