@@ -588,6 +588,7 @@ if (NOT WIN32)
 	check_include_file_cxx(sys/mman.h HAVE_SYS_MMAN_H)
 	check_include_file_cxx(libc.h HAVE_LIBC_H)
 	check_include_file_cxx(mm_malloc.h HAVE_MM_MALLOC_H)
+	check_include_file_cxx(atomic.h HAVE_ATOMIC_H)
 	# Check library functions
 	check_function_exists(alloca HAVE_ALLOCA)
 	check_function_exists(memcmp HAVE_MEMCMP)
