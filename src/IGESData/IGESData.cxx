@@ -151,7 +151,7 @@ static Handle(IGESData_DefaultSpecific)   speci;
     (XSTEP_VERSION);
   gsys->AssignCat(" on ");
   gsys->AssignCat
-#ifdef HPUX
+#if defined(HPUX) || defined(__hpux)
     ("HP-UX");
   cout<<"--  OSD_Path::SystemVersion, does not work well on HP-UX"<<endl;
 #endif

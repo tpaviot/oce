@@ -74,7 +74,7 @@ Handle(Standard_Transient) Plugin::Load(const Standard_GUID& aGUID)
 #endif /* OCE_DEBUG_POSTFIX */
 #elif defined(__APPLE__)
     thePluginLibrary += ".dylib";
-#elif defined (HPUX) || defined(_hpux)
+#elif defined (HPUX) || defined(__hpux)
     thePluginLibrary += ".sl";
 #else
     thePluginLibrary += ".so";

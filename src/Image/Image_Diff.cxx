@@ -178,8 +178,13 @@ Standard_Boolean Image_Diff::Init (const Handle(Image_PixMap)& theImageRef,
   {
     // Convert the images to white/black
     const Image_ColorRGB aWhite = {{255, 255, 255}};
+#ifdef __hpux
+    Image_PixMapData<Image_ColorRGB>& aDataRef = *(Image_PixMapData<Image_ColorRGB>* )myImageRef->Data();
+    Image_PixMapData<Image_ColorRGB>& aDataNew = *(Image_PixMapData<Image_ColorRGB>* )myImageNew->Data();
+#else
     Image_PixMapData<Image_ColorRGB>& aDataRef = myImageRef->EditData<Image_ColorRGB>();
     Image_PixMapData<Image_ColorRGB>& aDataNew = myImageNew->EditData<Image_ColorRGB>();
+#endif
     for (Standard_Size aRow = 0; aRow < aDataRef.SizeY(); ++aRow)
     {
       for (Standard_Size aCol = 0; aCol < aDataRef.SizeY(); ++aCol)
@@ -280,8 +285,13 @@ Standard_Integer Image_Diff::Compare()
 
   // we don't care about RGB/BGR/RGBA/BGRA/RGB32/BGR32 differences
   // because we just compute summ of r g b components
+#ifdef __hpux
+  Image_PixMapData<Image_ColorRGB>& aDataRef = *(Image_PixMapData<Image_ColorRGB>* )myImageRef->Data();
+  Image_PixMapData<Image_ColorRGB>& aDataNew = *(Image_PixMapData<Image_ColorRGB>* )myImageNew->Data();
+#else
   const Image_PixMapData<Image_ColorRGB>& aDataRef = myImageRef->ReadData<Image_ColorRGB>();
   const Image_PixMapData<Image_ColorRGB>& aDataNew = myImageNew->ReadData<Image_ColorRGB>();
+#endif
 
   // compare colors of each pixel
   for (Standard_Size aRow = 0; aRow < myImageRef->SizeY(); ++aRow)
@@ -405,7 +415,11 @@ Standard_Integer Image_Diff::ignoreBorderEffect()
     return 0;
   }
 
+#ifdef __hpux
+  const Image_PixMapData<Image_ColorRGB>& aDataRef = *(Image_PixMapData<Image_ColorRGB>* )myImageRef->Data();
+#else
   const Image_PixMapData<Image_ColorRGB>& aDataRef = myImageRef->ReadData<Image_ColorRGB>();
+#endif
 
   // allocate groups of different pixels
   releaseGroupsOfDiffPixels();

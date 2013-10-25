@@ -80,7 +80,11 @@ template <class TheItemType> class NCollection_Array1
     void Init (const NCollection_Array1& theArray)
     { 
       myCurrent = theArray.Lower();
+#ifdef __hpux
+      myArray   = (NCollection_Array1<TheItemType> *) &theArray;
+#else
       myArray   = (NCollection_Array1 *) &theArray; 
+#endif
     }
     //! Check end
     virtual Standard_Boolean More (void) const

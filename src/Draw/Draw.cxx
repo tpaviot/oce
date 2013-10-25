@@ -526,7 +526,7 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
     aPluginLibrary += ".dll";
 #elif __APPLE__
     aPluginLibrary += ".dylib";
-#elif defined (HPUX) || defined(_hpux)
+#elif defined (HPUX) || defined(__hpux)
     aPluginLibrary += ".sl";
 #else
     aPluginLibrary += ".so";
@@ -603,7 +603,7 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
 #endif /* OCE_DEBUG_POSTFIX */
 #elif __APPLE__
     aPluginLibrary += ".dylib";
-#elif defined (HPUX) || defined(_hpux)
+#elif defined (HPUX) || defined(__hpux)
     aPluginLibrary += ".sl";
 #else
     aPluginLibrary += ".so";

@@ -100,7 +100,7 @@ template < class TheKeyType,
       myIndex(0) {}
     //! Constructor
     Iterator (const NCollection_IndexedMap& theMap) :
-#ifdef __BORLANDC__
+#if defined(__BORLANDC__) || defined(__hpux)
       myMap((NCollection_IndexedMap <TheKeyType, Hasher> *) &theMap),
 #else
       myMap((NCollection_IndexedMap *) &theMap),

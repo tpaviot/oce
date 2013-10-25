@@ -646,41 +646,6 @@ void OSD::SegvHandler(const OSD_Signals,
     cout << "Wrong undefined address." << endl ;
   exit(SIGSEGV);
 }
-
-#if defined (_hpux) || defined(HPUX)
-//============================================================================
-//==== SegvHandler 
-//============================================================================
-
-// Not ACTIVE ? SA_SIGINFO is defined on SUN, OSF, SGI and HP (and Linux) !
-// pour version 09.07
-void OSD::SegvHandler(const OSD_Signals aSig, const Standard_Address code,
-                      const Standard_Address scp)
-//void OSD::SegvHandler(const OSD_Signals aSig, int code, const Standard_Address scp)
-{
-  unsigned long Space  ;
-  unsigned long Offset ;
-  char Msg[100] ;
-
-  if ( scp != NULL ) {
-    Space = ((struct sigcontext *)scp)->sc_sl.sl_ss.ss_cr20 ;
-    Offset = ((struct sigcontext *)scp)->sc_sl.sl_ss.ss_cr21 ;
-//    cout << "Wrong address = " << hex(Offset) << endl ;
-    if ((Offset & ~0xffff) == (long)UndefinedHandleAddress)
-	Standard_NullObject::Jump("Attempt to access to null object") ;
-    else {
-       sprintf(Msg,"SIGSEGV 'segmentation violation' detected. Address %lx",Offset) ;
-       OSD_SIGSEGV::Jump(Msg);
-//    scp->sc_pcoq_head = scp->sc_pcoq_tail ;       Permettrait de continuer a
-//    scp->sc_pcoq_tail = scp->sc_pcoq_tail + 0x4 ; l'intruction suivant le segv.
-    }
-  }
-  else
-    cout << "Wrong undefined address." << endl ;
-  exit(SIGSEGV);
-} 
-
-#endif
 #else
 // Must be there for compatibility with Windows NT system ---------------
 
