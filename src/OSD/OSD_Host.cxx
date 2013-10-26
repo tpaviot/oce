@@ -232,7 +232,7 @@ Standard_Integer OSD_Host::Error()const{
 
 #include <OSD_Host.hxx>
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(__BORLANDC__)
 #pragma comment( lib, "WSOCK32.LIB" )
 #endif
 
