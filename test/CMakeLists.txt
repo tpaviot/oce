@@ -1,8 +1,8 @@
 #
-# The OCE unittest framework use GoogleTest 1.6.0 (aka GTest)
-# The GTest source code is available in the /test/gtest-1.6.0 folder
+# The OCE unittest framework use GoogleTest 1.7.0 (aka GTest)
+# The GTest source code is available in the /test/gtest-1.7.0 folder
 #
-set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.6.0)
+set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.7.0)
 
 include_directories(${GTEST_ROOT}/include ${GTEST_ROOT})
 add_library(gtest STATIC ${GTEST_ROOT}/src/gtest-all.cc )
