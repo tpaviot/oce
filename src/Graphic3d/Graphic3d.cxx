@@ -40,6 +40,10 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
 
   TCollection_AsciiString aGraphicLibName;
 
+  const char *shr = getenv("CSF_GraphicShr");
+  if (shr != NULL) {
+    aGraphicLibName = shr;
+  } else {
 #ifdef OCE_DEFAULT_CSF_GraphicShr
   aGraphicLibName = OCE_DEFAULT_CSF_GraphicShr;
 #else
@@ -54,6 +58,7 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
   aGraphicLibName = "libTKOpenGl.so";
 #endif
 #endif
+  }
 
   // Loading the library.
   OSD_SharedLibrary aSharedLibrary (aGraphicLibName.ToCString());
