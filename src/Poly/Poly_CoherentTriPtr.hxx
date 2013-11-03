@@ -27,7 +27,7 @@
 
 class Poly_CoherentTriangle;
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning(disable:4355) //'this' : used in base member initializer list
 #endif
@@ -183,7 +183,7 @@ class Poly_CoherentTriPtr
   friend class Iterator;
 };
 
-#ifdef WNT
+#ifdef _MSC_VER
 #pragma warning (pop)
 #endif
 

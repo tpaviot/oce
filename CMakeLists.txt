@@ -721,6 +721,12 @@ endif()
 #######################################################
 # Check platforms - Define specific compilation flags #
 #######################################################
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+	set(CLANG TRUE)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+	set(INTEL TRUE)
+endif()
+
 if(UNIX)
 	if(APPLE)
 		######### MacOSX ###########
@@ -730,6 +736,14 @@ if(UNIX)
 		######### Unix/Linux ###########
 		message(STATUS "Unix/Linux platform detected")
 		set(PLATFORM Unix)
+		if(INTEL)
+			# Disable meaningless remarks
+			# remark #383 given when initializing from a literal, e.g. abc("123")
+			# remark #522 given when a function is defined inline but prototype is not
+			# remark #858 given when a type qualifier is applied to a function return type
+			# remark #981 "operands are evaluated in unspecified order", e.g. a = b() + c()
+			add_definitions("-diag-disable 383,522,858,981")
+		endif(INTEL)
 	endif(APPLE)
 	add_definitions(-DHAVE_CONFIG_H -DCSFDB -DOCC_CONVERT_SIGNALS)
 else(UNIX)
@@ -758,12 +772,15 @@ if( OCE_EXTRA_WARNINGS)
 	if(CMAKE_COMPILER_IS_GNUCXX)
 		add_definitions("-Wall -Wextra")
 	endif(CMAKE_COMPILER_IS_GNUCXX)
-	if(CMAKE_CXX_COMPILER MATCHES ".*clang")
+	if(CLANG)
 		add_definitions("-Weverything")
-	endif(CMAKE_CXX_COMPILER MATCHES ".*clang")
+	endif(CLANG)
 	if(BORLAND)
 		#TODO
 	endif(BORLAND)
+	if(INTEL)
+		add_definitions("-Wall -Wremarks")
+	endif(INTEL)
 endif(OCE_EXTRA_WARNINGS)
 
 #  Detect build problems with duplicate types

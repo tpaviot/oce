@@ -1145,7 +1145,7 @@ Standard_Boolean AlienImage_SGIRGBAlienData::Read( OSD_File& file )
     printf("Image x and y size in pixels: %d %d\n",
 			myHeader.xsize,myHeader.ysize);
     printf("Image zsize in channels: %d\n",myHeader.zsize);
-    printf("Image pixel min and max: %d %d\n",myHeader.min,myHeader.max);
+    printf("Image pixel min and max: %u %u\n",myHeader.min,myHeader.max);
   }
 #endif
 
@@ -1221,7 +1221,7 @@ Standard_Boolean AlienImage_SGIRGBAlienData::Write( OSD_File& file ) const
     printf("Image x and y size in pixels: %d %d\n",
 			WritedHeader.xsize,WritedHeader.ysize);
     printf("Image zsize in channels: %d\n",WritedHeader.zsize);
-    printf("Image pixel min and max: %d %d\n",
+    printf("Image pixel min and max: %u %u\n",
 			WritedHeader.min,WritedHeader.max);
   }
 #endif
