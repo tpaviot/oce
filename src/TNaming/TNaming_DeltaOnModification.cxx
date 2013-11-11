@@ -102,6 +102,8 @@ static void LoadNamedShape (TNaming_Builder& B,
       B.Select(NS,OS);
       break;
     }
+  default:
+    break;
   }
 }
 

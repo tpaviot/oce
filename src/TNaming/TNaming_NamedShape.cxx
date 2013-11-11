@@ -852,6 +852,8 @@ static const TopoDS_Shape& DummyShapeToStoreOrientation (const TopAbs_Orientatio
       aVRev.Orientation(TopAbs_REVERSED);
     }
     return aVRev;
+  default:
+    break;
   }
   return aVForward;
 }
