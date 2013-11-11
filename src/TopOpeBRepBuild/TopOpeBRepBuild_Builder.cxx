@@ -493,9 +493,11 @@ TopAbs_Orientation TopOpeBRepBuild_Builder::Orient(const TopAbs_Orientation Ori,
 {
   TopAbs_Orientation result=TopAbs_FORWARD;
 
-  switch (Reverse) {
-    case Standard_True  : result = TopAbs::Complement(Ori); break;
-    case Standard_False : result = Ori; break;
+  if (Reverse) {
+    result = TopAbs::Complement(Ori);
+  }
+  else {
+    result = Ori;
   }
   return result;
 }
