@@ -77,6 +77,35 @@ if(MSVC)
 	option_with_default( OCE_INSTALL_PDB_FILES "Install PDB files (debug informations)" ON )
 endif(MSVC)
 
+############################
+# Library name definitions #
+############################
+
+if(MSVC)
+	set( CMAKE_LIBRARY_PREFIX "" )
+	set( CMAKE_LIBRARY_DEBUG_POSTFIX "d" )
+else(MSVC)
+	set( CMAKE_LIBRARY_PREFIX "lib" )
+	set( CMAKE_LIBRARY_DEBUG_POSTFIX "" )
+endif(MSVC)
+
+if(APPLE)
+	if(OCE_NO_LIBRARY_VERSION)
+		set( CMAKE_LIBRARY_EXTENSION ${CMAKE_SHARED_LIBRARY_SUFFIX} )
+	else(OCE_NO_LIBRARY_VERSION)
+		set( CMAKE_LIBRARY_EXTENSION "."${OCE_ABI_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX} )
+	endif(OCE_NO_LIBRARY_VERSION)
+elseif(WIN32)
+	# Don't encode library versions on Windows systems
+	set( CMAKE_LIBRARY_EXTENSION ${CMAKE_SHARED_LIBRARY_SUFFIX} )
+else()
+	if(OCE_NO_LIBRARY_VERSION)
+		set( CMAKE_LIBRARY_EXTENSION ${CMAKE_SHARED_LIBRARY_SUFFIX} )
+	else(OCE_NO_LIBRARY_VERSION)
+		set( CMAKE_LIBRARY_EXTENSION ${CMAKE_SHARED_LIBRARY_SUFFIX}"."${OCE_ABI_SOVERSION} )
+	endif(OCE_NO_LIBRARY_VERSION)
+endif()
+
 if(MSVC)
 	option_with_default( OCE_USE_BUNDLE "Use OCE Windows Bundle that has been built and installed" OFF )
 	option_with_default( OCE_USE_BUNDLE_SOURCE "Use OCE Windows Bundle source and incorporate into current project" OFF )
@@ -491,10 +520,6 @@ if (OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
 		endif(OCE_WITH_FREEIMAGE)
 	endif (OCE_VISUALISATION)
 endif(OCE_USE_BUNDLE AND OCE_BUNDLE_ROOT_PATH)
-
-if(MSVC)
-	set( CMAKE_DEBUG_POSTFIX "d" )
-endif(MSVC)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/build_inc
 	${CMAKE_CURRENT_SOURCE_DIR}/inc)
@@ -1044,20 +1069,6 @@ install(FILES ${header_files}
 )
 
 set(OCE_INSTALL_DATA_DIR ${OCE_INSTALL_DATA_DIR})
-if (NOT MSVC)
-	set(OCE_DEFAULT_CSF_GraphicShr ${OCE_INSTALL_PREFIX}/${OCE_INSTALL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl)
-	if (OCE_NO_LIBRARY_VERSION)
-		set(OCE_DEFAULT_CSF_GraphicShr ${OCE_DEFAULT_CSF_GraphicShr}${CMAKE_SHARED_LIBRARY_SUFFIX})
-	else (OCE_NO_LIBRARY_VERSION)
-		if (APPLE)
-			set(OCE_DEFAULT_CSF_GraphicShr ${OCE_DEFAULT_CSF_GraphicShr}.${OCE_ABI_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX})
-		else (APPLE)
-			set(OCE_DEFAULT_CSF_GraphicShr ${OCE_DEFAULT_CSF_GraphicShr}${CMAKE_SHARED_LIBRARY_SUFFIX}.${OCE_ABI_SOVERSION})
-		endif (APPLE)
-	endif (OCE_NO_LIBRARY_VERSION)
-else(NOT MSVC)
-	set(OCE_DEFAULT_CSF_GraphicShr ${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl)
-endif(NOT MSVC)
 
 #this is the header used to build OCE
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_build_config.h.cmake

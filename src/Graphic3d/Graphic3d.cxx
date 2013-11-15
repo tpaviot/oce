@@ -47,16 +47,11 @@ Handle(Graphic3d_GraphicDriver) Graphic3d::InitGraphicDriver (const Handle(Aspec
 #ifdef OCE_DEFAULT_CSF_GraphicShr
   aGraphicLibName = OCE_DEFAULT_CSF_GraphicShr;
 #else
-  // Setting the library name. Depends on the platform.
-#if defined(_WIN32) || defined(__WIN32__)
-  aGraphicLibName = "TKOpenGl.dll";
-#elif defined(__hpux) || defined(HPUX)
-  aGraphicLibName = "libTKOpenGl.sl";
-#elif defined(__APPLE__)
-  aGraphicLibName = "libTKOpenGl.dylib";
-#else
-  aGraphicLibName = "libTKOpenGl.so";
-#endif
+  // Assemble library name according to the variables defined by CMAKE
+  aGraphicLibName += OCE_LIBRARY_PREFIX;
+  aGraphicLibName += "TKOpenGl";
+  aGraphicLibName += OCE_LIBRARY_DEBUG_POSTFIX;
+  aGraphicLibName += OCE_LIBRARY_EXTENSION;
 #endif
   }
 

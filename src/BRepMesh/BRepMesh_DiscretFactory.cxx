@@ -25,6 +25,10 @@
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <BRepMesh_PDiscretRoot.hxx>
 
+#ifdef HAVE_OCE_PATHS_H
+# include "oce-paths.h"
+#endif
+
 namespace
 {
   //! Embedded triangulation tool(s)
@@ -35,20 +39,12 @@ namespace
   static void MakeLibName (const TCollection_AsciiString& theDefaultName,
                                  TCollection_AsciiString& theLibName)
   {
-    theLibName = "";
-  #ifndef WNT
-    theLibName += "lib";
-  #endif
-    theLibName += theDefaultName;
-  #ifdef WNT
-    theLibName += ".dll";
-  #elif __APPLE__
-    theLibName += ".dylib";
-  #elif defined (HPUX) || defined(__hpux)
-    theLibName += ".sl";
-  #else
-    theLibName += ".so";
-  #endif
+    // Assemble library name according to the variables defined by CMAKE
+  	theLibName = "";
+  	theLibName += OCE_LIBRARY_PREFIX;
+  	theLibName += theDefaultName;
+  	theLibName += OCE_LIBRARY_DEBUG_POSTFIX;
+  	theLibName += OCE_LIBRARY_EXTENSION;
   }
 };
 
