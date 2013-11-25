@@ -220,6 +220,10 @@ else ()
 	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "_DEBUG")
 endif (OCE_ENABLE_DEB_FLAG)
 
+if(OCE_MULTITHREAD_LIBRARY STREQUAL "NONE")
+    add_definitions(-DIGNORE_NO_ATOMICS)
+endif (OCE_MULTITHREAD_LIBRARY STREQUAL "NONE")
+
 #
 # Check components dependencies
 #

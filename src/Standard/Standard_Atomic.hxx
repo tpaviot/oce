@@ -150,7 +150,7 @@ int Standard_Atomic_Decrement (volatile int* theValue)
 #else
 
 #ifndef IGNORE_NO_ATOMICS
-  #warning "Atomic operation isn't implemented for current platform!"
+  #error "Atomic operation isn't implemented for current platform!"
 #endif
 int Standard_Atomic_Increment (volatile int* theValue)
 {
