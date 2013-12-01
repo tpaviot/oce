@@ -273,10 +273,14 @@ endmacro(set_target_properties_install_rpath target dir)
 
 if(TOOLKIT_IS_PRIVATE)
 	set(TOOLKIT_INSTALL_LIB_DIR ${OCE_INSTALL_PACKAGE_LIB_DIR})
-	set_target_properties_install_rpath(${TOOLKIT} "${OCE_INSTALL_PACKAGE_LIB_DIR_RPATH};${OCE_INSTALL_LIB_DIR_RPATH}")
+	if(TOOLKIT_DEPENDS)
+		set_target_properties_install_rpath(${TOOLKIT} "${OCE_INSTALL_PACKAGE_LIB_DIR_RPATH};${OCE_INSTALL_LIB_DIR_RPATH}")
+	endif(TOOLKIT_DEPENDS)
 else(TOOLKIT_IS_PRIVATE)
 	set(TOOLKIT_INSTALL_LIB_DIR ${OCE_INSTALL_LIB_DIR})
-	set_target_properties_install_rpath(${TOOLKIT} "${OCE_INSTALL_LIB_DIR_RPATH}")
+	if(TOOLKIT_DEPENDS)
+		set_target_properties_install_rpath(${TOOLKIT} "${OCE_INSTALL_LIB_DIR_RPATH}")
+	endif(TOOLKIT_DEPENDS)
 endif(TOOLKIT_IS_PRIVATE)
 
 install(FILES ${TOOLKIT_HEADER_FILES}
