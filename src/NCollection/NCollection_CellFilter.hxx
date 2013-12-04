@@ -306,10 +306,10 @@ protected:
     {
       // number of bits per each dimension in the hash code
       const Standard_Size aShiftBits = (BITS(long)-1) / Inspector::Dimension;
-      long aCode=0;
+      unsigned long aCode=0;
       for (int i=0; i < Inspector::Dimension; i++)
         aCode = ( aCode << aShiftBits ) ^ index[i];
-      return (unsigned)aCode % theUpper;
+      return aCode % theUpper;
     }
 
   public:
