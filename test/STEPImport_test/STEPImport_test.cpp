@@ -15,11 +15,11 @@ TEST(STEPImportTestSuite, testImportAP203_1)
     int nb_shapes = 0;
     for ( Standard_Integer n = 1; n <= nb_root; n++ ) {
         Standard_Boolean result = aReader.TransferRoot( n );
-        ASSERT_EQ(Standard_True,result);
+        ASSERT_TRUE(result);
         nb_shapes = aReader.NbShapes();
         if ( nb_shapes > 0 ) {
             TopoDS_Shape shape = aReader.Shape( n );
-            ASSERT_EQ(Standard_False,shape.IsNull());
+            ASSERT_FALSE(shape.IsNull());
             }
         }
 }
@@ -34,11 +34,11 @@ TEST(STEPImportTestSuite, testImportAP203_2)
     int nb_shapes = 0;
     for ( Standard_Integer n = 1; n <= nb_root; n++ ) {
         Standard_Boolean result = aReader.TransferRoot( n );
-        ASSERT_EQ(Standard_True,result);
+        ASSERT_TRUE(result);
         nb_shapes = aReader.NbShapes();
         if ( nb_shapes > 0 ) {
             TopoDS_Shape shape = aReader.Shape( n );
-            ASSERT_EQ(Standard_False,shape.IsNull());
+            ASSERT_FALSE(shape.IsNull());
             }
         }
 }
@@ -53,11 +53,11 @@ TEST(STEPImportTestSuite, testImportAP214_1)
     int nb_shapes = 0;
     for ( Standard_Integer n = 1; n <= nb_root; n++ ) {
         Standard_Boolean result = aReader.TransferRoot( n );
-        ASSERT_EQ(Standard_True,result);
+        ASSERT_TRUE(result);
         nb_shapes = aReader.NbShapes();
         if ( nb_shapes > 0 ) {
             TopoDS_Shape shape = aReader.Shape( n );
-            ASSERT_EQ(Standard_False,shape.IsNull());
+            ASSERT_FALSE(shape.IsNull());
             }
         }
 }
@@ -72,11 +72,11 @@ TEST(STEPImportTestSuite, testImportAP214_2)
     int nb_shapes = 0;
     for ( Standard_Integer n = 1; n <= nb_root; n++ ) {
         Standard_Boolean result = aReader.TransferRoot( n );
-        ASSERT_EQ(Standard_True,result);
+        ASSERT_TRUE(result);
         nb_shapes = aReader.NbShapes();
         if ( nb_shapes > 0 ) {
             TopoDS_Shape shape = aReader.Shape( n );
-            ASSERT_EQ(Standard_False,shape.IsNull());
+            ASSERT_FALSE(shape.IsNull());
             }
         }
 }
@@ -91,11 +91,11 @@ TEST(STEPImportTestSuite, testImportAP214_3)
     int nb_shapes = 0;
     for ( Standard_Integer n = 1; n <= nb_root; n++ ) {
         Standard_Boolean result = aReader.TransferRoot( n );
-        ASSERT_EQ(Standard_True,result);
+        ASSERT_TRUE(result);
         nb_shapes = aReader.NbShapes();
         if ( nb_shapes > 0 ) {
             TopoDS_Shape shape = aReader.Shape( n );
-            ASSERT_EQ(Standard_False,shape.IsNull());
+            ASSERT_FALSE(shape.IsNull());
             }
         }
 }
