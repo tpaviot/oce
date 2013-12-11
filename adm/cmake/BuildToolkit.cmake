@@ -248,6 +248,73 @@ if(TOOLKIT_DEPENDS)
 	add_dependencies(${TOOLKIT} ${TOOLKIT_DEPENDS})
 endif(TOOLKIT_DEPENDS)
 
+# Only add the copy target if there are headers to copy.
+if( TOOLKIT_HEADER_FILES )
+  #
+  # Install all toolkit header files into the include subdirectory of the OCE
+  # build directory so they are available at build time.
+  #
+  set( toolkit_header_destination_dir "${OCE_BINARY_DIR}/include" )
+  # With at least VS2012 and CMake 2.8.10.2, the -Dfiles_to_copy
+  # command-line argument seemed to run into trouble when the length
+  # of that argument was greater than 8192 (2^13).
+  # The following breaks up the copy into multiple custom commands
+  # to avoid exceeding max_argument_length.
+  set( max_argument_length 6000 )
+  # Add 5 because CMake separates files like so in Visual Studio:
+  # -Dfiles_to_copy=one";"two";"three. 5 is a little more than 3
+  # and that should hopefully cover complex escaping.
+  set( file_separation_escape_length 5 )
+  set( source_header_files "" )
+  set( destination_header_files "" )
+  set( all_destination_header_files "" )
+  set( arg_length 0 )
+  function( add_header_files_copy_command source_files_var destination_files_var )
+    add_custom_command(
+      OUTPUT ${${destination_files_var}}
+      COMMAND ${CMAKE_COMMAND}
+        "-Dfiles_to_copy=${${source_files_var}}"
+        "-Ddestination_directory=${toolkit_header_destination_dir}"
+        -P "${CMAKE_CURRENT_LIST_DIR}/CopyFiles.cmake"
+      DEPENDS "${CMAKE_CURRENT_LIST_DIR}/CopyFiles.cmake" ${${source_files_var}}
+      COMMENT "Copying headers for ${TOOLKIT}"
+      VERBATIM
+    )
+  endfunction()
+  foreach( source_header_file ${TOOLKIT_HEADER_FILES} )
+    string( LENGTH "${source_header_file}" source_header_file_length )
+    math( EXPR current_source_header_additional_length "${source_header_file_length} + ${file_separation_escape_length}" )
+    math( EXPR arg_length "${arg_length} + ${current_source_header_additional_length}" )
+    get_filename_component( source_header_filename "${source_header_file}" NAME )
+    set( destination_header_file "${toolkit_header_destination_dir}/${source_header_filename}" )
+    if( arg_length LESS max_argument_length )
+      list( APPEND source_header_files "${source_header_file}" )
+      list( APPEND destination_header_files "${destination_header_file}" )
+    else()
+      # Dump the current command
+      add_header_files_copy_command( source_header_files destination_header_files )
+      list( APPEND all_destination_header_files ${destination_header_files} )
+      # Reset data structures
+      set( source_header_files "" )
+      set( destination_header_files "" )
+      set( arg_length 0 )
+      # Add current file
+      list( APPEND source_header_files "${source_header_file}" )
+      list( APPEND destination_header_files "${destination_header_file}" )
+      math( EXPR arg_length "${arg_length} + ${current_source_header_additional_length}" )
+    endif()
+  endforeach()
+  if( NOT source_header_files STREQUAL "" )
+    add_header_files_copy_command( source_header_files destination_header_files )
+    list( APPEND all_destination_header_files ${destination_header_files} )
+  endif()
+
+  add_custom_target( copy_${TOOLKIT}_headers ALL
+    DEPENDS ${all_destination_header_files}
+  )
+
+endif()
+
 ###########
 # INSTALL #
 ###########
