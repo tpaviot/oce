@@ -58,14 +58,20 @@ message(STATUS "Build ${BIT}bit")
 
 if(NOT CMAKE_CONFIGURATION_TYPES)
 	if( NOT DEFINED OCE_BUILD_TYPE )
-		set( OCE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Release Debug RelWithDebInfo MinSizeRel None" )
+    # If CMAKE_BUILD_TYPE is set, initialize OCE_BUILD_TYPE to that.
+    # Otherwise, default to a Release build.
+    if( CMAKE_BUILD_TYPE )
+      set( OCE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Set from CMAKE_BUILD_TYPE" )
+    else()
+		  set( OCE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Release Debug RelWithDebInfo MinSizeRel None" )
+	    set( CMAKE_BUILD_TYPE ${OCE_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
+    endif(CMAKE_BUILD_TYPE)
 	endif( NOT DEFINED OCE_BUILD_TYPE )
 	#  The "set_property(CACHE" capability first appeared in CMake version 2.8.0
 	#  We test against > 2.8 though, otherwise test is much less readable
 	if (${CMAKE_VERSION} VERSION_GREATER 2.8)
 		set_property(CACHE OCE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinSizeRel" "None")
 	endif (${CMAKE_VERSION} VERSION_GREATER 2.8)
-	set( CMAKE_BUILD_TYPE ${OCE_BUILD_TYPE} CACHE INTERNAL "Build type, immutable" FORCE )
 endif(NOT CMAKE_CONFIGURATION_TYPES)
 
 if(CMAKE_BUILD_TOOL STREQUAL "nmake")
