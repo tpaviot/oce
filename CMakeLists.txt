@@ -1009,9 +1009,14 @@ if(WIN32)
 endif(WIN32)
 
 file(GLOB header_files ${OCE_SOURCE_DIR}/inc/*.*)
-install(FILES ${header_files}
-	DESTINATION ${OCE_INSTALL_INCLUDE_DIR} COMPONENT Development
-)
+
+# Install each header file individually to work around a 8192 character
+# argument limit on Visual Studio generators.
+foreach(header ${header_files})
+  install(FILES ${header}
+    DESTINATION ${OCE_INSTALL_INCLUDE_DIR} COMPONENT Development
+  )
+endforeach()
 
 set(OCE_INSTALL_DATA_DIR ${OCE_INSTALL_DATA_DIR})
 if (NOT MSVC)
