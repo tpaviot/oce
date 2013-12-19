@@ -16,3 +16,7 @@
 #define OCE_LIBRARY_PREFIX "@CMAKE_LIBRARY_PREFIX@"
 #define OCE_LIBRARY_EXTENSION "@CMAKE_LIBRARY_EXTENSION@"
 
+/* Location where TKOpenGl shared library will be installed. */
+#cmakedefine OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@"
+
+
