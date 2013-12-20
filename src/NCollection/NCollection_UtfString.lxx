@@ -284,7 +284,7 @@ template<typename Type> inline
 void NCollection_UtfString<Type>::FromLocale (const char*            theString,
                                               const Standard_Integer theLength)
 {
-#if(defined(_WIN32) || defined(__WIN32__))
+  #ifdef _MSC_VER 
   // use WinAPI
   int aWideSize = MultiByteToWideChar (CP_ACP, MB_PRECOMPOSED, theString, -1, NULL, 0);
   if (aWideSize <= 0)
@@ -323,7 +323,7 @@ bool NCollection_UtfString<Type>::ToLocale (char*                  theBuffer,
                                             const Standard_Integer theSizeBytes) const
 {
   NCollection_UtfString<wchar_t> aWideCopy (myString, myLength);
-#if(defined(_WIN32) || defined(__WIN32__))
+#ifdef _MSC_VER 
   int aMbBytes = WideCharToMultiByte (CP_ACP, 0, aWideCopy.ToCString(), -1, theBuffer, theSizeBytes, NULL, NULL);
 #else
   std::size_t aMbBytes = std::wcstombs (theBuffer, aWideCopy.ToCString(), theSizeBytes);
