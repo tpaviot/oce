@@ -1096,13 +1096,17 @@ foreach(header ${header_files})
 endforeach()
 
 set(OCE_INSTALL_DATA_DIR ${OCE_INSTALL_DATA_DIR})
-if (NOT MSVC)
-	set(OCE_DEFAULT_CSF_GraphicShr ${OCE_INSTALL_PREFIX}/${OCE_INSTALL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_LIBRARY_DEBUG_POSTFIX}${CMAKE_LIBRARY_EXTENSION})
-else(NOT MSVC)
+if(MSVC)
 	# With Visual generator, CMake generates projects which can be built both in Debug and Release mode.
 	# Therefore the MSVC library name has to be assembled in oce_build_paths.h.cmake.
 	set(OCE_DEFAULT_CSF_GraphicShr ${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl)
-endif(NOT MSVC)
+elseif(MINGW)
+	# As for MSVC the variable OCE_INSTALL_LIB_DIR may not be part of the library path, since
+	# on Windows the shared libraries are in a separate bin directory.
+	set(OCE_DEFAULT_CSF_GraphicShr ${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_LIBRARY_DEBUG_POSTFIX}${CMAKE_LIBRARY_EXTENSION})
+else()
+	set(OCE_DEFAULT_CSF_GraphicShr ${OCE_INSTALL_PREFIX}/${OCE_INSTALL_LIB_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_LIBRARY_DEBUG_POSTFIX}${CMAKE_LIBRARY_EXTENSION})
+endif()
 
 #this is the header used to build OCE
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_build_config.h.cmake
