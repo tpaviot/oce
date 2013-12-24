@@ -29,8 +29,7 @@
 #include <math_MultipleVarFunction.hxx>
 
 
-static Standard_Real sqrarg;
-#define SQR(a) (sqrarg=(a), sqrarg*sqrarg)
+
 
 class DirFunctionBis : public math_Function {
 
@@ -173,9 +172,10 @@ void math_Powell::Perform(math_MultipleVarFunction& F,
     F.Value(ptt, fptt);
 
     if (fptt < PreviousMinimum) {
-      t = 2.0 *(PreviousMinimum -2.0*TheMinimum +fptt)*
-	SQR(PreviousMinimum-TheMinimum -del)-del*
-	  SQR(PreviousMinimum-fptt);
+      Standard_Real aux1 = PreviousMinimum - TheMinimum - del;
+      Standard_Real aux2 = PreviousMinimum - fptt;
+      t = 2.0 * (PreviousMinimum -2.0 * TheMinimum + fptt) * aux1 * aux1 -
+      del * aux2 * aux2;
       if (t <0.0) {
 	//Minimisation along the direction
 	Standard_Boolean IsGood = MinimizeDirection(TheLocation, xit,

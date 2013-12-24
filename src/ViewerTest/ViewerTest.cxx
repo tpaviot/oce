@@ -1161,11 +1161,12 @@ static int VColor2 (Draw_Interpretor& di, Standard_Integer argc, const char** ar
       while ( it.More() ) {
         const Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        if (!ashape.IsNull())
+        if (!ashape.IsNull()) {
           if(HaveToSet)
             TheAISContext()->SetColor(ashape,ViewerTest::GetColorFromName(argv[1]),Standard_False);
           else
             TheAISContext()->UnsetColor(ashape,Standard_False);
+        }
         it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1258,11 +1259,12 @@ static int VTransparency  (Draw_Interpretor& di, Standard_Integer argc,
       while ( it.More() ) {
         Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast(it.Key1());
-        if (!ashape.IsNull())
+        if (!ashape.IsNull()) {
           if(HaveToSet)
             TheAISContext()->SetTransparency(ashape,Draw::Atof(argv[1]),Standard_False);
           else
             TheAISContext()->UnsetTransparency(ashape,Standard_False);
+        }
         it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1314,11 +1316,12 @@ static int VMaterial (Draw_Interpretor& di, Standard_Integer argc, const char** 
     if ( ThereIsName && IsBound ) {
       Handle(AIS_InteractiveObject) ashape =
         Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2(name));
-      if (!ashape.IsNull())
+      if (!ashape.IsNull()) {
         if (HaveToSet)
           TheAISContext()->SetMaterial(ashape,GetMaterialFromName(argv[2]));
         else
           TheAISContext()->UnsetMaterial(ashape);
+      }
     }
     //=======================================================================
     // Il n'y a pas de nom de shape
@@ -1348,11 +1351,12 @@ static int VMaterial (Draw_Interpretor& di, Standard_Integer argc, const char** 
       while ( it.More() ) {
         Handle(AIS_InteractiveObject) ashape =
           Handle(AIS_InteractiveObject)::DownCast (it.Key1());
-        if (!ashape.IsNull())
+        if (!ashape.IsNull()) {
           if (HaveToSet)
             TheAISContext()->SetMaterial(ashape,GetMaterialFromName(argv[1]),Standard_False);
           else
             TheAISContext()->UnsetMaterial(ashape,Standard_False);
+        }
         it.Next();
       }
       TheAISContext()->UpdateCurrentViewer();
@@ -1442,11 +1446,12 @@ static int VWidth (Draw_Interpretor& di, Standard_Integer argc, const char** arg
      while ( it.More() ) {
        Handle(AIS_InteractiveObject) ashape =
          Handle(AIS_InteractiveObject)::DownCast (it.Key1());
-       if (!ashape.IsNull())
+       if (!ashape.IsNull()) {
          if (HaveToSet)
            TheAISContext()->SetWidth(ashape,Draw::Atof(argv[1]),Standard_False);
          else
            TheAISContext()->UnsetWidth(ashape,Standard_False);
+       }
        it.Next();
      }
      TheAISContext()->UpdateCurrentViewer();
