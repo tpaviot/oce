@@ -102,7 +102,7 @@ Standard_CString LDOM_SBuffer::str () const
 //function : overflow()
 //purpose  : redefined virtual
 //=======================================================================
-int LDOM_SBuffer::overflow(signed char c)
+int LDOM_SBuffer::overflow(int c)
 {
   char cc = (char)c;
   return (int)xsputn(&cc,1);
