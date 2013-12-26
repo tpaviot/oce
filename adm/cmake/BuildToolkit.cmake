@@ -249,7 +249,7 @@ if(TOOLKIT_DEPENDS)
 endif(TOOLKIT_DEPENDS)
 
 # Only add the copy target if there are headers to copy.
-if( TOOLKIT_HEADER_FILES )
+if( TOOLKIT_HEADER_FILES AND OCE_COPY_HEADERS_BUILD )
   #
   # Install all toolkit header files into the include subdirectory of the OCE
   # build directory so they are available at build time.

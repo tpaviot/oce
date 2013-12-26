@@ -168,6 +168,9 @@ if (NOT WIN32)
 	option_with_default( OCE_RPATH_FILTER_SYSTEM_PATHS "Filter out system paths from RPATH" ON )
 	mark_as_advanced(OCE_RPATH_FILTER_SYSTEM_PATHS)
 endif (NOT WIN32)
+# When building OCE as part of another application, it may be useful to copy
+# header files in a temporary location so that dependent applications can be built
+option_with_default( OCE_COPY_HEADERS_BUILD "Copy header files when building OCE" OFF )
 
 #
 # By default, OSX uses X11 OpenGl implementation
